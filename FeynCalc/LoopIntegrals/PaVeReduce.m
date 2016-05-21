@@ -27,6 +27,7 @@ Begin["`PaVeReduce`Private`"]
 
 pvrVerbose::usage="";
 breduce::usage="";
+a0tob0::usage="";
 
 Options[ PaVeReduce ] = {
 	Dimension -> True,
@@ -36,6 +37,7 @@ Options[ PaVeReduce ] = {
 	PaVeOrderList -> {},
 	WriteOutPaVe -> False,
 	BReduce -> False,
+	A0ToB0->False,
 	PaVeAutoReduce -> False
 };
 
@@ -45,6 +47,7 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 		wriout = OptionValue[WriteOutPaVe];
 
 		breduce = OptionValue[BReduce];
+		a0tob0 = OptionValue[A0ToB0];
 
 		If [OptionValue[FCVerbose]===False,
 			pvrVerbose=$VeryVerbose,
@@ -359,6 +362,19 @@ tT[N][mu_1,mu_2,...,mu_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}] = \Sum_{i_1,...,i_p
 tT[N][i_1,...,i_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}]* p_{i_1 mu_1} * ... * p_{i_p mu_p}
 *)
 
+(* A0 *)
+
+tT[1][0][{SmallVariable[_]^_.}] :=
+	0;
+
+(* A0 to B0 *)
+
+tT[1][0][{mm_}] :=
+	mm PaVe[0,{0},{mm,mm}] + mm/; a0tob0 && $LimitTo4;
+
+tT[1][0][{mm_}] :=
+	2mm/($dIM-2) PaVe[0,{0},{mm,mm}] /; a0tob0 && !$LimitTo4;
+
 (* Special cases of B functions with zero Gram determinant	*)
 
 (* 	B1...(0,m1,m2) are not further reducible in terms of other PaVe functions *)
@@ -385,6 +401,32 @@ tT[2][0][{0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]}]:=
 
 tT[2][0][{0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]}]:=
 	(($dIM-2)*PaVe[0,{},{mm}]/(2mm))/; breduce && !$LimitTo4;
+
+
+(*
+tT[2][0,0][{0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]}]:=
+	(PaVe[0,{},{mm}]/mm - 1)/; breduce && $LimitTo4;
+
+
+b00[0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]] :=
+	mm / 2 ( B0[0,mm,mm] + 1 );
+
+b00[SmallVariable[em_]^n_., mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]] :=
+	mm / 2 ( B0[em^n,mm,mm] + 1 );
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (* General case, T integrals with zero Gram determinant are not evaluated	*)
 tT[N_Integer][k_Integer,i___Integer][a_List] :=
