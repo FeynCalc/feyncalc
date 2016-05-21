@@ -137,39 +137,43 @@ A00 /:
 A00[mm_]:=
 	mm/4 A0[mm] + mm/8/; $LimitTo4;
 
+A00[mm_]:=
+	(mm/D A0[mm]); !$LimitTo4;
+
 B0[0,0,0, OptionsPattern[]]:=
 	0;
 
+(* ordering *)
 B0[pe_,me2_,me1_, opt:OptionsPattern[]] :=
 	B0 @@ Prepend[ {me1,me2,opt}, Expand[pe]] /; !OrderedQ[{me2,me1}];
 
-B0[SmallVariable[pp_]^j_., SmallVariable[a_]^n_., SmallVariable[b_]^m_.] :=
+(* generic rules *)
+B0[SmallVariable[pp_]^j_., SmallVariable[a_]^n_., SmallVariable[b_]^m_., OptionsPattern[]] :=
 	B0[pp^j, a^n, b^m];
 
 B0[0, SmallVariable[a_]^n_., SmallVariable[b_]^m_.] :=
 	B0[0, a^n, b^m];
 
-B0[0,0,mm:Except[_SmallVariable | 0], opt___] :=
-	( B0[0,mm,mm] + 1 ) /; ( (B0Unique/.{opt}/.Options[B0]) === True );
+(* special replacements *)
+B0[0,0,mm:Except[_SmallVariable | 0], OptionsPattern[]] :=
+	( B0[0,mm,mm] + 1 ) /; OptionValue[B0Unique];
 
 B0[mm_,0,mm_,OptionsPattern[]] :=
 	( B0[0,mm,mm] + 2)/; OptionValue[B0Unique] && OptionValue[B0Real];
 
-B0[kl_, kmm_, mm:Except[_SmallVariable | 0], OptionsPattern[] ] :=
-	(A0[mm]/mm) /; OptionValue[BReduce] &&
-					(((kl E+kmm)/.SmallVariable[_]->0)===0);
+
+B0[kl_, kmm_, mm:Except[_SmallVariable | 0], OptionsPattern[]] :=
+	(A0[mm]/mm) /; OptionValue[BReduce] && (((kl E+kmm)/.SmallVariable[_]->0)===0);
 
 B0[kl_, mm:Except[_SmallVariable | 0], kmm_, OptionsPattern[] ] :=
-	(A0[mm]/mm) /; OptionValue[BReduce] &&
-				(((kl E+kmm)/.SmallVariable[_]->0)===0);
+	(A0[mm]/mm) /; OptionValue[BReduce] && (((kl E+kmm)/.SmallVariable[_]->0)===0);
+
 
 B0[0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0], OptionsPattern[]] :=
 	(A0[mm]/mm - 1)/; OptionValue[BReduce]
 
-(*fixed bop[opt] option Jan 1998*)
 B0[0,m1_,m2_, OptionsPattern[]] :=
-	((1/(m1-m2) A0[m1] - 1/(m1-m2) A0[m2]) /;
-		m1 =!= m2) && OptionValue[BReduce];
+	(1/(m1-m2) A0[m1] - 1/(m1-m2) A0[m2]) /; (m1 =!= m2) && OptionValue[BReduce];
 
 B0 /:
 	MakeBoxes[B0[p10_,m02_,m12_, OptionsPattern[]]  ,TraditionalForm] :=
@@ -177,6 +181,9 @@ B0 /:
 
 B00[x__, OptionsPattern[]] :=
 	b00[x] /; ($LimitTo4 === True) && OptionValue[BReduce] && pcheck[x];
+
+B00[x__, OptionsPattern[]] :=
+	PaVeReduce[PaVe[0,0,{First[{x}]},Rest[{x}]],PaVeAutoReduce->True] /; !$LimitTo4 && OptionValue[BReduce] && pcheck[x];
 
 b00[0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]] :=
 	mm / 2 ( B0[0,mm,mm] + 1 );
@@ -202,12 +209,17 @@ B1[a_,b_,c_, OptionsPattern[]] :=
 	bb1[a, b, c] /;	OptionValue[BReduce] && (Head[bb1[a,b,c]] =!= bb1) &&
 		FreeQ2[{a,b,c},{Blank, BlankSequence, BlankNullSequence, Pattern}];
 
+
 (* Special cases, if photon and fermionic SmallVariable masses are present *)
 bb1[SmallVariable[me_]^n_., SmallVariable[me_]^n_., SmallVariable[mla_]^_.] :=
 	( -1/2 B0[SmallVariable[me]^n, SmallVariable[me]^n, 0] - 1/2 )/; TrueQ[mla < me] && $LimitTo4;
 
 bb1[SmallVariable[me_]^n_., SmallVariable[mla_]^n_., SmallVariable[me_]^_.] :=
 	(1/2 - 1/2 B0[SmallVariable[me]^n,0 ,SmallVariable[me]^n]) /; TrueQ[mla < me] && $LimitTo4;
+(*
+bb1[x:Except[_SmallVariable | 0], y:Except[_SmallVariable | 0], z:Except[_SmallVariable | 0], OptionsPattern[]] :=
+	(PaVeReduce[PaVe[1,{x}, {y,z} ],PaVeAutoReduce->True]) /; pcheck[x,y,z];
+*)
 
 (* other special cases of B1 *)
 
@@ -252,6 +264,10 @@ B11[pe_, mm1_, mm2_,  OptionsPattern[]] :=
 	b11[pe, mm1, mm2] /; OptionValue[BReduce] && ($LimitTo4 === True) && pcheck[pe,mm1,mm2] &&
 												(((pe =!= 0) && FreeQ[pe, SmallVariable]) || ( (!((pe =!= 0) && FreeQ[pe, SmallVariable])) && (mm1 === mm2)));
 
+B11[x:Except[_SmallVariable | 0], y:Except[_SmallVariable | 0], z:Except[_SmallVariable | 0], OptionsPattern[]] :=
+	(PaVeReduce[PaVe[1,1,{x}, {y,z} ],PaVeAutoReduce->True]) /; OptionValue[BReduce] && ($LimitTo4 === False) && pcheck[x,y,z];
+
+
 b11[ 0,mm1_,mm1_ ] :=
 	1/3 * B0[ 0,mm1,mm1 ];
 
@@ -264,7 +280,7 @@ b11[pp:Except[_SmallVariable | 0], mm_, mm_] :=
 
 b11[pp:Except[_SmallVariable | 0], m1_, m2_] :=
 	( 1/(3 pp) ( A0[m2] - smad[2 (pp-m2 + m1)]*
-	(PaVe[1,{pp},{m1,m2}]) - smad[m1] B0[pp,m1,m2] -
+	(B1[pp,m1,m2]) - smad[m1] B0[pp,m1,m2] -
 		smad[ 1/2 (m1 + m2 - pp/3 )]) );
 
 B11 /:
