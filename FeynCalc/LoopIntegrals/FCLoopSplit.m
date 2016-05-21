@@ -77,13 +77,22 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 			ex = Collect2[ex,lmoms];
 		];
 		loopFree = Select[ex+ null1+ null2,
-			FreeQ2[#,lmoms]&]/. {null1|null2 -> 0};
+			FreeQ2[#,Join[lmoms,PaVeHeadsList]]&]/. {null1|null2 -> 0};
 		loopScalar = Select[ex+ null1+ null2,
-			(!FreeQ2[#,lmoms] && FreeQ2[# /. FeynAmpDenominator[__] :> 1, lmoms]) &]/. {null1|null2 -> 0};
+			(!FreeQ2[#,Join[lmoms,PaVeHeadsList]] && FreeQ2[# /. FeynAmpDenominator[__] :> 1, lmoms]) &]/. {null1|null2 -> 0};
 		loopTensorQP = Select[ex-loopScalar+ null1+ null2,
 			(!FreeQ2[#,lmoms] && FreeQ2[# /. {FeynAmpDenominator[__] :> 1,
 				Pair[Momentum[a_,_:4],Momentum[b_,_:4]]/;!FreeQ2[{a,b},lmoms] :> 1}, lmoms]) &]/. {null1|null2 -> 0};
 		loopTensorFreeInd = ex - loopFree - loopScalar - loopTensorQP;
+
+		If[	OptionValue[Collecting],
+			loopTensorFreeInd = Collect2[loopTensorFreeInd,Join[lmoms,PaVeHeadsList]];
+		];
+
+
+		If[	FreeQ2[loopTensorFreeInd,Join[lmoms,PaVeHeadsList]],
+			loopTensorFreeInd = Factor[loopTensorFreeInd]
+		];
 
 		{oldLoopFree,oldLoopScalar}={loopFree,loopScalar};
 		{loopFree,addToLoopScalar} = FCSplit[loopFree,PaVeHeadsList];
