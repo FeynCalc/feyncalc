@@ -68,6 +68,10 @@ Tests`SUN`fcstSUNSimplify = {
 {"fcstSUNSimplify-ID24","SUNSimplify[SUND[i, a, b] SUND[j, b, c] SUND[k, c, a],
 	Explicit -> True, SUNNToCACF -> False] //ReplaceAll[#,
 	SUNTrace[a_] :> SUNTrace[a, Explicit -> True]] & // Simplify",
-	"((-12 + SUNN^2) SUND[SUNIndex[i], SUNIndex[j], SUNIndex[k]])/(2 SUNN)"}
+	"((-12 + SUNN^2) SUND[SUNIndex[i], SUNIndex[j], SUNIndex[k]])/(2 SUNN)"},
+{"fcstSUNSimplify-ID25","SUNSimplify[
+SUNTrace[SUNF[a, c, g] SUNF[b, e, h] SUNF[d, g,
+	h] SUNT[a].SUNT[b].SUNT[c].SUNT[d].SUNT[e]], Explicit -> True]",
+	"1/4 I CA^2 CF"}
 };
 
