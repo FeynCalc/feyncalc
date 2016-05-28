@@ -20,7 +20,7 @@ Tests`LoopIntegrals`fcstPaVe = {
 
 {"fcstPave-ID3","PaVe[1, {pp}, {m12, m22},PaVeAutoReduce->True]","B1[pp, m12, m22]"},
 {"fcstPave-ID4","PaVe[1, 1, {p10}, {m12, m22},PaVeAutoReduce->True]","B11[p10, m12, m22]"},
-{"fcstPave-ID5","PaVe[0, {p10, p12, p20}, {m12, m22, m32}]","C0[p10, p12, p20, m12, m22, m32]"},
+{"fcstPave-ID5","PaVe[0, {p10, p12, p20}, {m12, m22, m32},PaVeAutoReduce->True]","C0[p10, p12, p20, m12, m22, m32]"},
 {"fcstPave-ID6","PaVe[0, {p10, p12, p23, p30, p20, p13}, {m12, m22, m32, m42},PaVeAutoReduce->True]","D0[p10, p12, p23, p30, p20, p13, m12, m22, m32, m42]"},
 {"fcstPave-ID7","PaVe[0, 0, {p}, {m1, m2}]","PaVe[0, 0, {p}, {m1, m2}]"},
 {"fcstPave-ID8","$LimitTo4 = True; \n SetOptions[{B1, B00, B11}, BReduce -> True];\nPaVe[0, 0, {p}, {m1, m2},PaVeAutoReduce->True]","(3*m1 + 3*m2 - p)/18 + (m1*B0[p, m1, m2])/3 +

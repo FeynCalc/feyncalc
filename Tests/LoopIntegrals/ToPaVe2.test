@@ -1,0 +1,42 @@
+
+
+(* :Title: ToPaVe2.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToPaVe2			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`ToPaVe2 =
+({
+{"fcstToPaVe2-ID1", "A0[m^2]//ToPaVe2", "PaVe[0, {}, {m^2}]"},
+{"fcstToPaVe2-ID2", "A00[m^2]//ToPaVe2",
+"(m^2*PaVe[0, {}, {m^2}])/D"},
+{"fcstToPaVe2-ID3", "B0[p^2,m1^2,m2^2]//ToPaVe2",
+"PaVe[0, {p^2}, {m1^2, m2^2}]"},
+{"fcstToPaVe2-ID4", "B1[p^2,m1^2,m2^2]//ToPaVe2",
+"PaVe[0, {}, {m1^2}]/(2*p^2) - PaVe[0, {}, {m2^2}]/(2*p^2) - \
+((m1^2 - m2^2 + p^2)*PaVe[0, {p^2}, {m1^2, m2^2}])/(2*p^2)"},
+{"fcstToPaVe2-ID5", "B00[p^2,m1^2,m2^2]//ToPaVe2",
+"-((m1^2 - m2^2 + p^2)*PaVe[0, {}, {m1^2}])/(4*(1 - D)*p^2) + \
+((m1^2 - m2^2 - p^2)*PaVe[0, {}, {m2^2}])/(4*(1 - D)*p^2) + ((m1 - m2 \
+- p)*(m1 + m2 - p)*(m1 - m2 + p)*(m1 + m2 + p)*PaVe[0, {p^2}, {m1^2, \
+m2^2}])/(4*(1 - D)*p^2)"},
+{"fcstToPaVe2-ID6", "B11[p^2,m1^2,m2^2]//ToPaVe2",
+"(D*(m1^2 - m2^2 + p^2)*PaVe[0, {}, {m1^2}])/(4*(1 - D)*p^4) - \
+((D*m1^2 - D*m2^2 - 4*p^2 + 3*D*p^2)*PaVe[0, {}, {m2^2}])/(4*(1 - \
+D)*p^4) - ((D*m1^4 - 2*D*m1^2*m2^2 + D*m2^4 - 4*m1^2*p^2 + \
+2*D*m1^2*p^2 - 2*D*m2^2*p^2 + D*p^4)*PaVe[0, {p^2}, {m1^2, \
+m2^2}])/(4*(1 - D)*p^4)"},
+{"fcstToPaVe2-ID7", "C0[p10,p12,p20,m1^2,m2^2,m3^2]//ToPaVe2",
+"PaVe[0, {p10, p12, p20}, {m1^2, m2^2, m3^2}]"},
+{"fcstToPaVe2-ID8",
+"D0[p10,p12,p23,p30,p20,p13,m1^2,m2^2 ,m3^2,m4^2 ]//ToPaVe2",
+"PaVe[0, {p10, p12, p23, p30, p20, p13}, {m1^2, m2^2, m3^2, m4^2}]"}
+});

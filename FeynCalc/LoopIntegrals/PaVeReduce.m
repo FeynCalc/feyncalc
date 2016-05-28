@@ -712,14 +712,7 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 						paveProtect[i,j,  moms, ml, ops]
 			};
 
-			breakx = breakx/. {
-				A0[m_] :> PaVe[0,{},{m}],
-				A00[m_] :> PaVe[0,{},{m}],
-				B0[pp_,m1_,m2_] :> PaVe[0,{pp},{m1,m2}],
-				B1[pp_,m1_,m2_] :> PaVe[1,{pp},{m1,m2}],
-				B00[pp_,m1_,m2_] :> PaVe[0,0,{pp},{m1,m2}],
-				B11[pp_,m1_,m2_] :> PaVe[1,1,{pp},{m1,m2}]
-			};
+			breakx = ToPaVe2[breakx];
 
 			t =  breakdown[breakx];
 
