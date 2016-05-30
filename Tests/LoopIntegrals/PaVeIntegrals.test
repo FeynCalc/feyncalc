@@ -18,6 +18,8 @@ Tests`LoopIntegrals`fcstPaVeIntegrals = {
 {"fcstPaVeIntegrals-ID1","$LimitTo4 = True; \n A0[SmallVariable[x]]"," 0"},
 {"fcstPaVeIntegrals-ID2","A0[SmallVariable[x]^3]"," 0"},
 {"fcstPaVeIntegrals-ID3","A0[0]"," 0"},
+{"fcstPaVeIntegrals-ID3.1","A00[0]"," 0"},
+{"fcstPaVeIntegrals-ID3.2","A00[m1^2]","m1^4/8 + 1/4 m1^2 A0[m1^2]"},
 {"fcstPaVeIntegrals-ID4","A0[mm, A0ToB0->True]"," (mm + mm B0[0,mm,mm])"},
 {"fcstPaVeIntegrals-ID5","B0[SmallVariable[a], SmallVariable[b], SmallVariable[c]]", "B0[a,b,c]"},
 {"fcstPaVeIntegrals-ID6","B0[SmallVariable[a]^2, SmallVariable[b]^3, SmallVariable[c]^4]"," B0[a^2,b^3,c^4]"},

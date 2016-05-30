@@ -136,7 +136,7 @@ A00[SmallVariable[_]^_. ,OptionsPattern[]]:=
 	0;
 
 A00[mm_]:=
-	(mm/4 A0[mm] + mm/8)/; $LimitTo4;
+	(mm/4 A0[mm] + mm^2/8)/; $LimitTo4;
 
 A00[mm_]:=
 	(mm/D A0[mm]); !$LimitTo4;
