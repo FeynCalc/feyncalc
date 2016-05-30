@@ -432,6 +432,7 @@ b00[SmallVariable[em_]^n_., mm:Except[_SmallVariable | 0], mm:Except[_SmallVaria
 tT[N_Integer][k_Integer,i___Integer][a_List] :=
 	Block[ {P, M ,r, kp, tmp,tmpXinv,tmpR,tmpT },
 		FCPrint[3,"PaVeReduce: tT: Entering with N and a: ",N," ",a,FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: tT: Gram determinant: ",gramDet[Drop[a,-N]],FCDoControl->pvrVerbose];
 		P = 1 + Length[{i}];
 		M = getm[a];
 		tmp = Sum[ Xinv[M][k, kp][a]  ( R[N,kp][i][a] - Sum[ delt[ kp,{i}[[r]] ] (T[N]@@Join[{0,0}, Delete[{i},r]])[a], {r, P-1}]), {kp, M}];
@@ -587,18 +588,19 @@ pavereduce[a/SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe]
 (* Gram determinant for a 2-point function	*)
 gramDet[{p10_}]:=
 	gramDet[{p10}] =
-		Expand[2 p10]
+		Factor2[2 p10]
 
 (* Gram determinant for a 3-point function	*)
 gramDet[{p10_, p12_, p20_}]:=
 	gramDet[{p10, p12, p20}] =
-		Expand[4 p10^2 p20^2 - (p10 - p12 + p20)^2];
+		Factor2[4 p10 p20 -  ((p10+p20-p12))^2];
 
 (* Gram determinant for a 4-point function	*)
 gramDet[{p10_, p12_, p23_, p30_, p20_, p13_}]:=
 	gramDet[{p10, p12, p23, p30, p20, p13}]=
-		Expand[8 (-(1/4) p20^2 (-p10 + p13 - p30)^2 + 1/4 (-p10 + p12 - p20) (-p10 + p13 - p30) (-p20 + p23 - p30) -
-		1/4 p10^2 (-p20 + p23 - p30)^2 - 1/4 (-p10 + p12 - p20)^2 p30^2 + p10^2 p20^2 p30^2)];
+		Factor2[2 (4 p10 p20 p30 - (p10 - p12 + p20)^2 p30 -
+			p20 (p10 - p13 + p30)^2 + (p10 - p12 + p20) (p10 - p13 +
+			p30) (p20 - p23 + p30) - p10 (p20 - p23 + p30)^2)];
 
 pavereduce[exp_, OptionsPattern[]] :=
 	exp /; FreeQ2[exp, PaVeHeadsList];

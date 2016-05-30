@@ -934,7 +934,11 @@ MW2, MW2, SmallVariable[ME2], S, T, 0, SmallVariable[ME2], 0, SmallVariable[ME2]
 "PaVeReduce[PaVe[1,2,{pp1,pp2,pp3,pp4,pp5,pp6,pp7,pp8,pp9,pp10},{m^\
 2,m^2,M^2,m^2,m^2}]]",
 "PaVe[1, 2, {pp1, pp2, pp3, pp4, pp5, pp6, pp7, pp8, pp9, pp10}, \
-{m^2, m^2, M^2, m^2, m^2}]"}
+{m^2, m^2, M^2, m^2, m^2}]"},
+{"fcstPaVeReduce-ID7", "PaVeReduce[PaVe[1, 2, {(p1 - p2)^2, p1^2, p2^2}, {m2^2, m1^2, m0^2}]]",
+"PaVe[1, 2, {p1^2 - 2 p1 p2 + p2^2, p1^2, p2^2}, {m2^2, m1^2, m0^2}]"},
+{"fcstPaVeReduce-ID8", "PaVeReduce[PaVe[1, 2, {p1^2, 0, 0, p3^2, p2^2, 0}, {m2^2, m1^2, m0^2, m3^2}]]",
+"PaVe[1, 2, {p1^2, 0, 0, p3^2, p2^2, 0}, {m2^2, m1^2, m0^2, m3^2}]"}
 })
 
 
