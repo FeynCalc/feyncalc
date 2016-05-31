@@ -2309,8 +2309,8 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 		(*tensqc,tensjq*)(*,tensfq,ltx*)
 		},
 		tensg = Catch[
-		FCPrint[2, "entering tensint with ", tensx ,FCDoControl->oneloopVerbose];
-		FCPrint[3, "entering tensint ", q, "  dimension  ", dim, "   ", x//FeynCalcForm, FCDoControl->oneloopVerbose];
+		FCPrint[2, "OneLoop: tensint: entering with ", tensx ,FCDoControl->oneloopVerbose];
+		FCPrint[3, "OneLoop: tensint: entering ", q, "  dimension  ", dim, "   ", x//FeynCalcForm, FCDoControl->oneloopVerbose];
 		(* diracSimplify must have been used previously              *)
 		mandel =  Mandelstam /.Join[ options,Options[ tensint ] ];
 	(* tensor integral decomposition *)
@@ -2323,37 +2323,39 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 	(* The tensj - loop runs over all different q-monomials *)
 		Clear[tensqc];
 		For[ tensj = 1, tensj <= tenslnt, tensj++,
-			FCPrint[1, "tensorintegral # ", tensj, " / ", tenslnt, FCDoControl->oneloopVerbose];
-			FCPrint[3, "tensorintegral ", If[ tenslnt===1, tensx, tensx[[tensj]]], FCDoControl->oneloopVerbose];
+			FCPrint[1, "OneLoop: tensint: tensorintegral # ", tensj, " / ", tenslnt, FCDoControl->oneloopVerbose];
+			FCPrint[3, "OneLoop: tensint: tensorintegral ", If[ tenslnt===1, tensx, tensx[[tensj]]], FCDoControl->oneloopVerbose];
 			tensqc[tensj][any_] :=
 				0;
 			If[ tenslnt===1,
 				tensdnp = PartitHead[ tensx,FeynAmpDenominator ],
 				tensdnp = PartitHead[ tensx[[tensj]],FeynAmpDenominator ]
 			];
-	(* Collect according to the number of q's *)
+			FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp, FCDoControl->oneloopVerbose];
+			(* Collect according to the number of q's *)
 			tensdnp1 = Collect2[ tensdnp[[1]],q, Factoring -> False];
-			FCPrint[3,"tensdnp1 ",tensdnp1, FCDoControl->oneloopVerbose];
+			FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp1, FCDoControl->oneloopVerbose];
 			pairpow/: pairpow[a___,Momentum[q,di___],b___]^n_Integer?Positive :=
 					(pairpow[a,Momentum[q,di],b]^(n-1))**pairpow[a,Momentum[q,di],b];
 		(*oten1=tensdnp1;*)
 			tensdnp1 = tensdnp1/.Pair->pairpow/.pairpow->Pair;
-			FCPrint[3,"tensdnp1 after pairpow ",tensdnp1, FCDoControl->oneloopVerbose];
-			FCPrint[1, "Checking rank of ", tensdnp1, FCDoControl->oneloopVerbose];
+			FCPrint[3,"OneLoop: tensint: tensdnp1 after pairpow ",tensdnp1, FCDoControl->oneloopVerbose];
+			FCPrint[1, "OneLoop: tensint: Checking rank of ", tensdnp1, FCDoControl->oneloopVerbose];
 			If[ Head[tensdnp1]===Plus,
 				tensldn = Length[tensdnp1],
 				tensldn = 1
 			];
 			tensqmax[tensj] = 0;
+			FCPrint[3, "OneLoop: tensint: Entering 1st nested loop", FCDoControl->oneloopVerbose];
 			For[ tensic = 1, tensic <= tensldn, tensic++,
 				If[ tensldn===1,
 					tenslep = Length[Position[tensdnp1,q ] ];
-		(* BREAK EVENTUALLY *)
+					(* BREAK EVENTUALLY *)
 					If[ tenslep>3,
 						Print["FYI: Tensor integrals of rank higher than 3 encountered; Please use the option CancelQP -> True or OneLoopSimplify->True or use another program."];
 						Throw[x]
 					];
-					FCPrint[3, "tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
+					FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
 					tensqc[tensj][tenslep] += suind[ tensdnp1,q,dim,mud ],
 					tenslep = Length[ Position[tensdnp1[[tensic]],q ] ];
 					tensqc[tensj][tenslep] += suind[tensdnp1[[tensic]],q,dim,mud]
@@ -2361,24 +2363,29 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 				If[ tenslep > tensqmax[tensj],
 					tensqmax[tensj] = tenslep
 				]
-			](*tensic - loop*);
-			FCPrint[3, "tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
-			FCPrint[3, "tensqmax[tensj] ", tensqmax[tensj], FCDoControl->oneloopVerbose];
-			FCPrint[3, "tensg before the nested loop ", tensg, FCDoControl->oneloopVerbose];
+			];
+			FCPrint[3, "OneLoop: tensint: 1st nested loop done", FCDoControl->oneloopVerbose];
+
+			FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
+			FCPrint[3, "OneLoop: tensint: tensqmax[tensj] ", tensqmax[tensj], FCDoControl->oneloopVerbose];
+			FCPrint[3, "OneLoop: tensint: tensg before the nested loop ", tensg, FCDoControl->oneloopVerbose];
+
+			FCPrint[3, "OneLoop: tensint: Entering 2nd nested loop", FCDoControl->oneloopVerbose];
 			For[ tensjq = 0, tensjq <= tensqmax[tensj], tensjq++,
 				tdenlen = Length[ tensdnp[[2]] ];
-				FCPrint[2, "Tensorintegral (N = ", tdenlen, ") : # of q's = ", tensjq, " decomposing ", Length[tensqc[tensj][tensjq]], " term(s)", FCDoControl->oneloopVerbose];
+				FCPrint[2, "OneLoop: tensint: Tensorintegral (N = ", tdenlen, ") : # of q's = ", tensjq, " decomposing ", Length[tensqc[tensj][tensjq]], " term(s)", FCDoControl->oneloopVerbose];
 				(* tdec is the function that is actually doing the decomposition !*)
 				tensg += tdec[ tensqc[tensj][tensjq], tensdnp[[2]],q,
 								tensjq,dim,mud,mandel
 							]/.NonCommutativeMultiply->Times
 				];(*tensjq - loop*)
-				FCPrint[3, "tensg after the nested loop ", tensg, FCDoControl->oneloopVerbose];
-			](*tensj - loop*);
+				FCPrint[3, "OneLoop: tensint: 2nd nested loop done", FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tensint: tensg after the 2nd nested loop ", tensg, FCDoControl->oneloopVerbose];
+			];
 		tensg =  Expand[tensg]
 
 		];
-		FCPrint[2, "Leaving tensint with tensg= ", tensg, FCDoControl->oneloopVerbose];
+		FCPrint[2, "OneLoop: tensint: Leaving with tensg= ", tensg, FCDoControl->oneloopVerbose];
 		tensg
 	](* end tensint *);
 
