@@ -209,7 +209,7 @@ B1[pp_,mm1_,mm2_, OptionsPattern[]] :=
 B1[0,0,0, OptionsPattern[]] :=
 	0;
 
-(* General case for $LimitTo4=True; The case with zero momentum and different masses is exluded *)
+(* General case for $LimitTo4=False; The case with zero momentum and different masses is exluded *)
 B1[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	PaVeReduce[PaVe[1,{pp},{mm1,mm2}],PaVeAutoReduce->True] /;
 		!$LimitTo4 && OptionValue[BReduce] && pcheck[pp,mm1,mm2] && !(pp===0 && (mm1=!=mm2));

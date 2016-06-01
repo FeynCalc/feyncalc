@@ -25,5 +25,7 @@ Tests`LoopIntegrals`fcstPaVe = {
 {"fcstPave-ID7","PaVe[0, 0, {p}, {m1, m2}]","PaVe[0, 0, {p}, {m1, m2}]"},
 {"fcstPave-ID8","$LimitTo4 = True; \n SetOptions[{B1, B00, B11}, BReduce -> True];\nPaVe[0, 0, {p}, {m1, m2},PaVeAutoReduce->True]","(3*m1 + 3*m2 - p)/18 + (m1*B0[p, m1, m2])/3 +
 	(A0[m2] + (m1 - m2 + p)*(-B0[p, m1, m2]/2 + ((-m1 + m2)*(-B0[0, m1, m2] + B0[p, m1, m2]))/(2*p)))/6"},
-{"fcstPave-ID9","$LimitTo4 = False; \n PaVe[0, 0, {0}, {0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False]","0"}
+{"fcstPave-ID9","$LimitTo4 = False; \n PaVe[0, 0, {0}, {0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False]","0"},
+{"fcstPave-ID10","PaVe[0, {pp}, {m2^2,m1^2}]","PaVe[0, {pp}, {m1^2,m2^2}]"},
+{"fcstPave-ID11","PaVe[0, {pp}, {m2^2,m1^2},PaVeAutoOrder->False]","PaVe[0, {pp}, {m2^2,m1^2},PaVeAutoOrder->False]"}
 }

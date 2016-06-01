@@ -87,6 +87,9 @@ PaVe[__,{},{0..}, OptionsPattern[]] :=
 PaVe[__,{0..},{0..}, OptionsPattern[]] :=
 	0;
 
+PaVe[0,{pp_},{mm1_,mm2_}, opts:OptionsPattern[]] :=
+	PaVe[0,{pp},{mm2,mm1},opts]/; !OrderedQ[{mm1,mm2}] && OptionValue[PaVeAutoOrder];
+
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
 (* ****************************************************************** *)

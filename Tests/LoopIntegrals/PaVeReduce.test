@@ -910,17 +910,25 @@ t)"},
 "$LimitTo4=True; \n$LimitTo4IRUnsafe=True; \n PaVeReduce[PaVe[1,2,2,{SmallVariable[ME2],MW2,MW2,SmallVariable[\
 ME2],S,T},{0,SmallVariable[ME2],0,SmallVariable[ME2]}],Mandelstam\
 \[Rule]{S,T,U,2 MW2}, PaVeAutoReduce -> True]",
-"-(MW2 + S)/(2*(4*MW2 - T)*(MW2^2 - S*U)) - ((2*MW2 - S - U)*(4*MW2^5 - 5*MW2^4*S - 16*MW2^3*S^2 + 4*MW2^2*S^3 +
-4*MW2*S^4 - MW2^4*U - 4*MW2^2*S^2*U + 8*MW2*S^3*U + 4*MW2^2*S*U^2 + S^3*U^2 + S^2*U^3)*B0[MW2, 0, SmallVariable[ME2]])/(2*(MW2 -
-S)*(4*MW2 - T)^2*T*(MW2^2 - S*U)^2) + (S*(MW2^2 - 4*MW2*S + 2*S^2 + S*U)*B0[S, 0, 0])/(2*(MW2 - S)*(MW2^2 - S*U)^2) +
-((MW2 + S)*(4*MW2^3 - 9*MW2^2*S + 2*S^3 - MW2^2*U - 4*MW2*S*U + 5*S^2*U + 3*S*U^2)*B0[T, SmallVariable[ME2],
-SmallVariable[ME2]])/(2*(4*MW2 - T)^2*(MW2^2 - S*U)^2) - ((MW2 + S)*(2*MW2^6 - 8*MW2^5*S + 12*MW2^4*S^2 -
-8*MW2^3*S^3 + 2*MW2^2*S^4 - 2*MW2^5*T + 20*MW2^4*S*T - 36*MW2^3*S^2*T + 20*MW2^2*S^3*T - 2*MW2*S^4*T -
-6*MW2^3*S*T^2 + 6*MW2^2*S^2*T^2 - 6*MW2*S^3*T^2 + 4*MW2*S^2*T^3 - S^2*T^4)*C0[MW2, MW2, T, SmallVariable[ME2],
-0, SmallVariable[ME2]])/(2*(4*MW2 - T)^2*(MW2^2 - S*U)^3) + ((MW2 - S)^2*S^2*T*C0[MW2, S, SmallVariable[ME2],
-SmallVariable[ME2], 0, 0])/(MW2^2 - S*U)^3 - ((MW2 - S)*S^2*T^2*C0[T, SmallVariable[ME2], SmallVariable[ME2],
-SmallVariable[ME2], SmallVariable[ME2], 0])/(2*(MW2^2 - S*U)^3) + ((MW2 - S)*S^3*T^2*D0[SmallVariable[ME2],
-MW2, MW2, SmallVariable[ME2], S, T, 0, SmallVariable[ME2], 0, SmallVariable[ME2]])/(2*(MW2^2 - S*U)^3)"},
+"-(MW2 + S)/(2*(4*MW2 - T)*(MW2^2 - S*U)) - ((4*MW2^5 - 5*MW2^4*S - 16*MW2^3*S^2 +
+4*MW2^2*S^3 + 4*MW2*S^4 - MW2^4*U - 4*MW2^2*S^2*U + 8*MW2*S^3*U + 4*MW2^2*S*U^2 +
+S^3*U^2 + S^2*U^3)*B0[MW2, 0, SmallVariable[ME2]])/(2*(MW2 - S)*(4*MW2 -
+T)^2*(MW2^2 - S*U)^2) + (S*(MW2^2 - 4*MW2*S + 2*S^2 + S*U)*B0[S, 0, 0])/(2*(MW2 -
+S)*(MW2^2 - S*U)^2) + ((MW2 + S)*(4*MW2^3 - 9*MW2^2*S + 2*S^3 - MW2^2*U -
+4*MW2*S*U + 5*S^2*U + 3*S*U^2)*B0[T, SmallVariable[ME2],
+SmallVariable[ME2]])/(2*(4*MW2 - T)^2*(MW2^2 - S*U)^2) -
+((MW2 + S)*(2*MW2^6 - 8*MW2^5*S + 12*MW2^4*S^2 - 8*MW2^3*S^3 +
+2*MW2^2*S^4 - 2*MW2^5*T + 20*MW2^4*S*T - 36*MW2^3*S^2*T +
+20*MW2^2*S^3*T - 2*MW2*S^4*T - 6*MW2^3*S*T^2 + 6*MW2^2*S^2*T^2 -
+6*MW2*S^3*T^2 + 4*MW2*S^2*T^3 - S^2*T^4)*C0[MW2, MW2, T,
+SmallVariable[ME2], 0, SmallVariable[ME2]])/(2*(4*MW2 -
+T)^2*(MW2^2 - S*U)^3) + ((MW2 - S)^2*S^2*T*C0[MW2, S,
+SmallVariable[ME2], SmallVariable[ME2], 0, 0])/(MW2^2 -
+S*U)^3 - ((MW2 - S)*S^2*T^2*C0[T, SmallVariable[ME2],
+SmallVariable[ME2], SmallVariable[ME2], SmallVariable[ME2],
+0])/(2*(MW2^2 - S*U)^3) + ((MW2 - S)*S^3*T^2*D0[SmallVariable[ME2],
+MW2, MW2, SmallVariable[ME2], S, T, 0, SmallVariable[ME2],
+0, SmallVariable[ME2]])/(2*(MW2^2 - S*U)^3)"},
 {"fcstPaVeReduce-ID3",
 "$LimitTo4IRUnsafe=True; \n PaVeReduce[PaVe[1,2,{s,m^2,m^2},{m^2,m^2,M^2}], PaVeAutoReduce -> True]",
 "1/(2*(4*m^2 - s)) + A0[m^2]/(2*m^2*(4*m^2 - s)) - A0[M^2]/(2*m^2*(4*m^2 - s)) - ((8*m^4 - 10*m^2*M^2 -
@@ -938,7 +946,13 @@ MW2, MW2, SmallVariable[ME2], S, T, 0, SmallVariable[ME2], 0, SmallVariable[ME2]
 {"fcstPaVeReduce-ID7", "PaVeReduce[PaVe[1, 2, {(p1 - p2)^2, p1^2, p2^2}, {m2^2, m1^2, m0^2}]]",
 "PaVe[1, 2, {p1^2 - 2 p1 p2 + p2^2, p1^2, p2^2}, {m2^2, m1^2, m0^2}]"},
 {"fcstPaVeReduce-ID8", "PaVeReduce[PaVe[1, 2, {p1^2, 0, 0, p3^2, p2^2, 0}, {m2^2, m1^2, m0^2, m3^2}]]",
-"PaVe[1, 2, {p1^2, 0, 0, p3^2, p2^2, 0}, {m2^2, m1^2, m0^2, m3^2}]"}
+"PaVe[1, 2, {p1^2, 0, 0, p3^2, p2^2, 0}, {m2^2, m1^2, m0^2, m3^2}]"},
+{"fcstPaVeReduce-ID9", "PaVeReduce[
+PaVe[2, {p10, p12, p20}, {m1^2, m2^2,
+	m3^2}] - (-PaVe[0, {p12, p10, p20}, {m3^2, m2^2, m1^2}] -
+	PaVe[1, {p12, p10, p20}, {m3^2, m2^2, m1^2}] -
+	PaVe[2, {p12, p10, p20}, {m3^2, m2^2, m1^2}])]",
+"0"}
 })
 
 
