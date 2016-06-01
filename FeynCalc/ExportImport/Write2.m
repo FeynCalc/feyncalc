@@ -71,7 +71,7 @@ SetAttributes[Write2, HoldRest];
 $FortranContinuationCharacter = "&";
 
 Write2[f_String, x___, l_] :=
-	Write2[f, Hold[x, l], dummyrule->False ]/; FreeQ[Hold[l], Rule];
+	Write2[f, Hold[x, l], StringReplace->{} ]/; FreeQ[Hold[l], Rule];
 
 Write2[file_String, eeq__, opts___Rule] :=
 	Block[ {j,vhf,vv,eq,k2str,tmp,
