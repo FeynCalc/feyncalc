@@ -121,6 +121,8 @@ scalarmul[a_, b_,dim___] :=
 
 pairback[ExplicitLorentzIndex[a_?NumberQ], ExplicitLorentzIndex[b_?NumberQ]] :=
 	MT[a,b];
+pairback[ExplicitLorentzIndex[a_?NumberQ], LorentzIndex[b_]] :=
+	MT[a,b];
 pairback[LorentzIndex[a_], LorentzIndex[b_]] :=
 	MT[a,b];
 pairback[LorentzIndex[a_,D], LorentzIndex[b_,D]] :=
