@@ -68,14 +68,18 @@ Options[doPolarizationSum] = {
 (*    This is done for performance reasons. Instead of uncontracting every terms that involves k (what Uncontract would
 by default), we uncontract only contractions with polarization vectors.    *)
 PolarizationUncontract[expr_, k_, opts:OptionsPattern[]] :=
-	Block[ {temp,polvecmom1,polvecmom2,op1,op2},
-		temp = (# // EpsEvaluate// Uncontract[#,polvecmom1,polvecmom2,FilterRules[Join[{opts},{Pair->All}], Options[Uncontract]]]&)& /@
-		(Expand[ExpandScalarProduct[MomentumExpand[expr]],k]/.{
-		Polarization[k,I,op___Rule]:> (op1 = op;
-									polvecmom1),Polarization[k,-I,op___Rule]:> (op2 = op;
-																				polvecmom2)});
-		temp = temp /.{polvecmom1 :> Polarization[k, I,op1],polvecmom2 :> Polarization[k, -I,op2]}
+	Block[ {temp,polvecmom1,polvecmom2,op1,op2, tmp},
+
+		(*TODO Caching! *)
+		tmp  = Collect2[ExpandScalarProduct[EpsEvaluate[expr],Momentum->{k}],k,Factoring->False];
+		tmp = tmp/.{
+			Polarization[k,Complex[0,1],op___Rule]:> (op1 = op; polvecmom1),
+			Polarization[k,Complex[0,-1],op___Rule]:> (op2 = op; polvecmom2)
+		};
+		temp = Uncontract[tmp,polvecmom1,polvecmom2,FilterRules[Join[{opts},{Pair->All}], Options[Uncontract]]];
+		temp /.{polvecmom1 :> Polarization[k, Complex[0,1],op1],polvecmom2 :> Polarization[k, Complex[0,-1],op2]}
 	];
+
 (*    Polarization sums for massless vector bosons.    *)
 doPolarizationSum[expr_,k_, n:Except[_?OptionQ], opts:OptionsPattern[]] :=
 	Block[ {temp,viBo},

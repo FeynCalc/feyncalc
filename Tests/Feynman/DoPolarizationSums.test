@@ -393,7 +393,7 @@ FV[k, mu] FV[k, nu] FV[p, ka] FV[p, la])/(SP[k, k] SP[p, p])"},
 	LorentzIndex[Subscript[\[Alpha], 2], D],
 	Momentum[Polarization[p2, -I, Transversality -> True], D]] //
 	DoPolarizationSums[#, p1, n] & // DoPolarizationSums[#, p2, n] &",
-	"D^2 - 4 D + 4"},
+	"2*(2 - D) - (2 - D)*D"},
 {"fcstDoPolarizationSums-ID39",
 	"Pair[LorentzIndex[Subscript[\[Alpha], 1], D],
 	Momentum[Polarization[p1, I, Transversality -> True], D]] Pair[
@@ -405,5 +405,11 @@ FV[k, mu] FV[k, nu] FV[p, ka] FV[p, la])/(SP[k, k] SP[p, p])"},
 	Momentum[Polarization[p2, -I, Transversality -> True], D]] //
 	DoPolarizationSums[#, p1, n, Contract -> False] & //
 	DoPolarizationSums[#, p2, n, Contract -> False] & // Contract",
-	"D^2 - 4 D + 4"}
+	"D^2 - 4 D + 4"},
+{"fcstDoPolarizationSums-ID40",
+	"DoPolarizationSums[Pair[Momentum[Polarization[p1, -I]],Momentum[Polarization[p1, I]]], p1, 0]",
+	"-4"},
+{"fcstDoPolarizationSums-ID41",
+	"DoPolarizationSums[Pair[Momentum[Polarization[p1, -I],D],Momentum[Polarization[p1, I],D]], p1, 0]",
+	"-D"}
 };
