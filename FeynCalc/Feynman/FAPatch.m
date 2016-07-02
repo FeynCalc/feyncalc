@@ -49,7 +49,13 @@ Begin["`FAPatch`Private`"]
 FCFilePatch[input_String, output_String, replacements_List] :=
 	Block[{tmp, res},
 		tmp = Import[input, "Text"] <> "\n";
-		res = StringReplace[tmp, replacements, MetaCharacters -> Automatic];
+
+		If[	!StringMatchQ[tmp, "*Patched for use with FeynCalc*", IgnoreCase -> True],
+			res = StringReplace[tmp, replacements, MetaCharacters -> Automatic];
+			res = StringJoin[{"(* Patched for use with FeynCalc *)\n",res}],
+			res = tmp
+		];
+
 		Export[output, res, "Text"];
 	];
 
@@ -128,7 +134,7 @@ FAPatch[OptionsPattern[]] :=
 		If[ !OptionValue[PatchModelsOnly],
 			(*	Check if already patched	*)
 			If[	StringMatchQ[feynartsFile, "*patched for use with FeynCalc*", IgnoreCase -> True],
-				Message[FAPatch2::already];
+				Message[FAPatch::already];
 				Abort[]
 			];
 		];
