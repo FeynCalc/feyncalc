@@ -66,5 +66,8 @@ ExpandScalarProduct\[Rule]False]//FCE",
 {"fcstApartFF-ID18","ApartFF[ChangeDimension[FCI[FAD[{p, m}, {p - k, m}]], 4], {p}]",
 "FeynAmpDenominator[PropagatorDenominator[Momentum[p], m],PropagatorDenominator[-Momentum[k] + Momentum[p], m]]"},
 {"fcstApartFF-ID19","ApartFF[SPD[q, q] FAD[{q, m}], q]//FCE","ApartFF[SPD[q, q] FAD[{q, m}], q]"},
-{"fcstApartFF-ID20","ApartFF[SPD[q, q] FAD[{q, m}], {q}]//FCE","m^2 FAD[{q, m}]"}
+{"fcstApartFF-ID20","ApartFF[SPD[q, q] FAD[{q, m}], {q}]//FCE","m^2 FAD[{q, m}]"},
+{"fcstApartFF-ID21","FCClearScalarProducts[]; \n ScalarProduct[k, k] = 0; \n  ScalarProduct[p, p] = m^2; \n
+tmp = ApartFF[FAD[{q1, m}, {q1 - p}, {q1 - 2 p, m}, {q1 - k - 2 p, m}], {q1}]//FCE; \n FCClearScalarProducts[]; \n tmp
+","-FAD[{q1, m}, {q1, m}, -p + q1, {-k - 2 p + q1, m}] +2 FAD[{q1, m}, {k + q1, m}, {-2 p + q1, m}, {-2 p + q1, m}]"}
 })

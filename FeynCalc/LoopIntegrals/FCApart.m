@@ -279,7 +279,7 @@ pfrac[inputVectorSet_List]:=
 					],
 					tmpNS[[1]]
 				];
-			f = Dot[vectorSet[[1]],v];
+			f = ExpandAll[Dot[vectorSet[[1]],v]];
 
 			(* Now we need to check the value of the coefficient fi (spfCoeff) of that scalar product *)
 			spType = vectorSet[[1]][[spPosition]];
@@ -323,7 +323,7 @@ pfrac[inputVectorSet_List]:=
 			],
 			(* If there are no scalar products to cancel, we just pick the first basis vector *)
 			v = First[tmpNS];
-			f = Dot[vectorSet[[1]],v]
+			f = ExpandAll[Dot[vectorSet[[1]],v]]
 		];
 
 		(*	If we are here, this means that the integral does not contain any scalar produts, only propagators
@@ -336,9 +336,9 @@ pfrac[inputVectorSet_List]:=
 			res= Sum[dummy = vectorSet[[3]];
 					dummy[[i]] = dummy[[i]]-1;
 				(v[[i]]/f) * pfrac[{vectorSet[[1]],vectorSet[[2]],dummy,vectorSet[[4]]}],{i,1,Length[v]}],
-			(*If the value of f is zero, we use Eq. 17 from arXiv:1204.2314; We pick up the first propagator with a negative exponent and use it as e_1 *)
+			(*If the value of f is zero, we use Eq. 17 from arXiv:1204.2314; We pick up the first propagator use it as e_1 *)
 			FCPrint[3,"FCApart: pfrac: f is zero",FCDoControl->fcaVerbose];
-			eiPos = Position[expCounts, _Integer?Negative][[1]][[1]];
+			eiPos = 1;
 			(* 	List of the indices to sum over, the index of the propagator that serves as e_1 is removed *)
 			iterList = Delete[Table[i,{i,1,Length[v]}],{eiPos}];
 
