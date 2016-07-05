@@ -857,14 +857,8 @@ Eps[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] =!= 4) && (Fr
 Blank,BlankSequence,BlankNullSequence}]) :=
 	Message[Eps::argrx, "Eps["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
 
-Eps[x__Symbol | x__FCGV, opts:OptionsPattern[]] :=
-	Signature[{x}] Eps@@ Join[Sort[{x}],{opts}] /; !OrderedQ[{x}] && Length[{x}]===4;
-
 Eps[x__Symbol | x__FCGV, OptionsPattern[]] :=
 	0/; Signature[{x}]===0 && Length[{x}]===4;
-
-Eps[a__?(MatchQ[#,(x_Integer|ExplicitLorentzIndex[x_Integer])/;NonNegative[x]]&), OptionsPattern[]] :=
-	Signature[{a}] && Length[{a}]===4;
 
 Eps[a___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], b___,
 	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___ ] :=
