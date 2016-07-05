@@ -41,7 +41,7 @@ If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 ];
 
 (*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "9.0.1";
+FeynCalc`$FeynCalcVersion = "9.1.0";
 
 (*    Set defaults here, not in the config file    *)
 If[ !ValueQ[Global`$FeynCalcStartupMessages],
@@ -646,7 +646,7 @@ If[ !$Notebooks && Global`$FeynCalcStartupMessages,
 
 (* Print FeynCalc's startup message *)
 If[ Global`$FeynCalcStartupMessages =!= False,
-	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> ". For help, use the ",
+	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> " (development version). For help, use the ",
 				"Text"],
 			Style[DisplayForm@ButtonBox["documentation center", BaseStyle->"Link", ButtonData :> "paclet:FeynCalc/",
 				ButtonNote -> "paclet:FeynCalc/"], "Text"],
