@@ -122,7 +122,7 @@ Options[DiracSimplify] = {
 	DiracSubstitute67	-> False,
 	Expanding			-> True,
 	FCCheckSyntax		-> False,
-	FCVerbose			-> True,
+	FCVerbose			-> False,
 	Factoring			-> False,
 	FeynCalcInternal    -> False,
 	InsideDiracTrace    -> False,

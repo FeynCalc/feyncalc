@@ -56,7 +56,7 @@ DiracReduce[x_, ops___Rule] :=
 		temp = DiracSimplify[temp, DiracSubstitute67 -> True, DiracSigmaExplicit -> False];
 		FCPrint[2,"DiracSimplify done"];
 		(* Chisholm identity recursively *)
-		temp = Chisholm[temp]//DiracOrder;
+		temp = Chisholm[temp,FCI->True]//DiracOrder;
 		FCPrint[2,"Chisholm done"];
 		temp = Expand[temp, DiracGamma];
 		(* introduce DiracSigma *)
@@ -65,7 +65,7 @@ DiracReduce[x_, ops___Rule] :=
 		temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]], DiracGamma[5]] :>
 			(un1 = Unique[mU1];
 			un2 = Unique[mU2];
-			Expand[1/2 (Eps[a[xx], b[yy], LorentzIndex[un1],
+			Expand[1/2 ( - $LeviCivitaSign Eps[a[xx], b[yy], LorentzIndex[un1],
 			LorentzIndex[un2]](I/2) (FCI[ DiracMatrix[un1, un2] - DiracMatrix[un2, un1]])  +
 			2 Pair[a[xx], b[yy]] DiracGamma[5])]);
 		(* for the renaming of dummy indices *)

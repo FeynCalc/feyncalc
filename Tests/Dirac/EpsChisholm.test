@@ -1,0 +1,110 @@
+
+
+(* :Title: EpsChisholm.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for EpsChisholm              *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstEpsChisholm =
+({
+{"fcstEpsChisholm-ID1",
+"EpsChisholm[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9]LC[j1,i1,j2,j3]]//FCE",
+"I*GA[j1] . GA[j2] . GA[j3] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[5] - I*GA[j3] . GA[i2] . \
+GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . \
+GA[5]*MT[j1, j2] + I*GA[j2] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[5]*MT[j1, j3] - I*GA[j1] . \
+GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] \
+. GA[5]*MT[j2, j3]"},
+{"fcstEpsChisholm-ID2","$LeviCivitaSign = I; \n
+tmp=EpsChisholm[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9]LC[j1,i1,j2,j3]]//FCE; \n $LeviCivitaSign = -1; \n tmp",
+"-GA[j1] . GA[j2] . GA[j3] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[5] + GA[j3] . GA[i2] . GA[i3] \
+. GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[5]*MT[j1, \
+j2] - GA[j2] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . \
+GA[i8] . GA[i9] . GA[5]*MT[j1, j3] + GA[j1] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[5]*MT[j2, \
+j3]"},
+{"fcstEpsChisholm-ID3",
+"EpsChisholm[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9]LC[j1,i1,j2,j3]LC[jj1,\
+jj2,i5,jj3]]//FCE",
+"-GA[j1] . GA[j2] . GA[j3] . GA[i2] . GA[i3] . GA[i4] . GA[jj1] . \
+GA[jj2] . GA[jj3] . GA[i6] . GA[i7] . GA[i8] . GA[i9] + GA[j3] . \
+GA[i2] . GA[i3] . GA[i4] . GA[jj1] . GA[jj2] . GA[jj3] . GA[i6] . \
+GA[i7] . GA[i8] . GA[i9]*MT[j1, j2] - GA[j2] . GA[i2] . GA[i3] . \
+GA[i4] . GA[jj1] . GA[jj2] . GA[jj3] . GA[i6] . GA[i7] . GA[i8] . \
+GA[i9]*MT[j1, j3] + GA[j1] . GA[i2] . GA[i3] . GA[i4] . GA[jj1] . \
+GA[jj2] . GA[jj3] . GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j2, j3] + \
+GA[j1] . GA[j2] . GA[j3] . GA[i2] . GA[i3] . GA[i4] . GA[jj3] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[jj1, jj2] - GA[j3] . GA[i2] . \
+GA[i3] . GA[i4] . GA[jj3] . GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j1, \
+j2]*MT[jj1, jj2] + GA[j2] . GA[i2] . GA[i3] . GA[i4] . GA[jj3] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j1, j3]*MT[jj1, jj2] - GA[j1] . \
+GA[i2] . GA[i3] . GA[i4] . GA[jj3] . GA[i6] . GA[i7] . GA[i8] . \
+GA[i9]*MT[j2, j3]*MT[jj1, jj2] - GA[j1] . GA[j2] . GA[j3] . GA[i2] . \
+GA[i3] . GA[i4] . GA[jj2] . GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[jj1, \
+jj3] + GA[j3] . GA[i2] . GA[i3] . GA[i4] . GA[jj2] . GA[i6] . GA[i7] \
+. GA[i8] . GA[i9]*MT[j1, j2]*MT[jj1, jj3] - GA[j2] . GA[i2] . GA[i3] \
+. GA[i4] . GA[jj2] . GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j1, \
+j3]*MT[jj1, jj3] + GA[j1] . GA[i2] . GA[i3] . GA[i4] . GA[jj2] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j2, j3]*MT[jj1, jj3] + GA[j1] . \
+GA[j2] . GA[j3] . GA[i2] . GA[i3] . GA[i4] . GA[jj1] . GA[i6] . \
+GA[i7] . GA[i8] . GA[i9]*MT[jj2, jj3] - GA[j3] . GA[i2] . GA[i3] . \
+GA[i4] . GA[jj1] . GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j1, \
+j2]*MT[jj2, jj3] + GA[j2] . GA[i2] . GA[i3] . GA[i4] . GA[jj1] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9]*MT[j1, j3]*MT[jj2, jj3] - GA[j1] . \
+GA[i2] . GA[i3] . GA[i4] . GA[jj1] . GA[i6] . GA[i7] . GA[i8] . \
+GA[i9]*MT[j2, j3]*MT[jj2, jj3]"},
+{"fcstEpsChisholm-ID4",
+"EpsChisholm[GA[i1,i2,i3,i4,i6,i7,i8,i9].SUNT[a].GA[i5].SUNT[b]LC[\
+j1,i1,j2,j3]LC[jj1,jj2,i5,jj3]]//FCE",
+"-SUNT[a] . SUNT[b] . GA[j1] . GA[j2] . GA[j3] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1] . GA[jj2] . \
+GA[jj3] + SUNT[a] . SUNT[b] . GA[j3] . GA[i2] . GA[i3] . GA[i4] . \
+GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1] . GA[jj2] . \
+GA[jj3]*MT[j1, j2] - SUNT[a] . SUNT[b] . GA[j2] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1] . GA[jj2] . \
+GA[jj3]*MT[j1, j3] + SUNT[a] . SUNT[b] . GA[j1] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1] . GA[jj2] . \
+GA[jj3]*MT[j2, j3] + SUNT[a] . SUNT[b] . GA[j1] . GA[j2] . GA[j3] . \
+GA[i2] . GA[i3] . GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . \
+GA[jj3]*MT[jj1, jj2] - SUNT[a] . SUNT[b] . GA[j3] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj3]*MT[j1, \
+j2]*MT[jj1, jj2] + SUNT[a] . SUNT[b] . GA[j2] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj3]*MT[j1, \
+j3]*MT[jj1, jj2] - SUNT[a] . SUNT[b] . GA[j1] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj3]*MT[j2, \
+j3]*MT[jj1, jj2] - SUNT[a] . SUNT[b] . GA[j1] . GA[j2] . GA[j3] . \
+GA[i2] . GA[i3] . GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . \
+GA[jj2]*MT[jj1, jj3] + SUNT[a] . SUNT[b] . GA[j3] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj2]*MT[j1, \
+j2]*MT[jj1, jj3] - SUNT[a] . SUNT[b] . GA[j2] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj2]*MT[j1, \
+j3]*MT[jj1, jj3] + SUNT[a] . SUNT[b] . GA[j1] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj2]*MT[j2, \
+j3]*MT[jj1, jj3] + SUNT[a] . SUNT[b] . GA[j1] . GA[j2] . GA[j3] . \
+GA[i2] . GA[i3] . GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . \
+GA[jj1]*MT[jj2, jj3] - SUNT[a] . SUNT[b] . GA[j3] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1]*MT[j1, \
+j2]*MT[jj2, jj3] + SUNT[a] . SUNT[b] . GA[j2] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1]*MT[j1, \
+j3]*MT[jj2, jj3] - SUNT[a] . SUNT[b] . GA[j1] . GA[i2] . GA[i3] . \
+GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[jj1]*MT[j2, \
+j3]*MT[jj2, jj3]"},
+{"fcstEpsChisholm-ID5",
+"EpsChisholm[Chisholm[GA[i1,i2,i3,i4]]]//FCE",
+"GA[i1] . GA[i2] . GA[i3] . GA[i4]"},
+{"fcstEpsChisholm-ID6",
+"EpsChisholm[Chisholm[GA[i1,i2,i3,i4]]]//FCE",
+"GA[i1] . GA[i2] . GA[i3] . GA[i4]"}
+});

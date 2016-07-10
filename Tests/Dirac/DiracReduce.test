@@ -49,5 +49,8 @@ I*DiracSigma[GA[mu], GA[nu]]*MT[rho, sigma] + MT[mu, nu]*MT[rho, sigma]"},
 	10*Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1]*
 	Spinor[Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1] +
 	6*Spinor[Momentum[k], m, 1].GA[a_].GA[5].Spinor[Momentum[k], m, 1]*
-	Spinor[Momentum[p], m, 1].GA[a_].GA[5].Spinor[Momentum[p], m, 1]]","True"}
+	Spinor[Momentum[p], m, 1].GA[a_].GA[5].Spinor[Momentum[p], m, 1]]","True"},
+{"fcstDiracReduce-ID8",
+	"MatchQ[$LeviCivitaSign = -I; \n tmp = DiracReduce[GA[i1, i2, 5]] // FCE; \n $LeviCivitaSign = -1; \n
+	tmp, 1/2 I DiracSigma[GA[a_], GA[b_]] LC[i1, i2, a_, b_] + GA[5] MT[i1, i2]]","True"}
 }
