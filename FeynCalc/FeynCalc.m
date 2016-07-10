@@ -232,9 +232,11 @@ involving gamma5) the same effect as the \
 Breitenlohner-Maison-'t Hooft-Veltman scheme.";
 
 $LeviCivitaSign::usage =
-"$LeviCivitaSign is by default set to -1 which corresponds to the convention
-Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d].
-Setting $LeviCivitaSign=I  will switch to the FORM-convention.";
+"$LeviCivitaSign is a global variable that determines \
+the sign in the result of a Dirac trace of four gamma matrices \
+and gamma5.  $LeviCivitaSign is by default set to -1 which corresponds \
+to the convention Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. \
+Setting $LeviCivitaSign=-I  will switch to the FORM-convention.";
 
 $LimitTo4::usage =
 "$LimitTo4 is a global variable that determines whether \

@@ -164,10 +164,6 @@ which is the head of abbreviations used by Isolate. \
 A KK[i] returned by Isolate is given in HoldForm and can be \
 recovered by ReleaseHold[KK[i]].";
 
-LeviCivitaSign::usage =
-"LeviCivitaSign is an option for DiracTrace and EpsChisholm. It determines \
-the sign in the result of a Dirac trace of four gamma matrices and gamma5.";
-
 Loop::usage=
 "Loop is an option indicating the number of (virtual) loops.";
 

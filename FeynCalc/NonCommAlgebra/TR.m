@@ -32,7 +32,6 @@ Options[ TR ] = {
 	Factoring          -> Automatic,
 	FCVerbose			-> True,
 	FeynCalcExternal   -> False,
-	LeviCivitaSign     :> $LeviCivitaSign,
 	Mandelstam         -> {},
 	PairCollect			-> False,
 	SUNNToCACF			-> False,

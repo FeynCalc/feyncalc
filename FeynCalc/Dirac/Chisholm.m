@@ -1,8 +1,9 @@
 (* ::Package:: *)
 
 
+(* :Title: Chisholm *)
 
-(* :Title: Chisholm															*)
+(* :Title: Chisholm														*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +12,7 @@
 	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Applies Chisholm identity										*)
+(* :Summary:  Applies the Chisholm identity									*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -26,11 +27,8 @@ End[]
 
 Begin["`Chisholm`Private`"]
 
-epsTensorSign::usage="";
-
 Options[Chisholm] = {
-	FCI -> False,
-	LeviCivitaSign:> $LeviCivitaSign
+	FCI -> False
 };
 
 Chisholm[expr_, OptionsPattern[]] :=
@@ -45,7 +43,6 @@ Chisholm[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		epsTensorSign = OptionValue[LeviCivitaSign];
 		ex = Contract[DiracSimplify[ex //. chish1 //. chish2]]
 	];
 
@@ -61,7 +58,7 @@ chish2 = DOT[a___, DiracGamma[lv1_[pe1_]],DiracGamma[lv2_[pe2_]], DiracGamma[lv3
 				Pair[lv1[pe1], lv2[pe2]] DOT[a, DiracGamma[lv3[pe3]], b] -
 				Pair[lv1[pe1], lv3[pe3]] DOT[a, DiracGamma[lv2[pe2]], b] +
 				Pair[lv2[pe2], lv3[pe3]] DOT[a, DiracGamma[lv1[pe1]], b] -
-				epsTensorSign I Eps[ lv1[pe1],lv2[pe2],lv3[pe3],LorentzIndex[index] ]*
+				$LeviCivitaSign I Eps[ lv1[pe1],lv2[pe2],lv3[pe3],LorentzIndex[index] ]*
 				DOT[a, DiracGamma[LorentzIndex[index]].DiracGamma[5], b]
 				)], EpsContract->True, Rename->False]
 			];

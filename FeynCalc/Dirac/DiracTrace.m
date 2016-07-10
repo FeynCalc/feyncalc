@@ -65,7 +65,6 @@ Begin["`DiracTrace`Private`"]
 
 diTrVerbose::usage="";
 west::usage="";
-epsTensorSign::usage="";
 unitMatrixTrace::usage="";
 traceNo5Fun::usage="";
 trace5Fun::usage="";
@@ -79,7 +78,6 @@ Options[DiracTrace] = {
 	PairCollect    -> False,
 	DiracTraceEvaluate-> False,
 	Schouten-> 0,
-	LeviCivitaSign:> $LeviCivitaSign,
 	TraceOfOne -> 4,
 	FCVerbose -> False,
 	West -> True
@@ -123,7 +121,6 @@ DiracTrace[x_, op:OptionsPattern[]] :=
 			];
 		];
 
-		epsTensorSign = OptionValue[LeviCivitaSign];
 		unitMatrixTrace = OptionValue[TraceOfOne];
 
 		FCPrint[1, "DiracTrace. Entering.", FCDoControl->diTrVerbose];
@@ -497,7 +494,7 @@ spursav[0 ..] :=
 (* calculation of traces (recursively) --  up to a factor of 4 *)
 (*	Trace of g^mu g^nu g^rho g^si g^5	*)
 spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
-	epsTensorSign I Apply[ Eps, {x,y,r,z}/. DiracGamma[vl_[mp_,di___],di___]->vl[mp,di]]//EpsEvaluate
+	$LeviCivitaSign I Apply[ Eps, {x,y,r,z}/. DiracGamma[vl_[mp_,di___],di___]->vl[mp,di]]//EpsEvaluate
 
 
 (* there is the problem with different Gamma5-schemes ... *)
@@ -553,7 +550,7 @@ spur[a__] :=
 
 (* This is a definition of   Trace( 1.2.3.4. gamma[5] ) *)
 spur[x_,y_,r_,z_,DiracGamma[5]] :=
-	epsTensorSign I Apply[Eps, {x,y,r,z}/.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii]]//EpsEvaluate
+	$LeviCivitaSign I Apply[Eps, {x,y,r,z}/.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii]]//EpsEvaluate
 
 
 (* this trace has been calculated according to Larin,
@@ -566,7 +563,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 		(*TODO: vl -> (vl :LorentzIndex | Momentum) *)
 		(* trsign is usually  =  -1 *)
 		(* factor 4 is put later *)
-		epsTensorSign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
+		$LeviCivitaSign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
 			Eps[z4, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z3] +
 			Eps[z4, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z3] -
 			Eps[z4, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z3] -
@@ -730,7 +727,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 						$Larin && !$BreitMaison,
 							FCPrint[3,"The chiral trace", spx, "is computed in Larin's scheme", FCDoControl->diTrVerbose];
 							{fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
-							drsi = epsTensorSign/(TraceOfOne/.Options[DiracTrace]);
+							drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
 							(*drsi is usually -1/4 *)
 							temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
 							TR[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
@@ -741,7 +738,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula", FCDoControl->diTrVerbose];
 							fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
 							DiracTrace @@ ({y}/.DiracGamma[5]->
-							(epsTensorSign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
+							($LeviCivitaSign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
 							DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))),
 						(* BMHV West's trace formula *)
 						!$Larin && $BreitMaison && west,
@@ -846,7 +843,7 @@ trace5[SI1_, SI2__, mu_, nu_, rho_, 5] :=
 	Pair[mu, nu] trace5[SI1, SI2, rho, 5] -
 	Pair[mu, rho] trace5[SI1, SI2, nu, 5] +
 	Pair[nu, rho] trace5[SI1, SI2, mu, 5] -
-	epsTensorSign I traceEpsNo5[mu, nu, rho, SI1, SI2];
+	$LeviCivitaSign I traceEpsNo5[mu, nu, rho, SI1, SI2];
 
 
 (*
@@ -858,7 +855,7 @@ trace5[mu_, nu_, rho_, SI1_, SI2__, 5] :=
 *)
 
 trace5[a_, b_, c_, d_, 5]:=
-	epsTensorSign I Eps[a, b, c, d];
+	$LeviCivitaSign I Eps[a, b, c, d];
 
 traceEpsNo5[mu_, nu_, rho_, SI2__] :=
 	Block[{head, s = -1, res},
