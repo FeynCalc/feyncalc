@@ -76,6 +76,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					Global`FAChiralityProjector[-1] :> DiracGamma[7],
 					Global`FAChiralityProjector[1] :> DiracGamma[6],
 					Global`FADiracMatrix :> DiracGamma,
+					Global`FAScalarProduct[x_,y_] :> Pair[Momentum[x],Momentum[y]],
 					Global`FADiracSlash[x_] :> DiracGamma[Momentum[x]],
 					Global`FADiracSpinor :> Spinor,
 					Global`FADiracTrace :> DiracTrace,
