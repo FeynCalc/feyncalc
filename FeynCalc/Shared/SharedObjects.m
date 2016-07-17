@@ -541,6 +541,7 @@ Begin["`Package`"]
 initialPairDownValues
 initialSPDownValues
 initialSPDDownValues
+DiracHeadsList;
 
 End[]
 
@@ -629,6 +630,8 @@ Options[MetricTensor] = {Dimension -> 4, FCI -> True};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
 Options[Polarization] = {Transversality -> False};
+
+DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 
 CA /:
 	MakeBoxes[CA, TraditionalForm]:=

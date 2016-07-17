@@ -1,0 +1,78 @@
+
+
+(* :Title: FCDiracIsolate.test                                                  *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCDiracIsolate               *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstFCDiracIsolate =
+({
+{"fcstFCDiracIsolate-ID1", "FCDiracIsolate[1]", "1"},
+{"fcstFCDiracIsolate-ID2", "FCDiracIsolate[0]", "0"},
+{"fcstFCDiracIsolate-ID3", "FCDiracIsolate[xx+yy]", "xx + yy"},
+{"fcstFCDiracIsolate-ID4", "FCDiracIsolate[GA[i]]",
+"FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]]]"},
+{"fcstFCDiracIsolate-ID5", "FCDiracIsolate[GA[i]+xx]",
+"xx + FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]]]"},
+{"fcstFCDiracIsolate-ID6", "FCDiracIsolate[yy GA[i]+xx]",
+"xx + yy*FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]]]"},
+{"fcstFCDiracIsolate-ID7",
+"FCDiracIsolate[yy GA[i]+xx \
+SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz]",
+"zz + yy*FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]]] + \
+xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p2], m2, 1]]"},
+{"fcstFCDiracIsolate-ID8",
+"FCDiracIsolate[yy GA[i]+xx \
+SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz+DiracTrace[GA[i,j]],\
+DiracGamma\[Rule]False]",
+"zz + yy*DiracGamma[LorentzIndex[i]] + \
+DiracTrace[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]]] \
++ xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] \
+. Spinor[-Momentum[p2], m2, 1]]"},
+{"fcstFCDiracIsolate-ID9",
+"FCDiracIsolate[yy GA[i]+xx \
+SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz+DiracTrace[GA[i,j]],\
+DiracGamma\[Rule]False,DiracTrace\[Rule]False]",
+"zz + yy*DiracGamma[LorentzIndex[i]] + \
+DiracTrace[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]]] \
++ xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] \
+. Spinor[-Momentum[p2], m2, 1]]"},
+{"fcstFCDiracIsolate-ID10",
+"FCDiracIsolate[yy GA[i]+xx \
+SpinorUBar[p1,m1].GA[5].SpinorV[p2,m2]SpinorVBar[p2,m2].GA[5].SpinorU[\
+p1,m1]+zz]",
+"zz + yy*FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]]] + \
+xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p2], m2, \
+1]]*FCGV[\"DiracChain\"][Spinor[-Momentum[p2], m2, 1] . DiracGamma[5] \
+. Spinor[Momentum[p1], m1, 1]]"},
+{"fcstFCDiracIsolate-ID11",
+"FCDiracIsolate[yy GA[i]+xx \
+SpinorUBar[p1,m1].GA[5].SpinorV[p2,m2]SpinorVBar[p2,m2].GA[5].SpinorU[\
+p1,m1]+zz,Split\[Rule]False]",
+"zz + yy*FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]]] + \
+xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p2], m2, 1]*Spinor[-Momentum[p2], m2, 1] . \
+DiracGamma[5] . Spinor[Momentum[p1], m1, 1]]"},
+{"fcstFCDiracIsolate-ID12",
+"FCDiracIsolate[GA[i,j,k]GA[l,m,n],Split\[Rule]False]",
+"FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]] . \
+DiracGamma[LorentzIndex[j]] . \
+DiracGamma[LorentzIndex[k]]*DiracGamma[LorentzIndex[l]] . \
+DiracGamma[LorentzIndex[m]] . DiracGamma[LorentzIndex[n]]]"},
+{"fcstFCDiracIsolate-ID13", "FCDiracIsolate[GA[i,j,k]GA[l,m,n]]",
+"FCGV[\"DiracChain\"][DiracGamma[LorentzIndex[i]] . \
+DiracGamma[LorentzIndex[j]] . \
+DiracGamma[LorentzIndex[k]]]*FCGV[\"DiracChain\"][DiracGamma[\
+LorentzIndex[l]] . DiracGamma[LorentzIndex[m]] . \
+DiracGamma[LorentzIndex[n]]]"}
+});
