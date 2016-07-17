@@ -90,8 +90,8 @@ ampMuonProdElRPosLMuRAntiMuL=ampMuonProd/.{Spinor[-Momentum[k2],SMP["m_mu"],1]->
 
 
 sqAmpMuonProdElRPosLMuRAntiMuL = (((ampMuonProdElRPosLMuRAntiMuL (ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//
-		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Contract//FermionSpinSum[#,
-		SpinorCollect -> True]&//ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{SMP["m_e"]->0,SMP["m_mu"]->0})//Simplify
+		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Contract//FermionSpinSum//
+		ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{SMP["m_e"]->0,SMP["m_mu"]->0})//Simplify
 
 
 sqAmpMuonProdElRPosLMuRAntiMuLPeskin=(16SMP["e"]^4 (SP[p1,k2]SP[p2,k1]))/(SP[p1+p2])^2//

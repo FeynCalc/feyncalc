@@ -50,7 +50,7 @@ Since the photon is virtual, it can have unphysical polarizations as well.*)
 
 
 ampQiQBariToGammaStarGTree =ampGammaStarGToQiQBari=FCFAConvert[CreateFeynAmp[diagsQiQBariToGammaStarGTree,Truncated -> False],IncomingMomenta->{p1,p2},
-OutgoingMomenta->{kGamma,kG},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False,SMP->True];
+OutgoingMomenta->{kGamma,kG},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False,SMP->True]//Contract
 
 
 (* ::Section:: *)
@@ -75,7 +75,7 @@ antiquark.  For the polarization sum of the gluon we use the photon momentum as 
 
 ampQiQBariToGammaStarGTree3=ampQiQBariToGammaStarGTree2*(ComplexConjugate[ampQiQBariToGammaStarGTree2]//FCRenameDummyIndices)//
 PropagatorDenominatorExplicit//FermionSpinSum[#,ExtraFactor->1/(2*3)^2]&//ReplaceAll[#,{DiracTrace->Tr}]&//DoPolarizationSums[#,kG,kGamma]&//
-DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&;
+DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&//SUNSimplify[#,SUNNToCACF->False]&;
 
 
 ampQiQBariToGammaStarGTree4=(ampQiQBariToGammaStarGTree3/.{SMP["m_u"]->0,SUNN->3})//Simplify

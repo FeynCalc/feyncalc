@@ -49,7 +49,7 @@ Since the photon is virtual, it can have unphysical polarizations as well.*)
 
 
 ampGammaStarGToQiQBari=FCFAConvert[CreateFeynAmp[diagsGammaStarGToQiQBari,Truncated -> False],IncomingMomenta->{kGamma,kG},
-OutgoingMomenta->{p1,p2},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False,SMP->True]
+OutgoingMomenta->{p1,p2},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False,SMP->True]//Contract
 
 
 (* ::Section:: *)
@@ -74,7 +74,7 @@ gluon. For the polarization sum of the gluon we use the quark momentum as the au
 
 ampGammaStarGToQiQBari3=ampGammaStarGToQiQBari2*(ComplexConjugate[ampGammaStarGToQiQBari2]//FCRenameDummyIndices)//
 PropagatorDenominatorExplicit//FermionSpinSum//ReplaceAll[#,{DiracTrace->Tr}]&//DoPolarizationSums[#,kG,p1,ExtraFactor->1/(2*8)]&//
-DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&;
+DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&//SUNSimplify[#,SUNNToCACF->False]&;
 
 
 ampGammaStarGToQiQBari4=(ampGammaStarGToQiQBari3/.{SMP["m_u"]->0,SUNN->3})//Simplify
