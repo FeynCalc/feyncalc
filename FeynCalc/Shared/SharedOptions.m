@@ -220,9 +220,6 @@ SUNNToCACF::usage=
 "SUNNToCACF is an option of SUNSimplify. If set to True, the Casimir \
 operator eigenvalues CA (=N) and CF (=(N^2-1)/(2 N)) are introduced.";
 
-SUNFToTraces::usage=
-"SUNFToTraces is superseded by Explicit.";
-
 TraceOfOne::usage =
 "TraceOfOne is an option for Tr and DiracTrace. \
 Its setting determines the value of the unit trace.";

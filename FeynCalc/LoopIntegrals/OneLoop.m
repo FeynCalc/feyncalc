@@ -519,10 +519,10 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			FCPrint[2, "check", FCDoControl->oneloopVerbose];
 			(* ONEAMPCHANGE: make dimensions right *)
 			If[ dim===4,
-				oneamp = SUNSimplify[to4dim[ oneamp ], SUNFToTraces -> False],
+				oneamp = SUNSimplify[to4dim[ oneamp ], Explicit -> False],
 				oneamp = oneamp + null;
 				newone = SUNSimplify[ ChangeDimension[oneamp, dim],
-									SUNFToTraces -> False ];
+									Explicit -> False ];
 				oneamp = newone/.null -> 0
 			];
 			FCPrint[3, " oneamp = ", oneamp, FCDoControl->oneloopVerbose];
@@ -1191,7 +1191,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				];
 			oneamp = fsub[ oneamp, finsubst ];
 			If[ !FreeQ[oneamp, SUNIndex],
-				oneamp = SUNSimplify[oneamp, SUNFToTraces -> True];
+				oneamp = SUNSimplify[oneamp, Explicit -> True];
 			];
 
 		(* getting a common factor *)

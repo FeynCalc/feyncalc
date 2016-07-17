@@ -100,7 +100,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			If[ !FreeQ2[t1, {SUNIndex,SUNFIndex}],
 				t2 = SUNSimplify[t1,  SUNNToCACF   -> sunntocacf,
 									SUNTrace     -> suntrace,
-									SUNFToTraces -> False],
+									Explicit -> False],
 				t2 = t1
 			];
 			t2 = FRH[t2,IsolateNames->loopisolate];
@@ -173,7 +173,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 
 			If[ (!FreeQ[t5, OPEDelta]) && (ope1loop === True),
 				t5 = Collect2[ OPE1Loop[q, t5, SUNNToCACF -> sunntocacf,
-											SUNFToTraces -> False
+											Explicit -> False
 									] /. dummyhead->Identity, q,
 								Factoring->Factor
 						]

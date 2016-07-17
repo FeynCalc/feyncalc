@@ -34,7 +34,7 @@ Options[OPE1Loop] =    {
 	SubLoop -> False,
 	FinalSubstitutions -> {},
 	InitialSubstitutions -> {},
-	SUNFToTraces -> True,
+	Explicit -> True,
 	SUNNToCACF -> True
 };
 
@@ -124,7 +124,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 			collecting = Collecting /. {opts} /. Options[OPE1Loop];
 			subloop = SubLoop /. {opts} /. Options[OPE1Loop];
 			sunntocacf = SUNNToCACF /. {opts} /. Options[OPE1Loop];
-			sunftotraces = SUNFToTraces /. {opts} /. Options[OPE1Loop];
+			sunftotraces = Explicit /. {opts} /. Options[OPE1Loop];
 			If[ subloop === True,
 				fscrule = {1/Pair[Momentum[k,di_], Momentum[k,di_]] :>
 									fsc[Momentum[k,di]],
@@ -173,7 +173,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 				contrac[yy_] :=
 					Contract[yy, EpsContract->False];
 				FCPrint[1,"sunsimplifying"];
-				amp = SUNSimplify[amp, SUNFToTraces -> sunftotraces,
+				amp = SUNSimplify[amp, Explicit -> sunftotraces,
 													SUNNToCACF -> sunntocacf];
 				FCPrint[1,"contracting"];
 				If[ FreeQ[amp, Eps] && !FreeQ[amp, LorentzIndex],
