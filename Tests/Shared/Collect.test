@@ -40,5 +40,11 @@ fun -> FactorTerms",
 3 b^2 (b + c)^2 hh[d] + 6 b^2 (b + c) hh[a d] + 3 b^2 hh[a^2 d] +
 3 b (b + c)^2 hh[d^2] + 6 b (b + c) hh[a d^2] +
 3 b hh[a^2 d^2] + (b + c)^2 hh[d^3] + 2 (b + c) hh[a d^3] +
-hh[a^2 d^3]"}
+hh[a^2 d^3]"},
+{"fcstCollect2-ID11","MatchQ[Collect2[
+yy (xx*Sum[p[i] i^2, {i, 1, 100000}] + abc) + abc2, {abc, abc2},
+Factoring -> False, Factoring -> False],
+yy (xx*Sum[p[i] i^2, {i, 1, 100000}]) + abc yy + abc2]",
+	"True"}
+
 };

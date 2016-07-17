@@ -83,7 +83,7 @@ Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
 Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,mp2,cd,co,dde,
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
-		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast},
+		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -141,6 +141,11 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		If[ factoring === False,
 			FCPrint[1,"Collect2: No factoring.", FCDoControl->cl2Verbose];
+			(* 	This can speed things up, if the expression contains very large sums free of
+				monomials *)
+			nx = nx /. Plus -> holdPlus /. holdPlus[x__] /; FreeQ2[{x}, monomList] :>
+				Isolate[(Plus[x]/.holdPlus -> Plus), IsolateFast -> True, IsolateNames -> tempIso] /. holdPlus -> Plus;
+
 			tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->optIsolateNames],
 			FCPrint[1,"Collect2: Factoring with", factor, FCDoControl->cl2Verbose];
 			fr0[x__] :=
@@ -233,6 +238,13 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		];
 
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
+
+		time=AbsoluteTime[];
+
+		If[ factoring === False,
+			re = FRH[re,IsolateNames->tempIso]
+		];
+		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		If[ccflag,
 			re = re /. compCON -> ComplexConjugate
