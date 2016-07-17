@@ -28,6 +28,7 @@ End[]
 Begin["`Chisholm`Private`"]
 
 Options[Chisholm] = {
+	DiracSimplify -> True,
 	FCI -> False
 };
 
@@ -43,7 +44,13 @@ Chisholm[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		ex = Contract[DiracSimplify[ex //. chish1 //. chish2]]
+		If[	OptionValue[DiracSimplify],
+			ex = Contract[DiracSimplify[ex //. chish1 //. chish2]],
+			ex = Contract[ex //. chish1 //. chish2]
+		];
+
+		ex
+
 	];
 
 chish1 = (f_. DOT[a_DiracGamma, b_DiracGamma, c_DiracGamma,

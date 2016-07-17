@@ -33,6 +33,7 @@ End[]
 Begin["`DiracReduce`Private`"]
 
 Options[DiracReduce] = {
+	DiracSimplify -> True,
 	Factoring -> False,
 	FinalSubstitutions -> {DiracBasis -> Identity}
 };
@@ -40,7 +41,7 @@ DiracReduce[x_, {ops___Rule}] :=
 	DiracReduce[x, ops];
 
 DiracReduce[x_, ops___Rule] :=
-	Block[ {temp = FCI[x], spart, n1, n2, ddb, res, finsub,finsub1,factoring},
+	Block[ {temp = FCI[x], spart, n1, n2, ddb, res, finsub,finsub1,factoring,diracSimplify},
 		finsub1 =
 			If[ Length[{ops}] === 0,
 				{},
@@ -51,12 +52,15 @@ DiracReduce[x_, ops___Rule] :=
 			];
 		finsub = Join[finsub1, FinalSubstitutions /. Options[DiracReduce]];
 		factoring = Factoring /. {ops} /. Options[DiracReduce];
+		diracSimplify = DiracSimplify /. {ops} /. Options[DiracReduce];
 
 		(* do first usual DiracSimplify *)
-		temp = DiracSimplify[temp, DiracSubstitute67 -> True, DiracSigmaExplicit -> False];
-		FCPrint[2,"DiracSimplify done"];
+		If[	diracSimplify,
+			temp = DiracSimplify[temp, DiracSubstitute67 -> True, DiracSigmaExplicit -> False];
+			FCPrint[2,"DiracSimplify done"];
+		];
 		(* Chisholm identity recursively *)
-		temp = Chisholm[temp,FCI->True]//DiracOrder;
+		temp = Chisholm[temp,FCI->True, DiracSimplify -> diracSimplify]//DiracOrder;
 		FCPrint[2,"Chisholm done"];
 		temp = Expand[temp, DiracGamma];
 		(* introduce DiracSigma *)
@@ -73,7 +77,12 @@ DiracReduce[x_, ops___Rule] :=
 		(* XXX *)
 		temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
 			( -I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]]+Pair[b[yy], a[xx]]);
-		temp = Contract[DiracSimplify[temp, DiracSigmaExplicit -> False]];
+
+		If[	diracSimplify,
+			temp = Contract[DiracSimplify[temp, DiracSigmaExplicit -> False]],
+			temp = Contract[temp]
+		];
+
 		temp = Collect2[temp, DiracGamma, Factoring -> factoring];
 		FCPrint[2,"collecting done"];
 
