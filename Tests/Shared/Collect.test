@@ -45,6 +45,14 @@ hh[a^2 d^3]"},
 yy (xx*Sum[p[i] i^2, {i, 1, 100000}] + abc) + abc2, {abc, abc2},
 Factoring -> False, Factoring -> False],
 yy (xx*Sum[p[i] i^2, {i, 1, 100000}]) + abc yy + abc2]",
+	"True"},
+{"fcstCollect2-ID12","MatchQ[Collect2[
+Sum[xa[i], {i, 1, 10}] + VAR Sum[xb[i], {i, 1, 10}] +
+	VAR Sum[xx[i], {i, 1, 10}] + VAR^2 Sum[xy[i], {i, 1, 10}] +
+	VAR^2 Sum[xz[i], {i, 1, 10}], VAR, Factoring -> False,
+IsolateFast -> True, IsolateNames -> KK] // FRH,
+Sum[xa[i], {i, 1, 10}] +
+VAR (Sum[xb[i], {i, 1, 10}] + Sum[xx[i], {i, 1, 10}]) +
+VAR^2 (Sum[xy[i], {i, 1, 10}] + Sum[xz[i], {i, 1, 10}])]",
 	"True"}
-
 };

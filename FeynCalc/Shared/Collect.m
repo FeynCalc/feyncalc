@@ -146,12 +146,12 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			nx = nx /. Plus -> holdPlus /. holdPlus[x__] /; FreeQ2[{x}, monomList] :>
 				Isolate[(Plus[x]/.holdPlus -> Plus), IsolateFast -> True, IsolateNames -> tempIso] /. holdPlus -> Plus;
 
-			tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->optIsolateNames],
+			tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}],
 			FCPrint[1,"Collect2: Factoring with", factor, FCDoControl->cl2Verbose];
 			fr0[x__] :=
 				Plus[x] /; !FreeQ2[{x}, monomList];
 			tog[x_]  :=
-				factor[FRH[x/.holdForm->Identity, IsolateNames->optIsolateNames]];
+				factor[FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}]];
 			frx[x__] :=
 				holdForm[Plus[x]];
 			nx = nx /. Plus -> fr0 /. fr0 -> frx
@@ -207,7 +207,7 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Collecting the monomials.", FCDoControl->cl2Verbose];
 
-		tvm = (FRH[# /.holdForm->Identity, IsolateNames->optIsolateNames] /. mp2 -> cd /. cd -> OptionValue[Head])&/@tv;
+		tvm = (FRH[# /.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}] /. mp2 -> cd /. cd -> OptionValue[Head])&/@tv;
 
 		FCPrint[3,"Collect2: tvm: ", tvm, FCDoControl->cl2Verbose];
 
@@ -233,17 +233,19 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		];
 
 		If[ optIsolateNames =!= False,
-			lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->optIsolateNames], IsolateNames->optIsolateNames, IsolateFast->optIsolateFast],
-			lin = FRH[lin/.holdForm->Identity, IsolateNames->optIsolateNames]
+			lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}], IsolateNames->optIsolateNames, IsolateFast->optIsolateFast],
+			lin = FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}]
 		];
+
+		(*If[ factoring === False,
+			new = FRH[new,IsolateNames->{optIsolateNames,tempIso}]
+		];*)
 
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
 
 		time=AbsoluteTime[];
 
-		If[ factoring === False,
-			re = FRH[re,IsolateNames->tempIso]
-		];
+
 		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		If[ccflag,
