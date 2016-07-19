@@ -60,6 +60,7 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 		{rest, terms} = FCSplit[ex,{DiracGamma,Eps}];
 
 		FCPrint[3, "EpsChisholm: Relevant part of the expression, ", terms , FCDoControl->esVerbose];
+		FCPrint[3, "EpsChisholm: Irrelevant part of the expression, ", rest , FCDoControl->esVerbose];
 
 		new = terms /. {Eps[a_,b_,c_,d_]->eeps[a,b,c,d]}//.eepsOrder;
 
@@ -72,7 +73,7 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 		FCPrint[3, "EpsChisholm: After applying Chisholm identity backwards: ",
 			new , FCDoControl->esVerbose];
 
-		res = new/.eeps->Eps + rest;
+		res = (new/.eeps->Eps) + rest;
 		FCPrint[3, "EpsChisholm: Leaving with: ", res , FCDoControl->esVerbose];
 
 		res

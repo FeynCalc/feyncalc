@@ -106,5 +106,10 @@ j3]*MT[jj2, jj3]"},
 "GA[i1] . GA[i2] . GA[i3] . GA[i4]"},
 {"fcstEpsChisholm-ID6",
 "EpsChisholm[Chisholm[GA[i1,i2,i3,i4]]]//FCE",
-"GA[i1] . GA[i2] . GA[i3] . GA[i4]"}
+"GA[i1] . GA[i2] . GA[i3] . GA[i4]"},
+{"fcstEpsChisholm-ID7",
+"EpsChisholm[(SpinorUBar[p1, m1].SpinorV[p2, m2] +
+	SpinorUBar[p1, m1].GS[k].SpinorV[p2, m2])] // FCE",
+"Spinor[Momentum[p1], m1, 1].Spinor[-Momentum[p2], m2, 1] +
+Spinor[Momentum[p1], m1, 1].GS[k].Spinor[-Momentum[p2], m2, 1]"}
 });
