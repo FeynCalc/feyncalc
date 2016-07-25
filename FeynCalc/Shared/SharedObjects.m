@@ -542,6 +542,7 @@ initialPairDownValues
 initialSPDownValues
 initialSPDDownValues
 DiracHeadsList;
+SUNHeadsList;
 
 End[]
 
@@ -2002,13 +2003,6 @@ Spinor[n_. x_/; (frp[x]&&FreeQ[x, Momentum]), y___/;frp[y]] :=
 	(Spinor[n x, y] = Spinor[n Momentum[x], y]) /;
 	(frp[{n, x, y}] && (n^2)===1);
 
-(* this is convention ... *)
-(*Spinor[Momentum[x_, _], m_, op___] :=
-	Spinor[Momentum[x], m, op];
-
-Spinor[-Momentum[x_, _], m_, op___] :=
-	Spinor[-Momentum[x], m, op];*)
-
 Spinor[kk_.+ n_. Momentum[ a_Plus, dim_ : 4], m_, y___] :=
 	Spinor[kk+ n Momentum[a, dim], m, y] =
 	(Spinor[MomentumExpand[kk + n Momentum[a, dim]] ,m,y] );
@@ -2089,10 +2083,12 @@ HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] :=
 	(Head[x] === SUNIndex) && FreeQ[x, Pattern] &&
 	Length[{a,x,b,x,c}] == 3;
 
+
 HoldPattern[SUNF[a___, x_, y_, b___, ___Rule]] :=
 	-SUNF[a, y, x, b] /; FreeQ[{a,x,y,b}, Pattern] &&
 	Length[{a,x,y,b}] === 3 && (!OrderedQ[{x, y}]) &&
 	Head[x] === SUNIndex && Head[y] === SUNIndex;
+
 
 SUNF[i_,j_,k_,Explicit -> False] :=
 	SUNF[i,j,k];
