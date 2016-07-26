@@ -43,22 +43,23 @@ Options[FCCanonicalizeDummyIndices] = {
 	SUNFIndexNames -> {},
 	Momentum -> All,
 	NotMomentum -> {},
-	Head -> {},
+	Head -> {LorentzIndex,SUNIndex,SUNFIndex},
 	FCVerbose-> False,
 	DotSimplify -> True,
 	FCTraceExpand -> True,
-	FCVerbose -> False
+	FCVerbose -> False,
+	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]]
 };
 
 FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
-	Block[ {indexTypes, indexList = {}, replacementList,
+	Block[ {indexList = {}, replacementList,
 		exprFCI,ex,tmp,null1,null2,dummyHeads, lorNames, lorRenamingRule,
 		rest0=0,rest1=0,lihead,seedLor,moms,notmoms,finalList,isoHead,uniqueExpressions,repIndexListLor,
 		canIndexList,seedSUN,seedSUNF,
 		finalRepList,
 		sunfRenamingRule,sunRenamingRule,
 		res, repIndexListSUN,repIndexListSUNF,sunNames,sunfNames,
-		sunhead,sunfhead,indhead,seedCustom},
+		sunhead,sunfhead,indhead,seedCustom,repIndexListCustom,cushead,fu},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -68,19 +69,13 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		];
 
 		indhead = OptionValue[Head];
-
-		indexTypes = {LorentzIndex,SUNIndex,SUNFIndex};
-
-		If[	indhead=!={},
-			indexTypes = Join[indexTypes,{indhead}]
-		];
+		fu = OptionValue[Function];
 
 
-
-		seedLor = ToString[Unique["li"]];
-		seedSUN = ToString[Unique["sun"]];
-		seedSUNF = ToString[Unique["sunf"]];
-		seedCustom = ToString[Unique["cs"]];
+		seedLor = Unique["li"];
+		seedSUN = Unique["sun"];
+		seedSUNF = Unique["sunf"];
+		seedCustom = Unique["cs"];
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -155,23 +150,23 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If[	Head[moms]=!=All && Head[moms]===List,
 		(* only for particular momenta *)
-		repIndexListLor = ((MapIndexed[Rule[#1, LorentzIndex[lihead@FCGV[(seedLor <> ToString[Identity @@ #2])], (#1 /.
+		repIndexListLor = ((MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2,seedLor], (#1 /.
 			LorentzIndex[_, dim_: 4] :> dim)]] &,
 			Cases[#, _[a___, LorentzIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity] // Union] // Flatten) & /@ uniqueExpressions),
 
 		(* for all particular momenta *)
-		repIndexListLor = ((MapIndexed[Rule[#1, LorentzIndex[lihead@FCGV[(seedLor <> ToString[Identity @@ #2])], (#1 /.
+		repIndexListLor = ((MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2,seedLor], (#1 /.
 			LorentzIndex[_, dim_: 4] :> dim)]] &,
 			Union@Cases[#, _[a___, LorentzIndex[y__],b___]/; FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity] // Union] // Flatten) & /@ uniqueExpressions)
 		];
 
-		repIndexListCustom = ((MapIndexed[Rule[#1, indhead[cushead@FCGV[(seedCustom <> ToString[Identity @@ #2])]]] &,
+		repIndexListCustom = ((MapIndexed[Rule[#1, indhead[cushead@fu[#2,seedCustom]]] &,
 			Union@Cases[#, indhead[y_]/; MemberQ[finalList,indhead[y]]:> indhead[y],Infinity]] //Union // Flatten) & /@ uniqueExpressions);
 
-		repIndexListSUN = ((MapIndexed[Rule[#1, SUNIndex[sunhead@FCGV[(seedSUN <> ToString[Identity @@ #2])]]] &,
+		repIndexListSUN = ((MapIndexed[Rule[#1, SUNIndex[sunhead@fu[#2,seedSUN]]] &,
 			Union@Cases[#, SUNIndex[y_]/; MemberQ[finalList,SUNIndex[y]]:> SUNIndex[y],Infinity]] //Union // Flatten) & /@ uniqueExpressions);
 
-		repIndexListSUNF = ((MapIndexed[Rule[#1, SUNFIndex[sunfhead@FCGV[(seedSUNF <> ToString[Identity @@ #2])]]] &,
+		repIndexListSUNF = ((MapIndexed[Rule[#1, SUNFIndex[sunfhead@fu[#2,seedSUNF]]] &,
 			Union@Cases[#, SUNFIndex[y_]/; MemberQ[finalList,SUNFIndex[y]]:> SUNFIndex[y],Infinity]] //Union // Flatten) & /@ uniqueExpressions);
 
 		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for LorentzIndex type: ", repIndexListLor,
