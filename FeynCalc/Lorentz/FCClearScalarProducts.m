@@ -41,6 +41,7 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		UpValues[ScalarProduct] = initialScalarProductUpValues;
 		DownValues[SP] = initialSPDownValues;
 		DownValues[SPD] = initialSPDDownValues;
+		$ScalarProducts = initialScalarProducts;
 	);
 
 FCPrint[1,"FCClearScalarProducts.m loaded"];

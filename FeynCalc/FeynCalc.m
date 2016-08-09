@@ -299,6 +299,10 @@ $Multiplications::usage =
 $NonComm::usage =
 "$NonComm contains a list of all non-commutative heads present.";
 
+$ScalarProducts::usage =
+"$ScalarProducts contains a list of all vector pairs for which a \
+scalar product value has been defined.";
+
 $OPEWard::usage =
 "$OPEWard is experimental.";
 
@@ -454,6 +458,11 @@ If[ !ValueQ[$NonComm],
 If[ !ValueQ[$FCTensorList],
 	$FCTensorList = {}
 ];
+
+If[ !ValueQ[$ScalarProducts],
+	$ScalarProducts = {}
+];
+
 
 $Gauge/:
 	MakeBoxes[$Gauge,TraditionalForm]:=

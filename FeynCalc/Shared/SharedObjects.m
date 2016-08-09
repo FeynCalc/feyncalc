@@ -538,9 +538,10 @@ LorentzIndex::momentumhead =
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
 
-initialPairDownValues
-initialSPDownValues
-initialSPDDownValues
+initialPairDownValues;
+initialSPDownValues;
+initialSPDDownValues;
+initialScalarProducts;
 DiracHeadsList;
 SUNHeadsList;
 TensorArgsList;
@@ -2170,6 +2171,8 @@ Zeta2 /:
 initialPairDownValues = DownValues[Pair];
 initialSPDownValues = DownValues[SP];
 initialSPDDownValues = DownValues[SPD];
+initialScalarProducts = $ScalarProducts;
+
 
 FCPrint[1,"SharedObjects loaded."];
 End[]
