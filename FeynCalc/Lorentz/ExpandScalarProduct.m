@@ -24,6 +24,7 @@ Begin["`ExpandScalarProduct`Private`"]
 ScalarProductExpand = ExpandScalarProduct;
 
 Options[ExpandScalarProduct] = {
+	EpsEvaluate -> False,
 	FCI -> True,
 	Momentum -> All
 };
@@ -48,6 +49,10 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 
 		If[ pali =!= {},
 			nx = nx /. Dispatch[Thread[pali -> pairexpand[pali]]]
+		];
+
+		If[	OptionValue[EpsEvaluate],
+			nx = EpsEvaluate[nx,FCI->True,Momentum->OptionValue[Momentum]]
 		];
 
 		nx

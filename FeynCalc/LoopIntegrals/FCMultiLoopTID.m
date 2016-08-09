@@ -95,8 +95,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			FCPrint[3,"FCMultiLoopTID: After first ApartFF: ", ex, FCDoControl->mltidVerbose]
 		];
 
-		ex = ex//DiracGammaExpand[#,Momentum->qs]&//EpsEvaluate[#,Momentum->qs]&//
-			ExpandScalarProduct[#,Momentum->qs]&;
+		ex = ex//DiracGammaExpand[#,Momentum->qs]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True]&;
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)

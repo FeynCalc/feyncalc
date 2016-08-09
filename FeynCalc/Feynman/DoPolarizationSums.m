@@ -71,7 +71,7 @@ PolarizationUncontract[expr_, k_, opts:OptionsPattern[]] :=
 	Block[ {temp,polvecmom1,polvecmom2,op1,op2, tmp},
 
 		(*TODO Caching! *)
-		tmp  = Collect2[ExpandScalarProduct[EpsEvaluate[expr],Momentum->{k}],k,Factoring->False];
+		tmp  = Collect2[ExpandScalarProduct[expr,Momentum->{k},EpsEvaluate->True],k,Factoring->False];
 		tmp = tmp/.{
 			Polarization[k,Complex[0,1],op___Rule]:> (op1 = op; polvecmom1),
 			Polarization[k,Complex[0,-1],op___Rule]:> (op2 = op; polvecmom2)

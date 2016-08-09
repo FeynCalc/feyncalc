@@ -210,7 +210,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		(* 	After the shifts our single integral usually turns into a sum of
 			integrals with different numerators. Some of them might vanish by symmetry	*)
-		res = Expand2[EpsEvaluate[ExpandScalarProduct[res,Momentum->{q}],Momentum->{q}],q];
+		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True],q];
 		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
 		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
 		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
