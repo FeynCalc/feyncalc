@@ -543,6 +543,7 @@ initialSPDownValues
 initialSPDDownValues
 DiracHeadsList;
 SUNHeadsList;
+TensorArgsList;
 
 End[]
 
@@ -635,6 +636,8 @@ Options[Polarization] = {Transversality -> False};
 DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
+
+TensorArgsList = {LorentzIndex, ExplicitLorentzIndex, Momentum};
 
 CA /:
 	MakeBoxes[CA, TraditionalForm]:=
