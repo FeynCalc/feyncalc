@@ -577,6 +577,9 @@ DeclareNonCommutative[SpinorV];
 DeclareNonCommutative[SpinorVBar];
 DeclareNonCommutative[SUNT];
 
+DeclareFCTensor[Pair];
+DeclareFCTensor[Eps];
+
 $FCLorentzIndexSubHeads = _Upper | _Lower;
 
 $TypesettingDim4 = "_";

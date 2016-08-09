@@ -172,6 +172,9 @@ $FCCloudTraditionalForm::usage=
 in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting
 $Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
 
+$FCTensorList::usage =
+"$FCTensorList contains a list of all tensor heads present.";
+
 FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
 is larger than level.";
@@ -448,6 +451,10 @@ If[ !ValueQ[$NonComm],
 	$NonComm = {}
 ];
 
+If[ !ValueQ[$FCTensorList],
+	$FCTensorList = {}
+];
+
 $Gauge/:
 	MakeBoxes[$Gauge,TraditionalForm]:=
 		MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]];
@@ -562,12 +569,12 @@ MakeFeynCalcPrivateContext[x_String] :=
 
 End[];
 
-(* need to do this first, otherwise $NonComm does not get built correctly *)
-boostrappingList = Join[Map[ToFileName[{$FeynCalcDirectory,"Shared"},#]&,
-			{"SharedTools.m", "DataType.m"}],
-			Map[ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"},#]&,
-			{"NonCommutative.m"}]
-			];
+(* need to do this first, otherwise $NonComm and $FCTensorList do not get built correctly *)
+boostrappingList = Join[
+	Map[ToFileName[{$FeynCalcDirectory,"Shared"},#]&, {"SharedTools.m", "DataType.m"}],
+	Map[ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"},#]&, {"NonCommutative.m"}],
+	Map[ToFileName[{$FeynCalcDirectory,"Lorentz"},#]&, {"DeclareFCTensor.m"}]
+];
 
 listShared = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Shared"}]];
 listNonCommAlgebra = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"}]];

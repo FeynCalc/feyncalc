@@ -22,11 +22,11 @@ PositiveInteger::usage =
 "PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] \
 gives True.";
 
-PositiveNumber::usage =  "PositiveNumber is a data type. E.g. \
-DataType[Epsilon, PositiveNumber] = True (by default). ";
+PositiveNumber::usage =
+"PositiveNumber is a data type. E.g. DataType[Epsilon, PositiveNumber] = True (by default). ";
 
-FCTensor::usage =  "FCTensor is a data type. E.g. \
-DataType[R, FCTensor] = True. ";
+FCTensor::usage =
+"FCTensor is a data type. E.g. DataType[R, FCTensor] = True. ";
 
 DataType::usage =
 "DataType[exp, type] = True   defines the object exp to have datatype type. \
@@ -110,8 +110,45 @@ DataType /:
 			nnt = (RuleDelayed @@ {HoldPattern @@ {ncq[exp]}, False}) /. ncq -> NonCommQ;
 			set[downvalues[NonCommQ],Prepend[SelectFree[DownValues@@{NonCommQ}, exp],
 			nnt]] /. {set :> Set, downvalues :> DownValues};
-		False
+			False
 		];
+
+
+(* Special rules for FCTensor *)
+(* Setting DataType[x,FCTensor]=True or DataType[x,FCTensor]=False
+	updates $FCTensorList *)
+
+DataType /:
+	HoldPattern[Set[DataType[exp_, FCTensor], True]] :=
+		Block[{ndt, ndf, dt, ncq, nnn, nnt, set, downvalues, hp},
+			If[!MemberQ[$FCTensorList, exp],
+				AppendTo[$FCTensorList, exp]
+			];
+			ndt = (RuleDelayed @@ {HoldPattern @@ {dt[exp, FCTensor]}, True}) /. dt -> DataType;
+			ndf = (RuleDelayed @@ {HoldPattern @@ {dt[exp, FCTensor]}, False}) /. dt -> DataType;
+			If[FreeQ[DownValues[DataType], ndt],
+				DownValues[DataType] = Prepend[SelectFree[DownValues[DataType]/.{DataType->dt,HoldPattern->hp},
+					ndf/.{DataType->dt,HoldPattern->hp}]/.{dt->DataType,hp->HoldPattern}, ndt]
+			];
+			True
+		];
+
+
+DataType /:
+	HoldPattern[Set[DataType[exp_, FCTensor], False]] :=
+		Block[{ndt, ndf, dt, ncq, nnn, nnt, set, downvalues,hp},
+			If[MemberQ[$FCTensorList, exp],
+				$FCTensorList = SelectFree[$FCTensorList, exp];
+			];
+			ndt = (RuleDelayed @@ {HoldPattern @@{dt[exp, FCTensor]}, True}) /. dt -> DataType;
+			ndf = (RuleDelayed @@ {HoldPattern @@{dt[exp, FCTensor]}, False}) /. dt -> DataType;
+			If[FreeQ[DownValues[DataType], ndf],
+				DownValues[DataType] = Prepend[SelectFree[DownValues[DataType]/.{DataType->dt,HoldPattern->hp},
+					ndt/.{DataType->dt,HoldPattern->hp}]/.{dt->DataType,hp->HoldPattern}, ndf]
+			];
+			False
+		];
+
 
 HoldPattern[DataType[__, _]] :=
 	False;
