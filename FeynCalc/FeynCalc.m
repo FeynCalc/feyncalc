@@ -664,7 +664,7 @@ If[ Global`$FeynCalcStartupMessages =!= False,
 							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
 							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
 	Style[" If you use FeynCalc in your research, please cite","Text"]];
-	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, TUM-EFT 71/15, arXiv:1601.01167","Text"]];
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput. Phys. Commun., 207C, 432-444, 2016, arXiv:1601.01167","Text"]];
 	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun., 64, 345-359, 1991.","Text"]]
 	];
 

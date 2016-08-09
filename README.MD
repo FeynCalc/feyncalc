@@ -17,7 +17,8 @@ To support the developers and increase their academic visibility, please acknowl
 when you use FeynCalc in your research. You can do so by citing the two FeynCalc papers:
 
 
-* V. Shtabovenko, R. Mertig and F. Orellana, "New Developments in FeynCalc 9.0", TUM-EFT 71/15, arXiv:1601.01167.
+* V. Shtabovenko, R. Mertig and F. Orellana, "New Developments in FeynCalc 9.0",
+Comput. Phys. Commun., 207C, 432-444, 2016, arXiv:1601.01167.
 
 * R. Mertig, M. Böhm, and A. Denner, "Feyn Calc - Computer-algebraic calculation of Feynman amplitudes",
 Comput. Phys. Commun., 64, 345--359, 1991.
