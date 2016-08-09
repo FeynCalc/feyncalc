@@ -32,6 +32,11 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`NonCommAlgebra`fcstCommutatorExplicit"])];
 UnDeclareNonCommutative[a,b,c,d];
 
+DeclareNonCommutative[a,b,c,d];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`NonCommAlgebra`fcstCommutatorOrder"])];
+UnDeclareNonCommutative[a,b,c,d];
+
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Select[Names["Tests`NonCommAlgebra`*"],
 	!StringMatchQ[#, "*fcstCommutator" | "*fcstAntiCommutator" | "*fcstCommutatorExplicit" ] &])];

@@ -19,6 +19,10 @@ CommutatorExplicit::usage=
 "CommutatorExplicit[exp] substitutes any Commutator and AntiCommutator \
 in exp by their definitions.";
 
+CommutatorOrder::usage=
+"CommutatorOrder[exp] orders any Commutator and AntiCommutator \
+lexicographically.";
+
 DeclareNonCommutative::usage =
 "DeclareNonCommutative[a, b, ...] declares a,b, ... to be \
 noncommutative, i.e., DataType[a,b, ...,  NonCommutative] is set to \
@@ -82,6 +86,13 @@ CommutatorExplicit[exp_] :=
 		Commutator :> ((DOT[#1, #2] - DOT[#2, #1])&),
 		AntiCommutator :> ((DOT[#1, #2] + DOT[#2, #1])&)
 	};
+
+CommutatorOrder[exp_] :=
+	exp /. {
+		Commutator[a_,b_]/; !OrderedQ[{a,b}] :> - Commutator[b,a],
+		AntiCommutator[a_,b_]/; !OrderedQ[{a,b}] :> AntiCommutator[b,a]
+	};
+
 
 DeclareNonCommutative[] :=
 	(Message[DeclareNonCommutative::argrx, DeclareNonCommutative, 0, "1 or more"];
