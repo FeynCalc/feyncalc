@@ -42,9 +42,12 @@ End[]
 Begin["`DataType`Private`"]
 
 DataType[_] :=
-	soso /; Message[DataType::argrx, DataType, 1, "2 or more"];
+	(Message[DataType::argrx, DataType, 1, "2 or more"];
+	Abort[]);
+
 DataType[] :=
-	soso /; Message[DataType::argrx, DataType, 0, "2 or more"];
+	(Message[DataType::argrx, DataType, 0, "2 or more"];
+	Abort[]);
 
 (* Listability of DataType[x,y,z,type]=bol *)
 

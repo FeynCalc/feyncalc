@@ -83,15 +83,16 @@ CommutatorExplicit[exp_] :=
 		AntiCommutator :> ((DOT[#1, #2] + DOT[#2, #1])&)
 	};
 
-DeclareNonCommutative[] := soso /;
-	Message[DeclareNonCommutative::argrx, DeclareNonCommutative, 0, "1 or more"];
+DeclareNonCommutative[] :=
+	(Message[DeclareNonCommutative::argrx, DeclareNonCommutative, 0, "1 or more"];
+	Abort[]);
 
 DeclareNonCommutative[b__] :=
 	(Map[Set[DataType[#, NonCommutative], True]&, Flatten[{b}]]; Null);
 
 UnDeclareNonCommutative[] :=
-	soso /; Message[UnDeclareNonCommutative::argrx,
-	UnDeclareNonCommutative, 0, "1 or more"];
+	(Message[UnDeclareNonCommutative::argrx, UnDeclareNonCommutative, 0, "1 or more"];
+	Abort[]);
 
 UnDeclareNonCommutative[b__] :=
 	(Map[Set[DataType[#, NonCommutative], False]&, Flatten[{b}]]; Null);

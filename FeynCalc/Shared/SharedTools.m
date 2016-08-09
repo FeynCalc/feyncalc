@@ -418,7 +418,8 @@ NTerms[x_] :=
 
 
 NumericalFactor[a___ /; Length[{a}] =!=1] :=
-	soso /; Message[NumericalFactor::argrx, NumericalFactor, Length[{a}], 1];
+	(Message[NumericalFactor::argrx, NumericalFactor, Length[{a}], 1];
+	Abort[]);
 
 NumericalFactor[x_]:=
 	If[NumberQ[x],
