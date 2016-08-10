@@ -111,6 +111,12 @@ FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[$ScalarProducts, {q1}],
+			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
+		];
+
+
 		FCPrint[1,"FDS: Entering 1-loop FDS with: ", ex, FCDoControl->fdsVerbose];
 
 
@@ -546,6 +552,11 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fdsVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
+			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
 		];
 
 		FCPrint[1,"FDS: Entering 2-loop FDS with", ex, FCDoControl->fdsVerbose];

@@ -60,6 +60,11 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[$ScalarProducts, {qs}],
+			Message[FCMultiLoopTID::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
+		];
+
 		If[	OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]

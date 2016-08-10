@@ -28,6 +28,10 @@ integrals into PaVe scalar functions. This is of course relevant only for \
 multiloop calculations. For 1-loop you don't need to specify this option \
 explicitly.";
 
+ToPaVe::failmsg =
+"Error! ToPaVe has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -46,6 +50,13 @@ Options[ToPaVe] = {
 
 ToPaVe[expr_, q_, OptionsPattern[]] :=
 	Block[{ex,loopInt,irrel,rel,repList},
+
+
+		If [!FreeQ[$ScalarProducts, q],
+			Message[ToPaVe::failmsg, "The loop momentum " <> ToString[q,InputForm] <>
+					" has scalar product rules attached to it."];
+			Abort[]
+		];
 
 		genpave = OptionValue[GenPaVe];
 

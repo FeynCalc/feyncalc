@@ -16,7 +16,7 @@ self energy type integrals into the TFI notatation, which can be used as \
 input for the function TarcerRecurse from the TARCER package. \
 See TFI for details on the conventions.";
 
-ToTFI::failmsg = "Error! ToTFi has encountered a fatal problem and \
+ToTFI::failmsg = "Error! ToTFI has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
@@ -71,6 +71,11 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				toTFIVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
+			Message[ToTFI::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
 		];
 
 		(*	Let us first extract all the scalar loop integrals	*)

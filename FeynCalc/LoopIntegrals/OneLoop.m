@@ -83,6 +83,10 @@ SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ..., cons]. Set abbrevia
 abb1, abb2, ... for matrix elements sm1, sm2, ... using energy-momentum conservation cons, \
 e.g. k2 -> p1 + p2 - k1";
 
+OneLoop::failmsg =
+"Error! OneLoop has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -226,6 +230,12 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	oneloopVerbose,nonLoopTerms,loopTerms, oneloopsimplify,inisubs,
 	reducegamma67,oneopt,tim,smav, smdaemon, smalldirac
 	},
+
+		If [!FreeQ[$ScalarProducts, q],
+			Message[OneLoop::failmsg, "The loop momentum " <> ToString[q,InputForm] <> " has scalar product rules attached to it."];
+			Abort[]
+		];
+
 		options = {opts};
 		(* for FA2.0 *)
 		If[ Length[options] > 0,

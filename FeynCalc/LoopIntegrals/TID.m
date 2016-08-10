@@ -96,6 +96,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 			];
 		];
 
+		If [!FreeQ[$ScalarProducts, q],
+			Message[TID::failmsg, "The loop momentum " <> ToString[q,InputForm] <>
+					" has scalar product rules attached to it."];
+			Abort[]
+		];
+
 		FCPrint[1,"TID: Entering TID with: ", am, FCDoControl->tidVerbose];
 
 		If[	OptionValue[FCI],

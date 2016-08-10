@@ -20,8 +20,10 @@ TarcerToFC::usage =
 in Tarcer-notation to the FeynCalc notation. \
 See TFI for details on the convention. \
 As in case of ToTFI, the 1/Pi^D and 1/Pi^D/2 prefactors are implicit, i.e. \
-TarcerToFC doesn't add them.
-";
+TarcerToFC doesn't add them.";
+
+TarcerToFC::failmsg = "Error! TarcerToFC has encountered a fatal problem and \
+must abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -55,6 +57,13 @@ momconv[pp_Symbol]:=
 
 TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
 	Block[ {out, rules},
+
+		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
+			Message[TarcerToFC::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
+		];
+
+
 		rules = {
 			Tarcer`TFI[d_Symbol, pp_, {u_,v_,r_,s_,t_}, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
 				Pair[Momentum[q1,d],Momentum[q1,d]]^u*

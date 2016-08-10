@@ -31,5 +31,8 @@ HoldForm[_]) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]]","True"},
 "X"},
 {"fcstOneLoopSimplify-ID5",
 "OneLoopSimplify[FVD[p, mu] FVD[p, nu] FAD[{p, m}] + X, p] // FCE",
-"X + (m^2 FAD[{p, m}] MTD[mu, nu])/D"}
+"X + (m^2 FAD[{p, m}] MTD[mu, nu])/D"},
+{"fcstOneLoopSimplify-ID6",
+"OneLoopSimplify[SPD[l, q] FAD[l, l - p + q], l] // FCE",
+"1/2 FAD[l, l - p + q] (SPD[p, q] - SPD[q, q])"}
 }
