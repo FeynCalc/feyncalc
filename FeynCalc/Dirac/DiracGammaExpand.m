@@ -58,7 +58,7 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 	];
 
 	(* List of all the unique Feynman slashes	*)
-	uniqList = Cases[x+null1+null2, DiracGamma[a_. b_Momentum + c_:0,_:4], Infinity]//Union;
+	uniqList = Cases[x+null1+null2, DiracGamma[arg_ /; ! FreeQ[{arg}, Momentum],_:4], Infinity]//Union;
 
 	(*	If the user specified to perform expansion only for some
 		special slashed momenta, let's do it	*)

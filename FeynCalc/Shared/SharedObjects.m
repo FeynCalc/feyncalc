@@ -715,8 +715,8 @@ DiracGamma[_, 0] :=
 DiracGamma[0,___]:=
 	0;
 
-DiracGamma[a_Plus] :=
-	Map[DiracGamma, a];
+DiracGamma[a_Plus, dim_:4] :=
+	Map[DiracGamma[#,dim]&, a];
 
 DiracGamma[(h1:LorentzIndex|Momentum)[x_,dim1_:4], (h2:LorentzIndex|Momentum)[y_,dim2_:4]] :=
 	DOT[DiracGamma[h1[x,dim1], dim1],
