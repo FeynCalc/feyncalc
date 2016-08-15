@@ -27,6 +27,15 @@ NotMomentum::usage = "
 NotMomentum is an option of FCCanonicalizeDummyIndices. It specifies a list of momenta for which
 no canonicalization should be done."
 
+CustomIndexNames::usage = "
+CustomIndexNames is an option of FCCanonicalizeDummyIndices. It allow to specify custom names \
+for canonicalized dummy indices of custom index heads, e.g.
+FCCanonicalizeDummyIndices[ T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] + \
+T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]], Head -> {MyIndex1, MyIndex2}, \
+CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]";
+
+
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -41,6 +50,7 @@ Options[FCCanonicalizeDummyIndices] = {
 	LorentzIndexNames -> {},
 	SUNIndexNames -> {},
 	SUNFIndexNames -> {},
+	CustomIndexNames -> {},
 	Momentum -> All,
 	NotMomentum -> {},
 	Head -> {LorentzIndex,SUNIndex,SUNFIndex},
@@ -51,15 +61,33 @@ Options[FCCanonicalizeDummyIndices] = {
 	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]]
 };
 
+makeRepIndexList[mIndexHead_,mWrappinHead_,mSeed_,mFunc_,mFinalList_,mUniqueExp_]:=
+			((MapIndexed[Rule[#1, mIndexHead[mWrappinHead@mFunc[#2,mSeed]]] &,
+			Union@Cases[#, mIndexHead[y_]/; MemberQ[mFinalList,mIndexHead[y]]:> mIndexHead[y],Infinity]] //Union // Flatten) & /@ mUniqueExp);
+
+
+
+renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
+	Block[{dummyHeads,renamingRule = {}},
+		If[ dummyNames=!={},
+
+			dummyHeads = Cases2[totalRepLis,wrapHead];
+			If[	Length[dummyNames]<Length[dummyHeads],
+				renamingRule = MapThread[Rule[#1, #2] &, {dummyHeads[[1 ;; Length[dummyNames]]], dummyNames}],
+				renamingRule = MapThread[Rule[#1, #2] &, {dummyHeads, dummyNames[[1 ;; Length[dummyHeads]]]}]
+			]
+		];
+		renamingRule
+	];
+
+
+
 FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
-	Block[ {indexList = {}, replacementList,
-		exprFCI,ex,tmp,null1,null2,dummyHeads, lorNames, lorRenamingRule,
-		rest0=0,rest1=0,lihead,seedLor,moms,notmoms,finalList,isoHead,uniqueExpressions,repIndexListLor,
-		canIndexList,seedSUN,seedSUNF,
-		finalRepList,
-		sunfRenamingRule,sunRenamingRule,
-		res, repIndexListSUN,repIndexListSUNF,sunNames,sunfNames,
-		sunhead,sunfhead,indhead,seedCustom,repIndexListCustom,cushead,fu},
+	Block[ {indexList = {}, ex,tmp,null1,null2, renamingRule,
+			rest0=0,lihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
+			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
+			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
+			renamingList,cList},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -69,13 +97,15 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		];
 
 		indhead = OptionValue[Head];
+
+		If[ Head[indhead] =!=List,
+			indhead = {indhead};
+		];
+
 		fu = OptionValue[Function];
 
 
 		seedLor = Unique["li"];
-		seedSUN = Unique["sun"];
-		seedSUNF = Unique["sunf"];
-		seedCustom = Unique["cs"];
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -83,10 +113,6 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 				canodummyVerbose=OptionValue[FCVerbose]
 			];
 		];
-
-		lorNames = OptionValue[LorentzIndexNames];
-		sunNames = OptionValue[SUNIndexNames];
-		sunfNames = OptionValue[SUNFIndexNames];
 
 		moms = OptionValue[Momentum];
 		notmoms = OptionValue[NotMomentum];
@@ -98,30 +124,20 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		If[	FreeQ2[ex,indexTypes],
+		If[	FreeQ2[ex,indhead],
 			Return[ex]
 		];
 
-		If[ !FreeQ[ex,seedLor],
-			Message[FCCanonicalizeDummyIndices::failmsg,
-				"The random index already appears in the expression!"];
-			Abort[]
-		];
+		tmp = Expand2[ex, indhead];
 
-		tmp = Expand2[ex, indexTypes];
-
-		{rest0,tmp} = FCSplit[tmp,indexTypes];
-
-		If[	notmoms=!={},
-			{rest1,tmp} = FCSplit[tmp,notmoms]
-		];
+		{rest0,tmp} = FCSplit[tmp,indhead];
 
 		If[ OptionValue[FCTraceExpand],
 			tmp = FCTraceExpand[tmp,FCI->True]
 		];
 
 		indexList =
-				Map[Tally, Map[Cases[#, (Alternatives@@indexTypes)[ind_, ___]/;(Head[ind]=!=Upper &&
+				Map[Tally, Map[Cases[#, (Alternatives@@indhead)[ind_, ___]/;(Head[ind]=!=Upper &&
 						Head[ind]=!=Lower),
 						Infinity]&,Apply[List, tmp+null1+null2]]]// Flatten[#, 1] & // Union;
 
@@ -160,92 +176,59 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			Union@Cases[#, _[a___, LorentzIndex[y__],b___]/; FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity] // Union] // Flatten) & /@ uniqueExpressions)
 		];
 
-		repIndexListCustom = ((MapIndexed[Rule[#1, indhead[cushead@fu[#2,seedCustom]]] &,
-			Union@Cases[#, indhead[y_]/; MemberQ[finalList,indhead[y]]:> indhead[y],Infinity]] //Union // Flatten) & /@ uniqueExpressions);
-
-		repIndexListSUN = ((MapIndexed[Rule[#1, SUNIndex[sunhead@fu[#2,seedSUN]]] &,
-			Union@Cases[#, SUNIndex[y_]/; MemberQ[finalList,SUNIndex[y]]:> SUNIndex[y],Infinity]] //Union // Flatten) & /@ uniqueExpressions);
-
-		repIndexListSUNF = ((MapIndexed[Rule[#1, SUNFIndex[sunfhead@fu[#2,seedSUNF]]] &,
-			Union@Cases[#, SUNFIndex[y_]/; MemberQ[finalList,SUNFIndex[y]]:> SUNFIndex[y],Infinity]] //Union // Flatten) & /@ uniqueExpressions);
-
-		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for LorentzIndex type: ", repIndexListLor,
+		otherHeads = Complement[Union[indhead],{LorentzIndex,SUNIndex,SUNFIndex}];
+		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads,
 			FCDoControl->canodummyVerbose];
 
-		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for SUNIndex type: ", repIndexListSUN,
+		If[otherHeads =!={},
+			repIndexListsCustom = Map[makeRepIndexList[#,ToExpression[ToString[#]<>"head"],
+				Unique[ToLowerCase[ToString[#]]],fu,finalList,uniqueExpressions]&, otherHeads]
+		];
+
+		repIndexListTotal = {repIndexListLor,
+			makeRepIndexList[SUNIndex,sunhead,Unique["sun"],fu,finalList,uniqueExpressions],
+			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions]
+		};
+		If [ repIndexListsCustom =!={},
+			repIndexListTotal = Join[repIndexListTotal,repIndexListsCustom];
+		];
+
+		repIndexListTotal = Flatten/@ Transpose[repIndexListTotal];
+
+		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements: ", repIndexListTotal,
 			FCDoControl->canodummyVerbose];
 
-		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for SUNFIndex type: ", repIndexListSUNF,
-			FCDoControl->canodummyVerbose];
 
-		If[ lorNames=!={},
+		(* Renaming of dummy indices according to the supplied list *)
+		cList = {{OptionValue[LorentzIndexNames],lihead},{OptionValue[SUNIndexNames],sunhead},{OptionValue[SUNFIndexNames],sunfhead}};
+		If[ OptionValue[CustomIndexNames]=!={},
+			cList = Join[cList,Map[{Last[#], ToExpression[ToString[First[#]]<>"head"]}&,OptionValue[CustomIndexNames]]];
+		];
+		cList = cList /. {{},_} :> Unevaluated[Sequence[]];
 
-			If[	!FreeQ2[ex,lorNames],
+
+		If[	!FreeQ2[ex,Flatten[cList /. {l_List,_} :> l]],
 				Message[FCCanonicalizeDummyIndices::failmsg,
 				"Dummy index names supplied for renaming are already present in the expression!"];
 				Abort[]
-			];
-
-			dummyHeads = Cases2[repIndexListLor,lihead];
-			If[	Length[lorNames]<Length[dummyHeads],
-				lorRenamingRule = MapThread[Rule[#1, #2] &, {dummyHeads[[1 ;; Length[lorNames]]], lorNames}],
-				lorRenamingRule = MapThread[Rule[#1, #2] &, {dummyHeads, lorNames[[1 ;; Length[dummyHeads]]]}]
-			];
-			repIndexListLor = repIndexListLor/.lorRenamingRule;
-
-			FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for LorentzIndex type using given names: ", repIndexListLor,
-			FCDoControl->canodummyVerbose];
 		];
 
-		If[ sunNames=!={},
+		FCPrint[2,"FCCanonicalizeDummyIndices: cList: ", cList, FCDoControl->canodummyVerbose];
 
-			If[	!FreeQ2[ex,sunNames],
-				Message[FCCanonicalizeDummyIndices::failmsg,
-				"Dummy index names supplied for renaming are already present in the expression!"];
-				Abort[]
-			];
-
-			dummyHeads = Cases2[repIndexListSUN,sunhead];
-			If[	Length[sunNames]<Length[dummyHeads],
-				sunRenamingRule = MapThread[Rule[#1, #2] &, {dummyHeads[[1 ;; Length[sunNames]]], sunNames}],
-				sunRenamingRule = MapThread[Rule[#1, #2] &, {dummyHeads, sunNames[[1 ;; Length[dummyHeads]]]}]
-			];
-			FCPrint[2,"FCCanonicalizeDummyIndices: renaming rule for SUNIndex: ", sunRenamingRule,
+		If [cList=!={},
+			renamingRule = Flatten[Map[renameDummies[#[[1]],#[[2]], repIndexListTotal]&,cList]];
+			FCPrint[2,"FCCanonicalizeDummyIndices: User-supplied renaming of dummy indices: ", renamingRule,
 			FCDoControl->canodummyVerbose];
-			repIndexListSUN = repIndexListSUN/.sunRenamingRule;
-
-			FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for SUNIndex type using given names: ", repIndexListSUN,
-			FCDoControl->canodummyVerbose];
+			repIndexListTotal = repIndexListTotal/. renamingRule;
 		];
 
-		If[ sunfNames=!={},
+		(* The final renaming *)
+		canIndexList = (MapIndexed[(#1 /. First[repIndexListTotal[[#2]]]) &, uniqueExpressions]);
+		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", canIndexList, FCDoControl->canodummyVerbose];
 
-			If[	!FreeQ2[ex,sunfNames],
-				Message[FCCanonicalizeDummyIndices::failmsg,
-				"Dummy index names supplied for renaming are already present in the expression!"];
-				Abort[]
-			];
-
-			dummyHeads = Cases2[repIndexListSUNF,sunfhead];
-			If[	Length[sunfNames]<Length[dummyHeads],
-				sunfRenamingRule = MapThread[Rule[#1, #2] &, {dummyHeads[[1 ;; Length[sunfNames]]], sunfNames}],
-				sunfRenamingRule = MapThread[Rule[#1, #2] &, {dummyHeads, sunfNames[[1 ;; Length[dummyHeads]]]}]
-			];
-			FCPrint[2,"FCCanonicalizeDummyIndices: renaming rule for SUNFIndex: ", sunfRenamingRule,
-			FCDoControl->canodummyVerbose];
-			repIndexListSUNF = repIndexListSUNF/.sunfRenamingRule;
-
-			FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements for SUNFIndex type using given names: ", repIndexListSUNF,
-			FCDoControl->canodummyVerbose];
-		];
-
-		(* Here the renaming *)
-
-		canIndexList = (MapIndexed[(#1 /. First[repIndexListLor[[#2]]] /. First[repIndexListSUN[[#2]]] /.
-			First[repIndexListSUNF[[#2]]] /. First[repIndexListCustom[[#2]]]) &, uniqueExpressions]);
 		finalRepList = MapThread[Rule[#1, #2] &, {uniqueExpressions, canIndexList}];
 
-		res = (rest0+rest1+tmp) /.finalRepList /. isoHead|lihead|sunhead|sunfhead|cushead->Identity;
+		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|sunhead|sunfhead->Identity;
 
 		res
 	]

@@ -59,11 +59,16 @@ SUNFIndexNames\[Rule]{sf1,sf2,sf3,sf4},SUNIndexNames\[Rule]{cf1}]&\
 sf2, sf4]*v1[SUNFIndex[sf1]]*v1[SUNFIndex[sf2]]*v1[SUNFIndex[sf3]]*v2[\
 SUNFIndex[sf4]]"},
 {"fcstFCCanonicalizeDummyIndices-ID9",
-"MatchQ[FCCanonicalizeDummyIndices[T1[MyIndex[a],MyIndex[b]]v1[\
-MyIndex[b]]v2[MyIndex[c]],Head\[Rule]MyIndex],T1[MyIndex[a],MyIndex[x_\
-]] v1[MyIndex[x_]] v2[MyIndex[c]]]", "True"},
+"MatchQ[FCCanonicalizeDummyIndices[
+T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] +
+T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]],
+Head -> {MyIndex1, MyIndex2}],
+2 T1[MyIndex2[MyIndex2head[a1_]], MyIndex1[MyIndex1head[a2_]]] v1[
+MyIndex1[MyIndex1head[a2_]]] v2[MyIndex2[MyIndex2head[a1_]]]]", "True"},
 {"fcstFCCanonicalizeDummyIndices-ID10",
-"MatchQ[FCCanonicalizeDummyIndices[T1[MyIndex[c],MyIndex[b]]v1[\
-MyIndex[b]]v2[MyIndex[c]],Head\[Rule]MyIndex],T1[MyIndex[x_],MyIndex[\
-y_]] v1[MyIndex[y_]] v2[MyIndex[x_]]]", "True"}
+"FCCanonicalizeDummyIndices[
+T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] +
+T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]],
+Head -> {MyIndex1, MyIndex2},
+CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]", "2 T1[MyIndex2[i2], MyIndex1[i1]] v1[MyIndex1[i1]] v2[MyIndex2[i2]]"}
 });
