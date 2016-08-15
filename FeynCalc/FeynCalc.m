@@ -493,12 +493,12 @@ Options[FCPrint] = {
 		WriteStringOutput ->"stdout"
 }
 
-FCPrint[level_, x__ /;!OptionQ[{x}] , OptionsPattern[]] :=
+FCPrint[level_, fcprintx__ /;!OptionQ[{fcprintx}] , OptionsPattern[]] :=
 	Block[{flowcontrol=OptionValue[FCDoControl]},
 		If[ flowcontrol >= level,
 			If[ OptionValue[UseWriteString],
-				WriteString[OptionValue[WriteStringOutput],x],
-				Print[x]
+				WriteString[OptionValue[WriteStringOutput],fcprintx],
+				Print[fcprintx]
 			]
 		]
 	];
@@ -510,16 +510,16 @@ FCMonitorStub[x_,__]:=
 	x;
 
 FCDeclareHeader[file_] :=
-	Module[ {strm, e, moreLines = True},
+	Module[ {strm, einput, moreLines = True},
 		strm = OpenRead[file];
 		If[ Head[strm] =!= InputStream,
 			Return[$Failed]
 		];
 		While[
 			moreLines,
-			e = Read[strm, Hold[Expression]];
-			ReleaseHold[e];
-			If[ e === $Failed || MatchQ[e, Hold[_End]],
+			einput = Read[strm, Hold[Expression]];
+			ReleaseHold[einput];
+			If[ einput === $Failed || MatchQ[einput, Hold[_End]],
 				moreLines = False
 			]
 		];
@@ -630,7 +630,7 @@ EndPackage[];
 (*Let us check the configuration of Mathematica and give the user some advices, if necessary*)
 If[$FCAdvice,
 	If[ $Notebooks &&
-		Cases[Options[$FrontEndSession, CommonDefaultFormatTypes], Rule["Output", b_] :> b, Infinity]=!={TraditionalForm},
+		Cases[Options[$FrontEndSession, CommonDefaultFormatTypes], Rule["Output", Pattern[FeynCalc`Private`rulopt, Blank[]]] :> FeynCalc`Private`rulopt, Infinity]=!={TraditionalForm},
 		Message[FeynCalc::tfadvice]
 	]
 ]
@@ -639,8 +639,8 @@ If[$FCAdvice,
 	Overload Tr to use TR
 *)
 Unprotect[Tr];
-Tr[x__] :=
-	TR[x] /; !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair];
+Tr[Pattern[FeynCalc`Private`trarg,BlankSequence[]]] :=
+	TR[FeynCalc`Private`trarg] /; !FreeQ[{FeynCalc`Private`trarg}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair];
 Tr::usage =
 "FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
 generalized trace, combining terms with f instead of Plus. Tr[list, f, n] goes down to level n
@@ -708,33 +708,33 @@ If[	$LoadFeynArts,
 	If[ $FeynCalcStartupMessages,
 		PrintTemporary[Style["Loading FeynArts from " <>  $FeynArtsDirectory, "Text"]];
 	];
-	Block[ {loadfa, fafiles, strm, patch=True, str},
+	Block[ {FeynCalc`Private`loadfa, FeynCalc`Private`fafiles, FeynCalc`Private`strm, FeynCalc`Private`patch=True, FeynCalc`Private`str},
 		If[	$FAPatch,
 			(* Check if FeynArts needs to be patched *)
-			If[(fafiles = FileNames["FeynArts.m", $FeynArtsDirectory])=!={},
-				strm = OpenRead[First[fafiles]];
-				If[ Head[strm] =!= InputStream,
-					Message[General::noopen, First[fafiles]];
+			If[(FeynCalc`Private`fafiles = FileNames["FeynArts.m", $FeynArtsDirectory])=!={},
+				FeynCalc`Private`strm = OpenRead[First[FeynCalc`Private`fafiles]];
+				If[ Head[FeynCalc`Private`strm] =!= InputStream,
+					Message[General::noopen, First[FeynCalc`Private`fafiles]];
 					Abort[]
 				];
-				While[	ToString[str] != "EndOfFile",
-						str = Read[strm, String];
-						If[ StringMatchQ[ToString[str], "*patched for use with FeynCalc*", IgnoreCase -> True],
-							patch = False
+				While[	ToString[FeynCalc`Private`str] != "EndOfFile",
+						FeynCalc`Private`str = Read[FeynCalc`Private`strm, String];
+						If[ StringMatchQ[ToString[FeynCalc`Private`str], "*patched for use with FeynCalc*", IgnoreCase -> True],
+							FeynCalc`Private`patch = False
 						]
 				];
-				Close[First[fafiles]],
+				Close[First[FeynCalc`Private`fafiles]],
 				Message[General::noopen, FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]];
 				Message[FeynCalc::faerror, $FeynArtsDirectory];
-				patch = False
+				FeynCalc`Private`patch = False
 			];
 			(* Apply the patch *)
-			If[ patch,
+			If[ FeynCalc`Private`patch,
 				FAPatch[]
 			]
 		];
-		loadfa=Block[ {Print= System`Print},Get[FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]]];
-		If[loadfa =!=$Failed,
+		FeynCalc`Private`loadfa=Block[ {Print= System`Print},Get[FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]]];
+		If[FeynCalc`Private`loadfa =!=$Failed,
 			(* If everything went fine *)
 			If[ Global`$FeynCalcStartupMessages,
 				Print[	Style["FeynArts ", "Text", Bold],
@@ -759,13 +759,13 @@ If[ $LoadTARCER,
 	If[ $FeynCalcStartupMessages,
 			PrintTemporary[Style["Loading TARCER from " <> FileNameJoin[{$FeynCalcDirectory, "Tarcer"}], "Text"]]
 	];
-	Block[{tarcerfilenames},
-		tarcerfilenames =
+	Block[{FeynCalc`Private`tarcerfilenames},
+		FeynCalc`Private`tarcerfilenames =
 		FileNames["tarcer"<> StringReplace[$System,{"-"->"","Microsoft"->"","("->"",")"->""," "->""}] <>"*.mx",
 		ToFileName[{FeynCalc`$FeynCalcDirectory,"Tarcer"}],IgnoreCase->True];
-		If[ tarcerfilenames=!={},
+		If[ FeynCalc`Private`tarcerfilenames=!={},
 			(*    If the .mx file of TARCER is found, load it now. *)
-			If[	Get[Last[tarcerfilenames]]=!=$Failed,
+			If[	Get[Last[FeynCalc`Private`tarcerfilenames]]=!=$Failed,
 				If[ $FeynCalcStartupMessages,
 					Print[	Style["TARCER ", "Text", Bold],
 						Style[Tarcer`$TarcerVersion <>
