@@ -68,6 +68,12 @@ holdDOT[a___,b1_ b2_,c___]:=
 factorDirac[a_] :=
 	a factorDirac[]/; NonCommFreeQ[a];
 
+factorDirac[a_factorDirac b_.] :=
+	a factorDirac[b];
+
+factorDirac[a_SUNTrace b_.] :=
+	a factorDirac[b];
+
 factorDirac[a_ b_] :=
 	a factorDirac[b]/; NonCommFreeQ[a] && !NonCommFreeQ[b];
 

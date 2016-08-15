@@ -29,32 +29,20 @@ DiracTrace[DiracGamma[LorentzIndex[j]]]"},
 DiracGamma[LorentzIndex[i]]] + DiracTrace[DiracGamma[LorentzIndex[j]] \
 . DiracGamma[LorentzIndex[j]]]"},
 {"fcstFCTraceExpand-ID8",
-"FCTraceExpand[DiracTrace[GA[i,i]+GA[j,j].DiracTrace[GA[a]+GA[b]]]]\
-", "DiracTrace[DiracGamma[LorentzIndex[i]] . \
-DiracGamma[LorentzIndex[i]]] + \
-DiracTrace[DiracTrace[DiracGamma[LorentzIndex[a]]]*DiracGamma[\
-LorentzIndex[j]] . DiracGamma[LorentzIndex[j]]] + \
-DiracTrace[DiracTrace[DiracGamma[LorentzIndex[b]]]*DiracGamma[\
-LorentzIndex[j]] . DiracGamma[LorentzIndex[j]]]"},
+"FCTraceExpand[
+DiracTrace[GA[i, i] + GA[j, j].DiracTrace[GA[a] + GA[b]]]] // FCE",
+"DiracTrace[GA[i].GA[i]] + DiracTrace[GA[j].GA[j]] DiracTrace[GA[a]] +
+DiracTrace[GA[j].GA[j]] DiracTrace[GA[b]]"},
 {"fcstFCTraceExpand-ID9",
-"FCTraceExpand[DiracTrace[GA[i,i]+GA[j,j] \
-DiracTrace[GA[a]+GA[b]]]]",
-"DiracTrace[DiracGamma[LorentzIndex[i]] . \
-DiracGamma[LorentzIndex[i]]] + \
-DiracTrace[DiracTrace[DiracGamma[LorentzIndex[a]]]*DiracGamma[\
-LorentzIndex[j]] . DiracGamma[LorentzIndex[j]]] + \
-DiracTrace[DiracTrace[DiracGamma[LorentzIndex[b]]]*DiracGamma[\
-LorentzIndex[j]] . DiracGamma[LorentzIndex[j]]]"},
+"FCTraceExpand[
+DiracTrace[GA[i, i] + GA[j, j] DiracTrace[GA[a] + GA[b]]]] // FCE",
+"DiracTrace[GA[i].GA[i]] + DiracTrace[GA[j].GA[j]] DiracTrace[GA[a]] +
+DiracTrace[GA[j].GA[j]] DiracTrace[GA[b]]"},
 {"fcstFCTraceExpand-ID10",
-"FCTraceExpand[DiracTrace[GA[i,i]+GA[j,j] \
-DiracTrace[GA[a]+GA[b]DiracTrace[GA[x]]]]]",
-"DiracTrace[DiracGamma[LorentzIndex[i]] . \
-DiracGamma[LorentzIndex[i]]] + \
-DiracTrace[DiracTrace[DiracGamma[LorentzIndex[a]]]*DiracGamma[\
-LorentzIndex[j]] . DiracGamma[LorentzIndex[j]]] + \
-DiracTrace[DiracTrace[DiracGamma[LorentzIndex[b]]*DiracTrace[\
-DiracGamma[LorentzIndex[x]]]]*DiracGamma[LorentzIndex[j]] . \
-DiracGamma[LorentzIndex[j]]]"},
+"FCTraceExpand[
+DiracTrace[GA[i, i] +GA[j, j] DiracTrace[GA[a] + GA[b] DiracTrace[GA[x]]]]] // FCE",
+"DiracTrace[GA[i].GA[i]] + DiracTrace[GA[j].GA[j]] DiracTrace[GA[a]] +
+DiracTrace[GA[j].GA[j]] DiracTrace[GA[b]] DiracTrace[GA[x]]"},
 {"fcstFCTraceExpand-ID11",
 "FCTraceExpand[SUNTrace[SUNT[a,b,c]+SUNT[c,d,e]]]",
 "SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . \
