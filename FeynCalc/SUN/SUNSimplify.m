@@ -419,9 +419,11 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Collecting terms w.r.t colored objects.", FCDoControl->sunSiVerbose];
 		(*TODO change Identity to sunObj *)
-		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso,Head->Identity,ClearHeads->{sunObj}];
+		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso,Head->sunObj,ClearHeads->{sunObj}];
 		FCPrint[1,"SUNSimplify: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
 		FCPrint[3, "SUNSimplify: After collecting terms w.r.t colored objects: ",temp, FCDoControl->sunSiVerbose];
+
+		temp = temp /. sunObj -> Identity;
 
 
 		time=AbsoluteTime[];
@@ -438,10 +440,7 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 
 				sundL[a__] :=
 					SUND[a, Explicit -> True],
-(*
-				SetOptions[SUND, Explicit-> False];
-				SetOptions[SUNF, Explicit-> False];
-*)
+
 				sundL[a__] :=
 					SUND[a];
 				sunfL[a__] :=
@@ -466,39 +465,30 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 
 
 			If[ !FreeQ[temp, DiracTrace],
-				If[ suntraceoption === True,
+				If[ suntraceoption,
 					surule = {(* Added 4/9-2002. Frederik Orellana.
 								Expressions without SUNT
 								(proportional to the identity matrix)
 								were not SUNTrace'd *)
 							diractr[dd_Times , dops___Rule] :>
-							SUNTrace[SelectNotFree[dd, SUNIndex]]*
-								dtr[SelectFree[dd, SUNIndex], dops] /;
-								FreeQ[dd, SUNT[___]],
+								SUNTrace[SelectNotFree[dd, SUNIndex]] dtr[SelectFree[dd, SUNIndex], dops] /; FreeQ[dd, SUNT[___]],
 							diractr[dd_?((Head[#]=!=Times)&) , ___Rule] :>
-							SUNTrace[dtr[dd]]/;
-								FreeQ[dd, SUNT[___]],
-
+								SUNTrace[dtr[dd]]/; FreeQ[dd, SUNT[___]],
 							(*Added Times to avoid SelectNotFree[a+b,SUNIndex] --> 0*)
 							diractr[doot[xx__sunt] dd_. , dops___Rule] :>
-							SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]]*
-								DiracTrace[SelectFree[dd, SUNIndex], dops],
+								SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]] DiracTrace[SelectFree[dd, SUNIndex], dops],
 							diractr[doot[xx__sunt, y__] dd_., dops___Rule] :>
-							SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]] *
-								DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops ] /;
-								FreeQ[{y}, SUNIndex],
-							diractr[doot[SUNT[_], dd_], ___Rule] :> 0 /;
-								FreeQ2[dd,{SUNIndex,SUNT}],
-							diractr[SUNT[_]  dd_., ___Rule] :> 0 /;
-								FreeQ2[dd,{SUNIndex,SUNT}]
+								SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]] DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops ] /; FreeQ[{y}, SUNIndex],
+
+							diractr[doot[SUNT[_], dd_], ___Rule] :>
+								0 /; FreeQ2[dd,{SUNIndex,SUNT}],
+							diractr[SUNT[_]  dd_., ___Rule] :>
+								0 /; FreeQ2[dd,{SUNIndex,SUNT}]
 							},
 					surule = {diractr[doot[xx__sunt] dd_. , dops___Rule] :>
-								DOT[xx] SelectNotFree[dd, SUNIndex] *
-								DiracTrace[SelectFree[dd, SUNIndex], dops],
+								DOT[xx] SelectNotFree[dd, SUNIndex] DiracTrace[SelectFree[dd, SUNIndex], dops],
 							diractr[doot[xx__sunt, y__] dd_. , dops___Rule] :>
-								DOT[xx] SelectNotFree[dd, SUNIndex] *
-								DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops] /;
-								FreeQ[{y}, SUNIndex]
+								DOT[xx] SelectNotFree[dd, SUNIndex] DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops] /; FreeQ[{y}, SUNIndex]
 							}
 				];
 				temp = temp /. DiracTrace -> diractr /.
@@ -510,7 +500,7 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 
 			If[ FreeQ2[temp, {SUNTrace}] && !explicit,
 				expan = Identity,
-				expan = Expand2(*All*)[#, SUNIndex]&
+				expan = Expand2[#, SUNIndex]&
 			];
 			temp = FixedPoint[expan, temp /. SUNTrace -> sunTRACEcyc /. DOT -> gm2lambdaT /.lambdaT -> SUNT /.
 				sunTRACEcyc -> SUNTrace /. sunTRACE -> SUNTrace /. {SUNF :> sunfL, SUND :> sundL} ];
