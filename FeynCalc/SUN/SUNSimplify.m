@@ -187,6 +187,8 @@ Rename[exp_,ru___Rule] :=
 			suI[SUNF[A___,SUNIndex[ij_],B___] SUNF[V___,SUNIndex[ij_],W___] ff_] :>
 				(sam[ij, uh[]]; (SUNF[A, SUNIndex[ij], B] SUNF[V, SUNIndex[ij], W] ff)/. SUNIndex[ij] -> uh[])/; FreeQ[ij, dummy[_]],
 
+
+			(* Product of 3 SUNFs  f^aij f^bik f^cjk = N/2 f^abc (all permutation shd work as well!!!)  *)
 			suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]] SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci7_]]*
 			SUNF[SUNIndex[c_], SUNIndex[ci6_], SUNIndex[ci7_]] ef_.] :>
 				(ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
@@ -195,16 +197,19 @@ Rename[exp_,ru___Rule] :=
 				(ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
 
 
-			(* Product of 2 SUNFs *)
+			(* Product of 2 SUNFs  f^aij f^bij = N d^ab *)
 			suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]]	SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci6_]] ef_.] :>
 				(ef SUNN SUNDelta[SUNIndex[a], SUNIndex[b]]) /; noint[ci4,ci6],
 
+			(* Product of 2 SUNFs  (f^abc)^2 = 2 CA^2 CF *)
 			SUNF[a_,b_,c_]^2 :> 2 CA^2 CF /; noint[a,b,c],
 
 			suI[SUNF[A___,SUNIndex[ij_],B___] ff_] :>
 				(sam[ij, uh[]]; (SUNF[A,SUNIndex[ij],B] ff)/. SUNIndex[ij] -> uh[])/; !FreeQ[ff, SUNIndex[ij]] && FreeQ[ij, dummy[_]]
 					,
 			(* Products of 3 SUNFs *)
+
+			(**)
 			suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]] SUNF[SUNIndex[a2_], SUNIndex[ci5_], SUNIndex[e_]] SUNF[SUNIndex[a3_], SUNIndex[ci4_], SUNIndex[e_]] ef_.] :>
 				-ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
 					,
@@ -366,7 +371,8 @@ Options[sunsimp] = Options[SUNSimplify];
 
 sunsimp[expr_, opts:OptionsPattern[]] :=
 	Block[ {sunntocacf, ex, temp, explicit, sunf, suntraceoption,surule, diractr,doot,
-		expan, expanding, factoring,ntemp, tfac = 1, time, sunsiIso},
+		expan, expanding, factoring,ntemp, tfac = 1, time, sunsiIso, uniqueExpressions,
+		simplifiedExpressions,finalRepRule,originalInput},
 
 		expanding = OptionValue[SUNSimplify,{opts},Expanding];
 		factoring = OptionValue[SUNSimplify,{opts},Factoring];
@@ -418,21 +424,22 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		(* Now we can isolate everything except for the color structures that we are interested in*)
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Collecting terms w.r.t colored objects.", FCDoControl->sunSiVerbose];
-		(*TODO change Identity to sunObj *)
 		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso,Head->sunObj,ClearHeads->{sunObj}];
 		FCPrint[1,"SUNSimplify: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
 		FCPrint[3, "SUNSimplify: After collecting terms w.r.t colored objects: ",temp, FCDoControl->sunSiVerbose];
-
-		temp = temp /. sunObj -> Identity;
+		originalInput = temp;
+		uniqueExpressions = Cases2[temp, sunObj];
 
 
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Applying SUNDeltaContract.", FCDoControl->sunSiVerbose];
-		temp = temp /. SUNDelta -> SUNDeltaContract/. SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
+		simplifiedExpressions = uniqueExpressions /. SUNDelta -> SUNDeltaContract/. SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
 		FCPrint[1, "SUNSimplify: Done applying SUNDeltaContract, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-		FCPrint[3, "SUNSimplify: After  SUNDeltaContract", temp, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After  SUNDeltaContract", simplifiedExpressions, FCDoControl->sunSiVerbose];
 
-		If[ !FreeQ[temp, SUNIndex] || !FreeQ[temp, SUNN] || suntraceoption,
+
+
+		If[ !FreeQ[simplifiedExpressions, SUNIndex] || !FreeQ[simplifiedExpressions, SUNN] || suntraceoption,
 
 			If[ explicit,
 				sunfL[a__] :=
@@ -449,10 +456,17 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1, "SUNSimplify: Applying simplification rules.", FCDoControl->sunSiVerbose];
-			temp = FixedPoint[Expand2[(# /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf //. sunsi //. sunsi3 //. sunsi2 //. sunsi1 //. sunsi /. dotT[] -> 1 //.
-				{dotT[a___,1,b___] :> dotT[a,b]} /. dotT[] -> 1),{SUNF,SUNT}]&, temp]/. dotT -> DOT /. sunf ->SUNF /. sunTrace ->SUNTrace;
+			simplifiedExpressions = FixedPoint[Expand2[(# /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf //. sunsi //. sunsi3 //. sunsi2 //. sunsi1 //. sunsi /. dotT[] -> 1 //.
+				{dotT[a___,1,b___] :> dotT[a,b]} /. dotT[] -> 1),{SUNF,SUNT}]&, simplifiedExpressions]/. dotT -> DOT /. sunf ->SUNF /. sunTrace ->SUNTrace;
+
+
+
+
 			FCPrint[1, "SUNSimplify: Done applying simplification rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-			FCPrint[3, "SUNSimplify: After applying simplification rules, ", temp, FCDoControl->sunSiVerbose];
+			FCPrint[3, "SUNSimplify: After applying simplification rules, ", simplifiedExpressions, FCDoControl->sunSiVerbose];
+
+			finalRepRule = Thread[Rule[uniqueExpressions, simplifiedExpressions]];
+			temp = originalInput /. finalRepRule /. sunObj->Identity;
 
 
 			If[ OptionValue[SUNSimplify,{opts},SUNIndexRename],
@@ -462,6 +476,7 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 				FCPrint[1, "SUNSimplify: Renaming done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
 				FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->sunSiVerbose];
 			];
+
 
 
 			If[ !FreeQ[temp, DiracTrace],
@@ -564,6 +579,7 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		];
 		temp = DotSimplify[temp, Expanding -> False];
 		temp = FRH[temp,IsolateNames->sunsiIso]/. sunObj -> Identity;
+		(*temp = Collect2[temp,{SUNT,SUNDelta}];*)
 		temp
 	];
 
