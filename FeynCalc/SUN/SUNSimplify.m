@@ -282,6 +282,222 @@ HoldPattern[sunTRACEcyc[dottt[z:sunttt[_]..]]] /.dottt->DOT/.sunttt->SUNT ,
 sunTRACE[DOT@@RotateLeft[{z}, Position[{z},Last[Sort[{z}]]][[1,1]]]]];
 
 
+	(*	applies Cvitanovic's algorithm to simplify chains that contain common indices *)
+	ruleCvitanovic = {
+
+		(* ... T^a T^a ... *)
+		dotT[xx___, SUNT[a_SUNIndex], SUNT[a_SUNIndex], yy___] :>
+			((SUNN^2 -1)/(2 SUNN) dotT[xx,yy]),
+
+		(* ... T^a T^b T^a ... *)
+		dotT[xx___, SUNT[a_SUNIndex], SUNT[b_SUNIndex], SUNT[a_SUNIndex], yy___] :>
+			((-1)/(2 SUNN) dotT[xx, SUNT[b], yy]),
+
+		(* ... T^a T^b ... T^a ... *)
+		dotT[A___, SUNT[i_SUNIndex], SUNT[a_SUNIndex], B:SUNT[_SUNIndex].. , SUNT[i_SUNIndex], C___] :>
+				1/2 dotT[A,C] sunTrace[dotT[SUNT[a],B]] - 1/(2 SUNN) dotT[A,SUNT[a],B,C],
+
+
+		(* ... T^a ... Tr[ ... T^a ... ] *)
+		SUNT[a_SUNIndex] sunTrace[dotT[xc___, SUNT[a_SUNIndex], xd___]] :>
+			1/2 dotT[xd,xc] - 1/(2 SUNN) sunTrace[dotT[xc,xd]],
+
+
+		(* ... T^a ... Tr[ ... T^a ... ] *)
+		dotT[xa___, SUNT[a_SUNIndex], xb___] sunTrace[dotT[xc___, SUNT[a_SUNIndex], xd___]] :>
+			1/2 dotT[xa,xd,xc,xb] - 1/(2 SUNN) dotT[xa,xb] sunTrace[dotT[xc,xd]],
+
+		(* Tr[... T^a ...] Tr[ ... T^a ... ] *)
+		sunTrace[dotT[xa___, SUNT[a_SUNIndex], xb___]] sunTrace[dotT[xc___, SUNT[a_SUNIndex], xd___]] :>
+			1/2 sunTrace[dotT[xa,xd,xc,xb]] - 1/(2 SUNN) sunTrace[dotT[xa,xb]] sunTrace[dotT[xc,xd]]
+
+	};
+
+	ruleSUNTSUNFSUND = {
+
+		(* f^abc T^a *)
+		sunf[r1___,a_SUNIndex, r2___] SUNT[a_SUNIndex]  :>
+			(I dotT[SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]]] - I dotT[SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]]])/; Length[{r2,r1}]===2,
+
+		(* f^abc (... T^a ...) *)
+		sunf[r1___,a_SUNIndex, r2___] dotT[r3___,SUNT[a_SUNIndex],r4___]  :>
+			(I dotT[r3,SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]],r4] - I dotT[r3,SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]],r4])/; Length[{r2,r1}]===2,
+
+		(* f^abc Tr(... T^a ...) *)
+		sunf[r1___,a_SUNIndex, r2___] sunTrace[dotT[r3___,SUNT[a_SUNIndex],r4___]]  :>
+			(I sunTrace[dotT[r3,SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]],r4]] - I sunTrace[dotT[r3,SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]],r4]])/; Length[{r2,r1}]===2,
+
+		(* d^abc T^a *)
+		sund[r1___,a_SUNIndex, r2___] SUNT[a_SUNIndex]  :>
+			(dotT[SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]]] + dotT[SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]]] -
+			(1/SUNN) SUNDeltaContract[r1,r2]) /; Length[{r2,r1}]===2,
+
+		(* d^abc (... T^a ...) *)
+		sund[r1___,a_SUNIndex, r2___] dotT[r3___,SUNT[a_SUNIndex],r4___]  :>
+			(dotT[r3,SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]],r4] + dotT[r3,SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]],r4] -
+			(1/SUNN) SUNDeltaContract[r1,r2] dotT[r3,r4])/; Length[{r2,r1}]===2,
+
+		(* d^abc Tr (... T^a ...) *)
+		sund[r1___,a_SUNIndex, r2___] sunTrace[dotT[r3___,SUNT[a_SUNIndex],r4___]]  :>
+			(sunTrace[dotT[r3,SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]],r4]] + sunTrace[dotT[r3,SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]],r4]] -
+			(1/SUNN) SUNDeltaContract[r1,r2] sunTrace[dotT[r3,r4]])/; Length[{r2,r1}]===2
+	};
+
+	sunf[a_,b_,c_]:=
+		0/; (Signature[{a,b,c}] === 0) && FreeQ2[{a,b,c},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+
+	(* properties of f_2:
+		f_2^abcd = - f_2^bacd
+		f_2^abcd = - f_2^abdc
+		f_2^abcd = f_2^cdab
+
+		f_2^aabc = 0
+		f_2^abcc = 0
+
+		f_2^abac = N d^bc
+		f_2^abcb = N d^ac
+
+		f_2^abca = -N d^bc
+		f_2^abbc = -N d^ac
+
+	*)
+	sunf2[a_SUNIndex,a_SUNIndex,_,_]:=
+		0;
+	sunf2[_,_,a_SUNIndex,a_SUNIndex]:=
+		0;
+
+	sunf2[a_,b_,c_,d_]:=
+		-sunf2[b,a,c,d]/; !OrderedQ[{a,b}] && FreeQ2[{a,b,c,d},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+	sunf2[a_,b_,c_, d_]:=
+		-sunf2[a,b,d,c]/; !OrderedQ[{c,d}] && FreeQ2[{a,b,c,d},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+	sunf2[a_,b_,c_,d_]:=
+		-sunf2[c,d,a,b]/; !OrderedQ[{{a,b},{c,d}}] && FreeQ2[{a,b,c,d},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+
+	sunf2[a_SUNIndex,b_,a_SUNIndex,c_]:=
+		SUNN SUNDeltaContract[b,c];
+
+	sunf2[a_,b_SUNIndex,c_,b_SUNIndex]:=
+		SUNN SUNDeltaContract[a,c];
+
+	sunf2[a_SUNIndex,b_,c_,a_SUNIndex]:=
+		- SUNN SUNDeltaContract[b,c];
+
+	sunf2[a_,b_SUNIndex,b_SUNIndex,c_]:=
+		- SUNN SUNDeltaContract[a,c];
+
+	(* properties of d_2:
+		d_2^abcd =  d_2^bacd
+		d_2^abcd =  d_2^abdc
+		d_2^abcd = d_2^cdab
+
+		f_2^aabc = 0
+		f_2^abcc = 0
+
+		f_2^abac = N d^bc
+		f_2^abcb = N d^ac
+
+		f_2^abca = -N d^bc
+		f_2^abbc = -N d^ac
+
+	*)
+
+	sund2[a_,b_,c_,d_]:=
+		sund2[b,a,c,d]/; !OrderedQ[{a,b}] && FreeQ2[{a,b,c,d},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+	sund2[a_,b_,c_, d_]:=
+		sund2[a,b,d,c]/; !OrderedQ[{c,d}] && FreeQ2[{a,b,c,d},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+	sund2[a_,b_,c_,d_]:=
+		sund2[c,d,a,b]/; !OrderedQ[{{a,b},{c,d}}] && FreeQ2[{a,b,c,d},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+
+
+
+
+
+	ruleSUNFSUNDp1 = {
+
+			(* (f^abc)^2 = 2 CA^2 CF *)
+			sunf[_SUNIndex,_SUNIndex,_SUNIndex]^2 :> 2 CA^2 CF,
+			(* (d^abc)^2 = - 2 (4 - CA^2) CF *)
+			sund[_SUNIndex,_SUNIndex,_SUNIndex]^2 :> -2 (4-CA^2) CF,
+
+			(* f^iab f^icd = f_2^abcd*)
+			sunf[r1___, a_SUNIndex, r2___] sunf[r3___, a_SUNIndex, r4____] :> sunf2[r2,r1,r4,r3],
+
+			(* d^iab d^icd = d_2^abcd*)
+			sund[r1___, a_SUNIndex, r2___] sund[r3___, a_SUNIndex, r4____] :> sund2[r2,r1,r4,r3]
+
+	};
+
+	ruleSUNFSUNDp2 = {
+
+			(* f_2^abcd f^abe = N f^ecd *)
+			sunf2[a_SUNIndex, b_SUNIndex, c_, d_] sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] :>
+			SUNN (-1)^(Length[{r2}]) sunf[r2,r3,r1,c,d],
+
+			(* f_2^bacd f^abe = - N f^ecd *)
+			sunf2[b_SUNIndex, a_SUNIndex, c_, d_] sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] :>
+			SUNN (-1)^(Length[{r2}]+1) sunf[r2,r3,r1,c,d],
+
+			(* f_2^abcd f^cde = N f^eab *)
+			sunf2[c_, d_, a_SUNIndex, b_SUNIndex] sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] :>
+			SUNN (-1)^(Length[{r2}]) sunf[r2,r3,r1,c,d],
+
+			(* f_2^abdc f^cde = - N f^eab *)
+			sunf2[c_, d_, b_SUNIndex, a_SUNIndex] sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] :>
+			SUNN (-1)^(Length[{r2}]+1) sunf[r2,r3,r1,c,d],
+
+
+			(* f_2^abcd f^ace = N/2 f^bde *)
+			sunf2[a_SUNIndex, b_, c_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]) sunf[b,d,r2,r3,r1],
+
+			(* f_2^cbad f^ace = - N/2 f^bde *)
+			sunf2[c_SUNIndex, b_, a_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]+1) sunf[b,d,r2,r3,r1],
+
+			(* f_2^abdc f^ace = - N/2 f^bde *)
+			sunf2[a_SUNIndex, b_, d_, c_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]+1) sunf[b,d,r2,r3,r1],
+
+			(* f_2^cbda f^ace = - N/2 f^bde *)
+			sunf2[c_SUNIndex, b_, d_, a_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]) sunf[b,d,r2,r3,r1],
+
+			(* f_2^bacd f^ace = - N/2 f^bde *)
+			sunf2[b_, a_SUNIndex, c_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]+1) sunf[b,d,r2,r3,r1],
+
+			(* f_2^bcad f^ace = - N/2 f^bde *)
+			sunf2[b_, a_SUNIndex, c_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]) sunf[b,d,r2,r3,r1],
+
+			(* f_2^badc f^ace = - N/2 f^bde *)
+			sunf2[b_, a_SUNIndex, d_, c_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]) sunf[b,d,r2,r3,r1],
+
+			(* f_2^bcda f^ace = - N/2 f^bde *)
+			sunf2[b_, c_SUNIndex, d_, a_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___] :>
+			SUNN/2 (-1)^(Length[{r2}]+1) sunf[b,d,r2,r3,r1],
+
+			(*  d_2^abcl + d_2^alcb + d_2^acbl = 2(N^2-4)/(N(N^2+1)) *)
+			coeff_. sund2[a_,b_,c_,l_] + coeff_. sund2[a_,l_,c_,b_] + coeff_. sund2[a_,c_,b_,l_] :>
+				(2 (-4 + SUNN^2))/(SUNN + SUNN^3) coeff *
+				(SUNDelta[a,b] SUNDelta[c,l] + SUNDelta[a,c] SUNDelta[b,l] + SUNDelta[a,l] SUNDelta[b,c])
+
+
+
+	};
+
+
+
+
+
+
+
+
+
+
+
+
 	sunsi3 = {
 				(* f^abc T^a T^b T^c + permutations *)
 
@@ -361,11 +577,54 @@ Options[SUNSimplify] = {
 	SUNTrace		-> False
 };
 
+(* Description of the algorithm:
+
+	1) 	Perform color contractions by eliminating all the Kronecker deltas with
+		color indices contracted to other colored objects. After this step only
+		SUNDelta and SUNDelta with free indices may remain
+
+	2) 	Apply Cvitanonic untill all color matrices with common adjoint indices are
+		eliminated. Deeply nested matrices or traces require special handling and
+		might lead to warnings, e.g. MyFunc[SUNT[a,b]]SUNT[a,b]
+
+	3) 	Apply known rules for simplifying products of structure constatns. The goal is to
+		eliminate as many structure constatns with commond indices as possible. In general,
+		not everything can be eliminated. For example, in SUNF[a,b,r]SUNF[c,d,r] we cannot
+		completely eliminate the dummy index r. At most we can trade it for similar combinations
+		of SUNDs. The actual behavior (if SUNFs should be traded for SUNDs or vice versa) must be
+		controlled via options.
+
+	4)	Eliminate all contractions of structure constants with color matrices.
+		After this step no SUND/SUNF having an index common with a SUNT should remain
+
+	5) 	The previous step might introduce new color matrices with commond adjoiunt indices.
+		Thus, apply Cvitanovic again. After this step the only colored objects that might
+		have common color indices are structure constants.
+
+	6) 	Up to irreducible SUNF/SUND combinations we end up with SUNTs, SUNDs, SUNFs and SUNTraces
+		that contain objects with distinct indices. Now one could evaluate SUNTraces, which again
+		should be controlled by an option.
+
+	7) 	If SUNTraces are evaluated, we get even more SUNDs and SUNFs. However, the previous steps guarantee
+		that those have no common indices with already existing SUNDs/SUNFs. The resulting expressions also
+		do not contain any SUNTs, so at this point we only need to apply rules for simplifying products of
+		structure constatns. So we are left only with SUNT-chains, SUNDs and SUNFs. SUNT chains consist of
+		all free indices. Some of SUNDs and SUNFs however have some common indices, as it is impossible to
+		eliminate those completely.
+
+
+
+*)
 
 
 (* Main entry point *)
+(*
 SUNSimplify[x_, opts:OptionsPattern[]] :=
 	FixedPoint[sunsimp[#, Flatten[Join[{opts}, FilterRules[Options[SUNSimplify], Except[{opts}]]]]]&, x, 6] /. dtr -> DiracTrace;
+*)
+
+SUNSimplify[x_, opts:OptionsPattern[]] :=
+	sunsimp[x, Flatten[Join[{opts}, FilterRules[Options[SUNSimplify], Except[{opts}]]]]];
 
 Options[sunsimp] = Options[SUNSimplify];
 
@@ -396,10 +655,11 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		FCPrint[1, "SUNSimplify: Entering.", FCDoControl->sunSiVerbose];
 		FCPrint[3, "SUNSimplify: Entering with ", temp, FCDoControl->sunSiVerbose];
 
-		If[ Head[temp] === Times,
+		(* TODO: First isolate, then canonicalize!!! *)
+		(*If[ Head[temp] === Times,
 			tfac = Select[temp,  FreeQ2[#, {SUNIndex, SUNFIndex, SUNN, CA, CF}]&];
 			temp = Select[temp, !FreeQ2[#, {SUNIndex, SUNFIndex, SUNN, CA, CF}]&];
-		];
+		];*)
 
 
 		(* It is better to canonicalize the indices at the very beginning. FCCanonicalizeDummyIndices can handle this automatically*)
@@ -411,17 +671,7 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 				FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->sunSiVerbose];
 		];
 
-
-		(* TODO SUNFSimplify should be better done internally *)
-		If[ !FreeQ[temp, SUNFIndex],
-			time=AbsoluteTime[];
-			FCPrint[1, "SUNSimplify: Applying SUNFSimplify.", FCDoControl->sunSiVerbose];
-			temp = SUNFSimplify[temp, SUNNToCACF->sunntocacf, Explicit->explicit];
-			FCPrint[1, "SUNSimplify: Done applying SUNFSimplify, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-		];
-
-
-		(* Now we can isolate everything except for the color structures that we are interested in*)
+		(* Isolate everything except for the color structures that we are interested in*)
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Collecting terms w.r.t colored objects.", FCDoControl->sunSiVerbose];
 		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso,Head->sunObj,ClearHeads->{sunObj}];
@@ -431,12 +681,56 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		uniqueExpressions = Cases2[temp, sunObj];
 
 
+		(* The show begins *)
+		simplifiedExpressions = uniqueExpressions /. sunObj->Identity;
+
+		(* SUNFIndex-contractions *)
+		(* TODO For performance reasons SUNFSimplify should be better done internally *)
+		If[ !FreeQ[simplifiedExpressions, SUNFIndex],
+			time=AbsoluteTime[];
+			FCPrint[1, "SUNSimplify: Applying SUNFSimplify.", FCDoControl->sunSiVerbose];
+			simplifiedExpressions = Map[SUNFSimplify[#, SUNNToCACF->sunntocacf, Explicit->explicit],simplifiedExpressions];
+			FCPrint[1, "SUNSimplify: Done applying SUNFSimplify, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
+		];
+
+		(* SUNIndex-contractions *)
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Applying SUNDeltaContract.", FCDoControl->sunSiVerbose];
-		simplifiedExpressions = uniqueExpressions /. SUNDelta -> SUNDeltaContract/. SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
+		simplifiedExpressions = simplifiedExpressions /. SUNDelta -> SUNDeltaContract/. SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
 		FCPrint[1, "SUNSimplify: Done applying SUNDeltaContract, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
 		FCPrint[3, "SUNSimplify: After  SUNDeltaContract", simplifiedExpressions, FCDoControl->sunSiVerbose];
 
+
+		(* Now the expression should be free of SUNDelta/SUNFDelta with dummy indices *)
+
+
+		(* First of all, let us get rid of SUN traces *)
+		simplifiedExpressions = Map[FixedPoint[Function[farg,Expand2[farg,SUNTrace]],#]&,simplifiedExpressions];
+
+
+
+		simplifiedExpressions = simplifiedExpressions /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf /. SUND -> sund;
+
+		(* Next step: Cvitanovic *)
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT}],ruleCvitanovic]],#]&,simplifiedExpressions];
+
+		(* Next step: f^abc T^a and d^abc T^a *)
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT}],ruleSUNTSUNFSUND]],#]&,simplifiedExpressions];
+
+		(* Next step: Cvitanovic again *)
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT}],ruleCvitanovic]],#]&,simplifiedExpressions];
+
+
+		(*simplifiedExpressions //. {
+			dotT[xx___,SUNT[a_SUNIndex],y___]
+			};*)
+
+		simplifiedExpressions = simplifiedExpressions /. sunf -> SUNF /. sund -> SUND /. dotT[] -> 1 /. dotT -> DOT /. sunTrace -> SUNTrace /. SUNDeltaContract -> SUNDelta;
+		finalRepRule = Thread[Rule[uniqueExpressions, simplifiedExpressions]];
+		(*Print[finalRepRule];*)
+
+		temp = originalInput /. finalRepRule /. sunObj->Identity;
+		Return[temp];
 
 
 		If[ !FreeQ[simplifiedExpressions, SUNIndex] || !FreeQ[simplifiedExpressions, SUNN] || suntraceoption,
@@ -457,7 +751,7 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "SUNSimplify: Applying simplification rules.", FCDoControl->sunSiVerbose];
 			simplifiedExpressions = FixedPoint[Expand2[(# /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf //. sunsi //. sunsi3 //. sunsi2 //. sunsi1 //. sunsi /. dotT[] -> 1 //.
-				{dotT[a___,1,b___] :> dotT[a,b]} /. dotT[] -> 1),{SUNF,SUNT}]&, simplifiedExpressions]/. dotT -> DOT /. sunf ->SUNF /. sunTrace ->SUNTrace;
+				{dotT[a___,1,b___] :> dotT[a,b]} /. dotT[] -> 1),{SUNF,SUNT,sunTrace}]&, simplifiedExpressions]/. dotT -> DOT /. sunf ->SUNF /. sunTrace ->SUNTrace;
 
 
 
