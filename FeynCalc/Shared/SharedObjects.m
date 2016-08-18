@@ -633,6 +633,8 @@ Options[Polarization] = {Transversality -> False};
 
 DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 
+SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
+
 CA /:
 	MakeBoxes[CA, TraditionalForm]:=
 				SubscriptBox["C", "A"];
