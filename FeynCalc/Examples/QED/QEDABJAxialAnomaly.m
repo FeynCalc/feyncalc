@@ -42,7 +42,7 @@ Explicit
 
 
 (* ::Text:: *)
-(*And the second one follows from the first by the interchaing k with p and la with nu*)
+(*And the second one follows from the first by the interchanging k with p and la with nu*)
 
 
 amp2=amp1/.{k->p,p->k,la->nu,nu->la}

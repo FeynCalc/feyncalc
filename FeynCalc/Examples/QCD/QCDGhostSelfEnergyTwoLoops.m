@@ -134,7 +134,7 @@ result=result//.SMP["g_s"]:>gs
 
 
 (* ::Text:: *)
-(*Now let us compare our result with the literature. This computation can be found in A.I. Davydychev, P .Osland, O.V. Tarasov, Phy. Rev. D 58, 036007 (1998). The preprint is available at arXiv:hep-ph/9801380.*)
+(*Now let us compare our result with the literature. This computation can be found in A.I. Davydychev, P .Osland, O.V. Tarasov, Phys. Rev. D 58, 036007 (1998). The preprint is available at arXiv:hep-ph/9801380.*)
 (**)
 (*The general expression for the ghost self-energy (two-point function) is given by Eq. 2.15. What we computed is  -delta^{a1 a2} p^2 G^{(2)}(p^2) (c.f. Eq. 6.5).  The authors write G^{(2)}(p^2) as G^{(2,q)}(p^2) + G^{(2,\[Xi])(red)}(p^2) + G^{(2,\[Xi])(irred)}(p^2) (c.f. Eq 2.6), where  G^{(2,q)}(p^2) is the contribution of the quark loops (both one-particle irreducible and one-particle reducible), G^{(2,\[Xi])(irred)}(p^2) is the one particle irreducible contribution of the gluon and ghost loops and G^{(2,\[Xi])(red)}(p^2) is the one particle reducible one.*)
 (**)
@@ -153,7 +153,7 @@ ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,CA^2->2T*CA}]&
 
 
 (* ::Text:: *)
-(*Our result contains SEpsilon[4 - 2*Epsilon] which is an abbreviation for Exp[-Epsilon*EulerGamma]. Since eta is given by Exp[- Epsilon*EulerGamma] (1- 1/12 Pi^2 Epislon^2 + ...) (c.f. Eq 4.7), it it clear that SEpsilon[4 - 2*Epsilon]^2 comes from there. To bring our result into the suitable form, we therefore must divide the term in the brackets by (1- 1/12 Pi^2 Epislon^2)^2 or (1- Zeta2/2 Epislon^2)^2  and again expand it in Epsilon. After that we can replace  SEpsilon[4 - 2*Epsilon]^2 by eta^2.*)
+(*Our result contains SEpsilon[4 - 2*Epsilon] which is an abbreviation for Exp[-Epsilon*EulerGamma]. Since eta is given by Exp[- Epsilon*EulerGamma] (1- 1/12 Pi^2 Epsilon^2 + ...) (c.f. Eq 4.7), it it clear that SEpsilon[4 - 2*Epsilon]^2 comes from there. To bring our result into the suitable form, we therefore must divide the term in the brackets by (1- 1/12 Pi^2 Epsilon^2)^2 or (1- Zeta2/2 Epsilon^2)^2  and again expand it in Epsilon. After that we can replace  SEpsilon[4 - 2*Epsilon]^2 by eta^2.*)
 
 
 G2qFinal=G2qEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//
