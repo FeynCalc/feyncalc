@@ -343,7 +343,12 @@ sunTRACE[DOT@@RotateLeft[{z}, Position[{z},Last[Sort[{z}]]][[1,1]]]]];
 			(1/SUNN) SUNDeltaContract[r1,r2] sunTrace[dotT[r3,r4]])/; Length[{r2,r1}]===2
 	};
 
-	sunf[a_,b_,c_]:=
+	SetAttributes[sund,Orderless];
+
+	sund[a_SUNIndex,b_SUNIndex,c_SUNIndex]:=
+		0/; (Signature[{a,b,c}] === 0) && FreeQ2[{a,b,c},{Pattern, Blank, BlankSequence, BlankNullSequence}];
+
+	sunf[a_SUNIndex,b_SUNIndex,c_SUNIndex]:=
 		0/; (Signature[{a,b,c}] === 0) && FreeQ2[{a,b,c},{Pattern, Blank, BlankSequence, BlankNullSequence}];
 
 	(* properties of f_2:
@@ -419,11 +424,25 @@ sunTRACE[DOT@@RotateLeft[{z}, Position[{z},Last[Sort[{z}]]][[1,1]]]]];
 			(* (d^abc)^2 = - 2 (4 - CA^2) CF *)
 			sund[_SUNIndex,_SUNIndex,_SUNIndex]^2 :> -2 (4-CA^2) CF,
 
+			(* f^abc f^abd = N d^{cd} *)
+			sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] sunf[r4___,a_SUNIndex,r5___,b_SUNIndex,r6___] :>
+				SUNN (-1)^(Length[{r2}] + Length[{r5}]) SUNDeltaContract[r2,r3,r1,r5,r6,r4],
+
+			sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] sunf[r4___,b_SUNIndex,r5___,a_SUNIndex,r6___] :>
+				SUNN (-1)^(Length[{r2}] + Length[{r5}]+1) SUNDeltaContract[r2,r3,r1,r5,r6,r4],
+
+			(* d^abc d^abd = (N^2-4)/N d^{cd} *)
+			sund[a_SUNIndex,b_SUNIndex,c_SUNIndex] sund[a_SUNIndex,b_SUNIndex,d_SUNIndex] :>
+				(SUNN^2 - 4)/SUNN SUNDelta[c,d],
+
 			(* f^iab f^icd = f_2^abcd*)
-			sunf[r1___, a_SUNIndex, r2___] sunf[r3___, a_SUNIndex, r4____] :> sunf2[r2,r1,r4,r3],
+			sunf[r1___, a_SUNIndex, r2___] sunf[r3___, a_SUNIndex, r4____]/; Signature[{r1,r2,r3,r4}]=!=0 :> sunf2[r2,r1,r4,r3],
 
 			(* d^iab d^icd = d_2^abcd*)
-			sund[r1___, a_SUNIndex, r2___] sund[r3___, a_SUNIndex, r4____] :> sund2[r2,r1,r4,r3]
+			sund[r1___, a_SUNIndex, r2___] sund[r3___, a_SUNIndex, r4____]/; Signature[{r1,r2,r3,r4}]=!=0 :> sund2[r2,r1,r4,r3],
+
+			(* f^abc d^abe = 0*)
+			sunf[___,a_SUNIndex,___,b_SUNIndex,___] sund[a_SUNIndex,b_SUNIndex,_] :> 0
 
 	};
 
@@ -712,13 +731,20 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		simplifiedExpressions = simplifiedExpressions /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf /. SUND -> sund;
 
 		(* Next step: Cvitanovic *)
-		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT}],ruleCvitanovic]],#]&,simplifiedExpressions];
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT,sunf,sund}],ruleCvitanovic]],#]&,simplifiedExpressions];
 
 		(* Next step: f^abc T^a and d^abc T^a *)
-		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT}],ruleSUNTSUNFSUND]],#]&,simplifiedExpressions];
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT,sunf,sund}],ruleSUNFSUNDp1],ruleSUNFSUNDp2]],#]&,simplifiedExpressions];
 
 		(* Next step: Cvitanovic again *)
-		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT}],ruleCvitanovic]],#]&,simplifiedExpressions];
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT,sunf,sund}],ruleCvitanovic]],#]&,simplifiedExpressions];
+
+		(* Next step: Contractions of structure constants *)
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT,sunf,sund}],ruleSUNTSUNFSUND]],#]&,simplifiedExpressions];
+
+		(* Next step: Cvitanovic again *)
+		simplifiedExpressions = Map[FixedPoint[Function[farg,ReplaceRepeated[Expand2[farg,{suntTrace,dotT,SUNT,sunf,sund}],ruleCvitanovic]],#]&,simplifiedExpressions];
+
 
 
 		(*simplifiedExpressions //. {
@@ -730,6 +756,28 @@ sunsimp[expr_, opts:OptionsPattern[]] :=
 		(*Print[finalRepRule];*)
 
 		temp = originalInput /. finalRepRule /. sunObj->Identity;
+
+		temp = FRH[temp,IsolateNames->sunsiIso];
+
+		If[ sunntocacf,
+			If[ LeafCount[temp] < 1442(* RM20120113: exteneded the limit *),
+				temp = Factor2[temp /. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)}, FactorFull -> False]
+			];
+			temp = temp /. (1-SUNN^2) -> (-CF 2 CA) /. SUNN -> CA /. (-1 + CA^2)->(2 CA CF);
+			(* RM20120113 added this in response to http://www.feyncalc.org/forum/0682.html, which is not a real bug, but well *)
+			temp = temp /. (((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF));
+			temp = temp /. (1-CA^2) -> (-2 CA CF) /. (1/CA) -> (CA - 2 CF) /. ((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /.
+				(CA (CA-2 CF)) -> 1,
+			temp = temp /. CA -> SUNN /. CF -> ((SUNN^2-1)/(2 SUNN))
+		];
+		If[ tfac =!= 1,
+			temp = temp tfac
+		];
+		temp = temp /. SUNDeltaContract -> SUNDelta;
+		If[ !FreeQ[temp, CA],
+			temp = temp /. (CA (CA-2 CF)) -> 1
+		];
+
 		Return[temp];
 
 
