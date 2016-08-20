@@ -73,5 +73,12 @@ Momentum[q2]])"},
 {"fcstDiracTrace-ID27",
 "DiracTrace[GA[i,j,k,7],DiracTraceEvaluate\[Rule]True]", "0"},
 {"fcstDiracTrace-ID28",
-"DiracTrace[GA[i,j,k,7,l,m],DiracTraceEvaluate\[Rule]True]", "0"}
-});
+"DiracTrace[GA[i,j,k,7,l,m],DiracTraceEvaluate\[Rule]True]", "0"},
+
+{"fcstDiracTrace-ID29",
+"$BreitMaison = True; (DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
+	DiracTraceEvaluate -> True] -
+DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
+	DiracTraceEvaluate -> True, West -> False]) // Simplify", "0"}
+}
+);

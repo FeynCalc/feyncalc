@@ -737,9 +737,10 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 						!$Larin && $BreitMaison && !west,
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula", FCDoControl->diTrVerbose];
 							fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
-							DiracTrace @@ ({y}/.DiracGamma[5]->
-							($LeviCivitaSign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
-							DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))),
+							drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
+							(tmp @@ ({y}/.DiracGamma[5]->
+							(drsi I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
+							DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))))/. tmp[arg__] :> DiracTrace[arg,DiracTraceEvaluate->True],
 						(* BMHV West's trace formula *)
 						!$Larin && $BreitMaison && west,
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula", FCDoControl->diTrVerbose];
@@ -758,6 +759,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 
 
 			FCPrint[1,"DiracTrace: spur: Finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: spur: Leaving with:",resp, FCDoControl->diTrVerbose];
 			FCPrint[1,"DiracTrace: spur: Leaving.", FCDoControl->diTrVerbose];
 
 			resp
