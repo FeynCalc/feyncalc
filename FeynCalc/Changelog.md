@@ -1,5 +1,16 @@
 ### Version 9.1.0 (August 2016)
 
+#### Important changes
+* Many new hadndy functions: `FCTraceExpand`, `FCTraceFactor`, `FCGetDimensions`, `FCCanonicalizeDummyIndices`, `TarcerToFC`, `FCReplaceD`, `FCColorIsolate`, `FCDiracIsolate`, `DeclareFCTensor`, `UnDeclareFCTensor`, `CommutatorOrder`
+* Improved support for using `FeynCalc` with custom `FeynRules`-models (see http://www.feyncalc.org/forum/1042.html for more details)
+* `$LimitTo4` is now disabled by default. Even when set to `True`, it is applied only to 1- and 2-point functions (see http://www.feyncalc.org/forum/1077.html for more details). 
+
+#### Commits log
+* Added g-2 calculation to the examples testsuite (a3e66b1)
+* Paclet version updated to 9.1 (fa6c7e7)
+* Rebuilt the documentation. (31f3710)
+* Fixed a small typo in the documentation. (9262470)
+* Updated the changelog for FeynCalc 9.1 (91ae94d)
 * Updated `README.MD` (9e99cd)
 * Fixed a bug in the computation of chiral traces, when West's formula is not used.  (0a25312); Example:
 	```

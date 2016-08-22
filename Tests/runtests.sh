@@ -23,14 +23,17 @@ SECONDS=0
 # Unit tests
 $DIR/unittests.sh math8 &&
 $DIR/unittests.sh math9 &&
+$DIR/unittests.sh math10 &&
 $DIR/unittests.sh math &&
 # TARCER tests
 $DIR/tarcertests.sh math8 &&
 $DIR/tarcertests.sh math9 &&
+$DIR/tarcertests.sh math10 &&
 $DIR/tarcertests.sh math &&
 # Integration tests
 $DIR/inttests.sh math8 &&
 $DIR/inttests.sh math9 &&
+$DIR/inttests.sh math10 &&
 $DIR/inttests.sh math
 
 echo "==================================================================="
