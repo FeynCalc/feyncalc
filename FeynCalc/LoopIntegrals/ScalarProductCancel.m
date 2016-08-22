@@ -74,6 +74,12 @@ ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 		];
 
 
+		If[	!FreeQ2[$ScalarProducts, {qs}],
+			Message[SPC::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
+		];
+
+
 		If[	OptionValue[FCI],
 			exp = int,
 			exp = FCI[int]

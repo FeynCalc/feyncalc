@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23801,        891]
+NotebookDataLength[     23803,        891]
 NotebookOptionsPosition[     16594,        654]
-NotebookOutlinePosition[     21037,        784]
-CellTagsIndexPosition[     20923,        778]
+NotebookOutlinePosition[     21039,        784]
+CellTagsIndexPosition[     20925,        778]
 WindowTitle->DiracGamma
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39281], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40066], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracGamma", ".html"]], None}]}]},
@@ -130,7 +130,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->427822961],
+ CellID->149641272],
 
 Cell[CellGroupData[{
 
@@ -140,7 +140,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->438791291],
+ CellID->568553789],
 
 Cell[CellGroupData[{
 
@@ -667,7 +667,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 21.171875}", 
+   "built" -> "{2016, 8, 21, 21, 17, 51.472111}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -702,7 +702,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4065, 117, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->427822961]},
+   CellID->149641272]},
  "DiracGamma"->{
   Cell[4697, 146, 132, 4, 27, "Input",
    CellTags->"DiracGamma",
@@ -777,8 +777,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18673, 701},
- {"DiracGamma", 18810, 705}
+ {"PrimaryExamplesSection", 18675, 701},
+ {"DiracGamma", 18812, 705}
  }
 *)
 (*NotebookFileOutline
@@ -792,10 +792,10 @@ Cell[2893, 78, 1147, 35, 120, "Usage",
 Cell[CellGroupData[{
 Cell[4065, 117, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->427822961],
+ CellID->149641272],
 Cell[CellGroupData[{
 Cell[4477, 136, 195, 6, 25, "ExampleSection",
- CellID->438791291],
+ CellID->568553789],
 Cell[CellGroupData[{
 Cell[4697, 146, 132, 4, 27, "Input",
  CellTags->"DiracGamma",

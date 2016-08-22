@@ -21,7 +21,7 @@ End[]
 Begin["`CounterTerm`Private`"]
 
 Options[CounterTerm] =
-	{CouplingConstant -> Gstrong, Dimension -> (4+Epsilon),
+	{CouplingConstant -> SMP["g_s"], Dimension -> (4+Epsilon),
 			Gauge -> 1, QuarkMass -> FCGV["M"]};
 
 CounterTerm[x_Symbol,opts___Rule] := CounterTerm[ToString[x], opts];
@@ -29,7 +29,7 @@ CounterTerm[x_Symbol,opts___Rule] := CounterTerm[ToString[x], opts];
 CounterTerm[x_, opts___Rule] := Block[{ct,alphas,adp, xi, d, gstrong, m, tareps, alphaS},
 (* hep-ph/9803493 *)
 
-{d, xi, gstrong, m} = {Dimension, Gauge, Gstrong, QuarkMass} /.
+{d, xi, gstrong, m} = {Dimension, Gauge, SMP["g_s"], QuarkMass} /.
 											{opts} /. Options[CounterTerm] ;
 
 tareps = (4-d)/2;

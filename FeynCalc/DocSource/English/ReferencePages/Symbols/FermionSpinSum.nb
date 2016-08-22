@@ -214,20 +214,25 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "FermionSpinSum", "]"}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->1391906924],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
-    RowBox[{"SpinPolarizationSum", "\[Rule]", "Identity"}], ",", 
-    RowBox[{"SpinorCollect", "\[Rule]", "True"}], ",", 
-    RowBox[{"ExtraFactor", "\[Rule]", "1"}]}], "}"}], 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
+    RowBox[{"ExtraFactor", "\[Rule]", "1"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}], ",", 
+    RowBox[{"SpinPolarizationSum", "\[Rule]", "Identity"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[1]=",
- CellID->991777722]
+ CellLabel->"Out[2]=",
+ CellID->1112492862]
 }, Open  ]],
 
 Cell[TextData[{
@@ -256,7 +261,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->278938360],
 
 Cell[BoxData[
@@ -289,8 +294,8 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[2]=",
- CellID->1054035976]
+ CellLabel->"Out[3]=",
+ CellID->1523865852]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,7 +304,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "FermionSpinSum"}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->505730343],
 
 Cell[BoxData[
@@ -316,8 +321,8 @@ Cell[BoxData[
        TraditionalForm]}], "+", "m"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[3]=",
- CellID->702150317]
+ CellLabel->"Out[4]=",
+ CellID->385708083]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -326,15 +331,15 @@ Cell[BoxData[
  RowBox[{"%", "/.", 
   RowBox[{"DiracTrace", "\[Rule]", "TR"}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[4]:=",
+ CellLabel->"In[5]:=",
  CellID->1201144341],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"4", " ", "m"}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[4]=",
- CellID->1841873535]
+ CellLabel->"Out[5]=",
+ CellID->867661469]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -348,7 +353,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[5]:=",
+ CellLabel->"In[6]:=",
  CellID->1209998846],
 
 Cell[BoxData[
@@ -381,8 +386,8 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[5]=",
- CellID->533559982]
+ CellLabel->"Out[6]=",
+ CellID->1761985113]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -391,7 +396,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "FermionSpinSum"}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[6]:=",
+ CellLabel->"In[7]:=",
  CellID->723398437],
 
 Cell[BoxData[
@@ -408,8 +413,8 @@ Cell[BoxData[
        TraditionalForm]}], "-", "m"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[6]=",
- CellID->1013914472]
+ CellLabel->"Out[7]=",
+ CellID->1462275463]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -418,7 +423,7 @@ Cell[BoxData[
  RowBox[{"%", "/.", 
   RowBox[{"DiracTrace", "\[Rule]", "TR"}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[7]:=",
+ CellLabel->"In[8]:=",
  CellID->680865455],
 
 Cell[BoxData[
@@ -426,8 +431,8 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"-", "4"}], " ", "m"}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[7]=",
- CellID->982921172]
+ CellLabel->"Out[8]=",
+ CellID->1782629402]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -442,7 +447,7 @@ Cell[BoxData[
    RowBox[{"Spinor", "[", 
     RowBox[{"p1", ",", "m"}], "]"}]}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[8]:=",
+ CellLabel->"In[9]:=",
  CellID->1094170176],
 
 Cell[BoxData[
@@ -497,8 +502,8 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[8]=",
- CellID->1588165881]
+ CellLabel->"Out[9]=",
+ CellID->690680779]
 }, Open  ]],
 
 Cell["\<\
@@ -514,7 +519,7 @@ Cell[BoxData[
  RowBox[{"ct", "=", 
   RowBox[{"ComplexConjugate", "[", "t", "]"}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[9]:=",
+ CellLabel->"In[10]:=",
  CellID->1096475209],
 
 Cell[BoxData[
@@ -568,8 +573,8 @@ Cell[BoxData[
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[9]=",
- CellID->2031340810]
+ CellLabel->"Out[10]=",
+ CellID->1746604990]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -578,60 +583,61 @@ Cell[BoxData[
  RowBox[{"FermionSpinSum", "[", 
   RowBox[{"t", " ", "ct"}], "]"}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[10]:=",
+ CellLabel->"In[11]:=",
  CellID->2140871689],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"tr", "(", 
-   FormBox[
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
+  RowBox[{"-", 
+   RowBox[{"tr", "(", 
+    FormBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm]}], "+", "m"}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
        RowBox[{
         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
         FormBox[
          OverscriptBox[
-          FormBox["k1",
+          FormBox["p",
            TraditionalForm], "_"],
-         TraditionalForm]}], "+", "m"}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox["5",
-       TraditionalForm]], ".", 
-     RowBox[{"(", 
-      RowBox[{
+         TraditionalForm]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["k1",
+            TraditionalForm], "_"],
+          TraditionalForm]}], "+", "m"}], ")"}], ".", 
+      RowBox[{"(", 
        RowBox[{
         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
         FormBox[
          OverscriptBox[
-          FormBox["p1",
+          FormBox["p",
            TraditionalForm], "_"],
-         TraditionalForm]}], "+", "m"}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox["5",
-       TraditionalForm]]}],
-    TraditionalForm], ")"}], TraditionalForm]], "Output",
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[10]=",
- CellID->1688253260]
+ CellLabel->"Out[11]=",
+ CellID->1062780285]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -640,36 +646,36 @@ Cell[BoxData[
  RowBox[{"%", " ", "/.", 
   RowBox[{"DiracTrace", "\[Rule]", "TR"}]}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[11]:=",
+ CellLabel->"In[12]:=",
  CellID->1433763873],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"4", " ", 
+  RowBox[{
+   RowBox[{"-", "4"}], " ", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"-", 
-      RowBox[{
-       SuperscriptBox[
+     RowBox[{
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
         FormBox[
          OverscriptBox[
-          FormBox["p",
+          FormBox["k1",
            TraditionalForm], "_"],
-         TraditionalForm], "2"], " ", 
-       RowBox[{"(", 
-        RowBox[{
-         FormBox[
-          OverscriptBox[
-           FormBox["k1",
-            TraditionalForm], "_"],
-          TraditionalForm], 
-         FormBox["\<\"\[CenterDot]\"\>",
-          TraditionalForm], 
-         FormBox[
-          OverscriptBox[
-           FormBox["p1",
-            TraditionalForm], "_"],
-          TraditionalForm]}], ")"}]}]}], "+", 
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm]}], ")"}]}], "-", 
      RowBox[{"2", " ", 
       RowBox[{"(", 
        RowBox[{
@@ -701,25 +707,22 @@ Cell[BoxData[
          TraditionalForm]}], ")"}]}], "+", 
      RowBox[{
       SuperscriptBox["m", "2"], " ", 
-      RowBox[{"(", 
-       RowBox[{"-", 
-        SuperscriptBox[
-         FormBox[
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"],
-          TraditionalForm], "2"]}], ")"}]}]}], ")"}]}], 
-  TraditionalForm]], "Output",
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], "2"]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FermionSpinSum",
- CellLabel->"Out[11]=",
- CellID->1514376478]
+ CellLabel->"Out[12]=",
+ CellID->153933314]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"t", ",", " ", "ct"}], "]"}]], "Input",
  CellTags->"FermionSpinSum",
- CellLabel->"In[12]:=",
+ CellLabel->"In[13]:=",
  CellID->1557584860]
 }, Open  ]],
 
@@ -783,13 +786,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
+WindowSize->{700, 683},
 WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

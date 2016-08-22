@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17547,        613]
-NotebookOptionsPosition[     11341,        417]
+NotebookDataLength[     17546,        613]
+NotebookOptionsPosition[     11340,        417]
 NotebookOutlinePosition[     15252,        529]
 CellTagsIndexPosition[     15132,        523]
 WindowTitle->DiracGammaExpand
@@ -59,7 +59,7 @@ DiracGammaExpand.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38934], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39719], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracGammaExpand", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1383061130],
+ CellID->958361767],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2132359791],
+ CellID->1987909346],
 
 Cell[CellGroupData[{
 
@@ -430,7 +430,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 19.574692}", 
+   "built" -> "{2016, 8, 21, 21, 17, 49.850166}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -460,69 +460,69 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3421, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3421, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1383061130]},
+   CellID->958361767]},
  "DiracGammaExpand"->{
-  Cell[4055, 124, 332, 10, 27, "Input",
+  Cell[4054, 124, 332, 10, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->808958256],
-  Cell[4390, 136, 800, 30, 39, "Output",
+  Cell[4389, 136, 800, 30, 39, "Output",
    CellTags->"DiracGammaExpand",
    CellID->922918740],
-  Cell[5205, 169, 146, 4, 32, "Text",
+  Cell[5204, 169, 146, 4, 32, "Text",
    CellTags->"DiracGammaExpand",
    CellID->2029354787],
-  Cell[5376, 177, 140, 4, 27, "Input",
+  Cell[5375, 177, 140, 4, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->1573863723],
-  Cell[5519, 183, 396, 12, 49, "Output",
+  Cell[5518, 183, 396, 12, 49, "Output",
    CellTags->"DiracGammaExpand",
    CellID->50723928],
-  Cell[5930, 198, 122, 2, 32, "Text",
+  Cell[5929, 198, 122, 2, 32, "Text",
    CellTags->"DiracGammaExpand",
    CellID->2014620015],
-  Cell[6077, 204, 143, 4, 27, "Input",
+  Cell[6076, 204, 143, 4, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->260673945],
-  Cell[6223, 210, 856, 32, 39, "Output",
+  Cell[6222, 210, 856, 32, 39, "Output",
    CellTags->"DiracGammaExpand",
    CellID->511724887],
-  Cell[7094, 245, 111, 2, 32, "Text",
+  Cell[7093, 245, 111, 2, 32, "Text",
    CellTags->"DiracGammaExpand",
    CellID->1184042108],
-  Cell[7230, 251, 228, 6, 27, "Input",
+  Cell[7229, 251, 228, 6, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->1327296799],
-  Cell[7461, 259, 397, 12, 49, "Output",
+  Cell[7460, 259, 397, 12, 49, "Output",
    CellTags->"DiracGammaExpand",
    CellID->264621103],
-  Cell[7895, 276, 182, 5, 27, "Input",
+  Cell[7894, 276, 182, 5, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->447085558],
-  Cell[8080, 283, 499, 15, 67, "Output",
+  Cell[8079, 283, 499, 15, 67, "Output",
    CellTags->"DiracGammaExpand",
    CellID->85762253],
-  Cell[8594, 301, 125, 2, 32, "Text",
+  Cell[8593, 301, 125, 2, 32, "Text",
    CellTags->"DiracGammaExpand",
    CellID->56861818],
-  Cell[8744, 307, 140, 4, 27, "Input",
+  Cell[8743, 307, 140, 4, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->103977295],
-  Cell[8887, 313, 808, 31, 42, "Output",
+  Cell[8886, 313, 808, 31, 42, "Output",
    CellTags->"DiracGammaExpand",
    CellID->703741666],
-  Cell[9710, 347, 133, 4, 27, "Input",
+  Cell[9709, 347, 133, 4, 27, "Input",
    CellTags->"DiracGammaExpand",
    CellID->2056643915],
-  Cell[10199, 373, 1100, 39, 32, "Text",
+  Cell[10198, 373, 1100, 39, 32, "Text",
    CellTags->"DiracGammaExpand",
    CellID->1587243701]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13240, 461},
+ {"PrimaryExamplesSection", 13241, 461},
  {"DiracGammaExpand", 13383, 465}
  }
 *)
@@ -535,86 +535,86 @@ Cell[2868, 75, 59, 1, 42, "ObjectName",
 Cell[2930, 78, 466, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3421, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3421, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1383061130],
+ CellID->958361767],
 Cell[CellGroupData[{
-Cell[3834, 114, 196, 6, 25, "ExampleSection",
- CellID->2132359791],
+Cell[3833, 114, 196, 6, 25, "ExampleSection",
+ CellID->1987909346],
 Cell[CellGroupData[{
-Cell[4055, 124, 332, 10, 27, "Input",
+Cell[4054, 124, 332, 10, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->808958256],
-Cell[4390, 136, 800, 30, 39, "Output",
+Cell[4389, 136, 800, 30, 39, "Output",
  CellTags->"DiracGammaExpand",
  CellID->922918740]
 }, Open  ]],
-Cell[5205, 169, 146, 4, 32, "Text",
+Cell[5204, 169, 146, 4, 32, "Text",
  CellTags->"DiracGammaExpand",
  CellID->2029354787],
 Cell[CellGroupData[{
-Cell[5376, 177, 140, 4, 27, "Input",
+Cell[5375, 177, 140, 4, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->1573863723],
-Cell[5519, 183, 396, 12, 49, "Output",
+Cell[5518, 183, 396, 12, 49, "Output",
  CellTags->"DiracGammaExpand",
  CellID->50723928]
 }, Open  ]],
-Cell[5930, 198, 122, 2, 32, "Text",
+Cell[5929, 198, 122, 2, 32, "Text",
  CellTags->"DiracGammaExpand",
  CellID->2014620015],
 Cell[CellGroupData[{
-Cell[6077, 204, 143, 4, 27, "Input",
+Cell[6076, 204, 143, 4, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->260673945],
-Cell[6223, 210, 856, 32, 39, "Output",
+Cell[6222, 210, 856, 32, 39, "Output",
  CellTags->"DiracGammaExpand",
  CellID->511724887]
 }, Open  ]],
-Cell[7094, 245, 111, 2, 32, "Text",
+Cell[7093, 245, 111, 2, 32, "Text",
  CellTags->"DiracGammaExpand",
  CellID->1184042108],
 Cell[CellGroupData[{
-Cell[7230, 251, 228, 6, 27, "Input",
+Cell[7229, 251, 228, 6, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->1327296799],
-Cell[7461, 259, 397, 12, 49, "Output",
+Cell[7460, 259, 397, 12, 49, "Output",
  CellTags->"DiracGammaExpand",
  CellID->264621103]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7895, 276, 182, 5, 27, "Input",
+Cell[7894, 276, 182, 5, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->447085558],
-Cell[8080, 283, 499, 15, 67, "Output",
+Cell[8079, 283, 499, 15, 67, "Output",
  CellTags->"DiracGammaExpand",
  CellID->85762253]
 }, Open  ]],
-Cell[8594, 301, 125, 2, 32, "Text",
+Cell[8593, 301, 125, 2, 32, "Text",
  CellTags->"DiracGammaExpand",
  CellID->56861818],
 Cell[CellGroupData[{
-Cell[8744, 307, 140, 4, 27, "Input",
+Cell[8743, 307, 140, 4, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->103977295],
-Cell[8887, 313, 808, 31, 42, "Output",
+Cell[8886, 313, 808, 31, 42, "Output",
  CellTags->"DiracGammaExpand",
  CellID->703741666]
 }, Open  ]],
-Cell[9710, 347, 133, 4, 27, "Input",
+Cell[9709, 347, 133, 4, 27, "Input",
  CellTags->"DiracGammaExpand",
  CellID->2056643915]
 }, Open  ]],
-Cell[9858, 354, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9857, 354, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9926, 359, 270, 12, 31, "SeeAlsoSection",
+Cell[9925, 359, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10199, 373, 1100, 39, 32, "Text",
+Cell[10198, 373, 1100, 39, 32, "Text",
  CellTags->"DiracGammaExpand",
  CellID->1587243701]
 }, Open  ]],
-Cell[11314, 415, 23, 0, 42, "FooterCell"]
+Cell[11313, 415, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -46,23 +46,23 @@ Paint[diagsBhabha, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHeader->None,I
 
 
 ampBhabha=FCFAConvert[CreateFeynAmp[diagsBhabha, Truncated -> False],
-IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False]
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False, SMP->True]
 
 
 (* ::Section:: *)
 (*Unpolarized process  e^- e^+ -> e^- e^+ *)
 
 
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, ME, ME];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], SMP["m_e"], SMP["m_e"]];
 sqAmpBhabha =
 		(ampBhabha (ComplexConjugate[ampBhabha]//FCRenameDummyIndices))//PropagatorDenominatorExplicit//
 		Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2] & //ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 
 
-masslessSqAmpBhabha = (sqAmpBhabha /. {ME -> 0})//Simplify
+masslessSqAmpBhabha = (sqAmpBhabha /. {SMP["m_e"] -> 0})//Simplify
 
 
 masslessSqAmpBhabhaLiterature = 
-(2 EL^4 (s^2+u^2)/t^2 + 4  EL^4 u^2/(s t) + 2 EL^4 (t^2+u^2)/s^2);
+(2 SMP["e"]^4 (s^2+u^2)/t^2 + 4  SMP["e"]^4 u^2/(s t) + 2 SMP["e"]^4 (t^2+u^2)/s^2);
 Print["Check with the known result: ",
 			If[Simplify[(masslessSqAmpBhabhaLiterature-masslessSqAmpBhabha)]===0, "CORRECT.", "!!! WRONG !!!"]];

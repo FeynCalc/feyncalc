@@ -27,6 +27,10 @@ OneLoopSimplify::numerators =
 "OneLoopSimplify failed to eliminate all loop-momentum dependent numerators in \
 then give loop integral(s). Please examine the output carfeully.";
 
+OneLoopSimplify::failmsg =
+"Error! OneLoopSimplify has encountered a fatal \
+problem and must abort the computation. The problem reads: `1`";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -62,6 +66,13 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 		Block[ {q, dim, sunntocacf, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, spc,
 		substis, pae, dimred,lt6, lnt6,dirsimplify, nt6,dirsimp,
 		ope1loop, integraltable,loopisolate,time},
+
+
+			If [!FreeQ[$ScalarProducts, q],
+				Message[OneLoopSimplify::failmsg, "The loop momentum " <> ToString[qu,InputForm] <> " has scalar product rules attached to it."];
+				Abort[]
+			];
+
 			q = qu;
 			dim = Dimension /. {opt} /. Options[OneLoopSimplify];
 			dirsimplify = DiracSimplify/. {opt} /. Options[OneLoopSimplify];
@@ -100,7 +111,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			If[ !FreeQ2[t1, {SUNIndex,SUNFIndex}],
 				t2 = SUNSimplify[t1,  SUNNToCACF   -> sunntocacf,
 									SUNTrace     -> suntrace,
-									SUNFToTraces -> False],
+									Explicit -> False],
 				t2 = t1
 			];
 			t2 = FRH[t2,IsolateNames->loopisolate];
@@ -173,7 +184,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 
 			If[ (!FreeQ[t5, OPEDelta]) && (ope1loop === True),
 				t5 = Collect2[ OPE1Loop[q, t5, SUNNToCACF -> sunntocacf,
-											SUNFToTraces -> False
+											Explicit -> False
 									] /. dummyhead->Identity, q,
 								Factoring->Factor
 						]

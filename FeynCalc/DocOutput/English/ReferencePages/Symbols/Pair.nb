@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21592,        832]
+NotebookDataLength[     21595,        832]
 NotebookOptionsPosition[     14317,        581]
-NotebookOutlinePosition[     18781,        717]
-CellTagsIndexPosition[     18673,        711]
+NotebookOutlinePosition[     18784,        717]
+CellTagsIndexPosition[     18676,        711]
 WindowTitle->Pair
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$113899], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115502], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Pair", 
             ".html"]], None}]}]},
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->984140994],
+ CellID->1751102170],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1128437011],
+ CellID->431213674],
 
 Cell["This represents a four-dimensional metric tensor.", "Text",
  CellTags->"Pair",
@@ -594,7 +594,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 4.036112}", 
+   "built" -> "{2016, 8, 21, 21, 23, 15.768597}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -627,9 +627,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3709, 103, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3709, 103, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->984140994]},
+   CellID->1751102170]},
  "Pair"->{
   Cell[4320, 130, 105, 2, 32, "Text",
    CellTags->"Pair",
@@ -710,8 +710,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16403, 628},
- {"Pair", 16534, 632}
+ {"PrimaryExamplesSection", 16405, 628},
+ {"Pair", 16537, 632}
  }
 *)
 (*NotebookFileOutline
@@ -723,12 +723,12 @@ Cell[2808, 75, 47, 1, 42, "ObjectName",
 Cell[2858, 78, 826, 21, 127, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3709, 103, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3709, 103, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->984140994],
+ CellID->1751102170],
 Cell[CellGroupData[{
-Cell[4121, 122, 196, 6, 25, "ExampleSection",
- CellID->1128437011],
+Cell[4122, 122, 195, 6, 25, "ExampleSection",
+ CellID->431213674],
 Cell[4320, 130, 105, 2, 32, "Text",
  CellTags->"Pair",
  CellID->1660838641],

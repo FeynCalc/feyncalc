@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10216,        351]
+NotebookDataLength[     10218,        351]
 NotebookOptionsPosition[      6630,        241]
-NotebookOutlinePosition[      9234,        314]
-CellTagsIndexPosition[      9119,        308]
+NotebookOutlinePosition[      9236,        314]
+CellTagsIndexPosition[      9121,        308]
 WindowTitle->DiracEquation
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ DiracEquation.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38240], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39025], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracEquation", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1872702429],
+ CellID->1880471451],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1517893975],
+ CellID->1537458895],
 
 Cell[CellGroupData[{
 
@@ -254,7 +254,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 16.572562}", 
+   "built" -> "{2016, 8, 21, 21, 17, 46.874858}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -286,7 +286,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3376, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1872702429]},
+   CellID->1880471451]},
  "DiracEquation"->{
   Cell[4010, 124, 298, 9, 27, "Input",
    CellTags->"DiracEquation",
@@ -307,8 +307,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8488, 285},
- {"DiracEquation", 8628, 289}
+ {"PrimaryExamplesSection", 8490, 285},
+ {"DiracEquation", 8630, 289}
  }
 *)
 (*NotebookFileOutline
@@ -322,10 +322,10 @@ Cell[2912, 78, 439, 13, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3376, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1872702429],
+ CellID->1880471451],
 Cell[CellGroupData[{
 Cell[3789, 114, 196, 6, 25, "ExampleSection",
- CellID->1517893975],
+ CellID->1537458895],
 Cell[CellGroupData[{
 Cell[4010, 124, 298, 9, 27, "Input",
  CellTags->"DiracEquation",

@@ -78,7 +78,7 @@ ScalarProduct/:
 	Block[ {downv, pair,  ruleClearSP,ruleClearPair, a,b,
 			ruleClearFCESP,ruleClearFCESPD,ruleClearFCESPE,
 			spList, pairList, fceList, valsListOrig, valsList,
-			slot,dims,setval,dummy, tuples, hp, pr, sp},
+			slot,dims,setval,dummy, tuples, hp, pr, sp, entry},
 
 		dims = OptionValue[ScalarProduct,{c},SetDimensions];
 		{a,b} = Sort[{araw,braw}];
@@ -195,6 +195,13 @@ ScalarProduct/:
 		FCPrint[1,"ScalarProduct: Setting DownValues for SP"];
 		If[	MemberQ[dims,4],
 			DownValues[SP]=Join[DeleteDuplicates[Thread[dummy[fceList/.pair->SP,valsListOrig]]]/.dummy->RuleDelayed,DownValues[SP]]
+		];
+
+		(* Last but not least, add the set scalar product to our list*)
+		FCPrint[1,"ScalarProduct: Adding vectors the the list of set scalar products"];
+		entry= Sort[{Momentum[araw],Momentum[braw]}];
+		If[	!MemberQ[$ScalarProducts,entry],
+			AppendTo[$ScalarProducts,entry]
 		];
 
 		setval

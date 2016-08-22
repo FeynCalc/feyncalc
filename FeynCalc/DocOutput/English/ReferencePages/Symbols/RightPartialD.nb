@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12844,        455]
-NotebookOptionsPosition[      8113,        304]
+NotebookDataLength[     12843,        455]
+NotebookOptionsPosition[      8112,        304]
 NotebookOutlinePosition[     11239,        394]
 CellTagsIndexPosition[     11123,        388]
 WindowTitle->RightPartialD
@@ -59,7 +59,7 @@ RightPartialD.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$128372], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129607], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/RightPartialD", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1715818784],
+ CellID->1428598870],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1946395404],
+ CellID->709509502],
 
 Cell[CellGroupData[{
 
@@ -317,7 +317,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 15.946143}", 
+   "built" -> "{2016, 8, 21, 21, 24, 12.499631}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -348,39 +348,39 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3425, 98, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1715818784]},
+   CellID->1428598870]},
  "RightPartialD"->{
-  Cell[4059, 127, 140, 4, 27, "Input",
+  Cell[4058, 127, 140, 4, 27, "Input",
    CellTags->"RightPartialD",
    CellID->27121698],
-  Cell[4202, 133, 357, 13, 48, "Output",
+  Cell[4201, 133, 357, 13, 48, "Output",
    CellTags->"RightPartialD",
    CellID->1461309897],
-  Cell[4596, 151, 273, 8, 27, "Input",
+  Cell[4595, 151, 273, 8, 27, "Input",
    CellTags->"RightPartialD",
    CellID->1087611627],
-  Cell[4872, 161, 485, 19, 48, "Output",
+  Cell[4871, 161, 485, 19, 48, "Output",
    CellTags->"RightPartialD",
    CellID->1675009373],
-  Cell[5394, 185, 139, 4, 27, "Input",
+  Cell[5393, 185, 139, 4, 27, "Input",
    CellTags->"RightPartialD",
    CellID->1776931750],
-  Cell[5536, 191, 496, 20, 40, "Output",
+  Cell[5535, 191, 496, 20, 40, "Output",
    CellTags->"RightPartialD",
    CellID->528358345],
-  Cell[6069, 216, 132, 4, 27, "Input",
+  Cell[6068, 216, 132, 4, 27, "Input",
    CellTags->"RightPartialD",
    CellID->887044202],
-  Cell[6204, 222, 400, 11, 49, "Output",
+  Cell[6203, 222, 400, 11, 49, "Output",
    CellTags->"RightPartialD",
    CellID->1851835493],
-  Cell[6641, 238, 179, 6, 27, "Input",
+  Cell[6640, 238, 179, 6, 27, "Input",
    CellTags->"RightPartialD",
    CellID->472956421],
-  Cell[6823, 246, 284, 8, 49, "Output",
+  Cell[6822, 246, 284, 8, 49, "Output",
    CellTags->"RightPartialD",
    CellID->1374997587],
-  Cell[7475, 277, 596, 22, 70, "Text",
+  Cell[7474, 277, 596, 22, 70, "Text",
    CellTags->"RightPartialD",
    CellID->1409903491]}
  }
@@ -402,61 +402,61 @@ Cell[2913, 78, 487, 16, 86, "Usage",
 Cell[CellGroupData[{
 Cell[3425, 98, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1715818784],
+ CellID->1428598870],
 Cell[CellGroupData[{
-Cell[3838, 117, 196, 6, 25, "ExampleSection",
- CellID->1946395404],
+Cell[3838, 117, 195, 6, 25, "ExampleSection",
+ CellID->709509502],
 Cell[CellGroupData[{
-Cell[4059, 127, 140, 4, 27, "Input",
+Cell[4058, 127, 140, 4, 27, "Input",
  CellTags->"RightPartialD",
  CellID->27121698],
-Cell[4202, 133, 357, 13, 48, "Output",
+Cell[4201, 133, 357, 13, 48, "Output",
  CellTags->"RightPartialD",
  CellID->1461309897]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4596, 151, 273, 8, 27, "Input",
+Cell[4595, 151, 273, 8, 27, "Input",
  CellTags->"RightPartialD",
  CellID->1087611627],
-Cell[4872, 161, 485, 19, 48, "Output",
+Cell[4871, 161, 485, 19, 48, "Output",
  CellTags->"RightPartialD",
  CellID->1675009373]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5394, 185, 139, 4, 27, "Input",
+Cell[5393, 185, 139, 4, 27, "Input",
  CellTags->"RightPartialD",
  CellID->1776931750],
-Cell[5536, 191, 496, 20, 40, "Output",
+Cell[5535, 191, 496, 20, 40, "Output",
  CellTags->"RightPartialD",
  CellID->528358345]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6069, 216, 132, 4, 27, "Input",
+Cell[6068, 216, 132, 4, 27, "Input",
  CellTags->"RightPartialD",
  CellID->887044202],
-Cell[6204, 222, 400, 11, 49, "Output",
+Cell[6203, 222, 400, 11, 49, "Output",
  CellTags->"RightPartialD",
  CellID->1851835493]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6641, 238, 179, 6, 27, "Input",
+Cell[6640, 238, 179, 6, 27, "Input",
  CellTags->"RightPartialD",
  CellID->472956421],
-Cell[6823, 246, 284, 8, 49, "Output",
+Cell[6822, 246, 284, 8, 49, "Output",
  CellTags->"RightPartialD",
  CellID->1374997587]
 }, Open  ]]
 }, Open  ]],
-Cell[7134, 258, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7133, 258, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7202, 263, 270, 12, 31, "SeeAlsoSection",
+Cell[7201, 263, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7475, 277, 596, 22, 70, "Text",
+Cell[7474, 277, 596, 22, 70, "Text",
  CellTags->"RightPartialD",
  CellID->1409903491]
 }, Open  ]],
-Cell[8086, 302, 23, 0, 70, "FooterCell"]
+Cell[8085, 302, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

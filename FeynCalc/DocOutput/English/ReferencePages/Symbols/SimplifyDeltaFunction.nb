@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21474,        756]
+NotebookDataLength[     21475,        756]
 NotebookOptionsPosition[     13341,        504]
-NotebookOutlinePosition[     18201,        639]
-CellTagsIndexPosition[     18076,        633]
+NotebookOutlinePosition[     18202,        639]
+CellTagsIndexPosition[     18077,        633]
 WindowTitle->SimplifyDeltaFunction
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SimplifyDeltaFunction.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$135398], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136447], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SimplifyDeltaFunction", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1658871887],
+ CellID->1647774514],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->837595594],
+ CellID->846531538],
 
 Cell[CellGroupData[{
 
@@ -517,7 +517,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 52.417688}", 
+   "built" -> "{2016, 8, 21, 21, 24, 43.543399}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -551,7 +551,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3584, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1658871887]},
+   CellID->1647774514]},
  "SimplifyDeltaFunction"->{
   Cell[4217, 126, 220, 7, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
@@ -632,8 +632,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15358, 550},
- {"SimplifyDeltaFunction", 15506, 554}
+ {"PrimaryExamplesSection", 15359, 550},
+ {"SimplifyDeltaFunction", 15507, 554}
  }
 *)
 (*NotebookFileOutline
@@ -647,10 +647,10 @@ Cell[2961, 78, 598, 15, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3584, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1658871887],
+ CellID->1647774514],
 Cell[CellGroupData[{
 Cell[3997, 116, 195, 6, 25, "ExampleSection",
- CellID->837595594],
+ CellID->846531538],
 Cell[CellGroupData[{
 Cell[4217, 126, 220, 7, 27, "Input",
  CellTags->"SimplifyDeltaFunction",

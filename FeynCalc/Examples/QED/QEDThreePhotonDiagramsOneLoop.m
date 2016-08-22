@@ -3,10 +3,10 @@
 (* :Title: QEDThreePhotonDiagramsOneLoop                                    *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the 3-photon diagrams in QED at 1-loop         *)
@@ -47,7 +47,7 @@ Paint[diags = InsertFields[CreateTopologies[1, 1 -> 2 ], {V[1]} -> {V[1],V[1]},
 
 
 amps = FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],
-IncomingMomenta->{k1},OutgoingMomenta->{k2,k3},LoopMomenta->{q},UndoChiralSplittings->True,ChangeDimension->D,List->False];
+IncomingMomenta->{k1},OutgoingMomenta->{k2,k3},LoopMomenta->{q},UndoChiralSplittings->True,ChangeDimension->D,List->False,SMP->True];
 
 
 (* ::Text:: *)

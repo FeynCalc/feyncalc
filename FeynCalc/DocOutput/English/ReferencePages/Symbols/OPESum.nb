@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$111476], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$113079], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/OPESum",
              ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->155629472],
+ CellID->515601059],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1187166959],
+ CellID->1756004996],
 
 Cell[CellGroupData[{
 
@@ -457,7 +457,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 53.826887}", 
+   "built" -> "{2016, 8, 21, 21, 23, 6.159074}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -488,7 +488,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3414, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->155629472]},
+   CellID->515601059]},
  "OPESum"->{
   Cell[4047, 127, 477, 16, 27, "Input",
    CellTags->"OPESum",
@@ -539,10 +539,10 @@ Cell[2870, 78, 519, 16, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3414, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->155629472],
+ CellID->515601059],
 Cell[CellGroupData[{
 Cell[3826, 117, 196, 6, 25, "ExampleSection",
- CellID->1187166959],
+ CellID->1756004996],
 Cell[CellGroupData[{
 Cell[4047, 127, 477, 16, 27, "Input",
  CellTags->"OPESum",

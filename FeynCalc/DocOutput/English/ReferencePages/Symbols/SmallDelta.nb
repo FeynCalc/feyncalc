@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5135,        144]
+NotebookDataLength[      5136,        144]
 NotebookOptionsPosition[      3272,         93]
-NotebookOutlinePosition[      5057,        140]
-CellTagsIndexPosition[      5014,        137]
+NotebookOutlinePosition[      5058,        140]
+CellTagsIndexPosition[      5015,        137]
 WindowTitle->SmallDelta
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136439], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$137488], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SmallDelta", ".html"]], None}]}]},
@@ -106,7 +106,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 57.018913}", 
+   "built" -> "{2016, 8, 21, 21, 24, 49.452302}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

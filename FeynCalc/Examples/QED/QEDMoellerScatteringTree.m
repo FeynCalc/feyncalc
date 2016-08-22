@@ -3,10 +3,10 @@
 (* :Title: QEDMoellerScatteringTree                                         *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for Moeller
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -46,24 +46,24 @@ Paint[diagsMoeller, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHeader->None,
 
 
 ampMoeller=FCFAConvert[CreateFeynAmp[diagsMoeller, Truncated -> False],
-IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False]
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False,SMP->True]
 
 
 (* ::Section:: *)
 (*Unpolarized process  e^- e^- -> e^- e^- *)
 
 
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, ME, ME];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], SMP["m_e"], SMP["m_e"]];
 sqAmpMoeller =
 		(ampMoeller (ComplexConjugate[ampMoeller]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr] & // Contract//Simplify
 
 
-masslessSqAmpMoeller = (sqAmpMoeller /. {ME -> 0})//Simplify
+masslessSqAmpMoeller = (sqAmpMoeller /. {SMP["m_e"] -> 0})//Simplify
 
 
-masslessSqAmpMoellerLiterature = 
-2 EL^4 (s^2/t^2+ u^2/t^2   + s^2/u^2 + t^2/u^2   ) + 4 EL^4 s^2/(t u);
+masslessSqAmpMoellerLiterature =
+2 SMP["e"]^4 (s^2/t^2+ u^2/t^2   + s^2/u^2 + t^2/u^2   ) + 4 SMP["e"]^4 s^2/(t u);
 Print["Check with the known result: ",
 			If[Simplify[(masslessSqAmpMoellerLiterature-masslessSqAmpMoeller)]===0, "CORRECT.", "!!! WRONG !!!"]];

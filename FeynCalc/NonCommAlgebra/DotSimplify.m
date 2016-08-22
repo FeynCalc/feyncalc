@@ -2,15 +2,16 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DotSimplify *)
+(* :Title: DotSimplify														*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: last changed September 25th 2003 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: DotSimplify *)
+(* :Summary:  Simplifies non-commututative products							*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -36,11 +37,17 @@ DotPower::usage =
 non-commutative powers are represented by successive multiplication \
 or by Power.";
 
+PreservePropagatorStructures::usage =
+"PreservePropagatorStructures is an option for DotSimplify. If set to True, \
+numerators of fermionic propagators like (GS[p]+m) that appear in \
+chains of Dirac matrices will not be expanded.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 
 dootpow;
+dotsimpHold;
 
 End[]
 
@@ -48,12 +55,16 @@ Begin["`DotSimplify`Private`"]
 
 dsVerbose::usage="";
 
+DeclareNonCommutative[dotsimpHold];
+
 (*Error messages for calling DotSimplify with less or more than 1 argument*)
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
-	soso /; Message[DotSimplify::argrx, DotSimplify, Length[{a}]+1, 1];
+	(Message[DotSimplify::argrx, DotSimplify, Length[{a}]+1, 1];
+	Abort[]);
 
 DotSimplify[___Rule] :=
-	soso /; Message[DotSimplify::argrx, DotSimplify, 0, 1];
+	(Message[DotSimplify::argrx, DotSimplify, 0, 1];
+	Abort[]);
 
 Options[DotSimplify] = {
 	Expanding -> True,
@@ -61,13 +72,15 @@ Options[DotSimplify] = {
 	DotSimplifyRelations -> {},
 	DotPower -> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
 																									F.Orellana*)
-	FeynCalcInternal -> True
+	FeynCalcInternal -> True,
+	PreservePropagatorStructures -> False
 };
 
 
 DotSimplify[xxx_, OptionsPattern[]] :=
 	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
-	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot
+	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
+	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, xx, sunTrace
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -79,7 +92,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		simrel = OptionValue[DotSimplifyRelations];
 
-		FCPrint[1, "DotSimplify: Entering1.", FCDoControl->dsVerbose];
+		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
 
 		(* Here a different convention for FCI is used, False means that FCI is needed*)
 		If[ OptionValue[FCI] =!= True,
@@ -87,12 +100,11 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			xx = FCI[xxx];
 		];
 
-		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
 		FCPrint[3, "DotSimplify: Entering with", FCDoControl->dsVerbose];
 
 		(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
-		momf[x_] :=
-			momf[x] = Momentum[FactorTerms[x]];
+		momf[xX_] :=
+			momf[xX] = Momentum[FactorTerms[xX]];
 
 		xx = xx /. Momentum[p_] :> momf[p] /.  simrel;
 
@@ -105,11 +117,11 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			If[ simrel =!= {},
 				(*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
 				sru[aa_ :> bb_] :=
-					(DOT[xxX___, Sequence @@ If[ Head[aa] === DOT,
+					(DOT[xxXX___, Sequence @@ If[ Head[aa] === DOT,
 												List @@ aa,
 												{aa}
-											],yyY___]
-					:> (sdoot[xxX, bb, yyY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
+											],yyYY___] :>
+					(sdoot[xxXX, bb, yyYY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
 				sru[aa_ -> bb_] :=
 					sru[aa :> bb];
 				simrel = Map[sru, simrel];
@@ -125,15 +137,16 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			(* CHANGE 07/26/94 *)
 
 			(*If the expression contains SU(N) matrices, put Dot on hold*)
-			FCPrint[1, "DotSimplify: Putting Dot on hold.", FCDoControl->dsVerbose];
 			If[ !FreeQ[x, SUNT],
+				FCPrint[1, "DotSimplify: Putting Dot on hold.", FCDoControl->dsVerbose];
 				SetAttributes[TimesDot, HoldAll];
 				TimesDot[a__] :=
 					If[ FreeQ[{a}, SUNT],
 						Times[a],
 						DOT[a]
 					];
-				x = x /. Times -> TimesDot
+				x = x /. Times -> TimesDot;
+				FCPrint[1, "DotSimplify: After Putting Dot on hold: ", x, FCDoControl->dsVerbose]
 			];
 
 
@@ -144,7 +157,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
 			];
 
-			FCPrint[3, "DotSimplify: After writing out non-commutuative objects",x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After writing out non-commutuative objects ",x, FCDoControl->dsVerbose];
 
 			(* check special case *)
 
@@ -166,12 +179,21 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				]
 			];
 
-			FCPrint[2, "DotSimplify: After checking simrel", x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After checking simrel", x, FCDoControl->dsVerbose];
+
+			If[	OptionValue[PreservePropagatorStructures],
+				FCPrint[1, "DotSimplify: Preserving propagator structures.", FCDoControl->dsVerbose];
+				x = x /. SUNTrace ->sunTrace //. DOT->holdDOT //.
+					holdDOT[a___, ee_. (c_ + d_DiracGamma), b___] /;FreeQ2[{c},{DiracGamma,holdDOT}] :> holdDOT[a, ee dotsimpHold[c + d], b] //.
+					holdDOT->DOT /. sunTrace -> SUNTrace;
+				FCPrint[3, "DotSimplify: After preserving propagator structures: ",  x, FCDoControl->dsVerbose];
+
+			];
 
 			pid[u_,_] :=
 				u;
 
-			(* This is for converting DownValues of Commuatator and AntiCommutator to rules *)
+			(* This is for converting DownValues of Commutator and AntiCommutator to rules *)
 			cru[{commm[a_ /; FreeQ[a, Pattern], b_ /; FreeQ[b, Pattern]], ww_}] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
@@ -244,6 +266,8 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 					(Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
 			];
 
+			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators:", x, FCDoControl->dsVerbose];
+
 
 
 			FCPrint[1, "DotSimplify: Non-commutative expansion. Time used:", TimeUsed[],  FCDoControl->dsVerbose];
@@ -270,6 +294,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 					]
 				];
 			(* Evaluate all the commutators and anticommutators*)
+			x = x/. SUNTrace -> sunTrace;
 			If[ FreeQ[Attributes @@ {DOT}, Flat],
 				x = FixedPoint[(# /. DOT -> dlin0/. dlin0 -> dlin //.
 					dlin[a__] :> dlin1[{}, a] //. dlin1[{ookk___}] :> DOT[ookk] //.
@@ -281,53 +306,51 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 						dlin1[{ookk___}] :> DOT[ookk] /. DOT -> DOTcomm) /. dlin -> DOT];
 				x = FixedPoint[simpf, x, 123];
 			];
+			x = x/. sunTrace -> SUNTrace;
+			FCPrint[3, "DotSimplify: After doing non-commutative expansion:", x, FCDoControl->dsVerbose];
+
 			x
 		];
 
 		FCPrint[2, "DotSimplify: After catch", x, FCDoControl->dsVerbose];
 
-		(*Pull out all SU(N) Traces out of the expression*)
-
-		FCPrint[1, "DotSimplify: Pulling out SU(N) traces. Time used: ", TimeUsed[], FCDoControl->dsVerbose];
-		If[ !FreeQ[x, SUNTrace],
-			x = x  /. {	DOT[a___,b_SUNTrace,c___] :> (b  DOT[a,c]) ,
-						DOT[a___,b1_SUNTrace - b2_SUNTrace, c___] :> (b1 DOT[a,c] - b2 DOT[a,c])}
+		(*Pull out nested SU(N) and Dirac traces*)
+		If[ !FreeQ2[x, {SUNTrace,DiracTrace}],
+			FCPrint[1, "DotSimplify: Pulling out nested SU(N) and Dirac traces. ", FCDoControl->dsVerbose];
+			x = x  //. {	DOT[a___,(b: DiracTrace | SUNTrace)[arg__],c___] :> (b[arg]  DOT[a,c]) ,
+							(tr1: DiracTrace|SUNTrace)[(tr2 : DiracTrace|SUNTrace)[arg__] a_] :> tr2[arg] tr1[a]
+			};
+			FCPrint[3, "DotSimplify: After pulling out nested SU(N) and Dirac traces.", x, FCDoControl->dsVerbose];
 		];
 
-		FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
+
 		If[ !FreeQ[x, SUNT],
+			FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
 			x  = x //. {DOT[a__,b__SUNT, c___]:> DOT[b, a, c] /; FreeQ[{a}, SUNT],
 						(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
-						DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT]}
+						DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT]};
+			FCPrint[3, "DotSimplify: After pulling out SU(N) matrices", FCDoControl->dsVerbose]
 		];
-
-		FCPrint[3, "DotSimplify: After factoring out SUNTs", x, FCDoControl->dsVerbose];
-
 
 		(* if the expression contains a QuantumField, factor it out*)
-		FCPrint[1, "DotSimplify: Factoring out QuantumField's", FCDoControl->dsVerbose];
 		If[ !FreeQ[x, QuantumField],
+			FCPrint[1, "DotSimplify: Factoring out QuantumField's", FCDoControl->dsVerbose];
 			x = x /. DOT->dodot //. {dodot[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :> dodot[a,c,b,d]} /. dodot->DOT;
-			x = x /. DOT[a__SUNT, b__QuantumField] :> (DOT[a]*DOT[b])
+			x = x /. DOT[a__SUNT, b__QuantumField] :> (DOT[a]*DOT[b]);
+			FCPrint[3, "DotSimplify: After factoring out QuantumFields", x, FCDoControl->dsVerbose]
 		];
-
-		FCPrint[3, "DotSimplify: After factoring out QuantumFields", x, FCDoControl->dsVerbose];
-
-		(*
-		If[!FreeQ[x, SUNT],
-			x  = x /. DOT[a__DiracGamma, b__SUNT] :> (DOT[a] DOT[b])
-			];
-		If[!FreeQ[x, SUNT],
-			x  = x /. DOT[b__SUNT, a__DiracGamma] :> (DOT[a] DOT[b])
-			];
-		*)
 
 		(* If the same non-commutative object is multiplied with itself multiple times, write this as a power,i.e.
 			f.f.f.g.h.k -> f^3.g.h.k *)
-		FCPrint[1, "DotSimplify: Working out DotPower.", FCDoControl->dsVerbose];
+
 		If[ OptionValue[DotPower],
+			FCPrint[1, "DotSimplify: Working out DotPower.", FCDoControl->dsVerbose];
 			x = x /. DOT -> dootpow /. dootpow -> DOT;
 			FCPrint[3, "DotSimplify: After applying DotPower: ", x, FCDoControl->dsVerbose]
+		];
+
+		If[	OptionValue[PreservePropagatorStructures],
+				x = x/.dotsimpHold->Identity
 		];
 
 		FCPrint[1, "DotSimplify: Leaving.", FCDoControl->dsVerbose];

@@ -3,10 +3,10 @@
 (* :Title: QCDQiQBariToQiQBariTree                                          *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -46,23 +46,23 @@ Paint[diagsQiQBariToQiQBari, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHead
 
 
 ampQiQBariToQiQBari=FCFAConvert[CreateFeynAmp[diagsQiQBariToQiQBari,Truncated -> False],IncomingMomenta->{p1,p2},OutgoingMomenta->{p3,p4},
-DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False];
+DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,SMP->True];
 
 
 (* ::Section:: *)
 (*Unpolarized process  q_i qbar_i -> q_i qbar_i *)
 
 
-SetMandelstam[s, t, u, p1, p2, -p3, -p4, MU, MU, MU, MU];
+SetMandelstam[s, t, u, p1, p2, -p3, -p4, SMP["m_u"], SMP["m_u"], SMP["m_u"], SMP["m_u"]];
 sqAmpQiQBariToQiQBari =(1/3^2)*
 		(ampQiQBariToQiQBari (ComplexConjugate[ampQiQBariToQiQBari]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		SUNSimplify[#,Explicit->True,SUNNToCACF->False]&//ReplaceAll[#,{DiracTrace->Tr,SUNN->3}]&//Contract//Simplify
 
 
-masslesssqAmpQiQBariToQiQBari = (sqAmpQiQBariToQiQBari /. {MU -> 0})//Simplify
+masslesssqAmpQiQBariToQiQBari = (sqAmpQiQBariToQiQBari /. {SMP["m_u"] -> 0})//Simplify
 
 
-masslesssqAmpQiQBariToQiQBariEllis=((4/9)Gstrong^4 ((s^2+u^2)/t^2+(t^2+u^2)/s^2)-(8/27)Gstrong^4 u^2/(s t));
+masslesssqAmpQiQBariToQiQBariEllis=((4/9)SMP["g_s"]^4 ((s^2+u^2)/t^2+(t^2+u^2)/s^2)-(8/27)SMP["g_s"]^4 u^2/(s t));
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
 			If[Simplify[(masslesssqAmpQiQBariToQiQBariEllis-masslesssqAmpQiQBariToQiQBari)]===0, "CORRECT.", "!!! WRONG !!!"]];

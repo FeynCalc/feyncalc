@@ -111,6 +111,12 @@ FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[$ScalarProducts, {q1}],
+			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
+		];
+
+
 		FCPrint[1,"FDS: Entering 1-loop FDS with: ", ex, FCDoControl->fdsVerbose];
 
 
@@ -163,19 +169,29 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		tmp = removeAnitsymmetricIntegrals[tmp,q];
 		FCPrint[3, "fdsOneLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
 
+		(* Special trick for same mass propagators to avoid terms like 1/[q^2-m^2] [(q-p)^2-m^2]^3 instead of
+			1/[q^2-m^2]^3 [(q-p)^2-m^2] *)
+		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],m_]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,m_]..),rest___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
+					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
+					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}];
+
+		FCPrint[3, "fdsOneLoop: After using special trick for same mass propagators:  ", tmp, FCDoControl->fdsVerbose];
 
 		(* Special trick for massless propagators to avoid terms like 1/q^2 [(q-p)^2]^3 instead of
 			1/[q^2]^3 [(q-p)^2] *)
 		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],0]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,0]..),rest___]/;
 			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
-					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - pe)} /.
+					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 
+		FCPrint[3, "fdsOneLoop: After using special trick for massless propagators:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Perform a shift to make the very first propagator free of external momenta	*)
 		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q,dim_:4]+pe_, m_],rest___]/; FreeQ[pe,q] :>
-					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - pe)} /.
+					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
 
 		FCPrint[3, "fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
@@ -200,7 +216,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		(* 	After the shifts our single integral usually turns into a sum of
 			integrals with different numerators. Some of them might vanish by symmetry	*)
-		res = Expand2[EpsEvaluate[ExpandScalarProduct[res,Momentum->{q}],Momentum->{q}],q];
+		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True],q];
 		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
 		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
 		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
@@ -232,6 +248,7 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 
 		(* The number of shifts is limited to the number of independent propagators reduced by 1 *)
 		shiftList = FixedPoint[fdsOneLoopsShiftMaker[#[[1]],q,canonicalProps,#[[2]]]&,{prs,{}},Length[prs]-1][[2]];
+		shiftList = shiftList/.Momentum->extractm;
 
 		FCPrint[3, "fdsOneLoopsGeneric: List of the shifts to be applied: ", shiftList, FCDoControl->fdsVerbose];
 
@@ -535,6 +552,11 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fdsVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
+			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
 		];
 
 		FCPrint[1,"FDS: Entering 2-loop FDS with", ex, FCDoControl->fdsVerbose];

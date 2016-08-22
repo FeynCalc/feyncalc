@@ -33,7 +33,7 @@ End[]
 Begin["`ScalarGluonVertex`Private`"]
 
 Options[ScalarGluonVertex] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Gauge -> 1
 };

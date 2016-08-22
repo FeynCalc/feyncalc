@@ -19,12 +19,6 @@ Abbreviation::usage =
 "Abbreviation[name] gives a shortname for name (in HoldForm). \
 E.g.: Abbreviation[QuarkPropagator] --> HoldForm[QP].";
 
-AlphaStrong::usage =
-"AlphaStrong is a head of the QCD coupling constant.";
-
-AlphaFS::usage =
-"AlphaFS is a head of the fine-structure constant.";
-
 AntiQuarkField::usage =
 "AntiQuarkField is the name of a fermionic field.";
 
@@ -98,6 +92,14 @@ As alternative input LeviCivita[mu,nu, ...][p,q,...] can be used.";
 Epsilon::usage =
 "Epsilon is (D-4), where D is the number of space-time dimensions. Epsilon \
 stands for a small positive number.";
+
+EpsilonUV::usage =
+"EpsilonUV denotes (D-4), where D is the number of space-time dimensions. EpsilonUV \
+stands for a small positive number that explicitly regulates only UV divergences.";
+
+EpsilonIR::usage =
+"EpsilonIR denotes (D-4), where D is the number of space-time dimensions. EpsilonIR \
+stands for a small negative number that explicitly regulates only IR divergences.";
 
 ExplicitLorentzIndex::usage =
 "ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is \
@@ -198,9 +200,6 @@ GSD::usage =
 
 GSE::usage =
 "GSE[p] is transformed into DiracSlash[p,Dimension->D-4] by FeynCalcInternal.";
-
-Gstrong::usage =
-"Gstrong denotes the strong coupling constant.";
 
 IFPD::usage = "IFPD[p, m] denotes (p^2 - m^2)."
 
@@ -353,6 +352,18 @@ derivatives (PartialD) acting on the field.";
 
 QuarkField::usage =
 "QuarkField is the name of a fermionic field.";
+
+QuarkFieldPsi::usage =
+"QuarkFieldPsi is the name of a fermionic field.";
+
+QuarkFieldChi::usage =
+"QuarkFieldChi is the name of a fermionic field.";
+
+QuarkFieldPsiDagger::usage =
+"QuarkFieldPsiDagger is the name of a fermionic field.";
+
+QuarkFieldChiDagger::usage =
+"QuarkFieldChiDagger is the name of a fermionic field.";
 
 RightPartialD::usage =
 "RightPartialD[mu] denotes partial_mu, acting to the right.";
@@ -514,12 +525,26 @@ DiracGamma::gamma5fail =
 This is fine for all dimensional regularization schemes supported by FeynCalc including NDR. \
 Evaluation aborted!";
 
+DiracGamma::noint =
+"DiracGamma[`1`] is forbidden in FeynCalc. If you want to specify an explicit Lorentz index, \
+please use DiracGamma[ExplicitLorentzIndex[`1`]]. Evaluation aborted!";
+
+Momentum::lorentzhead =
+"`1` is forbidden in FeynCalc. Momentum cannot be the head of a LorentzIndex!";
+
+LorentzIndex::momentumhead =
+"`1` is forbidden in FeynCalc. LorentzIndex cannot be the head of a Momentum !";
+
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
 
-initialPairDownValues
-initialSPDownValues
-initialSPDDownValues
+initialPairDownValues;
+initialSPDownValues;
+initialSPDDownValues;
+initialScalarProducts;
+DiracHeadsList;
+SUNHeadsList;
+TensorArgsList;
 
 End[]
 
@@ -553,6 +578,9 @@ DeclareNonCommutative[SpinorV];
 DeclareNonCommutative[SpinorVBar];
 DeclareNonCommutative[SUNT];
 
+DeclareFCTensor[Pair];
+DeclareFCTensor[Eps];
+
 $FCLorentzIndexSubHeads = _Upper | _Lower;
 
 $TypesettingDim4 = "_";
@@ -581,6 +609,9 @@ SetAttributes[ExplicitLorentzIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[ExplicitSUNFIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[LorentzIndex, Constant];
+SetAttributes[MT, Orderless];
+SetAttributes[MTD, Orderless];
+SetAttributes[MTE, Orderless];
 SetAttributes[Pair, Orderless];
 SetAttributes[SD, Orderless];
 SetAttributes[SDF, Orderless];
@@ -606,14 +637,11 @@ Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
 Options[Polarization] = {Transversality -> False};
 
+DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 
-AlphaStrong /:
-	MakeBoxes[AlphaStrong, TraditionalForm]:=
-				SubscriptBox["\[Alpha]", "s"];
+SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
-AlphaFS /:
-	MakeBoxes[AlphaFS, TraditionalForm]:=
-				"\[Alpha]";
+TensorArgsList = {LorentzIndex, ExplicitLorentzIndex, Momentum};
 
 CA /:
 	MakeBoxes[CA, TraditionalForm]:=
@@ -672,8 +700,8 @@ DiracGamma[x_ (h: LorentzIndex|ExplicitLorentzIndex|Momentum)[p_, dim1_:4], dim2
 DiracGamma[(x: LorentzIndex|ExplicitLorentzIndex|Momentum)[y_, dim_:4], 4] :=
 	DiracGamma[x[y,dim]];
 
-DiracGamma[x_Integer, dim_:4] :=
-	DiracGamma[ExplicitLorentzIndex[x],dim]/; (x=!=5 && x=!=6 && x=!=7);
+DiracGamma[x_Integer, ___] :=
+	(Message[DiracGamma::noint, x]; Abort[])/; (x=!=0 && x=!=5 && x=!=6 && x=!=7);
 
 DiracGamma[(n:5|6|7), 4] :=
 	DiracGamma[n];
@@ -683,11 +711,12 @@ DiracGamma[(n:5|6|7), dim_] :=
 
 DiracGamma[_, 0] :=
 	0;
-(*Why?? F.Orellana, 21/11-2003*)
-(*DiracGamma[0] = 0;
-DiracGamma[0, _]:= 0;*)
-DiracGamma[a_Plus] :=
-	Map[DiracGamma, a];
+
+DiracGamma[0,___]:=
+	0;
+
+DiracGamma[a_Plus, dim_:4] :=
+	Map[DiracGamma[#,dim]&, a];
 
 DiracGamma[(h1:LorentzIndex|Momentum)[x_,dim1_:4], (h2:LorentzIndex|Momentum)[y_,dim2_:4]] :=
 	DOT[DiracGamma[h1[x,dim1], dim1],
@@ -832,6 +861,8 @@ DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
 		ToBoxes[FCI[DiracSlash[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
 
+DiracSpinor = Spinor;
+
 Eps[x__, Dimension->4] :=
 	Eps[x]/; OptionValue[Eps,Dimension]===4 && Length[{x}]===4;
 
@@ -839,14 +870,8 @@ Eps[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] =!= 4) && (Fr
 Blank,BlankSequence,BlankNullSequence}]) :=
 	Message[Eps::argrx, "Eps["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
 
-Eps[x__Symbol | x__FCGV, opts:OptionsPattern[]] :=
-	Signature[{x}] Eps@@ Join[Sort[{x}],{opts}] /; !OrderedQ[{x}] && Length[{x}]===4;
-
 Eps[x__Symbol | x__FCGV, OptionsPattern[]] :=
 	0/; Signature[{x}]===0 && Length[{x}]===4;
-
-Eps[a__?(MatchQ[#,(x_Integer|ExplicitLorentzIndex[x_Integer])/;NonNegative[x]]&), OptionsPattern[]] :=
-	Signature[{a}] && Length[{a}]===4;
 
 Eps[a___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], b___,
 	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___ ] :=
@@ -869,6 +894,14 @@ Eps /:
 Epsilon /:
 	MakeBoxes[Epsilon, TraditionalForm]:=
 		TagBox["\[CurlyEpsilon]", TraditionalForm];
+
+EpsilonUV /:
+	MakeBoxes[EpsilonUV, TraditionalForm] :=
+		SubscriptBox["\[CurlyEpsilon]", "UV"];
+
+EpsilonIR /:
+	MakeBoxes[EpsilonIR, TraditionalForm] :=
+		SubscriptBox["\[CurlyEpsilon]", "IR"];
 
 ExplicitLorentzIndex[x_, 4] :=
 	ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
@@ -914,8 +947,16 @@ ff[y_/;Head[y]=!=List] :=
 FAD[-p_, opts:OptionsPattern[]] :=
 	FAD[p,opts];
 
-FAD[a___,{x_,y_,n_Integer?Positive},b___, opts:OptionsPattern[]]:=
+FAD[a___,{x_,y_,n_Integer?Positive},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
 	FAD[a,Sequence @@ Table[{x,y}, {i, 1, n}],b,opts]
+
+(* A propagator to the power 0 is unity *)
+FAD[a___,{_,_,0},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
+	FAD[a,b,opts]/;Length[{a,b}]=!=0
+
+(* A propagator to the power 0 is unity *)
+FAD[{_,_,0}, OptionsPattern[]]:=
+	1;
 
 FAD/:
 	MakeBoxes[FAD[a__,OptionsPattern[]], TraditionalForm]/; !MemberQ[{a},{_,_,_}]:=
@@ -1078,10 +1119,6 @@ GSE/:
 
 (* ------------------------------------------------------------------------ *)
 
-Gstrong /:
-	MakeBoxes[Gstrong, TraditionalForm]:=
-		SubscriptBox["g","s"];
-
 IFPD[Momentum[OPEDelta,___],0] :=
 	0;
 
@@ -1239,6 +1276,10 @@ Li3 =
 Li2 =
 	PolyLog[2,#]&;
 
+LorentzIndex[Momentum[x_], dim_:4]:=
+	(Message[LorentzIndex::momentumhead,ToString[LorentzIndex[FCGV["Momentum"][x],dim],InputForm]];
+	LorentzIndex[FCGV["Momentum"][x],dim]);
+
 (* expanded because of CreateFCAmp's strange results  ... *)
 LorentzIndex[LorentzIndex[in_, dim_ :4], dim_ :4] :=
 	LorentzIndex[in,dim];
@@ -1287,6 +1328,10 @@ Momentum[0, _:4] :=
 
 Momentum[_, 0] :=
 	0;
+
+Momentum[LorentzIndex[x_], dim_:4]:=
+	(Message[Momentum::lorentzhead,ToString[Momentum[FCGV["LorentzIndex"][x],dim],InputForm]];
+	Momentum[FCGV["LorentzIndex"][x],dim]);
 
 Momentum[Momentum[x_, dim1_:4], dim2_:4] :=
 	If[ dim1===dim2,
@@ -1435,10 +1480,6 @@ Pair[Momentum[pi_,___], Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]...,
 	opts:OptionsPattern[Polarization]], dii___]] :=
 	Contract[ExpandScalarProduct[Pair[Momentum[pi-x,dii],
 	Momentum[Polarization[x, ki, opts],dii]]]] /; ( pi - Last[x] ) === 0;
-
-(* by convention ... *)
-Pair[Momentum[Polarization[x_,__],___], Momentum[Polarization[x_,__],___] ] :=
-	-1;
 
 (*    Typesetting for the metric tensor.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1742,53 +1783,99 @@ QuantumField[f1_QuantumField] :=
 	f1;
 
 QuantumField /:
-	MakeBoxes[ QuantumField[a_][p_], TraditionalForm]:=
+	MakeBoxes[ QuantumField[a_/;Head[a]=!=FCPartialD][p_], TraditionalForm]:=
 		TBox[a,"(",p,")"];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[a_], TraditionalForm]:=
+	MakeBoxes[ QuantumField[a_/;Head[a]=!=FCPartialD], TraditionalForm]:=
 		TBox[a];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[f_, (LorentzIndex|ExplicitLorentzIndex)[mu_,_:4]], TraditionalForm]:=
+	MakeBoxes[ QuantumField[f_/;Head[f]=!=FCPartialD, (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,_:4]], TraditionalForm]:=
 		SubscriptBox[TBox[f], TBox[mu]];
 
 QuantumField /:
-	MakeBoxes[QuantumField[f_, lori : (LorentzIndex | Momentum)[_, _ : 4] ..,
-		suni : SUNIndex[_] ..], TraditionalForm] :=
-			SubsuperscriptBox[TBox[f], TBox[lori], TBox[suni]]
+	MakeBoxes[QuantumField[f_/;Head[f]=!=FCPartialD, lori : (LorentzIndex  | ExplicitLorentzIndex | Momentum)[_, _ : 4]...,
+		otherIndices1_/;!MatchQ[Head[otherIndices1],LorentzIndex|ExplicitLorentzIndex|Momentum], otherIndices2___], TraditionalForm] :=
+			If[ {lori}=!={},
+				SubsuperscriptBox[TBox[f], TBox[lori], TBox[otherIndices1, otherIndices2]],
+				SuperscriptBox[TBox[f], TBox[otherIndices1, otherIndices2]]
+			];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[f_, lori: (LorentzIndex | Momentum)[_,_ : 4].., suni:SUNIndex[_]..][p_],
+	MakeBoxes[ QuantumField[f_/;Head[f]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex| Momentum)[_,_ : 4]...,
+		otherIndices1_/;!MatchQ[Head[otherIndices1],LorentzIndex|ExplicitLorentzIndex|Momentum], otherIndices2___][p_],
 	TraditionalForm]:=
-		RowBox[{SubsuperscriptBox[TBox[f], TBox[lori],
-		TBox[suni]], "(", TBox[p], ")"}];
+		If[ {lori}=!={},
+			RowBox[{SubsuperscriptBox[TBox[f], TBox[lori], TBox[otherIndices1, otherIndices2]], "(", TBox[p], ")"}],
+			RowBox[{SuperscriptBox[TBox[f], TBox[otherIndices1, otherIndices2]], "(", TBox[p], ")"}]
+		];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[FCPartialD[pa_], a_, lori: (LorentzIndex | ExplicitLorentzIndex)[_,_ : 4]...,
-	suni:SUNIndex[_]...], TraditionalForm]:=
-		RowBox[{SubscriptBox["\[PartialD]", TBox[pa]],
-		SubsuperscriptBox[TBox[a], TBox[lori], TBox[suni]]}];
+	MakeBoxes[ QuantumField[FCPartialD[pa_], a_/;Head[a]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex| Momentum)[_,_ : 4]...,
+	otherIndices1_/;!MatchQ[Head[otherIndices1],LorentzIndex|ExplicitLorentzIndex|Momentum], otherIndices2___], TraditionalForm]:=
+		If[ {lori}=!={},
+			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], SubsuperscriptBox[TBox[a], TBox[lori], TBox[otherIndices1, otherIndices2]],")"}],
+			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], SuperscriptBox[TBox[a], TBox[otherIndices1, otherIndices2]],")"}]
+		];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[FCPartialD[pa_]^m_, a_,  lori: (LorentzIndex | ExplicitLorentzIndex)[_,_ : 4]...,
-	suni:SUNIndex[_]...],
+	MakeBoxes[ QuantumField[FCPartialD[pa_], a_/;Head[a]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex| Momentum)[_,_ : 4]...], TraditionalForm]:=
+		If[ {lori}=!={},
+			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], SubscriptBox[TBox[a], TBox[lori]],")"}],
+			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], TBox[a],")"}]
+		];
+
+
+QuantumField /:
+	MakeBoxes[ QuantumField[FCPartialD[pa_]^m_, a_/;Head[a]=!=FCPartialD,  lori: (LorentzIndex | ExplicitLorentzIndex| Momentum)[_,_ : 4]...,
+	otherIndices1_/;!MatchQ[Head[otherIndices1],LorentzIndex|ExplicitLorentzIndex|Momentum], otherIndices2___],
 	TraditionalForm]:=
-		RowBox[{SuperscriptBox[TBox[FCPartialD[pa]],TBox[m]],
-		SubsuperscriptBox[TBox[a], TBox[lori], TBox[suni]]}];
+		If[ {lori}=!={},
+			RowBox[{"(",SuperscriptBox[TBox[FCPartialD[pa]],TBox[m]], SubsuperscriptBox[TBox[a], TBox[lori], TBox[otherIndices1, otherIndices2]],")"}],
+			RowBox[{"(",SuperscriptBox[TBox[FCPartialD[pa]],TBox[m]], SuperscriptBox[TBox[a], TBox[otherIndices1, otherIndices2]],")"}]
+		];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[pa__FCPartialD, a_, lori: Momentum[_,_ : 4]..., suni:SUNIndex[_]...],
+	MakeBoxes[ QuantumField[FCPartialD[pa_]^m_, a_/;Head[a]=!=FCPartialD,  lori: (LorentzIndex | ExplicitLorentzIndex | Momentum)[_,_ : 4]...],
 	TraditionalForm]:=
-		RowBox[{TBox[pa], SubsuperscriptBox[TBox[a], TBox[lori], TBox[suni]]}];
+		If[ {lori}=!={},
+			RowBox[{"(",SuperscriptBox[TBox[FCPartialD[pa]],TBox[m]], SubscriptBox[TBox[a], TBox[lori]],")"}],
+			RowBox[{"(",SuperscriptBox[TBox[FCPartialD[pa]],TBox[m]],TBox[a],")"}]
+		];
 
 QuantumField /:
-	MakeBoxes[ QuantumField[pa__FCPartialD, a_, lori: (LorentzIndex | ExplicitLorentzIndex)[_,_ : 4]...,
-	suni:SUNIndex[_]...], TraditionalForm]:=
-		RowBox[{TBox[pa], SubsuperscriptBox[TBox[a], TBox[lori], TBox[suni]]}];
+	MakeBoxes[ QuantumField[pa__FCPartialD, a_/;Head[a]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex | Momentum)[_,_ : 4]...],
+		TraditionalForm]:=
+		If[ {lori}=!={},
+			RowBox[{"(",TBox[pa], SubscriptBox[TBox[a], TBox[lori]],")"}],
+			RowBox[{"(",TBox[pa], TBox[a],")"}]
+		];
+
+QuantumField /:
+	MakeBoxes[ QuantumField[pa__FCPartialD, a_/;Head[a]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex | Momentum)[_,_ : 4]...,
+	otherIndices1_/;!MatchQ[Head[otherIndices1],LorentzIndex|ExplicitLorentzIndex|Momentum], otherIndices2___], TraditionalForm]:=
+		If[ {lori}=!={},
+			RowBox[{"(",TBox[pa], SubsuperscriptBox[TBox[a], TBox[lori], TBox[otherIndices1, otherIndices2]],")"}],
+			RowBox[{"(",TBox[pa], SuperscriptBox[TBox[a], TBox[otherIndices1, otherIndices2]],")"}]
+		];
+
+
 
 QuarkField /:
 	MakeBoxes[QuarkField, TraditionalForm]:= "\[Psi]";
+
+QuarkFieldPsi /:
+	MakeBoxes[QuarkFieldPsi, TraditionalForm]:= "\[Psi]";
+
+QuarkFieldChi /:
+	MakeBoxes[QuarkFieldChi, TraditionalForm]:= "\[Chi]";
+
+QuarkFieldPsiDagger /:
+	MakeBoxes[QuarkFieldPsiDagger, TraditionalForm]:= SuperscriptBox["\[Psi]","\[Dagger]"];
+
+QuarkFieldChiDagger /:
+	MakeBoxes[QuarkFieldChiDagger, TraditionalForm]:= SuperscriptBox["\[Chi]","\[Dagger]"];
 
 RightPartialD[xx__] :=
 	RightPartialD @@ (LorentzIndex /@ {xx}) /;
@@ -1923,13 +2010,6 @@ Spinor[n_. x_/; (frp[x]&&FreeQ[x, Momentum]), y___/;frp[y]] :=
 	(Spinor[n x, y] = Spinor[n Momentum[x], y]) /;
 	(frp[{n, x, y}] && (n^2)===1);
 
-(* this is convention ... *)
-(*Spinor[Momentum[x_, _], m_, op___] :=
-	Spinor[Momentum[x], m, op];
-
-Spinor[-Momentum[x_, _], m_, op___] :=
-	Spinor[-Momentum[x], m, op];*)
-
 Spinor[kk_.+ n_. Momentum[ a_Plus, dim_ : 4], m_, y___] :=
 	Spinor[kk+ n Momentum[a, dim], m, y] =
 	(Spinor[MomentumExpand[kk + n Momentum[a, dim]] ,m,y] );
@@ -2010,10 +2090,12 @@ HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] :=
 	(Head[x] === SUNIndex) && FreeQ[x, Pattern] &&
 	Length[{a,x,b,x,c}] == 3;
 
+
 HoldPattern[SUNF[a___, x_, y_, b___, ___Rule]] :=
 	-SUNF[a, y, x, b] /; FreeQ[{a,x,y,b}, Pattern] &&
 	Length[{a,x,y,b}] === 3 && (!OrderedQ[{x, y}]) &&
 	Head[x] === SUNIndex && Head[y] === SUNIndex;
+
 
 SUNF[i_,j_,k_,Explicit -> False] :=
 	SUNF[i,j,k];
@@ -2073,6 +2155,9 @@ SUNTF /:
 SUNTF[a_,b_,c_] :=
 	SUNTF[{a},b,c]/;Head[a]=!=List;
 
+(* Tr[T^a] = 0 *)
+SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=
+	0;
 
 Zeta2 /:
 	N[Zeta2] = N[Zeta[2]];
@@ -2086,6 +2171,8 @@ Zeta2 /:
 initialPairDownValues = DownValues[Pair];
 initialSPDownValues = DownValues[SP];
 initialSPDDownValues = DownValues[SPD];
+initialScalarProducts = $ScalarProducts;
+
 
 FCPrint[1,"SharedObjects loaded."];
 End[]

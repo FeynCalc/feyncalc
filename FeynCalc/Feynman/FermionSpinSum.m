@@ -19,9 +19,9 @@
 FermionSpinSum::usage =
 "FermionSpinSum[x] constructs Traces out of squared ampliudes in x.";
 
-SpinorCollect::usage =
-"SpinorCollect is an option for FermionSpinSum. If set to False the \
-argument of FermionSpinSum has to be already collected w.r.t. Spinor.";
+DiracSimplify::spinorsleft =
+"Error! After applying FermionSpinSum to all spinor chains the output
+still contains spinors. Evaluation aborted.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -30,133 +30,112 @@ End[]
 
 Begin["`FermionSpinSum`Private`"]
 
-(*FRH = FixedPoint[ReleaseHold, #]&;*)
-trsimp[a_. DiracGamma[_,___]] :=
-	0 /; FreeQ[a, DiracGamma];
-trsimp[DOT[expr__]] :=
-	DiracTrace[DOT[expr] ] /; Length[{expr}] < 4;
+fssVerbose::usage="";
 
-Options[FermionSpinSum] = {SpinPolarizationSum -> Identity,
-							SpinorCollect -> True,
-							ExtraFactor -> 1};
+Options[FermionSpinSum] = {
+	Collecting -> True,
+	Factoring -> Factor,
+	ExtraFactor -> 1,
+	FCI -> False,
+	FCVerbose -> False,
+	DotSimplify -> True,
+	Momentum -> All,
+	SpinPolarizationSum -> Identity
+};
 
-(*if the expression contains spinors, apply the Dirac equation*)
+FermionSpinSum[expr_List, opts:OptionsPattern[]]:=
+	Map[FermionSpinSum[#, opts]&, expr];
 
-cOL[xy_] :=
-	Block[ {temP = xy, nodot = 0, ntemP},
-		FCPrint[3,"entering cOL"];
-		If[ Head[temP] === Plus,
-			nodot = Select[temP, FreeQ[#, DOT]&];
-			temP = temP - nodot;
-			nodot = nodot/. {a_ DiracGamma[5] :> 0 /;
-					FreeQ[a, DiracGamma]};
-		];
-		temP = Collect2[temP, DiracGamma, Factoring -> False];
-		FCPrint[3,"collected in cOL"];
-		FCPrint[3,"exiting cOL"];
-		temP + nodot
-	];
-
-dirtracesep[xy_] :=
-	If[ Head[xy] =!= Times,
-		DiracTrace[xy//cOL],
-		SUNSimplify[Select[xy, FreeQ2[#, {DiracGamma, LorentzIndex, Eps}]&]] *
-			DiracTrace[Select[xy,!FreeQ2[#,
-								{DiracGamma, LorentzIndex, Eps}]&]//cOL]
-	];
-
-epSimp[expr_] := DiracOrder[expr];
-
-FermionSpinSum[expr_Plus, opts:OptionsPattern[]] :=
-	Map[FermionSpinSum[#,opts]&,expr];
-FermionSpinSum[expr_List, opts:OptionsPattern[]] :=
-	Map[FermionSpinSum[#,opts]&,expr];
 FermionSpinSum[expr_, OptionsPattern[]] :=
-	(OptionValue[ExtraFactor] expr )/; FreeQ[expr,Spinor];
+	Block[ {spinPolarizationSum,extraFactor,moms, ex, spChain, ssIso, time},
 
+		extraFactor = OptionValue[ExtraFactor];
+		moms = OptionValue[Momentum];
 
-
-FermionSpinSum[expr_, opts:OptionsPattern[]] :=
-	Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-		spir,spir2,dirtri, nx = FCI[expr], sufu },
-
-		(* Parse options and warn about unrecognized options *)
-		Catch[
-			Check[
-				{spinPolarizationSum, extraFactor, spinorCollect} =
-					OptionValue[{SpinPolarizationSum,ExtraFactor,SpinorCollect}],
-				FCPrint[0,"The above error occured in ",HoldComplete[FermionSpinSum[expr,opts]]];
-				Throw["Invalid options: " <> ToString[FilterRules[Flatten[{opts},1], Except[Options[FermionSpinSum]]]],"fcFermionSpinSumInvalidOptions" ],
-				OptionValue::nodef
-			],
-			"fcFermionSpinSumInvalidOptions"];
-
-	(* ----------------------------------------------------------------------------- *)
-	(* fermion polarization sums *)
-		spir = { (* ubar u , vbar v *)
-				Spinor[s_. Momentum[pe1_], arg__ ]^2 :>
-				(DotSimplify[spinPolarizationSum[ (DiracGamma[Momentum[pe1]] + s First[{arg}]) ], Expanding -> False]),
-				(Spinor[s_. Momentum[pe1_], arg__] . dots___ ) *
-				(dots2___ . Spinor[s_. Momentum[pe1_], arg__ ] )  :>
-				dots2 . DotSimplify[spinPolarizationSum[(DiracGamma[Momentum[pe1]] +
-										s First[{arg}])],Expanding->False] . dots
-				};
-		spir2 = Spinor[s_. Momentum[pe_], arg__] . dots___ .
-				Spinor[s_. Momentum[pe_], arg__] :> DiracTrace[(
-				DotSimplify[spinPolarizationSum[(DiracGamma[Momentum[pe]] +
-							s First[{arg}])], Expanding -> False] . dots)        ] /;
-				FreeQ[{dots}, Spinor];
-		dirtri = DiracTrace[n_. DOT[a1_,a2__]] DiracTrace[m_. DOT[b1_,b2__]] :>
-					DiracTrace[ DiracTrace[n DOT[a1,a2]] m DOT[b1,b2]] /;
-					Length[DOT[a1,a2]] <= Length[DOT[b1,b2]] &&
-					Head[n] =!= DOT && Head[m] =!= DOT;
-	(* ----------------------------------------------------------------------------- *)
-		uNi = Unique[System`C];
-		plsphold = Unique[System`C];
-		sufu[xyx_] :=
-			Block[ {tsuf, spif, mulEx, mulEx2, epSimp, doT, xx = xyx},
-				spif = Select[xx, !FreeQ[#, Spinor]&];
-				tsuf = xx / spif;
-				HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
-					If[ !FreeQ[(extraFactor tsuf), LorentzIndex],
-						dirtracesep[DiracSimplify[
-						Contract[mul xy tsuf, extraFactor], Expanding -> False]//epSimp],
-						dirtracesep[DiracSimplify[ mul extraFactor tsuf xy,Expanding -> False]//epSimp]
-					];
-				mulEx2[xy_] :=
-					mul tsuf extraFactor xy;
-				(mulEx[(((spif)//.spir//.spir2//.dirtri) /. DiracTrace->trsimp/.
-								trsimp->DiracTrace /. $MU->uNi )
-						] /.mulEx->mulEx2
-				)
-			]; (* endofsufu *)
-
-		(* Entry point of the function *)
-		If[ spinorCollect === True,
-			FCPrint[2,"Collecting terms w.r.t spinors in   ", nx];
-			nx = Collect2[nx /. {Plus[xyx__] :>
-				If[ FreeQ[{xyx}, Spinor],
-					plsphold[xyx],
-					Plus[xyx]
-				]}, Spinor, Factoring -> False
-						] /. plsphold -> Plus;
-			FCPrint[2,"Collecting terms w.r.t spinors done:   ", nx];
-		];
-		If[ !FreeQ[ nx, $MU],
-			nx = nx /. $MU->Unique[System`C]
-		];
-		If[ Head[nx] === Plus,
-			nx = Map[sufu, nx],
-			nx = sufu[nx]
+		If [OptionValue[FCVerbose]===False,
+			fssVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				fssVerbose=OptionValue[FCVerbose]
+			];
 		];
 
-			(* in case somthing went wrong .. *)
-		If[ nx =!= 0 && FreeQ[nx, DiracTrace],
-			FCPrint[0,"Something went wrong while computing the fermions spin sum! Returning unevaluated expression:"];
-			nx = expr extraFactor
+		If[	OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
 		];
-		nx/.mul->1
-	]/; !FreeQ[expr,Spinor];
+
+		If[	FreeQ[ex,Spinor],
+			Return[extraFactor ex]
+		];
+
+		FCPrint[3, "FermionSpinSum: Entering with ",ex, FCDoControl->fssVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FermionSpinSum: Collecting terms w.r.t spinors.", FCDoControl->fssVerbose];
+		ex = FCDiracIsolate[ex, DiracTrace->False,DiracGamma->False,FCI->True,Isolate->True, IsolateFast->True, IsolateNames->ssIso,Head->spChain];
+		FCPrint[1,"FermionSpinSum: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
+		FCPrint[3, "FermionSpinSum: After collecting terms w.r.t spinors: ",ex, FCDoControl->fssVerbose];
+
+
+		(* Applying spin sum formula *)
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FermionSpinSum: Applying spin sum formula.", FCDoControl->fssVerbose];
+
+		ex = ex //. {
+		(* Product of two spinor chains, all momenta *)
+		spChain[DOT[Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___], dots1___, Spinor[s2_. Momentum[pe2_,dim_:4], mass2_, ___]]] *
+		spChain[DOT[Spinor[s2_. Momentum[pe2_,dim_:4], mass2_, ___], dots2___, Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___]]]/;
+		FreeQ[{dots1,dots2},Spinor] && (moms===All || (MemberQ[moms,pe1] && MemberQ[moms,pe2] )) :>
+			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[pe1,dim],dim] + s1 mass1)], dots1,
+				spinPolarizationSum[(DiracGamma[Momentum[pe2,dim],dim] + s2 mass2)], dots2]],
+
+		spChain[DOT[Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___], dots1___, Spinor[s2_. Momentum[pe2_,dim_:4], mass2_, arg2___]]] *
+		spChain[DOT[Spinor[s3_. Momentum[pe3_,dim_:4], mass3_, arg3___], dots2___, Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___]]]/;
+		FreeQ[{dots1,dots2},Spinor] && (moms===All || MemberQ[moms,pe1]) :>
+			spChain[DOT[Spinor[s3 Momentum[pe3,dim], mass3, arg3], dots2,
+				spinPolarizationSum[(DiracGamma[Momentum[pe1,dim],dim] + s1 mass1)], dots1,
+				Spinor[s2 Momentum[pe2,dim], mass2, arg2]]],
+
+		(* A spinor chain with one spin sum inside *)
+		spChain[DOT[Spinor[s_. Momentum[pe_,dim_:4], mass_, ___], dots___, Spinor[s_. Momentum[pe_,dim_:4], mass_, ___]]] /;
+		FreeQ[{dots},Spinor] && (moms===All || MemberQ[moms,pe])  :>
+			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[pe,dim],dim] + s mass)], dots]]
+		};
+
+		FCPrint[1,"FermionSpinSum: applying spin sum formula done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
+		FCPrint[3,"FermionSpinSum: After applying spin sum formula: ", ex, FCDoControl->fssVerbose];
+
+		If[ OptionValue[DotSimplify],
+			time=AbsoluteTime[];
+			FCPrint[1, "FermionSpinSum: Applying DotSimplify.", FCDoControl->fssVerbose];
+			ex = ex /. spinPolarizationSum[x_]:> spinPolarizationSum[DotSimplify[x,Expanding->False]];
+			FCPrint[1,"FermionSpinSum: applying spin sum formula done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
+			FCPrint[3,"FermionSpinSum: After applying spin sum formula: ", ex, FCDoControl->fssVerbose];
+		];
+
+		ex = ex /. spinPolarizationSum -> OptionValue[SpinPolarizationSum];
+
+		If[ moms===All && !FreeQ[ex,spChain],
+			Message[DiracSimplify::spinorsleft];
+		];
+
+		ex = ex /. spChain -> Identity;
+		ex = FRH[ex,IsolateNames->ssIso];
+
+		If [OptionValue[Collecting],
+			time=AbsoluteTime[];
+			FCPrint[1, "FermionSpinSum: Collecting w.r.t DiracTrace", FCDoControl->fssVerbose];
+			ex = Collect2[ex, DiracTrace, Factoring->OptionValue[Factoring]];
+			FCPrint[1,"FermionSpinSum: Collecting w.r.t DiracTrace done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
+			FCPrint[3,"FermionSpinSum: After collecting w.r.t DiracTrace: ", ex, FCDoControl->fssVerbose];
+		];
+
+
+		ex = ex extraFactor;
+
+		ex
+	]/; Head[expr]=!=List;
 
 FCPrint[1,"FermionSpinSum.m loaded."];
 End[]

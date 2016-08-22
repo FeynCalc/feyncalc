@@ -1,0 +1,18 @@
+
+
+(* :Title: ToFI.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToFI			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`TARCER`ToFI = {
+{"fcstToFI-ID1","ToFI[FAD[{q1, m1}, {-p + q1, m2}], {q1}, {p}]", "TBI[D, SPD[p, p], {{1, m2}, {1, m1}}]"}
+};

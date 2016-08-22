@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140294], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$141249], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SO", 
             ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1396288829],
+ CellID->1376503462],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->737978449],
+ CellID->996773448],
 
 Cell[CellGroupData[{
 
@@ -274,7 +274,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 17, 15.529196}", 
+   "built" -> "{2016, 8, 21, 21, 25, 5.032287}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -306,7 +306,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3347, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1396288829]},
+   CellID->1376503462]},
  "SO"->{
   Cell[3980, 124, 115, 4, 27, "Input",
    CellTags->"SO",
@@ -348,10 +348,10 @@ Cell[2859, 78, 463, 13, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3347, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1396288829],
+ CellID->1376503462],
 Cell[CellGroupData[{
 Cell[3760, 114, 195, 6, 25, "ExampleSection",
- CellID->737978449],
+ CellID->996773448],
 Cell[CellGroupData[{
 Cell[3980, 124, 115, 4, 27, "Input",
  CellTags->"SO",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10703,        369]
-NotebookOptionsPosition[      6805,        246]
-NotebookOutlinePosition[      9531,        324]
-CellTagsIndexPosition[      9418,        318]
+NotebookDataLength[     10701,        369]
+NotebookOptionsPosition[      6804,        246]
+NotebookOutlinePosition[      9530,        324]
+CellTagsIndexPosition[      9417,        318]
 WindowTitle->GammaExpand
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ GammaExpand.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$77518], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$79946], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GammaExpand", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1912243656],
+ CellID->389221524],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1727781996],
+ CellID->1871365332],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 56.702043}", 
+   "built" -> "{2016, 8, 21, 21, 20, 41.610916}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -288,29 +288,29 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3329, 94, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3329, 94, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1912243656]},
+   CellID->389221524]},
  "GammaExpand"->{
-  Cell[3963, 123, 204, 6, 27, "Input",
+  Cell[3962, 123, 204, 6, 27, "Input",
    CellTags->"GammaExpand",
    CellID->53996644],
-  Cell[4170, 131, 435, 15, 36, "Output",
+  Cell[4169, 131, 435, 15, 36, "Output",
    CellTags->"GammaExpand",
    CellID->388026766],
-  Cell[4642, 151, 216, 7, 27, "Input",
+  Cell[4641, 151, 216, 7, 27, "Input",
    CellTags->"GammaExpand",
    CellID->1712828018],
-  Cell[4861, 160, 738, 26, 66, "Output",
+  Cell[4860, 160, 738, 26, 66, "Output",
    CellTags->"GammaExpand",
    CellID->842543076],
-  Cell[5636, 191, 205, 6, 27, "Input",
+  Cell[5635, 191, 205, 6, 27, "Input",
    CellTags->"GammaExpand",
    CellID->509676592],
-  Cell[5844, 199, 308, 10, 36, "Output",
+  Cell[5843, 199, 308, 10, 36, "Output",
    CellTags->"GammaExpand",
    CellID->861147229],
-  Cell[6520, 232, 243, 9, 32, "Text",
+  Cell[6519, 232, 243, 9, 32, "Text",
    CellTags->"GammaExpand",
    CellID->1346477755]}
  }
@@ -318,7 +318,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 8620, 289},
- {"GammaExpand", 8758, 293}
+ {"GammaExpand", 8757, 293}
  }
 *)
 (*NotebookFileOutline
@@ -330,47 +330,47 @@ Cell[2843, 75, 54, 1, 42, "ObjectName",
 Cell[2900, 78, 404, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3329, 94, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3329, 94, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1912243656],
+ CellID->389221524],
 Cell[CellGroupData[{
-Cell[3742, 113, 196, 6, 25, "ExampleSection",
- CellID->1727781996],
+Cell[3741, 113, 196, 6, 25, "ExampleSection",
+ CellID->1871365332],
 Cell[CellGroupData[{
-Cell[3963, 123, 204, 6, 27, "Input",
+Cell[3962, 123, 204, 6, 27, "Input",
  CellTags->"GammaExpand",
  CellID->53996644],
-Cell[4170, 131, 435, 15, 36, "Output",
+Cell[4169, 131, 435, 15, 36, "Output",
  CellTags->"GammaExpand",
  CellID->388026766]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4642, 151, 216, 7, 27, "Input",
+Cell[4641, 151, 216, 7, 27, "Input",
  CellTags->"GammaExpand",
  CellID->1712828018],
-Cell[4861, 160, 738, 26, 66, "Output",
+Cell[4860, 160, 738, 26, 66, "Output",
  CellTags->"GammaExpand",
  CellID->842543076]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5636, 191, 205, 6, 27, "Input",
+Cell[5635, 191, 205, 6, 27, "Input",
  CellTags->"GammaExpand",
  CellID->509676592],
-Cell[5844, 199, 308, 10, 36, "Output",
+Cell[5843, 199, 308, 10, 36, "Output",
  CellTags->"GammaExpand",
  CellID->861147229]
 }, Open  ]]
 }, Open  ]],
-Cell[6179, 213, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6178, 213, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6247, 218, 270, 12, 31, "SeeAlsoSection",
+Cell[6246, 218, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6520, 232, 243, 9, 32, "Text",
+Cell[6519, 232, 243, 9, 32, "Text",
  CellTags->"GammaExpand",
  CellID->1346477755]
 }, Open  ]],
-Cell[6778, 244, 23, 0, 42, "FooterCell"]
+Cell[6777, 244, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

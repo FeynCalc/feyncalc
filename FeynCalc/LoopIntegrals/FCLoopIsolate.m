@@ -16,10 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopIsolate::usage =
-"FCLoopIsolate[expr,{q1,q2,...}] wraps \
-loop integrals into heads specified by the user. This is useful \
-when you want to know which loop integrals appear appear in the \
-given expression.";
+"FCLoopIsolate[expr,{q1,q2,...}] wraps loop integrals into heads specified \
+by the user " <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCLoopIsolate"],
+StandardForm];
 
 MultiLoop::usage =
 "MultiLoop is an option for FCLoopIsolate. When set to True, \
@@ -109,7 +109,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]];
 		];
 
-		If[	OptionValue[FeynAmpDenominatorSplit],
+		If[	OptionValue[FeynAmpDenominatorSplit] && !FreeQ[ex,FeynAmpDenominator],
 			ex = FeynAmpDenominatorSplit[ex,Momentum->lmoms]
 		];
 

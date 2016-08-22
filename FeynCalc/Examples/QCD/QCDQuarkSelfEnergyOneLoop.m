@@ -47,7 +47,7 @@ Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1,
 
 
 amps=FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],IncomingMomenta->{p},
-OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,UndoChiralSplittings->True,ChangeDimension->D,List->False]/.{MU->M,GaugeXi[g]->GaugeXi}
+OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,UndoChiralSplittings->True,ChangeDimension->D,List->False,SMP->True]/.{SMP["m_u"]->M,GaugeXi[g]->GaugeXi}
 
 
 ampsEval=amps//Contract//SUNSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse//FCI
@@ -74,7 +74,7 @@ quarSelfEnergy=I*ampsSing//Collect[#,M,Simplify]&
 (*We can compare this result to Eq. 2.5.138 in Foundations of QCD by T. Muto. Notice that the result in the book must be multiplied by (-1) due to the way how self-energy is defined there (c.f. Eq. 2.4.4 and Eq. 2.4.6).*)
 
 
-quarSelfEnergyMuta=-(-Gstrong^2/(4Pi)^2 CF*(3+GaugeXi)(1/Epsilon)*M+GS[p]*Gstrong^2/(4Pi)^2*
+quarSelfEnergyMuta=-(-SMP["g_s"]^2/(4Pi)^2 CF*(3+GaugeXi)(1/Epsilon)*M+GS[p]*SMP["g_s"]^2/(4Pi)^2*
 		CF*GaugeXi*(1/Epsilon))SDF[Col1,Col2]//FCI;
 Print["Check with Muta, Eq 2.5.138: ",
 			If[Simplify[quarSelfEnergy-FCI[quarSelfEnergyMuta]]===0, "CORRECT.", "!!! WRONG !!!"]];
@@ -88,6 +88,6 @@ ampsSingMassless=(ampsEval/.{M->0,TBI[x___]:>(-2)/(D-4)*prefactor,GaugeXi->1})//
 ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
 
 
-ampsSingMasslessPeskin=I*Gstrong^2/(4Pi)^2*GS[p]*CF*(1/Epsilon)SDF[Col1,Col2]//FCI;
+ampsSingMasslessPeskin=I*SMP["g_s"]^2/(4Pi)^2*GS[p]*CF*(1/Epsilon)SDF[Col1,Col2]//FCI;
 Print["Check with Peskin and Schroeder, Eq 16.76: ",
 			If[Simplify[ampsSingMassless-FCI[ampsSingMasslessPeskin]]===0, "CORRECT.", "!!! WRONG !!!"]];

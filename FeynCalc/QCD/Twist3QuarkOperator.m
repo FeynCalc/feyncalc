@@ -36,7 +36,7 @@ End[]
 
 Begin["`Twist3QuarkOperator`Private`"]
 
-Options[Twist3QuarkOperator] = { CouplingConstant -> Gstrong,
+Options[Twist3QuarkOperator] = { CouplingConstant -> SMP["g_s"],
 													Dimension -> D, Polarization -> 1};
 
 Twist3QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer,

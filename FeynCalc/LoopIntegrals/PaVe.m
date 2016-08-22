@@ -42,7 +42,7 @@ ClearAttributes[PaVe, ReadProtectecd];
 
 Options[PaVe] = {
 	PaVeAutoOrder -> True,
-	PaVeAutoReduce -> True
+	PaVeAutoReduce -> False
 };
 
 (* Symmetry in the indices *)
@@ -53,11 +53,20 @@ PaVe[i_,j__,  pl_List, ml_List, opts:OptionsPattern[]] :=
 PaVe[0, {}, {x_}, OptionsPattern[]] :=
 	A0[x]/; OptionValue[PaVeAutoReduce];
 
+PaVe[0,0, {}, {x_}, OptionsPattern[]] :=
+	A00[x]/; OptionValue[PaVeAutoReduce];
+
 PaVe[0, {p2_}, {x_,y_}, OptionsPattern[]] :=
 	B0[p2,x,y]/; OptionValue[PaVeAutoReduce];
 
 PaVe[1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
 	B1[pp, mm1, mm2]/; OptionValue[PaVeAutoReduce];
+
+PaVe[0,0,{p_},{m1_,m2_}, OptionsPattern[]] :=
+	B00[p,m1,m2]/; OptionValue[PaVeAutoReduce];
+
+PaVe[1,1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
+	B11[pp,mm1,mm2]/; OptionValue[PaVeAutoReduce];
 
 (*The number of 0's, i.e. indices of the metric tensors must be even *)
 PaVe[0, x: 0..,{moms___},{masses___}, OptionsPattern[]]:=
@@ -72,25 +81,14 @@ PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 	Abort[];)
 
 (* scaleless n-point functions vanish in DR	*)
+PaVe[__,{},{0..}, OptionsPattern[]] :=
+	0;
+
 PaVe[__,{0..},{0..}, OptionsPattern[]] :=
 	0;
 
-(* but a non-zero coefficient of g_munu *)
-PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
-	(m2/4 A0[m2] + m2^2/8) /; $LimitTo4 && OptionValue[PaVeAutoReduce];
-
-(* but a non-zero coefficient of g_munu *)
-PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
-	(m2/D A0[m2]) /; $LimitTo4  && OptionValue[PaVeAutoReduce];
-
-PaVe[0, {p_}, {m1_, m2_}, OptionsPattern[]] :=
-	B0[p, m1, m2]/; OptionValue[PaVeAutoReduce];
-
-PaVe[0,0,{p_},{m1_,m2_}, OptionsPattern[]] :=
-	B00[p,m1,m2]/; $LimitTo4 && OptionValue[PaVeAutoReduce];
-
-PaVe[1,1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
-	B11[pp,mm1,mm2]/; OptionValue[PaVeAutoReduce];
+PaVe[0,{pp_},{mm1_,mm2_}, opts:OptionsPattern[]] :=
+	PaVe[0,{pp},{mm2,mm1},opts]/; !OrderedQ[{mm1,mm2}] && OptionValue[PaVeAutoOrder];
 
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
@@ -138,53 +136,33 @@ PaVe[x__,{p10_,p12_,p23_,p20_,p20_,p12_},{m1_,m2_,m3_,m3_}, opts:OptionsPattern[
 
 (* in order to canonize the C0's  (args:   p1^2, (p2-p1)^2, p2^2)  *)
 PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}, OptionsPattern[]] :=
-	cord[p10, p12, p20,m1,m2,m3]/;OptionValue[PaVeAutoOrder];
+	C0@@Flatten[cord[p10, p12, p20,m1,m2,m3]]/;OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce];
+
+PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}, opts:OptionsPattern[]] :=
+	PaVe[0,Sequence@@cord[p10,p12,p20,m1,m2,m3],opts]/;	OptionValue[PaVeAutoOrder] &&
+		!OptionValue[PaVeAutoReduce] && {p10,p12,p20,m1,m2,m3}=!=Flatten[cord[p10,p12,p20,m1,m2,m3]];
+
 
 PaVe[0, {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}, OptionsPattern[]] :=
-	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]/;OptionValue[PaVeAutoOrder];
+	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]/;OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce];
 
-
+(* C0 is symmetric under pairwise exchanges of two momentum arguments and two mass arguments *)
 cord[a_,b_,c_, m1_,m2_,m3_] :=
-	C0@@( Sort[{ {a,b,c, m1,m2,m3}, {c,b,a, m1,m3,m2},
-								{a,c,b, m2,m1,m3}, {b,c,a, m2,m3,m1},
-								{c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} } ][[1]] );
+	MemSet[cord[a,b,c, m1,m2,m3],
+		Block[{tmp},
+			tmp =	First[Sort[{
+			{a,b,c, m1,m2,m3},
+			{c,b,a, m1,m3,m2},
+			{a,c,b, m2,m1,m3},
+			{b,c,a, m2,m3,m1},
+			{c,a,b, m3,m1,m2},
+			{b,a,c, m3,m2,m1} }]];
+			{tmp[[1;;3]],tmp[[4;;6]]}
+		]
+	];
 
-	cord[C0[six__],{}] :=
-		cord[six];
-	cord[C0[te__], argu_List ] :=
-		Block[ {int, puref, arg, smalist, six,
-												varg, sma, pw},
-			six =  {te}/. SmallVariable->sma;
-			If[ FreeQ[six, sma],
-				arg = argu,
-				smalist = Select[Variables[six/.Power->pw],
-												(!FreeQ[#, sma])&]/.pw->Power;
-				If[ !FreeQ[smalist, Power],
-					arg = (argu/.SmallVariable->Identity) /.
-								Map[(#[[1,1]] -> (#[[1]]) )&, smalist ],
-					arg = argu/.SmallVariable->sma
-				];
-			];
-			varg = Variables[arg];
-			For[iv = 1,iv<=Length[varg],iv++,
-					If[ (!FreeQ[six, varg[[iv]]^2]) && FreeQ[arg,varg[[iv]]^2],
-						arg = arg/.varg[[iv]]->(varg[[iv]]^2)
-					];
-					];
-			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
-												]]/.slot->Slot/.func->Function/.or->Or/.
-													stringmatchq->StringMatchQ;
-			int = Select[ tostring /@ (oldper@@six),
-										func[ stringmatchq[slot[1],tomatch[arg]]
-												]/.slot->Slot/.func->Function/.
-													stringmatchq->StringMatchQ
-													];
-			If[ Length[int] === 0,
-				int = six,
-				int = ToExpression[int[[1]]]
-			];
-			int/.sma->SmallVariable
-		] /; Length[{te}]===6 && Length[argu]>0;
+
+
 
 
 PaVe /:

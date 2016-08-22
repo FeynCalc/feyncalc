@@ -79,6 +79,14 @@ only a limited set of simplifications \
 performed. For DotSimplity, it determines \
 whether noncommutative expansion is done.";
 
+FCCheckSyntax::usage = "FCCheckSyntax is an option for several FeynCalc \
+functions that require correct syntax in order to produce sensible results. \
+If set to True, those functions will try to check the syntax of the input
+expressions to detect possible inconsistencies (which mostly come from the
+users not familiar with FeynCalc). However, on large expressions such checks
+may cost a lot of performance, which is why this option is set to False \
+by default.";
+
 Factoring::usage = "Factoring is an option for Collect2, Contract, \
 Tr and more functions. If set to True, the result will be \
 factored, using Factor2. If set to any function f, this function \
@@ -156,12 +164,13 @@ which is the head of abbreviations used by Isolate. \
 A KK[i] returned by Isolate is given in HoldForm and can be \
 recovered by ReleaseHold[KK[i]].";
 
-LeviCivitaSign::usage =
-"LeviCivitaSign is an option for DiracTrace and EpsChisholm. It determines \
-the sign in the result of a Dirac trace of four gamma matrices and gamma5.";
-
 Loop::usage=
 "Loop is an option indicating the number of (virtual) loops.";
+
+LorentzIndexNames::usage =
+"LorentzIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy Lorentz indices to the indices \
+in the supplied list.";
 
 Mandelstam::usage =
 "Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr \
@@ -197,12 +206,19 @@ SpinPolarizationSum::usage=
 "SpinPolarizationSum is an option for SquareAmplitude and \
 FermionSpinSum. The set (pure) function acts on the usual spin sum.";
 
+SUNIndexNames::usage =
+"SUNIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy SU(N) indices in the \
+adjoint representation to the indices in the supplied list.";
+
+SUNFIndexNames::usage =
+"SUNFIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy SU(N) indices in the \
+fundamental representation to the indices in the supplied list.";
+
 SUNNToCACF::usage=
 "SUNNToCACF is an option of SUNSimplify. If set to True, the Casimir \
 operator eigenvalues CA (=N) and CF (=(N^2-1)/(2 N)) are introduced.";
-
-SUNFToTraces::usage=
-"SUNFToTraces is superseded by Explicit.";
 
 TraceOfOne::usage =
 "TraceOfOne is an option for Tr and DiracTrace. \
@@ -214,6 +230,14 @@ If set to True, FeynCalc will not complain when you apply the gauge \
 trick (i.e. replace the polarization sum by - MT[mu,nu]) for a particle \
 that is not massless. This is usueful when computing processes \
 that involve a virtual photon as an external state."
+
+West::usage =
+"West is an option for DiracTrace, TR and other functions that deal \
+with traces of Dirac matrices. It applies only to the computation of \
+D-dimensional chiral traces (i.e. those that involve one gamma5) in the \
+Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to True, such \
+traces will be computed according to formula  (A.5) from \
+Comp. Phys. Comm 77 (1993) 286-298, which is also known as West's formula.";
 
 WriteOut::usage =
 "WriteOut is an option for OneLoop and SquareAmplitude. \

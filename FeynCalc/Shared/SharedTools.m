@@ -269,7 +269,7 @@ Expand2[x_, a_ /; Head[a] =!= List] :=
 	Expand2[x, {a}];
 
 Expand2[x_, l_List] :=
-	If[FreeQ[x, Plus],
+	If[FreeQ[x, Plus] || MatchQ[x, HoldPattern[Plus][a__] /; FreeQ[{a}, Plus]],
 		x,
 		Block[{pl, t, plus},
 			pl[y__] := If[FreeQ2[{Hold[y]}, l], plus[y], Plus[y]];
@@ -418,7 +418,8 @@ NTerms[x_] :=
 
 
 NumericalFactor[a___ /; Length[{a}] =!=1] :=
-	soso /; Message[NumericalFactor::argrx, NumericalFactor, Length[{a}], 1];
+	(Message[NumericalFactor::argrx, NumericalFactor, Length[{a}], 1];
+	Abort[]);
 
 NumericalFactor[x_]:=
 	If[NumberQ[x],

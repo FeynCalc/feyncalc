@@ -368,7 +368,7 @@ OPEInt[exp_, kk_, pp_, x_, opt___Rule] :=
 	(*
 	Dialog[nex];
 	*)
-		nfa = SelectNotFree[nex, {flowerpower, Gstrong, CA, CF, OPEm,
+		nfa = SelectNotFree[nex, {flowerpower, SMP["g_s"], CA, CF, OPEm,
 												Pi, Sn, SUNN, SUNIndex}
 									] /. flowerpower -> Power /. locepsilon -> Epsilon;
 		nfa = nfa;

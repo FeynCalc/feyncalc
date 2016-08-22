@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6154,        192]
+NotebookDataLength[      6156,        192]
 NotebookOptionsPosition[      3973,        127]
-NotebookOutlinePosition[      5892,        181]
-CellTagsIndexPosition[      5821,        176]
+NotebookOutlinePosition[      5894,        181]
+CellTagsIndexPosition[      5823,        176]
 WindowTitle->Factorout
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56018], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56251], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Factorout", ".html"]], None}]}]},
@@ -140,7 +140,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 51.969648}", 
+   "built" -> "{2016, 8, 21, 21, 18, 59.119393}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -175,7 +175,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Factorout", 5709, 169}
+ {"Factorout", 5711, 169}
  }
 *)
 (*NotebookFileOutline

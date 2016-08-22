@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24821,        824]
-NotebookOptionsPosition[     17630,        599]
-NotebookOutlinePosition[     22297,        728]
-CellTagsIndexPosition[     22147,        721]
+NotebookDataLength[     24827,        824]
+NotebookOptionsPosition[     17631,        599]
+NotebookOutlinePosition[     22302,        728]
+CellTagsIndexPosition[     22152,        721]
 WindowTitle->DiracReduce
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ DiracReduce.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40762], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$41455], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracReduce", ".html"]], None}]}]},
@@ -115,7 +115,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->1661189562],
 
 Cell[CellGroupData[{
 
@@ -125,7 +125,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1738411291],
+ CellID->1584869611],
 
 Cell[CellGroupData[{
 
@@ -510,7 +510,7 @@ oDNkSD2ojdqowYGqWiBoCLAkdBwAU4LOkCH1oDZqDAaDwRga/wfEvWkq
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"DiracReduce", "RasterizedOutput"},
  CellLabel->"Out[7]=",
- CellID->693057089]
+ CellID->1748314930]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -612,7 +612,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 31.559679}", 
+   "built" -> "{2016, 8, 21, 21, 17, 57.683754}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -650,7 +650,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3868, 102, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1289444967]},
+   CellID->1661189562]},
  "DiracReduce"->{
   Cell[4502, 131, 139, 4, 27, "Input",
    CellTags->"DiracReduce",
@@ -691,38 +691,38 @@ CellTagsIndex->{
   Cell[11470, 428, 158, 5, 27, "Input",
    CellTags->"DiracReduce",
    CellID->654035869],
-  Cell[11631, 435, 4196, 77, 62, "Output",
+  Cell[11631, 435, 4197, 77, 62, "Output",
    CellTags->{"DiracReduce", "RasterizedOutput"},
-   CellID->693057089],
-  Cell[15864, 517, 272, 8, 27, "Input",
+   CellID->1748314930],
+  Cell[15865, 517, 272, 8, 27, "Input",
    CellTags->"DiracReduce",
    CellID->1302843775],
-  Cell[16139, 527, 233, 8, 36, "Output",
+  Cell[16140, 527, 233, 8, 36, "Output",
    CellTags->"DiracReduce",
    CellID->2142207150],
-  Cell[16409, 540, 152, 5, 27, "Input",
+  Cell[16410, 540, 152, 5, 27, "Input",
    CellTags->"DiracReduce",
    CellID->1419075428],
-  Cell[16564, 547, 232, 8, 36, "Output",
+  Cell[16565, 547, 232, 8, 36, "Output",
    CellTags->"DiracReduce",
    CellID->474875609],
-  Cell[16811, 558, 175, 5, 27, "Input",
+  Cell[16812, 558, 175, 5, 27, "Input",
    CellTags->"DiracReduce",
    CellID->156497246],
-  Cell[17342, 585, 246, 9, 32, "Text",
+  Cell[17343, 585, 246, 9, 32, "Text",
    CellTags->"DiracReduce",
    CellID->2097841964]},
  "RasterizedOutput"->{
-  Cell[11631, 435, 4196, 77, 62, "Output",
+  Cell[11631, 435, 4197, 77, 62, "Output",
    CellTags->{"DiracReduce", "RasterizedOutput"},
-   CellID->693057089]}
+   CellID->1748314930]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19981, 649},
- {"DiracReduce", 20120, 653},
- {"RasterizedOutput", 22007, 714}
+ {"PrimaryExamplesSection", 19984, 649},
+ {"DiracReduce", 20123, 653},
+ {"RasterizedOutput", 22011, 714}
  }
 *)
 (*NotebookFileOutline
@@ -736,10 +736,10 @@ Cell[2900, 78, 943, 20, 161, "Usage",
 Cell[CellGroupData[{
 Cell[3868, 102, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->1661189562],
 Cell[CellGroupData[{
 Cell[4281, 121, 196, 6, 25, "ExampleSection",
- CellID->1738411291],
+ CellID->1584869611],
 Cell[CellGroupData[{
 Cell[4502, 131, 139, 4, 27, "Input",
  CellTags->"DiracReduce",
@@ -792,40 +792,40 @@ Cell[CellGroupData[{
 Cell[11470, 428, 158, 5, 27, "Input",
  CellTags->"DiracReduce",
  CellID->654035869],
-Cell[11631, 435, 4196, 77, 62, "Output",
+Cell[11631, 435, 4197, 77, 62, "Output",
  CellTags->{"DiracReduce", "RasterizedOutput"},
- CellID->693057089]
+ CellID->1748314930]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15864, 517, 272, 8, 27, "Input",
+Cell[15865, 517, 272, 8, 27, "Input",
  CellTags->"DiracReduce",
  CellID->1302843775],
-Cell[16139, 527, 233, 8, 36, "Output",
+Cell[16140, 527, 233, 8, 36, "Output",
  CellTags->"DiracReduce",
  CellID->2142207150]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16409, 540, 152, 5, 27, "Input",
+Cell[16410, 540, 152, 5, 27, "Input",
  CellTags->"DiracReduce",
  CellID->1419075428],
-Cell[16564, 547, 232, 8, 36, "Output",
+Cell[16565, 547, 232, 8, 36, "Output",
  CellTags->"DiracReduce",
  CellID->474875609]
 }, Open  ]],
-Cell[16811, 558, 175, 5, 27, "Input",
+Cell[16812, 558, 175, 5, 27, "Input",
  CellTags->"DiracReduce",
  CellID->156497246]
 }, Open  ]],
-Cell[17001, 566, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17002, 566, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17069, 571, 270, 12, 31, "SeeAlsoSection",
+Cell[17070, 571, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[17342, 585, 246, 9, 32, "Text",
+Cell[17343, 585, 246, 9, 32, "Text",
  CellTags->"DiracReduce",
  CellID->2097841964]
 }, Open  ]],
-Cell[17603, 597, 23, 0, 42, "FooterCell"]
+Cell[17604, 597, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

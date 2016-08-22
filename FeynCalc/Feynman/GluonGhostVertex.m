@@ -20,13 +20,10 @@ GGV::usage =
 "GGV is equivalent to GluonGhostVertex.";
 
 GluonGhostVertex::usage =
-"
-GluonGhostVertex[{mu,a}, {b}, {k,c}] or GluonGhostVertex[{p,mu,a}, {q,b}, {k,c}] or \
-GluonGhostVertex[ p,mu,a ,  q,nu,b ,  k,rho,c ] gives the  Gluon-Ghost vertex.
-
-The first argument represents the gluon and the third argument the outgoing ghost \
-field (but incoming four-momentum). The dimension  and the name of the coupling constant \
-are determined by the options Dimension and CouplingConstant.";
+"GluonGhostVertex[{p,mu,a}, {q,nu,b}, {k,rho,c}] or \
+GluonGhostVertex[ p,mu,a , q,nu,b , k,rho,c ] yields" <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/GluonGhostVertex"],
+StandardForm]
 
 (* ------------------------------------------------------------------------ *)
 
@@ -36,7 +33,7 @@ End[]
 Begin["`GluonGhostVertex`Private`"]
 
 Options[GluonGhostVertex] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Explicit -> False
 };

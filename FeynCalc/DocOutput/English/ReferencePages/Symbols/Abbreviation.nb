@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10135,        334]
+NotebookDataLength[     10136,        334]
 NotebookOptionsPosition[      6788,        236]
-NotebookOutlinePosition[      9365,        305]
-CellTagsIndexPosition[      9251,        299]
+NotebookOutlinePosition[      9366,        305]
+CellTagsIndexPosition[      9252,        299]
 WindowTitle->Abbreviation
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Abbreviation.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$14965], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15953], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Abbreviation", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->944806425],
+ CellID->974762014],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->966899492],
+ CellID->891133844],
 
 Cell[CellGroupData[{
 
@@ -249,7 +249,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 6, 16.550649}", 
+   "built" -> "{2016, 8, 21, 21, 16, 5.658213}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -283,7 +283,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3511, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->944806425]},
+   CellID->974762014]},
  "Abbreviation"->{
   Cell[4143, 125, 284, 9, 27, "Input",
    CellTags->"Abbreviation",
@@ -298,8 +298,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8812, 282},
- {"Abbreviation", 8950, 286}
+ {"PrimaryExamplesSection", 8813, 282},
+ {"Abbreviation", 8951, 286}
  }
 *)
 (*NotebookFileOutline
@@ -313,10 +313,10 @@ Cell[2906, 78, 580, 14, 115, "Usage",
 Cell[CellGroupData[{
 Cell[3511, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->944806425],
+ CellID->974762014],
 Cell[CellGroupData[{
 Cell[3923, 115, 195, 6, 25, "ExampleSection",
- CellID->966899492],
+ CellID->891133844],
 Cell[CellGroupData[{
 Cell[4143, 125, 284, 9, 27, "Input",
  CellTags->"Abbreviation",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12499,        461]
-NotebookOptionsPosition[      8084,        311]
-NotebookOutlinePosition[     11010,        400]
-CellTagsIndexPosition[     10905,        394]
+NotebookDataLength[     12571,        465]
+NotebookOptionsPosition[      8153,        315]
+NotebookOutlinePosition[     11081,        404]
+CellTagsIndexPosition[     10975,        398]
 WindowTitle->MTD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$103469], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$104810], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/MTD", 
             ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->656051358],
+ CellID->61949600],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->413397456],
+ CellID->1930410875],
 
 Cell[CellGroupData[{
 
@@ -271,38 +271,42 @@ Cell[TextData[{
  WholeCellGroupOpener->True,
  CellID->1255426704],
 
+Cell[RawData["\<\
 Cell[TextData[{
- StyleBox[ButtonBox["FeynCalcExternal",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FeynCalcExternal",
-  ButtonNote->"FeynCalcExternal"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["FCE",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FCE",
-  ButtonNote->"FCE"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["FCI",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FCI",
-  ButtonNote->"FCI"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["MetricTensor",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/MetricTensor",
-  ButtonNote->"MetricTensor"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["MT",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/MT",
-  ButtonNote->"MT"],
-  FontFamily->"Verdana"],
- "."
-}], "Text",
+ ButtonBox[\"FeynCalcExternal\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/FeynCalcExternal\",
+  ButtonNote->\"FeynCalcExternal\"],
+ \", \",
+ ButtonBox[\"FCE\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/FCE\",
+  ButtonNote->\"FCE\"],
+ \", \",
+ ButtonBox[\"FCI\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/FCI\",
+  ButtonNote->\"FCI\"],
+ \", \",
+ ButtonBox[\"MetricTensor\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/MetricTensor\",
+  ButtonNote->\"MetricTensor\"],
+ \", \",
+ ButtonBox[\"MT\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/MT\",
+  ButtonNote->\"MT\"],
+ \", \",
+ ButtonBox[\"MTE\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/MTE\",
+  ButtonNote->\"MTE\"],
+ \".\"
+}], \"Text\",
+ CellTags->\"MTD\",
+ CellID->310039993]\
+\>"], "Text",
  CellTags->"MTD",
  CellID->310039993]
 }, Open  ]],
@@ -324,7 +328,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 16.642002}", 
+   "built" -> "{2016, 8, 21, 21, 22, 30.820672}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -352,9 +356,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3295, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3295, 95, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->656051358]},
+   CellID->61949600]},
  "MTD"->{
   Cell[3927, 124, 154, 5, 27, "Input",
    CellTags->"MTD",
@@ -386,15 +390,15 @@ CellTagsIndex->{
   Cell[6578, 242, 250, 8, 49, "Output",
    CellTags->"MTD",
    CellID->141115701],
-  Cell[7196, 273, 846, 33, 28, "Text",
+  Cell[7196, 273, 915, 37, 551, "Text",
    CellTags->"MTD",
    CellID->310039993]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9839, 353},
- {"MTD", 9968, 357}
+ {"PrimaryExamplesSection", 9909, 357},
+ {"MTD", 10037, 361}
  }
 *)
 (*NotebookFileOutline
@@ -406,12 +410,12 @@ Cell[2816, 75, 46, 1, 42, "ObjectName",
 Cell[2865, 78, 405, 13, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3295, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3295, 95, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->656051358],
+ CellID->61949600],
 Cell[CellGroupData[{
-Cell[3707, 114, 195, 6, 25, "ExampleSection",
- CellID->413397456],
+Cell[3706, 114, 196, 6, 25, "ExampleSection",
+ CellID->1930410875],
 Cell[CellGroupData[{
 Cell[3927, 124, 154, 5, 27, "Input",
  CellTags->"MTD",
@@ -458,11 +462,11 @@ Cell[6855, 254, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[6923, 259, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7196, 273, 846, 33, 28, "Text",
+Cell[7196, 273, 915, 37, 551, "Text",
  CellTags->"MTD",
  CellID->310039993]
 }, Open  ]],
-Cell[8057, 309, 23, 0, 70, "FooterCell"]
+Cell[8126, 313, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

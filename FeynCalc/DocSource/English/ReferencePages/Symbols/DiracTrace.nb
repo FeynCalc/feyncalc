@@ -218,21 +218,22 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
+    RowBox[{"Contract", "\[Rule]", "400000"}], ",", 
     RowBox[{"EpsContract", "\[Rule]", "False"}], ",", 
     RowBox[{"Factoring", "\[Rule]", "Automatic"}], ",", 
     RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
     RowBox[{"Mandelstam", "\[Rule]", 
      RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"PairCollect", "\[Rule]", "True"}], ",", 
+    RowBox[{"PairCollect", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracTraceEvaluate", "\[Rule]", "False"}], ",", 
     RowBox[{"Schouten", "\[Rule]", "0"}], ",", 
-    RowBox[{"LeviCivitaSign", "\[RuleDelayed]", "$LeviCivitaSign"}], ",", 
     RowBox[{"TraceOfOne", "\[Rule]", "4"}], ",", 
-    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"West", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
+ 
  CellTags->"DiracTrace",
  CellLabel->"Out[1]=",
- CellID->149501732]
+ CellID->606139332]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1239,7 +1240,8 @@ Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

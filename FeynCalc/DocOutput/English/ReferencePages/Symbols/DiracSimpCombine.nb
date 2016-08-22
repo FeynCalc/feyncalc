@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6332,        190]
+NotebookDataLength[      6333,        190]
 NotebookOptionsPosition[      3990,        123]
-NotebookOutlinePosition[      6062,        179]
-CellTagsIndexPosition[      5984,        174]
+NotebookOutlinePosition[      6063,        179]
+CellTagsIndexPosition[      5985,        174]
 WindowTitle->DiracSimpCombine
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ DiracSimpCombine.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$41776], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42469], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracSimpCombine", ".html"]], None}]}]},
@@ -136,7 +136,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 36.180808}", 
+   "built" -> "{2016, 8, 21, 21, 18, 2.140037}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -173,7 +173,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"DiracSimpCombine", 5864, 167}
+ {"DiracSimpCombine", 5865, 167}
  }
 *)
 (*NotebookFileOutline

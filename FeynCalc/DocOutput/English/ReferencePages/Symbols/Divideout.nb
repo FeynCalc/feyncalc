@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6254,        195]
+NotebookDataLength[      6256,        195]
 NotebookOptionsPosition[      4030,        129]
-NotebookOutlinePosition[      5991,        184]
-CellTagsIndexPosition[      5920,        179]
+NotebookOutlinePosition[      5993,        184]
+CellTagsIndexPosition[      5922,        179]
 WindowTitle->Divideout
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44997], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45598], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Divideout", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 53.274626}", 
+   "built" -> "{2016, 8, 21, 21, 18, 15.150112}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -178,7 +178,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Divideout", 5807, 172}
+ {"Divideout", 5809, 172}
  }
 *)
 (*NotebookFileOutline

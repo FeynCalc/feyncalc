@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# This small bash script provides a nice way to check that
-# FeynCalc is working properly using real-life examples.
+# This software is covered by the GNU General Public License 3.
+# Copyright (C) 1990-2016 Rolf Mertig
+# Copyright (C) 1997-2016 Frederik Orellana
+# Copyright (C) 2014-2016 Vladyslav Shtabovenko
+
+# Description:
+
+# Checks FeynCalc using real-life calculations.
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
@@ -12,6 +18,8 @@ if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 $MATH -nopromt -script ../FeynCalc/Examples/Misc/Integrate2.m &&
 
 #QED Examples
+$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDABJAxialAnomaly.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronGMinusTwoOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDBhabhaScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDComptonScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronMuonScatteringTree.m &&
@@ -25,6 +33,9 @@ $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDThreePhotonDiagramsOneLoop.m 
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWMuonDecayTree.m &&
 
 #QCD Examples
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGammaStarGToQiQBari.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiGammaStarToQiGTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToGammaStarGTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQjToQiQjTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBarjToQiQBarjTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQiToQiQiTree.m &&

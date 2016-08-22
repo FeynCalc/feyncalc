@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5530,        150]
+NotebookDataLength[      5531,        150]
 NotebookOptionsPosition[      3472,         96]
-NotebookOutlinePosition[      5452,        146]
-CellTagsIndexPosition[      5409,        143]
+NotebookOutlinePosition[      5453,        146]
+CellTagsIndexPosition[      5410,        143]
 WindowTitle->SymbolicSum2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SymbolicSum2.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151013], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151346], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SymbolicSum2", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 18, 14.027747}", 
+   "built" -> "{2016, 8, 21, 21, 25, 49.879190}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

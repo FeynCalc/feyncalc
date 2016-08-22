@@ -64,6 +64,7 @@ Options[TID] = {
 	DiracSimplify -> True,
 	DiracTrace -> True,
 	ExpandScalarProduct -> True,
+	EpsEvaluate ->True,
 	FCI -> False,
 	FCVerbose -> False,
 	FeynAmpDenominatorCombine -> True,
@@ -73,7 +74,8 @@ Options[TID] = {
 	PaVeAutoReduce -> True,
 	ApartFF -> True,
 	Isolate -> False,
-	UsePaVeBasis -> False
+	UsePaVeBasis -> False,
+	ToPaVe->False
 };
 
 TID[am_ , q_, OptionsPattern[]] :=
@@ -92,6 +94,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				tidVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If [!FreeQ[$ScalarProducts, q],
+			Message[TID::failmsg, "The loop momentum " <> ToString[q,InputForm] <>
+					" has scalar product rules attached to it."];
+			Abort[]
 		];
 
 		FCPrint[1,"TID: Entering TID with: ", am, FCDoControl->tidVerbose];
@@ -354,6 +362,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 		];
 
+
+		If [OptionValue[ToPaVe],
+			res = ToPaVe[res,q]
+		];
+
 		(*	Since the large prefactors are isolated, collecting w.r.t to the scalar loop integrals
 			should not be too expensive. *)
 		If[	OptionValue[Collecting],
@@ -390,6 +403,10 @@ TID[am_ , q_, OptionsPattern[]] :=
 				Grid[{{"Expanding scalar products in the final result",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
+		];
+
+		If [OptionValue[EpsEvaluate],
+			res = EpsEvaluate[res]
 		];
 
 

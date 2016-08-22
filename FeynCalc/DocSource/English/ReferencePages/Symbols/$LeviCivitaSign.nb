@@ -1,0 +1,563 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13682,        554]
+NotebookOptionsPosition[      9031,        387]
+NotebookOutlinePosition[      9644,        411]
+CellTagsIndexPosition[      9566,        406]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/$LeviCivitaSign", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["$LeviCivitaSign", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData["$LeviCivitaSign"], "InlineFormula"],
+ " \[LineSeparator]is a global variable that determines the sign in the \
+result of a Dirac trace of four gamma matrices and gamma5.  $LeviCivitaSign \
+is by default set to -1 which corresponds to the convention \
+Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I  \
+will switch to the FORM-convention."
+}], "Usage",
+ CellChangeTimes->{{3.677083863597835*^9, 3.677083881575591*^9}},
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellChangeTimes->{{3.677083896911336*^9, 3.6770839265668697`*^9}},
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$LeviCivitaSign"], "Input",
+ CellChangeTimes->{{3.677083940452142*^9, 3.6770839418053417`*^9}},
+ CellLabel->"In[4]:=",
+ CellID->1712420789],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "1"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.677083942268503*^9, 3.677084042541326*^9, 
+  3.677084190399844*^9},
+ CellLabel->"Out[4]=",
+ CellID->2017735240]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tr", "[", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "5"}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.677083949336968*^9, 3.677083986550789*^9}, {
+  3.6770843934493504`*^9, 3.6770844011427383`*^9}},
+ CellLabel->"In[21]:=",
+ CellID->722943498],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "4"}], " ", "\[ImaginaryI]", " ", 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.677084393967458*^9, 3.677084401925448*^9}},
+ CellLabel->"Out[21]=",
+ CellID->24019145]
+}, Open  ]],
+
+Cell["This sets the same convention as in FORM", "Notes",
+ CellChangeTimes->{{3.677083896911336*^9, 3.6770839265668697`*^9}, {
+  3.677084159749695*^9, 3.67708416680619*^9}},
+ CellID->1734027625],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$LeviCivitaSign", "=", 
+   RowBox[{"-", "I"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Tr", "[", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "5"}], 
+   "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.677084138294552*^9, 3.677084148526932*^9}, 
+   3.677084408798975*^9},
+ CellLabel->"In[22]:=",
+ CellID->1075951969],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"4", " ", 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.677084410012164*^9},
+ CellLabel->"Out[23]=",
+ CellID->1430392236]
+}, Open  ]],
+
+Cell["Back to the standard value", "Notes",
+ CellChangeTimes->{{3.677083896911336*^9, 3.6770839265668697`*^9}, {
+  3.677084159749695*^9, 3.6770841814135723`*^9}},
+ CellID->223764811],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$LeviCivitaSign", "=", 
+   RowBox[{"-", "1"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.677084182886092*^9, 3.677084188213874*^9}},
+ CellLabel->"In[24]:=",
+ CellID->955635605]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{883, Automatic}, {Automatic, 55}},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[7511, 329, 100, 2, 54, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 9428, 399}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 14, 23, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 28, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 81, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1145, 49, 78, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1226, 53, 73, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1336, 59, 55, 1, 18, "KeywordsSection",
+ CellID->477174294],
+Cell[1394, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1476, 68, 65, 1, 18, "TemplatesSection",
+ CellID->1872225408],
+Cell[1544, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1641, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1726, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1810, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1929, 90, 53, 1, 18, "DetailsSection",
+ CellID->307771771],
+Cell[1985, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2051, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2123, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2190, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2262, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2326, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2390, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2456, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2537, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2641, 132, 58, 1, 63, "ObjectName",
+ CellID->1224892054],
+Cell[2702, 135, 519, 10, 117, "Usage",
+ CellID->982511436],
+Cell[3224, 147, 110, 2, 24, "Notes",
+ CellID->1067943069]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3371, 154, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[3431, 157, 45, 1, 16, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3513, 163, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[3599, 166, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3694, 172, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[3762, 175, 49, 1, 16, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3848, 181, 55, 1, 30, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[3906, 184, 43, 1, 16, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3986, 190, 57, 1, 30, "MoreAboutSection",
+ CellID->38303248],
+Cell[4046, 193, 46, 1, 16, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4129, 199, 356, 11, 68, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[4510, 214, 153, 3, 26, "Input",
+ CellID->1712420789],
+Cell[4666, 219, 207, 6, 25, "Output",
+ CellID->2017735240]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4910, 230, 325, 8, 26, "Input",
+ CellID->722943498],
+Cell[5238, 240, 625, 24, 28, "Output",
+ CellID->24019145]
+}, Open  ]],
+Cell[5878, 267, 194, 3, 24, "Notes",
+ CellID->1734027625],
+Cell[CellGroupData[{
+Cell[6097, 274, 402, 11, 46, "Input",
+ CellID->1075951969],
+Cell[6502, 287, 562, 23, 28, "Output",
+ CellID->1430392236]
+}, Open  ]],
+Cell[7079, 313, 182, 3, 24, "Notes",
+ CellID->223764811],
+Cell[7264, 318, 210, 6, 26, "Input",
+ CellID->955635605]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7511, 329, 100, 2, 54, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[7614, 333, 125, 3, 32, "ExampleSection",
+ CellID->1293636265],
+Cell[7742, 338, 148, 3, 20, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[7915, 345, 127, 3, 20, "ExampleSection",
+ CellID->2061341341],
+Cell[8045, 350, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[8178, 355, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[8323, 361, 131, 3, 20, "ExampleSection",
+ CellID->258228157],
+Cell[8457, 366, 142, 3, 20, "ExampleSection",
+ CellID->2123667759],
+Cell[8602, 371, 135, 3, 20, "ExampleSection",
+ CellID->1305812373],
+Cell[8740, 376, 140, 3, 20, "ExampleSection",
+ CellID->1653164318],
+Cell[8883, 381, 132, 3, 20, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

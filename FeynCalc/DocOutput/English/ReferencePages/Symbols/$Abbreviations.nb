@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7106,        216]
+NotebookDataLength[      7107,        216]
 NotebookOptionsPosition[      4698,        148]
-NotebookOutlinePosition[      6838,        205]
-CellTagsIndexPosition[      6762,        200]
+NotebookOutlinePosition[      6839,        205]
+CellTagsIndexPosition[      6763,        200]
 WindowTitle->$Abbreviations
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Abbreviations.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166651], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166776], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$Abbreviations", ".html"]], None}]}]},
@@ -161,7 +161,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 46.376172}", 
+   "built" -> "{2016, 8, 21, 21, 26, 57.525452}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -199,7 +199,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"$Abbreviations", 6644, 193}
+ {"$Abbreviations", 6645, 193}
  }
 *)
 (*NotebookFileOutline

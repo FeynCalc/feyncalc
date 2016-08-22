@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/$West", "Categorization",
+Cell["FeynCalc/ref/West", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,26 +111,21 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["$West", "ObjectName",
+Cell["West", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["$West"], "InlineFormula"],
- " \[LineSeparator]",
- "if set to True (which is the default), traces involving more than 4 Dirac \
-matrices and ",
+ Cell[BoxData["West"], "InlineFormula"],
+ " \[LineSeparator]West is an option for DiracTrace, TR and other functions \
+that deal with traces of Dirac matrices. It applies only to the computation \
+of D-dimensional chiral traces (i.e. those that involve one ",
  Cell[BoxData[
-  FormBox[
-   SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- " are calculated recursively according to formula (A.5) from Comp. Phys. \
-Comm 77 (1993) 286-298, which is based on the Breitenlohner Maison ",
- Cell[BoxData[
-  FormBox[
-   SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- "-scheme.\nNOTICE: From FeynCalc 8.0.2, setting this variable to False is \
-not allowed - since it is not working properly. In future releases it may be \
-allowed."
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ ") in the Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to \
+True, such traces will be computed according to formula  (A.5) from Comp. \
+Phys. Comm 77 (1993) 286-298, which is also known as West's formula."
 }], "Usage",
  CellID->982511436],
 
@@ -256,13 +251,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 741},
+WindowMargins->{{Automatic, 919}, {32, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

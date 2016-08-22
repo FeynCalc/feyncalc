@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11136,        391]
-NotebookOptionsPosition[      7555,        281]
-NotebookOutlinePosition[     10151,        354]
-CellTagsIndexPosition[     10035,        348]
+NotebookDataLength[     11139,        391]
+NotebookOptionsPosition[      7556,        281]
+NotebookOutlinePosition[     10153,        354]
+CellTagsIndexPosition[     10037,        348]
 WindowTitle->DiracSimplify2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ DiracSimplify2.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42120], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42813], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracSimplify2", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->791491222],
+ CellID->599384043],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->652532808],
+ CellID->2143910384],
 
 Cell[CellGroupData[{
 
@@ -294,7 +294,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 37.484053}", 
+   "built" -> "{2016, 8, 21, 21, 18, 3.367526}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -326,29 +326,29 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3454, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->791491222]},
+   CellID->599384043]},
  "DiracSimplify2"->{
-  Cell[4086, 127, 293, 8, 27, "Input",
+  Cell[4087, 127, 293, 8, 27, "Input",
    CellTags->"DiracSimplify2",
    CellID->439314570],
-  Cell[4382, 137, 1285, 54, 40, "Output",
+  Cell[4383, 137, 1285, 54, 40, "Output",
    CellTags->"DiracSimplify2",
    CellID->1049863911],
-  Cell[5704, 196, 139, 4, 27, "Input",
+  Cell[5705, 196, 139, 4, 27, "Input",
    CellTags->"DiracSimplify2",
    CellID->535525902],
-  Cell[5846, 202, 1051, 42, 40, "Output",
+  Cell[5847, 202, 1051, 42, 40, "Output",
    CellTags->"DiracSimplify2",
    CellID->1933714897],
-  Cell[7265, 267, 248, 9, 32, "Text",
+  Cell[7266, 267, 248, 9, 32, "Text",
    CellTags->"DiracSimplify2",
    CellID->482305006]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9399, 325},
- {"DiracSimplify2", 9539, 329}
+ {"PrimaryExamplesSection", 9401, 325},
+ {"DiracSimplify2", 9541, 329}
  }
 *)
 (*NotebookFileOutline
@@ -362,37 +362,37 @@ Cell[2918, 78, 511, 16, 86, "Usage",
 Cell[CellGroupData[{
 Cell[3454, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->791491222],
+ CellID->599384043],
 Cell[CellGroupData[{
-Cell[3866, 117, 195, 6, 25, "ExampleSection",
- CellID->652532808],
+Cell[3866, 117, 196, 6, 25, "ExampleSection",
+ CellID->2143910384],
 Cell[CellGroupData[{
-Cell[4086, 127, 293, 8, 27, "Input",
+Cell[4087, 127, 293, 8, 27, "Input",
  CellTags->"DiracSimplify2",
  CellID->439314570],
-Cell[4382, 137, 1285, 54, 40, "Output",
+Cell[4383, 137, 1285, 54, 40, "Output",
  CellTags->"DiracSimplify2",
  CellID->1049863911]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5704, 196, 139, 4, 27, "Input",
+Cell[5705, 196, 139, 4, 27, "Input",
  CellTags->"DiracSimplify2",
  CellID->535525902],
-Cell[5846, 202, 1051, 42, 40, "Output",
+Cell[5847, 202, 1051, 42, 40, "Output",
  CellTags->"DiracSimplify2",
  CellID->1933714897]
 }, Open  ]]
 }, Open  ]],
-Cell[6924, 248, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6925, 248, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6992, 253, 270, 12, 31, "SeeAlsoSection",
+Cell[6993, 253, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7265, 267, 248, 9, 32, "Text",
+Cell[7266, 267, 248, 9, 32, "Text",
  CellTags->"DiracSimplify2",
  CellID->482305006]
 }, Open  ]],
-Cell[7528, 279, 23, 0, 42, "FooterCell"]
+Cell[7529, 279, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

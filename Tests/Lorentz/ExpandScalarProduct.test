@@ -43,5 +43,21 @@ Pair[Momentum[a, -4 + D], Momentum[e, -4 + D]] +
 10 Pair[Momentum[a, -4 + D], Momentum[g, -4 + D]] +
 Pair[Momentum[aa, -4 + D], Momentum[e, -4 + D]] +
 5 Pair[Momentum[aa, D], Momentum[f, D]] +
-10 Pair[Momentum[aa, D], Momentum[g, D]]"}
+10 Pair[Momentum[aa, D], Momentum[g, D]]"},
+{"fcstExpandScalarProduct-ID7","ExpandScalarProduct[SP[a + b, c + d] LC[e, f][g + h, j + k]] // FCE",
+	"(SP[a, c] + SP[a, d] + SP[b, c] + SP[b, d]) LC[e, f][g + h, j + k]"},
+{"fcstExpandScalarProduct-ID8","ExpandScalarProduct[SP[a + b, c + d] LC[e, f][g + h, j + k],
+EpsEvaluate -> True] // FCE","(SP[a, c] + SP[a, d] + SP[b, c] + SP[b, d]) (LC[e, f][g, j] +
+LC[e, f][g, k] + LC[e, f][h, j] + LC[e, f][h, k])"},
+{"fcstExpandScalarProduct-ID9","ExpandScalarProduct[
+SP[a + b, c] LC[e, f][g + h, j] LC[][i1, i2, i3, i4 + i5],
+EpsEvaluate -> True, Momentum -> {a, g}] // FCE","(SP[a, c] + SP[b, c]) LC[][i1, i2, i3,
+i4 + i5] (LC[e, f][g, j] + LC[e, f][h, j])"},
+{"fcstExpandScalarProduct-ID10","DeclareFCTensor[myTens]; \n ExpandScalarProduct[
+myTens[z, Momentum[a + b], Momentum[c + d]]]","myTens[z, Momentum[a], Momentum[c]] +
+myTens[z, Momentum[a], Momentum[d]] +
+myTens[z, Momentum[b], Momentum[c]] +
+myTens[z, Momentum[b], Momentum[d]]"},
+{"fcstExpandScalarProduct-ID11","UnDeclareFCTensor[myTens]; \n ExpandScalarProduct[
+myTens[z, Momentum[a + b], Momentum[c + d]]]","myTens[z, Momentum[a + b], Momentum[c + d]]"}
 }

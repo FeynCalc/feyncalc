@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8942,        308]
-NotebookOptionsPosition[      5485,        200]
-NotebookOutlinePosition[      8049,        273]
-CellTagsIndexPosition[      7944,        267]
+NotebookDataLength[     13527,        427]
+NotebookOptionsPosition[      9946,        317]
+NotebookOutlinePosition[     12484,        386]
+CellTagsIndexPosition[     12377,        380]
 WindowTitle->SMP
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$137824], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138871], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SMP", 
             ".html"]], None}]}]},
@@ -80,10 +80,11 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"SMP", "[", "par", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "substitutes a symbol for the  Standard Model parameter par.  SMP[] \
-gives the list of substitutions. par should be a string; e.g., SMP[\"SW\"] \
-gives  sw (in the Global` context)."
+     " \[LineSeparator]displays a symbol for the model parameter par. Typical \
+parameters are masses, coupling constants, mixing angles etc. Parameters that \
+are complex, like CKM matrix element, have an I as an additional parameter, \
+i.e. SMP[\\\"V_ud\\\",I] and SMP[\\\"V_ud\\\",-I].  SMP[] shows the list of \
+available parameters.\""
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -109,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->796602487],
+ CellID->30316906],
 
 Cell[CellGroupData[{
 
@@ -119,37 +120,166 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1276178058],
+ CellID->411172676],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SMP", "[", "\"\<ME\>\"", "]"}]], "Input",
+ RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]], "Input",
  CellTags->"SMP",
  CellLabel->"In[1]:=",
  CellID->519370115],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"FCGV", "(", "\<\"me\"\>", ")"}], TraditionalForm]], "Output",
- ImageSize->{74, 15},
+  SubscriptBox["m", "e"], TraditionalForm]], "Output",
+ ImageSize->{23, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SMP",
  CellLabel->"Out[1]=",
- CellID->1108872824]
+ CellID->355285945]
 }, Open  ]],
 
-Cell[TextData[{
- "See also: ",
- ButtonBox["Solve2",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"Solve2",
-  ButtonNote->"Solve2"],
- "."
-}], "Text",
- CellTags->"SMP",
- CellID->1298120987]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMP", "[", "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->947204407],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\<\"m_e\"\>", ",", "\<\"m_mu\"\>", ",", "\<\"m_tau\"\>", 
+    ",", "\<\"m_u\"\>", ",", "\<\"m_d\"\>", ",", "\<\"m_c\"\>", 
+    ",", "\<\"m_s\"\>", ",", "\<\"m_t\"\>", ",", "\<\"m_b\"\>", 
+    ",", "\<\"m_H\"\>", ",", "\<\"m_W\"\>", ",", "\<\"m_Z\"\>", 
+    ",", "\<\"m_q\"\>", ",", "\<\"m_Q\"\>", ",", "\<\"m_pi\"\>", 
+    ",", "\<\"g_s\"\>", ",", "\<\"e\"\>", ",", "\<\"cos_W\"\>", 
+    ",", "\<\"sin_W\"\>", ",", "\<\"theta_W\"\>", ",", "\<\"cos_C\"\>", 
+    ",", "\<\"sin_C\"\>", ",", "\<\"theta_C\"\>", ",", "\<\"alpha_fs\"\>", 
+    ",", "\<\"alpha_s\"\>", ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_ud\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_ud\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_us\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_us\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_ub\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_ub\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_cd\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_cd\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_cs\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_cs\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_cb\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_cb\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_td\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_td\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_ts\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_ts\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_tb\"\>", ",", "\[ImaginaryI]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\<\"V_tb\"\>", ",", 
+      RowBox[{"-", "\[ImaginaryI]"}]}], "}"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{519, 92},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->755184812]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMP", "/@", 
+  RowBox[{"SMP", "[", "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->307037125],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    SubscriptBox["m", "e"], ",", 
+    SubscriptBox["m", "\[Mu]"], ",", 
+    SubscriptBox["m", "\[Tau]"], ",", 
+    SubscriptBox["m", "u"], ",", 
+    SubscriptBox["m", "d"], ",", 
+    SubscriptBox["m", "c"], ",", 
+    SubscriptBox["m", "s"], ",", 
+    SubscriptBox["m", "t"], ",", 
+    SubscriptBox["m", "b"], ",", 
+    SubscriptBox["m", "H"], ",", 
+    SubscriptBox["m", "W"], ",", 
+    SubscriptBox["m", "Z"], ",", 
+    SubscriptBox["m", "q"], ",", 
+    SubscriptBox["m", "Q"], ",", 
+    SubscriptBox["m", "\[Pi]"], ",", 
+    SubscriptBox["g", "s"], ",", "e", ",", 
+    RowBox[{
+     RowBox[{"cos", "("}], 
+     SubscriptBox["\[Theta]", "W"], ")"}], ",", 
+    RowBox[{
+     RowBox[{"sin", "("}], 
+     SubscriptBox["\[Theta]", "W"], ")"}], ",", 
+    SubscriptBox["\[Theta]", "W"], ",", 
+    RowBox[{
+     RowBox[{"cos", "("}], 
+     SubscriptBox["\[Theta]", "C"], ")"}], ",", 
+    RowBox[{
+     RowBox[{"sin", "("}], 
+     SubscriptBox["\[Theta]", "C"], ")"}], ",", 
+    SubscriptBox["\[Theta]", "C"], ",", "\[Alpha]", ",", 
+    SubscriptBox["\[Alpha]", "s"], ",", 
+    SubscriptBox["V", "ud"], ",", 
+    SubsuperscriptBox["V", "ud", "*"], ",", 
+    SubscriptBox["V", "us"], ",", 
+    SubsuperscriptBox["V", "us", "*"], ",", 
+    SubscriptBox["V", "ub"], ",", 
+    SubsuperscriptBox["V", "ub", "*"], ",", 
+    SubscriptBox["V", "cd"], ",", 
+    SubsuperscriptBox["V", "cd", "*"], ",", 
+    SubscriptBox["V", "cs"], ",", 
+    SubsuperscriptBox["V", "cs", "*"], ",", 
+    SubscriptBox["V", "cb"], ",", 
+    SubsuperscriptBox["V", "cb", "*"], ",", 
+    SubscriptBox["V", "td"], ",", 
+    SubsuperscriptBox["V", "td", "*"], ",", 
+    SubscriptBox["V", "ts"], ",", 
+    SubsuperscriptBox["V", "ts", "*"], ",", 
+    SubscriptBox["V", "tb"], ",", 
+    SubsuperscriptBox["V", "tb", "*"]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{482, 62},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1441626688]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
@@ -172,7 +302,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["SMVertex",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/SMVertex",
@@ -181,19 +310,7 @@ Cell[TextData[{
  "."
 }], "Text",
  CellTags->"SMP",
- CellID->450516788],
-
-Cell[TextData[{
- "See also: ",
- StyleBox[ButtonBox["Solve2",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Solve2",
-  ButtonNote->"Solve2"],
-  FontFamily->"Verdana"],
- "."
-}], "Text",
- CellTags->"SMP",
- CellID->203521549]
+ CellID->450516788]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -213,16 +330,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 17, 1.939529}", 
+   "built" -> "{2016, 8, 21, 21, 24, 55.093557}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "SMP[par] substitutes a symbol for the Standard Model parameter par. \
-SMP[] gives the list of substitutions. par should be a string; e.g., SMP[\"SW\
-\"] gives sw (in the Global` context).", "synonyms" -> {}, "title" -> "SMP", 
-    "titlemodifier" -> "", "windowtitle" -> "SMP", "type" -> "Symbol", "uri" -> 
+    "SMP[par] displays a symbol for the model parameter par. Typical \
+parameters are masses, coupling constants, mixing angles etc. Parameters that \
+are complex, like CKM matrix element, have an I as an additional parameter, \
+i.e. SMP[\\\"V_ud\\\",I] and SMP[\\\"V_ud\\\",-I]. SMP[] shows the list of \
+available parameters.\"", "synonyms" -> {}, "title" -> "SMP", "titlemodifier" -> 
+    "", "windowtitle" -> "SMP", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SMP"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -243,31 +362,25 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3411, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3537, 97, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->796602487]},
+   CellID->30316906]},
  "SMP"->{
-  Cell[4044, 125, 126, 4, 27, "Input",
+  Cell[4168, 126, 127, 4, 29, "Input",
    CellTags->"SMP",
    CellID->519370115],
-  Cell[4173, 131, 245, 8, 36, "Output",
+  Cell[4298, 132, 226, 8, 36, "Output",
    CellTags->"SMP",
-   CellID->1108872824],
-  Cell[4433, 142, 183, 9, 32, "Text",
+   CellID->355285945],
+  Cell[9682, 303, 222, 9, 31, "Text",
    CellTags->"SMP",
-   CellID->1298120987],
-  Cell[4972, 173, 237, 10, 31, "Text",
-   CellTags->"SMP",
-   CellID->450516788],
-  Cell[5212, 185, 231, 10, 31, "Text",
-   CellTags->"SMP",
-   CellID->203521549]}
+   CellID->450516788]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7379, 244},
- {"SMP", 7508, 248}
+ {"PrimaryExamplesSection", 11979, 363},
+ {"SMP", 12107, 367}
  }
 *)
 (*NotebookFileOutline
@@ -276,40 +389,46 @@ Cell[575, 21, 2238, 52, 51, "AnchorBarGrid",
  CellID->1],
 Cell[2816, 75, 46, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2865, 78, 521, 14, 99, "Usage",
+Cell[2865, 78, 647, 15, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3411, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3537, 97, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->796602487],
+ CellID->30316906],
 Cell[CellGroupData[{
-Cell[3823, 115, 196, 6, 25, "ExampleSection",
- CellID->1276178058],
+Cell[3948, 116, 195, 6, 25, "ExampleSection",
+ CellID->411172676],
 Cell[CellGroupData[{
-Cell[4044, 125, 126, 4, 27, "Input",
+Cell[4168, 126, 127, 4, 29, "Input",
  CellTags->"SMP",
  CellID->519370115],
-Cell[4173, 131, 245, 8, 36, "Output",
+Cell[4298, 132, 226, 8, 36, "Output",
  CellTags->"SMP",
- CellID->1108872824]
-}, Open  ]],
-Cell[4433, 142, 183, 9, 32, "Text",
- CellTags->"SMP",
- CellID->1298120987]
-}, Open  ]],
-Cell[4631, 154, 31, 0, 29, "SectionFooterSpacer"]
+ CellID->355285945]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4699, 159, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[4972, 173, 237, 10, 31, "Text",
- CellTags->"SMP",
- CellID->450516788],
-Cell[5212, 185, 231, 10, 31, "Text",
- CellTags->"SMP",
- CellID->203521549]
+Cell[4561, 145, 94, 3, 27, "Input",
+ CellID->947204407],
+Cell[4658, 150, 2494, 62, 113, "Output",
+ CellID->755184812]
 }, Open  ]],
-Cell[5458, 198, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[7189, 217, 120, 4, 27, "Input",
+ CellID->307037125],
+Cell[7312, 223, 2002, 57, 83, "Output",
+ CellID->1441626688]
+}, Open  ]]
+}, Open  ]],
+Cell[9341, 284, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9409, 289, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9682, 303, 222, 9, 31, "Text",
+ CellTags->"SMP",
+ CellID->450516788]
+}, Open  ]],
+Cell[9919, 315, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

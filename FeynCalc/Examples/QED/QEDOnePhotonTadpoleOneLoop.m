@@ -47,7 +47,7 @@ Paint[diags = InsertFields[CreateTopologies[1, 1 -> 0 ], {V[1]} -> {},
 
 
 amps = FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],
-IncomingMomenta->{k},LoopMomenta->{q},UndoChiralSplittings->True,ChangeDimension->D,List->False];
+IncomingMomenta->{k},LoopMomenta->{q},UndoChiralSplittings->True,ChangeDimension->D,List->False,SMP->True];
 
 
 (* ::Text:: *)

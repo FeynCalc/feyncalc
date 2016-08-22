@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6356,        194]
+NotebookDataLength[      6357,        194]
 NotebookOptionsPosition[      4089,        128]
-NotebookOutlinePosition[      6089,        183]
-CellTagsIndexPosition[      6013,        178]
+NotebookOutlinePosition[      6090,        183]
+CellTagsIndexPosition[      6014,        178]
 WindowTitle->NonCommutative
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ NonCommutative.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$105903], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$107598], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/NonCommutative", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 26.562138}", 
+   "built" -> "{2016, 8, 21, 21, 22, 42.499841}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -177,7 +177,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"NonCommutative", 5896, 171}
+ {"NonCommutative", 5897, 171}
  }
 *)
 (*NotebookFileOutline

@@ -43,7 +43,7 @@ Begin["`BackgroundGluonVertex`Private`"]
 
 Options[BackgroundGluonVertex] = {
 	Dimension -> D,
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Gauge -> 1
 };
 

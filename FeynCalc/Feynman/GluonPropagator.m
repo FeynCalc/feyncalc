@@ -37,7 +37,7 @@ Begin["`GluonPropagator`Private`"]
 
 Options[GluonPropagator] = {
 	CounterTerm -> False,
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Explicit -> False,
 	Gauge -> 1,

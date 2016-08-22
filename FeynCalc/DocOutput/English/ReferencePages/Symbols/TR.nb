@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     55933,       1804]
-NotebookOptionsPosition[     39757,       1277]
-NotebookOutlinePosition[     50944,       1614]
-CellTagsIndexPosition[     50717,       1605]
+NotebookDataLength[     54601,       1751]
+NotebookOptionsPosition[     39263,       1253]
+NotebookOutlinePosition[     49902,       1572]
+CellTagsIndexPosition[     49675,       1563]
 WindowTitle->TR
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160015], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$159891], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/TR", 
             ".html"]], None}]}]},
@@ -119,7 +119,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->432077144],
 
 Cell[TextData[{
  "Basic Examples",
@@ -127,7 +127,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1738411291],
+ CellID->2108646959],
 
 Cell[CellGroupData[{
 
@@ -168,7 +168,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[1]=",
- CellID->266616531]
+ CellID->69652991]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -204,7 +204,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[2]=",
- CellID->895845092]
+ CellID->924683987]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -226,29 +226,28 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"4", " ", 
+  RowBox[{
+   RowBox[{"-", "4"}], " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{
       SuperscriptBox["m", "2"], " ", 
-      RowBox[{"(", 
-       RowBox[{"-", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}], ")"}]}], "-", 
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], "+", 
      RowBox[{
       FormBox[
        SuperscriptBox["g", 
@@ -277,7 +276,7 @@ Cell[BoxData[
         FormBox[
          FormBox["q",
           TraditionalForm],
-         TraditionalForm]}], ")"}]}], "+", 
+         TraditionalForm]}], ")"}]}], "-", 
      RowBox[{
       FormBox[
        SuperscriptBox[
@@ -304,7 +303,7 @@ Cell[BoxData[
            TraditionalForm],
           TraditionalForm],
          TraditionalForm]],
-       TraditionalForm]}], "+", 
+       TraditionalForm]}], "-", 
      RowBox[{
       FormBox[
        SuperscriptBox[
@@ -332,12 +331,12 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{302, 21},
+ ImageSize->{289, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[3]=",
- CellID->1627800516]
+ CellID->918332859]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -378,7 +377,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[4]=",
- CellID->425214706]
+ CellID->1839075278]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -386,8 +385,6 @@ Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{
   RowBox[{"$Larin", "=", "True"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"$West", "=", "False"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"$BreitMaison", "=", "False"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"TR", "[", 
@@ -512,50 +509,27 @@ byIQCAQCAvqFWzxWXYK7HhkCgUAgOAIuORkfvqWSxbcyIBAIBIJ1/h9eyTfy
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr", "RasterizedOutput"},
  CellLabel->"Out[5]=",
- CellID->693057089]
+ CellID->327034179]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"?", "$West"}]], "Input",
+ RowBox[{"?", "West"}]], "Input",
  CellTags->{"TR", "Tr"},
  CellLabel->"In[6]:=",
  CellID->1811278693],
 
 Cell[BoxData[
- StyleBox["\<\"If $West is set to True (which is the default), traces \
-involving more than 4 Dirac matrices and gamma5 are calculated recursively \
-according to formula (A.5) from Comp. Phys. Comm 77 (1993) 286-298, which is \
-based on the Breitenlohner Maison gamma5 - scheme.\"\>", "MSG"]], "Print", \
-"PrintUsage",
- CellTags->{"Info-42f21703-e48e-4523-a52c-4c19c9367db0", "Tr", "TR"},
- CellID->1743711015]
-}, Open  ]],
-
-Cell["\<\
-$West=False should be set before any calculation is done (because \
-intermediate results from trace calculations are cached).\
-\>", "Text",
- CellTags->{"TR", "Tr"},
- CellID->840176476],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"$West", "=", "False"}]], "Input",
- CellTags->{"TR", "Tr"},
- CellLabel->"In[7]:=",
- CellID->1568057115],
-
-Cell[BoxData[
- FormBox["False", TraditionalForm]], "Output",
- ImageSize->{37, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->{"TR", "Tr"},
- CellLabel->"Out[7]=",
- CellID->1910153679]
+ StyleBox["\<\"West is an option for DiracTrace, TR and other functions that \
+deal with traces of Dirac matrices. It applies only to the computation of \
+D-dimensional chiral traces (i.e. those that involve one gamma5) in the \
+Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to True, such \
+traces will be computed according to formula  (A.5) from Comp. Phys. Comm 77 \
+(1993) 286-298, which is also known as West's formula.\"\>", "MSG"]], "Print",\
+ "PrintUsage",
+ CellTags->{"Info-1f727a11-0560-42a1-a906-fd285e6773a9", "Tr", "TR"},
+ CellID->756420129]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -563,17 +537,19 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"TR", "[", 
   RowBox[{
-   RowBox[{"GAD", "[", 
-    RowBox[{
-     SubscriptBox["\[Nu]", "1"], ",", 
-     SubscriptBox["\[Nu]", "2"], ",", 
-     SubscriptBox["\[Nu]", "3"], ",", 
-     SubscriptBox["\[Nu]", "4"], ",", 
-     SubscriptBox["\[Nu]", "5"], ",", 
-     SubscriptBox["\[Nu]", "6"]}], "]"}], ".", 
-   RowBox[{"GA", "[", "5", "]"}]}], "]"}]], "Input",
+   RowBox[{
+    RowBox[{"GAD", "[", 
+     RowBox[{
+      SubscriptBox["\[Nu]", "1"], ",", 
+      SubscriptBox["\[Nu]", "2"], ",", 
+      SubscriptBox["\[Nu]", "3"], ",", 
+      SubscriptBox["\[Nu]", "4"], ",", 
+      SubscriptBox["\[Nu]", "5"], ",", 
+      SubscriptBox["\[Nu]", "6"]}], "]"}], ".", 
+    RowBox[{"GA", "[", "5", "]"}]}], ",", 
+   RowBox[{"West", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->346772021],
 
 Cell[BoxData[
@@ -710,8 +686,8 @@ H+xpXtiuNLOcHgkAAAAAAFr8B81C2Lw=
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr", "RasterizedOutput"},
- CellLabel->"Out[8]=",
- CellID->1165418985]
+ CellLabel->"Out[7]=",
+ CellID->1134360499]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -721,7 +697,7 @@ Cell[BoxData[
   RowBox[{"GS", "[", 
    RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[9]:=",
+ CellLabel->"In[8]:=",
  CellID->458206387],
 
 Cell[BoxData[
@@ -820,8 +796,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[9]=",
- CellID->116123442]
+ CellLabel->"Out[8]=",
+ CellID->1197967590]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -840,7 +816,7 @@ Cell[BoxData[
     RowBox[{"GA", "[", "\[Mu]", "]"}]}], ",", 
    RowBox[{"Factoring", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[10]:=",
+ CellLabel->"In[9]:=",
  CellID->1692893205],
 
 Cell[BoxData[
@@ -867,8 +843,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[10]=",
- CellID->1111645380]
+ CellLabel->"Out[9]=",
+ CellID->876711937]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -880,7 +856,7 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
    RowBox[{"FCE", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->18313474],
 
 Cell[BoxData[
@@ -909,8 +885,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[11]=",
- CellID->651172375]
+ CellLabel->"Out[10]=",
+ CellID->1133602947]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -918,7 +894,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[12]:=",
+ CellLabel->"In[11]:=",
  CellID->288461758],
 
 Cell[BoxData[
@@ -929,8 +905,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[12]//StandardForm=",
- CellID->1580428684]
+ CellLabel->"Out[11]//StandardForm=",
+ CellID->749025554]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -945,7 +921,7 @@ Cell[BoxData[
     RowBox[{"GAD", "[", "\[Mu]", "]"}]}], ",", 
    RowBox[{"FCE", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[13]:=",
+ CellLabel->"In[12]:=",
  CellID->1390091586],
 
 Cell[BoxData[
@@ -974,8 +950,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[13]=",
- CellID->1388741059]
+ CellLabel->"Out[12]=",
+ CellID->395116332]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -983,7 +959,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[14]:=",
+ CellLabel->"In[13]:=",
  CellID->1345196880],
 
 Cell[BoxData[
@@ -994,8 +970,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[14]//StandardForm=",
- CellID->1987203199]
+ CellLabel->"Out[13]//StandardForm=",
+ CellID->1804637060]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1011,7 +987,7 @@ Cell[BoxData[
    RowBox[{"SUNDelta", "[", 
     RowBox[{"c", ",", "b"}], "]"}]}]}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[15]:=",
+ CellLabel->"In[14]:=",
  CellID->496024133],
 
 Cell[BoxData[
@@ -1051,8 +1027,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[15]=",
- CellID->286955010]
+ CellLabel->"Out[14]=",
+ CellID->868021023]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1063,7 +1039,7 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "False"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[16]:=",
+ CellLabel->"In[15]:=",
  CellID->1457315131],
 
 Cell[BoxData[
@@ -1091,8 +1067,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[16]=",
- CellID->485298780]
+ CellLabel->"Out[15]=",
+ CellID->1886506871]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1103,7 +1079,7 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "True"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[17]:=",
+ CellLabel->"In[16]:=",
  CellID->73677015],
 
 Cell[BoxData[
@@ -1131,8 +1107,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[17]=",
- CellID->614110826]
+ CellLabel->"Out[16]=",
+ CellID->300302100]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1143,7 +1119,7 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "False"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[18]:=",
+ CellLabel->"In[17]:=",
  CellID->1407727695],
 
 Cell[BoxData[
@@ -1152,8 +1128,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[18]=",
- CellID->807484559]
+ CellLabel->"Out[17]=",
+ CellID->120665714]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1164,7 +1140,7 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "True"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[19]:=",
+ CellLabel->"In[18]:=",
  CellID->806303782],
 
 Cell[BoxData[
@@ -1173,8 +1149,8 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[19]=",
- CellID->783886455]
+ CellLabel->"Out[18]=",
+ CellID->1048410919]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1184,7 +1160,7 @@ Cell[BoxData[
   RowBox[{"GA", "[", 
    RowBox[{"m", ",", "n"}], "]"}], "]"}]], "Input",
  CellTags->"Tr",
- CellLabel->"In[20]:=",
+ CellLabel->"In[19]:=",
  CellID->864240014],
 
 Cell[BoxData[
@@ -1211,15 +1187,15 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Tr",
- CellLabel->"Out[20]=",
- CellID->2001172144]
+ CellLabel->"Out[19]=",
+ CellID->1937521482]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Clear", "[", "t", "]"}], ";"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[21]:=",
+ CellLabel->"In[20]:=",
  CellID->1619609299],
 
 Cell["", "SectionFooterSpacer"]
@@ -1290,7 +1266,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 13.436084}", 
+   "built" -> "{2016, 8, 21, 21, 26, 26.969497}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1326,289 +1302,271 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3939, 106, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3939, 106, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1289444967]},
+   CellID->432077144]},
  "TR"->{
-  Cell[4551, 133, 79, 2, 35, "Subsubsection",
+  Cell[4550, 133, 79, 2, 35, "Subsubsection",
    CellTags->{"TR", "Tr"},
    CellID->1530902763],
-  Cell[4655, 139, 155, 5, 27, "Input",
+  Cell[4654, 139, 155, 5, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1115707365],
-  Cell[4813, 146, 584, 24, 38, "Output",
+  Cell[4812, 146, 583, 24, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->266616531],
-  Cell[5434, 175, 123, 4, 27, "Input",
+   CellID->69652991],
+  Cell[5432, 175, 123, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->796428219],
-  Cell[5560, 181, 601, 25, 38, "Output",
+  Cell[5558, 181, 601, 25, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->895845092],
-  Cell[6198, 211, 400, 13, 27, "Input",
+   CellID->924683987],
+  Cell[6196, 211, 400, 13, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->934056232],
-  Cell[6601, 226, 2799, 113, 42, "Output",
+  Cell[6599, 226, 2735, 112, 42, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1627800516],
-  Cell[9437, 344, 231, 7, 27, "Input",
+   CellID->918332859],
+  Cell[9371, 343, 231, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1809199539],
-  Cell[9671, 353, 671, 27, 39, "Output",
+  Cell[9605, 352, 672, 27, 39, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->425214706],
-  Cell[10379, 385, 549, 16, 79, "Input",
+   CellID->1839075278],
+  Cell[10314, 384, 473, 14, 62, "Input",
    CellTags->{"TR", "Tr"},
    CellID->476260756],
-  Cell[10931, 403, 6267, 111, 75, "Output",
+  Cell[10790, 400, 6267, 111, 75, "Output",
    CellTags->{"TR", "Tr", "RasterizedOutput"},
-   CellID->693057089],
-  Cell[17235, 519, 117, 4, 27, "Input",
+   CellID->327034179],
+  Cell[17094, 516, 116, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1811278693],
-  Cell[17355, 525, 423, 7, 90, "Print",
-   CellTags->{"Info-42f21703-e48e-4523-a52c-4c19c9367db0", "Tr", "TR"},
-   CellID->1743711015],
-  Cell[17793, 535, 194, 5, 52, "Text",
-   CellTags->{"TR", "Tr"},
-   CellID->840176476],
-  Cell[18012, 544, 126, 4, 27, "Input",
-   CellTags->{"TR", "Tr"},
-   CellID->1568057115],
-  Cell[18141, 550, 216, 7, 36, "Output",
-   CellTags->{"TR", "Tr"},
-   CellID->1910153679],
-  Cell[18394, 562, 446, 14, 27, "Input",
+  Cell[17213, 522, 581, 9, 122, "Print",
+   CellTags->{"Info-1f727a11-0560-42a1-a906-fd285e6773a9", "Tr", "TR"},
+   CellID->756420129],
+  Cell[17831, 536, 516, 16, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->346772021],
-  Cell[18843, 578, 7764, 135, 78, "Output",
+  Cell[18350, 554, 7764, 135, 78, "Output",
    CellTags->{"TR", "Tr", "RasterizedOutput"},
-   CellID->1165418985],
-  Cell[26644, 718, 196, 6, 27, "Input",
+   CellID->1134360499],
+  Cell[26151, 694, 196, 6, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->458206387],
-  Cell[26843, 726, 2544, 97, 39, "Output",
+  Cell[26350, 702, 2545, 97, 39, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->116123442],
-  Cell[29424, 828, 471, 15, 27, "Input",
+   CellID->1197967590],
+  Cell[28932, 804, 470, 15, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1692893205],
-  Cell[29898, 845, 649, 25, 42, "Output",
+  Cell[29405, 821, 647, 25, 42, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1111645380],
-  Cell[30584, 875, 249, 8, 27, "Input",
+   CellID->876711937],
+  Cell[30089, 851, 249, 8, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->18313474],
-  Cell[30836, 885, 658, 27, 40, "Output",
+  Cell[30341, 861, 659, 27, 40, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->651172375],
-  Cell[31531, 917, 130, 4, 27, "Input",
+   CellID->1133602947],
+  Cell[31037, 893, 130, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->288461758],
-  Cell[31664, 923, 287, 9, 49, "Output",
+  Cell[31170, 899, 286, 9, 49, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1580428684],
-  Cell[31988, 937, 374, 11, 27, "Input",
+   CellID->749025554],
+  Cell[31493, 913, 374, 11, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1390091586],
-  Cell[32365, 950, 669, 27, 40, "Output",
+  Cell[31870, 926, 668, 27, 40, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1388741059],
-  Cell[33071, 982, 131, 4, 27, "Input",
+   CellID->395116332],
+  Cell[32575, 958, 131, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1345196880],
-  Cell[33205, 988, 297, 9, 49, "Output",
+  Cell[32709, 964, 297, 9, 49, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1987203199],
-  Cell[33539, 1002, 365, 12, 27, "Input",
+   CellID->1804637060],
+  Cell[33043, 978, 365, 12, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->496024133],
-  Cell[33907, 1016, 916, 38, 40, "Output",
+  Cell[33411, 992, 916, 38, 40, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->286955010],
-  Cell[34860, 1059, 241, 7, 27, "Input",
+   CellID->868021023],
+  Cell[34364, 1035, 241, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1457315131],
-  Cell[35104, 1068, 635, 26, 38, "Output",
+  Cell[34608, 1044, 636, 26, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->485298780],
-  Cell[35776, 1099, 238, 7, 27, "Input",
+   CellID->1886506871],
+  Cell[35281, 1075, 238, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->73677015],
-  Cell[36017, 1108, 635, 26, 38, "Output",
+  Cell[35522, 1084, 635, 26, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->614110826],
-  Cell[36689, 1139, 241, 7, 27, "Input",
+   CellID->300302100],
+  Cell[36194, 1115, 241, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1407727695],
-  Cell[36933, 1148, 212, 7, 36, "Output",
+  Cell[36438, 1124, 212, 7, 36, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->807484559],
-  Cell[37182, 1160, 239, 7, 27, "Input",
+   CellID->120665714],
+  Cell[36687, 1136, 239, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->806303782],
-  Cell[37424, 1169, 212, 7, 36, "Output",
+  Cell[36929, 1145, 213, 7, 36, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->783886455],
-  Cell[38452, 1217, 146, 5, 27, "Input",
+   CellID->1048410919],
+  Cell[37958, 1193, 146, 5, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1619609299],
-  Cell[38954, 1244, 761, 28, 32, "Text",
+  Cell[38460, 1220, 761, 28, 32, "Text",
    CellTags->{"TR", "Tr"},
    CellID->1296151753]},
  "Tr"->{
-  Cell[4551, 133, 79, 2, 35, "Subsubsection",
+  Cell[4550, 133, 79, 2, 35, "Subsubsection",
    CellTags->{"TR", "Tr"},
    CellID->1530902763],
-  Cell[4655, 139, 155, 5, 27, "Input",
+  Cell[4654, 139, 155, 5, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1115707365],
-  Cell[4813, 146, 584, 24, 38, "Output",
+  Cell[4812, 146, 583, 24, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->266616531],
-  Cell[5434, 175, 123, 4, 27, "Input",
+   CellID->69652991],
+  Cell[5432, 175, 123, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->796428219],
-  Cell[5560, 181, 601, 25, 38, "Output",
+  Cell[5558, 181, 601, 25, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->895845092],
-  Cell[6198, 211, 400, 13, 27, "Input",
+   CellID->924683987],
+  Cell[6196, 211, 400, 13, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->934056232],
-  Cell[6601, 226, 2799, 113, 42, "Output",
+  Cell[6599, 226, 2735, 112, 42, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1627800516],
-  Cell[9437, 344, 231, 7, 27, "Input",
+   CellID->918332859],
+  Cell[9371, 343, 231, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1809199539],
-  Cell[9671, 353, 671, 27, 39, "Output",
+  Cell[9605, 352, 672, 27, 39, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->425214706],
-  Cell[10379, 385, 549, 16, 79, "Input",
+   CellID->1839075278],
+  Cell[10314, 384, 473, 14, 62, "Input",
    CellTags->{"TR", "Tr"},
    CellID->476260756],
-  Cell[10931, 403, 6267, 111, 75, "Output",
+  Cell[10790, 400, 6267, 111, 75, "Output",
    CellTags->{"TR", "Tr", "RasterizedOutput"},
-   CellID->693057089],
-  Cell[17235, 519, 117, 4, 27, "Input",
+   CellID->327034179],
+  Cell[17094, 516, 116, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1811278693],
-  Cell[17355, 525, 423, 7, 90, "Print",
-   CellTags->{"Info-42f21703-e48e-4523-a52c-4c19c9367db0", "Tr", "TR"},
-   CellID->1743711015],
-  Cell[17793, 535, 194, 5, 52, "Text",
-   CellTags->{"TR", "Tr"},
-   CellID->840176476],
-  Cell[18012, 544, 126, 4, 27, "Input",
-   CellTags->{"TR", "Tr"},
-   CellID->1568057115],
-  Cell[18141, 550, 216, 7, 36, "Output",
-   CellTags->{"TR", "Tr"},
-   CellID->1910153679],
-  Cell[18394, 562, 446, 14, 27, "Input",
+  Cell[17213, 522, 581, 9, 122, "Print",
+   CellTags->{"Info-1f727a11-0560-42a1-a906-fd285e6773a9", "Tr", "TR"},
+   CellID->756420129],
+  Cell[17831, 536, 516, 16, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->346772021],
-  Cell[18843, 578, 7764, 135, 78, "Output",
+  Cell[18350, 554, 7764, 135, 78, "Output",
    CellTags->{"TR", "Tr", "RasterizedOutput"},
-   CellID->1165418985],
-  Cell[26644, 718, 196, 6, 27, "Input",
+   CellID->1134360499],
+  Cell[26151, 694, 196, 6, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->458206387],
-  Cell[26843, 726, 2544, 97, 39, "Output",
+  Cell[26350, 702, 2545, 97, 39, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->116123442],
-  Cell[29424, 828, 471, 15, 27, "Input",
+   CellID->1197967590],
+  Cell[28932, 804, 470, 15, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1692893205],
-  Cell[29898, 845, 649, 25, 42, "Output",
+  Cell[29405, 821, 647, 25, 42, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1111645380],
-  Cell[30584, 875, 249, 8, 27, "Input",
+   CellID->876711937],
+  Cell[30089, 851, 249, 8, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->18313474],
-  Cell[30836, 885, 658, 27, 40, "Output",
+  Cell[30341, 861, 659, 27, 40, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->651172375],
-  Cell[31531, 917, 130, 4, 27, "Input",
+   CellID->1133602947],
+  Cell[31037, 893, 130, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->288461758],
-  Cell[31664, 923, 287, 9, 49, "Output",
+  Cell[31170, 899, 286, 9, 49, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1580428684],
-  Cell[31988, 937, 374, 11, 27, "Input",
+   CellID->749025554],
+  Cell[31493, 913, 374, 11, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1390091586],
-  Cell[32365, 950, 669, 27, 40, "Output",
+  Cell[31870, 926, 668, 27, 40, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1388741059],
-  Cell[33071, 982, 131, 4, 27, "Input",
+   CellID->395116332],
+  Cell[32575, 958, 131, 4, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1345196880],
-  Cell[33205, 988, 297, 9, 49, "Output",
+  Cell[32709, 964, 297, 9, 49, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->1987203199],
-  Cell[33539, 1002, 365, 12, 27, "Input",
+   CellID->1804637060],
+  Cell[33043, 978, 365, 12, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->496024133],
-  Cell[33907, 1016, 916, 38, 40, "Output",
+  Cell[33411, 992, 916, 38, 40, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->286955010],
-  Cell[34860, 1059, 241, 7, 27, "Input",
+   CellID->868021023],
+  Cell[34364, 1035, 241, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1457315131],
-  Cell[35104, 1068, 635, 26, 38, "Output",
+  Cell[34608, 1044, 636, 26, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->485298780],
-  Cell[35776, 1099, 238, 7, 27, "Input",
+   CellID->1886506871],
+  Cell[35281, 1075, 238, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->73677015],
-  Cell[36017, 1108, 635, 26, 38, "Output",
+  Cell[35522, 1084, 635, 26, 38, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->614110826],
-  Cell[36689, 1139, 241, 7, 27, "Input",
+   CellID->300302100],
+  Cell[36194, 1115, 241, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1407727695],
-  Cell[36933, 1148, 212, 7, 36, "Output",
+  Cell[36438, 1124, 212, 7, 36, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->807484559],
-  Cell[37182, 1160, 239, 7, 27, "Input",
+   CellID->120665714],
+  Cell[36687, 1136, 239, 7, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->806303782],
-  Cell[37424, 1169, 212, 7, 36, "Output",
+  Cell[36929, 1145, 213, 7, 36, "Output",
    CellTags->{"TR", "Tr"},
-   CellID->783886455],
-  Cell[37673, 1181, 174, 6, 27, "Input",
+   CellID->1048410919],
+  Cell[37179, 1157, 174, 6, 27, "Input",
    CellTags->"Tr",
    CellID->864240014],
-  Cell[37850, 1189, 587, 25, 38, "Output",
+  Cell[37356, 1165, 587, 25, 38, "Output",
    CellTags->"Tr",
-   CellID->2001172144],
-  Cell[38452, 1217, 146, 5, 27, "Input",
+   CellID->1937521482],
+  Cell[37958, 1193, 146, 5, 27, "Input",
    CellTags->{"TR", "Tr"},
    CellID->1619609299],
-  Cell[38954, 1244, 761, 28, 32, "Text",
+  Cell[38460, 1220, 761, 28, 32, "Text",
    CellTags->{"TR", "Tr"},
    CellID->1296151753]},
  "RasterizedOutput"->{
-  Cell[10931, 403, 6267, 111, 75, "Output",
+  Cell[10790, 400, 6267, 111, 75, "Output",
    CellTags->{"TR", "Tr", "RasterizedOutput"},
-   CellID->693057089],
-  Cell[18843, 578, 7764, 135, 78, "Output",
+   CellID->327034179],
+  Cell[18350, 554, 7764, 135, 78, "Output",
    CellTags->{"TR", "Tr", "RasterizedOutput"},
-   CellID->1165418985]},
- "Info-42f21703-e48e-4523-a52c-4c19c9367db0"->{
-  Cell[17355, 525, 423, 7, 90, "Print",
-   CellTags->{"Info-42f21703-e48e-4523-a52c-4c19c9367db0", "Tr", "TR"},
-   CellID->1743711015]}
+   CellID->1134360499]},
+ "Info-1f727a11-0560-42a1-a906-fd285e6773a9"->{
+  Cell[17213, 522, 581, 9, 122, "Print",
+   CellTags->{"Info-1f727a11-0560-42a1-a906-fd285e6773a9", "Tr", "TR"},
+   CellID->756420129]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 42074, 1327},
- {"TR", 42204, 1331},
- {"Tr", 46150, 1458},
- {"RasterizedOutput", 50279, 1591},
- {"Info-42f21703-e48e-4523-a52c-4c19c9367db0", 50557, 1598}
+ {"PrimaryExamplesSection", 41581, 1303},
+ {"TR", 41710, 1307},
+ {"Tr", 45382, 1425},
+ {"RasterizedOutput", 49237, 1549},
+ {"Info-1f727a11-0560-42a1-a906-fd285e6773a9", 49515, 1556}
  }
 *)
 (*NotebookFileOutline
@@ -1620,192 +1578,181 @@ Cell[2811, 75, 45, 1, 42, "ObjectName",
 Cell[2859, 78, 1055, 24, 195, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3939, 106, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3939, 106, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
-Cell[4330, 123, 196, 6, 25, "ExampleSection",
- CellID->1738411291],
+ CellID->432077144],
+Cell[4329, 123, 196, 6, 25, "ExampleSection",
+ CellID->2108646959],
 Cell[CellGroupData[{
-Cell[4551, 133, 79, 2, 35, "Subsubsection",
+Cell[4550, 133, 79, 2, 35, "Subsubsection",
  CellTags->{"TR", "Tr"},
  CellID->1530902763],
 Cell[CellGroupData[{
-Cell[4655, 139, 155, 5, 27, "Input",
+Cell[4654, 139, 155, 5, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1115707365],
-Cell[4813, 146, 584, 24, 38, "Output",
+Cell[4812, 146, 583, 24, 38, "Output",
  CellTags->{"TR", "Tr"},
- CellID->266616531]
+ CellID->69652991]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5434, 175, 123, 4, 27, "Input",
+Cell[5432, 175, 123, 4, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->796428219],
-Cell[5560, 181, 601, 25, 38, "Output",
+Cell[5558, 181, 601, 25, 38, "Output",
  CellTags->{"TR", "Tr"},
- CellID->895845092]
+ CellID->924683987]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6198, 211, 400, 13, 27, "Input",
+Cell[6196, 211, 400, 13, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->934056232],
-Cell[6601, 226, 2799, 113, 42, "Output",
+Cell[6599, 226, 2735, 112, 42, "Output",
  CellTags->{"TR", "Tr"},
- CellID->1627800516]
+ CellID->918332859]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9437, 344, 231, 7, 27, "Input",
+Cell[9371, 343, 231, 7, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1809199539],
-Cell[9671, 353, 671, 27, 39, "Output",
+Cell[9605, 352, 672, 27, 39, "Output",
  CellTags->{"TR", "Tr"},
- CellID->425214706]
+ CellID->1839075278]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10379, 385, 549, 16, 79, "Input",
+Cell[10314, 384, 473, 14, 62, "Input",
  CellTags->{"TR", "Tr"},
  CellID->476260756],
-Cell[10931, 403, 6267, 111, 75, "Output",
+Cell[10790, 400, 6267, 111, 75, "Output",
  CellTags->{"TR", "Tr", "RasterizedOutput"},
- CellID->693057089]
+ CellID->327034179]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17235, 519, 117, 4, 27, "Input",
+Cell[17094, 516, 116, 4, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1811278693],
-Cell[17355, 525, 423, 7, 90, "Print",
- CellTags->{"Info-42f21703-e48e-4523-a52c-4c19c9367db0", "Tr", "TR"},
- CellID->1743711015]
-}, Open  ]],
-Cell[17793, 535, 194, 5, 52, "Text",
- CellTags->{"TR", "Tr"},
- CellID->840176476],
-Cell[CellGroupData[{
-Cell[18012, 544, 126, 4, 27, "Input",
- CellTags->{"TR", "Tr"},
- CellID->1568057115],
-Cell[18141, 550, 216, 7, 36, "Output",
- CellTags->{"TR", "Tr"},
- CellID->1910153679]
+Cell[17213, 522, 581, 9, 122, "Print",
+ CellTags->{"Info-1f727a11-0560-42a1-a906-fd285e6773a9", "Tr", "TR"},
+ CellID->756420129]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18394, 562, 446, 14, 27, "Input",
+Cell[17831, 536, 516, 16, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->346772021],
-Cell[18843, 578, 7764, 135, 78, "Output",
+Cell[18350, 554, 7764, 135, 78, "Output",
  CellTags->{"TR", "Tr", "RasterizedOutput"},
- CellID->1165418985]
+ CellID->1134360499]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26644, 718, 196, 6, 27, "Input",
+Cell[26151, 694, 196, 6, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->458206387],
-Cell[26843, 726, 2544, 97, 39, "Output",
+Cell[26350, 702, 2545, 97, 39, "Output",
  CellTags->{"TR", "Tr"},
- CellID->116123442]
+ CellID->1197967590]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29424, 828, 471, 15, 27, "Input",
+Cell[28932, 804, 470, 15, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1692893205],
-Cell[29898, 845, 649, 25, 42, "Output",
+Cell[29405, 821, 647, 25, 42, "Output",
  CellTags->{"TR", "Tr"},
- CellID->1111645380]
+ CellID->876711937]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30584, 875, 249, 8, 27, "Input",
+Cell[30089, 851, 249, 8, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->18313474],
-Cell[30836, 885, 658, 27, 40, "Output",
+Cell[30341, 861, 659, 27, 40, "Output",
  CellTags->{"TR", "Tr"},
- CellID->651172375]
+ CellID->1133602947]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31531, 917, 130, 4, 27, "Input",
+Cell[31037, 893, 130, 4, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->288461758],
-Cell[31664, 923, 287, 9, 49, "Output",
+Cell[31170, 899, 286, 9, 49, "Output",
  CellTags->{"TR", "Tr"},
- CellID->1580428684]
+ CellID->749025554]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31988, 937, 374, 11, 27, "Input",
+Cell[31493, 913, 374, 11, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1390091586],
-Cell[32365, 950, 669, 27, 40, "Output",
+Cell[31870, 926, 668, 27, 40, "Output",
  CellTags->{"TR", "Tr"},
- CellID->1388741059]
+ CellID->395116332]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33071, 982, 131, 4, 27, "Input",
+Cell[32575, 958, 131, 4, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1345196880],
-Cell[33205, 988, 297, 9, 49, "Output",
+Cell[32709, 964, 297, 9, 49, "Output",
  CellTags->{"TR", "Tr"},
- CellID->1987203199]
+ CellID->1804637060]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33539, 1002, 365, 12, 27, "Input",
+Cell[33043, 978, 365, 12, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->496024133],
-Cell[33907, 1016, 916, 38, 40, "Output",
+Cell[33411, 992, 916, 38, 40, "Output",
  CellTags->{"TR", "Tr"},
- CellID->286955010]
+ CellID->868021023]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34860, 1059, 241, 7, 27, "Input",
+Cell[34364, 1035, 241, 7, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1457315131],
-Cell[35104, 1068, 635, 26, 38, "Output",
+Cell[34608, 1044, 636, 26, 38, "Output",
  CellTags->{"TR", "Tr"},
- CellID->485298780]
+ CellID->1886506871]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35776, 1099, 238, 7, 27, "Input",
+Cell[35281, 1075, 238, 7, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->73677015],
-Cell[36017, 1108, 635, 26, 38, "Output",
+Cell[35522, 1084, 635, 26, 38, "Output",
  CellTags->{"TR", "Tr"},
- CellID->614110826]
+ CellID->300302100]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36689, 1139, 241, 7, 27, "Input",
+Cell[36194, 1115, 241, 7, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1407727695],
-Cell[36933, 1148, 212, 7, 36, "Output",
+Cell[36438, 1124, 212, 7, 36, "Output",
  CellTags->{"TR", "Tr"},
- CellID->807484559]
+ CellID->120665714]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37182, 1160, 239, 7, 27, "Input",
+Cell[36687, 1136, 239, 7, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->806303782],
-Cell[37424, 1169, 212, 7, 36, "Output",
+Cell[36929, 1145, 213, 7, 36, "Output",
  CellTags->{"TR", "Tr"},
- CellID->783886455]
+ CellID->1048410919]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37673, 1181, 174, 6, 27, "Input",
+Cell[37179, 1157, 174, 6, 27, "Input",
  CellTags->"Tr",
  CellID->864240014],
-Cell[37850, 1189, 587, 25, 38, "Output",
+Cell[37356, 1165, 587, 25, 38, "Output",
  CellTags->"Tr",
- CellID->2001172144]
+ CellID->1937521482]
 }, Open  ]],
-Cell[38452, 1217, 146, 5, 27, "Input",
+Cell[37958, 1193, 146, 5, 27, "Input",
  CellTags->{"TR", "Tr"},
  CellID->1619609299],
-Cell[38601, 1224, 31, 0, 29, "SectionFooterSpacer"]
+Cell[38107, 1200, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38681, 1230, 270, 12, 31, "SeeAlsoSection",
+Cell[38187, 1206, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[38954, 1244, 761, 28, 32, "Text",
+Cell[38460, 1220, 761, 28, 32, "Text",
  CellTags->{"TR", "Tr"},
  CellID->1296151753]
 }, Open  ]],
-Cell[39730, 1275, 23, 0, 42, "FooterCell"]
+Cell[39236, 1251, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

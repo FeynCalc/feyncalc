@@ -3,10 +3,10 @@
 (* :Title: QEDElectronMuonScatteringTree                                    *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for electron
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -45,37 +45,36 @@ Paint[diagsElMuScat, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->None
 (*Obtain corresponding amplitudes*)
 
 
-
 ampElMuScat = FCFAConvert[CreateFeynAmp[diagsElMuScat, Truncated -> False],
 IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,
-ChangeDimension->4,List->False]/.FAMass["Muon"]->MMu
+ChangeDimension->4,List->False,SMP->True]
 
 
 (* ::Section:: *)
 (*Unpolarized process e^- mu^- -> e^- mu^-*)
 
 
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, MMu, ME, MMu];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_mu"], SMP["m_e"], SMP["m_mu"]];
 sqAmpElMuScat = (ampElMuScat (ComplexConjugate[ampElMuScat]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 
 
 
-masslessElectronsSqAmpElMuScat = (sqAmpElMuScat /. {ME -> 0})//Simplify
+masslessElectronsSqAmpElMuScat = (sqAmpElMuScat /. {SMP["m_e"] -> 0})//Simplify
 
 
-masslessElectronsSqAmpElMuScatPeskin= (8EL^4 (SP[p1,k2]SP[p2,k1]+SP[p1,p2]SP[k1,k2]-
-		MMu^2 SP[p1,k1]))/(SP[k1-p1])^2// ReplaceAll[#,ME->0]&//FCI//ExpandScalarProduct//Simplify;
+masslessElectronsSqAmpElMuScatPeskin= (8SMP["e"]^4 (SP[p1,k2]SP[p2,k1]+SP[p1,p2]SP[k1,k2]-
+		SMP["m_mu"]^2 SP[p1,k1]))/(SP[k1-p1])^2// ReplaceAll[#,SMP["m_e"]->0]&//FCI//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.61: ",
 		If[(masslessElectronsSqAmpElMuScatPeskin-masslessElectronsSqAmpElMuScat)===0,
 		"CORRECT.", "!!! WRONG !!!"]];
 
 
-masslessElectronsMuonsSqAmpElMuScat = (masslessElectronsSqAmpElMuScat /. {MMu -> 0})//Simplify
+masslessElectronsMuonsSqAmpElMuScat = (masslessElectronsSqAmpElMuScat /. {SMP["m_mu"] -> 0})//Simplify
 
 
-mmasslessElectronsMuonsSqAmpElMuScatPeskin=((8EL^4/t^2)((s/2)^2+(u/2)^2))//Simplify;
+mmasslessElectronsMuonsSqAmpElMuScatPeskin=((8SMP["e"]^4/t^2)((s/2)^2+(u/2)^2))//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.71: ",
 		If[(mmasslessElectronsMuonsSqAmpElMuScatPeskin-masslessElectronsMuonsSqAmpElMuScat)===0,
 		"CORRECT.", "!!! WRONG !!!"]];

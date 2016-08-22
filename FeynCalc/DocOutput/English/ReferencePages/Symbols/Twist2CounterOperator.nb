@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20003,        674]
-NotebookOptionsPosition[     16107,        560]
-NotebookOutlinePosition[     18993,        637]
-CellTagsIndexPosition[     18868,        631]
+NotebookDataLength[     20006,        674]
+NotebookOptionsPosition[     16108,        560]
+NotebookOutlinePosition[     18995,        637]
+CellTagsIndexPosition[     18870,        631]
 WindowTitle->Twist2CounterOperator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Twist2CounterOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160702], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160577], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2CounterOperator", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1852072543],
+ CellID->1882335034],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->791491222],
+ CellID->1747945603],
 
 Cell[CellGroupData[{
 
@@ -573,7 +573,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 16.732937}", 
+   "built" -> "{2016, 8, 21, 21, 26, 30.212380}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -606,32 +606,32 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3586, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1852072543]},
+   CellID->1882335034]},
  "Twist2CounterOperator"->{
-  Cell[4219, 128, 222, 6, 27, "Input",
+  Cell[4220, 128, 222, 6, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1762178901],
-  Cell[4444, 136, 5992, 210, 164, "Output",
+  Cell[4445, 136, 5992, 210, 164, "Output",
    CellTags->"Twist2CounterOperator",
    CellID->246528770],
-  Cell[10473, 351, 177, 5, 27, "Input",
+  Cell[10474, 351, 177, 5, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1568458682],
-  Cell[10653, 358, 1257, 45, 75, "Output",
+  Cell[10654, 358, 1257, 45, 75, "Output",
    CellTags->"Twist2CounterOperator",
    CellID->773930559],
-  Cell[11947, 408, 260, 7, 27, "Input",
+  Cell[11948, 408, 260, 7, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1910103980],
-  Cell[12210, 417, 3831, 136, 121, "Output",
+  Cell[12211, 417, 3831, 136, 121, "Output",
    CellTags->"Twist2CounterOperator",
    CellID->1953247697]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18075, 605},
- {"Twist2CounterOperator", 18223, 609}
+ {"PrimaryExamplesSection", 18077, 605},
+ {"Twist2CounterOperator", 18225, 609}
  }
 *)
 (*NotebookFileOutline
@@ -645,37 +645,37 @@ Cell[2961, 78, 600, 17, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3586, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1852072543],
+ CellID->1882335034],
 Cell[CellGroupData[{
-Cell[3999, 118, 195, 6, 25, "ExampleSection",
- CellID->791491222],
+Cell[3999, 118, 196, 6, 25, "ExampleSection",
+ CellID->1747945603],
 Cell[CellGroupData[{
-Cell[4219, 128, 222, 6, 27, "Input",
+Cell[4220, 128, 222, 6, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1762178901],
-Cell[4444, 136, 5992, 210, 164, "Output",
+Cell[4445, 136, 5992, 210, 164, "Output",
  CellTags->"Twist2CounterOperator",
  CellID->246528770]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10473, 351, 177, 5, 27, "Input",
+Cell[10474, 351, 177, 5, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1568458682],
-Cell[10653, 358, 1257, 45, 75, "Output",
+Cell[10654, 358, 1257, 45, 75, "Output",
  CellTags->"Twist2CounterOperator",
  CellID->773930559]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11947, 408, 260, 7, 27, "Input",
+Cell[11948, 408, 260, 7, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1910103980],
-Cell[12210, 417, 3831, 136, 121, "Output",
+Cell[12211, 417, 3831, 136, 121, "Output",
  CellTags->"Twist2CounterOperator",
  CellID->1953247697]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[16080, 558, 23, 0, 70, "FooterCell"]
+Cell[16081, 558, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

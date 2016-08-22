@@ -14,7 +14,7 @@
 Needs["FeynCalc`"];
 $FCAdvice = False;
 ClearAll[tests];
-tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]]
+tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]];
 Get/@tests;
 
 FCClearScalarProducts[];

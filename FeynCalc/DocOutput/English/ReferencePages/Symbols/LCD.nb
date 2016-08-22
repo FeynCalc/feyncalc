@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16206,        602]
+NotebookDataLength[     16207,        602]
 NotebookOptionsPosition[     10641,        414]
-NotebookOutlinePosition[     14256,        522]
-CellTagsIndexPosition[     14149,        516]
+NotebookOutlinePosition[     14257,        522]
+CellTagsIndexPosition[     14150,        516]
 WindowTitle->LCD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$95887], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$97579], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/LCD", 
             ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1729963782],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1341170645],
+ CellID->1361724083],
 
 Cell[BoxData[
  RowBox[{
@@ -427,7 +427,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 13, 43.818181}", 
+   "built" -> "{2016, 8, 21, 21, 21, 59.254051}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -461,7 +461,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3579, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1587745140]},
+   CellID->1729963782]},
  "LCD"->{
   Cell[4191, 126, 207, 7, 27, "Input",
    CellTags->"LCD",
@@ -515,8 +515,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12661, 460},
- {"LCD", 12791, 464}
+ {"PrimaryExamplesSection", 12662, 460},
+ {"LCD", 12792, 464}
  }
 *)
 (*NotebookFileOutline
@@ -530,10 +530,10 @@ Cell[2864, 78, 690, 17, 163, "Usage",
 Cell[CellGroupData[{
 Cell[3579, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1729963782],
 Cell[CellGroupData[{
 Cell[3992, 118, 196, 6, 25, "ExampleSection",
- CellID->1341170645],
+ CellID->1361724083],
 Cell[4191, 126, 207, 7, 27, "Input",
  CellTags->"LCD",
  CellID->246917287],

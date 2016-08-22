@@ -24,6 +24,7 @@ Begin["`ExpandScalarProduct`Private`"]
 ScalarProductExpand = ExpandScalarProduct;
 
 Options[ExpandScalarProduct] = {
+	EpsEvaluate -> False,
 	FCI -> True,
 	Momentum -> All
 };
@@ -37,30 +38,35 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 			nx = FCI[nx]
 		];
 
-		If[ FreeQ[nx,Pair],
+		If[ FreeQ2[nx,$FCTensorList],
 			Return[nx]
 		];
 
 		If [moms===All,
-			pali = Select[Cases2[nx, Pair], !FreeQ[#, LorentzIndex|Momentum]&],
-			pali = Select[Cases2[nx, Pair], (!FreeQ[#, LorentzIndex|Momentum] && !FreeQ2[#, moms])&]
+			pali = Select[Cases2[nx, $FCTensorList], !FreeQ2[#, TensorArgsList]&],
+			pali = Select[Cases2[nx, $FCTensorList], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&]
 		];
 
 		If[ pali =!= {},
 			nx = nx /. Dispatch[Thread[pali -> pairexpand[pali]]]
 		];
 
+		If[	OptionValue[EpsEvaluate],
+			nx = EpsEvaluate[nx,FCI->True,Momentum->OptionValue[Momentum]]
+		];
+
 		nx
 	];
 
-ExpandScalarProduct[x_, y:Except[_?OptionQ]] :=
-	scevdoit[x, y];
+(* TODO this is a legacy syntax that one should get rid of! *)
+ExpandScalarProduct[x_, y:Except[_?OptionQ], OptionsPattern[]] :=
+	scevdoit[Pair,x, y];
 
 pairexpand[x_] :=
-	x /. Pair->scevdoit ;
+	x /. (head : (Alternatives @@ $FCTensorList))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
 
-scevdoit[x_,y_] :=
-	Distribute[Pair@@(Expand[MomentumExpand/@{x,y}])];
+scevdoit[head_,arg__] :=
+	Distribute[head@@(Expand[MomentumExpand/@{arg}])];
 
 FCPrint[1,"ExpandScalarProduct.m loaded."];
 End[]

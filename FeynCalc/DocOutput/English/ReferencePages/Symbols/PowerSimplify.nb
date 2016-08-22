@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14430,        510]
+NotebookDataLength[     14432,        510]
 NotebookOptionsPosition[      9780,        369]
-NotebookOutlinePosition[     13030,        457]
-CellTagsIndexPosition[     12913,        451]
+NotebookOutlinePosition[     13032,        457]
+CellTagsIndexPosition[     12915,        451]
 WindowTitle->PowerSimplify
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PowerSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120830], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$122341], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PowerSimplify", ".html"]], None}]}]},
@@ -216,7 +216,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->47203245],
+ CellID->192981915],
 
 Cell[CellGroupData[{
 
@@ -226,7 +226,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1675322303],
+ CellID->601132939],
 
 Cell[CellGroupData[{
 
@@ -382,7 +382,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 36.601929}", 
+   "built" -> "{2016, 8, 21, 21, 23, 44.262033}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -415,9 +415,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6200, 203, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[6200, 203, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->47203245]},
+   CellID->192981915]},
  "PowerSimplify"->{
   Cell[6832, 232, 252, 9, 27, "Input",
    CellTags->"PowerSimplify",
@@ -450,8 +450,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11909, 416},
- {"PowerSimplify", 12048, 420}
+ {"PrimaryExamplesSection", 11910, 416},
+ {"PowerSimplify", 12050, 420}
  }
 *)
 (*NotebookFileOutline
@@ -463,12 +463,12 @@ Cell[2854, 75, 56, 1, 42, "ObjectName",
 Cell[2913, 78, 3262, 121, 145, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[6200, 203, 386, 15, 31, "PrimaryExamplesSection",
+Cell[6200, 203, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->47203245],
+ CellID->192981915],
 Cell[CellGroupData[{
-Cell[6611, 222, 196, 6, 25, "ExampleSection",
- CellID->1675322303],
+Cell[6612, 222, 195, 6, 25, "ExampleSection",
+ CellID->601132939],
 Cell[CellGroupData[{
 Cell[6832, 232, 252, 9, 27, "Input",
  CellTags->"PowerSimplify",

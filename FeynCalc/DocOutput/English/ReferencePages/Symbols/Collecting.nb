@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6551,        202]
+NotebookDataLength[      6552,        202]
 NotebookOptionsPosition[      4255,        135]
-NotebookOutlinePosition[      6288,        191]
-CellTagsIndexPosition[      6216,        186]
+NotebookOutlinePosition[      6289,        191]
+CellTagsIndexPosition[      6217,        186]
 WindowTitle->Collecting
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27267], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28328], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Collecting", ".html"]], None}]}]},
@@ -148,7 +148,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 20.280592}", 
+   "built" -> "{2016, 8, 21, 21, 17, 1.040744}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -185,7 +185,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Collecting", 6103, 179}
+ {"Collecting", 6104, 179}
  }
 *)
 (*NotebookFileOutline

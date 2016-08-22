@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21413,        764]
+NotebookDataLength[     21414,        764]
 NotebookOptionsPosition[     14991,        564]
-NotebookOutlinePosition[     19171,        679]
-CellTagsIndexPosition[     19054,        673]
+NotebookOutlinePosition[     19172,        679]
+CellTagsIndexPosition[     19055,        673]
 WindowTitle->FieldStrength
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FieldStrength.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68479], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$71275], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FieldStrength", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->145771540],
+ CellID->291386470],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1292274396],
+ CellID->1825968503],
 
 Cell[CellGroupData[{
 
@@ -577,7 +577,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 3.623780}", 
+   "built" -> "{2016, 8, 21, 21, 20, 4.548584}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -615,7 +615,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4667, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->145771540]},
+   CellID->291386470]},
  "FieldStrength"->{
   Cell[5300, 159, 144, 4, 27, "Input",
    CellTags->"FieldStrength",
@@ -672,8 +672,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17294, 614},
- {"FieldStrength", 17434, 618}
+ {"PrimaryExamplesSection", 17295, 614},
+ {"FieldStrength", 17435, 618}
  }
 *)
 (*NotebookFileOutline
@@ -687,10 +687,10 @@ Cell[2912, 78, 1730, 48, 142, "Usage",
 Cell[CellGroupData[{
 Cell[4667, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->145771540],
+ CellID->291386470],
 Cell[CellGroupData[{
 Cell[5079, 149, 196, 6, 25, "ExampleSection",
- CellID->1292274396],
+ CellID->1825968503],
 Cell[CellGroupData[{
 Cell[5300, 159, 144, 4, 27, "Input",
  CellTags->"FieldStrength",

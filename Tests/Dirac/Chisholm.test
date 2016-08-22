@@ -26,13 +26,12 @@ Tests`Dirac`fcstChisholm = {
 	LorentzIndex[rho]] +
 	DiracGamma[LorentzIndex[mu]] Pair[LorentzIndex[nu],
 	LorentzIndex[rho]]"},
-
 {"fcstChisholm-ID2", "(Chisholm[GA[alpha, beta, mu, nu]] //FCRenameDummyIndices) /. {$AL[x_] -> rho}",
 "(-I)*DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5]*
 	Eps[LorentzIndex[alpha], LorentzIndex[beta], LorentzIndex[mu], LorentzIndex[rho]] +
 DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[alpha], LorentzIndex[beta]] -
 DiracGamma[LorentzIndex[beta]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[alpha], LorentzIndex[mu]] +
-DiracGamma[LorentzIndex[alpha]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[beta], LorentzIndex[mu]]"}
-
-
+DiracGamma[LorentzIndex[alpha]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[beta], LorentzIndex[mu]]"},
+{"fcstChisholm-ID3", "MatchQ[$LeviCivitaSign = I; tmp = Chisholm[GA[i1, i2, i3]]; $LeviCivitaSign = -1; FCE[tmp],
+GA[a_].GA[5] LC[i1, i2, i3, a_] + GA[i3] MT[i1, i2] - GA[i2] MT[i1, i3] + GA[i1] MT[i2, i3]]", "True"}
 };

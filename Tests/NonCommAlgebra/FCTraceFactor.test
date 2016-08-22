@@ -1,0 +1,40 @@
+(* :Title: FCTraceFactor.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCTraceFactor			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstFCTraceFactor =
+({
+{"fcstFCTraceFactor-ID1", "FCTraceFactor[DiracTrace[2]]//FCE",
+"2*DiracTrace[1]"},
+{"fcstFCTraceFactor-ID2",
+"FCTraceFactor[DiracTrace[(2).GA[i]]]//FCE", "2*DiracTrace[GA[i]]"},
+{"fcstFCTraceFactor-ID3",
+"FCTraceFactor[DiracTrace[(2).(3*GA[i])]]//FCE",
+"6*DiracTrace[GA[i]]"},
+{"fcstFCTraceFactor-ID4",
+"FCTraceFactor[DiracTrace[(2).(3).(4)]]//FCE",
+"24*DiracTrace[1]"},
+{"fcstFCTraceFactor-ID5",
+"FCTraceFactor[DiracTrace[(2).(0).(4)]]//FCE", "0"},
+{"fcstFCTraceFactor-ID6",
+"FCTraceFactor[DiracTrace[(x*(GS[p1]+M)).GA[mu].SUNT[a].(y*(GS[p2]+\
+M).GA[nu])]]//FCE",
+"x*y*DiracTrace[(M + GS[p1]) . GA[mu] . SUNT[a] . (M + GS[p2]) . \
+GA[nu]]"},
+{"fcstFCTraceFactor-ID7",
+"FCTraceFactor[DiracTrace[(a+b).(a-b).DiracTrace[GA[i].c.GA[j]].(a+\
+b)]]//FCE",
+"(a - b)*(a + b)^2*c*DiracTrace[1]*DiracTrace[GA[i] . GA[j]]"},
+{"fcstFCTraceFactor-ID8",
+"DiracTrace[DiracTrace[GA[i, j]] GA[k, l]] // FCTraceFactor // FCE",
+"DiracTrace[GA[i].GA[j]] DiracTrace[GA[k].GA[l]]"}
+})

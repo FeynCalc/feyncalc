@@ -41,7 +41,7 @@ If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 ];
 
 (*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "9.0.1";
+FeynCalc`$FeynCalcVersion = "9.1.0";
 
 (*    Set defaults here, not in the config file    *)
 If[ !ValueQ[Global`$FeynCalcStartupMessages],
@@ -172,6 +172,9 @@ $FCCloudTraditionalForm::usage=
 in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting
 $Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
 
+$FCTensorList::usage =
+"$FCTensorList contains a list of all tensor heads present.";
+
 FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
 is larger than level.";
@@ -232,14 +235,42 @@ involving gamma5) the same effect as the \
 Breitenlohner-Maison-'t Hooft-Veltman scheme.";
 
 $LeviCivitaSign::usage =
-"$LeviCivitaSign is by default set to -1 which corresponds to the convention
-Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d].
-Setting $LeviCivitaSign=I  will switch to the FORM-convention.";
+"$LeviCivitaSign is a global variable that determines \
+the sign in the result of a Dirac trace of four gamma matrices \
+and gamma5.  $LeviCivitaSign is by default set to -1 which corresponds \
+to the convention Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. \
+Setting $LeviCivitaSign=-I  will switch to the FORM-convention.";
 
 $LimitTo4::usage =
-"$LimitTo4 is a global variable with default setting True. \
-If set to False no limit Dimension -> 4 is \
-performed after tensor integral decomposition.";
+"$LimitTo4 is a global variable that determines whether \
+UV-divergent Passarino-Veltman functions are simplified by \
+taking the limit D-4 -> 0. A general UV-finite \
+Passarino-Veltman function can be written as \
+PaVe = a/(D-4) + b + O(Epsilon), with a being the prefactor \
+of the pole and b being the finite part. Therefore, products \
+of such functions with coefficients that are rational functions \
+of D ( f(D) = f(4) + f'(4) (D-4) + O(Epsilon^2) ) can be simplified \
+to f(D) PaVe = f(4) PaVe + a f'(4) + O(Epsilon), whenever such \
+products appear in the reduction. This relation is correct only if
+the Passarino-Veltman functions have no IR divergences, or if such \
+divergences are regulated without using dimensional regularization.
+For this reason, even when $LimitTo4 is set to True, the simplifications \
+are applied only to A and B functions. Although B functions can exhibit an \
+IR divegence, such integrals are zero in dimensional regularization, so no \
+mixing of Epsilons from IR and UV can occur. The default value of \
+$LimitTo4 is True.";
+
+$LimitTo4IRUnsafe::usage =
+"$LimitTo4IRUnsafe is a global variable that determines whether \
+the simplifications described in $LimitTo4 are applied also to \
+C and D Passarino-Veltman functions. In this case it is assumed \
+that such  functions are either IR finite, or the IR divergences \
+are regulated  without using dimensional regularization \
+(i.e. by introducing  fictitious masses). Otherwise the results \
+will be inconsistent. If this option is activated, it is the task \
+of the user to ensure that IR divergences are properly regulated, \
+such that no mixing of Epsilons from IR and UV can occur. The default \
+value of $$LimitTo4IRUnsafe is False.";
 
 $LorentzIndices::usage =
 "$LorentzIndices is a global variable. If set to True the dimension \
@@ -268,6 +299,10 @@ $Multiplications::usage =
 $NonComm::usage =
 "$NonComm contains a list of all non-commutative heads present.";
 
+$ScalarProducts::usage =
+"$ScalarProducts contains a list of all vector pairs for which a \
+scalar product value has been defined.";
+
 $OPEWard::usage =
 "$OPEWard is experimental.";
 
@@ -293,13 +328,6 @@ $FCAdvice::usage =
 "If $FCAdvice is set to True, FeynCalc will display some
 advices on optimal Mathematica configuration for using FeynCalc."
 
-$West::usage =
-"If $West is set to True (which is the default), \
-traces involving more than 4 Dirac matrices \
-and gamma5 are calculated recursively according to formula (A.5) from \
-Comp. Phys. Comm 77 (1993) 286-298, which is based on the Breitenlohner \
-Maison gamma5 - scheme.";
-
 WriteStringOutput::usage =
 "UseWriteStringOutput an option for FCPrint. It specifies, to which
 stream WriteString should output the expression";
@@ -317,7 +345,7 @@ FeynCalc::phierror =
 
 FeynCalc::tfadvice =
 "You are not using TraditionalForm as the default format type of new \
-output cells. Without TraditionalForm FeynCalc cannot use buil-in \
+output cells. Without TraditionalForm FeynCalc cannot use built-in \
 typeseting rules that make various objects like Lorentz vectors or \
 Dirac matrices look nicer. To change the format type go to \
 Edit->Preferences->Evaluation.";
@@ -412,7 +440,8 @@ $FCS = {
 $IndexPrefix		= {"li","ci"};
 $Larin				= False;
 $LeviCivitaSign		= -1;
-$LimitTo4			= True;
+$LimitTo4			= False;
+$LimitTo4IRUnsafe	= False;
 $LorentzIndices		= False;
 $MemoryAvailable	= 4096;
 $Multiplications	= {Times, DOT};
@@ -422,13 +451,18 @@ If[ !ValueQ[$VeryVerbose],
 	$VeryVerbose   = 0
 ];
 
-If[ !ValueQ[$West],
-	$West = True
-];
-
 If[ !ValueQ[$NonComm],
 	$NonComm = {}
 ];
+
+If[ !ValueQ[$FCTensorList],
+	$FCTensorList = {}
+];
+
+If[ !ValueQ[$ScalarProducts],
+	$ScalarProducts = {}
+];
+
 
 $Gauge/:
 	MakeBoxes[$Gauge,TraditionalForm]:=
@@ -459,12 +493,12 @@ Options[FCPrint] = {
 		WriteStringOutput ->"stdout"
 }
 
-FCPrint[level_, x__ /;!OptionQ[{x}] , OptionsPattern[]] :=
+FCPrint[level_, fcprintx__ /;!OptionQ[{fcprintx}] , OptionsPattern[]] :=
 	Block[{flowcontrol=OptionValue[FCDoControl]},
 		If[ flowcontrol >= level,
 			If[ OptionValue[UseWriteString],
-				WriteString[OptionValue[WriteStringOutput],x],
-				Print[x]
+				WriteString[OptionValue[WriteStringOutput],fcprintx],
+				Print[fcprintx]
 			]
 		]
 	];
@@ -476,16 +510,16 @@ FCMonitorStub[x_,__]:=
 	x;
 
 FCDeclareHeader[file_] :=
-	Module[ {strm, e, moreLines = True},
+	Module[ {strm, einput, moreLines = True},
 		strm = OpenRead[file];
 		If[ Head[strm] =!= InputStream,
 			Return[$Failed]
 		];
 		While[
 			moreLines,
-			e = Read[strm, Hold[Expression]];
-			ReleaseHold[e];
-			If[ e === $Failed || MatchQ[e, Hold[_End]],
+			einput = Read[strm, Hold[Expression]];
+			ReleaseHold[einput];
+			If[ einput === $Failed || MatchQ[einput, Hold[_End]],
 				moreLines = False
 			]
 		];
@@ -544,12 +578,12 @@ MakeFeynCalcPrivateContext[x_String] :=
 
 End[];
 
-(* need to do this first, otherwise $NonComm does not get built correctly *)
-boostrappingList = Join[Map[ToFileName[{$FeynCalcDirectory,"Shared"},#]&,
-			{"SharedTools.m", "DataType.m"}],
-			Map[ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"},#]&,
-			{"NonCommutative.m"}]
-			];
+(* need to do this first, otherwise $NonComm and $FCTensorList do not get built correctly *)
+boostrappingList = Join[
+	Map[ToFileName[{$FeynCalcDirectory,"Shared"},#]&, {"SharedTools.m", "DataType.m"}],
+	Map[ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"},#]&, {"NonCommutative.m"}],
+	Map[ToFileName[{$FeynCalcDirectory,"Lorentz"},#]&, {"DeclareFCTensor.m"}]
+];
 
 listShared = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Shared"}]];
 listNonCommAlgebra = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"}]];
@@ -596,7 +630,7 @@ EndPackage[];
 (*Let us check the configuration of Mathematica and give the user some advices, if necessary*)
 If[$FCAdvice,
 	If[ $Notebooks &&
-		Cases[Options[$FrontEndSession, CommonDefaultFormatTypes], Rule["Output", b_] :> b, Infinity]=!={TraditionalForm},
+		Cases[Options[$FrontEndSession, CommonDefaultFormatTypes], Rule["Output", Pattern[FeynCalc`Private`rulopt, Blank[]]] :> FeynCalc`Private`rulopt, Infinity]=!={TraditionalForm},
 		Message[FeynCalc::tfadvice]
 	]
 ]
@@ -605,8 +639,8 @@ If[$FCAdvice,
 	Overload Tr to use TR
 *)
 Unprotect[Tr];
-Tr[x__] :=
-	TR[x] /; !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair];
+Tr[Pattern[FeynCalc`Private`trarg,BlankSequence[]]] :=
+	TR[FeynCalc`Private`trarg] /; !FreeQ[{FeynCalc`Private`trarg}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair];
 Tr::usage =
 "FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
 generalized trace, combining terms with f instead of Plus. Tr[list, f, n] goes down to level n
@@ -639,8 +673,16 @@ If[ Global`$FeynCalcStartupMessages =!= False,
 				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"],
 			Style[" or write to the ", "Text"],
 			Style[DisplayForm@ButtonBox["mailing list.",ButtonData :> {URL["http://www.feyncalc.org/forum/"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]]
-];
+				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]];
+	Print[ Style["See also the supplied ","Text"],
+
+	Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
+							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
+							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
+	Style[" If you use FeynCalc in your research, please cite","Text"]];
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput. Phys. Commun., 207C, 432-444, 2016, arXiv:1601.01167","Text"]];
+	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun., 64, 345-359, 1991.","Text"]]
+	];
 
 (* Load PHI... *)
 If[	$LoadPhi,
@@ -666,33 +708,33 @@ If[	$LoadFeynArts,
 	If[ $FeynCalcStartupMessages,
 		PrintTemporary[Style["Loading FeynArts from " <>  $FeynArtsDirectory, "Text"]];
 	];
-	Block[ {loadfa, fafiles, strm, patch=True, str},
+	Block[ {FeynCalc`Private`loadfa, FeynCalc`Private`fafiles, FeynCalc`Private`strm, FeynCalc`Private`patch=True, FeynCalc`Private`str},
 		If[	$FAPatch,
 			(* Check if FeynArts needs to be patched *)
-			If[(fafiles = FileNames["FeynArts.m", $FeynArtsDirectory])=!={},
-				strm = OpenRead[First[fafiles]];
-				If[ Head[strm] =!= InputStream,
-					Message[General::noopen, First[fafiles]];
+			If[(FeynCalc`Private`fafiles = FileNames["FeynArts.m", $FeynArtsDirectory])=!={},
+				FeynCalc`Private`strm = OpenRead[First[FeynCalc`Private`fafiles]];
+				If[ Head[FeynCalc`Private`strm] =!= InputStream,
+					Message[General::noopen, First[FeynCalc`Private`fafiles]];
 					Abort[]
 				];
-				While[	ToString[str] != "EndOfFile",
-						str = Read[strm, String];
-						If[ StringMatchQ[ToString[str], "*patched for use with FeynCalc*", IgnoreCase -> True],
-							patch = False
+				While[	ToString[FeynCalc`Private`str] != "EndOfFile",
+						FeynCalc`Private`str = Read[FeynCalc`Private`strm, String];
+						If[ StringMatchQ[ToString[FeynCalc`Private`str], "*patched for use with FeynCalc*", IgnoreCase -> True],
+							FeynCalc`Private`patch = False
 						]
 				];
-				Close[First[fafiles]],
+				Close[First[FeynCalc`Private`fafiles]],
 				Message[General::noopen, FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]];
 				Message[FeynCalc::faerror, $FeynArtsDirectory];
-				patch = False
+				FeynCalc`Private`patch = False
 			];
 			(* Apply the patch *)
-			If[ patch,
+			If[ FeynCalc`Private`patch,
 				FAPatch[]
 			]
 		];
-		loadfa=Block[ {Print= System`Print},Get[FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]]];
-		If[loadfa =!=$Failed,
+		FeynCalc`Private`loadfa=Block[ {Print= System`Print},Get[FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]]];
+		If[FeynCalc`Private`loadfa =!=$Failed,
 			(* If everything went fine *)
 			If[ Global`$FeynCalcStartupMessages,
 				Print[	Style["FeynArts ", "Text", Bold],
@@ -717,13 +759,13 @@ If[ $LoadTARCER,
 	If[ $FeynCalcStartupMessages,
 			PrintTemporary[Style["Loading TARCER from " <> FileNameJoin[{$FeynCalcDirectory, "Tarcer"}], "Text"]]
 	];
-	Block[{tarcerfilenames},
-		tarcerfilenames =
+	Block[{FeynCalc`Private`tarcerfilenames},
+		FeynCalc`Private`tarcerfilenames =
 		FileNames["tarcer"<> StringReplace[$System,{"-"->"","Microsoft"->"","("->"",")"->""," "->""}] <>"*.mx",
 		ToFileName[{FeynCalc`$FeynCalcDirectory,"Tarcer"}],IgnoreCase->True];
-		If[ tarcerfilenames=!={},
+		If[ FeynCalc`Private`tarcerfilenames=!={},
 			(*    If the .mx file of TARCER is found, load it now. *)
-			If[	Get[Last[tarcerfilenames]]=!=$Failed,
+			If[	Get[Last[FeynCalc`Private`tarcerfilenames]]=!=$Failed,
 				If[ $FeynCalcStartupMessages,
 					Print[	Style["TARCER ", "Text", Bold],
 						Style[Tarcer`$TarcerVersion <>

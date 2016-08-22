@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13716,        449]
+NotebookDataLength[     13717,        449]
 NotebookOptionsPosition[     10343,        350]
-NotebookOutlinePosition[     12947,        420]
-CellTagsIndexPosition[     12824,        414]
+NotebookOutlinePosition[     12948,        420]
+CellTagsIndexPosition[     12825,        414]
 WindowTitle->Twist2AlienOperator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Twist2AlienOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160370], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160245], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2AlienOperator", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2034436796],
+ CellID->1055910193],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1140245474],
+ CellID->1997862075],
 
 Cell[CellGroupData[{
 
@@ -363,7 +363,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 15.157164}", 
+   "built" -> "{2016, 8, 21, 21, 26, 28.694522}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -395,7 +395,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3471, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2034436796]},
+   CellID->1055910193]},
  "Twist2AlienOperator"->{
   Cell[4105, 125, 177, 5, 27, "Input",
    CellTags->"Twist2AlienOperator",
@@ -413,8 +413,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12254, 394},
- {"Twist2AlienOperator", 12400, 398}
+ {"PrimaryExamplesSection", 12255, 394},
+ {"Twist2AlienOperator", 12401, 398}
  }
 *)
 (*NotebookFileOutline
@@ -428,10 +428,10 @@ Cell[2949, 78, 497, 14, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3471, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2034436796],
+ CellID->1055910193],
 Cell[CellGroupData[{
 Cell[3884, 115, 196, 6, 25, "ExampleSection",
- CellID->1140245474],
+ CellID->1997862075],
 Cell[CellGroupData[{
 Cell[4105, 125, 177, 5, 27, "Input",
  CellTags->"Twist2AlienOperator",

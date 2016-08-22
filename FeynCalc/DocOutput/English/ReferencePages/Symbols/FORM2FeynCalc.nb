@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21578,        771]
+NotebookDataLength[     21579,        771]
 NotebookOptionsPosition[     13924,        525]
-NotebookOutlinePosition[     18625,        659]
-CellTagsIndexPosition[     18508,        653]
+NotebookOutlinePosition[     18626,        659]
+CellTagsIndexPosition[     18509,        653]
 WindowTitle->FORM2FeynCalc
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FORM2FeynCalc.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69961], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$72665], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FORM2FeynCalc", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1087233587],
+ CellID->1208601621],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2031592441],
+ CellID->1619789030],
 
 Cell[CellGroupData[{
 
@@ -538,7 +538,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 13.523011}", 
+   "built" -> "{2016, 8, 21, 21, 20, 10.034466}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -574,7 +574,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3686, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1087233587]},
+   CellID->1208601621]},
  "FORM2FeynCalc"->{
   Cell[4320, 128, 144, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
@@ -652,8 +652,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16093, 573},
- {"FORM2FeynCalc", 16233, 577}
+ {"PrimaryExamplesSection", 16094, 573},
+ {"FORM2FeynCalc", 16234, 577}
  }
 *)
 (*NotebookFileOutline
@@ -667,10 +667,10 @@ Cell[2912, 78, 749, 17, 129, "Usage",
 Cell[CellGroupData[{
 Cell[3686, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1087233587],
+ CellID->1208601621],
 Cell[CellGroupData[{
 Cell[4099, 118, 196, 6, 25, "ExampleSection",
- CellID->2031592441],
+ CellID->1619789030],
 Cell[CellGroupData[{
 Cell[4320, 128, 144, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",

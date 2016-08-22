@@ -21,43 +21,43 @@ Tests`LoopIntegrals`fcstFCApart =
 "FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m]]"},
 {"fcstFCApart-ID4", "FCApart[FAD[{q,m}],{}]",
 "FCApart[FAD[{q, m}], {}]"},
-{"fcstFCApart-ID5", "FCApart[FVD[q, mu] FVD[q, nu] FAD[q, q + l, q - l, k + p], {q}] // FCE",
-	"-((FAD[k + p]*FAD[q, -2*l + q]*FVD[l, mu]*FVD[l, nu])/SPD[l, l]) +
-	(FAD[k + p]*FAD[q, -2*l + q]*FVD[l, nu]*FVD[q, mu])/SPD[l, l] +
-	(FAD[k + p]*FAD[q, -2*l + q]*FVD[l, mu]*FVD[q, nu])/SPD[l, l] -
-	(FAD[k + p]*FAD[q, -2*l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l] +
-	(FAD[k + p]*FAD[q, -l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l]"},
-{"fcstFCApart-ID6", "FCApart[FVD[q,mu]FVD[q,nu]FAD[q,q+l,q-l],{q}]//FCE",
-"-((FAD[q, -2 l + q] FVD[l, mu] FVD[l, nu])/SPD[l, l]) + (
-FAD[q, -2 l + q] FVD[l, nu] FVD[q, mu])/SPD[l, l] + (
-FAD[q, -2 l + q] FVD[l, mu] FVD[q, nu])/SPD[l, l] - (
-FAD[q, -2 l + q] FVD[q, mu] FVD[q, nu])/SPD[l, l] + (
-FAD[q, -l + q] FVD[q, mu] FVD[q, nu])/SPD[l, l]"},
+{"fcstFCApart-ID5",
+"FCApart[FVD[q, mu] FVD[q, nu] FAD[q, q + l, q - l, k + p], {q}] // \
+FCE", "-((FAD[k + p]*FAD[q, -2*l + q]*FVD[l, mu]*FVD[l, nu])/SPD[l, \
+l]) + (FAD[k + p]*FAD[q, -2*l + q]*FVD[l, nu]*FVD[q, mu])/SPD[l, l] + \
+(FAD[k + p]*FAD[q, -2*l + q]*FVD[l, mu]*FVD[q, nu])/SPD[l, l] - \
+(FAD[k + p]*FAD[q, -2*l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l] + \
+(FAD[k + p]*FAD[q, -l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l]"},
+{"fcstFCApart-ID6",
+"FCApart[FVD[q,mu]FVD[q,nu]FAD[q,q+l,q-l],{q}]//FCE",
+"-((FAD[q, -2*l + q]*FVD[l, mu]*FVD[l, nu])/SPD[l, l]) + (FAD[q, \
+-2*l + q]*FVD[l, nu]*FVD[q, mu])/SPD[l, l] + (FAD[q, -2*l + q]*FVD[l, \
+mu]*FVD[q, nu])/SPD[l, l] - (FAD[q, -2*l + q]*FVD[q, mu]*FVD[q, \
+nu])/SPD[l, l] + (FAD[q, -l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l]"},
 {"fcstFCApart-ID7", "FCApart[FAD[q,q+l,q-l],{q}]//FCE",
 "-(FAD[q, -2*l + q]/SPD[l, l]) + FAD[q, -l + q]/SPD[l, l]"},
 {"fcstFCApart-ID8",
 "FCApart[SPD[q,r]^2*FAD[q,{q+l,m},{q-l,m}],{q}]//FCE",
-"(FAD[{q, m}, {-2 l + q, m}] SPD[l, r]^2)/(m^2 - SPD[l, l]) - (
-2 FAD[{q, m}, {-2 l + q, m}] SPD[l, r] SPD[q, r])/(
-m^2 - SPD[l, l]) - (FAD[q, {-l + q, m}] SPD[q, r]^2)/(
-m^2 - SPD[l, l]) + (FAD[{q, m}, {-2 l + q, m}] SPD[q, r]^2)/(
-m^2 - SPD[l, l])"},
+"(FAD[{q, m}, {-2*l + q, m}]*SPD[l, r]^2)/(m^2 - SPD[l, l]) - \
+(2*FAD[{q, m}, {-2*l + q, m}]*SPD[l, r]*SPD[q, r])/(m^2 - SPD[l, l]) \
+- (FAD[q, {-l + q, m}]*SPD[q, r]^2)/(m^2 - SPD[l, l]) + (FAD[{q, m}, \
+{-2*l + q, m}]*SPD[q, r]^2)/(m^2 - SPD[l, l])"},
 {"fcstFCApart-ID9",
 "FCApart[SPD[q,l]^2FAD[q,{q+l,m},{q-l,m}],{q}]//FCE",
 "FAD[{q, m}]/4 - (FAD[q, {-l + q, m}]*(m^2 - SPD[l, l]))/4"},
 {"fcstFCApart-ID10",
 "FCApart[SPD[q,l]^2SPD[q,r]^2FAD[q,{q+l,m},{q-l,m}],{q}]//FCE",
-"1/4 FAD[{q, m}] SPD[l, r]^2 + 1/4 FAD[{q, m}] SPD[q, r]^2 -
-1/4 FAD[q, {-l + q, m}] (m^2 - SPD[l, l]) SPD[q, r]^2"},
+"(FAD[{q, m}]*SPD[l, r]^2)/4 + (FAD[{q, m}]*SPD[q, r]^2)/4 - \
+(FAD[q, {-l + q, m}]*(m^2 - SPD[l, l])*SPD[q, r]^2)/4"},
 {"fcstFCApart-ID11",
 "FCApart[ \
 (SPD[k,p1]SPD[k,p2])FAD[k,{k+p1,m},{k+p2,m},{k+p2,m}],{k}]//FCE",
-"FAD[k, {k - p2, m}]/4 - FAD[{k, m}, {k, m}]/4 + (FAD[{k, m}, {k, m},
-{k - p1 + p2, m}]*SPD[k, p2])/2 + (FAD[k, {k - p1, m}, {k - p2, m}]*(m^2 -
-SPD[p1, p1]))/4 - (FAD[{k, m}, {k, m}, {k - p1 + p2, m}]*(m^2 - SPD[p1, p1] -
-2*SPD[p2, p2]))/4 + (FAD[k, {k - p2, m}, {k - p2, m}]*(m^2 - SPD[p2, p2]))/4 +
-(FAD[k, {k - p1, m}, {k - p2, m}, {k - p2, m}]*(m^2 - SPD[p1, p1])*(m^2 -
-SPD[p2, p2]))/4"},
+"FAD[k, {k - p2, m}]/4 - FAD[{k, m}, {k, m}]/4 + (FAD[{k, m}, {k, \
+m}, {k - p1 + p2, m}]*SPD[k, p2])/2 + (FAD[k, {k - p1, m}, {k - p2, \
+m}]*(m^2 - SPD[p1, p1]))/4 - (FAD[{k, m}, {k, m}, {k - p1 + p2, \
+m}]*(m^2 - SPD[p1, p1] - 2*SPD[p2, p2]))/4 + (FAD[k, {k - p2, m}, {k \
+- p2, m}]*(m^2 - SPD[p2, p2]))/4 + (FAD[k, {k - p1, m}, {k - p2, m}, \
+{k - p2, m}]*(m^2 - SPD[p1, p1])*(m^2 - SPD[p2, p2]))/4"},
 {"fcstFCApart-ID12",
 "FCApart[ \
 (SPD[q1,p1]SPD[q2,p2])FAD[q1,q2,{q1+p1,m},{q2+p2,m},{q2+p2,m}],{q1,q2}\
@@ -71,5 +71,69 @@ q2, {-p1 + q1, m}, {-p2 + q2, m}, {-p2 + q2, m}]*(m^2 - SPD[p1, \
 p1])*(m^2 - SPD[p2, p2]))/4"},
 {"fcstFCApart-ID13", "ApartFF[FVD[q1, mu] FVD[q2, nu] FAD[q1,
 q2, {p1 - q2}, {q1 - p1}, {q2 - p1}], {q1, q2}] // FCE",
-"FAD[q1, q2, -p1 + q2, -p1 + q1, -p1 + q2] FVD[q1, mu] FVD[q2, nu]"}
-});
+"FAD[q1, q2, -p1 + q2, -p1 + q1, -p1 + q2]*FVD[q1, mu]*FVD[q2, \
+nu]"},
+{"fcstFCApart-ID14",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p,m0}],{p},MaxIterations\[Rule]1,\
+FDS\[Rule]False]//FCE", "FAD[{p, m0}]*SPD[k1, p]*SPD[p, p]"},
+{"fcstFCApart-ID15",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p,m0}],{p},MaxIterations\[Rule]3,\
+FDS\[Rule]False,DropScaleless->False]//FCE", "SPD[k1, p] + m0^2*FAD[{p, m0}]*SPD[k1, p]"},
+{"fcstFCApart-ID15.1",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p,m0}],{p},MaxIterations\[Rule]3,\
+FDS\[Rule]False]//FCE", "m0^2*FAD[{p, m0}]*SPD[k1, p]"},
+{"fcstFCApart-ID16",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p,m0}],{p},FDS\[Rule]False,DropScaleless->False]//FCE",
+"SPD[k1, p] + m0^2*FAD[{p, m0}]*SPD[k1, p]"},
+{"fcstFCApart-ID16.1",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p,m0}],{p},FDS\[Rule]False]//FCE",
+"m0^2*FAD[{p, m0}]*SPD[k1, p]"},
+{"fcstFCApart-ID17", "FCApart[FAD[{p,m0}]SPD[p,p],{p},DropScaleless->False]//FCE",
+"1 + m0^2*FAD[{p, m0}]"},
+{"fcstFCApart-ID17.1", "FCApart[FAD[{p,m0}]SPD[p,p],{p}]//FCE",
+"m0^2*FAD[{p, m0}]"},
+{"fcstFCApart-ID18",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p-k1,m1}],{p},FDS\[Rule]False,DropScaleless->False]\
+//FCE", "-SPD[p, p]/2 - (FAD[{-k1 + p, m1}]*(m1^2 - SPD[k1, \
+k1])*SPD[p, p])/2 + (FAD[{-k1 + p, m1}]*SPD[p, p]^2)/2"},
+{"fcstFCApart-ID18.1",
+"FCApart[SPD[k1,p]SPD[p,p]FAD[{p-k1,m1}],{p},FDS\[Rule]False]\
+//FCE", "- (FAD[{-k1 + p, m1}]*(m1^2 - SPD[k1, \
+k1])*SPD[p, p])/2 + (FAD[{-k1 + p, m1}]*SPD[p, p]^2)/2"},
+{"fcstFCApart-ID19",
+"FCApart[FAD[{p,m0},{-k1+p,m1}] SPD[k1,p]^2 \
+SPD[p,p],{p},MaxIterations\[Rule]56,FDS\[Rule]False,DropScaleless->False]//FCE",
+"(-m0^2 + m1^2 - SPD[k1, k1])/4 - (m0^2*FAD[{p, m0}]*(m0^2 - m1^2 \
++ SPD[k1, k1]))/4 + (FAD[{-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 + (m0^2*FAD[{p, m0}, {-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 - SPD[p, p]/4 + (FAD[{-k1 + p, m1}]*(m0^2 - 2*m1^2 + \
+2*SPD[k1, k1])*SPD[p, p])/4 - (FAD[{p, m0}]*SPD[k1, p]*SPD[p, p])/2 + \
+(FAD[{-k1 + p, m1}]*SPD[p, p]^2)/4"},
+{"fcstFCApart-ID19.1",
+"FCApart[FAD[{p,m0},{-k1+p,m1}] SPD[k1,p]^2 \
+SPD[p,p],{p},MaxIterations\[Rule]56,FDS\[Rule]False]//FCE",
+" - (m0^2*FAD[{p, m0}]*(m0^2 - m1^2 \
++ SPD[k1, k1]))/4 + (FAD[{-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 + (m0^2*FAD[{p, m0}, {-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 + (FAD[{-k1 + p, m1}]*(m0^2 - 2*m1^2 + \
+2*SPD[k1, k1])*SPD[p, p])/4 - (FAD[{p, m0}]*SPD[k1, p]*SPD[p, p])/2 + \
+(FAD[{-k1 + p, m1}]*SPD[p, p]^2)/4"},
+{"fcstFCApart-ID20",
+"FCApart[FAD[{p,m0},{-k1+p,m1}] SPD[k1,p] \
+^2SPD[p,p],{p},MaxIterations\[Rule]Infinity,FDS\[Rule]False,DropScaleless->False]//FCE",
+"(-m0^2 + m1^2 - SPD[k1, k1])/4 - (m0^2*FAD[{p, m0}]*(m0^2 - m1^2 \
++ SPD[k1, k1]))/4 + (FAD[{-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 + (m0^2*FAD[{p, m0}, {-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 - SPD[k1, p]/2 - (m0^2*FAD[{p, m0}]*SPD[k1, p])/2 \
++ (FAD[{-k1 + p, m1}]*(m0^2 - 2*m1^2 + 2*SPD[k1, k1])*SPD[p, \
+p])/4 + (FAD[{-k1 + p, m1}]*SPD[p, p]^2)/4- SPD[p,p]/4"},
+{"fcstFCApart-ID20.1",
+"FCApart[FAD[{p,m0},{-k1+p,m1}] SPD[k1,p] \
+^2SPD[p,p],{p},MaxIterations\[Rule]Infinity,FDS\[Rule]False]//FCE",
+"- (m0^2*FAD[{p, m0}]*(m0^2 - m1^2 \
++ SPD[k1, k1]))/4 + (FAD[{-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 + (m0^2*FAD[{p, m0}, {-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)/4 - (m0^2*FAD[{p, m0}]*SPD[k1, p])/2 \
++ (FAD[{-k1 + p, m1}]*(m0^2 - 2*m1^2 + 2*SPD[k1, k1])*SPD[p, \
+p])/4 + (FAD[{-k1 + p, m1}]*SPD[p, p]^2)/4"}
+})

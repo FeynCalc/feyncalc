@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13194,        461]
-NotebookOptionsPosition[      7884,        292]
-NotebookOutlinePosition[     11383,        393]
-CellTagsIndexPosition[     11269,        387]
+NotebookDataLength[     13196,        461]
+NotebookOptionsPosition[      7885,        292]
+NotebookOutlinePosition[     11385,        393]
+CellTagsIndexPosition[     11271,        387]
 WindowTitle->LorentzIndex
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ LorentzIndex.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$99330], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100676], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/LorentzIndex", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1084413046],
+ CellID->1824288497],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1482752864],
+ CellID->1154410146],
 
 Cell["This denotes a four-dimensional Lorentz index.", "Text",
  CellTags->"LorentzIndex",
@@ -305,7 +305,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 13, 59.357324}", 
+   "built" -> "{2016, 8, 21, 21, 22, 12.963766}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -336,133 +336,133 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3453, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3454, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1084413046]},
+   CellID->1824288497]},
  "LorentzIndex"->{
-  Cell[4065, 123, 110, 2, 31, "Text",
+  Cell[4066, 123, 110, 2, 31, "Text",
    CellTags->"LorentzIndex",
    CellID->2141033081],
-  Cell[4200, 129, 143, 4, 27, "Input",
+  Cell[4201, 129, 143, 4, 27, "Input",
    CellTags->"LorentzIndex",
    CellID->1526768444],
-  Cell[4346, 135, 221, 7, 36, "Output",
+  Cell[4347, 135, 221, 7, 36, "Output",
    CellTags->"LorentzIndex",
    CellID->1100231322],
-  Cell[4582, 145, 146, 4, 32, "Text",
+  Cell[4583, 145, 146, 4, 32, "Text",
    CellTags->"LorentzIndex",
    CellID->1672095293],
-  Cell[4753, 153, 166, 5, 27, "Input",
+  Cell[4754, 153, 166, 5, 27, "Input",
    CellTags->"LorentzIndex",
    CellID->1273197083],
-  Cell[4922, 160, 220, 7, 36, "Output",
+  Cell[4923, 160, 220, 7, 36, "Output",
    CellTags->"LorentzIndex",
    CellID->361522335],
-  Cell[5179, 172, 183, 5, 27, "Input",
+  Cell[5180, 172, 183, 5, 27, "Input",
    CellTags->"LorentzIndex",
    CellID->1542722880],
-  Cell[5365, 179, 217, 7, 36, "Output",
+  Cell[5366, 179, 217, 7, 36, "Output",
    CellTags->"LorentzIndex",
    CellID->225253784],
-  Cell[5597, 189, 161, 5, 32, "Text",
+  Cell[5598, 189, 161, 5, 32, "Text",
    CellTags->"LorentzIndex",
    CellID->745501605],
-  Cell[5761, 196, 154, 5, 27, "Input",
+  Cell[5762, 196, 154, 5, 27, "Input",
    CellTags->"LorentzIndex",
    CellID->209941583],
-  Cell[5940, 205, 364, 11, 27, "Input",
+  Cell[5941, 205, 364, 11, 27, "Input",
    CellTags->"LorentzIndex",
    CellID->490327018],
-  Cell[6307, 218, 587, 24, 36, "Output",
+  Cell[6308, 218, 587, 24, 36, "Output",
    CellTags->"LorentzIndex",
    CellID->648573594],
-  Cell[6909, 245, 166, 5, 27, "Input",
+  Cell[6910, 245, 166, 5, 27, "Input",
    CellTags->"LorentzIndex",
    CellID->1095442238],
-  Cell[7431, 272, 411, 15, 70, "Text",
+  Cell[7432, 272, 411, 15, 70, "Text",
    CellTags->"LorentzIndex",
    CellID->261845122]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9822, 337},
- {"LorentzIndex", 9961, 341}
+ {"PrimaryExamplesSection", 9824, 337},
+ {"LorentzIndex", 9963, 341}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2261, 52, 51, "AnchorBarGrid",
+Cell[584, 21, 2262, 52, 51, "AnchorBarGrid",
  CellID->1],
-Cell[2848, 75, 55, 1, 42, "ObjectName",
+Cell[2849, 75, 55, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2906, 78, 522, 14, 99, "Usage",
+Cell[2907, 78, 522, 14, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3453, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3454, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1084413046],
+ CellID->1824288497],
 Cell[CellGroupData[{
-Cell[3866, 115, 196, 6, 25, "ExampleSection",
- CellID->1482752864],
-Cell[4065, 123, 110, 2, 31, "Text",
+Cell[3867, 115, 196, 6, 25, "ExampleSection",
+ CellID->1154410146],
+Cell[4066, 123, 110, 2, 31, "Text",
  CellTags->"LorentzIndex",
  CellID->2141033081],
 Cell[CellGroupData[{
-Cell[4200, 129, 143, 4, 27, "Input",
+Cell[4201, 129, 143, 4, 27, "Input",
  CellTags->"LorentzIndex",
  CellID->1526768444],
-Cell[4346, 135, 221, 7, 36, "Output",
+Cell[4347, 135, 221, 7, 36, "Output",
  CellTags->"LorentzIndex",
  CellID->1100231322]
 }, Open  ]],
-Cell[4582, 145, 146, 4, 32, "Text",
+Cell[4583, 145, 146, 4, 32, "Text",
  CellTags->"LorentzIndex",
  CellID->1672095293],
 Cell[CellGroupData[{
-Cell[4753, 153, 166, 5, 27, "Input",
+Cell[4754, 153, 166, 5, 27, "Input",
  CellTags->"LorentzIndex",
  CellID->1273197083],
-Cell[4922, 160, 220, 7, 36, "Output",
+Cell[4923, 160, 220, 7, 36, "Output",
  CellTags->"LorentzIndex",
  CellID->361522335]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5179, 172, 183, 5, 27, "Input",
+Cell[5180, 172, 183, 5, 27, "Input",
  CellTags->"LorentzIndex",
  CellID->1542722880],
-Cell[5365, 179, 217, 7, 36, "Output",
+Cell[5366, 179, 217, 7, 36, "Output",
  CellTags->"LorentzIndex",
  CellID->225253784]
 }, Open  ]],
-Cell[5597, 189, 161, 5, 32, "Text",
+Cell[5598, 189, 161, 5, 32, "Text",
  CellTags->"LorentzIndex",
  CellID->745501605],
-Cell[5761, 196, 154, 5, 27, "Input",
+Cell[5762, 196, 154, 5, 27, "Input",
  CellTags->"LorentzIndex",
  CellID->209941583],
 Cell[CellGroupData[{
-Cell[5940, 205, 364, 11, 27, "Input",
+Cell[5941, 205, 364, 11, 27, "Input",
  CellTags->"LorentzIndex",
  CellID->490327018],
-Cell[6307, 218, 587, 24, 36, "Output",
+Cell[6308, 218, 587, 24, 36, "Output",
  CellTags->"LorentzIndex",
  CellID->648573594]
 }, Open  ]],
-Cell[6909, 245, 166, 5, 27, "Input",
+Cell[6910, 245, 166, 5, 27, "Input",
  CellTags->"LorentzIndex",
  CellID->1095442238]
 }, Open  ]],
-Cell[7090, 253, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7091, 253, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7158, 258, 270, 12, 70, "SeeAlsoSection",
+Cell[7159, 258, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7431, 272, 411, 15, 70, "Text",
+Cell[7432, 272, 411, 15, 70, "Text",
  CellTags->"LorentzIndex",
  CellID->261845122]
 }, Open  ]],
-Cell[7857, 290, 23, 0, 70, "FooterCell"]
+Cell[7858, 290, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

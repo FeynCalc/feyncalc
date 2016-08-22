@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5175,        145]
+NotebookDataLength[      5176,        145]
 NotebookOptionsPosition[      3288,         93]
-NotebookOutlinePosition[      5097,        141]
-CellTagsIndexPosition[      5054,        138]
+NotebookOutlinePosition[      5098,        141]
+CellTagsIndexPosition[      5055,        138]
 WindowTitle->ScaleMu
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130883], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$132024], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ScaleMu", ".html"]], None}]}]},
@@ -106,7 +106,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 30.345373}", 
+   "built" -> "{2016, 8, 21, 21, 24, 23.922754}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     28925,        858]
+NotebookDataLength[     28926,        858]
 NotebookOptionsPosition[     23358,        687]
-NotebookOutlinePosition[     27082,        791]
-CellTagsIndexPosition[     26928,        784]
+NotebookOutlinePosition[     27083,        791]
+CellTagsIndexPosition[     26929,        784]
 WindowTitle->PolarizationSum
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PolarizationSum.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$118096], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$119607], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PolarizationSum", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->204661031],
+ CellID->245803775],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1089057632],
+ CellID->1478638315],
 
 Cell[CellGroupData[{
 
@@ -648,7 +648,7 @@ H/e6rxY=
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"PolarizationSum", "RasterizedOutput"},
  CellLabel->"Out[5]=",
- CellID->860313562]
+ CellID->281630538]
 }, Open  ]]
 }, Open  ]],
 
@@ -700,7 +700,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 25.314024}", 
+   "built" -> "{2016, 8, 21, 21, 23, 33.118398}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -734,7 +734,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3552, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->204661031]},
+   CellID->245803775]},
  "PolarizationSum"->{
   Cell[4185, 127, 148, 4, 27, "Input",
    CellTags->"PolarizationSum",
@@ -771,21 +771,21 @@ CellTagsIndex->{
    CellID->1845572420],
   Cell[13488, 491, 9214, 159, 152, "Output",
    CellTags->{"PolarizationSum", "RasterizedOutput"},
-   CellID->860313562],
+   CellID->281630538],
   Cell[23070, 673, 246, 9, 31, "Text",
    CellTags->"PolarizationSum",
    CellID->986230835]},
  "RasterizedOutput"->{
   Cell[13488, 491, 9214, 159, 152, "Output",
    CellTags->{"PolarizationSum", "RasterizedOutput"},
-   CellID->860313562]}
+   CellID->281630538]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 25342, 733},
- {"PolarizationSum", 25483, 737},
- {"RasterizedOutput", 26782, 777}
+ {"PrimaryExamplesSection", 25343, 733},
+ {"PolarizationSum", 25484, 737},
+ {"RasterizedOutput", 26783, 777}
  }
 *)
 (*NotebookFileOutline
@@ -799,10 +799,10 @@ Cell[2925, 78, 602, 16, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3552, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->204661031],
+ CellID->245803775],
 Cell[CellGroupData[{
 Cell[3964, 117, 196, 6, 25, "ExampleSection",
- CellID->1089057632],
+ CellID->1478638315],
 Cell[CellGroupData[{
 Cell[4185, 127, 148, 4, 27, "Input",
  CellTags->"PolarizationSum",
@@ -847,7 +847,7 @@ Cell[12598, 471, 887, 18, 73, "Message",
  CellID->1845572420],
 Cell[13488, 491, 9214, 159, 152, "Output",
  CellTags->{"PolarizationSum", "RasterizedOutput"},
- CellID->860313562]
+ CellID->281630538]
 }, Open  ]]
 }, Open  ]],
 Cell[22729, 654, 31, 0, 29, "SectionFooterSpacer"]

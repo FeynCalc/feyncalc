@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6303,        199]
-NotebookOptionsPosition[      4128,        133]
-NotebookOutlinePosition[      6045,        188]
-CellTagsIndexPosition[      5978,        183]
+NotebookDataLength[      6306,        199]
+NotebookOptionsPosition[      4129,        133]
+NotebookOutlinePosition[      6048,        188]
+CellTagsIndexPosition[      5981,        183]
 WindowTitle->Lower
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$99671], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$101017], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Lower", 
             ".html"]], None}]}]},
@@ -146,7 +146,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 0.918610}", 
+   "built" -> "{2016, 8, 21, 21, 22, 14.494215}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -175,32 +175,32 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Lower"->{
-  Cell[3538, 107, 548, 21, 70, "Text",
+  Cell[3539, 107, 548, 21, 70, "Text",
    CellTags->"Lower",
    CellID->381475007]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Lower", 5870, 176}
+ {"Lower", 5873, 176}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2232, 52, 70, "AnchorBarGrid",
+Cell[577, 21, 2233, 52, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2812, 75, 48, 1, 70, "ObjectName",
+Cell[2813, 75, 48, 1, 70, "ObjectName",
  CellID->1224892054],
-Cell[2863, 78, 377, 11, 70, "Usage",
+Cell[2864, 78, 377, 11, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3265, 93, 270, 12, 70, "SeeAlsoSection",
+Cell[3266, 93, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3538, 107, 548, 21, 70, "Text",
+Cell[3539, 107, 548, 21, 70, "Text",
  CellTags->"Lower",
  CellID->381475007]
 }, Open  ]],
-Cell[4101, 131, 23, 0, 70, "FooterCell"]
+Cell[4102, 131, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

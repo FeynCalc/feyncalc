@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15705,        573]
-NotebookOptionsPosition[      9834,        380]
-NotebookOutlinePosition[     13498,        488]
-CellTagsIndexPosition[     13382,        482]
+NotebookDataLength[     15710,        573]
+NotebookOptionsPosition[      9835,        380]
+NotebookOutlinePosition[     13502,        488]
+CellTagsIndexPosition[     13386,        482]
 WindowTitle->MetricTensor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ MetricTensor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$101401], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$102747], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/MetricTensor", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->570896732],
+ CellID->1369115102],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->423081529],
+ CellID->343685928],
 
 Cell[CellGroupData[{
 
@@ -393,7 +393,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 7.324679}", 
+   "built" -> "{2016, 8, 21, 21, 22, 21.487948}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -422,67 +422,67 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3358, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3358, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->570896732]},
+   CellID->1369115102]},
  "MetricTensor"->{
-  Cell[3990, 124, 171, 5, 27, "Input",
+  Cell[3991, 124, 171, 5, 27, "Input",
    CellTags->"MetricTensor",
    CellID->187143262],
-  Cell[4164, 131, 522, 22, 40, "Output",
+  Cell[4165, 131, 522, 22, 40, "Output",
    CellTags->"MetricTensor",
    CellID->1323519245],
-  Cell[4723, 158, 154, 5, 27, "Input",
+  Cell[4724, 158, 154, 5, 27, "Input",
    CellTags->"MetricTensor",
    CellID->888467606],
-  Cell[4880, 165, 213, 7, 36, "Output",
+  Cell[4881, 165, 213, 7, 36, "Output",
    CellTags->"MetricTensor",
    CellID->116818789],
-  Cell[5130, 177, 219, 6, 27, "Input",
+  Cell[5131, 177, 219, 6, 27, "Input",
    CellTags->"MetricTensor",
    CellID->524835668],
-  Cell[5352, 185, 498, 21, 40, "Output",
+  Cell[5353, 185, 498, 21, 40, "Output",
    CellTags->"MetricTensor",
    CellID->1803847759],
-  Cell[5887, 211, 154, 5, 27, "Input",
+  Cell[5888, 211, 154, 5, 27, "Input",
    CellTags->"MetricTensor",
    CellID->125271051],
-  Cell[6044, 218, 214, 7, 36, "Output",
+  Cell[6045, 218, 214, 7, 36, "Output",
    CellTags->"MetricTensor",
    CellID->1132028331],
-  Cell[6295, 230, 199, 6, 27, "Input",
+  Cell[6296, 230, 199, 6, 27, "Input",
    CellTags->"MetricTensor",
    CellID->1318549517],
-  Cell[6497, 238, 334, 10, 49, "Output",
+  Cell[6498, 238, 334, 10, 49, "Output",
    CellTags->"MetricTensor",
    CellID->1708064740],
-  Cell[6868, 253, 248, 7, 27, "Input",
+  Cell[6869, 253, 248, 7, 27, "Input",
    CellTags->"MetricTensor",
    CellID->1544242781],
-  Cell[7119, 262, 384, 12, 49, "Output",
+  Cell[7120, 262, 384, 12, 49, "Output",
    CellTags->"MetricTensor",
    CellID->2135349923],
-  Cell[7540, 279, 230, 7, 27, "Input",
+  Cell[7541, 279, 230, 7, 27, "Input",
    CellTags->"MetricTensor",
    CellID->912797684],
-  Cell[7773, 288, 250, 8, 49, "Output",
+  Cell[7774, 288, 250, 8, 49, "Output",
    CellTags->"MetricTensor",
    CellID->489293900],
-  Cell[8060, 301, 281, 8, 27, "Input",
+  Cell[8061, 301, 281, 8, 27, "Input",
    CellTags->"MetricTensor",
    CellID->1275057625],
-  Cell[8344, 311, 252, 8, 49, "Output",
+  Cell[8345, 311, 252, 8, 49, "Output",
    CellTags->"MetricTensor",
    CellID->1657208619],
-  Cell[8964, 342, 828, 33, 32, "Text",
+  Cell[8965, 342, 828, 33, 32, "Text",
    CellTags->"MetricTensor",
    CellID->309904132]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11652, 423},
- {"MetricTensor", 11790, 427}
+ {"PrimaryExamplesSection", 11655, 423},
+ {"MetricTensor", 11794, 427}
  }
 *)
 (*NotebookFileOutline
@@ -494,87 +494,87 @@ Cell[2849, 75, 55, 1, 42, "ObjectName",
 Cell[2907, 78, 426, 13, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3358, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3358, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->570896732],
+ CellID->1369115102],
 Cell[CellGroupData[{
-Cell[3770, 114, 195, 6, 25, "ExampleSection",
- CellID->423081529],
+Cell[3771, 114, 195, 6, 25, "ExampleSection",
+ CellID->343685928],
 Cell[CellGroupData[{
-Cell[3990, 124, 171, 5, 27, "Input",
+Cell[3991, 124, 171, 5, 27, "Input",
  CellTags->"MetricTensor",
  CellID->187143262],
-Cell[4164, 131, 522, 22, 40, "Output",
+Cell[4165, 131, 522, 22, 40, "Output",
  CellTags->"MetricTensor",
  CellID->1323519245]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4723, 158, 154, 5, 27, "Input",
+Cell[4724, 158, 154, 5, 27, "Input",
  CellTags->"MetricTensor",
  CellID->888467606],
-Cell[4880, 165, 213, 7, 36, "Output",
+Cell[4881, 165, 213, 7, 36, "Output",
  CellTags->"MetricTensor",
  CellID->116818789]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5130, 177, 219, 6, 27, "Input",
+Cell[5131, 177, 219, 6, 27, "Input",
  CellTags->"MetricTensor",
  CellID->524835668],
-Cell[5352, 185, 498, 21, 40, "Output",
+Cell[5353, 185, 498, 21, 40, "Output",
  CellTags->"MetricTensor",
  CellID->1803847759]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5887, 211, 154, 5, 27, "Input",
+Cell[5888, 211, 154, 5, 27, "Input",
  CellTags->"MetricTensor",
  CellID->125271051],
-Cell[6044, 218, 214, 7, 36, "Output",
+Cell[6045, 218, 214, 7, 36, "Output",
  CellTags->"MetricTensor",
  CellID->1132028331]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6295, 230, 199, 6, 27, "Input",
+Cell[6296, 230, 199, 6, 27, "Input",
  CellTags->"MetricTensor",
  CellID->1318549517],
-Cell[6497, 238, 334, 10, 49, "Output",
+Cell[6498, 238, 334, 10, 49, "Output",
  CellTags->"MetricTensor",
  CellID->1708064740]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6868, 253, 248, 7, 27, "Input",
+Cell[6869, 253, 248, 7, 27, "Input",
  CellTags->"MetricTensor",
  CellID->1544242781],
-Cell[7119, 262, 384, 12, 49, "Output",
+Cell[7120, 262, 384, 12, 49, "Output",
  CellTags->"MetricTensor",
  CellID->2135349923]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7540, 279, 230, 7, 27, "Input",
+Cell[7541, 279, 230, 7, 27, "Input",
  CellTags->"MetricTensor",
  CellID->912797684],
-Cell[7773, 288, 250, 8, 49, "Output",
+Cell[7774, 288, 250, 8, 49, "Output",
  CellTags->"MetricTensor",
  CellID->489293900]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8060, 301, 281, 8, 27, "Input",
+Cell[8061, 301, 281, 8, 27, "Input",
  CellTags->"MetricTensor",
  CellID->1275057625],
-Cell[8344, 311, 252, 8, 49, "Output",
+Cell[8345, 311, 252, 8, 49, "Output",
  CellTags->"MetricTensor",
  CellID->1657208619]
 }, Open  ]]
 }, Open  ]],
-Cell[8623, 323, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8624, 323, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8691, 328, 270, 12, 31, "SeeAlsoSection",
+Cell[8692, 328, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8964, 342, 828, 33, 32, "Text",
+Cell[8965, 342, 828, 33, 32, "Text",
  CellTags->"MetricTensor",
  CellID->309904132]
 }, Open  ]],
-Cell[9807, 378, 23, 0, 42, "FooterCell"]
+Cell[9808, 378, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

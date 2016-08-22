@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6394,        191]
+NotebookDataLength[      6395,        191]
 NotebookOptionsPosition[      4008,        123]
-NotebookOutlinePosition[      6129,        180]
-CellTagsIndexPosition[      6055,        175]
+NotebookOutlinePosition[      6130,        180]
+CellTagsIndexPosition[      6056,        175]
 WindowTitle->IsolatePrint
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ IsolatePrint.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$94041], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$95825], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/IsolatePrint", ".html"]], None}]}]},
@@ -136,7 +136,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 13, 31.767069}", 
+   "built" -> "{2016, 8, 21, 21, 21, 51.943620}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -174,7 +174,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"IsolatePrint", 5940, 168}
+ {"IsolatePrint", 5941, 168}
  }
 *)
 (*NotebookFileOutline

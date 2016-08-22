@@ -11,9 +11,9 @@ NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
 NotebookDataLength[      9324,        315]
-NotebookOptionsPosition[      5805,        206]
-NotebookOutlinePosition[      8361,        278]
-CellTagsIndexPosition[      8249,        272]
+NotebookOptionsPosition[      5804,        206]
+NotebookOutlinePosition[      8362,        278]
+CellTagsIndexPosition[      8250,        272]
 WindowTitle->TraceOfOne
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$158564], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$158534], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TraceOfOne", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->576827165],
+ CellID->728832718],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1616172057],
+ CellID->741598411],
 
 Cell[CellGroupData[{
 
@@ -219,7 +219,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 3.031770}", 
+   "built" -> "{2016, 8, 21, 21, 26, 20.459944}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -250,29 +250,29 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3321, 94, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->576827165]},
+   CellID->728832718]},
  "TraceOfOne"->{
-  Cell[3954, 123, 290, 8, 27, "Input",
+  Cell[3953, 123, 290, 8, 27, "Input",
    CellTags->"TraceOfOne",
    CellID->223402463],
-  Cell[4247, 133, 214, 7, 36, "Output",
+  Cell[4246, 133, 214, 7, 36, "Output",
    CellTags->"TraceOfOne",
    CellID->2044201134],
-  Cell[4498, 145, 290, 8, 27, "Input",
+  Cell[4497, 145, 290, 8, 27, "Input",
    CellTags->"TraceOfOne",
    CellID->1954279511],
-  Cell[4791, 155, 213, 7, 36, "Output",
+  Cell[4790, 155, 213, 7, 36, "Output",
    CellTags->"TraceOfOne",
    CellID->803728852],
-  Cell[5372, 185, 391, 16, 31, "Text",
+  Cell[5371, 185, 391, 16, 31, "Text",
    CellTags->"TraceOfOne",
    CellID->622050208]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7640, 249},
- {"TraceOfOne", 7776, 253}
+ {"PrimaryExamplesSection", 7641, 249},
+ {"TraceOfOne", 7777, 253}
  }
 *)
 (*NotebookFileOutline
@@ -286,37 +286,37 @@ Cell[2894, 78, 402, 12, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3321, 94, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->576827165],
+ CellID->728832718],
 Cell[CellGroupData[{
-Cell[3733, 113, 196, 6, 25, "ExampleSection",
- CellID->1616172057],
+Cell[3733, 113, 195, 6, 25, "ExampleSection",
+ CellID->741598411],
 Cell[CellGroupData[{
-Cell[3954, 123, 290, 8, 27, "Input",
+Cell[3953, 123, 290, 8, 27, "Input",
  CellTags->"TraceOfOne",
  CellID->223402463],
-Cell[4247, 133, 214, 7, 36, "Output",
+Cell[4246, 133, 214, 7, 36, "Output",
  CellTags->"TraceOfOne",
  CellID->2044201134]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4498, 145, 290, 8, 27, "Input",
+Cell[4497, 145, 290, 8, 27, "Input",
  CellTags->"TraceOfOne",
  CellID->1954279511],
-Cell[4791, 155, 213, 7, 36, "Output",
+Cell[4790, 155, 213, 7, 36, "Output",
  CellTags->"TraceOfOne",
  CellID->803728852]
 }, Open  ]]
 }, Open  ]],
-Cell[5031, 166, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5030, 166, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5099, 171, 270, 12, 31, "SeeAlsoSection",
+Cell[5098, 171, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5372, 185, 391, 16, 31, "Text",
+Cell[5371, 185, 391, 16, 31, "Text",
  CellTags->"TraceOfOne",
  CellID->622050208]
 }, Open  ]],
-Cell[5778, 204, 23, 0, 42, "FooterCell"]
+Cell[5777, 204, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -23,7 +23,7 @@ End[]
 Begin["`Explicit`Private`"]
 
 Options[Explicit] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Gauge -> 1,
 	OPE -> False

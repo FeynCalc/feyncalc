@@ -34,8 +34,8 @@ ScalarProduct[qst, pst] = (m^2)/2;
 	the results we get from TID can have slightly different form depending on the
 	integrals that TID had to work out before. Of course all those are exactly the
 	same (just written in a different way) and we use Simplify to check the equivalence	*)
-
-Map[Test[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]]]&,
+$LimitTo4=True;
+Map[Test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,TestID->#[[1]]]&,
 	Join[
 		Tests`LoopIntegrals`fcitTIDUsePaVeBasisA,
 		Tests`LoopIntegrals`fcitTIDUsePaVeBasisB,
@@ -44,9 +44,15 @@ Map[Test[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]
 		Tests`LoopIntegrals`fcitTIDFullRedA,
 		Tests`LoopIntegrals`fcitTIDFullRedB,
 		Tests`LoopIntegrals`fcitTIDFullRedCR1,
-		Tests`LoopIntegrals`fcitTIDFullRedCR2,
+		Tests`LoopIntegrals`fcitTIDFullRedCR2
+		]];
+
+Map[Test[ Simplify[ReplaceAll[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],kst],{B0[x__] :> B0[x, BReduce -> True],
+	PaVe[x__, PaVeAutoReduce -> False, y___] :> PaVe[x, PaVeAutoReduce -> True, y]}]],0,TestID->#[[1]]]&,
+	Join[
 		Tests`LoopIntegrals`fcitTIDSTests
 		]];
+
 
 FCClearScalarProducts[];
 
@@ -54,3 +60,4 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join[
 		Tests`LoopIntegrals`fcitTIDMTests
 		]];
+$LimitTo4=False;

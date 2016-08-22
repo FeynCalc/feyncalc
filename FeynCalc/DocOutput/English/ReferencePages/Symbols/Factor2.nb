@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14746,        536]
+NotebookDataLength[     14748,        536]
 NotebookOptionsPosition[      8999,        347]
-NotebookOutlinePosition[     12739,        456]
-CellTagsIndexPosition[     12628,        450]
+NotebookOutlinePosition[     12741,        456]
+CellTagsIndexPosition[     12630,        450]
 WindowTitle->Factor2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$54985], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55218], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Factor2", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->974762014],
+ CellID->359071766],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->891133844],
+ CellID->916560655],
 
 Cell[CellGroupData[{
 
@@ -360,7 +360,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 47.656760}", 
+   "built" -> "{2016, 8, 21, 21, 18, 55.029800}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -395,7 +395,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3583, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->974762014]},
+   CellID->359071766]},
  "Factor2"->{
   Cell[4215, 127, 132, 4, 27, "Input",
    CellTags->"Factor2",
@@ -449,8 +449,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11077, 394},
- {"Factor2", 11210, 398}
+ {"PrimaryExamplesSection", 11079, 394},
+ {"Factor2", 11212, 398}
  }
 *)
 (*NotebookFileOutline
@@ -464,10 +464,10 @@ Cell[2875, 78, 683, 16, 130, "Usage",
 Cell[CellGroupData[{
 Cell[3583, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->974762014],
+ CellID->359071766],
 Cell[CellGroupData[{
 Cell[3995, 117, 195, 6, 25, "ExampleSection",
- CellID->891133844],
+ CellID->916560655],
 Cell[CellGroupData[{
 Cell[4215, 127, 132, 4, 27, "Input",
  CellTags->"Factor2",

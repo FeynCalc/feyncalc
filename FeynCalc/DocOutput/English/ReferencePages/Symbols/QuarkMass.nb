@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6323,        199]
+NotebookDataLength[      6324,        199]
 NotebookOptionsPosition[      4130,        133]
-NotebookOutlinePosition[      6061,        188]
-CellTagsIndexPosition[      5990,        183]
+NotebookOutlinePosition[      6062,        188]
+CellTagsIndexPosition[      5991,        183]
 WindowTitle->QuarkMass
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$124809], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$126136], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/QuarkMass", ".html"]], None}]}]},
@@ -146,7 +146,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 59.674684}", 
+   "built" -> "{2016, 8, 21, 21, 23, 59.409432}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -182,7 +182,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"QuarkMass", 5878, 176}
+ {"QuarkMass", 5879, 176}
  }
 *)
 (*NotebookFileOutline

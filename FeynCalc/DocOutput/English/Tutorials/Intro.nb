@@ -1,0 +1,1251 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     42465,       1241]
+NotebookOptionsPosition[     32796,        930]
+NotebookOutlinePosition[     38226,       1084]
+CellTagsIndexPosition[     37928,       1071]
+WindowTitle->Short introduction
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC TUTORIAL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/tutorial/Intro\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/tutorial/Intro"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/tutorial/Intro.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173992], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/tutorial/Intro", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Short introduction", "Title",
+ CellID->509267359],
+
+Cell[BoxData[GridBox[{
+   {
+    TemplateBox[{
+     Cell["Starting FeynCalc"],"paclet:FeynCalc/tutorial/Intro#1726202394",
+      GraphicsBox[
+       TagBox[
+        RasterBox[{{{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128,
+          128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128,
+          128, 239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128,
+          0}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
+         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
+         32}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
+         175}, {128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 
+         0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128, 128, 
+         239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128, 
+         16}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
+         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 175}, {
+         128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 0}, {128, 
+         128, 128, 0}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 
+         128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 0}}}, {{0, 8}, {8, 0}}, {0, 
+         255}, ColorFunction -> RGBColor], 
+        BoxForm`ImageTag[
+        "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
+         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
+       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
+       ImageSize -> {8, 9}],GraphicsBox[
+       TagBox[
+        RasterBox[{{{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 0}, {
+         229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
+          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
+         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
+         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
+         32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 16}, {229,
+          95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
+         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
+          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 
+         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
+         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
+         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
+         32}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 
+         95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
+         0}, {229, 95, 28, 0}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95,
+          28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 0}, {229,
+          95, 28, 0}, {229, 95, 28, 0}}}, {{0, 8}, {8, 0}}, {0, 255}, 
+         ColorFunction -> RGBColor], 
+        BoxForm`ImageTag[
+        "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
+         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
+       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
+       ImageSize -> {8, 9}]},
+     "GrayLinkWithIcon",
+     BaseStyle->{"TutorialJumpBoxLink"}], 
+    TemplateBox[{
+     Cell["Example Calculations"],"paclet:FeynCalc/tutorial/Intro#1007300369",
+      GraphicsBox[
+       TagBox[
+        RasterBox[{{{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128,
+          128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128,
+          128, 239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128,
+          0}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
+         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
+         32}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
+         175}, {128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 
+         0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128, 128, 
+         239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128, 
+         16}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
+         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 175}, {
+         128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 0}, {128, 
+         128, 128, 0}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 
+         128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 0}}}, {{0, 8}, {8, 0}}, {0, 
+         255}, ColorFunction -> RGBColor], 
+        BoxForm`ImageTag[
+        "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
+         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
+       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
+       ImageSize -> {8, 9}],GraphicsBox[
+       TagBox[
+        RasterBox[{{{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 0}, {
+         229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
+          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
+         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
+         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
+         32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 16}, {229,
+          95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
+         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
+          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 
+         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
+         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
+         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
+         32}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 
+         95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
+         0}, {229, 95, 28, 0}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95,
+          28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 0}, {229,
+          95, 28, 0}, {229, 95, 28, 0}}}, {{0, 8}, {8, 0}}, {0, 255}, 
+         ColorFunction -> RGBColor], 
+        BoxForm`ImageTag[
+        "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
+         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
+       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
+       ImageSize -> {8, 9}]},
+     "GrayLinkWithIcon",
+     BaseStyle->{"TutorialJumpBoxLink"}]},
+   {
+    TemplateBox[{
+     Cell["Extra subpackages"],"paclet:FeynCalc/tutorial/Intro#2100607586",
+      GraphicsBox[
+       TagBox[
+        RasterBox[{{{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128,
+          128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128,
+          128, 239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128,
+          0}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
+         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
+         32}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
+         175}, {128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 
+         0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128, 128, 
+         239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128, 
+         16}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
+         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
+         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 175}, {
+         128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 0}, {128, 
+         128, 128, 0}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 
+         128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 
+         0}, {128, 128, 128, 0}, {128, 128, 128, 0}}}, {{0, 8}, {8, 0}}, {0, 
+         255}, ColorFunction -> RGBColor], 
+        BoxForm`ImageTag[
+        "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
+         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
+       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
+       ImageSize -> {8, 9}],GraphicsBox[
+       TagBox[
+        RasterBox[{{{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 0}, {
+         229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
+          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
+         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
+         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
+         32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 16}, {229,
+          95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
+         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
+          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 
+         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
+         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
+         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
+         32}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 
+         95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
+         0}, {229, 95, 28, 0}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95,
+          28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 0}, {229,
+          95, 28, 0}, {229, 95, 28, 0}}}, {{0, 8}, {8, 0}}, {0, 255}, 
+         ColorFunction -> RGBColor], 
+        BoxForm`ImageTag[
+        "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
+         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
+       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
+       ImageSize -> {8, 9}]},
+     "GrayLinkWithIcon",
+     BaseStyle->{"TutorialJumpBoxLink"}], ""}
+  }]], "TutorialJumpBox"],
+
+Cell[TextData[{
+ "FeynCalc is a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package for algebraic calculations in high energy physics. It provides \
+tools for Lorentz structure manipulations, Dirac algebra manipulations, color \
+factor calculations, Feynman rule derivation, Feynman loop integral \
+calculations (e.g. Passarino-Veltman reduction) and noncommutative algebra \
+calculations, as well as various tabulations of Feynman parameter integrals, \
+Mellin ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["transforms", 
+    ButtonBox["\[Dagger]",
+     BaseStyle->"Hyperlink",
+     ButtonData:>"introfoot"]], TraditionalForm]]],
+ ", convolutions, lagrangians and Feynman rules. Also, translation facilities \
+are provided to change the FeynCalc syntax to and from FORM syntax and to \
+generate FORTRAN code."
+}], "Text",
+ CellID->1534169418],
+
+Cell[TextData[{
+ "Some functions for input of objects like ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["p", "\[Mu]"], ",", 
+    SuperscriptBox["\[Gamma]", "\[Nu]"], ",", 
+    SuperscriptBox["g", 
+     RowBox[{"\[Mu]", " ", "\[Nu]"}]], ",", " ", 
+    SuperscriptBox["\[CurlyEpsilon]", 
+     RowBox[{"\[Mu]", " ", "\[Nu]", " ", "\[Rho]", " ", "\[Sigma]"}]], ",", 
+    " ", 
+    RowBox[{"etc", "."}]}], TraditionalForm]]],
+ " (abbreviations in parentheses) are:"
+}], "Text",
+ CellID->1157525339],
+
+Cell[TextData[{
+ ButtonBox["GA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GA"],
+ " (Dirac matrix), ",
+ ButtonBox["GS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GS"],
+ " (Dirac slash), ",
+ ButtonBox["FV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FV"],
+ " (4-vector), ",
+ ButtonBox["LC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LC"],
+ " (Levi-Civita tensor), ",
+ ButtonBox["MT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MT"],
+ " (metric tensor), ",
+ ButtonBox["Spinor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Spinor"],
+ ", ",
+ ButtonBox["SUNDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNDelta"],
+ ", ",
+ ButtonBox["SUNFDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNFDelta"],
+ ", ",
+ ButtonBox["SUNF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNF"],
+ ", ",
+ ButtonBox["SP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SP"],
+ " (scalar product)"
+}], "Text",
+ CellID->757206658],
+
+Cell["Some functions for manipulations are:", "Text",
+ CellTags->"intro",
+ CellID->1227796187],
+
+Cell[TextData[{
+ ButtonBox["Contract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Contract"],
+ ", ",
+ ButtonBox["Tr",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Tr"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify"],
+ ", ",
+ ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrick"],
+ ", ",
+ ButtonBox["Calc",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Calc"],
+ ", ",
+ ButtonBox["Convolute",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Convolute"],
+ ", ",
+ ButtonBox["FeynRule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynRule"],
+ ", ",
+ ButtonBox["FeynCalc2FORM",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalc2FORM"],
+ ", ",
+ ButtonBox["Integrate2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate2"],
+ ", ",
+ ButtonBox["PaVeReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVeReduce"],
+ ", ",
+ ButtonBox["SimplifyPolyLog",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SimplifyPolyLog"],
+ ", ",
+ ButtonBox["SUNSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNSimplify"],
+ ", ",
+ ButtonBox["Isolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Isolate"],
+ ", ",
+ ButtonBox["Collect2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Collect2"],
+ ", ",
+ ButtonBox["OneLoopSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OneLoopSimplify"],
+ ", ",
+ ButtonBox["Series2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Series2"],
+ ", ",
+ ButtonBox["ApartFF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ApartFF"]
+}], "Text",
+ CellID->833014432],
+
+Cell["Some functions for Feyman loop integral manipulations:", "Text",
+ CellTags->"intro",
+ CellID->1006364145],
+
+Cell[TextData[{
+ ButtonBox["ApartFF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ApartFF"],
+ ", ",
+ ButtonBox["FCLoopIsolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopIsolate"],
+ ", ",
+ ButtonBox["OneLoop",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OneLoop"],
+ ", ",
+ ButtonBox["OneLoopSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OneLoopSimplify"],
+ ", ",
+ ButtonBox["TID",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TID"],
+ ", ",
+ ButtonBox["ToPaVe",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToPaVe"],
+ ", ",
+ ButtonBox["PaVeReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVeReduce"],
+ " "
+}], "Text",
+ CellID->571834673],
+
+Cell["\<\
+For more detailed information on FeynCalc functions, use the help system or \
+look at the examples in  (evaluate the following command)\
+\>", "Text",
+ CellID->4750988],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameJoin", "[", 
+  RowBox[{"{", 
+   RowBox[{"$FeynCalcDirectory", ",", "\"\<Examples\>\""}], "}"}], 
+  "]"}]], "Input",
+ CellLabel->"In[24]:=",
+ CellID->1220639322],
+
+Cell[BoxData[
+ FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/Examples\"\>", 
+  TraditionalForm]], "Output",
+ ImageSize->{397, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[24]=",
+ CellID->1760930313]
+}, Open  ]],
+
+Cell["\<\
+Not all functions are equally well documented in this notebook. Some are very \
+special ones (e.g. for tools for 2-loop QCD diagrams originating in twist-2 \
+OPE), some are still experimental.\
+\>", "Text",
+ CellID->1833132382],
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+ "scheme used in OneLoop is the naive one, i.e., ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", "5"], ",", 
+       SuperscriptBox["\[Gamma]", "\[Mu]"]}]}], ")"}], "=", "0"}], 
+   TraditionalForm]]],
+ " in 4 and D dimensions. See also ",
+ ButtonBox["ToLarin.",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToLarin"]
+}], "Text",
+ CellTags->"intro",
+ CellID->716203363],
+
+Cell["The metric used is the one from Bjorken and Drell (+---).", "Text",
+ CellTags->"intro",
+ CellID->1566592169],
+
+Cell[TextData[{
+ "\[Dagger] Mellin transforms (e.g. all integrals - except 57,58 and 59, and \
+correcting a minor misprint in 14) of Appendix 7 from ",
+ ButtonBox["hep-ph/9810241",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://xxx.lanl.gov/abs/hep-ph/9810241"], None}],
+ " are tabulated in ",
+ ButtonBox["Integrate2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate2"]
+}], "SmallText",
+ CellTags->{"intro", "introfoot"},
+ CellID->721081683],
+
+Cell[CellGroupData[{
+
+Cell["Starting FeynCalc", "Section",
+ CellTags->{"Load FeynCalc", "start"},
+ CellID->1726202394],
+
+Cell[TextData[{
+ "If the directory \"FeynCalc\" has been put in the directory \
+\"Applications\" in your ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " installation tree, which is (evaluate the following command)"
+}], "Text",
+ CellID->846823627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameJoin", "[", 
+  RowBox[{"{", 
+   RowBox[{"$UserBaseDirectory", ",", "\"\<Applications\>\""}], "}"}], 
+  "]"}]], "Input",
+ CellLabel->"In[26]:=",
+ CellID->1006438652],
+
+Cell[BoxData[
+ FormBox["\<\"/home/vs/.Mathematica/Applications\"\>", 
+  TraditionalForm]], "Output",
+ ImageSize->{247, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[26]=",
+ CellID->205843633]
+}, Open  ]],
+
+Cell[TextData[{
+ "you should be able to load FeynCalc via  <<FeynCalc` from a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " session with no \[LineSeparator]further ado. ",
+ "You can also put this line into your \"init.m\" file. This will cause \
+automatic loading of FeynCalc on every ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " startup."
+}], "Text",
+ CellID->469196418],
+
+Cell[TextData[{
+ "FeynCalc might suggest you to set the default output format type is to \
+TraditionalForm, since this allows for nice typesetting of many FeynCalc \
+objects. This can be done  by clicking on the ",
+ StyleBox["Cell", "TextNormal",
+  FontWeight->"Bold"],
+ " menu, then go to the ",
+ StyleBox["Default Output Format Type ", "TextNormal",
+  FontWeight->"Bold"],
+ "item and select ",
+ StyleBox["TraditionalForm",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellID->434623157],
+
+Cell[TextData[{
+ "If you prefer ",
+ StyleBox["StandardForm",
+  FontWeight->"Bold"],
+ " and don't want to be bothered, just uncomment the line"
+}], "Text",
+ CellID->13342743],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"$FCAdvice", " ", "=", " ", "True"}], ";"}], "*)"}]], "Input",
+ CellID->2016141554],
+
+Cell["in FCConfig.m.", "Text",
+ CellID->491195527],
+
+Cell["", "Text",
+ CellID->351638376],
+
+Cell[TextData[{
+ "You might want to reverse this after quitting FeynCalc by clicking on the \
+",
+ StyleBox["Cell", "TextNormal",
+  FontWeight->"Bold"],
+ " menu, then go to the ",
+ StyleBox["Default Output Format Type ", "TextNormal",
+  FontWeight->"Bold"],
+ "item and select ",
+ StyleBox["StandardForm",
+  FontWeight->"Bold"],
+ ", or by evaluating"
+}], "Text",
+ CellID->430968534]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Extra subpackages", "Section",
+ PageBreakAbove->True,
+ CellTags->"About Extras",
+ CellID->2100607586],
+
+Cell["\<\
+The directory  \"FeynCalc\" contains various files and subdirectories \
+belonging to third-party packages which are not necessary to run 'standard' \
+FeynCalc calculations and which do not use the autoloading conventions of \
+FeynCalc. These packages are not initialized by default when starting \
+FeynCalc. Loading them can be switched on and off by setting appropiate \
+variables to False or True before loading FeynCalc.\
+\>", "Text",
+ CellTags->"About Extras",
+ CellID->953459903],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox[
+   FrameBox[
+    StyleBox[GridBox[{
+       {
+        StyleBox["$LoadTARCER",
+         FontFamily->"Courier"], 
+        RowBox[{
+        "Specifies", " ", "if", " ", "TARCER", " ", "should", " ", "be", " ", 
+         "loaded", " ", "by", " ", "FeynCalc"}]},
+       {
+        StyleBox["$LoadPhi",
+         FontFamily->"Courier"], 
+        RowBox[{
+        "Specifies", " ", "if", " ", "PHI", " ", "should", " ", "be", " ", 
+         "loaded", " ", "by", " ", "FeynCalc"}]},
+       {
+        StyleBox["$LoadFeynArts",
+         FontFamily->"Courier"], 
+        RowBox[{
+        "Specifies", " ", "if", " ", "FeynArts", " ", "should", " ", "be", 
+         " ", "loaded", " ", "by", " ", "FeynCalc"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {Right, {Left}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}}],
+     GridBoxOptions->{
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}}}]], "2ColumnBox"], TraditionalForm]], "Text",
+ Background->None,
+ CellTags->"About Extras",
+ CellID->2108182812],
+
+Cell[CellGroupData[{
+
+Cell["TARCER", "Subsection",
+ CellTags->"tarcer",
+ CellID->906844505],
+
+Cell[TextData[{
+ "TARCER is a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " program for the reduction of two-loop propagator integrals. It was \
+developed by R. Mertig and R. Scharf and published in ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["hep-ph/9801383"]],"http://arxiv.org/abs/hep-ph/9801383"},
+   "WebLink",
+   BaseStyle->{"Text"}]]],
+ "."
+}], "Text",
+ CellID->1972678903],
+
+Cell["\<\
+TARCER is distributed with FeynCalc. To have FeynCalc load TARCER, evaluate\
+\>", "Text",
+ CellID->1513547103],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$LoadTARCER", "=", "True"}], ";"}]], "Input",
+ CellTags->"tarcer",
+ CellID->843778896],
+
+Cell[TextData[{
+ "before ",
+ ButtonBox["loading FeynCalc",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"Load FeynCalc",
+  ButtonNote->"start"],
+ ". You can also put the last input line into your \"FCConfig.m\" file."
+}], "Text",
+ CellID->998781867]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["PHI ", "Subsection",
+ CellTags->"phi",
+ CellID->932055296],
+
+Cell[TextData[{
+ "PHI is a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package for manipulating covariant derivatives etc. of effective theories \
+like Chiral Perturbation Theory developed by F. J. Orellana. Moreover it \
+provides an alternative way of creating coupling definitions for FeynArts. \
+This is convenient if one needs to generate a large number of Feynman rules \
+from different lagrangians. PHI is distributed with FeynCalc."
+}], "Text",
+ CellTags->"phi",
+ CellID->1893421836],
+
+Cell["To have FeynCalc load PHI, evaluate", "Text",
+ CellTags->"phi",
+ CellID->528666319],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$LoadPhi", "=", "True"}], ";"}]], "Input",
+ CellTags->"phi",
+ CellID->798844745],
+
+Cell["\<\
+before loading FeynCalc You can also put this line into your \"FCConfig.m\" \
+file.\
+\>", "Text",
+ CellTags->"phi",
+ CellID->1295431310],
+
+Cell[TextData[{
+ "More information is available at ",
+ ButtonBox["http://www.feyncalc.org/phi/",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://www.feyncalc.org/phi/"], None},
+  ButtonNote->"http://www.feyncalc.org/phi/"],
+ "."
+}], "Text",
+ CellTags->"phi",
+ CellID->1431249758]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FeynArts", "Subsection",
+ CellID->1026891602],
+
+Cell[TextData[{
+ "FeynArts is a Mathematica package for generating Feynman diagrams and the \
+corresponding amplitudes. The original FeynArts was created by J. K\
+\[UDoubleDot]blbeck, M. B\[ODoubleDot]hm and A. Denner in 1990 (",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["INSPIRE"]],"http://inspirehep.net/record/27276"},
+   "WebLink",
+   BaseStyle->{"Text"}]]],
+ "). Since 1998 it is developed further by Thomas Hahn (",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["hep-ph/0012260"]],"http://arxiv.org/abs/hep-ph/0012260"},
+   "WebLink",
+   BaseStyle->{"Text"}]]],
+ "). For more information about FeynArts please visit the ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["official site"]],"http://www.feynarts.de/"},
+   "WebLink",
+   BaseStyle->{"Text"}]]],
+ ". The manual is available ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["here"]],"http://www.feynarts.de/FA3Guide.pdf"},
+   "WebLink",
+   BaseStyle->{"Text"}]]],
+ "."
+}], "Text",
+ CellID->1730838623],
+
+Cell["\<\
+FeynArts is not a part of FeynCalc but its output can be used by FeynCalc to \
+evaluate the generated amplitudes. Unfortunately, many FeynArts functions \
+have the same name as the FeynCalc functions which makes Mathematica produce \
+lots of warnings when loading both packages in the same session.\
+\>", "Text",
+ CellID->1031127518],
+
+Cell["\<\
+One possible workaround is to first generate the amplitudes with FeynArts, \
+then save them in a notebook, quit Mathematica, open the notebook and only \
+then load FeynCalc and evaluate the amplitudes. However, this method is \
+rather inconvenient if one wants to play with different options and see how \
+this affects the final result.\
+\>", "Text",
+ CellID->791617764],
+
+Cell["\<\
+The preferred way of using FeynArts with FeynCalc is to patch FeynArts, such \
+that all corresponding FeynArts functions are renamed and no shadowing \
+occurs. In this case one can use FeynArts and FeynCalc in the same \
+Mathematica session without any unwanted interference effects.\
+\>", "Text",
+ CellID->895418169],
+
+Cell["\<\
+For this you need to download the latest version of FeynArts and extract the \
+tarball to the FeynArts directory inside FeynCalc, which (evaluate the \
+following command) is\
+\>", "Text",
+ CellID->2088550082],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$FeynArtsDirectory"], "Input",
+ CellLabel->"In[13]:=",
+ CellID->606741564],
+
+Cell[BoxData[
+ FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/FeynArts\"\>", 
+  TraditionalForm]], "Output",
+ ImageSize->{393, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[13]=",
+ CellID->1253899115]
+}, Open  ]],
+
+Cell[TextData[{
+ "Then you need to restart ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " and enter"
+}], "Text",
+ CellID->1310937107],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
+ CellLabel->"In[16]:=",
+ CellID->342627804],
+
+Cell[TextData[{
+ "before loading FeynCalc. A dialog asking if you want to patch FeynArts will \
+appear. Hit OK. Wait until the patching process finishes. Then restart ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " again and load FeynCalc with"
+}], "Text",
+ CellID->570125418],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
+ CellLabel->"In[18]:=",
+ CellID->1900750623],
+
+Cell["each time you want to use FeynArts with FeynCalc.", "Text",
+ CellID->1315560355]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Example Calculations", "Section",
+ PageBreakAbove->True,
+ CellTags->{"Example Calculations", "ex"},
+ CellID->1007300369],
+
+Cell["\<\
+A lot of examples can be found in (evaluate the following command)\
+\>", "Text",
+ CellID->1268182373],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameJoin", "[", 
+  RowBox[{"{", 
+   RowBox[{"$FeynCalcDirectory", ",", "\"\<Examples\>\""}], "}"}], 
+  "]"}]], "Input",
+ CellLabel->"In[24]:=",
+ CellID->1877395502],
+
+Cell[BoxData[
+ FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/Examples\"\>", 
+  TraditionalForm]], "Output",
+ ImageSize->{397, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[24]=",
+ CellID->727521100]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Short introduction",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
+  "LinkTrails" -> GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2016, 8, 21, 21, 27, 29.193972}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Tutorial", "language" -> "en", "paclet" -> "FeynCalc", 
+    "status" -> "None", "summary" -> 
+    "FeynCalc is a Mathematica package for algebraic calculations in high \
+energy physics. It provides tools for Lorentz structure manipulations, Dirac \
+algebra manipulations, color factor calculations, Feynman rule derivation, \
+Feynman loop integral calculations (e.g. Passarino-Veltman reduction) and \
+noncommutative algebra calculations, as well as various tabulations of \
+Feynman parameter integrals, Mellin transforms^\[Dagger], convolutions, \
+lagrangians and Feynman rules. Also, translation facilities are provided to \
+change the FeynCalc syntax to and from FORM syntax and to generate FORTRAN \
+code. Some functions for input of objects like p^\[Mu],\[Gamma]^\[Nu],g^\[Mu] \
+\[Nu], \[CurlyEpsilon]^\[Mu] \[Nu] \[Rho] \[Sigma], etc. (abbreviations in \
+parentheses) are: GA (Dirac matrix), GS (Dirac slash), FV (4-vector), LC \
+(Levi-Civita tensor), MT (metric tensor), Spinor, SUNDelta, SUNFDelta, SUNF, \
+SP (scalar product)", "synonyms" -> {}, "title" -> "Short introduction", 
+    "titlemodifier" -> "", "windowtitle" -> "Short introduction", "type" -> 
+    "Tutorial", "uri" -> "FeynCalc/tutorial/Intro"}, "SearchTextTranslated" -> 
+  ""},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> Notebook], 
+   Cell[
+    StyleData["Output"], CellContext -> Notebook], 
+   Cell[
+    StyleData["TutorialMoreAboutSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["RelatedTutorialsSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["TutorialRelatedLinksSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "intro"->{
+  Cell[17139, 345, 94, 2, 32, "Text",
+   CellTags->"intro",
+   CellID->1227796187],
+  Cell[18986, 420, 111, 2, 32, "Text",
+   CellTags->"intro",
+   CellID->1006364145],
+  Cell[20750, 489, 559, 21, 54, "Text",
+   CellTags->"intro",
+   CellID->716203363],
+  Cell[21312, 512, 114, 2, 32, "Text",
+   CellTags->"intro",
+   CellID->1566592169],
+  Cell[21429, 516, 470, 13, 39, "SmallText",
+   CellTags->{"intro", "introfoot"},
+   CellID->721081683]},
+ "introfoot"->{
+  Cell[21429, 516, 470, 13, 39, "SmallText",
+   CellTags->{"intro", "introfoot"},
+   CellID->721081683]},
+ "Load FeynCalc"->{
+  Cell[21924, 533, 96, 2, 62, "Section",
+   CellTags->{"Load FeynCalc", "start"},
+   CellID->1726202394]},
+ "start"->{
+  Cell[21924, 533, 96, 2, 62, "Section",
+   CellTags->{"Load FeynCalc", "start"},
+   CellID->1726202394]},
+ "About Extras"->{
+  Cell[24450, 633, 107, 3, 62, "Section",
+   PageBreakAbove->True,
+   CellTags->"About Extras",
+   CellID->2100607586],
+  Cell[24560, 638, 494, 9, 112, "Text",
+   CellTags->"About Extras",
+   CellID->953459903],
+  Cell[25057, 649, 1147, 33, 64, "Text",
+   CellTags->"About Extras",
+   CellID->2108182812]},
+ "tarcer"->{
+  Cell[26229, 686, 69, 2, 51, "Subsection",
+   CellTags->"tarcer",
+   CellID->906844505],
+  Cell[26825, 710, 121, 4, 27, "Input",
+   CellTags->"tarcer",
+   CellID->843778896]},
+ "phi"->{
+  Cell[27231, 729, 64, 2, 51, "Subsection",
+   CellTags->"phi",
+   CellID->932055296],
+  Cell[27298, 733, 501, 11, 112, "Text",
+   CellTags->"phi",
+   CellID->1893421836],
+  Cell[27802, 746, 89, 2, 32, "Text",
+   CellTags->"phi",
+   CellID->528666319],
+  Cell[27894, 750, 115, 4, 27, "Input",
+   CellTags->"phi",
+   CellID->798844745],
+  Cell[28012, 756, 146, 5, 32, "Text",
+   CellTags->"phi",
+   CellID->1295431310],
+  Cell[28161, 763, 289, 10, 32, "Text",
+   CellTags->"phi",
+   CellID->1431249758]},
+ "Example Calculations"->{
+  Cell[32017, 896, 126, 3, 62, "Section",
+   PageBreakAbove->True,
+   CellTags->{"Example Calculations", "ex"},
+   CellID->1007300369]},
+ "ex"->{
+  Cell[32017, 896, 126, 3, 62, "Section",
+   PageBreakAbove->True,
+   CellTags->{"Example Calculations", "ex"},
+   CellID->1007300369]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"intro", 35752, 993},
+ {"introfoot", 36213, 1009},
+ {"Load FeynCalc", 36339, 1013},
+ {"start", 36458, 1017},
+ {"About Extras", 36584, 1021},
+ {"tarcer", 36904, 1032},
+ {"phi", 37091, 1039},
+ {"Example Calculations", 37622, 1058},
+ {"ex", 37768, 1063}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[590, 21, 2255, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[2870, 77, 55, 1, 46, "Title",
+ CellID->509267359],
+Cell[2928, 80, 11800, 180, 64, "TutorialJumpBox"],
+Cell[14731, 262, 855, 20, 156, "Text",
+ CellID->1534169418],
+Cell[15589, 284, 508, 15, 53, "Text",
+ CellID->1157525339],
+Cell[16100, 301, 1036, 42, 52, "Text",
+ CellID->757206658],
+Cell[17139, 345, 94, 2, 32, "Text",
+ CellTags->"intro",
+ CellID->1227796187],
+Cell[17236, 349, 1747, 69, 72, "Text",
+ CellID->833014432],
+Cell[18986, 420, 111, 2, 32, "Text",
+ CellTags->"intro",
+ CellID->1006364145],
+Cell[19100, 424, 741, 30, 32, "Text",
+ CellID->571834673],
+Cell[19844, 456, 177, 4, 52, "Text",
+ CellID->4750988],
+Cell[CellGroupData[{
+Cell[20046, 464, 192, 6, 27, "Input",
+ CellID->1220639322],
+Cell[20241, 472, 254, 7, 36, "Output",
+ CellID->1760930313]
+}, Open  ]],
+Cell[20510, 482, 237, 5, 72, "Text",
+ CellID->1833132382],
+Cell[20750, 489, 559, 21, 54, "Text",
+ CellTags->"intro",
+ CellID->716203363],
+Cell[21312, 512, 114, 2, 32, "Text",
+ CellTags->"intro",
+ CellID->1566592169],
+Cell[21429, 516, 470, 13, 39, "SmallText",
+ CellTags->{"intro", "introfoot"},
+ CellID->721081683],
+Cell[CellGroupData[{
+Cell[21924, 533, 96, 2, 62, "Section",
+ CellTags->{"Load FeynCalc", "start"},
+ CellID->1726202394],
+Cell[22023, 537, 253, 7, 52, "Text",
+ CellID->846823627],
+Cell[CellGroupData[{
+Cell[22301, 548, 196, 6, 27, "Input",
+ CellID->1006438652],
+Cell[22500, 556, 232, 7, 36, "Output",
+ CellID->205843633]
+}, Open  ]],
+Cell[22747, 566, 390, 11, 72, "Text",
+ CellID->469196418],
+Cell[23140, 579, 484, 14, 91, "Text",
+ CellID->434623157],
+Cell[23627, 595, 173, 6, 32, "Text",
+ CellID->13342743],
+Cell[23803, 603, 135, 4, 27, "Input",
+ CellID->2016141554],
+Cell[23941, 609, 50, 1, 32, "Text",
+ CellID->491195527],
+Cell[23994, 612, 36, 1, 31, "Text",
+ CellID->351638376],
+Cell[24033, 615, 380, 13, 52, "Text",
+ CellID->430968534]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24450, 633, 107, 3, 62, "Section",
+ PageBreakAbove->True,
+ CellTags->"About Extras",
+ CellID->2100607586],
+Cell[24560, 638, 494, 9, 112, "Text",
+ CellTags->"About Extras",
+ CellID->953459903],
+Cell[25057, 649, 1147, 33, 64, "Text",
+ CellTags->"About Extras",
+ CellID->2108182812],
+Cell[CellGroupData[{
+Cell[26229, 686, 69, 2, 51, "Subsection",
+ CellTags->"tarcer",
+ CellID->906844505],
+Cell[26301, 690, 398, 13, 53, "Text",
+ CellID->1972678903],
+Cell[26702, 705, 120, 3, 32, "Text",
+ CellID->1513547103],
+Cell[26825, 710, 121, 4, 27, "Input",
+ CellTags->"tarcer",
+ CellID->843778896],
+Cell[26949, 716, 245, 8, 32, "Text",
+ CellID->998781867]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27231, 729, 64, 2, 51, "Subsection",
+ CellTags->"phi",
+ CellID->932055296],
+Cell[27298, 733, 501, 11, 112, "Text",
+ CellTags->"phi",
+ CellID->1893421836],
+Cell[27802, 746, 89, 2, 32, "Text",
+ CellTags->"phi",
+ CellID->528666319],
+Cell[27894, 750, 115, 4, 27, "Input",
+ CellTags->"phi",
+ CellID->798844745],
+Cell[28012, 756, 146, 5, 32, "Text",
+ CellTags->"phi",
+ CellID->1295431310],
+Cell[28161, 763, 289, 10, 32, "Text",
+ CellTags->"phi",
+ CellID->1431249758]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28487, 778, 51, 1, 51, "Subsection",
+ CellID->1026891602],
+Cell[28541, 781, 987, 29, 115, "Text",
+ CellID->1730838623],
+Cell[29531, 812, 343, 6, 92, "Text",
+ CellID->1031127518],
+Cell[29877, 820, 380, 7, 92, "Text",
+ CellID->791617764],
+Cell[30260, 829, 327, 6, 91, "Text",
+ CellID->895418169],
+Cell[30590, 837, 218, 5, 52, "Text",
+ CellID->2088550082],
+Cell[CellGroupData[{
+Cell[30833, 846, 88, 2, 27, "Input",
+ CellID->606741564],
+Cell[30924, 850, 254, 7, 36, "Output",
+ CellID->1253899115]
+}, Open  ]],
+Cell[31193, 860, 141, 6, 32, "Text",
+ CellID->1310937107],
+Cell[31337, 868, 126, 4, 27, "Input",
+ CellID->342627804],
+Cell[31466, 874, 283, 7, 72, "Text",
+ CellID->570125418],
+Cell[31752, 883, 127, 4, 27, "Input",
+ CellID->1900750623],
+Cell[31882, 889, 86, 1, 32, "Text",
+ CellID->1315560355]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32017, 896, 126, 3, 62, "Section",
+ PageBreakAbove->True,
+ CellTags->{"Example Calculations", "ex"},
+ CellID->1007300369],
+Cell[32146, 901, 111, 3, 32, "Text",
+ CellID->1268182373],
+Cell[CellGroupData[{
+Cell[32282, 908, 192, 6, 27, "Input",
+ CellID->1877395502],
+Cell[32477, 916, 253, 7, 36, "Output",
+ CellID->727521100]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[32769, 928, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

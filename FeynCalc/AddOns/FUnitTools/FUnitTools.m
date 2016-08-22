@@ -58,7 +58,7 @@ FUnitCreateUnitTests[n_String, l_List] :=
 FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
 	MapIndexed[{n <> "-ID" <> ToString[First[#2]],
 		If[OptionValue[AddMakeBoxes],
-			StringReplace[ToString[MakeBoxees[#, TraditionalForm]],
+			StringReplace[ToString[System`MakeBoxees[#, TraditionalForm]],
 			"MakeBoxees" -> "MakeBoxes"],
 			ToString[#]
 		],

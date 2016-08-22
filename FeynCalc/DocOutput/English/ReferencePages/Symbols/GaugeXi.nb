@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6095,        192]
+NotebookDataLength[      6096,        192]
 NotebookOptionsPosition[      3939,        127]
-NotebookOutlinePosition[      5834,        181]
-CellTagsIndexPosition[      5765,        176]
+NotebookOutlinePosition[      5835,        181]
+CellTagsIndexPosition[      5766,        176]
 WindowTitle->GaugeXi
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$79068], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81312], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GaugeXi", ".html"]], None}]}]},
@@ -140,7 +140,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 12, 11.667015}", 
+   "built" -> "{2016, 8, 21, 21, 20, 47.565743}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -175,7 +175,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"GaugeXi", 5654, 169}
+ {"GaugeXi", 5655, 169}
  }
 *)
 (*NotebookFileOutline

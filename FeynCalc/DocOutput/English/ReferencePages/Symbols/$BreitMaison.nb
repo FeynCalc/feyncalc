@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6712,        206]
-NotebookOptionsPosition[      4356,        139]
-NotebookOutlinePosition[      6446,        195]
-CellTagsIndexPosition[      6372,        190]
+NotebookDataLength[      6709,        206]
+NotebookOptionsPosition[      4353,        139]
+NotebookOutlinePosition[      6443,        195]
+CellTagsIndexPosition[      6369,        190]
 WindowTitle->$BreitMaison
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ BreitMaison.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$167441], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$167474], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$BreitMaison", ".html"]], None}]}]},
@@ -124,10 +124,10 @@ Cell[TextData[{
   ButtonNote->"$Larin"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["$West",
+ StyleBox[ButtonBox["West",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/$West",
-  ButtonNote->"$West"],
+  ButtonData->"paclet:FeynCalc/ref/West",
+  ButtonNote->"West"],
   FontFamily->"Verdana"],
  "."
 }], "Text",
@@ -152,7 +152,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 53.763179}", 
+   "built" -> "{2016, 8, 21, 21, 27, 0.635216}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -182,14 +182,14 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "$BreitMaison"->{
-  Cell[3797, 113, 517, 21, 70, "Text",
+  Cell[3797, 113, 514, 21, 70, "Text",
    CellTags->"$BreitMaison",
    CellID->1928344928]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"$BreitMaison", 6256, 183}
+ {"$BreitMaison", 6253, 183}
  }
 *)
 (*NotebookFileOutline
@@ -203,11 +203,11 @@ Cell[2907, 78, 592, 17, 70, "Usage",
 Cell[CellGroupData[{
 Cell[3524, 99, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3797, 113, 517, 21, 70, "Text",
+Cell[3797, 113, 514, 21, 70, "Text",
  CellTags->"$BreitMaison",
  CellID->1928344928]
 }, Open  ]],
-Cell[4329, 137, 23, 0, 70, "FooterCell"]
+Cell[4326, 137, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

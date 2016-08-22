@@ -1,14 +1,17 @@
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+(* ::Package:: *)
 
-(* :Title: Collect2 *)
 
-(* :Author: Rolf Mertig *)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: last changed: 10th Jan. 2010;  19th July 2000*)
-(* ------------------------------------------------------------------------ *)
+(* :Title: Collect															*)
 
-(* :Summary: Extension of the Mathematica Collect *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	Expansion of the Mathematica Collect						*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -33,6 +36,10 @@ of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, T
 the latter two of these cause the coefficients to be factored. The option Head (default Plus) \
 specified the function applied to the list of monomials multiplied by their coefficients.";
 
+Collect2::failmsg =
+"Error! Collect2 has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -40,19 +47,24 @@ End[]
 
 Begin["`Collect`Private`"]
 
+cl2Verbose::usage="";
+
+
 Options[Collect2] = {
 	Denominator -> False,
 	Dot -> False,
+	FCVerbose -> False,
 	Expanding -> True,
 	Factoring -> Factor,
-	IsolateNames -> False
+	IsolateFast -> False,
+	IsolateNames -> False,
+	Head->Identity
 };
 
 Options[Collect3] = {
 	Factoring -> False,
 	Head -> Plus
 };
-
 
 SetAttributes[holdForm,HoldAll];
 
@@ -62,131 +74,189 @@ Collect2[a_ == b_, y__] :=
 Collect2[x_List, y__] :=
 	Collect2[#, y]& /@ x;
 
-Collect2[x_, y_, r___Rule] :=
-	Collect2[x, {y}, r] /; Head[y]=!=List;
+Collect2[x_, y_, opts:OptionsPattern[]] :=
+	Collect2[x, {y}, opts] /; (Head[y]=!=List && !OptionQ[y]);
 
-Collect2[x_, z__, y_, r___Rule] :=
-	Collect2[x, {z,y}, r] /; (Head[y]=!=List) && (Head[y]=!=Rule);
+Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
+	Collect2[x, {z,y}, opts] /; (Head[y]=!=List && !OptionQ[y]);
 
-(* Collect2[x_, y_List, ___]  := x /; FreeQ2[x, y]; *)
+Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
+	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,mp2,cd,co,dde,
+		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
+		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso},
 
-Collect2[ expr_, vv_List,r___Rule ] :=
-	Block[{v,ru,nx,lk,fa,ih,tog,fr0,frx,lin,tv,mp,mp2,cd,i,co,ara,dde,t1,t2,
-		tim,new = 0, einss,re,compCON,ccflag = False, thc, ish, factor,exo, times},
-		{fa, ih, exo, dde} = {Factoring, IsolateNames, Expanding,
-		Denominator}/.	Join[{r}, Options[Collect2]];
+		If [OptionValue[FCVerbose]===False,
+			cl2Verbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				cl2Verbose=OptionValue[FCVerbose]
+			];
+		];
+
+		{factoring, optIsolateNames, expanding, dde, optIsolateFast} =
+			{OptionValue[Factoring], OptionValue[IsolateNames],
+			OptionValue[Expanding], OptionValue[Denominator],
+			OptionValue[IsolateFast]  };
+
+
 		Which[
-			(Dot /. {r}/.Options[Collect2]) === True,
+			OptionValue[Dot] === True,
 			times = Dot,
-			(Dot /. {r}/.Options[Collect2]) === False,
+			OptionValue[Dot] === False,
 			times = Times,
 			True,
-			times = (Dot /. {r}/.Options[Collect2])
+			times = OptionValue[Dot]
 		];
-		If[fa === True || fa === Factor2, factor = Factor2,
-			If[fa =!= False,
-				factor = fa; fa = True,
-				factor = Identity];
-		];
-		v = Select[ vv, ((Head[#] =!= Plus) && (Head[#] =!= Times) && (!NumberQ[#]))& ];
-		If[Length[v] =!= Length[Union[v]],
-			v = Union[v]
-		];
-		v = Select[ v, !FreeQ[expr, #]&];
 
-		If[Length[v] === 0,
-			re = expr,
-			tim = Timing[
-				(* nx = Operate[Hold, expr]; *)
-				nx = expr;
-				(* Hm, that's a problem, maybe *)
-				If[!FreeQ[nx, ComplexConjugate],
-					ccflag = True;
-					nx = nx /. ComplexConjugate -> compCON;
-					v = v /. ComplexConjugate -> compCON;
-				];
-
-				nx = nx/. holdForm[k_[ii_]] -> lk[k][ii];
-
-				If[ fa === False,
-					tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->ih],
-					fr0[x__] := Plus[x] /; !FreeQ2[{x}, v];
-					tog[x_]  :=
-						factor[FRH[x/.holdForm->Identity, IsolateNames->ih]];
-					frx[x__] :=
-						holdForm[Plus[x]];
-					nx = nx /. Plus -> fr0 /. fr0 -> frx
-				];
-				If[ exo =!= False,
-					FCPrint[2,"expanding. "];
-					nx  = Expand2[nx,v]
-				];
-				(* lin denotes the part free of v *)
-				lin = Select[nx + ze1 + ze2, FreeQ2[#, v]&] /. ze1 -> 0 /. ze2 -> 0;
-				nx  = nx - lin;
-				If[fa =!= False,
-					FCPrint[2, "inhomogeneous part; LeafCount = ", LeafCount[lin]];
-					lin = tog[lin]; FCPrint[2, "; factored. "]
-				];
-				tv = {}; (* tv is the list of all monomials to collect *)
-				mp[x_] := ((* "tv" is calculated as a side effect ! *)
-					If[FreeQ2[x, v],
-						x,
-						t1 = Select[x t2, !FreeQ2[#, v]&];
-						If[!MemberQ[tv, mp2[t1]],
-							(*TODO* AppendTo is probably too slow here for large expression...*)
-							AppendTo[tv, mp2[t1]]
-						];
-						(Select[x t2, FreeQ2[#, v]&]/t2) mp2[t1]
-					]);
-				nx = (mp /@ (nx + ze) ) /. ze -> 0 /. mp -> mp2;
-				FCPrint[2,"length ",nx//Length,"."];
-
-				If[dde === True,
-					(* In case of denominators containing variables to be collected *)
-					cd[x_] := ((Numerator[#]/(factor[Denominator[#]] /.
-					Plus-> (Collect2[Plus[##], v, r]&)))& @ x ) /;
-					(!FreeQ[Denominator[x], Plus]) && (!FreeQ2[Denominator[x], v])
-				];
-
-				If[Length[tv]>1, FCPrint[2, "collecting ",Length[tv], " terms."]];
-				For[ i = 1, i <= Length[tv], i++,
-					FCPrint[2, "#",i];
-					co = (*tog[*) Coefficient[ nx, tv[[i]] ] (*]*);
-					(* If[Head[co] === Plus, co = tog[einss co] ]; *)
-					co = tog[einss co];
-					nx = nx /. tv[[i]] -> 0;
-					If[ ih =!= False,
-						co = Isolate[co /. {einss:>1, lk[ka_][j_] :>
-						holdForm[ka[j]]},ara , IsolateNames -> ih];
-						If[dde =!= True,
-							new = new + ( times[ Isolate[FRH[ tv[[i]]  /.
-							lk[ka_][j_] -> holdForm[ka[j]] , IsolateNames->ih] /. mp2 -> Identity,
-							v, IsolateNames -> ih], co ] /. einss -> 1),
-							new = new + ( times[ Isolate[FRH[ tv[[i]] /.
-							lk[ka_][j_] -> holdForm[ka[j]], IsolateNames->ih] /. mp2 -> cd /.
-							cd -> Identity, v, IsolateNames -> ih], co]) /. einss -> 1
-						],
-						If[dde =!= True,
-							new = new + (times[ FRH[tv[[i]]/.holdForm->Identity, IsolateNames->ih] /.
-							mp2 -> cd /. cd -> Identity,co] /. einss->1),
-							new = new + (times[ FRH[tv[[i]]/.holdForm->Identity, IsolateNames->ih] /.
-							mp2 -> cd /. cd -> Identity,co] /. einss->1)
-						]
-					]
-				]
-			][[1]];
-			If[tim/Second > 1,
-				FCPrint[2,"."];
-				FCPrint[2, "collected. time needed = ", tim //FeynCalcForm];
+		If[factoring === True || factoring === Factor2,
+			factor = Factor2,
+			If[factoring =!= False,
+				factor = factoring; factoring = True,
+				factor = Identity
 			];
-			If[ ih =!= False,
-				lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->ih], v, IsolateNames->ih ],
-				lin = FRH[lin/.holdForm->Identity, IsolateNames->ih]];
-				re = ((nx + new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
-			If[ccflag, re = re /. compCON -> ComplexConjugate];
 		];
-		einss=1;
+
+		FCPrint[1,"Collect2: Entering Collect2.", FCDoControl->cl2Verbose];
+		FCPrint[2,"Collect2: Entering with: ", expr, FCDoControl->cl2Verbose];
+
+		monomList = Union[Select[ vv, ((Head[#] =!= Plus) && (Head[#] =!= Times) && (!NumberQ[#]))& ]];
+		monomList = Select[ monomList, !FreeQ[expr, #]&];
+
+		FCPrint[1,"Collect2: Monomials w.r.t which we will collect: ", monomList, FCDoControl->cl2Verbose];
+
+		If[Length[monomList] === 0,
+			(* The expression is free of terms in momomList*)
+			unity = 1;
+			Return[expr]
+		];
+
+		nx = expr;
+		(* Hm, that's a problem, maybe *)
+		If[!FreeQ[nx, ComplexConjugate],
+			ccflag = True;
+			nx = nx /. ComplexConjugate -> compCON;
+			monomList = monomList /. ComplexConjugate -> compCON;
+		];
+
+		nx = nx/. holdForm[k_[ii_]] -> lk[k][ii];
+
+		If[ factoring === False,
+			FCPrint[1,"Collect2: No factoring.", FCDoControl->cl2Verbose];
+			(* 	This can speed things up, if the expression contains very large sums free of
+				monomials *)
+			nx = nx /. Plus -> holdPlus /. holdPlus[x__] /; FreeQ2[{x}, monomList] :>
+				Isolate[(Plus[x]/.holdPlus -> Plus), IsolateFast -> True, IsolateNames -> tempIso] /. holdPlus -> Plus;
+
+			tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}],
+			FCPrint[1,"Collect2: Factoring with", factor, FCDoControl->cl2Verbose];
+			fr0[x__] :=
+				Plus[x] /; !FreeQ2[{x}, monomList];
+			tog[x_]  :=
+				factor[FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}]];
+			frx[x__] :=
+				holdForm[Plus[x]];
+			nx = nx /. Plus -> fr0 /. fr0 -> frx
+		];
+
+		If[ expanding =!= False,
+			time=AbsoluteTime[];
+			FCPrint[1,"Collect2: Expanding", FCDoControl->cl2Verbose];
+			nx  = Expand2[nx,monomList];
+			FCPrint[1,"Collect2: Expanding done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose]
+		];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"Collect2: Separating the part free of the monomials (linear part)", FCDoControl->cl2Verbose];
+		(* lin denotes the part free of monomList *)
+		{lin,nx} = FCSplit[nx,monomList,Expanding->False];
+		FCPrint[1,"Collect2: Separation done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
+		FCPrint[2,"Collect2: Part that contains the monomials: ", nx, FCDoControl->cl2Verbose];
+
+		If[factoring =!= False && lin=!=0,
+			time=AbsoluteTime[];
+			FCPrint[1,"Collect2: Factoring the linear part", FCDoControl->cl2Verbose];
+			lin = tog[lin];
+			FCPrint[1,"Collect2: Factoring done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
+
+		];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"Collect2: Wrapping the momomials with special heads.", FCDoControl->cl2Verbose];
+
+		nx = (Map[(SelectFree[#, monomList] mp2[SelectNotFree[#, monomList]]) &,
+				nx + null1 + null2] /. {null1 | null2 -> 0}) ;
+		tv = Cases2[nx,mp2];
+		FCPrint[1,"Collect2: Wrapping done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
+
+		FCPrint[3,"Collect2: nx: ", nx , FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: tv: ", tv , FCDoControl->cl2Verbose];
+
+		If[dde === True,
+			FCPrint[1,"Collect2: Also denominators containing variables will be collected", FCDoControl->cl2Verbose];
+			cd[x_] := ((Numerator[#]/(factor[Denominator[#]] /.
+			Plus-> (Collect2[Plus[##], monomList, opts]&)))& @ x ) /;
+			(!FreeQ[Denominator[x], Plus]) && (!FreeQ2[Denominator[x], monomList])
+		];
+
+		FCPrint[1,"Collect2: There are ", Length[tv] , " momomials to collect", FCDoControl->cl2Verbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"Collect2: Computing CoefficientArrays.", FCDoControl->cl2Verbose];
+		coeffArray = CoefficientArrays[nx,tv];
+		FCPrint[1,"Collect2: CoefficientArrays ready, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"Collect2: Collecting the monomials.", FCDoControl->cl2Verbose];
+
+		tvm = (FRH[# /.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}] /. mp2 -> cd /. cd -> OptionValue[Head])&/@tv;
+
+		FCPrint[3,"Collect2: tvm: ", tvm, FCDoControl->cl2Verbose];
+
+		If[	coeffArray[[1]]=!=0,
+			Message[Collect2::failmsg,"There is another linear part!"];
+			Abort[]
+		];
+
+		new =  Sum[Dot[coeffHead[coeffArray[[i]]] , Sequence @@ Table[tvm, {i - 1}]], {i, 2, Length[coeffArray]}];
+
+		coeffHead[li_SparseArray]:=
+			(tog[unity*#])&/@li /; optIsolateNames===False;
+
+		coeffHead[li_SparseArray]:=
+			Isolate[tog[unity*#]/. {unity:>1, lk[ka_][j_] :> holdForm[ka[j]]},
+				IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]&/@li /;optIsolateNames=!=False;
+
+		FCPrint[1,"Collect2: Done collecting the monomials, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+
+		If[	!FreeQ2[lin,monomList],
+			Message[Collect2::failmsg,"Linear part contains monomials!"];
+			Abort[]
+		];
+
+		If[ optIsolateNames =!= False,
+			lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}], IsolateNames->optIsolateNames, IsolateFast->optIsolateFast],
+			lin = FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}]
+		];
+
+		(*If[ factoring === False,
+			new = FRH[new,IsolateNames->{optIsolateNames,tempIso}]
+		];*)
+
+		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
+
+		time=AbsoluteTime[];
+
+
+		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+
+		If[ccflag,
+			re = re /. compCON -> ComplexConjugate
+		];
+
+		unity=1;
+
+		FCPrint[1,"Collect2: Leaving.", FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: Leaving with", re, FCDoControl->cl2Verbose];
+
 		re
 	];
 
@@ -195,13 +265,12 @@ Collect3[a_,b_,c_Symbol, opts___?OptionQ]:=
 
 Collect3[expr_, vars_/;Head[vars]=!=List, opts___Rule] :=
 	Collect3[expr, {vars}, opts];
-(* Collect3[expr, Cases[expr, HoldPattern[vars[___]], -1], opts]; *)
 
 Collect3[expr_, vars_List, opts___?OptionQ] :=
 	Block[{fac, hva, mli},
 		fac = Factoring/.{opts}/.Options[Collect3];
-		If[fac === True,
-				fac = Factor
+		If[	fac === True,
+			fac = Factor
 		];
 		hva = (Hold[HoldPattern][#[___]]& /@ ( Hold/@vars ) ) /. Hold[a_] :> a;
 		hva = Alternatives @@ hva;

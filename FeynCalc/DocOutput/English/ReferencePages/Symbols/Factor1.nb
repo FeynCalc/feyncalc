@@ -11,9 +11,9 @@ NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
 NotebookDataLength[     12428,        454]
-NotebookOptionsPosition[      7677,        297]
-NotebookOutlinePosition[     10810,        390]
-CellTagsIndexPosition[     10701,        384]
+NotebookOptionsPosition[      7676,        297]
+NotebookOutlinePosition[     10811,        390]
+CellTagsIndexPosition[     10702,        384]
 WindowTitle->Factor1
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$54555], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$54880], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Factor1", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1298382295],
+ CellID->1743631578],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1892667337],
+ CellID->442500656],
 
 Cell[CellGroupData[{
 
@@ -310,7 +310,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 43.405559}", 
+   "built" -> "{2016, 8, 21, 21, 18, 53.580150}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -341,50 +341,50 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3329, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1298382295]},
+   CellID->1743631578]},
  "Factor1"->{
-  Cell[3963, 124, 231, 9, 27, "Input",
+  Cell[3962, 124, 231, 9, 27, "Input",
    CellTags->"Factor1",
    CellID->106113384],
-  Cell[4197, 135, 329, 12, 36, "Output",
+  Cell[4196, 135, 329, 12, 36, "Output",
    CellTags->"Factor1",
    CellID->705307377],
-  Cell[4563, 152, 241, 8, 27, "Input",
+  Cell[4562, 152, 241, 8, 27, "Input",
    CellTags->"Factor1",
    CellID->1501862951],
-  Cell[4807, 162, 542, 20, 36, "Output",
+  Cell[4806, 162, 542, 20, 36, "Output",
    CellTags->"Factor1",
    CellID->1528620346],
-  Cell[5386, 187, 269, 10, 27, "Input",
+  Cell[5385, 187, 269, 10, 27, "Input",
    CellTags->"Factor1",
    CellID->641613489],
-  Cell[5658, 199, 282, 10, 39, "Output",
+  Cell[5657, 199, 282, 10, 39, "Output",
    CellTags->"Factor1",
    CellID->2030611853],
-  Cell[5977, 214, 125, 4, 27, "Input",
+  Cell[5976, 214, 125, 4, 27, "Input",
    CellTags->"Factor1",
    CellID->916389340],
-  Cell[6105, 220, 329, 12, 36, "Output",
+  Cell[6104, 220, 329, 12, 36, "Output",
    CellTags->"Factor1",
    CellID->865327707],
-  Cell[6471, 237, 126, 4, 27, "Input",
+  Cell[6470, 237, 126, 4, 27, "Input",
    CellTags->"Factor1",
    CellID->892191531],
-  Cell[6600, 243, 282, 10, 39, "Output",
+  Cell[6599, 243, 282, 10, 39, "Output",
    CellTags->"Factor1",
    CellID->1139945824],
-  Cell[6897, 256, 160, 5, 27, "Input",
+  Cell[6896, 256, 160, 5, 27, "Input",
    CellTags->"Factor1",
    CellID->1482315372],
-  Cell[7413, 283, 222, 9, 31, "Text",
+  Cell[7412, 283, 222, 9, 31, "Text",
    CellTags->"Factor1",
    CellID->73262209]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9497, 340},
- {"Factor1", 9631, 344}
+ {"PrimaryExamplesSection", 9498, 340},
+ {"Factor1", 9632, 344}
  }
 *)
 (*NotebookFileOutline
@@ -398,64 +398,64 @@ Cell[2875, 78, 429, 13, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3329, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1298382295],
+ CellID->1743631578],
 Cell[CellGroupData[{
-Cell[3742, 114, 196, 6, 25, "ExampleSection",
- CellID->1892667337],
+Cell[3742, 114, 195, 6, 25, "ExampleSection",
+ CellID->442500656],
 Cell[CellGroupData[{
-Cell[3963, 124, 231, 9, 27, "Input",
+Cell[3962, 124, 231, 9, 27, "Input",
  CellTags->"Factor1",
  CellID->106113384],
-Cell[4197, 135, 329, 12, 36, "Output",
+Cell[4196, 135, 329, 12, 36, "Output",
  CellTags->"Factor1",
  CellID->705307377]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4563, 152, 241, 8, 27, "Input",
+Cell[4562, 152, 241, 8, 27, "Input",
  CellTags->"Factor1",
  CellID->1501862951],
-Cell[4807, 162, 542, 20, 36, "Output",
+Cell[4806, 162, 542, 20, 36, "Output",
  CellTags->"Factor1",
  CellID->1528620346]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5386, 187, 269, 10, 27, "Input",
+Cell[5385, 187, 269, 10, 27, "Input",
  CellTags->"Factor1",
  CellID->641613489],
-Cell[5658, 199, 282, 10, 39, "Output",
+Cell[5657, 199, 282, 10, 39, "Output",
  CellTags->"Factor1",
  CellID->2030611853]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5977, 214, 125, 4, 27, "Input",
+Cell[5976, 214, 125, 4, 27, "Input",
  CellTags->"Factor1",
  CellID->916389340],
-Cell[6105, 220, 329, 12, 36, "Output",
+Cell[6104, 220, 329, 12, 36, "Output",
  CellTags->"Factor1",
  CellID->865327707]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6471, 237, 126, 4, 27, "Input",
+Cell[6470, 237, 126, 4, 27, "Input",
  CellTags->"Factor1",
  CellID->892191531],
-Cell[6600, 243, 282, 10, 39, "Output",
+Cell[6599, 243, 282, 10, 39, "Output",
  CellTags->"Factor1",
  CellID->1139945824]
 }, Open  ]],
-Cell[6897, 256, 160, 5, 27, "Input",
+Cell[6896, 256, 160, 5, 27, "Input",
  CellTags->"Factor1",
  CellID->1482315372]
 }, Open  ]],
-Cell[7072, 264, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7071, 264, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7140, 269, 270, 12, 31, "SeeAlsoSection",
+Cell[7139, 269, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7413, 283, 222, 9, 31, "Text",
+Cell[7412, 283, 222, 9, 31, "Text",
  CellTags->"Factor1",
  CellID->73262209]
 }, Open  ]],
-Cell[7650, 295, 23, 0, 70, "FooterCell"]
+Cell[7649, 295, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

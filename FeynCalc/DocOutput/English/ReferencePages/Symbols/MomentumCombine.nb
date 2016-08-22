@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16850,        611]
-NotebookOptionsPosition[     11004,        425]
-NotebookOutlinePosition[     14707,        531]
-CellTagsIndexPosition[     14588,        525]
+NotebookDataLength[     16854,        611]
+NotebookOptionsPosition[     11005,        425]
+NotebookOutlinePosition[     14710,        531]
+CellTagsIndexPosition[     14591,        525]
 WindowTitle->MomentumCombine
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ MomentumCombine.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$102419], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$103765], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/MomentumCombine", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->419754454],
+ CellID->1319816598],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1445719447],
+ CellID->1488672644],
 
 Cell[CellGroupData[{
 
@@ -438,7 +438,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 11.972329}", 
+   "built" -> "{2016, 8, 21, 21, 22, 25.966449}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -468,64 +468,64 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3410, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3410, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->419754454]},
+   CellID->1319816598]},
  "MomentumCombine"->{
-  Cell[4043, 124, 148, 4, 27, "Input",
+  Cell[4044, 124, 148, 4, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->1545747738],
-  Cell[4194, 130, 279, 9, 36, "Output",
+  Cell[4195, 130, 279, 9, 36, "Output",
    CellTags->"MomentumCombine",
    CellID->1201680776],
-  Cell[4510, 144, 320, 10, 27, "Input",
+  Cell[4511, 144, 320, 10, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->607844623],
-  Cell[4833, 156, 284, 9, 49, "Output",
+  Cell[4834, 156, 284, 9, 49, "Output",
    CellTags->"MomentumCombine",
    CellID->683220670],
-  Cell[5154, 170, 305, 10, 27, "Input",
+  Cell[5155, 170, 305, 10, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->199069763],
-  Cell[5462, 182, 958, 41, 40, "Output",
+  Cell[5463, 182, 958, 41, 40, "Output",
    CellTags->"MomentumCombine",
    CellID->1701893288],
-  Cell[6457, 228, 142, 4, 27, "Input",
+  Cell[6458, 228, 142, 4, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->316549312],
-  Cell[6602, 234, 653, 27, 41, "Output",
+  Cell[6603, 234, 653, 27, 41, "Output",
    CellTags->"MomentumCombine",
    CellID->1410863957],
-  Cell[7292, 266, 181, 6, 27, "Input",
+  Cell[7293, 266, 181, 6, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->1834428785],
-  Cell[7476, 274, 388, 12, 49, "Output",
+  Cell[7477, 274, 388, 12, 49, "Output",
    CellTags->"MomentumCombine",
    CellID->1690546936],
-  Cell[7901, 291, 188, 6, 27, "Input",
+  Cell[7902, 291, 188, 6, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->1175875424],
-  Cell[8092, 299, 859, 37, 40, "Output",
+  Cell[8093, 299, 859, 37, 40, "Output",
    CellTags->"MomentumCombine",
    CellID->130248016],
-  Cell[8988, 341, 139, 4, 27, "Input",
+  Cell[8989, 341, 139, 4, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->1928655829],
-  Cell[9130, 347, 526, 16, 67, "Output",
+  Cell[9131, 347, 526, 16, 67, "Output",
    CellTags->"MomentumCombine",
    CellID->547997503],
-  Cell[9671, 366, 133, 4, 27, "Input",
+  Cell[9672, 366, 133, 4, 27, "Input",
    CellTags->"MomentumCombine",
    CellID->1041568760],
-  Cell[10160, 392, 802, 28, 32, "Text",
+  Cell[10161, 392, 802, 28, 32, "Text",
    CellTags->"MomentumCombine",
    CellID->2131461260]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12894, 469},
- {"MomentumCombine", 13035, 473}
+ {"PrimaryExamplesSection", 12896, 469},
+ {"MomentumCombine", 13038, 473}
  }
 *)
 (*NotebookFileOutline
@@ -537,82 +537,82 @@ Cell[2864, 75, 58, 1, 42, "ObjectName",
 Cell[2925, 78, 460, 13, 97, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3410, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3410, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->419754454],
+ CellID->1319816598],
 Cell[CellGroupData[{
-Cell[3822, 114, 196, 6, 25, "ExampleSection",
- CellID->1445719447],
+Cell[3823, 114, 196, 6, 25, "ExampleSection",
+ CellID->1488672644],
 Cell[CellGroupData[{
-Cell[4043, 124, 148, 4, 27, "Input",
+Cell[4044, 124, 148, 4, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->1545747738],
-Cell[4194, 130, 279, 9, 36, "Output",
+Cell[4195, 130, 279, 9, 36, "Output",
  CellTags->"MomentumCombine",
  CellID->1201680776]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4510, 144, 320, 10, 27, "Input",
+Cell[4511, 144, 320, 10, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->607844623],
-Cell[4833, 156, 284, 9, 49, "Output",
+Cell[4834, 156, 284, 9, 49, "Output",
  CellTags->"MomentumCombine",
  CellID->683220670]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5154, 170, 305, 10, 27, "Input",
+Cell[5155, 170, 305, 10, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->199069763],
-Cell[5462, 182, 958, 41, 40, "Output",
+Cell[5463, 182, 958, 41, 40, "Output",
  CellTags->"MomentumCombine",
  CellID->1701893288]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6457, 228, 142, 4, 27, "Input",
+Cell[6458, 228, 142, 4, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->316549312],
-Cell[6602, 234, 653, 27, 41, "Output",
+Cell[6603, 234, 653, 27, 41, "Output",
  CellTags->"MomentumCombine",
  CellID->1410863957]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7292, 266, 181, 6, 27, "Input",
+Cell[7293, 266, 181, 6, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->1834428785],
-Cell[7476, 274, 388, 12, 49, "Output",
+Cell[7477, 274, 388, 12, 49, "Output",
  CellTags->"MomentumCombine",
  CellID->1690546936]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7901, 291, 188, 6, 27, "Input",
+Cell[7902, 291, 188, 6, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->1175875424],
-Cell[8092, 299, 859, 37, 40, "Output",
+Cell[8093, 299, 859, 37, 40, "Output",
  CellTags->"MomentumCombine",
  CellID->130248016]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8988, 341, 139, 4, 27, "Input",
+Cell[8989, 341, 139, 4, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->1928655829],
-Cell[9130, 347, 526, 16, 67, "Output",
+Cell[9131, 347, 526, 16, 67, "Output",
  CellTags->"MomentumCombine",
  CellID->547997503]
 }, Open  ]],
-Cell[9671, 366, 133, 4, 27, "Input",
+Cell[9672, 366, 133, 4, 27, "Input",
  CellTags->"MomentumCombine",
  CellID->1041568760]
 }, Open  ]],
-Cell[9819, 373, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9820, 373, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9887, 378, 270, 12, 31, "SeeAlsoSection",
+Cell[9888, 378, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10160, 392, 802, 28, 32, "Text",
+Cell[10161, 392, 802, 28, 32, "Text",
  CellTags->"MomentumCombine",
  CellID->2131461260]
 }, Open  ]],
-Cell[10977, 423, 23, 0, 42, "FooterCell"]
+Cell[10978, 423, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

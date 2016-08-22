@@ -3,10 +3,10 @@
 (* :Title: QCDGQiToQGiTree                                                  *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -46,23 +46,23 @@ Paint[diagsGQiToQGi, ColumnsXRows -> {3, 1}, Numbering -> None, SheetHeader->Non
 
 
 ampGQiToQGi = FCFAConvert[CreateFeynAmp[diagsGQiToQGi,Truncated -> False],IncomingMomenta->{p1,k1},OutgoingMomenta->{p2,k2},
-DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,TransversePolarizationVectors->{k1,k2}];
+DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,TransversePolarizationVectors->{k1,k2},SMP->True];
 
 
 (* ::Section:: *)
 (*Unpolarized process  g q_i -> g q_i *)
 
 
-SetMandelstam[s, t, u, p1, k1, -p2, -k2, MU, 0, MU, 0];
+SetMandelstam[s, t, u, p1, k1, -p2, -k2, SMP["m_u"], 0, SMP["m_u"], 0];
 sqAmpGQiToQGi =(1/(3*8))(ampGQiToQGi (ComplexConjugate[ampGQiToQGi]//
 		FCRenameDummyIndices))//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 		SUNNToCACF->False]&//FermionSpinSum[#,  ExtraFactor->1/2]&//Contract//ReplaceAll[#,{DiracTrace->Tr,
 		SUNN->3}]&//DoPolarizationSums[#,k1,k2,ExtraFactor->1/2]&//DoPolarizationSums[#,k2,k1]&//Simplify
 
 
-masslesssqAmpGQiToQGi = TrickMandelstam[(sqAmpGQiToQGi /. {MU -> 0})//Simplify,{s,t,u,0}]
+masslesssqAmpGQiToQGi = TrickMandelstam[(sqAmpGQiToQGi /. {SMP["m_u"] -> 0})//Simplify,{s,t,u,0}]
 
 
-masslesssqAmpGQiToQGiEllis=-(4/9)Gstrong^4 (s^2+u^2)/(s u)+Gstrong^4 (u^2+s^2)/(t^2);
+masslesssqAmpGQiToQGiEllis=-(4/9)SMP["g_s"]^4 (s^2+u^2)/(s u)+SMP["g_s"]^4 (u^2+s^2)/(t^2);
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
 			If[TrickMandelstam[Simplify[masslesssqAmpGQiToQGiEllis-masslesssqAmpGQiToQGi],{s,t,u,0}]===0, "CORRECT.", "!!! WRONG !!!"]];

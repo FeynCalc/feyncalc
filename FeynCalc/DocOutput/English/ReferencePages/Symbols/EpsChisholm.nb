@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12816,        461]
+NotebookDataLength[     12819,        461]
 NotebookOptionsPosition[      9250,        351]
-NotebookOutlinePosition[     11843,        424]
-CellTagsIndexPosition[     11728,        418]
+NotebookOutlinePosition[     11846,        424]
+CellTagsIndexPosition[     11731,        418]
 WindowTitle->EpsChisholm
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ EpsChisholm.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48112], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48713], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/EpsChisholm", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1060868426],
+ CellID->1704552531],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->378451299],
+ CellID->847503033],
 
 Cell[CellGroupData[{
 
@@ -364,7 +364,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 5.486106}", 
+   "built" -> "{2016, 8, 21, 21, 18, 27.526990}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -396,7 +396,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3372, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1060868426]},
+   CellID->1704552531]},
  "EpsChisholm"->{
   Cell[4005, 124, 227, 7, 27, "Input",
    CellTags->"EpsChisholm",
@@ -417,8 +417,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11107, 395},
- {"EpsChisholm", 11245, 399}
+ {"PrimaryExamplesSection", 11110, 395},
+ {"EpsChisholm", 11248, 399}
  }
 *)
 (*NotebookFileOutline
@@ -432,10 +432,10 @@ Cell[2900, 78, 447, 13, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3372, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1060868426],
+ CellID->1704552531],
 Cell[CellGroupData[{
 Cell[3785, 114, 195, 6, 25, "ExampleSection",
- CellID->378451299],
+ CellID->847503033],
 Cell[CellGroupData[{
 Cell[4005, 124, 227, 7, 27, "Input",
  CellTags->"EpsChisholm",

@@ -130,6 +130,11 @@ compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times), opts___?OptionQ] :=
 			If[ !FreeQ[nx, SUNTF],
 				nx = nx /.{SUNTF[{a__},b_,c_]:> SUNTF[Reverse[{a}], c, b] }
 			];
+
+			If[ !FreeQ[nx, Eps],
+				nx = nx /. Eps[a__] :> Conjugate[$LeviCivitaSign]/$LeviCivitaSign Eps[a]
+			];
+
 			nx = nx /. DiracGamma[a__]:>
 			DOT[oone, DiracGamma[a]](*Added 28/2-2001 by F.Orellana - see above*)/;
 			FreeQ[{5,6,7},Evaluate[{a}[[1]]]]/.

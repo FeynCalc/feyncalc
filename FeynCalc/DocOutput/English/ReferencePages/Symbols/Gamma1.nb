@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6262,        197]
+NotebookDataLength[      6263,        197]
 NotebookOptionsPosition[      4059,        131]
-NotebookOutlinePosition[      6003,        186]
-CellTagsIndexPosition[      5935,        181]
+NotebookOutlinePosition[      6004,        186]
+CellTagsIndexPosition[      5936,        181]
 WindowTitle->Gamma1
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76047], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78567], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Gamma1",
              ".html"]], None}]}]},
@@ -144,7 +144,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 47.538880}", 
+   "built" -> "{2016, 8, 21, 21, 20, 36.339476}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -180,7 +180,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Gamma1", 5826, 174}
+ {"Gamma1", 5827, 174}
  }
 *)
 (*NotebookFileOutline

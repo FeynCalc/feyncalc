@@ -1,0 +1,88 @@
+(* :Title: FCTraceExpand.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCTraceExpand					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstFCTraceExpand = ({
+{"fcstFCTraceExpand-ID1", "FCTraceExpand[0]", "0"},
+{"fcstFCTraceExpand-ID2", "FCTraceExpand[a]", "a"},
+{"fcstFCTraceExpand-ID3", "FCTraceExpand[DiracTrace[GA[i]]]",
+"DiracTrace[DiracGamma[LorentzIndex[i]]]"},
+{"fcstFCTraceExpand-ID4", "FCTraceExpand[DiracTrace[GA[i]+GA[j]]]",
+"DiracTrace[DiracGamma[LorentzIndex[i]]] + \
+DiracTrace[DiracGamma[LorentzIndex[j]]]"},
+{"fcstFCTraceExpand-ID5", "FCTraceExpand[DiracTrace[GS[p]]]",
+"DiracTrace[DiracGamma[Momentum[p]]]"},
+{"fcstFCTraceExpand-ID6", "FCTraceExpand[DiracTrace[GS[p+b]],DiracGammaExpand->False]",
+"DiracTrace[DiracGamma[Momentum[b + p]]]"},
+{"fcstFCTraceExpand-ID7",
+"FCTraceExpand[DiracTrace[GA[i,i]+GA[j,j]]]",
+"DiracTrace[DiracGamma[LorentzIndex[i]] . \
+DiracGamma[LorentzIndex[i]]] + DiracTrace[DiracGamma[LorentzIndex[j]] \
+. DiracGamma[LorentzIndex[j]]]"},
+{"fcstFCTraceExpand-ID8",
+"FCTraceExpand[
+DiracTrace[GA[i, i] + GA[j, j].DiracTrace[GA[a] + GA[b]]]] // FCE",
+"DiracTrace[GA[i].GA[i]] + DiracTrace[GA[j].GA[j]] DiracTrace[GA[a]] +
+DiracTrace[GA[j].GA[j]] DiracTrace[GA[b]]"},
+{"fcstFCTraceExpand-ID9",
+"FCTraceExpand[
+DiracTrace[GA[i, i] + GA[j, j] DiracTrace[GA[a] + GA[b]]]] // FCE",
+"DiracTrace[GA[i].GA[i]] + DiracTrace[GA[j].GA[j]] DiracTrace[GA[a]] +
+DiracTrace[GA[j].GA[j]] DiracTrace[GA[b]]"},
+{"fcstFCTraceExpand-ID10",
+"FCTraceExpand[
+DiracTrace[GA[i, i] +GA[j, j] DiracTrace[GA[a] + GA[b] DiracTrace[GA[x]]]]] // FCE",
+"DiracTrace[GA[i].GA[i]] + DiracTrace[GA[j].GA[j]] DiracTrace[GA[a]] +
+DiracTrace[GA[j].GA[j]] DiracTrace[GA[b]] DiracTrace[GA[x]]"},
+{"fcstFCTraceExpand-ID11",
+"FCTraceExpand[SUNTrace[SUNT[a,b,c]+SUNT[c,d,e]]]",
+"SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . \
+SUNT[SUNIndex[c]]] + SUNTrace[SUNT[SUNIndex[c]] . SUNT[SUNIndex[d]] . \
+SUNT[SUNIndex[e]]]"},
+{"fcstFCTraceExpand-ID12",
+"FCTraceExpand[SUNTrace[SUNT[a,b,c]+SUNT[c,d,e]SUNTrace[SUNT[i,j,k]\
++SUNT[k,l,m]]]]",
+"SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . \
+SUNT[SUNIndex[c]]] + SUNTrace[SUNT[SUNIndex[c]] . SUNT[SUNIndex[d]] . \
+SUNT[SUNIndex[e]]]*SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[j]] . \
+SUNT[SUNIndex[k]]] + SUNTrace[SUNT[SUNIndex[c]] . SUNT[SUNIndex[d]] . \
+SUNT[SUNIndex[e]]]*SUNTrace[SUNT[SUNIndex[k]] . SUNT[SUNIndex[l]] . \
+SUNT[SUNIndex[m]]]"},
+{"fcstFCTraceExpand-ID13",
+"FCTraceExpand[DiracTrace[GS[x]+GS[y]]+DiracTrace[GS[y]+GS[z]],\
+Momentum\[Rule]{z}]",
+"DiracTrace[DiracGamma[Momentum[y]]] + \
+DiracTrace[DiracGamma[Momentum[x]] + DiracGamma[Momentum[y]]] + \
+DiracTrace[DiracGamma[Momentum[z]]]"},
+{"fcstFCTraceExpand-ID14",
+"FCTraceExpand[DiracTrace[GS[x] + GS[y]], DiracTrace -> False]",
+"DiracTrace[DiracGamma[Momentum[x]] + DiracGamma[Momentum[y]]]"},
+{"fcstFCTraceExpand-ID15",
+"DiracTrace[GSD[k+p].GA[5].GSD[l-p].GAD[nu].GSD[l].GAD[la].GSD[k+l]]//FCTraceExpand//FCE",
+"DiracTrace[GSD[k].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[k]] +
+DiracTrace[GSD[k].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[l]] -
+DiracTrace[GSD[k].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[k]] -
+DiracTrace[GSD[k].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]] +
+DiracTrace[GSD[p].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[k]] +
+DiracTrace[GSD[p].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[l]] -
+DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[k]] -
+DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]]"},
+{"fcstFCTraceExpand-ID16",
+"DiracTrace[((GSD[k + p] + M).GA[5].GSD[l - p].GAD[nu].(GSD[l] +
+M).GAD[la].GSD[k + l] + (GSD[k1 + p1] + M).GA[6].GSD[l1 -
+p1].GAD[nu].(GSD[l] + M).GAD[la].GSD[k1 + l1]).(GSD[x] + M)] //
+FCTraceExpand[#, DiracGammaExpand -> False,
+PreservePropagatorStructures -> True] & // FCE",
+"DiracTrace[(M + GSD[k + p]).GA[5].GSD[l - p].GAD[nu].(M + GSD[l]).GAD[la].GSD[k +
+l].(M + GSD[x])] + DiracTrace[(M + GSD[k1 + p1]).GA[6].GSD[l1 - p1].GAD[nu].(M +
+GSD[l]).GAD[la].GSD[k1 + l1].(M + GSD[x])]"}
+})

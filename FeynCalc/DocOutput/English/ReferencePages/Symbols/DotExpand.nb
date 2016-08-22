@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12849,        442]
-NotebookOptionsPosition[      8673,        308]
-NotebookOutlinePosition[     11524,        391]
-CellTagsIndexPosition[     11411,        385]
+NotebookDataLength[     12856,        442]
+NotebookOptionsPosition[      8675,        308]
+NotebookOutlinePosition[     11529,        391]
+CellTagsIndexPosition[     11416,        385]
 WindowTitle->DotExpand
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45701], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46302], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DotExpand", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->211802266],
+ CellID->2006956772],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->718535142],
+ CellID->1248977172],
 
 Cell[CellGroupData[{
 
@@ -321,7 +321,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 56.158138}", 
+   "built" -> "{2016, 8, 21, 21, 18, 17.990763}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -349,43 +349,43 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3288, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3288, 94, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->211802266]},
+   CellID->2006956772]},
  "DotExpand"->{
-  Cell[3920, 123, 331, 11, 27, "Input",
+  Cell[3922, 123, 331, 11, 27, "Input",
    CellTags->"DotExpand",
    CellID->407288908],
-  Cell[4254, 136, 610, 17, 36, "Output",
+  Cell[4256, 136, 610, 17, 36, "Output",
    CellTags->"DotExpand",
    CellID->887725401],
-  Cell[4879, 156, 248, 8, 27, "Input",
+  Cell[4881, 156, 248, 8, 27, "Input",
    CellTags->"DotExpand",
    CellID->1021626920],
-  Cell[5152, 168, 331, 11, 27, "Input",
+  Cell[5154, 168, 331, 11, 27, "Input",
    CellTags->"DotExpand",
    CellID->587871772],
-  Cell[5486, 181, 744, 26, 36, "Output",
+  Cell[5488, 181, 744, 26, 36, "Output",
    CellTags->"DotExpand",
    CellID->70533327],
-  Cell[6245, 210, 250, 8, 27, "Input",
+  Cell[6247, 210, 250, 8, 27, "Input",
    CellTags->"DotExpand",
    CellID->1926968700],
-  Cell[6520, 222, 332, 11, 27, "Input",
+  Cell[6522, 222, 332, 11, 27, "Input",
    CellTags->"DotExpand",
    CellID->1551070412],
-  Cell[6855, 235, 610, 17, 36, "Output",
+  Cell[6857, 235, 610, 17, 36, "Output",
    CellTags->"DotExpand",
    CellID->283503340],
-  Cell[7833, 275, 798, 28, 32, "Text",
+  Cell[7835, 275, 798, 28, 32, "Text",
    CellTags->"DotExpand",
    CellID->631413415]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10449, 350},
- {"DotExpand", 10584, 354}
+ {"PrimaryExamplesSection", 10453, 350},
+ {"DotExpand", 10589, 354}
  }
 *)
 (*NotebookFileOutline
@@ -397,53 +397,53 @@ Cell[2832, 75, 52, 1, 42, "ObjectName",
 Cell[2887, 78, 376, 12, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3288, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3288, 94, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->211802266],
+ CellID->2006956772],
 Cell[CellGroupData[{
-Cell[3700, 113, 195, 6, 25, "ExampleSection",
- CellID->718535142],
+Cell[3701, 113, 196, 6, 25, "ExampleSection",
+ CellID->1248977172],
 Cell[CellGroupData[{
-Cell[3920, 123, 331, 11, 27, "Input",
+Cell[3922, 123, 331, 11, 27, "Input",
  CellTags->"DotExpand",
  CellID->407288908],
-Cell[4254, 136, 610, 17, 36, "Output",
+Cell[4256, 136, 610, 17, 36, "Output",
  CellTags->"DotExpand",
  CellID->887725401]
 }, Open  ]],
-Cell[4879, 156, 248, 8, 27, "Input",
+Cell[4881, 156, 248, 8, 27, "Input",
  CellTags->"DotExpand",
  CellID->1021626920],
 Cell[CellGroupData[{
-Cell[5152, 168, 331, 11, 27, "Input",
+Cell[5154, 168, 331, 11, 27, "Input",
  CellTags->"DotExpand",
  CellID->587871772],
-Cell[5486, 181, 744, 26, 36, "Output",
+Cell[5488, 181, 744, 26, 36, "Output",
  CellTags->"DotExpand",
  CellID->70533327]
 }, Open  ]],
-Cell[6245, 210, 250, 8, 27, "Input",
+Cell[6247, 210, 250, 8, 27, "Input",
  CellTags->"DotExpand",
  CellID->1926968700],
 Cell[CellGroupData[{
-Cell[6520, 222, 332, 11, 27, "Input",
+Cell[6522, 222, 332, 11, 27, "Input",
  CellTags->"DotExpand",
  CellID->1551070412],
-Cell[6855, 235, 610, 17, 36, "Output",
+Cell[6857, 235, 610, 17, 36, "Output",
  CellTags->"DotExpand",
  CellID->283503340]
 }, Open  ]]
 }, Open  ]],
-Cell[7492, 256, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7494, 256, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7560, 261, 270, 12, 31, "SeeAlsoSection",
+Cell[7562, 261, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7833, 275, 798, 28, 32, "Text",
+Cell[7835, 275, 798, 28, 32, "Text",
  CellTags->"DotExpand",
  CellID->631413415]
 }, Open  ]],
-Cell[8646, 306, 23, 0, 42, "FooterCell"]
+Cell[8648, 306, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

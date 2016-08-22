@@ -1,0 +1,34 @@
+
+
+(* :Title: TarcerToFC.test                                   		            *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for TarcerToFC			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstTarcerToFC =
+
+({
+{"fcstTarcerToFC-ID1",
+"TarcerToFC[Tarcer`TFI[D,Pair[Momentum[p,D],Momentum[p,D]],{0,0,3,\
+2,0},{{4,0},{2,0},{1,0},{0,0},{1,0}}],{q1,q2}]//FCE",
+"FAD[q1, q1, q1, q1, q2, q2, -p + q1, q1 - q2]*SPD[p, q1]^3*SPD[p, \
+q2]^2"},
+{"fcstTarcerToFC-ID2",
+"TarcerToFC[Tarcer`TJI[D, Pair[Momentum[p, D], Momentum[p, D]], \
+{{1, 0}, {1, 0}, {1, 0}}],{q1,q2}]//FCE", "FAD[q1, q1 - q2, -p + q2]"},
+{"fcstTarcerToFC-ID3",
+"TarcerToFC[Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}],{q1,q2}]//FCE",
+"FAD[q1, -pp + q1]"},
+{"fcstTarcerToFC-ID4",
+"TarcerToFC[Tarcer`TAI[D, 0, {{1, m}}],{q1,q2}]//FCE",
+"FAD[{q1, m}]"}
+});
+

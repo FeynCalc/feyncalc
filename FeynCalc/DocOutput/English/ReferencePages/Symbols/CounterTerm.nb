@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10335,        337]
-NotebookOptionsPosition[      7112,        241]
-NotebookOutlinePosition[      9567,        308]
-CellTagsIndexPosition[      9454,        302]
+NotebookDataLength[     10340,        337]
+NotebookOptionsPosition[      7113,        241]
+NotebookOutlinePosition[      9571,        308]
+CellTagsIndexPosition[      9458,        302]
 WindowTitle->CounterTerm
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ CounterTerm.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31073], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32134], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CounterTerm", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->409467507],
+ CellID->1082407525],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->278281717],
+ CellID->460002954],
 
 Cell[CellGroupData[{
 
@@ -254,7 +254,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 36.573632}", 
+   "built" -> "{2016, 8, 21, 21, 17, 17.175146}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -284,25 +284,25 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3420, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3420, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->409467507]},
+   CellID->1082407525]},
  "CounterTerm"->{
-  Cell[4052, 124, 135, 4, 27, "Input",
+  Cell[4053, 124, 135, 4, 27, "Input",
    CellTags->"CounterTerm",
    CellID->1995023941],
-  Cell[4190, 130, 1739, 56, 112, "Output",
+  Cell[4191, 130, 1739, 56, 112, "Output",
    CellTags->"CounterTerm",
    CellID->1407493113],
-  Cell[6297, 209, 773, 27, 32, "Text",
+  Cell[6298, 209, 773, 27, 32, "Text",
    CellTags->"CounterTerm",
    CellID->257706146]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9017, 285},
- {"CounterTerm", 9154, 289}
+ {"PrimaryExamplesSection", 9020, 285},
+ {"CounterTerm", 9158, 289}
  }
 *)
 (*NotebookFileOutline
@@ -314,31 +314,31 @@ Cell[2843, 75, 54, 1, 42, "ObjectName",
 Cell[2900, 78, 495, 13, 97, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3420, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3420, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->409467507],
+ CellID->1082407525],
 Cell[CellGroupData[{
-Cell[3832, 114, 195, 6, 25, "ExampleSection",
- CellID->278281717],
+Cell[3833, 114, 195, 6, 25, "ExampleSection",
+ CellID->460002954],
 Cell[CellGroupData[{
-Cell[4052, 124, 135, 4, 27, "Input",
+Cell[4053, 124, 135, 4, 27, "Input",
  CellTags->"CounterTerm",
  CellID->1995023941],
-Cell[4190, 130, 1739, 56, 112, "Output",
+Cell[4191, 130, 1739, 56, 112, "Output",
  CellTags->"CounterTerm",
  CellID->1407493113]
 }, Open  ]]
 }, Open  ]],
-Cell[5956, 190, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5957, 190, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6024, 195, 270, 12, 31, "SeeAlsoSection",
+Cell[6025, 195, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6297, 209, 773, 27, 32, "Text",
+Cell[6298, 209, 773, 27, 32, "Text",
  CellTags->"CounterTerm",
  CellID->257706146]
 }, Open  ]],
-Cell[7085, 239, 23, 0, 42, "FooterCell"]
+Cell[7086, 239, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

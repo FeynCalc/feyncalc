@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13099,        460]
-NotebookOptionsPosition[      8927,        323]
-NotebookOutlinePosition[     11762,        407]
-CellTagsIndexPosition[     11652,        401]
+NotebookDataLength[     13469,        468]
+NotebookOptionsPosition[      9187,        330]
+NotebookOutlinePosition[     12131,        415]
+CellTagsIndexPosition[     12021,        409]
 WindowTitle->Apart2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$17807], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18704], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Apart2",
              ".html"]], None}]}]},
@@ -80,8 +80,9 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"Apart2", "[", "expr", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "partial fractions FeynAmpDenominators (and FAD's)."
+     " \[LineSeparator]partial fractions very simple 1-loop integrals of the \
+form 1/[(q^2-m1^2)(q^2-m2^2)]. Since FeynCalc 9 this function is deprecated. \
+Please use ApartFF instead."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -107,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2107633418],
+ CellID->1089764331],
 
 Cell[CellGroupData[{
 
@@ -117,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->425919476],
+ CellID->1867734952],
 
 Cell[CellGroupData[{
 
@@ -313,6 +314,12 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator",
   ButtonNote->"FeynAmpDenominator"],
   FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ApartFF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ApartFF",
+  ButtonNote->"ApartFF"],
+  FontFamily->"Verdana"],
  "."
 }], "Text",
  CellTags->"Apart2",
@@ -336,16 +343,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 6, 31.934512}", 
+   "built" -> "{2016, 8, 21, 21, 16, 18.319132}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "Apart2[expr] partial fractions FeynAmpDenominators (and FAD's).", 
-    "synonyms" -> {}, "title" -> "Apart2", "titlemodifier" -> "", 
-    "windowtitle" -> "Apart2", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Apart2"}, "SearchTextTranslated" -> ""},
+    "Apart2[expr] partial fractions very simple 1-loop integrals of the form \
+1/[(q^2-m1^2)(q^2-m2^2)]. Since FeynCalc 9 this function is deprecated. \
+Please use ApartFF instead.", "synonyms" -> {}, "title" -> "Apart2", 
+    "titlemodifier" -> "", "windowtitle" -> "Apart2", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Apart2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -365,43 +373,43 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3288, 94, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3391, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2107633418]},
+   CellID->1089764331]},
  "Apart2"->{
-  Cell[3921, 123, 130, 4, 27, "Input",
+  Cell[4025, 124, 130, 4, 27, "Input",
    CellTags->"Apart2",
    CellID->1571464480],
-  Cell[4054, 129, 362, 12, 36, "Output",
+  Cell[4158, 130, 362, 12, 36, "Output",
    CellTags->"Apart2",
    CellID->1842118848],
-  Cell[4453, 146, 276, 10, 27, "Input",
+  Cell[4557, 147, 276, 10, 27, "Input",
    CellTags->"Apart2",
    CellID->1580962822],
-  Cell[4732, 158, 1296, 34, 69, "Output",
+  Cell[4836, 159, 1296, 34, 69, "Output",
    CellTags->"Apart2",
    CellID->1281611536],
-  Cell[6065, 197, 123, 4, 27, "Input",
+  Cell[6169, 198, 123, 4, 27, "Input",
    CellTags->"Apart2",
    CellID->867958772],
-  Cell[6191, 203, 1103, 42, 82, "Output",
+  Cell[6295, 204, 1103, 42, 82, "Output",
    CellTags->"Apart2",
    CellID->496976710],
-  Cell[7331, 250, 159, 5, 27, "Input",
+  Cell[7435, 251, 159, 5, 27, "Input",
    CellTags->"Apart2",
    CellID->168515472],
-  Cell[7493, 257, 624, 23, 74, "Output",
+  Cell[7597, 258, 624, 23, 74, "Output",
    CellTags->"Apart2",
    CellID->638625530],
-  Cell[8485, 303, 400, 15, 70, "Text",
+  Cell[8589, 304, 556, 21, 70, "Text",
    CellTags->"Apart2",
    CellID->1960323984]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10714, 366},
- {"Apart2", 10847, 370}
+ {"PrimaryExamplesSection", 11083, 374},
+ {"Apart2", 11216, 378}
  }
 *)
 (*NotebookFileOutline
@@ -410,58 +418,58 @@ Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
  CellID->1],
 Cell[2817, 75, 49, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2869, 78, 394, 12, 83, "Usage",
+Cell[2869, 78, 497, 13, 98, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3288, 94, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3391, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2107633418],
+ CellID->1089764331],
 Cell[CellGroupData[{
-Cell[3701, 113, 195, 6, 25, "ExampleSection",
- CellID->425919476],
+Cell[3804, 114, 196, 6, 25, "ExampleSection",
+ CellID->1867734952],
 Cell[CellGroupData[{
-Cell[3921, 123, 130, 4, 27, "Input",
+Cell[4025, 124, 130, 4, 27, "Input",
  CellTags->"Apart2",
  CellID->1571464480],
-Cell[4054, 129, 362, 12, 36, "Output",
+Cell[4158, 130, 362, 12, 36, "Output",
  CellTags->"Apart2",
  CellID->1842118848]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4453, 146, 276, 10, 27, "Input",
+Cell[4557, 147, 276, 10, 27, "Input",
  CellTags->"Apart2",
  CellID->1580962822],
-Cell[4732, 158, 1296, 34, 69, "Output",
+Cell[4836, 159, 1296, 34, 69, "Output",
  CellTags->"Apart2",
  CellID->1281611536]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6065, 197, 123, 4, 27, "Input",
+Cell[6169, 198, 123, 4, 27, "Input",
  CellTags->"Apart2",
  CellID->867958772],
-Cell[6191, 203, 1103, 42, 82, "Output",
+Cell[6295, 204, 1103, 42, 82, "Output",
  CellTags->"Apart2",
  CellID->496976710]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7331, 250, 159, 5, 27, "Input",
+Cell[7435, 251, 159, 5, 27, "Input",
  CellTags->"Apart2",
  CellID->168515472],
-Cell[7493, 257, 624, 23, 74, "Output",
+Cell[7597, 258, 624, 23, 74, "Output",
  CellTags->"Apart2",
  CellID->638625530]
 }, Open  ]]
 }, Open  ]],
-Cell[8144, 284, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8248, 285, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8212, 289, 270, 12, 31, "SeeAlsoSection",
+Cell[8316, 290, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8485, 303, 400, 15, 70, "Text",
+Cell[8589, 304, 556, 21, 70, "Text",
  CellTags->"Apart2",
  CellID->1960323984]
 }, Open  ]],
-Cell[8900, 321, 23, 0, 70, "FooterCell"]
+Cell[9160, 328, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

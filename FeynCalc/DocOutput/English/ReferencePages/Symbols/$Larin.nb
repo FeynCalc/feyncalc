@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10220,        323]
-NotebookOptionsPosition[      6342,        214]
-NotebookOutlinePosition[      9379,        291]
-CellTagsIndexPosition[      9271,        285]
+NotebookDataLength[     10223,        324]
+NotebookOptionsPosition[      6342,        215]
+NotebookOutlinePosition[      9381,        292]
+CellTagsIndexPosition[      9273,        286]
 WindowTitle->$Larin
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170352], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170198], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$Larin",
              ".html"]], None}]}]},
@@ -133,7 +133,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1471140951],
 
 Cell[TextData[{
  "Basic Examples",
@@ -141,7 +141,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1341170645],
+ CellID->1585615479],
 
 Cell[CellGroupData[{
 
@@ -186,26 +186,27 @@ Cell[TextData[{
  WholeCellGroupOpener->True,
  CellID->1255426704],
 
+Cell[RawData["\<\
 Cell[TextData[{
- StyleBox[ButtonBox["Tr",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Tr",
-  ButtonNote->"Tr"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["$BreitMaison",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/$BreitMaison",
-  ButtonNote->"$BreitMaison"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["$West",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/$West",
-  ButtonNote->"$West"],
-  FontFamily->"Verdana"],
- "."
-}], "Text",
+ ButtonBox[\"Tr\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/Tr\",
+  ButtonNote->\"Tr\"],
+ \", \",
+ ButtonBox[\"$BreitMaison\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/$BreitMaison\",
+  ButtonNote->\"$BreitMaison\"],
+ \", \",
+ ButtonBox[\"West\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/West\",
+  ButtonNote->\"West\"],
+ \".\"
+}], \"Text\",
+ CellTags->\"$Larin\",
+ CellID->181403197]\
+\>"], "Text",
  CellTags->"$Larin",
  CellID->181403197]
 }, Open  ]],
@@ -227,7 +228,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 20, 12.975920}", 
+   "built" -> "{2016, 8, 21, 21, 27, 12.606587}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -266,7 +267,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4381, 120, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1587745140]},
+   CellID->1471140951]},
  "$Larin"->{
   Cell[4993, 147, 75, 2, 35, "Subsubsection",
    CellTags->"$Larin",
@@ -277,15 +278,15 @@ CellTagsIndex->{
   Cell[5193, 158, 211, 7, 36, "Output",
    CellTags->"$Larin",
    CellID->1660409352],
-  Cell[5772, 188, 528, 21, 31, "Text",
+  Cell[5772, 188, 528, 22, 311, "Text",
    CellTags->"$Larin",
    CellID->181403197]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8763, 265},
- {"$Larin", 8897, 269}
+ {"PrimaryExamplesSection", 8764, 266},
+ {"$Larin", 8898, 270}
  }
 *)
 (*NotebookFileOutline
@@ -299,9 +300,9 @@ Cell[2870, 78, 1486, 38, 180, "Usage",
 Cell[CellGroupData[{
 Cell[4381, 120, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1471140951],
 Cell[4772, 137, 196, 6, 25, "ExampleSection",
- CellID->1341170645],
+ CellID->1585615479],
 Cell[CellGroupData[{
 Cell[4993, 147, 75, 2, 35, "Subsubsection",
  CellTags->"$Larin",
@@ -320,11 +321,11 @@ Cell[5419, 168, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[5499, 174, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5772, 188, 528, 21, 31, "Text",
+Cell[5772, 188, 528, 22, 311, "Text",
  CellTags->"$Larin",
  CellID->181403197]
 }, Open  ]],
-Cell[6315, 212, 23, 0, 42, "FooterCell"]
+Cell[6315, 213, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

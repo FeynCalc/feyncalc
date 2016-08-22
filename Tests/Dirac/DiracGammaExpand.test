@@ -23,8 +23,8 @@ Tests`Dirac`fcstDiracGammaExpand = {
 {"fcstDiracGammaExpand-ID4","DiracGammaExpand[GS[a + b].GS[c + d], Momentum -> All] // FCE",
 	"(GS[a] + GS[b]).(GS[c] + GS[d])"},
 {"fcstDiracGammaExpand-ID5","DiracGammaExpand[
-  DiracGamma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 GS[a] + c (GS[b] + GS[d]) + GS[e]"},
-{"fcstDiracGammaExpand-ID1","DiracGammaExpand[DiracGamma[5 Momentum[a, D] + 
+DiracGamma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 GS[a] + c (GS[b] + GS[d]) + GS[e]"},
+{"fcstDiracGammaExpand-ID6","DiracGammaExpand[DiracGamma[5 Momentum[a, D] +
 	c Momentum[b + d, D] + Momentum[e, D], D]] // FCE",
-	"5 GSD[a] + c GSD[b] + c GSD[d] + GSD[e]"}  
- };
+	"5*GSD[a] + c*(GSD[b] + GSD[d]) + GSD[e]"}
+};

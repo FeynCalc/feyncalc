@@ -34,7 +34,7 @@ DeclareNonCommutative[Twist2CounterOperator];
 FUDGESIGN = (-1);
 
 Options[Twist2CounterOperator] =
-{ CouplingConstant -> Gstrong,
+{ CouplingConstant -> SMP["g_s"],
 	Dimension -> D, Polarization -> 0, OPESumExplicit -> False
 };
 
@@ -105,7 +105,7 @@ Twist2CounterOperator[p1_, pe3_, {_, mu_, a_}, 1, opt___Rule] :=
 					),dim]
 									,
 					pol === 2,
-		ChangeDimension[ FUDGESIGN count1[p1,p3,mu,a,Gstrong],dim],
+		ChangeDimension[ FUDGESIGN count1[p1,p3,mu,a,SMP["g_s"]],dim],
 					pol === 1,
 		ChangeDimension[
 		FUDGESIGN*(
@@ -365,7 +365,7 @@ Twist2CounterOperator[p_, mu_, nu_, a_, b_, 6, opt___Rule] :=
 
 pc6[ p_, mu_, nu_, a_, b_, _] :=
 	(
-	(2*I*(1 - (-1)^OPEm)*CA*Gstrong^2*Sn*
+	(2*I*(1 - (-1)^OPEm)*CA*SMP["g_s"]^2*Sn*
 	Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[OPEDelta], Momentum[p]]*
 	Pair[Momentum[OPEDelta], Momentum[p]]^(-1 + OPEm)*
 	((1 + OPEm + 2*EulerGamma*OPEm - OPEm^2 + 2*EulerGamma*OPEm^2 +
@@ -706,7 +706,7 @@ Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  pe3_, mu3_, a3_,
 		((1+OPEm)*Power2[SO[p1],-1+OPEm]*SO[p3]*SP[p3,p3])/
 		((1-OPEm^2)*(SO[p1]-SO[p3])^3)))*
 		SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]])/Epsilon+
-		(I*FCGV["ALIEN"]*CA*Gstrong^3*Sn*(1+Power2[-1,OPEm])*
+		(I*FCGV["ALIEN"]*CA*SMP["g_s"]^3*Sn*(1+Power2[-1,OPEm])*
 		(FV[OPEDelta,mu1]*FV[OPEDelta,mu2]*FV[p1,mu3]*
 		OPESum[{OPEi,0,-3+OPEm}]*
 		(-(Power2[-1,OPEi]*Power2[1-x,1+OPEi]*
@@ -1366,7 +1366,7 @@ Twist2CounterOperator[p1_, 41, opt___Rule] :=
 (* C42 *)
 (* Count42; p1,  p2, p3 incoming; p1: fermion*)
 uc42[p1_, p2_, p3_, mu_, a_, coup_] :=
-	-( (-2*CA*Gstrong^3*Sn*SUNT[a]*FV[OPEDelta, mu]*GS[OPEDelta]*
+	-( (-2*CA*SMP["g_s"]^3*Sn*SUNT[a]*FV[OPEDelta, mu]*GS[OPEDelta]*
 			(SO[p1]^OPEm*SO[p2] + (-1)^OPEm*SO[p1]*SO[p2]^OPEm))/
 		(Epsilon*OPEm*(1 + OPEm)*SO[p1]*SO[p2]*(SO[p1] + SO[p2]))
 		);
@@ -1387,7 +1387,7 @@ Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 42, opt___Rule] :=
 (* C43 *)
 (* Count43  p2 outgoing *)
 uc43[p1_, p2_, p3_, mu_, a_, coup_] :=
-	-(-2*(CA - 2*CF)*Gstrong^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
+	-(-2*(CA - 2*CF)*SMP["g_s"]^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
 			(SO[p1]^(1 + OPEm) - SO[p1]*(SO[p1] - SO[p2])^OPEm -
 				SO[p1]^OPEm*SO[p2])*SUNT[a])/
 		(Epsilon*OPEm*(1 + OPEm)*SO[p1]*(SO[p1] - SO[p2])*SO[p2]);
@@ -1408,7 +1408,7 @@ Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 43, opt___Rule] :=
 (* C44 *)
 (* Count44  p2 outgoing *)
 uc44[p1_, p2_, p3_, mu_, a_, coup_] :=
-	-( -2*(CA - 2*CF)*Gstrong^3*(1 - OPEm)*Sn*FV[OPEDelta, mu]*
+	-( -2*(CA - 2*CF)*SMP["g_s"]^3*(1 - OPEm)*Sn*FV[OPEDelta, mu]*
 			GS[OPEDelta]*((-1)^OPEm*(SO[p1] - SO[p2])^OPEm*SO[p2] +
 				SO[p1]*SO[p2]^OPEm - SO[p2]^(1 + OPEm))*SUNT[a])/
 		(Epsilon*OPEm*(1 - OPEm^2)*SO[p1]*(SO[p1] - SO[p2])*SO[p2]);
@@ -1431,7 +1431,7 @@ Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 44, opt___Rule] :=
 (*for some reson there always is a global sign wrong  ....*)
 uc45[p1_, p2_, p3_, mu_, a_, coup_] :=
 	-Block[ {j = OPEl},
-		(CA*Gstrong^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
+		(CA*SMP["g_s"]^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
 				(2*SO[p1]^OPEm*SO[p2] - 2*SO[p1]*SO[p2]^OPEm -
 					2*OPEm*OPESum[(SO[p1]^(-j + OPEm)*SO[p2]^(j - OPEm))/j,
 						{j, 1, -1 + OPEm}]*SO[p1]*SO[p2]^OPEm +
@@ -1458,7 +1458,7 @@ Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 45, opt___Rule] :=
 (* Count46  p2 outgoing *)
 uc46[p1_, p2_, p3_, mu_, a_, coup_] :=
 	-Block[ {j = OPEl},
-		-((CA*Gstrong^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
+		-((CA*SMP["g_s"]^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
 					(OPEm*OPESum[(SO[p1]^(j - OPEm)*SO[p2]^(-j + OPEm))/j,
 							{j, 1, -1 + OPEm}]*SO[p1]^(1 + OPEm) - 2*SO[p1]^OPEm*SO[p2] -
 						2*OPEm*OPESum[(SO[p1]^(j - OPEm)*SO[p2]^(-j + OPEm))/j,
@@ -1505,7 +1505,7 @@ p1, p3, incoming
 (* Count47  p2 outgoing *)
 uc47[p1_, _, p3_, mu_, a_, coup_] :=
 	-
-	(2*(CA - 2*CF)*Gstrong^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
+	(2*(CA - 2*CF)*SMP["g_s"]^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
 	((-1)^OPEm*SO[p1]^(1 + OPEm) - (-1)^OPEm*SO[p1]*(SO[p1] - SO[p3])^OPEm +
 	(-1)^OPEm*(SO[p1] - SO[p3])^OPEm*SO[p3] + SO[p1]*SO[p3]^OPEm -
 	(-1)^OPEm*SO[p1]*SO[p3]^OPEm - SO[p3]^(1 + OPEm))*SUNT[a])/

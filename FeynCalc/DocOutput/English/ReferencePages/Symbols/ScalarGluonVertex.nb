@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9793,        309]
-NotebookOptionsPosition[      6216,        207]
-NotebookOutlinePosition[      9035,        280]
-CellTagsIndexPosition[      8916,        274]
+NotebookDataLength[      9799,        309]
+NotebookOptionsPosition[      6218,        207]
+NotebookOutlinePosition[      9039,        280]
+CellTagsIndexPosition[      8920,        274]
 WindowTitle->ScalarGluonVertex
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ScalarGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129400], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130635], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ScalarGluonVertex", ".html"]], None}]}]},
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->951626803],
+ CellID->1584676055],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->812312776],
+ CellID->1754245303],
 
 Cell[CellGroupData[{
 
@@ -220,7 +220,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 20.791618}", 
+   "built" -> "{2016, 8, 21, 21, 24, 16.807308}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -253,28 +253,28 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3804, 103, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3804, 103, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->951626803]},
+   CellID->1584676055]},
  "ScalarGluonVertex"->{
-  Cell[4436, 132, 152, 4, 27, "Input",
+  Cell[4438, 132, 152, 4, 27, "Input",
    CellTags->"ScalarGluonVertex",
    CellID->1577288725],
-  Cell[4591, 138, 422, 13, 36, "Output",
+  Cell[4593, 138, 422, 13, 36, "Output",
    CellTags->"ScalarGluonVertex",
    CellID->1150833543],
-  Cell[5050, 156, 291, 9, 27, "Input",
+  Cell[5052, 156, 291, 9, 27, "Input",
    CellTags->"ScalarGluonVertex",
    CellID->581447761],
-  Cell[5344, 167, 806, 33, 38, "Output",
+  Cell[5346, 167, 806, 33, 38, "Output",
    CellTags->"ScalarGluonVertex",
    CellID->260312021]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8358, 254},
- {"ScalarGluonVertex", 8502, 258}
+ {"PrimaryExamplesSection", 8361, 254},
+ {"ScalarGluonVertex", 8506, 258}
  }
 *)
 (*NotebookFileOutline
@@ -286,31 +286,31 @@ Cell[2874, 75, 60, 1, 42, "ObjectName",
 Cell[2937, 78, 842, 21, 163, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3804, 103, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3804, 103, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->951626803],
+ CellID->1584676055],
 Cell[CellGroupData[{
-Cell[4216, 122, 195, 6, 25, "ExampleSection",
- CellID->812312776],
+Cell[4217, 122, 196, 6, 25, "ExampleSection",
+ CellID->1754245303],
 Cell[CellGroupData[{
-Cell[4436, 132, 152, 4, 27, "Input",
+Cell[4438, 132, 152, 4, 27, "Input",
  CellTags->"ScalarGluonVertex",
  CellID->1577288725],
-Cell[4591, 138, 422, 13, 36, "Output",
+Cell[4593, 138, 422, 13, 36, "Output",
  CellTags->"ScalarGluonVertex",
  CellID->1150833543]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5050, 156, 291, 9, 27, "Input",
+Cell[5052, 156, 291, 9, 27, "Input",
  CellTags->"ScalarGluonVertex",
  CellID->581447761],
-Cell[5344, 167, 806, 33, 38, "Output",
+Cell[5346, 167, 806, 33, 38, "Output",
  CellTags->"ScalarGluonVertex",
  CellID->260312021]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6189, 205, 23, 0, 42, "FooterCell"]
+Cell[6191, 205, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

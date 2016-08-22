@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    160820,       5892]
+NotebookDataLength[    160822,       5892]
 NotebookOptionsPosition[    141559,       5254]
-NotebookOutlinePosition[    152201,       5573]
-CellTagsIndexPosition[    152045,       5566]
+NotebookOutlinePosition[    152203,       5573]
+CellTagsIndexPosition[    152047,       5566]
 WindowTitle->FunctionalD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FunctionalD.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73838], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76450], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FunctionalD", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->274613547],
+ CellID->1338673316],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2056155500],
+ CellID->648720929],
 
 Cell[TextData[{
  "Instead of the usual ",
@@ -4372,7 +4372,7 @@ ZpNkwehyokecxsgrbOTyOQ3sHQQCgUAgEAgF/A8M9PTv
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[26]=",
- CellID->1530633941]
+ CellID->1902982577]
 }, Open  ]],
 
 Cell["\<\
@@ -4844,7 +4844,7 @@ YGzwJim1oZVEQyWK2WprtoWPAEjvCAQCgUAgEMyA/wKU8anW
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[30]=",
- CellID->1412104678]
+ CellID->1357294281]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5019,7 +5019,7 @@ IBDG8v//qjde
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[31]=",
- CellID->1204186971]
+ CellID->1419688678]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5189,7 +5189,7 @@ wmnpJjXovXeGg07Um/pQg3x4gJn69dlnOvmlwZL+27t35pL6TivaYeAVrtMA
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[32]=",
- CellID->1698625354]
+ CellID->1594533498]
 }, Open  ]],
 
 Cell["quod erat demonstrandum.", "Text",
@@ -5267,7 +5267,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 33.651342}", 
+   "built" -> "{2016, 8, 21, 21, 20, 26.222823}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -5301,9 +5301,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3956, 107, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3956, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->274613547]},
+   CellID->1338673316]},
  "FunctionalD"->{
   Cell[4567, 134, 631, 21, 57, "Text",
    CellTags->"FunctionalD",
@@ -5499,7 +5499,7 @@ CellTagsIndex->{
    CellID->1416466041],
   Cell[103129, 4296, 4247, 78, 71, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1530633941],
+   CellID->1902982577],
   Cell[107391, 4377, 152, 5, 32, "Text",
    CellTags->"FunctionalD",
    CellID->1808944377],
@@ -5526,19 +5526,19 @@ CellTagsIndex->{
    CellID->256131363],
   Cell[116744, 4766, 4373, 80, 70, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1412104678],
+   CellID->1357294281],
   Cell[121154, 4851, 158, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1098654926],
   Cell[121315, 4858, 9456, 163, 93, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1204186971],
+   CellID->1419688678],
   Cell[130808, 5026, 183, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2122973606],
   Cell[130994, 5034, 9102, 157, 98, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1698625354],
+   CellID->1594533498],
   Cell[140111, 5194, 86, 2, 32, "Text",
    CellTags->"FunctionalD",
    CellID->927805887],
@@ -5551,23 +5551,23 @@ CellTagsIndex->{
  "RasterizedOutput"->{
   Cell[103129, 4296, 4247, 78, 71, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1530633941],
+   CellID->1902982577],
   Cell[116744, 4766, 4373, 80, 70, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1412104678],
+   CellID->1357294281],
   Cell[121315, 4858, 9456, 163, 93, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1204186971],
+   CellID->1419688678],
   Cell[130994, 5034, 9102, 157, 98, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1698625354]}
+   CellID->1594533498]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 143723, 5302},
- {"FunctionalD", 143861, 5306},
- {"RasterizedOutput", 151543, 5550}
+ {"PrimaryExamplesSection", 143724, 5302},
+ {"FunctionalD", 143863, 5306},
+ {"RasterizedOutput", 151545, 5550}
  }
 *)
 (*NotebookFileOutline
@@ -5579,12 +5579,12 @@ Cell[2843, 75, 54, 1, 42, "ObjectName",
 Cell[2900, 78, 1031, 25, 162, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3956, 107, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3956, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->274613547],
+ CellID->1338673316],
 Cell[CellGroupData[{
-Cell[4368, 126, 196, 6, 25, "ExampleSection",
- CellID->2056155500],
+Cell[4369, 126, 195, 6, 25, "ExampleSection",
+ CellID->648720929],
 Cell[4567, 134, 631, 21, 57, "Text",
  CellTags->"FunctionalD",
  CellID->2064540691],
@@ -5824,7 +5824,7 @@ Cell[102952, 4289, 174, 5, 27, "Input",
  CellID->1416466041],
 Cell[103129, 4296, 4247, 78, 71, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->1530633941]
+ CellID->1902982577]
 }, Open  ]],
 Cell[107391, 4377, 152, 5, 32, "Text",
  CellTags->"FunctionalD",
@@ -5859,7 +5859,7 @@ Cell[116518, 4757, 223, 7, 27, "Input",
  CellID->256131363],
 Cell[116744, 4766, 4373, 80, 70, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->1412104678]
+ CellID->1357294281]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[121154, 4851, 158, 5, 27, "Input",
@@ -5867,7 +5867,7 @@ Cell[121154, 4851, 158, 5, 27, "Input",
  CellID->1098654926],
 Cell[121315, 4858, 9456, 163, 93, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->1204186971]
+ CellID->1419688678]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[130808, 5026, 183, 6, 27, "Input",
@@ -5875,7 +5875,7 @@ Cell[130808, 5026, 183, 6, 27, "Input",
  CellID->2122973606],
 Cell[130994, 5034, 9102, 157, 98, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->1698625354]
+ CellID->1594533498]
 }, Open  ]],
 Cell[140111, 5194, 86, 2, 32, "Text",
  CellTags->"FunctionalD",

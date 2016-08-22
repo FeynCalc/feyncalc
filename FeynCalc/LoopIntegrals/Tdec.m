@@ -37,6 +37,9 @@ will be fetched immediately.";
 Tdec::basis =
 "Tdec failed to generate the tensor basis. Evaluation aborted!";
 
+Tdec::looprules =
+"Some loop momenta have scalar product rules attached to them. Evaluation aborted!";
+
 Tdec::slow =
 "Tdec is computing a decomposition that is not available in TIDL. This \
 might take quite some time. If this integral often appears in your computations, \
@@ -298,6 +301,11 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		mlis = (# /. {a_, _} :> a) & /@ Sort[li];
 		(* Encode the given external momenta *)
 		pli = extMom/@ppli;
+
+		If [!FreeQ2[$ScalarProducts, mlis],
+			Message[Tdec::looprules];
+			Abort[]
+		];
 
 		If[Sort[lis]=!=Union[lis],
 			Message[Tdec::indices];

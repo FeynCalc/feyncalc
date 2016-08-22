@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10281,        334]
+NotebookDataLength[     10282,        334]
 NotebookOptionsPosition[      6959,        234]
-NotebookOutlinePosition[      9545,        305]
-CellTagsIndexPosition[      9432,        299]
+NotebookOutlinePosition[      9546,        305]
+CellTagsIndexPosition[      9433,        299]
 WindowTitle->SelectSplit
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SelectSplit.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$133616], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$134757], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SelectSplit", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1943730887],
+ CellID->1947745496],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1218004066],
+ CellID->1740210034],
 
 Cell[CellGroupData[{
 
@@ -247,7 +247,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 41.840239}", 
+   "built" -> "{2016, 8, 21, 21, 24, 35.605973}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -280,7 +280,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3487, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1943730887]},
+   CellID->1947745496]},
  "SelectSplit"->{
   Cell[4121, 126, 822, 27, 51, "Input",
    CellTags->"SelectSplit",
@@ -298,8 +298,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8902, 279},
- {"SelectSplit", 9040, 283}
+ {"PrimaryExamplesSection", 8903, 279},
+ {"SelectSplit", 9041, 283}
  }
 *)
 (*NotebookFileOutline
@@ -313,10 +313,10 @@ Cell[2901, 78, 561, 15, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3487, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1943730887],
+ CellID->1947745496],
 Cell[CellGroupData[{
 Cell[3900, 116, 196, 6, 25, "ExampleSection",
- CellID->1218004066],
+ CellID->1740210034],
 Cell[CellGroupData[{
 Cell[4121, 126, 822, 27, 51, "Input",
  CellTags->"SelectSplit",

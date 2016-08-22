@@ -23,12 +23,36 @@ Factoring -> Factor]",
 {"fcstCollect2-ID4","Collect2[2 a (b - a) (h - 1) - b^2 (e a - c) + b^2, {a, b}]",
 	"-2 a^2 (h-1)-a b^2 e+2 a b (h-1)+b^2 (c+1)"},
 {"fcstCollect2-ID5","Collect2[Expand[(a - b - c - d)^5], a,
-IsolateNames -> L] // ReleaseHold",
+IsolateNames -> L] // FRH",
 	"a^5-5 a^4 (b+c+d)+10 a^3 (b+c+d)^2-10 a^2 (b+c+d)^3+5 a (b+c+d)^4-(b+c+d)^5"},
 {"fcstCollect2-ID6","Collect2[Expand[(a - b - c)^3], a, Factoring -> fun] /.
 fun -> FactorTerms",
 	"a^3-3 a^2 (b+c)+3 a (b^2+2 b c+c^2)-b^3-3 b^2 c-3 b c^2-c^3"},
 {"fcstCollect2-ID7","Collect2[(Hold[a*b] + Hold[c*d]) (e + f) + (Hold[a*b] +
 	Hold[c*d]) (e + 3 f), {e, f}]",
-	"2*e*(Hold[a*b] + Hold[c*d]) + 4*f*(Hold[a*b] + Hold[c*d])"}
+	"2*e*(Hold[a*b] + Hold[c*d]) + 4*f*(Hold[a*b] + Hold[c*d])"},
+{"fcstCollect2-ID8","Collect2[1/(x + t (x + c)^2 + d) + x + a (x + d), x,Denominator -> True]",
+	"a d + (1 + a) x + 1/(d + c^2 t + (1 + 2 c t) x + t x^2)"},
+{"fcstCollect2-ID9","Collect2[a (-m^2 - p^2) + b + c, {a, b, c}]",
+	"b + c - a (m^2 + p^2)"},
+{"fcstCollect2-ID10","Collect2[Expand[(a + b + c)^2 (b + d)^3], {a, d}, Head -> hh]",
+	"b^3 (b + c)^2 + 2 b^3 (b + c) hh[a] + b^3 hh[a^2] +
+3 b^2 (b + c)^2 hh[d] + 6 b^2 (b + c) hh[a d] + 3 b^2 hh[a^2 d] +
+3 b (b + c)^2 hh[d^2] + 6 b (b + c) hh[a d^2] +
+3 b hh[a^2 d^2] + (b + c)^2 hh[d^3] + 2 (b + c) hh[a d^3] +
+hh[a^2 d^3]"},
+{"fcstCollect2-ID11","MatchQ[Collect2[
+yy (xx*Sum[p[i] i^2, {i, 1, 100000}] + abc) + abc2, {abc, abc2},
+Factoring -> False, Factoring -> False],
+yy (xx*Sum[p[i] i^2, {i, 1, 100000}]) + abc yy + abc2]",
+	"True"},
+{"fcstCollect2-ID12","MatchQ[Collect2[
+Sum[xa[i], {i, 1, 10}] + VAR Sum[xb[i], {i, 1, 10}] +
+	VAR Sum[xx[i], {i, 1, 10}] + VAR^2 Sum[xy[i], {i, 1, 10}] +
+	VAR^2 Sum[xz[i], {i, 1, 10}], VAR, Factoring -> False,
+IsolateFast -> True, IsolateNames -> KK] // FRH,
+Sum[xa[i], {i, 1, 10}] +
+VAR (Sum[xb[i], {i, 1, 10}] + Sum[xx[i], {i, 1, 10}]) +
+VAR^2 (Sum[xy[i], {i, 1, 10}] + Sum[xz[i], {i, 1, 10}])]",
+	"True"}
 };

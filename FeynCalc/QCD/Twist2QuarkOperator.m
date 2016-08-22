@@ -49,7 +49,7 @@ Begin["`Twist2QuarkOperator`Private`"]
 DeclareNonCommutative[Twist2QuarkOperator];
 
 Options[Twist2QuarkOperator] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension        -> D,
 	Explicit         -> True,
 	Polarization     -> 1 ,

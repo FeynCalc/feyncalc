@@ -1,0 +1,30 @@
+
+
+(* :Title: ToDiracSigma.test                                                    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToDiracSigma                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstToDiracSigma =
+({
+{"fcstToDiracSigma-ID1", "ToDiracSigma[GA[i,j],GA[i],GA[j]]//FCE",
+"(-I)*DiracSigma[GA[i], GA[j]] + MT[i, j]"},
+{"fcstToDiracSigma-ID2", "ToDiracSigma[GA[i,j],GA[m],GA[j]]//FCE",
+"GA[i] . GA[j]"},
+{"fcstToDiracSigma-ID3", "ToDiracSigma[GA[i,j,k],GA[i],GA[j]]//FCE",
+	"(-I)*DiracSigma[GA[i], GA[j]] . GA[k] + GA[k]*MT[i, j]"},
+{"fcstToDiracSigma-ID4",
+"DiracSigmaExplicit[DiracSigma[DiracGamma[LorentzIndex[i]],\
+DiracGamma[LorentzIndex[j]]]]//ToDiracSigma[#,GA[i],GA[j]]&\
+//ToDiracSigma[#,GA[j],GA[i]]&//FCE", "DiracSigma[GA[i], GA[j]]"}
+})

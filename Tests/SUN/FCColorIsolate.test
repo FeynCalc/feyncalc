@@ -1,0 +1,57 @@
+
+
+(* :Title: FCColorIsolate.test                                                *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCColorIsolate             *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`SUN`fcstFCColorIsolate =
+({
+{"fcstFCColorIsolate-ID1", "FCColorIsolate[x]", "x"},
+{"fcstFCColorIsolate-ID2", "FCColorIsolate[SUNT[a]]",
+"FCGV[\"ColorObject\"][SUNT[SUNIndex[a]]]"},
+{"fcstFCColorIsolate-ID3", "FCColorIsolate[SUNT[a] x]",
+"x*FCGV[\"ColorObject\"][SUNT[SUNIndex[a]]]"},
+{"fcstFCColorIsolate-ID4", "FCColorIsolate[SUNT[a,b] x+SUNT[c]]",
+"x*FCGV[\"ColorObject\"][SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]]] + \
+FCGV[\"ColorObject\"][SUNT[SUNIndex[c]]]"},
+{"fcstFCColorIsolate-ID5",
+"FCColorIsolate[SUNF[x,y,z]^2SUNT[a,b] x+SUNT[c]SUND[i,j,k]]",
+"x*FCGV[\"ColorObject\"][SUNT[SUNIndex[a]] . \
+SUNT[SUNIndex[b]]*SUNF[SUNIndex[x], SUNIndex[y], SUNIndex[z]]^2] + \
+FCGV[\"ColorObject\"][SUND[SUNIndex[i], SUNIndex[j], \
+SUNIndex[k]]*SUNT[SUNIndex[c]]]"},
+{"fcstFCColorIsolate-ID6",
+"FCColorIsolate[SUNF[x,y,z]^2SUNT[a,b] x+SUNT[c]SUND[i,j,k],SUNF\
+\[Rule]False]",
+"x*SUNF[SUNIndex[x], SUNIndex[y], \
+SUNIndex[z]]^2*FCGV[\"ColorObject\"][SUNT[SUNIndex[a]] . \
+SUNT[SUNIndex[b]]] + FCGV[\"ColorObject\"][SUND[SUNIndex[i], \
+SUNIndex[j], SUNIndex[k]]*SUNT[SUNIndex[c]]]"},
+{"fcstFCColorIsolate-ID7",
+"FCColorIsolate[SUNF[x,y,z]^2SUNT[a,b] x+SUNT[c]SUND[i,j,k],SUNT\
+\[Rule]False]",
+"SUNT[SUNIndex[c]]*FCGV[\"ColorObject\"][SUND[SUNIndex[i], \
+SUNIndex[j], SUNIndex[k]]] + x*SUNT[SUNIndex[a]] . \
+SUNT[SUNIndex[b]]*FCGV[\"ColorObject\"][SUNF[SUNIndex[x], \
+SUNIndex[y], SUNIndex[z]]^2]"},
+{"fcstFCColorIsolate-ID8",
+"FCColorIsolate[SUNF[x,y,z]^2SUNT[a,b] x+SUNT[c]SUND[i,j,k],SUND\
+\[Rule]False]",
+"x*FCGV[\"ColorObject\"][SUNT[SUNIndex[a]] . \
+SUNT[SUNIndex[b]]*SUNF[SUNIndex[x], SUNIndex[y], SUNIndex[z]]^2] + \
+SUND[SUNIndex[i], SUNIndex[j], \
+SUNIndex[k]]*FCGV[\"ColorObject\"][SUNT[SUNIndex[c]]]"},
+{"fcstFCColorIsolate-ID9",
+"FCColorIsolate[SUNTrace[SUNT[a,b,c]]x+y]",
+"y + x*FCGV[\"ColorObject\"][SUNTrace[SUNT[SUNIndex[a]] . \
+SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]]]"}
+});

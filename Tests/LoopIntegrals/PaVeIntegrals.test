@@ -15,9 +15,11 @@
 (* ------------------------------------------------------------------------ *)
 
 Tests`LoopIntegrals`fcstPaVeIntegrals = {
-{"fcstPaVeIntegrals-ID1","A0[SmallVariable[x] , m]"," 0"},
-{"fcstPaVeIntegrals-ID2","A0[SmallVariable[x]^3 , m]"," 0"},
-{"fcstPaVeIntegrals-ID3","A0[0, m]"," 0"},
+{"fcstPaVeIntegrals-ID1","$LimitTo4 = True; \n A0[SmallVariable[x]]"," 0"},
+{"fcstPaVeIntegrals-ID2","A0[SmallVariable[x]^3]"," 0"},
+{"fcstPaVeIntegrals-ID3","A0[0]"," 0"},
+{"fcstPaVeIntegrals-ID3.1","A00[0]"," 0"},
+{"fcstPaVeIntegrals-ID3.2","A00[m1^2]","m1^4/8 + 1/4 m1^2 A0[m1^2]"},
 {"fcstPaVeIntegrals-ID4","A0[mm, A0ToB0->True]"," (mm + mm B0[0,mm,mm])"},
 {"fcstPaVeIntegrals-ID5","B0[SmallVariable[a], SmallVariable[b], SmallVariable[c]]", "B0[a,b,c]"},
 {"fcstPaVeIntegrals-ID6","B0[SmallVariable[a]^2, SmallVariable[b]^3, SmallVariable[c]^4]"," B0[a^2,b^3,c^4]"},
@@ -32,6 +34,7 @@ Tests`LoopIntegrals`fcstPaVeIntegrals = {
 {"fcstPaVeIntegrals-ID15","B0[SmallVariable[kl], kmm, SmallVariable[mm], BReduce->True]"," (A0[kmm]/kmm)"},
 {"fcstPaVeIntegrals-ID16","B0[SmallVariable[kl], SmallVariable[mm], kmm, BReduce->True]"," (A0[kmm]/kmm)"},
 {"fcstPaVeIntegrals-ID17","B0[0,mm,mm, BReduce->True]"," A0[mm]/mm - 1"},
+{"fcstPaVeIntegrals-ID17.1","$LimitTo4=False; \n tmp=B0[0,m^2,m^2, BReduce->True]; $LimitTo4=True; \n tmp","-(((2 - D) A0[m^2])/(2 m^2))"},
 {"fcstPaVeIntegrals-ID18","B0[0,SmallVariable[mm],SmallVariable[mm], BReduce->True]"," B0[0,SmallVariable[mm],SmallVariable[mm], BReduce->True]"},
 {"fcstPaVeIntegrals-ID19","B0[0, m1, m2, BReduce->True]","A0[m1]/(m1 - m2) - A0[m2]/(m1 - m2)"},
 {"fcstPaVeIntegrals-ID20","B00[0,mm,mm,BReduce->True]","   mm / 2 ( B0[0,mm,mm] + 1 )"},
@@ -42,16 +45,16 @@ Tests`LoopIntegrals`fcstPaVeIntegrals = {
 {"fcstPaVeIntegrals-ID25","B00[SmallVariable[pp], mm,mm,BReduce->True]"," (mm*(1 + B0[pp, mm, mm]))/2"},
 {"fcstPaVeIntegrals-ID26","B00[pp, mm1,mm2, BReduce->True]"," (3*mm1 + 3*mm2 - pp)/18 + (mm1*B0[pp, mm1, mm2])/3 +
 (A0[mm2] + (mm1 - mm2 + pp)*(-B0[pp, mm1, mm2]/2 + ((-mm1 + mm2)*(-B0[0, mm1, mm2] + B0[pp, mm1, mm2]))/(2*pp)))/6"},
-{"fcstPaVeIntegrals-ID27","$LimitTo4 = False;\nB00[0,mm,mm,BReduce->True]","A0[mm]/(2*(-1 + D)) + (mm*B0[0, mm, mm])/(-1 + D)"},
+{"fcstPaVeIntegrals-ID27","$LimitTo4 = False;\nB00[0,mm,mm,BReduce->True]","-A0[mm]/(2*(1 - D)) - (mm*B0[0, mm, mm])/(1 - D)"},
 {"fcstPaVeIntegrals-ID28","B00[SmallVariable[em]^4, mm, mm, BReduce -> True]","B00[SmallVariable[em]^4, mm, mm, BReduce -> True]"},
 {"fcstPaVeIntegrals-ID29","B00[SmallVariable[em]^4, SmallVariable[mm],SmallVariable[mm],BReduce->True]"," 0"},
-{"fcstPaVeIntegrals-ID30","B00[pp, mm,mm,BReduce->True]"," A0[mm]/(2*(-1 + D)) + (mm*B0[pp, mm, mm])/(-1 + D) - (pp*B0[pp, mm, mm])/(4*(-1 + D))"},
-{"fcstPaVeIntegrals-ID31","B00[SmallVariable[pp], mm,mm,BReduce->True]"," A0[mm]/(2*(-1 + D)) + (mm*B0[SmallVariable[pp], mm, mm])/(-1 + D)"},
-{"fcstPaVeIntegrals-ID32","B00[pp, mm1,mm2, BReduce->True]","A0[mm2]/(2*(-1 + D)) + (mm1*B0[pp, mm1, mm2])/(-1 + D) +
-(mm1*B1[pp, mm1, mm2])/(2*(-1 + D)) - (mm2*B1[pp, mm1, mm2])/(2*(-1 + D)) + (pp*B1[pp, mm1, mm2])/(2*(-1 + D))"},
+{"fcstPaVeIntegrals-ID30","B00[pp, mm,mm,BReduce->True]","-A0[mm]/(2*(1 - D)) - ((4*mm - pp)*B0[pp, mm, mm])/(4*(1 - D))"},
+{"fcstPaVeIntegrals-ID31","B00[SmallVariable[pp], mm,mm,BReduce->True]","-A0[mm]/(2*(1 - D)) - (mm*B0[SmallVariable[pp], mm, mm])/(1 - D)"},
+{"fcstPaVeIntegrals-ID32","B00[pp, mm1,mm2, BReduce->True]","-((mm1 - mm2 + pp)*A0[mm1])/(4*(1 - D)*pp) + ((mm1 - mm2 - pp)*A0[mm2])/(4*(1 - D)*pp) +
+((mm1^2 - 2*mm1*mm2 + mm2^2 - 2*mm1*pp - 2*mm2*pp + pp^2)*B0[pp, mm1, mm2])/(4*(1 - D)*pp)"},
 {"fcstPaVeIntegrals-ID33","B00[pp, mm1, mm2, BReduce -> False]","B00[pp, mm1, mm2, BReduce -> False]"},
-{"fcstPaVeIntegrals-ID34","B00[x, y, z, BReduce -> True]","A0[z]/(2*(-1 + D)) + (y*B0[x, y, z])/(-1 + D) + (x*B1[x, y, z])/(2*(-1 + D)) +
-(y*B1[x, y, z])/(2*(-1 + D)) - (z*B1[x, y, z])/(2*(-1 + D))"},
+{"fcstPaVeIntegrals-ID34","B00[x, y, z, BReduce -> True]","-((x + y - z)*A0[y])/(4*(1 - D)*x) - ((x - y + z)*A0[z])/(4*(1 - D)*x) +
+((x^2 - 2*x*y + y^2 - 2*x*z - 2*y*z + z^2)*B0[x, y, z])/(4*(1 - D)*x)"},
 {"fcstPaVeIntegrals-ID35","$LimitTo4 = True;\n B00[x, y, z, BReduce -> True]"," (-x + 3*y + 3*z)/18 + (y*B0[x, y, z])/3 +
 (A0[z] + (x + y - z)*(-B0[x, y, z]/2 + ((-y + z)*(-B0[0, y, z] + B0[x, y, z]))/(2*x)))/6"},
 {"fcstPaVeIntegrals-ID36","B1[a, b, c,BReduce->False]"," B1[a, b, c, BReduce->False]"},
@@ -85,6 +88,6 @@ Tests`LoopIntegrals`fcstPaVeIntegrals = {
 {"fcstPaVeIntegrals-ID63","D[B0[a, b, c], c]"," Derivative[0, 0, 1][B0][a, b, c]"},
 {"fcstPaVeIntegrals-ID64","D[B1[a, b, c], c]"," (-B0[0, b, c] + B0[a, b, c])/(2*a) - Derivative[0, 0, 1][B0][a, b, c]/2 +
 ((-b + c)*(-Derivative[0, 0, 1][B0][0, b, c] + Derivative[0, 0, 1][B0][a, b, c]))/(2*a)"},
-{"fcstPaVeIntegrals-ID65","DB1[m, m, 0]"," 1/(2*m) - DB0[m, 0, m]"}
+{"fcstPaVeIntegrals-ID65","$LimitTo4 = False;\nDB1[m, m, 0]"," 1/(2*m) - DB0[m, 0, m]"}
 
 }

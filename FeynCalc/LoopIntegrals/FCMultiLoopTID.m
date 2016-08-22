@@ -17,9 +17,9 @@
 
 FCMultiLoopTID::usage =
 "FCMultiLoopTID[amp, {q1,q2,...}] does a multi-loop tensor integral \
-decomposition, transforming the Lorentz indices away from the loop \
-momenta q1,q2,... The decomposition is applied only to the loop \
-integrals where loop momenta are contracted with Dirac matrices or epsilon tensors.";
+decomposition "  <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCMultiLoopTID"],
+StandardForm];
 
 FCMultiLoopTID::failmsg =
 "Error! FCMultiLoopTID has encountered a fatal problem and must abort the \
@@ -60,6 +60,11 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[$ScalarProducts, {qs}],
+			Message[FCMultiLoopTID::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
+			Abort[]
+		];
+
 		If[	OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
@@ -81,6 +86,10 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			Return[ex]
 		];
 
+		If[	OptionValue[Contract],
+			ex = Contract[ex]
+		];
+
 		If[	OptionValue[DiracSimplify] && !FreeQ2[ex,{DiracGamma,DiracSigma,Spinor}],
 			ex = DiracSimplify[ex];
 			FCPrint[3,"FCMultiLoopTID: After DiracSimplify: ", ex, FCDoControl->mltidVerbose]
@@ -91,8 +100,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			FCPrint[3,"FCMultiLoopTID: After first ApartFF: ", ex, FCDoControl->mltidVerbose]
 		];
 
-		ex = ex//DiracGammaExpand[#,Momentum->qs]&//EpsEvaluate[#,Momentum->qs]&//
-			ExpandScalarProduct[#,Momentum->qs]&;
+		ex = ex//DiracGammaExpand[#,Momentum->qs]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True]&;
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)

@@ -47,8 +47,8 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 		dim = Dimension /. {opt} /. Options[TwoLoopSimplify];
 		dirsuntrace[x_] :=
 			If[ !FreeQ[x, Tf],
-				SUNSimplify[DiracTrace[x], SUNTrace->True, SUNFToTraces->False],
-				SUNSimplify[DiracTrace[x], SUNTrace->False, SUNFToTraces->False]
+				SUNSimplify[DiracTrace[x], SUNTrace->True, Explicit->False],
+				SUNSimplify[DiracTrace[x], SUNTrace->False, Explicit->False]
 			];
 
 	(*S TRICK *)
@@ -68,7 +68,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 
 		(*S COLOR FACTOR *)
 		FCPrint[1,"calculating the color factor"];
-		t2 = SUNSimplify[t1, SUNFToTraces -> False]//SUNSimplify;
+		t2 = SUNSimplify[t1, Explicit -> False]//SUNSimplify;
 
 		(*S Eps*)
 		t3 =  MomentumCombine[t2//SUNSimplify//EpsEvaluate, LeafCount -> 1000];

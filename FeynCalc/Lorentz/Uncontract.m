@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: ScalarProduct													*)
+(* :Title: Uncontract														*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -108,7 +108,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				(*Uncontract denominators also. Change by F.Orellana. 3/11-2002*)
 				(*Reverted, RM 06/22-2011 *)
 
-				nex = nex /. tf_[aa__/;!FreeQ2[{aa}, par]]^n_Integer?Positive/; (tf===Pair || DataType[tf,FCTensor]===True)  :>
+				nex = nex /. tf_[aa__/;!FreeQ2[{aa}, par]]^n_Integer?Positive/; (MemberQ[$FCTensorList,tf] && tf=!=Eps)  :>
 					Apply[times, Table[tf[aa], {j,Abs[n]}]]^Sign[n];
 
 				If[ MemberQ[par, q],
@@ -123,8 +123,8 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 						Pair[Momentum[c,dimSelect[d]], li] Pair[Momentum[pe,dimSelect[d]],lidr[li]])/;MemberQ[par,pe]} ;
 
 				(* Uncontract tensor functions *)
-				If[ !FreeQ[nex, (tf_/;DataType[tf,FCTensor])[___,Momentum[(q | Polarization[q,__]),___],___]],
-					nex = nex //. { (tf_/;DataType[tf,FCTensor])[a___,Momentum[(c: q | Polarization[q,__]),d_:4],b___] :>
+				If[ !FreeQ[nex, (tf_/;MemberQ[$FCTensorList,tf] && tf=!=Pair  && tf=!=Eps)[___,Momentum[(q | Polarization[q,__]),___],___]],
+					nex = nex //. { (tf_/; MemberQ[$FCTensorList,tf] && tf=!=Pair  && tf=!=Eps)[a___,Momentum[(c: q | Polarization[q,__]),d_:4],b___] :>
 						(li = LorentzIndex[a$AL[inc = inc+1],dimSelect[d]];
 						tf[a, li, b] Pair[Momentum[c,dimSelect[d]],lidr[li]])}
 				];

@@ -36,10 +36,10 @@ lsimp[0]=0;
 lsimp[a_Plus] := Map[lsimp, a];
 lsimp[t_Times] := Block[{mm},
 									If[FreeQ[t, OPEm], mm = 1, mm = OPEm];
-								((SelectNotFree[t, {Epsilon,p,Smu,CA,CF,Tf,Gstrong}] *
+								((SelectNotFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}] *
 							x^(mm-1))/.dum[Epsilon]->1)  *
 				Collect2[SimplifyDeltaFunction[Expand[Apart3[
-							SelectFree[t, {Epsilon,p,Smu,CA,CF,Tf,Gstrong}]/x^(mm-1),x]
+							SelectFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}]/x^(mm-1),x]
 											]](* /. {DeltaFunction[1-x] f_ :>
 															(f/.x->1) DeltaFunction[1-x]
 													} *) ,
@@ -1477,7 +1477,7 @@ FeynCalcInternal[ChangeDimension[exp /. TLI -> RTLI, 4] /.tlilist
 (*
 If[Head[res] =!= Plus, pref = 1,
 	pref = SelectNotFree[dummy First[res]/. (-1)^OPEm:>bla ,
-									{M,p,Smu,CA,CF,Tf,Gstrong, OPEm}];
+									{M,p,Smu,CA,CF,Tf,SMP["g_s"], OPEm}];
 	res = pref . Map[(#/pref)&, res]
 	];
 *)

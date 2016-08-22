@@ -38,5 +38,21 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorSimplify = {
 	"FAD[l, a + l + t, -b + l + t, {l - p + t, m}, {l + q + t, m}]"},
 {"fcstFeynAmpDenominatorSimplify-ID10",
 	"FCE@FDS[#, q] & /@ {FAD[q], SPD[q, q] FAD[{q, m}], SPD[q, p] FAD[q, {q + p, m}]}",
-	"{0, FAD[{q, m}] SPD[q, q], -FAD[q, {-p + q, m}] SPD[p, q]}"}
+	"{0, FAD[{q, m}] SPD[q, q], -FAD[q, {-p + q, m}] SPD[p, q]}"},
+{"fcstFeynAmpDenominatorSimplify-ID11",
+	"FDS[LC[][p1, p2, p3, l] FAD[{l - p, m}, {l + q, m}, l - t], l] // FCE",
+	"FAD[{l, m}, {l - p - q, m}, l - p + t] (LC[][l, p1, p2, p3] - LC[][p, p1, p2, p3])"},
+{"fcstFeynAmpDenominatorSimplify-ID12",
+	"FDS[ FAD[-k1 + p, -k1 - k2 + p] LC[mu, nu][k2, p], p] // FCE",
+	"-FAD[p, -k2 + p] (LC[mu, nu][k1, k2] - LC[mu, nu][k2, p])"},
+{"fcstFeynAmpDenominatorSimplify-ID13",
+	"FDS[Apart2[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}]] -
+ApartFF[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}], {qp}], qp]",
+	"0"},
+{"fcstFeynAmpDenominatorSimplify-ID14",
+	"FDS[FAD[{qp, M, 2}, {qp - q, M}], qp] // FCE",
+	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"},
+{"fcstFeynAmpDenominatorSimplify-ID15",
+	"FDS[FAD[{qp, M}, {-q + qp, M, 2}], qp] // FCE",
+	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"}
 }

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12574,        443]
+NotebookDataLength[     12575,        443]
 NotebookOptionsPosition[      7849,        291]
-NotebookOutlinePosition[     11070,        384]
-CellTagsIndexPosition[     10961,        378]
+NotebookOutlinePosition[     11071,        384]
+CellTagsIndexPosition[     10962,        378]
 WindowTitle->Combine
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27961], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29022], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Combine", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->1555962841],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1738411291],
+ CellID->1898342962],
 
 Cell[CellGroupData[{
 
@@ -304,7 +304,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 22.773225}", 
+   "built" -> "{2016, 8, 21, 21, 17, 3.435623}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -338,7 +338,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3501, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1289444967]},
+   CellID->1555962841]},
  "Combine"->{
   Cell[4135, 126, 131, 4, 27, "Input",
    CellTags->"Combine",
@@ -377,8 +377,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9845, 337},
- {"Combine", 9979, 341}
+ {"PrimaryExamplesSection", 9846, 337},
+ {"Combine", 9980, 341}
  }
 *)
 (*NotebookFileOutline
@@ -392,10 +392,10 @@ Cell[2875, 78, 601, 15, 112, "Usage",
 Cell[CellGroupData[{
 Cell[3501, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->1555962841],
 Cell[CellGroupData[{
 Cell[3914, 116, 196, 6, 25, "ExampleSection",
- CellID->1738411291],
+ CellID->1898342962],
 Cell[CellGroupData[{
 Cell[4135, 126, 131, 4, 27, "Input",
  CellTags->"Combine",

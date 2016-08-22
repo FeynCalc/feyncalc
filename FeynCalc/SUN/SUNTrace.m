@@ -67,11 +67,7 @@ SUNTrace[DOT[SUNT[a_] , SUNT[b_] , SUNT[c_] , SUNT[d_] , (more__SUNT)],	opt___Ru
 	((Explicit /. {opt} /. Options[SUNTrace]) === True );
 
 SUNTrace[DOT[SUNT[a_], SUNT[b_], SUNT[c_], SUNT[d_]], opt___Rule] :=
-	Block[ {e},
-		If[ ValueQ[Global`e] || !FreeQ[{a,b,c,d}, Global`e],
-			e = Unique["c"],
-			e = FCGV["e"]
-		];
+	Block[ {e = FCGV[ToString[Unique["e"]]]},
 		Expand[1/4/SUNN(SUNDelta[a, b] SUNDelta[c, d] -
 						SUNDelta[a, c] SUNDelta[b, d] +
 						SUNDelta[a, d] SUNDelta[b, c]) +

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16420,        602]
+NotebookDataLength[     16422,        602]
 NotebookOptionsPosition[     11907,        450]
-NotebookOutlinePosition[     14917,        541]
-CellTagsIndexPosition[     14810,        535]
+NotebookOutlinePosition[     14919,        541]
+CellTagsIndexPosition[     14812,        535]
 WindowTitle->FCI
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58610], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59669], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/FCI", 
             ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->602186379],
+ CellID->370350899],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1647796881],
+ CellID->1640505337],
 
 Cell[CellGroupData[{
 
@@ -463,7 +463,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 10, 9.642719}", 
+   "built" -> "{2016, 8, 21, 21, 19, 14.195999}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -495,7 +495,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3337, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->602186379]},
+   CellID->370350899]},
  "FCI"->{
   Cell[3970, 124, 455, 14, 27, "Input",
    CellTags->"FCI",
@@ -534,8 +534,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13734, 494},
- {"FCI", 13863, 498}
+ {"PrimaryExamplesSection", 13736, 494},
+ {"FCI", 13865, 498}
  }
 *)
 (*NotebookFileOutline
@@ -549,10 +549,10 @@ Cell[2864, 78, 448, 13, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3337, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->602186379],
+ CellID->370350899],
 Cell[CellGroupData[{
 Cell[3749, 114, 196, 6, 25, "ExampleSection",
- CellID->1647796881],
+ CellID->1640505337],
 Cell[CellGroupData[{
 Cell[3970, 124, 455, 14, 27, "Input",
  CellTags->"FCI",

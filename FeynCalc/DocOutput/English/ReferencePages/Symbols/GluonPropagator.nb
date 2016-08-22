@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42563,       1553]
-NotebookOptionsPosition[     33688,       1272]
-NotebookOutlinePosition[     39018,       1422]
-CellTagsIndexPosition[     38897,       1416]
+NotebookDataLength[     42567,       1553]
+NotebookOptionsPosition[     33689,       1272]
+NotebookOutlinePosition[     39021,       1422]
+CellTagsIndexPosition[     38900,       1416]
 WindowTitle->GluonPropagator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ GluonPropagator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81221], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83373], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GluonPropagator", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->792005353],
+ CellID->1536605323],
 
 Cell[TextData[{
  "Basic Examples",
@@ -128,7 +128,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1259034569],
+ CellID->1498721966],
 
 Cell[CellGroupData[{
 
@@ -1285,7 +1285,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 12, 24.584057}", 
+   "built" -> "{2016, 8, 21, 21, 20, 56.960393}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1320,103 +1320,103 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3985, 107, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3985, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->792005353]},
+   CellID->1536605323]},
  "GluonPropagator"->{
-  Cell[4596, 134, 93, 2, 35, "Subsubsection",
+  Cell[4597, 134, 93, 2, 35, "Subsubsection",
    CellTags->"GluonPropagator",
    CellID->1676340970],
-  Cell[4714, 140, 101, 3, 27, "Input",
+  Cell[4715, 140, 101, 3, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->730734970],
-  Cell[4818, 145, 229, 7, 36, "Output",
+  Cell[4819, 145, 229, 7, 36, "Output",
    CellTags->"GluonPropagator",
    CellID->9606294],
-  Cell[5084, 157, 148, 4, 27, "Input",
+  Cell[5085, 157, 148, 4, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->1962710719],
-  Cell[5235, 163, 589, 17, 56, "Output",
+  Cell[5236, 163, 589, 17, 56, "Output",
    CellTags->"GluonPropagator",
    CellID->2023427444],
-  Cell[5861, 185, 206, 6, 27, "Input",
+  Cell[5862, 185, 206, 6, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->1432103581],
-  Cell[6070, 193, 522, 21, 42, "Output",
+  Cell[6071, 193, 522, 21, 42, "Output",
    CellTags->"GluonPropagator",
    CellID->879390685],
-  Cell[6629, 219, 289, 8, 27, "Input",
+  Cell[6630, 219, 289, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->922890899],
-  Cell[6921, 229, 1860, 73, 87, "Output",
+  Cell[6922, 229, 1860, 73, 87, "Output",
    CellTags->"GluonPropagator",
    CellID->1278353242],
-  Cell[8818, 307, 375, 11, 27, "Input",
+  Cell[8819, 307, 375, 11, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->617351725],
-  Cell[9196, 320, 5127, 193, 88, "Output",
+  Cell[9197, 320, 5127, 193, 88, "Output",
    CellTags->"GluonPropagator",
    CellID->780926605],
-  Cell[14360, 518, 218, 7, 27, "Input",
+  Cell[14361, 518, 218, 7, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->1065132203],
-  Cell[14581, 527, 730, 29, 71, "Output",
+  Cell[14582, 527, 730, 29, 71, "Output",
    CellTags->"GluonPropagator",
    CellID->315989703],
-  Cell[15326, 559, 169, 5, 52, "Text",
+  Cell[15327, 559, 169, 5, 52, "Text",
    CellTags->"GluonPropagator",
    CellID->688757709],
-  Cell[15520, 568, 260, 8, 27, "Input",
+  Cell[15521, 568, 260, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->629708898],
-  Cell[15783, 578, 1853, 73, 89, "Output",
+  Cell[15784, 578, 1853, 73, 89, "Output",
    CellTags->"GluonPropagator",
    CellID->1689747408],
-  Cell[17673, 656, 286, 10, 27, "Input",
+  Cell[17674, 656, 286, 10, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->1462464756],
-  Cell[17962, 668, 421, 13, 49, "Output",
+  Cell[17963, 668, 421, 13, 49, "Output",
    CellTags->"GluonPropagator",
    CellID->1893476356],
-  Cell[18420, 686, 293, 8, 27, "Input",
+  Cell[18421, 686, 293, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->739433365],
-  Cell[18716, 696, 2106, 78, 80, "Output",
+  Cell[18717, 696, 2106, 78, 80, "Output",
    CellTags->"GluonPropagator",
    CellID->417079749],
-  Cell[20859, 779, 294, 8, 27, "Input",
+  Cell[20860, 779, 294, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->493368144],
-  Cell[21156, 789, 2126, 79, 75, "Output",
+  Cell[21157, 789, 2126, 79, 75, "Output",
    CellTags->"GluonPropagator",
    CellID->1754648571],
-  Cell[23319, 873, 295, 8, 27, "Input",
+  Cell[23320, 873, 295, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->2062559987],
-  Cell[23617, 883, 2115, 78, 80, "Output",
+  Cell[23618, 883, 2115, 78, 80, "Output",
    CellTags->"GluonPropagator",
    CellID->674017829],
-  Cell[25769, 966, 294, 8, 27, "Input",
+  Cell[25770, 966, 294, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->807671915],
-  Cell[26066, 976, 2108, 78, 80, "Output",
+  Cell[26067, 976, 2108, 78, 80, "Output",
    CellTags->"GluonPropagator",
    CellID->2094855988],
-  Cell[28211, 1059, 295, 8, 27, "Input",
+  Cell[28212, 1059, 295, 8, 27, "Input",
    CellTags->"GluonPropagator",
    CellID->1621125251],
-  Cell[28509, 1069, 3982, 148, 80, "Output",
+  Cell[28510, 1069, 3982, 148, 80, "Output",
    CellTags->"GluonPropagator",
    CellID->1304358400],
-  Cell[32859, 1240, 787, 27, 32, "Text",
+  Cell[32860, 1240, 787, 27, 32, "Text",
    CellTags->"GluonPropagator",
    CellID->1661110705]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 35928, 1321},
- {"GluonPropagator", 36070, 1325}
+ {"PrimaryExamplesSection", 35930, 1321},
+ {"GluonPropagator", 36073, 1325}
  }
 *)
 (*NotebookFileOutline
@@ -1428,133 +1428,133 @@ Cell[2863, 75, 58, 1, 42, "ObjectName",
 Cell[2924, 78, 1036, 25, 178, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3985, 107, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3985, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->792005353],
-Cell[4375, 124, 196, 6, 25, "ExampleSection",
- CellID->1259034569],
+ CellID->1536605323],
+Cell[4376, 124, 196, 6, 25, "ExampleSection",
+ CellID->1498721966],
 Cell[CellGroupData[{
-Cell[4596, 134, 93, 2, 35, "Subsubsection",
+Cell[4597, 134, 93, 2, 35, "Subsubsection",
  CellTags->"GluonPropagator",
  CellID->1676340970],
 Cell[CellGroupData[{
-Cell[4714, 140, 101, 3, 27, "Input",
+Cell[4715, 140, 101, 3, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->730734970],
-Cell[4818, 145, 229, 7, 36, "Output",
+Cell[4819, 145, 229, 7, 36, "Output",
  CellTags->"GluonPropagator",
  CellID->9606294]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5084, 157, 148, 4, 27, "Input",
+Cell[5085, 157, 148, 4, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->1962710719],
-Cell[5235, 163, 589, 17, 56, "Output",
+Cell[5236, 163, 589, 17, 56, "Output",
  CellTags->"GluonPropagator",
  CellID->2023427444]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5861, 185, 206, 6, 27, "Input",
+Cell[5862, 185, 206, 6, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->1432103581],
-Cell[6070, 193, 522, 21, 42, "Output",
+Cell[6071, 193, 522, 21, 42, "Output",
  CellTags->"GluonPropagator",
  CellID->879390685]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6629, 219, 289, 8, 27, "Input",
+Cell[6630, 219, 289, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->922890899],
-Cell[6921, 229, 1860, 73, 87, "Output",
+Cell[6922, 229, 1860, 73, 87, "Output",
  CellTags->"GluonPropagator",
  CellID->1278353242]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8818, 307, 375, 11, 27, "Input",
+Cell[8819, 307, 375, 11, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->617351725],
-Cell[9196, 320, 5127, 193, 88, "Output",
+Cell[9197, 320, 5127, 193, 88, "Output",
  CellTags->"GluonPropagator",
  CellID->780926605]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14360, 518, 218, 7, 27, "Input",
+Cell[14361, 518, 218, 7, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->1065132203],
-Cell[14581, 527, 730, 29, 71, "Output",
+Cell[14582, 527, 730, 29, 71, "Output",
  CellTags->"GluonPropagator",
  CellID->315989703]
 }, Open  ]],
-Cell[15326, 559, 169, 5, 52, "Text",
+Cell[15327, 559, 169, 5, 52, "Text",
  CellTags->"GluonPropagator",
  CellID->688757709],
 Cell[CellGroupData[{
-Cell[15520, 568, 260, 8, 27, "Input",
+Cell[15521, 568, 260, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->629708898],
-Cell[15783, 578, 1853, 73, 89, "Output",
+Cell[15784, 578, 1853, 73, 89, "Output",
  CellTags->"GluonPropagator",
  CellID->1689747408]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17673, 656, 286, 10, 27, "Input",
+Cell[17674, 656, 286, 10, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->1462464756],
-Cell[17962, 668, 421, 13, 49, "Output",
+Cell[17963, 668, 421, 13, 49, "Output",
  CellTags->"GluonPropagator",
  CellID->1893476356]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18420, 686, 293, 8, 27, "Input",
+Cell[18421, 686, 293, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->739433365],
-Cell[18716, 696, 2106, 78, 80, "Output",
+Cell[18717, 696, 2106, 78, 80, "Output",
  CellTags->"GluonPropagator",
  CellID->417079749]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20859, 779, 294, 8, 27, "Input",
+Cell[20860, 779, 294, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->493368144],
-Cell[21156, 789, 2126, 79, 75, "Output",
+Cell[21157, 789, 2126, 79, 75, "Output",
  CellTags->"GluonPropagator",
  CellID->1754648571]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23319, 873, 295, 8, 27, "Input",
+Cell[23320, 873, 295, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->2062559987],
-Cell[23617, 883, 2115, 78, 80, "Output",
+Cell[23618, 883, 2115, 78, 80, "Output",
  CellTags->"GluonPropagator",
  CellID->674017829]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25769, 966, 294, 8, 27, "Input",
+Cell[25770, 966, 294, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->807671915],
-Cell[26066, 976, 2108, 78, 80, "Output",
+Cell[26067, 976, 2108, 78, 80, "Output",
  CellTags->"GluonPropagator",
  CellID->2094855988]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28211, 1059, 295, 8, 27, "Input",
+Cell[28212, 1059, 295, 8, 27, "Input",
  CellTags->"GluonPropagator",
  CellID->1621125251],
-Cell[28509, 1069, 3982, 148, 80, "Output",
+Cell[28510, 1069, 3982, 148, 80, "Output",
  CellTags->"GluonPropagator",
  CellID->1304358400]
 }, Open  ]],
-Cell[32506, 1220, 31, 0, 29, "SectionFooterSpacer"]
+Cell[32507, 1220, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32586, 1226, 270, 12, 31, "SeeAlsoSection",
+Cell[32587, 1226, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[32859, 1240, 787, 27, 32, "Text",
+Cell[32860, 1240, 787, 27, 32, "Text",
  CellTags->"GluonPropagator",
  CellID->1661110705]
 }, Open  ]],
-Cell[33661, 1270, 23, 0, 42, "FooterCell"]
+Cell[33662, 1270, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

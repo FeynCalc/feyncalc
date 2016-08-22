@@ -1,4 +1,420 @@
-### NightlyCalc (development version)
+### Version 9.1.0 (August 2016)
+
+#### Important changes
+* Many new hadndy functions: `FCTraceExpand`, `FCTraceFactor`, `FCGetDimensions`, `FCCanonicalizeDummyIndices`, `TarcerToFC`, `FCReplaceD`, `FCColorIsolate`, `FCDiracIsolate`, `DeclareFCTensor`, `UnDeclareFCTensor`, `CommutatorOrder`
+* Improved support for using `FeynCalc` with custom `FeynRules`-models (see http://www.feyncalc.org/forum/1042.html for more details)
+* `$LimitTo4` is now disabled by default. Even when set to `True`, it is applied only to 1- and 2-point functions (see http://www.feyncalc.org/forum/1077.html for more details). 
+
+#### Commits log
+* Added g-2 calculation to the examples testsuite (a3e66b1)
+* Paclet version updated to 9.1 (fa6c7e7)
+* Rebuilt the documentation. (31f3710)
+* Fixed a small typo in the documentation. (9262470)
+* Updated the changelog for FeynCalc 9.1 (91ae94d)
+* Updated `README.MD` (9e99cd)
+* Fixed a bug in the computation of chiral traces, when West's formula is not used.  (0a25312); Example:
+	```
+	$BreitMaison = True; 
+	(DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],    DiracTraceEvaluate -> True] - DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5], DiracTraceEvaluate -> True, West -> False]) // Simplify
+	```
+* Fixed usage information of `GluonGhostVertex` (thanks to H. Patel). (16a6cbf)
+* For now commented out syntax check in `DataType` (leads to problems with FeynHelpers). (1c534a8)
+* Added an example for the g-2 calculation in QED at 1-loop and corrected few spelling errors. (96aa208) See `Examples/QED/QEDElectronGMinusTwoOneLoop.m`
+* Added several new unit tests for `TARCER` . (c2be321) 
+* Small cleanups in `FeynCalc.m` and `SUNTrace` to prevent unnecessary pollution of the Global context. (ee76da2)
+* Some improvements in `FCTraceExpand` and `FCTraceFactor`. In particular, now `FCTraceFactor` can properly treat nested Dirac traces. (f985c16); Example:
+	```
+	FCTraceExpand[DiracTrace[GA[i, i] + GA[j, j] DiracTrace[GA[a] + GA[b] DiracTrace[GA[x]]]]]
+	```
+* Added option CustomIndexNames to `FCCanonicalizeDummyIndices` and made many improvements to the code. Now one can use `FCCanonicalizeDummyIndices` with arbitrary custom indices, which are treated on the same footing as the built-in indices LorentzIndex, `SUNIndex` und `SUNFIndex`. Einstein's convention is always assumed, though. (1403efe); Example:
+	```
+	FCCanonicalizeDummyIndices[ T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] + T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]], Head -> {MyIndex1, MyIndex2}, CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]
+	```
+* Made automatic expansion of `DiracGamma[Momentum[a]+...]` work also for dimensions other than 4. (4f6169c); Example:
+	```
+	DiracGamma[Momentum[a, D] + Momentum[b, D] + Momentum[c, D], D]
+	```
+* Added checks against predefined scalar products involving loop momenta. This should prevent some stupid mistakes (6fd45b0); Example
+	```
+	SP[q, q] = 0;
+	Tdec[{q, mu}, {p}]
+	```
+* Added a global variable `$ScalarProducts` that keeps track of vector pairs for which a scalar product has been defined. This is useful e.g. if one needs to check if the given variable can be used as a general 4-vector (i.e. loop momentum) or if it already has some rules attached to it. (d15191f)
+* Added new function CommutatorOrder that orders any `Commutator` and `AntiCommutator` lexicographically. (3039650); Example:
+	```
+	CommutatorOrder[Commutator[a, b] + Commutator[b, a]]
+	```
+* Small refactoring in `DotSimplify`. (6e6b01e)
+* Improved `ExpandScalarProduct` to work on arbitrary tensor declared via `DeclareFCTensor`. (fc05a8e); Example
+
+	```
+	DeclareFCTensor[myTens];
+	ExpandScalarProduct[myTens[z, Momentum[a + b], Momentum[c + d]]]
+	UnDeclareFCTensor[myTens];
+	```
+
+* Added `DeclareFCTensor` and `UnDeclareFCTensor`. Now it is possible to declare new tensor heads, just like this done for new non-commutative objects. (bbbe8af)
+* Improved error messages for several function. (d5a0572)
+* Added `TensorArgsList`, an internal list of possible heads that may appear as arguments of tensors. (d815c58)
+
+* Updated list of publications. (12d4b27)
+* Added options `EpsEvaluate` to `ExpandScalarProduct`. This way one can now do both operations via `ExpandScalarProduct[expr, EpsEvaluate->True]`. (a83592d); Example:
+	```
+	ExpandScalarProduct[SP[a + b, c] LC[e, f][g + h, j] LC[][i1, i2, i3, i4 + i5], EpsEvaluate -> True, Momentum -> {a, g}]
+	```
+* Improved `FCCanonicalizeDummyIndices` to allow exclusion of certain index heads (via the `Head` option) and definition of own renaming functions (via the `Function` option). (065ad89)
+* Added `FCColorIsolate`, a handy helper function to extract color structures. (5cf9f56); Example:
+	```
+	FCColorIsolate[SUNF[x, y, z]^2 SUNT[a, b] x + SUNT[c] SUND[i, j, k]]
+	```
+* Added `SUNHeadsList`, an internal list of colored objects. (9bfd660)
+* Added `ToDiracSigma` which is essentialy the inverse of `DiracSigmaExplicit`. (2098ee5); Example:
+	```
+	ToDiracSigma[GA[i, j], GA[i], GA[j]]
+	```
+* Added `Chisholm2` that applies Chisholm identity to eliminate terms of type `GA[i,j,5]`. (7a5c381); Example:
+	```
+	Chisholm2[GA[i, j, 5]]
+	```
+* Fixed a bug in `EpsChisholm`. (0819112); Example:
+	```
+	EpsChisholm[(SpinorUBar[p1, m1].SpinorV[p2, m2] + SpinorUBar[p1,m1].GS[k].SpinorV[p2, m2])]
+	```
+* Fixed a small bug in `Collect2`. (e08933a); Example:
+	```
+	Collect2[Sum[xa[i], {i, 1, 10}] + VAR Sum[xb[i], {i, 1, 10}] + VAR Sum[xx[i], {i, 1, 10}] + VAR^2 Sum[xy[i], {i, 1, 10}] +  VAR^2 Sum[xz[i], {i, 1, 10}], VAR, Factoring -> False, IsolateFast -> True, IsolateNames -> KK] // FRH
+	```
+* Refactored `FermionSpinSum` and added treatment of D-dimensional Dirac spinors (thanks to O. Gituliar). (bc9ce8d); Example:
+	```
+	FermionSpinSum[ChangeDimension[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[p2, +m2].GA[5].GA[i].Spinor[p1, m1], D], Momentum -> {p1, p2}]
+	```
+* Removed obsolete option `SUNFToTraces`. (a9e729e)
+* Added `FCDiracIsolate`, a handy helper function to extract Dirac structures. (ad6af8b); Example:
+	```
+	FCDiracIsolate[ yy GA[i] + xx SpinorUBar[p1, m1].GA[5].SpinorVBar[p2, m2] + zz + DiracTrace[GA[i, j]]]
+	```
+* Added an option to disable `DiracSimplify` in `Chisholm` and `DiracReduce`. (0e4093a)
+* Small performance improvement in `Collect2`. (c0db8ab); Example
+	```
+	Collect2[yy (xx*Sum[p[i] i^2, {i, 1, 100000}] + abc) + abc2, {abc, abc2}, Factoring -> False] // AbsoluteTiming // First
+	```
+* Improved `FCPrepareFAAmp` to handle `FASclarProduct` (thanks to Francesco S). (16671c9)
+* Refactored `EpsChisholm`. (8287f45)
+* Removed `LeviCivitaSign` option from `DiracTrace`, `TR` and `Chisholm`. Instead the value should be set through `$LeviCivitaSign`. A more user-friendly configuration might be added in future. (0551b73)
+* Fixed inconsistent treatment of `$LeviCivitaSign` when it set not to the default value (thanks to Christopher Lester). (e05ed33); Example:
+	```
+	$LeviCivitaSign = -I;
+	DiracReduce[GA[i1, i2, 5]]
+	```
+* Refactored `Chisholm` and added the `LeviCivitaSign` option (thanks to Christopher Lester). (cb44558);
+* Version number bump to 9.1; Development versions are now extra indicated to avoid confustion with stable versions. (e0c75a6)
+* `Eps` should not evaluate to explicit values when it has integer arguments. The result is not-well defined when no distinction between upper and lower indices is made (thanks to Christopher Lester). (a4699d4); Example:
+	```
+	Eps[0, 1, 2, 3]
+	```
+
+* Fixed a bug in `ApartFF` related to singular kinematica (thanks to Shaowu Zhang). (329d5d2); Example:
+	```
+	FCClearScalarProducts[];
+	 ScalarProduct[k, k] = 0;
+	 ScalarProduct[p, p] = m^2;
+	ApartFF[FAD[{q1, m}, {q1 - p}, {q1 - 2 p, m}, {q1 - k - 2 p, m}], {q1}]
+	```
+* Improved `FAPatch` to recognize that a `FeynArts`/`FeynRules` model have already been patched. (21f5783)
+* Fixed a bug (#issue 9) in `DoPolarizationsSums` (thanks to  Luca Mantani). (8944ff3); Example
+	```
+	ScalarProduct[p1, p1] = 0;
+	DoPolarizationSums[Pair[Momentum[Polarization[p1, -I], D],  Momentum[Polarization[p1, I], D]], p1, 0]
+	```
+* Fixed a small bug in `FCE` when applied to metric tensors with explicit Lorentz indices (thanks to Wen Chen). (a7d66ff); Example:
+	```
+	FCE[Pair[ExplicitLorentzIndex[0], LorentzIndex[a]]]
+	```
+* Small fix in `Write2`. (b618ce9)
+* Introduced automatic ordering of masses in `B0` in the `PaVe` notation. (0fc0088); Example:
+	```
+	PaVeReduce[PaVe[2, {p10, p12, p20}, {m1^2, m2^2, m3^2}]]
+	```
+* More debugging output in `OneLoop`. (e2ae9c9)
+* Fixed a bug in the definition of `A00`. (a8c783f); Example:
+	```
+	$LimitTo4 = True;
+	A00[m1^2]
+	```
+* Fixed a bug in `PaVeReduce` that prevented detection of zero Gram deteriminants in C and D functions. (55080de); Example
+	```
+	PaVeReduce[PaVe[1, 2, {(p1 - p2)^2, p1^2, p2^2}, {m2^2, m1^2, m0^2}]]
+	```
+* Added `ToPaVe2`, a function that converts direct Passarino-Veltman functions like `A0`, `B1` etc. to `PaVe` ones. (913a50d); Example:
+	```
+	B0[p^2,m1^2,m2^2]//ToPaVe2
+	```
+* Added an extra test to `SUNSimplify`. Confirms the result from <https://github.com/vermaseren/form/issues/96> (a355845)
+* Adjusted and extended `PaVe` related unit tests. (13987d1)
+* More cleanups in `PaVeIntegrals.m` (0bf24e7)
+* Moved extra simplifications of `B0` functions into `PaVeReduce`. (d21e164)
+* Cleanups in `PaVeIntegrals.m` (faf1f86)
+* Moved all the `$LimitTo4=True` simplifications out of `PaVe`. They are not applied, unless `PaVeAutoReduce` is set to `True`. (64cd9a4)
+* Added `A00`. (1c75e8b)
+* `PaVeAutoReduce` for `PaVe` functions is set to `False` by default. (4163a13)
+* `$LimitTo4` is splitted into `$LimitTo4` (for tadpoles and bubbles) and `$LimitTo4IRUnsafe` (for triangles and boxes). Also, the description of the option is now much less cryptic. (fcfe3e7)
+* Added the option `A0ToB0` directly to `PaVeReduce`. (547dacb)
+* Added some extra `B0`-cases to `PaVeReduce`. (bb535ec)
+* Added the option `PaVeAutoReduce` to `PaVeReduce`. (9ab155e)
+* Improved `PaVeReduce` to handle more different cases (also with zero Gram determinants). (18dcc4d)
+* Fixed a bug in `FCLoopSplit`. (961960b); Example:
+	```
+	FCLoopSplit[+1/6 (m1^2 + m2^2) + A0[m2^2]/6 + 1/3 m1^2 B0[0, m1^2, m2^2] + +1/6 (m1^2 - m2^2) B1[0, m1^2, m2^2], {}]
+	```
+* Added `FCReplaceD`, a function that facilitates taking the limit D->4 without unwanted effects on the FeynCalc functions. (a49487e); Example:
+	```
+	FCReplaceD[ScaleMu^(D - 4) SPD[p, p]*D, D -> 4 - 2 Epsilon]
+	```
+* Small fix in `FUnitTools` related to the recreation of typesetting tests. (c409a14)
+* Added a `CovariantD` with explicit fundamental color indices. Although it can't be used in FeynRule, it is still very useful when deriving Feynman rules by hand. (732a6a9); Example:
+	```
+	CovariantD[i, SUNFIndex[a], SUNFIndex[b], Explicit -> True]
+	```
+* Improved typesetting of `QuantumFields`. Now it is possible to add more (custom) indices that will be typeset correctly. (4659077)
+* Added four new field types to be put into `QuantumField`: `QuarkFieldPsi`, `QuarkFieldPsiDagger`, `QuarkFieldChi`, `QuarkFieldChiDagger`. Currently, only typesetting is attached to them. (562d408)
+* `FCCanonicalizeDummyIndices` can now work also with SU(N) indices, as well as one custom index head (via `Head` option). (6eebc67); Example:
+	```
+	FCCanonicalizeDummyIndices[T1[MyIndex[a], MyIndex[b]] v1[MyIndex[b]] v2[MyIndex[c]], Head -> MyIndex]
+	```
+* `FCFAConvert` can now rename also SU(N) indices by supplying the index names via `SUNIndexNames` and `SUNFIndexNames`. (90e3b59)
+* Adjusted `FDS` to be a bit smarter on 1-loop integrals with same masses. (ed92327); Example:
+	```
+	FDS[Apart2[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}]] - ApartFF[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}], {qp}], qp]
+	```
+* Let `FCTraceExpand` set the PreservePropagatorStructures of internal `DotSimplify`. This (together with `DiracGammaExpand` set to `False`) seems to be the most convenient and sensible way to do expansions of `DiracTraces`. (b155314); Example:
+	```
+	DiracTrace[((GSD[k + p] + M).GA[5].GSD[l - p].GAD[nu].(GSD[l] + M).GAD[la].GSD[k + l] + (GSD[k1 + p1] + M).GA[6].GSD[l1 - p1].GAD[nu].(GSD[l] + M).GAD[la].GSD[k1 + l1]).(GSD[x] + M)] // FCTraceExpand[#, DiracGammaExpand -> False] &
+	```
+* Some refactoring in `DiracSimplify`. Also `InsideDiracTrace` simplifications are now applied agagin after `DiracTrick`. (cd9d228); Example
+	```
+	DiracSimplify[GA[i].(GS[p] + M).GA[j].GA[6].GA[k].GA[j],InsideDiracTrace -> True]
+	```
+* Added new option `PreservePropagatorStructures` to `DotSimplify`. If set to `True`, numerators of fermionic propagators like `(GS[p]+m)` that appear in chains of Dirac matrices will not be expanded. (4d9f34d); Example:
+	```
+	DotSimplify[(GA[i].SUNT[a] (GS[p] + M).GA[j].GA[6].GA[k].GA[j] FAD[p + k, M] + 
+	GA[i].(GS[p1] + M).GA[j].GA[7].GA[j].GA[k] FAD[p1 + k, M]).(GS[q] + m).(GA[l].(GS[p] + M).GA[n] + GA[n].(GS[p] + M).GA[l]), PreservePropagatorStructures -> True]
+	```
+* Corrected a typo in `FeynCalc.m` (f840d00)
+* Improved debugging output in `OneLoop`. (ce133d6)
+* Added new option `FCCheckSyntax`. As checking the syntax in `DiracSimplify` slows things down a lot on big expressions, it is better to make it optional and turned off by default. (34e6aeb); Example
+	```
+	DiracSimplify[SUNT[a] SUNT[b]]
+	DiracSimplify[SUNT[a] SUNT[b], FCCheckSyntax -> True]
+	```
+* Fixed a bug in `DiracTrick` related to `$Larin=True` (thanks to Steffen Schwertfeger <http://www.feyncalc.org/forum/1073.html>) (03756b2); Example:
+	```
+	$BreitMaison = False;
+	$Larin = True;
+	DiracTrick[GAD[a, b, c].GA[5].GAD[b, a, m]]
+	```
+* Fixed a minor bug in `TarcerToFC`. (cbf6334)
+* Added `TarcerToFC`, a small tool to convert integrals in the `Tarcer` notation to the `FeynCalc` notation. (fb06f22); Example:
+	```
+	TarcerToFC[ Tarcer`TFI[D,Pair[Momentum[p, D], Momentum[p, D]], {0, 0, 3, 2,0}, {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}], {q1, q2}]
+	```
+* Moved `FromTFI` to the `QCD` directory. (1fd22cf)
+* Fixed treatment of `FAD`'s with propagator powers equal to zero, i.e. `FAD[{q,m,0}]` now evaluates to `1`. (654f569); Example:
+	```
+	FAD[{q1 - p, 0, 0}]
+	```
+* More debugging output in `PaVeReduce`. (cd4f508)
+* Some more cleanups in the source code of `TARCER`. (fc6851c)
+* Fixed a bug in `TARCER` related to wrong `tlrules` (thanks to Yan, http://www.feyncalc.org/forum/1060.html) (19a53ff); Example:
+	```
+	TarcerRecurse[
+	 TFI[D, Pair[Momentum[p, D], Momentum[p, D]], {0, 0, 3, 2, 0}, {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}]]
+	```
+* Small cleanups in tlrules in `TARCER`. (1be65e1)
+* Fixed a small bug in `FeynRule`. (87315c0) Example:
+	```
+	FeynRule[2*(QuantumField[AntiQuarkField].LeftRightPartialD[
+	+	i1].QuantumField[QuarkField]), {QuantumField[QuarkField][p1],
+	+QuantumField[AntiQuarkField][p2]}]
+	```
+
+* Updated the `FeynCalc` startup message. (ac87b5d)
+* Removed the `eps(l)^mu eps(l)_mu = -1` rule, which is not compatible with D-dimensional polarization vectors (thanks to keith-hamilton for reporting Issue #8). (56482a9); Example:
+	```
+	SPD[p1, p1] = 0;
+	SPD[p2, p2] = 0;
+	Pair[LorentzIndex[Subscript[\[Alpha], 1], D], Momentum[Polarization[p1, I, Transversality -> True], D]] Pair[LorentzIndex[Subscript[\[Alpha], 1], D], 		 Momentum[Polarization[p1, -I, Transversality -> True], D]] Pair[LorentzIndex[Subscript[\[Alpha], 2], D], Momentum[Polarization[p2, I, Transversality -> True], D]] Pair[LorentzIndex[Subscript[\[Alpha], 2], D], Momentum[Polarization[p2, -I, Transversality -> True], D]] // DoPolarizationSums[#, p1, n, Contract -> False] & // DoPolarizationSums[#, p2, n, Contract -> False] & // Contract
+	```
+* Added a unit test for `OneLoop` (thanks to  Yi-Bo Yang). (1d0f03e)
+* Added unit tests for `PairContract`. (a578fb1)
+* Set `PairContract[0,x]` to `0`. (e588312)
+* Fixed a bug in the handling of `PairContract` heads in the input of `Contract`. (f1cd4a5); Example:
+	```
+	Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]]
+	```
+* Some extra debuggin output for `OneLoop`. (a7aefb7)
+* Modified the syntax of `DiracGamma`. From now we have `DiracGamma[0] === 0`. It is also forbidden to enter things like `DiracGamma[1]`, `DiracGamma[2]`, `DiracGamma[3]` etc. Instead, one should use `DiracGamma[ExplicitLorentzIndex[1]]` etc. Of course, `DiracGamma[5]`, `DiracGamma[6]` and `DiracGamma[7]` are still allowed. (537e019)
+* All model parameters like masses, coupling constants and mixing angles can be now represented via `SMP[par]`. `FeynArts` patching was updated accordingly. `FCFAConvert` will introduce `SMP` objects if the option `SMP` is set to `True`. (29b8535)
+* Refactored `FAPatch`. Also added the option `PatchModelsOnly` to patch only the model files in the `FeynArts` `Models` directory (thanks to Xing-Bo Yuan for the suggestion). (da16d74)
+* Adjusted `FCFAConvert` and `FCPrepareFAAmp` to work with amplitudes generated by unpatched `FeynArts`. (0826e85)
+* Fixed `DiracSpinor` to `Spinor` conversion. (1aeca0a); Example
+	```
+	DiracSpinor[p, m]
+	```
+* Updated `.gitignore`. (701faa9)
+* Added 3 more tree level QCD examples for photon gluon, photon quark and quark antiquark processes. (ae26f38); See  `Examples/QCD/QCDGammaStarGToQiQBari.m`, `Examples/QCD/QCDQiGammaStarToQiGTree.m`, `Examples/QCD/QCDQiQBariToGammaStarGTree.m`
+
+* Added `FCCanonicalizeDummyIndices`, a function that canonicalizes dummy Lorentz indices. (0c877bd); Example
+	```
+	FCCanonicalizeDummyIndices[Uncontract[SP[q, p]^4, q, p, Pair -> All], LorentzIndexNames -> {mu, nu, rho, si}] 
+	```
+
+* Added ABJ anomaly example to the test suite. (36fae9b)
+* Some improvements in the documentation. (479b773)
+* Added an extra Contract to `FCMultiLoopTID`. (41b84b3); Example
+	```
+	FCMultiLoopTID[FVD[q1, mu] FVD[q2, nu] LCD[mu, nu][a,b] FAD[{q1 - p1, m1}, {q2 - p2, m2}, {q1 - q2}], {q1, q2}]
+	```
+* Improved Documentation for `TID`. (0aff5ff)
+* Added a unit test for `ToPaVe` in `TID`. (8d072c0)
+* Add an option `Head` to `Collect2` that allows to wrap prefactors into the given Head. (57decb6); Examples:
+	```
+	Collect2[Expand[(a + b + c)^2 (b + d)^3], {a, d}, Head -> hh]
+	```
+* Improved `ApartFF` (actually `FCApart`) to set loop integrals that vanish in DR to zero by default. Not having this was an omission in the original implementation. The "old" behavior can be recovered by setting the option `DropScaleless` to `False`. (8e859cb) ; Examples:
+
+	```
+	FCApart[FAD[{p, m0}, {-k1 + p, m1}] SPD[k1, p]^2 SPD[p, p], {p}, FDS -> False]
+	FCApart[FAD[{p, m0}, {-k1 + p, m1}] SPD[k1, p]^2 SPD[p, p], {p}, FDS -> False, DropScaleless -> False]
+	```
+
+* Block wrong syntax in `ApartFF`. (d48a409); Examples:
+	```
+	ApartFF[SPD[q, q] FAD[{q, m}], q]
+	ApartFF[SPD[q, q] FAD[{q, m}], {q}]
+	```
+* Minor improvement in `FCLoopIsolate`. (3a75ac2)
+* Even more improvements for the options parsing in `Contract`. (0431062)
+* Improved `Contract` to contract multiple occurence of Eps tensors in a more efficient way. Thanks to Jos Vermaseren for the useful explanation. (5b28976); Example:
+	```
+	Contract[LC[i1, i2, i3, dum1] LC[i4, i5, i6, dum1] LC[i10, i11, i12, dum2] LC[i7, i8, i9, dum2]] // FCE
+	```
+* Some cleanups in `Contract.m` (mostly just spacing.) (5ce91d9)
+* Some more improvements in the options parsing and debugging output in `Contract`. (61506cb)
+* Some improvement in the options parsing in `Contract`. (b2e94a5)
+* Small fix in `Isolate`. (ac994f3)
+* Fixed a bug in `DiracSimplify` with `DiracSubstitute67` not being applied to spinor chains. (7f9204c); Examples:
+	```
+	DiracSimplify[Spinor[-Momentum[p2], 0, 1].GS[Polarization[k1, -I]].GS[k1].GS[Polarization[k2, -I]].GA[7].Spinor[Momentum[p1], 0, 1], DiracSubstitute67 -> True]
+	``` 
+* Refactored `ToLarin`. (f937c6b)
+* Removed premature memoization in `DiracTrace`. This doesn't really give a performance gain but rather causes a lot of problems with different gamma^5 schemes. Now we memoize only where it is necessary and safe. (b96cbe9)
+* Added an example for the calcuation of the Adler-Bell-Jackiw anomaly in QED. (8d28e06); See `Examples/QED/QEDABJAxialAnomaly.m`
+* Some refactoring and performance improvements in `Contract`. (ccb705b)
+* Improved calculation of chiral traces in 4 dimensions. (0ab7ee4)
+* Degraded `$West` to `West`, which is now an option of `DiracTrace` and `TR`. Also, `West` has now no effect on the calculations of the chiral traces in 4 dimensions. (033bd54); Examples:
+	```
+	$BreitMaison = True;
+	DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5], DiracTraceEvaluate -> True] // Factor2
+	DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5], DiracTraceEvaluate -> True, West -> False] // Factor2
+	DiracTrace[GA[i1, i2, i3, i4, i5, i6].GA[5], DiracTraceEvaluate -> True] // Factor2
+	DiracTrace[GA[i1, i2, i3, i4, i5, i6].GA[5], DiracTraceEvaluate -> True, West -> False] // Factor2
+	```
+* Some performance improvements in `DiracTrace`. (d9748c9)
+* Some refactoring and better debugging output in `DiracTrace` and `TR`. (0ccf4d9)
+* Some refactoring and better option parsing in `DiracSimplify`. (beffe33)
+* Ensured that Tr[T^a]=0 where T^a is a single color matrix in the fundamental rep is always applied on the level of SUNTFs. (b1e777e); Example:
+	```
+	FCI[SUNTF[a,x,x]]
+	```
+* Added the options `EpsEvaluate` and `ToPaVe` to `TID`. (69539b9)
+* Fixed a bug in `TID` (missing `Contract` at the beginning) reported by YI-Bo Yang. (b78bb62); Example:
+	```
+	TID[FAD[{q, m}] FV[q, i]^2 FV[q, j] FV[q, k], q]
+	```
+* Fixed a bug in `FCE` related to `ExplicitLorentzIndex` (thanks to Wen Chern). (ab5f6c1); Example:
+	```
+	Eps[ExplicitLorentzIndex[0], ExplicitLorentzIndex[1], Momentum[p],Momentum[q]]//FCE
+	```
+* Added the option `BReduce` to `PaVeReduce`. Set to `False` by default. (e11575); Example:
+	```
+	Factor2[(B1[p^2, m0^2, m1^2] // PaVeReduce[#, BReduce -> True] &)]
+	```
+* Improved `FCTraceExpand` to use `DiracGammaExpand` and `FCTraceFactor`. (770810d); Examples:
+	```
+	FCTraceExpand[DiracTrace[GS[p + b]]]
+	FCTraceExpand[DiracTrace[GS[p + b]], DiracGammaExpand -> False]
+	```
+* Fixed mixing of dimensions in shifts of `FDS` (affected `Eps` tensors contracted with loop momentum). (7840801); Example:
+	```
+	FDS[LC[][p1, p2, p3, l] FAD[{l - p, m}, {l + q, m}, l - t], l] // FCE
+	```
+* Set `$LimitTo4=False` as default. Otherwise, IR divergent C-functions might lead to inconsistencies. (2629530)
+* Added `EpsilonUV` and `EpsilonIR` to be able to distinguish between UV and IR divergences in dim reg, when this is needed. Currently those are just placeholders with attached typesetting. (c391187)
+* Added a new option `IsolateFast` to `Isolate`. This way one can isolate special types of very large expressions in a much faster way. (1c0c0e6); Examples:
+	```
+	Isolate[Total[Table[Sqrt[TZ[i] + 2 ZZ[i]]/+HH[ToString[i] + ToString[i + 2] + ToString[i + 4]], {i, 1,100}]]] // AbsoluteTiming
+	Isolate[Total[Table[Sqrt[TZ[i] + 2 ZZ[i]]/+HH[ToString[i] + ToString[i + 2] + ToString[i + 4]], {i, 1,100}]], IsolateFast -> True] // AbsoluteTiming
+	Isolate[Total[Table[Sqrt[TZ[i] + 2 ZZ[i]]/+HH[ToString[i] + ToString[i + 2] + ToString[i + 4]], {i, 1, 10000}]], IsolateFast -> True] // AbsoluteTiming
+	```
+* Added the option `FinalSubstitutions` to `FCFAConvert`. (183e102)
+* Made `MT`, `MTD` and `MTE` orderless. (bb49ab6); Example:
+	```
+	MT[a, b] === MT[b, a]
+	```
+* Fixed a small bug in `Isolate`. (d8de71b); Example:
+	```
+	Isolate[-1 x]
+	```
+* Made `Expand2` faster recognize that the expression is already fully expanded. (37a5728)
+* Refactored `Collect2` and improved the performance on large expressions by switching to `CoefficientArrays`. (bff4790)
+* Fixed a small bug in `FeynmanParametrize`. (2c44965)
+* Refactored the unit testing framework to work as a bash script without Wolfram Workbench. Mathematica 8 and 9 require `MUnit` that can be pulled out of the WWB files. (ee7068c); Examples (under Linux):
+	```
+	inttetsts.sh math 
+	inttetsts.sh math Lorentz
+	inttetsts.sh math Dirac
+	inttetsts.sh math Loop
+	examples.sh
+	```
+* Improved `FCApart`'s internal algorithm and added new option `MaxIterations` to break the fractioning after a given number of iterations. (1225fe1); Example:
+	```
+	FCApart[SPD[k1, p] SPD[p, p] FAD[{p, m0}], {p}, MaxIterations -> 1, FDS -> False]
+	FCApart[SPD[k1, p] SPD[p, p] FAD[{p, m0}], {p}, MaxIterations -> 2, FDS -> False]
+	```
+* Added `FCGetDimensions`, an auxiliary function for checking the dimensionality of the expression. (fd5621b); Example:
+	```
+	FCGetDimensions[{FV[p, mu], FVD[p, mu], FVE[p, mu]}]
+	```
+
+* Fixed wrong context in the unit tests for `FourLaplacian`. (b8562dd)
+* Added `FCTraceFactor` for factoring constants out of `Dirac` traces. (a04902b); Example:
+	```
+	FCTraceFactor[DiracTrace[(a + b).(a - b).DiracTrace[GA[i].c.GA[j]].(a + b)]]
+	```
+* Fixed a bug in `Write2` related to `FortranFormatDoublePrecision` (thanks to Wen-Long Sang). (ea03857); Example:
+	```
+	Write2["sang.abc", abc = 0.6*(-8 + 12 Log[5 + y[1]]), abc1 = 1/x^(2/3), FormatType -> FortranForm, Precision -> 10];
+	Import["sang.abc", "Text"]
+
+	Write2["sang.abc", abc = 0.6*(-8 + 12 Log[5 + y[1]]), abc1 = 1/x^(2/3), FormatType -> FortranForm, Precision -> 3];
+	Import["sang.abc", "Text"]
+
+	Write2["sang.abc", abc = 0.6*(-8 + 12 Log[5 + y[1]]), abc1 = 1/x^(2/3), FormatType -> FortranForm, FortranFormatDoublePrecision -> False];
+	Import["sang.abc", "Text"]
+	```
+
+
+* Improved `FCI` convertion of `FeynAmpDenominator`'s with dimensions other than `D`. (fa58485); Example:
+	```
+	FCI[FCI[FAD[q1, {-p + q1, m}, Dimension -> 4]]]
+	```
+
+* Added `FCTraceExpand`, a function that expands traces without evaluating them. (a9e8745); Example
+	```
+	FCTraceExpand[DiracTrace[GA[i, i] + GA[j, j].DiracTrace[GA[a] + GA[b]]]]
+	```
+* Integrated FeynCalcManual.nb into main documentation. (10c5210)
+* Catch wrong expressions like `Momentum[LorentzIndex[mu]]` or `LorentzIndex[Momentum[p]]` and warn the user immediately. (15fa095)
 
 ### Version 9.0.1 (2016)
  * For publishing reasons, the license has been changed from LGPL 3 to GPL 3

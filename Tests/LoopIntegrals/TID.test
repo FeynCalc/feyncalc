@@ -1,6 +1,6 @@
 Tests`LoopIntegrals`fcstTID =
 {
-{"fcstTID-ID1", "TID[0, l]","0"},
+{"fcstTID-ID1", "$LimitTo4=False; \n TID[0, l]","0"},
 {"fcstTID-ID2", "TID[a + b, l]","a+b"},
 {"fcstTID-ID3", "TID[SPD[p, l], l]","0"},
 {"fcstTID-ID4", "TID[FVD[l, mu], l]","0"},
@@ -192,5 +192,10 @@ GenPaVe[{0, 0}, {{0, m0}, {p1, m1}, {p2, m2}}] MTD[mu, nu]"},
 {"fcstTID-ID17", "TID[DiracTrace[GS[q].GS[p1] + GS[q].GS[p2]] FAD[q, q - p], q] // FCE",
 "2 FAD[q, -p + q] (SPD[p, p1] + SPD[p, p2])"},
 {"fcstTID-ID18", "TID[FAD[{q, m}] FV[q, i]^2 FV[q, j] FV[q, k], q] // FCE",
-"(m^4 FAD[{q, m}] MTD[j, k])/D"}
+"(m^4 FAD[{q, m}] MTD[j, k])/D"},
+{"fcstTID-ID19", "TID[SPD[q, q] FVD[q, mu] FAD[{q, m0}, {q + p, m1}], q,ToPaVe -> True] // FCE",
+"(I m0^2 \[Pi]^2 A0[m0^2] FVD[p, mu])/(2 SPD[p, p]) - (
+I m0^2 \[Pi]^2 B0[SPD[p, p], m0^2, m1^2] FVD[p,
+mu] (m0^2 - m1^2 + SPD[p, p]))/(2 SPD[p, p]) - (
+I \[Pi]^2 A0[m1^2] FVD[p, mu] (m0^2 + 2 SPD[p, p]))/(2 SPD[p, p])"}
 };

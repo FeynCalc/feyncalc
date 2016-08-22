@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12188,        420]
-NotebookOptionsPosition[      7444,        276]
-NotebookOutlinePosition[     10628,        364]
-CellTagsIndexPosition[     10505,        358]
+NotebookDataLength[     12186,        420]
+NotebookOptionsPosition[      7443,        276]
+NotebookOutlinePosition[     10627,        364]
+CellTagsIndexPosition[     10504,        358]
 WindowTitle->FCClearScalarProducts[]
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FCClearScalarProducts.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$57823], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58641], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCClearScalarProducts", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1776549739],
+ CellID->224266882],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->279009291],
+ CellID->595250500],
 
 Cell[CellGroupData[{
 
@@ -289,7 +289,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 10, 2.957291}", 
+   "built" -> "{2016, 8, 21, 21, 19, 9.561304}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -319,38 +319,38 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3398, 94, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3398, 94, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1776549739]},
+   CellID->224266882]},
  "FCClearScalarProducts"->{
-  Cell[4031, 123, 216, 7, 27, "Input",
+  Cell[4030, 123, 216, 7, 27, "Input",
    CellTags->"FCClearScalarProducts",
    CellID->1785698530],
-  Cell[4250, 132, 245, 8, 39, "Output",
+  Cell[4249, 132, 245, 8, 39, "Output",
    CellTags->"FCClearScalarProducts",
    CellID->29501459],
-  Cell[4532, 145, 232, 7, 27, "Input",
+  Cell[4531, 145, 232, 7, 27, "Input",
    CellTags->"FCClearScalarProducts",
    CellID->1559478391],
-  Cell[4767, 154, 246, 8, 39, "Output",
+  Cell[4766, 154, 246, 8, 39, "Output",
    CellTags->"FCClearScalarProducts",
    CellID->988927941],
-  Cell[5028, 165, 148, 4, 27, "Input",
+  Cell[5027, 165, 148, 4, 27, "Input",
    CellTags->"FCClearScalarProducts",
    CellID->368473440],
-  Cell[5201, 173, 232, 7, 27, "Input",
+  Cell[5200, 173, 232, 7, 27, "Input",
    CellTags->"FCClearScalarProducts",
    CellID->1776453168],
-  Cell[5436, 182, 343, 13, 41, "Output",
+  Cell[5435, 182, 343, 13, 41, "Output",
    CellTags->"FCClearScalarProducts",
    CellID->975498131],
-  Cell[5816, 200, 169, 5, 27, "Input",
+  Cell[5815, 200, 169, 5, 27, "Input",
    CellTags->"FCClearScalarProducts",
    CellID->1861458856],
-  Cell[5988, 207, 344, 13, 41, "Output",
+  Cell[5987, 207, 344, 13, 41, "Output",
    CellTags->"FCClearScalarProducts",
    CellID->1717895412],
-  Cell[6700, 243, 702, 28, 31, "Text",
+  Cell[6699, 243, 702, 28, 31, "Text",
    CellTags->"FCClearScalarProducts",
    CellID->958310312]}
  }
@@ -358,7 +358,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 9323, 320},
- {"FCClearScalarProducts", 9471, 324}
+ {"FCClearScalarProducts", 9470, 324}
  }
 *)
 (*NotebookFileOutline
@@ -370,58 +370,58 @@ Cell[2895, 75, 66, 1, 42, "ObjectName",
 Cell[2964, 78, 409, 12, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3398, 94, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3398, 94, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1776549739],
+ CellID->224266882],
 Cell[CellGroupData[{
-Cell[3811, 113, 195, 6, 25, "ExampleSection",
- CellID->279009291],
+Cell[3810, 113, 195, 6, 25, "ExampleSection",
+ CellID->595250500],
 Cell[CellGroupData[{
-Cell[4031, 123, 216, 7, 27, "Input",
+Cell[4030, 123, 216, 7, 27, "Input",
  CellTags->"FCClearScalarProducts",
  CellID->1785698530],
-Cell[4250, 132, 245, 8, 39, "Output",
+Cell[4249, 132, 245, 8, 39, "Output",
  CellTags->"FCClearScalarProducts",
  CellID->29501459]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4532, 145, 232, 7, 27, "Input",
+Cell[4531, 145, 232, 7, 27, "Input",
  CellTags->"FCClearScalarProducts",
  CellID->1559478391],
-Cell[4767, 154, 246, 8, 39, "Output",
+Cell[4766, 154, 246, 8, 39, "Output",
  CellTags->"FCClearScalarProducts",
  CellID->988927941]
 }, Open  ]],
-Cell[5028, 165, 148, 4, 27, "Input",
+Cell[5027, 165, 148, 4, 27, "Input",
  CellTags->"FCClearScalarProducts",
  CellID->368473440],
 Cell[CellGroupData[{
-Cell[5201, 173, 232, 7, 27, "Input",
+Cell[5200, 173, 232, 7, 27, "Input",
  CellTags->"FCClearScalarProducts",
  CellID->1776453168],
-Cell[5436, 182, 343, 13, 41, "Output",
+Cell[5435, 182, 343, 13, 41, "Output",
  CellTags->"FCClearScalarProducts",
  CellID->975498131]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5816, 200, 169, 5, 27, "Input",
+Cell[5815, 200, 169, 5, 27, "Input",
  CellTags->"FCClearScalarProducts",
  CellID->1861458856],
-Cell[5988, 207, 344, 13, 41, "Output",
+Cell[5987, 207, 344, 13, 41, "Output",
  CellTags->"FCClearScalarProducts",
  CellID->1717895412]
 }, Open  ]]
 }, Open  ]],
-Cell[6359, 224, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6358, 224, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6427, 229, 270, 12, 31, "SeeAlsoSection",
+Cell[6426, 229, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6700, 243, 702, 28, 31, "Text",
+Cell[6699, 243, 702, 28, 31, "Text",
  CellTags->"FCClearScalarProducts",
  CellID->958310312]
 }, Open  ]],
-Cell[7417, 274, 23, 0, 42, "FooterCell"]
+Cell[7416, 274, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

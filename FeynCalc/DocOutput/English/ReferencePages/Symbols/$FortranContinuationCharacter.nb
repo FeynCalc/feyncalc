@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8784,        280]
-NotebookOptionsPosition[      5205,        177]
-NotebookOutlinePosition[      7854,        248]
-CellTagsIndexPosition[      7723,        242]
+NotebookDataLength[      8777,        280]
+NotebookOptionsPosition[      5202,        177]
+NotebookOutlinePosition[      7850,        248]
+CellTagsIndexPosition[      7719,        242]
 WindowTitle->$FortranContinuationCharacter
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ FortranContinuationCharacter.html"], StandardForm]], "Input",
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169579], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169520], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$FortranContinuationCharacter", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->576827165],
+ CellID->1062133],
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1616172057],
+ CellID->365290600],
 
 Cell[CellGroupData[{
 
@@ -190,7 +190,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 20, 5.731271}", 
+   "built" -> "{2016, 8, 21, 21, 27, 9.759081}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -221,28 +221,28 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3433, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3433, 95, 385, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->576827165]},
+   CellID->1062133]},
  "$FortranContinuationCharacter"->{
-  Cell[4044, 122, 98, 2, 35, "Subsubsection",
+  Cell[4041, 122, 98, 2, 35, "Subsubsection",
    CellTags->"$FortranContinuationCharacter",
    CellID->1942758352],
-  Cell[4167, 128, 143, 3, 27, "Input",
+  Cell[4164, 128, 143, 3, 27, "Input",
    CellTags->"$FortranContinuationCharacter",
    CellID->1374118326],
-  Cell[4313, 133, 239, 7, 36, "Output",
+  Cell[4310, 133, 239, 7, 36, "Output",
    CellTags->"$FortranContinuationCharacter",
    CellID->1216489439],
-  Cell[4920, 163, 243, 9, 31, "Text",
+  Cell[4917, 163, 243, 9, 31, "Text",
    CellTags->"$FortranContinuationCharacter",
    CellID->1130623945]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7101, 222},
- {"$FortranContinuationCharacter", 7256, 226}
+ {"PrimaryExamplesSection", 7099, 222},
+ {"$FortranContinuationCharacter", 7252, 226}
  }
 *)
 (*NotebookFileOutline
@@ -254,34 +254,34 @@ Cell[2956, 77, 72, 1, 42, "ObjectName",
 Cell[3031, 80, 377, 11, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3433, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3433, 95, 385, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->576827165],
-Cell[3823, 112, 196, 6, 25, "ExampleSection",
- CellID->1616172057],
+ CellID->1062133],
+Cell[3821, 112, 195, 6, 25, "ExampleSection",
+ CellID->365290600],
 Cell[CellGroupData[{
-Cell[4044, 122, 98, 2, 35, "Subsubsection",
+Cell[4041, 122, 98, 2, 35, "Subsubsection",
  CellTags->"$FortranContinuationCharacter",
  CellID->1942758352],
 Cell[CellGroupData[{
-Cell[4167, 128, 143, 3, 27, "Input",
+Cell[4164, 128, 143, 3, 27, "Input",
  CellTags->"$FortranContinuationCharacter",
  CellID->1374118326],
-Cell[4313, 133, 239, 7, 36, "Output",
+Cell[4310, 133, 239, 7, 36, "Output",
  CellTags->"$FortranContinuationCharacter",
  CellID->1216489439]
 }, Open  ]],
-Cell[4567, 143, 31, 0, 29, "SectionFooterSpacer"]
+Cell[4564, 143, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4647, 149, 270, 12, 31, "SeeAlsoSection",
+Cell[4644, 149, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4920, 163, 243, 9, 31, "Text",
+Cell[4917, 163, 243, 9, 31, "Text",
  CellTags->"$FortranContinuationCharacter",
  CellID->1130623945]
 }, Open  ]],
-Cell[5178, 175, 23, 0, 42, "FooterCell"]
+Cell[5175, 175, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

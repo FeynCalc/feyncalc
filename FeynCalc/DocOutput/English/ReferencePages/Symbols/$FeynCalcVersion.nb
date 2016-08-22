@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7506,        235]
-NotebookOptionsPosition[      4461,        145]
-NotebookOutlinePosition[      6873,        211]
-CellTagsIndexPosition[      6755,        205]
+NotebookDataLength[      7512,        235]
+NotebookOptionsPosition[      4463,        145]
+NotebookOutlinePosition[      6877,        211]
+CellTagsIndexPosition[      6759,        205]
 WindowTitle->$FeynCalcVersion
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynCalcVersion.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169153], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169186], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$FeynCalcVersion", ".html"]], None}]}]},
@@ -106,7 +106,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->890203386],
+ CellID->1421813232],
 
 Cell[TextData[{
  "Basic Examples",
@@ -114,7 +114,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->17914931],
+ CellID->753980873],
 
 Cell[CellGroupData[{
 
@@ -158,7 +158,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 20, 1.005893}", 
+   "built" -> "{2016, 8, 21, 21, 27, 8.183592}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -187,25 +187,25 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3327, 93, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3327, 93, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->890203386]},
+   CellID->1421813232]},
  "$FeynCalcVersion"->{
-  Cell[3936, 120, 85, 2, 35, "Subsubsection",
+  Cell[3938, 120, 85, 2, 35, "Subsubsection",
    CellTags->"$FeynCalcVersion",
    CellID->1483320671],
-  Cell[4046, 126, 116, 3, 27, "Input",
+  Cell[4048, 126, 116, 3, 27, "Input",
    CellTags->"$FeynCalcVersion",
    CellID->806604709],
-  Cell[4165, 131, 230, 7, 36, "Output",
+  Cell[4167, 131, 230, 7, 36, "Output",
    CellTags->"$FeynCalcVersion",
    CellID->1396918294]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6294, 188},
- {"$FeynCalcVersion", 6436, 192}
+ {"PrimaryExamplesSection", 6297, 188},
+ {"$FeynCalcVersion", 6440, 192}
  }
 *)
 (*NotebookFileOutline
@@ -217,26 +217,26 @@ Cell[2869, 75, 59, 1, 42, "ObjectName",
 Cell[2931, 78, 371, 11, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3327, 93, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3327, 93, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->890203386],
-Cell[3717, 110, 194, 6, 25, "ExampleSection",
- CellID->17914931],
+ CellID->1421813232],
+Cell[3718, 110, 195, 6, 25, "ExampleSection",
+ CellID->753980873],
 Cell[CellGroupData[{
-Cell[3936, 120, 85, 2, 35, "Subsubsection",
+Cell[3938, 120, 85, 2, 35, "Subsubsection",
  CellTags->"$FeynCalcVersion",
  CellID->1483320671],
 Cell[CellGroupData[{
-Cell[4046, 126, 116, 3, 27, "Input",
+Cell[4048, 126, 116, 3, 27, "Input",
  CellTags->"$FeynCalcVersion",
  CellID->806604709],
-Cell[4165, 131, 230, 7, 36, "Output",
+Cell[4167, 131, 230, 7, 36, "Output",
  CellTags->"$FeynCalcVersion",
  CellID->1396918294]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[4434, 143, 23, 0, 42, "FooterCell"]
+Cell[4436, 143, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

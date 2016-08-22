@@ -248,30 +248,30 @@ InterpretationBox @@ {StyleBox[
 Prefactor1 /: MakeBoxes[Prefactor1[d_], fmt_] :=
 InterpretationBox @@ {MakeBoxes[d, fmt], Prefactor1[d],
 	Editable -> False}
-MakeBoxes[Schiebe[i_, pm_String] , fmt_] :=
+MakeBoxes[Schiebe[i_, pm_String] , _] :=
 InterpretationBox[
 	StyleBox[SuperscriptBox[i, pm], FontWeight -> "Bold"],
 	Schiebe[i, pm], Editable -> True]
-CayleyD /: MakeBoxes[CayleyD[i_Integer][args_], fmt_] :=
+CayleyD /: MakeBoxes[CayleyD[i_Integer][_], _] :=
 	FractionBox[SubscriptBox["\[CapitalDelta]", i], "\[CapitalDelta]"];
-CayleyD /: MakeBoxes[CayleyD[i_Integer, j_Integer][args_], fmt_] :=
+CayleyD /: MakeBoxes[CayleyD[i_Integer, j_Integer][_], _] :=
 	FractionBox[SubscriptBox["\[CapitalDelta]", 10 i + j],
 	"\[CapitalDelta]"];
 CayleyD /:
-	MakeBoxes[CayleyD[i_Integer, j_Integer, k_Integer][args_], fmt_] :=
+	MakeBoxes[CayleyD[i_Integer, j_Integer, k_Integer][_], _] :=
 	FractionBox[SubscriptBox["\[CapitalDelta]", 100  i + 10 j + k],
 	"\[CapitalDelta]"];
-Cayley /: MakeBoxes[Cayley[i_Integer][args_], fmt_] :=
+Cayley /: MakeBoxes[Cayley[i_Integer][_], _] :=
 	SubscriptBox["\[CapitalDelta]", i];
-Cayley /: MakeBoxes[Cayley[i_Integer, j_Integer][args_], fmt_] :=
+Cayley /: MakeBoxes[Cayley[i_Integer, j_Integer][_], _] :=
 	SubscriptBox["\[CapitalDelta]", 10 i + j];
 Cayley /:
-	MakeBoxes[Cayley[i_Integer, j_Integer, k_Integer][args_], fmt_] :=
+	MakeBoxes[Cayley[i_Integer, j_Integer, k_Integer][_], _] :=
 	SubscriptBox["\[CapitalDelta]", 100  i + 10 j + k];
 Cayleyu /:
-	MakeBoxes[Cayleyu[i_Integer, j_Integer, k_Integer][args_], fmt_] :=
+	MakeBoxes[Cayleyu[i_Integer, j_Integer, k_Integer][_], _] :=
 	SubscriptBox["u", 100  i + 10 j + k];
-MakeBoxes[PP, fm_] := InterpretationBox[SuperscriptBox[p, 2], PP];
+MakeBoxes[PP, _] := InterpretationBox[SuperscriptBox[p, 2], PP];
 MakeBoxes[m1^(p_), _] :=
 	InterpretationBox[SubsuperscriptBox[m, 1, p], m1^p];
 MakeBoxes[m2^(p_), _] :=
@@ -361,7 +361,7 @@ TJI /: MakeBoxes[TJI[dpp__, {den__}],
 					Hold[TJI][dpp, {den}], Editable -> True}) /.
 		Hold[TJI] -> TJI) /;
 	MemberQ[{StandardForm, TraditionalForm}, fmt]
-TKI /: MakeBoxes[TKI[d_, pp___, {den__}],
+TKI /: MakeBoxes[TKI[d_, ___, {den__}],
 	fmt_] :=
 		(SubsuperscriptBox[
 		StyleBox["K", SingleLetterItalics -> False,
@@ -379,7 +379,7 @@ TKI /: MakeBoxes[TKI[dpp__, {den__}],
 {TKI[d, {\[Alpha], \[Beta], \[Gamma]}],
 TKI[d, {\[Alpha] + 1, \[Beta], \[Gamma]}],
 TKI[d, {\[Alpha] - 1, \[Beta], \[Gamma]}]}
-TBI /: MakeBoxes[TBI[d_, pp___, {den__}],
+TBI /: MakeBoxes[TBI[d_, ___, {den__}],
 	fmt_] :=
 		(SubsuperscriptBox[
 		StyleBox["B", SingleLetterItalics -> False,
@@ -396,7 +396,7 @@ TBI /: MakeBoxes[TBI[d_, pp___, {den__}],
 	MemberQ[{StandardForm, TraditionalForm}, fmt];
 {TBI[d, {\[Alpha], \[Beta]}], TBI[d, {\[Alpha] + 1, \[Beta]}],
 TBI[d, {\[Alpha] - 1, \[Beta]}]}
-TAI /: MakeBoxes[TAI[d_, pp___, {den__}],
+TAI /: MakeBoxes[TAI[d_, ___, {den__}],
 	fmt_] :=
 		(InterpretationBox @@ {SubsuperscriptBox[
 			StyleBox["A", SingleLetterItalics -> False,
@@ -457,7 +457,7 @@ TJIC /: MakeBoxes[TJIC[dpp__, {den__}],
 					Hold[TJIC][dpp, {den}], Editable -> True}) /.
 		Hold[TJIC] -> TJIC) /;
 	MemberQ[{StandardForm, TraditionalForm}, fmt]
-TBIC /: MakeBoxes[TBIC[d_, pp___, {den__}],
+TBIC /: MakeBoxes[TBIC[d_, ___, {den__}],
 	fmt_] :=
 		(SubsuperscriptBox[
 		StyleBox["B", SingleLetterItalics -> False,
@@ -472,7 +472,7 @@ TBIC /: MakeBoxes[TBIC[d_, pp___, {den__}],
 			RowBox[{"(", ToBoxes[d, TraditionalForm], ")"}]],
 					TBIC[d, pp, {den}], Editable -> True}) /;
 	MemberQ[{StandardForm, TraditionalForm}, fmt];
-TAIC /: MakeBoxes[TAIC[d_, pp___, {den__}],
+TAIC /: MakeBoxes[TAIC[d_, ___, {den__}],
 	fmt_] :=
 		(InterpretationBox @@ {SubsuperscriptBox[
 			StyleBox["A", SingleLetterItalics -> False,
@@ -532,7 +532,7 @@ TJR /: MakeBoxes[TJR[dpp__, {den__}],
 					Hold[TJR][dpp, {den}], Editable -> True}) /.
 		Hold[TJR] -> TJR) /;
 	MemberQ[{StandardForm, TraditionalForm}, fmt]
-TBR /: MakeBoxes[TBR[d_, pp___, {den__}],
+TBR /: MakeBoxes[TBR[d_, ___, {den__}],
 	fmt_] :=
 		(SubsuperscriptBox[
 		StyleBox["B", SingleLetterItalics -> False,
@@ -547,7 +547,7 @@ TBR /: MakeBoxes[TBR[d_, pp___, {den__}],
 			RowBox[{"(", ToBoxes[d, TraditionalForm], ")"}]],
 					TBR[d, pp, {den}], Editable -> True}) /;
 	MemberQ[{StandardForm, TraditionalForm}, fmt];
-TAR /: MakeBoxes[TAR[d_, pp___, {den__}],
+TAR /: MakeBoxes[TAR[d_, ___, {den__}],
 	fmt_] :=
 		(InterpretationBox @@ {SubsuperscriptBox[
 			StyleBox["A", SingleLetterItalics -> False,
@@ -764,7 +764,7 @@ TarasovT[r_, s_, pp_, dp_ /; Head[dp] =!= List] :=
 TarasovT[r, s, pp, dp, {"g", "g", "g", "g", "g"}]
 
 TarasovT[a_, b_, r_, s_, pp_,
-	dp_, {alp1_, alp2_, alp3_, alp4_, alp5_}] :=
+	_, {alp1_, alp2_, alp3_, alp4_, alp5_}] :=
 	Block[{al1, al2, al3, al4, al5, alrul, new, Q1, Q11, Q12, Q2, Q22,
 		dum1, dum2}, If[alp1 === 0, al1 = 0]; If[alp2 === 0, al2 = 0];
 	If[alp3 === 0, al3 = 0]; If[alp4 === 0, al4 = 0];
@@ -776,13 +776,7 @@ TarasovT[a_, b_, r_, s_, pp_,
 	Q2 = al4 al5 + al3 al5 + al1 al4 + al3 al4;
 	Q11 = -(1/4) (al2 + al4 + al5); Q22 = -(1/4) (al1 + al3 + al5);
 	Q12 = -(al5/2); new = I^(-r - s - a - b) \!\(
-\*SubscriptBox[\(\[PartialD]\), \({be1, r}, {be2, s}, {ga1, a}, {ga2,
-				b}\)]\(Exp[
-				I\ \((\((be1\ pp + ga1\ dp)\)\ Q1 + \((be2\ pp +
-							ga2\ dp)\)\ Q2 + be1\ \((be1\ pp + 2\ ga1\ dp)\)\ Q11 +
-					be2\ \((be2\ pp +
-							2\ ga2\ dp)\)\ Q22 + \((be1\ be2\ pp + \((be1\ ga2 +
-								be2\ ga1)\)\ dp)\)\ Q12)\)\ rho]\)\) /.
+\*SubscriptBox[\(\[PartialD]\), \({be1, r}, {be2, s}, {ga1, a}, {ga2, b}\)]\(Exp[I\ \((\((be1\ pp + ga1\ dp)\)\ Q1 + \((be2\ pp + ga2\ dp)\)\ Q2 + be1\ \((be1\ pp + 2\ ga1\ dp)\)\ Q11 + be2\ \((be2\ pp + 2\ ga2\ dp)\)\ Q22 + \((be1\ be2\ pp + \((be1\ ga2 + be2\ ga1)\)\ dp)\)\ Q12)\)\ rho]\)\) /.
 		Join[alrul, {be1 :> 0, be2 :> 0, ga1 :> 0, ga2 :> 0,
 			rho :> -((\[Pi]^2 DPlus)/\[Pi]^2)}]; (Select[#1,
 				FreeQ[#1, ParD] && FreeQ[#1, DPlus] &] TpD[pp,
@@ -793,7 +787,7 @@ ApplyTarasovT[tij_, exp_] := Block[{dump},
 			dump = Product[ParD[j]^dummy, {j, 5}];
 			Expand[
 		tij exp] /.
-	(STLI[de_, pp_, pe__List] TpD[tpp_,
+	(STLI[de_, pp_, pe__List] TpD[_,
 			DPlus^i_. t_]) :>
 
 		MassDerivative[STLI[ de /. de :> (de + 2 i), pp, pe],
@@ -833,7 +827,7 @@ TFI[depp__, {a___, b_Integer, c___}] := TFI[depp, {a, {b, 0}, c}];
 TFI[depp__, {a___, {0, m_ /; m =!= 0}, b___}] :=
 	TFI[depp, {a, {0, 0}, b}];
 TFI[a__, {0, 0}, b__List] := TFI[a, b];
-TFI[d_, pp_, dp_, {0, 0}, {x1_, x2_, x3_, x4_, x5_},
+TFI[d_, pp_, _, {0, 0}, {x1_, x2_, x3_, x4_, x5_},
 	list_List] :=
 			TFI[d, pp, {x1, x2, x3, x4, x5}, list];
 TFI[d_, pp_, dp_, {a_, b_}, {0, 0, 0, 0, 0}, list_List] :=
@@ -949,13 +943,13 @@ If[$Notebooks,
 			! OrderedQ[{{n3, m3}, {n2, m2}, {n1, m1}}]
 TJI[d, pp, {{1, m1}, {1, m2}, {1, m3}}]
 
-TJI[d_, 0, {{_, 0}, {_, 0}, {_, 0}}] := 0
+TJI[_, 0, {{_, 0}, {_, 0}, {_, 0}}] := 0
 TBI[de_, pp_, {{n1_Integer, m1_}, {n2_Integer,
 		m2_}}] := (TJI[de, pp, {{n1, m1}, {n2, m2}}] =
 		TBI[de, pp, Reverse[Sort[{{n1, m1}, {n2, m2}}]]]) /;  !OrderedQ[{{n2, m2}, {n1, m1}}];
 
-TBI[d_, 0, {{_, 0}, {_, 0}}] := 0
-TAI[de_, pp_, {{n1_Integer, 0}}] := 0;
+TBI[_, 0, {{_, 0}, {_, 0}}] := 0
+TAI[_, _, {{_Integer, 0}}] := 0;
 \[CapitalDelta]\[ScriptCapitalC] = (-(1/2))*
 	Det[{{0, 1, 1, 1, 1}, {1, 0, Subscript[\[Mu], 6],
 			Subscript[\[Mu], 4], Subscript[\[Mu], 3]}, {1,
@@ -1163,7 +1157,7 @@ MakeFun[(c_.)*TFI[t__] == (rhs_), eqn_String, IFF[conds_],
 						cD[ijk__] ->
 							Hold[CayleyD[ijk]][
 							addPeP[BLA = nutomass[Last[{t}]] /. nmrel /.
-																			{nuu_, ma_} :> ma]] /.
+																			{_, ma_} :> ma]] /.
 						addPeP -> Identity /.
 					Hold[CompoundExpression] -> CompoundExpression /.
 					Hold[Condition][a_, IFF[b_]] -> a /; b /.
@@ -1255,15 +1249,15 @@ MakeFun[(c_.)*TVI[t__] == (rhs_), eqn_String, IFF[conds_],
 								HoldPattern[TA[aijk__]] ->
 									Hold[TA[aijk]][
 									addPeP[nutomass[Last[{t}]] /. nmrel /.
-																					{nuu_, ma_} :> ma]] /.
+																					{_, ma_} :> ma]] /.
 								cD[ijk__] ->
 								Hold[Cayley[ijk]][
-									addPeP[nutomass[Last[{t}]] /. nmrel /. {nuu_, ma_} :>
+									addPeP[nutomass[Last[{t}]] /. nmrel /. {_, ma_} :>
 										ma]] /. cu[ijk__] -> Hold[Cayleyu[ijk]][
 
 
 								addPeP[nutomass[Last[{t}]] /. addPeP -> Identity /.
-										nmrel /. {nuu_, ma_} :> ma]] /.
+										nmrel /. {_, ma_} :> ma]] /.
 							Hold[CompoundExpression] -> CompoundExpression /.
 						Hold[Condition][a_, IFF[b_]] -> a /; b /.
 													Hold[Set] -> Set /.
@@ -1369,16 +1363,16 @@ MakeFun[(c_.)*TJI[t__] == (rhs_), eqn_String, IFF[conds_],
 									pattern :> Pattern, patternTest :> PatternTest}} /.
 							HoldPattern[TA[aijk__]] -> Hold[TA][aijk][
 
-								addPeP[nutomass[Last[{t}]] /. nmrel /. {nuu_, ma_} :>
+								addPeP[nutomass[Last[{t}]] /. nmrel /. {_, ma_} :>
 										ma]] /. cD[ijk__] ->
 							Hold[Cayley[ijk]][
 								addPeP[nutomass[Last[{t}]] /.
-									nmrel /. {nuu_, ma_Symbol} :> ma]] /.
+									nmrel /. {_, ma_Symbol} :> ma]] /.
 						cu[ijk__] ->
 
 							Hold[Cayleyu[ijk]][
 							addPeP[nutomass[Last[{t}]] /.
-									nmrel /. {nuu_, ma_Symbol} :> ma]] /.
+									nmrel /. {_, ma_Symbol} :> ma]] /.
 						Hold[CompoundExpression] -> CompoundExpression /.
 					Hold[Condition][a_, IFF[b_]] -> a /; b /.
 											Hold[Set] -> Set /. Hold[TComment] -> TComment /.
@@ -1467,9 +1461,9 @@ z /. Subscript[\[CapitalSigma], i_] :>
 						Subscript[\[Phi], k, i, j] +
 		2*(2*d - Subscript[\[Nu], i] - 2*Subscript[\[Nu], j] -
 				2*Subscript[\[Nu], k] - 1)*Subscript[\[Rho], i, j, k]}
-MakeBoxes[TA[a_, d___Symbol, ijk___Integer][__], fmt_] :=
+MakeBoxes[TA[a_, ___Symbol, ijk___Integer][__], _] :=
 SubscriptBox[a, RowBox[{ijk}]]
-MakeBoxes[TA[a_, d___Symbol, ijk___Integer, ___Symbol][__], fmt_] :=
+MakeBoxes[TA[a_, ___Symbol, ijk___Integer, ___Symbol][__], _] :=
 SubscriptBox[a, RowBox[{ijk}]]
 TA[args__][mar_List] := TA[args][mar] = ta[args][mar];
 ta[D, i_Integer, j_Integer, k_Integer][{em__}] :=
@@ -1564,10 +1558,9 @@ If[$CheckRecursion === True,
 				TVIpsi -> TVIPsi /. {gamma[zz_] :>
 				gamma[Expand[zz]]} /. {gamma[(zz_) + (nn_Integer)] :>
 				gamma[zz]*Pochhammer[zz, nn]}; KERN = kern;
-		kern = kern /. {gamma[zz_] :> 1};
+		kern = kern /. {gamma[_] :> 1};
 
-		kern = kern /. {(-1)^((nn_) + (ww_Integer)) :> (-1)^
-					ww} /. {(-1)^(nn_) :> 1};
+		kern = kern /. {(-1)^((_) + (ww_Integer)) :> (-1)^ww} /. {(-1)^(_) :> 1};
 		nkern = Table[
 			kern /. Thread[{d, n1, n2, n3, n4, s1, s2, s3, s4} ->
 				Table[Random[], {9}]], {3}]; nkern,
@@ -1601,10 +1594,9 @@ If[$CheckRecursion === True,
 				TJIpsi -> TJIPsi /. {gamma[zz_] :>
 				gamma[Expand[zz]]} /. {gamma[(zz_) + (nn_Integer)] :>
 				gamma[zz]*Pochhammer[zz, nn]}; KERN = kern;
-		kern = kern /. {gamma[zz_] :> 1};
+		kern = kern /. {gamma[_] :> 1};
 
-		kern = kern /. {(-1)^((nn_) + (ww_Integer)) :> (-1)^
-					ww} /. {(-1)^(nn_) :> 1};
+		kern = kern /. {(-1)^((_) + (ww_Integer)) :> (-1)^ww} /. {(-1)^(_) :> 1};
 		nkern = Table[
 			kern /. Thread[{d, n1, n2, n3, s1, s2, s3} ->
 				Table[Random[], {7}]], {3}]; nkern,
@@ -3837,41 +3829,41 @@ TVR[6 + (d_Symbol), pp_, {{2, m1_}, {1, m1_}, {3, 0}, {1, m1_}}] :=
 			d*(1 + d)*(3 + d)*(-4 + 3*d)*(-2 + 3*d)*(2 + 3*d)*pp^3) /;
 	m1 =!= 0 && pp =!= 0;
 TFR[d_, PP_ /;
-	Head[PP] =!= List, {{0, m1_}, {n2_, m2_}, {n3_, m3_}, {n4_,
+	Head[PP] =!= List, {{0, _}, {n2_, m2_}, {n3_, m3_}, {n4_,
 		m4_}, {n5_, m5_}}] :=
 TVI[d, PP, {{n5, m5}, {n2, m2}, {n3, m3}, {n4, m4}}]
 TFR[d_, PP_ /;
-	Head[PP] =!= List, {{n2_, m2_}, {0, m1_}, {n4_, m4_}, {n3_,
+	Head[PP] =!= List, {{n2_, m2_}, {0, _}, {n4_, m4_}, {n3_,
 		m3_}, {n5_, m5_}}] :=
 TVI[d, PP, {{n5, m5}, {n2, m2}, {n3, m3}, {n4, m4}}]
 TFR[d_, PP_ /;
-	Head[PP] =!= List, {{n3_, m3_}, {n4_, m4_}, {0, m1_}, {n2_,
+	Head[PP] =!= List, {{n3_, m3_}, {n4_, m4_}, {0, _}, {n2_,
 		m2_}, {n5_, m5_}}] :=
 TVI[d, PP, {{n5, m5}, {n2, m2}, {n3, m3}, {n4, m4}}]
 TFR[d_, PP_ /;
 	Head[PP] =!= List, {{n4_, m4_}, {n3_, m3_}, {n2_, m2_}, {0,
-		m1_}, {n5_, m5_}}] :=
+		_}, {n5_, m5_}}] :=
 TVI[d, PP, {{n5, m5}, {n2, m2}, {n3, m3}, {n4, m4}}]
 TFR[d_, PP_ /;
 	Head[PP] =!= List, {{n1_, m1_}, {n2_, m2_}, {n3_, m3_}, {n4_,
-		m4_}, {0, m5_}}] :=
+		m4_}, {0, _}}] :=
 TBI[d, PP, {{n1, m1}, {n3, m3}}]*TBI[d, PP, {{n2, m2}, {n4, m4}}]
-TVI[d_, PP_, {{0, m1_}, {n2_, m2_}, {n3_, m3_}, {n4_, m4_}}] :=
+TVI[d_, PP_, {{0, _}, {n2_, m2_}, {n3_, m3_}, {n4_, m4_}}] :=
 TAI[d, 0, {{n3, m3}}]*TBI[d, PP, {{n2, m2}, {n4, m4}}]
-TVI[d_, PP_, {{n1_, m1_}, {n2_, m2_}, {0, m3_}, {n4_, m4_}}] :=
+TVI[d_, PP_, {{n1_, m1_}, {n2_, m2_}, {0, _}, {n4_, m4_}}] :=
 TAI[d, 0, {{n1, m1}}]*TBI[d, PP, {{n2, m2}, {n4, m4}}]
-TVI[d_, PP_, {{n1_, m1_}, {0, m2_}, {n3_, m3_}, {n4_, m4_}}] :=
+TVI[d_, _, {{n1_, m1_}, {0, _}, {n3_, m3_}, {n4_, m4_}}] :=
 TJI[d, 0, {{n1, m1}, {n3, m3}, {n4, m4}}]
-TVI[d_, PP_, {{n1_, m1_}, {n2_, m2_}, {n3_, m3_}, {0, m4_}}] :=
+TVI[d_, PP_, {{n1_, m1_}, {n2_, m2_}, {n3_, m3_}, {0, _}}] :=
 TJI[d, PP, {{n2, m2}, {n1, m1}, {n3, m3}}]
-TJI[d_, PP_, {{0, m1_}, {n2_, m2_}, {n3_, m3_}}] :=
+TJI[d_, _, {{0, _}, {n2_, m2_}, {n3_, m3_}}] :=
 TAI[d, 0, {{n2, m2}}]*TAI[d, 0, {{n3, m3}}]
-TJI[d_, PP_, {{n1_, m1_}, {0, m2_}, {n3_, m3_}}] :=
+TJI[d_, _, {{n1_, m1_}, {0, _}, {n3_, m3_}}] :=
 TAI[d, 0, {{n1, m1}}]*TAI[d, 0, {{n3, m3}}]
-TJI[d_, PP_, {{n1_, m1_}, {n2_, m2_}, {0, m3_}}] :=
+TJI[d_, _, {{n1_, m1_}, {n2_, m2_}, {0, _}}] :=
 TAI[d, 0, {{n1, m1}}]*TAI[d, 0, {{n2, m2}}]
-TBI[d_, PP_, {{0, m1_}, {n2_, m2_}}] := TAI[d, 0, {{n2, m2}}]
-TBI[d_, PP_, {{n1_, m1_}, {0, m2_}}] := TAI[d, 0, {{n1, m1}}]
+TBI[d_, _, {{0, _}, {n2_, m2_}}] := TAI[d, 0, {{n2, m2}}]
+TBI[d_, _, {{n1_, m1_}, {0, _}}] := TAI[d, 0, {{n1, m1}}]
 TAI[d_, {{n_Integer, m_}}] := TAI[d, 0, {{n, m}}];
 TAI[d_, {n_Integer, m_}] := TAI[d, 0, {{n, m}}];
 TAI[d_, 0, {n_Integer, m_}] := TAI[d, 0, {{n, m}}];
@@ -3881,7 +3873,7 @@ TLRComment[s_String] :=
 applytlrules[y_, fun_] :=
 	fun[y /. TFI -> TLR /. TLRules /. TLR -> TFI];
 TFIRecurse[z_, f_: Identity] :=
-	(FixedPoint[applytlrules[#1, f] & , z, 1000] /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list]);
+	(FixedPoint[(applytlrules[#1, f] ) & , z, 1000] /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list]);
 applytlrules2[y_, fun_] :=
 	fun[y /. TFI -> TLR /. TLRules2 /. TLR -> TFI];
 TFISimplify[z_, f_: Identity] :=
@@ -4011,16 +4003,16 @@ tlrule[9] =
 					Gamma[k + d/2 - 1/2]), {k, 0, Floor[z/2]}, {i, 0, k}, {j,
 				0, k}]]]);
 tlrule[10] =
-	TLR[d_, pp_, {v_, w_, (x_)?PNQ, (y_)?PNQ,
-		z_}, {{(n1_)?PQ, m1_}, {(n2_)?PQ, m2_}, {0, _}, {0, _},
-		nm5_}] :> (TLRComment["tlrule10"]; 0 /; OddQ[x + y]);
+	TLR[_, _, {_, _, (x_)?PNQ, (y_)?PNQ,
+		_}, {{(n1_)?PQ, _}, {(n2_)?PQ, _}, {0, _}, {0, _},
+		_}] :> (TLRComment["tlrule10"]; 0 /; OddQ[x + y]);
 tlrule[11] =
 	TLR[d_, pp_, {v_, w_, (x_)?PQ, (y_)?PQ, z_}, {nm1_,
 		nm2_, {0, _}, {0, _}, {(n5_)?PQ, m5_}}] :>
 			(TLRComment["tlrule11"];
 		ExpandMaybe[(pp/(d + x + y - 2))*((x - 1)*
 					TLR[d, pp, {v + 1, w, x - 2, y,
-						z}, {{n1, m1}, {n2, m2}, {0, 0}, {0, 0}, {n5, m5}}] +
+						z}, {nm1, nm2, {0, 0}, {0, 0}, {n5, m5}}] +
 
 				y*TLR[d,
 					pp, {v, w, x - 1, y - 1, z + 1}, {nm1,
@@ -4032,7 +4024,7 @@ tlrule[12] =
 			(TLRComment["tlrule12"];
 		ExpandMaybe[(pp/(d + x + y - 2))*((y - 1)*
 					TLR[d, pp, {v, w + 1, x, y - 2,
-						z}, {{n1, m1}, {n2, m2}, {0, 0}, {0, 0}, {n5, m5}}] +
+						z}, {nm1, nm2, {0, 0}, {0, 0}, {n5, m5}}] +
 
 				x*TLR[d,
 					pp, {v, w, x - 1, y - 1, z + 1}, {nm1,
@@ -4054,12 +4046,12 @@ tlrule[14] =
 				nm5}], {i, 0, x}]);
 tlrule[15] =
 	HoldPattern[
-		TLR[d_, pp_, {v_, w_, x_, y_,
-			z_}, {{n1_, 0}, {n2_,
+		TLR[_, _, {_, _, _, _,
+			_}, {{_, 0}, {_,
 			0}, {0, _}, {0, _}, {0, _}}]] :> (TLRComment["tlrule15"]; 0);
 tlrule[16] =
-	TLR[d_, pp_, {0, 0, (x_)?PQ, (y_)?PQ,
-		0}, {{n1_, _}, {n2_, _}, {0, _}, {0, _}, {0, _}}] :> (TLRComment[
+	TLR[_, _, {0, 0, (x_)?PQ, (y_)?PQ,
+		0}, {{_, _}, {_, _}, {0, _}, {0, _}, {0, _}}] :> (TLRComment[
 		"tlrule16"]; 0 /; OddQ[x] || OddQ[y]);
 tlrule[17] =
 	TLR[d_, pp_, {(a_)?PQ, b_, 0, de_,
@@ -4241,7 +4233,7 @@ TJIS[d_, 0, {{\[Alpha]_, 0}, {\[Beta]_, M_}, {\[Gamma]_,
 			Gamma[\[Gamma]])*Gamma[d/2]*
 		Gamma[2*\[Alpha] + \[Beta] + \[Gamma] - d])
 TAIS[d_, 0, {{1, M_}}] := (-I)*M^2*SMu*Gamma[(4 - d)/2 - 1]
-TBIS[d_, 0, {{\[Alpha]_, 0}, {\[Beta]_, 0}}] := 0;
+TBIS[_, 0, {{_, 0}, {_, 0}}] := 0;
 TBIS[d_, (M_)^2, {{\[Alpha]_, 0}, {\[Beta]_, 0}}] :=
 I*SMu*(((-1)^(\[Alpha] + \[Beta])/(-M^2)^(\[Alpha] + \[Beta] - 2))*
 		Exp[(-I)*
@@ -4258,8 +4250,7 @@ M^2*SMu^2*(-(6/(-4 + d)^2) +
 			98*Pi^2 - 48*Zeta[3]))
 $CommentNotebook = True;
 TComment[s_String, b_] :=
-If[If[ ! ValueQ[$TarcerRecursed], $TarcerRecursed = {}];  !
-		MemberQ[$TarcerRecursed, {s, b}],
+If[If[ ! ValueQ[$TarcerRecursed], $TarcerRecursed = {}];  !MemberQ[$TarcerRecursed, {s, b}],
 			AppendTo[$TarcerRecursed, {s, b}];
 	If[$Notebooks && $CommentNotebook === True,
 		If[$commentnb === False,
@@ -4485,15 +4476,15 @@ remember[zi_HoldForm] :=
 					ReplacePart[z[[1, 2]],
 					Prepend[Extract[z, {1, 2, 1}, Hold],
 
-						z[[1, 1]] /. PatternTest -> pt /. pt[a_, b_] :> a /.
-							Pattern -> pat /. pat[a_, b_] :> a],
+						z[[1, 1]] /. PatternTest -> pt /. pt[a_, _] :> a /.
+							Pattern -> pat /. pat[a_, _] :> a],
 											1]]] /. Hold[HoldForm] -> HoldForm /. rtfch /.
 			Hold[SetDelayed] -> SetDelayed /. Hold -> Set,
 				Hold[HoldForm][
 				Hold[SetDelayed][z[[1, 1]],
 					Prepend[Extract[z, {1, 2}, Hold],
-					z[[1, 1]] /. PatternTest -> pt /. pt[a_, b_] :> a /.
-						Pattern -> pat /. pat[a_, b_] :> a]]] /.
+					z[[1, 1]] /. PatternTest -> pt /. pt[a_, _] :> a /.
+						Pattern -> pat /. pat[a_, _] :> a]]] /.
 								Hold[HoldForm] -> HoldForm /. rtfch /.
 			Hold[SetDelayed] -> SetDelayed /. Hold -> Set]];
 $TarasovTdeltaplimit

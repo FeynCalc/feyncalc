@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9498,        335]
+NotebookDataLength[      9499,        335]
 NotebookOptionsPosition[      5736,        212]
-NotebookOutlinePosition[      8370,        290]
-CellTagsIndexPosition[      8263,        284]
+NotebookOutlinePosition[      8371,        290]
+CellTagsIndexPosition[      8264,        284]
 WindowTitle->Zeta2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166312], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166437], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Zeta2", 
             ".html"]], None}]}]},
@@ -106,7 +106,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->602186379],
+ CellID->795404074],
 
 Cell[CellGroupData[{
 
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1647796881],
+ CellID->1631755319],
 
 Cell[CellGroupData[{
 
@@ -225,7 +225,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 44.838311}", 
+   "built" -> "{2016, 8, 21, 21, 26, 55.920962}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -256,7 +256,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3249, 93, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->602186379]},
+   CellID->795404074]},
  "Zeta2"->{
   Cell[3882, 122, 95, 3, 27, "Input",
    CellTags->"Zeta2",
@@ -283,8 +283,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7515, 255},
- {"Zeta2", 7646, 259}
+ {"PrimaryExamplesSection", 7516, 255},
+ {"Zeta2", 7647, 259}
  }
 *)
 (*NotebookFileOutline
@@ -298,10 +298,10 @@ Cell[2864, 78, 360, 11, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3249, 93, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->602186379],
+ CellID->795404074],
 Cell[CellGroupData[{
 Cell[3661, 112, 196, 6, 25, "ExampleSection",
- CellID->1647796881],
+ CellID->1631755319],
 Cell[CellGroupData[{
 Cell[3882, 122, 95, 3, 27, "Input",
  CellTags->"Zeta2",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5905,        185]
+NotebookDataLength[      5906,        185]
 NotebookOptionsPosition[      3791,        121]
-NotebookOutlinePosition[      5650,        174]
-CellTagsIndexPosition[      5585,        169]
+NotebookOutlinePosition[      5651,        174]
+CellTagsIndexPosition[      5586,        169]
 WindowTitle->QGV
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$122638], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$124057], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/QGV", 
             ".html"]], None}]}]},
@@ -134,7 +134,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 47.606088}", 
+   "built" -> "{2016, 8, 21, 21, 23, 51.190659}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -168,7 +168,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"QGV", 5480, 162}
+ {"QGV", 5481, 162}
  }
 *)
 (*NotebookFileOutline

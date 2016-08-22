@@ -256,7 +256,7 @@ Cell[BoxData[
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[1]=",
- CellID->266616531]
+ CellID->69652991]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -289,7 +289,7 @@ Cell[BoxData[
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[2]=",
- CellID->895845092]
+ CellID->924683987]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,34 +306,33 @@ Cell[BoxData[
      RowBox[{"GSD", "[", "q", "]"}], "-", "m"}], ")"}], ".", 
    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->934056232],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"4", " ", 
+  RowBox[{
+   RowBox[{"-", "4"}], " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{
       SuperscriptBox["m", "2"], " ", 
-      RowBox[{"(", 
-       RowBox[{"-", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}], ")"}]}], "-", 
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], "+", 
      RowBox[{
       FormBox[
        SuperscriptBox["g", 
@@ -362,7 +361,7 @@ Cell[BoxData[
         FormBox[
          FormBox["q",
           TraditionalForm],
-         TraditionalForm]}], ")"}]}], "+", 
+         TraditionalForm]}], ")"}]}], "-", 
      RowBox[{
       FormBox[
        SuperscriptBox[
@@ -389,7 +388,7 @@ Cell[BoxData[
            TraditionalForm],
           TraditionalForm],
          TraditionalForm]],
-       TraditionalForm]}], "+", 
+       TraditionalForm]}], "-", 
      RowBox[{
       FormBox[
        SuperscriptBox[
@@ -418,8 +417,8 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[3]=",
- CellID->1627800516]
+ CellLabel->"Out[4]=",
+ CellID->918332859]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -430,7 +429,7 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "5"}], 
    "]"}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[4]:=",
+ CellLabel->"In[5]:=",
  CellID->1809199539],
 
 Cell[BoxData[
@@ -456,8 +455,8 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[4]=",
- CellID->425214706]
+ CellLabel->"Out[5]=",
+ CellID->1839075278]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -465,8 +464,6 @@ Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{
   RowBox[{"$Larin", "=", "True"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"$West", "=", "False"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"$BreitMaison", "=", "False"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"TR", "[", 
@@ -477,7 +474,7 @@ Cell[BoxData[{
       "\[Xi]"}], "]"}], ".", 
    RowBox[{"GA", "[", "5", "]"}]}], "]"}]}], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[5]:=",
+ CellLabel->"In[6]:=",
  CellID->476260756],
 
 Cell[BoxData[
@@ -837,47 +834,27 @@ Cell[BoxData[
          TraditionalForm]}]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
  CellLabel->"Out[8]=",
- CellID->239778372]
+ CellID->1115150304]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"?", "$West"}]], "Input",
+ RowBox[{"?", "West"}]], "Input",
  CellTags->{"TR", "Tr"},
  CellLabel->"In[9]:=",
  CellID->1811278693],
 
 Cell[BoxData[
- StyleBox["\<\"If $West is set to True (which is the default), traces \
-involving more than 4 Dirac matrices and gamma5 are calculated recursively \
-according to formula (A.5) from Comp. Phys. Comm 77 (1993) 286-298, which is \
-based on the Breitenlohner Maison gamma5 - scheme.\"\>", 
+ StyleBox["\<\"West is an option for DiracTrace, TR and other functions that \
+deal with traces of Dirac matrices. It applies only to the computation of \
+D-dimensional chiral traces (i.e. those that involve one gamma5) in the \
+Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to True, such \
+traces will be computed according to formula  (A.5) from Comp. Phys. Comm 77 \
+(1993) 286-298, which is also known as West's formula.\"\>", 
   "MSG"]], "Print", "PrintUsage",
- CellTags->{"Info-42f21703-e48e-4523-a52c-4c19c9367db0", "Tr", "TR"},
- CellID->1743711015]
-}, Open  ]],
-
-Cell["\<\
-$West=False should be set before any calculation is done (because \
-intermediate results from trace calculations are cached).\
-\>", "Text",
- CellTags->{"TR", "Tr"},
- CellID->840176476],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"$West", "=", "False"}]], "Input",
- CellTags->{"TR", "Tr"},
- CellLabel->"In[10]:=",
- CellID->1568057115],
-
-Cell[BoxData[
- FormBox["False", TraditionalForm]], "Output",
- CellTags->{"TR", "Tr"},
- CellLabel->"Out[10]=",
- CellID->1910153679]
+ CellTags->{"Info-1f727a11-0560-42a1-a906-fd285e6773a9", "Tr", "TR"},
+ CellID->756420129]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -885,17 +862,19 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"TR", "[", 
   RowBox[{
-   RowBox[{"GAD", "[", 
-    RowBox[{
-     SubscriptBox["\[Nu]", "1"], ",", 
-     SubscriptBox["\[Nu]", "2"], ",", 
-     SubscriptBox["\[Nu]", "3"], ",", 
-     SubscriptBox["\[Nu]", "4"], ",", 
-     SubscriptBox["\[Nu]", "5"], ",", 
-     SubscriptBox["\[Nu]", "6"]}], "]"}], ".", 
-   RowBox[{"GA", "[", "5", "]"}]}], "]"}]], "Input",
+   RowBox[{
+    RowBox[{"GAD", "[", 
+     RowBox[{
+      SubscriptBox["\[Nu]", "1"], ",", 
+      SubscriptBox["\[Nu]", "2"], ",", 
+      SubscriptBox["\[Nu]", "3"], ",", 
+      SubscriptBox["\[Nu]", "4"], ",", 
+      SubscriptBox["\[Nu]", "5"], ",", 
+      SubscriptBox["\[Nu]", "6"]}], "]"}], ".", 
+    RowBox[{"GA", "[", "5", "]"}]}], ",", 
+   RowBox[{"West", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->346772021],
 
 Cell[BoxData[
@@ -1315,8 +1294,8 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]}]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[11]=",
- CellID->1392256565]
+ CellLabel->"Out[10]=",
+ CellID->1575103697]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1326,7 +1305,7 @@ Cell[BoxData[
   RowBox[{"GS", "[", 
    RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[12]:=",
+ CellLabel->"In[11]:=",
  CellID->458206387],
 
 Cell[BoxData[
@@ -1422,8 +1401,8 @@ Cell[BoxData[
            TraditionalForm], "_"],
          TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[12]=",
- CellID->116123442]
+ CellLabel->"Out[11]=",
+ CellID->1197967590]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1442,7 +1421,7 @@ Cell[BoxData[
     RowBox[{"GA", "[", "\[Mu]", "]"}]}], ",", 
    RowBox[{"Factoring", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[13]:=",
+ CellLabel->"In[12]:=",
  CellID->1692893205],
 
 Cell[BoxData[
@@ -1466,8 +1445,8 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[13]=",
- CellID->1111645380]
+ CellLabel->"Out[12]=",
+ CellID->876711937]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1479,7 +1458,7 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
    RowBox[{"FCE", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[14]:=",
+ CellLabel->"In[13]:=",
  CellID->18313474],
 
 Cell[BoxData[
@@ -1505,8 +1484,8 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[14]=",
- CellID->651172375]
+ CellLabel->"Out[13]=",
+ CellID->1133602947]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1514,7 +1493,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[15]:=",
+ CellLabel->"In[14]:=",
  CellID->288461758],
 
 Cell[BoxData[
@@ -1522,8 +1501,8 @@ Cell[BoxData[
   RowBox[{"MT", "[", 
    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[15]//StandardForm=",
- CellID->1580428684]
+ CellLabel->"Out[14]//StandardForm=",
+ CellID->749025554]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1538,7 +1517,7 @@ Cell[BoxData[
     RowBox[{"GAD", "[", "\[Mu]", "]"}]}], ",", 
    RowBox[{"FCE", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[16]:=",
+ CellLabel->"In[15]:=",
  CellID->1390091586],
 
 Cell[BoxData[
@@ -1564,8 +1543,8 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[16]=",
- CellID->1388741059]
+ CellLabel->"Out[15]=",
+ CellID->395116332]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1573,7 +1552,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[17]:=",
+ CellLabel->"In[16]:=",
  CellID->1345196880],
 
 Cell[BoxData[
@@ -1581,8 +1560,8 @@ Cell[BoxData[
   RowBox[{"MT", "[", 
    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[17]//StandardForm=",
- CellID->1987203199]
+ CellLabel->"Out[16]//StandardForm=",
+ CellID->1804637060]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1598,7 +1577,7 @@ Cell[BoxData[
    RowBox[{"SUNDelta", "[", 
     RowBox[{"c", ",", "b"}], "]"}]}]}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[18]:=",
+ CellLabel->"In[17]:=",
  CellID->496024133],
 
 Cell[BoxData[
@@ -1635,8 +1614,8 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[18]=",
- CellID->286955010]
+ CellLabel->"Out[17]=",
+ CellID->868021023]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1647,7 +1626,7 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "False"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[19]:=",
+ CellLabel->"In[18]:=",
  CellID->1457315131],
 
 Cell[BoxData[
@@ -1672,8 +1651,8 @@ Cell[BoxData[
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[19]=",
- CellID->485298780]
+ CellLabel->"Out[18]=",
+ CellID->1886506871]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1684,7 +1663,7 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "True"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[20]:=",
+ CellLabel->"In[19]:=",
  CellID->73677015],
 
 Cell[BoxData[
@@ -1709,8 +1688,8 @@ Cell[BoxData[
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[20]=",
- CellID->614110826]
+ CellLabel->"Out[19]=",
+ CellID->300302100]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1721,14 +1700,14 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "False"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[21]:=",
+ CellLabel->"In[20]:=",
  CellID->1407727695],
 
 Cell[BoxData[
  FormBox["4", TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[21]=",
- CellID->807484559]
+ CellLabel->"Out[20]=",
+ CellID->120665714]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1739,14 +1718,14 @@ Cell[BoxData[
    RowBox[{"SUNTrace", "\[Rule]", "True"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[22]:=",
+ CellLabel->"In[21]:=",
  CellID->806303782],
 
 Cell[BoxData[
  FormBox["4", TraditionalForm]], "Output",
  CellTags->{"TR", "Tr"},
- CellLabel->"Out[22]=",
- CellID->783886455]
+ CellLabel->"Out[21]=",
+ CellID->1048410919]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1756,7 +1735,7 @@ Cell[BoxData[
   RowBox[{"GA", "[", 
    RowBox[{"m", ",", "n"}], "]"}], "]"}]], "Input",
  CellTags->"Tr",
- CellLabel->"In[23]:=",
+ CellLabel->"In[22]:=",
  CellID->864240014],
 
 Cell[BoxData[
@@ -1780,15 +1759,15 @@ Cell[BoxData[
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Tr",
- CellLabel->"Out[23]=",
- CellID->2001172144]
+ CellLabel->"Out[22]=",
+ CellID->1937521482]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Clear", "[", "t", "]"}], ";"}]], "Input",
  CellTags->{"TR", "Tr"},
- CellLabel->"In[24]:=",
+ CellLabel->"In[23]:=",
  CellID->1619609299]
 }, Open  ]],
 
@@ -1852,13 +1831,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 741},
+WindowMargins->{{Automatic, 726}, {56, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

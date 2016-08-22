@@ -1,0 +1,287 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8736,        277]
+NotebookOptionsPosition[      5600,        187]
+NotebookOutlinePosition[      7956,        246]
+CellTagsIndexPosition[      7872,        241]
+WindowTitle->FCGetDimensions
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FCGetDimensions\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FCGetDimensions"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCGetDimensions.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59327], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FCGetDimensions", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FCGetDimensions", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCGetDimensions", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]is an auxiliary function that determines the \
+dimensions \\in which 4-momenta and Dirac matrices of the given expression \
+are defined. The result is returned as a list, e.g. {4}, {D} or {4,D,D-4} \
+etc. This is useful if one want to be sure that all quantities inside a \
+particular expression are purely 4-dimensional or purely D-dimensional."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1252627147],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2109004658],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDimensions", "[", 
+  RowBox[{"GA", "[", "i", "]"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->794908219],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "4", "}"}], TraditionalForm]], "Output",
+ ImageSize->{26, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->2110485460]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDimensions", "[", 
+  RowBox[{"GSD", "[", "p", "]"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->166685856],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "D", "}"}], TraditionalForm]], "Output",
+ ImageSize->{29, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1698743533]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDimensions", "[", 
+  RowBox[{
+   RowBox[{"FVE", "[", 
+    RowBox[{"q", ",", "\[Mu]"}], "]"}], 
+   RowBox[{"GS", "[", "p", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->396565854],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"4", ",", 
+    RowBox[{"D", "-", "4"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{70, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1155109353]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCGetDimensions",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2016, 8, 21, 21, 19, 12.675205}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCGetDimensions[expr] is an auxiliary function that determines the \
+dimensions \\in which 4-momenta and Dirac matrices of the given expression \
+are defined. The result is returned as a list, e.g. {4}, {D} or {4,D,D-4} \
+etc. This is useful if one want to be sure that all quantities inside a \
+particular expression are purely 4-dimensional or purely D-dimensional.", 
+    "synonyms" -> {}, "title" -> "FCGetDimensions", "titlemodifier" -> "", 
+    "windowtitle" -> "FCGetDimensions", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FCGetDimensions"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3638, 97, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1252627147]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7729, 234}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2273, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2863, 75, 58, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2924, 78, 689, 15, 129, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3638, 97, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1252627147],
+Cell[CellGroupData[{
+Cell[4051, 116, 196, 6, 25, "ExampleSection",
+ CellID->2109004658],
+Cell[CellGroupData[{
+Cell[4272, 126, 140, 4, 27, "Input",
+ CellID->794908219],
+Cell[4415, 132, 210, 7, 36, "Output",
+ CellID->2110485460]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4662, 144, 141, 4, 27, "Input",
+ CellID->166685856],
+Cell[4806, 150, 210, 7, 36, "Output",
+ CellID->1698743533]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5053, 162, 219, 7, 27, "Input",
+ CellID->396565854],
+Cell[5275, 171, 259, 9, 36, "Output",
+ CellID->1155109353]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[5573, 185, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

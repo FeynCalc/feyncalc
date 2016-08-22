@@ -1,0 +1,36 @@
+
+
+(* :Title: Chisholm2.test                                                    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Chisholm2                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstChisholm2 =
+({
+{"fcstChisholm2-ID1", "Chisholm2[x]", "x"},
+{"fcstChisholm2-ID2",
+"MatchQ[tmp=Chisholm2[GA[i,j,5]];FCE[tmp],1/2DiracSigma[GA[a_],GA[\
+b_]] LC[i,j,a_,b_]+GA[5] MT[i,j]]", "True"},
+{"fcstChisholm2-ID3",
+"MatchQ[tmp=Chisholm2[(x+GA[i,j,5])];FCE[tmp],x+1/2 \
+DiracSigma[GA[a_],GA[b_]] LC[i,j,a_,b_]+GA[5] MT[i,j]]", "True"},
+{"fcstChisholm2-ID4",
+"MatchQ[tmp=Chisholm2[GA[k,i,j,5,g]];FCE[tmp],1/2 \
+GA[k].DiracSigma[GA[a_],GA[b_]].GA[g] LC[i,j,a_,b_]-GA[k].GA[g].GA[5] \
+MT[i,j]]", "True"},
+{"fcstChisholm2-ID5",
+"MatchQ[tmp=Chisholm2[GA[k,i,j,5,g],DiracSigmaExplicit\[Rule]True];\
+FCE[tmp],1/4 I GA[k].GA[a_].GA[b_].GA[g] LC[i,j,a_,b_]-1/4 I \
+GA[k].GA[b_].GA[a_].GA[g] LC[i,j,a_,b_]-GA[k].GA[g].GA[5] MT[i,j]]",
+"True"}
+})

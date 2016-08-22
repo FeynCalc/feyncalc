@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10073,        321]
-NotebookOptionsPosition[      6535,        222]
+NotebookDataLength[     10072,        321]
+NotebookOptionsPosition[      6534,        222]
 NotebookOutlinePosition[      9262,        292]
 CellTagsIndexPosition[      9136,        286]
 WindowTitle->CovariantFieldDerivative
@@ -60,7 +60,7 @@ CovariantFieldDerivative.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32450], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$33511], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CovariantFieldDerivative", ".html"]], None}]}]},
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2048724429],
+ CellID->697328582],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1930242849],
+ CellID->2038013190],
 
 Cell[CellGroupData[{
 
@@ -235,7 +235,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 42.180775}", 
+   "built" -> "{2016, 8, 21, 21, 17, 23.097478}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -268,24 +268,24 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3800, 103, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3800, 103, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2048724429]},
+   CellID->697328582]},
  "CovariantFieldDerivative"->{
-  Cell[4434, 132, 348, 10, 27, "Input",
+  Cell[4433, 132, 348, 10, 27, "Input",
    CellTags->"CovariantFieldDerivative",
    CellID->2083449432],
-  Cell[4785, 144, 733, 29, 39, "Output",
+  Cell[4784, 144, 733, 29, 39, "Output",
    CellTags->"CovariantFieldDerivative",
    CellID->1282830456],
-  Cell[5886, 196, 607, 21, 32, "Text",
+  Cell[5885, 196, 607, 21, 32, "Text",
    CellTags->"CovariantFieldDerivative",
    CellID->1307362516]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8645, 269},
+ {"PrimaryExamplesSection", 8646, 269},
  {"CovariantFieldDerivative", 8797, 273}
  }
 *)
@@ -298,31 +298,31 @@ Cell[2921, 76, 67, 1, 42, "ObjectName",
 Cell[2991, 79, 784, 20, 113, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3800, 103, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3800, 103, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2048724429],
+ CellID->697328582],
 Cell[CellGroupData[{
-Cell[4213, 122, 196, 6, 25, "ExampleSection",
- CellID->1930242849],
+Cell[4212, 122, 196, 6, 25, "ExampleSection",
+ CellID->2038013190],
 Cell[CellGroupData[{
-Cell[4434, 132, 348, 10, 27, "Input",
+Cell[4433, 132, 348, 10, 27, "Input",
  CellTags->"CovariantFieldDerivative",
  CellID->2083449432],
-Cell[4785, 144, 733, 29, 39, "Output",
+Cell[4784, 144, 733, 29, 39, "Output",
  CellTags->"CovariantFieldDerivative",
  CellID->1282830456]
 }, Open  ]]
 }, Open  ]],
-Cell[5545, 177, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5544, 177, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5613, 182, 270, 12, 31, "SeeAlsoSection",
+Cell[5612, 182, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5886, 196, 607, 21, 32, "Text",
+Cell[5885, 196, 607, 21, 32, "Text",
  CellTags->"CovariantFieldDerivative",
  CellID->1307362516]
 }, Open  ]],
-Cell[6508, 220, 23, 0, 42, "FooterCell"]
+Cell[6507, 220, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

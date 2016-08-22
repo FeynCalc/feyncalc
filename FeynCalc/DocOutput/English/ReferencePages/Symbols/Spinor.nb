@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$141692], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$142301], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Spinor",
              ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->543086134],
+ CellID->802420279],
 
 Cell[CellGroupData[{
 
@@ -164,7 +164,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->990051914],
+ CellID->747810670],
 
 Cell[CellGroupData[{
 
@@ -490,7 +490,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 17, 21.338595}", 
+   "built" -> "{2016, 8, 21, 21, 25, 9.391500}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -528,7 +528,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4706, 141, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->543086134]},
+   CellID->802420279]},
  "Spinor"->{
   Cell[5338, 170, 124, 4, 27, "Input",
    CellTags->"Spinor",
@@ -609,10 +609,10 @@ Cell[2870, 78, 1811, 59, 194, "Usage",
 Cell[CellGroupData[{
 Cell[4706, 141, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->543086134],
+ CellID->802420279],
 Cell[CellGroupData[{
 Cell[5118, 160, 195, 6, 25, "ExampleSection",
- CellID->990051914],
+ CellID->747810670],
 Cell[CellGroupData[{
 Cell[5338, 170, 124, 4, 27, "Input",
  CellTags->"Spinor",
