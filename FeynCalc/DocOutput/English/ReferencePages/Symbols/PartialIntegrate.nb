@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15318,        527]
-NotebookOptionsPosition[      9894,        359]
-NotebookOutlinePosition[     13514,        460]
-CellTagsIndexPosition[     13394,        454]
+NotebookDataLength[     15322,        527]
+NotebookOptionsPosition[      9895,        359]
+NotebookOutlinePosition[     13517,        460]
+CellTagsIndexPosition[     13397,        454]
 WindowTitle->PartialIntegrate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PartialIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115010], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$116521], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PartialIntegrate", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->964855938],
+ CellID->1887046392],
 
 Cell[TextData[{
  "Basic Examples",
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1271055386],
+ CellID->1928672186],
 
 Cell[CellGroupData[{
 
@@ -372,7 +372,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 11.772932}", 
+   "built" -> "{2016, 8, 21, 21, 23, 20.184623}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -403,58 +403,58 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3540, 98, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3540, 98, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->964855938]},
+   CellID->1887046392]},
  "PartialIntegrate"->{
-  Cell[4151, 125, 94, 2, 35, "Subsubsection",
+  Cell[4152, 125, 94, 2, 35, "Subsubsection",
    CellTags->"PartialIntegrate",
    CellID->1897608068],
-  Cell[4270, 131, 150, 4, 27, "Input",
+  Cell[4271, 131, 150, 4, 27, "Input",
    CellTags->"PartialIntegrate",
    CellID->1554098382],
-  Cell[4423, 137, 291, 10, 36, "Output",
+  Cell[4424, 137, 291, 10, 36, "Output",
    CellTags->"PartialIntegrate",
    CellID->1807152704],
-  Cell[4751, 152, 343, 11, 27, "Input",
+  Cell[4752, 152, 343, 11, 27, "Input",
    CellTags->"PartialIntegrate",
    CellID->899216893],
-  Cell[5097, 165, 1335, 44, 55, "Output",
+  Cell[5098, 165, 1335, 44, 55, "Output",
    CellTags->"PartialIntegrate",
    CellID->1654017289],
-  Cell[6469, 214, 292, 10, 29, "Input",
+  Cell[6470, 214, 292, 10, 29, "Input",
    CellTags->"PartialIntegrate",
    CellID->474075126],
-  Cell[6764, 226, 489, 18, 62, "Output",
+  Cell[6765, 226, 489, 18, 62, "Output",
    CellTags->"PartialIntegrate",
    CellID->1187465286],
-  Cell[7290, 249, 311, 11, 54, "Input",
+  Cell[7291, 249, 311, 11, 54, "Input",
    CellTags->"PartialIntegrate",
    CellID->1976852949],
-  Cell[7604, 262, 483, 18, 67, "Output",
+  Cell[7605, 262, 483, 18, 67, "Output",
    CellTags->"PartialIntegrate",
    CellID->347096584],
-  Cell[8124, 285, 461, 15, 45, "Input",
+  Cell[8125, 285, 461, 15, 45, "Input",
    CellTags->"PartialIntegrate",
    CellID->2004778923],
-  Cell[8588, 302, 352, 12, 65, "Output",
+  Cell[8589, 302, 352, 12, 65, "Output",
    CellTags->"PartialIntegrate",
    CellID->1569708030],
-  Cell[8977, 319, 337, 12, 27, "Input",
+  Cell[8978, 319, 337, 12, 27, "Input",
    CellTags->"PartialIntegrate",
    CellID->359240358],
-  Cell[9317, 333, 352, 12, 65, "Output",
+  Cell[9318, 333, 352, 12, 65, "Output",
    CellTags->"PartialIntegrate",
    CellID->1067599584],
-  Cell[9684, 348, 156, 5, 27, "Input",
+  Cell[9685, 348, 156, 5, 27, "Input",
    CellTags->"PartialIntegrate",
    CellID->1553816606]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11863, 404},
- {"PartialIntegrate", 12005, 408}
+ {"PrimaryExamplesSection", 11865, 404},
+ {"PartialIntegrate", 12008, 408}
  }
 *)
 (*NotebookFileOutline
@@ -466,69 +466,69 @@ Cell[2869, 75, 59, 1, 42, "ObjectName",
 Cell[2931, 78, 584, 16, 98, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3540, 98, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3540, 98, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->964855938],
-Cell[3930, 115, 196, 6, 25, "ExampleSection",
- CellID->1271055386],
+ CellID->1887046392],
+Cell[3931, 115, 196, 6, 25, "ExampleSection",
+ CellID->1928672186],
 Cell[CellGroupData[{
-Cell[4151, 125, 94, 2, 35, "Subsubsection",
+Cell[4152, 125, 94, 2, 35, "Subsubsection",
  CellTags->"PartialIntegrate",
  CellID->1897608068],
 Cell[CellGroupData[{
-Cell[4270, 131, 150, 4, 27, "Input",
+Cell[4271, 131, 150, 4, 27, "Input",
  CellTags->"PartialIntegrate",
  CellID->1554098382],
-Cell[4423, 137, 291, 10, 36, "Output",
+Cell[4424, 137, 291, 10, 36, "Output",
  CellTags->"PartialIntegrate",
  CellID->1807152704]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4751, 152, 343, 11, 27, "Input",
+Cell[4752, 152, 343, 11, 27, "Input",
  CellTags->"PartialIntegrate",
  CellID->899216893],
-Cell[5097, 165, 1335, 44, 55, "Output",
+Cell[5098, 165, 1335, 44, 55, "Output",
  CellTags->"PartialIntegrate",
  CellID->1654017289]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6469, 214, 292, 10, 29, "Input",
+Cell[6470, 214, 292, 10, 29, "Input",
  CellTags->"PartialIntegrate",
  CellID->474075126],
-Cell[6764, 226, 489, 18, 62, "Output",
+Cell[6765, 226, 489, 18, 62, "Output",
  CellTags->"PartialIntegrate",
  CellID->1187465286]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7290, 249, 311, 11, 54, "Input",
+Cell[7291, 249, 311, 11, 54, "Input",
  CellTags->"PartialIntegrate",
  CellID->1976852949],
-Cell[7604, 262, 483, 18, 67, "Output",
+Cell[7605, 262, 483, 18, 67, "Output",
  CellTags->"PartialIntegrate",
  CellID->347096584]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8124, 285, 461, 15, 45, "Input",
+Cell[8125, 285, 461, 15, 45, "Input",
  CellTags->"PartialIntegrate",
  CellID->2004778923],
-Cell[8588, 302, 352, 12, 65, "Output",
+Cell[8589, 302, 352, 12, 65, "Output",
  CellTags->"PartialIntegrate",
  CellID->1569708030]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8977, 319, 337, 12, 27, "Input",
+Cell[8978, 319, 337, 12, 27, "Input",
  CellTags->"PartialIntegrate",
  CellID->359240358],
-Cell[9317, 333, 352, 12, 65, "Output",
+Cell[9318, 333, 352, 12, 65, "Output",
  CellTags->"PartialIntegrate",
  CellID->1067599584]
 }, Open  ]],
-Cell[9684, 348, 156, 5, 27, "Input",
+Cell[9685, 348, 156, 5, 27, "Input",
  CellTags->"PartialIntegrate",
  CellID->1553816606]
 }, Open  ]]
 }, Open  ]],
-Cell[9867, 357, 23, 0, 42, "FooterCell"]
+Cell[9868, 357, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

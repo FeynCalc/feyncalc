@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12348,        458]
-NotebookOptionsPosition[      7962,        308]
-NotebookOutlinePosition[     10870,        397]
-CellTagsIndexPosition[     10766,        391]
+NotebookDataLength[     12493,        464]
+NotebookOptionsPosition[      8106,        314]
+NotebookOutlinePosition[     11015,        403]
+CellTagsIndexPosition[     10911,        397]
 WindowTitle->MT
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$103820], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$105514], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/MT", 
             ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->642913325],
+ CellID->132005641],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->638245537],
+ CellID->435885382],
 
 Cell[CellGroupData[{
 
@@ -298,6 +298,12 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/MTD",
   ButtonNote->"MTD"],
   FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MTE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MTE",
+  ButtonNote->"MTE"],
+  FontFamily->"Verdana"],
  "."
 }], "Text",
  CellTags->"MT",
@@ -321,7 +327,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 18.220461}", 
+   "built" -> "{2016, 8, 21, 21, 22, 33.927055}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -351,7 +357,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3288, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->642913325]},
+   CellID->132005641]},
  "MT"->{
   Cell[3920, 124, 152, 5, 27, "Input",
    CellTags->"MT",
@@ -383,15 +389,15 @@ CellTagsIndex->{
   Cell[6465, 239, 239, 8, 49, "Output",
    CellTags->"MT",
    CellID->62630223],
-  Cell[7072, 270, 848, 33, 28, "Text",
+  Cell[7072, 270, 992, 39, 28, "Text",
    CellTags->"MT",
    CellID->897903284]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9712, 350},
- {"MT", 9840, 354}
+ {"PrimaryExamplesSection", 9857, 356},
+ {"MT", 9985, 360}
  }
 *)
 (*NotebookFileOutline
@@ -405,10 +411,10 @@ Cell[2859, 78, 404, 13, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3288, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->642913325],
+ CellID->132005641],
 Cell[CellGroupData[{
 Cell[3700, 114, 195, 6, 25, "ExampleSection",
- CellID->638245537],
+ CellID->435885382],
 Cell[CellGroupData[{
 Cell[3920, 124, 152, 5, 27, "Input",
  CellTags->"MT",
@@ -455,11 +461,11 @@ Cell[6731, 251, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[6799, 256, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7072, 270, 848, 33, 28, "Text",
+Cell[7072, 270, 992, 39, 28, "Text",
  CellTags->"MT",
  CellID->897903284]
 }, Open  ]],
-Cell[7935, 306, 23, 0, 70, "FooterCell"]
+Cell[8079, 312, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -1,0 +1,1069 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28644,       1059]
+NotebookOptionsPosition[     24531,        927]
+NotebookOutlinePosition[     26648,        983]
+CellTagsIndexPosition[     26563,        978]
+WindowTitle->FCTraceExpand
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracTrace\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracTrace"], "\<\"SUNTrace\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SUNTrace"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FCTraceExpand\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FCTraceExpand"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCTraceExpand.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63400], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FCTraceExpand", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FCTraceExpand", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCTraceExpand", "[", "expr", "]"}]], "InlineFormula"],
+     " expands traces of Dirac and SU(N) matrices using linearity of the \
+trace. The traces themselves are not evaluated."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->216663855],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->718614792],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dtr1", "=", 
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GA", "[", "mu", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
+     RowBox[{"GA", "[", "nu", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
+     RowBox[{"GA", "[", "rho", "]"}]}], "+", "x"}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->55860621],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     RowBox[{
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["mu",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p1",
+             TraditionalForm], "_"],
+           TraditionalForm]}],
+         TraditionalForm], "+", "m1"}], ")"}], ".", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["nu",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p2",
+             TraditionalForm], "_"],
+           TraditionalForm]}],
+         TraditionalForm], "+", "m2"}], ")"}], ".", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["rho",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}], "+", "x"}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{314, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->632138578]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCTraceExpand", "[", "dtr1", "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->502042032],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"m1", " ", "m2", " ", 
+    RowBox[{"tr", "(", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["mu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["nu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["rho",
+          TraditionalForm],
+         TraditionalForm]]}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"m1", " ", 
+    RowBox[{"tr", "(", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["mu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["nu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm]}], ")"}], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["rho",
+          TraditionalForm],
+         TraditionalForm]]}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"m2", " ", 
+    RowBox[{"tr", "(", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["mu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm]}], ")"}], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["nu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["rho",
+          TraditionalForm],
+         TraditionalForm]]}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"tr", "(", 
+    FormBox[
+     RowBox[{
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["mu",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["nu",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["p2",
+           TraditionalForm], "_"],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["rho",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], ")"}], "+", 
+   RowBox[{
+    RowBox[{"tr", "(", 
+     FormBox["1",
+      TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
+ ImageSize->{494, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->712633835]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCTraceExpand", "[", 
+  RowBox[{"dtr1", ",", 
+   RowBox[{"DotSimplify", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->611074974],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"tr", "(", 
+    FormBox[
+     RowBox[{
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["mu",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm]}], "+", "m1"}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["nu",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm]}], "+", "m2"}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["rho",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], ")"}], "+", 
+   RowBox[{
+    RowBox[{"tr", "(", 
+     FormBox["1",
+      TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
+ ImageSize->{348, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1845830738]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCTraceExpand", "[", 
+  RowBox[{"dtr1", ",", 
+   RowBox[{"DiracTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1030948092],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["mu",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm]}], "+", "m1"}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["nu",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm]}], "+", "m2"}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["rho",
+         TraditionalForm],
+        TraditionalForm]]}], "+", "x"}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{314, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->1121814026]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dtr2", "=", 
+  RowBox[{
+   RowBox[{"a", "*", 
+    RowBox[{"DiracTrace", "[", 
+     RowBox[{
+      RowBox[{"GA", "[", "mu", "]"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
+      RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}], "+", 
+   RowBox[{"b", "*", 
+    RowBox[{"DiracTrace", "[", 
+     RowBox[{
+      RowBox[{"GA", "[", "mu", "]"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
+      RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}]}]}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->312665650],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"a", " ", 
+    RowBox[{"tr", "(", 
+     FormBox[
+      RowBox[{
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["mu",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          RowBox[{
+           OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+           FormBox[
+            OverscriptBox[
+             FormBox["p1",
+              TraditionalForm], "_"],
+            TraditionalForm]}],
+          TraditionalForm], "+", "m1"}], ")"}], ".", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["nu",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"b", " ", 
+    RowBox[{"tr", "(", 
+     FormBox[
+      RowBox[{
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["mu",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          RowBox[{
+           OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+           FormBox[
+            OverscriptBox[
+             FormBox["p2",
+              TraditionalForm], "_"],
+            TraditionalForm]}],
+          TraditionalForm], "+", "m2"}], ")"}], ".", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["nu",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}],
+      TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{381, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->141070294]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCTraceExpand", "[", 
+  RowBox[{"dtr2", ",", 
+   RowBox[{"Momentum", "\[Rule]", 
+    RowBox[{"{", "p1", "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->851121632],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"a", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"m1", " ", 
+       RowBox[{"tr", "(", 
+        FormBox[
+         RowBox[{
+          SuperscriptBox[
+           OverscriptBox["\[Gamma]", "_"], 
+           FormBox[
+            FormBox["mu",
+             TraditionalForm],
+            TraditionalForm]], ".", 
+          SuperscriptBox[
+           OverscriptBox["\[Gamma]", "_"], 
+           FormBox[
+            FormBox["nu",
+             TraditionalForm],
+            TraditionalForm]]}],
+         TraditionalForm], ")"}]}], "+", 
+      RowBox[{"tr", "(", 
+       FormBox[
+        RowBox[{
+         SuperscriptBox[
+          OverscriptBox["\[Gamma]", "_"], 
+          FormBox[
+           FormBox["mu",
+            TraditionalForm],
+           TraditionalForm]], ".", 
+         RowBox[{"(", 
+          RowBox[{
+           OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+           FormBox[
+            OverscriptBox[
+             FormBox["p1",
+              TraditionalForm], "_"],
+            TraditionalForm]}], ")"}], ".", 
+         SuperscriptBox[
+          OverscriptBox["\[Gamma]", "_"], 
+          FormBox[
+           FormBox["nu",
+            TraditionalForm],
+           TraditionalForm]]}],
+        TraditionalForm], ")"}]}], ")"}]}], "+", 
+   RowBox[{"b", " ", 
+    RowBox[{"tr", "(", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["mu",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p2",
+             TraditionalForm], "_"],
+           TraditionalForm]}], "+", "m2"}], ")"}], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["nu",
+          TraditionalForm],
+         TraditionalForm]]}],
+      TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{480, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->1128579487]
+}, Open  ]],
+
+Cell["\<\
+At the moment SUNTrace automatically expands its content, so here \
+FCTraceExpand is not needed. However, this may change in the future.\
+\>", "Notes",
+ CellID->1671076290],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"str", "=", 
+  RowBox[{"SUNTrace", "[", 
+   RowBox[{
+    RowBox[{"SUNT", "[", 
+     RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
+    RowBox[{"SUNT", "[", 
+     RowBox[{"l", ",", "m", ",", "n"}], "]"}]}], "]"}]}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->1858007214],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox["\<\"tr\"\>",
+     TraditionalForm], 
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["i",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["j",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["k",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox["\<\"tr\"\>",
+     TraditionalForm], 
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["l",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["m",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["n",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{217, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]=",
+ CellID->1073657663]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCTraceExpand", "[", "str", "]"}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->1593699893],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox["\<\"tr\"\>",
+     TraditionalForm], 
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["i",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["j",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["k",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox["\<\"tr\"\>",
+     TraditionalForm], 
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["l",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["m",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["n",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{217, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]=",
+ CellID->1696291909]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCTraceExpand", "[", 
+  RowBox[{"str", ",", 
+   RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->805159379],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox["\<\"tr\"\>",
+     TraditionalForm], 
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["i",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["j",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["k",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox["\<\"tr\"\>",
+     TraditionalForm], 
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["l",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["m",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["T", 
+       FormBox[
+        FormBox["n",
+         TraditionalForm],
+        TraditionalForm]]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{217, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[9]=",
+ CellID->555663597]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrace"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SUNTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNTrace"],
+  FontFamily->"Verdana"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCTraceExpand",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2016, 8, 21, 21, 19, 30.422965}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCTraceExpand[expr] expands traces of Dirac and SU(N) matrices using \
+linearity of the trace. The traces themselves are not evaluated.", 
+    "synonyms" -> {}, "title" -> "FCTraceExpand", "titlemodifier" -> "", 
+    "windowtitle" -> "FCTraceExpand", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FCTraceExpand"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4196, 116, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->216663855]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 26420, 971}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[585, 21, 3083, 74, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[3671, 97, 56, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[3730, 100, 441, 12, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4196, 116, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->216663855],
+Cell[CellGroupData[{
+Cell[4608, 135, 195, 6, 25, "ExampleSection",
+ CellID->718614792],
+Cell[CellGroupData[{
+Cell[4828, 145, 488, 15, 27, "Input",
+ CellID->55860621],
+Cell[5319, 162, 1544, 57, 46, "Output",
+ CellID->632138578]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6900, 224, 112, 3, 27, "Input",
+ CellID->502042032],
+Cell[7015, 229, 3653, 134, 75, "Output",
+ CellID->712633835]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10705, 368, 179, 5, 27, "Input",
+ CellID->611074974],
+Cell[10887, 375, 1399, 51, 46, "Output",
+ CellID->1845830738]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12323, 431, 179, 5, 27, "Input",
+ CellID->1030948092],
+Cell[12505, 438, 1305, 47, 46, "Output",
+ CellID->1121814026]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13847, 490, 636, 20, 45, "Input",
+ CellID->312665650],
+Cell[14486, 512, 1932, 71, 42, "Output",
+ CellID->141070294]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16455, 588, 198, 6, 27, "Input",
+ CellID->851121632],
+Cell[16656, 596, 2181, 77, 42, "Output",
+ CellID->1128579487]
+}, Open  ]],
+Cell[18852, 676, 182, 4, 45, "Notes",
+ CellID->1671076290],
+Cell[CellGroupData[{
+Cell[19059, 684, 292, 9, 27, "Input",
+ CellID->1858007214],
+Cell[19354, 695, 1363, 57, 40, "Output",
+ CellID->1073657663]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20754, 757, 112, 3, 27, "Input",
+ CellID->1593699893],
+Cell[20869, 762, 1363, 57, 40, "Output",
+ CellID->1696291909]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22269, 824, 175, 5, 27, "Input",
+ CellID->805159379],
+Cell[22447, 831, 1362, 57, 40, "Output",
+ CellID->555663597]
+}, Open  ]]
+}, Open  ]],
+Cell[23836, 892, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23904, 897, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[24177, 911, 312, 11, 55, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[24504, 925, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

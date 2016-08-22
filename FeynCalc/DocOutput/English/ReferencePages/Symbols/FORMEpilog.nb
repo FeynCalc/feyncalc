@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6307,        194]
+NotebookDataLength[      6308,        194]
 NotebookOptionsPosition[      4056,        128]
-NotebookOutlinePosition[      6044,        183]
-CellTagsIndexPosition[      5972,        178]
+NotebookOutlinePosition[      6045,        183]
+CellTagsIndexPosition[      5973,        178]
 WindowTitle->FORMEpilog
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$70305], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73009], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FORMEpilog", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 15.360476}", 
+   "built" -> "{2016, 8, 21, 21, 20, 11.561638}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -177,7 +177,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"FORMEpilog", 5859, 171}
+ {"FORMEpilog", 5860, 171}
  }
 *)
 (*NotebookFileOutline

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38018,       1520]
-NotebookOptionsPosition[     26909,       1137]
-NotebookOutlinePosition[     33207,       1330]
-CellTagsIndexPosition[     33093,       1324]
+NotebookDataLength[     38023,       1520]
+NotebookOptionsPosition[     26910,       1137]
+NotebookOutlinePosition[     33211,       1330]
+CellTagsIndexPosition[     33097,       1324]
 WindowTitle->Contract
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30016], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31077], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Contract", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->695145631],
+ CellID->1888116803],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1321678611],
+ CellID->1249084733],
 
 Cell[CellGroupData[{
 
@@ -1150,7 +1150,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 31.954977}", 
+   "built" -> "{2016, 8, 21, 21, 17, 12.404937}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1183,148 +1183,148 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3601, 98, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3601, 98, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->695145631]},
+   CellID->1888116803]},
  "Contract"->{
-  Cell[4234, 127, 133, 4, 27, "Input",
+  Cell[4235, 127, 133, 4, 27, "Input",
    CellTags->"Contract",
    CellID->269618302],
-  Cell[4370, 133, 718, 19, 75, "Output",
+  Cell[4371, 133, 718, 19, 75, "Output",
    CellTags->"Contract",
    CellID->833332161],
-  Cell[5125, 157, 252, 8, 27, "Input",
+  Cell[5126, 157, 252, 8, 27, "Input",
    CellTags->"Contract",
    CellID->2011968461],
-  Cell[5380, 167, 891, 39, 40, "Output",
+  Cell[5381, 167, 891, 39, 40, "Output",
    CellTags->"Contract",
    CellID->2005708503],
-  Cell[6308, 211, 126, 4, 27, "Input",
+  Cell[6309, 211, 126, 4, 27, "Input",
    CellTags->"Contract",
    CellID->26500400],
-  Cell[6437, 217, 442, 19, 40, "Output",
+  Cell[6438, 217, 442, 19, 40, "Output",
    CellTags->"Contract",
    CellID->246386443],
-  Cell[6916, 241, 218, 7, 27, "Input",
+  Cell[6917, 241, 218, 7, 27, "Input",
    CellTags->"Contract",
    CellID->2005973076],
-  Cell[7137, 250, 658, 28, 40, "Output",
+  Cell[7138, 250, 658, 28, 40, "Output",
    CellTags->"Contract",
    CellID->163860977],
-  Cell[7832, 283, 128, 4, 27, "Input",
+  Cell[7833, 283, 128, 4, 27, "Input",
    CellTags->"Contract",
    CellID->1342373134],
-  Cell[7963, 289, 372, 14, 38, "Output",
+  Cell[7964, 289, 372, 14, 38, "Output",
    CellTags->"Contract",
    CellID->1083734914],
-  Cell[8372, 308, 163, 5, 27, "Input",
+  Cell[8373, 308, 163, 5, 27, "Input",
    CellTags->"Contract",
    CellID->2121383633],
-  Cell[8538, 315, 512, 22, 38, "Output",
+  Cell[8539, 315, 512, 22, 38, "Output",
    CellTags->"Contract",
    CellID->165921051],
-  Cell[9065, 340, 104, 2, 31, "Text",
+  Cell[9066, 340, 104, 2, 31, "Text",
    CellTags->"Contract",
    CellID->1017368063],
-  Cell[9194, 346, 128, 4, 27, "Input",
+  Cell[9195, 346, 128, 4, 27, "Input",
    CellTags->"Contract",
    CellID->1110085557],
-  Cell[9325, 352, 210, 7, 36, "Output",
+  Cell[9326, 352, 210, 7, 36, "Output",
    CellTags->"Contract",
    CellID->1413622880],
-  Cell[9550, 362, 228, 6, 52, "Text",
+  Cell[9551, 362, 228, 6, 52, "Text",
    CellTags->"Contract",
    CellID->607767486],
-  Cell[9803, 372, 250, 8, 27, "Input",
+  Cell[9804, 372, 250, 8, 27, "Input",
    CellTags->"Contract",
    CellID->1404498417],
-  Cell[10056, 382, 1015, 44, 38, "Output",
+  Cell[10057, 382, 1015, 44, 38, "Output",
    CellTags->"Contract",
    CellID->1257189010],
-  Cell[11108, 431, 127, 4, 27, "Input",
+  Cell[11109, 431, 127, 4, 27, "Input",
    CellTags->"Contract",
    CellID->587791315],
-  Cell[11238, 437, 210, 7, 36, "Output",
+  Cell[11239, 437, 210, 7, 36, "Output",
    CellTags->"Contract",
    CellID->1587031926],
-  Cell[11485, 449, 251, 8, 27, "Input",
+  Cell[11486, 449, 251, 8, 27, "Input",
    CellTags->"Contract",
    CellID->1551578654],
-  Cell[11739, 459, 1015, 44, 38, "Output",
+  Cell[11740, 459, 1015, 44, 38, "Output",
    CellTags->"Contract",
    CellID->698535686],
-  Cell[12791, 508, 247, 8, 27, "Input",
+  Cell[12792, 508, 247, 8, 27, "Input",
    CellTags->"Contract",
    CellID->1721182838],
-  Cell[13041, 518, 815, 36, 40, "Output",
+  Cell[13042, 518, 815, 36, 40, "Output",
    CellTags->"Contract",
    CellID->320652273],
-  Cell[13893, 559, 133, 4, 27, "Input",
+  Cell[13894, 559, 133, 4, 27, "Input",
    CellTags->"Contract",
    CellID->460754742],
-  Cell[14029, 565, 481, 20, 38, "Output",
+  Cell[14030, 565, 481, 20, 38, "Output",
    CellTags->"Contract",
    CellID->1322929815],
-  Cell[14547, 590, 297, 10, 27, "Input",
+  Cell[14548, 590, 297, 10, 27, "Input",
    CellTags->"Contract",
    CellID->1283410538],
-  Cell[14847, 602, 1189, 50, 46, "Output",
+  Cell[14848, 602, 1189, 50, 46, "Output",
    CellTags->"Contract",
    CellID->1638933986],
-  Cell[16073, 657, 128, 4, 27, "Input",
+  Cell[16074, 657, 128, 4, 27, "Input",
    CellTags->"Contract",
    CellID->803101401],
-  Cell[16204, 663, 1387, 60, 42, "Output",
+  Cell[16205, 663, 1387, 60, 42, "Output",
    CellTags->"Contract",
    CellID->2042392818],
-  Cell[17628, 728, 291, 9, 27, "Input",
+  Cell[17629, 728, 291, 9, 27, "Input",
    CellTags->"Contract",
    CellID->1720608034],
-  Cell[17922, 739, 926, 40, 41, "Output",
+  Cell[17923, 739, 926, 40, 41, "Output",
    CellTags->"Contract",
    CellID->1740152652],
-  Cell[18885, 784, 128, 4, 27, "Input",
+  Cell[18886, 784, 128, 4, 27, "Input",
    CellTags->"Contract",
    CellID->634794036],
-  Cell[19016, 790, 612, 26, 42, "Output",
+  Cell[19017, 790, 612, 26, 42, "Output",
    CellTags->"Contract",
    CellID->1349165270],
-  Cell[19665, 821, 333, 10, 27, "Input",
+  Cell[19666, 821, 333, 10, 27, "Input",
    CellTags->"Contract",
    CellID->1343624460],
-  Cell[20001, 833, 1029, 44, 40, "Output",
+  Cell[20002, 833, 1029, 44, 40, "Output",
    CellTags->"Contract",
    CellID->595150790],
-  Cell[21067, 882, 128, 4, 27, "Input",
+  Cell[21068, 882, 128, 4, 27, "Input",
    CellTags->"Contract",
    CellID->530322977],
-  Cell[21198, 888, 1949, 80, 46, "Output",
+  Cell[21199, 888, 1949, 80, 46, "Output",
    CellTags->"Contract",
    CellID->130923848],
-  Cell[23184, 973, 445, 14, 27, "Input",
+  Cell[23185, 973, 445, 14, 27, "Input",
    CellTags->"Contract",
    CellID->730363468],
-  Cell[23632, 989, 1134, 48, 40, "Output",
+  Cell[23633, 989, 1134, 48, 40, "Output",
    CellTags->"Contract",
    CellID->1753720306],
-  Cell[24803, 1042, 159, 5, 27, "Input",
+  Cell[24804, 1042, 159, 5, 27, "Input",
    CellTags->"Contract",
    CellID->1284270864],
-  Cell[24965, 1049, 748, 30, 40, "Output",
+  Cell[24966, 1049, 748, 30, 40, "Output",
    CellTags->"Contract",
    CellID->1474380358],
-  Cell[25728, 1082, 213, 7, 27, "Input",
+  Cell[25729, 1082, 213, 7, 27, "Input",
    CellTags->"Contract",
    CellID->476845114],
-  Cell[26297, 1111, 570, 21, 32, "Text",
+  Cell[26298, 1111, 570, 21, 32, "Text",
    CellTags->"Contract",
    CellID->1189900625]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 29005, 1184},
- {"Contract", 29139, 1188}
+ {"PrimaryExamplesSection", 29008, 1184},
+ {"Contract", 29143, 1188}
  }
 *)
 (*NotebookFileOutline
@@ -1336,192 +1336,192 @@ Cell[2827, 75, 51, 1, 42, "ObjectName",
 Cell[2881, 78, 695, 16, 130, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3601, 98, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3601, 98, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->695145631],
+ CellID->1888116803],
 Cell[CellGroupData[{
-Cell[4013, 117, 196, 6, 25, "ExampleSection",
- CellID->1321678611],
+Cell[4014, 117, 196, 6, 25, "ExampleSection",
+ CellID->1249084733],
 Cell[CellGroupData[{
-Cell[4234, 127, 133, 4, 27, "Input",
+Cell[4235, 127, 133, 4, 27, "Input",
  CellTags->"Contract",
  CellID->269618302],
-Cell[4370, 133, 718, 19, 75, "Output",
+Cell[4371, 133, 718, 19, 75, "Output",
  CellTags->"Contract",
  CellID->833332161]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5125, 157, 252, 8, 27, "Input",
+Cell[5126, 157, 252, 8, 27, "Input",
  CellTags->"Contract",
  CellID->2011968461],
-Cell[5380, 167, 891, 39, 40, "Output",
+Cell[5381, 167, 891, 39, 40, "Output",
  CellTags->"Contract",
  CellID->2005708503]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6308, 211, 126, 4, 27, "Input",
+Cell[6309, 211, 126, 4, 27, "Input",
  CellTags->"Contract",
  CellID->26500400],
-Cell[6437, 217, 442, 19, 40, "Output",
+Cell[6438, 217, 442, 19, 40, "Output",
  CellTags->"Contract",
  CellID->246386443]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6916, 241, 218, 7, 27, "Input",
+Cell[6917, 241, 218, 7, 27, "Input",
  CellTags->"Contract",
  CellID->2005973076],
-Cell[7137, 250, 658, 28, 40, "Output",
+Cell[7138, 250, 658, 28, 40, "Output",
  CellTags->"Contract",
  CellID->163860977]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7832, 283, 128, 4, 27, "Input",
+Cell[7833, 283, 128, 4, 27, "Input",
  CellTags->"Contract",
  CellID->1342373134],
-Cell[7963, 289, 372, 14, 38, "Output",
+Cell[7964, 289, 372, 14, 38, "Output",
  CellTags->"Contract",
  CellID->1083734914]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8372, 308, 163, 5, 27, "Input",
+Cell[8373, 308, 163, 5, 27, "Input",
  CellTags->"Contract",
  CellID->2121383633],
-Cell[8538, 315, 512, 22, 38, "Output",
+Cell[8539, 315, 512, 22, 38, "Output",
  CellTags->"Contract",
  CellID->165921051]
 }, Open  ]],
-Cell[9065, 340, 104, 2, 31, "Text",
+Cell[9066, 340, 104, 2, 31, "Text",
  CellTags->"Contract",
  CellID->1017368063],
 Cell[CellGroupData[{
-Cell[9194, 346, 128, 4, 27, "Input",
+Cell[9195, 346, 128, 4, 27, "Input",
  CellTags->"Contract",
  CellID->1110085557],
-Cell[9325, 352, 210, 7, 36, "Output",
+Cell[9326, 352, 210, 7, 36, "Output",
  CellTags->"Contract",
  CellID->1413622880]
 }, Open  ]],
-Cell[9550, 362, 228, 6, 52, "Text",
+Cell[9551, 362, 228, 6, 52, "Text",
  CellTags->"Contract",
  CellID->607767486],
 Cell[CellGroupData[{
-Cell[9803, 372, 250, 8, 27, "Input",
+Cell[9804, 372, 250, 8, 27, "Input",
  CellTags->"Contract",
  CellID->1404498417],
-Cell[10056, 382, 1015, 44, 38, "Output",
+Cell[10057, 382, 1015, 44, 38, "Output",
  CellTags->"Contract",
  CellID->1257189010]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11108, 431, 127, 4, 27, "Input",
+Cell[11109, 431, 127, 4, 27, "Input",
  CellTags->"Contract",
  CellID->587791315],
-Cell[11238, 437, 210, 7, 36, "Output",
+Cell[11239, 437, 210, 7, 36, "Output",
  CellTags->"Contract",
  CellID->1587031926]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11485, 449, 251, 8, 27, "Input",
+Cell[11486, 449, 251, 8, 27, "Input",
  CellTags->"Contract",
  CellID->1551578654],
-Cell[11739, 459, 1015, 44, 38, "Output",
+Cell[11740, 459, 1015, 44, 38, "Output",
  CellTags->"Contract",
  CellID->698535686]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12791, 508, 247, 8, 27, "Input",
+Cell[12792, 508, 247, 8, 27, "Input",
  CellTags->"Contract",
  CellID->1721182838],
-Cell[13041, 518, 815, 36, 40, "Output",
+Cell[13042, 518, 815, 36, 40, "Output",
  CellTags->"Contract",
  CellID->320652273]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13893, 559, 133, 4, 27, "Input",
+Cell[13894, 559, 133, 4, 27, "Input",
  CellTags->"Contract",
  CellID->460754742],
-Cell[14029, 565, 481, 20, 38, "Output",
+Cell[14030, 565, 481, 20, 38, "Output",
  CellTags->"Contract",
  CellID->1322929815]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14547, 590, 297, 10, 27, "Input",
+Cell[14548, 590, 297, 10, 27, "Input",
  CellTags->"Contract",
  CellID->1283410538],
-Cell[14847, 602, 1189, 50, 46, "Output",
+Cell[14848, 602, 1189, 50, 46, "Output",
  CellTags->"Contract",
  CellID->1638933986]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16073, 657, 128, 4, 27, "Input",
+Cell[16074, 657, 128, 4, 27, "Input",
  CellTags->"Contract",
  CellID->803101401],
-Cell[16204, 663, 1387, 60, 42, "Output",
+Cell[16205, 663, 1387, 60, 42, "Output",
  CellTags->"Contract",
  CellID->2042392818]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17628, 728, 291, 9, 27, "Input",
+Cell[17629, 728, 291, 9, 27, "Input",
  CellTags->"Contract",
  CellID->1720608034],
-Cell[17922, 739, 926, 40, 41, "Output",
+Cell[17923, 739, 926, 40, 41, "Output",
  CellTags->"Contract",
  CellID->1740152652]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18885, 784, 128, 4, 27, "Input",
+Cell[18886, 784, 128, 4, 27, "Input",
  CellTags->"Contract",
  CellID->634794036],
-Cell[19016, 790, 612, 26, 42, "Output",
+Cell[19017, 790, 612, 26, 42, "Output",
  CellTags->"Contract",
  CellID->1349165270]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19665, 821, 333, 10, 27, "Input",
+Cell[19666, 821, 333, 10, 27, "Input",
  CellTags->"Contract",
  CellID->1343624460],
-Cell[20001, 833, 1029, 44, 40, "Output",
+Cell[20002, 833, 1029, 44, 40, "Output",
  CellTags->"Contract",
  CellID->595150790]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21067, 882, 128, 4, 27, "Input",
+Cell[21068, 882, 128, 4, 27, "Input",
  CellTags->"Contract",
  CellID->530322977],
-Cell[21198, 888, 1949, 80, 46, "Output",
+Cell[21199, 888, 1949, 80, 46, "Output",
  CellTags->"Contract",
  CellID->130923848]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23184, 973, 445, 14, 27, "Input",
+Cell[23185, 973, 445, 14, 27, "Input",
  CellTags->"Contract",
  CellID->730363468],
-Cell[23632, 989, 1134, 48, 40, "Output",
+Cell[23633, 989, 1134, 48, 40, "Output",
  CellTags->"Contract",
  CellID->1753720306]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24803, 1042, 159, 5, 27, "Input",
+Cell[24804, 1042, 159, 5, 27, "Input",
  CellTags->"Contract",
  CellID->1284270864],
-Cell[24965, 1049, 748, 30, 40, "Output",
+Cell[24966, 1049, 748, 30, 40, "Output",
  CellTags->"Contract",
  CellID->1474380358]
 }, Open  ]],
-Cell[25728, 1082, 213, 7, 27, "Input",
+Cell[25729, 1082, 213, 7, 27, "Input",
  CellTags->"Contract",
  CellID->476845114]
 }, Open  ]],
-Cell[25956, 1092, 31, 0, 29, "SectionFooterSpacer"]
+Cell[25957, 1092, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26024, 1097, 270, 12, 31, "SeeAlsoSection",
+Cell[26025, 1097, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[26297, 1111, 570, 21, 32, "Text",
+Cell[26298, 1111, 570, 21, 32, "Text",
  CellTags->"Contract",
  CellID->1189900625]
 }, Open  ]],
-Cell[26882, 1135, 23, 0, 42, "FooterCell"]
+Cell[26883, 1135, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

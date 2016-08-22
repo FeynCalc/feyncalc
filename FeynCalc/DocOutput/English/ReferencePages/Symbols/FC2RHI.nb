@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56722], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56955], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/FC2RHI",
              ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1776549739],
+ CellID->163322982],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->279009291],
+ CellID->1794007483],
 
 Cell[CellGroupData[{
 
@@ -196,7 +196,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 54.828656}", 
+   "built" -> "{2016, 8, 21, 21, 19, 1.918910}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -227,9 +227,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3535, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3535, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1776549739]},
+   CellID->163322982]},
  "FC2RHI"->{
   Cell[4168, 128, 129, 4, 27, "Input",
    CellTags->"FC2RHI",
@@ -244,7 +244,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7282, 228},
+ {"PrimaryExamplesSection", 7283, 228},
  {"FC2RHI", 7415, 232}
  }
 *)
@@ -257,12 +257,12 @@ Cell[2817, 75, 49, 1, 42, "ObjectName",
 Cell[2869, 78, 641, 17, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3535, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3535, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1776549739],
+ CellID->163322982],
 Cell[CellGroupData[{
-Cell[3948, 118, 195, 6, 25, "ExampleSection",
- CellID->279009291],
+Cell[3947, 118, 196, 6, 25, "ExampleSection",
+ CellID->1794007483],
 Cell[CellGroupData[{
 Cell[4168, 128, 129, 4, 27, "Input",
  CellTags->"FC2RHI",

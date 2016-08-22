@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18887,        724]
+NotebookDataLength[     18889,        724]
 NotebookOptionsPosition[     12625,        510]
-NotebookOutlinePosition[     16513,        628]
-CellTagsIndexPosition[     16404,        622]
+NotebookOutlinePosition[     16515,        628]
+CellTagsIndexPosition[     16406,        622]
 WindowTitle->Anti5
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16431], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$17327], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Anti5", 
             ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->543086134],
+ CellID->840004482],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->990051914],
+ CellID->719455314],
 
 Cell[CellGroupData[{
 
@@ -523,7 +523,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 6, 26.197722}", 
+   "built" -> "{2016, 8, 21, 21, 16, 12.506137}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -555,7 +555,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3707, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->543086134]},
+   CellID->840004482]},
  "Anti5"->{
   Cell[4339, 136, 174, 6, 27, "Input",
    CellTags->"Anti5",
@@ -621,8 +621,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14533, 554},
- {"Anti5", 14665, 558}
+ {"PrimaryExamplesSection", 14535, 554},
+ {"Anti5", 14667, 558}
  }
 *)
 (*NotebookFileOutline
@@ -636,10 +636,10 @@ Cell[2863, 78, 819, 25, 105, "Usage",
 Cell[CellGroupData[{
 Cell[3707, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->543086134],
+ CellID->840004482],
 Cell[CellGroupData[{
 Cell[4119, 126, 195, 6, 25, "ExampleSection",
- CellID->990051914],
+ CellID->719455314],
 Cell[CellGroupData[{
 Cell[4339, 136, 174, 6, 27, "Input",
  CellTags->"Anti5",

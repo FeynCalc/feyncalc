@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21742,        799]
+NotebookDataLength[     21743,        799]
 NotebookOptionsPosition[     14404,        568]
-NotebookOutlinePosition[     18938,        695]
-CellTagsIndexPosition[     18818,        689]
+NotebookOutlinePosition[     18939,        695]
+CellTagsIndexPosition[     18819,        689]
 WindowTitle->ComplexConjugate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ComplexConjugate.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29326], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30387], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ComplexConjugate", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->652532808],
+ CellID->156837089],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->530074450],
+ CellID->237583769],
 
 Cell[CellGroupData[{
 
@@ -581,7 +581,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 28.871651}", 
+   "built" -> "{2016, 8, 21, 21, 17, 9.360951}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -616,7 +616,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3645, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->652532808]},
+   CellID->156837089]},
  "ComplexConjugate"->{
   Cell[4277, 127, 215, 6, 27, "Input",
    CellTags->"ComplexConjugate",
@@ -688,8 +688,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16527, 615},
- {"ComplexConjugate", 16669, 619}
+ {"PrimaryExamplesSection", 16528, 615},
+ {"ComplexConjugate", 16670, 619}
  }
 *)
 (*NotebookFileOutline
@@ -703,10 +703,10 @@ Cell[2930, 78, 690, 16, 130, "Usage",
 Cell[CellGroupData[{
 Cell[3645, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->652532808],
+ CellID->156837089],
 Cell[CellGroupData[{
 Cell[4057, 117, 195, 6, 25, "ExampleSection",
- CellID->530074450],
+ CellID->237583769],
 Cell[CellGroupData[{
 Cell[4277, 127, 215, 6, 27, "Input",
  CellTags->"ComplexConjugate",

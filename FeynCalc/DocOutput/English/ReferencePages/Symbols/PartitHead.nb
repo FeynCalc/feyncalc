@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5338,        148]
+NotebookDataLength[      5339,        148]
 NotebookOptionsPosition[      3403,         96]
-NotebookOutlinePosition[      5260,        144]
-CellTagsIndexPosition[      5217,        141]
+NotebookOutlinePosition[      5261,        144]
+CellTagsIndexPosition[      5218,        141]
 WindowTitle->PartitHead
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115347], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$116858], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PartitHead", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 13.646337}", 
+   "built" -> "{2016, 8, 21, 21, 23, 21.758863}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

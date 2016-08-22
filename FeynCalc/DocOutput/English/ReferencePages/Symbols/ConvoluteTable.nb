@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11385,        394]
+NotebookDataLength[     11387,        394]
 NotebookOptionsPosition[      6996,        256]
-NotebookOutlinePosition[      9980,        341]
-CellTagsIndexPosition[      9864,        335]
+NotebookOutlinePosition[      9982,        341]
+CellTagsIndexPosition[      9866,        335]
 WindowTitle->ConvoluteTable
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ConvoluteTable.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30733], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31794], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ConvoluteTable", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->790213782],
+ CellID->589697723],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1289656000],
+ CellID->1106656784],
 
 Cell[CellGroupData[{
 
@@ -269,7 +269,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 35.172502}", 
+   "built" -> "{2016, 8, 21, 21, 17, 15.776979}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -301,7 +301,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3415, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->790213782]},
+   CellID->589697723]},
  "ConvoluteTable"->{
   Cell[4048, 125, 141, 4, 27, "Input",
    CellTags->"ConvoluteTable",
@@ -334,8 +334,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8851, 300},
- {"ConvoluteTable", 8991, 304}
+ {"PrimaryExamplesSection", 8853, 300},
+ {"ConvoluteTable", 8993, 304}
  }
 *)
 (*NotebookFileOutline
@@ -349,10 +349,10 @@ Cell[2918, 78, 472, 14, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3415, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->790213782],
+ CellID->589697723],
 Cell[CellGroupData[{
 Cell[3827, 115, 196, 6, 25, "ExampleSection",
- CellID->1289656000],
+ CellID->1106656784],
 Cell[CellGroupData[{
 Cell[4048, 125, 141, 4, 27, "Input",
  CellTags->"ConvoluteTable",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21634,        789]
-NotebookOptionsPosition[     14333,        558]
-NotebookOutlinePosition[     18722,        684]
-CellTagsIndexPosition[     18600,        678]
+NotebookDataLength[     21632,        789]
+NotebookOptionsPosition[     14332,        558]
+NotebookOutlinePosition[     18721,        684]
+CellTagsIndexPosition[     18599,        678]
 WindowTitle->PolarizationVector
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PolarizationVector.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$118783], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120294], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PolarizationVector", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1768691263],
+ CellID->672337024],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1420820569],
+ CellID->1692020730],
 
 Cell[CellGroupData[{
 
@@ -571,7 +571,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 28.238273}", 
+   "built" -> "{2016, 8, 21, 21, 23, 35.881055}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -600,77 +600,77 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3383, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3383, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1768691263]},
+   CellID->672337024]},
  "PolarizationVector"->{
-  Cell[4017, 124, 175, 5, 27, "Input",
+  Cell[4016, 124, 175, 5, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->1596092203],
-  Cell[4195, 131, 464, 18, 38, "Output",
+  Cell[4194, 131, 464, 18, 38, "Output",
    CellTags->"PolarizationVector",
    CellID->1849918377],
-  Cell[4696, 154, 211, 6, 27, "Input",
+  Cell[4695, 154, 211, 6, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->597384549],
-  Cell[4910, 162, 491, 19, 38, "Output",
+  Cell[4909, 162, 491, 19, 38, "Output",
    CellTags->"PolarizationVector",
    CellID->1945453536],
-  Cell[5416, 184, 262, 10, 35, "Text",
+  Cell[5415, 184, 262, 10, 35, "Text",
    CellTags->"PolarizationVector",
    CellID->1108597225],
-  Cell[5703, 198, 208, 6, 27, "Input",
+  Cell[5702, 198, 208, 6, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->1765549294],
-  Cell[5914, 206, 415, 12, 49, "Output",
+  Cell[5913, 206, 415, 12, 49, "Output",
    CellTags->"PolarizationVector",
    CellID->152992573],
-  Cell[6344, 221, 114, 2, 32, "Text",
+  Cell[6343, 221, 114, 2, 32, "Text",
    CellTags->"PolarizationVector",
    CellID->1023112491],
-  Cell[6483, 227, 302, 9, 27, "Input",
+  Cell[6482, 227, 302, 9, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->1218109993],
-  Cell[6788, 238, 834, 35, 40, "Output",
+  Cell[6787, 238, 834, 35, 40, "Output",
    CellTags->"PolarizationVector",
    CellID->1099894979],
-  Cell[7659, 278, 138, 4, 27, "Input",
+  Cell[7658, 278, 138, 4, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->918402341],
-  Cell[7800, 284, 535, 21, 40, "Output",
+  Cell[7799, 284, 535, 21, 40, "Output",
    CellTags->"PolarizationVector",
    CellID->1789359074],
-  Cell[8372, 310, 359, 10, 27, "Input",
+  Cell[8371, 310, 359, 10, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->113884671],
-  Cell[8734, 322, 834, 35, 40, "Output",
+  Cell[8733, 322, 834, 35, 40, "Output",
    CellTags->"PolarizationVector",
    CellID->1008334660],
-  Cell[9605, 362, 138, 4, 27, "Input",
+  Cell[9604, 362, 138, 4, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->554867330],
-  Cell[9746, 368, 220, 7, 36, "Output",
+  Cell[9745, 368, 220, 7, 36, "Output",
    CellTags->"PolarizationVector",
    CellID->1890424275],
-  Cell[9981, 378, 1177, 37, 51, "Text",
+  Cell[9980, 378, 1177, 37, 51, "Text",
    CellTags->"PolarizationVector",
    CellID->1584802873],
-  Cell[11183, 419, 385, 11, 27, "Input",
+  Cell[11182, 419, 385, 11, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->367797496],
-  Cell[11571, 432, 861, 36, 40, "Output",
+  Cell[11570, 432, 861, 36, 40, "Output",
    CellTags->"PolarizationVector",
    CellID->2007724546],
-  Cell[12469, 473, 139, 4, 27, "Input",
+  Cell[12468, 473, 139, 4, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->1968835101],
-  Cell[12611, 479, 562, 22, 42, "Output",
+  Cell[12610, 479, 562, 22, 42, "Output",
    CellTags->"PolarizationVector",
    CellID->1932094598],
-  Cell[13188, 504, 170, 5, 27, "Input",
+  Cell[13187, 504, 170, 5, 27, "Input",
    CellTags->"PolarizationVector",
    CellID->88853703],
-  Cell[13714, 531, 577, 22, 31, "Text",
+  Cell[13713, 531, 577, 22, 31, "Text",
    CellTags->"PolarizationVector",
    CellID->1661672347]}
  }
@@ -678,7 +678,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 16160, 601},
- {"PolarizationVector", 16305, 605}
+ {"PolarizationVector", 16304, 605}
  }
 *)
 (*NotebookFileOutline
@@ -690,107 +690,107 @@ Cell[2879, 75, 61, 1, 42, "ObjectName",
 Cell[2943, 78, 415, 13, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3383, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3383, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1768691263],
+ CellID->672337024],
 Cell[CellGroupData[{
-Cell[3796, 114, 196, 6, 25, "ExampleSection",
- CellID->1420820569],
+Cell[3795, 114, 196, 6, 25, "ExampleSection",
+ CellID->1692020730],
 Cell[CellGroupData[{
-Cell[4017, 124, 175, 5, 27, "Input",
+Cell[4016, 124, 175, 5, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->1596092203],
-Cell[4195, 131, 464, 18, 38, "Output",
+Cell[4194, 131, 464, 18, 38, "Output",
  CellTags->"PolarizationVector",
  CellID->1849918377]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4696, 154, 211, 6, 27, "Input",
+Cell[4695, 154, 211, 6, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->597384549],
-Cell[4910, 162, 491, 19, 38, "Output",
+Cell[4909, 162, 491, 19, 38, "Output",
  CellTags->"PolarizationVector",
  CellID->1945453536]
 }, Open  ]],
-Cell[5416, 184, 262, 10, 35, "Text",
+Cell[5415, 184, 262, 10, 35, "Text",
  CellTags->"PolarizationVector",
  CellID->1108597225],
 Cell[CellGroupData[{
-Cell[5703, 198, 208, 6, 27, "Input",
+Cell[5702, 198, 208, 6, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->1765549294],
-Cell[5914, 206, 415, 12, 49, "Output",
+Cell[5913, 206, 415, 12, 49, "Output",
  CellTags->"PolarizationVector",
  CellID->152992573]
 }, Open  ]],
-Cell[6344, 221, 114, 2, 32, "Text",
+Cell[6343, 221, 114, 2, 32, "Text",
  CellTags->"PolarizationVector",
  CellID->1023112491],
 Cell[CellGroupData[{
-Cell[6483, 227, 302, 9, 27, "Input",
+Cell[6482, 227, 302, 9, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->1218109993],
-Cell[6788, 238, 834, 35, 40, "Output",
+Cell[6787, 238, 834, 35, 40, "Output",
  CellTags->"PolarizationVector",
  CellID->1099894979]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7659, 278, 138, 4, 27, "Input",
+Cell[7658, 278, 138, 4, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->918402341],
-Cell[7800, 284, 535, 21, 40, "Output",
+Cell[7799, 284, 535, 21, 40, "Output",
  CellTags->"PolarizationVector",
  CellID->1789359074]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8372, 310, 359, 10, 27, "Input",
+Cell[8371, 310, 359, 10, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->113884671],
-Cell[8734, 322, 834, 35, 40, "Output",
+Cell[8733, 322, 834, 35, 40, "Output",
  CellTags->"PolarizationVector",
  CellID->1008334660]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9605, 362, 138, 4, 27, "Input",
+Cell[9604, 362, 138, 4, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->554867330],
-Cell[9746, 368, 220, 7, 36, "Output",
+Cell[9745, 368, 220, 7, 36, "Output",
  CellTags->"PolarizationVector",
  CellID->1890424275]
 }, Open  ]],
-Cell[9981, 378, 1177, 37, 51, "Text",
+Cell[9980, 378, 1177, 37, 51, "Text",
  CellTags->"PolarizationVector",
  CellID->1584802873],
 Cell[CellGroupData[{
-Cell[11183, 419, 385, 11, 27, "Input",
+Cell[11182, 419, 385, 11, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->367797496],
-Cell[11571, 432, 861, 36, 40, "Output",
+Cell[11570, 432, 861, 36, 40, "Output",
  CellTags->"PolarizationVector",
  CellID->2007724546]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12469, 473, 139, 4, 27, "Input",
+Cell[12468, 473, 139, 4, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->1968835101],
-Cell[12611, 479, 562, 22, 42, "Output",
+Cell[12610, 479, 562, 22, 42, "Output",
  CellTags->"PolarizationVector",
  CellID->1932094598]
 }, Open  ]],
-Cell[13188, 504, 170, 5, 27, "Input",
+Cell[13187, 504, 170, 5, 27, "Input",
  CellTags->"PolarizationVector",
  CellID->88853703]
 }, Open  ]],
-Cell[13373, 512, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13372, 512, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13441, 517, 270, 12, 31, "SeeAlsoSection",
+Cell[13440, 517, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13714, 531, 577, 22, 31, "Text",
+Cell[13713, 531, 577, 22, 31, "Text",
  CellTags->"PolarizationVector",
  CellID->1661672347]
 }, Open  ]],
-Cell[14306, 556, 23, 0, 42, "FooterCell"]
+Cell[14305, 556, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

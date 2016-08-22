@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8819,        298]
+NotebookDataLength[      8821,        298]
 NotebookOptionsPosition[      5321,        191]
-NotebookOutlinePosition[      7879,        263]
-CellTagsIndexPosition[      7766,        257]
+NotebookOutlinePosition[      7881,        263]
+CellTagsIndexPosition[      7768,        257]
 WindowTitle->$MIntegrate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ MIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171792], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171881], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$MIntegrate", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->602186379],
+ CellID->1773590494],
 
 Cell[TextData[{
  "Basic Examples",
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1647796881],
+ CellID->911946191],
 
 Cell[CellGroupData[{
 
@@ -204,7 +204,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 20, 23.505269}", 
+   "built" -> "{2016, 8, 21, 21, 27, 20.236347}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -233,9 +233,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3366, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3366, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->602186379]},
+   CellID->1773590494]},
  "$MIntegrate"->{
   Cell[3977, 123, 79, 2, 35, "Subsubsection",
    CellTags->"$MIntegrate",
@@ -256,8 +256,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7146, 234},
- {"$MIntegrate", 7283, 238}
+ {"PrimaryExamplesSection", 7147, 234},
+ {"$MIntegrate", 7285, 238}
  }
 *)
 (*NotebookFileOutline
@@ -269,11 +269,11 @@ Cell[2844, 75, 54, 1, 42, "ObjectName",
 Cell[2901, 78, 440, 14, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3366, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3366, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->602186379],
-Cell[3756, 113, 196, 6, 25, "ExampleSection",
- CellID->1647796881],
+ CellID->1773590494],
+Cell[3757, 113, 195, 6, 25, "ExampleSection",
+ CellID->911946191],
 Cell[CellGroupData[{
 Cell[3977, 123, 79, 2, 35, "Subsubsection",
  CellTags->"$MIntegrate",

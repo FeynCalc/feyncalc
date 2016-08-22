@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11932,        419]
+NotebookDataLength[     11933,        419]
 NotebookOptionsPosition[      8001,        295]
-NotebookOutlinePosition[     10778,        374]
-CellTagsIndexPosition[     10667,        368]
+NotebookOutlinePosition[     10779,        374]
+CellTagsIndexPosition[     10668,        368]
 WindowTitle->Amputate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15739], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16635], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Amputate", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1396288829],
+ CellID->1776549739],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->737978449],
+ CellID->279009291],
 
 Cell[CellGroupData[{
 
@@ -308,7 +308,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 6, 22.741306}", 
+   "built" -> "{2016, 8, 21, 21, 16, 9.030852}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -340,7 +340,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3452, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1396288829]},
+   CellID->1776549739]},
  "Amputate"->{
   Cell[4085, 126, 134, 4, 27, "Input",
    CellTags->"Amputate",
@@ -367,8 +367,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9889, 339},
- {"Amputate", 10024, 343}
+ {"PrimaryExamplesSection", 9890, 339},
+ {"Amputate", 10025, 343}
  }
 *)
 (*NotebookFileOutline
@@ -382,10 +382,10 @@ Cell[2881, 78, 546, 15, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3452, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1396288829],
+ CellID->1776549739],
 Cell[CellGroupData[{
 Cell[3865, 116, 195, 6, 25, "ExampleSection",
- CellID->737978449],
+ CellID->279009291],
 Cell[CellGroupData[{
 Cell[4085, 126, 134, 4, 27, "Input",
  CellTags->"Amputate",

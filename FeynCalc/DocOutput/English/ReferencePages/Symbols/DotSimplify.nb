@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23815,        884]
-NotebookOptionsPosition[     14925,        588]
+NotebookDataLength[     23813,        884]
+NotebookOptionsPosition[     14923,        588]
 NotebookOutlinePosition[     20155,        744]
 CellTagsIndexPosition[     20040,        738]
 WindowTitle->DotSimplify
@@ -59,7 +59,7 @@ DotSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47072], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47673], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DotSimplify", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1298382295],
+ CellID->676697344],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1892667337],
+ CellID->449681833],
 
 Cell[CellGroupData[{
 
@@ -601,7 +601,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 1.485683}", 
+   "built" -> "{2016, 8, 21, 21, 18, 23.314440}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -633,111 +633,111 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3528, 97, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3528, 97, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1298382295]},
+   CellID->676697344]},
  "DotSimplify"->{
-  Cell[4162, 126, 140, 4, 27, "Input",
+  Cell[4160, 126, 140, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1331874134],
-  Cell[4305, 132, 543, 16, 56, "Output",
+  Cell[4303, 132, 543, 16, 56, "Output",
    CellTags->"DotSimplify",
    CellID->1021382404],
-  Cell[4885, 153, 361, 12, 27, "Input",
+  Cell[4883, 153, 361, 12, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1782604794],
-  Cell[5249, 167, 1135, 45, 41, "Output",
+  Cell[5247, 167, 1135, 45, 41, "Output",
    CellTags->"DotSimplify",
    CellID->97040369],
-  Cell[6421, 217, 135, 4, 27, "Input",
+  Cell[6419, 217, 135, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1204340698],
-  Cell[6559, 223, 1329, 51, 41, "Output",
+  Cell[6557, 223, 1329, 51, 41, "Output",
    CellTags->"DotSimplify",
    CellID->715244913],
-  Cell[7903, 277, 176, 5, 27, "Input",
+  Cell[7901, 277, 176, 5, 27, "Input",
    CellTags->"DotSimplify",
    CellID->194491386],
-  Cell[8104, 286, 228, 8, 27, "Input",
+  Cell[8102, 286, 228, 8, 27, "Input",
    CellTags->"DotSimplify",
    CellID->2117662767],
-  Cell[8335, 296, 323, 12, 36, "Output",
+  Cell[8333, 296, 323, 12, 36, "Output",
    CellTags->"DotSimplify",
    CellID->1736919809],
-  Cell[8695, 313, 135, 4, 27, "Input",
+  Cell[8693, 313, 135, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1117578635],
-  Cell[8833, 319, 330, 11, 36, "Output",
+  Cell[8831, 319, 330, 11, 36, "Output",
    CellTags->"DotSimplify",
    CellID->1099682282],
-  Cell[9200, 335, 180, 6, 27, "Input",
+  Cell[9198, 335, 180, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1442809361],
-  Cell[9383, 343, 213, 7, 36, "Output",
+  Cell[9381, 343, 213, 7, 36, "Output",
    CellTags->"DotSimplify",
    CellID->2070115949],
-  Cell[9633, 355, 135, 4, 27, "Input",
+  Cell[9631, 355, 135, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1013643835],
-  Cell[9771, 361, 386, 14, 36, "Output",
+  Cell[9769, 361, 386, 14, 36, "Output",
    CellTags->"DotSimplify",
    CellID->1231130458],
-  Cell[10172, 378, 180, 6, 27, "Input",
+  Cell[10170, 378, 180, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1466952413],
-  Cell[10377, 388, 136, 4, 27, "Input",
+  Cell[10375, 388, 136, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1037294655],
-  Cell[10516, 394, 330, 11, 36, "Output",
+  Cell[10514, 394, 330, 11, 36, "Output",
    CellTags->"DotSimplify",
    CellID->918347217],
-  Cell[10883, 410, 184, 6, 27, "Input",
+  Cell[10881, 410, 184, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->579521038],
-  Cell[11070, 418, 213, 7, 36, "Output",
+  Cell[11068, 418, 213, 7, 36, "Output",
    CellTags->"DotSimplify",
    CellID->675731172],
-  Cell[11320, 430, 135, 4, 27, "Input",
+  Cell[11318, 430, 135, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->164431463],
-  Cell[11458, 436, 384, 13, 36, "Output",
+  Cell[11456, 436, 384, 13, 36, "Output",
    CellTags->"DotSimplify",
    CellID->412911369],
-  Cell[11857, 452, 184, 6, 27, "Input",
+  Cell[11855, 452, 184, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->216404314],
-  Cell[12066, 462, 319, 10, 27, "Input",
+  Cell[12064, 462, 319, 10, 27, "Input",
    CellTags->"DotSimplify",
    CellID->2011362420],
-  Cell[12388, 474, 273, 10, 36, "Output",
+  Cell[12386, 474, 273, 10, 36, "Output",
    CellTags->"DotSimplify",
    CellID->1420474961],
-  Cell[12676, 487, 145, 4, 27, "Input",
+  Cell[12674, 487, 145, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1063178346],
-  Cell[12846, 495, 168, 5, 27, "Input",
+  Cell[12844, 495, 168, 5, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1173966576],
-  Cell[13017, 502, 237, 8, 39, "Output",
+  Cell[13015, 502, 237, 8, 39, "Output",
    CellTags->"DotSimplify",
    CellID->629656626],
-  Cell[13291, 515, 231, 7, 27, "Input",
+  Cell[13289, 515, 231, 7, 27, "Input",
    CellTags->"DotSimplify",
    CellID->49078014],
-  Cell[13525, 524, 237, 8, 39, "Output",
+  Cell[13523, 524, 237, 8, 39, "Output",
    CellTags->"DotSimplify",
    CellID->316863354],
-  Cell[13777, 535, 190, 5, 27, "Input",
+  Cell[13775, 535, 190, 5, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1813929769],
-  Cell[14323, 562, 560, 21, 31, "Text",
+  Cell[14321, 562, 560, 21, 31, "Text",
    CellTags->"DotSimplify",
    CellID->574897097]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16938, 634},
+ {"PrimaryExamplesSection", 16939, 634},
  {"DotSimplify", 17076, 638}
  }
 *)
@@ -750,142 +750,142 @@ Cell[2843, 75, 54, 1, 42, "ObjectName",
 Cell[2900, 78, 603, 15, 112, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3528, 97, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3528, 97, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1298382295],
+ CellID->676697344],
 Cell[CellGroupData[{
-Cell[3941, 116, 196, 6, 25, "ExampleSection",
- CellID->1892667337],
+Cell[3940, 116, 195, 6, 25, "ExampleSection",
+ CellID->449681833],
 Cell[CellGroupData[{
-Cell[4162, 126, 140, 4, 27, "Input",
+Cell[4160, 126, 140, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1331874134],
-Cell[4305, 132, 543, 16, 56, "Output",
+Cell[4303, 132, 543, 16, 56, "Output",
  CellTags->"DotSimplify",
  CellID->1021382404]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4885, 153, 361, 12, 27, "Input",
+Cell[4883, 153, 361, 12, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1782604794],
-Cell[5249, 167, 1135, 45, 41, "Output",
+Cell[5247, 167, 1135, 45, 41, "Output",
  CellTags->"DotSimplify",
  CellID->97040369]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6421, 217, 135, 4, 27, "Input",
+Cell[6419, 217, 135, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1204340698],
-Cell[6559, 223, 1329, 51, 41, "Output",
+Cell[6557, 223, 1329, 51, 41, "Output",
  CellTags->"DotSimplify",
  CellID->715244913]
 }, Open  ]],
-Cell[7903, 277, 176, 5, 27, "Input",
+Cell[7901, 277, 176, 5, 27, "Input",
  CellTags->"DotSimplify",
  CellID->194491386],
 Cell[CellGroupData[{
-Cell[8104, 286, 228, 8, 27, "Input",
+Cell[8102, 286, 228, 8, 27, "Input",
  CellTags->"DotSimplify",
  CellID->2117662767],
-Cell[8335, 296, 323, 12, 36, "Output",
+Cell[8333, 296, 323, 12, 36, "Output",
  CellTags->"DotSimplify",
  CellID->1736919809]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8695, 313, 135, 4, 27, "Input",
+Cell[8693, 313, 135, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1117578635],
-Cell[8833, 319, 330, 11, 36, "Output",
+Cell[8831, 319, 330, 11, 36, "Output",
  CellTags->"DotSimplify",
  CellID->1099682282]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9200, 335, 180, 6, 27, "Input",
+Cell[9198, 335, 180, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1442809361],
-Cell[9383, 343, 213, 7, 36, "Output",
+Cell[9381, 343, 213, 7, 36, "Output",
  CellTags->"DotSimplify",
  CellID->2070115949]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9633, 355, 135, 4, 27, "Input",
+Cell[9631, 355, 135, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1013643835],
-Cell[9771, 361, 386, 14, 36, "Output",
+Cell[9769, 361, 386, 14, 36, "Output",
  CellTags->"DotSimplify",
  CellID->1231130458]
 }, Open  ]],
-Cell[10172, 378, 180, 6, 27, "Input",
+Cell[10170, 378, 180, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1466952413],
 Cell[CellGroupData[{
-Cell[10377, 388, 136, 4, 27, "Input",
+Cell[10375, 388, 136, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1037294655],
-Cell[10516, 394, 330, 11, 36, "Output",
+Cell[10514, 394, 330, 11, 36, "Output",
  CellTags->"DotSimplify",
  CellID->918347217]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10883, 410, 184, 6, 27, "Input",
+Cell[10881, 410, 184, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->579521038],
-Cell[11070, 418, 213, 7, 36, "Output",
+Cell[11068, 418, 213, 7, 36, "Output",
  CellTags->"DotSimplify",
  CellID->675731172]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11320, 430, 135, 4, 27, "Input",
+Cell[11318, 430, 135, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->164431463],
-Cell[11458, 436, 384, 13, 36, "Output",
+Cell[11456, 436, 384, 13, 36, "Output",
  CellTags->"DotSimplify",
  CellID->412911369]
 }, Open  ]],
-Cell[11857, 452, 184, 6, 27, "Input",
+Cell[11855, 452, 184, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->216404314],
 Cell[CellGroupData[{
-Cell[12066, 462, 319, 10, 27, "Input",
+Cell[12064, 462, 319, 10, 27, "Input",
  CellTags->"DotSimplify",
  CellID->2011362420],
-Cell[12388, 474, 273, 10, 36, "Output",
+Cell[12386, 474, 273, 10, 36, "Output",
  CellTags->"DotSimplify",
  CellID->1420474961]
 }, Open  ]],
-Cell[12676, 487, 145, 4, 27, "Input",
+Cell[12674, 487, 145, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1063178346],
 Cell[CellGroupData[{
-Cell[12846, 495, 168, 5, 27, "Input",
+Cell[12844, 495, 168, 5, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1173966576],
-Cell[13017, 502, 237, 8, 39, "Output",
+Cell[13015, 502, 237, 8, 39, "Output",
  CellTags->"DotSimplify",
  CellID->629656626]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13291, 515, 231, 7, 27, "Input",
+Cell[13289, 515, 231, 7, 27, "Input",
  CellTags->"DotSimplify",
  CellID->49078014],
-Cell[13525, 524, 237, 8, 39, "Output",
+Cell[13523, 524, 237, 8, 39, "Output",
  CellTags->"DotSimplify",
  CellID->316863354]
 }, Open  ]],
-Cell[13777, 535, 190, 5, 27, "Input",
+Cell[13775, 535, 190, 5, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1813929769]
 }, Open  ]],
-Cell[13982, 543, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13980, 543, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14050, 548, 270, 12, 31, "SeeAlsoSection",
+Cell[14048, 548, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[14323, 562, 560, 21, 31, "Text",
+Cell[14321, 562, 560, 21, 31, "Text",
  CellTags->"DotSimplify",
  CellID->574897097]
 }, Open  ]],
-Cell[14898, 586, 23, 0, 42, "FooterCell"]
+Cell[14896, 586, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

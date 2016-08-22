@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7341,        224]
+NotebookDataLength[      7343,        224]
 NotebookOptionsPosition[      4900,        155]
-NotebookOutlinePosition[      7077,        213]
-CellTagsIndexPosition[      7005,        208]
+NotebookOutlinePosition[      7079,        213]
+CellTagsIndexPosition[      7007,        208]
 WindowTitle->Mandelstam
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100022], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$101368], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Mandelstam", ".html"]], None}]}]},
@@ -168,7 +168,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 2.123179}", 
+   "built" -> "{2016, 8, 21, 21, 22, 15.798194}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -207,7 +207,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Mandelstam", 6891, 201}
+ {"Mandelstam", 6893, 201}
  }
 *)
 (*NotebookFileOutline

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18259,        704]
-NotebookOptionsPosition[     12794,        520]
-NotebookOutlinePosition[     16314,        626]
-CellTagsIndexPosition[     16206,        620]
+NotebookDataLength[     18254,        704]
+NotebookOptionsPosition[     12792,        520]
+NotebookOutlinePosition[     16311,        626]
+CellTagsIndexPosition[     16203,        620]
 WindowTitle->Calc
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22380], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23528], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Calc", 
             ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1564216896],
+ CellID->5943773],
 
 Cell[TextData[{
  "Basic Examples",
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->837535436],
+ CellID->1585517748],
 
 Cell[CellGroupData[{
 
@@ -533,7 +533,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 6, 55.061947}", 
+   "built" -> "{2016, 8, 21, 21, 16, 39.805412}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -563,56 +563,56 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3403, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3403, 96, 385, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1564216896]},
+   CellID->5943773]},
  "Calc"->{
-  Cell[4014, 123, 81, 2, 35, "Subsubsection",
+  Cell[4012, 123, 81, 2, 35, "Subsubsection",
    CellTags->"Calc",
    CellID->115873599],
-  Cell[4098, 127, 366, 14, 35, "Text",
+  Cell[4096, 127, 366, 14, 35, "Text",
    CellTags->"Calc",
    CellID->117745359],
-  Cell[4489, 145, 302, 10, 27, "Input",
+  Cell[4487, 145, 302, 10, 27, "Input",
    CellTags->"Calc",
    CellID->781527999],
-  Cell[4794, 157, 253, 9, 36, "Output",
+  Cell[4792, 157, 253, 9, 36, "Output",
    CellTags->"Calc",
    CellID->1798215567],
-  Cell[5062, 169, 234, 10, 33, "Text",
+  Cell[5060, 169, 234, 10, 33, "Text",
    CellTags->"Calc",
    CellID->1416000027],
-  Cell[5321, 183, 276, 9, 27, "Input",
+  Cell[5319, 183, 276, 9, 27, "Input",
    CellTags->"Calc",
    CellID->779661922],
-  Cell[5600, 194, 460, 19, 36, "Output",
+  Cell[5598, 194, 460, 19, 36, "Output",
    CellTags->"Calc",
    CellID->1521159153],
-  Cell[6097, 218, 346, 12, 27, "Input",
+  Cell[6095, 218, 346, 12, 27, "Input",
    CellTags->"Calc",
    CellID->281198835],
-  Cell[6446, 232, 1721, 73, 41, "Output",
+  Cell[6444, 232, 1721, 73, 41, "Output",
    CellTags->"Calc",
    CellID->481463556],
-  Cell[8204, 310, 120, 4, 27, "Input",
+  Cell[8202, 310, 120, 4, 27, "Input",
    CellTags->"Calc",
    CellID->1838519780],
-  Cell[8327, 316, 1226, 53, 41, "Output",
+  Cell[8325, 316, 1226, 53, 41, "Output",
    CellTags->"Calc",
    CellID->1244287531],
-  Cell[9590, 374, 234, 7, 27, "Input",
+  Cell[9588, 374, 234, 7, 27, "Input",
    CellTags->"Calc",
    CellID->1589340964],
-  Cell[9827, 383, 1357, 60, 42, "Output",
+  Cell[9825, 383, 1357, 60, 42, "Output",
    CellTags->"Calc",
    CellID->706901544],
-  Cell[11221, 448, 401, 14, 27, "Input",
+  Cell[11219, 448, 401, 14, 27, "Input",
    CellTags->"Calc",
    CellID->1411490249],
-  Cell[11625, 464, 206, 7, 36, "Output",
+  Cell[11623, 464, 206, 7, 36, "Output",
    CellTags->"Calc",
    CellID->1029776951],
-  Cell[12199, 494, 553, 21, 32, "Text",
+  Cell[12197, 494, 553, 21, 32, "Text",
    CellTags->"Calc",
    CellID->573489970]}
  }
@@ -620,7 +620,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 14689, 564},
- {"Calc", 14820, 568}
+ {"Calc", 14817, 568}
  }
 *)
 (*NotebookFileOutline
@@ -632,80 +632,80 @@ Cell[2807, 75, 47, 1, 42, "ObjectName",
 Cell[2857, 78, 521, 14, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3403, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3403, 96, 385, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1564216896],
-Cell[3794, 113, 195, 6, 25, "ExampleSection",
- CellID->837535436],
+ CellID->5943773],
+Cell[3791, 113, 196, 6, 25, "ExampleSection",
+ CellID->1585517748],
 Cell[CellGroupData[{
-Cell[4014, 123, 81, 2, 35, "Subsubsection",
+Cell[4012, 123, 81, 2, 35, "Subsubsection",
  CellTags->"Calc",
  CellID->115873599],
-Cell[4098, 127, 366, 14, 35, "Text",
+Cell[4096, 127, 366, 14, 35, "Text",
  CellTags->"Calc",
  CellID->117745359],
 Cell[CellGroupData[{
-Cell[4489, 145, 302, 10, 27, "Input",
+Cell[4487, 145, 302, 10, 27, "Input",
  CellTags->"Calc",
  CellID->781527999],
-Cell[4794, 157, 253, 9, 36, "Output",
+Cell[4792, 157, 253, 9, 36, "Output",
  CellTags->"Calc",
  CellID->1798215567]
 }, Open  ]],
-Cell[5062, 169, 234, 10, 33, "Text",
+Cell[5060, 169, 234, 10, 33, "Text",
  CellTags->"Calc",
  CellID->1416000027],
 Cell[CellGroupData[{
-Cell[5321, 183, 276, 9, 27, "Input",
+Cell[5319, 183, 276, 9, 27, "Input",
  CellTags->"Calc",
  CellID->779661922],
-Cell[5600, 194, 460, 19, 36, "Output",
+Cell[5598, 194, 460, 19, 36, "Output",
  CellTags->"Calc",
  CellID->1521159153]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6097, 218, 346, 12, 27, "Input",
+Cell[6095, 218, 346, 12, 27, "Input",
  CellTags->"Calc",
  CellID->281198835],
-Cell[6446, 232, 1721, 73, 41, "Output",
+Cell[6444, 232, 1721, 73, 41, "Output",
  CellTags->"Calc",
  CellID->481463556]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8204, 310, 120, 4, 27, "Input",
+Cell[8202, 310, 120, 4, 27, "Input",
  CellTags->"Calc",
  CellID->1838519780],
-Cell[8327, 316, 1226, 53, 41, "Output",
+Cell[8325, 316, 1226, 53, 41, "Output",
  CellTags->"Calc",
  CellID->1244287531]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9590, 374, 234, 7, 27, "Input",
+Cell[9588, 374, 234, 7, 27, "Input",
  CellTags->"Calc",
  CellID->1589340964],
-Cell[9827, 383, 1357, 60, 42, "Output",
+Cell[9825, 383, 1357, 60, 42, "Output",
  CellTags->"Calc",
  CellID->706901544]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11221, 448, 401, 14, 27, "Input",
+Cell[11219, 448, 401, 14, 27, "Input",
  CellTags->"Calc",
  CellID->1411490249],
-Cell[11625, 464, 206, 7, 36, "Output",
+Cell[11623, 464, 206, 7, 36, "Output",
  CellTags->"Calc",
  CellID->1029776951]
 }, Open  ]],
-Cell[11846, 474, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11844, 474, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11926, 480, 270, 12, 31, "SeeAlsoSection",
+Cell[11924, 480, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12199, 494, 553, 21, 32, "Text",
+Cell[12197, 494, 553, 21, 32, "Text",
  CellTags->"Calc",
  CellID->573489970]
 }, Open  ]],
-Cell[12767, 518, 23, 0, 42, "FooterCell"]
+Cell[12765, 518, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

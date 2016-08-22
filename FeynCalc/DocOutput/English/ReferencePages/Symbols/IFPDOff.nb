@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11411,        409]
+NotebookDataLength[     11412,        409]
 NotebookOptionsPosition[      7153,        271]
-NotebookOutlinePosition[     10070,        356]
-CellTagsIndexPosition[      9961,        350]
+NotebookOutlinePosition[     10071,        356]
+CellTagsIndexPosition[      9962,        350]
 WindowTitle->IFPDOff
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$87599], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$89567], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/IFPDOff", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->2145771835],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1341170645],
+ CellID->1904573923],
 
 Cell[CellGroupData[{
 
@@ -284,7 +284,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 12, 57.074824}", 
+   "built" -> "{2016, 8, 21, 21, 21, 25.194704}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -316,7 +316,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3424, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1587745140]},
+   CellID->2145771835]},
  "IFPDOff"->{
   Cell[4058, 126, 181, 6, 27, "Input",
    CellTags->"IFPDOff",
@@ -349,8 +349,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9019, 315},
- {"IFPDOff", 9153, 319}
+ {"PrimaryExamplesSection", 9020, 315},
+ {"IFPDOff", 9154, 319}
  }
 *)
 (*NotebookFileOutline
@@ -364,10 +364,10 @@ Cell[2875, 78, 524, 15, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3424, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->2145771835],
 Cell[CellGroupData[{
 Cell[3837, 116, 196, 6, 25, "ExampleSection",
- CellID->1341170645],
+ CellID->1904573923],
 Cell[CellGroupData[{
 Cell[4058, 126, 181, 6, 27, "Input",
  CellTags->"IFPDOff",

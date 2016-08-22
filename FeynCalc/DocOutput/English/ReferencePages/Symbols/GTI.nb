@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5899,        186]
+NotebookDataLength[      5900,        186]
 NotebookOptionsPosition[      3765,        121]
-NotebookOutlinePosition[      5643,        175]
-CellTagsIndexPosition[      5578,        170]
+NotebookOutlinePosition[      5644,        175]
+CellTagsIndexPosition[      5579,        170]
 WindowTitle->GTI
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$84344], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86496], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/GTI", 
             ".html"]], None}]}]},
@@ -134,7 +134,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 12, 37.699920}", 
+   "built" -> "{2016, 8, 21, 21, 21, 11.120337}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -169,7 +169,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"GTI", 5472, 163}
+ {"GTI", 5473, 163}
  }
 *)
 (*NotebookFileOutline

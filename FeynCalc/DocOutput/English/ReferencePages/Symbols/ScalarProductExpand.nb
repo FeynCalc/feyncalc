@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     27347,        948]
+NotebookDataLength[     27349,        948]
 NotebookOptionsPosition[     16859,        671]
-NotebookOutlinePosition[     24180,        852]
-CellTagsIndexPosition[     24019,        845]
+NotebookOutlinePosition[     24182,        852]
+CellTagsIndexPosition[     24021,        845]
 WindowTitle->ExpandScalarProduct
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ExpandScalarProduct.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130093], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$131328], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ExpandScalarProduct", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->575706318],
+ CellID->1519351336],
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1025492439],
+ CellID->333855967],
 
 Cell[CellGroupData[{
 
@@ -684,7 +684,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 26.722048}", 
+   "built" -> "{2016, 8, 21, 21, 24, 20.265970}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -715,9 +715,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3475, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3475, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->575706318]},
+   CellID->1519351336]},
  "ExpandScalarProduct"->{
   Cell[4086, 122, 112, 2, 35, "Subsubsection",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
@@ -844,9 +844,9 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18807, 716},
- {"ExpandScalarProduct", 18952, 720},
- {"ScalarProductExpand", 21487, 781}
+ {"PrimaryExamplesSection", 18808, 716},
+ {"ExpandScalarProduct", 18954, 720},
+ {"ScalarProductExpand", 21489, 781}
  }
 *)
 (*NotebookFileOutline
@@ -858,11 +858,11 @@ Cell[2884, 75, 62, 1, 42, "ObjectName",
 Cell[2949, 78, 501, 13, 121, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3475, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3475, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->575706318],
-Cell[3865, 112, 196, 6, 25, "ExampleSection",
- CellID->1025492439],
+ CellID->1519351336],
+Cell[3866, 112, 195, 6, 25, "ExampleSection",
+ CellID->333855967],
 Cell[CellGroupData[{
 Cell[4086, 122, 112, 2, 35, "Subsubsection",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},

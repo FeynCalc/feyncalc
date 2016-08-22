@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139951], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140906], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Solve3",
              ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1651359721],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1341170645],
+ CellID->1038726886],
 
 Cell[CellGroupData[{
 
@@ -203,7 +203,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 17, 13.639260}", 
+   "built" -> "{2016, 8, 21, 21, 25, 3.529024}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -236,7 +236,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3423, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1587745140]},
+   CellID->1651359721]},
  "Solve3"->{
   Cell[4057, 124, 130, 4, 27, "Input",
    CellTags->"Solve3",
@@ -269,10 +269,10 @@ Cell[2870, 78, 528, 13, 113, "Usage",
 Cell[CellGroupData[{
 Cell[3423, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1651359721],
 Cell[CellGroupData[{
 Cell[3836, 114, 196, 6, 25, "ExampleSection",
- CellID->1341170645],
+ CellID->1038726886],
 Cell[CellGroupData[{
 Cell[4057, 124, 130, 4, 27, "Input",
  CellTags->"Solve3",

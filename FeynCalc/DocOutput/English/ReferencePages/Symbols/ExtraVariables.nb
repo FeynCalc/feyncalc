@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6442,        195]
+NotebookDataLength[      6444,        195]
 NotebookOptionsPosition[      4113,        128]
-NotebookOutlinePosition[      6175,        184]
-CellTagsIndexPosition[      6099,        179]
+NotebookOutlinePosition[      6177,        184]
+CellTagsIndexPosition[      6101,        179]
 WindowTitle->ExtraVariables
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ExtraVariables.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$54210], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$54535], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ExtraVariables", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 9, 42.155340}", 
+   "built" -> "{2016, 8, 21, 21, 18, 52.292898}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -178,7 +178,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtraVariables", 5982, 172}
+ {"ExtraVariables", 5984, 172}
  }
 *)
 (*NotebookFileOutline

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13719,        486]
-NotebookOptionsPosition[      8734,        323]
-NotebookOutlinePosition[     12147,        422]
-CellTagsIndexPosition[     12037,        416]
+NotebookDataLength[     13722,        486]
+NotebookOptionsPosition[      8735,        323]
+NotebookOutlinePosition[     12149,        422]
+CellTagsIndexPosition[     12039,        416]
 WindowTitle->Solve2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139523], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140570], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Solve2",
              ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1721673093],
+ CellID->1834799159],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->892742902],
+ CellID->1860198019],
 
 Cell[CellGroupData[{
 
@@ -336,7 +336,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 17, 8.729095}", 
+   "built" -> "{2016, 8, 21, 21, 25, 2.033976}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -370,53 +370,53 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3498, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1721673093]},
+   CellID->1834799159]},
  "Solve2"->{
-  Cell[4131, 126, 130, 4, 27, "Input",
+  Cell[4132, 126, 130, 4, 27, "Input",
    CellTags->"Solve2",
    CellID->1980966786],
-  Cell[4264, 132, 369, 12, 36, "Output",
+  Cell[4265, 132, 369, 12, 36, "Output",
    CellTags->"Solve2",
    CellID->549167872],
-  Cell[4670, 149, 408, 15, 27, "Input",
+  Cell[4671, 149, 408, 15, 27, "Input",
    CellTags->"Solve2",
    CellID->1039333426],
-  Cell[5081, 166, 479, 17, 62, "Output",
+  Cell[5082, 166, 479, 17, 62, "Output",
    CellTags->"Solve2",
    CellID->1123970589],
-  Cell[5575, 186, 131, 4, 32, "Text",
+  Cell[5576, 186, 131, 4, 32, "Text",
    CellTags->"Solve2",
    CellID->599967125],
-  Cell[5731, 194, 171, 6, 27, "Input",
+  Cell[5732, 194, 171, 6, 27, "Input",
    CellTags->"Solve2",
    CellID->1138368341],
-  Cell[5905, 202, 281, 10, 36, "Output",
+  Cell[5906, 202, 281, 10, 36, "Output",
    CellTags->"Solve2",
    CellID->1865369573],
-  Cell[6223, 217, 284, 9, 27, "Input",
+  Cell[6224, 217, 284, 9, 27, "Input",
    CellTags->"Solve2",
    CellID->455409208],
-  Cell[6510, 228, 281, 10, 36, "Output",
+  Cell[6511, 228, 281, 10, 36, "Output",
    CellTags->"Solve2",
    CellID->1227314769],
-  Cell[6828, 243, 460, 16, 27, "Input",
+  Cell[6829, 243, 460, 16, 27, "Input",
    CellTags->"Solve2",
    CellID->881839558],
-  Cell[7291, 261, 419, 15, 63, "Output",
+  Cell[7292, 261, 419, 15, 63, "Output",
    CellTags->"Solve2",
    CellID->950466968],
-  Cell[7747, 281, 406, 15, 27, "Input",
+  Cell[7748, 281, 406, 15, 27, "Input",
    CellTags->"Solve2",
    CellID->564833870],
-  Cell[8156, 298, 512, 18, 62, "Output",
+  Cell[8157, 298, 512, 18, 62, "Output",
    CellTags->"Solve2",
    CellID->1055420746]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10754, 369},
- {"Solve2", 10887, 373}
+ {"PrimaryExamplesSection", 10756, 369},
+ {"Solve2", 10889, 373}
  }
 *)
 (*NotebookFileOutline
@@ -430,64 +430,64 @@ Cell[2870, 78, 603, 15, 113, "Usage",
 Cell[CellGroupData[{
 Cell[3498, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1721673093],
+ CellID->1834799159],
 Cell[CellGroupData[{
-Cell[3911, 116, 195, 6, 25, "ExampleSection",
- CellID->892742902],
+Cell[3911, 116, 196, 6, 25, "ExampleSection",
+ CellID->1860198019],
 Cell[CellGroupData[{
-Cell[4131, 126, 130, 4, 27, "Input",
+Cell[4132, 126, 130, 4, 27, "Input",
  CellTags->"Solve2",
  CellID->1980966786],
-Cell[4264, 132, 369, 12, 36, "Output",
+Cell[4265, 132, 369, 12, 36, "Output",
  CellTags->"Solve2",
  CellID->549167872]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4670, 149, 408, 15, 27, "Input",
+Cell[4671, 149, 408, 15, 27, "Input",
  CellTags->"Solve2",
  CellID->1039333426],
-Cell[5081, 166, 479, 17, 62, "Output",
+Cell[5082, 166, 479, 17, 62, "Output",
  CellTags->"Solve2",
  CellID->1123970589]
 }, Open  ]],
-Cell[5575, 186, 131, 4, 32, "Text",
+Cell[5576, 186, 131, 4, 32, "Text",
  CellTags->"Solve2",
  CellID->599967125],
 Cell[CellGroupData[{
-Cell[5731, 194, 171, 6, 27, "Input",
+Cell[5732, 194, 171, 6, 27, "Input",
  CellTags->"Solve2",
  CellID->1138368341],
-Cell[5905, 202, 281, 10, 36, "Output",
+Cell[5906, 202, 281, 10, 36, "Output",
  CellTags->"Solve2",
  CellID->1865369573]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6223, 217, 284, 9, 27, "Input",
+Cell[6224, 217, 284, 9, 27, "Input",
  CellTags->"Solve2",
  CellID->455409208],
-Cell[6510, 228, 281, 10, 36, "Output",
+Cell[6511, 228, 281, 10, 36, "Output",
  CellTags->"Solve2",
  CellID->1227314769]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6828, 243, 460, 16, 27, "Input",
+Cell[6829, 243, 460, 16, 27, "Input",
  CellTags->"Solve2",
  CellID->881839558],
-Cell[7291, 261, 419, 15, 63, "Output",
+Cell[7292, 261, 419, 15, 63, "Output",
  CellTags->"Solve2",
  CellID->950466968]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7747, 281, 406, 15, 27, "Input",
+Cell[7748, 281, 406, 15, 27, "Input",
  CellTags->"Solve2",
  CellID->564833870],
-Cell[8156, 298, 512, 18, 62, "Output",
+Cell[8157, 298, 512, 18, 62, "Output",
  CellTags->"Solve2",
  CellID->1055420746]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8707, 321, 23, 0, 42, "FooterCell"]
+Cell[8708, 321, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

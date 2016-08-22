@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6452,        195]
+NotebookDataLength[      6453,        195]
 NotebookOptionsPosition[      4151,        128]
-NotebookOutlinePosition[      6188,        184]
-CellTagsIndexPosition[      6116,        179]
+NotebookOutlinePosition[      6189,        184]
+CellTagsIndexPosition[      6117,        179]
 WindowTitle->FCIntegral
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58950], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$60009], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCIntegral", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 10, 11.170362}", 
+   "built" -> "{2016, 8, 21, 21, 19, 15.809778}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -178,7 +178,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"FCIntegral", 6002, 172}
+ {"FCIntegral", 6003, 172}
  }
 *)
 (*NotebookFileOutline

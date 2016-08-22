@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6435,        191]
+NotebookDataLength[      6436,        191]
 NotebookOptionsPosition[      4031,        124]
-NotebookOutlinePosition[      6158,        180]
-CellTagsIndexPosition[      6071,        175]
+NotebookOutlinePosition[      6159,        180]
+CellTagsIndexPosition[      6072,        175]
 WindowTitle->IntermediateSubstitutions
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ IntermediateSubstitutions.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92545], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$94421], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/IntermediateSubstitutions", ".html"]], None}]}]},
@@ -137,7 +137,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 13, 20.983530}", 
+   "built" -> "{2016, 8, 21, 21, 21, 45.965093}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -174,7 +174,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"IntermediateSubstitutions", 5944, 168}
+ {"IntermediateSubstitutions", 5945, 168}
  }
 *)
 (*NotebookFileOutline

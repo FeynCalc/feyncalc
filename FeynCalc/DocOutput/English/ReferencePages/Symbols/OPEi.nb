@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14755,        532]
-NotebookOptionsPosition[     10012,        372]
-NotebookOutlinePosition[     13212,        468]
-CellTagsIndexPosition[     13104,        462]
+NotebookDataLength[     14758,        532]
+NotebookOptionsPosition[     10013,        372]
+NotebookOutlinePosition[     13214,        468]
+CellTagsIndexPosition[     13106,        462]
 WindowTitle->OPEi
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$109414], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$111017], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/OPEi", 
             ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->93449681],
+ CellID->36494890],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->183315870],
+ CellID->1892922609],
 
 Cell[CellGroupData[{
 
@@ -385,7 +385,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 45.505379}", 
+   "built" -> "{2016, 8, 21, 21, 22, 57.805270}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -416,53 +416,53 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3312, 94, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->93449681]},
+   CellID->36494890]},
  "OPEi"->{
-  Cell[3943, 123, 93, 3, 27, "Input",
+  Cell[3944, 123, 93, 3, 27, "Input",
    CellTags->"OPEi",
    CellID->1513541744],
-  Cell[4039, 128, 205, 7, 36, "Output",
+  Cell[4040, 128, 205, 7, 36, "Output",
    CellTags->"OPEi",
    CellID->1058262689],
-  Cell[4281, 140, 277, 8, 27, "Input",
+  Cell[4282, 140, 277, 8, 27, "Input",
    CellTags->"OPEi",
    CellID->1628297296],
-  Cell[4561, 150, 334, 11, 36, "Output",
+  Cell[4562, 150, 334, 11, 36, "Output",
    CellTags->"OPEi",
    CellID->1847732928],
-  Cell[4932, 166, 1093, 41, 45, "Input",
+  Cell[4933, 166, 1093, 41, 45, "Input",
    CellTags->"OPEi",
    CellID->233448399],
-  Cell[6028, 209, 308, 10, 36, "Output",
+  Cell[6029, 209, 308, 10, 36, "Output",
    CellTags->"OPEi",
    CellID->1115714619],
-  Cell[6351, 222, 75, 2, 32, "Text",
+  Cell[6352, 222, 75, 2, 32, "Text",
    CellTags->"OPEi",
    CellID->920512070],
-  Cell[6451, 228, 536, 18, 45, "Input",
+  Cell[6452, 228, 536, 18, 45, "Input",
    CellTags->"OPEi",
    CellID->631981450],
-  Cell[6990, 248, 635, 23, 36, "Output",
+  Cell[6991, 248, 635, 23, 36, "Output",
    CellTags->"OPEi",
    CellID->1830261914],
-  Cell[7662, 276, 552, 20, 27, "Input",
+  Cell[7663, 276, 552, 20, 27, "Input",
    CellTags->"OPEi",
    CellID->1153963056],
-  Cell[8217, 298, 518, 19, 36, "Output",
+  Cell[8218, 298, 518, 19, 36, "Output",
    CellTags->"OPEi",
    CellID->480392578],
-  Cell[8772, 322, 537, 18, 45, "Input",
+  Cell[8773, 322, 537, 18, 45, "Input",
    CellTags->"OPEi",
    CellID->1255237485],
-  Cell[9312, 342, 634, 23, 36, "Output",
+  Cell[9313, 342, 634, 23, 36, "Output",
    CellTags->"OPEi",
    CellID->718023073]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11851, 415},
- {"OPEi", 11980, 419}
+ {"PrimaryExamplesSection", 11853, 415},
+ {"OPEi", 11982, 419}
  }
 *)
 (*NotebookFileOutline
@@ -476,64 +476,64 @@ Cell[2858, 78, 429, 12, 97, "Usage",
 Cell[CellGroupData[{
 Cell[3312, 94, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->93449681],
+ CellID->36494890],
 Cell[CellGroupData[{
-Cell[3723, 113, 195, 6, 25, "ExampleSection",
- CellID->183315870],
+Cell[3723, 113, 196, 6, 25, "ExampleSection",
+ CellID->1892922609],
 Cell[CellGroupData[{
-Cell[3943, 123, 93, 3, 27, "Input",
+Cell[3944, 123, 93, 3, 27, "Input",
  CellTags->"OPEi",
  CellID->1513541744],
-Cell[4039, 128, 205, 7, 36, "Output",
+Cell[4040, 128, 205, 7, 36, "Output",
  CellTags->"OPEi",
  CellID->1058262689]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4281, 140, 277, 8, 27, "Input",
+Cell[4282, 140, 277, 8, 27, "Input",
  CellTags->"OPEi",
  CellID->1628297296],
-Cell[4561, 150, 334, 11, 36, "Output",
+Cell[4562, 150, 334, 11, 36, "Output",
  CellTags->"OPEi",
  CellID->1847732928]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4932, 166, 1093, 41, 45, "Input",
+Cell[4933, 166, 1093, 41, 45, "Input",
  CellTags->"OPEi",
  CellID->233448399],
-Cell[6028, 209, 308, 10, 36, "Output",
+Cell[6029, 209, 308, 10, 36, "Output",
  CellTags->"OPEi",
  CellID->1115714619]
 }, Open  ]],
-Cell[6351, 222, 75, 2, 32, "Text",
+Cell[6352, 222, 75, 2, 32, "Text",
  CellTags->"OPEi",
  CellID->920512070],
 Cell[CellGroupData[{
-Cell[6451, 228, 536, 18, 45, "Input",
+Cell[6452, 228, 536, 18, 45, "Input",
  CellTags->"OPEi",
  CellID->631981450],
-Cell[6990, 248, 635, 23, 36, "Output",
+Cell[6991, 248, 635, 23, 36, "Output",
  CellTags->"OPEi",
  CellID->1830261914]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7662, 276, 552, 20, 27, "Input",
+Cell[7663, 276, 552, 20, 27, "Input",
  CellTags->"OPEi",
  CellID->1153963056],
-Cell[8217, 298, 518, 19, 36, "Output",
+Cell[8218, 298, 518, 19, 36, "Output",
  CellTags->"OPEi",
  CellID->480392578]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8772, 322, 537, 18, 45, "Input",
+Cell[8773, 322, 537, 18, 45, "Input",
  CellTags->"OPEi",
  CellID->1255237485],
-Cell[9312, 342, 634, 23, 36, "Output",
+Cell[9313, 342, 634, 23, 36, "Output",
  CellTags->"OPEi",
  CellID->718023073]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[9985, 370, 23, 0, 42, "FooterCell"]
+Cell[9986, 370, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

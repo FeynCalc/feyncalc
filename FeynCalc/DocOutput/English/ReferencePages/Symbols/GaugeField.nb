@@ -11,9 +11,9 @@ NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
 NotebookDataLength[      9467,        321]
-NotebookOptionsPosition[      5879,        211]
-NotebookOutlinePosition[      8501,        284]
-CellTagsIndexPosition[      8389,        278]
+NotebookOptionsPosition[      5878,        211]
+NotebookOutlinePosition[      8502,        284]
+CellTagsIndexPosition[      8390,        278]
 WindowTitle->GaugeField
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78386], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$80630], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GaugeField", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1087233587],
+ CellID->1690208121],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2031592441],
+ CellID->585064115],
 
 Cell[CellGroupData[{
 
@@ -224,7 +224,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 12, 8.622913}", 
+   "built" -> "{2016, 8, 21, 21, 20, 44.703538}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -256,29 +256,29 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3383, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1087233587]},
+   CellID->1690208121]},
  "GaugeField"->{
-  Cell[4017, 124, 105, 3, 27, "Input",
+  Cell[4016, 124, 105, 3, 27, "Input",
    CellTags->"GaugeField",
    CellID->1050712800],
-  Cell[4125, 129, 211, 7, 36, "Output",
+  Cell[4124, 129, 211, 7, 36, "Output",
    CellTags->"GaugeField",
    CellID->501755105],
-  Cell[4373, 141, 256, 7, 27, "Input",
+  Cell[4372, 141, 256, 7, 27, "Input",
    CellTags->"GaugeField",
    CellID->1376527682],
-  Cell[4632, 150, 421, 18, 40, "Output",
+  Cell[4631, 150, 421, 18, 40, "Output",
    CellTags->"GaugeField",
    CellID->511347556],
-  Cell[5421, 191, 416, 15, 32, "Text",
+  Cell[5420, 191, 416, 15, 32, "Text",
    CellTags->"GaugeField",
    CellID->1344551251]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7777, 255},
- {"GaugeField", 7914, 259}
+ {"PrimaryExamplesSection", 7778, 255},
+ {"GaugeField", 7915, 259}
  }
 *)
 (*NotebookFileOutline
@@ -292,37 +292,37 @@ Cell[2893, 78, 465, 13, 97, "Usage",
 Cell[CellGroupData[{
 Cell[3383, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1087233587],
+ CellID->1690208121],
 Cell[CellGroupData[{
-Cell[3796, 114, 196, 6, 25, "ExampleSection",
- CellID->2031592441],
+Cell[3796, 114, 195, 6, 25, "ExampleSection",
+ CellID->585064115],
 Cell[CellGroupData[{
-Cell[4017, 124, 105, 3, 27, "Input",
+Cell[4016, 124, 105, 3, 27, "Input",
  CellTags->"GaugeField",
  CellID->1050712800],
-Cell[4125, 129, 211, 7, 36, "Output",
+Cell[4124, 129, 211, 7, 36, "Output",
  CellTags->"GaugeField",
  CellID->501755105]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4373, 141, 256, 7, 27, "Input",
+Cell[4372, 141, 256, 7, 27, "Input",
  CellTags->"GaugeField",
  CellID->1376527682],
-Cell[4632, 150, 421, 18, 40, "Output",
+Cell[4631, 150, 421, 18, 40, "Output",
  CellTags->"GaugeField",
  CellID->511347556]
 }, Open  ]]
 }, Open  ]],
-Cell[5080, 172, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5079, 172, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5148, 177, 270, 12, 31, "SeeAlsoSection",
+Cell[5147, 177, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5421, 191, 416, 15, 32, "Text",
+Cell[5420, 191, 416, 15, 32, "Text",
  CellTags->"GaugeField",
  CellID->1344551251]
 }, Open  ]],
-Cell[5852, 209, 23, 0, 42, "FooterCell"]
+Cell[5851, 209, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

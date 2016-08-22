@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15278,        498]
+NotebookDataLength[     15281,        498]
 NotebookOptionsPosition[      9049,        309]
-NotebookOutlinePosition[     13485,        427]
-CellTagsIndexPosition[     13374,        421]
+NotebookOutlinePosition[     13488,        427]
+CellTagsIndexPosition[     13377,        421]
 WindowTitle->CheckDB
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$25131], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26279], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CheckDB", ".html"]], None}]}]},
@@ -121,7 +121,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1410363541],
+ CellID->1700909009],
 
 Cell[TextData[{
  "Basic Examples",
@@ -129,7 +129,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->730061350],
+ CellID->379391042],
 
 Cell[CellGroupData[{
 
@@ -322,7 +322,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 6.924772}", 
+   "built" -> "{2016, 8, 21, 21, 16, 51.595649}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -366,7 +366,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4319, 108, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1410363541]},
+   CellID->1700909009]},
  "CheckDB"->{
   Cell[4930, 135, 75, 2, 35, "Subsubsection",
    CellTags->"CheckDB",
@@ -420,8 +420,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11819, 365},
- {"CheckDB", 11954, 369}
+ {"PrimaryExamplesSection", 11822, 365},
+ {"CheckDB", 11957, 369}
  }
 *)
 (*NotebookFileOutline
@@ -435,9 +435,9 @@ Cell[2875, 78, 1419, 26, 247, "Usage",
 Cell[CellGroupData[{
 Cell[4319, 108, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1410363541],
+ CellID->1700909009],
 Cell[4710, 125, 195, 6, 25, "ExampleSection",
- CellID->730061350],
+ CellID->379391042],
 Cell[CellGroupData[{
 Cell[4930, 135, 75, 2, 35, "Subsubsection",
  CellTags->"CheckDB",

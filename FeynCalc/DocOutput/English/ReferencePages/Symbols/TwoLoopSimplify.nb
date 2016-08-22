@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8105,        256]
+NotebookDataLength[      8106,        256]
 NotebookOptionsPosition[      4991,        166]
-NotebookOutlinePosition[      7466,        232]
-CellTagsIndexPosition[      7349,        226]
+NotebookOutlinePosition[      7467,        232]
+CellTagsIndexPosition[      7350,        226]
 WindowTitle->TwoLoopSimplify
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ TwoLoopSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162401], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162276], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TwoLoopSimplify", ".html"]], None}]}]},
@@ -179,7 +179,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 19, 24.788622}", 
+   "built" -> "{2016, 8, 21, 21, 26, 38.283767}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -225,8 +225,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7002, 212},
- {"TwoLoopSimplify", 7136, 216}
+ {"PrimaryExamplesSection", 7003, 212},
+ {"TwoLoopSimplify", 7137, 216}
  }
 *)
 (*NotebookFileOutline

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9251,        311]
-NotebookOptionsPosition[      5701,        199]
-NotebookOutlinePosition[      8331,        274]
-CellTagsIndexPosition[      8220,        268]
+NotebookDataLength[      9257,        311]
+NotebookOptionsPosition[      5703,        199]
+NotebookOutlinePosition[      8335,        274]
+CellTagsIndexPosition[      8224,        268]
 WindowTitle->NumericQ1
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$106923], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$108618], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/NumericQ1", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->798137286],
+ CellID->1531988954],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->87992411],
+ CellID->146669933],
 
 Cell[CellGroupData[{
 
@@ -212,7 +212,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 30.513801}", 
+   "built" -> "{2016, 8, 21, 21, 22, 47.013464}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -241,34 +241,34 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3422, 97, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3422, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->798137286]},
+   CellID->1531988954]},
  "NumericQ1"->{
-  Cell[4053, 126, 241, 8, 31, "Input",
+  Cell[4055, 126, 241, 8, 31, "Input",
    CellTags->"NumericQ1",
    CellID->294886798],
-  Cell[4297, 136, 214, 7, 36, "Output",
+  Cell[4299, 136, 214, 7, 36, "Output",
    CellTags->"NumericQ1",
    CellID->583048133],
-  Cell[4548, 148, 288, 10, 31, "Input",
+  Cell[4550, 148, 288, 10, 31, "Input",
    CellTags->"NumericQ1",
    CellID->792660906],
-  Cell[4839, 160, 215, 7, 36, "Output",
+  Cell[4841, 160, 215, 7, 36, "Output",
    CellTags->"NumericQ1",
    CellID->1595713370],
-  Cell[5091, 172, 328, 11, 31, "Input",
+  Cell[5093, 172, 328, 11, 31, "Input",
    CellTags->"NumericQ1",
    CellID->103103501],
-  Cell[5422, 185, 213, 7, 36, "Output",
+  Cell[5424, 185, 213, 7, 36, "Output",
    CellTags->"NumericQ1",
    CellID->397430963]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7527, 242},
- {"NumericQ1", 7662, 246}
+ {"PrimaryExamplesSection", 7530, 242},
+ {"NumericQ1", 7666, 246}
  }
 *)
 (*NotebookFileOutline
@@ -280,39 +280,39 @@ Cell[2833, 75, 52, 1, 42, "ObjectName",
 Cell[2888, 78, 509, 15, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3422, 97, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3422, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->798137286],
+ CellID->1531988954],
 Cell[CellGroupData[{
-Cell[3834, 116, 194, 6, 25, "ExampleSection",
- CellID->87992411],
+Cell[3835, 116, 195, 6, 25, "ExampleSection",
+ CellID->146669933],
 Cell[CellGroupData[{
-Cell[4053, 126, 241, 8, 31, "Input",
+Cell[4055, 126, 241, 8, 31, "Input",
  CellTags->"NumericQ1",
  CellID->294886798],
-Cell[4297, 136, 214, 7, 36, "Output",
+Cell[4299, 136, 214, 7, 36, "Output",
  CellTags->"NumericQ1",
  CellID->583048133]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4548, 148, 288, 10, 31, "Input",
+Cell[4550, 148, 288, 10, 31, "Input",
  CellTags->"NumericQ1",
  CellID->792660906],
-Cell[4839, 160, 215, 7, 36, "Output",
+Cell[4841, 160, 215, 7, 36, "Output",
  CellTags->"NumericQ1",
  CellID->1595713370]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5091, 172, 328, 11, 31, "Input",
+Cell[5093, 172, 328, 11, 31, "Input",
  CellTags->"NumericQ1",
  CellID->103103501],
-Cell[5422, 185, 213, 7, 36, "Output",
+Cell[5424, 185, 213, 7, 36, "Output",
  CellTags->"NumericQ1",
  CellID->397430963]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5674, 197, 23, 0, 42, "FooterCell"]
+Cell[5676, 197, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

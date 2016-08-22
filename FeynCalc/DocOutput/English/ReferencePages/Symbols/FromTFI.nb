@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14160,        486]
-NotebookOptionsPosition[     10212,        362]
-NotebookOutlinePosition[     13004,        441]
-CellTagsIndexPosition[     12893,        435]
+NotebookDataLength[     14157,        486]
+NotebookOptionsPosition[     10210,        362]
+NotebookOutlinePosition[     13003,        441]
+CellTagsIndexPosition[     12892,        435]
 WindowTitle->FromTFI
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73490], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76102], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FromTFI", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1829508571],
+ CellID->1497816809],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1698904653],
+ CellID->56884211],
 
 Cell[CellGroupData[{
 
@@ -375,7 +375,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 11, 31.866750}", 
+   "built" -> "{2016, 8, 21, 21, 20, 24.433197}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -407,35 +407,35 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3473, 98, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1829508571]},
+   CellID->1497816809]},
  "FromTFI"->{
-  Cell[4107, 127, 449, 15, 27, "Input",
+  Cell[4105, 127, 449, 15, 27, "Input",
    CellTags->"FromTFI",
    CellID->546580717],
-  Cell[4559, 144, 1001, 34, 108, "Output",
+  Cell[4557, 144, 1001, 34, 108, "Output",
    CellTags->"FromTFI",
    CellID->569801456],
-  Cell[5597, 183, 711, 23, 45, "Input",
+  Cell[5595, 183, 711, 23, 45, "Input",
    CellTags->"FromTFI",
    CellID->764654490],
-  Cell[6311, 208, 1191, 41, 108, "Output",
+  Cell[6309, 208, 1191, 41, 108, "Output",
    CellTags->"FromTFI",
    CellID->306530383],
-  Cell[7539, 254, 774, 25, 45, "Input",
+  Cell[7537, 254, 774, 25, 45, "Input",
    CellTags->"FromTFI",
    CellID->309007545],
-  Cell[8316, 281, 1253, 43, 108, "Output",
+  Cell[8314, 281, 1253, 43, 108, "Output",
    CellTags->"FromTFI",
    CellID->1419230577],
-  Cell[9937, 347, 233, 10, 70, "Text",
+  Cell[9935, 347, 233, 10, 70, "Text",
    CellTags->"FromTFI",
    CellID->1628456210]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12116, 406},
- {"FromTFI", 12250, 410}
+ {"PrimaryExamplesSection", 12115, 406},
+ {"FromTFI", 12249, 410}
  }
 *)
 (*NotebookFileOutline
@@ -449,45 +449,45 @@ Cell[2875, 78, 573, 16, 97, "Usage",
 Cell[CellGroupData[{
 Cell[3473, 98, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1829508571],
+ CellID->1497816809],
 Cell[CellGroupData[{
-Cell[3886, 117, 196, 6, 25, "ExampleSection",
- CellID->1698904653],
+Cell[3886, 117, 194, 6, 25, "ExampleSection",
+ CellID->56884211],
 Cell[CellGroupData[{
-Cell[4107, 127, 449, 15, 27, "Input",
+Cell[4105, 127, 449, 15, 27, "Input",
  CellTags->"FromTFI",
  CellID->546580717],
-Cell[4559, 144, 1001, 34, 108, "Output",
+Cell[4557, 144, 1001, 34, 108, "Output",
  CellTags->"FromTFI",
  CellID->569801456]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5597, 183, 711, 23, 45, "Input",
+Cell[5595, 183, 711, 23, 45, "Input",
  CellTags->"FromTFI",
  CellID->764654490],
-Cell[6311, 208, 1191, 41, 108, "Output",
+Cell[6309, 208, 1191, 41, 108, "Output",
  CellTags->"FromTFI",
  CellID->306530383]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7539, 254, 774, 25, 45, "Input",
+Cell[7537, 254, 774, 25, 45, "Input",
  CellTags->"FromTFI",
  CellID->309007545],
-Cell[8316, 281, 1253, 43, 108, "Output",
+Cell[8314, 281, 1253, 43, 108, "Output",
  CellTags->"FromTFI",
  CellID->1419230577]
 }, Open  ]]
 }, Open  ]],
-Cell[9596, 328, 31, 0, 70, "SectionFooterSpacer"]
+Cell[9594, 328, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9664, 333, 270, 12, 70, "SeeAlsoSection",
+Cell[9662, 333, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9937, 347, 233, 10, 70, "Text",
+Cell[9935, 347, 233, 10, 70, "Text",
  CellTags->"FromTFI",
  CellID->1628456210]
 }, Open  ]],
-Cell[10185, 360, 23, 0, 70, "FooterCell"]
+Cell[10183, 360, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

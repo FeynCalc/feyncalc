@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6185,        190]
+NotebookDataLength[      6187,        190]
 NotebookOptionsPosition[      3917,        123]
-NotebookOutlinePosition[      5923,        179]
-CellTagsIndexPosition[      5853,        174]
+NotebookOutlinePosition[      5925,        179]
+CellTagsIndexPosition[      5855,        174]
 WindowTitle->DotPower
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46391], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46992], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DotPower", ".html"]], None}]}]},
@@ -136,7 +136,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 58.823561}", 
+   "built" -> "{2016, 8, 21, 21, 18, 20.646913}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -173,7 +173,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"DotPower", 5741, 167}
+ {"DotPower", 5743, 167}
  }
 *)
 (*NotebookFileOutline

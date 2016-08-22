@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5614,        150]
+NotebookDataLength[      5615,        150]
 NotebookOptionsPosition[      3532,         96]
-NotebookOutlinePosition[      5536,        146]
-CellTagsIndexPosition[      5493,        143]
+NotebookOutlinePosition[      5537,        146]
+CellTagsIndexPosition[      5494,        143]
 WindowTitle->FeynCalcToLaTeX
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynCalcToLaTeX.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65570], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68550], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynCalcToLaTeX", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 10, 43.672219}", 
+   "built" -> "{2016, 8, 21, 21, 19, 52.976412}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

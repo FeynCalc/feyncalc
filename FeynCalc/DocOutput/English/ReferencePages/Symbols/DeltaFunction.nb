@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13250,        463]
-NotebookOptionsPosition[      8424,        310]
+NotebookDataLength[     13248,        463]
+NotebookOptionsPosition[      8422,        310]
 NotebookOutlinePosition[     11648,        402]
 CellTagsIndexPosition[     11531,        396]
 WindowTitle->DeltaFunction
@@ -59,7 +59,7 @@ DeltaFunction.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$35742], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36619], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DeltaFunction", ".html"]], None}]}]},
@@ -114,7 +114,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->164674075],
 
 Cell[CellGroupData[{
 
@@ -124,7 +124,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1738411291],
+ CellID->986793998],
 
 Cell[CellGroupData[{
 
@@ -323,7 +323,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 8, 3.324777}", 
+   "built" -> "{2016, 8, 21, 21, 17, 36.811935}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -354,48 +354,48 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3586, 101, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3586, 101, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1289444967]},
+   CellID->164674075]},
  "DeltaFunction"->{
-  Cell[4220, 130, 161, 5, 27, "Input",
+  Cell[4218, 130, 161, 5, 27, "Input",
    CellTags->"DeltaFunction",
    CellID->1276544329],
-  Cell[4384, 137, 309, 11, 36, "Output",
+  Cell[4382, 137, 309, 11, 36, "Output",
    CellTags->"DeltaFunction",
    CellID->1935055166],
-  Cell[4730, 153, 338, 11, 27, "Input",
+  Cell[4728, 153, 338, 11, 27, "Input",
    CellTags->"DeltaFunction",
    CellID->656921459],
-  Cell[5071, 166, 242, 8, 36, "Output",
+  Cell[5069, 166, 242, 8, 36, "Output",
    CellTags->"DeltaFunction",
    CellID->904672527],
-  Cell[5350, 179, 312, 10, 27, "Input",
+  Cell[5348, 179, 312, 10, 27, "Input",
    CellTags->"DeltaFunction",
    CellID->146135859],
-  Cell[5665, 191, 242, 8, 36, "Output",
+  Cell[5663, 191, 242, 8, 36, "Output",
    CellTags->"DeltaFunction",
    CellID->694516034],
-  Cell[5944, 204, 337, 11, 27, "Input",
+  Cell[5942, 204, 337, 11, 27, "Input",
    CellTags->"DeltaFunction",
    CellID->77885451],
-  Cell[6284, 217, 242, 8, 36, "Output",
+  Cell[6282, 217, 242, 8, 36, "Output",
    CellTags->"DeltaFunction",
    CellID->877420351],
-  Cell[6563, 230, 220, 7, 27, "Input",
+  Cell[6561, 230, 220, 7, 27, "Input",
    CellTags->"DeltaFunction",
    CellID->2128349],
-  Cell[6786, 239, 440, 16, 36, "Output",
+  Cell[6784, 239, 440, 16, 36, "Output",
    CellTags->"DeltaFunction",
    CellID->984049833],
-  Cell[7594, 278, 788, 27, 32, "Text",
+  Cell[7592, 278, 788, 27, 32, "Text",
    CellTags->"DeltaFunction",
    CellID->1180269291]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10344, 355},
+ {"PrimaryExamplesSection", 10345, 355},
  {"DeltaFunction", 10485, 359}
  }
 *)
@@ -408,63 +408,63 @@ Cell[2853, 75, 56, 1, 42, "ObjectName",
 Cell[2912, 78, 649, 19, 108, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3586, 101, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3586, 101, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1289444967],
+ CellID->164674075],
 Cell[CellGroupData[{
-Cell[3999, 120, 196, 6, 25, "ExampleSection",
- CellID->1738411291],
+Cell[3998, 120, 195, 6, 25, "ExampleSection",
+ CellID->986793998],
 Cell[CellGroupData[{
-Cell[4220, 130, 161, 5, 27, "Input",
+Cell[4218, 130, 161, 5, 27, "Input",
  CellTags->"DeltaFunction",
  CellID->1276544329],
-Cell[4384, 137, 309, 11, 36, "Output",
+Cell[4382, 137, 309, 11, 36, "Output",
  CellTags->"DeltaFunction",
  CellID->1935055166]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4730, 153, 338, 11, 27, "Input",
+Cell[4728, 153, 338, 11, 27, "Input",
  CellTags->"DeltaFunction",
  CellID->656921459],
-Cell[5071, 166, 242, 8, 36, "Output",
+Cell[5069, 166, 242, 8, 36, "Output",
  CellTags->"DeltaFunction",
  CellID->904672527]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5350, 179, 312, 10, 27, "Input",
+Cell[5348, 179, 312, 10, 27, "Input",
  CellTags->"DeltaFunction",
  CellID->146135859],
-Cell[5665, 191, 242, 8, 36, "Output",
+Cell[5663, 191, 242, 8, 36, "Output",
  CellTags->"DeltaFunction",
  CellID->694516034]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5944, 204, 337, 11, 27, "Input",
+Cell[5942, 204, 337, 11, 27, "Input",
  CellTags->"DeltaFunction",
  CellID->77885451],
-Cell[6284, 217, 242, 8, 36, "Output",
+Cell[6282, 217, 242, 8, 36, "Output",
  CellTags->"DeltaFunction",
  CellID->877420351]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6563, 230, 220, 7, 27, "Input",
+Cell[6561, 230, 220, 7, 27, "Input",
  CellTags->"DeltaFunction",
  CellID->2128349],
-Cell[6786, 239, 440, 16, 36, "Output",
+Cell[6784, 239, 440, 16, 36, "Output",
  CellTags->"DeltaFunction",
  CellID->984049833]
 }, Open  ]]
 }, Open  ]],
-Cell[7253, 259, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7251, 259, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7321, 264, 270, 12, 31, "SeeAlsoSection",
+Cell[7319, 264, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7594, 278, 788, 27, 32, "Text",
+Cell[7592, 278, 788, 27, 32, "Text",
  CellTags->"DeltaFunction",
  CellID->1180269291]
 }, Open  ]],
-Cell[8397, 308, 23, 0, 70, "FooterCell"]
+Cell[8395, 308, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

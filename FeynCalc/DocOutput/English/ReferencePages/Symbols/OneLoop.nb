@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     33679,       1163]
-NotebookOptionsPosition[     26259,        932]
-NotebookOutlinePosition[     31202,       1066]
-CellTagsIndexPosition[     31091,       1060]
+NotebookDataLength[     33669,       1163]
+NotebookOptionsPosition[     26253,        932]
+NotebookOutlinePosition[     31194,       1066]
+CellTagsIndexPosition[     31083,       1060]
 WindowTitle->OneLoop
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$107266], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$108961], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/OneLoop", ".html"]], None}]}]},
@@ -81,8 +81,7 @@ Cell[BoxData[GridBox[{
      Cell[BoxData[
       RowBox[{"OneLoop", "[", 
        RowBox[{"q", ",", " ", "amplitude"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "calculates the one-loop Feynman diagram amplitude (",
+     " \[LineSeparator]calculates the one-loop Feynman diagram amplitude (",
      StyleBox["n",
       FontSlant->"Italic"],
      "-point, where ",
@@ -101,7 +100,8 @@ tranform to OneLoop[name, k, expr].\n\nNOTICE: While OneLoop is restricted to \
       ButtonData:>"OneLoopSimplify",
       ButtonNote->"OneLoopSimplify"],
      " does not have this restriction (but is usually slower).\n\nWARNING: If \
-you encounter anomalies: The default setting of $West is True, i.e., the way ",
+you encounter anomalies: The default setting of West is True, i.e., the way ",
+     
      Cell[BoxData[
       FormBox[
        RowBox[{" ", 
@@ -145,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1722712732],
+ CellID->23066227],
 
 Cell[CellGroupData[{
 
@@ -155,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->248363729],
+ CellID->859974825],
 
 Cell[CellGroupData[{
 
@@ -945,7 +945,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 14, 32.111362}", 
+   "built" -> "{2016, 8, 21, 21, 22, 48.682794}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -961,8 +961,8 @@ OneLoop[q, FeynAmp[name, k, expr]] and OneLoop[FeynAmp[name, k, expr]] \
 tranform to OneLoop[name, k, expr]. NOTICE: While OneLoop is restricted to 't \
 Hooft Feynman gauge, the function OneLoopSimplify does not have this \
 restriction (but is usually slower). WARNING: If you encounter anomalies: The \
-default setting of $West is True, i.e., the way tr(\\[Gamma]^\\[Mu] \
-\\[Gamma]^\\[Nu] \\[Gamma]^\\[Rho] \\[Gamma]^\\[Sigma] \\ \\[Gamma]^\\[Tau] \
+default setting of West is True, i.e., the way tr(\\[Gamma]^\\[Mu] \\[Gamma]^\
+\\[Nu] \\[Gamma]^\\[Rho] \\[Gamma]^\\[Sigma] \\ \\[Gamma]^\\[Tau] \
 \\[Gamma]^\\[Lambda] \\[Gamma]^5) is calculated in D dimensions has changed \
 compared to the old FeynCalc version. Please keep in mind that the issue of \
 \\[Gamma]^5schemes is inherintly tricky.", "synonyms" -> {}, "title" -> 
@@ -988,79 +988,79 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5050, 132, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5046, 132, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1722712732]},
+   CellID->23066227]},
  "OneLoop"->{
-  Cell[5683, 161, 131, 4, 27, "Input",
+  Cell[5677, 161, 131, 4, 27, "Input",
    CellTags->"OneLoop",
    CellID->183705859],
-  Cell[5817, 167, 1447, 34, 151, "Output",
+  Cell[5811, 167, 1447, 34, 151, "Output",
    CellTags->"OneLoop",
    CellID->353873485],
-  Cell[7301, 206, 293, 11, 27, "Input",
+  Cell[7295, 206, 293, 11, 27, "Input",
    CellTags->"OneLoop",
    CellID->1162504480],
-  Cell[7597, 219, 472, 17, 70, "Output",
+  Cell[7591, 219, 472, 17, 70, "Output",
    CellTags->"OneLoop",
    CellID->155772215],
-  Cell[8106, 241, 149, 5, 27, "Input",
+  Cell[8100, 241, 149, 5, 27, "Input",
    CellTags->"OneLoop",
    CellID->1041679425],
-  Cell[8258, 248, 364, 14, 42, "Output",
+  Cell[8252, 248, 364, 14, 42, "Output",
    CellTags->"OneLoop",
    CellID->987393919],
-  Cell[8637, 265, 381, 12, 45, "Input",
+  Cell[8631, 265, 381, 12, 45, "Input",
    CellTags->"OneLoop",
    CellID->1188939388],
-  Cell[9021, 279, 608, 21, 51, "Text",
+  Cell[9015, 279, 608, 21, 51, "Text",
    CellTags->"OneLoop",
    CellID->878853717],
-  Cell[9654, 304, 925, 31, 75, "Input",
+  Cell[9648, 304, 925, 31, 75, "Input",
    CellTags->"OneLoop",
    CellID->257997891],
-  Cell[10582, 337, 2440, 86, 78, "Output",
+  Cell[10576, 337, 2440, 86, 78, "Output",
    CellTags->"OneLoop",
    CellID->1705341778],
-  Cell[13037, 426, 240, 6, 52, "Text",
+  Cell[13031, 426, 240, 6, 52, "Text",
    CellTags->"OneLoop",
    CellID->1557552127],
-  Cell[13302, 436, 149, 5, 27, "Input",
+  Cell[13296, 436, 149, 5, 27, "Input",
    CellTags->"OneLoop",
    CellID->1098604939],
-  Cell[13454, 443, 3235, 111, 133, "Output",
+  Cell[13448, 443, 3235, 111, 133, "Output",
    CellTags->"OneLoop",
    CellID->644858930],
-  Cell[16726, 559, 129, 4, 27, "Input",
+  Cell[16720, 559, 129, 4, 27, "Input",
    CellTags->"OneLoop",
    CellID->67502148],
-  Cell[16858, 565, 2335, 80, 73, "Output",
+  Cell[16852, 565, 2335, 80, 73, "Output",
    CellTags->"OneLoop",
    CellID->976659518],
-  Cell[19230, 650, 350, 12, 27, "Input",
+  Cell[19224, 650, 350, 12, 27, "Input",
    CellTags->"OneLoop",
    CellID->784091824],
-  Cell[19583, 664, 849, 35, 75, "Output",
+  Cell[19577, 664, 849, 35, 75, "Output",
    CellTags->"OneLoop",
    CellID->998928272],
-  Cell[20469, 704, 148, 5, 27, "Input",
+  Cell[20463, 704, 148, 5, 27, "Input",
    CellTags->"OneLoop",
    CellID->128259577],
-  Cell[20620, 711, 3983, 143, 134, "Output",
+  Cell[20614, 711, 3983, 143, 134, "Output",
    CellTags->"OneLoop",
    CellID->326586043],
-  Cell[24618, 857, 125, 4, 27, "Input",
+  Cell[24612, 857, 125, 4, 27, "Input",
    CellTags->"OneLoop",
    CellID->1779805039],
-  Cell[25099, 883, 1118, 44, 32, "Text",
+  Cell[25093, 883, 1118, 44, 32, "Text",
    CellTags->"OneLoop",
    CellID->1073109549]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 29077, 989},
- {"OneLoop", 29212, 993}
+ {"PrimaryExamplesSection", 29071, 989},
+ {"OneLoop", 29204, 993}
  }
 *)
 (*NotebookFileOutline
@@ -1069,102 +1069,102 @@ Cell[579, 21, 2241, 52, 51, "AnchorBarGrid",
  CellID->1],
 Cell[2823, 75, 50, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2876, 78, 2149, 50, 367, "Usage",
+Cell[2876, 78, 2145, 50, 367, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5050, 132, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5046, 132, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1722712732],
+ CellID->23066227],
 Cell[CellGroupData[{
-Cell[5463, 151, 195, 6, 25, "ExampleSection",
- CellID->248363729],
+Cell[5457, 151, 195, 6, 25, "ExampleSection",
+ CellID->859974825],
 Cell[CellGroupData[{
-Cell[5683, 161, 131, 4, 27, "Input",
+Cell[5677, 161, 131, 4, 27, "Input",
  CellTags->"OneLoop",
  CellID->183705859],
-Cell[5817, 167, 1447, 34, 151, "Output",
+Cell[5811, 167, 1447, 34, 151, "Output",
  CellTags->"OneLoop",
  CellID->353873485]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7301, 206, 293, 11, 27, "Input",
+Cell[7295, 206, 293, 11, 27, "Input",
  CellTags->"OneLoop",
  CellID->1162504480],
-Cell[7597, 219, 472, 17, 70, "Output",
+Cell[7591, 219, 472, 17, 70, "Output",
  CellTags->"OneLoop",
  CellID->155772215]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8106, 241, 149, 5, 27, "Input",
+Cell[8100, 241, 149, 5, 27, "Input",
  CellTags->"OneLoop",
  CellID->1041679425],
-Cell[8258, 248, 364, 14, 42, "Output",
+Cell[8252, 248, 364, 14, 42, "Output",
  CellTags->"OneLoop",
  CellID->987393919]
 }, Open  ]],
-Cell[8637, 265, 381, 12, 45, "Input",
+Cell[8631, 265, 381, 12, 45, "Input",
  CellTags->"OneLoop",
  CellID->1188939388],
-Cell[9021, 279, 608, 21, 51, "Text",
+Cell[9015, 279, 608, 21, 51, "Text",
  CellTags->"OneLoop",
  CellID->878853717],
 Cell[CellGroupData[{
-Cell[9654, 304, 925, 31, 75, "Input",
+Cell[9648, 304, 925, 31, 75, "Input",
  CellTags->"OneLoop",
  CellID->257997891],
-Cell[10582, 337, 2440, 86, 78, "Output",
+Cell[10576, 337, 2440, 86, 78, "Output",
  CellTags->"OneLoop",
  CellID->1705341778]
 }, Open  ]],
-Cell[13037, 426, 240, 6, 52, "Text",
+Cell[13031, 426, 240, 6, 52, "Text",
  CellTags->"OneLoop",
  CellID->1557552127],
 Cell[CellGroupData[{
-Cell[13302, 436, 149, 5, 27, "Input",
+Cell[13296, 436, 149, 5, 27, "Input",
  CellTags->"OneLoop",
  CellID->1098604939],
-Cell[13454, 443, 3235, 111, 133, "Output",
+Cell[13448, 443, 3235, 111, 133, "Output",
  CellTags->"OneLoop",
  CellID->644858930]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16726, 559, 129, 4, 27, "Input",
+Cell[16720, 559, 129, 4, 27, "Input",
  CellTags->"OneLoop",
  CellID->67502148],
-Cell[16858, 565, 2335, 80, 73, "Output",
+Cell[16852, 565, 2335, 80, 73, "Output",
  CellTags->"OneLoop",
  CellID->976659518]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19230, 650, 350, 12, 27, "Input",
+Cell[19224, 650, 350, 12, 27, "Input",
  CellTags->"OneLoop",
  CellID->784091824],
-Cell[19583, 664, 849, 35, 75, "Output",
+Cell[19577, 664, 849, 35, 75, "Output",
  CellTags->"OneLoop",
  CellID->998928272]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20469, 704, 148, 5, 27, "Input",
+Cell[20463, 704, 148, 5, 27, "Input",
  CellTags->"OneLoop",
  CellID->128259577],
-Cell[20620, 711, 3983, 143, 134, "Output",
+Cell[20614, 711, 3983, 143, 134, "Output",
  CellTags->"OneLoop",
  CellID->326586043]
 }, Open  ]],
-Cell[24618, 857, 125, 4, 27, "Input",
+Cell[24612, 857, 125, 4, 27, "Input",
  CellTags->"OneLoop",
  CellID->1779805039]
 }, Open  ]],
-Cell[24758, 864, 31, 0, 29, "SectionFooterSpacer"]
+Cell[24752, 864, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24826, 869, 270, 12, 31, "SeeAlsoSection",
+Cell[24820, 869, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[25099, 883, 1118, 44, 32, "Text",
+Cell[25093, 883, 1118, 44, 32, "Text",
  CellTags->"OneLoop",
  CellID->1073109549]
 }, Open  ]],
-Cell[26232, 930, 23, 0, 42, "FooterCell"]
+Cell[26226, 930, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

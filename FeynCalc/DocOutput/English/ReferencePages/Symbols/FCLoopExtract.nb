@@ -1,0 +1,384 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11810,        374]
+NotebookOptionsPosition[      8648,        290]
+NotebookOutlinePosition[     11268,        353]
+CellTagsIndexPosition[     11183,        348]
+WindowTitle->FCLoopExtract
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FCLoopExtract\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FCLoopExtract"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCLoopExtract.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$60697], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FCLoopExtract", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FCLoopExtract", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCLoopExtract", "[", 
+       RowBox[{"expr", ",", 
+        RowBox[{"{", 
+         RowBox[{"q1", ",", "q2", ",", "..."}], "}"}], ",", "loopHead"}], 
+       "]"}]], "InlineFormula"],
+     " \[LineSeparator]exctracts loop integrals that depend on q1,q2,... from \
+the given expression. The output is given as a list of three entries. The \
+first one contains part of the original expression that consists of \
+irrelevant loop integrals and terms that are free of any loop integrals. The \
+second entry contains relevant loop integrals, where each integral is wrapped \
+into loopHead. The third entry is a list of all the unique loop integrals \
+from the second entry and can be used as an input to another function. Note \
+that if loop integrals contain free indices, those will not be \
+canonicalized."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->292250804],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1697498870],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"FCI", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GSD", "[", 
+     RowBox[{"q", "-", "p1"}], "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GSD", "[", 
+       RowBox[{"q", "-", "p2"}], "]"}], "+", "M"}], ")"}], ".", 
+    RowBox[{"GSD", "[", "p3", "]"}]}], 
+   RowBox[{"SPD", "[", 
+    RowBox[{"q", ",", "p2"}], "]"}], 
+   RowBox[{"FAD", "[", 
+    RowBox[{"q", ",", 
+     RowBox[{"q", "-", "p1"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"q", "-", "p2"}], ",", "m"}], "}"}]}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FCLoopExtract", "[", 
+  RowBox[{"int", ",", 
+   RowBox[{"{", "q", "}"}], ",", "loopInt"}], "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1841949927],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FormBox["p2",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p1",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"M", "+", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p2",
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], ")"}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p3",
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}]}], 
+   RowBox[{
+    SuperscriptBox[
+     FormBox["q",
+      TraditionalForm], "2"], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["q",
+        TraditionalForm], "-", 
+       FormBox["p1",
+        TraditionalForm]}], ")"}], "2"], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q",
+          TraditionalForm], "-", 
+         FormBox["p2",
+          TraditionalForm]}], ")"}], "2"], "-", 
+      SuperscriptBox["m", "2"]}], ")"}]}]], TraditionalForm]], "Output",
+ ImageSize->{305, 48},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->634192799],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"0", ",", 
+    RowBox[{"loopInt", "(", 
+     FractionBox["1", 
+      RowBox[{
+       SuperscriptBox[
+        FormBox["q",
+         TraditionalForm], "2"], ".", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox["p",
+           TraditionalForm], "+", 
+          FormBox["q",
+           TraditionalForm]}], ")"}], "2"], ".", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}], ")"}], "2"]}]], ")"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"loopInt", "(", 
+      FractionBox["1", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q",
+          TraditionalForm], "2"], ".", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox["p",
+            TraditionalForm], "+", 
+           FormBox["q",
+            TraditionalForm]}], ")"}], "2"], ".", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}], ")"}], "2"]}]], ")"}], "}"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{460, 48},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->10831768]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCLoopExtract",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2016, 8, 21, 21, 19, 18.316417}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCLoopExtract[expr, {q1, q2, ...}, loopHead] exctracts loop integrals \
+that depend on q1,q2,... from the given expression. The output is given as a \
+list of three entries. The first one contains part of the original expression \
+that consists of irrelevant loop integrals and terms that are free of any \
+loop integrals. The second entry contains relevant loop integrals, where each \
+integral is wrapped into loopHead. The third entry is a list of all the \
+unique loop integrals from the second entry and can be used as an input to \
+another function. Note that if loop integrals contain free indices, those \
+will not be canonicalized.", "synonyms" -> {}, "title" -> "FCLoopExtract", 
+    "titlemodifier" -> "", "windowtitle" -> "FCLoopExtract", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/FCLoopExtract"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4000, 105, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->292250804]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11040, 341}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[585, 21, 2265, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2853, 75, 56, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2912, 78, 1063, 23, 157, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4000, 105, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->292250804],
+Cell[CellGroupData[{
+Cell[4412, 124, 196, 6, 25, "ExampleSection",
+ CellID->1697498870],
+Cell[CellGroupData[{
+Cell[4633, 134, 732, 24, 62, "Input",
+ CellID->1841949927],
+Cell[5368, 160, 1844, 71, 69, "Output",
+ CellID->634192799],
+Cell[7215, 233, 1367, 50, 69, "Output",
+ CellID->10831768]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[8621, 288, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

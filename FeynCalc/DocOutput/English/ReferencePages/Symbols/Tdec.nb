@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38469,       1448]
-NotebookOptionsPosition[     33147,       1271]
-NotebookOutlinePosition[     36625,       1375]
-CellTagsIndexPosition[     36515,       1369]
+NotebookDataLength[     38473,       1448]
+NotebookOptionsPosition[     33148,       1271]
+NotebookOutlinePosition[     36628,       1375]
+CellTagsIndexPosition[     36518,       1369]
 WindowTitle->Tdec
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152041], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152374], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Tdec", 
             ".html"]], None}]}]},
@@ -125,7 +125,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->543086134],
+ CellID->1647057939],
 
 Cell[CellGroupData[{
 
@@ -135,7 +135,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->990051914],
+ CellID->390806926],
 
 Cell[CellGroupData[{
 
@@ -1284,7 +1284,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 18, 17.802001}", 
+   "built" -> "{2016, 8, 21, 21, 25, 53.552505}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1315,61 +1315,61 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3925, 112, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3925, 112, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->543086134]},
+   CellID->1647057939]},
  "Tdec"->{
-  Cell[4557, 141, 126, 4, 27, "Input",
+  Cell[4558, 141, 126, 4, 27, "Input",
    CellTags->"Tdec",
    CellID->1946686101],
-  Cell[4686, 147, 680, 18, 75, "Output",
+  Cell[4687, 147, 680, 18, 75, "Output",
    CellTags->"Tdec",
    CellID->635728207],
-  Cell[5381, 168, 629, 23, 49, "Text",
+  Cell[5382, 168, 629, 23, 49, "Text",
    CellTags->"Tdec",
    CellID->1358527070],
-  Cell[6035, 195, 220, 8, 27, "Input",
+  Cell[6036, 195, 220, 8, 27, "Input",
    CellTags->"Tdec",
    CellID->1371643363],
-  Cell[6258, 205, 1268, 50, 65, "Output",
+  Cell[6259, 205, 1268, 50, 65, "Output",
    CellTags->"Tdec",
    CellID->1644480081],
-  Cell[7563, 260, 217, 8, 27, "Input",
+  Cell[7564, 260, 217, 8, 27, "Input",
    CellTags->"Tdec",
    CellID->1861786454],
-  Cell[7783, 270, 1035, 45, 70, "Output",
+  Cell[7784, 270, 1035, 45, 70, "Output",
    CellTags->"Tdec",
    CellID->920674629],
-  Cell[8833, 318, 797, 29, 60, "Text",
+  Cell[8834, 318, 797, 29, 60, "Text",
    CellTags->"Tdec",
    CellID->2118815883],
-  Cell[9633, 349, 546, 19, 27, "Input",
+  Cell[9634, 349, 546, 19, 27, "Input",
    CellTags->"Tdec",
    CellID->739868135],
-  Cell[10204, 372, 217, 8, 27, "Input",
+  Cell[10205, 372, 217, 8, 27, "Input",
    CellTags->"Tdec",
    CellID->1848782179],
-  Cell[10424, 382, 19831, 753, 279, "Output",
+  Cell[10425, 382, 19831, 753, 279, "Output",
    CellTags->"Tdec",
    CellID->1940044369],
-  Cell[30292, 1140, 398, 14, 27, "Input",
+  Cell[30293, 1140, 398, 14, 27, "Input",
    CellTags->"Tdec",
    CellID->1116880881],
-  Cell[30693, 1156, 1367, 59, 38, "Output",
+  Cell[30694, 1156, 1367, 59, 38, "Output",
    CellTags->"Tdec",
    CellID->902166348],
-  Cell[32075, 1218, 139, 5, 27, "Input",
+  Cell[32076, 1218, 139, 5, 27, "Input",
    CellTags->"Tdec",
    CellID->1835029182],
-  Cell[32570, 1245, 535, 21, 32, "Text",
+  Cell[32571, 1245, 535, 21, 32, "Text",
    CellTags->"Tdec",
    CellID->562924165]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 35076, 1316},
- {"Tdec", 35207, 1320}
+ {"PrimaryExamplesSection", 35078, 1316},
+ {"Tdec", 35210, 1320}
  }
 *)
 (*NotebookFileOutline
@@ -1381,75 +1381,75 @@ Cell[2808, 75, 47, 1, 42, "ObjectName",
 Cell[2858, 78, 1042, 30, 98, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3925, 112, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3925, 112, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->543086134],
+ CellID->1647057939],
 Cell[CellGroupData[{
-Cell[4337, 131, 195, 6, 25, "ExampleSection",
- CellID->990051914],
+Cell[4338, 131, 195, 6, 25, "ExampleSection",
+ CellID->390806926],
 Cell[CellGroupData[{
-Cell[4557, 141, 126, 4, 27, "Input",
+Cell[4558, 141, 126, 4, 27, "Input",
  CellTags->"Tdec",
  CellID->1946686101],
-Cell[4686, 147, 680, 18, 75, "Output",
+Cell[4687, 147, 680, 18, 75, "Output",
  CellTags->"Tdec",
  CellID->635728207]
 }, Open  ]],
-Cell[5381, 168, 629, 23, 49, "Text",
+Cell[5382, 168, 629, 23, 49, "Text",
  CellTags->"Tdec",
  CellID->1358527070],
 Cell[CellGroupData[{
-Cell[6035, 195, 220, 8, 27, "Input",
+Cell[6036, 195, 220, 8, 27, "Input",
  CellTags->"Tdec",
  CellID->1371643363],
-Cell[6258, 205, 1268, 50, 65, "Output",
+Cell[6259, 205, 1268, 50, 65, "Output",
  CellTags->"Tdec",
  CellID->1644480081]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7563, 260, 217, 8, 27, "Input",
+Cell[7564, 260, 217, 8, 27, "Input",
  CellTags->"Tdec",
  CellID->1861786454],
-Cell[7783, 270, 1035, 45, 70, "Output",
+Cell[7784, 270, 1035, 45, 70, "Output",
  CellTags->"Tdec",
  CellID->920674629]
 }, Open  ]],
-Cell[8833, 318, 797, 29, 60, "Text",
+Cell[8834, 318, 797, 29, 60, "Text",
  CellTags->"Tdec",
  CellID->2118815883],
-Cell[9633, 349, 546, 19, 27, "Input",
+Cell[9634, 349, 546, 19, 27, "Input",
  CellTags->"Tdec",
  CellID->739868135],
 Cell[CellGroupData[{
-Cell[10204, 372, 217, 8, 27, "Input",
+Cell[10205, 372, 217, 8, 27, "Input",
  CellTags->"Tdec",
  CellID->1848782179],
-Cell[10424, 382, 19831, 753, 279, "Output",
+Cell[10425, 382, 19831, 753, 279, "Output",
  CellTags->"Tdec",
  CellID->1940044369]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30292, 1140, 398, 14, 27, "Input",
+Cell[30293, 1140, 398, 14, 27, "Input",
  CellTags->"Tdec",
  CellID->1116880881],
-Cell[30693, 1156, 1367, 59, 38, "Output",
+Cell[30694, 1156, 1367, 59, 38, "Output",
  CellTags->"Tdec",
  CellID->902166348]
 }, Open  ]],
-Cell[32075, 1218, 139, 5, 27, "Input",
+Cell[32076, 1218, 139, 5, 27, "Input",
  CellTags->"Tdec",
  CellID->1835029182]
 }, Open  ]],
-Cell[32229, 1226, 31, 0, 29, "SectionFooterSpacer"]
+Cell[32230, 1226, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32297, 1231, 270, 12, 31, "SeeAlsoSection",
+Cell[32298, 1231, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[32570, 1245, 535, 21, 32, "Text",
+Cell[32571, 1245, 535, 21, 32, "Text",
  CellTags->"Tdec",
  CellID->562924165]
 }, Open  ]],
-Cell[33120, 1269, 23, 0, 42, "FooterCell"]
+Cell[33121, 1269, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6235,        194]
+NotebookDataLength[      6237,        194]
 NotebookOptionsPosition[      4009,        128]
-NotebookOutlinePosition[      5970,        183]
-CellTagsIndexPosition[      5896,        178]
+NotebookOutlinePosition[      5972,        183]
+CellTagsIndexPosition[      5898,        178]
 WindowTitle->PairContract
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PairContract.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$113542], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115145], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PairContract", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 2.543913}", 
+   "built" -> "{2016, 8, 21, 21, 23, 14.476958}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -177,7 +177,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PairContract", 5781, 171}
+ {"PairContract", 5783, 171}
  }
 *)
 (*NotebookFileOutline

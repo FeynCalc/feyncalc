@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11272,        381]
+NotebookDataLength[     11273,        381]
 NotebookOptionsPosition[      7237,        257]
-NotebookOutlinePosition[     10068,        336]
-CellTagsIndexPosition[      9951,        330]
+NotebookOutlinePosition[     10069,        336]
+CellTagsIndexPosition[      9952,        330]
 WindowTitle->QuarkPropagator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ QuarkPropagator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$125156], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$126483], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/QuarkPropagator", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1452880142],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1341170645],
+ CellID->2017901716],
 
 Cell[CellGroupData[{
 
@@ -270,7 +270,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 1.019938}", 
+   "built" -> "{2016, 8, 21, 21, 24, 0.622220}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -302,7 +302,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3401, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1587745140]},
+   CellID->1452880142]},
  "QuarkPropagator"->{
   Cell[4035, 124, 148, 4, 27, "Input",
    CellTags->"QuarkPropagator",
@@ -329,8 +329,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9117, 301},
- {"QuarkPropagator", 9259, 305}
+ {"PrimaryExamplesSection", 9118, 301},
+ {"QuarkPropagator", 9260, 305}
  }
 *)
 (*NotebookFileOutline
@@ -344,10 +344,10 @@ Cell[2925, 78, 451, 13, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3401, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1587745140],
+ CellID->1452880142],
 Cell[CellGroupData[{
 Cell[3814, 114, 196, 6, 25, "ExampleSection",
- CellID->1341170645],
+ CellID->2017901716],
 Cell[CellGroupData[{
 Cell[4035, 124, 148, 4, 27, "Input",
  CellTags->"QuarkPropagator",

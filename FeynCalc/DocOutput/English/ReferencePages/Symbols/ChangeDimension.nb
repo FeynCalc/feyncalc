@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24751,        908]
-NotebookOptionsPosition[     15776,        618]
-NotebookOutlinePosition[     21035,        772]
-CellTagsIndexPosition[     20916,        766]
+NotebookDataLength[     24759,        908]
+NotebookOptionsPosition[     15778,        618]
+NotebookOutlinePosition[     21041,        772]
+CellTagsIndexPosition[     20922,        766]
 WindowTitle->ChangeDimension
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ChangeDimension.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24096], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$25244], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ChangeDimension", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->328005523],
+ CellID->1032813517],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->219930934],
+ CellID->1378115085],
 
 Cell["\<\
 Remember that LorentzIndex[mu, 4] is simplified to LorentzIndex[mu] and \
@@ -631,7 +631,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 7, 2.313320}", 
+   "built" -> "{2016, 8, 21, 21, 16, 47.147097}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -661,112 +661,112 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3464, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3464, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->328005523]},
+   CellID->1032813517]},
  "ChangeDimension"->{
-  Cell[4074, 123, 240, 6, 52, "Text",
+  Cell[4076, 123, 240, 6, 52, "Text",
    CellTags->"ChangeDimension",
    CellID->1522324479],
-  Cell[4339, 133, 231, 7, 27, "Input",
+  Cell[4341, 133, 231, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1127631822],
-  Cell[4573, 142, 366, 14, 39, "Output",
+  Cell[4575, 142, 366, 14, 39, "Output",
    CellTags->"ChangeDimension",
    CellID->621481036],
-  Cell[4976, 161, 170, 5, 27, "Input",
+  Cell[4978, 161, 170, 5, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->2044492451],
-  Cell[5149, 168, 340, 13, 38, "Output",
+  Cell[5151, 168, 340, 13, 38, "Output",
    CellTags->"ChangeDimension",
    CellID->1291415822],
-  Cell[5526, 186, 135, 4, 27, "Input",
+  Cell[5528, 186, 135, 4, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1689591331],
-  Cell[5664, 192, 379, 12, 49, "Output",
+  Cell[5666, 192, 379, 12, 49, "Output",
    CellTags->"ChangeDimension",
    CellID->2101335861],
-  Cell[6058, 207, 139, 4, 32, "Text",
+  Cell[6060, 207, 139, 4, 32, "Text",
    CellTags->"ChangeDimension",
    CellID->906094166],
-  Cell[6222, 215, 219, 7, 27, "Input",
+  Cell[6224, 215, 219, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->898970803],
-  Cell[6444, 224, 329, 10, 49, "Output",
+  Cell[6446, 224, 329, 10, 49, "Output",
    CellTags->"ChangeDimension",
    CellID->2072157462],
-  Cell[6788, 237, 125, 2, 32, "Text",
+  Cell[6790, 237, 125, 2, 32, "Text",
    CellTags->"ChangeDimension",
    CellID->169525226],
-  Cell[6938, 243, 500, 16, 27, "Input",
+  Cell[6940, 243, 500, 16, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->931498160],
-  Cell[7441, 261, 2029, 81, 41, "Output",
+  Cell[7443, 261, 2029, 81, 41, "Output",
    CellTags->"ChangeDimension",
    CellID->1897534885],
-  Cell[9507, 347, 172, 5, 27, "Input",
+  Cell[9509, 347, 172, 5, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->2067421250],
-  Cell[9682, 354, 320, 11, 36, "Output",
+  Cell[9684, 354, 320, 11, 36, "Output",
    CellTags->"ChangeDimension",
    CellID->1845092262],
-  Cell[10039, 370, 240, 7, 27, "Input",
+  Cell[10041, 370, 240, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->443072956],
-  Cell[10282, 379, 320, 11, 36, "Output",
+  Cell[10284, 379, 320, 11, 36, "Output",
    CellTags->"ChangeDimension",
    CellID->1862585362],
-  Cell[10617, 393, 153, 4, 32, "Text",
+  Cell[10619, 393, 153, 4, 32, "Text",
    CellTags->"ChangeDimension",
    CellID->1415828575],
-  Cell[10773, 399, 227, 7, 27, "Input",
+  Cell[10775, 399, 227, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1024340055],
-  Cell[11003, 408, 239, 6, 52, "Text",
+  Cell[11005, 408, 239, 6, 52, "Text",
    CellTags->"ChangeDimension",
    CellID->811356604],
-  Cell[11245, 416, 220, 7, 27, "Input",
+  Cell[11247, 416, 220, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1043083810],
-  Cell[11490, 427, 240, 7, 27, "Input",
+  Cell[11492, 427, 240, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->2013502188],
-  Cell[11733, 436, 596, 25, 39, "Output",
+  Cell[11735, 436, 596, 25, 39, "Output",
    CellTags->"ChangeDimension",
    CellID->1195831407],
-  Cell[12366, 466, 202, 6, 27, "Input",
+  Cell[12368, 466, 202, 6, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1364188329],
-  Cell[12571, 474, 595, 25, 39, "Output",
+  Cell[12573, 474, 595, 25, 39, "Output",
    CellTags->"ChangeDimension",
    CellID->454924559],
-  Cell[13203, 504, 196, 6, 31, "Input",
+  Cell[13205, 504, 196, 6, 31, "Input",
    CellTags->"ChangeDimension",
    CellID->1260742676],
-  Cell[13402, 512, 408, 14, 36, "Output",
+  Cell[13404, 512, 408, 14, 36, "Output",
    CellTags->"ChangeDimension",
    CellID->712801039],
-  Cell[13847, 531, 161, 5, 31, "Input",
+  Cell[13849, 531, 161, 5, 31, "Input",
    CellTags->"ChangeDimension",
    CellID->1971885587],
-  Cell[14011, 538, 237, 8, 36, "Output",
+  Cell[14013, 538, 237, 8, 36, "Output",
    CellTags->"ChangeDimension",
    CellID->1523338400],
-  Cell[14263, 549, 221, 7, 27, "Input",
+  Cell[14265, 549, 221, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1454834336],
-  Cell[14487, 558, 176, 6, 27, "Input",
+  Cell[14489, 558, 176, 6, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->696058695],
-  Cell[15019, 586, 715, 27, 32, "Text",
+  Cell[15021, 586, 715, 27, 32, "Text",
    CellTags->"ChangeDimension",
    CellID->1962733391]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17686, 662},
- {"ChangeDimension", 17827, 666}
+ {"PrimaryExamplesSection", 17691, 662},
+ {"ChangeDimension", 17833, 666}
  }
 *)
 (*NotebookFileOutline
@@ -778,138 +778,138 @@ Cell[2863, 75, 58, 1, 42, "ObjectName",
 Cell[2924, 78, 515, 14, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3464, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3464, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->328005523],
+ CellID->1032813517],
 Cell[CellGroupData[{
-Cell[3876, 115, 195, 6, 25, "ExampleSection",
- CellID->219930934],
-Cell[4074, 123, 240, 6, 52, "Text",
+Cell[3877, 115, 196, 6, 25, "ExampleSection",
+ CellID->1378115085],
+Cell[4076, 123, 240, 6, 52, "Text",
  CellTags->"ChangeDimension",
  CellID->1522324479],
 Cell[CellGroupData[{
-Cell[4339, 133, 231, 7, 27, "Input",
+Cell[4341, 133, 231, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1127631822],
-Cell[4573, 142, 366, 14, 39, "Output",
+Cell[4575, 142, 366, 14, 39, "Output",
  CellTags->"ChangeDimension",
  CellID->621481036]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4976, 161, 170, 5, 27, "Input",
+Cell[4978, 161, 170, 5, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->2044492451],
-Cell[5149, 168, 340, 13, 38, "Output",
+Cell[5151, 168, 340, 13, 38, "Output",
  CellTags->"ChangeDimension",
  CellID->1291415822]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5526, 186, 135, 4, 27, "Input",
+Cell[5528, 186, 135, 4, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1689591331],
-Cell[5664, 192, 379, 12, 49, "Output",
+Cell[5666, 192, 379, 12, 49, "Output",
  CellTags->"ChangeDimension",
  CellID->2101335861]
 }, Open  ]],
-Cell[6058, 207, 139, 4, 32, "Text",
+Cell[6060, 207, 139, 4, 32, "Text",
  CellTags->"ChangeDimension",
  CellID->906094166],
 Cell[CellGroupData[{
-Cell[6222, 215, 219, 7, 27, "Input",
+Cell[6224, 215, 219, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->898970803],
-Cell[6444, 224, 329, 10, 49, "Output",
+Cell[6446, 224, 329, 10, 49, "Output",
  CellTags->"ChangeDimension",
  CellID->2072157462]
 }, Open  ]],
-Cell[6788, 237, 125, 2, 32, "Text",
+Cell[6790, 237, 125, 2, 32, "Text",
  CellTags->"ChangeDimension",
  CellID->169525226],
 Cell[CellGroupData[{
-Cell[6938, 243, 500, 16, 27, "Input",
+Cell[6940, 243, 500, 16, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->931498160],
-Cell[7441, 261, 2029, 81, 41, "Output",
+Cell[7443, 261, 2029, 81, 41, "Output",
  CellTags->"ChangeDimension",
  CellID->1897534885]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9507, 347, 172, 5, 27, "Input",
+Cell[9509, 347, 172, 5, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->2067421250],
-Cell[9682, 354, 320, 11, 36, "Output",
+Cell[9684, 354, 320, 11, 36, "Output",
  CellTags->"ChangeDimension",
  CellID->1845092262]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10039, 370, 240, 7, 27, "Input",
+Cell[10041, 370, 240, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->443072956],
-Cell[10282, 379, 320, 11, 36, "Output",
+Cell[10284, 379, 320, 11, 36, "Output",
  CellTags->"ChangeDimension",
  CellID->1862585362]
 }, Open  ]],
-Cell[10617, 393, 153, 4, 32, "Text",
+Cell[10619, 393, 153, 4, 32, "Text",
  CellTags->"ChangeDimension",
  CellID->1415828575],
-Cell[10773, 399, 227, 7, 27, "Input",
+Cell[10775, 399, 227, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1024340055],
-Cell[11003, 408, 239, 6, 52, "Text",
+Cell[11005, 408, 239, 6, 52, "Text",
  CellTags->"ChangeDimension",
  CellID->811356604],
-Cell[11245, 416, 220, 7, 27, "Input",
+Cell[11247, 416, 220, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1043083810],
 Cell[CellGroupData[{
-Cell[11490, 427, 240, 7, 27, "Input",
+Cell[11492, 427, 240, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->2013502188],
-Cell[11733, 436, 596, 25, 39, "Output",
+Cell[11735, 436, 596, 25, 39, "Output",
  CellTags->"ChangeDimension",
  CellID->1195831407]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12366, 466, 202, 6, 27, "Input",
+Cell[12368, 466, 202, 6, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1364188329],
-Cell[12571, 474, 595, 25, 39, "Output",
+Cell[12573, 474, 595, 25, 39, "Output",
  CellTags->"ChangeDimension",
  CellID->454924559]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13203, 504, 196, 6, 31, "Input",
+Cell[13205, 504, 196, 6, 31, "Input",
  CellTags->"ChangeDimension",
  CellID->1260742676],
-Cell[13402, 512, 408, 14, 36, "Output",
+Cell[13404, 512, 408, 14, 36, "Output",
  CellTags->"ChangeDimension",
  CellID->712801039]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13847, 531, 161, 5, 31, "Input",
+Cell[13849, 531, 161, 5, 31, "Input",
  CellTags->"ChangeDimension",
  CellID->1971885587],
-Cell[14011, 538, 237, 8, 36, "Output",
+Cell[14013, 538, 237, 8, 36, "Output",
  CellTags->"ChangeDimension",
  CellID->1523338400]
 }, Open  ]],
-Cell[14263, 549, 221, 7, 27, "Input",
+Cell[14265, 549, 221, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1454834336],
-Cell[14487, 558, 176, 6, 27, "Input",
+Cell[14489, 558, 176, 6, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->696058695]
 }, Open  ]],
-Cell[14678, 567, 31, 0, 29, "SectionFooterSpacer"]
+Cell[14680, 567, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14746, 572, 270, 12, 31, "SeeAlsoSection",
+Cell[14748, 572, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[15019, 586, 715, 27, 32, "Text",
+Cell[15021, 586, 715, 27, 32, "Text",
  CellTags->"ChangeDimension",
  CellID->1962733391]
 }, Open  ]],
-Cell[15749, 616, 23, 0, 42, "FooterCell"]
+Cell[15751, 616, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

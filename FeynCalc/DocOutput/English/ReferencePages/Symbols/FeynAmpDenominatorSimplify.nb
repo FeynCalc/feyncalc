@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26191,        947]
+NotebookDataLength[     26192,        947]
 NotebookOptionsPosition[     18356,        717]
-NotebookOutlinePosition[     23188,        845]
-CellTagsIndexPosition[     23058,        839]
+NotebookOutlinePosition[     23189,        845]
+CellTagsIndexPosition[     23059,        839]
 WindowTitle->FeynAmpDenominatorSimplify
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ FeynAmpDenominatorSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62476], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65456], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynAmpDenominatorSimplify", ".html"]], None}]}]},
@@ -114,7 +114,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->155629472],
+ CellID->865391719],
 
 Cell[CellGroupData[{
 
@@ -124,7 +124,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1187166959],
+ CellID->1544574464],
 
 Cell[CellGroupData[{
 
@@ -730,7 +730,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 10, 30.125548}", 
+   "built" -> "{2016, 8, 21, 21, 19, 39.446097}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -766,7 +766,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3740, 101, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->155629472]},
+   CellID->865391719]},
  "FeynAmpDenominatorSimplify"->{
   Cell[4373, 130, 113, 3, 27, "Input",
    CellTags->"FeynAmpDenominatorSimplify",
@@ -838,8 +838,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 20526, 765},
- {"FeynAmpDenominatorSimplify", 20679, 769}
+ {"PrimaryExamplesSection", 20527, 765},
+ {"FeynAmpDenominatorSimplify", 20680, 769}
  }
 *)
 (*NotebookFileOutline
@@ -853,10 +853,10 @@ Cell[3012, 80, 703, 17, 163, "Usage",
 Cell[CellGroupData[{
 Cell[3740, 101, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->155629472],
+ CellID->865391719],
 Cell[CellGroupData[{
 Cell[4152, 120, 196, 6, 25, "ExampleSection",
- CellID->1187166959],
+ CellID->1544574464],
 Cell[CellGroupData[{
 Cell[4373, 130, 113, 3, 27, "Input",
  CellTags->"FeynAmpDenominatorSimplify",

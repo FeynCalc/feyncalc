@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12839,        429]
+NotebookDataLength[     12840,        429]
 NotebookOptionsPosition[      8956,        310]
-NotebookOutlinePosition[     11823,        389]
-CellTagsIndexPosition[     11715,        383]
+NotebookOutlinePosition[     11824,        389]
+CellTagsIndexPosition[     11716,        383]
 WindowTitle->PaVe
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$116034], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$117545], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/PaVe", 
             ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->252612378],
+ CellID->284592706],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1076353105],
+ CellID->1328759427],
 
 Cell["Some of the PaVe's reduce to special cases.", "Text",
  CellTags->"PaVe",
@@ -323,7 +323,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 15, 16.149604}", 
+   "built" -> "{2016, 8, 21, 21, 23, 24.193374}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -358,7 +358,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3626, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->252612378]},
+   CellID->284592706]},
  "PaVe"->{
   Cell[4237, 126, 99, 2, 32, "Text",
    CellTags->"PaVe",
@@ -382,8 +382,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11054, 357},
- {"PaVe", 11184, 361}
+ {"PrimaryExamplesSection", 11055, 357},
+ {"PaVe", 11185, 361}
  }
 *)
 (*NotebookFileOutline
@@ -397,10 +397,10 @@ Cell[2858, 78, 743, 17, 128, "Usage",
 Cell[CellGroupData[{
 Cell[3626, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->252612378],
+ CellID->284592706],
 Cell[CellGroupData[{
 Cell[4038, 118, 196, 6, 25, "ExampleSection",
- CellID->1076353105],
+ CellID->1328759427],
 Cell[4237, 126, 99, 2, 32, "Text",
  CellTags->"PaVe",
  CellID->1877067255],

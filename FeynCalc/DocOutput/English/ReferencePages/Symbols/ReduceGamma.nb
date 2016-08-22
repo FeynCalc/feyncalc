@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6207,        189]
+NotebookDataLength[      6208,        189]
 NotebookOptionsPosition[      3914,        122]
-NotebookOutlinePosition[      5944,        178]
-CellTagsIndexPosition[      5871,        173]
+NotebookOutlinePosition[      5945,        178]
+CellTagsIndexPosition[      5872,        173]
 WindowTitle->ReduceGamma
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ReduceGamma.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$125584], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$126819], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ReduceGamma", ".html"]], None}]}]},
@@ -135,7 +135,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 16, 5.669791}", 
+   "built" -> "{2016, 8, 21, 21, 24, 2.220666}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -172,7 +172,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ReduceGamma", 5758, 166}
+ {"ReduceGamma", 5759, 166}
  }
 *)
 (*NotebookFileOutline

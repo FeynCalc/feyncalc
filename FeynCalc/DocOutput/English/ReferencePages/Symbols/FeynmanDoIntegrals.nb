@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12073,        336]
-NotebookOptionsPosition[      7504,        223]
+NotebookDataLength[     12072,        336]
+NotebookOptionsPosition[      7503,        223]
 NotebookOutlinePosition[     11281,        307]
 CellTagsIndexPosition[     11159,        301]
 WindowTitle->FeynmanDoIntegrals
@@ -59,7 +59,7 @@ FeynmanDoIntegrals.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65914], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68894], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynmanDoIntegrals", ".html"]], None}]}]},
@@ -127,7 +127,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1275509434],
+ CellID->1576791235],
 
 Cell[CellGroupData[{
 
@@ -137,7 +137,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->249595607],
+ CellID->51204219],
 
 Cell[CellGroupData[{
 
@@ -236,7 +236,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 10, 44.817059}", 
+   "built" -> "{2016, 8, 21, 21, 19, 54.252004}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -285,15 +285,15 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4786, 114, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1275509434]},
+   CellID->1576791235]},
  "FeynmanDoIntegrals"->{
-  Cell[5419, 143, 154, 4, 27, "Input",
+  Cell[5418, 143, 154, 4, 27, "Input",
    CellTags->"FeynmanDoIntegrals",
    CellID->1175204601],
-  Cell[5576, 149, 1073, 31, 75, "Output",
+  Cell[5575, 149, 1073, 31, 75, "Output",
    CellTags->"FeynmanDoIntegrals",
    CellID->503306959],
-  Cell[7017, 203, 445, 15, 32, "Text",
+  Cell[7016, 203, 445, 15, 32, "Text",
    CellTags->"FeynmanDoIntegrals",
    CellID->1859627924]}
  }
@@ -315,29 +315,29 @@ Cell[2942, 78, 1819, 32, 292, "Usage",
 Cell[CellGroupData[{
 Cell[4786, 114, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1275509434],
+ CellID->1576791235],
 Cell[CellGroupData[{
-Cell[5199, 133, 195, 6, 25, "ExampleSection",
- CellID->249595607],
+Cell[5199, 133, 194, 6, 25, "ExampleSection",
+ CellID->51204219],
 Cell[CellGroupData[{
-Cell[5419, 143, 154, 4, 27, "Input",
+Cell[5418, 143, 154, 4, 27, "Input",
  CellTags->"FeynmanDoIntegrals",
  CellID->1175204601],
-Cell[5576, 149, 1073, 31, 75, "Output",
+Cell[5575, 149, 1073, 31, 75, "Output",
  CellTags->"FeynmanDoIntegrals",
  CellID->503306959]
 }, Open  ]]
 }, Open  ]],
-Cell[6676, 184, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6675, 184, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6744, 189, 270, 12, 31, "SeeAlsoSection",
+Cell[6743, 189, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7017, 203, 445, 15, 32, "Text",
+Cell[7016, 203, 445, 15, 32, "Text",
  CellTags->"FeynmanDoIntegrals",
  CellID->1859627924]
 }, Open  ]],
-Cell[7477, 221, 23, 0, 42, "FooterCell"]
+Cell[7476, 221, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

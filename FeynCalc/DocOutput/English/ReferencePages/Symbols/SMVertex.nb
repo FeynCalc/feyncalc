@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11713,        396]
-NotebookOptionsPosition[      8377,        296]
-NotebookOutlinePosition[     10989,        367]
-CellTagsIndexPosition[     10877,        361]
+NotebookDataLength[     11672,        395]
+NotebookOptionsPosition[      8336,        295]
+NotebookOutlinePosition[     10949,        366]
+CellTagsIndexPosition[     10837,        360]
 WindowTitle->SMVertex
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138500], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139547], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SMVertex", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->58208077],
+ CellID->580320162],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1100666917],
+ CellID->2136770321],
 
 Cell[CellGroupData[{
 
@@ -144,7 +144,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SMVertex",
  CellLabel->"Out[1]=",
- CellID->1369889380]
+ CellID->1908910905]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -161,8 +161,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", "\[ImaginaryI]"}], " ", 
-   RowBox[{"FCGV", "(", "\<\"e\"\>", ")"}], " ", 
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "e", " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{
@@ -282,12 +281,12 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{400, 25},
+ ImageSize->{351, 25},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SMVertex",
  CellLabel->"Out[2]=",
- CellID->2094425959]
+ CellID->60024772]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -309,7 +308,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 1, 2, 15, 17, 4.534367}", 
+   "built" -> "{2016, 8, 21, 21, 24, 57.855545}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -340,28 +339,28 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3592, 99, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[3592, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->58208077]},
+   CellID->580320162]},
  "SMVertex"->{
-  Cell[4224, 128, 133, 4, 27, "Input",
+  Cell[4225, 128, 133, 4, 27, "Input",
    CellTags->"SMVertex",
    CellID->537549751],
-  Cell[4360, 134, 341, 12, 36, "Output",
+  Cell[4361, 134, 341, 12, 36, "Output",
    CellTags->"SMVertex",
-   CellID->1369889380],
-  Cell[4738, 151, 241, 7, 27, "Input",
+   CellID->1908910905],
+  Cell[4739, 151, 241, 7, 27, "Input",
    CellTags->"SMVertex",
    CellID->1911879451],
-  Cell[4982, 160, 3329, 129, 46, "Output",
+  Cell[4983, 160, 3287, 128, 46, "Output",
    CellTags->"SMVertex",
-   CellID->2094425959]}
+   CellID->60024772]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10363, 341},
- {"SMVertex", 10496, 345}
+ {"PrimaryExamplesSection", 10324, 340},
+ {"SMVertex", 10458, 344}
  }
 *)
 (*NotebookFileOutline
@@ -373,31 +372,31 @@ Cell[2828, 75, 51, 1, 42, "ObjectName",
 Cell[2882, 78, 685, 17, 114, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3592, 99, 386, 15, 31, "PrimaryExamplesSection",
+Cell[3592, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->58208077],
+ CellID->580320162],
 Cell[CellGroupData[{
-Cell[4003, 118, 196, 6, 25, "ExampleSection",
- CellID->1100666917],
+Cell[4004, 118, 196, 6, 25, "ExampleSection",
+ CellID->2136770321],
 Cell[CellGroupData[{
-Cell[4224, 128, 133, 4, 27, "Input",
+Cell[4225, 128, 133, 4, 27, "Input",
  CellTags->"SMVertex",
  CellID->537549751],
-Cell[4360, 134, 341, 12, 36, "Output",
+Cell[4361, 134, 341, 12, 36, "Output",
  CellTags->"SMVertex",
- CellID->1369889380]
+ CellID->1908910905]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4738, 151, 241, 7, 27, "Input",
+Cell[4739, 151, 241, 7, 27, "Input",
  CellTags->"SMVertex",
  CellID->1911879451],
-Cell[4982, 160, 3329, 129, 46, "Output",
+Cell[4983, 160, 3287, 128, 46, "Output",
  CellTags->"SMVertex",
- CellID->2094425959]
+ CellID->60024772]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8350, 294, 23, 0, 42, "FooterCell"]
+Cell[8309, 293, 23, 0, 42, "FooterCell"]
 }
 ]
 *)
