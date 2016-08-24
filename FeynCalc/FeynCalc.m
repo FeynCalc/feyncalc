@@ -664,7 +664,7 @@ If[ !$Notebooks && Global`$FeynCalcStartupMessages,
 
 (* Print FeynCalc's startup message *)
 If[ Global`$FeynCalcStartupMessages =!= False,
-	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> ". For help, use the ",
+	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> " (development version). For help, use the ",
 				"Text"],
 			Style[DisplayForm@ButtonBox["documentation center", BaseStyle->"Link", ButtonData :> "paclet:FeynCalc/",
 				ButtonNote -> "paclet:FeynCalc/"], "Text"],
