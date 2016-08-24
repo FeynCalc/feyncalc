@@ -677,7 +677,8 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 
 			If[ mand==={},
 				If[ ($LimitTo4 === False ) && (Head[brex] === PaVe),
-					tvarS = Variables[ Join @@ Take[brex, -2] ];
+					tvarS = Variables[ Join @@ Take[(brex /.
+						PaVe[args1__, args_List, OptionsPattern[]] :> PaVe[args1, args]), -2] ];
 					trick[z_] :=
 						Collect2[z, tvarS],
 					trick[z_] :=
