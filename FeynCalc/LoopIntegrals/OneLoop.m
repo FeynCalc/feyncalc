@@ -347,10 +347,9 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			epschisholm[x_Plus] :=
 				Map[epschisholm,x];
 			epschisholm[x_] :=
-				If[ reducegamma67===True,
+				If[ reducegamma67,
 					EpsChisholm[x],
-					EpsChisholm[x]/.DiracGamma[5] ->
-									(DiracGamma[6]-DiracGamma[7])
+					EpsChisholm[x]/.DiracGamma[5] -> (DiracGamma[6]-DiracGamma[7])
 				] /; Head[x]=!=Plus;
 			If[ FreeQ[oneamp, DOT[Spinor[p1__] , a__ , Spinor[p2__] *
 							Spinor[p3__] , b__ , Spinor[p4__]]
@@ -703,17 +702,13 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		(* ONEAMPCHANGE : bringing gamma5, gamma6 and gamma7 into standard
 			way according to the setting of the option ReduceGamma
 		*)
-			If[ reducegamma67=!=True,
-				oneamp = oneamp /.(* DiracGamma[5]->(DiracGamma[6]-DiracGamma[7])/.*)
-						{DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
-							(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] +
-							DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]
-							)
-						};
+			If[ !reducegamma67,
+				oneamp = oneamp /.
+				{DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
+					(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]])};
 			];
-			If[ reducegamma67===True,
-				oneamp = oneamp /. DiracGamma[6] -> (1/2 + DiracGamma[5]/2)/.
-								DiracGamma[7] -> (1/2 - DiracGamma[5]/2)
+			If[ reducegamma67,
+				oneamp = oneamp /. DiracGamma[6] -> (1/2 + DiracGamma[5]/2)/. DiracGamma[7] -> (1/2 - DiracGamma[5]/2)
 			];
 		(* ********************************************************************* *)
 		(*                          oneloop19                                    *)
@@ -2170,25 +2165,24 @@ small4[x_^m_] :=
 	dotsp[x_] :=
 		x;
 
-	spinorsandpairs/: spinorsandpairs[x___] Pair[ Momentum[a__],
-												Momentum[b__]
-											]^n_. :=
-	spinorsandpairs[dotsp[x] Pair[Momentum[a],Momentum[b]]^n]/;
-	!FreeQ[{a,b},Polarization];
+	spinorsandpairs/:
+		spinorsandpairs[x___] Pair[ Momentum[a__], Momentum[b__]]^n_. :=
+			spinorsandpairs[dotsp[x] Pair[Momentum[a],Momentum[b]]^n]/; !FreeQ[{a,b},Polarization];
+
 	spinorsandpairs/: spinorsandpairs[x___] Eps[w__] :=
-	spinorsandpairs[dotsp[x] Eps[w]]/;!FreeQ[{w}, Polarization];
+		spinorsandpairs[dotsp[x] Eps[w]]/; !FreeQ[{w}, Polarization];
 
 	spinorsandpairs/:
-spinorsandpairs[x___] a_SUNT:= spinorsandpairs[dotsp[x], a];
+		spinorsandpairs[x___] a_SUNT:= spinorsandpairs[dotsp[x], a];
 
 	spinorsandpairs/:
-spinorsandpairs[x___] a_SUNF:= spinorsandpairs[dotsp[x] a];
+		spinorsandpairs[x___] a_SUNF:= spinorsandpairs[dotsp[x] a];
 
 	spinorsandpairs/:
-spinorsandpairs[x___] a_SUNDelta:= spinorsandpairs[dotsp[x] a];
+		spinorsandpairs[x___] a_SUNDelta:= spinorsandpairs[dotsp[x] a];
 
-spinorsandpairs/: spinorsandpairs[x___] spinorsandpairs[y___] :=
-						spinorsandpairs[dotsp[x] dotsp[y]];
+	spinorsandpairs/: spinorsandpairs[x___] spinorsandpairs[y___] :=
+		spinorsandpairs[dotsp[x] dotsp[y]];
 
 (* ********************************************************************* *)
 (*                          oneloop38                                    *)
