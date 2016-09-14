@@ -93,8 +93,20 @@ SMP /:
 		SubscriptBox["m", "Q"];
 
 SMP /:
+	MakeBoxes[SMP["m_qu"], TraditionalForm] :=
+		SubscriptBox["m", SubscriptBox["q","u"]];
+
+SMP /:
+	MakeBoxes[SMP["m_qd"], TraditionalForm] :=
+		SubscriptBox["m", SubscriptBox["q","d"]];
+
+SMP /:
 	MakeBoxes[SMP["m_pi"], TraditionalForm] :=
 		SubscriptBox["m", "\[Pi]"];
+
+SMP /:
+	MakeBoxes[SMP["m_l"], TraditionalForm] :=
+		SubscriptBox["m", "l"];
 
 (* Coupling constans and mixing angles *)
 
@@ -107,8 +119,24 @@ SMP /:
 		"e";
 
 SMP /:
+	MakeBoxes[SMP["Q_u"], TraditionalForm] :=
+		SubscriptBox["Q", "u"];
+
+SMP /:
+	MakeBoxes[SMP["Q_d"], TraditionalForm] :=
+		SubscriptBox["Q", "d"];
+
+SMP /:
 	MakeBoxes[SMP["G_F"], TraditionalForm] :=
 		SubscriptBox["G", "F"];
+
+SMP /:
+	MakeBoxes[SMP["g_W"], TraditionalForm] :=
+		SubscriptBox["g", "W"];
+
+SMP /:
+	MakeBoxes[SMP["g'_W"], TraditionalForm] :=
+		SubscriptBox["g'", "W"];
 
 SMP /:
 	MakeBoxes[SMP["cos_W"], TraditionalForm] :=
@@ -221,8 +249,10 @@ SMP[]={
 "m_u","m_d","m_c",
 "m_s","m_t","m_b",
 "m_H","m_W","m_Z",
-"m_q","m_Q","m_pi",
-"g_s","e","G_F",
+"m_q","m_Q","m_qu","m_qd",
+"m_l","m_pi",
+"g_s","e","Q_u","Q_d",
+"G_F","g_W","g'_W",
 "cos_W","sin_W","theta_W",
 "cos_C","sin_C","theta_C",
 "alpha_fs","alpha_s",
