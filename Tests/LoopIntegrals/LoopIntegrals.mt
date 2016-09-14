@@ -21,7 +21,14 @@ FCClearScalarProducts[];
 SetOptions[Tdec,UseParallelization->False];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`LoopIntegrals`*"])];
+	Join@@(ToExpression/@Select[Names["Tests`LoopIntegrals`*"],
+	!StringMatchQ[#, "*fcstLogDivergentScaleless"] &])];
 
 $FCAdvice = True;
+
+$KeepLogDivergentScalelessIntegrals=True;
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcstLogDivergentScaleless"])];
+$KeepLogDivergentScalelessIntegrals=False;
+
 

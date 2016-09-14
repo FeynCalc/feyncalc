@@ -146,7 +146,7 @@ A00 /:
 		ToBoxes[HoldForm[PaVe[0,0,{},{m}]],TraditionalForm];
 
 B0[0,0,0, OptionsPattern[]]:=
-	0;
+	0/; !$KeepLogDivergentScalelessIntegrals;
 
 (* ordering *)
 B0[pe_,me2_,me1_, opt:OptionsPattern[]] :=
@@ -175,7 +175,7 @@ B0 /:
 		ToBoxes[HoldForm[PaVe[0,{p10},{m02,m12}]],TraditionalForm];
 
 B00[0,0,0, OptionsPattern[]]:=
-	0;
+	0/; !$KeepLogDivergentScalelessIntegrals;
 
 B00[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	b00[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && pcheck[pp,mm1,mm2] && !MatchQ[{pp,mm1,mm2},{0,0,0}];
@@ -207,7 +207,7 @@ B1[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	b1[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && pcheck[pp,mm1,mm2] && !MatchQ[{pp,mm1,mm2},{0,0,0}];
 
 B1[0,0,0, OptionsPattern[]] :=
-	0;
+	0/; !$KeepLogDivergentScalelessIntegrals;
 
 (* General case for $LimitTo4=False; The case with zero momentum and different masses is exluded *)
 B1[pp_,mm1_,mm2_, OptionsPattern[]] :=
@@ -261,7 +261,7 @@ B1 /:
 		ToBoxes[HoldForm[PaVe[1,{p10},{m02,m12}]],TraditionalForm];
 
 B11[0,0,0, OptionsPattern[]] :=
-	0;
+	0/; !$KeepLogDivergentScalelessIntegrals;
 
 B11[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	b11[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && pcheck[pp,mm1,mm2]  && !MatchQ[{pp,mm1,mm2},{0,0,0}];

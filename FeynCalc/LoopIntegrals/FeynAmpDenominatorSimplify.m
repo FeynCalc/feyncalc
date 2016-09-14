@@ -197,7 +197,11 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		FCPrint[3, "fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Remove massless tadpoles (vanish in DR)	*)
-		tmp = tmp /. {_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0};
+		If[!$KeepLogDivergentScalelessIntegrals,
+			tmp = tmp /. {_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0},
+			tmp = tmp /. {_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0}
+		];
+
 		FCPrint[3, "FDS: fdsOneLoop: After removing massless tadpoles:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	If the integral topology is more complicated than a massive tadpole, then

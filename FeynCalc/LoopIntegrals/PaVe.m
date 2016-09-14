@@ -84,8 +84,11 @@ PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 PaVe[__,{},{0..}, OptionsPattern[]] :=
 	0;
 
-PaVe[__,{0..},{0..}, OptionsPattern[]] :=
-	0;
+PaVe[__,{0..},l:{0..}, OptionsPattern[]] :=
+	0/; Length[l]=!=2;
+
+PaVe[__,{0..},l:{0..}, OptionsPattern[]] :=
+	0/; Length[l]===2 && !$KeepLogDivergentScalelessIntegrals;
 
 PaVe[0,{pp_},{mm1_,mm2_}, opts:OptionsPattern[]] :=
 	PaVe[0,{pp},{mm2,mm1},opts]/; !OrderedQ[{mm1,mm2}] && OptionValue[PaVeAutoOrder];

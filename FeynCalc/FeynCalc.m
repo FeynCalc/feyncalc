@@ -216,6 +216,13 @@ GenerateTarcerMX::usage =
 TARCER and has to be done only once. The evaluation usually takes a
 couple of minutes."
 
+$KeepLogDivergentScalelessIntegrals::usage =
+"$KeepLogDivergentScalelessIntegrals is an experimental global option that forces \
+FeynCalc not to set 1-loop integrals of type 1/q^4 to zero. This is useful \
+when one has to explicitly distinguish between IR- and UV-divergences in \
+dimensional regularization. Notice that OneLoop is not guaranteed to respect this \
+option.";
+
 $IndexPrefix::usage =
 "$IndexPrefix is a list of prefixes for default Lorentz and color indices
 used by GluonPropagator and similar functions.";
@@ -438,6 +445,7 @@ $FCS = {
 };
 
 $IndexPrefix		= {"li","ci"};
+$KeepLogDivergentScalelessIntegrals = False;
 $Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
