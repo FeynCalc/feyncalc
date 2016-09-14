@@ -39,13 +39,16 @@ End[]
 Begin["`FCLoopCanonicalize`Private`"]
 
 Options[FCLoopCanonicalize] = {
-	FCI -> False
+	FCI -> False,
+	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
 };
 
 FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 	Block[ {ex, loopList, repIndexList, reversedRepIndexList,
-	canIndexList, uniqueCanIndexList, null1, null2, seed,res},
+	canIndexList, uniqueCanIndexList, null1, null2, seed,res, loopIntHeads},
 		seed = ToString[Unique["li"]];
+		loopIntHeads = OptionValue[PaVeIntegralHeads];
+
 		(*This is the list of all the loop integrals in the expression.*)
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -56,7 +59,7 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 			Abort[]
 		];
 		loopList = Union[Cases[ex + null1 + null2, head[_] , Infinity]];
-		If[ Cases[loopList, head[x_]/;FreeQ2[x,Join[{q},PaVeHeadsList]] , Infinity]=!={},
+		If[ Cases[loopList, head[x_]/;FreeQ2[x,Join[{q},loopIntHeads]] , Infinity]=!={},
 			Message[FCLoopCanonicalize::nonloop, expr, head];
 			Abort[]
 		];
