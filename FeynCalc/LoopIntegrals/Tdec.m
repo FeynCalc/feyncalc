@@ -54,18 +54,24 @@ Tdec::indices =
 "Tdec has detected that the integral contains loop momenta with idential Lorentz indices. \
 Evaluation aborted!";
 
+Tdec::failmsg =
+"Error! TID has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 
 (*	Just write down the most general decomposition, without solving any linear
 	equations. This is meant to be called from TID	*)
-BasisOnly
-tdecVerbose::usage="";
+BasisOnly;
+
 
 End[]
 
 Begin["`Tdec`Private`"]
+
+tdecVerbose::usage="";
 
 Options[Tdec] =	{
 	BasisOnly -> False,
@@ -179,13 +185,18 @@ mPart[lis_List, moms_List /; Length[moms] > 0, dim_] :=
 (*	convets 1-loop tensor coefficients into Lorentz structures that will be contracted with the
 	tensor decomposition	*)
 ccProjOneLoop[exp_List, li_List, moms_List, dim_:4] :=
-	Block[{fvd,mtd,TTT},
+	Block[{fvd,mtd,TTT,res},
 		(* exp is a list of numbers, e.g {0,0,1,1,0,0,3,3}*)
 		(* fvd[TTT, x] is a piece of the metric *)
-		Times @@ (Thread[fvd[Map[If[# === 0, TTT, moms[[#]]] &, exp], li]] //.
+		FCPrint[3, "Tdec: ccProjOneLoop: Entering with ", {exp, li, moms, dim}, "" , FCDoControl->tdecVerbose];
+		res = (Thread[fvd[Map[If[# === 0, TTT, moms[[#]]] &, exp], li]] //.
 		{a___,fvd [TTT, x_], fvd [TTT, y_], b___} :> {a, mtd[x, y], b} /.
 		{fvd[x_,y_]:>Pair[Momentum[x,dim], LorentzIndex[y,dim]],
-		mtd[x_,y_]:>Pair[LorentzIndex[x,dim], LorentzIndex[y,dim]]})
+		mtd[x_,y_]:>Pair[LorentzIndex[x,dim], LorentzIndex[y,dim]]});
+		FCPrint[3, "Tdec: ccProjOneLoop: Intermediate result ", res, "" , FCDoControl->tdecVerbose];
+		res = Times @@ res;
+		FCPrint[3, "Tdec: ccProjOneLoop: Leaving with ", res, "" , FCDoControl->tdecVerbose];
+		res
 	];
 
 (*	convets multiloop tensor coefficients (starting with 2-loop) into Lorentz structures that will
@@ -214,52 +225,56 @@ fullBasis[lis_List, moms_List, dim_] :=
 		res
 	];
 
-
-CCSort[{i1_,j1_},{i2_,j2_}]:=
-	Which[	i1<i2,
-			True,
-			i1>i2,
-			False,
-			i1===i2,
-			OrderedQ[{j1,j2}],
-			True,
-			Print["Error!"];
-			Abort[]
-	];
-
 (* 	CCSymmetrize symmetrizes the tensor basis for multiloop (starting with 2 loops) tensor integrals.
 	We start with 2 loops since for 1-loop integrals the symmetrization is much simpler and can be done
 	inside TID	*)
 CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
-	Block[ {gg, detPos, detPos2, nonsymPart, symPart},
+	Block[ {gg, detPos, detPos2, nonsymPart, symPart,tmp,permGroup,res,mt},
 		(* small cross check *)
 		If[ Signature[Flatten[syms]] === 0 || Complement[Flatten[syms], li] =!= {},
 			Message[Tdec::basis];
 			Abort[]
 		];
+
+		(*
+		Here one has to be careful; We can exchange the indices according to the symmetries,
+		but we are not allowed to change the overall oredering. Consider for example
+		{{1,0,0},{nu,mu,rho},{nu,rho}}
+		{{1,0,0},{rho,mu,nu},{nu,rho}}
+		The ordering {1,0,0} is fixed by the tensor structure, i.e. we cannot
+		change it to say {0,1,0}. However, we can change the ordering in the second list, so that {nu,mu,rho}
+		becomes identical to {rho,mu,nu} because of the symmetry under nu<->rho.
+
+		Since the number of symmetries can be in principle quite large, we employ the Cycles-notation.
+		*)
+
+		FCPrint[1, "Tdec: CCSymmetrize: Entering with ", {ins,li,syms}, "" , FCDoControl->tdecVerbose];
 		detPos[x_] :=
-			First@Position[li, #] & /@ x;
+			Flatten[First@Position[li, #] & /@ x];
 		detPos2[x_] :=
 			detPos /@ x;
 		gg = detPos2[syms];
-		(* 	nonsymPart contains all the indices that do not exhibit
-			any symmetries	*)
-		nonsymPart = {{Delete[ins, List /@ Flatten[gg]],
-			Delete[li, List /@ Flatten[gg]]}};
-		(* 	symPart gives us list of indices that are symmetric under
-			pairwise exchange i <->j	*)
-		symPart =
-		Thread[List[ Sort /@ (Extract[ins, #] & /@ gg),
-			Extract[li, #] & /@ gg]];
+		(* We obtain different permutations, sort them and take the first one.*)
+		permGroup = PermutationGroup[Map[Cycles[{#}]&,gg]];
+		tmp = Sort[Permute[li,permGroup]];
+		tmp = Transpose[{ins,First[tmp]}];
+		FCPrint[3, "Tdec: CCSymmetrize: Intermediate result ", tmp, "" , FCDoControl->tdecVerbose];
 
-		If[ nonsymPart =!= {{{}, {}}},
-			Join[symPart, nonsymPart],
-			symPart
-		]
+		(* Of course we still can (and should) reorder groups of indices that belong to different tensors.
+		For example, in {{0, i3}, {0, i4}, {1, i1}, {2, i2}, {1, i5}, {2, i6}, {0, i7}, {0, i8}} it is ok
+		to write it as {{0,i3},{0,i4},{0,i7},{0,i8},{1,i1},{1,i5},{2,i2},{2,i6}}.
+		Notice that we respected the fact that {{0, i3}, {0, i4} and {0, i7}, {0, i8} correspond to
+		g^{i3 i4} an g^{i7 i8} respectively.*)
+
+		res = tmp //. {a___, {0, x_}, {0, y_}, b___} :> {a, mt[{0, x}, {0, y}], b};
+		res = Join[Sort[Cases2[res, mt]], Sort[res /. mt[__] -> Unevaluated[Sequence[]]]];
+		res = res/. mt -> Sequence;
+
+		FCPrint[3, "Tdec: CCSymmetrize: Leaving with ", res, "" , FCDoControl->tdecVerbose];
+		res
 	];
 
-(*    Loop integrals without external vectors and with an odd
-	tensor rank are zero    *)
+	(*    Loop integrals without external vectors and with an odd tensor rank are zero    *)
 Tdec[_:1, li : {{_, _} ..}, {}, OptionsPattern[]] :=
 	If[ OptionValue[List] && !OptionValue[BasisOnly],
 		{0,0},
@@ -274,7 +289,7 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]] :=
 	Block[ {tt, factor, dim, proli, nccli, ccli, pli,
 			eqli, neqli,  nttt,listlabel, fce,
-			veqli, seqli, scqli, solu,ii,ex,ce,xy,tdecVerbose,
+			veqli, seqli, scqli, solu,ii,ex,ce,xy,
 			extMom,basisonly,multiLoop=False,lis,mlis,basis,multiLoopSyms={}},
 
 		dim         = OptionValue[Dimension];
@@ -283,12 +298,13 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		factor		= OptionValue[Factoring];
 		basisonly	= OptionValue[BasisOnly];
 
-		If [!OptionValue[FCVerbose],
+		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				tdecVerbose=OptionValue[FCVerbose]
 			]
 		];
+
 
 		FCPrint[1, "Tdec: Entering with ", exp, li, ppli, "" , FCDoControl->tdecVerbose];
 
@@ -317,6 +333,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			multiLoop=True;
 			multiLoopSyms = Map[Cases[Sort[li], {#, x_} :> x, Infinity] &, Union[mlis]] //Cases[#, {x__} /; Length[{x}] > 1] &
 		];
+		FCPrint[2, "Tdec: multiLoopSyms: ",multiLoopSyms, FCDoControl->tdecVerbose];
 
 		(* Abort decomposition if there are vanishing Gram determinants, unless
 		we have a 1-point function or were requested just to provide the tensor basis *)
@@ -349,10 +366,10 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			(* symmetrizing the basis for 1-loop is really trivial...	*)
 			basis = (basis /. CC[a_, _] :> CC[Sort[a]]) // Collect[#, CC[__]] &,
 			If[multiLoopSyms=!={},
-				basis = (basis/. CC[x__] :> CC[Sort[Join @@ (Transpose /@ CCSymmetrize[x, multiLoopSyms]),CCSort]])// Collect[#, CC[__]] &,
+				basis = (basis/. CC[x__] :> CC[CCSymmetrize[x, multiLoopSyms]])// Collect[#, CC[__]] &,
 				(*	a general multiloop integral doesn't necessarily has to have any symmetrices
 					in the indices	*)
-				basis = (basis/. CC[x__] :> CC[Sort[Transpose[{x}],CCSort]])// Collect[#, CC[__]] &
+				basis = (basis/. CC[x__] :> CC[Transpose[{x}]])// Collect[#, CC[__]] &
 			]
 		];
 
@@ -367,6 +384,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		FCPrint[1, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
 		(* list of tensor coefficients for which we need to solve our linear equations *)
 		ccli =  Cases[basis,CC[__],Infinity];
+		FCPrint[2, "Tdec: ccli:", ccli, FCDoControl->tdecVerbose];
 
 		(* 	out of the tensor coefficients we create tensor structures that will be contracted
 			with the original tensor equations to get a system of linear (scalar) equations *)
@@ -374,6 +392,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			proli= ccli /. CC[x__] :> ccProjOneLoop[x, lis, pli, dim],
 			proli= ccli /. CC[x__] :> ccProjMultiLoop[x, pli, dim]
 		];
+		FCPrint[2, "Tdec: proli after ccProj ",proli, FCDoControl->tdecVerbose];
 		proli = Sort[proli];
 
 		If[!FreeQ2[proli,{ccProjOneLoop,ccProjMultiLoop}],
@@ -423,9 +442,13 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			If[ $FCAdvice,
 				Message[Tdec::slow]
 			];
+			FCPrint[2, "Tdec: Solving: ", neqli, FCDoControl->tdecVerbose];
+			FCPrint[2, "Tdec: For: ", ccli, FCDoControl->tdecVerbose];
+
 			solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
-			FCPrint[1, "solve3 done ", MemoryInUse[], FCDoControl->tdecVerbose];
-			FCPrint[1, "SOLVE3 Bytecount", ByteCount[solu], FCDoControl->tdecVerbose];
+			FCPrint[1, "Tdec: Solve3 done. Used memory: ", MemoryInUse[], FCDoControl->tdecVerbose];
+			FCPrint[1, "Tdec: Solve3 bytecount", ByteCount[solu], FCDoControl->tdecVerbose];
+			FCPrint[2, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
 			nttt = Collect[tt[[2]], Map[First, scqli]];
 			If[ fce,
 				nttt = FeynCalcExternal[nttt]
@@ -434,12 +457,13 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 				solu = solu /. Map[Reverse, seqli];
 			];
 			solu = solu /. Dispatch[Map[Reverse, scqli]];
+			FCPrint[2, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
 			tt = nttt /. Dispatch[solu];
 		];
 
-		FCPrint[1, "after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ", TimeUsed[]//FeynCalcForm, FCDoControl->tdecVerbose];
-		FCPrint[2, "tt: ", tt, FCDoControl->tdecVerbose];
-		FCPrint[2, "seqli: ", seqli, FCDoControl->tdecVerbose];
+		FCPrint[1, "Tdec: after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ", TimeUsed[]//FeynCalcForm, FCDoControl->tdecVerbose];
+		FCPrint[2, "Tdec: tt: ", tt, FCDoControl->tdecVerbose];
+		FCPrint[2, "Tdec: seqli: ", seqli, FCDoControl->tdecVerbose];
 		tt = tt/.extMom->Identity;
 		seqli = seqli/.extMom->Identity;
 		If[ fce,
