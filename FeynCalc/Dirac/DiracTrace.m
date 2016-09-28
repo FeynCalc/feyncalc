@@ -285,6 +285,7 @@ diractraceev[x_, opts:OptionsPattern[]] :=
 		diractraceev2[conall[enx], opts] trfa
 	];
 
+(* Tr(1) *)
 diractraceev2[x_, OptionsPattern[]] :=
 	unitMatrixTrace  x /; FreeQ[x,DiracGamma];
 
@@ -493,9 +494,39 @@ spursav[0 ..] :=
 
 (* calculation of traces (recursively) --  up to a factor of 4 *)
 (*	Trace of g^mu g^nu g^rho g^si g^5	*)
+
+(*
 spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
 	$LeviCivitaSign I Apply[ Eps, {x,y,r,z}/. DiracGamma[vl_[mp_,di___],di___]->vl[mp,di]]//EpsEvaluate
+*)
 
+(* 	All Dirac matrices are 4-dim. Simple case. *)
+spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
+	(EpsEvaluate[$LeviCivitaSign I Eps[x[[1]],y[[1]],r[[1]],z[[1]]]])/;
+		FCGetDimensions[{x,y,r,z}]==={4};
+
+(* 	For all other cases special treatment is needed... *)
+spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
+	Block[{dims,tmp},
+		dims=FCGetDimensions[{x,y,r,z}];
+		Which[
+
+			(* D-dims, BMHV -> gets converted to 4 Dims*)
+			MatchQ[dims, {_Symbol}] && !$Larin && $BreitMaison,
+				tmp = Eps[x[[1]],y[[1]],r[[1]],z[[1]]],
+			(* D-dims, Larin -> remains in Dims*)
+			MatchQ[dims, {_Symbol}] && $Larin && !$BreitMaison,
+				tmp = Eps[x[[1]],y[[1]],r[[1]],z[[1]],Dimension->dims[[1]]],
+			(* 4-dims, D-dims and D-4 dims mixtures, BMHV -> gets converted to 4 Dims*)
+			(MatchQ[dims, {4,_Symbol}] || MatchQ[dims, {4,_Symbol-4}] || MatchQ[dims, {s_Symbol-4,s_Symbol}] || MatchQ[dims, {4, s_Symbol-4,s_Symbol}])	&& !$Larin && $BreitMaison,
+				tmp = Eps[x[[1]],y[[1]],r[[1]],z[[1]]],
+			(* any other combination is most likely an error*)
+			True,
+			Message[DiracTrace::fail, FullForm[{x,y,r,z,DiracGamma[5]}]];
+			Abort[]
+		];
+		EpsEvaluate[$LeviCivitaSign I tmp]
+	]/;FCGetDimensions[{x,y,r,z}]=!={4};
 
 (* there is the problem with different Gamma5-schemes ... *)
 spursav[x__DiracGamma] :=

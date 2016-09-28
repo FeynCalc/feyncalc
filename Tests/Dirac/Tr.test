@@ -1377,3 +1377,12 @@ LC[i1, i2, i3, i4]*MT[i10, i5]*MT[i6, i7]*MT[i8, i9] -
 LC[i1, i10, i4, i5]*MT[i2, i3]*MT[i6, i7]*MT[i8, i9] -
 LC[i1, i10, i2, i3]*MT[i4, i5]*MT[i6, i7]*MT[i8, i9])"}
 })
+
+Tests`Dirac`fcstTrLarin = {
+{"fcstTrLarin-ID1",
+	"Tr[GAD[i1, i2, i3, i4].GA[5]] // FCE", "-4 I LCD[i1, i2, i3, i4]"},
+{"fcstTrLarin-ID2",
+	"Tr[GSD[p2].GAD[n1].GSD[p1].GAD[mu2].GA[5]] // FCE", "4 I LCD[mu2, n1][p1, p2]"},
+{"fcstTrLarin-ID3",
+	"Tr[GAD[i1, i2, i3, i4].GA[5], TraceOfOne -> tt] // FCE", "-I tt LCD[i1, i2, i3, i4]"}
+};
