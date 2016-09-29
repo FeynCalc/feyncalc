@@ -489,24 +489,46 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 		diractrres
 	]/; !FreeQ2[nnx,{DOT,DiracGamma}];
 
-spursav[0 ..] :=
+
+spursav[x__DiracGamma] :=
+	spur[x];
+(*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
+
+spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
+	spur[x];
+
+
+
+(*
+	Some assumptions about objects that can appear in spur:
+	1) All of them are Dirac matrices, i.e. no other non-commutative objects.
+	2) g^5 is always on the end of the chain.
+*)
+
+spur[0 ..] :=
 	0;
+
+spur[] =
+	1;
+
+spur[DiracGamma[5]] =
+	0;
+
+(* 	We assume that a chiral trace with an odd number of g^i is zero in any scheme	*)
+spur[x__DiracGamma,DiracGamma[5]] :=
+	0/; OddQ[Length[{x}]];
 
 (* calculation of traces (recursively) --  up to a factor of 4 *)
 (*	Trace of g^mu g^nu g^rho g^si g^5	*)
 
-(*
-spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
-	$LeviCivitaSign I Apply[ Eps, {x,y,r,z}/. DiracGamma[vl_[mp_,di___],di___]->vl[mp,di]]//EpsEvaluate
-*)
 
 (* 	All Dirac matrices are 4-dim. Simple case. *)
-spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
+spur[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
 	(EpsEvaluate[$LeviCivitaSign I Eps[x[[1]],y[[1]],r[[1]],z[[1]]]])/;
 		FCGetDimensions[{x,y,r,z}]==={4};
 
 (* 	For all other cases special treatment is needed... *)
-spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
+spur[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
 	Block[{dims,tmp},
 		dims=FCGetDimensions[{x,y,r,z}];
 		Which[
@@ -528,16 +550,108 @@ spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
 		EpsEvaluate[$LeviCivitaSign I tmp]
 	]/;FCGetDimensions[{x,y,r,z}]=!={4};
 
-(* there is the problem with different Gamma5-schemes ... *)
-spursav[x__DiracGamma] :=
-	spur[x];
-	(*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
 
-spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
-	spur[x];
+spur[x__,DiracGamma[6]] :=
+	1/2 spur[x] + 1/2 spur[x,DiracGamma[5]];
+
+spur[x__,DiracGamma[7]] :=
+	1/2 spur[x] - 1/2 spur[x,DiracGamma[5]];
+
+spur[x__] :=
+	(DiracTrace@@(gamma67back[ {x} ]))/; !FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}];
+
+gc[x_] :=
+	x/.DiracGamma->gach;
+gach[ex_,___] :=
+	ex /; Length[ex]>0;
+gach[n_Integer] =
+	DiracGamma[n];
+(* This function handles general  Dirac traces *)
+
+spur[y__] :=
+	Block[ {spx,le = Length[{y}],tempres,i,spurjj,tempr,
+		temp2 = 0, fi,spt, resp,dirsign,time,fi1,fi2,fi3,drsi},
+		spx = ( {y}//DiracGammaExpand )/.DiracGamma->gach;
+		temp2 = Hold[spur][spx];
+		time = AbsoluteTime[];
+		FCPrint[1, "DiracTrace: spur: Entering.", FCDoControl->diTrVerbose];
+		FCPrint[2, "DiracTrace: spur: Entering with ", spx, FCDoControl->diTrVerbose];
+
+		resp =
+		Which[
+			(*Trace of an odd number of Dirac matrices without gamma^5 *)
+			OddQ[le] && fr567[spx],
+				0,
+			(* For traces with an even number of Dirac matrices without gamma^5
+			use the trace reduction equation from Veltman's Gammatrica (p.255) plus
+			a tweaked version of Thomas Hahn's Trace4 with some memoization magic *)
+			FreeQ[spx,DiracGamma[5]],
+				traceNo5Wrap@@spx,
+			(* Here we handle traces with of type g^i1 .... g^in g^5 with n>=6*)
+			FreeQ[Drop[spx,-1], DiracGamma[5]] && Length[spx] > 6,
+				FCPrint[2,"Computing the chiral trace ", spx, FCDoControl->diTrVerbose];
+				Which[
+					(* NDR *)
+					!$Larin && !$BreitMaison,
+						If[ MatchQ[SelectFree[spx,{(LorentzIndex | Momentum)[_],DiracGamma[5]}], {} ],
+							(* If the trace is purely four dimensional, NDR is ok here. *)
+							(*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm,
+							A. Denner. Comp. Phys. Commun., 64 (1991)) *)
+							FCPrint[3,"The chiral trace", spx, "is computed using the standard recursion formula in NDR", FCDoControl->diTrVerbose];
+							trace5Wrap@@(spx//.DiracGamma[5]->5),
+							(* Otherwise abort the computation, since NDR cannot handle anomalous traces without an
+							additional prescription*)
+							Message[DiracTrace::ndranomaly, InputForm[DOT[y]]];
+							Abort[];
+						],
+					(* Larin *)
+					$Larin && !$BreitMaison,
+						FCPrint[3,"The chiral trace", spx, "is computed in Larin's scheme", FCDoControl->diTrVerbose];
+						{fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
+						drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
+						(*drsi is usually -1/4 *)
+						temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
+						TR[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
+						DOT @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}], EpsContract->True];
+						temp2/.spt->spursavg/.spursavg->spug,
+					(* BMHV, standard (slow!) trace formula *)
+					!$Larin && $BreitMaison && !west,
+						FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula", FCDoControl->diTrVerbose];
+						fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
+						drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
+						(tmp @@ ({y}/.DiracGamma[5]->
+						(drsi I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
+						DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))))/. tmp[arg__] :> DiracTrace[arg,DiracTraceEvaluate->True],
+					(* BMHV West's trace formula *)
+					!$Larin && $BreitMaison && west,
+						FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula", FCDoControl->diTrVerbose];
+						temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
+						FCUseCache[ExpandScalarProduct,{spx[[i]],spx[[j]]},{}] spt@@Delete[spx,{{j},{i}}],
+							{i,2,Length[spx]-1},{j,1,i-1}]];
+						temp2/.spt->spursavg/.spursavg->spug,
+						(* Any other combination of $Larin, $BreitMaison doesn't describe
+						a valid scheme *)
+					True,
+						Message[DiracTrace::ilsch, $BreitMaison,$Larin]
+				],
+		True,
+		Message[DiracTrace::fail, FullForm[spx]]
+		];
+
+
+		FCPrint[1,"DiracTrace: spur: Finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+		FCPrint[3,"DiracTrace: spur: Leaving with:",resp, FCDoControl->diTrVerbose];
+		FCPrint[1,"DiracTrace: spur: Leaving.", FCDoControl->diTrVerbose];
+
+		resp
+	];
+
 
 spursavg[x___, LorentzIndex[a_, dim_ : 4], LorentzIndex[a_, dim_ : 4], y___] :=
 	(dim spursavg[x, y]) /. spursavg -> spug;
+
+spug[x___] :=
+	spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 
 diracga[DiracGamma[h_Integer]] :=
 	DiracGamma[h];
@@ -547,257 +661,6 @@ diracga[LorentzIndex[mu_, dii_]] :=
 
 diracga[Momentum[p_, dii_]] :=
 	diracga[Momentum[p, dii],dii];
-
-spug[x___] :=
-	spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
-
-spur[] =
-	1;
-
-spur[DiracGamma[5]] =
-	0;
-(*
-spur[x___,DiracGamma[5],y__] :=
-	DiracSimplify[DOT[x,DiracGamma[5],y],InsideDiracTrace->True]/;
-	(!FreeQ[{x},DiracGamma] || !FreeQ[{y},DiracGamma]) && Length[{x,y}>2];
-*)
-spur[x___,DiracGamma[5],y___] :=
-	0/; FreeQ[{x},DiracGamma] && FreeQ[{y},DiracGamma];
-
-spur[x_[y__],DiracGamma[5]] :=
-	0;
-
-spur[DiracGamma[_,_:4],DiracGamma[_,_:4],DiracGamma[5]] :=
-	0;
-
-spur[a_[b__],c_[d__],x_[y__],DiracGamma[5]] :=
-	0;
-
-spur[a_[b__],c_[d__],x_[y__], _[__], odd__, DiracGamma[5]] :=
-	0/; OddQ[Length[{odd}]];
-
-spur[a__] :=
-	(spur @@ Reverse[Transpose[{a}]]) /; (!FreeQ[{a}, DiracGammaT]) && FreeQ[{a},DiracGamma];
-
-(* This is a definition of   Trace( 1.2.3.4. gamma[5] ) *)
-spur[x_,y_,r_,z_,DiracGamma[5]] :=
-	$LeviCivitaSign I Apply[Eps, {x,y,r,z}/.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii]]//EpsEvaluate
-
-
-(* this trace has been calculated according to Larin,
-	i.e. expression DiracMatrix[w8].DiracGamma[5] by
-	(-I/6) LeviCivita[w8,mu,nu,la] DiracMatrix[mu,nu,la] *)
-spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
-	Block[ {z1,z2,z3,z4,z5,z6,z7,z8},
-		{z1,z2,z3,z4,z5,z6,z7,z8} =
-		{w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
-		(*TODO: vl -> (vl :LorentzIndex | Momentum) *)
-		(* trsign is usually  =  -1 *)
-		(* factor 4 is put later *)
-		$LeviCivitaSign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
-			Eps[z4, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z3] +
-			Eps[z4, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z3] -
-			Eps[z4, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z3] -
-			Eps[z5, z6, z7, z8]*Pair[z1, z3]*Pair[z2, z4] +
-			Eps[z3, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z4] -
-			Eps[z3, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z4] +
-			Eps[z3, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z4] +
-			Eps[z4, z6, z7, z8]*Pair[z1, z3]*Pair[z2, z5] -
-			Eps[z3, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z5] +
-			Eps[z3, z4, z7, z8]*Pair[z1, z6]*Pair[z2, z5] -
-			Eps[z3, z4, z6, z8]*Pair[z1, z7]*Pair[z2, z5] -
-			Eps[z4, z5, z7, z8]*Pair[z1, z3]*Pair[z2, z6] +
-			Eps[z3, z5, z7, z8]*Pair[z1, z4]*Pair[z2, z6] -
-			Eps[z3, z4, z7, z8]*Pair[z1, z5]*Pair[z2, z6] +
-			Eps[z3, z4, z5, z8]*Pair[z1, z7]*Pair[z2, z6] +
-			Eps[z4, z5, z6, z8]*Pair[z1, z3]*Pair[z2, z7] -
-			Eps[z3, z5, z6, z8]*Pair[z1, z4]*Pair[z2, z7] +
-			Eps[z3, z4, z6, z8]*Pair[z1, z5]*Pair[z2, z7] -
-			Eps[z3, z4, z5, z8]*Pair[z1, z6]*Pair[z2, z7] +
-			Eps[z5, z6, z7, z8]*Pair[z1, z2]*Pair[z3, z4] -
-			Eps[z2, z6, z7, z8]*Pair[z1, z5]*Pair[z3, z4] +
-			Eps[z2, z5, z7, z8]*Pair[z1, z6]*Pair[z3, z4] -
-			Eps[z2, z5, z6, z8]*Pair[z1, z7]*Pair[z3, z4] +
-			Eps[z1, z6, z7, z8]*Pair[z2, z5]*Pair[z3, z4] -
-			Eps[z1, z5, z7, z8]*Pair[z2, z6]*Pair[z3, z4] +
-			Eps[z1, z5, z6, z8]*Pair[z2, z7]*Pair[z3, z4] -
-			Eps[z4, z6, z7, z8]*Pair[z1, z2]*Pair[z3, z5] +
-			Eps[z2, z6, z7, z8]*Pair[z1, z4]*Pair[z3, z5] -
-			Eps[z2, z4, z7, z8]*Pair[z1, z6]*Pair[z3, z5] +
-			Eps[z2, z4, z6, z8]*Pair[z1, z7]*Pair[z3, z5] -
-			Eps[z1, z6, z7, z8]*Pair[z2, z4]*Pair[z3, z5] +
-			Eps[z1, z4, z7, z8]*Pair[z2, z6]*Pair[z3, z5] -
-			Eps[z1, z4, z6, z8]*Pair[z2, z7]*Pair[z3, z5] +
-			Eps[z4, z5, z7, z8]*Pair[z1, z2]*Pair[z3, z6] -
-			Eps[z2, z5, z7, z8]*Pair[z1, z4]*Pair[z3, z6] +
-			Eps[z2, z4, z7, z8]*Pair[z1, z5]*Pair[z3, z6] -
-			Eps[z2, z4, z5, z8]*Pair[z1, z7]*Pair[z3, z6] +
-			Eps[z1, z5, z7, z8]*Pair[z2, z4]*Pair[z3, z6] -
-			Eps[z1, z4, z7, z8]*Pair[z2, z5]*Pair[z3, z6] +
-			Eps[z1, z4, z5, z8]*Pair[z2, z7]*Pair[z3, z6] -
-			Eps[z4, z5, z6, z8]*Pair[z1, z2]*Pair[z3, z7] +
-			Eps[z2, z5, z6, z8]*Pair[z1, z4]*Pair[z3, z7] -
-			Eps[z2, z4, z6, z8]*Pair[z1, z5]*Pair[z3, z7] +
-			Eps[z2, z4, z5, z8]*Pair[z1, z6]*Pair[z3, z7] -
-			Eps[z1, z5, z6, z8]*Pair[z2, z4]*Pair[z3, z7] +
-			Eps[z1, z4, z6, z8]*Pair[z2, z5]*Pair[z3, z7] -
-			Eps[z1, z4, z5, z8]*Pair[z2, z6]*Pair[z3, z7] +
-			Eps[z3, z6, z7, z8]*Pair[z1, z2]*Pair[z4, z5] -
-			Eps[z2, z6, z7, z8]*Pair[z1, z3]*Pair[z4, z5] +
-			Eps[z2, z3, z7, z8]*Pair[z1, z6]*Pair[z4, z5] -
-			Eps[z2, z3, z6, z8]*Pair[z1, z7]*Pair[z4, z5] +
-			Eps[z1, z6, z7, z8]*Pair[z2, z3]*Pair[z4, z5] -
-			Eps[z1, z3, z7, z8]*Pair[z2, z6]*Pair[z4, z5] +
-			Eps[z1, z3, z6, z8]*Pair[z2, z7]*Pair[z4, z5] +
-			Eps[z1, z2, z7, z8]*Pair[z3, z6]*Pair[z4, z5] -
-			Eps[z1, z2, z6, z8]*Pair[z3, z7]*Pair[z4, z5] -
-			Eps[z3, z5, z7, z8]*Pair[z1, z2]*Pair[z4, z6] +
-			Eps[z2, z5, z7, z8]*Pair[z1, z3]*Pair[z4, z6] -
-			Eps[z2, z3, z7, z8]*Pair[z1, z5]*Pair[z4, z6] +
-			Eps[z2, z3, z5, z8]*Pair[z1, z7]*Pair[z4, z6] -
-			Eps[z1, z5, z7, z8]*Pair[z2, z3]*Pair[z4, z6] +
-			Eps[z1, z3, z7, z8]*Pair[z2, z5]*Pair[z4, z6] -
-			Eps[z1, z3, z5, z8]*Pair[z2, z7]*Pair[z4, z6] -
-			Eps[z1, z2, z7, z8]*Pair[z3, z5]*Pair[z4, z6] +
-			Eps[z1, z2, z5, z8]*Pair[z3, z7]*Pair[z4, z6] +
-			Eps[z3, z5, z6, z8]*Pair[z1, z2]*Pair[z4, z7] -
-			Eps[z2, z5, z6, z8]*Pair[z1, z3]*Pair[z4, z7] +
-			Eps[z2, z3, z6, z8]*Pair[z1, z5]*Pair[z4, z7] -
-			Eps[z2, z3, z5, z8]*Pair[z1, z6]*Pair[z4, z7] +
-			Eps[z1, z5, z6, z8]*Pair[z2, z3]*Pair[z4, z7] -
-			Eps[z1, z3, z6, z8]*Pair[z2, z5]*Pair[z4, z7] +
-			Eps[z1, z3, z5, z8]*Pair[z2, z6]*Pair[z4, z7] +
-			Eps[z1, z2, z6, z8]*Pair[z3, z5]*Pair[z4, z7] -
-			Eps[z1, z2, z5, z8]*Pair[z3, z6]*Pair[z4, z7] +
-			Eps[z3, z4, z7, z8]*Pair[z1, z2]*Pair[z5, z6] -
-			Eps[z2, z4, z7, z8]*Pair[z1, z3]*Pair[z5, z6] +
-			Eps[z2, z3, z7, z8]*Pair[z1, z4]*Pair[z5, z6] -
-			Eps[z2, z3, z4, z8]*Pair[z1, z7]*Pair[z5, z6] +
-			Eps[z1, z4, z7, z8]*Pair[z2, z3]*Pair[z5, z6] -
-			Eps[z1, z3, z7, z8]*Pair[z2, z4]*Pair[z5, z6] +
-			Eps[z1, z3, z4, z8]*Pair[z2, z7]*Pair[z5, z6] +
-			Eps[z1, z2, z7, z8]*Pair[z3, z4]*Pair[z5, z6] -
-			Eps[z1, z2, z4, z8]*Pair[z3, z7]*Pair[z5, z6] +
-			Eps[z1, z2, z3, z8]*Pair[z4, z7]*Pair[z5, z6] -
-			Eps[z3, z4, z6, z8]*Pair[z1, z2]*Pair[z5, z7] +
-			Eps[z2, z4, z6, z8]*Pair[z1, z3]*Pair[z5, z7] -
-			Eps[z2, z3, z6, z8]*Pair[z1, z4]*Pair[z5, z7] +
-			Eps[z2, z3, z4, z8]*Pair[z1, z6]*Pair[z5, z7] -
-			Eps[z1, z4, z6, z8]*Pair[z2, z3]*Pair[z5, z7] +
-			Eps[z1, z3, z6, z8]*Pair[z2, z4]*Pair[z5, z7] -
-			Eps[z1, z3, z4, z8]*Pair[z2, z6]*Pair[z5, z7] -
-			Eps[z1, z2, z6, z8]*Pair[z3, z4]*Pair[z5, z7] +
-			Eps[z1, z2, z4, z8]*Pair[z3, z6]*Pair[z5, z7] -
-			Eps[z1, z2, z3, z8]*Pair[z4, z6]*Pair[z5, z7] +
-			Eps[z3, z4, z5, z8]*Pair[z1, z2]*Pair[z6, z7] -
-			Eps[z2, z4, z5, z8]*Pair[z1, z3]*Pair[z6, z7] +
-			Eps[z2, z3, z5, z8]*Pair[z1, z4]*Pair[z6, z7] -
-			Eps[z2, z3, z4, z8]*Pair[z1, z5]*Pair[z6, z7] +
-			Eps[z1, z4, z5, z8]*Pair[z2, z3]*Pair[z6, z7] -
-			Eps[z1, z3, z5, z8]*Pair[z2, z4]*Pair[z6, z7] +
-			Eps[z1, z3, z4, z8]*Pair[z2, z5]*Pair[z6, z7] +
-			Eps[z1, z2, z5, z8]*Pair[z3, z4]*Pair[z6, z7] -
-			Eps[z1, z2, z4, z8]*Pair[z3, z5]*Pair[z6, z7] +
-			Eps[z1, z2, z3, z8]*Pair[z4, z5]*Pair[z6, z7])
-	] /; $Larin && !$BreitMaison;
-
-	spur[x__,DiracGamma[6]] :=
-		1/2 spur[x] + 1/2 spur[x,DiracGamma[5]];
-
-	spur[x__,DiracGamma[7]] :=
-		1/2 spur[x] - 1/2 spur[x,DiracGamma[5]];
-
-	spur[x__] :=
-		(DiracTrace@@(gamma67back[ {x} ]))/; !FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}];
-
-	gc[x_] :=
-		x/.DiracGamma->gach;
-	gach[ex_,___] :=
-		ex /; Length[ex]>0;
-	gach[n_Integer] =
-		DiracGamma[n];
-	(* This function handles general  Dirac traces *)
-
-	spur[y__] :=
-		Block[ {spx,le = Length[{y}],tempres,i,spurjj,tempr,
-			temp2 = 0, fi,spt, resp,dirsign,time,fi1,fi2,fi3,drsi},
-			spx = ( {y}//DiracGammaExpand )/.DiracGamma->gach;
-			temp2 = Hold[spur][spx];
-			time = AbsoluteTime[];
-			FCPrint[1, "DiracTrace: spur: Entering.", FCDoControl->diTrVerbose];
-			FCPrint[2, "DiracTrace: spur: Entering with ", spx, FCDoControl->diTrVerbose];
-
-			resp =
-			Which[
-				(*Trace of an odd number of Dirac matrices without gamma^5 *)
-				OddQ[le] && fr567[spx],
-					0,
-				(* For traces with an even number of Dirac matrices without gamma^5
-				use the trace reduction equation from Veltman's Gammatrica (p.255) plus
-				a tweaked version of Thomas Hahn's Trace4 with some memoization magic *)
-				FreeQ[spx,DiracGamma[5]],
-					traceNo5Wrap@@spx,
-				(* Here we handle traces with of type g^i1 .... g^in g^5 with n>=6*)
-				FreeQ[Drop[spx,-1], DiracGamma[5]] && Length[spx] > 6,
-					FCPrint[2,"Computing the chiral trace ", spx, FCDoControl->diTrVerbose];
-					Which[
-						(* NDR *)
-						!$Larin && !$BreitMaison,
-							If[ MatchQ[SelectFree[spx,{(LorentzIndex | Momentum)[_],DiracGamma[5]}], {} ],
-								(* If the trace is purely four dimensional, NDR is ok here. *)
-								(*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm,
-								A. Denner. Comp. Phys. Commun., 64 (1991)) *)
-								FCPrint[3,"The chiral trace", spx, "is computed using the standard recursion formula in NDR", FCDoControl->diTrVerbose];
-								trace5Wrap@@(spx//.DiracGamma[5]->5),
-								(* Otherwise abort the computation, since NDR cannot handle anomalous traces without an
-								additional prescription*)
-								Message[DiracTrace::ndranomaly, InputForm[DOT[y]]];
-								Abort[];
-							],
-						(* Larin *)
-						$Larin && !$BreitMaison,
-							FCPrint[3,"The chiral trace", spx, "is computed in Larin's scheme", FCDoControl->diTrVerbose];
-							{fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
-							drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
-							(*drsi is usually -1/4 *)
-							temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
-							TR[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
-							DOT @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}], EpsContract->True];
-							temp2/.spt->spursavg/.spursavg->spug,
-						(* BMHV, standard (slow!) trace formula *)
-						!$Larin && $BreitMaison && !west,
-							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula", FCDoControl->diTrVerbose];
-							fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
-							drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
-							(tmp @@ ({y}/.DiracGamma[5]->
-							(drsi I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
-							DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))))/. tmp[arg__] :> DiracTrace[arg,DiracTraceEvaluate->True],
-						(* BMHV West's trace formula *)
-						!$Larin && $BreitMaison && west,
-							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula", FCDoControl->diTrVerbose];
-							temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
-							FCUseCache[ExpandScalarProduct,{spx[[i]],spx[[j]]},{}] spt@@Delete[spx,{{j},{i}}],
-								{i,2,Length[spx]-1},{j,1,i-1}]];
-							temp2/.spt->spursavg/.spursavg->spug,
-							(* Any other combination of $Larin, $BreitMaison doesn't describe
-							a valid scheme *)
-						True,
-							Message[DiracTrace::ilsch, $BreitMaison,$Larin]
-					],
-			True,
-			Message[DiracTrace::fail, FullForm[spx]]
-			];
-
-
-			FCPrint[1,"DiracTrace: spur: Finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
-			FCPrint[3,"DiracTrace: spur: Leaving with:",resp, FCDoControl->diTrVerbose];
-			FCPrint[1,"DiracTrace: spur: Leaving.", FCDoControl->diTrVerbose];
-
-			resp
-		];
-
-
-
 
 fastExpand[xx_] :=
 	Replace[xx, p_. Times[a__, x_Plus] :> Distribute[p a*x, Plus], 1];
