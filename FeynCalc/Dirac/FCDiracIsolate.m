@@ -32,10 +32,8 @@ Begin["`FCDiracIsolate`Private`"]
 Options[FCDiracIsolate] = {
 	ClearHeads -> {FCGV["DiracChain"]},
 	Collecting -> True,
-	DiracGammaExpand -> True,
 	DotSimplify -> True,
 	ExceptHeads -> {},
-	ExpandScalarProduct -> False,
 	Expanding -> True,
 	FCI -> False,
 	Factoring -> Factor,
@@ -67,20 +65,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[	OptionValue[Expanding],
 			ex = Expand2[ex, DiracHeadsList];
 		];
-(*
-		(* Here we pull loop momenta out of Dirac slashes  *)
-		If[	OptionValue[ExpandScalarProduct],
-			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms]
-		];
 
-		(* Here we pull loop momenta out of Dirac slashes  *)
-		If[	OptionValue[DiracGammaExpand] && !FreeQ[ex,DiracGamma],
-			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ tmp[[2]]/. DiracGamma[x_,dim_:4]/;!FreeQ2[x,lmoms] :> DiracGammaExpand[DiracGamma[x,dim]]
-		];
-		*)
-		(*	and out of the DOTs	*)
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
 			tmp = FCSplit[ex, DiracHeadsList, Expanding->OptionValue[Expanding]];
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False]
@@ -123,14 +108,6 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		res = res //. head[x_]/; FreeQ2[x,DiracHeadsList] :> x;
 
-
-
-		(*
-		If[	OptionValue[SpinorChainsOnly],
-			res = res /. head[x_]/;FreeQ2[x,Spinor] :> x /.
-			head[DOT[s_Spinor,r___]]/;FreeQ2[r,Spinor] :> DOT[s,r];
-		];
-*)
 		If[	OptionValue[Isolate],
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
 			res = res /. restHead -> Identity
