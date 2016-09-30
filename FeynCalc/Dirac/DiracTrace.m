@@ -331,52 +331,18 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 
 
 		(* Here the handling must be improved *)
-
-
-
-		If[ Head[nx]===Plus && Length[nx] > 142,
-			FCPrint[1,"DiracTrace: diractraceev2: Long sum of traces.", FCDoControl->diTrVerbose];
-			diractrlnx = Length[nx];
-			diractrjj = 0;
-			While[ diractrjj < diractrlnx,
-				diractrjj++;
-				FCPrint[2,"diractrjj = ", diractrjj," out of ",diractrlnx, FCDoControl->diTrVerbose];
-				diractrny = diractrny +
-				If[ FreeQ[nx,DiracGamma],
-					diractrnyjj = nx[[diractrjj]],
-					diractrnyjj = Expand2[ DiracSimplify[ nx[[diractrjj]],
-								InsideDiracTrace->True, Factoring->False,
-								FeynCalcInternal -> True, DiracCanonical->False], Pair];
-					If[ !FreeQ[diractrnyjj, DiracGamma],
-						(*	We need to consider standalone Dirac matrices separately
-							With the following all of them will  be wrapped inside
-							dWrap or dtWrap
-						*)
-						diractrnyjj = Expand2[DotSimplify[diractrnyjj,Expanding -> False] /.
-							{DiracGamma -> dWrap,DiracGammaT -> dtWrap} /.
-							DOT -> prepSpur /.
-							prepSpur[zzz__] :> spursav@@({zzz} /.
-							{dWrap -> DiracGamma,dtWrap->DiracGammaT}), Pair];
-					];
-					(* The trace of any standalone Dirac matrix is zero,
-					g^6 and g^7 are of course special *)
-					diractrnyjj = diractrnyjj/.wrapRule;
-					If[ !FreeQ2[diractrnyjj,{dWrap,dtWrap}],
-						Message[DiracTrace::rem];
-						Abort[]
-					];
-					diractrnyjj
-				]
-			],
-			FCPrint[1,"DiracTrace: diractraceev2: Small number of traces.", FCDoControl->diTrVerbose];
-			If[ FreeQ[nx,DiracGamma],
+(*
+		Print[nx];
+		Abort[];
+*)
+		If[ FreeQ[nx,DiracGamma],
 				(*Expression is free of Dirac matrices*)
 				diractrny = nx,
 				(* Standard case: First simplify as much as possible through DiracSimplify *)
 				time2=AbsoluteTime[];
 				FCPrint[1,"DiracTrace: diractraceev2: Doing DiracSimplify in the main loop.", FCDoControl->diTrVerbose];
-				diractrny = Expand2[ DiracSimplify[ nx, InsideDiracTrace->True, Factoring->False,
-				FeynCalcInternal -> True, DiracCanonical->False ], Pair];
+				diractrny = DiracSimplify[nx, InsideDiracTrace->True, Factoring->False, FCI -> True, DiracCanonical->False];
+				diractrny = Expand2[diractrny, Pair];
 				FCPrint[1,"DiracTrace: diractraceev2: DiracSimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 				If[ !FreeQ[diractrny, DiracGamma],
 					(* If the output of DiracSimplify still contains Dirac matrices, apply DotSimplify and try
@@ -386,9 +352,12 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 													dWrap or dtWrap *)
 					time2=AbsoluteTime[];
 					FCPrint[1,"DiracTrace: diractraceev2: Calculating the trace.", FCDoControl->diTrVerbose];
-					diractrny = (DotSimplify[diractrny, Expanding -> True] /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /.
-								DOT -> prepSpur /. prepSpur[zzz__] :> spursav@@({zzz} /.
-								{dWrap -> DiracGamma,dtWrap->DiracGammaT}));
+
+					diractrny = DotSimplify[diractrny, Expanding -> True];
+					diractrny = diractrny /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /.
+						DOT -> prepSpur;
+					diractrny = diractrny /. prepSpur[zzz__] :> spursav@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
+
 					FCPrint[1,"DiracTrace: diractraceev2: Done calculating the trace, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 					time2=AbsoluteTime[];
 					FCPrint[1,"DiracTrace: diractraceev2: Expanding the result w.r.t Pairs", FCDoControl->diTrVerbose];
@@ -404,8 +373,8 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 						Abort[]
 					]
 				];
-			]
 		];
+
 
 
 		FCPrint[1,"DiracTrace: diractraceev2: Main loop finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
