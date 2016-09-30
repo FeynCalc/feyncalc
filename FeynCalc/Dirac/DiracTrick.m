@@ -26,66 +26,76 @@ End[]
 
 Begin["`DiracTrick`Private`"]
 
-Options[DiracTrick] = {Expanding -> False};
+diTrVerbose::usage=""
+
+Options[DiracTrick] = {
+	Expanding -> False,
+	FCI -> False,
+	FCVerbose -> False
+};
 
 scev[a_, b_] :=
 	MemSet[scev[a, b],ExpandScalarProduct[Pair[a,b]]];
 coneins[x_] :=
 	MemSet[coneins[x],x /. Pair -> PairContract /. PairContract -> Pair];
 
-(*By definition:*)
+(* TODO: Bad syntax that one should get rid off*)
 DiracTrick[] = 1;
 
-(* for time-saving reasons: here NO fci *)
-(* RM20120113: added FreeQ, and changed y___ to y__ ..., this fixed
-http://www.feyncalc.org/forum/0677.html
-*)
 DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
-	drS[y, z]/.drS -> ds //.dr->drCOs /.
-						drCO -> ds/.  dr->ds/.dr->DOT(*]*);
+	DiracTrick[DOT[y,z],FCI->True];
 
-(*
-	Main algorithm:
-	1) Simplify expressions involving projectors and slashes (DOT ->  drS)
-	2) Check the scheme and then simplify the expressions involving g^5 (drS /. drS ->  ds)
-	3) Simplify expressions involving contractions of gamma matrices with momenta or other gammas (ds //. dr -> drCOs)
-	4) Again check the sceme and simplify the expressions involving g^5 (twice) (drCO -> ds /.  dr -> ds /.  dr -> DOT)
-*)
+DiracTrick[expr_,OptionsPattern[]] :=
+	Block[{res,tmp,ex},
+		(*
+			Main algorithm:
+				1) Simplify expressions involving projectors and slashes (DOT ->  drS)
+				2) Check the scheme and then simplify the expressions involving g^5 (drS /. drS ->  ds)
+				3) Simplify expressions involving contractions of gamma matrices with momenta or other gammas (ds //. dr -> drCOs)
+				4) Again check the sceme and simplify the expressions involving g^5 (twice) (drCO -> ds /.  dr -> ds /.  dr -> DOT)
+		*)
 
-DiracTrick[x_,r___?OptionQ] :=
-	(
-	If[ (Expanding /. {r} /. Options[DiracTrick]) === True,
-		Expand[ FeynCalcInternal[x] (*/. Dot -> DOT*) /. (*Pair -> PairContract /.*)
-					DOT -> drS /.drS -> ds //. dr -> drCOs/.
-					drCO -> ds /.  dr -> ds /.  dr -> DOT
-				],
-		FeynCalcInternal[x] (*/. Dot -> DOT*) /. (*Pair -> PairContract /.*)
-			DOT -> drS /.drS -> ds //. dr -> drCOs/.
-			drCO -> ds /.  dr -> ds /. dr -> DOT
-	(*/.
-					PairContract -> Pair*)
-	]
-	);
+		If [OptionValue[FCVerbose]===False,
+			diTrVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				diTrVerbose=OptionValue[FCVerbose]
+			];
+		];
 
-(*
-	RM20120113: commented out, not clear why this should be needed
-SetAttributes[DiracTrick, Flat];
-*)
+		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
+
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		res = ex /. DOT -> drS /.drS -> ds //. dr -> drCOs/. drCO -> ds /.  dr -> ds /.  dr -> DOT;
+
+		If[	OptionValue[Expanding],
+			res = Expand[res]
+		];
+
+		FCPrint[1, "DiracTrick. Leaving.", FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: Leaving with ", res, FCDoControl->diTrVerbose];
+
+		res
+	];
 
 ds[x___] :=
-	If[ $BreitMaison === True,
+	If[ $BreitMaison,
 		dsBM[x],
 		dsNV[x]
 	];
 
 (*If we are not using the BM scheme, we keep the projectors as they are*)
 dsNV[x___] :=
-	MemSet[dsNV[x], dr[x]]/;  $BreitMaison === False;
+	MemSet[dsNV[x], dr[x]]/;  !$BreitMaison;
 
 (*If we are using the BM scheme, all g^5 in the projectors should be spelled out!*)
 dsBM[x___] :=
 	MemSet[dsBM[x], dr[x]/.{DiracGamma[6]->(1/2 + DiracGamma[5]/2), DiracGamma[7]->(1/2 - DiracGamma[5]/2) }]/;
-		Head[DiracGamma[6]]===DiracGamma && $BreitMaison === True;
+		Head[DiracGamma[6]]===DiracGamma && $BreitMaison;
 
 (* drdef *)
 ds[] = dr[] = 1;
@@ -131,10 +141,10 @@ dr[b___,DiracGamma[7],DiracGamma[7],c___] :=
 (*If we have a projector behind a gamma matrix, we should anticommute them.
 	This holds only in four dimensions or in a naive gamma5 scheme *)
 dr[b___,DiracGamma[6],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
-	ds[b, DiracGamma[x[c], dim], DiracGamma[7],d ]/; ($BreitMaison=!=True || dim === 4);
+	ds[b, DiracGamma[x[c], dim], DiracGamma[7],d ]/; (!$BreitMaison || dim === 4);
 
 dr[b___,DiracGamma[7],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
-	ds[b, DiracGamma[x[c], dim], DiracGamma[6],d ]/; ($BreitMaison=!=True || dim === 4);
+	ds[b, DiracGamma[x[c], dim], DiracGamma[6],d ]/; (!$BreitMaison || dim === 4);
 
 
 (*In 4 dimensions g^5 always anticommutes with all the other gamma matrices*)
@@ -146,18 +156,15 @@ dr[b___,DiracGamma[5],c:DiracGamma[_[_]].. ,d___] :=
 
 (*In the native scheme, g^5 anticommutes with all the other gamma matrices in all dimensions*)
 dr[b___,DiracGamma[5],c:DiracGamma[_[__],_].. ,d___] :=
-	( (-1)^Length[{c}] ds[ b,c,DiracGamma[5],d ] ) /;
-		($BreitMaison =!= True);
+	( (-1)^Length[{c}] ds[ b,c,DiracGamma[5],d ] ) /;!$BreitMaison;
 
 (*In the BM scheme, the anticommutator is not zero*)
 dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol -4] ,f___] :=
-	(ds[ b,DiracGamma[x[y],d-4],DiracGamma[5],f ] ) /;
-		($BreitMaison === True && $Larin =!= True);
+	(ds[ b,DiracGamma[x[y],d-4],DiracGamma[5],f ] ) /; ($BreitMaison && !$Larin);
 
 dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol] ,f___] :=
 	( 2 ds[b,DiracGamma[x[y],d-4],DiracGamma[5],f] -
-		ds[b,DiracGamma[x[y],d],DiracGamma[5],f] ) /;
-		($BreitMaison === True && $Larin =!= True);
+		ds[b,DiracGamma[x[y],d],DiracGamma[5],f] ) /; ($BreitMaison && !$Larin);
 
 
 (* o.k., some 4 years after the proposal of M.B., here it is: *)
@@ -172,60 +179,60 @@ explicitly in terms of g^5.
 drS[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
 	(n mass drS[b, xy, DiracGamma[6], c])/; NumberQ[n] &&
-		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
 	(n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
 	(n mass drS[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
-		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
 	(n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[6],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
 	DiracGamma[6], c___] :=
-	(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
+	(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
 drS[b___,DiracGamma[7],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
 	DiracGamma[7], c___] :=
-	(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
+	(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_ ),
 	DiracGamma[7], c___] :=
 	drS[b, DiracGamma[v[w], dim], DiracGamma[7], c] /; NumberQ[n] &&
-		NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
+		NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_),
 	DiracGamma[6], c___] :=
 	drS[b, DiracGamma[v[w], dim], DiracGamma[6], c] /; NumberQ[n] &&
-		NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
+		NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
 	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
-			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
 	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
-			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
 	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
-			OddQ[Length[{xy}]] && NonCommFreeQ[mass]  && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+			OddQ[Length[{xy}]] && NonCommFreeQ[mass]  && (!$BreitMaison || (dim1===4 && dim2===4));
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
 	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
-			OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+			OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 (* Simplification for g^mu ... g_mu where the first and the last
 	matrix are in different dimensions                                         *)
