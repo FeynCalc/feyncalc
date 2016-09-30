@@ -329,6 +329,11 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"DiracTrace: diractraceev2: Entering the main loop.", FCDoControl->diTrVerbose];
 
+
+		(* Here the handling must be improved *)
+
+
+
 		If[ Head[nx]===Plus && Length[nx] > 142,
 			FCPrint[1,"DiracTrace: diractraceev2: Long sum of traces.", FCDoControl->diTrVerbose];
 			diractrlnx = Length[nx];
@@ -502,7 +507,7 @@ spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
 (*
 	Some assumptions about objects that can appear in spur:
 	1) All of them are Dirac matrices, i.e. no other non-commutative objects.
-	2) g^5 is always on the end of the chain.
+	2) g^5, g^6 or g^7 is always on the end of the chain.
 *)
 
 spur[0 ..] :=
@@ -511,11 +516,11 @@ spur[0 ..] :=
 spur[] =
 	1;
 
-spur[DiracGamma[5]] =
+spur[DiracGamma[5|6|7]] =
 	0;
 
 (* 	We assume that a chiral trace with an odd number of g^i is zero in any scheme	*)
-spur[x__DiracGamma,DiracGamma[5]] :=
+spur[x__DiracGamma,DiracGamma[5|6|7]] :=
 	0/; OddQ[Length[{x}]];
 
 (* calculation of traces (recursively) --  up to a factor of 4 *)
@@ -550,13 +555,13 @@ spur[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
 		EpsEvaluate[$LeviCivitaSign I tmp]
 	]/;FCGetDimensions[{x,y,r,z}]=!={4};
 
+spur[x__DiracGamma,DiracGamma[6]] :=
+	(1/2 spur[x] + 1/2 spur[x,DiracGamma[5]])/; EvenQ[Length[{x}]];
 
-spur[x__,DiracGamma[6]] :=
-	1/2 spur[x] + 1/2 spur[x,DiracGamma[5]];
+spur[x__DiracGamma,DiracGamma[7]] :=
+	(1/2 spur[x] - 1/2 spur[x,DiracGamma[5]])/; EvenQ[Length[{x}]];
 
-spur[x__,DiracGamma[7]] :=
-	1/2 spur[x] - 1/2 spur[x,DiracGamma[5]];
-
+(*g^6 or g^7 not in the correct position...*)
 spur[x__] :=
 	(DiracTrace@@(gamma67back[ {x} ]))/; !FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}];
 
