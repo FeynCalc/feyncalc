@@ -154,8 +154,9 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "DiracTrace. Applying Contract.", FCDoControl->diTrVerbose];
 		If[	Contract=!=False,
-			ex = Contract[ex];
+			ex = Contract[ex, Expanding->True, EpsContract-> OptionValue[EpsContract], Factoring->False];
 		];
+
 		FCPrint[1,"DiracTrace: Contract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
 
 		(* 	First of all we need to extract all the Dirac structures inside the trace. *)
@@ -185,13 +186,18 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		FCPrint[1,"DiracTrace: diractraceevsimple done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrace: After diractraceevsimple ", tr1, FCDoControl->diTrVerbose];
 *)
-		tr1 = dsPart /. dsHead->Identity;
+		tr1 = dsPart(* /. dsHead->Identity*);
 
 
 		time=AbsoluteTime[];
 		FCPrint[1, "DiracTrace. Applying diractraceev.", FCDoControl->diTrVerbose];
-		tr2  = diractraceev[tr1, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]];
 
+
+		tr3  = tr1 /. dsHead[xxx_]:> diractraceev2[xxx, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]];
+
+(*
+		tr2  = diractraceev[tr1, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]];
+(*Notice that  diractraceev does nothing more than send the Dirac stuff (what is inside dsHead ) to diractraceev2 *)
 		(*tr1  /. diractraceevsimple -> diractraceev;*)
 		FCPrint[1,"DiracTrace: diractraceev done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrace: After diractraceev ", tr2, FCDoControl->diTrVerbose];
@@ -201,7 +207,7 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		FCPrint[1, "DiracTrace. Applying diractraceev2.", FCDoControl->diTrVerbose];
 		tr3  = tr2  /. diractraceev -> diractraceev2;
 		FCPrint[1,"DiracTrace: diractraceev2 done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
-
+*)
 		FCPrint[3, "DiracTrace: After diractraceev2 ", tr3, FCDoControl->diTrVerbose];
 
 
@@ -316,7 +322,7 @@ dc[di_][a___, mu_, lim__, mu_, b___] :=
 		] /. dicss -> dicsav//. dics -> dcs];
 		*)
 (* ****************************************************** *)
-							(*conalldef*)
+(*							(*conalldef*)
 conall[ x_,opts:OptionsPattern[]] :=
 	Contract[x, Expanding->True, EpsContract-> OptionValue[DiracTrace,{opts},EpsContract],
 	Factoring->False ];
@@ -332,6 +338,8 @@ diractraceev[x_, opts:OptionsPattern[]] :=
 		];
 		diractraceev2[conall[enx], opts] trfa
 	];
+*)
+
 
 (* Tr(1) *)
 diractraceev2[x_, OptionsPattern[]] :=
@@ -598,7 +606,7 @@ spur[y__] :=
 		resp =
 		Which[
 			(*Trace of an odd number of Dirac matrices without gamma^5 *)
-			OddQ[le] && fr567[spx],
+			OddQ[le] && FreeQ2[FRH[spx], {DiracGamma[5],DiracGamma[6],DiracGamma[7]}],
 				0,
 			(* For traces with an even number of Dirac matrices without gamma^5
 			use the trace reduction equation from Veltman's Gammatrica (p.255) plus
