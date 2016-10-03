@@ -1,16 +1,17 @@
 (* ::Package:: *)
 
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
+(* :Title: DiracTrace														*)
 
-(* :Title: DiracTrace *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
 
-(* :Author: Rolf Mertig *)
-
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 21 February '99 at 0:06 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Dirac trace calculation *)
+(* :Summary:  Dirac trace calculation										*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -53,7 +54,7 @@ DiracTrace::rem =
 Evaluation aborted!.";
 
 DiracTrace::failmsg =
-"Error! TID has encountered a fatal problem and must abort the computation. \
+"Error! DiracTrace has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
@@ -108,7 +109,7 @@ DiracTrace[a:Except[_HoldAll]..., x_,y_, z___] :=
 	DiracTrace[a,x.y,z]/;FreeQ2[y,{Rule,BlankNullSequence}]&& FreeQ2[x,{Rule,BlankNullSequence}];
 
 DiracTrace[expr_, op:OptionsPattern[]] :=
-	Block[ {diTres, ex, tr1,tr2,tr3,time,dsHead,diracObjects,null1,null2,freePart,dsPart},
+	Block[ {diTres, ex, tr1,tr2,tr3,time,dsHead,diracObjects,diracObjectsEval,null1,null2,freePart,dsPart,repRule},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -164,57 +165,32 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 
 		{freePart,dsPart} = FCSplit[ex,{dsHead}];
-
+		FCPrint[3,"DiracTrace: dsPart: ",dsPart , FCDoControl->diTrVerbose];
+		FCPrint[3,"DiracTrace: freePart: ",freePart , FCDoControl->diTrVerbose];
 		(* Check that there is only one dsHead per term and no nested dsHeads *)
 		Scan[
 			If[	!MatchQ[#, a_. dsHead[b_]/; FreeQ[{a,b}, dsHead]],
-				Message[DiracTrace::failmsg, "Irregular trace structure in InputForm[#]"];
+				Message[DiracTrace::failmsg, "Irregular trace structure in", InputForm[#]];
+				Print[#];
 				Abort[]
 		]&, dsPart+dsHead[1]+dsHead[2]];
 
 		(* 	Now it is guaranteed that dsPart is of the form a*dsHead[x]+b*dsHead[y]+c*dsHead[z]+...
 			So it is safe to extract all the dsHead objects and handle them separately	*)
-		diracObjects = Cases[dsPart+null1+null2, dsHead, Infinity]//Union;
-
-
-		ex = (freePart+dsPart) /. dsHead->Identity;
-
-(*
-		time=AbsoluteTime[];
-		FCPrint[1, "DiracTrace. Applying diractraceevsimple.", FCDoControl->diTrVerbose];
-		tr1 =
-		FCPrint[1,"DiracTrace: diractraceevsimple done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrace: After diractraceevsimple ", tr1, FCDoControl->diTrVerbose];
-*)
-		tr1 = dsPart(* /. dsHead->Identity*);
-
-
-		time=AbsoluteTime[];
-		FCPrint[1, "DiracTrace. Applying diractraceev.", FCDoControl->diTrVerbose];
-
-
-		tr3  = tr1 /. dsHead[xxx_]:> diractraceev2[xxx, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]];
-
-(*
-		tr2  = diractraceev[tr1, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]];
-(*Notice that  diractraceev does nothing more than send the Dirac stuff (what is inside dsHead ) to diractraceev2 *)
-		(*tr1  /. diractraceevsimple -> diractraceev;*)
-		FCPrint[1,"DiracTrace: diractraceev done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrace: After diractraceev ", tr2, FCDoControl->diTrVerbose];
-
+		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
 
 		time=AbsoluteTime[];
 		FCPrint[1, "DiracTrace. Applying diractraceev2.", FCDoControl->diTrVerbose];
-		tr3  = tr2  /. diractraceev -> diractraceev2;
-		FCPrint[1,"DiracTrace: diractraceev2 done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
-*)
-		FCPrint[3, "DiracTrace: After diractraceev2 ", tr3, FCDoControl->diTrVerbose];
 
+		diracObjectsEval = Map[diractraceev2[#, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]]&,
+			(diracObjects/.dsHead->Identity)];
 
-		tr3 = unitMatrixTrace*freePart + tr3;
+		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		FCPrint[3,"DiracTrace: repRule: ",repRule , FCDoControl->diTrVerbose];
 
+		tr3 = (unitMatrixTrace freePart) + ( dsPart/.repRule);
 
-		(* If the result should contain 2 -> 2 Mandelstam variable *)
+		(* If the result should contain Mandelstam variables *)
 		If[ Length[OptionValue[Mandelstam]] > 0,
 			tr3 = TrickMandelstam @@ Prepend[{OptionValue[Mandelstam]}, tr3]
 		];
@@ -234,119 +210,6 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 		diTres
 	]/; OptionValue[DiracTraceEvaluate] && FreeQ[x,SUNT]
-(*
-(* Not needed anymore *)
-diractraceevsimple[x_, OptionsPattern[]] :=
-	unitMatrixTrace x/; FreeQ[x, DiracGamma];
-
-(* Not needed anymore *)
-diractraceevsimple[y_ DOT[x_,z__], opts:OptionsPattern[]] :=
-	(y diractraceevsimple[DOT[x,z], opts])/; FreeQ[y, DiracGamma];
-
-(* Not needed anymore *)
-diractraceevsimple[x_Plus , opts:OptionsPattern[]] :=
-	Map[diractraceevsimple[#,{opts}]&, x];
-*)
-(*
-diractraceevsimple[DOT[x___], opts:OptionsPattern[]] :=
-	(If[ FreeQ[#,LorentzIndex],
-		#,
-		Expand2[#/.Pair->PairContract/.PairContract->Pair,Pair]
-	]&[diractraceev[Sequence@@DOT[x],opts]])/;
-	(MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..}] ||
-	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..}] ||
-	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..,
-		DiracGamma[5 | 6 | 7]} ] ||
-	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..,
-		DiracGamma[5 | 6 | 7]}]);
-
-
-dirli[LorentzIndex[xx_, ___],___] :=
-	xx;
-
-diractraceev[DiracGamma[LorentzIndex[a1_,dii_],dii_],
-			DiracGamma[LorentzIndex[a2_,dii_],dii_],
-			DiracGamma[LorentzIndex[a3_,dii_],dii_],
-			a4:DiracGamma[LorentzIndex[_,dii_],dii_]..,
-			DiracGamma[LorentzIndex[a1_,dii_],dii_],
-			DiracGamma[LorentzIndex[a2_,dii_],dii_],
-			DiracGamma[LorentzIndex[a3_,dii_],dii_],
-			a4:DiracGamma[LorentzIndex[_,dii_],dii_]..,
-			OptionsPattern[]
-			] :=
-	unitMatrixTrace dcs[dii]@@Join[{a1,a2,a3}, {a4}/.DiracGamma->dirli,
-	{a1,a2,a3}, {a4}/.DiracGamma->dirli];
-
-dcs[dim_][x___] :=
-	(dics[dim][x] /. dics->dc);
-
-dc[_][] =
-	1;
-
-dics[_][] =
-	1;
-
-dics[dI_][a___, n_, n_, b___] :=
-	dI dics[dI][a, b];
-
-dics[dI_][a___, n_, z_, n_, b___ ] :=
-	(2-dI) dics[dI][a, z, b];
-
-dics[dI_][a___, n_, v_, w_, n_, b___] :=
-	(dI-4) dics[dI][a, v,w, b] + 4 (dics[dI]@@({a, b}/. v -> w));
-
-dics[dI_][a___, n_, v_, w_, z_, n_, b___] :=
-	(4-dI) dics[dI][a, v,w,z, b] - 2 dics[dI][a, z,w,v,b];
-
-dics[dI_][a___, n_, mu_, nu_, ro_,si_, n_, b___] :=
-	(dI-4) dics[dI][a, mu,nu,ro,si, b] +
-	2 dics[dI][a, ro,nu,mu,si,b] + 2 dics[dI][a, si,mu,nu,ro,b];
-
-dics[dI_][a___, n_, mu_, nu_, ro_, si_, de_, n_, b___] :=
-	(4-dI) * dics[dI][a, mu,nu,ro,si,de, b] - 2 dics[dI][a, mu,de,nu,ro,si, b] -
-	2 dics[dI][a, mu,si,ro,nu,de, b] + 2 dics[dI][a, nu,ro,si,de,mu, b];
-
-dicsav[dd_][x___] :=
-	dics[dd][x];
-
-dc[di_][a___, mu_, lim__, mu_, b___] :=
-	Expand[
-		Block[ {m = Length[{lim}], i, j},
-			(-1)^m ( (di-2 m) dicss[di][a,lim,b] -
-			4 Sum[(-1)^(j-i) *
-			If[ {lim}[[j]] === {lim}[[i]],
-				di (dicss[di] @@Join[{a}, Delete[{lim}, {{i},{j}}], {b}]),
-				dicss[di] @@(Join[{a}, Delete[{lim}, {{i},{j}}], {b}]/.
-				({lim}[[j]]) -> ({lim}[[i]]))
-			],     {i,1,m-1}, {j,i+1,m}])
-		] /. dicss -> dicsav//. dics -> dcs];
-		*)
-(* ****************************************************** *)
-(*							(*conalldef*)
-conall[ x_,opts:OptionsPattern[]] :=
-	Contract[x, Expanding->True, EpsContract-> OptionValue[DiracTrace,{opts},EpsContract],
-	Factoring->False ];
-
-fr567[x__] :=
-	FreeQ2[FixedPoint[ReleaseHold,{x}], {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-
-diractraceev[x_, opts:OptionsPattern[]] :=
-	Block[ {trfa = 1, enx = x},
-		If[ Head[x] === Times,
-			trfa = Select[x, FreeQ2[#, {DiracGamma, LorentzIndex, Eps}]&];
-			enx = x / trfa;
-		];
-		diractraceev2[conall[enx], opts] trfa
-	];
-*)
-
-
-(* Tr(1) *)
-diractraceev2[x_, OptionsPattern[]] :=
-	unitMatrixTrace  x /; FreeQ[x,DiracGamma];
-
-diractraceev2[a_DiracGamma,b__DiracGamma, opts:OptionsPattern[]] :=
-	diractraceev2[ DOT @@ {a,b}, opts];
 
 diractraceev2[nnx_,opts:OptionsPattern[]] :=
 	Block[ {diractrjj, diractrlnx, diractrres, diractrny = 0, diractrfact, nx,
@@ -785,6 +648,114 @@ traceEpsNo5[mu_, nu_, rho_, SI2__] :=
 		res = res /. head -> traceNo5Wrap;
 		res
 	];
+
+
+(*
+(* Not needed anymore *)
+diractraceevsimple[x_, OptionsPattern[]] :=
+	unitMatrixTrace x/; FreeQ[x, DiracGamma];
+
+(* Not needed anymore *)
+diractraceevsimple[y_ DOT[x_,z__], opts:OptionsPattern[]] :=
+	(y diractraceevsimple[DOT[x,z], opts])/; FreeQ[y, DiracGamma];
+
+(* Not needed anymore *)
+diractraceevsimple[x_Plus , opts:OptionsPattern[]] :=
+	Map[diractraceevsimple[#,{opts}]&, x];
+*)
+(*
+diractraceevsimple[DOT[x___], opts:OptionsPattern[]] :=
+	(If[ FreeQ[#,LorentzIndex],
+		#,
+		Expand2[#/.Pair->PairContract/.PairContract->Pair,Pair]
+	]&[diractraceev[Sequence@@DOT[x],opts]])/;
+	(MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..}] ||
+	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..}] ||
+	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..,
+		DiracGamma[5 | 6 | 7]} ] ||
+	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..,
+		DiracGamma[5 | 6 | 7]}]);
+
+
+dirli[LorentzIndex[xx_, ___],___] :=
+	xx;
+
+diractraceev[DiracGamma[LorentzIndex[a1_,dii_],dii_],
+			DiracGamma[LorentzIndex[a2_,dii_],dii_],
+			DiracGamma[LorentzIndex[a3_,dii_],dii_],
+			a4:DiracGamma[LorentzIndex[_,dii_],dii_]..,
+			DiracGamma[LorentzIndex[a1_,dii_],dii_],
+			DiracGamma[LorentzIndex[a2_,dii_],dii_],
+			DiracGamma[LorentzIndex[a3_,dii_],dii_],
+			a4:DiracGamma[LorentzIndex[_,dii_],dii_]..,
+			OptionsPattern[]
+			] :=
+	unitMatrixTrace dcs[dii]@@Join[{a1,a2,a3}, {a4}/.DiracGamma->dirli,
+	{a1,a2,a3}, {a4}/.DiracGamma->dirli];
+
+dcs[dim_][x___] :=
+	(dics[dim][x] /. dics->dc);
+
+dc[_][] =
+	1;
+
+dics[_][] =
+	1;
+
+dics[dI_][a___, n_, n_, b___] :=
+	dI dics[dI][a, b];
+
+dics[dI_][a___, n_, z_, n_, b___ ] :=
+	(2-dI) dics[dI][a, z, b];
+
+dics[dI_][a___, n_, v_, w_, n_, b___] :=
+	(dI-4) dics[dI][a, v,w, b] + 4 (dics[dI]@@({a, b}/. v -> w));
+
+dics[dI_][a___, n_, v_, w_, z_, n_, b___] :=
+	(4-dI) dics[dI][a, v,w,z, b] - 2 dics[dI][a, z,w,v,b];
+
+dics[dI_][a___, n_, mu_, nu_, ro_,si_, n_, b___] :=
+	(dI-4) dics[dI][a, mu,nu,ro,si, b] +
+	2 dics[dI][a, ro,nu,mu,si,b] + 2 dics[dI][a, si,mu,nu,ro,b];
+
+dics[dI_][a___, n_, mu_, nu_, ro_, si_, de_, n_, b___] :=
+	(4-dI) * dics[dI][a, mu,nu,ro,si,de, b] - 2 dics[dI][a, mu,de,nu,ro,si, b] -
+	2 dics[dI][a, mu,si,ro,nu,de, b] + 2 dics[dI][a, nu,ro,si,de,mu, b];
+
+dicsav[dd_][x___] :=
+	dics[dd][x];
+
+dc[di_][a___, mu_, lim__, mu_, b___] :=
+	Expand[
+		Block[ {m = Length[{lim}], i, j},
+			(-1)^m ( (di-2 m) dicss[di][a,lim,b] -
+			4 Sum[(-1)^(j-i) *
+			If[ {lim}[[j]] === {lim}[[i]],
+				di (dicss[di] @@Join[{a}, Delete[{lim}, {{i},{j}}], {b}]),
+				dicss[di] @@(Join[{a}, Delete[{lim}, {{i},{j}}], {b}]/.
+				({lim}[[j]]) -> ({lim}[[i]]))
+			],     {i,1,m-1}, {j,i+1,m}])
+		] /. dicss -> dicsav//. dics -> dcs];
+		*)
+(* ****************************************************** *)
+(*							(*conalldef*)
+conall[ x_,opts:OptionsPattern[]] :=
+	Contract[x, Expanding->True, EpsContract-> OptionValue[DiracTrace,{opts},EpsContract],
+	Factoring->False ];
+
+fr567[x__] :=
+	FreeQ2[FixedPoint[ReleaseHold,{x}], {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+
+diractraceev[x_, opts:OptionsPattern[]] :=
+	Block[ {trfa = 1, enx = x},
+		If[ Head[x] === Times,
+			trfa = Select[x, FreeQ2[#, {DiracGamma, LorentzIndex, Eps}]&];
+			enx = x / trfa;
+		];
+		diractraceev2[conall[enx], opts] trfa
+	];
+*)
+
 
 FCPrint[1,"DiracTrace.m loaded."];
 End[]
