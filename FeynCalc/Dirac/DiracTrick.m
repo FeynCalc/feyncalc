@@ -29,6 +29,7 @@ Begin["`DiracTrick`Private`"]
 diTrVerbose::usage=""
 
 Options[DiracTrick] = {
+	DiracGammaCombine -> False,
 	Expanding -> False,
 	FCI -> False,
 	FCVerbose -> False
@@ -70,7 +71,41 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		res = ex /. DOT -> drS /.drS -> ds //. dr -> drCOs/. drCO -> ds /.  dr -> ds /.  dr -> DOT;
+		If[ OptionValue[DiracGammaCombine],
+			ex = DiracGammaCombine[ex]
+		];
+
+(*		res = ex /. DOT -> drS /.drS -> ds //. dr -> drCOs/. drCO -> ds /.  dr -> ds /.  dr -> DOT;*)
+
+		res = ex /. DOT -> chiralTrick;
+		FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
+
+		(*Check that if we are in 4 dims or using naive scheme, then after chiralTrick
+		all the chiral Stuff has been moved to the right and maximally simplified. *)
+
+(*TODO: Condition to stop the evaluation (at least for 4 dims)*)
+
+		(* 	Provided that we are using a naive g^5 scheme or dealing with purely
+			4-dimensional matrix chains, chiralTrick should ensure that all the chiral
+			stuff has been moved to the left of the chain.
+			The only exception would be presence of  unknown non-commutative objects *)
+		(*If[ !$BreitMaison && Length[FCGetDimensions[ex]]===1,
+			If[]
+		];*)
+
+
+		res = res /.chiralTrick -> drS;
+		FCPrint[3, "DiracTrick: After drS ", res, FCDoControl->diTrVerbose];
+		res = res /.drS -> ds;
+		FCPrint[3, "DiracTrick: After ds ", res, FCDoControl->diTrVerbose];
+		Global`XXX = res;
+		res = res  //. dr -> drCOs;
+		FCPrint[3, "DiracTrick: After drCOs ", res, FCDoControl->diTrVerbose];
+		res = res /.  drCO -> ds;
+		FCPrint[3, "DiracTrick: After ds ", res, FCDoControl->diTrVerbose];
+		res = res /.  dr -> ds ;
+		FCPrint[3, "DiracTrick: After ds ", res, FCDoControl->diTrVerbose];
+		res = res /.  dr -> DOT ;
 
 		If[	OptionValue[Expanding],
 			res = Expand[res]
@@ -137,15 +172,27 @@ dr[b___,DiracGamma[6],DiracGamma[6],c___] :=
 	ds[b, DiracGamma[6], c];
 dr[b___,DiracGamma[7],DiracGamma[7],c___] :=
 	ds[b, DiracGamma[7], c];
+dr[b___,DiracGamma[6]+DiracGamma[7],c___] :=
+	ds[b, c];
+
 
 (*If we have a projector behind a gamma matrix, we should anticommute them.
 	This holds only in four dimensions or in a naive gamma5 scheme *)
-dr[b___,DiracGamma[6],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+
+dr[b___, DiracGamma[6],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
 	ds[b, DiracGamma[x[c], dim], DiracGamma[7],d ]/; (!$BreitMaison || dim === 4);
 
-dr[b___,DiracGamma[7],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+dr[b___, DiracGamma[7],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
 	ds[b, DiracGamma[x[c], dim], DiracGamma[6],d ]/; (!$BreitMaison || dim === 4);
 
+dr[b___, (cc1_ + cc2_. DiracGamma[6]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	ds[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[7]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
+
+dr[b___, (cc1_ + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	ds[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
+
+dr[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	ds[b, DiracGamma[x[c], dim], (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
 
 (*In 4 dimensions g^5 always anticommutes with all the other gamma matrices*)
 dr[b___,DiracGamma[5],c:DiracGamma[_[_]].. ,d___] :=
@@ -176,62 +223,115 @@ there, since in non-naive schemes all the projects must be written out
 explicitly in terms of g^5.
  *)
 
-drS[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_),
+
+
+chiralTrick[b___,DiracGamma[5],DiracGamma[5],c___] :=
+	chiralTrick[ b,c ];
+chiralTrick[b___,DiracGamma[5],DiracGamma[6],c___] :=
+	chiralTrick[b,DiracGamma[6],c];
+chiralTrick[b___,DiracGamma[5],DiracGamma[7],c___] :=
+	-chiralTrick[b,DiracGamma[7],c];
+chiralTrick[b___,DiracGamma[6], DiracGamma[5], c___] :=
+	chiralTrick[b,DiracGamma[6],c];
+chiralTrick[b___,DiracGamma[7],DiracGamma[5],c___] :=
+	-chiralTrick[b, DiracGamma[7], c];
+
+(*These are the usual projector properties. They also hold in all schemes*)
+chiralTrick[___,DiracGamma[6], DiracGamma[7], ___] :=
+	0;
+chiralTrick[___,DiracGamma[7], DiracGamma[6], ___] :=
+	0;
+chiralTrick[b___,DiracGamma[6],DiracGamma[6],c___] :=
+	chiralTrick[b, DiracGamma[6], c];
+chiralTrick[b___,DiracGamma[7],DiracGamma[7],c___] :=
+	chiralTrick[b, DiracGamma[7], c];
+chiralTrick[b___,DiracGamma[6]+DiracGamma[7],c___] :=
+	chiralTrick[b, c];
+
+chiralTrick[b___,DiracGamma[5],c:DiracGamma[_[_,_:4],_:4].. ,d___] :=
+	(-1)^Length[{c}] chiralTrick[ b,c,DiracGamma[5],d]/; (!$BreitMaison || FCGetDimensions[{c}]==={4}) && Length[FCGetDimensions[{c}]]===1;
+
+chiralTrick[b___, DiracGamma[5],(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrick[b,(- dd1 DiracGamma[x[c], dim] + dd2), DiracGamma[5],d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{dd1,dd2}];
+
+
+chiralTrick[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
+	chiralTrick[b, (cc1 dd1 DiracGamma[6] + cc2 dd2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrick[b___, (cc1_ + cc2_. DiracGamma[6]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	chiralTrick[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[7]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
+
+chiralTrick[b___, (cc1_ + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	chiralTrick[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
+
+chiralTrick[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	chiralTrick[b, DiracGamma[x[c], dim], (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
+
+chiralTrick[b___, (cc1_ + cc2_. DiracGamma[6]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrick[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 + cc2 DiracGamma[7]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrick[b___, (cc1_ + cc2_. DiracGamma[7]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrick[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrick[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrick[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrick[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	(n mass drS[b, xy, DiracGamma[6], c])/; NumberQ[n] &&
+	(n mass chiralTrick[b, xy, DiracGamma[6], c])/; NumberQ[n] &&
 		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	(n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
+	(n mass chiralTrick[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
 		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	(n mass drS[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
+	(n mass chiralTrick[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
 		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	(n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
+	(n mass chiralTrick[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
 		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[6],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
 	DiracGamma[6], c___] :=
-	(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
+	(n mass chiralTrick[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
-drS[b___,DiracGamma[7],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[7],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
 	DiracGamma[7], c___] :=
-	(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
+	(n mass chiralTrick[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[6],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_ ),
 	DiracGamma[7], c___] :=
-	drS[b, DiracGamma[v[w], dim], DiracGamma[7], c] /; NumberQ[n] &&
+	chiralTrick[b, DiracGamma[v[w], dim], DiracGamma[7], c] /; NumberQ[n] &&
 		NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_),
+chiralTrick[b___,DiracGamma[7],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_),
 	DiracGamma[6], c___] :=
-	drS[b, DiracGamma[v[w], dim], DiracGamma[6], c] /; NumberQ[n] &&
+	chiralTrick[b, DiracGamma[v[w], dim], DiracGamma[6], c] /; NumberQ[n] &&
 		NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
+	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
 			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
+	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
 			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
+chiralTrick[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
+	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
 			OddQ[Length[{xy}]] && NonCommFreeQ[mass]  && (!$BreitMaison || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
+chiralTrick[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
 	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
+	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
 			OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 (* Simplification for g^mu ... g_mu where the first and the last
@@ -709,6 +809,7 @@ drCO[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4], w___,
 			{___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
 
 (* ************************************************************** *)
+SetAttributes[chiralTrick,Flat];
 SetAttributes[drS,Flat];
 (* ************************************************************** *)
 SetAttributes[dr,Flat];   (* quite important!!! *)
