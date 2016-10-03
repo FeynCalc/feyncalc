@@ -77,6 +77,7 @@ trace5Fun::usage="";
 Options[DiracTrace] = {
 	Contract -> 400000,
 	EpsContract -> False,
+	Expand -> True,
 	Factoring -> Automatic,
 	FeynCalcExternal -> False,
 	FeynCalcInternal -> False,
@@ -239,21 +240,15 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 
 		nx = nnx;
 		time=AbsoluteTime[];
-		FCPrint[1,"DiracTrace: diractraceev2: Entering the main loop.", FCDoControl->diTrVerbose];
-
-
-		(* Standard case: First simplify as much as possible through DiracSimplify *)
-		time2=AbsoluteTime[];
-		FCPrint[1,"DiracTrace: diractraceev2: Doing DiracSimplify in the main loop.", FCDoControl->diTrVerbose];
-(*
-		diractrny = DiracSimplify[nx, InsideDiracTrace->True, Factoring->False, FCI -> True, DiracCanonical->False];
-*)
+		FCPrint[1,"DiracTrace: diractraceev2: Applying DiracTrick.", FCDoControl->diTrVerbose];
 		diractrny = DiracTrick[nx, FCI -> True];
-		FCPrint[3,"DiracTrace: diractraceev2: diractrny: ",diractrny, FCDoControl->diTrVerbose];
+		FCPrint[1,"DiracTrace: diractraceev2: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+		FCPrint[3,"DiracTrace: diractraceev2: After DiracTrick: ",diractrny, FCDoControl->diTrVerbose];
 
+
+		time=AbsoluteTime[];
 		diractrny = Expand2[ExpandScalarProduct[diractrny], Pair];
 
-		FCPrint[1,"DiracTrace: diractraceev2: DiracSimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 		If[ !FreeQ[diractrny, DiracGamma],
 			(* If the output of DiracSimplify still contains Dirac matrices, apply DotSimplify and try
 			to evaluate the traces of Dirac matric chains via spursav *)
@@ -264,16 +259,25 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracTrace: diractraceev2: Calculating the trace.", FCDoControl->diTrVerbose];
 
 			diractrny = DotSimplify[diractrny, Expanding -> True];
+			diractrny = DiracTrick[diractrny, FCI -> True];
+
+
+			FCPrint[3,"DiracTrace: diractraceev2: After DotSimpify: ",diractrny, FCDoControl->diTrVerbose];
+
+
 			diractrny = diractrny /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /.
 				DOT -> prepSpur;
 			diractrny = diractrny /. prepSpur[zzz__] :> spursav@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
 
 			FCPrint[1,"DiracTrace: diractraceev2: Done calculating the trace, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
-			time2=AbsoluteTime[];
-			FCPrint[1,"DiracTrace: diractraceev2: Expanding the result w.r.t Pairs", FCDoControl->diTrVerbose];
-			diractrny=Expand2[ExpandScalarProduct[diractrny],Pair];
 
-			FCPrint[1,"DiracTrace: diractraceev2: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
+
+			If[ OptionValue[DiracTrace,{opts},Expand],
+				time2=AbsoluteTime[];
+				FCPrint[1,"DiracTrace: diractraceev2: Expanding the result w.r.t Pairs", FCDoControl->diTrVerbose];
+				diractrny=Expand2[ExpandScalarProduct[diractrny],Pair];
+				FCPrint[1,"DiracTrace: diractraceev2: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
+			];
 
 			(* The trace of any standalone Dirac matrix is zero,
 			g^6 and g^7 are of course special *)
