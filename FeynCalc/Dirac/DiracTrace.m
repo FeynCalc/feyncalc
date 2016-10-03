@@ -39,8 +39,7 @@ DiracTrace::ndranomaly =
 "You are using naive dimensional regularization (NDR), such that in D dimensions \
 gamma^5 anticommutes with all other Dirac matrices. In this scheme \
 (without additional prescriptions) it is not possible to compute traces with an \
-odd number of gamma^5 unambiguously. The trace of `1` is illegal in NDR. \
-Evaluation aborted!";
+odd number of gamma^5 unambiguously. Evaluation aborted!";
 
 DiracTrace::ilsch =
 "The settings $BreitMaison=`1`, $Larin=`2` do not describe a valid \
@@ -217,7 +216,11 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 diractraceev2[nnx_,opts:OptionsPattern[]] :=
 	Block[ {diractrjj, diractrlnx, diractrres, diractrny = 0, diractrfact, nx,
 		diractrcoll, schoutenopt, diractrnyjj,
-		dtmp,dWrap,dtWrap,wrapRule,prepSpur,time,time2,contract},
+		dtmp,dWrap,dtWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
+		gammaFree,gammaPart,
+		traceListChiral,traceListNonChiral,repRule
+
+		},
 
 		wrapRule = {dWrap[5]->0, dWrap[6]->1/2, dWrap[7]->1/2, dWrap[LorentzIndex[_,_:4],___]->0,
 					dWrap[_. Momentum[_,_:4]+_:0,___]->0};
@@ -241,7 +244,7 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 		nx = nnx;
 		time=AbsoluteTime[];
 		FCPrint[1,"DiracTrace: diractraceev2: Applying DiracTrick.", FCDoControl->diTrVerbose];
-		diractrny = DiracTrick[nx, FCI -> True];
+		diractrny = DiracTrick[nx, FCI -> True, InsideDiracTrace->True];
 		FCPrint[1,"DiracTrace: diractraceev2: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 		FCPrint[3,"DiracTrace: diractraceev2: After DiracTrick: ",diractrny, FCDoControl->diTrVerbose];
 
@@ -259,28 +262,176 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracTrace: diractraceev2: Calculating the trace.", FCDoControl->diTrVerbose];
 
 			diractrny = DotSimplify[diractrny, Expanding -> True];
-			diractrny = DiracTrick[diractrny, FCI -> True];
+			diractrny = DiracTrick[diractrny, FCI -> True, InsideDiracTrace->True];
 
 
 			FCPrint[3,"DiracTrace: diractraceev2: After DotSimpify: ",diractrny, FCDoControl->diTrVerbose];
 
 
-			diractrny = diractrny /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /.
-				DOT -> prepSpur;
-			diractrny = diractrny /. prepSpur[zzz__] :> spursav@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
+			diractrny = diractrny /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /. DOT -> prepSpur;
+			diractrny = diractrny /. prepSpur[zzz__] :> spurHead@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
 
-			FCPrint[1,"DiracTrace: diractraceev2: Done calculating the trace, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: diractraceev2: Wrapped in spurHead: ",diractrny, FCDoControl->diTrVerbose];
 
+			(* Split chiral projectors here *)
+			diractrny = diractrny /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
+			spurHead[x___,DiracGamma[7]] :> 1/2 spurHead[x] - 1/2 spurHead[x,DiracGamma[5]]} /. spurHead[] -> 1;
+
+
+			(* 	Tr[g^5] is zero in every scheme	*)
+			diractrny = diractrny/. spurHead[DiracGamma[5]] -> 0;
+			(* 	Tr[g^i g^j g^5] is zero in every scheme	*)
+			diractrny = diractrny/. spurHead[DiracGamma[_[_,___],___],DiracGamma[_[_,___],___],DiracGamma[5]] -> 0;
+			(* Tr[g^i1 ... g^in g^5] with n odd is zero in any scheme	*)
+			diractrny = diractrny/. spurHead[x : DiracGamma[_[_, ___], ___] .., DiracGamma[5]]/; OddQ[Length[{x}]] -> 0;
+			(* Tr[g^i1 ... g^in] with n odd is zero anyhow *)
+			diractrny = diractrny/. spurHead[x : DiracGamma[_[_, ___], ___] ..]/; OddQ[Length[{x}]] -> 0;
+
+			(* 	After all the simplifications we need to split terms that still containd Dirac matrices from those that
+				don't.	*)
+			{gammaFree,gammaPart} = FCSplit[diractrny,{spurHead}];
+
+			FCPrint[3,"DiracTrace: diractraceev2: gammaFree: ", gammaFree, FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: diractraceev2: gammaPart: ", gammaPart, FCDoControl->diTrVerbose];
+
+
+			If [ gammaPart=!=0,
+				(* Check that there is only one spurHead per term and no nested spurHead *)
+				Scan[
+					If[	!MatchQ[#, a_. spurHead[b__]/; (FreeQ[{a,b}, spurHead] && !FreeQ[{b},DiracGamma])],
+						Message[DiracTrace::failmsg, "Irregular trace structure in", InputForm[#]];
+						Print[#];
+						Abort[]
+				]&, gammaPart+spurHead[DiracGamma]
+				];
+			];
+
+		(* 	Now it is guaranteed that gammaPart is of the form a*spurHead[x]+b*spurHead[y]+c*spurHead[z]+...
+			So it is safe to extract all the spurHead objects and handle them separately	*)
+			spurHeadList = Cases[gammaPart+null1+null2, spurHead[__], Infinity]//Union;
+			FCPrint[3,"DiracTrace: diractraceev2: spurHeadList", spurHeadList, FCDoControl->diTrVerbose];
+
+			If[!FreeQ2[spurHeadList,{DiracGamma[6],DiracGamma[7]}],
+				Message[DiracTrace::fail,"Splitting between chiral and non-chiral traces failed"];
+				Abort[]
+			];
+
+			(* Next we separate chiral and non-chiral traces *)
+			spurHeadListChiral = Select[spurHeadList,!FreeQ[#,DiracGamma[5]]&];
+			spurHeadListNonChiral = Complement[spurHeadList,spurHeadListChiral];
+
+			FCPrint[3,"DiracTrace: diractraceev2: spurHeadListChiral", spurHeadListChiral, FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: diractraceev2: spurHeadListNonChiral", spurHeadListNonChiral, FCDoControl->diTrVerbose];
+
+			If[spurHeadList =!= Union[Join[spurHeadListChiral,spurHeadListNonChiral]],
+				Message[DiracTrace::fail,"Splitting between chiral and non-chiral traces failed"];
+				Abort[]
+			];
+
+			(* One more check: Traces with mixed dimensions are forbidden in naive schemes, so we abort the computation if this is the case *)
+			If [ !$BreitMaison,
+				Scan[
+					If[	Length[FCGetDimensions[#/.DiracGamma[5]->1]]=!=1,
+						Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in naive schemes."];
+						Abort[]
+					]&, spurHeadListChiral
+				]
+			];
+
+			(* Check that chiral traces have the correct form *)
+			Scan[
+				If[	!MatchQ[#, spurHead[DiracGamma[_[_,___],___]...,DiracGamma[5]]],
+					Message[DiracTrace::fail,"Splitting between chiral and non-chiral traces failed"];
+					Abort[]
+			]&, spurHeadListChiral];
+
+
+
+			(* Compute the actual traces *)
+			time=AbsoluteTime[];
+			FCPrint[1,"DiracTrace: diractraceev2: Calculating non-chiral traces.", FCDoControl->diTrVerbose];
+
+			traceListNonChiral = spurHeadListNonChiral/. spurHead-> spurNo5;
+			FCPrint[1,"DiracTrace: diractraceev2: Done calculating non-chiral traces, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: diractraceev2: traceListNonChiral", traceListNonChiral, FCDoControl->diTrVerbose];
+
+
+			(* Check that there are no uncomputed traces left *)
+			If[	!FreeQ2[traceListNonChiral,{spurHead,DiracGamma}],
+				Message[DiracTrace::failmsg, "Not all non-chiral traces were evaluated."];
+				Abort[]
+			];
+
+			time=AbsoluteTime[];
+			FCPrint[1,"DiracTrace: diractraceev2: Calculating chiral traces.", FCDoControl->diTrVerbose];
+			(* Purely 4 dimensional traces are always computed in the same way, regardless of the chosen scheme *)
+			(*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)) *)
+			traceListChiral = spurHeadListChiral/. spurHead[x__]/;(FCGetDimensions[{x}]==={4}) :> spur5In4Dim[x];
+
+			(* Choice of the scheme for D-dimensional g^5 *)
+			If[	!FreeQ[traceListChiral,spurHead],
+				Which[
+					(* NDR *)
+					!$Larin && !$BreitMaison,
+						Message[DiracTrace::ndranomaly];
+						Abort[],
+					(* Larin *)
+					$Larin && !$BreitMaison,
+						FCPrint[3,"DiracTrace: diractraceev2: Chiral traces will be computed using Larin's scheme", FCDoControl->diTrVerbose];
+						traceListChiral = traceListChiral/. spurHead -> spur5Larin,
+					!$Larin && $BreitMaison,
+						If[	west,
+							(* BMHV, West's trace formula *)
+							traceListChiral = traceListChiral/. spurHead -> spur5BMHVWest,
+							(* BMHV, standard (slow!) trace formula *)
+							traceListChiral = traceListChiral/. spurHead -> spur5BMHVNoWest
+						],
+					(* Any other combination of $Larin and $BreitMaison doesn't describe a valid scheme *)
+					True,
+						Message[DiracTrace::ilsch, $BreitMaison,$Larin];
+						Abort[]
+				]
+			];
+
+			FCPrint[1,"DiracTrace: diractraceev2: Done calculating chiral traces, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: diractraceev2: traceListChiral", traceListChiral, FCDoControl->diTrVerbose];
+
+			(* Check that there are no uncomputed traces left *)
+			If[	!FreeQ2[traceListChiral,{spurHead,DiracGamma}],
+				Message[DiracTrace::failmsg, "Not all chiral traces were evaluated."];
+				Abort[]
+			];
+
+			(* Create the substitution rule*)
+			repRule = MapThread[Rule[#1,#2]&,{spurHeadListChiral,traceListChiral}];
+			repRule = Join[repRule,MapThread[Rule[#1,#2]&,{spurHeadListNonChiral,traceListNonChiral}]];
+			FCPrint[3,"DiracTrace: diractraceev2: repRule", traceListChiral, FCDoControl->diTrVerbose];
+
+			(* The trace of any standalone Dirac matrix is zero,
+			g^6 and g^7 are of course special *)
+			diractrny = (gammaFree/. wrapRule) + (gammaPart/.repRule);
+			FCPrint[3,"DiracTrace: diractraceev2: diractrny", diractrny, FCDoControl->diTrVerbose];
+
+			If[	!FreeQ2[diractrny,{spurHead,DiracGamma}],
+				Message[DiracTrace::failmsg, "Something went wrong while substituting trace results."];
+				Abort[]
+			];
 
 			If[ OptionValue[DiracTrace,{opts},Expand],
 				time2=AbsoluteTime[];
 				FCPrint[1,"DiracTrace: diractraceev2: Expanding the result w.r.t Pairs", FCDoControl->diTrVerbose];
 				diractrny=Expand2[ExpandScalarProduct[diractrny],Pair];
 				FCPrint[1,"DiracTrace: diractraceev2: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
-			];
+			]
 
-			(* The trace of any standalone Dirac matrix is zero,
-			g^6 and g^7 are of course special *)
+
+(*
+			FCPrint[1,"DiracTrace: diractraceev2: Done calculating the trace, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
+
+
+
+
+
 			diractrny = diractrny/. wrapRule;
 			FCPrint[3,"DiracTrace: diractraceev2: diractrny", diractrny, FCDoControl->diTrVerbose];
 
@@ -288,9 +439,12 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			If[ !FreeQ2[diractrny,{dWrap,dtWrap,spur}],
 				Message[DiracTrace::rem];
 				Abort[]
-			]
+			]*)
 		];
-
+(*
+		Print["Got here without troubles"];
+		Abort[];
+*)
 		FCPrint[1,"DiracTrace: diractraceev2: Main loop finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
 		(* After spur there should no Dirac matrices left, by definition! *)
@@ -358,6 +512,182 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 	]/; !FreeQ2[nnx,{DOT,DiracGamma}];
 
 
+fastExpand[xx_] :=
+	Replace[xx, p_. Times[a__, x_Plus] :> Distribute[p a*x, Plus], 1];
+
+(* ------------------------------------------------- *)
+
+spurNo5[x__DiracGamma]:=
+	traceNo5Wrap[Sequence@@(First/@{x})]/; EvenQ[Length[{x}]];
+
+
+(*	traceNo5Wrap is a higher level function that handles the computation of traces without gamma 5,
+	all indices different.  The trick here 	is that as soon as we compute a trace for a given number of Dirac matrices,
+	we define it is a function (traceNo5fun) so that the result can be retrieved very fast. Combined with the the fast expansion
+	using fastExpand this provides a rather quick way to obtain Dirac traces. The bottlenecks here are the amount of RAM required
+	for caching and the general slowness of Mathematica on very large expressions. Traces with up to 14 Dirac matrices should be fine,
+	after that it becomes too slow *)
+traceNo5Wrap[SI1_, SI2__] :=
+	Block[{res, repRule, tab, set, SI, args, setDel, tmpRes, finalRes},
+
+		tab = Table[ ToExpression["MySI" <> ToString[i]], {i, 1, Length[{SI1, SI2}]}];
+		finalRes = traceNo5Fun @@ {SI1, SI2};
+
+		If[Head[finalRes] === traceNo5Fun,
+			(* The trace needs to be computed *)
+			tmpRes = traceNo5 @@ tab;
+			If[	($MemoryAvailable - MemoryInUse[]/1000000.) >1. ,
+				(* If there is enough memory, we save the computed result as a function *)
+				args = Sequence @@ (Pattern[#, _] & /@ tab);
+				setDel[traceNo5Fun[args], fastExpand[tmpRes]] /. setDel -> SetDelayed;
+				res = traceNo5Fun @@ {SI1, SI2},
+				(* No memoization if we have not enough memory *)
+				res = tmpRes /. Thread[Rule[tab, {SI1,SI2}]]
+
+			],
+			(* The trace has already been computed *)
+			res = finalRes
+		];
+
+		res
+	]/; EvenQ[Length[{SI1,SI2}]];
+
+traceNo5Wrap[] =
+	1;
+
+(* 	traceNo5 is the lower level function that computes only indices of type S[1],S[2],... and
+	remembers its values. It's based on Thomas Hahn's famous Trace4  function *)
+traceNo5[SI1_, SI2__] :=
+	Block[{head, s = -1, res},
+		res = Plus @@ MapIndexed[((s = -s) Pair[SI1, #1] Drop[head[SI2], #2]) &, {SI2}];
+		res = res /. head -> traceNo5Wrap;
+		res
+	]/; EvenQ[Length[{SI1,SI2}]];
+
+(* ------------------------------------------------- *)
+
+spur5In4Dim[x__DiracGamma, DiracGamma[5]]:=
+	trace5Wrap[Sequence@@(First/@{x,DiracGamma[5]})]/; EvenQ[Length[{x}]];
+
+
+(* 	trace5Wrap computes a 4-dimensional trace of Dirac matrices with one gamma 5 using
+	similar tricks as traceNo5Wrap. *)
+trace5Wrap[SI1__, 5] :=
+	Block[{res, repRule, tab, set, args, setDel, tmpRes, realRes},
+		tab = Table[ToExpression["MySI" <> ToString[i]], {i, 1, Length[{SI1}]}];
+
+		realRes = trace5Fun @@ {SI1, 5};
+
+		If[Head[realRes] === trace5Fun,
+			(* The trace needs to be computed *)
+			tmpRes = trace5 @@ (Join[tab, {5}]);
+			If[	($MemoryAvailable - MemoryInUse[]/1000000.) >1. ,
+				(* If there is enough memory, we save the computed result as a function *)
+				args = Sequence @@ Join[(Pattern[#, _] & /@ tab), {5}];
+				setDel[trace5Fun[args], fastExpand[tmpRes]] /. setDel -> SetDelayed;
+				res = trace5Fun @@ {SI1, 5},
+				(* No memoization if we have not enough memory *)
+				res = tmpRes /. Thread[Rule[tab, {SI1}]]
+
+			],
+			(* The trace has already been computed *)
+			res = realRes
+		];
+		res
+	];
+
+trace5[SI1_, SI2__, mu_, nu_, rho_, 5] :=
+	Pair[mu, nu] trace5[SI1, SI2, rho, 5] -
+	Pair[mu, rho] trace5[SI1, SI2, nu, 5] +
+	Pair[nu, rho] trace5[SI1, SI2, mu, 5] -
+	$LeviCivitaSign I traceEpsNo5[mu, nu, rho, SI1, SI2];
+
+
+(*
+trace5[mu_, nu_, rho_, SI1_, SI2__, 5] :=
+	Pair[mu, nu] trace5[rho, SI1, SI2, 5] -
+	Pair[mu, rho] trace5[nu, SI1, SI2, 5] +
+	Pair[nu, rho] trace5[mu, SI1, SI2, 5] +
+	epsTensorSign I traceEpsNo5[mu, nu, rho, SI1, SI2]
+*)
+
+trace5[a_, b_, c_, d_, 5]:=
+	$LeviCivitaSign I Eps[a, b, c, d];
+
+traceEpsNo5[mu_, nu_, rho_, SI2__] :=
+	Block[{head, s = -1, res},
+		res = Plus @@ MapIndexed[((s = -s) Eps[mu, nu, rho, #1] Drop[head[SI2], #2]) &, {SI2}];
+		res = res /. head -> traceNo5Wrap;
+		res
+	];
+
+
+(* ------------------------------------------------- *)
+spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
+	Block[{li1,li2,li3, res},
+		{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"larLia","larLib","larLic"}];
+		If[ FCGetDimensions[{x}]=!={dim},
+			Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in Larin's scheme."];
+			Abort[]
+		];
+		res = I/6 $LeviCivitaSign Eps[y[[1]], li1, li2, li3,  Dimension->dim] spurNo5[x,DiracGamma[li1,dim],DiracGamma[li2,dim],	DiracGamma[li3,dim]];
+		If[ FCGetDimensions[{res}]=!={dim},
+			Message[DiracTrace::failmsg, "Something went wrong while computing trace in Larin's scheme."];
+			Abort[]
+		];
+		res
+	]/; EvenQ[Length[{x,y}]];
+
+spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
+	Block[{spx = {x,DiracGamma[5]},spt,res},
+		res = 2/(Length[spx]-5) Sum[(-1)^(i+j+1) FCUseCache[ExpandScalarProduct,{Pair[spx[[i]][[1]],spx[[j]][[1]]]},{}] *
+			spt@@Delete[spx,{{j},{i}}],	{i,2,Length[spx]-1},{j,1,i-1}];
+		res = Expand[res]/.spt-> spur5BMHVWest;
+		res
+	]/; EvenQ[Length[{x}]] && Length[{x}]>4;
+
+spur5BMHVWest[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
+	EpsEvaluate[$LeviCivitaSign I Eps[x[[1]],y[[1]],r[[1]],z[[1]]]];
+
+
+spur5BMHVNoWest[x__DiracGamma, DiracGamma[5]]:=
+	Block[{li1,li2,li3,li4, res},
+		{li1,li2,li3,li4} = LorentzIndex[#,dim]& /@ Unique[{"bmLia","bmLib","bmLic","bmLid"}];
+		res =  I/24 $LeviCivitaSign Eps[li1, li2, li3, li4] spurNo5[x,DiracGamma[li1],DiracGamma[li2],	DiracGamma[li3], DiracGamma[li4]];
+		res
+	]/; EvenQ[Length[{x}]];
+
+(*
+
+			traceListChiral = spurHeadListChiral/. spurHead[x__] -> spur5BMHVWest,
+						(* BMHV, standard (slow!) trace formula *)
+						traceListChiral = spurHeadListChiral/. spurHead[x__] -> spur5BMHVNoWest
+					],
+
+				(* BMHV, standard (slow!) trace formula *)
+				!$Larin && $BreitMaison && !west,
+					FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula", FCDoControl->diTrVerbose];
+					fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
+					drsi = $LeviCivitaSign/(TraceOfOne/.Options[DiracTrace]);
+					(tmp @@ ({y}/.DiracGamma[5]->
+					(drsi I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
+					DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))))/. tmp[arg__] :> DiracTrace[arg,DiracTraceEvaluate->True],
+				(* BMHV West's trace formula *)
+				!$Larin && $BreitMaison && west,
+					FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula", FCDoControl->diTrVerbose];
+					temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
+					FCUseCache[ExpandScalarProduct,{spx[[i]],spx[[j]]},{}] spt@@Delete[spx,{{j},{i}}],
+						{i,2,Length[spx]-1},{j,1,i-1}]];
+					(*temp2/.spt->spursavg/.spursavg->spug,*)
+					temp2 = temp2/.spt-> spur;
+					Print[temp2];
+					temp2,
+					(* Any other combination of $Larin and $BreitMaison doesn't describe
+					a valid scheme *)
+
+*)
+
+
 spursav[x__DiracGamma] :=
 	spur[x];
 (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
@@ -373,10 +703,6 @@ spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
 	2) g^5, g^6 or g^7 is always on the end of the chain.
 *)
 
-
-
-
-spurNDR[x___]:=spur[x];
 
 
 
@@ -558,103 +884,8 @@ diracga[LorentzIndex[mu_, dii_]] :=
 diracga[Momentum[p_, dii_]] :=
 	diracga[Momentum[p, dii],dii];
 
-fastExpand[xx_] :=
-	Replace[xx, p_. Times[a__, x_Plus] :> Distribute[p a*x, Plus], 1];
-
-(*	traceNo5Wrap is a higher level function that handles the computation of traces without gamma 5,
-	all indices different.  The trick here 	is that as soon as we compute a trace for a given number of Dirac matrices,
-	we define it is a function (traceNo5fun) so that the result can be retrieved very fast. Combined with the the fast expansion
-	using fastExpand this provides a rather quick way to obtain Dirac traces. The bottlenecks here are the amount of RAM required
-	for caching and the general slowness of Mathematica on very large expressions. Traces with up to 14 Dirac matrices should be fine,
-	after that it becomes too slow *)
-
-traceNo5Wrap[SI1_, SI2__] :=
-	Block[{res, repRule, tab, set, SI, args, setDel, tmpRes, finalRes},
-
-		tab = Table[ ToExpression["MySI" <> ToString[i]], {i, 1, Length[{SI1, SI2}]}];
-		finalRes = traceNo5Fun @@ {SI1, SI2};
-
-		If[Head[finalRes] === traceNo5Fun,
-			(* The trace needs to be computed *)
-			tmpRes = traceNo5 @@ tab;
-			If[	($MemoryAvailable - MemoryInUse[]/1000000.) >1. ,
-				(* If there is enough memory, we save the computed result as a function *)
-				args = Sequence @@ (Pattern[#, _] & /@ tab);
-				setDel[traceNo5Fun[args], fastExpand[tmpRes]] /. setDel -> SetDelayed;
-				res = traceNo5Fun @@ {SI1, SI2},
-				(* No memoization if we have not enough memory *)
-				res = tmpRes /. Thread[Rule[tab, {SI1,SI2}]]
-
-			],
-			(* The trace has already been computed *)
-			res = finalRes
-		];
-
-		res
-	];
-
-traceNo5Wrap[] =
-	1;
-
-(* 	traceNo5 is the lower level function that computes only indices of type S[1],S[2],... and
-	remembers its values. It's based on Thomas Hahn's famous Trace4  function *)
-traceNo5[SI1_, SI2__] :=
-	Block[{head, s = -1, res},
-		res = Plus @@ MapIndexed[((s = -s) Pair[SI1, #1] Drop[head[SI2], #2]) &, {SI2}];
-		res = res /. head -> traceNo5Wrap;
-		res
-	];
-
-(* 	trace5Wrap computes a 4-dimensional trace of Dirac matrices with one gamma 5 using
-	similar tricks as traceNo5Wrap. *)
-trace5Wrap[SI1__, 5] :=
-	Block[{res, repRule, tab, set, args, setDel, tmpRes, realRes},
-		tab = Table[ToExpression["MySI" <> ToString[i]], {i, 1, Length[{SI1}]}];
-
-		realRes = trace5Fun @@ {SI1, 5};
-
-		If[Head[realRes] === trace5Fun,
-			(* The trace needs to be computed *)
-			tmpRes = trace5 @@ (Join[tab, {5}]);
-			If[	($MemoryAvailable - MemoryInUse[]/1000000.) >1. ,
-				(* If there is enough memory, we save the computed result as a function *)
-				args = Sequence @@ Join[(Pattern[#, _] & /@ tab), {5}];
-				setDel[trace5Fun[args], fastExpand[tmpRes]] /. setDel -> SetDelayed;
-				res = trace5Fun @@ {SI1, 5},
-				(* No memoization if we have not enough memory *)
-				res = tmpRes /. Thread[Rule[tab, {SI1}]]
-
-			],
-			(* The trace has already been computed *)
-			res = realRes
-		];
-		res
-	];
-
-trace5[SI1_, SI2__, mu_, nu_, rho_, 5] :=
-	Pair[mu, nu] trace5[SI1, SI2, rho, 5] -
-	Pair[mu, rho] trace5[SI1, SI2, nu, 5] +
-	Pair[nu, rho] trace5[SI1, SI2, mu, 5] -
-	$LeviCivitaSign I traceEpsNo5[mu, nu, rho, SI1, SI2];
 
 
-(*
-trace5[mu_, nu_, rho_, SI1_, SI2__, 5] :=
-	Pair[mu, nu] trace5[rho, SI1, SI2, 5] -
-	Pair[mu, rho] trace5[nu, SI1, SI2, 5] +
-	Pair[nu, rho] trace5[mu, SI1, SI2, 5] +
-	epsTensorSign I traceEpsNo5[mu, nu, rho, SI1, SI2]
-*)
-
-trace5[a_, b_, c_, d_, 5]:=
-	$LeviCivitaSign I Eps[a, b, c, d];
-
-traceEpsNo5[mu_, nu_, rho_, SI2__] :=
-	Block[{head, s = -1, res},
-		res = Plus @@ MapIndexed[((s = -s) Eps[mu, nu, rho, #1] Drop[head[SI2], #2]) &, {SI2}];
-		res = res /. head -> traceNo5Wrap;
-		res
-	];
 
 
 (*
