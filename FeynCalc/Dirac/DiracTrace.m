@@ -293,19 +293,7 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 
 		FCPrint[1,"DiracTrace: diractraceev2: Main loop finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
-
-		(* Apply DiracSimplify one more time *)
-
-		If[ !FreeQ[diractrny, DiracGamma],
-			time=AbsoluteTime[];
-			FCPrint[1,"DiracTrace: diractraceev2: Applying DiracSimplify again.", FCDoControl->diTrVerbose];
-			diractrny = DiracTrick[diractrny, FCI -> True];
-(*
-			diractrny = DiracSimplify[ diractrny, InsideDiracTrace->True,
-			Factoring->False, FeynCalcInternal -> True, DiracCanonical->False];*)
-			FCPrint[1,"DiracTrace: diractraceev2: DiracSimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
-		];
-
+		(* After spur there should no Dirac matrices left, by definition! *)
 		If[ !FreeQ[diractrny,DiracGamma],
 			Message[DiracTrace::rem];
 			Abort[]
@@ -385,6 +373,17 @@ spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
 	2) g^5, g^6 or g^7 is always on the end of the chain.
 *)
 
+
+
+
+spurNDR[x___]:=spur[x];
+
+
+
+
+
+(* ------------------------------------------------- *)
+
 spur[0 ..] :=
 	0;
 
@@ -403,6 +402,14 @@ spur[x__DiracGamma,DiracGamma[5]] :=
 
 spur[x__DiracGamma] :=
 	0/; OddQ[Length[{x}]] && FreeQ2[x,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+
+spur[x_DiracGamma, y_DiracGamma] :=
+	Pair[x[[1]],y[[1]]]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+
+spur[i_DiracGamma, j_DiracGamma, k_DiracGamma, l_DiracGamma] :=
+	(	Pair[i[[1]], l[[1]]] Pair[j[[1]],k[[1]]] -
+		Pair[i[[1]], k[[1]]] Pair[j[[1]],l[[1]]] +
+		Pair[i[[1]], j[[1]]] Pair[k[[1]],l[[1]]])/; FreeQ2[{x,y,r,s},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
 (* calculation of traces (recursively) --  up to a factor of 4 *)
 (*	Trace of g^mu g^nu g^rho g^si g^5	*)
@@ -514,7 +521,10 @@ spur[y__] :=
 						temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
 						FCUseCache[ExpandScalarProduct,{spx[[i]],spx[[j]]},{}] spt@@Delete[spx,{{j},{i}}],
 							{i,2,Length[spx]-1},{j,1,i-1}]];
-						temp2/.spt->spursavg/.spursavg->spug,
+						(*temp2/.spt->spursavg/.spursavg->spug,*)
+						temp2 = temp2/.spt-> spur;
+						Print[temp2];
+						temp2,
 						(* Any other combination of $Larin, $BreitMaison doesn't describe
 						a valid scheme *)
 					True,
@@ -530,7 +540,7 @@ spur[y__] :=
 		FCPrint[1,"DiracTrace: spur: Leaving.", FCDoControl->diTrVerbose];
 
 		resp
-	];
+	]/; Length[{y}]>5;
 
 
 spursavg[x___, LorentzIndex[a_, dim_ : 4], LorentzIndex[a_, dim_ : 4], y___] :=
