@@ -29,6 +29,7 @@ Options[ TR ] = {
 	DiracTraceEvaluate -> True,
 	EpsContract           -> True,
 	Explicit           -> True,
+	Expand			   -> True,
 	Factoring          -> Automatic,
 	FCVerbose			-> True,
 	FeynCalcExternal   -> False,
