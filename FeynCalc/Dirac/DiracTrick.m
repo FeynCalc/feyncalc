@@ -26,13 +26,15 @@ End[]
 
 Begin["`DiracTrick`Private`"]
 
-diTrVerbose::usage=""
+diTrVerbose::usage="";
+insideTrace::usage="";
 
 Options[DiracTrick] = {
 	DiracGammaCombine -> False,
 	Expanding -> False,
 	FCI -> False,
-	FCVerbose -> False
+	FCVerbose -> False,
+	InsideDiracTrace -> False
 };
 
 scev[a_, b_] :=
@@ -63,6 +65,8 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			];
 		];
 
+		insideTrace = OptionValue[InsideDiracTrace];
+
 		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
 
@@ -83,16 +87,12 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		(*Check that if we are in 4 dims or using naive scheme, then after chiralTrick
 		all the chiral Stuff has been moved to the right and maximally simplified. *)
 
-(*TODO: Condition to stop the evaluation (at least for 4 dims)*)
+		(*TODO: Condition to stop the evaluation (at least for 4 dims)*)
 
-		(* 	Provided that we are using a naive g^5 scheme or dealing with purely
+		(* 	TODO: Provided that we are using a naive g^5 scheme or dealing with purely
 			4-dimensional matrix chains, chiralTrick should ensure that all the chiral
 			stuff has been moved to the left of the chain.
 			The only exception would be presence of  unknown non-commutative objects *)
-		(*If[ !$BreitMaison && Length[FCGetDimensions[ex]]===1,
-			If[]
-		];*)
-
 
 		res = res /.chiralTrick -> drS;
 		FCPrint[3, "DiracTrick: After drS ", res, FCDoControl->diTrVerbose];
@@ -223,6 +223,10 @@ there, since in non-naive schemes all the projects must be written out
 explicitly in terms of g^5.
  *)
 
+
+(* Trace cyclicity*)
+chiralTrick[b___, di:DiracGamma[5|6|7],c__] :=
+	chiralTrick[c,b, di]/; insideTrace && FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
 
 chiralTrick[b___,DiracGamma[5],DiracGamma[5],c___] :=
