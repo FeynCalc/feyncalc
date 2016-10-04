@@ -33,6 +33,7 @@ Options[FCDiracIsolate] = {
 	ClearHeads -> {FCGV["DiracChain"]},
 	Collecting -> True,
 	DotSimplify -> True,
+	DiracGammaCombine -> True,
 	ExceptHeads -> {},
 	Expanding -> True,
 	FCI -> False,
@@ -60,6 +61,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		If[	FreeQ2[ex,DiracHeadsList],
 			Return[ex]
+		];
+
+		If[	OptionValue[DiracGammaCombine],
+			ex = DiracGammaCombine[ex];
 		];
 
 		If[	OptionValue[Expanding],
@@ -113,7 +118,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			res = res /. restHead -> Identity
 		];
 
-		If [ !FreeQ[res/. head[__] :> 1, DiracHeadsList] & ,
+		If [ !FreeQ[res/. head[__] :> 1, DiracHeadsList] & || !FreeQ[res,head[]],
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
 		];

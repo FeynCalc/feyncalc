@@ -74,5 +74,7 @@ DiracGamma[LorentzIndex[m]] . DiracGamma[LorentzIndex[n]]]"},
 DiracGamma[LorentzIndex[j]] . \
 DiracGamma[LorentzIndex[k]]]*FCGV[\"DiracChain\"][DiracGamma[\
 LorentzIndex[l]] . DiracGamma[LorentzIndex[m]] . \
-DiracGamma[LorentzIndex[n]]]"}
+DiracGamma[LorentzIndex[n]]]"},
+{"fcstFCDiracIsolate-ID14", "FCDiracIsolate[GA[nu].(GS[p] + GS[q] + GS[k] + m).GA[mu], Head -> dch]//FCE",
+"dch[GA[nu].(m + GS[k + p + q]).GA[mu]]"}
 });
