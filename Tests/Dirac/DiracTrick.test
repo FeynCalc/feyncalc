@@ -519,7 +519,10 @@ Tests`Dirac`fcstDiracTrick = {
 {"fcstDiracTrick-ID25","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10]]//Expand",
 	"-D^10+90 D^9-3000 D^8+48720 D^7-431760 D^6+2220960 D^5-6776320 D^4+11957760 D^3-11079680 D^2+4063232 D"},
 {"fcstDiracTrick-ID26","DiracTrick[GA[mu].(GS[p] + m1).GA[5].(GS[q] + m2).GA[nu],InsideDiracTrace -> True] // FCE",
-	"(m2 + GS[q]).GA[nu].GA[mu].(m1 + GS[p]).GA[5]"}
+	"(m2 + GS[q]).GA[nu].GA[mu].(m1 + GS[p]).GA[5]"},
+{"fcstDiracTrick-ID27","DiracTrick[(m + GS[p]).(-fa GA[5].GA[nu] + f1 GA[nu]).(m +
+	GS[pp]).(fa GA[mu].GA[5] + f1 GA[mu]), InsideDiracTrace -> True] // FCE",
+	"(m + GS[p]).(fa GA[nu].GA[5] + f1 GA[nu]).(m +GS[pp]).(fa GA[mu].GA[5] + f1 GA[mu])"}
 };
 
 Tests`Dirac`fcstDiracTrickBMHV = {

@@ -27,7 +27,7 @@ End[]
 Begin["`DiracTrick`Private`"]
 
 diTrVerbose::usage="";
-insideTrace::usage="";
+diracTraceCyclic::usage="";
 
 Options[DiracTrick] = {
 	DiracGammaCombine -> False,
@@ -49,7 +49,7 @@ DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
 	DiracTrick[DOT[y,z],FCI->True];
 
 DiracTrick[expr_,OptionsPattern[]] :=
-	Block[{res,tmp,ex},
+	Block[{res,tmp,ex,null1,null2,holdDOT},
 		(*
 			Main algorithm:
 				1) Simplify expressions involving projectors and slashes (DOT ->  drS)
@@ -65,8 +65,6 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			];
 		];
 
-		insideTrace = OptionValue[InsideDiracTrace];
-
 		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
 
@@ -79,9 +77,16 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			ex = DiracGammaCombine[ex]
 		];
 
-(*		res = ex /. DOT -> drS /.drS -> ds //. dr -> drCOs/. drCO -> ds /.  dr -> ds /.  dr -> DOT;*)
+		If[	OptionValue[InsideDiracTrace],
+			res = (diracTraceCyclic/@(ex+null1+null2))/. diracTraceCyclic[null1|null2]->0 /.
+			DOT -> holdDOT /.
+			diracTraceCyclic[holdDOT[x__]] :> diracTraceCyclic[x]/. diracTraceCyclic ->DOT /.
+			holdDOT ->DOT;
+			FCPrint[3, "DiracTrick: After diracTraceCyclic ", res, FCDoControl->diTrVerbose],
+			res = ex
+		];
 
-		res = ex /. DOT -> chiralTrick;
+		res = res /. DOT -> chiralTrick;
 		FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
 
 		(*Check that if we are in 4 dims or using naive scheme, then after chiralTrick
@@ -225,9 +230,9 @@ explicitly in terms of g^5.
 
 
 (* Trace cyclicity*)
-chiralTrick[b___, di:DiracGamma[5|6|7],c__] :=
-	chiralTrick[c,b, di]/; insideTrace && FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-
+diracTraceCyclic[b___,di_,c__] :=
+	diracTraceCyclic[c,b, di]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
+	FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
 chiralTrick[b___,DiracGamma[5],DiracGamma[5],c___] :=
 	chiralTrick[ b,c ];
