@@ -39,14 +39,15 @@ HoldForm[KK[_]] ll[q]]","True"},
 	GA[j].GSD[i].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}] FVD[q, i]]"},
 {"fcstFCLoopIsolate-ID12","FCLoopIsolate[ SUNT[i].(x + y).SUNT[j] +
 	(GS[x] + GA[j].(GSD[i] FVD[q, i] + GSD[p]).GA[5]).SUNT[a] FAD[{q, m}], {q}] // FCE",
-	"SUNT[i].(x + y).SUNT[j] + (SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5]) FCGV[\"LoopInt\"][
-	FAD[{q, m}]] +SUNT[a].GA[j].GSD[i].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}] FVD[q, i]]"},
+	"SUNT[i] . (x + y) . SUNT[j] + (GA[j] . GSD[p] . GA[5] + GS[x])*SUNT[a]*
+FCGV[\"LoopInt\"][FAD[{q, m}]] + GA[j] . GSD[i] . GA[5]*SUNT[a]*
+FCGV[\"LoopInt\"][FAD[{q, m}]*FVD[q, i]]"},
 {"fcstFCLoopIsolate-ID12","FCLoopIsolate[(GS[x] +
 	GA[j].(GSD[i] FVD[q, i] + GSD[p] + GSD[q + x]).GA[5]).SUNT[
-	a] FAD[{q, m}], {q}] // FCE","(SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5] +
-	SUNT[a].GA[j].GSD[x].GA[5]) FCGV[\"LoopInt\"][FAD[{q, m}]] +
-	FCGV[\"LoopInt\"][SUNT[a].GA[j].GSD[q].GA[5] FAD[{q, m}]] +
-	SUNT[a].GA[j].GSD[i].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}] FVD[q, i]]"},
+	a] FAD[{q, m}], {q}] // FCE","(GA[j] . GSD[p] . GA[5] + GA[j] . GSD[x] . GA[5] + GS[x])*SUNT[a]*
+FCGV[\"LoopInt\"][FAD[{q, m}]] +
+SUNT[a]*FCGV[\"LoopInt\"][GA[j] . GSD[q] . GA[5]*FAD[{q, m}]] +
+GA[j] . GSD[i] . GA[5]*SUNT[a]*FCGV[\"LoopInt\"][FAD[{q, m}]*FVD[q, i]]"},
 {"fcstFCLoopIsolate-ID13","FCLoopIsolate[GSD[p + q] FAD[{q, m}], {q}] // FCE",
 	"GSD[p] FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] GSD[q]]"},
 {"fcstFCLoopIsolate-ID14","FCLoopIsolate[
