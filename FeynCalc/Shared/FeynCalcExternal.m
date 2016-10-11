@@ -1,16 +1,18 @@
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+(* ::Package:: *)
 
-(* :Title: FeynCalcExternal *)
 
-(* :Author: Rolf Mertig *)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 6 October '97 at 14:31 *)
-(* ------------------------------------------------------------------------ *)
+(* :Title: FeynCalcExternal													*)
 
-(* :Summary: Changes certain objects ("Symbols") from the FeynCalc
-						internal representation to the :"input" form
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
+
+(* :Summary:	Changes certain objects ("Symbols") from the FeynCalc
+				internal representation to the :"input" form 				*)
 
 (* ------------------------------------------------------------------------ *)
 
