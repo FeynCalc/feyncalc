@@ -230,16 +230,18 @@ used by GluonPropagator and similar functions.";
 $Larin::usage =
 "If set to True, the Larin-Gorishny-Atkyampo-DelBurgo-scheme for \
 gamma5 in D-dimensions is used, i.e. before evaluating traces \
-(but after moving gamma5 anticommuting in all dimensions to the \
-right of the Dirac string) a product  gamma[mu].gamma5 is \
-substituted to  -I/6 Eps[mu,al,be,si] gamma[al,be,si], \
+(but after moving gamma5 anticommuting in D-dimensions to the \
+right of the Dirac string inside a trace) a product  gamma[mu].gamma5 is \
+substituted to -I/6 Eps[mu,al,be,si] gamma[al,be,si], \
 where all indices live in D-dimensions now. \
-Especially the Levic-Civita tensor is taken to be \
+The Levi-Civita tensor is taken to be \
 D-dimensional, i.e., contraction of two Eps's results in D's. \
-This has (FOR ONE AXIAL-VECTOR-CURRENT ONLY, it is not so clear \
-if this scheme also works for more than one fermion line \
-involving gamma5) the same effect as the \
-Breitenlohner-Maison-'t Hooft-Veltman scheme.";
+This scheme is often used for performance reasons and is assumed \
+to give the same results as the \
+Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, gamma5 is \
+not anticommuting inside closed fermion loops and it is not so clear
+if this scheme works for more than one fermion line involving gamma5. \
+When in doubt, it might be better to use BMHV instead.";
 
 $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines \
