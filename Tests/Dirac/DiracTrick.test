@@ -15,9 +15,9 @@
 
 Tests`Dirac`fcstDiracTrickACoreProperties = {
 
-{"fcstDiracTrickCoreProperties-ID1","DiracTrick[GA[i].GA[j] SUNT[a].GA[k]]",
-		"DiracGamma[LorentzIndex[k]]*DiracGamma[LorentzIndex[i]].
-	DiracGamma[LorentzIndex[j]]*SUNT[SUNIndex[a]]"},
+{"fcstDiracTrickCoreProperties-ID1","DiracTrick[GA[i].GA[j].SUNT[a].GA[k]]",
+		"DiracGamma[LorentzIndex[i]].
+	DiracGamma[LorentzIndex[j]].DiracGamma[LorentzIndex[k]]*SUNT[SUNIndex[a]]"},
 {"fcstDiracTrickCoreProperties-ID2","DiracTrick[GA[i].GA[j] m.GA[k]]",
 	"m*DiracGamma[LorentzIndex[k]]*DiracGamma[LorentzIndex[i]].
 	DiracGamma[LorentzIndex[j]]"},

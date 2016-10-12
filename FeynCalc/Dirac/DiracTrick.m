@@ -119,7 +119,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		];
 
 		(* 	First of all we need to extract all the Dirac structures in the input. *)
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->OptionValue[DiracGammaCombine]];
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine]];
 
 		{freePart,dsPart} = FCSplit[ex,{dsHead}];
 		FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -150,9 +150,15 @@ diracTrickEval[ex_]:=
 		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
 		dim = FCGetDimensions[ex];
+		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
 
-		res = res /. DOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
+		res = res/. DOT -> holdDOT;
+
+		If[	gamma5Present,
+			res = res /. holdDOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
+			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+		];
 
 		If[	insideDiracTrace,
 			time=AbsoluteTime[];
@@ -164,13 +170,17 @@ diracTrickEval[ex_]:=
 			res = res /. DOT -> holdDOT;
 		];
 
-		time=AbsoluteTime[];
-		FCPrint[1, "DiracTrick: diracTrickEval: Applying chiralTrick ", res, FCDoControl->diTrVerbose];
-		res = res /. holdDOT -> chiralTrick;
-		FCPrint[1,"DiracTrace: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
+		If[	gamma5Present,
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: diracTrickEval: Applying chiralTrick ", res, FCDoControl->diTrVerbose];
+			res = res /. holdDOT -> chiralTrick /. chiralTrick -> holdDOT;
+			FCPrint[1,"DiracTrace: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
+			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+		];
 
-		res = res /.chiralTrick -> drS;
+
+		res = res /.holdDOT -> drS;
 		FCPrint[3, "DiracTrick: diracTrickEval: After drS ", res, FCDoControl->diTrVerbose];
 		res = res /.drS -> ds;
 		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
@@ -214,8 +224,7 @@ dsBM[x___] :=
 
 (* drdef *)
 ds[] = dr[] = 1;
-dr[a___,y_SUNT w_,b___] :=
-	dr[a, y, w, b](* /; Head[y] === SUNT*);
+
 dr[a___,y_ w_,b___] :=
 	coneins[y ds[a,w,b]]/;(NonCommFreeQ[y]&&FreeQ[y,dr]);
 dr[a___,y_ ,b___] :=
@@ -798,27 +807,6 @@ dr[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],
 					(dim1===dim2 || dim2 === dim1-4 || dim2 ===4 || dim1 === dim2-4 || dim1 ===4) &&
 					MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
 					MatchQ[dim2, _Symbol | _Symbol-4 | 4 ];
-
-(* #################################################################### *)
-(*                             Main33                                 *)
-(* #################################################################### *)
-
-(* If we have a mixed expression with gamma and SU(N) matrices, factor the SU(N) matrices out *)
-dr[ a___,b_,c:SUNT[_].. ,d___] :=
-	dr[ a, c, b, d ] /; FreeQ2[b, {SUNT}];
-
-HoldPattern[dr[ a___,b_ dr[c:(SUNT[_])..], d___]] :=
-	( dr[c] dr[a, b, d] )/;FreeQ[{a, b, d}, SUNT];
-dr[ SUNT[i_], b___ ] :=
-	(SUNT[i] ds[b]) /; FreeQ[{b}, SUNT];
-dr[ b__, SUNT[i_] ] :=
-	(SUNT[i] ds[b]) /; FreeQ[{b}, SUNT];
-dr[ a__, b:SUNT[_].. ] :=
-	(ds[b] ds[a])/; FreeQ[{a}, SUNT];
-dr[ b:SUNT[_].., a__ ] :=
-	(ds[b] ds[a])/; FreeQ[{a}, SUNT];
-
-
 
 (* #################################################################### *)
 (*                             Main33a                                 *)
