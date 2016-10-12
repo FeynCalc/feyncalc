@@ -73,9 +73,49 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		If[ OptionValue[DiracGammaCombine],
-			ex = DiracGammaCombine[ex]
-		];
+		(* 	First of all we need to extract all the Dirac structures in the input. *)
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->OptionValue[DiracGammaCombine]];
+
+		ex = ex/.dsHead->Identity;
+
+
+		(*	Algorithm of DiracTrick:
+
+			x)	Isolate all Dirac objects and handle them separately. Of course there is an extra option
+				to skip this if the input is already a single object (e.g. when DiracTrick is called by
+				DiracTrace or DiracSimplify) Then apply the evaluating function to each of the objects,
+				create replacement rules (standard)	and substitute the results back.
+
+			x) The inner working of the evaluating function:
+				xx)		Check the dimension of the chain, could be purely 4-dim, purely D-dim or mixed (BMHV).
+						Also check that BMHV was indeed activated if mixed dimensions appear
+
+				xx)		Then we
+							1) 	Handle g^5 if it is present
+							2) 	Ensure that the expression is of the form .... g^5 or contains no g^5 at all,
+								unless there are unknown non-commutative objects inside the chain or we use BMHV
+							3)	Handle everything apart from g^5.
+							4)	If we use BMHV, handle g^5 again, this time using anticommuting rules.
+							5)	Notice that we use different functions for 4-dim, D-dim and mixed expressions
+								to save time and ensure that e.g. no rules for mixed expressions are unsuccesfully
+								applied to a purely 4-dim chain
+
+				xx)		The handling of g^5 of course depends a lot on dimensions, the scheme and whether we are
+						inside a trace or not.
+
+						xxx) If we are purely 4-dim, then we do all the g^5 related simplifications in this step.
+						xxx) If we are purely D-dim, not inside trace, and use NDR, then g^5 is anticommuted
+						xxx) If we are purely D-dim, not inside trace, and use Larin or BMHV, then g^5 is left alone
+						xxx) If we are purely D-dim, inside trace and use Larin, then g^5 is anticommuted and cyclicity is used
+						xxx) If we are purely D-dim, inside trace and use BMHV, then only cyclicity is used
+
+						xxx) If we are mixed (always BMHV), not inside trace, then g^5 is left alone
+						xxx) If we are mixed (always BMHV), inside trace, then only cyclicity is used
+						xxx) Notice that in all cases we use some generic properties of g^5, namely that
+						(g^5)^2 = 1, g^6 g^7 = 0 etc.
+
+
+		*)
 
 		If[	OptionValue[InsideDiracTrace],
 			res = (diracTraceCyclic/@(ex+null1+null2))/. diracTraceCyclic[null1|null2]->0 /.
