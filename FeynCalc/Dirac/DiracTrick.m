@@ -29,6 +29,7 @@ Begin["`DiracTrick`Private`"]
 diTrVerbose::usage="";
 diracTraceSimplify::usage="";
 insideDiracTrace::usage="";
+diga::usage="";
 
 Options[DiracTrick] = {
 	DiracGammaCombine -> False,
@@ -145,13 +146,16 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 
 diracTrickEval[ex_]:=
-	Block[{res=ex, holdDOT, time, dim, gamma5Present},
+	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent},
 
 		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
 		dim = FCGetDimensions[ex];
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
 
+		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
 
 		res = res/. DOT -> holdDOT;
 
@@ -929,7 +933,7 @@ drCO[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],    w___,
 				MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
 				MatchQ[dim3, _Symbol | _Symbol-4 | 4 ] &&
 				!MatchQ[{w, DiracGamma[x2[y2,dim3],dim3]},{DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim3] , dim3]..} |
-					{___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
+					{___, DiracGamma[a__], ___, DiracGamma[a__], ___}] && NonCommFreeQ[{w}/.DiracGamma->diga];
 
 (* Slash(p) ... g^nu g^rho Slash(p), where the slashes are in D, 4, or D-4
 	and g^nu and g^rho are in different dimensions is simplfied
@@ -947,7 +951,7 @@ drCO[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4], w___,
 		MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
 		MatchQ[dim3, _Symbol | _Symbol-4 | 4 ] &&
 		!MatchQ[{w, DiracGamma[x2[y2,dim3],dim3]},{DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim3] , dim3]..} |
-			{___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
+			{___, DiracGamma[a__], ___, DiracGamma[a__], ___}] && NonCommFreeQ[{w}/.DiracGamma->diga];
 
 (* ************************************************************** *)
 SetAttributes[chiralTrick,Flat];

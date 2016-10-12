@@ -410,7 +410,9 @@ DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamm
 {"fcstDiracTrickCoreProperties-ID131","DiracTrick[
 		GSD[p].GAE[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11].GSD[p]]",
 		"DiracTrick[GSE[p].GAE[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10,
-		i11].GSE[p]]- FCI[ SP[p,p] GAE[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11]]"}
+		i11].GSE[p]]- FCI[ SP[p,p] GAE[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11]]"},
+{"fcstDiracTrickCoreProperties-ID132","DiracTrick[GA[i, j].FCNCA.GA[i, j]] // FCE",
+		"GA[i].GA[j].FCNCA.GA[i].GA[j]"}
 };
 
 Tests`Dirac`fcstDiracTrick = {

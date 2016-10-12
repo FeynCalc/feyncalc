@@ -19,6 +19,8 @@ Get/@tests;
 
 stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
+DeclareNonCommutative[FCNCA,FCNCB,FCNCC];
+
 $BreitMaison = False;
 $Larin = False;
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
