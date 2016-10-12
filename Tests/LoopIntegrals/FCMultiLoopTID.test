@@ -104,15 +104,14 @@ q2}]//FCE", "0"},
 {"fcstFCMultiLoopTID-ID9",
 "FCMultiLoopTID[GSD[q1].GSD[q2]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-\
 q2}],{q1,q2}]//DiracTrick//FCE",
-"-((m1^2 + m2^2)*FAD[{q1, m1}, {q2, m2}])/4 + ((m1^2 + \
-m2^2)^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2])/4 - (FAD[{q1, m1}, {q2, \
-m2}]*SPD[q1, q2])/2"},
+"((m1^2 + m2^2)*(-FAD[{q1, m1}, {q2, m2}] + m1^2*FAD[{q1, m1}, {q2, m2},
+-q1 + q2] + m2^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2]))/4 -
+(FAD[{q1, m1}, {q2, m2}]*SPD[q1, q2])/2"},
 {"fcstFCMultiLoopTID-ID10",
 "FCMultiLoopTID[GS[q1].GS[q2]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-q2}]\
 ,{q1,q2}]//DiracTrick//FCE",
-"-(((m1^2 + m2^2)*FAD[{q1, m1}, {q2, m2}])/D) + ((m1^2 + \
-m2^2)^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2])/D - (2*FAD[{q1, m1}, {q2, \
-m2}]*SPD[q1, q2])/D"},
+"((m1^2 + m2^2)*(-FAD[{q1, m1}, {q2, m2}] + m1^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2] +
+m2^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2]))/D - (2*FAD[{q1, m1}, {q2, m2}]*SPD[q1, q2])/D"},
 {"fcstFCMultiLoopTID-ID11",
 "FCMultiLoopTID[LC[][q1,q2,a,b]SPD[q1,q2]FAD[{q1-p1,m1},{q2-p2,m2},\
 {q1-q2}],{q1,q2}]//FCE",

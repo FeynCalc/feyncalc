@@ -28,6 +28,7 @@ Begin["`DiracTrick`Private`"]
 
 diTrVerbose::usage="";
 diracTraceCyclic::usage="";
+insideDiracTrace::usage="";
 
 Options[DiracTrick] = {
 	DiracGammaCombine -> False,
@@ -49,7 +50,8 @@ DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
 	DiracTrick[DOT[y,z],FCI->True];
 
 DiracTrick[expr_,OptionsPattern[]] :=
-	Block[{res,tmp,ex,null1,null2,holdDOT},
+	Block[{	res,tmp,ex,null1,null2,holdDOT,freePart,dsPart,diracObjects,
+			diracObjectsEval, repRule},
 		(*
 			Main algorithm:
 				1) Simplify expressions involving projectors and slashes (DOT ->  drS)
@@ -57,27 +59,6 @@ DiracTrick[expr_,OptionsPattern[]] :=
 				3) Simplify expressions involving contractions of gamma matrices with momenta or other gammas (ds //. dr -> drCOs)
 				4) Again check the sceme and simplify the expressions involving g^5 (twice) (drCO -> ds /.  dr -> ds /.  dr -> DOT)
 		*)
-
-		If [OptionValue[FCVerbose]===False,
-			diTrVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				diTrVerbose=OptionValue[FCVerbose]
-			];
-		];
-
-		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
-
-		If[ OptionValue[FCI],
-			ex = expr,
-			ex = FCI[expr]
-		];
-
-		(* 	First of all we need to extract all the Dirac structures in the input. *)
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->OptionValue[DiracGammaCombine]];
-
-		ex = ex/.dsHead->Identity;
-
 
 		(*	Algorithm of DiracTrick:
 
@@ -117,40 +98,40 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 		*)
 
-		If[	OptionValue[InsideDiracTrace],
-			res = (diracTraceCyclic/@(ex+null1+null2))/. diracTraceCyclic[null1|null2]->0 /.
-			DOT -> holdDOT /.
-			diracTraceCyclic[holdDOT[x__]] :> diracTraceCyclic[x]/. diracTraceCyclic ->DOT /.
-			holdDOT ->DOT;
-			FCPrint[3, "DiracTrick: After diracTraceCyclic ", res, FCDoControl->diTrVerbose],
-			res = ex
+		If [OptionValue[FCVerbose]===False,
+			diTrVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				diTrVerbose=OptionValue[FCVerbose]
+			];
 		];
 
-		res = res /. DOT -> chiralTrick;
-		FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
+		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
 
-		(*Check that if we are in 4 dims or using naive scheme, then after chiralTrick
-		all the chiral Stuff has been moved to the right and maximally simplified. *)
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
 
-		(*TODO: Condition to stop the evaluation (at least for 4 dims)*)
+		If[	OptionValue[InsideDiracTrace],
+			insideDiracTrace = True,
+			insideDiracTrace = False
+		];
 
-		(* 	TODO: Provided that we are using a naive g^5 scheme or dealing with purely
-			4-dimensional matrix chains, chiralTrick should ensure that all the chiral
-			stuff has been moved to the left of the chain.
-			The only exception would be presence of  unknown non-commutative objects *)
+		(* 	First of all we need to extract all the Dirac structures in the input. *)
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->OptionValue[DiracGammaCombine]];
 
-		res = res /.chiralTrick -> drS;
-		FCPrint[3, "DiracTrick: After drS ", res, FCDoControl->diTrVerbose];
-		res = res /.drS -> ds;
-		FCPrint[3, "DiracTrick: After ds ", res, FCDoControl->diTrVerbose];
-		Global`XXX = res;
-		res = res  //. dr -> drCOs;
-		FCPrint[3, "DiracTrick: After drCOs ", res, FCDoControl->diTrVerbose];
-		res = res /.  drCO -> ds;
-		FCPrint[3, "DiracTrick: After ds ", res, FCDoControl->diTrVerbose];
-		res = res /.  dr -> ds ;
-		FCPrint[3, "DiracTrick: After ds ", res, FCDoControl->diTrVerbose];
-		res = res /.  dr -> DOT ;
+		{freePart,dsPart} = FCSplit[ex,{dsHead}];
+		FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
+		FCPrint[3,"DiracTrick: freePart: ",freePart , FCDoControl->diTrVerbose];
+
+		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+		diracObjectsEval = diracTrickEval/@(diracObjects/.dsHead->Identity);
+
+		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		FCPrint[3,"DiracTrick: repRule: ",repRule , FCDoControl->diTrVerbose];
+
+		res = freePart + ( dsPart/.repRule);
 
 		If[	OptionValue[Expanding],
 			res = Expand[res]
@@ -159,6 +140,48 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		FCPrint[1, "DiracTrick. Leaving.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: Leaving with ", res, FCDoControl->diTrVerbose];
 
+		res
+	];
+
+
+diracTrickEval[ex_]:=
+	Block[{res=ex, holdDOT, time},
+
+
+		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
+
+		If[	insideDiracTrace,
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceCyclic ", FCDoControl->diTrVerbose];
+			res = diracTraceCyclic[res] /. DOT -> holdDOT /. diracTraceCyclic[holdDOT[x__]] :> diracTraceCyclic[x]/.
+			diracTraceCyclic ->holdDOT;
+			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceCyclic done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceCyclic ", res, FCDoControl->diTrVerbose],
+			res = res /. DOT -> holdDOT;
+		];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "DiracTrick: diracTrickEval: Applying chiralTrick ", res, FCDoControl->diTrVerbose];
+		res = res /. holdDOT -> chiralTrick;
+		FCPrint[1,"DiracTrace: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
+
+		res = res /.chiralTrick -> drS;
+		FCPrint[3, "DiracTrick: diracTrickEval: After drS ", res, FCDoControl->diTrVerbose];
+		res = res /.drS -> ds;
+		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
+		Global`XXX = res;
+		res = res  //. dr -> drCOs;
+		FCPrint[3, "DiracTrick: diracTrickEval: After drCOs ", res, FCDoControl->diTrVerbose];
+		res = res /.  drCO -> ds;
+		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
+		res = res /.  dr -> ds ;
+		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
+		res = res /.  dr -> DOT ;
+
+		FCPrint[1, "DiracTrick: diracTrickEval: Leaving.", FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: Leaving with ", res, FCDoControl->diTrVerbose];
 		res
 	];
 
@@ -188,13 +211,6 @@ dr[a___,y_ ,b___] :=
 
 dr[a_Spinor, b___, c_Spinor, d_Spinor, e___, f_Spinor, g___] :=
 	dr[a, b, c] dr[d, e, f, g];
-
-(*Causes infinite recursion!! See above. 19/1-2003 F.Orellana*)
-(*dr[a__]:=( ds[a]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
-					DiracGamma[7]->(1/2 - DiracGamma[5]/2)
-		)/;(!FreeQ2[{a}, {DiracGamma[6], DiracGamma[7]}]) &&
-			(Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True;*)
-
 
 (*These relations between g^5 and the projectors hold in all dimensions and all schemes*)
 dr[b___,DiracGamma[5],DiracGamma[5],c___] :=

@@ -22,7 +22,7 @@ Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCDiracIsolate"]
 StandardForm];
 
 FCDiracIsolate::fail =
-"FCDiracIsolate failed to isolate loop integrals in `1`!";
+"FCDiracIsolate failed to isolate Dirac structures in `1`!";
 
 Begin["`Package`"]
 End[]
