@@ -230,9 +230,6 @@ dr[a___,y_ w_,b___] :=
 dr[a___,y_ ,b___] :=
 	coneins[y ds[a,b] ] /;(NonCommFreeQ[y]&&FreeQ[y,dr]);
 
-dr[a_Spinor, b___, c_Spinor, d_Spinor, e___, f_Spinor, g___] :=
-	dr[a, b, c] dr[d, e, f, g];
-
 (*These relations between g^5 and the projectors hold in all dimensions and all schemes*)
 dr[b___,DiracGamma[5],DiracGamma[5],c___] :=
 	ds[ b,c ];

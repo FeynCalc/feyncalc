@@ -93,7 +93,9 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 
 		If[	OptionValue[Split],
-			res = res /. DOT->holdDOT //. head[a_holdDOT b_holdDOT c_.] :> head[a]head[b c] /. holdDOT -> DOT
+			res = res /. DOT->holdDOT //. {head[a_holdDOT b_holdDOT c_.] :> head[a]head[b c],
+			head[holdDOT[r1___,a_Spinor,b___,c_Spinor, d_Spinor, e___, f_Spinor, r2___]]/;FreeQ[{r1,b,e,r2}, Spinor] :>
+				head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]] }/. holdDOT[] ->1 /. holdDOT -> DOT
 		];
 
 
