@@ -27,7 +27,7 @@ End[]
 Begin["`DiracTrick`Private`"]
 
 diTrVerbose::usage="";
-diracTraceCyclic::usage="";
+diracTraceSimplify::usage="";
 insideDiracTrace::usage="";
 
 Options[DiracTrick] = {
@@ -145,19 +145,22 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 
 diracTrickEval[ex_]:=
-	Block[{res=ex, holdDOT, time},
-
+	Block[{res=ex, holdDOT, time, dim, gamma5Present},
 
 		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
+		dim = FCGetDimensions[ex];
+
+
+		res = res /. DOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 
 		If[	insideDiracTrace,
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceCyclic ", FCDoControl->diTrVerbose];
-			res = diracTraceCyclic[res] /. DOT -> holdDOT /. diracTraceCyclic[holdDOT[x__]] :> diracTraceCyclic[x]/.
-			diracTraceCyclic ->holdDOT;
-			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceCyclic done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
-			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceCyclic ", res, FCDoControl->diTrVerbose],
+			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify ", FCDoControl->diTrVerbose];
+			res = diracTraceSimplify[res] /. DOT -> holdDOT /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/.
+			diracTraceSimplify ->holdDOT;
+			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose],
 			res = res /. DOT -> holdDOT;
 		];
 
@@ -179,6 +182,15 @@ diracTrickEval[ex_]:=
 		res = res /.  dr -> ds ;
 		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
 		res = res /.  dr -> DOT ;
+
+		If[	insideDiracTrace && res=!=0,
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
+			res = diracTraceSimplify[res] /. DOT -> holdDOT /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/.
+			diracTraceSimplify ->DOT /. holdDOT->DOT;
+			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose]
+		];
 
 		FCPrint[1, "DiracTrick: diracTrickEval: Leaving.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Leaving with ", res, FCDoControl->diTrVerbose];
@@ -284,11 +296,90 @@ there, since in non-naive schemes all the projects must be written out
 explicitly in terms of g^5.
  *)
 
+(* ------------------------------------------------------------------------ *)
+
+diracTraceSimplify[] :=
+	1;
+
+diracTraceSimplify[___,0,___] :=
+	0;
 
 (* Trace cyclicity*)
-diracTraceCyclic[b___,di_,c__] :=
-	diracTraceCyclic[c,b, di]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
+diracTraceSimplify[b___,di_,c__] :=
+	diracTraceSimplify[c,b, di]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
 	FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+
+diracTraceSimplify[DiracGamma[(a:5|6|7)],b___,DiracGamma[(a:5|6|7)]] :=
+	diracTraceSimplify[b];
+
+diracTraceSimplify[DiracGamma[6],___,DiracGamma[7]] :=
+	0;
+
+diracTraceSimplify[DiracGamma[7],___,DiracGamma[6]] :=
+	0;
+
+diracTraceSimplify[DiracGamma[5],b___,DiracGamma[6]] :=
+	diracTraceSimplify[b,DiracGamma[6]];
+
+diracTraceSimplify[DiracGamma[6],b___,DiracGamma[5]] :=
+	diracTraceSimplify[b,DiracGamma[6]];
+
+diracTraceSimplify[DiracGamma[5],b___,DiracGamma[7]] :=
+	-diracTraceSimplify[b,DiracGamma[7]];
+
+diracTraceSimplify[DiracGamma[7],b___,DiracGamma[5]] :=
+	-diracTraceSimplify[b,DiracGamma[7]];
+
+diracTraceSimplify[ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,___],___]..] :=
+	0/; OddQ[Length[{ch}]];
+
+diracTraceSimplify[ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,___],___].., DiracGamma[5|6|7]] :=
+	0/; OddQ[Length[{ch}]];
+
+diracTraceSimplify[ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,___],___].., DiracGamma[5]] :=
+	0/; Length[{ch}] < 4;
+
+diracTraceSimplify[DiracGamma[_[_,___],___], DiracGamma[_[_,___],___], DiracGamma[5]] :=
+	0;
+
+diracTraceSimplify[a:DiracGamma[_[_,___],___], b:DiracGamma[_[_,___],___], DiracGamma[6|7]] :=
+	diracTraceSimplify[a,b]/2;
+
+diracTraceSimplify[DiracGamma[5]]:=
+	0;
+
+(* ------------------------------------------------------------------------ *)
+
+commonGamma5Properties[]:=
+	1;
+
+commonGamma5Properties[___,0,___]:=
+	0;
+
+commonGamma5Properties[b___,DiracGamma[5],DiracGamma[5],c___] :=
+	commonGamma5Properties[ b,c ];
+commonGamma5Properties[b___,DiracGamma[5],DiracGamma[6],c___] :=
+	commonGamma5Properties[b,DiracGamma[6],c];
+commonGamma5Properties[b___,DiracGamma[5],DiracGamma[7],c___] :=
+	-commonGamma5Properties[b,DiracGamma[7],c];
+commonGamma5Properties[b___,DiracGamma[6], DiracGamma[5], c___] :=
+	commonGamma5Properties[b,DiracGamma[6],c];
+commonGamma5Properties[b___,DiracGamma[7],DiracGamma[5],c___] :=
+	-commonGamma5Properties[b, DiracGamma[7], c];
+
+commonGamma5Properties[___,DiracGamma[6], DiracGamma[7], ___] :=
+	0;
+commonGamma5Properties[___,DiracGamma[7], DiracGamma[6], ___] :=
+	0;
+commonGamma5Properties[b___,DiracGamma[6],DiracGamma[6],c___] :=
+	commonGamma5Properties[b, DiracGamma[6], c];
+commonGamma5Properties[b___,DiracGamma[7],DiracGamma[7],c___] :=
+	commonGamma5Properties[b, DiracGamma[7], c];
+commonGamma5Properties[b___,DiracGamma[6]+DiracGamma[7],c___] :=
+	commonGamma5Properties[b, c];
+
+(* ------------------------------------------------------------------------ *)
+
 
 chiralTrick[b___,DiracGamma[5],DiracGamma[5],c___] :=
 	chiralTrick[ b,c ];

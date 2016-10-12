@@ -282,16 +282,6 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			diractrny = diractrny /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
 			spurHead[x___,DiracGamma[7]] :> 1/2 spurHead[x] - 1/2 spurHead[x,DiracGamma[5]]} /. spurHead[] -> 1;
 
-
-			(* 	Tr[g^5] is zero in every scheme	*)
-			diractrny = diractrny/. spurHead[DiracGamma[5]] -> 0;
-			(* 	Tr[g^i g^j g^5] is zero in every scheme	*)
-			diractrny = diractrny/. spurHead[DiracGamma[_[_,___],___],DiracGamma[_[_,___],___],DiracGamma[5]] -> 0;
-			(* Tr[g^i1 ... g^in g^5] with n odd is zero in any scheme	*)
-			diractrny = diractrny/. spurHead[x : DiracGamma[_[_, ___], ___] .., DiracGamma[5]]/; OddQ[Length[{x}]] -> 0;
-			(* Tr[g^i1 ... g^in] with n odd is zero anyhow *)
-			diractrny = diractrny/. spurHead[x : DiracGamma[_[_, ___], ___] ..]/; OddQ[Length[{x}]] -> 0;
-
 			(* Unknown non-commutative objects inside the trace prevent trace from being computed *)
 
 			diractrny = diractrny/. spurHead[x__]/; !NonCommFreeQ[{x}/.DiracGamma->null1] :> noSpur[x];
