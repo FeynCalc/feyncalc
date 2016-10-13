@@ -48,6 +48,7 @@ are renamed, using $MU[i].";
 
 
 Begin["`Package`"]
+FCFastContract;
 End[]
 
 
@@ -61,6 +62,8 @@ fci[x_] :=
 		x
 	];
 
+FCFastContract[x_,OptionsPattern[]]:=
+	x /. Pair -> PairContract /. PairContract -> Pair;
 
 
 Contract3[x_Plus, opts:OptionsPattern[]] :=

@@ -44,9 +44,6 @@ Options[DiracTrick] = {
 	InsideDiracTrace -> False
 };
 
-coneins[x_] :=
-	MemSet[coneins[x],x /. Pair -> PairContract /. PairContract -> Pair];
-
 (* TODO: Bad syntax that one should get rid off*)
 DiracTrick[] = 1;
 
@@ -328,7 +325,7 @@ commonIndex4Dim[b___ , DiracGamma[c_LorentzIndex],
 			DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_]],
 			DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_]],
 			DiracGamma[c_LorentzIndex], d___] :=
-	4 coneins[Pair[x1[y1],x2[y2]] commonIndex4Dim[b, d]];
+	4 FCUseCache[FCFastContract,{Pair[x1[y1],x2[y2]] commonIndex4Dim[b, d]},{}];
 
 (*	g^mu g^nu g^rho g^sigma g_mu	*)
 commonIndex4Dim[b___ , DiracGamma[c_LorentzIndex],
@@ -367,15 +364,15 @@ commonIndex4Dim[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ] :=
 (*	Slash(p) g^nu Slash(p)	*)
 commonIndex4Dim[b___ , DiracGamma[c_Momentum], DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_]],
 		DiracGamma[c_Momentum], d___] :=
-	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] commonIndex4Dim[b,DiracGamma[x[y]], d] + 2 coneins[Pair[c,x[y]] commonIndex4Dim[b, DiracGamma[c], d]];
+	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] commonIndex4Dim[b,DiracGamma[x[y]], d] + 2 FCUseCache[FCFastContract,{Pair[c,x[y]] commonIndex4Dim[b, DiracGamma[c], d]},{}];
 
 (* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely 4-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
 commonIndex4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
 			DiracGamma[c_Momentum],f___ ] :=
 	Block[ {iVar, len = Length[{ch}]},
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] commonIndex4Dim[b,ch,f]
-		+ 2 Sum[(-1)^(iVar+1) coneins[ Pair[c,{ch}[[iVar,1]]] commonIndex4Dim@@Join[{b},
-			Drop[{ch},{iVar, iVar}],{DiracGamma[c],f}]],{iVar, 1,len}]
+		+ 2 Sum[(-1)^(iVar+1)FCUseCache[FCFastContract,{Pair[c,{ch}[[iVar,1]]] commonIndex4Dim@@Join[{b},
+			Drop[{ch},{iVar, iVar}],{DiracGamma[c],f}]},{}],{iVar, 1,len}]
 	]/; (Length[{ch}]>0);
 
 (* ------------------------------------------------------------------------ *)
@@ -400,7 +397,7 @@ commonIndexDDim[b___ , DiracGamma[c_LorentzIndex, dim_ ],
 			DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim_], dim_],
 			DiracGamma[c_LorentzIndex, dim_], d___] :=
 	(dim - 4) commonIndexDDim[b,DiracGamma[x1[y1, dim], dim], DiracGamma[x2[y2, dim], dim], d] +
-	4 coneins[Pair[x1[y1,dim],x2[y2,dim]] commonIndexDDim[b, d]];
+	4 FCUseCache[FCFastContract,{Pair[x1[y1,dim],x2[y2,dim]] commonIndexDDim[b, d]},{}];
 
 (*	g^mu g^nu g^rho g^sigma g_mu *)
 commonIndexDDim[b___ , DiracGamma[c_LorentzIndex, dim_],
@@ -430,8 +427,8 @@ commonIndexDDim[ b___,DiracGamma[c_LorentzIndex,dim_],
 	ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_],dim_]..,
 	DiracGamma[c_LorentzIndex,dim_],f___ ] :=
 	Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
-		(((-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
-			{ch}[[jVar,1]] ]*dsTemp@@Join[{b}, Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}])//coneins)/.
+		FCUseCache[FCFastContract,{(-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
+			{ch}[[jVar,1]] ]*dsTemp@@Join[{b}, Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}]},{}]/.
 			dsTemp->commonIndexDDim/. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
 	] /; (Length[{ch}]>4);
 
@@ -443,7 +440,8 @@ commonIndexDDim[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum, dim_],
 commonIndexDDim[b___ , DiracGamma[c_Momentum, dim_],
 		DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim_] ,dim_],
 		DiracGamma[c_Momentum, dim_], d___] :=
-	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] commonIndexDDim[b,DiracGamma[x[y, dim], dim], d] + 2 coneins[Pair[c,x[y,dim]] commonIndexDDim[b, DiracGamma[c, dim], d]];
+	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] commonIndexDDim[b,DiracGamma[x[y, dim], dim], d] +
+	2 FCUseCache[FCFastContract,{Pair[c,x[y,dim]] commonIndexDDim[b, DiracGamma[c, dim], d]},{}];
 
 
 (* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely D-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
@@ -451,8 +449,8 @@ commonIndexDDim[b___, DiracGamma[c_Momentum, dim_], ch:DiracGamma[(LorentzIndex 
 			DiracGamma[c_Momentum, dim_],f___] :=
 	Block[ {iVar, len = Length[{ch}]},
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] commonIndexDDim[b,ch,f]
-		+ 2 Sum[(-1)^(iVar+1) coneins[Pair[c,{ch}[[iVar,1]]] commonIndexDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[c,dim],f}]],{iVar, 1,len}]
-	]/; (Length[{ch}]>0);
+		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{Pair[c,{ch}[[iVar,1]]] commonIndexDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[c,dim],f}]},{}],
+			{iVar, 1,len}]]/; (Length[{ch}]>0);
 
 
 (* ------------------------------------------------------------------------ *)
@@ -477,9 +475,9 @@ dsBM[x___] :=
 ds[] = dr[] = 1;
 
 dr[a___,y_ w_,b___] :=
-	coneins[y ds[a,w,b]]/;(NonCommFreeQ[y]&&FreeQ[y,dr]);
+	FCUseCache[FCFastContract,{y ds[a,w,b]},{}]/;(NonCommFreeQ[y]&&FreeQ[y,dr]);
 dr[a___,y_ ,b___] :=
-	coneins[y ds[a,b] ] /;(NonCommFreeQ[y]&&FreeQ[y,dr]);
+	FCUseCache[FCFastContract,{y ds[a,b]},{}] /;(NonCommFreeQ[y]&&FreeQ[y,dr]);
 
 (*These relations between g^5 and the projectors hold in all dimensions and all schemes*)
 dr[b___,DiracGamma[5],DiracGamma[5],c___] :=
@@ -1095,11 +1093,11 @@ drCO[ b___,DiracGamma[LorentzIndex[c_,dim_],dim_],
 	dim_],dim_]..,
 	DiracGamma[LorentzIndex[c_,dim_],dim_],f___ ] :=
 	Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
-		(((-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len *
+		FCUseCache[FCFastContract,{(-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len *
 		Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
 			{ch}[[jVar,1]] ]*dsTemp@@Join[{b},
 			Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}
-		])//coneins)/.dsTemp->ds/. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
+		]},{}]/.dsTemp->ds/. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
 	] /;(Length[{ch}]>4) && MatchQ[dim, _Symbol | _Symbol-4 ];
 
 
@@ -1113,9 +1111,9 @@ drCO[b___, DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],
 	] :=
 	Block[ {iVar, len = Length[{ch}]},
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[Momentum[c,dim],Momentum[c,dim]]},{}] ds[b,ch,f]
-		+ 2 Sum[(-1)^(iVar+1) coneins[ Pair[Momentum[c, dim],{ch}[[iVar,1]] ]
+		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{ Pair[Momentum[c, dim],{ch}[[iVar,1]] ]
 				* ds@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[Momentum[c, dim],dim],f}]
-										],{iVar, 1,len}]
+										},{}],{iVar, 1,len}]
 	]/;
 				(Length[{ch}]>0) && MatchQ[dim, _Symbol | _Symbol-4 | 4 ];
 
