@@ -38,6 +38,7 @@ Options[FCDiracIsolate] = {
 	Expanding -> True,
 	FCI -> False,
 	Factoring -> Factor,
+	Lorentz -> False,
 	Head -> FCGV["DiracChain"],
 	Split -> True,
 	Isolate -> False,
@@ -48,8 +49,14 @@ Options[FCDiracIsolate] = {
 	DiracTrace -> True
 };
 
+makeSelectionList[expr_,heads_List]:=
+	MemSet[makeSelectionList[expr,heads],
+		Join[heads,Intersection[Cases[SelectFree[expr, heads],l_LorentzIndex:>l[[1]],Infinity],
+			Cases[SelectNotFree[expr, heads],l_LorentzIndex:>l[[1]],Infinity]]]
+];
+
 FCDiracIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, restHead},
+	Block[ {res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2},
 
 		head = OptionValue[Head];
 
@@ -80,13 +87,16 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			ex = Collect2[ex,DiracHeadsList,Factoring->OptionValue[Factoring]];
 		];
 
-		res = (Map[(restHead[SelectFree[#, DiracHeadsList]]*
-				head[SelectNotFree[#, DiracHeadsList]]) &,
-				ex + null1 + null2] /. {null1 | null2 -> 0} /.
-			head[1] -> 1);
+		If[ OptionValue[Lorentz],
+			res = (Map[(selectionList=makeSelectionList[#,DiracHeadsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
+				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
+			res = (Map[(restHead[SelectFree[#, DiracHeadsList]] head[SelectNotFree[#, DiracHeadsList]]) &,
+				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
+		];
+
 		res = res /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
 
-		If[ Together[(res /. restHead|head -> Identity)-ex] =!= 0,
+		If[ Together[(res /. restHead|head|tmpHead|lorHead|tmpHead2 -> Identity)-ex] =!= 0,
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
 		];

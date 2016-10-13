@@ -87,5 +87,9 @@ GA[i].SpinorUBar[p1, m1].GA[n].SpinorU[p2, m2].SpinorVBar[p3,
 	m3].GA[n].SpinorV[p4, m4].GA[j], Head -> dch] // FCE",
 "dch[GA[i].GA[j]] dch[
 Spinor[Momentum[p1], m1, 1].GA[n].Spinor[Momentum[p2], m2, 1]] dch[
-Spinor[-Momentum[p3], m3, 1].GA[n].Spinor[-Momentum[p4], m4, 1]]"}
+Spinor[-Momentum[p3], m3, 1].GA[n].Spinor[-Momentum[p4], m4, 1]]"},
+{"fcstFCDiracIsolate-ID17", "FCDiracIsolate[
+MT[mu, nu] GA[i, j, k] + GS[p, l] + MT[mu, nu] GA[mu, j, k],
+Lorentz -> True, Head -> dch] // FCE",
+"dch[GS[p].GS[l]] + dch[GA[mu].GA[j].GA[k] MT[mu, nu]] + dch[GA[i].GA[j].GA[k]] MT[mu, nu]"}
 });
