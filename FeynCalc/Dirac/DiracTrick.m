@@ -228,7 +228,7 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin or BMHV.", FCDoControl->diTrVerbose];
 						Null,
 					(* Mixed and BMHV -> don't move g^5 around, can apply drS *)
-					MatchQ[dim, {4, _Symbol} || {4, _Symbol-4} || {_Symbol-4, _Symbol} || {4, _Symbol-4, _Symbol}] && $BreitMasion && !$Larin,
+					MatchQ[dim, {_Symbol - 4} | {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
 						res = res /.holdDOT -> drS /. drS -> holdDOT;
 						FCPrint[3, "DiracTrick: diracTrickEval: After drS ", res, FCDoControl->diTrVerbose],
@@ -242,6 +242,30 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 			FCPrint[3, "DiracTrick: diracTrickEval: After chiralTrick ", res, FCDoControl->diTrVerbose];
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		];
+
+		(* Here we do all the simplifications not realted to g^5	*)
+		Which[
+			(* Purely 4-dimensional *)
+			dim==={4},
+				FCPrint[1, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
+				res = res /. holdDOT -> commonIndex4Dim /. commonIndex4Dim -> holdDOT,
+			(* Purely D-dimensional *)
+			MatchQ[dim,{_Symbol}],
+				FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim.", FCDoControl->diTrVerbose];
+				res = res /. holdDOT -> commonIndexDDim /. commonIndexDDim -> holdDOT,
+			(* Purely D-4-dimensional and BMHV *)
+			MatchQ[dim,{_Symbol - 4}] && $BreitMaison && !$Larin,
+				FCPrint[1, "DiracTrick: diracTrickEval: Purely D-4-dim.", FCDoControl->diTrVerbose];
+				res = res /. holdDOT -> commonIndexDDim /. commonIndexDDim -> holdDOT,
+			(* Mixed and BMHV *)
+			MatchQ[dim, {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
+				FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
+			(* Anything else is most likely an error *)
+			True,
+				Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+				Abort[]
+			];
+
 
 		res = res /.holdDOT -> ds;
 		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
@@ -269,6 +293,152 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 		FCPrint[3, "DiracTrick: diracTrickEval: Leaving with ", res, FCDoControl->diTrVerbose];
 		res
 	];
+
+
+(* ------------------------------------------------------------------------ *)
+
+
+commonIndex4Dim[]:=
+	1;
+
+(*	g^mu g^mu	*)
+commonIndex4Dim[b___,DiracGamma[l_LorentzIndex], DiracGamma[l_LorentzIndex], d___] :=
+	4 commonIndex4Dim[ b,d ];
+
+(*	g^mu g^nu g_mu	*)
+commonIndex4Dim[b___ , DiracGamma[c_LorentzIndex],
+			DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_]],
+			DiracGamma[c_LorentzIndex], d___] :=
+	- 2 commonIndex4Dim[b,DiracGamma[x[y]], d];
+
+(*	g^mu g^nu g^rho g_mu *)
+commonIndex4Dim[b___ , DiracGamma[c_LorentzIndex],
+			DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_]],
+			DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_]],
+			DiracGamma[c_LorentzIndex], d___] :=
+	4 commonIndex4Dim[b,Pair[x1[y1],x2[y2]], d];
+
+(*	g^mu g^nu g^rho g^sigma g_mu *)
+commonIndex4Dim[b___ , DiracGamma[c_LorentzIndex],
+			(dg1: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]),
+			(dg2: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]),
+			(dg3: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]), DiracGamma[c_LorentzIndex], d___] :=
+	- 2 commonIndex4Dim[b, dg3, dg2, dg1, d];
+
+commonIndex4Dim[b___ , DiracGamma[c_LorentzIndex, dim_],
+			(dg1: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]),
+			(dg2: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]),
+			(dg3: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]),
+			(dg4: DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]),
+			DiracGamma[c_LorentzIndex, dim_], d___] :=
+	2 commonIndex4Dim[b, dg3, dg2, dg1, dg4, d] + 2 commonIndex4Dim[b, dg4, dg1, dg2, dg3, d];
+
+(* g^mu g^nu_1 ... g^nu_i g_mu  -> -2 g^nu_i ... g^nu_1, where i is odd *)
+commonIndex4Dim[ b___,  DiracGamma[c_LorentzIndex],
+		ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]].., DiracGamma[c_LorentzIndex], f___ ] :=
+	-2 commonIndex4Dim @@ Join[ {b},Reverse[{ch}],{f} ] /; OddQ[Length[{ch}]] && Length[{ch}]>3;
+
+(* g^mu g^nu_1 ... g^nu_i g_mu  -> 2 g^nu_i-1 ... g^nu_1 g^nu_i + 2 g^nu_i g^nu_1 ... g^nu_i-1, where i is even *)
+commonIndex4Dim[ b___,  DiracGamma[c_LorentzIndex],
+		ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+		end : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]],
+		DiracGamma[c_LorentzIndex], f___ ] :=
+	(2 commonIndex4Dim @@ Join[ {b},Reverse[{ch}],{end}, {f}] + 2 commonIndex4Dim[ b,end,ch,f ])/; OddQ[Length[{ch}]]  && Length[{ch}]>4;
+
+(* Slash(p).Slash(p) *)
+commonIndex4Dim[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ] :=
+	scev[c,c] commonIndex4Dim[b,d];
+
+(* Slash(p) g^nu Slash(p) *)
+commonIndex4Dim[b___ , DiracGamma[c_Momentum], DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_]],
+		DiracGamma[c_Momentum], d___] :=
+	- scev[c,c] commonIndex4Dim[b,DiracGamma[x[y]], d] + 2 commonIndex4Dim[b, Pair[c,x[y]], DiracGamma[c], d];
+
+(* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely 4-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
+commonIndex4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+			DiracGamma[c_Momentum],f___ ] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len scev[c,c] commonIndex4Dim[b,ch,f]
+		+ 2 Sum[(-1)^(iVar+1) coneins[ Pair[c,{ch}[[iVar,1]]] commonIndex4Dim@@Join[{b},
+			Drop[{ch},{iVar, iVar}],{DiracGamma[c],f}]],{iVar, 1,len}]
+	]/; (Length[{ch}]>0);
+
+(* ------------------------------------------------------------------------ *)
+
+
+commonIndexDDim[]:=
+	1;
+
+(*	g^mu g^mu	*)
+commonIndexDDim[b___,DiracGamma[l_LorentzIndex, dim_], DiracGamma[l_LorentzIndex, dim_], d___] :=
+	dim commonIndexDDim[ b,d ];
+
+(*	g^mu g^nu g_mu	*)
+commonIndexDDim[b___ , DiracGamma[c_LorentzIndex, dim_],
+			DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim_], dim_],
+			DiracGamma[c_LorentzIndex, dim_], d___] :=
+	(2 - dim) commonIndexDDim[b,DiracGamma[x[y, dim], dim], d];
+
+(*	g^mu g^nu g^rho g_mu *)
+commonIndexDDim[b___ , DiracGamma[c_LorentzIndex, dim_ ],
+			DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_, dim_], dim_],
+			DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim_], dim_],
+			DiracGamma[c_LorentzIndex, dim_], d___] :=
+	(dim - 4) commonIndexDDim[b,DiracGamma[x1[y1, dim], dim], DiracGamma[x2[y2, dim], dim], d] +
+	4 commonIndexDDim[b,Pair[x1[y1,dim],x2[y2,dim]], d];
+
+(*	g^mu g^nu g^rho g^sigma g_mu *)
+commonIndexDDim[b___ , DiracGamma[c_LorentzIndex, dim_],
+			DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_, dim_], dim_],
+			DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim_], dim_],
+			DiracGamma[(x3: LorentzIndex | ExplicitLorentzIndex | Momentum)[y3_, dim_], dim_],
+			DiracGamma[c_LorentzIndex, dim_], d___] :=
+	-(dim - 4) commonIndexDDim[b, DiracGamma[x1[y1, dim], dim], DiracGamma[x2[y2, dim], dim], DiracGamma[x3[y3, dim], dim], d] -
+	2 commonIndexDDim[b, DiracGamma[x3[y3, dim], dim], DiracGamma[x2[y2, dim], dim], DiracGamma[x1[y1, dim], dim], d];
+
+commonIndexDDim[b___ , DiracGamma[c_LorentzIndex, dim_],
+			DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_, dim_], dim_],
+			DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim_], dim_],
+			DiracGamma[(x3: LorentzIndex | ExplicitLorentzIndex | Momentum)[y3_, dim_], dim_],
+			DiracGamma[(x4: LorentzIndex | ExplicitLorentzIndex | Momentum)[y4_, dim_], dim_],
+			DiracGamma[c_LorentzIndex, dim_], d___] :=
+	(dim - 4) commonIndexDDim[b, DiracGamma[x1[y1, dim], dim], DiracGamma[x2[y2, dim], dim], DiracGamma[x3[y3, dim], dim],
+					DiracGamma[x4[y4, dim], dim], d] +
+					2 commonIndexDDim[b, DiracGamma[x3[y3, dim], dim], DiracGamma[x2[y2, dim], dim], DiracGamma[x1[y1, dim], dim],
+							DiracGamma[x4[y4, dim], dim], d] +
+				2 commonIndexDDim[b, DiracGamma[x4[y4, dim], dim], DiracGamma[x1[y1, dim], dim], DiracGamma[x2[y2, dim], dim],
+							DiracGamma[x3[y3, dim], dim], d];
+
+(*	Simplification for g^mu g^nu_1 ... g^nu_n g_mu where all	matrices are in D-dims. The formula is given
+	in Eq 2.9 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)	*)
+commonIndexDDim[ b___,DiracGamma[c_LorentzIndex,dim_],
+	ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_],dim_]..,
+	DiracGamma[c_LorentzIndex,dim_],f___ ] :=
+	Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
+		(((-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
+			{ch}[[jVar,1]] ]*dsTemp@@Join[{b}, Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}])//coneins)/.
+			dsTemp->commonIndexDDim/.Pair->scev
+	] /; (Length[{ch}]>4);
+
+
+(* Slash(p) g^nu Slash(p) *)
+commonIndexDDim[b___ , DiracGamma[c_Momentum, dim_],
+		DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim_] ,dim_],
+		DiracGamma[c_Momentum, dim_], d___] :=
+	- scev[c,c] commonIndexDDim[b,DiracGamma[x[y, dim], dim], d] + 2 commonIndexDDim[b, Pair[c,x[y,dim]], DiracGamma[c, dim], d];
+
+
+(* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely D-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
+commonIndexDDim[b___, DiracGamma[c_Momentum, dim_], ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _], dim_]..,
+			DiracGamma[c_Momentum, dim_],f___] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len scev[c ,c] commonIndexDDim[b,ch,f]
+		+ 2 Sum[(-1)^(iVar+1) coneins[Pair[c,{ch}[[iVar,1]]] commonIndexDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[c,dim],f}]],{iVar, 1,len}]
+	]/; (Length[{ch}]>0);
+
+
+(* ------------------------------------------------------------------------ *)
+
 
 ds[x___] :=
 	If[ $BreitMaison,
@@ -542,119 +712,6 @@ chiralTrickAnticommutingSameDim[b___,DiracGamma[6],(dg:DiracGamma[_[__], ___]) +
 
 chiralTrickAnticommutingSameDim[b___,DiracGamma[7],(dg:DiracGamma[_[__], ___]) +  mass_,	xy:DiracGamma[_[__], ___].. , DiracGamma[7], c___] :=
 	chiralTrickAnticommutingSameDim[b, dg, xy, DiracGamma[7], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-
-(* ------------------------------------------------------------------------ *)
-
-
-chiralTrick[b___,DiracGamma[5],DiracGamma[5],c___] :=
-	chiralTrick[ b,c ];
-chiralTrick[b___,DiracGamma[5],DiracGamma[6],c___] :=
-	chiralTrick[b,DiracGamma[6],c];
-chiralTrick[b___,DiracGamma[5],DiracGamma[7],c___] :=
-	-chiralTrick[b,DiracGamma[7],c];
-chiralTrick[b___,DiracGamma[6], DiracGamma[5], c___] :=
-	chiralTrick[b,DiracGamma[6],c];
-chiralTrick[b___,DiracGamma[7],DiracGamma[5],c___] :=
-	-chiralTrick[b, DiracGamma[7], c];
-
-(*These are the usual projector properties. They also hold in all schemes*)
-chiralTrick[___,DiracGamma[6], DiracGamma[7], ___] :=
-	0;
-chiralTrick[___,DiracGamma[7], DiracGamma[6], ___] :=
-	0;
-chiralTrick[b___,DiracGamma[6],DiracGamma[6],c___] :=
-	chiralTrick[b, DiracGamma[6], c];
-chiralTrick[b___,DiracGamma[7],DiracGamma[7],c___] :=
-	chiralTrick[b, DiracGamma[7], c];
-chiralTrick[b___,DiracGamma[6]+DiracGamma[7],c___] :=
-	chiralTrick[b, c];
-
-chiralTrick[b___,DiracGamma[5],c:DiracGamma[_[_,_:4],_:4].. ,d___] :=
-	(-1)^Length[{c}] chiralTrick[ b,c,DiracGamma[5],d]/; (!$BreitMaison || FCGetDimensions[{c}]==={4}) && Length[FCGetDimensions[{c}]]===1;
-
-chiralTrick[b___, DiracGamma[5],(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
-	chiralTrick[b,(- dd1 DiracGamma[x[c], dim] + dd2), DiracGamma[5],d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{dd1,dd2}];
-
-
-chiralTrick[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
-	chiralTrick[b, (cc1 dd1 DiracGamma[6] + cc2 dd2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
-
-chiralTrick[b___, (cc1_ + cc2_. DiracGamma[6]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
-	chiralTrick[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[7]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
-
-chiralTrick[b___, (cc1_ + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
-	chiralTrick[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
-
-chiralTrick[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
-	chiralTrick[b, DiracGamma[x[c], dim], (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2}];
-
-chiralTrick[b___, (cc1_ + cc2_. DiracGamma[6]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
-	chiralTrick[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 + cc2 DiracGamma[7]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2,dd1,dd2}];
-
-chiralTrick[b___, (cc1_ + cc2_. DiracGamma[7]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
-	chiralTrick[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2,dd1,dd2}];
-
-chiralTrick[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
-	chiralTrick[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; (!$BreitMaison || dim === 4) && NonCommFreeQ[{cc1,cc2,dd1,dd2}];
-
-chiralTrick[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	(n mass chiralTrick[b, xy, DiracGamma[6], c])/; NumberQ[n] &&
-		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	(n mass chiralTrick[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-		OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	(n mass chiralTrick[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
-		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	(n mass chiralTrick[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-		EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[6],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
-	DiracGamma[6], c___] :=
-	(n mass chiralTrick[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
-
-chiralTrick[b___,DiracGamma[7],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
-	DiracGamma[7], c___] :=
-	(n mass chiralTrick[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
-
-chiralTrick[b___,DiracGamma[6],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_ ),
-	DiracGamma[7], c___] :=
-	chiralTrick[b, DiracGamma[v[w], dim], DiracGamma[7], c] /; NumberQ[n] &&
-		NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
-
-chiralTrick[b___,DiracGamma[7],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_),
-	DiracGamma[6], c___] :=
-	chiralTrick[b, DiracGamma[v[w], dim], DiracGamma[6], c] /; NumberQ[n] &&
-		NonCommFreeQ[mass] && (!$BreitMaison || dim===4);
-
-chiralTrick[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
-			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
-			EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
-	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
-			OddQ[Length[{xy}]] && NonCommFreeQ[mass]  && (!$BreitMaison || (dim1===4 && dim2===4));
-
-chiralTrick[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
-	xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
-	chiralTrick[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
-			OddQ[Length[{xy}]] && NonCommFreeQ[mass] && (!$BreitMaison || (dim1===4 && dim2===4));
 
 (* Simplification for g^mu ... g_mu where the first and the last
 	matrix are in different dimensions                                         *)

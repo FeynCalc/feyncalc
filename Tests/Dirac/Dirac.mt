@@ -23,6 +23,7 @@ DeclareNonCommutative[FCNCA,FCNCB,FCNCC];
 
 $BreitMaison = False;
 $Larin = False;
+
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstAnti5*"])];
 $BreitMaison = False;
