@@ -634,7 +634,7 @@ spur5BMHVWest[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]
 spur5BMHVNoWest[x__DiracGamma, DiracGamma[5]]:=
 	Block[{li1,li2,li3,li4, res},
 		{li1,li2,li3,li4} = LorentzIndex[#,dim]& /@ Unique[{"bmLia","bmLib","bmLic","bmLid"}];
-		res =  I/24 $LeviCivitaSign Eps[li1, li2, li3, li4] spurNo5[x,DiracGamma[li1],DiracGamma[li2],	DiracGamma[li3], DiracGamma[li4]];
+		res =  I/24 $LeviCivitaSign Expand2[Eps[li1, li2, li3, li4] spurNo5[x,DiracGamma[li1],DiracGamma[li2],	DiracGamma[li3], DiracGamma[li4]],LorentzIndex]//FCFastContract;
 		res
 	]/; EvenQ[Length[{x}]];
 
