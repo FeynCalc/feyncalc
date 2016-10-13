@@ -19,6 +19,11 @@ DiracTrick::usage =
 "DiracTrick[exp] contracts gamma matrices with each other and \
 performs several simplifications (no expansion, use DiracSimplify for this).";
 
+DiracTrick::failmsg =
+"Error! DiracTrick has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -120,7 +125,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		];
 
 		(* 	First of all we need to extract all the Dirac structures in the input. *)
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine]];
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],Lorentz->True];
 
 		{freePart,dsPart} = FCSplit[ex,{dsHead}];
 		FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -145,14 +150,27 @@ DiracTrick[expr_,OptionsPattern[]] :=
 	];
 
 
-diracTrickEval[ex_]:=
-	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent},
+diracTrickEval[ex:DiracGamma[__]]:=
+	ex/; !insideDiracTrace
+
+diracTrickEval[DiracGamma[_[_,___],___]]:=
+	0/; insideDiracTrace;
+
+diracTrickEval[DiracGamma[5]]:=
+	0/; insideDiracTrace;
+
+diracTrickEval[DiracGamma[6|7]]:=
+	1/2/; insideDiracTrace;
+
+diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
+	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent,null1,null2},
 
 		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
-		dim = FCGetDimensions[ex];
+
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
+		dim = FCGetDimensions[ex/.DiracGamma[5|6|7]:>diga];
 
 		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
@@ -164,31 +182,69 @@ diracTrickEval[ex_]:=
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		];
 
+		If[ res===0,
+			Return[0]
+		];
+
 		If[	insideDiracTrace,
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify ", FCDoControl->diTrVerbose];
 			res = diracTraceSimplify[res] /. DOT -> holdDOT /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/.
-			diracTraceSimplify ->holdDOT;
+			diracTraceSimplify -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose],
 			res = res /. DOT -> holdDOT;
 		];
 
+		If[	!FreeQ[res,Pair],
+			res = Expand2[res,Pair]/. Pair->PairContract /. PairContract->Pair;
+		];
+
+		If[ res===0,
+			Return[0]
+		];
+
+		(* TODO Checks here*)
+		dim = FCGetDimensions[res/.DiracGamma[5|6|7]:>diga];
+		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
+
+		FCPrint[3, "DiracTrick: diracTrickEval: Dimensions:", dim, FCDoControl->diTrVerbose];
+
 		If[	gamma5Present,
+
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracTrick: diracTrickEval: Applying chiralTrick ", res, FCDoControl->diTrVerbose];
-			res = res /. holdDOT -> chiralTrick /. chiralTrick -> holdDOT;
+			FCPrint[1, "DiracTrick: diracTrickEval: Applying chiralTrick ", FCDoControl->diTrVerbose];
+			Which[
+					(* Purely 4-dimensional -> use anticommuting g^5 *)
+					dim==={4},
+						FCPrint[1, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
+						res = res /. holdDOT -> chiralTrickAnticommutingSameDim /. chiralTrickAnticommutingSameDim -> holdDOT,
+					(* Purely D-dimensional and NDR -> use anticommuting g^5 *)
+					MatchQ[dim,{_Symbol}] && !$BreitMaison && !$Larin,
+						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim, NDR.", FCDoControl->diTrVerbose];
+						res = res /. holdDOT -> chiralTrickAnticommutingSameDim /. chiralTrickAnticommutingSameDim -> holdDOT,
+					(* Purely D-dimensional and Larin or BMHV -> don't move anything around *)
+					MatchQ[dim,{_Symbol}] && (!$BreitMaison && $Larin) || ($BreitMaison && !$Larin),
+						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin or BMHV.", FCDoControl->diTrVerbose];
+						Null,
+					(* Mixed and BMHV -> don't move g^5 around, can apply drS *)
+					MatchQ[dim, {4, _Symbol} || {4, _Symbol-4} || {_Symbol-4, _Symbol} || {4, _Symbol-4, _Symbol}] && $BreitMasion && !$Larin,
+						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
+						res = res /.holdDOT -> drS /. drS -> holdDOT;
+						FCPrint[3, "DiracTrick: diracTrickEval: After drS ", res, FCDoControl->diTrVerbose],
+					(* Anything else is most likely an error *)
+					True,
+						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+						Abort[]
+			];
+
 			FCPrint[1,"DiracTrace: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
-			FCPrint[3, "DiracTrick: After chiralTrick ", res, FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: After chiralTrick ", res, FCDoControl->diTrVerbose];
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		];
 
-
-		res = res /.holdDOT -> drS;
-		FCPrint[3, "DiracTrick: diracTrickEval: After drS ", res, FCDoControl->diTrVerbose];
-		res = res /.drS -> ds;
+		res = res /.holdDOT -> ds;
 		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
-		Global`XXX = res;
 		res = res  //. dr -> drCOs;
 		FCPrint[3, "DiracTrick: diracTrickEval: After drCOs ", res, FCDoControl->diTrVerbose];
 		res = res /.  drCO -> ds;
@@ -196,12 +252,15 @@ diracTrickEval[ex_]:=
 		res = res /.  dr -> ds ;
 		FCPrint[3, "DiracTrick: diracTrickEval: After ds ", res, FCDoControl->diTrVerbose];
 		res = res /.  dr -> DOT ;
+		FCPrint[3, "DiracTrick: diracTrickEval: After dr ", res, FCDoControl->diTrVerbose];
+
 
 		If[	insideDiracTrace && res=!=0,
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
-			res = diracTraceSimplify[res] /. DOT -> holdDOT /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/.
-			diracTraceSimplify ->DOT /. holdDOT->DOT;
+			res = ReplaceAll[diracTraceSimplify/@((res/. DOT -> holdDOT)+null1+null2),{diracTraceSimplify[null1|null2]->0,
+				diracTraceSimplify[c_ d_holdDOT ]/; NonCommFreeQ[c]:> c diracTraceSimplify[d]}];
+			res = res /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/. diracTraceSimplify ->DOT /. holdDOT->DOT;
 			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose]
 		];
@@ -387,6 +446,103 @@ commonGamma5Properties[b___,DiracGamma[7],DiracGamma[7],c___] :=
 	commonGamma5Properties[b, DiracGamma[7], c];
 commonGamma5Properties[b___,DiracGamma[6]+DiracGamma[7],c___] :=
 	commonGamma5Properties[b, c];
+
+(* ------------------------------------------------------------------------ *)
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[5],DiracGamma[5],c___] :=
+	chiralTrickAnticommutingSameDim[ b,c ];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[5],DiracGamma[6],c___] :=
+	chiralTrickAnticommutingSameDim[b,DiracGamma[6],c];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[5],DiracGamma[7],c___] :=
+	-chiralTrickAnticommutingSameDim[b,DiracGamma[7],c];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6], DiracGamma[5], c___] :=
+	chiralTrickAnticommutingSameDim[b,DiracGamma[6],c];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],DiracGamma[5],c___] :=
+	-chiralTrickAnticommutingSameDim[b, DiracGamma[7], c];
+
+chiralTrickAnticommutingSameDim[___,DiracGamma[6], DiracGamma[7], ___] :=
+	0;
+
+chiralTrickAnticommutingSameDim[___,DiracGamma[7], DiracGamma[6], ___] :=
+	0;
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],DiracGamma[6],c___] :=
+	chiralTrickAnticommutingSameDim[b, DiracGamma[6], c];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],DiracGamma[7],c___] :=
+	chiralTrickAnticommutingSameDim[b, DiracGamma[7], c];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6]+DiracGamma[7],c___] :=
+	chiralTrickAnticommutingSameDim[b, c];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[5],c:DiracGamma[_[__],_:4].. ,d___] :=
+	(-1)^Length[{c}] chiralTrickAnticommutingSameDim[ b,c,DiracGamma[5],d];
+
+chiralTrickAnticommutingSameDim[b___, DiracGamma[5],(dd1_. (dg:DiracGamma[_[__],_:4]) + dd2_),d___ ] :=
+	chiralTrickAnticommutingSameDim[b,(- dd1 dg + dd2), DiracGamma[5],d ]/; NonCommFreeQ[{dd1,dd2}];
+
+
+chiralTrickAnticommutingSameDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
+	chiralTrickAnticommutingSameDim[b, (cc1 dd1 DiracGamma[6] + cc2 dd2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrickAnticommutingSameDim[b___, (cc1_ + cc2_. DiracGamma[6]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	chiralTrickAnticommutingSameDim[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2}];
+
+chiralTrickAnticommutingSameDim[b___, (cc1_ + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	chiralTrickAnticommutingSameDim[b, DiracGamma[x[c], dim], (cc1 + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2}];
+
+chiralTrickAnticommutingSameDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+	chiralTrickAnticommutingSameDim[b, DiracGamma[x[c], dim], (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2}];
+
+chiralTrickAnticommutingSameDim[b___, (cc1_ + cc2_. DiracGamma[6]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrickAnticommutingSameDim[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 + cc2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrickAnticommutingSameDim[b___, (cc1_ + cc2_. DiracGamma[7]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrickAnticommutingSameDim[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrickAnticommutingSameDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[x_[c__],dim_ : 4] + dd2_),d___ ] :=
+	chiralTrickAnticommutingSameDim[b,(dd1 DiracGamma[x[c], dim] + dd2), (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+
+chiralTrickAnticommutingSameDim[b___, DiracGamma[7],DiracGamma[_[__], ___] + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[6], c___] :=
+	mass chiralTrickAnticommutingSameDim[b, xy, DiracGamma[6], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],DiracGamma[_[__], ___] + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[7], c___] :=
+	mass chiralTrickAnticommutingSameDim[b, xy, DiracGamma[7], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],DiracGamma[_[__], ___] + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[6], c___] :=
+	mass chiralTrickAnticommutingSameDim[b, xy, DiracGamma[6], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],DiracGamma[_[__], ___] + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[7], c___] :=
+	mass chiralTrickAnticommutingSameDim[b, xy, DiracGamma[7], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],DiracGamma[_[__], ___] + mass_, DiracGamma[6], c___] :=
+	mass chiralTrickAnticommutingSameDim[b, DiracGamma[6], c]/; NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],DiracGamma[_[__], ___] + mass_, DiracGamma[7], c___] :=
+	mass chiralTrickAnticommutingSameDim[b, DiracGamma[7], c]/; NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],(dg:DiracGamma[_[__], ___]) + mass_, DiracGamma[7], c___] :=
+	chiralTrickAnticommutingSameDim[b, dg, DiracGamma[7], c]/; NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],(dg:DiracGamma[_[__], ___]) + mass_, DiracGamma[6], c___] :=
+	chiralTrickAnticommutingSameDim[b, dg, DiracGamma[6], c] /; NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],(dg:DiracGamma[_[__], ___]) + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[7], c___] :=
+	chiralTrickAnticommutingSameDim[b, dg, xy, DiracGamma[7], c] /; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],(dg:DiracGamma[_[__], ___]) + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[6], c___] :=
+	chiralTrickAnticommutingSameDim[b, dg, xy, DiracGamma[6], c] /; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[6],(dg:DiracGamma[_[__], ___]) + mass_, xy:DiracGamma[_[__], ___].. , DiracGamma[6], c___] :=
+	chiralTrickAnticommutingSameDim[b, dg, xy, DiracGamma[6], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+
+chiralTrickAnticommutingSameDim[b___,DiracGamma[7],(dg:DiracGamma[_[__], ___]) +  mass_,	xy:DiracGamma[_[__], ___].. , DiracGamma[7], c___] :=
+	chiralTrickAnticommutingSameDim[b, dg, xy, DiracGamma[7], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+
 
 (* ------------------------------------------------------------------------ *)
 
