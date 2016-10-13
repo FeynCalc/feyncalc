@@ -872,7 +872,7 @@ Tests`Dirac`fcstDiracTrickFiveFreeIndices = {
 
 Tests`Dirac`fcstDiracTrickLarin = {
 {"fcstDiracTrickLarin-ID1","$BreitMaison=False;\n$Larin=True;\nDiracTrick[GAD[a, b, c].GA[5].GAD[b, a, m]] // FCE",
-		"-(2 - D)^2 GAD[c].GAD[m].GA[5]"}
+		"GAD[a].GAD[b].GAD[c].GA[5].GAD[b].GAD[a].GAD[m]"}
 };
 
 Tests`Dirac`fcstDiracTrickInsideDiracTrace =
