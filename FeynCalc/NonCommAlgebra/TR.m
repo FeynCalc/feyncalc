@@ -90,16 +90,6 @@ TR[x_, rul:OptionsPattern[]] :=
 			]
 		];
 
-		If[!FreeQ[tt, SUNIndex|ExplicitSUNIndex],
-			tt = tt /. (*Added 23/1-2003. F.Orellana.
-			If a spursav is left from DiracTrace it means
-			that SU(N) stuff is there in the trace*)
-			spursav :>
-			(SUNTrace[DOT@@{##}]&) /. DiracTrace-> dit /.DOT -> doot;
-			tt = tt /. {doot[a__SUNT, b__] :> (doot[a] doot[b]) /;
-			FreeQ[{b}, SUNIndex|ExplicitSUNIndex]} /. doot -> DOT /. dit -> DiracTrace;
-		];
-
 		FCPrint[1,"TR: Computing the Dirac trace.", FCDoControl->trVerbose];
 		FCPrint[4,"TR: Options for Dirac trace: ", {diracTraceOpts}, FCDoControl->trVerbose];
 		diractr[y__] :=
