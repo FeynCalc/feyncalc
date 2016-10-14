@@ -402,13 +402,23 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			];
 
 			(* Create the substitution rule*)
+			If[ OptionValue[DiracTrace,{opts},Expand],
+				time2=AbsoluteTime[];
+				FCPrint[1,"DiracTrace: diractraceev2: Expanding scalar products", FCDoControl->diTrVerbose];
+				traceListNonChiral=Map[ExpandScalarProduct[#]&,traceListNonChiral];
+				traceListChiral=Map[ExpandScalarProduct[#]&,traceListChiral];
+				gammaFree=ExpandScalarProduct[gammaFree];
+				gammaPart=ExpandScalarProduct[gammaPart];
+				FCPrint[1,"DiracTrace: diractraceev2: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
+			];
+
 			repRule = MapThread[Rule[#1,#2]&,{spurHeadListChiral,traceListChiral}];
 			repRule = Join[repRule,MapThread[Rule[#1,#2]&,{spurHeadListNonChiral,traceListNonChiral}]];
 			FCPrint[3,"DiracTrace: diractraceev2: repRule", traceListChiral, FCDoControl->diTrVerbose];
-
 			(* The trace of any standalone Dirac matrix is zero,
 			g^6 and g^7 are of course special *)
 			diractrny = (gammaFree/. wrapRule) + (gammaPart/.repRule);
+
 			FCPrint[3,"DiracTrace: diractraceev2: diractrny", diractrny, FCDoControl->diTrVerbose];
 
 			If[	!FreeQ2[diractrny /. noSpur[__]:>1,{spurHead,DiracGamma}],
@@ -416,12 +426,12 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 				Abort[]
 			];
 
-			If[ OptionValue[DiracTrace,{opts},Expand],
+			(*If[ OptionValue[DiracTrace,{opts},Expand],
 				time2=AbsoluteTime[];
 				FCPrint[1,"DiracTrace: diractraceev2: Expanding the result w.r.t Pairs", FCDoControl->diTrVerbose];
 				diractrny=Expand2[ExpandScalarProduct[diractrny],Pair];
 				FCPrint[1,"DiracTrace: diractraceev2: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
-			]
+			]*)
 
 		];
 

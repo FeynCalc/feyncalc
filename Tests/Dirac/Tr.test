@@ -74,10 +74,9 @@ Tests`Dirac`fcstTr = {
 	Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
 	Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[
 	Momentum[p2]] /. D -> 4, PairCollect -> True]",
-	"-32*Pair[Momentum[p2], Momentum[p2]]*(4*Pair[Momentum[p1],
-	Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]^2 - 2*Pair[Momentum[p1],
-	Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] -
-	Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
+	"32*Pair[Momentum[p2], Momentum[p2]]*(-4*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1],
+	Momentum[p3]]^2 + 2*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2],
+	Momentum[p3]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
 	Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
 {"fcstTr-ID8",
 	"Contract[DiracTrace[DiracMatrix[a, b, rho,
