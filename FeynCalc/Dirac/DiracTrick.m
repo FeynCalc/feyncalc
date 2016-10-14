@@ -39,10 +39,10 @@ diga::usage="";
 Options[DiracTrick] = {
 	DiracGammaCombine -> False,
 	Expanding -> False,
+	FCDiracIsolate -> True,
 	FCI -> False,
 	FCVerbose -> False,
-	InsideDiracTrace -> False,
-	FCDiracIsolate -> True
+	InsideDiracTrace -> False
 };
 
 (* TODO: Bad syntax that one should get rid off*)
@@ -52,8 +52,8 @@ DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
 	DiracTrick[DOT[y,z],FCI->True];
 
 DiracTrick[expr_,OptionsPattern[]] :=
-	Block[{	res,tmp,ex,null1,null2,holdDOT,freePart,dsPart,diracObjects,
-			diracObjectsEval, repRule},
+	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, dsPart, diracObjects,
+			diracObjectsEval, repRule, time},
 
 		(*	Algorithm of DiracTrick:
 
@@ -113,26 +113,51 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			insideDiracTrace = False
 		];
 
+		If[ FreeQ2[ex,DiracHeadsList],
+			Return[ex]
+		];
+
+
 
 		If[	OptionValue[FCDiracIsolate],
+			(*	This is the standard mode for calling DiracTrick	*)
+
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],Lorentz->True];
+
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
 			FCPrint[3,"DiracTrick: freePart: ",freePart , FCDoControl->diTrVerbose];
+
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
-			diracObjectsEval = diracTrickEval/@(diracObjects/.dsHead->Identity);
+			FCPrint[3,"DiracTrick: diracObjects: ",diracObjects , FCDoControl->diTrVerbose];
+
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: Applying diracTrickEval", FCDoControl->diTrVerbose];
+			diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];
+			FCPrint[1,"DiracTrace: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+
+			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracTrickEval}],
+				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
+				Abort[]
+			];
+
 			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
 			FCPrint[3,"DiracTrick: repRule: ",repRule , FCDoControl->diTrVerbose];
 			res = freePart + ( dsPart/.repRule),
 
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
-			res = diracTrickEval[ex]
+			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval
 		];
 
+
 		If[	OptionValue[Expanding],
-			res = Expand[res]
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: Expanding the result.", FCDoControl->diTrVerbose];
+			res = Expand[res];
+			FCPrint[1,"DiracTrace: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: After expanding: ", res, FCDoControl->diTrVerbose]
 		];
 
 		FCPrint[1, "DiracTrick. Leaving.", FCDoControl->diTrVerbose];
@@ -141,17 +166,22 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		res
 	];
 
-
-diracTrickEval[ex:DiracGamma[__]]:=
+diracTrickEvalFast[ex:DiracGamma[__]]:=
 	ex/; !insideDiracTrace
 
-diracTrickEval[DiracGamma[_[_,___],___]]:=
+diracTrickEvalFast[DOT[x__DiracGamma]]:=
+	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]] && insideDiracTrace;
+
+diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[5],y___DiracGamma]]:=
+	0/; Length[{x,y}]<4 && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && insideDiracTrace;
+
+diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[6|7],y___DiracGamma]]:=
+	0/; OddQ[Length[{x,y}]] && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && insideDiracTrace;
+
+diracTrickEvalFast[DiracGamma[5]]:=
 	0/; insideDiracTrace;
 
-diracTrickEval[DiracGamma[5]]:=
-	0/; insideDiracTrace;
-
-diracTrickEval[DiracGamma[6|7]]:=
+diracTrickEvalFast[DiracGamma[6|7]]:=
 	1/2/; insideDiracTrace;
 
 
@@ -261,7 +291,6 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			Return[res]
 		];
 
-		(* TODO Checks here*)
 		dim = FCGetDimensions[res/.DiracGamma[5|6|7]:>diga];
 		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
 

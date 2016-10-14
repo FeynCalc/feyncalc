@@ -64,17 +64,17 @@ noSpur::usage="";
 
 Options[DiracTrace] = {
 	Contract -> 400000,
+	DiracTraceEvaluate-> False,
 	EpsContract -> False,
 	Expand -> True,
+	FCVerbose -> False,
 	Factoring -> Automatic,
 	FeynCalcExternal -> False,
 	FeynCalcInternal -> False,
 	Mandelstam    -> {},
 	PairCollect    -> False,
-	DiracTraceEvaluate-> False,
 	Schouten-> 0,
 	TraceOfOne -> 4,
-	FCVerbose -> False,
 	West -> True
 };
 
