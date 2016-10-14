@@ -150,7 +150,72 @@ diracTrickEval[DiracGamma[5]]:=
 diracTrickEval[DiracGamma[6|7]]:=
 	1/2/; insideDiracTrace;
 
+
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
+	Which[
+		(*	NDR, inside Trace	*)
+		!$BreitMaison && !$Larin && insideDiracTrace,
+		diracTrickEvalCachedNDRInsideTrace[ex],
+		(*	Larin, inside Trace	*)
+		!$BreitMaison && $Larin && insideDiracTrace,
+		diracTrickEvalCachedLarinInsideTrace[ex],
+		(* BMHV, inside Trace *)
+		$BreitMaison && !$Larin && insideDiracTrace,
+		diracTrickEvalCachedBMHVInsideTrace[ex],
+		(*	NDR	*)
+		!$BreitMaison && !$Larin,
+		diracTrickEvalCachedNDR[ex],
+		(*	Larin	*)
+		!$BreitMaison && $Larin,
+		diracTrickEvalCachedLarin[ex],
+		(* BMHV *)
+		$BreitMaison && !$Larin,
+		diracTrickEvalCachedBMHV[ex],
+		(* Else *)
+		True,
+		Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+		Abort[]
+	];
+
+diracTrickEvalCachedNDRInsideTrace[x_] :=
+	diracTrickEvalInternal[x];
+
+diracTrickEvalCachedLarinInsideTrace[x_] :=
+	diracTrickEvalInternal[x];
+
+diracTrickEvalCachedBMHVInsideTrace[x_] :=
+	diracTrickEvalInternal[x];
+
+diracTrickEvalCachedNDR[x_] :=
+	diracTrickEvalInternal[x];
+
+diracTrickEvalCachedLarin[x_] :=
+	diracTrickEvalInternal[x];
+
+diracTrickEvalCachedBMHV[x_] :=
+	diracTrickEvalInternal[x];
+
+(*
+diracTrickEvalCachedNDRInsideTrace[x_] :=
+	MemSet[diracTrickEvalCachedNDRInsideTrace[x], diracTrickEvalInternal[x]];
+
+diracTrickEvalCachedLarinInsideTrace[x_] :=
+	MemSet[diracTrickEvalCachedLarinInsideTrace[x], diracTrickEvalInternal[x]];
+
+diracTrickEvalCachedBMHVInsideTrace[x_] :=
+	MemSet[diracTrickEvalCachedBMHVInsideTrace[x], diracTrickEvalInternal[x]];
+
+diracTrickEvalCachedNDR[x_] :=
+	MemSet[diracTrickEvalCachedNDR[x], diracTrickEvalInternal[x]];
+
+diracTrickEvalCachedLarin[x_] :=
+	MemSet[diracTrickEvalCachedLarin[x], diracTrickEvalInternal[x]];
+
+diracTrickEvalCachedBMHV[x_] :=
+	MemSet[diracTrickEvalCachedBMHV[x], diracTrickEvalInternal[x]];
+*)
+
+diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent,null1,null2},
 
 		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
@@ -246,11 +311,15 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 			(* Purely D-dimensional *)
 			MatchQ[dim,{_Symbol}],
 				FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim.", FCDoControl->diTrVerbose];
-				res = res /. holdDOT -> diracologyDDim /. diracologyDDim -> holdDOT,
+				res = res /. holdDOT -> diracologyDDim;
+				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
+				res = res /. diracologyDDim -> holdDOT,
 			(* Purely D-4-dimensional and BMHV *)
 			MatchQ[dim,{_Symbol - 4}] && $BreitMaison && !$Larin,
 				FCPrint[1, "DiracTrick: diracTrickEval: Purely D-4-dim.", FCDoControl->diTrVerbose];
-				res = res /. holdDOT -> diracologyDDim /. diracologyDDim -> holdDOT,
+				res = res /. holdDOT -> diracologyDDim;
+				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
+				res = res /. diracologyDDim -> holdDOT,
 			(* Mixed and BMHV *)
 			MatchQ[dim, {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
 				FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
@@ -262,6 +331,7 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 				Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
 				Abort[]
 		];
+
 		(*	For BMHV we need to handle g^5 again here*)
 		If[	gamma5Present && $BreitMaison && !$Larin,
 			res = res /. holdDOT -> gamma5MoveBMHV;
@@ -409,13 +479,13 @@ diracologyDDim[b___ , DiracGamma[c_LorentzIndex, dim_],
 
 (*	Simplification for g^mu g^nu_1 ... g^nu_n g_mu where all matrices are in D-dims;
 	Eq 2.9 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)	*)
-diracologyDDim[ b___,DiracGamma[c_LorentzIndex,dim_],
+diracologyDDim2[ b___,DiracGamma[c_LorentzIndex,dim_],
 	ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_],dim_]..,
 	DiracGamma[c_LorentzIndex,dim_],f___ ] :=
 	Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
 		FCUseCache[FCFastContract,{(-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
 			{ch}[[jVar,1]] ]*dsTemp@@Join[{b}, Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}]},{}]/.
-			dsTemp->diracologyDDim/. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
+			dsTemp->diracologyDDim/. Pair[aa__]/;!FreeQ[{a},Momentum] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
 	] /; (Length[{ch}]>4);
 
 (*	Slash(p) Slash(p)	*)
@@ -431,7 +501,7 @@ diracologyDDim[b___ , DiracGamma[c_Momentum, dim_],
 
 
 (* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely D-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
-diracologyDDim[b___, DiracGamma[c_Momentum, dim_], ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _], dim_]..,
+diracologyDDim2[b___, DiracGamma[c_Momentum, dim_], ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _], dim_]..,
 			DiracGamma[c_Momentum, dim_],f___] :=
 	Block[ {iVar, len = Length[{ch}]},
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,ch,f]
