@@ -41,7 +41,8 @@ Options[DiracTrick] = {
 	Expanding -> False,
 	FCI -> False,
 	FCVerbose -> False,
-	InsideDiracTrace -> False
+	InsideDiracTrace -> False,
+	FCDiracIsolate -> True
 };
 
 (* TODO: Bad syntax that one should get rid off*)
@@ -112,20 +113,23 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			insideDiracTrace = False
 		];
 
-		(* 	First of all we need to extract all the Dirac structures in the input. *)
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],Lorentz->True];
 
-		{freePart,dsPart} = FCSplit[ex,{dsHead}];
-		FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
-		FCPrint[3,"DiracTrick: freePart: ",freePart , FCDoControl->diTrVerbose];
+		If[	OptionValue[FCDiracIsolate],
+			(* 	First of all we need to extract all the Dirac structures in the input. *)
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],Lorentz->True];
+			{freePart,dsPart} = FCSplit[ex,{dsHead}];
+			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrick: freePart: ",freePart , FCDoControl->diTrVerbose];
+			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+			diracObjectsEval = diracTrickEval/@(diracObjects/.dsHead->Identity);
+			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			FCPrint[3,"DiracTrick: repRule: ",repRule , FCDoControl->diTrVerbose];
+			res = freePart + ( dsPart/.repRule),
 
-		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
-		diracObjectsEval = diracTrickEval/@(diracObjects/.dsHead->Identity);
-
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
-		FCPrint[3,"DiracTrick: repRule: ",repRule , FCDoControl->diTrVerbose];
-
-		res = freePart + ( dsPart/.repRule);
+			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
+				from internal functions	*)
+			res = diracTrickEval[ex]
+		];
 
 		If[	OptionValue[Expanding],
 			res = Expand[res]
