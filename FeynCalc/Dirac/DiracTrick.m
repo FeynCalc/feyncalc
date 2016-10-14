@@ -235,8 +235,8 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		];
 
-		If[ res===0,
-			Return[0]
+		If[ FreeQ2[res,DiracHeadsList],
+			Return[res]
 		];
 
 		If[	insideDiracTrace,
@@ -253,8 +253,8 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			res = Expand2[res,Pair]/. Pair->PairContract /. PairContract->Pair;
 		];
 
-		If[ res===0,
-			Return[0]
+		If[ FreeQ2[res,DiracHeadsList],
+			Return[res]
 		];
 
 		(* TODO Checks here*)
@@ -332,6 +332,10 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 				Abort[]
 		];
 
+		If[ FreeQ2[res,DiracHeadsList],
+			Return[res]
+		];
+
 		(*	For BMHV we need to handle g^5 again here*)
 		If[	gamma5Present && $BreitMaison && !$Larin,
 			res = res /. holdDOT -> gamma5MoveBMHV;
@@ -341,6 +345,10 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			res = res /. gamma5MoveBMHV -> diracologyBMHV1;
 			res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
 			res = res /. diracologyBMHV1 -> holdDOT
+		];
+
+		If[ FreeQ2[res,DiracHeadsList],
+			Return[res]
 		];
 
 		res = res /. holdDOT -> DOT;
