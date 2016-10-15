@@ -315,10 +315,14 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 						res = FixedPoint[(# /. chiralTrickAnticommutingDDim -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommutingDDim)&,res];
 						res = res /. chiralTrickAnticommutingDDim -> holdDOT,
-					(* Purely D-dimensional and Larin or BMHV -> don't move anything around *)
-					MatchQ[dim,{_Symbol}] && (!$BreitMaison && $Larin) || ($BreitMaison && !$Larin),
-						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin or BMHV.", FCDoControl->diTrVerbose];
+					(* Purely D-dimensional and BMHV -> don't move anything around *)
+					MatchQ[dim,{_Symbol}] && ($BreitMaison && !$Larin),
+						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						Null,
+					(* Purely D-dimensional and Larin use the substitution rule to eliminate g^5 that are not on the left of the trace *)
+					MatchQ[dim,{_Symbol}] && (!$BreitMaison && $Larin),
+						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
+						res = res /. holdDOT -> chiralTrickLarin /. chiralTrickLarin -> holdDOT,
 					(* Mixed and BMHV -> don't move g^5 around *)
 					MatchQ[dim, {_Symbol - 4} | {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
@@ -806,6 +810,30 @@ chiralTrickAnticommutingDDim[b___,DiracGamma[7],(dg:DiracGamma[_[_,_], _]) + mas
 
 (* ------------------------------------------------------------------------ *)
 
+chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[5],d__] :=
+Block[{li1,li2,li3},
+	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
+		I/6 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3,  Dimension->dim] chiralTrickLarin[b,DiracGamma[li1,dim],
+			DiracGamma[li2,dim],DiracGamma[li3,dim],d] + mass chiralTrickLarin[b,DiracGamma[5],d]
+	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
+
+chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[6],d__] :=
+Block[{li1,li2,li3},
+	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
+		mass chiralTrickLarin[b,DiracGamma[6],d] +
+		1/2 chiralTrickLarin[b,dg,d] +
+		I/12 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3,  Dimension->dim] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d]
+	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
+
+chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[7],d__] :=
+Block[{li1,li2,li3},
+	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
+		mass chiralTrickLarin[b,DiracGamma[7],d] +
+		1/2 chiralTrickLarin[b,dg,d] +
+		I/12 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3,  Dimension->dim] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d]
+	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
+
+(* ------------------------------------------------------------------------ *)
 
 gamma5MoveBMHV[]:=
 	1;
