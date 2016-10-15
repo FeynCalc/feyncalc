@@ -86,6 +86,7 @@ End[]
 Begin["`DiracSimplify`Private`"]
 
 dsVerbose::usage="";
+insideDiracTrace::usage="";
 
 DiracSimplify2[exp_] :=
 	Block[ {nn,tt},
@@ -122,6 +123,7 @@ Options[DiracSimplify] = {
 	DiracSubstitute67	-> False,
 	Expanding			-> True,
 	FCCheckSyntax		-> False,
+	FCDiracIsolate		-> True,
 	FCVerbose			-> False,
 	Factoring			-> False,
 	FeynCalcInternal    -> False,
@@ -137,13 +139,8 @@ DiracSimplify[x_,y__, z___?OptionQ] :=
 
 
 DiracSimplify[expr_, opts:OptionsPattern[]] :=
-	Block[{ex,res,time},
-
-
-		If[	OptionValue[FCI],
-			ex = expr,
-			ex = FCI[expr]
-		];
+	Block[{ex,res,time, null1, null2, holdDOT, freePart, dsPart, diracObjects,
+			diracObjectsEval, repRule},
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
@@ -152,10 +149,18 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			];
 		];
 
-		FCPrint[1, "DiracSimplify: Entering DiracSimplify", FCDoControl->dsVerbose];
-
+		FCPrint[1, "DiracSimplify: Entering.", FCDoControl->dsVerbose];
 		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
 
+		If[	OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		If[	OptionValue[InsideDiracTrace],
+			insideDiracTrace = True,
+			insideDiracTrace = False
+		];
 
 		If [OptionValue[FCCheckSyntax],
 			time=AbsoluteTime[];
@@ -179,12 +184,44 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracSimplify: Done checking the syntax, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose]
 		];
 
-
-		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
-
-		If[	FreeQ2[ex,{DiracGamma,DiracGammaT,Spinor}],
+		If[ FreeQ2[ex,DiracHeadsList],
 			Return[ex]
 		];
+(*
+		If[	OptionValue[FCDiracIsolate],
+			(*	This is the standard mode for calling DiracSimplify	*)
+
+			(* 	First of all we need to extract all the Dirac structures in the input. *)
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],Lorentz->True];
+
+			{freePart,dsPart} = FCSplit[ex,{dsHead}];
+			FCPrint[3,"DiracSimplify: dsPart: ",dsPart , FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: freePart: ",freePart , FCDoControl->dsVerbose];
+
+			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+			FCPrint[3,"DiracSimplify: diracObjects: ",diracObjects , FCDoControl->dsVerbose];
+
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracSimplify: Applying diracTrickEval", FCDoControl->dsVerbose];
+			diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];
+			FCPrint[1,"DiracTrace: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+
+			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracTrickEval}],
+				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
+				Abort[]
+			];
+
+			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			FCPrint[3,"DiracSimplify: repRule: ",repRule , FCDoControl->dsVerbose];
+			res = freePart + ( dsPart/.repRule),
+
+			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
+				from internal functions	*)
+			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval
+		];*)
+
+
+
 
 		If[ !OptionValue[Expanding],
 			(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify.*)
