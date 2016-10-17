@@ -34,6 +34,7 @@ Options[FCDiracIsolate] = {
 	Collecting -> True,
 	DotSimplify -> True,
 	DiracGammaCombine -> True,
+	DiracSigmaExplicit -> False,
 	ExceptHeads -> {},
 	Expanding -> True,
 	FCI -> False,
@@ -68,6 +69,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		If[	FreeQ2[ex,DiracHeadsList],
 			Return[ex]
+		];
+
+		If[ OptionValue[DiracSigmaExplicit],
+				ex = DiracSigmaExplicit[ex]
 		];
 
 		If[	OptionValue[DiracGammaCombine],

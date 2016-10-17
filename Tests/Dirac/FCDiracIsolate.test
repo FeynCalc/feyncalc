@@ -91,5 +91,12 @@ Spinor[-Momentum[p3], m3, 1].GA[n].Spinor[-Momentum[p4], m4, 1]]"},
 {"fcstFCDiracIsolate-ID17", "FCDiracIsolate[
 MT[mu, nu] GA[i, j, k] + GS[p, l] + MT[mu, nu] GA[mu, j, k],
 Lorentz -> True, Head -> dch] // FCE",
-"dch[GS[p].GS[l]] + dch[GA[mu].GA[j].GA[k] MT[mu, nu]] + dch[GA[i].GA[j].GA[k]] MT[mu, nu]"}
+"dch[GS[p].GS[l]] + dch[GA[mu].GA[j].GA[k] MT[mu, nu]] + dch[GA[i].GA[j].GA[k]] MT[mu, nu]"},
+{"fcstFCDiracIsolate-ID18",
+"FCDiracIsolate[DiracSigma[GA[i], GA[j]], Head -> dsHead, DiracSigmaExplicit -> True]//FCE",
+"1/2 I dsHead[GA[i].GA[j]] - 1/2 I dsHead[GA[j].GA[i]]"},
+{"fcstFCDiracIsolate-ID19",
+"FCDiracIsolate[DiracSigma[GA[i], GA[j]], Head -> dsHead]//FCE",
+"dsHead[DiracSigma[GA[i], GA[j]]]"}
 });
+
