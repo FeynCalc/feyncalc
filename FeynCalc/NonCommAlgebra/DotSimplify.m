@@ -95,6 +95,10 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
 
+		If[	FreeQ[xxx,DOT] && NonCommFreeQ[xxx],
+			Return[xxx]
+		];
+
 		(* Here a different convention for FCI is used, False means that FCI is needed*)
 		If[ OptionValue[FCI] =!= True,
 			xx = xxx,
@@ -102,6 +106,8 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 		];
 
 		FCPrint[3, "DotSimplify: Entering with", FCDoControl->dsVerbose];
+
+
 
 		(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
 		momf[xX_] :=
