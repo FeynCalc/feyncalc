@@ -255,7 +255,7 @@ diracTrickEvalCachedBMHV[x_] :=
 *)
 
 diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
-	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent,null1,null2},
+	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent,null1,null2,dsHead},
 
 		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
@@ -398,9 +398,10 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		If[	insideDiracTrace && res=!=0,
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
-			res = ReplaceAll[diracTraceSimplify/@((res/. DOT -> holdDOT)+null1+null2),{diracTraceSimplify[null1|null2]->0,
-				diracTraceSimplify[c_ d_holdDOT ]/; NonCommFreeQ[c]:> c diracTraceSimplify[d]}];
-			res = res /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/. diracTraceSimplify ->DOT /. holdDOT->DOT;
+			res = FCDiracIsolate[res,DotSimplify->False,FCI->True,DiracGammaCombine->False,Head->dsHead];
+			res = res  /. {dsHead[DiracGamma[5]] :> 0, dsHead[DiracGamma[6|7]] :> 1/2 } /. DOT-> holdDOT/.
+			dsHead[holdDOT[x__]] :>  diracTraceSimplify[x];
+			res = res /. diracTraceSimplify -> DOT /. dsHead-> Identity /. holdDOT -> DOT;
 			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose]
 		];
@@ -592,14 +593,19 @@ diracTraceSimplify[DiracGamma[5],b___,DiracGamma[7]] :=
 diracTraceSimplify[DiracGamma[7],b___,DiracGamma[5]] :=
 	-diracTraceSimplify[b,DiracGamma[7]];
 
-diracTraceSimplify[ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,___],___]..] :=
-	0/; OddQ[Length[{ch}]];
+diracTraceSimplify[DOT[x__DiracGamma]]:=
+	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]]
+
+diracTraceSimplify[DOT[x___DiracGamma,DiracGamma[6|7],y___DiracGamma]]:=
+	0/; OddQ[Length[{x,y}]] && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+
 
 diracTraceSimplify[ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,___],___].., DiracGamma[5|6|7]] :=
 	0/; OddQ[Length[{ch}]];
 
-diracTraceSimplify[ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,___],___].., DiracGamma[5]] :=
-	0/; Length[{ch}] < 4;
+diracTraceSimplify[DOT[x___DiracGamma,DiracGamma[5],y___DiracGamma]]:=
+	0/; Length[{x,y}]<4 && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+
 
 diracTraceSimplify[DiracGamma[_[_,___],___], DiracGamma[_[_,___],___], DiracGamma[5]] :=
 	0;
@@ -609,6 +615,10 @@ diracTraceSimplify[a:DiracGamma[_[_,___],___], b:DiracGamma[_[_,___],___], Dirac
 
 diracTraceSimplify[DiracGamma[5]]:=
 	0;
+
+diracTraceSimplify[DiracGamma[6|7]]:=
+	1/2;
+
 
 (* ------------------------------------------------------------------------ *)
 

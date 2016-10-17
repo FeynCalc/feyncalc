@@ -1778,5 +1778,11 @@ GA[mu].GA[5]+f1 GA[mu]),InsideDiracTrace\[Rule]True]//FCE",
 (fa*GA[mu] . GA[5] + f1*GA[mu])"},
 {"fcstDiracTrickInsideDiracTrace-ID30",
 "DiracTrick[GS[p].GA[nu, 5, mu, 5], InsideDiracTrace -> True]",
-"0"}
+"0"},
+{"fcstDiracTrickInsideDiracTrace-ID31",
+"DiracTrick[
+GS[p2].GA[si].GS[k1].GS[p1].GS[k2].GS[k1].GA[si].GS[p2].GA[7],
+InsideDiracTrace -> True] // FCE",
+"GS[k2].GS[p1] SP[k1, k1] SP[p2, p2] +
+GS[p1].GS[k2] SP[k1, k1] SP[p2, p2]"}
 });

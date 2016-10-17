@@ -266,7 +266,6 @@ diracTraceEvaluate[expr_,opts:OptionsPattern[]] :=
 			tmp = tmp /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /. DOT -> prepSpur;
 			tmp = tmp /. prepSpur[zzz__] :> spurHead@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Wrapped in spurHead: ",tmp, FCDoControl->diTrVerbose];
-
 			(* Split chiral projectors here *)
 			tmp = tmp /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
 			spurHead[x___,DiracGamma[7]] :> 1/2 spurHead[x] - 1/2 spurHead[x,DiracGamma[5]]} /. spurHead[] -> 1;
@@ -382,7 +381,7 @@ diracTraceEvaluate[expr_,opts:OptionsPattern[]] :=
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: traceListChiral", traceListChiral, FCDoControl->diTrVerbose];
 
 			(* Check that there are no uncomputed traces left *)
-			If[	!FreeQ2[traceListChiral,{spurHead,DiracGamma}],
+			If[	!FreeQ2[traceListChiral,{spurHead,DiracGamma,trace5}],
 				Message[DiracTrace::failmsg, "Not all chiral traces were evaluated."];
 				Abort[]
 			];
