@@ -53,7 +53,7 @@ DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
 
 DiracTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, dsPart, diracObjects,
-			diracObjectsEval, repRule, time},
+			diracObjectsEval, repRule, time, dsHead},
 
 		(*	Algorithm of DiracTrick:
 
@@ -148,7 +148,12 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
-			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval
+			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval;
+
+			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval}],
+				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
+				Abort[]
+			]
 		];
 
 
