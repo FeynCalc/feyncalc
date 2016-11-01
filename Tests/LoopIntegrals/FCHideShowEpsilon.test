@@ -1,0 +1,49 @@
+
+
+(* :Title: FCHideShowEpsilon.test                         		            *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCHideEpsilon and
+				FCShowEpsilon												*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCHideEpsilon =
+({
+{"fcstFCEpsilonHide-ID1",
+"FCHideEpsilon[1/Epsilon-EulerGamma+Log[4Pi]]", "SMP[\"Delta\"]"},
+{"fcstFCEpsilonHide-ID2",
+"FCHideEpsilon[1/EpsilonUV-EulerGamma+Log[4Pi]]",
+"SMP[\"Delta_UV\"]"},
+{"fcstFCEpsilonHide-ID3",
+"FCHideEpsilon[1/EpsilonIR-EulerGamma+Log[4Pi]]",
+"SMP[\"Delta_IR\"]"},
+{"fcstFCEpsilonHide-ID4",
+"FCHideEpsilon[a/Epsilon-a EulerGamma+a Log[4Pi]]",
+"a*SMP[\"Delta\"]"},
+{"fcstFCEpsilonHide-ID5",
+"FCHideEpsilon[a/EpsilonUV-a EulerGamma+a Log[4Pi]]",
+"a*SMP[\"Delta_UV\"]"},
+{"fcstFCEpsilonHide-ID6",
+"FCHideEpsilon[a/EpsilonIR-a EulerGamma+a Log[4Pi]]",
+"a*SMP[\"Delta_IR\"]"},
+{"fcstFCEpsilonHide-ID7",
+"FCHideEpsilon[(a+b)^2/Epsilon-(a^2+2a b + b^2) EulerGamma+(a^2+2a \
+b + b^2) Log[4Pi]]", "(a + b)^2*SMP[\"Delta\"]"}
+});
+
+Tests`LoopIntegrals`fcstFCShowEpsilon =
+({
+{"fcstFCEpsilonShow-ID1", "FCShowEpsilon[SMP[\"Delta\"]]",
+"Epsilon^(-1) - EulerGamma + Log[4*Pi]"},
+{"fcstFCEpsilonShow-ID2", "FCShowEpsilon[SMP[\"DeltaUV\"]]",
+"EpsilonUV^(-1) - EulerGamma + Log[4*Pi]"},
+{"fcstFCEpsilonShow-ID3", "FCShowEpsilon[SMP[\"DeltaIR\"]]",
+"EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"}
+});
