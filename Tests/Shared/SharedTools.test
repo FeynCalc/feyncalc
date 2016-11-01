@@ -237,7 +237,9 @@ Tests`Shared`fcstSharedToolsSelectFree = {
 {"fcstSharedToolsSelectFree-ID7","SelectFree[f[x], x]",
 	"1"},
 {"fcstSharedToolsSelectFree-ID8","SelectFree[a (b + f[a] + d), d]",
-	"a"}
+	"a"},
+{"fcstSharedToolsSelectFree-ID9","SelectFree2[a (b + c) + d, b]",
+	"a c + d"}
 };
 
 Tests`Shared`fcstSharedToolsSelectNotFree = {
@@ -256,5 +258,7 @@ Tests`Shared`fcstSharedToolsSelectNotFree = {
 {"fcstSharedToolsSelectNotFree-ID7","SelectNotFree[f[x], x]",
 	"f[x]"},
 {"fcstSharedToolsSelectNotFree-ID8","SelectNotFree[a (b + f[a] + d), d]",
-	"(b + f[a] + d)"}
+	"(b + f[a] + d)"},
+{"fcstSharedToolsSelectNotFree-ID9","SelectNotFree2[a (b + c) + d, b]",
+	"a b"}
 };

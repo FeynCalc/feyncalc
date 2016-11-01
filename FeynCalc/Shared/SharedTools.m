@@ -124,6 +124,11 @@ an integer (even if it is symbolic). Furthermore \
 (-1)^(n_Integer?OddQ m) -> (-1)^m and \
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
+SelectFree2::usage=
+"SelectFree2[expr, a, b, ...] is like SelectFree but
+it first expands the expression w.r.t to the arguments via
+Expand2";
+
 SelectFree::usage=
 "SelectFree[expr, a, b, ...] is equivalent to \
 Select[expr, FreeQ2[#, {a,b, ...}]&], except the \
@@ -137,6 +142,11 @@ Select[expr, !FreeQ2[#, {a,b, ...}]&], except the \
 special cases: SelectNotFree[a, b] returns 1 and \
 SelectNotFree[a,a] returns a (where a is not a product or \
 a sum).";
+
+SelectNotFree2::usage=
+"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but
+it first expands the expression w.r.t to the arguments via
+Expand2";
 
 SelectSplit::usage=
 "SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \
@@ -547,6 +557,10 @@ SelectFree[a_, b__] :=
 		]
 	];
 
+
+SelectFree2[x_,args__] :=
+	SelectFree[Expand2[x,Flatten[{args}]],args];
+
 SelectNotFree[0,_] :=
 	0;
 
@@ -564,7 +578,8 @@ SelectNotFree[a_, b__] :=
 		]
 	];
 
-
+SelectNotFree2[x_,args__] :=
+	SelectNotFree[Expand2[x,Flatten[{args}]],args];
 
 SelectSplit[ex_, p_List, opts___Rule] :=
 	Block[{ii, jj, aa, res, exp = List @@ ex, h = Head[ex],
