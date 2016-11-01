@@ -43,5 +43,13 @@ Spinor[Momentum[p2], m, 1] . DiracGamma[LorentzIndex[a]] . Spinor[Momentum[p1], 
 {"fcstFourDivergence-ID12","FourDivergence[FAD[{p + k, m}, {k - l, m}], FVD[k, mu]] // FCE",
 	"-2 FAD[{k - l, m}, {k - l, m}] (FVD[k, mu] - FVD[l, mu]) -2 FAD[{k + p, m}, {k + p, m}] (FVD[k, mu] + FVD[p, mu])"},
 {"fcstFourDivergence-ID11","FourDivergence[ScalarProduct[p - k, q],FourVector[k - p, mu]] // FCE",
-	"-FV[q, mu]"}
+	"-FV[q, mu]"},
+{"fcstFourDivergence-ID12","FourDivergence[GSD[p], FVD[p, mu]]//FCE",
+	"GAD[mu]"},
+{"fcstFourDivergence-ID13","FourDivergence[GS[p], FV[p, mu]]//FCE",
+	"GA[mu]"},
+{"fcstFourDivergence-ID14","FourDivergence[GSD[p+q], FVD[p, mu]]//FCE",
+	"GAD[mu]"},
+{"fcstFourDivergence-ID15","FourDivergence[GS[p+q], FV[p, mu]]//FCE",
+	"GA[mu]"}
 };

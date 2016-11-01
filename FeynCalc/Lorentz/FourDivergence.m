@@ -152,11 +152,12 @@ fourDerivative[x_, ve_]:=
 
 		nx = D[nx, p] /. Derivative -> deriv;
 		uList = Cases[nx+null1+null2,deriv[a___][b___][c___],Infinity]//Union;
-
+(*FourDivergence[FCI[GSD[q]], FVD[q, mu]] // StandardForm*)
 		sList = uList /. (deriv[__][FeynAmpDenominator][__]) :> 1 /. {
 			deriv[1,0][PD][pe_,b_] :> (-2 Pair[pe,mu] FeynAmpDenominator[PD[pe, b], PD[pe, b]]),
 			deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
 			deriv[0, 1][Pair][a_, p] :> Pair[a, mu] ,
+			deriv[1,0][DiracGamma][p,dim_] :> DiracGamma[mu,dim] ,
 			deriv[1][DiracGamma][p] :> DiracGamma[mu] ,
 			deriv[1,0,0,0][Eps][p,c__] :> Eps[mu,c] ,
 			deriv[0,1,0,0][Eps][a_,p,c__] :> Eps[a,mu,c] ,
@@ -164,6 +165,7 @@ fourDerivative[x_, ve_]:=
 			deriv[0,0,0,1][Eps][c__,p] :> Eps[c,mu]} /. deriv -> Derivative;
 
 		repRule = MapIndexed[(Rule[#1, First[sList[[#2]]]]) &, uList];
+
 		nx = nx/.Dispatch[repRule]/.Dispatch[linCombShow];
 
 		nx
