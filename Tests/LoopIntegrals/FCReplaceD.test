@@ -14,10 +14,11 @@
 (* ------------------------------------------------------------------------ *)
 
 Tests`LoopIntegrals`fcstFCReplaceD = {
-
 {"fcstFCReplaceD-ID1","FCReplaceD[SPD[p, p], D -> 4 - 2 Epsilon]","Pair[Momentum[p, D], Momentum[p, D]]"},
 {"fcstFCReplaceD-ID2","FCReplaceD[ScaleMu^(D - 4)  SPD[p, p]*D, D -> 4 - 2 Epsilon]",
 "(4 - 2 Epsilon) ScaleMu^(-2 Epsilon)*Pair[Momentum[p, D], Momentum[p, D]]"},
 {"fcstFCReplaceD-ID3","FCReplaceD[MTD[mu, nu]*D, D -> 4 - 2 Epsilon]",
-"(4 - 2 Epsilon) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]"}
+"(4 - 2 Epsilon) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]"},
+{"fcstFCReplaceD-ID4","FCReplaceD[GAD[i] D, D -> 4 - 2 Eps] // FCE","(4 - 2 Eps) GAD[i]"},
+{"fcstFCReplaceD-ID5","FCReplaceD[GSD[p] D, D -> 4 - 2 Eps] // FCE","(4 - 2 Eps) GSD[p]"}
 }

@@ -51,9 +51,10 @@ Options[FCReplaceD] = {
 
 FCReplaceD[expr_, replacement_Rule, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0,ruleProtect,holddim,dim},
+		scaleless1=0,scaleless2=0,ruleProtect,holddim,dim,diga},
 
 		dim=First[replacement];
+		FCPrint[1,"FCReplaceD: dim: " ,dim, FCDoControl->fcrdVerbose];
 
 		If [OptionValue[FCVerbose]===False,
 			fcrdVerbose=$VeryVerbose,
@@ -67,7 +68,17 @@ FCReplaceD[expr_, replacement_Rule, OptionsPattern[]] :=
 			ex = expr
 		];
 
-		tmp = ex //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|DiracGamma)[a_,dim] :> h[holddim[a,ToString[dim,InputForm]]];
+		tmp = ex /. DiracGamma -> diga;
+		tmp = tmp //. diga[a_,di_] :> diga[holddim[a,ToString[di,InputForm]]];
+
+		FCPrint[1,"FCReplaceD: tmp: " ,tmp, FCDoControl->fcrdVerbose];
+
+		tmp = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum)[a_,di_] :> h[holddim[a,ToString[di,InputForm]]];
+
+
+
+		FCPrint[1,"FCReplaceD: tmp: " ,tmp, FCDoControl->fcrdVerbose];
+		Global`XXX = tmp;
 		If[	!FreeQ[Cases2[tmp,{ExplicitLorentzIndex,LorentzIndex,Momentum,DiracGamma}],dim],
 			Message[FCReplaceD::checkfail];
 			Abort[]
@@ -80,7 +91,9 @@ FCReplaceD[expr_, replacement_Rule, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		res = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|DiracGamma)[holddim[a_,str_String]]:> h[a,ToExpression[str]];
+		res = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum)[holddim[a_,str_String]]:> h[a,ToExpression[str]];
+
+		res = res /. diga[holddim[a_,str_String]] :> DiracGamma[a,ToExpression[str]];
 
 		If[	!FreeQ[res,holddim],
 			Message[FCReplaceD::resfail];
