@@ -39,6 +39,10 @@ Expand2::usage=
 "Expand2[exp, x] expands all sums containing x. \
 Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
+FCFactorOut::usage=
+"FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
+bring exp into a particular form that Mathematica refuses to give";
+
 FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
@@ -176,6 +180,14 @@ Options[Combine] = {
 Options[SelectSplit] = {
 	Heads -> None
 };
+
+
+Options[FCFactorOut] = {
+	Factoring -> Simplify
+};
+
+
+
 Options[ILimit] = {
 	FunctionLimits -> {Log -> Log}
 };
@@ -293,6 +305,9 @@ FCAntiSymmetrize[x_,v_List] :=
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
 	];
+
+FCFactorOut[expr_,pref_,OptionsPattern[]]:=
+	pref OptionValue[Factoring][expr/pref];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, null1, null2},

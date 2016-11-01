@@ -262,3 +262,12 @@ Tests`Shared`fcstSharedToolsSelectNotFree = {
 {"fcstSharedToolsSelectNotFree-ID9","SelectNotFree2[a (b + c) + d, b]",
 	"a b"}
 };
+
+Tests`Shared`fcstSharedToolsFCFactorOut = {
+{"fcstSharedToolsFCFactorOut-ID1","FCFactorOut[1, 1]",
+	"1"},
+{"fcstSharedToolsFCFactorOut-ID2","FCFactorOut[0, 1]",
+	"0"},
+{"fcstSharedToolsFCFactorOut-ID3","FCFactorOut[(a + 3 b), 3 b]",
+	"3 (1 + a/(3 b)) b"}
+};
