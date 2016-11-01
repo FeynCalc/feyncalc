@@ -391,10 +391,10 @@ diracTraceEvaluate[expr_,opts:OptionsPattern[]] :=
 			If[ OptionValue[DiracTrace,{opts},Expand],
 				time2=AbsoluteTime[];
 				FCPrint[1,"DiracTrace: diracTraceEvaluate: Expanding scalar products", FCDoControl->diTrVerbose];
-				traceListNonChiral=Map[ExpandScalarProduct[#]&,traceListNonChiral];
-				traceListChiral=Map[ExpandScalarProduct[#]&,traceListChiral];
-				gammaFree=ExpandScalarProduct[gammaFree];
-				gammaPart=ExpandScalarProduct[gammaPart];
+				traceListNonChiral=Map[ExpandScalarProduct[#,FCI->False]&,traceListNonChiral];
+				traceListChiral=Map[ExpandScalarProduct[#,FCI->False]&,traceListChiral];
+				gammaFree=ExpandScalarProduct[gammaFree,FCI->False];
+				gammaPart=ExpandScalarProduct[gammaPart,FCI->False];
 				FCPrint[1,"DiracTrace: diracTraceEvaluate: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
 			];
 
@@ -605,7 +605,7 @@ spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 
 spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
 	Block[{spx = {x,DiracGamma[5]},spt,res},
-		res = 2/(Length[spx]-5) Sum[(-1)^(i+j+1) FCUseCache[ExpandScalarProduct,{Pair[spx[[i]][[1]],spx[[j]][[1]]]},{}] *
+		res = 2/(Length[spx]-5) Sum[(-1)^(i+j+1) FCUseCache[ExpandScalarProduct,{Pair[spx[[i]][[1]],spx[[j]][[1]]]},{FCI->False}] *
 			spt@@Delete[spx,{{j},{i}}],	{i,2,Length[spx]-1},{j,1,i-1}];
 		res = Expand[res]/.spt-> spur5BMHVWest;
 		res
