@@ -73,6 +73,12 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				Abort[]
 			];
 
+			If[	$KeepLogDivergentScalelessIntegrals,
+				Message[OneLoopSimplify::failmsg, "OneLoopSimplify does not support the option $KeepLogDivergentScalelessIntegrals!."];
+				Abort[]
+			];
+
+
 			q = qu;
 			dim = Dimension /. {opt} /. Options[OneLoopSimplify];
 			dirsimplify = DiracSimplify/. {opt} /. Options[OneLoopSimplify];

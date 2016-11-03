@@ -236,6 +236,12 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			Abort[]
 		];
 
+
+		If[	$KeepLogDivergentScalelessIntegrals,
+			Message[OneLoop::failmsg, "OneLoop does not support the option $KeepLogDivergentScalelessIntegrals!."];
+			Abort[]
+		];
+
 		options = {opts};
 		(* for FA2.0 *)
 		If[ Length[options] > 0,

@@ -19,11 +19,9 @@ Tests`LoopIntegrals`fcstLogDivergentScaleless = ({
 PropagatorDenominator[Momentum[q, D], 0]]"},
 {"fcstLogDivergentScaleless-ID2",
 "Head[ToPaVe[FAD[{q,0},{q,0}]/(I Pi^2),q]]===B0", "True"},
-{"fcstLogDivergentScaleless-ID3",
-"Head[OneLoop[q,FAD[{q,0},{q,0}]]/(I Pi^2)]===B0", "True"},
-{"fcstLogDivergentScaleless-ID4", "Head[ToPaVe2[B0[0,0,0]]]===PaVe",
+{"fcstLogDivergentScaleless-ID3", "Head[ToPaVe2[B0[0,0,0]]]===PaVe",
 	"True"},
-{"fcstLogDivergentScaleless-ID5",
+{"fcstLogDivergentScaleless-ID4",
 "FCLoopIsolate[FAD[{q,0},{q,0}],{q},Head\[Rule]lInt]",
 "lInt[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0], \
 PropagatorDenominator[Momentum[q, D], 0]]]"}
