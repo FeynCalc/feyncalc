@@ -61,11 +61,18 @@ FeynCalcInternal[x_, opts___Rule] :=
 		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcInternal];
 		uru = Flatten[{uru}];
 
-		ru =  Join[
-			{SpinorU :> tospinor,
-			SpinorV :> tospinorv,
-			SpinorVBar :> tospinorv,
-			SpinorUBar :> tospinor,
+		ru =  Join[	{
+
+			SpinorU 	:> tospinor,
+			SpinorUBar	:> tospinor,
+			SpinorV		:> tospinorv,
+			SpinorVBar	:> tospinorv,
+
+			SpinorUD 	:> tospinorD,
+			SpinorUBarD	:> tospinorD,
+			SpinorVD	:> tospinorvD,
+			SpinorVBarD	:> tospinorvD,
+
 			SUNF :> tosunf,
 			MetricTensor :> metricT,
 			DiracMatrix  :> diracM,
@@ -361,14 +368,17 @@ levicivital[{x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]},{y:Except
 tosunf[a_, b_, c_] :=
 	SUNF@@Map[SUNIndex, ({a,b,c} /. SUNIndex->Identity)];
 
-tospinor[a__] :=
-	Spinor[a];
-tospinorv[a_,0,b__] :=
-	Spinor[a,0,b];
-tospinorv[a_] :=
-	Spinor[a];
-tospinorv[a_,b__] :=
-	Spinor[-a,b];
+tospinor[p_,m_:0,c_:1]:=
+	Spinor[Momentum[p],m,c];
+
+tospinorv[p_,m_:0,c_:1]:=
+	Spinor[-Momentum[p],m,c];
+
+tospinorD[p_,m_:0,c_:1]:=
+	Spinor[Momentum[p,D],m,c];
+
+tospinorvD[p_,m_:0,c_:1]:=
+	Spinor[-Momentum[p,D],m,c];
 
 FCPrint[1,"FeynCalcInternal.m loaded."];
 End[]
