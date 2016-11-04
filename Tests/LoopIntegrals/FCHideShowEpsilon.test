@@ -35,7 +35,16 @@ Tests`LoopIntegrals`fcstFCHideEpsilon =
 "a*SMP[\"Delta_IR\"]"},
 {"fcstFCEpsilonHide-ID7",
 "FCHideEpsilon[(a+b)^2/Epsilon-(a^2+2a b + b^2) EulerGamma+(a^2+2a \
-b + b^2) Log[4Pi]]", "(a + b)^2*SMP[\"Delta\"]"}
+b + b^2) Log[4Pi]]", "(a + b)^2*SMP[\"Delta\"]"},
+{"fcstFCEpsilonHide-ID8",
+"FCHideEpsilon[2/Epsilon - EulerGamma + Log[4 Pi], D -> 4 - Epsilon]",
+"SMP[\"Delta\"]"},
+{"fcstFCEpsilonHide-ID9",
+"FCHideEpsilon[2/EpsilonUV - EulerGamma + Log[4 Pi], D -> 4 - Epsilon]",
+"SMP[\"Delta_UV\"]"},
+{"fcstFCEpsilonHide-ID10",
+"FCHideEpsilon[2/EpsilonIR - EulerGamma + Log[4 Pi], D -> 4 - Epsilon]",
+"SMP[\"Delta_IR\"]"}
 });
 
 Tests`LoopIntegrals`fcstFCShowEpsilon =
@@ -45,5 +54,11 @@ Tests`LoopIntegrals`fcstFCShowEpsilon =
 {"fcstFCEpsilonShow-ID2", "FCShowEpsilon[SMP[\"DeltaUV\"]]",
 "EpsilonUV^(-1) - EulerGamma + Log[4*Pi]"},
 {"fcstFCEpsilonShow-ID3", "FCShowEpsilon[SMP[\"DeltaIR\"]]",
-"EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"}
+"EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"},
+{"fcstFCEpsilonShow-ID1", "FCShowEpsilon[SMP[\"Delta\"],D->4- Epsilon]",
+"2 Epsilon^(-1) - EulerGamma + Log[4*Pi]"},
+{"fcstFCEpsilonShow-ID2", "FCShowEpsilon[SMP[\"DeltaUV\"],D->4- Epsilon]",
+"2 EpsilonUV^(-1) - EulerGamma + Log[4*Pi]"},
+{"fcstFCEpsilonShow-ID3", "FCShowEpsilon[SMP[\"DeltaIR\"],D->4- Epsilon]",
+"2 EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"}
 });

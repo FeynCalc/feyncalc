@@ -24,6 +24,14 @@ FCShowEpsilon::usage =
 "FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - \
 EulerGamma + Log[4Pi] with";
 
+FCHideEpsilon::failmsg =
+"Error! FCHideEpsilon has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
+FCShowEpsilon::failmsg =
+"Error! FCShowEpsilon has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -33,26 +41,42 @@ Begin["`FCHideShowEpsilon`Private`"]
 
 Options[FCHideEpsilon] = {
 	Factoring -> Factor,
-	Collecting -> True
+	Collecting -> True,
+	D -> 4 - 2 Epsilon
 };
 
-Options[FCShowEpsilon] = {};
+Options[FCShowEpsilon] = {
+	D -> 4 - 2 Epsilon
+};
 
 FCHideEpsilon[expr_, OptionsPattern[]] :=
-	Block[{tmp,wrap,factoring},
+	Block[{tmp,wrap,factoring,pref, dVal},
 
 		factoring = OptionValue[Factoring];
+		dVal = OptionValue[D];
 
 		tmp = Collect2[expr,{Epsilon,EpsilonUV,EpsilonIR},Factoring->factoring];
 
-		tmp = tmp/. {	1/Epsilon -> wrap[1/Epsilon],
-						1/EpsilonUV -> wrap[1/EpsilonUV],
-						1/EpsilonIR -> wrap[1/EpsilonIR]
+		Which[
+			dVal === 4 - 2 Epsilon,
+				pref = 1,
+			dVal === 4 -  Epsilon,
+				pref = 2,
+			True,
+				Message[FCHideEpsilon::failmsg,"Unknown choice for D"];
+				Abort[]
+		];
+
+
+
+		tmp = tmp/. {	1/Epsilon -> wrap[pref/Epsilon]/pref,
+						1/EpsilonUV -> wrap[pref/EpsilonUV]/pref,
+						1/EpsilonIR -> wrap[pref/EpsilonIR]/pref
 		};
 
-		tmp = tmp /. { 	wrap[1/Epsilon] -> SMP["Delta"] + EulerGamma - Log[4Pi],
-						wrap[1/EpsilonUV] -> SMP["Delta_UV"] + EulerGamma - Log[4Pi],
-						wrap[1/EpsilonIR] -> SMP["Delta_IR"] + EulerGamma - Log[4Pi]
+		tmp = tmp /. { 	wrap[pref/Epsilon] -> SMP["Delta"] + EulerGamma - Log[4Pi],
+						wrap[pref/EpsilonUV] -> SMP["Delta_UV"] + EulerGamma - Log[4Pi],
+						wrap[pref/EpsilonIR] -> SMP["Delta_IR"] + EulerGamma - Log[4Pi]
 		};
 
 		If[	OptionValue[Collecting],
@@ -64,11 +88,23 @@ FCHideEpsilon[expr_, OptionsPattern[]] :=
 	];
 
 FCShowEpsilon[expr_, OptionsPattern[]] :=
-	Block[{tmp},
+	Block[{tmp,pref, dVal},
 
-		tmp = expr/. { SMP["Delta"] -> 1/Epsilon - EulerGamma + Log[4Pi],
-					SMP["DeltaUV"] -> 1/EpsilonUV - EulerGamma + Log[4Pi],
-					SMP["DeltaIR"] -> 1/EpsilonIR - EulerGamma + Log[4Pi]
+		dVal = OptionValue[D];
+
+		Which[
+			dVal === 4 - 2 Epsilon,
+				pref = 1,
+			dVal === 4 -  Epsilon,
+				pref = 2,
+			True,
+				Message[FCShowEpsilon::failmsg,"Unknown choice for D"];
+				Abort[]
+		];
+
+		tmp = expr/. { SMP["Delta"] -> pref/Epsilon - EulerGamma + Log[4Pi],
+					SMP["DeltaUV"] -> pref/EpsilonUV - EulerGamma + Log[4Pi],
+					SMP["DeltaIR"] -> pref/EpsilonIR - EulerGamma + Log[4Pi]
 		};
 
 		tmp
