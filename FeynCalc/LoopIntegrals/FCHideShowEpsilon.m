@@ -103,8 +103,8 @@ FCShowEpsilon[expr_, OptionsPattern[]] :=
 		];
 
 		tmp = expr/. { SMP["Delta"] -> pref/Epsilon - EulerGamma + Log[4Pi],
-					SMP["DeltaUV"] -> pref/EpsilonUV - EulerGamma + Log[4Pi],
-					SMP["DeltaIR"] -> pref/EpsilonIR - EulerGamma + Log[4Pi]
+					SMP["Delta_UV"] -> pref/EpsilonUV - EulerGamma + Log[4Pi],
+					SMP["Delta_IR"] -> pref/EpsilonIR - EulerGamma + Log[4Pi]
 		};
 
 		tmp
