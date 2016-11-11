@@ -894,7 +894,7 @@ Eps[x__Symbol | x__FCGV, OptionsPattern[]] :=
 	0/; Signature[{x}]===0 && Length[{x}]===4;
 
 Eps[a___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], b___,
-	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___ ] :=
+	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___, OptionsPattern[]] :=
 	0 /; NumberQ[n1 n2] &&
 	Length[{a,n1,b,n2,c}]===4;
 

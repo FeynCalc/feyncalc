@@ -355,6 +355,7 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 	" Eps[a, LorentzIndex[mu, D1], b, c, Dimension -> D2]"},
 {"fcstSharedObjectsBehavior-ID83", "Eps[a, Momentum[mu, D], b, c]", " Eps[a, Momentum[mu], b ,c]"},
 {"fcstSharedObjectsBehavior-ID84", "Eps[a, Momentum[mu, D1], b, c, Dimension -> D2]", " Eps[a, Momentum[mu, D1], b, c, Dimension -> D2]"},
+{"fcstSharedObjectsBehavior-ID84.1", "Eps[a, Momentum[mu, D], b, Momentum[mu, D], Dimension->D]", "0"},
 {"fcstSharedObjectsBehavior-ID85", "SUNIndex[ExplicitSUNIndex[a]]", " ExplicitSUNIndex[a]"},
 {"fcstSharedObjectsBehavior-ID86", "SUNIndex[ExplicitSUNIndex[2]]", " ExplicitSUNIndex[2]"},
 {"fcstSharedObjectsBehavior-ID87", "FAD[-a]", " FAD[a]"},
