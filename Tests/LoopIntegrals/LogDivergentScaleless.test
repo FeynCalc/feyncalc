@@ -24,5 +24,15 @@ PropagatorDenominator[Momentum[q, D], 0]]"},
 {"fcstLogDivergentScaleless-ID4",
 "FCLoopIsolate[FAD[{q,0},{q,0}],{q},Head\[Rule]lInt]",
 "lInt[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0], \
-PropagatorDenominator[Momentum[q, D], 0]]]"}
+PropagatorDenominator[Momentum[q, D], 0]]]"},
+{"fcstLogDivergentScaleless-ID5","TID[FVD[q, mu] FVD[q, nu] FAD[{q, 0, 3}], q] // FCE","(FAD[q, q] MTD[mu, nu])/D"},
+{"fcstLogDivergentScaleless-ID6","TID[SPD[q, q] FAD[{q, 0, 3}], q] // FCE","FAD[q, q]"},
+{"fcstLogDivergentScaleless-ID7","TID[LCD[][q, a, b, c] LCD[][q, aa, bb, cc] FAD[{q, 0, 3}], q] // FCE",
+"-(1/D)(3 - D) FAD[q,
+q] (SPD[a, cc] SPD[aa, c] SPD[b, bb] -
+	SPD[a, bb] SPD[aa, c] SPD[b, cc] -
+	SPD[a, cc] SPD[aa, b] SPD[bb, c] +
+	SPD[a, aa] SPD[b, cc] SPD[bb, c] +
+	SPD[a, bb] SPD[aa, b] SPD[c, cc] -
+	SPD[a, aa] SPD[b, bb] SPD[c, cc])"}
 });

@@ -199,7 +199,9 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		(*	Remove massless tadpoles (vanish in DR)	*)
 		If[!$KeepLogDivergentScalelessIntegrals,
 			tmp = tmp /. {_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0},
-			tmp = tmp /. {_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0}
+			If[	(tmp/. FeynAmpDenominator[___]->1)===1,
+				tmp = tmp /. {_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0}
+			]
 		];
 
 		FCPrint[3, "FDS: fdsOneLoop: After removing massless tadpoles:  ", tmp, FCDoControl->fdsVerbose];
