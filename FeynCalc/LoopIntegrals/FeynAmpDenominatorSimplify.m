@@ -157,17 +157,17 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		(*	The input of fdsOneLoop is guaranteed to contain
 			only a signle 1-loop integral. This makes many things simpler.	*)
 
-		FCPrint[3, "fdsOneLoop: Entering with: ", loopInt, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: Entering with: ", loopInt, FCDoControl->fdsVerbose];
 
 		(* 	Order the propagators such, that the massless propagator with the smalles
 			number of the external momenta goes first. This is not the standard ordering,
 			but it is useful as the first step to bring the integral into canonical form	*)
 		tmp = loopInt /. FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
-		FCPrint[3, "fdsOneLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Integrals that are antisymmetric under q->-q are removed	*)
 		tmp = removeAnitsymmetricIntegrals[tmp,q];
-		FCPrint[3, "fdsOneLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
 
 		(* Special trick for same mass propagators to avoid terms like 1/[q^2-m^2] [(q-p)^2-m^2]^3 instead of
 			1/[q^2-m^2]^3 [(q-p)^2-m^2] *)
@@ -177,7 +177,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}];
 
-		FCPrint[3, "fdsOneLoop: After using special trick for same mass propagators:  ", tmp, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: After using special trick for same mass propagators:  ", tmp, FCDoControl->fdsVerbose];
 
 		(* Special trick for massless propagators to avoid terms like 1/q^2 [(q-p)^2]^3 instead of
 			1/[q^2]^3 [(q-p)^2] *)
@@ -187,14 +187,14 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 
-		FCPrint[3, "fdsOneLoop: After using special trick for massless propagators:  ", tmp, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: After using special trick for massless propagators:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Perform a shift to make the very first propagator free of external momenta	*)
 		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q,dim_:4]+pe_, m_],rest___]/; FreeQ[pe,q] :>
 					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
 
-		FCPrint[3, "fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Remove massless tadpoles (vanish in DR)	*)
 		If[!$KeepLogDivergentScalelessIntegrals,
@@ -207,29 +207,39 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		(*	If the integral topology is more complicated than a massive tadpole, then
 			we possibly need to do some shifts *)
 		If[ Length[Union[{props}]]>1,
-			FCPrint[3, "fdsOneLoop: The integral is at least a bubble:  ", tmp, FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsOneLoop: The integral is at least a bubble:  ", tmp, FCDoControl->fdsVerbose];
 			tmp=fdsOneLoopsGeneric[tmp,q]
 		];
 
-		FCPrint[3, "fdsOneLoop: After doing additional shifts: ", tmp, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: After doing additional shifts: ", tmp, FCDoControl->fdsVerbose];
 
 		If[	tmp===0,
 			Return[0],
 			res = tmp
 		];
-
+		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
 		(* 	After the shifts our single integral usually turns into a sum of
 			integrals with different numerators. Some of them might vanish by symmetry	*)
+
 		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True],q];
+		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
+
 		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
+		FCPrint[3, "FDS: fdsOneLoop: tmpNew: ", tmpNew, FCDoControl->fdsVerbose];
+
 		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
+		FCPrint[3, "FDS: fdsOneLoop: solsList: ", solsList, FCDoControl->fdsVerbose];
+
 		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
+		FCPrint[3, "FDS: fdsOneLoop: repRule: ", repRule, FCDoControl->fdsVerbose];
+
 		res = tmpNew[[1]] + (tmpNew[[2]]/.repRule);
+		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
 
 		(*	Finally, order all the propagators canonically	*)
 		res = res /. FeynAmpDenominator :> feynord[{q}];
-		FCPrint[3, "fdsOneLoop: Final ordering: ", res, FCDoControl->fdsVerbose];
-		FCPrint[3, "fdsOneLoop: Leaving with: ", res, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: Final ordering: ", res, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoop: Leaving with: ", res, FCDoControl->fdsVerbose];
 
 		res
 	]/; !FreeQ[{props},q];
@@ -241,7 +251,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 	Block[ {prs, prs2, canonicalProps,shiftList,res,null1,null2},
 
-		FCPrint[3, "FDS: fdsOneLoop: fdsOneLoopsGeneric: Entering with ", expr, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoopsGeneric: Entering with ", expr, FCDoControl->fdsVerbose];
 
 		(*	Convert the integral to a more suitable form, i.e. 1/[q^2-m1^2][(q+p)^2-m2^2]
 			becomes  {q,q+p}	*)
@@ -254,7 +264,7 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 		shiftList = FixedPoint[fdsOneLoopsShiftMaker[#[[1]],q,canonicalProps,#[[2]]]&,{prs,{}},Length[prs]-1][[2]];
 		shiftList = shiftList/.Momentum->extractm;
 
-		FCPrint[3, "fdsOneLoopsGeneric: List of the shifts to be applied: ", shiftList, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoopsGeneric: List of the shifts to be applied: ", shiftList, FCDoControl->fdsVerbose];
 
 		(* Apply the shifts succesively *)
 		res = expr;
@@ -288,7 +298,7 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 			]
 		];
 
-		FCPrint[3, "FDS: fdsOneLoop: fdsOneLoopsGeneric: Leaving with ", res, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsOneLoopsGeneric: Leaving with ", res, FCDoControl->fdsVerbose];
 		res
 	];
 
@@ -298,17 +308,17 @@ fdsOneLoopsShiftMaker[prs_List, q_, canonicalProps_List, acceptedShifts_List] :=
 	fdsOneLoopsShiftMaker[prs, q, canonicalProps, acceptedShifts]=
 		Block[{needShift, newCanonicalProps, P, allShifts,goodShifts,shift,res,betterForm,weightedShifts,weightedShift},
 
-			FCPrint[3, "fdsOneLoopsShiftMaker: Entering with ", prs, " ", FCDoControl->fdsVerbose];
-			FCPrint[3, "fdsOneLoopsShiftMaker: Already accepted shifts ", acceptedShifts, " ", FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsOneLoopsShiftMaker: Entering with ", prs, " ", FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsOneLoopsShiftMaker: Already accepted shifts ", acceptedShifts, " ", FCDoControl->fdsVerbose];
 
 			needShift = Select[prs, (! checkOneLoopProp[#,canonicalProps]) &];
-			FCPrint[3, "fdsOneLoopsShiftMaker: Propagators that might need a shift ", needShift, FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsOneLoopsShiftMaker: Propagators that might need a shift ", needShift, FCDoControl->fdsVerbose];
 
 			newCanonicalProps = Union[canonicalProps,createOneLoopCanonicalPropsList[prs,q,False]];
 			allShifts = Flatten[Map[createOneLoopShiftingList[#,q,newCanonicalProps] &, needShift]];
 			weightedShifts=Map[checkOneLoopShift[prs, #,q, Union[canonicalProps,newCanonicalProps]]&,allShifts]//Union;
 
-			FCPrint[3, "fdsOneLoopsShiftMaker: List of all shifts that produce canonical propagators (weighted) ",
+			FCPrint[3, "FDS: fdsOneLoopsShiftMaker: List of all shifts that produce canonical propagators (weighted) ",
 				weightedShifts, FCDoControl->fdsVerbose];
 
 			(* This is again pure heuristics. We always accept shifts that increase the number of canonical
@@ -342,10 +352,10 @@ fdsOneLoopsShiftMaker[prs_List, q_, canonicalProps_List, acceptedShifts_List] :=
 				]
 			];
 
-			FCPrint[3, "fdsOneLoopsShiftMaker: Chosen shift: ", shift, FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsOneLoopsShiftMaker: Chosen shift: ", shift, FCDoControl->fdsVerbose];
 
 			res = {signFixOneLoop[Expand[prs/.shift],q],Flatten[Join[acceptedShifts,{shift}]]};
-			FCPrint[3, "fdsOneLoopsShiftMaker: Leaving with ", res, FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsOneLoopsShiftMaker: Leaving with ", res, FCDoControl->fdsVerbose];
 
 			res
 		];
