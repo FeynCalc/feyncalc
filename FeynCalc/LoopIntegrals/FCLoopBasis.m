@@ -61,6 +61,14 @@ FCLoopBasisExtract::nodims=
 "Error! FCLoopBasisExtract is unable to build up a list of possible scalar products, because the supplied \
 dimensions are not present in the given expression. Evaluation aborted."
 
+FCLoopBasisFindCompletion::failmsg =
+"Error! FCLoopBasisFindCompletion has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
+FCLoopBasisIncompleteQ::failmsg =
+"Error! FCLoopBasisIncompleteQ has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 Begin["`Package`"]
 End[]
 
@@ -81,6 +89,7 @@ Options[FCLoopBasisOverdeterminedQ] = {
 Options[FCLoopBasisFindCompletion] = {
 	FCI -> False,
 	FCVerbose -> False,
+	Method -> ScalarProduct,
 	SetDimensions-> {4,D}
 };
 
@@ -151,7 +160,7 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 ];
 
 FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose},
+	Block[ {ex, vecs, ca, res, fclbVerbose, rank, len},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -177,20 +186,22 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCLoopBasisIncompleteQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
-		(* Finally, convert all these polynomials into vectors ... *)
-		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
+		len = Length[vecs[[2]]];
+		FCPrint[3,"FCLoopBasisIncompleteQ: len: ", len, FCDoControl->fclbVerbose];
 
-		FCPrint[3,"FCLoopBasisIncompleteQ: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
+		(* Finally, compute the rank of the propagator matrix *)
+		rank = getRank[vecs[[1;;2]]];
 
-		(* ... and check if those vectors form a basis  *)
+		FCPrint[3,"FCLoopBasisIncompleteQ: rank: ", rank, FCDoControl->fclbVerbose];
 
 		(* Consistency check: rank cannot be bigger than the number of columns or rows! *)
-		If[	MatrixRank[Transpose[Last[ca]]] > Length[vecs[[2]]],
-			Message[""];
+		If[	rank > len,
+			Message[FCLoopBasisIncompleteQ::failmsg, "The rank became larger than the number of columns/rows."];
 			Abort[]
 		];
 
-		res = (MatrixRank[Transpose[Last[ca]]] < Length[vecs[[2]]]);
+		res = (rank < len);
+
 		res
 	];
 
@@ -227,15 +238,13 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
 
 		(* ... and check if some of those vectors are linearly dependent *)
-
-
-
 		res = (NullSpace[Transpose[Last[ca]]] =!= {});
 		res
 	];
 
 FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps},
+	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps={}, method,
+			missingSPs, oldRank, newRank, len},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -243,6 +252,8 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 				fclbVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		method = OptionValue[Method];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
@@ -254,38 +265,80 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	FCLoopBasisOverdeterminedQ[ex,lmoms, SetDimensions->OptionValue[SetDimensions],FCI->True],
+		vecs= FCLoopBasisExtract[ex, lmoms, OptionValue[SetDimensions]];
+		FCPrint[3,"FCLoopBasisFindCompletion: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
+
+		(* Finally, convert all these polynomials into vectors ... *)
+		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
+		FCPrint[3,"FCLoopBasisFindCompletion: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
+
+		len = Length[vecs[[2]]];
+		oldRank = MatrixRank[Transpose[Last[ca]]];
+
+		(* If the basis is overcomplete, stop here *)
+		If[	NullSpace[Transpose[Last[ca]]] =!= {},
 			Message[FCLoopBasisFindCompletion::basisoverdet, ToString[ex,InputForm]];
 			Abort[]
 		];
 
 		(* If the basis is already complete, then the completion is just unity *)
-		If[	!FCLoopBasisIncompleteQ[ex,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],
+		If [oldRank === len,
 			Return[{{ex},{1}}];
 		];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, OptionValue[SetDimensions]];
+		(* There are different possibilities to complete the basis *)
+		Catch[
+			Which[
+				(* 	The main idea is quite simple: We compute the nullspace and contract each of the null space vectors
+					with the list of the loop momentum dependent scalar products. This is quite fast, but the extra propagators
+					may look very ugly.	*)
+				method===NullSpace,
+				extraVectors = NullSpace[Last[ca]];
 
-		FCPrint[3,"FCLoopBasisFindCompletion: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
+				(* Check that the nullspace is not empty *)
+				If[	extraVectors==={},
+					Message[FCLoopBasisFindCompletion::fail, ToString[ex,InputForm]];
+					Abort[]
+				];
 
-		(* Finally, convert all these polynomials into vectors ... *)
-		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
+				FCPrint[3,"FCLoopBasisFindCompletion: extraVectors: ", extraVectors, FCDoControl->fclbVerbose];
 
-		FCPrint[3,"FCLoopBasisFindCompletion: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
+				(* Determine what propagators must be added to complete the basis*)
+				extraProps = Map[Dot[vecs[[2]],#]&,extraVectors];
 
-		extraVectors = NullSpace[Last[ca]];
+				FCPrint[3,"FCLoopBasisFindCompletion: extraProps: ", extraProps, FCDoControl->fclbVerbose],
 
-		(* Check that the nullspace is not empty *)
-		If[	extraVectors==={},
-			Message[FCLoopBasisFindCompletion::fail, ToString[ex,InputForm]];
-			Abort[]
+				(* 	Another possibility is to introduce loop-momentum dependent scalar products only. This is nicer
+					for IBP, but is also slower, because we need to check for every scalar product, if it increases
+					the rank of the matrix. *)
+				method===ScalarProduct,
+
+				FCPrint[3,"FCLoopBasisFindCompletion: oldRank: ", oldRank, FCDoControl->fclbVerbose];
+				Scan[
+					(
+					newRank = getRank[{Join[vecs[[1]], extraProps,{#}],vecs[[2]]}];
+					FCPrint[3,"FCLoopBasisFindCompletion: newRank: ", newRank, FCDoControl->fclbVerbose];
+					If[	newRank === len,
+						(* Completion found, now leave *)
+						extraProps = Append[extraProps, #];
+						FCPrint[3,"FCLoopBasisFindCompletion: Completion found, leaving.", FCDoControl->fclbVerbose];
+						Throw[1],
+						(* Otherwise, decide if this scalar products increases the matrix rank*)
+						If[ newRank>oldRank,
+							oldRank = newRank;
+							extraProps = Append[extraProps, #]
+						]
+					])&,
+					vecs[[2]]
+				],
+				True,
+				Message[FCLoopBasisFindCompletion::failmsg,"Unknown method for basis completion."];
+				Abort[]
+			];
 		];
 
-		(* Determine what propagators must be added to complete the basis*)
-		extraProps = Map[Dot[vecs[[2]],#]&,extraVectors];
-
 		(* Check that with those propagators the basis is now complete *)
-		If[	FCLoopBasisIncompleteQ[(Times@@extraProps)  ex,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],
+		If [getRank[{Join[vecs[[1]], extraProps],vecs[[2]]}] =!= len,
 			Message[FCLoopBasisFindCompletion::notcomplete, ToString[ex,InputForm]];
 			Abort[]
 		];
@@ -293,6 +346,13 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		res = {ex, extraProps};
 
 		res
+	];
+
+
+(* Compute rank of the propagator matrix. Safe for memoization	*)
+getRank[x_List]:=
+	MemSet[getRank[x],
+		MatrixRank[Transpose[Last[Normal[CoefficientArrays@@x]]]]
 	];
 
 FCPrint[1,"FCLoopBasis.m loaded."];
