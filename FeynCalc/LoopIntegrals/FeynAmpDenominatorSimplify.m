@@ -750,23 +750,28 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 			];
 
 		basic = {
+			(* stuff/(q2-q1) -> stuff'/(q1), where stuff is free of q2 *)
 			FCIntegral[anyf_[a___, Momentum[q1,di_], b___]*
 			FeynAmpDenominator[c___,pro:PD[Momentum[q2,di_]-Momentum[q1,di_],_].., d___]] :>
 				Calc[(anyf[a,Momentum[q1,di], b] FeynAmpDenominator[c,pro,d]) /.q1-> -q1+q2] /;
 				FreeQ[{a,anyf,b,c,d}, q1],
 
+			(* stuff/(q2-q1) -> stuff'/(q2), where stuff is free of q1 *)
 			FCIntegral[anyf_[a___, Momentum[q2,di_], b___]*
 			FeynAmpDenominator[c___,pro:PD[Momentum[q2,di_]-Momentum[q1,di_],_].., d___]] :>
 				Calc[(anyf[a,Momentum[q2,di], b] FeynAmpDenominator[c,pro,d]) /. q2-> -q2+q1] /;
 				FreeQ[{a,anyf,b,c,d}, q2],
-			(*A_mu NNEWWW CORRECTED*)
+
+			(* stuff*q1.x/q1-m^2 vanishes by symmetry, where stuff is free of q1 *)
 			FCIntegral[anyf_[a___,Momentum[q1,___], b___]*
 			FeynAmpDenominator[ c___, PD[Momentum[q1,___], _]..,d___]] :>
 			(FCPrint[3,"Amu 1"]; 0) /; FreeQ[{a,anyf,b,c,d},q1],
 
+			(* stuff*q2.x/q2-m^2 vanishes by symmetry, where stuff is free of q2 *)
 			FCIntegral[anyf_[a___,Momentum[q2,___], b___]*
 			FeynAmpDenominator[ c___, PD[Momentum[q2,___], _]..,d___]] :>
 			(FCPrint[3,"Amu 2"]; 0) /; FreeQ[{a,anyf,b,c,d},q2],
+
 
 			FCIntegral[_. FeynAmpDenominator[aa__ ]] :>
 			(FCPrint[3,"Amu 3"]; 0) /;
@@ -808,9 +813,11 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 				Map[topi,y];
 			topi[y_Times] :=
 				SelectFree[y,{q1,q2}] topi2[SelectNotFree[y,{q1,q2}]];
-
+			FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before topi", exp, "", FCDoControl->fdsVerbose];
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
+			FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: After topi", exp, "", FCDoControl->fdsVerbose];
 			exp = exp /. basic /. FCIntegral -> Identity;
+			FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: After basic", exp, "", FCDoControl->fdsVerbose];
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :>
 					FCIntegral[a//FeynCalcExternal];
 			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :>
