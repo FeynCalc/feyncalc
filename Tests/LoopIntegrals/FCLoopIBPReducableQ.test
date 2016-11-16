@@ -1,0 +1,33 @@
+
+
+(* :Title: fcstFCLoopIBPReducableQ.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for fcstFCLoopIBPReducableQ	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopIBPReducableQ =
+({
+{"fcstFCLoopIBPReducableQ-ID1", "FCLoopIBPReducableQ[0]",
+"FCLoopIBPReducableQ[0]"},
+{"fcstFCLoopIBPReducableQ-ID2",
+"FCLoopIBPReducableQ[FCI[FAD[{q,0,1}]]]", "False"},
+{"fcstFCLoopIBPReducableQ-ID3",
+"FCLoopIBPReducableQ[FCI[FAD[{q,0,2}]]]", "True"},
+{"fcstFCLoopIBPReducableQ-ID4",
+"FCLoopIBPReducableQ[FCI[SPD[q,q]FAD[{q,0,1}]]]", "False"},
+{"fcstFCLoopIBPReducableQ-ID5",
+"FCLoopIBPReducableQ[FCI[SPD[q,q]^2FAD[{q,0,1}]]]", "True"},
+{"fcstFCLoopIBPReducableQ-ID6",
+"FCLoopIBPReducableQ[FCI[SPD[q,q]^2FAD[{q,0,1},{q+p,m,2}]]]",
+"True"},
+{"fcstFCLoopIBPReducableQ-ID7",
+"FCLoopIBPReducableQ[FCI[SPD[q,r]FAD[{q,0,1},{q+p,m,2}]]]", "True"}
+});
