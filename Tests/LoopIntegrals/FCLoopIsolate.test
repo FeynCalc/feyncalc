@@ -63,5 +63,7 @@ GA[j] . GSD[i] . GA[5]*SUNT[a]*FCGV[\"LoopInt\"][FAD[{q, m}]*FVD[q, i]]"},
 {"fcstFCLoopIsolate-ID17","FCLoopIsolate[x*A0[m^2], {q}]","x FCGV[\"LoopInt\"][A0[m^2]]"},
 {"fcstFCLoopIsolate-ID17","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q}] // FCE","FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l + p, k + q]]"},
 {"fcstFCLoopIsolate-ID18","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q},ExpandScalarProduct -> True] // FCE",
-"(SPD[k, l] + SPD[k, p]) FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l, q]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[p, q]]"}
+"(SPD[k, l] + SPD[k, p]) FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l, q]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[p, q]]"},
+{"fcstFCLoopIsolate-ID19","FCLoopIsolate[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q},
+Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]"}
 };
