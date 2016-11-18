@@ -106,5 +106,10 @@ Momentum[q1, D]], Pair[Momentum[l1, D], Momentum[q2, D]]}}"},
 {"fcstFCLoopBasisFindCompletion-ID7","FCLoopBasisFindCompletion[
 FAD[q1, q2, {q1 - l1, m1}, {q2 - l2, m2}], {q1, q2}] // FCE",
 "{FAD[q1, q2, {-l1 + q1, m1}, {-l2 + q2, m2}], {SPD[l1, q2],
-SPD[l2, q1], SPD[q1, q2]}}"}
+SPD[l2, q1], SPD[q1, q2]}}"},
+{"fcstFCLoopBasisFindCompletion-ID8","FCLoopBasisFindCompletion[FAD[q1 + p,
+q2 - k] SPD[q1, q2], {q1, q2}, Method -> { FAD[{q2 + k, m}], FAD[{q1 - p, m}],
+SPD[p, q2], SPD[k, q1]}]//FCE",
+"{FAD[p + q1, -k + q2] SPD[q1, q2], {FAD[{k + q2, m}],
+FAD[{-p + q1, m}], SPD[p, q2], SPD[k, q1]}}"}
 });

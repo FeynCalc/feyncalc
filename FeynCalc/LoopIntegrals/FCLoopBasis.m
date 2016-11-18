@@ -74,6 +74,8 @@ End[]
 
 Begin["`FCLoopBasis`Private`"]
 
+null::usage="";
+
 Options[FCLoopBasisIncompleteQ] = {
 	FCI -> False,
 	FCVerbose -> False,
@@ -244,7 +246,7 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps={}, method,
-			missingSPs, oldRank, newRank, len},
+			missingSPs, oldRank, newRank, len,prs={},null},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -254,6 +256,20 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		method = OptionValue[Method];
+
+		If[	Head[method]===List && method=!={},
+			FCPrint[1,"FCLoopBasisFindCompletion: Using user-supplied propagators to complete the basis.",
+				FCDoControl->fclbVerbose];
+			prs = ExpandScalarProduct[FCI[method],Momentum->lmoms];
+			FCPrint[3,"FCLoopBasisFindCompletion: prs: ", prs, FCDoControl->fclbVerbose];
+			If[ Union[Flatten[propCheck/@prs]]=!={True},
+				Message[FCLoopBasisFindCompletion::failmsg,"User-supplied propagators are not in a proper form."];
+				Abort[]
+			];
+			method=ScalarProduct;
+
+
+		];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
@@ -316,7 +332,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 				FCPrint[3,"FCLoopBasisFindCompletion: oldRank: ", oldRank, FCDoControl->fclbVerbose];
 				Scan[
 					(
-					newRank = getRank[{Join[vecs[[1]], extraProps,{#}],vecs[[2]]}];
+					newRank = getRank[{Join[vecs[[1]], fdsInvert[extraProps], {fdsInvert[#]}],vecs[[2]]}];
 					FCPrint[3,"FCLoopBasisFindCompletion: newRank: ", newRank, FCDoControl->fclbVerbose];
 					If[	newRank === len,
 						(* Completion found, now leave *)
@@ -329,7 +345,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 							extraProps = Append[extraProps, #]
 						]
 					])&,
-					vecs[[2]]
+					If[prs==={},vecs[[2]],prs]
 				],
 				True,
 				Message[FCLoopBasisFindCompletion::failmsg,"Unknown method for basis completion."];
@@ -338,7 +354,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		(* Check that with those propagators the basis is now complete *)
-		If [getRank[{Join[vecs[[1]], extraProps],vecs[[2]]}] =!= len,
+		If [getRank[{Join[vecs[[1]], fdsInvert[extraProps]],vecs[[2]]}] =!= len,
 			Message[FCLoopBasisFindCompletion::notcomplete, ToString[ex,InputForm]];
 			Abort[]
 		];
@@ -348,6 +364,13 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		res
 	];
 
+
+fdsInvert[x_]:=
+	(x/.f_FeynAmpDenominator:> 1/PropagatorDenominatorExplicit[f]);
+
+propCheck[x_]:=
+	MatchQ[#, ((c_. FeynAmpDenominator[__])/;FreeQ[c, Pair])|((c_. Pair[__])/;FreeQ[c, Pair])|(c_/;FreeQ[c, Pair])]&/@(List@@(Expand2[x, Pair]+null) /.
+		null -> Unevaluated[Sequence[]]);
 
 (* Compute rank of the propagator matrix. Safe for memoization	*)
 getRank[x_List]:=
