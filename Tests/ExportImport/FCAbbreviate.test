@@ -1,0 +1,23 @@
+
+
+(* :Title: FCAbbreviate.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCAbbreviate	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`ExportImport`fcstFCAbbreviate = ({
+{"fcstCompleteSquare-ID1", "FCAbbreviate[(a + I b)^2, {}, {}]",
+"{{}, {}, {a -> var1, b -> var2}}"},
+{"fcstCompleteSquare-ID2", "FCAbbreviate[SPD[p, k] FAD[{q, SMP[\"m_e\"]}, {q + p, m}], {q}, {p, k},
+Head -> spd]",
+"{{spd[k, k] -> sp1, spd[k, p] -> sp2, spd[p, p] -> sp3}, {SMP[\"m_e\"] -> sm1},
+{m -> var1}}"}
+})
