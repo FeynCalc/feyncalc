@@ -65,5 +65,7 @@ GA[j] . GSD[i] . GA[5]*SUNT[a]*FCGV[\"LoopInt\"][FAD[{q, m}]*FVD[q, i]]"},
 {"fcstFCLoopIsolate-ID18","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q},ExpandScalarProduct -> True] // FCE",
 "(SPD[k, l] + SPD[k, p]) FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l, q]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[p, q]]"},
 {"fcstFCLoopIsolate-ID19","FCLoopIsolate[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q},
-Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]"}
+Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]"},
+{"fcstFCLoopIsolate-ID20","FCLoopIsolate[Foobar[x], {}, PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads],
+{Foobar}],Head -> loop]","loop[Foobar[x]]"}
 };
