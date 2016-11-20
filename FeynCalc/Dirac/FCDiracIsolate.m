@@ -39,7 +39,7 @@ Options[FCDiracIsolate] = {
 	Expanding -> True,
 	FCI -> False,
 	Factoring -> Factor,
-	Lorentz -> False,
+	LorentzIndex -> False,
 	Head -> FCGV["DiracChain"],
 	Split -> True,
 	Isolate -> False,
@@ -92,7 +92,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			ex = Collect2[ex,DiracHeadsList,Factoring->OptionValue[Factoring]];
 		];
 
-		If[ OptionValue[Lorentz],
+		If[ OptionValue[LorentzIndex],
 			res = (Map[(selectionList=makeSelectionList[#,DiracHeadsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
 			res = (Map[(restHead[SelectFree[#, DiracHeadsList]] head[SelectNotFree[#, DiracHeadsList]]) &,

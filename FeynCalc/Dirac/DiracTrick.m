@@ -123,7 +123,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			(*	This is the standard mode for calling DiracTrick	*)
 
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],Lorentz->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],LorentzIndex->True];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
