@@ -55,3 +55,4 @@ $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGGToGGTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQuarkSelfEnergyOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGluonSelfEnergyOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGhostSelfEnergyTwoLoops.m
+$MATH -nopromt -script ../FeynCalc/Examples/FeynRules/QCDBGF/PureYMSelfEnergyInQCDBGFAtOneLoop.m
