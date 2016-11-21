@@ -1,18 +1,20 @@
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+(* ::Package:: *)
 
-(* :Title: FeynCalcInternal *)
 
-(* :Author: Rolf Mertig *)
+
+(* :Title: FeynCalcInternal													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	Changes certain objects ("Symbols") into the FeynCalc
+				internal representation 									*)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 20 December '98 at 21:07 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Changes certain objects ("Symbols") into the FeynCalc
-						internal representation *)
-
-(* ------------------------------------------------------------------------ *)
-
 
 FCI::usage=
 "FCI is just an abbreviation of FeynCalcInternal.";
@@ -59,11 +61,18 @@ FeynCalcInternal[x_, opts___Rule] :=
 		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcInternal];
 		uru = Flatten[{uru}];
 
-		ru =  Join[
-			{SpinorU :> tospinor,
-			SpinorV :> tospinorv,
-			SpinorVBar :> tospinorv,
-			SpinorUBar :> tospinor,
+		ru =  Join[	{
+
+			SpinorU 	:> tospinor,
+			SpinorUBar	:> tospinor,
+			SpinorV		:> tospinorv,
+			SpinorVBar	:> tospinorv,
+
+			SpinorUD 	:> tospinorD,
+			SpinorUBarD	:> tospinorD,
+			SpinorVD	:> tospinorvD,
+			SpinorVBarD	:> tospinorvD,
+
 			SUNF :> tosunf,
 			MetricTensor :> metricT,
 			DiracMatrix  :> diracM,
@@ -102,29 +111,15 @@ FeynCalcInternal[x_, opts___Rule] :=
 			{PropagatorDenominator :> propagatorD},
 			{ScalarProduct :> scalarP},
 			{Dot -> DOT},
-			If[$BreitMaison === True,
-				{ChiralityProjector[1] :> 1/2 + 1/2 DiracGamma[5],
-				ChiralityProjector[-1]:> 1/2 - 1/2 DiracGamma[5]},
-				{ChiralityProjector[1] :> DiracGamma[6],
-				ChiralityProjector[-1]:> DiracGamma[7]}
-			]
+			{ChiralityProjector[1] :> DiracGamma[6]},
+			{ChiralityProjector[-1] :> DiracGamma[7]}
 		];
-		(* Dropped the last rules to avoid e.g.
-		(1/2 + DiracGamma[5]/2 // ExpandProductExpand ---> DiracGamma[6],
-		when $BreitMaison=True. 19/1-2003, F.Orellana*)
-		revru =
-			If[$BreitMaison === True,
-				Map[Reverse, Drop[ru, -2]],
-				Map[Reverse, ru]
-			];
+
+		revru = Map[Reverse, ru];
 
 		If[uru =!={},
 				ru = Join[ru,uru]
 		];
-		(*
-		Print["fci time = ",ti//FeynCalcForm];
-		Print["ru= ",ru];
-		*)
 
 		If[ru =!={}, ReplaceRepeated[x//.{
 			LC[a___][b___] :> lcl[{a},{b}],
@@ -373,14 +368,17 @@ levicivital[{x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]},{y:Except
 tosunf[a_, b_, c_] :=
 	SUNF@@Map[SUNIndex, ({a,b,c} /. SUNIndex->Identity)];
 
-tospinor[a__] :=
-	Spinor[a];
-tospinorv[a_,0,b__] :=
-	Spinor[a,0,b];
-tospinorv[a_] :=
-	Spinor[a];
-tospinorv[a_,b__] :=
-	Spinor[-a,b];
+tospinor[p_,m_:0,c_:1]:=
+	Spinor[Momentum[p],m,c];
+
+tospinorv[p_,m_:0,c_:1]:=
+	Spinor[-Momentum[p],m,c];
+
+tospinorD[p_,m_:0,c_:1]:=
+	Spinor[Momentum[p,D],m,c];
+
+tospinorvD[p_,m_:0,c_:1]:=
+	Spinor[-Momentum[p,D],m,c];
 
 FCPrint[1,"FeynCalcInternal.m loaded."];
 End[]

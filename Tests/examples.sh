@@ -17,6 +17,9 @@ if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 #Misc Examples
 $MATH -nopromt -script ../FeynCalc/Examples/Misc/Integrate2.m &&
 
+#Tdec Examples
+$MATH -nopromt -script ../FeynCalc/Examples/Tdec/GrossNeveuMultiloopTID.m &&
+
 #QED Examples
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDABJAxialAnomaly.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronGMinusTwoOneLoop.m &&
@@ -31,6 +34,10 @@ $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDThreePhotonDiagramsOneLoop.m 
 
 #EW Examples
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWMuonDecayTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronMuonNeutrinoToMuonElectronNeutrinoTree.m
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoFermionsTree.m
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToWPlusWMinusTree.m
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToZZTree.m
 
 #QCD Examples
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGammaStarGToQiQBari.m &&
@@ -48,3 +55,4 @@ $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGGToGGTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQuarkSelfEnergyOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGluonSelfEnergyOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGhostSelfEnergyTwoLoops.m
+$MATH -nopromt -script ../FeynCalc/Examples/FeynRules/QCDBGF/PureYMSelfEnergyInQCDBGFAtOneLoop.m

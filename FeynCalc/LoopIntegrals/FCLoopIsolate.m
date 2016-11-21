@@ -54,9 +54,11 @@ Options[FCLoopIsolate] = {
 	Expanding -> True,
 	FeynAmpDenominatorSplit -> True,
 	Factoring -> Factor,
+	FCLoopIBPReducableQ -> False,
 	Isolate -> False,
 	IsolateNames -> KK,
 	FCI -> False,
+	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList,
 	MultiLoop -> False,
 	PaVe->True
 };
@@ -65,7 +67,9 @@ fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z], Momentum[x_, _ : 4]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,lmoms,tmp},
+	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads},
+
+		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
 		If[	MatchQ[lmoms0,{{___}}],
 			Message[FCLoopIsolate::fail, ex];
@@ -73,7 +77,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[OptionValue[PaVe],
-			lmoms = Join[lmoms0,PaVeHeadsList],
+			lmoms = Join[lmoms0,loopIntHeads],
 			lmoms = lmoms0
 		];
 
@@ -125,7 +129,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[DropScaleless],
-			res  = res /. OptionValue[Head][z__]/; FreeQ2[z,Join[{FeynAmpDenominator},PaVeHeadsList]] :> 0;
+			res  = res /. OptionValue[Head][z__]/; FreeQ2[z,Join[{FeynAmpDenominator},loopIntHeads]] :> 0;
 		];
 
 		If[	OptionValue[Isolate],
@@ -141,6 +145,14 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		If [ OptionValue[MultiLoop],
 			res = res /. OptionValue[Head][z__]/; !fullDep[z,lmoms0] :> z;
 		];
+
+		(* Keep only integrals that are IBP-reducable *)
+		If [ OptionValue[FCLoopIBPReducableQ],
+			res = res /. OptionValue[Head][z__]/; !FCLoopIBPReducableQ[z] :> z;
+		];
+
+
+
 
 		res
 	];

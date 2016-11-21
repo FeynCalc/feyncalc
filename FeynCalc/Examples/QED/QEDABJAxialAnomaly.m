@@ -42,7 +42,7 @@ Explicit
 
 
 (* ::Text:: *)
-(*And the second one follows from the first by the interchanging k with p and la with nu*)
+(*And the second one follows from the first by interchanging k with p and la with nu*)
 
 
 amp2=amp1/.{k->p,p->k,la->nu,nu->la}
@@ -73,13 +73,12 @@ ampDotted3=TID[ampDotted2,l]//ToPaVe[#,l]&//EpsEvaluate
 
 (* ::Text:: *)
 (*The explicit values for the PaVe functions B0 and C0 can be obtained e.g. from H. Patel's Package-X. Here we just insert the known results. The *)
-(*C0 function is finite here, so that because of the prefactor (D-4) it gives no contribution in the D->4 limit.*)
+(*C0 function is finite here, so because of the prefactor (D-4) it gives no contribution in the D->4 limit.*)
 
 
 loopInts={B0[FCI@SPD[p_,p_],0,0]:>1/(16 Epsilon \[Pi]^4)-(-2+EulerGamma)/(16 \[Pi]^4)+Log[-((4 \[Pi] ScaleMu^2)/Pair[Momentum[p,D],Momentum[p,D]])]/(16 \[Pi]^4),
 B0[FCI[SPD[p,p]+2SPD[p,k]+SPD[k,k]],0,0]:>B0[FCI[SPD[k+p,k+p]],0,0],
-(D-4)ExpandScalarProduct[C0[SPD[k],SPD[p],SPD[k+p],0,0,0]]->0
-}
+(D-4)ExpandScalarProduct[C0[SPD[k],SPD[p],SPD[k+p],0,0,0]]->0}
 
 
 (* ::Text:: *)

@@ -53,6 +53,7 @@ cl2Verbose::usage="";
 Options[Collect2] = {
 	Denominator -> False,
 	Dot -> False,
+	FCFactorOut -> 1,
 	FCVerbose -> False,
 	Expanding -> True,
 	Factoring -> Factor,
@@ -83,7 +84,7 @@ Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
 Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,mp2,cd,co,dde,
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
-		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso},
+		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -97,6 +98,7 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			OptionValue[Expanding], OptionValue[Denominator],
 			OptionValue[IsolateFast]  };
 
+		factorOut = OptionValue[FCFactorOut];
 
 		Which[
 			OptionValue[Dot] === True,
@@ -118,18 +120,24 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		FCPrint[1,"Collect2: Entering Collect2.", FCDoControl->cl2Verbose];
 		FCPrint[2,"Collect2: Entering with: ", expr, FCDoControl->cl2Verbose];
 
+		nx = expr;
+
+		nx = nx/factorOut;
+
+		FCPrint[2,"Collect2: After factoring out ", factorOut, " :", nx,  FCDoControl->cl2Verbose];
+
 		monomList = Union[Select[ vv, ((Head[#] =!= Plus) && (Head[#] =!= Times) && (!NumberQ[#]))& ]];
-		monomList = Select[ monomList, !FreeQ[expr, #]&];
+		monomList = Select[ monomList, !FreeQ[nx, #]&];
 
 		FCPrint[1,"Collect2: Monomials w.r.t which we will collect: ", monomList, FCDoControl->cl2Verbose];
 
 		If[Length[monomList] === 0,
 			(* The expression is free of terms in momomList*)
 			unity = 1;
-			Return[expr]
+			Return[factorOut nx]
 		];
 
-		nx = expr;
+
 		(* Hm, that's a problem, maybe *)
 		If[!FreeQ[nx, ComplexConjugate],
 			ccflag = True;
@@ -253,6 +261,8 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		];
 
 		unity=1;
+
+		re = factorOut*re;
 
 		FCPrint[1,"Collect2: Leaving.", FCDoControl->cl2Verbose];
 		FCPrint[3,"Collect2: Leaving with", re, FCDoControl->cl2Verbose];

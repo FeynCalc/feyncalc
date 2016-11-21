@@ -41,7 +41,7 @@ If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 ];
 
 (*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "9.1.0";
+FeynCalc`$FeynCalcVersion = "9.2.0";
 
 (*    Set defaults here, not in the config file    *)
 If[ !ValueQ[Global`$FeynCalcStartupMessages],
@@ -216,6 +216,13 @@ GenerateTarcerMX::usage =
 TARCER and has to be done only once. The evaluation usually takes a
 couple of minutes."
 
+$KeepLogDivergentScalelessIntegrals::usage =
+"$KeepLogDivergentScalelessIntegrals is an experimental global option that forces \
+FeynCalc not to set 1-loop integrals of type 1/q^4 to zero. This is useful \
+when one has to explicitly distinguish between IR- and UV-divergences in \
+dimensional regularization. Notice that OneLoop is not guaranteed to respect this \
+option.";
+
 $IndexPrefix::usage =
 "$IndexPrefix is a list of prefixes for default Lorentz and color indices
 used by GluonPropagator and similar functions.";
@@ -223,16 +230,18 @@ used by GluonPropagator and similar functions.";
 $Larin::usage =
 "If set to True, the Larin-Gorishny-Atkyampo-DelBurgo-scheme for \
 gamma5 in D-dimensions is used, i.e. before evaluating traces \
-(but after moving gamma5 anticommuting in all dimensions to the \
-right of the Dirac string) a product  gamma[mu].gamma5 is \
-substituted to  -I/6 Eps[mu,al,be,si] gamma[al,be,si], \
+(but after moving gamma5 anticommuting in D-dimensions to the \
+right of the Dirac string inside a trace) a product  gamma[mu].gamma5 is \
+substituted to -I/6 Eps[mu,al,be,si] gamma[al,be,si], \
 where all indices live in D-dimensions now. \
-Especially the Levic-Civita tensor is taken to be \
+The Levi-Civita tensor is taken to be \
 D-dimensional, i.e., contraction of two Eps's results in D's. \
-This has (FOR ONE AXIAL-VECTOR-CURRENT ONLY, it is not so clear \
-if this scheme also works for more than one fermion line \
-involving gamma5) the same effect as the \
-Breitenlohner-Maison-'t Hooft-Veltman scheme.";
+This scheme is often used for performance reasons and is assumed \
+to give the same results as the \
+Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, gamma5 is \
+not anticommuting inside closed fermion loops and it is not so clear
+if this scheme works for more than one fermion line involving gamma5. \
+When in doubt, it might be better to use BMHV instead.";
 
 $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines \
@@ -438,6 +447,7 @@ $FCS = {
 };
 
 $IndexPrefix		= {"li","ci"};
+$KeepLogDivergentScalelessIntegrals = False;
 $Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
@@ -664,7 +674,7 @@ If[ !$Notebooks && Global`$FeynCalcStartupMessages,
 
 (* Print FeynCalc's startup message *)
 If[ Global`$FeynCalcStartupMessages =!= False,
-	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> ". For help, use the ",
+	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> " (development version). For help, use the ",
 				"Text"],
 			Style[DisplayForm@ButtonBox["documentation center", BaseStyle->"Link", ButtonData :> "paclet:FeynCalc/",
 				ButtonNote -> "paclet:FeynCalc/"], "Text"],

@@ -32,9 +32,10 @@ Begin["`FCLoopExtract`Private`"]
 Options[FCLoopExtract] = {
 	DropScaleless -> False,
 	FCI -> False,
+	FCLoopIBPReducableQ -> False,
 	FCLoopSplit -> {2,3,4},
-	FeynAmpDenominatorCombine -> True,
 	Factoring -> Factor,
+	FeynAmpDenominatorCombine -> True,
 	MultiLoop -> False,
 	PaVe -> True
 };
@@ -68,8 +69,8 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 									MultiLoop-> OptionValue[MultiLoop],
 									PaVe-> OptionValue[PaVe],
 									ExpandScalarProduct -> False,
-									Factoring->OptionValue[Factoring]];
-
+									Factoring->OptionValue[Factoring],
+									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ]];
 
 		(*	Extract unique loop integrals	*)
 		intsUnique = (Cases[loopInts+null1+null2,loopHead[__],Infinity]/.null1|null2->0)//Union;

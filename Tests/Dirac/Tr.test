@@ -46,14 +46,14 @@ Tests`Dirac`fcstTr = {
 	Pair[Momentum[p], Momentum[p]]*Pair[Momentum[p],
 	Momentum[Derivative[1][p]]]"},
 {"fcstTr-ID6",
-	"Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
+	"$BreitMaison=True; \n tmp = Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
 	Dimension -> D].DiracGamma[Momentum[p1]].DiracGamma[
 	Momentum[p2]].DiracMatrix[nu, Dimension -> D].DiracMatrix[b,
 	Dimension -> D].DiracGamma[Momentum[p2]].DiracGamma[
 	Momentum[p3]].DiracMatrix[a, Dimension -> D].DiracGamma[
 	Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
 	Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[Momentum[p2]],
-	PairCollect -> True]",
+	PairCollect -> True]; \n $BreitMaison=False; \n tmp",
 	"-4*((288 - 224*D + 56*D^2 - 4*D^3)*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1],
 	Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p2]] + (-256 + 128*D - 16*D^2)*Pair[Momentum[p1],
 	Momentum[p2]]^2*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] +
@@ -74,10 +74,9 @@ Tests`Dirac`fcstTr = {
 	Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
 	Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[
 	Momentum[p2]] /. D -> 4, PairCollect -> True]",
-	"-32*Pair[Momentum[p2], Momentum[p2]]*(4*Pair[Momentum[p1],
-	Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]^2 - 2*Pair[Momentum[p1],
-	Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] -
-	Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
+	"32*Pair[Momentum[p2], Momentum[p2]]*(-4*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1],
+	Momentum[p3]]^2 + 2*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2],
+	Momentum[p3]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
 	Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
 {"fcstTr-ID8",
 	"Contract[DiracTrace[DiracMatrix[a, b, rho,
@@ -101,7 +100,7 @@ Tests`Dirac`fcstTr = {
 	2*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] +
 	4*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
 {"fcST-TR-ID11",
-	"FCClearScalarProducts[]\n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+	"$BreitMaison=True; \n  FCClearScalarProducts[]; \n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
 	Dimension -> (d - 4)].DiracMatrix[a[6],
@@ -181,7 +180,8 @@ Tests`Dirac`fcstTr = {
 	Dimension -> (d - 4)]] // Expand","551768735744 - 731506905088*d +
 	427299186688*d^2 - 144858475520*d^3 + 31576821760*d^4 -
 	4629805312*d^5 + 463655808*d^6 - 31521600*d^7 +
-	1415040*d^8 - 39600*d^9 + 616*d^10 - 4*d^11"}
+	1415040*d^8 - 39600*d^9 + 616*d^10 - 4*d^11"},
+{"fcST-TR-ID15","Tr[DiracTrace[GA[i, j]]] // FCE","16 MT[i, j]"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =
@@ -1377,3 +1377,12 @@ LC[i1, i2, i3, i4]*MT[i10, i5]*MT[i6, i7]*MT[i8, i9] -
 LC[i1, i10, i4, i5]*MT[i2, i3]*MT[i6, i7]*MT[i8, i9] -
 LC[i1, i10, i2, i3]*MT[i4, i5]*MT[i6, i7]*MT[i8, i9])"}
 })
+
+Tests`Dirac`fcstTrLarin = {
+{"fcstTrLarin-ID1",
+	"Tr[GAD[i1, i2, i3, i4].GA[5]] // FCE", "-4 I LCD[i1, i2, i3, i4]"},
+{"fcstTrLarin-ID2",
+	"Tr[GSD[p2].GAD[n1].GSD[p1].GAD[mu2].GA[5]] // FCE", "4 I LCD[mu2, n1][p1, p2]"},
+{"fcstTrLarin-ID3",
+	"Tr[GAD[i1, i2, i3, i4].GA[5], TraceOfOne -> tt] // FCE", "-I tt LCD[i1, i2, i3, i4]"}
+};

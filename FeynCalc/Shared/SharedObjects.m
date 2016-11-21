@@ -432,16 +432,36 @@ Spinor[sign p, mass]  is that spinor which yields \
 sign*mass*Spinor[p, mass] if the Dirac equation is applied .";
 
 SpinorU::usage =
-"SpinorU[p, m] denotes a u-spinor.";
+"SpinorU[p, m] denotes a u-spinor that depends on the \
+4-dimensional momentum p";
 
 SpinorUBar::usage =
-"SpinorUBar[p, m] denotes a ubar-spinor.";
+"SpinorUBar[p, m] denotes a ubar-spinor that depends on the \
+4-dimensional momentum p";
 
 SpinorV::usage =
-"SpinorV[p, m] denotes a v-spinor.";
+"SpinorV[p, m] denotes a v-spinor that depends on the \
+4-dimensional momentum p";
 
 SpinorVBar::usage =
-"SpinorVBar[p, m] denotes a vbar-spinor.";
+"SpinorVBar[p, m] denotes a vbar-spinor that depends on the \
+4-dimensional momentum p";
+
+SpinorUD::usage =
+"SpinorUD[p, m] denotes a u-spinor that depends on the \
+D-dimensional momentum p";
+
+SpinorUBarD::usage =
+"SpinorUBarD[p, m] denotes a ubar-spinor that depends on the \
+D-dimensional momentum p";
+
+SpinorVD::usage =
+"SpinorVD[p, m] denotes a v-spinor that depends on the \
+D-dimensional momentum p";
+
+SpinorVBarD::usage =
+"SpinorVBarD[p, m] denotes a vbar-spinor that depends on the \
+D-dimensional momentum p";
 
 SUND::usage =
 "SUND[a, b, c] is the symmetric SU(N) d_{a,b,c}.";
@@ -874,7 +894,7 @@ Eps[x__Symbol | x__FCGV, OptionsPattern[]] :=
 	0/; Signature[{x}]===0 && Length[{x}]===4;
 
 Eps[a___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], b___,
-	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___ ] :=
+	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___, OptionsPattern[]] :=
 	0 /; NumberQ[n1 n2] &&
 	Length[{a,n1,b,n2,c}]===4;
 

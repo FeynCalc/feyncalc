@@ -49,7 +49,7 @@ Options[ToPaVe] = {
 };
 
 ToPaVe[expr_, q_, OptionsPattern[]] :=
-	Block[{ex,loopInt,irrel,rel,repList},
+	Block[{ex,loopInt,irrel,rel,repList,res},
 
 
 		If [!FreeQ[$ScalarProducts, q],
@@ -72,7 +72,15 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 					x
 				]
 			], Infinity]];
-		(rel/.repList) + irrel
+		res = (rel/.repList) + irrel;
+
+		If[	!FreeQ[res,toPaVe],
+			Message[ToPaVe::failmsg,"Not all 1-loop scalar integrals could be converted to PaVe functions. Please apply FDS to the input and try again."];
+			Abort[]
+		];
+
+		res
+
 	];
 
 toPaVe[x_,_,_,_]:=

@@ -90,18 +90,18 @@ Anti5[xx_, n_] :=
 
 			(* Naive scheme, D dimensions, move gamma^5 to the right *)
 			HoldDOT[a___, DiracGamma[5], DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				dim_Symbol], dim_Symbol], b___]/; (n===1) && ($BreitMaison =!= True) :>
+				dim_Symbol], dim_Symbol], b___]/; (n===1) && !$BreitMaison && !$Larin :>
 					-HoldDOT[a, DiracGamma[y[x, dim], dim], DiracGamma[5],b],
 
 			(* BMHV scheme, D dimensions, move gamma^5 to the right *)
 			HoldDOT[a___, DiracGamma[5], DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				dim_Symbol], dim_Symbol ], b___ ]/; (n===1) && ($BreitMaison === True) :>
+				dim_Symbol], dim_Symbol ], b___ ]/; (n===1) && $BreitMaison && !$Larin :>
 					-HoldDOT[a, DiracGamma[y[x, dim], dim], DiracGamma[5], b] +
 					2 HoldDOT[a, DiracGamma[y[x, dim-4], dim-4], DiracGamma[5],b],
 
 			(* BMHV scheme, D-4 dimensions, move gamma^5 to the right *)
 			HoldDOT[a___, DiracGamma[5], DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				dim_Symbol - 4], dim_Symbol - 4], b___ ]/; (n===1) && ($BreitMaison === True) :>
+				dim_Symbol - 4], dim_Symbol - 4], b___ ]/; (n===1) && $BreitMaison && !$Larin :>
 					HoldDOT[a, DiracGamma[y[x, dim-4], dim - 4], DiracGamma[5], b],
 			(*-------------------------------------------------------------------------------------*)
 
@@ -111,18 +111,18 @@ Anti5[xx_, n_] :=
 
 			(* Naive scheme, D dimensions, move gamma^5 to the left *)
 			HoldDOT[a___, DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				dim_Symbol], dim_Symbol], DiracGamma[5], b___]/; (n===-1) && ($BreitMaison =!= True) :>
+				dim_Symbol], dim_Symbol], DiracGamma[5], b___]/; (n===-1) && !$BreitMaison && !$Larin :>
 					-HoldDOT[a, DiracGamma[5], DiracGamma[y[x, dim], dim], b],
 
 			(* BMHV scheme, D dimensions, move gamma^5 to the left *)
 			HoldDOT[a___, DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				dim_Symbol], dim_Symbol ], DiracGamma[5], b___ ]/; (n===-1) && ($BreitMaison === True) :>
+				dim_Symbol], dim_Symbol ], DiracGamma[5], b___ ]/; (n===-1) && $BreitMaison && !$Larin :>
 					-HoldDOT[a, DiracGamma[5], DiracGamma[y[x, dim], dim], b] +
 					2 HoldDOT[a, DiracGamma[5], DiracGamma[y[x, dim-4], dim-4], b],
 
 			(* BMHV scheme, D-4 dimensions, move gamma^5 to the left *)
 			HoldDOT[a___, DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				dim_Symbol - 4], dim_Symbol - 4], DiracGamma[5], b___ ]/; (n===-1) && ($BreitMaison === True) :>
+				dim_Symbol - 4], dim_Symbol - 4], DiracGamma[5], b___ ]/; (n===-1) && $BreitMaison && !$Larin  :>
 					HoldDOT[a, DiracGamma[5], DiracGamma[y[x, dim-4], dim - 4], b]
 			};
 		result = temp /. ruleAnticommute /. HoldDOT -> DOT;

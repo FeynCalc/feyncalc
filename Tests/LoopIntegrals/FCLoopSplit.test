@@ -38,14 +38,14 @@ Tests`LoopIntegrals`fcstFCLoopSplit = {
 	b*FAD[{q, m}]*FVD[q, mu]*SPD[l, q]}"},
 {"fcstFCLoopSplit-ID9","FCLoopSplit[(GS[x] + GA[j].(GSD[i] FVD[q, i] +
 	GSD[p]).GA[5]).SUNT[a] FAD[{q, m}], {q}] // FCE",
-	"{0, (SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5]) FAD[{q, m}], 0,
-	SUNT[a].GA[j].GSD[i].GA[5] FAD[{q, m}] FVD[q, i]}"},
+	"{0, FAD[{q, m}]*(GA[j] . GSD[p] . GA[5] + GS[x])*SUNT[a], 0,
+GA[j] . GSD[i] . GA[5]*FAD[{q, m}]*FVD[q, i]*SUNT[a]}"},
 {"fcstFCLoopSplit-ID10","FCLoopSplit[(GS[x] +
 	GA[j].(GSD[i] FVD[q, i] + GSD[p] + GSD[q + x]).GA[5]).SUNT[
-	a] FAD[{q, m}], {q}] // FCE","{0, (SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5] +
-	SUNT[a].GA[j].GSD[x].GA[5]) FAD[{q, m}], 0,
-	SUNT[a].GA[j].GSD[q].GA[5] FAD[{q, m}] +
-	SUNT[a].GA[j].GSD[i].GA[5] FAD[{q, m}] FVD[q, i]}"},
+	a] FAD[{q, m}], {q}] // FCE","{0, FAD[{q, m}]*(GA[j] . GSD[p] . GA[5] +
+	GA[j] . GSD[x] . GA[5] + GS[x])*SUNT[a],
+0, GA[j] . GSD[q] . GA[5]*FAD[{q, m}]*SUNT[a] + GA[j] . GSD[i] . GA[5]*FAD[{q, m}]*
+FVD[q, i]*SUNT[a]}"},
 {"fcstFCLoopSplit-ID11","FCLoopSplit[GSD[p + q] FAD[{q, m}], {q}]//FCE",
 "{0, FAD[{q, m}] GSD[p], 0, FAD[{q, m}] GSD[q]}"},
 {"fcstFCLoopSplit-ID12","FCLoopSplit[
@@ -53,5 +53,8 @@ Tests`LoopIntegrals`fcstFCLoopSplit = {
 1/6 (m1^2 - m2^2) B1[0, m1^2, m2^2], {}]",
 "{1/6 (m1^2 + m2^2),
 A0[m2^2]/6 + 1/3 m1^2 B0[0, m1^2, m2^2] +
-1/6 (m1^2 - m2^2) B1[0, m1^2, m2^2], 0, 0}"}
+1/6 (m1^2 - m2^2) B1[0, m1^2, m2^2], 0, 0}"},
+{"fcstFCLoopSplit-ID13","FCLoopSplit[Foobar[x], {},
+PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads], {Foobar}]]",
+"{0, Foobar[x], 0, 0}"}
 };

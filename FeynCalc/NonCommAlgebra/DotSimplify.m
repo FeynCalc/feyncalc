@@ -80,7 +80,8 @@ Options[DotSimplify] = {
 DotSimplify[xxx_, OptionsPattern[]] :=
 	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
 	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
-	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, xx, sunTrace
+	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, xx, sunTrace,
+	holdDOTColor, holdDOTDirac
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -94,6 +95,10 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
 
+		If[	FreeQ[xxx,DOT] && NonCommFreeQ[xxx],
+			Return[xxx]
+		];
+
 		(* Here a different convention for FCI is used, False means that FCI is needed*)
 		If[ OptionValue[FCI] =!= True,
 			xx = xxx,
@@ -101,6 +106,8 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 		];
 
 		FCPrint[3, "DotSimplify: Entering with", FCDoControl->dsVerbose];
+
+
 
 		(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
 		momf[xX_] :=
@@ -323,13 +330,14 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			FCPrint[3, "DotSimplify: After pulling out nested SU(N) and Dirac traces.", x, FCDoControl->dsVerbose];
 		];
 
-
+		(* Dirac and SU(N) matrices commute with each other, so they need to be properly separated*)
 		If[ !FreeQ[x, SUNT],
 			FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
-			x  = x //. {DOT[a__,b__SUNT, c___]:> DOT[b, a, c] /; FreeQ[{a}, SUNT],
-						(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
-						DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT]};
-			FCPrint[3, "DotSimplify: After pulling out SU(N) matrices", FCDoControl->dsVerbose]
+			x  = x /. DOT->holdDOT;
+			x = x //. holdDOT[zzz__] :> (holdDOTColor@@Select[{zzz}, (Head[#] === SUNT) &])(holdDOTDirac@@Select[{zzz}, (Head[#] =!= SUNT) &]);
+			(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
+			x = x //. DiracTrace[f_ g_holdDOTColor ] :> g DiracTrace[f]/. (holdDOTColor|holdDOTDirac)[] -> 1  /. holdDOTColor|holdDOTDirac -> DOT;
+			FCPrint[3, "DotSimplify: After pulling out SU(N) matrices: ", x,  FCDoControl->dsVerbose]
 		];
 
 		(* if the expression contains a QuantumField, factor it out*)

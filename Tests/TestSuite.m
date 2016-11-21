@@ -23,12 +23,13 @@ If[testType===3,
 <<FeynCalc`
 
 testRunner[test_String]:=
-	(If[$VersionNumber < 10,
+	(time=AbsoluteTime[]; If[$VersionNumber < 10,
 		FCPrint[0,"Testing ", FileNameTake[test], " ", UseWriteString->True]
 	];
 	If[!MUnit`TestRun[test,Loggers->{VerbosePrintLogger[]}],
 		FCPrint[0,"\n ERROR! Some tests from ", test, " failed! Test run aborted!\n",UseWriteString->True];
 		Exit[1],
+		FCPrint[0,"\nTiming: ", N[AbsoluteTime[] - time, 4], " seconds",UseWriteString->True];
 		FCPrint[0,"\n\n",UseWriteString->True]
 	]);
 

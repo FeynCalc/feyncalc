@@ -19,10 +19,15 @@ Get/@tests;
 
 stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
+DeclareNonCommutative[FCNCA,FCNCB,FCNCC];
+
 $BreitMaison = False;
+$Larin = False;
+
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstAnti5*"])];
 $BreitMaison = False;
+$Larin = False;
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstChisholm*"])];
@@ -63,7 +68,7 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),TestID->#[[1]],
 
 
 $BreitMaison=False;
-
+$Larin=False;
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrick*"])];
 
@@ -79,6 +84,15 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrace*"])];
 
+
+$BreitMaison=False;
+$Larin=True;
+
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+		Join[	Tests`Dirac`fcstTrLarin]];
+
+
+$Larin=False;
 $BreitMaison=False;
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,

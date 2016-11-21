@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 TarcerToFC::usage =
-"TarcerToFC[expr, q1, q2] translates loop integrals \
+"TarcerToFC[expr, {q1, q2}] translates loop integrals \
 in Tarcer-notation to the FeynCalc notation. \
 See TFI for details on the convention. \
 As in case of ToTFI, the 1/Pi^D and 1/Pi^D/2 prefactors are implicit, i.e. \

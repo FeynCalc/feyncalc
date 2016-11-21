@@ -78,7 +78,7 @@ FCReplaceD[expr_, replacement_Rule, OptionsPattern[]] :=
 
 
 		FCPrint[1,"FCReplaceD: tmp: " ,tmp, FCDoControl->fcrdVerbose];
-		Global`XXX = tmp;
+
 		If[	!FreeQ[Cases2[tmp,{ExplicitLorentzIndex,LorentzIndex,Momentum,DiracGamma}],dim],
 			Message[FCReplaceD::checkfail];
 			Abort[]

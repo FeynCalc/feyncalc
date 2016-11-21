@@ -51,6 +51,22 @@ to the directory where FeynCalc will be installed.";
 InstallFeynArtsTo::usage="InstallFeynArtsTo is an option of InstallFeynArts. It specifies, the full path \
 to the directory where FeynArts will be installed.";
 
+$PathToFCArc::usage="$PathToFCArc specifies where the installer should look for the zipped FeynCalc version. \
+If the value is not empty, the installer will use the specified file instead of downloading it from the official \
+website."
+
+$PathToFAArc::usage="$PathToFAArc specifies where the installer should look for the FeynArts tarball. \
+If the value is not empty, the installer will use the specified file instead of downloading it from the official \
+website."
+
+If[ !ValueQ[$PathToFCArc],
+	$PathToFCArc = ""
+];
+
+If[ !ValueQ[$PathToFAArc],
+	$PathToFAArc = ""
+];
+
 If[  $VersionNumber == 8,
 (*To use FetchURL in MMA8 we need to load URLTools first *)
 Needs["Utilities`URLTools`"];
@@ -84,9 +100,13 @@ InstallFeynArts[OptionsPattern[]]:=
 			FCGetUrl[x_]:= URLSave[x,CreateTemporary[]]
 		];
 
-
-		WriteString["stdout", "Downloading FeynArts from ", fazip," ..."];
-		tmpzip=FCGetUrl[fazip];
+		(* Download FeynArts tarball	*)
+		If[ $PathToFAArc=!="",
+			tmpzip = $PathToFAArc;
+			WriteString["stdout", "Installing FeynArts from ", tmpzip," ..."],
+			WriteString["stdout", "Downloading FeynArts from ", fazip," ..."];
+			tmpzip=FCGetUrl[fazip];
+		];
 		unzipDir= tmpzip<>".dir";
 		WriteString["stdout", "done! \n"];
 
@@ -102,7 +122,9 @@ InstallFeynArts[OptionsPattern[]]:=
 		WriteString["stdout", "done! \n"];
 
 		(* Delete the downloaded file	*)
-		Quiet@DeleteFile[tmpzip];
+		If[ $PathToFAArc==="",
+			Quiet@DeleteFile[tmpzip];
+		];
 
 		(* Delete the extracted archive *)
 		Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
@@ -170,8 +192,12 @@ files or add-ons that are located in that directory, please backup them in advan
 	];
 
 	(* Download FeynCalc tarball	*)
-	WriteString["stdout", "Downloading FeynCalc from ", gitzip," ..."];
-	tmpzip=FCGetUrl[gitzip];
+	If[ $PathToFCArc=!="",
+		tmpzip = $PathToFCArc;
+		WriteString["stdout", "Installing FeynCalc from ", tmpzip," ..."],
+		WriteString["stdout", "Downloading FeynCalc from ", gitzip," ..."];
+		tmpzip=FCGetUrl[gitzip];
+	];
 	unzipDir= tmpzip<>".dir";
 	WriteString["stdout", "done! \n"];
 
@@ -182,7 +208,11 @@ files or add-ons that are located in that directory, please backup them in advan
 	WriteString["stdout", "done! \n"];
 
 	(* Delete the downloaded file	*)
-	Quiet@DeleteFile[tmpzip];
+	If[ $PathToFCArc==="",
+		Quiet@DeleteFile[tmpzip];
+	];
+
+
 
 	(* Move the files to the final destination	*)
 	WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];

@@ -30,8 +30,7 @@ DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIn
 {"fcstDiracSimplify-ID11","DiracSimplify[SpinorVBar[p, m1].DiracSlash[q, p].SpinorU[q, m2]]","m1*m2*Spinor[-Momentum[p], m1, 1] . Spinor[Momentum[q], m2, 1] + 2*Spinor[-Momentum[p], m1, 1] . Spinor[Momentum[q], m2, 1]*
 	Pair[Momentum[p], Momentum[q]]"},
 {"fcstDiracSimplify-ID11","$BreitMaison = True;\nDiracSimplify[DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]]","2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
-{"fcstDiracSimplify-ID12","DiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, D], D]/2 + DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] -
-DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]/2"},
+{"fcstDiracSimplify-ID12","DiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] + DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[7]"},
 {"fcstDiracSimplify-ID13","$BreitMaison = False;\nDiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[7]"},
 {"fcstDiracSimplify-ID14","DiracSimplify[Spinor[p1, m1].(DiracSlash[p2]).DiracMatrix[7].Spinor[p2,m2]] // FCE",
 "1/2 m2 Spinor[Momentum[p1], m1, 1].Spinor[Momentum[p2], m2, 1] +

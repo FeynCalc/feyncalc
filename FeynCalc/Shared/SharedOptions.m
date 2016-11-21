@@ -172,6 +172,10 @@ LorentzIndexNames::usage =
 and other functions. It renames the generic dummy Lorentz indices to the indices \
 in the supplied list.";
 
+PaVeIntegralHeads::usage=
+"PaVeIntegralHeads is an option for FCLoopIsolate, FCLoopSplit and other \
+functions. It gives a list of heads that denote Passarino-Veltman integrals";
+
 Mandelstam::usage =
 "Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr \
 and TrickMandelstam.  A typical setting is \

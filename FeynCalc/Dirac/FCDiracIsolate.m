@@ -22,7 +22,7 @@ Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCDiracIsolate"]
 StandardForm];
 
 FCDiracIsolate::fail =
-"FCDiracIsolate failed to isolate loop integrals in `1`!";
+"FCDiracIsolate failed to isolate Dirac structures in `1`!";
 
 Begin["`Package`"]
 End[]
@@ -32,13 +32,14 @@ Begin["`FCDiracIsolate`Private`"]
 Options[FCDiracIsolate] = {
 	ClearHeads -> {FCGV["DiracChain"]},
 	Collecting -> True,
-	DiracGammaExpand -> True,
 	DotSimplify -> True,
+	DiracGammaCombine -> True,
+	DiracSigmaExplicit -> False,
 	ExceptHeads -> {},
-	ExpandScalarProduct -> False,
 	Expanding -> True,
 	FCI -> False,
 	Factoring -> Factor,
+	LorentzIndex -> False,
 	Head -> FCGV["DiracChain"],
 	Split -> True,
 	Isolate -> False,
@@ -49,8 +50,14 @@ Options[FCDiracIsolate] = {
 	DiracTrace -> True
 };
 
+makeSelectionList[expr_,heads_List]:=
+	MemSet[makeSelectionList[expr,heads],
+		Join[heads,Intersection[Cases[SelectFree[expr, heads],l_LorentzIndex:>l[[1]],Infinity],
+			Cases[SelectNotFree[expr, heads],l_LorentzIndex:>l[[1]],Infinity]]]
+];
+
 FCDiracIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, restHead},
+	Block[ {res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2},
 
 		head = OptionValue[Head];
 
@@ -64,23 +71,18 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
+		If[ OptionValue[DiracSigmaExplicit],
+				ex = DiracSigmaExplicit[ex]
+		];
+
+		If[	OptionValue[DiracGammaCombine],
+			ex = DiracGammaCombine[ex];
+		];
+
 		If[	OptionValue[Expanding],
 			ex = Expand2[ex, DiracHeadsList];
 		];
-(*
-		(* Here we pull loop momenta out of Dirac slashes  *)
-		If[	OptionValue[ExpandScalarProduct],
-			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms]
-		];
 
-		(* Here we pull loop momenta out of Dirac slashes  *)
-		If[	OptionValue[DiracGammaExpand] && !FreeQ[ex,DiracGamma],
-			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ tmp[[2]]/. DiracGamma[x_,dim_:4]/;!FreeQ2[x,lmoms] :> DiracGammaExpand[DiracGamma[x,dim]]
-		];
-		*)
-		(*	and out of the DOTs	*)
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
 			tmp = FCSplit[ex, DiracHeadsList, Expanding->OptionValue[Expanding]];
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False]
@@ -90,20 +92,25 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			ex = Collect2[ex,DiracHeadsList,Factoring->OptionValue[Factoring]];
 		];
 
-		res = (Map[(restHead[SelectFree[#, DiracHeadsList]]*
-				head[SelectNotFree[#, DiracHeadsList]]) &,
-				ex + null1 + null2] /. {null1 | null2 -> 0} /.
-			head[1] -> 1);
+		If[ OptionValue[LorentzIndex],
+			res = (Map[(selectionList=makeSelectionList[#,DiracHeadsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
+				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
+			res = (Map[(restHead[SelectFree[#, DiracHeadsList]] head[SelectNotFree[#, DiracHeadsList]]) &,
+				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
+		];
+
 		res = res /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
 
-		If[ Together[(res /. restHead|head -> Identity)-ex] =!= 0,
+		If[ Together[(res /. restHead|head|tmpHead|lorHead|tmpHead2 -> Identity)-ex] =!= 0,
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
 		];
 
 
 		If[	OptionValue[Split],
-			res = res /. DOT->holdDOT //. head[a_holdDOT b_holdDOT c_.] :> head[a]head[b c] /. holdDOT -> DOT
+			res = res /. DOT->holdDOT //. {head[a_holdDOT b_holdDOT c_.] :> head[a]head[b c],
+			head[holdDOT[r1___,a_Spinor,b___,c_Spinor, d_Spinor, e___, f_Spinor, r2___]]/;FreeQ[{r1,b,e,r2}, Spinor] :>
+				head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]] }/. holdDOT[] ->1 /. holdDOT -> DOT
 		];
 
 
@@ -123,20 +130,12 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		res = res //. head[x_]/; FreeQ2[x,DiracHeadsList] :> x;
 
-
-
-		(*
-		If[	OptionValue[SpinorChainsOnly],
-			res = res /. head[x_]/;FreeQ2[x,Spinor] :> x /.
-			head[DOT[s_Spinor,r___]]/;FreeQ2[r,Spinor] :> DOT[s,r];
-		];
-*)
 		If[	OptionValue[Isolate],
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
 			res = res /. restHead -> Identity
 		];
 
-		If [ !FreeQ[res/. head[__] :> 1, DiracHeadsList] & ,
+		If [ !FreeQ[res/. head[__] :> 1, DiracHeadsList] & || !FreeQ[res,head[]],
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
 		];

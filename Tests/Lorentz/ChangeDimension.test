@@ -24,7 +24,7 @@ Tests`Lorentz`fcstChangeDimension = {
 	"Eps[LorentzIndex[\[Mu], D], LorentzIndex[\[Nu], D], LorentzIndex[\
 	\[Rho], D], LorentzIndex[\[Sigma], D], Dimension -> D]"},
 {"ChangeDimension-ID4",
-	"ChangeDimension[{GA[\[Mu],\[Nu]] MT[\[Mu],\[Nu]], \
-	GAD[\[Mu],\[Nu]] MTD[\[Mu],\[Nu]] f[D]},n]//Contract//DiracTrick",
+	"DiracTrick /@ (ChangeDimension[{GA[\[Mu], \[Nu]] MT[\[Mu], \[Nu]],
+	 GAD[\[Mu], \[Nu]] MTD[\[Mu], \[Nu]] f[D]}, n] // Contract)",
 	"{n, n*f[D]}"}
 };

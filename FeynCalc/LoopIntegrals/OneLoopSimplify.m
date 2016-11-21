@@ -73,6 +73,12 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				Abort[]
 			];
 
+			If[	$KeepLogDivergentScalelessIntegrals,
+				Message[OneLoopSimplify::failmsg, "OneLoopSimplify does not support the option $KeepLogDivergentScalelessIntegrals!."];
+				Abort[]
+			];
+
+
 			q = qu;
 			dim = Dimension /. {opt} /. Options[OneLoopSimplify];
 			dirsimplify = DiracSimplify/. {opt} /. Options[OneLoopSimplify];
@@ -203,53 +209,6 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 						Dimension -> dim,
 						ChangeDimension -> dim];
 
-			(*
-			If[ Head[t6] =!= Plus,
-				t6 = t6 + null1+null2
-			];
-			nt6 = 0;
-			lnt6 = Length[t6];
-			Do[FCPrint[1,"TIDPART ",ij," out of ",lnt6," le = ",Length[nt6]];
-			nt6 = nt6 + TID[t6[[ij]], q,
-							DimensionalReduction -> dimred,
-							FeynAmpDenominatorSimplify -> True,
-				Dimension -> dim,
-				ChangeDimension -> dim
-							];
-				,{ij, lnt6}
-				];
-			t6 = nt6 /. {null1 :> 0, null2 :>0};
-			FCPrint[1,"OneLoopSimplify: First TID done, expression is now ", t6];
-			t6 = Collect2[t6, q, Factoring->False, Expanding->False];
-			FCPrint[1,"collect2 after first TID done ",Length[t6]];
-			FCPrint[2,"expression is now ",t6];
-			If[ Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q]),
-				lt6 = Length[t6];
-				t6  = Sum[FCPrint[1,"TID 2 #" , j," out of " , lt6];
-						FCPrint[1,"dimension ",dim, " on: ", StandardForm[SelectNotFree[t6[[j]],q]]];
-						tmpres = SelectFree[t6[[j]], q]  *
-							TID[SelectNotFree[t6[[j]],q],  q,
-								DimensionalReduction -> dimred,
-								FeynAmpDenominatorSimplify -> True,
-						(*Added 7/8-2000, F.Orellana*)
-						Dimension -> dim,
-						ChangeDimension -> dim
-								];
-						FCPrint[1,"got: ", tmpres,q];
-						tmpres,
-				{j, lt6}];
-				FCPrint[2,"expression is now ",t6];
-				t6 = Collect2[t6, q, Factoring -> Factor];
-			];
-			FCPrint[2,"expression is now ",t6];
-			If[ Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q]),
-				t6 = FixedPoint[(FCPrint[2,"Applying TID on",#];
-								TID[#,q,
-									DimensionalReduction -> dimred,
-									FeynAmpDenominatorSimplify -> True,
-								Dimension -> dim])&, t6, 3
-							];
-			];*)
 			If[!FreeQ[t6/.FeynAmpDenominator[___]:>1,q],
 				Message[OneLoopSimplify::numerators];
 				Abort[]

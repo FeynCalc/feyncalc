@@ -79,6 +79,11 @@ ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 			Abort[]
 		];
 
+		If[	$KeepLogDivergentScalelessIntegrals,
+			Message[SPC::failmsg, "ScalarProductCancel does not support the option $KeepLogDivergentScalelessIntegrals!."];
+			Abort[]
+		];
+
 
 		If[	OptionValue[FCI],
 			exp = int,

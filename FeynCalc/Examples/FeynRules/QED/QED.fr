@@ -1,0 +1,59 @@
+M$ModelName = "QED";
+
+$FeymanGauge=False;
+
+M$Information = {
+  Authors      -> {"V. Shtabovenko"},
+  Institutions -> {"Technische Universität München"},
+  Emails       -> {"v.shtabovenko@tum.de"},
+  Date         -> "November 2, 2016"
+};
+
+IndexRange[Index[Generation]] = Range[3];
+IndexStyle[Generation, f];
+
+M$Parameters =
+ Join[{EL == {ParameterType ->
+      Internal}}, (# == {ParameterType -> External}) & /@ {Zm, ZA,
+    Zpsi, Zxi, Ze}]
+
+M$GaugeGroups = {
+  U1 == {
+    Abelian           -> True,
+    CouplingConstant  -> EL,
+    GaugeBoson        -> A,
+    Charge            -> Q
+  }
+};
+
+M$ClassesDescription = {
+
+  F[2] == {
+    ClassName        -> l,
+    ClassMembers     -> {ele, mu, ta},
+    SelfConjugate    -> False,
+    Indices          -> {Index[Generation]},
+    FlavorIndex      -> Generation,
+    Mass             -> {Mlep, {ME,5.11*^-4}, {MM,0.10566}, {ML,1.777}},
+    Width            -> 0,
+    QuantumNumbers   -> {Q -> 1, LeptonNumber -> 1},
+    PropagatorLabel  -> {"l", "e", "mu", "ta"},
+    PropagatorType   -> Straight,
+    PropagatorArrow  -> Forward
+  },
+
+  V[1] == {
+    ClassName        -> A,
+    SelfConjugate    -> True,
+    Mass             -> 0,
+    PropagatorLabel  -> "\\gamma",
+    PropagatorType   -> W,
+    PropagatorArrow  -> None
+  }
+};
+LQED = LQEDR + LQEDCT;
+LQEDR = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[imu].DC[l, imu]- Mlep[fi] lbar[s,fi].l[s,fi];
+LQEDCT = FR$CT (-(ZA -1) 1/4 FS[A, imu, inu] FS[A, imu, inu]
+          -1/(2GaugeXi[V[1]])(ZA/Zxi-1) del[A[imu],imu] del[A[inu],inu]
+          + (Zpsi-1) I lbar.Ga[imu].del[l,imu] - (Zpsi Zm -1) Mlep[fi] lbar[s,fi].l[s,fi]
+          + (Zpsi Sqrt[ZA] Ze - 1) EL lbar.Ga[imu].l A[imu]);

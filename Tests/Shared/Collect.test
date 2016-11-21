@@ -54,5 +54,8 @@ IsolateFast -> True, IsolateNames -> KK] // FRH,
 Sum[xa[i], {i, 1, 10}] +
 VAR (Sum[xb[i], {i, 1, 10}] + Sum[xx[i], {i, 1, 10}]) +
 VAR^2 (Sum[xy[i], {i, 1, 10}] + Sum[xz[i], {i, 1, 10}])]",
-	"True"}
+	"True"},
+{"fcstCollect2-ID13","Collect2[Together[a (1 + x) + 4 b (1 + y)],
+	{a, b}, FCFactorOut -> 4]",
+	"4 (1/4 a (x+1)+b (y+1))"}
 };

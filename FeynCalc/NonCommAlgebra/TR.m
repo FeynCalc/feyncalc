@@ -29,6 +29,7 @@ Options[ TR ] = {
 	DiracTraceEvaluate -> True,
 	EpsContract           -> True,
 	Explicit           -> True,
+	Expand			   -> True,
 	Factoring          -> Automatic,
 	FCVerbose			-> True,
 	FeynCalcExternal   -> False,
@@ -87,16 +88,6 @@ TR[x_, rul:OptionsPattern[]] :=
 						tt = DiracTrace[Trick[tt]// SUNSimplify[#, SUNNToCACF -> sunntocacf,
 						SUNTrace -> OptionValue[SUNTrace],	Explicit -> OptionValue[Explicit]]&, diracTraceOpts]
 			]
-		];
-
-		If[!FreeQ[tt, SUNIndex|ExplicitSUNIndex],
-			tt = tt /. (*Added 23/1-2003. F.Orellana.
-			If a spursav is left from DiracTrace it means
-			that SU(N) stuff is there in the trace*)
-			spursav :>
-			(SUNTrace[DOT@@{##}]&) /. DiracTrace-> dit /.DOT -> doot;
-			tt = tt /. {doot[a__SUNT, b__] :> (doot[a] doot[b]) /;
-			FreeQ[{b}, SUNIndex|ExplicitSUNIndex]} /. doot -> DOT /. dit -> DiracTrace;
 		];
 
 		FCPrint[1,"TR: Computing the Dirac trace.", FCDoControl->trVerbose];

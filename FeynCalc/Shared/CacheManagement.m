@@ -53,7 +53,8 @@ SetAttributes[cachedToString, HoldAll]
 
 whiteListNames = {
 	ExpandScalarProduct,
-	PairContract
+	PairContract,
+	FCFastContract
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
@@ -78,6 +79,14 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 											$BreitMaison,
 											$Larin}],
 			fcFunc === PairContract,
+				depArgs = cachedToString[{	DownValues[Pair],
+											DownValues[ScalarProduct],
+											DownValues[SP],
+											DownValues[SPD],
+											DownValues[SPE],
+											$BreitMaison,
+											$Larin}],
+			fcFunc === FCFastContract,
 				depArgs = cachedToString[{	DownValues[Pair],
 											DownValues[ScalarProduct],
 											DownValues[SP],

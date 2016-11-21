@@ -86,7 +86,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 	loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 	solsList, repSolList, reversedRepIndexList,reducedLoopList,
-	finalRepList,isoContract,tmp,tempIsolate
+	finalRepList,isoContract,tmp,tempIsolate,loopListOrig
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -128,14 +128,14 @@ TID[am_ , q_, OptionsPattern[]] :=
 			Return[0]
 		];
 
-		If[ dimred =!= True,
+		(*If[ dimred =!= True,
 			FCMonitor[
 				t0 = ChangeDimension[t0, chd];
 				(*$LimitTo4=False;*)
 				Grid[{{"Applying ChangeDimension",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
-		];
+		];*)
 
 		(*
 			t5 = t5 /. {LorentzIndex[aa_, en_Symbol] :> LorentzIndex[aa],
@@ -157,6 +157,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 				IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x],IsolateNames->tempIsolate];
 				Grid[{{"Isolating loop integrals in the input expression",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+		];
+
+		If[	!FreeQ[Union[FCGetDimensions[t0/.DiracGamma[5|6|7]:>null1]],4] && !$BreitMaison,
+			Message[TID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
+			Abort[]
 		];
 
 		FCPrint[2,"TID: After Isolate: ", t0, FCDoControl->tidVerbose];
@@ -210,8 +215,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 		*)
 		(* Uncontract first *)
-		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0,Momentum->{q}], q, Pair -> All, DimensionalReduction -> dimred,
-						Dimension -> n] /. PropagatorDenominator -> procanonical[q];,
+		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0,Momentum->{q}], q, Pair -> All, DimensionalReduction -> dimred(*,
+						Dimension -> n*)] /. PropagatorDenominator -> procanonical[q];,
 				Grid[{{"Uncontracting loop momenta",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
@@ -250,7 +255,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 				wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral];
 
 				(*	This is the list of all the tensor loop integrals in the expression.	*)
-				loopList=Union[Cases[{wrapped},_. loopIntegral[x_]:>x,Infinity]];
+				loopListOrig=Union[Cases[{wrapped},_. loopIntegral[x_]:>x,Infinity]];
+				FCPrint[3,"TID: loopList: ", loopList, FCDoControl->tidVerbose];
+				loopList = ChangeDimension[#, chd]&/@loopListOrig;
+				FCPrint[3,"TID: loopList after ChangeDimension: ", loopList, FCDoControl->tidVerbose];
+
 				(*	Here we collect the tensor indices of each integral from the
 					previous list	*)
 				repIndexList=((MapIndexed[Rule[#1,LorentzIndex[ToExpression[("i"<>ToString[Identity@@#2])],n]]&,Cases[#,LorentzIndex[__],
@@ -292,7 +301,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				canIndexList = loopIntegral/@canIndexList;
 				reducedLoopList = MapIndexed[((#1 /. First[(reversedRepIndexList[[#2]])])) &, (canIndexList /.repSolList)];
 				(* This is the final replacement list Original integral -> Reduced integral *)
-				finalRepList = MapIndexed[(Rule[loopIntegral[#1], First[reducedLoopList[[#2]]]]) &, loopList]//Dispatch,
+				finalRepList = MapIndexed[(Rule[loopIntegral[#1], First[reducedLoopList[[#2]]]]) &, loopListOrig]//Dispatch,
 				Grid[{{"Preparing the list of final subsitutions",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
@@ -587,7 +596,7 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 
 			tpTP + null] /. null -> 0)// Union[Cases[{#}, loopIntegral[x_], Infinity]]& // DeleteDuplicates;*)
 			(* Uncontract is done with the same options as in the beginning of TID *)
-			sList = (Uncontract[(#/.loopIntegral->Identity), q, Pair -> All, DimensionalReduction -> dimred, Dimension -> n]&)/@uList;
+			sList = (Uncontract[(#/.loopIntegral->Identity), q, Pair -> All, DimensionalReduction -> dimred(*, Dimension -> n*)]&)/@uList;
 			sList = SelectFree[#,{q}] tidReduce[tidConvert[SelectNotFree[#,{q}],q],q,n,pavebasis]&/@sList;
 			rList = MapIndexed[(Rule[#1, First[sList[[#2]]]]) &, uList];
 			tpTP = tpTP/.rList;

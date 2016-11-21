@@ -39,6 +39,10 @@ Expand2::usage=
 "Expand2[exp, x] expands all sums containing x. \
 Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
+FCFactorOut::usage=
+"FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
+bring exp into a particular form that Mathematica refuses to give";
+
 FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
@@ -124,6 +128,11 @@ an integer (even if it is symbolic). Furthermore \
 (-1)^(n_Integer?OddQ m) -> (-1)^m and \
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
+SelectFree2::usage=
+"SelectFree2[expr, a, b, ...] is like SelectFree but
+it first expands the expression w.r.t to the arguments via
+Expand2";
+
 SelectFree::usage=
 "SelectFree[expr, a, b, ...] is equivalent to \
 Select[expr, FreeQ2[#, {a,b, ...}]&], except the \
@@ -137,6 +146,11 @@ Select[expr, !FreeQ2[#, {a,b, ...}]&], except the \
 special cases: SelectNotFree[a, b] returns 1 and \
 SelectNotFree[a,a] returns a (where a is not a product or \
 a sum).";
+
+SelectNotFree2::usage=
+"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but
+it first expands the expression w.r.t to the arguments via
+Expand2";
 
 SelectSplit::usage=
 "SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \
@@ -166,6 +180,14 @@ Options[Combine] = {
 Options[SelectSplit] = {
 	Heads -> None
 };
+
+
+Options[FCFactorOut] = {
+	Factoring -> Simplify
+};
+
+
+
 Options[ILimit] = {
 	FunctionLimits -> {Log -> Log}
 };
@@ -283,6 +305,9 @@ FCAntiSymmetrize[x_,v_List] :=
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
 	];
+
+FCFactorOut[expr_,pref_,OptionsPattern[]]:=
+	pref OptionValue[Factoring][expr/pref];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, null1, null2},
@@ -547,6 +572,10 @@ SelectFree[a_, b__] :=
 		]
 	];
 
+
+SelectFree2[x_,args__] :=
+	SelectFree[Expand2[x,Flatten[{args}]],args];
+
 SelectNotFree[0,_] :=
 	0;
 
@@ -564,7 +593,8 @@ SelectNotFree[a_, b__] :=
 		]
 	];
 
-
+SelectNotFree2[x_,args__] :=
+	SelectNotFree[Expand2[x,Flatten[{args}]],args];
 
 SelectSplit[ex_, p_List, opts___Rule] :=
 	Block[{ii, jj, aa, res, exp = List @@ ex, h = Head[ex],

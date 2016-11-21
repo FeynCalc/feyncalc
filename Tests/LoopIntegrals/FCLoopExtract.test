@@ -52,5 +52,9 @@ loopInt[FAD[{q1, m}]]}}"},
 "FCLoopExtract[FVD[q1,mu]FAD[{q1,m}]+A0[m],{q1,q2},loopInt,\
 DropScaleless\[Rule]True,FCLoopSplit\[Rule]{3,4}]//FCE",
 "{A0[m], loopInt[FAD[{q1, m}]*FVD[q1, mu]], {loopInt[FAD[{q1, \
-m}]*FVD[q1, mu]]}}"}
+m}]*FVD[q1, mu]]}}"},
+{"fcstFCLoopExtract-ID10",
+"FCLoopExtract[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q},
+loop, FCLoopIBPReducableQ -> True] // FCE",
+"{0, b FAD[q] + a loop[FAD[q, q]], {loop[FAD[q, q]]}}"}
 });

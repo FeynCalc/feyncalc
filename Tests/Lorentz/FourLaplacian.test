@@ -17,12 +17,18 @@ Tests`Lorentz`fcstFourLaplacian = ({
 {"fcstFourLaplacian-ID1", "FourLaplacian[SP[q,q],q,q]", "2*D"},
 {"fcstFourLaplacian-ID2",
 "FourLaplacian[SOD[q]^OPEm FAD[q,q-p]//FCI,q,q]//FCE//FCI//FCE",
-"2*OPEm*FAD[-p + q, -p + q]*SOD[p]*SOD[q]^(-1 + OPEm) -
-2*D*FAD[q, q]*SOD[q]^OPEm - 4*OPEm*FAD[q, q]*SOD[q]^OPEm -
-2*D*FAD[-p + q, -p + q]*SOD[q]^OPEm -
-2*OPEm*FAD[-p + q, -p + q]*SOD[q]^OPEm -
-2*OPEm*FAD[-p + q, -p + q]*SOD[q]^(-1 + OPEm)*(-SOD[p] + SOD[q]) -
-8*FAD[-p + q, -p + q]*SOD[q]^OPEm*(-SPD[p, p] + SPD[p, q]) +
-8*FAD[q, q]*SOD[q]^OPEm*SPD[q, q] +
-8*FAD[-p + q, -p + q]*SOD[q]^OPEm*(-SPD[p, q] + SPD[q, q])"}
+"2 OPEm FAD[q, -p + q, -p + q] SOD[p] SOD[q]^(-1 + OPEm) -
+2 D FAD[q, q, -p + q] SOD[q]^OPEm -
+4 OPEm FAD[q, q, -p + q] SOD[q]^OPEm -
+2 D FAD[q, -p + q, -p + q] SOD[q]^OPEm -
+2 OPEm FAD[q, -p + q, -p + q] SOD[q]^OPEm -
+2 OPEm FAD[q, -p + q, -p + q] SOD[q]^(-1 +
+OPEm) (-SOD[p] + SOD[q]) -
+4 FAD[q, q, -p + q, -p + q] SOD[q]^OPEm SPD[p, q] -
+8 FAD[q, -p + q, -p + q, -p + q] SOD[q]^
+OPEm (-SPD[p, p] + SPD[p, q]) +
+8 FAD[q, q, q, -p + q] SOD[q]^OPEm SPD[q, q] +
+4 FAD[q, q, -p + q, -p + q] SOD[q]^OPEm SPD[q, q] +
+4 FAD[q, q, -p + q, -p + q] SOD[q]^OPEm (-SPD[p, q] + SPD[q, q]) +
+8 FAD[q, -p + q, -p + q, -p + q] SOD[q]^OPEm (-SPD[p, q] + SPD[q, q])"}
 })

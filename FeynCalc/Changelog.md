@@ -1,3 +1,204 @@
+### Version 9.2.0 (November 2016)
+
+#### Important changes
+ * New handy functions `FCAbbreviate`, `FCHideEpsilon`, `FCShowEpsilon`, `FCLoopIBPReducableQ`, `FCFactorOut`, `SelectFree2`, `SelectNotFree2`
+ * Finally we have shortcuts for spinors with D-dimensional momenta: `SpinorUD`, `SpinorUBarD`, `SpinorVD`, `SpinorVBarD`
+ * New option `$KeepLogDivergentScalelessIntegrals` permits consistent 1-loop computations, where UV and IR divergences are regularized with different epsilons.
+ * `Examples/FeynRules` now contains several FeynRules models (with more to come) with additional scripts that show how such models can be used with patched `FeynArts`. This should be useful for new users.
+ * `DiracTrace` has received a lot of internfal refactoring and should be now faster and much more stable. Thanks to Peng Sun for motivating me to do so. I hope to get `DiracSimplify` refactored as well in the next release.
+
+
+
+#### Commit log
+
+* Added an example calculation to the test-suite. (a4cdd648)
+* Fixed wrong option name in FCDiracIsolate. (202f3e2)
+* Added some missing unit tests for FCLoop-functions. (c81660f1)
+* Added few tree-level electroweak examples. (4909891)
+* Added FCAbbreviate, a new function that introduces abbreviations for FeynCalc expressions that should be exported to other tools. (a7a27e5); Example:
+	
+	```
+	FCAbbreviate[SPD[p, k] FAD[{q, SMP["m_e"]}, {q + p, m}], {q}, {p, k}, Head -> spd]
+	```
+	
+* Now FCLoopBasisFindCompletion can complete the basis using a list of user-supplied propagators given as the value of the Method option (4b70dcb)
+	
+	```
+	FCLoopBasisFindCompletion[FAD[q1 + p, +q2 - k] SPD[q1, q2], {q1, q2}, Method -> {FAD[{q2 + k, m}], FAD[{q1 - p, m}], +SPD[p, q2], SPD[k, q1]}]	
+	```
+	
+* Added new option FCLoopIBPReducableQ to FCLoopExtract and FCLoopIsolate. This allows to extract/isolate only those loop integrals that are IBP reducable. (20af417)
+	
+	```
+	FCLoopExtract[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q},loop, FCLoopIBPReducableQ -> True]
+	FCLoopIsolate[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q}, Head -> loop, FCLoopIBPReducableQ -> True]
+	
+	```
+* Added new function FCLoopIBPReducableQ for a quick check if the given loop integrals has propagators raised to integer powers. (b699150); Example:
+	
+	```
+	FCLoopIBPReducableQ[FCI[SPD[q,q]^2FAD[{q,0,1}]]]
+	
+	```
+* Some minor refactoring in FDS. (681ef0e)
+* Improved FCLoopBasisFindCompletion to use scalar products as extra propagators. The old behavior can be achieved via the option Method->NullSpace. The new default is however Method->ScalarProduct. (38386fa); Example:
+	
+	```
+	FCLoopBasisFindCompletion[FAD[{q1, m, 2}, {q1 + q3, m}, {q2 \[Minus] q3}, q2], {q1, q2, q3}]
+	FCLoopBasisFindCompletion[FAD[{q1, m, 2}, {q1 + q3, m}, {q2 \[Minus] q3}, q2], {q1, q2, q3}, Method -> NullSpace]
+	```
+
+* Version bump to 9.2 (c8c8cfb)
+* Fixed a bug in FDS related to $KeepLogDivergentScaleless set to True. (a411e67)
+* Improved debugging output in FDS. (fe21cbe)
+* Fixed a bug with D-dim Eps not disappearing when indices are the same. (906cac6)
+* Fixed a small bug in FCShowEpsilon. (0c25ba0)
+* Improved FCHideEpsilon and FCShowEpsilon to work also for D=4-Epsilon via the option D. (16b814e)
+* Fixed a bug in FourDivergence related to the differentiation of FADs. (b372e2b)
+* Added new shortcuts for spinors with D-dimensional momenta: SpinorUD, SpinorUBarD, SpinorVD, SpinorVBarD. (201b058); Example:
+	
+	```
+	SpinorUD[p, m] // FCI // StandardForm
+	SpinorVD[p, m] // FCI // StandardForm
+	SpinorUBarD[p, m] // FCI // StandardForm
+	SpinorVBarD[p, m] // FCI // StandardForm
+	```
+
+* Some cross-checks in ToPaVe, SPC, OneLoop,OneLoopSimplify. (0d832c2)
+* Improved typesetting of the SMP's for renormalization. (1c7b512)
+* Added FeynRules model for pure QED with counterterms following Bohm, Denner and Joos. (fc14872)
+* Added new SMP objects for renormalization calculations. (f2eabd6)
+* Perofrmance improvement in DiracTrace. (3c40740)
+* Added two convenience functions FCHideEpsilon and FCShowEpsilon for doing the substitution 1/Eps - EulerGamma + Log[4Pi] -> Delta. (6cddeb0); Example:
+	
+	```
+	FCHideEpsilon[1/Epsilon - EulerGamma + Log[4 Pi]]
+	FCShowEpsilon[SMP["Delta"]]
+	```
+	
+* Fixed a bug in FCReplaceD, so that DiracGamma does not loose the dimension anymore. (9544275)
+* Fixed a bug in FourDivergence related to the differentiation of D-dim Dirac matrices. (dad4b85)
+* Added FCFactorOut option to Collect2. Currently this only allows to factor out a global prefactor. (54f513a); Example:
+
+	```
+	Collect2[Together[a (1 + x) + 4 b (1 + y)], {a, b}, FCFactorOut -> 4]
+	```
+	
+* Added FCFactorOut, a small convenience function for factoring out user-specified prefactors. (31f3543); Example:
+	
+	```
+	FCFactorOut[(a + 3 b), 3 b]
+	```
+
+* Added SelectFree2 and SelectNotFree2. They act like SelectFree and SelectNotFree, but with an Expand2 before the selection. (d6fb941); Example:
+	
+	```
+	SelectFree2[a (b + c) + d, b]
+	SelectFree[a (b + c) + d, b]
+	SelectNotFree2[a (b + c) + d, b]
+	SelectNotFree[a (b + c) + d, b]
+	```
+	
+* Added FeynArts model (generated with FeynRules) for QCD in the background field formalism. The reason is that this model is missing in the standard FeynArts. (991e340)
+* Fixed a small bug in DiracTrick. (f567f82)
+* Added an extra check for DiracTrick. (75466d4)
+* Made DotSimplify finish faster if there is nothing to simplify. (db0a586)
+* Added new option DiracSigmaExplicit to FCDiracIsolate. (9cf7654)
+* Some improvements in TID for the BMHV scheme. In particular, unless BMHV scheme has been explicitly selected, amplitudes that are partly 4-dim and partly D-dim will not be tolerated anymore. (aa89a44)
+* Refactoring DiracSimplify. (7f3dc3d)
+* DiracTrick: Adjusted Larin's scheme (12fd5ac)
+* Made DiracTrick a bit faster by evaluating simple traces before entering the main loop. (f419c0d)
+* Added option FCDiracIsolate to DiracTrick. This is for calling DiracTrick from internal functions. (f40ec42)
+* Cleaning up the code of DiracTrace. (ab363ab)
+* Some more adjustments for DiracTrace and DiracTrick. (edc954a)
+* Improved performance of DiracTrace on big traces. (64f5120)
+* Some more refactoring in DiracTrick. (2be6dd4)
+* Improved performance of DiracTrace for West->False. (972c7c9)
+* DiracTrick: Finally separated rules for different schemes. (8bb589a)
+* DirackTrick: Cleaned up the rules for moving g^5. (1a63162)
+* DiracTrick: Use cached FCFastContract instead of coneins. (d4ed905)
+* DiracTrick: Get rid of scev in favor of FCUseCache. (7446399)
+* DiracTrick: Refactoring continues 2. (7a37313)
+* DirackTrick: Refactoring continues. (f026c48)
+* Continuing refactoring in DiracTrick. (3a743a1)
+* Added option LorentzIndex to FCDiracIsolate that allows inclusion of Lorezntz tensors into isolated heads.dch[GS[p].GS[l]] + dch[GA[i].GA[j].GA[k] MT[mu, nu]] (beb0713; Example:
+ 	
+	```
+	FCDiracIsolate[ MT[mu, nu] GA[i, j, k] + GS[p, l] + MT[mu, nu] GA[mu, j, k], LorentzIndex -> True, Head -> dch]
+	```
+	
+* Fixed in a bug in the handling of unknown non-commutative objects by DiracTrick. (fe1e459)
+* DiracTrick: Splitting of DiracChains is now handled by FCDiracIsolate. (4e269d0)
+* DiracTrick: Fatoring out of SUNT matrices is now handled by FCDiracIsolate. Moreover, gamma5Present checks if g^5 is present at all. (d60406a)
+* Improved InsideDiracTrace simplifications of DiracTrick. (2d550c6)
+* DiracTrick refactoring in progress. (b6db370)
+* Improved test suite to show time required to run single tests. (2689240)
+* Started refactoring of DiracTrick. (a552eaa)
+* Fixed handling of Larin's scheme in Anti5. (174bb74)
+* Updated description of Larin's scheme. (174f98e)
+* Minor cleanups in FCI and FCE. (e86d145)
+* Added example for the computation of the self-energy diagrams in pure Yang-Mills using background field formalism according to Abbott. (2845af6)
+* Improved handling of Dirac traces that contain unknown non-commutative objects. (1aa3f96)
+* DiracTrace improvement with Expand. (b1ff3f7)
+* Rempoved some old code from DiracTrace (981ab92)
+* Implemented new trace function in DiracTrace. (c6025e4)
+* Test (2941b9e)
+* Some more improvements in DiracTrace. (dfe1dc5)
+* Some fixes in DiracTrace plus now we it uses DiracTrick instead of DiracSimplify. (57b1b2a)
+* More refactoring in DiracTrace. (685a1c4)
+* Even more refactoring in DiracTrace. (6be8f53)
+* More refactoring in DiracTrace (1dcb5bb)
+* More refactoring in DiracTrace. (a06533e)
+* Some more refactoring in DiracTrace. (5187efd)
+* Some more refactoring in DiracTrace. (b185f3c)
+* Some fixes for Larin's scheme in DiracTrace. (cda3f15)
+* Improved splitting between SUNT and DiracGamma in DotSimplify. (45ebe1e)
+* Fixed a bug in the new InsideDiracTrace simplification of DiracTrick. (da94751)
+* Added new option InsideDiracTrace to DiracTrick. (a5b63dc)
+* Added new option DiracGammaCombine to DiracTrick and improved handling of chiral projectors. (5416c72)
+* Some refactoring in DiracTrick. (87f3d4b)
+* Fixed typo in the description of TarcerToFC (6abb381)
+* Added new option DiracGammaCombine to FCDiracIsolate. (2d5e8aa); Example:
+* 
+	```
+	FCDiracIsolate[GA[nu].(GS[p] + GS[q] + GS[k] + m).GA[mu], Head -> dch]
+	
+	FCDiracIsolate[GA[nu].(GS[p] + GS[q] + GS[k] + m).GA[mu], Head -> dch,
+  DiracGammaCombine -> False]
+	```
+	
+* Some refactoring in FCDiracIsolate. (79fdd36)
+* Improved the muon decay example. (b79005d)
+* Added an example for using Tdec to compute some multi-loop decompositions that appear in the renormalization of the Gross-Neveu model at 4-loops. (de1cf3b)
+* Fixed a bug in Tdec related to wrong determination of symmetries in multi-loop integrals. (f4bb647)
+* Added several new SMP typesettings: m_qu and m_qd for up- and down-type quark masses m_l for lepton masses Q_u and Q_D for up- and down-type quark charges g_W and g'_W for the weak couplings (5a1c91c); Example:
+
+	```
+	?SMP
+	SMP[]
+	```
+	
+* Added the option PaVeIntegralHeads to FCLoopCanonicalize, FCLoopIsolate and FCLoopSplit. This allows to specify extra heads that should be treated as PaVe integrals. (b5ee87b); Example:
+
+	```
+	FCLoopSplit[Foobar[x], {}, PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads], {Foobar}]]
+
+	FCLoopIsolate[Foobar[x], {}, PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads],
+	{Foobar}],Head -> loop]
+	```
+	
+* Added new !experimental! global option $KeepLogDivergentScalelessIntegrals that forces FeynCalc not to put log divergent scaleless integral 1/q^4 to zero. This is important e.g. for EFTs, where IR and UV divergences must be distinguished. (d1610d0); Example:
+
+	```
+	$KeepLogDivergentScalelessIntegrals=True;
+	TID[FVD[q,mu]FVD[q,nu]FAD[{q,0,3}],q]
+	```
+	
+* Fixed typos in the description of the ABJ example. (5262505)
+* Small refactoring in OneLoop. (4d53ccd)
+* Fixed a small bug (just caused a warning) in PaVeReduce when PaVe functions have user-defined options. (40f3338)
+* Improved automatic installer to allow installing FeynCalc and FeynArts from local tarballs. For example: (e2a13c0)
+
 ### Version 9.1.0 (August 2016)
 
 #### Important changes
