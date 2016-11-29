@@ -52,5 +52,6 @@ GS[q]) . GA[l] . (M + GS[p]) . GA[n]*FAD[k + p,
 M]*SUNT[a] + GA[i] . (M +
 GS[p]) . GA[j] . GA[6] . GA[k] . GA[j] . (m +
 GS[q]) . GA[n] . (M + GS[p]) . GA[l]*FAD[k + p,
-M]*SUNT[a]"}
+M]*SUNT[a]"},
+{"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"}
 }
