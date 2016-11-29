@@ -92,10 +92,12 @@ FCReplaceD[expr_, replacement_Rule, OptionsPattern[]] :=
 		];
 
 		res = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum)[holddim[a_,str_String]]:> h[a,ToExpression[str]];
+		res = res /. (h:LorentzIndex|ExplicitLorentzIndex|Momentum)[a_]/;Head[a]=!=holddim :> h[a];
 
 		res = res /. diga[holddim[a_,str_String]] :> DiracGamma[a,ToExpression[str]];
+		res = res /. diga[a_]/;Head[a]=!=holddim :> DiracGamma[a];
 
-		If[	!FreeQ[res,holddim],
+		If[	!FreeQ2[res,{holddim,diga}],
 			Message[FCReplaceD::resfail];
 			Abort[]
 		];

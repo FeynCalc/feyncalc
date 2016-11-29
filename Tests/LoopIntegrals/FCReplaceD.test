@@ -20,5 +20,7 @@ Tests`LoopIntegrals`fcstFCReplaceD = {
 {"fcstFCReplaceD-ID3","FCReplaceD[MTD[mu, nu]*D, D -> 4 - 2 Epsilon]",
 "(4 - 2 Epsilon) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]"},
 {"fcstFCReplaceD-ID4","FCReplaceD[GAD[i] D, D -> 4 - 2 Eps] // FCE","(4 - 2 Eps) GAD[i]"},
-{"fcstFCReplaceD-ID5","FCReplaceD[GSD[p] D, D -> 4 - 2 Eps] // FCE","(4 - 2 Eps) GSD[p]"}
+{"fcstFCReplaceD-ID5","FCReplaceD[GSD[p] D, D -> 4 - 2 Eps] // FCE","(4 - 2 Eps) GSD[p]"},
+{"fcstFCReplaceD-ID6","FCReplaceD[GA[x], D -> 4 - 2 Epsilon] // FCE","GA[x]"},
+{"fcstFCReplaceD-ID7","FCReplaceD[FV[x, i], D -> 4 - 2 Eps] // FCE","FV[x, i]"}
 }
