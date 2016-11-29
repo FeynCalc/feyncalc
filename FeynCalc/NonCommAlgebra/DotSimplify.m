@@ -81,7 +81,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
 	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
 	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, xx, sunTrace,
-	holdDOTColor, holdDOTDirac
+	holdDOTColor, holdDOTDirac, nvar
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -173,9 +173,10 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				If this is so, and there no commutators or anticommuators inside, expand the
 				expression and return it *)
 
-			FCPrint[1, "DotSimplify: Working out user-defined non-commutatuve objects.", FCDoControl->dsVerbose];
+			FCPrint[1, "DotSimplify: Working out user-defined non-commutative objects.", FCDoControl->dsVerbose];
 			If[ simrel === {},
-				vars = Union[Variables[Cases[xx, _, Infinity] ]];
+				vars = Union[Variables[Cases[xx
+					//. DOT[a___, n_?NumberQ o1_. + o2_:0, b___] :> DOT[a, o1 nvar[n]+o2, b], _, Infinity] ]];
 				If[ Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
 					If[ FreeQ2[{DownValues[Commutator], DownValues[AntiCommutator]},vars],
 		(* that means : just expansion, no acomms, comms *)
