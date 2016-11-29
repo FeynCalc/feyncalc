@@ -1786,3 +1786,68 @@ InsideDiracTrace -> True] // FCE",
 "GS[k2].GS[p1] SP[k1, k1] SP[p2, p2] +
 GS[p1].GS[k2] SP[k1, k1] SP[p2, p2]"}
 });
+
+fcstDiracTrickChiralTricks =
+({
+{"fcstDiracTrickChiralTricks-ID1",
+"DiracTrick[GA[i].GA[5].(2 GA[5]+4)]",
+"2*DiracGamma[LorentzIndex[i]] + 4*DiracGamma[LorentzIndex[i]] . \
+DiracGamma[5]"},
+{"fcstDiracTrickChiralTricks-ID2",
+"DiracTrick[GA[i].(2 GA[5]+4).GA[5]]",
+"2*DiracGamma[LorentzIndex[i]] + 4*DiracGamma[LorentzIndex[i]] . \
+DiracGamma[5]"},
+{"fcstDiracTrickChiralTricks-ID3",
+"DiracTrick[GA[i].GA[5].(2 GA[6]+4)]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[5] + \
+2*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID4",
+"DiracTrick[GA[i].(2 GA[6]+4).GA[5]]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[5] + \
+2*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID5",
+"DiracTrick[GA[i].GA[5].(2 GA[7]+4)]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[5] - \
+2*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID6",
+"DiracTrick[GA[i].(2 GA[7]+4).GA[5]]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[5] - \
+2*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID7",
+"DiracTrick[GA[i].GA[6].(2 GA[5]+4)]",
+"6*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID8",
+"DiracTrick[GA[i].(2 GA[5]+4).GA[6]]",
+"6*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID9",
+"DiracTrick[GA[i].GA[6].(2 GA[6]+4)]",
+"6*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID10",
+"DiracTrick[GA[i].(2 GA[6]+4).GA[6]]",
+"6*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID11",
+"DiracTrick[GA[i].GA[6].(2 GA[7]+4)]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID12",
+"DiracTrick[GA[i].(2 GA[7]+4).GA[6]]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[6]"},
+{"fcstDiracTrickChiralTricks-ID13",
+"DiracTrick[GA[i].GA[7].(2 GA[5]+4)]",
+"2*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID14",
+"DiracTrick[GA[i].(2 GA[5]+4).GA[7]]",
+"2*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID15",
+"DiracTrick[GA[i].GA[7].(2 GA[6]+4)]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID16",
+"DiracTrick[GA[i].(2 GA[6]+4).GA[7]]",
+"4*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID17",
+"DiracTrick[GA[i].GA[7].(2 GA[7]+4)]",
+"6*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"},
+{"fcstDiracTrickChiralTricks-ID18",
+"DiracTrick[GA[i].(2 GA[7]+4).GA[7]]",
+"6*DiracGamma[LorentzIndex[i]] . DiracGamma[7]"}
+});
+

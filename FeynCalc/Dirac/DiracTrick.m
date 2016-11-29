@@ -272,6 +272,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		If[	gamma5Present,
 			res = res /. holdDOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+			FCPrint[3, "DiracTrick: diracTrickEval: after applying simplifications related to g^5:", res, FCDoControl->diTrVerbose];
 		];
 
 		If[ FreeQ2[res,DiracHeadsList],
@@ -331,6 +332,9 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 					(* Mixed and BMHV -> don't move g^5 around *)
 					MatchQ[dim, {_Symbol - 4} | {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
+					(* special case that the expression contains only chiral matrices*)
+					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && FreeQ[(res/.DiracGamma[5|6|7]:>diga),DiracGamma],
+					FCPrint[1, "DiracTrick: diracTrickEval: Chiral only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
 						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
@@ -368,6 +372,9 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 				res = res /. holdDOT -> diracologyBMHV1;
 				res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
 				res = res /. diracologyBMHV1 -> holdDOT,
+			(* special case that the expression contains only chiral matrices*)
+					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && FreeQ[(res/.DiracGamma[5|6|7]:>diga),DiracGamma],
+					FCPrint[1, "DiracTrick: diracTrickEval: Chiral only.", FCDoControl->diTrVerbose],
 			(* Anything else is most likely an error *)
 			True,
 				Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
@@ -628,35 +635,71 @@ commonGamma5Properties[]:=
 commonGamma5Properties[___,0,___]:=
 	0;
 
-commonGamma5Properties[b___,DiracGamma[5],DiracGamma[5],c___] :=
-	commonGamma5Properties[ b,c ];
+commonGamma5Properties[b___,DiracGamma[5],cc1_. DiracGamma[5] + cc2_:0,c___] :=
+	cc1 commonGamma5Properties[ b,c ] + cc2 commonGamma5Properties[ b,DiracGamma[5],c ]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[5],DiracGamma[6],c___] :=
-	commonGamma5Properties[b,DiracGamma[6],c];
+commonGamma5Properties[b___,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[5],c___] :=
+	cc1 commonGamma5Properties[ b,c ] + cc2 commonGamma5Properties[ b,DiracGamma[5],c ]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[5],DiracGamma[7],c___] :=
-	-commonGamma5Properties[b,DiracGamma[7],c];
 
-commonGamma5Properties[b___,DiracGamma[6], DiracGamma[5], c___] :=
-	commonGamma5Properties[b,DiracGamma[6],c];
+commonGamma5Properties[b___,DiracGamma[5],cc1_. DiracGamma[6] + cc2_:0,c___] :=
+	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[7],DiracGamma[5],c___] :=
-	-commonGamma5Properties[b, DiracGamma[7], c];
+commonGamma5Properties[b___,cc1_. DiracGamma[6] + cc2_:0,DiracGamma[5],c___] :=
+	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[___,DiracGamma[6], DiracGamma[7], ___] :=
-	0;
 
-commonGamma5Properties[___,DiracGamma[7], DiracGamma[6], ___] :=
-	0;
+commonGamma5Properties[b___,DiracGamma[5],cc1_. DiracGamma[7] + cc2_:0,c___] :=
+	- cc1 commonGamma5Properties[b,DiracGamma[7],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[6],DiracGamma[6],c___] :=
-	commonGamma5Properties[b, DiracGamma[6], c];
+commonGamma5Properties[b___,cc1_. DiracGamma[7] + cc2_:0,DiracGamma[5],c___] :=
+	- cc1 commonGamma5Properties[b,DiracGamma[7],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[7],DiracGamma[7],c___] :=
-	commonGamma5Properties[b, DiracGamma[7], c];
 
-commonGamma5Properties[b___,DiracGamma[6]+DiracGamma[7],c___] :=
-	commonGamma5Properties[b, c];
+
+commonGamma5Properties[b___,DiracGamma[6],cc1_. DiracGamma[5] + cc2_:0, c___] :=
+	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[6], c___] :=
+	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
+
+
+commonGamma5Properties[b___,DiracGamma[7],cc1_. DiracGamma[5] + cc2_:0,c___] :=
+	- cc1 commonGamma5Properties[b, DiracGamma[7], c] + cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[7],c___] :=
+	- cc1 commonGamma5Properties[b, DiracGamma[7], c] + cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
+
+
+commonGamma5Properties[b___,DiracGamma[6], cc1_. DiracGamma[7] + cc2_:0, c___] :=
+	cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___, cc1_. DiracGamma[7] + cc2_:0,DiracGamma[6], c___] :=
+	cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
+
+
+commonGamma5Properties[b___,DiracGamma[7], cc1_. DiracGamma[6] + cc2_:0, c___] :=
+	cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___, cc1_. DiracGamma[6] + cc2_:0,DiracGamma[7], c___] :=
+	cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
+
+
+commonGamma5Properties[b___,DiracGamma[6],cc1_. DiracGamma[6] + cc2_:0,c___] :=
+	(cc1+cc2) commonGamma5Properties[b, DiracGamma[6], c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___,cc1_. DiracGamma[6] + cc2_:0,DiracGamma[6],c___] :=
+	(cc1+cc2) commonGamma5Properties[b, DiracGamma[6], c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___,DiracGamma[7],cc1_. DiracGamma[7] + cc2_:0,c___] :=
+	(cc1+cc2) commonGamma5Properties[b, DiracGamma[7], c]/; NonCommFreeQ[{cc1,cc2}];
+
+commonGamma5Properties[b___,cc1_. DiracGamma[7] + cc2_:0,DiracGamma[7],c___] :=
+	(cc1+cc2) commonGamma5Properties[b, DiracGamma[7], c]/; NonCommFreeQ[{cc1,cc2}];
+
+
+commonGamma5Properties[b___,cc1_. DiracGamma[6]+ cc1_. DiracGamma[7],c___] :=
+	cc1 commonGamma5Properties[b, c]/; NonCommFreeQ[{cc1,cc2}];
 
 (* ------------------------------------------------------------------------ *)
 
