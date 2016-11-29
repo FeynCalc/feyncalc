@@ -88,6 +88,6 @@ Tests`LoopIntegrals`fcstPaVeIntegrals = {
 {"fcstPaVeIntegrals-ID63","D[B0[a, b, c], c]"," Derivative[0, 0, 1][B0][a, b, c]"},
 {"fcstPaVeIntegrals-ID64","D[B1[a, b, c], c]"," (-B0[0, b, c] + B0[a, b, c])/(2*a) - Derivative[0, 0, 1][B0][a, b, c]/2 +
 ((-b + c)*(-Derivative[0, 0, 1][B0][0, b, c] + Derivative[0, 0, 1][B0][a, b, c]))/(2*a)"},
-{"fcstPaVeIntegrals-ID65","$LimitTo4 = False;\nDB1[m, m, 0]"," 1/(2*m) - DB0[m, 0, m]"}
-
+{"fcstPaVeIntegrals-ID64.1","SetOptions[B0, BReduce -> True]; \n PaVe[0, {SP[p, p]}, {m^2, 0}, PaVeAutoReduce -> True]","B0[SP[p, p], 0, m^2]"},
+{"fcstPaVeIntegrals-ID65","SetOptions[B0, BReduce -> False]; \n $LimitTo4 = False;\nDB1[m, m, 0]"," 1/(2*m) - DB0[m, 0, m]"}
 }
