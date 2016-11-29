@@ -964,13 +964,12 @@ PaVe[2, {p10, p12, p20}, {m1^2, m2^2,
 Tests`LoopIntegrals`fcstPaVeDenner = ({
 {"fcstPaVeDenner-ID1",
 "$LimitTo4 =True; \nFactor2[(B1[p^2,m0^2,m1^2]//PaVeReduce[#,BReduce\[Rule]True, PaVeAutoReduce -> True]&)]",
-"(A0[m0^2] - A0[m1^2] - m0^2*B0[p^2, m0^2, m1^2, BReduce -> True] \
-+ m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] - p^2*B0[p^2, m0^2, m1^2, \
-BReduce -> True])/(2*p^2)"},
+"(A0[m0^2] - A0[m1^2] - m0^2*B0[p^2, m0^2, m1^2] \
++ m1^2*B0[p^2, m0^2, m1^2] - p^2*B0[p^2, m0^2, m1^2])/(2*p^2)"},
 {"fcstPaVeDenner-ID2",
 "Factor2[(B1[p^2,m0^2,m1^2]//PaVeReduce[#,BReduce\[Rule]True, PaVeAutoReduce -> True]&)]/.{\
 m0\[Rule]m,m1\[Rule]m,p\[Rule]\!\(\*SqrtBox[\(2\)]\)m}",
-"-B0[2*m^2, m^2, m^2, BReduce -> True]/2"},
+"-B0[2*m^2, m^2, m^2]/2"},
 {"fcstPaVeDenner-ID3",
 "Factor2[PaVeReduce[\!\(\*FractionBox[\(1\), \
 \(6\)]\)(A0[m1^2]+(p^2-m1^2+m0^2)B1[p^2,m0^2,m1^2]+2m0^2B0[p^2,m0^2,\
@@ -978,27 +977,24 @@ m1^2]+m0^2+m1^2-\!\(\*FractionBox[\(1\), \
 \(3\)]\)p^2),BReduce\[Rule]True, PaVeAutoReduce -> True]]",
 "(6*m0^2*p^2 + 6*m1^2*p^2 - 2*p^4 + 3*m0^2*A0[m0^2] - \
 3*m1^2*A0[m0^2] + 3*p^2*A0[m0^2] - 3*m0^2*A0[m1^2] + 3*m1^2*A0[m1^2] \
-+ 3*p^2*A0[m1^2] - 3*m0^4*B0[p^2, m0^2, m1^2, BReduce -> True] + \
-6*m0^2*m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] - 3*m1^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 6*m0^2*p^2*B0[p^2, m0^2, m1^2, BReduce \
--> True] + 6*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-3*p^4*B0[p^2, m0^2, m1^2, BReduce -> True])/(36*p^2)"},
++ 3*p^2*A0[m1^2] - 3*m0^4*B0[p^2, m0^2, m1^2] + \
+6*m0^2*m1^2*B0[p^2, m0^2, m1^2] - 3*m1^4*B0[p^2, \
+m0^2, m1^2] + 6*m0^2*p^2*B0[p^2, m0^2, m1^2] + 6*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+3*p^4*B0[p^2, m0^2, m1^2])/(36*p^2)"},
 {"fcstPaVeDenner-ID4",
 "PaVeReduce[B00[p^2,m0^2,m1^2],BReduce\[Rule]True, PaVeAutoReduce -> True]//Factor2",
 "(6*m0^2*p^2 + 6*m1^2*p^2 - 2*p^4 + 3*m0^2*A0[m0^2] - \
 3*m1^2*A0[m0^2] + 3*p^2*A0[m0^2] - 3*m0^2*A0[m1^2] + 3*m1^2*A0[m1^2] \
-+ 3*p^2*A0[m1^2] - 3*m0^4*B0[p^2, m0^2, m1^2, BReduce -> True] + \
-6*m0^2*m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] - 3*m1^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 6*m0^2*p^2*B0[p^2, m0^2, m1^2, BReduce \
--> True] + 6*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-3*p^4*B0[p^2, m0^2, m1^2, BReduce -> True])/(36*p^2)"},
++ 3*p^2*A0[m1^2] - 3*m0^4*B0[p^2, m0^2, m1^2] + \
+6*m0^2*m1^2*B0[p^2, m0^2, m1^2] - 3*m1^4*B0[p^2, \
+m0^2, m1^2] + 6*m0^2*p^2*B0[p^2, m0^2, m1^2] + 6*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+3*p^4*B0[p^2, m0^2, m1^2])/(36*p^2)"},
 {"fcstPaVeDenner-ID5", "B00[2m^2,m^2,m^2]",
 "((4*m^2)/3 + A0[m^2] + m^2*B0[2*m^2, m^2, m^2])/6"},
 {"fcstPaVeDenner-ID6",
 "((PaVeReduce[B00[p^2,m0^2,m1^2],BReduce\[Rule]True, PaVeAutoReduce -> True]//Factor2)/.{\
 m0\[Rule]m,m1\[Rule]m,p\[Rule]\!\(\*SqrtBox[\(2\)]\)m})",
-"(16*m^4 + 12*m^2*A0[m^2] + 12*m^4*B0[2*m^2, m^2, m^2, BReduce -> \
-True])/(72*m^2)"},
+"(16*m^4 + 12*m^2*A0[m^2] + 12*m^4*B0[2*m^2, m^2, m^2])/(72*m^2)"},
 {"fcstPaVeDenner-ID7",
 "PaVeReduce[\!\(\*FractionBox[\(1\), \(3  p^\\\ \
 2\)]\)(A0[m1^2]-2(p^2-m1^2+m0^2)B1[p^2,m0^2,m1^2]-m0^2B0[p^2,m0^2,m1^\
@@ -1007,25 +1003,22 @@ True])/(72*m^2)"},
 \[Rule]True, PaVeAutoReduce -> True]//Factor2",
 "-(3*m0^2*p^2 + 3*m1^2*p^2 - p^4 + 6*m0^2*A0[m0^2] - \
 6*m1^2*A0[m0^2] + 6*p^2*A0[m0^2] - 6*m0^2*A0[m1^2] + 6*m1^2*A0[m1^2] \
-- 12*p^2*A0[m1^2] - 6*m0^4*B0[p^2, m0^2, m1^2, BReduce -> True] + \
-12*m0^2*m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] - 6*m1^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] - 6*m0^2*p^2*B0[p^2, m0^2, m1^2, BReduce \
--> True] + 12*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-6*p^4*B0[p^2, m0^2, m1^2, BReduce -> True])/(18*p^4)"},
+- 12*p^2*A0[m1^2] - 6*m0^4*B0[p^2, m0^2, m1^2] + \
+12*m0^2*m1^2*B0[p^2, m0^2, m1^2] - 6*m1^4*B0[p^2, \
+m0^2, m1^2] - 6*m0^2*p^2*B0[p^2, m0^2, m1^2] + 12*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+6*p^4*B0[p^2, m0^2, m1^2])/(18*p^4)"},
 {"fcstPaVeDenner-ID8",
 "PaVeReduce[B11[p^2,m0^2,m1^2],BReduce\[Rule]True, PaVeAutoReduce -> True]//Factor2",
 "-(3*m0^2*p^2 + 3*m1^2*p^2 - p^4 + 6*m0^2*A0[m0^2] - \
 6*m1^2*A0[m0^2] + 6*p^2*A0[m0^2] - 6*m0^2*A0[m1^2] + 6*m1^2*A0[m1^2] \
-- 12*p^2*A0[m1^2] - 6*m0^4*B0[p^2, m0^2, m1^2, BReduce -> True] + \
-12*m0^2*m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] - 6*m1^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] - 6*m0^2*p^2*B0[p^2, m0^2, m1^2, BReduce \
--> True] + 12*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-6*p^4*B0[p^2, m0^2, m1^2, BReduce -> True])/(18*p^4)"},
+- 12*p^2*A0[m1^2] - 6*m0^4*B0[p^2, m0^2, m1^2] + \
+12*m0^2*m1^2*B0[p^2, m0^2, m1^2] - 6*m1^4*B0[p^2, \
+m0^2, m1^2] - 6*m0^2*p^2*B0[p^2, m0^2, m1^2] + 12*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+6*p^4*B0[p^2, m0^2, m1^2])/(18*p^4)"},
 {"fcstPaVeDenner-ID9",
 "((PaVeReduce[B11[p^2,m0^2,m1^2],BReduce\[Rule]True, PaVeAutoReduce -> True]//Factor2)/.{\
 m0\[Rule]m,m1\[Rule]m,p\[Rule]\!\(\*SqrtBox[\(2\)]\)m})//Factor2",
-"-(2*m^2 - 3*A0[m^2] - 3*m^2*B0[2*m^2, m^2, m^2, BReduce -> \
-True])/(18*m^2)"},
+"-(2*m^2 - 3*A0[m^2] - 3*m^2*B0[2*m^2, m^2, m^2])/(18*m^2)"},
 {"fcstPaVeDenner-ID10", "B11[2m^2,m^2,m^2]",
 "((-2*m^2)/3 + A0[m^2] + m^2*B0[2*m^2, m^2, m^2])/(6*m^2)"},
 {"fcstPaVeDenner-ID11",
@@ -1037,15 +1030,11 @@ FractionBox[\(1\), \
 6*m0^4*A0[m0^2] - 12*m0^2*m1^2*A0[m0^2] + 6*m1^4*A0[m0^2] - \
 6*m0^2*p^2*A0[m0^2] - 12*m1^2*p^2*A0[m0^2] + 6*p^4*A0[m0^2] - \
 6*m0^4*A0[m1^2] + 12*m0^2*m1^2*A0[m1^2] - 6*m1^4*A0[m1^2] + \
-18*m1^2*p^2*A0[m1^2] + 6*p^4*A0[m1^2] - 6*m0^6*B0[p^2, m0^2, m1^2, \
-BReduce -> True] + 18*m0^4*m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] \
-- 18*m0^2*m1^4*B0[p^2, m0^2, m1^2, BReduce -> True] + 6*m1^6*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 6*m0^4*p^2*B0[p^2, m0^2, m1^2, BReduce \
--> True] + 12*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-18*m1^4*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] + 6*m0^2*p^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2, \
-BReduce -> True] - 6*p^6*B0[p^2, m0^2, m1^2, BReduce -> \
-True])/(144*p^4)"},
+18*m1^2*p^2*A0[m1^2] + 6*p^4*A0[m1^2] - 6*m0^6*B0[p^2, m0^2, m1^2] + 18*m0^4*m1^2*B0[p^2, m0^2, m1^2] \
+- 18*m0^2*m1^4*B0[p^2, m0^2, m1^2] + 6*m1^6*B0[p^2, \
+m0^2, m1^2] + 6*m0^4*p^2*B0[p^2, m0^2, m1^2] + 12*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+18*m1^4*p^2*B0[p^2, m0^2, m1^2] + 6*m0^2*p^4*B0[p^2, \
+m0^2, m1^2] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2] - 6*p^6*B0[p^2, m0^2, m1^2])/(144*p^4)"},
 {"fcstPaVeDenner-ID12",
 "PaVeReduce[PaVe[0,0,1,{p^2},{m0^2,m1^2}],BReduce\[Rule]True, PaVeAutoReduce -> True]\
 //Factor2",
@@ -1053,15 +1042,11 @@ True])/(144*p^4)"},
 6*m0^4*A0[m0^2] - 12*m0^2*m1^2*A0[m0^2] + 6*m1^4*A0[m0^2] - \
 6*m0^2*p^2*A0[m0^2] - 12*m1^2*p^2*A0[m0^2] + 6*p^4*A0[m0^2] - \
 6*m0^4*A0[m1^2] + 12*m0^2*m1^2*A0[m1^2] - 6*m1^4*A0[m1^2] + \
-18*m1^2*p^2*A0[m1^2] + 6*p^4*A0[m1^2] - 6*m0^6*B0[p^2, m0^2, m1^2, \
-BReduce -> True] + 18*m0^4*m1^2*B0[p^2, m0^2, m1^2, BReduce -> True] \
-- 18*m0^2*m1^4*B0[p^2, m0^2, m1^2, BReduce -> True] + 6*m1^6*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 6*m0^4*p^2*B0[p^2, m0^2, m1^2, BReduce \
--> True] + 12*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-18*m1^4*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] + 6*m0^2*p^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2, \
-BReduce -> True] - 6*p^6*B0[p^2, m0^2, m1^2, BReduce -> \
-True])/(144*p^4)"},
+18*m1^2*p^2*A0[m1^2] + 6*p^4*A0[m1^2] - 6*m0^6*B0[p^2, m0^2, m1^2] + 18*m0^4*m1^2*B0[p^2, m0^2, m1^2] \
+- 18*m0^2*m1^4*B0[p^2, m0^2, m1^2] + 6*m1^6*B0[p^2, \
+m0^2, m1^2] + 6*m0^4*p^2*B0[p^2, m0^2, m1^2] + 12*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+18*m1^4*p^2*B0[p^2, m0^2, m1^2] + 6*m0^2*p^4*B0[p^2, \
+m0^2, m1^2] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2] - 6*p^6*B0[p^2, m0^2, m1^2])/(144*p^4)"},
 {"fcstPaVeDenner-ID13", "PaVe[0,0,1,{2m^2},{m^2,m^2}]//PaVeReduce[#, PaVeAutoReduce -> True]&",
 "-m^2/9 - A0[m^2]/12 - (m^2*B0[2*m^2, m^2, m^2])/12"},
 {"fcstPaVeDenner-ID14",
@@ -1074,15 +1059,12 @@ B1[p^2,m0^2,m1^2]-\!\(\*FractionBox[\(1\), \
 6*m0^2*p^2*A0[m0^2] - 12*m1^2*p^2*A0[m0^2] + 6*p^4*A0[m0^2] - \
 6*m0^4*A0[m1^2] + 12*m0^2*m1^2*A0[m1^2] - 6*m1^4*A0[m1^2] - \
 12*m0^2*p^2*A0[m1^2] + 18*m1^2*p^2*A0[m1^2] - 18*p^4*A0[m1^2] - \
-6*m0^6*B0[p^2, m0^2, m1^2, BReduce -> True] + 18*m0^4*m1^2*B0[p^2, \
-m0^2, m1^2, BReduce -> True] - 18*m0^2*m1^4*B0[p^2, m0^2, m1^2, \
-BReduce -> True] + 6*m1^6*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-6*m0^4*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] + \
-24*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-18*m1^4*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - 6*m0^2*p^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2, \
-BReduce -> True] - 6*p^6*B0[p^2, m0^2, m1^2, BReduce -> \
-True])/(24*p^6)"},
+6*m0^6*B0[p^2, m0^2, m1^2] + 18*m0^4*m1^2*B0[p^2, \
+m0^2, m1^2] - 18*m0^2*m1^4*B0[p^2, m0^2, m1^2] + 6*m1^6*B0[p^2, m0^2, m1^2] - \
+6*m0^4*p^2*B0[p^2, m0^2, m1^2] + \
+24*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+18*m1^4*p^2*B0[p^2, m0^2, m1^2] - 6*m0^2*p^4*B0[p^2, \
+m0^2, m1^2] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2] - 6*p^6*B0[p^2, m0^2, m1^2])/(24*p^6)"},
 {"fcstPaVeDenner-ID15",
 "PaVeReduce[PaVe[1,1,1,{p^2},{m0^2,m1^2}],BReduce\[Rule]True, PaVeAutoReduce -> True]\
 //Factor2",
@@ -1091,15 +1073,12 @@ True])/(24*p^6)"},
 6*m0^2*p^2*A0[m0^2] - 12*m1^2*p^2*A0[m0^2] + 6*p^4*A0[m0^2] - \
 6*m0^4*A0[m1^2] + 12*m0^2*m1^2*A0[m1^2] - 6*m1^4*A0[m1^2] - \
 12*m0^2*p^2*A0[m1^2] + 18*m1^2*p^2*A0[m1^2] - 18*p^4*A0[m1^2] - \
-6*m0^6*B0[p^2, m0^2, m1^2, BReduce -> True] + 18*m0^4*m1^2*B0[p^2, \
-m0^2, m1^2, BReduce -> True] - 18*m0^2*m1^4*B0[p^2, m0^2, m1^2, \
-BReduce -> True] + 6*m1^6*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-6*m0^4*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] + \
-24*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - \
-18*m1^4*p^2*B0[p^2, m0^2, m1^2, BReduce -> True] - 6*m0^2*p^4*B0[p^2, \
-m0^2, m1^2, BReduce -> True] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2, \
-BReduce -> True] - 6*p^6*B0[p^2, m0^2, m1^2, BReduce -> \
-True])/(24*p^6)"},
+6*m0^6*B0[p^2, m0^2, m1^2] + 18*m0^4*m1^2*B0[p^2, \
+m0^2, m1^2] - 18*m0^2*m1^4*B0[p^2, m0^2, m1^2] + 6*m1^6*B0[p^2, m0^2, m1^2] - \
+6*m0^4*p^2*B0[p^2, m0^2, m1^2] + \
+24*m0^2*m1^2*p^2*B0[p^2, m0^2, m1^2] - \
+18*m1^4*p^2*B0[p^2, m0^2, m1^2] - 6*m0^2*p^4*B0[p^2, \
+m0^2, m1^2] + 18*m1^2*p^4*B0[p^2, m0^2, m1^2] - 6*p^6*B0[p^2, m0^2, m1^2])/(24*p^6)"},
 {"fcstPaVeDenner-ID16", "tmp=PaVe[1,1,1,{2m^2},{m^2,m^2}]//PaVeReduce[#, PaVeAutoReduce -> True]&; \n $LimitTo4 =False; \n tmp",
 "1/6 - A0[m^2]/(4*m^2)"}
 })

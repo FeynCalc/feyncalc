@@ -168,7 +168,8 @@ B0[mm_,0,mm_,OptionsPattern[]] :=
 
 (* further B0 reduction *)
 B0[pp_,mm1_,mm2_,OptionsPattern[]] :=
-	PaVeReduce[PaVe[0,{pp},{mm1,mm2}],BReduce->True,PaVeAutoReduce->True]/; OptionValue[BReduce];
+	PaVeReduce[PaVe[0,{pp},{mm1,mm2}],BReduce->True,PaVeAutoReduce->True]/; OptionValue[BReduce] && pcheck[pp,mm1,mm2] &&
+	(pp/.SmallVariable[_]->0)===0;
 
 B0 /:
 	MakeBoxes[B0[p10_,m02_,m12_, OptionsPattern[]]  ,TraditionalForm] :=
