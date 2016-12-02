@@ -47,7 +47,7 @@ Options[PaVe] = {
 
 (* Symmetry in the indices *)
 PaVe[i_,j__,  pl_List, ml_List, opts:OptionsPattern[]] :=
-	PaVe @@Join[Sort[{i,j}],{pl,ml},opts]/;!OrderedQ[{i,j}];
+	PaVe[Sequence@@Sort[{i,j}],pl,ml,opts]/;!OrderedQ[{i,j}];
 
 (* Special cases of PaVe: *)
 PaVe[0, {}, {x_}, OptionsPattern[]] :=
@@ -120,21 +120,20 @@ PaVe[ 2,{p10_, pp_,pp_},{m_,m_,m2_}, opts:OptionsPattern[]] :=
 (* *********************************************************************** *)
 (*  D's: The argument list is (in general) : p10, p12, p23, p30, p20, p13  *)
 (* *********************************************************************** *)
-pav[{a__},pl_List,ml_List, opts:OptionsPattern[]] :=
-	PaVe[a,pl,ml, opts];
+
 (*  1 <---> 2;   p20=p10,  p23=p13 , m3 = m2  *)
 PaVe[x__,{p10_,p12_,p13_,p30_,p10_,p13_},{m1_,m2_,m2_,m4_}, opts:OptionsPattern[]] :=
-	pav[{x} /. {1:>2, 2:>1}, {p10,p12,p13,p30,p10,p13},{m1,m2,m2,m4}, opts]/;
+	PaVe[Sequence@@({x} /. {1:>2, 2:>1}), {p10,p12,p13,p30,p10,p13},{m1,m2,m2,m4}, opts]/;
 	(Count[{x}, 2] > Count[{x}, 1]) && OptionValue[PaVeAutoOrder];
 
 (*  1 <---> 3;   p10=p30,  p12=p23 , m2 = m4  *)
 PaVe[x__,{p10_,p12_,p12_,p10_,p20_,p13_},{m1_,m2_,m3_,m2_}, opts:OptionsPattern[]] :=
-	pav[{x} /. {1:>3, 3:>1}, {p10,p12,p12,p10,p20,p13},{m1,m2,m3,m2}, opts]/;
+	PaVe[Sequence@@({x} /. {1:>3, 3:>1}), {p10,p12,p12,p10,p20,p13},{m1,m2,m3,m2}, opts]/;
 	(Count[{x}, 3] > Count[{x}, 1]) && OptionValue[PaVeAutoOrder];
 
 (*  2 <---> 3;   p30=p20,  p13=p12 , m3 = m4  *)
 PaVe[x__,{p10_,p12_,p23_,p20_,p20_,p12_},{m1_,m2_,m3_,m3_}, opts:OptionsPattern[]] :=
-	pav[{x} /. {2:>3, 3:>2}, {p10,p12,p23,p20,p20,p12},{m1,m2,m3,m3},opts]/;
+	PaVe[Sequence@@({x} /. {2:>3, 3:>2}), {p10,p12,p23,p20,p20,p12},{m1,m2,m3,m3},opts]/;
 		(Count[{x}, 3] > Count[{x}, 2]) && OptionValue[PaVeAutoOrder];
 
 (* in order to canonize the C0's  (args:   p1^2, (p2-p1)^2, p2^2)  *)
