@@ -760,63 +760,18 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 	tdeclist[{vecs__}, {moms___}] :=
 		{{vecs} /. {Pair[LorentzIndex[aa_, nn_], Momentum[bb_, nn_]] :> {bb, aa}}, {moms}};
 
-	(* TODO: Outsource this into a separate function *)
 	pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}]:=
 		(FCPrint[3,"TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
-		Which[	(* A and B functions*)
-				(np===1 || np===2) && !genpave,
-					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-					ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {moms}), {ms},
-					PaVeAutoOrder->paveao,
-					PaVeAutoReduce->pavear],
-				(* C functions*)
-				np===3  && !genpave,
-					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
-							{moms}[[1]],
-							{moms}[[1]]-{moms}[[2]],
-							{moms}[[2]]
-						}), {ms},
-						PaVeAutoOrder->paveao,
-						PaVeAutoReduce->pavear],
-				(* 	D functions, external momenta are
-					p1, p1+p2, p1+p2+p3*)
-				np===4 && !genpave,
-					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
-							{moms}[[1]], (*p1^2*)
-							{moms}[[1]]-{moms}[[2]], (*p2^2*)
-							{moms}[[2]]-{moms}[[3]], (*p3^2*)
-							{moms}[[3]], (*p4^2 = (p1+p2+p3)^2*)
-							{moms}[[2]], (* (p1+p2)^2 *)
-							{moms}[[1]]-{moms}[[3]] (* (p2+p3)^2 *)
-						}), {ms},
-						PaVeAutoOrder->paveao,
-						PaVeAutoReduce->pavear],
-				(* 	E functions, external momenta are
-					p1, p1+p2, p1+p2+p3, p1+p2+p3+p4*)
-				np===5 && !genpave,
-					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
-							{moms}[[1]], (*p1^2*)
-							{moms}[[1]]-{moms}[[2]], (*p2^2*)
-							{moms}[[2]]-{moms}[[3]], (*p3^2*)
-							{moms}[[3]]-{moms}[[4]], (*p4^2*)
-							{moms}[[2]], (* (p1+p2)^2 *)
-							{moms}[[1]]-{moms}[[3]], (* (p2+p3)^2 *)
-							{moms}[[2]]-{moms}[[4]], (* (p3+p4)^2 *)
-							{moms}[[4]], (* (p4+p5)^2 *)
-							{moms}[[1]]-{moms}[[4]] (* (p1+p5)^2 *)
-						}), {ms},
-						PaVeAutoOrder->paveao,
-						PaVeAutoReduce->pavear],
-				np>5 || (np<=5 && genpave),
-					ex/.FCGV["PaVe"][{nums__}]:>(I Pi^2)GenPaVe[{nums},
-						Thread[List[Flatten[-{0, moms}, 1], (PowerExpand/@Sqrt/@{ms})]]],
-				True,
-					Message[TID::failmsg, "Unknown n-point function"];
-					Abort[]
-		])/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np;
+			ex/.FCGV["PaVe"][{nums__}]:> (I Pi^2)PaVe[nums,
+					ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[{moms},ScalarProduct[#,#,Dimension->n]&]],
+					{ms}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear])/;
+						(Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && !genpave;
+
+
+	pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}]:=
+		(FCPrint[3,"TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
+			ex/.FCGV["PaVe"][{nums__}]:>(I Pi^2)GenPaVe[{nums}, Thread[List[Flatten[-{0, moms}, 1], (PowerExpand/@Sqrt/@{ms})]]])/;
+						(Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && genpave;
 
 		qrule =	{
 			(* General reduction for integrals with non-vanishing Gram determinants *)

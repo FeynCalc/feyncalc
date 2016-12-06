@@ -39,146 +39,723 @@ Tests`LoopIntegrals`fcstTID =
 {"fcstTID-ID13", "TID[FCI[FVD[q, mu] FVD[q,nu] FAD[{q, m0},
 {q + p1, m1}, {q + p2, m2}, {q + p3,
 	m3}, {q + p4, m4}, {q + p5, m5}, {q + p6, m6}]]/(I*Pi^2), q,
-UsePaVeBasis -> True] // FCE","FVD[p1, mu] FVD[p1,
-nu] GenPaVe[{1,
-	1}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p2, mu] +
-	FVD[p1, mu] FVD[p2, nu]) GenPaVe[{1,
-	2}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p3, mu] +
-	FVD[p1, mu] FVD[p3, nu]) GenPaVe[{1,
-	3}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p4, mu] +
-	FVD[p1, mu] FVD[p4, nu]) GenPaVe[{1,
-	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p5, mu] +
-	FVD[p1, mu] FVD[p5, nu]) GenPaVe[{1,
-	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p6, mu] +
-	FVD[p1, mu] FVD[p6, nu]) GenPaVe[{1,
-	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] +
-FVD[p2, mu] FVD[p2,
-nu] GenPaVe[{2,
-	2}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p3, mu] +
-	FVD[p2, mu] FVD[p3, nu]) GenPaVe[{2,
-	3}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p4, mu] +
-	FVD[p2, mu] FVD[p4, nu]) GenPaVe[{2,
-	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p5, mu] +
-	FVD[p2, mu] FVD[p5, nu]) GenPaVe[{2,
-	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p6, mu] +
-	FVD[p2, mu] FVD[p6, nu]) GenPaVe[{2,
-	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] +
-FVD[p3, mu] FVD[p3,
-nu] GenPaVe[{3,
-	3}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p3, nu] FVD[p4, mu] +
-	FVD[p3, mu] FVD[p4, nu]) GenPaVe[{3,
-	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p3, nu] FVD[p5, mu] +
-	FVD[p3, mu] FVD[p5, nu]) GenPaVe[{3,
-	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p3, nu] FVD[p6, mu] +
-	FVD[p3, mu] FVD[p6, nu]) GenPaVe[{3,
-	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] +
-FVD[p4, mu] FVD[p4,
-nu] GenPaVe[{4,
-	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p4, nu] FVD[p5, mu] +
-	FVD[p4, mu] FVD[p5, nu]) GenPaVe[{4,
-	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p4, nu] FVD[p6, mu] +
-	FVD[p4, mu] FVD[p6, nu]) GenPaVe[{4,
-	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] +
-FVD[p5, mu] FVD[p5,
-nu] GenPaVe[{5,
-	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] + (FVD[p5, nu] FVD[p6, mu] +
-	FVD[p5, mu] FVD[p6, nu]) GenPaVe[{5,
-	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] +
-FVD[p6, mu] FVD[p6,
-nu] GenPaVe[{6,
-	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] +
-GenPaVe[{0,
-	0}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
-	m5}, {p6, m6}}] MTD[mu, nu]"},
+UsePaVeBasis -> True] // FCE","MTD[mu, nu] PaVe[0,
+0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+FVD[p1, mu] FVD[p1, nu] PaVe[1,
+1, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p1, nu] FVD[p2, mu] +
+	FVD[p1, mu] FVD[p2, nu]) PaVe[1,
+2, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p1, nu] FVD[p3, mu] +
+	FVD[p1, mu] FVD[p3, nu]) PaVe[1,
+3, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p1, nu] FVD[p4, mu] +
+	FVD[p1, mu] FVD[p4, nu]) PaVe[1,
+4, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p1, nu] FVD[p5, mu] +
+	FVD[p1, mu] FVD[p5, nu]) PaVe[1,
+5, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p1, nu] FVD[p6, mu] +
+	FVD[p1, mu] FVD[p6, nu]) PaVe[1,
+6, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+FVD[p2, mu] FVD[p2, nu] PaVe[2,
+2, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p2, nu] FVD[p3, mu] +
+	FVD[p2, mu] FVD[p3, nu]) PaVe[2,
+3, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p2, nu] FVD[p4, mu] +
+	FVD[p2, mu] FVD[p4, nu]) PaVe[2,
+4, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p2, nu] FVD[p5, mu] +
+	FVD[p2, mu] FVD[p5, nu]) PaVe[2,
+5, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p2, nu] FVD[p6, mu] +
+	FVD[p2, mu] FVD[p6, nu]) PaVe[2,
+6, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+FVD[p3, mu] FVD[p3, nu] PaVe[3,
+3, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p3, nu] FVD[p4, mu] +
+	FVD[p3, mu] FVD[p4, nu]) PaVe[3,
+4, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p3, nu] FVD[p5, mu] +
+	FVD[p3, mu] FVD[p5, nu]) PaVe[3,
+5, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p3, nu] FVD[p6, mu] +
+	FVD[p3, mu] FVD[p6, nu]) PaVe[3,
+6, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+FVD[p4, mu] FVD[p4, nu] PaVe[4,
+4, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p4, nu] FVD[p5, mu] +
+	FVD[p4, mu] FVD[p5, nu]) PaVe[4,
+5, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p4, nu] FVD[p6, mu] +
+	FVD[p4, mu] FVD[p6, nu]) PaVe[4,
+6, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+FVD[p5, mu] FVD[p5, nu] PaVe[5,
+5, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] + (FVD[p5, nu] FVD[p6, mu] +
+	FVD[p5, mu] FVD[p6, nu]) PaVe[5,
+6, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+FVD[p6, mu] FVD[p6, nu] PaVe[6,
+6, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2] - 2 SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2 SPD[p3, p4] + SPD[p4, p4],
+	SPD[p4, p4] - 2 SPD[p4, p5] + SPD[p5, p5],
+	SPD[p5, p5] - 2 SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	SPD[p2, p2], SPD[p1, p1] - 2 SPD[p1, p3] + SPD[p3, p3],
+	SPD[p2, p2] - 2 SPD[p2, p4] + SPD[p4, p4],
+	SPD[p3, p3] - 2 SPD[p3, p5] + SPD[p5, p5],
+	SPD[p4, p4] - 2 SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	SPD[p1, p1] - 2 SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+	SPD[p1, p1] - 2 SPD[p1, p4] + SPD[p4, p4],
+	SPD[p2, p2] - 2 SPD[p2, p5] + SPD[p5, p5],
+	SPD[p3, p3] - 2 SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+	SPD[p1, p1] - 2 SPD[p1, p5] + SPD[p5, p5],
+	SPD[p2, p2] - 2 SPD[p2, p6] + SPD[p6, p6]}, {m0^2, m1^2, m2^2,
+	m3^2, m4^2, m5^2, m6^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]"},
 {"fcstTID-ID14", "TID[FCI[FVD[q, mu] FVD[q,
 	nu] FAD[{q, m0}, {q, m1}, {q + p2, m2}, {q + p3, m3}, {q + p4,
 	m4}, {q + p5, 0}, {q + p6, m6}]]/(I*Pi^2), q, UsePaVeBasis -> True] // FCE",
-"(FVD[p2, mu]*FVD[p2, nu]*GenPaVe[{1, 1}, {{0, m0}, {p2, m2}, {p3, m3}, {p4, m4},
-{p5, 0}, {p6, m6}}])/(m0^2 - m1^2) - (FVD[p2, mu]*FVD[p2, nu]*GenPaVe[{1, 1},
-{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p2, nu]*FVD[p3, mu] + FVD[p2, mu]*FVD[p3, nu])*GenPaVe[{1, 2}, {{0, m0},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p2, nu]*FVD[p3, mu] + FVD[p2, mu]*FVD[p3, nu])*GenPaVe[{1, 2},
-{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p2, nu]*FVD[p4, mu] + FVD[p2, mu]*FVD[p4, nu])*GenPaVe[{1, 3}, {{0, m0},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p2, nu]*FVD[p4, mu] + FVD[p2, mu]*FVD[p4, nu])*GenPaVe[{1, 3},
-{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p2, nu]*FVD[p5, mu] + FVD[p2, mu]*FVD[p5, nu])*GenPaVe[{1, 4}, {{0, m0},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p2, nu]*FVD[p5, mu] + FVD[p2, mu]*FVD[p5, nu])*GenPaVe[{1, 4},
-{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p2, nu]*FVD[p6, mu] + FVD[p2, mu]*FVD[p6, nu])*GenPaVe[{1, 5}, {{0, m0},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p2, nu]*FVD[p6, mu] + FVD[p2, mu]*FVD[p6, nu])*GenPaVe[{1, 5},
-{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-(FVD[p3, mu]*FVD[p3, nu]*GenPaVe[{2, 2}, {{0, m0}, {p2, m2}, {p3, m3},
-{p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-(FVD[p3, mu]*FVD[p3, nu]*GenPaVe[{2, 2}, {{0, m1}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p3, nu]*FVD[p4, mu] + FVD[p3, mu]*FVD[p4, nu])*GenPaVe[{2, 3},
-{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p3, nu]*FVD[p4, mu] + FVD[p3, mu]*FVD[p4, nu])*GenPaVe[{2, 3}, {{0, m1},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p3, nu]*FVD[p5, mu] + FVD[p3, mu]*FVD[p5, nu])*GenPaVe[{2, 4},
-{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p3, nu]*FVD[p5, mu] + FVD[p3, mu]*FVD[p5, nu])*GenPaVe[{2, 4},
-{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 -
-m1^2) + ((FVD[p3, nu]*FVD[p6, mu] + FVD[p3, mu]*FVD[p6, nu])*GenPaVe[{2, 5},
-{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-((FVD[p3, nu]*FVD[p6, mu] + FVD[p3, mu]*FVD[p6, nu])*GenPaVe[{2, 5}, {{0, m1},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-(FVD[p4, mu]*FVD[p4, nu]*GenPaVe[{3, 3}, {{0, m0}, {p2, m2}, {p3, m3},
-{p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-(FVD[p4, mu]*FVD[p4, nu]*GenPaVe[{3, 3}, {{0, m1},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p4, nu]*FVD[p5, mu] + FVD[p4, mu]*FVD[p5, nu])*GenPaVe[{3, 4},
-{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
-{p6, m6}}])/(m0^2 - m1^2) - ((FVD[p4, nu]*FVD[p5, mu] +
-FVD[p4, mu]*FVD[p5, nu])*GenPaVe[{3, 4}, {{0, m1}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p4, nu]*FVD[p6, mu] + FVD[p4, mu]*FVD[p6, nu])*GenPaVe[{3, 5},
-{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
-{p6, m6}}])/(m0^2 - m1^2) - ((FVD[p4, nu]*FVD[p6, mu] +
-FVD[p4, mu]*FVD[p6, nu])*GenPaVe[{3, 5}, {{0, m1}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-(FVD[p5, mu]*FVD[p5, nu]*GenPaVe[{4, 4}, {{0, m0}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-(FVD[p5, mu]*FVD[p5, nu]*GenPaVe[{4, 4}, {{0, m1}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-((FVD[p5, nu]*FVD[p6, mu] + FVD[p5, mu]*FVD[p6, nu])*GenPaVe[{4, 5},
-{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
-{p6, m6}}])/(m0^2 - m1^2) - ((FVD[p5, nu]*FVD[p6, mu] +
-FVD[p5, mu]*FVD[p6, nu])*GenPaVe[{4, 5}, {{0, m1}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-(FVD[p6, mu]*FVD[p6, nu]*GenPaVe[{5, 5}, {{0, m0}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
-(FVD[p6, mu]*FVD[p6, nu]*GenPaVe[{5, 5}, {{0, m1}, {p2, m2},
-{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
-(GenPaVe[{0, 0}, {{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
-{p6, m6}}]*MTD[mu, nu])/(m0^2 - m1^2) - (GenPaVe[{0, 0}, {{0, m1},
-{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}]*MTD[mu, nu])/(m0^2 - m1^2)"},
+"(MTD[mu, nu]*PaVe[0, 0, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+(MTD[mu, nu]*PaVe[0, 0, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+(FVD[p2, mu]*FVD[p2, nu]*PaVe[1, 1, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+(FVD[p2, mu]*FVD[p2, nu]*PaVe[1, 1, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p3, mu] + FVD[p2, mu]*FVD[p3, nu])*
+PaVe[1, 2, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p3, mu] + FVD[p2, mu]*FVD[p3, nu])*
+PaVe[1, 2, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p4, mu] + FVD[p2, mu]*FVD[p4, nu])*
+PaVe[1, 3, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p4, mu] + FVD[p2, mu]*FVD[p4, nu])*
+PaVe[1, 3, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p5, mu] + FVD[p2, mu]*FVD[p5, nu])*
+PaVe[1, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p5, mu] + FVD[p2, mu]*FVD[p5, nu])*
+PaVe[1, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p6, mu] + FVD[p2, mu]*FVD[p6, nu])*
+PaVe[1, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p6, mu] + FVD[p2, mu]*FVD[p6, nu])*
+PaVe[1, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+(FVD[p3, mu]*FVD[p3, nu]*PaVe[2, 2, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+(FVD[p3, mu]*FVD[p3, nu]*PaVe[2, 2, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p3, nu]*FVD[p4, mu] + FVD[p3, mu]*FVD[p4, nu])*
+PaVe[2, 3, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p3, nu]*FVD[p4, mu] + FVD[p3, mu]*FVD[p4, nu])*
+PaVe[2, 3, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p3, nu]*FVD[p5, mu] + FVD[p3, mu]*FVD[p5, nu])*
+PaVe[2, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p3, nu]*FVD[p5, mu] + FVD[p3, mu]*FVD[p5, nu])*
+PaVe[2, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p3, nu]*FVD[p6, mu] + FVD[p3, mu]*FVD[p6, nu])*
+PaVe[2, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p3, nu]*FVD[p6, mu] + FVD[p3, mu]*FVD[p6, nu])*
+PaVe[2, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+(FVD[p4, mu]*FVD[p4, nu]*PaVe[3, 3, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+(FVD[p4, mu]*FVD[p4, nu]*PaVe[3, 3, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p4, nu]*FVD[p5, mu] + FVD[p4, mu]*FVD[p5, nu])*
+PaVe[3, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p4, nu]*FVD[p5, mu] + FVD[p4, mu]*FVD[p5, nu])*
+PaVe[3, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p4, nu]*FVD[p6, mu] + FVD[p4, mu]*FVD[p6, nu])*
+PaVe[3, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p4, nu]*FVD[p6, mu] + FVD[p4, mu]*FVD[p6, nu])*
+PaVe[3, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+(FVD[p5, mu]*FVD[p5, nu]*PaVe[4, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+(FVD[p5, mu]*FVD[p5, nu]*PaVe[4, 4, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+((FVD[p5, nu]*FVD[p6, mu] + FVD[p5, mu]*FVD[p6, nu])*
+PaVe[4, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+((FVD[p5, nu]*FVD[p6, mu] + FVD[p5, mu]*FVD[p6, nu])*
+PaVe[4, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	 SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] +
+	  SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6],
+	 SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4],
+	 SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5], SPD[p4, p4] - 2*SPD[p4, p6] +
+	  SPD[p6, p6], SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6],
+	 SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5],
+	 SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])/(m0^2 - m1^2) +
+(FVD[p6, mu]*FVD[p6, nu]*PaVe[5, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m0^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2) -
+(FVD[p6, mu]*FVD[p6, nu]*PaVe[5, 5, {SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	  SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4],
+	 SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5] - 2*SPD[p5, p6] +
+	  SPD[p6, p6], SPD[p6, p6], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	  SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+	 SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+	 SPD[p2, p2] - 2*SPD[p2, p6] + SPD[p6, p6], SPD[p4, p4],
+	 SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] +
+	  SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, 0, m6^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])/(m0^2 - m1^2)"},
 {"fcstTID-ID16", "TID[FCI[FVD[q, mu] FVD[q,
 	nu] FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}]]/(I*Pi^2), q,
 UsePaVeBasis -> True, GenPaVe -> True] // FCE","FVD[p1, mu] FVD[p1,

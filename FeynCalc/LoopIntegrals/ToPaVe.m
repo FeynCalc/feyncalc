@@ -37,6 +37,8 @@ The problem reads: `1`"
 Begin["`Package`"]
 End[]
 
+momentumRoutingDenner;
+
 Begin["`ToPaVe`Private`"]
 
 genpave::usage="";
@@ -83,85 +85,60 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 
 	];
 
+
+(* Determine kinematic invariants according to the conventions of Denner, c.f. arXiv:1604.06792 *)
+
+momentumRoutingDenner[moms_List, fu_] :=
+	MemSet[momentumRoutingDenner[moms, fu],
+	Block[{firstLines, lastLine, kmax = (Length[moms] + 1)/2, res, p, repRule},
+			repRule = MapThread[Rule[#1, #2] &, {Table[p[i], {i, 1, 2 kmax - 1}], moms}];
+			firstLines = Transpose[Table[(p[k + l] - p[l])//fu, {l, 0, 2 kmax - 1}, {k, 1, kmax - 1}]];
+			lastLine = Table[(p[kmax + l] - p[l])//fu, {l, 0, kmax - 1}];
+			res = Join[Flatten[firstLines], lastLine] //. {p[2 kmax] -> p[0], p[x_] /; x > 2 kmax :> p[x - 2 kmax], p[0] -> 0};
+			If[Length[res] =!= ((kmax - 1)*2 kmax + kmax),
+				Message[ToPaVe::failmsg, "Wrong number of the kinematic invariants!"];
+				Abort[]
+			];
+			(res /. repRule)
+		]
+	]/; OddQ[(Length[moms])]
+
+momentumRoutingDenner[moms_List, fu_] :=
+	MemSet[momentumRoutingDenner[moms, fu],
+		Block[{firstLines, lastLine, kmax = (Length[moms])/2, res, p, repRule},
+			repRule = MapThread[Rule[#1, #2] &, {Table[p[i], {i, 1, 2 kmax}], moms}];
+			res = Transpose[Table[(p[k + l] - p[l])//fu, {l, 0, 2 kmax}, {k, 1, kmax}]];
+			res = Flatten[res //. {p[2 kmax + 1] -> p[0], p[x_] /; (x > 2 kmax + 1) :> p[x - 2 kmax - 1], p[0] -> 0}];
+			If[Length[res] =!= (kmax*(2 kmax + 1)),
+				Message[ToPaVe::failmsg, "Wrong number of the kinematic invariants!"];
+				Abort[]
+			];
+			(res /. repRule)
+		]
+	]/; EvenQ[(Length[moms])]
+
 toPaVe[x_,_,_,_]:=
 	x/; !FreeQ2[Head[x],PaVeHeadsList];
 
-(* A0 *)
-toPaVe[FeynAmpDenominator[PD[Momentum[q_,_],m_]],q_,paveao_,pavear_]:=
-	I Pi^2 PaVe[0,{},{m^2}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]/; !genpave;
+(* The conventions are according to Appendix A of arXiv:1604.06792 *)
 
-(* B0 *)
-toPaVe[FeynAmpDenominator[PD[Momentum[q_,dim_],m1_],
-	PD[Momentum[q_,dim_]+p_:0,m2_]],q_,paveao_,pavear_]:=
-		I Pi^2 PaVeOrder[PaVe[0,{ExpandScalarProduct[Pair[p,p]]},{m1^2,m2^2},
-			PaVeAutoOrder->paveao,
-			PaVeAutoReduce->pavear]]/; !genpave;
+toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] + _ : 0, _] ...],q_,paveao_,pavear_]:=
+	Block[{tmp,res},
+		If[ {re} === {},
+			tmp = {{},{}},
+			tmp = Transpose[Cases[{re}, PD[Momentum[q, dim] + x_: 0, m_: 0] :> {x, m}]];
+		];
+		If[ Length[tmp[[1]]]=!=Length[{re}] || Length[tmp[[2]]]=!=Length[{re}],
+			Message[ToPaVe::failmsg, "toPave: Wrong number of the kinematic invariants!"];
+			Abort[]
+		];
+		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[momentumRoutingDenner[tmp[[1]],Pair[#,#]&]], Power[#, 2] & /@ Join[{m1},tmp[[2]]],
+			PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
+		res
+	]/;!genpave;
 
-(* C0 *)
-toPaVe[	FeynAmpDenominator[
-			PD[Momentum[q_,dim_],m1_],
-			PD[Momentum[q_,dim_]+p1_:0,m2_],
-			PD[Momentum[q_,dim_]+p2_:0,m3_]],q_,
-			paveao_,pavear_]:=
-	I Pi^2 PaVeOrder[PaVe[0,{ExpandScalarProduct[Pair[p1,p1]],
-		ExpandScalarProduct[Pair[p1-p2,p1-p2]],
-		ExpandScalarProduct[Pair[p2,p2]]},{m1^2,m2^2,m3^2},
-			PaVeAutoOrder->paveao,
-			PaVeAutoReduce->pavear]]/; !genpave;
-
-(* D0 *)
-toPaVe[	FeynAmpDenominator[
-			PD[Momentum[q_,dim_],m1_],
-			PD[Momentum[q_,dim_]+p1_:0,m2_],
-			PD[Momentum[q_,dim_]+p2_:0,m3_],
-			PD[Momentum[q_,dim_]+p3_:0,m4_]],q_,
-			paveao_,pavear_
-	]:=
-	I Pi^2 PaVeOrder[PaVe[0,
-			{ExpandScalarProduct[Pair[p1,p1]],
-			ExpandScalarProduct[Pair[p1-p2,p1-p2]],
-			ExpandScalarProduct[Pair[p2-p3,p2-p3]],
-			ExpandScalarProduct[Pair[p3,p3]],
-			ExpandScalarProduct[Pair[p2,p2]],
-			ExpandScalarProduct[Pair[p1-p3,p1-p3]]}
-			,{m1^2,m2^2,m3^2,m4^2},
-			PaVeAutoOrder->paveao,
-			PaVeAutoReduce->pavear]]/; !genpave;
-
-
-(* E0 *)
-toPaVe[	FeynAmpDenominator[
-			PD[Momentum[q_,dim_],m1_],
-			PD[Momentum[q_,dim_]+p1_:0,m2_],
-			PD[Momentum[q_,dim_]+p2_:0,m3_],
-			PD[Momentum[q_,dim_]+p3_:0,m4_],
-			PD[Momentum[q_,dim_]+p4_:0,m5_]],q_,
-			paveao_,pavear_
-	]:=
-	I Pi^2 PaVeOrder[PaVe[0,
-			{ExpandScalarProduct[Pair[p1,p1]],
-			ExpandScalarProduct[Pair[p1-p2,p1-p2]],
-			ExpandScalarProduct[Pair[p2-p3,p2-p3]],
-			ExpandScalarProduct[Pair[p3-p4,p3-p4]],
-			ExpandScalarProduct[Pair[p2,p2]],
-			ExpandScalarProduct[Pair[p1-p3,p1-p3]],
-			ExpandScalarProduct[Pair[p2-p4,p2-p4]],
-			ExpandScalarProduct[Pair[p4,p4]],
-			ExpandScalarProduct[Pair[p1-p4,p1-p4]]}
-			,{m1^2,m2^2,m3^2,m4^2,m5^2},
-			PaVeAutoOrder->paveao,
-			PaVeAutoReduce->pavear]]/; !genpave;
-
-
-(* Even Higher multiplicities*)
-toPaVe[	FeynAmpDenominator[
-			(prs:PD[Momentum[_,_:4]+_:0,_]..)],q_,
-			_,_
-	]:=
-	I Pi^2 GenPaVe[{0},	((MomentumExpand/@{prs})/.
-			PD[Momentum[q, _:4] +p_:0, m_:0] :> {p, m})]/;
-			Length[{prs}]>5 || genpave;
-
+toPaVe[FeynAmpDenominator[(prs:PD[Momentum[_,_]+_:0,_]..)], q_,_,_]:=
+	I Pi^2 GenPaVe[{0},	((MomentumExpand/@{prs})/. PD[Momentum[q, _:4] +p_:0, m_:0] :> {p, m})]/;genpave;
 
 FCPrint[1,"ToPaVe.m loaded."];
 End[]

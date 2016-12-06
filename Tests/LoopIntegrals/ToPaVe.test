@@ -35,5 +35,40 @@ Tests`LoopIntegrals`ToPaVe = {
 	"FAD[m1 + q, {p1 + q, m2}]*FVD[q, mu]"},
 {"fcstToPaVe-ID10","ToPaVe[FAD[{q}, {q + p1, m2}], q, OtherLoopMomenta -> {p1}] // FCE","FAD[q, {p1 + q, m2}]"},
 {"fcstToPaVe-ID11","ToPaVe[a + b FAD[{q, m1}, {q + p1, m2}], q] // FCE","a + I*b*Pi^2*B0[SPD[p1, p1], m1^2, m2^2]"},
-{"fcstToPaVe-ID12","ToPaVe[A0[m], p]","A0[m]"}
+{"fcstToPaVe-ID12","ToPaVe[A0[m], p]","A0[m]"},
+{"fcstToPaVe-ID13","ToPaVe[FAD[{q, 0}, {q + p1, 0}], q] // FCE","I*Pi^2*B0[SPD[p1, p1], 0, 0]"},
+{"fcstToPaVe-ID14","ToPaVe[FAD[{q, m}, {q + p1, m}], q] // FCE","I*Pi^2*B0[SPD[p1, p1], m^2, m^2]"},
+{"fcstToPaVe-ID15","ToPaVe[FAD[{q, m}, {q, m}], q] // FCE","I*Pi^2*B0[0, m^2, m^2]"},
+{"fcstToPaVe-ID16","ToPaVe[FAD[{q, m}, {q}], q] // FCE","I*Pi^2*B0[0, 0, m^2]"},
+{"fcstToPaVe-ID17","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4,
+	m5}], q] // FCE","I*Pi^2*PaVe[0, {SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2],
+SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] +
+	SPD[p4, p4], SPD[p4, p4], SPD[p2, p2], SPD[p1, p1] - 2*SPD[p1, p3] +
+	SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4], SPD[p3, p3],
+SPD[p1, p1] - 2*SPD[p1, p4] + SPD[p4, p4]}, {m1^2, m2^2, m3^2, m4^2, m5^2},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcstToPaVe-ID18","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4,
+	m5}, {q + p5, m6}], q] // FCE","I*Pi^2*PaVe[0, {SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2],
+SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] +
+	SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5], SPD[p5, p5],
+SPD[p2, p2], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3],
+SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] +
+	SPD[p5, p5], SPD[p4, p4], SPD[p1, p1] - 2*SPD[p1, p5] + SPD[p5, p5],
+SPD[p3, p3], SPD[p1, p1] - 2*SPD[p1, p4] + SPD[p4, p4],
+SPD[p2, p2] - 2*SPD[p2, p5] + SPD[p5, p5]}, {m1^2, m2^2, m3^2, m4^2, m5^2, m6^2},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcstToPaVe-ID19","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4,
+	m5}, {q + p5, m6}, {q + p6, m7}], q] // FCE","I*Pi^2*PaVe[0, {SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2],
+SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] +
+	SPD[p4, p4], SPD[p4, p4] - 2*SPD[p4, p5] + SPD[p5, p5],
+SPD[p5, p5] - 2*SPD[p5, p6] + SPD[p6, p6], SPD[p6, p6], SPD[p2, p2],
+SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	SPD[p4, p4], SPD[p3, p3] - 2*SPD[p3, p5] + SPD[p5, p5],
+SPD[p4, p4] - 2*SPD[p4, p6] + SPD[p6, p6], SPD[p5, p5],
+SPD[p1, p1] - 2*SPD[p1, p6] + SPD[p6, p6], SPD[p3, p3],
+SPD[p1, p1] - 2*SPD[p1, p4] + SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] +
+	SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
+SPD[p1, p1] - 2*SPD[p1, p5] + SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] +
+	SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, m5^2, m6^2, m7^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]"}
 };
