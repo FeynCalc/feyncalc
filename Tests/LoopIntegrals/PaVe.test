@@ -29,5 +29,6 @@ Tests`LoopIntegrals`fcstPaVe = {
 {"fcstPave-ID10","PaVe[0, {pp}, {m2^2,m1^2}]","PaVe[0, {pp}, {m1^2,m2^2}]"},
 {"fcstPave-ID11","PaVe[0, {pp}, {m2^2,m1^2},PaVeAutoOrder->False]","PaVe[0, {pp}, {m2^2,m1^2},PaVeAutoOrder->False]"},
 {"fcstPave-ID12","PaVe[2, 1, 1, {0, 0, 0, 0, 0, 0}, {m, 0, 0, 0}]","PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0}, {m, 0, 0, 0}]"},
-{"fcstPave-ID13","PaVe[1, 2, 2, {0, 0, 0, 0, 0, 0}, {m, 0, 0, 0}]","PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0}, {m, 0, 0, 0}]"}
+{"fcstPave-ID13","PaVe[1, 2, 2, {0, 0, 0, 0, 0, 0}, {m, 0, 0, 0}]","PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0}, {m, 0, 0, 0}]"},
+{"fcstPave-ID14","PaVe[1, 1, 1, {0}, {0, 0}]","0"}
 }

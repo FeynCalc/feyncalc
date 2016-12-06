@@ -82,7 +82,7 @@ PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 
 (* 	if UV- and IR-divergences are regularized with the same regulator, then
 	scaleless n-point functions vanish in DR	*)
-PaVe[__,{},{0..}, OptionsPattern[]] :=
+PaVe[__,{0...},{0..}, OptionsPattern[]] :=
 	0/; !$KeepLogDivergentScalelessIntegrals
 
 (*	if different reguators are used, then not everyscaleless function vanishes.
