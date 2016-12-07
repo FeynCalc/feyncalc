@@ -222,7 +222,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	pvlist, pva,pvar,arglist,npref, nfact, nre,formattype,pLu,
 	prode,
 	collpav,simpit,prefactor,in3p, in3q, resin3q,newprefactor,
-	newnewprefactor,apart2,
+	newnewprefactor,
 	newret, facto,ret2,defs,dim,breakdown,options, name = grname,DDim,
 	newoneamp,ip,lenneu, lenneu2, neuamp,paone,paone2,oneselect,fsub,
 	intermedsubst,writeoutrecover = False, oldfile, ftemp,
@@ -252,7 +252,6 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		];
 		( oneopt    = Join[ options,Options[OneLoop] ];
 		onemandel  = Mandelstam/.oneopt;
-		apart2     = True;
 		denorder   = DenominatorOrder/.oneopt;
 		dim        = Dimension/.oneopt;
 		If[ dim===True,
@@ -409,9 +408,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				oneamp = OneLoopSimplify[oneamp, q, Dimension -> dim]
 			];
 			FCPrint[2, "length of oneamp = ", Length[oneamp], FCDoControl->oneloopVerbose];
-			If[ apart2 === True,
-				oneamp = Expand[ApartFF[oneamp,{q}], FeynAmpDenominator];
-			];
+			oneamp = FDS[oneamp,q];
+			oneamp = FDS[Expand[ApartFF[oneamp,{q}], FeynAmpDenominator],q,FCI->True,ApartFF->False];
 
 			(* reduce N-point to 4-point,  still temporary  *)
 			SetAttributes[ Y, Orderless ];
@@ -2330,13 +2328,14 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 			tenslnt = 1
 		];
 
-	(* The tensj - loop runs over all different q-monomials *)
+		(* The tensj - loop runs over all different loop integrals *)
 		Clear[tensqc];
 		For[ tensj = 1, tensj <= tenslnt, tensj++,
 			FCPrint[1, "OneLoop: tensint: tensorintegral # ", tensj, " / ", tenslnt, FCDoControl->oneloopVerbose];
 			FCPrint[3, "OneLoop: tensint: tensorintegral ", If[ tenslnt===1, tensx, tensx[[tensj]]], FCDoControl->oneloopVerbose];
 			tensqc[tensj][any_] :=
 				0;
+			(* splitting into q^i_1 ... q^i_j and FeynAmpDenominator for each term *)
 			If[ tenslnt===1,
 				tensdnp = PartitHead[ tensx,FeynAmpDenominator ],
 				tensdnp = PartitHead[ tensx[[tensj]],FeynAmpDenominator ]
@@ -2344,21 +2343,29 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 			FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp, FCDoControl->oneloopVerbose];
 			(* Collect according to the number of q's *)
 			tensdnp1 = Collect2[ tensdnp[[1]],q, Factoring -> False];
+
 			FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp1, FCDoControl->oneloopVerbose];
+
+			(*This for dealing with things like (q.x)^n *)
 			pairpow/: pairpow[a___,Momentum[q,di___],b___]^n_Integer?Positive :=
 					(pairpow[a,Momentum[q,di],b]^(n-1))**pairpow[a,Momentum[q,di],b];
-		(*oten1=tensdnp1;*)
+
 			tensdnp1 = tensdnp1/.Pair->pairpow/.pairpow->Pair;
+
 			FCPrint[3,"OneLoop: tensint: tensdnp1 after pairpow ",tensdnp1, FCDoControl->oneloopVerbose];
 			FCPrint[1, "OneLoop: tensint: Checking rank of ", tensdnp1, FCDoControl->oneloopVerbose];
 			If[ Head[tensdnp1]===Plus,
 				tensldn = Length[tensdnp1],
 				tensldn = 1
 			];
+			FCPrint[3, "OneLoop: tensint: tensldn: ", tensldn, FCDoControl->oneloopVerbose];
 			tensqmax[tensj] = 0;
 			FCPrint[3, "OneLoop: tensint: Entering 1st nested loop", FCDoControl->oneloopVerbose];
 			For[ tensic = 1, tensic <= tensldn, tensic++,
 				If[ tensldn===1,
+					(*one term in the numerator *)
+
+					(* Determines the tensor rank *)
 					tenslep = Length[Position[tensdnp1,q ] ];
 					(* BREAK EVENTUALLY *)
 					If[ tenslep>3,
@@ -2367,9 +2374,13 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 					];
 					FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
 					tensqc[tensj][tenslep] += suind[ tensdnp1,q,dim,mud ],
+					(*more terms in the numerator *)
+					(* Determines the tensor rank *)
 					tenslep = Length[ Position[tensdnp1[[tensic]],q ] ];
 					tensqc[tensj][tenslep] += suind[tensdnp1[[tensic]],q,dim,mud]
 				];
+				FCPrint[3, "OneLoop: tensqc[tensj][tenslep]: ", tensqc[tensj][tenslep], FCDoControl->oneloopVerbose];
+
 				If[ tenslep > tensqmax[tensj],
 					tensqmax[tensj] = tenslep
 				]
@@ -2380,11 +2391,14 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 			FCPrint[3, "OneLoop: tensint: tensqmax[tensj] ", tensqmax[tensj], FCDoControl->oneloopVerbose];
 			FCPrint[3, "OneLoop: tensint: tensg before the nested loop ", tensg, FCDoControl->oneloopVerbose];
 
+
+
 			FCPrint[3, "OneLoop: tensint: Entering 2nd nested loop", FCDoControl->oneloopVerbose];
 			For[ tensjq = 0, tensjq <= tensqmax[tensj], tensjq++,
 				tdenlen = Length[ tensdnp[[2]] ];
 				FCPrint[2, "OneLoop: tensint: Tensorintegral (N = ", tdenlen, ") : # of q's = ", tensjq, " decomposing ", Length[tensqc[tensj][tensjq]], " term(s)", FCDoControl->oneloopVerbose];
 				(* tdec is the function that is actually doing the decomposition !*)
+				FCPrint[3, "OneLoop: tensint: tensqc[tensj][tensjq] ", tensqc[tensj][tensjq], "", FCDoControl->oneloopVerbose];
 				tensg += tdec[ tensqc[tensj][tensjq], tensdnp[[2]],q,
 								tensjq,dim,mud,mandel
 							]/.NonCommutativeMultiply->Times
@@ -2409,6 +2423,9 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 pavremember[x__] :=
 	MemSet[pavremember[x], PaVeReduce[x]];
 
+	tdec[0,___] :=          (*tdecdef*)
+		0;
+
 	tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 		MemSet[ tdec[ expr,props,Q,qn,di,mudu,mand],
 		Block[ {spl0, mande,tensps = {},tdecnew,tdec0j,tdectij,
@@ -2418,23 +2435,30 @@ pavremember[x__] :=
 				tdecpl,tdecml,tdeclpl,
 				rul,spl,add
 				},
-			FCPrint[3, "entering tdec with expr = ", expr//FeynCalcForm, FCDoControl->oneloopVerbose];
-			FCPrint[3, "props =  ", props, FCDoControl->oneloopVerbose];
-			FCPrint[3, "Q =  ", Q, FCDoControl->oneloopVerbose];
-			FCPrint[3, "qn =  ", qn, FCDoControl->oneloopVerbose];
-			FCPrint[3, "di =  ", di, FCDoControl->oneloopVerbose];
-			FCPrint[3, "mudu =  ", mudu, FCDoControl->oneloopVerbose];
-			FCPrint[3, "mand =  ", mand, FCDoControl->oneloopVerbose];
-			tensdf2[_,b_] :=
-				b;
-			tensdf1[a_,_] :=
-				Expand[ to4dim[
-						MomentumExpand[a-Momentum[Q]]]
-					];
+				FCPrint[3, "entering tdec with expr = ", expr//FeynCalcForm, FCDoControl->oneloopVerbose];
+				FCPrint[3, "props =  ", props, FCDoControl->oneloopVerbose];
+				FCPrint[3, "Q =  ", Q, FCDoControl->oneloopVerbose];
+				(* number of vectors in the numerator *)
+				FCPrint[3, "qn =  ", qn, FCDoControl->oneloopVerbose];
+				FCPrint[3, "di =  ", di, FCDoControl->oneloopVerbose];
+				FCPrint[3, "mudu =  ", mudu, FCDoControl->oneloopVerbose];
+				FCPrint[3, "mand =  ", mand, FCDoControl->oneloopVerbose];
+				tensdf2[_,b_] :=
+					b;
+				tensdf1[a_,_] :=
+					Expand[ to4dim[
+							MomentumExpand[a-Momentum[Q]]]
+						];
 			If[ tdecex===0,
 				tdecr = 0,
+				(* Here it goes *)
+
+				(* define add *)
 				add[gra_,pva_,exp_] :=
 					Block[ {addre, pv = pva},
+						FCPrint[3, "OneLoop: tdec: add: gra: ", gra, FCDoControl->oneloopVerbose];
+						FCPrint[3, "OneLoop: tdec: add: pv: ", pv, FCDoControl->oneloopVerbose];
+						FCPrint[3, "OneLoop: tdec: add: exp: ", exp, FCDoControl->oneloopVerbose];
 						If[ breakdown === True,
 							pv = pavremember[pv, WriteOutPaVe -> writeoutpav ];
 							If[ uvpart === True,
@@ -2449,151 +2473,154 @@ pavremember[x__] :=
 							];
 						];
 						If[ $LimitTo4 === True,
-							addre = gra+( Expand[
-										ExpandScalarProduct[ pv to4dim[ exp/.di->4 ] ]
-												]),
-							addre = gra+( Expand[
-										ExpandScalarProduct[ pv exp]
-									])
+							addre = gra + (Expand[ExpandScalarProduct[ pv to4dim[ exp/.di->4 ]]]),
+							addre = gra + (Expand[ExpandScalarProduct[ pv exp]])
 						];
 						addre
 					];
 
-			(* calculate the List of scalar products needed as arguments *)
+				(* calculate the List of scalar products needed as arguments *)
 
-			(* get the list of p's from the propagators *)
+				(* get the list of p's from the propagators, ignoring the first propagator *)
 				tdecpl = Drop[ Expand[ props//MomentumExpand]/.
 								PropagatorDenominator->tensdf1/.
 								FeynAmpDenominator->List,1 ]//DiracGammaCombine;
 				tdecpl = Expand[tdecpl];
 				FCPrint[2, "tdecpl = ", tdecpl, FCDoControl->oneloopVerbose];
-				tdecml = props/.PropagatorDenominator->tensdf2/.
-								FeynAmpDenominator->List;
+
+				(* get the list of m's from the propagators *)
+				tdecml = props/.PropagatorDenominator->tensdf2/. FeynAmpDenominator->List;
 				FCPrint[3, "tdecml = ", tdecml, FCDoControl->oneloopVerbose];
 				tdecml = #^2& /@ tdecml;
 				FCPrint[3, "tdecml = ", tdecml, FCDoControl->oneloopVerbose];
+
+				(* number of external momenta *)
 				tdeclpl = Length[ tdecpl ];
-			(* D_0, D_mu, D_munu and D_munuro are 4-dimensional, if $LimitTo4 is True *)
+
+				(* D_0, D_mu, D_munu and D_munuro have no UV poles. Therefore, is
+				$LimitTo4 is true, one can directly set D=4 *)
 				If[ ($LimitTo4===True) && (tdeclpl===3) && (qn<4),
 					tdecex = tdecex/.di->4;
 					tdi = 4,
 					tdi = di
 				];
-			(* calculation of (N (N-1)/2) scalar pipj - arguments *)
+
+				(* calculation of (N (N-1)/2) scalar pipj - arguments *)
 				spl0[a_,b_,man_] :=
-					(TrickMandelstam@@
-					Prepend[{man},Expand[Pair[a-b,a-b]]//
-						ExpandScalarProduct]
-					)//smalld;
+					(TrickMandelstam@@Prepend[{man},Expand[Pair[a-b,a-b]]//ExpandScalarProduct])//smalld;
+
 				spl[aa__] :=
 					spl0[aa,mand]//ExpandAll;
-				FCPrint[3, "OneLoop: tdec: covnerting FADs to PaVe functions.", FCDoControl->oneloopVerbose];
-				Which[ tdeclpl == 1, tensps = { spl[ tdecpl[[1]],0 ] },
-						tdeclpl == 2, tensps = { spl[ tdecpl[[1]],0 ],
-												spl[ tdecpl[[2]],tdecpl[[1]] ],
-												spl[ tdecpl[[2]],0] },
-						tdeclpl === 3, tensps = { spl[ tdecpl[[1]],0 ],
-												spl[ tdecpl[[2]],tdecpl[[1]] ],
-												spl[ tdecpl[[3]],tdecpl[[2]] ],
-												spl[ tdecpl[[3]],0 ],
-												spl[ tdecpl[[2]],0 ],
-												spl[ tdecpl[[3]],tdecpl[[1]] ]}
-				(*,
-						tdeclpl === 4, tensps = { pl[ tdecpl[[1]],0 ],
-												spl[ tdecpl[[2]],tdecpl[[1]] ],
-												spl[ tdecpl[[3]],tdecpl[[2]] ],
-												spl[ tdecpl[[3]],0 ],
-				...
 
-				}
-				*)
-					];
-			FCPrint[3, "OneLoop: tdec: tensps ", Total[tensps], FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tdec: covnerting FADs to PaVe functions.", FCDoControl->oneloopVerbose];
+
+			tensps = ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[tdecpl,spl[#,0]&]];
+
+			FCPrint[3, "OneLoop: tdec: tensps ", tensps," ", FCDoControl->oneloopVerbose];
 			FCPrint[3, "OneLoop: tdec: tdecr ", tdecr, FCDoControl->oneloopVerbose];
 			FCPrint[3, "OneLoop: tdec: tdecex ", tdecex, FCDoControl->oneloopVerbose];
+
 			(* scalar integrals *)
-				If[ qn==0,
+			If[ qn==0,
 
-					tdecnew = eval[ tdecex ];
-					If[ $LimitTo4 === True,
-						Which[ tdeclpl == 0,                        (* e A0 = 2m^2 *)
-								tdecr = epst[ tdecr,tdecnew,tdi, 2 tdecml[[1]] ],
-								tdeclpl == 1,
-								tdecr = epst[ tdecr,tdecnew,tdi, 2 ]; (* e B0 = 2 *)
-			]
-					];
-			(* if the option DenominatorOrder is True, then order here again *)
-					If[ denomOrder === True,
-						pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]],
-						pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
-					];
-					tdecr = add[ tdecr, pav0, tdecnew ];
-					FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+				(* new prefactor *)
+				tdecnew = eval[ tdecex ];
+
+				If[ $LimitTo4 === True,
+					Which[
+						tdeclpl == 0,
+							(* e A0 = 2m^2 *)
+							tdecr = epst[ tdecr,tdecnew,tdi, 2 tdecml[[1]] ],
+						tdeclpl == 1,
+							(* e B0 = 2 *)
+							tdecr = epst[ tdecr,tdecnew,tdi, 2 ];
+					]
 				];
-				If[ qn==1,
-					tdecnew = Table[  eval[ tdecex/.LorentzIndex[mudu[1],___]->
-											tdecpl[[tdecti]] ], {tdecti,1,tdeclpl}
-									];
-					FCPrint[3, "OneLoop: tdec: qn==1, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
-					If[ ($LimitTo4 === True) && (tdeclpl === 1),   (* e B1 = -1 *)
-						tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
-					];
-					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose];
-					For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
-						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
-										tdecnew[[tdectj]]
-						]            ];
-					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+
+				FCPrint[3, "OneLoop: tdec: tdecenew ", tdecnew, FCDoControl->oneloopVerbose];
+
+				(* if the option DenominatorOrder is True, then order here again *)
+				If[ denomOrder === True,
+					pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]],
+					pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
 				];
-				If[ qn==2,
-					tdecnew = eval[ tdecex/.LorentzIndex[mudu[1],dime___]->
-											LorentzIndex[mudu[2],dime]
+
+				FCPrint[3, "OneLoop: tdec: pav0: ", pav0, FCDoControl->oneloopVerbose];
+				(* Reduction of PaVe functions into simpler ones... *)
+				tdecr = add[ tdecr, pav0, tdecnew ];
+				FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+			];
+
+			(* q^mu (...) *)
+			If[ qn==1,
+				(* new prefactor *)
+				tdecnew = Table[ eval[ tdecex/.LorentzIndex[mudu[1],___]-> tdecpl[[tdecti]] ], {tdecti,1,tdeclpl}];
+
+				FCPrint[3, "OneLoop: tdec: qn==1, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
+				If[ ($LimitTo4 === True) && (tdeclpl === 1),   (* e B1 = -1 *)
+					tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
+				];
+				FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+				For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
+					tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
+									tdecnew[[tdectj]]
+					]            ];
+				FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+			];
+
+			(* q^mu q^nu (...) *)
+			If[ qn==2,
+				tdecnew = eval[ tdecex/.LorentzIndex[mudu[1],dime___] :> LorentzIndex[mudu[2],dime]];
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
+
+				If[ $LimitTo4 === True,
+					Which[
+						tdeclpl == 0,        (* e A00 = m^4/2 *)
+										tdecr = epst[  tdecr,tdecnew,tdi,
+														tdecml[[1]]^2/2
+													],
+						tdeclpl == 1,        (* e B00  *)
+										tdecr = epst[  tdecr,tdecnew,tdi,
+														(-1/3 spl[tdecpl[[1]],0] +
+														tdecml[[1]] +
+														tdecml[[2]] )/2
+													] ,
+						tdeclpl == 2,       (* e C00 = 1/2 *)
+										tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
+						]
+				];
+
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+				tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew ];
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecex=", tdecex, FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tdec: qn==2, tdeclpl=", tdeclpl, FCDoControl->oneloopVerbose];
+				tdecnew = Table[{Sort[{tdecti,tdectj}],
+						tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/.
+								LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]
+								},{tdectj,1,tdeclpl},{tdecti,1,tdeclpl}
 								];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
-					If[ $LimitTo4 === True,
-						Which[
-							tdeclpl == 0,        (* e A00 = m^4/2 *)
-											tdecr = epst[  tdecr,tdecnew,tdi,
-															tdecml[[1]]^2/2
-														],
-							tdeclpl == 1,        (* e B00  *)
-											tdecr = epst[  tdecr,tdecnew,tdi,
-															(-1/3 spl[tdecpl[[1]],0] +
-															tdecml[[1]] +
-															tdecml[[2]] )/2
-														] ,
-							tdeclpl == 2,       (* e C00 = 1/2 *)
-											tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
-							]
-					];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
-					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew ];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecex=", tdecex, FCDoControl->oneloopVerbose];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdeclpl=", tdeclpl, FCDoControl->oneloopVerbose];
-					tdecnew = Table[{Sort[{tdecti,tdectj}],
-							tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/.
-									LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]
-									},{tdectj,1,tdeclpl},{tdecti,1,tdeclpl}
-									];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", FullForm[tdecnew], FCDoControl->oneloopVerbose];
-					tdecnew = eval[ Flatten[ tdecnew,1 ] ];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
-					If[ ($LimitTo4 === True) && (tdeclpl == 1),  (* e B11 = 2/3 *)
-						tdecr = epst[ tdecr,tdecnew[[1,2]],tdi, 2/3 ]
-					];
-					For[ tdectj = 1,tdectj<=Length[tdecnew],tdectj++,
-						tdecr = add[ tdecr,
-								PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce}],
-									tdecnew[[tdectj,2]]
-									];
-						If[ $LimitTo4 === True,
-							tdecr = tdecr /.tdi->4
-						];
-						];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose]
-				];
 
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", FullForm[tdecnew], FCDoControl->oneloopVerbose];
+				tdecnew = eval[ Flatten[ tdecnew,1 ] ];
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
+				If[ ($LimitTo4 === True) && (tdeclpl == 1),  (* e B11 = 2/3 *)
+					tdecr = epst[ tdecr,tdecnew[[1,2]],tdi, 2/3 ]
+				];
+				For[ tdectj = 1,tdectj<=Length[tdecnew],tdectj++,
+					tdecr = add[ tdecr,
+							PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce}],
+								tdecnew[[tdectj,2]]
+								];
+					If[ $LimitTo4 === True,
+						tdecr = tdecr /.tdi->4
+					];
+					];
+				FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+			];
+
+
+			(* q^mu q^nu q^rho (...) *)
 				If[ qn == 3,               (* The  00i - terms *)
 					tdecnew = {};
 					For[ tdectij = 1, tdectij <= tdeclpl, tdectij++,
@@ -2655,7 +2682,7 @@ pavremember[x__] :=
 				Dialog[{expr,props,Q,qn ,di,mudu,mand}]
 			];
 			tdecr
-		]]; (*tdec end *)
+		]]/; expr =!= 0;
 
 (* ************************************************************** *)
 
