@@ -62,10 +62,10 @@ Options[FCCanonicalizeDummyIndices] = {
 };
 
 makeRepIndexList[mIndexHead_,mWrappinHead_,mSeed_,mFunc_,mFinalList_,mUniqueExp_]:=
-			((MapIndexed[Rule[#1, mIndexHead[mWrappinHead@mFunc[#2,mSeed]]] &,
-			Union@Cases[#, mIndexHead[y_]/; MemberQ[mFinalList,mIndexHead[y]]:> mIndexHead[y],Infinity]] //Union // Flatten) & /@ mUniqueExp);
-
-
+		Block[{indList},
+			indList = DeleteDuplicates/@(Map[Cases[#, mIndexHead[y__]/; MemberQ[mFinalList,mIndexHead[y]], Infinity]&, mUniqueExp]);
+			Map[Function[x, MapIndexed[Rule[#1, mIndexHead[mWrappinHead@mFunc[#2, mSeed]]] &,x]][#] &, indList]
+		];
 
 renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 	Block[{dummyHeads,renamingRule = {}},
@@ -80,14 +80,12 @@ renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 		renamingRule
 	];
 
-
-
 FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 	Block[ {indexList = {}, ex,tmp,null1,null2, renamingRule,
 			rest0=0,lihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
 			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
-			renamingList,cList},
+			renamingList,cList,indexExtract},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -160,29 +158,40 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		uniqueExpressions = Cases2[tmp, isoHead];
 
-		FCPrint[2,"FCCanonicalizeDummyIndices: Unique expressions: ", uniqueExpressions,
-			FCDoControl->canodummyVerbose];
+		FCPrint[2,"FCCanonicalizeDummyIndices: Unique expressions: ", uniqueExpressions, FCDoControl->canodummyVerbose];
 
 
-		If[	Head[moms]=!=All && Head[moms]===List,
-		(* only for particular momenta *)
-		repIndexListLor = ((MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2,seedLor], (#1 /.
-			LorentzIndex[_, dim_: 4] :> dim)]] &,
-			Cases[#, _[a___, LorentzIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity] // Union] // Flatten) & /@ uniqueExpressions),
-
-		(* for all particular momenta *)
-		repIndexListLor = ((MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2,seedLor], (#1 /.
-			LorentzIndex[_, dim_: 4] :> dim)]] &,
-			Union@Cases[#, _[a___, LorentzIndex[y__],b___]/; FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity] // Union] // Flatten) & /@ uniqueExpressions)
+		If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
+			(* only for particular momenta *)
+			indexExtract = Map[Cases[#, _[a___, LorentzIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity]&, uniqueExpressions],
+			(* for all momenta *)
+			indexExtract = Map[Cases[#, LorentzIndex[y__]/; MemberQ[finalList,LorentzIndex[y]], Infinity]&, uniqueExpressions]
 		];
 
+		indexExtract = DeleteDuplicates/@indexExtract;
+
+		FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Lorentz indices: ", indexExtract, FCDoControl->canodummyVerbose];
+
+		If[	!MatchQ[indexExtract, {{___LorentzIndex} ...}],
+				Message[FCCanonicalizeDummyIndices::failmsg,
+				"Failed to  properly extract dummy Lorentz indices."];
+				FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
+				Abort[]
+		];
+
+		repIndexListLor = Map[Function[x, MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2, seedLor],
+				(#1 /.LorentzIndex[_, dim_: 4] :> dim)]] &,x]][#] &, indexExtract];
+
+		FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListLor: ", repIndexListLor, FCDoControl->canodummyVerbose];
+
 		otherHeads = Complement[Union[indhead],{LorentzIndex,SUNIndex,SUNFIndex}];
-		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads,
-			FCDoControl->canodummyVerbose];
+		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads, FCDoControl->canodummyVerbose];
 
 		If[otherHeads =!={},
 			repIndexListsCustom = Map[makeRepIndexList[#,ToExpression[ToString[#]<>"head"],
-				Unique[ToLowerCase[ToString[#]]],fu,finalList,uniqueExpressions]&, otherHeads]
+				Unique[ToLowerCase[ToString[#]]],fu,finalList,uniqueExpressions]&, otherHeads];
+			FCPrint[3,"FCCanonicalizeDummyIndices: repIndexListsCustom: ", repIndexListsCustom,
+			FCDoControl->canodummyVerbose];
 		];
 
 		repIndexListTotal = {repIndexListLor,
@@ -195,8 +204,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		repIndexListTotal = Flatten/@ Transpose[repIndexListTotal];
 
-		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements: ", repIndexListTotal,
-			FCDoControl->canodummyVerbose];
+		FCPrint[2,"FCCanonicalizeDummyIndices: List of replacements: ", repIndexListTotal, FCDoControl->canodummyVerbose];
 
 
 		(* Renaming of dummy indices according to the supplied list *)
@@ -204,6 +212,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		If[ OptionValue[CustomIndexNames]=!={},
 			cList = Join[cList,Map[{Last[#], ToExpression[ToString[First[#]]<>"head"]}&,OptionValue[CustomIndexNames]]];
 		];
+
 		cList = cList /. {{},_} :> Unevaluated[Sequence[]];
 
 
@@ -227,6 +236,8 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", canIndexList, FCDoControl->canodummyVerbose];
 
 		finalRepList = MapThread[Rule[#1, #2] &, {uniqueExpressions, canIndexList}];
+
+		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", finalRepList, FCDoControl->canodummyVerbose];
 
 		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|sunhead|sunfhead->Identity;
 
