@@ -14,7 +14,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Dirac`fcstFCCanonicalizeDummyIndices =
+Tests`Lorentz`fcstFCCanonicalizeDummyIndices =
 ({
 {"fcstFCCanonicalizeDummyIndices-ID1",
 "MatchQ[tmp=FCCanonicalizeDummyIndices[FVD[q,mu] \
@@ -55,9 +55,8 @@ v1[SUNFIndex[e_]] v1[SUNFIndex[d_]] v2[SUNFIndex[f_]]]", "True"},
 SUNTF[a,b2,c2]v1[SUNFIndex[b2]]v2[SUNFIndex[c2]]\
 //FCCanonicalizeDummyIndices[#,LorentzIndexNames\[Rule]{li1},\
 SUNFIndexNames\[Rule]{sf1,sf2,sf3,sf4},SUNIndexNames\[Rule]{cf1}]&\
-//FCE", "FV[p, li1]*MT[li1, mu]*SUNTF[{cf1}, sf1, sf3]*SUNTF[{cf1}, \
-sf2, sf4]*v1[SUNFIndex[sf1]]*v1[SUNFIndex[sf2]]*v1[SUNFIndex[sf3]]*v2[\
-SUNFIndex[sf4]]"},
+//FCE", "FV[p, li1]*MT[li1, mu]*SUNTF[{cf1}, sf1, sf2]*SUNTF[{cf1}, sf3,
+sf4]*v1[SUNFIndex[sf1]]*v1[SUNFIndex[sf2]]*v1[SUNFIndex[sf3]]*v2[SUNFIndex[sf4]]"},
 {"fcstFCCanonicalizeDummyIndices-ID9",
 "MatchQ[FCCanonicalizeDummyIndices[
 T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] +
@@ -70,5 +69,29 @@ MyIndex1[MyIndex1head[a2_]]] v2[MyIndex2[MyIndex2head[a1_]]]]", "True"},
 T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] +
 T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]],
 Head -> {MyIndex1, MyIndex2},
-CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]", "2 T1[MyIndex2[i2], MyIndex1[i1]] v1[MyIndex1[i1]] v2[MyIndex2[i2]]"}
+CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]", "2 T1[MyIndex2[i2], MyIndex1[i1]] v1[MyIndex1[i1]] v2[MyIndex2[i2]]"},
+
+{"fcstFCCanonicalizeDummyIndices-ID11","MatchQ[FCCanonicalizeDummyIndices[(Tens1[SUNIndex[a],
+	SUNIndex[b]] Tens2[SUNIndex[a], SUNIndex[b]] +
+	Tens1[SUNIndex[b], SUNIndex[a]] Tens2[SUNIndex[b], SUNIndex[a]])],
+2 Tens1[SUNIndex[a_], SUNIndex[b_]] Tens2[SUNIndex[a_],
+SUNIndex[b_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID12","MatchQ[FCCanonicalizeDummyIndices[
+Tens1[LorentzIndex[a], LorentzIndex[b]] Tens2[LorentzIndex[a], LorentzIndex[b]] +
+Tens1[LorentzIndex[b], LorentzIndex[a]] Tens2[LorentzIndex[b], LorentzIndex[a]]],
+2 Tens1[LorentzIndex[a_], LorentzIndex[b_]] Tens2[LorentzIndex[a_], LorentzIndex[b_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID13","MatchQ[QuantumField[FCPartialD[LorentzIndex[\[Mu]]], GaugeField,
+	LorentzIndex[\[Nu]], SUNIndex[a]].QuantumField[
+	FCPartialD[LorentzIndex[\[Mu]]], GaugeField, LorentzIndex[\[Nu]],
+	SUNIndex[a]] +
+QuantumField[FCPartialD[LorentzIndex[\[Nu]]], GaugeField,
+	LorentzIndex[\[Mu]], SUNIndex[a]].QuantumField[
+	FCPartialD[LorentzIndex[\[Nu]]], GaugeField, LorentzIndex[\[Mu]],
+	SUNIndex[a]] // FCCanonicalizeDummyIndices,
+2 QuantumField[FCPartialD[LorentzIndex[a_]], GaugeField,
+	LorentzIndex[c_], SUNIndex[b_]].QuantumField[
+	FCPartialD[LorentzIndex[a_]], GaugeField, LorentzIndex[c_],
+	SUNIndex[b_]]]","True"}
+
+
 });
