@@ -80,6 +80,13 @@ PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 		<> ", {}, " <> ToString[{m}] <> "]"];
 	Abort[];)
 
+(* The number of kinematic invariants depends on the number of masses. *)
+PaVe[i__, kinvs_List, ms_List, OptionsPattern[]] :=
+	(Message[PaVe::nonexistent, "PaVe[" <> (StringReplace[ToString[{i}], {"{" | "}" -> ""}])
+		<> "," <>  (StringReplace[ToString[{kinvs}], {"{" | "}" -> ""}]) <> "," <>
+		(StringReplace[ToString[{ms}], {"{" | "}" -> ""}]) <> "]"];
+	Abort[];)/; Length[kinvs]=!=Length[ms] (Length[ms]-1)/2;
+
 (* 	if UV- and IR-divergences are regularized with the same regulator, then
 	scaleless n-point functions vanish in DR	*)
 PaVe[__,{0...},{0..}, OptionsPattern[]] :=
@@ -328,7 +335,7 @@ cord[a_,b_,c_, m1_,m2_,m3_] :=
 
 
 PaVe /:
-	MakeBoxes[PaVe[ij___,{moms___},{masses__}, OptionsPattern[]], TraditionalForm]:=
+	MakeBoxes[PaVe[ij__,{moms___},{masses__}, OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[Subscript[FromCharacterCode[64+Length[{masses}]], StringJoin[ToString /@ {ij}]
 		][moms, masses],TraditionalForm
 	]/; Length[{masses}]>=1;
