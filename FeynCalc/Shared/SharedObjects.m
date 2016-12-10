@@ -1036,13 +1036,22 @@ FV /:
 	MakeBoxes[FV[a_, b_], TraditionalForm]:=
 		ToBoxes[FCI[FV[a,b]], TraditionalForm];
 
+MakeBoxes[Power[FV[a_, b_], n_], TraditionalForm] :=
+	ToBoxes[Power[FCI[FV[a, b]], n], TraditionalForm];
+
 FVD /:
 	MakeBoxes[FVD[a_, b_], TraditionalForm]:=
 		ToBoxes[FCI[FVD[a,b]], TraditionalForm];
 
+MakeBoxes[Power[FVD[a_, b_], n_], TraditionalForm] :=
+	ToBoxes[Power[FCI[FVD[a, b]], n], TraditionalForm];
+
 FVE /:
 	MakeBoxes[FVE[a_, b_], TraditionalForm]:=
 		ToBoxes[FCI[FVE[a,b]], TraditionalForm];
+
+MakeBoxes[Power[FVE[a_, b_], n_], TraditionalForm] :=
+	ToBoxes[Power[FCI[FVE[a, b]], n], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1673,6 +1682,9 @@ Pair /:
 				ToBoxes[Pair[LorentzIndex[Upper[a],dim1],Momentum[b,dim2]+c],TraditionalForm],
 				ToBoxes[Pair[LorentzIndex[Lower[a],dim1],Momentum[b,dim2]+c],TraditionalForm]
 			]/; (!MatchQ[a,$FCLorentzIndexSubHeads]  && !MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]]);
+
+MakeBoxes[Power[Pair[(h : LorentzIndex | ExplicitLorentzIndex)[a___], b_Momentum + c_: 0], n_], TraditionalForm] :=
+	SuperscriptBox[RowBox[{"(", ToBoxes[Pair[h[a], b + c], TraditionalForm], ")"}],ToBoxes[n]];
 
 (* ------------------------------------------------------------------------ *)
 
