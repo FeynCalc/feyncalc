@@ -1024,6 +1024,15 @@ TraditionalForm], \"^\"]}], TraditionalForm], TraditionalForm], \
 \")\"}], FormBox[FormBox[FormBox[\"mu\", TraditionalForm], \
 TraditionalForm], TraditionalForm]], TraditionalForm], \
 TraditionalForm]"},
+
+
+{"fcstSharedObjectsTypesetting-ID162.1","MakeBoxes[FV[p,0]^2, TraditionalForm]",
+"FormBox[SuperscriptBox[RowBox[{\"(\",FormBox[FormBox[SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"p\",TraditionalForm],\"_\"],TraditionalForm]}],FormBox[FormBox[FormBox[\"0\",TraditionalForm],TraditionalForm],TraditionalForm]],TraditionalForm],TraditionalForm],\")\"}],\"2\"],TraditionalForm]"},
+
+{"fcstSharedObjectsTypesetting-ID162.2","MakeBoxes[FVD[p,0]^2, TraditionalForm]",
+"FormBox[SuperscriptBox[RowBox[{\"(\",FormBox[FormBox[SuperscriptBox[RowBox[{FormBox[FormBox[\"p\",TraditionalForm],TraditionalForm]}],FormBox[FormBox[FormBox[\"0\",TraditionalForm],TraditionalForm],TraditionalForm]],TraditionalForm],TraditionalForm],\")\"}],\"2\"],TraditionalForm]"},
+
+
 {"fcstSharedObjectsTypesetting-ID163",
 "MakeBoxes[GA[i], TraditionalForm]",
 "FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
