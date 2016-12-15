@@ -1,0 +1,26 @@
+
+
+(* :Title: FCGram.test                                              	    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCGram			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCGramMatrix = {
+{"fcstFCGram-ID1","FCGramMatrix[{p1, p2}, FCE -> True]", "{{2 SPD[p1, p1], 2 SPD[p1, p2]}, {2 SPD[p1, p2], 2 SPD[p2, p2]}}"},
+{"fcstFCGram-ID2","FCGramMatrix[{p1, p2}, Dimension -> 4, FCE -> True]", "{{2 SP[p1, p1], 2 SP[p1, p2]}, {2 SP[p1, p2], 2 SP[p2, p2]}}"},
+{"fcstFCGram-ID3","FCGramMatrix[{p1, 0}, FCE -> True]", "{{2 SPD[p1, p1], 0}, {0, 0}}"},
+{"fcstFCGram-ID4","FCGramMatrix[{0, 0}, FCE -> True]", "{{0, 0}, {0, 0}}"}
+};
+
+Tests`LoopIntegrals`fcstFCGramDeterminant = {
+{"fcstFCGramDeterminant-ID1","FCGramDeterminant[{p1, p2}, FCE -> True]", "-4 SPD[p1, p2]^2 + 4 SPD[p1, p1] SPD[p2, p2]"},
+{"fcstFCGramDeterminant-ID2","FCGramDeterminant[{p1, 0}]", "0"}
+};
