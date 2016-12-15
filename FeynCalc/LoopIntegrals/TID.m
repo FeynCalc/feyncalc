@@ -712,7 +712,7 @@ tidReduce[0,_,_,_]:=
 
 tidReduce[int_,q_,n_,pavebasis_]:=
 Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
-	vanishingGramDet=False,gramMatrix,res},
+	vanishingGramDet=False,gramMatrix,res,momList},
 	If[pavebasis,
 		vanishingGramDet=True
 	];
@@ -744,16 +744,11 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 
 	(* 	If the integral doesn't depend on any external momenta,
 		then there is no point to check the Gram determinant *)
-	If[(int/. _ qQQ[_ ffdp[xx___]]:>List@@fdp[xx])=!={},
-			gramMatrix = (int/. _ qQQ[_ ffdp[xx___]]:>List@@fdp[xx])//
-			Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->n], {i, 1, Length[#]}, {j, 1, Length[#]}] &;
-		If[!MatrixQ[gramMatrix] || !FreeQ2[gramMatrix,{FeynAmpDenominator,PropagatorDenominator}],
-			Message[TID::failmsg, "tidReduce failed to write down the Gram matrix of the integral" <>
-				ToString[int, InputForm]];
-			Abort[]
-		];
-		If[ExpandScalarProduct[Det[gramMatrix]]===0,
-				vanishingGramDet = True
+	momList = int/. _ qQQ[_ ffdp[xx___]]:> List@@fdp[xx];
+
+	If[momList=!={},
+		If[	FCGramDeterminant[momList,Dimension->n] === 0,
+			vanishingGramDet = True
 		]
 	];
 

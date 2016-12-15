@@ -339,7 +339,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		we have a 1-point function or were requested just to provide the tensor basis *)
 		If[!basisonly && ppli=!={},
 			FCPrint[1, "Tdec: Checking Gram determinant...", FCDoControl->tdecVerbose];
-			If[ExpandScalarProduct[Det[ppli//Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->dim], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
+			If[	FCGramDeterminant[ppli,Dimension->dim]===0,
 				FCPrint[1, "Tensor decomposition with Tdec is not possible due to vanishing Gram determinants", FCDoControl->tdecVerbose];
 				tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
 				seqli={};
