@@ -54,7 +54,8 @@ SetAttributes[cachedToString, HoldAll]
 whiteListNames = {
 	ExpandScalarProduct,
 	PairContract,
-	FCFastContract
+	FCFastContract,
+	FeynCalc`NPointTo4Point`Private`getDet
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
@@ -94,6 +95,16 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 											DownValues[SPE],
 											$BreitMaison,
 											$Larin}],
+
+			fcFunc === FeynCalc`NPointTo4Point`Private`getDet,
+				depArgs = cachedToString[{	DownValues[Pair],
+											DownValues[ScalarProduct],
+											DownValues[SP],
+											DownValues[SPD],
+											DownValues[SPE],
+											$BreitMaison,
+											$Larin}],
+
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]

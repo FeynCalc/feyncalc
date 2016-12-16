@@ -274,6 +274,9 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 
 		paveautoorder = PaVeAutoOrder /. oneopt;
 		paveautoreduce = PaVeAutoReduce /. oneopt;
+
+		$higherpoint = False;
+
 		If[ writeout === True || writeout === " ",
 			writeout = "";
 			writeoutrecover = False
@@ -401,89 +404,27 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			oneamp = FeynAmpDenominatorSplit[oneamp//Trick//FeynAmpDenominatorCombine, Momentum->{q}];
 			oneamp = oneamp /. FeynAmpDenominator[xyz__] :> PropagatorDenominatorExplicit[FeynAmpDenominator[xyz]] /;FreeQ[{xyz}, q];
 
-			oneamp = oneamp/.PropagatorDenominator -> denf /.
-					denprop -> PropagatorDenominator;
+			oneamp = oneamp/.PropagatorDenominator -> denf /. denprop -> PropagatorDenominator;
 
-			If[ oneloopsimplify=== True,
+			If[ oneloopsimplify,
 				oneamp = OneLoopSimplify[oneamp, q, Dimension -> dim]
 			];
+
 			FCPrint[2, "length of oneamp = ", Length[oneamp], FCDoControl->oneloopVerbose];
 			oneamp = FDS[oneamp,q];
 			oneamp = FDS[Expand[ApartFF[oneamp,{q}], FeynAmpDenominator],q,FCI->True,ApartFF->False];
 
-			(* reduce N-point to 4-point,  still temporary  *)
-			SetAttributes[ Y, Orderless ];
-			smn[a_] :=
-				0;
-			smdaemon[x_] :=
-				x/.SmallVariable->smn;
-			Y[{pi_, mi_}, {pj_, mj_}] :=
-				Expand[smdaemon[ mi^2 + mj^2 -ScalarProduct[pi - pj, pi - pj]//ExpandScalarProduct]];
-
-			(* pli is the list of momenta (without q), being one less than mli *)
-
-			(* ********************************************************************* *)
-			(*                          oneloop14                                    *)
-			(* ********************************************************************* *)
-			(* Reducing N-=point to 4 point *)
-			(* ********************************************************************* *)
-			gr454[mli_List, pli_List] :=
-				gr454[mli, pli] =
-				Block[ {pl = Prepend[pli, 0], n = Length[mli]},
-	(* create a list of the columns of eq. (4.54) *)
-					columnli = Prepend[ Table[ Y[{pl[[i]], mli[[i]]}, {pl[[j]], mli[[j]]}],
-												{j,1,n}, {i,1,n}],
-										Array[#^0&, n]
-										];
-					columnli
-				];
-
-			(*define this such that sgr[{...},{...}, -1  ] is the Y_{ij} determinant *)
-			sgr[mli_, pli_, i_] :=
-				sgr[mli, pli, i] =
-				Factor2[Drop[gr454[mli, pli], {i+2,i+2}]//Det];
-			redamp[x_Plus,qu_] :=
-				redamp[#,qu]&/@x;
-			redamp[x_,qu_] :=
-				Block[ {pl, ml, fm, pp,res = x},
-					fd = PartitHead[x, FeynAmpDenominator];
-					If[ Length[fd[[2]]] > 4,
-						fm[pe_,___] :=
-							pe;
-						pp[a_, b_] :=
-							Expand[(a/.Momentum->fm) - qu];
-						mm[a_, b_] :=
-							b;
-						pl = List @@ (fd[[2]]/.PropagatorDenominator->pp );
-						pl = Rest[pl];
-						ml =  List @@ (fd[[2]]/.PropagatorDenominator->mm);
-(*Extract the determinant *)
-						res = {1/sgr[ml, pl, -1] ,
-								Sum[ (-1)^j subdethold[sgr[ml,pl, j]
-														] fd[[1]] *
-									Drop[fd[[2]], {j+1,j+1}],
-									{j, 0, Length[fd[[2]]]-1}
-									]
-								}
-					];
-					res
-				] /; Head[x] =!= Plus;
-			subdethold[x_Plus] :=
-				x/;Length[x] < 4;
-			subdethold[x_] :=
-				ReleaseHold[Isolate[x, IsolateSplit->Infinity,
-								IsolateNames->SUB
-							] /. SUB -> SUBDET
-							];
-			$higherpoint = False;
 			fdhigh[xx__] :=
 				If[ Length[Union[{xx}]] < 5,
 					0,
 					FeynAmpDenominator[xx]
 				];
+
+
 			If[ !FreeQ[oneamp /. FeynAmpDenominator -> fdhigh, FeynAmpDenominator],
 				$higherpoint = True;
-				namp = redamp[ oneamp,q ];
+				(*namp = redamp[ oneamp,q ];*)
+				namp = NPointTo4Point[ oneamp,q, List->True, Dimension -> 4, IsolateNames->SUB]/. SUB -> SUBDET;
 				prefactor = prefactor namp[[1]];
 				oneamp = namp[[2]]
 			];
@@ -493,27 +434,18 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 
 		(* ONEAMPCHANGE: extract coupling constants *)
 			If[ Head[oneamp] === Times,
-				oneselect = Select[oneamp,
-							FreeQ2[#, {Pair, PropagatorDenominator,Eps,
-										dim,
-										Momentum,LorentzIndex, SUNF,
-										SUNDelta, SUNT,
-										DiracGamma, Spinor}
-									]&
-								];
+				oneselect = Select[oneamp, FreeQ2[#, {	Pair, PropagatorDenominator,Eps, dim, Momentum,LorentzIndex, SUNF,
+														SUNDelta, SUNT, DiracGamma, Spinor}]&];
 				oneamp = oneamp/oneselect;
 				newprefactor =  Factor2[ newprefactor oneselect ];
 			];
-			If[ (!FreeQ[ newprefactor, dim ]) || (!FreeQ[newprefactor, LorentzIndex])
-				|| (!FreeQ[newprefactor, DiracGamma]),
-				newnewprefactor = Select[newprefactor,
-										!FreeQ2[#, {dim, LorentzIndex, DiracGamma}]&];
+			If[ (!FreeQ[ newprefactor, dim ]) || (!FreeQ[newprefactor, LorentzIndex]) || (!FreeQ[newprefactor, DiracGamma]),
+				newnewprefactor = Select[newprefactor, !FreeQ2[#, {dim, LorentzIndex, DiracGamma}]&];
 				If[ !FreeQ[newnewprefactor, DiracGamma],
 					oneamp = DOT[newnewprefactor , oneamp],
 					oneamp = oneamp newnewprefactor
 				];
-				newprefactor = smalld[newprefactor / newnewprefactor + nUUUl
-									]/. nUUUl -> 0;
+				newprefactor = smalld[newprefactor / newnewprefactor + nUUUl]/. nUUUl -> 0;
 				If[ newprefactor === 0,
 					oneamp = 0
 				];
@@ -1158,8 +1090,9 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			];
 
 		(* ONEAMPCHANGE : inserting the subdeterminants again *)
+
 			If[ !FreeQ[ oneamp, SUBDET ],
-				oneamp = oneamp /. SUBDET -> SUB;
+				oneamp = FRH[oneamp /. SUBDET -> SUB, IsolateNames->SUB];
 				FCPrint[1, "subdeterminants reinserted", FCDoControl->oneloopVerbose]
 			];
 			tric[y_Plus] :=
@@ -1236,12 +1169,14 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			];
 
 		(* putting everything together again, including the prefactor *)
+
 			If[ FreeQ[oneamp, q],
 				oneamp = ChangeDimension[oneamp, 4],
-				newprefactor = newprefactor/I/Pi
+				newprefactor = newprefactor/I/Pi;
 			];
+
 			oneampresult = oneamp;
-			oneampresult = fsub[newprefactor, finsubst] oneampresult;
+			oneampresult = FRH[(fsub[newprefactor, finsubst]/.SUBDET->SUB),IsolateNames->SUB] oneampresult;
 			(* Here we add back the non-loop terms *)
 			oneampresult = nonLoopTerms + oneampresult;
 			FCPrint[3, "oneampresult = ", oneampresult, FCDoControl->oneloopVerbose];
