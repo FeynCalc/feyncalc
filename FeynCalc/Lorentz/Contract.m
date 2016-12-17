@@ -688,8 +688,7 @@ contractLColl[a_, b_ /; Head[b] =!= Plus] :=
 	];
 
 contractLColl[lon_, shor_Plus] :=
-	Block[ {neew = {}, long = lon,
-		short = shor, tet},
+	Block[ {neew = {}, long = lon, short = shor, tet, ij},
 		FCPrint[1,"Long contraction ", Length[long], " * ", Length[short], " \n ",UseWriteString->True];
 		For[ij = 1, ij <= Length[short], ij++,
 			FCPrint[3,"stdout"," | ", ij, "  XXX | ",UseWriteString->True];      ;
@@ -710,7 +709,8 @@ contractLColl[lon_, shor_Plus] :=
 				neew  = Join[neew, Apply[List, tet]],
 				AppendTo[neew, tet]
 			];
-	];
+		];
+
 		FCPrint[2,"applying plus to neew "];
 		neew = Apply[Plus, neew];
 		FCPrint[2,"exiting contractLColl"];
@@ -819,7 +819,6 @@ contit[xx_ , yy_, opts:OptionsPattern[]] :=
 			If[ Length[xx] =!= 2,
 				Contract[xx yy, FCI->True, opts],
 				If[ (Head[xx[[1]]] === Plus) && (Head[xx[[2]]] === Plus),
-					iCcount = 1;
 					FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
 						Length[xx[[2]]], " term sum"];
 					(* that's the common situation !! *)
@@ -834,16 +833,6 @@ contit[xx_ , yy_, opts:OptionsPattern[]] :=
 
 
 (* #################################################################### *)
-
-(* contractlidef *)
-contractli[x_] :=
-	MemSet[contractli[x],x] /; FreeQ[x//Hold,LorentzIndex];
-
-contractli[x_] :=
-	Contract[x, FCI->True, Expanding->True, Factoring->False, EpsContract->False];
-
-conall[ x_ ] :=
-	Contract[x, FCI->True, Expanding->True, EpsContract->True, Factoring->False];
 
 epsCleverCon[expr_]:=
 	expr //. Power[Eps[a__],n_] :> epsHold[epscon[a]^n] //.
@@ -880,36 +869,30 @@ sceins[a_LorentzIndex b_, c_] :=
 sceins[a_Momentum b_, c_] :=
 	b sceins[a, c];
 
-
-dim[] = 4;
-dim[d_] :=
-	d;
-
-(* do this immediately, Oct. 2003 *)
 simplerules = {
-	Pair[LorentzIndex[a_, di___], b_] Pair[LorentzIndex[a_, di___], c_] :> Pair[b, c],
-	Pair[LorentzIndex[x_, di___], LorentzIndex[x_, di___]] :> dim[di],
-	Pair[LorentzIndex[x_, di___], y_]^2 :> Pair[y, y]
+	Pair[LorentzIndex[a_, dim_:4], b_] Pair[LorentzIndex[a_, dim_:4], c_] :> Pair[b, c],
+	Pair[LorentzIndex[x_, dim_:4], LorentzIndex[x_, dim_:4]] :> dim,
+	Pair[LorentzIndex[_, _:4], y_]^2 :> Pair[y, y]
 };
+
+(* #################################################################### *)
 
 ident3[a_,_] :=
 	a;
 
-(* #################################################################### *)
-
-	(* decide whether the (first) appearance of inds in expr is ordered *)
-	(*ordqdef*)
-	ordq[expr_,inds_List] :=
-		Block[ {pos, min},
-			pos = Position[expr, #]& /@ inds;
-			pos = pos /. {} -> Sequence[];
-			If[ Length[pos]>0,
-				pos = Map[First,pos]
-			];
-			min = Min[Length/@pos];
-			pos = Map[Take[#,min]&, pos];
-			OrderedQ[pos]
+(* decide whether the (first) appearance of inds in expr is ordered *)
+(*ordqdef*)
+ordq[expr_,inds_List] :=
+	Block[ {pos, min},
+		pos = Position[expr, #]& /@ inds;
+		pos = pos /. {} -> Sequence[];
+		If[ Length[pos]>0,
+			pos = Map[First,pos]
 		];
+		min = Min[Length/@pos];
+		pos = Map[Take[#,min]&, pos];
+		OrderedQ[pos]
+	];
 
 
 eps2rules = {Eps[LorentzIndex[a_,dia___], b_Momentum,
