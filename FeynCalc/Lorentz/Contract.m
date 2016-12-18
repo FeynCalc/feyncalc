@@ -72,55 +72,104 @@ Contract3[x_Plus, opts:OptionsPattern[]] :=
 Contract3[x_ /; (Head[x] =!= Times) && Head[x] =!= Plus,opts:OptionsPattern[]] :=
 	Contract[x, Contract3->False,opts];
 
-Contract3[x_Times, opts:OptionsPattern[]] :=
-	If[ !FreeQ[x, DiracGamma | Eps],
-		Contract[x, Contract3 -> False,opts],
-		If[ FreeQ[fci[x], LorentzIndex],
-			fci[x],
-			Block[ {nx = x, nonli, lipa, nec = 0, ic,epli},
-				nx = Contract[x , Expanding -> False, Contract3->False, opts];
-				If[ Head[nx] =!= Times,
-					nec = Contract[nx, Contract3->False],
-					nonli = Select[nx, FreeQ[#, LorentzIndex]&];
-					lipa  = Select[nx,!FreeQ[#, LorentzIndex]&];
-					If[ Head[lipa] =!= Times,
-						If[ Head[lipa] === Plus,
-							nec = Contract3[lipa (*epli*),opts],
-							nec = Contract[lipa (*epli*), Contract3->False,opts]
-						],
-						If[ Length[lipa] < 2,
-							nec = Contract[lipa (*epli*), Contract3->False, opts],
-							nec = lipa[[1]](*epli*);
-							For[ic = 2, ic <= Length[lipa], ic++,
-								FCPrint[2,"ic = ", ic, " out of ",Length[lipa]];
-								If[ LeafCount[nec] < LeafCount[lipa[[ic]]] ||
-									If[ True,
-										!FreeQ[lipa[[ic]], Twist2GluonOperator],
-										False
-									],
-									nec = Contract[lipa[[ic]], nec, Contract3->False,opts],
-									nec = Contract[nec, lipa[[ic]], Contract3->False,opts]
-								];
-								FCPrint[2,"expand scalar products"];
-								nec = ExpandScalarProduct[nec];
+Contract3[expr_Times, opts:OptionsPattern[]] :=
+	Block[{ex, nonli, lipa, nec = 0, ic,epli, time, res},
 
-								FCPrint[2,"expand scalar products done"];
 
-								If[ !FreeQ[nec, LorentzIndex],
-									FCPrint[2,"expanding LorentzIndex now"];
-									tim = TimeUsed[];
-									nec = Expand[nec, LorentzIndex];
-									FCPrint[2,"expanding LorentzIndex DONE ",
-											TimeUsed[] - tim];
-								];
-							];
-						];
-					];
-					nec = nec nonli;
+		If[	!OptionValue[Contract,{opts},FCI],
+			ex = FCI[expr],
+			ex = expr
+		];
+
+
+		FCPrint[1,"Contract: Contract3: Entering.", FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: Contract3: Entering with:", expr, FCDoControl->cnVerbose];
+
+		If[ !FreeQ2[ex, {DiracGamma,Eps}],
+			FCPrint[1,"Contract: Contract3: Expression contains DiracGamma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
+			Return[Contract[ex, FCI->True, Contract3 -> False,opts]]
+		];
+
+		If[ FreeQ[ex, LorentzIndex],
+			FCPrint[1,"Contract: Contract3: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
+			Return[ex]
+		];
+
+
+		FCPrint[1,"Contract: Contract3: Applying Contract without expansions.", FCDoControl->cnVerbose];
+		ex = Contract[ex, FCI->True, Expanding -> False, Contract3->False, opts];
+		FCPrint[1,"Contract: Contract3: Contract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+
+		If[ Head[ex] =!= Times,
+			FCPrint[1,"Contract: Contract3: Expression is not in the factorized form. Passing to Contract.", FCDoControl->cnVerbose];
+			Return[Contract[ex, FCI->True, Contract3->False]]
+		];
+
+
+		nonli = Select[ex, FreeQ[#, LorentzIndex]&];
+		lipa  = Select[ex,!FreeQ[#, LorentzIndex]&];
+
+		If[nonli lipa =!= ex,
+			Message[Contract::fail, "Splitting of the factorized expression in Contract3 failed."];
+			FCPrint[0,{nonli,lipa,ex}];
+			Abort[]
+		];
+
+		FCPrint[3,"Contract: Contract3: Part free of Lorentz indices:", nonli, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: Contract3: Part with Lorentz indices:", lipa, FCDoControl->cnVerbose];
+
+
+
+		If[ Head[lipa] =!= Times,
+			FCPrint[1,"Contract: Contract3: Part with Lorentz indices is not factorized!", FCDoControl->cnVerbose];
+			If[ Head[lipa] === Plus,
+				FCPrint[1,"Contract: Contract3: Part with Lorentz indices is a sum. Applying Contract3 again.", FCDoControl->cnVerbose];
+				nec = Contract3[lipa, opts],
+				FCPrint[1,"Contract: Contract3: Part with Lorentz indices is not a sum. Passing to Contract.", FCDoControl->cnVerbose];
+				nec = Contract[lipa, FCI->True, Contract3->False,opts]
+			];
+
+			res = nec nonli;
+			FCPrint[1,"Contract: Contract3: Leaving.", FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: Contract3: Leaving with:",res, FCDoControl->cnVerbose];
+			Return[res]
+		];
+
+
+		If[ Length[lipa] < 2,
+			nec = Contract[lipa, FCI->True, Contract3->False, opts],
+
+
+			(* The expression is of the form A1*A2*A3*...*An, where each factor
+				contains Lorentz indices.*)
+			nec = lipa[[1]];
+			(* nec = A1 *)
+			For[ic = 2, ic <= Length[lipa], ic++,
+				FCPrint[1,"ic = ", ic, " out of ",Length[lipa]];
+				(*Print[{lipa[[ic]],nec}];*)
+				(* if A1 is simpler than Ai, *)
+				If[ LeafCount[nec] < LeafCount[lipa[[ic]]] || !FreeQ[lipa[[ic]], Twist2GluonOperator],
+					nec = contractProduct[lipa[[ic]], nec, Contract3->False,opts],
+					nec = contractProduct[nec, lipa[[ic]], Contract3->False,opts]
 				];
-				nec
-			]
-		]
+				FCPrint[2,"expand scalar products"];
+				nec = ExpandScalarProduct[nec];
+
+				FCPrint[2,"expand scalar products done"];
+
+				If[ !FreeQ[nec, LorentzIndex],
+					FCPrint[2,"expanding LorentzIndex now"];
+					time = TimeUsed[];
+					nec = Expand[nec, LorentzIndex];
+					FCPrint[2,"expanding LorentzIndex DONE ",
+							TimeUsed[] - time];
+				];
+			];
+		];
+
+		nec = nec nonli;
+
+		nec
 	];
 
 (* #################################################################### *)
