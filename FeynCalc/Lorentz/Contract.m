@@ -282,7 +282,7 @@ Options[Contract] = {
 	EpsContract     -> True,
 	Expanding       -> True,
 	Factoring       -> False,
-	FCI				-> True,
+	FCI				-> False,
 	FCVerbose		-> False,
 	MomentumCombine -> True,
 	Rename          -> False,
@@ -293,8 +293,8 @@ Contract[l_List, opts:OptionsPattern[]] :=
 	Contract[#,opts]&/@l;
 
 (*	Main entry point	*)
-Contract[y_, z:OptionsPattern[]] :=
-	Block[{ex=fci[y],tmp,rest1=0,rest2=0,rest3=0,noDummy=0,nodot,
+Contract[expr_, z:OptionsPattern[]] :=
+	Block[{ex, tmp, rest1=0,rest2=0,rest3=0,noDummy=0,nodot,
 		null1,null2,freeIndList,freeHead,tmpFin,res,expandOpt,
 		epsContractOpt,renameOpt,schoutenOpt,times,tmpList,time,tmpCheck},
 
@@ -309,6 +309,12 @@ Contract[y_, z:OptionsPattern[]] :=
 				cnVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		If[	!OptionValue[FCI],
+			ex = FCI[expr],
+			ex = expr
+		];
+
 
 		If[expandOpt,
 			ex = Expand2[ex,LorentzIndex]
@@ -548,7 +554,11 @@ Contract[y_, z:OptionsPattern[]] :=
 		FCPrint[1, "Contract: Leaving. ", FCDoControl->cnVerbose];
 		FCPrint[1, "Contract: Leaving with :", res, FCDoControl->cnVerbose];
 		res
-	]/; Head[y]=!=List;
+	]/; Head[expr]=!=List;
+
+(* Contract[A1==An] *)
+Contract[Equal[a_, b_], opts:OptionsPattern[]] :=
+	Contract[a, FCI->True, opts] == Contract[b, FCI->True, opts];
 
 Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPattern[]] :=
 	Block[ {lc, new = 0, i},
@@ -603,10 +613,6 @@ Contract[a_, b_Plus, OptionsPattern[]] :=
 					],
 		contractLColl[fci[a], fci[b]]
 	];
-
-
-Contract[Equal[a_, b_], ops___Rule] :=
-	Contract[a,ops] == Contract[b, ops];
 
 hasDummyIndices[expr_] :=
 	(Cases[expr, LorentzIndex[ind_, ___] :> ind, Infinity,Heads->True]//Tally//Transpose//Last//Max//Greater[#, 1]&) /;
@@ -680,7 +686,7 @@ contractLColl[a_, b_ /; Head[b] =!= Plus] :=
 		contract21[a, b],
 		If[ Head[a] === Plus,
 			contractLColl[b, a],
-			Contract[a b]
+			Contract[a b, FCI->True]
 		]
 	];
 
@@ -778,7 +784,7 @@ contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]}, OptionsPattern[]] :=
 	];
 
 contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times), opts:OptionsPattern[]] :=
-	Contract[z yy, opts];
+	Contract[z yy, FCI->True, opts];
 
 contract21[xx_Plus, yy_, opts:OptionsPattern[]] :=
 	contract22[xx, yy /. Pair -> pairsave, opts] /.
@@ -802,7 +808,7 @@ contract22[xx_, yy_Times, opts:OptionsPattern[]] :=
 	( (yy/#) contra4[xx, list2[#], opts] )&[Select[yy, !FreeQ[#, LorentzIndex]&]];
 
 contract21[xx_ /;(Head[xx] =!= Plus) && (Head[xx] =!= Times), yy_, opts:OptionsPattern[]] :=
-	Contract[xx yy,Expanding -> False, opts];
+	Contract[xx yy, FCI->True, Expanding -> False, opts];
 
 contract21[xxx_Times, yyy_, opts:OptionsPattern[]] :=
 	( (xxx/#) contit[#, yyy, opts] )&[Select[xxx, !FreeQ[#, LorentzIndex]&] ];
@@ -810,11 +816,11 @@ contract21[xxx_Times, yyy_, opts:OptionsPattern[]] :=
 
 contit[xx_ , yy_, opts:OptionsPattern[]] :=
 	If[ FreeQ[xx, LorentzIndex],
-		xx Contract[yy,opts],
+		xx Contract[yy, FCI->True, opts],
 		If[ Head[xx] =!= Times,
-			Contract[xx yy,opts],
+			Contract[xx yy, FCI->True, opts],
 			If[ Length[xx] =!= 2,
-				Contract[xx yy,opts],
+				Contract[xx yy, FCI->True, opts],
 				If[ (Head[xx[[1]]] === Plus) && (Head[xx[[2]]] === Plus),
 					iCcount = 1;
 					FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
@@ -823,7 +829,7 @@ contit[xx_ , yy_, opts:OptionsPattern[]] :=
 					Apply[ Plus, Flatten[Table[ (xx[[1, ii]] xx[[2, jj]] yy) /.
 						Pair -> pairsave /. pair2  -> Pair, {ii,1,Length[xx[[1]]]},
 						{jj,1,Length[xx[[2]]]}]]],
-					Contract[xx yy,opts]
+					Contract[xx yy, FCI->True, opts]
 				]
 			]
 		]
@@ -837,10 +843,10 @@ contractli[x_] :=
 	MemSet[contractli[x],x] /; FreeQ[x//Hold,LorentzIndex];
 
 contractli[x_] :=
-	Contract[ x, Expanding->True, Factoring->False, EpsContract->False];
+	Contract[x, FCI->True, Expanding->True, Factoring->False, EpsContract->False];
 
 conall[ x_ ] :=
-	Contract[ x, Expanding->True, EpsContract->True, Factoring->False];
+	Contract[x, FCI->True, Expanding->True, EpsContract->True, Factoring->False];
 
 epsCleverCon[expr_]:=
 	expr //. Power[Eps[a__],n_] :> epsHold[epscon[a]^n] //.
