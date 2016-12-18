@@ -54,12 +54,6 @@ Begin["`Contract`Private`"]
 
 cnVerbose::usage="";
 
-fci[x_] :=
-	If[ (FeynCalcInternal /. Options[Contract]) === True,
-		FeynCalcInternal[x],
-		x
-	];
-
 FCFastContract[x_,OptionsPattern[]]:=
 	x /. Pair -> PairContract /. PairContract -> Pair;
 
@@ -560,7 +554,8 @@ Contract[expr_, z:OptionsPattern[]] :=
 Contract[Equal[a_, b_], opts:OptionsPattern[]] :=
 	Contract[a, FCI->True, opts] == Contract[b, FCI->True, opts];
 
-Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPattern[]] :=
+(* Contract[A1,A2,A3] *)
+contractProduct[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPattern[]] :=
 	Block[ {lc, new = 0, i},
 
 		If [OptionValue[FCVerbose]===False,
@@ -572,19 +567,20 @@ Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPattern[]
 
 		FCPrint[2, "Contract: Before calling another Contract ", FCDoControl->cnVerbose];
 
-		lc = Contract[b, c, ops];
+		lc = contractProduct[b, c, ops];
 		FCPrint[2, "Contract: Before calling another Contract ", FCDoControl->cnVerbose];
-		new = Contract[lc, a, ops];
+		new = contractProduct[lc, a, ops];
 
 		FCPrint[2, "Contract: Leaving ", FCDoControl->cnVerbose];
 		new
 	];
 
-Contract[x_, y_ /; Head[y]=!=Rule, c:OptionsPattern[]] :=
-	(Contract[fci[x], c] y) /; FreeQ2[fci[y], {LorentzIndex,Eps}];
+contractProduct[x_, y_ /; Head[y]=!=Rule, opts:OptionsPattern[]] :=
+	(y Contract[x, FCI->True, opts]) /; FreeQ2[y, {LorentzIndex,Eps}];
 
-Contract[x_, y_Times, opts:OptionsPattern[]] :=
-	Block[ {a = fci[x], b = fci[y], bb},
+(* Contract[A1,A2*...*An] *)
+contractProduct[a_, b_Times, opts:OptionsPattern[]] :=
+	Block[ {bb},
 		If[ MatchQ[b, Apply[HoldPattern, {Times__Pair}]],
 			contract21[ a, b ,opts],
 			If[ MatchQ[b, HoldPattern[Times__Pair]],
@@ -599,19 +595,19 @@ Contract[x_, y_Times, opts:OptionsPattern[]] :=
 	];
 
 
+contractProduct[a_, b: Except[_Times | _Plus | _Rule], opts:OptionsPattern[]] :=
+	Contract[a b, FCI->True, opts];
 
-Contract[a_, b_ /; ((Head[b]=!=Times) && (Head[b] =!= Plus) && (Head[b] =!= Rule)), c:OptionsPattern[]] :=
-	Contract[ a b, c ];
-
-Contract[a_, b_Plus, OptionsPattern[]] :=
-	If[ OptionValue[Collecting] === True,
-		contractLColl[fci[a],
+(* Contract[A1,A2+...+An] *)
+contractProduct[a_, b_Plus, OptionsPattern[]] :=
+	If[ OptionValue[Collecting],
+		contractLColl[a,
 			If[ FreeQ[List@@b, Plus],
-				fci[b],
-				Collect2[fci[b], LorentzIndex]
+				b,
+				Collect2[b, LorentzIndex]
 			]
-					],
-		contractLColl[fci[a], fci[b]]
+		],
+		contractLColl[a, b]
 	];
 
 hasDummyIndices[expr_] :=
@@ -632,6 +628,7 @@ contracT[x_,opts:OptionsPattern[]] :=
 
 			FCPrint[1, "Contract: contracT: Entering", FCDoControl->cnVerbose];
 			FCPrint[3, "Contract: contracT: Entering with ",x, FCDoControl->cnVerbose];
+
 
 			(* NEW: September 16th 2003: adding Contract3 directly here ... *)
 			If[ contract3 && contractexpandopt,
@@ -671,7 +668,7 @@ contracT[x_,opts:OptionsPattern[]] :=
 				contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
 				contractres = contractres /.
 								{((yy_Plus)  /;!FreeQ[yy, LorentzIndex])^2 :>
-								((Contract @@ {yy/.PairContract->Pair, yy/.PairContract->Pair,opts}
+								((contractProduct @@ {yy/.PairContract->Pair, yy/.PairContract->Pair,opts}
 								) /. Pair -> PairContract /. PairContract -> Pair)
 								};
 			];
