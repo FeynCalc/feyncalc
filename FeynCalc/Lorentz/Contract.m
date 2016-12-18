@@ -554,15 +554,10 @@ Contract[Equal[a_, b_], opts:OptionsPattern[]] :=
 	Contract[a, FCI->True, opts] == Contract[b, FCI->True, opts];
 
 (* Contract[A1,A2,A3] *)
-contractProduct[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPattern[]] :=
-	Block[ {lc, new = 0, i},
-
-		If [OptionValue[FCVerbose]===False,
-			cnVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				cnVerbose=OptionValue[FCVerbose]
-			];
-		];
+contractProduct[a_, b: Except[_Rule], c: Except[_Rule], ops:OptionsPattern[]] :=
+	contractProduct[contractProduct[b, c, ops], a, ops];
+(*
+	Block[ {lc, new = 0},
 
 		FCPrint[2, "Contract: Before calling another Contract ", FCDoControl->cnVerbose];
 
@@ -572,7 +567,7 @@ contractProduct[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPa
 
 		FCPrint[2, "Contract: Leaving ", FCDoControl->cnVerbose];
 		new
-	];
+	];*)
 
 contractProduct[x_, y_ /; Head[y]=!=Rule, opts:OptionsPattern[]] :=
 	(y Contract[x, FCI->True, opts]) /; FreeQ2[y, {LorentzIndex,Eps}];
@@ -695,7 +690,7 @@ contractLongLong[a_, b_ /; Head[b] =!= Plus] :=
 
 (*	b must be collected w.r.t LorentzIndex,
 	covers X*(A1+...+An)	*)
-contractLColl[lon_, shor_Plus] :=
+contractLongLong[lon_, shor_Plus] :=
 	Block[ {neew = {}, long = lon, short = shor, tet, ij},
 		FCPrint[1,"Long contraction ", Length[long], " * ", Length[short], " \n ",UseWriteString->True];
 		For[ij = 1, ij <= Length[short], ij++,
@@ -788,19 +783,21 @@ contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]}, OptionsPattern[]] :=
 		nxx
 	];
 (* If y is a single object that is not a Pair (e.g. Dot) *)
+contractLongShort[x_, y: Except[_Times | _Pair], opts:OptionsPattern[]] :=
+	Contract[x y, FCI->True, opts];
 
 (* If x is a single object that is not a Pair (e.g. Dot) *)
 contractLongShort[x: Except[_Times | _Pair], y_, opts:OptionsPattern[]] :=
-contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times), opts:OptionsPattern[]] :=
-	Contract[z yy, FCI->True, opts];
+	Contract[x y, FCI->True, Expanding -> False, opts];
 
 (* If x is a product *)
-contract21[xx_Plus, yy_, opts:OptionsPattern[]] :=
-	contract22[xx, yy /. Pair -> pairsave, opts] /.
-	contra4 -> contra3a /.  contra3a -> contra3b /.
-	Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
+contractLongShort[x_Times, y_, opts:OptionsPattern[]] :=
+	( (x/#) contit[#, y, opts] )&[Select[x, !FreeQ[#, LorentzIndex]&] ];
 
 (* If x is a sum *)
+contractLongShort[x_Plus, y_, opts:OptionsPattern[]] :=
+	contract22[x, y /. Pair -> pairsave, opts] /.
+	contra4 -> contra3a /.  contra3a -> contra3b /. Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
 
 list2[x_] :=
 	If[ Head[x] === Times,
@@ -817,12 +814,6 @@ contract22[xx_, yy_Pair, opts:OptionsPattern[]] :=
 
 contract22[xx_, yy_Times, opts:OptionsPattern[]] :=
 	( (yy/#) contra4[xx, list2[#], opts] )&[Select[yy, !FreeQ[#, LorentzIndex]&]];
-
-contract21[xx_ /;(Head[xx] =!= Plus) && (Head[xx] =!= Times), yy_, opts:OptionsPattern[]] :=
-	Contract[xx yy, FCI->True, Expanding -> False, opts];
-
-contract21[xxx_Times, yyy_, opts:OptionsPattern[]] :=
-	( (xxx/#) contit[#, yyy, opts] )&[Select[xxx, !FreeQ[#, LorentzIndex]&] ];
 
 
 contit[xx_ , yy_, opts:OptionsPattern[]] :=
