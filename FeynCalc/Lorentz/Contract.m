@@ -30,9 +30,6 @@ Contract is applied to the amplitude immediately after replacing \
 polarization vectors by the corresponding sum. This usually improves \
 performance.";
 
-Contract2::usage =
-"Contract2[expr] (still experimental).";
-
 Contract3::usage =
 "Contract3[expr] (still experimental).";
 
@@ -49,6 +46,7 @@ are renamed, using $MU[i].";
 
 Begin["`Package`"]
 FCFastContract;
+contract2;
 End[]
 
 
@@ -174,16 +172,16 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 
 (* #################################################################### *)
 
-Options[Contract2] = {
+Options[contract2] = {
 	Collecting -> False
 };
 
 (* bb is assumed to be collected w.r.t. to LorentzIndex !!! *)
-Contract2[a_, bb_, ops___Rule] :=
+contract2[a_, bb_, ops___Rule] :=
 	Block[ {sel, ct, rc, lco, lct, lastct, nop, b = bb, col, conT},
-		col = Collecting /. {ops} /. Options[Contract2];
+		col = Collecting /. {ops} /. Options[contract2];
 		If[ Head[a] =!= Times,
-			rc = Contract[a, b],
+			rc = contractProduct[a, b],
 			lco[x_,y_] :=
 				If[ Length[x]>Length[y],
 					True,
@@ -194,7 +192,7 @@ Contract2[a_, bb_, ops___Rule] :=
 			nop = Select[ct, FreeQ[#, Plus]&];
 			ct = ct/nop;
 			If[ Head[ct] =!= Times,
-				rc = sel Contract[ct nop, b],
+				rc = sel contractProduct[ct nop, b],
 				ct = Sort[List @@ ct, lco];
 				If[ nop =!= 1,
 					lastct = contract21[b, nop, ops],
@@ -205,7 +203,7 @@ Contract2[a_, bb_, ops___Rule] :=
 					rc = sel contractLColl[ct[[1]], lastct]
 				];
 				If[ lct > 1,
-					rc = sel Contract[Times @@ Take[ct, lct-1],
+					rc = sel contractProduct[Times @@ Take[ct, lct-1],
 									ct[[lct]], lastct ]
 				];
 			];
@@ -215,13 +213,13 @@ Contract2[a_, bb_, ops___Rule] :=
 			rc = Contract[rc, Expanding -> False];
 		];
 		If[ !FreeQ[rc, LorentzIndex],
-			FCPrint[1,"contracting agagin at the end of Contract2 "];
+			FCPrint[1,"contracting agagin at the end of contract2."];
 			rc = Contract[rc]
 		];
 		rc
 	];
 
-Contract2[a_] :=
+contract2[a_] :=
 	Block[ {sel, ct, rc, lco, lct, lastct, nop},
 		If[ Head[a] =!= Times,
 			rc = Contract[a],
@@ -246,14 +244,14 @@ Contract2[a_] :=
 					rc = sel contractLColl[ct[[1]], lastct]
 				];
 				If[ lct > 2,
-					rc = sel Contract[Times @@ Take[ct, lct-2],
+					rc = sel contractProduct[Times @@ Take[ct, lct-2],
 									ct[[lct-1]], lastct ]
 				];
 			];
 		];
 		FCPrint[2,"lct = ",lct];
 		If[ !FreeQ[rc, LorentzIndex],
-			FCPrint[1,"contracting agagin at the end of Contract2 "];
+			FCPrint[1,"contracting agagin at the end of contract2 "];
 			rc = Contract[rc]
 		];
 		rc

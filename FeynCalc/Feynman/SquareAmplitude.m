@@ -820,7 +820,7 @@ nuLL1 = Unique[cCU]; nuLL2 = Unique[cCU];
 		contractP[a_,b_] :=
 			Block[ {tem, tem1, tem2},
 				FCPrint[2,"entering contractP"];
-				tem = Contract2[a, b, Collecting -> False];
+				tem = FeynCalc`Package`contract2[a, b, Collecting -> False];
 				FCPrint[2,"exiting contractP"];
 				tem
 			];
