@@ -189,12 +189,12 @@ contract2[a_, bb_, ops___Rule] :=
 				rc = sel contractProduct[ct nop, b],
 				ct = Sort[List @@ ct, lco];
 				If[ nop =!= 1,
-					lastct = contract21[b, nop, ops],
+					lastct = contractLongShort[b, nop, ops],
 					lastct = b nop
 				];
 				lct = Length[ct];
 				If[ lct === 1,
-					rc = sel contractLColl[ct[[1]], lastct]
+					rc = sel contractLongLong[ct[[1]], lastct]
 				];
 				If[ lct > 1,
 					rc = sel contractProduct[Times @@ Take[ct, lct-1],
@@ -230,16 +230,15 @@ contract2[a_] :=
 				rc = sel Contract[ct nop],
 				ct = Sort[List @@ ct, lco];
 				If[ nop =!= 1,
-					lastct = contract21[Last[ct], nop],
+					lastct = contractLongShort[Last[ct], nop],
 					lastct = Last[ct] nop;
 				];
 				lct = Length[ct];
 				If[ lct === 2,
-					rc = sel contractLColl[ct[[1]], lastct]
+					rc = sel contractLongLong[ct[[1]], lastct]
 				];
 				If[ lct > 2,
-					rc = sel contractProduct[Times @@ Take[ct, lct-2],
-									ct[[lct-1]], lastct ]
+					rc = sel contractProduct[Times @@ Take[ct, lct-2], ct[[lct-1]], lastct]
 				];
 			];
 		];
@@ -585,13 +584,13 @@ contractLongLong is for contacting products of sums!
 contractProduct[a_, b_Times, opts:OptionsPattern[]] :=
 	Block[ {bb},
 		If[ MatchQ[b, Apply[HoldPattern, {Times__Pair}]],
-			contract21[ a, b ,opts],
+			contractLongShort[ a, b ,opts],
 			If[ MatchQ[b, HoldPattern[Times__Pair]],
-				contract21[ a, b ,opts],
+				contractLongShort[ a, b ,opts],
 				bb = Collect3[b, Pair, Factoring-> False];
 				If[ Head[bb] === Plus,
-					contractLColl[a, bb],
-					contract21[a, bb, opts]
+					contractLongLong[a, bb],
+					contractLongShort[a, bb, opts]
 				]
 			]
 		]
@@ -604,13 +603,13 @@ contractProduct[a_, b: Except[_Times | _Plus | _Rule], opts:OptionsPattern[]] :=
 (* Contract[X,A1+...+An] *)
 contractProduct[a_, b_Plus, OptionsPattern[]] :=
 	If[ OptionValue[Collecting],
-		contractLColl[a,
+		contractLongLong[a,
 			If[ FreeQ[List@@b, Plus],
 				b,
 				Collect2[b, LorentzIndex]
 			]
 		],
-		contractLColl[a, b]
+		contractLongLong[a, b]
 	];
 
 hasDummyIndices[expr_] :=
@@ -685,11 +684,11 @@ mainContract[x_,opts:OptionsPattern[]] :=
 	covers cases for
 	X*Pair[...] and X*Y, where X can be a sum or not and
 	Y is not a sum *)
-contractLColl[a_, b_ /; Head[b] =!= Plus] :=
+contractLongLong[a_, b_ /; Head[b] =!= Plus] :=
 	If[ Head[b] === Pair,
-		contract21[a, b],
+		contractLongShort[a, b],
 		If[ Head[a] === Plus,
-			contractLColl[b, a],
+			contractLongLong[b, a],
 			Contract[a b, FCI->True]
 		]
 	];
@@ -701,8 +700,8 @@ contractLColl[lon_, shor_Plus] :=
 		FCPrint[1,"Long contraction ", Length[long], " * ", Length[short], " \n ",UseWriteString->True];
 		For[ij = 1, ij <= Length[short], ij++,
 			FCPrint[3,"stdout"," | ", ij, "  XXX | ",UseWriteString->True];      ;
-			tet = contract21[long, short[[ij]] ];
 			FCPrint[1, "before contractLongShort "];
+			tet = contractLongShort[long, short[[ij]] ];
 			FCPrint[1, "after contractLongShort "];
 			If[ !FreeQ[tet, LorentzIndex],
 				tet = tet /. Pair->pairsave /. pair2 -> Pair
