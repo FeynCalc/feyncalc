@@ -101,7 +101,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 		nonli = Select[ex, FreeQ[#, LorentzIndex]&];
 		lipa  = Select[ex,!FreeQ[#, LorentzIndex]&];
 
-		If[nonli lipa =!= ex,
+		If[	Factor[nonli lipa - ex]=!=0,
 			Message[Contract::fail, "Splitting of the factorized expression in Contract3 failed."];
 			FCPrint[0,{nonli,lipa,ex}];
 			Abort[]
@@ -308,10 +308,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 			ex = expr
 		];
 
-
-		If[expandOpt,
-			ex = Expand2[ex,LorentzIndex]
-		];
+		(* At first we try to achieve maximal simplification without doing expansions *)
 
 		FCPrint[1, "Contract: Entering main contract", FCDoControl->cnVerbose];
 		FCPrint[3, "Contract: Entering with", ex, FCDoControl->cnVerbose];
@@ -332,6 +329,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 
 		If[!FreeQ[tmp,PairContract],
 			FCPrint[1,"Contract: Replacing PairContract with Contract.", FCDoControl->cnVerbose];
+			rest1 = rest1 /. PairContract -> Pair;
 			tmp = tmp /. PairContract -> Pair;
 		];
 
@@ -423,8 +421,24 @@ Contract[expr_, z:OptionsPattern[]] :=
 		FCPrint[3, "Contract: After MometumCombine: ", tmp, FCDoControl->cnVerbose];
 
 		time=AbsoluteTime[];
+
+		(*
+			Now we should choose the best strategy to evaluate the expression in tmp.
+			Essentially, it can be a sum, a product or a standalone term. If it is a sum
+			we evaluate it term by term. The evaluation function is also applicable to
+			products or standalone terms.
+		*)
+
 		FCPrint[1,"Contract: Applying mainContract.", FCDoControl->cnVerbose];
-		tmpFin = mainContract[tmp,z];
+		Which[ 	Head[tmp]===Plus,
+				tmpFin = mainContract[#,z]&/@tmp,
+
+				Head[tmp]===Times,
+				tmpFin = mainContract[tmp,z],
+
+				True,
+				tmpFin = mainContract[tmp,z]
+		];
 		FCPrint[1,"Contract: mainContract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
 
@@ -556,18 +570,6 @@ Contract[Equal[a_, b_], opts:OptionsPattern[]] :=
 (* Contract[A1,A2,A3] *)
 contractProduct[a_, b: Except[_Rule], c: Except[_Rule], ops:OptionsPattern[]] :=
 	contractProduct[contractProduct[b, c, ops], a, ops];
-(*
-	Block[ {lc, new = 0},
-
-		FCPrint[2, "Contract: Before calling another Contract ", FCDoControl->cnVerbose];
-
-		lc = contractProduct[b, c, ops];
-		FCPrint[2, "Contract: Before calling another Contract ", FCDoControl->cnVerbose];
-		new = contractProduct[lc, a, ops];
-
-		FCPrint[2, "Contract: Leaving ", FCDoControl->cnVerbose];
-		new
-	];*)
 
 contractProduct[x_, y_ /; Head[y]=!=Rule, opts:OptionsPattern[]] :=
 	(y Contract[x, FCI->True, opts]) /; FreeQ2[y, {LorentzIndex,Eps}];
@@ -614,7 +616,7 @@ hasDummyIndices[expr_] :=
 hasDummyIndices[expr_] := False/;
 	FreeQ[{expr},LorentzIndex];
 
-mainContract[x_,opts:OptionsPattern[]] :=
+mainContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 		Block[ { contractres = x,
 				contractexpandopt, es, time,
 				contract3, schout, contractfactoring },
@@ -628,7 +630,7 @@ mainContract[x_,opts:OptionsPattern[]] :=
 
 
 			(* NEW: September 16th 2003: adding Contract3 directly here ... *)
-			If[ contract3 && contractexpandopt,
+			If[ contract3,
 				If[ MemberQ[{Plus, Times}, Head[contractres]],
 					time=AbsoluteTime[];
 					FCPrint[1, "Contract: mainContract: Applying Contract3.", FCDoControl->cnVerbose];
