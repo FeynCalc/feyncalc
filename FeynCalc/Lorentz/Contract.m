@@ -123,7 +123,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 
 			res = nec nonli;
 			FCPrint[1,"Contract: Contract3: Leaving.", FCDoControl->cnVerbose];
-			FCPrint[1,"Contract: Contract3: Leaving with:",res, FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: Contract3: Leaving with:",res, FCDoControl->cnVerbose];
 			Return[res]
 		];
 
@@ -416,7 +416,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 		If[ OptionValue[MomentumCombine] && LeafCount[tmp] < 1000,
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying MometumCombine.", FCDoControl->cnVerbose];
-			tmp =  MomentumCombine[tmp];
+			tmp =  MomentumCombine[tmp, FCI->True];
 			FCPrint[1,"Contract: MometumCombine done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
@@ -545,7 +545,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "Contract: Leaving. ", FCDoControl->cnVerbose];
-		FCPrint[1, "Contract: Leaving with :", res, FCDoControl->cnVerbose];
+		FCPrint[3, "Contract: Leaving with :", res, FCDoControl->cnVerbose];
 		res
 	]/; Head[expr]=!=List;
 
@@ -596,8 +596,8 @@ contractProduct[a_, b: Except[_Times | _Plus | _Rule], opts:OptionsPattern[]] :=
 	Contract[a b, FCI->True, opts];
 
 (* Contract[X,A1+...+An] *)
-contractProduct[a_, b_Plus, OptionsPattern[]] :=
-	If[ OptionValue[Collecting],
+contractProduct[a_, b_Plus, opts:OptionsPattern[]] :=
+	If[ OptionValue[Contract,{opts},Collecting],
 		contractLongLong[a,
 			If[ FreeQ[List@@b, Plus],
 				b,
@@ -632,7 +632,7 @@ mainContract[x_,opts:OptionsPattern[]] :=
 				If[ MemberQ[{Plus, Times}, Head[contractres]],
 					time=AbsoluteTime[];
 					FCPrint[1, "Contract: mainContract: Applying Contract3.", FCDoControl->cnVerbose];
-					contractres = Contract3[contractres,opts];
+					contractres = Contract3[contractres,FCI->True,opts];
 					FCPrint[1,"Contract: mainContract: Contract3 done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 					FCPrint[3,"Contract: mainContract: After Contract3: ", contractres , FCDoControl->cnVerbose]
 				]
@@ -720,6 +720,7 @@ contractLongLong[lon_, shor_Plus] :=
 		neew
 	];
 
+
 (* local easy contraction rules *) (* paird *)
 fdi[] = 4;
 fdi[_Symbol] :=
@@ -782,12 +783,13 @@ contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]}, OptionsPattern[]] :=
 		];
 		nxx
 	];
+
 (* If y is a single object that is not a Pair (e.g. Dot) *)
 contractLongShort[x_, y: Except[_Times | _Pair], opts:OptionsPattern[]] :=
 	Contract[x y, FCI->True, opts];
 
 (* If x is a single object that is not a Pair (e.g. Dot) *)
-contractLongShort[x: Except[_Times | _Pair], y_, opts:OptionsPattern[]] :=
+contractLongShort[x: Except[_Times | _Plus], y_, opts:OptionsPattern[]] :=
 	Contract[x y, FCI->True, Expanding -> False, opts];
 
 (* If x is a product *)
