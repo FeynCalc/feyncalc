@@ -123,7 +123,7 @@ toPaVe[x_,_,_,_]:=
 (* The conventions are according to Appendix A of arXiv:1604.06792 *)
 
 toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] + _ : 0, _] ...],q_,paveao_,pavear_]:=
-	Block[{tmp,res},
+	Block[{tmp,res,pair},
 		If[ {re} === {},
 			tmp = {{},{}},
 			tmp = Transpose[Cases[{re}, PD[Momentum[q, dim] + x_: 0, m_: 0] :> {x, m}]];
@@ -132,8 +132,8 @@ toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] 
 			Message[ToPaVe::failmsg, "toPave: Wrong number of the kinematic invariants!"];
 			Abort[]
 		];
-		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[momentumRoutingDenner[tmp[[1]],Pair[#,#]&]], Power[#, 2] & /@ Join[{m1},tmp[[2]]],
-			PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
+		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
+			Power[#, 2] & /@ Join[{m1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
 		res
 	]/;!genpave;
 

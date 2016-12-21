@@ -70,5 +70,9 @@ SPD[p1, p1] - 2*SPD[p1, p4] + SPD[p4, p4], SPD[p2, p2] - 2*SPD[p2, p5] +
 	SPD[p5, p5], SPD[p3, p3] - 2*SPD[p3, p6] + SPD[p6, p6], SPD[p4, p4],
 SPD[p1, p1] - 2*SPD[p1, p5] + SPD[p5, p5], SPD[p2, p2] - 2*SPD[p2, p6] +
 	SPD[p6, p6]}, {m1^2, m2^2, m3^2, m4^2, m5^2, m6^2, m7^2}, PaVeAutoOrder -> True,
-PaVeAutoReduce -> True]"}
+PaVeAutoReduce -> True]"},
+{"fcstToPaVe-ID20","FCClearScalarProducts[];\n SPD[p, p] = ma^2; \n ToPaVe[FAD[q, q + p], q]",
+"I Pi^2 B0[ma^2, 0, 0]"},
+{"fcstToPaVe-ID21","FCClearScalarProducts[];\n SPD[p, p] = mb^2; \n ToPaVe[FAD[q, q + p], q]",
+"I Pi^2 B0[mb^2, 0, 0]"}
 };
