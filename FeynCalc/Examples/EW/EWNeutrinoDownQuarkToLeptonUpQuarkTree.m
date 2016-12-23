@@ -3,15 +3,15 @@
 (* :Title: EWNeutrinoDownQuarkToLeptonUpQuarkTree                                                 *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the scattering cross section for a neutrino and
-			   a down-type quark going to the corresponding lepton and up-type q
-			   uark in Electroweak theory at tree level.                              *)
+			a down-type quark going to the corresponding lepton and up-type q
+			uark in Electroweak theory at tree level.                              *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -51,7 +51,7 @@ InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 
 
 topQuarkNuScattering = CreateTopologies[0, 2 -> 2];
-diagsQuarkNuScatteringTree = InsertFields[topQuarkNuScattering, 
+diagsQuarkNuScatteringTree = InsertFields[topQuarkNuScattering,
 {F[4,{1,1}],F[1,{2}]} -> {F[3,{1,1}],F[2,{2}]}, InsertionLevel -> {Classes},
 Model -> "UnitarySM",GenericModel->"UnitaryLorentz"];
 Paint[diagsQuarkNuScatteringTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
@@ -83,7 +83,7 @@ SetMandelstam[s,t,u,pd,pn,-pu,-pl,SMP["m_d"],0,SMP["m_u"],SMP["m_l"]];
 (*There is no polarization averaging for neutrinos here, as right handed neutrinos do not interact*)
 
 
-sqAmpQuarkNuScatteringTree=ampQuarkNuScatteringTree FCRenameDummyIndices[ComplexConjugate[ampQuarkNuScatteringTree]]//
+sqAmpQuarkNuScatteringTree=ampQuarkNuScatteringTree ComplexConjugate[ampQuarkNuScatteringTree]//
 FermionSpinSum[#,ExtraFactor->1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//Factor2
 
 
@@ -102,7 +102,7 @@ sqAmpQuarkNuScatteringTree2=(FCE[sqAmpQuarkNuScatteringTree]/.{pl-pn->0})//Propa
 (*The total cross-section *)
 
 
-prefac=4Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_l"]^2-SMP["m_u"]^2)^2-4 SMP["m_l"]^2 SMP["m_u"]^2]/Sqrt[(s-SMP["m_d"]^2)^2]  
+prefac=4Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_l"]^2-SMP["m_u"]^2)^2-4 SMP["m_l"]^2 SMP["m_u"]^2]/Sqrt[(s-SMP["m_d"]^2)^2]
 
 
 crossSectionTotal=sqAmpQuarkNuScatteringTree2*prefac//PowerExpand

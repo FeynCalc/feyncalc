@@ -54,7 +54,7 @@ DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,Tran
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], SMP["m_u"], 0, 0];
 sqAmpQiQBariToGG =(1/3^2)(ampQiQBariToGG*
-		(ComplexConjugate[ampQiQBariToGG]//FCRenameDummyIndices))//PropagatorDenominatorExplicit//
+		(ComplexConjugate[ampQiQBariToGG]))//PropagatorDenominatorExplicit//
 		SUNSimplify[#,Explicit->True,SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		Contract//ReplaceAll[#,{DiracTrace->Tr,SUNN->3}]&//DoPolarizationSums[#,k1,k2]&//
 		DoPolarizationSums[#,k2,k1]&//Simplify

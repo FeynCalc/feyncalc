@@ -57,7 +57,7 @@ ampGGToGG1=ampGGToGG//PropagatorDenominatorExplicit//ReplaceAll[#,
 		k4-k1]]&//ExpandScalarProduct//ReplaceAll[#,Momentum[k3]->Momentum[k1+k2-
 		k4]]&//ExpandScalarProduct//ExpandScalarProduct//ReplaceAll[#,Momentum[k4]->Momentum[k1+k2-
 		k3]]&//ExpandScalarProduct//Simplify;
-ampGGToGGCC1=ampGGToGG1//ComplexConjugate//FCRenameDummyIndices;
+ampGGToGGCC1=ampGGToGG1//ComplexConjugate;
 
 
 (* ::Section:: *)

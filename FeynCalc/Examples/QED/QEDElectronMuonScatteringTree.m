@@ -55,7 +55,7 @@ ChangeDimension->4,List->False,SMP->True]
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_mu"], SMP["m_e"], SMP["m_mu"]];
-sqAmpElMuScat = (ampElMuScat (ComplexConjugate[ampElMuScat]//FCRenameDummyIndices))//
+sqAmpElMuScat = (ampElMuScat (ComplexConjugate[ampElMuScat]))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 

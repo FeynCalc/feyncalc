@@ -19,5 +19,8 @@ Tests`Feynman`fcstComplexConjugate = {
 {"fcstComplexConjugate-ID2","ComplexConjugate[SUNTF[a,b,c]]",
 	"SUNTF[{SUNIndex[a]}, SUNFIndex[c], SUNFIndex[b]]"},
 {"fcstComplexConjugate-ID3","ComplexConjugate[SUNTF[{a1,a2,a3},b,c]]",
-	"SUNTF[{SUNIndex[a3], SUNIndex[a2], SUNIndex[a1]}, SUNFIndex[c], SUNFIndex[b]]"}
+	"SUNTF[{SUNIndex[a3], SUNIndex[a2], SUNIndex[a1]}, SUNFIndex[c], SUNFIndex[b]]"},
+{"fcstComplexConjugate-ID4","MatchQ[ComplexConjugate[GA[a].GA[5].GA[a]],
+-DiracGamma[LorentzIndex[x_]].DiracGamma[5].DiracGamma[LorentzIndex[x_]] /; x =!= a]",
+	"True"}
 };

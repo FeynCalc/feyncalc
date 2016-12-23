@@ -54,8 +54,8 @@ IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,Cha
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], 0, 0];
-sqAmpPairAnnihilation = (ampPairAnnihilation (ComplexConjugate[ampPairAnnihilation]//
-		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,
+sqAmpPairAnnihilation = (ampPairAnnihilation (ComplexConjugate[ampPairAnnihilation]))//
+PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,
 		0]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace -> Tr] & // Contract//Simplify//TrickMandelstam[#,
 		{s,t,u,2SMP["m_e"]^2}]&//Simplify

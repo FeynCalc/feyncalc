@@ -53,8 +53,8 @@ DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,SMP-
 
 
 SetMandelstam[s, t, u, p1, p2, -p3, -p4, SMP["m_u"], SMP["m_u"], SMP["m_c"], SMP["m_c"]];
-sqAmpQiQBariToQjQBarj =(1/3^2)*(ampQiQBariToQjQBarj (ComplexConjugate[ampQiQBariToQjQBarj]//
-		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
+sqAmpQiQBariToQjQBarj =(1/3^2)*(ampQiQBariToQjQBarj (ComplexConjugate[ampQiQBariToQjQBarj]))//
+PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#,{DiracTrace->Tr,SUNN->3}]&//Contract//Simplify//SUNSimplify[#,Explicit->True,
 		SUNNToCACF->False]&//ReplaceAll[#,{SUNN->3}]&
 

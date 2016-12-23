@@ -79,6 +79,7 @@ sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
 (* for large expressions it is better to not use DotSimplify *)
 Options[ComplexConjugate] = {
 	FCI -> False,
+	FCRenameDummyIndices -> True,
 	DotSimplify -> True
 };
 
@@ -95,6 +96,10 @@ ComplexConjugate[expr_, opts:OptionsPattern[]]:=
 
 		res = compcon[ex/.SUNTrace->suntrac, opts]/. SUNDelta -> SUNDeltaContract /. compcon -> compcon2 /.
 		compcon2 -> ComplexConjugate /. suntrac-> SUNTrace;
+
+		If[	OptionValue[FCRenameDummyIndices],
+			res = FCRenameDummyIndices[res]
+		];
 
 		res
 	];
@@ -160,6 +165,7 @@ compcon[x:Except[_Plus | _Times], opts:OptionsPattern[]] :=
 		If[ dotsim,
 			nx = DotSimplify[nx, Expanding -> False]
 		];
+
 		nx
 	]/; FreeQ[x, HoldForm];
 

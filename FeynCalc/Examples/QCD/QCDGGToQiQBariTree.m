@@ -55,8 +55,8 @@ DropSumOver->True,ChangeDimension->4,SMP->True]
 
 
 SetMandelstam[s, t, u, k1, k2, -p1, -p2, 0, 0, SMP["m_u"], SMP["m_u"]];
-sqAmpGGToQiQBari =(1/8^2)(Total[ampGGToQiQBari] Total[(ComplexConjugate[ampGGToQiQBari]//
-		FCRenameDummyIndices)])//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
+sqAmpGGToQiQBari =(1/8^2)(Total[ampGGToQiQBari] Total[(ComplexConjugate[ampGGToQiQBari])])//
+PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 		SUNNToCACF->False]&//FermionSpinSum//Contract//ReplaceAll[#,{DiracTrace->Tr,
 		SUNN->3}]&//DoPolarizationSums[#,k1,k2,ExtraFactor->1/2]&//DoPolarizationSums[#,k2,
 		k1,ExtraFactor->1/2]&//Simplify

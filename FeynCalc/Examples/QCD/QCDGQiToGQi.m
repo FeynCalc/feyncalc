@@ -54,8 +54,8 @@ DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,Tran
 
 
 SetMandelstam[s, t, u, p1, k1, -p2, -k2, SMP["m_u"], 0, SMP["m_u"], 0];
-sqAmpGQiToQGi =(1/(3*8))(ampGQiToQGi (ComplexConjugate[ampGQiToQGi]//
-		FCRenameDummyIndices))//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
+sqAmpGQiToQGi =(1/(3*8))(ampGQiToQGi (ComplexConjugate[ampGQiToQGi]))//
+PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 		SUNNToCACF->False]&//FermionSpinSum[#,  ExtraFactor->1/2]&//Contract//ReplaceAll[#,{DiracTrace->Tr,
 		SUNN->3}]&//DoPolarizationSums[#,k1,k2,ExtraFactor->1/2]&//DoPolarizationSums[#,k2,k1]&//Simplify
 

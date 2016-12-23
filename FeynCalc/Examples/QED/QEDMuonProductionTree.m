@@ -58,7 +58,7 @@ $ProcessID
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], SMP["m_mu"], SMP["m_mu"]];
-sqAmpMuonProd = (ampMuonProd (ComplexConjugate[ampMuonProd]//FCRenameDummyIndices))//
+sqAmpMuonProd = (ampMuonProd (ComplexConjugate[ampMuonProd]))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr] &//Contract//Simplify
 
@@ -89,8 +89,8 @@ ampMuonProdElRPosLMuRAntiMuL=ampMuonProd/.{Spinor[-Momentum[k2],SMP["m_mu"],1]->
 		Spinor[Momentum[p1],SMP["m_e"],1]->GA[6].Spinor[Momentum[p1],SMP["m_e"],1]}
 
 
-sqAmpMuonProdElRPosLMuRAntiMuL = (((ampMuonProdElRPosLMuRAntiMuL (ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//
-		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Contract//FermionSpinSum//
+sqAmpMuonProdElRPosLMuRAntiMuL = (((ampMuonProdElRPosLMuRAntiMuL (ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]))//
+PropagatorDenominatorExplicit//Contract//FermionSpinSum//
 		ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{SMP["m_e"]->0,SMP["m_mu"]->0})//Simplify
 
 

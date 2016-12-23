@@ -3,15 +3,15 @@
 (* :Title: EWElectronMuonNeutrinoToMuonElectronNeutrinoTree                                                  *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the scattering cross section for an electron and
-			  a muon neutrino going to a muon and an electro neutrino in 
-			  Electroweak theory at tree level                              *)
+			a muon neutrino going to a muon and an electro neutrino in
+			Electroweak theory at tree level                              *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -75,7 +75,7 @@ SetMandelstam[s,t,u,p,q1,-q2,-k,SMP["m_e"],0,0,SMP["m_mu"]];
 (*There is no polarization averaging for neutrinos here, as right handed neutrinos do not interact*)
 
 
-sqElNuScatteringTree=ampElNuScatteringTree FCRenameDummyIndices[ComplexConjugate[ampElNuScatteringTree]]//
+sqElNuScatteringTree=ampElNuScatteringTree ComplexConjugate[ampElNuScatteringTree]//
 FermionSpinSum[#,ExtraFactor->1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//Factor2
 
 
@@ -94,7 +94,7 @@ sqElNuScatteringTree2=(FCE[sqElNuScatteringTree]/.{k-q1->0})//PropagatorDenomina
 (*The total cross-section *)
 
 
-prefac=4Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_mu"]^2)^2]/Sqrt[(s-SMP["m_e"]^2)^2]  
+prefac=4Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_mu"]^2)^2]/Sqrt[(s-SMP["m_e"]^2)^2]
 
 
 crossSectionTotal=sqElNuScatteringTree2*prefac//PowerExpand

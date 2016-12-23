@@ -72,7 +72,7 @@ polarizations, not just 2. Apart from that, we have the normal averaging over th
 gluon. For the polarization sum of the gluon we use the quark momentum as the auxiliary vector *)
 
 
-ampGammaStarGToQiQBari3=ampGammaStarGToQiQBari2*(ComplexConjugate[ampGammaStarGToQiQBari2]//FCRenameDummyIndices)//
+ampGammaStarGToQiQBari3=ampGammaStarGToQiQBari2*(ComplexConjugate[ampGammaStarGToQiQBari2])//
 PropagatorDenominatorExplicit//FermionSpinSum//ReplaceAll[#,{DiracTrace->Tr}]&//DoPolarizationSums[#,kG,p1,ExtraFactor->1/(2*8)]&//
 DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&//SUNSimplify[#,SUNNToCACF->False]&;
 

@@ -55,7 +55,7 @@ UndoChiralSplittings->True,ChangeDimension->4,List->False, SMP->True]
 
 
 SetMandelstam[s, t, u, p1, k1, -p2, -k2, SMP["m_e"], 0, SMP["m_e"], 0];
-sqAmpCompton = (ampCompton (ComplexConjugate[ampCompton]//FCRenameDummyIndices))//
+sqAmpCompton = (ampCompton (ComplexConjugate[ampCompton]))//
 		PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,0,ExtraFactor ->
 		1/2]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2]&//
 		ReplaceAll[#, DiracTrace :> Tr] & // Contract//Simplify//TrickMandelstam[#,{s,t,u,2SMP["m_e"]^2}]&//Simplify

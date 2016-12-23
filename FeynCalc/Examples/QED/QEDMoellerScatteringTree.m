@@ -55,7 +55,7 @@ IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,Cha
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], SMP["m_e"], SMP["m_e"]];
 sqAmpMoeller =
-		(ampMoeller (ComplexConjugate[ampMoeller]//FCRenameDummyIndices))//
+		(ampMoeller (ComplexConjugate[ampMoeller]))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr] & // Contract//Simplify
 
