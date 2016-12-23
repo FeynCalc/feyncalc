@@ -2221,8 +2221,16 @@ TraditionalForm], \"^\"], \"+\", OverscriptBox[FormBox[\"q\", \
 TraditionalForm], \"^\"]}], TraditionalForm], TraditionalForm], \
 \")\"}], FormBox[FormBox[FormBox[\"i\", TraditionalForm], \
 TraditionalForm], TraditionalForm]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID351",
+"tmp = TypesettingExplicitLorentzIndex; \n
+TypesettingExplicitLorentzIndex = Function[x, Style[x, Bold, Red]]; \n
+MakeBoxes[FV[p, 2], \
+TraditionalForm]",
+"FormBox[FormBox[SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"p\",TraditionalForm],\"_\"], \
+TraditionalForm]}],FormBox[FormBox[FormBox[StyleBox[\"2\",Bold,RGBColor[1,0,0], \
+StripOnInput->False],TraditionalForm],TraditionalForm],TraditionalForm]], TraditionalForm],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID353",
-"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[p]], \
+"TypesettingExplicitLorentzIndex = tmp; \n MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[p]], \
 TraditionalForm]",
 "FormBox[SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"p\"\
 , TraditionalForm], \"_\"], TraditionalForm]}], \

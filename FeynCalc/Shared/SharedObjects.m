@@ -527,6 +527,10 @@ above D-dimensional momenta, Dirac matrices, metric tensors and polarization vec
 This is concerns only typesetting in the TraditionalForm output and doesn't change \
 the physical behavior of those objects."
 
+TypesettingExplicitLorentzIndex::usage =
+"TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of
+explicit Lorentz indices.."
+
 Upper::usage = "Upper may be used inside LorentzIndex to indicate an \
 contravariant LorentzIndex.";
 
@@ -609,6 +613,7 @@ $FCLorentzIndexSubHeads = _Upper | _Lower;
 $TypesettingDim4 = "_";
 $TypesettingDimE = "^";
 $TypesettingDimD = "";
+TypesettingExplicitLorentzIndex = Function[x,x];
 
 DataType[Epsilon, PositiveNumber] = True;
 $PairBrackets = False;
@@ -932,8 +937,9 @@ ExplicitLorentzIndex[x_, 4] :=
 ExplicitLorentzIndex /:
 	MakeBoxes[ ExplicitLorentzIndex[p_, dim_ : 4], TraditionalForm]:=
 		If[ $LorentzIndices =!= True,
-			ToBoxes[p,TraditionalForm],
-			SubscriptBox[ToBoxes[p, TraditionalForm], ToBoxes[dim, TraditionalForm]]
+			ToBoxes[TypesettingExplicitLorentzIndex[p],TraditionalForm],
+			Subscr?$iptBox[ToBoxes[TypesettingExplicitLorentzIndex[p], TraditionalForm], ToBoxes[dim, TraditionalForm]]
+
 		]/; !MatchQ[p,$FCLorentzIndexSubHeads];
 
 ExplicitLorentzIndex /:
@@ -1679,25 +1685,25 @@ Pair /:
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
-	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim_ : 4],
+	MakeBoxes[Pair[(h : LorentzIndex| ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim_ : 4],
 		(c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
 		If[ !FreeQ2[{(c0+c1)/.dim->Identity},{Plus,Times}],
 			If[ x===Upper,
-				SuperscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[LorentzIndex[x[a],dim]]],
-				SubscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[LorentzIndex[x[a],dim]]]
+				SuperscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[h[x[a],dim]]],
+				SubscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[h[x[a],dim]]]
 			],
 			If[ x===Upper,
-				SuperscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[LorentzIndex[x[a],dim]]],
-				SubscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[LorentzIndex[x[a],dim]]]
+				SuperscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[h[x[a],dim]]],
+				SubscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[h[x[a],dim]]]
 			]
 		]/; !MatchQ[a,$FCLorentzIndexSubHeads] && FreeQ2[{c0+c1}, Join[{Polarization},List @@ ($FCMomentumSubHeads /. Blank -> Identity)]];
 
 Pair /:
-	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[a_, dim_ : 4],
+	MakeBoxes[Pair[(h : LorentzIndex| ExplicitLorentzIndex)[a_, dim_ : 4],
 	(c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
 			If[ $Covariant===False,
-				ToBoxes[Pair[LorentzIndex[Upper[a],dim], c0 + c1],TraditionalForm],
-				ToBoxes[Pair[LorentzIndex[Lower[a],dim], c0 + c1],TraditionalForm]
+				ToBoxes[Pair[h[Upper[a],dim], c0 + c1],TraditionalForm],
+				ToBoxes[Pair[h[Lower[a],dim], c0 + c1],TraditionalForm]
 			]/; !MatchQ[a,$FCLorentzIndexSubHeads] && FreeQ2[{c0+c1}, Join[{Polarization},List @@ ($FCMomentumSubHeads /. Blank -> Identity)]];
 
 MakeBoxes[Power[Pair[(h : LorentzIndex | ExplicitLorentzIndex)[a___], c0_. b_Momentum + c1_: 0], n_], TraditionalForm] :=
