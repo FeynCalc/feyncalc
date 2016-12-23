@@ -1660,31 +1660,29 @@ Pair /:
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
-	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim1_ : 4],
-		Momentum[b_ ,dim2_ : 4]+c_:0], TraditionalForm]:=
-		If[ Head[b]===Plus || c=!=0,
+	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim_ : 4],
+		(c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
+		If[ !FreeQ2[{(c0+c1)/.dim->Identity},{Plus,Times}],
 			If[ x===Upper,
-				SuperscriptBox[ RowBox[{"(",TBox[Momentum[b+c,dim1]],")"}], TBox[LorentzIndex[x[a],dim2]]],
-				SubscriptBox[ RowBox[{"(",TBox[Momentum[b+c,dim1]],")"}], TBox[LorentzIndex[x[a],dim2]]]
+				SuperscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[LorentzIndex[x[a],dim]]],
+				SubscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[LorentzIndex[x[a],dim]]]
 			],
 			If[ x===Upper,
-				SuperscriptBox[ RowBox[{TBox[Momentum[b+c,dim1]]}], TBox[LorentzIndex[x[a],dim2]]],
-				SubscriptBox[ RowBox[{TBox[Momentum[b+c,dim1]]}], TBox[LorentzIndex[x[a],dim2]]]
+				SuperscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[LorentzIndex[x[a],dim]]],
+				SubscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[LorentzIndex[x[a],dim]]]
 			]
-		]/; !MatchQ[a,$FCLorentzIndexSubHeads] &&
-		!MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]] &&
-		FreeQ2[b, List @@ ($FCMomentumSubHeads /. Blank -> Identity)];
+		]/; !MatchQ[a,$FCLorentzIndexSubHeads] && FreeQ2[{c0+c1}, Join[{Polarization},List @@ ($FCMomentumSubHeads /. Blank -> Identity)]];
 
 Pair /:
-	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[a_, dim1_ : 4],
-	Momentum[b_, dim2_ : 4]+c_:0], TraditionalForm]:=
+	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[a_, dim_ : 4],
+	(c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
 			If[ $Covariant===False,
-				ToBoxes[Pair[LorentzIndex[Upper[a],dim1],Momentum[b,dim2]+c],TraditionalForm],
-				ToBoxes[Pair[LorentzIndex[Lower[a],dim1],Momentum[b,dim2]+c],TraditionalForm]
-			]/; (!MatchQ[a,$FCLorentzIndexSubHeads]  && !MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]]);
+				ToBoxes[Pair[LorentzIndex[Upper[a],dim], c0 + c1],TraditionalForm],
+				ToBoxes[Pair[LorentzIndex[Lower[a],dim], c0 + c1],TraditionalForm]
+			]/; !MatchQ[a,$FCLorentzIndexSubHeads] && FreeQ2[{c0+c1}, Join[{Polarization},List @@ ($FCMomentumSubHeads /. Blank -> Identity)]];
 
-MakeBoxes[Power[Pair[(h : LorentzIndex | ExplicitLorentzIndex)[a___], b_Momentum + c_: 0], n_], TraditionalForm] :=
-	SuperscriptBox[RowBox[{"(", ToBoxes[Pair[h[a], b + c], TraditionalForm], ")"}],ToBoxes[n]];
+MakeBoxes[Power[Pair[(h : LorentzIndex | ExplicitLorentzIndex)[a___], c0_. b_Momentum + c1_: 0], n_], TraditionalForm] :=
+	SuperscriptBox[RowBox[{"(", ToBoxes[Pair[h[a], c0 b + c1], TraditionalForm], ")"}],ToBoxes[n]];
 
 (* ------------------------------------------------------------------------ *)
 
