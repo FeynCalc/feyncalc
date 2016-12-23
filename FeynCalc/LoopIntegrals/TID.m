@@ -677,7 +677,7 @@ tidConvert[expr_, q_]:=
 	Block[{ex=expr,qQQprepare,getfdp,res,temp},
 		FCPrint[2,"TID: tidConvert: Entering with ", expr];
 		getfdp[w__] :=
-			(ffdp@@(First/@(MomentumCombine[{w}] /. q->0)) /. Momentum[a_,_:4] :> a)/;
+			(ffdp@@(First/@(MomentumCombine[{w},FCI->True,FV->False,SP->False] /. q->0)) /. Momentum[a_,_:4] :> a)/;
 				FreeQ[{w}, PropagatorDenominator[_ Momentum[q, ___] + _., _]];
 
 		(* get the momenta on which the integral depends *)

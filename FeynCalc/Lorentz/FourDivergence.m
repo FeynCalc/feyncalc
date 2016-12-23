@@ -123,7 +123,7 @@ fourDerivative[x_, ve_]:=
 		*)
 		If[	!MatchQ[p,Momentum[m_/;FreeQ2[m,{Plus,Times}],_:4]],
 			un=Unique[];
-			linCombHide = {Rule[p,un],Rule[MomentumCombine[MomentumExpand[-p]],-un]};
+			linCombHide = {Rule[p,un],Rule[MomentumCombine[MomentumExpand[-p],FCI->True],-un]};
 			linCombShow = Reverse/@linCombHide;
 
 			If[ FreeQ2[nx/.linCombHide, Variables[p/.Momentum[a_,_:4]:>a]],

@@ -19,7 +19,12 @@ Tests`Lorentz`fcstMomentumCombine = {
 {"fcstMomentumCombine-ID2","MomentumCombine[FV[p, mu] + 2 FV[q, mu]]", "Pair[LorentzIndex[mu], Momentum[p + 2*q]]"},
 {"fcstMomentumCombine-ID3","MomentumCombine[
 Pair[Momentum[a], Momentum[c]] - 2*Pair[Momentum[a], Momentum[d]] +
-	Pair[Momentum[b], Momentum[c]] - 2*Pair[Momentum[b], Momentum[d]]]", "Pair[Momentum[a + b], Momentum[c - 2*d]]"}
+	Pair[Momentum[b], Momentum[c]] - 2*Pair[Momentum[b], Momentum[d]]]", "Pair[Momentum[a + b], Momentum[c - 2*d]]"},
+{"fcstMomentumCombine-ID4","MomentumCombine[n FV[p, mu] + m FV[q, mu]]", "Pair[LorentzIndex[mu], n Momentum[p] + m Momentum[q]]"},
+{"fcstMomentumCombine-ID5","MomentumCombine[n FV[p, mu] + m FV[q, mu], FV -> False]", "n Pair[LorentzIndex[mu], Momentum[p]] +
+m Pair[LorentzIndex[mu], Momentum[q]]"},
+{"fcstMomentumCombine-ID6","MomentumCombine[SP[a, b] + SP[a, c]]", "Pair[Momentum[a], Momentum[b + c]]"},
+{"fcstMomentumCombine-ID7","MomentumCombine[SP[a, b] + SP[a, c], SP -> False]", "Pair[Momentum[a], Momentum[b]] + Pair[Momentum[a], Momentum[c]]"}
 };
 
 

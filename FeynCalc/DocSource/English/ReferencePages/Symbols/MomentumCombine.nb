@@ -176,11 +176,6 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/MomentumExpand",
   ButtonNote->"MomentumExpand"],
- ", ",
- ButtonBox["MomentumCombine2",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/MomentumCombine2",
-  ButtonNote->"MomentumCombine2"],
  "."
 }], "Text",
  CellTags->"MomentumCombine",
@@ -216,16 +211,21 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "MomentumCombine", "]"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->1545747738],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"LeafCount", "\[Rule]", "1"}], "}"}], TraditionalForm]], "Output",
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"LeafCount", "\[Rule]", "1"}], ",", 
+    RowBox[{"Pair", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
+ 
  CellTags->"MomentumCombine",
- CellLabel->"Out[1]=",
- CellID->1201680776]
+ CellLabel->"Out[2]=",
+ CellID->1656307801]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -239,7 +239,7 @@ Cell[BoxData[
      RowBox[{"Momentum", "[", "q", "]"}]}]}], " ", "//", " ", 
    "MomentumCombine"}], " ", "//", " ", "StandardForm"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->607844623],
 
 Cell[BoxData[
@@ -247,8 +247,8 @@ Cell[BoxData[
   RowBox[{"p", "-", 
    RowBox[{"2", " ", "q"}]}], "]"}]], "Output",
  CellTags->"MomentumCombine",
- CellLabel->"Out[2]//StandardForm=",
- CellID->683220670]
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->1636030077]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -262,7 +262,7 @@ Cell[BoxData[
     RowBox[{"FV", "[", 
      RowBox[{"q", ",", "\[Mu]"}], "]"}]}], " "}]}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->199069763],
 
 Cell[BoxData[
@@ -271,11 +271,12 @@ Cell[BoxData[
    FormBox[
     FormBox[
      SuperscriptBox[
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm], 
+      RowBox[{"(", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], ")"}], 
       FormBox[
        FormBox[
         FormBox["\[Mu]",
@@ -288,11 +289,12 @@ Cell[BoxData[
     FormBox[
      FormBox[
       SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["q",
-          TraditionalForm], "_"],
-        TraditionalForm], 
+       RowBox[{"(", 
+        FormBox[
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"],
+         TraditionalForm], ")"}], 
        FormBox[
         FormBox[
          FormBox["\[Mu]",
@@ -302,8 +304,8 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"MomentumCombine",
- CellLabel->"Out[3]=",
- CellID->1701893288]
+ CellLabel->"Out[4]=",
+ CellID->3685652]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -311,7 +313,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"MomentumCombine", "[", "t1", "]"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[4]:=",
+ CellLabel->"In[7]:=",
  CellID->316549312],
 
 Cell[BoxData[
@@ -337,8 +339,8 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"MomentumCombine",
- CellLabel->"Out[4]=",
- CellID->1410863957]
+ CellLabel->"Out[7]=",
+ CellID->1925065141]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -348,7 +350,7 @@ Cell[BoxData[
   RowBox[{"MomentumCombine", "[", "t1", "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[5]:=",
+ CellLabel->"In[8]:=",
  CellID->1834428785],
 
 Cell[BoxData[
@@ -359,8 +361,8 @@ Cell[BoxData[
     RowBox[{"p", "+", 
      RowBox[{"2", " ", "q"}]}], "]"}]}], "]"}]], "Output",
  CellTags->"MomentumCombine",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1690546936]
+ CellLabel->"Out[8]//StandardForm=",
+ CellID->1794383693]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,7 +372,7 @@ Cell[BoxData[
   RowBox[{"MomentumCombine", "[", "t1", "]"}], "//", 
   "ExpandScalarProduct"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[6]:=",
+ CellLabel->"In[9]:=",
  CellID->1175875424],
 
 Cell[BoxData[
@@ -378,11 +380,12 @@ Cell[BoxData[
   RowBox[{
    FormBox[
     SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+     RowBox[{"(", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], ")"}], 
      FormBox[
       FormBox[
        FormBox["\[Mu]",
@@ -393,11 +396,12 @@ Cell[BoxData[
    RowBox[{"2", " ", 
     FormBox[
      SuperscriptBox[
-      FormBox[
-       OverscriptBox[
-        FormBox["q",
-         TraditionalForm], "_"],
-       TraditionalForm], 
+      RowBox[{"(", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm], ")"}], 
       FormBox[
        FormBox[
         FormBox["\[Mu]",
@@ -406,8 +410,8 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"MomentumCombine",
- CellLabel->"Out[6]=",
- CellID->130248016]
+ CellLabel->"Out[9]=",
+ CellID->10583172]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -415,7 +419,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[7]:=",
+ CellLabel->"In[10]:=",
  CellID->1928655829],
 
 Cell[BoxData[
@@ -430,14 +434,106 @@ Cell[BoxData[
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
      RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]}]}]], "Output",
  CellTags->"MomentumCombine",
- CellLabel->"Out[7]//StandardForm=",
- CellID->547997503]
+ CellLabel->"Out[10]//StandardForm=",
+ CellID->1597265047]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t2", "=", 
+  RowBox[{
+   RowBox[{"3", " ", 
+    RowBox[{"Pair", "[", 
+     RowBox[{
+      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+      RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}], "+", 
+   RowBox[{"2", " ", 
+    RowBox[{"Pair", "[", 
+     RowBox[{
+      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+      RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]}]}]}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->986758311],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"3", " ", 
+    FormBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], ")"}], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], "+", 
+   RowBox[{"2", " ", 
+    FormBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm], ")"}], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[11]=",
+ CellID->1989882633]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MomentumCombine", "[", "t2", "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->160099516],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     FormBox[
+      RowBox[{
+       RowBox[{"3", " ", 
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"]}], "+", 
+       RowBox[{"2", " ", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}]}],
+      TraditionalForm],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellLabel->"Out[12]=",
+ CellID->1961330517]
 }, Open  ]],
 
 Cell[BoxData[
- RowBox[{"Clear", "[", "t1", "]"}]], "Input",
+ RowBox[{"Clear", "[", 
+  RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
  CellTags->"MomentumCombine",
- CellLabel->"In[8]:=",
+ CellLabel->"In[13]:=",
  CellID->1041568760]
 }, Open  ]],
 
@@ -502,12 +598,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{706, Automatic}, {Automatic, 106}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (July 28, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+
