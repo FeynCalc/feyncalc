@@ -2368,7 +2368,7 @@ pavremember[x__] :=
 				tdecex = expr/.Pair-> PairContract,
 				tdi,tdecti,tdectj,tdectk,tdectl,tdectm,tdecr = 0,
 				tdecpl,tdecml,tdeclpl,
-				rul,spl,add
+				rul,spl,add, tmppair
 				},
 				FCPrint[3, "entering tdec with expr = ", expr//FeynCalcForm, FCDoControl->oneloopVerbose];
 				FCPrint[3, "props =  ", props, FCDoControl->oneloopVerbose];
@@ -2449,7 +2449,8 @@ pavremember[x__] :=
 
 				FCPrint[3, "OneLoop: tdec: covnerting FADs to PaVe functions.", FCDoControl->oneloopVerbose];
 
-			tensps = ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[tdecpl,spl[#,0]&]];
+			tensps = ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[tdecpl,tmppair]];
+			tensps = tensps /. tmppair[a__] :> spl[a,0];
 
 			FCPrint[3, "OneLoop: tdec: tensps ", tensps," ", FCDoControl->oneloopVerbose];
 			FCPrint[3, "OneLoop: tdec: tdecr ", tdecr, FCDoControl->oneloopVerbose];

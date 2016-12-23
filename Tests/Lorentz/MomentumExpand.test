@@ -41,7 +41,9 @@ Tests`Lorentz`fcstMomentumExpand = {
 {"fcstMomentumExpand-ID13","Momentum[p + Momentum[3 q], D]//MomentumExpand",
 	"Momentum[p, D] + 3*Momentum[q, {4, D}]"},
 {"fcstMomentumExpand-ID14","Momentum[p + Momentum[3 q], D - 4]//MomentumExpand",
-	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"}
+	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"},
+{"fcstMomentumExpand-ID15","Pair[LorentzIndex[mu, D], Momentum[l - q, D]] // MomentumExpand",
+	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"}
 };
 
 

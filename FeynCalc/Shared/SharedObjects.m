@@ -555,6 +555,9 @@ Momentum::lorentzhead =
 LorentzIndex::momentumhead =
 "`1` is forbidden in FeynCalc. LorentzIndex cannot be the head of a Momentum !";
 
+Pair::invalid =
+"`1` does not represent a valid Pair object!";
+
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
 
@@ -1451,6 +1454,22 @@ Pair[n_Integer x_,y_] :=
 
 Pair[n_ x_Momentum, y_] :=
 	n Pair[x, y];
+
+(* Here we block some malformed Pair arguments *)
+
+Pair[x_]/; (FreeQ2[{x},{Pattern, Blank,BlankSequence,BlankNullSequence}]) :=
+	(Message[Pair::argrx, "Pair["<>ToString[{x}]<>"]", Length[{x}], 2]; Abort[]);
+
+Pair[x__]/; (FreeQ2[{x},{Pattern, Blank,BlankSequence,BlankNullSequence}]) && Length[{x}]>2 :=
+	(Message[Pair::argrx, "Pair["<>ToString[{x}]<>"]", Length[{x}], 2]; Abort[]);
+
+Pair[x_,y_+z_]/; ((FreeQ2[{x,y,z},{Pattern, Blank,BlankSequence,BlankNullSequence}]) &&
+!MatchQ[y+z, HoldPattern[Plus][_. Momentum[_, _ : 4] ..]]) :=
+	(Message[Pair::invalid, "Pair["<>ToString[{x}]<>","<>ToString[{y+z}]<>"]"]; Abort[]);
+
+Pair[x : (LorentzIndex | ExplicitLorentzIndex)[___] + y_, z_]/; (FreeQ2[{x,y,z},{Pattern, Blank,BlankSequence,BlankNullSequence}]):=
+	(Message[Pair::invalid, "Pair["<>ToString[{x+y}]<>","<>ToString[{z}]<>"]"]; Abort[]);
+
 
 (*    Treatment of four vectors, scalar products and metric tensors,
 	where the different parts are in different dimensions is performed

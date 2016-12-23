@@ -25,6 +25,7 @@ Begin["`Package`"]
 End[]
 
 Begin["`MomentumExpand`Private`"];
+pair::usage="";
 
 fourvecevlin[n_?NumberQ z_, dim_:4] :=
 	n Momentum[z, dim];
@@ -37,7 +38,7 @@ fourvecev[y_,dim_:4] :=
 		];
 
 MomentumExpand[expr_] :=
-	expr /.Spinor -> spinor /. Momentum -> fourvecev /. fourvecevlin -> Momentum /. spinor ->Spinor;
+	expr /.Spinor -> spinor /. Pair-> pair /. Momentum -> fourvecev /. fourvecevlin -> Momentum /. pair -> Pair /. spinor ->Spinor;
 
 FCPrint[1,"MomentumExpand.m loaded."];
 End[]
