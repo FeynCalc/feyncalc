@@ -572,6 +572,7 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 {"fcstSharedObjectsBehavior-ID175.2", "PolarizationVector[p, {mu, c},  Transversality->False]","Pair[LorentzIndex[{mu, c}], Momentum[Polarization[p, I, Transversality -> False]]]"},
 {"fcstSharedObjectsBehavior-ID176", "PropagatorDenominator[x]", "PropagatorDenominator[x, 0]"},
 {"fcstSharedObjectsBehavior-ID177", "PD", "PropagatorDenominator"},
+{"fcstSharedObjectsBehavior-ID177.1", "PD[0, 0]", "PropagatorDenominator[0, 0]"},
 {"fcstSharedObjectsBehavior-ID178", "QuantumField[A, {mu, SUNIndex[a]}]", " QuantumField[A, LorentzIndex[mu], SUNIndex[a]]"},
 {"fcstSharedObjectsBehavior-ID179", "QuantumField[QuantumField[A, {mu, SUNIndex[a]}]]", " QuantumField[A, LorentzIndex[mu], SUNIndex[a]]"},
 {"fcstSharedObjectsBehavior-ID180", "RightPartialD[(1)]", " 1"}, {"fcstSharedObjectsBehavior-ID181", "RightPartialD[(1), (1), (1)]", "1"},

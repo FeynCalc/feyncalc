@@ -1806,12 +1806,11 @@ polVec[k_,mu_,glu_, opts:OptionsPattern[]] :=
 	];
 
 
-PropagatorDenominator[a_ /; FreeQ2[a, {BlankNullSequence,Pattern}]
-										] :=
+PropagatorDenominator[a_ /; FreeQ2[a, {BlankNullSequence,Pattern}]] :=
 	PropagatorDenominator[a, 0];
 
 PropagatorDenominator/:
-	MakeBoxes[PropagatorDenominator[a_, 0], TraditionalForm]:=
+	MakeBoxes[PropagatorDenominator[a_/;a=!=0, 0], TraditionalForm]:=
 		ToBoxes[1/a^2, TraditionalForm];
 
 MakeBoxes[f_. PropagatorDenominator[a_, b_/;b=!=0], TraditionalForm] :=
