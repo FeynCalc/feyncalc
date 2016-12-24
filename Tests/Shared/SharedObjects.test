@@ -369,6 +369,7 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 {"fcstSharedObjectsBehavior-ID87.7", "FAD[{q1, m}, {q1 - p, 0, 0}, {q2, m}]", "FAD[{q1, m}, {q2, m}]"},
 {"fcstSharedObjectsBehavior-ID88", "FeynAmpDenominator[{a, b}]", "FeynAmpDenominator[PropagatorDenominator[Momentum[a, D], b]]"},
 {"fcstSharedObjectsBehavior-ID89", "FeynAmpDenominator[{a}]", " FeynAmpDenominator[PropagatorDenominator[Momentum[a, D], 0]]"},
+{"fcstSharedObjectsBehavior-ID89.1", "FeynAmpDenominator[PD[0, 0]]", "FeynAmpDenominator[PD[0, 0]]"},
 {"fcstSharedObjectsBehavior-ID90", "FourVector[p, mu]", " Pair[LorentzIndex[mu], Momentum[p]]"},
 {"fcstSharedObjectsBehavior-ID91", "FourVector[p, mu, Dimension -> D]",
 	" Pair[LorentzIndex[mu, D], Momentum[p, D]]"},
