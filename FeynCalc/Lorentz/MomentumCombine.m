@@ -40,12 +40,12 @@ rulesFV = {
 (n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
 		Pair[a, Momentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
 
-	(n3_ Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n3_ Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
-		n3 Pair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
-
+	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n3_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
+		n3 Pair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3])
+(*
 	(n3_. Pair[a_LorentzIndex, Momentum[x_,dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_,dim_:4]]):>
 		Pair[a, Expand[MomentumExpand[n3 Momentum[x, dim] + n4 Momentum[y,dim]]]]/;
-			(!NumberQ[n3] || !NumberQ[n4]) && FreeQ2[{n3,n4},{LorentzIndex,Momentum,Pair}]
+			(!NumberQ[n3] || !NumberQ[n4]) && FreeQ2[{n3,n4},{LorentzIndex,Momentum,Pair}]*)
 };
 
 Options[MomentumCombine] = {
