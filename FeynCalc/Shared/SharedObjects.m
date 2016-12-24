@@ -1470,7 +1470,7 @@ Pair[x__]/; (FreeQ2[{x},{Pattern, Blank,BlankSequence,BlankNullSequence}]) && Le
 	(Message[Pair::argrx, "Pair["<>ToString[{x}]<>"]", Length[{x}], 2]; Abort[]);
 
 Pair[x_,y_+z_]/; ((FreeQ2[{x,y,z},{Pattern, Blank,BlankSequence,BlankNullSequence}]) &&
-!MatchQ[y+z, HoldPattern[Plus][_. Momentum[_, _ : 4] ..]]) :=
+!MatchQ[Expand[y+z], HoldPattern[Plus][_. Momentum[_, _ : 4] ..]]) :=
 	(Message[Pair::invalid, "Pair["<>ToString[{x}]<>","<>ToString[{y+z}]<>"]"]; Abort[]);
 
 Pair[x : (LorentzIndex | ExplicitLorentzIndex)[___] + y_, z_]/; (FreeQ2[{x,y,z},{Pattern, Blank,BlankSequence,BlankNullSequence}]):=
