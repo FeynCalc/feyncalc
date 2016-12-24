@@ -53,5 +53,8 @@ M]*SUNT[a] + GA[i] . (M +
 GS[p]) . GA[j] . GA[6] . GA[k] . GA[j] . (m +
 GS[q]) . GA[n] . (M + GS[p]) . GA[l]*FAD[k + p,
 M]*SUNT[a]"},
-{"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"}
+{"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"},
+{"fcstDotSimplify-ID11","DotSimplify[SpinorUBar[p1, m1].GA[i].SpinorU[p2,
+m2].(a.SUNT[a] + b.SUNT[a] + c.SUNT[a]), Expanding -> False]",
+"(a + b + c) Spinor[Momentum[p1], m1, 1].DiracGamma[LorentzIndex[i]].Spinor[Momentum[p2], m2, 1] SUNT[SUNIndex[a]]"}
 }

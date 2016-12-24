@@ -150,9 +150,9 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				TimesDot[a__] :=
 					If[ FreeQ[{a}, SUNT],
 						Times[a],
-						DOT[a]
+						holdDOT[a]
 					];
-				x = x /. Times -> TimesDot;
+				x = x /. Times -> TimesDot //. holdDOT[a_,b_,c___]/; NonCommFreeQ[{a,b}]:> holdDOT[a b, c]/. holdDOT->DOT;
 				FCPrint[1, "DotSimplify: After Putting Dot on hold: ", x, FCDoControl->dsVerbose]
 			];
 
@@ -276,6 +276,11 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators:", x, FCDoControl->dsVerbose];
 
+
+			FCPrint[1, "DotSimplify: Collecting DOTs.", FCDoControl->dsVerbose];
+			x = x/.DOT-> holdDOT //. {holdDOT[a___, b1_, c___] + holdDOT[a___, b2_, c___] :> holdDOT[a, b1 + b2, c]};
+			x = x /. holdDOT->DOT;
+			FCPrint[3, "DotSimplify: After collecting DOTs: ", x, FCDoControl->dsVerbose];
 
 
 			FCPrint[1, "DotSimplify: Non-commutative expansion. Time used:", TimeUsed[],  FCDoControl->dsVerbose];

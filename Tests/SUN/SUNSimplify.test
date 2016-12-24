@@ -16,7 +16,7 @@
 Tests`SUN`fcstSUNSimplify = {
 {"fcstSUNSimplify-ID1","SUNSimplify[1]","1"},
 {"fcstSUNSimplify-ID2","SUNSimplify[SUNT[a].SUNT[b].SUNT[a]]",
-	"-(1/2) (CA - 2 CF) SUNT[SUNIndex[b]]"},
+	"((-CA + 2*CF)*SUNT[SUNIndex[b]])/2"},
 {"fcstSUNSimplify-ID3","SUNSimplify[SUNF[a, c, d].SUNF[b, c, d]]",
 	"CA SUNDelta[SUNIndex[a], SUNIndex[b]]"},
 {"fcstSUNSimplify-ID4","SUNSimplify[SUNF[a, b, c].SUNT[b].SUNT[c]]",
@@ -24,7 +24,7 @@ Tests`SUN`fcstSUNSimplify = {
 {"fcstSUNSimplify-ID5","SUNSimplify[SUNF[a, b, r] SUNF[r, c, s] + SUNF[b, c, r] SUNF[r, a, s] +
 	SUNF[c, a, r] SUNF[r, b, s], SUNFJacobi -> True]","0"},
 {"fcstSUNSimplify-ID6","SUNT[a, b, a] // SUNSimplify",
-	"-((CA - 2*CF)*SUNT[SUNIndex[b]])/2"},
+	"((-CA + 2*CF)*SUNT[SUNIndex[b]])/2"},
 {"fcstSUNSimplify-ID7","SUNF[c, a, b] SUNT[b, c] // SUNSimplify",
 	"(I/2)*CA*SUNT[SUNIndex[a]]"},
 {"fcstSUNSimplify-ID8","SUNSimplify[1]","1"},
