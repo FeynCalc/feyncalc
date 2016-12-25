@@ -1,0 +1,12 @@
+Tests`LoopIntegrals`fcitOneLoopMiscTests =
+({
+{"fcitOneLoopMiscTests-ID1","Simplify[PaVeReduce[(OneLoop[k,
+FVD[k, i] SPD[k, p] SPD[k] FAD[{k + p - q, mw}, {k + p + q, mw}, {k, my}]] -
+OneLoop[k,  FVD[k, i] SPD[k, p] SPD[k] FAD[{k + p - q, mw}, {k + p + q, mw}, {k, mu}]]) /. mu -> my]]", "0"},
+{"fcitOneLoopMiscTests-ID2","Simplify[PaVeReduce[OneLoop[k, ChangeDimension[ FCI[SP[k] SP[k, p] FourVector[k,
+a] FAD[{k + p - q, mw}, {k + p + q, mw}, {k, my}]], D]]] -PaVeReduce[OneLoop[k,	ChangeDimension[FCI[SP[k] SP[k,
+p] FourVector[k, a] FAD[{k + p - q, mw}, {k + p + q, mw}, {k, my}]], D]]]]", "0"},
+{"fcitOneLoopMiscTests-ID3","Simplify[PaVeReduce[ OneLoop[k, FVD[k, a] SPD[k, p] SPD[k] FAD[{k, my}, {k + p - q, mw}, {k + p + q, mw}],
+	DenominatorOrder -> False] - OneLoop[k, FVD[k, a] SPD[k, p] SPD[k] FAD[{k, my}, {k + p - q, mw}, {k + p + q, mw}],
+	DenominatorOrder -> True]]]", "0"}
+})
