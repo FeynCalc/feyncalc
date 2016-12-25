@@ -227,7 +227,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	newoneamp,ip,lenneu, lenneu2, neuamp,paone,paone2,oneselect,fsub,
 	intermedsubst,writeoutrecover = False, oldfile, ftemp,
 	writeoutpav, uvpart,to4dim, oneampresult, null1, null2,
-	oneloopVerbose,nonLoopTerms,loopTerms, oneloopsimplify,inisubs,
+	oneloopVerbose,nonLoopTerms=0,loopTerms=0, oneloopsimplify,inisubs,
 	reducegamma67,oneopt,tim,smav, smdaemon, smalldirac
 	},
 
@@ -859,13 +859,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			If[ (oneamp =!= 0),
 				(*This is a good point to isolate possible non-loop terms in the input expression *)
 				oneamp=Collect2[oneamp,q];
-				nonLoopTerms = Select[oneamp+ null1+ null2, FreeQ[#, q]&]/. {null1|null2 -> 0};
-				loopTerms = Select[oneamp+ null1+ null2, !FreeQ[#, q]&]/. {null1|null2 -> 0};
-				If[loopTerms+nonLoopTerms=!=oneamp,
-					FCPrint[1,"Splitting the expression " <> ToString[oneamp,InputForm] <>
-					"into loop and non-loop pieces in OneLoop failed."];
-					Abort[]
-				];
+				{nonLoopTerms,loopTerms} = FCSplit[oneamp,{q}];
 				oneamp=loopTerms;
 
 		(* ONEAMPCHANGE : cancelling q p 's *)
