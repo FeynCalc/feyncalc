@@ -18,3 +18,5 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
 $1 -nopromt -script TestSuite.m -run testType=3 -run onlyTest=\"$2\"
+
+notify-send "Finished running unit tests for Tarcer ($2)."
