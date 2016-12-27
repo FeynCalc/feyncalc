@@ -341,8 +341,7 @@ pfrac[inputVectorSet_List]:=
 			eiPos = 1;
 			(* 	List of the indices to sum over, the index of the propagator that serves as e_1 is removed *)
 			iterList = Delete[Table[i,{i,1,Length[v]}],{eiPos}];
-
-			res = -Sum[	dummy = vectorSet[[3]]; dummy[[eiPos]] = dummy[[i]]+1;	dummy[[i]] = dummy[[i]]-1;
+			res = -Sum[ dummy = vectorSet[[3]]; dummy[[eiPos]]++; dummy[[i]]--;
 						(v[[i]]/v[[eiPos]]) pfrac[{vectorSet[[1]],vectorSet[[2]],dummy,vectorSet[[4]]}],{i,iterList}]
 		];
 

@@ -69,5 +69,8 @@ ExpandScalarProduct\[Rule]False]//FCE",
 {"fcstApartFF-ID20","ApartFF[SPD[q, q] FAD[{q, m}], {q}]//FCE","m^2 FAD[{q, m}]"},
 {"fcstApartFF-ID21","FCClearScalarProducts[]; \n ScalarProduct[k, k] = 0; \n  ScalarProduct[p, p] = m^2; \n
 tmp = ApartFF[FAD[{q1, m}, {q1 - p}, {q1 - 2 p, m}, {q1 - k - 2 p, m}], {q1}]//FCE; \n FCClearScalarProducts[]; \n tmp
-","-FAD[{q1, m}, {q1, m}, -p + q1, {-k - 2 p + q1, m}] +2 FAD[{q1, m}, {k + q1, m}, {-2 p + q1, m}, {-2 p + q1, m}]"}
+","-FAD[{q1, m}, {q1, m}, -p + q1, {-k - 2 p + q1, m}] +2 FAD[{q1, m}, {k + q1, m}, {-2 p + q1, m}, {-2 p + q1, m}]"},
+{"fcstApartFF-ID22","FCClearScalarProducts[]; \n SPD[p, p] = 4 m^2; \n
+tmp = ApartFF[FAD[q, {-(p/2) + q, m}, {p/2 + q, m}, {p/2 + q, m}], {q}]//FCE; \n FCClearScalarProducts[]; \n tmp
+","1/2 FAD[q, q, q, {-(p/2) + q, m}] + 1/2 FAD[q, q, {-(p/2) + q, m}, {-(p/2) + q, m}]"}
 })
