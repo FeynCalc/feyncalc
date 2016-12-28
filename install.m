@@ -236,6 +236,8 @@ files or add-ons that are located in that directory, please backup them in advan
 		]
 	];
 
+	(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horvát) *)
+	RebuildPacletData[];
 
 	WriteString["stdout", "done! \n"];
 
