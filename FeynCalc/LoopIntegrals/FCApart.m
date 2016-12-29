@@ -338,7 +338,14 @@ pfrac[inputVectorSet_List]:=
 				(v[[i]]/f) * pfrac[{vectorSet[[1]],vectorSet[[2]],dummy,vectorSet[[4]]}],{i,1,Length[v]}],
 			(*If the value of f is zero, we use Eq. 17 from arXiv:1204.2314; We pick up the first propagator use it as e_1 *)
 			FCPrint[3,"FCApart: pfrac: f is zero",FCDoControl->fcaVerbose];
-			eiPos = 1;
+			FCPrint[3,"FCApart: pfrac: f_i: ", v," ", FCDoControl->fcaVerbose];
+
+			If[ v[[1]]=!=0,
+				eiPos = 1,
+				(* if f_1 is zero, we need to pick another one *)
+				FCPrint[3,"FCApart: pfrac: f_1 is zero",FCDoControl->fcaVerbose];
+				eiPos = Position[v, _Integer?Positive | _Integer?Negative][[1]][[1]];
+			];
 			(* 	List of the indices to sum over, the index of the propagator that serves as e_1 is removed *)
 			iterList = Delete[Table[i,{i,1,Length[v]}],{eiPos}];
 			res = -Sum[ dummy = vectorSet[[3]]; dummy[[eiPos]]++; dummy[[i]]--;
