@@ -837,6 +837,9 @@ DiracMatrix[(a:Except[5|6|7]), OptionsPattern[]] :=
 DiracMatrix[DOT[a_,b__], opts:OptionsPattern[]] :=
 	DOT@@(DiracMatrix[#,opts]& /@ {a,b});
 
+DiracMatrix[a_,b:Except[_?OptionQ].., opts:OptionsPattern[]] :=
+	DOT@@(DiracMatrix[#,opts]& /@ {a,b});
+
 DiracMatrix /:
 	MakeBoxes[DiracMatrix[x_, opts:OptionsPattern[]], TraditionalForm]:=
 		ToBoxes[FCI[DiracMatrix[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];

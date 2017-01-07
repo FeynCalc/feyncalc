@@ -310,6 +310,11 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 {"fcstSharedObjectsBehavior-ID39", "DiracMatrix[2]", "DiracGamma[ExplicitLorentzIndex[2]]"},
 {"fcstSharedObjectsBehavior-ID40", "DiracMatrix[3]", "DiracGamma[ExplicitLorentzIndex[3]]"},
 {"fcstSharedObjectsBehavior-ID41", "DiracMatrix[4]", "DiracGamma[ExplicitLorentzIndex[4]]"},
+{"fcstSharedObjectsBehavior-ID41.1", "DiracMatrix[mu]", "DiracGamma[LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID41.2", "DiracMatrix[mu, nu, rho]", "DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu]].DiracGamma[
+LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID41.3", "DiracMatrix[mu, nu, rho, Dimension -> D]", "DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu, D],
+D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID42", "DiracSigma[x.y]", "DiracSigma[x,y]"},
 {"fcstSharedObjectsBehavior-ID43", "DiracSigma[a,b,c, 0,d,e,f]", " 0"},
 {"fcstSharedObjectsBehavior-ID44", "DiracSigma[1, 3] ", "  DiracSigma[1, 3]"},
