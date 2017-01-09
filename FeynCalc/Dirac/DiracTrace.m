@@ -95,7 +95,7 @@ DiracTrace[a_ /; (FreeQ[a, DiracGamma] && !FreeQ[a, DiracGammaT]), b:OptionsPatt
 	DiracTrace[(a//Transpose)//Reverse, b];
 
 DiracTrace[a:Except[_HoldAll]..., x_,y_, z___] :=
-	DiracTrace[a,x.y,z]/;FreeQ2[y,{Rule,BlankNullSequence}]&& FreeQ2[x,{Rule,BlankNullSequence}];
+	DiracTrace[a,x.y,z]/;FCPatternFreeQ[{x,y},{Rule}];
 
 DiracTrace[expr_, op:OptionsPattern[]] :=
 	Block[ {diTres, ex, tr1,tr2,tr3,time,dsHead,diracObjects,diracObjectsEval,null1,null2,freePart,dsPart,repRule,diTr},

@@ -24,7 +24,7 @@ Begin["`SUNTrace`Private`"]
 Options[SUNTrace] = {Explicit -> False};
 
 HoldPattern[SUNTrace[n_, ___Rule]] :=
-	SUNN n /; FreeQ2[n, {SUNT, Pattern, Blank, BlankSequence, BlankNullSequence}];
+	SUNN n /; FCPatternFreeQ[{n}, {SUNT}];
 
 (* this is the function which puts everything together ********* *)
 SUNTrace[expr_Plus, op___Rule] :=
@@ -99,7 +99,7 @@ SUNTrace[ a_, ___Rule ] :=
 SUNTrace[ expr_, OptionsPattern[] ] :=
 	(fixgell[expr]/. gellm2->SUNTrace)/;
 	((Head[expr] =!= Times) || (Select[expr, !FreeQ[#, SUNT]&] ===1 )) &&
-	(expr=!=(fixgell[expr] /. gellm2->Identity)) && FreeQ2[expr,{Pattern, Blank, BlankSequence, BlankNullSequence}] &&
+	(expr=!=(fixgell[expr] /. gellm2->Identity)) && FCPatternFreeQ[{expr}] &&
 	(fcis[expr]===expr);
 
 SUNTrace[x_?externQ] :=

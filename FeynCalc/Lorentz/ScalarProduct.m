@@ -205,7 +205,7 @@ ScalarProduct/:
 		];
 
 		setval
-	]/; araw=!=0 && braw=!=0 && FreeQ2[{araw,braw},{Pattern,Blank,BlankSequence,BlankNullSequence}];
+	]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
 
 initialScalarProductDownValues = DownValues[ScalarProduct];
 initialScalarProductUpValues = UpValues[ScalarProduct];

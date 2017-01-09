@@ -942,8 +942,7 @@ DiracSpinor = Spinor;
 Eps[x__, Dimension->4] :=
 	Eps[x]/; OptionValue[Eps,Dimension]===4 && Length[{x}]===4;
 
-Eps[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] =!= 4) && (FreeQ2[{x,opts},{Pattern,
-Blank,BlankSequence,BlankNullSequence}]) :=
+Eps[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] =!= 4) && FCPatternFreeQ[{x,opts}] :=
 	Message[Eps::argrx, "Eps["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
 
 Eps[x__Symbol | x__FCGV, OptionsPattern[]] :=
@@ -1248,20 +1247,16 @@ Integratedx /:
 		TBox[up]], "\[DifferentialD]",
 		MakeBoxes[TraditionalForm[x]], "\[VeryThinSpace]" }];
 
-LC[x___][y___]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y},{Pattern,
-	Blank,BlankSequence,BlankNullSequence}]) :=
+LC[x___][y___]/; (Length[{x,y}] =!= 4) && (FCPatternFreeQ[{x,y}]) :=
 	Message[LC::argrx, "LC["<>ToString[{x}]<>"]["<>ToString[{y}]<>"]", Length[{x,y}], 4];
 
-LCD[x___][y___]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y},{Pattern,
-	Blank,BlankSequence,BlankNullSequence}]) :=
+LCD[x___][y___]/; (Length[{x,y}] =!= 4) && (FCPatternFreeQ[{x,y}]) :=
 	Message[LCD::argrx, "LCD["<>ToString[{x}]<>"]["<>ToString[{y}]<>"]", Length[{x,y}], 4];
 
-LC[x___]/; (Length[{x}] > 4) && (FreeQ2[{x},{Pattern,
-Blank,BlankSequence,BlankNullSequence}]) :=
+LC[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 	Message[LC::argrx, "LC["<>ToString[{x}]<>"]", Length[{x}], 4];
 
-LCD[x___]/; (Length[{x}] > 4) && (FreeQ2[{x},{Pattern,
-Blank,BlankSequence,BlankNullSequence}]) :=
+LCD[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 	Message[LCD::argrx, "LCD["<>ToString[{x}]<>"]", Length[{x}], 4];
 
 LC/:
@@ -1357,12 +1352,10 @@ LeftRightPartialD2 /:
 			ToBoxes[LeftRightPartialD[x],TraditionalForm];
 
 LeviCivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..,
-		opts:OptionsPattern[LeviCivita]]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y,opts},{Pattern,
-	Blank,BlankSequence,BlankNullSequence}]) :=
+		opts:OptionsPattern[LeviCivita]]/; (Length[{x,y}] =!= 4) && (FCPatternFreeQ[{x,y,opts}]) :=
 	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]["<>ToString[{y,opts}]<>"]", Length[{x,y}], 4];
 
-LeviCivita[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] > 4) && (FreeQ2[{x,opts},{Pattern,
-Blank,BlankSequence,BlankNullSequence}]) :=
+LeviCivita[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x,opts}]) :=
 	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
 
 LeviCivita[ a:Except[_?OptionQ].., opts:OptionsPattern[]] :=
@@ -1538,17 +1531,17 @@ Pair[n_ x_Momentum, y_] :=
 
 (* Here we block some malformed Pair arguments *)
 
-Pair[x_]/; (FreeQ2[{x},{Pattern, Blank,BlankSequence,BlankNullSequence}]) :=
+Pair[x_]/; FCPatternFreeQ[{x}] :=
 	(Message[Pair::argrx, "Pair["<>ToString[{x}]<>"]", Length[{x}], 2]; Abort[]);
 
-Pair[x__]/; (FreeQ2[{x},{Pattern, Blank,BlankSequence,BlankNullSequence}]) && Length[{x}]>2 :=
+Pair[x__]/; FCPatternFreeQ[{x}] && Length[{x}]>2 :=
 	(Message[Pair::argrx, "Pair["<>ToString[{x}]<>"]", Length[{x}], 2]; Abort[]);
 
-Pair[x_,y_+z_]/; ((FreeQ2[{x,y,z},{Pattern, Blank,BlankSequence,BlankNullSequence}]) &&
+Pair[x_,y_+z_]/; (FCPatternFreeQ[{x,y,z}] &&
 !MatchQ[Expand[y+z], HoldPattern[Plus][_. Momentum[_, _ : 4] ..]]) :=
 	(Message[Pair::invalid, "Pair["<>ToString[{x}]<>","<>ToString[{y+z}]<>"]"]; Abort[]);
 
-Pair[x : (LorentzIndex | ExplicitLorentzIndex)[___] + y_, z_]/; (FreeQ2[{x,y,z},{Pattern, Blank,BlankSequence,BlankNullSequence}]):=
+Pair[x : (LorentzIndex | ExplicitLorentzIndex)[___] + y_, z_]/; (FCPatternFreeQ[{x,y,z}]):=
 	(Message[Pair::invalid, "Pair["<>ToString[{x+y}]<>","<>ToString[{z}]<>"]"]; Abort[]);
 
 
@@ -1834,7 +1827,7 @@ PlusDistribution /:
 		TraditionalForm],")"}],"+"];
 
 (* by convention *)
-Polarization[k_, opts:OptionsPattern[]] /; FreeQ[k,Blank|BlankSequence|BlankNullSequence] :=
+Polarization[k_, opts:OptionsPattern[]] /; FCPatternFreeQ[{k}] :=
 	Polarization[k,Flatten[Join[FilterRules[Options[Polarization],Except[{opts}]],{opts}]]] = Polarization[k, I, opts];
 
 Polarization[-x_, I, opts:OptionsPattern[]] :=
@@ -1881,7 +1874,7 @@ polVec[k_,mu_,glu_, opts:OptionsPattern[]] :=
 	];
 
 
-PropagatorDenominator[a_ /; FreeQ2[a, {BlankNullSequence,Pattern}]] :=
+PropagatorDenominator[a_ /; FCPatternFreeQ[{a}]] :=
 	PropagatorDenominator[a, 0];
 
 PropagatorDenominator/:
@@ -2132,25 +2125,22 @@ SPE /:
 HoldPattern[Spinor[a__,{1}]] :=
 	Spinor[a];
 
-frp[y___] :=
-	FreeQ2[{y}, {Pattern, Blank,BlankSequence, BlankNullSequence,HoldForm}];
-
-Spinor[n_. x_/; (frp[x]&&FreeQ[x, Momentum]), y___/;frp[y]] :=
+Spinor[n_. x_/; (FCPatternFreeQ[{x}]&&FreeQ[x, Momentum]), y___/;FCPatternFreeQ[{y}]] :=
 	(Spinor[n x, y] = Spinor[n Momentum[x], y]) /;
-	(frp[{n, x, y}] && (n^2)===1);
+	(FCPatternFreeQ[{n, x, y}] && (n^2)===1);
 
 Spinor[kk_.+ n_. Momentum[ a_Plus, dim_ : 4], m_, y___] :=
 	Spinor[kk+ n Momentum[a, dim], m, y] =
 	(Spinor[MomentumExpand[kk + n Momentum[a, dim]] ,m,y] );
 
 Spinor[p_ , _. SmallVariable[_], in___] :=
-	Spinor[p, 0, in] /; frp[p];
+	Spinor[p, 0, in]/; FCPatternFreeQ[{p}];
 
 Spinor[p_ ] :=
-	Spinor[p,0,1] /; frp[p];
+	Spinor[p,0,1]/; FCPatternFreeQ[{p}];
 
 Spinor[p_, m_ /; FreeQ[m, Pattern]] :=
-	Spinor[p, m, 1] /; frp[p];
+	Spinor[p, m, 1]/; FCPatternFreeQ[{p}];
 
 Spinor /:
 		MakeBoxes[Spinor[p_,0,___], TraditionalForm]:=

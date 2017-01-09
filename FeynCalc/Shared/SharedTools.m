@@ -47,6 +47,12 @@ FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
+FCPatternFreeQ::usage =
+"FCPatternFreeQ[{expr}] yields True if {expr} does not contain any \
+pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
+FCPatternFreeQ[{expr},{h1,h2,...}] checks that in addition to the pattern \
+objects, no heads h1, h2, ... are present.";
+
 FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
@@ -308,6 +314,13 @@ FCAntiSymmetrize[x_,v_List] :=
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 	pref OptionValue[Factoring][expr/pref];
+
+
+FCPatternFreeQ[expr_List]:=
+	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence}];
+
+FCPatternFreeQ[expr_List ,objs_List]:=
+	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence}, objs]];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, null1, null2},

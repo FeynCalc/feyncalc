@@ -743,7 +743,7 @@ spcevs[xx___] :=
 spcev[y_List] :=
 	spcev@@y;
 
-spcev[a___,b_ /; FreeQ2[b,{Pattern, BlankSequence, BlankNullSequence}],c___] :=
+spcev[a___,b_ /; FCPatternFreeQ[{b}],c___] :=
 	b spcev[a,c] /; NonCommFreeQ[b] === True;
 
 (*added to allow nested structures like phi.(gamm1.gamm2+gamma3.gamma4).phi

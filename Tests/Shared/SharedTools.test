@@ -64,6 +64,12 @@ Tests`Shared`fcstSharedToolsFCAntiSymmetrize = {
 	f[d, b, a, c] - f[d, b, c, a] - f[d, c, a, b] + f[d, c, b, a])"}
 };
 
+Tests`Shared`fcstSharedToolsFCPatternFreeQ = {
+{"fcstSharedToolsFCPatternFreeQ-ID1","FCPatternFreeQ[{0}]","True"},
+{"fcstSharedToolsFCPatternFreeQ-ID2","FCPatternFreeQ[{a_}]","False"},
+{"fcstSharedToolsFCPatternFreeQ-ID3","FCPatternFreeQ[{g[x]},{g}]","False"}
+};
+
 Tests`Shared`fcstSharedToolsFCSplit = {
 {"fcstSharedToolsFCSplit-ID1","FCSplit[0, {z}]","{0,0}"},
 {"fcstSharedToolsFCSplit-ID2","FCSplit[1, {z}]","{1,0}"},
