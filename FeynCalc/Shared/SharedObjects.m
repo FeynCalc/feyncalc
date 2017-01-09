@@ -553,6 +553,38 @@ DiracGamma::noint =
 "DiracGamma[`1`] is forbidden in FeynCalc. If you want to specify an explicit Lorentz index, \
 please use DiracGamma[ExplicitLorentzIndex[`1`]]. Evaluation aborted!";
 
+DiracMatrix::noint =
+"DiracMatrix[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+arguments can be 0, 1, 2, 3, 5, 6 and 7. Evaluation aborted!";
+
+DiracSlash::noint =
+"DiracSlash[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+argument can be 0. Evaluation aborted!";
+
+GA::noint =
+"GA[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+arguments can be 0, 1, 2, 3, 5, 6 and 7. Evaluation aborted!";
+
+GAD::noint =
+"GAD[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+arguments can be 0, 1, 2 and 3. Evaluation aborted!";
+
+GAE::noint =
+"GAE[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+arguments can be 0, 1, 2 and 3. Evaluation aborted!";
+
+GS::noint =
+"GS[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+argument can be 0. Evaluation aborted!";
+
+GSD::noint =
+"GSD[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+argument can be 0. Evaluation aborted!";
+
+GSE::noint =
+"GSE[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
+argument can be 0. Evaluation aborted!";
+
 Momentum::lorentzhead =
 "`1` is forbidden in FeynCalc. Momentum cannot be the head of a LorentzIndex!";
 
@@ -728,7 +760,7 @@ DiracGamma[x_ (h: LorentzIndex|ExplicitLorentzIndex|Momentum)[p_, dim1_:4], dim2
 DiracGamma[(x: LorentzIndex|ExplicitLorentzIndex|Momentum)[y_, dim_:4], 4] :=
 	DiracGamma[x[y,dim]];
 
-DiracGamma[x_Integer, ___] :=
+DiracGamma[x_?NumberQ, ___] :=
 	(Message[DiracGamma::noint, x]; Abort[])/; (x=!=0 && x=!=5 && x=!=6 && x=!=7);
 
 DiracGamma[(n:5|6|7), 4] :=
@@ -838,9 +870,16 @@ DiracMatrix[(a:5|6|7), opts:OptionsPattern[]] :=
 DiracMatrix[(a:5|6|7), OptionsPattern[]] :=
 	DiracGamma[a]/; OptionValue[FCI] && OptionValue[Dimension]===4;
 
-DiracMatrix[(a:Except[5|6|7]), OptionsPattern[]] :=
+DiracMatrix[a_, OptionsPattern[]] :=
 	DiracGamma[LorentzIndex[a, OptionValue[Dimension]],
+	OptionValue[Dimension]]/; OptionValue[FCI] && Head[a]=!=DOT && !StringQ[a] && !NumberQ[a];
+
+DiracMatrix[(a:0|1|2|3), OptionsPattern[]] :=
+	DiracGamma[ExplicitLorentzIndex[a, OptionValue[Dimension]],
 	OptionValue[Dimension]]/; OptionValue[FCI] && Head[a]=!=DOT && !StringQ[a];
+
+DiracMatrix[x_?NumberQ, OptionsPattern[]] :=
+	(Message[DiracMatrix::noint, x]; Abort[])/; !MemberQ[{0, 1, 2, 3, 5, 6, 7}, x];
 
 DiracMatrix[DOT[a_,b__], opts:OptionsPattern[]] :=
 	DOT@@(DiracMatrix[#,opts]& /@ {a,b});
@@ -886,7 +925,13 @@ DiracSlash[a_,b:Except[_?OptionQ].., opts:OptionsPattern[]] :=
 
 DiracSlash[a_, OptionsPattern[]] :=
 	DiracGamma[Momentum[a, OptionValue[Dimension]],
-	OptionValue[Dimension]]/; OptionValue[FCI];
+	OptionValue[Dimension]]/; OptionValue[FCI] && !NumberQ[a];
+
+DiracSlash[0, OptionsPattern[]] :=
+	0;
+
+DiracSlash[x_?NumberQ, OptionsPattern[]] :=
+	(Message[DiracSlash::noint, x]; Abort[])/; x=!=0;
 
 DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
@@ -1070,6 +1115,15 @@ MakeBoxes[Power[FVE[a_, b_], n_], TraditionalForm] :=
 GA5 =
 	DiracGamma[5];
 
+GA[x_?NumberQ] :=
+	(Message[GA::noint, x]; Abort[])/; !MemberQ[{0, 1, 2, 3, 5, 6, 7}, x];
+
+GAD[x_?NumberQ] :=
+	(Message[GAD::noint, x]; Abort[])/; !MemberQ[{0, 1, 2, 3, 5, 6, 7}, x];
+
+GAE[x_?NumberQ] :=
+	(Message[GAE::noint, x]; Abort[])/; !MemberQ[{0, 1, 2, 3, 5, 6, 7}, x];
+
 GAD[(n:5|6|7)] :=
 	Message[DiracGamma::gamma5fail, ToString[GAD[ToString[n]]]];
 
@@ -1123,6 +1177,24 @@ GaugeXi /:
 GluonField /:
 	MakeBoxes[GluonField, TraditionalForm]:=
 		"A";
+
+GS[0] :=
+	0;
+
+GSD[0] :=
+	0;
+
+GSE[0] :=
+	0;
+
+GS[x_?NumberQ] :=
+	(Message[GS::noint, x]; Abort[])/; x=!=0;
+
+GSD[x_?NumberQ] :=
+	(Message[GSD::noint, x]; Abort[])/; x=!=0;
+
+GSE[x_?NumberQ] :=
+	(Message[GSE::noint, x]; Abort[])/; x=!=0;
 
 GS[DOT[x_,y__]] :=
 	Map[GS,DOT[x,y]];

@@ -246,6 +246,28 @@ Tests`Shared`fcstSharedObjectsMessages = {
 {"fcstSharedObjectsMessages-I24", "LeviCivita[i1,i2][i3,i4,i5]", "Null", "{Message[LeviCivita::argrx, LeviCivita[{i1, i2}][{i3, i4, i5}], 5, 4]}"}
 }
 
+Tests`Shared`fcstSharedObjectsCheckAbort = {
+{"fcstSharedObjectsCheckAbort-ID1", "CheckAbort[DiracGamma[2],True]", "True", "{Message[DiracGamma::noint, 2]}"},
+{"fcstSharedObjectsCheckAbort-ID2", "CheckAbort[DiracGamma[1.2],True]", "True", "{Message[DiracGamma::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID3", "CheckAbort[GA[1.2],True]", "True", "{Message[GA::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID4", "CheckAbort[GA[8],True]", "True", "{Message[GA::noint, 8]}"},
+{"fcstSharedObjectsCheckAbort-ID5", "CheckAbort[GAD[1.2],True]", "True", "{Message[GAD::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID6", "CheckAbort[GAD[8],True]", "True", "{Message[GAD::noint, 8]}"},
+{"fcstSharedObjectsCheckAbort-ID7", "CheckAbort[GAE[1.2],True]", "True", "{Message[GAE::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID8", "CheckAbort[GAE[8],True]", "True", "{Message[GAE::noint, 8]}"},
+{"fcstSharedObjectsCheckAbort-ID9", "CheckAbort[GS[1.2],True]", "True", "{Message[GS::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID10", "CheckAbort[GS[2],True]", "True", "{Message[GS::noint, 2]}"},
+{"fcstSharedObjectsCheckAbort-ID11", "CheckAbort[GSD[1.2],True]", "True", "{Message[GSD::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID12", "CheckAbort[GSD[2],True]", "True", "{Message[GSD::noint, 2]}"},
+{"fcstSharedObjectsCheckAbort-ID13", "CheckAbort[GSE[1.2],True]", "True", "{Message[GSE::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID14", "CheckAbort[GSE[2],True]", "True", "{Message[GSE::noint, 2]}"},
+{"fcstSharedObjectsCheckAbort-ID15", "CheckAbort[DiracMatrix[1.2],True]", "True", "{Message[DiracMatrix::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID16", "CheckAbort[DiracMatrix[8],True]", "True", "{Message[DiracMatrix::noint, 8]}"},
+{"fcstSharedObjectsCheckAbort-ID17", "CheckAbort[DiracSlash[1.2],True]", "True", "{Message[DiracSlash::noint, 1.2]}"},
+{"fcstSharedObjectsCheckAbort-ID18", "CheckAbort[DiracSlash[2],True]", "True", "{Message[DiracSlash::noint, 2]}"}
+}
+
+
 Tests`Shared`fcstSharedObjectsBehavior = {
 {"fcstSharedObjectsBehavior-ID1", "ChiralityProjector[1]", "DiracGamma[6]"},
 {"fcstSharedObjectsBehavior-ID2", "ChiralityProjector[-1]", "DiracGamma[7]"},
@@ -309,8 +331,7 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 {"fcstSharedObjectsBehavior-ID38", "DiracMatrix[1]", "DiracGamma[ExplicitLorentzIndex[1]]"},
 {"fcstSharedObjectsBehavior-ID39", "DiracMatrix[2]", "DiracGamma[ExplicitLorentzIndex[2]]"},
 {"fcstSharedObjectsBehavior-ID40", "DiracMatrix[3]", "DiracGamma[ExplicitLorentzIndex[3]]"},
-{"fcstSharedObjectsBehavior-ID41", "DiracMatrix[4]", "DiracGamma[ExplicitLorentzIndex[4]]"},
-{"fcstSharedObjectsBehavior-ID41.1", "DiracMatrix[mu]", "DiracGamma[LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID41", "DiracMatrix[mu]", "DiracGamma[LorentzIndex[mu]]"},
 {"fcstSharedObjectsBehavior-ID41.2", "DiracMatrix[mu, nu, rho]", "DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu]].DiracGamma[
 LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID41.3", "DiracMatrix[mu, nu, rho, Dimension -> D]", "DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu, D],
@@ -330,6 +351,7 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 	"x  DiracSigma[DiracGamma[i], DiracGamma[j]]"},
 {"fcstSharedObjectsBehavior-ID53", "DiracSigma[x DiracGamma[i], y z DiracGamma[j]]", "x y z DiracSigma[DiracGamma[i], DiracGamma[j]]"},
 {"fcstSharedObjectsBehavior-ID54", "DiracSlash[p]", "DiracGamma[Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID54.1", "DiracSlash[0]", "0"},
 {"fcstSharedObjectsBehavior-ID55", "DiracSlash[p, Dimension -> D]", "DiracGamma[Momentum[p, D], D]"},
 {"fcstSharedObjectsBehavior-ID56", "DiracSlash[p , l, k]", "DiracGamma[Momentum[p]].DiracGamma[Momentum[l]].DiracGamma[Momentum[k]]"},
 {"fcstSharedObjectsBehavior-ID57", "DiracSlash[p , l, k, Dimension -> D]", "DiracGamma[Momentum[p, D], D].DiracGamma[Momentum[l, D], D].DiracGamma[Momentum[k, D], D]"},
@@ -402,6 +424,9 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID107", "GSD[a, b, c]", " GSD[a].GSD[b].GSD[c]"},
 {"fcstSharedObjectsBehavior-ID107.1", "GSE[a.b.c]", " GSE[a].GSE[b].GSE[c]"},
 {"fcstSharedObjectsBehavior-ID107.2", "GSE[a, b, c]", " GSE[a].GSE[b].GSE[c]"},
+{"fcstSharedObjectsBehavior-ID107.3", "GS[0]", "0"},
+{"fcstSharedObjectsBehavior-ID107.4", "GSD[0]", "0"},
+{"fcstSharedObjectsBehavior-ID107.5", "GSE[0]", "0"},
 {"fcstSharedObjectsBehavior-ID108", "IFPD[Momentum[OPEDelta, a], 0]", " 0"},
 {"fcstSharedObjectsBehavior-ID109", "LeftPartialD[(1)]", " 1"},
 {"fcstSharedObjectsBehavior-ID110", "LeftPartialD[(1), (1), (1)]", "1"},
