@@ -25,31 +25,30 @@ Begin["`PairContract`Private`"]
 
 SetAttributes[PairContract3,Orderless];
 
-PairContract3[LorentzIndex[z_,di___],
-							LorentzIndex[z_,di___]] :=
+PairContract3[LorentzIndex[z_,di___], LorentzIndex[z_,di___]] :=
 	If[ {di}==={},
 		4,
 		di
 	];
+
 PairContract3[Momentum[a__], Momentum[b__]] :=
-	ExpandScalarProduct[Momentum[a], Momentum[b]];
+	ExpandScalarProduct[Pair[Momentum[a], Momentum[b]],FCI->False];
 
 PairContract3 /:
-PairContract3[LorentzIndex[__],LorentzIndex[x__]]^2 :=
-PairContract3[LorentzIndex[x],LorentzIndex[x]];
+	PairContract3[LorentzIndex[__],LorentzIndex[x__]]^2 :=
+		PairContract3[LorentzIndex[x],LorentzIndex[x]];
 
 PairContract3 /:
-PairContract3[LorentzIndex[__],x_]^2 :=
-ExpandScalarProduct[x,x];
+	PairContract3[LorentzIndex[__],x_]^2 :=
+		ExpandScalarProduct[x,x];
 
 
 PairContract3/:
-PairContract3[LorentzIndex[z__],x_] *
-PairContract3[LorentzIndex[z__],y_] :=
-If[ FreeQ[{x,y},LorentzIndex],
-	ExpandScalarProduct[x,y],
-	PairContract3[x,y]
-];
+	PairContract3[LorentzIndex[z__],x_] PairContract3[LorentzIndex[z__],y_] :=
+		If[ FreeQ[{x,y}, LorentzIndex],
+			ExpandScalarProduct[x,y],
+			PairContract3[x,y]
+		];
 
 SetAttributes[PairContract2,Orderless];
 

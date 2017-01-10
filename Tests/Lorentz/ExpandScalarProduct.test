@@ -59,5 +59,7 @@ myTens[z, Momentum[a], Momentum[d]] +
 myTens[z, Momentum[b], Momentum[c]] +
 myTens[z, Momentum[b], Momentum[d]]"},
 {"fcstExpandScalarProduct-ID11","UnDeclareFCTensor[myTens]; \n ExpandScalarProduct[
-myTens[z, Momentum[a + b], Momentum[c + d]]]","myTens[z, Momentum[a + b], Momentum[c + d]]"}
+myTens[z, Momentum[a + b], Momentum[c + d]]]","myTens[z, Momentum[a + b], Momentum[c + d]]"},
+{"fcstExpandScalarProduct-ID12","SP[p, p] = (a + b)^2; \n tmp = ExpandScalarProduct[Pair[Momentum[p], Momentum[p]]]; \n
+FCClearScalarProducts[]; \n tmp","(a + b)^2"}
 }
