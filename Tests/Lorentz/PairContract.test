@@ -16,3 +16,8 @@
 Tests`Lorentz`fcstPairContract = {
 {"fcstPairContract-ID1","PairContract[0,x]","0"}
 }
+
+Tests`Lorentz`fcstPairContract3 = {
+{"fcstPairContract3-ID1","SP[p, p] = (a + b)^2; \n tmp = PairContract3[Momentum[p], Momentum[p]]; \n
+FCClearScalarProducts[]; \n tmp","(a + b)^2"}
+}

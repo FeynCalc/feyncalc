@@ -22,6 +22,7 @@ End[]
 Begin["`ExpandScalarProduct`Private`"]
 
 ScalarProductExpand = ExpandScalarProduct;
+tmpHead;
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
@@ -36,6 +37,11 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 
 		If[ OptionValue[FCI],
 			nx = FCI[nx]
+		];
+
+		(* This is to speed up things when dealing with tirival scalar products *)
+		If[	MatchQ[nx, Pair[Momentum[_, ___], Momentum[_, ___]]] && FreeQ[nx,Plus],
+			Return[nx]
 		];
 
 		If[ FreeQ2[nx,$FCTensorList],
@@ -66,7 +72,7 @@ pairexpand[x_] :=
 	x /. (head : (Alternatives @@ $FCTensorList))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
 
 scevdoit[head_,arg__] :=
-	Distribute[head@@(Expand[MomentumExpand/@{arg}])];
+	Distribute[tmpHead@@(Expand[MomentumExpand/@{arg}])]/.tmpHead->head;
 
 FCPrint[1,"ExpandScalarProduct.m loaded."];
 End[]
