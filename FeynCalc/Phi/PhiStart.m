@@ -328,7 +328,7 @@ SetOptions[SetMandelstam, Dimension->{4,D,SpaceTimeDimensions}];
 
 SetOptions[FeynRule, InitialFunction->PhiToFC];
 
-(*Compapatibility with PartialD-operator notation*)
+(*Compapatibility with FCPartialD-operator notation*)
 SetOptions[ExpandPartialD, PartialDRelations -> Union[
 		(*Original stuff*)(PartialDRelations /. Options[ExpandPartialD]),
 		(*Have ExpandPartialD use FieldDerivative for NM products*)

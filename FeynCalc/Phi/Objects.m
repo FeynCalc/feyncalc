@@ -1344,7 +1344,7 @@ FeynCalc functions
 *)
 
 fcli =    LorentzIndex;
-fcpd = ParitalD;
+fcpd = FCPartialD;
 fcsuni = SUNIndex;
 fcqf = QuantumField;
 

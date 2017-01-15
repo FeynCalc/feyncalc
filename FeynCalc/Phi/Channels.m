@@ -1185,7 +1185,7 @@ NM[a___, UTrace1[b_?(!FreeQ[#,LorentzIndex]&)], c___]*d_ :>
 			(NM[a, UTrace1[b], c] /.
 			(UTrace1[e_] :>
 				UTrace1[e/.((Rule[#[[1]], suninx0@@#[[2,1]]])& /@ inxlist)/.
-									(*PartialD automatically put on head LorentzIndex which screws up things*)
+									(*FCPartialD automatically put on head LorentzIndex which screws up things*)
 									((Rule[FCPartialD[#[[1]]],partd[linx0@@#[[2,1]]]])& /@ linxlist)/.
 									((Rule[#[[1]],linx0@@#[[2,1]]])& /@ linxlist)]))*(d),
 
@@ -1477,7 +1477,7 @@ dummyrulessq2 = {
 	(ff[FCPartialD[LorentzIndex[ld][ll]], FCPartialD[LorentzIndex[ln][ll + 1]], fi])^2};
 
 (* This is to clean up products of QuantumField[
-		PartialD[LorentzIndex[DerivativeInternDummy][0]], p,
+		FCPartialD[LorentzIndex[DerivativeInternDummy][0]], p,
 		LorentzIndex[DerivativeInternDummy][0]][x] *)
 fixderindices1 = {NM->nmm1, NM1->nmm1};
 fixderindices2 = {nmm1[a__]?((FreeQ[#, nmm1[__?(!FreeQ[#,
