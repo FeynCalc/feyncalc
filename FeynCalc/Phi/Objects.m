@@ -2552,10 +2552,13 @@ VariableBoxes[var_, (opts___Rule | opts___List)] :=
 $Substitutions = {};
 $PreSubstitutions[x_?((# =!= 0) &), ar___] :=
 	($PreSubstitutions[0] /. {SubX -> x, SubArgs :> Sequence[ar]});
+
 $PostSubstitutions[x_?((# =!= 0) &), ar___] :=
 	($PostSubstitutions[0] /. {SubX -> x, SubArgs :> Sequence[ar]});
+
 $PreSubstitutions[0] = {};
 $PostSubstitutions[0] = {};
+
 $StandardSUNBasis = True;
 $ConstantIsoIndices =
 {Global`I1,Global`I2,Global`I3,Global`I4,Global`I5,Global`I6};
@@ -6223,30 +6226,36 @@ untugrules = {
 
 
 DiscardTerms1[l_, opts___Rule] :=
-	Block[ {nodrop, tempfac, tempfacts, retord, rf, ro, ddt1, arg, p, x, ders,
-			ar, br, qs, ttf, rest, pp, cc, tt, bb, aa, ddt2, ddt3, ddt, tr},
-		nodrop = Alternatives @@ (NoDrop /. Flatten[{opts}] /.
-						Options[DiscardTerms]);
+	Block[ {nodrop,  tempfacts, retord, rf, ro, ddt1,
+			pp, cc,  bb, aa, ddt2, ddt3, ddt, tr,retRule},
+		nodrop = Alternatives @@ (NoDrop /. Flatten[{opts}] /. Options[DiscardTerms]);
+
 		Clear[tempfac, tempfacts, retord, rf,ro];
-		SetAttributes[
-					tempfac, {NumericFunction, NHoldAll}];
+		SetAttributes[tempfac, {NumericFunction, NHoldAll}];
 		DeclareUScalar[tempfac, ppf];
 		Adjoint[tempfac[a___]] :=
 			tempfac[a];
-		Conjugate[tempfac[a___]] ^:= tempfac[a];
-		Transpose[tempfac[a___]] ^:= tempfac[a];
+
+		Conjugate[tempfac[a___]] ^:=
+			tempfac[a];
+		Transpose[tempfac[a___]] ^:=
+			tempfac[a];
 		tempfacts = 1;
 		retord = (Retain /. Flatten[{opts}] /. Options[DiscardTerms]);
-		Do[rf = retord[[rep, 1]];
-		ro = retord[[rep, 2]];
-		tempfacts = tempfacts*tempfac @@ rf, {rep, Length[retord]}];
-		FCPrint[3, "Putting on overall factor ", tempfacts^2];
-		FCPrint[2,
-			"Putting on dummy factors"];
-		ddt1 =
-				tempfacts^2*l /.
+
+		Do[
+			rf = retord[[rep, 1]];
+			ro = retord[[rep, 2]];
+			tempfacts = tempfacts*tempfac @@ rf, {rep, Length[retord]}
+		];
+		FCPrint[2, "Putting on overall factor ", tempfacts^2];
+		FCPrint[2, "Putting on dummy factors"];
+
+		ddt1 = tempfacts^2*l /.
 		QuantumField[arg__][x_] -> argrec[QuantumField[arg], x] /.
-		{QuantumField[ders___fcpd, Particle[p_, ar___RenormalizationState,
+		{
+
+			QuantumField[ders___fcpd, Particle[p_, ar___RenormalizationState,
 				br___RenormalizationScheme, qs___ExpansionState], rest___] :>
 				tempfac[p, ar, br, qs]* QuantumField[ders, Particle[p, ar, br, qs], rest],
 				QuantumField[ders___fcpd, DiracBar[ Particle[p_, ar___RenormalizationState,
@@ -6257,29 +6266,36 @@ DiscardTerms1[l_, opts___Rule] :=
 					If[ Length[retord] === 1 && rf[[1]] === _,
 						tempfac[tt___] /; FreeQ[{tt}, nodrop] -> tempfac[ppf[]],
 						{}
-					];
+				];
+
 		FCPrint[2, "Expanding NM products"];
 		ddt2 = NMExpand[ddt1];
+
 		FCPrint[2, "Expanding DOT products"];
 		FCPrint[3, ddt2];
 		ddt3 = DotExpand[ddt2];
 		FCPrint[2, "Expanding"];
 		FCPrint[3, ddt3];
-		ddt = Expand[ddt3 /. UTrace1 -> tr /. tr -> UTrace1] /. (FCPrint[2,
-									"Discarding terms"];
-																Flatten[
-																	Table[rf = retord[[rep, 1]];
-																		ro = retord[[rep, 2]];
-																		{(tempfac @@ rf)^(ro + 2) -> 1,
-																		tempfac[ppf[]]^(ro + 2) -> 1}, {rep,
-																			Length[retord]}]]) /.
-						tempfac[tt___] /; FreeQ[{tt}, nodrop] -> 0 /.
-					DropFactor[___] -> 1;
+		ddt = Expand2[ddt3 /. UTrace1 -> tr /. tr -> UTrace1, tempfac];
+
+		FCPrint[2, "Discarding terms"];
+
+
+		retRule = Flatten[Table[rf = retord[[rep, 1]]; ro = retord[[rep, 2]];
+			{(tempfac @@ rf)^(ro + 2) -> 1, tempfac[ppf[]]^(ro + 2) -> 1}, {rep, Length[retord]}]];
+
+		FCPrint[2, "PHI: DiscardTerms: DiscardTerms1: retRule:", retRule];
+
+		ddt = ddt /. retRule;
+
+		Global`ZZZ = ddt;
+
+		ddt = ddt /. tempfac[tt___] /; FreeQ[{tt}, nodrop] -> 0 /. DropFactor[___] -> 1;
+
 		UndeclareUScalar[tempfac, ppf];
 		If[ (CommutatorReduce /. Flatten[{opts}] /. Options[DiscardTerms]),
-			ddt // (FCPrint[2,
-								"Applying CommutatorReduce"];
-					CommutatorReduce[#,opts])&,
+			FCPrint[2, "Applying CommutatorReduce"];
+			ddt // (CommutatorReduce[#,opts])&,
 			ddt
 		]
 	];
@@ -6289,7 +6305,7 @@ lpat[i_Integer] :=
 	_?((# > i) &);
 
 DiscardTerms2[l_, opts___Rule] :=
-	Block[ {nodrop, tempfac, tempfacts, retord, rf, ro, ddt1, arg, p, x, ders,
+	Block[ {nodrop,  tempfacts, retord, rf, ro, ddt1, arg, p, x, ders,
 			ar, br, qs, ttf, rest, pp, cc, tt, bb, aa, ddtt, ddt, ddt0},
 		Clear[tempfac, tempfacts, tempfactcoeff, retord, rf, ro];
 		$UScalars = Union[$UScalars, {tempfac, ppf}];
