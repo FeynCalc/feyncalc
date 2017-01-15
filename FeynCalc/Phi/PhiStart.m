@@ -44,7 +44,7 @@ directory 'Factors'.
 (* Abbreviations *)
 
 Phi`Objects`PMV::usage =
-"PMV[x_,opts___] := PhiMesonIsoVector[opts][x].";
+	"PMV[x_,opts___] := PhiMesonIsoVector[opts][x].";
 
 PMV[x_,opts___] :=
 	PhiMesonIsoVector[opts][x];
@@ -56,10 +56,21 @@ PMV[x_,opts___] :=
 Adjoint[UMatrix[UQuarkMass[a___],b___]] :=
 	UMatrix[UQuarkMass[a],b];
 
-DecayConstant/:Conjugate[ax_DecayConstant]=ax;
-ParticleMass/:Conjugate[ax_ParticleMass]=ax;
-QuarkCondensate/:Conjugate[ax_QuarkCondensate]=ax;
-CouplingConstant/:Conjugate[ax_CouplingConstant]=ax;
+DecayConstant/:
+	Conjugate[ax_DecayConstant]=
+		ax;
+
+ParticleMass/:
+	Conjugate[ax_ParticleMass]=
+		ax;
+
+QuarkCondensate/:
+	Conjugate[ax_QuarkCondensate]=
+		ax;
+
+CouplingConstant/:
+	Conjugate[ax_CouplingConstant]=
+		ax;
 
 (* ************************************************************** *)
 
@@ -78,9 +89,8 @@ k/: Format[k,TraditionalForm] :=
 	StyleForm["k",FontSlant->"Italic"];
 
 DiracTrace/:
-MakeBoxes[
-DiracTrace[a__,DiracTraceEvaluate->False],TraditionalForm]:=
-MakeBoxes[DiracTrace[a],TraditionalForm];
+	MakeBoxes[DiracTrace[a__,DiracTraceEvaluate->False],TraditionalForm]:=
+		MakeBoxes[DiracTrace[a],TraditionalForm];
 
 (* ************************************************************** *)
 
@@ -88,8 +98,7 @@ MakeBoxes[DiracTrace[a],TraditionalForm];
 
 (* FeynArts 3 uses CTOrder instead of CountertermOrder *)
 
-If[ FileNames["*.jar", {ToFileName[$FeynCalcDirectory, "FeynArts"]}]=!=
-{},
+If[ FileNames["*.jar", {ToFileName[$FeynCalcDirectory, "FeynArts"]}]=!= {},
 	CountertermOrder = FeynArts`CTOrder
 ];
 
@@ -101,108 +110,160 @@ If[ FileNames["*.jar", {ToFileName[$FeynCalcDirectory, "FeynArts"]}]=!=
 (*FALabel[_,phii_]:="\[Psi]"<>ToString[phii];*)
 FALabel[PhiMeson,0] :=
 	"\[CurlyPhi]";
+
 FALabel[PhiMeson[0],_] :=
 	"\[CurlyPhi]";
+
 FeynArts`TheLabel[PseudoScalar1] :=
 	"\[CurlyPhi]";
+
 FALabel[Pion,0] :=
 	"\[Pi]";
+
 FALabel[Pion[0],_] :=
 	"\[Pi]";
+
 FeynArts`TheLabel[PseudoScalar2] :=
 	"\[Pi]";
+
 FALabel[Kaon,0] :=
 	"K";
+
 FALabel[Kaon[0],_] :=
 	"K";
+
 FeynArts`TheLabel[PseudoScalar6] :=
 	"K";
+
 FALabel[KaonPlus,0] :=
 	"K+";
+
 FALabel[KaonPlus[0],_] :=
 	"K+";
+
 FeynArts`TheLabel[PseudoScalar7] :=
 	"K+";
+
 FALabel[KaonZero,0] :=
 	"K0";
+
 FALabel[KaonZero[0],_] :=
 	"K0";
+
 FeynArts`TheLabel[PseudoScalar8] :=
 	"K0";
+
 FALabel[KaonZeroBar,0] :=
 	"K0_";
+
 FALabel[KaonZeroBar[0],_] :=
 	"K0_";
+
 FeynArts`TheLabel[PseudoScalar9] :=
 	"K0_";
+
 FALabel[KaonMinus,0] :=
 	"K-";
+
 FALabel[KaonMinus[0],_] :=
 	"K-";
+
 FeynArts`TheLabel[PseudoScalar10] :=
 	"K-";
+
 FALabel[Photon,0] :=
 	"\[Gamma]";
+
 FALabel[Photon[0],_] :=
 	"\[Gamma]";
+
 FeynArts`TheLabel[Vector1] :=
 	"\[Gamma]";
+
 FALabel[Vector[0],0] :=
 	"V";
+
 FALabel[Vector[0][0],_] :=
 	"V";
+
 FeynArts`TheLabel[Vector0] :=
 	"V";
+
 FALabel[AxialVector[0],0] :=
 	"A";
+
 FALabel[AxialVector[0][0],_] :=
 	"A";
+
 FeynArts`TheLabel[AxialVector0] :=
 	"A";
+
 FALabel[Fermion[1],0] :=
 	"\[Psi]";
+
 FALabel[Fermion[1][0],_] :=
 	"\[Psi]";
+
 FeynArts`TheLabel[Fermion1] :=
 	"\[Psi]";
+
 FALabel[Fermion[1,1],1] :=
 	"\[Nu]";
+
 FALabel[Fermion[1,1][1],_] :=
 	"\[Nu]";
+
 FALabel[Nucleon,0] :=
 	"N";
+
 FALabel[Nucleon[0],_] :=
 	"N";
+
 FeynArts`TheLabel[Fermion20] :=
 	"N";
+
 FALabel[Electron,0] :=
 	"e";
+
 FALabel[Electron[0],_] :=
 	"e";
+
 FeynArts`TheLabel[Fermion7] :=
 	"e";
+
 FALabel[Scalar[0],0] :=
 	"S";
+
 FALabel[Scalar[0][0],_] :=
 	"S";
+
 FeynArts`TheLabel[Scalar0] :=
 	"S";
+
 FALabel[Scalar[1],0] :=
 	"S";
+
 FALabel[Scalar[1][0],_] :=
 	"S";
+
 FeynArts`TheLabel[Scalar1] :=
 	"S";
+
 FALabel[Scalar[2],0] :=
 	"s";
+
 FALabel[Scalar[2][0],_] :=
 	"s";
+
 FeynArts`TheLabel[Scalar2] :=
 	"s";
+
 FALabel[PseudoScalar[0],0] :=
 	"P";
+
 FALabel[PseudoScalar[0][0],_] :=
 	"P";
+
 FeynArts`TheLabel[PseudoScalar0] :=
 	"P";
 
@@ -210,15 +271,17 @@ FeynArts`TheLabel[PseudoScalar0] :=
 
 (* Change a few FeynCalc options *)
 
-	$FCS = Union[$FCS, {PMV}];
-	FeynCalc`Lagrangian::usage =
-		"Lagrangian[m[pars]] returns the raw form of the lagrangian of the model \
+$FCS = Union[$FCS, {PMV}];
+
+FeynCalc`Lagrangian::usage =
+"Lagrangian[m[pars]] returns the raw form of the lagrangian of the model \
 m and with parameters pars (e.g. the dimension of the gauge group and the \
 order in the perturbative expansion).  To get the full form, use \
 ArgumentsSupply.  Lagrangian[\"oqu\"] gives the unpolarized quark operator. \
 Lagrangian[\"oqp\"] gives the polarized quark operator.";
-	FeynCalc`CouplingConstant::usage =
-		"CouplingConstant is the head of coupling constants.  CouplingConstant \
+
+FeynCalc`CouplingConstant::usage =
+"CouplingConstant is the head of coupling constants.  CouplingConstant \
 takes three extra optional arguments, with head RenormalizationState, \
 RenormalizationScheme and ExpansionState respectively.  E.g. \
 CouplingConstant[QED[1]] is the unit charge, CouplingConstant[ChPT2[4],1] \
@@ -227,15 +290,16 @@ CouplingConstant[a_,b_,c___][i_] := \
 CouplingConstant[a,b,RenormalizationState[i],c].  \
 CouplingConstant is also an option for several Feynman rule functions and for \
 CovariantD and FieldStrength.";
-	$Multiplications = Union[$Multiplications,{Times, NM, IsoDot, IsoCross,
-														IsoSymmetricCross, UDot}];
-	$DistributiveFunctions = Union[$DistributiveFunctions,
-	{Conjugate, ComplexConjugate, Transpose, Adjoint, UTrace, UTrace1, Iso}];
-	$Containers = {IsoVector, UVector, UMatrix};
-	Options[CovariantFieldDerivative] = {Explicit->True, DiagonalToU->True,
-			(*RemoveIntegerIndices->False,*)  SUNN->2, UDimension->Automatic};
-	CovariantFieldDerivative::usage =
-		"CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is the covariant \
+
+$Multiplications = Union[$Multiplications,{Times, NM, IsoDot, IsoCross, IsoSymmetricCross, UDot}];
+
+$DistributiveFunctions = Union[$DistributiveFunctions, {Conjugate, ComplexConjugate, Transpose, Adjoint, UTrace, UTrace1, Iso}];
+$Containers = {IsoVector, UVector, UMatrix};
+
+Options[CovariantFieldDerivative] = {Explicit->True, DiagonalToU->True,  SUNN->2, UDimension->Automatic};
+
+CovariantFieldDerivative::usage =
+"CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is the covariant \
 derivative of f[x] with respect to space-time variables x and with Lorentz \
 indices li1, li2,... The default CovariantFieldDerivative is taken from \
 mesonic ChPT and includes the external sources Vector and AxialVector, which \
@@ -247,143 +311,137 @@ CovariantFieldDerivative is recognized by ArgumentsSupply and partly by \
 UNMSplit, that is, for UNMSplit to work, the 'extra' part apart from the \
 derivative of CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] should not \
 have a meson-field dependence.";
-	SetOptions[CheckDB, Directory ->
-	ToFileName[{$FeynCalcDirectory,"Phi"}, "Storage"],
+
+SetOptions[CheckDB, Directory -> ToFileName[{$FeynCalcDirectory,"Phi"}, "Storage"],
 	ForceSave -> False, NoSave -> False, Check -> False];
-	SetOptions[ILimit, FunctionLimits -> {Log -> Log,
-	LeutwylerJBar -> (LeutwylerJBar[
+
+SetOptions[ILimit,
+	FunctionLimits -> {Log -> Log, LeutwylerJBar -> (LeutwylerJBar[
 	Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
 	LeutwylerJBarEvaluation -> "subthreshold",
-	ExplicitLeutwylerSigma -> True]&)}];
-	SetOptions[B0,
-	BReduce->False,B0Unique->True,B0Real->False];
-	SetOptions[SetMandelstam,
-	Dimension->{4,D,SpaceTimeDimensions}];
-	SetOptions[FeynRule,
-	InitialFunction->PhiToFC];
+	ExplicitLeutwylerSigma -> True]&)}
+];
 
-	(*SetOptions[OneLoop,
-	WriteOutPaVe -> ToFileName[
-	{FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
-	$PathnameSeparator];
+SetOptions[B0, BReduce->False,B0Unique->True,B0Real->False];
 
-	SetOptions[PaVeReduce,
-	WriteOutPaVe -> ToFileName[
-	{FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
-	$PathnameSeparator];*)
+SetOptions[SetMandelstam, Dimension->{4,D,SpaceTimeDimensions}];
 
-	(*Compapatibility with PartialD-operator notation*)
-	SetOptions[ExpandPartialD,
-	PartialDRelations -> Union[
-	(*Original stuff*)(PartialDRelations /. Options[ExpandPartialD]),
-	(*Have ExpandPartialD use FieldDerivative for NM products*)
-		{NM[a___, (FCPartialD|RightPartialD)[x_,LorentzIndex[mu_]], b___] :>
-		NM[a, FieldDerivative[NM[b], x, LorentzIndex[mu]]],
-		NM[a___, (FCPartialD|RightPartialD)[LorentzIndex[mu_]], b___] :>
-		NM[a, FieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go =
-				False;
-															{b} /. ((QuantumField[__][
-																			y_?AtomQ] | _[___, QuantumField[__], ___][
-																			y_?AtomQ]) :> (go = True;
-																						z = y));
-															go),
-		NM[a___, LeftPartialD[x_,LorentzIndex[mu_]], b___] :>
-		NM[FieldDerivative[NM[a], x, LorentzIndex[mu]], b],
-		NM[a___, LeftPartialD[LorentzIndex[mu_]], b___] :>
-		NM[FieldDerivative[NM[a], z, LorentzIndex[mu]], b] /; (go =
-				False;
-															{a} /. ((QuantumField[__][
-																			y_?AtomQ] | _[___, QuantumField[__], ___][
-																			y_?AtomQ]) :> (go = True;
-																						z = y));
-															go),
-		NM[a___, CovariantD[x_,LorentzIndex[mu_]], b___] :>
-		NM[a, CovariantFieldDerivative[NM[b], x, LorentzIndex[mu]]],
-		NM[a___, CovariantD[LorentzIndex[mu_]], b___] :>
-		NM[a, CovariantFieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go =
-				False;
-																		{b} /. ((QuantumField[__][
-																					y_?AtomQ] | _[___, QuantumField[__], ___][
-																					y_?AtomQ]) :> (go = True;
-																									z = y));
-																		go),
-		NM[UMatrix[UIdentity, ___],
-			(FCPartialD | RightPartialD | LeftPartialD)[__]] :> 0}
+SetOptions[FeynRule, InitialFunction->PhiToFC];
+
+(*Compapatibility with PartialD-operator notation*)
+SetOptions[ExpandPartialD, PartialDRelations -> Union[
+		(*Original stuff*)(PartialDRelations /. Options[ExpandPartialD]),
+		(*Have ExpandPartialD use FieldDerivative for NM products*)
+		{
+			NM[a___, (FCPartialD|RightPartialD)[x_,LorentzIndex[mu_]], b___] :>
+				NM[a, FieldDerivative[NM[b], x, LorentzIndex[mu]]],
+			NM[a___, (FCPartialD|RightPartialD)[LorentzIndex[mu_]], b___] :>
+				NM[a, FieldDerivative[NM[b], z, LorentzIndex[mu]]] /;
+				(go = False; {b} /. ((QuantumField[__][y_?AtomQ] | _[___, QuantumField[__], ___][y_?AtomQ]) :> (go = True; z = y)); go),
+			NM[a___, LeftPartialD[x_,LorentzIndex[mu_]], b___] :>
+				NM[FieldDerivative[NM[a], x, LorentzIndex[mu]], b],
+			NM[a___, LeftPartialD[LorentzIndex[mu_]], b___] :>
+				NM[FieldDerivative[NM[a], z, LorentzIndex[mu]], b] /; (go =	False; {a} /. ((QuantumField[__][y_?AtomQ] |
+				_[___, QuantumField[__], ___][y_?AtomQ]) :> (go = True; z = y)); go),
+			NM[a___, CovariantD[x_,LorentzIndex[mu_]], b___] :>
+				NM[a, CovariantFieldDerivative[NM[b], x, LorentzIndex[mu]]],
+			NM[a___, CovariantD[LorentzIndex[mu_]], b___] :>
+				NM[a, CovariantFieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go = False; {b} /. ((QuantumField[__][
+				y_?AtomQ] | _[___, QuantumField[__], ___][y_?AtomQ]) :> (go = True; z = y)); go),
+			NM[UMatrix[UIdentity, ___], (FCPartialD | RightPartialD | LeftPartialD)[__]] :>
+				0
+		}
 	]];
 
-	(* Not sure why this is necessary, but e.g. the calculation of the electron self energy in
-		QEDRadiativeCorrections.nb fails without. *)
-	SetOptions[FourVector, FeynCalcInternal -> False];
-	SetOptions[MetricTensor, FeynCalcInternal -> False];
-	SetOptions[DiracSlash, FeynCalcInternal -> False];
+(* Not sure why this is necessary, but e.g. the calculation of the electron self energy in
+	QEDRadiativeCorrections.nb fails without. *)
+(*TODO: Remove this *)
+SetOptions[FourVector, FeynCalcInternal -> False];
+SetOptions[MetricTensor, FeynCalcInternal -> False];
+SetOptions[DiracSlash, FeynCalcInternal -> False];
 
-	(* A static hack. Not very pretty. Just to have ExpandPartialD work for
-		a few PHI examples (will have to be reevaluated when changing
-		$UMatrices if ExpandPartialD is to work for the new UMatrices) *)
-	DeclareNonCommutative /@ $UMatrices;
+(* A static hack. Not very pretty. Just to have ExpandPartialD work for
+	a few PHI examples (will have to be reevaluated when changing
+	$UMatrices if ExpandPartialD is to work for the new UMatrices) *)
+DeclareNonCommutative /@ $UMatrices;
 
-	(* Have WFRenormalize work with Dirac matrices *)
-	DeclareNonCommutative[WFFactor1];
-	Phi`Objects`FunctionalDerivative::usage =
-			"FunctionalDerivative is FunctionalD adapted for use with Phi";
-	Phi`Objects`FunctionalDerivative[x_, o__] :=
-		Block[ {tr, r, nm, c, d, i, f},
-			i = 0;
-			f :=
-				(++i);
-			FunctionalD[
-					PhiToFC[x /. HoldPattern[NM[d__]] :> DOT[nm[f], d]] /.
-						UTrace1 -> ((tr*#) &), o] //. {DOT[nm[_], c__] :> NM[c],
-					tr*r__ :> UTrace[Times[r]]}
-		];
-	$Abbreviations =
+(* Have WFRenormalize work with Dirac matrices *)
+DeclareNonCommutative[WFFactor1];
+Phi`Objects`FunctionalDerivative::usage =
+	"FunctionalDerivative is FunctionalD adapted for use with Phi";
+
+Phi`Objects`FunctionalDerivative[x_, o__] :=
+	Block[ {tr, r, nm, c, d, i, f},
+		i = 0;
+		f := (++i);
+		FunctionalD[ PhiToFC[x /. HoldPattern[NM[d__]] :> DOT[nm[f], d]] /. UTrace1 -> ((tr*#) &), o] //.
+			{DOT[nm[_], c__] :> NM[c], tr*r__ :> UTrace[Times[r]]}
+	];
+
+$Abbreviations =
 	Union[$Abbreviations,
-	{"Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
-	"ParticleMass" -> "m", "PseudoScalar" -> "PS", "Scalar" -> "S",
-	"Vector" -> "V", "AxialVector" -> "AV", "Fermion" -> "F"}];
+		{	"Momentum" -> "",
+			"Pair" -> "",
+			"RenormalizationState" -> "",
+			"ParticleMass" -> "m",
+			"PseudoScalar" -> "PS",
+			"Scalar" -> "S",
+			"Vector" -> "V",
+			"AxialVector" -> "AV",
+			"Fermion" -> "F"}
+	];
 
-	(* Commented out 5/3-2000.
-			I think its redundant and definitions on SUNIndex slow down everything. *)
-	(* Well - not quite so. Uncommented again 21/5-2001 *)
-	NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
-	NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
-	Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
-	Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
-	NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
-	NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
-	Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
-	Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
+(* Commented out 5/3-2000. I think its redundant and definitions on SUNIndex slow down everything. *)
+(* Well - not quite so. Uncommented again 21/5-2001 *)
 
-		(*Added 3/11-2002 to contract also denominators. F.Orellana.
-		Unfortunately it slows down things, so we might want to add an option
-		to disable it...*)(*Moved here from Contract.m, 28/2-2003,
-		because Rolf commented it out there...*)
-	Contract[x__, opts___Rule] :=
-		(Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :>
-		inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@
-		Select[{a, b, c}, ! MatchQ[#, _^-1] &]), opts] /. inv -> ((1/#)&))/;
-		!FreeQ[{x}, _Pair^-1];
+NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:=
+	NM[a, b[SUNIndex[i]], c];
+
+NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:=
+	NM[a, b[SUNIndex[i]], c];
+
+Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:=
+	Times[a, b[SUNIndex[i]], c];
+
+Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:=
+	Times[a, b[SUNIndex[i]], c];
+
+NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:=
+	NM[a, b[UIndex[i]], c];
+
+NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:=
+	NM[a, b[UIndex[i]], c];
+
+Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:=
+	Times[a, b[UIndex[i]], c];
+
+Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:=
+	Times[a, b[UIndex[i]], c];
+
+(*Added 3/11-2002 to contract also denominators. F.Orellana.
+Unfortunately it slows down things, so we might want to add an option
+to disable it...*)(*Moved here from Contract.m, 28/2-2003,
+because Rolf commented it out there...*)
+(* TODO ??? *)
+Contract[x__, opts___Rule] :=
+	(Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :>
+	inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@ Select[{a, b, c}, ! MatchQ[#, _^-1] &]), opts] /. inv -> ((1/#)&))/; !FreeQ[{x}, _Pair^-1];
 
 
 (*Add PHI vertices to Amplitudes database*)
 (*First make sure amplist has a value*)
 Amplitude[];
+
 (*Get the PHI amps*)
 Block[ {phiAmpList, dum, names, dir},
 	dir = ToFileName[{$FeynCalcDirectory, "Phi", "CouplingVectors"}];
-	names =
-		StringReplace[StringReplace[#, dir -> ""], ".Gen" -> ""] & /@
-			FileNames["*.Gen",
-				dir];
+	names = StringReplace[StringReplace[#, dir -> ""], ".Gen" -> ""] & /@ FileNames["*.Gen", dir];
 	phiAmpList = (# :>
-	FAToFC[{CheckDB[dum, # <> ".Gen", ForceSave -> False,
-						NoSave -> True].((#[[1]]) & /@
-							CheckDB[dum, # <> ".Mod", ForceSave -> False,
-								NoSave -> True])}][[1]]) & /@ names;
-(*Modify amplist*)
-	FeynCalc`Amplitude`Private`amplist =
-			Union[FeynCalc`Amplitude`Private`amplist,
-						phiAmpList]
+	FAToFC[{CheckDB[dum, # <> ".Gen", ForceSave -> False, NoSave -> True].((#[[1]]) & /@ CheckDB[dum, # <> ".Mod", ForceSave -> False,
+	NoSave -> True])}][[1]]) & /@ names;
+
+	(*Modify amplist*)
+	FeynCalc`Amplitude`Private`amplist = Union[FeynCalc`Amplitude`Private`amplist, phiAmpList]
 ];
 
 
@@ -393,17 +451,20 @@ Block[ {phiAmpList, dum, names, dir},
 
 (* Should usually not be altered *)
 
-Options[CovariantFieldDerivative] =
-	{Explicit->True, DiagonalToU->True,
-	(*RemoveIntegerIndices->True,*)
-	SUNN->2, UDimension->Automatic};
+Options[CovariantFieldDerivative] = {
+	Explicit->True,
+	DiagonalToU->True,
+	SUNN->2,
+	UDimension->Automatic
+};
 
 CovariantFieldDerivative[aa_,x_,loris__LorentzIndex,lori1_LorentzIndex] :=
-	(newfuncc[1] = CovariantFieldDerivative[aa,x,lori1];
+	(
+	newfuncc[1] = CovariantFieldDerivative[aa,x,lori1];
 	Do[newfuncc[rep+1] = CovariantFieldDerivative[
-	newfuncc[rep],x,##]&@@Take[{loris},{-rep}],
-	{rep,1,Length[{loris}]}];
-	newfuncc[Length[{loris}]+1]);
+	newfuncc[rep],x,##]&@@Take[{loris},{-rep}], {rep,1,Length[{loris}]}];
+	newfuncc[Length[{loris}]+1]
+	);
 (* ************************************************************** *)
 
 (* (Re-)setting of options and $-variables *)
@@ -414,16 +475,12 @@ CovariantFieldDerivative[aa_,x_,loris__LorentzIndex,lori1_LorentzIndex] :=
 	put in the relevant configuration file
 *)
 
-(* Check for unpatched FeynArts *)
-
-$FAPatch = True;
 
 (* Which representation should be used for the
 	pion/meson matrix - the default is the exponential *)
 
 $UExpansionCoefficients =
-{1, 1, 1/2, 1/6, 1/24, 1/120, 1/720, 1/5040, 1/40320,
-	1/362880, 1/3628800};
+	{1, 1, 1/2, 1/6, 1/24, 1/120, 1/720, 1/5040, 1/40320, 1/362880, 1/3628800};
 
 (* ************************************************************** *)
 (* ************ CHOOSE CONFIGURATION AND LAGRANGIANS ************ *)
@@ -432,22 +489,19 @@ $UExpansionCoefficients =
 (* Which configuration should be used? *)
 (* Overridden is set before loading FeynCalc *)
 
-If[ ValueQ[Global`$Configuration] =!= True || Global`$Configuration === None ||
-	Global`$Configuration === "None",
-	Global`$Configuration =
-			"ChPT2";
-(*standard SU(2) ChPT*)
-		(*"ChPTPhoton2";*)(*standard SU(2) ChPT with coupling to a photon source*)
-		(*"ChPT3";*)      (*Standard SU(3) ChPT*)
-		(*"ChPTW3";*)     (*Weak SU(3) ChPT*)
-		(*"BChPT2";*)     (*Relativistic baryon SU(2) ChPT*)
-		(*"HBChPT2";*)    (*Heavy baryon SU(2) ChPT*)
-		(*"ChPTEM2";*)    (*Standard SU(2) ChPT with virtual photons - Meissner, Steininger*)
-		(*"ChPTVirtualPhotons2";*)        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
-		(*"ChPTVirtualPhotons3";*)        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
-		(*"QED";*)        (*QED with one lepton*)
-		(*"QED2";*)       (*QED with three leptons*)
-
+If[ ValueQ[Global`$Configuration] =!= True || Global`$Configuration === None || Global`$Configuration === "None",
+	Global`$Configuration = "ChPT2";
+	(*standard SU(2) ChPT*)
+	(*"ChPTPhoton2";*)(*standard SU(2) ChPT with coupling to a photon source*)
+	(*"ChPT3";*)      (*Standard SU(3) ChPT*)
+	(*"ChPTW3";*)     (*Weak SU(3) ChPT*)
+	(*"BChPT2";*)     (*Relativistic baryon SU(2) ChPT*)
+	(*"HBChPT2";*)    (*Heavy baryon SU(2) ChPT*)
+	(*"ChPTEM2";*)    (*Standard SU(2) ChPT with virtual photons - Meissner, Steininger*)
+	(*"ChPTVirtualPhotons2";*)        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
+	(*"ChPTVirtualPhotons3";*)        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
+	(*"QED";*)        (*QED with one lepton*)
+	(*"QED2";*)       (*QED with three leptons*)
 ]
 
 (* Actual loading of configuration *)
@@ -455,7 +509,9 @@ If[ $PaletteConfiguration=!="None"&&$PaletteConfiguration=!=None&&$Phi===True,
 	FCPrint[2,"Using ",$PaletteConfiguration," chosen from palette"];
 	Global`$Configuration = Evaluate[$PaletteConfiguration]
 ];
+
 FCPrint[2,"Loading configuration ",Global`$Configuration];
+
 tmp`olddir1 = tmp`olddir;
 LoadConfiguration[Global`$Configuration];
 tmp`olddir = tmp`olddir1;
@@ -463,9 +519,8 @@ tmp`olddir = tmp`olddir1;
 (* Which lagrangians should be loaded? *)
 
 If[ ValueQ[Global`$Lagrangians] =!= True || Global`$Lagrangians === {},
-	Global`$Lagrangians =
-			{"ChPT2"[2],"ChPT2"[4]};
-(*{"ChPTPhoton2"[2],"ChPTPhoton2"[4]};*)
+	Global`$Lagrangians = {"ChPT2"[2],"ChPT2"[4]};
+		(*{"ChPTPhoton2"[2],"ChPTPhoton2"[4]};*)
 		(*{"ChPT3"[2],"ChPT3"[4]};*)
 		(*{"ChPTW3"[2],"ChPTW3"[4]};*)
 		(*{"BChPT2"[2]};*)
@@ -475,11 +530,11 @@ If[ ValueQ[Global`$Lagrangians] =!= True || Global`$Lagrangians === {},
 		(*{"ChPTVirtualPhotons3"[2],"ChPTVirtualPhotons3"[4]};*)
 		(*{"QED"[1],"QED"[2]};*)
 		(*{"QED2"[1],"QED2"[2]};*)
-
 ]
 
 (* Actual loading of lagrangians *)
 FCPrint[2,"Loading lagrangians ",Global`$Lagrangians];
+
 LoadLagrangian/@Global`$Lagrangians;
 
 (* Setting of $VerticesSpecifications using all stored vertices
@@ -529,17 +584,17 @@ QuantumField[Particle[AxialVector[0],___],___],___][_]:=0;*)
 	SUNIndex[0],___][_]:=0;*)
 (*QuantumField[___,Particle[PseudoScalar[0],___],___,
 	SUNIndex[0],___][_]:=0;*)
-QuantumField[___,Particle[AxialVector[0],___],___,
-	SUNIndex[0],___][_] :=
+
+QuantumField[___,Particle[AxialVector[0],___],___, SUNIndex[0],___][_] :=
 	0;
-QuantumField[___,Particle[Vector[0],___],___,
-	SUNIndex[0],___][_] :=
+
+QuantumField[___,Particle[Vector[0],___],___, SUNIndex[0],___][_] :=
 	0;
-QuantumField[___,Particle[LeftComponent[0],___],___,
-	SUNIndex[0],___][_] :=
+
+QuantumField[___,Particle[LeftComponent[0],___],___, SUNIndex[0],___][_] :=
 	0;
-QuantumField[___,Particle[RightComponent[0],___],___,
-	SUNIndex[0],___][_] :=
+
+QuantumField[___,Particle[RightComponent[0],___],___, SUNIndex[0],___][_] :=
 	0;
 
 (* The setting below expands the zero'th Scalar[0]
@@ -547,45 +602,35 @@ QuantumField[___,Particle[RightComponent[0],___],___,
 	then the perturbation. (- in ChPTW3 we use Scalar[1] for the
 	hamiltonian source) *)
 
-IsoVector[QuantumField[Particle[
-Scalar[0],ar___RenormalizationState,
-br___RenormalizationScheme,cr___ExpansionState,
-opts___Rule|opts___List]],opts1___][x_] :=
+IsoVector[QuantumField[Particle[Scalar[0],ar___RenormalizationState,
+br___RenormalizationScheme,cr___ExpansionState, opts___Rule|opts___List]],opts1___][x_] :=
 	IsoVector[QuantumField[Particle[Scalar[2],ar,br,cr]],opts1][x];
 
-QuantumField[Particle[
-Scalar[0],ar___RenormalizationState,
-br___RenormalizationScheme,cr___ExpansionState,
+QuantumField[Particle[Scalar[0],ar___RenormalizationState, br___RenormalizationScheme,cr___ExpansionState,
 opts___Rule|opts___List], SUNIndex[0]][x_] :=
-	UQuarkMassMatrix[ar,br,cr,opts]+
-	QuantumField[Particle[Scalar[2],ar,br,cr,
-		Sequence@@OptionsSelect[Particle,opts]],
+	UQuarkMassMatrix[ar,br,cr,opts]+ QuantumField[Particle[Scalar[2],ar,br,cr, Sequence@@OptionsSelect[Particle,opts]],
 	SUNIndex[0]][x]*UIdentityMatrix[opts];
 
-(* If you're working with the weak lagrangian; have a momentum
-	carrying lagrangian or not *)
+(* If you're working with the weak lagrangian; have a momentum carrying lagrangian or not *)
 
-$Substitutions = DeleteCases[$Substitutions,
-UNablaHatDelta[_] :> _];
+$Substitutions = DeleteCases[$Substitutions, UNablaHatDelta[_] :> _];
 
-$Substitutions = Append[$Substitutions, UNablaHatDelta[mu_] :>
-
-(* The standard definition *)
-(*-I*NM[SMM,
-UGeneratorMatrixIsoDot[QuantumField[Particle[
-LeftComponent[0]],{mu}]],
-UGeneratorMatrix[SUNIndex[6]],
-Adjoint[SMM]]+
-I*NM[SMM,
-UGeneratorMatrix[SUNIndex[6]],
-UGeneratorMatrixIsoDot[QuantumField[Particle[
-LeftComponent[0]],{mu}]],
-Adjoint[SMM]]*)
-
-(* Including a scalar 'source' with momentum *)
-NM[SMM,NM[FDr[QuantumField[Particle[Scalar[1]]],{mu}],
-	UGeneratorMatrix[SUNIndex[6]],Adjoint[SMM]]]
-];
+$Substitutions =
+	Append[$Substitutions, UNablaHatDelta[mu_] :>
+	(* The standard definition *)
+	(*-I*NM[SMM,
+	UGeneratorMatrixIsoDot[QuantumField[Particle[
+	LeftComponent[0]],{mu}]],
+	UGeneratorMatrix[SUNIndex[6]],
+	Adjoint[SMM]]+
+	I*NM[SMM,
+	UGeneratorMatrix[SUNIndex[6]],
+	UGeneratorMatrixIsoDot[QuantumField[Particle[
+	LeftComponent[0]],{mu}]],
+	Adjoint[SMM]]*)
+	(* Including a scalar 'source' with momentum *)
+		NM[SMM,NM[FDr[QuantumField[Particle[Scalar[1]]],{mu}], UGeneratorMatrix[SUNIndex[6]],Adjoint[SMM]]]
+	];
 
 (* ************************************************************** *)
 (* ***************** END OF EXTRA CONFIGURATION ***************** *)
@@ -593,19 +638,16 @@ NM[SMM,NM[FDr[QuantumField[Particle[Scalar[1]]],{mu}],
 
 (* Add the palettes to the palette menu of Mathematica
 	(Requires a restart of the frontend) and fix red brackets *)
-
+(* TODO: Check *)
 If[ AtomQ[$FrontEnd]=!=True,
-	SetOptions[$FrontEnd, PalettePath ->
-	Append[Select[Options[$FrontEnd,
-			PalettePath][[1, -1]], ((If[ StringQ[#],
-										!StringMatchQ[#, "*FeynCalc*Phi*"],
-										FreeQ[#, "FeynCalc"] && FreeQ[#, "Phi"]
-									] === True)&)],
+	SetOptions[$FrontEnd, PalettePath -> Append[Select[Options[$FrontEnd, PalettePath][[1, -1]],
+	((If[ StringQ[#], !StringMatchQ[#, "*FeynCalc*Phi*"],
+			FreeQ[#, "FeynCalc"] && FreeQ[#, "Phi"]
+		] === True)&)],
 	ToFileName[{$FeynCalcDirectory, "Phi"}, "Palettes"]]];
 
 	(*Under Mathematica 4, the default highlighting unmatched brackets
 		highlights all right brackets generated by PHI, so we disable it.
 		This is the default: {"UnmatchedBracketStyle" -> "UnmatchedBracket"}*)
-	SetOptions[$FrontEnd, AutoStyleOptions ->
-	{"UnmatchedBracketStyle" -> None}];
+	SetOptions[$FrontEnd, AutoStyleOptions -> {"UnmatchedBracketStyle" -> None}];
 ];

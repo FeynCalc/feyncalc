@@ -15,15 +15,16 @@ necessary to define these objects before Objects.m is read.
 (* Definitions used by the model PiN2 *)
 
 Phi`Objects`CovariantNucleonFieldDerivative::usage =
-"CovariantNucleonFieldDerivative is the nucleon
-covariant derivative of J. Gasser, M. E. Sainio and
-A. Svarc (1988), Nucl. Phys, B307, 779-853";
+"CovariantNucleonFieldDerivative is the nucleon covariant derivative of J. Gasser, \
+M. E. Sainio and A. Svarc (1988), Nucl. Phys, B307, 779-853";
 
 Phi`Objects`CNDr::usage =
-"CNDr is the shorthand notation for
-CovariantNucleonFieldDerivative, which is the nucleon
-covariant derivative of J. Gasser, M. E. Sainio and
-A. Svarc (1988), Nucl. Phys, B307, 779-853";
+"CNDr is the shorthand notation for CovariantNucleonFieldDerivative, which is the nucleon \
+covariant derivative of J. Gasser, M. E. Sainio and A. Svarc (1988), Nucl. Phys, B307, 779-853";
 
-Options[CovariantFieldDerivative] = {Explicit->True, DiagonalToU->True,
-			SUNN->2, UDimension->Automatic};
+Options[CovariantFieldDerivative] = {
+	Explicit->True,
+	DiagonalToU->True,
+	SUNN->2,
+	UDimension->Automatic
+};
