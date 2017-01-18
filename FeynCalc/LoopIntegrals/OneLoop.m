@@ -318,9 +318,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		];
 		If[ Head[name]===String,
 			Which[ formattype === InputForm,   name = StringJoin[name, ".m"],
-					formattype === FortranForm, name = StringJoin[name, ".for"],
-					formattype === MacsymaForm, name = StringJoin[name, ".mac"],
-					formattype === MapleForm,   name = StringJoin[name, ".map"]
+					formattype === FortranForm, name = StringJoin[name, ".for"]
 			]
 		];
 		If[ StringQ[name],
@@ -340,71 +338,70 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		If[ FreeQ2[ oneamp , {FeynAmpDenominator,FAD}],
 			oneampresult = oneamp,
 
-		(* ********************************************************************* *)
-		(*                          oneloop12                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop12                                    *)
+			(* ********************************************************************* *)
 
 
-		(* * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * *)
-		(* Starting  the game:  *)
-		(* * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * *)
+			(* * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * *)
+			(* Starting  the game:  *)
+			(* * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * *)
 
-		(*epschisholmdef*)
+			(*epschisholmdef*)
 			epschisholm[x_] :=
-				x/;FreeQ[x, Eps] || FreeQ[x, DiracGamma];
+				x/;FreeQ2[x, {Eps,DiracGamma}];
+
 			epschisholm[x_Plus] :=
 				Map[epschisholm,x];
+
 			epschisholm[x_] :=
 				If[ reducegamma67,
 					EpsChisholm[x],
 					EpsChisholm[x]/.DiracGamma[5] -> (DiracGamma[6]-DiracGamma[7])
 				] /; Head[x]=!=Plus;
-			If[ FreeQ[oneamp, DOT[Spinor[p1__] , a__ , Spinor[p2__] *
-							Spinor[p3__] , b__ , Spinor[p4__]]
-					],
+
+			If[ FreeQ[oneamp, DOT[Spinor[p1__] , a__ , Spinor[p2__] Spinor[p3__] , b__ , Spinor[p4__]]],
 				FeynCalc`DiracSimplify`Private`$sirlin = False
 			];
+
 			FCPrint[3, "FeynCalc`DiracSimplify`Private`$sirlin = ", FeynCalc`DiracSimplify`Private`$sirlin, FCDoControl->oneloopVerbose];
 			(* smallv *)
-			smav = Table[smallv[[iv]]->SmallVariable[ smallv[[iv]] ],
-						{iv,1,Length[smallv]} ];
-		(* do the initial substitutions *)
+			smav = Table[smallv[[iv]]->SmallVariable[ smallv[[iv]] ], {iv,1,Length[smallv]} ];
+
+			(* do the initial substitutions *)
 			oneamp = ( oneamp/.smav )/.inisubs;
-		(* neglect any small variable in the numerators of the fermion propagators  *)
+			(* neglect any small variable in the numerators of the fermion propagators  *)
 			smalldirac /: smalldirac[_] + DiracGamma[a__]:=
 				DiracGamma[a];
 
-		(* and in the spinors *)
-			smalldirac /: Spinor[ pe_, smalldirac[_], op___]:=
-				Spinor[pe,0,op];
+			(* and in the spinors *)
+				smalldirac /: Spinor[ pe_, smalldirac[_], op___]:=
+					Spinor[pe,0,op];
 
-			oneamp = oneamp /. SmallVariable -> smalldirac /.
-								smalldirac -> SmallVariable;
-		(* put heads on the momenta in the denominators *)
-			denf[x_,y_] :=
-				denprop[Momentum[x],y]/;FreeQ[x,Momentum];
-			denf[x_,y_] :=
-				denprop[x,y]/;!FreeQ[x,Momentum];
-		(* if a propagator has no integration momentum *)
-			denprop[a_, b_] :=
-				(1/TrickMandelstam[(Pair[a,a]//ExpandScalarProduct)
-				- b^2, onemandel] /. SmallVariable[_]->0)/; FreeQ[a, q];
-		(* ********************************************************************* *)
-		(*                          oneloop13                                    *)
-		(* ********************************************************************* *)
+				oneamp = oneamp /. SmallVariable -> smalldirac /.
+									smalldirac -> SmallVariable;
+			(* put heads on the momenta in the denominators *)
+				denf[x_,y_] :=
+					denprop[Momentum[x],y]/;FreeQ[x,Momentum];
+				denf[x_,y_] :=
+					denprop[x,y]/;!FreeQ[x,Momentum];
+			(* if a propagator has no integration momentum *)
+				denprop[a_, b_] :=
+					(1/TrickMandelstam[(Pair[a,a]//ExpandScalarProduct)
+					- b^2, onemandel] /. SmallVariable[_]->0)/; FreeQ[a, q];
+			(* ********************************************************************* *)
+			(*                          oneloop13                                    *)
+			(* ********************************************************************* *)
 
-		(* ONEAMPCHANGE: denominators *)
-			If[ Cases[x, DOT[Spinor[a_,_,_] , (___) , Spinor[b_,_,_] *
-										Spinor[c_,_,_] , (___) , Spinor[d_,_,_]
-									]
-						] =!= {},
+			(* ONEAMPCHANGE: denominators *)
+			If[ Cases[x, DOT[Spinor[a_,_,_] , (___) , Spinor[b_,_,_] Spinor[c_,_,_] , (___) , Spinor[d_,_,_]]] =!= {},
 				$fourfermion = True
 			];
 
 			oneamp = FeynAmpDenominatorSplit[oneamp//Trick//FeynAmpDenominatorCombine, Momentum->{q}];
-			oneamp = oneamp /. FeynAmpDenominator[xyz__] :> PropagatorDenominatorExplicit[FeynAmpDenominator[xyz]] /;FreeQ[{xyz}, q];
+			oneamp = oneamp /. FeynAmpDenominator[xyz__] :> PDExplicit[FeynAmpDenominator[xyz]] /;FreeQ[{xyz}, q];
 
-			oneamp = oneamp/.PropagatorDenominator -> denf /. denprop -> PropagatorDenominator;
+			oneamp = oneamp/.PD -> denf /. denprop -> PD;
 
 			If[ oneloopsimplify,
 				oneamp = OneLoopSimplify[oneamp, q, Dimension -> dim]
@@ -429,16 +426,16 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				oneamp = namp[[2]]
 			];
 
-		(* Put here the i pi^2 from the integrals *)
+			(* Put here the i pi^2 from the integrals *)
 			newprefactor = prefactor I Pi^2;
 
-		(* ONEAMPCHANGE: extract coupling constants *)
+			(* ONEAMPCHANGE: extract coupling constants *)
 			If[ Head[oneamp] === Times,
-				oneselect = Select[oneamp, FreeQ2[#, {	Pair, PropagatorDenominator,Eps, dim, Momentum,LorentzIndex, SUNF,
-														SUNDelta, SUNT, DiracGamma, Spinor}]&];
+				oneselect = Select[oneamp, FreeQ2[#, {Pair, PD,Eps, dim, Momentum,LorentzIndex, SUNF, SUNDelta, SUNT, DiracGamma, Spinor}]&];
 				oneamp = oneamp/oneselect;
 				newprefactor =  Factor2[ newprefactor oneselect ];
 			];
+
 			If[ (!FreeQ[ newprefactor, dim ]) || (!FreeQ[newprefactor, LorentzIndex]) || (!FreeQ[newprefactor, DiracGamma]),
 				newnewprefactor = Select[newprefactor, !FreeQ2[#, {dim, LorentzIndex, DiracGamma}]&];
 				If[ !FreeQ[newnewprefactor, DiracGamma],
@@ -458,11 +455,11 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 
 			(* change the dimension ,   to4dimdef*)
 			to4dim[x_] :=
-				x/.{Momentum[v_,_]:>Momentum[v],
-					LorentzIndex[w_,_]:>LorentzIndex[w]};
+				x/.{Momentum[v_,_]:>Momentum[v], LorentzIndex[w_,_]:>LorentzIndex[w]};
+
 			oneamp0 = oneamp;
 			FCPrint[2, "check", FCDoControl->oneloopVerbose];
-			(* ONEAMPCHANGE: make dimensions right *)
+				(* ONEAMPCHANGE: make dimensions right *)
 			If[ dim===4,
 				oneamp = SUNSimplify[to4dim[ oneamp ], Explicit -> False],
 				oneamp = oneamp + null;
@@ -482,89 +479,85 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			(* ********************************************************************* *)
 
 			(* for propagators without the integration variable q *)
-			dnq[a___,PropagatorDenominator[pe_,ma_],b___] :=
-				ExpandScalarProduct[
-				(1/Factor2[ smalld[TrickMandelstam[ ExpandScalarProduct[Pair[pe,pe]]-ma^2,
-								onemandel ]//Expand] ] ) dnq[a,b] ] /; FreeQ[pe,q];
-			prode[a_,b_] :=
-				PropagatorDenominator[a//MomentumExpand,b] /; !FreeQ[a,q];
-			prode[ppe_,mm_] :=
-				ExpandScalarProduct[
-				(1/Factor2[ smalld[TrickMandelstam[
-									ExpandScalarProduct[Pair[ppe,ppe]]-mm^2,
-								onemandel ]//Expand] ] ) ]  /; FreeQ[ppe,q];
+			dnq[a___,PD[pe_,ma_],b___] :=
+				ExpandScalarProduct[(1/Factor2[ smalld[TrickMandelstam[
+					ExpandScalarProduct[Pair[pe,pe]]-ma^2, onemandel ]//Expand]] ) dnq[a,b] ] /; FreeQ[pe,q];
 
-		(* ONEAMPCHANGE: extract denominators without q's *)
-			oneamp = oneamp/.FeynAmpDenominator->dnq/.dnq->FeynAmpDenominator/.
-							PropagatorDenominator->prode;
+			prode[a_,b_] :=
+				PD[a//MomentumExpand,b] /; !FreeQ[a,q];
+
+			prode[ppe_,mm_] :=
+				ExpandScalarProduct[(1/Factor2[ smalld[TrickMandelstam[
+					ExpandScalarProduct[Pair[ppe,ppe]]-mm^2, onemandel ]//Expand] ] ) ]  /; FreeQ[ppe,q];
+
+			(* ONEAMPCHANGE: extract denominators without q's *)
+			oneamp = oneamp/.FeynAmpDenominator->dnq/.dnq->FeynAmpDenominator/. PD->prode;
+
 			dfsor[ve_,ma_] :=
 				defs[ma][ve]//MomentumExpand;
 			dfsorb[a_][b_] :=
-				PropagatorDenominator[b,a];
-		(* denomOrder orders the PropagatorDenominator         , denomOrderdef *)
-		(* the eventually necessary translation of q is done with intcan.       *)
+				PD[b,a];
+
+			(* denomOrder orders the PD         , denomOrderdef *)
+			(* the eventually necessary translation of q is done with intcan.       *)
 			denomOrder[ a__ ] :=
 				Block[ { dfli = {a},ru },
-(* this is checked always *)
-					ru = {PropagatorDenominator[c_. Momentum[ce_. q ,di___],ma0_]:>
-						PropagatorDenominator[Sqrt[c^2] Momentum[Sqrt[ce^2] q,di],ma0],
-						PropagatorDenominator[x_+be_ Momentum[q,di___],mA_] :>
-						PropagatorDenominator[Expand[-x+Momentum[q,di] ],mA]/;(be===-1)
-						};
+					(* this is checked always *)
+					ru = {
+					PD[c_. Momentum[ce_. q ,di___],ma0_]:> PD[Sqrt[c^2] Momentum[Sqrt[ce^2] q,di],ma0],
+					PD[x_+be_ Momentum[q,di___],mA_] :> PD[Expand[-x+Momentum[q,di] ],mA]/;(be===-1)
+					};
+
 					dfli = dfli//.ru;
-					If[ !MatchQ[ First[dfli], PropagatorDenominator[Momentum[q,___],_] ],
+					If[ !MatchQ[ First[dfli], PD[Momentum[q,___],_] ],
 						denorder = True
 					];
+
 					If[ denorder === True,
-						dfli = Sort[ dfli/.PropagatorDenominator->dfsor ]/.defs->dfsorb;
-				(* For boxes: bring a evtl. 0 at position 3 *)
+						dfli = Sort[ dfli/.PD->dfsor ]/.defs->dfsorb;
+						(* For boxes: bring a evtl. 0 at position 3 *)
 						If[ Length[ dfli ] === 4,
 							dfli = RotateRight[dfli,2]
 						]
 					];
+
 					If[ Length[dfli]===3 && denorder === True,
-						dfli = dfli/.{den1_, PropagatorDenominator[pe2_,ma1_],
-												PropagatorDenominator[pe3_,ma2_]}:>
-										{den1,  PropagatorDenominator[pe3,ma2],
-												PropagatorDenominator[pe2,ma1]}/;
-										Length[ pe2 ] > Length[ pe3 ]
+						dfli = dfli/.{den1_, PD[pe2_,ma1_], PD[pe3_,ma2_]}:> {den1,  PD[pe3,ma2], PD[pe2,ma1]}/;Length[pe2] > Length[pe3]
 					];
+
 					If[ denorder === True,
-						dfli = dfli/.{den1_,PropagatorDenominator[pe2_,ma2_],den3_,
-											PropagatorDenominator[pe3_,ma2_]}:>
-										{den1, PropagatorDenominator[pe3,ma2],den3,
-											PropagatorDenominator[pe2,ma2]}/;
-											Length[pe2]>Length[pe3];
+						dfli = dfli/.{den1_,PD[pe2_,ma2_],den3_, PD[pe3_,ma2_]}:> {den1, PD[pe3,ma2],den3,PD[pe2,ma2]}/;Length[pe2]>Length[pe3];
 						FCPrint[3, "after denomOrdering : ", dfli, FCDoControl->oneloopVerbose];
 					];
 					FeynAmpDenominator@@dfli
-				](* endBlock *);
-		(* ********************************************************************* *)
-		(*                          oneloop17                                    *)
-		(* ********************************************************************* *)
+				];
+
+			(* ********************************************************************* *)
+			(*                          oneloop17                                    *)
+			(* ********************************************************************* *)
 			vcid[pe_,___] :=
 				pe;
-		(* for translating the integration variable q in the first propagator *)
-		(* intcandef *)
+
+			(* for translating the integration variable q in the first propagator *)
+
 			intcan[x_] :=
 				x/;FreeQ[x,q];
+
 			intcan[x_Plus] :=
 				intcan/@x;
+
 			intcan[ a_ b_ ] :=
 				a intcan[b]/; FreeQ[a,q];
-			intcan[x_Times] :=
-				(SelectFree[x, q] intcan[SelectNotFree[x,q]]) /;
-				SelectFree[x, q] =!= 1;
-			intcan[any_. FeynAmpDenominator[
-						PropagatorDenominator[p_ + Momentum[q,dim], m1_],dfrest___ ]
-				] :=
-				denomExpand[ ( any FeynAmpDenominator[
-					PropagatorDenominator[ p + Momentum[q,dim],m1], dfrest]
-							)/.q->( q - (p/.Momentum->vcid) )
-							];
-		(*  bringing the denominator in a canonical form                         *)
 
-		(* ONEAMPCHANGE : fixing all denominators , evtl. ordering *)
+			intcan[x_Times] :=
+				(SelectFree[x, q] intcan[SelectNotFree[x,q]]) /;SelectFree[x, q] =!= 1;
+
+			intcan[any_. FeynAmpDenominator[PD[p_ + Momentum[q,dim], m1_],dfrest___ ]] :=
+				denomExpand[ ( any FeynAmpDenominator[PD[ p + Momentum[q,dim],m1], dfrest])/.q->( q - (p/.Momentum->vcid))];
+
+			(*  bringing the denominator in a canonical form                         *)
+
+			(* ONEAMPCHANGE : fixing all denominators , evtl. ordering *)
 			oneamp = denomExpand[ oneamp ];
 			oneamp = denomExpand[ oneamp ]/.FeynAmpDenominator->denomOrder;
 			oneamp = (intcan[oneamp//MomentumExpand]//MomentumExpand)/.
@@ -573,9 +566,10 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			oneamp = oneamp/.null->0;
 			FCPrint[3, "oneamp after ordering = ", oneamp, FCDoControl->oneloopVerbose];
 
-		(* ONEAMPCHANGE : bringing all denominator in standard order *)
+			(* ONEAMPCHANGE : bringing all denominator in standard order *)
 			consum[x_] :=
 				conall[x]/;Head[x]=!=Plus;    (* consumdef *)
+
 			consum[x_Plus] :=
 				Block[ {nx = 0,i},
 					For[i = 1, i<=Length[x], i++,
@@ -596,18 +590,19 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						];
 					nx
 				];
-		(* ********************************************************************* *)
-		(*                          oneloop18                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop18                                    *)
+			(* ********************************************************************* *)
 			oneamp = Contract[ oneamp, Expanding -> False];
 			oneampc = oneamp;
 			oneamp = DiracSimplify[oneamp, Expanding -> False];
 			oneampd = oneamp;
 			FCPrint[2, "OneLoop: before collin ", oneamp, FCDoControl->oneloopVerbose];
 			oneamp = collin[ consum[oneamp]//smalld, FeynAmpDenominator, False ];
-		(* ONEAMPCHANGE : contracting Lorentz indices and expanding *)
-		(* now a canonized form is achieved *)
-		(* and all Lorentzindices which are not part of a DiracGamma contracted *)
+
+			(* ONEAMPCHANGE : contracting Lorentz indices and expanding *)
+			(* now a canonized form is achieved *)
+			(* and all Lorentzindices which are not part of a DiracGamma contracted *)
 			If[ !FreeQ[oneamp,DiracGamma],
 				FCPrint[1, "Simplification of Dirac structures", FCDoControl->oneloopVerbose]
 			];
@@ -615,8 +610,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				FCPrint[1, "and calculation of Traces", FCDoControl->oneloopVerbose]
 			];
 
-		(* ONEAMPCHANGE : contracting Lorentz indices and trace calculation *)
-		(*oneampe = oneamp;*)
+			(* ONEAMPCHANGE : contracting Lorentz indices and trace calculation *)
+			(*oneampe = oneamp;*)
 			If[ !FreeQ[oneamp, DiracTrace],
 				neuamp = 0;
 				oneamp = collin[ oneamp, DiracTrace, False];
@@ -633,61 +628,61 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					oneamp = Collect2[neuamp, FeynAmpDenominator, Factoring -> False]
 				]
 			];
-			(*oneampzero = oneamp;*)
+				(*oneampzero = oneamp;*)
 
-		(* ONEAMPCHANGE : bringing gamma5, gamma6 and gamma7 into standard
-			way according to the setting of the option ReduceGamma
-		*)
+			(* ONEAMPCHANGE : bringing gamma5, gamma6 and gamma7 into standard
+				way according to the setting of the option ReduceGamma
+			*)
 			If[ !reducegamma67,
 				oneamp = oneamp /.
-				{DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
-					(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]])};
+				{DOT[ Spinor[p1__],(a___),Spinor[p2__]] :> (DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]])};
 			];
+
 			If[ reducegamma67,
 				oneamp = oneamp /. DiracGamma[6] -> (1/2 + DiracGamma[5]/2)/. DiracGamma[7] -> (1/2 - DiracGamma[5]/2)
 			];
-		(* ********************************************************************* *)
-		(*                          oneloop19                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop19                                    *)
+			(* ********************************************************************* *)
 			FCPrint[1, "contraction, etc. ", FCDoControl->oneloopVerbose];
+
 			diracorder[x_] :=
-				x /; FreeQ[ x, DiracGamma ];
+				x /; FreeQ[ x, DiracGamma];
+
 			diracorder[x_] :=
-				Collect2[DiracOrder[x(*, {q}*)], DOT,Factoring->False
-						] /; Head[x]=!=Plus;
+				Collect2[DiracOrder[x], DOT,Factoring->False] /; Head[x]=!=Plus;
+
 			diracorder[x_Plus] :=
-				Collect2[ Map[DiracOrder[#(*, {q}*)]&, x], DOT,
-							Factoring->False];
-			$Test = True;
+				Collect2[ Map[DiracOrder[#(*, {q}*)]&, x], DOT, Factoring->False];
+
 			paex[x_,y_] :=
 				If[ !FreeQ[{x,y}, Eps],
 					ExpandScalarProduct[Pair[x,y]],
 					Pair[x,y]
 				];
+
 			epsit[x_] :=
-				If[ $Test === True,
-					epschisholm[Collect2[x/.Pair->paex, {Eps,Spinor},
-													Factoring -> False ]],
-					x
-				];
+				epschisholm[Collect2[x/.Pair->paex, {Eps,Spinor}, Factoring -> False ]];
+
 			simpit[x_ /; FreeQ[x, DiracGamma]] :=
 				(FCPrint[3, "checkkkk", FCDoControl->oneloopVerbose];
 				consum2[x]);
+
 			simpit[x_] :=
 				(FCPrint[3, "OneLoop: simpit", FCDoControl->oneloopVerbose];
-				diracorder[ Collect2[ consum2[x]//epsit, DOT,
-									Factoring->False
-								] // DiracSimplify]) /; !FreeQ[x, DiracGamma];
+				diracorder[ Collect2[ consum2[x]//epsit, DOT, Factoring->False] // DiracSimplify]) /; !FreeQ[x, DiracGamma];
 
-		(* we want to keep the distinction in different graphs *)
-		(* ONEAMPCHANGE *)
-		(*oneamp1 = oneamp; *)
+			(* we want to keep the distinction in different graphs *)
+			(* ONEAMPCHANGE *)
+
 			FCPrint[1, "oneamp = ", oneamp, FCDoControl->oneloopVerbose];
+
 			neuamp = 0;
 			If[ Head[oneamp] === Plus,
 				lenneu = Length[oneamp],
 				lenneu = 1
 			];
+
 			For[ ip = 1, ip <= lenneu, ip++,
 				FCPrint[2, "working with part # ", ip, " out of ", lenneu, FCDoControl->oneloopVerbose];
 				If[ lenneu > 1,
@@ -696,16 +691,18 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				];
 				neuamp = neuamp + ((Expand[ If[parf[[2]]=!=0,parf[[2]],1] simpit[parf[[1]]]
 											]) //smalld)
-				];
+			];
+
 			FCPrint[2, "Length of neuamp = ", Length[neuamp], FCDoControl->oneloopVerbose];
 			If[ FreeQ[neuamp, DOT],
 				oneamp = neuamp,
 				oneamp = Collect2[neuamp, DOT, Factoring->False];
 			];
+
 			oneamp2 = oneamp;
 			FCPrint[3, "oneamp2 = ", oneamp2, FCDoControl->oneloopVerbose];
 
-(* ONEAMPCHANGE *)
+			(* ONEAMPCHANGE *)
 			If[ intermedsubst =!= {},
 				oneamp = oneamp /. intermedsubst /. intermedsubst;
 				neuamp = 0;
@@ -713,7 +710,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					lenneu = Length[oneamp],
 					lenneu = 1
 				];
-				For[ iip = 1, iip <= lenneu, iip++,
+				For[iip = 1, iip <= lenneu, iip++,
 					FCPrint[2, "working with (substituted) part # ", iip, " out of ", lenneu, FCDoControl->oneloopVerbose];
 					If[ lenneu > 1,
 						parf = PartitHead[oneamp[[iip]], FeynAmpDenominator],
@@ -721,113 +718,105 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					];
 					neuamp = neuamp + ((Expand[ parf[[2]] simpit[parf[[1]]]
 												]) //smalld)
-					];
+				];
 			];
+
 			oneamp = neuamp;
 			FCPrint[2, "check1", FCDoControl->oneloopVerbose];
 			FCPrint[3, "neuamp = ", neuamp, FCDoControl->oneloopVerbose];
 
-		(* Zwischenspiel... *)
-			smadot[] = 1;
-			standard /: standard[a_] standard[b_] := standard[a b];
+			(* Zwischenspiel... *)
+			smadot[] =
+				1;
+			standard /: standard[a_] standard[b_] :=
+				standard[a b];
+
 			smadot[x___] :=
-				standard[ dotlin[DOT[x]]/.dim->4 ] /.
-				standard -> StandardMatrixElement;
+				standard[ dotlin[DOT[x]]/.dim->4 ] /. standard -> StandardMatrixElement;
+
 			If[ StandardMatrixElement =!= Identity,
 				StandardMatrixElement[x_Plus] :=
 					Map[StandardMatrixElement,x]
 			];
 
-		(* ********************************************************************* *)
-		(*                          oneloop20                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop20                                    *)
+			(* ********************************************************************* *)
 
-		(* tostandmatdef *)
+			(* tostandmatdef *)
 			tostandmat[xy_] :=
 				Block[ {te, standa},
 					standa[a__] :=
-						dotlin[DOT[a]] /;
-						!FreeQ2[{a}, {DOT,Pair,Spinor}];
+						dotlin[DOT[a]] /; !FreeQ2[{a}, {DOT,Pair,Spinor}];
+
 					standa[a_,b__] :=
-						StandardMatrixElement[a,b]/;
-						FreeQ2[a, {DOT,Pair,Spinor}];
+						StandardMatrixElement[a,b]/; FreeQ2[a, {DOT,Pair,Spinor}];
+
 					te = tempstandmat[Expand[xy]]//Expand;
+
 					If[ !FreeQ[te, DiracGamma[6]],
-						te = te/.StandardMatrixElement -> standa/.
-												standa -> spinorsandpairs/.
-												spinorsandpairs->smadot/.
-												DiracGamma[6] ->
-						(1/2 + DiracGamma[5]/2);
+						te = te/.StandardMatrixElement -> standa/. standa -> spinorsandpairs/. spinorsandpairs->smadot/.
+							DiracGamma[6] -> (1/2 + DiracGamma[5]/2);
 						te = spinorchainevaluate[te]//Expand;
 						te = tempstandmat[te]//Expand
 					];
+
 					If[ !FreeQ[te, DiracGamma[7]],
-						te = te/.StandardMatrixElement -> standa/.
-												standa -> spinorsandpairs/.
-												spinorsandpairs->smadot/.
-												DiracGamma[7] ->
-						(1/2 - DiracGamma[5]/2);
+						te = te/.StandardMatrixElement -> standa/. standa -> spinorsandpairs/. spinorsandpairs->smadot/.
+							DiracGamma[7] -> (1/2 - DiracGamma[5]/2);
 						te = DiracSimplify[te]//DiracOrder//Expand;
 						te = tempstandmat[te//Contract]//Expand
 					];
-					te = te /.DOT->spinorsandpairs/.
-							spinorsandpairs->smadot;
+
+					te = te /.DOT->spinorsandpairs/. spinorsandpairs->smadot;
 					te
 				] /; reducegamma67 === True;
+
 			tostandmat[xy_] :=
 				Block[ {te, standa, pluh, pluh2},
 					standa[xx_] :=
-						xx/;!FreeQ2[xx,
-							{DOT,Pair,Polarization}];
+						xx/;!FreeQ2[xx, {DOT,Pair,Polarization}];
 					standa[a_,b__] :=
 						StandardMatrixElement[a,b];
+
 					pluh[x__] :=
-						Plus[x] /; !FreeQ2[{x},
-						{Spinor,GellMannMatrix, SUNIndex,
-						Polarization,Pair}];
+						Plus[x] /; !FreeQ2[{x},{Spinor,GellMannMatrix, SUNIndex, Polarization,Pair}];
+
 					te = xy /. Plus -> pluh /. pluh->pluh2;
 					te = tempstandmat[Expand[te]]//Expand;
 					te = te /. pluh2 -> Plus;
-					te = te/.StandardMatrixElement -> standa/.
-						DiracGamma[5] ->
-						(DiracGamma[6] - DiracGamma[7]);
+					te = te/.StandardMatrixElement -> standa/. DiracGamma[5] -> (DiracGamma[6] - DiracGamma[7]);
 					te = te//dotlin;
-			(* 1 = gamma6 + gamma7 *)
+					(* 1 = gamma6 + gamma7 *)
 					If[ !FreeQ[te, Spinor],
 						te = te //. {
-						DOT[
-						Spinor[p1__],(a___),Spinor[p2__] ]:>
-						(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] +
-							DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]
-						) /; FreeQ2[{a}, {DiracGamma[6],
-											DiracGamma[7]} ]
-											};
-						te = Expand[DiracSimplify[te]//DiracOrder,
-									Spinor]//Contract;
+						DOT[Spinor[p1__],(a___),Spinor[p2__]]:>
+							(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]) /; FreeQ2[{a}, {DiracGamma[6],DiracGamma[7]} ]
+						};
+						te = Expand[DiracSimplify[te]//DiracOrder, Spinor]//Contract;
 						te = Expand[ te, Pair ]
 					];
 					te = tempstandmat[te];
-					te = te /.DOT->spinorsandpairs/.
-								spinorsandpairs->smadot;
+					te = te /.DOT->spinorsandpairs/. spinorsandpairs->smadot;
 					te
 				] /; reducegamma67 =!= True;
 
-		(* ********************************************************************* *)
-		(*                          oneloop21                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop21                                    *)
+			(* ********************************************************************* *)
 
-		(* ONEAMPCHANGE : spinor stuff and matrixelements *)
+			(* ONEAMPCHANGE : spinor stuff and matrixelements *)
 			FCPrint[2, " Dirac-Algebra again", FCDoControl->oneloopVerbose];
 			FCPrint[2, "before spinorch: oneamp = ", oneamp//Length, FCDoControl->oneloopVerbose];
-		(*
-			oneamp =  conall[spinorchainevaluate[oneamp//smalld ]]//
-					ExpandScalarProduct;
-		*)
+
+			(*
+				oneamp =  conall[spinorchainevaluate[oneamp//smalld ]]//
+						ExpandScalarProduct;
+			*)
 			If[ Head[oneamp]===Plus,
 				FCPrint[2, "substituting", FCDoControl->oneloopVerbose];
 				If[ Length[oneamp]<10,
-					oneamp = oneamp/.{DiracGamma[Momentum[pe_,di_Symbol],di_Symbol]:>
-										DiracGamma[Momentum[pe]]/;FreeQ[pe,q] };
+					oneamp = oneamp/.{DiracGamma[Momentum[pe_,di_Symbol],di_Symbol]:> DiracGamma[Momentum[pe]]/;FreeQ[pe,q]};
 					oneamp =  conall[oneamp//smalld ]// ExpandScalarProduct,
 					newamp = 0;
 					For[ij = 1, ij <= Length[oneamp], ij++,
@@ -839,36 +828,32 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 							DiracGamma[Momentum[pe]]/;FreeQ[pe,q] });
 						temp = conall[temp//smalld] // ExpandScalarProduct;
 						newamp = newamp + Expand[temp, q]
-						];
+					];
 					oneamp = newamp
 				];
 			];
 
-		(*
-			oneamp = Collect2[oneamp/.subdethold->Identity, q, Factoring-> False];
-		*)
 			FCPrint[2, "collect w.r.t. ", q, FCDoControl->oneloopVerbose];
 			oneamp = Collect2[oneamp, q, Factoring -> False];
 			FCPrint[2, "oneamp ", oneamp, FCDoControl->oneloopVerbose];
 
-		(* ********************************************************************* *)
-		(*                          oneloop22                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop22                                    *)
+			(* ********************************************************************* *)
 
 
-			If[ (oneamp =!= 0),
+			If[ oneamp =!= 0,
 				(*This is a good point to isolate possible non-loop terms in the input expression *)
 				oneamp=Collect2[oneamp,q];
 				{nonLoopTerms,loopTerms} = FCSplit[oneamp,{q}];
 				oneamp=loopTerms;
 
-		(* ONEAMPCHANGE : cancelling q p 's *)
+				(* ONEAMPCHANGE : cancelling q p 's *)
 				If[ qpcancel === True,
 					FCPrint[1, "cancelling qp's", FCDoControl->oneloopVerbose];
 					qpcanc[b_,qu_] :=
-						Select[null1 + null2 +
-						Collect2[ApartFF[b,{qu}]//smalld, qu],
-						!FreeQ[#,FeynAmpDenominator]&];
+						Select[null1 + null2 + Collect2[ApartFF[b,{qu}]//smalld, qu], !FreeQ[#,FeynAmpDenominator]&];
+
 					oneamp = qpcanc[qpcanc[oneamp, q],q];
 					FCPrint[1, "OneLoop: cancelling qp's done, oneamp= ",oneamp, FCDoControl->oneloopVerbose];
 					If[ !FreeQ[oneamp,Pair[Momentum[q,_:4],Momentum[q,_:4]]],
@@ -877,101 +862,103 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					];
 
 				];
+
 				(* order the denominators again *)
 				If[ denorder === True,
 					oneamp = denomExpand[ oneamp ]/.FeynAmpDenominator->denomOrder
 				];
-				oneamp = (intcan[oneamp//MomentumExpand]//ExpandScalarProduct)/.
-						intcan->Identity;
+				oneamp = (intcan[oneamp//MomentumExpand]//ExpandScalarProduct)/. intcan->Identity;
 			];
-		(*oneamp1 = oneamp;*)
+			(*oneamp1 = oneamp;*)
+
 			FCPrint[1, "simplifying again in ", oneamp, FCDoControl->oneloopVerbose];
+
 			If[ !FreeQ[oneamp, Spinor],
 				oneamp = Map[spinorchainevaluate, oneamp +  nUUl]/.nUUl->0;
 				oneamp = Expand[ ExpandScalarProduct[ oneamp ], q]
 			];
+
 			FCPrint[1, "collecting w.r.t.", q, "  ", Length[oneamp], " terms", FCDoControl->oneloopVerbose];
-			oneamp = FixedPoint[ ReleaseHold, smalld[oneamp] ];
+			oneamp = FixedPoint[ReleaseHold, smalld[oneamp]];
 			timecoll = $FactorTime;
 			$FactorTime = 360;
 			tim = Timing[
-
-			If[ $ToughStuff =!=True,
-				oneamp = Collect2[ oneamp, q ],
-				oneamp = Collect2[ oneamp, q, Factoring -> False];
-			];
-			oneamp2 = oneamp;
-			If[ Head[oneamp] === Plus,
-				newoneamp = 0;
-				lenneu2 = Length[oneamp];
-				If[ dim=!=4,
-					qdi = {q,dim},
-					qdi = {q}
+				If[ $ToughStuff =!=True,
+					oneamp = Collect2[ oneamp, q ],
+					oneamp = Collect2[ oneamp, q, Factoring -> False];
 				];
-				For[ii = 1, ii<=lenneu2, ii++,
-					FCPrint[2, "isolating; ii  = ", ii, " out of ", lenneu2, FCDoControl->oneloopVerbose];
-					newoneamp = newoneamp + Isolate[oneamp[[ii]], qdi,
-													IsolateNames ->fFC,
-													IsolateSplit->Infinity]
+
+				oneamp2 = oneamp;
+				If[ Head[oneamp] === Plus,
+					newoneamp = 0;
+					lenneu2 = Length[oneamp];
+					If[ dim=!=4,
+						qdi = {q,dim},
+						qdi = {q}
 					];
-				oneamp = newoneamp
+
+					For[ii = 1, ii<=lenneu2, ii++,
+						FCPrint[2, "isolating; ii  = ", ii, " out of ", lenneu2, FCDoControl->oneloopVerbose];
+						newoneamp = newoneamp + Isolate[oneamp[[ii]], qdi, IsolateNames ->fFC, IsolateSplit->Infinity]
+					];
+					oneamp = newoneamp
+				];
 			];
-					];
 			$FactorTime =  timecoll;
 			FCPrint[1, "time for collect2  and isolate : ", tim[[1]]//FeynCalcForm, FCDoControl->oneloopVerbose];
 			FCPrint[1, "isolated and collected, before tensorintegraldecomposition:/n
-				length of isolated graph = ", Length[oneamp], FCDoControl->oneloopVerbose];
+					length of isolated graph = ", Length[oneamp], FCDoControl->oneloopVerbose];
 			FCPrint[1, "memory in use = ", MemoryInUse[], FCDoControl->oneloopVerbose];
 			FCPrint[3, "oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 
-		(* ONEAMPCHANGE : tensorintegraldecomposition *)
-		(* relax this here. RM 20110622 *)
-		(*
-			If[!FreeQ2[oneamp, {Pair[x_,y_Plus] , DiracGamma[x_Plus,___]}],
-		*)
+			(* ONEAMPCHANGE : tensorintegraldecomposition *)
+			(* relax this here. RM 20110622 *)
+			(*
+				If[!FreeQ2[oneamp, {Pair[x_,y_Plus] , DiracGamma[x_Plus,___]}],
+			*)
 			FCPrint[1, "cheCK", FCDoControl->oneloopVerbose];
 			oneamp = DiracSimplify[oneamp]//ExpandScalarProduct;
-	(*
-		];
-	*)
+		(*
+			];
+		*)
 
-	(* bug (found by Christian Bauer, 07/97)
-		fixed here for objects like eps[al,nu,si,p-q]  (can occur
-		after canonicalization of denominators; need then to expand the eps;
-		this is done with EpsEvaluate)
-	*)
+		(* bug (found by Christian Bauer, 07/97)
+			fixed here for objects like eps[al,nu,si,p-q]  (can occur
+			after canonicalization of denominators; need then to expand the eps;
+			this is done with EpsEvaluate)
+		*)
 			If[ !FreeQ[oneamp, Eps],
 				oneamp = Collect2[EpsEvaluate[oneamp],q],
-(* add this here for safety, since otherwise tensint might now work correctly. RM 20110622*)
+				(* add this here for safety, since otherwise tensint might now work correctly. RM 20110622*)
 				oneamp = Collect2[oneamp,q]
 			];
 
-		(*XXX*)
+			(*XXX*)
 			sirlinsave = FeynCalc`DiracSimplify`Private`$sirlin;
 			FeynCalc`DiracSimplify`Private`$sirlin = False;
 			FCPrint[1, "q = ", q, FCDoControl->oneloopVerbose];
+
 			oneamp = tensint[ oneamp,dim,q,{Mandelstam->onemandel} ];
 			oneamp = oneamp /.{B1 :> bB1, B00 :> bB00, B11 :> bB11};
 			oneamp = oneamp//smalld;
 			oneamp = oneamp /.{bB1 :> B1, bB00 :> B00, bB11 :> B11};
 			FeynCalc`DiracSimplify`Private`$sirlin = sirlinsave;
+
 			oneamp = FixedPoint[ReleaseHold, oneamp];
 			FCPrint[1, "after tensint ", FCDoControl->oneloopVerbose];
 			FCPrint[3, "after tensint : oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 			If[ !FreeQ[oneamp, Spinor],
 				oneamp = Collect2[oneamp, Spinor, Factoring -> False],
 				If[ !FreeQ[oneamp, Pair],
-					oneamp = Collect2[oneamp, {Pair, Polarization},
-										Factoring -> False],
+					oneamp = Collect2[oneamp, {Pair, Polarization}, Factoring -> False],
 					oneamp = Expand[oneamp]
 				]
 			];
 
-		(* StandardMatrixElement[ Spinor[] ... ] -> Spinor[] ... *)
+			(* StandardMatrixElement[ Spinor[] ... ] -> Spinor[] ... *)
 			standback[x_] :=
 				x /; !FreeQ[ x, Spinor ];
-			oneamp = oneamp /. StandardMatrixElement -> standback /.
-								standback -> StandardMatrixElement;
+			oneamp = oneamp /. StandardMatrixElement -> standback /. standback -> StandardMatrixElement;
 			oneampsave = oneamp;
 			FCPrint[3, "oneampsave = ", oneampsave, FCDoControl->oneloopVerbose];
 
@@ -980,115 +967,94 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			(* ********************************************************************* *)
 			FCPrint[1, "after collecting ", FCDoControl->oneloopVerbose];
 
-		(* ONEAMPCHaNGE : spinor stuff and matrixelements *)
+			(* ONEAMPCHaNGE : spinor stuff and matrixelements *)
 			If[ (!FreeQ[ oneamp,Spinor ]),
 				If[ Length[oneamp]>42,
-					oneamp = Isolate[ oneamp, {Spinor, DiracGamma, Pair},
-									IsolateNames-> fFCT,
-									IsolateSplit -> Infinity];
+					oneamp = Isolate[ oneamp, {Spinor, DiracGamma, Pair}, IsolateNames-> fFCT, IsolateSplit -> Infinity];
 				];
 				FCPrint[1, "length of oneamp now: ", Length[oneamp], FCDoControl->oneloopVerbose];
-				If[ (reducegamma67 === True) ||
-					(!FreeQ[oneamp,
-							DOT[Spinor[p1__] , a___ , Spinor[p2__]] *
-							DOT[Spinor[p3__] , b___ , Spinor[p4__]]
-							]),
-					oneamp = oneamp/. DiracGamma[7]->(1/2 - DiracGamma[5]/2)/.
-									DiracGamma[6]->(1/2 + DiracGamma[5]/2);
+
+				If[ (reducegamma67 === True) || (!FreeQ[oneamp,	DOT[Spinor[p1__] , a___ , Spinor[p2__]] DOT[Spinor[p3__] , b___ , Spinor[p4__]]]),
+					oneamp = oneamp/. DiracGamma[7]->(1/2 - DiracGamma[5]/2)/. DiracGamma[6]->(1/2 + DiracGamma[5]/2);
 				];
-				oneamp = Expand[DiracSimplify[oneamp],DOT]//DiracOrder//
-				ExpandScalarProduct;
+
+				oneamp = Expand[DiracSimplify[oneamp],DOT]//DiracOrder//ExpandScalarProduct;
 				oneamp = DiracSimplify[oneamp];
-				If[ (reducegamma67 =!= True)  &&
-					(!FreeQ[oneamp,
-							DOT[Spinor[p1__] , a___ , Spinor[p2__]] *
-							DOT[Spinor[p3__] , b___ , Spinor[p4__]]
-						]),
-					oneamp = oneamp /.
-					{DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
-						(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] +
-						DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]
-						)
-					};
+
+				If[ (reducegamma67 =!= True)  && (!FreeQ[oneamp, DOT[Spinor[p1__] , a___ , Spinor[p2__]] DOT[Spinor[p3__] , b___ , Spinor[p4__]]]),
+					oneamp = oneamp /. {DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
+						(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]])};
 					oneamp = DiracSimplify[oneamp]
 				];
+
 				If[ $higherpoint===False,
 					oneamp = FixedPoint[ReleaseHold, oneamp]
 				];
 				FCPrint[1, "after spinorchainevaluate", FCDoControl->oneloopVerbose]
 			];
+
 			oneamp = oneamp /.{B1 :> bB1, B00 :> bB00, B11 :> bB11};
 			oneamp = oneamp//smalld;
 			oneamp = oneamp /.{bB1 :> B1, bB00 :> B00, bB11 :> B11};
 
-		(* If something changed, we have to order again *)
+			(* If something changed, we have to order again *)
 			If[ oneamp =!= oneampsave,
 				If[ !FreeQ[oneamp, Spinor],
 					oneamp = Collect2[oneamp, Spinor, Factoring -> False],
 					If[ !FreeQ[oneamp, Pair],
-						oneamp = Collect2[oneamp, {Pair, Polarization},
-											Factoring -> False],
+						oneamp = Collect2[oneamp, {Pair, Polarization}, Factoring -> False],
 						oneamp = Expand[oneamp]
 					]
 				]
 			];
+
 			FCPrint[1, "after Collecting ", FCDoControl->oneloopVerbose];
 			standmatd[xxx__] :=
 				StandardMatrixElement[dotdotlin[xxx]];
 			standmatd[] = 1;
+
 			(* this may take a lot of time ... *)
 			If[ (StandardMatrixElement =!= Identity),
-				If[ !FreeQ2[ oneamp, {DOT, DiracGamma, Polarization,
-									SUNF, SUNDelta, SUNT
-									} ] && FreeQ[ oneamp, Spinor ],
-					If[ Head[oneamp]===Plus,
-						oneamp = Sum[ (oneamp[[iii]] spip[])/.
-										spip -> spinorsandpairs /.
-										spinorsandpairs -> standmatd,
-										{iii,1,Length[oneamp]}],
-						oneamp = Expand[oneamp spip[], Polarization]/.
-									spip->spinorsandpairs /. spinorsandpairs ->
-									standmatd
-					]
+				If[ !FreeQ2[oneamp, {DOT, DiracGamma, Polarization, SUNF, SUNDelta, SUNT} ] && FreeQ[oneamp, Spinor],
+						If[ Head[oneamp]===Plus,
+							oneamp = Sum[(oneamp[[iii]] spip[])/. spip -> spinorsandpairs /. spinorsandpairs -> standmatd, {iii,1,Length[oneamp]}],
+							oneamp = Expand[oneamp spip[], Polarization]/. spip->spinorsandpairs /. spinorsandpairs -> standmatd
+						]
 				]
 			];
-			If[ (StandardMatrixElement =!= Identity) &&
-			(!FreeQ2[oneamp, {Spinor, Polarization, SUNIndex}]),
+
+			If[ (StandardMatrixElement =!= Identity) && (!FreeQ2[oneamp, {Spinor, Polarization, SUNIndex}]),
 				FCPrint[1, "before tostandmat", FCDoControl->oneloopVerbose];
 				If[ Head[oneamp] === Plus,
-					paone = Select[oneamp, !FreeQ2[#,
-											{Spinor, Polarization, SUNIndex}]&];
+					paone = Select[oneamp, !FreeQ2[#, {Spinor, Polarization, SUNIndex}]&];
 					paone = {oneamp - paone, paone},
 					paone = {0, oneamp}
 				];
-				paone2 = Isolate[Collect2[paone[[2]], {Spinor,Polarization,SUNIndex},
-											Factoring -> False],
-											{Spinor,Polarization,SUNIndex},
-											IsolateNames -> tempFC,
-											IsolateSplit->Infinity];
+				paone2 = Isolate[Collect2[paone[[2]], {Spinor,Polarization,SUNIndex}, Factoring -> False], {Spinor,Polarization,SUNIndex},
+					IsolateNames -> tempFC, IsolateSplit->Infinity];
 				oneamp = FixedPoint[ReleaseHold, tostandmat[paone2] ] + paone[[1]];
+
 				FCPrint[1, "after tostandmat", FCDoControl->oneloopVerbose];
 				FCPrint[3, "after tostandmat : oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 			];
-		(* ********************************************************************* *)
-		(*                          oneloop25                                    *)
-		(* ********************************************************************* *)
+			(* ********************************************************************* *)
+			(*                          oneloop25                                    *)
+			(* ********************************************************************* *)
 
-
-		(* ONEAMPCHANGE : spinor stuff and matrixelements *)
+			(* ONEAMPCHANGE : spinor stuff and matrixelements *)
 			If[ !FreeQ[oneamp, StandardMatrixElement],
 				FCPrint[1, "collecting w.r.t. standard matrixelements ", FCDoControl->oneloopVerbose];
-				oneamp = collin[oneamp/.inisubs, StandardMatrixElement, True
-								];
+				oneamp = collin[oneamp/.inisubs, StandardMatrixElement, True];
 				FCPrint[1, "collecting done", FCDoControl->oneloopVerbose];
 			];
 
-		(* ONEAMPCHANGE : inserting the subdeterminants again *)
+			(* ONEAMPCHANGE : inserting the subdeterminants again *)
 
 			If[ !FreeQ[ oneamp, SUBDET ],
 				oneamp = FRH[oneamp /. SUBDET -> SUB, IsolateNames->SUB];
 				FCPrint[1, "subdeterminants reinserted", FCDoControl->oneloopVerbose]
 			];
+
 			tric[y_Plus] :=
 				tric /@ y;
 			tric[x_] :=
@@ -1106,18 +1072,21 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				arglist = Union[pvlist/.PaVe->pvar],
 				arglist = {}
 			];
+
 			collpav[x_Symbol] :=
 				x;
+
 			collpav[a_StandardMatrixElement b_] :=
 				a collpav[b];
-			collpav[x_] :=
-				tric[ Collect2[x,{A0,B0,B1,B00,B11,C0,D0,PaVe},
-						Factoring -> True] ];
-		(* ********************************************************************* *)
-		(*                          oneloop26                                    *)
-		(* ********************************************************************* *)
 
-		(* substituting the final substitutions *)
+			collpav[x_] :=
+				tric[ Collect2[x,{A0,B0,B1,B00,B11,C0,D0,PaVe}, Factoring -> True] ];
+
+			(* ********************************************************************* *)
+			(*                          oneloop26                                    *)
+			(* ********************************************************************* *)
+
+			(* substituting the final substitutions *)
 			fsub[x_, su_] :=
 				Block[ {nx = x,ij},
 					For[ij = 1, ij<=Length[su], ij++,
@@ -1125,44 +1094,42 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						];
 					nx
 				];
-			oneamp = fsub[ oneamp, finsubst ];
+
+			oneamp = fsub[oneamp, finsubst];
+
 			If[ !FreeQ[oneamp, SUNIndex],
 				oneamp = SUNSimplify[oneamp, Explicit -> True];
 			];
 
-		(* getting a common factor *)
+			(* getting a common factor *)
 			oneamp = oneamp + nUl1 + nUl2;
 			If[ fact===True,
 				factor3[x_] :=
 					Factor2[x, FactorFull -> False];
+
 				npref[0] = 0;
 				npref[w_ v_] :=
-					(factor3[w]/.Plus->pluS) npref[v]/;
-					FreeQ2[w,{A0, B0,B1, C0, D0, B00, B11, PaVe}];
-				oneamp = factor3[(npref /@ Map[factor3,oneamp ])/.nUl1->0/.nUl2->0
-									]/.pluS->Plus/.npref->collpav,
+					(factor3[w]/.Plus->pluS) npref[v]/; FreeQ2[w,{A0, B0,B1, C0, D0, B00, B11, PaVe}];
+				oneamp = factor3[(npref /@ Map[factor3,oneamp ])/.nUl1->0/.nUl2->0]/.pluS->Plus/.npref->collpav,
+
 				oneamp = Map[collpav, oneamp] /. nUl1 ->0 /.nUl2 -> 0;
 			];
 
-		(* Isolating *)
+			(* Isolating *)
 			If[ isolatehead=!=False,
 				isol[x_] :=
 					Isolate[x,IsolateNames->isolatehead];
 				sh[he_][x__] :=
 					isol[he[x]];
-				scaliso = {A0->sh[A0], B0->sh[B0], B1->sh[b1], B00->sh[B00],
-							B11->sh[B11], C0->sh[C0], D0->sh[D0]};
+				scaliso = {A0->sh[A0], B0->sh[B0], B1->sh[b1], B00->sh[B00], B11->sh[B11], C0->sh[C0], D0->sh[D0]};
 				isoplu[x__] :=
 					isol[Plus[x]];
-				oneamp = isol[  oneamp/.D0->sh[D0]/.C0->sh[C0]/.
-									B11->sh[B11]/.B00->sh[B00]/.B1->sh[b1]/.
-									B0->sh[B0]/.A0->sh[A0]/.Plus->isoplu/.
-					isoplu->Plus ];
+				oneamp = isol[  oneamp/.D0->sh[D0]/.C0->sh[C0]/. B11->sh[B11]/.B00->sh[B00]/.B1->sh[b1]/. B0->sh[B0]/.A0->sh[A0]/.Plus->isoplu/. isoplu->Plus];
 				isol[x_] :=
 					x
 			];
 
-		(* putting everything together again, including the prefactor *)
+			(* putting everything together again, including the prefactor *)
 
 			If[ FreeQ[oneamp, q],
 				oneamp = ChangeDimension[oneamp, 4],
@@ -1184,64 +1151,68 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		(* ********************************************************************* *)
 
 		(* writing the result in a file specified by grname *)
-		If[ (writeout=!=False )&&  StringQ[ name ] &&
-			(!ValueQ[OneLoopResult[grname]]),
+		If[ (writeout=!=False) && StringQ[name] && (!ValueQ[OneLoopResult[grname]]),
 			If[ formattype===FortranForm,
-				wri[ name, Hold[grname  = oneampresult],
-						FormatType -> FortranForm
-					]/.wri -> Write2,
-				wri[ name, Hold[OneLoopResult[ grname ] = oneampresult],
-				FormatType->formattype]/.wri -> Write2;
+				wri[ name, Hold[grname  = oneampresult], FormatType -> FortranForm]/.wri -> Write2,
+
+				wri[ name, Hold[OneLoopResult[ grname ] = oneampresult], FormatType->formattype]/.wri -> Write2;
 				If[ Length[FA2Info] > 0,
 					wri[ name, Hold[OneLoopInfo[ grname ] = FA2Info],
 					FormatType->InputForm]/.wri -> Write2;
 				];
 			]
 		];
-		If[ (!ValueQ[ OneLoopResult[ grname ]]) && (grname=!=False),
+
+		If[ (!ValueQ[OneLoopResult[grname]]) && (grname=!=False),
 			set[ OneLoopResult[grname], oneampresult ]/.set->Set
 		];
-		If[ (!ValueQ[ OneLoopInfo[ grname ]]) && (grname=!=False),
+
+		If[ (!ValueQ[OneLoopInfo[grname]]) && (grname=!=False),
 			set[ OneLoopInfo[grname], FA2Info]/.set->Set
 		];
 
-	(* ********************************************************************* *)
-	(*                          oneloop28                                    *)
-	(* ********************************************************************* *)
+		(* ********************************************************************* *)
+		(*                          oneloop28                                    *)
+		(* ********************************************************************* *)
 
 
-	(* --------------------------------------------------------------------- *)
-	(* some cosmetics for print1 *)
-	(* --------------------------------------------------------------------- *)
-	(* only if no abbreviations are introduced: print eventually *)
-	(* for printing purposes abbreviations are useful,but  *)
-	(* this may actually under certain circumstances be incorrect! *)
-	(* Though the result returned by OneLoop is of course correct *)
+		(* --------------------------------------------------------------------- *)
+		(* some cosmetics for print1 *)
+		(* --------------------------------------------------------------------- *)
+		(* only if no abbreviations are introduced: print eventually *)
+		(* for printing purposes abbreviations are useful,but  *)
+		(* this may actually under certain circumstances be incorrect! *)
+		(* Though the result returned by OneLoop is of course correct *)
 		If[ isolatehead===False,
+
 			PaVeAbbreviate[x_] :=
 				x/.PaVe->paVeabbrevi/.paVeabbrevi->PaVe;
 			paVeabbrevi[x__,{y__},{m1_,m2_,m3_}, OptionsPattern[]] :=
 				ToExpression[ StringJoin@@Prepend[Map[ToString,{x}],"C"] ];
+
 			paVeabbrevi[x__,{y__},{m1_,m2_,m3_,m4_}, OptionsPattern[]] :=
 				ToExpression[ StringJoin@@Prepend[Map[ToString,{x}],"D"] ];
+
 			pva[xxx_] :=
 				xxx//PaVeAbbreviate;
+
 			pvar[xx__,li1_{},li2_List, OptionsPattern[]] :=
 				"As"[li2[[1]]]/;Length[li2]===1;
+
 			pvar[xx__,li1_List,li2_List, OptionsPattern[]] :=
 				"Bs"@@Flatten[{li1,li2}]/;Length[li2]===2;
+
 			pvar[xx__,li1_List,li2_List, OptionsPattern[]] :=
 				"Cs"@@Flatten[{li1,li2}]/;Length[li2]===3;
+
 			pvar[xx__,li1_List,li2_List, OptionsPattern[]] :=
 				"Ds"@@Flatten[{li1,li2}]/;Length[li2]===4;
+
 			FCPrint[2, " ", FCDoControl->oneloopVerbose];
 			FCPrint[2, " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *", FCDoControl->oneloopVerbose];
 			FCPrint[2, " ", FCDoControl->oneloopVerbose];
 			If[ grname=!=False,
-				FCPrint[1, " The result for ", grname, " is ", oneampresult//LeafCount, " leafcount  long "
-					(*
-						Shallow[ oneampresult,{6, 20} ]
-					 *), FCDoControl->oneloopVerbose];
+				FCPrint[1, " The result for ", grname, " is ", oneampresult//LeafCount, " leafcount  long ", FCDoControl->oneloopVerbose];
 				FCPrint[3, LeafCount[oneampresult], FCDoControl->oneloopVerbose];
 			];
 			If[ Length[ arglist ]>0 && !breakdown===True,
@@ -1250,7 +1221,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			FCPrint[2, " ", FCDoControl->oneloopVerbose];
 			FCPrint[2, " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *", FCDoControl->oneloopVerbose];
 			FCPrint[2, " ", FCDoControl->oneloopVerbose];
-		](* endIf IsolateNames *);
+		];
 
 		(* ----------------------------------------------------------------- *)
 		]; (* end Timing *)
@@ -1290,51 +1261,32 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 (* OneLoopSumdef *)
 
 Options[OneLoopSum] = {
-(*
-multiply with the Born diagrams
-						Born               -> 1,
-*)
-						CombineGraphs      -> {},
-						Dimension          -> True,
-						ExtraVariables      -> {},
-						FinalFunction       ->Identity,
-						FinalSubstitutions -> {},
-						FormatType         -> InputForm,
-						InitialSubstitutions  -> {},
-						IntermediateSubstitutions -> {},
-						IsolateNames        -> KK,
-(*
-						KeepOnly           -> False,
-*)
-						Mandelstam         -> {},
-						Prefactor          -> 1,
-						ReduceToScalars    -> True,
-(*
-						Scaling            -> {},
-*)
-						SelectGraphs       -> All,
-						WriteOutPaVe       -> False
-					};
-(*
-KeepOnly::usage=
-"KeepOnly is an option of OneLoop.
-It may be set to B0, C0, D0 keeping only the corresponding
-coefficients. The default setting is False. If KeepOnly is set
-to {} then the part of the amplitude which is not coefficient
-of B0, C0, D0 is kept.";
-
-*)
+	CombineGraphs      -> {},
+	Dimension          -> True,
+	ExtraVariables      -> {},
+	FinalFunction       ->Identity,
+	FinalSubstitutions -> {},
+	FormatType         -> InputForm,
+	InitialSubstitutions  -> {},
+	IntermediateSubstitutions -> {},
+	IsolateNames        -> KK,
+	Mandelstam         -> {},
+	Prefactor          -> 1,
+	ReduceToScalars    -> True,
+	SelectGraphs       -> All,
+	WriteOutPaVe       -> False
+};
 
 OneLoopSum[ex_, ops___] :=
 	Block[ {mand,reduce,na,i,exx,nsres,sres,
-	len0,len,jj, vars, varpave,isolatehead,alreadysummed,
-	filename, formattype,selectgraphs,combinegraphs,pres,
-	aa0,bb0,cc0,dd0,ddb0,finfunc,inisuB,extravars,
-	acdc, lnw, nres, j, nvd, set, npi3, newpa, simp,nplin,
-	mandelspec,sumcol,colll,prefactor,feynli,dims,fsub,keeponly,
-	d0multiply, c0multiply, d0scalIsolate,c0scalIsolate,vsm,
-	intermedsub,isol2,combinelist,np,nnp,npavopt,iiv,lres,mmsu,iim,
-	feynAmpden1, feynAmpden2,masss1, masss2, fim,checklabel },
+			len0,len,jj, vars, varpave,isolatehead,alreadysummed,
+			filename, formattype,selectgraphs,combinegraphs,pres,
+			aa0,bb0,cc0,dd0,ddb0,finfunc,inisuB,extravars,
+			acdc, lnw, nres, j, nvd, set, npi3, newpa, simp,nplin,
+			mandelspec,sumcol,colll,prefactor,feynli,dims,fsub,keeponly,
+			d0multiply, c0multiply, d0scalIsolate,c0scalIsolate,vsm,
+			intermedsub,isol2,combinelist,np,nnp,npavopt,iiv,lres,mmsu,iim,
+			feynAmpden1, feynAmpden2,masss1, masss2, fim,checklabel},
 		exx = ex;
 		sres = 0;
 		SetOptions[DiracTrace,  DiracTraceEvaluate -> False ];
@@ -2034,17 +1986,25 @@ OneLoopSum[ex_, ops___] :=
 
 (* ******************************************************************* *)
 
-	(*smallddef *)
-small2/: small2[x_]^n_ := small2[x^2] /; n > 0;
-small2/: small2[_] a_ :=0;
-small3/: small3[_] + a_ :=a;
+(*smallddef *)
+small2/:
+	small2[x_]^n_ :=
+		small2[x^2] /; n > 0;
+small2/:
+	small2[_] a_ :=
+		0;
+
+small3/:
+	small3[_] + a_ :=
+	a;
+
 small4[x_^m_] :=
 	SmallVariable[x]^m;
-	smalld[x_] :=
-		x/;FreeQ[x,SmallVariable];
-	smalld[x_] :=
-		x/.SmallVariable->small2/.small2->small3/.
-				small3->small4/.small4->SmallVariable;
+
+smalld[x_] :=
+	x/;FreeQ[x,SmallVariable];
+smalld[x_] :=
+	x/.SmallVariable->small2/.small2->small3/. small3->small4/.small4->SmallVariable;
 
 (* ******************************************************************* *)
 (* ********************************************************************* *)
@@ -2052,69 +2012,65 @@ small4[x_^m_] :=
 (* ********************************************************************* *)
 
 												(*spinorsandpairsdef*)
-	dotdotlin[x___] :=
-		dotlin[DOT[x]];
+dotdotlin[x___] :=
+	dotlin[DOT[x]];
 (*tempstandmatdef*)
-	standma[x_] :=
-		dotdotlin[x]/;!FreeQ2[x, {Polarization, DOT}];
-	tempstandmat[x_] :=
-		Block[ {ttt},
-			ttt = x;
-			If[ StandardMatrixElement =!= Identity,
-				If[ FreeQ[ttt, Spinor] &&
-					!FreeQ2[ttt,{SUNF,SUNDelta, SUNT, Pair}],
-					If[ LeafCount[ttt]>500,
-						FCPrint[2, "expanding in tempstandmat", FCDoControl->oneloopVerbose]
-					];
-					ttt = Expand[ttt spinorsandpairs[]];
-					If[ LeafCount[ttt]>500,
-						FCPrint[2, "expanding in tempstandmat done", FCDoControl->oneloopVerbose]
-					];
-					ttt = ttt /. spinorsandpairs -> dotsp
+standma[x_] :=
+	dotdotlin[x]/;!FreeQ2[x, {Polarization, DOT}];
+
+tempstandmat[x_] :=
+	Block[ {ttt},
+		ttt = x;
+		If[ StandardMatrixElement =!= Identity,
+			If[ FreeQ[ttt, Spinor] && !FreeQ2[ttt,{SUNF,SUNDelta, SUNT, Pair}],
+				If[ LeafCount[ttt]>500,
+					FCPrint[2, "expanding in tempstandmat", FCDoControl->oneloopVerbose]
 				];
-				If[ (Length[DownValues[spinorsandpairs]]>1) ||
-					ValueQ[StandardMatrixElement],
-					ttt = x/.DOT->spinorsandpairs/.
-							spinorsandpairs->StandardMatrixElement/.
-							StandardMatrixElement->standma/.standma->
-							StandardMatrixElement;
+				ttt = Expand[ttt spinorsandpairs[]];
+				If[ LeafCount[ttt]>500,
+					FCPrint[2, "expanding in tempstandmat done", FCDoControl->oneloopVerbose]
 				];
-			(*
-					If[$fourfermion =!= True,
-						If[FreeQ[ttt, Polarization] && !FreeQ[ttt,Spinor],
-							ttt = SpecificPolarization[ttt]
-						]
-						];
-*)
-	];
-			ttt
+				ttt = ttt /. spinorsandpairs -> dotsp
+			];
+			If[ (Length[DownValues[spinorsandpairs]]>1) || ValueQ[StandardMatrixElement],
+				ttt = x/.DOT->spinorsandpairs/. spinorsandpairs->StandardMatrixElement/. StandardMatrixElement->standma/.standma-> StandardMatrixElement;
+			];
+
 		];
+		ttt
+	];
 
 
 
-	spinorsandpairs[a_,b__] :=
-		dotdotlin[a,b]//spinorsandpairs;
-	dotsp[] = 1;
-	dotsp[x_] :=
-		x;
+spinorsandpairs[a_,b__] :=
+	dotdotlin[a,b]//spinorsandpairs;
 
-	spinorsandpairs/:
-		spinorsandpairs[x___] Pair[ Momentum[a__], Momentum[b__]]^n_. :=
-			spinorsandpairs[dotsp[x] Pair[Momentum[a],Momentum[b]]^n]/; !FreeQ[{a,b},Polarization];
+dotsp[] =
+	1;
+dotsp[x_] :=
+	x;
 
-	spinorsandpairs/: spinorsandpairs[x___] Eps[w__] :=
-		spinorsandpairs[dotsp[x] Eps[w]]/; !FreeQ[{w}, Polarization];
+spinorsandpairs/:
+	spinorsandpairs[x___] Pair[ Momentum[a__], Momentum[b__]]^n_. :=
+		spinorsandpairs[dotsp[x] Pair[Momentum[a],Momentum[b]]^n]/; !FreeQ[{a,b},Polarization];
 
-	spinorsandpairs/:
-		spinorsandpairs[x___] a_SUNT:= spinorsandpairs[dotsp[x], a];
+spinorsandpairs/: spinorsandpairs[x___] Eps[w__] :=
+	spinorsandpairs[dotsp[x] Eps[w]]/; !FreeQ[{w}, Polarization];
 
-	spinorsandpairs/:
-		spinorsandpairs[x___] a_SUNF:= spinorsandpairs[dotsp[x] a];
+spinorsandpairs/:
+	spinorsandpairs[x___] a_SUNT:=
+		spinorsandpairs[dotsp[x], a];
 
-	spinorsandpairs/:
-		spinorsandpairs[x___] a_SUNDelta:= spinorsandpairs[dotsp[x] a];
+spinorsandpairs/:
+	spinorsandpairs[x___] a_SUNF:=
+		spinorsandpairs[dotsp[x] a];
 
-	spinorsandpairs/: spinorsandpairs[x___] spinorsandpairs[y___] :=
+spinorsandpairs/:
+	spinorsandpairs[x___] a_SUNDelta:=
+		spinorsandpairs[dotsp[x] a];
+
+spinorsandpairs/:
+	spinorsandpairs[x___] spinorsandpairs[y___] :=
 		spinorsandpairs[dotsp[x] dotsp[y]];
 
 (* ********************************************************************* *)
@@ -2127,49 +2083,50 @@ small4[x_^m_] :=
 
 denomExpand[y__] :=
 	y/.FeynAmpDenominator->denexp; (*denomExpanddef*)
+
 denexp[z__] :=
 	Expand //@ MomentumExpand[ FeynAmpDenominator[z] ];
+
 (* *************************************************************** *)
 (* suind substitutes for qu dummy indices for the tensor integral  *)
 (* decomposition, the first argument of suind is a sumand *)
 (* *************************************************************** *)
 	(* Hier das RICHTIGE  suind ::: *)
-	suind[ y_,qu_,dim_,md_] :=
-		Block[ {i,res = y, posli,
-				currentposli},          (*suinddef*)
-			posli = Position[y,Momentum[qu,___] ];
-			If[ posli=!={},
-				For[i = 1, i <= Length[posli],i++,
-					currentposli = Position[res, Momentum[qu,___] ];
-					res = ReplacePart[res, LorentzIndex[md[i],dim],
-									currentposli[[1]] ]
-				]
-			];
-			res
+suind[ y_,qu_,dim_,md_] :=
+	Block[ {i,res = y, posli, currentposli},
+		posli = Position[y,Momentum[qu,___] ];
+		If[ posli=!={},
+			For[i = 1, i <= Length[posli],i++,
+				currentposli = Position[res, Momentum[qu,___] ];
+				res = ReplacePart[res, LorentzIndex[md[i],dim],currentposli[[1]]]
+			]
 		];
+		res
+	];
 
 
 (* *************************************************************** *)
 (* for the divergent parts  "epsilon - substitution"               *)
 (* *************************************************************** *)
-	epst[x__] :=
-		If[ uvpart === True,
-			0,
-			epst2[x]
-		];
-	epst2[gr_,x_,4,resid_] :=
-		to4dim[ gr ];       (*epstdef*)
-	epst2[gr_,x_,d_Symbol,_] :=
-		to4dim[ gr ]/;FreeQ[x,d];
-	epst2[gr_,x_,d_Symbol,resid_] :=
-		Block[ {epstresul,epstin,epseps,epx},
-			epx = to4dim[x];
-			epstin = Expand[(epx/.d->(4-epseps))-(epx/.d->4)
-							]//spinorchainevaluate;
-			epstresul = to4dim[gr + Normal[ Series[epstin,{epseps,0,1}]
-										]/.epseps->resid ]//Expand;
-			epstresul
-		];
+epst[x__] :=
+	If[ uvpart === True,
+		0,
+		epst2[x]
+	];
+
+epst2[gr_,x_,4,resid_] :=
+	to4dim[ gr ];
+
+epst2[gr_,x_,d_Symbol,_] :=
+	to4dim[ gr ]/;FreeQ[x,d];
+
+epst2[gr_,x_,d_Symbol,resid_] :=
+	Block[ {epstresul,epstin,epseps,epx},
+		epx = to4dim[x];
+		epstin = Expand[(epx/.d->(4-epseps))-(epx/.d->4)]//spinorchainevaluate;
+		epstresul = to4dim[gr + Normal[ Series[epstin,{epseps,0,1}]]/.epseps->resid ]//Expand;
+		epstresul
+	];
 
 (* ********************************************************************* *)
 (*                          oneloop39                                    *)
@@ -2178,62 +2135,64 @@ denexp[z__] :=
 (* *************************************************************** *)
 (* A useful evaluation function ( for  tensint )                   *)
 (* *************************************************************** *)
-	to4d2[x_] :=
-		x /;  $LimitTo4 =!= True;
-	to4d2[x_] :=
-		(x/.{Momentum[fope_,_]:>Momentum[fope]/;FreeQ[fope,q],
-			LorentzIndex[muu_,_] :> LorentzIndex[muu]}
-		) /; $LimitTo4 === True;
-	dirsim[a_ b_] :=
-		a dirsim[b] /; FreeQ2[a, {Spinor,DiracGamma}];
+to4d2[x_] :=
+	x /;  $LimitTo4 =!= True;
+to4d2[x_] :=
+	(x/.{Momentum[fope_,_]:>Momentum[fope]/;FreeQ[fope,q], LorentzIndex[muu_,_] :> LorentzIndex[muu]}) /; $LimitTo4 === True;
+
+dirsim[a_ b_] :=
+	a dirsim[b] /; FreeQ2[a, {Spinor,DiracGamma}];
+
 SetAttributes[eval,Listable];                            (*evaldef*)
-	eval[evy_] :=
-		MemSet[ eval[evy],
-		Block[ {evalte,nul1,nul2,ie,neval,nt},
-			FCPrint[3, "OneLoop: eval: Entering with ", evy ,FCDoControl->oneloopVerbose];
-			evalte = to4d2[ evy/.NonCommutativeMultiply->Times ];
-			If[ !FreeQ[ evalte, LorentzIndex ],
-				evalte = contractli[ evalte ];
+eval[evy_] :=
+	MemSet[ eval[evy],
+	Block[ {evalte,nul1,nul2,ie,neval,nt},
+		FCPrint[3, "OneLoop: eval: Entering with ", evy ,FCDoControl->oneloopVerbose];
+		evalte = to4d2[ evy/.NonCommutativeMultiply->Times ];
+		If[ !FreeQ[ evalte, LorentzIndex ],
+			evalte = contractli[ evalte ];
+		];
+		evalte = FixedPoint[ReleaseHold,evalte]//to4d2;
+
+		evalte = Expand[ dotlin[ evalte ]//ExpandScalarProduct, DOT ];
+		If[ (Length[evalte]>5) && !FreeQ[evalte, DOT],
+			evalte = Collect2[ evalte, DOT, Factoring -> False]
+		];
+
+		If[ !FreeQ[ evalte, DiracGamma],
+			evalte = Map[ dirsim, evalte + nul1 ]/. dirsim->DiracSimplify/.nul1 -> 0;
+
+			If[ LeafCount[evalte]>100,
+				evalte = Collect2[evalte,DOT, Factoring -> False];
 			];
-			evalte = FixedPoint[ReleaseHold,evalte]//to4d2;
-			evalte = Expand[ dotlin[ evalte ]//ExpandScalarProduct, DOT ];
-			If[ (Length[evalte]>5) && !FreeQ[evalte, DOT],
-				evalte = Collect2[ evalte, DOT, Factoring -> False]
-			];
-			If[ !FreeQ[ evalte, DiracGamma],
-				evalte = Map[ dirsim, evalte + nul1 ]/.
-						dirsim->DiracSimplify/.nul1 -> 0;
-				If[ LeafCount[evalte]>100,
-					evalte = Collect2[evalte,DOT, Factoring -> False];
+			evalte = evalte + nul1 + nul2;
+			neval = 0;
+			For[ie = 1, ie<=Length[evalte], ie++,
+				If[ Length[evalte[[ie]]]>0,
+					FCPrint[3, "ie = ", ie, " out of ", Length[evalte], FCDoControl->oneloopVerbose]
 				];
-				evalte = evalte + nul1 + nul2;
-				neval = 0;
-				For[ie = 1, ie<=Length[evalte], ie++,
-					If[ Length[evalte[[ie]]]>0,
-						FCPrint[3, "ie = ", ie, " out of ", Length[evalte], FCDoControl->oneloopVerbose]
-					];
-					nt = Contract[DiracOrder[evalte[[ie]]]
-								]//ExpandScalarProduct;
-					nt = DiracSimplify[nt]//DiracOrder;
-					nt = Expand[nt, DOT];
-					FCPrint[3, "length of nt = ", nt//Length, FCDoControl->oneloopVerbose];
-					neval = neval + nt
-					];
-				evalte = neval/.nul1->0/.nul2->0;
+				nt = Contract[DiracOrder[evalte[[ie]]]]//ExpandScalarProduct;
+				nt = DiracSimplify[nt]//DiracOrder;
+				nt = Expand[nt, DOT];
+				FCPrint[3, "length of nt = ", nt//Length, FCDoControl->oneloopVerbose];
+				neval = neval + nt
 			];
-			If[ !FreeQ[evalte, Eps],
-				evalte = evalte//EpsEvaluate//epschisholm;
-					(* The default is that Eps's will be contracted away!*)
-				evalte = Expand[ conall[ evalte ]//ExpandScalarProduct];
-				evalte = epschisholm[ evalte ]//DiracSimplify//DiracOrder;
-				evalte = Contract[ evalte ];
-				evalte = Expand[ evalte//ExpandScalarProduct ]
-			];
-			evalte = tempstandmat[ evalte ];
-			evalte = Expand[evalte];
-			FCPrint[3, "OneLoop: eval: Leaving with ", evalte ,FCDoControl->oneloopVerbose];
-			evalte
-		]];
+			evalte = neval/.nul1->0/.nul2->0;
+		];
+
+		If[ !FreeQ[evalte, Eps],
+			evalte = evalte//EpsEvaluate//epschisholm;
+				(* The default is that Eps's will be contracted away!*)
+			evalte = Expand[ conall[evalte]//ExpandScalarProduct];
+			evalte = epschisholm[evalte]//DiracSimplify//DiracOrder;
+			evalte = Contract[evalte];
+			evalte = Expand[evalte//ExpandScalarProduct ]
+		];
+		evalte = tempstandmat[ evalte ];
+		evalte = Expand[evalte];
+		FCPrint[3, "OneLoop: eval: Leaving with ", evalte ,FCDoControl->oneloopVerbose];
+		evalte
+	]];
 
 (* ********************************************************************* *)
 (* ********************************************************************* *)
@@ -2352,32 +2311,28 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 pavremember[x__] :=
 	MemSet[pavremember[x], PaVeReduce[x]];
 
-	tdec[0,___] :=          (*tdecdef*)
-		0;
+tdec[0,___] :=          (*tdecdef*)
+	0;
 
-	tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
-		MemSet[ tdec[ expr,props,Q,qn,di,mudu,mand],
-		Block[ {spl0, mande,tensps = {},tdecnew,tdec0j,tdectij,
-				tensdf2,tensdf1, pav0,
-				tdecex = expr/.Pair-> PairContract,
+tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
+	MemSet[ tdec[ expr,props,Q,qn,di,mudu,mand],
+		Block[{	spl0, mande,tensps = {},tdecnew,tdec0j,tdectij,
+				tensdf2,tensdf1, pav0, tdecex = expr/.Pair-> PairContract,
 				tdi,tdecti,tdectj,tdectk,tdectl,tdectm,tdecr = 0,
-				tdecpl,tdecml,tdeclpl,
-				rul,spl,add, tmppair
-				},
-				FCPrint[3, "entering tdec with expr = ", expr//FeynCalcForm, FCDoControl->oneloopVerbose];
-				FCPrint[3, "props =  ", props, FCDoControl->oneloopVerbose];
-				FCPrint[3, "Q =  ", Q, FCDoControl->oneloopVerbose];
-				(* number of vectors in the numerator *)
-				FCPrint[3, "qn =  ", qn, FCDoControl->oneloopVerbose];
-				FCPrint[3, "di =  ", di, FCDoControl->oneloopVerbose];
-				FCPrint[3, "mudu =  ", mudu, FCDoControl->oneloopVerbose];
-				FCPrint[3, "mand =  ", mand, FCDoControl->oneloopVerbose];
-				tensdf2[_,b_] :=
-					b;
-				tensdf1[a_,_] :=
-					Expand[ to4dim[
-							MomentumExpand[a-Momentum[Q]]]
-						];
+				tdecpl,tdecml,tdeclpl, rul,spl,add, tmppair },
+			FCPrint[3, "entering tdec with expr = ", expr//FeynCalcForm, FCDoControl->oneloopVerbose];
+			FCPrint[3, "props =  ", props, FCDoControl->oneloopVerbose];
+			FCPrint[3, "Q =  ", Q, FCDoControl->oneloopVerbose];
+			(* number of vectors in the numerator *)
+			FCPrint[3, "qn =  ", qn, FCDoControl->oneloopVerbose];
+			FCPrint[3, "di =  ", di, FCDoControl->oneloopVerbose];
+			FCPrint[3, "mudu =  ", mudu, FCDoControl->oneloopVerbose];
+			FCPrint[3, "mand =  ", mand, FCDoControl->oneloopVerbose];
+			tensdf2[_,b_] :=
+				b;
+			tensdf1[a_,_] :=
+				Expand[ to4dim[MomentumExpand[a-Momentum[Q]]]];
+
 			If[ tdecex===0,
 				tdecr = 0,
 				(* Here it goes *)
@@ -2411,14 +2366,12 @@ pavremember[x__] :=
 				(* calculate the List of scalar products needed as arguments *)
 
 				(* get the list of p's from the propagators, ignoring the first propagator *)
-				tdecpl = Drop[ Expand[ props//MomentumExpand]/.
-								PropagatorDenominator->tensdf1/.
-								FeynAmpDenominator->List,1 ]//DiracGammaCombine;
+				tdecpl = Drop[ Expand[ props//MomentumExpand]/. PD->tensdf1/. FeynAmpDenominator->List,1 ]//DiracGammaCombine;
 				tdecpl = Expand[tdecpl];
 				FCPrint[2, "tdecpl = ", tdecpl, FCDoControl->oneloopVerbose];
 
 				(* get the list of m's from the propagators *)
-				tdecml = props/.PropagatorDenominator->tensdf2/. FeynAmpDenominator->List;
+				tdecml = props/.PD->tensdf2/. FeynAmpDenominator->List;
 				FCPrint[3, "tdecml = ", tdecml, FCDoControl->oneloopVerbose];
 				tdecml = #^2& /@ tdecml;
 				FCPrint[3, "tdecml = ", tdecml, FCDoControl->oneloopVerbose];
@@ -2443,176 +2396,170 @@ pavremember[x__] :=
 
 				FCPrint[3, "OneLoop: tdec: covnerting FADs to PaVe functions.", FCDoControl->oneloopVerbose];
 
-			tensps = ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[tdecpl,tmppair]];
-			tensps = tensps /. tmppair[a__] :> spl[a,0];
+				tensps = ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[tdecpl,tmppair]];
+				tensps = tensps /. tmppair[a__] :> spl[a,0];
 
-			FCPrint[3, "OneLoop: tdec: tensps ", tensps," ", FCDoControl->oneloopVerbose];
-			FCPrint[3, "OneLoop: tdec: tdecr ", tdecr, FCDoControl->oneloopVerbose];
-			FCPrint[3, "OneLoop: tdec: tdecex ", tdecex, FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tdec: tensps ", tensps," ", FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tdec: tdecr ", tdecr, FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tdec: tdecex ", tdecex, FCDoControl->oneloopVerbose];
 
-			(* scalar integrals *)
-			If[ qn==0,
+				(* scalar integrals *)
+				If[ qn==0,
 
-				(* new prefactor *)
-				tdecnew = eval[ tdecex ];
+					(* new prefactor *)
+					tdecnew = eval[ tdecex ];
 
-				If[ $LimitTo4 === True,
-					Which[
-						tdeclpl == 0,
-							(* e A0 = 2m^2 *)
-							tdecr = epst[ tdecr,tdecnew,tdi, 2 tdecml[[1]] ],
-						tdeclpl == 1,
-							(* e B0 = 2 *)
-							tdecr = epst[ tdecr,tdecnew,tdi, 2 ];
-					]
-				];
-
-				FCPrint[3, "OneLoop: tdec: tdecenew ", tdecnew, FCDoControl->oneloopVerbose];
-
-				(* if the option DenominatorOrder is True, then order here again *)
-				If[ denomOrder === True,
-					pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]],
-					pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
-				];
-
-				FCPrint[3, "OneLoop: tdec: pav0: ", pav0, FCDoControl->oneloopVerbose];
-				(* Reduction of PaVe functions into simpler ones... *)
-				tdecr = add[ tdecr, pav0, tdecnew ];
-				FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", tdecr, FCDoControl->oneloopVerbose]
-			];
-
-			(* q^mu (...) *)
-			If[ qn==1,
-				(* new prefactor *)
-				tdecnew = Table[ eval[ tdecex/.LorentzIndex[mudu[1],___]-> tdecpl[[tdecti]] ], {tdecti,1,tdeclpl}];
-
-				FCPrint[3, "OneLoop: tdec: qn==1, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
-				If[ ($LimitTo4 === True) && (tdeclpl === 1),   (* e B1 = -1 *)
-					tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
-				];
-				FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose];
-				For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
-					tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
-									tdecnew[[tdectj]]
-					]            ];
-				FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose]
-			];
-
-			(* q^mu q^nu (...) *)
-			If[ qn==2,
-				tdecnew = eval[ tdecex/.LorentzIndex[mudu[1],dime___] :> LorentzIndex[mudu[2],dime]];
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
-
-				If[ $LimitTo4 === True,
-					Which[
-						tdeclpl == 0,        (* e A00 = m^4/2 *)
-										tdecr = epst[  tdecr,tdecnew,tdi,
-														tdecml[[1]]^2/2
-													],
-						tdeclpl == 1,        (* e B00  *)
-										tdecr = epst[  tdecr,tdecnew,tdi,
-														(-1/3 spl[tdecpl[[1]],0] +
-														tdecml[[1]] +
-														tdecml[[2]] )/2
-													] ,
-						tdeclpl == 2,       (* e C00 = 1/2 *)
-										tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
-						]
-				];
-
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
-				tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew ];
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecex=", tdecex, FCDoControl->oneloopVerbose];
-				FCPrint[3, "OneLoop: tdec: qn==2, tdeclpl=", tdeclpl, FCDoControl->oneloopVerbose];
-				tdecnew = Table[{Sort[{tdecti,tdectj}],
-						tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/.
-								LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]
-								},{tdectj,1,tdeclpl},{tdecti,1,tdeclpl}
-								];
-
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", FullForm[tdecnew], FCDoControl->oneloopVerbose];
-				tdecnew = eval[ Flatten[ tdecnew,1 ] ];
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
-				If[ ($LimitTo4 === True) && (tdeclpl == 1),  (* e B11 = 2/3 *)
-					tdecr = epst[ tdecr,tdecnew[[1,2]],tdi, 2/3 ]
-				];
-				For[ tdectj = 1,tdectj<=Length[tdecnew],tdectj++,
-					tdecr = add[ tdecr,
-							PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce}],
-								tdecnew[[tdectj,2]]
-								];
 					If[ $LimitTo4 === True,
-						tdecr = tdecr /.tdi->4
+						Which[
+							tdeclpl == 0,
+								(* e A0 = 2m^2 *)
+								tdecr = epst[ tdecr,tdecnew,tdi, 2 tdecml[[1]] ],
+							tdeclpl == 1,
+								(* e B0 = 2 *)
+								tdecr = epst[ tdecr,tdecnew,tdi, 2 ];
+						]
 					];
+
+					FCPrint[3, "OneLoop: tdec: tdecenew ", tdecnew, FCDoControl->oneloopVerbose];
+
+					(* if the option DenominatorOrder is True, then order here again *)
+					If[ denomOrder === True,
+						pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]],
+						pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
 					];
-				FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose]
-			];
+
+					FCPrint[3, "OneLoop: tdec: pav0: ", pav0, FCDoControl->oneloopVerbose];
+					(* Reduction of PaVe functions into simpler ones... *)
+					tdecr = add[ tdecr, pav0, tdecnew ];
+					FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+				];
+
+				(* q^mu (...) *)
+				If[ qn==1,
+					(* new prefactor *)
+					tdecnew = Table[eval[ tdecex/.LorentzIndex[mudu[1],___]-> tdecpl[[tdecti]] ], {tdecti,1,tdeclpl}];
+
+					FCPrint[3, "OneLoop: tdec: qn==1, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
+					If[ ($LimitTo4 === True) && (tdeclpl === 1),   (* e B1 = -1 *)
+						tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
+					];
+					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+					For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
+						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew[[tdectj]]]
+					];
+					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+				];
+
+				(* q^mu q^nu (...) *)
+				If[ qn==2,
+					tdecnew = eval[ tdecex/.LorentzIndex[mudu[1],dime___] :> LorentzIndex[mudu[2],dime]];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
+
+					If[ $LimitTo4 === True,
+						Which[
+							tdeclpl == 0,
+								(* e A00 = m^4/2 *)
+								tdecr = epst[tdecr,tdecnew,tdi, tdecml[[1]]^2/2],
+							tdeclpl == 1,
+								(* e B00  *)
+								tdecr = epst[  tdecr,tdecnew,tdi, (-1/3 spl[tdecpl[[1]],0] + tdecml[[1]] + tdecml[[2]] )/2] ,
+							tdeclpl == 2,
+								(* e C00 = 1/2 *)
+								tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
+							]
+					];
+
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew ];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecex=", tdecex, FCDoControl->oneloopVerbose];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdeclpl=", tdeclpl, FCDoControl->oneloopVerbose];
+					tdecnew = Table[{Sort[{tdecti,tdectj}],
+						tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/. LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]},{tdectj,1,tdeclpl},{tdecti,1,tdeclpl}
+					];
+
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", FullForm[tdecnew], FCDoControl->oneloopVerbose];
+					tdecnew = eval[Flatten[tdecnew,1]];
+
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
+					If[ ($LimitTo4 === True) && (tdeclpl == 1),  (* e B11 = 2/3 *)
+						tdecr = epst[ tdecr,tdecnew[[1,2]],tdi, 2/3 ]
+					];
+
+					For[ tdectj = 1,tdectj<=Length[tdecnew],tdectj++,
+						tdecr = add[ tdecr, PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce}], tdecnew[[tdectj,2]]];
+						If[ $LimitTo4 === True,
+							tdecr = tdecr /.tdi->4
+						];
+					];
+
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+				];
 
 
-			(* q^mu q^nu q^rho (...) *)
+				(* q^mu q^nu q^rho (...) *)
 				If[ qn == 3,               (* The  00i - terms *)
 					tdecnew = {};
 					For[ tdectij = 1, tdectij <= tdeclpl, tdectij++,
 						tdecnew = Append[ tdecnew, eval[
-					conall[ tdecex/.NonCommutativeMultiply->Times/.
-							{LorentzIndex[mudu[1],dime___]->
-							LorentzIndex[mudu[2],dime],
-							LorentzIndex[mudu[3],___]->tdecpl[[tdectij]]}]
-					+ conall[ tdecex/.NonCommutativeMultiply->Times/.
-							{LorentzIndex[mudu[2],dime___]->
-							LorentzIndex[mudu[3],dime],
-							LorentzIndex[mudu[1],___]->tdecpl[[tdectij]]}]
-					+ conall[ tdecex/.NonCommutativeMultiply->Times/.
-							{LorentzIndex[mudu[1],dime___]->
-							LorentzIndex[mudu[3],dime],
-							LorentzIndex[mudu[2],___]->tdecpl[[tdectij]]}]
-														]
-										]
-						];
+						conall[ tdecex/.NonCommutativeMultiply->Times/.
+								{LorentzIndex[mudu[1],dime___]-> LorentzIndex[mudu[2],dime],
+								LorentzIndex[mudu[3],___]->tdecpl[[tdectij]]}]
+						+ conall[ tdecex/.NonCommutativeMultiply->Times/.
+								{LorentzIndex[mudu[2],dime___]-> LorentzIndex[mudu[3],dime],
+								LorentzIndex[mudu[1],___]->tdecpl[[tdectij]]}]
+						+ conall[ tdecex/.NonCommutativeMultiply->Times/.
+								{LorentzIndex[mudu[1],dime___]-> LorentzIndex[mudu[3],dime],
+								LorentzIndex[mudu[2],___]->tdecpl[[tdectij]]}]]]
+					];
+
 					If[ ($LimitTo4 === True) && (tdeclpl==2),  (* C001 = -1/6 *)
 						tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1/6 ];
 						tdecr = epst[ tdecr,tdecnew[[2]], tdi,-1/6 ]
 					];
+
 					For[ tdec0j = 1, tdec0j <= tdeclpl, tdec0j++,
-						tdecr = add[  tdecr, PaVe[0,0,tdec0j,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
-										tdecnew[[tdec0j]]  ]
-						];
+						tdecr = add[tdecr,PaVe[0,0,tdec0j,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew[[tdec0j]]]
+					];
+
 					For[ tdecti = 1, tdecti <= tdeclpl, tdecti++,
 						For[ tdectj = 1, tdectj <= tdeclpl, tdectj++,
 							For[ tdectk = 1, tdectk <= tdeclpl, tdectk++,
 									tdecr = add[ tdecr,
-											PaVe@@Join[Sort[{tdecti,tdectj,tdectk}],
-															{tensps},{tdecml}
-														],
+											PaVe@@Join[Sort[{tdecti,tdectj,tdectk}],{tensps},{tdecml}],
 										(eval[ tdecex/.LorentzIndex[mudu[1],___]->
 														tdecpl[[tdecti]]/.
 														LorentzIndex[mudu[2],___]->
 														tdecpl[[tdectj]]/.
 														LorentzIndex[mudu[3],___]->
-														tdecpl[[tdectk]]
-											]
-										)
-											];
+														tdecpl[[tdectk]]])];
 									If[ $LimitTo4 === True,
 										tdecr = tdecr/.tdi->4
 									]
-								]        ]                   ];
-				FCPrint[3, "OneLoop: tdec: qn==3, tdecr=", tdecr, FCDoControl->oneloopVerbose]
+							]
+						]
+					];
+					FCPrint[3, "OneLoop: tdec: qn==3, tdecr=", tdecr, FCDoControl->oneloopVerbose]
 				];
+
 				If[ qn>3,
 					tdecr = expr
 				];
+
 				tdecr = Expand[tdecr];
 
-			(* end if tdecex == 0 *) ];
+				(* end if tdecex == 0 *)
+			];
+
 			FCPrint[3, "exiting tdec with ", tdecr, FCDoControl->oneloopVerbose];
 			If[ !FreeQ[tdecr, Null],
 				Print["Null encountered in tdec; entering DIALOG"];
 				Dialog[{expr,props,Q,qn ,di,mudu,mand}]
 			];
 			tdecr
-		]]/; expr =!= 0;
+
+		]
+	]/; expr =!= 0;
 
 (* ************************************************************** *)
 
@@ -2622,57 +2569,56 @@ pavremember[x__] :=
 
 (* ---------------------------------------------------------------- *)
 (* ---------------------------------------------------------------- *)
-	nterms[x_Plus] :=
-		Length[x];    (*ntermsdef *)
-	nterms[x_] :=
-		Block[ {ntermslex = Expand[x]},
-			If[ Head[ntermslex]===Plus,
-				ntermslex = Length[ntermslex],
-				If[ x===0,
-					ntermslex = 0,
-					ntermslex = 1
-				]
-			];
-			ntermslex
+nterms[x_Plus] :=
+	Length[x];
+
+nterms[x_] :=
+	Block[ {ntermslex = Expand[x]},
+		If[ Head[ntermslex]===Plus,
+			ntermslex = Length[ntermslex],
+			If[ x===0,
+				ntermslex = 0,
+				ntermslex = 1
+			]
 		];
-(* ------------------------------------------------------------ *)
-(* ********************************************************************* *)
-(* ********************************************************************* *)
-(* ********************************************************************* *)
-(*                          oneloop43                                    *)
-(* ********************************************************************* *)
+		ntermslex
+	];
 
+dndummy[x__] :=
+	dummy FeynAmpDenominator[x];
 
-	dndummy[x__] :=
-		dummy FeynAmpDenominator[x];
-	vcid[x_,___] :=
-		x;
+vcid[x_,___] :=
+	x;
 
-
-(* ********************************************************************* *)
-(*                          oneloop44                                    *)
-(* ********************************************************************* *)
 
 (* SetStandardMatrixElementdef *)
-Options[SetStandardMatrixElements] = {WriteOut -> False};
+Options[SetStandardMatrixElements] = {
+	WriteOut -> False
+};
+
 SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 	Block[ {links = {},nmat,mat,ix,i,ii,j,sup,newli = {}, ops, enm,
-				savmem,neweq,mati,set,isos,isolspc,nullll,x,x2,sumand,
-				mati1, set2, filename, temp},
+			savmem,neweq,mati,set,isos,isolspc,nullll,x,x2,sumand,
+			mati1, set2, filename, temp},
 		ops = {op};
 		enm = en;
+
 		If[ {ops}==={} || (!FreeQ[enm, WriteOut]),
 			ops = en;
 			enm = {}
 		];
+
 		filename = WriteOut /. ops /. Options[SetStandardMatrixElements];
+
 		If[ StringQ[filename],
 			file = FileType[filename]
 		];
+
 		If[ ValueQ[file] && (file === File),
 			temp = Get[filename];
 			temp = Select[temp, !FreeQ[#,Spinor]&]
 		];
+
 		If[ Length[temp]>0,
 			temp/.Literal->Identity/.RuleDelayed->Set;
 			FCPrint[2, "loading old matrixelementdefinitions from ", filename, FCDoControl->oneloopVerbose];
@@ -2682,30 +2628,30 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 			x = {};
 			For[ix = 1, ix <= Length[rx], ix ++,
 				If[ FreeQ[rx[[ix,1]], Plus],
-					x = Prepend[x,{rx[[ix,1]],
-									StandardMatrixElement@@Flatten[{rx[[ix,2]]}]
-								} ],
-					x = Append[x, {rx[[ix,1]],
-									StandardMatrixElement@@Flatten[{rx[[ix,2]]}]
-								} ]
+					x = Prepend[x,{rx[[ix,1]], StandardMatrixElement@@Flatten[{rx[[ix,2]]}]}],
+					x = Append[x, {rx[[ix,1]], StandardMatrixElement@@Flatten[{rx[[ix,2]]}]}]
 				]
 			];
+
 			x = Flatten[x, 1];
-			If[ Cases[x, DOT[Spinor[a_,_,_] , (___) , Spinor[b_,_,_]] *
-							DOT[Spinor[c_,_,_] , (___) , Spinor[d_,_,_]]
-						] =!= {},
+
+			If[ Cases[x, DOT[Spinor[a_,_,_] , (___) , Spinor[b_,_,_]] DOT[Spinor[c_,_,_] , (___) , Spinor[d_,_,_]]] =!= {},
 				x = x /. DiracGamma[6] -> (1/2 + 1/2 DiracGamma[5]);
 				x = x /. DiracGamma[7] -> (1/2 - 1/2 DiracGamma[5])
 			];
+
 			FCPrint[2, Length[x], FCDoControl->oneloopVerbose];
 			FCPrint[2, "enm = ", enm, FCDoControl->oneloopVerbose];
 			FCPrint[2, "ops= ", ops, FCDoControl->oneloopVerbose];
+
 			If[ enm==={},
 				mat = DiracSimplify[ x ]//Expand//DiracOrder//Contract,
 				mat = DiracSimplify[ x/.enm ]//Expand//DiracOrder//Contract
 			];
+
 			nmat = Expand[ ExpandScalarProduct[mat] ]//smalld;
 			nmat = nmat /. DOT -> spinorsandpairs;
+
 			isos[b_spinorsandpairs] :=
 				b;
 			isos[a_?NumberQ] :=
@@ -2713,66 +2659,47 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 			isos[a_ b_spinorsandpairs] :=
 				b isos[a];
 			isolspc[xx_] :=
-				Map[ isos,
-				collin[ xx, spinorsandpairs, True] + nullll
-				]/.nullll->0;
-			mat = Table[ {isolspc[ nmat[[2 ii - 1]] ],
-						nmat[[2 ii]]},{ii,1,Length[nmat]/2}
-						];
+				Map[isos, collin[ xx, spinorsandpairs, True] + nullll]/.nullll->0;
+
+			mat = Table[ {isolspc[ nmat[[2 ii - 1]] ], nmat[[2 ii]]},{ii,1,Length[nmat]/2}];
+
 			pat[x_,_] :=
 				x;
-		(* Need this for pattern in the SME's, e.g., 4-fermion processes *)
+
+			(* Need this for pattern in the SME's, e.g., 4-fermion processes *)
 			set2[a_, b_] :=
 				Set @@ {a, b/.Pattern->pat};
+
 			For[ i = 1, i<=Length[mat],i++,
-			FCPrint[2, "i = ", i, " out of ", Length[mat], FCDoControl->oneloopVerbose];
-			mat = Expand[ (mat//ExpandScalarProduct)/.spinorsandpairs->DOT ];
-			mat = mat /. DOT -> spinorsandpairs;
-			mati1 = Expand[isolspc[mat[[i,1]]]];
-			For[j = 1,j<=nterms[mati1],j++,
-				If[ nterms[mati1] === 1,
-					sumand = mati1,
-					sumand = mati1[[j]]
-				];
-				FCPrint[2, "sumand = ", sumand, FCDoControl->oneloopVerbose];
-				If[ !(FreeQ[sumand,spinorsandpairs]),
-					sup = PartitHead[ sumand,spinorsandpairs]//Expand;
-					If[ (!MemberQ[ links,sup[[2]]/.spinorsandpairs->DOT/.
-													Pair -> bier ]) &&
-						Head[ sup[[2]] ] === spinorsandpairs,
-						FCPrint[2, "o.k1", FCDoControl->oneloopVerbose];
-						links =  Append[ links, sup[[2]]/.spinorsandpairs->DOT/.
-															Pair -> bier
-										]//Expand;
-						neweq = set[ sup[[2]], Together/@(collin[
-									Expand[
-										((mat[[i,2]]-mati1+sumand )/sup[[1]]
-											)/.isos->Identity
-											],spinorsandpairs ,True
-													]
-											)
-									];
-			(* Avoid things like  a=a *)
-						If[ (neweq[[1]] - neweq[[2]]) =!= 0,
-							FCPrint[2, "setting", FCDoControl->oneloopVerbose];
-							newli = Append[ newli,neweq/.set->set2 ]//Expand;
-							j = nterms[mati1]+1
-						];
+				FCPrint[2, "i = ", i, " out of ", Length[mat], FCDoControl->oneloopVerbose];
+				mat = Expand[ (mat//ExpandScalarProduct)/.spinorsandpairs->DOT ];
+				mat = mat /. DOT -> spinorsandpairs;
+				mati1 = Expand[isolspc[mat[[i,1]]]];
+				For[j = 1, j<=nterms[mati1], j++,
+					If[ nterms[mati1] === 1,
+						sumand = mati1,
+						sumand = mati1[[j]]
+					];
+					FCPrint[2, "sumand = ", sumand, FCDoControl->oneloopVerbose];
+					If[ !(FreeQ[sumand,spinorsandpairs]),
+						sup = PartitHead[ sumand,spinorsandpairs]//Expand;
+						If[ (!MemberQ[ links,sup[[2]]/.spinorsandpairs->DOT/. Pair -> bier]) && Head[ sup[[2]] ] === spinorsandpairs,
+							FCPrint[2, "o.k.", FCDoControl->oneloopVerbose];
+							links =  Append[links, sup[[2]]/.spinorsandpairs->DOT/. Pair -> bier]//Expand;
+							neweq = set[sup[[2]], Together/@(collin[Expand[((mat[[i,2]]-mati1+sumand )/sup[[1]])/.isos->Identity],spinorsandpairs, True])];
+							(* Avoid things like  a=a *)
+							If[ (neweq[[1]] - neweq[[2]]) =!= 0,
+								FCPrint[2, "setting", FCDoControl->oneloopVerbose];
+								newli = Append[ newli,neweq/.set->set2 ]//Expand;
+								j = nterms[mati1]+1
+							];
+						]
 					]
 				]
-			]
-					](* i - loop *);
-			FCPrint[2, "Solving the system of linear equations for standard
-				matrix elements", FCDoControl->oneloopVerbose];
+			](* i - loop *);
 
-			(*
-			(* This takes care of the fact that  1 = Gamma6 + Gamma7 *)
-			If[ (!FreeQ[ rx, DiracGamma[6] ]) || (!FreeQ[ rx, DiracGamma[7] ]),
-				SetStandardMatrixElements[
-					rx/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
-						DiracGamma[7]->(1/2 - DiracGamma[5]/2), enm]
-				];
-			*)
+			FCPrint[2, "Solving the system of linear equations for standard matrix elements", FCDoControl->oneloopVerbose];
+
 			$MemoryAvailable = savmem;
 			If[ StringQ[filename],
 				Put @@ {DownValues[spinorsandpairs], filename}
@@ -2780,25 +2707,28 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 		];
 		newli
 	];
-(* ------------------------------------------------------------ *)
 
 GetOneLoopResult[x_, li_List] :=
 	Block[ {name, list,new, lenli},
 		name = ToString[x];
 		list = Table[StringJoin[name, "N",li[[i]]//ToString, ".m"], {i, Length[li]}];
+
 		none[__,y_] :=
 			ToExpression[ StringJoin[ Rest[ Characters[ToString[y]] ] ]];
+
 		new = 0;
 		lenli = Length[li];
+
 		For[j = 1, j <= lenli, j++,
 			FCPrint[1, "loading #  ", j, " out of ", lenli, FCDoControl->oneloopVerbose];
 			Get[list[[j]]];
-			];
+		];
+
 		For[j = 1, j <= lenli, j++,
 			FCPrint[1, "summing # ", j, " out of ", lenli, FCDoControl->oneloopVerbose];
-			new = new + Expand[ DownValues[OneLoopResult][[j,2]],
-								StandardMatrixElement ];
-			];
+			new = new + Expand[DownValues[OneLoopResult][[j,2]], StandardMatrixElement];
+		];
+
 		new
 	];
 
