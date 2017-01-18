@@ -96,6 +96,9 @@ End[]
 Begin["`OneLoop`Private`"]
 
 oneloopVerbose::usage="";
+breakdown::usage="";
+paveautoorder::usage="";
+paveautoreduce::usage="";
 
 StandardMatrixElement /:
 MakeBoxes[StandardMatrixElement[x_], TraditionalForm
@@ -215,7 +218,7 @@ OneLoop[qq_,amp_, opts:OptionsPattern[]] :=
 OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	Block[ {oneamp = FeynCalcInternal[integ],iv,onemandel,
 	denf, denorder, denprop, isolatehead,tric,
-	var2,smallv,finsubst,fact,qpcancel,pvabbrev,
+	var2,smallv,finsubst,fact,pvabbrev,
 	writeout,prop,dnq,dfsor,dfsorb, denomOrder,dfli,
 	vcid,intcan,de, oneoptga67,vin3, sqB,usual,tostandmat,
 	vint4,ret,vret,fmas,vva,smalist,isol,i, $higherpoint,
@@ -223,10 +226,10 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	prode,
 	collpav,simpit,prefactor,in3p, in3q, resin3q,newprefactor,
 	newnewprefactor,
-	newret, facto,ret2,defs,dim,breakdown,options, name = grname,DDim,
+	newret, facto,ret2,defs,dim,options, name = grname,DDim,
 	newoneamp,ip,lenneu, lenneu2, neuamp,paone,paone2,oneselect,fsub,
 	intermedsubst,writeoutrecover = False, oldfile, ftemp,
-	writeoutpav, uvpart,to4dim, oneampresult, null1, null2,
+	writeoutpav, to4dim, oneampresult, null1, null2,
 	oneloopVerbose,nonLoopTerms=0,loopTerms=0, oneloopsimplify,inisubs,
 	reducegamma67,oneopt,tim,smav, smdaemon, smalldirac
 	},
@@ -250,30 +253,27 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				options = Rest[options]
 			]
 		];
-		( oneopt    = Join[ options,Options[OneLoop] ];
+		oneopt    = Join[options, Options[OneLoop]];
 		onemandel  = Mandelstam/.oneopt;
 		denorder   = DenominatorOrder/.oneopt;
 		dim        = Dimension/.oneopt;
 		If[ dim===True,
 			dim = D
 		];
-		formattype = FormatType/.oneopt;
-		isolatehead = IsolateNames/.oneopt;
-		oneloopsimplify = OneLoopSimplify/.oneopt;
-		prefactor  =  Prefactor/.oneopt;
-		qpcancel   = True;
-		smallv     =  Flatten[{ SmallVariables/.oneopt }];
-		inisubs    =  InitialSubstitutions/.oneopt;
-		finsubst   = FinalSubstitutions/.oneopt;
-		intermedsubst = IntermediateSubstitutions/.oneopt;
-		fact       = Factoring/.oneopt;
-		writeoutpav = WriteOutPaVe /. oneopt;
-		uvpart = False;
-		reducegamma67 = ReduceGamma/.oneopt;
-		writeout   = WriteOut/.oneopt;
-
-		paveautoorder = PaVeAutoOrder /. oneopt;
-		paveautoreduce = PaVeAutoReduce /. oneopt;
+		formattype		= FormatType/.oneopt;
+		isolatehead		= IsolateNames/.oneopt;
+		oneloopsimplify	= OneLoopSimplify/.oneopt;
+		prefactor		=  Prefactor/.oneopt;
+		smallv			=  Flatten[{ SmallVariables/.oneopt }];
+		inisubs			=  InitialSubstitutions/.oneopt;
+		finsubst		= FinalSubstitutions/.oneopt;
+		intermedsubst	= IntermediateSubstitutions/.oneopt;
+		fact			= Factoring/.oneopt;
+		writeoutpav		= WriteOutPaVe /. oneopt;
+		reducegamma67	= ReduceGamma/.oneopt;
+		writeout		= WriteOut/.oneopt;
+		paveautoorder	= PaVeAutoOrder /. oneopt;
+		paveautoreduce	= PaVeAutoReduce /. oneopt;
 
 		$higherpoint = False;
 
@@ -285,16 +285,9 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			writeoutrecover = True
 		];
 		breakdown  = ReduceToScalars/.oneopt;
-		If[ (breakdown===True) && ($LimitTo4 === False),
-			SetOptions[PaVeReduce, Dimension -> dim]
-		];
-		);
-		If[ uvpart === True,
-			breakdown = True;
-			$LimitTo4 = True;
-			SetOptions[PaVeReduce, Dimension -> True];
-			dim = 4
-		];
+
+
+
 		If[ (breakdown===True) && ( (writeoutpav===False) || (writeoutpav===True) ),
 			writeoutpav = ""
 		];
@@ -849,19 +842,19 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				oneamp=loopTerms;
 
 				(* ONEAMPCHANGE : cancelling q p 's *)
-				If[ qpcancel === True,
-					FCPrint[1, "cancelling qp's", FCDoControl->oneloopVerbose];
-					qpcanc[b_,qu_] :=
-						Select[null1 + null2 + Collect2[ApartFF[b,{qu}]//smalld, qu], !FreeQ[#,FeynAmpDenominator]&];
 
-					oneamp = qpcanc[qpcanc[oneamp, q],q];
-					FCPrint[1, "OneLoop: cancelling qp's done, oneamp= ",oneamp, FCDoControl->oneloopVerbose];
-					If[ !FreeQ[oneamp,Pair[Momentum[q,_:4],Momentum[q,_:4]]],
-						FCPrint[0,"Something went wrong in the cancelling of scalar products. Evaluation aborted!"];
-						Abort[]
-					];
+				FCPrint[1, "cancelling qp's", FCDoControl->oneloopVerbose];
+				qpcanc[b_,qu_] :=
+					Select[null1 + null2 + Collect2[ApartFF[b,{qu}]//smalld, qu], !FreeQ[#,FeynAmpDenominator]&];
 
+				oneamp = qpcanc[qpcanc[oneamp, q],q];
+				FCPrint[1, "OneLoop: cancelling qp's done, oneamp= ",oneamp, FCDoControl->oneloopVerbose];
+				If[ !FreeQ[oneamp,Pair[Momentum[q,_:4],Momentum[q,_:4]]],
+					FCPrint[0,"Something went wrong in the cancelling of scalar products. Evaluation aborted!"];
+					Abort[]
 				];
+
+
 
 				(* order the denominators again *)
 				If[ denorder === True,
@@ -1215,7 +1208,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				FCPrint[1, " The result for ", grname, " is ", oneampresult//LeafCount, " leafcount  long ", FCDoControl->oneloopVerbose];
 				FCPrint[3, LeafCount[oneampresult], FCDoControl->oneloopVerbose];
 			];
-			If[ Length[ arglist ]>0 && !breakdown===True,
+			If[ Length[ arglist ]>0 && !breakdown,
 				FCPrint[2, "Arguments:  ", arglist//Union, FCDoControl->oneloopVerbose]
 			];
 			FCPrint[2, " ", FCDoControl->oneloopVerbose];
@@ -1646,8 +1639,7 @@ OneLoopSum[ex_, ops___] :=
 						If[ (file === None) && (keeponly === False),
 							tim = Timing[
 													If[ prev === False,
-														temp = PaVeReduce[xXX, Dimension -> dims,
-														(*Added 19/9-2000. F.Orellana*)WriteOutPaVe->dir(**)]//paveorder,
+														temp = PaVeReduce[xXX, Dimension -> dims, WriteOutPaVe->dir]//paveorder,
 														temp = paveorder[prev]
 													];
 			][[1]];
@@ -1669,9 +1661,7 @@ OneLoopSum[ex_, ops___] :=
 							];
 							If[ !StringQ[writeoutpave],
 								tii = Timing[
-											nvd = PaVeReduce[ varpave[[j]], IsolateNames ->False,
-															Dimension -> dims
-															] // paveorder
+											nvd = PaVeReduce[ varpave[[j]], IsolateNames ->False, Dimension -> dims] // paveorder
 											];
 								FCPrint[1, tii[[1]], " needed", FCDoControl->oneloopVerbose]
 							];
@@ -2109,10 +2099,7 @@ suind[ y_,qu_,dim_,md_] :=
 (* for the divergent parts  "epsilon - substitution"               *)
 (* *************************************************************** *)
 epst[x__] :=
-	If[ uvpart === True,
-		0,
-		epst2[x]
-	];
+	epst2[x];
 
 epst2[gr_,x_,4,resid_] :=
 	to4dim[ gr ];
@@ -2308,8 +2295,6 @@ tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
 (* *************************************************************** *)
 (* tensor integrals; "qn" denotes the number of "q's"  *)
 (* *************************************************************** *)
-pavremember[x__] :=
-	MemSet[pavremember[x], PaVeReduce[x]];
 
 tdec[0,___] :=          (*tdecdef*)
 	0;
@@ -2343,18 +2328,8 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 						FCPrint[3, "OneLoop: tdec: add: gra: ", gra, FCDoControl->oneloopVerbose];
 						FCPrint[3, "OneLoop: tdec: add: pv: ", pv, FCDoControl->oneloopVerbose];
 						FCPrint[3, "OneLoop: tdec: add: exp: ", exp, FCDoControl->oneloopVerbose];
-						If[ breakdown === True,
-							pv = pavremember[pv, WriteOutPaVe -> writeoutpav ];
-							If[ uvpart === True,
-								pv = pv /. C0[__] -> 0 /. D0[__]->0 /. B0[__]-> UVDELTA;
-								If[ FreeQ2[pv, {B1,B00,B11}],
-									FCPrint[2, "pv = ", pv//FeynCalcForm, FCDoControl->oneloopVerbose];
-									pv = Factor2[D[ pv, UVDELTA]],
-									FCPrint[2, "pv = ", pv//FeynCalcForm, FCDoControl->oneloopVerbose];
-									Print["problems with uvcheck in OneLoop!!!", Dialog[]]
-								];
-								FCPrint[2, "uvcheck ", pv//FeynCalcForm, FCDoControl->oneloopVerbose];
-							];
+						If[ breakdown,
+							pv = PaVeReduce[pv, WriteOutPaVe -> writeoutpav, dimension->di]
 						];
 						If[ $LimitTo4 === True,
 							addre = gra + (Expand[ExpandScalarProduct[ pv to4dim[ exp/.di->4 ]]]),
