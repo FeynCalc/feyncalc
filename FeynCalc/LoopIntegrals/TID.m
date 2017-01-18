@@ -86,7 +86,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 	loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 	solsList, repSolList, reversedRepIndexList,reducedLoopList,
-	finalRepList,isoContract,tmp,tempIsolate,loopListOrig
+	finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -159,7 +159,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 		];
 
-		If[	!FreeQ[Union[FCGetDimensions[t0/.DiracGamma[5|6|7]:>null1]],4] && !$BreitMaison,
+		If[	!FreeQ2[Union[FCGetDimensions[t0/.DiracGamma[5|6|7]:>null1]],{4,-4}] && !$BreitMaison,
 			Message[TID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
 			Abort[]
 		];
@@ -214,15 +214,19 @@ TID[am_ , q_, OptionsPattern[]] :=
 			FCPrint[2,"TID: After expanding Dirac slashes: ", t0, FCDoControl->tidVerbose]
 		];
 		*)
+
+		(* Single out loop momenta *)
+		t0 = ExpandScalarProduct[t0,Momentum->{q}];
+
 		(* Uncontract first *)
-		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0,Momentum->{q}], q, Pair -> All, DimensionalReduction -> dimred(*,
+		FCMonitor[t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred(*,
 						Dimension -> n*)] /. PropagatorDenominator -> procanonical[q];,
 				Grid[{{"Uncontracting loop momenta",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
 
 		FCMonitor[
-			(* Check if user disables DiracSimplify but the given
+			(* Check if user disabled DiracSimplify but the given
 				Dirac Structure is not suitable for the reduction *)
 			If[	!FreeQ[t1/. {Pair[Momentum[q, dim_: 4], LorentzIndex[_, dim_: 4]] :> Unique[],
 				FeynAmpDenominator[___]:>Unique[]}, q],
@@ -244,6 +248,24 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		FCPrint[2,"TID: Tensor parts of the original expression: ", t1, FCDoControl->tidVerbose];
 		FCPrint[2,"TID: Scalar and non-loop parts of the original expression: ", irrelevant, FCDoControl->tidVerbose];
+
+
+		(* 	Here comes the trick to handle uncontracted loop momenta in 4 or D-4 dimensions.
+			This is needed only in the BMHV scheme *)
+		If[ $BreitMaison && !FreeQ[t1,LorentzIndex],
+			t1 = t1 /. {
+				Pair[Momentum[q,n-4],LorentzIndex[i_,n-4]]:>
+					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli,n-4],LorentzIndex[i,n-4]]),
+				Pair[Momentum[q],LorentzIndex[i_]]:>
+					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli],LorentzIndex[i]])
+			};
+			If[ !FreeQ2[t1, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]]}],
+				Message[TID::failmsg,"Failed to eliminate 4 and D-4 dimensional loop momenta."];
+				Abort[]
+			];
+			FCPrint[2,"TID: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", t1, FCDoControl->tidVerbose];
+		];
+
 		If[t1===0,
 			(* if the tensor piece happends to be zero, then we are almost done	*)
 			res = 0,
@@ -257,6 +279,14 @@ TID[am_ , q_, OptionsPattern[]] :=
 				(*	This is the list of all the tensor loop integrals in the expression.	*)
 				loopListOrig=Union[Cases[{wrapped},_. loopIntegral[x_]:>x,Infinity]];
 				FCPrint[3,"TID: loopList: ", loopList, FCDoControl->tidVerbose];
+
+				(* 	Before applying ChangeDimension, check again, that there are no 4-vectors that
+					are not D-dimensional *)
+				If[	FCGetDimensions[Union[Cases[loopListOrig, _LorentzIndex, Infinity]]]=!={n},
+					Message[TID::failmsg,"The tensor part still contains 4 or D-4 dimensional loop momenta."];
+					Abort[]
+				];
+
 				loopList = ChangeDimension[#, chd]&/@loopListOrig;
 				FCPrint[3,"TID: loopList after ChangeDimension: ", loopList, FCDoControl->tidVerbose];
 
@@ -334,6 +364,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				FCMonitor[
 					res= Isolate[res,LorentzIndex,IsolateNames->isoContract]//
 					Contract//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[Pair[pp]]]&;
+
 					If [OptionValue[ExpandScalarProduct],
 						res = ExpandScalarProduct[res]
 					];
@@ -355,6 +386,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				Abort[]
 			]
 		];
+
 		(*	The final result is a sum of the reduced tensor part and the original scalar part *)
 		res = res+irrelevant;
 
