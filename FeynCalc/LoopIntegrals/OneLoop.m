@@ -242,6 +242,11 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[	$BreitMaison || $Larin,
+			Message[OneLoop::failmsg, "OneLoop cannot be used for computations in the BMHV or Larin schemes. Use TID instead."];
+			Abort[]
+		];
+
 		options = {opts};
 		(* for FA2.0 *)
 		If[ Length[options] > 0,
