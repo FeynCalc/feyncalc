@@ -216,23 +216,16 @@ OneLoop[qq_,amp_, opts:OptionsPattern[]] :=
 	qq=!=False;
 
 OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
-	Block[ {oneamp = FeynCalcInternal[integ],iv,onemandel,
-	denf, denorder, denprop, isolatehead,tric,
-	var2,smallv,finsubst,fact,pvabbrev,
-	writeout,prop,dnq,dfsor,dfsorb, denomOrder,dfli,
-	vcid,intcan,de, oneoptga67,vin3, sqB,usual,tostandmat,
-	vint4,ret,vret,fmas,vva,smalist,isol,i, $higherpoint,
-	pvlist, pva,pvar,arglist,npref, nfact, nre,formattype,pLu,
-	prode,
-	collpav,simpit,prefactor,in3p, in3q, resin3q,newprefactor,
-	newnewprefactor,
-	newret, facto,ret2,defs,dim,options, name = grname,DDim,
-	newoneamp,ip,lenneu, lenneu2, neuamp,paone,paone2,oneselect,fsub,
-	intermedsubst,writeoutrecover = False, oldfile, ftemp,
-	writeoutpav, to4dim, oneampresult, null1, null2,
-	oneloopVerbose,nonLoopTerms=0,loopTerms=0, oneloopsimplify,inisubs,
-	reducegamma67,oneopt,tim,smav, smdaemon, smalldirac
-	},
+	Block[ {oneamp = FCI[integ], iv,onemandel, denf, denorder, denprop,
+			isolateNames,tric, smallv,finalSubstitutions,writeOut,prop,dnq,dfsor,
+			dfsorb, denomOrder,	vcid,intcan, tostandmat, vva,isol,i,
+			$higherpoint, pva,pvar,arglist,npref, formatType, prode,
+			collpav,simpit,prefactor, newprefactor, newnewprefactor,
+			defs, dim, options, name = grname, newoneamp,ip,lenneu,
+			lenneu2, neuamp,paone,paone2,oneselect,fsub, intermediateSubstitutions,
+			writeOutPaVe, to4dim, oneampresult, null1, null2, oneloopVerbose,
+			nonLoopTerms=0,loopTerms=0, oneloopsimplify,initialSubstitutions, reducegamma67,
+			oneopt,tim,smav, smdaemon, smalldirac},
 
 		If [!FreeQ[$ScalarProducts, q],
 			Message[OneLoop::failmsg, "The loop momentum " <> ToString[q,InputForm] <> " has scalar product rules attached to it."];
@@ -253,43 +246,29 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				options = Rest[options]
 			]
 		];
-		oneopt    = Join[options, Options[OneLoop]];
-		onemandel  = Mandelstam/.oneopt;
-		denorder   = DenominatorOrder/.oneopt;
-		dim        = Dimension/.oneopt;
-		If[ dim===True,
-			dim = D
-		];
-		formattype		= FormatType/.oneopt;
-		isolatehead		= IsolateNames/.oneopt;
-		oneloopsimplify	= OneLoopSimplify/.oneopt;
-		prefactor		=  Prefactor/.oneopt;
-		smallv			=  Flatten[{ SmallVariables/.oneopt }];
-		inisubs			=  InitialSubstitutions/.oneopt;
-		finsubst		= FinalSubstitutions/.oneopt;
-		intermedsubst	= IntermediateSubstitutions/.oneopt;
-		fact			= Factoring/.oneopt;
-		writeoutpav		= WriteOutPaVe /. oneopt;
-		reducegamma67	= ReduceGamma/.oneopt;
-		writeout		= WriteOut/.oneopt;
-		paveautoorder	= PaVeAutoOrder /. oneopt;
-		paveautoreduce	= PaVeAutoReduce /. oneopt;
+		oneopt						= Join[options, Options[OneLoop]];
+		onemandel					= Mandelstam/.oneopt;
+		denorder					= DenominatorOrder/.oneopt;
+		dim							= Dimension/.oneopt;
+		formatType					= FormatType/.oneopt;
+		isolateNames				= IsolateNames/.oneopt;
+		oneloopsimplify				= OneLoopSimplify/.oneopt;
+		prefactor					= Prefactor/.oneopt;
+		smallv						= Flatten[{ SmallVariables/.oneopt }];
+		initialSubstitutions		= InitialSubstitutions/.oneopt;
+		finalSubstitutions			= FinalSubstitutions/.oneopt;
+		intermediateSubstitutions	= IntermediateSubstitutions/.oneopt;
+		writeOutPaVe				= WriteOutPaVe /. oneopt;
+		reducegamma67				= ReduceGamma/.oneopt;
+		writeOut					= WriteOut/.oneopt;
+		paveautoorder				= PaVeAutoOrder /. oneopt;
+		paveautoreduce				= PaVeAutoReduce /. oneopt;
+		breakdown  					= ReduceToScalars/.oneopt;
 
 		$higherpoint = False;
 
-		If[ writeout === True || writeout === " ",
-			writeout = "";
-			writeoutrecover = False
-		];
-		If[ writeout === True || writeout === "",
-			writeoutrecover = True
-		];
-		breakdown  = ReduceToScalars/.oneopt;
-
-
-
-		If[ (breakdown===True) && ( (writeoutpav===False) || (writeoutpav===True) ),
-			writeoutpav = ""
+		If[ (breakdown===True) && ( (writeOutPaVe===False) || (writeOutPaVe===True) ),
+			writeOutPaVe = ""
 		];
 
 		If [OptionValue[FCVerbose]===False,
@@ -300,8 +279,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		];
 
 		tim = Timing[
-		If[ StringQ[ name ] && StringQ[writeout],
-			name = StringJoin[writeout, name]
+		If[ StringQ[ name ] && StringQ[writeOut],
+			name = StringJoin[writeOut, name]
 		];
 		If[ Head[name]===GraphName,
 			name = StringJoin @@ (ToString/@{First[name], Last[name]}),
@@ -310,17 +289,15 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			]
 		];
 		If[ Head[name]===String,
-			Which[ formattype === InputForm,   name = StringJoin[name, ".m"],
-					formattype === FortranForm, name = StringJoin[name, ".for"]
+			Which[ formatType === InputForm,   name = StringJoin[name, ".m"],
+					formatType === FortranForm, name = StringJoin[name, ".for"]
 			]
 		];
 		If[ StringQ[name],
 		(*Mac fix, 18/9-2000, F.Orellana. Ditto for FileType's below*)
-			oldfile = FileType[name];
-			If[ oldfile === File,
+			If[ FileType[name] === File,
 				FCPrint[1, "oldfile  =", name, FCDoControl->oneloopVerbose];
-				ftemp = ( Get[name] );
-				If[ ValueQ[OneLoopResult[grname]] && FreeQ[ftemp, FeynAmpDenominator],
+				If[ ValueQ[OneLoopResult[grname]] && FreeQ[Get[name], FeynAmpDenominator],
 					oneamp = OneLoopResult[grname]
 				];
 			]
@@ -362,7 +339,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			smav = Table[smallv[[iv]]->SmallVariable[ smallv[[iv]] ], {iv,1,Length[smallv]} ];
 
 			(* do the initial substitutions *)
-			oneamp = ( oneamp/.smav )/.inisubs;
+			oneamp = ( oneamp/.smav )/.initialSubstitutions;
 			(* neglect any small variable in the numerators of the fermion propagators  *)
 			smalldirac /: smalldirac[_] + DiracGamma[a__]:=
 				DiracGamma[a];
@@ -380,8 +357,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					denprop[x,y]/;!FreeQ[x,Momentum];
 			(* if a propagator has no integration momentum *)
 				denprop[a_, b_] :=
-					(1/TrickMandelstam[(Pair[a,a]//ExpandScalarProduct)
-					- b^2, onemandel] /. SmallVariable[_]->0)/; FreeQ[a, q];
+					(1/TrickMandelstam[(Pair[a,a]//ExpandScalarProduct)- b^2, onemandel] /. SmallVariable[_]->0)/; FreeQ[a, q];
 			(* ********************************************************************* *)
 			(*                          oneloop13                                    *)
 			(* ********************************************************************* *)
@@ -413,7 +389,6 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 
 			If[ !FreeQ[oneamp /. FeynAmpDenominator -> fdhigh, FeynAmpDenominator],
 				$higherpoint = True;
-				(*namp = redamp[ oneamp,q ];*)
 				namp = NPointTo4Point[ oneamp,q, List->True, Dimension -> 4, IsolateNames->SUB]/. SUB -> SUBDET;
 				prefactor = prefactor namp[[1]];
 				oneamp = namp[[2]]
@@ -464,7 +439,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			If[ (!FreeQ[oneamp, SUNF]) || (!FreeQ[oneamp, SUNDelta]) ||
 				(!FreeQ[oneamp, SUNT]),
 				oneamp = oneamp /. SUNF -> sUNF /. SUNDelta -> sUNDelta;
-				AppendTo[finsubst, {sUNF -> SUNF, sUNDelta -> SUNDelta}];
+				AppendTo[finalSubstitutions, {sUNF -> SUNF, sUNDelta -> SUNDelta}];
 			];
 
 			(* ********************************************************************* *)
@@ -696,8 +671,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			FCPrint[3, "oneamp2 = ", oneamp2, FCDoControl->oneloopVerbose];
 
 			(* ONEAMPCHANGE *)
-			If[ intermedsubst =!= {},
-				oneamp = oneamp /. intermedsubst /. intermedsubst;
+			If[ intermediateSubstitutions =!= {},
+				oneamp = oneamp /. intermediateSubstitutions /. intermediateSubstitutions;
 				neuamp = 0;
 				If[ Head[oneamp] === Plus,
 					lenneu = Length[oneamp],
@@ -1037,7 +1012,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			(* ONEAMPCHANGE : spinor stuff and matrixelements *)
 			If[ !FreeQ[oneamp, StandardMatrixElement],
 				FCPrint[1, "collecting w.r.t. standard matrixelements ", FCDoControl->oneloopVerbose];
-				oneamp = collin[oneamp/.inisubs, StandardMatrixElement, True];
+				oneamp = collin[oneamp/.initialSubstitutions, StandardMatrixElement, True];
 				FCPrint[1, "collecting done", FCDoControl->oneloopVerbose];
 			];
 
@@ -1060,9 +1035,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				True/;!FreeQ[{xx},PaVe];
 			If[ LeafCount[oneamp]<1000,
 				voneampsma =  Variables[oneamp]/.SmallVariable->Identity;
-				smalist = Select[ voneampsma, fma ];
-				pvlist = Select[ voneampsma, vva ]//Union;
-				arglist = Union[pvlist/.PaVe->pvar],
+				arglist = Union[Union[Select[voneampsma, vva]]/.PaVe->pvar],
 				arglist = {}
 			];
 
@@ -1088,30 +1061,30 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					nx
 				];
 
-			oneamp = fsub[oneamp, finsubst];
+			oneamp = fsub[oneamp, finalSubstitutions];
 
 			If[ !FreeQ[oneamp, SUNIndex],
 				oneamp = SUNSimplify[oneamp, Explicit -> True];
 			];
 
 			(* getting a common factor *)
-			oneamp = oneamp + nUl1 + nUl2;
-			If[ fact===True,
+			oneamp = oneamp + null1 + null2;
+			If[ OptionValue[Factoring]===True,
 				factor3[x_] :=
 					Factor2[x, FactorFull -> False];
 
 				npref[0] = 0;
 				npref[w_ v_] :=
 					(factor3[w]/.Plus->pluS) npref[v]/; FreeQ2[w,{A0, B0,B1, C0, D0, B00, B11, PaVe}];
-				oneamp = factor3[(npref /@ Map[factor3,oneamp ])/.nUl1->0/.nUl2->0]/.pluS->Plus/.npref->collpav,
+				oneamp = factor3[(npref /@ Map[factor3,oneamp ])/.null1|null2->0]/.pluS->Plus/.npref->collpav,
 
-				oneamp = Map[collpav, oneamp] /. nUl1 ->0 /.nUl2 -> 0;
+				oneamp = Map[collpav, oneamp] /.null1|null2->0;
 			];
 
 			(* Isolating *)
-			If[ isolatehead=!=False,
+			If[ isolateNames=!=False,
 				isol[x_] :=
-					Isolate[x,IsolateNames->isolatehead];
+					Isolate[x,IsolateNames->isolateNames];
 				sh[he_][x__] :=
 					isol[he[x]];
 				scaliso = {A0->sh[A0], B0->sh[B0], B1->sh[b1], B00->sh[B00], B11->sh[B11], C0->sh[C0], D0->sh[D0]};
@@ -1130,11 +1103,11 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			];
 
 			oneampresult = oneamp;
-			oneampresult = FRH[(fsub[newprefactor, finsubst]/.SUBDET->SUB),IsolateNames->SUB] oneampresult;
+			oneampresult = FRH[(fsub[newprefactor, finalSubstitutions]/.SUBDET->SUB),IsolateNames->SUB] oneampresult;
 			(* Here we add back the non-loop terms *)
 			oneampresult = nonLoopTerms + oneampresult;
 			FCPrint[3, "oneampresult = ", oneampresult, FCDoControl->oneloopVerbose];
-			If[ isolatehead=!=False,
+			If[ isolateNames=!=False,
 				oneampresult = isol[oneampresult]
 			];
 		](* end of If FreeQ oneamp, FeynAmpDenomiantor, FAD *) ;
@@ -1144,11 +1117,11 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		(* ********************************************************************* *)
 
 		(* writing the result in a file specified by grname *)
-		If[ (writeout=!=False) && StringQ[name] && (!ValueQ[OneLoopResult[grname]]),
-			If[ formattype===FortranForm,
+		If[ (writeOut=!=False) && StringQ[name] && (!ValueQ[OneLoopResult[grname]]),
+			If[ formatType===FortranForm,
 				wri[ name, Hold[grname  = oneampresult], FormatType -> FortranForm]/.wri -> Write2,
 
-				wri[ name, Hold[OneLoopResult[ grname ] = oneampresult], FormatType->formattype]/.wri -> Write2;
+				wri[ name, Hold[OneLoopResult[ grname ] = oneampresult], FormatType->formatType]/.wri -> Write2;
 				If[ Length[FA2Info] > 0,
 					wri[ name, Hold[OneLoopInfo[ grname ] = FA2Info],
 					FormatType->InputForm]/.wri -> Write2;
@@ -1176,7 +1149,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		(* for printing purposes abbreviations are useful,but  *)
 		(* this may actually under certain circumstances be incorrect! *)
 		(* Though the result returned by OneLoop is of course correct *)
-		If[ isolatehead===False,
+		If[ isolateNames===False,
 
 			PaVeAbbreviate[x_] :=
 				x/.PaVe->paVeabbrevi/.paVeabbrevi->PaVe;
@@ -1272,14 +1245,14 @@ Options[OneLoopSum] = {
 
 OneLoopSum[ex_, ops___] :=
 	Block[ {mand,reduce,na,i,exx,nsres,sres,
-			len0,len,jj, vars, varpave,isolatehead,alreadysummed,
-			filename, formattype,selectgraphs,combinegraphs,pres,
+			len0,len,jj, vars, varpave,isolateNames,alreadysummed,
+			filename, formatType,selectgraphs,combinegraphs,pres,
 			aa0,bb0,cc0,dd0,ddb0,finfunc,inisuB,extravars,
 			acdc, lnw, nres, j, nvd, set, npi3, newpa, simp,nplin,
 			mandelspec,sumcol,colll,prefactor,feynli,dims,fsub,keeponly,
 			d0multiply, c0multiply, d0scalIsolate,c0scalIsolate,vsm,
 			intermedsub,isol2,combinelist,np,nnp,npavopt,iiv,lres,mmsu,iim,
-			feynAmpden1, feynAmpden2,masss1, masss2, fim,checklabel},
+			feynAmpden1, feynAmpden2,masss1, masss2, fim,checklabel,finalSubstitutions},
 		exx = ex;
 		sres = 0;
 		SetOptions[DiracTrace,  DiracTraceEvaluate -> False ];
@@ -1292,14 +1265,14 @@ OneLoopSum[ex_, ops___] :=
 		born          = 1;
 		combinegraphs = CombineGraphs/.opsli;
 		extravars     = ExtraVariables/.opsli;
-		isolatehead   = IsolateNames/.opsli;
-		If[ isolatehead === True,
-			isolatehead = IsolateNames/.Options[Isolate]
+		isolateNames   = IsolateNames/.opsli;
+		If[ isolateNames === True,
+			isolateNames = IsolateNames/.Options[Isolate]
 		];
 		dims           = Dimension /.opsli;
-		finalsubst    = FinalSubstitutions/.opsli;
+		finalSubstitutions    = FinalSubstitutions/.opsli;
 		finfunc       = FinalFunction/.opsli;
-		formattype    = FormatType/.opsli;
+		formatType    = FormatType/.opsli;
 		inisuB        = InitialSubstitutions /. opsli;
 		intermedsub   = IntermediateSubstitutions /. opsli;
 		(*
@@ -1313,7 +1286,7 @@ OneLoopSum[ex_, ops___] :=
 		scaling       = Scaling /. opsli;
 		*)
 		scaling = {};
-		writeoutpave  = WriteOutPaVe/.opsli;
+		writeOutPaVee  = WriteOutPaVe/.opsli;
 		If[ intermedsub =!= {},
 			SetOptions[ OneLoop, IntermediateSubstitutions -> intermedsub ]
 		];
@@ -1656,10 +1629,10 @@ OneLoopSum[ex_, ops___] :=
 					For[ j = 1,j<=lenpa,j++,
 							FCPrint[1, "working with # ", j, " out of ", lenpa, FCDoControl->oneloopVerbose];
 							FCPrint[1, "calculating ", InputForm[ varpave[[j]] ], FCDoControl->oneloopVerbose];
-							If[ writeoutpave===True,
-								writeoutpave = ""
+							If[ writeOutPaVee===True,
+								writeOutPaVee = ""
 							];
-							If[ !StringQ[writeoutpave],
+							If[ !StringQ[writeOutPaVee],
 								tii = Timing[
 											nvd = PaVeReduce[ varpave[[j]], IsolateNames ->False, Dimension -> dims] // paveorder
 											];
@@ -1671,7 +1644,7 @@ OneLoopSum[ex_, ops___] :=
 							(* ********************************************************************* *)
 							SQR[xxx_] :=
 								PowerExpand[Sqrt[xxx]];
-							If[ StringQ[writeoutpave],
+							If[ StringQ[writeOutPaVee],
 								(* Check if the difference w.r.t. the previous PaVe
 								is only in the mass arguments. *)
 								nvd = False;
@@ -1691,7 +1664,7 @@ OneLoopSum[ex_, ops___] :=
 													{iim, Length[Last[varpave[[j]]]]}
 													];
 										If[ (varpave[[j-1]] /. mmsu) === varpave[[j]],
-											nvd = pavit[varpave[[j]], writeoutpave,
+											nvd = pavit[varpave[[j]], writeOutPaVee,
 														(varpave[[j-1]]/.PaVe->pavesave
 														) /. mmsu
 														];
@@ -1699,7 +1672,7 @@ OneLoopSum[ex_, ops___] :=
 									]
 								];
 								If[ nvd === False,
-									nvd = pavit[varpave[[j]], writeoutpave]
+									nvd = pavit[varpave[[j]], writeOutPaVee]
 								]
 							];
 							set[ varpave[[j]]/.PaVe->pavesave ,nvd ]/.set->Set
@@ -1714,7 +1687,7 @@ OneLoopSum[ex_, ops___] :=
 			isol2[isol2[a_]] :=
 				isol2[a];
 			acdc = Join[extravars,{A0,B0,B1,B00,B11,DB0,C0,D0,PaVe}];
-			acdc = Union[acdc, acdc /. finalsubst];
+			acdc = Union[acdc, acdc /. finalSubstitutions];
 			FCPrint[1, "acdc = ", acdc, FCDoControl->oneloopVerbose];
 			(* partdef *)
 			part[a_Times] :=
@@ -1859,7 +1832,7 @@ OneLoopSum[ex_, ops___] :=
 		(* ********************************************************************* *)
 			fsub[x_] :=
 				Block[ {nx = x,su,ij},
-					su = finalsubst;
+					su = finalSubstitutions;
 					For[ij = 1, ij<=Length[su], ij++,
 						nx = nx/.su[[ij]]
 						];
@@ -1870,7 +1843,7 @@ OneLoopSum[ex_, ops___] :=
 			check = nres;
 			{aa0, bb0, bb1, bb00, bb11, ddb0, cc0, dd0} =
 			{A0, B0,   B1,  B00,  B11,  DB0,  C0,  D0} // fsub;
-			If[ isolatehead=!=False,
+			If[ isolateNames=!=False,
 				FCPrint[1, "isolating now ", FCDoControl->oneloopVerbose];
 				plupp0[x__] :=
 					Plus[x] /; !FreeQ[{x},plupp0];
@@ -1881,16 +1854,16 @@ OneLoopSum[ex_, ops___] :=
 				If[ Length[mand]===4,
 					isolmand[x_] :=
 						Isolate[x, {mand[[1]],mand[[2]],mand[[3]]},
-										IsolateNames->isolatehead],
+										IsolateNames->isolateNames],
 					isolmand[x_] :=
-						Isolate[x,IsolateNames->isolatehead ]
+						Isolate[x,IsolateNames->isolateNames ]
 				];
 				isolate0[x_] :=
-					Isolate[x, IsolateNames->isolatehead ];
+					Isolate[x, IsolateNames->isolateNames ];
 				isc[x_][y__] :=
 					isol1[x][(TrickMandelstam[fsub[x[y]]/.dd0->D0,mand
 											]//paveorder)/.
-							D0 -> dd0, IsolateNames->isolatehead];
+							D0 -> dd0, IsolateNames->isolateNames];
 				If[ Length[mand]===4,
 					isol1[_][x_, y_] :=
 						Isolate[x, y] /; FreeQ2[x, Take[mand, 3]]
@@ -1928,7 +1901,7 @@ OneLoopSum[ex_, ops___] :=
 			(*                          oneloop36                                    *)
 			(* ********************************************************************* *)
 
-			(* If isolatehead .. *)
+			(* If isolateNames .. *)
 			(*Only if the option Factoring of OneLoop is True, factor also here *)
 				If[ (Factoring/.Options[OneLoop]) === True,
 					specrule = {(a_Symbol - b_Symbol) (a_Symbol+b_Symbol)->(a^2-b^2)};
@@ -2329,7 +2302,7 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 						FCPrint[3, "OneLoop: tdec: add: pv: ", pv, FCDoControl->oneloopVerbose];
 						FCPrint[3, "OneLoop: tdec: add: exp: ", exp, FCDoControl->oneloopVerbose];
 						If[ breakdown,
-							pv = PaVeReduce[pv, WriteOutPaVe -> writeoutpav, dimension->di]
+							pv = PaVeReduce[pv, WriteOutPaVe -> writeOutPaVe, dimension->di]
 						];
 						If[ $LimitTo4 === True,
 							addre = gra + (Expand[ExpandScalarProduct[ pv to4dim[ exp/.di->4 ]]]),
