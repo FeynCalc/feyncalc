@@ -777,5 +777,9 @@ mu] (m0^2 - m1^2 + SPD[p, p]))/(2 SPD[p, p]) - (
 I \[Pi]^2 A0[m1^2] FVD[p, mu] (m0^2 + 2 SPD[p, p]))/(2 SPD[p, p])"},
 {"fcstTID-ID20", "$BreitMaison=True; \n tmp = FCE[
 TID[FVD[q, mu] FVD[q, nu] FAD[{q, m}] - FVE[q, mu] FVE[q, nu] FAD[{q, m}], q]]; \n
-$BreitMaison=False;  \n tmp","-((m^2 FAD[{q, m}] (-MTD[mu, nu] + MTE[mu, nu]))/D)"}
+$BreitMaison=False;  \n tmp","-((m^2 FAD[{q, m}] (-MTD[mu, nu] + MTE[mu, nu]))/D)"},
+{"fcstTID-ID21", "$BreitMaison=True; \n tmp =
+FCE[TID[ FAD[l, k + l] MTE[mu, nu] (SPE[k, l] + SPE[l, l]), l]]; \n
+$BreitMaison=False;  \n tmp","-((FAD[l, -k + l] MTE[mu, nu] (4 SPD[k, k] -
+D SPD[k, k] + 2 (1 - D) SPE[k, k] + D SPE[k, k]))/(4 (1 - D)))"}
 };

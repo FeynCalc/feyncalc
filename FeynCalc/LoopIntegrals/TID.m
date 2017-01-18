@@ -363,6 +363,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			If[	contractlabel && !FreeQ[res,LorentzIndex],
 				FCMonitor[
 					res= Isolate[res,LorentzIndex,IsolateNames->isoContract]//
+					ReplaceAll[#,LorentzIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[LorentzIndex[pp]]]&//
 					Contract//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[Pair[pp]]]&;
 
 					If [OptionValue[ExpandScalarProduct],
