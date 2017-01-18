@@ -194,38 +194,36 @@ Options[OneLoop] = {
 					ReduceToScalars            -> False,
 					SmallVariables             -> {},
 					WriteOut                   -> False,
-					WriteOutPaVe               -> False,
-					Sum                       -> True
+					WriteOutPaVe               -> False
 				};
 (* setting WriteOut to "" retrieves also previously calculated results *)
 
 (* OneLoopdef *)
 
 (*New Jan 1999*)
-OneLoop[FeynAmp[name_, k_, expr_], opts___] :=
+OneLoop[FeynAmp[name_, k_, expr_], opts:OptionsPattern[]] :=
 	OneLoop[name, k, expr, opts];
 
-OneLoop[_, FeynAmp[name_, k_, expr_], opts___] :=
+OneLoop[_, FeynAmp[name_, k_, expr_], opts:OptionsPattern[]] :=
 	OneLoop[name, k, expr, opts];
 
 OneLoop[qq_,amp_] :=
 	OneLoop[False, qq,amp]/; qq=!=False;
 
 OneLoop[qq_,amp_, opts:OptionsPattern[]] :=
-	OneLoop[False, qq,amp,opts]/;
-	qq=!=False;
+	OneLoop[False, qq,amp,opts]/; qq=!=False;
 
-OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
+OneLoop[grname_,q_,integ_,OptionsPattern[]] :=
 	Block[ {oneamp = FCI[integ], iv,onemandel, denf, denorder, denprop,
 			isolateNames,tric, smallv,finalSubstitutions,writeOut,prop,dnq,dfsor,
 			dfsorb, denomOrder,	vcid,intcan, tostandmat, vva,isol,i,
 			$higherpoint, pva,pvar,arglist,npref, formatType, prode,
 			collpav,simpit,prefactor, newprefactor, newnewprefactor,
-			defs, dim, options, name = grname, newoneamp,ip,lenneu,
+			defs, dim, name = grname, newoneamp,ip,lenneu, parf, newamp,
 			lenneu2, neuamp,paone,paone2,oneselect,fsub, intermediateSubstitutions,
 			writeOutPaVe, to4dim, oneampresult, null1, null2, oneloopVerbose,
-			nonLoopTerms=0,loopTerms=0, oneloopsimplify,initialSubstitutions, reducegamma67,
-			oneopt,tim,smav, smdaemon, smalldirac},
+			nonLoopTerms=0,loopTerms=0, oneloopSimplify,initialSubstitutions, reducegamma67,
+			tim,smav, smdaemon, smalldirac},
 
 		If [!FreeQ[$ScalarProducts, q],
 			Message[OneLoop::failmsg, "The loop momentum " <> ToString[q,InputForm] <> " has scalar product rules attached to it."];
@@ -238,32 +236,23 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			Abort[]
 		];
 
-		options = {opts};
-		(* for FA2.0 *)
-		If[ Length[options] > 0,
-			If[ MatchQ[options[[1]] ,(a_List -> b_List)],
-				FA2Info = options[[1]];
-				options = Rest[options]
-			]
-		];
-		oneopt						= Join[options, Options[OneLoop]];
-		onemandel					= Mandelstam/.oneopt;
-		denorder					= DenominatorOrder/.oneopt;
-		dim							= Dimension/.oneopt;
-		formatType					= FormatType/.oneopt;
-		isolateNames				= IsolateNames/.oneopt;
-		oneloopsimplify				= OneLoopSimplify/.oneopt;
-		prefactor					= Prefactor/.oneopt;
-		smallv						= Flatten[{ SmallVariables/.oneopt }];
-		initialSubstitutions		= InitialSubstitutions/.oneopt;
-		finalSubstitutions			= FinalSubstitutions/.oneopt;
-		intermediateSubstitutions	= IntermediateSubstitutions/.oneopt;
-		writeOutPaVe				= WriteOutPaVe /. oneopt;
-		reducegamma67				= ReduceGamma/.oneopt;
-		writeOut					= WriteOut/.oneopt;
-		paveautoorder				= PaVeAutoOrder /. oneopt;
-		paveautoreduce				= PaVeAutoReduce /. oneopt;
-		breakdown  					= ReduceToScalars/.oneopt;
+		onemandel					= OptionValue[Mandelstam];
+		denorder					= OptionValue[DenominatorOrder];
+		dim							= OptionValue[Dimension];
+		formatType					= OptionValue[FormatType];
+		isolateNames				= OptionValue[IsolateNames];
+		oneloopSimplify				= OptionValue[OneLoopSimplify];
+		prefactor					= OptionValue[Prefactor];
+		smallv						= Flatten[{OptionValue[SmallVariables]}];
+		initialSubstitutions		= OptionValue[InitialSubstitutions];
+		finalSubstitutions			= OptionValue[FinalSubstitutions];
+		intermediateSubstitutions	= OptionValue[IntermediateSubstitutions];
+		writeOutPaVe				= OptionValue[WriteOutPaVe];
+		reducegamma67				= OptionValue[ReduceGamma];
+		writeOut					= OptionValue[WriteOut];
+		paveautoorder				= OptionValue[PaVeAutoOrder];
+		paveautoreduce				= OptionValue[PaVeAutoReduce];
+		breakdown  					= OptionValue[ReduceToScalars];
 
 		$higherpoint = False;
 
@@ -372,7 +361,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 
 			oneamp = oneamp/.PD -> denf /. denprop -> PD;
 
-			If[ oneloopsimplify,
+			If[ oneloopSimplify,
 				oneamp = OneLoopSimplify[oneamp, q, Dimension -> dim]
 			];
 
@@ -425,15 +414,12 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			to4dim[x_] :=
 				x/.{Momentum[v_,_]:>Momentum[v], LorentzIndex[w_,_]:>LorentzIndex[w]};
 
-			oneamp0 = oneamp;
 			FCPrint[2, "check", FCDoControl->oneloopVerbose];
 				(* ONEAMPCHANGE: make dimensions right *)
 			If[ dim===4,
 				oneamp = SUNSimplify[to4dim[ oneamp ], Explicit -> False],
-				oneamp = oneamp + null;
-				newone = SUNSimplify[ ChangeDimension[oneamp, dim],
-									Explicit -> False ];
-				oneamp = newone/.null -> 0
+				oneamp = oneamp + null1;
+				oneamp = SUNSimplify[ChangeDimension[oneamp, dim], Explicit -> False]/.null1 -> 0
 			];
 			FCPrint[3, " oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 			If[ (!FreeQ[oneamp, SUNF]) || (!FreeQ[oneamp, SUNDelta]) ||
@@ -528,10 +514,9 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			(* ONEAMPCHANGE : fixing all denominators , evtl. ordering *)
 			oneamp = denomExpand[ oneamp ];
 			oneamp = denomExpand[ oneamp ]/.FeynAmpDenominator->denomOrder;
-			oneamp = (intcan[oneamp//MomentumExpand]//MomentumExpand)/.
-					intcan->Identity;
-			oneamp = Map[ (Numerator[#]/Factor2[Denominator[#]])&, oneamp + null ];
-			oneamp = oneamp/.null->0;
+			oneamp = (intcan[oneamp//MomentumExpand]//MomentumExpand)/. intcan->Identity;
+			oneamp = Map[(Numerator[#]/Factor2[Denominator[#]])&, oneamp + null1];
+			oneamp = oneamp/.null1->0;
 			FCPrint[3, "oneamp after ordering = ", oneamp, FCDoControl->oneloopVerbose];
 
 			(* ONEAMPCHANGE : bringing all denominator in standard order *)
@@ -539,16 +524,17 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				conall[x]/;Head[x]=!=Plus;    (* consumdef *)
 
 			consum[x_Plus] :=
-				Block[ {nx = 0,i},
-					For[i = 1, i<=Length[x], i++,
-						FCPrint[2, "contracting # ", i, " out of ", Length[x], FCDoControl->oneloopVerbose];
-						nx = nx + conall[x[[i]]]
-						];
+				Block[ {nx = 0,ii},
+					For[ii = 1, ii<=Length[x], ii++,
+						FCPrint[2, "contracting # ", ii, " out of ", Length[x], FCDoControl->oneloopVerbose];
+						nx = nx + conall[x[[ii]]]
+					];
 					nx
 				];
 			(* consum2def *)
 			consum2[x_] :=
 				smalld[ExpandScalarProduct[conall[x]]]/;Head[x]=!=Plus;
+
 			consum2[x_Plus] :=
 				Block[ {nx = 0},
 					For[i = 1, i<=Length[x], i++,
@@ -562,9 +548,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			(*                          oneloop18                                    *)
 			(* ********************************************************************* *)
 			oneamp = Contract[ oneamp, Expanding -> False];
-			oneampc = oneamp;
 			oneamp = DiracSimplify[oneamp, Expanding -> False];
-			oneampd = oneamp;
 			FCPrint[2, "OneLoop: before collin ", oneamp, FCDoControl->oneloopVerbose];
 			oneamp = collin[ consum[oneamp]//smalld, FeynAmpDenominator, False ];
 
@@ -587,12 +571,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					oneamp = Expand[oneamp /. DiracTrace->TR],
 					For[i = 1, i<=Length[oneamp], i++,
 						FCPrint[1, "calculating trace # ", i, "  out of ", Length[oneamp], FCDoControl->oneloopVerbose];
-						timi = Timing[
-										neuamp = neuamp + Expand[ oneamp[[i]]/.DiracTrace->TR]
-									][[1]];
-						FCPrint[1, "time needed = ", timi, FCDoControl->oneloopVerbose];
-						];
-					oneampf = oneamp;
+						neuamp = neuamp + Expand[ oneamp[[i]]/.DiracTrace->TR]
+					];
 					oneamp = Collect2[neuamp, FeynAmpDenominator, Factoring -> False]
 				]
 			];
@@ -657,8 +637,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					parf = PartitHead[oneamp[[ip]], FeynAmpDenominator]//smalld,
 					parf = PartitHead[oneamp, FeynAmpDenominator]//smalld
 				];
-				neuamp = neuamp + ((Expand[ If[parf[[2]]=!=0,parf[[2]],1] simpit[parf[[1]]]
-											]) //smalld)
+				neuamp = neuamp + ((Expand[ If[parf[[2]]=!=0,parf[[2]],1] simpit[parf[[1]]]])//smalld)
 			];
 
 			FCPrint[2, "Length of neuamp = ", Length[neuamp], FCDoControl->oneloopVerbose];
@@ -684,8 +663,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						parf = PartitHead[oneamp[[iip]], FeynAmpDenominator],
 						parf = PartitHead[oneamp, FeynAmpDenominator]
 					];
-					neuamp = neuamp + ((Expand[ parf[[2]] simpit[parf[[1]]]
-												]) //smalld)
+					neuamp = neuamp + ((Expand[ parf[[2]] simpit[parf[[1]]]]) //smalld)
 				];
 			];
 
@@ -906,7 +884,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			FeynCalc`DiracSimplify`Private`$sirlin = False;
 			FCPrint[1, "q = ", q, FCDoControl->oneloopVerbose];
 
-			oneamp = tensint[ oneamp,dim,q,{Mandelstam->onemandel} ];
+			oneamp = tensint[ oneamp,dim,q, onemandel];
 			oneamp = oneamp /.{B1 :> bB1, B00 :> bB00, B11 :> bB11};
 			oneamp = oneamp//smalld;
 			oneamp = oneamp /.{bB1 :> B1, bB00 :> B00, bB11 :> B11};
@@ -1122,10 +1100,6 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				wri[ name, Hold[grname  = oneampresult], FormatType -> FortranForm]/.wri -> Write2,
 
 				wri[ name, Hold[OneLoopResult[ grname ] = oneampresult], FormatType->formatType]/.wri -> Write2;
-				If[ Length[FA2Info] > 0,
-					wri[ name, Hold[OneLoopInfo[ grname ] = FA2Info],
-					FormatType->InputForm]/.wri -> Write2;
-				];
 			]
 		];
 
@@ -1134,7 +1108,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		];
 
 		If[ (!ValueQ[OneLoopInfo[grname]]) && (grname=!=False),
-			set[ OneLoopInfo[grname], FA2Info]/.set->Set
+			set[ OneLoopInfo[grname], {}]/.set->Set
 		];
 
 		(* ********************************************************************* *)
@@ -1195,24 +1169,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			FCPrint[1, "CPU - time for ", grname, ": ", tim[[1]]//FeynCalcForm, FCDoControl->oneloopVerbose],
 			FCPrint[1, "CPU - time : ", tim[[1]]//FeynCalcForm, FCDoControl->oneloopVerbose]
 		];
-		oneampresult /.
-
-				(*New 31/7-2002. Support for FeynArts 3.0 SumOver. F.Orellana*)
-				If[ (Sum /. Flatten[{opts}] /. Options[OneLoop]) === False,
-					FeynArts`SumOver[___] -> 1,
-					{}
-				] //.
-				If[ (Sum /. Flatten[{opts}] /. Options[OneLoop]) === Explicit,
-					Times[f__, FeynArts`SumOver[i_, r_, ___]] :>
-					(If[ Head[r] =!= List,
-						FCPrint[2, "Summing ", i, " from 1 to ", r, FCDoControl->oneloopVerbose];
-						rr = Range[1, r],
-						FCPrint[2, "Summing ", i, " over ", r, FCDoControl->oneloopVerbose];
-						rr = r
-					];
-					Plus @@ ((Times[f] /. i -> #)& /@ rr)),
-					{}
-				]
+		oneampresult
 	] /; FreeQ[q,Rule] && FreeQ[q,Plus];
 
 (* ******************************************************************* *)
@@ -2159,102 +2116,102 @@ eval[evy_] :=
 (*                          oneloop40                                    *)
 (* ********************************************************************* *)
 	(*tensintdef*)
-tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
+tensint[x_,dim_,q_, mandel_List] := (*tensint[x,dim,q,options]=*)
 	Block[ {(*tensj,tensi,tensic,*)tensg = 0,(*mandel,*)tensx = x(*,tensdnp,tensdnp1,*)
 		(*tenslnt,tensldn,tensqmax,tenslep,tensdnqq,tensdnqqb,*)
 		(*tensqc,tensjq*)(*,tensfq,ltx*)
 		},
 		tensg = Catch[
-		FCPrint[2, "OneLoop: tensint: entering with ", tensx ,FCDoControl->oneloopVerbose];
-		FCPrint[3, "OneLoop: tensint: entering ", q, "  dimension  ", dim, "   ", x//FeynCalcForm, FCDoControl->oneloopVerbose];
-		(* diracSimplify must have been used previously              *)
-		mandel =  Mandelstam /.Join[ options,Options[ tensint ] ];
-	(* tensor integral decomposition *)
-		(*ltx = nterms[tensx];*)
-		If[ Head[tensx]===Plus,
-			tenslnt = Length[tensx],
-			tenslnt = 1
-		];
+			FCPrint[2, "OneLoop: tensint: entering with ", tensx, FCDoControl->oneloopVerbose];
+			FCPrint[3, "OneLoop: tensint: entering ", q, "  dimension  ", dim, "   ", x//FeynCalcForm, FCDoControl->oneloopVerbose];
+			(* diracSimplify must have been used previously              *)
 
-		(* The tensj - loop runs over all different loop integrals *)
-		Clear[tensqc];
-		For[ tensj = 1, tensj <= tenslnt, tensj++,
-			FCPrint[1, "OneLoop: tensint: tensorintegral # ", tensj, " / ", tenslnt, FCDoControl->oneloopVerbose];
-			FCPrint[3, "OneLoop: tensint: tensorintegral ", If[ tenslnt===1, tensx, tensx[[tensj]]], FCDoControl->oneloopVerbose];
-			tensqc[tensj][any_] :=
-				0;
-			(* splitting into q^i_1 ... q^i_j and FeynAmpDenominator for each term *)
-			If[ tenslnt===1,
-				tensdnp = PartitHead[ tensx,FeynAmpDenominator ],
-				tensdnp = PartitHead[ tensx[[tensj]],FeynAmpDenominator ]
+			(* tensor integral decomposition *)
+			(*ltx = nterms[tensx];*)
+			If[ Head[tensx]===Plus,
+				tenslnt = Length[tensx],
+				tenslnt = 1
 			];
-			FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp, FCDoControl->oneloopVerbose];
-			(* Collect according to the number of q's *)
-			tensdnp1 = Collect2[ tensdnp[[1]],q, Factoring -> False];
 
-			FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp1, FCDoControl->oneloopVerbose];
-
-			(*This for dealing with things like (q.x)^n *)
-			pairpow/: pairpow[a___,Momentum[q,di___],b___]^n_Integer?Positive :=
-					(pairpow[a,Momentum[q,di],b]^(n-1))**pairpow[a,Momentum[q,di],b];
-
-			tensdnp1 = tensdnp1/.Pair->pairpow/.pairpow->Pair;
-
-			FCPrint[3,"OneLoop: tensint: tensdnp1 after pairpow ",tensdnp1, FCDoControl->oneloopVerbose];
-			FCPrint[1, "OneLoop: tensint: Checking rank of ", tensdnp1, FCDoControl->oneloopVerbose];
-			If[ Head[tensdnp1]===Plus,
-				tensldn = Length[tensdnp1],
-				tensldn = 1
-			];
-			FCPrint[3, "OneLoop: tensint: tensldn: ", tensldn, FCDoControl->oneloopVerbose];
-			tensqmax[tensj] = 0;
-			FCPrint[3, "OneLoop: tensint: Entering 1st nested loop", FCDoControl->oneloopVerbose];
-			For[ tensic = 1, tensic <= tensldn, tensic++,
-				If[ tensldn===1,
-					(*one term in the numerator *)
-
-					(* Determines the tensor rank *)
-					tenslep = Length[Position[tensdnp1,q ] ];
-					(* BREAK EVENTUALLY *)
-					If[ tenslep>3,
-						Print["FYI: Tensor integrals of rank higher than 3 encountered; Please use the option CancelQP -> True or OneLoopSimplify->True or use another program."];
-						Throw[x]
-					];
-					FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
-					tensqc[tensj][tenslep] += suind[ tensdnp1,q,dim,mud ],
-					(*more terms in the numerator *)
-					(* Determines the tensor rank *)
-					tenslep = Length[ Position[tensdnp1[[tensic]],q ] ];
-					tensqc[tensj][tenslep] += suind[tensdnp1[[tensic]],q,dim,mud]
+			(* The tensj - loop runs over all different loop integrals *)
+			Clear[tensqc];
+			For[ tensj = 1, tensj <= tenslnt, tensj++,
+				FCPrint[1, "OneLoop: tensint: tensorintegral # ", tensj, " / ", tenslnt, FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tensint: tensorintegral ", If[ tenslnt===1, tensx, tensx[[tensj]]], FCDoControl->oneloopVerbose];
+				tensqc[tensj][any_] :=
+					0;
+				(* splitting into q^i_1 ... q^i_j and FeynAmpDenominator for each term *)
+				If[ tenslnt===1,
+					tensdnp = PartitHead[ tensx,FeynAmpDenominator ],
+					tensdnp = PartitHead[ tensx[[tensj]],FeynAmpDenominator ]
 				];
-				FCPrint[3, "OneLoop: tensqc[tensj][tenslep]: ", tensqc[tensj][tenslep], FCDoControl->oneloopVerbose];
+				FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp, FCDoControl->oneloopVerbose];
+				(* Collect according to the number of q's *)
+				tensdnp1 = Collect2[ tensdnp[[1]],q, Factoring -> False];
 
-				If[ tenslep > tensqmax[tensj],
-					tensqmax[tensj] = tenslep
-				]
-			];
-			FCPrint[3, "OneLoop: tensint: 1st nested loop done", FCDoControl->oneloopVerbose];
+				FCPrint[3,"OneLoop: tensint: tensdnp1 ",tensdnp1, FCDoControl->oneloopVerbose];
 
-			FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
-			FCPrint[3, "OneLoop: tensint: tensqmax[tensj] ", tensqmax[tensj], FCDoControl->oneloopVerbose];
-			FCPrint[3, "OneLoop: tensint: tensg before the nested loop ", tensg, FCDoControl->oneloopVerbose];
+				(*This for dealing with things like (q.x)^n *)
+				pairpow/: pairpow[a___,Momentum[q,di___],b___]^n_Integer?Positive :=
+						(pairpow[a,Momentum[q,di],b]^(n-1))**pairpow[a,Momentum[q,di],b];
+
+				tensdnp1 = tensdnp1/.Pair->pairpow/.pairpow->Pair;
+
+				FCPrint[3,"OneLoop: tensint: tensdnp1 after pairpow ",tensdnp1, FCDoControl->oneloopVerbose];
+				FCPrint[1, "OneLoop: tensint: Checking rank of ", tensdnp1, FCDoControl->oneloopVerbose];
+				If[ Head[tensdnp1]===Plus,
+					tensldn = Length[tensdnp1],
+					tensldn = 1
+				];
+				FCPrint[3, "OneLoop: tensint: tensldn: ", tensldn, FCDoControl->oneloopVerbose];
+				tensqmax[tensj] = 0;
+				FCPrint[3, "OneLoop: tensint: Entering 1st nested loop", FCDoControl->oneloopVerbose];
+				For[ tensic = 1, tensic <= tensldn, tensic++,
+					If[ tensldn===1,
+						(*one term in the numerator *)
+
+						(* Determines the tensor rank *)
+						tenslep = Length[Position[tensdnp1,q ] ];
+						(* BREAK EVENTUALLY *)
+						If[ tenslep>3,
+							Print["FYI: Tensor integrals of rank higher than 3 encountered; Please use the option CancelQP -> True or OneLoopSimplify->True or use another program."];
+							Throw[x]
+						];
+						FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
+						tensqc[tensj][tenslep] += suind[ tensdnp1,q,dim,mud ],
+						(*more terms in the numerator *)
+						(* Determines the tensor rank *)
+						tenslep = Length[ Position[tensdnp1[[tensic]],q ] ];
+						tensqc[tensj][tenslep] += suind[tensdnp1[[tensic]],q,dim,mud]
+					];
+					FCPrint[3, "OneLoop: tensqc[tensj][tenslep]: ", tensqc[tensj][tenslep], FCDoControl->oneloopVerbose];
+
+					If[ tenslep > tensqmax[tensj],
+						tensqmax[tensj] = tenslep
+					]
+				];
+				FCPrint[3, "OneLoop: tensint: 1st nested loop done", FCDoControl->oneloopVerbose];
+
+				FCPrint[3, "OneLoop: tensint: tensdnp1 ", tensdnp1, FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tensint: tensqmax[tensj] ", tensqmax[tensj], FCDoControl->oneloopVerbose];
+				FCPrint[3, "OneLoop: tensint: tensg before the nested loop ", tensg, FCDoControl->oneloopVerbose];
 
 
 
-			FCPrint[3, "OneLoop: tensint: Entering 2nd nested loop", FCDoControl->oneloopVerbose];
-			For[ tensjq = 0, tensjq <= tensqmax[tensj], tensjq++,
-				tdenlen = Length[ tensdnp[[2]] ];
-				FCPrint[2, "OneLoop: tensint: Tensorintegral (N = ", tdenlen, ") : # of q's = ", tensjq, " decomposing ", Length[tensqc[tensj][tensjq]], " term(s)", FCDoControl->oneloopVerbose];
-				(* tdec is the function that is actually doing the decomposition !*)
-				FCPrint[3, "OneLoop: tensint: tensqc[tensj][tensjq] ", tensqc[tensj][tensjq], "", FCDoControl->oneloopVerbose];
-				tensg += tdec[ tensqc[tensj][tensjq], tensdnp[[2]],q,
-								tensjq,dim,mud,mandel
-							]/.NonCommutativeMultiply->Times
-				];(*tensjq - loop*)
-				FCPrint[3, "OneLoop: tensint: 2nd nested loop done", FCDoControl->oneloopVerbose];
-				FCPrint[3, "OneLoop: tensint: tensg after the 2nd nested loop ", tensg, FCDoControl->oneloopVerbose];
-			];
-		tensg =  Expand[tensg]
+				FCPrint[3, "OneLoop: tensint: Entering 2nd nested loop", FCDoControl->oneloopVerbose];
+				For[ tensjq = 0, tensjq <= tensqmax[tensj], tensjq++,
+					tdenlen = Length[ tensdnp[[2]] ];
+					FCPrint[2, "OneLoop: tensint: Tensorintegral (N = ", tdenlen, ") : # of q's = ", tensjq, " decomposing ", Length[tensqc[tensj][tensjq]], " term(s)", FCDoControl->oneloopVerbose];
+					(* tdec is the function that is actually doing the decomposition !*)
+					FCPrint[3, "OneLoop: tensint: tensqc[tensj][tensjq] ", tensqc[tensj][tensjq], "", FCDoControl->oneloopVerbose];
+					tensg += tdec[ tensqc[tensj][tensjq], tensdnp[[2]],q,
+									tensjq,dim,mud,mandel
+								]/.NonCommutativeMultiply->Times
+					];(*tensjq - loop*)
+					FCPrint[3, "OneLoop: tensint: 2nd nested loop done", FCDoControl->oneloopVerbose];
+					FCPrint[3, "OneLoop: tensint: tensg after the 2nd nested loop ", tensg, FCDoControl->oneloopVerbose];
+				];
+			tensg =  Expand[tensg]
 
 		];
 		FCPrint[2, "OneLoop: tensint: Leaving with tensg= ", tensg, FCDoControl->oneloopVerbose];
