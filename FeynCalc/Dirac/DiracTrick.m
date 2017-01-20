@@ -135,9 +135,10 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Applying diracTrickEval", FCDoControl->diTrVerbose];
 			diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];
+			FCPrint[3,"DiracTrace: After diracTrickEval: ", diracObjectsEval, FCDoControl->diTrVerbose];
 			FCPrint[1,"DiracTrace: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
-			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracTrickEval}],
+			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracTrickEval,holdDOT}],
 				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
@@ -150,7 +151,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 				from internal functions	*)
 			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval;
 
-			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval}],
+			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval,holdDOT}],
 				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			]
@@ -347,6 +348,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		];
 
 		(* Here we do all the simplifications not realted to g^5	*)
+		FCPrint[1, "DiracTrick: diracTrickEval: Doing simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
 		Which[
 			(* Purely 4-dimensional *)
 			dim==={4},
@@ -380,24 +382,29 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 				Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
 				Abort[]
 		];
+		FCPrint[1, "DiracTrick: diracTrickEval: Done with simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: After simplifications unrelated to g^5: ", res , FCDoControl->diTrVerbose];
 
 		If[ FreeQ2[res,DiracHeadsList],
-			Return[res]
+			Return[res/. holdDOT -> DOT]
 		];
 
 		(*	For BMHV we need to handle g^5 again here*)
 		If[	gamma5Present && $BreitMaison && !$Larin,
+			FCPrint[1, "DiracTrick: diracTrickEval: Doing special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
 			res = res /. holdDOT -> gamma5MoveBMHV;
 						res = FixedPoint[(# /. gamma5MoveBMHV -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommuting4Dim /. chiralTrickAnticommuting4Dim -> gamma5MoveBMHV)&,res];
 			FCPrint[1, "DiracTrick: diracTrickEval: Additional simplifications of g^5 in BMHV.", FCDoControl->diTrVerbose];
 			res = res /. gamma5MoveBMHV -> diracologyBMHV1;
 			res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
-			res = res /. diracologyBMHV1 -> holdDOT
+			res = res /. diracologyBMHV1 -> holdDOT;
+			FCPrint[1, "DiracTrick: diracTrickEval: Done with special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: After special simplifications for the BMHV scheme: ", res , FCDoControl->diTrVerbose];
 		];
 
 		If[ FreeQ2[res,DiracHeadsList],
-			Return[res]
+			Return[res/. holdDOT -> DOT]
 		];
 
 		res = res /. holdDOT -> DOT;

@@ -1784,7 +1784,11 @@ GA[mu].GA[5]+f1 GA[mu]),InsideDiracTrace\[Rule]True]//FCE",
 GS[p2].GA[si].GS[k1].GS[p1].GS[k2].GS[k1].GA[si].GS[p2].GA[7],
 InsideDiracTrace -> True] // FCE",
 "GS[k2].GS[p1] SP[k1, k1] SP[p2, p2] +
-GS[p1].GS[k2] SP[k1, k1] SP[p2, p2]"}
+GS[p1].GS[k2] SP[k1, k1] SP[p2, p2]"},
+{"fcstDiracTrickInsideDiracTrace-ID32",
+"DiracTrick[GA[i].GS[q].GA[j].GA[i]  FV[2 p + q, j],
+InsideDiracTrace -> True] // FCE",
+"4 SP[q, 2 p + q]"}
 });
 
 fcstDiracTrickChiralTricks =
