@@ -1,25 +1,26 @@
 Tests`LoopIntegrals`fcstFCMultiLoopTID =
 ({
-{"fcstFCMultiLoopTID-ID1", "FCMultiLoopTID[0,{q1,q2}]//FCE", "0"},
+{"fcstFCMultiLoopTID-ID1", "FCMultiLoopTID[0,{q1,q2},FCE->True]", "0"},
 {"fcstFCMultiLoopTID-ID2",
-"FCMultiLoopTID[FVD[q1,mu]FAD[{q1,m}],{q1,q2}]//FCE",
-"FAD[{q1, m}]*FVD[q1, mu]"},
+"$BreitMaison=True; \n tmp= FCMultiLoopTID[FVE[q1, mu] FVE[q2, nu] FAD[{q1, m}], {q1, q2},FCE->True];
+\n $BreitMaison=False; tmp",
+"(FAD[{q1, m}] MTE[mu, nu] SPD[q1, q2])/D"},
 {"fcstFCMultiLoopTID-ID3",
-"FCMultiLoopTID[FVD[q1,mu]FVD[q2,nu]FAD[{q1,m}],{q1,q2}]//FCE",
+"FCMultiLoopTID[FVD[q1,mu]FVD[q2,nu]FAD[{q1,m}],{q1,q2},FCE->True]",
 "(FAD[{q1, m}]*MTD[mu, nu]*SPD[q1, q2])/D"},
 {"fcstFCMultiLoopTID-ID4",
-"FCMultiLoopTID[FVD[q1,mu]SPD[q1,q2]FVD[q2,nu]FAD[{q1,m}],{q1}]\
-//FCE", "(FAD[{q1, m}]*FVD[q2, mu]*FVD[q2, nu]*SPD[q1, q2]^2)/SPD[q2, \
+"FCMultiLoopTID[FVD[q1,mu]SPD[q1,q2]FVD[q2,nu]FAD[{q1,m}],{q1},FCE->True]",
+"(FAD[{q1, m}]*FVD[q2, mu]*FVD[q2, nu]*SPD[q1, q2]^2)/SPD[q2, \
 q2]"},
 {"fcstFCMultiLoopTID-ID5",
 "FCMultiLoopTID[FVD[q1,mu]FVD[q2,nu]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{\
-q1-q2}],{q1,q2}]//FCE",
+q1-q2}],{q1,q2},FCE->True]",
 "-((m1^2 + m2^2)*FAD[{q1, m1}, {q2, m2}]*MTD[mu, nu])/(4*D) + \
 ((m1^2 + m2^2)^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2]*MTD[mu, nu])/(4*D) \
 - (FAD[{q1, m2}, {q2, m1}]*MTD[mu, nu]*SPD[q1, q2])/(2*D)"},
 {"fcstFCMultiLoopTID-ID6",
 "FCMultiLoopTID[FVD[q1,mu]FVD[q2,nu]SPD[q1,q2]FAD[{q1+p2,m},{q2-p1,\
-m},{q1-q2}],{q1,q2}]//FCE",
+m},{q1-q2}],{q1,q2},FCE->True]",
 "(FAD[{p2 + q1, m}, {-p1 + q2, m}, q1 - q2]*SPD[p1, q1]*SPD[p1, \
 q2]*(-2*FVD[p2, mu]*FVD[p2, nu]*SPD[p1, p2]^2 + D*FVD[p2, mu]*FVD[p2, \
 nu]*SPD[p1, p2]^2 + FVD[p2, mu]*FVD[p2, nu]*SPD[p1, p1]*SPD[p2, p2] + \
@@ -95,12 +96,12 @@ D*FVD[p1, mu]*FVD[p1, nu]*SPD[p1, p2]*SPD[p2, p2] - MTD[mu, \
 nu]*SPD[p1, p1]*SPD[p1, p2]*SPD[p2, p2])*SPD[p2, q1]*SPD[q1, \
 q2]^2)/((-2 + D)*(-SPD[p1, p2]^2 + SPD[p1, p1]*SPD[p2, p2])^2)"},
 {"fcstFCMultiLoopTID-ID7",
-"FCMultiLoopTID[SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-q2}],{q1,q2}]\
-//FCE", "-FAD[{q1, m1}, {q2, m2}]/2 + ((m1^2 + m2^2)*FAD[{q1, m1}, \
+"FCMultiLoopTID[SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-q2}],{q1,q2},FCE->True]",
+"-FAD[{q1, m1}, {q2, m2}]/2 + ((m1^2 + m2^2)*FAD[{q1, m1}, \
 {q2, m2}, -q1 + q2])/2"},
 {"fcstFCMultiLoopTID-ID8",
 "FCMultiLoopTID[GSD[q1]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-q2}],{q1,\
-q2}]//FCE", "0"},
+q2},FCE->True]", "0"},
 {"fcstFCMultiLoopTID-ID9",
 "FCMultiLoopTID[GSD[q1].GSD[q2]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-\
 q2}],{q1,q2}]//DiracTrick//FCE",
@@ -108,28 +109,30 @@ q2}],{q1,q2}]//DiracTrick//FCE",
 -q1 + q2] + m2^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2]))/4 -
 (FAD[{q1, m1}, {q2, m2}]*SPD[q1, q2])/2"},
 {"fcstFCMultiLoopTID-ID10",
-"FCMultiLoopTID[GS[q1].GS[q2]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-q2}]\
+"FCMultiLoopTID[GSD[q1].GSD[q2]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-q2}]\
 ,{q1,q2}]//DiracTrick//FCE",
-"((m1^2 + m2^2)*(-FAD[{q1, m1}, {q2, m2}] + m1^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2] +
-m2^2*FAD[{q1, m1}, {q2, m2}, -q1 + q2]))/D - (2*FAD[{q1, m1}, {q2, m2}]*SPD[q1, q2])/D"},
+"1/4 (m1^2 + m2^2) (-FAD[{q1, m1}, {q2, m2}] +
+	m1^2 FAD[{q1, m1}, {q2, m2}, -q1 + q2] +
+	m2^2 FAD[{q1, m1}, {q2, m2}, -q1 + q2]) -
+1/2 FAD[{q1, m1}, {q2, m2}] SPD[q1, q2]"},
 {"fcstFCMultiLoopTID-ID11",
-"FCMultiLoopTID[LC[][q1,q2,a,b]SPD[q1,q2]FAD[{q1-p1,m1},{q2-p2,m2},\
-{q1-q2}],{q1,q2}]//FCE",
+"FCMultiLoopTID[LCD[][q1,q2,a,b]SPD[q1,q2]FAD[{q1-p1,m1},{q2-p2,m2},\
+{q1-q2}],{q1,q2},FCE->True]",
 "-(FAD[{-p2 + q1, m2}, {-p1 + q2, m1}]*SPD[p2, q1]*SPD[q1, \
-q2]*LC[][a, b, p1, p2])/(2*(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2])) \
+q2]*LCD[][a, b, p1, p2])/(2*(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2])) \
 + (FAD[{-p1 + q1, m1}, {-p2 + q2, m2}, q1 - q2]*SPD[p1, q2]*SPD[p2, \
-q1]*SPD[q1, q2]*LC[][a, b, p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
+q1]*SPD[q1, q2]*LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
 p1]*SPD[p2, p2]) + (FAD[{-p2 + q1, m2}, {-p1 + q2, m1}, -q1 + \
 q2]*(m1^2 + m2^2 - SPD[p1, p1] - SPD[p2, p2])*SPD[p2, q1]*SPD[q1, \
-q2]*LC[][a, b, p1, p2])/(2*(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2])) \
+q2]*LCD[][a, b, p1, p2])/(2*(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2])) \
 + (FAD[{-p2 + q1, m2}, {-p1 + q2, m1}, -q1 + q2]*SPD[p2, \
-q1]^2*SPD[q1, q2]*LC[][a, b, p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
+q1]^2*SPD[q1, q2]*LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
 p1]*SPD[p2, p2]) - (FAD[{-p2 + q1, m2}, {-p1 + q2, m1}, -q1 + \
-q2]*SPD[p2, q1]*SPD[q1, q2]^2*LC[][a, b, p1, p2])/(SPD[p1, p2]^2 - \
+q2]*SPD[p2, q1]*SPD[q1, q2]^2*LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 - \
 SPD[p1, p1]*SPD[p2, p2])"},
 {"fcstFCMultiLoopTID-ID12",
 "FCMultiLoopTID[LCD[][q1,q2,a,b]SPD[q1,q2]FAD[{q1-p1,m1},{q2-p2,m2}\
-,{q1-q2}],{q1,q2}]//FCE",
+,{q1-q2}],{q1,q2},FCE->True]",
 "-(FAD[{-p2 + q1, m2}, {-p1 + q2, m1}]*SPD[p2, q1]*SPD[q1, \
 q2]*LCD[][a, b, p1, p2])/(2*(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, \
 p2])) + (FAD[{-p1 + q1, m1}, {-p2 + q2, m2}, q1 - q2]*SPD[p1, \
@@ -143,14 +146,14 @@ p1]*SPD[p2, p2]) - (FAD[{-p2 + q1, m2}, {-p1 + q2, m1}, -q1 + \
 q2]*SPD[p2, q1]*SPD[q1, q2]^2*LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 - \
 SPD[p1, p1]*SPD[p2, p2])"},
 {"fcstFCMultiLoopTID-ID13", "FCMultiLoopTID[FVD[q1, mu] FVD[q2, nu] FAD[q1, q2, {p1 - q2}, {q1 - p1},
-{q2 - p1}], {q1, q2}] // FCE",
+{q2 - p1}], {q1, q2},FCE->True]",
 "(FAD[q2, q1, -p1 + q2, -p1 + q1, -p1 + q1]*(D*FVD[p1, mu]*FVD[p1, nu] -
 MTD[mu, nu]*SPD[p1, p1]))/(4*(-1 + D)) - (FAD[q2, q1, -p1 + q2, -p1 + q1]*(D*FVD[p1, mu]*FVD[p1, nu] -
 MTD[mu, nu]*SPD[p1, p1]))/(4*(-1 + D)*SPD[p1, p1]) + (FAD[q2, q1, -p1 + q2, -p1 + q1, -p1 + q2]*(-(FVD[p1, mu]*FVD[p1, nu]) +
 MTD[mu, nu]*SPD[p1, p1])*SPD[q1, q2])/((-1 + D)*SPD[p1, p1])"},
 {"fcstFCMultiLoopTID-ID14", "FCMultiLoopTID[
 FVD[q1, mu] FVD[q2, nu] LCD[mu, nu][a,
-	b] FAD[{q1 - p1, m1}, {q2 - p2, m2}, {q1 - q2}], {q1, q2}] // FCE",
+	b] FAD[{q1 - p1, m1}, {q2 - p2, m2}, {q1 - q2}], {q1, q2}, FCE->True]",
 "(FAD[{-p1 + q1, m1}, {-p2 + q2, m2}, q1 - q2] SPD[p1, q2] SPD[p2,
 	q1] LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 -
 	SPD[p1, p1] SPD[p2, p2]) - (FAD[{-p1 + q1, m1}, {-p2 + q2, m2},
