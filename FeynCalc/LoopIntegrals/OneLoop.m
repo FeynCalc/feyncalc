@@ -464,7 +464,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						ml =  List @@ (fd[[2]]/.PropagatorDenominator->mm);
 (*Extract the determinant *)
 						res = {1/sgr[ml, pl, -1] ,
-								Sum[ (-1)^j subdethold[sgr[ml,pl, j]
+								Sum[ (-1)^(j+1) subdethold[sgr[ml,pl, j]
 														] fd[[1]] *
 									Drop[fd[[2]], {j+1,j+1}],
 									{j, 0, Length[fd[[2]]]-1}
