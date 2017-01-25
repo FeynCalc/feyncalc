@@ -176,26 +176,28 @@ collin[ expr_, varh_, expa_] :=
 
 
 Options[OneLoop] = {
-					DenominatorOrder           -> False,
-					Dimension                  -> D,
-					FinalSubstitutions         -> {},
-					Factoring                  -> False,
-					FCVerbose 					-> False,
-					FormatType                 -> InputForm,
-					InitialSubstitutions       -> {},
-					IntermediateSubstitutions  -> {},
-					IsolateNames                -> False,
-					Mandelstam                 -> {},
-					OneLoopSimplify            -> False,
-					PaVeAutoOrder 				-> True,
-					PaVeAutoReduce				-> True,
-					Prefactor                  -> 1,
-					ReduceGamma                -> False,
-					ReduceToScalars            -> False,
-					SmallVariables             -> {},
-					WriteOut                   -> False,
-					WriteOutPaVe               -> False
-				};
+	DenominatorOrder			-> False,
+	Dimension					-> D,
+	FCE							-> False,
+	FCVerbose					-> False,
+	Factoring					-> False,
+	FinalSubstitutions			-> {},
+	FormatType					-> InputForm,
+	InitialSubstitutions		-> {},
+	IntermediateSubstitutions	-> {},
+	IsolateNames				-> False,
+	Mandelstam					-> {},
+	NPointTo4Point				-> True,
+	OneLoopSimplify				-> False,
+	PaVeAutoOrder				-> True,
+	PaVeAutoReduce				-> True,
+	Prefactor					-> 1,
+	ReduceGamma					-> False,
+	ReduceToScalars				-> False,
+	SmallVariables				-> {},
+	WriteOut					-> False,
+	WriteOutPaVe				-> False
+};
 (* setting WriteOut to "" retrieves also previously calculated results *)
 
 (* OneLoopdef *)
@@ -376,7 +378,7 @@ OneLoop[grname_,q_,integ_,OptionsPattern[]] :=
 				];
 
 
-			If[ !FreeQ[oneamp /. FeynAmpDenominator -> fdhigh, FeynAmpDenominator],
+			If[ !FreeQ[oneamp /. FeynAmpDenominator -> fdhigh, FeynAmpDenominator] && OptionValue[NPointTo4Point],
 				$higherpoint = True;
 				namp = NPointTo4Point[ oneamp,q, List->True, Dimension -> 4, IsolateNames->SUB]/. SUB -> SUBDET;
 				prefactor = prefactor namp[[1]];
@@ -1169,6 +1171,11 @@ OneLoop[grname_,q_,integ_,OptionsPattern[]] :=
 			FCPrint[1, "CPU - time for ", grname, ": ", tim[[1]]//FeynCalcForm, FCDoControl->oneloopVerbose],
 			FCPrint[1, "CPU - time : ", tim[[1]]//FeynCalcForm, FCDoControl->oneloopVerbose]
 		];
+
+		If[	OptionValue[FCE],
+			oneampresult = FCE[oneampresult]
+		];
+
 		oneampresult
 	] /; FreeQ[q,Rule] && FreeQ[q,Plus];
 

@@ -13,6 +13,8 @@
 
 Needs["FeynCalc`"];
 $FCAdvice = False;
+$VeryVerbose = -1;
+
 ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]];
 Get/@tests;
@@ -32,3 +34,4 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 $KeepLogDivergentScalelessIntegrals=False;
 
 
+$VeryVerbose = 0;
