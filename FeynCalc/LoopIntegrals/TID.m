@@ -121,27 +121,9 @@ TID[am_ , q_, OptionsPattern[]] :=
 		genpave 		= OptionValue[GenPaVe];
 
 
-
-
-
-		If[ t0 === 0,
-			Return[0]
+		If[ FreeQ[t0,q],
+			Return[t0]
 		];
-
-		(*If[ dimred =!= True,
-			FCMonitor[
-				t0 = ChangeDimension[t0, chd];
-				(*$LimitTo4=False;*)
-				Grid[{{"Applying ChangeDimension",
-				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
-			]
-		];*)
-
-		(*
-			t5 = t5 /. {LorentzIndex[aa_, en_Symbol] :> LorentzIndex[aa],
-						Momentum[b_, en_Symbol]      :> Momentum[b]
-						};
-		*)
 
 		(* Contract is necessary here to simplify things like FV[q,i]^2 *)
 		If[	contractlabel && !FreeQ[t0,LorentzIndex],
@@ -451,8 +433,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 			res = EpsEvaluate[res]
 		];
 
-
-		(*$LimitTo4=limitto4;*)
 		res
 
 	];
