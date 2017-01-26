@@ -33,35 +33,64 @@ End[]
 Begin["`PropagatorDenominatorExplicit`Private`"]
 
 Options[PropagatorDenominatorExplicit] = {
+	FCE -> False,
 	FCI -> False,
 	Dimension -> False,
+	Mandelstam -> {},
+	SmallVariable -> False,
 	PDEHead->Identity
 }
 
 PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
-	Block[{ex, dim, res, head},
+	Block[{ex, dim, res, head, mandel, ruleNormal, ruleMandelstam, fad},
 
 		If[	OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
 		];
 
+		If[	FreeQ[ex,FeynAmpDenominator],
+			Return[ex]
+		];
+
+		ex = ex /. FeynAmpDenominator -> fad;
+
 		dim = OptionValue[Dimension];
 		head = OptionValue[PDEHead];
+		mandel = OptionValue[Mandelstam];
 
-		res = ex //. {
-			PropagatorDenominator[a_  /; !FreeQ[a, Momentum] ,b_] :>
-			(1/Expand[ExpandScalarProduct[Pair[a, a]] - b^2]),
-
-			PropagatorDenominator[a_  /; FreeQ[a, Momentum] ,b_] :>
-			(1/Expand[ExpandScalarProduct[Pair[Momentum[a], Momentum[a]]] - b^2])
+		ruleNormal = {
+			PropagatorDenominator[a_ ,b_] :>
+			(1/Expand[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2])
 		};
 
-		If[dim===False,
-			res = res /. FeynAmpDenominator[c___] :> head[Times[c]],
-			res = res /. FeynAmpDenominator[c___] :> head[ChangeDimension[Times[c],dim]]
+		ruleMandelstam = {
+			PropagatorDenominator[a_ ,b_] :>
+			(1/TrickMandelstam[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2, mandel])
+		};
+
+		If[	mandel==={},
+			res = ex //. ruleNormal,
+			res = ex //. ruleMandelstam
 		];
+
+		If[	OptionValue[SmallVariable],
+			res = res /. fad[c___]:> (fad[c]/.SmallVariable[_]:>0)
+		];
+
+		If[	dim===False,
+			res = res /. fad[c___] :> head[Times[c]],
+			res = res /. fad[c___] :> head[ChangeDimension[Times[c],dim]]
+		];
+
+		res = res /. fad -> FeynAmpDenominator;
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
+
 	];
 
 FCPrint[1,"PropagatorDenominatorExplicit.m loaded."];
