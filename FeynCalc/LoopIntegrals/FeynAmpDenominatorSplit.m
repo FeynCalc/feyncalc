@@ -32,7 +32,8 @@ Begin["`FeynAmpDenominatorSplit`Private`"]
 Options[FeynAmpDenominatorSplit]={
 	FCI -> False,
 	FCE -> False,
-	Momentum -> All
+	Momentum -> All,
+	MomentumExpand -> True
 };
 
 FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
@@ -44,6 +45,10 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 		];
 
 		momList = OptionValue[Momentum];
+
+		If[	OptionValue[MomentumExpand],
+			res = res/. f_FeynAmpDenominator :> MomentumExpand[f]
+		];
 
 		If[ momList=!=All && Head[momList]===List,
 			res = res /. FeynAmpDenominator[props__] :> fad[SelectFree[{props},Sequence@@momList]]*
