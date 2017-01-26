@@ -701,6 +701,9 @@ Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
 Options[Polarization] = {Transversality -> False};
 
+
+(* 	TODO Explicit syntax checks in the definitions of core objects are too expensive :(
+	Instead we should use a syntax checker function that will be applied to the given expression *)
 DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};

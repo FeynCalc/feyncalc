@@ -212,8 +212,13 @@ feynampback[a__] :=
 		Union[Cases[{a}, Momentum[_, dim_: 4] :> dim, Infinity]],
 		{D},
 		FAD @@ ({a} /. PropagatorDenominator -> propd),
+
 		{4},
 		FAD[Sequence @@ ({a} /. PropagatorDenominator -> propd),Dimension->4],
+		(* special case for PD[0,_] *)
+		({} && !FreeQ[a,PD[0,_]]),
+		FAD @@ ({a} /. PropagatorDenominator -> propd),
+
 		_,
 		Message[FCE::feynamp,ToString[{a},InputForm]];
 		FeynAmpDenominator[a]

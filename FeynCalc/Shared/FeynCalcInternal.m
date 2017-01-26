@@ -108,7 +108,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SPE :> spe,
 			SO :> so,
 			SOD :> sod},
-			{PropagatorDenominator :> propagatorD},
+			(*{PropagatorDenominator :> propagatorD},*)
 			{ScalarProduct :> scalarP},
 			{Dot -> DOT},
 			{ChiralityProjector[1] :> DiracGamma[6]},
@@ -218,7 +218,7 @@ fourV[x_,y_, OptionsPattern[]]:=
 fourV[x_, y_, OptionsPattern[]] :=
 	Pair[LorentzIndex[y,OptionValue[Dimension]],
 	Momentum[x,OptionValue[Dimension]]]/; FreeQ[x, Plus];
-
+(*
 propagatorD[x_] :=
 	propagatorD[x, 0] /; FreeQ2[x, {Pattern, Pair, ScalarProduct}];
 
@@ -230,7 +230,7 @@ propagatorD[x_, y_] := (propagatorD[x, y] =
 
 propagatorD[x_, y_] :=
 	PropagatorDenominator[x, y] /; (MomentumExpand[x] === x);
-
+*)
 sunTint[x__] :=
 	sunT[x] /. sunT -> SUNT;
 
