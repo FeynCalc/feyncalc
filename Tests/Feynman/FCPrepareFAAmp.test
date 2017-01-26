@@ -20,6 +20,6 @@ FeynArts`FAPropagatorDenominator[Momentum[P, D],
 MW Sqrt[FeynArts`FAGaugeXi[W]]],
 FeynArts`FAPropagatorDenominator[Momentum[k, D],
 m]] // FCPrepareFAAmp","FeynAmpDenominator[
-PropagatorDenominator[Momentum[P, D], MW Sqrt[GaugeXi[W]]],
-PropagatorDenominator[Momentum[k, D], m]]"}
+PropagatorDenominator[Momentum[P], MW Sqrt[GaugeXi[W]]],
+PropagatorDenominator[Momentum[k], m]]"}
 };

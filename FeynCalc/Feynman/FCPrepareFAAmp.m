@@ -92,13 +92,13 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					FeynArts`IndexDelta[a_SUNFIndex, b_SUNFIndex]:> SUNFDelta[a,b],
 					FeynArts`IndexDelta[a_, b_]/; Head[a]=!=SUNFindex && Head[b]=!=SUNFIndex :> SUNFDelta[SUNFIndex[a],SUNFIndex[b]],
 					FeynArts`FAFeynAmp :> FeynAmp,
-					FeynArts`FAFeynAmpDenominator[x__] :> (FeynAmpDenominator[x]/.FeynArts`FAPropagatorDenominator :> PropagatorDenominator),
+					FeynArts`FAFeynAmpDenominator[x__] :> (FeynAmpDenominator@@({x}/. z_Momentum:>z[[1]]/.FeynArts`FAPropagatorDenominator[a_,b_] :> PropagatorDenominator[Momentum[a],b])),
 					FeynArts`FAGaugeXi :> GaugeXi,
 					FeynArts`FANonCommutative :> DOT,
 					FeynArts`FermionChain :> DOT,
 					FeynArts`MatrixTrace :> DiracTrace
 					}];
-		replist3 = {FeynArts`FAPropagatorDenominator[x__] :> FeynAmpDenominator[PropagatorDenominator[x]]};
+		replist3 = {FeynArts`FAPropagatorDenominator[x_,y_] :> FeynAmpDenominator[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y]]};
 		temp = expr //. replist0 //. replist1 //. replist2 //. replist3;
 
 		If[	OptionValue[SMP],
