@@ -505,5 +505,14 @@ PropagatorDenominator[Momentum[q, D], 0],
 PropagatorDenominator[Momentum[q, D], 0],
 PropagatorDenominator[Momentum[q, D], 0],
 PropagatorDenominator[Momentum[q, D], 0]]"},
-{"fcstNPointTo4Point-ID3", "NPointTo4Point[0, q]", "0"}
+{"fcstNPointTo4Point-ID3", "NPointTo4Point[0, q]", "0"},
+{"fcstNPointTo4Point-ID4",
+"NPointTo4Point[
+FCI[FVD[q, mu] FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}, {q + p3,m3}, {q + p4, m4}]], q]", "
+FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m0],
+PropagatorDenominator[Momentum[p1, D] + Momentum[q, D], m1],
+PropagatorDenominator[Momentum[p2, D] + Momentum[q, D], m2],
+PropagatorDenominator[Momentum[p3, D] + Momentum[q, D], m3],
+PropagatorDenominator[Momentum[p4, D] + Momentum[q, D], m4]] Pair[
+LorentzIndex[mu, D], Momentum[q, D]]"}
 })

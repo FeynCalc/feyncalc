@@ -93,8 +93,8 @@ NPointTo4Point[pref_. fad_FeynAmpDenominator,qu_, OptionsPattern[]]:=
 			];
 		];
 
-		If[ Length[List@@fad]=!=5 && !FreeQ[pref,qu],
-			pref fad
+		If[ Length[List@@fad]=!=5 || !FreeQ[pref,qu],
+			Return[pref fad]
 		];
 
 		FCPrint[0,"NPointTo4Point: The reduction of the scalar 5-point function ", fad ,"is valid only if \
