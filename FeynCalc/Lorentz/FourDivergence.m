@@ -98,7 +98,7 @@ fourDerivative[x_, a_, b__] :=
 
 fourDerivative[x_, ve_]:=
 	Block[{	nx = x,p ,mu,linCombHide={},linCombShow={},
-			uList,sList,repRule, deriv,null1,null2,un},
+			uList,sList,repRule, deriv,null1,null2,un, fad, pd},
 			(* check the we are differentiating w.r.t a vector	*)
 		If [!MatchQ[ve,Pair[_. Momentum[_,_:4]+ _:0,_:4]],
 			Message[FourDivergence::notvec, ve];
@@ -148,13 +148,15 @@ fourDerivative[x_, ve_]:=
 			nx = FeynAmpDenominatorSplit[nx]
 		];
 
+
+
 		(* This is the main part	*)
 
-		nx = D[nx, p] /. Derivative -> deriv;
+		nx = D[nx /.FeynAmpDenominator->fad /. PropagatorDenominator->pd, p] /. Derivative -> deriv;
 		uList = Cases[nx+null1+null2,deriv[a___][b___][c___],Infinity]//Union;
 (*FourDivergence[FCI[GSD[q]], FVD[q, mu]] // StandardForm*)
-		sList = uList /. (deriv[__][FeynAmpDenominator][__]) :> 1 /. {
-			deriv[1,0][PD][pe_,b_] :> (-2 Pair[pe,mu] FeynAmpDenominator[PD[pe, b], PD[pe, b]]),
+		sList = uList /. (deriv[__][fad][__]) :> 1 /. {
+			deriv[1,0][pd][pe_,b_] :> (-2 Pair[pe,mu] fad[pd[pe, b], pd[pe, b]]),
 			deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
 			deriv[0, 1][Pair][a_, p] :> Pair[a, mu] ,
 			deriv[1,0][DiracGamma][p,dim_] :> DiracGamma[mu,dim] ,
@@ -166,7 +168,7 @@ fourDerivative[x_, ve_]:=
 
 		repRule = MapIndexed[(Rule[#1, First[sList[[#2]]]]) &, uList];
 
-		nx = nx/.Dispatch[repRule]/.Dispatch[linCombShow];
+		nx = nx/.Dispatch[repRule]/.Dispatch[linCombShow]/. pd -> PropagatorDenominator /.fad->FeynAmpDenominator;
 
 		nx
 	];

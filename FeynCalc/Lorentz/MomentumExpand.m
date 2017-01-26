@@ -38,7 +38,8 @@ fourvecev[y_,dim_:4] :=
 		];
 
 MomentumExpand[expr_] :=
-	expr /.Spinor -> spinor /. Pair-> pair /. Momentum -> fourvecev /. fourvecevlin -> Momentum /. pair -> Pair /. spinor ->Spinor;
+	expr  /. FeynAmpDenominator -> fad /. PropagatorDenominator -> pd /.Spinor -> spinor /. Pair-> pair /. Momentum -> fourvecev /. fourvecevlin -> Momentum /. pair -> Pair /.
+		spinor ->Spinor  /. pd -> PropagatorDenominator /. fad -> FeynAmpDenominator;
 
 FCPrint[1,"MomentumExpand.m loaded."];
 End[]

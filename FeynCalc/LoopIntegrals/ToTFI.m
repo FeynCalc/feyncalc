@@ -236,8 +236,8 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 								r
 							]
 						];
-					t1 = t0 /. PropagatorDenominator -> prtoci /.
-								{FeynAmpDenominator[a__] :> Apply[Times, {a}] ,
+					t1 = t0 /. FeynAmpDenominator[a__] :> Apply[Times, {a}] /. PropagatorDenominator -> prtoci /.
+								{
 								Pair[Momentum[OPEDelta,___], Momentum[q1, ___]] :> dq1,
 								Pair[Momentum[OPEDelta,___], Momentum[q2, ___]] :> dq2,
 								Pair[Momentum[p,___], Momentum[q1, ___]] :> pq1,

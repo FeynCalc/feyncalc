@@ -133,8 +133,7 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 
 		basisElementsOrig = {Join[sprods[[1]],props[[1]]],Join[sprods[[2]],props[[2]]]};
 
-		basisElements = basisElementsOrig/.
-			FeynAmpDenominator[PD[x__]]:> 1/(PropagatorDenominatorExplicit[PD[x]]);
+		basisElements = fdsInvert[basisElementsOrig];
 
 		availableDims = Intersection[Union[Cases[basisElements, Momentum[_, dim_: 4] :> dim, Infinity]],dims];
 
@@ -366,7 +365,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 fdsInvert[x_]:=
-	(x/.f_FeynAmpDenominator:> 1/PropagatorDenominatorExplicit[f]);
+	(x/.f_FeynAmpDenominator:> 1/PropagatorDenominatorExplicit[f, FCI->True]);
 
 propCheck[x_]:=
 	MatchQ[#, ((c_. FeynAmpDenominator[__])/;FreeQ[c, Pair])|((c_. Pair[__])/;FreeQ[c, Pair])|(c_/;FreeQ[c, Pair])]&/@(List@@(Expand2[x, Pair]+null) /.

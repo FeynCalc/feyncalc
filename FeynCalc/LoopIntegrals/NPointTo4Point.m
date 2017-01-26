@@ -117,7 +117,7 @@ all the IR divergences were explicitly regularized with fictitious masses!", FCD
 
 		pp[a_, b_] := Expand[(a /. m_Momentum :> m[[1]]) - qu];
 
-		pl = Rest[List@@(fad /. PropagatorDenominator -> pp)];
+		pl = Rest[fad /. FeynAmpDenominator->List /. PropagatorDenominator -> pp];
 
 		If[	FCGramDeterminant[pl]===0,
 			FCPrint[1,"NPointTo4Point: Zero Gram determinant encountered. Returning unevaluated result.", FCDoControl->nptfpVerbose];
@@ -126,7 +126,7 @@ all the IR divergences were explicitly regularized with fictitious masses!", FCD
 
 		FCPrint[3,"NPointTo4Point: pl: ", pl, FCDoControl->nptfpVerbose];
 
-		ml = List @@ (fad /. pd_PropagatorDenominator :> pd[[2]]);
+		ml = fad /. FeynAmpDenominator->List /. pd_PropagatorDenominator :> pd[[2]];
 		FCPrint[3,"NPointTo4Point: ml: ", ml, FCDoControl->nptfpVerbose];
 
 		(*Extract the determinant*)
