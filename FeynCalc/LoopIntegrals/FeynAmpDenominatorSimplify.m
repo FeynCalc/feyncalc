@@ -45,6 +45,7 @@ Begin["`Package`"]
 
 lenso
 feynsimp
+feynord
 
 End[]
 

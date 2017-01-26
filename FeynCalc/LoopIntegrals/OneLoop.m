@@ -207,8 +207,8 @@ OneLoop[qq_,amp_, opts:OptionsPattern[]] :=
 
 OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 	Block[ {oneamp, iv,onemandel, denf, denorder, denprop,
-			isolateNames,tric, smallv,finalSubstitutions,writeOut,prop,dnq,dfsor,
-			dfsorb, denomOrder,	vcid,intcan, tostandmat, vva,isol,i,
+			isolateNames,tric, smallv,finalSubstitutions,writeOut,
+			intcan, tostandmat, vva,isol,i,
 			$higherpoint, pva,pvar,arglist,npref, formatType, prode,
 			collpav,simpit,prefactor, newprefactor, newnewprefactor,
 			defs, dim, name = grname, newoneamp,ip,lenneu, parf, newamp,
@@ -443,7 +443,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			oneamp = oneamp/.FeynAmpDenominator->dnq/.dnq->FeynAmpDenominator/. PD->prode;
 
 			*)
-
+			(*
 			dfsor[ve_,ma_] :=
 				defs[ma][ve]//MomentumExpand;
 			dfsorb[a_][b_] :=
@@ -482,13 +482,14 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 					];
 					FeynAmpDenominator@@dfli
 				];
-
+			*)
 			(* ********************************************************************* *)
 			(*                          oneloop17                                    *)
 			(* ********************************************************************* *)
+			(*
 			vcid[pe_,___] :=
 				pe;
-
+			*)
 			(* for translating the integration variable q in the first propagator *)
 
 			intcan[x_] :=
@@ -504,13 +505,13 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 				(SelectFree[x, q] intcan[SelectNotFree[x,q]]) /;SelectFree[x, q] =!= 1;
 
 			intcan[any_. FeynAmpDenominator[PD[p_ + Momentum[q,dim], m1_],dfrest___ ]] :=
-				denomExpand[ ( any FeynAmpDenominator[PD[ p + Momentum[q,dim],m1], dfrest])/.q->( q - (p/.Momentum->vcid))];
+				denomExpand[ ( any FeynAmpDenominator[PD[ p + Momentum[q,dim],m1], dfrest])/.q->( q - (p/. mom_Momentum:>First[mom]))];
 
 			(*  bringing the denominator in a canonical form                         *)
 
 			(* ONEAMPCHANGE : fixing all denominators , evtl. ordering *)
 			oneamp = denomExpand[ oneamp ];
-			oneamp = denomExpand[ oneamp ]/.FeynAmpDenominator->denomOrder;
+			oneamp = denomExpand[ oneamp ] /. FeynAmpDenominator :> FeynCalc`Package`feynord[{q}];
 			oneamp = (intcan[oneamp//MomentumExpand]//MomentumExpand)/. intcan->Identity;
 			oneamp = Map[(Numerator[#]/Factor2[Denominator[#]])&, oneamp + null1];
 			oneamp = oneamp/.null1->0;
@@ -808,7 +809,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 
 				(* order the denominators again *)
 				If[ denorder === True,
-					oneamp = denomExpand[ oneamp ]/.FeynAmpDenominator->denomOrder
+					oneamp = denomExpand[ oneamp ]
 				];
 				oneamp = (intcan[oneamp//MomentumExpand]//ExpandScalarProduct)/. intcan->Identity;
 			];
@@ -2344,10 +2345,7 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 					FCPrint[3, "OneLoop: tdec: tdecenew ", tdecnew, FCDoControl->oneloopVerbose];
 
 					(* if the option DenominatorOrder is True, then order here again *)
-					If[ denomOrder === True,
-						pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]],
-						pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
-					];
+					pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]];
 
 					FCPrint[3, "OneLoop: tdec: pav0: ", pav0, FCDoControl->oneloopVerbose];
 					(* Reduction of PaVe functions into simpler ones... *)
