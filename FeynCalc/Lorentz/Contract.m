@@ -724,17 +724,27 @@ contractLongLong[lon_, shor_Plus] :=
 
 
 (* local easy contraction rules *) (* paird *)
+
+SetAttributes[{pairsave, pair2,fdi}, Orderless];
+
 fdi[] = 4;
+
 fdi[_Symbol] :=
 	4;
-fdi[xx_Symbol, xx_Symbol] :=
+
+fdi[xx_, xx_] :=
 	xx;
+
 fdi[4, _Symbol] :=
 	4;
-fdi[_Symbol, 4] :=
-	4;
 
-SetAttributes[{pairsave, pair2}, Orderless];
+fdi[4, _Symbol- 4] :=
+	0;
+
+fdi[xx_Symbol- 4, xx_] :=
+	xx - 4;
+
+
 pairsave[a_, b_] :=
 	pairsave[a, b] =
 	If[ FreeQ[{a,b},LorentzIndex],

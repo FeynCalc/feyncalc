@@ -332,8 +332,11 @@ Tests`Lorentz`fcstContractBMHV = {
 {"fcstContractBMHV-ID51","Contract[GA[mu] FVE[p, mu]]","0"},
 {"fcstContractBMHV-ID52","Contract[GAE[mu] FVD[p, mu]]","DiracGamma[Momentum[p, -4 + D], -4 + D]"},
 {"fcstContractBMHV-ID53","Contract[GAE[mu] FV[p, mu]]","0"},
-{"fcstContractBMHV-ID54","Contract[GAE[mu] FVE[p, mu]]","DiracGamma[Momentum[p, -4 + D], -4 + D]"}
-
+{"fcstContractBMHV-ID54","Contract[GAE[mu] FVE[p, mu]]","DiracGamma[Momentum[p, -4 + D], -4 + D]"},
+{"fcstContractBMHV-ID55","Contract[MTD[Lor1, Lor2] MTD[Lor1,i] (FVD[k, Lor6] MTD[Lor2, Lor4] +
+	FVD[k, Lor4] MTD[Lor2, Lor6]) MTD[Lor3, Lor4] MTD[Lor5,
+Lor6] (FVE[k, Lor5] MTE[Lor3, i] + FVD[k, Lor3] MTE[Lor5, i])]//FCE",
+"(-4 + D) SPD[k, k] + 2 SPE[k, k] + (-4 + D) SPE[k, k]"}
 };
 
 Tests`Lorentz`fcstContractContractionsUpperLower = {
