@@ -735,87 +735,28 @@ FormBox[\"d\", TraditionalForm], \")\"}], TraditionalForm]}]]"},
 "FormBox[\"i\", TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID127",
 "MakeBoxes[FAD[p], TraditionalForm]",
-"FormBox[FractionBox[\"1\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \
-\"[\"p^2\"]\", Editable -> False]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",InterpretationBox[SuperscriptBox[\"p\",\"2\"],p^2,Editable->False]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID128",
 "MakeBoxes[FAD[p, q], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \
-\"[\"p^2\"]\", Editable -> False], \")\"}], \".\", RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"q\", \"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \
-\"[\"q^2\"]\", Editable -> False], \")\"}]}]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",RowBox[{InterpretationBox[SuperscriptBox[\"p\",\"2\"],p^2,Editable->False],\".\",InterpretationBox[SuperscriptBox[\"q\",\"2\"],q^2,Editable->False]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID129",
 "MakeBoxes[FAD[p, -l + q], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \
-\"[\"p^2\"]\", Editable -> False], \")\"}], \".\", RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[RowBox[{\"(\", RowBox[{\"q\", \"-\", \"l\"}], \")\"}], \
-\"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"(-l + q)^2\"]\", \
-Editable -> False], \")\"}]}]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",RowBox[{InterpretationBox[SuperscriptBox[\"p\",\"2\"],p^2,Editable->False],\".\",InterpretationBox[SuperscriptBox[RowBox[{\"(\",RowBox[{\"q\",\"-\",\"l\"}],\")\"}],\"2\"],(-l+q)^2,Editable->False]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID130",
 "MakeBoxes[FAD[{p, m}], TraditionalForm]",
-"FormBox[FractionBox[\"1\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \
-\"\[InvisibleSpace]\", SuperscriptBox[\"m\", \"2\"], \"\
-\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"p^2\"-\"m^2\"]\", Editable \
--> False]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",InterpretationBox[RowBox[{SuperscriptBox[\"p\",\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],p^2\"-\"m^2,Editable->False]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID131",
 "MakeBoxes[FAD[{p, m}, {q, m}], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \
-\"\[InvisibleSpace]\", SuperscriptBox[\"m\", \"2\"], \"\
-\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"p^2\"-\"m^2\"]\", Editable \
--> False], \")\"}], \".\", RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"q\", \"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \
-\"\[InvisibleSpace]\", SuperscriptBox[\"m\", \"2\"], \"\
-\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"q^2\"-\"m^2\"]\", Editable \
--> False], \")\"}]}]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",RowBox[{RowBox[{\"(\",InterpretationBox[RowBox[{SuperscriptBox[\"p\",\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],p^2\"-\"m^2,Editable->False],\")\"}],\".\",RowBox[{\"(\",InterpretationBox[RowBox[{SuperscriptBox[\"q\",\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],q^2\"-\"m^2,Editable->False],\")\"}]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID132",
 "MakeBoxes[FAD[{p, m}, {-l + q, m}], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \
-\"\[InvisibleSpace]\", SuperscriptBox[\"m\", \"2\"], \"\
-\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"p^2\"-\"m^2\"]\", Editable \
--> False], \")\"}], \".\", RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[RowBox[{\"(\", RowBox[{\"q\", \"-\", \"l\"}], \")\"}], \
-\"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"m\", \"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \
-\"[\"(-l + q)^2\"-\"m^2\"]\", Editable -> False], \")\"}]}]], \
-TraditionalForm]"},
+"FormBox[FractionBox[\"1\",RowBox[{RowBox[{\"(\",InterpretationBox[RowBox[{SuperscriptBox[\"p\",\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],p^2\"-\"m^2,Editable->False],\")\"}],\".\",RowBox[{\"(\",InterpretationBox[RowBox[{SuperscriptBox[RowBox[{\"(\",RowBox[{\"q\",\"-\",\"l\"}],\")\"}],\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],(-l+q)^2\"-\"m^2,Editable->False],\")\"}]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID133",
 "MakeBoxes[FAD[{p, m}, q], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \
-\"\[InvisibleSpace]\", SuperscriptBox[\"m\", \"2\"], \"\
-\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"p^2\"-\"m^2\"]\", Editable \
--> False], \")\"}], \".\", RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"q\", \"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \
-\"[\"q^2\"]\", Editable -> False], \")\"}]}]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",RowBox[{RowBox[{\"(\",InterpretationBox[RowBox[{SuperscriptBox[\"p\",\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],p^2\"-\"m^2,Editable->False],\")\"}],\".\",InterpretationBox[SuperscriptBox[\"q\",\"2\"],q^2,Editable->False]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID134",
 "MakeBoxes[FAD[{p, m}, -l + q], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[\"p\", \"2\"], \"\[InvisibleSpace]\", \"\\\"-\\\"\", \
-\"\[InvisibleSpace]\", SuperscriptBox[\"m\", \"2\"], \"\
-\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"p^2\"-\"m^2\"]\", Editable \
--> False], \")\"}], \".\", RowBox[{\"(\", \
-InterpretationBox[RowBox[{\"\\\"[\\\"\", \"\[InvisibleSpace]\", \
-SuperscriptBox[RowBox[{\"(\", RowBox[{\"q\", \"-\", \"l\"}], \")\"}], \
-\"2\"], \"\[InvisibleSpace]\", \"\\\"]\\\"\"}], \"[\"(-l + q)^2\"]\", \
-Editable -> False], \")\"}]}]], TraditionalForm]"},
+"FormBox[FractionBox[\"1\",RowBox[{RowBox[{\"(\",InterpretationBox[RowBox[{SuperscriptBox[\"p\",\"2\"],\"\",\"\\\"-\\\"\",\"\",SuperscriptBox[\"m\",\"2\"]}],p^2\"-\"m^2,Editable->False],\")\"}],\".\",InterpretationBox[SuperscriptBox[RowBox[{\"(\",RowBox[{\"q\",\"-\",\"l\"}],\")\"}],\"2\"],(-l+q)^2,Editable->False]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID135",
 "MakeBoxes[FeynAmp[q, x], TraditionalForm]",
 "RowBox[{RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\
@@ -861,29 +802,6 @@ TraditionalForm]}]}], RowBox[{\"\[Integral]\", \
 RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q3\", \
 TraditionalForm]}]}], \"(\", FormBox[\"x\", TraditionalForm], \
 \")\"}], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID141",
-"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, 0]], \
-TraditionalForm]", "FractionBox[\"1\", SuperscriptBox[\"p\", \"2\"]]"},
-{"fcstSharedObjectsTypesetting-ID142",
-"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m]], \
-TraditionalForm]",
-"FractionBox[\"1\", RowBox[{SuperscriptBox[\"p\", \"2\"], \"-\", \
-SuperscriptBox[\"m\", \"2\"]}]]"},
-{"fcstSharedObjectsTypesetting-ID143",
-"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
-PropagatorDenominator[-p + q, 0]], TraditionalForm]",
-"FractionBox[\"1\", RowBox[{RowBox[{\"(\", RowBox[{SuperscriptBox[\
-\"p\", \"2\"], \"-\", SuperscriptBox[\"m\", \"2\"]}], \")\"}], \".\", \
-SuperscriptBox[RowBox[{\"(\", RowBox[{\"q\", \"-\", \"p\"}], \")\"}], \
-\"2\"]}]]"},
-{"fcstSharedObjectsTypesetting-ID144",
-"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
-PropagatorDenominator[-p + q, m]], TraditionalForm]",
-"FractionBox[\"1\", RowBox[{RowBox[{\"(\", RowBox[{SuperscriptBox[\
-\"p\", \"2\"], \"-\", SuperscriptBox[\"m\", \"2\"]}], \")\"}], \".\", \
-RowBox[{\"(\", RowBox[{SuperscriptBox[RowBox[{\"(\", RowBox[{\"q\", \
-\"-\", \"p\"}], \")\"}], \"2\"], \"-\", SuperscriptBox[\"m\", \
-\"2\"]}], \")\"}]}]]"},
 {"fcstSharedObjectsTypesetting-ID145",
 "MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]], TraditionalForm]",
 "FormBox[SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"a\"\
@@ -2471,18 +2389,6 @@ FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]]}]"},
 {"fcstSharedObjectsTypesetting-ID400",
 "MakeBoxes[PlusDistribution[x], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \"x\", \")\"}], \"+\"]"},
-{"fcstSharedObjectsTypesetting-ID401",
-"MakeBoxes[PropagatorDenominator[a, 0], TraditionalForm]",
-"FormBox[FractionBox[\"1\", SuperscriptBox[\"a\", \"2\"]], \
-TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID402",
-"MakeBoxes[PropagatorDenominator[a, b], TraditionalForm]",
-"FormBox[FractionBox[\"1\", RowBox[{SuperscriptBox[\"a\", \"2\"], \
-\"-\", SuperscriptBox[\"b\", \"2\"]}]], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID403",
-"MakeBoxes[c PropagatorDenominator[a, b], TraditionalForm]",
-"FormBox[FractionBox[\"c\", RowBox[{SuperscriptBox[\"a\", \"2\"], \
-\"-\", SuperscriptBox[\"b\", \"2\"]}]], TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID404",
 "MakeBoxes[QuantumField[f], TraditionalForm]",
 "FormBox[\"f\", TraditionalForm]"},

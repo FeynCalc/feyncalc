@@ -594,6 +594,10 @@ LorentzIndex::momentumhead =
 Pair::invalid =
 "`1` does not represent a valid Pair object!";
 
+SharedObjects::failmsg =
+"Error! FeynCalc has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
 
@@ -1009,7 +1013,7 @@ ExplicitSUNFIndex /:
 		ToBoxes[p, TraditionalForm];
 
 ff[{y_,z_}] :=
-	SequenceForm["[",y^2, "-", z^2,"]"];
+	SequenceForm[y^2, "-", z^2];
 
 ff[{y_,0}] :=
 	ff[y];
@@ -1018,7 +1022,7 @@ ff[{y_}] :=
 	ff[y];
 
 ff[y_/;Head[y]=!=List] :=
-	SequenceForm["[",y^2,"]"];
+	SequenceForm[y^2];
 
 FAD[-p_, opts:OptionsPattern[]] :=
 	FAD[p,opts];
@@ -1034,9 +1038,8 @@ FAD[a___,{_,_,0},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
 FAD[{_,_,0}, OptionsPattern[]]:=
 	1;
 
-FAD/:
-	MakeBoxes[FAD[a__,OptionsPattern[]], TraditionalForm]/; !MemberQ[{a},{_,_,_}]:=
-		ToBoxes[1/ (Apply[Dot,Map[ff, {a}]]/. Dot -> dootpow /. dootpow -> DOT), TraditionalForm];
+MakeBoxes[pref_. FAD[a__,OptionsPattern[]], TraditionalForm]:=
+	ToBoxes[pref/(Apply[DOT,Map[ff, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}];
 
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=
 	ToBoxes[a, TraditionalForm];
@@ -1054,13 +1057,13 @@ FeynAmp /:
 	MakeBoxes[FeynAmp[_[__], q__Symbol, amp_], TraditionalForm]:=
 		ToBoxes[FeynAmp[q,amp], TraditionalForm];
 
+MakeBoxes[f_. a_FeynAmpDenominator, TraditionalForm ] :=
+	ToBoxes[f FCE[a], TraditionalForm];
+
 
 FeynAmpDenominator[ar__List] :=
 	FeynAmpDenominator[ar] = FCI[FAD[ar]];
 
-MakeBoxes[f_. FeynAmpDenominator[a__], TraditionalForm ] :=
-	((MakeBoxes[#,TraditionalForm]&)@@{f/ Apply[DOT, Map[( #[[1]]^2 -
-	#[[2]]^2)&, ({a}/. {PD[0,0] -> PD["0",0]})]]});
 
 FourVector[a_,b_, OptionsPattern[]] :=
 	Pair[Momentum[a, OptionValue[Dimension]],
@@ -1873,16 +1876,10 @@ polVec[k_,mu_,glu_, opts:OptionsPattern[]] :=
 		fourv[Polarization[k, I, glu], mu, Dimension -> 4]
 	];
 
-
 PropagatorDenominator[a_ /; FCPatternFreeQ[{a}]] :=
 	PropagatorDenominator[a, 0];
 
-PropagatorDenominator/:
-	MakeBoxes[PropagatorDenominator[a_/;a=!=0, 0], TraditionalForm]:=
-		ToBoxes[1/a^2, TraditionalForm];
 
-MakeBoxes[f_. PropagatorDenominator[a_, b_/;b=!=0], TraditionalForm] :=
-	ToBoxes[f/(a^2-b^2), TraditionalForm];
 
 PD = PropagatorDenominator;
 
