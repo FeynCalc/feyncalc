@@ -13,9 +13,44 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Lorentz`fcstPairContract = {
-{"fcstPairContract-ID1","PairContract[0,x]","0"}
-}
+Tests`Lorentz`fcstPairContract =
+({
+{"fcstPairContract-ID1", "PairContract[0,x]", "0"},
+{"fcstPairContract-ID2",
+"PairContract[LorentzIndex[i],LorentzIndex[i]]", "4"},
+{"fcstPairContract-ID3",
+"PairContract[LorentzIndex[i,D],LorentzIndex[i,D]]", "D"},
+{"fcstPairContract-ID4",
+"PairContract[LorentzIndex[i,D-4],LorentzIndex[i,D-4]]",
+"-4 + D"},
+{"fcstPairContract-ID5",
+"PairContract[LorentzIndex[i,D],LorentzIndex[i]]", "4"},
+{"fcstPairContract-ID6",
+"PairContract[LorentzIndex[i,D-4],LorentzIndex[i]]", "0"},
+{"fcstPairContract-ID7",
+"PairContract[LorentzIndex[i,D-4],LorentzIndex[i,D]]", "-4 + D"},
+{"fcstPairContract-ID8",
+"PairContract[LorentzIndex[i,D1],LorentzIndex[i,D2]]",
+"PairContract[LorentzIndex[i, D1], LorentzIndex[i, D2]]"},
+{"fcstPairContract-ID9", "PairContract[Momentum[p],Momentum[p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPairContract-ID10",
+"PairContract[Momentum[p,D],Momentum[p,D]]",
+"Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstPairContract-ID11",
+"PairContract[Momentum[p,D-4],Momentum[p,D-4]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPairContract-ID12", "PairContract[Momentum[p,D],Momentum[p]]",
+	"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPairContract-ID13",
+"PairContract[Momentum[p,D-4],Momentum[p]]", "0"},
+{"fcstPairContract-ID14",
+"PairContract[Momentum[p,D-4],Momentum[p,D]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPairContract-ID15",
+"PairContract[Momentum[p,D1],Momentum[p,D2]]",
+"Pair[Momentum[p, D1], Momentum[p, D2]]"}
+});
 
 Tests`Lorentz`fcstPairContract3 = {
 {"fcstPairContract3-ID1","SP[p, p] = (a + b)^2; \n tmp = PairContract3[Momentum[p], Momentum[p]]; \n
