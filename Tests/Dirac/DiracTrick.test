@@ -1196,7 +1196,10 @@ GAE[i9] . GAE[i10] . GAE[i11]*SP[p, p] - GAE[i1] . GAE[i2] . GAE[i3] \
 . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . \
 GAE[i10] . GAE[i11]*SPE[p, p]"},
 {"fcstDiracTrickCoreProperties-ID118",
-"DiracTrick[GA[i, j].FCNCA.GA[i, j]] // FCE", "GA[i] . GA[j] . FCNCA . GA[i] . GA[j]"}
+"DiracTrick[GA[i, j].FCNCA.GA[i, j]] // FCE", "GA[i] . GA[j] . FCNCA . GA[i] . GA[j]"},
+{"fcstDiracTrickCoreProperties-ID119",
+"MatchQ[DiracTrick[#, FCDiracIsolate -> False, FCI -> True] & /@
+Table[DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[mu]], {i, 1, 10000}], {4 ..}]", "True"}
 });
 
 Tests`Dirac`fcstDiracTrick = {

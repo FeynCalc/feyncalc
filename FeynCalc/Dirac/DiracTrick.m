@@ -121,35 +121,50 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 		If[	OptionValue[FCDiracIsolate],
 			(*	This is the standard mode for calling DiracTrick	*)
-
+			FCPrint[1,"DiracTrick: Normal mode.", FCDoControl->diTrVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],LorentzIndex->True];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
 			FCPrint[3,"DiracTrick: freePart: ",freePart , FCDoControl->diTrVerbose];
+			FCPrint[1, "DiracTrick: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
 			FCPrint[3,"DiracTrick: diracObjects: ",diracObjects , FCDoControl->diTrVerbose];
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Applying diracTrickEval", FCDoControl->diTrVerbose];
+
 			diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];
-			FCPrint[3,"DiracTrace: After diracTrickEval: ", diracObjectsEval, FCDoControl->diTrVerbose];
-			FCPrint[1,"DiracTrace: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrick: After diracTrickEval: ", diracObjectsEval, FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrick: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
 			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracTrickEval,holdDOT}],
 				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
-
+			FCPrint[1, "DiracTrick: Inserting Dirac objects back.", FCDoControl->diTrVerbose];
+			time=AbsoluteTime[];
 			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
 			FCPrint[3,"DiracTrick: repRule: ",repRule , FCDoControl->diTrVerbose];
-			res = freePart + ( dsPart/.repRule),
+			res = freePart + ( dsPart/.repRule);
+			FCPrint[1, "DiracTrick: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose],
 
+			FCPrint[1,"DiracTrick: Fast mode.", FCDoControl->diTrVerbose];
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
-			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval;
+			res = diracTrickEvalFast[ex];
+
+			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
+
+			FCPrint[3,"DiracTrick: After diracTrickEvalFast: ", res , FCDoControl->diTrVerbose];
+
+			If[ !FreeQ2[res,{DiracHeadsList,diracTrickEvalFast}],
+				res = res /. diracTrickEvalFast->diracTrickEval
+			];
 
 			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval,holdDOT}],
 				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
@@ -162,7 +177,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Expanding the result.", FCDoControl->diTrVerbose];
 			res = Expand[res];
-			FCPrint[1,"DiracTrace: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrick: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: After expanding: ", res, FCDoControl->diTrVerbose]
 		];
 
@@ -172,11 +187,20 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		res
 	];
 
+(* Here we can quickly handle trivial contractions of short expressions *)
+
 diracTrickEvalFast[ex:DiracGamma[__]]:=
 	ex/; !insideDiracTrace
 
-diracTrickEvalFast[DOT[x__DiracGamma]]:=
+diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
+	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
+	(Sort[Cases[{x,y}, (LorentzIndex | Momentum)[a_, ___] :> a, Infinity]] === Union[Cases[{x,y}, (LorentzIndex | Momentum)[a_, ___] :> a, Infinity]])  && !insideDiracTrace;
+
+diracTrickEvalFast[x_DiracGamma]:=
 	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]] && insideDiracTrace;
+
+diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
+	0/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x,y}]] && insideDiracTrace;
 
 diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[5],y___DiracGamma]]:=
 	0/; Length[{x,y}]<4 && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && insideDiracTrace;
@@ -190,6 +214,20 @@ diracTrickEvalFast[DiracGamma[5]]:=
 diracTrickEvalFast[DiracGamma[6|7]]:=
 	1/2/; insideDiracTrace;
 
+diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex], DiracGamma[l_LorentzIndex], d___]] :=
+	4 diracTrickEvalFast[DOT[ b,d ]];
+
+diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex, dim_], DiracGamma[l_LorentzIndex, dim_], d___]] :=
+	dim diracTrickEvalFast[DOT[ b,d ]];
+
+diracTrickEvalFast[DOT[]]:=
+	1;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ]] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracTrickEvalFast[DOT[b,d]];
+
+diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum, dim_], d___]] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracTrickEvalFast[DOT[b,d]];
 
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 	Which[
@@ -285,7 +323,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify ", FCDoControl->diTrVerbose];
 			res = diracTraceSimplify[res] /. DOT -> holdDOT /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/.
 			diracTraceSimplify -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
-			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrick: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose],
 			res = res /. DOT -> holdDOT;
 		];
@@ -342,7 +380,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 						Abort[]
 			];
 
-			FCPrint[1,"DiracTrace: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrick: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After chiralTrick ", res, FCDoControl->diTrVerbose];
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}]
 		];
@@ -416,7 +454,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			res = res  /. {dsHead[DiracGamma[5]] :> 0, dsHead[DiracGamma[6|7]] :> 1/2 } /. DOT-> holdDOT/.
 			dsHead[holdDOT[x__]] :>  diracTraceSimplify[x];
 			res = res /. diracTraceSimplify -> DOT /. dsHead-> Identity /. holdDOT -> DOT;
-			FCPrint[1,"DiracTrace: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrick: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose]
 		];
 
