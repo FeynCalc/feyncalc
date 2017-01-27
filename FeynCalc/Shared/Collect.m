@@ -147,6 +147,7 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		nx = nx/. holdForm[k_[ii_]] -> lk[k][ii];
 
+		time=AbsoluteTime[];
 		If[ factoring === False,
 			FCPrint[1,"Collect2: No factoring.", FCDoControl->cl2Verbose];
 			(* 	This can speed things up, if the expression contains very large sums free of
@@ -164,6 +165,7 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 				holdForm[Plus[x]];
 			nx = nx /. Plus -> fr0 /. fr0 -> frx
 		];
+		FCPrint[1,"Collect2: Factoring part done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		If[ expanding =!= False,
 			time=AbsoluteTime[];
