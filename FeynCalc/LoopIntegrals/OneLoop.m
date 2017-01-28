@@ -2317,7 +2317,7 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 				(* calculate the List of scalar products needed as arguments *)
 
 				(* get the list of p's from the propagators, ignoring the first propagator *)
-				tdecpl = Drop[ Expand[ props//MomentumExpand] /. FeynAmpDenominator->List /. PD->tensdf1,1 ]//DiracGammaCombine;
+				tdecpl = Drop[ Expand[ props//MomentumExpand] /. FeynAmpDenominator->List /. PD->tensdf1,1 ]//DiracGammaCombine[#,FCI->True]&;
 				tdecpl = Expand[tdecpl];
 				FCPrint[2, "tdecpl = ", tdecpl, FCDoControl->oneloopVerbose];
 

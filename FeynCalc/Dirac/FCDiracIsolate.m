@@ -89,7 +89,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[	OptionValue[DiracGammaCombine],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DiracGammaCombine.", FCDoControl->fcdiVerbose];
-			ex = DiracGammaCombine[ex];
+			ex = DiracGammaCombine[ex, FCI->True];
 			FCPrint[1, "FCDiracIsolate: Done applying DiracGammaCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
 		];
 

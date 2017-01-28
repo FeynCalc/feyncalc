@@ -1,0 +1,33 @@
+
+
+(* :Title: DiracGammaCombine.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracGammaCombine			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracGammaCombine =
+({
+{"fcstDiracGammaCombine-ID1",
+"DiracGammaCombine[GS[p]+GS[q],FCE\[Rule]True]", "GS[p + q]"},
+{"fcstDiracGammaCombine-ID2",
+"DiracGammaCombine[GS[p]+GSD[q],FCE\[Rule]True]", "GS[p] + GSD[q]"},
+{"fcstDiracGammaCombine-ID3",
+"DiracGammaCombine[GS[p]+GS[q]+m,FCE\[Rule]True]", "m + GS[p + q]"},
+{"fcstDiracGammaCombine-ID4",
+"DiracGammaCombine[GA[i].(GS[p]+GS[q]+m).GA[j],FCE\[Rule]True]",
+"GA[i] . (m + GS[p + q]) . GA[j]"},
+{"fcstDiracGammaCombine-ID5",
+"DiracGammaCombine[GA[i].(2GS[p]+3GS[q]+m).GA[j],FCE\[Rule]True]",
+"GA[i] . (m + GS[2*p + 3*q]) . GA[j]"},
+{"fcstDiracGammaCombine-ID6",
+"DiracGammaCombine[GA[i].(2GS[p]+3GS[p]+m).GA[j],FCE\[Rule]True]",
+"GA[i] . (m + 5*GS[p]) . GA[j]"}
+});

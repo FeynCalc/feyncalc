@@ -45,6 +45,9 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstToDiracSigma*"])];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracGammaCombine*"])];
+
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracGammaExpand*"])];
 
 $BreitMaison = False;

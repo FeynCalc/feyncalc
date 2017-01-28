@@ -323,7 +323,7 @@ oldDiracSimplify[x_,opts:OptionsPattern[]] :=
 			ex = DiracSubstitute67[ex];
 		];
 
-		dre = Collect[DotSimplify[DiracTrick[DiracGammaCombine[ex]]]/.
+		dre = Collect[DotSimplify[DiracTrick[DiracGammaCombine[ex,FCI->True]]]/.
 		DOT->dooo,dooo[__]]/.dooo->DOT;
 		dre =  FixedPoint[ SpinorChainEvaluate[#,opts]&, dre, 142];
 		If[ !FreeQ[dre, Eps],
@@ -451,7 +451,7 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Doing index contractions.", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Contract indices in  ", diracdt, FCDoControl->dsVerbose];
 			If[ diracgasu === True,
-				diracdt = contractli[DiracGammaCombine[diracdt/.Pair->PairContract]](*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
+				diracdt = contractli[DiracGammaCombine[diracdt/.Pair->PairContract,FCI->True]](*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
 				diracdt = contractli[ diracdt ]
 			(*/. DOT->dS*)
 			];
