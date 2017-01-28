@@ -166,7 +166,7 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Checking the syntax", FCDoControl->dsVerbose];
 
-			If[	!FreeQ2[DotExpand[Expand2[DiracSigmaExplicit[ex],{DiracGamma,Spinor,SUNT}]],{
+			If[	!FreeQ2[DotExpand[Expand2[DiracSigmaExplicit[ex, FCI->True],{DiracGamma,Spinor,SUNT}]],{
 				DiracGamma[a__]*DiracGamma[b__],
 				DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*
 					DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
@@ -226,7 +226,7 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 		If[ !OptionValue[Expanding],
 			(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify.*)
 			If[ OptionValue[DiracSigmaExplicit],
-				ex = DiracSigmaExplicit[ex]
+				ex = DiracSigmaExplicit[ex,FCI->True]
 			];
 			ex = dotLin[ex];
 			If[ OptionValue[DiracEquation] && !FreeQ[ex,Spinor],
@@ -238,7 +238,7 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			FCPrint[3,"DiracSimplify: Doing contractions on ", ex, FCDoControl->dsVerbose];
 			ex = ex /. Pair -> PairContract;
 			If[ OptionValue[DiracSigmaExplicit],
-				ex = DiracSigmaExplicit[ex]
+				ex = DiracSigmaExplicit[ex, FCI->True]
 			];
 			FCPrint[1,"DiracSimplify: Done applying PairContract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			time=AbsoluteTime[];

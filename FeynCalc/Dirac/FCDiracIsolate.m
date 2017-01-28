@@ -82,7 +82,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[ OptionValue[DiracSigmaExplicit],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DiracSigmaExplicit.", FCDoControl->fcdiVerbose];
-			ex = DiracSigmaExplicit[ex];
+			ex = DiracSigmaExplicit[ex, FCI->True];
 			FCPrint[1, "FCDiracIsolate: Done applying DiracSigmaExplicit timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
 		];
 
