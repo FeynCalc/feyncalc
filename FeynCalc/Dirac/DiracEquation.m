@@ -42,7 +42,7 @@ DiracEquation[ex_, OptionsPattern[]] :=
 		];
 
 		(* If there are no spinors or no Dirac matrices, then we can't apply the Dirac equation	*)
-		If[	FreeQ[expr,Spinor] || FreeQ[expr,DiracGamma],
+		If[	FreeQ2[expr, {Spinor,DiracGamma}],
 			Return[expr];
 		];
 

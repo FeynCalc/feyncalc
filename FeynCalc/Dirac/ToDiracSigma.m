@@ -35,23 +35,25 @@ Options[ToDiracSigma] = {
 }
 
 ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
-	Block[{x = FCI[xx], y = FCI[yy], ex},
+	Block[{ x, y,  ex},
 
-	If[ OptionValue[FCI],
-			ex = expr,
-			ex = FCI[expr]
-	];
+		{x,y} = FCI[{xx,yy}];
 
-	If[ !MatchQ[x,DiracGamma[_]] || !MatchQ[y,DiracGamma[_]],
-		Message[ToDiracSigma::noddim];
-		Abort[]
-	];
+		If[ OptionValue[FCI],
+				ex = expr,
+				ex = FCI[expr]
+		];
 
-	ex = (ex /. DOT[a___, x, y, b___] :> (- I DOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] DOT[a, b]) /. DOT[] -> 1);
+		If[ !MatchQ[x,DiracGamma[_]] || !MatchQ[y,DiracGamma[_]],
+			Message[ToDiracSigma::noddim];
+			Abort[]
+		];
 
-	If[ OptionValue[DotSimplify],
-		ex = DotSimplify[ex]
-	];
+		ex = (ex /. DOT[a___, x, y, b___] :> (- I DOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] DOT[a, b]) /. DOT[] -> 1);
+
+		If[ OptionValue[DotSimplify],
+			ex = DotSimplify[ex]
+		];
 
 	ex
 

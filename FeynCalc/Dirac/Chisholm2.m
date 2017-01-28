@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 Chisholm2::usage =
-"Chisholm2[x] elininates products of two Dirac matrices and the 5th Dirac matrix \
+"Chisholm2[x] eliminates products of two Dirac matrices and the 5th Dirac matrix \
 by applying the Chisholm identity.";
 
 (* ------------------------------------------------------------------------ *)
