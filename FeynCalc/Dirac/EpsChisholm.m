@@ -27,8 +27,11 @@ End[]
 Begin["`EpsChisholm`Private`"]
 
 esVerbose::usage="";
+eeps::usage="";
 
 Options[EpsChisholm] = {
+	DiracTrick -> True,
+	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False
 };
@@ -36,7 +39,8 @@ Options[EpsChisholm] = {
 
 
 EpsChisholm[expr_, OptionsPattern[]] :=
-	Block[ {new = 0,ex,terms,rest,res},
+	Block[ {new = 0,ex,terms,rest,res, holdDOT, eps, freePart, dsPart, diracObjects,
+			diracObjectsEval, null1, null2, dsHead, time, repRule},
 
 		If [OptionValue[FCVerbose]===False,
 			esVerbose=$VeryVerbose,
@@ -57,50 +61,68 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		{rest, terms} = FCSplit[ex,{DiracGamma,Eps}];
 
-		FCPrint[3, "EpsChisholm: Relevant part of the expression, ", terms , FCDoControl->esVerbose];
-		FCPrint[3, "EpsChisholm: Irrelevant part of the expression, ", rest , FCDoControl->esVerbose];
+		(* This is the normal mode which works well both for large and small expressions *)
+		FCPrint[1, "EpsChisholm: Normal mode.", FCDoControl->esVerbose];
+		time=AbsoluteTime[];
+		FCPrint[1, "EpsChisholm: Extracting Dirac objects.", FCDoControl->esVerbose];
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->False, LorentzIndex->True];
+		ex = ex /. h_dsHead/; FreeQ[h,Eps] :> Identity@@h;
 
-		new = terms /. {Eps[a_,b_,c_,d_]->eeps[a,b,c,d]}//.eepsOrder;
 
-		FCPrint[3, "EpsChisholm: After properly ordering eps tensors: ",
-			new , FCDoControl->esVerbose];
+		{freePart,dsPart} = FCSplit[ex,{dsHead}];
+		FCPrint[3,"EpsChisholm: dsPart: ",dsPart , FCDoControl->esVerbose];
+		FCPrint[3,"EpsChisholm: freePart: ",freePart , FCDoControl->esVerbose];
 
-		new = Expand2[new,{eeps,DiracGamma}];
-		new = Expand2[new//.epsspcrule,{eeps,DiracGamma}];
+		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
 
-		FCPrint[3, "EpsChisholm: After applying Chisholm identity backwards: ",
-			new , FCDoControl->esVerbose];
+		FCPrint[1, "EpsChisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose];
 
-		res = (new/.eeps->Eps) + rest;
+		time=AbsoluteTime[];
+
+		diracObjectsEval = diracObjects/. Eps->eeps /. DOT->holdDOT //.
+			{dsHead[m_. holdDOT[x__] eeps[a___, LorentzIndex[in_], b__]]/;!FreeQ[{x},in] :>
+				(-1^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] holdDOT[x]]};
+
+		diracObjectsEval = diracObjectsEval/.eeps2->eeps;
+
+		diracObjectsEval = diracObjectsEval //. dsHead[m_. holdDOT[x___, DiracGamma[in_LorentzIndex],y___] eeps[a_,b_,c_,in_LorentzIndex]] :>
+		(Conjugate[$LeviCivitaSign] I ( dsHead[m holdDOT[x,DiracGamma[a], DiracGamma[b], DiracGamma[c], DiracGamma[5],y]]
+			- dsHead[m ExpandScalarProduct[Pair[a,b],FCI->True] holdDOT[x,DiracGamma[c],DiracGamma[5],y]]
+			- dsHead[m ExpandScalarProduct[Pair[b,c],FCI->True] holdDOT[x,DiracGamma[a].DiracGamma[5],y]]
+			+ dsHead[m ExpandScalarProduct[Pair[a,c],FCI->True] holdDOT[x,DiracGamma[b],DiracGamma[5],y]]));
+
+		time=AbsoluteTime[];
+		FCPrint[1, "EpsChisholm: Inserting Dirac objects back.", FCDoControl->esVerbose];
+
+		diracObjectsEval = diracObjectsEval /. holdDOT->DOT /. dsHead->Identity /. eeps->Eps;
+		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		FCPrint[3,"EpsChisholm: repRule: ",repRule , FCDoControl->esVerbose];
+		res = freePart + ( dsPart/.repRule);
+		FCPrint[1, "EpsChisholm: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose];
+		FCPrint[3,"EpsChisholm: Intermediate result: ", res, FCDoControl->esVerbose];
+
+		If[	OptionValue[DiracTrick],
+				time=AbsoluteTime[];
+				FCPrint[1, "EpsChisholm: Applying DiracTrick.", FCDoControl->esVerbose];
+				res = DiracTrick[res, FCI->True];
+				FCPrint[1, "EpsChisholm: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose]
+		];
+
+		FCPrint[1, "EpsChisholm: Leaving.", FCDoControl->esVerbose];
+		FCPrint[3, "EpsChisholm: Leaving with ", res, FCDoControl->esVerbose];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
+
+
+
 		FCPrint[3, "EpsChisholm: Leaving with: ", res , FCDoControl->esVerbose];
+		FCPrint[3, "EpsChisholm: Leaving. ", res , FCDoControl->esVerbose];
 
 		res
 	]
-
-(* change maybe later *)
-SpinorChainEvaluate = DiracSimplify;
-scev = ExpandScalarProduct;
-
-
-eepsOrder = {m_. DOT[x___, DiracGamma[LorentzIndex[in_]], y___] *
-	eeps[a___, LorentzIndex[in_], b__] :>
-	(-1^Length[{b}]) m DOT[x, DiracGamma[LorentzIndex[in]], y] eeps[a, b, LorentzIndex[in]]};
-
-epsspcrule = {
-	(* Inside DOT *)
-	m_. DOT[ x___,DiracGamma[LorentzIndex[in_]],y___] eeps[a_,b_,c_,LorentzIndex[in_]] :>
-		( Conjugate[$LeviCivitaSign]* I m ( DOT[x,DiracGamma[a], DiracGamma[b], DiracGamma[c], DiracGamma[5],y] -
-		scev[a,b] DOT[x,DiracGamma[c],DiracGamma[5],y] -scev[b,c] DOT[x,DiracGamma[a].DiracGamma[5],y] +
-		scev[a,c] DOT[x,DiracGamma[b],DiracGamma[5],y])//SpinorChainEvaluate)//Expand2[#,{DiracGamma,eeps}]&,
-	(* Standalone *)
-	DiracGamma[LorentzIndex[in_]] eeps[a_,b_,c_,LorentzIndex[in_]] :>
-		( Conjugate[$LeviCivitaSign]* I ( DOT[x,DiracGamma[a],DiracGamma[b],DiracGamma[c], DiracGamma[5],y] -
-		scev[a,b] DOT[x,DiracGamma[c],DiracGamma[5],y] -
-		scev[b,c] DOT[x,DiracGamma[a],DiracGamma[5],y] +
-		scev[a,c] DOT[x,DiracGamma[b],DiracGamma[5],y])//SpinorChainEvaluate)//Expand2[#,{DiracGamma,eeps}]&
-};
 
 FCPrint[1,"EpsChisholm.m loaded."];
 End[]
