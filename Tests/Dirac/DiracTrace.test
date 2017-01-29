@@ -84,6 +84,13 @@ DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
 "DiracTrace[GA[i].GA[j].ncA.GA[k].GA[l]]"},
 {"fcstDiracTrace-ID31",
 "DiracTrace[DiracTrace[GA[i, j]], DiracTraceEvaluate -> True] // FCE",
-"4 DiracTrace[GA[i].GA[j]]"}
+"4 DiracTrace[GA[i].GA[j]]"},
+{"fcstDiracTrace-ID32",
+"DiracTrace[GS[p, p], DiracTraceEvaluate -> True] // FCE",
+"4 SP[p, p]"},
+{"fcstDiracTrace-ID33",
+"DiracTrace[DiracSigma[GA[a], GA[b]].GA[a].GA[b],
+DiracTraceEvaluate -> True]",
+"-48 I"}
 }
 );

@@ -150,7 +150,7 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		FCPrint[1,"DiracTrace: Contract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
 
 		(* 	First of all we need to extract all the Dirac structures inside the trace. *)
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Spinor->False, DiracTrace -> False];
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Spinor->False, DiracTrace -> False, DiracSigmaExplicit->True];
 		ex = ex /. DiracTrace -> diTr;
 
 
