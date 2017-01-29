@@ -33,9 +33,6 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstChisholm*"])];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Dirac`fcstChisholm2*"])];
-
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracSigmaExplicit*"])];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
