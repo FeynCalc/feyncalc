@@ -15,23 +15,66 @@
 
 
 
-Tests`Dirac`fcstChisholm = {
-{"fcstChisholm-ID1", "(Chisholm[DiracMatrix[mu, nu, rho]]// FCRenameDummyIndices) /. {$AL[x_] -> tau}",
-"I DiracGamma[LorentzIndex[tau]].DiracGamma[5] Eps[
-	LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
-	LorentzIndex[tau]] +
-	DiracGamma[LorentzIndex[rho]] Pair[LorentzIndex[mu],
-	LorentzIndex[nu]] -
-	DiracGamma[LorentzIndex[nu]] Pair[LorentzIndex[mu],
-	LorentzIndex[rho]] +
-	DiracGamma[LorentzIndex[mu]] Pair[LorentzIndex[nu],
-	LorentzIndex[rho]]"},
-{"fcstChisholm-ID2", "(Chisholm[GA[alpha, beta, mu, nu]] //FCRenameDummyIndices) /. {$AL[x_] -> rho}",
-"(-I)*DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5]*
-	Eps[LorentzIndex[alpha], LorentzIndex[beta], LorentzIndex[mu], LorentzIndex[rho]] +
-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[alpha], LorentzIndex[beta]] -
-DiracGamma[LorentzIndex[beta]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[alpha], LorentzIndex[mu]] +
-DiracGamma[LorentzIndex[alpha]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[beta], LorentzIndex[mu]]"},
-{"fcstChisholm-ID3", "MatchQ[$LeviCivitaSign = I; tmp = Chisholm[GA[i1, i2, i3]]; $LeviCivitaSign = -1; FCE[tmp],
-GA[a_].GA[5] LC[i1, i2, i3, a_] + GA[i3] MT[i1, i2] - GA[i2] MT[i1, i3] + GA[i1] MT[i2, i3]]", "True"}
-};
+Tests`Dirac`fcstChisholm =
+({
+{"fcstChisholm-ID1", "Chisholm[GAD[mu,nu,rho]]",
+"DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, \
+D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstChisholm-ID2",
+"Chisholm[GA[mu,nu,rho],FCE\[Rule]True]/.{$MU[x_]\[Rule]tau}",
+"I*GA[tau] . GA[5]*LC[mu, nu, rho, tau] + GA[rho]*MT[mu, nu] - \
+GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]"},
+{"fcstChisholm-ID3",
+"Chisholm[GA[alpha,beta,mu,nu],FCE\[Rule]True]/.{$MU[x_]\[Rule]tau}\
+", "(-I)*GA[tau] . GA[nu] . GA[5]*LC[alpha, beta, mu, tau] + GA[mu] . \
+GA[nu]*MT[alpha, beta] - GA[beta] . GA[nu]*MT[alpha, mu] + GA[alpha] \
+. GA[nu]*MT[beta, mu]"},
+{"fcstChisholm-ID4",
+"MatchQ[$LeviCivitaSign=I;tmp=Chisholm[GA[i1,i2,i3]];$\
+LeviCivitaSign=-1;FCE[tmp],GA[a_].GA[5] LC[i1,i2,i3,a_]+GA[i3] \
+MT[i1,i2]-GA[i2] MT[i1,i3]+GA[i1] MT[i2,i3]]", "True"},
+{"fcstChisholm-ID5", "Chisholm[0]", "0"},
+{"fcstChisholm-ID6", "Chisholm[x]", "x"},
+{"fcstChisholm-ID7",
+"Chisholm[x+GA[mu,nu,rho],FCE\[Rule]True]/.{$MU[x_]\[Rule]tau}",
+"x + I*GA[tau] . GA[5]*LC[mu, nu, rho, tau] + GA[rho]*MT[mu, nu] - \
+GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]"},
+{"fcstChisholm-ID8",
+"Chisholm[GA[mu,nu,rho],FCE\[Rule]True,FCDiracIsolate\[Rule]False]/.{\
+$MU[x_]\[Rule]tau}",
+"I*GA[tau] . GA[5]*LC[mu, nu, rho, tau] + GA[rho]*MT[mu, nu] - \
+GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]"},
+{"fcstChisholm-ID9",
+"MatchQ[Chisholm[GA[i,j,5],Mode\[Rule]2,FCE\[Rule]True],1/\
+2DiracSigma[GA[a_],GA[b_]] LC[i,j,a_,b_]+GA[5] MT[i,j]]", "True"},
+{"fcstChisholm-ID10",
+"MatchQ[Chisholm[(x+GA[i,j,5]),FCE\[Rule]True,Mode\[Rule]2],x+1/2 \
+DiracSigma[GA[a_],GA[b_]] LC[i,j,a_,b_]+GA[5] MT[i,j]]", "True"},
+{"fcstChisholm-ID11",
+"MatchQ[Chisholm[GA[k,i,j,5,g],FCE\[Rule]True,Mode\[Rule]2],1/2 \
+GA[k].DiracSigma[GA[a_],GA[b_]].GA[g] LC[i,j,a_,b_]-GA[k].GA[g].GA[5] \
+MT[i,j]]", "True"},
+{"fcstChisholm-ID12",
+"MatchQ[Chisholm[GA[k,i,j,5,g],DiracSigmaExplicit\[Rule]True,FCE\
+\[Rule]True,Mode\[Rule]2],1/4 I GA[k].GA[a_].GA[b_].GA[g] \
+LC[i,j,a_,b_]-1/4 I GA[k].GA[b_].GA[a_].GA[g] \
+LC[i,j,a_,b_]-GA[k].GA[g].GA[5] MT[i,j]]", "True"},
+{"fcstChisholm-ID13",
+"MatchQ[Chisholm[GA[i,j,5],Mode\[Rule]2,FCE\[Rule]True,\
+FCDiracIsolate\[Rule]False],1/2DiracSigma[GA[a_],GA[b_]] \
+LC[i,j,a_,b_]+GA[5] MT[i,j]]", "True"},
+{"fcstChisholm-ID14",
+"MatchQ[Chisholm[(x+GA[i,j,5]),FCE\[Rule]True,Mode\[Rule]2,\
+FCDiracIsolate\[Rule]False],x+1/2 DiracSigma[GA[a_],GA[b_]] \
+LC[i,j,a_,b_]+GA[5] MT[i,j]]", "True"},
+{"fcstChisholm-ID15",
+"MatchQ[Chisholm[GA[k,i,j,5,g],FCE\[Rule]True,Mode\[Rule]2,\
+FCDiracIsolate\[Rule]False],1/2 GA[k].DiracSigma[GA[a_],GA[b_]].GA[g] \
+LC[i,j,a_,b_]-GA[k].GA[g].GA[5] MT[i,j]]", "True"},
+{"fcstChisholm-ID16",
+"MatchQ[Chisholm[GA[k,i,j,5,g],DiracSigmaExplicit\[Rule]True,FCE\
+\[Rule]True,Mode\[Rule]2,FCDiracIsolate\[Rule]False],1/4 I \
+GA[k].GA[a_].GA[b_].GA[g] LC[i,j,a_,b_]-1/4 I \
+GA[k].GA[b_].GA[a_].GA[g] LC[i,j,a_,b_]-GA[k].GA[g].GA[5] MT[i,j]]",
+"True"}
+})

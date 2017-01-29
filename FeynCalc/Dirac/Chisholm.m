@@ -20,6 +20,10 @@ Chisholm::usage =
 "Chisholm[x] substitutes products of three Dirac matrices or \
 slashes by the Chisholm identity.";
 
+Chisholm::failmsg =
+"Error! Chisholm has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -27,13 +31,25 @@ End[]
 
 Begin["`Chisholm`Private`"]
 
+chVerbose::usage="";
+
 Options[Chisholm] = {
+	Contract -> True,
 	DiracSimplify -> True,
-	FCI -> False
+	DotSimplify -> True,
+	FCDiracIsolate -> True,
+	FCE -> False,
+	FCI -> False,
+	FCVerbose -> False,
+	Mode -> 1,
+	DiracSigmaExplicit -> False
 };
 
 Chisholm[expr_, OptionsPattern[]] :=
-	Block[{ex},
+	Block[{ex, tmp, tmpli, tmpli1, tmpli2, terms,rest,res, holdDOT, eps, freePart, dsPart, diracObjects,
+			diracObjectsEval, null1, null2, dsHead, time, repRule, mode},
+
+		mode = OptionValue[Mode];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -44,30 +60,150 @@ Chisholm[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		If[	OptionValue[DiracSimplify],
-			ex = Contract[DiracSimplify[ex //. chish1 //. chish2]],
-			ex = Contract[ex //. chish1 //. chish2]
+		If[	OptionValue[FCVerbose]===False,
+			chVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				chVerbose=OptionValue[FCVerbose]
+			];
 		];
 
-		ex
+
+		FCPrint[1, "Chisholm. Entering.", FCDoControl->chVerbose];
+		FCPrint[3, "Chisholm: Entering with ", ex, FCDoControl->chVerbose];
+
+		If[	OptionValue[FCDiracIsolate],
+			(* This is the normal mode which works well both for large and small expressions *)
+			FCPrint[1, "Chisholm: Normal mode.", FCDoControl->chVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1, "Chisholm: Extracting Dirac objects.", FCDoControl->chVerbose];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->OptionValue[DotSimplify], DiracGammaCombine-> False];
+
+
+			{freePart,dsPart} = FCSplit[ex,{dsHead}];
+			FCPrint[3,"Chisholm: dsPart: ",dsPart , FCDoControl->chVerbose];
+			FCPrint[3,"Chisholm: freePart: ",freePart , FCDoControl->chVerbose];
+
+			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+			FCPrint[1, "Chisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose];
+
+			time=AbsoluteTime[];
+			Which[
+				mode===1,
+					FCPrint[1, "Chisholm: Applying Chisholm identity (mode 1).", FCDoControl->chVerbose];
+					diracObjectsEval = diracObjects /. DOT->holdDOT //. {dsHead[holdDOT[DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___]] :>
+						(tmpli= LorentzIndex[$MU[Unique[]]]; (
+						Pair[lv1, lv2] dsHead[holdDOT[DiracGamma[lv3],b]] -
+						Pair[lv1, lv3] dsHead[holdDOT[DiracGamma[lv2],b]] +
+						Pair[lv2, lv3] dsHead[holdDOT[DiracGamma[lv1],b]] -
+						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[DiracGamma[tmpli].DiracGamma[5],b]]
+						))} //. {dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___]] :>
+						(tmpli= LorentzIndex[$MU[Unique[]]]; (
+						Pair[lv1, lv2] dsHead[holdDOT[a, DiracGamma[lv3], b]] -
+						Pair[lv1, lv3] dsHead[holdDOT[a, DiracGamma[lv2], b]] +
+						Pair[lv2, lv3] dsHead[holdDOT[a, DiracGamma[lv1], b]] -
+						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a, DiracGamma[tmpli].DiracGamma[5], b]]
+						))};
+					FCPrint[1, "Done applying Chisholm identity  (mode 1), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
+
+				mode===2,
+					FCPrint[1, "Chisholm: Applying Chisholm identity (mode 2).", FCDoControl->chVerbose];
+					diracObjectsEval = diracObjects /. DOT->holdDOT //. {dsHead[holdDOT[DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___]] :>
+						(tmpli1= LorentzIndex[$MU[Unique[]]]; tmpli2= LorentzIndex[$MU[Unique[]]]; (
+						- $LeviCivitaSign/2 Eps[lv1, lv2, tmpli1, tmpli2] dsHead[holdDOT[DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b]] +
+						Pair[lv1, lv2] dsHead[holdDOT[DiracGamma[5],b]]))} //. {dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___]] :>
+						(tmpli1= LorentzIndex[$MU[Unique[]]]; tmpli2= LorentzIndex[$MU[Unique[]]]; (
+						- $LeviCivitaSign/2 Eps[lv1, lv2, tmpli1, tmpli2] dsHead[holdDOT[a,DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b]] +
+						Pair[lv1, lv2] dsHead[holdDOT[a,DiracGamma[5],b]]))};
+					FCPrint[1, "Done applying Chisholm identity  (mode 2), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
+				True,
+				Message[Chisholm::failmsg, "Unknown operation mode."];
+				Abort[]
+			];
+			time=AbsoluteTime[];
+			FCPrint[1, "Chisholm: Inserting Dirac objects back.", FCDoControl->chVerbose];
+
+			diracObjectsEval = diracObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. dsHead->Identity;
+			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			FCPrint[3,"Chisholm: repRule: ",repRule , FCDoControl->chVerbose];
+			tmp = freePart + ( dsPart/.repRule);
+			FCPrint[1, "Chisholm: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose];
+			FCPrint[3,"Chisholm: Intermediate result: ", tmp, FCDoControl->chVerbose],
+
+			(* This is the fast mode for standalone Dirac chains *)
+			FCPrint[1, "Chisholm: Fast mode.", FCDoControl->chVerbose];
+			time=AbsoluteTime[];
+
+			Which[
+				mode===1,
+					FCPrint[1, "Chisholm: Applying Chisholm identity (mode 1).", FCDoControl->chVerbose];
+					tmp = ex /. DOT -> holdDOT  //. {holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])]] :>
+						(tmpli= LorentzIndex[$MU[Unique[]]]; (
+						Pair[lv1, lv2] holdDOT[a, DiracGamma[lv3]] -
+						Pair[lv1, lv3] holdDOT[a, DiracGamma[lv2]] +
+						Pair[lv2, lv3] holdDOT[a, DiracGamma[lv1]] -
+						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] holdDOT[a, DiracGamma[tmpli].DiracGamma[5]]
+						))} //. {holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___] :>
+						(tmpli= LorentzIndex[$MU[Unique[]]]; (
+						Pair[lv1, lv2] holdDOT[a, DiracGamma[lv3], b] -
+						Pair[lv1, lv3] holdDOT[a, DiracGamma[lv2], b] +
+						Pair[lv2, lv3] holdDOT[a, DiracGamma[lv1], b] -
+						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] holdDOT[a, DiracGamma[tmpli].DiracGamma[5], b]
+						))};
+					FCPrint[1, "Done applying Chisholm identity  (mode 1), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
+
+				mode===2,
+					FCPrint[1, "Chisholm: Applying Chisholm identity (mode 2).", FCDoControl->chVerbose];
+					tmp = ex /. DOT -> holdDOT //. {holdDOT[DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+					DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___] :>
+					(tmpli1= LorentzIndex[$MU[Unique[]]]; tmpli2= LorentzIndex[$MU[Unique[]]]; (
+					- $LeviCivitaSign/2 Eps[lv1, lv2, tmpli1, tmpli2] holdDOT[DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b] +
+					Pair[lv1, lv2] holdDOT[DiracGamma[5],b]))} //. {holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
+					DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___] :>
+					(tmpli1= LorentzIndex[$MU[Unique[]]]; tmpli2= LorentzIndex[$MU[Unique[]]]; (
+					- $LeviCivitaSign/2 Eps[lv1, lv2, tmpli1, tmpli2] holdDOT[a,DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b] +
+					Pair[lv1, lv2] holdDOT[a,DiracGamma[5],b]))};
+					FCPrint[1, "Done applying Chisholm identity  (mode 2), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
+
+
+				True,
+				Message[Chisholm::failmsg, "Unknown operation mode."];
+				Abort[]
+			];
+			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT
+		];
+
+		res = tmp;
+
+		If[	OptionValue[Contract],
+				time=AbsoluteTime[];
+				FCPrint[1, "Chisholm: Applying Contract.", FCDoControl->chVerbose];
+				res = Contract[res, FCI->True];
+				FCPrint[1, "Chisholm: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose]
+		];
+
+		If[	OptionValue[DiracSimplify],
+				time=AbsoluteTime[];
+				FCPrint[1, "Chisholm: Applying DiracSimplify.", FCDoControl->chVerbose];
+				res = DiracSimplify[res, FCI->True, DiracSigmaExplicit->OptionValue[DiracSigmaExplicit]];
+				FCPrint[1, "Chisholm: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose]
+		];
+
+		FCPrint[1, "Chisholm: Leaving.", FCDoControl->chVerbose];
+		FCPrint[3, "Chisholm: Leaving with ", res, FCDoControl->chVerbose];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 
 	];
 
-chish1 = (f_. DOT[a_DiracGamma, b_DiracGamma, c_DiracGamma,
-		d_DiracGamma, e_DiracGamma, f_DiracGamma, g___]) :>
-		Chisholm[Contract[DiracSimplify[DOT[Chisholm[f DOT[a,b,c]] ,Chisholm[d,e,f,g]]],Rename->False]];
-
-chish2 = DOT[a___, DiracGamma[lv1_[pe1_]],DiracGamma[lv2_[pe2_]], DiracGamma[lv3_[pe3_]],b___] :>
-			Block[ {index},
-				index = Unique[$MU];
-				Contract[DiracSimplify[
-				(
-				Pair[lv1[pe1], lv2[pe2]] DOT[a, DiracGamma[lv3[pe3]], b] -
-				Pair[lv1[pe1], lv3[pe3]] DOT[a, DiracGamma[lv2[pe2]], b] +
-				Pair[lv2[pe2], lv3[pe3]] DOT[a, DiracGamma[lv1[pe1]], b] -
-				$LeviCivitaSign I Eps[ lv1[pe1],lv2[pe2],lv3[pe3],LorentzIndex[index] ]*
-				DOT[a, DiracGamma[LorentzIndex[index]].DiracGamma[5], b]
-				)], EpsContract->True, Rename->False]
-			];
 FCPrint[1,"Chisholm.m loaded"];
 End[]
