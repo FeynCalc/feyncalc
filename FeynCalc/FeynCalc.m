@@ -102,25 +102,16 @@ generating names for storing intermediate results. \
 It is used by OneLoop and PaVeReduce.\
 The elements of the list should be of the form \"name\" -> \"abbreviation\".";
 
-$AchmedRoss::usage =
-"experimental";
-
 $AL::usage =
 "$AL is the head of dummy indices which may be introduced by \
 Uncontract.";
 
 $BreitMaison::usage =
-"The Breitenlohner-Maison gamma5 scheme is currently not supported by \
-the Dirac algebra functions. Use Tracer if you need it.";
-
-(*
-	"The setting of $BreitMaison determines whether the Breitenlohner-
-				Maison scheme is applied. If $BreitMaison=True, the so-called
-				naive gamma5 prescription is used, i.e. gamma5 anticommutes in
-				all dimensions.  The default is False. The setting should
-				be chosen in the file FeynCalc.m BEFORE loading the package.
-				Reversion during a session is not possible.";
-*)
+"The setting of $BreitMaison determines whether the Breitenlohner-Maison \
+scheme is applied. If $BreitMaison=False, the so-called	naive gamma5 \
+prescription is used, i.e. gamma5 anticommutes in all dimensions. \
+The default is False. The setting should be chosen at the beginning of\
+a FeynCalc session. Reversion during a session is not possible.";
 
 $Containers::usage =
 "$FieldContainers is a set of heads over which FieldDerivative should
@@ -183,10 +174,8 @@ $FCS::usage = "$FCS is a list of functions with a short name. \
 E.g. GA[nu] can be used instead of DiracGamma[nu].";
 
 FeynCalc::usage =
-"For installation notes visit www.feyncalc.org\n
-For a list of availabe objects type $FeynCalcStuff, \
-which contains a list of all functions and options in StringForm. \
-You can get on-line information by ?function, e.g. ?Contract.\n
+"For installation notes visit www.feyncalc.github.io. You can get \
+on-line information by ?function, e.g. ?Contract.\n
 There are several useful functions for short input, type $FCS for a list of \
 short commands. Then type, e.g., ?GA.\n\n
 To enable/disable start-up messages, put the line\n
@@ -194,9 +183,6 @@ $FeynCalcStartupMessages = True;\n
 or\n
 $FeynCalcStartupMessages = False;\n
 into your \"init.m\" file or into your \"FCConfig.m\" file."
-
-$FeynCalcStuff::usage =
-"$FeynCalcStuff is the list of availabe stuff in FeynCalc.";
 
 $FeynCalcVersion::usage =
 "$FeynCalcVersion is a string that represents the version of FeynCalc.";
@@ -365,8 +351,6 @@ TarcerDialogText = "TARCER*.mx file not found or damaged. Creating a new \
 file can take couple of minutes, but this has to be done only once. \
 After the new file is generated you need to restart FeynCalc. Should \
 we generate new TARCER*.mx now?"
-
-$AchmedRoss				= False;
 
 $Abbreviations = {
 	", "->"",

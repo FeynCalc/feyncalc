@@ -49,6 +49,8 @@ Options[Twist2GluonOperator] = {
 	Explicit -> False,
 	ZeroMomentumInsertion -> True
 };
+(*Used to be $AchmedRoss=False *)
+AchmedRoss=False;
 
 GO = Twist2GluonOperator;
 
@@ -519,7 +521,7 @@ Twist2GluonOperator[{pi_, mui_, ai_}, {qi_, nui_, bi_}, {ki_, lai_, ci_}, opt:Op
 			re = -I coup ((1 + Power2[(-1),OPEm])/2) SUNF[a,b,c] *
 			Twist2GluonOperator[{pi//m, mui//l}, {qi//m, nui//l},
 			{ki//m, lai//l}, opt],
-			If[ !$AchmedRoss,
+			If[ !AchmedRoss,
 				re = coup (1 - Power2[(-1),OPEm]) SUNF[a,b,c] *
 				Twist2GluonOperator[{pi//m, mui//l}, {qi//m, nui//l},
 				{ki//m, lai//l}, opt],
@@ -674,7 +676,7 @@ Twist2GluonOperator[{pi_, mui_}, {qi_, nui_}, {ki_, lai_}, OptionsPattern[]] :=
 						(Eps[l1, l2, del, p2]*Pair[l3, del] -
 								Eps[l3, l2, del, p2]*Pair[l1, del])*
 							Pair[del, p2]^(-2 + OPEm));
-			If[ $AchmedRoss,
+			If[ AchmedRoss,
 				re = ACHMED (-1) threegluonar[{mu,p},{nu,q},{la,k}],
 				re = threegluon[OptionValue[Explicit]][{mu,p},{nu,q},{la,k}]
 			];
