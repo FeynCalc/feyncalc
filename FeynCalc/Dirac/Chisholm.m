@@ -42,14 +42,53 @@ Options[Chisholm] = {
 	FCI -> False,
 	FCVerbose -> False,
 	Mode -> 1,
-	DiracSigmaExplicit -> False
+	DiracSigmaExplicit -> False,
+	NonCommutative -> True,
+	MaxIterations -> Infinity,
+	InsideDiracTrace -> False
 };
 
 Chisholm[expr_, OptionsPattern[]] :=
 	Block[{ex, tmp, tmpli, tmpli1, tmpli2, terms,rest,res, holdDOT, eps, freePart, dsPart, diracObjects,
-			diracObjectsEval, null1, null2, dsHead, time, repRule, mode},
+			diracObjectsEval, null1, null2, dsHead, time, repRule, mode, chisholmRule1, chisholmRule2, maxIterations,
+			nonComm, chisholmRuleInsideTrace},
 
 		mode = OptionValue[Mode];
+		maxIterations = OptionValue[MaxIterations];
+		nonComm = OptionValue[NonCommutative];
+
+		chisholmRule1 = {
+			dsHead[holdDOT[a___,DiracGamma[(lv1:(LorentzIndex|Momentum)[_])], DiracGamma[(lv2:(LorentzIndex|Momentum)[_])],
+				DiracGamma[(lv3:(LorentzIndex|Momentum)[_])]]] :>
+					(tmpli= LorentzIndex[$MU[Unique[]]]; (
+					Pair[lv1, lv2] dsHead[holdDOT[a,DiracGamma[lv3]]] -
+					Pair[lv1, lv3] dsHead[holdDOT[a,DiracGamma[lv2]]] +
+					Pair[lv2, lv3] dsHead[holdDOT[a,DiracGamma[lv1]]] -
+					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a,DiracGamma[tmpli],DiracGamma[5]]]
+					)),
+			dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])], DiracGamma[(lv2:(LorentzIndex|Momentum)[_])],
+				DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], DiracGamma[5]]] :>
+					(tmpli= LorentzIndex[$MU[Unique[]]]; (
+					Pair[lv1, lv2] dsHead[holdDOT[a, DiracGamma[lv3],DiracGamma[5]]] -
+					Pair[lv1, lv3] dsHead[holdDOT[a, DiracGamma[lv2],DiracGamma[5]]] +
+					Pair[lv2, lv3] dsHead[holdDOT[a, DiracGamma[lv1],DiracGamma[5]]] -
+					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a,DiracGamma[tmpli]]]))
+		};
+
+		chisholmRuleInsideTrace = {
+			dsHead[holdDOT[x___DiracGamma, DiracGamma[5]]]/; Length[{x}]<4 && FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] :> 0
+		};
+
+
+		chisholmRule2 = {
+			dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])], DiracGamma[(lv2:(LorentzIndex|Momentum)[_])],
+				DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___]] :>
+					(tmpli= LorentzIndex[$MU[Unique[]]]; (
+					Pair[lv1, lv2] dsHead[holdDOT[a, DiracGamma[lv3], b]] -
+					Pair[lv1, lv3] dsHead[holdDOT[a, DiracGamma[lv2], b]] +
+					Pair[lv2, lv3] dsHead[holdDOT[a, DiracGamma[lv1], b]] -
+					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a, DiracGamma[tmpli], DiracGamma[5],  b]]))
+		};
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -90,21 +129,18 @@ Chisholm[expr_, OptionsPattern[]] :=
 			Which[
 				mode===1,
 					FCPrint[1, "Chisholm: Applying Chisholm identity (mode 1).", FCDoControl->chVerbose];
-					diracObjectsEval = diracObjects /. DOT->holdDOT //. {dsHead[holdDOT[DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
-						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___]] :>
-						(tmpli= LorentzIndex[$MU[Unique[]]]; (
-						Pair[lv1, lv2] dsHead[holdDOT[DiracGamma[lv3],b]] -
-						Pair[lv1, lv3] dsHead[holdDOT[DiracGamma[lv2],b]] +
-						Pair[lv2, lv3] dsHead[holdDOT[DiracGamma[lv1],b]] -
-						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[DiracGamma[tmpli].DiracGamma[5],b]]
-						))} //. {dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
-						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___]] :>
-						(tmpli= LorentzIndex[$MU[Unique[]]]; (
-						Pair[lv1, lv2] dsHead[holdDOT[a, DiracGamma[lv3], b]] -
-						Pair[lv1, lv3] dsHead[holdDOT[a, DiracGamma[lv2], b]] +
-						Pair[lv2, lv3] dsHead[holdDOT[a, DiracGamma[lv1], b]] -
-						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a, DiracGamma[tmpli].DiracGamma[5], b]]
-						))};
+
+					diracObjectsEval = diracObjects /. DOT->holdDOT;
+
+					diracObjectsEval = FixedPoint[(# /. chisholmRule1)&,diracObjectsEval, maxIterations];
+					If[	nonComm,
+						diracObjectsEval = FixedPoint[(# /. chisholmRule2)&,diracObjectsEval, maxIterations]
+					];
+
+					If [OptionValue[InsideDiracTrace],
+						diracObjectsEval = diracObjectsEval/.chisholmRuleInsideTrace;
+					];
+
 					FCPrint[1, "Done applying Chisholm identity  (mode 1), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
 
 				mode===2,
@@ -140,21 +176,12 @@ Chisholm[expr_, OptionsPattern[]] :=
 			Which[
 				mode===1,
 					FCPrint[1, "Chisholm: Applying Chisholm identity (mode 1).", FCDoControl->chVerbose];
-					tmp = ex /. DOT -> holdDOT  //. {holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
-						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])]] :>
-						(tmpli= LorentzIndex[$MU[Unique[]]]; (
-						Pair[lv1, lv2] holdDOT[a, DiracGamma[lv3]] -
-						Pair[lv1, lv3] holdDOT[a, DiracGamma[lv2]] +
-						Pair[lv2, lv3] holdDOT[a, DiracGamma[lv1]] -
-						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] holdDOT[a, DiracGamma[tmpli].DiracGamma[5]]
-						))} //. {holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
-						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b___] :>
-						(tmpli= LorentzIndex[$MU[Unique[]]]; (
-						Pair[lv1, lv2] holdDOT[a, DiracGamma[lv3], b] -
-						Pair[lv1, lv3] holdDOT[a, DiracGamma[lv2], b] +
-						Pair[lv2, lv3] holdDOT[a, DiracGamma[lv1], b] -
-						$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] holdDOT[a, DiracGamma[tmpli].DiracGamma[5], b]
-						))};
+					tmp = ex /. DOT -> holdDOT /. holdDOT[z__] :> dsHead[holdDOT[z]];
+
+					tmp = FixedPoint[(# /. chisholmRule1)&, tmp, maxIterations];
+					If[ nonComm,
+						tmp = FixedPoint[(# /. chisholmRule2)&, tmp, maxIterations]
+					];
 					FCPrint[1, "Done applying Chisholm identity  (mode 1), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
 
 				mode===2,
@@ -175,7 +202,7 @@ Chisholm[expr_, OptionsPattern[]] :=
 				Message[Chisholm::failmsg, "Unknown operation mode."];
 				Abort[]
 			];
-			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT
+			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. dsHead->Identity
 		];
 
 		res = tmp;

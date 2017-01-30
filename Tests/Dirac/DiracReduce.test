@@ -59,9 +59,9 @@ DiracOrder[#, {i0, i, j}] & // FCE","GA[i0].GA[i].GA[j]"},
 {"fcstDiracReduce-ID10",
 	"(GA[i, j, k, l] // DiracReduce //
 FCI) - (GA[i, j, k, l] // Chisholm //
-		ToDiracSigma[#, GA[k], GA[l]] & //
-	ToDiracSigma[#, GA[j], GA[l]] & //
-	ToDiracSigma[#, GA[i], GA[l]] & // Expand // DiracOrder //
-Chisholm[#,Mode->2]&)","0"}
+		ToDiracSigma[#, GA[i], GA[k]] & //
+	   ToDiracSigma[#, GA[i], GA[j]] & //
+	  ToDiracSigma[#, GA[i], GA[l]] & // Expand // DiracOrder //
+Chisholm[#, Mode -> 2] &)","0"}
 
 }

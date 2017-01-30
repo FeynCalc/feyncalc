@@ -26,9 +26,8 @@ D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
 GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]"},
 {"fcstChisholm-ID3",
 "Chisholm[GA[alpha,beta,mu,nu],FCE\[Rule]True]/.{$MU[x_]\[Rule]tau}\
-", "(-I)*GA[tau] . GA[nu] . GA[5]*LC[alpha, beta, mu, tau] + GA[mu] . \
-GA[nu]*MT[alpha, beta] - GA[beta] . GA[nu]*MT[alpha, mu] + GA[alpha] \
-. GA[nu]*MT[beta, mu]"},
+", "I*GA[alpha] . GA[tau] . GA[5]*LC[beta, mu, nu, tau] + GA[alpha] . GA[nu]*MT[beta, mu] -
+GA[alpha] . GA[mu]*MT[beta, nu] + GA[alpha] . GA[beta]*MT[mu, nu]"},
 {"fcstChisholm-ID4",
 "MatchQ[$LeviCivitaSign=I;tmp=Chisholm[GA[i1,i2,i3]];$\
 LeviCivitaSign=-1;FCE[tmp],GA[a_].GA[5] LC[i1,i2,i3,a_]+GA[i3] \
