@@ -142,12 +142,14 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 		(* Doing contractions can often simplify the underlying expression *)
 		time=AbsoluteTime[];
-		FCPrint[1, "DiracTrace. Applying Contract.", FCDoControl->diTrVerbose];
-		If[	Contract=!=False,
+
+		If[	OptionValue[Contract]=!=False,
+			FCPrint[1, "DiracTrace. Applying Contract.", FCDoControl->diTrVerbose];
 			ex = Contract[ex, Expanding->True, EpsContract-> OptionValue[EpsContract], Factoring->False];
+			FCPrint[1,"DiracTrace: Contract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose]
 		];
 
-		FCPrint[1,"DiracTrace: Contract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
+
 
 		(* 	First of all we need to extract all the Dirac structures inside the trace. *)
 		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Spinor->False, DiracTrace -> False, DiracSigmaExplicit->True];
@@ -174,8 +176,11 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "DiracTrace. Applying diracTraceEvaluate.", FCDoControl->diTrVerbose];
 
+		(* Here we try to compute some very simple traces in a faster way *)
+		diracObjectsEval = Map[diracTraceEvaluateFast[#]&, (diracObjects/.dsHead->Identity)] /. diracTraceEvaluateFast->Identity;
+
 		diracObjectsEval = Map[diracTraceEvaluate[#, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]]&,
-			(diracObjects/.dsHead->Identity)];
+			diracObjectsEval];
 
 		diracObjectsEval = diracObjectsEval/. noSpur[x__]:> diTr[DOT[x]]/unitMatrixTrace;
 
@@ -206,7 +211,14 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		diTres
 	]/; OptionValue[DiracTraceEvaluate];
 
-diracTraceEvaluate[expr_,opts:OptionsPattern[]] :=
+
+diracTraceEvaluateFast[DOT[DiracGamma[l1_LorentzIndex].DiracGamma[l2_LorentzIndex]]]:=
+	alreadyDone[unitMatrixTrace Pair[l1,l2]];
+
+diracTraceEvaluate[alreadyDone[expr_],OptionsPattern[]] :=
+	expr;
+
+diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 	Block[ { diractrres, tmp = expr, diractrfact,
 		diractrcoll, schoutenopt,
 		dtmp,dWrap,dtWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
@@ -471,7 +483,7 @@ diracTraceEvaluate[expr_,opts:OptionsPattern[]] :=
 		];
 
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Leaving.", FCDoControl->diTrVerbose];
-
+		FCPrint[3,"DiracTrace: diracTraceEvaluate: Leaving with: ", diractrres, FCDoControl->diTrVerbose];
 		diractrres
 	];
 
