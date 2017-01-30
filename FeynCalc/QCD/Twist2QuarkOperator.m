@@ -44,8 +44,6 @@ End[]
 
 Begin["`Twist2QuarkOperator`Private`"]
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
 DeclareNonCommutative[Twist2QuarkOperator];
 
 Options[Twist2QuarkOperator] = {
@@ -99,9 +97,6 @@ Twist2QuarkOperator[pi_, OptionsPattern[]] :=
 
 Twist2QuarkOperator[p_, _Integer, _Integer] :=
 	Twist2QuarkOperator[p];
-
-Twist2QuarkOperator[x___, i_Integer, y___] :=
-	Twist2QuarkOperator[x, l[i], c[i], y];
 
 (* Quark - Quark - Gluon *)
 

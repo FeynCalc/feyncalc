@@ -47,11 +47,6 @@ Options[GluonPropagator] = {
 GP = GluonPropagator;
 Abbreviation[GluonPropagator] = HoldForm[GP];
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-GluonPropagator[x___, i_Integer, y___] :=
-	GluonPropagator[x, l[i], c[i], y]/;2<Length[{x,i,y}];
-
 GluonPropagator[a_, b_,c_, d_,e_, opt:OptionsPattern[]] :=
 	GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];
 

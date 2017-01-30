@@ -52,8 +52,6 @@ Options[GluonVertex] = {
 GV = GluonVertex;
 Abbreviation[GluonVertex] = HoldForm[GV];
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
 lorfix[w_] :=
 	MomentumCombine[w,LeafCount -> 1000] /. LorentzIndex -> lorf /. lorf -> LorentzIndex;
 lorf[y_lorf,___] :=
@@ -64,9 +62,6 @@ momfix[v_] :=
 	MomentumCombine[v,LeafCount -> 1000]/.Momentum->momf/.momf->Momentum;
 momf[y_momf,___] :=
 	y;
-
-GluonVertex[x___, i_Integer, y___] :=
-	GluonVertex[x, l[i], c[i], y];
 
 (* 3 - vertex *)
 GluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y___Rule] :=

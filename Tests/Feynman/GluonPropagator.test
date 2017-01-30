@@ -28,9 +28,9 @@ mu]*FVD[n, nu]*SPD[p, p])/SPD[n, p]^2)"},
 "GluonPropagator[p,mu,nu]//Explicit//FCE",
 "(-I)*FAD[p]*MTD[mu, nu]"},
 {"fcstGluonPropagator-ID4",
-"Explicit[GP[p,1,2],Gauge\[Rule]xi]//FCE",
+"Explicit[GP[p,li1,li2],Gauge\[Rule]xi]//FCE",
 "I*FAD[p]*((1 - xi)*FAD[p]*FVD[p, li1]*FVD[p, li2] - MTD[li1, \
-li2])*SD[ci1, ci2]"},
+li2])"},
 {"fcstGluonPropagator-ID5",
 "GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule] 1]//Explicit//FCE",
 	"((-I)*CA*Gstrong^2*Sn*SD[a, b]*((11*FVD[p, mu]*FVD[p, nu])/3 - \

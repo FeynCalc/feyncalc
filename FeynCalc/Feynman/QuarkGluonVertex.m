@@ -45,11 +45,6 @@ Options[QuarkGluonVertex] = {
 
 QGV = QuarkGluonVertex;
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-QuarkGluonVertex[x___, i_Integer, y___] :=
-	QuarkGluonVertex[x, l[i], c[i], y];
-
 QuarkGluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y:OptionsPattern[]] :=
 	QuarkGluonVertex[{x1,x2,x3}, {x4,x5,x6}, {x7,x8,x9} , y] /;
 	FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8,x9}]], Integer|Rule];

@@ -35,11 +35,6 @@ Options[GhostPropagator] = {
 	Explicit -> False
 };
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-GhostPropagator[x___, i_Integer, y___] :=
-	GhostPropagator[x, c[i], y];
-
 GhostPropagator[p_, OptionsPattern[]] :=
 	(I FeynAmpDenominator[PropagatorDenominator[p, 0]]) /;OptionValue[Explicit];
 

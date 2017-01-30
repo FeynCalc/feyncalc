@@ -218,10 +218,6 @@ when one has to explicitly distinguish between IR- and UV-divergences in \
 dimensional regularization. Notice that OneLoop is not guaranteed to respect this \
 option.";
 
-$IndexPrefix::usage =
-"$IndexPrefix is a list of prefixes for default Lorentz and color indices
-used by GluonPropagator and similar functions.";
-
 $Larin::usage =
 "If set to True, the Larin-Gorishny-Atkyampo-DelBurgo-scheme for \
 gamma5 in D-dimensions is used, i.e. before evaluating traces \
@@ -279,10 +275,6 @@ value of $$LimitTo4IRUnsafe is False.";
 $LorentzIndices::usage =
 "$LorentzIndices is a global variable. If set to True the dimension \
 of LorentzIndex is displayed as an index.";
-
-MakeFeynCalcPrivateContext::usage =
-"MakeFeynCalcPrivateContext[val] constructs
-FeynCalc`Private`val.";
 
 $MemoryAvailable::usage =
 "$MemoryAvailable is  a global variable which is set to an integer \
@@ -436,7 +428,6 @@ $FCS = {
 	"SPL"
 };
 
-$IndexPrefix		= {"li","ci"};
 $KeepLogDivergentScalelessIntegrals = False;
 $Larin				= False;
 $LeviCivitaSign		= -1;
@@ -541,27 +532,6 @@ TBox[a_] :=
 	ToBoxes[a, TraditionalForm];
 TBox[a_,b__] :=
 	RowBox @ Map[(ToBoxes @@ {#, TraditionalForm})&, {a, b}];
-
-l[w_Integer] :=
-	l[w] =
-		Block[ {pre},
-			If[ !MatchQ[pre = $IndexPrefix,{_String,_String}],
-				pre = {ToString[Unique["l"]], ToString[Unique["c"]]}
-			];
-			ToExpression[pre[[1]]<>ToString[w]]
-		];
-
-c[w_Integer] :=
-	c[w] =
-		Block[ {pre},
-			If[ !MatchQ[pre = $IndexPrefix,{_String,_String}],
-				pre = {ToString[Unique["l"]], ToString[Unique["c"]]}
-			];
-			ToExpression[pre[[2]]<>ToString[w]]
-		];
-
-MakeFeynCalcPrivateContext[x_String] :=
-	MakeFeynCalcPrivateContext[x] =	ToExpression["FeynCalc`Private`"<>x];
 
 End[];
 

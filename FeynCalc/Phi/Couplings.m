@@ -509,7 +509,7 @@ Begin["`Couplings`Private`"];
 (* FeynCalc functions *)
 
 fccombs :=
-	fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
+	fccombs = CombinationLists;
 
 (* FeynArts functions *)
 

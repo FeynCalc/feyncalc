@@ -22,5 +22,5 @@ Tests`Feynman`fcstGhostPropagator = ({
 0]]*SUNDelta[SUNIndex[a], SUNIndex[b]]"},
 {"fcstGhostPropagator-ID3", "GhostPropagator[p,1,2]//Explicit",
 "I*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], \
-0]]*SUNDelta[SUNIndex[ci1], SUNIndex[ci2]]"}
+0]]*SUNDelta[ExplicitSUNIndex[1], ExplicitSUNIndex[2]]"}
 });

@@ -234,10 +234,8 @@ MandelstamU /: MakeBoxes[MandelstamU, TraditionalForm] :=
 	MakeBoxes[StyleForm["u", FontSlant -> "Italic"]][[1]];
 
 
-(* FeynCalc functions *)
-
 fccombs :=
-	fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
+	fccombs = CombinationLists;
 
 (* Tracer functions *)
 

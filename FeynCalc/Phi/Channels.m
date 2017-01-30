@@ -215,9 +215,8 @@ USumHeld /:
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
-(* FeynCalc functions *)
 fccombs :=
-	fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
+	fccombs = CombinationLists;
 (* FeynArts functions *)
 
 faso :=

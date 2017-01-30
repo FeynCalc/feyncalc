@@ -38,15 +38,9 @@ Options[GluonGhostVertex] = {
 	Explicit -> False
 };
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-
 GluonGhostVertex[{_, ai_}, {bi_}, {ki_, ci_}, opt:OptionsPattern[]] :=
 	GluonGhostVertex[{FCGV["x"], FCGV["y"], ai}, {FCGV["z"],FCGV["h"],bi},
 	{ki,FCGV["l"],ci}, opt] /; OptionValue[Explicit];
-
-GluonGhostVertex[x___, i_Integer, y___] :=
-	GluonGhostVertex[x, l[i], c[i], y];
 
 GGV = GluonGhostVertex;
 

@@ -38,11 +38,6 @@ Options[ScalarGluonVertex] = {
 	Gauge -> 1
 };
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-ScalarGluonVertex[x___, i_Integer, y___] :=
-	ScalarGluonVertex[x, l[i], c[i], y];
-
 (* 3 - vertex *)
 ScalarGluonVertex[x1_,x2_,x3_,x4_, opts:OptionsPattern[]] :=
 	ScalarGluonVertex[{x1}, {x2}, {x3,x4}, opts] /;

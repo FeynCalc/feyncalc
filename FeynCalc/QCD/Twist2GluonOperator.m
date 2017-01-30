@@ -52,11 +52,6 @@ Options[Twist2GluonOperator] = {
 
 GO = Twist2GluonOperator;
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-Twist2GluonOperator[x___, i_Integer, y___] :=
-	Twist2GluonOperator[x, l[i], c[i], y];
-
 Twist2GluonOperator[a1_, a2_, a3_, a4_, a5_, opt:OptionsPattern[]] :=
 	Twist2GluonOperator[a1, {a2, a3}, {a4,a5}, opt] /;
 	FreeQ2[Map[Head, {a1, a2, a3, a4, a5}], {Integer, Rule}];

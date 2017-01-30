@@ -36,12 +36,13 @@ End[]
 
 Begin["`Twist3QuarkOperator`Private`"]
 
-Options[Twist3QuarkOperator] = { CouplingConstant -> SMP["g_s"],
-													Dimension -> D, Polarization -> 1};
+Options[Twist3QuarkOperator] = {
+	CouplingConstant -> SMP["g_s"],
+	Dimension -> D,
+	Polarization -> 1
+};
 
-Twist3QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer,
-																			w_/;Head[w] =!= Integer,
-	opt___Rule] :=
+Twist3QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer, w_/;Head[w] =!= Integer, opt___Rule] :=
 	Twist3QuarkOperator[a1, opt];
 
 (* 2 - Quark operator; unpolarized :   RH (3A.8); (3A.9) *)
@@ -59,13 +60,8 @@ Twist3QuarkOperator[pi_, opt___Rule] :=
 		re
 	];
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
 Twist3QuarkOperator[p_, i_Integer, j_Integer] :=
 	QuarkOperator[p];
-Twist3QuarkOperator[x___, i_Integer, y___] :=
-	QuarkOperator[x, l[i], c[i], y];
-
 
 (* Quark - Quark - Gluon *)
 
