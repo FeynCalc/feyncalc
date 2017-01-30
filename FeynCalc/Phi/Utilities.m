@@ -191,6 +191,11 @@ FixFermionAdjoints::usage =
 "FixFermionAdjoints[expr] substitutes DiracBars in expr with Adjoints, applies \
 DiracSimplify and substitutes back.";
 
+OptionsSelect::usage =
+"OptionsSelect[function,opts] returns the option settings of opts \
+accepted by function.  When an option occurs several times in opts, the first \
+setting is selected";
+
 Begin["`Package`"]
 End[]
 
@@ -468,6 +473,14 @@ MandelstamReduce1[amp_, opts___Rule] :=
 MandelstamReduce[amp_, opts___Rule] :=
 	MandelstamReduce1[MandelstamReduce1[amp, opts] /. manrul[opts], MomentaSumRule->False, opts];
 
+
+OptionsSelect[function_, opts___] :=
+	Select[(Cases[{opts}, _Rule|_RuleDelayed, Infinity] //.
+	{{a___, b_ -> c_, d___, b_ -> e_, f___} -> {a, b -> c, d, f},
+	{a___, b_ :> c_, d___, b_ :> e_, f___} -> {a, b :> c, d, f}}),
+	(!FreeQ[#, (Options[function] /.
+						{((a_ -> b_) | (a_ :> b_)) -> ((a -> _) | (a :> _))} /.
+							List -> Alternatives)])&];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)

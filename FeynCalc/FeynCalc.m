@@ -206,11 +206,6 @@ FI::usage =
 This is useful to see the internal representation of FeynCalc \
 objects. To change back to FeynCalcForm use FC.";
 
-$Gauge::usage =
-"$Gauge(= 1/xi) is a constant specifying the gauge fixing parameter of QED \
-in Lorentz gauge.  The usual choice is Feynman gauge, $Gauge=1. \
-Notice that $Gauge is used by some functions, the option Gauge by others.";
-
 GenerateTarcerMX::usage =
 "GenerateTarcerMX creates the *.mx file for TARCER. This is necessary to use
 TARCER and has to be done only once. The evaluation usually takes a
@@ -314,11 +309,6 @@ scalar product value has been defined.";
 
 $OPEWard::usage =
 "$OPEWard is experimental.";
-
-OptionsSelect::usage =
-"OptionsSelect[function,opts] returns the option settings of opts \
-accepted by function.  When an option occurs several times in opts, the first \
-setting is selected";
 
 TBox::usage =
 "TBox[a, b, ...] produces a RowBox[{a,b, ...}] where \
@@ -474,10 +464,6 @@ If[ !ValueQ[$ScalarProducts],
 ];
 
 
-$Gauge/:
-	MakeBoxes[$Gauge,TraditionalForm]:=
-		MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]];
-
 GenerateTarcerMX :=
 	If[	Get@ToFileName[{$FeynCalcDirectory, "Tarcer"}, "TARCER.m"]=!= $Failed,
 		Print["Succesfully created ", Last@FileNames["*.mx", FileNameJoin[{$FeynCalcDirectory, "Tarcer"}]]]
@@ -573,15 +559,6 @@ c[w_Integer] :=
 			];
 			ToExpression[pre[[2]]<>ToString[w]]
 		];
-
-(*TODO: Get rid of OptionsSelect everywhere. Use FilterRules[opts, Options[function]] instead *)
-OptionsSelect[function_, opts___] :=
-	Select[(Cases[{opts}, _Rule|_RuleDelayed, Infinity] //.
-	{{a___, b_ -> c_, d___, b_ -> e_, f___} -> {a, b -> c, d, f},
-	{a___, b_ :> c_, d___, b_ :> e_, f___} -> {a, b :> c, d, f}}),
-	(!FreeQ[#, (Options[function] /.
-						{((a_ -> b_) | (a_ :> b_)) -> ((a -> _) | (a :> _))} /.
-							List -> Alternatives)])&];
 
 MakeFeynCalcPrivateContext[x_String] :=
 	MakeFeynCalcPrivateContext[x] =	ToExpression["FeynCalc`Private`"<>x];

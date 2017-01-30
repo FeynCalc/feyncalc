@@ -36,6 +36,12 @@
 
 *)
 
+
+$Gauge::usage =
+"$Gauge(= 1/xi) is a constant specifying the gauge fixing parameter of QED \
+in Lorentz gauge in Phi.  The usual choice is Feynman gauge, $Gauge=1. \
+Notice that $Gauge is used by some functions, the option Gauge by others.";
+
 $SUNRules::usage = "$SUNRules is an environment variable used by SUNReduce \
 to (hopefully) simplify expressions involving the functions SU2Delta, \
 SU3Delta, SU2F, SU3F and/or SU3D. After changing it, FixSUN should be \
@@ -1366,6 +1372,11 @@ MomentaScalarProduct[aua_, -b_] :=
 	-MomentaScalarProduct[aua, b];
 MomentaScalarProduct[-aua_, b_] :=
 	-MomentaScalarProduct[aua, b];
+
+$Gauge/:
+	MakeBoxes[$Gauge,TraditionalForm]:=
+		MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]];
+
 
 (*
 Notational box definitions:
