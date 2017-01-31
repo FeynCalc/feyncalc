@@ -323,14 +323,28 @@ FCPatternFreeQ[expr_List ,objs_List]:=
 	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence}, objs]];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
-	Block[ {free, notfree, tmp, null1, null2},
+	Block[ {free, notfree, tmp, time},
 		If[ OptionValue[Expanding],
 			tmp = Expand2[expr, vars],
 			tmp = expr
 		];
-		free = SelectFree[tmp + null1 + null2, vars] /. null1 | null2 -> 0;
-		notfree =
-		SelectNotFree[tmp + null1 + null2, vars] /. null1 | null2 -> 0;
+
+		time=AbsoluteTime[];
+
+		If[Head[tmp]===Plus,
+			free = SelectFree[tmp, vars];
+			notfree = SelectNotFree[tmp, vars],
+
+			If[	FreeQ2[tmp,vars],
+				free = tmp;
+				notfree = 0,
+
+				notfree = tmp;
+				free = 0
+			]
+		];
+		FCPrint[1,"FCSplit: Splitting, timing: ", N[AbsoluteTime[] - time, 4]];
+
 		If[ free + notfree =!= tmp || ! FreeQ2[free, vars],
 			Message[FCSplit::fail, expr, vars];
 			Abort[]
