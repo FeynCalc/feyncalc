@@ -39,6 +39,9 @@ Expand2::usage=
 "Expand2[exp, x] expands all sums containing x. \
 Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
+ExpandAll2::usage=
+"ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
+
 FCFactorOut::usage=
 "FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
 bring exp into a particular form that Mathematica refuses to give";
@@ -305,6 +308,21 @@ Expand2[x_, l_List] :=
 			t
 		]
 	];
+
+
+ExpandAll2[expr_] :=
+	FixedPoint[
+		Switch[	Head[#],
+				Times,
+					Distribute[#],
+				Plus,
+					If[	!FreeQ[List@@#,Plus],
+						(ExpandAll2 /@ #),
+						#
+					],
+				_,
+					expr
+		] &, expr];
 
 FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},

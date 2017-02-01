@@ -40,6 +40,50 @@ Tests`Shared`fcstSharedToolsComplement1 = {
 	"{}"}
 };
 
+Tests`Shared`fcstSharedToolsExpandAll2 =
+({
+{"fcstSharedToolsExpandAll2-ID1", "ExpandAll2[a]", "a"},
+{"fcstSharedToolsExpandAll2-ID2", "ExpandAll2[a b]", "a*b"},
+{"fcstSharedToolsExpandAll2-ID3", "ExpandAll2[a+b]", "a + b"},
+{"fcstSharedToolsExpandAll2-ID4", "ExpandAll2[c(a+b)]", "a*c + b*c"},
+{"fcstSharedToolsExpandAll2-ID5", "ExpandAll2[c(a+b)+e]",
+"a*c + b*c + e"},
+{"fcstSharedToolsExpandAll2-ID6", "ExpandAll2[c(a+b)+e(f+g)]",
+"a*c + b*c + e*f + e*g"},
+{"fcstSharedToolsExpandAll2-ID7", "ExpandAll2[h(c(a+b)+e(f+g))]",
+"a*c*h + b*c*h + e*f*h + e*g*h"},
+{"fcstSharedToolsExpandAll2-ID8",
+"ExpandAll2[h(c(a(i1+i2)+b(i3+i4))+e(f+g))]",
+"e*f*h + e*g*h + a*c*h*i1 + a*c*h*i2 + b*c*h*i3 + b*c*h*i4"},
+{"fcstSharedToolsExpandAll2-ID9",
+"ExpandAll2[h(c(a(i1(i5+i6)+i2)+b(i3+i4))+e(f+g))]",
+"e*f*h + e*g*h + a*c*h*i2 + b*c*h*i3 + b*c*h*i4 + a*c*h*i1*i5 + \
+a*c*h*i1*i6"},
+{"fcstSharedToolsExpandAll2-ID10", "ExpandAll2[FCI[GS[p]]]",
+"DiracGamma[Momentum[p]]"},
+{"fcstSharedToolsExpandAll2-ID11", "ExpandAll2[FCI[GSD[p]]]",
+"DiracGamma[Momentum[p, D], D]"},
+{"fcstSharedToolsExpandAll2-ID12", "ExpandAll2[FCI[GSE[p]]]",
+"DiracGamma[Momentum[p, -4 + D], -4 + D]"},
+{"fcstSharedToolsExpandAll2-ID13", "ExpandAll2[FCI[GS[p]+GS[q]]]",
+"DiracGamma[Momentum[p]] + DiracGamma[Momentum[q]]"},
+{"fcstSharedToolsExpandAll2-ID14", "ExpandAll2[FCI[GSD[p]+GSD[q]]]",
+	"DiracGamma[Momentum[p, D], D] + DiracGamma[Momentum[q, D], D]"},
+{"fcstSharedToolsExpandAll2-ID15", "ExpandAll2[FCI[GSE[p]+GSE[q]]]",
+	"DiracGamma[Momentum[p, -4 + D], -4 + D] + DiracGamma[Momentum[q, \
+-4 + D], -4 + D]"},
+{"fcstSharedToolsExpandAll2-ID16",
+"ExpandAll2[FCI[LC[i1,i2,i3,i4](GS[p]+GS[q])]]",
+"DiracGamma[Momentum[p]]*Eps[LorentzIndex[i1], LorentzIndex[i2], \
+LorentzIndex[i3], LorentzIndex[i4]] + \
+DiracGamma[Momentum[q]]*Eps[LorentzIndex[i1], LorentzIndex[i2], \
+LorentzIndex[i3], LorentzIndex[i4]]"},
+{"fcstSharedToolsExpandAll2-ID17", "ExpandAll2[{a,b,c}]",
+"{a, b, c}"},
+{"fcstSharedToolsExpandAll2-ID18", "ExpandAll2[{e(a+d),b,c}]",
+"{(a + d)*e, b, c}"}
+});
+
 Tests`Shared`fcstSharedToolsExpand2 = {
 {"fcstSharedToolsExpand2-ID1","Expand2[(x1 + x2 + x3) (2 x1 + 3 x2) + (y1 + y2 + y3) (2 y1 +
 	3 y2), {x1, x2}]","2 x1^2+5 x1 x2+2 x1 x3+3 x2^2+3 x2 x3+(2 y1+3 y2) (y1+y2+y3)"},
