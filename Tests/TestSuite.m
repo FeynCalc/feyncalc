@@ -53,12 +53,13 @@ FCPrint[0,"Error! Uknown test type",UseWriteString->True];
 Exit[]
 ];
 
-If [onlyTest=!="" && Head[onlyTest]===String,
-str = ".*"<>ToString[onlyTest]<>".*";
-fcTestList = StringCases[fcTestList,RegularExpression[str]]//Flatten;
-FCPrint[0,"Only following tests will be checked: ", fcTestList,UseWriteString->True];
-FCPrint[0,"\n",UseWriteString->True]
-]
+If[	onlyTest=!="" && Head[onlyTest]===String,
+	strList = StringSplit[ToString[onlyTest],"|"];
+	str = RegularExpression[(".*" <> # <> ".*")]& /@ strList;
+	fcTestList = StringCases[fcTestList,Alternatives@@str]//Flatten;
+	FCPrint[0,"Only following tests will be checked: ", fcTestList,UseWriteString->True];
+	FCPrint[0,"\n",UseWriteString->True]
+];
 
 testRunner/@fcTestList;
 FCPrint[0,"\n",UseWriteString->True];
