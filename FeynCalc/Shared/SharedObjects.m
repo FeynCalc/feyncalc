@@ -1536,7 +1536,7 @@ Pair[n_ x_Momentum, y_] :=
 	n Pair[x, y];
 
 (* Here we block some malformed Pair arguments *)
-
+(*
 Pair[x_]/; FCPatternFreeQ[{x}] :=
 	(Message[Pair::argrx, "Pair["<>ToString[{x}]<>"]", Length[{x}], 2]; Abort[]);
 
@@ -1549,7 +1549,7 @@ Pair[x_,y_+z_]/; (FCPatternFreeQ[{x,y,z}] &&
 
 Pair[x : (LorentzIndex | ExplicitLorentzIndex)[___] + y_, z_]/; (FCPatternFreeQ[{x,y,z}]):=
 	(Message[Pair::invalid, "Pair["<>ToString[{x+y}]<>","<>ToString[{z}]<>"]"]; Abort[]);
-
+*)
 
 (*    Treatment of four vectors, scalar products and metric tensors,
 	where the different parts are in different dimensions is performed
