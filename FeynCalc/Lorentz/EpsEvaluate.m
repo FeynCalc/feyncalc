@@ -51,7 +51,7 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 
 		(* List of all the unique Epsilon tensors	*)
-		uniqList = Cases[x+null1+null2,Eps[__],Infinity]//Union;
+		uniqList = Cases[x+null1+null2,_Eps,Infinity]//DeleteDuplicates//Sort;
 
 		(*	If the user specified to perform expansion only for some
 			special momenta, let's do it	*)
@@ -62,12 +62,14 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 		(* List of the expanded epsilons	*)
 
 		repRule = Thread[rud[uniqList, uniqList/.Eps->epsEval]] /. rud->RuleDelayed;
+		repRule = repRule /. RuleDelayed[a_, a_] :> Unevaluated@Sequence[];
 
 		(* Simple cross check	*)
 		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSym}],
 			Message[EpsEvaluate::fail];
 			Abort[]
 		];
+
 		x/.Dispatch[repRule]
 
 	];
