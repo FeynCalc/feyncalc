@@ -63,56 +63,79 @@ DataType[a_, b__, type_] :=
 	updates $NonComm and NonCommFreeQ *)
 
 DataType /:
-	HoldPattern[Set[DataType[exp_, NonCommutative], True]] :=
-		Block[{ndt, ndf, dt, ncq, nnn, nnt, set, downvalues, hp},
-			If[!MemberQ[$NonComm, exp],
-				AppendTo[$NonComm, exp]
+	HoldPattern[Set[DataType[exp_, NonCommutative], (bool:True|False)]] :=
+		Block[{ndt, ndf, dt, ncq, nnt, nnf, set, downvalues, hp, dvals, tmp},
+
+			If[	bool,
+				(* True *)
+				If[!MemberQ[$NonComm, exp],
+					AppendTo[$NonComm, exp]
+				],
+				(* False *)
+				If[MemberQ[$NonComm, exp],
+					$NonComm = SelectFree[$NonComm, exp];
+				];
+
 			];
-			ndt = (RuleDelayed @@ {HoldPattern @@ {dt[exp, NonCommutative]}, True}) /. dt -> DataType;
-			ndf = (RuleDelayed @@ {HoldPattern @@ {dt[exp, NonCommutative]}, False}) /. dt -> DataType;
-			If[FreeQ[DownValues[DataType], ndt],
-				DownValues[DataType] = Prepend[SelectFree[DownValues[DataType]/.{DataType->dt,HoldPattern->hp},
-					ndf/.{DataType->dt,HoldPattern->hp}]/.{dt->DataType,hp->HoldPattern}, ndt]
+
+			dvals = DownValues[DataType]/.{DataType->dt,HoldPattern->hp};
+			ndt = (RuleDelayed @@ {hp @@ {dt[exp, NonCommutative]}, True});
+			ndf = (RuleDelayed @@ {hp @@ {dt[exp, NonCommutative]}, False});
+
+			If[	bool,
+				(* True *)
+				If[	FreeQ[dvals, ndt],
+					If[ !FreeQ[dvals, ndf],
+						tmp = SelectFree[dvals, ndf],
+						tmp = dvals
+					];
+					DownValues[DataType] = (Flatten[{tmp, ndt}] /. hp->HoldPattern /. dt -> DataType);
+
+				],
+
+				(* False *)
+				If[	FreeQ[dvals, ndf],
+					If[ !FreeQ[dvals, ndt],
+						tmp = SelectFree[dvals, ndt],
+						tmp = dvals
+					];
+					DownValues[DataType] = (Flatten[{tmp, ndf}] /. hp->HoldPattern /. dt -> DataType);
+				]
 			];
+
+			nnt = (RuleDelayed @@ {hp[ncq[exp]], True}) /. ncq -> NonCommFreeQ;
+			nnf = (RuleDelayed @@ {HoldPattern @@ {ncq[exp]}, False}) /. ncq -> NonCommQ;
+
+			(* 	Careful, the downvalues of NonCommFreeQ and NonCommQ swell up a lot due to
+				the memoization of those function. So one should avoid modifying them unless
+				absolutely necessary. *)
+
 			(* Update NonCommFreeQ *)
-			nnt = (RuleDelayed @@ {HoldPattern @@ {ncq[exp]}, False}) /. ncq -> NonCommFreeQ;
-			set[downvalues[NonCommFreeQ],Prepend[SelectFree[DownValues@@{NonCommFreeQ}, exp],
-			nnt]] /. {set :> Set, downvalues :> DownValues};
+			If[	!FreeQ[DownValues[NonCommFreeQ],exp],
+				dvals = DownValues[NonCommFreeQ];
+				If[	bool,
+					(*True*)
+					set[downvalues[NonCommFreeQ],Prepend[SelectFree[dvals, exp], nnf]] /. {set :> Set, downvalues :> DownValues},
+
+					(*False*)
+					set[downvalues[NonCommFreeQ],Prepend[SelectFree[dvals, exp], nnt]] /. {set :> Set, downvalues :> DownValues}
+				]
+			];
+
 			(* Update NonCommQ *)
-			nnt = (RuleDelayed @@ {HoldPattern @@ {ncq[exp]}, True}) /. ncq -> NonCommQ;
-			set[downvalues[NonCommQ],Prepend[SelectFree[DownValues@@{NonCommQ}, exp],
-			nnt]] /. {set :> Set, downvalues :> DownValues};
-			True
+			If[	!FreeQ[DownValues[NonCommQ],exp],
+				dvals = DownValues[NonCommQ];
+				If[	bool,
+					(*True*)
+					set[downvalues[NonCommQ],Prepend[SelectFree[dvals, exp], nnt]] /. {set :> Set, downvalues :> DownValues},
+
+					(*False*)
+					set[downvalues[NonCommQ],Prepend[SelectFree[dvals, exp], nnf]] /. {set :> Set, downvalues :> DownValues}
+				]
+			];
+
+			bool
 		];
-
-
-DataType /:
-	HoldPattern[Set[DataType[exp_, NonCommutative], False]] :=
-		Block[{ndt, ndf, dt, ncq, nnn, nnt, set, downvalues,hp},
-			If[MemberQ[$NonComm, exp],
-				$NonComm = SelectFree[$NonComm, exp];
-			];
-			ndt = (RuleDelayed @@ {HoldPattern @@{dt[exp, NonCommutative]}, True}) /. dt -> DataType;
-			ndf = (RuleDelayed @@ {HoldPattern @@{dt[exp, NonCommutative]}, False}) /. dt -> DataType;
-			If[FreeQ[DownValues[DataType], ndf],
-				DownValues[DataType] = Prepend[SelectFree[DownValues[DataType]/.{DataType->dt,HoldPattern->hp},
-					ndt/.{DataType->dt,HoldPattern->hp}]/.{dt->DataType,hp->HoldPattern}, ndf]
-			];
-			(* Update NonCommFreeQ *)
-			nnn = (RuleDelayed @@ {HoldPattern @@{ncq[exp]}, _}) /. ncq -> NonCommFreeQ;
-			If[!FreeQ[DownValues[NonCommFreeQ], nnn],
-				DownValues[NonCommFreeQ] = SelectFree[DownValues[NonCommFreeQ], nnn]
-			];
-			nnt = (RuleDelayed @@ {HoldPattern @@ {ncq[exp]}, True}) /. ncq -> NonCommFreeQ;
-			set[downvalues[NonCommFreeQ],Prepend[SelectFree[DownValues@@{NonCommFreeQ}, exp],
-			nnt]] /. {set :> Set, downvalues :> DownValues};
-			(* Update NonCommQ *)
-			nnt = (RuleDelayed @@ {HoldPattern @@ {ncq[exp]}, False}) /. ncq -> NonCommQ;
-			set[downvalues[NonCommQ],Prepend[SelectFree[DownValues@@{NonCommQ}, exp],
-			nnt]] /. {set :> Set, downvalues :> DownValues};
-			False
-		];
-
 
 (* Special rules for FCTensor *)
 (* Setting DataType[x,FCTensor]=True or DataType[x,FCTensor]=False

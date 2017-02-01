@@ -109,22 +109,34 @@ UnDeclareNonCommutative[b__] :=
 	(Map[Set[DataType[#, NonCommutative], False]&, Flatten[{b}]]; Null);
 
 (* Have traces treated as commutating objects. F.Orellana, 11/9-2002. *)
-excludeTraces = a : (DiracTrace |  SUNTrace)[__] :>
+
+excludeTraces = {_DiracTrace :> Unique["DiracTrace"], _SUNTrace :> Unique["SUNTrace"]};
+(*
+a : (DiracTrace |  SUNTrace)[__] :>
 (a /. (Rule[#, ToString[#]] & /@{DiracTrace, SUNTrace, Sequence @@ $NonComm}));
+*)
 
 NonCommFreeQ[_?NumberQ] :=
 	True;
-NonCommFreeQ[x_] :=
-	MemSet[NonCommFreeQ[x], FreeQ2[x /. excludeTraces, $NonComm]];
 
-(*Comment: Because of this MemSet, NonCommFreeQ is updated when setting a new
-	DataType[x,NonCommutative]=True or DataType[x,NonCommutative]=False.
-	Rolf implemented it this way to gain speed I suppose. F.Orellana*)
+NonCommFreeQ[x_] :=
+	MemSet[NonCommFreeQ[x],
+		If[ !FreeQ2[x,{DiracTrace,SUNTrace}],
+				FreeQ2[x /. excludeTraces, $NonComm],
+				FreeQ2[x, $NonComm]
+		]
+	];
 
 NonCommQ[_?NumberQ]   :=
 	False;
+
 NonCommQ[x_] :=
-	MemSet[NonCommQ[x],	!FreeQ2[x /. excludeTraces, $NonComm]];
+	MemSet[NonCommQ[x],
+		If[ !FreeQ2[x,{DiracTrace,SUNTrace}],
+				!FreeQ2[x /. excludeTraces, $NonComm],
+				!FreeQ2[x, $NonComm]
+		]
+	];
 
 FCPrint[1,"NonCommutative loaded"];
 End[]
