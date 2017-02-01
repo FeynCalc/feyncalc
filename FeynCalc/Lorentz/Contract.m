@@ -335,7 +335,8 @@ Contract[expr_, z:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"Contract: Separating terms that contain Lorentz indices with a FreeIndex DataType", FCDoControl->cnVerbose];
-		freeIndList = Cases[tmp+null1+null2,LorentzIndex[ind_,_:4]/; DataType[ind,FreeIndex]:> {ind,freeHead[ind]},Infinity]//Union;
+		freeIndList = Cases[res, _LorentzIndex, Infinity] // DeleteDuplicates // Sort //
+			Cases[#, LorentzIndex[ind_, ___] /; DataType[ind, FreeIndex] :> {ind, freeHead[ind]}, Infinity] & // DeleteDuplicates // Sort;
 		If[	freeIndList=!={},
 			FCPrint[3, "Contract: List of indices that should not be summed over", freeIndList, FCDoControl->cnVerbose];
 			tmp/. Map[(Rule @@ #) &, freeIndList];
@@ -347,8 +348,9 @@ Contract[expr_, z:OptionsPattern[]] :=
 		FCPrint[3, "Contract: Other terms: ", tmp, FCDoControl->cnVerbose];
 
 		(* Assuming that numer of terms Upper and Lower is rather small*)
-		FCPrint[1,"Contract: Separating terms that contain Lorentz indices with Upper or Lower", FCDoControl->cnVerbose];
+
 		If[	!FreeQ2[tmp, {Upper,Lower}],
+			FCPrint[1,"Contract: Separating terms that contain Lorentz indices with Upper or Lower", FCDoControl->cnVerbose];
 			time=AbsoluteTime[];
 			{tmp,rest3} = FCSplit[tmp, {Upper,Lower},Expanding->False];
 			FCPrint[3, "Contract: Terms that contain Upper or Lower: ", rest3, FCDoControl->cnVerbose];
@@ -366,15 +368,26 @@ Contract[expr_, z:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"Contract: Separating terms that contain dummy Lorentz indices", FCDoControl->cnVerbose];
 		tmpCheck = tmp;
-		tmp = tmp /. Power[a_, b_Integer?Positive] /; !FreeQ[a, LorentzIndex] :> Apply[times, Table[a, {i, b}]];
-		tmpList = Apply[List,tmp+null1+null2];
+		If[ !FreeQ[tmp,Power],
+			tmp = tmp /. Power[a_, b_Integer?Positive] /; !FreeQ[a, LorentzIndex] :> Apply[times, Table[a, {i, b}]];
+		];
+		If[ !DummyLorentzIndexFreeQ[tmp],
 
-		tmp = Select[tmpList, hasDummyIndices];
-		noDummy = Complement[tmpList,tmp];
+			tmpList = Apply[List,tmp+null1+null2];
+			tmp = Select[tmpList, hasDummyIndices];
+			noDummy = Complement[tmpList,tmp];
 
-		(*noDummy contains epsilon tensors like LC[a,b,c,d]LC[e,f,g,h]*)
-		tmp = Total[tmp]/.times->Times/.null1|null2->0;
-		noDummy = Total[noDummy]/.times->Times/.null1|null2->0;
+			(*noDummy contains epsilon tensors like LC[a,b,c,d]LC[e,f,g,h]*)
+			tmp = Total[tmp]/.times->Times/.null1|null2->0;
+			noDummy = Total[noDummy]/.times->Times/.null1|null2->0,
+
+			If[ !FreeQ[tmp,times],
+				tmp = tmp /.times->Times;
+			];
+
+			noDummy = tmp;
+			tmp = 0
+		];
 
 		(* check that we didn't loose any terms *)
 		If[tmp+noDummy =!=tmpCheck,
@@ -464,22 +477,22 @@ Contract[expr_, z:OptionsPattern[]] :=
 		If[ !FreeQ[tmpFin, Eps] && renameOpt,
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
-			tmpFin = doubleindex[Expand[ tmpFin//EpsEvaluate, Eps]];
+			tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
 			FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
 		If[ epsContractOpt,
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Contracting epsilon tensors.", FCDoControl->cnVerbose];
-			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = FCLoopIsolate[EpsEvaluate[tmpFin],{Eps},Head->tmpHead,PaVe->False,FCI->True,
+			If[	!EpsContractFreeQ[tmpFin],
+				tmpFin = FCLoopIsolate[EpsEvaluate[tmpFin,FCI->True],{Eps},Head->tmpHead,PaVe->False,FCI->True,
 					ExpandScalarProduct->False,DiracGammaExpand->False,DotSimplify->False,FeynAmpDenominatorSplit->False,
 					Factoring->False]/. tmpHead-> epsCleverCon
 
 			];
 
-			If[	!FreeQ[noDummy, Eps],
-				noDummy = FCLoopIsolate[EpsEvaluate[noDummy],{Eps},Head->tmpHead,PaVe->False,FCI->True,
+			If[	!EpsContractFreeQ[noDummy],
+				noDummy = FCLoopIsolate[EpsEvaluate[noDummy,FCI->True],{Eps},Head->tmpHead,PaVe->False,FCI->True,
 					ExpandScalarProduct->False,DiracGammaExpand->False,DotSimplify->False,FeynAmpDenominatorSplit->False,
 					Factoring->False]/. tmpHead-> epsCleverCon
 			];
@@ -516,10 +529,10 @@ Contract[expr_, z:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
 			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = tmpFin//EpsEvaluate;
+				tmpFin = EpsEvaluate[tmpFin,FCI->True];
 			];
 			If[	!FreeQ[noDummy, Eps],
-				noDummy = noDummy//EpsEvaluate;
+				noDummy = EpsEvaluate[noDummy,FCI->True];
 			];
 			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];

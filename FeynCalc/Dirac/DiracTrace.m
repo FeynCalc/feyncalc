@@ -184,10 +184,14 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 		diracObjectsEval = diracObjectsEval/. noSpur[x__]:> diTr[DOT[x]]/unitMatrixTrace;
 
+		FCPrint[1,"DiracTrace: diracTraceEvaluate finished, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
+
 		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
 		FCPrint[3,"DiracTrace: repRule: ",repRule , FCDoControl->diTrVerbose];
 
 		tr3 = (unitMatrixTrace freePart) + ( dsPart/.repRule);
+
+
 
 		(* If the result should contain Mandelstam variables *)
 		If[ Length[OptionValue[Mandelstam]] > 0,
@@ -400,7 +404,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 			(* 	Expansion of scalar products. If some of the scalar products were arlready defined,
 				they will be inserted here.	*)
-			If[ OptionValue[DiracTrace,{opts},Expand],
+			If[ OptionValue[DiracTrace,{opts},Expand] && !FreeQ[{traceListNonChiral,traceListChiral,gammaFree,gammaPart}, Momentum],
 				time2=AbsoluteTime[];
 				FCPrint[1,"DiracTrace: diracTraceEvaluate: Expanding scalar products", FCDoControl->diTrVerbose];
 				traceListNonChiral=Map[ExpandScalarProduct[#,FCI->False]&,traceListNonChiral];
@@ -411,15 +415,18 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			];
 
 			(* Create the substitution rule*)
+			time2=AbsoluteTime[];
+			FCPrint[1,"DiracTrace: diracTraceEvaluate: Rebuilding the full result.", FCDoControl->diTrVerbose];
 			repRule = MapThread[Rule[#1,#2]&,{spurHeadListChiral,traceListChiral}];
 			repRule = Join[repRule,MapThread[Rule[#1,#2]&,{spurHeadListNonChiral,traceListNonChiral}]];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: repRule: ", traceListChiral, FCDoControl->diTrVerbose];
 			(* The trace of any standalone Dirac matrix is zero, g^6 and g^7 are of course special *)
 			tmp = (gammaFree/. wrapRule) + (gammaPart/.repRule);
+			FCPrint[1,"DiracTrace: diracTraceEvaluate: Full result ready, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: tmp: ", tmp, FCDoControl->diTrVerbose];
 
-			If[	!FreeQ2[tmp /. noSpur[__]:>1,{spurHead,DiracGamma}],
+			If[	!FreeQ2[tmp /. _noSpur:>1,{spurHead,DiracGamma}],
 				Message[DiracTrace::failmsg, "Something went wrong while substituting trace results."];
 				Abort[]
 			];
@@ -430,16 +437,17 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 		(*	At this point there should be no Dirac matrices left, by definition.
 			The only allowed exception are objects wrapped into noSpur *)
-		If[ !FreeQ[tmp /. noSpur[__]:>1 ,DiracGamma],
+		If[ !FreeQ[tmp /. _noSpur:>1, DiracGamma],
 			Message[DiracTrace::failmsg,"The output still contains Dirac matrices"];
 			Abort[]
 		];
 
 		(* If there are uncontracted Lorentz indices, try to contract them *)
-		If[ (contract===True || (NumberQ[contract] && LeafCount[tmp] < contract)) && !FreeQ[tmp, LorentzIndex],
+
+		If[ contract===True && !DummyLorentzIndexFreeQ[tmp],
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Contracting Lorentz indices. ", FCDoControl->diTrVerbose];
-			tmp=Contract[tmp];
+			tmp=Contract[tmp,FCI->True];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: After Contract: ", tmp, FCDoControl->diTrVerbose];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose]
 		];
@@ -449,9 +457,11 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 		If[ !FreeQ[tmp, Eps],
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Treating Eps tensors.", FCDoControl->diTrVerbose];
-			tmp = EpsEvaluate[tmp]//Expand;
-			tmp = Contract[ tmp, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract],
-								Schouten->schoutenopt, Expanding -> False ];
+			tmp = EpsEvaluate[tmp,FCI->True]//Expand;
+			If[ (contract===True || (NumberQ[contract] && LeafCount[tmp] < contract)),
+				tmp = Contract[ tmp, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract],
+								Schouten->schoutenopt, Expanding -> False, FCI->True];
+			];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Done with Eps tensors, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose]
 		];
 
@@ -465,7 +475,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 				diractrres = diractrfact[unitMatrixTrace tmp]
 			]
 		];
-		FCPrint[3,"DiracTrace: diracTraceEvaluate: After factoring: ", tmp, FCDoControl->diTrVerbose];
+		FCPrint[3,"DiracTrace: diracTraceEvaluate: After factoring: ", diractrres, FCDoControl->diTrVerbose];
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Factoring done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
 		diractrpc[x__] :=
@@ -624,7 +634,7 @@ spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
 	]/; EvenQ[Length[{x}]] && Length[{x}]>4;
 
 spur5BMHVWest[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma, DiracGamma[5]] :=
-	EpsEvaluate[$LeviCivitaSign I Eps[x[[1]],y[[1]],r[[1]],z[[1]]]];
+	EpsEvaluate[$LeviCivitaSign I Eps[x[[1]],y[[1]],r[[1]],z[[1]]],FCI->True];
 
 
 spur5BMHVNoWest[x__DiracGamma, DiracGamma[5]]:=
