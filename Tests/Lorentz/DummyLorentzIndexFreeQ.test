@@ -1,0 +1,35 @@
+
+
+(* :Title: DummyLorentzIndexFreeQ.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DummyLorentzIndexFreeQ	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstDummyLorentzIndexFreeQ =
+({
+{"fcstDummyLorentzIndexFreeQ-ID1", "DummyLorentzIndexFreeQ[0]",
+"True"},
+{"fcstDummyLorentzIndexFreeQ-ID2", "DummyLorentzIndexFreeQ[a]",
+"True"},
+{"fcstDummyLorentzIndexFreeQ-ID3",
+"DummyLorentzIndexFreeQ[FCI[FV[p,i]]]", "True"},
+{"fcstDummyLorentzIndexFreeQ-ID4",
+"DummyLorentzIndexFreeQ[FCI[FV[p,i]^2]]", "False"},
+{"fcstDummyLorentzIndexFreeQ-ID5",
+"DummyLorentzIndexFreeQ[xxx(Sum[Pair[Momentum[p[i]],LorentzIndex[\
+li]],{i,1,50000}])]", "True"},
+{"fcstDummyLorentzIndexFreeQ-ID6",
+"DummyLorentzIndexFreeQ[xxx(Sum[Pair[Momentum[p[i]],LorentzIndex[\
+li]],{i,1,50000}])+FCI[FV[q,i]MT[j,j]]]", "False"},
+{"fcstDummyLorentzIndexFreeQ-ID7",
+"DummyLorentzIndexFreeQ[FCI[FV[p1,i]+FV[p2,i]+FV[p3,i]MT[j,j]]]",
+"False"}
+});
