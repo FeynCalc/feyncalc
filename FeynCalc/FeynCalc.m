@@ -166,6 +166,17 @@ $Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
 $FCTensorList::usage =
 "$FCTensorList contains a list of all tensor heads present.";
 
+FCSetMetricSignature::usage =
+"FCSetMetricSignature sets the signature of the Minkowski metric used when \
+working with Cartesian objects, like CartPair, CartIndex, CartMomentum etc. \
+The default choice is (1,-1,-1,-1) which corresponds to \
+FCSetMetricSignature[{1,-1}]";
+
+FCGetMetricSignature::usage =
+"FCGetMetricSignature returns the signature of the Minkowski metric used when \
+working with Cartesian objects, like CartPair, CartIndex, CartMomentum etc. \
+{1,-1} corresponds to (1,-1,-1,-1) and {-1,1} means (-1, 1, 1, 1)";
+
 FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
 is larger than level.";
@@ -467,6 +478,24 @@ Options[FCPrint] = {
 		UseWriteString -> False,
 		WriteStringOutput ->"stdout"
 }
+
+
+FeynCalc`Package`MetricT = 1;
+FeynCalc`Package`MetricS = -1;
+
+FCSetMetricSignature[{t_Integer,s_Integer}]:=
+	(
+	If[ {s^2,t^2}=!={1,1},
+		Message[SharedObjects::failmsg, "The square of each diagonal element of the metric tensor must be unity."];
+		Abort[]
+	];
+	FeynCalc`Package`MetricT = t;
+	FeynCalc`Package`MetricS = s;
+	);
+
+FCGetMetricSignature[]:=
+	{FeynCalc`Package`MetricT,FeynCalc`Package`MetricS};
+
 
 FCPrint[level_, fcprintx__ /;!OptionQ[{fcprintx}] , OptionsPattern[]] :=
 	Block[{flowcontrol=OptionValue[FCDoControl]},
