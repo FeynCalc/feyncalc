@@ -86,6 +86,12 @@ NPointTo4Point[expr_Plus,q_,opts:OptionsPattern[]]:=
 NPointTo4Point[pref_. fad_FeynAmpDenominator,qu_, OptionsPattern[]]:=
 	Block[{pp, res, tim,pl,ml, termHold,tmp, factoring},
 
+
+		If[	!FreeQ2[{sps fad}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	OptionValue[FCVerbose]===False,
 			nptfpVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],

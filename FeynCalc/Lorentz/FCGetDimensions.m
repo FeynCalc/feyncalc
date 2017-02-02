@@ -34,6 +34,11 @@ Options[FCGetDimensions] = {
 FCGetDimensions[expr_, OptionsPattern[]]:=
 	Block[{ex, res, null1,null2},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr

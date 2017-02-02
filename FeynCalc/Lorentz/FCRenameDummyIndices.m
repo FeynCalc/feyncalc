@@ -33,6 +33,12 @@ FCRenameDummyIndices[expr_List] :=
 
 FCRenameDummyIndices[expr_] :=
 	Block[ {indexList = {}, replacementList, exprFCI},
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		exprFCI = expr // FCI // DotSimplify // Expand;
 		If[ Head[exprFCI]===Plus,
 			indexList =

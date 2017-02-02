@@ -43,6 +43,11 @@ Options[FCLoopExtract] = {
 FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 	Block[ {exp, tmp, rel, irrel, rest, loopInts, intsUnique, null1, null2},
 
+		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		(*This is the list of all the loop integrals in the expression.*)
 		If[ !OptionValue[FCI],
 			exp = FeynCalcInternal[ex],

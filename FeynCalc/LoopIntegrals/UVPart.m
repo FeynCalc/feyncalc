@@ -28,6 +28,13 @@ UVPart[exp_Plus, q_] :=
 
 UVPart[exp_,q_] :=
 	Block[ {neglect, qcheck},
+
+
+		If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		neglect[ FeynAmpDenominator[PD[Momentum[q,___],0]..]] :=
 			0;
 

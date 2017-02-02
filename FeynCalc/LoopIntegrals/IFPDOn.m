@@ -31,6 +31,11 @@ IFPDOn[exp_,qu__] :=
 		Block[ {int,qq,sub,t0,t1,t2,t3,t4,MyHold,feynsub,ifnu,
 			condition,pa,unsameq, checkm, checkp, thr,t0r,bb},
 
+			If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+			];
+
 			int = FeynAmpDenominatorSplit[exp];
 			t0 = Cases2[int, FeynAmpDenominator];
 			FCPrint[3,"t0: ",t0];

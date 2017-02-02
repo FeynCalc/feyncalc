@@ -41,6 +41,11 @@ DiracEquation[ex_, OptionsPattern[]] :=
 			expr  = ex
 		];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		(* If there are no spinors or no Dirac matrices, then we can't apply the Dirac equation	*)
 		If[	FreeQ2[expr, {Spinor,DiracGamma}],
 			Return[expr];

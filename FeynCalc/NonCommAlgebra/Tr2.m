@@ -70,6 +70,12 @@ trdifficult[y_, ops___Rule] :=
 
 Tr2[x_] :=
 	Block[{tt=FCI[x]},
+
+		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[FreeQ[tt, DiracTrace],
 			tt = DiracTrace[tt]
 		];

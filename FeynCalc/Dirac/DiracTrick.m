@@ -108,6 +108,11 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	OptionValue[InsideDiracTrace],
 			insideDiracTrace = True,
 			insideDiracTrace = False

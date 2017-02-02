@@ -108,6 +108,11 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		unitMatrixTrace = OptionValue[TraceOfOne];
 
 		FCPrint[1, "DiracTrace. Entering.", FCDoControl->diTrVerbose];

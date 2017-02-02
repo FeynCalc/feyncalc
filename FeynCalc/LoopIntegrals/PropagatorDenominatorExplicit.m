@@ -44,6 +44,11 @@ Options[PropagatorDenominatorExplicit] = {
 PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 	Block[{ex, dim, res, head, mandel, ruleNormal, ruleMandelstam, fad},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]

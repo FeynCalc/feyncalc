@@ -58,6 +58,11 @@ momconv[pp_Symbol]:=
 TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
 	Block[ {out, rules},
 
+		If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
 			Message[TarcerToFC::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
 			Abort[]

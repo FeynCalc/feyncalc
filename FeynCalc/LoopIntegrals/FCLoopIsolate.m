@@ -69,6 +69,11 @@ fullDep[z_,lmoms_]:=
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
 		If[	MatchQ[lmoms0,{{___}}],

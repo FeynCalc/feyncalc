@@ -415,6 +415,12 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 				},
 
 
+			If[	!FreeQ2[{lag,fii}, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+			];
+
+
 			FCPrint[1, "FeynRule: Entering with ", lag, FCDoControl->frVerbose];
 
 			nlag = nlag /. SUND -> localSUND /. SUNF -> localSUNF;

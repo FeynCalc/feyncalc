@@ -46,6 +46,12 @@ Anti5[expr_] :=
 Anti5[xx_, n_] :=
 	Block[ {HoldDOT, ruleBMHVRight, ruleAnticommute, ruleNaiveRight,
 			ruleBMHVLeft, ruleNaiveLeft, temp, result},
+
+		If[	!FreeQ2[{xx}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		temp = FeynCalcInternal[xx] /. {1/2+DiracGamma[5]/2:>DiracGamma[6],1/2-DiracGamma[5]/2:>DiracGamma[7]} /. DOT -> HoldDOT;
 		HoldDOT[] :=
 			1;

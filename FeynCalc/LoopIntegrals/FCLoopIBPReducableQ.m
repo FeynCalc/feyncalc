@@ -33,6 +33,12 @@ Begin["`FCLoopBasis`Private`"]
 FCLoopIBPReducableQ[sps_. fad_FeynAmpDenominator]:=
 	MemSet[FCLoopIBPReducableQ[sps fad],
 		Block[{fadList,res},
+
+			If[	!FreeQ2[{sps,fad}, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+			];
+
 			fadList = Sort[List@@fad];
 			res = (fadList=!=Union[fadList] || MatchQ[sps, _. Power[Pair[__], _]]);
 			res

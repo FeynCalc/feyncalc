@@ -25,12 +25,18 @@ Begin["`FeynCalcToLaTeX`Private`"]
 F2L = FeynCalcToLaTeX;
 
 FeynCalcToLaTeX[expr_, width_:500] :=
+	(
+	If[	!FreeQ2[expr, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
 	If[ !$Notebooks,
 		Needs["JLink`"];
 		JLink`InstallJava[];
 		JLink`UseFrontEnd[f2tex[expr, width]],
 		f2tex[expr,width]
-	];
+	]);
 
 (* this is of course heuristics; should change to java.util.regexp or so ... *)
 

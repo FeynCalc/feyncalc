@@ -34,6 +34,11 @@ Options[FCTraceFactor] = {
 FCTraceFactor[expr_, OptionsPattern[]] :=
 	Block[ {ex, moms,res, diracTraces},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]

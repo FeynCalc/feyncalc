@@ -32,6 +32,12 @@ Options[TFIOrder] = {};
 
 TFIOrder[expr_, OptionsPattern[]] :=
 	Block[{res,repRule},
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		repRule= {
 			(*Symmetry under the interchang q1 <-> q2*)
 			Tarcer`TFI[d_, p_, {{1, m1_}, {1, m2_}, {1, m3_}, {1, m4_}, {1, m5_}}] /; ! OrderedQ[{m1, m2}] :>

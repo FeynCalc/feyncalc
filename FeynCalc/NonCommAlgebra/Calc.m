@@ -34,6 +34,12 @@ Options[Calc] = {
 
 Calc[expr_, OptionsPattern[]] :=
 	Block[{calc,assumpts,usePowerExpand},
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		assumpts = OptionValue[Assumptions];
 		usePowerExpand = OptionValue[PowerExpand];
 		calc[exp_]:=

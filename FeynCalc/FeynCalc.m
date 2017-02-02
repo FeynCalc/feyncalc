@@ -327,6 +327,10 @@ typeseting rules that make various objects like Lorentz vectors or \
 Dirac matrices look nicer. To change the format type go to \
 Edit->Preferences->Evaluation.";
 
+FeynCalc::nrfail =
+"This function is not yet ready to work with new non-covariant objects \
+in FeynCalc.";
+
 FCMonitor::usage =
 "FCMonitor is a simple function that activates Monitor if there
 is a notebook interface available and disables it otherwise.";

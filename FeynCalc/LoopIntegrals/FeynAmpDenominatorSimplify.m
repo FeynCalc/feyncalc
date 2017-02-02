@@ -105,6 +105,12 @@ FeynAmpDenominatorSimplify[exp_, qmore__,
 FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 	Block[ {exp,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule},
 
+
+		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			fdsVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
@@ -563,6 +569,11 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			repRuleNested, fds2LoopsNested,
 			solsList, repRule
 			},
+
+		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
 
 		If [OptionValue[FCVerbose]===False,
 			fdsVerbose=$VeryVerbose,

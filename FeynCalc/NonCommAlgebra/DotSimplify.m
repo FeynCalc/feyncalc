@@ -85,6 +85,11 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 	holdDOTColor, holdDOTDirac, nvar, time, time0, maxIterations, dlin1
 	},
 
+		If[	!FreeQ2[{xxx}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],

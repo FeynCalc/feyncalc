@@ -53,6 +53,11 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 
 		maxIterations = OptionValue[MaxIterations];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]

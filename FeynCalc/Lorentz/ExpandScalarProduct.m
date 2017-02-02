@@ -35,6 +35,11 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 
 		moms = OptionValue[Momentum];
 
+		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ OptionValue[FCI],
 			nx = FCI[nx]
 		];

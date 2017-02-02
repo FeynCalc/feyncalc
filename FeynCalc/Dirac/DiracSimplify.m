@@ -90,6 +90,12 @@ insideDiracTrace::usage="";
 
 DiracSimplify2[exp_] :=
 	Block[ {nn,tt},
+
+		If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ FreeQ[exp,DOT],
 			exp,
 			nn = DotSimplify[DiracGammaExpand[FeynCalcInternal[exp]] /.
@@ -147,6 +153,11 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				dsVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
 		];
 
 		FCPrint[1, "DiracSimplify: Entering.", FCDoControl->dsVerbose];

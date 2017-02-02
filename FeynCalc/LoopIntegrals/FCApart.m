@@ -69,6 +69,11 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr

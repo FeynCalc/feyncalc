@@ -46,6 +46,11 @@ FCLoopSolutionList[{loopList_List, reversedRepIndexList_List,canIndexList_List,
 	uniqueCanIndexList_List}, solsList_List, OptionsPattern[]] :=
 	Block[{repSolList, reducedLoopList, finalRepList,z1,z2,z3},
 
+		If[	!FreeQ2[{loopList,solsList}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 	(*	Small cross-check	*)
 	If[	Length[uniqueCanIndexList]=!=Length[solsList] ||
 		Length[canIndexList]=!=Length[reversedRepIndexList],

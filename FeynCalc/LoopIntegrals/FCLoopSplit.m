@@ -49,6 +49,11 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
 			addToLoopScalar,tmp,loopIntHeads},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
 		If[	MatchQ[lmoms,{{___}}],

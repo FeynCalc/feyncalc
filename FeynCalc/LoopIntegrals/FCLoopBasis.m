@@ -100,6 +100,12 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 		basisElementsOrig, availableDims},
 		SetAttributes[spd,Orderless];
 
+
+		If[	!FreeQ2[{sps,fad}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		(* List of all the momenta that appear inside the integral *)
 		allmoms=Union[Cases[sps*fad,Momentum[x_,_:4]:>x,Infinity]];
 		extmoms = Complement[allmoms,loopmoms];
@@ -170,6 +176,11 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
@@ -216,6 +227,11 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
@@ -252,6 +268,11 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fclbVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
 		];
 
 		method = OptionValue[Method];

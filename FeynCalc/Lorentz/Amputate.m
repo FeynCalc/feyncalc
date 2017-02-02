@@ -47,6 +47,13 @@ Amputate[x_, q1_, q2:Except[_?OptionQ].., opt:OptionsPattern[]] :=
 
 Amputate[ex_, qi:Except[_?OptionQ], opt:OptionsPattern[]] :=
 	Block[ {q,exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,a$AL, TIMES},
+
+
+		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		exp = FeynCalcInternal[ex];
 		dim = Dimension /. {opt} /. Options[Amputate];
 		If[ Head[qi]===Momentum,

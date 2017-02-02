@@ -50,6 +50,12 @@ DiracReduce[x_, ops___Rule] :=
 					Select[Flatten[{ops}], FreeQ[#,Factoring]&]
 				]
 			];
+
+		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		finsub = Join[finsub1, FinalSubstitutions /. Options[DiracReduce]];
 		factoring = Factoring /. {ops} /. Options[DiracReduce];
 		diracSimplify = DiracSimplify /. {ops} /. Options[DiracReduce];

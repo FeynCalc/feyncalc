@@ -24,6 +24,11 @@ Begin["`CompleteSquare`Private`"]
 CompleteSquare[e_, x_ ,y_:Null] :=
 	Module[ {a, b, c, xx, ex, exp, dims, dim, rul, pa},
 
+		If[	!FreeQ2[{e,x,y}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		(* Make sure all momenta have the same dimension *)
 		dims = Union[Cases[e, (Dimension->_)|(Momentum[_,_]),Infinity]];
 		If[ dims =!= {},

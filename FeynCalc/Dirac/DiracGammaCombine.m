@@ -36,6 +36,11 @@ DiracGammaCombine[expr_, OptionsPattern[]] :=
 	Block[{	ex, tmp, res, holdDOT, freePart, diracPart, holdPlus, diracList, diracListEval, repRule,
 			null1, null2},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]

@@ -296,6 +296,12 @@ Contract[expr_, z:OptionsPattern[]] :=
 		renameOpt 		= OptionValue[Rename];
 		schoutenOpt 	= OptionValue[Schouten];
 
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			cnVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],

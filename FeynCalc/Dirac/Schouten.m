@@ -34,7 +34,14 @@ Begin["`Schouten`Private`"]
 Schouten[y_, 0] :=
 	y;
 Schouten[y_, oparg_:42] :=
-	FixedPoint[schouten[#, oparg]&, FeynCalcInternal[y], 14];
+	(
+	If[	!FreeQ2[{y}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
+	FixedPoint[schouten[#, oparg]&, FeynCalcInternal[y], 14]
+	);
 
 liget[_. Eps[x1_[y1_], x2_[y2_], x3_[y3_], x4_[y4_]] Pair[x5_[y5_],
 x6_[y6_]]] :=

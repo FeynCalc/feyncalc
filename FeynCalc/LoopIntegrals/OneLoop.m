@@ -229,6 +229,11 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[	!FreeQ2[{integ}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		onemandel					= OptionValue[Mandelstam];
 		denorder					= OptionValue[DenominatorOrder];
 		dim							= OptionValue[Dimension];
@@ -1290,6 +1295,12 @@ OneLoopSum[ex_, ops___] :=
 			intermedsub,isol2,combinelist,np,nnp,npavopt,iiv,lres,mmsu,iim,
 			feynAmpden1, feynAmpden2,masss1, masss2, fim,checklabel,finalSubstitutions},
 		exx = ex;
+
+		If[	!FreeQ2[{exx}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		sres = 0;
 		SetOptions[DiracTrace,  DiracTraceEvaluate -> False ];
 		exx = FixedPoint[ ReleaseHold, exx ];

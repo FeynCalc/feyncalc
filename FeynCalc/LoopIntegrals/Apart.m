@@ -80,6 +80,11 @@ Apart2[y_, OptionsPattern[]] :=
 	factoring = OptionValue[Factoring];
 	exclM  = OptionValue[ExcludeMasses];
 
+	If[	!FreeQ2[{y}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
 	If[factoring,
 		factFun=Factor2,
 		factFun=Identity,
@@ -102,6 +107,11 @@ Apart3[expr_, x_] :=
 ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule},
+
+		If[	!FreeQ2[{int}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
 
 		If [OptionValue[FCVerbose]===False,
 			affVerbose=$VeryVerbose,

@@ -47,6 +47,12 @@ TraceDimension -> 4      };
 FeynCalc2FORM[ file_:"tFc2F", xy_, ru___Rule] :=
 	Block[ {holdy, lors, lors4, lorsn, lordim, other, noatomic, newx ,x,y,
 	srules, srule2, temp},
+
+		If[	!FreeQ2[{xy}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ Head[xy] === Equal,
 			x = xy[[1]];
 			y = xy[[2]],

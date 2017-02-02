@@ -53,6 +53,12 @@ FCReplaceD[expr_, replacement_Rule, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
 		scaleless1=0,scaleless2=0,ruleProtect,holddim,dim,diga},
 
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		dim=First[replacement];
 		FCPrint[1,"FCReplaceD: dim: " ,dim, FCDoControl->fcrdVerbose];
 

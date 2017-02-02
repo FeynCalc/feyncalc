@@ -53,6 +53,11 @@ FourDivergence[x_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 
 			uList,sList,repRule,null1,null2, deriv},
 
+		If[	!FreeQ2[{x,fv}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [!OptionValue[FCI],
 			{nx,ve} = {FCI[x],FCI[{fv}]},
 			{nx,ve} = {x,{fv}}

@@ -17,6 +17,12 @@ Begin["`Trick`Private`"];
 
 Trick[x_] :=
 	Block[{tt, paulisigsimp, sigident,doot,cov,palr},
+
+		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		SetAttributes[cov,HoldFirst];
 		cov[y_] :=  y /. CovariantD[a__] :>	CovariantD[a, Explicit -> True];
 		SetAttributes[palr,HoldFirst];

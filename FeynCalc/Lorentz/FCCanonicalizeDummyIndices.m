@@ -87,6 +87,11 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
 			renamingList,cList,indexExtract},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],

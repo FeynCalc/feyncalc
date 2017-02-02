@@ -46,6 +46,11 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 
 	momList = OptionValue[Momentum];
 
+	If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
 
 	If[	!OptionValue[FCI],
 		x = FCI[expr],

@@ -38,8 +38,14 @@ With[ {lor = LorentzIndex, dot = DOT, fd = FieldDerivative},
 
 (* Expand one multiplication at a time. F.Orellana *)
 ExpandPartialD[x_, opts___Rule] :=
-	Fold[ExpandPartialD1[#1, #2, opts]&, x,
-	Complement[$Multiplications, {Times}]];
+	(
+	If[	!FreeQ2[x, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
+	Fold[ExpandPartialD1[#1, #2, opts]&, x, Complement[$Multiplications, {Times}]]
+	);
 
 (*
 ExpandPartialD1[x_] := Expand[FixedPoint[qfe, FCI[x], 7], QuantumField];

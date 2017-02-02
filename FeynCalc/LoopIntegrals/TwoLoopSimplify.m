@@ -39,6 +39,12 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 	dim, colg, two, twlist, twsublist, con, nan,tem,
 	ht7, ht10, ht11, ht12, table, pe, op2, decomposelist
 	},
+
+		If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		table   = IntegralTable /. {opt} /. Options[TwoLoopSimplify];
 		tolarin = ToLarin /. {opt} /. Options[TwoLoopSimplify];
 		If[ (table =!= {}) && Head[table] === List,

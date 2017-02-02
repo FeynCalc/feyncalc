@@ -34,6 +34,11 @@ Options[ToLarin] = {
 ToLarin[expr_, OptionsPattern[]] :=
 	Block[ {ex,fi1,fi2,fi3,drsi,res, dotHold, dim},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		dim = OptionValue[Dimension];
 		drsi = $LeviCivitaSign;
 		(*drsi is usually -1 *)

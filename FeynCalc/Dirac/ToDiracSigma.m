@@ -37,6 +37,11 @@ Options[ToDiracSigma] = {
 ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
 	Block[{ x, y,  ex},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		{x,y} = FCI[{xx,yy}];
 
 		If[ OptionValue[FCI],

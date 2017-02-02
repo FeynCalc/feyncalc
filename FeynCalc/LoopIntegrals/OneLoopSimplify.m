@@ -78,6 +78,11 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				Abort[]
 			];
 
+			If[	!FreeQ2[{amp}, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+			];
+
 
 			q = qu;
 			dim = Dimension /. {opt} /. Options[OneLoopSimplify];

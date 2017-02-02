@@ -77,6 +77,12 @@ Write2[file_String, eeq__, opts___Rule] :=
 	Block[ {j,vhf,vv,eq,k2str,tmp,
 	ops,ide, aa0, be00, be11,be0,be1, db0, ce0, de0, ansg,d0convention,finsubst,
 	oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep,prec},
+
+		If[	!FreeQ2[{eeq}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		ops         = Join[{opts}, Options[Write2]];
 		{finsubst, pagewidth } = {FinalSubstitutions, PageWidth} /. ops;
 		{prefortran, postfortran}  = Flatten /@ {{PreFortranFile},

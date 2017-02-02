@@ -46,6 +46,11 @@ Options[FCTraceExpand] = {
 FCTraceExpand[expr_, OptionsPattern[]] :=
 	Block[ {ex, moms,res, diracTraces,diracTraces2, sunTraces,sunTraces2},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		moms = OptionValue[Momentum];
 		dotSimp = OptionValue[DotSimplify];
 		propPres = OptionValue[PreservePropagatorStructures];

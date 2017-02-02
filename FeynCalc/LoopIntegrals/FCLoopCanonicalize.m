@@ -49,6 +49,11 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 		seed = ToString[Unique["li"]];
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		(*This is the list of all the loop integrals in the expression.*)
 		If[ OptionValue[FCI],
 			ex = expr,

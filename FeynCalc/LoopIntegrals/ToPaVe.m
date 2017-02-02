@@ -53,6 +53,11 @@ Options[ToPaVe] = {
 ToPaVe[expr_, q_, OptionsPattern[]] :=
 	Block[{ex,loopInt,irrel,rel,repList,res},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 
 		If [!FreeQ[$ScalarProducts, q],
 			Message[ToPaVe::failmsg, "The loop momentum " <> ToString[q,InputForm] <>

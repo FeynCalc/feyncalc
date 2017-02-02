@@ -43,6 +43,12 @@ Options[ PaVeReduce ] = {
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
 	Block[ {op, wriout, nnx = x, res},
+
+		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		op=Join[FilterRules[Options[PaVeReduce], Except[{opts}]], {opts}];
 		wriout = OptionValue[WriteOutPaVe];
 

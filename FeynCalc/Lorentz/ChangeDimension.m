@@ -27,7 +27,13 @@ Begin["`ChangeDimension`Private`"]
 
 ChangeDimension[x_, diim_] :=
 	Block[
-		{xx = FeynCalcInternal[x], dirGG, dirGAMM, pAiR, ld , md,spi4,eps,eps2},
+		{xx = FeynCalcInternal[x], dirGG, dirGAMM, pAiR, ld , md,spi4, eps, eps2},
+
+		If[	!FreeQ2[{xx}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[ diim === 4,
 			xx = xx /. {LorentzIndex[a_,___] :> LorentzIndex[a] ,
 									Momentum[b_,___]     :> Momentum[b],

@@ -99,6 +99,13 @@ FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
 	stringrules, vv, rv, nof, holdform , dotrule, holdplus,
 	myDot,myfile
 	},
+
+
+		If[	!FreeQ2[{fi,exprs}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		Map[Unset, Hold[exprs, lastexpr]];
 		dim = Dimension /. {ru}/. Options[FORM2FeynCalc];
 		holdform = HoldForm /. {ru}/. Options[FORM2FeynCalc];

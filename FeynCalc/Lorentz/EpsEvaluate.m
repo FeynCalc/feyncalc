@@ -37,6 +37,11 @@ Options[EpsEvaluate] = {
 EpsEvaluate[expr_, OptionsPattern[]]:=
 	Block[{x,momList,uniqList,rud,repRule,null1,null2},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		momList = OptionValue[Momentum];
 
 		If[ !OptionValue[FCI],

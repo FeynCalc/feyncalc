@@ -170,6 +170,12 @@ SquareAmplitude[ FeynAmpList[he___,
 	mand,factoring,exmom,exm, es,te, sel, scalP,
 	p1,p2,k1,k2,k3,k4,m12,m22,m32,m42,m52,m62,
 	finsubst,proc,extrafact},
+
+		If[	!FreeQ2[{he,process}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		dim       = Dimension   /. {opts} /. Options[SquareAmplitude];
 		mand      = Mandelstam  /. {opts} /. Options[SquareAmplitude];
 		inisubst  = FeynCalcInternal[InitialSubstitutions /.  {opts} /. Options[SquareAmplitude]];

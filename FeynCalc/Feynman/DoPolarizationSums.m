@@ -126,6 +126,12 @@ doPolarizationSum[expr_,k:Except[_?OptionQ], OptionsPattern[]] :=
 	]/; k=!=0;
 DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., opts:OptionsPattern[]] :=
 	Block[ {exp1, exp2,polvecmom1,polvecmom2,res},
+
+		If[	!FreeQ2[expr, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		exp1 = PolarizationUncontract[FCI[expr],{vectors}[[1]],opts];
 		If[ Head[exp1] === Plus,
 			exp2 = List @@ exp1,

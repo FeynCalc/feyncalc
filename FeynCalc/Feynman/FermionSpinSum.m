@@ -49,6 +49,14 @@ FermionSpinSum[expr_List, opts:OptionsPattern[]]:=
 FermionSpinSum[expr_, OptionsPattern[]] :=
 	Block[ {spinPolarizationSum,extraFactor,moms, ex, spChain, ssIso, time},
 
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
+
+
 		extraFactor = OptionValue[ExtraFactor];
 		moms = OptionValue[Momentum];
 

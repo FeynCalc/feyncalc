@@ -89,6 +89,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 	finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli
 	},
 
+		If[	!FreeQ2[{am}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],

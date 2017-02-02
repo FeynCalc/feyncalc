@@ -64,6 +64,11 @@ FCAbbreviate[expr_, loopmoms_List, extmoms_List, OptionsPattern[]] :=
 			];
 	];
 
+	If[	!FreeQ2[expr, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
 
 	FCPrint[1, "FCAbbreviate: Entering. ", FCDoControl->abbVerbose];
 	FCPrint[1, "FCAbbreviate: Entering with", expr, FCDoControl->abbVerbose];

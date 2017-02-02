@@ -47,6 +47,11 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 	Block[{	exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,
 			a$AL,dr, lidr,seq,dimSelect,times},
 
+		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		par = OptionValue[Pair];
 		dim = OptionValue[Dimension];
 

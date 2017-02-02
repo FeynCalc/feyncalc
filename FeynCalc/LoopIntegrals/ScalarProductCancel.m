@@ -66,6 +66,12 @@ ScalarProductCancel[int_, qs___, qlast_, OptionsPattern[]]:=
 ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 	Block[{exp,rank,tmp,tmpHead,null1,null2,res, maxRank},
 
+
+		If[	!FreeQ2[{int}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			spcVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],

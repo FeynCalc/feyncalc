@@ -30,8 +30,8 @@ ct[a_] :=
 
 ct[a__] :=
 	cot[Evaluate[SelectNotFree[{a}, Upper]],
-					 Evaluate[SelectFree[{a}, Upper]]
-					 ];
+					Evaluate[SelectFree[{a}, Upper]]
+					];
 
 SetAttributes[TTimes, HoldAll];
 SetAttributes[ttimes, HoldAll];
@@ -91,7 +91,14 @@ SetAttributes[Contract1,HoldAll];
 Contract1[exp_] := FixedPoint[con, exp, 1000];
 *)
 Contract1[exp_] :=
-	con[exp];
+	(
+	If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+	];
+
+	con[exp]
+	);
 
 fdim[] = 4;
 fdim[x_] :=

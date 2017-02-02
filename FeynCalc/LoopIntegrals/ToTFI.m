@@ -64,6 +64,11 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 			solsList,tfiLoopIntegral,repRule,null1,null2,res,
 			tfi1LoopQ1,tfi1LoopQ2},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		FCPrint[3, "ToTFI: Entering with ", expr, FCDoControl->toTFIVerbose];
 
 		If [OptionValue[FCVerbose]===False,

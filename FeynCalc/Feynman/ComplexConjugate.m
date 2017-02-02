@@ -85,6 +85,12 @@ Options[ComplexConjugate] = {
 
 ComplexConjugate[expr_, opts:OptionsPattern[]]:=
 	Block[{ex,res},
+
+		If[	!FreeQ2[expr, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr

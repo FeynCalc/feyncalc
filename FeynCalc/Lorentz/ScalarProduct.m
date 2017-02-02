@@ -80,6 +80,11 @@ ScalarProduct/:
 			spList, pairList, fceList, valsListOrig, valsList,
 			slot,dims,setval,dummy, tuples, hp, pr, sp, entry},
 
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		dims = OptionValue[ScalarProduct,{c},SetDimensions];
 		{a,b} = Sort[{araw,braw}];
 		tuples = {	{(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])]},

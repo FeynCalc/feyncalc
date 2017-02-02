@@ -54,6 +54,11 @@ TR[x_, rul:OptionsPattern[]] :=
 			];
 		];
 
+		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		FCPrint[1,"TR: Entering with: ", tt, FCDoControl->trVerbose];
 
 		diractrev = OptionValue[DiracTraceEvaluate];
