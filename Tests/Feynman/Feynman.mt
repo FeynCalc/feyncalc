@@ -17,6 +17,14 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Feynman"}]]
 Get/@tests;
 
+If[	$OnlySubTest=!="",
+	testNames = "Tests`Feynman`*";
+	removeTests=Complement[Names[testNames],Flatten[StringCases[Names[testNames],Alternatives@@$OnlySubTest]]];
+	Remove/@removeTests;
+	Print["Only following subtests will be checked: ", Names[testNames]];
+	Remove[testNames]
+];
+
 FCClearScalarProducts[];
 ClearAll[M];
 

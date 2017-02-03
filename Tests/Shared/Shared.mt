@@ -19,17 +19,47 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Shared"}]]
 Get/@tests;
 
+If[	$OnlySubTest=!="",
+	testNames = "Tests`Shared`*";
+	removeTests=Complement[Names[testNames],Flatten[StringCases[Names[testNames],Alternatives@@$OnlySubTest]]];
+	Remove/@removeTests;
+	Print["Only following subtests will be checked: ", Names[testNames]];
+	Remove[testNames]
+];
+
 stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
-Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],(#[[4]]),TestID->#[[1]],
-	MessagesEquivalenceFunction->stingCompare]&,
-	Join[Tests`Shared`fcstSharedObjectsMessages,Tests`Shared`fcstSharedObjectsCheckAbort]];
-
-If [$VersionNumber >= 10,
-Map[Test[StringReplace[ToString[(ToExpression[#[[2]]]),InputForm, CharacterEncoding -> "Unicode"]," " ->""],StringReplace[(#[[3]])," " ->""],TestID->#[[1]]]&,
-	Join[Tests`Shared`fcstSharedObjectsTypesetting]];
+If[ Names["Tests`Shared`fcstSharedObjectsMessages"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+		MessagesEquivalenceFunction->stingCompare]&,
+		Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsMessages"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
+
+If[ Names["Tests`Shared`fcstSharedObjectsCheckAbort"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+		MessagesEquivalenceFunction->stingCompare]&,
+		Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsCheckAbort"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];
+
+If[ Names["Tests`Shared`fcstSharedObjectsTypesetting"]=!={} && $VersionNumber >= 10,
+	tmpTest = Map[test[StringReplace[ToString[(ToExpression[#[[2]]]),InputForm, CharacterEncoding -> "Unicode"]," " ->""],StringReplace[(#[[3]])," " ->""],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsTypesetting"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];
+
+
+If[ Names["Tests`Shared`*"]=!={} &&
+	Select[Names["Tests`Shared`*"], !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" ] &]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Select[Names["Tests`Shared`*"], !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" ] &])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];
+
+(*
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Select[Names["Tests`Shared`*"],
 	!StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort"] &])];
 
+*)

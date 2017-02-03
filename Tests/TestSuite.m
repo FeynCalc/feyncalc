@@ -61,6 +61,14 @@ If[	onlyTest=!="" && Head[onlyTest]===String,
 	FCPrint[0,"\n",UseWriteString->True]
 ];
 
+If[	onlySubTest=!="" && Head[onlySubTest]===String,
+	strList = StringSplit[ToString[onlySubTest],"|"];
+	$OnlySubTest = RegularExpression[(".*" <> # <> ".*")]& /@ strList,
+	$OnlySubTest=""
+];
+
+SetAttributes[test, HoldAllComplete];
+
 testRunner/@fcTestList;
 FCPrint[0,"\n",UseWriteString->True];
 FCPrint[0,"Done!\n",UseWriteString->True];

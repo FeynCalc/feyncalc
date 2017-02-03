@@ -18,6 +18,6 @@ set -o pipefail
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
-$1 -nopromt -script TestSuite.m -run testType=2 -run onlyTest=\"$2\"
+$1 -nopromt -script TestSuite.m -run testType=2 -run onlyTest=\"$2\" -run onlySubTest=\"$3\"
 
 notify-send "Finished running integration tests for FeynCalc ($2)."

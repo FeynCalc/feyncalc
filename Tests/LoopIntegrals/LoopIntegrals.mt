@@ -19,19 +19,30 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]];
 Get/@tests;
 
-FCClearScalarProducts[];
-SetOptions[Tdec,UseParallelization->False];
+If[	$OnlySubTest=!="",
+	testNames = "Tests`LoopIntegrals`*";
+	removeTests=Complement[Names[testNames],Flatten[StringCases[Names[testNames],Alternatives@@$OnlySubTest]]];
+	Remove/@removeTests;
+	Print["Only following subtests will be checked: ", Names[testNames]];
+	Remove[testNames]
+];
 
+FCClearScalarProducts[];
+
+SetOptions[Tdec,UseParallelization->False];
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Select[Names["Tests`LoopIntegrals`*"],
 	!StringMatchQ[#, "*fcstLogDivergentScaleless"] &])];
 
+
+
 $FCAdvice = True;
 
-$KeepLogDivergentScalelessIntegrals=True;
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcstLogDivergentScaleless"])];
-$KeepLogDivergentScalelessIntegrals=False;
-
+If[ Names["Tests`LoopIntegrals`fcstLogDivergentScaleless"]=!={},
+	$KeepLogDivergentScalelessIntegrals=True;
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcstLogDivergentScaleless"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$KeepLogDivergentScalelessIntegrals=False
+];
 
 $VeryVerbose = 0;

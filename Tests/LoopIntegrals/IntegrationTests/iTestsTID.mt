@@ -18,6 +18,16 @@ Needs["FeynCalc`"];
 ClearAll[itests];
 itests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals", "IntegrationTests"}]]
 Get/@itests;
+
+
+If[	$OnlySubTest=!="",
+	testNames = "Tests`LoopIntegrals`fcit*";
+	removeTests=Complement[Names[testNames],Flatten[StringCases[Names[testNames],Alternatives@@$OnlySubTest]]];
+	Remove/@removeTests;
+	Print["Only following subtests will be checked: ", Names[testNames]];
+	Remove[testNames]
+];
+
 ClearAll[p,k1,k2,k3,m0,m1,m2,m3,k1z,k2z,k1g,k2g,kst,qst,pst,m];
 FCClearScalarProducts[];
 ScalarProduct[k1z, k1z] = 0;
@@ -42,24 +52,115 @@ ScalarProduct[pv2, pv3] = s/2;
 	the results we get from TID can have slightly different form depending on the
 	integrals that TID had to work out before. Of course all those are exactly the
 	same (just written in a different way) and we use Simplify to check the equivalence	*)
-$LimitTo4=True;
-Map[Test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,TestID->#[[1]]]&,
-	Join[
-		Tests`LoopIntegrals`fcitTIDUsePaVeBasisA,
-		Tests`LoopIntegrals`fcitTIDUsePaVeBasisB,
-		Tests`LoopIntegrals`fcitTIDUsePaVeBasisC,
-		Tests`LoopIntegrals`fcitTIDUsePaVeBasisD,
-		Tests`LoopIntegrals`fcitTIDFullRedA,
-		Tests`LoopIntegrals`fcitTIDFullRedB,
-		Tests`LoopIntegrals`fcitTIDFullRedCR1,
-		Tests`LoopIntegrals`fcitTIDFullRedCR2
-		]];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisA"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisA"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisB"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisB"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisC"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisC"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisD"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDUsePaVeBasisD"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDFullRedA"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDFullRedA"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDFullRedB"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDFullRedB"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDFullRedCR1"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDFullRedCR1"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDFullRedCR2"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceRepeated[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],p],
+		{B1[x__]/;FreeQ[{x},BReduce] :> B1[x, BReduce -> True],B0[x__]/;FreeQ[{x},BReduce] :> B0[x, BReduce -> True]}]],0,testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDFullRedCR2"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+
+If[ Names["Tests`LoopIntegrals`fcitTIDSTests"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ Simplify[ReplaceAll[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],kst],{B0[x__] :> B0[x, BReduce -> True],
+	PaVe[x__, PaVeAutoReduce -> False, y___] :> PaVe[x, PaVeAutoReduce -> True, y]}]],0,testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDSTests"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDMTests"]=!={},
+	$LimitTo4=True;
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDMTests"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	$LimitTo4=False
+];
+
+If[ Names["Tests`LoopIntegrals`fcitTIDPTests"]=!={},
+	$LimitTo4=False;
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDPTests"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];
+
+If[ Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"]=!={},
+	$LimitTo4=False;
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];
+
+(*
+
+
 
 Map[Test[ Simplify[ReplaceAll[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],kst],{B0[x__] :> B0[x, BReduce -> True],
 	PaVe[x__, PaVeAutoReduce -> False, y___] :> PaVe[x, PaVeAutoReduce -> True, y]}]],0,TestID->#[[1]]]&,
-	Join[
-		Tests`LoopIntegrals`fcitTIDSTests
-		]];
+	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDFullRedCR1"])];
 
 
 
@@ -81,7 +182,7 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 		]];
 
 
-
+*)
 
 
 
