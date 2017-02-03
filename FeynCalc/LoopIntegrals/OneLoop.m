@@ -452,7 +452,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			redamp[x_,qu_] :=
 				Block[ {pl, ml, fm, pp,res = x},
 					fd = PartitHead[x, FeynAmpDenominator];
-					If[ Length[fd[[2]]] > 4,
+					If[ Length[fd[[2]]] > 4 &&  FreeQ[(x/.FeynAmpDenominator[___]:>1),qu],
 						fm[pe_,___] :=
 							pe;
 						pp[a_, b_] :=
@@ -486,12 +486,18 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					0,
 					FeynAmpDenominator[xx]
 				];
+
 			If[ !FreeQ[oneamp /. FeynAmpDenominator -> fdhigh, FeynAmpDenominator],
 				$higherpoint = True;
 				namp = redamp[ oneamp,q ];
-				prefactor = prefactor namp[[1]];
-				oneamp = namp[[2]]
+				If[ Head[namp]===List,
+					prefactor = prefactor namp[[1]];
+					oneamp = namp[[2]],
+					oneamp = namp
+				]
 			];
+
+
 
 		(* Put here the i pi^2 from the integrals *)
 			newprefactor = prefactor I Pi^2;
@@ -534,6 +540,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				x/.{Momentum[v_,_]:>Momentum[v],
 					LorentzIndex[w_,_]:>LorentzIndex[w]};
 			oneamp0 = oneamp;
+
 			FCPrint[2, "check", FCDoControl->oneloopVerbose];
 			(* ONEAMPCHANGE: make dimensions right *)
 			If[ dim===4,

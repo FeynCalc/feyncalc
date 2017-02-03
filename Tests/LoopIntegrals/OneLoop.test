@@ -62,5 +62,13 @@ GS[q1]).((-I)*GA[mu])*FAD[{q1, 0}, {q1, 0}, {-p + q1, 0}]]//FCE",
 "I Pi^2 PaVe[
 0, {0, 0, SP[p1, p1], SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2],
 SP[p2, p2], 0, SP[p1, p1], SP[p2, p2], SP[p1, p1], SP[p2, p2]}, {0,
-	0, 0, 0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"}
+	0, 0, 0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcstOneLoop-ID8","Simplify[ChangeDimension[
+OneLoop[q,
+	FVD[q, mu]  FAD[{q, 0}, {q + p1, 0}, {q + p2, 0}, {q + p3,
+	0}, {q + p4, 0}]], D] -
+TID[FVD[q,
+	mu]  FAD[{q, 0}, {q + p1, 0}, {q + p2, 0}, {q + p3, 0}, {q + p4,
+	0}], q, UsePaVeBasis -> True]]",
+"0"}
 }
