@@ -22,7 +22,8 @@ End[]
 Begin["`ExpandScalarProduct`Private`"]
 
 ScalarProductExpand = ExpandScalarProduct;
-tmpHead;
+tmpHead::usage="";
+objects::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
@@ -34,28 +35,24 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 	Block[ {nx = x, pali,moms},
 
 		moms = OptionValue[Momentum];
-
-		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
+		objects = Join[$FCTensorList,{TPair}];
 
 		If[ OptionValue[FCI],
 			nx = FCI[nx]
 		];
 
 		(* This is to speed up things when dealing with tirival scalar products *)
-		If[	MatchQ[nx, Pair[Momentum[_, ___], Momentum[_, ___]]] && FreeQ[nx,Plus],
+		If[	MatchQ[nx, Pair[Momentum[_, ___], Momentum[_, ___]] | CPair[CMomentum[_, ___], CMomentum[_, ___]]] && FreeQ[nx,Plus],
 			Return[nx]
 		];
 
-		If[ FreeQ2[nx,$FCTensorList],
+		If[ FreeQ2[nx,objects],
 			Return[nx]
 		];
 
 		If [moms===All,
-			pali = Select[Cases2[nx, $FCTensorList], !FreeQ2[#, TensorArgsList]&],
-			pali = Select[Cases2[nx, $FCTensorList], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&]
+			pali = Select[Cases2[nx, objects], !FreeQ2[#, TensorArgsList]&],
+			pali = Select[Cases2[nx, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&]
 		];
 
 		If[ pali =!= {},
@@ -74,7 +71,7 @@ ExpandScalarProduct[x_, y:Except[_?OptionQ], OptionsPattern[]] :=
 	scevdoit[Pair,x, y];
 
 pairexpand[x_] :=
-	x /. (head : (Alternatives @@ $FCTensorList))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
+	x /. (head : (Alternatives @@ objects))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
 
 scevdoit[head_,arg__] :=
 	Distribute[tmpHead@@(Expand[MomentumExpand/@{arg}])]/.tmpHead->head;
