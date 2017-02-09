@@ -1,0 +1,57 @@
+
+
+(* :Title: DummyIndexFreeQ.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DummyIndexFreeQ	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstLorentzDummyIndexFreeQ =
+({
+{"fcstLorentzDummyIndexFreeQ-ID1", "DummyIndexFreeQ[0,{LorentzIndex}]",
+"True"},
+{"fcstLorentzDummyIndexFreeQ-ID2", "DummyIndexFreeQ[a,{LorentzIndex}]",
+"True"},
+{"fcstLorentzDummyIndexFreeQ-ID3",
+"DummyIndexFreeQ[FCI[FV[p,i]],{LorentzIndex}]", "True"},
+{"fcstLorentzDummyIndexFreeQ-ID4",
+"DummyIndexFreeQ[FCI[FV[p,i]^2],{LorentzIndex}]", "False"},
+{"fcstLorentzDummyIndexFreeQ-ID5",
+"DummyIndexFreeQ[xxx(Sum[Pair[Momentum[p[i]],LorentzIndex[\
+li]],{i,1,50000}]),{LorentzIndex}]", "True"},
+{"fcstLorentzDummyIndexFreeQ-ID6",
+"DummyIndexFreeQ[xxx(Sum[Pair[Momentum[p[i]],LorentzIndex[\
+li]],{i,1,50000}])+FCI[FV[q,i]MT[j,j]],{LorentzIndex}]", "False"},
+{"fcstLorentzDummyIndexFreeQ-ID7",
+"DummyIndexFreeQ[FCI[FV[p1,i]+FV[p2,i]+FV[p3,i]MT[j,j]],{LorentzIndex}]",
+"False"}
+});
+
+
+Tests`Lorentz`fcstCartesianDummyIndexFreeQ =
+({
+{"fcstCartesianDummyIndexFreeQ-ID1", "DummyIndexFreeQ[0,{CIndex}]",
+"True"},
+{"fcstCartesianDummyIndexFreeQ-ID2", "DummyIndexFreeQ[a,{CIndex}]",
+"True"},
+{"fcstCartesianDummyIndexFreeQ-ID3",
+"DummyIndexFreeQ[CPair[CIndex[i],CMomentum[p]],{CIndex}]", "True"},
+{"fcstCartesianDummyIndexFreeQ-ID4",
+"DummyIndexFreeQ[CPair[CIndex[i],CMomentum[p]]^2,{CIndex}]", "False"},
+{"fcstCartesianDummyIndexFreeQ-ID5",
+"DummyIndexFreeQ[xxx(Sum[CPair[CMomentum[p[i]],CIndex[\
+li]],{i,1,50000}]),{CIndex}]", "True"},
+{"fcstCartesianDummyIndexFreeQ-ID6",
+"DummyIndexFreeQ[xxx(Sum[Pair[CMomentum[p[i]],CIndex[\
+li]],{i,1,50000}])+  CPair[CIndex[i],CMomentum[q]] CPair[CIndex[j],CIndex[j]],{CIndex}]", "False"},
+{"fcstCartesianDummyIndexFreeQ-ID7",
+"DummyIndexFreeQ[CPair[CIndex[i],CMomentum[p1]]+CPair[CIndex[i],CMomentum[p2]]+CPair[CIndex[i],CMomentum[p3]] CPair[CIndex[j],CIndex[j]],{CIndex}]",
+"False"}
+});
