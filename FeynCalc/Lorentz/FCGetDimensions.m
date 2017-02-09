@@ -34,19 +34,18 @@ Options[FCGetDimensions] = {
 FCGetDimensions[expr_, OptionsPattern[]]:=
 	Block[{ex, res, null1,null2},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
 		];
 
+		res = Cases[ex+null1+null2, _Momentum | _DiracGamma | _DiracGammaT | _PauliSigma | _LorentzIndex |
+			_ExplicitLorentzIndex | _CIndex | _CMomentum | _TIndex | _TMomentum, Infinity]//DeleteDuplicates//Sort;
+		res = res /. (Momentum|DiracGamma|DiracGammaT|LorentzIndex|ExplicitLorentzIndex)[_, dim_:4]:> dim;
+		res = res /. (PauliSigma|CIndex|CMomentum|TMomentum)[_, dim_:3]:> dim;
+		res = res /. {_TIndex -> 4, _TMomentum -> 4};
+		res = res//DeleteDuplicates//Sort;
 
-		res = Union[Cases[ex+null1+null2,
-			(Momentum|DiracGamma|DiracGammaT|LorentzIndex|ExplicitLorentzIndex)[_, dim_: 4] :> dim, Infinity]];
 		res
 
 ];
