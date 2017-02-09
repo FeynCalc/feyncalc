@@ -28,7 +28,20 @@ m Pair[LorentzIndex[mu], Momentum[q]]"},
 {"fcstMomentumCombine-ID7","MomentumCombine[SP[a, b] + SP[a, c], SP -> False]", "Pair[Momentum[a], Momentum[b]] + Pair[Momentum[a], Momentum[c]]"},
 {"fcstMomentumCombine-ID8","MomentumCombine[Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[1, {m^2, q2, m^2}, {0, m^2, m^2}] -
 Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[0, 0, {m^2, q2, m^2}, {0, m^2, m^2}]]", "Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[
-1, {m^2, q2, m^2}, {0, m^2, m^2}] - Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[0,0, {m^2, q2, m^2}, {0, m^2, m^2}]"}
+1, {m^2, q2, m^2}, {0, m^2, m^2}] - Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[0,0, {m^2, q2, m^2}, {0, m^2, m^2}]"},
+{"fcstMomentumCombine-ID9","MomentumCombine[CMomentum[p] - 2 CMomentum[q]]", "CMomentum[p - 2 q]"},
+{"fcstMomentumCombine-ID10","MomentumCombine[
+CPair[CMomentum[p], CIndex[i]] + 2 CPair[CMomentum[q], CIndex[i]]]", "CPair[CIndex[i], CMomentum[p + 2 q]]"},
+{"fcstMomentumCombine-ID11","MomentumCombine[CPair[CMomentum[a], CMomentum[c]] - 2*CPair[CMomentum[a], CMomentum[d]] +
+CPair[CMomentum[b], CMomentum[c]] - 2*CPair[CMomentum[b], CMomentum[d]]]", "CPair[CMomentum[a + b], CMomentum[c - 2 d]]"},
+{"fcstMomentumCombine-ID12","MomentumCombine[
+n CPair[CMomentum[p], CIndex[i]] + m CPair[CMomentum[q], CIndex[i]]]", "n CPair[CIndex[i], CMomentum[p]] + m CPair[CIndex[i], CMomentum[q]]"},
+{"fcstMomentumCombine-ID13","MomentumCombine[
+CPair[CMomentum[a], CMomentum[b]] +
+CPair[CMomentum[a], CMomentum[c]]]", "CPair[CMomentum[a], CMomentum[b + c]]"},
+{"fcstMomentumCombine-ID14","MomentumCombine[
+CPair[CMomentum[a], CMomentum[b]] +
+CPair[CMomentum[a], CMomentum[c]], SP -> False]", "CPair[CMomentum[a], CMomentum[b]] + CPair[CMomentum[a], CMomentum[c]]"}
 };
 
 

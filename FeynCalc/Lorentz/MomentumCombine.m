@@ -28,20 +28,43 @@ Begin["`MomentumCombine`Private`"];
 
 rulesMain = {
 	(n3_. Momentum[x_, dim_:4] + n4_. Momentum[y_, dim_:4]):>
-		(Momentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4]))
+		(Momentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4])),
+
+	(n3_. TMomentum[x_] + n4_. TMomentum[y_]):>
+		(TMomentum[ Expand[n3 x + n4 y]]/; (NumberQ[n3] && NumberQ[n4])),
+
+	(n3_. CMomentum[x_, dim_:3] + n4_. CMomentum[y_, dim_:3]):>
+		(CMomentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4]))
 };
 
 rulesSP = {
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4])
+		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4]),
+
+	(n3_. CPair[a_CMomentum, CMomentum[x_, dim_:3]] + n4_. CPair[a_CMomentum, CMomentum[y_, dim_:3]]):>
+		CPair[a, CMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4])
 }
 
 rulesFV = {
-(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
+	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
 		Pair[a, Momentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
 
 	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n3_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
-		n3 Pair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3])
+		n3 Pair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
+
+
+	(n3_. CPair[a_CIndex, CMomentum[x_, dim_:3]] + n4_. CPair[a_CIndex, CMomentum[y_, dim_:3]]):>
+		CPair[a, CMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
+
+	(n3_. CPair[a_CIndex, CMomentum[x_, dim_:3]] + n3_. CPair[a_CIndex, CMomentum[y_, dim_:3]]):>
+		n3 CPair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
+
+	(n3_. TPair[TIndex[], TMomentum[x_]] + n4_. TRair[TIndex[], TMomentum[y_]]):>
+		TPair[TIndex[], TMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]),
+
+	(n3_. TPair[TIndex[], TMomentum[x_]] + n3_. TPair[TIndex[], TMomentum[y_]]):>
+		n3 TPair[a, TMomentum[Expand[x+y]]]/; (!NumberQ[n3])
+
 (*
 	(n3_. Pair[a_LorentzIndex, Momentum[x_,dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_,dim_:4]]):>
 		Pair[a, Expand[MomentumExpand[n3 Momentum[x, dim] + n4 Momentum[y,dim]]]]/;
@@ -58,11 +81,6 @@ Options[MomentumCombine] = {
 
 MomentumCombine[expr_, OptionsPattern[]] :=
 	Block[{ex,res,rules=rulesMain},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
