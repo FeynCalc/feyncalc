@@ -34,5 +34,9 @@ Tests`Lorentz`fcstFCRenameDummyIndices =
 	"MatchQ[SUNTF[a,i,j].SUNT[b].SUNT[a,j,k]//FCRenameDummyIndices,\
 	SUNTF[{SUNIndex[$AL[x_]]},SUNFIndex[i],SUNFIndex[$AL[y_]]].SUNT[\
 	SUNIndex[b]].SUNT[SUNIndex[$AL[$x_]]].SUNT[SUNIndex[$AL[y_]]].SUNT[\
-	SUNIndex[k]]]", "True"}
+	SUNIndex[k]]]", "True"},
+{"FCRenameDummyIndices-ID5",
+	"MatchQ[FCRenameDummyIndices[FCI[FVD[p, mu] FVD[q, mu]]],
+Pair[LorentzIndex[a_$AL, D], Momentum[p, D]] Pair[
+LorentzIndex[a_$AL, D], Momentum[q, D]]]", "True"}
 }

@@ -36,11 +36,11 @@ FCRenameDummyIndices[expr_] :=
 		exprFCI = expr // FCI // DotSimplify // Expand;
 		If[ Head[exprFCI]===Plus,
 			indexList =
-				Map[Tally, Map[Cases[#, (LorentzIndex | SUNIndex | SUNFIndex)[ind_, _:4]/;(Head[ind]=!=Upper &&
+				Map[Tally, Map[Cases[#, (LorentzIndex | SUNIndex | SUNFIndex)[ind_, ___]/;(Head[ind]=!=Upper &&
 						Head[ind]=!=Lower) :> ind,
 						Infinity]&,Apply[List, exprFCI]]]// Flatten[#, 1] & // Union;,
 			indexList =
-				Cases[exprFCI, (LorentzIndex | SUNIndex | SUNFIndex)[ind_]/;(Head[ind]=!=Upper &&
+				Cases[exprFCI, (LorentzIndex | SUNIndex | SUNFIndex)[ind_,___]/;(Head[ind]=!=Upper &&
 						Head[ind]=!=Lower) :> ind,
 						Infinity] // Tally;
 		];
