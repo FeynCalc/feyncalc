@@ -167,7 +167,7 @@ If[ Names["Tests`Dirac`fcstTrLarin*"]=!={},
 
 If[ Names["Tests`Dirac`fcstToLarin*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["TesfcstToLarin*"])];
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstToLarin*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
 

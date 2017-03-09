@@ -22,7 +22,7 @@ Tests`Lorentz`fcstChangeDimension = {
 	"ChangeDimension[LeviCivita[\[Mu],\[Nu],\[Rho],\[Sigma],Dimension\
 	\[Rule]D],D]",
 	"Eps[LorentzIndex[\[Mu], D], LorentzIndex[\[Nu], D], LorentzIndex[\
-	\[Rho], D], LorentzIndex[\[Sigma], D], Dimension -> D]"},
+	\[Rho], D], LorentzIndex[\[Sigma], D]]"},
 {"ChangeDimension-ID4",
 	"DiracTrick /@ (ChangeDimension[{GA[\[Mu], \[Nu]] MT[\[Mu], \[Nu]],
 	GAD[\[Mu], \[Nu]] MTD[\[Mu], \[Nu]] f[D]}, n] // Contract)",
@@ -34,5 +34,5 @@ LorentzIndex[i4]]"},
 {"ChangeDimension-ID6",
 	"ChangeDimension[FCI[LC[i1,i2,i3,i4]],D]",
 	"Eps[LorentzIndex[i1,D], LorentzIndex[i2,D], LorentzIndex[i3,D],
-LorentzIndex[i4,D],Dimension->D]"}
+LorentzIndex[i4,D]]"}
 };

@@ -49,7 +49,7 @@ iDent[a_,___] :=
 
 
 FeynCalcExternal[x_,opts___Rule] :=
-	Block[{ru, ti, r, vv, rv, uru},
+	Block[{ru, ti, r, vv, rv, uru, revru},
 		sundeltanoi[y__] :=
 			SD@@({y} /. SUNIndex -> Identity);
 		sunfdeltanoi[y__] :=
@@ -58,12 +58,15 @@ FeynCalcExternal[x_,opts___Rule] :=
 		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
 		ru = {
+			PauliSigma :> sigmaback,
 			DiracGamma :> diracback,
 			DiracSigma :> dirsig,
 			Eps :> eps,
 			FeynAmpDenominator :> feynampback,
 			MetricTensor :> metricmul,
 			Pair :> pairback,
+			CPair :> cpairback,
+			TPair :> tpairback,
 			SUND :> sundback,
 			SUNDelta :> sundeltanoi,
 			SUNFDelta :> sunfdeltanoi,
@@ -76,6 +79,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
 		vv = Cases2[x, {
+				CPair,
 				DiracGamma,
 				DiracSigma,
 				Eps,
@@ -83,6 +87,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 				MetricTensor,
 				Pair,
 				PropagatorDenominator,
+				PauliSigma,
 				SUND,
 				SUNDelta,
 				SUNFDelta,
@@ -92,11 +97,14 @@ FeynCalcExternal[x_,opts___Rule] :=
 				SUNDeltaContract,
 				SUNFDeltaContract,
 				ScalarProduct,
+				TPair,
 				Power2
 			} /. sequence -> Sequence];
-
 		rv = Map[(# ->  ((MomentumCombine[#])/.ru ) )&, vv]//Dispatch;
-		x /. rv
+		revru = Map[Reverse, SelectFree[ru,Power]];
+
+
+		x /. rv /. Dispatch[revru]
 	];
 
 dirsig[a__] :=
@@ -120,6 +128,14 @@ scalarmul[a_ b_,dim__] :=
 	ScalarProduct[a,b,dim];
 scalarmul[a_, b_,dim___] :=
 	ScalarProduct[a,b,dim];
+
+
+pairback[TIndex[], TIndex[]] :=
+	MT[0,0];
+pairback[ExplicitLorentzIndex[b_?NumberQ], TIndex[]] :=
+	MT[0,b];
+pairback[LorentzIndex[b_], TIndex[]] :=
+	MT[0,b];
 
 pairback[ExplicitLorentzIndex[a_?NumberQ], ExplicitLorentzIndex[b_?NumberQ]] :=
 	MT[a,b];
@@ -168,21 +184,65 @@ pairback[Momentum[a_, D-4], Momentum[b_, D-4]] :=
 pairback[Momentum[a_, d_], Momentum[b_, d_]] :=
 	ScalarProduct[a, b, Dimension -> d]/;(d=!=D && d=!= D-4);
 
+cpairback[CIndex[a_], CMomentum[b_]] :=
+	CV[b,a];
+cpairback[CIndex[a_, D-1], CMomentum[b_, D-1]] :=
+	CVD[b,a];
+cpairback[CIndex[a_, D-4], CMomentum[b_, D-4]] :=
+	CVE[b,a];
+
+cpairback[CIndex[a_], CIndex[b_]] :=
+	KD[a,b];
+cpairback[CIndex[a_,D-1], CIndex[b_,D-1]] :=
+	KDD[a,b];
+cpairback[CIndex[a_,D-4], CIndex[b_,D-4]] :=
+	KDE[a,b];
+
+cpairback[CMomentum[a_], CMomentum[b_]] :=
+	CSP[a, b];
+cpairback[CMomentum[a_, D-1], CMomentum[b_, D-1]] :=
+	CSPD[a, b];
+cpairback[CMomentum[a_, D-4], CMomentum[b_, D-4]] :=
+	CSPE[a, b];
+
+tpairback[TIndex[],TMomentum[a_]]:=
+	TC[a];
+
+diracback[TIndex[]]:=
+	TGA[];
+
 diracback[LorentzIndex[a_]] :=
 	GA[a];
 diracback[LorentzIndex[a_,D],D] :=
 	GAD[a];
 diracback[LorentzIndex[a_,D-4],D-4] :=
 	GAE[a];
-diracback[lm_[a_,n_/;(n=!=D && n=!=D-4)],en___] :=
+
+diracback[CIndex[a_]] :=
+	CGA[a];
+diracback[CIndex[a_, D-1], D] :=
+	CGAD[a];
+diracback[CIndex[a_, D-4], D-4] :=
+	CGAE[a];
+
+
+diracback[lm_[a_,n_/;(n=!=D && n=!=D-4 && n=!=D-1)],en___] :=
 	DiracGamma[lm[a,n],en];
 
 diracback[Momentum[a_]] :=
 	GS[a];
-diracback[Momentum[a_, n_Symbol], n_Symbol] :=
+diracback[Momentum[a_, D], D] :=
 	GSD[a];
-diracback[Momentum[a_, n_Symbol-4], n_Symbol-4] :=
+diracback[Momentum[a_, D-4], D-4] :=
 	GSE[a];
+
+diracback[CMomentum[a_]] :=
+	CGS[a];
+diracback[CMomentum[a_, D-1], D] :=
+	CGSD[a];
+diracback[CMomentum[a_, D-4], D-4] :=
+	CGSE[a];
+
 diracback[5] :=
 	GA[5];
 diracback[6] :=
@@ -193,6 +253,35 @@ diracback[ExplicitLorentzIndex[x_?NumberQ]] :=
 	GA[x];
 diracback[x_?NumberQ] :=
 	GA[x];
+
+sigmaback[LorentzIndex[a_]] :=
+	SI[a];
+sigmaback[LorentzIndex[a_,D],D-1] :=
+	SID[a];
+sigmaback[LorentzIndex[a_,D-4],D-4] :=
+	SIE[a];
+
+sigmaback[CIndex[a_]] :=
+	CSI[a];
+sigmaback[CIndex[a_, D-1], D-1] :=
+	CSID[a];
+sigmaback[CIndex[a_, D-4], D-4] :=
+	CSIE[a];
+
+sigmaback[Momentum[a_]] :=
+	SIS[a];
+sigmaback[Momentum[a_, D], D-1] :=
+	SISD[a];
+sigmaback[Momentum[a_, D-4], D-4] :=
+	SISE[a];
+
+sigmaback[CMomentum[a_]] :=
+	CSIS[a];
+sigmaback[CMomentum[a_, D-1], D-1] :=
+	CSISD[a];
+sigmaback[CMomentum[a_, D-4], D-4] :=
+	CSISE[a];
+
 suntback[(SUNIndex|ExplicitSUNIndex)[a_]] :=
 	SUNT[a];
 suntback[a__Symbol] :=
@@ -228,72 +317,77 @@ feynampback[a__] :=
 
 
 
-eps[a_, b_, c_, d_, opts:OptionsPattern[Eps]] :=
-	Signature[{a,b,c,d}] eps@@ Join[Sort[{a,b,c,d}],{opts}] /; !OrderedQ[{a,b,c,d}];
+eps[a_, b_, c_, d_] :=
+	Signature[{a,b,c,d}] eps@@Sort[{a,b,c,d}]/; !OrderedQ[{a,b,c,d}];
 
-eps[Momentum[a_],Momentum[b_],Momentum[c_],Momentum[d_],
-opt:OptionsPattern[Eps]]:=
-	LC[][a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
+eps[Momentum[a_],Momentum[b_],Momentum[c_],Momentum[d_]]:=
+	LC[][a,b,c,d];
 
-eps[(LorentzIndex|ExplicitLorentzIndex)[a_],Momentum[b_],Momentum[c_],Momentum[d_],
-opt:OptionsPattern[Eps]]:=
-	LC[a][b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],Momentum[b_],Momentum[c_],Momentum[d_]]:=
+	LC[a][b,c,d];
 
-eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],Momentum[c_],Momentum[d_],
-opt:OptionsPattern[Eps]]:=
-	LC[a,b][c,d]/; OptionValue[Eps,{opt},Dimension]===4;
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],Momentum[c_],Momentum[d_]]:=
+	LC[a,b][c,d];
 
-eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],(LorentzIndex|ExplicitLorentzIndex)[c_],Momentum[d_],
-opt:OptionsPattern[Eps]]:=
-	LC[a,b,c][d]/; OptionValue[Eps,{opt},Dimension]===4;
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],(LorentzIndex|ExplicitLorentzIndex)[c_],Momentum[d_]]:=
+	LC[a,b,c][d];
 
-eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],(LorentzIndex|ExplicitLorentzIndex)[c_],(LorentzIndex|ExplicitLorentzIndex)[d_],
-opt:OptionsPattern[Eps]]:=
-	LC[a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],(LorentzIndex|ExplicitLorentzIndex)[c_],(LorentzIndex|ExplicitLorentzIndex)[d_]]:=
+	LC[a,b,c,d];
 
-eps[Momentum[a_,D],Momentum[b_,D],Momentum[c_,D],Momentum[d_,D],
-opt:OptionsPattern[Eps]]:=
-	LCD[][a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+eps[Momentum[a_,D],Momentum[b_,D],Momentum[c_,D],Momentum[d_,D]]:=
+	LCD[][a,b,c,d];
 
-eps[LorentzIndex[a_,D],Momentum[b_,D], Momentum[c_,D],Momentum[d_,D],
-opt:OptionsPattern[Eps]]:=
-	LCD[a][b,c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+eps[LorentzIndex[a_,D],Momentum[b_,D], Momentum[c_,D],Momentum[d_,D]]:=
+	LCD[a][b,c,d];
 
-eps[LorentzIndex[a_,D],LorentzIndex[b_,D], Momentum[c_,D],Momentum[d_,D],
-opt:OptionsPattern[Eps]]:=
-	LCD[a,b][c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+eps[LorentzIndex[a_,D],LorentzIndex[b_,D], Momentum[c_,D],Momentum[d_,D]]:=
+	LCD[a,b][c,d];
 
-eps[LorentzIndex[a_,D], LorentzIndex[b_,D], LorentzIndex[c_,D], Momentum[d_,D],
-opt:OptionsPattern[Eps]]:=
-	LCD[a,b,c][d]/; OptionValue[Eps,{opt},Dimension]===D;
+eps[LorentzIndex[a_,D], LorentzIndex[b_,D], LorentzIndex[c_,D], Momentum[d_,D]]:=
+	LCD[a,b,c][d];
 
-eps[LorentzIndex[a_,D],LorentzIndex[b_,D], LorentzIndex[c_,D],LorentzIndex[d_,D],
-opt:OptionsPattern[Eps]]:=
-	LCD[a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+eps[LorentzIndex[a_,D],LorentzIndex[b_,D], LorentzIndex[c_,D],LorentzIndex[d_,D]]:=
+	LCD[a,b,c,d];
 
-eps[Momentum[a_,dd_],Momentum[b_,dd_],Momentum[c_,dd_],Momentum[d_,dd_],
-opt:OptionsPattern[Eps]]:=
-	LeviCivita[Dimension->dd][a,b,c,d,
-	Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+eps[Momentum[a_,dd_],Momentum[b_,dd_],Momentum[c_,dd_],Momentum[d_,dd_]]:=
+	LeviCivita[Dimension->dd][a,b,c,d, Dimension->dd]/;dd=!=D;
 
-eps[LorentzIndex[a_,dd_],Momentum[b_,dd_], Momentum[c_,dd_],Momentum[d_,dd_],
-opt:OptionsPattern[Eps]]:=
-	LeviCivita[a,Dimension->dd][b,c,d,
-	Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+eps[LorentzIndex[a_,dd_],Momentum[b_,dd_], Momentum[c_,dd_],Momentum[d_,dd_]]:=
+	LeviCivita[a,Dimension->dd][b,c,d, Dimension->dd]/;dd=!=D;
 
-eps[LorentzIndex[a_, dd_],LorentzIndex[b_, dd_], Momentum[c_,dd_],Momentum[d_,dd_],
-opt:OptionsPattern[Eps]]:=
-	LeviCivita[a,b,Dimension->dd][c,
-	d,Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+eps[LorentzIndex[a_, dd_],LorentzIndex[b_, dd_], Momentum[c_,dd_],Momentum[d_,dd_]]:=
+	LeviCivita[a,b,Dimension->dd][c,d,Dimension->dd]/;dd=!=D;
 
-eps[LorentzIndex[a_,dd_], LorentzIndex[b_,dd_], LorentzIndex[c_,dd_], Momentum[d_,dd_],
-opt:OptionsPattern[Eps]]:=
-	LeviCivita[a,b,c,Dimension->dd][d,
-	Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+eps[LorentzIndex[a_,dd_], LorentzIndex[b_,dd_], LorentzIndex[c_,dd_], Momentum[d_,dd_]]:=
+	LeviCivita[a,b,c,Dimension->dd][d, Dimension->dd]/;dd=!=D;
 
-eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_], LorentzIndex[c_,dd_],LorentzIndex[d_,dd_],
-opt:OptionsPattern[Eps]]:=
-	LeviCivita[a,b,c,d,Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_], LorentzIndex[c_,dd_],LorentzIndex[d_,dd_]]:=
+	LeviCivita[a,b,c,d,Dimension->dd]/;dd=!=D;
+
+eps[CMomentum[a_],CMomentum[b_],CMomentum[c_]]:=
+	CLC[][a,b,c];
+
+eps[CIndex[a_], CMomentum[b_], CMomentum[c_]]:=
+	CLC[a][b,c];
+
+eps[CIndex[a_], CIndex[b_], CMomentum[c_]]:=
+	CLC[a,b][c];
+
+eps[CIndex[a_], CIndex[b_], CIndex[c_]]:=
+	CLC[a,b,c];
+
+eps[CMomentum[a_, D-1],CMomentum[b_, D-1],CMomentum[c_, D-1]]:=
+	CLCD[][a,b,c];
+
+eps[CIndex[a_, D-1], CMomentum[b_, D-1], CMomentum[c_, D-1]]:=
+	CLCD[a][b,c];
+
+eps[CIndex[a_, D-1], CIndex[b_, D-1], CMomentum[c_, D-1]]:=
+	CLCD[a,b][c];
+
+eps[CIndex[a_, D-1], CIndex[b_, D-1], CIndex[c_, D-1]]:=
+	CLCD[a,b,c];
 
 FCPrint[1,"FeynCalcExternal.m loaded"];
 End[]

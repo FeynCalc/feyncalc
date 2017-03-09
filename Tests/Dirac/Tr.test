@@ -99,7 +99,7 @@ Tests`Dirac`fcstTr = {
 	4*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p1]] -
 	2*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] +
 	4*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
-{"fcST-TR-ID11",
+{"fcstTr-ID11",
 	"$BreitMaison=True; \n  FCClearScalarProducts[]; \n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
@@ -116,7 +116,7 @@ Tests`Dirac`fcstTr = {
 	Dimension -> (d - 4)]] // Expand","123469824 - 135962624*d +
 	63224832*d^2 - 16145920*d^3 + 2461760*d^4 - 227584*d^5 +
 	12320*d^6 - 352*d^7 + 4*d^8"},
-{"fcST-TR-ID12","Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+{"fcstTr-ID12","Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
 	Dimension -> (d - 4)].DiracMatrix[a[6],
@@ -135,7 +135,7 @@ Tests`Dirac`fcstTr = {
 	"-1879576576 + 2220901376*d - 1127626752*d^2 +
 	321806848*d^3 - 56625408*d^4 + 6331584*d^5 -
 	446208*d^6 + 18912*d^7 - 432*d^8 + 4*d^9"},
-{"fcST-TR-ID13",
+{"fcstTr-ID13",
 	"Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
@@ -157,7 +157,7 @@ Tests`Dirac`fcstTr = {
 	"-31023169536 + 38971179008*d - 21328977920*d^2 +
 	6679521280*d^3 - 1320732160*d^4 + 171464832*d^5 -
 	14710080*d^6 + 816960*d^7 - 27840*d^8 + 520*d^9 - 4*d^10"},
-{"fcST-TR-ID14",
+{"fcstTr-ID14",
 	"Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
@@ -181,7 +181,9 @@ Tests`Dirac`fcstTr = {
 	427299186688*d^2 - 144858475520*d^3 + 31576821760*d^4 -
 	4629805312*d^5 + 463655808*d^6 - 31521600*d^7 +
 	1415040*d^8 - 39600*d^9 + 616*d^10 - 4*d^11"},
-{"fcST-TR-ID15","Tr[DiracTrace[GA[i, j]]] // FCE","16 MT[i, j]"}
+{"fcstTr-ID15","Tr[DiracTrace[GA[i, j]]] // FCE","16 MT[i, j]"},
+{"fcstTr-ID16","Tr[GSD[pv3].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"},
+{"fcstTr-ID17","Tr[GSD[pv3, pv4, pv5].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =

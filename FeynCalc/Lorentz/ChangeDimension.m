@@ -27,7 +27,7 @@ Begin["`ChangeDimension`Private`"]
 
 ChangeDimension[x_, diim_] :=
 	Block[
-		{xx = FeynCalcInternal[x], dirGG, dirGAMM, pAiR, ld , md,spi4, eps, eps2},
+		{xx = FeynCalcInternal[x], dirGG, dirGAMM, pAiR, ld , md,spi4},
 
 		If[	!FreeQ2[{xx}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
@@ -37,7 +37,7 @@ ChangeDimension[x_, diim_] :=
 		If[ diim === 4,
 			xx = xx /. {LorentzIndex[a_,___] :> LorentzIndex[a] ,
 									Momentum[b_,___]     :> Momentum[b],
-									DiracGamma[c_,___]   :> DiracGamma[c], Eps[a__,Dimension->D]:>Eps[a]},
+									DiracGamma[c_,___]   :> DiracGamma[c]},
 			ld[a_,___] :=
 				LorentzIndex[a, diim];
 			md[a_,___] :=
@@ -48,12 +48,10 @@ ChangeDimension[x_, diim_] :=
 				dirGAMM[aa, diim]/; !MatchQ[aa,5|6|7];
 			dirGG[(aa: 5|6|7)] :=
 				dirGAMM[aa];
-			eps[a__, OptionsPattern[]]:=
-				eps2[a, Dimension->diim];
-			xx = xx /. Pair -> pAiR /. DiracGamma -> dirGAMM /. Eps -> eps;
+			xx = xx /. Pair -> pAiR /. DiracGamma -> dirGAMM;
 			xx = xx /. {Momentum :> md, LorentzIndex -> ld} /.
 								{md :> Momentum, ld :> LorentzIndex} ;
-			xx = xx /. dirGAMM -> dirGG/.  dirGAMM -> DiracGamma /. pAiR -> Pair /. eps2->Eps;
+			xx = xx /. dirGAMM -> dirGG/.  dirGAMM -> DiracGamma /. pAiR -> Pair;
 			(*xx = xx /. Spinor -> spi4*);
 		];
 		xx

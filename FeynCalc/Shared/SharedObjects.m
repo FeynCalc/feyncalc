@@ -168,19 +168,19 @@ EvaluateFCGV::usage =
 "";
 
 GA::usage =
-"GA[mu] can be used as input for gamma_mu and is \
-transformed into DiracMatrix[mu] by FeynCalcInternal.";
+"GA[mu] can be used as input for gamma^mu and is \
+transformed into DiracGamma[LorentzIndex[mu]] by FeynCalcInternal.";
 
 GA5::usage =
 "GA5 is equivalent to DiracGamma[5] and denotes gamma5.";
 
 GAD::usage =
-"GAD[mu] can be used as input for a D-dimensional gamma_mu and is \
-transformed into DiracMatrix[mu, Dimension->D] by FeynCalcInternal.";
+"GAD[mu] can be used as input for a D-dimensional gamma^mu and is \
+transformed into DiracGamma[LorentzIndex[mu, D], D] by FeynCalcInternal.";
 
 GAE::usage =
-"GAE[mu] can be used as input for a D-4-dimensional gamma_mu and is \
-transformed into DiracMatrix[mu, Dimension->D-4] by FeynCalcInternal.";
+"GAE[mu] can be used as input for a D-4-dimensional gamma^mu and is \
+transformed into DiracGamma[LorentzIndex[mu, D-4], D-4] by FeynCalcInternal.";
 
 GaugeField::usage =
 "GaugeField is a name of a gauge field.";
@@ -192,14 +192,16 @@ GluonField::usage =
 "GluonField is a name of a gauge field.";
 
 GS::usage =
-"GS[p] is transformed into DiracSlash[p] by FeynCalcInternal. \
+"GS[p] is transformed into DiracGamma[Momentum[p]] by FeynCalcInternal. \
 GS[p,q, ...] is equivalent to GS[p].GS[q]. ...";
 
 GSD::usage =
-"GSD[p] is transformed into DiracSlash[p,Dimension->D] by FeynCalcInternal.";
+"GSD[p] is transformed into DiracGamma[Momentum[p, D], D] by FeynCalcInternal. \
+GSD[p,q, ...] is equivalent to GSD[p].GSD[q]. ...";
 
 GSE::usage =
-"GSE[p] is transformed into DiracSlash[p,Dimension->D-4] by FeynCalcInternal.";
+"GSE[p] is transformed into DiracGamma[Momentum[p, D-4], D-4] by FeynCalcInternal. \
+GSE[p,q, ...] is equivalent to GSE[p].GSE[q]. ...";
 
 IFPD::usage = "IFPD[p, m] denotes (p^2 - m^2)."
 
@@ -208,16 +210,15 @@ Integratedx::usage =
 operator Integrate[#, {x,low,up}]&.";
 
 LC::usage =
-"LC[m,n,r,s] evaluates to LeviCivita[m,n,r,s] applying \
-FeynCalcInternal. \
-LC[m,...][p, ...] evaluates to LeviCivita[m,...][p,...] \
+"LC[m,n,r,s] evaluates to Eps[LorentzIndex[m], LorentzIndex[n], \
+LorentzIndex[r], LorentzIndex[s]] applying FeynCalcInternal. \
+LC[m,...][p, ...] evaluates to Eps[LorentzIndex[m], ..., Momentum[p], ...] \
 applying FeynCalcInternal.";
 
 LCD::usage =
-"LCD[m,n,r,s] evaluates to LeviCivita[m,n,r,s,Dimension->D] \
-applying FeynCalcInternal. \
-LCD[m,...][p, ...] evaluates to \
-LeviCivita[m,...,Dimension->D][p,...,Dimension->D] \
+"LCD[m,n,r,s] evaluates to Eps[LorentzIndex[m,D], LorentzIndex[n,D], \
+LorentzIndex[r,D], LorentzIndex[s,D]] applying FeynCalcInternal. \
+LCD[m,...][p, ...] evaluates to Eps[LorentzIndex[m, D], ..., Momentum[p, D], ...] \
 applying FeynCalcInternal.";
 
 LeftPartialD::usage =
@@ -532,12 +533,6 @@ Zeta2::usage =
 "Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in \
 OPEIntegrateDelta is replaced by (6 Zeta2).";
 
-$FCMomentumSubHeads::usage = "$FCMomentumSubHeads is a pattern that \
-contains Heads which may appear inside Momentum and need special treatment."
-
-$FCLorentzIndexSubHeads::usage = "$FCLorentzIndexSubHeads is a pattern that \
-contains Heads which may appear inside LorentzIndex and need special treatment."
-
 DiracGamma::gamma5fail =
 "`1` is forbidden in FeynCalc. You should always use 4-dimensional Gamma^5 or chiral projectors. \
 This is fine for all dimensional regularization schemes supported by FeynCalc including NDR. \
@@ -588,20 +583,217 @@ LorentzIndex::momentumhead =
 Pair::invalid =
 "`1` does not represent a valid Pair object!";
 
+CPair::invalid =
+"`1` does not represent a valid CPair object!";
+
+TPair::invalid =
+"`1` does not represent a valid TPair object!";
+
 SharedObjects::failmsg =
 "Error! FeynCalc has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
+(*							New NR objects									*)
+(* ------------------------------------------------------------------------ *)
+
+CIndex::usage =
+"CIndex is the head of Cartesian indices. \
+The internal representation of a three-dimensional i is \
+CIndex[i]. For other than three dimensions: \
+CIndex[i, Dimension]. \
+CIndex[i, 3] simplifies to CIndex[i]. \
+The first argument cannot be an integer.";
+
+CMomentum::usage =
+"CMomentum is the head of a three momentum (p). \
+The internal representation of a three-dimensional p is \
+CMomentum[p]. For other than three dimensions: CMomentum[p, Dimension]. \n
+CMomentum[p, 3] simplifies to CMomentum[p].";
+
+CPair::usage =
+"CPair[a , b] is a special pairing used in the internal \
+representation: a and b may have heads CIndex or CMomentum. \
+If both a and b have head CIndex, the Kronecker delta is \
+understood. If a and b have head CMomentum, a scalar product is \
+meant. If one of a and b has head CIndex and the other \
+CMomentum, a Cartesian vector (p^i) is understood.";
+
+TC::usage =
+"TC[p] is the temporal component of a 4-vector and is transformed into \
+TPair[TMomentum[p], TIndex[]] by FeynCalcInternal.";
+
+CV::usage =
+"CV[p,i] is a 3-dimensional Cartesian vector and is transformed into \
+CPair[CMomentum[p], CIndex[i]] by FeynCalcInternal.";
+
+CVD::usage =
+"CVD[p,i] is a D-1-dimensional Cartesian vector and is transformed into \
+CPair[CMomentum[p,D], CIndex[i,D]] by FeynCalcInternal.";
+
+CVE::usage =
+"CVE[p,i] is a D-4-dimensional Cartesian vector and is transformed into \
+CPair[CMomentum[p,D-4], CIndex[i,D-4]] by FeynCalcInternal.";
+
+KD::usage =
+"KD[i,j] is the Kronecker delta in 3 dimensions.";
+
+KDD::usage =
+"KDD[i,j] is the Kronecker delta in D-1 dimensions.";
+
+KDE::usage =
+"KDE[i,j] is the Kronecker delta in D-4 dimensions.";
+
+CSP::usage =
+"CSP[p,q] is the 3-dimensional scalar product of p with q. and is \
+transformed into CPair[CMomentum[p],CMomentum[q]] by FeynCalcInternal. \
+CSP[p] is the same as CSP[p,p] (=p^2).";
+
+CSPD::usage =
+"CSPD[p,q] is the D-1-dimensional scalar product of p with q. and is \
+transformed into CPair[CMomentum[p, D-1],CMomentum[q, D-1]] by FeynCalcInternal. \
+CSPD[p] is the same as CSPD[p,p] (=p^2).";
+
+CSPE::usage =
+"CSPE[p,q] is the D-4-dimensional scalar product of p with q. and is \
+transformed into CPair[CMomentum[p, D-4],CMomentum[q, D-4]] by FeynCalcInternal. \
+CSPE[p] is the same as CSPE[p,p] (=p^2).";
+
+CLC::usage =
+"CLC[m,n,r] evaluates to Eps[CIndex[m], CIndex[n], \
+CIndex[r]] applying FeynCalcInternal. \
+CLC[m,...][p, ...] evaluates to Eps[CIndex[m], ..., CMomentum[p], ...] \
+applying FeynCalcInternal.";
+
+CLCD::usage =
+"CLCD[m,n,r] evaluates to Eps[CIndex[m, D-1], CIndex[n, D-1], \
+CIndex[r,D-1]] applying FeynCalcInternal. \
+CLC[m,...][p, ...] evaluates to Eps[CIndex[m, D-1], ..., CMomentum[p, D-1], ...] \
+applying FeynCalcInternal.";
+
+TGA::usage =
+"TGA[] can be used as input for gamma^0 in 4-dimensions and is \
+transformed into DiracGamma[TIndex[]] by FeynCalcInternal.";
+
+CGA::usage =
+"CGA[i] can be used as input for gamma^i in 4-dimensions and is \
+transformed into DiracGamma[CIndex[i]] by FeynCalcInternal.";
+
+CGAD::usage =
+"CGAD[i] can be used as input for gamma^i in D-dimensions and is \
+transformed into DiracGamma[CIndex[i,D-1],D] by FeynCalcInternal.";
+
+CGAE::usage =
+"CGAE[i] can be used as input for gamma^i in D-4-dimensions and is \
+transformed into DiracGamma[CIndex[i,D-4],D-4] by FeynCalcInternal.";
+
+CGS::usage =
+"CGS[p] is transformed into DiracGamma[CMomentum[p]] by FeynCalcInternal. \
+CGS[p,q, ...] is equivalent to CGS[p].CGS[q]. ...";
+
+CGSD::usage =
+"CGSD[p] is transformed into DiracGamma[CMomentum[p, D-1], D] by FeynCalcInternal. \
+CGSD[p,q, ...] is equivalent to CGSD[p].CGSD[q]. ...";
+
+CGSE::usage =
+"CGSE[p] is transformed into DiracGamma[CMomentum[p, D-4], D-4] by FeynCalcInternal. \
+CGSE[p,q, ...] is equivalent to CGSE[p].CGSE[q]. ...";
+
+SI::usage =
+"SI[mu] can be used as input for 3-dimensional sigma^mu with 4-dimensional Lorentz
+index mu and is transformed into PauliSigma[LorentzIndex[mu]] by FeynCalcInternal.";
+
+SID::usage =
+"SID[mu] can be used as input for D-1-dimensional sigma^mu with D-dimensional Lorentz
+index mu and is transformed into PauliSigma[LorentzIndex[mu,D],D-1] by FeynCalcInternal.";
+
+SIE::usage =
+"SIE[mu] can be used as input for D-4-dimensional sigma^mu with D-4-dimensional Lorentz
+index mu and is transformed into PauliSigma[LorentzIndex[mu,D-4],D-4] by FeynCalcInternal.";
+
+SIS::usage =
+"SIS[p] can be used as input for 3-dimensional sigma^mu p_mu with 4-dimensional Lorentz
+vector p and is transformed into PauliSigma[Momentum[p]] by FeynCalcInternal.";
+
+SISD::usage =
+"SISD[p] can be used as input for D-1-dimensional sigma^mu p_mu with D-dimensional Lorentz
+vector p and is transformed into PauliSigma[Momentum[p, D], D-1] by FeynCalcInternal.";
+
+SISE::usage =
+"SISE[p] can be used as input for D-4-dimensional sigma^mu p_mu with D-4-dimensional Lorentz
+vector p and is transformed into PauliSigma[Momentum[p, D-4], D-4] by FeynCalcInternal.";
+
+CSI::usage =
+"CSI[i] can be used as input for 3-dimensional sigma^i with 3-dimensional Cartesian
+index i and is transformed into PauliSigma[CIndex[i]] by FeynCalcInternal.";
+
+CSID::usage =
+"CSID[i] can be used as input for D-1-dimensional sigma^i with D-1-dimensional Cartesian
+index i and is transformed into PauliSigma[CIndex[i, D-1], D-1] by FeynCalcInternal.";
+
+CSIE::usage =
+"CSIE[i] can be used as input for D-4-dimensional sigma^i with D-4-dimensional Cartesian
+index i and is transformed into PauliSigma[CIndex[i, D-4], D-4] by FeynCalcInternal.";
+
+CSIS::usage =
+"CSIS[p] can be used as input for 3-dimensional sigma^i p_i with 3-dimensional Cartesian
+vector p and is transformed into PauliSigma[CMomentum[p]] by FeynCalcInternal.";
+
+CSISD::usage =
+"CSISD[p] can be used as input for D-1-dimensional sigma^i p_i with D-1-dimensional Cartesian
+vector p and is transformed into PauliSigma[CMomentum[p, D-1], D-1] by FeynCalcInternal.";
+
+CSISE::usage =
+"CSISE[p] can be used as input for D-4-dimensional sigma^i p_i with D-4-dimensional Cartesian
+vector p and is transformed into PauliSigma[CMomentum[p, D-4], D-4] by FeynCalcInternal.";
+
+PauliSigma::usage =
+"PauliSigma[x,dim] is the internal representation of a Pauli matrix \
+with a Lorentz index or a contraction of a Pauli matrix and a Lorentz \
+vector. PauliSigma[x,3] simplifies to PauliSigma[x].";
+
+PauliXi::usage =
+"PauliXi[I] represents a two-component Pauli spinor \[Xi], while PauliXi[-I] stands for \
+\[Xi]^\[Dagger].";
+
+PauliEta::usage =
+"PauliEta[I] represents a two-component Pauli spinor \[Eta], while PauliEta[-I] stands for \
+\[Eta]^\[Dagger].";
+
+TIndex::usage =
+"TIndex[] denotes the temporal component of a tensor. It can \
+appear in any tensor, except for purely cartesian tensors like CPair.";
+
+TMomentum::usage =
+"TMomentum is the head of the temporal component of a four momentum p^0. \
+The internal representation of the temporal component p^0 is \
+TMomentum[p]. TMomentum may appear only inside TPair.";
+
+TPair::usage =
+"TPair[Index[], TMomentum[p]] is a special pairing used in the internal \
+representation to denote p^0, the temporal components of a four momentum p.";
+
+(* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
 
 initialPairDownValues;
+initialCPairDownValues;
+initialTPairDownValues;
 initialSPDownValues;
 initialSPDDownValues;
+initialSPEDownValues;
+initialCSPDownValues;
+initialCSPDDownValues;
+initialCSPEDownValues;
+initialTCDownValues;
 initialScalarProducts;
+initialMomentumDownValues;
+initialCMomentumDownValues;
+
 DiracHeadsList;
 SUNHeadsList;
 TensorArgsList;
+NRStuff;
 
 End[]
 
@@ -634,10 +826,28 @@ DeclareNonCommutative[SpinorV];
 DeclareNonCommutative[SpinorVBar];
 DeclareNonCommutative[SUNT];
 
+(* NRStuff *)
+DeclareNonCommutative[PauliSigma];
+DeclareNonCommutative[PauliXi];
+DeclareNonCommutative[PauliEta];
+DeclareNonCommutative[TGA];
+DeclareNonCommutative[CGA];
+DeclareNonCommutative[CGAD];
+DeclareNonCommutative[CGAE];
+DeclareNonCommutative[CGS];
+DeclareNonCommutative[CGSD];
+DeclareNonCommutative[CGSE];
+DeclareNonCommutative[SI];
+DeclareNonCommutative[SID];
+DeclareNonCommutative[SIE]
+DeclareNonCommutative[CSI];
+DeclareNonCommutative[CSID];
+DeclareNonCommutative[CSIE]
+
 DeclareFCTensor[Pair];
 DeclareFCTensor[Eps];
-
-$FCLorentzIndexSubHeads = _Upper | _Lower;
+(* NRStuff *)
+DeclareFCTensor[CPair];
 
 $TypesettingDim4 = "_";
 $TypesettingDimE = "^";
@@ -666,6 +876,9 @@ SetAttributes[ExplicitLorentzIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[ExplicitSUNFIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[LorentzIndex, Constant];
+SetAttributes[KD, Orderless];
+SetAttributes[KDD, Orderless];
+SetAttributes[KDE, Orderless];
 SetAttributes[MT, Orderless];
 SetAttributes[MTD, Orderless];
 SetAttributes[MTE, Orderless];
@@ -675,16 +888,21 @@ SetAttributes[SDF, Orderless];
 SetAttributes[SP, Orderless];
 SetAttributes[SPE, Orderless];
 SetAttributes[SPD, Orderless];
+SetAttributes[CSP, Orderless];
+SetAttributes[CSPE, Orderless];
+SetAttributes[CSPD, Orderless];
 SetAttributes[SUND, Orderless];
 SetAttributes[SUNDelta, Orderless];
 SetAttributes[SUNFDelta, Orderless];
 SetAttributes[SUNIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[SUNFIndex, {Constant, Flat, OneIdentity}];
+(* NRStuff *)
+SetAttributes[CPair, Orderless];
+SetAttributes[TPair, Orderless];
 
 Options[ChiralityProjector] = {FCI -> True};
 Options[DiracMatrix] = {Dimension -> 4, FCI -> True};
 Options[DiracSlash] = {Dimension -> 4, FCI -> True};
-Options[Eps] = {Dimension -> 4};
 Options[FAD] = {Dimension -> D};
 Options[FCGV] = {SilentTypeSetting -> False, EvaluateFCGV -> False};
 Options[FourVector]  = {Dimension -> 4, FCI -> True};
@@ -701,7 +919,206 @@ DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
-TensorArgsList = {LorentzIndex, ExplicitLorentzIndex, Momentum};
+TensorArgsList = {
+	LorentzIndex, ExplicitLorentzIndex, Momentum,
+	CIndex, TIndex, CMomentum, TMomentum
+};
+
+CHeadsList =  {
+	CIndex, CMomentum, CPair, TIndex, TMomentum, TPair
+};
+
+
+
+NRStuff={
+	CPair, CMomentum, CIndex, TIndex, TMomentum, TPair, AbsCPair,
+	FCNablaD, CFieldDerivative,
+	FFieldStrength, EField, BField, CCovariantD,
+
+	CV, CVD, CVE, TC,
+	KD, KDD, KDE,
+	CSP, CSPD, CSPE,
+
+	CLC, CLCD,
+	CGA, CGAD, CGAE, TGA,
+	CGS, CGSD, CGSE,
+
+	SI, SID, SIE,
+	SIS, SISD, SISE,
+
+	CSI, CSID, CSIE,
+	CSIS, CSISD, CSISE
+};
+
+CSP/:
+	Set[CSP[a_, b_] , c_]:=
+		(CartesianScalarProduct[a,b,Dimension->3,SetDimensions->{3}]=c)
+
+CSPD/:
+	Set[CSPD[a_, b_] , c_]:=
+		(CartesianScalarProduct[a,b,Dimension->D-1,SetDimensions->{D-1}]=c)
+
+CSPE/:
+	Set[CSPE[a_, b_] , c_]:=
+		(CartesianScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
+
+CSP[0,_]:=
+	0;
+
+CSPD[0,_]:=
+	0;
+
+CSPE[0,_]:=
+	0;
+
+CSP[a_] :=
+	CSP[a,a];
+
+CSPD[a_] :=
+	CSPD[a,a];
+
+CSPE[a_] :=
+	CSPE[a,a];
+
+CV[0,_] :=
+	0;
+
+CVD[0,_] :=
+	0;
+
+CVE[0,_] :=
+	0;
+
+TC[0] =
+	0;
+
+CGA[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CGAD[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CGAE[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CGS[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CGSD[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CGSE[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CGA[x_, y__] :=
+	DOT @@ Map[CGA,{x,y}];
+
+CGAD[x_, y__] :=
+	DOT @@ Map[CGAD,{x,y}];
+
+CGAE[x_, y__] :=
+	DOT @@ Map[CGAE,{x,y}];
+
+CGS[x_, y__] :=
+	DOT @@ Map[CGS,{x,y}];
+
+CGSD[x_, y__] :=
+	DOT @@ Map[CGSD,{x,y}];
+
+CGSE[x_, y__] :=
+	DOT @@ Map[CGSE,{x,y}];
+
+CGS[0] =
+	0;
+
+CGSD[0] =
+	0;
+
+CGSE[0] =
+	0;
+
+(* ------------------------------------------------------------------------ *)
+
+CSI[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CSID[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CSIE[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CSIS[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CSISD[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CSISE[_?NumberQ]:=
+	(
+	Message[SharedObjects::failmsg, "Explicit indices are not supported inside Cartesian objects."];
+	Abort[]
+	);
+
+CSI[x_, y__] :=
+	DOT @@ Map[CSI,{x,y}];
+
+CSID[x_, y__] :=
+	DOT @@ Map[CSID,{x,y}];
+
+CSIE[x_, y__] :=
+	DOT @@ Map[CSIE,{x,y}];
+
+CSIS[x_, y__] :=
+	DOT @@ Map[CSIS,{x,y}];
+
+CSISD[x_, y__] :=
+	DOT @@ Map[CSISD,{x,y}];
+
+CSISE[x_, y__] :=
+	DOT @@ Map[CSISE,{x,y}];
+
+CSIS[0] =
+	0;
+
+CSISD[0] =
+	0;
+
+CSISE[0] =
+	0;
 
 ChiralityProjector[1, OptionsPattern[]] :=
 	DiracGamma[6]/; OptionValue[FCI];
@@ -717,65 +1134,82 @@ DeltaFunction[0] :=
 
 (* ------------------------------------------------------------------------ *)
 
-DiracGamma /:
-	Transpose[DiracGamma[a__]]:= DiracGammaT[a];
-
-DiracGamma[] = 1;
-
-DiracGamma[x_ (h: LorentzIndex|ExplicitLorentzIndex|Momentum)[p_, dim1_:4], dim2_:4] :=
-	x DiracGamma[h[p, dim1], dim2];
-
-DiracGamma[(x: LorentzIndex|ExplicitLorentzIndex|Momentum)[y_, dim_:4], 4] :=
-	DiracGamma[x[y,dim]];
-
-DiracGamma[x_?NumberQ, ___] :=
-	(Message[DiracGamma::noint, x]; Abort[])/; (x=!=0 && x=!=5 && x=!=6 && x=!=7);
-
-DiracGamma[(n:5|6|7), 4] :=
-	DiracGamma[n];
-
-DiracGamma[(n:5|6|7), dim_] :=
-	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[n],ToString[dim]]]];
-
 DiracGamma[_, 0] :=
 	0;
 
-DiracGamma[0,___]:=
+DiracGamma[0, ___]:=
 	0;
+
+DiracGamma[x_,y_, z__]/; !MemberQ[{1, 2}, Length[{x,y,z}]] && FCPatternFreeQ[{x,y,z}] :=
+	(
+	Message[DiracGamma::argrx, "DiracGamma[" <> ToString[{x,y,z}] <> "]", Length[{x,y,z}], "1 or 2"];
+	Abort[]
+	);
+
 
 DiracGamma[a_Plus, dim_:4] :=
 	Map[DiracGamma[#,dim]&, a];
 
-(* TODO: Very suspicious... *)
-DiracGamma[(h1:LorentzIndex|Momentum)[x_,dim1_:4], (h2:LorentzIndex|Momentum)[y_,dim2_:4]] :=
-	DOT[DiracGamma[h1[x,dim1], dim1],
-		DiracGamma[h2[y,dim2], dim2]];
+DiracGamma[x_, 4] :=
+	DiracGamma[x];
 
-DiracGamma[(h1:LorentzIndex|Momentum)[x_,dim1_:4], (h2:LorentzIndex|Momentum)[y_,dim2_:4], z__] :=
-	DOT[DiracGamma[h1[x,dim1], dim1],
-		DiracGamma[h2[y,dim2], dim2],
-		DiracGamma[z]];
+DiracGamma[x_ (h:TMomentum|CMomentum|Momentum)[p_, dim1___], dim2___] :=
+	x DiracGamma[h[p, dim1], dim2];
 
-DiracGamma[(LorentzIndex|Momentum)[_], _Symbol-4 ] :=
-	0; (* 4, D-4 *)
+DiracGamma[x_ExplicitLorentzIndex, _Symbol] :=
+	DiracGamma[x];
 
-DiracGamma[(LorentzIndex|Momentum)[_, _Symbol-4]] :=
-	0; (* 4, D-4 *)
+DiracGamma[_ExplicitLorentzIndex, _Symbol-4] :=
+	0;
+
+DiracGamma[(LorentzIndex|Momentum|CIndex|CMomentum)[_], _Symbol-4 ] :=
+	0; (* 4 or 3, D-4 *)
+
+DiracGamma[_TMomentum | _TIndex, _Symbol-4]:=
+	0;
+
+DiracGamma[(LorentzIndex|Momentum|CIndex|CMomentum)[_, _Symbol-4]] :=
+	0; (* D-4, 4 *)
 
 DiracGamma[(h:LorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4] :=
 	DiracGamma[h[x, dim-4], dim-4]; (* D, D-4 *)
 
-DiracGamma[(h:LorentzIndex|Momentum)[x_, dim_Symbol-4], dim_Symbol] :=
+DiracGamma[(h:CIndex|CMomentum)[i_, dim_Symbol-1], dim_Symbol-4]:=
+	DiracGamma[h[i, dim-4], dim-4]; (* D, D-4 *)
+
+DiracGamma[(h:LorentzIndex|Momentum|CIndex|CMomentum)[x_, dim_Symbol-4], dim_Symbol] :=
 	DiracGamma[h[x, dim-4], dim-4]; (* D-4, D *)
 
-DiracGamma[(h:LorentzIndex|Momentum)[x_], _Symbol] :=
-	DiracGamma[h[x]]; (* 4, D *)
+DiracGamma[(h:LorentzIndex|Momentum|CIndex|CMomentum)[x_], _Symbol] :=
+	DiracGamma[h[x]]; (* 4 or 3, D *)
 
 DiracGamma[(h:LorentzIndex|Momentum)[x_,_Symbol]] :=
 	DiracGamma[h[x]]; (* D, 4 *)
 
+DiracGamma[(h:CIndex|CMomentum)[i_,_Symbol -1]]:=
+	DiracGamma[h[i]]; (* D-1, 4 *)
+
+DiracGamma[m : (_TMomentum | _TIndex), _Symbol]:=
+	DiracGamma[m];
+
+DiracGamma[m_TMomentum]:=
+	FeynCalc`Package`MetricT DiracGamma[TIndex[]] TPair[m,TIndex[]];
+
+(* Explicit indices and gamma^5*)
+
+DiracGamma[x_?NumberQ, ___] :=
+	(Message[DiracGamma::noint, x]; Abort[])/; (x=!=0 && x=!=5 && x=!=6 && x=!=7);
+
+DiracGamma[(n:5|6|7), dim_] :=
+	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[n],ToString[dim]]]];
+
+
 DiracGammaT /:
 	Transpose[DiracGammaT[a__]]:= DiracGamma[a];
+
+DiracGamma /:
+	Transpose[DiracGamma[a__]]:= DiracGammaT[a];
+
 
 DiracMatrix[(a:5|6|7), opts:OptionsPattern[]] :=
 	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[a],ToString[opts]]]]/;
@@ -842,29 +1276,56 @@ DiracSlash[x_?NumberQ, OptionsPattern[]] :=
 
 DiracSpinor = Spinor;
 
-Eps[x__, Dimension->4] :=
-	Eps[x]/; OptionValue[Eps,Dimension]===4 && Length[{x}]===4;
-
-Eps[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] =!= 4) && FCPatternFreeQ[{x,opts}] :=
-	Message[Eps::argrx, "Eps["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
-
-Eps[x__Symbol | x__FCGV, OptionsPattern[]] :=
-	0/; Signature[{x}]===0 && Length[{x}]===4;
-
-Eps[a___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], b___,
-	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___, OptionsPattern[]] :=
-	0 /; NumberQ[n1 n2] &&
-	Length[{a,n1,b,n2,c}]===4;
-
 Eps[x__] :=
-	0 /; ((!FreeQ[{x}, LorentzIndex[_,_Symbol -4]]) || (!FreeQ[{x}, Momentum[_,_Symbol -4]])) &&
-	Length[{x}]===4;
+	0/; Signature[{x}]===0 && FCPatternFreeQ[{x}];
 
-Eps[a___, (c: LorentzIndex | Momentum)[mu_,_Symbol], b:Except[_?OptionQ]..., opts:OptionsPattern[]] :=
-	(Eps[a, c[mu], b, opts]) /; OptionValue[Dimension]===4 && Length[{a, c[mu], b}]===4;
+Eps[x___, a:(CMomentum|Momentum|LorentzIndex|CIndex)[_,_Symbol-4], y___]:=
+	0/; FCPatternFreeQ[{x,a,y}];
+
+Eps[x_, _TIndex | _TMomentum, y_]:=
+	0/; Length[{x,y}]===2;
+
+Eps[_CMomentum,_CMomentum,_CMomentum,_CMomentum]:=
+	0;
+
+Eps[x__]/; !MemberQ[{3, 4}, Length[{x}]] && FCPatternFreeQ[{x}] :=
+	(
+	Message[Eps::argrx, "Eps[" <> ToString[{x}] <> "]", Length[{x}], "3 or 4"];
+	Abort[]
+	);
+
+Eps[x___, n_ a:( _Momentum| _CMomentum),y___]:=
+	n Eps[x,a,y];
+
+Eps[x___, (h1:LorentzIndex|Momentum|CIndex|CMomentum)[a_], y___, (h2:LorentzIndex|Momentum|CIndex|CMomentum)[b_, _Symbol] ,z___]:=
+	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}];
+
+Eps[x___, (h1:LorentzIndex|Momentum|CIndex|CMomentum)[a_], y___, (h2:CIndex|CMomentum)[b_, _Symbol -1] ,z___]:=
+	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}];
+
+Eps[x___, m_TMomentum, y___]:=
+	TPair[TIndex[],m]Eps[x,TIndex[],y];
+
+Eps[x___, Momentum[p_], y___]:=
+	FeynCalc`Package`MetricS Eps[x,CMomentum[p],y]/; Length[{x,y}]===2;
+
+Eps[x___, Momentum[p_, dim_Symbol], y___]:=
+	FeynCalc`Package`MetricS Eps[x,CMomentum[p,dim-1],y]/; Length[{x,y}]===2;
+
+Eps[x : (_Momentum.. | _CMomentum.. | _CIndex..), TIndex[]]:=
+	$LeviCivitaSign Eps[x]/; Length[{x}]===3;
 
 ExplicitLorentzIndex[x_, 4] :=
 	ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
+
+ExplicitLorentzIndex[x_, dim_Symbol] :=
+	ExplicitLorentzIndex[x, dim] = ExplicitLorentzIndex[x];
+
+ExplicitLorentzIndex[x_, dim_Symbol-4] :=
+	ExplicitLorentzIndex[x, dim-4] = 0;
+
+ExplicitLorentzIndex[0]:=
+	TIndex[];
 
 ExplicitSUNIndex/:
 	SUNIndex[i_ExplicitSUNIndex]:= ExplicitSUNIndex[i];
@@ -895,12 +1356,6 @@ FeynAmpDenominator[ar__List] :=
 FourVector[a_,b_, OptionsPattern[]] :=
 	Pair[Momentum[a, OptionValue[Dimension]],
 	LorentzIndex[b, OptionValue[Dimension]]]/; OptionValue[FCI];
-
-FV[p_ /; Head[p]=!=Momentum, Momentum[b_]] :=
-	SP[p,b];
-
-FV[Momentum[p_], Momentum[b_]] :=
-	SP[p,b];
 
 FV[0,_] :=
 	0;
@@ -1094,8 +1549,7 @@ LorentzIndex[in_Integer?NonNegative,dim_ :4] :=
 	ExplicitLorentzIndex[in,dim];
 
 MetricTensor[a_, b_, OptionsPattern[]] :=
-	Pair[LorentzIndex[a, OptionValue[Dimension]],
-		LorentzIndex[b, OptionValue[Dimension]]]/; OptionValue[FCI];
+	Pair[LorentzIndex[a, OptionValue[Dimension]], LorentzIndex[b, OptionValue[Dimension]]]/; OptionValue[FCI];
 
 Momentum[x_ GaugeXi[y_], dim_:4] :=
 	GaugeXi[y] Momentum[x,dim];
@@ -1122,15 +1576,6 @@ Momentum[Momentum[x_, dim1_:4], dim2_:4] :=
 		Momentum[x, {dim1,dim2}]
 	];
 
-MT[Momentum[a_], Momentum[b_]] :=
-	SP[a,b];
-
-MT[Momentum[a_, D], Momentum[b_, D]] :=
-	SPD[a,b];
-
-MT[Momentum[a_, D-4], Momentum[b_, D-4]] :=
-	SPE[a,b];
-
 OPE /:
 	OPE^_Integer?Positive := 0;
 
@@ -1155,7 +1600,7 @@ Pair[n_ x_Momentum, y_] :=
 	scalar product where one momentum lives in D and the other
 	in 4 dimensions.    *)
 
-Pair[(a : LorentzIndex | Momentum)[x_, _Symbol], (b : LorentzIndex | Momentum)[y_]] :=
+Pair[(a : LorentzIndex | Momentum)[x_, _Symbol], (b : LorentzIndex | Momentum | CIndex | CMomentum)[y_]] :=
 	Pair[a[x], b[y]];
 
 (*     A momentum vector with 4 components and the Lorentz index in
@@ -1164,7 +1609,7 @@ Pair[(a : LorentzIndex | Momentum)[x_, _Symbol], (b : LorentzIndex | Momentum)[y
 	in D-4 dimensions and for a scalar product where one momentum
 	lives in 4 and the other in D-4 dimensions.    *)
 
-Pair[(LorentzIndex | Momentum)[_, _Symbol-4], (LorentzIndex | Momentum)[_]] :=
+Pair[(LorentzIndex | Momentum | CIndex | CMomentum)[_, _Symbol-4], (LorentzIndex | Momentum | CIndex | CMomentum)[_]] :=
 	0;
 
 (*     A momentum vector with D components and the Lorentz index in
@@ -1174,8 +1619,24 @@ Pair[(LorentzIndex | Momentum)[_, _Symbol-4], (LorentzIndex | Momentum)[_]] :=
 	product where one momentum lives in D and the other in D-4
 	dimensions.    *)
 
-Pair[(a : LorentzIndex | Momentum)[x_, dim_Symbol], (b : LorentzIndex | Momentum)[y_, dim_Symbol-4]] :=
+Pair[(a : LorentzIndex | Momentum)[x_, dim_Symbol], (b : LorentzIndex | Momentum | CIndex | CMomentum)[y_, dim_Symbol-4]] :=
 	Pair[a[x, dim-4], b[y, dim-4]];
+
+Pair[i:(_ExplicitLorentzIndex | _TIndex), (h : LorentzIndex | Momentum)[x_, _Symbol]]:=
+	Pair[i,h[x]];
+
+Pair[i:(_ExplicitLorentzIndex | _TIndex), (h: CIndex | CMomentum)[x_, _Symbol-1]]:=
+	Pair[i, h[x]];
+
+Pair[_ExplicitLorentzIndex | _TIndex, (LorentzIndex | Momentum | CIndex | CMomentum)[_, _Symbol-4]]:=
+	0;
+
+Pair[(a : LorentzIndex | Momentum | CIndex | CMomentum)[x_], CIndex[y_, _Symbol-1]] :=
+	Pair[a[x], CIndex[y]];
+
+Pair[(a : LorentzIndex | Momentum)[x_, dim_Symbol-4], (h: CIndex | CMomentum)[y_, dim_Symbol-1]] :=
+	Pair[a[x,dim-4], h[y,dim-4]];
+
 
 Pair[Momentum[x_, ___], Momentum[Polarization[x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] :=
 	0/; OptionValue[Polarization,Transversality];
@@ -1192,6 +1653,51 @@ Pair[Momentum[pi_,___], Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]...,
 	opts:OptionsPattern[Polarization]], dii___]] :=
 	Contract[ExpandScalarProduct[Pair[Momentum[pi-x,dii],
 	Momentum[Polarization[x, ki, opts],dii]]]] /; ( pi - Last[x] ) === 0;
+
+
+Pair[TIndex[], TIndex[]]:=
+	FeynCalc`Package`MetricT;
+
+Pair[TIndex[], Momentum[p_]]:=
+	TPair[TIndex[], TMomentum[p]];
+
+(* g^0i is zero by definition *)
+Pair[TIndex[], _CIndex]:=
+	0;
+
+Pair[TIndex[], _CMomentum]:=
+	0;
+
+Pair[i_CIndex, j_CIndex]:=
+	FeynCalc`Package`MetricS CPair[i, j];
+
+Pair[CIndex[i_], Momentum[p_]]:=
+	CPair[CIndex[i], CMomentum[p]];
+
+Pair[CIndex[i_, dim_Symbol-4], Momentum[p_, dim_Symbol-4]]:=
+	CPair[CIndex[i,dim-4], CMomentum[p,dim-4]];
+
+Pair[CIndex[i_, dim_Symbol-1], Momentum[p_, dim_Symbol]]:=
+	CPair[CIndex[i,dim-1], CMomentum[p,dim-1]];
+
+Pair[i_CIndex, p_CMomentum]:=
+	FeynCalc`Package`MetricS CPair[i, p];
+
+Pair[p_CMomentum, q_CMomentum]:=
+	FeynCalc`Package`MetricS CPair[p, q];
+
+Pair[Momentum[q_], CMomentum[p_]]:=
+	CPair[CMomentum[q], CMomentum[p]];
+
+Pair[Momentum[q_, dim_Symbol-4], CMomentum[p_, dim_Symbol-4]]:=
+	CPair[CMomentum[q,dim-4], CMomentum[p,dim-4]];
+
+Pair[Momentum[q_, dim_Symbol], CMomentum[p_, dim_Symbol-1]]:=
+	CPair[CMomentum[q,dim-1], CMomentum[p,dim-1]];
+
+Pair[p_Momentum, q_CMomentum]:=
+	CPair[p, q];
+
 
 FCPartialD[x__] :=
 	FCPartialD@@(LorentzIndex /@ {x})/; FreeQ2[{x},{LorentzIndex, Momentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{x}]=!={1});
@@ -1292,6 +1798,33 @@ RightPartialD[x_LorentzIndex, y__LorentzIndex] :=
 
 RightPartialD[x_Momentum, y__Momentum] :=
 	DOT @@ Map[RightPartialD, {x, y}];
+
+SI[x_, y__] :=
+	DOT @@ Map[SI,{x,y}];
+
+SID[x_, y__] :=
+	DOT @@ Map[SID,{x,y}];
+
+SIE[x_, y__] :=
+	DOT @@ Map[SIE,{x,y}];
+
+SIS[x_, y__] :=
+	DOT @@ Map[SIS,{x,y}];
+
+SISD[x_, y__] :=
+	DOT @@ Map[SISD,{x,y}];
+
+SISE[x_, y__] :=
+	DOT @@ Map[SISE,{x,y}];
+
+SIS[0] =
+	0;
+
+SISD[0] =
+	0;
+
+SISE[0] =
+	0;
 
 SmallVariable[0] =
 	0;
@@ -1397,9 +1930,187 @@ Zeta2 /:
 Zeta2 /:
 	N[Zeta2, prec_] := N[Zeta[2], prec];
 
+(* ------------------------------------------------------------------------ *)
+(*							New NR objects									*)
+(* ------------------------------------------------------------------------ *)
+
+CIndex[x_/;FCPatternFreeQ[{x}], 3] :=
+	CIndex[x, 3] = CIndex[x];
+
+CIndex[_, 0] :=
+	0;
+
+CIndex[_Integer, ___] :=
+	(
+	Message[SharedObjects::failmsg,"Explicit cartesian indices are not supported"];
+	Abort[]
+	);
+
+CMomentum[x_ n_?NumberQ, dim_ :3] :=
+	n CMomentum[x, dim];
+
+CMomentum[x:Except[_Pattern], 3] :=
+	CMomentum[x, 3]  = CMomentum[x];
+
+CMomentum[0, _:3] :=
+	0;
+
+CMomentum[_, 0] :=
+	0;
+
+CMomentum[(h:LorentzIndex|ExplicitLorentzIndex|CIndex|TIndex|Momentum|TMomentum)[___], _:3]:=
+	(Message[SharedObjects::failmsg,ToString[h,InputForm]<>" is not allowed inside CMomentum"];
+	Abort[])
+
+CMomentum[CMomentum[x_, dim1_:3], dim2_:3] :=
+	If[ dim1===dim2,
+		CMomentum[x, dim1],
+		CMomentum[x, {dim1,dim2}]
+	];
+
+(* ------------------------------------------------------------------------ *)
+
+CPair[0,_] :=
+	0;
+
+
+CPair[(CIndex | CMomentum)[_, _Symbol-4], (CIndex | CMomentum)[_]] :=
+	0;
+
+CPair[(h:LorentzIndex|ExplicitLorentzIndex|TIndex|Momentum|TMomentum)[___], _]:=
+	(Message[SharedObjects::failmsg,ToString[h,InputForm]<>" is not allowed inside CPair"];
+	Abort[]);
+
+CPair[n_ x_CMomentum, y_] :=
+	n CPair[x, y];
+
+CPair[(a : CIndex | CMomentum)[x_, _Symbol-1], (b : CIndex | CMomentum)[y_]] :=
+	CPair[a[x], b[y]];
+
+
+CPair[(a : CIndex | CMomentum)[x_, dim_Symbol-1], (b : CIndex | CMomentum)[y_, dim_Symbol-4]] :=
+	CPair[a[x, dim-4], b[y, dim-4]];
+(*
+CPair[CMomentum[x_, ___], CMomentum[Polarization[x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] :=
+		0/; OptionValue[Polarization,Transversality];
+
+CPair[CMomentum[x_,___], CMomentum[Polarization[_?NumberQ x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] :=
+		0/; OptionValue[Polarization,Transversality];*)
+
+PauliSigma[_, 0] :=
+	0;
+
+PauliSigma[0, ___]:=
+	0;
+
+PauliSigma[x_,y_, z__]/; !MemberQ[{1, 2}, Length[{x,y,z}]] && FCPatternFreeQ[{x,y,z}] :=
+	(
+	Message[PauliSigma::argrx, "PauliSigma[" <> ToString[{x,y,z}] <> "]", Length[{x,y,z}], "1 or 2"];
+	Abort[]
+	);
+
+
+PauliSigma[a_Plus, dim___] :=
+	Map[PauliSigma[#,dim]&, a];
+
+PauliSigma[x_, 3] :=
+	PauliSigma[x];
+
+PauliSigma[x_ (h:TMomentum|CMomentum|Momentum)[p_, dim1___], dim2___] :=
+	x PauliSigma[h[p, dim1], dim2];
+
+PauliSigma[x_ExplicitLorentzIndex, _Symbol-1] :=
+	PauliSigma[x];
+
+PauliSigma[_ExplicitLorentzIndex, _Symbol-4] :=
+	0;
+
+PauliSigma[(LorentzIndex|Momentum|CIndex|CMomentum)[_], _Symbol-4 ] :=
+	0; (* 4 or 3, D-4 *)
+
+PauliSigma[_TMomentum | _TIndex, _Symbol-4]:=
+	0;
+
+PauliSigma[(LorentzIndex|Momentum|CIndex|CMomentum)[_, _Symbol-4]] :=
+	0; (* D-4, 3 *)
+
+PauliSigma[(h:LorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4] :=
+	PauliSigma[h[x, dim-4], dim-4]; (* D, D-4 *)
+
+PauliSigma[(h:CIndex|CMomentum)[i_, dim_Symbol-1], dim_Symbol-4]:=
+	PauliSigma[h[i, dim-4], dim-4]; (* D, D-4 *)
+
+PauliSigma[(h:LorentzIndex|Momentum|CIndex|CMomentum)[x_, dim_Symbol-4], dim_Symbol-1] :=
+	PauliSigma[h[x, dim-4], dim-4]; (* D-4, D-1 *)
+
+PauliSigma[(h:LorentzIndex|Momentum|CIndex|CMomentum)[x_], _Symbol-1] :=
+	PauliSigma[h[x]]; (* 4 or 3, D-1 *)
+
+PauliSigma[(h:LorentzIndex|Momentum)[x_,_Symbol]] :=
+	PauliSigma[h[x]]; (* D, 3 *)
+
+PauliSigma[(h:CIndex|CMomentum)[i_,_Symbol -1]]:=
+	PauliSigma[h[i]]; (* D-1, 3 *)
+
+PauliSigma[m : (_TMomentum | _TIndex), _Symbol-1]:=
+	PauliSigma[m];
+
+PauliSigma[m_TMomentum]:=
+	FeynCalc`Package`MetricT TPair[m,TIndex[]];
+
+PauliSigma[TIndex[]]=
+	1;
+
+
+TIndex[x__] :=
+	(Message[TIndex::argrx, "TIndex["<>ToString[{x}]<>"]", Length[{x}], 0]; Abort[]);
+
+TPair[0,_] :=
+	0;
+
+TPair[(h:CMomentum|Momentum|LorentzIndex|ExplicitLorentzIndex|CIndex)[__], _]:=
+	(Message[SharedObjects::failmsg,ToString[h,InputForm]<>" is not allowed inside TPair"];
+	Abort[]);
+
+TPair[n_ x_TMomentum, y_] :=
+	n TPair[x, y];
+
+TMomentum[x_, 4] :=
+	TMomentum[x, 4] = TMomentum[x];
+
+TMomentum[x_, dim_Symbol] :=
+	TMomentum[x, dim] = TMomentum[x];
+
+TMomentum[x_, dim_Symbol-4] :=
+	TMomentum[x, dim-4] = 0;
+
+TMomentum[x_ n_?NumberQ] :=
+	n TMomentum[x];
+
+TMomentum[0] :=
+	0;
+
+TC/:
+	Set[TC[a_] , b_]:=
+		SetTemporalComponent[a,b];
+
 initialPairDownValues = DownValues[Pair];
+initialCPairDownValues = DownValues[CPair];
+initialTPairDownValues = DownValues[TPair];
+
 initialSPDownValues = DownValues[SP];
 initialSPDDownValues = DownValues[SPD];
+initialSPEDownValues = DownValues[SPE];
+
+initialCSPDownValues = DownValues[CSP];
+initialCSPDDownValues = DownValues[CSPD];
+initialCSPEDownValues = DownValues[CSPE];
+
+initialTCDownValues = DownValues[TC];
+
+initialMomentumDownValues = DownValues[Momentum];
+initialCMomentumDownValues = DownValues[CMomentum];
+
 initialScalarProducts = $ScalarProducts;
 
 

@@ -1,10 +1,11 @@
 Tests`Lorentz`fcitUncontract =
 ({
 {"fcitContract-ID1",
-"MatchQ[Uncontract[LC[][a, b, c, d]^3, a, b, c, d, Pair -> All],
-FCI[FV[a, i1_] FV[a, i2_] FV[a, i3_] FV[b, j1_] FV[b, j2_] FV[b,
-	j3_] FV[c, k1_] FV[c, k2_] FV[c, k3_] FV[d, l1_] FV[d, l2_] FV[d,
-	l3_] LC[i1_, j1_, k1_, l1_]
-LC[i2_, j2_, k2_, l2_] LC[i3_, j3_, k3_, l3_]]]",
-"True"}
+"FCCanonicalizeDummyIndices[
+Uncontract[LC[][a, b, c, d]^3, a, b, c, d, Pair -> All],
+LorentzIndexNames -> {i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11,
+i12}, FCE -> True]",
+"FV[a, i11] FV[a, i4] FV[a, i7] FV[b, i10] FV[b, i3] FV[b, i6] FV[c,
+i2] FV[c, i5] FV[c, i9] FV[d, i1] FV[d, i12] FV[d, i8] LC[i1, i5,
+i6, i7] LC[i10, i11, i8, i9] LC[i12, i2, i3, i4]"}
 });

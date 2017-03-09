@@ -236,7 +236,13 @@ $LeviCivitaSign::usage =
 the sign in the result of a Dirac trace of four gamma matrices \
 and gamma5.  $LeviCivitaSign is by default set to -1 which corresponds \
 to the convention Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. \
-Setting $LeviCivitaSign=-I  will switch to the FORM-convention.";
+Setting $LeviCivitaSign=-I  will switch to the FORM-convention. \n
+
+In terms of explicit components, $LeviCivitaSign=1 corresponds to setting
+eps^{0123} = 1 (as in Peskin and Schroeder), while choosing $LeviCivitaSign=-1
+gives us the convention of Bjorken and Drell with eps^{0123} = -1. Two other
+possible choices are $LeviCivitaSign=-I to have eps^{0123} = I as in FORM and
+$LeviCivitaSign=I which would give eps^{0123} = -I.";
 
 $LimitTo4::usage =
 "$LimitTo4 is a global variable that determines whether \
