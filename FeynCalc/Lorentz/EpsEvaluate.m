@@ -37,11 +37,6 @@ Options[EpsEvaluate] = {
 EpsEvaluate[expr_, OptionsPattern[]]:=
 	Block[{x,momList,uniqList,rud,repRule,null1,null2},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		momList = OptionValue[Momentum];
 
 		If[ !OptionValue[FCI],
@@ -79,22 +74,22 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 	];
 
-epsEval[a_,b_,c_,d_, opts:OptionsPattern[Eps]] :=
-	(Expand/@(Distribute[DOT[a,b,c,d]//MomentumExpand]))/.
-	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm[z__]:>Eps[z,opts]
+epsEval[a_,b_,c__] :=
+	(Expand/@(Distribute[DOT[a,b,c]//MomentumExpand]))/.
+	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> Eps
 
 
-epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum)[_,_: 4]),d___] :=
+epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum | CIndex | CMomentum | TIndex | TMomentum)[__]),d___] :=
 	b epsEvalLinearity[a,c,d];
 
 epsEvalLinearity[___,0,___] :=
 	0;
 
 epsEvalAntiSymm[x__] :=
-	0/; Signature[{x}]===0 && Length[{x}]===4;
+	0/; Signature[{x}]===0 && MemberQ[{3,4},Length[{x}]];
 
 epsEvalAntiSymm[x__] :=
-	Signature[{x}] epsEvalAntiSymm@@Sort[{x}] /; !OrderedQ[{x}] && Length[{x}]===4;
+	Signature[{x}] epsEvalAntiSymm@@Sort[{x}] /; !OrderedQ[{x}] && MemberQ[{3,4},Length[{x}]];
 
 FCPrint[1,"EpsEvaluate.m loaded."];
 End[]

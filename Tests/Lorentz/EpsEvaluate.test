@@ -38,5 +38,27 @@ Tests`Lorentz`fcstEpsEvaluate = {
 0] // EpsEvaluate","0"},
 {"fcstEpsEvaluate-ID8","EpsEvaluate[LC[a, b][p1 + p2, p3 + p4] + LC[a, b][q1 + q2, q3 + q4],
 Momentum -> {p1}] // FCE","LC[a, b][p1, p3] + LC[a, b][p1, p4] + LC[a, b][p2, p3] +
-LC[a, b][p2, p4] + LC[a, b][q1 + q2, q3 + q4]"}
+LC[a, b][p2, p4] + LC[a, b][q1 + q2, q3 + q4]"},
+{"fcstEpsEvaluate-ID9","EpsEvaluate[
+Eps[CIndex[i], CMomentum[p1], CMomentum[p2] + CMomentum[p3]]]","Eps[CIndex[i], CMomentum[p1], CMomentum[p2]] +
+Eps[CIndex[i], CMomentum[p1], CMomentum[p3]]"},
+{"fcstEpsEvaluate-ID10","EpsEvaluate[Eps[CIndex[i], CMomentum[p1], CMomentum[p2 + p3]]]","Eps[CIndex[i], CMomentum[p1], CMomentum[p2]] +
+Eps[CIndex[i], CMomentum[p1], CMomentum[p3]]"},
+{"fcstEpsEvaluate-ID11","EpsEvaluate[
+Eps[CIndex[i], CMomentum[p1], CMomentum[p1] + CMomentum[p2]]]","Eps[CIndex[i], CMomentum[p1], CMomentum[p2]]"},
+{"fcstEpsEvaluate-ID12","EpsEvaluate[Eps[CIndex[i], CMomentum[p1], CMomentum[p1 + p2]]]","Eps[CIndex[i], CMomentum[p1], CMomentum[p2]]"},
+{"fcstEpsEvaluate-ID13","EpsEvaluate[Eps[CIndex[i], x CMomentum[p1], CMomentum[p2]]]","x Eps[CIndex[i], CMomentum[p1], CMomentum[p2]]"},
+{"fcstEpsEvaluate-ID14","Eps[TIndex[], CMomentum[p1, D - 1], CMomentum[p2, D - 1], CMomentum[p3, D - 1]] // EpsEvaluate",
+"Eps[CMomentum[p1, -1 + D], CMomentum[p2, -1 + D], CMomentum[p3, -1 + D]]"},
+{"fcstEpsEvaluate-ID15","Eps[TIndex[], CMomentum[p1], CMomentum[p2],
+CMomentum[p3]] // EpsEvaluate",
+"Eps[CMomentum[p1], CMomentum[p2], CMomentum[p3]]"},
+{"fcstEpsEvaluate-ID16","Eps[TIndex[], Momentum[p1, D], Momentum[p2, D],
+Momentum[p3, D]] // EpsEvaluate",
+"-Eps[CMomentum[p1, -1 + D], CMomentum[p2, -1 + D],
+CMomentum[p3, -1 + D]]"},
+{"fcstEpsEvaluate-ID17","Eps[TIndex[], Momentum[p1], Momentum[p2], Momentum[p3]] // EpsEvaluate",
+"-Eps[CMomentum[p1], CMomentum[p2], CMomentum[p3]]"}
 }
+
+
