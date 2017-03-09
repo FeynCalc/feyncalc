@@ -122,7 +122,7 @@ Chisholm[expr_, OptionsPattern[]] :=
 			FCPrint[3,"Chisholm: dsPart: ",dsPart , FCDoControl->chVerbose];
 			FCPrint[3,"Chisholm: freePart: ",freePart , FCDoControl->chVerbose];
 
-			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//DeleteDuplicates//Sort;
 			FCPrint[1, "Chisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose];
 
 			time=AbsoluteTime[];

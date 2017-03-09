@@ -46,7 +46,7 @@ DiracGammaCombine[expr_, OptionsPattern[]] :=
 		];
 
 		ex = (ex/. Plus -> holdPlus);
-		diracList = (Cases[ex+null1+null2,holdPlus[z__]/; !FreeQ[{z},DiracGamma], Infinity])//Union;
+		diracList = (Cases[ex+null1+null2,holdPlus[z__]/; !FreeQ[{z},DiracGamma], Infinity])//DeleteDuplicates//Sort;
 
 		diracListEval = diracList /. p_holdPlus :> holdPlus@@Sort[List@@p] //. {
 			holdPlus[a___, n1_. DiracGamma[Momentum[x_,dim_:4],dim_:4], n2_. DiracGamma[Momentum[y_, dim_:4], dim_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>

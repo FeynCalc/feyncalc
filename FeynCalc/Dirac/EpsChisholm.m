@@ -74,7 +74,7 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 		FCPrint[3,"EpsChisholm: dsPart: ",dsPart , FCDoControl->esVerbose];
 		FCPrint[3,"EpsChisholm: freePart: ",freePart , FCDoControl->esVerbose];
 
-		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//DeleteDuplicates//Sort;
 
 		FCPrint[1, "EpsChisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose];
 

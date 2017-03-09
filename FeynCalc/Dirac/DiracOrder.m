@@ -84,7 +84,7 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			FCPrint[3,"DiracOrder: dsPart: ",dsPart , FCDoControl->doVerbose];
 			FCPrint[3,"DiracOrder: freePart: ",freePart , FCDoControl->doVerbose];
 
-			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
+			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//DeleteDuplicates//Sort;
 			FCPrint[1, "DiracOrder: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
 
 			time=AbsoluteTime[];
