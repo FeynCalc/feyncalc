@@ -48,11 +48,6 @@ Divideout::usage =
 "Divideout is an option for OPEInt and OPEInsert. \
 The setting is divided out at the end.";
 
-EpsContract::usage=
-"EpsContract is an option of Contract specifying whether Levi-Civita \
-tensors Eps[...] will be contracted, i.e., products \
-of two Eps are replaced via the determinant formula.";
-
 EpsDiscard::usage=
 "EpsDiscard is an option for FeynCalc2FORM and SquareAmplitude. \
 If set to True all Levi-Civita tensors are replaced by 0 after contraction.";

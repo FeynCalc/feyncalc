@@ -56,3 +56,199 @@ Tests`Lorentz`fcstPairContract3 = {
 {"fcstPairContract3-ID1","SP[p, p] = (a + b)^2; \n tmp = PairContract3[Momentum[p], Momentum[p]]; \n
 FCClearScalarProducts[]; \n tmp","(a + b)^2"}
 }
+
+Tests`Lorentz`fcstCartesianPairContract =
+({
+{"fcstCartesianPairContract-ID1",
+"CPair[CIndex[i],CIndex[i]]/.CPair\[Rule]CPairContract", "3"},
+{"fcstCartesianPairContract-ID2",
+"CPair[CIndex[i,D-1],CIndex[i,D-1]]/.CPair\[Rule]CPairContract",
+"-1 + D"},
+{"fcstCartesianPairContract-ID3",
+"CPair[CIndex[i,D-4],CIndex[i,D-4]]/.CPair\[Rule]CPairContract",
+"-4 + D"},
+{"fcstCartesianPairContract-ID4",
+"CPair[CIndex[i],CIndex[j]]^2/.CPair\[Rule]CPairContract", "3"},
+{"fcstCartesianPairContract-ID5",
+"CPair[CIndex[i],CIndex[j]]CPair[CIndex[j],CIndex[k]]/.CPair\[Rule]\
+CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i], CIndex[k]]"},
+{"fcstCartesianPairContract-ID6",
+"CPair[CIndex[i,D-1],CIndex[j,D-1]]CPair[CIndex[j],CIndex[k]]\
+/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i], CIndex[k]]"},
+{"fcstCartesianPairContract-ID7",
+"CPair[CIndex[i,D-1],CIndex[j,D-1]]CPair[CIndex[j,D-1],CIndex[k,D-\
+1]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i, -1 + D], CIndex[k, -1 + D]]"},
+{"fcstCartesianPairContract-ID8",
+"CPair[CIndex[i,D-1],CIndex[j,D-1]]CPair[CIndex[j,D-4],CIndex[k,D-\
+4]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i, -4 + D], CIndex[k, -4 + D]]"},
+{"fcstCartesianPairContract-ID9",
+"CPair[CIndex[i,D-4],CIndex[j,D-4]]CPair[CIndex[j,D-4],CIndex[k,D-\
+4]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i, -4 + D], CIndex[k, -4 + D]]"},
+{"fcstCartesianPairContract-ID10",
+"CPair[CIndex[i,D-4],CIndex[j,D-4]]CPair[CIndex[j],CIndex[k]]\
+/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair", "0"},
+{"fcstCartesianPairContract-ID11",
+"CPair[CIndex[i],CIndex[j]]CPair[CIndex[j],CMomentum[k]]/.CPair\
+\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i], CMomentum[k]]"},
+{"fcstCartesianPairContract-ID12",
+"CPair[CIndex[i,D-1],CIndex[j,D-1]]CPair[CIndex[j],CMomentum[k]]\
+/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i], CMomentum[k]]"},
+{"fcstCartesianPairContract-ID13",
+"CPair[CIndex[i,D-1],CIndex[j,D-1]]CPair[CIndex[j,D-1],CMomentum[k,\
+D-1]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i, -1 + D], CMomentum[k, -1 + D]]"},
+{"fcstCartesianPairContract-ID14",
+"CPair[CIndex[i,D-1],CIndex[j,D-1]]CPair[CIndex[j,D-4],CMomentum[k,\
+D-4]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i, -4 + D], CMomentum[k, -4 + D]]"},
+{"fcstCartesianPairContract-ID15",
+"CPair[CIndex[i,D-4],CIndex[j,D-4]]CPair[CIndex[j,D-4],CMomentum[k,\
+D-4]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CIndex[i, -4 + D], CMomentum[k, -4 + D]]"},
+{"fcstCartesianPairContract-ID16",
+"CPair[CIndex[i],CIndex[j]]CPair[CIndex[j,D-4],CMomentum[k,D-4]]\
+/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair", "0"},
+{"fcstCartesianPairContract-ID17",
+"CPair[CIndex[i],CMomentum[p]]CPair[CIndex[i],CMomentum[k]]/.CPair\
+\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CMomentum[k], CMomentum[p]]"},
+{"fcstCartesianPairContract-ID18",
+"CPair[CIndex[i,D-1],CMomentum[p,D-1]]CPair[CIndex[i],CMomentum[k]]\
+/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair",
+"CPair[CMomentum[k], CMomentum[p]]"},
+{"fcstCartesianPairContract-ID19",
+"CPair[CIndex[i,D-1],CMomentum[p,D-1]]CPair[CIndex[i,D-1],\
+CMomentum[k,D-1]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]\
+CPair", "CPair[CMomentum[k, -1 + D], CMomentum[p, -1 + D]]"},
+{"fcstCartesianPairContract-ID20",
+"CPair[CIndex[i,D-4],CMomentum[p,D-4]]CPair[CIndex[i,D-1],\
+CMomentum[k,D-1]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]\
+CPair", "CPair[CMomentum[k, -4 + D], CMomentum[p, -4 + D]]"},
+{"fcstCartesianPairContract-ID21",
+"CPair[CIndex[i,D-4],CMomentum[p,D-4]]CPair[CIndex[i,D-4],\
+CMomentum[k,D-4]]/.CPair\[Rule]CPairContract/.CPairContract\[Rule]\
+CPair", "CPair[CMomentum[k, -4 + D], CMomentum[p, -4 + D]]"},
+{"fcstCartesianPairContract-ID22",
+"CPair[CIndex[i],CMomentum[p]]CPair[CIndex[i,D-4],CMomentum[k,D-4]]\
+/.CPair\[Rule]CPairContract/.CPairContract\[Rule]CPair", "0"},
+{"fcstCartesianPairContract-ID23",
+"DiracGamma[CIndex[i]]CPair[CIndex[i],CIndex[j]]/.CPair\[Rule]\
+CPairContract", "DiracGamma[CIndex[j]]"},
+{"fcstCartesianPairContract-ID24",
+"DiracGamma[CIndex[i]]CPair[CIndex[i,D-1],CIndex[j,D-1]]/.CPair\
+\[Rule]CPairContract", "DiracGamma[CIndex[j]]"},
+{"fcstCartesianPairContract-ID25",
+"DiracGamma[CIndex[i,D-1],D]CPair[CIndex[i,D-1],CIndex[j,D-1]]\
+/.CPair\[Rule]CPairContract", "DiracGamma[CIndex[j, -1 + D], D]"},
+{"fcstCartesianPairContract-ID26",
+"DiracGamma[CIndex[i,D-4],D-4]CPair[CIndex[i,D-4],CIndex[j,D-4]]\
+/.CPair\[Rule]CPairContract", "DiracGamma[CIndex[j, -4 + D], -4 + D]"},
+{"fcstCartesianPairContract-ID27",
+"DiracGamma[CIndex[i]]CPair[CIndex[i,D-4],CIndex[j,D-4]]/.CPair\
+\[Rule]CPairContract", "0"},
+{"fcstCartesianPairContract-ID28",
+"DiracGamma[CIndex[i]]CPair[CIndex[i],CMomentum[j]]/.CPair\[Rule]\
+CPairContract", "DiracGamma[CMomentum[j]]"},
+{"fcstCartesianPairContract-ID29",
+"DiracGamma[CIndex[i]]CPair[CIndex[i,D-1],CMomentum[p,D-1]]/.CPair\
+\[Rule]CPairContract", "DiracGamma[CMomentum[p]]"},
+{"fcstCartesianPairContract-ID30",
+"DiracGamma[CIndex[i,D-1],D]CPair[CIndex[i,D-1],CMomentum[p,D-1]]\
+/.CPair\[Rule]CPairContract", "DiracGamma[CMomentum[p, -1 + D], D]"},
+{"fcstCartesianPairContract-ID31",
+"DiracGamma[CIndex[i,D-4],D-4]CPair[CIndex[i,D-4],CMomentum[p,D-4]]\
+/.CPair\[Rule]CPairContract",
+"DiracGamma[CMomentum[p, -4 + D], -4 + D]"},
+{"fcstCartesianPairContract-ID32",
+"DiracGamma[CIndex[i]]CPair[CIndex[i,D-4],CMomentum[p,D-4]]/.CPair\
+\[Rule]CPairContract", "0"},
+{"fcstCartesianPairContract-ID33",
+"Pair[LorentzIndex[i],CIndex[i]]/.Pair\[Rule]\
+PairContract/.PairContract\[Rule]Pair",
+"Pair[CIndex[i], LorentzIndex[i]]"},
+{"fcstCartesianPairContract-ID34",
+"Pair[LorentzIndex[i],CIndex[i]]^2/.Pair\[Rule]PairContract/.CPair\
+\[Rule]CPairContract", "-3"},
+{"fcstCartesianPairContract-ID35",
+"Pair[LorentzIndex[i],CIndex[i,D-1]]^2/.Pair\[Rule]\
+PairContract/.CPair\[Rule]CPairContract", "-3"},
+{"fcstCartesianPairContract-ID36",
+"Pair[LorentzIndex[i,D-4],CIndex[i,D-1]]^2/.Pair\[Rule]\
+PairContract/.CPair\[Rule]CPairContract", "4 - D"},
+{"fcstCartesianPairContract-ID37",
+"Pair[LorentzIndex[i,D-4],CIndex[i]]^2/.Pair\[Rule]\
+PairContract/.CPair\[Rule]CPairContract", "0"},
+{"fcstCartesianPairContract-ID38",
+"Pair[CIndex[i],LorentzIndex[\[Mu]]] \
+CPair[CIndex[i],CMomentum[p]]/.CPair\[Rule]CPairContract/.Pair\[Rule]\
+PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]Pair",
+"Pair[CMomentum[p], LorentzIndex[\[Mu]]]"},
+{"fcstCartesianPairContract-ID39",
+"Pair[CIndex[i],LorentzIndex[\[Mu]]] \
+CPair[CIndex[i,D-1],CMomentum[p,D-1]]/.CPair\[Rule]\
+CPairContract/.Pair\[Rule]PairContract/.CPairContract\[Rule]\
+CPair/.PairContract\[Rule]Pair",
+"Pair[CMomentum[p, -1 + D], LorentzIndex[\[Mu]]]"},
+{"fcstCartesianPairContract-ID40",
+"Pair[CIndex[i,D-1],LorentzIndex[\[Mu],D]] \
+CPair[CIndex[i,D-1],CMomentum[p,D-1]]/.CPair\[Rule]\
+CPairContract/.Pair\[Rule]PairContract/.CPairContract\[Rule]\
+CPair/.PairContract\[Rule]Pair",
+"Pair[CMomentum[p, -1 + D], LorentzIndex[\[Mu], D]]"},
+{"fcstCartesianPairContract-ID41",
+"Pair[CIndex[i],LorentzIndex[\[Mu]]] \
+CPair[CIndex[i],CIndex[j]]/.CPair\[Rule]CPairContract/.Pair\[Rule]\
+PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]Pair",
+"Pair[CIndex[j], LorentzIndex[\[Mu]]]"},
+{"fcstCartesianPairContract-ID42",
+"Pair[CIndex[i],LorentzIndex[\[Mu]]] \
+CPair[CIndex[i,D-1],CIndex[j,D-1]]/.CPair\[Rule]CPairContract/.Pair\
+\[Rule]PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]\
+Pair", "Pair[CIndex[j], LorentzIndex[\[Mu]]]"},
+{"fcstCartesianPairContract-ID43",
+"Pair[CIndex[i],LorentzIndex[\[Mu]]] \
+CPair[CIndex[i,D-4],CIndex[j,D-4]]/.CPair\[Rule]CPairContract/.Pair\
+\[Rule]PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]\
+Pair", "0"},
+{"fcstCartesianPairContract-ID44",
+"Pair[CIndex[i,D-1],LorentzIndex[\[Mu],D]] \
+CPair[CIndex[i],CIndex[j]]/.CPair\[Rule]CPairContract/.Pair\[Rule]\
+PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]Pair",
+"Pair[CIndex[j], LorentzIndex[\[Mu]]]"},
+{"fcstCartesianPairContract-ID45",
+"Pair[CIndex[i,D-1],LorentzIndex[\[Mu],D]] \
+CPair[CIndex[i,D-4],CIndex[j,D-4]]/.CPair\[Rule]CPairContract/.Pair\
+\[Rule]PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]\
+Pair", "Pair[CIndex[j, -4 + D], LorentzIndex[\[Mu], -4 + D]]"},
+{"fcstCartesianPairContract-ID46",
+"Pair[CIndex[i,D-4],LorentzIndex[\[Mu],D-4]] \
+CPair[CIndex[i],CIndex[j]]/.CPair\[Rule]CPairContract/.Pair\[Rule]\
+PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]Pair",
+"0"},
+{"fcstCartesianPairContract-ID47",
+"Pair[CIndex[i,D-4],LorentzIndex[\[Mu],D-4]] \
+CPair[CIndex[i,D-1],CIndex[j,D-1]]/.CPair\[Rule]CPairContract/.Pair\
+\[Rule]PairContract/.CPairContract\[Rule]CPair/.PairContract\[Rule]\
+Pair", "Pair[CIndex[j, -4 + D], LorentzIndex[\[Mu], -4 + D]]"},
+{"fcstCartesianPairContract-ID48",
+"Pair[CIndex[i],LorentzIndex[\[Mu]]] DiracGamma[CIndex[i]]/.CPair\
+\[Rule]CPairContract/.Pair\[Rule]PairContract/.CPairContract\[Rule]\
+CPair/.PairContract\[Rule]Pair",
+"DiracGamma[CIndex[i]]*Pair[CIndex[i], LorentzIndex[\[Mu]]]"},
+{"fcstCartesianPairContract-ID49",
+"PairContract[CIndex[mu], CIndex[mu]]","-3"},
+{"fcstCartesianPairContract-ID50",
+"PairContract[CIndex[mu, D - 1], CIndex[mu, D - 1]]","1-D"},
+{"fcstCartesianPairContract-ID51",
+"PairContract[CIndex[mu], CMomentum[p]]","PairContract[CIndex[mu], CMomentum[p]]"},
+{"fcstCartesianPairContract-ID52","CPairContract[CIndex[i], CIndex[i,D-1]]","3"},
+{"fcstCartesianPairContract-ID53","CPairContract[CIndex[i], CIndex[i,D-4]]","0"},
+{"fcstCartesianPairContract-ID54","CPairContract[CIndex[i,D-1], CIndex[i,D-4]]","D-4"}
+});
