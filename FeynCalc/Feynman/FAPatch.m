@@ -73,6 +73,7 @@ Options[FAPatch] = {
 		"ScalarProduct" -> "FAScalarProduct",
 		"ChiralityProjector" -> "FAChiralityProjector",
 		"GS" -> "FAGS",
+		"SI" -> "FASI",
 		"SUNT" -> "FASUNT",
 		"SUNF" -> "FASUNF",
 		"LeviCivita" -> "FALeviCivita",
