@@ -46,8 +46,57 @@ Tests`Lorentz`fcstMomentumExpand = {
 	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"}
 };
 
-
-
+Tests`Lorentz`fcstMomentumExpandNR =
+{{"fcstMomentumExpandNR-ID1", "MomentumExpand[TMomentum[p]]",
+"TMomentum[p]"}, {"fcstMomentumExpandNR-ID2",
+"MomentumExpand[TMomentum[p+3q]]",
+"TMomentum[p] + 3*TMomentum[q]"}, {"fcstMomentumExpandNR-ID4",
+"MomentumExpand[TPair[TIndex[],TMomentum[p+3q]]]",
+"TPair[TIndex[], TMomentum[p] + 3*TMomentum[q]]"}, \
+{"fcstMomentumExpandNR-ID5", "MomentumExpand[CMomentum[p]]",
+"CMomentum[p]"}, {"fcstMomentumExpandNR-ID6",
+"MomentumExpand[CMomentum[p,D-1]]",
+"CMomentum[p, -1 + D]"}, {"fcstMomentumExpandNR-ID7",
+"MomentumExpand[CMomentum[p,D-4]]",
+"CMomentum[p, -4 + D]"}, {"fcstMomentumExpandNR-ID8",
+"MomentumExpand[CMomentum[p+3q]]",
+"CMomentum[p] + 3*CMomentum[q]"}, {"fcstMomentumExpandNR-ID9",
+"MomentumExpand[CMomentum[p+3q,D-1]]",
+"CMomentum[p, -1 + D] + 3*CMomentum[q, -1 + D]"}, \
+{"fcstMomentumExpandNR-ID10", "MomentumExpand[CMomentum[p+3q,D-4]]",
+"CMomentum[p, -4 + D] + 3*CMomentum[q, -4 + D]"}, \
+{"fcstMomentumExpandNR-ID11",
+"MomentumExpand[CMomentum[p+CMomentum[3 q]]]",
+"CMomentum[p] + 3*CMomentum[q]"}, {"fcstMomentumExpandNR-ID12",
+"MomentumExpand[CMomentum[p+CMomentum[3 q,D-1],D-1]]",
+"CMomentum[p, -1 + D] + 3*CMomentum[q, -1 + D]"}, \
+{"fcstMomentumExpandNR-ID13",
+"MomentumExpand[CMomentum[p+CMomentum[3 q,D-4],D-4]]",
+"CMomentum[p, -4 + D] + 3*CMomentum[q, -4 + D]"}, \
+{"fcstMomentumExpandNR-ID14",
+"MomentumExpand[CMomentum[p+CMomentum[3 q],D-1]]",
+"CMomentum[p, -1 + D] + 3*CMomentum[q, {3, -1 + D}]"}, \
+{"fcstMomentumExpandNR-ID15",
+"MomentumExpand[CMomentum[p+CMomentum[3 q],D-4]]",
+"CMomentum[p, -4 + D] + 3*CMomentum[q, {3, -4 + D}]"}, \
+{"fcstMomentumExpandNR-ID16",
+"MomentumExpand[CMomentum[p+CMomentum[3 q,D-1]]]",
+"CMomentum[p] + 3*CMomentum[q, {-1 + D, 3}]"}, \
+{"fcstMomentumExpandNR-ID17",
+"MomentumExpand[CMomentum[p+CMomentum[3 q],D-1]]",
+"CMomentum[p, -1 + D] + 3*CMomentum[q, {3, -1 + D}]"}, \
+{"fcstMomentumExpandNR-ID18",
+"MomentumExpand[CMomentum[p+CMomentum[3 q],D-4]]",
+"CMomentum[p, -4 + D] + 3*CMomentum[q, {3, -4 + D}]"}, \
+{"fcstMomentumExpandNR-ID19",
+"MomentumExpand[CPair[CIndex[i,D-1],CMomentum[l-q,D-1]]]",
+"CPair[CIndex[i, -1 + D], CMomentum[l, -1 + D] - CMomentum[q, -1 + \
+D]]"}, {"fcstMomentumExpandNR-ID20", "MomentumExpand[TMomentum[p]]",
+"TMomentum[p]"}, {"fcstMomentumExpandNR-ID21",
+"MomentumExpand[TMomentum[p+3q]]",
+"TMomentum[p] + 3*TMomentum[q]"}, {"fcstMomentumExpandNR-ID23",
+"MomentumExpand[TPair[TIndex[],TMomentum[p+3q]]]",
+"TPair[TIndex[], TMomentum[p] + 3*TMomentum[q]]"}};
 
 
 

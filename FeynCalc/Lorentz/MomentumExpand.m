@@ -37,9 +37,31 @@ fourvecev[y_,dim_:4] :=
 			hold[dim]]] /. hold->Identity)
 		];
 
+threevecevlin[n_?NumberQ z_, dim_:3] :=
+	n CMomentum[z, dim];
+
+threevecev[y_,dim_:3] :=
+	threevecev[y,dim] =
+		Block[ {hold},
+			(Distribute[threevecevlin[ Expand[y, CMomentum],
+			hold[dim]]] /. hold->Identity)
+		];
+
+zerovecevlin[n_?NumberQ z_] :=
+	n TMomentum[z];
+
+zerovecev[y_] :=
+	zerovecev[y] =
+		Distribute[zerovecevlin[Expand[y, TMomentum]]];
+
+
+
 MomentumExpand[expr_] :=
-	expr  /. FeynAmpDenominator -> fad /. PropagatorDenominator -> pd /.Spinor -> spinor /. Pair-> pair /. Momentum -> fourvecev /. fourvecevlin -> Momentum /. pair -> Pair /.
-		spinor ->Spinor  /. pd -> PropagatorDenominator /. fad -> FeynAmpDenominator;
+	expr /. Spinor -> spinor /. FeynAmpDenominator -> fad /. PropagatorDenominator -> pd /. Pair-> pair /. CPair-> cpair /. TPair-> tpair /.
+	Momentum -> fourvecev /. fourvecevlin -> Momentum /.
+	CMomentum -> threevecev /. threevecevlin -> CMomentum /.
+	TMomentum -> zerovecev /. zerovecevlin -> TMomentum /.
+	pair -> Pair /. cpair -> CPair /. tpair -> TPair /. spinor ->Spinor /. pd -> PropagatorDenominator /. fad -> FeynAmpDenominator;
 
 FCPrint[1,"MomentumExpand.m loaded."];
 End[]
