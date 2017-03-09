@@ -27,10 +27,26 @@ SPD[a,b] = m^2 and SP[a,b]=m^2. \
 It is enouraged to always set ScalarProduct's BEFORE any \
 calculation. This improves the performance of FeynCalc .";
 
+CartesianScalarProduct::usage =
+"CartesianScalarProduct[p, q] is the input for scalar product. \
+CartesianScalarProduct[p] is equivalent to CartesianScalarProduct[p, p]. \
+Expansion of sums of momenta in CartesianScalarProduct is done with \
+ExpandScalarProduct. Scalar products may be set, e.g. \
+CartesianScalarProduct[a, b] = m^2; but a and b may not contain sums. \
+Note that CartesianScalarProduct[a, b] = m^2 actually sets also: \
+CPair[CMomentum[a, ___], CMomentum[b, ___]] = m^2 and \
+CSPD[a,b] = m^2 and CSP[a,b]=m^2. \
+It is enouraged to always set CartesianScalarProduct's BEFORE any \
+calculation. This improves the performance of FeynCalc .";
+
+SetTemporalComponent::usage =
+"SetTemporalComponent[p, val] sets the value of the temporal
+component of a 4-vector p, TPair[TIndex[],TMomentum[p]] to val.";
+
 SetDimensions::usage =
-"SetDimensions is an option for ScalarProduct. It determines \
-for which dimensions the scalar products will be set when ScalarProduct \
-is used with the equality sign, e.g in ScalarProduct[a, b] = m^2. By default, the \
+"SetDimensions is an option for ScalarProduct and CartesianScalarProduct. It determines \
+for which dimensions the scalar products will be set when ScalarProduct or CartesianScalarProduct  \
+are used with the equality sign, e.g in ScalarProduct[a, b] = m^2. By default, the \
 scalar products are set for 4 and D dimensions. By changing this option \
 the user can add other dimensions or delete the exising ones.";
 
@@ -42,12 +58,22 @@ aborted."
 ScalarProduct::fail =
 "Something went wrong while setting scalar products! Evaluation aborted."
 
+CartesianScalarProduct::emptydim =
+"If you want to set scalar products via CartesianScalarProduct[a, b] = m^2, you must \
+specify at least one dimension via the option SetDimensions->{dims...}! Evaluation \
+aborted."
+
+CartesianScalarProduct::fail =
+"Something went wrong while setting scalar products! Evaluation aborted."
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 
 initialScalarProductDownValues;
 initialScalarProductUpValues;
+initialCartesianScalarProductDownValues;
+initialCartesianScalarProductUpValues;
 
 End[]
 
@@ -57,6 +83,12 @@ Options[ScalarProduct] = {
 	Dimension->4,
 	FCI -> True,
 	SetDimensions -> {4,D}
+};
+
+Options[CartesianScalarProduct] = {
+	Dimension->3,
+	FCI -> True,
+	SetDimensions -> {3,D-1}
 };
 
 ScalarProduct /:
@@ -73,17 +105,28 @@ ScalarProduct[a_,b_, OptionsPattern[]] :=
 	Pair[Momentum[a, OptionValue[Dimension]], Momentum[b, OptionValue[Dimension]]]/;
 	FreeQ[{a,b}, Momentum] && OptionValue[FCI];
 
+
+CartesianScalarProduct /:
+	MakeBoxes[CartesianScalarProduct[a_, b_, opts:OptionsPattern[]], TraditionalForm]:=
+		ToBoxes[FCI[CartesianScalarProduct[a,b,opts]],TraditionalForm]/; !OptionValue[CartesianScalarProduct,{opts},FCI];
+
+CartesianScalarProduct[a_, b_, opts:OptionsPattern[]] :=
+	CartesianScalarProduct[b, a, opts]/;!OrderedQ[{a, b}];
+
+CartesianScalarProduct[x_, opts:OptionsPattern[]] :=
+	CartesianScalarProduct[x, x, opts];
+
+CartesianScalarProduct[a_,b_, OptionsPattern[]] :=
+	CPair[CMomentum[a, OptionValue[Dimension]], CMomentum[b, OptionValue[Dimension]]]/;
+	FreeQ[{a,b}, CMomentum] && OptionValue[FCI];
+
+
 ScalarProduct/:
 	Set[ScalarProduct[araw_,braw_,c:OptionsPattern[]] , z_]:=
 	Block[ {downv, pair,  ruleClearSP,ruleClearPair, a,b,
 			ruleClearFCESP,ruleClearFCESPD,ruleClearFCESPE,
 			spList, pairList, fceList, valsListOrig, valsList,
 			slot,dims,setval,dummy, tuples, hp, pr, sp, entry},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		dims = OptionValue[ScalarProduct,{c},SetDimensions];
 		{a,b} = Sort[{araw,braw}];
@@ -212,8 +255,201 @@ ScalarProduct/:
 		setval
 	]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
 
+
+CartesianScalarProduct/:
+	Set[CartesianScalarProduct[araw_,braw_,c:OptionsPattern[]] , z_]:=
+	Block[ {downv, cpair,  ruleClearCSP,ruleClearCPair, a,b,
+			ruleClearFCECSP,ruleClearFCECSPD,ruleClearFCECSPE,
+			cspList, cpairList, fceList, valsListOrig, valsList,
+			slot,dims,setval,dummy, tuples, hp, cpr, csp, entry},
+
+		dims = OptionValue[CartesianScalarProduct,{c},SetDimensions];
+		{a,b} = Sort[{araw,braw}];
+		tuples = {	{(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])]},
+					{(b/NumericalFactor[b]), Expand[(b/NumericalFactor[b])], Expand[-(b/NumericalFactor[b])]}};
+		valsListOrig = {setval, setval, -setval, setval,setval,	-setval, -setval, -setval, setval};
+
+		setval = z/(NumericalFactor[a]*NumericalFactor[b]);
+
+		If[dims==={},
+			Message[CartesianScalarProduct::emptydim];
+			Abort[]
+		];
+
+		cspList = Flatten[Map[(Flatten[Outer[HoldPattern[csp[#1,#2,dummy[Dimension,slot]]]&,
+			Sequence@@tuples]]/.slot->Slot[1])&,dims]/.dummy->Rule]/.csp[xxx__,Dimension->3]:>csp[xxx]/.csp->CartesianScalarProduct;
+
+		cpairList = Flatten[Map[(Flatten[Outer[hp[cpair[CMomentum[#1, slot], CMomentum[#2, slot]]] &,
+			Sequence@@tuples]]/.slot->Slot[1])&,dims]] /. hp->HoldPattern;
+
+		fceList = Flatten[Outer[HoldPattern[cpair[#1, #2]] &, Sequence@@tuples]];
+
+
+
+		valsList = Flatten[Table[valsListOrig, {i, 1,Length[dims]}]];
+
+		If[Length[cspList]=!=Length[cpairList] || Length[cspList]=!=Length[valsList],
+			Message[CartesianScalarProduct::fail];
+			Abort[]
+		];
+
+		(* Rules for removing previous DownValues *)
+		ruleClearCSP = DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[HoldPattern[csp[#1, #2, Rule[Dimension, slot]]],
+			cpair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed /.csp[xxx__,Dimension->3]:>csp[xxx]/.csp->CartesianScalarProduct]];
+
+		ruleClearCPair =	DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[hp[cpr[CMomentum[#1, slot], CMomentum[#2, slot]]],
+			cpair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed]] /. hp->HoldPattern /. cpr->CPair;
+
+		ruleClearFCECSP = DeleteDuplicates[Flatten[Outer[dummy[HoldPattern[CSP[#1,#2]],
+			cpair[#1, #2, Rule[Dimension, 3]]] &, Sequence@@tuples] /. slot -> Slot[1] /.
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed]];
+
+		ruleClearFCECSPD = DeleteDuplicates[Flatten[Outer[dummy[HoldPattern[CSPD[#1,#2]],
+			cpair[#1, #2, Rule[Dimension, D-1]]] &, Sequence@@tuples] /. slot -> Slot[1] /.
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed]];
+
+		ruleClearFCECSPE = DeleteDuplicates[Flatten[Outer[dummy[HoldPattern[CSPE[#1,#2]],
+			cpair[#1, #2, Rule[Dimension, D-4]]] &, Sequence@@tuples] /. slot -> Slot[1] /.
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed]];
+
+			(*	Check if CartesianScalarProduct's have already been set to something. If yes,
+			remove existing value. Notice that say (p-q)^2 and (q-p)^2 are the same but
+			treated as different by Mathematica, so that we need to account for these cases	*)
+		If[	(cspList/.HoldPattern->Identity/.CPair->cpair) =!= cpairList/.HoldPattern->Identity,
+
+			FCPrint[1,"CartesianScalarProduct: Removing old values for ", CartesianScalarProduct[a,b,c], " and it variations "];
+			(*	 for CartesianScalarProduct	*)
+			downv = DownValues[CartesianScalarProduct];
+			downv = Complement[downv,ruleClearCSP];
+			DownValues[CartesianScalarProduct] = downv;
+
+			(*	 for CPair	*)
+			downv = DownValues[CPair];
+			downv = Complement[downv,ruleClearCPair];
+			DownValues[CPair] = downv;
+
+			(*	 for CSP	*)
+			If[	!FreeQ[dims,3],
+				downv = DownValues[CSP];
+				downv = Complement[downv,ruleClearFCECSP];
+				DownValues[CSP] = downv
+			];
+
+			(*	 for CSPD	*)
+			If[	!FreeQ[dims,D-1],
+				downv = DownValues[CSPD];
+				downv = Complement[downv,ruleClearFCECSPD];
+				DownValues[CSPD] = downv;
+			];
+
+			(*	 for CSPE	*)
+			downv = DownValues[CSPE];
+			If[	!FreeQ[dims,D-4],
+				downv = Complement[downv,ruleClearFCECSPE];
+				DownValues[CSPE] = downv;
+			];
+
+			FCPrint[3,"CartesianScalarProduct: Downvalues for CartesianScalarProduct after removal ", DownValues[CartesianScalarProduct]];
+			FCPrint[3,"CartesianScalarProduct: Downvalues for CPair after removal ", DownValues[CPair]];
+			FCPrint[3,"CartesianScalarProduct: Downvalues for CSP after removal ", DownValues[CSP]];
+			FCPrint[3,"CartesianScalarProduct: Downvalues for CSPD after removal ", DownValues[CSPD]];
+			FCPrint[3,"CartesianScalarProduct: Downvalues for CSPE after removal ", DownValues[CSPE]];
+		];
+
+
+		FCPrint[1,"CartesianScalarProduct: Setting DownValues for CartesianScalarProduct"];
+		DownValues[CartesianScalarProduct]=Join[DeleteDuplicates[Thread[dummy[cspList,valsList]]]/.dummy->RuleDelayed,DownValues[CartesianScalarProduct]];
+
+		FCPrint[1,"CartesianScalarProduct: Setting DownValues for CPair"];
+		DownValues[CPair]=Join[DeleteDuplicates[Thread[dummy[cpairList/.cpair->CPair,valsList]]]/.dummy->RuleDelayed,DownValues[CPair]];
+
+		FCPrint[1,"CartesianScalarProduct: Setting DownValues for CSPD"];
+		If[	MemberQ[dims,D-1],
+			DownValues[CSPD]=Join[DeleteDuplicates[Thread[dummy[fceList/.cpair->CSPD,valsListOrig]]]/.dummy->RuleDelayed,DownValues[CSPD]]
+		];
+
+		FCPrint[1,"CartesianScalarProduct: Setting DownValues for CSPE"];
+		If[	MemberQ[dims,D-4],
+			DownValues[CSPE]=Join[DeleteDuplicates[Thread[dummy[fceList/.cpair->CSPE,valsListOrig]]]/.dummy->RuleDelayed,DownValues[CSPE]]
+		];
+
+		FCPrint[1,"CartesianScalarProduct: Setting DownValues for CSP"];
+		If[	MemberQ[dims,3],
+			DownValues[CSP]=Join[DeleteDuplicates[Thread[dummy[fceList/.cpair->CSP,valsListOrig]]]/.dummy->RuleDelayed,DownValues[CSP]]
+		];
+
+		(* Last but not least, add the set scalar product to our list*)
+		FCPrint[1,"CartesianScalarProduct: Adding vectors the the list of set scalar products"];
+		entry= Sort[{CMomentum[araw],CMomentum[braw]}];
+		If[	!MemberQ[$ScalarProducts,entry],
+			AppendTo[$ScalarProducts,entry]
+		];
+
+		setval
+	]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
+
+
+SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
+	Block[ {downv, a, ruleClearTV, ruleClearTPair,
+			tPairList, fceList, valsListOrig, valsList,
+			setval,dummy, tuples},
+
+		a = araw;
+		tuples = {	(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])] };
+		valsListOrig = {setval, setval, -setval};
+
+		setval = z/(NumericalFactor[a]);
+		tPairList = Flatten[Map[HoldPattern[TPair[TIndex[],TMomentum[#]]] &,tuples]];
+		fceList = Flatten[Map[HoldPattern[TC[#]] &,tuples]];
+		valsList = valsListOrig;
+
+		(* Rules for removing previous DownValues *)
+		ruleClearTV = Thread[dummy[fceList, fceList/.HoldPattern->Identity]]/.dummy->RuleDelayed;
+		ruleClearTPair = Thread[dummy[tPairList, tPairList/.HoldPattern->Identity]]/.dummy->RuleDelayed;
+
+		(*	Check if temporal componeents have already been set to something. If yes,
+		remove existing value.	*)
+		If[	Head[TPair[TIndex[],TMomentum[a]]]=!=TPair,
+
+			FCPrint[1,"SetTemporalComponent: Removing old values for and its variations"];
+
+			(*	 for TPair	*)
+			downv = DownValues[TPair];
+			downv = Complement[downv,ruleClearTPair];
+			DownValues[TPair] = downv;
+
+			(*	 for TC	*)
+
+			downv = DownValues[TC];
+			downv = Complement[downv,ruleClearTV];
+			DownValues[TC] = downv;
+
+			FCPrint[3,"SetTemporalComponent: Downvalues for TPair after removal ", DownValues[TPair]];
+			FCPrint[3,"SetTemporalComponent: Downvalues for TC after removal ", DownValues[TC]];
+		];
+
+		FCPrint[1,"SetTemporalComponent: Setting DownValues for TPair"];
+		DownValues[TPair] = Join[Thread[dummy[tPairList, valsList]]/.dummy->RuleDelayed,DownValues[TPair]];
+
+		FCPrint[1,"SetTemporalComponent: Setting DownValues for TC"];
+		DownValues[TC] = Join[Thread[dummy[fceList, valsList]]/.dummy->RuleDelayed,DownValues[TC]];
+
+		(* Last but not least, add the set scalar product to our list*)
+		FCPrint[1,"SetTemporalComponent: Adding TMomentum the the list of set scalar products"];
+
+		If[	!MemberQ[$ScalarProducts,{TMomentum[a]}],
+			AppendTo[$ScalarProducts,{TMomentum[a]}]
+		];
+	]/; araw=!=0 && FCPatternFreeQ[{araw}];
+
 initialScalarProductDownValues = DownValues[ScalarProduct];
 initialScalarProductUpValues = UpValues[ScalarProduct];
+initialCartesianScalarProductDownValues = DownValues[CartesianScalarProduct];
+initialCartesianScalarProductUpValues = UpValues[CartesianScalarProduct];
+
+Protect[SetTemporalComponent];
 
 FCPrint[1,"ScalarProduct.m loaded."];
 End[]

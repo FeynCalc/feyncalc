@@ -49,7 +49,9 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		DownValues[CSP] = initialCSPDownValues;
 		DownValues[CSPD] = initialCSPDDownValues;
 		DownValues[CSPE] = initialCSPEDownValues;
-		DownValues[TV] = initialTVDownValues;
+		DownValues[TC] = initialTCDownValues;
+		DownValues[Momentum] = initialMomentumDownValues;
+		DownValues[CMomentum] = initialCMomentumDownValues;
 		$ScalarProducts = initialScalarProducts;
 	);
 
