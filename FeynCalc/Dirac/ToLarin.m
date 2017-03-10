@@ -34,11 +34,6 @@ Options[ToLarin] = {
 ToLarin[expr_, OptionsPattern[]] :=
 	Block[ {ex,fi1,fi2,fi3,drsi,res, dotHold, dim},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		dim = OptionValue[Dimension];
 		drsi = $LeviCivitaSign;
 		(*drsi is usually -1 *)
@@ -49,9 +44,9 @@ ToLarin[expr_, OptionsPattern[]] :=
 		];
 
 		ex = ex /. DOT->dotHold;
-		ex = ex //. dotHold[a___, DiracGamma[mUU_, dim], DiracGamma[5], b___] :>
+		ex = ex //. dotHold[a___, DiracGamma[mUU: (_LorentzIndex | _Momentum), dim], DiracGamma[5], b___] :>
 			({fi1, fi2, fi3} = LorentzIndex[#,dim]& /@ Unique[{"du","du","du"}];
-			(drsi I/6 Eps[mUU, fi1, fi2, fi3, Dimension->dim] dotHold[a,DiracGamma[fi1,dim],DiracGamma[fi2,dim],DiracGamma[fi3,dim],b]));
+			(drsi I/6 Eps[mUU, fi1, fi2, fi3] dotHold[a,DiracGamma[fi1,dim],DiracGamma[fi2,dim],DiracGamma[fi3,dim],b]));
 
 		res = ex /. dotHold -> DOT;
 		res
