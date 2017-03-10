@@ -67,11 +67,6 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		head = OptionValue[Head];
 
 		If[OptionValue[FCI],

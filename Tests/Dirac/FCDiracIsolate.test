@@ -97,6 +97,9 @@ LorentzIndex -> True, Head -> dch] // FCE",
 "1/2 I dsHead[GA[i].GA[j]] - 1/2 I dsHead[GA[j].GA[i]]"},
 {"fcstFCDiracIsolate-ID19",
 "FCDiracIsolate[DiracSigma[GA[i], GA[j]], Head -> dsHead]//FCE",
-"dsHead[DiracSigma[GA[i], GA[j]]]"}
+"dsHead[DiracSigma[GA[i], GA[j]]]"},
+{"fcstFCDiracIsolate-ID20",
+"FCDiracIsolate[SI[i].GA[mu, nu, rho].SI[j], Head -> dsHead] // FCE",
+"SI[i].SI[j] dsHead[GA[mu].GA[nu].GA[rho]]"}
 });
 
