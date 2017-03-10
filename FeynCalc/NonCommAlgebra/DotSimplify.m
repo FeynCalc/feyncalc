@@ -82,13 +82,9 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
 	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
 	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, xx, sunTrace, tmpDOT,
-	holdDOTColor, holdDOTDirac, nvar, time, time0, maxIterations, dlin1
+	holdDOTColor, holdDOTDirac, holdDOTPauli, holdDOTRest1, holdDOTRest2, holdDOTRest3,
+	nvar, time, time0, maxIterations, dlin1
 	},
-
-		If[	!FreeQ2[{xxx}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
@@ -360,16 +356,29 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			FCPrint[3, "DotSimplify: After pulling out nested SU(N) and Dirac traces.", x, FCDoControl->dsVerbose];
 		];
 
-		(* Dirac and SU(N) matrices commute with each other, so they need to be properly separated*)
-		If[ !FreeQ[x, SUNT],
+		(* Dirac, Pauli and SU(N) matrices commute with each other, so they need to be properly separated*)
+		If[ !FreeQ2[x, {SUNT,PauliSigma,PauliEta,PauliXi}],
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
 			x  = x /. DOT->holdDOT;
-			x = x //. holdDOT[zzz__] :> (holdDOTColor@@Select[{zzz}, (Head[#] === SUNT) &])(holdDOTDirac@@Select[{zzz}, (Head[#] =!= SUNT) &]);
-			(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
-			x = x //. DiracTrace[f_ g_holdDOTColor ] :> g DiracTrace[f]/. (holdDOTColor|holdDOTDirac)[] -> 1  /. holdDOTColor|holdDOTDirac -> DOT;
-			FCPrint[1, "DotSimplify: Done pulling out SU(N) matrices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After pulling out SU(N) matrices: ", x,  FCDoControl->dsVerbose]
+			(* Notice that here we are checking heads, so this will not break a possibly complicated nested structure *)
+
+			x = x //. holdDOT[zzz__] :> (holdDOTColor@@Select[{zzz}, (Head[#] === SUNT) &])(holdDOTRest1@@Select[{zzz}, (Head[#] =!= SUNT) &]);
+			FCPrint[1, "DotSimplify: Pulling out Dirac matrices", FCDoControl->dsVerbose];
+
+			x = x //. holdDOTRest1[zzz__] :> (holdDOTDirac@@Select[{zzz}, !FreeQ2[{#},{DiracGamma,Spinor}]& ])*
+			(holdDOTRest2@@Select[{zzz}, FreeQ2[{#},{DiracGamma,Spinor}]& ]);
+			FCPrint[1, "DotSimplify: Pulling out Pauli matrices", FCDoControl->dsVerbose];
+
+			x = x //. holdDOTRest2[zzz__] :> (holdDOTPauli@@Select[{zzz}, !FreeQ2[{#},{PauliSigma,PauliEta,PauliXi}]& ])*
+			(holdDOTRest3@@Select[{zzz}, FreeQ2[{#},{PauliSigma,PauliEta,PauliXi}]&]);
+
+			(* SUNT's and PauliSigma's in a DiracTrace are pulled out but NOT summed over *)
+			x = x //. DiracTrace[f_ g :(_holdDOTColor | _holdDOTPauli ) ] :> g DiracTrace[f]/.
+			(holdDOTColor|holdDOTDirac|holdDOTPauli|holdDOTRest1|holdDOTRest2|holdDOTRest3)[] -> 1  /.
+			holdDOTColor|holdDOTDirac|holdDOTPauli|holdDOTRest1|holdDOTRest2|holdDOTRest3 -> DOT;
+			FCPrint[1, "DotSimplify: Done pulling out all matrices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After pulling out all matrices: ", x,  FCDoControl->dsVerbose]
 		];
 
 		(* if the expression contains a QuantumField, factor it out*)

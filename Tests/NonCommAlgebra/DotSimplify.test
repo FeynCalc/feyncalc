@@ -56,5 +56,16 @@ M]*SUNT[a]"},
 {"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"},
 {"fcstDotSimplify-ID11","DotSimplify[SpinorUBar[p1, m1].GA[i].SpinorU[p2,
 m2].(a.SUNT[a] + b.SUNT[a] + c.SUNT[a]), Expanding -> False]",
-"(a + b + c) Spinor[Momentum[p1], m1, 1].DiracGamma[LorentzIndex[i]].Spinor[Momentum[p2], m2, 1] SUNT[SUNIndex[a]]"}
+"(a + b + c) Spinor[Momentum[p1], m1, 1].DiracGamma[LorentzIndex[i]].Spinor[Momentum[p2], m2, 1] SUNT[SUNIndex[a]]"},
+{"fcstDotSimplify-ID12","DotSimplify[PauliEta[-I].SIS[p].GA[k, l].SUNT[a, b, c].PauliXi[I]]",
+"DiracGamma[LorentzIndex[k]].DiracGamma[
+LorentzIndex[l]] PauliEta[-I].PauliSigma[Momentum[p]].PauliXi[
+I] SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]"},
+{"fcstDotSimplify-ID13","DotSimplify[
+PauliEta[-I].SIS[p].SpinorU[p1, m].GA[k, l].SUNT[a, b, c].SpinorV[
+p2].PauliXi[I]]","PauliEta[-I].PauliSigma[Momentum[p]].PauliXi[I] SUNT[
+SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]] Spinor[
+Momentum[p1], m, 1].DiracGamma[LorentzIndex[k]].DiracGamma[
+LorentzIndex[l]].Spinor[-Momentum[p2], 0, 1]"}
+
 }

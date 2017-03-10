@@ -41,7 +41,6 @@ If[ Names["Tests`NonCommAlgebra`fcstCommutator*"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 	UnDeclareNonCommutative[a,b,c,d]
 ];
-Print["here"];
 
 If[ Names["Tests`NonCommAlgebra`*"]=!={} &&
 	Select[Names["Tests`NonCommAlgebra`*"], !StringMatchQ[#, "*fcstCommutator" | "*fcstAntiCommutator" | "*fcstCommutatorExplicit" ] &]=!={},
