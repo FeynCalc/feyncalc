@@ -52,8 +52,13 @@ Options[FUnitCreateUnitTestsTypesetting] = {
 	AddMakeBoxes -> True
 };
 
-FUnitCreateUnitTests[n_String, l_List] :=
-	MapIndexed[{n <> "-ID" <> ToString[First[#2]], #, ToString[ToExpression[#], FormatType -> InputForm]} &, l];
+Options[FUnitCreateUnitTests] = {
+	AddMakeBoxes -> True,
+	"ZeroIDValue" -> 0
+};
+
+FUnitCreateUnitTests[n_String, l_List, OptionsPattern[]] :=
+	MapIndexed[{n <> "-ID" <> ToString[OptionValue["ZeroIDValue"]+First[#2]], #, ToString[ToExpression[#], FormatType -> InputForm]} &, l];
 
 FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
 	MapIndexed[{n <> "-ID" <> ToString[First[#2]],
