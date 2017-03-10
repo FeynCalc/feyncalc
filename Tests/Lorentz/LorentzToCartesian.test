@@ -1,0 +1,274 @@
+
+
+(* :Title: LorentzToCartesian.test             	                            *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for LorentzToCartesian          *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstLorentzToCartesian =
+({
+{"fcstLorentzToCartesian-ID1", "LorentzToCartesian[FVD[p,mu]]",
+"-Pair[CMomentum[p, -1 + D], LorentzIndex[mu, D]] + \
+Pair[LorentzIndex[mu], TIndex[]]*TPair[TIndex[], TMomentum[p]]"},
+{"fcstLorentzToCartesian-ID2", "LorentzToCartesian[FV[p,mu]]",
+"-Pair[CMomentum[p], LorentzIndex[mu]] + Pair[LorentzIndex[mu], \
+TIndex[]]*TPair[TIndex[], TMomentum[p]]"},
+{"fcstLorentzToCartesian-ID3", "LorentzToCartesian[FVE[p,mu]]",
+"-Pair[CMomentum[p, -4 + D], LorentzIndex[mu, -4 + D]]"},
+{"fcstLorentzToCartesian-ID4",
+"LorentzToCartesian[Pair[LorentzIndex[mu],x Momentum[p1]+y \
+Momentum[p2]]]",
+"x*(-Pair[CMomentum[p1], LorentzIndex[mu]] + \
+Pair[LorentzIndex[mu], TIndex[]]*TPair[TIndex[], TMomentum[p1]]) + \
+y*(-Pair[CMomentum[p2], LorentzIndex[mu]] + Pair[LorentzIndex[mu], \
+TIndex[]]*TPair[TIndex[], TMomentum[p2]])"},
+{"fcstLorentzToCartesian-ID5",
+"LorentzToCartesian[Pair[LorentzIndex[mu],x Momentum[p1+p2]+y \
+Momentum[p3]]]",
+"x*(-Pair[CMomentum[p1], LorentzIndex[mu]] + \
+Pair[LorentzIndex[mu], TIndex[]]*TPair[TIndex[], TMomentum[p1]]) + \
+x*(-Pair[CMomentum[p2], LorentzIndex[mu]] + Pair[LorentzIndex[mu], \
+TIndex[]]*TPair[TIndex[], TMomentum[p2]]) + y*(-Pair[CMomentum[p3], \
+LorentzIndex[mu]] + Pair[LorentzIndex[mu], TIndex[]]*TPair[TIndex[], \
+TMomentum[p3]])"},
+{"fcstLorentzToCartesian-ID6", "LorentzToCartesian[SP[p,q]]",
+"-CPair[CMomentum[p], CMomentum[q]] + TPair[TIndex[], \
+TMomentum[p]]*TPair[TIndex[], TMomentum[q]]"},
+{"fcstLorentzToCartesian-ID7", "LorentzToCartesian[SPD[p,q]]",
+"-CPair[CMomentum[p, -1 + D], CMomentum[q, -1 + D]] + \
+TPair[TIndex[], TMomentum[p]]*TPair[TIndex[], TMomentum[q]]"},
+{"fcstLorentzToCartesian-ID8", "LorentzToCartesian[SPE[p,q]]",
+"-CPair[CMomentum[p, -4 + D], CMomentum[q, -4 + D]]"},
+{"fcstLorentzToCartesian-ID9",
+"LorentzToCartesian[Pair[c1 Momentum[p1]+c2 Momentum[p2],c3 \
+Momentum[q1]+c4 Momentum[q2]]]",
+"c1*c3*(-CPair[CMomentum[p1], CMomentum[q1]] + TPair[TIndex[], \
+TMomentum[p1]]*TPair[TIndex[], TMomentum[q1]]) + \
+c2*c3*(-CPair[CMomentum[p2], CMomentum[q1]] + TPair[TIndex[], \
+TMomentum[p2]]*TPair[TIndex[], TMomentum[q1]]) + \
+c1*c4*(-CPair[CMomentum[p1], CMomentum[q2]] + TPair[TIndex[], \
+TMomentum[p1]]*TPair[TIndex[], TMomentum[q2]]) + \
+c2*c4*(-CPair[CMomentum[p2], CMomentum[q2]] + TPair[TIndex[], \
+TMomentum[p2]]*TPair[TIndex[], TMomentum[q2]])"},
+{"fcstLorentzToCartesian-ID10",
+"LorentzToCartesian[LC[mu,nu,rho,si],LorentzIndex -> False]",
+"Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], \
+LorentzIndex[si]]"},
+{"fcstLorentzToCartesian-ID11",
+"LorentzToCartesian[LC[mu,nu,rho][p],LorentzIndex -> False]",
+"Eps[CMomentum[p], LorentzIndex[mu], LorentzIndex[nu], \
+LorentzIndex[rho]] + Eps[LorentzIndex[mu], LorentzIndex[nu], \
+LorentzIndex[rho], TIndex[]]*TPair[TIndex[], TMomentum[p]]"},
+{"fcstLorentzToCartesian-ID12",
+"LorentzToCartesian[LC[mu,nu][p,q],LorentzIndex -> False]",
+"Eps[CMomentum[p], CMomentum[q], LorentzIndex[mu], \
+LorentzIndex[nu]] + Eps[CMomentum[q], LorentzIndex[mu], \
+LorentzIndex[nu], TIndex[]]*TPair[TIndex[], TMomentum[p]] - \
+Eps[CMomentum[p], LorentzIndex[mu], LorentzIndex[nu], \
+TIndex[]]*TPair[TIndex[], TMomentum[q]]"},
+{"fcstLorentzToCartesian-ID13", "LorentzToCartesian[LC[mu][p,q,r],LorentzIndex -> False]",
+	"Eps[CMomentum[p], CMomentum[q], CMomentum[r], LorentzIndex[mu]] \
++ Eps[CMomentum[q], CMomentum[r], LorentzIndex[mu], \
+TIndex[]]*TPair[TIndex[], TMomentum[p]] - Eps[CMomentum[p], \
+CMomentum[r], LorentzIndex[mu], TIndex[]]*TPair[TIndex[], \
+TMomentum[q]] + Eps[CMomentum[p], CMomentum[q], LorentzIndex[mu], \
+TIndex[]]*TPair[TIndex[], TMomentum[r]]"},
+{"fcstLorentzToCartesian-ID14", "LorentzToCartesian[LC[][a,x,y,z],LorentzIndex -> False]",
+	"-(Eps[CMomentum[x], CMomentum[y], CMomentum[z]]*TPair[TIndex[], \
+TMomentum[a]]) + Eps[CMomentum[a], CMomentum[y], \
+CMomentum[z]]*TPair[TIndex[], TMomentum[x]] - Eps[CMomentum[a], \
+CMomentum[x], CMomentum[z]]*TPair[TIndex[], TMomentum[y]] + \
+Eps[CMomentum[a], CMomentum[x], CMomentum[y]]*TPair[TIndex[], \
+TMomentum[z]]"},
+{"fcstLorentzToCartesian-ID15",
+"LorentzToCartesian[LCD[mu,nu,rho,si],LorentzIndex -> False]",
+"Eps[LorentzIndex[mu, D], LorentzIndex[nu, D], LorentzIndex[rho, \
+D], LorentzIndex[si, D]]"},
+{"fcstLorentzToCartesian-ID16",
+"LorentzToCartesian[LCD[mu,nu,rho][p],LorentzIndex -> False]",
+"Eps[CMomentum[p, -1 + D], LorentzIndex[mu, D], LorentzIndex[nu, \
+D], LorentzIndex[rho, D]] + Eps[LorentzIndex[mu, D], LorentzIndex[nu, \
+D], LorentzIndex[rho, D], TIndex[]]*TPair[TIndex[], TMomentum[p]]"},
+{"fcstLorentzToCartesian-ID17",
+"LorentzToCartesian[LCD[mu,nu][p,q],LorentzIndex -> Falses]",
+"Eps[CMomentum[p, -1 + D], CMomentum[q, -1 + D], LorentzIndex[mu, \
+D], LorentzIndex[nu, D]] + Eps[CMomentum[q, -1 + D], LorentzIndex[mu, \
+D], LorentzIndex[nu, D], TIndex[]]*TPair[TIndex[], TMomentum[p]] - \
+Eps[CMomentum[p, -1 + D], LorentzIndex[mu, D], LorentzIndex[nu, D], \
+TIndex[]]*TPair[TIndex[], TMomentum[q]]"},
+{"fcstLorentzToCartesian-ID18",
+"LorentzToCartesian[LCD[mu][p,q,r],LorentzIndex -> False]",
+"Eps[CMomentum[p, -1 + D], CMomentum[q, -1 + D], CMomentum[r, -1 + \
+D], LorentzIndex[mu, D]] + Eps[CMomentum[q, -1 + D], CMomentum[r, -1 \
++ D], LorentzIndex[mu, D], TIndex[]]*TPair[TIndex[], TMomentum[p]] - \
+Eps[CMomentum[p, -1 + D], CMomentum[r, -1 + D], LorentzIndex[mu, D], \
+TIndex[]]*TPair[TIndex[], TMomentum[q]] + Eps[CMomentum[p, -1 + D], \
+CMomentum[q, -1 + D], LorentzIndex[mu, D], TIndex[]]*TPair[TIndex[], \
+TMomentum[r]]"},
+{"fcstLorentzToCartesian-ID19",
+"LorentzToCartesian[LCD[][a,x,y,z],LorentzIndex -> False]",
+"-(Eps[CMomentum[x, -1 + D], CMomentum[y, -1 + D], CMomentum[z, -1 \
++ D]]*TPair[TIndex[], TMomentum[a]]) + Eps[CMomentum[a, -1 + D], \
+CMomentum[y, -1 + D], CMomentum[z, -1 + D]]*TPair[TIndex[], \
+TMomentum[x]] - Eps[CMomentum[a, -1 + D], CMomentum[x, -1 + D], \
+CMomentum[z, -1 + D]]*TPair[TIndex[], TMomentum[y]] + \
+Eps[CMomentum[a, -1 + D], CMomentum[x, -1 + D], CMomentum[y, -1 + \
+D]]*TPair[TIndex[], TMomentum[z]]"},
+{"fcstLorentzToCartesian-ID20",
+"MatchQ[LorentzToCartesian[
+DiracGamma[
+LorentzIndex[mu]]], -DiracGamma[CIndex[$MU[a_]]] Pair[
+	CIndex[$MU[a_]], LorentzIndex[mu]] +
+DiracGamma[TIndex[]] Pair[LorentzIndex[mu], TIndex[]]]",
+"True"},
+{"fcstLorentzToCartesian-ID21",
+"MatchQ[LorentzToCartesian[
+DiracGamma[LorentzIndex[mu, D],
+D]], -DiracGamma[CIndex[$MU[a_], -1 + D], D] Pair[
+	CIndex[$MU[a_], -1 + D], LorentzIndex[mu, D]] +
+DiracGamma[TIndex[]] Pair[LorentzIndex[mu], TIndex[]]]",
+"True"},
+{"fcstLorentzToCartesian-ID22",
+"MatchQ[LorentzToCartesian[
+DiracGamma[LorentzIndex[mu, D - 4],
+D - 4]], -DiracGamma[CIndex[$MU[a_], -4 + D], -4 + D] Pair[
+CIndex[$MU[a_], -4 + D], LorentzIndex[mu, -4 + D]]]",
+"True"},
+{"fcstLorentzToCartesian-ID23",
+"LorentzToCartesian[DiracGamma[Momentum[p]]]",
+"-DiracGamma[CMomentum[p]] + DiracGamma[TIndex[]]*TPair[TIndex[], \
+TMomentum[p]]"},
+{"fcstLorentzToCartesian-ID24",
+"LorentzToCartesian[DiracGamma[Momentum[p,D],D]]",
+"-DiracGamma[CMomentum[p, -1 + D], D] + \
+DiracGamma[TIndex[]]*TPair[TIndex[], TMomentum[p]]"},
+{"fcstLorentzToCartesian-ID25",
+"LorentzToCartesian[DiracGamma[Momentum[p,D-4],D-4]]",
+"-DiracGamma[CMomentum[p, -4 + D], -4 + D]"},
+{"fcstLorentzToCartesian-ID26", "MatchQ[LorentzToCartesian[
+GA[mu, rho,
+si]], -DiracGamma[CIndex[$MU[a_]]].DiracGamma[
+	CIndex[$MU[b_]]].DiracGamma[CIndex[$MU[c_]]] Pair[
+	CIndex[$MU[a_]], LorentzIndex[mu]] Pair[CIndex[$MU[b_]],
+	LorentzIndex[rho]] Pair[CIndex[$MU[c_]], LorentzIndex[si]] +
+DiracGamma[TIndex[]].DiracGamma[CIndex[$MU[b_]]].DiracGamma[
+	CIndex[$MU[c_]]] Pair[CIndex[$MU[b_]], LorentzIndex[rho]] Pair[
+	CIndex[$MU[c_]], LorentzIndex[si]] Pair[LorentzIndex[mu],
+	TIndex[]] +
+DiracGamma[CIndex[$MU[a_]]].DiracGamma[TIndex[]].DiracGamma[
+	CIndex[$MU[c_]]] Pair[CIndex[$MU[a_]], LorentzIndex[mu]] Pair[
+	CIndex[$MU[c_]], LorentzIndex[si]] Pair[LorentzIndex[rho],
+	TIndex[]] -
+DiracGamma[TIndex[]].DiracGamma[TIndex[]].DiracGamma[
+	CIndex[$MU[c_]]] Pair[CIndex[$MU[c_]], LorentzIndex[si]] Pair[
+	LorentzIndex[mu], TIndex[]] Pair[LorentzIndex[rho], TIndex[]] +
+DiracGamma[CIndex[$MU[a_]]].DiracGamma[CIndex[$MU[b_]]].DiracGamma[
+	TIndex[]] Pair[CIndex[$MU[a_]], LorentzIndex[mu]] Pair[
+	CIndex[$MU[b_]], LorentzIndex[rho]] Pair[LorentzIndex[si],
+	TIndex[]] -
+DiracGamma[TIndex[]].DiracGamma[CIndex[$MU[b_]]].DiracGamma[
+	TIndex[]] Pair[CIndex[$MU[b_]], LorentzIndex[rho]] Pair[
+	LorentzIndex[mu], TIndex[]] Pair[LorentzIndex[si], TIndex[]] -
+DiracGamma[CIndex[$MU[a_]]].DiracGamma[TIndex[]].DiracGamma[
+	TIndex[]] Pair[CIndex[$MU[a_]], LorentzIndex[mu]] Pair[
+	LorentzIndex[rho], TIndex[]] Pair[LorentzIndex[si], TIndex[]] +
+DiracGamma[TIndex[]].DiracGamma[TIndex[]].DiracGamma[TIndex[]] Pair[
+	LorentzIndex[mu], TIndex[]] Pair[LorentzIndex[rho],
+	TIndex[]] Pair[LorentzIndex[si], TIndex[]]]",
+	"True"},
+{"fcstLorentzToCartesian-ID27", "LorentzToCartesian[GS[p1,p2,p3]]",
+"-DiracGamma[CMomentum[p1]] . DiracGamma[CMomentum[p2]] . \
+DiracGamma[CMomentum[p3]] + DiracGamma[TIndex[]] . \
+DiracGamma[CMomentum[p2]] . DiracGamma[CMomentum[p3]]*TPair[TIndex[], \
+TMomentum[p1]] + DiracGamma[CMomentum[p1]] . DiracGamma[TIndex[]] . \
+DiracGamma[CMomentum[p3]]*TPair[TIndex[], TMomentum[p2]] - \
+DiracGamma[TIndex[]] . DiracGamma[TIndex[]] . \
+DiracGamma[CMomentum[p3]]*TPair[TIndex[], \
+TMomentum[p1]]*TPair[TIndex[], TMomentum[p2]] + \
+DiracGamma[CMomentum[p1]] . DiracGamma[CMomentum[p2]] . \
+DiracGamma[TIndex[]]*TPair[TIndex[], TMomentum[p3]] - \
+DiracGamma[TIndex[]] . DiracGamma[CMomentum[p2]] . \
+DiracGamma[TIndex[]]*TPair[TIndex[], TMomentum[p1]]*TPair[TIndex[], \
+TMomentum[p3]] - DiracGamma[CMomentum[p1]] . DiracGamma[TIndex[]] . \
+DiracGamma[TIndex[]]*TPair[TIndex[], TMomentum[p2]]*TPair[TIndex[], \
+TMomentum[p3]] + DiracGamma[TIndex[]] . DiracGamma[TIndex[]] . \
+DiracGamma[TIndex[]]*TPair[TIndex[], TMomentum[p1]]*TPair[TIndex[], \
+TMomentum[p2]]*TPair[TIndex[], TMomentum[p3]]"},
+{"fcstLorentzToCartesian-ID28", "MatchQ[LorentzToCartesian[GA[j].GA[i]^2, DotSimplify -> False,
+FCE -> True], (-CGA[a_] Pair[CIndex[a_], LorentzIndex[j]] +
+	MT[0,j] TGA[]).(-CGA[b_] Pair[CIndex[b_],
+		LorentzIndex[i]] +
+	MT[0,i] TGA[]).(-CGA[c_] Pair[CIndex[c_],
+		LorentzIndex[i]] + MT[0,i] TGA[]) /;
+a =!= b && b =!= c]","True"},
+{"fcstLorentzToCartesian-ID29", "DataType[mytensor, FCTensor] = True; \n
+MatchQ[LorentzToCartesian[
+mytensor[bla, bla, Momentum[p],
+	LorentzIndex[
+	mu]]^2], (-Pair[CIndex[a_],
+		LorentzIndex[
+		mu]] (-mytensor[bla, bla, CMomentum[p], CIndex[a_]] +
+		mytensor[bla, bla, TIndex[], CIndex[a_]] TPair[TIndex[],
+		TMomentum[p]]) +
+	Pair[LorentzIndex[mu],
+	TIndex[]] (-mytensor[bla, bla, CMomentum[p], TIndex[]] +
+		mytensor[bla, bla, TIndex[], TIndex[]] TPair[TIndex[],
+		TMomentum[p]])) (-Pair[CIndex[b_],
+		LorentzIndex[
+		mu]] (-mytensor[bla, bla, CMomentum[p], CIndex[b_]] +
+		mytensor[bla, bla, TIndex[], CIndex[b_]] TPair[TIndex[],
+		TMomentum[p]]) +
+	Pair[LorentzIndex[mu],
+	TIndex[]] (-mytensor[bla, bla, CMomentum[p], TIndex[]] +
+		mytensor[bla, bla, TIndex[], TIndex[]] TPair[TIndex[],
+		TMomentum[p]])) /; a =!= b]","True"},
+{"fcstLorentzToCartesian-ID30", "MatchQ[LorentzToCartesian[LC[mu, nu, rho, si], LorentzIndex -> True,
+FCE -> True] // Expand2,
+Eps[CIndex[i1_], CIndex[i2_], CIndex[i5_], CIndex[i6_]] Pair[
+	CIndex[i1_], LorentzIndex[mu]] Pair[CIndex[i2_],
+	LorentzIndex[nu]] Pair[CIndex[i5_], LorentzIndex[rho]] Pair[
+	CIndex[i6_], LorentzIndex[si]] -
+CLC[i3_, i4_, i1_] Pair[CIndex[i3_], LorentzIndex[nu]] Pair[
+	CIndex[i4_], LorentzIndex[rho]] Pair[CIndex[i1_],
+	LorentzIndex[si]] MT[0,mu] +
+CLC[i1_, i7_, i2_] Pair[CIndex[i1_], LorentzIndex[mu]] Pair[
+	CIndex[i7_], LorentzIndex[rho]] Pair[CIndex[i2_],
+	LorentzIndex[si]] MT[0,nu] -
+CLC[i1_, i2_, i5_] Pair[CIndex[i1_], LorentzIndex[mu]] Pair[
+	CIndex[i2_], LorentzIndex[nu]] Pair[CIndex[i5_],
+	LorentzIndex[si]] MT[0,rho] +
+CLC[i1_, i2_, i5_] Pair[CIndex[i1_], LorentzIndex[mu]] Pair[
+	CIndex[i2_], LorentzIndex[nu]] Pair[CIndex[i5_],
+	LorentzIndex[rho]] MT[0,si]]","True"}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
