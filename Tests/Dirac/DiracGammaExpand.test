@@ -26,5 +26,20 @@ Tests`Dirac`fcstDiracGammaExpand = {
 DiracGamma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 GS[a] + c (GS[b] + GS[d]) + GS[e]"},
 {"fcstDiracGammaExpand-ID6","DiracGammaExpand[DiracGamma[5 Momentum[a, D] +
 	c Momentum[b + d, D] + Momentum[e, D], D]] // FCE",
-	"5*GSD[a] + c*(GSD[b] + GSD[d]) + GSD[e]"}
+	"5*GSD[a] + c*(GSD[b] + GSD[d]) + GSD[e]"},
+{"fcstDiracGammaExpand-ID7","DiracGammaExpand[CGS[q].CGS[p - q]] // FCE",
+	"CGS[q].(CGS[p] - CGS[q])"},
+{"fcstDiracGammaExpand-ID8","DiracGammaExpand[CGS[a + b].CGS[c + d], Momentum -> {a}] // FCE",
+	"(CGS[a] + CGS[b]).CGS[c + d]"},
+{"fcstDiracGammaExpand-ID9","DiracGammaExpand[CGS[a + b].CGS[c + d], Momentum -> {c}] // FCE",
+	"CGS[a + b].(CGS[c] + CGS[d])"},
+{"fcstDiracGammaExpand-ID10","DiracGammaExpand[CGS[a + b].CGS[c + d], Momentum -> All] // FCE",
+	"(CGS[a] + CGS[b]).(CGS[c] + CGS[d])"},
+{"fcstDiracGammaExpand-ID11","DiracGammaExpand[DiracGamma[5 CMomentum[a] + c CMomentum[b + d] + CMomentum[e]]] // FCE",
+	"5 CGS[a] + c (CGS[b] + CGS[d]) + CGS[e]"},
+{"fcstDiracGammaExpand-ID12","DiracGammaExpand[
+DiracGamma[
+5 CMomentum[a, D - 1] + c CMomentum[b + d, D - 1] +
+	CMomentum[e, D - 1], D]] // FCE",
+	"5 CGSD[a] + c (CGSD[b] + CGSD[d]) + CGSD[e]"}
 };

@@ -46,12 +46,6 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 
 	momList = OptionValue[Momentum];
 
-	If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-	];
-
-
 	If[	!OptionValue[FCI],
 		x = FCI[expr],
 		x = expr
@@ -63,7 +57,7 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 	];
 
 	(* List of all the unique Feynman slashes	*)
-	uniqList = Cases[x+null1+null2, DiracGamma[arg_ /; ! FreeQ[{arg}, Momentum],_:4], Infinity]//DeleteDuplicates//Sort;
+	uniqList = Cases[x+null1+null2, DiracGamma[arg_ /; ! FreeQ2[{arg}, {Momentum,CMomentum}],___], Infinity]//DeleteDuplicates//Sort;
 
 	(*	If the user specified to perform expansion only for some
 		special slashed momenta, let's do it	*)
