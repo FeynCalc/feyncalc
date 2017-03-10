@@ -157,5 +157,95 @@ Tests`Dirac`fcstDiracEquation = {
 	SpinorVBarD[Momentum[p, D], m].GSD[q].GA[i, 5].GAD[j].GSD[p]] // FCE",
 	"Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GSD[p].GA[5].GAD[j] -
 	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GSE[p].GA[5].GAD[j] +
-	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GA[5] FVD[p, j]"}
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GA[5] FVD[p, j]"},
+{"fcstDiracEquation-ID37",
+"DiracEquation[GS[p].CGA[i].SpinorU[p,m]]",
+"-(m*DiracGamma[CIndex[i]] . Spinor[Momentum[p], m, 1]) + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID38",
+"DiracEquation[GSD[p].CGA[i].SpinorUD[p,m]]",
+"-(m*DiracGamma[CIndex[i]] . Spinor[Momentum[p, D], m, 1]) + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID39",
+"DiracEquation[GSD[p].CGS[r].SpinorUD[p,m]]",
+"-(m*DiracGamma[CMomentum[r]] . Spinor[Momentum[p, D], m, 1]) + \
+2*CPair[CMomentum[p], CMomentum[r]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID40",
+"DiracEquation[GSD[p].CGAD[i].SpinorUD[p,m]]",
+"-(m*DiracGamma[CIndex[i, -1 + D], D] . Spinor[Momentum[p, D], m, \
+1]) + 2*CPair[CIndex[i, -1 + D], CMomentum[p, -1 + \
+D]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID41",
+"DiracEquation[GSD[p].CGSD[r].SpinorUD[p,m]]",
+"-(m*DiracGamma[CMomentum[r, -1 + D], D] . Spinor[Momentum[p, D], \
+m, 1]) + 2*CPair[CMomentum[p, -1 + D], CMomentum[r, -1 + \
+D]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID42",
+"DiracEquation[GS[p].CGA[i].SpinorV[p,m]]",
+"m*DiracGamma[CIndex[i]] . Spinor[-Momentum[p], m, 1] + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[-Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID43",
+"DiracEquation[GSD[p].CGA[i].SpinorVD[p,m]]",
+"m*DiracGamma[CIndex[i]] . Spinor[-Momentum[p, D], m, 1] + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID44",
+"DiracEquation[GSD[p].CGS[r].SpinorVD[p,m]]",
+"m*DiracGamma[CMomentum[r]] . Spinor[-Momentum[p, D], m, 1] + \
+2*CPair[CMomentum[p], CMomentum[r]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID45",
+"DiracEquation[GSD[p].CGAD[i].SpinorVD[p,m]]",
+"m*DiracGamma[CIndex[i, -1 + D], D] . Spinor[-Momentum[p, D], m, \
+1] + 2*CPair[CIndex[i, -1 + D], CMomentum[p, -1 + \
+D]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID46",
+"DiracEquation[GSD[p].CGSD[r].SpinorVD[p,m]]",
+"m*DiracGamma[CMomentum[r, -1 + D], D] . Spinor[-Momentum[p, D], \
+m, 1] + 2*CPair[CMomentum[p, -1 + D], CMomentum[r, -1 + \
+D]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID47",
+"DiracEquation[SpinorU[p,m].CGA[i].GS[p]]",
+"-(m*Spinor[Momentum[p], m, 1] . DiracGamma[CIndex[i]]) + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID48",
+"DiracEquation[SpinorUD[p,m].CGA[i].GSD[p]]",
+"-(m*Spinor[Momentum[p, D], m, 1] . DiracGamma[CIndex[i]]) + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID49",
+"DiracEquation[SpinorUD[p,m].CGS[r].GSD[p]]",
+"-(m*Spinor[Momentum[p, D], m, 1] . DiracGamma[CMomentum[r]]) + \
+2*CPair[CMomentum[p], CMomentum[r]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID50",
+"DiracEquation[SpinorUD[p,m].CGAD[i].GSD[p]]",
+"-(m*Spinor[Momentum[p, D], m, 1] . DiracGamma[CIndex[i, -1 + D], \
+D]) + 2*CPair[CIndex[i, -1 + D], CMomentum[p, -1 + \
+D]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID51",
+"DiracEquation[SpinorUD[p,m].CGSD[r].GSD[p]]",
+"-(m*Spinor[Momentum[p, D], m, 1] . DiracGamma[CMomentum[r, -1 + \
+D], D]) + 2*CPair[CMomentum[p, -1 + D], CMomentum[r, -1 + \
+D]]*Spinor[Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID52",
+"DiracEquation[SpinorV[p,m].CGA[i].GS[p]]",
+"m*Spinor[-Momentum[p], m, 1] . DiracGamma[CIndex[i]] + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[-Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID53",
+"DiracEquation[SpinorVD[p,m].CGA[i].GSD[p]]",
+"m*Spinor[-Momentum[p, D], m, 1] . DiracGamma[CIndex[i]] + \
+2*CPair[CIndex[i], CMomentum[p]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID54",
+"DiracEquation[SpinorVD[p,m].CGS[r].GSD[p]]",
+"m*Spinor[-Momentum[p, D], m, 1] . DiracGamma[CMomentum[r]] + \
+2*CPair[CMomentum[p], CMomentum[r]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID55",
+"DiracEquation[SpinorVD[p,m].CGAD[i].GSD[p]]",
+"m*Spinor[-Momentum[p, D], m, 1] . DiracGamma[CIndex[i, -1 + D], \
+D] + 2*CPair[CIndex[i, -1 + D], CMomentum[p, -1 + \
+D]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID56",
+"DiracEquation[SpinorVD[p,m].CGSD[r].GSD[p]]",
+"m*Spinor[-Momentum[p, D], m, 1] . DiracGamma[CMomentum[r, -1 + \
+D], D] + 2*CPair[CMomentum[p, -1 + D], CMomentum[r, -1 + \
+D]]*Spinor[-Momentum[p, D], m, 1]"}
+
+
 }

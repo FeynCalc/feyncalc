@@ -30,7 +30,7 @@ Begin["`DiracEquation`Private`"]
 HoldDOT;
 
 Options[DiracEquation] = {
-	FeynCalcInternal -> False
+	FCI -> False
 };
 
 DiracEquation[ex_, OptionsPattern[]] :=
@@ -39,11 +39,6 @@ DiracEquation[ex_, OptionsPattern[]] :=
 		If[	!OptionValue[FCI],
 			expr  = FCI[ex],
 			expr  = ex
-		];
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
 		];
 
 		(* If there are no spinors or no Dirac matrices, then we can't apply the Dirac equation	*)
@@ -102,16 +97,18 @@ spCDieqRules = {
 
 	(* reaching the first spinor, if we need to anticommute past another Dirac gamma (not gamma 5)	*)
 	HoldDOT[	z___,	s: Spinor[n_. Momentum[p_, dim_ : 4] + k_. ,___],
-					a : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _ :4] | 5 | 6 | 7, _ : 4] ...,
-					DiracGamma[(x : LorentzIndex | ExplicitLorentzIndex | Momentum)[y_,di_:4],di_:4],
+					a___DiracGamma,
+					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CIndex | _TIndex | _CMomentum),di_:4],
 					DiracGamma[Momentum[p_,dim_ : 4],dim_ : 4],b___] :>
-					-HoldDOT[ z,s,a, DiracGamma[Momentum[p,dim],dim],DiracGamma[x[y,di],di],b] +
-					2(PairContract[x[y,di],Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[ z,s,a,b]/;
+					-HoldDOT[ z,s,a, DiracGamma[Momentum[p,dim],dim],DiracGamma[x,di],b] +
+					2(PairContract[x,Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[ z,s,a,b]/;
 					last[n Momentum[p,dim]+k] === Momentum[p,dim],
+
+
 
 	(* reaching the first spinor, if we need to anticommute past a Dirac gamma 5	*)
 	HoldDOT[	z___,	s: Spinor[n_. Momentum[p_, dim_ : 4] + k_. ,___],
-					a : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _ :4] | 5 | 6 | 7, _ : 4] ...,
+					a___DiracGamma,
 					DiracGamma[(u:5|6|7)],
 					DiracGamma[Momentum[p_,dim_ : 4],dim_ : 4],b___] :>
 					HoldDOT[ z,s,a, Anti5[DiracGamma[u].DiracGamma[Momentum[p,dim],dim]]/.DOT|Times->HoldDOT,b]/;
@@ -119,17 +116,17 @@ spCDieqRules = {
 
 	(* reaching the last spinor, if we need to anticommute past another Dirac gamma (not gamma 5)	*)
 	HoldDOT[	a___,	DiracGamma[Momentum[p_,dim_:4],dim_:4],
-					DiracGamma[(x : LorentzIndex | ExplicitLorentzIndex | Momentum)[y_,di_:4],di_:4],
-					b : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _ :4] | 5 | 6 | 7, _ : 4] ...,
+					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CIndex | _TIndex | _CMomentum),di_:4],
+					b___DiracGamma,
 					s: Spinor[n_. Momentum[p_, dim_: 4] + k_.,___],z___] :>
-						(-HoldDOT[a,DiracGamma[x[y,di],di],DiracGamma[Momentum[p,dim],dim],b,s,z]+
-						2(PairContract[x[y,di],Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[a,b,s,z])/;
+						(-HoldDOT[a,DiracGamma[x,di],DiracGamma[Momentum[p,dim],dim],b,s,z]+
+						2(PairContract[x,Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[a,b,s,z])/;
 						last[n Momentum[p,dim]+k]===Momentum[p,dim],
 
 	(* reaching the last spinor, if we need to anticommute past a Dirac gamma 5	*)
 	HoldDOT[	a___,	DiracGamma[Momentum[p_,dim_:4],dim_:4],
 					DiracGamma[(u:5|6|7)],
-					b : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _ :4] | 5 | 6 | 7, _ : 4] ...,
+					b___DiracGamma,
 					s: Spinor[n_. Momentum[p_, dim_: 4] + k_.,___],z___] :>
 						HoldDOT[a, Anti5[DiracGamma[Momentum[p,dim],dim].DiracGamma[u],-1]/.DOT|Times->HoldDOT,b,s,z]/;
 						last[n Momentum[p,dim]+k] === Momentum[p,dim]
