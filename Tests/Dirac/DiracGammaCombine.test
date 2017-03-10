@@ -29,5 +29,19 @@ Tests`Dirac`fcstDiracGammaCombine =
 "GA[i] . (m + GS[2*p + 3*q]) . GA[j]"},
 {"fcstDiracGammaCombine-ID6",
 "DiracGammaCombine[GA[i].(2GS[p]+3GS[p]+m).GA[j],FCE\[Rule]True]",
-"GA[i] . (m + 5*GS[p]) . GA[j]"}
+"GA[i] . (m + 5*GS[p]) . GA[j]"},
+{"fcstDiracGammaCombine-ID7",
+"DiracGammaCombine[CGS[p] + CGS[q], FCE -> True]", "CGS[p + q]"},
+{"fcstDiracGammaCombine-ID8",
+"DiracGammaCombine[CGS[p] + CGSD[q], FCE -> True]", "CGS[p] + CGSD[q]"},
+{"fcstDiracGammaCombine-ID9",
+"DiracGammaCombine[CGS[p] + CGS[q] + m, FCE -> True]", "m + CGS[p + q]"},
+{"fcstDiracGammaCombine-ID10",
+"DiracGammaCombine[CGA[i].(CGS[p] + CGS[q] + m).CGA[j], FCE -> True]", "CGA[i].(m + CGS[p + q]).CGA[j]"},
+{"fcstDiracGammaCombine-ID11",
+"DiracGammaCombine[CGA[i].(2 CGS[p] + 3 CGS[q] + m).CGA[j],
+FCE -> True]", "CGA[i].(m + CGS[2 p + 3 q]).CGA[j]"},
+{"fcstDiracGammaCombine-ID12",
+"DiracGammaCombine[CGA[i].(2 CGS[p] + 3 CGS[p] + m).CGA[j],
+FCE -> True]", "CGA[i].(m + 5 CGS[p]).CGA[j]"}
 });
