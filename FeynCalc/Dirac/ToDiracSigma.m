@@ -37,11 +37,6 @@ Options[ToDiracSigma] = {
 ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
 	Block[{ x, y,  ex},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		{x,y} = FCI[{xx,yy}];
 
 		If[ OptionValue[FCI],
@@ -57,7 +52,7 @@ ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
 		ex = (ex /. DOT[a___, x, y, b___] :> (- I DOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] DOT[a, b]) /. DOT[] -> 1);
 
 		If[ OptionValue[DotSimplify],
-			ex = DotSimplify[ex]
+			ex = DotSimplify[ex, FCI->False]
 		];
 
 	ex

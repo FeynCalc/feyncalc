@@ -26,5 +26,13 @@ Tests`Dirac`fcstToDiracSigma =
 {"fcstToDiracSigma-ID4",
 "DiracSigmaExplicit[DiracSigma[DiracGamma[LorentzIndex[i]],\
 DiracGamma[LorentzIndex[j]]]]//ToDiracSigma[#,GA[i],GA[j]]&\
-//ToDiracSigma[#,GA[j],GA[i]]&//FCE", "DiracSigma[GA[i], GA[j]]"}
+//ToDiracSigma[#,GA[j],GA[i]]&//FCE", "DiracSigma[GA[i], GA[j]]"},
+
+{"fcstToDiracSigma-ID5", "ToDiracSigma[CGA[i, j], CGA[i], CGA[j]] // FCE","-I DiracSigma[CGA[i], CGA[j]] - KD[i, j]"},
+{"fcstToDiracSigma-ID6", "ToDiracSigma[CGA[i, j], CGA[m], CGA[j]] // FCE","CGA[i].CGA[j]"},
+{"fcstToDiracSigma-ID7", "ToDiracSigma[CGA[i, j, k], CGA[i], CGA[j]] // FCE","-I DiracSigma[CGA[i], CGA[j]].CGA[k] - CGA[k] KD[i, j]"},
+{"fcstToDiracSigma-ID8", "DiracSigmaExplicit[
+	DiracSigma[DiracGamma[CIndex[i]], DiracGamma[CIndex[j]]]] //
+ToDiracSigma[#, CGA[i], CGA[j]] & //
+ToDiracSigma[#, CGA[j], CGA[i]] & // FCE","DiracSigma[CGA[i], CGA[j]]"}
 })
