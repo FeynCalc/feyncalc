@@ -38,11 +38,6 @@ Options[DiracSigmaExplicit] = {
 DiracSigmaExplicit[expr_, OptionsPattern[]] :=
 	Block[{ex, res, holdDOT},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
