@@ -36,7 +36,17 @@ Tests`Lorentz`fcstFCRenameDummyIndices =
 	SUNIndex[b]].SUNT[SUNIndex[$AL[$x_]]].SUNT[SUNIndex[$AL[y_]]].SUNT[\
 	SUNIndex[k]]]", "True"},
 {"FCRenameDummyIndices-ID5",
-	"MatchQ[FCRenameDummyIndices[FCI[FVD[p, mu] FVD[q, mu]]],
-Pair[LorentzIndex[a_$AL, D], Momentum[p, D]] Pair[
-LorentzIndex[a_$AL, D], Momentum[q, D]]]", "True"}
-}
+	"MatchQ[FCRenameDummyIndices[FVD[p, mu] FVD[q, mu], FCE -> True],
+FVD[p, $AL[a_]] FVD[q, $AL[a_]]]", "True"},
+{"FCRenameDummyIndices-ID6",
+	"MatchQ[FCRenameDummyIndices[CVD[p, i] CVD[q, i], FCE -> True],
+CVD[p, $AL[a_]] CVD[q, $AL[a_]]]", "True"},
+{"FCRenameDummyIndices-ID7",
+	"MatchQ[
+FCRenameDummyIndices[
+Spinor[Momentum[k], m, 1].GA[k].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1],
+FCE -> True],
+Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1]]", "True"}
+};
