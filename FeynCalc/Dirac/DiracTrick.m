@@ -302,7 +302,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
-		dim = FCGetDimensions[ex/.DiracGamma[5|6|7]:>diga];
+		dim = FCGetDimensions[ex/.DiracGamma[5|6|7|TIndex[]]:>diga];
 
 		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
@@ -337,11 +337,14 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			res = Expand2[res,CPair]/. CPair->CPairContract /. CPairContract->CPair;
 		];
 
+
 		If[ FreeQ2[res,DiracHeadsList],
 			Return[res]
 		];
 
-		dim = FCGetDimensions[res/.DiracGamma[5|6|7]:>diga];
+		dim = FCGetDimensions[res/.DiracGamma[5|6|7|TIndex[]]:>diga];
+
+
 		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
 
 		FCPrint[3, "DiracTrick: diracTrickEval: Dimensions:", dim, FCDoControl->diTrVerbose];
@@ -374,11 +377,11 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickLarin /. chiralTrickLarin -> holdDOT,
 					(* Mixed and BMHV -> don't move g^5 around *)
-					MatchQ[dim, {_Symbol - 4} | {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
+					dim=!={} && $BreitMaison && !$Larin,
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
-					(* special case that the expression contains only chiral matrices*)
-					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && FreeQ[(res/.DiracGamma[5|6|7]:>diga),DiracGamma],
-					FCPrint[1, "DiracTrick: diracTrickEval: Chiral only.", FCDoControl->diTrVerbose],
+					(* special case that the expression contains only chiral or g^0 matrices*)
+					dim==={} && !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[TIndex[]]}] && FreeQ[(res/.DiracGamma[5|6|7|TIndex[]]:>diga),DiracGamma],
+					FCPrint[1, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
 						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
@@ -412,18 +415,24 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
 				res = res /. diracologyDDim -> holdDOT,
 			(* Mixed and BMHV *)
-			MatchQ[dim, {4, _Symbol} | {4, _Symbol-4} | {_Symbol-4, _Symbol} | {4, _Symbol-4, _Symbol}] && $BreitMaison && !$Larin,
+			dim=!={} && $BreitMaison && !$Larin,
 				FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyBMHV1;
 				res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
 				res = res /. diracologyBMHV1 -> holdDOT,
-			(* special case that the expression contains only chiral matrices*)
-					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && FreeQ[(res/.DiracGamma[5|6|7]:>diga),DiracGamma],
-					FCPrint[1, "DiracTrick: diracTrickEval: Chiral only.", FCDoControl->diTrVerbose],
-			(* Anything else is most likely an error *)
-			True,
-				Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
-				Abort[]
+			(* special case that the expression contains only g^0 matrices*)
+			dim==={} && !FreeQ2[res,{DiracGamma[TIndex[]]}] && FreeQ[(res/.DiracGamma[TIndex[]]:>diga),DiracGamma],
+				FCPrint[1, "DiracTrick: diracTrickEval: Only g^0 matrices.", FCDoControl->diTrVerbose];
+				FCPrint[1, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
+				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
+				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
+			(* special case that the expression contains only chiral or g^0 matrices*)
+					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[TIndex[]]}] && FreeQ[(res/.DiracGamma[5|6|7|TIndex[]]:>diga),DiracGamma],
+					FCPrint[1, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
+					(* Anything else is most likely an error *)
+					True,
+						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+						Abort[]
 		];
 		FCPrint[1, "DiracTrick: diracTrickEval: Done with simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: After simplifications unrelated to g^5: ", res , FCDoControl->diTrVerbose];
@@ -590,6 +599,11 @@ diracologyDDim[]:=
 diracologyDDim[b___,DiracGamma[l_LorentzIndex, dim_], DiracGamma[l_LorentzIndex, dim_], d___] :=
 	dim diracologyDDim[ b,d ];
 
+(*	g^i g^i	*)
+diracologyDDim[b___,DiracGamma[l_CIndex, dim_], DiracGamma[l_CIndex, dim_], d___] :=
+	(dim-1) FeynCalc`Package`MetricS diracologyDDim[ b,d ];
+
+
 (*	g^mu g^nu g_mu	*)
 diracologyDDim[b___ , DiracGamma[c_LorentzIndex, dim_],
 			DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim_], dim_],
@@ -639,6 +653,10 @@ diracologyDDim2[ b___,DiracGamma[c_LorentzIndex,dim_],
 
 (*	Slash(p) Slash(p)	*)
 diracologyDDim[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum, dim_], d___] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,d];
+
+(*	g^i g^i p^i p^j *)
+diracologyDDim[b___,DiracGamma[c_CMomentum, dim_], DiracGamma[c_CMomentum, dim_], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,d];
 
 (*	Slash(p) g^nu Slash(p)	*)
@@ -1025,29 +1043,49 @@ diracologyBMHV1[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d
 	DiracGamma[LorentzIndex[c_]], f___ ] :=
 	diracologyBMHV1[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
 
+(* D-1 and 3  -> 3 *)
+diracologyBMHV1[ b___, DiracGamma[CIndex[c_, dimD_Symbol-1], dimD_Symbol], d:DiracGamma[__].. ,
+	DiracGamma[CIndex[c_]], f___ ] :=
+	diracologyBMHV1[b, DiracGamma[CIndex[c]], d, DiracGamma[CIndex[c]], f];
+
 (* 4 and D -> 4 *)
 diracologyBMHV1[ b___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
 	DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], f___ ] :=
 	diracologyBMHV1[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+
+(* 3 and D-1 -> 3 *)
+diracologyBMHV1[ b___, DiracGamma[CIndex[c_]], d:DiracGamma[__].. ,
+	DiracGamma[CIndex[c_, dimD_Symbol-1], dimD_Symbol], f___ ] :=
+	diracologyBMHV1[b, DiracGamma[CIndex[c]], d, DiracGamma[CIndex[c]], f];
 
 (* D and D-4 -> D-4 *)
 diracologyBMHV1[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
 	DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], f___ ] :=
 	diracologyBMHV1[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], d,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], f];
 
+(* D-1 and D-4 -> D-4 *)
+diracologyBMHV1[ b___, DiracGamma[CIndex[c_, dimD_Symbol-1], dimD_Symbol], d:DiracGamma[__].. ,
+	DiracGamma[CIndex[c_, dimD_Symbol-4], dimD_Symbol-4], f___ ] :=
+	diracologyBMHV1[b,DiracGamma[CIndex[c, dimD-4], dimD-4], d,DiracGamma[CIndex[c, dimD-4], dimD-4], f];
+
 (* D-4 and D -> D-4 *)
 diracologyBMHV1[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
 	DiracGamma[LorentzIndex[c_, dimD_Symbol],dimD_Symbol],f___ ] :=
 	diracologyBMHV1[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], d, DiracGamma[LorentzIndex[c, dimD-4], dimD-4],f];
 
+(* D-4 and D-1 -> D-4 *)
+diracologyBMHV1[ b___, DiracGamma[CIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
+	DiracGamma[CIndex[c_, dimD_Symbol-1],dimD_Symbol],f___ ] :=
+	diracologyBMHV1[b,DiracGamma[CIndex[c, dimD-4], dimD-4], d, DiracGamma[CIndex[c, dimD-4], dimD-4],f];
+
 (* 4 and D-4 -> 0 *)
-diracologyBMHV1[ ___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], DiracGamma[__].. ,
-	DiracGamma[LorentzIndex[c_]], ___ ] :=
+diracologyBMHV1[ ___, DiracGamma[(h:LorentzIndex|CIndex)[c_, dimD_Symbol-4], dimD_Symbol-4], DiracGamma[__].. ,
+	DiracGamma[(h:LorentzIndex|CIndex)[c_]], ___ ] :=
 	0;
 
 (* D-4 and 4 -> 0 *)
-diracologyBMHV1[ ___, DiracGamma[LorentzIndex[c_]], DiracGamma[__].. ,
-	DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ] :=
+diracologyBMHV1[ ___, DiracGamma[(h:LorentzIndex|CIndex)[c_]], DiracGamma[__].. ,
+	DiracGamma[(h:LorentzIndex|CIndex)[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ] :=
 	0;
 
 (* Contractions of neighbouring Dirac matrices in D, 4 and D-4 dimensions     *)
@@ -1056,6 +1094,10 @@ diracologyBMHV1[ ___, DiracGamma[LorentzIndex[c_]], DiracGamma[__].. ,
 diracologyBMHV2[b___,DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_:  4],
 		DiracGamma[LorentzIndex[c_, dim2_ : 4], dim2_: 4], d___] :=
 	(PairContract[LorentzIndex[c, dim1],LorentzIndex[c, dim2]]/. PairContract->Pair) diracologyBMHV2[ b,d ];
+
+diracologyBMHV2[b___,DiracGamma[CIndex[c_, dim1_ : 3], ___],
+		DiracGamma[CIndex[c_, dim2_ : 3], ___], d___] :=
+	(FeynCalc`Package`MetricS CPairContract[CIndex[c, dim1],CIndex[c, dim2]]/. CPairContract->CPair) diracologyBMHV2[ b,d ];
 
 (* Simplifications for g^mu g^nu_1 ... g^nu_n g_mu where g^mu is in 4 and
 	g^nu_i are in D-4 dimensions or vice versa.                                *)
