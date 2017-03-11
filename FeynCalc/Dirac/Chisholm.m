@@ -53,11 +53,6 @@ Chisholm[expr_, OptionsPattern[]] :=
 			diracObjectsEval, null1, null2, dsHead, time, repRule, mode, chisholmRule1, chisholmRule2, maxIterations,
 			nonComm, chisholmRuleInsideTrace},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		mode = OptionValue[Mode];
 		maxIterations = OptionValue[MaxIterations];
 		nonComm = OptionValue[NonCommutative];
