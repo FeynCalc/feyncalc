@@ -53,11 +53,6 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 
 		maxIterations = OptionValue[MaxIterations];
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
@@ -107,6 +102,10 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			FCPrint[1, "DiracOrder: Inserting Dirac objects back.", FCDoControl->doVerbose];
 
 			diracObjectsEval = diracObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. PairContract -> Pair;
+			If[	!FreeQ[diracObjectsEval,CPair],
+				diracObjectsEval = diracObjectsEval/. CPair->CPairContract /. CPairContract->CPair
+			];
+
 			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
 			FCPrint[3,"DiracOrder: repRule: ",repRule , FCDoControl->doVerbose];
 			tmp = freePart + ( dsPart/.repRule);
@@ -128,8 +127,13 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 				FCPrint[1, "DiracOrder: Ordering done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose]
 
 			];
-			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. PairContract -> Pair
+			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. PairContract -> Pair;
+			If[	!FreeQ[diracObjectsEval,CPair],
+				diracObjectsEval = diracObjectsEval/. CPair->CPairContract /. CPairContract->CPair
+			];
+
 		];
+
 
 		res = tmp;
 
@@ -153,24 +157,28 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 
 diracOrderLex[x_, maxIterations_]:=
 	FixedPoint[(# /. {
-		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum)[ar1_,dim1_:4], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum)[ar2_,dim2_:4], dim2_:4],b___]/;
-			!OrderedQ[{h1[ar1,dim1],h2[ar2,dim2]}] && h1[ar1,dim1]=!=h2[ar2,dim2] :>
-			-holdDOT[a, DiracGamma[h2[ar2,dim2],dim2], DiracGamma[h1[ar1,dim1],dim1] ,b] +
-			2 PairContract[h1[ar1,dim1],h2[ar2,dim2]] holdDOT[a,b],
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CIndex|CMomentum)[ar1__], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum|CIndex|CMomentum)[ar2__], dim2_:4],b___]/;
+			!OrderedQ[{h1[First[{ar1}],dim1],h2[First[{ar2}],dim2]}] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
+			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
+			2 PairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum)[ar_,dim_:4], dim_:4], DiracGamma[(h:LorentzIndex|Momentum)[ar_,dim_:4], dim_:4],b___] :>
-			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar,dim],dim].DiracGamma[h[ar,dim],dim]],FCI->True,FCDiracIsolate->False]
+		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CIndex|CMomentum|TIndex)[ar___], dim_:4],
+			DiracGamma[(h:LorentzIndex|Momentum|CIndex|CMomentum|TIndex)[ar___], dim_:4],b___] :>
+			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar],dim].DiracGamma[h[ar],dim]],FCI->True,FCDiracIsolate->False]
+
+
 	})&, x, maxIterations]
 
 customOrdering[x_, currentElement_]:=
 	x //. {
-		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum)[ar1_,dim1_:4], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum)[ar2_,dim2_:4], dim2_:4],b___]/;
-			!FreeQ[h2[ar2,dim2],currentElement] && h1[ar1,dim1]=!=h2[ar2,dim2] :>
-			-holdDOT[a, DiracGamma[h2[ar2,dim2],dim2], DiracGamma[h1[ar1,dim1],dim1] ,b] +
-			2 PairContract[h1[ar1,dim1],h2[ar2,dim2]] holdDOT[a,b],
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CIndex|CMomentum)[ar1__], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum|CIndex|CMomentum)[ar2__], dim2_:4],b___]/;
+			!FreeQ[h2[First[{ar2}],dim2],currentElement] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
+			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
+			2 PairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum)[ar_,dim_:4], dim_:4], DiracGamma[(h:LorentzIndex|Momentum)[ar_,dim_:4], dim_:4],b___] :>
-			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar,dim],dim].DiracGamma[h[ar,dim],dim]],FCI->True,FCDiracIsolate->False]
+		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CIndex|CMomentum|TIndex)[ar___], dim_:4],
+			DiracGamma[(h:LorentzIndex|Momentum|CIndex|CMomentum|TIndex)[ar___], dim_:4],b___] :>
+			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar],dim].DiracGamma[h[ar],dim]],FCI->True,FCDiracIsolate->False]
 };
 
 
