@@ -37,9 +37,6 @@ The default setting is sometimes 4, sometimes D. \
 The setting should always be 4, a symbol (D, n, ...), or \
 (D-4), (n-4), ... .";
 
-DimensionalReduction::usage=
-"DimensionalReduction is an option for TID and OneLoopSimplify.";
-
 DiracTraceEvaluate::usage =
 "DiracTraceEvaluate is an option for DiracTrace and TR. \
 If set to False, DiracTrace remains unevaluated.";

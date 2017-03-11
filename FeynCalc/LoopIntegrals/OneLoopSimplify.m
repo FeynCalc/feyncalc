@@ -40,7 +40,6 @@ Begin["`OneLoopSimplify`Private`"]
 
 Options[OneLoopSimplify] = {Collecting -> False,
 							Dimension -> D,
-							DimensionalReduction -> False,
 							DiracSimplify -> True,
 							FinalSubstitutions -> {},
 							IntegralTable -> {},
@@ -64,7 +63,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 		Message[OneLoopSimplify::nivar, qu];
 		amp,
 		Block[ {q, dim, sunntocacf, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, spc,
-		substis, pae, dimred,lt6, lnt6,dirsimplify, nt6,dirsimp,
+		substis, pae, lt6, lnt6,dirsimplify, nt6,dirsimp,
 		ope1loop, integraltable,loopisolate,time},
 
 
@@ -87,7 +86,6 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			q = qu;
 			dim = Dimension /. {opt} /. Options[OneLoopSimplify];
 			dirsimplify = DiracSimplify/. {opt} /. Options[OneLoopSimplify];
-			dimred  = DimensionalReduction /. {opt} /. Options[OneLoopSimplify];
 			sunntocacf = SUNNToCACF /. {opt} /. Options[OneLoopSimplify];
 			suntrace = SUNTrace /. {opt} /. Options[OneLoopSimplify];
 			ope1loop = OPE1Loop /. {opt} /. Options[OneLoopSimplify];
@@ -95,13 +93,10 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			spc = ApartFF /. {opt} /. Options[OneLoopSimplify];
 			integraltable = IntegralTable /. {opt} /. Options[OneLoopSimplify];
 			FCPrint[2,"Using dimension ",dim];
-			If[ dimred =!= True,
-				t1  = Trick[ChangeDimension[FeynCalcInternal[amp], dim]],
-				t1  = Trick[FeynCalcInternal[amp]]
-			];
-			If[ dimred =!= True,
-				substis = ChangeDimension[substis, dim]
-			];
+
+			t1  = Trick[ChangeDimension[FeynCalcInternal[amp], dim]];
+			substis = ChangeDimension[substis, dim];
+
 			t1 = Collect2[Isolate[t1,q,IsolateNames->loopisolate],FeynAmpDenominator[__]];
 			time = AbsoluteTime[];
 			t1 = FeynAmpDenominatorCombine[t1//Explicit];
@@ -208,7 +203,6 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 
 			FCPrint[2,"doing TID on",t6];
 			t6 = TID[t6,  q,
-								DimensionalReduction -> dimred,
 								FeynAmpDenominatorSimplify -> True,
 						(*Added 7/8-2000, F.Orellana*)
 						Dimension -> dim,
@@ -257,10 +251,9 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			t6= Isolate[Collect2[ ExpandScalarProduct[t6], {FeynAmpDenominator, q, OPEDelta}],
 				{q, OPEDelta},IsolateNames->loopisolate];
 			time = AbsoluteTime[];
-			If[ dimred =!= True,
-				t6 = PowerSimplify[ChangeDimension[t6,dim]/.substis],
-				t6 = PowerSimplify[t6]/.substis
-			];
+
+			t6 = PowerSimplify[ChangeDimension[t6,dim]/.substis];
+
 			FCPrint[1,"OneLoopSimplify: Time spent on PowerSimplify: ", N[AbsoluteTime[] - time, 4]];
 
 			time = AbsoluteTime[];

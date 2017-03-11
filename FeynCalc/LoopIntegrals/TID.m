@@ -60,7 +60,6 @@ Options[TID] = {
 	Collecting -> True,
 	Contract -> True,
 	Dimension -> D,
-	DimensionalReduction -> False,
 	DiracSimplify -> True,
 	DiracTrace -> True,
 	ExpandScalarProduct -> True,
@@ -80,13 +79,10 @@ Options[TID] = {
 
 TID[am_ , q_, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
-		res,nres,irrelevant = 0,
-		contractlabel, diditlabel, famp,chd,fds,tid, tidinternal,
-	dimred,	(*limitto4=$LimitTo4,*)iter,sp,tp,
-
-	loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
-	solsList, repSolList, reversedRepIndexList,reducedLoopList,
-	finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli
+		res,nres,irrelevant = 0, contractlabel, chd,fds, iter,sp,tp,
+		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
+		solsList, repSolList, reversedRepIndexList,reducedLoopList,
+		finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli
 	},
 
 		If[	!FreeQ2[{am}, FeynCalc`Package`NRStuff],
@@ -116,7 +112,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 
 
-		dimred			= OptionValue[DimensionalReduction];
 		n 				= OptionValue[Dimension];
 		contractlabel	= OptionValue[Contract];
 		fds 			= OptionValue[FDS];
@@ -206,8 +201,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		t0 = ExpandScalarProduct[t0,Momentum->{q}];
 
 		(* Uncontract first *)
-		FCMonitor[t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred(*,
-						Dimension -> n*)] /. PropagatorDenominator -> procanonical[q];,
+		FCMonitor[t1 = Uncontract[t0, q, Pair -> All] /. PropagatorDenominator -> procanonical[q];,
 				Grid[{{"Uncontracting loop momenta",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
@@ -297,7 +291,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			(* Here we reduce the unique tensor integrals to scalar integrals *)
 			FCPrint[1,"TID: List of the unique integrals to be tensor reduced ", uniqueCanIndexList, FCDoControl->tidVerbose];
 			FCMonitor[
-				solsList=MapIndexed[(iter=Total[#2]; tidSingleIntegral[#1, q , n, dimred, OptionValue[UsePaVeBasis]])&,uniqueCanIndexList];
+				solsList=MapIndexed[(iter=Total[#2]; tidSingleIntegral[#1, q , n, OptionValue[UsePaVeBasis]])&,uniqueCanIndexList];
 				iter=Length[uniqueCanIndexList]+1,
 				Grid[{{"Reducing unique tensor integrals",
 				ProgressIndicator[iter, {1, Length[uniqueCanIndexList]+1}]}}]
@@ -422,9 +416,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
 		];
-		If[ dimred,
-			res = res /. Momentum[aa_,n] :> Momentum[aa]
-		];
 
 		If [OptionValue[ExpandScalarProduct],
 			FCMonitor[
@@ -442,7 +433,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 	];
 
-tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
+tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 	Block[{ ex=int,res,rank,
 			iList1, uList1, iList2, uList2, null, loopIntegral, nwr,
 			sList1, sList2, rList2, rList1},
@@ -488,7 +479,7 @@ tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 		FCPrint[2,"TID: tidSingleIntegral: List of unique integrals ", uList2, FCDoControl->tidVerbose];
 
 		(* Reduce all the integrals from uList2 into scalar integrals*)
-		nwr[exp_]:= (NestWhile[tidFullReduce[#,q,rank,n,dimred,pavebasis]&, exp,
+		nwr[exp_]:= (NestWhile[tidFullReduce[#,q,rank,n,pavebasis]&, exp,
 			! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &, 1, rank+2]);
 
 		sList2 = nwr/@uList2;
@@ -521,7 +512,7 @@ tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 	]/; Head[int]=!=Plus && MatchQ[int,(FeynAmpDenominator[y__] /; ! FreeQ[{y}, q]) Times[
 		Pair[Momentum[q, _ : 4], LorentzIndex[_, _ : 4]] ..]];
 
-tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
+tidFullReduce[expr_,q_,rank_,n_, pavebasis_]:=
 	Block[{	ex=expr, sp, tp, tpSP, tpTP, res,
 			time,uList,sList,rList, null1,
 			null2, null3, null4, null, loopIntegral,
@@ -614,7 +605,7 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 
 			tpTP + null] /. null -> 0)// Union[Cases[{#}, loopIntegral[x_], Infinity]]& // DeleteDuplicates;*)
 			(* Uncontract is done with the same options as in the beginning of TID *)
-			sList = (Uncontract[(#/.loopIntegral->Identity), q, Pair -> All, DimensionalReduction -> dimred(*, Dimension -> n*)]&)/@uList;
+			sList = (Uncontract[(#/.loopIntegral->Identity), q, Pair -> All]&)/@uList;
 			sList = SelectFree[#,{q}] tidReduce[tidConvert[SelectNotFree[#,{q}],q],q,n,pavebasis]&/@sList;
 			rList = MapIndexed[(Rule[#1, First[sList[[#2]]]]) &, uList];
 			tpTP = tpTP/.rList;
