@@ -49,11 +49,6 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		FCPrint[1, "EpsChisholm: Entering EpsChisholm", FCDoControl->esVerbose];
 		FCPrint[3, "EpsChisholm: Entering with, ", expr , FCDoControl->esVerbose];
 
