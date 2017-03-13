@@ -36,6 +36,7 @@ Options[FCTraceExpand] = {
 	DiracTrace -> True,
 	DotSimplify -> True,
 	FCI -> False,
+	FCE -> False,
 	FCTraceFactor -> True,
 	FCVerbose -> False,
 	Momentum -> All,
@@ -46,21 +47,9 @@ Options[FCTraceExpand] = {
 FCTraceExpand[expr_, OptionsPattern[]] :=
 	Block[ {ex, moms,res, diracTraces,diracTraces2, sunTraces,sunTraces2},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		moms = OptionValue[Momentum];
 		dotSimp = OptionValue[DotSimplify];
 		propPres = OptionValue[PreservePropagatorStructures];
-
-		If [OptionValue[FCVerbose]===False,
-			fctreVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				fctreVerbose=OptionValue[FCVerbose]
-			];
-		];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -123,6 +112,10 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 		];
 
 		res = ex;
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		FCPrint[3, "FCTraceExpand: Leaving with ", res,  FCDoControl->fctreVerbose];
 
