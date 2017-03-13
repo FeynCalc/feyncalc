@@ -36,5 +36,10 @@ b)]]//FCE",
 "(a - b)*(a + b)^2*c*DiracTrace[1]*DiracTrace[GA[i] . GA[j]]"},
 {"fcstFCTraceFactor-ID8",
 "DiracTrace[DiracTrace[GA[i, j]] GA[k, l]] // FCTraceFactor // FCE",
-"DiracTrace[GA[i].GA[j]] DiracTrace[GA[k].GA[l]]"}
+"DiracTrace[GA[i].GA[j]] DiracTrace[GA[k].GA[l]]"},
+{"fcstFCTraceFactor-ID9",
+"FCTraceFactor[
+DiracTrace[(x*(GS[p1] + M)).GA[mu].SI[xx].SUNT[
+	a].(y*(GS[p2] + M).GA[nu])], FCE -> True]",
+"x y DiracTrace[(M + GS[p1]).GA[mu].SI[xx].SUNT[a].(M + GS[p2]).GA[nu]]"}
 })

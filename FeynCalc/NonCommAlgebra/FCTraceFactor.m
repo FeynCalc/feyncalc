@@ -28,16 +28,12 @@ End[]
 Begin["`FCTraceFactor`Private`"]
 
 Options[FCTraceFactor] = {
-	FCI -> False
+	FCI -> False,
+	FCE -> False
 };
 
 FCTraceFactor[expr_, OptionsPattern[]] :=
 	Block[ {ex, moms,res, diracTraces},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -54,6 +50,10 @@ FCTraceFactor[expr_, OptionsPattern[]] :=
 
 		If[ diracTraces =!= {},
 			res = ex /. Dispatch[Thread[diracTraces -> tracefactor[diracTraces]]]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		res
