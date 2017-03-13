@@ -39,11 +39,6 @@ Options[FeynAmpDenominatorSplit]={
 FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 	Block[{res,momList,fad},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		If[ !OptionValue[FCI],
 			res = FCI[expr],
 			res = expr
