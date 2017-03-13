@@ -46,19 +46,21 @@ Begin["`FCCanonicalizeDummyIndices`Private`"]
 canodummyVerbose::usage="";
 
 Options[FCCanonicalizeDummyIndices] = {
-	FCI -> False,
-	LorentzIndexNames -> {},
-	SUNIndexNames -> {},
-	SUNFIndexNames -> {},
+	CIndexNames -> {},
 	CustomIndexNames -> {},
-	Momentum -> All,
-	NotMomentum -> {},
-	Head -> {LorentzIndex,SUNIndex,SUNFIndex},
-	FCVerbose-> False,
 	DotSimplify -> True,
+	FCE -> False,
+	FCI -> False,
 	FCTraceExpand -> True,
 	FCVerbose -> False,
-	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]]
+	FCVerbose-> False,
+	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
+	Head -> {LorentzIndex,CIndex,SUNIndex,SUNFIndex},
+	LorentzIndexNames -> {},
+	Momentum -> All,
+	NotMomentum -> {},
+	SUNFIndexNames -> {},
+	SUNIndexNames -> {}
 };
 
 makeRepIndexList[mIndexHead_,mWrappinHead_,mSeed_,mFunc_,mFinalList_,mUniqueExp_]:=
@@ -82,15 +84,10 @@ renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 
 FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 	Block[ {indexList = {}, ex,tmp,null1,null2, renamingRule,
-			rest0=0,lihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
+			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
 			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
-			renamingList,cList,indexExtract},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
+			renamingList,cList,indexExtract, seedCar, repIndexListCar, times},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -109,6 +106,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 
 		seedLor = Unique["li"];
+		seedCar = Unique["ci"];
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -139,6 +137,10 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			tmp = FCTraceExpand[tmp,FCI->True]
 		];
 
+		If[	!FreeQ[tmp,Power],
+			tmp = tmp /. Power[z_, n_Integer?Positive]/;!FreeQ2[z, indhead] :> Apply[times, Table[z, {Abs[n]}]]^Sign[n]
+		];
+
 		indexList =
 				Map[Tally, Map[Cases[#, (Alternatives@@indhead)[ind_, ___]/;(Head[ind]=!=Upper &&
 						Head[ind]=!=Lower),
@@ -166,6 +168,8 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		FCPrint[2,"FCCanonicalizeDummyIndices: Unique expressions: ", uniqueExpressions, FCDoControl->canodummyVerbose];
 
 
+		(* Lorentz indices *)
+
 		If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
 			(* only for particular momenta *)
 			indexExtract = Map[Cases[#, _[a___, LorentzIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity]&, uniqueExpressions],
@@ -187,9 +191,36 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		repIndexListLor = Map[Function[x, MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2, seedLor],
 				(#1 /.LorentzIndex[_, dim_: 4] :> dim)]] &,x]][#] &, indexExtract];
 
-		FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListLor: ", repIndexListLor, FCDoControl->canodummyVerbose];
+		(* Cartesian indices *)
 
-		otherHeads = Complement[Union[indhead],{LorentzIndex,SUNIndex,SUNFIndex}];
+		If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
+			(* only for particular momenta *)
+			indexExtract = Map[Cases[#, _[a___, CIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,CIndex[y]]:> CIndex[y], Infinity]&, uniqueExpressions],
+			(* for all momenta *)
+			indexExtract = Map[Cases[#, CIndex[y__]/; MemberQ[finalList,CIndex[y]], Infinity]&, uniqueExpressions]
+		];
+
+		indexExtract = DeleteDuplicates/@indexExtract;
+
+		FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Cartesian indices: ", indexExtract, FCDoControl->canodummyVerbose];
+
+		If[	!MatchQ[indexExtract, {{___CIndex} ...}],
+				Message[FCCanonicalizeDummyIndices::failmsg,
+				"Failed to  properly extract dummy Cartesian indices."];
+				FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
+				Abort[]
+		];
+
+		repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CIndex[cihead@fu[#2, seedCar],
+				(#1 /.CIndex[_, dim_: 3] :> dim)]] &,x]][#] &, indexExtract];
+
+
+
+		FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListCar: ", repIndexListCar, FCDoControl->canodummyVerbose];
+
+		(* Rest *)
+
+		otherHeads = Complement[Union[indhead],{LorentzIndex,CIndex,SUNIndex,SUNFIndex}];
 		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads, FCDoControl->canodummyVerbose];
 
 		If[otherHeads =!={},
@@ -199,7 +230,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			FCDoControl->canodummyVerbose];
 		];
 
-		repIndexListTotal = {repIndexListLor,
+		repIndexListTotal = {repIndexListLor,repIndexListCar,
 			makeRepIndexList[SUNIndex,sunhead,Unique["sun"],fu,finalList,uniqueExpressions],
 			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions]
 		};
@@ -213,7 +244,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 
 		(* Renaming of dummy indices according to the supplied list *)
-		cList = {{OptionValue[LorentzIndexNames],lihead},{OptionValue[SUNIndexNames],sunhead},{OptionValue[SUNFIndexNames],sunfhead}};
+		cList = {{OptionValue[LorentzIndexNames],lihead},{OptionValue[CIndexNames],cihead},{OptionValue[SUNIndexNames],sunhead},{OptionValue[SUNFIndexNames],sunfhead}};
 		If[ OptionValue[CustomIndexNames]=!={},
 			cList = Join[cList,Map[{Last[#], ToExpression[ToString[First[#]]<>"head"]}&,OptionValue[CustomIndexNames]]];
 		];
@@ -244,7 +275,11 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", finalRepList, FCDoControl->canodummyVerbose];
 
-		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|sunhead|sunfhead->Identity;
+		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|cihead|sunhead|sunfhead->Identity /. times -> Times;
+
+		If[OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		res
 	]

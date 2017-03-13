@@ -91,7 +91,23 @@ QuantumField[FCPartialD[LorentzIndex[\[Nu]]], GaugeField,
 2 QuantumField[FCPartialD[LorentzIndex[a_]], GaugeField,
 	LorentzIndex[c_], SUNIndex[b_]].QuantumField[
 	FCPartialD[LorentzIndex[a_]], GaugeField, LorentzIndex[c_],
-	SUNIndex[b_]]]","True"}
-
-
+	SUNIndex[b_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID14","MatchQ[tmp =
+FCCanonicalizeDummyIndices[
+CVD[q, mu] CVD[p, mu] + CVD[q, nu] CVD[p, nu]]; FCE[tmp],
+2 CVD[p, i_] CVD[q, i_]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID15","FCCanonicalizeDummyIndices[
+Uncontract[CSP[q, p]^4, q, p, CPair -> All],
+CIndexNames -> {i, j, k, l}, FCE -> True]","CV[p, i] CV[p, j] CV[p, k] CV[p, l] CV[q, i] CV[q, j] CV[q, k] CV[q,l]"},
+{"fcstFCCanonicalizeDummyIndices-ID16","MatchQ[FCCanonicalizeDummyIndices[
+CV[p1, mu] (CV[p2, nu] CV[p3, nu] + CV[p2, rho] CV[p3, rho]),
+FCE -> True], 2 CV[p1, mu] CV[p2, a_] CV[p3, a_]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID17","MatchQ[FCCanonicalizeDummyIndices[
+FV[p, i] FV[q, i] CV[p, i] CV[q, i] +
+CV[p, j] CV[q, j] FV[p, j] FV[q, j], FCE -> True],
+2 CV[p, b_] CV[q, b_] FV[p, a_] FV[q, a_]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID18","MatchQ[FCCanonicalizeDummyIndices[
+FV[p, i] FV[p, i] CV[p, i] CV[p, i] +
+CV[p, j] CV[p, j] FV[p, j] FV[p, j], FCE -> True],
+2 CV[p, a_]^2 FV[p, b_]^2]","True"}
 });

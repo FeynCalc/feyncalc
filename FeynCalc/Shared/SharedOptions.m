@@ -15,6 +15,11 @@
 
 (* ------------------------------------------------------------------------ *)
 
+CIndexNames::usage =
+"CIndexNames is an option for FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy Cartesian indices to the indices \
+in the supplied list.";
+
 ClearHeads::usage = "ClearHeads is an option of FCLoopIsolate, FCDiracIsolate \
 and other functions. It takes a list of heads that will be replaced by Identity in \
 the isolating function. This is useful for cases when we first apply \
