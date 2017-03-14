@@ -32,69 +32,77 @@ End[]
 
 Begin["`DiracReduce`Private`"]
 
+drVerbose::usage="";
+
 Options[DiracReduce] = {
-	DiracSimplify -> True,
+	DiracSimplify -> False,
+	DotSimplify -> True,
+	DiracGammaCombine -> True,
+	Contract -> True,
 	Factoring -> False,
-	FinalSubstitutions -> {DiracBasis -> Identity}
+	FinalSubstitutions -> {DiracBasis -> Identity},
+	FCI -> False,
+	FCE -> False,
+	FCVerbose -> False
 };
-DiracReduce[x_, {ops___Rule}] :=
-	DiracReduce[x, ops];
 
-DiracReduce[x_, ops___Rule] :=
-	Block[ {temp = FCI[x], spart, n1, n2, ddb, res, finsub,finsub1,factoring,diracSimplify},
-		finsub1 =
-			If[ Length[{ops}] === 0,
-				{},
-				If[ !FreeQ[{ops}, FinalSubstitutions],
-					FinalSubstitutions /. {ops},
-					Select[Flatten[{ops}], FreeQ[#,Factoring]&]
-				]
+DiracReduce[expr_List, opts:OptionsPattern[]] :=
+	Map[DiracReduce[#,opts]&,expr];
+
+DiracReduce[expr_, OptionsPattern[]] :=
+	Block[ {ex, tmp, spart, null1, null2, res, finsub, factoring,diracSimplify, li1, li2},
+
+		finsub = OptionValue[FinalSubstitutions];
+		factoring = OptionValue[Factoring];
+		diracSimplify = OptionValue[DiracSimplify];
+
+		If[	OptionValue[FCVerbose]===False,
+			drVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				drVerbose=OptionValue[FCVerbose]
 			];
-
-		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
 		];
 
-		finsub = Join[finsub1, FinalSubstitutions /. Options[DiracReduce]];
-		factoring = Factoring /. {ops} /. Options[DiracReduce];
-		diracSimplify = DiracSimplify /. {ops} /. Options[DiracReduce];
 
-		(* do first usual DiracSimplify *)
-		If[	diracSimplify,
-			temp = DiracSimplify[temp, DiracSubstitute67 -> True, DiracSigmaExplicit -> False];
-			FCPrint[2,"DiracSimplify done"];
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
 		];
+
+		FCPrint[1, "DiracReduce. Entering.", FCDoControl->drVerbose];
+		FCPrint[3, "DiracReduce: Entering with ", ex, FCDoControl->drVerbose];
+
+		If[ FreeQ2[ex,DiracHeadsList],
+			Return[ex]
+		];
+
+		tmp = ex /. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2), DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
+
+		If[	OptionValue[DiracGammaCombine],
+			tmp = DiracGammaCombine[tmp,FCI->True]
+		];
+
 		(* Chisholm identity recursively *)
-		temp = Chisholm[temp,FCI->True, DiracSimplify -> diracSimplify]//DiracOrder;
-		FCPrint[2,"Chisholm done"];
-		temp = Expand[temp, DiracGamma];
-		(* introduce DiracSigma *)
-		(* use gamma[m,n, 5] = 1/2 ( eps[m,n,r,s] sig[r,s] + 2 g[m,n] gamma[5] )
-		*)
-		temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]], DiracGamma[5]] :>
-			(un1 = Unique[mU1];
-			un2 = Unique[mU2];
-			Expand[1/2 ( - $LeviCivitaSign Eps[a[xx], b[yy], LorentzIndex[un1],
-			LorentzIndex[un2]](I/2) (FCI[ DiracMatrix[un1, un2] - DiracMatrix[un2, un1]])  +
-			2 Pair[a[xx], b[yy]] DiracGamma[5])]);
-		(* for the renaming of dummy indices *)
-		temp = FCRenameDummyIndices[Contract[temp, Rename-> True]];
-		(* XXX *)
-		temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
-			( -I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]]+Pair[b[yy], a[xx]]);
+		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False];
+		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
+
+		tmp = DiracOrder[tmp, FCI->True];
+		FCPrint[3, "DiracReduce: After DiracOrder: ", tmp, FCDoControl->drVerbose];
+
+		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2];
+		tmp = tmp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :> (-I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]]+Pair[b[yy], a[xx]]);
 
 		If[	diracSimplify,
-			temp = Contract[DiracSimplify[temp, DiracSigmaExplicit -> False]],
-			temp = Contract[temp]
+			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True]
 		];
 
-		temp = Collect2[temp, DiracGamma, Factoring -> factoring];
+		tmp = Collect2[tmp, DiracGamma, Factoring -> factoring];
 		FCPrint[2,"collecting done"];
 
 		(* get the S - part *)
-		spart = Select[temp + n1 + n2, FreeQ[#, DiracGamma]&] /. {n1 :> 0, n2 :> 0};
-		temp = temp - spart;
+		spart = SelectFree[tmp + null1 + null2, DiracGamma] /. null1|null2 :> 0;
+		tmp = tmp - spart;
+
 		If[ factoring === False,
 			spart = Expand[spart] DiracBasis[1],
 			If[ factoring === True,
@@ -102,15 +110,26 @@ DiracReduce[x_, ops___Rule] :=
 				spart = factoring[spart] DiracBasis[1]
 			]
 		];
-		ddb[y__] :=
-			DiracBasis[DOT[y]];
-		res = spart + (temp /. DiracSigma[a__] :> DiracBasis[FCE[DiracSigma[a]]] /.
+
+
+		res = spart + (tmp /. DiracSigma[a__] :> DiracBasis[FCE[DiracSigma[a]]] /.
 								DOT[DiracGamma[a_], DiracGamma[5]] :>
 								DiracBasis[FCE[DOT[DiracGamma[a], DiracGamma[5]]]] /.
 								DiracGamma[a_] :> DiracBasis[FCE[DiracGamma[a]]]);
 		res = res /. finsub /. finsub;
-		res = FCE[res];
-		res = res /. finsub /. finsub;
+
+		If[	OptionValue[DotSimplify],
+			res = DotSimplify[res,FCI->False]
+		];
+
+		If[	OptionValue[Contract],
+			res = Contract[res,FCI->False]
+		];
+
+		If[OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	];
 

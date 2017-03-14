@@ -15,11 +15,11 @@
 
 Tests`Dirac`fcstDiracReduce = {
 
-{"fcstDiracReduce-ID1","DiracReduce[DiracMatrix[mu, nu]]",
+{"fcstDiracReduce-ID1","DiracReduce[DiracMatrix[mu, nu],FCE->True]",
 "(-I)*DiracSigma[GA[mu], GA[nu]] + MT[mu, nu]"},
 {"fcstDiracReduce-ID2","FCI[DiracReduce[DiracMatrix[mu, nu]]]",
 "FCI[(-I)*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[nu]]] + Pair[LorentzIndex[mu], LorentzIndex[nu]]]"},
-{"fcstDiracReduce-ID3","MatchQ[DiracReduce[DiracMatrix[mu, nu, rho]],
+{"fcstDiracReduce-ID3","MatchQ[DiracReduce[DiracMatrix[mu, nu, rho],FCE->True],
 	I*GA[a_].GA[5]*LC[mu, nu, rho, a_] + GA[rho]*MT[mu, nu] -
 	GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]]","True"},
 {"fcstDiracReduce-ID4","MatchQ[FCI[DiracReduce[DiracMatrix[mu, nu, rho]]],
@@ -28,7 +28,7 @@ Tests`Dirac`fcstDiracReduce = {
 	DiracGamma[LorentzIndex[rho]]*Pair[LorentzIndex[mu], LorentzIndex[nu]] -
 	DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[mu], LorentzIndex[rho]] +
 	DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[nu], LorentzIndex[rho]]]","True"},
-{"fcstDiracReduce-ID5","DiracReduce[DiracMatrix[mu, nu, rho, sigma]]","(-I)*GA[5]*LC[mu, nu, rho, sigma] - I*DiracSigma[GA[rho], GA[sigma]]*MT[mu, nu] +
+{"fcstDiracReduce-ID5","DiracReduce[DiracMatrix[mu, nu, rho, sigma],FCE->True]","(-I)*GA[5]*LC[mu, nu, rho, sigma] - I*DiracSigma[GA[rho], GA[sigma]]*MT[mu, nu] +
 I*DiracSigma[GA[nu], GA[sigma]]*MT[mu, rho] - I*DiracSigma[GA[nu], GA[rho]]*MT[mu, sigma] -
 I*DiracSigma[GA[mu], GA[sigma]]*MT[nu, rho] + MT[mu, sigma]*MT[nu, rho] +
 I*DiracSigma[GA[mu], GA[rho]]*MT[nu, sigma] - MT[mu, rho]*MT[nu, sigma] -
@@ -45,13 +45,13 @@ I*DiracSigma[GA[mu], GA[nu]]*MT[rho, sigma] + MT[mu, nu]*MT[rho, sigma]"},
 	Pair[LorentzIndex[rho], LorentzIndex[sigma]]"},
 {"fcstDiracReduce-ID7",
 	"MatchQ[DiracReduce[(SpinorUBar[p, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[p, m]) *
-	(SpinorUBar[k, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[k, m])],
+	(SpinorUBar[k, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[k, m]),DiracSimplify->True,FCE->True],
 	10*Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1]*
 	Spinor[Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1] +
 	6*Spinor[Momentum[k], m, 1].GA[a_].GA[5].Spinor[Momentum[k], m, 1]*
 	Spinor[Momentum[p], m, 1].GA[a_].GA[5].Spinor[Momentum[p], m, 1]]","True"},
 {"fcstDiracReduce-ID8",
-	"MatchQ[$LeviCivitaSign = -I; \n tmp = DiracReduce[GA[i1, i2, 5]] // FCE; \n $LeviCivitaSign = -1; \n
+	"MatchQ[$LeviCivitaSign = -I; \n tmp = DiracReduce[GA[i1, i2, 5],FCE->True]; \n $LeviCivitaSign = -1; \n
 	tmp, 1/2 I DiracSigma[GA[a_], GA[b_]] LC[i1, i2, a_, b_] + GA[5] MT[i1, i2]]","True"},
 {"fcstDiracReduce-ID9",
 	"GA[i0, i, j] // DiracReduce // FCI // EpsChisholm //
@@ -60,8 +60,8 @@ DiracOrder[#, {i0, i, j}] & // FCE","GA[i0].GA[i].GA[j]"},
 	"(GA[i, j, k, l] // DiracReduce //
 FCI) - (GA[i, j, k, l] // Chisholm //
 		ToDiracSigma[#, GA[i], GA[k]] & //
-	   ToDiracSigma[#, GA[i], GA[j]] & //
-	  ToDiracSigma[#, GA[i], GA[l]] & // Expand // DiracOrder //
+	ToDiracSigma[#, GA[i], GA[j]] & //
+	ToDiracSigma[#, GA[i], GA[l]] & // Expand // DiracOrder //
 Chisholm[#, Mode -> 2] &)","0"}
 
 }
