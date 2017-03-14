@@ -155,11 +155,6 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			];
 		];
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		FCPrint[1, "DiracSimplify: Entering.", FCDoControl->dsVerbose];
 		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
 
