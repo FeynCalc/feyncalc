@@ -57,7 +57,7 @@ rulesFV = {
 		CPair[a, CMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
 
 	(n3_. CPair[a_CIndex, CMomentum[x_, dim_:3]] + n3_. CPair[a_CIndex, CMomentum[y_, dim_:3]]):>
-		n3 CPair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
+		n3 CPair[a, CMomentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
 
 	(n3_. TPair[TIndex[], TMomentum[x_]] + n4_. TRair[TIndex[], TMomentum[y_]]):>
 		TPair[TIndex[], TMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]),

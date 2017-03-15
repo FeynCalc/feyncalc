@@ -41,7 +41,12 @@ CPair[CMomentum[a], CMomentum[b]] +
 CPair[CMomentum[a], CMomentum[c]]]", "CPair[CMomentum[a], CMomentum[b + c]]"},
 {"fcstMomentumCombine-ID14","MomentumCombine[
 CPair[CMomentum[a], CMomentum[b]] +
-CPair[CMomentum[a], CMomentum[c]], SP -> False]", "CPair[CMomentum[a], CMomentum[b]] + CPair[CMomentum[a], CMomentum[c]]"}
+CPair[CMomentum[a], CMomentum[c]], SP -> False]", "CPair[CMomentum[a], CMomentum[b]] + CPair[CMomentum[a], CMomentum[c]]"},
+{"fcstMomentumCombine-ID15","FCE[MomentumCombine[
+CPair[CIndex[i], CMomentum[q1]] c1 +
+CPair[CIndex[i], CMomentum[q2]] c1 +
+CPair[CIndex[i], CMomentum[q2]] +
+CPair[CIndex[i], CMomentum[q1]] ]]", "CV[q1 + q2, i] + c1 CV[q1 + q2, i]"}
 };
 
 
