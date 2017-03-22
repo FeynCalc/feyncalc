@@ -527,6 +527,11 @@ SMP[]=
 		{SMP /@ li, li} // Transpose
 	];
 
+SMP /:
+	Conjugate[SMP[a_, Complex[0,1]]] := SMP[{a, -I}];
+
+SMP /:
+	Conjugate[SMP[a_, Complex[0,-1]]] := SMP[{a, I}];
 
 SMP[{x__}]:=
 	SMP[x];
@@ -540,7 +545,7 @@ AlphaStrong:=
 AlphaFS:=
 	SMP["alpha_fs"];
 
-SetAttributes[SMP, Protected]
+SetAttributes[SMP, Protected];
 
 FCPrint[1,"SMP.m loaded."];
 End[]

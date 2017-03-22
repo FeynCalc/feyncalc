@@ -55,7 +55,16 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 			FCGV["MB"] -> SMP["m_b"],
 			FCGV["MH"] -> SMP["m_H"],
 			FCGV["MW"] -> SMP["m_W"],
-			FCGV["MZ"] -> SMP["m_Z"]
+			FCGV["MZ"] -> SMP["m_Z"],
+			HoldPattern[FeynArts`CKM[1,1]] -> SMP["V_ud",I],
+			HoldPattern[FeynArts`CKM[1,2]] -> SMP["V_us",I],
+			HoldPattern[FeynArts`CKM[1,3]] -> SMP["V_ub",I],
+			HoldPattern[FeynArts`CKM[2,1]] -> SMP["V_cd",I],
+			HoldPattern[FeynArts`CKM[2,2]] -> SMP["V_cs",I],
+			HoldPattern[FeynArts`CKM[2,3]] -> SMP["V_cb",I],
+			HoldPattern[FeynArts`CKM[3,1]] -> SMP["V_td",I],
+			HoldPattern[FeynArts`CKM[3,2]] -> SMP["V_ts",I],
+			HoldPattern[FeynArts`CKM[3,3]] -> SMP["V_tb",I]
 		};
 
 
