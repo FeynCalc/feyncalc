@@ -28,7 +28,7 @@ End[]
 
 Begin["`SetMandelstam`Private`"]
 
-Options[SetMandelstam] = {Dimension -> {4, D, ___}};
+Options[SetMandelstam] = {Dimension -> {4, D}};
 
 (*sma*)
 small2/: small2[x_]^n_ := small2[x^2] /; n > 0;
@@ -83,7 +83,7 @@ SetMandelstam[s_,t_,u_,p1_,p2_,p3_,p4_,m1_,m2_,m3_,m4_,opt___Rule] :=
 			settemp = settemp//ExpandScalarProduct;
 			settemp = settemp//Expand;
 			settemp = Union[settemp, FeynCalcExternal[settemp]];
-(* want also for 4 or D dimensions to set SP[p,p] = ... etc. *)
+			(* want also for 4 or D dimensions to set SP[p,p] = ... etc. *)
 			setvars = Cases2[settemp, {Pair, SP, SPD}];
 			If[ Complement[Head/@setvars,{Pair, SP, SPD}] === {},
 				sol = Solve[ settemp,setvars ]/.Rule->setit
@@ -104,21 +104,22 @@ SetMandelstam[x_, pl_List, ml_List, opt___?OptionQ] :=
 		oldmem = $MemoryAvailable;
 		$MemoryAvailable = 0;
 		dims = Flatten[{Dimension /. {opt} /. Options[SetMandelstam]}];
+		If[ Head[dims] =!= List,
+			dims = { dims }
+		];
 		ppl = #/NumericalFactor[#] & /@ pl;
 (*
 		Table[ setdel[ Momentum[ppl[[ij]], _Symbol], Momentum[ppl[[ij]]] ],
 						{ij, Length[ppl]} ] /. setdel -> SetDelayed;
 *)
-		settemp = Join[ Table[scalarproduct[pl[[i]], pl[[i]]] == ml[[i]]^2,
-													{i,1,n}],
-										Table[scalarproduct[pl[[j]], pl[[j+1]]] ==
-									sma[1/2 x[j,j+1] - 1/2 ml[[j]]^2 - 1/2 ml[[j+1]]^2],
-													{j,1,n-1}],
-									{scalarproduct[ pl[[1]],pl[[n]] ] ==
-									sma[1/2 x[1,n] - 1/2 ml[[1]]^2 - 1/2 ml[[n]]^2]}
-									]//ExpandScalarProduct//Expand;
+		settemp = Join[ Table[scalarproduct[pl[[i]], pl[[i]]] == ml[[i]]^2, {i,1,n}],
+						Table[scalarproduct[pl[[j]], pl[[j+1]]] == sma[1/2 x[j,j+1] - 1/2 ml[[j]]^2 - 1/2 ml[[j+1]]^2], {j,1,n-1}],
+						{scalarproduct[ pl[[1]],pl[[n]] ] == sma[1/2 x[1,n] - 1/2 ml[[1]]^2 - 1/2 ml[[n]]^2]}]//ExpandScalarProduct//Expand;
+
 		setvars = Cases[settemp, _Pair, -1];
-		settemp = Union[Join@@Map[ChangeDimension[settemp, #]&, dims]];
+
+		settemp = Union[Join@@(Map[ChangeDimension[settemp, #]&, dims])];
+
 		settemp = Union[Join[settemp, FeynCalcExternal[settemp]]];
 		setvars = Union[Join@@Map[ChangeDimension[setvars, #]&, dims]];
 		setvars = Union[Join[setvars, FeynCalcExternal[setvars]]];
@@ -126,41 +127,42 @@ SetMandelstam[x_, pl_List, ml_List, opt___?OptionQ] :=
 		sq2[y_] :=
 			scalarproduct[y, y]//ExpandScalarProduct//Expand;
 		pkl = {};
+
 		For[ k = 1, k<=n, k++,
-				For[ l = k+1, l<= n, l++,
-							npk = scalarproduct[ pl[[k]], pl[[l]] ]//ExpandScalarProduct;
-							If[ (Head[npk] === Pair) || (Head[-npk]=== Pair),
-								AppendTo[pkl,{pl[[k]], pl[[l]]}]
-							]
-						]
-			];
+			For[	l = k+1, l<= n, l++,
+					npk = scalarproduct[ pl[[k]], pl[[l]] ]//ExpandScalarProduct;
+					If[	(Head[npk] === Pair) || (Head[-npk]=== Pair),
+						AppendTo[pkl,{pl[[k]], pl[[l]]}]
+					]
+			]
+		];
+
 		psu = Plus@@pl;
 		enm[a_] :=
-			Expand[ - Apply[ Plus, Drop[pl,{a,a}] ]  ];
-	(* p46 *)
+			Expand[- Apply[Plus, Drop[pl,{a,a}]]];
+
 		Do[
 			eqq = {sq2[psu] == 0};
-			eqq = Join[ eqq, Table[ sq2[pl[[ii]] +  pl[[n]]] -
-															sq2[enm[ii] + pl[[n]]] ==0 , {ii, 2,n-3}]
+			eqq = Join[ eqq, Table[ sq2[pl[[ii]] +  pl[[n]]] - sq2[enm[ii] + pl[[n]]] ==0 , {ii, 2,n-3}]
 								];
 			For[ j1 = 1, j1<n-2, j1++,
-					For[ j2 = j1 + 2, j2<n, j2++,
-								If[ EvenQ[j2-j1],
-									AppendTo[ eqq, sq2[pl[[j1]] + pl[[j2]]] -
-																sq2[pl[[j1]] + enm[j2] ] ==0
-													],
-									AppendTo[ eqq, sq2[pl[[j1]] + pl[[j2]]] -
-																sq2[enm[j1]  + pl[[j2]]] ==0
-													]
-								]    ]   ];
+				For[ j2 = j1 + 2, j2<n, j2++,
+					If[ EvenQ[j2-j1],
+						AppendTo[ eqq, sq2[pl[[j1]] + pl[[j2]]] - sq2[pl[[j1]] + enm[j2] ] == 0],
+						AppendTo[ eqq, sq2[pl[[j1]] + pl[[j2]]] - sq2[enm[j1]  + pl[[j2]]] == 0]
+					]
+				]
+			];
 			var =  ExpandScalarProduct[scalarproduct@@#&/@pkl];
 			var = Select[ Variables[var], Head[#]===Pair&];
+
 			If[ Length[dims]>0,
 				eqq = Union[Join@@Map[ChangeDimension[eqq, #]&, dims]];
 				eqq = Union[Join[eqq, FeynCalcExternal[eqq]]];
 				var = Union[Join@@Map[ChangeDimension[var, #]&, dims]];
 				var = Union[Join[var, FeynCalcExternal[var]]];
 			];
+
 			If[ Length[var] > 0,
 				nsol = Solve[ eqq, var ];
 				nsol = nsol /. Rule -> setit
