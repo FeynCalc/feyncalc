@@ -18,6 +18,7 @@ among PairContract3's.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
 End[]
 
 Begin["`PairContract`Private`"]
@@ -85,9 +86,6 @@ PairContract3/:
 Options[PairContract] = {Factoring -> False};
 
 SetAttributes@@{{PairContract,sceins,scev,sce,scevdoit,sczwei} ,Orderless};
-
-scev[x_,y_] :=
-	MemSet[ scev[x,y], scevdoit[x,y] ];
 
 scev[x_,y_] :=
 	scevdoit[x,y];
@@ -210,25 +208,21 @@ sczwei[ v_[x_,di_Symbol-4],w_[y_,di_Symbol] ] :=
 	sczwei[v[x, di-4], w[y, di-4]];
 sczwei[ w_[y_,_Symbol],v_[x_] ] :=
 	sczwei[ v[x],w[y] ];
+
 sce[x_,y_] :=
-	MemSet[sce[x, y],      (*scedef*)
-				If[ (Factoring /. Options[PairContract]) === True,
-					Factor2[
-					Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])
-										]/.sceins->sczwei/.sczwei->Pair
-								],
-					Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])
-									]/.sceins->sczwei/.sczwei->Pair
-				]   ];
+	If[ (Factoring /. Options[PairContract]) === True,
+		Factor2[Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])]/.sceins->sczwei/.sczwei->Pair],
+				Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ]) ]/.sceins->sczwei/.sczwei->Pair
+	];
+
 PairContract[x_,y_] :=
-	MemSet[ PairContract[x,y],
-						Block[ {sCOt = sce[x,y]},
-							If[ FreeQ[ sCOt, Pair ] ||
-										(Head[sCOt]=!=Plus),
-								sCOt,
-								Pair[x,y]
-							]
-						] ]/;FreeQ2[{x,y},{LorentzIndex,CIndex}];
+	Block[ {sCOt = sce[x,y]},
+		If[ FreeQ[ sCOt, Pair ] || (Head[sCOt]=!=Plus),
+			sCOt,
+			Pair[x,y]
+		]
+	]/;FreeQ2[{x,y},{LorentzIndex,CIndex}];
+
 
 FCPrint[1,"PairContract.m loaded."];
 End[]
