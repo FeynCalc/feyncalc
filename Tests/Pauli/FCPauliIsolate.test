@@ -1,0 +1,79 @@
+
+
+(* :Title: FCPauliIsolate.test                                                  *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCPauliIsolate               *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstFCPauliIsolate =
+({
+{"fcstFCPauiliIsolate-ID1", "FCPauliIsolate[1]", "1"},
+{"fcstFCPauiliIsolate-ID2", "FCPauliIsolate[0]", "0"},
+{"fcstFCPauiliIsolate-ID3", "FCPauliIsolate[xx+yy]", "xx + yy"},
+{"fcstFCPauiliIsolate-ID4", "FCPauliIsolate[SI[i]]",
+"FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
+{"fcstFCPauiliIsolate-ID5", "FCPauliIsolate[SI[i]+xx]",
+"xx + FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
+{"fcstFCPauiliIsolate-ID6", "FCPauliIsolate[yy SI[i]+xx]",
+"xx + yy*FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
+{"fcstFCPauiliIsolate-ID7",
+"FCPauliIsolate[yy SI[i]+xx PauliXi[-I].SIS[p].PauliEta[I]]",
+"xx*FCGV[\"PauliChain\"][PauliXi[-I] . PauliSigma[Momentum[p]] . \
+PauliEta[I]] + \
+yy*FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
+{"fcstFCPauiliIsolate-ID8",
+"FCPauliIsolate[yy SI[i]+xx \
+PauliXi[-I].SIS[p].PauliEta[I].PauliEta[-I].SIS[p2].PauliXi[I],\
+PauliSigma\[Rule]False]",
+"xx*PauliEta[-I] . PauliSigma[Momentum[p2]] . \
+PauliXi[I]*PauliXi[-I] . PauliSigma[Momentum[p]] . PauliEta[I] + \
+yy*PauliSigma[LorentzIndex[i]]"},
+{"fcstFCPauiliIsolate-ID9",
+"FCPauliIsolate[yy SI[i]+xx \
+PauliXi[-I].SIS[p].PauliEta[I].PauliEta[-I].SIS[p2].PauliXi[I]]",
+"xx*FCGV[\"PauliChain\"][PauliEta[-I] . PauliSigma[Momentum[p2]] . \
+PauliXi[I]]*FCGV[\"PauliChain\"][PauliXi[-I] . \
+PauliSigma[Momentum[p]] . PauliEta[I]] + \
+yy*FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
+{"fcstFCPauiliIsolate-ID10",
+"FCPauliIsolate[yy SI[i]+xx \
+PauliXi[-I].SIS[p].PauliEta[I].PauliEta[-I].SIS[p2].PauliXi[I],\
+Split->False]",
+"xx*FCGV[\"PauliChain\"][PauliXi[-I] . PauliSigma[Momentum[p]] . \
+PauliEta[I] . PauliEta[-I] . PauliSigma[Momentum[p2]] . PauliXi[I]] + \
+yy*FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
+{"fcstFCPauiliIsolate-ID11",
+"FCPauliIsolate[SI[i,j,k]SI[l,m,n],Split\[Rule]False]",
+"FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]] . \
+PauliSigma[LorentzIndex[j]] . \
+PauliSigma[LorentzIndex[k]]*PauliSigma[LorentzIndex[l]] . \
+PauliSigma[LorentzIndex[m]] . PauliSigma[LorentzIndex[n]]]"},
+{"fcstFCPauiliIsolate-ID12", "FCPauliIsolate[SI[i,j,k]SI[l,m,n]]",
+"FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]] . \
+PauliSigma[LorentzIndex[j]] . \
+PauliSigma[LorentzIndex[k]]]*FCGV[\"PauliChain\"][PauliSigma[\
+LorentzIndex[l]] . PauliSigma[LorentzIndex[m]] . \
+PauliSigma[LorentzIndex[n]]]"},
+{"fcstFCPauiliIsolate-ID13",
+"FCPauliIsolate[SI[nu].(SIS[p] + SIS[q] + SIS[k] + m).SI[mu], Head \
+-> dch]//FCE", "dch[SI[nu] . (m + SIS[k + p + q]) . SI[mu]]"},
+{"fcstFCPauiliIsolate-ID14",
+"FCPauliIsolate[PauliXi[-I].SI[i].PauliXi[I].PauliEta[-I].SI[i].\
+PauliEta[I], Head -> dch] // FCE",
+"dch[PauliEta[-I] . SI[i] . PauliEta[I]]*dch[PauliXi[-I] . SI[i] . \
+PauliXi[I]]"},
+{"fcstFCPauiliIsolate-ID15",
+"FCPauliIsolate[MT[mu, nu] SI[i, j, k] + SIS[p, l] + MT[mu, nu] \
+SI[mu, j, k],LorentzIndex -> False, Head -> dch] // FCE",
+"dch[SIS[p] . SIS[l]] + dch[SI[i] . SI[j] . SI[k]]*MT[mu, nu] + \
+dch[SI[mu] . SI[j] . SI[k]]*MT[mu, nu]"}
+});
+
