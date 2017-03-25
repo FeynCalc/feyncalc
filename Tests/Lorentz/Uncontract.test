@@ -187,5 +187,7 @@ CVD[l, $AL[a_]] CVD[l, $AL[b_]] KDD[$AL[a_], $AL[b_]]]", "True"},
 "MatchQ[Uncontract[GSD[l, q, l], l, FCE -> True],GAD[b_].GSD[q].GAD[a_] FVD[l, b_] FVD[l, a_]]", "True"},
 {"fcstUncontract-ID56",
 "MatchQ[Uncontract[SP[q, p]^2 GS[r1].GA[mu].GS[r2], All, Pair -> All, FCE -> True],
-GA[b_].GA[mu].GA[a_] FV[p, c_] FV[p, d_] FV[q, c_] FV[q, d_] FV[r1, b_] FV[r2, a_]]", "True"}
+GA[b_].GA[mu].GA[a_] FV[p, c_] FV[p, d_] FV[q, c_] FV[q, d_] FV[r1, b_] FV[r2, a_]]", "True"},
+{"fcstUncontract-ID55",
+"Uncontract[aaa, All]", "aaa"}
 });

@@ -77,7 +77,10 @@ Uncontract[ex_, All, opts:OptionsPattern[]] :=
 		moms = Cases[(exp + null1+null2)/. _FeynAmpDenominator :> Unique[], (Momentum | CMomentum)[z_, ___] :> z, Infinity] // DeleteDuplicates // Sort;
 		FCPrint[1, "Uncontract: List of momenta:", moms , FCDoControl->ucVerbose];
 
-		res = Uncontract[exp, Sequence@@moms, FCI->True ,opts];
+		If[	moms=!={},
+			res = Uncontract[exp, Sequence@@moms, FCI->True ,opts],
+			res = exp
+		];
 
 		FCPrint[1, "Uncontract: Leaving Uncontract for all momenta.", FCDoControl->ucVerbose];
 
