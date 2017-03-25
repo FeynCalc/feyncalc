@@ -427,8 +427,8 @@ Tests`Shared`fcstSharedObjectsBehaviorDiracGamma =
 
 Tests`Shared`fcstSharedObjectsBehaviorEps =
 ({
-{"fcstSharedObjectsBehaviorEps-ID1", "Head[Eps[0, 1, 2, 3]]", "Eps"},
-{"fcstSharedObjectsBehaviorEps-ID2", "Head[Eps[0,1,3,2]]", "Eps"},
+{"fcstSharedObjectsBehaviorEps-ID1", "Eps[0, 1, 2, 3]", "0"},
+{"fcstSharedObjectsBehaviorEps-ID2", "Eps[0,1,3,2]", "0"},
 {"fcstSharedObjectsBehaviorEps-ID3", "Eps[a,b,a]", "0"},
 {"fcstSharedObjectsBehaviorEps-ID4", "Eps[a,CMomentum[p,D-4],b,c]",
 "0"},
@@ -462,7 +462,9 @@ TIndex[]]","-Eps[CMomentum[p1, -1 + D], CMomentum[p2, -1 + D],
 CMomentum[p3, -1 + D]]"},
 {"fcstSharedObjectsBehaviorEps-ID18", "Eps[Momentum[p1], Momentum[p2], Momentum[p3], TIndex[]]","Eps[CMomentum[p1], CMomentum[p2], CMomentum[p3]]"},
 {"fcstSharedObjectsBehaviorEps-ID19", "Eps[Momentum[p1, D], Momentum[p2, D], Momentum[p3, D], TIndex[]]","Eps[CMomentum[p1, -1 + D], CMomentum[p2, -1 + D],
-CMomentum[p3, -1 + D]]"}
+CMomentum[p3, -1 + D]]"},
+{"fcstSharedObjectsBehaviorEps-ID20", "Eps[LorentzIndex[i1], 0, LorentzIndex[i2], LorentzIndex[i3]]", "0"},
+{"fcstSharedObjectsBehaviorEps-ID21", "Eps[0, CMomentum[x], CMomentum[y]]", "0"}
 })
 
 Tests`Shared`fcstSharedObjectsBehaviorPauliSigma =

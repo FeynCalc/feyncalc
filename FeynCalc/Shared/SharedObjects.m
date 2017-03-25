@@ -1276,6 +1276,9 @@ DiracSlash[x_?NumberQ, OptionsPattern[]] :=
 
 DiracSpinor = Spinor;
 
+Eps[___, 0, ___]:=
+	0;
+
 Eps[x__] :=
 	0/; Signature[{x}]===0 && FCPatternFreeQ[{x}];
 
