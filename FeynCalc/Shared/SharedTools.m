@@ -192,7 +192,8 @@ Options[SelectSplit] = {
 
 
 Options[FCFactorOut] = {
-	Factoring -> Simplify
+	Factoring -> Simplify,
+	Head -> Identity
 };
 
 
@@ -331,7 +332,7 @@ FCAntiSymmetrize[x_,v_List] :=
 	];
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
-	pref OptionValue[Factoring][expr/pref];
+	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
 
 
 FCPatternFreeQ[expr_List]:=

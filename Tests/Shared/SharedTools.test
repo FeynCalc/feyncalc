@@ -319,5 +319,7 @@ Tests`Shared`fcstSharedToolsFCFactorOut = {
 {"fcstSharedToolsFCFactorOut-ID2","FCFactorOut[0, 1]",
 	"0"},
 {"fcstSharedToolsFCFactorOut-ID3","FCFactorOut[(a + 3 b), 3 b]",
-	"3 (1 + a/(3 b)) b"}
+	"3 (1 + a/(3 b)) b"},
+{"fcstSharedToolsFCFactorOut-ID4","FCFactorOut[(a + 3 b), 3 b, Head -> head]",
+	"3 b head[1 + a/(3 b)]"}
 };
