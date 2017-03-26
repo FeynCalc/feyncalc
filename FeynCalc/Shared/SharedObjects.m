@@ -1245,7 +1245,7 @@ DiracSigma[___, 0, ___] =
 	0;
 
 DiracSigma[a_, b_] :=
-	-DiracSigma[b, a] /; !OrderedQ[{a,b}];
+	-DiracSigma[b, a] /; !OrderedQ[{a,b}] && FCPatternFreeQ[{a,b}];
 
 DiracSigma[DiracMatrix[a_, b_]] :=
 	-DiracSigma[DiracMatrix[b, a]] /; !OrderedQ[{a,b}];
