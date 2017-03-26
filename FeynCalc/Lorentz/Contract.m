@@ -328,9 +328,15 @@ Contract[expr_, z:OptionsPattern[]] :=
 		FCPrint[3, "Contract: Other terms: ", rest1, FCDoControl->cnVerbose];
 
 		If[!FreeQ[tmp,PairContract],
-			FCPrint[1,"Contract: Replacing PairContract with Contract.", FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: Replacing PairContract with Pair.", FCDoControl->cnVerbose];
 			rest1 = rest1 /. PairContract -> Pair;
 			tmp = tmp /. PairContract -> Pair;
+		];
+
+		If[!FreeQ[tmp,CPairContract],
+			FCPrint[1,"Contract: Replacing CPairContract with CPair.", FCDoControl->cnVerbose];
+			rest1 = rest1 /. CPairContract -> CPair;
+			tmp = tmp /. CPairContract -> CPair;
 		];
 
 		time=AbsoluteTime[];
@@ -565,11 +571,19 @@ Contract[expr_, z:OptionsPattern[]] :=
 			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
+		If[	!FreeQ[tmpFin,Pair],
+			time=AbsoluteTime[];
+			FCPrint[1,"Contract: Applying PairContract.", FCDoControl->cnVerbose];
+			tmpFin = tmpFin /. Pair->PairContract3 /. PairContract3 -> PairContract /.PairContract->Pair;
+			FCPrint[1,"Contract: PairContract done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		];
 
-		time=AbsoluteTime[];
-		FCPrint[1,"Contract: Applying PairContract.", FCDoControl->cnVerbose];
-		tmpFin = tmpFin /. Pair->PairContract3 /. PairContract3 -> PairContract /.PairContract->Pair;
-		FCPrint[1,"Contract: PairContract done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		If[	!FreeQ[tmpFin,CPair],
+			time=AbsoluteTime[];
+			FCPrint[1,"Contract: Applying CPairContract.", FCDoControl->cnVerbose];
+			tmpFin = tmpFin /. CPair-> CPairContract /. CPairContract -> CPair;
+			FCPrint[1,"Contract: CPairContract done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		];
 
 		(*Here we can unite the two*)
 		tmpFin = tmpFin + noDummy;

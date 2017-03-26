@@ -358,7 +358,24 @@ Pair[Momentum[q], LorentzIndex[Lower[mu]]]]","Pair[Momentum[p], Momentum[q]]"},
 
 {"fcstContractContractionsNR-ID6","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]]
 Pair[Momentum[p], LorentzIndex[Lower[mu]]]]","Pair[Momentum[p], Momentum[p]]"}
+};
 
+
+Tests`Lorentz`fcstContractCartesian = {
+{"fcstContractCartesian-ID1","FCE[Contract[FVD[v1, mu] FVD[v2, nu] Pair[LorentzIndex[mu], CIndex[i]] Pair[ LorentzIndex[nu], CIndex[i]]]]","CSP[v1, v2]"},
+{"fcstContractCartesian-ID2","Contract[3 +I CLC[i, j,aa] (CSI[j] KD[i, aa] + I CLC[aa, i, bb] (I CLC[bb, j, cc] CSI[cc] + KD[j, bb]))]","-3"}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
