@@ -1,0 +1,67 @@
+
+
+(* :Title: PauliTrick.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliTrick			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliTrick =
+({
+{"fcstPauliTrick-ID1", "PauliTrick[0]", "0"},
+{"fcstPauliTrick-ID2", "PauliTrick[a]", "a"},
+{"fcstPauliTrick-ID3", "PauliTrick[SI[mu,mu]]", "-2"},
+{"fcstPauliTrick-ID4", "PauliTrick[CSI[i,i]]", "3"},
+{"fcstPauliTrick-ID5", "PauliTrick[SID[mu,mu]]", "2 - D"},
+{"fcstPauliTrick-ID6", "PauliTrick[CSID[i,i]]", "-1 + D"},
+{"fcstPauliTrick-ID7", "PauliTrick[SIE[mu,mu]]", "4 - D"},
+{"fcstPauliTrick-ID8", "PauliTrick[CSIE[i,i]]", "-4 + D"},
+{"fcstPauliTrick-ID9", "PauliTrick[SIS[p,p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPauliTrick-ID10", "PauliTrick[CSIS[p,p]]",
+"CPair[CMomentum[p], CMomentum[p]]"},
+{"fcstPauliTrick-ID11", "PauliTrick[SISD[p,p]]",
+"Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstPauliTrick-ID12", "PauliTrick[CSISD[p,p]]",
+"CPair[CMomentum[p, -1 + D], CMomentum[p, -1 + D]]"},
+{"fcstPauliTrick-ID13", "PauliTrick[SISE[p,p]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPauliTrick-ID14", "PauliTrick[CSISE[p,p]]",
+"CPair[CMomentum[p, -4 + D], CMomentum[p, -4 + D]]"},
+{"fcstPauliTrick-ID15",
+"MatchQ[PauliTrick[CSI[i,j]]//Contract,\[IndentingNewLine]CPair[\
+CIndex[i],CIndex[j]]+\[ImaginaryI] \
+Eps[CIndex[i],CIndex[j],CIndex[a_]] PauliSigma[CIndex[a_]]]",
+"True"},
+{"fcstPauliTrick-ID16", "PauliTrick[CSI[i,j,i,j]]//Contract",
+"-3"},
+{"fcstPauliTrick-ID17", "PauliTrick[CSI[i,j,i]]//Contract",
+"-PauliSigma[CIndex[j]]"},
+{"fcstPauliTrick-ID18",
+"PauliTrick[CSIS[p1].CSI[i].CSIS[p2]]//Contract",
+"(-I)*Eps[CIndex[i], CMomentum[p1], CMomentum[p2]] - \
+CPair[CMomentum[p1], CMomentum[p2]]*PauliSigma[CIndex[i]] + \
+CPair[CIndex[i], CMomentum[p2]]*PauliSigma[CMomentum[p1]] + \
+CPair[CIndex[i], CMomentum[p1]]*PauliSigma[CMomentum[p2]]"},
+{"fcstPauliTrick-ID19", "PauliTrick[CSI[a,i,b]]//Contract",
+"(-I)*Eps[CIndex[a], CIndex[b], CIndex[i]] + CPair[CIndex[b], \
+CIndex[i]]*PauliSigma[CIndex[a]] + CPair[CIndex[a], \
+CIndex[i]]*PauliSigma[CIndex[b]] - CPair[CIndex[a], \
+CIndex[b]]*PauliSigma[CIndex[i]]"},
+{"fcstPauliTrick-ID20",
+"MatchQ[FCSetPauliSigmaScheme[\"Naive\"]; PauliTrick[CSID[i,j]],\
+\[IndentingNewLine]CPair[CIndex[i,-1+D],CIndex[j,-1+D]]+\[ImaginaryI] \
+Eps[CIndex[i,-1+D],CIndex[j,-1+D],CIndex[a_,-1+D]] \
+PauliSigma[CIndex[a_,D-1],D-1]]", "True"},
+{"fcstPauliTrick-ID21",
+"FCSetPauliSigmaScheme[\"None\"]; PauliTrick[CSID[i,j]]",
+"PauliSigma[CIndex[i, -1 + D], -1 + D] . PauliSigma[CIndex[j, -1 + \
+D], -1 + D]"}
+});

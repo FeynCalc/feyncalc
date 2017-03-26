@@ -366,6 +366,25 @@ FCDeclareHeader::usage =
 objects inside an .m file in the same manner as it is done in
 the JLink package. It may be used by FeynCalc addons."
 
+FCSetPauliSigmaScheme::usage =
+"FCSetPauliSigmaScheme[\"scheme\"] allows you to specify how Pauli matrices \
+will be handled in D-1 dimensions. This is mainly related to \
+the commutator of two Pauli matrices, which involves Levi-Civita \
+tensor. The latter is not a well-defined quantity in D-1 dimensions. \
+Following schemes are supported: \
+
+\"None\" - This is the default value. The anticommutator relation is not \
+applied to D-1 dimensional Pauli matrices.
+
+\"Naive\" - Naively apply the commutator relation in D-1-dimensions, i.e. \
+SID[i,j]-SID[i,j] = 2 i CLCD[i,j,k] SID[k]. The Levi-Civita tensor lives \
+in D-1-dimensions, so that a contraction of two such tensors which have all \
+indices in common yields (D-3) (D-2) (D-1)."
+
+FCGetPauliSigmaScheme::usage =
+"FCGetPauliSigmaScheme[] shows currently used scheme for handling Pauli
+matrices in D-1 dimensions.";
+
 Begin["`Private`"]
 
 TarcerDialogText = "TARCER*.mx file not found or damaged. Creating a new \
@@ -488,6 +507,19 @@ Options[FCPrint] = {
 
 FeynCalc`Package`MetricT = 1;
 FeynCalc`Package`MetricS = -1;
+FeynCalc`Package`PauliSigmaScheme = "None";
+
+
+FCSetPauliSigmaScheme[s_String]:=
+	If[	MatchQ[s,"None"|"Naive"],
+		FeynCalc`Package`PauliSigmaScheme = s,
+		Message[SharedObjects::failmsg, "Unknown scheme for Pauli matrices in D-1 dimensions."];
+		Abort[]
+	];
+
+
+FCGetPauliSigmaScheme[]:=
+	FeynCalc`Package`PauliSigmaScheme;
 
 FCSetMetricSignature[{t_Integer,s_Integer}]:=
 	(
@@ -498,6 +530,7 @@ FCSetMetricSignature[{t_Integer,s_Integer}]:=
 	FeynCalc`Package`MetricT = t;
 	FeynCalc`Package`MetricS = s;
 	);
+
 
 FCGetMetricSignature[]:=
 	{FeynCalc`Package`MetricT,FeynCalc`Package`MetricS};
