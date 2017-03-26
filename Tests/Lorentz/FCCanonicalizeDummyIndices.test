@@ -109,5 +109,12 @@ CV[p, j] CV[q, j] FV[p, j] FV[q, j], FCE -> True],
 {"fcstFCCanonicalizeDummyIndices-ID18","MatchQ[FCCanonicalizeDummyIndices[
 FV[p, i] FV[p, i] CV[p, i] CV[p, i] +
 CV[p, j] CV[p, j] FV[p, j] FV[p, j], FCE -> True],
-2 CV[p, a_]^2 FV[p, b_]^2]","True"}
+2 CV[p, a_]^2 FV[p, b_]^2]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID19","MatchQ[FCCanonicalizeDummyIndices[SUNT[a, a].GA[i].(GS[p] + m).GA[i],
+DotSimplify -> False, Head -> {SUNIndex}, FCE -> True],
+SUNT[a_].SUNT[a_].GA[i].(m + GS[p]).GA[i]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID20","MatchQ[FCCanonicalizeDummyIndices[
+SUNT[a, a].CGA[i].(CGS[p] + m).CGA[i], DotSimplify -> False,
+Head -> {SUNIndex}, FCE -> True],
+SUNT[a_].SUNT[a_].CGA[i].(m + CGS[p]).CGA[i]]","True"}
 });

@@ -169,54 +169,60 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 
 		(* Lorentz indices *)
+		If[	!FreeQ[indhead,LorentzIndex],
+			If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
+				(* only for particular momenta *)
+				indexExtract = Map[Cases[#, _[a___, LorentzIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity]&, uniqueExpressions],
+				(* for all momenta *)
+				indexExtract = Map[Cases[#, LorentzIndex[y__]/; MemberQ[finalList,LorentzIndex[y]], Infinity]&, uniqueExpressions]
+			];
 
-		If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
-			(* only for particular momenta *)
-			indexExtract = Map[Cases[#, _[a___, LorentzIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,LorentzIndex[y]]:> LorentzIndex[y], Infinity]&, uniqueExpressions],
-			(* for all momenta *)
-			indexExtract = Map[Cases[#, LorentzIndex[y__]/; MemberQ[finalList,LorentzIndex[y]], Infinity]&, uniqueExpressions]
+			indexExtract = DeleteDuplicates/@indexExtract;
+
+			FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Lorentz indices: ", indexExtract, FCDoControl->canodummyVerbose];
+
+			If[	!MatchQ[indexExtract, {{___LorentzIndex} ...}],
+					Message[FCCanonicalizeDummyIndices::failmsg,
+					"Failed to  properly extract dummy Lorentz indices."];
+					FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
+					Abort[]
+			];
+
+			repIndexListLor = Map[Function[x, MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2, seedLor],
+					(#1 /.LorentzIndex[_, dim_: 4] :> dim)]] &,x]][#] &, indexExtract],
+
+			repIndexListLor=Sequence[];
 		];
-
-		indexExtract = DeleteDuplicates/@indexExtract;
-
-		FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Lorentz indices: ", indexExtract, FCDoControl->canodummyVerbose];
-
-		If[	!MatchQ[indexExtract, {{___LorentzIndex} ...}],
-				Message[FCCanonicalizeDummyIndices::failmsg,
-				"Failed to  properly extract dummy Lorentz indices."];
-				FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
-				Abort[]
-		];
-
-		repIndexListLor = Map[Function[x, MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2, seedLor],
-				(#1 /.LorentzIndex[_, dim_: 4] :> dim)]] &,x]][#] &, indexExtract];
 
 		(* Cartesian indices *)
+		If[	!FreeQ[indhead,CIndex],
+			If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
+				(* only for particular momenta *)
+				indexExtract = Map[Cases[#, _[a___, CIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,CIndex[y]]:> CIndex[y], Infinity]&, uniqueExpressions],
+				(* for all momenta *)
+				indexExtract = Map[Cases[#, CIndex[y__]/; MemberQ[finalList,CIndex[y]], Infinity]&, uniqueExpressions]
+			];
 
-		If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
-			(* only for particular momenta *)
-			indexExtract = Map[Cases[#, _[a___, CIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,CIndex[y]]:> CIndex[y], Infinity]&, uniqueExpressions],
-			(* for all momenta *)
-			indexExtract = Map[Cases[#, CIndex[y__]/; MemberQ[finalList,CIndex[y]], Infinity]&, uniqueExpressions]
+			indexExtract = DeleteDuplicates/@indexExtract;
+
+			FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Cartesian indices: ", indexExtract, FCDoControl->canodummyVerbose];
+
+			If[	!MatchQ[indexExtract, {{___CIndex} ...}],
+					Message[FCCanonicalizeDummyIndices::failmsg,
+					"Failed to  properly extract dummy Cartesian indices."];
+					FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
+					Abort[]
+			];
+
+			repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CIndex[cihead@fu[#2, seedCar],
+					(#1 /.CIndex[_, dim_: 3] :> dim)]] &,x]][#] &, indexExtract];
+
+
+
+			FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListCar: ", repIndexListCar, FCDoControl->canodummyVerbose],
+			repIndexListCar = Sequence[]
+
 		];
-
-		indexExtract = DeleteDuplicates/@indexExtract;
-
-		FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Cartesian indices: ", indexExtract, FCDoControl->canodummyVerbose];
-
-		If[	!MatchQ[indexExtract, {{___CIndex} ...}],
-				Message[FCCanonicalizeDummyIndices::failmsg,
-				"Failed to  properly extract dummy Cartesian indices."];
-				FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
-				Abort[]
-		];
-
-		repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CIndex[cihead@fu[#2, seedCar],
-				(#1 /.CIndex[_, dim_: 3] :> dim)]] &,x]][#] &, indexExtract];
-
-
-
-		FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListCar: ", repIndexListCar, FCDoControl->canodummyVerbose];
 
 		(* Rest *)
 
