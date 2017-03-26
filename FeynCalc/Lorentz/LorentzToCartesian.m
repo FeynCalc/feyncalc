@@ -37,6 +37,7 @@ lorIndex::usage="";
 
 Options[LorentzToCartesian] = {
 	DiracGammaExpand -> True,
+	PauliSigmaExpand -> True,
 	DotSimplify -> True,
 	EpsEvaluate -> True,
 	ExpandScalarProduct -> True,
@@ -47,6 +48,8 @@ Options[LorentzToCartesian] = {
 	GA -> True,
 	GS -> True,
 	LC -> True,
+	SI -> True,
+	SIS -> True,
 	LorentzIndex -> True,
 	SP -> True
 };
@@ -107,8 +110,16 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 			ex = DiracGammaExpand[ex,FCI->True];
 		];
 
+		If[	OptionValue[PauliSigmaExpand],
+			ex = PauliSigmaExpand[ex,FCI->True];
+		];
+
 		If[	(OptionValue[GA] || OptionValue[GS]) &&  !FreeQ[ex,Power],
 			ex = ex /. Power[z_, n_Integer?Positive]/;!FreeQ[z, DiracGamma] :> Apply[dotTimes, Table[z, {Abs[n]}]]^Sign[n]
+		];
+
+		If[	(OptionValue[SI] || OptionValue[SIS]) &&  !FreeQ[ex,Power],
+			ex = ex /. Power[z_, n_Integer?Positive]/;!FreeQ[z, PauliSigma] :> Apply[dotTimes, Table[z, {Abs[n]}]]^Sign[n]
 		];
 
 		If[	(OptionValue[FCTensor]) &&  !FreeQ[ex,Power],
@@ -122,6 +133,14 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 
 		If[	OptionValue[GS],
 			ex = ex /. DiracGamma -> diracSlashToCDiracSlash /. diracSlashToCDiracSlash -> DiracGamma
+		];
+
+		If[	OptionValue[SI],
+			ex = ex /. PauliSigma -> pauliSigmaToCPauliSigma /. pauliSigmaToCPauliSigma -> PauliSigma
+		];
+
+		If[	OptionValue[SIS],
+			ex = ex /. PauliSigma -> pauliSlashToCPauliSlash /. pauliSlashToCPauliSlash -> PauliSigma
 		];
 
 		If[	OptionValue[FCTensor],
@@ -216,6 +235,38 @@ diracSlashToCDiracSlash[Momentum[p_, dim_Symbol], dim_Symbol]:=
 
 diracSlashToCDiracSlash[Momentum[p_, dim_Symbol-4], dim_Symbol-4]:=
 	FeynCalc`Package`MetricS DiracGamma[CMomentum[p,dim-4],dim-4];
+
+
+pauliSigmaToCPauliSigma[LorentzIndex[a_]]:=
+	(
+	tmpci= CIndex[$MU[Unique[]]];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] +
+	FeynCalc`Package`MetricS Pair[LorentzIndex[a], tmpci] PauliSigma[tmpci]
+	);
+
+pauliSigmaToCPauliSigma[LorentzIndex[a_, dim_Symbol], dim_Symbol-1]:=
+	(
+	tmpci= CIndex[$MU[Unique[]],dim-1];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] +
+	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim], tmpci] PauliSigma[tmpci,dim-1]
+	);
+
+pauliSigmaToCPauliSigma[LorentzIndex[a_, dim_Symbol-4], dim_Symbol-4]:=
+	(
+	tmpci= CIndex[$MU[Unique[]],dim-4];
+	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim], tmpci] PauliSigma[tmpci,dim-4]
+	);
+
+pauliSlashToCPauliSlash[Momentum[a_]]:=
+	FeynCalc`Package`MetricT TPair[TMomentum[a], TIndex[]] +
+	FeynCalc`Package`MetricS PauliSigma[CMomentum[a]];
+
+pauliSlashToCPauliSlash[Momentum[a_, dim_Symbol], dim_Symbol-1]:=
+	FeynCalc`Package`MetricT TPair[TMomentum[a], TIndex[]] +
+	FeynCalc`Package`MetricS PauliSigma[CMomentum[a,dim-1],dim-1];
+
+pauliSlashToCPauliSlash[Momentum[a_, dim_Symbol-4], dim_Symbol-4]:=
+	FeynCalc`Package`MetricS PauliSigma[CMomentum[a,dim-4],dim-4];
 
 
 powerExpand[ex_, head_, times_]:=

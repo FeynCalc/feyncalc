@@ -247,7 +247,22 @@ CLC[i1_, i2_, i5_] Pair[CIndex[i1_], LorentzIndex[mu]] Pair[
 	LorentzIndex[si]] MT[0,rho] +
 CLC[i1_, i2_, i5_] Pair[CIndex[i1_], LorentzIndex[mu]] Pair[
 	CIndex[i2_], LorentzIndex[nu]] Pair[CIndex[i5_],
-	LorentzIndex[rho]] MT[0,si]]","True"}
+	LorentzIndex[rho]] MT[0,si]]","True"},
+{"fcstLorentzToCartesian-ID31",
+"MatchQ[LorentzToCartesian[SI[mu], FCE -> True],
+MT[0, mu] - CSI[a_] Pair[CIndex[a_], LorentzIndex[mu]]]","True"},
+{"fcstLorentzToCartesian-ID32",
+"MatchQ[LorentzToCartesian[SID[mu], FCE -> True],
+MT[0, mu] - CSID[a_] Pair[CIndex[a_, D - 1], LorentzIndex[mu, D]]]","True"},
+{"fcstLorentzToCartesian-ID33",
+"MatchQ[LorentzToCartesian[SIE[mu], FCE -> True],
+-CSIE[a_] Pair[CIndex[a_, -4 + D], LorentzIndex[mu, -4 + D]]]","True"},
+{"fcstLorentzToCartesian-ID34",
+"LorentzToCartesian[SIS[p], FCE -> True]","-CSIS[p] + TC[p]"},
+{"fcstLorentzToCartesian-ID35",
+"LorentzToCartesian[SISD[p], FCE -> True]","-CSISD[p] + TC[p]"},
+{"fcstLorentzToCartesian-ID36",
+"LorentzToCartesian[SISE[p], FCE -> True]","-CSISE[p]"}
 });
 
 
