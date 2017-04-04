@@ -172,6 +172,11 @@ PaVeIntegralHeads::usage=
 "PaVeIntegralHeads is an option for FCLoopIsolate, FCLoopSplit and other \
 functions. It gives a list of heads that denote Passarino-Veltman integrals";
 
+PauliReduce::usage=
+"PauliReduce is an option for PauliTrick and other functions. It specifies \
+whether a chain of Pauli matrices should be reduced to at most one matrix by
+rewriting every pair of matrices in terms of commutator and anticommutator.";
+
 Mandelstam::usage =
 "Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr \
 and TrickMandelstam.  A typical setting is \

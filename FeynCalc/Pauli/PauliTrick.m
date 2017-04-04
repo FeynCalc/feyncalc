@@ -24,6 +24,7 @@ PauliTrick::failmsg =
 The problem reads: `1`"
 
 
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -32,15 +33,18 @@ End[]
 Begin["`PauliTrick`Private`"]
 
 paTrVerbose::usage="";
+pauliReduce::usage="";
 pasi::usage="";
 tmpli::usage="";
 
 Options[PauliTrick] = {
 	Expanding -> False,
 	FCI -> False,
+	FCE -> False,
 	FCPauliIsolate -> True,
 	FCVerbose -> False,
-	PauliSigmaCombine -> False
+	PauliSigmaCombine -> False,
+	PauliReduce -> True
 };
 
 PauliTrick[expr_,OptionsPattern[]] :=
@@ -60,6 +64,8 @@ PauliTrick[expr_,OptionsPattern[]] :=
 
 				xx)		Then we do all the simplifications.
 		*)
+
+		pauliReduce = OptionValue[PauliReduce];
 
 		If [OptionValue[FCVerbose]===False,
 			paTrVerbose=$VeryVerbose,
@@ -142,6 +148,11 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			res = Expand[res];
 			FCPrint[1,"PauliTrick: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose];
 			FCPrint[3, "PauliTrick: After expanding: ", res, FCDoControl->paTrVerbose]
+		];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+
 		];
 
 		FCPrint[1, "PauliTrick. Leaving.", FCDoControl->paTrVerbose];
@@ -259,7 +270,17 @@ pauli4Dim[b___,PauliSigma[(c1: _CMomentum | _CIndex)], PauliSigma[(c2: _CMomentu
 	(
 	tmpli= CIndex[$MU[Unique[]]];
 	((FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauli4Dim[b,d]  + I Eps[c1,c2,tmpli] pauli4Dim[b,PauliSigma[tmpli],d])/. CPair->CPairContract /. CPairContract->CPair)
-	);
+	)/; pauliReduce===True;
+
+(*	si^i .... si^i	*)
+pauli4Dim[b___,	PauliSigma[(c1: _CMomentum | _CIndex)],
+				PauliSigma[(c2: _CMomentum | _CIndex)],
+				ch:PauliSigma[(_CMomentum | _CIndex )]...,
+				PauliSigma[(c1: _CMomentum | _CIndex)], d___ ]/;c1=!=c2 :=
+	(
+	-pauli4Dim[b, PauliSigma[c2], PauliSigma[c1], ch, PauliSigma[c1], d]
+	+ 2 FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauli4Dim[b, ch, PauliSigma[c1], d]
+	)/; pauliReduce=!=True;
 
 (* ------------------------------------------------------------------------ *)
 
@@ -275,7 +296,7 @@ pauliDDim[b___,PauliSigma[l_LorentzIndex, dim_-1], PauliSigma[l_LorentzIndex, di
 
 (*	si^i si^i	*)
 pauliDDim[b___,PauliSigma[l_CIndex, dim_-1], PauliSigma[l_CIndex, dim_-1], d___] :=
-	(dim-1) PauliTrickEvalFast[b,d];
+	(dim-1) pauliDDim[b,d];
 
 (*	(si^mu p^mu) (si^nu p^nu)	*)
 pauliDDim[b___,PauliSigma[c_Momentum, dim_-1], PauliSigma[c_Momentum, dim_-1], d___ ] :=
@@ -290,7 +311,17 @@ pauliDDim[b___,PauliSigma[(c1: _CMomentum | _CIndex),dim_-1], PauliSigma[(c2: _C
 	(
 	tmpli= CIndex[$MU[Unique[]],dim-1];
 	FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauliDDim[b,d] + I Eps[c1,c2,tmpli] pauliDDim[b,PauliSigma[tmpli,dim-1],d]
-	)/; FeynCalc`Package`PauliSigmaScheme==="Naive";
+	)/; FeynCalc`Package`PauliSigmaScheme==="Naive" && pauliReduce===True;
+
+(*	si^i .... si^i	*)
+pauliDDim[b___,	PauliSigma[(c1: _CMomentum | _CIndex),dim_-1],
+				PauliSigma[(c2: _CMomentum | _CIndex),dim_-1],
+				ch:PauliSigma[(CMomentum | CIndex )[_, dim_-1],dim_-1]...,
+				PauliSigma[(c1: _CMomentum | _CIndex),dim_-1], d___ ]/;c1=!=c2 :=
+	(
+	-pauliDDim[b, PauliSigma[c2,dim-1], PauliSigma[c1,dim-1], ch, PauliSigma[c1,dim-1], d]
+	+ 2 FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauliDDim[b, ch, PauliSigma[c1,dim-1], d]
+	)/; FeynCalc`Package`PauliSigmaScheme=!="Naive";
 
 FCPrint[1,"PauliTrick.m loaded."];
 End[]
