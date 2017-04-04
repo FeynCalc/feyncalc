@@ -207,48 +207,63 @@ sumeq[{_, __}] :=
 
 USumHeld /:
 	MakeBoxes[USumHeld[a__, b : _List ..], TraditionalForm] :=
-		RowBox[Join[Table[UnderoverscriptBox["\[CapitalSigma]",
-						RowBox[{sv[b, rep], sumeq[{b}[[rep]]],
-								sumstart[{b}[[rep]]]}], {b}[[rep]][[-1]]], {rep,
-						Length[{b}]}], {MakeBoxes[TraditionalForm[a]]}]];
+		RowBox[Join[Table[UnderoverscriptBox["\[CapitalSigma]", RowBox[{sv[b, rep], sumeq[{b}[[rep]]],
+		sumstart[{b}[[rep]]]}], {b}[[rep]][[-1]]], {rep, Length[{b}]}], {MakeBoxes[TraditionalForm[a]]}]];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 fccombs :=
 	fccombs = CombinationLists;
-(* FeynArts functions *)
 
+(* FeynArts functions *)
 faso :=
 	faso = FeynArts`SumOver;
 
 (* Defaults *)
+$IsoSpinProjectionRules = {
+	PionPlus -> (Iso[PhiMeson, {1}] - I*Iso[PhiMeson, {2}])/Sqrt[2],
+	PionMinus -> (Iso[PhiMeson, {1}] + I*Iso[PhiMeson, {2}])/Sqrt[2],
+	PionZero -> Iso[PhiMeson, {3}],
+	KaonPlus -> (Iso[PhiMeson, {4}] - I*Iso[PhiMeson, {5}])/Sqrt[2],
+	KaonMinus -> (Iso[PhiMeson, {4}] + I*Iso[PhiMeson, {5}])/Sqrt[2],
+	KaonZero -> (Iso[PhiMeson, {6}] - I*Iso[PhiMeson, {7}])/Sqrt[2],
+	KaonZeroBar -> (Iso[PhiMeson, {6}] + I*Iso[PhiMeson, {7}])/Sqrt[2],
+	EtaMeson -> Iso[PhiMeson, {8}]
+};
 
-$IsoSpinProjectionRules = {PionPlus -> (Iso[PhiMeson, {1}] -
-							I*Iso[PhiMeson, {2}])/Sqrt[2],
-			PionMinus -> (Iso[PhiMeson, {1}] + I*Iso[PhiMeson, {2}])/Sqrt[2],
-			PionZero -> Iso[PhiMeson, {3}],
-			KaonPlus -> (Iso[PhiMeson, {4}] - I*Iso[PhiMeson, {5}])/Sqrt[2],
-			KaonMinus -> (Iso[PhiMeson, {4}] + I*Iso[PhiMeson, {5}])/Sqrt[2],
-			KaonZero -> (Iso[PhiMeson, {6}] - I*Iso[PhiMeson, {7}])/Sqrt[2],
-			KaonZeroBar -> (Iso[PhiMeson, {6}] + I*Iso[PhiMeson, {7}])/Sqrt[2],
-			EtaMeson -> Iso[PhiMeson, {8}]};
-Options[FieldProjection] = {Channel -> PionPlus};
-Options[AmplitudeProjection] = {Channel -> {{Pion, Pion} -> {Pion,
-							Pion}, 2}, (*CommutatorReduce -> True,*) OnMassShell -> True,
-			MassArguments -> {RenormalizationState[0]},
-			MomentumVariablesString -> "p"(*, HoldSums -> False,
-			Explicit -> True, SUNN -> 2*)(*Dunno what these options were doing here. 5.4.2002*)};
-Options[SUNReduce] = {HoldSums -> True, CommutatorReduce -> False,
-			Explicit -> False, FullReduce -> False, SUNN -> 2,
-			UDimension -> Automatic(*Commented out 11/5-2003*)(*, RemoveIntegerIndices -> False*)};
+Options[FieldProjection] = {
+	Channel -> PionPlus
+};
+
+Options[AmplitudeProjection] = {
+	Channel -> {{Pion, Pion} -> {Pion, Pion}, 2},
+	OnMassShell -> True,
+	MassArguments -> {RenormalizationState[0]},
+	MomentumVariablesString -> "p"
+};
+
+Options[SUNReduce] = {
+	HoldSums -> True,
+	CommutatorReduce -> False,
+	Explicit -> False,
+	FullReduce -> False,
+	SUNN -> 2,
+	UDimension -> Automatic
+};
+
 Options[IndicesCleanup] :=
 	{IsoDummys -> {"j", "k", "l"},
 	LorentzDummys -> {"\[Xi]", "\[Rho]", "\[Sigma]", "\[Tau]", "\[Omega]"},
-	ExtendedCleanup -> True, FCleanup -> False, CommutatorReduce -> True};
-Options[CNM] = {IsoDummys -> {"p", "q", "r", "s"},
-		LorentzDummys -> {"\[Zeta]", "\[Eta]", "\[Theta]", "\[Kappa]"}}
+	ExtendedCleanup -> True,
+	FCleanup -> False,
+	CommutatorReduce -> True
+};
 
+Options[CNM] = {
+	IsoDummys -> {"p", "q", "r", "s"},
+	LorentzDummys -> {"\[Zeta]", "\[Eta]", "\[Theta]", "\[Kappa]"}
+};
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -263,15 +278,21 @@ Options[CNM] = {IsoDummys -> {"p", "q", "r", "s"},
 	sums and uses these for the ensuing summations: *)
 
 USum[a_, b___List] :=
-	(sumlims[i_] :=
+	(
+	sumlims[i_] :=
 		({b}[[i]]);
 	recfun[0] = a;
-	Do[recfun[rep] =
-			Sum1[recfun[rep - 1], sumlims[rep]] /. Sum1 -> Sum, {rep, 1,
-			Length[{b}]}];
-	recfun[Length[{b}]]);
+
+	Do[	recfun[rep] = Sum1[recfun[rep - 1], sumlims[rep]] /. Sum1 -> Sum,
+		{rep, 1,Length[{b}]}
+	];
+
+	recfun[Length[{b}]]
+	);
+
 USum[a_, {}] :=
 	a;
+
 USumHeld[a_] :=
 	a;
 
@@ -281,162 +302,157 @@ USumHeld[a_] :=
 	$ConstantIsoIndices): *)
 
 su3summationindices[{a__}, gennr2_] :=
-	(us = (Complement[
-					Union[Complement[Sort[Flatten[{a}]],
-							Sort[Flatten[{a}]] //. {cc___, b_, b_, c___} -> {cc, c}]],
-					Join[$ConstantIsoIndices,
-						SUNIndex/@ $ConstantIsoIndices]]) //. {{cc___, _Integer,
-						c___} -> {cc, c}, {cc___, (fcsuni|ExplicitSUNIndex)[_Integer], c___} -> {cc, c}};
-	Table[{removesun[us[[icount]]], gennr2}, {icount, Length[us]}]);
+	(
+	us = (Complement[Union[Complement[Sort[Flatten[{a}]], Sort[Flatten[{a}]] //. {cc___, b_, b_, c___} -> {cc, c}]],
+	Join[$ConstantIsoIndices, SUNIndex/@ $ConstantIsoIndices]]) //. {{cc___, _Integer, c___} -> {cc, c},
+	{cc___, (fcsuni|ExplicitSUNIndex)[_Integer], c___} -> {cc, c}};
+
+	Table[{removesun[us[[icount]]], gennr2}, {icount, Length[us]}]
+	);
+
 su3summationindices[{}, ___] :=
 	{};
-
-
 
 (* Support functions for SUNReduce for removing SUNIndex and UIndex heads: *)
 
 removesun[(SUNIndex| ExplicitSUNIndex | UIndex)[iii_]] :=
 	iii;
+
 removesun[iii /; FreeQ[iii, (SUNIndex| ExplicitSUNIndex | UIndex)]] :=
 	iii;
 
+(* Support functions for SUNReduce for removing SUNIndex and UIndex heads from constants: *)
 
-
-(* Support functions for SUNReduce for removing SUNIndex and UIndex heads from
-	constants: *)
-
-removesunc[(SUNIndex| ExplicitSUNIndex | UIndex)[iii_]] /;
-		(IntegerQ[iii] || (!FreeQ[$ConstantIsoIndices, iii])) :=
+removesunc[(SUNIndex| ExplicitSUNIndex | UIndex)[iii_]] /; (IntegerQ[iii] || (!FreeQ[$ConstantIsoIndices, iii])) :=
 	tmpsuni[iii];
-removesunc[(SUNIndex| ExplicitSUNIndex)[iii_]] /;
-		(!IntegerQ[iii] && (FreeQ[$ConstantIsoIndices, iii])) :=
+
+removesunc[(SUNIndex| ExplicitSUNIndex)[iii_]] /; (!IntegerQ[iii] && (FreeQ[$ConstantIsoIndices, iii])) :=
 	fcsuni[iii];
-removesunc[UIndex[iii_]] /;
-		(!IntegerQ[iii] && (FreeQ[$ConstantIsoIndices, iii])) :=
+
+removesunc[UIndex[iii_]] /; (!IntegerQ[iii] && (FreeQ[$ConstantIsoIndices, iii])) :=
 	UIndex[iii];
+
 removesunc[iii_] /; FreeQ[{iii}, (SUNIndex| ExplicitSUNIndex | UIndex)] :=
 	iii;
-
-
 
 
 (* Adding a head to the inner index of PhiProjection: *)
 (* This PhiProjection business is not necessary. Dropped, 11/5-2003 *)
 (*NTo3Rules1 = (PhiProjection[pa_, ___][pb_]) :> SUNDelta[pa, pb];*)
-NTo3Rules3 = {(SUNDelta|SU2Delta|SU3Delta)[i_, j:((fcsuni(*|ExplicitSUNIndex*)(*Bug fix, 11/5-2003*))[_])]*
-						QuantumField[a___, j_, b___][x_]  ->
-						QuantumField[a, fcsuni[i], b][x]};
-
+NTo3Rules3 = {
+	(SUNDelta|SU2Delta|SU3Delta)[i_, j:((fcsuni)[_])] QuantumField[a___, j_, b___][x_]  -> QuantumField[a, fcsuni[i], b][x]
+};
 
 
 (* Removing heads from constants and changing from FeynCalc to PHI functions: *)
 
-NTo3Rules2[2] = {SU2D[_, _, _] :> 0,
-			SU2F[x1_, x2_, x3_] :>
-				SU2F[removesunc[x1], removesunc[x2], removesunc[x3]],
-			SU2Delta[x1_, x2_] :> SU2Delta[removesunc[x1], removesunc[x2]],
-			SUND[_, _, _] :> 0,
-			SUNF[x1_, x2_, x3_] :>
-				SU2F[removesunc[x1], removesunc[x2], removesunc[x3]],
-			SUNDelta[x1_, x2_] :> SU2Delta[removesunc[x1], removesunc[x2]]};
-NTo3Rules2[3] = {SU3D[x1_, x2_, x3_] :>
-				SU3D[removesunc[x1], removesunc[x2], removesunc[x3]],
-			SU3F[x1_, x2_, x3_] :>
-				SU3F[removesunc[x1], removesunc[x2], removesunc[x3]],
-			SU3Delta[x1_, x2_] :> SU3Delta[removesunc[x1], removesunc[x2]],
-			SUND[x1_, x2_, x3_] :>
-				SU3D[removesunc[x1], removesunc[x2], removesunc[x3]],
-			SUNF[x1_, x2_, x3_] :>
-				SU3F[removesunc[x1], removesunc[x2], removesunc[x3]],
-			SUNDelta[x1_, x2_] :> SU3Delta[removesunc[x1], removesunc[x2]]};
-NTo3iRules2[2] = {SUND[_, _, _] :> 0, SUNF :> SU2F,
-			SUNDelta :> SU2Delta};
-NTo3iRules2[3] = {SUND :> SU3D, SUNF :> SU3F, SUNDelta :> SU3Delta};
+NTo3Rules2[2] = {
+	SU2D[_, _, _] :> 0,
+	SU2F[x1_, x2_, x3_] :> SU2F[removesunc[x1], removesunc[x2], removesunc[x3]],
+	SU2Delta[x1_, x2_] :> SU2Delta[removesunc[x1], removesunc[x2]],
+	SUND[_, _, _] :> 0,
+	SUNF[x1_, x2_, x3_] :> SU2F[removesunc[x1], removesunc[x2], removesunc[x3]],
+	SUNDelta[x1_, x2_] :> SU2Delta[removesunc[x1], removesunc[x2]]
+};
 
-NTo3Rules2[_] = {};
-NTo3iRules2[_] = {};
+NTo3Rules2[3] = {
+	SU3D[x1_, x2_, x3_] :> SU3D[removesunc[x1], removesunc[x2], removesunc[x3]],
+	SU3F[x1_, x2_, x3_] :> SU3F[removesunc[x1], removesunc[x2], removesunc[x3]],
+	SU3Delta[x1_, x2_] :> SU3Delta[removesunc[x1], removesunc[x2]],
+	SUND[x1_, x2_, x3_] :> SU3D[removesunc[x1], removesunc[x2], removesunc[x3]],
+	SUNF[x1_, x2_, x3_] :> SU3F[removesunc[x1], removesunc[x2], removesunc[x3]],
+	SUNDelta[x1_, x2_] :> SU3Delta[removesunc[x1], removesunc[x2]]
+};
 
+NTo3iRules2[2] = {
+	SUND[_, _, _] :> 0,
+	SUNF :> SU2F,
+	SUNDelta :> SU2Delta
+};
 
+NTo3iRules2[3] = {
+	SUND :> SU3D,
+	SUNF :> SU3F,
+	SUNDelta :> SU3Delta
+};
+
+NTo3Rules2[_] =
+	{};
+
+NTo3iRules2[_] =
+	{};
 
 (* A function for selecting the members of a list with head SUNIndex: *)
 
 su3test[a_] :=
 	{} /; Head[a]=!=SUNIndex;
+
 su3test[a_SUNIndex] :=
 	a;
+
 su3list[{a___}] :=
 	Flatten[su3test /@ Flatten[{a}]];
-
-
 
 (* Distributivity: *)
 
 SUNReduce1[aa_, OptionsPattern[]] /; (FreeQ[aa, SUNIndex| ExplicitSUNIndex]) :=
 	aa;
+
 SUNReduce1[aa_ bb_, opts:OptionsPattern[]] /; (FreeQ[aa, SUNIndex| ExplicitSUNIndex]) :=
 	aa*SUNReduce1[bb, opts];
+
 SUNReduce1[aa_Plus, opts___] :=
 	SUNReduce1[#, opts] & /@ aa;
-SUNReduce1[aa_, opts___] /;
-		(((Explicit /. Flatten[{opts}] /.
-		Options[SUNReduce]) == True) && FreeQ[{aa}, Plus]) :=
+
+SUNReduce1[aa_, opts___] /; (((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == True) && FreeQ[{aa}, Plus]) :=
 	SUNReduce2[aa, opts];
-SUNReduce1[aa_, opts___] /;
-		((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False) :=
+
+SUNReduce1[aa_, opts___] /; ((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False) :=
 	SUNReduce2[aa, opts];
 
 
 (* Explicit summation: *)
 
-SUNReduce2[aa_,
-				opts___] /; (Explicit /. Flatten[{opts}] /. Options[SUNReduce]) ==
-				True :=
-	(FCPrint[2, "Finding indices to sum over"];
-	gennr1 = If[ FreeQ[aa, _SU3F | _SU3D | _SU3Delta] &&
-				FreeQ[aa,
-					SUNN -> 3],
+SUNReduce2[aa_, opts___] /; (Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == True :=
+	(
+	FCPrint[2, "Finding indices to sum over"];
+	gennr1 = If[ FreeQ[aa, _SU3F | _SU3D | _SU3Delta] && FreeQ[aa, SUNN -> 3],
 				(SUNN^2 - 1 /. Flatten[{opts}] /.
 				Options[SUNReduce]),
 				8
 			];
-	flatlist =
-		List1[(aa (*Commented out 11/5-2003*)(*/. NTo3Rules1*) /.
-							NTo3Rules2[(SUNN /. Flatten[{opts}] /.
-										Options[SUNReduce])]) /. {NM -> List1,
-						Times ->
-							List1}(*writing out powers*)/.
-							((at_ /; !FreeQ[at, fcsuni])^ex_Integer :>
-						Table[NM[at], {ex}])];
+
+	flatlist = List1[(aa /. NTo3Rules2[(SUNN /. Flatten[{opts}] /. Options[SUNReduce])]) /.
+		{ NM -> List1, Times -> List1}(*writing out powers*)/. ((at_ /; !FreeQ[at, fcsuni])^ex_Integer :>
+		Table[NM[at], {ex}])];
+
 	flatlist1 = Flatten[flatlist /. List1 -> List];
+
 	sumlist =
 		su3summationindices[
-			su3list[Flatten[(flatlist1 //. {ff_[a___, fcsuni[ind_], b___][_] /;
-										FreeQ[ff, List] -> {ff[a, b], fcsuni[ind]},
-								ff_[fcsuni[ind_], b___][_] /; FreeQ[ff, List] -> {ff[b],
-										fcsuni[ind]},
-								ff_[a___, fcsuni[ind_]][_] /; FreeQ[ff, List] -> {ff[a],
-										fcsuni[ind]},
-								ff_[a___, fcsuni[ind_], b___] /;
-										FreeQ[ff, List] -> {ff[a, b], fcsuni[ind]},
-								ff_[fcsuni[ind_], b___] /; FreeQ[ff, List] -> {ff[b],
-										fcsuni[ind]},
-								ff_[a___, fcsuni[ind_]] /; FreeQ[ff, List] -> {ff[a],
-										fcsuni[ind]}})]], gennr1];
+			su3list[Flatten[(flatlist1 //. {
+				ff_[a___, fcsuni[ind_], b___][_] /; FreeQ[ff, List] -> {ff[a, b], fcsuni[ind]},
+				ff_[fcsuni[ind_], b___][_] /; FreeQ[ff, List] -> {ff[b], fcsuni[ind]},
+				ff_[a___, fcsuni[ind_]][_] /; FreeQ[ff, List] -> {ff[a], fcsuni[ind]},
+				ff_[a___, fcsuni[ind_], b___] /; FreeQ[ff, List] -> {ff[a, b], fcsuni[ind]},
+				ff_[fcsuni[ind_], b___] /; FreeQ[ff, List] -> {ff[b], fcsuni[ind]},
+				ff_[a___, fcsuni[ind_]] /; FreeQ[ff, List] -> {ff[a], fcsuni[ind]}})]], gennr1
+		];
+
 	FCPrint[3, "Found:\n", sumlist];
 	FCPrint[2, "Summing"];
-	tmpres = USum1[(aa (*Commented out 11/5-2003*)(*/. NTo3Rules1*) /.
-								NTo3Rules2[(SUNN /. Flatten[{opts}] /.
-											Options[SUNReduce])]), ##] & @@ sumlist /.
+	tmpres = USum1[(aa  /. NTo3Rules2[(SUNN /. Flatten[{opts}] /. Options[SUNReduce])]), ##] & @@ sumlist /.
 			If[ (HoldSums /. Flatten[{opts}] /. Options[SUNReduce]),
 				USum1 -> USumHeld,
 				USum1 -> USum
 			];
-	If[ (CommutatorReduce /. Flatten[{opts}] /.
-				Options[SUNReduce]),
+
+	If[ (CommutatorReduce /. Flatten[{opts}] /. Options[SUNReduce]),
 		FCPrint[2,"Applying CommutatorReduce"];
 		CommutatorReduce[tmpres,opts],
 		tmpres
-	]);
+	]
+	);
 
 
 
@@ -444,24 +460,18 @@ SUNReduce2[aa_,
 product, we have to compare them all pairwise, that is,  construct all
 possible combinations with Outer: *)
 
-
-
 twoselect[{a_, b_, c_}, {d_, e_, f_}] :=
 	twoselect[{a, b, c}, {d, e, f}] =
-		Select[Join @@
-				Outer[List, {a, b, c}, {d, e, f}], (#[[1]] == #[[2]] &&
-						Head[#[[1]]] === SUNIndex&& Head[#[[2]]] === fcsuni) &];
-
-
+		Select[Join @@ Outer[List, {a, b, c}, {d, e, f}], (#[[1]] == #[[2]] && Head[#[[1]]] === SUNIndex&& Head[#[[2]]] === fcsuni) &];
 
 (* This function gives the signature of the permutations needed to turn one e.g.
 {a,b,cc},{c,a,b} into {a,b,cc},{a,b,c}: *)
 
 sig1[{___, a_, mm___, b_, ___}, {___, a_, m___, b_, ___}] :=
 	(-1)^(Length[{mm}] - Length[{m}]);
+
 sig1[{___, a_, mm___, b_, ___}, {___, b_, m___, a_, ___}] :=
 	(-1)^(Length[{mm}] - Length[{m}] + 1);
-
 
 
 (* This function gives the signature of the permutations needed to turn one e.g.
@@ -469,245 +479,167 @@ sig1[{___, a_, mm___, b_, ___}, {___, b_, m___, a_, ___}] :=
 (*Bug fixed 25/5-2001: There might be an identical constant index in
 	the two argument lists besides the index to be permuted*)
 
-sig2[{a___, m_?((!IntegerQ[#] && Head[#] =!= tmpsuni)&), ___},
-{aa___, m_?((!IntegerQ[#] && Head[#] =!= tmpsuni)&), ___}] :=
+sig2[{a___, m_?((!IntegerQ[#] && Head[#] =!= tmpsuni)&), ___}, {aa___, m_?((!IntegerQ[#] && Head[#] =!= tmpsuni)&), ___}] :=
 	(-1)^(Length[{a}] - Length[{aa}]);
 
 
 
 (* Implicit summation: *)
 
-$SUNDeltaRules =(*the delta functions are orderless,
-			so we need not be carefull with the order*) {SU3Delta[fcsuni[i_],
-					fcsuni[i_]] :> 8,
-			SU3Delta[i_, fcsuni[j_]]*SU3Delta[fcsuni[j_], k_] :> SU3Delta[i, k],
-			SU3Delta[i_Integer|(i:tmpsuni[_Integer]), i_Integer|(i:tmpsuni[_Integer])] :> 1,
-			SU3Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU3Delta[i, j],
-			SU3Delta[i:tmpsuni[_Integer]|_Integer, k_]*
-				SU3Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0/;
-						((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)),
-			SU3Delta[tmpsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 1,
-			SU3Delta[fcsuni[_], tmpsuni[_]]^n_ /; EvenQ[n] :> 1,
-			SU3Delta[_Integer, fcsuni[_]]^n_ /; EvenQ[n] :> 1,
-			SU3Delta[fcsuni[_], _Integer]^n_ /; EvenQ[n] :> 1,
-				SU3Delta[i_?((IntegerQ[#] || Head[#] === tmpsuni) &),
-						j_?((IntegerQ[#] || Head[#] === tmpsuni) &)]^_ :> SU3Delta[i, j],
-			SU3Delta[fcsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 8^(n/2),
-			SU3Delta[i_, j_SUNIndex]*
-						expr_ :> (expr /. j -> i) /; (!FreeQ[expr, j] &&
-						(FreeQ[expr, QuantumField[___, j, ___]] || !(IntegerQ[i]||Head[i]===tmpsuni&&IntegerQ[i[[1]]]))),
-			SU2Delta[fcsuni[i_], fcsuni[i_]] :> 3,
-			SU2Delta[i_, fcsuni[j_]]*SU2Delta[fcsuni[j_], k_] :> SU2Delta[i, k],
-			SU2Delta[i_Integer|(i:tmpsuni[_Integer]), i_Integer|(i:tmpsuni[_Integer])] :> 1,
-			SU2Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU2Delta[i, j],
-			SU2Delta[i:tmpsuni[_Integer]|_Integer, k_]*
-				SU2Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /;
-								((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)),
-			SU2Delta[tmpsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 1,
-			SU2Delta[fcsuni[_], tmpsuni[_]]^n_ /; EvenQ[n] :> 1,
-			SU2Delta[_Integer, fcsuni[_]]^n_ /; EvenQ[n] :> 1,
-			SU2Delta[fcsuni[_], _Integer]^n_ /; EvenQ[n] :> 1,
-				SU2Delta[i_?(IntegerQ[#] || Head[#] === tmpsuni),
-						j_?(IntegerQ[#] || Head[#] === tmpsuni)]^_ :> SU2Delta[i, j],
-			SU2Delta[fcsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 3^(n/2),
-			SU2Delta[i_, j_SUNIndex]*
-						expr_ :> (expr /. j -> i) /; (!FreeQ[expr, j] &&
-								(FreeQ[expr, QuantumField[___, j, ___]] || !(IntegerQ[i]||Head[i]===tmpsuni&&IntegerQ[i[[1]]])))(*Commented out 11/5-2003*)(*,
-			PhiProjection[i_Integer][fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
-			PhiProjection[i_Integer][j_Integer] /; (i =!= j) :> 0,
-			PhiProjection[i_Integer][(fcsuni|ExplicitSUNIndex)[j_Integer]]/;(*fixed problem when missing one head 9/10-2001*)
-																((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)) :> 0*)};
+(*the delta functions are orderless, so we need not be carefull with the order*)
+$SUNDeltaRules = {
+	SU3Delta[fcsuni[i_], fcsuni[i_]] :> 8,
+	SU3Delta[i_, fcsuni[j_]]*SU3Delta[fcsuni[j_], k_] :> SU3Delta[i, k],
+	SU3Delta[i_Integer|(i:tmpsuni[_Integer]), i_Integer|(i:tmpsuni[_Integer])] :> 1,
+	SU3Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU3Delta[i, j],
+	SU3Delta[i:tmpsuni[_Integer]|_Integer, k_] SU3Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0/; ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)),
+	SU3Delta[tmpsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 1,
+	SU3Delta[fcsuni[_], tmpsuni[_]]^n_ /; EvenQ[n] :> 1,
+	SU3Delta[_Integer, fcsuni[_]]^n_ /; EvenQ[n] :> 1,
+	SU3Delta[fcsuni[_], _Integer]^n_ /; EvenQ[n] :> 1,
+	SU3Delta[i_?((IntegerQ[#] || Head[#] === tmpsuni) &), j_?((IntegerQ[#] || Head[#] === tmpsuni) &)]^_ :> SU3Delta[i, j],
+	SU3Delta[fcsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 8^(n/2),
+	SU3Delta[i_, j_SUNIndex] expr_ :> (expr /. j -> i) /; (!FreeQ[expr, j] &&
+		(FreeQ[expr, QuantumField[___, j, ___]] || !(IntegerQ[i]||Head[i]===tmpsuni&&IntegerQ[i[[1]]]))),
+	SU2Delta[fcsuni[i_], fcsuni[i_]] :> 3,
+	SU2Delta[i_, fcsuni[j_]]*SU2Delta[fcsuni[j_], k_] :> SU2Delta[i, k],
+	SU2Delta[i_Integer|(i:tmpsuni[_Integer]), i_Integer|(i:tmpsuni[_Integer])] :> 1,
+	SU2Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU2Delta[i, j],
+	SU2Delta[i:tmpsuni[_Integer]|_Integer, k_] SU2Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /; ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)),
+	SU2Delta[tmpsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 1,
+	SU2Delta[fcsuni[_], tmpsuni[_]]^n_ /; EvenQ[n] :> 1,
+	SU2Delta[_Integer, fcsuni[_]]^n_ /; EvenQ[n] :> 1,
+	SU2Delta[fcsuni[_], _Integer]^n_ /; EvenQ[n] :> 1,
+	SU2Delta[i_?(IntegerQ[#] || Head[#] === tmpsuni), j_?(IntegerQ[#] || Head[#] === tmpsuni)]^_ :> SU2Delta[i, j],
+	SU2Delta[fcsuni[_], fcsuni[_]]^n_ /; EvenQ[n] :> 3^(n/2),
+	SU2Delta[i_, j_SUNIndex] expr_ :> (expr /. j -> i) /; (!FreeQ[expr, j] &&
+		(FreeQ[expr, QuantumField[___, j, ___]] || !(IntegerQ[i]||Head[i]===tmpsuni&&IntegerQ[i[[1]]])))
+};
 
-$SUNDFRules = {(*contraction of three indices*)
-			SU2F[_SUNIndex, _SUNIndex, _SUNIndex]^2 :> 6,
-			SU3F[_SUNIndex, _SUNIndex, _SUNIndex]^2 :> 24,
-			SU3D[_SUNIndex, _SUNIndex, _SUNIndex]^2 :>
-			40/3,(*contraction of two indices*)
-			SU2F[a_, b_,              (*Added tmpsuni->Identity to catch ExplicitSUNIndex. 16/9-2002*)
-						c_]^2 /; (Sort[Head /@ ({a, b, c}/.tmpsuni->Identity)] == {Integer, fcsuni, fcsuni}) :>
-			2, SU3F[a_, b_,
-						c_]^2 /; (Sort[Head /@ ({a, b, c}/.tmpsuni->Identity)] == {Integer, fcsuni, fcsuni}) :>
-			3(*Bug fix 12/1 - 2000, was 6*),
-		SU3D[a_, b_,
-						c_]^2 /; (Sort[Head /@ ({a, b, c}/.tmpsuni->Identity)] == {Integer, fcsuni, fcsuni}) :>
-			5/3, (SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*
-						rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
-			2*(SU2Delta @@
-						Complement[{a, b, c, d, e,
-								f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])])*(sig1[{a, b,
-							c}, {d, e, f}])*
-				rest, (SU3F[a_, b_, c_]*SU3F[d_, e_, f_]*
-						rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
-			3*(SU3Delta @@
-						Complement[{a, b, c, d, e,
-								f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])])*(sig1[{a, b,
-							c}, {d, e, f}])*
-				rest, (SU3D[a_, b_, c_]*SU3D[d_, e_, f_]*
-						rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
-			rest*5/3*SU3Delta @@
-					Complement[{a, b, c, d, e,
-							f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])],
-				(SU3D[a_, b_, c_]*SU3F[d_, e_, f_]*___) /;
-				(Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :> 0,
-		(*contraction of one index - is this formula true for SU(3)?*)
-		(*NO it's not - fixed, but correct formula not really useful, 16/12/1999*)
-			(SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*rest___) /;
-			(Length[twoselect[{a, b, c}, {d, e, f}]] == 1) :>
+$SUNDFRules = {
+	(*contraction of three indices*)
+	SU2F[_SUNIndex, _SUNIndex, _SUNIndex]^2 :> 6,
+	SU3F[_SUNIndex, _SUNIndex, _SUNIndex]^2 :> 24,
+	SU3D[_SUNIndex, _SUNIndex, _SUNIndex]^2 :> 40/3,
+
+	(*contraction of two indices*)
+	SU2F[a_, b_, c_]^2 /; (Sort[Head /@ ({a, b, c}/.tmpsuni->Identity)] == {Integer, fcsuni, fcsuni}) :> 2,
+	SU3F[a_, b_, c_]^2 /; (Sort[Head /@ ({a, b, c}/.tmpsuni->Identity)] == {Integer, fcsuni, fcsuni}) :> 3,
+	SU3D[a_, b_, c_]^2 /; (Sort[Head /@ ({a, b, c}/.tmpsuni->Identity)] == {Integer, fcsuni, fcsuni}) :> 5/3,
+	(SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
+			2 (SU2Delta @@ Complement[{a, b, c, d, e, f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])])*
+			(sig1[{a, b, c}, {d, e, f}]) rest,
+	(SU3F[a_, b_, c_]*SU3F[d_, e_, f_] rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
+			3*(SU3Delta @@ Complement[{a, b, c, d, e, f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])])*
+			(sig1[{a, b, c}, {d, e, f}]) rest,
+	(SU3D[a_, b_, c_]*SU3D[d_, e_, f_] rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
+			rest*5/3*SU3Delta @@Complement[{a, b, c, d, e, f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])],
+			(SU3D[a_, b_, c_]*SU3F[d_, e_, f_]*___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :> 0,
+	(*contraction of one index - is this formula true for SU(3)?*)
+	(*NO it's not - fixed, but correct formula not really useful, 16/12/1999*)
+	(SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 1) :>
 			(((SU2Delta[#1, #3]*SU2Delta[#2, #4] - SU2Delta[#2, #3]*SU2Delta[#1, #4])& @@
-			Join[Complement[{a, b, c}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}],
-					Complement[{d, e, f}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}]])*
-						sig2[{a, b, c}, {d, e, f}])*rest,
-			(SU2F[a_, b_, c_]^2) /;
-			(Length[twoselect[{a, b, c}, {a, b, c}]] == 1) :>
+			Join[Complement[{a, b, c}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}], Complement[{d, e, f},
+			{twoselect[{a, b, c}, {d, e, f}][[1, 1]]}]]) sig2[{a, b, c}, {d, e, f}]) rest,
+	(SU2F[a_, b_, c_]^2) /; (Length[twoselect[{a, b, c}, {a, b, c}]] == 1) :>
 			(((SU2Delta[#1, #3]*SU2Delta[#2, #4] - SU2Delta[#2, #3]*SU2Delta[#1, #4])& @@
 			Join[Complement[{a, b, c}, {twoselect[{a, b, c}, {a, b, c}][[1, 1]]}],
-					Complement[{a, b, c}, {twoselect[{a, b, c}, {a, b, c}][[1, 1]]}]])*
-						sig2[{a, b, c}, {a, b, c}]),
-			(*Integers should already be sorted and put first -
-				the following should also take care of SU2F[a_integer, c_integer,
-							d_SUNIndex]^2, ...*)
-			SU2F[a_, b_Integer, c_Integer] :>
-			(-1)^(Complement[{1, 2, 3}, {b, c}][[1]] + 1)*
-			(SU2Delta[#, a] & @@ (Complement[{1, 2, 3}, {b, c}])),
-			SU2F[a_Integer, b_Integer, c_] :>
-			(-1)^(Complement[{1, 2, 3}, {a, b}][[1]] + 1)*
-			(SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}])),
-			SU2F[a_, (b:tmpsuni[_Integer]), (c:tmpsuni[_Integer])] :>
-			(-1)^(Complement[{1, 2, 3}, {b[[1]], c[[1]]}][[1]] + 1)*
+			Complement[{a, b, c}, {twoselect[{a, b, c}, {a, b, c}][[1, 1]]}]])*sig2[{a, b, c}, {a, b, c}]),
+	(*	Integers should already be sorted and put first - the following should also take care of SU2F[a_integer, c_integer,
+		d_SUNIndex]^2, ...	*)
+	SU2F[a_, b_Integer, c_Integer] :> (-1)^(Complement[{1, 2, 3}, {b, c}][[1]] + 1)*(SU2Delta[#, a] & @@ (Complement[{1, 2, 3}, {b, c}])),
+	SU2F[a_Integer, b_Integer, c_] :> (-1)^(Complement[{1, 2, 3}, {a, b}][[1]] + 1)*(SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}])),
+	SU2F[a_, (b:tmpsuni[_Integer]), (c:tmpsuni[_Integer])] :> (-1)^(Complement[{1, 2, 3}, {b[[1]], c[[1]]}][[1]] + 1)*
 			(SU2Delta[#, a] & @@ (Complement[tmpsuni/@{1, 2, 3}, {b, c}])),
-			SU2F[(a:tmpsuni[_Integer]), (b:tmpsuni[_Integer]), c_] :>
-			(-1)^(Complement[{1, 2, 3}, {a[[1]], b[[1]]}][[1]] + 1)*
-			(SU2Delta[#, c] & @@ (Complement[tmpsuni/@{1, 2, 3}, {a, b}])) };
-
+	SU2F[(a:tmpsuni[_Integer]), (b:tmpsuni[_Integer]), c_] :> (-1)^(Complement[{1, 2, 3}, {a[[1]], b[[1]]}][[1]] + 1)*
+			(SU2Delta[#, c] & @@ (Complement[tmpsuni/@{1, 2, 3}, {a, b}]))
+};
 
 $SUNRules =
-		Join[$SUNDeltaRules, $SUNDFRules, $SU3FReduceList, $SU3DReduceList];
+	Join[$SUNDeltaRules, $SUNDFRules, $SU3FReduceList, $SU3DReduceList];
 
 (*Completeness of SU(N) - see Gasser & Leutwyler 1985*)
-$SUNCompletenessRules = {HoldPattern[
-				NM[UTrace1[NM[f___,
-	UMatrix[UGenerator[SUNIndex[j_]]], a___]],
-					UTrace1[NM[g___,
-		UMatrix[UGenerator[SUNIndex[j_]]], b___]]]] :>
+$SUNCompletenessRules = {
+	HoldPattern[NM[UTrace1[NM[f___, UMatrix[UGenerator[SUNIndex[j_]]], a___]], UTrace1[NM[g___, UMatrix[UGenerator[SUNIndex[j_]]], b___]]]] :>
 			2 UTrace[NM[a, f, b, g]] - 2/SUNN NM[UTrace[NM[a, f]], UTrace[NM[b, g]]],
-		HoldPattern[
-				Times[UTrace1[NM[f___,
-	UMatrix[UGenerator[SUNIndex[j_]]], a___]],
-					UTrace1[NM[g___,
-		UMatrix[UGenerator[SUNIndex[j_]]], b___]]]] :>
+			HoldPattern[Times[UTrace1[NM[f___, UMatrix[UGenerator[SUNIndex[j_]]], a___]],
+	UTrace1[NM[g___, UMatrix[UGenerator[SUNIndex[j_]]], b___]]]] :>
 			2 UTrace[NM[a, f, b, g]] + -2/SUNN NM[UTrace[NM[a, f]], UTrace[NM[b, g]]],
-		HoldPattern[
-				UTrace1[NM[f___,
-	UMatrix[UGenerator[SUNIndex[_]]], a___]]^2] :>
+
+	HoldPattern[UTrace1[NM[f___, UMatrix[UGenerator[SUNIndex[_]]], a___]]^2] :>
 			2 UTrace[NM[a, f, a, f]] - 2/SUNN NM[UTrace[NM[a, f]], UTrace[NM[a, f]]],
-		HoldPattern[
-				UTrace1[NM[f___,
-	UMatrix[UGenerator[SUNIndex[j_]]], a___,
-						UMatrix[UGenerator[SUNIndex[j_]]], b___]]] :>
-			-2/SUNN UTrace[
-						NM[a, b, f]] + 2NM[UTrace[NM[a]], UTrace[NM[b, f]]]};
+
+	HoldPattern[UTrace1[NM[f___, UMatrix[UGenerator[SUNIndex[j_]]], a___, UMatrix[UGenerator[SUNIndex[j_]]], b___]]] :>
+			-2/SUNN UTrace[NM[a, b, f]] + 2NM[UTrace[NM[a]], UTrace[NM[b, f]]]
+};
 
 applyCompletenessRules[expr_, opts___Rule] :=
-	expr /. $SUNCompletenessRules /.
-	SUNN -> (SUNN /. Flatten[{opts}] /. Options[SUNReduce]) /.
-	(UTrace1[]|UTrace[]) ->
-	Phi`Objects`Private`gaugedimcheck[SUNReduce, opts, expr];
+	expr /. $SUNCompletenessRules /. SUNN -> (SUNN /. Flatten[{opts}] /. Options[SUNReduce]) /.
+	(UTrace1[]|UTrace[]) -> Phi`Objects`Private`gaugedimcheck[SUNReduce, opts, expr];
 
-SUNReduce2[aa_, opts___] /;
-((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False) :=
+SUNReduce2[aa_, opts___] /; ((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False) :=
 	Block[ {bb, cc},
 		FCPrint[2, "Applying reduction rules on ", StandardForm[aa]];
 		FCPrint[3, "Reduction rules are:\n", $SUNRules];
-		bb =
-		(*Commented out 11/5-2003*)(*If[(RemoveIntegerIndices /. Flatten[{opts}] /.  Options[SUNReduce]),
-				aa,*)
-				aa (*/. NTo3Rules1*) (*7/4.2002*) /. NTo3Rules3(*]*) /.
-
-		NTo3Rules2[(SUNN /. Flatten[{opts}] /.Options[SUNReduce])];
+		bb = aa  /. NTo3Rules3 /. NTo3Rules2[(SUNN /. Flatten[{opts}] /.Options[SUNReduce])];
 		FCPrint[2, "Entered SUNReduce2; expression is:\n", StandardForm[bb]];
 		cc = bb /. NTo3iRules2[(SUNN /. Flatten[{opts}] /. Options[SUNReduce])];
 		FCPrint[2, "After NTo3iRules2, expression is:\n", StandardForm[cc]];
-
-			(*Changed below, 13/5-2003, to have $SU3FReduceList, $SU3DReduceList from
-				$SUNRules catch ExplicitSUNIndex[1], ... *)
+		(*Changed below, 13/5-2003, to have $SU3FReduceList, $SU3DReduceList from $SUNRules catch ExplicitSUNIndex[1], ... *)
 		cc /. ($SUNRules/.(SUNIndex| ExplicitSUNIndex | UIndex)[iii_Integer]->tmpsuni[iii])
 	];
 
-SUNReduce[aa_, opts___] /;
-		(((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False) &&
-		(FullReduce /. Flatten[{opts}] /. Options[SUNReduce]) === True) :=
+SUNReduce[aa_, opts___] /; (((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False) && (FullReduce /. Flatten[{opts}] /. Options[SUNReduce]) === True) :=
 	Block[ {op},
 		op = Join[{FullReduce->False},
 		Select[Flatten[{opts}],FreeQ[#,FullReduce,Infinity,Heads->True]]];
 		FCPrint[2, "Iterating with options ", op];
-		FixedPoint[(SUNReduce[applyCompletenessRules[
-		ExpandAll[#],opts],
-								Sequence@@op]&),aa]
+		FixedPoint[(SUNReduce[applyCompletenessRules[ExpandAll[#],opts], Sequence@@op]&),aa]
 	];
 
 SUNReduce[aa_Plus, opts___] :=
 	SUNReduce[#, opts] & /@ aa;
 
 
-(*Added 7/6-2001 - might slow down too much ? ... - well, yes it did*)
-(*SUNReduce[Times[
-aa:((_?((FreeQ[#,fcsuni|SU2Delta|SU3Delta|SUNDelta|SU2F|SU3F|SU3D|SUNF|SUND]===True)&))..),
-bb:((_?((FreeQ[#,fcsuni|SU2Delta|SU3Delta|SUNDelta|SU2F|SU3F|SU3D|SUNF|SUND]===False)&))..)],
-opts___] :=
-Times[aa]*SUNReduce[Times[bb]];*)
-
-SUNReduce[aa_, opts___] /; ((Explicit /. Flatten[{opts}] /.
-							Options[SUNReduce]) == False && (FullReduce /. Flatten[{opts}] /.
-										Options[SUNReduce]) =!= True) :=
-	(FCPrint[2,
+SUNReduce[aa_, opts___] /; ((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == False && (FullReduce /. Flatten[{opts}] /. Options[SUNReduce]) =!= True) :=
+	(
+	FCPrint[2,
 	"Will use reduction rules"];
-	Collect[FCPrint[2, "Collecting"];
-			SUNReduce1[
-				Expand[aa](*Change 5/3 - 1999 -
-			FA likes to use indices more than twice in a product*)
-			(*Changed again 16/12/1999*)(*SUNDelta[fcsuni[i_?! NumberQ], fcsuni[i_!NumberQ]]*)/.
-					SUNDelta[
-							fcsuni[i_?((NumberQ[#] == False &&
-													FreeQ[$ConstantIsoIndices, #]) &)],
-							fcsuni[i_?((NumberQ[#] == False &&
-													FreeQ[$ConstantIsoIndices, #]) &)]] :>
-			(SUNN /. Flatten[{opts}] /. Options[SUNReduce])^2 - 1,
-				opts], {_fcfad, _SU2Delta, _SU2F, _SU2D}] /.
-				tmpsuni -> SUNIndex/.{faso[_Integer,___] ->
-				1, faso[(fcsuni|ExplicitSUNIndex)[_Integer],___] -> 1});
+	FCPrint[2, "Collecting"];
+	Collect[SUNReduce1[Expand[aa]/.
+		SUNDelta[	fcsuni[i_?((NumberQ[#] == False && FreeQ[$ConstantIsoIndices, #]) &)],
+					fcsuni[i_?((NumberQ[#] == False && FreeQ[$ConstantIsoIndices, #]) &)]] :>
+			(SUNN /. Flatten[{opts}] /. Options[SUNReduce])^2 - 1, opts], {_fcfad, _SU2Delta, _SU2F, _SU2D}] /.
+				tmpsuni -> SUNIndex/.{faso[_Integer,___] -> 1, faso[(fcsuni|ExplicitSUNIndex)[_Integer],___] -> 1}
+	);
 
-SUNReduce[aa_,
-				opts___] /; ((Explicit /. Flatten[{opts}] /.
-							Options[SUNReduce]) == True) :=
-	(FCPrint[2,
+SUNReduce[aa_, opts___] /; ((Explicit /. Flatten[{opts}] /. Options[SUNReduce]) == True) :=
+	(
+	FCPrint[2,
 	"Will sum explicitly"];
-	Collect[FCPrint[2, "Collecting"];
-			SUNReduce1[
-								Expand[aa /.
-										Plus[bb_, bbb__] /; FreeQ[{bb, bbb}, fcsuni] ->
-											tempplus[ttt[Plus[bb, bbb]] /. Plus -> ppl]],
-								opts] /. Plus -> ppl /. tempplus[cc___] -> cc /.
-					ppl -> Plus /.
-			ttt -> Together, {_fcfad, _SU2Delta, _SU3Delta, _SU2F, _SU3F, _SU3D}] /.
-			tmpsuni -> SUNIndex/.
-			faso[_Integer,___]-> 1);
+	FCPrint[2, "Collecting"];
+	Collect[SUNReduce1[Expand[aa /. Plus[bb_, bbb__] /; FreeQ[{bb, bbb}, fcsuni] -> tempplus[ttt[Plus[bb, bbb]] /.
+	Plus -> ppl]], opts] /. Plus -> ppl /. tempplus[cc___] -> cc /. ppl -> Plus /.
+	ttt -> Together, {_fcfad, _SU2Delta, _SU3Delta, _SU2F, _SU3F, _SU3D}] /. tmpsuni -> SUNIndex/. faso[_Integer,___]-> 1
+	);
 
 
 $SymSUNDFRules1 = {
 	Times[dd___, (sud:(SUND|SU3D))[a_, b_, c_], d___] :>
-	Block[ {inds0, originds, originds0, originds1, inds},
-		originds0 = {a, b, c} /. SUNIndex-> Identity;
-		inds0 =(*Select instead of Intersection is used to preserve the order*)
-				Select[Sort[Cases[{dd, d}, QuantumField[___, fcsuni[_], ___], Infinity,
-					Heads -> True]] /. QuantumField[___, fcsuni[e_], ___] -> e, (MemberQ[originds0, #]) &];
-		originds1 = Select[originds0, (MemberQ[inds0, #]) &];
-		originds = Join[Complement[originds0, originds1], originds1];
-		inds = Join[Complement[originds, inds0], inds0];
-		If[ Length[inds0] > 1 && Length[inds] < 4,
-			sud[a, b, c]*(Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
-			sud[a, b, c]*Times[dd, d]
-		]
-	],
+		Block[ {inds0, originds, originds0, originds1, inds},
+			originds0 = {a, b, c} /. SUNIndex-> Identity;
+			(*Select instead of Intersection is used to preserve the order*)
+			inds0 = Select[Sort[Cases[{dd, d}, QuantumField[___, fcsuni[_], ___], Infinity, Heads -> True]] /.
+				QuantumField[___, fcsuni[e_], ___] -> e, (MemberQ[originds0, #]) &
+			];
+			originds1 = Select[originds0, (MemberQ[inds0, #]) &];
+			originds = Join[Complement[originds0, originds1], originds1];
+			inds = Join[Complement[originds, inds0], inds0];
+			If[ Length[inds0] > 1 && Length[inds] < 4,
+				sud[a, b, c]*(Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
+				sud[a, b, c]*Times[dd, d]
+			]
+		],
 	Times[dd___, (suf:(SUNF|SU2F|SU3F))[a_, b_, c_], d___] :>
 	Block[ {inds0, originds, originds0, originds1, inds},
 		originds0 = {a, b, c} /. SUNIndex-> Identity;
@@ -730,9 +662,8 @@ $SymSUNDFRules2 = {
 	Times[dd___, (sud:(SUND|SU3D))[a_, b_, c_], d___] :>
 	Block[ {inds0, originds, originds0, originds1, inds},
 		originds0 = {a, b, c} /. SUNIndex-> Identity;
-		inds0 =(*Select instead of Intersection is used to preserve the order*)
-				Select[Cases[{dd, d}, UMatrix[UGenerator[fcsuni[_]]], Infinity,
-				Heads -> True] /.
+		(*Select instead of Intersection is used to preserve the order*)
+		inds0 = Select[Cases[{dd, d}, UMatrix[UGenerator[fcsuni[_]]], Infinity, Heads -> True] /.
 			UMatrix[UGenerator[fcsuni[e_]]] -> e, (MemberQ[originds0, #]) &];
 		originds1 = Select[originds0, (MemberQ[inds0, #]) &];
 		originds = Join[Complement[originds0, originds1], originds1];
@@ -743,24 +674,20 @@ $SymSUNDFRules2 = {
 		]
 	],
 	Times[dd___, (suf:(SUNF|SU2F|SU3F))[a_, b_, c_], d___] :>
-	Block[ {inds0, originds, originds0, originds1, inds},
-		originds0 = {a, b, c} /. SUNIndex-> Identity;
-		inds0 =(*Select instead of Intersection is used to preserve the order*)
-				Select[Cases[{dd, d}, UMatrix[UGenerator[fcsuni[_]]], Infinity,
-				Heads -> True] /.
-			UMatrix[UGenerator[fcsuni[e_]]] -> e, (MemberQ[originds0, #]) &];
-		originds1 = Select[originds0, (MemberQ[inds0, #]) &];
-		originds = Join[Complement[originds0, originds1], originds1];
-		inds = Join[Complement[originds, inds0], inds0];
-		If[ Length[inds0] > 1 && Length[inds] < 4,
-			sig1[originds, inds]*
-			suf[a, b, c]*
-				(Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
-			suf[a, b, c]*Times[dd, d]
+		Block[ {inds0, originds, originds0, originds1, inds},
+			originds0 = {a, b, c} /. SUNIndex-> Identity;
+			(*Select instead of Intersection is used to preserve the order*)
+			inds0 = Select[Cases[{dd, d}, UMatrix[UGenerator[fcsuni[_]]], Infinity, Heads -> True] /.
+				UMatrix[UGenerator[fcsuni[e_]]] -> e, (MemberQ[originds0, #]) &];
+			originds1 = Select[originds0, (MemberQ[inds0, #]) &];
+			originds = Join[Complement[originds0, originds1], originds1];
+			inds = Join[Complement[originds, inds0], inds0];
+			If[ Length[inds0] > 1 && Length[inds] < 4,
+				sig1[originds, inds] suf[a, b, c] (Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
+				suf[a, b, c] Times[dd, d]
+			]
 		]
-	]
-				};
-
+};
 
 SUDFSymmetrize[exp_] :=
 	exp /. $SymSUNDFRules1 /. $SymSUNDFRules2;
@@ -777,9 +704,7 @@ SUDFSymmetrize[exp_] :=
 
 (*Clean up contracted indices*)
 sortRules1 = {(nm : (Times | NM))[a__, b__] :>
-	((nm[a, b] /. ((Rule @@ #) & /@
-									Transpose[{Cases[{a}, LorentzIndex[__], Infinity,
-												Heads -> True],
+	((nm[a, b] /. ((Rule @@ #) & /@Transpose[{Cases[{a}, LorentzIndex[__], Infinity, Heads -> True],
 											Sort[Cases[{a}, LorentzIndex[__], Infinity,
 													Heads -> True]]}]))) /; (Sort[
 								Cases[{a}, LorentzIndex[__], Infinity, Heads -> True]] ===
@@ -814,9 +739,11 @@ sortRules1 = {(nm : (Times | NM))[a__, b__] :>
 											Sort[Join[Union[#], Union[#]]]) &[
 								Cases[{b}, LorentzIndex[__], Infinity, Heads -> True]]))};
 
-sortRules2 = sortRules1 //. {HoldPattern[LorentzIndex] -> fcsuni, LorentzIndex -> fcsuni};
+sortRules2 =
+	sortRules1 //. {HoldPattern[LorentzIndex] -> fcsuni, LorentzIndex -> fcsuni};
 
-sortRules3 = sortRules1 //. {HoldPattern[LorentzIndex] -> UIndex, LorentzIndex -> UIndex};
+sortRules3 =
+	sortRules1 //. {HoldPattern[LorentzIndex] -> UIndex, LorentzIndex -> UIndex};
 
 (* Cleaning up contracted Lorentz indices. co is the number of factors that will be
 	considered; in e.g. u[mu2] gamma[mu1] gamma[mu1] u[mu2], two will suffice. *)
@@ -841,40 +768,6 @@ lorentzCleanup[exp_] :=
 		exp1 = exp1 /. ruls, {co, 2, 2}];
 	exp1);
 
-(* In case we would want to do the same for NM products*)
-
-(*lorentzCleanupNM[exp_] := (exp1 = exp;
-			Do[ders =
-					fccombs[
-						Union[Cases[exp, LorentzIndex[__], Infinity, Heads -> True]], co];
-				ruls = ((RuleDelayed1[
-				NM[PatternTest1[a_,
-				func[And @@ Table[Count1[yo, #[[i]],
-				Infinity, Heads -> True] == 1, {i,
-				co}]]], PatternTest1[b_,
-				func[And @@ Table[Count1[yo, #[[i]],
-				Infinity, Heads -> True] == 1, {i,
-				co}]]]], Condition1[
-				ReplaceAll1[NM[a, b],
-				Map1[(Rule1 @@ #) &,
-				Transpose1[{Cases1[{b}, LorentzIndex[__],
-				Infinity, Heads -> True], Sort[#]}]]],
-				SameQ1[Sort1[Cases1[{b}, LorentzIndex[__],
-				Infinity, Heads -> True]], Sort1[#]] &&
-				UnsameQ1[Cases1[{b}, LorentzIndex[__],
-				Infinity, Heads -> True],
-				Sort1[#]]]]) & /@ ders) /.
-				PatternTest1 -> PatternTest /.
-				Count1 -> Count /. yo -> # /.
-																		func -> Function /.
-																	RuleDelayed1 -> RuleDelayed /.
-																ReplaceAll1 -> ReplaceAll /.
-															Condition1 -> Condition /.
-														UnsameQ1 -> UnsameQ /. SameQ1 -> SameQ /.
-												Cases1 -> Cases /. Sort1 -> Sort /.
-										ReplaceAll1 -> ReplaceAll /. Transpose1 -> Transpose /.
-								Rule1 -> Rule /. Map1 -> Map /. Power1 -> Power;
-				exp1 = exp1 /. ruls, {co, 2, 2}]; exp1);*)
 
 (* Cleaning up contracted SU(N) indices. co is the number of factors that will be
 	considered; in e.g. u[mu2] gamma[mu1] gamma[mu1] u[mu2], two will suffice. *)
@@ -1872,17 +1765,9 @@ AmplitudeProjection[amp_,
 
 (* PionPionIsoSpin->0: *)
 
-AmplitudeProjection[amp_,
-				opts___Rule] /; ((Channel /. Flatten[{opts}] /.
-							Options[AmplitudeProjection]) === {{Pion, Pion} -> {Pion, Pion},
-						0}) :=
-	3*
-	AmplitudeProjection[amp,
-	Channel -> {{PionZero, PionZero} -> {PionZero, PionZero}},
-	Sequence[opts]] -
-	2*AmplitudeProjection[amp,
-	Channel -> {{PionPlus, PionPlus} -> {PionPlus, PionPlus}},
-	Sequence[opts]];
+AmplitudeProjection[amp_, opts___Rule] /; ((Channel /. Flatten[{opts}] /. Options[AmplitudeProjection]) === {{Pion, Pion} -> {Pion, Pion}, 0}) :=
+	3*	AmplitudeProjection[amp, Channel -> {{PionZero, PionZero} -> {PionZero, PionZero}},
+	Sequence[opts]] - 2*AmplitudeProjection[amp, Channel -> {{PionPlus, PionPlus} -> {PionPlus, PionPlus}}, Sequence[opts]];
 
 
 FCPrint[1,"PHI: Channels.m loaded."];

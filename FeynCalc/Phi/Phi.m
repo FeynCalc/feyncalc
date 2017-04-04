@@ -148,7 +148,7 @@ Get[FileNameJoin[{$FeynCalcDirectory,"Phi","First.m"}]]
 listPhi = Map[ToFileName[{$FeynCalcDirectory,"Phi"}, (# <> ".m")] &,
 			{"Objects", "Couplings", "Channels", "Utilities", "Renormalization", "Palettes"}];
 
-FeynCalc`Private`processDecls/@listPhi;
+FCDeclareHeader/@listPhi;
 Get/@listPhi;
 
 

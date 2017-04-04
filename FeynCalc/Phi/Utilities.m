@@ -1594,7 +1594,7 @@ UCoefficient[MM][do_][x_] :=
 	);
 
 UPerturb[exp_, opts___Rule] :=
-	Block[ {or, lim, quants, ruls, subs, a, b, i, summ, UCoeff},
+	Block[ {or, lim, quants, ruls, subs, i, summ, UCoeff},
 		or = ExpansionOrder /. {opts} /. Options[UPerturb];
 		lim = Which[
 				NumericQ[or],

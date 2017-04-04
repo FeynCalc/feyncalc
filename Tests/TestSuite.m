@@ -20,6 +20,11 @@ If[testType===3,
 	WriteString["stdout","Tests for TARCER.\n"]
 ];
 
+If[testType===4,
+	$LoadPhi=True;
+	WriteString["stdout","Tests for PHI.\n"]
+];
+
 <<FeynCalc`
 
 testRunner[test_String]:=
@@ -38,7 +43,7 @@ FCPrint[0,"Starting FeynCalc Test Suite on Mathematica ", $VersionNumber, "\n", 
 Which[
 testType===1,
 fcTestList = Select[(FileNames["*.mt", FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "*"}]]),
-	StringFreeQ[#, ___ ~~ "TARCER" ~~ ___] &],
+	(StringFreeQ[#, ___ ~~ "TARCER" ~~ ___] && StringFreeQ[#, ___ ~~ "PHI" ~~ ___])&],
 testType===2,
 fcTestList = Select[StringCases[
 FileNames["*.mt",
@@ -48,6 +53,10 @@ Infinity], RegularExpression[".*IntegrationTests.*"]]//Flatten,  StringFreeQ[#, 
 testType===3,
 fcTestList =Select[(FileNames["*.mt", FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "*"}]]),
 	!StringFreeQ[#, ___ ~~ "TARCER" ~~ ___] &],
+(* PHI *)
+testType===4,
+fcTestList =Select[(FileNames["*.mt", FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "*"}]]),
+	!StringFreeQ[#, ___ ~~ "PHI" ~~ ___] &],
 True,
 FCPrint[0,"Error! Uknown test type",UseWriteString->True];
 Exit[]

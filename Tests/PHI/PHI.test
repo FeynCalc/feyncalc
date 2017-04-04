@@ -1,0 +1,81 @@
+
+
+(* :Title: PHI.test                                          	    		*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PHI			  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`PHI`UQuarkMassMatrix =
+({
+{"fcstPHI-UQuarkMassMatrix-ID1", "UQuarkMassMatrix[QuarkToMesonMasses -> False,
+DiagonalToU -> True, SUNN -> 3]",
+"1/3 (ParticleMass[Fermion[13]] + ParticleMass[Fermion[14]] +
+	ParticleMass[Fermion[15]]) UMatrix[UIdentity, SUNN -> 3] +
+1/2 (-ParticleMass[Fermion[13]] + ParticleMass[Fermion[14]]) UMatrix[
+UGenerator[ExplicitSUNIndex[3], SUNN -> 3], SUNN -> 3] +
+1/6 (Sqrt[3] ParticleMass[Fermion[13]] +
+	Sqrt[3] ParticleMass[Fermion[14]] -
+	2 Sqrt[3] ParticleMass[Fermion[15]]) UMatrix[
+UGenerator[ExplicitSUNIndex[8], SUNN -> 3], SUNN -> 3]"},
+
+
+{"fcstPHI-UQuarkMassMatrix-ID2", "UQuarkMassMatrix[]",
+"(ParticleMass[PseudoScalar[2]]^2 UMatrix[
+UIdentity])/(2 QuarkCondensate[])"}
+});
+
+
+
+
+Tests`PHI`UTrace =
+({
+{"fcstPHI-UTrace-ID1", "UTrace[UQuarkMassMatrix[]]","ParticleMass[PseudoScalar[2]]^2/QuarkCondensate[]"},
+{"fcstPHI-UTrace-ID2", "UTrace[UQuarkMassMatrix[QuarkToMesonMasses -> False,
+DiagonalToU -> True, SUNN -> 3], SUNN -> 3]","ParticleMass[Fermion[13]] + ParticleMass[Fermion[14]] +
+ParticleMass[Fermion[15]]"},
+{"fcstPHI-UTrace-ID3", "UTrace[UQuarkMassMatrix[QuarkToMesonMasses -> False,
+	DiagonalToU -> True, SUNN -> 3] // WriteOutIsoVectors //
+WriteOutUMatrices[#, SUNN -> 3] & // Simplify, SUNN -> 3]","ParticleMass[Fermion[13]] + ParticleMass[Fermion[14]] +
+ParticleMass[Fermion[15]]"}
+});
+
+Tests`PHI`WriteOutMatrices =
+({
+{"fcstPHI-WriteOutMatrices-ID1",
+"WriteOutUMatrices[UMatrix[UIdentity],SUNN\[Rule]2]",
+"{{1, 0}, {0, 1}}"},
+{"fcstPHI-WriteOutMatrices-ID2",
+"WriteOutUMatrices[UMatrix[UIdentity],SUNN\[Rule]3]",
+"{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}"},
+{"fcstPHI-WriteOutMatrices-ID3",
+"WriteOutUMatrices[(a+b)UMatrix[UIdentity],SUNN\[Rule]2]",
+"{{a + b, 0}, {0, a + b}}"},
+{"fcstPHI-WriteOutMatrices-ID4",
+"WriteOutUMatrices[(a+b)UMatrix[UIdentity],SUNN\[Rule]3]",
+"{{a + b, 0, 0}, {0, a + b, 0}, {0, 0, a + b}}"},
+{"fcstPHI-WriteOutMatrices-ID5",
+"WriteOutUMatrices[UQuarkMassMatrix[QuarkToMesonMasses\[Rule]False,\
+DiagonalToU\[Rule]True,SUNN\[Rule]2],SUNN\[Rule]3]//Simplify",
+"{{ParticleMass[Fermion[14]], 0}, {0, ParticleMass[Fermion[13]]}}"},
+{"fcstPHI-WriteOutMatrices-ID6",
+"WriteOutUMatrices[UQuarkMassMatrix[QuarkToMesonMasses\[Rule]False,\
+DiagonalToU\[Rule]True,SUNN\[Rule]3],SUNN\[Rule]3]//Simplify",
+"{{ParticleMass[Fermion[14]], 0, 0}, {0, \
+ParticleMass[Fermion[13]], 0}, {0, 0, ParticleMass[Fermion[15]]}}"}
+})
+
+
+
+
+
+
+
+
