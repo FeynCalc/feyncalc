@@ -48,3 +48,9 @@ If[ Names["Tests`Pauli`fcstPauliTrick*"]=!={},
 	Join@@(ToExpression/@Names["Tests`Pauli`fcstPauliTrick*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
+
+If[ Names["Tests`Pauli`fcstPauliOrder*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Pauli`fcstPauliOrder*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];

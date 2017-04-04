@@ -1,0 +1,94 @@
+
+
+(* :Title: PauliOrder.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliOrder			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliOrder =
+({
+{"fcstPauliOrder-ID1", "PauliOrder[0]", "0"},
+{"fcstPauliOrder-ID2", "PauliOrder[CSI[i],FCE\[Rule]True]",
+"CSI[i]"},
+{"fcstPauliOrder-ID3", "PauliOrder[CSI[j,i],FCE\[Rule]True]",
+"-CSI[i] . CSI[j] + 2*KD[i, j]"},
+{"fcstPauliOrder-ID4", "PauliOrder[CSID[j,i],FCE\[Rule]True]",
+"-CSID[i] . CSID[j] + 2*KDD[i, j]"},
+{"fcstPauliOrder-ID5", "PauliOrder[CSI[i,j],{j,i},FCE\[Rule]True]",
+"-CSI[j] . CSI[i] + 2*KD[i, j]"},
+{"fcstPauliOrder-ID6", "PauliOrder[CSID[i,j],{j,i},FCE\[Rule]True]",
+	"-CSID[j] . CSID[i] + 2*KDD[i, j]"},
+{"fcstPauliOrder-ID7",
+"PauliOrder[-CSI[a,b]+2 KD[a,b],{b,a},FCE\[Rule]True]",
+"CSI[b] . CSI[a]"},
+{"fcstPauliOrder-ID8",
+"PauliOrder[-CSID[a,b]+2 KDD[a,b],{b,a},FCE\[Rule]True]",
+"CSID[b] . CSID[a]"},
+{"fcstPauliOrder-ID9",
+"PauliOrder[CSI[i,i].CSIS[p,p],FCE\[Rule]True]", "3*CSP[p, p]"},
+{"fcstPauliOrder-ID10",
+"PauliOrder[CSID[i,i].CSISD[p,p],FCE\[Rule]True]",
+"(-1 + D)*CSPD[p, p]"},
+{"fcstPauliOrder-ID11",
+"PauliOrder[CSI[i,j].CSI[i,j],FCE\[Rule]True]", "-3"},
+{"fcstPauliOrder-ID12", "PauliOrder[CSI[i,j,i],FCE\[Rule]True]",
+"-CSI[j]"},
+{"fcstPauliOrder-ID13", "PauliOrder[CSID[i,j,i],FCE\[Rule]True]",
+"(3 - D)*CSID[j]"},
+{"fcstPauliOrder-ID14", "PauliOrder[CSIS[-p,q,p],FCE\[Rule]True]",
+"CSIS[q]*CSP[p, p] - 2*CSIS[p]*CSP[p, q]"},
+{"fcstPauliOrder-ID15", "PauliOrder[CSISD[-p,q,p],FCE\[Rule]True]",
+"CSISD[q]*CSPD[p, p] - 2*CSISD[p]*CSPD[p, q]"},
+{"fcstPauliOrder-ID16",
+"PauliOrder[CSI[i],FCE\[Rule]True,FCPauliIsolate\[Rule]False]",
+"CSI[i]"},
+{"fcstPauliOrder-ID17",
+"PauliOrder[CSI[j,i],FCE\[Rule]True,FCPauliIsolate\[Rule]False]",
+"-CSI[i] . CSI[j] + 2*KD[i, j]"},
+{"fcstPauliOrder-ID18",
+"PauliOrder[CSID[j,i],FCE\[Rule]True,FCPauliIsolate\[Rule]False]",
+"-CSID[i] . CSID[j] + 2*KDD[i, j]"},
+{"fcstPauliOrder-ID19",
+"PauliOrder[CSI[i,j],{j,i},FCE\[Rule]True,FCPauliIsolate\[Rule]\
+False]", "-CSI[j] . CSI[i] + 2*KD[i, j]"},
+{"fcstPauliOrder-ID20",
+"PauliOrder[CSID[i,j],{j,i},FCE\[Rule]True,FCPauliIsolate\[Rule]\
+False]", "-CSID[j] . CSID[i] + 2*KDD[i, j]"},
+{"fcstPauliOrder-ID21",
+"PauliOrder[-CSI[a,b]+2 \
+KD[a,b],{b,a},FCE\[Rule]True,FCPauliIsolate\[Rule]False]",
+"CSI[b] . CSI[a]"},
+{"fcstPauliOrder-ID22",
+"PauliOrder[-CSID[a,b]+2 \
+KDD[a,b],{b,a},FCE\[Rule]True,FCPauliIsolate\[Rule]False]",
+"CSID[b] . CSID[a]"},
+{"fcstPauliOrder-ID23",
+"PauliOrder[CSI[i,i].CSIS[p,p],FCE\[Rule]True,FCPauliIsolate\[Rule]\
+False]", "3*CSP[p, p]"},
+{"fcstPauliOrder-ID24",
+"PauliOrder[CSID[i,i].CSISD[p,p],FCE\[Rule]True,FCPauliIsolate\
+\[Rule]False]", "(-1 + D)*CSPD[p, p]"},
+{"fcstPauliOrder-ID25",
+"PauliOrder[CSI[i,j].CSI[i,j],FCE\[Rule]True,FCPauliIsolate\[Rule]\
+False]", "-3"},
+{"fcstPauliOrder-ID26",
+"PauliOrder[CSI[i,j,i],FCE\[Rule]True,FCPauliIsolate\[Rule]False]",
+	"-CSI[j]"},
+{"fcstPauliOrder-ID27",
+"PauliOrder[CSID[i,j,i],FCE\[Rule]True,FCPauliIsolate\[Rule]False]\
+", "(3 - D)*CSID[j]"},
+{"fcstPauliOrder-ID28",
+"PauliOrder[CSIS[-p,q,p],FCE\[Rule]True,FCPauliIsolate\[Rule]False]\
+", "CSIS[q]*CSP[p, p] - 2*CSIS[p]*CSP[p, q]"},
+{"fcstPauliOrder-ID29",
+"PauliOrder[CSISD[-p,q,p],FCE\[Rule]True,FCPauliIsolate\[Rule]\
+False]", "CSISD[q]*CSPD[p, p] - 2*CSISD[p]*CSPD[p, q]"}
+});
