@@ -46,7 +46,19 @@ DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIn
 "-M MT[i, k]"},
 {"fcstDiracSimplify-ID17",
 "DiracSimplify[(1/2 - GA[5]/2).(-((a + GS[p + q])/b)).(1/2 + GA[5]/2)] // FCE",
-"-(GS[p].GA[5]/(2 b)) - GS[q].GA[5]/(2 b) - GS[p]/(2 b) - GS[q]/(2 b)"}
+"-(GS[p].GA[5]/(2 b)) - GS[q].GA[5]/(2 b) - GS[p]/(2 b) - GS[q]/(2 b)"},
+
+
+{"fcstDiracSimplify-ID18","DiracSimplify[
+Spinor[-Momentum[p2, D], m, 1].GAD[Lor1].(m + GSD[-l - p2]).GAD[Lor3].Spinor[-Momentum[p4, D], m, 1]] // FCE","-Spinor[-Momentum[p2, D], m, 1].GAD[Lor1].GSD[l].GAD[Lor3].Spinor[-Momentum[p4, D], m, 1] -
+2 Spinor[-Momentum[p2, D], m, 1].GAD[Lor3].Spinor[-Momentum[p4, D], m, 1] FVD[p2, Lor1]"},
+{"fcstDiracSimplify-ID19","DiracSimplify[
+Spinor[Momentum[p3, D], m, 1].GAD[Lor3].(m + GSD[-l + p1]).GAD[Lor1].Spinor[Momentum[p1, D], m, 1]] // FCE","-Spinor[Momentum[p3, D], m, 1].GAD[Lor3].GSD[l].GAD[Lor1].Spinor[
+Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor3].Spinor[Momentum[p1, D], m, 1] FVD[p1, Lor1]"},
+{"fcstDiracSimplify-ID20","DiracSimplify[
+Spinor[-Momentum[p2, D], m, 1].GAD[Lor4].(m + GSD[-l - p2]).GAD[Lor1].Spinor[-Momentum[p4, D], m, 1]] // FCE","-Spinor[-Momentum[p2, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[-Momentum[p4, D], m, 1] - 2 Spinor[-Momentum[p2, D], m, 1].GAD[Lor1].Spinor[-Momentum[p4, D], m, 1] FVD[p2, Lor4]"},
+{"fcstDiracSimplify-ID21","DiracSimplify[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[Lor1].Spinor[Momentum[p1, D], m, 1]] // FCE","Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
+Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Momentum[p1, D], m, 1] FVD[p3, Lor4]"}
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {
