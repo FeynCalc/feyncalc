@@ -18,7 +18,7 @@
 ChangeDimension::usage=
 "ChangeDimension[exp, dim] changes all LorentzIndex and Momentum objects in \
 exp to dimension dim (and thus also Dirac slashes and Dirac matrices \
-in FeynCalcInternal-representation). CIndex and CMomentum objects become \
+in FeynCalcInternal-representation). CartesianIndex and CartesianMomentum objects become \
 changed to dimension dim-1.";
 
 ChangeDimension::failmsg =
@@ -40,7 +40,7 @@ Options[ChangeDimension] ={
 ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 	Block[
 		{	expr, res, tmp, lorentzDim, cartesianDim,
-			holdPair, holdDiracGamma, holdCPair, holdEps, holdPauliSigma},
+			holdPair, holdDiracGamma, holdCartesianPair, holdEps, holdPauliSigma},
 
 		If[ OptionValue[FCI],
 			expr = ex,
@@ -62,15 +62,15 @@ ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		tmp = expr /. DiracGamma -> holdDiracGamma /. PauliSigma -> holdPauliSigma /. Pair-> holdPair /. CPair->holdCPair  /. Eps -> holdEps;
+		tmp = expr /. DiracGamma -> holdDiracGamma /. PauliSigma -> holdPauliSigma /. Pair-> holdPair /. CartesianPair->holdCartesianPair  /. Eps -> holdEps;
 
 		tmp = tmp /. holdDiracGamma[(z: 5|6|7)] :> DiracGamma[z];
 
 		tmp = tmp /. {
 			LorentzIndex[z_,___] :> LorentzIndex[z,lorentzDim],
-			CIndex[z_,___] :> CIndex[z,cartesianDim],
+			CartesianIndex[z_,___] :> CartesianIndex[z,cartesianDim],
 			Momentum[z_,___] :> Momentum[z,lorentzDim],
-			CMomentum[z_,___] :> CMomentum[z,cartesianDim]
+			CartesianMomentum[z_,___] :> CartesianMomentum[z,cartesianDim]
 		};
 
 		tmp = tmp /. {
@@ -78,7 +78,7 @@ ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 			holdPauliSigma[z_,___] :> holdPauliSigma[z,cartesianDim]
 		};
 
-		res = tmp /. holdDiracGamma -> DiracGamma /. holdPauliSigma -> PauliSigma /. holdPair -> Pair /. holdCPair -> CPair /. holdEps -> Eps;
+		res = tmp /. holdDiracGamma -> DiracGamma /. holdPauliSigma -> PauliSigma /. holdPair -> Pair /. holdCartesianPair -> CartesianPair /. holdEps -> Eps;
 
 
 		If[	OptionValue[FCE],

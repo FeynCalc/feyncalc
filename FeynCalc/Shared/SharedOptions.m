@@ -15,8 +15,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-CIndexNames::usage =
-"CIndexNames is an option for FCCanonicalizeDummyIndices \
+CartesianIndexNames::usage =
+"CartesianIndexNames is an option for FCCanonicalizeDummyIndices \
 and other functions. It renames the generic dummy Cartesian indices to the indices \
 in the supplied list.";
 

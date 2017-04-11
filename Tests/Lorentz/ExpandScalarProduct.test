@@ -62,14 +62,14 @@ myTens[z, Momentum[b], Momentum[d]]"},
 myTens[z, Momentum[a + b], Momentum[c + d]]]","myTens[z, Momentum[a + b], Momentum[c + d]]"},
 {"fcstExpandScalarProduct-ID12","SP[p, p] = (a + b)^2; \n tmp = ExpandScalarProduct[Pair[Momentum[p], Momentum[p]]]; \n
 FCClearScalarProducts[]; \n tmp","(a + b)^2"},
-{"fcstExpandScalarProduct-ID13","ExpandScalarProduct[CPair[CMomentum[p], CMomentum[q]]]","CPair[CMomentum[p], CMomentum[q]]"},
-{"fcstExpandScalarProduct-ID14","ExpandScalarProduct[CPair[CMomentum[p1 + p2], CMomentum[q]]]","CPair[CMomentum[p1], CMomentum[q]] +
-CPair[CMomentum[p2], CMomentum[q]]"},
-{"fcstExpandScalarProduct-ID15","ExpandScalarProduct[CPair[CMomentum[p1 + p2], CMomentum[q1 + q2]]]","CPair[CMomentum[p1], CMomentum[q1]] +
-CPair[CMomentum[p1], CMomentum[q2]] + CPair[CMomentum[p2], CMomentum[q1]] + CPair[CMomentum[p2], CMomentum[q2]]"},
-{"fcstExpandScalarProduct-ID16","ExpandScalarProduct[CPair[CMomentum[p1 + p2], CIndex[i]]]","CPair[CIndex[i], CMomentum[p1]] + CPair[CIndex[i], CMomentum[p2]]"},
-{"fcstExpandScalarProduct-ID17","ExpandScalarProduct[CPair[CMomentum[p1 + p2], CMomentum[q1 + q2]] + CPair[CMomentum[p3 + p4], CMomentum[q1 + q2]], Momentum -> {p3}]",
-"CPair[CMomentum[p1 + p2], CMomentum[q1 + q2]] +CPair[CMomentum[p3], CMomentum[q1]] +CPair[CMomentum[p3], CMomentum[q2]] +CPair[CMomentum[p4], CMomentum[q1]] +CPair[CMomentum[p4], CMomentum[q2]]"},
-{"fcstExpandScalarProduct-ID18","ExpandScalarProduct[TPair[TMomentum[p1 + p2], TIndex[]]]",
-"TPair[TIndex[], TMomentum[p1]] + TPair[TIndex[], TMomentum[p2]]"}
+{"fcstExpandScalarProduct-ID13","ExpandScalarProduct[CartesianPair[CartesianMomentum[p], CartesianMomentum[q]]]","CartesianPair[CartesianMomentum[p], CartesianMomentum[q]]"},
+{"fcstExpandScalarProduct-ID14","ExpandScalarProduct[CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q]]]","CartesianPair[CartesianMomentum[p1], CartesianMomentum[q]] +
+CartesianPair[CartesianMomentum[p2], CartesianMomentum[q]]"},
+{"fcstExpandScalarProduct-ID15","ExpandScalarProduct[CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q1 + q2]]]","CartesianPair[CartesianMomentum[p1], CartesianMomentum[q1]] +
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[q2]] + CartesianPair[CartesianMomentum[p2], CartesianMomentum[q1]] + CartesianPair[CartesianMomentum[p2], CartesianMomentum[q2]]"},
+{"fcstExpandScalarProduct-ID16","ExpandScalarProduct[CartesianPair[CartesianMomentum[p1 + p2], CartesianIndex[i]]]","CartesianPair[CartesianIndex[i], CartesianMomentum[p1]] + CartesianPair[CartesianIndex[i], CartesianMomentum[p2]]"},
+{"fcstExpandScalarProduct-ID17","ExpandScalarProduct[CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q1 + q2]] + CartesianPair[CartesianMomentum[p3 + p4], CartesianMomentum[q1 + q2]], Momentum -> {p3}]",
+"CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q1 + q2]] +CartesianPair[CartesianMomentum[p3], CartesianMomentum[q1]] +CartesianPair[CartesianMomentum[p3], CartesianMomentum[q2]] +CartesianPair[CartesianMomentum[p4], CartesianMomentum[q1]] +CartesianPair[CartesianMomentum[p4], CartesianMomentum[q2]]"},
+{"fcstExpandScalarProduct-ID18","ExpandScalarProduct[TemporalPair[TemporalMomentum[p1 + p2], TemporalIndex[]]]",
+"TemporalPair[TemporalIndex[], TemporalMomentum[p1]] + TemporalPair[TemporalIndex[], TemporalMomentum[p2]]"}
 }

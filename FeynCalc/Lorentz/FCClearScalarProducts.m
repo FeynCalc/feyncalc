@@ -37,8 +37,8 @@ ClearScalarProducts:=FCClearScalarProducts[];
 FCClearScalarProducts[OptionsPattern[]] :=
 	(
 		DownValues[Pair] = initialPairDownValues;
-		DownValues[CPair] = initialCPairDownValues;
-		DownValues[TPair] = initialTPairDownValues;
+		DownValues[CartesianPair] = initialCartesianPairDownValues;
+		DownValues[TemporalPair] = initialTemporalPairDownValues;
 		DownValues[ScalarProduct] = initialScalarProductDownValues;
 		UpValues[ScalarProduct] = initialScalarProductUpValues;
 		DownValues[CartesianScalarProduct] = initialCartesianScalarProductDownValues;
@@ -51,7 +51,7 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		DownValues[CSPE] = initialCSPEDownValues;
 		DownValues[TC] = initialTCDownValues;
 		DownValues[Momentum] = initialMomentumDownValues;
-		DownValues[CMomentum] = initialCMomentumDownValues;
+		DownValues[CartesianMomentum] = initialCartesianMomentumDownValues;
 		$ScalarProducts = initialScalarProducts;
 	);
 

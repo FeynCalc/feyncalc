@@ -105,7 +105,7 @@ PauliOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			time=AbsoluteTime[];
 			FCPrint[1, "PauliOrder: Inserting Pauli objects back.", FCDoControl->poVerbose];
 
-			pauliObjectsEval = pauliObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. CPairContract -> CPair;
+			pauliObjectsEval = pauliObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. CartesianPairContract -> CartesianPair;
 			If[	!FreeQ[pauliObjectsEval,Pair],
 				pauliObjectsEval = pauliObjectsEval/. Pair->PairContract /. PairContract->Pair
 			];
@@ -131,7 +131,7 @@ PauliOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 				FCPrint[1, "PauliOrder: Ordering done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->poVerbose]
 
 			];
-			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. CPairContract->CPair;
+			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. CartesianPairContract->CartesianPair;
 			If[	!FreeQ[pauliObjectsEval,Pair],
 				pauliObjectsEval = pauliObjectsEval/. Pair->PairContract /. PairContract->Pair
 			];
@@ -161,13 +161,13 @@ PauliOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 
 pauliOrderLex[x_, maxIterations_]:=
 	FixedPoint[(# /. {
-		holdDOT[a___,PauliSigma[(h1:CIndex|CMomentum)[ar1__], dim1_:3],PauliSigma[(h2:CIndex|CMomentum)[ar2__], dim2_:3],b___]/;
+		holdDOT[a___,PauliSigma[(h1:CartesianIndex|CartesianMomentum)[ar1__], dim1_:3],PauliSigma[(h2:CartesianIndex|CartesianMomentum)[ar2__], dim2_:3],b___]/;
 			!OrderedQ[{h1[First[{ar1}],dim1],h2[First[{ar2}],dim2]}] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, PauliSigma[h2[ar2],dim2], PauliSigma[h1[ar1],dim1] ,b] +
-			2 CPairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
+			2 CartesianPairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,PauliSigma[(h:CIndex|CMomentum|TIndex)[ar___], dim_:3],
-			PauliSigma[(h:CIndex|CMomentum|TIndex)[ar___], dim_:3],b___] :>
+		holdDOT[a___,PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],
+			PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],b___] :>
 			holdDOT[a,b] PauliTrick[DOT[PauliSigma[h[ar],dim].PauliSigma[h[ar],dim]],FCI->True,FCPauliIsolate->False, PauliReduce->pauliReduce]
 
 
@@ -175,13 +175,13 @@ pauliOrderLex[x_, maxIterations_]:=
 
 customOrdering[x_, currentElement_]:=
 	x //. {
-		holdDOT[a___,PauliSigma[(h1:CIndex|CMomentum)[ar1__], dim1_:3],PauliSigma[(h2:CIndex|CMomentum)[ar2__], dim2_:3],b___]/;
+		holdDOT[a___,PauliSigma[(h1:CartesianIndex|CartesianMomentum)[ar1__], dim1_:3],PauliSigma[(h2:CartesianIndex|CartesianMomentum)[ar2__], dim2_:3],b___]/;
 			!FreeQ[h2[First[{ar2}],dim2],currentElement] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, PauliSigma[h2[ar2],dim2], PauliSigma[h1[ar1],dim1] ,b] +
-			2 CPairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
+			2 CartesianPairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,PauliSigma[(h:CIndex|CMomentum|TIndex)[ar___], dim_:3],
-			PauliSigma[(h:CIndex|CMomentum|TIndex)[ar___], dim_:3],b___] :>
+		holdDOT[a___,PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],
+			PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],b___] :>
 			holdDOT[a,b] PauliTrick[DOT[PauliSigma[h[ar],dim].PauliSigma[h[ar],dim]],FCI->True,FCPauliIsolate->False, PauliReduce->pauliReduce]
 };
 

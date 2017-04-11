@@ -98,7 +98,7 @@ spCDieqRules = {
 	(* reaching the first spinor, if we need to anticommute past another Dirac gamma (not gamma 5)	*)
 	HoldDOT[	z___,	s: Spinor[n_. Momentum[p_, dim_ : 4] + k_. ,___],
 					a___DiracGamma,
-					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CIndex | _TIndex | _CMomentum),di_:4],
+					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum),di_:4],
 					DiracGamma[Momentum[p_,dim_ : 4],dim_ : 4],b___] :>
 					-HoldDOT[ z,s,a, DiracGamma[Momentum[p,dim],dim],DiracGamma[x,di],b] +
 					2(PairContract[x,Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[ z,s,a,b]/;
@@ -116,7 +116,7 @@ spCDieqRules = {
 
 	(* reaching the last spinor, if we need to anticommute past another Dirac gamma (not gamma 5)	*)
 	HoldDOT[	a___,	DiracGamma[Momentum[p_,dim_:4],dim_:4],
-					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CIndex | _TIndex | _CMomentum),di_:4],
+					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum),di_:4],
 					b___DiracGamma,
 					s: Spinor[n_. Momentum[p_, dim_: 4] + k_.,___],z___] :>
 						(-HoldDOT[a,DiracGamma[x,di],DiracGamma[Momentum[p,dim],dim],b,s,z]+

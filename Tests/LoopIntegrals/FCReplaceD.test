@@ -24,14 +24,14 @@ Tests`LoopIntegrals`fcstFCReplaceD = {
 {"fcstFCReplaceD-ID6","FCReplaceD[GA[x], D -> 4 - 2 Epsilon,FCE->True]","GA[x]"},
 {"fcstFCReplaceD-ID7","FCReplaceD[FV[x, i], D -> 4 - 2 Eps,FCE->True] ","FV[x, i]"},
 {"fcstFCReplaceD-ID8", "FCReplaceD[CSP[p,p],D\[Rule]4-2 Epsilon]",
-"CPair[CMomentum[p], CMomentum[p]]"},
+"CartesianPair[CartesianMomentum[p], CartesianMomentum[p]]"},
 {"fcstFCReplaceD-ID9",
 "FCReplaceD[ScaleMu^(D-4) CSP[p,p]*D,D\[Rule]4-2 Epsilon]",
-"((4 - 2*Epsilon)*CPair[CMomentum[p], \
-CMomentum[p]])/ScaleMu^(2*Epsilon)"},
+"((4 - 2*Epsilon)*CartesianPair[CartesianMomentum[p], \
+CartesianMomentum[p]])/ScaleMu^(2*Epsilon)"},
 {"fcstFCReplaceD-ID10",
 "FCReplaceD[KD[mu,nu]*(D-1),D\[Rule]4-2 Epsilon]",
-"(3 - 2*Epsilon)*CPair[CIndex[mu], CIndex[nu]]"},
+"(3 - 2*Epsilon)*CartesianPair[CartesianIndex[mu], CartesianIndex[nu]]"},
 {"fcstFCReplaceD-ID11",
 "FCReplaceD[CGAD[i] D,D\[Rule]4-2 Eps,FCE\[Rule]True]",
 "(4 - 2*Eps)*CGAD[i]"},

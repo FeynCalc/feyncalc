@@ -57,7 +57,7 @@ PauliSigmaExpand[expr_, OptionsPattern[]] :=
 	];
 
 	(* List of all the unique Feynman slashes	*)
-	uniqList = Cases[x+null1+null2, PauliSigma[arg_ /; ! FreeQ2[{arg}, {Momentum,CMomentum}],___], Infinity]//DeleteDuplicates//Sort;
+	uniqList = Cases[x+null1+null2, PauliSigma[arg_ /; ! FreeQ2[{arg}, {Momentum,CartesianMomentum}],___], Infinity]//DeleteDuplicates//Sort;
 
 	(*	If the user specified to perform expansion only for some
 		special slashed momenta, let's do it	*)

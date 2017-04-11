@@ -8,8 +8,8 @@
 PairContract::usage =
 "PairContract is like Pair, but with (local) contraction properties.";
 
-CPairContract::usage =
-"CPairContract is like CPair, but with (local) contraction properties.";
+CartesianPairContract::usage =
+"CartesianPairContract is like CartesianPair, but with (local) contraction properties.";
 
 PairContract3::usage =
 "PairContract3 is like Pair, but with local contraction properties \
@@ -23,35 +23,35 @@ End[]
 
 Begin["`PairContract`Private`"]
 
-SetAttributes[CPairContract,Orderless];
+SetAttributes[CartesianPairContract,Orderless];
 
 
-CPairContract[CIndex[i_],CIndex[i_]]:=
+CartesianPairContract[CartesianIndex[i_],CartesianIndex[i_]]:=
 	3;
 
-CPairContract[CIndex[i_],CIndex[i_, _Symbol-4]]:=
+CartesianPairContract[CartesianIndex[i_],CartesianIndex[i_, _Symbol-4]]:=
 	0;
 
-CPairContract[CIndex[i_],CIndex[i_, _Symbol-1]]:=
+CartesianPairContract[CartesianIndex[i_],CartesianIndex[i_, _Symbol-1]]:=
 	3;
 
-CPairContract[CIndex[i_, dim_],CIndex[i_, dim_]]:=
+CartesianPairContract[CartesianIndex[i_, dim_],CartesianIndex[i_, dim_]]:=
 	dim;
 
-CPairContract[CIndex[i_, dim_Symbol-1],CIndex[i_, dim_Symbol-4]]:=
+CartesianPairContract[CartesianIndex[i_, dim_Symbol-1],CartesianIndex[i_, dim_Symbol-4]]:=
 	dim-4;
 
-CPairContract/:
-	CPairContract[_CIndex,x_]^2 :=
-		CPairContract[x,x];
+CartesianPairContract/:
+	CartesianPairContract[_CartesianIndex,x_]^2 :=
+		CartesianPairContract[x,x];
 
 
-CPairContract/:
-	CPairContract[i_CIndex,x_] f_[a__]:=
-		(f[a]/. CIndex[First[i],___] -> x)/; !FreeQ[f[a], CIndex[First[i],___]];
+CartesianPairContract/:
+	CartesianPairContract[i_CartesianIndex,x_] f_[a__]:=
+		(f[a]/. CartesianIndex[First[i],___] -> x)/; !FreeQ[f[a], CartesianIndex[First[i],___]];
 
-CPairContract/:
-	CPairContract[CIndex[i_,___],j_CIndex] (h:Pair|PairContract)[CIndex[i_,___], l_LorentzIndex]:=
+CartesianPairContract/:
+	CartesianPairContract[CartesianIndex[i_,___],j_CartesianIndex] (h:Pair|PairContract)[CartesianIndex[i_,___], l_LorentzIndex]:=
 		h[j,l];
 
 
@@ -122,19 +122,19 @@ PairContract[ LorentzIndex[x_], LorentzIndex[x_,_Symbol] ] :=
 PairContract[ LorentzIndex[x_,di_], LorentzIndex[x_,di_] ] :=
 	di;
 
-PairContract[ CIndex[x_], CIndex[x_] ] :=
+PairContract[ CartesianIndex[x_], CartesianIndex[x_] ] :=
 	3 FeynCalc`Package`MetricS;
 
-PairContract[ CIndex[x_], CIndex[x_, _Symbol-1] ] :=
+PairContract[ CartesianIndex[x_], CartesianIndex[x_, _Symbol-1] ] :=
 	3 FeynCalc`Package`MetricS;
 
-PairContract[ CIndex[x_], CIndex[x_, _Symbol-4] ] :=
+PairContract[ CartesianIndex[x_], CartesianIndex[x_, _Symbol-4] ] :=
 	0;
 
-PairContract[ CIndex[x_, di_], CIndex[x_, di_] ] :=
+PairContract[ CartesianIndex[x_, di_], CartesianIndex[x_, di_] ] :=
 	di FeynCalc`Package`MetricS;
 
-PairContract[ CIndex[x_, di_Symbol-1], CIndex[x_, di_Symbol-4] ] :=
+PairContract[ CartesianIndex[x_, di_Symbol-1], CartesianIndex[x_, di_Symbol-4] ] :=
 	(di-4) FeynCalc`Package`MetricS;
 
 PairContract /:
@@ -221,7 +221,7 @@ PairContract[x_,y_] :=
 			sCOt,
 			Pair[x,y]
 		]
-	]/;FreeQ2[{x,y},{LorentzIndex,CIndex}];
+	]/;FreeQ2[{x,y},{LorentzIndex,CartesianIndex}];
 
 
 FCPrint[1,"PairContract.m loaded."];

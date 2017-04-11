@@ -37,21 +37,21 @@ li]],{i,1,50000}])+FCI[FV[q,i]MT[j,j]],{LorentzIndex}]", "False"},
 
 Tests`Lorentz`fcstCartesianDummyIndexFreeQ =
 ({
-{"fcstCartesianDummyIndexFreeQ-ID1", "DummyIndexFreeQ[0,{CIndex}]",
+{"fcstCartesianDummyIndexFreeQ-ID1", "DummyIndexFreeQ[0,{CartesianIndex}]",
 "True"},
-{"fcstCartesianDummyIndexFreeQ-ID2", "DummyIndexFreeQ[a,{CIndex}]",
+{"fcstCartesianDummyIndexFreeQ-ID2", "DummyIndexFreeQ[a,{CartesianIndex}]",
 "True"},
 {"fcstCartesianDummyIndexFreeQ-ID3",
-"DummyIndexFreeQ[CPair[CIndex[i],CMomentum[p]],{CIndex}]", "True"},
+"DummyIndexFreeQ[CartesianPair[CartesianIndex[i],CartesianMomentum[p]],{CartesianIndex}]", "True"},
 {"fcstCartesianDummyIndexFreeQ-ID4",
-"DummyIndexFreeQ[CPair[CIndex[i],CMomentum[p]]^2,{CIndex}]", "False"},
+"DummyIndexFreeQ[CartesianPair[CartesianIndex[i],CartesianMomentum[p]]^2,{CartesianIndex}]", "False"},
 {"fcstCartesianDummyIndexFreeQ-ID5",
-"DummyIndexFreeQ[xxx(Sum[CPair[CMomentum[p[i]],CIndex[\
-li]],{i,1,50000}]),{CIndex}]", "True"},
+"DummyIndexFreeQ[xxx(Sum[CartesianPair[CartesianMomentum[p[i]],CartesianIndex[\
+li]],{i,1,50000}]),{CartesianIndex}]", "True"},
 {"fcstCartesianDummyIndexFreeQ-ID6",
-"DummyIndexFreeQ[xxx(Sum[Pair[CMomentum[p[i]],CIndex[\
-li]],{i,1,50000}])+  CPair[CIndex[i],CMomentum[q]] CPair[CIndex[j],CIndex[j]],{CIndex}]", "False"},
+"DummyIndexFreeQ[xxx(Sum[Pair[CartesianMomentum[p[i]],CartesianIndex[\
+li]],{i,1,50000}])+  CartesianPair[CartesianIndex[i],CartesianMomentum[q]] CartesianPair[CartesianIndex[j],CartesianIndex[j]],{CartesianIndex}]", "False"},
 {"fcstCartesianDummyIndexFreeQ-ID7",
-"DummyIndexFreeQ[CPair[CIndex[i],CMomentum[p1]]+CPair[CIndex[i],CMomentum[p2]]+CPair[CIndex[i],CMomentum[p3]] CPair[CIndex[j],CIndex[j]],{CIndex}]",
+"DummyIndexFreeQ[CartesianPair[CartesianIndex[i],CartesianMomentum[p1]]+CartesianPair[CartesianIndex[i],CartesianMomentum[p2]]+CartesianPair[CartesianIndex[i],CartesianMomentum[p3]] CartesianPair[CartesianIndex[j],CartesianIndex[j]],{CartesianIndex}]",
 "False"}
 });

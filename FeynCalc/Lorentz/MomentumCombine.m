@@ -30,19 +30,19 @@ rulesMain = {
 	(n3_. Momentum[x_, dim_:4] + n4_. Momentum[y_, dim_:4]):>
 		(Momentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4])),
 
-	(n3_. TMomentum[x_] + n4_. TMomentum[y_]):>
-		(TMomentum[ Expand[n3 x + n4 y]]/; (NumberQ[n3] && NumberQ[n4])),
+	(n3_. TemporalMomentum[x_] + n4_. TemporalMomentum[y_]):>
+		(TemporalMomentum[ Expand[n3 x + n4 y]]/; (NumberQ[n3] && NumberQ[n4])),
 
-	(n3_. CMomentum[x_, dim_:3] + n4_. CMomentum[y_, dim_:3]):>
-		(CMomentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4]))
+	(n3_. CartesianMomentum[x_, dim_:3] + n4_. CartesianMomentum[y_, dim_:3]):>
+		(CartesianMomentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4]))
 };
 
 rulesSP = {
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
 		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4]),
 
-	(n3_. CPair[a_CMomentum, CMomentum[x_, dim_:3]] + n4_. CPair[a_CMomentum, CMomentum[y_, dim_:3]]):>
-		CPair[a, CMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4])
+	(n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianMomentum, CartesianMomentum[y_, dim_:3]]):>
+		CartesianPair[a, CartesianMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4])
 }
 
 rulesFV = {
@@ -53,17 +53,17 @@ rulesFV = {
 		n3 Pair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
 
 
-	(n3_. CPair[a_CIndex, CMomentum[x_, dim_:3]] + n4_. CPair[a_CIndex, CMomentum[y_, dim_:3]]):>
-		CPair[a, CMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
+	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
+		CartesianPair[a, CartesianMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
 
-	(n3_. CPair[a_CIndex, CMomentum[x_, dim_:3]] + n3_. CPair[a_CIndex, CMomentum[y_, dim_:3]]):>
-		n3 CPair[a, CMomentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
+	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] + n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
+		n3 CartesianPair[a, CartesianMomentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
 
-	(n3_. TPair[TIndex[], TMomentum[x_]] + n4_. TRair[TIndex[], TMomentum[y_]]):>
-		TPair[TIndex[], TMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]),
+	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n4_. TRair[TemporalIndex[], TemporalMomentum[y_]]):>
+		TemporalPair[TemporalIndex[], TemporalMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]),
 
-	(n3_. TPair[TIndex[], TMomentum[x_]] + n3_. TPair[TIndex[], TMomentum[y_]]):>
-		n3 TPair[a, TMomentum[Expand[x+y]]]/; (!NumberQ[n3])
+	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n3_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
+		n3 TemporalPair[a, TemporalMomentum[Expand[x+y]]]/; (!NumberQ[n3])
 
 (*
 	(n3_. Pair[a_LorentzIndex, Momentum[x_,dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_,dim_:4]]):>

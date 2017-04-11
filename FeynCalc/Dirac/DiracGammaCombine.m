@@ -54,11 +54,11 @@ DiracGammaCombine[expr_, OptionsPattern[]] :=
 			holdPlus[a___, n1_. DiracGamma[Momentum[x_,dim_:4],dim_:4], n2_. DiracGamma[Momentum[x_, dim_:4], dim_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
 				holdPlus[a, (n1+n2)DiracGamma[Momentum[x, dim], dim], b],
 
-			holdPlus[a___, n1_. DiracGamma[CMomentum[x_,dim1_:3],dim2_:4], n2_. DiracGamma[CMomentum[y_, dim1_:3], dim2_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
-				holdPlus[a, DiracGamma[CMomentum[n1 x + n2 y, dim1], dim2], b],
+			holdPlus[a___, n1_. DiracGamma[CartesianMomentum[x_,dim1_:3],dim2_:4], n2_. DiracGamma[CartesianMomentum[y_, dim1_:3], dim2_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
+				holdPlus[a, DiracGamma[CartesianMomentum[n1 x + n2 y, dim1], dim2], b],
 
-			holdPlus[a___, n1_. DiracGamma[CMomentum[x_,dim1_:3],dim2_:4], n2_. DiracGamma[CMomentum[x_, dim1_:3], dim2_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
-				holdPlus[a, (n1+n2)DiracGamma[CMomentum[x, dim1], dim2], b]
+			holdPlus[a___, n1_. DiracGamma[CartesianMomentum[x_,dim1_:3],dim2_:4], n2_. DiracGamma[CartesianMomentum[x_, dim1_:3], dim2_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
+				holdPlus[a, (n1+n2)DiracGamma[CartesianMomentum[x, dim1], dim2], b]
 
 
 		} /. holdPlus -> Plus;

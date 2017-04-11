@@ -97,8 +97,8 @@ FCCanonicalizeDummyIndices[
 CVD[q, mu] CVD[p, mu] + CVD[q, nu] CVD[p, nu]]; FCE[tmp],
 2 CVD[p, i_] CVD[q, i_]]","True"},
 {"fcstFCCanonicalizeDummyIndices-ID15","FCCanonicalizeDummyIndices[
-Uncontract[CSP[q, p]^4, q, p, CPair -> All],
-CIndexNames -> {i, j, k, l}, FCE -> True]","CV[p, i] CV[p, j] CV[p, k] CV[p, l] CV[q, i] CV[q, j] CV[q, k] CV[q,l]"},
+Uncontract[CSP[q, p]^4, q, p, CartesianPair -> All],
+CartesianIndexNames -> {i, j, k, l}, FCE -> True]","CV[p, i] CV[p, j] CV[p, k] CV[p, l] CV[q, i] CV[q, j] CV[q, k] CV[q,l]"},
 {"fcstFCCanonicalizeDummyIndices-ID16","MatchQ[FCCanonicalizeDummyIndices[
 CV[p1, mu] (CV[p2, nu] CV[p3, nu] + CV[p2, rho] CV[p3, rho]),
 FCE -> True], 2 CV[p1, mu] CV[p2, a_] CV[p3, a_]]","True"},

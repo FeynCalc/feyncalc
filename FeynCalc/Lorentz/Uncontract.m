@@ -35,8 +35,8 @@ ucVerbose::usage="";
 dim::usage="";
 
 Options[Uncontract] = {
-	CMomentum -> True,
-	CPair -> {},
+	CartesianMomentum -> True,
+	CartesianPair -> {},
 	Dimension -> Automatic,
 	DiracGamma -> True,
 	PauliSigma -> True,
@@ -74,7 +74,7 @@ Uncontract[ex_, All, opts:OptionsPattern[]] :=
 			exp = ex,
 			exp = FCI[ex]
 		];
-		moms = Cases[(exp + null1+null2)/. _FeynAmpDenominator :> Unique[], (Momentum | CMomentum)[z_, ___] :> z, Infinity] // DeleteDuplicates // Sort;
+		moms = Cases[(exp + null1+null2)/. _FeynAmpDenominator :> Unique[], (Momentum | CartesianMomentum)[z_, ___] :> z, Infinity] // DeleteDuplicates // Sort;
 		FCPrint[1, "Uncontract: List of momenta:", moms , FCDoControl->ucVerbose];
 
 		If[	moms=!={},
@@ -111,15 +111,15 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		FCPrint[3, "Uncontract: q: ", q , FCDoControl->ucVerbose];
 
 		pairs = OptionValue[Pair];
-		cpairs = OptionValue[CPair];
+		cpairs = OptionValue[CartesianPair];
 		dim = OptionValue[Dimension];
 		fctensor = OptionValue[FCTensor];
 
 		momAllow = OptionValue[Momentum];
-		cmomAllow = OptionValue[CMomentum];
+		cmomAllow = OptionValue[CartesianMomentum];
 		Which[	fctensor===All,
 					tensoruncontract=True;
-					tensorList = Complement[$FCTensorList, {CPair, Pair, Eps}],
+					tensorList = Complement[$FCTensorList, {CartesianPair, Pair, Eps}],
 				Head[fctensor]===List && fctensor=!={},
 					tensoruncontract=True;
 					tensorList = fctensor,
@@ -182,50 +182,50 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If[	cmomAllow,
 
-			pairRules = Join[pairRules, {Pair[CMomentum[arg_,di_:3], LorentzIndex[pe_, dim2_:4]]/;!FreeQ[arg,qMark] :>
-			(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CPair[CMomentum[arg, dimSelectCartesian[di]],li] Pair[li, LorentzIndex[pe,dimSelectLorentz[dim2]] ])
+			pairRules = Join[pairRules, {Pair[CartesianMomentum[arg_,di_:3], LorentzIndex[pe_, dim2_:4]]/;!FreeQ[arg,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+			CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] Pair[li, LorentzIndex[pe,dimSelectLorentz[dim2]] ])
 			}];
 
 
-			cpairRules = Join[cpairRules, {CPair[CMomentum[arg_,di_:3], CMomentum[pe_, di_:3]]/;!FreeQ[arg,qMark] && FreeQ[pe,qMark] :>
-			(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CPair[CMomentum[arg, dimSelectCartesian[di]],li] CPair[li, CMomentum[pe,dimSelectCartesian[di]] ]),
+			cpairRules = Join[cpairRules, {CartesianPair[CartesianMomentum[arg_,di_:3], CartesianMomentum[pe_, di_:3]]/;!FreeQ[arg,qMark] && FreeQ[pe,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+			CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] CartesianPair[li, CartesianMomentum[pe,dimSelectCartesian[di]] ]),
 
-			CPair[CMomentum[arg_,di_:3], CMomentum[pe_, di_:3]]/;!FreeQ[arg,qMark] && !FreeQ[pe,qMark] :>
-			(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-				li2 = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CPair[li,li2] CPair[CMomentum[arg, dimSelectCartesian[di]],li] CPair[li2, CMomentum[pe,dimSelectCartesian[di]] ])
+			CartesianPair[CartesianMomentum[arg_,di_:3], CartesianMomentum[pe_, di_:3]]/;!FreeQ[arg,qMark] && !FreeQ[pe,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+				li2 = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+			CartesianPair[li,li2] CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] CartesianPair[li2, CartesianMomentum[pe,dimSelectCartesian[di]] ])
 			}];
 
-			epsRules = Join[epsRules,{Eps[a___, CMomentum[arg_,di_:3]  ,b___]/;!FreeQ[arg,qMark] :>
-			(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-				CPair[CMomentum[arg, dimSelectCartesian[di]],li]Eps[a,li,b])
+			epsRules = Join[epsRules,{Eps[a___, CartesianMomentum[arg_,di_:3]  ,b___]/;!FreeQ[arg,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+				CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li]Eps[a,li,b])
 			}];
 
 			digaRules = Join[digaRules,
-				{DiracGamma[CMomentum[arg_]]/;!FreeQ[arg,qMark] :>
-				(	li = CIndex[$AL[Unique[]],dimSelectCartesian[3]];
-				CPair[CMomentum[arg, dimSelectCartesian[3]],li] DiracGamma[li,dimSelectLorentz[4]]),
+				{DiracGamma[CartesianMomentum[arg_]]/;!FreeQ[arg,qMark] :>
+				(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[3]];
+				CartesianPair[CartesianMomentum[arg, dimSelectCartesian[3]],li] DiracGamma[li,dimSelectLorentz[4]]),
 
 
-				DiracGamma[CMomentum[arg_,di_Symbol-1],di_Symbol]/;!FreeQ[arg,qMark] :>
-					(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di-1]];
-						CPair[CMomentum[arg, dimSelectCartesian[di-1]],li] DiracGamma[li,dimSelectLorentz[di]]),
+				DiracGamma[CartesianMomentum[arg_,di_Symbol-1],di_Symbol]/;!FreeQ[arg,qMark] :>
+					(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di-1]];
+						CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di-1]],li] DiracGamma[li,dimSelectLorentz[di]]),
 
-				DiracGamma[CMomentum[arg_,di_Symbol-4],di_Symbol-4]/;!FreeQ[arg,qMark] :>
-					(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di-4]];
-						CPair[CMomentum[arg, dimSelectCartesian[di-4]],li] DiracGamma[li,dimSelectLorentz[di-4]])
+				DiracGamma[CartesianMomentum[arg_,di_Symbol-4],di_Symbol-4]/;!FreeQ[arg,qMark] :>
+					(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di-4]];
+						CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di-4]],li] DiracGamma[li,dimSelectLorentz[di-4]])
 			}];
 
-			sigmaRules = Join[sigmaRules, {PauliSigma[CMomentum[arg_,di_:3],di_:3]/;!FreeQ[arg,qMark] :>
-			(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CPair[CMomentum[arg, dimSelectCartesian[di]],li] PauliSigma[li, dimSelectCartesian[di]])
+			sigmaRules = Join[sigmaRules, {PauliSigma[CartesianMomentum[arg_,di_:3],di_:3]/;!FreeQ[arg,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+			CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] PauliSigma[li, dimSelectCartesian[di]])
 			}];
 
-			tensorRules = Join[tensorRules,{(hd_/;MemberQ[tensorList,hd])[a___, CMomentum[arg_,di_:3]  ,b___]/;!FreeQ[arg,qMark] :>
-			(	li = CIndex[$AL[Unique[]],dimSelectCartesian[di]];
-				CPair[CMomentum[arg, dimSelectCartesian[di]],li]hd[a,li,b])
+			tensorRules = Join[tensorRules,{(hd_/;MemberQ[tensorList,hd])[a___, CartesianMomentum[arg_,di_:3]  ,b___]/;!FreeQ[arg,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
+				CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li]hd[a,li,b])
 			}];
 
 
@@ -272,17 +272,17 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			FCPrint[3, "Uncontract: After applying the replacement rule for Pairs: ", exp , FCDoControl->ucVerbose]
 		];
 
-		(* Select suitable CPairs *)
+		(* Select suitable CartesianPairs *)
 		If[cpairs=!={},
-			FCPrint[1, "Uncontract: Uncontracting CPair objects.", FCDoControl->ucVerbose];
-			exp = powerExpand[exp, q, CPair, times];
-			allObjects = Cases[exp + null1 + null2, _CPair, Infinity]//DeleteDuplicates//Sort;
+			FCPrint[1, "Uncontract: Uncontracting CartesianPair objects.", FCDoControl->ucVerbose];
+			exp = powerExpand[exp, q, CartesianPair, times];
+			allObjects = Cases[exp + null1 + null2, _CartesianPair, Infinity]//DeleteDuplicates//Sort;
 			Which[	cpairs===All,
 						selectedObjects = allObjects,
 					Head[cpairs]===List,
 						selectedObjects = SelectNotFree[SelectNotFree[allObjects, q], cpairs],
 					True,
-						Message[Uncontract::failmsg,"Unknown CPair input"];
+						Message[Uncontract::failmsg,"Unknown CartesianPair input"];
 						Abort[]
 			];
 			selectedObjects = SelectFree[selectedObjects, OPEDelta];
@@ -291,15 +291,15 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			];
 			If[ !OptionValue[Square],
 				(* do not uncontract momenta squared *)
-				selectedObjects = selectedObjects /. CPair[zx_, zy_]/; !FreeQ[zx,q] && !FreeQ[zy,q] :> Unevaluated[Sequence[]]
+				selectedObjects = selectedObjects /. CartesianPair[zx_, zy_]/; !FreeQ[zx,q] && !FreeQ[zy,q] :> Unevaluated[Sequence[]]
 			];
 			repRuleObjects = Thread[Rule[selectedObjects,(selectedObjects/.qRule)]];
 			FCPrint[3, "Uncontract: List pairs objects that should be uncontracted: ", repRuleObjects, FCDoControl->ucVerbose];
 			exp = exp /. repRuleObjects;
-			(* now qMark marks only CPairs that should be uncontracted *)
-			FCPrint[3, "Uncontract: Replacement rule for CPairs: ", cpairRules , FCDoControl->ucVerbose];
+			(* now qMark marks only CartesianPairs that should be uncontracted *)
+			FCPrint[3, "Uncontract: Replacement rule for CartesianPairs: ", cpairRules , FCDoControl->ucVerbose];
 			exp = exp //. cpairRules  /. qMark -> Identity;
-			FCPrint[3, "Uncontract: After applying the replacement rule for CPairs: ", exp , FCDoControl->ucVerbose]
+			FCPrint[3, "Uncontract: After applying the replacement rule for CartesianPairs: ", exp , FCDoControl->ucVerbose]
 		];
 
 		(* Select suitable DiracGammas *)

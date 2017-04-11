@@ -49,10 +49,10 @@ PauliSigmaCombine[expr_, OptionsPattern[]] :=
 		pauliList = (Cases[ex+null1+null2,holdPlus[z__]/; !FreeQ[{z},PauliSigma], Infinity])//DeleteDuplicates//Sort;
 
 		pauliListEval = pauliList /. p_holdPlus :> holdPlus@@Sort[List@@p] //. {
-			holdPlus[a___, n1_. PauliSigma[CMomentum[x_,dim_:3],dim_:3], n2_. PauliSigma[CMomentum[y_, dim_:3], dim_:3], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
-				holdPlus[a, PauliSigma[CMomentum[n1 x + n2 y, dim], dim], b],
-			holdPlus[a___, n1_. PauliSigma[CMomentum[x_,dim_:3],dim_:3], n2_. PauliSigma[CMomentum[x_, dim_:3], dim_:3], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
-				holdPlus[a, (n1+n2)PauliSigma[CMomentum[x, dim], dim], b],
+			holdPlus[a___, n1_. PauliSigma[CartesianMomentum[x_,dim_:3],dim_:3], n2_. PauliSigma[CartesianMomentum[y_, dim_:3], dim_:3], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
+				holdPlus[a, PauliSigma[CartesianMomentum[n1 x + n2 y, dim], dim], b],
+			holdPlus[a___, n1_. PauliSigma[CartesianMomentum[x_,dim_:3],dim_:3], n2_. PauliSigma[CartesianMomentum[x_, dim_:3], dim_:3], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
+				holdPlus[a, (n1+n2)PauliSigma[CartesianMomentum[x, dim], dim], b],
 
 			holdPlus[a___, n1_. PauliSigma[Momentum[x_,dim1_:4],dim2_:3], n2_. PauliSigma[Momentum[y_, dim1_:4], dim2_:3], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
 				holdPlus[a, PauliSigma[Momentum[n1 x + n2 y, dim1], dim2], b],

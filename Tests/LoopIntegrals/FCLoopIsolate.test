@@ -68,6 +68,6 @@ GA[j] . GSD[i] . GA[5]*SUNT[a]*FCGV[\"LoopInt\"][FAD[{q, m}]*FVD[q, i]]"},
 Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]"},
 {"fcstFCLoopIsolate-ID20","FCLoopIsolate[Foobar[x], {}, PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads],
 {Foobar}],Head -> loop]","loop[Foobar[x]]"},
-{"fcstFCLoopIsolate-ID21","FCLoopIsolate[CSP[q, p] x + z (q + y) + CGS[q], {q}, Head -> loop]","y z + z loop[q] + x loop[CPair[CMomentum[p], CMomentum[q]]] +
-loop[DiracGamma[CMomentum[q]]]"}
+{"fcstFCLoopIsolate-ID21","FCLoopIsolate[CSP[q, p] x + z (q + y) + CGS[q], {q}, Head -> loop]","y z + z loop[q] + x loop[CartesianPair[CartesianMomentum[p], CartesianMomentum[q]]] +
+loop[DiracGamma[CartesianMomentum[q]]]"}
 };

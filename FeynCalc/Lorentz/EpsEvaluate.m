@@ -79,7 +79,7 @@ epsEval[a_,b_,c__] :=
 	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> Eps
 
 
-epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum | CIndex | CMomentum | TIndex | TMomentum)[__]),d___] :=
+epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum | TemporalIndex | TemporalMomentum)[__]),d___] :=
 	b epsEvalLinearity[a,c,d];
 
 epsEvalLinearity[___,0,___] :=

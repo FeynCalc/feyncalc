@@ -16,37 +16,37 @@
 Tests`Lorentz`fcstCartesianToLorentz =
 ({
 {"fcstCartesianToLorentz-ID1", "CartesianToLorentz[CSP[p,q]]",
-"-Pair[Momentum[p], Momentum[q]] + TPair[TIndex[], \
-TMomentum[p]]*TPair[TIndex[], TMomentum[q]]"},
+"-Pair[Momentum[p], Momentum[q]] + TemporalPair[TemporalIndex[], \
+TemporalMomentum[p]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
 {"fcstCartesianToLorentz-ID2", "CartesianToLorentz[CSPD[p,q]]",
-"-Pair[Momentum[p, D], Momentum[q, D]] + TPair[TIndex[], \
-TMomentum[p]]*TPair[TIndex[], TMomentum[q]]"},
+"-Pair[Momentum[p, D], Momentum[q, D]] + TemporalPair[TemporalIndex[], \
+TemporalMomentum[p]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
 {"fcstCartesianToLorentz-ID3", "CartesianToLorentz[CSPE[p,q]]",
 "-Pair[Momentum[p, -4 + D], Momentum[q, -4 + D]]"},
 {"fcstCartesianToLorentz-ID4", "CartesianToLorentz[CGS[p]]",
-"-DiracGamma[Momentum[p]] + DiracGamma[TIndex[]]*TPair[TIndex[], \
-TMomentum[p]]"},
+"-DiracGamma[Momentum[p]] + DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+TemporalMomentum[p]]"},
 {"fcstCartesianToLorentz-ID5", "CartesianToLorentz[CGSD[p]]",
 "-DiracGamma[Momentum[p, D], D] + \
-DiracGamma[TIndex[]]*TPair[TIndex[], TMomentum[p]]"},
+DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
 {"fcstCartesianToLorentz-ID6", "CartesianToLorentz[CGSE[p]]",
 "-DiracGamma[Momentum[p, -4 + D], -4 + D]"},
 {"fcstCartesianToLorentz-ID7",
 "LorentzToCartesian[CartesianToLorentz[CSP[p,q]]]",
-"CPair[CMomentum[p], CMomentum[q]]"},
+"CartesianPair[CartesianMomentum[p], CartesianMomentum[q]]"},
 {"fcstCartesianToLorentz-ID8",
 "LorentzToCartesian[CartesianToLorentz[CSPD[p,q]]]",
-"CPair[CMomentum[p, -1 + D], CMomentum[q, -1 + D]]"},
+"CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + D]]"},
 {"fcstCartesianToLorentz-ID9",
 "LorentzToCartesian[CartesianToLorentz[CSPE[p,q]]]",
-"CPair[CMomentum[p, -4 + D], CMomentum[q, -4 + D]]"},
+"CartesianPair[CartesianMomentum[p, -4 + D], CartesianMomentum[q, -4 + D]]"},
 {"fcstCartesianToLorentz-ID10",
 "LorentzToCartesian[CartesianToLorentz[CGS[p]]]",
-"DiracGamma[CMomentum[p]]"},
+"DiracGamma[CartesianMomentum[p]]"},
 {"fcstCartesianToLorentz-ID11",
 "LorentzToCartesian[CartesianToLorentz[CGSD[p]]]",
-"DiracGamma[CMomentum[p, -1 + D], D]"},
+"DiracGamma[CartesianMomentum[p, -1 + D], D]"},
 {"fcstCartesianToLorentz-ID12",
 "LorentzToCartesian[CartesianToLorentz[CGSE[p]]]",
-"DiracGamma[CMomentum[p, -4 + D], -4 + D]"}
+"DiracGamma[CartesianMomentum[p, -4 + D], -4 + D]"}
 });

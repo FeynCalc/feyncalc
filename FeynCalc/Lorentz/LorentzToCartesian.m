@@ -59,7 +59,7 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 
 		heads = {};
 
-		tensorList = Complement[$FCTensorList, {CPair, Pair, Eps}];
+		tensorList = Complement[$FCTensorList, {CartesianPair, Pair, Eps}];
 
 		lorIndex = OptionValue[LorentzIndex];
 
@@ -161,112 +161,112 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 	];
 
 spToCsp[Momentum[a_], Momentum[b_]]:=
-	FeynCalc`Package`MetricT TPair[TIndex[],TMomentum[a]] TPair[TIndex[],TMomentum[b]] +
-	FeynCalc`Package`MetricS CPair[CMomentum[a],CMomentum[b]];
+	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[a]] TemporalPair[TemporalIndex[],TemporalMomentum[b]] +
+	FeynCalc`Package`MetricS CartesianPair[CartesianMomentum[a],CartesianMomentum[b]];
 
 spToCsp[Momentum[a_, dim_Symbol], Momentum[b_, dim_Symbol]]:=
-	FeynCalc`Package`MetricT TPair[TIndex[],TMomentum[a]] TPair[TIndex[],TMomentum[b]] +
-	FeynCalc`Package`MetricS CPair[CMomentum[a,dim-1],CMomentum[b,dim-1]];
+	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[a]] TemporalPair[TemporalIndex[],TemporalMomentum[b]] +
+	FeynCalc`Package`MetricS CartesianPair[CartesianMomentum[a,dim-1],CartesianMomentum[b,dim-1]];
 
 spToCsp[Momentum[a_, dim_Symbol-4], Momentum[b_, dim_Symbol-4]]:=
-	FeynCalc`Package`MetricS CPair[CMomentum[a,dim-4],CMomentum[b,dim-4]];
+	FeynCalc`Package`MetricS CartesianPair[CartesianMomentum[a,dim-4],CartesianMomentum[b,dim-4]];
 
 fvToCv[LorentzIndex[a_], Momentum[b_]]:=
-	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] Pair[TIndex[], Momentum[b]] +
-	FeynCalc`Package`MetricS Pair[LorentzIndex[a],CMomentum[b]];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TemporalIndex[]] Pair[TemporalIndex[], Momentum[b]] +
+	FeynCalc`Package`MetricS Pair[LorentzIndex[a],CartesianMomentum[b]];
 
 fvToCv[LorentzIndex[a_, dim_Symbol], Momentum[b_, dim_Symbol]]:=
-	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] Pair[TIndex[], Momentum[b]] +
-	FeynCalc`Package`MetricS  Pair[LorentzIndex[a,dim],CMomentum[b,dim-1]];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TemporalIndex[]] Pair[TemporalIndex[], Momentum[b]] +
+	FeynCalc`Package`MetricS  Pair[LorentzIndex[a,dim],CartesianMomentum[b,dim-1]];
 
 fvToCv[LorentzIndex[a_, dim_Symbol-4], Momentum[b_, dim_Symbol-4]]:=
-	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim-4],CMomentum[b,dim-4]];
+	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim-4],CartesianMomentum[b,dim-4]];
 
 ltensorToCTensor[a___, LorentzIndex[b_], c___]:=
 	(
-	tmpci = CIndex[$MU[Unique[]]];
-	FeynCalc`Package`MetricT ltensorToCTensor[a,TIndex[],c] Pair[TIndex[], LorentzIndex[b]] +
+	tmpci = CartesianIndex[$MU[Unique[]]];
+	FeynCalc`Package`MetricT ltensorToCTensor[a,TemporalIndex[],c] Pair[TemporalIndex[], LorentzIndex[b]] +
 	FeynCalc`Package`MetricS Pair[LorentzIndex[b],tmpci] ltensorToCTensor[a,tmpci,c]
 	)/; lorIndex
 
 ltensorToCTensor[a___, LorentzIndex[b_, dim_Symbol], c___]:=
 	(
-	tmpci = CIndex[$MU[Unique[]],dim-1];
-	FeynCalc`Package`MetricT ltensorToCTensor[a,TIndex[],c] Pair[TIndex[], LorentzIndex[b,dim]] +
+	tmpci = CartesianIndex[$MU[Unique[]],dim-1];
+	FeynCalc`Package`MetricT ltensorToCTensor[a,TemporalIndex[],c] Pair[TemporalIndex[], LorentzIndex[b,dim]] +
 	FeynCalc`Package`MetricS Pair[LorentzIndex[b,dim],tmpci] ltensorToCTensor[a,tmpci,c]
 	)/; lorIndex
 
 ltensorToCTensor[a___, Momentum[b_], c___]:=
-	FeynCalc`Package`MetricT ltensorToCTensor[a,TIndex[],c] Pair[TIndex[], Momentum[b]] +
-	FeynCalc`Package`MetricS ltensorToCTensor[a,CMomentum[b],c];
+	FeynCalc`Package`MetricT ltensorToCTensor[a,TemporalIndex[],c] Pair[TemporalIndex[], Momentum[b]] +
+	FeynCalc`Package`MetricS ltensorToCTensor[a,CartesianMomentum[b],c];
 
 ltensorToCTensor[a___, Momentum[b_, dim_Symbol], c___]:=
-	FeynCalc`Package`MetricT ltensorToCTensor[a,TIndex[],c] Pair[TIndex[], Momentum[b]] +
-	FeynCalc`Package`MetricS ltensorToCTensor[a,CMomentum[b,dim-1],c];
+	FeynCalc`Package`MetricT ltensorToCTensor[a,TemporalIndex[],c] Pair[TemporalIndex[], Momentum[b]] +
+	FeynCalc`Package`MetricS ltensorToCTensor[a,CartesianMomentum[b,dim-1],c];
 
 
 diracGammaToCDiracGamma[LorentzIndex[a_]]:=
 	(
-	tmpci= CIndex[$MU[Unique[]]];
-	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] DiracGamma[TIndex[]] +
+	tmpci= CartesianIndex[$MU[Unique[]]];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TemporalIndex[]] DiracGamma[TemporalIndex[]] +
 	FeynCalc`Package`MetricS Pair[LorentzIndex[a], tmpci] DiracGamma[tmpci]
 	);
 
 diracGammaToCDiracGamma[LorentzIndex[a_, dim_Symbol], dim_Symbol]:=
 	(
-	tmpci= CIndex[$MU[Unique[]],dim-1];
-	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] DiracGamma[TIndex[]] +
+	tmpci= CartesianIndex[$MU[Unique[]],dim-1];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TemporalIndex[]] DiracGamma[TemporalIndex[]] +
 	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim], tmpci] DiracGamma[tmpci,dim]
 	);
 
 diracGammaToCDiracGamma[LorentzIndex[a_, dim_Symbol-4], dim_Symbol-4]:=
 	(
-	tmpci= CIndex[$MU[Unique[]],dim-4];
+	tmpci= CartesianIndex[$MU[Unique[]],dim-4];
 	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim-4], tmpci] DiracGamma[tmpci,dim-4]
 	);
 
 diracSlashToCDiracSlash[Momentum[p_]]:=
-	FeynCalc`Package`MetricT DiracGamma[TIndex[]] Pair[TIndex[], Momentum[p]] +
-	FeynCalc`Package`MetricS DiracGamma[CMomentum[p]];
+	FeynCalc`Package`MetricT DiracGamma[TemporalIndex[]] Pair[TemporalIndex[], Momentum[p]] +
+	FeynCalc`Package`MetricS DiracGamma[CartesianMomentum[p]];
 
 diracSlashToCDiracSlash[Momentum[p_, dim_Symbol], dim_Symbol]:=
-	FeynCalc`Package`MetricT DiracGamma[TIndex[]] Pair[TIndex[], Momentum[p]] +
-	FeynCalc`Package`MetricS DiracGamma[CMomentum[p,dim-1],dim];
+	FeynCalc`Package`MetricT DiracGamma[TemporalIndex[]] Pair[TemporalIndex[], Momentum[p]] +
+	FeynCalc`Package`MetricS DiracGamma[CartesianMomentum[p,dim-1],dim];
 
 diracSlashToCDiracSlash[Momentum[p_, dim_Symbol-4], dim_Symbol-4]:=
-	FeynCalc`Package`MetricS DiracGamma[CMomentum[p,dim-4],dim-4];
+	FeynCalc`Package`MetricS DiracGamma[CartesianMomentum[p,dim-4],dim-4];
 
 
 pauliSigmaToCPauliSigma[LorentzIndex[a_]]:=
 	(
-	tmpci= CIndex[$MU[Unique[]]];
-	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] +
+	tmpci= CartesianIndex[$MU[Unique[]]];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TemporalIndex[]] +
 	FeynCalc`Package`MetricS Pair[LorentzIndex[a], tmpci] PauliSigma[tmpci]
 	);
 
 pauliSigmaToCPauliSigma[LorentzIndex[a_, dim_Symbol], dim_Symbol-1]:=
 	(
-	tmpci= CIndex[$MU[Unique[]],dim-1];
-	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TIndex[]] +
+	tmpci= CartesianIndex[$MU[Unique[]],dim-1];
+	FeynCalc`Package`MetricT Pair[LorentzIndex[a], TemporalIndex[]] +
 	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim], tmpci] PauliSigma[tmpci,dim-1]
 	);
 
 pauliSigmaToCPauliSigma[LorentzIndex[a_, dim_Symbol-4], dim_Symbol-4]:=
 	(
-	tmpci= CIndex[$MU[Unique[]],dim-4];
+	tmpci= CartesianIndex[$MU[Unique[]],dim-4];
 	FeynCalc`Package`MetricS Pair[LorentzIndex[a,dim], tmpci] PauliSigma[tmpci,dim-4]
 	);
 
 pauliSlashToCPauliSlash[Momentum[a_]]:=
-	FeynCalc`Package`MetricT TPair[TMomentum[a], TIndex[]] +
-	FeynCalc`Package`MetricS PauliSigma[CMomentum[a]];
+	FeynCalc`Package`MetricT TemporalPair[TemporalMomentum[a], TemporalIndex[]] +
+	FeynCalc`Package`MetricS PauliSigma[CartesianMomentum[a]];
 
 pauliSlashToCPauliSlash[Momentum[a_, dim_Symbol], dim_Symbol-1]:=
-	FeynCalc`Package`MetricT TPair[TMomentum[a], TIndex[]] +
-	FeynCalc`Package`MetricS PauliSigma[CMomentum[a,dim-1],dim-1];
+	FeynCalc`Package`MetricT TemporalPair[TemporalMomentum[a], TemporalIndex[]] +
+	FeynCalc`Package`MetricS PauliSigma[CartesianMomentum[a,dim-1],dim-1];
 
 pauliSlashToCPauliSlash[Momentum[a_, dim_Symbol-4], dim_Symbol-4]:=
-	FeynCalc`Package`MetricS PauliSigma[CMomentum[a,dim-4],dim-4];
+	FeynCalc`Package`MetricS PauliSigma[CartesianMomentum[a,dim-4],dim-4];
 
 
 powerExpand[ex_, head_, times_]:=

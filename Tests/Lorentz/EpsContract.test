@@ -782,178 +782,178 @@ Momentum[p4]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
 Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]]*Pair[Momentum[p4], \
 Momentum[p4]]"},
 {"fcstEpsContract-ID24", "EpsContract[CLC[i1,i2,i3]CLC[i4,i5,i6]]",
-"-(CPair[CIndex[i1], CIndex[i6]]*CPair[CIndex[i2], \
-CIndex[i5]]*CPair[CIndex[i3], CIndex[i4]]) + CPair[CIndex[i1], \
-CIndex[i5]]*CPair[CIndex[i2], CIndex[i6]]*CPair[CIndex[i3], \
-CIndex[i4]] + CPair[CIndex[i1], CIndex[i6]]*CPair[CIndex[i2], \
-CIndex[i4]]*CPair[CIndex[i3], CIndex[i5]] - CPair[CIndex[i1], \
-CIndex[i4]]*CPair[CIndex[i2], CIndex[i6]]*CPair[CIndex[i3], \
-CIndex[i5]] - CPair[CIndex[i1], CIndex[i5]]*CPair[CIndex[i2], \
-CIndex[i4]]*CPair[CIndex[i3], CIndex[i6]] + CPair[CIndex[i1], \
-CIndex[i4]]*CPair[CIndex[i2], CIndex[i5]]*CPair[CIndex[i3], \
-CIndex[i6]]"},
+"-(CartesianPair[CartesianIndex[i1], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i2], \
+CartesianIndex[i5]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i4]]) + CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i5]]*CartesianPair[CartesianIndex[i2], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i3], \
+CartesianIndex[i4]] + CartesianPair[CartesianIndex[i1], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i2], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i5]] - CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i2], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i3], \
+CartesianIndex[i5]] - CartesianPair[CartesianIndex[i1], CartesianIndex[i5]]*CartesianPair[CartesianIndex[i2], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i6]] + CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i2], CartesianIndex[i5]]*CartesianPair[CartesianIndex[i3], \
+CartesianIndex[i6]]"},
 {"fcstEpsContract-ID25", "EpsContract[CLC[i1,i2,i3]CLC[i1,i5,i6]]",
-"-(CPair[CIndex[i2], CIndex[i6]]*CPair[CIndex[i3], CIndex[i5]]) + \
-CPair[CIndex[i2], CIndex[i5]]*CPair[CIndex[i3], CIndex[i6]]"},
+"-(CartesianPair[CartesianIndex[i2], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i5]]) + \
+CartesianPair[CartesianIndex[i2], CartesianIndex[i5]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i6]]"},
 {"fcstEpsContract-ID26", "EpsContract[CLC[i1,i2,i3]CLC[i1,i2,i6]]",
-"2*CPair[CIndex[i3], CIndex[i6]]"},
+"2*CartesianPair[CartesianIndex[i3], CartesianIndex[i6]]"},
 {"fcstEpsContract-ID27", "EpsContract[CLC[i1,i2,i3]CLC[i1,i2,i3]]",
 "6"},
 {"fcstEpsContract-ID28",
 "EpsContract[CLC[][p1,p2,p3]CLC[][p4,p5,p6]]",
-"-(CPair[CMomentum[p1], CMomentum[p6]]*CPair[CMomentum[p2], \
-CMomentum[p5]]*CPair[CMomentum[p3], CMomentum[p4]]) + \
-CPair[CMomentum[p1], CMomentum[p5]]*CPair[CMomentum[p2], \
-CMomentum[p6]]*CPair[CMomentum[p3], CMomentum[p4]] + \
-CPair[CMomentum[p1], CMomentum[p6]]*CPair[CMomentum[p2], \
-CMomentum[p4]]*CPair[CMomentum[p3], CMomentum[p5]] - \
-CPair[CMomentum[p1], CMomentum[p4]]*CPair[CMomentum[p2], \
-CMomentum[p6]]*CPair[CMomentum[p3], CMomentum[p5]] - \
-CPair[CMomentum[p1], CMomentum[p5]]*CPair[CMomentum[p2], \
-CMomentum[p4]]*CPair[CMomentum[p3], CMomentum[p6]] + \
-CPair[CMomentum[p1], CMomentum[p4]]*CPair[CMomentum[p2], \
-CMomentum[p5]]*CPair[CMomentum[p3], CMomentum[p6]]"},
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p4]]) + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p4]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]]"},
 {"fcstEpsContract-ID29",
 "EpsContract[CLC[][p1,p2,p3]CLC[][p1,p5,p6]]",
-"-(CPair[CMomentum[p1], CMomentum[p3]]*CPair[CMomentum[p1], \
-CMomentum[p6]]*CPair[CMomentum[p2], CMomentum[p5]]) + \
-CPair[CMomentum[p1], CMomentum[p3]]*CPair[CMomentum[p1], \
-CMomentum[p5]]*CPair[CMomentum[p2], CMomentum[p6]] + \
-CPair[CMomentum[p1], CMomentum[p2]]*CPair[CMomentum[p1], \
-CMomentum[p6]]*CPair[CMomentum[p3], CMomentum[p5]] - \
-CPair[CMomentum[p1], CMomentum[p1]]*CPair[CMomentum[p2], \
-CMomentum[p6]]*CPair[CMomentum[p3], CMomentum[p5]] - \
-CPair[CMomentum[p1], CMomentum[p2]]*CPair[CMomentum[p1], \
-CMomentum[p5]]*CPair[CMomentum[p3], CMomentum[p6]] + \
-CPair[CMomentum[p1], CMomentum[p1]]*CPair[CMomentum[p2], \
-CMomentum[p5]]*CPair[CMomentum[p3], CMomentum[p6]]"},
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p5]]) + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p6]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]]"},
 {"fcstEpsContract-ID30",
 "EpsContract[CLC[][p1,p2,p3]CLC[][p1,p2,p6]]",
-"-(CPair[CMomentum[p1], CMomentum[p3]]*CPair[CMomentum[p1], \
-CMomentum[p6]]*CPair[CMomentum[p2], CMomentum[p2]]) + \
-CPair[CMomentum[p1], CMomentum[p2]]*CPair[CMomentum[p1], \
-CMomentum[p6]]*CPair[CMomentum[p2], CMomentum[p3]] + \
-CPair[CMomentum[p1], CMomentum[p2]]*CPair[CMomentum[p1], \
-CMomentum[p3]]*CPair[CMomentum[p2], CMomentum[p6]] - \
-CPair[CMomentum[p1], CMomentum[p1]]*CPair[CMomentum[p2], \
-CMomentum[p3]]*CPair[CMomentum[p2], CMomentum[p6]] - \
-CPair[CMomentum[p1], CMomentum[p2]]^2*CPair[CMomentum[p3], \
-CMomentum[p6]] + CPair[CMomentum[p1], \
-CMomentum[p1]]*CPair[CMomentum[p2], \
-CMomentum[p2]]*CPair[CMomentum[p3], CMomentum[p6]]"},
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p2]]) + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p3]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p6]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p6]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]^2*CartesianPair[CartesianMomentum[p3], \
+CartesianMomentum[p6]] + CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]]"},
 {"fcstEpsContract-ID31",
 "EpsContract[CLC[][p1,p2,p3]CLC[][p1,p2,p3]]",
-"-(CPair[CMomentum[p1], CMomentum[p3]]^2*CPair[CMomentum[p2], \
-CMomentum[p2]]) + 2*CPair[CMomentum[p1], \
-CMomentum[p2]]*CPair[CMomentum[p1], \
-CMomentum[p3]]*CPair[CMomentum[p2], CMomentum[p3]] - \
-CPair[CMomentum[p1], CMomentum[p1]]*CPair[CMomentum[p2], \
-CMomentum[p3]]^2 - CPair[CMomentum[p1], \
-CMomentum[p2]]^2*CPair[CMomentum[p3], CMomentum[p3]] + \
-CPair[CMomentum[p1], CMomentum[p1]]*CPair[CMomentum[p2], \
-CMomentum[p2]]*CPair[CMomentum[p3], CMomentum[p3]]"},
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]^2*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p2]]) + 2*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p3]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p3]]^2 - CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p2]]^2*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p3]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p3]]"},
 {"fcstEpsContract-ID32",
 "EpsContract[CLCD[i1,i2,i3]CLCD[i4,i5,i6]]",
-"-(CPair[CIndex[i1, -1 + D], CIndex[i6, -1 + D]]*CPair[CIndex[i2, \
--1 + D], CIndex[i5, -1 + D]]*CPair[CIndex[i3, -1 + D], CIndex[i4, -1 \
-+ D]]) + CPair[CIndex[i1, -1 + D], CIndex[i5, -1 + \
-D]]*CPair[CIndex[i2, -1 + D], CIndex[i6, -1 + D]]*CPair[CIndex[i3, -1 \
-+ D], CIndex[i4, -1 + D]] + CPair[CIndex[i1, -1 + D], CIndex[i6, -1 + \
-D]]*CPair[CIndex[i2, -1 + D], CIndex[i4, -1 + D]]*CPair[CIndex[i3, -1 \
-+ D], CIndex[i5, -1 + D]] - CPair[CIndex[i1, -1 + D], CIndex[i4, -1 + \
-D]]*CPair[CIndex[i2, -1 + D], CIndex[i6, -1 + D]]*CPair[CIndex[i3, -1 \
-+ D], CIndex[i5, -1 + D]] - CPair[CIndex[i1, -1 + D], CIndex[i5, -1 + \
-D]]*CPair[CIndex[i2, -1 + D], CIndex[i4, -1 + D]]*CPair[CIndex[i3, -1 \
-+ D], CIndex[i6, -1 + D]] + CPair[CIndex[i1, -1 + D], CIndex[i4, -1 + \
-D]]*CPair[CIndex[i2, -1 + D], CIndex[i5, -1 + D]]*CPair[CIndex[i3, -1 \
-+ D], CIndex[i6, -1 + D]]"},
+"-(CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i2, \
+-1 + D], CartesianIndex[i5, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i4, -1 \
++ D]]) + CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i5, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i4, -1 + D]] + CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i6, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i4, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i5, -1 + D]] - CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i4, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i5, -1 + D]] - CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i5, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i4, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i6, -1 + D]] + CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i4, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i5, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i6, -1 + D]]"},
 {"fcstEpsContract-ID33",
 "EpsContract[CLCD[i1,i2,i3]CLCD[i1,i5,i6]]",
-"3*CPair[CIndex[i2, -1 + D], CIndex[i6, -1 + D]]*CPair[CIndex[i3, \
--1 + D], CIndex[i5, -1 + D]] - D*CPair[CIndex[i2, -1 + D], CIndex[i6, \
--1 + D]]*CPair[CIndex[i3, -1 + D], CIndex[i5, -1 + D]] - \
-3*CPair[CIndex[i2, -1 + D], CIndex[i5, -1 + D]]*CPair[CIndex[i3, -1 + \
-D], CIndex[i6, -1 + D]] + D*CPair[CIndex[i2, -1 + D], CIndex[i5, -1 + \
-D]]*CPair[CIndex[i3, -1 + D], CIndex[i6, -1 + D]]"},
+"3*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i3, \
+-1 + D], CartesianIndex[i5, -1 + D]] - D*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, \
+-1 + D]]*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i5, -1 + D]] - \
+3*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i5, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 + \
+D], CartesianIndex[i6, -1 + D]] + D*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i5, -1 + \
+D]]*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]]"},
 {"fcstEpsContract-ID34",
 "EpsContract[CLCD[i1,i2,i3]CLCD[i1,i2,i6]]",
-"6*CPair[CIndex[i3, -1 + D], CIndex[i6, -1 + D]] - \
-5*D*CPair[CIndex[i3, -1 + D], CIndex[i6, -1 + D]] + \
-D^2*CPair[CIndex[i3, -1 + D], CIndex[i6, -1 + D]]"},
+"6*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]] - \
+5*D*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]] + \
+D^2*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]]"},
 {"fcstEpsContract-ID35",
 "EpsContract[CLCD[i1,i2,i3]CLCD[i1,i2,i3]]",
 "-6 + 11*D - 6*D^2 + D^3"},
 {"fcstEpsContract-ID36",
 "EpsContract[CLCD[][p1,p2,p3]CLCD[][p4,p5,p6]]",
-"-(CPair[CMomentum[p1, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p4, -1 + D]]) + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p4, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p4, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p5, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p4, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p5, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p4, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p6, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p4, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p6, -1 + D]]"},
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p4, -1 + D]]) + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p4, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]]"},
 {"fcstEpsContract-ID37",
 "EpsContract[CLCD[][p1,p2,p3]CLCD[][p1,p5,p6]]",
-"-(CPair[CMomentum[p1, -1 + D], CMomentum[p3, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p5, -1 + D]]) + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p3, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p6, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p5, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p1, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p5, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p6, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p1, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p5, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p6, -1 + D]]"},
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + D]]) + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]]"},
 {"fcstEpsContract-ID38",
 "EpsContract[CLCD[][p1,p2,p3]CLCD[][p1,p2,p6]]",
-"-(CPair[CMomentum[p1, -1 + D], CMomentum[p3, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p2, -1 + D]]) + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p6, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p3, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p3, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p6, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p1, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p3, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p6, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]^2*CPair[CMomentum[p3, -1 + D], CMomentum[p6, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p1, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p6, -1 + D]]"},
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + D]]) + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]^2*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]]"},
 {"fcstEpsContract-ID39",
 "EpsContract[CLCD[][p1,p2,p3]CLCD[][p1,p2,p3]]",
-"-(CPair[CMomentum[p1, -1 + D], CMomentum[p3, -1 + \
-D]]^2*CPair[CMomentum[p2, -1 + D], CMomentum[p2, -1 + D]]) + \
-2*CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p1, -1 + D], CMomentum[p3, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p3, -1 + D]] - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p1, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p3, -1 + D]]^2 - \
-CPair[CMomentum[p1, -1 + D], CMomentum[p2, -1 + \
-D]]^2*CPair[CMomentum[p3, -1 + D], CMomentum[p3, -1 + D]] + \
-CPair[CMomentum[p1, -1 + D], CMomentum[p1, -1 + \
-D]]*CPair[CMomentum[p2, -1 + D], CMomentum[p2, -1 + \
-D]]*CPair[CMomentum[p3, -1 + D], CMomentum[p3, -1 + D]]"}
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]^2*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + D]]) + \
+2*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + D]]^2 - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]^2*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]]"}
 })

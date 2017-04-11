@@ -47,7 +47,7 @@ CartesianToLorentz[expr_, OptionsPattern[]]:=
 		heads = {};
 
 		If[	OptionValue[CSP],
-			heads = Join[heads,{CPair}]
+			heads = Join[heads,{CartesianPair}]
 		];
 
 		If[	OptionValue[CGS],
@@ -76,7 +76,7 @@ CartesianToLorentz[expr_, OptionsPattern[]]:=
 		];
 
 		If[	OptionValue[CSP],
-			uniqListEval = uniqListEval /. CPair -> cspToSp /. cspToSp -> CPair
+			uniqListEval = uniqListEval /. CartesianPair -> cspToSp /. cspToSp -> CartesianPair
 		];
 
 		If[	OptionValue[CGS],
@@ -95,26 +95,26 @@ CartesianToLorentz[expr_, OptionsPattern[]]:=
 		res
 	];
 
-cspToSp[CMomentum[a_], CMomentum[b_]]:=
+cspToSp[CartesianMomentum[a_], CartesianMomentum[b_]]:=
 	FeynCalc`Package`MetricS (Pair[Momentum[a],Momentum[b]] -
-	FeynCalc`Package`MetricT TPair[TIndex[],TMomentum[a]] TPair[TIndex[],TMomentum[b]]);
+	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[a]] TemporalPair[TemporalIndex[],TemporalMomentum[b]]);
 
-cspToSp[CMomentum[a_, dim_Symbol-1], CMomentum[b_, dim_Symbol-1]]:=
+cspToSp[CartesianMomentum[a_, dim_Symbol-1], CartesianMomentum[b_, dim_Symbol-1]]:=
 	FeynCalc`Package`MetricS (Pair[Momentum[a,dim],Momentum[b,dim]] -
-	FeynCalc`Package`MetricT TPair[TIndex[],TMomentum[a]] TPair[TIndex[],TMomentum[b]]);
+	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[a]] TemporalPair[TemporalIndex[],TemporalMomentum[b]]);
 
-cspToSp[CMomentum[a_, dim_Symbol-4], CMomentum[b_, dim_Symbol-4]]:=
+cspToSp[CartesianMomentum[a_, dim_Symbol-4], CartesianMomentum[b_, dim_Symbol-4]]:=
 	FeynCalc`Package`MetricS Pair[Momentum[a,dim-4],Momentum[b,dim-4]];
 
-cdiracSlashToDiracSlash[CMomentum[p_]]:=
+cdiracSlashToDiracSlash[CartesianMomentum[p_]]:=
 	FeynCalc`Package`MetricS (DiracGamma[Momentum[p]] -
-	FeynCalc`Package`MetricT TPair[TIndex[],TMomentum[p]] DiracGamma[TIndex[]]);
+	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[p]] DiracGamma[TemporalIndex[]]);
 
-cdiracSlashToDiracSlash[CMomentum[p_, dim_Symbol-1], dim_Symbol]:=
+cdiracSlashToDiracSlash[CartesianMomentum[p_, dim_Symbol-1], dim_Symbol]:=
 	FeynCalc`Package`MetricS (DiracGamma[Momentum[p,dim],dim] -
-	FeynCalc`Package`MetricT TPair[TIndex[],TMomentum[p]] DiracGamma[TIndex[]]);
+	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[p]] DiracGamma[TemporalIndex[]]);
 
-cdiracSlashToDiracSlash[CMomentum[p_, dim_Symbol-4], dim_Symbol-4]:=
+cdiracSlashToDiracSlash[CartesianMomentum[p_, dim_Symbol-4], dim_Symbol-4]:=
 	FeynCalc`Package`MetricS DiracGamma[Momentum[p,dim-4],dim-4];
 
 FCPrint[1,"CartesianToLorentz.m loaded."];

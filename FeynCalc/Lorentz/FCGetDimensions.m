@@ -40,10 +40,10 @@ FCGetDimensions[expr_, OptionsPattern[]]:=
 		];
 
 		res = Cases[ex+null1+null2, _Momentum | _DiracGamma | _DiracGammaT | _PauliSigma | _LorentzIndex |
-			_ExplicitLorentzIndex | _CIndex | _CMomentum | _TIndex | _TMomentum, Infinity]//DeleteDuplicates//Sort;
+			_ExplicitLorentzIndex | _CartesianIndex | _CartesianMomentum | _TemporalIndex | _TemporalMomentum, Infinity]//DeleteDuplicates//Sort;
 		res = res /. (Momentum|DiracGamma|DiracGammaT|LorentzIndex|ExplicitLorentzIndex)[_, dim_:4]:> dim;
-		res = res /. (PauliSigma|CIndex|CMomentum|TMomentum)[_, dim_:3]:> dim;
-		res = res /. {_TIndex -> 4, _TMomentum -> 4};
+		res = res /. (PauliSigma|CartesianIndex|CartesianMomentum|TemporalMomentum)[_, dim_:3]:> dim;
+		res = res /. {_TemporalIndex -> 4, _TemporalMomentum -> 4};
 		res = res//DeleteDuplicates//Sort;
 
 		res

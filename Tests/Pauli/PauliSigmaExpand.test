@@ -35,11 +35,11 @@ PauliSigma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 SIS[a] +
 	"CSIS[a + b].(CSIS[c] + CSIS[d])"},
 {"fcstPauliSigmaExpand-ID10","PauliSigmaExpand[CSIS[a + b].CSIS[c + d], Momentum -> All] // FCE",
 	"(CSIS[a] + CSIS[b]).(CSIS[c] + CSIS[d])"},
-{"fcstPauliSigmaExpand-ID11","PauliSigmaExpand[PauliSigma[5 CMomentum[a] + c CMomentum[b + d] + CMomentum[e]]] // FCE",
+{"fcstPauliSigmaExpand-ID11","PauliSigmaExpand[PauliSigma[5 CartesianMomentum[a] + c CartesianMomentum[b + d] + CartesianMomentum[e]]] // FCE",
 	"5 CSIS[a] + c (CSIS[b] + CSIS[d]) + CSIS[e]"},
 {"fcstPauliSigmaExpand-ID12","PauliSigmaExpand[
 PauliSigma[
-5 CMomentum[a, D - 1] + c CMomentum[b + d, D - 1] +
-	CMomentum[e, D - 1], D-1]] // FCE",
+5 CartesianMomentum[a, D - 1] + c CartesianMomentum[b + d, D - 1] +
+	CartesianMomentum[e, D - 1], D-1]] // FCE",
 	"5 CSISD[a] + c (CSISD[b] + CSISD[d]) + CSISD[e]"}
 };

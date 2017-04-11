@@ -74,13 +74,13 @@ FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 
 		FCPrint[1,"FCReplaceD: tmp: " ,tmp, FCDoControl->fcrdVerbose];
 
-		tmp = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|CIndex|CMomentum)[a_,di_] :> h[holddim[a,ToString[di,InputForm]]];
+		tmp = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_,di_] :> h[holddim[a,ToString[di,InputForm]]];
 
 
 
 		FCPrint[1,"FCReplaceD: tmp: " ,tmp, FCDoControl->fcrdVerbose];
 
-		If[	!FreeQ[Cases2[tmp,{ExplicitLorentzIndex,LorentzIndex,Momentum,CIndex,CMomentum,DiracGamma,PauliSigma}],dim],
+		If[	!FreeQ[Cases2[tmp,{ExplicitLorentzIndex,LorentzIndex,Momentum,CartesianIndex,CartesianMomentum,DiracGamma,PauliSigma}],dim],
 			Message[FCReplaceD::checkfail];
 			Abort[]
 		];
@@ -92,8 +92,8 @@ FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 			Abort[]
 		];
 
-		res = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|CIndex|CMomentum)[holddim[a_,str_String]]:> h[a,ToExpression[str]];
-		res = res /. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|CIndex|CMomentum)[a_]/;Head[a]=!=holddim :> h[a];
+		res = tmp //. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[holddim[a_,str_String]]:> h[a,ToExpression[str]];
+		res = res /. (h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_]/;Head[a]=!=holddim :> h[a];
 
 		res = res /. diga[holddim[a_,str_String]] :> DiracGamma[a,ToExpression[str]];
 		res = res /. diga[a_]/;Head[a]=!=holddim :> DiracGamma[a];

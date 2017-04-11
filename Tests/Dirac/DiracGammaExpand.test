@@ -35,11 +35,11 @@ DiracGamma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 GS[a] + 
 	"CGS[a + b].(CGS[c] + CGS[d])"},
 {"fcstDiracGammaExpand-ID10","DiracGammaExpand[CGS[a + b].CGS[c + d], Momentum -> All] // FCE",
 	"(CGS[a] + CGS[b]).(CGS[c] + CGS[d])"},
-{"fcstDiracGammaExpand-ID11","DiracGammaExpand[DiracGamma[5 CMomentum[a] + c CMomentum[b + d] + CMomentum[e]]] // FCE",
+{"fcstDiracGammaExpand-ID11","DiracGammaExpand[DiracGamma[5 CartesianMomentum[a] + c CartesianMomentum[b + d] + CartesianMomentum[e]]] // FCE",
 	"5 CGS[a] + c (CGS[b] + CGS[d]) + CGS[e]"},
 {"fcstDiracGammaExpand-ID12","DiracGammaExpand[
 DiracGamma[
-5 CMomentum[a, D - 1] + c CMomentum[b + d, D - 1] +
-	CMomentum[e, D - 1], D]] // FCE",
+5 CartesianMomentum[a, D - 1] + c CartesianMomentum[b + d, D - 1] +
+	CartesianMomentum[e, D - 1], D]] // FCE",
 	"5 CGSD[a] + c (CGSD[b] + CGSD[d]) + CGSD[e]"}
 };

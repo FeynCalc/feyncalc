@@ -35,14 +35,14 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 	Block[ {nx = x, pali,moms},
 
 		moms = OptionValue[Momentum];
-		objects = Join[$FCTensorList,{TPair}];
+		objects = Join[$FCTensorList,{TemporalPair}];
 
 		If[ OptionValue[FCI],
 			nx = FCI[nx]
 		];
 
 		(* This is to speed up things when dealing with tirival scalar products *)
-		If[	MatchQ[nx, Pair[Momentum[_, ___], Momentum[_, ___]] | CPair[CMomentum[_, ___], CMomentum[_, ___]]] && FreeQ[nx,Plus],
+		If[	MatchQ[nx, Pair[Momentum[_, ___], Momentum[_, ___]] | CartesianPair[CartesianMomentum[_, ___], CartesianMomentum[_, ___]]] && FreeQ[nx,Plus],
 			Return[nx]
 		];
 

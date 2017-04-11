@@ -172,14 +172,14 @@ PauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_:3], PauliSigma[l_Lor
 PauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_Symbol-4], PauliSigma[l_LorentzIndex, dim_Symbol-4], d___]] :=
 	FeynCalc`Package`MetricS (dim-4) PauliTrickEvalFast[DOT[ b,d ]];
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[l_CIndex, dim_:3], PauliSigma[l_CIndex, dim_:3], d___]] :=
+PauliTrickEvalFast[DOT[b___,PauliSigma[l_CartesianIndex, dim_:3], PauliSigma[l_CartesianIndex, dim_:3], d___]] :=
 	dim PauliTrickEvalFast[DOT[ b,d ]];
 
 PauliTrickEvalFast[DOT[b___,PauliSigma[c_Momentum, dim___], PauliSigma[c_Momentum, dim___], d___ ]] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] PauliTrickEvalFast[DOT[b,d]];
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[c_CMomentum, dim___], PauliSigma[c_CMomentum, dim___], d___ ]] :=
-	FCUseCache[ExpandScalarProduct,{CPair[c,c]},{}] PauliTrickEvalFast[DOT[b,d]];
+PauliTrickEvalFast[DOT[b___,PauliSigma[c_CartesianMomentum, dim___], PauliSigma[c_CartesianMomentum, dim___], d___ ]] :=
+	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] PauliTrickEvalFast[DOT[b,d]];
 
 
 
@@ -198,8 +198,8 @@ PauliTrickEval[ex_/;Head[ex]=!=PauliSigma]:=
 			res = Expand2[res,Pair]/. Pair->PairContract /. PairContract->Pair;
 		];
 
-		If[	!FreeQ[res,CPair],
-			res = Expand2[res,CPair]/. CPair->CPairContract /. CPairContract->CPair;
+		If[	!FreeQ[res,CartesianPair],
+			res = Expand2[res,CartesianPair]/. CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair;
 		];
 
 
@@ -254,7 +254,7 @@ pauli4Dim[b___,PauliSigma[l_LorentzIndex], PauliSigma[l_LorentzIndex], d___] :=
 	(FeynCalc`Package`MetricT  + 3 FeynCalc`Package`MetricS) pauli4Dim[b, d];
 
 (*	si^i si^i	*)
-pauli4Dim[b___,PauliSigma[l_CIndex], PauliSigma[l_CIndex], d___] :=
+pauli4Dim[b___,PauliSigma[l_CartesianIndex], PauliSigma[l_CartesianIndex], d___] :=
 	3 pauli4Dim[b,d];
 
 (*	(si^mu p^mu) (si^nu p^nu)	*)
@@ -262,24 +262,24 @@ pauli4Dim[b___,PauliSigma[c_Momentum], PauliSigma[c_Momentum], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] pauli4Dim[b,d];
 
 (*	(si^i p^i) (si^i p^i)	*)
-pauli4Dim[b___,PauliSigma[c_CMomentum], PauliSigma[c_CMomentum], d___ ] :=
-	FCUseCache[ExpandScalarProduct,{CPair[c,c]},{}] pauli4Dim[b,d];
+pauli4Dim[b___,PauliSigma[c_CartesianMomentum], PauliSigma[c_CartesianMomentum], d___ ] :=
+	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] pauli4Dim[b,d];
 
 (*	si^i si^j	*)
-pauli4Dim[b___,PauliSigma[(c1: _CMomentum | _CIndex)], PauliSigma[(c2: _CMomentum | _CIndex)], d___ ]/;c1=!=c2 :=
+pauli4Dim[b___,PauliSigma[(c1: _CartesianMomentum | _CartesianIndex)], PauliSigma[(c2: _CartesianMomentum | _CartesianIndex)], d___ ]/;c1=!=c2 :=
 	(
-	tmpli= CIndex[$MU[Unique[]]];
-	((FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauli4Dim[b,d]  + I Eps[c1,c2,tmpli] pauli4Dim[b,PauliSigma[tmpli],d])/. CPair->CPairContract /. CPairContract->CPair)
+	tmpli= CartesianIndex[$MU[Unique[]]];
+	((FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauli4Dim[b,d]  + I Eps[c1,c2,tmpli] pauli4Dim[b,PauliSigma[tmpli],d])/. CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair)
 	)/; pauliReduce===True;
 
 (*	si^i .... si^i	*)
-pauli4Dim[b___,	PauliSigma[(c1: _CMomentum | _CIndex)],
-				PauliSigma[(c2: _CMomentum | _CIndex)],
-				ch:PauliSigma[(_CMomentum | _CIndex )]...,
-				PauliSigma[(c1: _CMomentum | _CIndex)], d___ ]/;c1=!=c2 :=
+pauli4Dim[b___,	PauliSigma[(c1: _CartesianMomentum | _CartesianIndex)],
+				PauliSigma[(c2: _CartesianMomentum | _CartesianIndex)],
+				ch:PauliSigma[(_CartesianMomentum | _CartesianIndex )]...,
+				PauliSigma[(c1: _CartesianMomentum | _CartesianIndex)], d___ ]/;c1=!=c2 :=
 	(
 	-pauli4Dim[b, PauliSigma[c2], PauliSigma[c1], ch, PauliSigma[c1], d]
-	+ 2 FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauli4Dim[b, ch, PauliSigma[c1], d]
+	+ 2 FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauli4Dim[b, ch, PauliSigma[c1], d]
 	)/; pauliReduce=!=True;
 
 (* ------------------------------------------------------------------------ *)
@@ -295,7 +295,7 @@ pauliDDim[b___,PauliSigma[l_LorentzIndex, dim_-1], PauliSigma[l_LorentzIndex, di
 	(FeynCalc`Package`MetricT  + (dim-1) FeynCalc`Package`MetricS) pauliDDim[b, d];
 
 (*	si^i si^i	*)
-pauliDDim[b___,PauliSigma[l_CIndex, dim_-1], PauliSigma[l_CIndex, dim_-1], d___] :=
+pauliDDim[b___,PauliSigma[l_CartesianIndex, dim_-1], PauliSigma[l_CartesianIndex, dim_-1], d___] :=
 	(dim-1) pauliDDim[b,d];
 
 (*	(si^mu p^mu) (si^nu p^nu)	*)
@@ -303,24 +303,24 @@ pauliDDim[b___,PauliSigma[c_Momentum, dim_-1], PauliSigma[c_Momentum, dim_-1], d
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] pauliDDim[b,d];
 
 (*	(si^i p^i) (si^i p^i)	*)
-pauliDDim[b___,PauliSigma[c_CMomentum, dim_-1], PauliSigma[c_CMomentum, dim_-1], d___ ] :=
-	FCUseCache[ExpandScalarProduct,{CPair[c,c]},{}] pauliDDim[b,d];
+pauliDDim[b___,PauliSigma[c_CartesianMomentum, dim_-1], PauliSigma[c_CartesianMomentum, dim_-1], d___ ] :=
+	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] pauliDDim[b,d];
 
 (*	si^i si^j	*)
-pauliDDim[b___,PauliSigma[(c1: _CMomentum | _CIndex),dim_-1], PauliSigma[(c2: _CMomentum | _CIndex),dim_-1], d___ ]/;c1=!=c2 :=
+pauliDDim[b___,PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1], PauliSigma[(c2: _CartesianMomentum | _CartesianIndex),dim_-1], d___ ]/;c1=!=c2 :=
 	(
-	tmpli= CIndex[$MU[Unique[]],dim-1];
-	FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauliDDim[b,d] + I Eps[c1,c2,tmpli] pauliDDim[b,PauliSigma[tmpli,dim-1],d]
+	tmpli= CartesianIndex[$MU[Unique[]],dim-1];
+	FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauliDDim[b,d] + I Eps[c1,c2,tmpli] pauliDDim[b,PauliSigma[tmpli,dim-1],d]
 	)/; FeynCalc`Package`PauliSigmaScheme==="Naive" && pauliReduce===True;
 
 (*	si^i .... si^i	*)
-pauliDDim[b___,	PauliSigma[(c1: _CMomentum | _CIndex),dim_-1],
-				PauliSigma[(c2: _CMomentum | _CIndex),dim_-1],
-				ch:PauliSigma[(CMomentum | CIndex )[_, dim_-1],dim_-1]...,
-				PauliSigma[(c1: _CMomentum | _CIndex),dim_-1], d___ ]/;c1=!=c2 :=
+pauliDDim[b___,	PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1],
+				PauliSigma[(c2: _CartesianMomentum | _CartesianIndex),dim_-1],
+				ch:PauliSigma[(CartesianMomentum | CartesianIndex )[_, dim_-1],dim_-1]...,
+				PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1], d___ ]/;c1=!=c2 :=
 	(
 	-pauliDDim[b, PauliSigma[c2,dim-1], PauliSigma[c1,dim-1], ch, PauliSigma[c1,dim-1], d]
-	+ 2 FCUseCache[ExpandScalarProduct,{CPair[c1,c2]},{}] pauliDDim[b, ch, PauliSigma[c1,dim-1], d]
+	+ 2 FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauliDDim[b, ch, PauliSigma[c1,dim-1], d]
 	)/; FeynCalc`Package`PauliSigmaScheme=!="Naive";
 
 FCPrint[1,"PauliTrick.m loaded."];

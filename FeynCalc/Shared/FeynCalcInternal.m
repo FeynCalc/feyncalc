@@ -346,11 +346,11 @@ spe[a_,b_] :=
 	Pair[Momentum[a, D-4], Momentum[b,D-4]];
 
 csp[a_,b_] :=
-	CPair[CMomentum[a], CMomentum[b]];
+	CartesianPair[CartesianMomentum[a], CartesianMomentum[b]];
 cspd[a_,b_] :=
-	CPair[CMomentum[a, D-1], CMomentum[b,D-1]];
+	CartesianPair[CartesianMomentum[a, D-1], CartesianMomentum[b,D-1]];
 cspe[a_,b_] :=
-	CPair[CMomentum[a, D-4], CMomentum[b,D-4]];
+	CartesianPair[CartesianMomentum[a, D-4], CartesianMomentum[b,D-4]];
 
 so[a_] :=
 	Pair[Momentum[a], Momentum[OPEDelta]];
@@ -365,13 +365,13 @@ fv[a_,b_] :=
 	Pair[Momentum[a], LorentzIndex[b]];
 
 tc[a_]:=
-	TPair[TMomentum[a],TIndex[]];
+	TemporalPair[TemporalMomentum[a],TemporalIndex[]];
 cvd[a_,b_] :=
-	CPair[CMomentum[a, D-1], CIndex[b, D-1]];
+	CartesianPair[CartesianMomentum[a, D-1], CartesianIndex[b, D-1]];
 cve[a_,b_] :=
-	CPair[CMomentum[a, D-4], CIndex[b,D-4]];
+	CartesianPair[CartesianMomentum[a, D-4], CartesianIndex[b,D-4]];
 cv[a_,b_] :=
-	CPair[CMomentum[a], CIndex[b]];
+	CartesianPair[CartesianMomentum[a], CartesianIndex[b]];
 
 
 mt[a_,b_] :=
@@ -382,11 +382,11 @@ mte[a_,b_] :=
 	Pair[LorentzIndex[a, D-4], LorentzIndex[b, D-4]];
 
 kd[a_,b_] :=
-	CPair[CIndex[a], CIndex[b]];
+	CartesianPair[CartesianIndex[a], CartesianIndex[b]];
 kdd[a_,b_] :=
-	CPair[CIndex[a, D-1], CIndex[b, D-1]];
+	CartesianPair[CartesianIndex[a, D-1], CartesianIndex[b, D-1]];
 kde[a_,b_] :=
-	CPair[CIndex[a, D-4], CIndex[b, D-4]];
+	CartesianPair[CartesianIndex[a, D-4], CartesianIndex[b, D-4]];
 
 gs[a_] :=
 	DiracGamma[Momentum[a]];
@@ -416,21 +416,21 @@ gae[a_Integer] :=
 
 
 tga[] :=
-	DiracGamma[TIndex[]];
+	DiracGamma[TemporalIndex[]];
 
 cga[a_] :=
-	DiracGamma[CIndex[a]]/; !IntegerQ[a];
+	DiracGamma[CartesianIndex[a]]/; !IntegerQ[a];
 cgad[a_] :=
-	DiracGamma[CIndex[a,D-1],D]/; !IntegerQ[a];
+	DiracGamma[CartesianIndex[a,D-1],D]/; !IntegerQ[a];
 cgae[a_] :=
-	DiracGamma[CIndex[a,D-4],D-4]/; !IntegerQ[a];
+	DiracGamma[CartesianIndex[a,D-4],D-4]/; !IntegerQ[a];
 
 cgs[a_] :=
-	DiracGamma[CMomentum[a]]/; !IntegerQ[a];
+	DiracGamma[CartesianMomentum[a]]/; !IntegerQ[a];
 cgsd[a_] :=
-	DiracGamma[CMomentum[a,D-1],D]/; !IntegerQ[a];
+	DiracGamma[CartesianMomentum[a,D-1],D]/; !IntegerQ[a];
 cgse[a_] :=
-	DiracGamma[CMomentum[a,D-4],D-4]/; !IntegerQ[a];
+	DiracGamma[CartesianMomentum[a,D-4],D-4]/; !IntegerQ[a];
 
 si[a_] :=
 	PauliSigma[LorentzIndex[a]]/; !IntegerQ[a];
@@ -448,18 +448,18 @@ sise[a_] :=
 
 
 csi[a_] :=
-	PauliSigma[CIndex[a]]/; !IntegerQ[a];
+	PauliSigma[CartesianIndex[a]]/; !IntegerQ[a];
 csid[a_] :=
-	PauliSigma[CIndex[a, D-1],D-1]/; !IntegerQ[a];
+	PauliSigma[CartesianIndex[a, D-1],D-1]/; !IntegerQ[a];
 csie[a_] :=
-	PauliSigma[CIndex[a, D-4],D-4]/; !IntegerQ[a];
+	PauliSigma[CartesianIndex[a, D-4],D-4]/; !IntegerQ[a];
 
 csis[a_] :=
-	PauliSigma[CMomentum[a]]/; !IntegerQ[a];
+	PauliSigma[CartesianMomentum[a]]/; !IntegerQ[a];
 csisd[a_] :=
-	PauliSigma[CMomentum[a, D-1],D-1]/; !IntegerQ[a];
+	PauliSigma[CartesianMomentum[a, D-1],D-1]/; !IntegerQ[a];
 csise[a_] :=
-	PauliSigma[CMomentum[a, D-4],D-4]/; !IntegerQ[a];
+	PauliSigma[CartesianMomentum[a, D-4],D-4]/; !IntegerQ[a];
 
 lc[a__]:=
 	Eps@@(LorentzIndex/@{a})/; FreeQ[{a},Rule] && (Length[{a}] === 4);
@@ -468,10 +468,10 @@ lcd[a__]:=
 	Eps@@(LorentzIndex[#,D]&/@{a})/;FreeQ[{a},Rule] && (Length[{a}] === 4);
 
 clc[a__]:=
-	Eps@@(CIndex/@{a})/; FreeQ[{a},Rule] && (Length[{a}] === 3);
+	Eps@@(CartesianIndex/@{a})/; FreeQ[{a},Rule] && (Length[{a}] === 3);
 
 clcd[a__]:=
-	Eps@@(CIndex[#,D-1]&/@{a})/;FreeQ[{a},Rule] && (Length[{a}] === 3);
+	Eps@@(CartesianIndex[#,D-1]&/@{a})/;FreeQ[{a},Rule] && (Length[{a}] === 3);
 
 lcl[{x___},{y___}]:=
 	(Eps@@Join[LorentzIndex/@{x}, Momentum/@{y}]/; Length[Join[{x},{y}]]===4);
@@ -480,17 +480,17 @@ lcdl[{x___},{y___}]:=
 	(Eps@@Join[Map[LorentzIndex[#, D]& ,{x}], Map[Momentum[#, D]& ,{y}]]/;	Length[Join[{x},{y}]]===4);
 
 clcl[{x___},{y___}]:=
-	(Eps@@Join[CIndex/@{x}, CMomentum/@{y}]/;	Length[Join[{x},{y}]]===3);
+	(Eps@@Join[CartesianIndex/@{x}, CartesianMomentum/@{y}]/;	Length[Join[{x},{y}]]===3);
 
 clcdl[{x___},{y___}]:=
-	(Eps@@Join[Map[CIndex[#, D-1]& ,{x}], Map[CMomentum[#, D-1]& ,{y}]]/; Length[Join[{x},{y}]]===3);
+	(Eps@@Join[Map[CartesianIndex[#, D-1]& ,{x}], Map[CartesianMomentum[#, D-1]& ,{y}]]/; Length[Join[{x},{y}]]===3);
 
 
 clcl[{x___},{y___}]:=
-	(Eps@@Join[CIndex/@{x}, CMomentum/@{y}]/;	Length[Join[{x},{y}]]===3);
+	(Eps@@Join[CartesianIndex/@{x}, CartesianMomentum/@{y}]/;	Length[Join[{x},{y}]]===3);
 
 clcdl[{x___},{y___}]:=
-	(Eps@@Join[Map[CIndex[#, D-1]& ,{x}], Map[CMomentum[#, D-1]& ,{y}]]/; Length[Join[{x},{y}]]===3);
+	(Eps@@Join[Map[CartesianIndex[#, D-1]& ,{x}], Map[CartesianMomentum[#, D-1]& ,{y}]]/; Length[Join[{x},{y}]]===3);
 
 
 levicivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]] :=

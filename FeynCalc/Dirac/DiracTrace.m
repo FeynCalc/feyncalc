@@ -452,7 +452,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 		(* If there are uncontracted Lorentz indices, try to contract them *)
 
-		If[ contract===True && !DummyIndexFreeQ[tmp,{LorentzIndex,CIndex}],
+		If[ contract===True && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Contracting Lorentz indices. ", FCDoControl->diTrVerbose];
 			tmp=Contract[tmp,FCI->True];

@@ -95,10 +95,10 @@ epscon/:
 epscon/:
 	epscon[a1_,a2_,a3_]^2 :=
 		((( ($LeviCivitaSign)^2 Det[{
-			{CPairContract[a1,a1],CPairContract[a1,a2],CPairContract[a1,a3]},
-			{CPairContract[a2,a1],CPairContract[a2,a2],CPairContract[a2,a3]},
-			{CPairContract[a3,a1],CPairContract[a3,a2],CPairContract[a3,a3]}
-		}]//Expand)/.CPairContract->CPair ))/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3}],{CIndex}|{CMomentum}|{CIndex,CMomentum}];
+			{CartesianPairContract[a1,a1],CartesianPairContract[a1,a2],CartesianPairContract[a1,a3]},
+			{CartesianPairContract[a2,a1],CartesianPairContract[a2,a2],CartesianPairContract[a2,a3]},
+			{CartesianPairContract[a3,a1],CartesianPairContract[a3,a2],CartesianPairContract[a3,a3]}
+		}]//Expand)/.CartesianPairContract->CartesianPair ))/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3}],{CartesianIndex}|{CartesianMomentum}|{CartesianIndex,CartesianMomentum}];
 
 
 epscon/:
@@ -118,9 +118,9 @@ epscon/:
 
 epscon/:
 	epscon[a1_,a2_,a3_] epscon[b1_,b2_,b3_] :=
-		(( ($LeviCivitaSign)^2 Det[{{CPairContract[a1,b1],CPairContract[a1,b2],CPairContract[a1,b3]},
-		{CPairContract[a2,b1],CPairContract[a2,b2],CPairContract[a2,b3]},
-		{CPairContract[a3,b1],CPairContract[a3,b2],CPairContract[a3,b3]}}]//Expand)/.CPairContract->CPair)/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3,b1,b2,b3}],{CIndex}|{CMomentum}|{CIndex,CMomentum}];
+		(( ($LeviCivitaSign)^2 Det[{{CartesianPairContract[a1,b1],CartesianPairContract[a1,b2],CartesianPairContract[a1,b3]},
+		{CartesianPairContract[a2,b1],CartesianPairContract[a2,b2],CartesianPairContract[a2,b3]},
+		{CartesianPairContract[a3,b1],CartesianPairContract[a3,b2],CartesianPairContract[a3,b3]}}]//Expand)/.CartesianPairContract->CartesianPair)/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3,b1,b2,b3}],{CartesianIndex}|{CartesianMomentum}|{CartesianIndex,CartesianMomentum}];
 
 
 

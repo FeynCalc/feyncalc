@@ -34,11 +34,11 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorSplit = {
 },
 {"fcstFeynAmpDenominatorSplit-ID6",
 	"FeynAmpDenominatorSplit[
-FeynAmpDenominator[myPD[CMomentum[q1], m1], myPD[CMomentum[q2], m2], myPD[CMomentum[q3], m3]]]",
-	"FeynAmpDenominator[myPD[CMomentum[q1], m1]] FeynAmpDenominator[myPD[CMomentum[q2], m2]] FeynAmpDenominator[myPD[CMomentum[q3], m3]]"
+FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], m2], myPD[CartesianMomentum[q3], m3]]]",
+	"FeynAmpDenominator[myPD[CartesianMomentum[q1], m1]] FeynAmpDenominator[myPD[CartesianMomentum[q2], m2]] FeynAmpDenominator[myPD[CartesianMomentum[q3], m3]]"
 },
 {"fcstFeynAmpDenominatorSplit-ID7",
-	"FeynAmpDenominatorSplit[FeynAmpDenominator[myPD[CMomentum[q1], m1], myPD[CMomentum[q2], m2],myPD[CMomentum[q3], m3]], Momentum -> {q1}]",
-	"FeynAmpDenominator[myPD[CMomentum[q1], m1]] FeynAmpDenominator[myPD[CMomentum[q2], m2], myPD[CMomentum[q3], m3]]"
+	"FeynAmpDenominatorSplit[FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], m2],myPD[CartesianMomentum[q3], m3]], Momentum -> {q1}]",
+	"FeynAmpDenominator[myPD[CartesianMomentum[q1], m1]] FeynAmpDenominator[myPD[CartesianMomentum[q2], m2], myPD[CartesianMomentum[q3], m3]]"
 }
 }

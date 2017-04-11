@@ -38,30 +38,30 @@ fourvecev[y_,dim_:4] :=
 		];
 
 threevecevlin[n_?NumberQ z_, dim_:3] :=
-	n CMomentum[z, dim];
+	n CartesianMomentum[z, dim];
 
 threevecev[y_,dim_:3] :=
 	threevecev[y,dim] =
 		Block[ {hold},
-			(Distribute[threevecevlin[ Expand[y, CMomentum],
+			(Distribute[threevecevlin[ Expand[y, CartesianMomentum],
 			hold[dim]]] /. hold->Identity)
 		];
 
 zerovecevlin[n_?NumberQ z_] :=
-	n TMomentum[z];
+	n TemporalMomentum[z];
 
 zerovecev[y_] :=
 	zerovecev[y] =
-		Distribute[zerovecevlin[Expand[y, TMomentum]]];
+		Distribute[zerovecevlin[Expand[y, TemporalMomentum]]];
 
 
 
 MomentumExpand[expr_] :=
-	expr /. Spinor -> spinor /. FeynAmpDenominator -> fad /. PropagatorDenominator -> pd /. Pair-> pair /. CPair-> cpair /. TPair-> tpair /.
+	expr /. Spinor -> spinor /. FeynAmpDenominator -> fad /. PropagatorDenominator -> pd /. Pair-> pair /. CartesianPair-> cpair /. TemporalPair-> tpair /.
 	Momentum -> fourvecev /. fourvecevlin -> Momentum /.
-	CMomentum -> threevecev /. threevecevlin -> CMomentum /.
-	TMomentum -> zerovecev /. zerovecevlin -> TMomentum /.
-	pair -> Pair /. cpair -> CPair /. tpair -> TPair /. spinor ->Spinor /. pd -> PropagatorDenominator /. fad -> FeynAmpDenominator;
+	CartesianMomentum -> threevecev /. threevecevlin -> CartesianMomentum /.
+	TemporalMomentum -> zerovecev /. zerovecevlin -> TemporalMomentum /.
+	pair -> Pair /. cpair -> CartesianPair /. tpair -> TemporalPair /. spinor ->Spinor /. pd -> PropagatorDenominator /. fad -> FeynAmpDenominator;
 
 FCPrint[1,"MomentumExpand.m loaded."];
 End[]

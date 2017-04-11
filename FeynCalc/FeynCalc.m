@@ -591,6 +591,7 @@ TBox[a_,b__] :=
 
 End[];
 
+
 (* need to do this first, otherwise $NonComm and $FCTensorList do not get built correctly *)
 boostrappingList = Join[
 	Map[ToFileName[{$FeynCalcDirectory,"Shared"},#]&, {"SharedTools.m", "DataType.m"}],

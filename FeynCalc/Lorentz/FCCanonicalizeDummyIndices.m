@@ -46,7 +46,7 @@ Begin["`FCCanonicalizeDummyIndices`Private`"]
 canodummyVerbose::usage="";
 
 Options[FCCanonicalizeDummyIndices] = {
-	CIndexNames -> {},
+	CartesianIndexNames -> {},
 	CustomIndexNames -> {},
 	DotSimplify -> True,
 	FCE -> False,
@@ -55,7 +55,7 @@ Options[FCCanonicalizeDummyIndices] = {
 	FCVerbose -> False,
 	FCVerbose-> False,
 	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
-	Head -> {LorentzIndex,CIndex,SUNIndex,SUNFIndex},
+	Head -> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex},
 	LorentzIndexNames -> {},
 	Momentum -> All,
 	NotMomentum -> {},
@@ -195,27 +195,27 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		];
 
 		(* Cartesian indices *)
-		If[	!FreeQ[indhead,CIndex],
+		If[	!FreeQ[indhead,CartesianIndex],
 			If[	(Head[moms]=!=All && Head[moms]===List) || notmoms=!={},
 				(* only for particular momenta *)
-				indexExtract = Map[Cases[#, _[a___, CIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,CIndex[y]]:> CIndex[y], Infinity]&, uniqueExpressions],
+				indexExtract = Map[Cases[#, _[a___, CartesianIndex[y__],b___]/;!FreeQ2[{a,b},moms] && FreeQ2[{a,b},notmoms] && MemberQ[finalList,CartesianIndex[y]]:> CartesianIndex[y], Infinity]&, uniqueExpressions],
 				(* for all momenta *)
-				indexExtract = Map[Cases[#, CIndex[y__]/; MemberQ[finalList,CIndex[y]], Infinity]&, uniqueExpressions]
+				indexExtract = Map[Cases[#, CartesianIndex[y__]/; MemberQ[finalList,CartesianIndex[y]], Infinity]&, uniqueExpressions]
 			];
 
 			indexExtract = DeleteDuplicates/@indexExtract;
 
 			FCPrint[2,"FCCanonicalizeDummyIndices: Set of dummy Cartesian indices: ", indexExtract, FCDoControl->canodummyVerbose];
 
-			If[	!MatchQ[indexExtract, {{___CIndex} ...}],
+			If[	!MatchQ[indexExtract, {{___CartesianIndex} ...}],
 					Message[FCCanonicalizeDummyIndices::failmsg,
 					"Failed to  properly extract dummy Cartesian indices."];
 					FCPrint[1,"FCCanonicalizDummyIndices: Entering with: ", indexExtract, FCDoControl->canodummyVerbose];
 					Abort[]
 			];
 
-			repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CIndex[cihead@fu[#2, seedCar],
-					(#1 /.CIndex[_, dim_: 3] :> dim)]] &,x]][#] &, indexExtract];
+			repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CartesianIndex[cihead@fu[#2, seedCar],
+					(#1 /.CartesianIndex[_, dim_: 3] :> dim)]] &,x]][#] &, indexExtract];
 
 
 
@@ -226,7 +226,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		(* Rest *)
 
-		otherHeads = Complement[Union[indhead],{LorentzIndex,CIndex,SUNIndex,SUNFIndex}];
+		otherHeads = Complement[Union[indhead],{LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex}];
 		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads, FCDoControl->canodummyVerbose];
 
 		If[otherHeads =!={},
@@ -250,7 +250,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 
 		(* Renaming of dummy indices according to the supplied list *)
-		cList = {{OptionValue[LorentzIndexNames],lihead},{OptionValue[CIndexNames],cihead},{OptionValue[SUNIndexNames],sunhead},{OptionValue[SUNFIndexNames],sunfhead}};
+		cList = {{OptionValue[LorentzIndexNames],lihead},{OptionValue[CartesianIndexNames],cihead},{OptionValue[SUNIndexNames],sunhead},{OptionValue[SUNFIndexNames],sunfhead}};
 		If[ OptionValue[CustomIndexNames]=!={},
 			cList = Join[cList,Map[{Last[#], ToExpression[ToString[First[#]]<>"head"]}&,OptionValue[CustomIndexNames]]];
 		];

@@ -34,24 +34,24 @@ a_] FVD[q,a_]]", "True"},
 {"fcstUncontract-ID7", "Uncontract[CSP[p,q],p,FCE\[Rule]True]",
 "CSP[p, q]"},
 {"fcstUncontract-ID8",
-"MatchQ[Uncontract[CSP[p,q],p,CPair\[Rule]All,FCE\[Rule]True],CV[p,\
+"MatchQ[Uncontract[CSP[p,q],p,CartesianPair\[Rule]All,FCE\[Rule]True],CV[p,\
 a_]CV[q,a_]]", "True"},
 {"fcstUncontract-ID9",
-"MatchQ[Uncontract[CSP[p,q]^2,p,CPair\[Rule]All,FCE\[Rule]True],CV[\
+"MatchQ[Uncontract[CSP[p,q]^2,p,CartesianPair\[Rule]All,FCE\[Rule]True],CV[\
 p,b_] CV[p,a_] CV[q,b_]CV[q,a_]]", "True"},
 {"fcstUncontract-ID10",
-"MatchQ[Uncontract[CSP[p,q],p,CPair\[Rule]All,Dimension\[Rule]D,\
+"MatchQ[Uncontract[CSP[p,q],p,CartesianPair\[Rule]All,Dimension\[Rule]D,\
 FCE\[Rule]True],CVD[p,a_] CVD[q,a_]]", "True"},
 {"fcstUncontract-ID11",
-"MatchQ[Uncontract[CSP[p,q],p,CPair\[Rule]All,Dimension\[Rule]D-4,\
+"MatchQ[Uncontract[CSP[p,q],p,CartesianPair\[Rule]All,Dimension\[Rule]D-4,\
 FCE\[Rule]True],CVE[p,a_] CVE[q,a_]]", "True"},
 {"fcstUncontract-ID12",
-"MatchQ[Uncontract[CSPD[p,q],p,CPair\[Rule]All,FCE\[Rule]True],CVD[\
+"MatchQ[Uncontract[CSPD[p,q],p,CartesianPair\[Rule]All,FCE\[Rule]True],CVD[\
 p,a_] CVD[q,a_]]", "True"},
 {"fcstUncontract-ID13",
-"MatchQ[Uncontract[Pair[CMomentum[p],LorentzIndex[mu]],p,Pair\
+"MatchQ[Uncontract[Pair[CartesianMomentum[p],LorentzIndex[mu]],p,Pair\
 \[Rule]All,FCE\[Rule]True],\[IndentingNewLine]CV[p,a_] \
-Pair[CIndex[a_],LorentzIndex[mu]]]", "True"},
+Pair[CartesianIndex[a_],LorentzIndex[mu]]]", "True"},
 {"fcstUncontract-ID14",
 "Uncontract[GS[p],p,FCE\[Rule]True,DiracGamma\[Rule]False]",
 "GS[p]"},
@@ -147,8 +147,8 @@ FV[q,b_] LC[mu,nu,b_,a_]]", "True"},
 Pair -> {p}, FCE -> True],
 FV[p, $AL[b_]] FV[Polarization[p, I], $AL[a_]] MT[$AL[a_], $AL[b_]]]", "True"},
 {"fcstUncontract-ID45",
-"MatchQ[Uncontract[CPair[CMomentum[p], CMomentum[Polarization[p, I]]],
-p, CPair -> {p}, FCE -> True],
+"MatchQ[Uncontract[CartesianPair[CartesianMomentum[p], CartesianMomentum[Polarization[p, I]]],
+p, CartesianPair -> {p}, FCE -> True],
 CV[p, $AL[b_]] CV[Polarization[p, I], $AL[a_]] KD[$AL[a_], $AL[b_]]]", "True"},
 {"fcstUncontract-ID46",
 "MatchQ[Uncontract[Eps[LorentzIndex[nu],LorentzIndex[rho],\
@@ -177,12 +177,12 @@ FCI[FV[y,i3_]]/;i1=!=i2&&i2=!=i3]", "True"},
 "MatchQ[Uncontract[SPD[l, l], l, Pair -> All, FCE -> True],
 FVD[l, $AL[a_]] FVD[l, $AL[b_]] MTD[$AL[a_], $AL[b_]]]", "True"},
 {"fcstUncontract-ID52",
-"MatchQ[Uncontract[CSPD[l, l], l, CPair -> All, FCE -> True],
+"MatchQ[Uncontract[CSPD[l, l], l, CartesianPair -> All, FCE -> True],
 CVD[l, $AL[a_]] CVD[l, $AL[b_]] KDD[$AL[a_], $AL[b_]]]", "True"},
 {"fcstUncontract-ID53",
 "Uncontract[SPD[l, l], l, Pair -> All, Square -> False, FCE -> True]", "SPD[l, l]"},
 {"fcstUncontract-ID54",
-"Uncontract[CSPD[l, l], l, CPair -> All, Square -> False, FCE -> True]", "CSPD[l, l]"},
+"Uncontract[CSPD[l, l], l, CartesianPair -> All, Square -> False, FCE -> True]", "CSPD[l, l]"},
 {"fcstUncontract-ID55",
 "MatchQ[Uncontract[GSD[l, q, l], l, FCE -> True],GAD[b_].GSD[q].GAD[a_] FVD[l, b_] FVD[l, a_]]", "True"},
 {"fcstUncontract-ID56",

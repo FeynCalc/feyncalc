@@ -65,8 +65,8 @@ FeynCalcExternal[x_,opts___Rule] :=
 			FeynAmpDenominator :> feynampback,
 			MetricTensor :> metricmul,
 			Pair :> pairback,
-			CPair :> cpairback,
-			TPair :> tpairback,
+			CartesianPair :> cpairback,
+			TemporalPair :> tpairback,
 			SUND :> sundback,
 			SUNDelta :> sundeltanoi,
 			SUNFDelta :> sunfdeltanoi,
@@ -79,7 +79,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
 		vv = Cases2[x, {
-				CPair,
+				CartesianPair,
 				DiracGamma,
 				DiracSigma,
 				Eps,
@@ -97,7 +97,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 				SUNDeltaContract,
 				SUNFDeltaContract,
 				ScalarProduct,
-				TPair,
+				TemporalPair,
 				Power2
 			} /. sequence -> Sequence];
 		rv = Map[(# ->  ((MomentumCombine[#])/.ru ) )&, vv]//Dispatch;
@@ -130,11 +130,11 @@ scalarmul[a_, b_,dim___] :=
 	ScalarProduct[a,b,dim];
 
 
-pairback[TIndex[], TIndex[]] :=
+pairback[TemporalIndex[], TemporalIndex[]] :=
 	MT[0,0];
-pairback[ExplicitLorentzIndex[b_?NumberQ], TIndex[]] :=
+pairback[ExplicitLorentzIndex[b_?NumberQ], TemporalIndex[]] :=
 	MT[0,b];
-pairback[LorentzIndex[b_], TIndex[]] :=
+pairback[LorentzIndex[b_], TemporalIndex[]] :=
 	MT[0,b];
 
 pairback[ExplicitLorentzIndex[a_?NumberQ], ExplicitLorentzIndex[b_?NumberQ]] :=
@@ -184,31 +184,31 @@ pairback[Momentum[a_, D-4], Momentum[b_, D-4]] :=
 pairback[Momentum[a_, d_], Momentum[b_, d_]] :=
 	ScalarProduct[a, b, Dimension -> d]/;(d=!=D && d=!= D-4);
 
-cpairback[CIndex[a_], CMomentum[b_]] :=
+cpairback[CartesianIndex[a_], CartesianMomentum[b_]] :=
 	CV[b,a];
-cpairback[CIndex[a_, D-1], CMomentum[b_, D-1]] :=
+cpairback[CartesianIndex[a_, D-1], CartesianMomentum[b_, D-1]] :=
 	CVD[b,a];
-cpairback[CIndex[a_, D-4], CMomentum[b_, D-4]] :=
+cpairback[CartesianIndex[a_, D-4], CartesianMomentum[b_, D-4]] :=
 	CVE[b,a];
 
-cpairback[CIndex[a_], CIndex[b_]] :=
+cpairback[CartesianIndex[a_], CartesianIndex[b_]] :=
 	KD[a,b];
-cpairback[CIndex[a_,D-1], CIndex[b_,D-1]] :=
+cpairback[CartesianIndex[a_,D-1], CartesianIndex[b_,D-1]] :=
 	KDD[a,b];
-cpairback[CIndex[a_,D-4], CIndex[b_,D-4]] :=
+cpairback[CartesianIndex[a_,D-4], CartesianIndex[b_,D-4]] :=
 	KDE[a,b];
 
-cpairback[CMomentum[a_], CMomentum[b_]] :=
+cpairback[CartesianMomentum[a_], CartesianMomentum[b_]] :=
 	CSP[a, b];
-cpairback[CMomentum[a_, D-1], CMomentum[b_, D-1]] :=
+cpairback[CartesianMomentum[a_, D-1], CartesianMomentum[b_, D-1]] :=
 	CSPD[a, b];
-cpairback[CMomentum[a_, D-4], CMomentum[b_, D-4]] :=
+cpairback[CartesianMomentum[a_, D-4], CartesianMomentum[b_, D-4]] :=
 	CSPE[a, b];
 
-tpairback[TIndex[],TMomentum[a_]]:=
+tpairback[TemporalIndex[],TemporalMomentum[a_]]:=
 	TC[a];
 
-diracback[TIndex[]]:=
+diracback[TemporalIndex[]]:=
 	TGA[];
 
 diracback[LorentzIndex[a_]] :=
@@ -218,11 +218,11 @@ diracback[LorentzIndex[a_,D],D] :=
 diracback[LorentzIndex[a_,D-4],D-4] :=
 	GAE[a];
 
-diracback[CIndex[a_]] :=
+diracback[CartesianIndex[a_]] :=
 	CGA[a];
-diracback[CIndex[a_, D-1], D] :=
+diracback[CartesianIndex[a_, D-1], D] :=
 	CGAD[a];
-diracback[CIndex[a_, D-4], D-4] :=
+diracback[CartesianIndex[a_, D-4], D-4] :=
 	CGAE[a];
 
 
@@ -236,11 +236,11 @@ diracback[Momentum[a_, D], D] :=
 diracback[Momentum[a_, D-4], D-4] :=
 	GSE[a];
 
-diracback[CMomentum[a_]] :=
+diracback[CartesianMomentum[a_]] :=
 	CGS[a];
-diracback[CMomentum[a_, D-1], D] :=
+diracback[CartesianMomentum[a_, D-1], D] :=
 	CGSD[a];
-diracback[CMomentum[a_, D-4], D-4] :=
+diracback[CartesianMomentum[a_, D-4], D-4] :=
 	CGSE[a];
 
 diracback[5] :=
@@ -261,11 +261,11 @@ sigmaback[LorentzIndex[a_,D],D-1] :=
 sigmaback[LorentzIndex[a_,D-4],D-4] :=
 	SIE[a];
 
-sigmaback[CIndex[a_]] :=
+sigmaback[CartesianIndex[a_]] :=
 	CSI[a];
-sigmaback[CIndex[a_, D-1], D-1] :=
+sigmaback[CartesianIndex[a_, D-1], D-1] :=
 	CSID[a];
-sigmaback[CIndex[a_, D-4], D-4] :=
+sigmaback[CartesianIndex[a_, D-4], D-4] :=
 	CSIE[a];
 
 sigmaback[Momentum[a_]] :=
@@ -275,11 +275,11 @@ sigmaback[Momentum[a_, D], D-1] :=
 sigmaback[Momentum[a_, D-4], D-4] :=
 	SISE[a];
 
-sigmaback[CMomentum[a_]] :=
+sigmaback[CartesianMomentum[a_]] :=
 	CSIS[a];
-sigmaback[CMomentum[a_, D-1], D-1] :=
+sigmaback[CartesianMomentum[a_, D-1], D-1] :=
 	CSISD[a];
-sigmaback[CMomentum[a_, D-4], D-4] :=
+sigmaback[CartesianMomentum[a_, D-4], D-4] :=
 	CSISE[a];
 
 suntback[(SUNIndex|ExplicitSUNIndex)[a_]] :=
@@ -365,28 +365,28 @@ eps[LorentzIndex[a_,dd_], LorentzIndex[b_,dd_], LorentzIndex[c_,dd_], Momentum[d
 eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_], LorentzIndex[c_,dd_],LorentzIndex[d_,dd_]]:=
 	LeviCivita[a,b,c,d,Dimension->dd]/;dd=!=D;
 
-eps[CMomentum[a_],CMomentum[b_],CMomentum[c_]]:=
+eps[CartesianMomentum[a_],CartesianMomentum[b_],CartesianMomentum[c_]]:=
 	CLC[][a,b,c];
 
-eps[CIndex[a_], CMomentum[b_], CMomentum[c_]]:=
+eps[CartesianIndex[a_], CartesianMomentum[b_], CartesianMomentum[c_]]:=
 	CLC[a][b,c];
 
-eps[CIndex[a_], CIndex[b_], CMomentum[c_]]:=
+eps[CartesianIndex[a_], CartesianIndex[b_], CartesianMomentum[c_]]:=
 	CLC[a,b][c];
 
-eps[CIndex[a_], CIndex[b_], CIndex[c_]]:=
+eps[CartesianIndex[a_], CartesianIndex[b_], CartesianIndex[c_]]:=
 	CLC[a,b,c];
 
-eps[CMomentum[a_, D-1],CMomentum[b_, D-1],CMomentum[c_, D-1]]:=
+eps[CartesianMomentum[a_, D-1],CartesianMomentum[b_, D-1],CartesianMomentum[c_, D-1]]:=
 	CLCD[][a,b,c];
 
-eps[CIndex[a_, D-1], CMomentum[b_, D-1], CMomentum[c_, D-1]]:=
+eps[CartesianIndex[a_, D-1], CartesianMomentum[b_, D-1], CartesianMomentum[c_, D-1]]:=
 	CLCD[a][b,c];
 
-eps[CIndex[a_, D-1], CIndex[b_, D-1], CMomentum[c_, D-1]]:=
+eps[CartesianIndex[a_, D-1], CartesianIndex[b_, D-1], CartesianMomentum[c_, D-1]]:=
 	CLCD[a,b][c];
 
-eps[CIndex[a_, D-1], CIndex[b_, D-1], CIndex[c_, D-1]]:=
+eps[CartesianIndex[a_, D-1], CartesianIndex[b_, D-1], CartesianIndex[c_, D-1]]:=
 	CLCD[a,b,c];
 
 FCPrint[1,"FeynCalcExternal.m loaded"];
