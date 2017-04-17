@@ -14,5 +14,7 @@
 Tests`NonCommAlgebra`fcstTr2 = {
 {"Tr2-ID1", "DiracTrace[a]//Tr2", "4*a"},
 {"Tr2-ID2", "DiracTrace[a[SUNFIndex[i]]Tf ]//Tr2",
-	"4*Tf*a[SUNFIndex[i]]"}
+	"4*Tf*a[SUNFIndex[i]]"},
+{"Tr2-ID3", "Tr[GA[i, j]]// FCE", "4 MT[i, j]"},
+{"Tr2-ID4", "Tr[CGA[i, j]] // FCE", "-4 KD[i, j]"}
 };

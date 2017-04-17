@@ -58,7 +58,8 @@ Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor3].Spinor[Moment
 {"fcstDiracSimplify-ID20","DiracSimplify[
 Spinor[-Momentum[p2, D], m, 1].GAD[Lor4].(m + GSD[-l - p2]).GAD[Lor1].Spinor[-Momentum[p4, D], m, 1]] // FCE","-Spinor[-Momentum[p2, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[-Momentum[p4, D], m, 1] - 2 Spinor[-Momentum[p2, D], m, 1].GAD[Lor1].Spinor[-Momentum[p4, D], m, 1] FVD[p2, Lor4]"},
 {"fcstDiracSimplify-ID21","DiracSimplify[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[Lor1].Spinor[Momentum[p1, D], m, 1]] // FCE","Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
-Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Momentum[p1, D], m, 1] FVD[p3, Lor4]"}
+Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Momentum[p1, D], m, 1] FVD[p3, Lor4]"},
+{"fcstDiracSimplify-ID21","DiracSimplify[CGA[i].CGS[p].CGA[j].CGA[i]]//FCE","4 CV[p, j] + CGS[p].CGA[j]"}
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {

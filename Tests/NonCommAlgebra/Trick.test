@@ -19,5 +19,7 @@ Tests`NonCommAlgebra`fcstTrick = {
 	"-Pair[Momentum[p], Momentum[p]] + Pair[Momentum[p], Momentum[q]] \
 	- Pair[Momentum[p], Momentum[r]] + Pair[Momentum[q], Momentum[r]]"},
 {"Trick-ID3", "Trick[c.b.a . GA[d].GA[e]]",
-	"a*b*c*DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[e]]"}
+	"a*b*c*DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[e]]"},
+{"Trick-ID4", "Trick[{CGA[i] KD[i, j], KDD[\[Nu], \[Nu]]}]",
+	"{DiracGamma[CartesianIndex[j]], -1 + D}"}
 };
