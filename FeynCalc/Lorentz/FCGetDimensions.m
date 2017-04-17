@@ -28,11 +28,12 @@ End[]
 Begin["`FCGetDimensions`Private`"]
 
 Options[FCGetDimensions] = {
-	FCI -> False
+	FCI -> False,
+	ChangeDimension -> False
 };
 
 FCGetDimensions[expr_, OptionsPattern[]]:=
-	Block[{ex, res, null1,null2},
+	Block[{ex, res, null1,null2,head},
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
@@ -42,9 +43,17 @@ FCGetDimensions[expr_, OptionsPattern[]]:=
 		res = Cases[ex+null1+null2, _Momentum | _DiracGamma | _DiracGammaT | _PauliSigma | _LorentzIndex |
 			_ExplicitLorentzIndex | _CartesianIndex | _CartesianMomentum | _TemporalIndex | _TemporalMomentum, Infinity]//DeleteDuplicates//Sort;
 		res = res /. (Momentum|DiracGamma|DiracGammaT|LorentzIndex|ExplicitLorentzIndex)[_, dim_:4]:> dim;
-		res = res /. (PauliSigma|CartesianIndex|CartesianMomentum|TemporalMomentum)[_, dim_:3]:> dim;
+		res = res /. (CartesianIndex|CartesianMomentum)[_, dim_:3]:> head[dim];
+		res = res /. PauliSigma[_, dim_:3]:> dim;
 		res = res /. {_TemporalIndex -> 4, _TemporalMomentum -> 4};
-		res = res//DeleteDuplicates//Sort;
+
+		(*	Sometimes we do not need to distinguish between dimensions of Lorentz and Cartesian objects.
+			For example, a 3-dimensional Cartesian vector can be regarded as a part of a 4-dimensional Lorentz vector *)
+		If[OptionValue[ChangeDimension],
+			res = res /.{head[3]->head[4],head[s_Symbol-1]:>s}
+		];
+
+		res = (res /. head -> Identity)//DeleteDuplicates//Sort;
 
 		res
 
