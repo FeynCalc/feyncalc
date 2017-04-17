@@ -51,11 +51,6 @@ mfci[y_] :=
 
 FeynAmpDenominatorCombine[x_] := (
 
-	If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-	];
-
 	Expand2[x//mfci, FeynAmpDenominator]  /.
 	FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor
 	);
