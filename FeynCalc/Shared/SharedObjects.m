@@ -1294,7 +1294,7 @@ Eps[x___, a:(CartesianMomentum|Momentum|LorentzIndex|CartesianIndex)[_,_Symbol-4
 Eps[x_, _TemporalIndex | _TemporalMomentum, y_]:=
 	0/; Length[{x,y}]===2;
 
-Eps[_CartesianMomentum,_CartesianMomentum,_CartesianMomentum,_CartesianMomentum]:=
+Eps[(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex)]:=
 	0;
 
 Eps[x__]/; !MemberQ[{3, 4}, Length[{x}]] && FCPatternFreeQ[{x}] :=
