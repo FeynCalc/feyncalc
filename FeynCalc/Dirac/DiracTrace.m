@@ -108,11 +108,6 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 			];
 		];
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		unitMatrixTrace = OptionValue[TraceOfOne];
 
 		FCPrint[1, "DiracTrace. Entering.", FCDoControl->diTrVerbose];
@@ -338,7 +333,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			(* One more check: Traces with mixed dimensions are forbidden in NDR and Larin's scheme, so we abort the computation if this is the case *)
 			If [ !$BreitMaison,
 				Scan[
-					If[	Length[FCGetDimensions[#/.DiracGamma[5]->1]]=!=1,
+					If[	Length[FCGetDimensions[#/.DiracGamma[5]->1,ChangeDimension->True]]=!=1,
 						Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in this g^5 scheme."];
 						Abort[]
 					]&, spurHeadListChiral
@@ -370,7 +365,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Calculating chiral traces.", FCDoControl->diTrVerbose];
 			(* 	Purely 4 dimensional traces are always computed in the same way, regardless of the chosen scheme:
 				Eq 2.18 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)) *)
-			traceListChiral = spurHeadListChiral/. spurHead[x__]/;(FCGetDimensions[{x}]==={4}) :> spur5In4Dim[x];
+			traceListChiral = spurHeadListChiral/. spurHead[x__]/;(FCGetDimensions[{x},ChangeDimension->True]==={4}) :> spur5In4Dim[x];
 
 			(*	Choice of the scheme for D-dimensional g^5	*)
 			If[	!FreeQ[traceListChiral,spurHead],
@@ -621,12 +616,12 @@ traceEpsNo5[mu_, nu_, rho_, SI2__] :=
 spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 	Block[{li1,li2,li3, res},
 		{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"larLia","larLib","larLic"}];
-		If[ FCGetDimensions[{x}]=!={dim},
+		If[ FCGetDimensions[{x},ChangeDimension->True]=!={dim},
 			Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in Larin's scheme."];
 			Abort[]
 		];
 		res = I/6 $LeviCivitaSign Eps[y[[1]], li1, li2, li3] spurNo5[x,DiracGamma[li1,dim],DiracGamma[li2,dim],	DiracGamma[li3,dim]];
-		If[ FCGetDimensions[{res}]=!={dim},
+		If[ FCGetDimensions[{res},ChangeDimension->True]=!={dim},
 			Message[DiracTrace::failmsg, "Something went wrong while computing trace in Larin's scheme."];
 			Abort[]
 		];
@@ -643,10 +638,10 @@ spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
 
 spur5BMHVWest[DiracGamma[x_,___],DiracGamma[y_,___],DiracGamma[r_,___],DiracGamma[z_,___], DiracGamma[5]] :=
 	EpsEvaluate[$LeviCivitaSign I Eps[Take[x,1], Take[y,1], Take[r,1], Take[z,1]], FCI->True]/;
-	!MatchQ[FCGetDimensions[{x,y,r,z}],{___,_Symbol-4,___}];
+	!MatchQ[FCGetDimensions[{x,y,r,z},ChangeDimension->True],{___,_Symbol-4,___}];
 
 spur5BMHVWest[DiracGamma[x_,___],DiracGamma[y_,___],DiracGamma[r_,___],DiracGamma[z_,___], DiracGamma[5]] :=
-	0/; MatchQ[FCGetDimensions[{x,y,r,z}],{___,_Symbol-4,___}];
+	0/; MatchQ[FCGetDimensions[{x,y,r,z},ChangeDimension->True],{___,_Symbol-4,___}];
 
 spur5BMHVNoWest[x__DiracGamma, DiracGamma[5]]:=
 	Block[{li1,li2,li3,li4, res},

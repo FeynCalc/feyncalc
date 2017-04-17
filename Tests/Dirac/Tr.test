@@ -183,7 +183,8 @@ Tests`Dirac`fcstTr = {
 	1415040*d^8 - 39600*d^9 + 616*d^10 - 4*d^11"},
 {"fcstTr-ID15","Tr[DiracTrace[GA[i, j]]] // FCE","16 MT[i, j]"},
 {"fcstTr-ID16","Tr[GSD[pv3].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"},
-{"fcstTr-ID17","Tr[GSD[pv3, pv4, pv5].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"}
+{"fcstTr-ID17","Tr[GSD[pv3, pv4, pv5].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"},
+{"fcstTr-ID18","Tr[CGA[i, j]]","-4 CartesianPair[CartesianIndex[i], CartesianIndex[j]]"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =

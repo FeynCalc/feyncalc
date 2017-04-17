@@ -657,7 +657,8 @@ If[$FCAdvice,
 *)
 Unprotect[Tr];
 Tr[Pattern[FeynCalc`Private`trarg,BlankSequence[]]] :=
-	TR[FeynCalc`Private`trarg] /; !FreeQ[{FeynCalc`Private`trarg}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair];
+	TR[FeynCalc`Private`trarg] /; !FreeQ[{FeynCalc`Private`trarg}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair |
+		CGA | CGAD | CGAE | CGS | CGSD | CGSE ];
 Tr::usage =
 "FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
 generalized trace, combining terms with f instead of Plus. Tr[list, f, n] goes down to level n
