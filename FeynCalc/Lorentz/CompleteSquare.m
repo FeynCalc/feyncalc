@@ -30,34 +30,30 @@ CompleteSquare[e_, x_ ,y_:Null] :=
 		];
 
 		(* Make sure all momenta have the same dimension *)
-		dims = Union[Cases[e, (Dimension->_)|(Momentum[_,_]),Infinity]];
-		If[ dims =!= {},
-			dims = Union[(#[[2]])& /@ dims]
-		];
+		dims = FCGetDimensions[e];
+
 		Which[
-		Length[dims] == 0,
-		dim = Sequence[];
-		xx = Momentum[x];
-		ex = e;,
-		Length[dims] == 1,
-		dim = dims[[1]];
-		xx = Momentum[x,dim];
-		ex = e;,
-		True,
-		dim = dims[[1]];
-		xx = Momentum[x, dim];
-		rul = ((Rule@@#)& /@ Transpose[
-		{dims, Table[dim,{Length[dims]}]}]);
-		ex = e //. rul;
+			Length[dims] == 1,
+				dim = dims[[1]];
+				xx = Momentum[x,dim];
+				ex = e,
+			True,
+				dim = dims[[1]];
+				xx = Momentum[x, dim];
+				rul = ((Rule@@#)& /@ Transpose[{dims, Table[dim,{Length[dims]}]}]);
+				ex = e //. rul;
 		];
-		exp = Expand[ExpandScalarProduct[Contract[ex]]]/.
-		{Pair[pp:Momentum[x,___],p:Momentum[_?(FreeQ[#,x]&),___]]:>p*pp,
-		Pair[p:Momentum[_?(FreeQ[#,x]&),___],pp:Momentum[x,___]]:>p*pp};
+
+		exp = Expand[ExpandScalarProduct[Contract[ex]]]/. {
+			Pair[pp:Momentum[x,___],p:Momentum[_?(FreeQ[#,x]&),___]]:>p pp,
+			Pair[p:Momentum[_?(FreeQ[#,x]&),___],pp:Momentum[x,___]]:>p pp
+		};
+
 		pa = Pair[xx,xx];
 		a = Coefficient[exp, pa, 1];
-		If[ Length[CoefficientList[exp,x]]>3||
-			Length[CoefficientList[exp,pa]]>2||a===0,
+		If[ Length[CoefficientList[exp,x]]>3 || Length[CoefficientList[exp,pa]]>2||a===0,
 			exp,
+
 			b = Coefficient[exp, xx, 1 ];
 			c = Coefficient[Coefficient[exp, xx, 0 ], pa, 0 ];
 			If[ y===Null,

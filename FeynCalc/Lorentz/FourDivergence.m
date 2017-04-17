@@ -159,7 +159,7 @@ fourDerivative[x_, ve_]:=
 
 		nx = D[nx /.FeynAmpDenominator->fad /. PropagatorDenominator->pd, p] /. Derivative -> deriv;
 		uList = Cases[nx+null1+null2,deriv[a___][b___][c___],Infinity]//Union;
-(*FourDivergence[FCI[GSD[q]], FVD[q, mu]] // StandardForm*)
+
 		sList = uList /. (deriv[__][fad][__]) :> 1 /. {
 			deriv[1,0][pd][pe_,b_] :> (-2 Pair[pe,mu] fad[pd[pe, b], pd[pe, b]]),
 			deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
