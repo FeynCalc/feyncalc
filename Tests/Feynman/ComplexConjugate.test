@@ -22,5 +22,15 @@ Tests`Feynman`fcstComplexConjugate = {
 	"SUNTF[{SUNIndex[a3], SUNIndex[a2], SUNIndex[a1]}, SUNFIndex[c], SUNFIndex[b]]"},
 {"fcstComplexConjugate-ID4","MatchQ[ComplexConjugate[GA[a].GA[5].GA[a]],
 -DiracGamma[LorentzIndex[x_]].DiracGamma[5].DiracGamma[LorentzIndex[x_]] /; x =!= a]",
-	"True"}
+	"True"},
+{"fcstComplexConjugate-ID5","ComplexConjugate[PauliXi[-I].CSI[i].PauliEta[I], FCE -> True]",
+	"PauliEta[-I].CSI[i].PauliXi[I]"},
+{"fcstComplexConjugate-ID6","ComplexConjugate[PauliXi[-I].CSI[i, j, k].PauliEta[I], FCE -> True]",
+	"PauliEta[-I].CSI[k].CSI[j].CSI[i].PauliXi[I]"},
+{"fcstComplexConjugate-ID7","ComplexConjugate[PauliXi[-I].CSIS[p, q, r].PauliEta[I], FCE -> True]",
+	"PauliEta[-I].CSIS[r].CSIS[q].CSIS[p].PauliXi[I]"},
+{"fcstComplexConjugate-ID8","ComplexConjugate[SpinorUBar[p1, m1].GA[mu, nu, rho].SpinorV[p2, m2], FCE -> True]",
+	"Spinor[-Momentum[p2], m2, 1].GA[rho].GA[nu].GA[mu].Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID9","ComplexConjugate[SpinorUBar[p1, m1].CGA[i, j, k].SpinorV[p2, m2], FCE -> True]",
+	"Spinor[-Momentum[p2], m2, 1].CGA[k].CGA[j].CGA[i].Spinor[Momentum[p1], m1, 1]"}
 };

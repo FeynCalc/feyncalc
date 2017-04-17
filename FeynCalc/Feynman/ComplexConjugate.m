@@ -31,108 +31,75 @@ End[]
 
 Begin["`ComplexConjugate`Private`"]
 
-(*
-HoldPattern[ rev[yz__ /; FreeQ2[{yz}, {SUNT}] ] ]:=
+dotsim::usage="";
 
-*)
-(*
-HoldPattern[ rev[yz__] ]:=
-*)
 rev[yz__] :=
-(*
-Isolate[
-*)
-	(DOT @@ (Reverse[FRH[{ yz }]]/.
-	(*Changed 28/2-2001 by F.Orellana, because of bug report by T.Rashba*)(*
-						DiracGamma[5]->(-DiracGamma[5])/.
-						{DiracGamma[6] :> DiracGamma[7],
-						DiracGamma[7]:>DiracGamma[6]}/.*)
-						{ChargeConjugationMatrix :> (-ChargeConjugationMatrix),  ChargeConjugationMatrixInv -> (-ChargeConjugationMatrixInv)}
-			)(*, IsolateNames->c$CC, IsolateSplit->Infinity
-			]*)
-	) /; Length[Position[{yz}, Spinor]] < 3;
+	(DOT @@ (Reverse[FRH[{ yz }]]/.  {
+		ChargeConjugationMatrix :> (-ChargeConjugationMatrix),  ChargeConjugationMatrixInv -> (-ChargeConjugationMatrixInv)
+	})) /; Length[Position[{yz}, Spinor]] < 3;
 
 c$CCfrh /: HoldForm[c$CCfrh[ii_]] := c$CC[ii];
-
-(*cLIndex[x_, dime___] := LorentzIndex[ComplexIndex[x], dime];
-cSIndex[x_]          := SUNIndex[ComplexIndex[x]];*)
 
 conpa[x__] :=
 	conpa[x] = Pair[x]
 
-(* ComplexConjugatedef *)
-(*sunfcomp[a___] := SUNF @@ ({a}/.ComplexIndex -> Identity);
-sundeltacomp[a___] := SUNDelta @@ ({a}/.ComplexIndex -> Identity);*)
-(*Added SumOver stuff. F.Orellana. 20/8-2002*)
-(*Dropped again 19/1-2003. Let's try and keep some hierarchy:
-	FeynCalc -> PHI -> FeynArts. Dropped this whole business and ComplexIndex also;
-	it is not maintainable (say you want another real function - you don't want to
-	have to to type it in here in this file...)*)
-(*sumovercomp[a___] := FeynArts`SumOver @@ ({a}/.ComplexIndex -> Identity);
-ugencomp[a__] := Phi`Objects`UGenerator @@ ({a}/.ComplexIndex -> Identity);*)
-
-(*
-nenenen
-sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
-*)
-
 (* for large expressions it is better to not use DotSimplify *)
 Options[ComplexConjugate] = {
+	DotSimplify -> True,
+	FCE -> False,
 	FCI -> False,
-	FCRenameDummyIndices -> True,
-	DotSimplify -> True
+	FCRenameDummyIndices -> True
 };
 
-ComplexConjugate[expr_, opts:OptionsPattern[]]:=
+ComplexConjugate[expr_, OptionsPattern[]]:=
 	Block[{ex,res},
-
-		If[	!FreeQ2[expr, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
 		];
 
-		If[ Head[ex]===HoldForm && FreeQ2[ex, {DOT,LorentzIndex,SUNIndex,SUNTF,DiracGamma,Complex}],
+		dotsim = OptionValue[DotSimplify];
+
+		If[ Head[ex]===HoldForm && FreeQ2[ex, {DOT,LorentzIndex,SUNIndex,SUNTF,DiracGamma,PauliSigma,Complex}],
 			Return[ex]
 		];
 
-		res = compcon[ex/.SUNTrace->suntrac, opts]/. SUNDelta -> SUNDeltaContract /. compcon -> compcon2 /.
+		res = compcon[ex/.SUNTrace->suntrac]/. SUNDelta -> SUNDeltaContract /. compcon -> compcon2 /.
 		compcon2 -> ComplexConjugate /. suntrac-> SUNTrace;
 
 		If[	OptionValue[FCRenameDummyIndices],
 			res = FCRenameDummyIndices[res]
 		];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	];
 
-compcon2[x_/;!FreeQ[x, HoldForm], opts:OptionsPattern[]] :=
-	compcon[FRH[x], opts];
+compcon2[x_/;!FreeQ[x, HoldForm]] :=
+	compcon[FRH[x]];
 
-compcon[x_^n_?(Element[#,Reals]===True)&, opts:OptionsPattern[]] :=
-	compcon[x,opts]^n;
+compcon[x_^n_?(Element[#,Reals]===True)&] :=
+	compcon[x]^n;
 
-compcon[x_Plus, opts:OptionsPattern[]] :=
-	compcon[#,opts]& /@ x;
+compcon[x_Plus] :=
+	compcon /@ x;
 
-compcon[x_Times, opts:OptionsPattern[]] :=
-	compcon[#,opts]& /@ x;
+compcon[x_Times] :=
+	compcon /@ x;
 
-compcon[b_HoldForm, OptionsPattern] :=
+compcon[b_HoldForm] :=
 	b /; FreeQ2[FRH[b], {DOT,LorentzIndex,SUNIndex,SUNTF,Complex}];
 
-compcon[x:Except[_Plus | _Times], opts:OptionsPattern[]] :=
-	Block[ {nx = x,oone, suntrac, dotsim},
+compcon[x:Except[_Plus | _Times]] :=
+	Block[ {nx = x,oone, suntrac},
 
-		If[ FreeQ2[nx, {DOT,Complex,DiracGamma,SUNTF}],
+		If[ FreeQ2[nx, {DOT,Complex,DiracGamma,PauliSigma,SUNTF}],
 			Return[nx]
 		];
-
-		dotsim = OptionValue[ComplexConjugate,{opts}, DotSimplify];
 
 		If[ !FreeQ[nx, SUNF],
 			nx = Expand[nx, SUNF]
@@ -152,22 +119,18 @@ compcon[x:Except[_Plus | _Times], opts:OptionsPattern[]] :=
 			nx = nx /. Eps[a__] :> Conjugate[$LeviCivitaSign]/$LeviCivitaSign Eps[a]
 		];
 
-		nx = nx /. DiracGamma[a__]:>
-		DOT[oone, DiracGamma[a]]/;
-		FreeQ[{5,6,7},Evaluate[{a}[[1]]]]/.
-		DiracGamma[5]->(-DiracGamma[5])/.
-		{DiracGamma[6] :> DiracGamma[7],
-		DiracGamma[7]:>DiracGamma[6]}(**)/.
+		nx = nx /.
+			DiracGamma[a__]:> DOT[oone, DiracGamma[a]]/; FreeQ[{5,6,7},Evaluate[{a}[[1]]]] /.
+			DiracGamma[5]->(-DiracGamma[5]) /.
+			{DiracGamma[6] :> DiracGamma[7], DiracGamma[7]:>DiracGamma[6]} /.
 			DOT -> rev /. rev -> DOT /. oone -> 1;
-		(*
-		I think this Isolate-optimization is outdated and causes too much overhead, RM, 14.10.2003
-		nx = nx //. c$CC -> c$CCfrh /. oone -> 1; *)
 
 		(* 	CAREFUL: Complex[a_, b_] -> Complex[a, -b] is only true if no complex
 			variables are in denominators!!!!, (which is the case in HEP, unless you
 			have width in the propagators ...) *)
 
 		nx = nx /. Complex[a_, b_] -> Complex[a, -b];
+
 		If[ dotsim,
 			nx = DotSimplify[nx, Expanding -> False]
 		];
