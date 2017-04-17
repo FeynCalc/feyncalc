@@ -41,7 +41,7 @@ If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 ];
 
 (*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "9.2.0";
+FeynCalc`$FeynCalcVersion = "9.3.0";
 
 (*    Set defaults here, not in the config file    *)
 If[ !ValueQ[Global`$FeynCalcStartupMessages],
