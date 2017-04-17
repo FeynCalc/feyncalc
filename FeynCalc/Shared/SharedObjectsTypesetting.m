@@ -480,8 +480,12 @@ DiracSlash /:
 		ToBoxes[FCI[DiracSlash[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
 
 Eps /:
-	MakeBoxes[Eps[x__],TraditionalForm]:=
-		SuperscriptBox["\[Epsilon]", TBox[x]];
+	MakeBoxes[Eps[a__],TraditionalForm]:=
+		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDimD], TBox[a]]/; Length[First[{a}]]===2;
+
+Eps /:
+	MakeBoxes[Eps[a__],TraditionalForm]:=
+		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDim4], TBox[a]]/; MatchQ[Length[First[{a}]],1|0];
 
 Epsilon /:
 	MakeBoxes[Epsilon, TraditionalForm]:=

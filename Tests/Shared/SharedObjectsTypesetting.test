@@ -621,32 +621,15 @@ TraditionalForm], \"^\"], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID115",
 "MakeBoxes[Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], \
 LorentzIndex[d]], TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", RowBox[{FormBox[FormBox[\"a\", \
-TraditionalForm], TraditionalForm], FormBox[FormBox[\"b\", \
-TraditionalForm], TraditionalForm], FormBox[FormBox[\"c\", \
-TraditionalForm], TraditionalForm], FormBox[FormBox[\"d\", \
-TraditionalForm], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"c\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID116",
 "MakeBoxes[Eps[Momentum[a], Momentum[b], Momentum[c], \
 Momentum[d]], TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
-\"_\"], TraditionalForm], FormBox[OverscriptBox[FormBox[\"b\", \
-TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"c\", TraditionalForm], \"_\"], \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"d\", \
-TraditionalForm], \"_\"], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[OverscriptBox[FormBox[\"a\",TraditionalForm],\"_\"],TraditionalForm],FormBox[OverscriptBox[FormBox[\"b\",TraditionalForm],\"_\"],TraditionalForm],FormBox[OverscriptBox[FormBox[\"c\",TraditionalForm],\"_\"],TraditionalForm],FormBox[OverscriptBox[FormBox[\"d\",TraditionalForm],\"_\"],TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID117",
 "MakeBoxes[Eps[Momentum[Polarization[a, I]], Momentum[b], \
 Momentum[c], Momentum[Polarization[d, I]]], TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[RowBox[{OverscriptBox[\"\[CurlyEpsilon]\", \"_\"], \
-\"(\", FormBox[\"a\", TraditionalForm], \")\"}], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"b\", TraditionalForm], \"_\"], \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"c\", \
-TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[RowBox[{OverscriptBox[\"\[CurlyEpsilon]\", \"_\"], \"(\", \
-FormBox[\"d\", TraditionalForm], \")\"}], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[RowBox[{OverscriptBox[\"ε\",\"_\"],\"(\",FormBox[\"a\",TraditionalForm],\")\"}],TraditionalForm],FormBox[OverscriptBox[FormBox[\"b\",TraditionalForm],\"_\"],TraditionalForm],FormBox[OverscriptBox[FormBox[\"c\",TraditionalForm],\"_\"],TraditionalForm],FormBox[RowBox[{OverscriptBox[\"ε\",\"_\"],\"(\",FormBox[\"d\",TraditionalForm],\")\"}],TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID118",
 "MakeBoxes[Epsilon, TraditionalForm]",
 "TagBox[\"\[CurlyEpsilon]\", TraditionalForm]"},
@@ -973,36 +956,16 @@ TraditionalForm], FormBox[\"1\", TraditionalForm]], \
 TraditionalForm, Editable -> True], \"\[VeryThinSpace]\"}]"},
 {"fcstSharedObjectsTypesetting-ID182",
 "MakeBoxes[LC[a, b, c, d], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"c\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"d\", TraditionalForm], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"c\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID183",
 "MakeBoxes[LC[a, b][d, e], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"d\", TraditionalForm], \"_\"], \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"e\", \
-TraditionalForm], \"_\"], TraditionalForm]}]], TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[OverscriptBox[FormBox[\"d\",TraditionalForm],\"_\"],TraditionalForm],FormBox[OverscriptBox[FormBox[\"e\",TraditionalForm],\"_\"],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID184",
 "MakeBoxes[LCD[a, b, c, d], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"c\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"d\", TraditionalForm], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"c\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID185",
 "MakeBoxes[LCD[a, b][d, e], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"d\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"e\", TraditionalForm], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"e\",TraditionalForm],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID186",
 "MakeBoxes[LeftPartialD[LorentzIndex[x]], TraditionalForm]",
 "SubscriptBox[OverscriptBox[\"\[PartialD]\", \"\[LeftArrow]\"], \
@@ -1025,40 +988,20 @@ TraditionalForm]], TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID190",
 "MakeBoxes[LeviCivita[a, b, c, d, FeynCalcInternal -> False], \
 TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"c\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"d\", TraditionalForm], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"c\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID191",
 "MakeBoxes[LeviCivita[a, b, c, d, Dimension -> D, FeynCalcInternal \
 -> False], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"c\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"d\", TraditionalForm], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"c\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID192",
 "MakeBoxes[LeviCivita[a, b, FeynCalcInternal -> False][c, d, \
 FeynCalcInternal -> False], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"c\", TraditionalForm], \"_\"], \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"d\", \
-TraditionalForm], \"_\"], TraditionalForm]}]], TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"_\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[OverscriptBox[FormBox[\"c\",TraditionalForm],\"_\"],TraditionalForm],FormBox[OverscriptBox[FormBox[\"d\",TraditionalForm],\"_\"],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID193",
 "MakeBoxes[LeviCivita[a, b, Dimension -> D, FeynCalcInternal -> \
 False][c, d, Dimension -> D, FeynCalcInternal -> False], \
 TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"c\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"d\", TraditionalForm], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"ϵ\",\"\"],RowBox[{FormBox[FormBox[\"a\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"b\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"c\",TraditionalForm],TraditionalForm],FormBox[FormBox[\"d\",TraditionalForm],TraditionalForm]}]],TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID194",
 "MakeBoxes[LorentzIndex[i], TraditionalForm]",
 "FormBox[\"i\", TraditionalForm]"},
@@ -2843,66 +2786,43 @@ StripOnInput -> False], TraditionalForm], TraditionalForm]]"},
 {"fcstNRSharedObjectsTypesetting-ID48",
 "MakeBoxes[Eps[CartesianMomentum[p], CartesianMomentum[q], CartesianMomentum[r]], \
 TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
-StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"r\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[OverscriptBox[FormBox[StyleBox[\"r\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID49",
 "MakeBoxes[Eps[CartesianMomentum[p], CartesianMomentum[q], CartesianIndex[i]], \
 TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
-StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID50",
 "MakeBoxes[Eps[CartesianMomentum[p], CartesianIndex[j], CartesianIndex[i]], \
 TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
-StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"i\", \
-Bold, StripOnInput -> False], TraditionalForm], \
-TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID51",
 "MakeBoxes[Eps[CartesianIndex[k], CartesianIndex[j], CartesianIndex[i]], TraditionalForm]",
-	"SuperscriptBox[\"\[Epsilon]\", RowBox[{FormBox[FormBox[StyleBox[\
-\"k\", Bold, StripOnInput -> False], TraditionalForm], \
-TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> \
-False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\
-\"i\", Bold, StripOnInput -> False], TraditionalForm], \
-TraditionalForm]}]]"},
+	"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[FormBox[StyleBox[\"k\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID52",
 "MakeBoxes[Eps[LorentzIndex[k], CartesianIndex[j], CartesianIndex[i]], \
 TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", RowBox[{FormBox[FormBox[\"k\", \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[FormBox[\"k\", TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID53",
 "MakeBoxes[Eps[LorentzIndex[k], LorentzIndex[j], LorentzIndex[i]], \
 TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", RowBox[{FormBox[FormBox[\"k\", \
-TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
-TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
-TraditionalForm], TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[FormBox[\"k\", TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID54",
 "MakeBoxes[Eps[CartesianMomentum[p], CartesianMomentum[q], Momentum[r]], \
 TraditionalForm]",
-"SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
-StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"r\", TraditionalForm], \"_\"], \
-TraditionalForm]}]]"},
+"SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[OverscriptBox[FormBox[\"r\", TraditionalForm], \"_\"], TraditionalForm]}]]"},
 {"fcstNRSharedObjectsTypesetting-ID55",
 "MakeBoxes[DiracGamma[TemporalIndex[]], TraditionalForm]",
 "SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \"0\"]"},
@@ -3554,72 +3474,44 @@ StripOnInput -> False], TraditionalForm], \"^\"], TraditionalForm]}], \
 TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID30",
 "MakeBoxes[CLC[i, j, k], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"k\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"k\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID31",
 "MakeBoxes[CLC[i, j][p], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}]], TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID32",
 "MakeBoxes[CLC[i][p, q], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm]}]], \
-TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}]], TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID33",
 "MakeBoxes[CLC[][p, q, r], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
-StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm], \
-FormBox[OverscriptBox[FormBox[StyleBox[\"r\", Bold, StripOnInput -> \
-False], TraditionalForm], \"_\"], TraditionalForm]}]], \
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"], TraditionalForm], FormBox[OverscriptBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+TraditionalForm], FormBox[OverscriptBox[FormBox[StyleBox[\"r\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID34",
 "MakeBoxes[CLCD[i, j, k], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"k\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"\"], RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"k\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID35",
 "MakeBoxes[CLCD[i, j][p], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"j\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"\"], RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[FormBox[StyleBox[\"j\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"p\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID36",
 "MakeBoxes[CLCD[i][p, q], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"p\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"\"], RowBox[{FormBox[FormBox[StyleBox[\"i\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"q\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
 {"fcstNRSharedObjectsFCETypesetting-ID37",
 "MakeBoxes[CLCD[][p, q, r], TraditionalForm]",
-"FormBox[SuperscriptBox[\"\[Epsilon]\", \
-RowBox[{FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"q\", \
-Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
-FormBox[FormBox[StyleBox[\"r\", Bold, StripOnInput -> False], \
-TraditionalForm], TraditionalForm]}]], TraditionalForm]"}
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"\"], RowBox[{FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm], FormBox[FormBox[StyleBox[\"q\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"r\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm]}]], TraditionalForm]"}
 });
 
