@@ -58,5 +58,74 @@ Tests`Feynman`fcstPolarizationSum = {
 	Momentum[n2]])^2 - (Pair[LorentzIndex[mu], Momentum[k1 + k2]]*Pair[LorentzIndex[nu], Momentum[k1 + k2]]*
 	Pair[Momentum[n2], Momentum[n2]])/(Pair[Momentum[k1], Momentum[n1]] + Pair[Momentum[k1], Momentum[n2]] +
 	Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2], Momentum[n2]])^2"},
-{"fcstPolarizationSum-ID8","PolarizationSum[mu, nu, x1,0,VirtualBoson->True]//FCE","-MT[mu, nu]"}
+{"fcstPolarizationSum-ID8","PolarizationSum[mu, nu, x1,0,VirtualBoson->True]//FCE","-MT[mu, nu]"},
+{"fcstPolarizationSum-ID9",
+"PolarizationSum[mu,nu,Heads\[Rule]{LorentzIndex,CartesianIndex}]",
+	"-Pair[CartesianIndex[nu], LorentzIndex[mu]]"},
+{"fcstPolarizationSum-ID10",
+"PolarizationSum[mu,nu,Heads\[Rule]{CartesianIndex,LorentzIndex}]",
+	"-Pair[CartesianIndex[mu], LorentzIndex[nu]]"},
+{"fcstPolarizationSum-ID11",
+"PolarizationSum[mu,nu,Heads\[Rule]{CartesianIndex,CartesianIndex}]\
+", "CartesianPair[CartesianIndex[mu], CartesianIndex[nu]]"},
+{"fcstPolarizationSum-ID12",
+"PolarizationSum[mu,nu,k,Heads\[Rule]{LorentzIndex,CartesianIndex}]\
+", "-Pair[CartesianIndex[nu], LorentzIndex[mu]] + \
+(CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[k]]*Pair[LorentzIndex[mu], \
+Momentum[k]])/Pair[Momentum[k], Momentum[k]]"},
+{"fcstPolarizationSum-ID13",
+"PolarizationSum[mu,nu,k,Heads\[Rule]{CartesianIndex,LorentzIndex}]\
+", "-Pair[CartesianIndex[mu], LorentzIndex[nu]] + \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[k]]*Pair[LorentzIndex[nu], \
+Momentum[k]])/Pair[Momentum[k], Momentum[k]]"},
+{"fcstPolarizationSum-ID14",
+"PolarizationSum[mu,nu,k,Heads\[Rule]{CartesianIndex,\
+CartesianIndex}]",
+"CartesianPair[CartesianIndex[mu], CartesianIndex[nu]] + \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[k]]*CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[k]])/Pair[Momentum[k], Momentum[k]]"},
+{"fcstPolarizationSum-ID15",
+"PolarizationSum[mu,nu,k,n,Heads\[Rule]{LorentzIndex,\
+CartesianIndex},VirtualBoson\[Rule]True]",
+"-Pair[CartesianIndex[nu], LorentzIndex[mu]] + \
+(CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[n]]*Pair[LorentzIndex[mu], \
+Momentum[k]])/Pair[Momentum[k], Momentum[n]] + \
+(CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[k]]*Pair[LorentzIndex[mu], \
+Momentum[n]])/Pair[Momentum[k], Momentum[n]] - \
+(CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[k]]*Pair[LorentzIndex[mu], \
+Momentum[k]]*Pair[Momentum[n], Momentum[n]])/Pair[Momentum[k], \
+Momentum[n]]^2"},
+{"fcstPolarizationSum-ID16",
+"PolarizationSum[mu,nu,k,n,Heads\[Rule]{CartesianIndex,\
+LorentzIndex},VirtualBoson\[Rule]True]",
+"-Pair[CartesianIndex[mu], LorentzIndex[nu]] + \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[n]]*Pair[LorentzIndex[nu], \
+Momentum[k]])/Pair[Momentum[k], Momentum[n]] + \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[k]]*Pair[LorentzIndex[nu], \
+Momentum[n]])/Pair[Momentum[k], Momentum[n]] - \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[k]]*Pair[LorentzIndex[nu], \
+Momentum[k]]*Pair[Momentum[n], Momentum[n]])/Pair[Momentum[k], \
+Momentum[n]]^2"},
+{"fcstPolarizationSum-ID17",
+"PolarizationSum[mu,nu,k,n,Heads\[Rule]{CartesianIndex,\
+CartesianIndex},VirtualBoson\[Rule]True]",
+"CartesianPair[CartesianIndex[mu], CartesianIndex[nu]] + \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[n]]*CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[k]] + CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[k]]*CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[n]])/Pair[Momentum[k], Momentum[n]] - \
+(CartesianPair[CartesianIndex[mu], \
+CartesianMomentum[k]]*CartesianPair[CartesianIndex[nu], \
+CartesianMomentum[k]]*Pair[Momentum[n], \
+Momentum[n]])/Pair[Momentum[k], Momentum[n]]^2"}
 };

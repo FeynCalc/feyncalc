@@ -374,11 +374,23 @@ FV[k, mu] FV[k, nu] FV[p, ka] FV[p, la])/(SP[k, k] SP[p, p])"},
 {"fcstDoPolarizationSums-ID41",
 	"DoPolarizationSums[Pair[Momentum[Polarization[p1, -I],D],Momentum[Polarization[p1, I],D]], p1, 0]",
 	"-D"},
-
 {"fcstDoPolarizationSums-ID42",
 	"tmp=DoPolarizationSums[DiracTrace[
 	GS[p1].GS[Polarization[k1, -I, Transversality -> True]].GS[p2].GS[
 	k3]] SP[k3, Polarization[k1, I, Transversality -> True]],k1] // FCE; \n
 	FCClearScalarProducts[]; \n tmp",
-	"-DiracTrace[GS[p1].GS[k3].GS[p2].GS[k3]] + (DiracTrace[GS[p1].GS[k1].GS[p2].GS[k3]] SP[k1, k3])/SP[k1, k1]"}
+	"-DiracTrace[GS[p1].GS[k3].GS[p2].GS[k3]] + (DiracTrace[GS[p1].GS[k1].GS[p2].GS[k3]] SP[k1, k3])/SP[k1, k1]"},
+{"fcstDoPolarizationSums-ID43", "CartesianPair[CartesianIndex[i],
+CartesianMomentum[Polarization[k, -I]]] CartesianPair[
+CartesianIndex[j], CartesianMomentum[Polarization[k, I]]] //
+DoPolarizationSums[#, k, FCE -> True] &", "KD[i, j] + (CV[k, i] CV[k, j])/SP[k, k]"},
+{"fcstDoPolarizationSums-ID44", "CartesianPair[CartesianMomentum[p],
+CartesianMomentum[Polarization[k, -I]]] CartesianPair[
+CartesianMomentum[q], CartesianMomentum[Polarization[k, I]]] //
+DoPolarizationSums[#, k, FCE -> True] &", "CSP[p, q] + (CSP[k, p] CSP[k, q])/SP[k, k]"},
+{"fcstDoPolarizationSums-ID45", "CartesianPair[CartesianMomentum[p, D - 1],
+CartesianMomentum[Polarization[k, -I], D - 1]] CartesianPair[
+CartesianMomentum[q, D - 1],
+CartesianMomentum[Polarization[k, I], D - 1]] //
+DoPolarizationSums[#, k, FCE -> True] &", "CSPD[p, q] + (CSPD[k, p] CSPD[k, q])/SPD[k, k]"}
 };

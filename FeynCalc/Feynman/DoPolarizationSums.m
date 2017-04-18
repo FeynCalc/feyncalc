@@ -57,14 +57,9 @@ Options[DoPolarizationSums] = {
 };
 
 DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[ {polInd1,polInd2,res,ex ,tmp,dim,kk,polList,freePart,polPart},
+	Block[ {polInd1,polInd2,res,ex ,tmp,dim,kk,polList,freePart,polPart,head1=Null,head2=Null},
 
 		kk = {vectors}[[1]];
-
-		If[	!FreeQ2[expr, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -74,23 +69,28 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 		polInd1 = $MU[Unique[]];
 		polInd2 = $MU[Unique[]];
 
-		polList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex,_Momentum,Infinity]]],Polarization],kk];
+		polList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex,_Momentum | _CartesianMomentum,Infinity]]],Polarization],kk];
 
 		If[	polList=!={},
 
-			If[	!MatchQ[polList,
-				{Momentum[Polarization[kk,Complex[0,1], ___Rule],di___],Momentum[Polarization[kk,Complex[0,-1], ___Rule],di___]} |
-				{Momentum[Polarization[kk,Complex[0,-1], ___Rule],di___],Momentum[Polarization[kk,Complex[0,1], ___Rule],di___]}],
+			If[	!MatchQ[polList, {
+					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,1], ___Rule],di___],
+					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,-1], ___Rule],di___]} | {
+					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,-1], ___Rule],di___],
+					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,1], ___Rule],di___]}],
 				Print[StandardForm[polList]];
 				Message[DoPolarizationSums::failmsg,"Polarization vector do not seem to appear in a proper way in the expression."];
 				Abort[]
 			];
 
-			dim = FCGetDimensions[polList]//First;
+			dim = FCGetDimensions[polList,ChangeDimension->True]//First;
 
 			tmp = ex/.{
-				Momentum[Polarization[kk,Complex[0,1], ___Rule],dim] :> LorentzIndex[polInd1,dim],
-				Momentum[Polarization[kk,Complex[0,-1], ___Rule],dim] :> LorentzIndex[polInd2,dim]
+				Momentum[Polarization[kk,Complex[0,1], ___Rule],dim] :> (head1=LorentzIndex; LorentzIndex[polInd1,dim]),
+				CartesianMomentum[Polarization[kk,Complex[0,1], ___Rule],dim-1] :> (head1=CartesianIndex; CartesianIndex[polInd1,dim-1]),
+
+				Momentum[Polarization[kk,Complex[0,-1], ___Rule],dim] :> (head2=LorentzIndex; LorentzIndex[polInd2,dim]),
+				CartesianMomentum[Polarization[kk,Complex[0,-1], ___Rule],dim-1] :> (head2=CartesianIndex; CartesianIndex[polInd2,dim-1])
 			};
 
 			{freePart, polPart} = FCSplit[tmp,{polInd1,polInd2}],
@@ -103,13 +103,13 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 		Which[
 			Length[{vectors}] === 1 && kk=!=0,
 				If[ polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,kk, Dimension->dim]] polPart
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,kk, Dimension->dim, Heads->{head1,head2}]] polPart
 				];
 				freePart = 3 freePart,
 
 			Length[{vectors}] === 2 && kk=!=0,
 				If[	polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,kk, {vectors}[[2]], Dimension->dim, VirtualBoson-> OptionValue[VirtualBoson]]] polPart;
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,kk, {vectors}[[2]], Dimension->dim, VirtualBoson-> OptionValue[VirtualBoson], Heads->{head1,head2}]] polPart;
 				];
 				If[{vectors}[[2]]=!=0,
 					freePart = 2 freePart,
