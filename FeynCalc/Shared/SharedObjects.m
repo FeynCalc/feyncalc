@@ -790,7 +790,7 @@ initialTCDownValues;
 initialScalarProducts;
 initialMomentumDownValues;
 initialCartesianMomentumDownValues;
-
+initialTemporalMomentumDownValues;
 
 DiracHeadsList;
 SUNHeadsList;
@@ -2123,6 +2123,7 @@ initialTCDownValues = DownValues[TC];
 
 initialMomentumDownValues = DownValues[Momentum];
 initialCartesianMomentumDownValues = DownValues[CartesianMomentum];
+initialTemporalMomentumDownValues = DownValues[TemporalMomentum];
 
 initialScalarProducts = $ScalarProducts;
 
