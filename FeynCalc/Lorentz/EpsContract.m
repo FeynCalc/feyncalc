@@ -90,7 +90,7 @@ epscon/:
 			{PairContract[a2,a1],PairContract[a2,a2],PairContract[a2,a3],PairContract[a2,a4]},
 			{PairContract[a3,a1],PairContract[a3,a2],PairContract[a3,a3],PairContract[a3,a4]},
 			{PairContract[a4,a1],PairContract[a4,a2],PairContract[a4,a3],PairContract[a4,a4]}
-		}])/.PairContract->Pair)/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3,a4}],{LorentzIndex}|{Momentum}|{LorentzIndex,Momentum}];
+		}])/.PairContract->Pair)/; Complement[DeleteDuplicates[Head/@{a1,a2,a3,a4}], {LorentzIndex, Momentum,  TemporalIndex}]==={};
 
 epscon/:
 	epscon[a1_,a2_,a3_]^2 :=
@@ -98,7 +98,8 @@ epscon/:
 			{CartesianPairContract[a1,a1],CartesianPairContract[a1,a2],CartesianPairContract[a1,a3]},
 			{CartesianPairContract[a2,a1],CartesianPairContract[a2,a2],CartesianPairContract[a2,a3]},
 			{CartesianPairContract[a3,a1],CartesianPairContract[a3,a2],CartesianPairContract[a3,a3]}
-		}]//Expand)/.CartesianPairContract->CartesianPair ))/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3}],{CartesianIndex}|{CartesianMomentum}|{CartesianIndex,CartesianMomentum}];
+		}]//Expand)/.CartesianPairContract->CartesianPair ))/; Complement[DeleteDuplicates[Head/@{a1,a2,a3}], {CartesianIndex, CartesianMomentum}]==={};
+
 
 
 epscon/:
@@ -114,13 +115,15 @@ epscon/:
 		(( - ($LeviCivitaSign)^2 Det[{{PairContract[a1,b1],PairContract[a1,b2],PairContract[a1,b3],PairContract[a1,b4]},
 		{PairContract[a2,b1],PairContract[a2,b2],PairContract[a2,b3],PairContract[a2,b4]},
 		{PairContract[a3,b1],PairContract[a3,b2],PairContract[a3,b3],PairContract[a3,b4]},
-		{PairContract[a4,b1],PairContract[a4,b2],PairContract[a4,b3],PairContract[a4,b4]}}]//Expand)/.PairContract->Pair)/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3,a4,b1,b2,b3,b4}],{LorentzIndex}|{Momentum}|{LorentzIndex,Momentum}];
+		{PairContract[a4,b1],PairContract[a4,b2],PairContract[a4,b3],PairContract[a4,b4]}}]//Expand)/.PairContract->Pair)/;
+		Complement[DeleteDuplicates[Head/@{a1,a2,a3,a4,b1,b2,b3,b4}], {LorentzIndex, Momentum,  TemporalIndex}]==={};
 
 epscon/:
 	epscon[a1_,a2_,a3_] epscon[b1_,b2_,b3_] :=
 		(( ($LeviCivitaSign)^2 Det[{{CartesianPairContract[a1,b1],CartesianPairContract[a1,b2],CartesianPairContract[a1,b3]},
 		{CartesianPairContract[a2,b1],CartesianPairContract[a2,b2],CartesianPairContract[a2,b3]},
-		{CartesianPairContract[a3,b1],CartesianPairContract[a3,b2],CartesianPairContract[a3,b3]}}]//Expand)/.CartesianPairContract->CartesianPair)/; MatchQ[DeleteDuplicates[Head/@{a1,a2,a3,b1,b2,b3}],{CartesianIndex}|{CartesianMomentum}|{CartesianIndex,CartesianMomentum}];
+		{CartesianPairContract[a3,b1],CartesianPairContract[a3,b2],CartesianPairContract[a3,b3]}}]//Expand)/.CartesianPairContract->CartesianPair)/;
+		Complement[DeleteDuplicates[Head/@{a1,a2,a3,b1,b2,b3}], {CartesianIndex, CartesianMomentum}]==={};
 
 
 

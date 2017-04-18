@@ -955,5 +955,36 @@ CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
 D]]^2*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]] + \
 CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
 D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + \
-D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]]"}
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]]"},
+{"fcstEpsContract-ID40",
+"LC[0][p1, p2, p3] LC[0][q1, q2, q3]// EpsContract // FCE",
+"SP[p1, q3] SP[p2, q2] SP[p3, q1] - SP[p1, q2] SP[p2, q3] SP[p3, q1] -
+SP[p1, q3] SP[p2, q1] SP[p3, q2] + SP[p1, q1] SP[p2, q3] SP[p3, q2] +
+SP[p1, q2] SP[p2, q1] SP[p3, q3] -
+SP[p1, q1] SP[p2, q2] SP[p3, q3] -
+SP[p2, q3] SP[p3, q2] TC[p1] TC[q1] +
+SP[p2, q2] SP[p3, q3] TC[p1] TC[q1] +
+SP[p1, q3] SP[p3, q2] TC[p2] TC[q1] -
+SP[p1, q2] SP[p3, q3] TC[p2] TC[q1] -
+SP[p1, q3] SP[p2, q2] TC[p3] TC[q1] +
+SP[p1, q2] SP[p2, q3] TC[p3] TC[q1] +
+SP[p2, q3] SP[p3, q1] TC[p1] TC[q2] -
+SP[p2, q1] SP[p3, q3] TC[p1] TC[q2] -
+SP[p1, q3] SP[p3, q1] TC[p2] TC[q2] +
+SP[p1, q1] SP[p3, q3] TC[p2] TC[q2] +
+SP[p1, q3] SP[p2, q1] TC[p3] TC[q2] -
+SP[p1, q1] SP[p2, q3] TC[p3] TC[q2] -
+SP[p2, q2] SP[p3, q1] TC[p1] TC[q3] +
+SP[p2, q1] SP[p3, q2] TC[p1] TC[q3] +
+SP[p1, q2] SP[p3, q1] TC[p2] TC[q3] -
+SP[p1, q1] SP[p3, q2] TC[p2] TC[q3] -
+SP[p1, q2] SP[p2, q1] TC[p3] TC[q3] +
+SP[p1, q1] SP[p2, q2] TC[p3] TC[q3]"},
+{"fcstEpsContract-ID41",
+"LC[0][p1, p2, p3] LC[0][q1, q2, q3] // LorentzToCartesian // EpsContract // FCE","-CSP[p1, q3] CSP[p2, q2] CSP[p3, q1] +
+CSP[p1, q2] CSP[p2, q3] CSP[p3, q1] +
+CSP[p1, q3] CSP[p2, q1] CSP[p3, q2] -
+CSP[p1, q1] CSP[p2, q3] CSP[p3, q2] -
+CSP[p1, q2] CSP[p2, q1] CSP[p3, q3] +
+CSP[p1, q1] CSP[p2, q2] CSP[p3, q3]"}
 })

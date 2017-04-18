@@ -1291,7 +1291,7 @@ Eps[x__] :=
 Eps[x___, a:(CartesianMomentum|Momentum|LorentzIndex|CartesianIndex)[_,_Symbol-4], y___]:=
 	0/; FCPatternFreeQ[{x,a,y}];
 
-Eps[x_, _TemporalIndex | _TemporalMomentum, y_]:=
+Eps[x___, _TemporalIndex | _TemporalMomentum, y___]:=
 	0/; Length[{x,y}]===2;
 
 Eps[(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex)]:=
@@ -1321,8 +1321,12 @@ Eps[x___, Momentum[p_], y___]:=
 Eps[x___, Momentum[p_, dim_Symbol], y___]:=
 	FeynCalc`Package`MetricS Eps[x,CartesianMomentum[p,dim-1],y]/; Length[{x,y}]===2;
 
-Eps[x : (_Momentum.. | _CartesianMomentum.. | _CartesianIndex..), TemporalIndex[]]:=
-	$LeviCivitaSign Eps[x]/; Length[{x}]===3;
+(*	Do not get confused, our $LeviCivitaSign is -eps^{0123} = eps^{1230}. This is why
+	it is correct to have $LeviCivitaSign and not -$LeviCivitaSign here. *)
+Eps[x1 : (_Momentum | _CartesianMomentum | _CartesianIndex),
+	x2 : (_Momentum | _CartesianMomentum | _CartesianIndex),
+	x3 : (_Momentum | _CartesianMomentum | _CartesianIndex), TemporalIndex[]]:=
+	$LeviCivitaSign Eps[x1,x2,x3];
 
 ExplicitLorentzIndex[x_, 4] :=
 	ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
