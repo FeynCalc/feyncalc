@@ -119,6 +119,10 @@ SMP /:
 		ToBoxes["e"];
 
 SMP /:
+	MakeBoxes[SMP["e_Q"], TraditionalForm] :=
+		SubscriptBox["e", "Q"];
+
+SMP /:
 	MakeBoxes[SMP["Q_u"], TraditionalForm] :=
 		SubscriptBox["Q", "u"];
 
@@ -493,7 +497,7 @@ SMP[]=
 			"m_H","m_W","m_Z",
 			"m_q","m_Q","m_qu","m_qd",
 			"m_l","m_pi",
-			"g_s","e","Q_u","Q_d",
+			"g_s","e","e_Q","Q_u","Q_d",
 			"G_F","g_W","g'_W",
 			"cos_W","sin_W","theta_W",
 			"cos_C","sin_C","theta_C",
