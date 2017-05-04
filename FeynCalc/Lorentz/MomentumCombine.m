@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 MomentumCombine::usage =
-"MomentumCombine[expr] combines momenta and Pairs with the same LorentzIndexentz \
-indices and momenta.";
+"MomentumCombine[expr] combines momenta and Pair and Eps tensors with the same \
+LorentzIndexentz indices and momenta.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -71,10 +71,20 @@ rulesFV = {
 			(!NumberQ[n3] || !NumberQ[n4]) && FreeQ2[{n3,n4},{LorentzIndex,Momentum,Pair}]*)
 };
 
+rulesLC = {
+	(n3_. Eps[a___, (h:CartesianMomentum|Momentum)[x_, dim___], b___] + n4_. Eps[a___, (h:CartesianMomentum|Momentum)[y_, dim___], b___]):>
+		Eps[a, h[ Expand[n3 x + n4 y],dim], b]/; (NumberQ[n3] && NumberQ[n4] && n3=!=n4),
+
+	(n3_. Eps[a___, (h:CartesianMomentum|Momentum)[x_, dim___], b___] + n3_. Eps[a___, (h:CartesianMomentum|Momentum)[y_, dim___], b___]):>
+		n3 Eps[a, h[ Expand[x + y],dim], b]/; NumberQ[n3]
+
+};
+
 Options[MomentumCombine] = {
 	FCI -> False,
 	FCE -> False,
 	FV -> True,
+	LC -> True,
 	LeafCount -> 1,
 	SP -> True
 };
@@ -93,6 +103,10 @@ MomentumCombine[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[SP],
 			rules = Join[rules,rulesSP]
+		];
+
+		If[	OptionValue[LC],
+			rules = Join[rules,rulesLC]
 		];
 
 		If[ LeafCount[ex] < OptionValue[LeafCount],

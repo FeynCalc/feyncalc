@@ -46,7 +46,49 @@ CartesianPair[CartesianMomentum[a], CartesianMomentum[c]], SP -> False]", "Carte
 CartesianPair[CartesianIndex[i], CartesianMomentum[q1]] c1 +
 CartesianPair[CartesianIndex[i], CartesianMomentum[q2]] c1 +
 CartesianPair[CartesianIndex[i], CartesianMomentum[q2]] +
-CartesianPair[CartesianIndex[i], CartesianMomentum[q1]] ]]", "CV[q1 + q2, i] + c1 CV[q1 + q2, i]"}
+CartesianPair[CartesianIndex[i], CartesianMomentum[q1]] ]]", "CV[q1 + q2, i] + c1 CV[q1 + q2, i]"},
+{"fcstMomentumCombine-ID16",
+"MomentumCombine[5LC[][p1,q,r,s]+4LC[][p2,q,r,s],FCE->True]",
+"LC[][5*p1 + 4*p2, q, r, s]"},
+{"fcstMomentumCombine-ID17",
+"MomentumCombine[5LC[][p,q1,r,s]+4LC[][p,q2,r,s],FCE->True]",
+"LC[][p, 5*q1 + 4*q2, r, s]"},
+{"fcstMomentumCombine-ID18",
+"MomentumCombine[5LC[][p,q,r,s1]+4LC[][p,q,r,s2],FCE->True]",
+"LC[][p, q, r, 5*s1 + 4*s2]"},
+{"fcstMomentumCombine-ID19",
+"MomentumCombine[3LC[][p1,q,r,s]+3LC[][p2,q,r,s],FCE->True]",
+"3*LC[][p1 + p2, q, r, s]"},
+{"fcstMomentumCombine-ID20",
+"MomentumCombine[3LC[][p,q1,r,s]+3LC[][p,q2,r,s],FCE->True]",
+"3*LC[][p, q1 + q2, r, s]"},
+{"fcstMomentumCombine-ID21",
+"MomentumCombine[3LC[][p,q,r,s1]+3LC[][p,q,r,s2],FCE->True]",
+"3*LC[][p, q, r, s1 + s2]"},
+{"fcstMomentumCombine-ID22",
+"MomentumCombine[5LC[][p1,q,r,s]+4LC[][p2,q,r,s],LC\[Rule]False,\
+FCE->True]", "5*LC[][p1, q, r, s] + 4*LC[][p2, q, r, s]"},
+{"fcstMomentumCombine-ID23",
+"MomentumCombine[5CLC[][p1,q,r]+4CLC[][p2,q,r],FCE->True]",
+"CLC[][5*p1 + 4*p2, q, r]"},
+{"fcstMomentumCombine-ID24",
+"MomentumCombine[5CLC[][p,q1,r]+4CLC[][p,q2,r],FCE->True]",
+"CLC[][p, 5*q1 + 4*q2, r]"},
+{"fcstMomentumCombine-ID25",
+"MomentumCombine[5CLC[][p,q,s1]+4CLC[][p,q,s2],FCE->True]",
+"CLC[][p, q, 5*s1 + 4*s2]"},
+{"fcstMomentumCombine-ID26",
+"MomentumCombine[3CLC[][p1,q,r]+3CLC[][p2,q,r],FCE->True]",
+"3*CLC[][p1 + p2, q, r]"},
+{"fcstMomentumCombine-ID27",
+"MomentumCombine[3CLC[][p,q1,r]+3CLC[][p,q2,r],FCE->True]",
+"3*CLC[][p, q1 + q2, r]"},
+{"fcstMomentumCombine-ID28",
+"MomentumCombine[3CLC[][q,r,s1]+3CLC[][q,r,s2],FCE->True]",
+"3*CLC[][q, r, s1 + s2]"},
+{"fcstMomentumCombine-ID29",
+"MomentumCombine[5CLC[][p1,r,s]+4CLC[][p2,r,s],LC\[Rule]False,\
+FCE->True]", "5*CLC[][p1, r, s] + 4*CLC[][p2, r, s]"}
 };
 
 
