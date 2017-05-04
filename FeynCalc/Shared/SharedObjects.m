@@ -797,6 +797,7 @@ SUNHeadsList;
 TensorArgsList;
 NRStuff;
 PauliHeadsList;
+TrFeynCalcObjects;
 
 End[]
 
@@ -924,6 +925,8 @@ DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
 PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
+
+TrFeynCalcObjects = DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE;
 
 TensorArgsList = {
 	LorentzIndex, ExplicitLorentzIndex, Momentum,
