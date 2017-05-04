@@ -61,6 +61,7 @@ unitMatrixTrace::usage="";
 traceNo5Fun::usage="";
 trace5Fun::usage="";
 noSpur::usage="";
+leviCivitaSign::usage="";
 
 Options[DiracTrace] = {
 	Contract -> 400000,
@@ -405,6 +406,9 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 				Abort[]
 			];
 
+			(* Insert the sign of the Eps tensor *)
+			traceListChiral = traceListChiral/.leviCivitaSign -> $LeviCivitaSign;
+
 			(* 	Expansion of scalar products. If some of the scalar products were arlready defined,
 				they will be inserted here.	*)
 			If[ OptionValue[DiracTrace,{opts},Expand] && !FreeQ[{traceListNonChiral,traceListChiral,gammaFree,gammaPart}, Momentum],
@@ -589,7 +593,7 @@ trace5[SI1_, SI2__, mu_, nu_, rho_, 5] :=
 	Pair[mu, nu] trace5[SI1, SI2, rho, 5] -
 	Pair[mu, rho] trace5[SI1, SI2, nu, 5] +
 	Pair[nu, rho] trace5[SI1, SI2, mu, 5] -
-	$LeviCivitaSign I traceEpsNo5[mu, nu, rho, SI1, SI2];
+	leviCivitaSign I traceEpsNo5[mu, nu, rho, SI1, SI2];
 
 
 (* This is for output similar to FORM
@@ -601,7 +605,7 @@ trace5[mu_, nu_, rho_, SI1_, SI2__, 5] :=
 *)
 
 trace5[a_, b_, c_, d_, 5]:=
-	$LeviCivitaSign I Eps[a, b, c, d];
+	leviCivitaSign I Eps[a, b, c, d];
 
 traceEpsNo5[mu_, nu_, rho_, SI2__] :=
 	Block[{head, s = -1, res},
@@ -620,7 +624,7 @@ spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 			Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in Larin's scheme."];
 			Abort[]
 		];
-		res = I/6 $LeviCivitaSign Eps[y[[1]], li1, li2, li3] spurNo5[x,DiracGamma[li1,dim],DiracGamma[li2,dim],	DiracGamma[li3,dim]];
+		res = I/6 leviCivitaSign Eps[y[[1]], li1, li2, li3] spurNo5[x,DiracGamma[li1,dim],DiracGamma[li2,dim],	DiracGamma[li3,dim]];
 		If[ FCGetDimensions[{res},ChangeDimension->True]=!={dim},
 			Message[DiracTrace::failmsg, "Something went wrong while computing trace in Larin's scheme."];
 			Abort[]
@@ -637,7 +641,7 @@ spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
 	]/; EvenQ[Length[{x}]] && Length[{x}]>4;
 
 spur5BMHVWest[DiracGamma[x_,___],DiracGamma[y_,___],DiracGamma[r_,___],DiracGamma[z_,___], DiracGamma[5]] :=
-	EpsEvaluate[$LeviCivitaSign I Eps[Take[x,1], Take[y,1], Take[r,1], Take[z,1]], FCI->True]/;
+	EpsEvaluate[leviCivitaSign I Eps[Take[x,1], Take[y,1], Take[r,1], Take[z,1]], FCI->True]/;
 	!MatchQ[FCGetDimensions[{x,y,r,z},ChangeDimension->True],{___,_Symbol-4,___}];
 
 spur5BMHVWest[DiracGamma[x_,___],DiracGamma[y_,___],DiracGamma[r_,___],DiracGamma[z_,___], DiracGamma[5]] :=
@@ -646,7 +650,7 @@ spur5BMHVWest[DiracGamma[x_,___],DiracGamma[y_,___],DiracGamma[r_,___],DiracGamm
 spur5BMHVNoWest[x__DiracGamma, DiracGamma[5]]:=
 	Block[{li1,li2,li3,li4, res},
 		{li1,li2,li3,li4} = LorentzIndex/@ Unique[{"bmLia","bmLib","bmLic","bmLid"}];
-		res =  I/24 $LeviCivitaSign Expand2[Eps[li1, li2, li3, li4] spurNo5[x,DiracGamma[li1],DiracGamma[li2],	DiracGamma[li3], DiracGamma[li4]],LorentzIndex]//FCFastContract;
+		res =  I/24 leviCivitaSign Expand2[Eps[li1, li2, li3, li4] spurNo5[x,DiracGamma[li1],DiracGamma[li2],	DiracGamma[li3], DiracGamma[li4]],LorentzIndex]//FCFastContract;
 		res
 	]/; EvenQ[Length[{x}]];
 

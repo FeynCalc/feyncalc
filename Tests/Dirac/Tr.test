@@ -184,7 +184,36 @@ Tests`Dirac`fcstTr = {
 {"fcstTr-ID15","Tr[DiracTrace[GA[i, j]]] // FCE","16 MT[i, j]"},
 {"fcstTr-ID16","Tr[GSD[pv3].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"},
 {"fcstTr-ID17","Tr[GSD[pv3, pv4, pv5].GAD[n2].GSD[pv4].GAE[i1].GA[5]]","0"},
-{"fcstTr-ID18","Tr[CGA[i, j]]","-4 CartesianPair[CartesianIndex[i], CartesianIndex[j]]"}
+{"fcstTr-ID18","Tr[CGA[i, j]]","-4 CartesianPair[CartesianIndex[i], CartesianIndex[j]]"},
+{"fcstTr-ID19"," {$LeviCivitaSign = 1;\n FCE[Tr[GA[i1, i2, i3, i4, 5]]],
+$LeviCivitaSign = -1;\n FCE[Tr[GA[i1, i2, i3, i4, 5]]],
+$LeviCivitaSign = 1;\n FCE[Tr[GA[i1, i2, i3, i4, 5]]],
+$LeviCivitaSign = -1;\n FCE[Tr[GA[i1, i2, i3, i4, 5]]]}",
+"{4 I LC[i1, i2, i3, i4], -4 I LC[i1, i2, i3, i4],
+4 I LC[i1, i2, i3, i4], -4 I LC[i1, i2, i3, i4]}"},
+
+{"fcstTr-ID20","{$LeviCivitaSign = 1; \n
+FCE[Tr[GA[i1, i2, i3, i4, i5, i6, 5]]],
+$LeviCivitaSign = -1;  \n
+FCE[Tr[GA[i1, i2, i3, i4, i5, i6, 5]]],
+$LeviCivitaSign = 1;  \n
+FCE[Tr[GA[i1, i2, i3, i4, i5, i6, 5]]],
+$LeviCivitaSign = -1;  \n
+FCE[Tr[GA[i1, i2, i3, i4, i5, i6, 5]]]}",
+"{4 I (LC[i3, i4, i5, i6] MT[i1, i2] - LC[i2, i4, i5, i6] MT[i1, i3] +
+	LC[i1, i4, i5, i6] MT[i2, i3] + LC[i1, i2, i3, i6] MT[i4, i5] -
+	LC[i1, i2, i3, i5] MT[i4, i6] +
+	LC[i1, i2, i3, i4] MT[i5, i6]), -4 I (LC[i3, i4, i5, i6] MT[i1,
+	i2] - LC[i2, i4, i5, i6] MT[i1, i3] +
+	LC[i1, i4, i5, i6] MT[i2, i3] + LC[i1, i2, i3, i6] MT[i4, i5] -
+	LC[i1, i2, i3, i5] MT[i4, i6] + LC[i1, i2, i3, i4] MT[i5, i6]),
+4 I (LC[i3, i4, i5, i6] MT[i1, i2] - LC[i2, i4, i5, i6] MT[i1, i3] +
+	LC[i1, i4, i5, i6] MT[i2, i3] + LC[i1, i2, i3, i6] MT[i4, i5] -
+	LC[i1, i2, i3, i5] MT[i4, i6] +
+	LC[i1, i2, i3, i4] MT[i5, i6]), -4 I (LC[i3, i4, i5, i6] MT[i1,
+	i2] - LC[i2, i4, i5, i6] MT[i1, i3] +
+	LC[i1, i4, i5, i6] MT[i2, i3] + LC[i1, i2, i3, i6] MT[i4, i5] -
+	LC[i1, i2, i3, i5] MT[i4, i6] + LC[i1, i2, i3, i4] MT[i5, i6])}"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =
