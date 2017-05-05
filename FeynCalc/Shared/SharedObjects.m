@@ -963,13 +963,25 @@ CSP/:
 	Set[CSP[a_, b_] , c_]:=
 		(CartesianScalarProduct[a,b,Dimension->3,SetDimensions->{3}]=c)
 
+CSP/:
+	Set[CSP[a_] , c_]:=
+		(CartesianScalarProduct[a,a,Dimension->3,SetDimensions->{3}]=c)
+
 CSPD/:
 	Set[CSPD[a_, b_] , c_]:=
 		(CartesianScalarProduct[a,b,Dimension->D-1,SetDimensions->{D-1}]=c)
 
+CSPD/:
+	Set[CSPD[a_] , c_]:=
+		(CartesianScalarProduct[a,a,Dimension->D-1,SetDimensions->{D-1}]=c)
+
 CSPE/:
 	Set[CSPE[a_, b_] , c_]:=
 		(CartesianScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
+
+CSPE/:
+	Set[CSPE[a_] , c_]:=
+		(CartesianScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c)
 
 CSP[0,_]:=
 	0;
@@ -1852,13 +1864,25 @@ SP/:
 	Set[SP[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->4,SetDimensions->{4}]=c)
 
+SP/:
+	Set[SP[a_] , c_]:=
+		(ScalarProduct[a,a,Dimension->4,SetDimensions->{4}]=c)
+
 SPD/:
 	Set[SPD[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->D,SetDimensions->{D}]=c)
 
+SPD/:
+	Set[SPD[a_] , c_]:=
+		(ScalarProduct[a,a,Dimension->D,SetDimensions->{D}]=c)
+
 SPE/:
 	Set[SPE[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
+
+SPE/:
+	Set[SPE[a_] , c_]:=
+		(ScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c)
 
 SP[0,_]:=
 	0;

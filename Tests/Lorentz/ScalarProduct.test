@@ -825,7 +825,10 @@ Tests`Lorentz`fsctSPSet = ({
 {"fsctSPSet-ID96", "SPE[a+b,c+d]//FCI", "abval"},
 {"fsctSPSet-ID97", "SPE[-a-b,c+d]//FCI", "-abval"},
 {"fsctSPSet-ID98", "SPE[a+b,-c-d]//FCI", "-abval"},
-{"fsctSPSet-ID99", "SPE[-a-b,-c-d]//FCI", "abval"}
+{"fsctSPSet-ID99", "SPE[-a-b,-c-d]//FCI", "abval"},
+{"fsctSPSet-ID100", "FCClearScalarProducts[]; \n SPD[p]=xxx; \n SPD[p,p]", "xxx"},
+{"fsctSPSet-ID101", "FCClearScalarProducts[]; \n SP[p]=xxx; \n SP[p,p]", "xxx"},
+{"fsctSPSet-ID102", "FCClearScalarProducts[]; \n SPE[p]=xxx; \n SPE[p,p]", "xxx"}
 });
 
 Tests`Lorentz`fcstCartesianScalarProduct = {
@@ -993,7 +996,10 @@ Tests`Lorentz`fsctCSPSet = ({
 {"fsctCSPSet-ID96", "CSPE[a+b,c+d]//FCI", "abval"},
 {"fsctCSPSet-ID97", "CSPE[-a-b,c+d]//FCI", "-abval"},
 {"fsctCSPSet-ID98", "CSPE[a+b,-c-d]//FCI", "-abval"},
-{"fsctCSPSet-ID99", "CSPE[-a-b,-c-d]//FCI", "abval"}
+{"fsctCSPSet-ID99", "CSPE[-a-b,-c-d]//FCI", "abval"},
+{"fsctCSPSet-ID100", "FCClearScalarProducts[]; \n CSPD[p]=xxx; \n CSPD[p,p]", "xxx"},
+{"fsctCSPSet-ID101", "FCClearScalarProducts[]; \n CSP[p]=xxx; \n CSP[p,p]", "xxx"},
+{"fsctCSPSet-ID102", "FCClearScalarProducts[]; \n CSPE[p]=xxx; \n CSPE[p,p]", "xxx"}
 });
 
 
