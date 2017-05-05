@@ -1993,13 +1993,25 @@ SP/:
 	Set[SP[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->4,SetDimensions->{4}]=c)
 
+SP/:
+	Set[SP[a_] , c_]:=
+		(ScalarProduct[a,a,Dimension->4,SetDimensions->{4}]=c)
+
 SPD/:
 	Set[SPD[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->D,SetDimensions->{D}]=c)
 
+SPD/:
+	Set[SPD[a_] , c_]:=
+		(ScalarProduct[a,a,Dimension->D,SetDimensions->{D}]=c)
+
 SPE/:
 	Set[SPE[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
+
+SPE/:
+	Set[SPE[a_] , c_]:=
+		(ScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c)
 
 SP[0,_]:=
 	0;

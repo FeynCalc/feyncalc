@@ -825,5 +825,8 @@ Tests`Lorentz`fsctSPSet = ({
 {"fsctSPSet-ID96", "SPE[a+b,c+d]//FCI", "abval"},
 {"fsctSPSet-ID97", "SPE[-a-b,c+d]//FCI", "-abval"},
 {"fsctSPSet-ID98", "SPE[a+b,-c-d]//FCI", "-abval"},
-{"fsctSPSet-ID99", "SPE[-a-b,-c-d]//FCI", "abval"}
+{"fsctSPSet-ID99", "SPE[-a-b,-c-d]//FCI", "abval"},
+{"fsctSPSet-ID100", "FCClearScalarProducts[]; \n SPD[p]=xxx; \n SPD[p,p]", "xxx"},
+{"fsctSPSet-ID101", "FCClearScalarProducts[]; \n SP[p]=xxx; \n SP[p,p]", "xxx"},
+{"fsctSPSet-ID102", "FCClearScalarProducts[]; \n SPE[p]=xxx; \n SPE[p,p]", "xxx"}
 });
