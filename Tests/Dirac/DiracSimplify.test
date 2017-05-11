@@ -46,7 +46,21 @@ DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIn
 "-M MT[i, k]"},
 {"fcstDiracSimplify-ID17",
 "DiracSimplify[(1/2 - GA[5]/2).(-((a + GS[p + q])/b)).(1/2 + GA[5]/2)] // FCE",
-"-(GS[p].GA[5]/(2 b)) - GS[q].GA[5]/(2 b) - GS[p]/(2 b) - GS[q]/(2 b)"}
+"-(GS[p].GA[5]/(2 b)) - GS[q].GA[5]/(2 b) - GS[p]/(2 b) - GS[q]/(2 b)"},
+{"fcstDiracSimplify-ID22","DiracSimplify[-(1/SPD[p, p])
+	8 (2 - D) Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[
+	Momentum[p, D], M, 1] FAD[{k1, M}] + (1/SPD[p, p])
+8 (2 - D) Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D],
+	M, 1] FAD[{k1, ma}] +
+1/SPD[p, p]
+	8 FAD[{k1, M}, {k1 - p, ma}] (4 D M^2 SPD[p, p] +
+	2 Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D], M,
+		1] (M^2 - ma^2 + SPD[p, p]) -
+	D Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D], M,
+		1] (M^2 - ma^2 + SPD[p, p]))]//FCE",
+		"32 D M^2 FAD[{k1, M}, {k1 - p, ma}] + (1/SPD[p, p]) 16 (-2 + D) M^2 (FAD[{k1, M}] - FAD[{k1, ma}] -
+	M^2 FAD[{k1, M}, {k1 - p, ma}] + ma^2 FAD[{k1, M}, {k1 - p, ma}] -
+	FAD[{k1, M}, {k1 - p, ma}] SPD[p, p])"}
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {
