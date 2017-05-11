@@ -59,7 +59,21 @@ Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor3].Spinor[Moment
 Spinor[-Momentum[p2, D], m, 1].GAD[Lor4].(m + GSD[-l - p2]).GAD[Lor1].Spinor[-Momentum[p4, D], m, 1]] // FCE","-Spinor[-Momentum[p2, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[-Momentum[p4, D], m, 1] - 2 Spinor[-Momentum[p2, D], m, 1].GAD[Lor1].Spinor[-Momentum[p4, D], m, 1] FVD[p2, Lor4]"},
 {"fcstDiracSimplify-ID21","DiracSimplify[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[Lor1].Spinor[Momentum[p1, D], m, 1]] // FCE","Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
 Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Momentum[p1, D], m, 1] FVD[p3, Lor4]"},
-{"fcstDiracSimplify-ID21","DiracSimplify[CGA[i].CGS[p].CGA[j].CGA[i]]//FCE","4 CV[p, j] + CGS[p].CGA[j]"}
+{"fcstDiracSimplify-ID21","DiracSimplify[CGA[i].CGS[p].CGA[j].CGA[i]]//FCE","4 CV[p, j] + CGS[p].CGA[j]"},
+{"fcstDiracSimplify-ID22","DiracSimplify[-(1/SPD[p, p])
+	8 (2 - D) Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[
+	Momentum[p, D], M, 1] FAD[{k1, M}] + (1/SPD[p, p])
+8 (2 - D) Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D],
+	M, 1] FAD[{k1, ma}] +
+1/SPD[p, p]
+	8 FAD[{k1, M}, {k1 - p, ma}] (4 D M^2 SPD[p, p] +
+	2 Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D], M,
+		1] (M^2 - ma^2 + SPD[p, p]) -
+	D Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D], M,
+		1] (M^2 - ma^2 + SPD[p, p]))]//FCE",
+		"32 D M^2 FAD[{k1, M}, {k1 - p, ma}] + (1/SPD[p, p]) 16 (-2 + D) M^2 (FAD[{k1, M}] - FAD[{k1, ma}] -
+	M^2 FAD[{k1, M}, {k1 - p, ma}] + ma^2 FAD[{k1, M}, {k1 - p, ma}] -
+	FAD[{k1, M}, {k1 - p, ma}] SPD[p, p])"}
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {

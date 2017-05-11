@@ -262,9 +262,9 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			FCPrint[2,"DiracSimplify: Applying spinor normalization on ", ex, FCDoControl->dsVerbose];
 
 			ex = ex/. DOT->holdDOT //.
-			{	holdDOT[Spinor[s_. Momentum[p_],m_, 1],Spinor[s_. Momentum[p_],m_, 1]] -> s 2 m,
-				holdDOT[Spinor[- Momentum[p_],m_, 1],Spinor[Momentum[p_],m_, 1]] -> 0,
-				holdDOT[Spinor[Momentum[p_],m_, 1],Spinor[- Momentum[p_],m_, 1]] -> 0} /.
+			{	holdDOT[Spinor[s_. Momentum[p__],m_, 1],Spinor[s_. Momentum[p__],m_, 1]] -> s 2 m,
+				holdDOT[Spinor[- Momentum[p__],m_, 1],Spinor[Momentum[p__],m_, 1]] -> 0,
+				holdDOT[Spinor[Momentum[p__],m_, 1],Spinor[- Momentum[p__],m_, 1]] -> 0} /.
 			holdDOT -> DOT
 		];
 
