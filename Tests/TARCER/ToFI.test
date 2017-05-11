@@ -14,5 +14,14 @@
 (* ------------------------------------------------------------------------ *)
 
 Tests`TARCER`ToFI = {
-{"fcstToFI-ID1","ToFI[FAD[{q1, m1}, {-p + q1, m2}], {q1}, {p}]", "TBI[D, SPD[p, p], {{1, m2}, {1, m1}}]"}
+{"fcstToFI-ID1","ToFI[FAD[{q1, m1}, {-p + q1, m2}], {q1}, {p}]", "TBI[D, SPD[p, p], {{1, m2}, {1, m1}}]"},
+{"fcstToFI-ID2","ToFI[1/((-1 + D) SPD[q, q])
+32 CA^3 mE^2 FAD[
+p1, {p2, I mE}, {-p1 + p2, I mE}, {-p1 + p2, I mE}, {-p1 + p2,
+	I mE}] SD[a, b] SMP["g_s"]^6 SPD[p1, q] SPD[p2,
+q] (-FVD[q, Lor1] FVD[q, Lor2] +
+	MTD[Lor1, Lor2] SPD[q, q]) Subscript[zeta, 1], {p1, p2}, {q}]", "(32*CA^3*mE^2*SD[a, b]*SMP["g_s"]^6*(-(FVD[q, Lor1]*FVD[q, Lor2]) +
+MTD[Lor1, Lor2]*SPD[q, q])*Subscript[zeta, 1]*
+TFI[D, SPD[q, q], {0, 0, 1, 1, 0}, {{1, 0}, {1, I*mE}, {0, 0}, {0, 0},
+	{3, I*mE}}])/((-1 + D)*SPD[q, q])"}
 };
