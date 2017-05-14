@@ -15,8 +15,18 @@
 
 InstallFeynCalc::notcomp =
 "Your Mathematica version is too old. FeynCalc requires at least Mathematica 8. Installation aborted!";
+
 InstallFeynCalc::failed =
 "Download of `1` failed. Installation aborted!";
+
+InstallFeynCalcQuiet::usage="InstallFeynCalcQuiet is the silent mode of installing FeynCalc, where the \
+installer does not ask you any questions but silently overwrites any existing FeynCalc installation and \
+modifies Mathematica's options accordingly. FeynArts is not installed. The main purpose of this mode is \
+to facilitate the installation of FeynCalc on Mathematica Online.";
+
+AutoEnableTraditionalForm::usage="AutoEnableTraditionalForm is an option of InstallFeynCalc. If \
+set to True, the format type of new output cells will be set to TraditionalForm. False means that \
+the current value will not be changed.";
 
 AutoOverwriteFeynCalcDirectory::usage="AutoOverwriteFeynCalcDirectory is an option of InstallFeynCalc. If \
 set to True, the existing FeynCalc directory will be deleted without any further notice. The default
@@ -73,14 +83,18 @@ Needs["Utilities`URLTools`"];
 ];
 
 Options[InstallFeynCalc]={
-	AutoDisableInsufficientVersionWarning->None,
-	AutoInstallFeynArts->None,
-	AutoOverwriteFeynCalcDirectory->None,
+	AutoDisableInsufficientVersionWarning-> None,
+	AutoEnableTraditionalForm -> None,
+	AutoInstallFeynArts-> None,
+	AutoOverwriteFeynCalcDirectory-> None,
 	FeynCalcDevelopmentVersionLink->"https://github.com/FeynCalc/feyncalc/archive/master.zip",
 	FeynCalcStableVersionLink->"https://github.com/FeynCalc/feyncalc/archive/hotfix-stable.zip",
 	InstallFeynCalcDevelopmentVersion->False,
 	InstallFeynCalcTo->FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc"}]
 };
+
+Options[InstallFeynCalcQuiet]=
+	Options[InstallFeynCalc];
 
 Options[InstallFeynArts]={
 	FeynArtsMirrorLink->"https://github.com/FeynCalc/feynarts-mirror/archive/master.zip",
@@ -131,11 +145,18 @@ InstallFeynArts[OptionsPattern[]]:=
 
 	];
 
+InstallFeynCalcQuiet[]:=
+	InstallFeynCalc[
+		AutoDisableInsufficientVersionWarning-> True,
+		AutoEnableTraditionalForm -> True,
+		AutoInstallFeynArts-> False,
+		AutoOverwriteFeynCalcDirectory-> True
+	];
 
 InstallFeynCalc[OptionsPattern[]]:=
 	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir,
 				strDisableWarning,strFeynArts,FCGetUrl,
-				strOverwriteFCdit, faInstalled, zipDir},
+				strOverwriteFCdit, faInstalled, zipDir, strEnableTraditionalForm},
 
 	If[OptionValue[InstallFeynCalcDevelopmentVersion],
 		gitzip = OptionValue[FeynCalcDevelopmentVersionLink];
@@ -153,6 +174,12 @@ when you open a notebook that was created with a newer Mathematica version. Othe
 warning will pop up every time you use the Documentation Center to read info on FeynCalc functions \
 in Mathematica 8 and 9. This setting is harmless and can be always undone via \
 \"SetOptions[$FrontEnd, MessageOptions -> {\"InsufficientVersionWarning\" -> True}]\". Should we do this now?";
+
+strEnableTraditionalForm="FeynCalc makes an extensive use of Mathematica's typesetting capabilities to \
+format the output in a nice and easily readable manner. However, the built-in typesetting is available \
+only if the format type of new output cells is set to TraditionalForm. The default value is StandardForm. \
+This can be always changed via Edit -> Preferences -> Evaluation -> Format type of new output cells. Should \
+we now set it to TraditionalForm?";
 
 strFeynArts="Do you want to install FeynArts from "<> OptionValue[InstallFeynArts,FeynArtsMirrorLink] <> "? FeynArts is a Feynman diagram \
 generator which is currently developed by Thomas Hahn (www.feynarts.de). It is not a part of FeynCalc but it \
@@ -222,7 +249,7 @@ files or add-ons that are located in that directory, please backup them in advan
 	Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
 
 	(* Activate the documentation	*)
-	WriteString["stdout", "Setting up the help system... "];
+	WriteString["stdout", "Setting up the help system ... "];
 	RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
 	Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
 
@@ -236,7 +263,19 @@ files or add-ons that are located in that directory, please backup them in advan
 		]
 	];
 
-	(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horvát) *)
+	(* Activate TraditionalForm	*)
+	WriteString["stdout", "Setting up the format type of new output cells ... "];
+	If[ OptionValue[AutoEnableTraditionalForm],
+
+		SetOptions[$FrontEnd, CommonDefaultFormatTypes -> {"Output" -> TraditionalForm}],
+
+		Null,
+		If[ ChoiceDialog[strEnableTraditionalForm],
+			SetOptions[$FrontEnd, CommonDefaultFormatTypes -> {"Output" -> TraditionalForm}]
+		]
+	];
+
+	(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
 	RebuildPacletData[];
 
 	WriteString["stdout", "done! \n"];
@@ -253,7 +292,7 @@ files or add-ons that are located in that directory, please backup them in advan
 	];
 
 
-	WriteString["stdout", "\nInstallation complete! Loading FeynCalc... \n"];
+	WriteString["stdout", "\nInstallation complete! Loading FeynCalc ... \n"];
 
 	If[	faInstalled,
 		Global`$LoadFeynArts=True;
