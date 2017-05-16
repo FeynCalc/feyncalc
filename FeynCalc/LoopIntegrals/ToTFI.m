@@ -207,7 +207,6 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 						dummytag = False
 					];
 					prtoci[a_, b_] :=
-						prtoci[a, b] =
 						Module[ {na = a /. Momentum[em_, _:4]:> em,r },
 							r = Which[
 									na ===  q1,
