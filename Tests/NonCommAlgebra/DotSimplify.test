@@ -33,26 +33,23 @@ b*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[q]] . DiracGamma[Momentum[q
 QuantumField[A, LorentzIndex[mu]].RightPartialD[
 	Momentum[OPEDelta]].RightPartialD[
 	Momentum[OPEDelta]].QuantumField[A, LorentzIndex[rho]])"},
-{"fcstDotSimplify-ID7","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]]]","DiracTrace[
-	DiracGamma[LorentzIndex[c]].DiracGamma[LorentzIndex[d]]] SUNT[
-	SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[SUNIndex[f]]"},
+{"fcstDotSimplify-ID7","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]]]//FCE",
+"DiracTrace[GA[c].GA[d]] SUNT[a].SUNT[b] SUNT[e].SUNT[f]"},
 {"fcstDotSimplify-ID8","DotSimplify[
 RightPartialD[Momentum[OPEDelta]].LeftPartialD[Momentum[OPEDelta]]]",
 "LeftPartialD[Momentum[OPEDelta]].RightPartialD[Momentum[OPEDelta]]"},
-{"fcstDotSimplify-ID9","DotSimplify[(GA[i].SUNT[a] (GS[p] + M).GA[j].GA[6].GA[k].GA[j] FAD[
+{"fcstDotSimplify-ID9","DotSimplify[SUNT[a](GA[i].(GS[p] + M).GA[j].GA[6].GA[k].GA[j] FAD[
 p + k, M] +  GA[i].(GS[p1] + M).GA[j].GA[7].GA[j].GA[k] FAD[p1 + k, M]).(GS[q] +
 m).(GA[l].(GS[p] + M).GA[n] + GA[n].(GS[p] + M).GA[l]),
 PreservePropagatorStructures -> True] // FCE",
-"GA[i] . (M + GS[p1]) . GA[j] . GA[7] . GA[j] . GA[k] . (m +
-GS[q]) . GA[l] . (M + GS[p]) . GA[n]*FAD[k + p1, M] +
-GA[i] . (M + GS[p1]) . GA[j] . GA[7] . GA[j] . GA[k] . (m +
-GS[q]) . GA[n] . (M + GS[p]) . GA[l]*FAD[k + p1, M] + GA[i] . (M +
-GS[p]) . GA[j] . GA[6] . GA[k] . GA[j] . (m +
-GS[q]) . GA[l] . (M + GS[p]) . GA[n]*FAD[k + p,
-M]*SUNT[a] + GA[i] . (M +
-GS[p]) . GA[j] . GA[6] . GA[k] . GA[j] . (m +
-GS[q]) . GA[n] . (M + GS[p]) . GA[l]*FAD[k + p,
-M]*SUNT[a]"},
+"(GA[i].(M + GS[p]).GA[j].GA[6].GA[k].GA[j].(m + GS[q]).GA[
+	l].(M + GS[p]).GA[n] FAD[k + p, M] +
+GA[i].(M + GS[p]).GA[j].GA[6].GA[k].GA[j].(m + GS[q]).GA[
+	n].(M + GS[p]).GA[l] FAD[k + p, M] +
+GA[i].(M + GS[p1]).GA[j].GA[7].GA[j].GA[k].(m + GS[q]).GA[
+	l].(M + GS[p]).GA[n] FAD[k + p1, M] +
+GA[i].(M + GS[p1]).GA[j].GA[7].GA[j].GA[k].(m + GS[q]).GA[
+	n].(M + GS[p]).GA[l] FAD[k + p1, M]) SUNT[a]"},
 {"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"},
 {"fcstDotSimplify-ID11","DotSimplify[SpinorUBar[p1, m1].GA[i].SpinorU[p2,
 m2].(a.SUNT[a] + b.SUNT[a] + c.SUNT[a]), Expanding -> False]",
@@ -66,6 +63,7 @@ PauliEta[-I].SIS[p].SpinorU[p1, m].GA[k, l].SUNT[a, b, c].SpinorV[
 p2].PauliXi[I]]","PauliEta[-I].PauliSigma[Momentum[p]].PauliXi[I] SUNT[
 SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]] Spinor[
 Momentum[p1], m, 1].DiracGamma[LorentzIndex[k]].DiracGamma[
-LorentzIndex[l]].Spinor[-Momentum[p2], 0, 1]"}
-
+LorentzIndex[l]].Spinor[-Momentum[p2], 0, 1]"},
+{"fcstDotSimplify-ID14","DotSimplify[SUNT[a, b] SUNT[c, d]]","SUNT[SUNIndex[a]].SUNT[SUNIndex[b]] SUNT[SUNIndex[c]].SUNT[
+SUNIndex[d]]"}
 }

@@ -150,6 +150,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			(* CHANGE 07/26/94 *)
 
 			(*If the expression contains SU(N) matrices, put Dot on hold*)
+			(*
 			If[ !FreeQ[x, SUNT],
 				time=AbsoluteTime[];
 				FCPrint[1, "DotSimplify: Putting Dot on hold.", FCDoControl->dsVerbose];
@@ -159,10 +160,13 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 						Times[a],
 						holdDOT[a]
 					];
-				x = x /. Times -> TimesDot //. holdDOT[a_,b_,c___]/; NonCommFreeQ[{a,b}]:> holdDOT[a b, c]/. holdDOT->DOT;
+
+				x = x (*/. Times -> TimesDot*) //. holdDOT[a_,b_,c___]/; NonCommFreeQ[{a,b}]:> holdDOT[a b, c];
+
+				x = x /. holdDOT->DOT;
 				FCPrint[1, "DotSimplify: Done putting Dot on hold:, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 				FCPrint[1, "DotSimplify: After Putting Dot on hold: ", x, FCDoControl->dsVerbose]
-			];
+			];*)
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Writing out non-commutative objects explicitly.", FCDoControl->dsVerbose];
@@ -350,8 +354,13 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Pulling out nested SU(N) and Dirac traces. ", FCDoControl->dsVerbose];
 			x = x  //. {	DOT[a___,(b: DiracTrace | SUNTrace)[arg__],c___] :> (b[arg]  DOT[a,c]) ,
-							(tr1: DiracTrace|SUNTrace)[(tr2 : DiracTrace|SUNTrace)[arg__] a_] :> tr2[arg] tr1[a]
+							(tr1: DiracTrace|SUNTrace)[(tr2 : DiracTrace|SUNTrace)[arg__] a_] :> tr2[arg] tr1[a],
+
+							(tr1: DiracTrace|SUNTrace)[a_. b_/;!FreeQ2[b,{DiracTrace,SUNTrace}]]/;
+								NonCommFreeQ[b/.(DiracTrace|SUNTrace)[___]:>1] :> b tr1[a]
+
 			};
+
 			FCPrint[1, "DotSimplify: Done pulling out nested SU(N) and Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After pulling out nested SU(N) and Dirac traces.", x, FCDoControl->dsVerbose];
 		];
