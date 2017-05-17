@@ -212,7 +212,14 @@ FCE[Tr[GA[i1, i2, i3, i4, i5, i6, 5]]]}",
 	LC[i1, i2, i3, i4] MT[i5, i6]), -4 I (LC[i3, i4, i5, i6] MT[i1,
 	i2] - LC[i2, i4, i5, i6] MT[i1, i3] +
 	LC[i1, i4, i5, i6] MT[i2, i3] + LC[i1, i2, i3, i6] MT[i4, i5] -
-	LC[i1, i2, i3, i5] MT[i4, i6] + LC[i1, i2, i3, i4] MT[i5, i6])}"}
+	LC[i1, i2, i3, i5] MT[i4, i6] + LC[i1, i2, i3, i4] MT[i5, i6])}"},
+{"fcstTr-ID21","Tr[(L1 GA[7] + R1 GA[6]).(GS[p2] + m2).(L2 GA[7] + R2 GA[6]).(GS[p1] -
+	m1)] // FCE","-2 (L1 L2 m1 m2 + m1 m2 R1 R2 - L2 R1 SP[p1, p2] - L1 R2 SP[p1, p2])"},
+{"fcstTr-ID22","Tr[(L1 GA[7] + R1 GA[6]).(m2).(L2 GA[7] + R2 GA[6]).(-m1)] // FCE",
+"-2 m1 m2 (L1 L2 + R1 R2)"},
+{"fcstTr-ID23","Tr[(L1 GA[7] + R1 GA[6]).(GS[p2] + m2 (GA[6] + GA[7])).(L2 GA[7] +
+	R2 GA[6]).(GS[p1] - m1 (GA[6] + GA[7]))] // FCE",
+"-2 (L1 L2 m1 m2 + m1 m2 R1 R2 - L2 R1 SP[p1, p2] - L1 R2 SP[p1, p2])"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =
