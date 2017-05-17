@@ -78,18 +78,18 @@ Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Moment
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {
 {"fcstDiracSimplifyDotWarnings-ID1","CheckAbort[DiracSimplify[GA[a] GA[b],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, GA[a]*GA[b]]}"},
+	"True"},
 {"fcstDiracSimplifyDotWarnings-ID2","CheckAbort[DiracSimplify[GA[a, b] GA[c],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, GA[a] . GA[b]*GA[c]]}"},
+	"True"},
 {"fcstDiracSimplifyDotWarnings-ID3","CheckAbort[DiracSimplify[GA[a, b] GA[c, d],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, GA[a] . GA[b]*GA[c] . GA[d]]}"},
+	"True"},
 {"fcstDiracSimplifyDotWarnings-ID4","CheckAbort[DiracSimplify[SUNT[a] SUNT[b],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, SUNT[a]*SUNT[b]]}"},
+	"True"},
 {"fcstDiracSimplifyDotWarnings-ID5","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, SUNT[c]*SUNT[a, b]]}"},
+	"True"},
 {"fcstDiracSimplifyDotWarnings-ID6","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c, d],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, SUNT[a, b]*SUNT[c, d]]}"},
+	"True"},
 {"fcstDiracSimplifyDotWarnings-ID7","CheckAbort[DiracSimplify[(GA[a] + M) GA[b],FCCheckSyntax->True],True]",
-	"True","{Message[DiracSimplify::noncom, (M + GA[a])*GA[b]]}"}
+	"True"}
 }
 

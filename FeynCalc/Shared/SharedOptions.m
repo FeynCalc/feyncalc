@@ -75,14 +75,6 @@ only a limited set of simplifications \
 performed. For DotSimplity, it determines \
 whether noncommutative expansion is done.";
 
-FCCheckSyntax::usage = "FCCheckSyntax is an option for several FeynCalc \
-functions that require correct syntax in order to produce sensible results. \
-If set to True, those functions will try to check the syntax of the input
-expressions to detect possible inconsistencies (which mostly come from the
-users not familiar with FeynCalc). However, on large expressions such checks
-may cost a lot of performance, which is why this option is set to False \
-by default.";
-
 Factoring::usage = "Factoring is an option for Collect2, Contract, \
 Tr and more functions. If set to True, the result will be \
 factored, using Factor2. If set to any function f, this function \

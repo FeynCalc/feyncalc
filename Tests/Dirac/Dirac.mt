@@ -29,6 +29,8 @@ If[	$OnlySubTest=!="",
 
 stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
+stingCompareIgnore[_,_]:=
+	True;
 DeclareNonCommutative[FCNCA,FCNCB,FCNCC];
 
 If[ Names["Tests`Dirac`fcstAnti5*"]=!={},
@@ -110,7 +112,7 @@ If[ Names["Tests`Dirac`fcstDiracSimplify"]=!={},
 
 If[ Names["Tests`Dirac`fcstDiracSimplifyDotWarnings*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
-		MessagesEquivalenceFunction->stingCompare]&,
+		MessagesEquivalenceFunction->stingCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracSimplifyDotWarnings"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
