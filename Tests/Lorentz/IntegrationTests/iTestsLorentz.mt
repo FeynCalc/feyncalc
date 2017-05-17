@@ -21,7 +21,10 @@ Get/@itestsLorentz;
 
 FCClearScalarProducts[];
 
+
+
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join[
-		Tests`Lorentz`fcitUncontract
+		Tests`Lorentz`fcitUncontract,
+		Tests`Lorentz`fcitContract
 		]];
