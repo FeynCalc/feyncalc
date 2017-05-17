@@ -738,242 +738,158 @@ diracTraceSimplify[DiracGamma[6|7]]:=
 
 (* ------------------------------------------------------------------------ *)
 
+ga67Val1[7]=
+	-1;
+
+ga67Val1[6]=
+	1;
+
+ga67Val2[6,6]=
+	1;
+
+ga67Val2[7,7]=
+	1;
+
+ga67Val2[6,7]=
+	0;
+
+ga67Val2[7,6]=
+	0;
+
 commonGamma5Properties[]:=
 	1;
 
 commonGamma5Properties[___,0,___]:=
 	0;
 
-commonGamma5Properties[b___,DiracGamma[5],cc1_. DiracGamma[5] + cc2_:0,c___] :=
+commonGamma5Properties[b___, DiracGamma[5],cc1_. DiracGamma[5] + cc2_:0, c___] :=
 	cc1 commonGamma5Properties[ b,c ] + cc2 commonGamma5Properties[ b,DiracGamma[5],c ]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[5],c___] :=
+commonGamma5Properties[b___ ,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[5], c___] :=
 	cc1 commonGamma5Properties[ b,c ] + cc2 commonGamma5Properties[ b,DiracGamma[5],c ]/; NonCommFreeQ[{cc1,cc2}];
 
+commonGamma5Properties[b___, DiracGamma[5],cc1_. DiracGamma[(hh:6|7)] + cc2_:0, c___] :=
+	ga67Val1[hh] cc1 commonGamma5Properties[b,DiracGamma[hh],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[5],cc1_. DiracGamma[6] + cc2_:0,c___] :=
-	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
+commonGamma5Properties[b___, cc1_. DiracGamma[(hh:6|7)] + cc2_:0,DiracGamma[5], c___] :=
+	ga67Val1[hh] cc1 commonGamma5Properties[b,DiracGamma[hh],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,cc1_. DiracGamma[6] + cc2_:0,DiracGamma[5],c___] :=
-	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
+commonGamma5Properties[b___, DiracGamma[(hh:6|7)], cc1_. DiracGamma[5] + cc2_:0, c___] :=
+	ga67Val1[hh] cc1 commonGamma5Properties[b,DiracGamma[hh],c] + cc2 commonGamma5Properties[b,DiracGamma[hh],c]/; NonCommFreeQ[{cc1,cc2}];
 
+commonGamma5Properties[b___, cc1_. DiracGamma[5] + cc2_:0,DiracGamma[(hh:6|7)], c___] :=
+	ga67Val1[hh] cc1 commonGamma5Properties[b,DiracGamma[hh],c] + cc2 commonGamma5Properties[b,DiracGamma[hh],c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,DiracGamma[5],cc1_. DiracGamma[7] + cc2_:0,c___] :=
-	- cc1 commonGamma5Properties[b,DiracGamma[7],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
+commonGamma5Properties[b___, DiracGamma[(hh1:6|7)],cc1_. DiracGamma[(hh2:6|7)] + cc2_:0, c___] :=
+	(ga67Val2[hh1,hh2] cc1 + cc2) commonGamma5Properties[b, DiracGamma[hh1], c]/; NonCommFreeQ[{cc1,cc2}];
 
-commonGamma5Properties[b___,cc1_. DiracGamma[7] + cc2_:0,DiracGamma[5],c___] :=
-	- cc1 commonGamma5Properties[b,DiracGamma[7],c] + cc2 commonGamma5Properties[b,DiracGamma[5],c]/; NonCommFreeQ[{cc1,cc2}];
+commonGamma5Properties[b___, cc1_. DiracGamma[(hh1:6|7)] + cc2_:0,DiracGamma[(hh2:6|7)], c___] :=
+	(ga67Val2[hh1,hh2] cc1 + cc2) commonGamma5Properties[b, DiracGamma[hh2], c]/; NonCommFreeQ[{cc1,cc2}];
 
-
-
-commonGamma5Properties[b___,DiracGamma[6],cc1_. DiracGamma[5] + cc2_:0, c___] :=
-	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[6], c___] :=
-	cc1 commonGamma5Properties[b,DiracGamma[6],c] + cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
-
-
-commonGamma5Properties[b___,DiracGamma[7],cc1_. DiracGamma[5] + cc2_:0,c___] :=
-	- cc1 commonGamma5Properties[b, DiracGamma[7], c] + cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___,cc1_. DiracGamma[5] + cc2_:0,DiracGamma[7],c___] :=
-	- cc1 commonGamma5Properties[b, DiracGamma[7], c] + cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
-
-
-commonGamma5Properties[b___,DiracGamma[6], cc1_. DiracGamma[7] + cc2_:0, c___] :=
-	cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___, cc1_. DiracGamma[7] + cc2_:0,DiracGamma[6], c___] :=
-	cc2 commonGamma5Properties[b,DiracGamma[6],c]/; NonCommFreeQ[{cc1,cc2}];
-
-
-commonGamma5Properties[b___,DiracGamma[7], cc1_. DiracGamma[6] + cc2_:0, c___] :=
-	cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___, cc1_. DiracGamma[6] + cc2_:0,DiracGamma[7], c___] :=
-	cc2 commonGamma5Properties[b,DiracGamma[7],c]/; NonCommFreeQ[{cc1,cc2}];
-
-
-commonGamma5Properties[b___,DiracGamma[6],cc1_. DiracGamma[6] + cc2_:0,c___] :=
-	(cc1+cc2) commonGamma5Properties[b, DiracGamma[6], c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___,cc1_. DiracGamma[6] + cc2_:0,DiracGamma[6],c___] :=
-	(cc1+cc2) commonGamma5Properties[b, DiracGamma[6], c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___,DiracGamma[7],cc1_. DiracGamma[7] + cc2_:0,c___] :=
-	(cc1+cc2) commonGamma5Properties[b, DiracGamma[7], c]/; NonCommFreeQ[{cc1,cc2}];
-
-commonGamma5Properties[b___,cc1_. DiracGamma[7] + cc2_:0,DiracGamma[7],c___] :=
-	(cc1+cc2) commonGamma5Properties[b, DiracGamma[7], c]/; NonCommFreeQ[{cc1,cc2}];
-
-
-commonGamma5Properties[b___,cc1_. DiracGamma[6]+ cc1_. DiracGamma[7],c___] :=
-	cc1 commonGamma5Properties[b, c]/; NonCommFreeQ[{cc1,cc2}];
+commonGamma5Properties[b___,cc_. DiracGamma[6]+ cc_. DiracGamma[7],c___] :=
+	cc commonGamma5Properties[b, c]/; NonCommFreeQ[{cc}];
 
 (* ------------------------------------------------------------------------ *)
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[5], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
+ga67Switch1[7]=
+	6;
+
+ga67Switch1[6]=
+	7;
+
+chiralTrickAnticommuting4Dim[b___,DiracGamma[5], c:DiracGamma[_[_] | TemporalIndex[]].. , d___] :=
 	(-1)^Length[{c}] chiralTrickAnticommuting4Dim[ b,c,DiracGamma[5],d];
+
+chiralTrickAnticommuting4Dim[b___, DiracGamma[5], (dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0 ),d___ ] :=
+	chiralTrickAnticommuting4Dim[b,(- dd1 dg + dd2), DiracGamma[5],d ]/; NonCommFreeQ[{dd1,dd2}];
 
 chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
 	chiralTrickAnticommuting4Dim[ b,c,DiracGamma[h],d]/; EvenQ[Length[{c}]];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
-	chiralTrickAnticommuting4Dim[ b,c,DiracGamma[7],d]/; OddQ[Length[{c}]];
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
+	chiralTrickAnticommuting4Dim[ b,c,DiracGamma[ga67Switch1[h]],d]/; OddQ[Length[{c}]];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
-	chiralTrickAnticommuting4Dim[ b,c,DiracGamma[6],d]/; OddQ[Length[{c}]];
-
-chiralTrickAnticommuting4Dim[b___, DiracGamma[5], (dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_),d___ ] :=
-	chiralTrickAnticommuting4Dim[b,(- dd1 dg + dd2), DiracGamma[5],d ]/; NonCommFreeQ[{dd1,dd2}];
-
-chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
+chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), (dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
 	chiralTrickAnticommuting4Dim[b, (cc1 dd1 DiracGamma[6] + cc2 dd2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___, (cc1_ + cc2_. DiracGamma[6]), c:DiracGamma[_[_] | TemporalIndex[]], d___ ] :=
-	chiralTrickAnticommuting4Dim[b, c, (cc1 + cc2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2}];
+chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), dd1_. (c:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0, d___ ] :=
+	(
+	dd1 chiralTrickAnticommuting4Dim[b, c, (cc1 DiracGamma[7] + cc2 DiracGamma[6]), d] +
+	dd2 chiralTrickAnticommuting4Dim[b, (cc1 DiracGamma[6] + cc2 DiracGamma[7]), d]
+	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___, (cc1_ + cc2_. DiracGamma[7]), c:DiracGamma[_[_] | TemporalIndex[]], d___ ] :=
-	chiralTrickAnticommuting4Dim[b, c, (cc1 + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2}];
+chiralTrickAnticommuting4Dim[b___, (cc1_:0 + cc2_. DiracGamma[(h:6|7)]),(dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0),d___ ] :=
+	chiralTrickAnticommuting4Dim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[ga67Switch1[h]]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), c:DiracGamma[_[_] | TemporalIndex[]], d___ ] :=
-	chiralTrickAnticommuting4Dim[b, c, (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2}];
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[(h2:6|7)], c___] :=
+	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[h2], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommuting4Dim[b___, (cc1_ + cc2_. DiracGamma[6]),(dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_),d___ ] :=
-	chiralTrickAnticommuting4Dim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[(h:6|7)], c___] :=
+	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[h], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-chiralTrickAnticommuting4Dim[b___, (cc1_ + cc2_. DiracGamma[7]),(dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_),d___ ] :=
-	chiralTrickAnticommuting4Dim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_]  | TemporalIndex[]].. , DiracGamma[(h2:6|7)], c___] :=
+	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[h2], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_),d___ ] :=
-	chiralTrickAnticommuting4Dim[b,(dd1 dg + dd2), (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h:6|7)],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_]  | TemporalIndex[]].. , DiracGamma[(h:6|7)], c___] :=
+	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[h], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-chiralTrickAnticommuting4Dim[b___, DiracGamma[7],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[6], c___] :=
-	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[6], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, DiracGamma[(h:6|7)], c___] :=
+	mass chiralTrickAnticommuting4Dim[b, DiracGamma[h], c]/; NonCommFreeQ[mass];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[7], c___] :=
-	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[7], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, DiracGamma[(h2:6|7)], c___] :=
+	chiralTrickAnticommuting4Dim[b, dg, DiracGamma[h2], c]/; NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_]  | TemporalIndex[]].. , DiracGamma[6], c___] :=
-	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[6], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[7], c___] :=
-	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[7], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, DiracGamma[6], c___] :=
-	mass chiralTrickAnticommuting4Dim[b, DiracGamma[6], c]/; NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, DiracGamma[7], c___] :=
-	mass chiralTrickAnticommuting4Dim[b, DiracGamma[7], c]/; NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, DiracGamma[7], c___] :=
-	chiralTrickAnticommuting4Dim[b, dg, DiracGamma[7], c]/; NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, DiracGamma[6], c___] :=
-	chiralTrickAnticommuting4Dim[b, dg, DiracGamma[6], c] /; NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[7], c___] :=
-	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[7], c] /; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[6], c___] :=
-	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[6], c] /; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[6], c___] :=
-	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[6], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7],(dg:DiracGamma[_[_] | TemporalIndex[]]) +  mass_:0,	xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[7], c___] :=
-	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[7], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[6],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_, c___] :=
-	(chiralTrickAnticommuting4Dim[b, dg, DiracGamma[7], c] +
-	mass chiralTrickAnticommuting4Dim[b, DiracGamma[6], c])/; NonCommFreeQ[mass];
-
-chiralTrickAnticommuting4Dim[b___,DiracGamma[7],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_, c___] :=
-	(chiralTrickAnticommuting4Dim[b, dg, DiracGamma[6], c] +
-	mass chiralTrickAnticommuting4Dim[b, DiracGamma[7], c])/; NonCommFreeQ[mass];
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, c___] :=
+	(chiralTrickAnticommuting4Dim[b, dg, DiracGamma[ga67Switch1[h]], c] +
+	mass chiralTrickAnticommuting4Dim[b, DiracGamma[h], c])/; NonCommFreeQ[mass];
 
 (* ------------------------------------------------------------------------ *)
 
-chiralTrickAnticommutingDDim[b___,DiracGamma[5],c:DiracGamma[_[_,_],_].. ,d___] :=
+chiralTrickAnticommutingDDim[b___,DiracGamma[5], c:DiracGamma[_[_,_],_].. , d___] :=
 	(-1)^Length[{c}] chiralTrickAnticommutingDDim[ b,c,DiracGamma[5],d];
 
-chiralTrickAnticommutingDDim[b___,DiracGamma[(h:6|7)],c:DiracGamma[_[_,_],_].. ,d___] :=
-	chiralTrickAnticommutingDDim[ b,c,DiracGamma[h],d]/; EvenQ[Length[{c}]];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],c:DiracGamma[_[_,_],_].. ,d___] :=
-	chiralTrickAnticommutingDDim[ b,c,DiracGamma[7],d]/; OddQ[Length[{c}]];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],c:DiracGamma[_[_,_],_].. ,d___] :=
-	chiralTrickAnticommutingDDim[ b,c,DiracGamma[6],d]/; OddQ[Length[{c}]];
-
-chiralTrickAnticommutingDDim[b___, DiracGamma[5],(dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_),d___ ] :=
+chiralTrickAnticommutingDDim[b___, DiracGamma[5], (dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_:0 ),d___ ] :=
 	chiralTrickAnticommutingDDim[b,(- dd1 dg + dd2), DiracGamma[5],d ]/; NonCommFreeQ[{dd1,dd2}];
 
+chiralTrickAnticommutingDDim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___] :=
+	chiralTrickAnticommutingDDim[ b,c,DiracGamma[h],d]/; EvenQ[Length[{c}]];
 
-chiralTrickAnticommutingDDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
+chiralTrickAnticommutingDDim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___] :=
+	chiralTrickAnticommutingDDim[ b,c,DiracGamma[ga67Switch1[h]],d]/; OddQ[Length[{c}]];
+
+chiralTrickAnticommutingDDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), (dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
 	chiralTrickAnticommutingDDim[b, (cc1 dd1 DiracGamma[6] + cc2 dd2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommutingDDim[b___, (cc1_ + cc2_. DiracGamma[6]), (dg:DiracGamma[_[_,_],_]), d___ ] :=
-	chiralTrickAnticommutingDDim[b, dg, (cc1 + cc2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2}];
+chiralTrickAnticommutingDDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), dd1_. (c:DiracGamma[_[_,_],_]) + dd2_:0, d___ ] :=
+	(
+	dd1 chiralTrickAnticommutingDDim[b, c, (cc1 DiracGamma[7] + cc2 DiracGamma[6]), d] +
+	dd2 chiralTrickAnticommutingDDim[b, (cc1 DiracGamma[6] + cc2 DiracGamma[7]), d]
+	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommutingDDim[b___, (cc1_ + cc2_. DiracGamma[7]),(dg:DiracGamma[_[_,_],_]), d___ ] :=
-	chiralTrickAnticommutingDDim[b, dg, (cc1 + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2}];
+chiralTrickAnticommutingDDim[b___, (cc1_:0 + cc2_. DiracGamma[(h:6|7)]),(dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_:0),d___ ] :=
+	chiralTrickAnticommutingDDim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[ga67Switch1[h]]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommutingDDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), (dg:DiracGamma[_[_,_],_]), d___ ] :=
-	chiralTrickAnticommutingDDim[b, dg, (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2}];
+chiralTrickAnticommutingDDim[b___, DiracGamma[(h1:6|7)],DiracGamma[_[_,_],_] + mass_:0, xy:DiracGamma[_[_,_],_].. , DiracGamma[(h2:6|7)], c___] :=
+	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[h2], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommutingDDim[b___, (cc1_ + cc2_. DiracGamma[6]),(dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_),d___ ] :=
-	chiralTrickAnticommutingDDim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+chiralTrickAnticommutingDDim[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,_],_]) + mass_:0, xy:DiracGamma[_[_,_],_].. , DiracGamma[(h:6|7)], c___] :=
+	chiralTrickAnticommutingDDim[b, dg, xy, DiracGamma[h], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-chiralTrickAnticommutingDDim[b___, (cc1_ + cc2_. DiracGamma[7]),(dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_),d___ ] :=
-	chiralTrickAnticommutingDDim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+chiralTrickAnticommutingDDim[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]) + mass_:0, xy:DiracGamma[_[_] ].. , DiracGamma[(h2:6|7)], c___] :=
+	chiralTrickAnticommutingDDim[b, dg, xy, DiracGamma[h2], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommutingDDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]),(dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_),d___ ] :=
-	chiralTrickAnticommutingDDim[b,(dd1 dg + dd2), (cc1 DiracGamma[7] + cc2 DiracGamma[6]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+chiralTrickAnticommutingDDim[b___, DiracGamma[(h:6|7)],DiracGamma[_[_,_],_] + mass_:0, xy:DiracGamma[_[_] ].. , DiracGamma[(h:6|7)], c___] :=
+	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[h], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-chiralTrickAnticommutingDDim[b___, DiracGamma[7], DiracGamma[_[_,_], _] + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[6], c___] :=
-	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[6], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+chiralTrickAnticommutingDDim[b___,DiracGamma[(h:6|7)],DiracGamma[_[_,_],_] + mass_:0, DiracGamma[(h:6|7)], c___] :=
+	mass chiralTrickAnticommutingDDim[b, DiracGamma[h], c]/; NonCommFreeQ[mass];
 
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],DiracGamma[_[_,_], _] + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[7], c___] :=
-	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[7], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+chiralTrickAnticommutingDDim[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]) + mass_:0, DiracGamma[(h2:6|7)], c___] :=
+	chiralTrickAnticommutingDDim[b, dg, DiracGamma[h2], c]/; NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],DiracGamma[_[_,_], _] + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[6], c___] :=
-	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[6], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],DiracGamma[_[_,_], _] + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[7], c___] :=
-	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[7], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],DiracGamma[_[_,_], _] + mass_:0, DiracGamma[6], c___] :=
-	mass chiralTrickAnticommutingDDim[b, DiracGamma[6], c]/; NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],DiracGamma[_[_,_], _] + mass_:0, DiracGamma[7], c___] :=
-	mass chiralTrickAnticommutingDDim[b, DiracGamma[7], c]/; NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],(dg:DiracGamma[_[_,_], _]) + mass_:0, DiracGamma[7], c___] :=
-	chiralTrickAnticommutingDDim[b, dg, DiracGamma[7], c]/; NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],(dg:DiracGamma[_[_,_], _]) + mass_:0, DiracGamma[6], c___] :=
-	chiralTrickAnticommutingDDim[b, dg, DiracGamma[6], c] /; NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],(dg:DiracGamma[_[_,_], _]) + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[7], c___] :=
-	chiralTrickAnticommutingDDim[b, dg, xy, DiracGamma[7], c] /; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],(dg:DiracGamma[_[_,_], _]) + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[6], c___] :=
-	chiralTrickAnticommutingDDim[b, dg, xy, DiracGamma[6], c] /; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],(dg:DiracGamma[_[_,_], _]) + mass_:0, xy:DiracGamma[_[_,_], _].. , DiracGamma[6], c___] :=
-	chiralTrickAnticommutingDDim[b, dg, xy, DiracGamma[6], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],(dg:DiracGamma[_[_,_], _]) +  mass_:0,	xy:DiracGamma[_[_,_], _].. , DiracGamma[7], c___] :=
-	chiralTrickAnticommutingDDim[b, dg, xy, DiracGamma[7], c] /; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[6],(dg:DiracGamma[_[_,_], _]) + mass_, c___] :=
-	(chiralTrickAnticommutingDDim[b, dg, DiracGamma[7], c] +
-	mass chiralTrickAnticommutingDDim[b, DiracGamma[6], c])/; NonCommFreeQ[mass];
-
-chiralTrickAnticommutingDDim[b___,DiracGamma[7],(dg:DiracGamma[_[_,_], _]) + mass_, c___] :=
-	(chiralTrickAnticommutingDDim[b, dg, DiracGamma[6], c] +
-	mass chiralTrickAnticommutingDDim[b, DiracGamma[7], c])/; NonCommFreeQ[mass];
+chiralTrickAnticommutingDDim[b___,DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,_],_]) + mass_:0, c___] :=
+	(chiralTrickAnticommutingDDim[b, dg, DiracGamma[ga67Switch1[h]], c] +
+	mass chiralTrickAnticommutingDDim[b, DiracGamma[h], c])/; NonCommFreeQ[mass];
 
 (* ------------------------------------------------------------------------ *)
 

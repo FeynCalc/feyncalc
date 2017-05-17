@@ -1199,7 +1199,12 @@ GAE[i10] . GAE[i11]*SPE[p, p]"},
 "DiracTrick[GA[i, j].FCNCA.GA[i, j]] // FCE", "GA[i] . GA[j] . FCNCA . GA[i] . GA[j]"},
 {"fcstDiracTrickCoreProperties-ID119",
 "MatchQ[DiracTrick[#, FCDiracIsolate -> False, FCI -> True] & /@
-Table[DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[mu]], {i, 1, 10000}], {4 ..}]", "True"}
+Table[DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[mu]], {i, 1, 10000}], {4 ..}]", "True"},
+{"fcstDiracTrickCoreProperties-ID120",
+"DiracTrick[(aa GA[7] + bb GA[6]).(GS[p] + m)] // FCE", "GS[p].(aa GA[6] + bb GA[7]) + m (bb GA[6] + aa GA[7])"},
+{"fcstDiracTrickCoreProperties-ID121",
+"DiracTrick[(aa GA[7] + bb GA[6]).(GS[p] + m).GA[mu, nu, rho]] // FCE", "m GA[mu].GA[nu].GA[rho].(aa GA[6] + bb GA[7]) +
+GS[p].GA[mu].GA[nu].GA[rho].(bb GA[6] + aa GA[7])"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
