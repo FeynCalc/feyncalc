@@ -283,20 +283,23 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			tmp = tmp /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /. DOT -> prepSpur;
 			tmp = tmp /. prepSpur[zzz__] :> spurHead@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Wrapped in spurHead: ",tmp, FCDoControl->diTrVerbose];
-			(* Split chiral projectors here *)
-			tmp = tmp /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
-			spurHead[x___,DiracGamma[7]] :> 1/2 spurHead[x] - 1/2 spurHead[x,DiracGamma[5]]} /. spurHead[] -> 1;
-			FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral projectors splitted: ",tmp, FCDoControl->diTrVerbose];
-
-			If[!FreeQ2[tmp,{DiracGamma[6],DiracGamma[7]}],
-				Message[DiracTrace::failmsg,"Trace still contains chiral projectors."];
-				Abort[]
-			];
 
 
 			(*	Unknown non-commutative objects inside the trace prevent trace from being computed *)
 			tmp = tmp/. spurHead[x__]/; !NonCommFreeQ[{x}/.DiracGamma->null1] :> noSpur[x];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Trace contains unknown non-commutative objects: ", !FreeQ[tmp, noSpur], FCDoControl->diTrVerbose];
+
+
+			(* Split chiral projectors here *)
+			tmp = tmp /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
+			spurHead[x___,DiracGamma[7]] :> 1/2 spurHead[x] - 1/2 spurHead[x,DiracGamma[5]]} /. spurHead[] -> 1;
+			FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral projectors splitted: ",tmp, FCDoControl->diTrVerbose];
+
+			If[!FreeQ2[(tmp/.noSpur[___]:> 1),{DiracGamma[6],DiracGamma[7]}],
+				Message[DiracTrace::failmsg,"Trace still contains chiral projectors."];
+				Abort[]
+			];
+
 
 			(*	After all the simplifications we need to split terms that still containd Dirac matrices from those that don't.	*)
 			{gammaFree,gammaPart} = FCSplit[tmp,{spurHead}];

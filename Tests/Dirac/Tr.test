@@ -220,7 +220,61 @@ FCE[Tr[GA[i1, i2, i3, i4, i5, i6, 5]]]}",
 "-2 m1 m2 (L1 L2 + R1 R2)"},
 {"fcstTr-ID23","Tr[(L1 GA[7] + R1 GA[6]).(GS[p2] + m2 (GA[6] + GA[7])).(L2 GA[7] +
 	R2 GA[6]).(GS[p1] - m1 (GA[6] + GA[7]))] // FCE",
-"-2 (L1 L2 m1 m2 + m1 m2 R1 R2 - L2 R1 SP[p1, p2] - L1 R2 SP[p1, p2])"}
+"-2 (L1 L2 m1 m2 + m1 m2 R1 R2 - L2 R1 SP[p1, p2] - L1 R2 SP[p1, p2])"},
+{"fcstTr-ID24",
+"FCClearScalarProducts[]; \n
+ClearAll[R, L, ID, yiPR, ys1, ys2]; \n
+R = GA[6]; \n
+L = GA[7]; \n
+yiPR = YiPR L + YiPRCC R; \n
+ys1 = Ys1 L + Ys1CC R; \n
+ys2 = Ys2 L +Ys2CC R;  \n
+SetMandelstam[s, t, u, p1, p2, -q1, -q2, mc1, mc2, ms1, ms2]; \n
+Tr[yiPR.(GS[p1] - mc1 (GA[6] + GA[7])).ys1.(GS[p2 - q2] +
+mb (GA[6] + GA[7]) ).ys2.(GS[p2] + mc2 (GA[6] + GA[7]) )] //Simplify ",
+"-mc1 (mc2^2 - ms2^2 + t) (YiPRCC Ys1CC Ys2 + YiPR Ys1 Ys2CC) -
+2 mc1^2 mc2 (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
+mc2 (mc2^2 + ms2^2 - s - u) (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
+mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
+(YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) +
+2 mc1 mc2 (YiPR Ys1 Ys2 + YiPRCC Ys1CC Ys2CC))"},
+{"fcstTr-ID25",
+"FCClearScalarProducts[]; \n
+ClearAll[R, L, ID, yiPR, ys1, ys2]; \n
+R = GA[6]; \n
+L = GA[7]; \n
+yiPR = YiPR L + YiPRCC R; \n
+ys1 = Ys1 L + Ys1CC R; \n
+ys2 = Ys2 L + Ys2CC R;
+SetMandelstam[s, t, u, p1, p2, -q1, -q2, mc1, mc2, ms1, ms2];  \n
+Tr[yiPR.(GS[p1] - mc1 ).ys1.(GS[p2 - q2] + mb ).ys2.(GS[p2] + mc2 )] //
+Simplify",
+"-mc1 (mc2^2 - ms2^2 + t) (YiPRCC Ys1CC Ys2 + YiPR Ys1 Ys2CC) -
+2 mc1^2 mc2 (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
+mc2 (mc2^2 + ms2^2 - s - u) (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
+mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
+(YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) +
+2 mc1 mc2 (YiPR Ys1 Ys2 + YiPRCC Ys1CC Ys2CC))"},
+{"fcstTr-ID26",
+"FCClearScalarProducts[]; \n
+ClearAll[R, L, ID, yiPR, ys1, ys2]; \n
+R = GA[6]; \n
+L = GA[7]; \n
+yiPR = YiPR L + YiPRCC R; \n
+ys1 = Ys1 L + Ys1CC R; \n
+ys2 = Ys2 L + Ys2CC R;
+SetMandelstam[s, t, u, p1, p2, -q1, -q2, mc1, mc2, ms1, ms2];  \n
+DeclareNonCommutative[ID]; \n
+tmp=(Tr[yiPR.(GS[p1] - mc1 ID).ys1.(GS[p2 - q2] + mb ID).ys2.(GS[p2] +
+mc2 ID)] /. ID -> 1 /. DiracTrace -> Tr) // Simplify; \n
+ClearAll[R, L, ID, yiPR, ys1, ys2]; \n
+tmp",
+"-mc1 (mc2^2 - ms2^2 + t) (YiPRCC Ys1CC Ys2 + YiPR Ys1 Ys2CC) -
+2 mc1^2 mc2 (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
+mc2 (mc2^2 + ms2^2 - s - u) (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
+mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
+(YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) +
+2 mc1 mc2 (YiPR Ys1 Ys2 + YiPRCC Ys1CC Ys2CC))"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =

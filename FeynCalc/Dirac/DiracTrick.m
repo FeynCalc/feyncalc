@@ -684,30 +684,55 @@ diracTraceSimplify[___,0,___] :=
 	0;
 
 (* Trace cyclicity*)
+
+ga67Mat[5,6]=
+	DiracGamma[6];
+
+ga67Mat[5,7]=
+	DiracGamma[7];
+
+ga67Mat[6,5]=
+	DiracGamma[6];
+
+ga67Mat[6,7]=
+	0;
+
+ga67Mat[7,5]=
+	DiracGamma[7];
+
+ga67Mat[7,6]=
+	0;
+
+ga67MatSign[5,6]=
+	1;
+
+ga67MatSign[5,7]=
+	-1;
+
+ga67MatSign[6,5]=
+	1;
+
+ga67MatSignt[6,7]=
+	0;
+
+ga67MatSign[7,5]=
+	-1;
+
+ga67MatSign[7,6]=
+	0;
+
 diracTraceSimplify[b___,di_,c__] :=
 	diracTraceSimplify[c,b, di]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
 	FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
-diracTraceSimplify[DiracGamma[(a:5|6|7)],b___,DiracGamma[(a:5|6|7)]] :=
+diracTraceSimplify[DiracGamma[5],b___,DiracGamma[5]] :=
 	diracTraceSimplify[b];
 
-diracTraceSimplify[DiracGamma[6],___,DiracGamma[7]] :=
-	0;
+diracTraceSimplify[DiracGamma[(a:6|7)],b___,DiracGamma[(a:6|7)]] :=
+	diracTraceSimplify[b,DiracGamma[a]];
 
-diracTraceSimplify[DiracGamma[7],___,DiracGamma[6]] :=
-	0;
-
-diracTraceSimplify[DiracGamma[5],b___,DiracGamma[6]] :=
-	diracTraceSimplify[b,DiracGamma[6]];
-
-diracTraceSimplify[DiracGamma[6],b___,DiracGamma[5]] :=
-	diracTraceSimplify[b,DiracGamma[6]];
-
-diracTraceSimplify[DiracGamma[5],b___,DiracGamma[7]] :=
-	-diracTraceSimplify[b,DiracGamma[7]];
-
-diracTraceSimplify[DiracGamma[7],b___,DiracGamma[5]] :=
-	-diracTraceSimplify[b,DiracGamma[7]];
+diracTraceSimplify[DiracGamma[(h1:5|6|7)],b___,DiracGamma[(h2:5|6|7)]] :=
+	ga67MatSign[h1,h2] diracTraceSimplify[b,ga67Mat[h1,h2]]/; h1=!=h2;
 
 diracTraceSimplify[DOT[x__DiracGamma]]:=
 	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]]
@@ -729,11 +754,14 @@ diracTraceSimplify[DiracGamma[_[_,___],___], DiracGamma[_[_,___],___], DiracGamm
 diracTraceSimplify[a:DiracGamma[_[_,___],___], b:DiracGamma[_[_,___],___], DiracGamma[6|7]] :=
 	diracTraceSimplify[a,b]/2;
 
-diracTraceSimplify[DiracGamma[5]]:=
-	0;
+diracTraceSimplify[cc_. DiracGamma[5]]:=
+	0/; NonCommFreeQ[{cc}];
 
-diracTraceSimplify[DiracGamma[6|7]]:=
-	1/2;
+diracTraceSimplify[cc_. DiracGamma[6|7]]:=
+	1/2 cc/; NonCommFreeQ[{cc}];
+
+diracTraceSimplify[cc1_. DiracGamma[6] + cc2_. DiracGamma[7]]:=
+	1/2 (cc1+cc2)/; NonCommFreeQ[{cc1,cc2}];
 
 
 (* ------------------------------------------------------------------------ *)
