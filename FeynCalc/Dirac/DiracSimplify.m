@@ -176,38 +176,64 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 		If[ FreeQ2[ex,DiracHeadsList],
 			Return[ex]
 		];
-(*
+
+		(*
+		(* Two main questions: Expanding true or false? Are there spinors or not?*)
+
 		If[	OptionValue[FCDiracIsolate],
 			(*	This is the standard mode for calling DiracSimplify	*)
-
+			FCPrint[1,"DiracSimplify: Normal mode.", FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],Lorentz->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
+				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracSimplify: dsPart: ",dsPart , FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: freePart: ",freePart , FCDoControl->dsVerbose];
+			FCPrint[1, "DiracSimplify: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
 			FCPrint[3,"DiracSimplify: diracObjects: ",diracObjects , FCDoControl->dsVerbose];
 
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracSimplify: Applying diracTrickEval", FCDoControl->dsVerbose];
-			diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];
-			FCPrint[1,"DiracTrace: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[1, "DiracSimplify: Applying diracSimplifyEval", FCDoControl->dsVerbose];
 
-			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracTrickEval}],
-				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
+			diracObjectsEval = Map[(diracSimplifyEvalFast[#]/. diracSimplifyEvalFast->diracSimplifyEval)&, (diracObjects/.dsHead->Identity)];
+			FCPrint[3,"DiracSimplify: After diracSimplifyEval: ", diracObjectsEval, FCDoControl->dsVerbose];
+			FCPrint[1,"DiracSimplify: diracSimplifyEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+
+			If[ !FreeQ2[diracObjectsEval,{diracSimplifyEvalFast,diracSimplifyEval,holdDOT}],
+				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
-
+			FCPrint[1, "DiracSimplify: Inserting Dirac objects back.", FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
 			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
 			FCPrint[3,"DiracSimplify: repRule: ",repRule , FCDoControl->dsVerbose];
-			res = freePart + ( dsPart/.repRule),
+			res = freePart + ( dsPart/.repRule);
+			FCPrint[1, "DiracSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose],
 
-			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
+			FCPrint[1,"DiracSimplify: Fast mode.", FCDoControl->dsVerbose];
+			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracSimplify/@exprList
 				from internal functions	*)
-			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval
+			res = diracSimplifyEvalFast[ex];
+
+			(* It might happen that after diracSimplifyEvalFast there are no Dirac matrices left.*)
+
+			FCPrint[3,"DiracTrick: After diracSimplifyEvalFast: ", res , FCDoControl->dsVerbose];
+
+			If[ !FreeQ2[res,{DiracHeadsList,diracSimplifyEvalFast}],
+				res = res /. diracSimplifyEvalFast->diracSimplifyEval
+			];
+
+			If[ !FreeQ2[res,{diracSimplifyEvalFast,diracSimplifyEval,holdDOT}],
+				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
+				Abort[]
+			]
 		];*)
+
 
 
 
@@ -255,6 +281,25 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 		FCPrint[3,"DiracSimplify: Leaving with ", res, FCDoControl->dsVerbose];
 		res
 	];
+
+
+(*
+diracSimplifyEvalFast[expr_]:=
+	expr;
+
+
+diracSimplifyEval[expr_]:=
+	Block[{ex=expr},
+
+
+
+		(*DiracEq comes last*)
+
+
+	];
+*)
+
+
 
 dit[x_,ops___Rule] :=
 	DiracTrace[diracSimplify@@Join[{x},{ops}, Flatten[Prepend[{Options[DiracSimplify]}, InsideDiracTrace -> True]]]];
@@ -337,11 +382,6 @@ DiracSubstitute67[x_] :=
 	x/. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2),
 		DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
 
-contractli[x_] :=
-	MemSet[contractli[x],
-		Contract[ x, Expanding -> True, Factoring -> False, EpsContract -> False]
-	];
-
 (*if the expression doesn't contain any non-commutative objects, return it unevaluated*)
 diracSimplify[x_, OptionsPattern[]] :=
 	x /; NonCommFreeQ[x];
@@ -359,10 +399,6 @@ diracSimplifyBM[x_,in:OptionsPattern[]] :=
 diracSimplifyNV[x_,in:OptionsPattern[]] :=
 	MemSet[diracSimplifyNV[x,in], diracSimplifyGEN[x,in]];
 
-
-dirfun[exp_] :=
-	Collect2[exp/.DOT->dS, DOT, Factoring -> False];
-
 diracSimplifyInsideTrace[ex_] :=
 	Block[{diracdt=ex,holdDOT},
 		(* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
@@ -378,7 +414,7 @@ diracSimplifyInsideTrace[ex_] :=
 		(* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
 		(* even be more careful: and get rid of cyclic simplifications hrere ... *)
 		diracdt =
-			FixedPoint[dirfun, diracdt, 5](*/.DOT ->trIC/.trI->dS*);
+			FixedPoint[Collect2[#/.DOT->dS, DOT, Factoring -> False]&, diracdt, 5](*/.DOT ->trIC/.trI->dS*);
 		FCPrint[2,"dir2done, diracdt=", FullForm[diracdt]];
 		If[ FreeQ[ diracdt, DOT ],
 			diracdt = diracdt/.DiracGamma[_[__],___]->0;
@@ -425,8 +461,8 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Doing index contractions.", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Contract indices in  ", diracdt, FCDoControl->dsVerbose];
 			If[ diracgasu === True,
-				diracdt = contractli[DiracGammaCombine[diracdt/.Pair->PairContract,FCI->True]](*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
-				diracdt = contractli[ diracdt ]
+				diracdt = Contract[DiracGammaCombine[diracdt/.Pair->PairContract,FCI->True], Expanding -> True, Factoring -> False, EpsContract -> False],
+				diracdt = Contract[diracdt, Expanding -> True, Factoring -> False, EpsContract -> False]
 			(*/. DOT->dS*)
 			];
 			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Done doing index contractions, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
