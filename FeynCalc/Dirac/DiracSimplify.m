@@ -155,17 +155,14 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			];
 		];
 
+		insideDiracTrace = OptionValue[InsideDiracTrace];
+
 		FCPrint[1, "DiracSimplify: Entering.", FCDoControl->dsVerbose];
 		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
 
 		If[	OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
-		];
-
-		If[	OptionValue[InsideDiracTrace],
-			insideDiracTrace = True,
-			insideDiracTrace = False
 		];
 
 		If[	OptionValue[FCCheckSyntax],
@@ -220,9 +217,9 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 			If[ OptionValue[DiracSigmaExplicit],
 				ex = DiracSigmaExplicit[ex,FCI->True]
 			];
-			ex = dotLin[ex];
+			ex = DotSimplify[ex, Expanding -> False];
 			If[ OptionValue[DiracEquation] && !FreeQ[ex,Spinor],
-				ex = diracEq[ex]
+				ex = DiracEquation[ex, FCI->True]
 			],
 			(*If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.*)
 			time=AbsoluteTime[];
@@ -259,24 +256,8 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 		res
 	];
 
-(*if the expression contains non-commutative objects, apply DotSimplify*)
-dotLin[x_] :=
-	If[ FreeQ[x, DOT],
-		x,
-		DotSimplify[x, Expanding -> False]
-	];
-(*if the expression contains spinors, apply the Dirac equation*)
-diracEq[x_] :=
-	If[ FreeQ[x, Spinor],
-		x,
-		DiracEquation[x]
-	];
-
 dit[x_,ops___Rule] :=
-	DiracTrace[diracSimplify@@Join[{x},{ops},
-	Flatten[Prepend[{Options[DiracSimplify]},
-	InsideDiracTrace -> True]]]
-					];
+	DiracTrace[diracSimplify@@Join[{x},{ops}, Flatten[Prepend[{Options[DiracSimplify]}, InsideDiracTrace -> True]]]];
 
 diracSimplify[z_, OptionsPattern[]] :=
 	(Contract[z]/.DiracTrace->dit)/;!FreeQ[z,DiracTrace];
@@ -336,7 +317,7 @@ oldDiracSimplify[x_,opts:OptionsPattern[]] :=
 		];
 
 		If[ Length[DownValues[SpinorsandPairs]] > 1,
-			dre = (dre /. DOT -> SpinorsandPairs/. SpinorsandPairs->DOT)//dotLin
+			dre = (dre /. DOT -> SpinorsandPairs/. SpinorsandPairs->DOT)//DotSimplify[#, Expanding -> False]&
 		];
 
 		If[ !FreeQ[dre, DiracGamma],
@@ -435,7 +416,8 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify.", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify to  ", x, FCDoControl->dsVerbose];
-			diracdt = dotLin[ x//DiracGammaExpand ];
+			diracdt = DotSimplify[x//DiracGammaExpand, Expanding -> False];
+
 			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 
@@ -539,16 +521,14 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 				diracndt = diracndt /. PairContract->ExpandScalarProduct;
 
 				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify", FCDoControl->dsVerbose];
-				diracndt = Expand[dotLin[diracndt]];
-
+				diracndt = DotSimplify[diracndt, Expanding -> False]//Expand;
 
 				If[ diraccanopt===True,
 					FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying canonical ordering", FCDoControl->dsVerbose];
 					diracndt = DiracOrder[ diracndt ];
-					diracndt = Expand[dotLin[diracndt]]
+					diracndt = DotSimplify[diracndt, Expanding -> False]//Expand
 				];
 			];
-
 
 			If[ diracsifac,
 				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Factoring the result", FCDoControl->dsVerbose];
