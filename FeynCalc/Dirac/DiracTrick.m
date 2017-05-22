@@ -737,6 +737,10 @@ diracTraceSimplify[DiracGamma[(h1:5|6|7)],b___,DiracGamma[(h2:5|6|7)]] :=
 diracTraceSimplify[DOT[x__DiracGamma]]:=
 	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]]
 
+
+diracTraceSimplify[DiracGamma[(arg1:_[_, dim1___]),dim1___], DiracGamma[(arg2:_[_, dim2___]), dim2___]] :=
+	FCUseCache[ExpandScalarProduct,{Pair[arg1,arg2]},{}];
+
 diracTraceSimplify[DOT[x___DiracGamma,DiracGamma[6|7],y___DiracGamma]]:=
 	0/; OddQ[Length[{x,y}]] && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 

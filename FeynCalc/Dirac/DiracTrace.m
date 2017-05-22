@@ -261,7 +261,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		If[ !FreeQ[tmp, DiracGamma],
-			(*	If the output of DiracSimplify still contains Dirac matrices, apply DotSimplify and use DiracTrick again	*)
+			(*	If the output of DiracTrick still contains Dirac matrices, apply DotSimplify and use DiracTrick again	*)
 			(*	We need to consider standalone Dirac matrices separately: With the following all of them will  be wrapped inside dWrap or dtWrap	*)
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Calculating the trace.", FCDoControl->diTrVerbose];
 
