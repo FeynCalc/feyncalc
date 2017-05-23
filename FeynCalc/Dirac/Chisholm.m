@@ -40,6 +40,7 @@ Options[Chisholm] = {
 	FCDiracIsolate -> True,
 	FCE -> False,
 	FCI -> False,
+	FCJoinDOTs -> True,
 	FCVerbose -> False,
 	Mode -> 1,
 	DiracSigmaExplicit -> False,
@@ -115,7 +116,7 @@ Chisholm[expr_, OptionsPattern[]] :=
 			FCPrint[1, "Chisholm: Normal mode.", FCDoControl->chVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "Chisholm: Extracting Dirac objects.", FCDoControl->chVerbose];
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->OptionValue[DotSimplify], DiracGammaCombine-> False];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->OptionValue[DotSimplify], FCJoinDOTs -> OptionValue[FCJoinDOTs], DiracGammaCombine-> False];
 
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];

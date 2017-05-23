@@ -33,6 +33,7 @@ Options[EpsChisholm] = {
 	DiracTrick -> True,
 	FCE -> False,
 	FCI -> False,
+	FCJoinDOTs -> True,
 	FCVerbose -> False
 };
 
@@ -66,7 +67,7 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 		FCPrint[1, "EpsChisholm: Normal mode.", FCDoControl->esVerbose];
 		time=AbsoluteTime[];
 		FCPrint[1, "EpsChisholm: Extracting Dirac objects.", FCDoControl->esVerbose];
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->False, LorentzIndex->True];
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->False, LorentzIndex->True, FCJoinDOTs -> OptionValue[FCJoinDOTs]];
 		ex = ex /. h_dsHead/; FreeQ[h,Eps] :> Identity@@h;
 
 

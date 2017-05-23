@@ -84,7 +84,7 @@ Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
 	Momentum[p1, D], 0, 1] +
 Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[
 	Momentum[p1, D], 0, 1], Expanding -> False,
-Join -> False] // FCE","m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
+FCJoinDOTs -> False] // FCE","m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
 	Momentum[p1, D], 0, 1] +
 Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
 Momentum[p1, D], 0, 1] +

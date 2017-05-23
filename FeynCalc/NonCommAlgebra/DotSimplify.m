@@ -67,7 +67,7 @@ DotSimplify[___Rule] :=
 	Abort[]);
 
 Options[DotSimplify] = {
-	Join -> True,
+	FCJoinDOTs -> True,
 	Expanding -> True,
 	FCVerbose -> False,
 	DotSimplifyRelations -> {},
@@ -291,7 +291,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			FCPrint[1, "DotSimplify: Done working out commutators and anti-commutators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators:", x, FCDoControl->dsVerbose];
 
-			If[	OptionValue[Join],
+			If[	OptionValue[FCJoinDOTs],
 				time=AbsoluteTime[];
 				FCPrint[1, "DotSimplify: Joining DOTs.", FCDoControl->dsVerbose];
 				x = x/.DOT-> holdDOT //. {holdDOT[a___, b1_, c___] + holdDOT[a___, b2_, c___] :> holdDOT[a, b1 + b2, c]};

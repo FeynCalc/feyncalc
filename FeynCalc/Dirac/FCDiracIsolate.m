@@ -47,7 +47,7 @@ Options[FCDiracIsolate] = {
 	Isolate -> False,
 	IsolateFast -> False,
 	IsolateNames -> KK,
-	Join -> True,
+	FCJoinDOTs -> True,
 	LorentzIndex -> False,
 	Spinor -> True,
 	Split -> True
@@ -111,7 +111,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DotSimplify.", FCDoControl->fcdiVerbose];
 			tmp = FCSplit[ex, DiracHeadsList, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->False, Join->OptionValue[Join]];
+			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->False, FCJoinDOTs->OptionValue[FCJoinDOTs]];
 			FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 			FCPrint[3, "FCDiracIsolate: After DotSimplify: ", ex, FCDoControl->fcdiVerbose]
 		];

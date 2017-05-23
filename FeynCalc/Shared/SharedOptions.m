@@ -88,6 +88,11 @@ multiplies the whole amplitude with the factor fa before squaring.";
 Factorout::usage =
 "Factorout is an option for OPEInt and OPEIntegrate.";
 
+FCJoinDOTs::usage =
+"FCJoinDOTs is an option for DotSimplify and other functions that use \
+DotSimplify internally. When set to True, DotSimplify will try to rewrite \
+expressions like A.X.B + A.Y.B as A.(X+Y).B.";
+
 FCVerbose::usage =
 "FCVerbose is an option for several functions that allows to specify \
 a local value of $VeryVerbose inside those functions. When set to a positive \

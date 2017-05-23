@@ -109,7 +109,7 @@ dsHead[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(GSD[l] + GSD[p3]).GAD[Lor1].Spin
 {"fcstFCDiracIsolate-ID22",
 "Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
 DotSimplify // FCDiracIsolate[#, DiracGammaCombine -> False, Head -> dch,
-Join -> False, FCE -> True] &",
+FCJoinDOTs -> False, FCE -> True] &",
 "m dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
 dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
 dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]]"}

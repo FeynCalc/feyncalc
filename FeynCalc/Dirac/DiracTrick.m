@@ -42,9 +42,10 @@ Options[DiracTrick] = {
 	Expanding -> False,
 	FCDiracIsolate -> True,
 	FCI -> False,
+	FCE -> False,
 	FCVerbose -> False,
 	InsideDiracTrace -> False,
-	Join -> True
+	FCJoinDOTs -> True
 };
 
 (* TODO: Bad syntax that one should get rid off*)
@@ -95,7 +96,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 		*)
 
-		optJoin = OptionValue[Join];
+		optJoin = OptionValue[FCJoinDOTs];
 
 		If [OptionValue[FCVerbose]===False,
 			diTrVerbose=$VeryVerbose,
@@ -130,7 +131,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				Join-> optJoin, LorentzIndex->True];
+				FCJoinDOTs -> optJoin, LorentzIndex->True];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -184,6 +185,10 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			res = Expand[res];
 			FCPrint[1,"DiracTrick: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: After expanding: ", res, FCDoControl->diTrVerbose]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		FCPrint[1, "DiracTrick. Leaving.", FCDoControl->diTrVerbose];
@@ -469,7 +474,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		If[	insideDiracTrace && res=!=0,
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
-			res = FCDiracIsolate[res, DotSimplify->False, FCI->True, DiracGammaCombine->False, Join->optJoin, Head->dsHead];
+			res = FCDiracIsolate[res, DotSimplify->False, FCI->True, DiracGammaCombine->False, FCJoinDOTs->optJoin, Head->dsHead];
 			res = res  /. {dsHead[DiracGamma[5]] :> 0, dsHead[DiracGamma[6|7]] :> 1/2 } /. DOT-> holdDOT/.
 			dsHead[holdDOT[x__]] :>  diracTraceSimplify[x];
 			res = res /. diracTraceSimplify -> DOT /. dsHead-> Identity /. holdDOT -> DOT;

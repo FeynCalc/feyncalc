@@ -1204,7 +1204,13 @@ Table[DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[mu]], {i, 1, 10000}],
 "DiracTrick[(aa GA[7] + bb GA[6]).(GS[p] + m)] // FCE", "GS[p].(aa GA[6] + bb GA[7]) + m (bb GA[6] + aa GA[7])"},
 {"fcstDiracTrickCoreProperties-ID121",
 "DiracTrick[(aa GA[7] + bb GA[6]).(GS[p] + m).GA[mu, nu, rho]] // FCE", "m GA[mu].GA[nu].GA[rho].(aa GA[6] + bb GA[7]) +
-GS[p].GA[mu].GA[nu].GA[rho].(bb GA[6] + aa GA[7])"}
+GS[p].GA[mu].GA[nu].GA[rho].(bb GA[6] + aa GA[7])"},
+{"fcstDiracTrickCoreProperties-ID122",
+"Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[
+	Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
+DotSimplify // DiracTrick[#, FCJoinDOTs -> False, FCE -> True] &", "m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
+Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
