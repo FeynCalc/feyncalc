@@ -65,5 +65,29 @@ SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]] Spinor[
 Momentum[p1], m, 1].DiracGamma[LorentzIndex[k]].DiracGamma[
 LorentzIndex[l]].Spinor[-Momentum[p2], 0, 1]"},
 {"fcstDotSimplify-ID14","DotSimplify[SUNT[a, b] SUNT[c, d]]","SUNT[SUNIndex[a]].SUNT[SUNIndex[b]] SUNT[SUNIndex[c]].SUNT[
-SUNIndex[d]]"}
+SUNIndex[d]]"},
+{"fcstDotSimplify-ID15","DotSimplify[
+m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1], Expanding -> False] // FCE",
+	"m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(GSD[l] + GSD[p3]).GAD[
+Lor1].Spinor[Momentum[p1, D], 0, 1]"},
+{"fcstDotSimplify-ID16","DotSimplify[
+m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1], Expanding -> False,
+Join -> False] // FCE","m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
+	Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
+Momentum[p1, D], 0, 1] +
+Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[
+Momentum[p1, D], 0, 1]"}
 }

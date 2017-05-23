@@ -40,12 +40,14 @@ Options[FCDiracIsolate] = {
 	ExceptHeads -> {},
 	Expanding -> True,
 	FCI -> False,
+	FCE -> False,
 	FCVerbose -> False,
 	Factoring -> Factor,
 	Head -> FCGV["DiracChain"],
 	Isolate -> False,
 	IsolateFast -> False,
 	IsolateNames -> KK,
+	Join -> True,
 	LorentzIndex -> False,
 	Spinor -> True,
 	Split -> True
@@ -74,6 +76,8 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			ex = FCI[expr]/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]])
 		];
 
+		FCPrint[3, "FCDiracIsolate: Entering with: ", ex, FCDoControl->fcdiVerbose];
+
 
 		If[	FreeQ2[ex,DiracHeadsList],
 			Return[ex]
@@ -83,29 +87,33 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DiracSigmaExplicit.", FCDoControl->fcdiVerbose];
 			ex = DiracSigmaExplicit[ex, FCI->True];
-			FCPrint[1, "FCDiracIsolate: Done applying DiracSigmaExplicit timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
+			FCPrint[1, "FCDiracIsolate: Done applying DiracSigmaExplicit timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After DiracSigmaExplicit: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		If[	OptionValue[DiracGammaCombine],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DiracGammaCombine.", FCDoControl->fcdiVerbose];
 			ex = DiracGammaCombine[ex, FCI->True];
-			FCPrint[1, "FCDiracIsolate: Done applying DiracGammaCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
+			FCPrint[1, "FCDiracIsolate: Done applying DiracGammaCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After DiracGammaCombine: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		If[	OptionValue[Expanding],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying Expand2.", FCDoControl->fcdiVerbose];
 			ex = Expand2[ex, DiracHeadsList];
-			FCPrint[1, "FCDiracIsolate: Done applying Expand2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
+			FCPrint[1, "FCDiracIsolate: Done applying Expand2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After Expand2: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DotSimplify.", FCDoControl->fcdiVerbose];
 			tmp = FCSplit[ex, DiracHeadsList, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->False];
-			FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
+			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->False, Join->OptionValue[Join]];
+			FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After DotSimplify: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		If[	OptionValue[Collecting],
@@ -173,6 +181,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If [ !FreeQ[res/. head[__] :> 1, DiracHeadsList] & || !FreeQ[res,head[]],
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		FCPrint[1, "FCDiracIsolate: Leaving.", FCDoControl->fcdiVerbose];

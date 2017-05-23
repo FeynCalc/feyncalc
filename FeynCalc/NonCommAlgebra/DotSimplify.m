@@ -67,6 +67,7 @@ DotSimplify[___Rule] :=
 	Abort[]);
 
 Options[DotSimplify] = {
+	Join -> True,
 	Expanding -> True,
 	FCVerbose -> False,
 	DotSimplifyRelations -> {},
@@ -290,14 +291,14 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			FCPrint[1, "DotSimplify: Done working out commutators and anti-commutators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators:", x, FCDoControl->dsVerbose];
 
-
-			time=AbsoluteTime[];
-			FCPrint[1, "DotSimplify: Collecting DOTs.", FCDoControl->dsVerbose];
-			x = x/.DOT-> holdDOT //. {holdDOT[a___, b1_, c___] + holdDOT[a___, b2_, c___] :> holdDOT[a, b1 + b2, c]};
-			x = x /. holdDOT->DOT;
-			FCPrint[1, "DotSimplify: Done collecting DOTs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After collecting DOTs: ", x, FCDoControl->dsVerbose];
-
+			If[	OptionValue[Join],
+				time=AbsoluteTime[];
+				FCPrint[1, "DotSimplify: Joining DOTs.", FCDoControl->dsVerbose];
+				x = x/.DOT-> holdDOT //. {holdDOT[a___, b1_, c___] + holdDOT[a___, b2_, c___] :> holdDOT[a, b1 + b2, c]};
+				x = x /. holdDOT->DOT;
+				FCPrint[1, "DotSimplify: Done joining DOTs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3, "DotSimplify: After joining DOTs: ", x, FCDoControl->dsVerbose]
+			];
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Doing non-commutative expansions.", FCDoControl->dsVerbose];
@@ -419,7 +420,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 	];
 
 dootpow[a__] :=
-	If[ FreeQ2[{a}, {DiracGamma,SUNT}],
+	If[ FreeQ2[{a}, {DiracGamma,SUNT,Spinor}],
 		Apply[DOT, (#[[1]]^Length[#])& /@ Split[{a}]],
 		DOT[a]
 	];

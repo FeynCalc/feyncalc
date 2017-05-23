@@ -34,6 +34,7 @@ Begin["`DiracTrick`Private`"]
 diTrVerbose::usage="";
 diracTraceSimplify::usage="";
 insideDiracTrace::usage="";
+optJoin::usage="";
 diga::usage="";
 
 Options[DiracTrick] = {
@@ -42,7 +43,8 @@ Options[DiracTrick] = {
 	FCDiracIsolate -> True,
 	FCI -> False,
 	FCVerbose -> False,
-	InsideDiracTrace -> False
+	InsideDiracTrace -> False,
+	Join -> True
 };
 
 (* TODO: Bad syntax that one should get rid off*)
@@ -93,6 +95,8 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 		*)
 
+		optJoin = OptionValue[Join];
+
 		If [OptionValue[FCVerbose]===False,
 			diTrVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
@@ -125,7 +129,8 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],LorentzIndex->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
+				Join-> optJoin, LorentzIndex->True];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -464,7 +469,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		If[	insideDiracTrace && res=!=0,
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
-			res = FCDiracIsolate[res,DotSimplify->False,FCI->True,DiracGammaCombine->False,Head->dsHead];
+			res = FCDiracIsolate[res, DotSimplify->False, FCI->True, DiracGammaCombine->False, Join->optJoin, Head->dsHead];
 			res = res  /. {dsHead[DiracGamma[5]] :> 0, dsHead[DiracGamma[6|7]] :> 1/2 } /. DOT-> holdDOT/.
 			dsHead[holdDOT[x__]] :>  diracTraceSimplify[x];
 			res = res /. diracTraceSimplify -> DOT /. dsHead-> Identity /. holdDOT -> DOT;
