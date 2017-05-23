@@ -162,8 +162,16 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			head[DOT[x__] y_.]/; FreeQ[{x},Spinor] && !FreeQ[{x},DiracGamma] :> DOT[x] head[y];
 		];
 
-		If[	!OptionValue[Spinor],
-			res = res //. head[DOT[x__] y_.]/; !FreeQ[{x},Spinor] :> DOT[x] head[y];
+		If[	OptionValue[Spinor]===False,
+			res = res //. head[DOT[x__] y_.]/; !FreeQ[{x},Spinor] :> DOT[x] head[y],
+
+
+			If[	OptionValue[Spinor]===Join,
+				res = res /. DOT->holdDOT //.
+				head[holdDOT[a_Spinor,b___,c_Spinor] x_.] head[holdDOT[d_Spinor,e___,f_Spinor] y_.]/; FreeQ[{b,e},Spinor] :>
+					head[holdDOT[a,b,c] holdDOT[d,e,f] x y]/. holdDOT->DOT;
+			]
+
 		];
 
 		res = res //. head[x_]/; FreeQ2[x,DiracHeadsList] :> x;

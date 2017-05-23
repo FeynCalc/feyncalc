@@ -112,6 +112,26 @@ DotSimplify // FCDiracIsolate[#, DiracGammaCombine -> False, Head -> dch,
 FCJoinDOTs -> False, FCE -> True] &",
 "m dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
 dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
-dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]]"}
+dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]]"},
+{"fcstFCDiracIsolate-ID23",
+"FCDiracIsolate[
+4 Spinor[Momentum[k], m, 1].GA[i].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[i].Spinor[Momentum[p], m, 1] +
+2 Spinor[Momentum[k], m, 1].GA[j].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[j].Spinor[Momentum[p], m, 1] +
+4 Spinor[Momentum[k], m, 1].GA[k].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1] +
+6 Spinor[Momentum[k], m, 1].GA[$MU[$39]].GA[5].Spinor[Momentum[k],
+	m, 1] Spinor[Momentum[p], m, 1].GA[$MU[$39]].GA[5].Spinor[
+	Momentum[p], m, 1], Spinor -> Join, Head -> dch,FCE->True]",
+"4 dch[Spinor[Momentum[k], m, 1].GA[i].Spinor[Momentum[k], m,
+	1] Spinor[Momentum[p], m, 1].GA[i].Spinor[Momentum[p], m, 1]] +
+2 dch[Spinor[Momentum[k], m, 1].GA[j].Spinor[Momentum[k], m,
+	1] Spinor[Momentum[p], m, 1].GA[j].Spinor[Momentum[p], m, 1]] +
+4 dch[Spinor[Momentum[k], m, 1].GA[k].Spinor[Momentum[k], m,
+	1] Spinor[Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1]] +
+6 dch[Spinor[Momentum[k], m, 1].GA[$MU[$39]].GA[5].Spinor[
+	Momentum[k], m, 1] Spinor[Momentum[p], m, 1].GA[$MU[$39]].GA[
+	5].Spinor[Momentum[p], m, 1]]"}
 });
 
