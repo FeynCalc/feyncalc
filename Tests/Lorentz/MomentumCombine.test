@@ -88,7 +88,9 @@ FCE->True]", "5*LC[][p1, q, r, s] + 4*LC[][p2, q, r, s]"},
 "3*CLC[][q, r, s1 + s2]"},
 {"fcstMomentumCombine-ID29",
 "MomentumCombine[5CLC[][p1,r,s]+4CLC[][p2,r,s],LC\[Rule]False,\
-FCE->True]", "5*CLC[][p1, r, s] + 4*CLC[][p2, r, s]"}
+FCE->True]", "5*CLC[][p1, r, s] + 4*CLC[][p2, r, s]"},
+{"fcstMomentumCombine-ID30",
+"MomentumCombine[Spinor[Momentum[q] + Momentum[p], 0, 1]]", "Spinor[Momentum[p + q], 0, 1]"}
 };
 
 

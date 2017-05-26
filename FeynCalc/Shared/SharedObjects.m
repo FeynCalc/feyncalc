@@ -1908,10 +1908,11 @@ HoldPattern[Spinor[a__,{1}]] :=
 Spinor[n_. x_/; (FCPatternFreeQ[{x}]&&FreeQ[x, Momentum]), y___/;FCPatternFreeQ[{y}]] :=
 	(Spinor[n x, y] = Spinor[n Momentum[x], y]) /;
 	(FCPatternFreeQ[{n, x, y}] && (n^2)===1);
-
+(*
 Spinor[kk_.+ n_. Momentum[ a_Plus, dim_ : 4], m_, y___] :=
 	Spinor[kk+ n Momentum[a, dim], m, y] =
 	(Spinor[MomentumExpand[kk + n Momentum[a, dim]] ,m,y] );
+*)
 
 Spinor[p_ , _. SmallVariable[_], in___] :=
 	Spinor[p, 0, in]/; FCPatternFreeQ[{p}];
