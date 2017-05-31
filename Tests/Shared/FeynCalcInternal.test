@@ -136,6 +136,9 @@ PropagatorDenominator[-Momentum[p] + Momentum[q1], m]]"},
 
 	{"fcstFeynCalcInternal-ID64.2", "FCI[FAD[0]]", "FeynAmpDenominator[PropagatorDenominator[0, 0]]"},
 
+
+	{"fcstFeynCalcInternal-ID64.3", "FCI[FAD[{p, m}, Dimension -> ss]]", "FeynAmpDenominator[PropagatorDenominator[Momentum[p, ss], m]]"},
+
 	{"fcstFeynCalcInternal-ID65", "FCI[FVD[p, mu]]", "Pair[LorentzIndex[mu, D], Momentum[p, D]]"},
 	{"fcstFeynCalcInternal-ID66", "FCI[FV[p, mu]]", "Pair[LorentzIndex[mu], Momentum[p]]"},
 	{"fcstFeynCalcInternal-ID66.1", "FCI[FVE[p, mu]]", "Pair[LorentzIndex[mu,D-4], Momentum[p,D-4]]"},
@@ -333,6 +336,7 @@ Tests`Shared`fcstFeynCalcInternalDouble = {
 	{"fcstFeynCalcInternalDouble-ID64.1", "FCI[FCI[FAD[q1, {-p + q1, m},Dimension->4]]]", "FeynAmpDenominator[PropagatorDenominator[Momentum[q1], 0],
 	PropagatorDenominator[-Momentum[p] + Momentum[q1], m]]"},
 	{"fcstFeynCalcInternalDouble-ID64.2", "FCI[FCI[FAD[0]]]", "FeynAmpDenominator[PropagatorDenominator[0, 0]]"},
+	{"fcstFeynCalcInternalDouble-ID64.3", "FCI[FCI[FAD[{p, m}, Dimension -> ss]]]", "FeynAmpDenominator[PropagatorDenominator[Momentum[p, ss], m]]"},
 	{"fcstFeynCalcInternalDouble-ID65", "FCI[FCI[FVD[p, mu]]]", "Pair[LorentzIndex[mu, D], Momentum[p, D]]"},
 	{"fcstFeynCalcInternalDouble-ID66", "FCI[FCI[FV[p, mu]]]", "Pair[LorentzIndex[mu], Momentum[p]]"},
 	{"fcstFeynCalcInternalDouble-ID66.1", "FCI[FCI[FVE[p, mu]]]", "Pair[LorentzIndex[mu, D-4], Momentum[p, D-4]]"},
@@ -529,6 +533,7 @@ Tests`Shared`fcstFeynCalcInternalTriple = {
 	{"fcstFeynCalcInternalTriple-ID64.1", "FCI[FCE[FCI[FAD[q1, {-p + q1, m},Dimension->4]]]]", "FeynAmpDenominator[PropagatorDenominator[Momentum[q1], 0],
 	PropagatorDenominator[-Momentum[p] + Momentum[q1], m]]"},
 	{"fcstFeynCalcInternalTriple-ID64.2", "FCI[FCE[FCI[FAD[0]]]]", "FeynAmpDenominator[PropagatorDenominator[0, 0]]"},
+	{"fcstFeynCalcInternalDouble-ID64.3", "FCI[FCE[FCI[FAD[{p, m}, Dimension -> ss]]]]", "FeynAmpDenominator[PropagatorDenominator[Momentum[p, ss], m]]"},
 	{"fcstFeynCalcInternalTriple-ID65", "FCI[FCE[FCI[FVD[p, mu]]]]", "Pair[LorentzIndex[mu, D], Momentum[p, D]]"},
 	{"fcstFeynCalcInternalTriple-ID66", "FCI[FCE[FCI[FV[p, mu]]]]", "Pair[LorentzIndex[mu], Momentum[p]]"},
 	{"fcstFeynCalcInternalTriple-ID66.1", "FCI[FCE[FCI[FVE[p, mu]]]]", "Pair[LorentzIndex[mu,D-4], Momentum[p,D-4]]"},

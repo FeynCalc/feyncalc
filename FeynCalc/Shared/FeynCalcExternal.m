@@ -37,6 +37,7 @@ End[]
 Begin["`FeynCalcExternal`Private`"]
 
 FCE = FeynCalcExternal;
+dimS::usage="";
 
 Options[FeynCalcExternal] = {
 	FinalSubstitutions -> {}
@@ -298,7 +299,8 @@ propd[a_, b_/;b=!=0] :=
 
 feynampback[a__] :=
 	Switch [
-		Union[Cases[{a}, Momentum[_, dim_: 4] :> dim, Infinity]],
+		dimS=Union[Cases[{a}, Momentum[_, dim_: 4] :> dim, Infinity]];
+		dimS,
 		{D},
 		FAD @@ ({a} /. PropagatorDenominator -> propd),
 
@@ -307,6 +309,9 @@ feynampback[a__] :=
 		(* special case for PD[0,_] *)
 		({} && !FreeQ[a,PD[0,_]]),
 		FAD @@ ({a} /. PropagatorDenominator -> propd),
+
+		{_Symbol},
+		FAD[Sequence @@ ({a} /. PropagatorDenominator -> propd),Dimension->First[dimS]],
 
 		_,
 		Message[FCE::feynamp,ToString[{a},InputForm]];
