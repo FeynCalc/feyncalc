@@ -78,6 +78,12 @@ TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
 				Pair[Momentum[q1,d],Momentum[q2,d]]^t*
 				FCI[FAD[{q1,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},{q1-q2,m5,nu5},Dimension->d]],
 
+
+			Tarcer`TFI[d_Symbol, pp_, dp_, {a_,b_}, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
+				Pair[Momentum[dp,d],Momentum[q1,d]]^a*
+				Pair[Momentum[dp,d],Momentum[q2,d]]^b*
+				Identity[FAD[{q1,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},{q1-q2,m5,nu5},Dimension->d]],
+
 			Tarcer`TFI[d_Symbol, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
 				FCI[FAD[{q1,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},{q1-q2,m5,nu5},Dimension->d]],
 
