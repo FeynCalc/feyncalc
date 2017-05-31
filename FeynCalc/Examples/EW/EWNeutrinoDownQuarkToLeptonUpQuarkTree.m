@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: EWNeutrinoDownQuarkToLeptonUpQuarkTree                                                 *)
+(* :Title: EWNeutrinoDownQuarkToLeptonUpQuarkTree                   *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,9 +9,11 @@
 	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the scattering cross section for a neutrino and
-			a down-type quark going to the corresponding lepton and up-type q
-			uark in Electroweak theory at tree level.                              *)
+(* :Summary:
+		Computation of the scattering cross section for a 
+		neutrino and a down-type quark going to the 
+		corresponding lepton and up-type quark in the 
+		Electroweak theory at tree level.                          *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -53,7 +55,7 @@ InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 topQuarkNuScattering = CreateTopologies[0, 2 -> 2];
 diagsQuarkNuScatteringTree = InsertFields[topQuarkNuScattering,
 {F[4,{1,1}],F[1,{2}]} -> {F[3,{1,1}],F[2,{2}]}, InsertionLevel -> {Classes},
-Model -> "UnitarySM",GenericModel->"UnitaryLorentz"];
+Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
 Paint[diagsQuarkNuScatteringTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
 
 

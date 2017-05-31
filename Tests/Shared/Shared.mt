@@ -53,7 +53,6 @@ If[ Names["Tests`Shared`fcstSharedObjectsTypesetting"]=!={} && $VersionNumber >=
 ];
 
 If[ Names["Tests`Shared`fcstFCCheckSyntax*"]=!={},
-
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stingCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Shared`fcstFCCheckSyntax*"])];
@@ -61,15 +60,8 @@ If[ Names["Tests`Shared`fcstFCCheckSyntax*"]=!={},
 ];
 
 nms=Names["Tests`Shared`*"];
-If[ nms && Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &]=!={},
+If[ nms=!={} && Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
-
-(*
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Select[Names["Tests`Shared`*"],
-	!StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort"] &])];
-
-*)

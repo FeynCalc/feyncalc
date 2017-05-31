@@ -35,6 +35,7 @@ $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDThreePhotonDiagramsOneLoop.m 
 #EW Examples
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWMuonDecayTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronMuonNeutrinoToMuonElectronNeutrinoTree.m
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWNeutrinoDownQuarkToLeptonUpQuarkTree.m
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoFermionsTree.m
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToWPlusWMinusTree.m
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToZZTree.m
