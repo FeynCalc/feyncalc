@@ -45,6 +45,7 @@ conpa[x__] :=
 
 (* for large expressions it is better to not use DotSimplify *)
 Options[ComplexConjugate] = {
+	Conjugate -> {},
 	DotSimplify -> True,
 	FCE -> False,
 	FCI -> False,
@@ -52,7 +53,9 @@ Options[ComplexConjugate] = {
 };
 
 ComplexConjugate[expr_, OptionsPattern[]]:=
-	Block[{ex,res},
+	Block[{ex,res,conjugate, ruleConjugate,ru},
+
+		conjugate=OptionValue[Conjugate];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
@@ -70,6 +73,11 @@ ComplexConjugate[expr_, OptionsPattern[]]:=
 
 		If[	OptionValue[FCRenameDummyIndices],
 			res = FCRenameDummyIndices[res]
+		];
+
+		If[	conjugate=!={} && Head[conjugate]===List,
+			ruleConjugate= Thread[ru[conjugate,Conjugate/@conjugate]]/. ru->Rule;
+			res = res /. ruleConjugate
 		];
 
 		If[	OptionValue[FCE],

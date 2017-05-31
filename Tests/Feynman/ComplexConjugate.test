@@ -32,5 +32,9 @@ Tests`Feynman`fcstComplexConjugate = {
 {"fcstComplexConjugate-ID8","ComplexConjugate[SpinorUBar[p1, m1].GA[mu, nu, rho].SpinorV[p2, m2], FCE -> True]",
 	"Spinor[-Momentum[p2], m2, 1].GA[rho].GA[nu].GA[mu].Spinor[Momentum[p1], m1, 1]"},
 {"fcstComplexConjugate-ID9","ComplexConjugate[SpinorUBar[p1, m1].CGA[i, j, k].SpinorV[p2, m2], FCE -> True]",
-	"Spinor[-Momentum[p2], m2, 1].CGA[k].CGA[j].CGA[i].Spinor[Momentum[p1], m1, 1]"}
+	"Spinor[-Momentum[p2], m2, 1].CGA[k].CGA[j].CGA[i].Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID10","ComplexConjugate[aaa]",
+	"aaa"},
+{"fcstComplexConjugate-ID11","ComplexConjugate[aaa,Conjugate->{aaa}]",
+	"Conjugate[aaa]"}
 };
