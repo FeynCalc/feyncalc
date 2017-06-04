@@ -89,5 +89,9 @@ FCJoinDOTs -> False] // FCE","m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1
 Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
 Momentum[p1, D], 0, 1] +
 Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[
-Momentum[p1, D], 0, 1]"}
+Momentum[p1, D], 0, 1]"},
+{"fcstDotSimplify-ID17","DotSimplify[GA[i, j1, k] + GA[i, j2, k], Expanding -> False,
+FCE -> True]","GA[i].(GA[j1] + GA[j2]).GA[k]"},
+{"fcstDotSimplify-ID18","DotSimplify[GA[i, j1, k] + GA[i, j2, k], Expanding -> False,
+FCJoinDOTs -> False, FCE -> True]","GA[i].GA[j1].GA[k] + GA[i].GA[j2].GA[k]"}
 }

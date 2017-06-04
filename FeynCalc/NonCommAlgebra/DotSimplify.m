@@ -73,7 +73,8 @@ Options[DotSimplify] = {
 	DotSimplifyRelations -> {},
 	DotPower -> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
 																									F.Orellana*)
-	FeynCalcInternal -> True,
+	FCI -> True,
+	FCE -> False,
 	MaxIterations -> 100,
 	PreservePropagatorStructures -> False
 };
@@ -291,7 +292,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			FCPrint[1, "DotSimplify: Done working out commutators and anti-commutators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators:", x, FCDoControl->dsVerbose];
 
-			If[	OptionValue[FCJoinDOTs],
+			If[	OptionValue[FCJoinDOTs] && !OptionValue[Expanding],
 				time=AbsoluteTime[];
 				FCPrint[1, "DotSimplify: Joining DOTs.", FCDoControl->dsVerbose];
 				x = x/.DOT-> holdDOT //. {holdDOT[a___, b1_, c___] + holdDOT[a___, b2_, c___] :> holdDOT[a, b1 + b2, c]};
@@ -416,6 +417,11 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		FCPrint[1, "DotSimplify: Leaving.", FCDoControl->dsVerbose];
 		FCPrint[3, "DotSimplify: Leaving with: ", x, FCDoControl->dsVerbose];
+
+		If[	OptionValue[FCE],
+			x = FCE[x]
+		];
+
 		x
 	];
 

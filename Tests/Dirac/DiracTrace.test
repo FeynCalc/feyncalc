@@ -109,6 +109,10 @@ DiracTraceEvaluate -> True]",
 "4 (KDD[i, l] KDD[j, k] - KDD[i, k] KDD[j, l] + KDD[i, j] KDD[k, l])"},
 {"fcstDiracTrace-ID39",
 "DiracTrace[CGA[i].GA[mu], DiracTraceEvaluate -> True]",
-"4 Pair[CartesianIndex[i], LorentzIndex[mu]]"}
+"4 Pair[CartesianIndex[i], LorentzIndex[mu]]"},
+{"fcstDiracTrace-ID40",
+"DiracTrace[GSD[q].GSD[p1] + GSD[q].GSD[p2], DiracTraceEvaluate -> True]",
+"4 (Pair[Momentum[p1, D], Momentum[q, D]] +
+Pair[Momentum[p2, D], Momentum[q, D]])"}
 }
 );

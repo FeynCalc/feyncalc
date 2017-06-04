@@ -275,7 +275,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 			time2=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Applying DiracTrick.", FCDoControl->diTrVerbose];
-			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace->True];
+			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace->True, FCJoinDOTs->False];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: DiracTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: After DiracTrick: ", tmp, FCDoControl->diTrVerbose];
 
