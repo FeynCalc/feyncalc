@@ -87,7 +87,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
 			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
-			renamingList,cList,indexExtract, seedCar, repIndexListCar, times},
+			renamingList,cList,indexExtract, seedCar, repIndexListCar, times, dimensions, rule},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -141,13 +141,22 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			tmp = tmp /. Power[z_, n_Integer?Positive]/;!FreeQ2[z, indhead] :> Apply[times, Table[z, {Abs[n]}]]^Sign[n]
 		];
 
-		indexList =
-				Map[Tally, Map[Cases[#, (Alternatives@@indhead)[ind_, ___]/;(Head[ind]=!=Upper &&
-						Head[ind]=!=Lower),
-						Infinity]&,Apply[List, tmp+null1+null2]]]// Flatten[#, 1] & // Union;
+		dimensions = FCGetDimensions[tmp,FCI->True];
+		FCPrint[3,"FCCanonicalizeDummyIndices: dimensions: ", dimensions, FCDoControl->canodummyVerbose];
 
-		FCPrint[2,"FCCanonicalizeDummyIndices: List of indices and their multiplicities: ", indexList,
-			FCDoControl->canodummyVerbose];
+		indexList = Map[
+			ReplaceAll[Cases[#, (Alternatives@@indhead)[ind_, ___]/;(Head[ind]=!=Upper && Head[ind]=!=Lower), Infinity],(h:(Alternatives@@indhead))[ind_, ___]:>h[ind]]&,
+		Apply[List, tmp+null1+null2]];
+
+		FCPrint[3,"FCCanonicalizeDummyIndices: Preliminary indexList: ", indexList, FCDoControl->canodummyVerbose];
+
+		indexList = Tally/@(indexList);
+
+		FCPrint[3,"FCCanonicalizeDummyIndices: Preliminary indexList after Tally: ", indexList, FCDoControl->canodummyVerbose];
+
+		indexList = indexList// Flatten[#, 1] & // Union;
+
+		FCPrint[2,"FCCanonicalizeDummyIndices: List of indices and their multiplicities: ", indexList, FCDoControl->canodummyVerbose];
 
 		If[ Select[indexList, ((#[[2]]) > 2) &]=!={},
 			Message[FCCanonicalizeDummyIndices::failmsg,"The input expression contains dummy indices that
@@ -156,6 +165,10 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		];
 
 		finalList = Cases[indexList, {ind_, 2} -> ind ];
+		finalList = finalList /. {(h:LorentzIndex|CartesianIndex)[x_] :> Map[h[x,#]&,dimensions]};
+		finalList = Flatten[finalList];
+
+		FCPrint[3,"FCCanonicalizeDummyIndices: finalList: ", finalList, FCDoControl->canodummyVerbose];
 
 		tmp  = FCLoopIsolate[tmp,finalList,Head->isoHead,Factoring->False,DotSimplify->OptionValue[DotSimplify]];
 
@@ -188,8 +201,18 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 					Abort[]
 			];
 
-			repIndexListLor = Map[Function[x, MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2, seedLor],
-					(#1 /.LorentzIndex[_, dim_: 4] :> dim)]] &,x]][#] &, indexExtract],
+			repIndexListLor = Map[Function[x, MapIndexed[Rule[#1, LorentzIndex[lihead@fu[#2, seedLor]]] &,x]][#] &,
+				DeleteDuplicates/@(indexExtract/. (LorentzIndex[aa_,_]:> LorentzIndex[aa]))
+			];
+
+			FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListLor: ", repIndexListLor, FCDoControl->canodummyVerbose];
+
+			repIndexListLor = repIndexListLor/. Rule -> rule /.
+				{rule[LorentzIndex[x_],LorentzIndex[y_]]:> Map[rule[LorentzIndex[x,#],LorentzIndex[y,#]]&,dimensions]} /. rule -> Rule;
+
+			repIndexListLor = DeleteDuplicates/@(Flatten/@repIndexListLor);
+
+			FCPrint[2,"FCCanonicalizeDummyIndices: repIndexListLor: ", repIndexListLor, FCDoControl->canodummyVerbose],
 
 			repIndexListLor=Sequence[];
 		];
@@ -214,8 +237,13 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 					Abort[]
 			];
 
-			repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CartesianIndex[cihead@fu[#2, seedCar],
-					(#1 /.CartesianIndex[_, dim_: 3] :> dim)]] &,x]][#] &, indexExtract];
+			repIndexListCar = Map[Function[x, MapIndexed[Rule[#1, CartesianIndex[cihead@fu[#2, seedCar]]] &,x]][#] &,
+				DeleteDuplicates/@(indexExtract/. (CartesianIndex[aa_,_]:> CartesianIndex[aa]))];
+
+			repIndexListCar = repIndexListCar/. Rule -> rule /.
+				{rule[CartesianIndex[x_],CartesianIndex[y_]]:> Map[rule[CartesianIndex[x,#],CartesianIndex[y,#]]&,dimensions]} /. rule -> Rule;
+
+			repIndexListCar = DeleteDuplicates/@(Flatten/@repIndexListCar);
 
 
 
@@ -240,6 +268,8 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			makeRepIndexList[SUNIndex,sunhead,Unique["sun"],fu,finalList,uniqueExpressions],
 			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions]
 		};
+
+
 		If [ repIndexListsCustom =!={},
 			repIndexListTotal = Join[repIndexListTotal,repIndexListsCustom];
 		];

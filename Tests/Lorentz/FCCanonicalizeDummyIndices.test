@@ -116,5 +116,11 @@ SUNT[a_].SUNT[a_].GA[i].(m + GS[p]).GA[i]]","True"},
 {"fcstFCCanonicalizeDummyIndices-ID20","MatchQ[FCCanonicalizeDummyIndices[
 SUNT[a, a].CGA[i].(CGS[p] + m).CGA[i], DotSimplify -> False,
 Head -> {SUNIndex}, FCE -> True],
-SUNT[a_].SUNT[a_].CGA[i].(m + CGS[p]).CGA[i]]","True"}
+SUNT[a_].SUNT[a_].CGA[i].(m + CGS[p]).CGA[i]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID21",
+"MatchQ[FCCanonicalizeDummyIndices[GAD[i].GAD[i] + GAD[i].GAE[i], FCE -> True],
+GAD[FCGV[a_]].GAD[FCGV[a_]] + GAD[FCGV[a_]].GAE[FCGV[a_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID22",
+"MatchQ[FCCanonicalizeDummyIndices[CGAD[i].CGAD[i] + CGAD[i].CGAE[i],
+FCE -> True], CGAD[FCGV[a_]].CGAD[FCGV[a_]] + CGAD[FCGV[a_]].CGAE[FCGV[a_]]]","True"}
 });
