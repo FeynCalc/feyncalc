@@ -71,9 +71,13 @@ Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Moment
 		1] (M^2 - ma^2 + SPD[p, p]) -
 	D Spinor[Momentum[p, D], M, 1].GSD[p].Spinor[Momentum[p, D], M,
 		1] (M^2 - ma^2 + SPD[p, p]))]//FCE",
-		"32 D M^2 FAD[{k1, M}, {k1 - p, ma}] + (1/SPD[p, p]) 16 (-2 + D) M^2 (FAD[{k1, M}] - FAD[{k1, ma}] -
-	M^2 FAD[{k1, M}, {k1 - p, ma}] + ma^2 FAD[{k1, M}, {k1 - p, ma}] -
-	FAD[{k1, M}, {k1 - p, ma}] SPD[p, p])"}
+		"32*M^2*FAD[{k1, M}, {k1 - p, ma}] + 16*D*M^2*FAD[{k1, M}, {k1 - p, ma}] -
+		(32*M^2*FAD[{k1, M}])/SPD[p, p] + (16*D*M^2*FAD[{k1, M}])/SPD[p, p] +
+		(32*M^2*FAD[{k1, ma}])/SPD[p, p] - (16*D*M^2*FAD[{k1, ma}])/SPD[p, p] +
+		(32*M^4*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p] -
+		(16*D*M^4*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p] -
+		(32*M^2*ma^2*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p] +
+		(16*D*M^2*ma^2*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p]"}
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {

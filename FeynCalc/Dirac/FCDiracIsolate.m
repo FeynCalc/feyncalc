@@ -186,7 +186,13 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			FCPrint[1, "FCDiracIsolate: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 		];
 
-		If [ !FreeQ[res/. head[__] :> 1, DiracHeadsList] & || !FreeQ[res,head[]],
+		If[ OptionValue[LorentzIndex],
+			tmp = Join[DiracHeadsList,{LorentzIndex}],
+			tmp = DiracHeadsList
+		];
+
+		(* For LorentzIndex set to true, this check guarantees that all Lorentz tensors are inside head *)
+		If [ !FreeQ2[res/. head[__] :> 1, tmp] & || !FreeQ[res,head[]],
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
 		];
