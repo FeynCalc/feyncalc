@@ -233,6 +233,27 @@ Begin["`Private`"];
 pal1::usage="";
 pal2::usage="";
 
+m1::usage="";
+m2::usage="";
+m3::usage="";
+m4::usage="";
+m5::usage="";
+hCayley::usage="";
+hCayleyD::usage="";
+cD::usage="";
+cu::usage="";
+setd::usage="";
+notnecessaryf::usage="";
+gamma::usage="";
+test::usage="";
+ia::usage="";
+ib::usage="";
+ir::usage="";
+es::usage="";
+top::usage="";
+set::usage="";
+factor::usage="";
+
 $TarcerVersion = "2.0";
 Expand3 = Identity;
 $RankLimit = {0, 6};
@@ -422,11 +443,6 @@ TAI /:
 		InterpretationBox @@ {SubsuperscriptBox[StyleBox["A", SingleLetterItalics -> False, FontWeight -> "Bold"], RowBox @@ {(redblue /@ {den})},
 		RowBox[{"(", ToBoxes[d, TraditionalForm], ")"}]], TAI[d, {den}], Editable -> True}
 		) /; MemberQ[{StandardForm, TraditionalForm}, fmt];
-
-{	TAI[d, {\[Alpha]}],
-	TAI[d, {\[Alpha] + 1}],
-	TAI[d, {\[Alpha] - 1}]
-};
 
 TFIC /:
 	MakeBoxes[TFIC[d_, pp_, {0, 0, i_, 0, 0}, {den__}], fmt_] :=
@@ -745,7 +761,7 @@ TarasovT[abrs__, qq_ /; Head[qq] =!= List] :=
 	TarasovT[abrs, qq, {"g", "g", "g", "g", "g"}]
 
 TarasovT[r_, s_, qq_, {alp1_, alp2_, alp3_, alp4_, alp5_}] :=
-	Block[{ al1, al2, al3, al4, al5, alrul, new, Q1, Q11, Q12, Q2, Q22, dum1, dum2, be1, be2, ga1, ga2, dp, rho},
+	Block[{ al1, al2, al3, al4, al5, alrul, new, Q1, Q11, Q12, Q2, Q22, dum1, dum2, be1, be2, ga1, ga2, rho},
 
 		If[	alp1 === 0,
 			al1 = 0
@@ -1117,7 +1133,7 @@ setd[hCayleyD[3, 4, 5][{m1_, m2_, m3_, m4_, m5_, p_}],
 	factor[(ToArgs[Subscript[\[CapitalDelta], 3, 4, 5]] /. PP -> p^2)/\[ScriptCapitalC][m1, m2, m3, m4, m5, p]]]
 ] /. {hCayleyD :> CayleyD, setd :> SetDelayed, set :> Set, factor :> Factor, \[ScriptCapitalC] :> Cayley};
 
-nutonand\[CapitalDelta]u[w_, 5] :=
+nutonandDelta[w_, 5] :=
 	w /. {
 		Subscript[\[Nu], 1] :> n1,
 		Subscript[\[Nu], 2] :> n2,
@@ -1146,7 +1162,7 @@ nutonand\[CapitalDelta]u[w_, 5] :=
 		Subscript[m, 5] :> m5
 	};
 
-nutonand\[CapitalDelta]u[w_] :=
+nutonandDelta[w_] :=
 	w /. {
 		Subscript[\[Nu], 1] :> n1,
 		Subscript[\[Nu], 2] :> n2,
@@ -1242,7 +1258,7 @@ SetAttributes[IFF, HoldAll];
 Clear[MakeFun];
 
 MakeFun[(c_.) TFI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
-	Block[{nm},
+	Block[{nm, nmrel, setdel, pat, blank, pattern, patternTest, identitL},
 		nmrel = Select[Flatten[{mrel}], FreeQ[#1, Factor] & ];
 		HoldForm @@ {setdel[
 			addPeP[TFR @@ top /@ nutomass[{t}]] /. nmrel,
@@ -1250,12 +1266,12 @@ MakeFun[(c_.) TFI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
 				Hold[TComment][eqn, addPeP[nutomass[TFR[t]]] /.
 				TFR -> TFIC /. {Pattern :> pat, Blank :> blank} /. pat[PP, blank[]] :> PP /. nmrel],
 
-				Collect[ TT = Expand3[nutonand\[CapitalDelta]u[(1/c) (rhs /. TFI[te__] :> addPeP[nutomass[TFI[te]]]), 5]],
+				Collect[ TT = Expand3[nutonandDelta[(1/c) (rhs /. TFI[te__] :> addPeP[nutomass[TFI[te]]]), 5]],
 				TFI[__], maybeF[(Collect[Numerator[#1], cD[__], Factor]/Collect[Denominator[#1], cD[__], Factor] & ) /@
 				Factor[#1]] & ] /. nmrel
 			],
 
-			nutonand\[CapitalDelta]u[IFF[conds], 5]]] /. top[i_Integer] -> i /. top :> (patternTest[pattern[#1, blank[]], PQ] & ) /.
+			nutonandDelta[IFF[conds], 5]]] /. top[i_Integer] -> i /. top :> (patternTest[pattern[#1, blank[]], PQ] & ) /.
 			patternTest[pattern[dm_ /; MemberQ[{d, PP, DP, m1, m2, m3, m4, m5}, dm], blank[]], _] :>
 				pattern[dm, blank[]] /. {blank :> Blank, pattern :> Pattern, patternTest :> PatternTest}} /.
 			cD[ijk__] -> Hold[CayleyD[ijk]][addPeP[BLA = nutomass[Last[{t}]] /. nmrel /. {_, ma_} :> ma]] /.
@@ -1265,7 +1281,7 @@ MakeFun[(c_.) TFI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
 	];
 
 MakeFun[(c_.) TFI[t__] == (rhs_), eqn_String, mrel_: {}] :=
-		Block[{nm},
+		Block[{nm, nmrel, setdel, pat, blank, pattern, patternTest, identit},
 			nmrel = Select[Flatten[{mrel}], FreeQ[#1, Factor] & ];
 
 			HoldForm @@ {setdel[
@@ -1273,7 +1289,7 @@ MakeFun[(c_.) TFI[t__] == (rhs_), eqn_String, mrel_: {}] :=
 
 				Hold[CompoundExpression][Hold[TComment][eqn, addPeP[nutomass[TFR[t]]] /. TFR -> TFIC /. {Pattern :> pat, Blank :> blank} /.
 				pat[PP, blank[]] :> PP /. nmrel],
-				Collect[TT = Expand3[nutonand\[CapitalDelta]u[(1/c)*(rhs /. TFI[te__] :> addPeP[nutomass[TFI[te]]])]], TFI[__],
+				Collect[TT = Expand3[nutonandDelta[(1/c)*(rhs /. TFI[te__] :> addPeP[nutomass[TFI[te]]])]], TFI[__],
 				maybeF[(Collect[Numerator[#1], cD[__], Factor] / Collect[Denominator[#1], cD[__], Factor] & ) /@ Factor[#1]] & ] /. nmrel]
 			] /. top[i_Integer] -> i /. top :> (patternTest[pattern[#1, blank[]], PQ] & ) /.
 			patternTest[ pattern[dm_ /; MemberQ[{d, PP, DP, m1, m2, m3, m4, m5}, dm], blank[]], _] :> pattern[dm, blank[]] /.
@@ -1285,7 +1301,7 @@ MakeFun[(c_.) TFI[t__] == (rhs_), eqn_String, mrel_: {}] :=
 		] /; Head[mrel] =!= IFF;
 
 MakeFun[(c_.) TVI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
-	Block[{nm},
+	Block[{nm, nmrel, setdel, pat, blank, pattern, patternTest, identit},
 			nmrel =
 				Select[Flatten[{mrel}], FreeQ[#1, Factor] & ];
 
@@ -1304,9 +1320,9 @@ MakeFun[(c_.) TVI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
 				Hold[Condition][Hold[CompoundExpression][Hold[TComment][eqn, addPeP[nutomass[TVR[t]]] /.
 					TVR -> TVIC /. {Pattern :> pat, Blank :> blank} /. pat[PP, blank[]] :> PP /. nmrel],
 
-					Collect[TT = Expand3[nutonand\[CapitalDelta]u[(1/c) (rhs /. TVI[te__] :> addPeP[nutomass[TVI[te]]])]],
+					Collect[TT = Expand3[nutonandDelta[(1/c) (rhs /. TVI[te__] :> addPeP[nutomass[TVI[te]]])]],
 						TVI[__], maybeF[(Collect[Numerator[#1], cu[__], Factor]/ Collect[Denominator[#1], cu[__], Factor] & ) /@
-						Factor[#1]] & ] /. \[ScriptCapitalC] -> 1 /. nmrel], nutonand\[CapitalDelta]u[IFF[conds]]]
+						Factor[#1]] & ] /. \[ScriptCapitalC] -> 1 /. nmrel], nutonandDelta[IFF[conds]]]
 			] /.
 				top[i_Integer] -> i /. top :> (patternTest[pattern[#1, blank[]], PQ] & ) /.
 				patternTest[pattern[dm_ /; MemberQ[{d, PP, m1, m2, m3, m4}, dm], blank[]], _] :>
@@ -1320,7 +1336,7 @@ MakeFun[(c_.) TVI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
 	];
 
 MakeFun[(c_.) TVI[t__] == (rhs_), eqn_String, mrel_: {}] :=
-		Block[{nm},
+		Block[{nm, nmrel, setdel, pat, blank, pattern, patternTest},
 			nmrel = Select[Flatten[{mrel}], FreeQ[#1, Factor] & ];
 
 			nmrel = Join[nmrel, {
@@ -1336,7 +1352,7 @@ MakeFun[(c_.) TVI[t__] == (rhs_), eqn_String, mrel_: {}] :=
 				Hold[CompoundExpression][Hold[TComment][eqn, addPeP[nutomass[TVR[t]]] /.
 					TVR -> TVIC /. {Pattern :> pat, Blank :> blank} /. pat[PP, blank[]] :> PP /. nmrel],
 
-					Collect[TT = Expand3[nutonand\[CapitalDelta]u[(1/c)*(rhs /. TVI[te__] :> addPeP[nutomass[TVI[te]]])]],
+					Collect[TT = Expand3[nutonandDelta[(1/c)*(rhs /. TVI[te__] :> addPeP[nutomass[TVI[te]]])]],
 						TVI[__], maybeF[(Collect[Numerator[#1], cu[__], Factor]/ Collect[Denominator[#1], cu[__], Factor] & ) /@
 						Factor[#1]] & ] /. nmrel /. \[ScriptCapitalC] -> 1]
 			] /.
@@ -1351,7 +1367,7 @@ MakeFun[(c_.) TVI[t__] == (rhs_), eqn_String, mrel_: {}] :=
 		] /; Head[mrel] =!= IFF;
 
 MakeFun[(c_.) TJI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
-	Block[{nm, nmrel, result},
+	Block[{nm, nmrel, result, setdel, pat, blank, pattern, patternTest, tT},
 
 		\[ScriptCapitalC] = 1;
 
@@ -1373,9 +1389,9 @@ MakeFun[(c_.) TJI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
 
 				Hold[Condition][Hold[CompoundExpression][Hold[TComment][eqn, addPeP[nutomass[TJR[t]]] /. TJR -> TJIC /.
 				{Pattern :> pat, Blank :> blank} /. pat[PP, blank[]] :> PP /. nmrel],
-				TJ = Collect[ TT = Expand3[nutonand\[CapitalDelta]u[(1/c) (rhs /. TJI[te__] :> addPeP[nutomass[TJI[te]]])]], TJI[__],
+				TJ = Collect[ TT = Expand3[nutonandDelta[(1/c) (rhs /. TJI[te__] :> addPeP[nutomass[TJI[te]]])]], TJI[__],
 				maybeF[(Collect[Numerator[#1], cu[__], Factor]/Collect[Denominator[#1], cu[__], Factor] & ) /@ Factor[#1]] & ] /.
-				\[ScriptCapitalC] -> 1 /. nmrel], nutonand\[CapitalDelta]u[IFF[conds]]]
+				\[ScriptCapitalC] -> 1 /. nmrel], nutonandDelta[IFF[conds]]]
 			] /.
 				top[i_Integer] -> i /. top :> (patternTest[pattern[#1, blank[]], PQ] & ) /.
 				patternTest[pattern[dm_ /; MemberQ[{d, PP, m1, m2, m3, m4}, dm], blank[]], _] :>
@@ -1404,7 +1420,7 @@ MakeFun[(c_.) TAI[t__] == (rhs_), eqn_String, IFF[conds_], mrel_: {}] :=
 	MakeFun[c TJI[t] == rhs /. TAI -> TJI, eqn, IFF[conds], mrel] /. {TJI :> TAI, TJR :> TAR, TJIC :> TAIC};
 
 Interchange[z_, (i_) \[LeftRightArrow] (j_)] :=
-	\[Nu]explicit[z] /. {
+	nuExplicit[z] /. {
 
 		Subscript[\[Nu], i] :> Subscript[\[Nu], j],
 		Subscript[\[Nu], j] :> Subscript[\[Nu], i],
@@ -1435,7 +1451,7 @@ Interchange[z_, {(i_) \[LeftRightArrow] (j_), vw__}] :=
 	Interchange[Interchange[z, i \[LeftRightArrow] j], vw];
 
 
-\[Nu]explicit[z_] :=
+nuExplicit[z_] :=
 	z /.
 		Subscript[\[CapitalSigma], i_] :>
 			Expand[3*d - 2 - 2*Sum[Subscript[\[Nu], j], {j, 1, i}]] /. {
@@ -1503,7 +1519,7 @@ ta[\[Sigma], d_, i_Integer, j_Integer, k_Integer, \[Nu]i_Integer, \[Nu]j_Integer
 
 ta[h, d_, i_Integer, j_Integer, k_Integer, \[Nu]i_Integer, \[Nu]j_Integer, \[Nu]k_Integer][{em__}] :=
 	With[
-		{q = Last[{em}], mi = {em}[[i]], mj = {em}[[j]], mk = {em}[[k]]},
+		{mk = {em}[[k]]},
 
 		Factor[
 			(-(1/2))*(d - 2*\[Nu]j - \[Nu]k)*mk^2*
@@ -1514,7 +1530,7 @@ ta[h, d_, i_Integer, j_Integer, k_Integer, \[Nu]i_Integer, \[Nu]j_Integer, \[Nu]
 
 ta[S, d_, i_Integer, j_Integer, k_Integer, \[Nu]i_Integer, \[Nu]j_Integer, \[Nu]k_Integer][{em__}] :=
 	With[
-		{q = Last[{em}], mi = {em}[[i]], mj = {em}[[j]], mk = {em}[[k]]},
+		{mj = {em}[[j]], mk = {em}[[k]]},
 
 		Factor[
 			(-(d - 2*\[Nu]j - \[Nu]k))*mk^2* TA[\[Phi], j, i, k][{em}] - (d - \[Nu]j - 2*\[Nu]k)*mj^2*
@@ -1539,7 +1555,7 @@ TVIPsi[d_, {{n1_, s1_}, {n2_, s2_}, {n3_, s3_}, {n4_, s4_}}] :=
 CheckTVIRecursion[expr_] :=
 	If[	$CheckRecursion === True,
 
-		Block[{rel, kern, nkern},
+		Block[{rel, kern, nkern, z1, z2, z3, z4},
 			rel = Extract[expr /. TVIC -> TVIkernel, {1, 2, 1, 1, 2}] -
 			Extract[expr /. TVI -> TVIkernel, {1, 2, 1, 2}];
 
@@ -1554,7 +1570,7 @@ CheckTVIRecursion[expr_] :=
 				s1 -> s1 - w1, s2 -> s2 - w2, s3 -> s3 - w3, s4 -> s4 - w4})};
 
 			kern = kern /. TVIpsi -> TVIPsi /. {gamma[zz_] :> gamma[Expand[zz]]} /. {gamma[(zz_) + (nn_Integer)] :>
-				gamma[zz] Pochhammer[zz, nn]}; KERN = kern;
+				gamma[zz] Pochhammer[zz, nn]};
 
 			kern = kern /. {gamma[_] :> 1};
 
@@ -1580,7 +1596,7 @@ Clear[CheckTJIRecursion];
 
 CheckTJIRecursion[expr_] :=
 	If[$CheckRecursion === True,
-		Block[	{rel, kern, nkern},
+		Block[	{rel, kern, nkern, z1, z2, z3},
 			rel = Extract[expr /. TJIC -> TJIkernel, {1, 2, 1, 1, 2}] - Extract[expr /. TJI -> TJIkernel, {1, 2, 1, 2}];
 			REL = rel;
 		If[{TJIkernel} === Union[Head /@ Cases[rel, (ff_)[__] /; Context[ff] =!= "System`", 4]],
@@ -1591,7 +1607,6 @@ CheckTJIRecursion[expr_] :=
 			kern = Expand[kern];
 			kern = kern /. {z1^(s1 + (w1_.)) z2^(s2 + (w2_.))*z3^(s3 + (w3_.)) (fac_) :> (fac /. {s1 -> s1 - w1, s2 -> s2 - w2, s3 -> s3 - w3})};
 			kern = kern /. TJIpsi -> TJIPsi /. {gamma[zz_] :> gamma[Expand[zz]]} /. {gamma[(zz_) + (nn_Integer)] :> gamma[zz] Pochhammer[zz, nn]};
-			KERN = kern;
 			kern = kern /. {gamma[_] :> 1};
 			kern = kern /. {(-1)^((_) + (ww_Integer)) :> (-1)^ww} /. {(-1)^(_) :> 1};
 			nkern = Table[ kern /. Thread[{d, n1, n2, n3, s1, s2, s3} -> Table[Random[], {7}]], {3}];
@@ -1740,7 +1755,7 @@ Subscript[s, 45] =
 	OperatorApplyF[Subscript[e, 45]];
 
 Subscript[f, 43] =
-MakeFun[Subscript[s, 43], "(43)", IFF[Subscript[\[Nu], 1] + Subscript[\[Nu], 3] + 2*Subscript[\[Nu], 5] - (d /. dd_Symbol :> 4) =!= 0],
+MakeFun[Subscript[s, 43], "(43)", IFF[Subscript[\[Nu], 1] + Subscript[\[Nu], 3] + 2*Subscript[\[Nu], 5] - (d /. _Symbol :> 4) =!= 0],
 	{m5 :> 0, m4 :> m3, m2 :> m1}];
 
 Subscript[f, 44] =
@@ -1751,293 +1766,339 @@ Subscript[f, 50] =
 	(
 	TComment["(50)", TFIC[d, PP, {{n1, m1}, {n2, m2}, {n3, m3}, {n4, m4}, {n5, m5}}]];
 	Block[{
-		r1 = 3 - d,
-		r2 = 4 - d,
+
+		r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15,
+		r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29,
+		r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r40, r41, r42, r43,
+		r44, r45, r46, r47, r48, r49, r50, r51, r52, r53, r54, r55, r56, r57,
+		r58, r59, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r70, r71,
+		r72, r73, r74, r75, r76, r77, r78, r79, r80, r81, r82, r83, r84, r85,
+		r86, r87, r88, r89, r90, r91, r92, r93, r94, r95, r96, r97, r98, r99,
+		r100, r101, r102, r103, r104, r105, r106, r107, r108, r109, r110,
+		r111, r112, r113, r114, r115, r116, r117, r118, r119, r120, r121,
+		r122, r123, r124, r125, r126, r127, r128, r129, r130, r131, r132,
+		r133, r134, r135, r136, r137, r138, r139, r140, r141, r142, r143,
+		r144, r145, r146, r147, r148, r149, r150, r151, r152, r153, r154,
+		r155, r156, r157, r158, r159, r160, r161, r162, r163, r164, r165,
+		r166, r167, r168, r169, r170, r171, r172, r173, r174, r175, r176,
+		r177, r178, r179, r180, r181, r182, r183, r184, r185, r186, r187,
+		r188, r189, r190, r191, r192, r193, r194, r195, r196, r197, r198,
+		r199, r200, r201, r202, r203, r204, r205, r206, r207, r208, r209,
+		r210, r211, r212, r213, r214, r215, r216, r217, r218, r219, r220,
+		r221, r222, r223, r224, r225, r226, r227, r228, r229, r230, r231,
+		r232, r233, r234, r235, r236, r237, r238, r239, r240, r241, r242,
+		r243, r244, r245, r246, r247, r248, r249, r250, r251, r252, r253,
+		r254, r255, r256, r257, r258, r259, r260, r261, r262, r263, r264,
+		r265, r266, r267, r268, r269, r270, r271, r272, r273, r274, r275,
+		r276, r277, r278, r279, r280, r281, r282, r283, r284, r285, r286,
+		r287, r288, r289, r290, r291, r292, r293, r294, r295, r296, r297,
+		r298, r299, r300, r301, r302, r303, r304, r305, r306},
+
+
+		r1 = 3 - d;
+		r2 = 4 - d;
 		r3 = -(m1^2*m2^2*m3^2) + m2^4*m3^2 + m2^2*m3^4 + m1^4*m4^2 - m1^2*m2^2*m4^2 - m1^2*m3^2*m4^2 - m2^2*m3^2*m4^2 +
 				m1^2*m4^4 + m1^2*m2^2*m5^2 - m2^2*m3^2*m5^2 - m1^2*m4^2*m5^2 + m3^2*m4^2*m5^2 + m1^2*m3^2*PP -
 				m2^2*m3^2*PP - m1^2*m4^2*PP + m2^2*m4^2*PP - m1^2*m5^2*PP - m2^2*m5^2*PP - m3^2*m5^2*PP - m4^2*m5^2*PP + m5^4*PP +
-				m5^2*PP^2,
-		r4 = -4 + d,
-		r5 = -3 + d,
-		r6 = -7 + 2*d,
-				r7 = -(m2^2*r4) + m3^2*r5 - m5^2*r5 + m4^2*r6,
-				r8 = -10 + 3*d,
-				r9 = -m3^2 + m4^2,
-				r10 = -11 + 3*d,
-				r11 = -(m4^2*r10) - 3*m5^2*r5 + m3^2*r6,
-				r12 = m2^2*r11 + m5^4*r5 + m2^4*r8 + m4^2*r4*r9 + m5^2*r5*r9,
-				r13 = -6 + d,
-				r14 = -(m4^2*r13) + m5^2*r5,
-				r15 = -3*m3^2 - m4^2*r10 + m5^2*r5,
-				r16 = m3^2*r14 + m2^2*r15 + m2^4*r4 - 2*m3^4*r5 - 3*m4^2*m5^2*r5 + m5^4*r5 + m4^4*r8,
-				r17 = m3^2 + 2*m4^2,
-				r18 = -1 + d,
-				r19 = -(m3^2*r13) - 2*m4^2*r18 + 2*m5^2*r5,
-				r20 = 2*m2^4 - 3*m3^4 + d*m3^4 - 3*m3^2*m4^2 + 2*m4^4 + m2^2*r19 - 2*m5^4*r5 + m5^2*r17*r5,
-				r21 = 2 + d,
-				r22 = 2*m5^2 - m4^2*r21 + m2^2*r4 - m3^2*r4, r23 = -7 + d,
-				r24 = 6*m4^2 - 4*m5^2,
-				r25 = 3*m3^2 + m4^2*r18 + m5^2*r23,
-				r26 = -6*m4^4 - 2*m4^2*m5^2*r23 + m3^2*r24 + 2*m2^2*r25 - 2*m2^4*r4 - m3^4*r4,
-				r27 = m3^4 + m3^2*m4^2 - 2*m4^4,
-				r28 = m3^2 + m4^2*r23,
-				r29 = -2*m4^2*r18 + m3^2*r21 + 2*m5^2*r23,
-				r30 = -6*m2^4 + 2*m5^2*r28 - m2^2*r29 + r27*r4,
-				r31 = m1^4*r22 + m1^2*r26 + m3^2*r30 + m1^6*r4,
-				r32 = m3 - m4,
-				r33 = m3 + m4,
-				r34 = 2*m3^2 + m4^2,
-				r35 = -17 + 3*d, r36 = m3^2*r23 + m4^2*r35,
-				r37 = -9 + d,
-				r38 = 17 - 3*d,
-				r39 = 5*m3^2 + m4^2*r37 + m5^2*r38,
-				r40 = 1 + d,
-				r41 = 5*m4^2 - m5^2*r23 + m2^2*r4 - m3^2*r40,
-				r42 = m5^4*r35 - m5^2*r36 + m2^2*r39 - 2*m1^4*r4 + m2^4*r4 - r32*r33*r34*r4 + m1^2*r41,
-				r43 = m1^2 - m2^2 + m3^2 - m4^2,
-				r44 = 2*m5^2*r13 + r4*r43,
-				r45 = m3^4*r12 + m1^4*r16 + m1^2*m3^2*r20 + PP*r31 + PP^2*r42 + PP^3*r44 + m1^6*r7, r46 = m2^2 + m4^2,
-				r47 = 13 - 3*d,
-				r48 = m4^2*r47 - m5^2*r5 + m3^2*r6,
-				r49 = m5^4*r5 + m5^2*r32*r33*r5 + m4^2*r4*r9,
-				r50 = -18 + 4*d,
-				r51 = -(m4^2*r13) - 3*m5^2*r5,
-				r52 = 2*m3^4*r5 + m4^2*m5^2*r5 + m5^4*r5 + m4^4*r50 + m3^2*r51,
-				r53 = -3*m4^2 + 2*m5^2*r5,
-				r54 = m4^4*r47 + 2*m3^4*r5 + m4^2*m5^2*r5 - 2*m5^4*r5 + m3^2*r53,
-				r55 = m4^2*r13 + 6*m3^2*r5 - 2*m5^2*r5,
-				r56 = 3*m4^2 + m3^2*r5 - m5^2*r5,
-				r57 = 7 - 2*d,
-				r58 = m3^2*r5 + 3*m5^2*r5 + m4^2*r57,
-				r59 = m2^6*r4 + m2^2*m4^2*r55 + m2^4*r56 + m4^4*r58,
-				r60 = m4^2 - m3^2*r5, r61 = 10 - 3*d,
-				r62 = 2*m5^2 + 3*m4^2*r4 + m3^2*r61,
-				r63 = m4^2 + m5^2*r5,
-				r64 = -4*m4^2*m5^2 + 3*m4^4*r4 - 2*m3^4*r5 + 2*m3^2*r63,
-				r65 = m4^2 + m3^2*r5 - m5^2*r5,
-				r66 = 2*m3^2*r5 + 2*m5^2*r5 + m4^2*r61,
-				r67 = 3*m2^4*r4 + 2*m2^2*r65 + m4^2*r66,
-				r68 = -3*m2^6*r4 - 2*m1^4*m4^2*r5 + 2*m4^2*m5^2*r60 + m2^4*r62 + m2^2*r64 + m1^2*r67 - 3*m4^4*r4*r9,
-				r69 = -13 + 3*d, r70 = m3^2*r5 + m4^2*r69,
-				r71 = m4^2 - 3*m2^2*r4 - m3^2*r5 + m5^2*r5,
-				r72 = -5 + d, r73 = m3^2 + m5^2*r69 + m4^2*r72,
-				r74 = 3*m2^4*r4 - m5^4*r5 + m5^2*r70 + m1^2*r71 + m2^2*r73 + 3*m4^2*r4*r9, r75 = m1^2 - m2^2 + m3^2 - m4^2 - 2*m5^2,
-				r76 = m2^8*r4 + m2^6*r48 + m4^4*r49 + 2*m1^4*m4^2*r46*r5 + m2^4*r52 + m2^2*m4^2*r54 - m1^2*r59 + PP*r68 + PP^2*r74 + PP^3*r4*r75,
-				r77 = m3^2 - m4^2 + m5^2,
-				r78 = -2*m2^2 + m4^2 + m5^2,
-				r79 = -2*m1^2 - m3^2 - m4^2 + m5^2,
-				r80 = m1^4 + PP^2 - m1^2*r77 + m3^2*r78 + PP*r79,
-				r81 = m3^2 + m4^2, r82 = m3^2 + m4^2 + m5^2,
-				r83 = m1^2 + m3^2 - m5^2,
-				r84 = m1^4 + 2*m3^2*m4^2 - m4^4 + PP^2 - m2^2*r77 + m5^2*r81 - m1^2*r82 - 2*PP*r83,
-				r85 = m1 - m3,
-				r86 = -PP + r85^2, r87 = m1 + m3,
-				r88 = -PP + r87^2,
-				r89 = m2 - m4,
-				r90 = m2 + m4,
-				r91 = -m1^2 - m2^2 - m3^2 - m4^2 + 2*m5^2,
-				r92 = PP^2 + r85*r87*r89*r90 + PP*r91,
-				r93 = m2^2 - 3*m4^2,
-				r94 = m4 - m5,
-				r95 = m4 + m5,
-				r96 = 2*m3^2 - m4^2 + m5^2,
-				r97 = -m1^2 - m2^2 - 2*m3^2 + 3*m5^2,
-				r98 = PP^2 + m1^2*r93 + m2^2*r94*r95 + m4^2*r96 + PP*r97,
-				r99 = -2 + d,
-				r100 = -m1^2 + m2^2,
-				r101 = m2^2 + m1^2*r72,
-				r102 = m3^2*r101 - 2*m3^4*r4 + m2^2*r100*r4,
-				r103 = 9 - 2*d, r104 = m2^2*r23 + m3^2*r72,
-				r105 = 2*m1^4 + m2^4*r103 + m1^2*r104 + m2^2*m3^2*r5,
-				r106 = -9 + 2*d,
-				r107 = m1 - m2,
-				r108 = m1 + m2,
-				r109 = -(r106*r107*r108) + m3^2*r4,
-				r110 = m2^2*r102 + m4^2*r105 + m4^4*r109 - m4^6*r4,
-				r111 = m1^2 + m2^2, r112 = m2^2*r4 - 2*m1^2*r72,
-				r113 = -19 + 5*d,
-				r114 = m3^2*r112 + m3^4*r113 + m2^2*r111*r4,
-				r115 = m3^2*r5 + m2^2*r6,
-				r116 = 2*m1^4 + 2*m1^2*r115 + m2^4*r13 + m3^4*r72 - 2*m2^2*m3^2*r99,
-				r117 = m2^2*r106 + m3^2*r4 - m1^2*r99,
-				r118 = m2^2*r114 - m4^2*r116 + m4^4*r117 - m4^6*r6,
-				r119 = -(m2^2*r5) + 2*m3^2*r57 + m1^2*r72,
-				r120 = m1^2*r18 + 2*m3^2*r4 - m2^2*r5,
-				r121 = m2^2*r119 + m4^2*r120 + 2*m4^4*r5,
-				r122 = m3^2*r5 + m4^2*r72,
-				r123 = -2*m2^2*r4 - m4^2*r69 + m3^2*r72,
-				r124 = m2^2*r122 + m1^2*r123 + 2*m2^4*r4 + 2*m4^2*r32*r33*r4,
-				r125 = -3*m4^2 + m2^2*r4 - m3^2*r72,
-				r126 = m3^2 - m4^2*r72,
-				r127 = -2*m3^2*m4^2 - 2*m1^2*r125 - 2*m2^2*r126 + m4^4*r18 - 4*m2^4*r4 + m3^4*r72,
-				r128 = -(m2^2*r18) + 2*m4^2*r5 + m1^2*r72 + 2*m3^2*r72,
-				r129 = m5^2*r127 - m5^4*r128 - r124*r32*r33 + m5^6*r72,
-				r130 = -m1^2 + m2^2 + m3^2 - m4^2,
-				r131 = -14 + 3*d,
-				r132 = -(m3^2*r13) + m4^2*r131 + m1^2*r4 + 5*m2^2*r4,
-				r133 = -2*m5^4 + m5^2*r132 + r130*r32*r33*r4,
-				r134 = m5^2*r118 + m5^4*r121 + PP*r129 + PP^2*r133 + r110*r32*r33 - 2*m5^2*PP^3*r4 + m5^6*r5*r89*r90,
-				r135 = m3 - m4 - m5, r136 = m3 + m4 - m5,
-				r137 = m3 - m4 + m5, r138 = m3 + m4 + m5,
-				r139 = -10 + d,
-				r140 = 13 - 2*d,
-				r141 = d*m4^2 + 2*m3^2*r5,
-				r142 = -8 + d,
-				r143 = m4^2*r142 - m3^2*r99 + m5^2*r99,
-				r144 = m3^2*m4^2*r139 + m4^4*r140 - m5^2*r141 + m2^2*r143 + m3^4*r5 + m5^4*r5,
-				r145 = 3*m3^4 - 12*m3^2*m4^2 + 7*m4^4,
-				r146 = 3*m3^2 + 4*m4^2, r147 = m3^2 - 11*m4^2,
-				r148 = 7*m3^4 + 10*m3^2*m4^2 - 17*m4^4 - 5*m5^4 - 2*m5^2*r147, r149 = m2^2 + 2*m3^2 + m4^2,
-				r150 = -m2^4 + m2^2*m3^2 + m3^4 + 3*m2^2*m4^2 + m3^2*m4^2 - m4^4 + m5^4 - m5^2*r149,
-				r151 = 3*m3^6 + 6*m3^4*m4^2 - 17*m3^2*m4^4 + 8*m4^6 + 3*m5^6 - m5^2*r145 - m5^4*r146 + m2^2*r148 - d*r150*r77 + 6*m2^4*r94*r95,
-				r152 = -(m3^2*m4) + m4^3,
-				r153 = 11 - 2*d,
-				r154 = -(d*m3^2*m4^2) + m4^4*r153 + m3^4*r5,
-				r155 = m4^2 + m3^2*r5,
-				r156 = r142*r32*r33 + m5^2*r99,
-				r157 = 11 - 3*d,
-				r158 = -8 + 3*d,
-				r159 = m5^2*r158 + m4^2*r21,
-				r160 = -3*m3^4 + 2*m4^2*m5^2*r106 + m5^4*r157 + m3^2*r159 - m4^4*r18,
-				r161 = -2*m2^6 + m5^2*r154 - 2*m5^4*r155 + m2^4*r156 + m2^2*r160 + r152^2*r4 + m5^6*r5,
-				r162 = m4^2*r23 - 3*m3^2*r72,
-				r163 = -4*m2^2 + m4^2*r18 + m3^2*r23,
-				r164 = -m3^4 + m4^4,
-				r165 = -(m2^4*r13) + m2^2*r162 + m1^2*r163 + r164*r4 + m1^4*r99,
-				r166 = -19 + 4*d,
-				r167 = m4^2 + m3^2*r72,
-				r168 = m3^2 + m4^2*r69,
-				r169 = -2*r168 + 4*m2^2*r4,
-				r170 = -m3^4 + m2^4*r13 - m4^4*r166 + 2*m2^2*r167 + m1^2*r169 + 2*m3^2*m4^2*r72 + m1^4*r99,
-				r171 = m1^2 - m2^2 + 4*m4^2,
-				r172 = -(m5^2*r170) + r165*r32*r33 + m5^6*r72 - m5^4*r171*r72,
-				r173 = m2^2 + m3^2,
-				r174 = -(m4^2*r13) + r131*r173 + m1^2*r8,
-				r175 = m5^2*r174 - 2*m5^4*r4 + r130*r32*r33*r4,
-				r176 = 2*m1^6*m4^2 + m1^4*r144 + m1^2*r151 + m3^2*r161 + PP*r172 + PP^2*r175 - 2*m5^2*PP^3*r4,
-				r177 = m3^2 + m4^2 - m5^2,
-				r178 = -2*m1^2 + m3^2 - m4^2 + m5^2,
-				r179 = -m3^2 + m4^2 + m5^2,
-				r180 = m2^2*r177 + m4^2*r178 + PP*r179,
-				r181 = -2*m2^2 - m3^2 + m4^2 + m5^2,
-				r182 = m1^2*r177 + m3^2*r181 + PP*r77,
-				r183 = -(m2^2*r13) - 2*m3^2*r5,
-				r184 = m1^2*r183 - 2*m3^4*r4 + m2^4*r57 + m1^4*r72 - m2^2*m3^2*r99, r185 = 3*m2^2*r4 + m3^2*r72,
-				r186 = m2^4*r106 + 2*m1^2*r185 + m1^4*r40 - 2*m2^2*m3^2*r6,
-				r187 = r111*r13 - m3^2*r4,
-				r188 = m2^2*r184 + m4^2*r186 - m4^4*r187 + m4^6*r4,
-				r189 = 2*m1^2 + m3^2*r10 + 2*m2^2*r5,
-				r190 = m2^2*r5 + m3^2*r72 + 2*m1^2*r99,
-				r191 = m2^2*r189 - m4^2*r190 - m4^4*r5,
-				r192 = -(m3^2*r5) - m4^2*r72,
-				r193 = 2*m2^2*r4 + m4^2*r69 - m3^2*r72,
-				r194 = m2^2*r192 + m1^2*r193 - 2*m2^4*r4 + 2*m4^2*r4*r9,
-				r195 = m2^2 + m4^2 + m3^2*r72,
-				r196 = -(m3^2*r6) - m4^2*r72,
-				r197 = m2^4*r157 + 2*m1^2*r195 + 2*m2^2*r196 + 2*m4^2*r17*r4 + m1^4*r72,
-				r198 = m4^2*r10 - 2*m2^2*r5 + 2*m1^2*r72 + m3^2*r72,
-				r199 = r107*r108*r194 + m5^2*r197 - m5^4*r198 + m5^6*r72,
-				r200 = m1^2 - m2^2 - m3^2 + m4^2,
-				r201 = m1^2 + m2^2 + m3^2 + 5*m4^2,
-				r202 = 2*m5^4 - r107*r108*r200 - m5^2*r201,
-				r203 = r107*r108*r110 - m5^2*r188 - m5^4*r191 + PP*r199 + 2*m5^2*PP^3*r4 + PP^2*r202*r4 + m5^6*r5*r89*r90,
-				r204 = m4^2 + m5^2,
-				r205 = -2*m5^2*r5 + m4^2*r99,
-				r206 = 18 - 5*d,
-				r207 = m4^2*r206 + m5^2*r8 - 2*m3^2*r99,
-				r208 = m2^2*r207 + 2*m2^4*r4 - m3^4*r5 - m3^2*r204*r5 + r205*r94*r95,
-				r209 = 2*m3^2*m4^2 + m4^4*r142 + 2*m3^4*r5,
-				r210 = -(m4^2*r18) + m3^2*r5,
-				r211 = 3 - 2*d, r212 = m5^2 + m4^2*r157 + m3^2*r211,
-				r213 = m4^2*r106 + m3^2*r4,
-				r214 = -(d*m3^4) + 10*m3^2*m4^2 - 2*d*m3^2*m4^2 - 2*m4^4 + d*m4^4 + 2*m5^2*r213 - 2*m5^4*r4,
-				r215 = d*m3^2*m4^4 - 2*m4^6 - m5^2*r209 + m5^4*r210 + m2^4*r212 + m2^2*r214 + m2^6*r4 + m5^6*r5 - m3^4*m4^2*r99,
-				r216 = m4^2*r13 + m3^2*r99,
-				r217 = m3^2*r5 - m4^2*r72,
-				r218 = 13 - 4*d,
-				r219 = 3*m3^2 + m5^2*r218 + m4^2*r23,
-				r220 = m4^2*r142 + m5^2*r61,
-				r221 = 2*m3^4 + 2*m4^2*m5^2 - m4^4*r13 + m3^2*r220 + 2*m5^4*r6,
-				r222 = m4^2*m5^2*r216 + m5^4*r217 + m2^4*r219 + m2^2*r221 - m5^6*r5 + m2^6*r99,
-				r223 = -(m3^2*r10) + m4^2*r5,
-				r224 = 4*m3^2*m4^2 + m1^2*r122 + m4^4*r13 + m2^2*r223 + m1^4*r4 - m2^4*r4 - m3^4*r99,
-				r225 = -m3^2 + m2^2*r72 - m4^2*r72,
-				r226 = -2*m4^2*r106 + 2*m3^2*r69,
-				r227 = m1^4*r106 + m2^4*r106 - m4^4*r13 - 2*m1^2*r225 + m2^2*r226 - 4*m3^2*m4^2*r4 - m3^4*r99,
-				r228 = m3^2 + 3*m4^2,
-				r229 = r107*r108*r224 - m5^2*r227 + m5^6*r72 - m5^4*r228*r72,
-				r230 = m4^2*r131 + m1^2*r4 + m2^2*r4 + m3^2*r8,
-				r231 = 2*m5^4*r106 - m5^2*r230 - r107*r108*r200*r4,
-				r232 = m1^4*r208 - m1^2*r215 - m3^2*r222 + PP*r229 + PP^2*r231 + 2*m5^2*PP^3*r4 + m1^6*r7,
-				r233 = -2*m3^2 + m4^2,
-				r234 = -m2^2 + m4^2 - 2*m5^2,
-				r235 = -m1^2 + m2^2 + m5^2,
-				r236 = m1^4 + m5^4 + m2^2*r233 + m1^2*r234 + PP*r235 - m5^2*r46,
-				r237 = -m2^2 + m5^2,
-				r238 = m2^2 + m3^2 - 2*m4^2 + m5^2,
-				r239 = -m1^2 + m2^2 - m5^2,
-				r240 = m1^4 + m3^2*r237 - m1^2*r238 + PP*r239,
-				r241 = m3^2 + 3*m4^2 - m5^2, r242 = -3*m3^2 - m4^2 + m5^2,
-				r243 = m5^4 - m5^2*r228 + m1^2*r241 + m2^2*r242 + 2*PP*r32*r33 + 2*m4^2*r9,
-				r244 = 2*m1^2 + m2^2 + m4^2,
-				r245 = -2*m1^2 - m3^2 - m4^2 + 3*m5^2,
-				r246 = m1^4 - 3*m2^2*m3^2 + m5^4 + PP^2 + m4^2*r173 - m5^2*r244 + PP*r245,
-				r247 = -2*m3^2 + m4^2 + m5^2,
-				r248 = -m2^4 - m4^2*m5^2 + PP*r235 + m2^2*r247 + m1^2*r46,
-				r249 = m2^2*r153 + m1^2*r5, r250 = 2*m1^2 + m2^2*r4,
-				r251 = m2^2*r13 + m1^2*r139,
-				r252 = r107*r108*r250 + m3^2*r251 - m3^4*r4,
-				r253 = m1^2*r140 + 2*m3^2*r4 + m2^2*r72,
-				r254 = m3^4*r249 + m4^2*r252 + m4^4*r253 - m4^6*r4 + m2^2*m3^2*r100*r99,
-				r255 = 2*m3^2 + m4^2*r13,
-				r256 = -2*m3^2*r5 + m2^2*r99 - m4^2*r99,
-				r257 = -11 + 2*d,
-				r258 = -(m4^4*r106) + 2*m3^2*m4^2*r23 - m3^4*r257,
-				r259 = 4*m4^2 + m3^2*r13,
-				r260 = -2*m2^4 + 6*m3^2*m4^2 + 2*m2^2*r259 + m4^4*r37 + m3^4*r5,
-				r261 = -5*m3^4*m4^2 + m2^4*r255 + m1^4*r256 + m2^2*r258 + m1^2*r260 - m2^6*r4 + m3^6*r5 + m4^6*r6 - 3*m3^2*m4^4*r72,
-				r262 = m3^4 + m3^2*m4^2 + m4^4,
-				r263 = m1^4 + m2^4 - 2*r262 + m1^2*r81 + m2^2*r81,
-				r264 = m1^2 + m2^2 - m3^2 - m4^2,
-				r265 = -(r13*r32*r33) + m2^2*r99,
-				r266 = -2*m1^2*r265 - r32^2*r33^2*r4 + 2*m2^2*r13*r9 + m1^4*r99 + m2^4*r99,
-				r267 = m3^2*r13 + m4^2*r4,
-				r268 = -16 + 3*d,
-				r269 = m3^2*r13 - m4^2*r268 + m2^2*r4,
-				r270 = 2*m2^2*r267 + 2*m1^2*r269 + r13*r228*r32*r33 + m2^4*r61 + m1^4*r99,
-				r271 = 2*m2^2 + m4^2*r23 - m3^2*r72,
-				r272 = -(m5^2*r270) - 2*m5^4*r271 + r266*r32*r33,
-				r273 = 2*m3^2 - 2*m4^2 - m5^2,
-				r274 = m1^2*r5 - m2^2*r5 + r273*r72,
-				r275 = r200*r254 + m5^2*r261 + PP*r272 + 2*m5^2*PP^2*r274 + m5^4*r263*r5 - m5^6*r264*r5,
-				r276 = -2*m2^2*m3^2 - 2*m3^4 + 3*m3^2*m4^2 - m4^4 + 3*m3^2*m5^2 + 2*m4^2*m5^2 - m5^4 + m1^2*r177 + PP*r77,
-				r277 = -(m4^2*r106) + m2^2*r4 - m3^2*r5,
-				r278 = -2*m3^4 - m3^2*m4^2*r13 + m2^2*r196 + m2^4*r4 + m4^4*r4,
-				r279 = m4^2*r131 + m3^2*r8,
-				r280 = m2^2*r279 - 2*m2^4*r4 + m4^2*r32*r33*r99,
-				r281 = m1^4*r277 + m2^2*r278 + m1^2*r280,
-				r282 = 11*m3^2 - 3*d*m3^2 + 9*m4^2 - 2*d*m4^2,
-				r283 = 15 - 4*d,
-				r284 = m4^2*r106 + m2^2*r283 + m3^2*r5,
-				r285 = m4^4*r13 + 4*m3^2*m4^2*r5 - m3^4*r99,
-				r286 = -m4^2 + m3^2*r5,
-				r287 = -(m4^2*r5) + m3^2*r6,
-				r288 = 2*m2^2*r287 + m2^4*r72 - 2*r286*r81,
-				r289 = -2*m3^2*m4^4 + m2^4*r282 + m1^4*r284 + m2^2*r285 + m1^2*r288 - m4^6*r4 + m1^6*r5 + m2^6*r6 + m3^4*m4^2*r99,
-				r290 = 2*m2^2 - m3^2 - m4^2,
-				r291 = 2*m1^4 + 2*m2^4 - m3^4 - m4^4 + m1^2*r290 - m2^2*r81,
-				r292 = m2^2 - m3^2 + m4^2,
-				r293 = m1^4*r4 + m2^4*r4 - 2*m1^2*r292*r4 + 2*m2^2*r4*r9 - r32^2*r33^2*r99, r294 = m3^2*r13 - m4^2*r131,
-				r295 = m2^2*r13 - r4*r81,
-				r296 = m1^4*r131 + 2*m2^2*r294 - 2*m1^2*r295 - 2*m3^2*m4^2*r4 + m4^4*r8 - m2^4*r99 - m3^4*r99,
-				r297 = 2*m4^2 - m2^2*r5 + m1^2*r72,
-				r298 = r107*r108*r293 - m5^2*r296 + 2*m5^4*r297,
-				r299 = -2*m5^2*r32*r33*r5 + 2*m5^4*r72,
-				r300 = r130*r281 - m5^2*r289 + PP*r298 + PP^2*r299 - m5^6*r264*r5 + m5^4*r291*r5,
-				r301 = -2*m2^2*m3^2 - m3^2*m4^2 + m4^4 + m5^4 - m5^2*r17 + m1^2*r177 + PP*r77,
-				r302 = m2^2 + 2*m3^2 - 3*m4^2,
-				r303 = -m1^2 + m2^2 - 3*m5^2,
-				r304 = m1^4 - m2^2*m4^2 - m5^4 + m5^2*r149 - m1^2*r302 + PP*r303,
+				m5^2*PP^2;
+		r4 = -4 + d;
+		r5 = -3 + d;
+		r6 = -7 + 2*d;
+				r7 = -(m2^2*r4) + m3^2*r5 - m5^2*r5 + m4^2*r6;
+				r8 = -10 + 3*d;
+				r9 = -m3^2 + m4^2;
+				r10 = -11 + 3*d;
+				r11 = -(m4^2*r10) - 3*m5^2*r5 + m3^2*r6;
+				r12 = m2^2*r11 + m5^4*r5 + m2^4*r8 + m4^2*r4*r9 + m5^2*r5*r9;
+				r13 = -6 + d;
+				r14 = -(m4^2*r13) + m5^2*r5;
+				r15 = -3*m3^2 - m4^2*r10 + m5^2*r5;
+				r16 = m3^2*r14 + m2^2*r15 + m2^4*r4 - 2*m3^4*r5 - 3*m4^2*m5^2*r5 + m5^4*r5 + m4^4*r8;
+				r17 = m3^2 + 2*m4^2;
+				r18 = -1 + d;
+				r19 = -(m3^2*r13) - 2*m4^2*r18 + 2*m5^2*r5;
+				r20 = 2*m2^4 - 3*m3^4 + d*m3^4 - 3*m3^2*m4^2 + 2*m4^4 + m2^2*r19 - 2*m5^4*r5 + m5^2*r17*r5;
+				r21 = 2 + d;
+				r22 = 2*m5^2 - m4^2*r21 + m2^2*r4 - m3^2*r4;
+				r23 = -7 + d;
+				r24 = 6*m4^2 - 4*m5^2;
+				r25 = 3*m3^2 + m4^2*r18 + m5^2*r23;
+				r26 = -6*m4^4 - 2*m4^2*m5^2*r23 + m3^2*r24 + 2*m2^2*r25 - 2*m2^4*r4 - m3^4*r4;
+				r27 = m3^4 + m3^2*m4^2 - 2*m4^4;
+				r28 = m3^2 + m4^2*r23;
+				r29 = -2*m4^2*r18 + m3^2*r21 + 2*m5^2*r23;
+				r30 = -6*m2^4 + 2*m5^2*r28 - m2^2*r29 + r27*r4;
+				r31 = m1^4*r22 + m1^2*r26 + m3^2*r30 + m1^6*r4;
+				r32 = m3 - m4;
+				r33 = m3 + m4;
+				r34 = 2*m3^2 + m4^2;
+				r35 = -17 + 3*d;
+				r36 = m3^2*r23 + m4^2*r35;
+				r37 = -9 + d;
+				r38 = 17 - 3*d;
+				r39 = 5*m3^2 + m4^2*r37 + m5^2*r38;
+				r40 = 1 + d;
+				r41 = 5*m4^2 - m5^2*r23 + m2^2*r4 - m3^2*r40;
+				r42 = m5^4*r35 - m5^2*r36 + m2^2*r39 - 2*m1^4*r4 + m2^4*r4 - r32*r33*r34*r4 + m1^2*r41;
+				r43 = m1^2 - m2^2 + m3^2 - m4^2;
+				r44 = 2*m5^2*r13 + r4*r43;
+				r45 = m3^4*r12 + m1^4*r16 + m1^2*m3^2*r20 + PP*r31 + PP^2*r42 + PP^3*r44 + m1^6*r7;
+				r46 = m2^2 + m4^2;
+				r47 = 13 - 3*d;
+				r48 = m4^2*r47 - m5^2*r5 + m3^2*r6;
+				r49 = m5^4*r5 + m5^2*r32*r33*r5 + m4^2*r4*r9;
+				r50 = -18 + 4*d;
+				r51 = -(m4^2*r13) - 3*m5^2*r5;
+				r52 = 2*m3^4*r5 + m4^2*m5^2*r5 + m5^4*r5 + m4^4*r50 + m3^2*r51;
+				r53 = -3*m4^2 + 2*m5^2*r5;
+				r54 = m4^4*r47 + 2*m3^4*r5 + m4^2*m5^2*r5 - 2*m5^4*r5 + m3^2*r53;
+				r55 = m4^2*r13 + 6*m3^2*r5 - 2*m5^2*r5;
+				r56 = 3*m4^2 + m3^2*r5 - m5^2*r5;
+				r57 = 7 - 2*d;
+				r58 = m3^2*r5 + 3*m5^2*r5 + m4^2*r57;
+				r59 = m2^6*r4 + m2^2*m4^2*r55 + m2^4*r56 + m4^4*r58;
+				r60 = m4^2 - m3^2*r5;
+				r61 = 10 - 3*d;
+				r62 = 2*m5^2 + 3*m4^2*r4 + m3^2*r61;
+				r63 = m4^2 + m5^2*r5;
+				r64 = -4*m4^2*m5^2 + 3*m4^4*r4 - 2*m3^4*r5 + 2*m3^2*r63;
+				r65 = m4^2 + m3^2*r5 - m5^2*r5;
+				r66 = 2*m3^2*r5 + 2*m5^2*r5 + m4^2*r61;
+				r67 = 3*m2^4*r4 + 2*m2^2*r65 + m4^2*r66;
+				r68 = -3*m2^6*r4 - 2*m1^4*m4^2*r5 + 2*m4^2*m5^2*r60 + m2^4*r62 + m2^2*r64 + m1^2*r67 - 3*m4^4*r4*r9;
+				r69 = -13 + 3*d;
+				r70 = m3^2*r5 + m4^2*r69;
+				r71 = m4^2 - 3*m2^2*r4 - m3^2*r5 + m5^2*r5;
+				r72 = -5 + d;
+				r73 = m3^2 + m5^2*r69 + m4^2*r72;
+				r74 = 3*m2^4*r4 - m5^4*r5 + m5^2*r70 + m1^2*r71 + m2^2*r73 + 3*m4^2*r4*r9;
+				r75 = m1^2 - m2^2 + m3^2 - m4^2 - 2*m5^2;
+				r76 = m2^8*r4 + m2^6*r48 + m4^4*r49 + 2*m1^4*m4^2*r46*r5 + m2^4*r52 + m2^2*m4^2*r54 - m1^2*r59 + PP*r68 + PP^2*r74 + PP^3*r4*r75;
+				r77 = m3^2 - m4^2 + m5^2;
+				r78 = -2*m2^2 + m4^2 + m5^2;
+				r79 = -2*m1^2 - m3^2 - m4^2 + m5^2;
+				r80 = m1^4 + PP^2 - m1^2*r77 + m3^2*r78 + PP*r79;
+				r81 = m3^2 + m4^2;
+				r82 = m3^2 + m4^2 + m5^2;
+				r83 = m1^2 + m3^2 - m5^2;
+				r84 = m1^4 + 2*m3^2*m4^2 - m4^4 + PP^2 - m2^2*r77 + m5^2*r81 - m1^2*r82 - 2*PP*r83;
+				r85 = m1 - m3;
+				r86 = -PP + r85^2;
+				r87 = m1 + m3;
+				r88 = -PP + r87^2;
+				r89 = m2 - m4;
+				r90 = m2 + m4;
+				r91 = -m1^2 - m2^2 - m3^2 - m4^2 + 2*m5^2;
+				r92 = PP^2 + r85*r87*r89*r90 + PP*r91;
+				r93 = m2^2 - 3*m4^2;
+				r94 = m4 - m5;
+				r95 = m4 + m5;
+				r96 = 2*m3^2 - m4^2 + m5^2;
+				r97 = -m1^2 - m2^2 - 2*m3^2 + 3*m5^2;
+				r98 = PP^2 + m1^2*r93 + m2^2*r94*r95 + m4^2*r96 + PP*r97;
+				r99 = -2 + d;
+				r100 = -m1^2 + m2^2;
+				r101 = m2^2 + m1^2*r72;
+				r102 = m3^2*r101 - 2*m3^4*r4 + m2^2*r100*r4;
+				r103 = 9 - 2*d;
+				r104 = m2^2*r23 + m3^2*r72;
+				r105 = 2*m1^4 + m2^4*r103 + m1^2*r104 + m2^2*m3^2*r5;
+				r106 = -9 + 2*d;
+				r107 = m1 - m2;
+				r108 = m1 + m2;
+				r109 = -(r106*r107*r108) + m3^2*r4;
+				r110 = m2^2*r102 + m4^2*r105 + m4^4*r109 - m4^6*r4;
+				r111 = m1^2 + m2^2;
+				r112 = m2^2*r4 - 2*m1^2*r72;
+				r113 = -19 + 5*d;
+				r114 = m3^2*r112 + m3^4*r113 + m2^2*r111*r4;
+				r115 = m3^2*r5 + m2^2*r6;
+				r116 = 2*m1^4 + 2*m1^2*r115 + m2^4*r13 + m3^4*r72 - 2*m2^2*m3^2*r99;
+				r117 = m2^2*r106 + m3^2*r4 - m1^2*r99;
+				r118 = m2^2*r114 - m4^2*r116 + m4^4*r117 - m4^6*r6;
+				r119 = -(m2^2*r5) + 2*m3^2*r57 + m1^2*r72;
+				r120 = m1^2*r18 + 2*m3^2*r4 - m2^2*r5;
+				r121 = m2^2*r119 + m4^2*r120 + 2*m4^4*r5;
+				r122 = m3^2*r5 + m4^2*r72;
+				r123 = -2*m2^2*r4 - m4^2*r69 + m3^2*r72;
+				r124 = m2^2*r122 + m1^2*r123 + 2*m2^4*r4 + 2*m4^2*r32*r33*r4;
+				r125 = -3*m4^2 + m2^2*r4 - m3^2*r72;
+				r126 = m3^2 - m4^2*r72;
+				r127 = -2*m3^2*m4^2 - 2*m1^2*r125 - 2*m2^2*r126 + m4^4*r18 - 4*m2^4*r4 + m3^4*r72;
+				r128 = -(m2^2*r18) + 2*m4^2*r5 + m1^2*r72 + 2*m3^2*r72;
+				r129 = m5^2*r127 - m5^4*r128 - r124*r32*r33 + m5^6*r72;
+				r130 = -m1^2 + m2^2 + m3^2 - m4^2;
+				r131 = -14 + 3*d;
+				r132 = -(m3^2*r13) + m4^2*r131 + m1^2*r4 + 5*m2^2*r4;
+				r133 = -2*m5^4 + m5^2*r132 + r130*r32*r33*r4;
+				r134 = m5^2*r118 + m5^4*r121 + PP*r129 + PP^2*r133 + r110*r32*r33 - 2*m5^2*PP^3*r4 + m5^6*r5*r89*r90;
+				r135 = m3 - m4 - m5;
+				r136 = m3 + m4 - m5;
+				r137 = m3 - m4 + m5;
+				r138 = m3 + m4 + m5;
+				r139 = -10 + d;
+				r140 = 13 - 2*d;
+				r141 = d*m4^2 + 2*m3^2*r5;
+				r142 = -8 + d;
+				r143 = m4^2*r142 - m3^2*r99 + m5^2*r99;
+				r144 = m3^2*m4^2*r139 + m4^4*r140 - m5^2*r141 + m2^2*r143 + m3^4*r5 + m5^4*r5;
+				r145 = 3*m3^4 - 12*m3^2*m4^2 + 7*m4^4;
+				r146 = 3*m3^2 + 4*m4^2;
+				r147 = m3^2 - 11*m4^2;
+				r148 = 7*m3^4 + 10*m3^2*m4^2 - 17*m4^4 - 5*m5^4 - 2*m5^2*r147;
+				r149 = m2^2 + 2*m3^2 + m4^2;
+				r150 = -m2^4 + m2^2*m3^2 + m3^4 + 3*m2^2*m4^2 + m3^2*m4^2 - m4^4 + m5^4 - m5^2*r149;
+				r151 = 3*m3^6 + 6*m3^4*m4^2 - 17*m3^2*m4^4 + 8*m4^6 + 3*m5^6 - m5^2*r145 - m5^4*r146 + m2^2*r148 - d*r150*r77 + 6*m2^4*r94*r95;
+				r152 = -(m3^2*m4) + m4^3;
+				r153 = 11 - 2*d;
+				r154 = -(d*m3^2*m4^2) + m4^4*r153 + m3^4*r5;
+				r155 = m4^2 + m3^2*r5;
+				r156 = r142*r32*r33 + m5^2*r99;
+				r157 = 11 - 3*d;
+				r158 = -8 + 3*d;
+				r159 = m5^2*r158 + m4^2*r21;
+				r160 = -3*m3^4 + 2*m4^2*m5^2*r106 + m5^4*r157 + m3^2*r159 - m4^4*r18;
+				r161 = -2*m2^6 + m5^2*r154 - 2*m5^4*r155 + m2^4*r156 + m2^2*r160 + r152^2*r4 + m5^6*r5;
+				r162 = m4^2*r23 - 3*m3^2*r72;
+				r163 = -4*m2^2 + m4^2*r18 + m3^2*r23;
+				r164 = -m3^4 + m4^4;
+				r165 = -(m2^4*r13) + m2^2*r162 + m1^2*r163 + r164*r4 + m1^4*r99;
+				r166 = -19 + 4*d;
+				r167 = m4^2 + m3^2*r72;
+				r168 = m3^2 + m4^2*r69;
+				r169 = -2*r168 + 4*m2^2*r4;
+				r170 = -m3^4 + m2^4*r13 - m4^4*r166 + 2*m2^2*r167 + m1^2*r169 + 2*m3^2*m4^2*r72 + m1^4*r99;
+				r171 = m1^2 - m2^2 + 4*m4^2;
+				r172 = -(m5^2*r170) + r165*r32*r33 + m5^6*r72 - m5^4*r171*r72;
+				r173 = m2^2 + m3^2;
+				r174 = -(m4^2*r13) + r131*r173 + m1^2*r8;
+				r175 = m5^2*r174 - 2*m5^4*r4 + r130*r32*r33*r4;
+				r176 = 2*m1^6*m4^2 + m1^4*r144 + m1^2*r151 + m3^2*r161 + PP*r172 + PP^2*r175 - 2*m5^2*PP^3*r4;
+				r177 = m3^2 + m4^2 - m5^2;
+				r178 = -2*m1^2 + m3^2 - m4^2 + m5^2;
+				r179 = -m3^2 + m4^2 + m5^2;
+				r180 = m2^2*r177 + m4^2*r178 + PP*r179;
+				r181 = -2*m2^2 - m3^2 + m4^2 + m5^2;
+				r182 = m1^2*r177 + m3^2*r181 + PP*r77;
+				r183 = -(m2^2*r13) - 2*m3^2*r5;
+				r184 = m1^2*r183 - 2*m3^4*r4 + m2^4*r57 + m1^4*r72 - m2^2*m3^2*r99;
+				r185 = 3*m2^2*r4 + m3^2*r72;
+				r186 = m2^4*r106 + 2*m1^2*r185 + m1^4*r40 - 2*m2^2*m3^2*r6;
+				r187 = r111*r13 - m3^2*r4;
+				r188 = m2^2*r184 + m4^2*r186 - m4^4*r187 + m4^6*r4;
+				r189 = 2*m1^2 + m3^2*r10 + 2*m2^2*r5;
+				r190 = m2^2*r5 + m3^2*r72 + 2*m1^2*r99;
+				r191 = m2^2*r189 - m4^2*r190 - m4^4*r5;
+				r192 = -(m3^2*r5) - m4^2*r72;
+				r193 = 2*m2^2*r4 + m4^2*r69 - m3^2*r72;
+				r194 = m2^2*r192 + m1^2*r193 - 2*m2^4*r4 + 2*m4^2*r4*r9;
+				r195 = m2^2 + m4^2 + m3^2*r72;
+				r196 = -(m3^2*r6) - m4^2*r72;
+				r197 = m2^4*r157 + 2*m1^2*r195 + 2*m2^2*r196 + 2*m4^2*r17*r4 + m1^4*r72;
+				r198 = m4^2*r10 - 2*m2^2*r5 + 2*m1^2*r72 + m3^2*r72;
+				r199 = r107*r108*r194 + m5^2*r197 - m5^4*r198 + m5^6*r72;
+				r200 = m1^2 - m2^2 - m3^2 + m4^2;
+				r201 = m1^2 + m2^2 + m3^2 + 5*m4^2;
+				r202 = 2*m5^4 - r107*r108*r200 - m5^2*r201;
+				r203 = r107*r108*r110 - m5^2*r188 - m5^4*r191 + PP*r199 + 2*m5^2*PP^3*r4 + PP^2*r202*r4 + m5^6*r5*r89*r90;
+				r204 = m4^2 + m5^2;
+				r205 = -2*m5^2*r5 + m4^2*r99;
+				r206 = 18 - 5*d;
+				r207 = m4^2*r206 + m5^2*r8 - 2*m3^2*r99;
+				r208 = m2^2*r207 + 2*m2^4*r4 - m3^4*r5 - m3^2*r204*r5 + r205*r94*r95;
+				r209 = 2*m3^2*m4^2 + m4^4*r142 + 2*m3^4*r5;
+				r210 = -(m4^2*r18) + m3^2*r5;
+				r211 = 3 - 2*d;
+				r212 = m5^2 + m4^2*r157 + m3^2*r211;
+				r213 = m4^2*r106 + m3^2*r4;
+				r214 = -(d*m3^4) + 10*m3^2*m4^2 - 2*d*m3^2*m4^2 - 2*m4^4 + d*m4^4 + 2*m5^2*r213 - 2*m5^4*r4;
+				r215 = d*m3^2*m4^4 - 2*m4^6 - m5^2*r209 + m5^4*r210 + m2^4*r212 + m2^2*r214 + m2^6*r4 + m5^6*r5 - m3^4*m4^2*r99;
+				r216 = m4^2*r13 + m3^2*r99;
+				r217 = m3^2*r5 - m4^2*r72;
+				r218 = 13 - 4*d;
+				r219 = 3*m3^2 + m5^2*r218 + m4^2*r23;
+				r220 = m4^2*r142 + m5^2*r61;
+				r221 = 2*m3^4 + 2*m4^2*m5^2 - m4^4*r13 + m3^2*r220 + 2*m5^4*r6;
+				r222 = m4^2*m5^2*r216 + m5^4*r217 + m2^4*r219 + m2^2*r221 - m5^6*r5 + m2^6*r99;
+				r223 = -(m3^2*r10) + m4^2*r5;
+				r224 = 4*m3^2*m4^2 + m1^2*r122 + m4^4*r13 + m2^2*r223 + m1^4*r4 - m2^4*r4 - m3^4*r99;
+				r225 = -m3^2 + m2^2*r72 - m4^2*r72;
+				r226 = -2*m4^2*r106 + 2*m3^2*r69;
+				r227 = m1^4*r106 + m2^4*r106 - m4^4*r13 - 2*m1^2*r225 + m2^2*r226 - 4*m3^2*m4^2*r4 - m3^4*r99;
+				r228 = m3^2 + 3*m4^2;
+				r229 = r107*r108*r224 - m5^2*r227 + m5^6*r72 - m5^4*r228*r72;
+				r230 = m4^2*r131 + m1^2*r4 + m2^2*r4 + m3^2*r8;
+				r231 = 2*m5^4*r106 - m5^2*r230 - r107*r108*r200*r4;
+				r232 = m1^4*r208 - m1^2*r215 - m3^2*r222 + PP*r229 + PP^2*r231 + 2*m5^2*PP^3*r4 + m1^6*r7;
+				r233 = -2*m3^2 + m4^2;
+				r234 = -m2^2 + m4^2 - 2*m5^2;
+				r235 = -m1^2 + m2^2 + m5^2;
+				r236 = m1^4 + m5^4 + m2^2*r233 + m1^2*r234 + PP*r235 - m5^2*r46;
+				r237 = -m2^2 + m5^2;
+				r238 = m2^2 + m3^2 - 2*m4^2 + m5^2;
+				r239 = -m1^2 + m2^2 - m5^2;
+				r240 = m1^4 + m3^2*r237 - m1^2*r238 + PP*r239;
+				r241 = m3^2 + 3*m4^2 - m5^2; r242 = -3*m3^2 - m4^2 + m5^2;
+				r243 = m5^4 - m5^2*r228 + m1^2*r241 + m2^2*r242 + 2*PP*r32*r33 + 2*m4^2*r9;
+				r244 = 2*m1^2 + m2^2 + m4^2;
+				r245 = -2*m1^2 - m3^2 - m4^2 + 3*m5^2;
+				r246 = m1^4 - 3*m2^2*m3^2 + m5^4 + PP^2 + m4^2*r173 - m5^2*r244 + PP*r245;
+				r247 = -2*m3^2 + m4^2 + m5^2;
+				r248 = -m2^4 - m4^2*m5^2 + PP*r235 + m2^2*r247 + m1^2*r46;
+				r249 = m2^2*r153 + m1^2*r5; r250 = 2*m1^2 + m2^2*r4;
+				r251 = m2^2*r13 + m1^2*r139;
+				r252 = r107*r108*r250 + m3^2*r251 - m3^4*r4;
+				r253 = m1^2*r140 + 2*m3^2*r4 + m2^2*r72;
+				r254 = m3^4*r249 + m4^2*r252 + m4^4*r253 - m4^6*r4 + m2^2*m3^2*r100*r99;
+				r255 = 2*m3^2 + m4^2*r13;
+				r256 = -2*m3^2*r5 + m2^2*r99 - m4^2*r99;
+				r257 = -11 + 2*d;
+				r258 = -(m4^4*r106) + 2*m3^2*m4^2*r23 - m3^4*r257;
+				r259 = 4*m4^2 + m3^2*r13;
+				r260 = -2*m2^4 + 6*m3^2*m4^2 + 2*m2^2*r259 + m4^4*r37 + m3^4*r5;
+				r261 = -5*m3^4*m4^2 + m2^4*r255 + m1^4*r256 + m2^2*r258 + m1^2*r260 - m2^6*r4 + m3^6*r5 + m4^6*r6 - 3*m3^2*m4^4*r72;
+				r262 = m3^4 + m3^2*m4^2 + m4^4;
+				r263 = m1^4 + m2^4 - 2*r262 + m1^2*r81 + m2^2*r81;
+				r264 = m1^2 + m2^2 - m3^2 - m4^2;
+				r265 = -(r13*r32*r33) + m2^2*r99;
+				r266 = -2*m1^2*r265 - r32^2*r33^2*r4 + 2*m2^2*r13*r9 + m1^4*r99 + m2^4*r99;
+				r267 = m3^2*r13 + m4^2*r4;
+				r268 = -16 + 3*d;
+				r269 = m3^2*r13 - m4^2*r268 + m2^2*r4;
+				r270 = 2*m2^2*r267 + 2*m1^2*r269 + r13*r228*r32*r33 + m2^4*r61 + m1^4*r99;
+				r271 = 2*m2^2 + m4^2*r23 - m3^2*r72;
+				r272 = -(m5^2*r270) - 2*m5^4*r271 + r266*r32*r33;
+				r273 = 2*m3^2 - 2*m4^2 - m5^2;
+				r274 = m1^2*r5 - m2^2*r5 + r273*r72;
+				r275 = r200*r254 + m5^2*r261 + PP*r272 + 2*m5^2*PP^2*r274 + m5^4*r263*r5 - m5^6*r264*r5;
+				r276 = -2*m2^2*m3^2 - 2*m3^4 + 3*m3^2*m4^2 - m4^4 + 3*m3^2*m5^2 + 2*m4^2*m5^2 - m5^4 + m1^2*r177 + PP*r77;
+				r277 = -(m4^2*r106) + m2^2*r4 - m3^2*r5;
+				r278 = -2*m3^4 - m3^2*m4^2*r13 + m2^2*r196 + m2^4*r4 + m4^4*r4;
+				r279 = m4^2*r131 + m3^2*r8;
+				r280 = m2^2*r279 - 2*m2^4*r4 + m4^2*r32*r33*r99;
+				r281 = m1^4*r277 + m2^2*r278 + m1^2*r280;
+				r282 = 11*m3^2 - 3*d*m3^2 + 9*m4^2 - 2*d*m4^2;
+				r283 = 15 - 4*d;
+				r284 = m4^2*r106 + m2^2*r283 + m3^2*r5;
+				r285 = m4^4*r13 + 4*m3^2*m4^2*r5 - m3^4*r99;
+				r286 = -m4^2 + m3^2*r5;
+				r287 = -(m4^2*r5) + m3^2*r6;
+				r288 = 2*m2^2*r287 + m2^4*r72 - 2*r286*r81;
+				r289 = -2*m3^2*m4^4 + m2^4*r282 + m1^4*r284 + m2^2*r285 + m1^2*r288 - m4^6*r4 + m1^6*r5 + m2^6*r6 + m3^4*m4^2*r99;
+				r290 = 2*m2^2 - m3^2 - m4^2;
+				r291 = 2*m1^4 + 2*m2^4 - m3^4 - m4^4 + m1^2*r290 - m2^2*r81;
+				r292 = m2^2 - m3^2 + m4^2;
+				r293 = m1^4*r4 + m2^4*r4 - 2*m1^2*r292*r4 + 2*m2^2*r4*r9 - r32^2*r33^2*r99; r294 = m3^2*r13 - m4^2*r131;
+				r295 = m2^2*r13 - r4*r81;
+				r296 = m1^4*r131 + 2*m2^2*r294 - 2*m1^2*r295 - 2*m3^2*m4^2*r4 + m4^4*r8 - m2^4*r99 - m3^4*r99;
+				r297 = 2*m4^2 - m2^2*r5 + m1^2*r72;
+				r298 = r107*r108*r293 - m5^2*r296 + 2*m5^4*r297;
+				r299 = -2*m5^2*r32*r33*r5 + 2*m5^4*r72;
+				r300 = r130*r281 - m5^2*r289 + PP*r298 + PP^2*r299 - m5^6*r264*r5 + m5^4*r291*r5;
+				r301 = -2*m2^2*m3^2 - m3^2*m4^2 + m4^4 + m5^4 - m5^2*r17 + m1^2*r177 + PP*r77;
+				r302 = m2^2 + 2*m3^2 - 3*m4^2;
+				r303 = -m1^2 + m2^2 - 3*m5^2;
+				r304 = m1^4 - m2^2*m4^2 - m5^4 + m5^2*r149 - m1^2*r302 + PP*r303;
 				r305 = -(
 						(r45 TBI[d, PP, {{1, m4}, {1, m2}}] TBI[d, PP, {{2, m1}, {1, m3}}])/(4*r3)) +
 						(r76 TBI[d, PP, {{1, m3}, {1, m1}}] TBI[d, PP, {{2, m2}, {1, m4}}])/(4*r3) -
@@ -2087,8 +2148,10 @@ Subscript[f, 50] =
 						(r182*TVI[d, PP, {{2, m5}, {2, m1}, {1, m4}, {1, m3}}])/2 -
 						(r301*TVI[d, PP, {{2, m5}, {2, m2}, {1, m3}, {1, m4}}])/2 -
 						(r304*TVI[d, PP, {{2, m5}, {2, m3}, {1, m2}, {1, m1}}])/2 +
-						(r248*TVI[d, PP, {{2, m5}, {2, m4}, {1, m1}, {1, m2}}])/2,
-						r306},
+						(r248*TVI[d, PP, {{2, m5}, {2, m4}, {1, m1}, {1, m2}}])/2;
+
+
+
 			r306 = Factor /@ r305/(PP*r1*r2); r306]) /;
 			n1 === 1 && n2 === 1 && n3 === 1 && n4 === 1 && n5 === 1 && MatchQ[d, _Symbol + _Integer?Positive] && PP =!= 0 && Cayley[m1, m2, m3, m4, m5, Sqrt[PP]] =!= 0
 	];
@@ -2129,7 +2192,7 @@ Subscript[s, 52] =
 	OperatorApplyV[Subscript[e, 52]]
 
 Subscript[h, 52] =
-	\[Nu]explicit[Subscript[s, 52]] /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1;
+	nuExplicit[Subscript[s, 52]] /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1;
 
 Subscript[f, 52] =
 	MakeFun[Subscript[h, 52], "(52)", IFF[Subscript[\[Nu], 2] > 1 && Subscript[\[CapitalDelta], 2, 4, 6] =!= 0]];
@@ -2272,7 +2335,7 @@ Subscript[s, 62] =
 	OperatorApplyV[Subscript[e, 62]];
 
 Subscript[h, 62] =
-	\[Nu]explicit[Subscript[s, 62]] /. Subscript[\[Nu], 4] -> Subscript[\[Nu], 4] - 1;
+	nuExplicit[Subscript[s, 62]] /. Subscript[\[Nu], 4] -> Subscript[\[Nu], 4] - 1;
 
 Subscript[f, 62] =
 	MakeFun[Subscript[h, 62], "(62)", IFF[PP =!= m2^2 && Subscript[\[Nu], 1] - 2*Subscript[\[Nu], 2] + 2*Subscript[\[Nu], 4] =!= 0], {m4 :> 0, m3 :> m1, n2 :> 1}];
@@ -2292,7 +2355,7 @@ Subscript[s, 63] =
 	OperatorApplyV[Subscript[e, 63]];
 
 Subscript[h, 63] =
-	\[Nu]explicit[Subscript[s, 63]];
+	nuExplicit[Subscript[s, 63]];
 
 Subscript[f, 63] =
 	MakeFun[Subscript[h, 63], "(63)", IFF[PP =!= m2^2 && Cayley[1, 3, 4][{m1, m2, m3, m4}] =!= 0], {m4 :>0}];
@@ -2301,7 +2364,7 @@ Subscript[f, 63] =
 	MakeFun[Subscript[h, 63], "(63)", IFF[PP =!= m2^2 && Cayley[1, 3, 4][{m1, m2, m3, m4}] =!= 0], {m4 :> 0, n1 :> 1, n3 :> 1}];
 
 Subscript[r, 6552] =
-	\[Nu]explicit[Subscript[e, 52]] /. Subscript[\[CapitalDelta], 2, 4, 6] -> 0;
+	nuExplicit[Subscript[e, 52]] /. Subscript[\[CapitalDelta], 2, 4, 6] -> 0;
 
 formal =
 	Solve[Subscript[e, 55] /. TVI[__] -> 1, Schiebe[4, "+"]][[1, 1]] /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1;
@@ -2319,7 +2382,7 @@ Subscript[f, 6552] =
 	];
 
 Subscript[r, 6552] =
-	\[Nu]explicit[Subscript[e, 52]] /. Subscript[\[CapitalDelta], 2, 4, 6] -> 0;
+	nuExplicit[Subscript[e, 52]] /. Subscript[\[CapitalDelta], 2, 4, 6] -> 0;
 
 Subscript[n, 6552] =
 	OperatorApplyV[Subscript[r, 6552]];
@@ -2334,7 +2397,7 @@ Subscript[f, 6552] =
 	3*Subscript[\[Nu], 2]*Subscript[u, 2, 4, 6]] =!= 0]];
 
 Subscript[r, 6553] =
-	\[Nu]explicit[Subscript[s, 55]] /. Subscript[u, 3, 1, 4] -> 0 /. Subscript[u, 6, 2, 4] -> 0 /. Subscript[m, 4] -> 0;
+	nuExplicit[Subscript[s, 55]] /. Subscript[u, 3, 1, 4] -> 0 /. Subscript[u, 6, 2, 4] -> 0 /. Subscript[m, 4] -> 0;
 
 Subscript[h, 6553] =
 	-Subscript[r, 6553][[2, 1]] == Subscript[r, 6553][[2]] - Subscript[r, 6553][[2, 1]];
@@ -2469,7 +2532,7 @@ Subscript[s, 71] =
 	OperatorApplyJ[Subscript[e, 71]];
 
 Subscript[h, 71] =
-	\[Nu]explicit[Subscript[s, 71]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1 /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1;
+	nuExplicit[Subscript[s, 71]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1 /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1;
 
 Subscript[f, 71] =
 	MakeFun[Subscript[h, 71], "(71)", IFF[Subscript[\[Nu], 1] > 1 && Subscript[\[Nu], 2] > 1 && Subscript[D, 1, 2, 3] =!= 0]];
@@ -2505,7 +2568,7 @@ Subscript[s, 78] =
 	OperatorApplyJ[Subscript[e, 78]];
 
 Subscript[h, 78] =
-	\[Nu]explicit[Subscript[s, 78]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 2;
+	nuExplicit[Subscript[s, 78]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 2;
 
 Subscript[f, 78] =
 	MakeFun[Subscript[h, 78], "(78)", IFF[Subscript[\[Nu], 1] > 2 && m1 =!= 0 && Subscript[D, 1, 2, 3] =!= 0]];
@@ -2527,7 +2590,7 @@ Subscript[s, 80] =
 	OperatorApplyJ[Subscript[e, 80]];
 
 Subscript[h, 80] =
-	\[Nu]explicit[Subscript[s, 80]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1;
+	nuExplicit[Subscript[s, 80]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1;
 
 Subscript[f, 80] =
 	MakeFun[Subscript[h, 80], "(80)", IFF[Subscript[\[Nu], 1] > 1 && Subscript[\[CapitalDelta], 2, 3, 6] =!= 0], m1 :> 0];
@@ -2550,7 +2613,7 @@ Subscript[s, 81] =
 	OperatorApplyJ[Subscript[e, 81]];
 
 Subscript[h, 81] =
-	\[Nu]explicit[Subscript[s, 81]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1 /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1 /. d -> d - 2;
+	nuExplicit[Subscript[s, 81]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1 /. Subscript[\[Nu], 2] -> Subscript[\[Nu], 2] - 1 /. d -> d - 2;
 
 Subscript[f, 81] =
 	MakeFun[Subscript[h, 81], "(81)", IFF[PP =!= 0 && Subscript[\[Nu], 1] > 1 && Subscript[\[Nu], 2] > 1 && MatchQ[d, _Symbol + _Integer?Positive]]];
@@ -2603,7 +2666,7 @@ Subscript[r, 82] =
 Subscript[s, 82] =
 	Subscript[r, 82][[1, 2]] == -Subscript[r, 82][[1, 1]] + Subscript[r, 82][[2]];
 
-Subscript[h, 82] = \[Nu]explicit[Subscript[s, 82]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 2 /. d -> d - 2;
+Subscript[h, 82] = nuExplicit[Subscript[s, 82]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 2 /. d -> d - 2;
 
 Subscript[f, 82] =
 	MakeFun[Subscript[h, 82], "(82)", IFF[PP =!= 0 && Subscript[\[Nu], 1] > 2 && m1 =!= 0 && MatchQ[d, _Symbol + _Integer?Positive]]];
@@ -2641,7 +2704,7 @@ Subscript[s, 83] =
 	OperatorApplyJ[Subscript[e, 83]];
 
 Subscript[h, 83] =
-	\[Nu]explicit[Subscript[s, 83]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1 /. d -> d - 2;
+	nuExplicit[Subscript[s, 83]] /. Subscript[\[Nu], 1] -> Subscript[\[Nu], 1] - 1 /. d -> d - 2;
 
 Subscript[f, 83] =
 	MakeFun[Subscript[h, 83], "(83)", IFF[PP =!= 0 && Subscript[\[Nu], 1] > 1 && MatchQ[d, _Symbol + _Integer?Positive]], m1 :> 0];
@@ -3124,22 +3187,30 @@ If[	MatchQ[$RankLimit, {_Integer?NonNegative, _Integer? NonNegative}],
 
 tarti =
 	Timing[
+		ia = 0;
+		ib = 0;
+		ir = 0;
+		es = 0;
 		Do[
-			If[	0 < a + b + r + es,
-				WriteString["stdout", {a, b, r, es}];
-				Set @@ {Subscript[s, 10^4 + 1000*a + 100*b + 10*r + es],
+			If[	0 < ia + ib + ir + es,
+				WriteString["stdout", {ia, ib, ir, es}];
+				Set @@ {Subscript[s, 10^4 + 1000*ia + 100*ib + 10*ir + es],
 
-				TFI[d, PP, DP, {a, b}, {0, 0, r, es, 0}, {{n1, m1}, {n2, m2}, {n3, m3}, {n4, m4}, {n5, m5}}] ==
-					ApplyTarasovT[TarasovT[a, b, r, es, PP, DP],
+				TFI[d, PP, DP, {ia, ib}, {0, 0, ir, es, 0}, {{n1, m1}, {n2, m2}, {n3, m3}, {n4, m4}, {n5, m5}}] ==
+					ApplyTarasovT[TarasovT[ia, ib, ir, es, PP, DP],
 
 				STLI[d, PP, {{n1, m1}, {n2, m2}, {n3, m3}, {n4, m4}, {n5, m5}}]] /. STLI -> TFI}
 			],
-			{a, 0, $TarasovTdeltaplimit}, {b, 0, $TarasovTdeltaplimit - a}, {r, 0, $TarasovTplimit}, {es, 0, $TarasovTplimit - r}
+			{ia, 0, $TarasovTdeltaplimit}, {ib, 0, $TarasovTdeltaplimit - ia}, {ir, 0, $TarasovTplimit}, {es, 0, $TarasovTplimit - ir}
 		]
 	];
 
 matarti =
 	Timing[
+		ia = 0;
+		ib = 0;
+		ir = 0;
+		es = 0;
 		Do[
 			If[0 < ia + ib + ir + es,
 				WriteString["stdout", {ia, ib, ir, es}];
@@ -3436,7 +3507,7 @@ tlrule[9] =
 	);
 
 tlrule[10] =
-	TLR[_, _, {_, _, (x_)?PNQ, (y_)?PNQ, _}, {{(n1_)?PQ, _}, {(n2_)?PQ, _}, {0, _}, {0, _}, _}] :> (TLRComment["tlrule10"]; 0 /; OddQ[x + y]);
+	TLR[_, _, {_, _, (x_)?PNQ, (y_)?PNQ, _}, {{(_)?PQ, _}, {(_)?PQ, _}, {0, _}, {0, _}, _}] :> (TLRComment["tlrule10"]; 0 /; OddQ[x + y]);
 
 tlrule[11] =
 	TLR[d_, pp_, {v_, w_, (x_)?PQ, (y_)?PQ, z_}, {nm1_, nm2_, {0, _}, {0, _}, {(n5_)?PQ, m5_}}] :>
@@ -3831,7 +3902,9 @@ TarcerExpand[expr_, d_Symbol -> fe_ /; Length[Variables[fe]] === 1, ru___Rule] :
 	TarcerExpand[expr, d -> fe, 0, ru];
 
 TarcerExpand[expr_, d_Symbol -> fe_, (order_Integer)?NonNegative, opts___Rule] :=
-	Block[{t1, t2, t3, t4, numfa, z2rule, restfa, ta0, tarcNumericalFactor, tarcFactor1, eeps},
+	Block[{
+		t1, t2, t3, t4, numfa, z2rule, restfa, ta0, tarcNumericalFactor, tarcFactor1, eeps, ints, vars,
+		t0, recurse, zeta2replace},
 
 	eeps = Variables[fe][[1]];
 	tarcNumericalFactor[x_] :=
