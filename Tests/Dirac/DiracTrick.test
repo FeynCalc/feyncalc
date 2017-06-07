@@ -1347,7 +1347,13 @@ DiracTrick[GA[5].GAD[mu]]//FCE",
 {"fcstDiracTrickBMHV-ID23", "DiracTrick[GSE[p].GS[p]]//FCE",
 "GSE[p] . GS[p]"},
 {"fcstDiracTrickBMHV-ID24", "DiracTrick[GSE[p].GSE[p]]//FCE",
-"SPE[p, p]"}
+"SPE[p, p]"},
+{"fcstDiracTrickBMHV-ID25", "DiracTrick[GSD[l1].GAD[mu].GSD[p].GAD[mu].GSD[l2], FCE -> True]",
+"(2 - D) GSD[l1].GSD[p].GSD[l2]"},
+{"fcstDiracTrickBMHV-ID26", "DiracTrick[GS[l1].GA[mu].GS[p].GA[mu].GS[l2], FCE -> True]",
+"-2 GS[l1].GS[p].GS[l2]"},
+{"fcstDiracTrickBMHV-ID27", "DiracTrick[GSE[l1].GAE[mu].GSE[p].GAE[mu].GSE[l2], FCE -> True]",
+"(6 - D) GSE[l1].GSE[p].GSE[l2]"}
 });
 
 Tests`Dirac`fcstDiracTrickOneFreeIndex = {
