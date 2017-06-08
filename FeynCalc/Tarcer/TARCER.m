@@ -801,8 +801,8 @@ TarasovT[r_, s_, qq_, {alp1_, alp2_, alp3_, alp4_, alp5_}] :=
 TarasovT[r_, s_, pp_, dp_ /; Head[dp] =!= List] :=
 	TarasovT[r, s, pp, dp, {"g", "g", "g", "g", "g"}]
 
-TarasovT[a_, b_, r_, s_, pp_, _, {alp1_, alp2_, alp3_, alp4_, alp5_}] :=
-	Block[{al1, al2, al3, al4, al5, alrul, new, Q1, Q11, Q12, Q2, Q22, dum1, dum2, be1, be2, ga1, ga2, dp, rho},
+TarasovT[a_, b_, r_, s_, pp_, dp_, {alp1_, alp2_, alp3_, alp4_, alp5_}] :=
+	Block[{al1, al2, al3, al4, al5, alrul, new, Q1, Q11, Q12, Q2, Q22, dum1, dum2, be1, be2, ga1, ga2, rho},
 
 		If[alp1 === 0, al1 = 0]; If[alp2 === 0, al2 = 0];
 		If[alp3 === 0, al3 = 0]; If[alp4 === 0, al4 = 0];
