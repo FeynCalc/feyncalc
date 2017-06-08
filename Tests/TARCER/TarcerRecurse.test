@@ -28,5 +28,16 @@ Pair[Momentum[p, D], Momentum[p, D]], {{1, 0}, {1, 0}, {1, \
 	"-(((-3 + D)*TBI[D, SPD[p, p], {{1, 0}, {1, 0}}])/SPD[p, p])"},
 {"fcstTarcerRecurse-ID4",
 "TarcerRecurse[ToTFI[FAD[q,q,-p+q,-p+q],q,p]]",
-"((-6 + D)*(-3 + D)*TBI[D, SPD[p, p], {{1, 0}, {1, 0}}])/SPD[p, p]^2"}
+"((-6 + D)*(-3 + D)*TBI[D, SPD[p, p], {{1, 0}, {1, 0}}])/SPD[p, p]^2"},
+{"fcstTarcerRecurse-ID5",
+"TarcerRecurse[
+TFI[d, M^2, DelP, {1, 0}, {{2, M}, 1, 1, {1, M}, {1, M}}]]",
+"-(((-2 + d)^2 (3776 - 4902 d + 2175 d^2 - 404 d^3 + 27 d^4) DelP (
+Tarcer`TAI[d, 0, {{1, M}}])^2)/(
+256 (-5 + d)^2 (-4 + d)^2 (-3 + d) M^8)) - ((-2 + d) (-10 +
+	3 d) (-8 + 3 d) DelP Tarcer`TJI[
+d, M^2, {{1, M}, {1, 0}, {1, 0}}])/(
+32 (-5 + d) (-4 + d) (-7 + 2 d) M^6) + (
+d (-10 + 3 d) (-8 + 3 d) DelP Tarcer`TJI[
+d, M^2, {{1, M}, {1, M}, {1, M}}])/(128 (-4 + d)^2 M^6)"}
 });
