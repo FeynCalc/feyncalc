@@ -219,7 +219,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
-				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True];
+				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True(*, Factoring->False*)];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracSimplify: dsPart: ",dsPart , FCDoControl->dsVerbose];
@@ -232,11 +232,12 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Applying diracSimplifyEval", FCDoControl->dsVerbose];
 
-			diracObjectsEval = Map[(diracSimplifyEvalFast[#]/. diracSimplifyEvalFast->diracSimplifyEval)&, (diracObjects/.dsHead->Identity)];
+			diracObjectsEval = Map[(diracTrickEvalFast[#,optInsideDiracTrace,optDiracOrder]/. diracTrickEvalFast[zzz_,__]:>diracSimplifyEval[zzz])&, (diracObjects/.dsHead->Identity)];
+
 			FCPrint[3,"DiracSimplify: After diracSimplifyEval: ", diracObjectsEval, FCDoControl->dsVerbose];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
-			If[ !FreeQ2[diracObjectsEval,{diracSimplifyEvalFast,diracSimplifyEval,holdDOT}],
+			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
@@ -252,16 +253,16 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 				from internal functions	*)
 			FCPrint[1,"DiracSimplify: Fast mode.", FCDoControl->dsVerbose];
 
-			tmp = diracSimplifyEvalFast[ex];
-			(* It might happen that after diracSimplifyEvalFast there are no Dirac matrices left.*)
+			tmp = diracTrickEvalFast[ex,optInsideDiracTrace,optDiracOrder];
+			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
-			FCPrint[3,"DiracSimplify: After diracSimplifyEvalFast: ", tmp , FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: After diracTrickEvalFast: ", tmp , FCDoControl->dsVerbose];
 
-			If[ !FreeQ2[tmp,{DiracHeadsList,diracSimplifyEvalFast}],
-				tmp = tmp /. diracSimplifyEvalFast->diracSimplifyEval
+			If[ !FreeQ2[tmp,{DiracHeadsList,diracTrickEvalFast}],
+				tmp = tmp /. diracTrickEvalFast[zzz_,__]:>diracSimplifyEval[zzz]
 			];
 
-			If[ !FreeQ2[tmp,{diracSimplifyEvalFast,diracSimplifyEval,holdDOT}],
+			If[ !FreeQ2[tmp,{diracTrickEvalFast,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			]
@@ -878,14 +879,6 @@ trI[ x__] :=
 
 *)
 
-diracSimplifySpinors[expr_]:=
-	Block[{tmp},
-		tmp = expr;
-
-		tmp
-
-	];
-
 
 SirlinRelations[expr_, OptionsPattern[]]:=
 	expr;
@@ -1032,8 +1025,25 @@ Simplifications:
 DiracEquation (+ clever splitting), DiracOrder, DiracGammaExpand
 
 sirlin0 -> usual sirlin
-ChisholmSpinor -> try harder
+sirlin00 (uses ChisholmSpinor) -> try harder, but only if $SpinorMinimal is set to true!
 
+
+sirlin0:
+	Only 4D dirac matrices -> sirlin2, sirlin0doit
+	Otherwise: sirlin3
+
+sirlin3 canonicalizes Dirac indices -> this is what FCCanonicalizeDummyIndices does
+
+
+sirlin2 applies Sirlin identities from the paper
+
+sirlin0doit, applies sirlin1 and then switches between sirlin1 and sirlin2 several times.
+
+sirlin1: determines Schnittmenge and applies DiracOrder to reorder dirac matrices in the chain...
+
+Let us start with sirlin2
+
+sirlin22 ???? appears nowhere else
 
 *)
 
@@ -1054,10 +1064,7 @@ sirlin00[x_] :=
 sirlin00[x_] :=
 	MemSet[sirlin00[x],
 		Block[ {te, tg5, ntg5, test},
-			FCPrint[3,"sirlin001"];
-			(* te = sirlin0[x]//ExpandAll; *)
 			te = sirlin0[x]//Expand;
-			FCPrint[3,"sirlin002"];
 			If[ FreeQ2[te,{DiracGamma[6],DiracGamma[7]}]&&
 				Head[te]===Plus && !FreeQ[te,DiracGamma[5]],
 				tg5 = Select[te, !FreeQ[#,DiracGamma[5]]& ];
@@ -1101,14 +1108,15 @@ ChisholmSpinor[x_, choice_:0] :=
 		]
 	];
 
-
+(*
 ident3[a_,_] :=
 	a;
-
+*)
 (* #################################################################### *)
 (*                             Main442                                  *)
 (* #################################################################### *)
 (* canonize different dummy indices *)  (*sirlin3def*)
+(*
 sirlin3a[x_] :=
 	((sirlin3[Expand[Contract[x](*,Spinor*)]/.
 	$MU->dum$y]/.dum$y->$MU)/.  sirlin3 -> Identity)//Contract;
@@ -1135,7 +1143,7 @@ Spinor[p4__]]] :=
 	(m DOT[Spinor[p1], ga1,    DiracGamma[ LorentzIndex[$MU[1], di],di ], ga2,
 	Spinor[p2]] DOT[Spinor[p3], ga3, DiracGamma[LorentzIndex[$MU[1], di], di], ga4,
 	Spinor[p4]])/; FreeQ2[{ga1,ga2,ga3,ga4}, DiracGamma[_,_]];
-
+*)
 
 (* #################################################################### *)
 (*                             Main443                                  *)
@@ -1155,7 +1163,7 @@ sirlin0[x_] :=
 			]
 		]
 	];
-
+(*
 $sirlintime = 242;
 
 SetAttributes[timeconstrained, HoldAll];
@@ -1165,7 +1173,7 @@ If[ $OperatingSystem === "Unix",
 		TimeConstrained[x],
 	timeconstrained[x_,__] :=
 		x
-];
+];*)
 
 sirlin0doit[a_Plus] :=
 	timeconstrained[sirlin3a[Contract[
