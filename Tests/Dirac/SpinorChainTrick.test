@@ -1,0 +1,81 @@
+
+
+(* :Title: SpinorChainTrick.test                                                    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SpinorChainTrick                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstSpinorChainTrick =
+({
+{"fcstSpinorChainTrick-ID1", "SpinorChainTrick[0]", "0"},
+{"fcstSpinorChainTrick-ID2", "SpinorChainTrick[a]", "a"},
+{"fcstSpinorChainTrick-ID3",
+"SpinorChainTrick[SpinorUBar[p1,m1].GA[mu].SpinorU[p2,m2],FCE\
+\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . GA[mu] . Spinor[Momentum[p2], m2, \
+1]"},
+{"fcstSpinorChainTrick-ID4",
+"MatchQ[SpinorChainTrick[SpinorUBar[p1,m1].GA[mu].SpinorU[p2,m2]\
+SpinorVBar[p1,m1].GA[mu].SpinorV[p4,m4],FCE\[Rule]True],\
+\[IndentingNewLine]Spinor[-Momentum[p1],m1,1].GA[FCGV[x_]].Spinor[-\
+Momentum[p4],m4,1] \
+Spinor[Momentum[p1],m1,1].GA[FCGV[x_]].Spinor[Momentum[p2],m2,1]]",
+"True"},
+{"fcstSpinorChainTrick-ID5",
+"MatchQ[\[IndentingNewLine]SpinorChainTrick[a \
+SpinorUBar[p1,m1].GA[mu].SpinorU[p2,m2]SpinorVBar[p1,m1].GA[mu].\
+SpinorV[p4,m4]+\[IndentingNewLine]b \
+SpinorUBar[p1,m1].GA[nu].SpinorU[p2,m2]SpinorVBar[p1,m1].GA[nu].\
+SpinorV[p4,m4],FCE\[Rule]True],\[IndentingNewLine](a+b) \
+Spinor[-Momentum[p1],m1,1].GA[FCGV[x_]].Spinor[-Momentum[p4],m4,1] \
+Spinor[Momentum[p1],m1,1].GA[FCGV[x_]].Spinor[Momentum[p2],m2,1]]",
+"True"},
+{"fcstSpinorChainTrick-ID6",
+"SpinorChainTrick[
+a SpinorUBar[p1, m1].GA[mu].SpinorU[p2, m2] SpinorVBar[p1, m1].GAE[
+	mu].SpinorV[p4, m4] +
+b SpinorUBar[p1, m1].GAE[nu].SpinorU[p2, m2] SpinorVBar[p1, m1].GA[
+	nu].SpinorV[p4, m4], FCE -> True]",
+"0"},
+{"fcstSpinorChainTrick-ID7",
+"MatchQ[SpinorChainTrick[
+a SpinorUBar[p1, m1].GA[mu].SpinorU[p2, m2] SpinorVBar[p1, m1].GAD[
+	mu].SpinorV[p4, m4] +
+b SpinorUBar[p1, m1].GA[nu].SpinorU[p2, m2] SpinorVBar[p1, m1].GAD[
+	nu].SpinorV[p4, m4],
+FCE -> True], (a + b) Spinor[-Momentum[p1], m1, 1].GA[
+	FCGV[x_]].Spinor[-Momentum[p4], m4, 1] Spinor[Momentum[p1], m1,
+	1].GA[FCGV[x_]].Spinor[Momentum[p2], m2, 1]]",
+"True"},
+{"fcstSpinorChainTrick-ID8",
+"MatchQ[SpinorChainTrick[
+a SpinorUBar[p1, m1].GAE[mu].SpinorU[p2, m2] SpinorVBar[p1, m1].GAD[
+	mu].SpinorV[p4, m4] +
+b SpinorUBar[p1, m1].GAE[nu].SpinorU[p2, m2] SpinorVBar[p1,
+	m1].GAD[nu].SpinorV[p4, m4],
+FCE -> True], (a + b) Spinor[-Momentum[p1], m1, 1].GAE[
+	FCGV[x_]].Spinor[-Momentum[p4], m4, 1] Spinor[Momentum[p1], m1,
+	1].GAE[FCGV[x_]].Spinor[Momentum[p2], m2, 1]]",
+"True"},
+{"fcstSpinorChainTrick-ID9",
+"MatchQ[SpinorChainTrick[
+SpinorUBar[p1, m1].GA[mu, rho, nu].(1/2 + la1/2 GA[5]).SpinorU[p2,
+	m2] SpinorUBar[p3, m3].GA[mu, tau,
+	nu].(1/2 + la2/2 GA[5]).SpinorU[p4, m4], FCE -> True],
+Spinor[Momentum[p1], m1, 1].GA[l1_].GA[rho].GA[
+	l2_].(1/2 + 1/2 la1 GA[5]).Spinor[Momentum[p2], m2, 1] Spinor[
+	Momentum[p3], m3, 1].GA[l1_].GA[tau].GA[
+	l2_].(1/2 + 1/2 la2 GA[5]).Spinor[Momentum[p4], m4, 1]
+]",
+"True"}
+});

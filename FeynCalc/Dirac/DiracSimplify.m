@@ -271,44 +271,12 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		(* To simplify products of spinor chains we need to work with the full expression	*)
 		If[	!FreeQ[tmp,Spinor],
 
-			FCPrint[1, "DiracSimplify: Simplifying spinor chains.", FCDoControl->dsVerbose];
-
-			tmp = FCDiracIsolate[tmp,FCI->True, Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
-				DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->True, Spinor->Join, DiracGamma->False,
-				Isolate->True, IsolateNames->dsIso] /. dsHead->Identity;
-
-			(* First of all, let us canonicalize dummy Lorentz and Cartesian indices *)
-			tmp = FCCanonicalizeDummyIndices[tmp, FCI->True, Head->{LorentzIndex,CartesianIndex}];
-
-			(* then do the contractions *)
-			tmp = tmp /. dsHead[x_] :> Contract[x, FCI->True];
-			tmp = FRH[tmp, IsolateNames->dsIso];
-
-			(* and collect again *)
-			tmp = FCDiracIsolate[tmp,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
-				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, Spinor->Join, DiracGamma->False];
-
-			diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-
-			(* Contract and recollect ... *)
-
-			FCPrint[3,"DiracSimplify: diracObjects: ",diracObjects , FCDoControl->dsVerbose];
-
-
-
-			diracObjectsEval = Map[(diracSimplifySpinors[#])&, (diracObjects/.dsHead->Identity)];
-
-			If[ !FreeQ2[diracObjectsEval,{diracSimplifySpinors,holdDOT}],
-				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
-				Abort[]
-			];
-
-			FCPrint[1, "DiracSimplify: Inserting Dirac objects back.", FCDoControl->dsVerbose];
+			FCPrint[1, "DiracSimplify: Applying SpinorChainTrick.", FCDoControl->dsVerbose];
 			time=AbsoluteTime[];
-			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
-			FCPrint[3,"DiracSimplify: repRule: ",repRule , FCDoControl->dsVerbose];
-			tmp =  ( tmp/.repRule);
-			FCPrint[1, "DiracSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose]
+			tmp = SpinorChainTrick[tmp, FCI->True,DiracGammaCombine->!optDiracGammaExpand, DiracSigmaExplicit->optDiracSigmaExplicit];
+
+			FCPrint[1,"DiracSimplify: Done applying SpinorChainTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[3, "DiracSimplify: After SpinorChainTrick: ", tmp, FCDoControl->dsVerbose]
 		];
 
 
@@ -317,10 +285,10 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 		If[	optExpanding,
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracSimplify: Expanding the result.", FCDoControl->diTrVerbose];
+			FCPrint[1, "DiracSimplify: Expanding the result.", FCDoControl->dsVerbose];
 			res = Expand[res];
-			FCPrint[1,"DiracSimplify: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
-			FCPrint[3, "DiracSimplify: After expanding: ", res, FCDoControl->diTrVerbose]
+			FCPrint[1,"DiracSimplify: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[3, "DiracSimplify: After expanding: ", res, FCDoControl->dsVerbose]
 		];
 
 
@@ -440,55 +408,7 @@ oldDiracSimplify[x_,opts:OptionsPattern[]] :=
 DiracSubstitute67[x_] :=
 	x/. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2),
 		DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
-(*
-(*if the expression doesn't contain any non-commutative objects, return it unevaluated*)
-diracSimplify[x_, OptionsPattern[]] :=
-	x /; NonCommFreeQ[x];
-*)
-(*CHANGE 1298 *)
-(*
-diracSimplify[x_, in:OptionsPattern[]] :=
-	If[ $BreitMaison === True,
-		diracSimplifyBM[x,in],
-		diracSimplifyNV[x,in]
-	];
-*)
-(*
-diracSimplifyBM[x_,in:OptionsPattern[]] :=
-	MemSet[diracSimplifyBM[x,in], diracSimplifyGEN[x,in]];
-diracSimplifyNV[x_,in:OptionsPattern[]] :=
-	MemSet[diracSimplifyNV[x,in], diracSimplifyGEN[x,in]];
 
-diracSimplifyInsideTrace[ex_] :=
-	Block[{diracdt=ex,holdDOT},
-		(* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
-		(*    diracdt = diracdt/.DOT->trIC/. *)
-		(*  only do cyclicity simplification if there is a simple structure of Dirac matrices *)
-		If[ FreeQ[diracdt/. DOT -> holdDOT, holdDOT[a__/; !FreeQ[{a}, holdDOT]]],
-			diracdt = diracdt/.DOT->trIC/.
-			(* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
-			{trI:>dS, spursav:> dS};
-		];
-
-
-		(* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
-		(* even be more careful: and get rid of cyclic simplifications hrere ... *)
-		diracdt =
-			FixedPoint[Collect2[#/.DOT->dS, DOT, Factoring -> False]&, diracdt, 5](*/.DOT ->trIC/.trI->dS*);
-		FCPrint[2,"dir2done, diracdt=", FullForm[diracdt]];
-		If[ FreeQ[ diracdt, DOT ],
-			diracdt = diracdt/.DiracGamma[_[__],___]->0;
-			diracpag = PartitHead[diracdt,DiracGamma];
-			If[ diracpag[[2]] === DiracGamma[5],
-				diracdt = 0
-			];
-			If[ diracpag[[2]] === DiracGamma[6] || diracpag[[2]] === DiracGamma[7],
-				diracdt = 1/2  diracpag[[1]]
-			]
-		];
-		diracdt
-	];
-*)
 
 diracSimplifyEval[expr_]:=
 	Block[{tmp=expr, time, time2, res},
@@ -637,227 +557,6 @@ diracSimplifyEval[expr_]:=
 
 
 	];
-
-(*
-diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
-	If[ FreeQ[x, DiracGamma],
-		x,
-		Block[ {diracopt,diracdt,diracndt = 0,diraccanopt,diracpdt,diracgasu,
-			diracldt,diracjj = 0,diractrlabel,diracga67,diracsifac,
-			diracpag,colle, dooT,time},
-			(* There are several options *)
-
-
-
-
-
-			diraccanopt  = OptionValue[DiracSimplify,{opts},DiracCanonical];
-			diractrlabel = OptionValue[DiracSimplify,{opts},InsideDiracTrace];
-			diracga67    = OptionValue[DiracSimplify,{opts},DiracSubstitute67];
-			diracgasu    = OptionValue[DiracSimplify,{opts},DiracSimpCombine];
-			diracsifac   = OptionValue[DiracSimplify,{opts},Factoring];
-
-
-			time=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify.", FCDoControl->dsVerbose];
-			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify to  ", x, FCDoControl->dsVerbose];
-			diracdt = DotSimplify[x//DiracGammaExpand, Expanding -> False];
-
-			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-
-
-			time=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Doing index contractions.", FCDoControl->dsVerbose];
-			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Contract indices in  ", diracdt, FCDoControl->dsVerbose];
-			If[ diracgasu === True,
-				diracdt = Contract[DiracGammaCombine[diracdt/.Pair->PairContract,FCI->True], Expanding -> True, Factoring -> False, EpsContract -> False],
-				diracdt = Contract[diracdt, Expanding -> True, Factoring -> False, EpsContract -> False]
-			(*/. DOT->dS*)
-			];
-			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Done doing index contractions, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-
-
-			(* Commented out Sept. 9 203 by RM, in order to fix the 27/3 2003 bug
-			diracdt = Expand2[ ExpandScalarProduct[diracdt//fEx], {Pair, DOT}]; *)
-
-			If[ diractrlabel===True,
-				FCPrint[2,"DiracSimplify: diracSimplifyGEN: Simplifications inside a Dirac trace.", FCDoControl->dsVerbose];
-				FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying simplifications that are valid only inside a Dirac trace", FCDoControl->dsVerbose];
-				diracdt=diracSimplifyInsideTrace[diracdt]
-			];
-			(* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
-			FCPrint[2,"dir2a, diracdt=", FullForm[diracdt]];
-			(* diracdt = Expand2[ ExpandScalarProduct[diracdt//fEx], {Pair, DOT}]; *)
-
-			FCPrint[2,"DiracSimplify: diracSimplifyGEN: Expanding scalar products", FCDoControl->dsVerbose];
-			diracdt =
-				Expand[ ExpandScalarProduct[diracdt//fEx], DOT | Pair];
-
-
-			FCPrint[2,"dir3, diracdt=", FullForm[diracdt]];
-			If[ FreeQ[diracdt,DOT],
-				diracndt = Expand[(diracdt/.PairContract->ExpandScalarProduct)//DiracGammaExpand];
-				If[ diracga67 === True,
-					diracndt = Expand[diracndt//DiracSubstitute67]
-				],
-				FCPrint[2,"dir3 expanding "];
-				(* diracdt = Expand[ diracdt ]; *)
-				diracdt = Expand[ diracdt, DOT ];
-				FCPrint[2,"dir3 expanding done ", Length[diracdt]];
-				If[ Head[diracdt] === Plus,
-					diracldt = Length[diracdt],
-					If[ diracdt===0,
-						diracldt = 0,
-						diracldt = 1
-					]
-				];
-
-				diracpdt = diracdt;
-
-				(* TODO: Here we would need cyclicity simplifications *)
-				(*If[ diractrlabel,
-					(* change 2005-02-05
-					diracpdt = diracpdt/.DOT->trIC/.trI->dS//. DOT -> trIC/.trI->dS; *)
-					diracpdt = DiracTrick[diracpdt]
-				];*)
-(*
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Expanding scalar products", FCDoControl->dsVerbose];
-				diracpdt = ExpandScalarProduct[diracpdt]//Expand;*)
-
-
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Subsituting chiral projectors", FCDoControl->dsVerbose];
-				If[ diracga67,
-					If[!FreeQ2[diracpdt,{DiracGamma[6],DiracGamma[7]}],
-						diracpdt = DiracSubstitute67[diracpdt]
-					];
-					If[!FreeQ2[diracndt,{DiracGamma[6],DiracGamma[7]}],
-						diracndt = DiracSubstitute67[diracndt]
-					]
-				];
-
-
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DiracTrick", FCDoControl->dsVerbose];
-				diracpdt = fEx[DiracGammaExpand[diracpdt]]//DiracTrick;
-
-
-				If[ diractrlabel===True,
-					FCPrint[2,"DiracSimplify: diracSimplifyGEN: Simplifications inside a Dirac trace.", FCDoControl->dsVerbose];
-					FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying simplifications that are valid only inside a Dirac trace", FCDoControl->dsVerbose];
-					diracpdt=diracSimplifyInsideTrace[diracpdt]
-				];
-
-				(*If[ diractrlabel,
-					diracpdt = fEx[(diracpdt//DiracGammaExpand)//DiracTrick](*/.
-									DOT->trIC/.trI->dS//.DOT->dS/.
-									DOT->trIC/.trI->dS *) ,
-					diracpdt = fEx[DiracGammaExpand[diracpdt]//DiracTrick]//DiracTrick
-				];*)
-
-				(*FCPrint[1,"DiracSimplify: diracSimplifyGEN: Subsituting chiral projectors", FCDoControl->dsVerbose];
-				If[ diracga67,
-					diracpdt = DiracSubstitute67[ diracpdt/.DOT->dr67 ],
-					diracpdt = fEx[ diracpdt ]
-				];*)
-
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Expanding scalar products and other things", FCDoControl->dsVerbose];
-				diracndt = diracndt + Expand2[ExpandScalarProduct[diracpdt], DOT];
-
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Doing contractions", FCDoControl->dsVerbose];
-				diracndt = diracndt /. PairContract->ExpandScalarProduct;
-
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify", FCDoControl->dsVerbose];
-				diracndt = DotSimplify[diracndt, Expanding -> False]//Expand;
-
-				If[ diraccanopt===True,
-					FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying canonical ordering", FCDoControl->dsVerbose];
-					diracndt = DiracOrder[ diracndt ];
-					diracndt = DotSimplify[diracndt, Expanding -> False]//Expand
-				];
-			];
-
-			If[ diracsifac,
-				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Factoring the result", FCDoControl->dsVerbose];
-				diracndt = Factor2[ diracndt ]
-			];
-
-			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Leaving DiracSimplify", FCDoControl->dsVerbose];
-
-			diracndt/.spursav:> DOT
-		]
-	];  (* end of diracSimplify *)
-*)
-(*
-dr67[ b___ ] :=
-	dS[ b ]/;FreeQ2[{b},{DiracGamma[6],DiracGamma[7]}];
-
-dr67[ b___,DiracGamma[6],z___ ] :=
-	1/2 dS[b,z] + 1/2 dS[ b,DiracGamma[5],z];
-
-dr67[ b___,DiracGamma[7],z___ ] :=
-	1/2 dS[b,z] - 1/2 dS[ b,DiracGamma[5],z];
-
-
-
-
-
-(* cyclic property *) (* Changed by F.Orellana, 14/1-2002.
-						Dropped Kreimer scheme. According to
-						Rolf it's wrong *)
-trIC[y___] :=
-	tris @@ cyclic[y];
-
-cyclic[x__] :=
-	RotateLeft[{x},Position[{x},First[Sort[{x}]]][[1,1]]];
-cyclic[] :=
-	{};
-
-(* ************************************************************** *)
-(* fr567def, frlivcdef : two special FreeQ - checking functions *)
-	fr567[x__] :=
-		True /; FreeQ2[FixedPoint[ReleaseHold, {x}],{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-
-(* Properties and special cases of traces (up to a factor 4) *)
-tris[x___] :=
-	tris[x] = trI[x];
-
-trI[a_Plus] :=
-	Map[tris, a];
-trI[] =
-	1;
-trI[ DiracGamma[5] ] =
-	0;
-trI[ DiracGamma[6] ] =
-	1/2;
-trI[ DiracGamma[7] ] =
-	1/2;
-
-trI[ a:DiracGamma[_[__]].. ,DiracGamma[n_] ] :=
-	0 /;(OddQ[Length[{a}]]&&(n==5 || n==6 || n==7));
-
-trI[ a:DiracGamma[_[__],___].. ,DiracGamma[n_] ] :=
-	0 /;(OddQ[Length[{a}]]&&(n==5 || n==6 || n==7)) && ($BreitMaison === False);
-
-trI[ d:DiracGamma[__].. ] :=
-	0/;(OddQ[Length[{d}]] && fr567[ d ]);
-
-trI[ d:DiracGamma[_[__],___].. ,DiracGamma[5] ] :=
-	0/;Length[{d}]<4;
-
-trI[x_] :=
-	x /; FreeQ[ {x},DiracGamma ];
-
-trI[ DiracGamma[a_[b__],___],DiracGamma[c_[d__],___], DiracGamma[6] ] :=
-	1/2 ExpandScalarProduct[ a[b],c[d] ];
-
-trI[ DiracGamma[a_[b__],___],DiracGamma[c_[d__],___], DiracGamma[7] ] :=
-	1/2 ExpandScalarProduct[ a[b],c[d] ];
-
-trI[ x__] :=
-	spursav[x]/;
-	( Length[{x}] < 11 && fr567[x]) || ( Length[{x}] <  6 && (!fr567[x]));
-*)
-(* #################################################################### *)
-
 
 (* SpinorChainEvaluatedef *)
 
