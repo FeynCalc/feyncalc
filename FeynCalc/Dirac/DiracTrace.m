@@ -279,7 +279,6 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: DiracTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: After DiracTrick: ", tmp, FCDoControl->diTrVerbose];
 
-
 			tmp = tmp /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /. DOT -> prepSpur;
 			tmp = tmp /. prepSpur[zzz__] :> spurHead@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Wrapped in spurHead: ",tmp, FCDoControl->diTrVerbose];
@@ -377,7 +376,8 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 					(*	NDR	*)
 					!$Larin && !$BreitMaison,
 						Message[DiracTrace::ndranomaly];
-						Abort[],
+						(*Abort[]*)
+						traceListChiral = traceListChiral/. spurHead -> noSpur,
 					(*	Larin	*)
 					$Larin && !$BreitMaison,
 						FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral traces will be computed using Larin's scheme", FCDoControl->diTrVerbose];
@@ -404,7 +404,8 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: traceListChiral", traceListChiral, FCDoControl->diTrVerbose];
 
 			(* Check that there are no uncomputed traces left *)
-			If[	!FreeQ2[traceListChiral,{spurHead,DiracGamma,trace5}],
+			If[	!FreeQ2[traceListChiral /. _noSpur:>1 ,{spurHead,DiracGamma,trace5}],
+				Print[traceListChiral];
 				Message[DiracTrace::failmsg, "Not all chiral traces were evaluated."];
 				Abort[]
 			];
