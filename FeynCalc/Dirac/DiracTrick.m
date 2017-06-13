@@ -134,7 +134,17 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Applying diracTrickEval", FCDoControl->diTrVerbose];
-			diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];
+			(*	diracObjectsEval = Map[(diracTrickEvalFast[#]/. diracTrickEvalFast->diracTrickEval)&, (diracObjects/.dsHead->Identity)];*)
+
+			diracObjectsEval = diracTrickEvalFast/@(diracObjects/.dsHead->Identity);
+
+			If[	!FreeQ[diracObjectsEval,Pair],
+				diracObjectsEval = diracObjectsEval /. diracTrickEvalFast[zzz_] :> diracTrickEvalFast[Expand2[zzz,Pair]/. Pair->PairContract /. PairContract->Pair]
+			];
+
+			diracObjectsEval = diracObjectsEval /. diracTrickEvalFast -> diracTrickEval;
+
+
 			FCPrint[3,"DiracTrace: After diracTrickEval: ", diracObjectsEval, FCDoControl->diTrVerbose];
 			FCPrint[1,"DiracTrace: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
@@ -149,7 +159,16 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
-			res = diracTrickEvalFast[ex] /. diracTrickEvalFast->diracTrickEval;
+
+			res = diracTrickEvalFast[ex];
+
+			If[	!FreeQ[diracObjectsEval,Pair],
+				res = res /. diracTrickEvalFast[zzz_] :> diracTrickEvalFast[Expand2[zzz,Pair]/. Pair->PairContract /. PairContract->Pair]
+			];
+
+			If[ !FreeQ2[res,{DiracHeadsList,diracTrickEvalFast}],
+				res = res /. diracTrickEvalFast -> diracTrickEval
+			];
 
 			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval,holdDOT}],
 				Message[DiracTrick::failmsg,"Evaluation of isolated objects failed."];
