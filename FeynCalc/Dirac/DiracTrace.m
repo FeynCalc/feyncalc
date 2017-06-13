@@ -64,7 +64,7 @@ noSpur::usage="";
 leviCivitaSign::usage="";
 
 Options[DiracTrace] = {
-	Contract -> 400000,
+	Contract -> True,
 	DiracTraceEvaluate-> False,
 	EpsContract -> False,
 	Expand -> True,
