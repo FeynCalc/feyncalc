@@ -182,6 +182,22 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 
 			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: Doing contractions", FCDoControl->diTrVerbose];
+
+			If[	!FreeQ[diracObjectsEval,Pair],
+				diracObjectsEval = diracObjectsEval /. diracTrickEvalFast[zzz_] :> diracTrickEvalFast[Expand2[zzz,Pair]/. Pair->PairContract /. PairContract->Pair]
+			];
+
+			If[	!FreeQ[diracObjectsEval,CartesianPair],
+				diracObjectsEval = diracObjectsEval /. diracTrickEvalFast[zzz_] :> diracTrickEvalFast[Expand2[zzz,CartesianPair]/.
+					CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair]
+			];
+
+			FCPrint[1,"DiracTrick: Contractions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrick: After contractions: ", diracObjectsEval, FCDoControl->diTrVerbose];
+
+
+			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Applying diracTrickEval", FCDoControl->diTrVerbose];
 
 			diracObjectsEval = diracObjectsEval /. diracTrickEvalFast -> diracTrickEval;
@@ -204,6 +220,15 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
 			res = diracTrickEvalFast[ex];
+
+			If[	!FreeQ[diracObjectsEval,Pair],
+				res = res /. diracTrickEvalFast[zzz_] :> diracTrickEvalFast[Expand2[zzz,Pair]/. Pair->PairContract /. PairContract->Pair]
+			];
+
+			If[	!FreeQ[diracObjectsEval,CartesianPair],
+				res = res /. diracTrickEvalFast[zzz_] :> diracTrickEvalFast[Expand2[zzz,CartesianPair]/.
+					CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair]
+			];
 
 			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
@@ -371,6 +396,9 @@ diracTrickEvalFast[DOT[___, DiracGamma[(h1:6|7)],DiracGamma[_[_]], xy:DiracGamma
 diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_]]), xy:DiracGamma[_[_]].. , DiracGamma[(h:6|7)], c___]] :=
 	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]];
 
+
+diracTrickEval[ex:DiracGamma[__]]:=
+	ex/; !insideDiracTrace;
 
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 	Which[
