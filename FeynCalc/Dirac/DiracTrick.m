@@ -48,7 +48,7 @@ Options[DiracTrick] = {
 	FCE -> False,
 	FCVerbose -> False,
 	InsideDiracTrace -> False,
-	FCJoinDOTs -> True
+	FCJoinDOTs -> False
 };
 
 (* TODO: Bad syntax that one should get rid off*)
@@ -314,7 +314,7 @@ diracTrickEvalCachedBMHV[x_] :=
 diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent,null1,null2,dsHead},
 
-		FCPrint[1, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
+		FCPrint[2, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
 
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
@@ -338,7 +338,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		If[	insideDiracTrace,
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify ", FCDoControl->diTrVerbose];
+			FCPrint[2, "DiracTrick: diracTrickEval: Applying diracTraceSimplify ", FCDoControl->diTrVerbose];
 			res = diracTraceSimplify[res] /. DOT -> holdDOT /. diracTraceSimplify[holdDOT[x__]] :> diracTraceSimplify[x]/.
 			diracTraceSimplify -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 			FCPrint[1,"DiracTrick: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
@@ -369,89 +369,89 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		If[	gamma5Present,
 
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracTrick: diracTrickEval: Applying chiralTrick ", FCDoControl->diTrVerbose];
+			FCPrint[2, "DiracTrick: diracTrickEval: Applying chiralTrick ", FCDoControl->diTrVerbose];
 			Which[
 					(* Purely 4-dimensional -> use anticommuting g^5 *)
 					MatchQ[dim,{4}|{3,4}],
-						FCPrint[1, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
+						FCPrint[2, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickAnticommuting4Dim;
 						res = FixedPoint[(# /. chiralTrickAnticommuting4Dim -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommuting4Dim)&,res];
 						res = res /. chiralTrickAnticommuting4Dim -> holdDOT,
 					(* Purely D-dimensional and NDR -> use anticommuting g^5 *)
 					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && !$BreitMaison && !$Larin,
-						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim, NDR.", FCDoControl->diTrVerbose];
+						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim, NDR.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickAnticommutingDDim;
 						res = FixedPoint[(# /. chiralTrickAnticommutingDDim -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommutingDDim)&,res];
 						res = res /. chiralTrickAnticommutingDDim -> holdDOT,
 					(* Purely D-dimensional and BMHV -> don't move anything around *)
 					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && ($BreitMaison && !$Larin),
-						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
+						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						Null,
 					(* Purely D-dimensional and Larin use the substitution rule to eliminate g^5 that are not on the left of the trace *)
 					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (!$BreitMaison && $Larin),
-						FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
+						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickLarin /. chiralTrickLarin -> holdDOT,
 					(* Mixed and BMHV -> don't move g^5 around *)
 					dim=!={} && $BreitMaison && !$Larin,
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
 					(* special case that the expression contains only chiral or g^0 matrices*)
 					dim==={} && !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[TemporalIndex[]]}] && FreeQ[(res/.DiracGamma[5|6|7|TemporalIndex[]]:>diga),DiracGamma],
-					FCPrint[1, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
+					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
 						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
 						Abort[]
 			];
 
-			FCPrint[1,"DiracTrick: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[2,"DiracTrick: diracTrickEval: chiralTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After chiralTrick ", res, FCDoControl->diTrVerbose];
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}]
 		];
 
 		(* Here we do all the simplifications not realted to g^5	*)
-		FCPrint[1, "DiracTrick: diracTrickEval: Doing simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
+		FCPrint[2, "DiracTrick: diracTrickEval: Doing simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
 		Which[
 			(* Purely 4-dimensional *)
 			MatchQ[dim,{4}|{3,4}],
-				FCPrint[1, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
-				FCPrint[1, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* Purely D-dimensional *)
 			MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}],
-				FCPrint[1, "DiracTrick: diracTrickEval: Purely D-dim.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyDDim;
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
 				res = res /. diracologyDDim -> holdDOT,
 			(* Purely D-4-dimensional and BMHV *)
 			MatchQ[dim,{_Symbol - 4}] && $BreitMaison && !$Larin,
-				FCPrint[1, "DiracTrick: diracTrickEval: Purely D-4-dim.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Purely D-4-dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyDDim;
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
 				res = res /. diracologyDDim -> holdDOT,
 			(* Mixed and BMHV *)
 			dim=!={} && $BreitMaison && !$Larin,
-				FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyBMHV1;
 				res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
 				res = res /. diracologyBMHV1 -> holdDOT,
 			(* special case that the expression contains only g^0 matrices*)
 			dim==={} && !FreeQ2[res,{DiracGamma[TemporalIndex[]]}] && FreeQ[(res/.DiracGamma[TemporalIndex[]]:>diga),DiracGamma],
-				FCPrint[1, "DiracTrick: diracTrickEval: Only g^0 matrices.", FCDoControl->diTrVerbose];
-				FCPrint[1, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Only g^0 matrices.", FCDoControl->diTrVerbose];
+				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* special case that the expression contains only chiral or g^0 matrices*)
 					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[TemporalIndex[]]}] && FreeQ[(res/.DiracGamma[5|6|7|TemporalIndex[]]:>diga),DiracGamma],
-					FCPrint[1, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
+					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
 						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
 						Abort[]
 		];
-		FCPrint[1, "DiracTrick: diracTrickEval: Done with simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
+		FCPrint[2, "DiracTrick: diracTrickEval: Done with simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: After simplifications unrelated to g^5: ", res , FCDoControl->diTrVerbose];
 
 		If[ FreeQ2[res,DiracHeadsList],
@@ -460,15 +460,15 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		(*	For BMHV we need to handle g^5 again here*)
 		If[	gamma5Present && $BreitMaison && !$Larin,
-			FCPrint[1, "DiracTrick: diracTrickEval: Doing special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
+			FCPrint[2, "DiracTrick: diracTrickEval: Doing special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
 			res = res /. holdDOT -> gamma5MoveBMHV;
 						res = FixedPoint[(# /. gamma5MoveBMHV -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommuting4Dim /. chiralTrickAnticommuting4Dim -> gamma5MoveBMHV)&,res];
-			FCPrint[1, "DiracTrick: diracTrickEval: Additional simplifications of g^5 in BMHV.", FCDoControl->diTrVerbose];
+			FCPrint[2, "DiracTrick: diracTrickEval: Additional simplifications of g^5 in BMHV.", FCDoControl->diTrVerbose];
 			res = res /. gamma5MoveBMHV -> diracologyBMHV1;
 			res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
 			res = res /. diracologyBMHV1 -> holdDOT;
-			FCPrint[1, "DiracTrick: diracTrickEval: Done with special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
+			FCPrint[2, "DiracTrick: diracTrickEval: Done with special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After special simplifications for the BMHV scheme: ", res , FCDoControl->diTrVerbose];
 		];
 
@@ -480,16 +480,16 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		If[	insideDiracTrace && res=!=0,
 			time=AbsoluteTime[];
-			FCPrint[1, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
+			FCPrint[2, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
 			res = FCDiracIsolate[res, DotSimplify->False, FCI->True, DiracGammaCombine->False, FCJoinDOTs->optJoin, Head->dsHead];
 			res = res  /. {dsHead[DiracGamma[5]] :> 0, dsHead[DiracGamma[6|7]] :> 1/2 } /. DOT-> holdDOT/.
 			dsHead[holdDOT[x__]] :>  diracTraceSimplify[x];
 			res = res /. diracTraceSimplify -> DOT /. dsHead-> Identity /. holdDOT -> DOT;
-			FCPrint[1,"DiracTrick: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[2,"DiracTrick: diracTrickEval: diracTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 			FCPrint[3, "DiracTrick: diracTrickEval: After diracTraceSimplify ", res, FCDoControl->diTrVerbose]
 		];
 
-		FCPrint[1, "DiracTrick: diracTrickEval: Leaving.", FCDoControl->diTrVerbose];
+		FCPrint[2, "DiracTrick: diracTrickEval: Leaving.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: Leaving with ", res, FCDoControl->diTrVerbose];
 		res
 	];
