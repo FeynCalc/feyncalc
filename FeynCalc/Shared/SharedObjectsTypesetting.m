@@ -1347,14 +1347,13 @@ TemporalIndex /:
 		ToBoxes[0,TraditionalForm];
 
 TemporalPair /:
-	MakeBoxes[TemporalPair[TemporalIndex[],
-	TemporalMomentum[b_]+c_:0], TraditionalForm]:=
-		If[ Head[b]===Plus || c=!=0,
-			SuperscriptBox[ RowBox[{"(",TBox[TemporalMomentum[b+(c/.TemporalMomentum[xx_,___]:>xx)]],")"}],
+	MakeBoxes[TemporalPair[TemporalIndex[], (c0: _. TemporalMomentum[b_]) + c1_:0], TraditionalForm]:=
+		If[ Head[b]===Plus || c1=!=0,
+			SuperscriptBox[ RowBox[{"(",TBox[TemporalMomentum[c0+c1]],")"}],
 				0],
-			SuperscriptBox[ RowBox[{TBox[TemporalMomentum[b+(c/.TemporalMomentum[xx_,___]:>xx)]]}],
+			SuperscriptBox[ RowBox[{TBox[c0+c1]}],
 				0]
-		]
+		];
 
 (*    Typesetting for momenta.    *)
 (* ------------------------------------------------------------------------ *)
