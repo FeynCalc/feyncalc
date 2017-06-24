@@ -307,15 +307,15 @@ feynampback[a__] :=
 		{4},
 		FAD[Sequence @@ ({a} /. PropagatorDenominator -> propd),Dimension->4],
 		(* special case for PD[0,_] *)
-		({} && !FreeQ[a,PD[0,_]]),
+		({} && !FreeQ[{a},PD[0,_]]),
 		FAD @@ ({a} /. PropagatorDenominator -> propd),
 
-		{_Symbol},
+		{_},
 		FAD[Sequence @@ ({a} /. PropagatorDenominator -> propd),Dimension->First[dimS]],
 
 		_,
 		Message[FCE::feynamp,ToString[{a},InputForm]];
-		FeynAmpDenominator[a]
+		Abort[]
 	];
 
 
