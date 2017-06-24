@@ -173,7 +173,7 @@ saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 	saveToTFI[z, q1,q2,p,opts] =
 	Catch[
-	Module[ {dim, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs,tmp},
+	Module[ {dim, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
 		dim = Dimension /. {opts} /. Options[ToTFI];
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];

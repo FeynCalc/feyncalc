@@ -34,6 +34,14 @@ q2]^2"},
 "TarcerToFC[Tarcer`TFI[d, M^2, OPEDelta, {1, 3}, {{2, M}, {1, 0}, {1, 0}, {1, M}, {1, M}}], {q1, q2}]",
 "FAD[{q1, M}, {q1, M}, {q2, 0}, {-M + q1, 0}, {-M + q2, M}, {q1 - q2,
 M}, Dimension -> d] Pair[Momentum[OPEDelta, d],
-Momentum[q1, d]] Pair[Momentum[OPEDelta, d], Momentum[q2, d]]^3"}
+Momentum[q1, d]] Pair[Momentum[OPEDelta, d], Momentum[q2, d]]^3"},
+{"fcstTarcerToFC-ID6",
+"TarcerToFC[(mG^2*(FVD[q, Lor1]*FVD[q, Lor2] -
+	MTD[Lor1, Lor2]*SPD[q, q])* Tarcer`TFI[2 + D,
+	SPD[q, q], {{5, I*mG}, {2, mM}, {0, 0}, {0, 0}, {0,0}}])/(2*(-1 + D)), {q1, q2}] // FCE",
+"(1/(2 (-1 + D)))mG^2 FAD[{q1, I mG}, {q1, I mG}, {q1, I mG}, {q1,
+I mG}, {q1, I mG}, {q2, mM}, {q2, mM},
+Dimension -> 2 + D] (FVD[q, Lor1] FVD[q, Lor2] -
+MTD[Lor1, Lor2] SPD[q, q])"}
 });
 

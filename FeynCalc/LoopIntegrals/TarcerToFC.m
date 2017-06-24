@@ -70,7 +70,7 @@ TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
 
 
 		rules = {
-			Tarcer`TFI[d_Symbol, pp_, {u_,v_,r_,s_,t_}, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
+			Tarcer`TFI[d_, pp_, {u_,v_,r_,s_,t_}, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
 				Pair[Momentum[q1,d],Momentum[q1,d]]^u*
 				Pair[Momentum[q2,d],Momentum[q2,d]]^v*
 				Pair[Momentum[momconv[pp],d],Momentum[q1,d]]^r*
@@ -79,27 +79,27 @@ TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
 				FCI[FAD[{q1,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},{q1-q2,m5,nu5},Dimension->d]],
 
 
-			Tarcer`TFI[d_Symbol, pp_, dp_, {a_,b_}, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
+			Tarcer`TFI[d_, pp_, dp_, {a_,b_}, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
 				Pair[Momentum[dp,d],Momentum[q1,d]]^a*
 				Pair[Momentum[dp,d],Momentum[q2,d]]^b*
 				Identity[FAD[{q1,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},{q1-q2,m5,nu5},Dimension->d]],
 
-			Tarcer`TFI[d_Symbol, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
+			Tarcer`TFI[d_, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_},{nu5_,m5_}}] :>
 				FCI[FAD[{q1,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},{q1-q2,m5,nu5},Dimension->d]],
 
-			Tarcer`TFI[d_Symbol, pp_, {nu1_,nu2_,nu3_,nu4_,nu5_}] :>
+			Tarcer`TFI[d_, pp_, {nu1_,nu2_,nu3_,nu4_,nu5_}] :>
 				FCI[FAD[{q1,0,nu1},{q2,0,nu2},{q1-momconv[pp],0,nu3},{q2-momconv[pp],0,nu4},{q1-q2,0,nu5},Dimension->d]],
 
-			Tarcer`TVI[d_Symbol, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_}}] :>
+			Tarcer`TVI[d_, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_},{nu4_,m4_}}] :>
 				FCI[FAD[{q1-q2,m1,nu1},{q2,m2,nu2},{q1-momconv[pp],m3,nu3},{q2-momconv[pp],m4,nu4},Dimension->d]],
 
-			Tarcer`TJI[d_Symbol, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_}}] :>
+			Tarcer`TJI[d_, pp_, {{nu1_,m1_},{nu2_,m2_},{nu3_,m3_}}] :>
 				FCI[FAD[{q1,m1,nu1},{q1-q2,m2,nu2},{q2-momconv[pp],m3,nu3},Dimension->d]],
 
-			Tarcer`TBI[d_Symbol, pp_, {{nu1_,m1_},{nu2_,m2_}}] :>
+			Tarcer`TBI[d_, pp_, {{nu1_,m1_},{nu2_,m2_}}] :>
 				FCI[FAD[{q1,m1,nu1},{q1-momconv[pp],m2,nu2},Dimension->d]],
 
-			Tarcer`TAI[d_Symbol, 0, {{nu1_,m1_}}] :>
+			Tarcer`TAI[d_, 0, {{nu1_,m1_}}] :>
 				FCI[FAD[{q1,m1,nu1},Dimension->d]]
 
 
