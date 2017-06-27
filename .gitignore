@@ -9,7 +9,12 @@ FeynCalc/Tarcer/*.mx
 FeynCalc/AddOns/*
 FeynCalc/Documentation
 FeynCalc/Documentation/*
+FeynCalc/DocOutput
+FeynCalc/DocOutput/*
+
 build/*
 .settings/*
 .amateras
 
+/.DS_Store
+/.gitignore
