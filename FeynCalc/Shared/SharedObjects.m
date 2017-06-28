@@ -1262,6 +1262,9 @@ DiracSigma[DOT[a_,b_]] :=
 DiracSigma[___, 0, ___] =
 	0;
 
+DiracSigma[a_, a_] :=
+	0/; FCPatternFreeQ[{a}];
+
 DiracSigma[a_, b_] :=
 	-DiracSigma[b, a] /; !OrderedQ[{a,b}] && FCPatternFreeQ[{a,b}];
 
