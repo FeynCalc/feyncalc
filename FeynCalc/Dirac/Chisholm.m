@@ -150,11 +150,22 @@ Chisholm[expr_, OptionsPattern[]] :=
 						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___]] :>
 						(tmpli1= LorentzIndex[$MU[Unique[]]]; tmpli2= LorentzIndex[$MU[Unique[]]]; (
 						- $LeviCivitaSign/2 Eps[lv1, lv2, tmpli1, tmpli2] dsHead[holdDOT[DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b]] +
-						Pair[lv1, lv2] dsHead[holdDOT[DiracGamma[5],b]]))} //. {dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])],
-						DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___]] :>
-						(tmpli1= LorentzIndex[$MU[Unique[]]]; tmpli2= LorentzIndex[$MU[Unique[]]]; (
+						Pair[lv1, lv2] dsHead[holdDOT[DiracGamma[5],b]]))} //. {
+
+						dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])], DiracGamma[(lv2:(LorentzIndex|Momentum)[_])], DiracGamma[5], b___]] :>
+						(
+						tmpli1= LorentzIndex[$MU[Unique[]]];
+						tmpli2= LorentzIndex[$MU[Unique[]]];
 						- $LeviCivitaSign/2 Eps[lv1, lv2, tmpli1, tmpli2] dsHead[holdDOT[a,DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b]] +
-						Pair[lv1, lv2] dsHead[holdDOT[a,DiracGamma[5],b]]))};
+						Pair[lv1, lv2] dsHead[holdDOT[a,DiracGamma[5],b]])
+						} //. {
+						dsHead[holdDOT[a___, DiracSigma[DiracGamma[lv1_], DiracGamma[lv2_]], DiracGamma[5], b___]] :>
+						(
+						tmpli1= LorentzIndex[$MU[Unique[]]];
+						tmpli2= LorentzIndex[$MU[Unique[]]];
+						-I*$LeviCivitaSign (1/2) dsHead[holdDOT[a,DiracSigma[DiracGamma[tmpli1], DiracGamma[tmpli2]],b]] Eps[lv1, lv2, tmpli1, tmpli2]
+						)
+						};
 					FCPrint[1, "Done applying Chisholm identity  (mode 2), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
 				True,
 				Message[Chisholm::failmsg, "Unknown operation mode."];

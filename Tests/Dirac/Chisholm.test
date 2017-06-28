@@ -77,5 +77,45 @@ GA[k].GA[a_].GA[b_].GA[g] LC[i,j,a_,b_]-1/4 I \
 GA[k].GA[b_].GA[a_].GA[g] LC[i,j,a_,b_]-GA[k].GA[g].GA[5] MT[i,j]]",
 "True"},
 {"fcstChisholm-ID17", "Chisholm[CGA[i, j, k]]",
-"DiracGamma[CartesianIndex[i]].DiracGamma[CartesianIndex[j]].DiracGamma[CartesianIndex[k]]"}
+"DiracGamma[CartesianIndex[i]].DiracGamma[CartesianIndex[j]].DiracGamma[CartesianIndex[k]]"},
+{"fcstChisholm-ID18",
+"MatchQ[$LeviCivitaSign=I; \
+Chisholm[DiracSigma[GA[mu],GA[nu]].GA[5],Mode\[Rule]2,FCE\[Rule]True],\
+\[IndentingNewLine]\!\(\*FractionBox[\(1\), \(2\)]\) \
+DiracSigma[GA[a_],GA[b_]] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID19",
+"MatchQ[$LeviCivitaSign=-1; \
+Chisholm[DiracSigma[GA[mu],GA[nu]].GA[5],Mode\[Rule]2,FCE\[Rule]True],\
+\[IndentingNewLine]I\!\(\*FractionBox[\(1\), \(2\)]\) \
+DiracSigma[GA[a_],GA[b_]] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID20",
+"MatchQ[$LeviCivitaSign=-I; \
+Chisholm[DiracSigma[GA[mu],GA[nu]].GA[5],Mode\[Rule]2,FCE\[Rule]True],\
+\[IndentingNewLine]-\!\(\*FractionBox[\(1\), \(2\)]\) \
+DiracSigma[GA[a_],GA[b_]] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID21",
+"MatchQ[$LeviCivitaSign=1; \
+Chisholm[DiracSigma[GA[mu],GA[nu]].GA[5],Mode\[Rule]2,FCE\[Rule]True],\
+\[IndentingNewLine]-I\!\(\*FractionBox[\(1\), \(2\)]\) \
+DiracSigma[GA[a_],GA[b_]] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID22",
+"MatchQ[$LeviCivitaSign=I; \
+Chisholm[GS[p].DiracSigma[GA[mu],GA[nu]].GA[5].GS[q],Mode\[Rule]2,FCE\
+\[Rule]True],\[IndentingNewLine]\!\(\*FractionBox[\(1\), \(2\)]\) \
+GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID23",
+"MatchQ[$LeviCivitaSign=-I; \
+Chisholm[GS[p].DiracSigma[GA[mu],GA[nu]].GA[5].GS[q],Mode\[Rule]2,FCE\
+\[Rule]True],\[IndentingNewLine]-\!\(\*FractionBox[\(1\), \(2\)]\) \
+GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID24",
+"MatchQ[$LeviCivitaSign=1; \
+Chisholm[GS[p].DiracSigma[GA[mu],GA[nu]].GA[5].GS[q],Mode\[Rule]2,FCE\
+\[Rule]True],\[IndentingNewLine]-I\!\(\*FractionBox[\(1\), \(2\)]\) \
+GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID25",
+"MatchQ[$LeviCivitaSign=-1; \
+Chisholm[GS[p].DiracSigma[GA[mu],GA[nu]].GA[5].GS[q],Mode\[Rule]2,FCE\
+\[Rule]True],\[IndentingNewLine]I\!\(\*FractionBox[\(1\), \(2\)]\) \
+GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"}
 })
