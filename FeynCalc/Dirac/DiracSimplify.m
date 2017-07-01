@@ -88,6 +88,7 @@ Options[DiracSimplify] = {
 	DiracSimpCombine	-> False,
 	DiracSubstitute67	-> False,
 	DiracTrace			-> True,
+	DiracTraceEvaluate	-> False,
 	EpsContract			-> True,
 	ExpandScalarProduct	-> True,
 	Expanding			-> True,
@@ -154,9 +155,6 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		(* TODO: Need to fish out Dirac traces and handle them separately *)
-
-
 		(* Here we separately simplify each chain of Dirac matrices	*)
 		If[	OptionValue[FCDiracIsolate],
 			(*	This is the standard mode for calling DiracSimplify	*)
@@ -167,8 +165,8 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
 				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True];
 
-			If[	!OptionValue[DiracTrace],
-				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz;
+			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
+				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz
 			];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
@@ -177,19 +175,29 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[1, "DiracSimplify: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-			FCPrint[3,"DiracSimplify: diracObjects: ",diracObjects , FCDoControl->dsVerbose];
+			diracObjectsEval = diracObjects;
+			FCPrint[3,"DiracSimplify: diracObjects: ", diracObjects , FCDoControl->dsVerbose];
+
+			If[ OptionValue[DiracTraceEvaluate],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracSimplify: Calculating Dirac traces.", FCDoControl->dsVerbose];
+				diracObjectsEval = diracObjectsEval /. DiracTrace[zz_, opts:OptionsPattern[]] :> DiracTrace[zz, DiracTraceEvaluate->True, opts];
+				FCPrint[1, "DiracSimplify: Done calculating Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjects , FCDoControl->dsVerbose]
+
+			];
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Applying diracSimplifyEval", FCDoControl->dsVerbose];
 
-			diracObjectsEval = diracTrickEvalFastFromDiracSimplifyList[(diracObjects/.dsHead->Identity), {optInsideDiracTrace,optDiracOrder}];
+			diracObjectsEval = FeynCalc`Package`diracTrickEvalFastFromDiracSimplifyList[(diracObjectsEval/.dsHead->Identity), {optInsideDiracTrace,optDiracOrder}];
 
 			diracObjectsEval = diracSimplifyEval/@diracObjectsEval;
 
 			FCPrint[3,"DiracSimplify: After diracSimplifyEval: ", diracObjectsEval, FCDoControl->dsVerbose];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
-			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFastFromDiracSimplifyList,diracSimplifyEval,holdDOT}],
+			If[ !FreeQ2[diracObjectsEval,{FeynCalc`Package`diracTrickEvalFastFromDiracSimplifyList,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
@@ -205,7 +213,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 				from internal functions	*)
 			FCPrint[1,"DiracSimplify: Fast mode.", FCDoControl->dsVerbose];
 
-			tmp = diracTrickEvalFastFromDiracSimplifySingle[ex, {tmpHead,optInsideDiracTrace,optDiracOrder}];
+			tmp = FeynCalc`Package`diracTrickEvalFastFromDiracSimplifySingle[ex, {tmpHead,optInsideDiracTrace,optDiracOrder}];
 
 			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
@@ -215,7 +223,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 				tmp = tmp /. tmpHead -> diracSimplifyEval
 			];
 
-			If[ !FreeQ2[tmp,{diracTrickEvalFastFromDiracSimplifySingle,diracSimplifyEval,holdDOT}],
+			If[ !FreeQ2[tmp,{FeynCalc`Package`diracTrickEvalFastFromDiracSimplifySingle,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			]
