@@ -77,7 +77,8 @@ Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Moment
 		(32*M^4*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p] -
 		(16*D*M^4*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p] -
 		(32*M^2*ma^2*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p] +
-		(16*D*M^2*ma^2*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p]"}
+		(16*D*M^2*ma^2*FAD[{k1, M}, {k1 - p, ma}])/SPD[p, p]"},
+{"fcstDiracSimplify-ID23","DiracSimplify[DiracTrace[GA[a, b, a]] + GA[a, a], DiracTrace -> False, FCE -> True]","4 + DiracTrace[GA[a].GA[b].GA[a]]"}
 };
 
 
