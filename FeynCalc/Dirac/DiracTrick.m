@@ -28,7 +28,8 @@ The problem reads: `1`"
 
 Begin["`Package`"]
 
-diracTrickEvalFast;
+diracTrickEvalFastFromDiracSimplifyList;
+diracTrickEvalFastFromDiracSimplifySingle;
 
 End[]
 
@@ -37,6 +38,7 @@ Begin["`DiracTrick`Private`"]
 diTrVerbose::usage="";
 diracTraceSimplify::usage="";
 insideDiracTrace::usage="";
+diracOrder::usage="";
 optJoin::usage="";
 diga::usage="";
 
@@ -50,6 +52,32 @@ Options[DiracTrick] = {
 	InsideDiracTrace -> False,
 	FCJoinDOTs -> False
 };
+
+diracTrickEvalFastFromDiracSimplifyList[diracObjects_List, {optInsideDiracTrace_, optDiracOrder_}]:=
+	Block[{tmp1,tmp2,res},
+		tmp1 = insideDiracTrace;
+		tmp2 = diracOrder;
+		insideDiracTrace = optInsideDiracTrace;
+		diracOrder = optDiracOrder;
+		res = (diracTrickEvalFast/@diracObjects) /. diracTrickEvalFast->Identity;
+		insideDiracTrace = tmp1;
+		diracOrder = tmp2;
+		res
+	];
+
+diracTrickEvalFastFromDiracSimplifySingle[diracObject_, {tmpHead_, optInsideDiracTrace_, optDiracOrder_}]:=
+	Block[{tmp1,tmp2,res},
+		tmp1 = insideDiracTrace;
+		tmp2 = diracOrder;
+		insideDiracTrace = optInsideDiracTrace;
+		diracOrder = optDiracOrder;
+		res = diracTrickEvalFast[diracObject] /. diracTrickEvalFast->tmpHead;
+		insideDiracTrace = tmp1;
+		diracOrder = tmp2;
+		res
+	];
+
+
 
 (* TODO: Bad syntax that one should get rid off*)
 DiracTrick[] = 1;
@@ -145,9 +173,19 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[3,"DiracTrick: diracObjects: ",diracObjects , FCDoControl->diTrVerbose];
 
 			time=AbsoluteTime[];
+			FCPrint[1, "DiracTrick: Applying diracTrickEvalFast", FCDoControl->diTrVerbose];
+
+			diracObjectsEval = diracTrickEvalFast/@(diracObjects/.dsHead->Identity);
+
+			FCPrint[1,"DiracTrick: diracTrickEvalFast done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrick: After diracTrickEvalFast: ", diracObjectsEval, FCDoControl->diTrVerbose];
+
+
+			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Applying diracTrickEval", FCDoControl->diTrVerbose];
 
-			diracObjectsEval = Map[(diracTrickEvalFast[#,insideDiracTrace, (*diracOrder*) False]/. diracTrickEvalFast[zzz_,___]:>diracTrickEval[zzz] )&, (diracObjects/.dsHead->Identity)];
+			diracObjectsEval = diracObjectsEval /. diracTrickEvalFast -> diracTrickEval;
+
 			FCPrint[3,"DiracTrick: After diracTrickEval: ", diracObjectsEval, FCDoControl->diTrVerbose];
 			FCPrint[1,"DiracTrick: diracTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
@@ -165,14 +203,14 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1,"DiracTrick: Fast mode.", FCDoControl->diTrVerbose];
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
-			res = diracTrickEvalFast[ex,insideDiracTrace, (*diracOrder*) False];
+			res = diracTrickEvalFast[ex];
 
 			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
 			FCPrint[3,"DiracTrick: After diracTrickEvalFast: ", res , FCDoControl->diTrVerbose];
 
 			If[ !FreeQ2[res,{DiracHeadsList,diracTrickEvalFast}],
-				res = res /. diracTrickEvalFast[zzz_,___]:>diracTrickEval[zzz]
+				res = res /. diracTrickEvalFast -> diracTrickEval
 			];
 
 			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval,holdDOT}],
@@ -200,51 +238,138 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		res
 	];
 
-(* Here we can quickly handle trivial contractions of short expressions *)
+(*	Here we can quickly handle trivial contractions of short expressions. Usually such expressions appear
+	when we call DiracTrick from DiracTrace after DotSimplify. Hence, the rules should be as simple, as possible	*)
 
-diracTrickEvalFast[ex:DiracGamma[__],(*insideDiracTrace*) False, (*diracOrder*) False]:=
-	ex;
+diracTrickEvalFast[ex:DiracGamma[__]]:=
+	ex/; !insideDiracTrace && !diracOrder;
 
-diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma],(*insideDiracTrace*) False, (*diracOrder*) False]:=
+diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
 	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], TemporalIndex}] &&
 	(Sort[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]] ===
-	Union[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]]);
+	Union[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]])/; !insideDiracTrace && !diracOrder;
 
-diracTrickEvalFast[x_DiracGamma, (*insideDiracTrace*) True,  (*diracOrder*) _]:=
-	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]];
+diracTrickEvalFast[DOT[b___DiracGamma,di_DiracGamma,c__DiracGamma]] :=
+	diracTrickEvalFast[DOT[c,b, di]]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
+	FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}]/; insideDiracTrace;
 
-diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma],(*insideDiracTrace*) True,  (*diracOrder*) _]:=
-	0/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x,y}]];
+diracTrickEvalFast[x_DiracGamma]:=
+	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]] && insideDiracTrace;
 
-diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[5],y___DiracGamma],(*insideDiracTrace*) True,  (*diracOrder*) _]:=
-	0/; Length[{x,y}]<4 && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
-diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[6|7],y___DiracGamma],(*insideDiracTrace*) True,  (*diracOrder*) _]:=
-	0/; OddQ[Length[{x,y}]] && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+diracTrickEvalFast[DOT[DiracGamma[(arg1:_[_, dim1___]),dim1___], DiracGamma[(arg2:_[_, dim2___]), dim2___]]] :=
+	FCUseCache[ExpandScalarProduct,{PairContract[arg1,arg2] /. PairContract->Pair},{}]/; insideDiracTrace;
 
-diracTrickEvalFast[DiracGamma[5],(*insideDiracTrace*) True,  (*diracOrder*) _]:=
-	0;
+diracTrickEvalFast[DOT[DiracGamma[(arg1:_[_, dim1___]),dim1___], DiracGamma[(arg2:_[_, dim2___]), dim2___], DiracGamma[6|7]]]:=
+	1/2 FCUseCache[ExpandScalarProduct,{PairContract[arg1,arg2] /. PairContract->Pair},{}]/; insideDiracTrace;
 
-diracTrickEvalFast[DiracGamma[6|7],(*insideDiracTrace*) True,  (*diracOrder*) _]:=
-	1/2;
+diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
+	0/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x,y}]] && insideDiracTrace;
 
-diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex], DiracGamma[l_LorentzIndex], d___], opts__] :=
-	4 diracTrickEvalFast[DOT[ b,d ], opts];
+diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[5],y___DiracGamma]]:=
+	0/; Length[{x,y}]<4 && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && insideDiracTrace;
 
-diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex, dim_], DiracGamma[l_LorentzIndex, dim_], d___], opts__] :=
-	dim diracTrickEvalFast[DOT[ b,d ], opts];
+diracTrickEvalFast[DOT[x___DiracGamma,DiracGamma[6|7],y___DiracGamma]]:=
+	0/; OddQ[Length[{x,y}]] && FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && insideDiracTrace;
 
-diracTrickEvalFast[DOT[], __]:=
+diracTrickEvalFast[DiracGamma[5]]:=
+	0/; insideDiracTrace;
+
+diracTrickEvalFast[DiracGamma[6|7]]:=
+	1/2/; insideDiracTrace;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex], DiracGamma[l_LorentzIndex], d___]] :=
+	4 diracTrickEvalFast[DOT[ b,d ]];
+
+diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex, dim_], DiracGamma[l_LorentzIndex, dim_], d___]] :=
+	dim diracTrickEvalFast[DOT[ b,d ]];
+
+diracTrickEvalFast[DOT[]]:=
 	1;
 
-diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ], opts__] :=
-	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracTrickEvalFast[DOT[b,d], opts];
+diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ]] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracTrickEvalFast[DOT[b,d]];
 
-diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum, dim_], d___], opts__] :=
-	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracTrickEvalFast[DOT[b,d], opts];
+diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum, dim_], d___]] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracTrickEvalFast[DOT[b,d]];
 
-diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex, dim_:4], DiracGamma[c_Momentum, dim_:4], DiracGamma[l_LorentzIndex, dim_:4], d___], opts__] :=
-	(2 - dim) diracTrickEvalFast[DOT[ b, DiracGamma[c,  dim], d ], opts];
+diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex, dim_:4], DiracGamma[c_Momentum, dim_:4], DiracGamma[l_LorentzIndex, dim_:4], d___]] :=
+	(2 - dim) diracTrickEvalFast[DOT[ b, DiracGamma[c,  dim], d ]];
+
+diracTrickEvalFast[DOT[b___,DiracGamma[5], DiracGamma[5], d___]] :=
+	diracTrickEvalFast[DOT[ b,d ]];
+
+diracTrickEvalFast[DOT[b___, DiracGamma[5], DiracGamma[(hh:6|7)], c___]] :=
+	ga67Val1[hh] diracTrickEvalFast[DOT[b,DiracGamma[hh],c]];
+
+diracTrickEvalFast[DOT[b___, DiracGamma[(hh:6|7)], DiracGamma[5], c___]] :=
+	ga67Val1[hh]  diracTrickEvalFast[DOT[b,DiracGamma[hh],c]];
+
+diracTrickEvalFast[DOT[b___, DiracGamma[(hh1:6|7)],DiracGamma[(hh2:6|7)], c___]] :=
+	ga67Val2[hh1,hh2] diracTrickEvalFast[DOT[b, DiracGamma[hh2], c]];
+
+
+diracTrickEvalFast[DOT[DiracGamma[(a:6|7)],b___,DiracGamma[(a:6|7)]]] :=
+	diracTrickEvalFast[DOT[b,DiracGamma[a]]]/; insideDiracTrace;
+
+diracTrickEvalFast[DOT[DiracGamma[(h1:5|6|7)],b___,DiracGamma[(h2:5|6|7)]]] :=
+	ga67MatSign[h1,h2] diracTrickEvalFast[DOT[b,ga67Mat[h1,h2]]]/; h1=!=h2 && insideDiracTrace;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[_,_],_].. , d___]] :=
+	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]]/; !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___]] :=
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[h],d]]/; EvenQ[Length[{c}]] && !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___]] :=
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[ga67Switch1[h]],d]]/; OddQ[Length[{c}]] && !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[___,DiracGamma[(h:6|7)],DiracGamma[_[_,_],_], DiracGamma[(h:6|7)], ___]] :=
+	0/; !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), DiracGamma[(h2:6|7)], c___]] :=
+	diracTrickEvalFast[DOT[b, dg, DiracGamma[h2], c]]/; h1=!=h2 && !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_] ].. , DiracGamma[(h2:6|7)], c___]] :=
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h2], c]]/; EvenQ[Length[{xy}]] && h1=!=h2 && !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[___, DiracGamma[(h:6|7)],DiracGamma[_[_,_],_], xy:DiracGamma[_[_] ].. , DiracGamma[(h:6|7)], ___]] :=
+	0/; EvenQ[Length[{xy}]] && !$BreitMaison && !$Larin;
+
+
+diracTrickEvalFast[DOT[___, DiracGamma[(h1:6|7)],DiracGamma[_[_,_],_], xy:DiracGamma[_[_,_],_].. , DiracGamma[(h2:6|7)], ___]] :=
+	0/; OddQ[Length[{xy}]] && h1=!=h2 && !$BreitMaison && !$Larin;
+
+diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_,_],_].. , DiracGamma[(h:6|7)], c___]] :=
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]]  && !$BreitMaison && !$Larin;
+
+
+diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[_]].. , d___]] :=
+	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]];
+
+diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_]].. ,d___]] :=
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[h],d]]/; EvenQ[Length[{c}]];
+
+diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_]].. ,d___]] :=
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[ga67Switch1[h]],d]]/; OddQ[Length[{c}]];
+
+diracTrickEvalFast[DOT[___,DiracGamma[(h:6|7)],DiracGamma[_[_]], DiracGamma[(h:6|7)], ___]] :=
+	0;
+
+diracTrickEvalFast[DOT[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_]]), DiracGamma[(h2:6|7)], c___]] :=
+	diracTrickEvalFast[DOT[b, dg, DiracGamma[h2], c]]/; h1=!=h2;
+
+diracTrickEvalFast[DOT[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_]]), xy:DiracGamma[_[_] ].. , DiracGamma[(h2:6|7)], c___]] :=
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h2], c]]/; EvenQ[Length[{xy}]] && h1=!=h2;
+
+diracTrickEvalFast[DOT[___, DiracGamma[(h:6|7)],DiracGamma[_[_]], xy:DiracGamma[_[_] ].. , DiracGamma[(h:6|7)], ___]] :=
+	0/; EvenQ[Length[{xy}]];
+
+diracTrickEvalFast[DOT[___, DiracGamma[(h1:6|7)],DiracGamma[_[_]], xy:DiracGamma[_[_]].. , DiracGamma[(h2:6|7)], ___]] :=
+	0/; OddQ[Length[{xy}]] && h1=!=h2;
+
+diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_]]), xy:DiracGamma[_[_]].. , DiracGamma[(h:6|7)], c___]] :=
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]];
 
 
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
@@ -729,7 +854,7 @@ ga67MatSign[5,7]=
 ga67MatSign[6,5]=
 	1;
 
-ga67MatSignt[6,7]=
+ga67MatSign[6,7]=
 	0;
 
 ga67MatSign[7,5]=
