@@ -73,6 +73,7 @@ optDiracOrder::usage="";
 optFactoring::usage="";
 optEpsContract::usage="";
 optContract::usage="";
+optToDiracGamma67::usage="";
 
 Options[DiracSimplify] = {
 	Contract			-> True,
@@ -94,7 +95,8 @@ Options[DiracSimplify] = {
 	FeynCalcInternal    -> False,
 	InsideDiracTrace    -> False,
 	SirlinSimplify		-> True,
-	SpinorChainTrick	-> True
+	SpinorChainTrick	-> True,
+	ToDiracGamma67		-> True
 };
 
 DiracSimplify[expr_, OptionsPattern[]] :=
@@ -118,6 +120,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
 		optExpanding  			= OptionValue[Expanding];
 		optInsideDiracTrace		= OptionValue[InsideDiracTrace];
+		optToDiracGamma67		= OptionValue[ToDiracGamma67];
 
 		If[ OptionValue[Factoring] === Automatic,
 			optFactoring =
@@ -157,7 +160,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
-				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True];
+				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, ToDiracGamma67->optToDiracGamma67];
 
 			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
 				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz
@@ -212,6 +215,10 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
 			FCPrint[3,"DiracSimplify: After diracTrickEvalFast: ", tmp , FCDoControl->dsVerbose];
+
+			If[ OptionValue[ToDiracGamma67],
+				res = res /. tmpHead[zzz_]/;!FreeQ[{zzz}, DiracGamma[5]] :> tmpHead[ToDiracGamma67[zzz,FCI->True]]
+			];
 
 			If[ !FreeQ2[tmp,{DiracHeadsList,tmpHead}],
 				tmp = tmp /. tmpHead -> diracSimplifyEval
@@ -303,7 +310,7 @@ diracSimplifyEval[expr_]:=
 		(* First application of DiracTrick, no expansions so far *)
 		time=AbsoluteTime[];
 		FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
-		tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCDiracIsolate->False];
+		tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCDiracIsolate->False, ToDiracGamma67->optToDiracGamma67];
 		FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 		FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose];
 
@@ -326,7 +333,7 @@ diracSimplifyEval[expr_]:=
 
 			time2=AbsoluteTime[];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
-			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCJoinDOTs->False];
+			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCJoinDOTs->False, ToDiracGamma67->optToDiracGamma67];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose];
 		];

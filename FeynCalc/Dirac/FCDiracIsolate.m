@@ -50,7 +50,8 @@ Options[FCDiracIsolate] = {
 	FCJoinDOTs -> True,
 	LorentzIndex -> False,
 	Spinor -> True,
-	Split -> True
+	Split -> True,
+	ToDiracGamma67 -> False
 };
 
 makeSelectionList[expr_,heads_List]:=
@@ -89,6 +90,14 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			ex = DiracSigmaExplicit[ex, FCI->True];
 			FCPrint[1, "FCDiracIsolate: Done applying DiracSigmaExplicit timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 			FCPrint[3, "FCDiracIsolate: After DiracSigmaExplicit: ", ex, FCDoControl->fcdiVerbose]
+		];
+
+		If[ OptionValue[ToDiracGamma67],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCDiracIsolate: Applying ToDiracGamma67.", FCDoControl->fcdiVerbose];
+			ex = ToDiracGamma67[ex, FCI->True];
+			FCPrint[1, "FCDiracIsolate: Done applying ToDiracGamma67 timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After ToDiracGamma67: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		If[	OptionValue[DiracGammaCombine],

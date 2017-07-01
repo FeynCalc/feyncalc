@@ -1210,7 +1210,9 @@ GS[p].GA[mu].GA[nu].GA[rho].(bb GA[6] + aa GA[7])"},
 	Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
 DotSimplify // DiracTrick[#, FCJoinDOTs -> False, FCE -> True] &", "m Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[
 	Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
-Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]"}
+Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]"},
+{"fcstDiracTrickCoreProperties-ID119",
+"DiracTrick[GA[mu].(1/2 + GA[5]/2).GA[mu]]", "4 DiracGamma[7]"}
 });
 
 Tests`Dirac`fcstDiracTrick = {

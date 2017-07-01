@@ -45,7 +45,7 @@ DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIn
 "DiracSimplify[GA[i].(GS[p] + M).GA[j].GA[6].GA[k].GA[j], InsideDiracTrace -> True] // FCE",
 "-M MT[i, k]"},
 {"fcstDiracSimplify-ID17",
-"DiracSimplify[(1/2 - GA[5]/2).(-((a + GS[p + q])/b)).(1/2 + GA[5]/2)] // FCE",
+"DiracSimplify[(1/2 - GA[5]/2).(-((a + GS[p + q])/b)).(1/2 + GA[5]/2), ToDiracGamma67 -> False, FCE -> True]",
 "-(GS[p].GA[5]/(2 b)) - GS[q].GA[5]/(2 b) - GS[p]/(2 b) - GS[q]/(2 b)"},
 
 
@@ -82,7 +82,10 @@ Momentum[p1, D], m, 1] + 2 Spinor[Momentum[p3, D], m, 1].GAD[Lor1].Spinor[Moment
 {"fcstDiracSimplify-ID24","DiracSimplify[DiracTrace[GA[a, b, a]] + GA[a, b],
 DiracTraceEvaluate -> True, FCE -> True]","GA[a].GA[b]"},
 {"fcstDiracSimplify-ID25","DiracSimplify[DiracTrace[GA[a, b, c, d]] + GA[a, b, c, d],
-DiracTraceEvaluate -> True, FCE -> True]","GA[a].GA[b].GA[c].GA[d] + 4 MT[a, d] MT[b, c] - 4 MT[a, c] MT[b, d] + 4 MT[a, b] MT[c, d]"}
+DiracTraceEvaluate -> True, FCE -> True]","GA[a].GA[b].GA[c].GA[d] + 4 MT[a, d] MT[b, c] - 4 MT[a, c] MT[b, d] + 4 MT[a, b] MT[c, d]"},
+{"fcstDiracSimplify-ID26",
+"DiracSimplify[(1/2 - GA[5]/2).(-((a + GS[p + q])/b)).(1/2 + GA[5]/2), FCE -> True]",
+"-(GS[p].GA[6]/b) - GS[q].GA[6]/b"}
 };
 
 

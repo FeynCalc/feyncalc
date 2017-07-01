@@ -47,11 +47,12 @@ Options[DiracTrick] = {
 	DiracGammaCombine -> False,
 	Expanding -> False,
 	FCDiracIsolate -> True,
-	FCI -> False,
 	FCE -> False,
+	FCI -> False,
+	FCJoinDOTs -> False,
 	FCVerbose -> False,
 	InsideDiracTrace -> False,
-	FCJoinDOTs -> False
+	ToDiracGamma67 -> True
 };
 
 diracTrickEvalFastFromDiracSimplifyList[diracObjects_List, {optInsideDiracTrace_, optDiracOrder_}]:=
@@ -163,7 +164,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				FCJoinDOTs -> optJoin, LorentzIndex->True];
+				FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67]];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -218,6 +219,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1, "DiracTrick: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose],
 
 			FCPrint[1,"DiracTrick: Fast mode.", FCDoControl->diTrVerbose];
+
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracTrick/@exprList
 				from internal functions	*)
 			res = diracTrickEvalFast[ex];
@@ -234,6 +236,10 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
 			FCPrint[3,"DiracTrick: After diracTrickEvalFast: ", res , FCDoControl->diTrVerbose];
+
+			If[ OptionValue[ToDiracGamma67],
+				res = res /. diracTrickEvalFast[zzz_]/;!FreeQ[{zzz}, DiracGamma[5]] :> diracTrickEvalFast[ToDiracGamma67[zzz,FCI->True]]
+			];
 
 			If[ !FreeQ2[res,{DiracHeadsList,diracTrickEvalFast}],
 				res = res /. diracTrickEvalFast -> diracTrickEval

@@ -132,6 +132,9 @@ dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1
 	1] Spinor[Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1]] +
 6 dch[Spinor[Momentum[k], m, 1].GA[$MU[$39]].GA[5].Spinor[
 	Momentum[k], m, 1] Spinor[Momentum[p], m, 1].GA[$MU[$39]].GA[
-	5].Spinor[Momentum[p], m, 1]]"}
+	5].Spinor[Momentum[p], m, 1]]"},
+{"fcstFCDiracIsolate-ID24",
+"FCDiracIsolate[GA[mu].(1 + GA[5]).GA[nu], Head -> dsHead, ToDiracGamma67 -> True]//FCE",
+"2 dsHead[GA[mu].GA[6].GA[nu]]"}
 });
 
