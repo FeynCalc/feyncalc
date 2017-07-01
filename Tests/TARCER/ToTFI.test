@@ -33,5 +33,41 @@ tmp2 = ToTFI[FAD[{p2, mE}, {p2, mE}] MTD[Lor1, Lor2] SD[a, b], {p1, p2}, {q}]; \
 "{(32*CA^3*mE^2*SD[a, b]*(-(FVD[q, Lor1]*FVD[q, Lor2]) +
 	MTD[Lor1, Lor2]*SPD[q, q])*TFI[D, SPD[q, q], {0, 0, 1, 1, 0},
 	{{1, 0}, {1, mE}, {0, 0}, {0, 0}, {3, mE}}])/((-1 + D)*SPD[q, q]),
-MTD[Lor1, Lor2]*SD[a, b]*TAI[D, 0, {{2, mE}}]}"}
+MTD[Lor1, Lor2]*SD[a, b]*TAI[D, 0, {{2, mE}}]}"},
+
+{"fcstToTFI-ID6", "ToTFI[1/((-1 + D) SPD[q, q]^2)
+	FAD[{p1, I mG}, {p1, I mG}, {p1, I mG}, {p1, I mG}, {p2,
+	I mG}] SPD[p1, q]^2 SPD[p2,
+	q]^2 (D FVD[q, Lor1] FVD[q, Lor2] - MTD[Lor1, Lor2] SPD[q, q]) -
+1/((-1 + D) SPD[q, q]^2)
+	mG^2 FAD[{p1, I mG}, {p1, I mG}, {p1, I mG}, {p1, I mG}, {p1,
+	I mG}, {p2, I mG}] SPD[p1, q]^2 SPD[p2,
+	q]^2 (D FVD[q, Lor1] FVD[q, Lor2] - MTD[Lor1, Lor2] SPD[q, q]) +
+1/((-1 + D) SPD[q, q])
+	FAD[{p1, I mG}, {p1, I mG}, {p1, I mG}, {p1, I mG}] SPD[p1,
+	q]^2 (-FVD[q, Lor1] FVD[q, Lor2] + MTD[Lor1, Lor2] SPD[q, q]) -
+1/((-1 + D) SPD[q, q])
+	mG^2 FAD[{p1, I mG}, {p1, I mG}, {p1, I mG}, {p1, I mG}, {p1,
+	I mG}] SPD[p1,
+	q]^2 (-FVD[q, Lor1] FVD[q, Lor2] + MTD[Lor1, Lor2] SPD[q, q]) -
+1/((-1 + D) SPD[q, q])
+	mG^2 FAD[{p1, I mG}, {p1, I mG}, {p1, I mG}, {p1, I mG}, {p2,
+	I mG}] SPD[p1,
+	q]^2 (-FVD[q, Lor1] FVD[q, Lor2] + MTD[Lor1, Lor2] SPD[q, q]) +
+1/((-1 + D) SPD[q, q])
+	mG^4 FAD[{p1, I mG}, {p1, I mG}, {p1, I mG}, {p1, I mG}, {p1,
+	I mG}, {p2, I mG}] SPD[p1,
+	q]^2 (-FVD[q, Lor1] FVD[q, Lor2] + MTD[Lor1, Lor2] SPD[q, q]),
+p1, p2, q, TID -> True] // FCE",
+"((-(FVD[q, Lor1]*FVD[q, Lor2]) + MTD[Lor1, Lor2]*SPD[q, q])*(TAI[D, 0, {{3, I*mG}}] -
+	2*mG^2*TAI[D, 0, {{4, I*mG}}] + mG^4*TAI[D, 0, {{5, I*mG}}]))/((-1 + D)*D) -
+(mG^2*(-(FVD[q, Lor1]*FVD[q, Lor2]) + MTD[Lor1, Lor2]*SPD[q, q])*
+TFI[D, SPD[q, q], {0, 0, 2, 0, 0}, {{4, I*mG}, {1, I*mG}, {0, 0}, {0, 0}, {0, 0}}])/
+((-1 + D)*SPD[q, q]) + (mG^4*(-(FVD[q, Lor1]*FVD[q, Lor2]) + MTD[Lor1, Lor2]*SPD[q, q])*
+TFI[D, SPD[q, q], {0, 0, 2, 0, 0}, {{5, I*mG}, {1, I*mG}, {0, 0}, {0, 0}, {0, 0}}])/
+((-1 + D)*SPD[q, q]) + ((D*FVD[q, Lor1]*FVD[q, Lor2] - MTD[Lor1, Lor2]*SPD[q, q])*
+TFI[D, SPD[q, q], {0, 0, 2, 2, 0}, {{4, I*mG}, {1, I*mG}, {0, 0}, {0, 0}, {0, 0}}])/
+((-1 + D)*SPD[q, q]^2) - (mG^2*(D*FVD[q, Lor1]*FVD[q, Lor2] - MTD[Lor1, Lor2]*SPD[q, q])*
+TFI[D, SPD[q, q], {0, 0, 2, 2, 0}, {{5, I*mG}, {1, I*mG}, {0, 0}, {0, 0}, {0, 0}}])/
+((-1 + D)*SPD[q, q]^2)"}
 });

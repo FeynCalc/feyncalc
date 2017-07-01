@@ -27,14 +27,19 @@ End[]
 Begin["`ToTFI`Private`"]
 
 toTFIVerbose::usage="";
+qq::usage="";
+mM::usage="";
+
 
 Options[ToTFI] = {
+	ApartFF -> False,
+	Collecting -> True,
 	Dimension -> D,
 	FCVerbose->False,
-	Method -> Automatic,
 	FDS -> True,
-	Collecting -> True,
-	ApartFF -> False
+	FeynCalcInternal -> False,
+	Method -> Automatic,
+	TID -> False
 };
 
 
@@ -49,27 +54,8 @@ ToTFI[z_Plus, q_/;Head[q]=!=List, p_/;Head[p]=!=List, opts:OptionsPattern[]] :=
 ToTFI[a_/;Head[a]=!=Plus,{q_},{p_},opts:OptionsPattern[]] :=
 	ToTFI[a,q,p,opts]/; !OptionQ[{p}];
 
-ToTFI[a_/;Head[a]=!=Plus,q_/;Head[q]=!=List,p_/;Head[p]=!=List,opts:OptionsPattern[]] :=
-	(ToExpression["TFIRecurse"][
-	FCE[ToTFI[FDS[FCI[Expand[FAD[{qq, mM}] Expand[ApartFF[a, {q}], q]]],q], q, qq, p, opts]]/.
-		ToExpression["TFI"]:>ToExpression["TFR"]] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
-	) /; MemberQ[$ContextPath, "Tarcer`"] && !OptionQ[p];
-
-(* 2-loops *)
-ToTFI[expr_, {q1_,q2_},{p_},opts:OptionsPattern[]] :=
-	ToTFI[expr, q1,q2,p,opts]/; !OptionQ[{p}];
-
-ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:OptionsPattern[]] :=
-	Block[{int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFI3,intsTFIUnique,tmp,
-			solsList,tfiLoopIntegral,repRule,null1,null2,res,
-			tfi1LoopQ1,tfi1LoopQ2},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
-		FCPrint[3, "ToTFI: Entering with ", expr, FCDoControl->toTFIVerbose];
+ToTFI[expr_/;Head[expr]=!=Plus,q_/;Head[q]=!=List,p_/;Head[p]=!=List,opts:OptionsPattern[]] :=
+	Block[{ex, tmp,  res},
 
 		If [OptionValue[FCVerbose]===False,
 			toTFIVerbose=$VeryVerbose,
@@ -78,13 +64,88 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 			];
 		];
 
+		FCPrint[3, "ToTFI (1-loop): Entering with ", expr, FCDoControl->toTFIVerbose];
+
+		If[OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		If[	OptionValue[TID],
+			FCPrint[1, "ToTFI (1-loop): Applying TID.", FCDoControl->toTFIVerbose];
+			ex = TID[ex,q, FCI->True];
+			FCPrint[3, "ToTFI (1-loop): After TID: ", ex, FCDoControl->toTFIVerbose],
+
+
+			FCPrint[1, "ToTFI (1-loop): Applying ApartFF.", FCDoControl->toTFIVerbose];
+			ex = ApartFF[ex, {q}, FCI->True];
+			FCPrint[3, "ToTFI (1-loop): After ApartFF: ", ex, FCDoControl->toTFIVerbose]
+		];
+
+		tmp = Expand[FDS[FeynAmpDenominator[PropagatorDenominator[Momentum[qq, D], mM]] ex, q, qq],q];
+		FCPrint[3, "ToTFI (1-loop): Fake 2-loop integral: ", tmp, FCDoControl->toTFIVerbose];
+
+		tmp = ToTFI[tmp,q, qq, p, FCI->True, opts] /. Tarcer`TFI -> Tarcer`TFR;
+		FCPrint[3, "ToTFI (1-loop): After ToTFI: ", tmp, FCDoControl->toTFIVerbose];
+
+		tmp = Tarcer`TFIRecurse[tmp];
+		FCPrint[3, "ToTFI (1-loop): After TFIRecurse: ", tmp, FCDoControl->toTFIVerbose];
+
+		res = tmp  /. {
+			Tarcer`TAI[_, 0, {{1, mM}}] :> 1,
+			Tarcer`TAI[_, {{1, mM}}] :> 1
+		};
+
+		FCPrint[3, "ToTFI (1-loop): After removing fake tadpoles: ", res, FCDoControl->toTFIVerbose];
+
+		If[	!FreeQ2[res,{mM,qq}],
+			Message[ToTFI::failmsg, "Failed to perform reduction of 1-loop scalar integrals. Try to rerun ToTFI with TID->True"];
+			Abort[]
+		];
+
+		FCPrint[3, "ToTFI (1-loop): Leaving. ", FCDoControl->toTFIVerbose];
+		FCPrint[3, "ToTFI (1-loop): Leaving with: ", res, FCDoControl->toTFIVerbose];
+
+		res
+
+
+	] /; MemberQ[$ContextPath, "Tarcer`"] && !OptionQ[p];
+
+(* 2-loops *)
+ToTFI[expr_, {q1_,q2_},{p_},opts:OptionsPattern[]] :=
+	ToTFI[expr, q1,q2,p,opts]/; !OptionQ[{p}];
+
+ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:OptionsPattern[]] :=
+	Block[{ex, int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFI3,intsTFIUnique,tmp,
+			solsList,tfiLoopIntegral,repRule,null1,null2,res,
+			tfi1LoopQ1,tfi1LoopQ2},
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
+		If [OptionValue[FCVerbose]===False,
+			toTFIVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				toTFIVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[3, "ToTFI: Entering with ", expr, FCDoControl->toTFIVerbose];
+
+		If[OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
 		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
 			Message[ToTFI::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
 			Abort[]
 		];
 
 		(*	Let us first extract all the scalar loop integrals	*)
-		fclsOutput = FCLoopSplit[expr,{q1,q2}];
+		fclsOutput = FCLoopSplit[ex,{q1,q2}, FCI->True];
 		intsRest = fclsOutput[[1]]+fclsOutput[[4]];
 		intsTFI = fclsOutput[[2]]+fclsOutput[[3]];
 
@@ -93,7 +154,7 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 
 		(*	Nothing to do	*)
 		If[ intsTFI === 0,
-			Return[expr]
+			Return[ex]
 		];
 
 		intsTFI = FeynAmpDenominatorSplit[intsTFI,Momentum->{q1,q2}];
@@ -122,7 +183,7 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 
 		(* Quick and dirty way to get rid of the  1-loop integrals here *)
 
-		intsTFI3 = intsTFI3/.{tfi1LoopQ1[xy_]:>ToTFI[xy,q1,p],tfi1LoopQ2[xy_]:>ToTFI[xy,q2,p]};
+		intsTFI3 = intsTFI3/.{tfi1LoopQ1[xy_]:>ToTFI[xy,q1,p,opts],tfi1LoopQ2[xy_]:>ToTFI[xy,q2,p,opts]};
 
 		(*	Now we extract all the unique loop integrals *)
 		intsTFIUnique = (Cases[intsTFI3+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
