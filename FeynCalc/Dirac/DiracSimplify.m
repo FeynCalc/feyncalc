@@ -157,7 +157,7 @@ DiracSimplify[x_,y__, z___?OptionQ] :=
 (*TODO: Need an option that makes DiracSimplify behave like DiracSimplify2!!! *)
 DiracSimplify[expr_, OptionsPattern[]] :=
 	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
-			diracObjectsEval, repRule, tmp},
+			diracObjectsEval, repRule, tmp, tmpHead},
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
@@ -232,12 +232,14 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Applying diracSimplifyEval", FCDoControl->dsVerbose];
 
-			diracObjectsEval = Map[(diracTrickEvalFast[#,optInsideDiracTrace,optDiracOrder]/. diracTrickEvalFast[zzz_,__]:>diracSimplifyEval[zzz])&, (diracObjects/.dsHead->Identity)];
+			diracObjectsEval = diracTrickEvalFastFromDiracSimplifyList[(diracObjects/.dsHead->Identity), {optInsideDiracTrace,optDiracOrder}];
+
+			diracObjectsEval = diracSimplifyEval/@diracObjectsEval;
 
 			FCPrint[3,"DiracSimplify: After diracSimplifyEval: ", diracObjectsEval, FCDoControl->dsVerbose];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
-			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFast,diracSimplifyEval,holdDOT}],
+			If[ !FreeQ2[diracObjectsEval,{diracTrickEvalFastFromDiracSimplifyList,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
@@ -253,16 +255,17 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 				from internal functions	*)
 			FCPrint[1,"DiracSimplify: Fast mode.", FCDoControl->dsVerbose];
 
-			tmp = diracTrickEvalFast[ex,optInsideDiracTrace,optDiracOrder];
+			tmp = diracTrickEvalFastFromDiracSimplifySingle[ex, {tmpHead,optInsideDiracTrace,optDiracOrder}];
+
 			(* It might happen that after diracTrickEvalFast there are no Dirac matrices left.*)
 
 			FCPrint[3,"DiracSimplify: After diracTrickEvalFast: ", tmp , FCDoControl->dsVerbose];
 
-			If[ !FreeQ2[tmp,{DiracHeadsList,diracTrickEvalFast}],
-				tmp = tmp /. diracTrickEvalFast[zzz_,__]:>diracSimplifyEval[zzz]
+			If[ !FreeQ2[tmp,{DiracHeadsList,tmpHead}],
+				tmp = tmp /. tmpHead :>diracSimplifyEval[zzz]
 			];
 
-			If[ !FreeQ2[tmp,{diracTrickEvalFast,diracSimplifyEval,holdDOT}],
+			If[ !FreeQ2[tmp,{diracTrickEvalFastFromDiracSimplifySingle,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			]
