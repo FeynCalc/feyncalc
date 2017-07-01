@@ -74,12 +74,6 @@ optFactoring::usage="";
 optEpsContract::usage="";
 optContract::usage="";
 
-DiracSubstitute67[x_] :=
-	x/. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2),
-		DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
-
-
-
 Options[DiracSimplify] = {
 	Contract			-> True,
 	DiracCanonical		-> False,
@@ -379,7 +373,7 @@ diracSimplifyEval[expr_]:=
 		(*	Substituting the explicit values of the chiral projectors	*)
 		If[ optDiracSubstitute67 && !FreeQ2[tmp,{DiracGamma[6],DiracGamma[7]}],
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the chiral projectors.", FCDoControl->dsVerbose];
-			tmp = DiracSubstitute67[tmp]
+			tmp = DiracSubstitute67[tmp, FCI->True]
 		];
 
 

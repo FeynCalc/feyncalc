@@ -67,6 +67,12 @@ If[ Names["Tests`Dirac`fcstDiracSigmaExplicit*"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
+If[ Names["Tests`Dirac`fcstDiracSubstitute67*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracSubstitute67*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
 If[ Names["Tests`Dirac`fcstEpsChisholm*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstEpsChisholm*"])];

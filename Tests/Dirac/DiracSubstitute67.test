@@ -1,0 +1,30 @@
+
+
+(* :Title: DiracSubstitute67.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracSubstitute67		*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstDiracSubstitute67 =
+({
+{"fcstDiracSubstitute67-ID1",
+"DiracSubstitute67[GA[6],FCE\[Rule]True]", "1/2 + GA[5]/2"},
+{"fcstDiracSubstitute67-ID2",
+"DiracSubstitute67[GA[7],FCE\[Rule]True]", "1/2 - GA[5]/2"},
+{"fcstDiracSubstitute67-ID3",
+"DiracSubstitute67[GA[mu,6,nu],FCE\[Rule]True]",
+"GA[mu] . (1/2 + GA[5]/2) . GA[nu]"},
+{"fcstDiracSubstitute67-ID4",
+"DiracSubstitute67[GA[mu,7,nu],FCE\[Rule]True]",
+"GA[mu] . (1/2 - GA[5]/2) . GA[nu]"}
+});

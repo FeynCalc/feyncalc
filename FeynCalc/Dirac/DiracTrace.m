@@ -84,11 +84,6 @@ DiracTrace /:
 	MakeBoxes[DiracTrace[expr__, OptionsPattern[]], TraditionalForm]:=
 	RowBox[{"tr","(",TBox[expr], ")"}]
 
-
-(* gamma67backdef: reinsertion of gamma6 and gamm7 *)
-gamma67back[x_] :=
-	x/.DiracGamma[6]->( 1/2 + DiracGamma[5]/2 )/. DiracGamma[7]->( 1/2 - DiracGamma[5]/2 );
-
 DiracTrace[0, OptionsPattern[]] :=
 	0;
 
