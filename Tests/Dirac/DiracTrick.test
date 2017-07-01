@@ -1212,7 +1212,13 @@ DotSimplify // DiracTrick[#, FCJoinDOTs -> False, FCE -> True] &", "m Spinor[Mom
 	Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[
 Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]"},
 {"fcstDiracTrickCoreProperties-ID119",
-"DiracTrick[GA[mu].(1/2 + GA[5]/2).GA[mu]]", "4 DiracGamma[7]"}
+"DiracTrick[GA[mu].(1/2 + GA[5]/2).GA[mu]]", "4 DiracGamma[7]"},
+{"fcstDiracTrickCoreProperties-ID120",
+"DiracTrick[GA[mu].(1 + GA[5]/2).GA[mu], FCE -> True]", "4 - 2 GA[5]"},
+{"fcstDiracTrickCoreProperties-ID121",
+"DiracTrick[GA[mu].(cc1 + cc2 GA[5]).(GS[p] + m).GA[rho], FCE -> True]", "cc1 GA[mu].(m + GS[p]).GA[rho] + cc2 GA[mu].(-m + GS[p]).GA[rho].GA[5]"},
+{"fcstDiracTrickCoreProperties-ID122",
+"$BreitMaison=False;\n DiracTrick[GAD[mu].(cc1 + cc2 GA[5]).(GSD[p] + m).GAD[rho], FCE -> True]", "cc1 GAD[mu].(m + GSD[p]).GAD[rho] + cc2 GAD[mu].(-m + GSD[p]).GAD[rho].GA[5]"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
