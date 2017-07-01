@@ -1,0 +1,61 @@
+
+
+(* :Title: ToDiracGamma67.test                                                    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToDiracGamma67                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstToDiracGamma67 =
+({
+{"fcstToDiracGamma67-ID1",
+"ToDiracGamma67[(1/2+GA[5]/2),FCE\[Rule]True]", "GA[6]"},
+{"fcstToDiracGamma67-ID2",
+"ToDiracGamma67[(1/2-GA[5]/2),FCE\[Rule]True]", "GA[7]"},
+{"fcstToDiracGamma67-ID3",
+"ToDiracGamma67[1/2(1+GA[5]),FCE\[Rule]True]", "GA[6]"},
+{"fcstToDiracGamma67-ID4",
+"ToDiracGamma67[1/2(1-GA[5]),FCE\[Rule]True]", "GA[7]"},
+{"fcstToDiracGamma67-ID5",
+"ToDiracGamma67[4(1+GA[5]),FCE\[Rule]True]", "8*GA[6]"},
+{"fcstToDiracGamma67-ID6",
+"ToDiracGamma67[3(1+GA[5]),FCE\[Rule]True]", "6*GA[6]"},
+{"fcstToDiracGamma67-ID7",
+"ToDiracGamma67[GA[mu].(1/2+GA[5]/2).GA[nu],FCE\[Rule]True]",
+"GA[mu] . GA[6] . GA[nu]"},
+{"fcstToDiracGamma67-ID8",
+"ToDiracGamma67[GA[mu].(1/2-GA[5]/2).GA[nu],FCE\[Rule]True]",
+"GA[mu] . GA[7] . GA[nu]"},
+{"fcstToDiracGamma67-ID9",
+"ToDiracGamma67[GA[mu].(1/2(1+GA[5])).GA[nu],FCE\[Rule]True]",
+"GA[mu] . GA[6] . GA[nu]"},
+{"fcstToDiracGamma67-ID10",
+"ToDiracGamma67[GA[mu].(1/2(1-GA[5])).GA[nu],FCE\[Rule]True]",
+"GA[mu] . GA[7] . GA[nu]"},
+{"fcstToDiracGamma67-ID11",
+"ToDiracGamma67[GA[mu].(4(1+GA[5])).GA[nu],FCE\[Rule]True]",
+"GA[mu] . (8*GA[6]) . GA[nu]"},
+{"fcstToDiracGamma67-ID12",
+"ToDiracGamma67[GA[mu].(3(1-GA[5])).GA[nu],FCE\[Rule]True]",
+"GA[mu] . (6*GA[7]) . GA[nu]"},
+{"fcstToDiracGamma67-ID13", "ToDiracGamma67[GA[5],FCE\[Rule]True]",
+"GA[5]"},
+{"fcstToDiracGamma67-ID14",
+"ToDiracGamma67[GA[5],All\[Rule]True,FCE\[Rule]True]",
+"GA[6] - GA[7]"},
+{"fcstToDiracGamma67-ID15",
+"ToDiracGamma67[GA[mu,5,nu],FCE\[Rule]True]",
+"GA[mu] . GA[5] . GA[nu]"},
+{"fcstToDiracGamma67-ID16",
+"ToDiracGamma67[GA[mu,5,nu],All\[Rule]True,FCE\[Rule]True]",
+"GA[mu] . (GA[6] - GA[7]) . GA[nu]"}
+});
