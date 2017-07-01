@@ -19,9 +19,9 @@ Tests`Dirac`fcstDiracSimplify = {
 {"fcstDiracSimplify-ID2","DiracSimplify[DiracMatrix[mu, nu, rho, sigma, mu]]","-2*DiracGamma[LorentzIndex[sigma]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]]"},
 {"fcstDiracSimplify-ID3","DiracSimplify[1/2 DiracMatrix[mu, a, b, c, d, mu]]","DiracGamma[LorentzIndex[c]] . DiracGamma[LorentzIndex[b]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIndex[d]] +
 DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIndex[b]] . DiracGamma[LorentzIndex[c]]"},
-{"fcstDiracSimplify-ID4","DiracSimplify[DiracSlash[p], DiracSlash[-q] + m, DiracSlash[p]]","m*Pair[Momentum[p], Momentum[p]] + DiracGamma[Momentum[q]]*Pair[Momentum[p], Momentum[p]] -
+{"fcstDiracSimplify-ID4","DiracSimplify[GS[p].(GS[-q] + m).GS[p]]","m*Pair[Momentum[p], Momentum[p]] + DiracGamma[Momentum[q]]*Pair[Momentum[p], Momentum[p]] -
 2*DiracGamma[Momentum[p]]*Pair[Momentum[p], Momentum[q]]"},
-{"fcstDiracSimplify-ID5","DiracSimplify[DiracMatrix[5], DiracMatrix[mu]]","-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstDiracSimplify-ID5","DiracSimplify[GA[5,mu]]","-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
 {"fcstDiracSimplify-ID6","DiracSimplify[DiracMatrix[6, nu, 7, mu]]","DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[mu]] . DiracGamma[6]"},
 {"fcstDiracSimplify-ID7","DiracSimplify[(DiracSlash[p] - m).SpinorU[p, m]]","0"},
 {"fcstDiracSimplify-ID8","DiracSimplify[(DiracSlash[p] + m).SpinorV[p, m]]","0"},

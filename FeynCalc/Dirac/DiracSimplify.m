@@ -136,12 +136,6 @@ Options[DiracSimplify] = {
 	SpinorChainTrick	-> True
 };
 
-
-
-(*TODO: This syntax is really bad and should be blacklisted! *)
-DiracSimplify[x_,y__, z___?OptionQ] :=
-	DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] && FreeQ[{x,y}, RuleDelayed];
-
 (*TODO: Need an option that makes DiracSimplify behave like DiracSimplify2!!! *)
 DiracSimplify[expr_, OptionsPattern[]] :=
 	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
