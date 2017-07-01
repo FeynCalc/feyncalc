@@ -41,6 +41,7 @@ insideDiracTrace::usage="";
 diracOrder::usage="";
 optJoin::usage="";
 diga::usage="";
+tmpli::usage="";
 
 Options[DiracTrick] = {
 	DiracGammaCombine -> False,
@@ -818,7 +819,7 @@ diracologyDDim2[ b___,DiracGamma[c_LorentzIndex,dim_],
 	Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
 		FCUseCache[FCFastContract,{(-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
 			{ch}[[jVar,1]] ]*dsTemp@@Join[{b}, Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}]},{}]/.
-			dsTemp->diracologyDDim/. Pair[aa__]/;!FreeQ[{a},Momentum] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
+			dsTemp->diracologyDDim/. Pair[aa__]/;!FreeQ[{aa},Momentum] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
 	] /; (Length[{ch}]>4);
 
 (*	Slash(p) Slash(p)	*)
@@ -1497,7 +1498,7 @@ diracologyBMHV2[ b___,DiracGamma[LorentzIndex[c_,dim_],dim_],
 		Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
 			{ch}[[jVar,1]] ]*dsTemp@@Join[{b},
 			Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}
-		]},{}]/.dsTemp->diracologyBMHV2/. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
+		]},{}]/.dsTemp->diracologyBMHV2 /. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
 	] /;(Length[{ch}]>4) && MatchQ[dim, _Symbol | _Symbol-4 ];
 
 
