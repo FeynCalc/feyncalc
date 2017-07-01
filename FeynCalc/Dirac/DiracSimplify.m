@@ -55,11 +55,6 @@ DiracSimplify::noncom =
 Times (commutative multiplication) instead of DOT (non-commutative multiplication). \
 Evaluation aborted!";
 
-DiracSimplify2::usage =
-"DiracSimplify2[exp] simplifies the Dirac structure but leaves \
-any DiracGamma[5] untouched. \
-DiracGamma[6] and DiracGamma[7] are inserted by their definitions.";
-
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -78,38 +73,6 @@ optDiracEquation::usage="";
 optDiracOrder::usage="";
 optFactoring::usage="";
 optContract::usage="";
-
-DiracSimplify2[exp_] :=
-	Block[ {nn,tt},
-
-		If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
-		If[ FreeQ[exp,DOT],
-			exp,
-			nn = DotSimplify[DiracGammaExpand[FeynCalcInternal[exp]] /.
-					DiracGamma[6] -> (1/2 + DiracGamma[5]/2) /.
-					DiracGamma[7] -> (1/2 - DiracGamma[5]/2)];
-			If[ FreeQ[nn, DiracGamma[5]],
-				DiracSimplify[nn],
-				tt = Cases2[nn, DOT];
-				nn/.(Table[tt[[ij]] -> DotSimplify[
-					Contract[ tt[[ij]] //.
-					{doot[a__, DiracGamma[5], b__] :>
-						If[ FreeQ[{a}, DiracGamma[5]],
-							DiracSimplify[DOT[a]],
-							DiracSimplify2[DOT[b]]
-						].DiracGamma[5].
-						If[ FreeQ[{b}, DiracGamma[5] ],
-							DiracSimplify2[DOT[a]],
-							DiracSimplify[DOT[b]]
-						]
-					}]], {ij,Length[tt]}])
-			]
-		]
-	];
 
 DiracSubstitute67[x_] :=
 	x/. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2),
@@ -136,7 +99,6 @@ Options[DiracSimplify] = {
 	SpinorChainTrick	-> True
 };
 
-(*TODO: Need an option that makes DiracSimplify behave like DiracSimplify2!!! *)
 DiracSimplify[expr_, OptionsPattern[]] :=
 	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
 			diracObjectsEval, repRule, tmp, tmpHead},
