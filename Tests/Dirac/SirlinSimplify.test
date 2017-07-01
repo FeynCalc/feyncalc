@@ -1,0 +1,274 @@
+
+
+(* :Title: SirlinSimplify.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SirlinSimplify			*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstSirlinSimplify =
+({
+{"fcstSirlinSimplify-ID1",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,nu,6].SpinorU[\
+p1,m1]SpinorUBar[p4,m4].GA[mu,tau,nu,6].SpinorU[p2,m2],FCE\[Rule]True]\
+,\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[6].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[6].Spinor[Momentum[p2],m2,1] \
+MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID2",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,nu,7].SpinorU[\
+p1,m1]SpinorUBar[p4,m4].GA[mu,tau,nu,7].SpinorU[p2,m2],FCE\[Rule]True]\
+,\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[7].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[7].Spinor[Momentum[p2],m2,1] \
+MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID3",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,nu,6].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[mu,tau,nu,7].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[tau] . GA[6] . \
+Spinor[Momentum[p1], m1, 1]*Spinor[Momentum[p4], m4, 1] . GA[rho] . \
+GA[7] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID4",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,nu,7].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[mu,tau,nu,6].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[tau] . GA[7] . \
+Spinor[Momentum[p1], m1, 1]*Spinor[Momentum[p4], m4, 1] . GA[rho] . \
+GA[6] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID5",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[nu,rho,mu,7].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[mu,tau,nu,7].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[tau] . GA[7] . \
+Spinor[Momentum[p1], m1, 1]*Spinor[Momentum[p4], m4, 1] . GA[rho] . \
+GA[7] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID6",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[nu,rho,mu,6].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[mu,tau,nu,6].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[tau] . GA[6] . \
+Spinor[Momentum[p1], m1, 1]*Spinor[Momentum[p4], m4, 1] . GA[rho] . \
+GA[6] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID7",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[nu,rho,mu,6].SpinorU[\
+p1,m1]SpinorUBar[p2,m2].GA[mu,tau,nu,7].SpinorU[p4,m4],FCE\[Rule]True]\
+,\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[6].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p2],m2,1].GA[a_].GA[7].Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID8",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[nu,rho,mu,7].SpinorU[\
+p1,m1]SpinorUBar[p2,m2].GA[mu,tau,nu,6].SpinorU[p4,m4],FCE\[Rule]True]\
+,\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[7].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p2],m2,1].GA[a_].GA[6].Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID9",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].nc1.GA[mu,rho,nu].nc2.\
+SpinorU[p1,m1]SpinorUBar[p4,m4].nc3.GA[mu,tau,nu].nc4.SpinorU[p4,m4],\
+FCE\[Rule]True],\[IndentingNewLine]2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[tau].nc2.Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].nc3.GA[rho].nc4.Spinor[Momentum[p4],m4,1]-2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[tau].nc2.GA[5].Spinor[Momentum[p1],\
+m1,1] Spinor[Momentum[p4],m4,1].nc3.GA[rho].nc4.GA[5].Spinor[Momentum[\
+p4],m4,1]+2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[a_].nc2.Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].nc3.GA[a_].nc4.Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]+2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[a_].nc2.GA[5].Spinor[Momentum[p1],m1,\
+1] Spinor[Momentum[p4],m4,1].nc3.GA[a_].nc4.GA[5].Spinor[Momentum[p4],\
+m4,1] MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID10",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].nc1.GA[nu,rho,mu].nc2.\
+SpinorU[p1,m1]SpinorUBar[p4,m4].nc3.GA[mu,tau,nu].nc4.SpinorU[p4,m4],\
+FCE\[Rule]True],\[IndentingNewLine]2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[tau].nc2.Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].nc3.GA[rho].nc4.Spinor[Momentum[p4],m4,1]+2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[tau].nc2.GA[5].Spinor[Momentum[p1],\
+m1,1] Spinor[Momentum[p4],m4,1].nc3.GA[rho].nc4.GA[5].Spinor[Momentum[\
+p4],m4,1]+2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[a_].nc2.Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].nc3.GA[a_].nc4.Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]-2 \
+Spinor[Momentum[p3],m3,1].nc1.GA[a_].nc2.GA[5].Spinor[Momentum[p1],m1,\
+1] Spinor[Momentum[p4],m4,1].nc3.GA[a_].nc4.GA[5].Spinor[Momentum[p4],\
+m4,1] MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID11",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[mu,nu,6].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[mu,nu,7].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[6] . Spinor[Momentum[p1], m1, \
+1]*Spinor[Momentum[p4], m4, 1] . GA[7] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID12",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[mu,nu,7].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[mu,nu,6].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[7] . Spinor[Momentum[p1], m1, \
+1]*Spinor[Momentum[p4], m4, 1] . GA[6] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID13",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[mu,nu,6].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[nu,mu,7].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[6] . Spinor[Momentum[p1], m1, \
+1]*Spinor[Momentum[p4], m4, 1] . GA[7] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID14",
+"SirlinSimplify[SpinorUBar[p3,m3].GA[mu,nu,7].SpinorU[p1,m1]\
+SpinorUBar[p4,m4].GA[nu,mu,6].SpinorU[p2,m2],FCE\[Rule]True]",
+"4*Spinor[Momentum[p3], m3, 1] . GA[7] . Spinor[Momentum[p1], m1, \
+1]*Spinor[Momentum[p4], m4, 1] . GA[6] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSirlinSimplify-ID15",
+"MatchQ[SirlinSimplify[SpinorUBar[p1,m1].GA[mu,nu,6].SpinorU[p2,m2]\
+SpinorUBar[p3,m3].GA[mu,nu,6].SpinorU[p4,m4],FCE\[Rule]True],\
+\[IndentingNewLine]-\!\(\*FractionBox[\(1\), \(2\)]\) \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p4],m4,1]+4 \
+Spinor[Momentum[p1],m1,1].GA[6].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[6].Spinor[Momentum[p4],m4,1]-\!\(\*\
+FractionBox[\(1\), \(4\)]\) \[ImaginaryI] \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS283_],GA[liS284_]].Spinor[\
+Momentum[p4],m4,1] LC[liS281_,liS282_,liS283_,liS284_]]", "True"},
+{"fcstSirlinSimplify-ID16",
+"MatchQ[SirlinSimplify[SpinorUBar[p1,m1].GA[mu,nu,7].SpinorU[p2,m2]\
+SpinorUBar[p3,m3].GA[mu,nu,7].SpinorU[p4,m4],FCE\[Rule]True],\
+\[IndentingNewLine]-\!\(\*FractionBox[\(1\), \(2\)]\) \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p4],m4,1]+4 \
+Spinor[Momentum[p1],m1,1].GA[7].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[7].Spinor[Momentum[p4],m4,1]+\!\(\*\
+FractionBox[\(1\), \(4\)]\) \[ImaginaryI] \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS283_],GA[liS284_]].Spinor[\
+Momentum[p4],m4,1] LC[liS281_,liS282_,liS283_,liS284_]]", "True"},
+{"fcstSirlinSimplify-ID17",
+"MatchQ[SirlinSimplify[SpinorUBar[p1,m1].GA[mu,nu,6].SpinorU[p2,m2]\
+SpinorUBar[p3,m3].GA[nu,mu,6].SpinorU[p4,m4],FCE\[Rule]True],\
+\[IndentingNewLine]\!\(\*FractionBox[\(1\), \(2\)]\) \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p4],m4,1]+4 \
+Spinor[Momentum[p1],m1,1].GA[6].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[6].Spinor[Momentum[p4],m4,1]+\!\(\*\
+FractionBox[\(1\), \(4\)]\) \[ImaginaryI] \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS283_],GA[liS284_]].Spinor[\
+Momentum[p4],m4,1] LC[liS281_,liS282_,liS283_,liS284_]]", "True"},
+{"fcstSirlinSimplify-ID18",
+"MatchQ[SirlinSimplify[SpinorUBar[p1,m1].GA[mu,nu,7].SpinorU[p2,m2]\
+SpinorUBar[p3,m3].GA[nu,mu,7].SpinorU[p4,m4],FCE\[Rule]True],\
+\[IndentingNewLine]\!\(\*FractionBox[\(1\), \(2\)]\) \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p4],m4,1]+4 \
+Spinor[Momentum[p1],m1,1].GA[7].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[7].Spinor[Momentum[p4],m4,1]-\!\(\*\
+FractionBox[\(1\), \(4\)]\) \[ImaginaryI] \
+Spinor[Momentum[p1],m1,1].DiracSigma[GA[liS281_],GA[liS282_]].Spinor[\
+Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].DiracSigma[GA[liS283_],GA[liS284_]].Spinor[\
+Momentum[p4],m4,1] LC[liS281_,liS282_,liS283_,liS284_]]", "True"},
+{"fcstSirlinSimplify-ID19",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[6].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[mu,al,si,be,nu].GA[6].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]16 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[6].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[6].Spinor[Momentum[p4],m4,1] \
+MT[al,rho] MT[be,tau]]", "True"},
+{"fcstSirlinSimplify-ID20",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[7].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[mu,al,si,be,nu].GA[7].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]16 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[7].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[7].Spinor[Momentum[p4],m4,1] \
+MT[al,rho] MT[be,tau]]", "True"},
+{"fcstSirlinSimplify-ID21",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[6].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[mu,al,si,be,nu].GA[7].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[rho].GA[be].GA[6].Spinor[Momentum[\
+p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[al].GA[tau].GA[7].Spinor[Momentum[\
+p4],m4,1]]", "True"},
+{"fcstSirlinSimplify-ID22",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[7].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[mu,al,si,be,nu].GA[6].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[rho].GA[be].GA[7].Spinor[Momentum[\
+p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[al].GA[tau].GA[6].Spinor[Momentum[\
+p4],m4,1]]", "True"},
+{"fcstSirlinSimplify-ID23",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[6].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[nu,al,si,be,mu].GA[6].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[be].GA[tau].GA[a_].GA[6].Spinor[Momentum[\
+p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[al].GA[rho].GA[6].Spinor[Momentum[\
+p4],m4,1]]", "True"},
+{"fcstSirlinSimplify-ID24",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[7].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[nu,al,si,be,mu].GA[7].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]4 \
+Spinor[Momentum[p3],m3,1].GA[be].GA[tau].GA[a_].GA[7].Spinor[Momentum[\
+p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[al].GA[rho].GA[7].Spinor[Momentum[\
+p4],m4,1]]", "True"},
+{"fcstSirlinSimplify-ID25",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[6].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[nu,al,si,be,mu].GA[7].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]16 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[6].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[7].Spinor[Momentum[p4],m4,1] \
+MT[al,tau] MT[be,rho]]", "True"},
+{"fcstSirlinSimplify-ID26",
+"MatchQ[SirlinSimplify[SpinorUBar[p3,m3].GA[mu,rho,si,tau \
+,nu].GA[7].SpinorU[p1,m1]SpinorUBar[p4,m4].GA[nu,al,si,be,mu].GA[6].\
+SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine]16 \
+Spinor[Momentum[p3],m3,1].GA[a_].GA[7].Spinor[Momentum[p1],m1,1] \
+Spinor[Momentum[p4],m4,1].GA[a_].GA[6].Spinor[Momentum[p4],m4,1] \
+MT[al,tau] MT[be,rho]]", "True"},
+{"fcstSirlinSimplify-ID27",
+"MatchQ[SirlinSimplify[SpinorUBar[p1,m1].GA[mu,rho,nu].(1/2+la1/2 \
+GA[5]).SpinorU[p2,m2]SpinorUBar[p3,m3].GA[mu,tau,nu].(1/2+la2/2 \
+GA[5]).SpinorU[p4,m4],FCE\[Rule]True],\[IndentingNewLine](1-la1) \
+(1+la2) Spinor[Momentum[p1],m1,1].GA[tau].GA[7].Spinor[Momentum[p2],\
+m2,1] Spinor[Momentum[p3],m3,1].GA[rho].GA[6].Spinor[Momentum[p4],m4,\
+1]+(1+la1) (1-la2) \
+Spinor[Momentum[p1],m1,1].GA[tau].GA[6].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[rho].GA[7].Spinor[Momentum[p4],m4,1]+(1+\
+la1) (1+la2) \
+Spinor[Momentum[p1],m1,1].GA[liS428_].GA[6].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[liS428_].GA[6].Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]+(1-la1) (1-la2) \
+Spinor[Momentum[p1],m1,1].GA[liS428_].GA[7].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[liS428_].GA[7].Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID28",
+"MatchQ[SirlinSimplify[SpinorUBar[p1,m1].GA[nu,rho,mu].(1/2+la1/2 \
+GA[5]).SpinorU[p2,m2]SpinorUBar[p3,m3].GA[mu,tau,nu].(1/2+la2/2 \
+GA[5]).SpinorU[p4,m4],FCE\[Rule]True],(1+la1) (1+la2) \
+Spinor[Momentum[p1],m1,1].GA[tau].GA[6].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[rho].GA[6].Spinor[Momentum[p4],m4,1]+(1-\
+la1) (1-la2) \
+Spinor[Momentum[p1],m1,1].GA[tau].GA[7].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[rho].GA[7].Spinor[Momentum[p4],m4,1]+(1-\
+la1) (1+la2) \
+Spinor[Momentum[p1],m1,1].GA[liS463_].GA[7].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[liS463_].GA[6].Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]+(1+la1) (1-la2) \
+Spinor[Momentum[p1],m1,1].GA[liS463_].GA[6].Spinor[Momentum[p2],m2,1] \
+Spinor[Momentum[p3],m3,1].GA[liS463_].GA[7].Spinor[Momentum[p4],m4,1] \
+MT[rho,tau]]", "True"}
+});

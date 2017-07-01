@@ -31,7 +31,7 @@ stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
 stingCompareIgnore[_,_]:=
 	True;
-DeclareNonCommutative[FCNCA,FCNCB,FCNCC];
+DeclareNonCommutative[FCNCA,FCNCB,FCNCC,nc1,nc2,nc3,nc4];
 
 If[ Names["Tests`Dirac`fcstAnti5*"]=!={},
 	$BreitMaison = False;
@@ -45,6 +45,12 @@ If[ Names["Tests`Dirac`fcstAnti5*"]=!={},
 If[ Names["Tests`Dirac`fcstSpinorChainTrick*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstSpinorChainTrick*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
+If[ Names["Tests`Dirac`fcstSirlinSimplify*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstSirlinSimplify*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
