@@ -122,6 +122,12 @@ If[ Names["Tests`Dirac`fcstDiracSimplify"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
+If[ Names["Tests`Dirac`fcstDiracSimplifySirlin"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+		Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracSimplifySirlin"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
 If[ Names["Tests`Dirac`fcstDiracSimplifyDotWarnings*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stingCompareIgnore]&,
