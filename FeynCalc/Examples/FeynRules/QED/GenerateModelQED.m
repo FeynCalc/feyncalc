@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Generates FeynArts model for QED 								*)
