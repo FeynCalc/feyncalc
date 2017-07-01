@@ -16,6 +16,14 @@
 
 (* ------------------------------------------------------------------------ *)
 
+DiracSimplify::usage =
+"DiracSimplify[expr] simplifies products of Dirac matrices \
+in expr and expands non-commutative products. \
+Double Lorentz indices and four vectors are contracted. \
+The Dirac equation is applied. \
+All DiracMatrix[5], DiracMatrix[6] and DiracMatrix[7] are moved to \
+the right. The order of the Dirac matrices is not changed.";
+
 DiracCanonical::usage =
 "DiracCanonical is an option for DiracSimplify. \
 If set to True DiracSimplify uses the function DiracOrder \
@@ -32,14 +40,6 @@ yields  ScalarProduct[a,b]) \n
 Traces involving more than \
 four DiracGammas and DiracGamma[5] are not performed.";
 
-DiracSimplify::usage =
-"DiracSimplify[expr] simplifies products of Dirac matrices \
-in expr and expands non-commutative products. \
-Double Lorentz indices and four vectors are contracted. \
-The Dirac equation is applied. \
-All DiracMatrix[5], DiracMatrix[6] and DiracMatrix[7] are moved to \
-the right. The order of the Dirac matrices is not changed.";
-
 DiracSimpCombine::usage =
 "DiracSimpCombine is an option for DiracSimplify. If set to \
 True, sums of DiracGamma's will be merged as much as \
@@ -50,10 +50,9 @@ DiracSubstitute67::usage =
 True the chirality-projectors DiracGamma[6] and DiracGamma[7] are \
 substituted by their definitions.";
 
-DiracSimplify::noncom =
-"Wrong syntax! `1` contains Dirac or SU(N) matrices multiplied via \
-Times (commutative multiplication) instead of DOT (non-commutative multiplication). \
-Evaluation aborted!";
+DiracSimplify::failmsg =
+"Error! DiracSimplifys encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
 
@@ -72,6 +71,7 @@ optDiracSigmaExplicit::usage="";
 optDiracEquation::usage="";
 optDiracOrder::usage="";
 optFactoring::usage="";
+optEpsContract::usage="";
 optContract::usage="";
 
 DiracSubstitute67[x_] :=
@@ -81,11 +81,13 @@ DiracSubstitute67[x_] :=
 
 
 Options[DiracSimplify] = {
+	Contract			-> True,
 	DiracCanonical		-> False,
 	DiracEquation		-> True,
 	DiracSigmaExplicit	-> True,
 	DiracSimpCombine	-> False,
 	DiracSubstitute67	-> False,
+	EpsContract			-> True,
 	ExpandScalarProduct	-> True,
 	Expanding			-> True,
 	FCCheckSyntax		-> False,
@@ -110,14 +112,16 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			];
 		];
 
-		optInsideDiracTrace		= OptionValue[InsideDiracTrace];
-		optExpanding  			= OptionValue[Expanding];
-		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
-		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
-		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
+		optContract				= OptionValue[Contract];
 		optDiracEquation		= OptionValue[DiracEquation];
-		optDiracOrder			= OptionValue[DiracCanonical];
 		optDiracGammaExpand		= !OptionValue[DiracSimpCombine];
+		optDiracOrder			= OptionValue[DiracCanonical];
+		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
+		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
+		optEpsContract			= OptionValue[EpsContract];
+		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
+		optExpanding  			= OptionValue[Expanding];
+		optInsideDiracTrace		= OptionValue[InsideDiracTrace];
 
 		If[ OptionValue[Factoring] === Automatic,
 			optFactoring =
@@ -149,8 +153,6 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-
-		(* Two main questions: Expanding true or false? Are there spinors or not?*)
 		(* TODO: Need to fish out Dirac traces and handle them separately *)
 
 
