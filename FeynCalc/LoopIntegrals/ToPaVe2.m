@@ -30,13 +30,13 @@ Begin["`ToPaVe2`Private`"]
 Options[ToPaVe2] = {
 };
 
-ToPaVe2[expr_, OptionsPattern[]] :=
+ToPaVe2[expr_PaVe, OptionsPattern[]]:=
+	expr;
+
+ToPaVe2[expr_/;Head[expr]=!=PaVe, OptionsPattern[]] :=
 	Block[{ex},
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
+
 
 		If[ !OptionValue[PaVe, PaVeAutoReduce],
 			ex =expr /. {
