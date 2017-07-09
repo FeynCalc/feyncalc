@@ -55,7 +55,8 @@ Options[PaVeUVPart] = {
 	FCLoopExtract -> True,
 	FCVerbose -> False,
 	Prefactor -> 1,
-	ToPaVe2 -> True
+	ToPaVe2 -> True,
+	Together -> True
 };
 
 PaVeUVPart[expr_,  OptionsPattern[]] :=
@@ -126,6 +127,10 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 			res = ex /. convRule /. uvp->uvpEval
 		];
 
+		If[	OptionValue[Together],
+			res = Together[res]
+		];
+
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
@@ -139,7 +144,7 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 
 
 convRule = {
-	PaVe[inds__?NumberQ, moms_List, masses_List] :>
+	PaVe[inds__?NumberQ, moms_List, masses_List, OptionsPattern[]] :>
 		uvp[UVPartT[Length[masses]][inds], Thread[Rule[momentumRoutingDenner2[Length[masses] - 1], moms]],
 		Thread[Rule[Table[MM[i], {i, 0, Length[masses] - 1}], masses]]]
 };

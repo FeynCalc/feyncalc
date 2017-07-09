@@ -21,7 +21,7 @@ Tests`LoopIntegrals`PaVeUVPart =
 	"(-2*cc*m^2)/(-4 + D)"},
 {"fcstPaVeUVPart-ID3",
 "PaVeUVPart[x+y B0[SPD[p,p],0,\!\(\*SuperscriptBox[\(M\), \
-\(2\)]\)]]", "x - (2*y)/(-4 + D)"},
+\(2\)]\)]]", "(-4*x + D*x - 2*y)/(-4 + D)"},
 {"fcstPaVeUVPart-ID4",
 "PaVeUVPart[x+ y \
 C0[0,SPD[p,p],SPD[p,p],0,0,\!\(\*SuperscriptBox[\(M\), \(2\)]\)]]",
@@ -1677,5 +1677,20 @@ SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
 SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
 {"fcstPaVeUVPart-ID428",
 "PaVeUVPart[PaVe[3, 3, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
-SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"}
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID429",
+"TID[SPD[k] FAD[{k + q1, m1}, {k + q2, m2}]/(I Pi^2), k,
+UsePaVeBasis -> True, ToPaVe -> True] //PaVeUVPart[#, FCE -> True] &",
+"-((2 (m1^2 + m2^2 + SPD[q1, q2]))/(-4 + D))"},
+{"fcstPaVeUVPart-ID430",
+"TID[SPD[k, p1]^3 FAD[k, {k + q1, m1}, {k + q2, m2}]/(I Pi^2), k,
+UsePaVeBasis -> True, ToPaVe -> True] //
+PaVeUVPart[#, FCE -> True] &",
+"(SPD[p1, p1] SPD[p1, q1] + SPD[p1, p1] SPD[p1, q2])/(2 (-4 + D))"},
+{"fcstPaVeUVPart-ID431",
+"TID[SPD[k, p1]^8 FAD[{k, m0}, {k, m1, 2}, {k, m2}]/(I Pi^2), k,
+UsePaVeBasis -> True, ToPaVe -> True] //
+PaVeUVPart[#, FCE -> True] &",
+"-((7 (m0^4 + 2 m0^2 m1^2 + 3 m1^4 + m0^2 m2^2 + 2 m1^2 m2^2 +
+m2^4) SPD[p1, p1]^4)/(64 (-4 + D)))"}
 });
