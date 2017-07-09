@@ -19,14 +19,14 @@
 
 
 (* ::Subsection:: *)
-(*Load FeynCalc, FeynArts and Tarcer*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
 		Print["Computation of the 1-loop gluon self-energy in QCD"];
 ];
-$LoadFeynArts = $LoadTARCER  = True;
+$LoadFeynArts=True;
 <<FeynCalc`
 $FAVerbose=0;
 
@@ -35,33 +35,40 @@ $FAVerbose=0;
 (*Generate Feynman diagrams*)
 
 
+(* ::Text:: *)
+(*We keep scaleless B0 functions, since otherwise the UV part would not come out right.*)
+
+
+$KeepLogDivergentScalelessIntegrals=True;
+
+
 Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1 ,ExcludeTopologies->{Tadpoles}],
-		{V[5]} -> {V[5]}, InsertionLevel -> {Classes}, GenericModel -> "Lorentz",Model->"SMQCD",
-		ExcludeParticles->{S[1],S[2],S[3],V[2],V[3],U[1],U[2],U[3],F[4],U[4]}], ColumnsXRows -> {4, 1},
-		SheetHeader -> False,   Numbering -> None,SheetHeader->None,ImageSize->{512,128}];
+		{V[5]} -> {V[5]}, InsertionLevel -> {Particles}, Model->"SMQCD",
+		ExcludeParticles->{S[_],V[1|2|3],U[1|2|3|4],F[4],F[3,{2|3}]}], ColumnsXRows -> {4, 1},
+		SheetHeader -> False,   Numbering -> None,SheetHeader->None,ImageSize->{1024,256}];
 
 
 (* ::Text:: *)
-(*Notice that we choose the prefactor to be 1/(2^D)*(Pi)^(D/2). This is because the 1/Pi^(D/2) piece of the general prefactor 1/(2Pi)^D goes into the definition of the loop integrals using Tarcer's notation.*)
+(*We do not fix the gauge but let the gauge parameter GaugeXi take arbitrary values. The 1/(2Pi)^D prefactor is implicit.*)
 
 
-amps =FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],
+amps =FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{},PreFactor->1],
 IncomingMomenta->{p},OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,ChangeDimension->D,UndoChiralSplittings->True,
-TransversePolarizationVectors->{k1,k2},SMP->True]/. {MQU[Index[Generation, 3]]->MQ,GaugeXi[_]->GaugeXi};
+TransversePolarizationVectors->{k1,k2},SMP->True,FinalSubstitutions->{SMP["m_u"]->SMP["m_q"],GaugeXi[_]->GaugeXi}]
 
 
 (* ::Subsection:: *)
 (*The gluon tadpole loop*)
 
 
-ampGluonLoop = amps[[1]]//ChangeDimension[#,D]&//SUNSimplify[#,Explicit->True]&//Contract//Simplify
+ampGluonLoop = amps[[1]]//SUNSimplify[#,Explicit->True]&//Contract//Simplify
 
 
 (* ::Text:: *)
-(*The above expression is zero in dimensional regularization, because the loop integrals have no scale*)
+(*The above expression is zero in dimensional regularization, because the loop integrals have no scale (and they are not log divergent)*)
 
 
-ampGluonLoopEval=ampGluonLoop//ToTFI[#,q,p]&
+ampGluonLoopEval=ampGluonLoop//TID[#,q]&
 
 
 (* ::Text:: *)
@@ -76,9 +83,7 @@ Print["Check with Muta, Eq. A.9: ",
 (*The quark loop*)
 
 
-ampQuarkLoopEval = amps[[2]]//ChangeDimension[#,D]&//ReplaceAll[#,DiracTrace->Tr]&//
-		SUNSimplify[#,Explicit->True]&//ReplaceAll[#,SUNTr->SUNTrace]&//TID[#,q]&//
-		Simplify//ToTFI[#,q,p]&//Simplify
+ampQuarkLoopEval = amps[[2]]//TID[#,q,ToPaVe->True]&//SUNSimplify
 
 
 (* ::Text:: *)
@@ -92,8 +97,7 @@ Contract[FVD[p,Lor1]FVD[p,Lor2]ampQuarkLoopEval]
 (*The ghost loop*)
 
 
-ampGhostLoopEval = amps[[3]]//ChangeDimension[#,D]&//SUNSimplify[#,Explicit->True]&//
-		ExpandScalarProduct//TID[#,q]&//Simplify//ToTFI[#,q,p]&//Simplify
+ampGhostLoopEval = amps[[3]]//TID[#,q,ToPaVe->True]&//SUNSimplify
 
 
 (* ::Text:: *)
@@ -107,8 +111,7 @@ Contract[FVD[p,Lor1]FVD[p,Lor2]ampGhostLoopEval]//Simplify
 (*The gluon loop*)
 
 
-ampGluonLoop = amps[[4]]//ChangeDimension[#,D]&//SUNSimplify[#,Explicit->True]&//
-		Contract//TID[#,q]&//ToTFI[#,q,p]&//Simplify
+ampGluonLoop =  amps[[4]]//TID[#,q,ToPaVe->True]&//SUNSimplify
 
 
 ampGluonLoopEval=((ampGluonLoop/.{GaugeXi->-OneMinusGaugeXi+1})//Expand//
@@ -137,20 +140,18 @@ Contract[FVD[p,Lor1]FVD[p,Lor2]ampGluonGhostEval]//Simplify
 
 
 (* ::Text:: *)
-(*When adding all the contributions together, we multiply the quark contribution by Nf to account for the 6 quark flavours that actually run in that loop. We ignore the fact that different flavours have different masses, since the divergent piece of the gluon self-energy will not depend on the quark mass.*)
+(*When adding all the contributions together, we multiply the quark contribution by N_f to account for the 6 quark flavors that actually run in that loop. We ignore the fact that different flavors have different masses, since the divergent piece of the gluon self-energy will not depend on the quark mass.*)
 
 
-ampTotal=(ampGluonGhostEval+Nf*ampQuarkLoopEval)//TarcerRecurse
+ampTotal=(ampGluonGhostEval+Nf*ampQuarkLoopEval)
 
 
 (* ::Text:: *)
-(*Since we are interested only in the divergent piece of the self-energy function, we do not have to compute full loop integrals. It is sufficient to substitute just the divergent pieces. The one loop integrals in Tarcer's notation are related to the scalar Passarino-Veltman integrals via a prefactor. For example, TAI[D, 0, {{1, M}}] = (I*(Pi)^(2-D/2) (2Pi)^(D-4)) A0[M^2]. The same goes also for B0.The divergent pieces of A0 and B0 integrals can be easily found in the literature, for example in A.Denner and S. Dittmayer, Reduction of one-loop tensor 5-point integrals, Nucl.Phys.B658:175-202,2003. The preprint is available at  arXiv:hep-ph/0212259. According to the Appendix C, we have A0[M^2]= -2M^2 /(D-4) and B0[p^2, M^2, 0] = -2/(D-4).*)
-(*Multiplying these results with (I*(Pi)^(2-D/2) (2Pi)^(D-4)) and keeping only terms proportional to 1/Epsilon we obtain*)
+(*Since we are interested only in the divergent piece of the self-energy function, we do not have to compute full loop integrals. It is sufficient to substitute just the divergent pieces (using PaVeUVPart).*)
+(*Here we also need to reintroduce the implicit 1/(2Pi)^D prefactor.*)
 
 
-prefactor=(I*(Pi)^(2-D/2) (2Pi)^(D-4));
-ampsSing=(ampTotal/.{TBI[___]:>(-2)/(D-4)*prefactor,TAI[___]:>-2 MQ^2/(D-4)*prefactor})//FCI//
-		ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
+ampsSing=ampTotal//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&//FCReplaceD[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree2[#,Epsilon]&//Simplify
 
 
 (* ::Text:: *)
@@ -164,16 +165,15 @@ gluonSelfEnergy=-I*ampsSing
 (*We can compare this result to Eq. 2.5.131 and Eq. 2.5.132 in Foundations of QCD by T. Muto. *)
 
 
-gaugePrefactor=(Pair[LorentzIndex[Lor1], Momentum[p]]*Pair[LorentzIndex[Lor2], Momentum[p]] - Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]]*
-		Pair[Momentum[p], Momentum[p]]);
+gaugePrefactor=(FVD[p,Lor1]FVD[p,Lor2]-SPD[p,p]MTD[Lor1,Lor2]);
 gluonSelfEnergyMuta=(SMP["g_s"]^2/(4Pi)^2)*(4/3*(1/2)*Nf-(1/2)CA(13/3-GaugeXi))*1/Epsilon*
 gaugePrefactor*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
 Print["Check with Muta, Eq 2.5.131 and Eq. 2.5.132: ",
-			If[Simplify[gluonSelfEnergy-gluonSelfEnergyMuta]===0, "CORRECT.", "!!! WRONG !!!"]];
+			If[Simplify[FCI[gluonSelfEnergy-gluonSelfEnergyMuta]]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
-(*Another cross-check is to compare to Eq. 16.71 in Peskin and Schroeder, where the authors sum up the gluon and ghost contributions in Feynman gauge. All we need to do is just set the gauge parameter GaugeXi to 1 and remove the quark contribution. The latter is easy to do, since the quark contribution is the only piece proportional to Nf.*)
+(*Another cross-check is to compare to Eq. 16.71 in Peskin and Schroeder, where the authors sum up the gluon and ghost contributions in Feynman gauge. All we need to do is just set the gauge parameter GaugeXi to 1 and remove the quark contribution. The latter is easy to do, since the quark contribution is the only piece proportional to N_f.*)
 
 
 ampsSingGluonQuarkFeynmanGauge=Simplify[ampsSing/.{GaugeXi->1,Nf->0}]
@@ -181,4 +181,4 @@ ampsSingGluonQuarkFeynmanGauge=Simplify[ampsSing/.{GaugeXi->1,Nf->0}]
 
 ampsSingFeynmanGaugePeskin=I*(-gaugePrefactor)*(-SMP["g_s"]^2/(4Pi)^2*(-5/3)*CA*(1/Epsilon))*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
 Print["Check with Peskin and Schroeder, Eq 16.71: ",
-			If[Simplify[ampsSingGluonQuarkFeynmanGauge-ampsSingFeynmanGaugePeskin]===0, "CORRECT.", "!!! WRONG !!!"]];
+			If[Simplify[FCI[ampsSingGluonQuarkFeynmanGauge-ampsSingFeynmanGaugePeskin]]===0, "CORRECT.", "!!! WRONG !!!"]];

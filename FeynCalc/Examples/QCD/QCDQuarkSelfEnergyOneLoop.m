@@ -19,20 +19,27 @@
 
 
 (* ::Subsection:: *)
-(*Load FeynCalc, FeynArts and Tarcer*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
 		Print["Computation of the quark self-energy in QCD at 1-loop"];
 ];
-$LoadFeynArts = $LoadTARCER  = True;
+$LoadFeynArts=True;
 <<FeynCalc`
 $FAVerbose=0;
 
 
 (* ::Subsection:: *)
 (*Generate Feynman diagrams*)
+
+
+(* ::Text:: *)
+(*We keep scaleless B0 functions, since otherwise the UV part would not come out right.*)
+
+
+$KeepLogDivergentScalelessIntegrals=True;
 
 
 Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1,
@@ -43,28 +50,27 @@ Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1,
 
 
 (* ::Text:: *)
-(*Notice that we choose the prefactor to be 1/(2^D)*(Pi)^(D/2). This is because the 1/Pi^(D/2) piece of the general prefactor 1/(2Pi)^D goes into the definition of the loop integrals using Tarcer's notation. Furthermore, we do not fix the gauge but let the gauge parameter GaugeXi take arbitrary values.*)
+(*We do not fix the gauge but let the gauge parameter GaugeXi take arbitrary values. The 1/(2Pi)^D prefactor is implicit.*)
 
 
-amps=FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],IncomingMomenta->{p},
-OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,UndoChiralSplittings->True,ChangeDimension->D,List->False,SMP->True]/.{SMP["m_u"]->M,GaugeXi[g]->GaugeXi}
+amps=FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1],IncomingMomenta->{p},
+OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,UndoChiralSplittings->True,ChangeDimension->D,List->False,SMP->True,
+FinalSubstitutions->{SMP["m_u"]->M,GaugeXi[g]->GaugeXi}]
 
 
-ampsEval=amps//Contract//SUNSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse//FCI
-
-
-(* ::Text:: *)
-(*Since we are interested only in the divergent piece of the self-energy function, we do not have to compute full loop integrals. It is sufficient to substitute just the divergent pieces. The one loop integrals in Tarcer's notation are related to the scalar Passarino-Veltman integrals via a prefactor. For example, TAI[D, 0, {{1, M}}] = (I*(Pi)^(2-D/2) (2Pi)^(D-4)) A0[M^2]. The same goes also for B0.The divergent pieces of A0 and B0 integrals can be easily found in the literature, for example in A.Denner and S. Dittmayer, Reduction of one-loop tensor 5-point integrals, Nucl.Phys.B658:175-202,2003. The preprint is available at  arXiv:hep-ph/0212259. According to the Appendix C, we have A0[M^2]= -2M^2 /(D-4) and B0[p^2, M^2, 0] = -2/(D-4).*)
-(*Multiplying these results with (I*(Pi)^(2-D/2) (2Pi)^(D-4)) and keeping only terms proportional to 1/Epsilon we obtain*)
-
-
-prefactor=(I*(Pi)^(2-D/2) (2Pi)^(D-4));
-ampsSing=(ampsEval/.{TBI[x___]:>(-2)/(D-4)*prefactor,TAI[x___]:>-2 M^2/(D-4)*prefactor})//
-ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&//Factor2
+ampsEval=amps//Contract//SUNSimplify//TID[#,q,ToPaVe->True]&
 
 
 (* ::Text:: *)
-(*Finally, since self-energy function is usually defined as  -I*Sigma = Amplitude, to obtain Sigma we need to multiply our result by I . This gives*)
+(*Since we are interested only in the divergent piece of the self-energy function, we do not have to compute full loop integrals. It is sufficient to substitute just the divergent pieces (using PaVeUVPart).*)
+(*Here we also need to reintroduce the implicit 1/(2Pi)^D prefactor.*)
+
+
+ampsSing=ampsEval//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&//ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&//Collect2[#,M]&
+
+
+(* ::Text:: *)
+(*Finally, since self-energy function is usually defined as  I*Sigma = Amplitude, to obtain Sigma we need to multiply our result by I . This gives*)
 
 
 quarSelfEnergy=I*ampsSing//Collect[#,M,Simplify]&
@@ -84,8 +90,7 @@ Print["Check with Muta, Eq 2.5.138: ",
 (*Another cross-check is to compare to Eq. 16.76 in Peskin and Schroeder, where the authors compute the self-energy diagram for massless quarks in Feynman gauge. All we need to do is just set the quarks mass M to zero and the gauge parameter GaugeXi to 1.*)
 
 
-ampsSingMassless=(ampsEval/.{M->0,TBI[x___]:>(-2)/(D-4)*prefactor,GaugeXi->1})//
-ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
+ampsSingMassless=ampsSing/.M->0/. GaugeXi->1
 
 
 ampsSingMasslessPeskin=I*SMP["g_s"]^2/(4Pi)^2*GS[p]*CF*(1/Epsilon)SDF[Col1,Col2]//FCI;
