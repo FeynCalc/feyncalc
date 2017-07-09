@@ -19,7 +19,7 @@
 
 
 (* ::Subsection:: *)
-(*Load FeynCalc, FeynArts and Tarcer*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -36,14 +36,9 @@ $FAVerbose=0;
 
 
 Paint[diags = InsertFields[CreateTopologies[1, 1 -> 2 ], {V[1]} -> {V[1],V[1]},
-		InsertionLevel -> {Particles}, GenericModel -> "Lorentz",
-		Model->"SMQCD",ExcludeParticles->{S[1],S[2],S[3],V[2],V[3],F[3],F[4],
-		U[1],U[2],U[3],U[4],F[2,{2}],F[2,{3}]}], ColumnsXRows -> {2, 1},
+		InsertionLevel -> {Particles},ExcludeParticles->{S[_],V[2|3],F[3|4],
+		U[_],F[2,{2}],F[2,{3}]}], ColumnsXRows -> {2, 1},
 		SheetHeader -> False,  Numbering -> None,ImageSize->{512,256}];
-
-
-(* ::Text:: *)
-(*Notice that we choose the prefactor to be 1/(2^D)*(Pi)^(D/2). This is because the 1/Pi^(D/2) piece of the general prefactor 1/(2Pi)^D goes into the definition of the loop integrals using Tarcer's notation.*)
 
 
 amps = FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],
@@ -51,11 +46,11 @@ IncomingMomenta->{k1},OutgoingMomenta->{k2,k3},LoopMomenta->{q},UndoChiralSplitt
 
 
 (* ::Text:: *)
-(*We obtain two triangle diagrams. The sum vanishes because the second diagram is the negative*)
-(*of the first one.*)
+(*We obtain two triangle diagrams. The sum vanishes because the contribution of the first diagram cancels the contribution of*)
+(*the second diagram.*)
 
 
-threePhotonFinal=Simplify[(amps/.{DiracTrace->Tr})]
+threePhotonFinal=DiracSimplify[amps,DiracTraceEvaluate->True]
 
 
 Print["The 3-photon diagrams in QED vanish: ",
