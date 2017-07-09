@@ -23,6 +23,8 @@ $MATH -nopromt -script ../FeynCalc/Examples/Tdec/GrossNeveuMultiloopTID.m &&
 #QED Examples
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDABJAxialAnomaly.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronGMinusTwoOneLoop.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronSelfEnergyOneLoop.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDPhotonSelfEnergyOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDBhabhaScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDComptonScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronMuonScatteringTree.m &&
