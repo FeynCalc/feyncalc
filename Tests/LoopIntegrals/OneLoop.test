@@ -18,7 +18,7 @@ Tests`LoopIntegrals`fcstOneLoop = {
 {"fcstOneLoop-ID1","OneLoop[q, -I/Pi^ 2 FAD[{q, m}]]","A0[m^2]"},
 {"fcstOneLoop-ID2","OneLoop[q, (I el^2)/(16 Pi^4)/(1 - D)*FAD[{q, mf}, {q - k, mf}]*
 	DiracTrace[(mf + GSD[-k + q]).GAD[mu].(mf + GSD[q]).GAD[mu]],
-	Factoring -> True] /. ScalarProduct[k, k] -> k2 /. mf^2 -> mf2 // Simplify",
+	Factoring -> True] /. ScalarProduct[k, k] -> k2 /. mf^2 -> mf2 // FullSimplify",
 	"(el^2*(-2*(-2 + D)*A0[mf2] + ((-2 + D)*k2 + 4*mf2)*B0[k2, mf2, mf2]))/(8*(-1 + D)*Pi^2)"},
 {"fcstOneLoop-ID3","OneLoop[q, xxx + FAD[{q,m}]]","xxx + I \[Pi]^2 A0[m^2]"},
 {"fcstOneLoop-ID4","OneLoop[k,
