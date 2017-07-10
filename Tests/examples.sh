@@ -36,12 +36,15 @@ $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDThreePhotonDiagramsOneLoop.m 
 
 #EW Examples
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWMuonDecayTree.m &&
-$MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronMuonNeutrinoToMuonElectronNeutrinoTree.m
-$MATH -nopromt -script ../FeynCalc/Examples/EW/EWNeutrinoDownQuarkToLeptonUpQuarkTree.m
-$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoFermionsTree.m
-$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToWPlusWMinusTree.m
-$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToZZTree.m
-$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoGluonsOneLoop.m
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronMuonNeutrinoToMuonElectronNeutrinoTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWNeutrinoDownQuarkToLeptonUpQuarkTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoFermionsTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToWPlusWMinusTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToZZTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoGluonsOneLoop.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWAntiupQuarkDownQuarkToElectronAntielectronNeutrinoTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWUpQuarkDownAntiquarkToPositronElectronNeutrinoTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/EW/EWQQBarToZZTree.m &&
 
 #QCD Examples
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGammaStarGToQiQBari.m &&
@@ -56,9 +59,11 @@ $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToGGTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGGToQiQBariTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGQiToGQi.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGGToGGTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQQBarToElectronPositronTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQQBarToGammaGammaTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQuarkSelfEnergyOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGluonSelfEnergyOneLoop.m &&
-$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGhostSelfEnergyTwoLoops.m
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGhostSelfEnergyTwoLoops.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/FeynRules/QCDBGF/PureYMSelfEnergyInQCDBGFAtOneLoop.m
 
 notify-send "Finished running examples for FeynCalc."
