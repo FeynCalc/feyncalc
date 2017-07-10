@@ -248,6 +248,30 @@ SMP /:
 	MakeBoxes[SMP["V_tb", c_Complex], TraditionalForm] /; c === Complex[0, -1] :=
 		SubsuperscriptBox["V", "tb", "*"];
 
+SMP /:
+	MakeBoxes[SMP["s_12"], TraditionalForm] :=
+		SubscriptBox["s", "12"];
+
+SMP /:
+	MakeBoxes[SMP["s_13"], TraditionalForm] :=
+		SubscriptBox["s", "13"];
+
+SMP /:
+	MakeBoxes[SMP["s_23"], TraditionalForm] :=
+		SubscriptBox["s", "23"];
+
+SMP /:
+	MakeBoxes[SMP["c_12"], TraditionalForm] :=
+		SubscriptBox["c", "12"];
+
+SMP /:
+	MakeBoxes[SMP["c_13"], TraditionalForm] :=
+		SubscriptBox["c", "13"];
+
+SMP /:
+	MakeBoxes[SMP["c_23"], TraditionalForm] :=
+		SubscriptBox["c", "23"];
+
 (* Generic renormalization constants *)
 SMP /: MakeBoxes[SMP["d_psi"], TraditionalForm] :=
 	SubscriptBox["\[Delta]","\[Psi]"];
@@ -526,7 +550,9 @@ SMP[]=
 			{"V_cb",I},{"V_cb",-I},
 			{"V_td",I},{"V_td",-I},
 			{"V_ts",I},{"V_ts",-I},
-			{"V_tb",I},{"V_tb",-I}
+			{"V_tb",I},{"V_tb",-I},
+			"s_12", "s_13", "s_23",
+			"c_12", "c_13", "c_23"
 		};
 		{SMP /@ li, li} // Transpose
 	];
