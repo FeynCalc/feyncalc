@@ -121,8 +121,7 @@ Cell[TextData[{
 that deal with traces of Dirac matrices. It applies only to the computation \
 of D-dimensional chiral traces (i.e. those that involve one ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  ") in the Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to \
 True, such traces will be computed according to formula  (A.5) from Comp. \
 Phys. Comm 77 (1993) 286-298, which is also known as West's formula."
@@ -252,12 +251,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{Automatic, 919}, {32, Automatic}},
+WindowMargins->{{301, Automatic}, {1, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

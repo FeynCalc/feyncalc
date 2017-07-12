@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     32309,       1242]
-NotebookOptionsPosition[     26813,       1043]
-NotebookOutlinePosition[     27431,       1067]
-CellTagsIndexPosition[     27351,       1062]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -140,7 +121,6 @@ Cell[TextData[{
  " expands traces of Dirac and SU(N) matrices using linearity of the trace. \
 The traces themselves are not evaluated."
 }], "Usage",
- CellChangeTimes->{{3.6643687807226467`*^9, 3.664368798359445*^9}},
  CellID->982511436],
 
 Cell["XXXX", "Notes",
@@ -188,8 +168,6 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/SUNTrace"]
 }], "SeeAlso",
- CellChangeTimes->{{3.6643688154956713`*^9, 3.66436882035923*^9}, {
-  3.6643688952627993`*^9, 3.66436890505998*^9}},
  CellID->929782353]
 }, Open  ]],
 
@@ -233,9 +211,6 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
      RowBox[{"GA", "[", "rho", "]"}]}], "+", "x"}], "]"}]}]], "Input",
- CellChangeTimes->{{3.6643689129095783`*^9, 3.664368915159032*^9}, {
-  3.664368953311576*^9, 3.664368990983102*^9}, {3.6643691350628843`*^9, 
-  3.6643691905264587`*^9}},
  CellLabel->"In[131]:=",
  CellID->55860621],
 
@@ -292,10 +267,6 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm]}], "+", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.6643689918324547`*^9, 3.6643690207695436`*^9}, {
-   3.664369136250869*^9, 3.664369161084498*^9}, 3.664369191132872*^9, 
-   3.6643692429279013`*^9, 3.6643693207451963`*^9, 3.664369459586512*^9, 
-   3.669010490765499*^9},
  CellLabel->"Out[131]=",
  CellID->632138578]
 }, Open  ]],
@@ -304,8 +275,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", "dtr1", "]"}]], "Input",
- CellChangeTimes->{{3.6643690272893877`*^9, 3.664369032054359*^9}, {
-  3.6643691392067747`*^9, 3.6643691626465807`*^9}},
  CellLabel->"In[133]:=",
  CellID->502042032],
 
@@ -439,9 +408,6 @@ Cell[BoxData[
     RowBox[{"tr", "(", 
      FormBox["1",
       TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.6643690324128942`*^9, {3.6643691403632717`*^9, 3.664369192436841*^9}, 
-   3.6643693214268503`*^9, 3.664369460307856*^9, 3.66901049668509*^9},
  CellLabel->"Out[133]=",
  CellID->712633835]
 }, Open  ]],
@@ -452,8 +418,6 @@ Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
   RowBox[{"dtr1", ",", 
    RowBox[{"DotSimplify", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.664369144030303*^9, 3.664369146966275*^9}, 
-   3.66436919805434*^9},
  CellLabel->"In[134]:=",
  CellID->611074974],
 
@@ -504,9 +468,6 @@ Cell[BoxData[
     RowBox[{"tr", "(", 
      FormBox["1",
       TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.66436914732283*^9, {3.66436919381925*^9, 3.664369198469857*^9}, 
-   3.664369322190015*^9, 3.664369460851225*^9, 3.669010498861557*^9},
  CellLabel->"Out[134]=",
  CellID->1845830738]
 }, Open  ]],
@@ -517,7 +478,6 @@ Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
   RowBox[{"dtr1", ",", 
    RowBox[{"DiracTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.664369227110207*^9, 3.664369230093573*^9}},
  CellLabel->"In[135]:=",
  CellID->1030948092],
 
@@ -564,8 +524,6 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm]]}], "+", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.6643692304754343`*^9, 3.6643692448445044`*^9}, 
-   3.664369322888154*^9, 3.664369461467084*^9, 3.66901050475651*^9},
  CellLabel->"Out[135]=",
  CellID->1121814026]
 }, Open  ]],
@@ -591,8 +549,6 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
       RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}]}]}]], "Input",
- CellChangeTimes->{{3.664369052958872*^9, 3.664369063294148*^9}, {
-  3.6643692022145863`*^9, 3.664369203222602*^9}},
  CellLabel->"In[136]:=",
  CellID->312665650],
 
@@ -663,9 +619,6 @@ Cell[BoxData[
           TraditionalForm]],
         TraditionalForm]}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.664369063983221*^9, {3.6643692004456863`*^9, 3.664369203535915*^9}, 
-   3.664369324160863*^9, 3.664369462199172*^9, 3.669010506468595*^9},
  CellLabel->"Out[136]=",
  CellID->141070294]
 }, Open  ]],
@@ -677,8 +630,6 @@ Cell[BoxData[
   RowBox[{"dtr2", ",", 
    RowBox[{"Momentum", "\[Rule]", 
     RowBox[{"{", "p1", "}"}]}]}], "]"}]], "Input",
- CellChangeTimes->{{3.664369070422523*^9, 3.66436907439856*^9}, {
-  3.6643692060065393`*^9, 3.6643692067901154`*^9}},
  CellLabel->"In[137]:=",
  CellID->851121632],
 
@@ -755,8 +706,6 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.664369074916843*^9, 3.664369207191321*^9, 
-  3.664369325030903*^9, 3.6643694629173203`*^9, 3.669010516668229*^9},
  CellLabel->"Out[137]=",
  CellID->1128579487]
 }, Open  ]],
@@ -765,7 +714,6 @@ Cell["\<\
 At the moment SUNTrace automatically expands its content, so here \
 FCTraceExpand is not needed. However, this may change in the future.\
 \>", "Notes",
- CellChangeTimes->{{3.664369652891502*^9, 3.664369683755151*^9}},
  CellID->1671076290],
 
 Cell[CellGroupData[{
@@ -778,8 +726,6 @@ Cell[BoxData[
      RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
     RowBox[{"SUNT", "[", 
      RowBox[{"l", ",", "m", ",", "n"}], "]"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.664369078535969*^9, 3.664369094127182*^9}, {
-  3.6643692118464613`*^9, 3.66436921302216*^9}},
  CellLabel->"In[138]:=",
  CellID->1858007214],
 
@@ -836,9 +782,6 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.6643690853776293`*^9, 3.6643690945477962`*^9}, 
-   3.66436921332791*^9, 3.664369325870269*^9, 3.664369463486217*^9, 
-   3.6690105266559963`*^9},
  CellLabel->"Out[138]=",
  CellID->1073657663]
 }, Open  ]],
@@ -847,8 +790,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", "str", "]"}]], "Input",
- CellChangeTimes->{{3.664369099318798*^9, 3.6643691016061487`*^9}, {
-  3.664369214822085*^9, 3.664369215309023*^9}},
  CellLabel->"In[139]:=",
  CellID->1593699893],
 
@@ -905,8 +846,6 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.6643691019239063`*^9, 3.664369215687007*^9, 
-  3.664369326722926*^9, 3.664369464073991*^9, 3.669010527255143*^9},
  CellLabel->"Out[139]=",
  CellID->1696291909]
 }, Open  ]],
@@ -917,7 +856,6 @@ Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
   RowBox[{"str", ",", 
    RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.664369330389275*^9, 3.664369335548831*^9}},
  CellLabel->"In[140]:=",
  CellID->805159379],
 
@@ -974,8 +912,6 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.664369335978063*^9, 3.664369464971632*^9, 
-  3.66901052784231*^9},
  CellLabel->"Out[140]=",
  CellID->555663597]
 }, Open  ]]
@@ -1042,210 +978,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{950, 770},
-WindowMargins->{{2110, Automatic}, {Automatic, 103}},
+WindowMargins->{{Automatic, 0}, {116, Automatic}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+TrackCellChangeTimes->False,
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "ExtendedExamples"->{
-  Cell[25293, 985, 100, 2, 54, "ExtendedExamplesSection",
-   CellTags->"ExtendedExamples",
-   CellID->1854448968]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"ExtendedExamples", 27212, 1055}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 23, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 79, 2, 70, "Categorization",
- CellID->686433507],
-Cell[1061, 45, 81, 2, 70, "Categorization",
- CellID->605800465],
-Cell[1145, 49, 78, 2, 70, "Categorization",
- CellID->468444828],
-Cell[1226, 53, 71, 1, 70, "Categorization"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1334, 59, 55, 1, 18, "KeywordsSection",
- CellID->477174294],
-Cell[1392, 62, 45, 1, 70, "Keywords",
- CellID->1164421360]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1474, 68, 65, 1, 18, "TemplatesSection",
- CellID->1872225408],
-Cell[1542, 71, 94, 2, 70, "Template",
- CellID->1562036412],
-Cell[1639, 75, 82, 2, 70, "Template",
- CellID->158391909],
-Cell[1724, 79, 81, 2, 70, "Template",
- CellID->1360575930],
-Cell[1808, 83, 82, 2, 70, "Template",
- CellID->793782254]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1927, 90, 53, 1, 18, "DetailsSection",
- CellID->307771771],
-Cell[1983, 93, 63, 2, 70, "Details",
- CellID->670882175],
-Cell[2049, 97, 69, 2, 70, "Details",
- CellID->350963985],
-Cell[2121, 101, 64, 2, 70, "Details",
- CellID->8391405],
-Cell[2188, 105, 69, 2, 70, "Details",
- CellID->3610269],
-Cell[2260, 109, 61, 2, 70, "Details",
- CellID->401364205],
-Cell[2324, 113, 61, 2, 70, "Details",
- CellID->350204745],
-Cell[2388, 117, 63, 2, 70, "Details",
- CellID->732958810],
-Cell[2454, 121, 78, 2, 70, "Details",
- CellID->222905350],
-Cell[2535, 125, 67, 2, 70, "Details",
- CellID->240026365]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2639, 132, 56, 1, 63, "ObjectName",
- CellID->1224892054],
-Cell[2698, 135, 342, 8, 72, "Usage",
- CellID->982511436],
-Cell[3043, 145, 42, 1, 24, "Notes",
- CellID->1067943069]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3122, 151, 57, 1, 43, "TutorialsSection",
- CellID->250839057],
-Cell[3182, 154, 45, 1, 16, "Tutorials",
- CellID->341631938]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3264, 160, 83, 1, 30, "RelatedDemonstrationsSection",
- CellID->1268215905],
-Cell[3350, 163, 58, 1, 16, "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3445, 169, 65, 1, 30, "RelatedLinksSection",
- CellID->1584193535],
-Cell[3513, 172, 49, 1, 16, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3599, 178, 55, 1, 30, "SeeAlsoSection",
- CellID->1255426704],
-Cell[3657, 181, 359, 11, 16, "SeeAlso",
- CellID->929782353]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4053, 197, 57, 1, 30, "MoreAboutSection",
- CellID->38303248],
-Cell[4113, 200, 46, 1, 16, "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4196, 206, 356, 11, 68, "PrimaryExamplesSection",
- CellID->880084151],
-Cell[CellGroupData[{
-Cell[4577, 221, 660, 18, 46, "Input",
- CellID->55860621],
-Cell[5240, 241, 1700, 58, 35, "Output",
- CellID->632138578]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6977, 304, 235, 5, 26, "Input",
- CellID->502042032],
-Cell[7215, 311, 3733, 134, 64, "Output",
- CellID->712633835]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10985, 450, 272, 7, 26, "Input",
- CellID->611074974],
-Cell[11260, 459, 1472, 51, 35, "Output",
- CellID->1845830738]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[12769, 515, 247, 6, 26, "Input",
- CellID->1030948092],
-Cell[13019, 523, 1358, 46, 35, "Output",
- CellID->1121814026]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[14414, 574, 755, 22, 46, "Input",
- CellID->312665650],
-Cell[15172, 598, 2009, 71, 31, "Output",
- CellID->141070294]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[17218, 674, 318, 8, 26, "Input",
- CellID->851121632],
-Cell[17539, 684, 2230, 76, 31, "Output",
- CellID->1128579487]
-}, Open  ]],
-Cell[19784, 763, 248, 5, 39, "Notes",
- CellID->1671076290],
-Cell[CellGroupData[{
-Cell[20057, 772, 410, 11, 26, "Input",
- CellID->1858007214],
-Cell[20470, 785, 1444, 57, 29, "Output",
- CellID->1073657663]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[21951, 847, 231, 5, 26, "Input",
- CellID->1593699893],
-Cell[22185, 854, 1412, 56, 29, "Output",
- CellID->1696291909]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[23634, 915, 243, 6, 26, "Input",
- CellID->805159379],
-Cell[23880, 923, 1364, 56, 29, "Output",
- CellID->555663597]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[25293, 985, 100, 2, 54, "ExtendedExamplesSection",
- CellTags->"ExtendedExamples",
- CellID->1854448968],
-Cell[25396, 989, 125, 3, 32, "ExampleSection",
- CellID->1293636265],
-Cell[25524, 994, 148, 3, 20, "ExampleSection",
- CellID->1020263627],
-Cell[CellGroupData[{
-Cell[25697, 1001, 127, 3, 20, "ExampleSection",
- CellID->2061341341],
-Cell[25827, 1006, 130, 3, 70, "ExampleSubsection",
- CellID->1757724783],
-Cell[25960, 1011, 130, 3, 70, "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
-Cell[26105, 1017, 131, 3, 20, "ExampleSection",
- CellID->258228157],
-Cell[26239, 1022, 142, 3, 20, "ExampleSection",
- CellID->2123667759],
-Cell[26384, 1027, 135, 3, 20, "ExampleSection",
- CellID->1305812373],
-Cell[26522, 1032, 140, 3, 20, "ExampleSection",
- CellID->1653164318],
-Cell[26665, 1037, 132, 3, 20, "ExampleSection",
- CellID->589267740]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

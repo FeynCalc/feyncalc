@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     33801,       1227]
-NotebookOptionsPosition[     24836,        893]
-NotebookOutlinePosition[     27661,        995]
-CellTagsIndexPosition[     27371,        982]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -109,7 +90,6 @@ Cell["XXXX", "Details",
 Cell[CellGroupData[{
 
 Cell["Short introduction", "Title",
- CellChangeTimes->{{3.664359949503092*^9, 3.664359952150434*^9}},
  CellID->509267359],
 
 Cell[TextData[{
@@ -132,7 +112,6 @@ Mellin ",
 are provided to change the FeynCalc syntax to and from FORM syntax and to \
 generate FORTRAN code."
 }], "Text",
- CellChangeTimes->{{3.6643599620756283`*^9, 3.664359981894837*^9}},
  CellID->1534169418],
 
 Cell[TextData[{
@@ -150,9 +129,6 @@ Cell[TextData[{
     RowBox[{"etc", "."}]}], TraditionalForm]]],
  " (abbreviations in parentheses) are:"
 }], "Text",
- CellChangeTimes->{{3.6643600683581676`*^9, 3.664360068649622*^9}, {
-  3.664360103261983*^9, 3.6643601038697844`*^9}, {3.664360202389187*^9, 
-  3.664360241341753*^9}},
  CellID->1157525339],
 
 Cell[TextData[{
@@ -197,8 +173,6 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/SP"],
  " (scalar product)"
 }], "Text",
- CellChangeTimes->{{3.664360245994879*^9, 3.664360349068862*^9}, {
-  3.664360541716607*^9, 3.664360657659786*^9}},
  CellID->757206658],
 
 Cell["Some functions for manipulations are:", "Text",
@@ -274,8 +248,6 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/ApartFF"]
 }], "Text",
- CellChangeTimes->{{3.6643607339108057`*^9, 3.6643608053223352`*^9}, {
-  3.6643609153756123`*^9, 3.664361026897187*^9}},
  CellID->833014432],
 
 Cell["Some functions for Feyman loop integral manipulations:", "Text",
@@ -312,7 +284,6 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/PaVeReduce"],
  " "
 }], "Text",
- CellChangeTimes->{{3.664361037350133*^9, 3.664361121523073*^9}},
  CellID->571834673],
 
 Cell[CellGroupData[{
@@ -321,9 +292,6 @@ Cell["\<\
 For more detailed information on FeynCalc functions, use the help system or \
 look at the examples in  (evaluate the following command)\
 \>", "Text",
- CellChangeTimes->{{3.66436201708527*^9, 3.664362022941236*^9}, {
-  3.664362113997698*^9, 3.664362124325075*^9}, {3.664362162620707*^9, 
-  3.664362191109445*^9}},
  CellID->4750988],
 
 Cell[CellGroupData[{
@@ -333,16 +301,12 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"$FeynCalcDirectory", ",", "\"\<Examples\>\""}], "}"}], 
   "]"}]], "Input",
- CellChangeTimes->{
-  3.664361786471382*^9, {3.6643620399266453`*^9, 3.664362042085245*^9}, 
-   3.6643621657191896`*^9},
  CellLabel->"In[24]:=",
  CellID->1220639322],
 
 Cell[BoxData[
  FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/Examples\"\>", 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.6643620425514307`*^9, 3.6643621662698803`*^9},
  CellLabel->"Out[24]=",
  CellID->1760930313]
 }, Open  ]]
@@ -353,8 +317,6 @@ Not all functions are equally well documented in this notebook. Some are very \
 special ones (e.g. for tools for 2-loop QCD diagrams originating in twist-2 \
 OPE), some are still experimental.\
 \>", "Text",
- CellChangeTimes->{3.66436201708527*^9, 3.664362049077449*^9, 
-  3.6643620934212017`*^9},
  CellID->1833132382],
 
 Cell[TextData[{
@@ -377,8 +339,6 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/ToLarin"]
 }], "Text",
- CellChangeTimes->{{3.664362246340498*^9, 3.6643622469502087`*^9}, 
-   3.664362278643958*^9},
  CellTags->"intro",
  CellID->716203363],
 
@@ -400,8 +360,6 @@ correcting a minor misprint in 14) of Appendix 7 from ",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Integrate2"]
 }], "SmallText",
- CellChangeTimes->{{3.664361204185831*^9, 3.664361208865102*^9}, {
-  3.6643612396572037`*^9, 3.664361239657754*^9}},
  CellTags->{"intro", "introfoot"},
  CellID->721081683]
 }, Open  ]],
@@ -421,7 +379,6 @@ Cell[TextData[{
   FontSlant->"Italic"],
  " installation tree, which is (evaluate the following command)"
 }], "Text",
- CellChangeTimes->{{3.6643623788602753`*^9, 3.664362402803527*^9}},
  CellID->846823627],
 
 Cell[CellGroupData[{
@@ -431,14 +388,12 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"$UserBaseDirectory", ",", "\"\<Applications\>\""}], "}"}], 
   "]"}]], "Input",
- CellChangeTimes->{3.664362389555352*^9},
  CellLabel->"In[26]:=",
  CellID->1006438652],
 
 Cell[BoxData[
  FormBox["\<\"/home/vs/.Mathematica/Applications\"\>", 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.664362404638443*^9},
  CellLabel->"Out[26]=",
  CellID->205843633]
 }, Open  ]]
@@ -455,7 +410,6 @@ automatic loading of FeynCalc on every ",
   FontSlant->"Italic"],
  " startup."
 }], "Text",
- CellChangeTimes->{{3.664362421043448*^9, 3.664362449877076*^9}},
  CellID->469196418],
 
 Cell[TextData[{
@@ -472,7 +426,6 @@ objects. This can be done  by clicking on the ",
   FontWeight->"Bold"],
  "."
 }], "Text",
- CellChangeTimes->{{3.664362488980373*^9, 3.664362627786993*^9}},
  CellID->434623157],
 
 Cell[CellGroupData[{
@@ -483,23 +436,19 @@ Cell[TextData[{
   FontWeight->"Bold"],
  " and don't want to be bothered, just uncomment the line"
 }], "Text",
- CellChangeTimes->{{3.664362632875*^9, 3.66436269723413*^9}},
  CellID->13342743],
 
 Cell[BoxData[
  RowBox[{"(*", 
   RowBox[{
    RowBox[{"$FCAdvice", " ", "=", " ", "True"}], ";"}], "*)"}]], "Input",
- CellChangeTimes->{{3.6643627023263273`*^9, 3.6643627051861353`*^9}},
  CellID->2016141554]
 }, Open  ]],
 
 Cell["in FCConfig.m.", "Text",
- CellChangeTimes->{{3.664362707633235*^9, 3.664362723977644*^9}},
  CellID->491195527],
 
 Cell["", "Text",
- CellChangeTimes->{{3.664362488980373*^9, 3.6643625214234743`*^9}},
  CellID->351638376],
 
 Cell[TextData[{
@@ -515,8 +464,6 @@ Cell[TextData[{
   FontWeight->"Bold"],
  ", or by evaluating"
 }], "Text",
- CellChangeTimes->{{3.664362488980373*^9, 3.664362521421033*^9}, 
-   3.66436257333941*^9},
  CellID->430968534]
 }, Open  ]],
 
@@ -535,7 +482,6 @@ FeynCalc. These packages are not initialized by default when starting \
 FeynCalc. Loading them can be switched on and off by setting appropiate \
 variables to False or True before loading FeynCalc.\
 \>", "Text",
- CellChangeTimes->{{3.6643628371471243`*^9, 3.66436284037027*^9}},
  CellTags->"About Extras",
  CellID->953459903],
 
@@ -570,8 +516,6 @@ Cell[BoxData[
      GridBoxDividers->{
       "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
        "RowsIndexed" -> {}}}]], "2ColumnBox"], TraditionalForm]], "Text",
- CellChangeTimes->{{3.6094320752007427`*^9, 3.6094320866873713`*^9}, {
-  3.6094326150301037`*^9, 3.609432639464862*^9}},
  Background->None,
  CellTags->"About Extras",
  CellID->2108182812],
@@ -579,8 +523,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell["TARCER", "Subsection",
- CellChangeTimes->{{3.664362867089566*^9, 3.664362867706869*^9}, 
-   3.664362900736824*^9},
  CellTags->"tarcer",
  CellID->906844505],
 
@@ -597,8 +539,6 @@ developed by R. Mertig and R. Scharf and published in ",
   ButtonNote->"http://arxiv.org/abs/hep-ph/9801383"],
  "."
 }], "Text",
- CellChangeTimes->{{3.664362892153569*^9, 3.664362923521014*^9}, {
-  3.664362962969199*^9, 3.664363016968184*^9}},
  CellID->1972678903],
 
 Cell[CellGroupData[{
@@ -606,7 +546,6 @@ Cell[CellGroupData[{
 Cell["\<\
 TARCER is distributed with FeynCalc. To have FeynCalc load TARCER, evaluate\
 \>", "Text",
- CellChangeTimes->{3.664363050297164*^9},
  CellID->1513547103],
 
 Cell[BoxData[
@@ -630,7 +569,6 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell["PHI ", "Subsection",
- CellChangeTimes->{3.6643631311603813`*^9},
  CellTags->"phi",
  CellID->932055296],
 
@@ -644,8 +582,6 @@ provides an alternative way of creating coupling definitions for FeynArts. \
 This is convenient if one needs to generate a large number of Feynman rules \
 from different lagrangians. PHI is distributed with FeynCalc."
 }], "Text",
- CellChangeTimes->{{3.6094327160375223`*^9, 3.609432746960998*^9}, {
-  3.6643631358241796`*^9, 3.664363142016334*^9}},
  CellTags->"phi",
  CellID->1893421836],
 
@@ -666,7 +602,6 @@ Cell["\<\
 before loading FeynCalc You can also put this line into your \"FCConfig.m\" \
 file.\
 \>", "Text",
- CellChangeTimes->{{3.664363151880156*^9, 3.664363154487904*^9}},
  CellTags->"phi",
  CellID->1295431310],
 
@@ -686,7 +621,6 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell["FeynArts", "Subsection",
- CellChangeTimes->{{3.664361470991418*^9, 3.664361476735716*^9}},
  CellID->1026891602],
 
 Cell[TextData[{
@@ -718,7 +652,6 @@ corresponding amplitudes. The original FeynArts was created by J. K\
   ButtonNote->"http://www.feynarts.de/FA3Guide.pdf"],
  "."
 }], "Text",
- CellChangeTimes->{{3.664361506045611*^9, 3.664361560868896*^9}},
  CellID->1730838623],
 
 Cell["\<\
@@ -736,7 +669,6 @@ then load FeynCalc and evaluate the amplitudes. However, this method is \
 rather inconvenient if one wants to play with different options and see how \
 this affects the final result.\
 \>", "Text",
- CellChangeTimes->{3.664361602335528*^9},
  CellID->791617764],
 
 Cell["\<\
@@ -754,22 +686,17 @@ For this you need to download the latest version of FeynArts and extract the \
 tarball to the FeynArts directory inside FeynCalc, which (evaluate the \
 following command) is\
 \>", "Text",
- CellChangeTimes->{{3.664361684198641*^9, 3.664361730918594*^9}, {
-  3.664361791751129*^9, 3.664361793078018*^9}, {3.664361833926667*^9, 
-  3.66436183988618*^9}, {3.664362186204789*^9, 3.664362186764686*^9}},
  CellID->2088550082],
 
 Cell[CellGroupData[{
 
 Cell[BoxData["$FeynArtsDirectory"], "Input",
- CellChangeTimes->{3.664361786471382*^9},
  CellLabel->"In[13]:=",
  CellID->606741564],
 
 Cell[BoxData[
  FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/FeynArts\"\>", 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.664361824284008*^9},
  CellLabel->"Out[13]=",
  CellID->1253899115]
 }, Open  ]]
@@ -783,15 +710,11 @@ Cell[TextData[{
   FontSlant->"Italic"],
  " and enter"
 }], "Text",
- CellChangeTimes->{{3.664361796541039*^9, 3.664361808878028*^9}, {
-  3.664361878677866*^9, 3.664361888597619*^9}},
  CellID->1310937107],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
- CellChangeTimes->{{3.664361817070622*^9, 3.6643618589265003`*^9}, {
-  3.664361890790845*^9, 3.66436189309409*^9}},
  CellLabel->"In[16]:=",
  CellID->342627804]
 }, Open  ]],
@@ -805,20 +728,16 @@ appear. Hit OK. Wait until the patching process finishes. Then restart ",
   FontSlant->"Italic"],
  " again and load FeynCalc with"
 }], "Text",
- CellChangeTimes->{{3.664361896646604*^9, 3.6643619654294786`*^9}},
  CellID->570125418],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
- CellChangeTimes->{{3.664361817070622*^9, 3.6643618589265003`*^9}, {
-  3.664361890790845*^9, 3.66436189309409*^9}},
  CellLabel->"In[18]:=",
  CellID->1900750623]
 }, Open  ]],
 
 Cell["each time you want to use FeynArts with FeynCalc.", "Text",
- CellChangeTimes->{{3.66436197595122*^9, 3.664361987477138*^9}},
  CellID->1315560355]
 }, Open  ]]
 }, Open  ]],
@@ -835,9 +754,6 @@ Cell[CellGroupData[{
 Cell["\<\
 A lot of examples can be found in (evaluate the following command)\
 \>", "Text",
- CellChangeTimes->{{3.66436201708527*^9, 3.664362022941236*^9}, {
-  3.664362113997698*^9, 3.664362124325075*^9}, {3.664362162620707*^9, 
-  3.664362191109445*^9}, {3.664366615840431*^9, 3.664366626008256*^9}},
  CellID->1268182373],
 
 Cell[CellGroupData[{
@@ -847,16 +763,12 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"$FeynCalcDirectory", ",", "\"\<Examples\>\""}], "}"}], 
   "]"}]], "Input",
- CellChangeTimes->{
-  3.664361786471382*^9, {3.6643620399266453`*^9, 3.664362042085245*^9}, 
-   3.6643621657191896`*^9},
  CellLabel->"In[24]:=",
  CellID->1877395502],
 
 Cell[BoxData[
  FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/Examples\"\>", 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.6643620425514307`*^9, 3.6643621662698803`*^9},
  CellLabel->"Out[24]=",
  CellID->727521100]
 }, Open  ]]
@@ -884,6 +796,7 @@ Cell["XXXX", "RelatedTutorials",
 Cell[CellGroupData[{
 
 Cell["Related Wolfram Education Group Courses", "TutorialRelatedLinksSection",
+ 
  CellID->415694148],
 
 Cell["XXXX", "TutorialRelatedLinks",
@@ -892,345 +805,12 @@ Cell["XXXX", "TutorialRelatedLinks",
 }, Open  ]]
 },
 WindowSize->{957, 770},
-WindowMargins->{{Automatic, 190}, {Automatic, 74}},
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+WindowMargins->{{Automatic, 190}, {114, Automatic}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
+TrackCellChangeTimes->False,
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
-  CharacterEncoding -> "UTF-8"]
+  CharacterEncoding -> "UTF-8"],
+$CellContext`FileOutlineCache -> False
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "intro"->{
-  Cell[5071, 203, 94, 2, 22, "Text",
-   CellTags->"intro",
-   CellID->1227796187],
-  Cell[7039, 280, 111, 2, 22, "Text",
-   CellTags->"intro",
-   CellID->1006364145],
-  Cell[9257, 359, 653, 23, 44, "Text",
-   CellTags->"intro",
-   CellID->716203363],
-  Cell[9935, 386, 114, 2, 22, "Text",
-   CellTags->"intro",
-   CellID->1566592169],
-  Cell[10052, 390, 587, 15, 47, "SmallText",
-   CellTags->{"intro", "introfoot"},
-   CellID->721081683]},
- "introfoot"->{
-  Cell[10052, 390, 587, 15, 47, "SmallText",
-   CellTags->{"intro", "introfoot"},
-   CellID->721081683]},
- "Load FeynCalc"->{
-  Cell[10676, 410, 96, 2, 42, "Section",
-   CellTags->{"Load FeynCalc", "start"},
-   CellID->1726202394]},
- "start"->{
-  Cell[10676, 410, 96, 2, 42, "Section",
-   CellTags->{"Load FeynCalc", "start"},
-   CellID->1726202394]},
- "About Extras"->{
-  Cell[13823, 524, 107, 3, 42, "Section",
-   PageBreakAbove->True,
-   CellTags->"About Extras",
-   CellID->2100607586],
-  Cell[13933, 529, 561, 10, 86, "Text",
-   CellTags->"About Extras",
-   CellID->953459903],
-  Cell[14497, 541, 1268, 35, 66, "Text",
-   CellTags->"About Extras",
-   CellID->2108182812]},
- "tarcer"->{
-  Cell[15790, 580, 161, 4, 38, "Subsection",
-   CellTags->"tarcer",
-   CellID->906844505],
-  Cell[16687, 611, 121, 4, 26, "Input",
-   CellTags->"tarcer",
-   CellID->843778896]},
- "phi"->{
-  Cell[17105, 631, 108, 3, 38, "Subsection",
-   CellTags->"phi",
-   CellID->932055296],
-  Cell[17216, 636, 620, 13, 86, "Text",
-   CellTags->"phi",
-   CellID->1893421836],
-  Cell[17861, 653, 89, 2, 22, "Text",
-   CellTags->"phi",
-   CellID->528666319],
-  Cell[17953, 657, 115, 4, 26, "Input",
-   CellTags->"phi",
-   CellID->798844745],
-  Cell[18083, 664, 212, 6, 22, "Text",
-   CellTags->"phi",
-   CellID->1295431310],
-  Cell[18298, 672, 289, 10, 22, "Text",
-   CellTags->"phi",
-   CellID->1431249758]},
- "Example Calculations"->{
-  Cell[23222, 827, 126, 3, 42, "Section",
-   PageBreakAbove->True,
-   CellTags->{"Example Calculations", "ex"},
-   CellID->1007300369]},
- "ex"->{
-  Cell[23222, 827, 126, 3, 42, "Section",
-   PageBreakAbove->True,
-   CellTags->{"Example Calculations", "ex"},
-   CellID->1007300369]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"intro", 25198, 904},
- {"introfoot", 25655, 920},
- {"Load FeynCalc", 25781, 924},
- {"start", 25900, 928},
- {"About Extras", 26026, 932},
- {"tarcer", 26346, 943},
- {"phi", 26534, 950},
- {"Example Calculations", 27065, 969},
- {"ex", 27211, 974}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 23, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 81, 2, 32, "Categorization",
- CellID->686433507],
-Cell[1063, 45, 81, 2, 32, "Categorization",
- CellID->605800465],
-Cell[1147, 49, 78, 2, 32, "Categorization",
- CellID->468444828],
-Cell[1228, 53, 68, 1, 32, "Categorization"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1333, 59, 56, 1, 28, "KeywordsSection",
- CellID->1427428552],
-Cell[1392, 62, 45, 1, 18, "Keywords",
- CellID->1251852827]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1474, 68, 53, 1, 28, "DetailsSection",
- CellID->307771771],
-Cell[1530, 71, 63, 2, 32, "Details",
- CellID->218895918],
-Cell[1596, 75, 69, 2, 32, "Details",
- CellID->350963985],
-Cell[1668, 79, 66, 2, 32, "Details",
- CellID->795871300],
-Cell[1737, 83, 71, 2, 32, "Details",
- CellID->199739161],
-Cell[1811, 87, 60, 2, 32, "Details",
- CellID->40625308],
-Cell[1874, 91, 61, 2, 32, "Details",
- CellID->357121918],
-Cell[1938, 95, 62, 2, 32, "Details",
- CellID->35949532],
-Cell[2003, 99, 78, 2, 32, "Details",
- CellID->929432370],
-Cell[2084, 103, 67, 2, 32, "Details",
- CellID->240026365]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[2188, 110, 121, 2, 104, "Title",
- CellID->509267359],
-Cell[2312, 114, 923, 21, 123, "Text",
- CellID->1534169418],
-Cell[3238, 137, 676, 18, 42, "Text",
- CellID->1157525339],
-Cell[3917, 157, 1151, 44, 38, "Text",
- CellID->757206658],
-Cell[5071, 203, 94, 2, 22, "Text",
- CellTags->"intro",
- CellID->1227796187],
-Cell[5168, 207, 1868, 71, 54, "Text",
- CellID->833014432],
-Cell[7039, 280, 111, 2, 22, "Text",
- CellTags->"intro",
- CellID->1006364145],
-Cell[7153, 284, 807, 31, 22, "Text",
- CellID->571834673],
-Cell[CellGroupData[{
-Cell[7985, 319, 340, 7, 38, "Text",
- CellID->4750988],
-Cell[CellGroupData[{
-Cell[8350, 330, 313, 9, 26, "Input",
- CellID->1220639322],
-Cell[8666, 341, 234, 5, 25, "Output",
- CellID->1760930313]
-}, Open  ]]
-}, Open  ]],
-Cell[8927, 350, 327, 7, 38, "Text",
- CellID->1833132382],
-Cell[9257, 359, 653, 23, 44, "Text",
- CellTags->"intro",
- CellID->716203363],
-Cell[CellGroupData[{
-Cell[9935, 386, 114, 2, 22, "Text",
- CellTags->"intro",
- CellID->1566592169],
-Cell[10052, 390, 587, 15, 47, "SmallText",
- CellTags->{"intro", "introfoot"},
- CellID->721081683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10676, 410, 96, 2, 42, "Section",
- CellTags->{"Load FeynCalc", "start"},
- CellID->1726202394],
-Cell[CellGroupData[{
-Cell[10797, 416, 321, 8, 38, "Text",
- CellID->846823627],
-Cell[CellGroupData[{
-Cell[11143, 428, 238, 7, 26, "Input",
- CellID->1006438652],
-Cell[11384, 437, 186, 5, 25, "Output",
- CellID->205843633]
-}, Open  ]]
-}, Open  ]],
-Cell[11597, 446, 456, 12, 54, "Text",
- CellID->469196418],
-Cell[12056, 460, 550, 15, 54, "Text",
- CellID->434623157],
-Cell[CellGroupData[{
-Cell[12631, 479, 235, 7, 22, "Text",
- CellID->13342743],
-Cell[12869, 488, 205, 5, 26, "Input",
- CellID->2016141554]
-}, Open  ]],
-Cell[13089, 496, 116, 2, 22, "Text",
- CellID->491195527],
-Cell[13208, 500, 104, 2, 22, "Text",
- CellID->351638376],
-Cell[13315, 504, 471, 15, 38, "Text",
- CellID->430968534]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13823, 524, 107, 3, 42, "Section",
- PageBreakAbove->True,
- CellTags->"About Extras",
- CellID->2100607586],
-Cell[13933, 529, 561, 10, 86, "Text",
- CellTags->"About Extras",
- CellID->953459903],
-Cell[14497, 541, 1268, 35, 66, "Text",
- CellTags->"About Extras",
- CellID->2108182812],
-Cell[CellGroupData[{
-Cell[15790, 580, 161, 4, 38, "Subsection",
- CellTags->"tarcer",
- CellID->906844505],
-Cell[15954, 586, 543, 15, 38, "Text",
- CellID->1972678903],
-Cell[CellGroupData[{
-Cell[16522, 605, 162, 4, 22, "Text",
- CellID->1513547103],
-Cell[16687, 611, 121, 4, 26, "Input",
- CellTags->"tarcer",
- CellID->843778896]
-}, Open  ]],
-Cell[16823, 618, 245, 8, 23, "Text",
- CellID->998781867]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[17105, 631, 108, 3, 38, "Subsection",
- CellTags->"phi",
- CellID->932055296],
-Cell[17216, 636, 620, 13, 86, "Text",
- CellTags->"phi",
- CellID->1893421836],
-Cell[CellGroupData[{
-Cell[17861, 653, 89, 2, 22, "Text",
- CellTags->"phi",
- CellID->528666319],
-Cell[17953, 657, 115, 4, 26, "Input",
- CellTags->"phi",
- CellID->798844745]
-}, Open  ]],
-Cell[18083, 664, 212, 6, 22, "Text",
- CellTags->"phi",
- CellID->1295431310],
-Cell[18298, 672, 289, 10, 22, "Text",
- CellTags->"phi",
- CellID->1431249758]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[18624, 687, 117, 2, 39, "Subsection",
- CellID->1026891602],
-Cell[18744, 691, 1160, 30, 70, "Text",
- CellID->1730838623],
-Cell[19907, 723, 343, 6, 70, "Text",
- CellID->1031127518],
-Cell[20253, 731, 422, 8, 70, "Text",
- CellID->791617764],
-Cell[20678, 741, 327, 6, 70, "Text",
- CellID->895418169],
-Cell[CellGroupData[{
-Cell[21030, 751, 427, 8, 38, "Text",
- CellID->2088550082],
-Cell[CellGroupData[{
-Cell[21482, 763, 130, 3, 26, "Input",
- CellID->606741564],
-Cell[21615, 768, 208, 5, 25, "Output",
- CellID->1253899115]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[21872, 779, 256, 8, 22, "Text",
- CellID->1310937107],
-Cell[22131, 789, 242, 6, 26, "Input",
- CellID->342627804]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[22410, 800, 351, 8, 54, "Text",
- CellID->570125418],
-Cell[22764, 810, 243, 6, 26, "Input",
- CellID->1900750623]
-}, Open  ]],
-Cell[23022, 819, 151, 2, 22, "Text",
- CellID->1315560355]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[23222, 827, 126, 3, 42, "Section",
- PageBreakAbove->True,
- CellTags->{"Example Calculations", "ex"},
- CellID->1007300369],
-Cell[CellGroupData[{
-Cell[23373, 834, 320, 6, 22, "Text",
- CellID->1268182373],
-Cell[CellGroupData[{
-Cell[23718, 844, 313, 9, 26, "Input",
- CellID->1877395502],
-Cell[24034, 855, 233, 5, 25, "Output",
- CellID->727521100]
-}, Open  ]]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[24328, 867, 65, 1, 71, "TutorialMoreAboutSection",
- CellID->23220180],
-Cell[24396, 870, 54, 1, 21, "TutorialMoreAbout",
- CellID->1567025153]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[24487, 876, 72, 1, 71, "RelatedTutorialsSection",
- CellID->415694126],
-Cell[24562, 879, 52, 1, 21, "RelatedTutorials",
- CellID->806871991]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[24651, 885, 98, 1, 72, "TutorialRelatedLinksSection",
- CellID->415694148],
-Cell[24752, 888, 56, 1, 21, "TutorialRelatedLinks",
- CellID->415694149]
-}, Open  ]]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

@@ -316,20 +316,16 @@ Cell[TextData[{
  "By default, all the tensor integrals are reduced to the Passarino-Veltman \
 scalar integrals ",
  Cell[BoxData[
-  SubscriptBox["A", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["A", "0"]], "InlineFormula"],
  ", ",
  Cell[BoxData[
-  SubscriptBox["B", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["B", "0"]], "InlineFormula"],
  ", ",
  Cell[BoxData[
-  SubscriptBox["C", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["C", "0"]], "InlineFormula"],
  ", ",
  Cell[BoxData[
-  SubscriptBox["D", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["D", "0"]], "InlineFormula"],
  " etc. "
 }], "Notes",
  CellID->538152640],
@@ -2505,12 +2501,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 684},
-WindowMargins->{{239, Automatic}, {Automatic, -8}},
+WindowMargins->{{239, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
