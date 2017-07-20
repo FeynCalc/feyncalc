@@ -58,14 +58,15 @@ FDS = FeynAmpDenominatorSimplify;
 Options[FeynAmpDenominatorSimplify] = {
 	ApartFF -> True,
 	Collecting -> True,
+	DetectLoopTopologies -> True,
 	ExpandScalarProduct -> True,
-	FCI -> False,
-	FeynAmpDenominatorCombine -> True,
-	FCVerbose -> False,
 	FC2RHI -> False,
-	IntegralTable -> {},
+	FCI -> False,
+	FCVerbose -> False,
+	Factoring -> Factor2,
+	FeynAmpDenominatorCombine -> True,
 	IncludePair -> False,
-	DetectLoopTopologies -> True
+	IntegralTable -> {}
 };
 
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
@@ -103,7 +104,7 @@ FeynAmpDenominatorSimplify[exp_, qmore__,
 
 (*	FDS for 1-loop integrals	*)
 FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
-	Block[ {exp,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule},
+	Block[ {exp,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time},
 
 
 		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
@@ -124,16 +125,25 @@ FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 		];
 
 
-		FCPrint[1,"FDS: Entering 1-loop FDS with: ", ex, FCDoControl->fdsVerbose];
+		FCPrint[1,"FDS: Entering 1-loop FDS. ", FCDoControl->fdsVerbose];
+		FCPrint[3,"FDS: Entering 1-loop FDS with: ", ex, FCDoControl->fdsVerbose];
 
 
 		(*	Extract unique loop integrals	*)
+		FCPrint[1,"FDS: Extracting unique loop integrals. ", FCDoControl->fdsVerbose];
+		time=AbsoluteTime[];
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {q1},loopHead, DropScaleless->True,FCI->OptionValue[FCI], PaVe->False];
 
+		FCPrint[1, "FDS: Done extracting unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 		FCPrint[3, "FDS: List of unique integrals ", intsUnique, FCDoControl->fdsVerbose];
 
 		(*	Apply fdsOneLoop to each of the unique loop integrals	*)
+		FCPrint[1,"FDS: Applying fdsOneLoop to the unique integrals. ", FCDoControl->fdsVerbose];
+		time=AbsoluteTime[];
 		solsList = Map[fdsOneLoop[#,q1]&,(intsUnique/.loopHead->Identity)];
+		FCPrint[1, "FDS:Done applying fdsOneLoop, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: List of simplified integrals ", solsList, FCDoControl->fdsVerbose];
+
 
 		If[!FreeQ[solsList,fdsOneLoop],
 			Message[FDS::failmsg,"fdsOneLoop couldn't be applied to some of the unique integrals."];
@@ -147,11 +157,19 @@ FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 		res = rest + (loopInts/.repRule);
 
 		If [OptionValue[ExpandScalarProduct],
-			res = ExpandScalarProduct[res]
+			FCPrint[1,"FDS: Applying ExpandScalarProduct. ", FCDoControl->fdsVerbose];
+			time=AbsoluteTime[];
+			res = ExpandScalarProduct[res];
+			FCPrint[1, "FDS: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: After ExpandScalarProduct: ", res, FCDoControl->fdsVerbose]
 		];
 
 		If[	OptionValue[Collecting],
-			res = Collect2[res,FeynAmpDenominator]
+			FCPrint[1,"FDS: Applying Collect2. ", FCDoControl->fdsVerbose];
+			time=AbsoluteTime[];
+			res = Collect2[res,FeynAmpDenominator,Factoring->OptionValue[Factoring]];
+			FCPrint[1, "FDS: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: After Collect2: ", res, FCDoControl->fdsVerbose]
 		];
 
 		FCPrint[3, "FDS: Leaving with: ", res, FCDoControl->fdsVerbose];
