@@ -267,20 +267,10 @@ FeynCalc::nrfail =
 "This function is not yet ready to work with new non-covariant objects \
 in FeynCalc.";
 
-FCMonitor::usage =
-"FCMonitor is a simple function that activates Monitor if there
-is a notebook interface available and disables it otherwise.";
-
-FCMonitorStub::usage =
-"FCMonitorStub is a stub for Monitor when the notebook interface
-is not available";
-
 FCDoControl::usage =
 "FCDoControl is an option for FCPrint that specifies which variable
 is used to control the debugging output of FCPrint. The default value
 is $VeryVerbose.";
-
-
 
 FCSetPauliSigmaScheme::usage =
 "FCSetPauliSigmaScheme[\"scheme\"] allows you to specify how Pauli matrices \
@@ -468,12 +458,6 @@ FCPrint[level_, fcprintx__ /;!OptionQ[{fcprintx}] , OptionsPattern[]] :=
 			]
 		]
 	];
-
-FCMonitor:=
-	If[$Notebooks && $FCCheckProgress, Monitor, FCMonitorStub];
-
-FCMonitorStub[x_,__]:=
-	x;
 
 FI :=
 	(Format[LineBreak[_]] :=
