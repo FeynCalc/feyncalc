@@ -35,6 +35,12 @@ End[]
 
 Begin["`SMP`Private`"]
 
+(*	Number of flavors	*)
+
+SMP /:
+	MakeBoxes[SMP["N_F"], TraditionalForm] :=
+		SubscriptBox["N", "F"];
+
 (*	Particle masses	*)
 
 SMP /:
@@ -285,6 +291,9 @@ SMP /: MakeBoxes[SMP["d_m"], TraditionalForm] :=
 SMP /: MakeBoxes[SMP["d_e"], TraditionalForm] :=
 	SubscriptBox["\[Delta]","e"];
 
+SMP /: MakeBoxes[SMP["d_g"], TraditionalForm] :=
+	SubscriptBox["\[Delta]","g"];
+
 SMP /: MakeBoxes[SMP["d_u"], TraditionalForm] :=
 	SubscriptBox["\[Delta]","u"];
 
@@ -309,6 +318,9 @@ SMP /: MakeBoxes[SMP["Z_xi"], TraditionalForm] :=
 SMP /: MakeBoxes[SMP["Z_e"], TraditionalForm] :=
 	SubscriptBox["Z", "e"];
 
+SMP /: MakeBoxes[SMP["Z_g"], TraditionalForm] :=
+	SubscriptBox["Z", "g"];
+
 SMP /: MakeBoxes[SMP["dZ_psi"], TraditionalForm] :=
 	SubscriptBox["\[Delta]Z", "\[Psi]"];
 
@@ -320,6 +332,9 @@ SMP /: MakeBoxes[SMP["dZ_m"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["dZ_e"], TraditionalForm] :=
 	SubscriptBox["\[Delta]Z", "e"];
+
+SMP /: MakeBoxes[SMP["dZ_g"], TraditionalForm] :=
+	SubscriptBox["\[Delta]Z", "g"];
 
 SMP /: MakeBoxes[SMP["dZ_u"], TraditionalForm] :=
 	SubscriptBox["\[Delta]Z", "u"];
@@ -340,6 +355,9 @@ SMP /: MakeBoxes[SMP["d_m^MS"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["d_e^MS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]","e", "MS"];
+
+SMP /: MakeBoxes[SMP["d_g^MS"], TraditionalForm] :=
+	SubsuperscriptBox["\[Delta]","g", "MS"];
 
 SMP /: MakeBoxes[SMP["d_u^MS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]","u", "MS"];
@@ -365,6 +383,9 @@ SMP /: MakeBoxes[SMP["Z_xi^MS"], TraditionalForm] :=
 SMP /: MakeBoxes[SMP["Z_e^MS"], TraditionalForm] :=
 	SubsuperscriptBox["Z", "e", "MS"];
 
+SMP /: MakeBoxes[SMP["Z_g^MS"], TraditionalForm] :=
+	SubsuperscriptBox["Z", "g", "MS"];
+
 SMP /: MakeBoxes[SMP["dZ_psi^MS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "\[Psi]", "MS"];
 
@@ -376,6 +397,9 @@ SMP /: MakeBoxes[SMP["dZ_m^MS"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["dZ_e^MS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "e","MS"];
+
+SMP /: MakeBoxes[SMP["dZ_g^MS"], TraditionalForm] :=
+	SubsuperscriptBox["\[Delta]Z", "g","MS"];
 
 SMP /: MakeBoxes[SMP["dZ_u^MS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "u","MS"];
@@ -399,6 +423,9 @@ SMP /: MakeBoxes[SMP["d_m^MSbar"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["d_e^MSbar"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]","e", OverscriptBox["MS", "\[LongDash]"]];
+
+SMP /: MakeBoxes[SMP["d_g^MSbar"], TraditionalForm] :=
+	SubsuperscriptBox["\[Delta]","g", OverscriptBox["MS", "\[LongDash]"]];
 
 SMP /: MakeBoxes[SMP["d_u^MSbar"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]","u", OverscriptBox["MS", "\[LongDash]"]];
@@ -424,6 +451,9 @@ SMP /: MakeBoxes[SMP["Z_xi^MSbar"], TraditionalForm] :=
 SMP /: MakeBoxes[SMP["Z_e^MSbar"], TraditionalForm] :=
 	SubsuperscriptBox["Z", "e", OverscriptBox["MS", "\[LongDash]"]];
 
+SMP /: MakeBoxes[SMP["Z_g^MSbar"], TraditionalForm] :=
+	SubsuperscriptBox["Z", "g", OverscriptBox["MS", "\[LongDash]"]];
+
 SMP /: MakeBoxes[SMP["dZ_psi^MSbar"], TraditionalForm] :=
 	SubsuperscriptBox["Z", "\[Psi]", OverscriptBox["MS", "\[LongDash]"]];
 
@@ -435,6 +465,9 @@ SMP /: MakeBoxes[SMP["dZ_m^MSbar"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["dZ_e^MSbar"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "e",OverscriptBox["MS", "\[LongDash]"]];
+
+SMP /: MakeBoxes[SMP["dZ_g^MSbar"], TraditionalForm] :=
+	SubsuperscriptBox["\[Delta]Z", "g",OverscriptBox["MS", "\[LongDash]"]];
 
 SMP /: MakeBoxes[SMP["dZ_u^MSbar"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "u",OverscriptBox["MS", "\[LongDash]"]];
@@ -455,6 +488,9 @@ SMP /: MakeBoxes[SMP["d_m^OS"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["d_e^OS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]","e", "OS"];
+
+SMP /: MakeBoxes[SMP["d_g^OS"], TraditionalForm] :=
+	SubsuperscriptBox["\[Delta]","g", "OS"];
 
 SMP /: MakeBoxes[SMP["d_u^OS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]","u", "OS"];
@@ -480,6 +516,9 @@ SMP /: MakeBoxes[SMP["Z_xi^OS"], TraditionalForm] :=
 SMP /: MakeBoxes[SMP["Z_e^OS"], TraditionalForm] :=
 	SubsuperscriptBox["Z", "e", "OS"];
 
+SMP /: MakeBoxes[SMP["Z_g^OS"], TraditionalForm] :=
+	SubsuperscriptBox["Z", "g", "OS"];
+
 SMP /: MakeBoxes[SMP["dZ_psi^OS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "\[Psi]", "OS"];
 
@@ -491,6 +530,9 @@ SMP /: MakeBoxes[SMP["dZ_m^OS"], TraditionalForm] :=
 
 SMP /: MakeBoxes[SMP["dZ_e^OS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "e","OS"];
+
+SMP /: MakeBoxes[SMP["dZ_g^OS"], TraditionalForm] :=
+	SubsuperscriptBox["\[Delta]Z", "g","OS"];
 
 SMP /: MakeBoxes[SMP["dZ_u^OS"], TraditionalForm] :=
 	SubsuperscriptBox["\[Delta]Z", "u","OS"];
@@ -515,6 +557,7 @@ SMP /:
 SMP[]=
 	Block[{li},
 		li={
+			"N_F",
 			"m_e","m_mu","m_tau",
 			"m_u","m_d","m_c",
 			"m_s","m_t","m_b",
@@ -526,21 +569,21 @@ SMP[]=
 			"cos_W","sin_W","theta_W",
 			"cos_C","sin_C","theta_C",
 			"alpha_fs","alpha_s",
-			"d_psi", "d_A", "d_m", "d_u", "d_xi", "d_e",
-			"Z_psi", "Z_A", "Z_m", "Z_u", "Z_xi", "Z_e",
-			"dZ_psi", "dZ_A", "dZ_m", "dZ_u", "dZ_xi", "dZ_e",
+			"d_psi", "d_A", "d_m", "d_u", "d_xi", "d_e", "d_g",
+			"Z_psi", "Z_A", "Z_m", "Z_u", "Z_xi", "Z_e", "Z_g",
+			"dZ_psi", "dZ_A", "dZ_m", "dZ_u", "dZ_xi", "dZ_e", "dZ_g",
 
-			"d_psi^MS", "d_A^MS", "d_m^MS", "d_u^MS", "d_xi^MS", "d_e^MS",
-			"Z_psi^MS", "Z_A^MS", "Z_m^MS", "Z_u^MS", "Z_xi^MS", "Z_e^MS",
-			"dZ_psi^MS", "dZ_A^MS", "dZ_m^MS", "dZ_u^MS", "dZ_xi^MS", "dZ_e^MS",
+			"d_psi^MS", "d_A^MS", "d_m^MS", "d_u^MS", "d_xi^MS", "d_e^MS", "d_g^MS",
+			"Z_psi^MS", "Z_A^MS", "Z_m^MS", "Z_u^MS", "Z_xi^MS", "Z_e^MS", "Z_g^MS",
+			"dZ_psi^MS", "dZ_A^MS", "dZ_m^MS", "dZ_u^MS", "dZ_xi^MS", "dZ_e^MS", "dZ_g^MS",
 
-			"d_psi^MSbar", "d_A^MSbar", "d_m^MSbar", "d_u^MSbar", "d_xi^MSbar", "d_e^MSbar",
-			"Z_psi^MSbar", "Z_A^MSbar", "Z_m^MSbar", "Z_u^MSbar", "Z_xi^MSbar", "Z_e^MSbar",
-			"dZ_psi^MSbar", "dZ_A^MSbar", "dZ_m^MSbar", "dZ_u^MSbar", "dZ_xi^MSbar", "dZ_e^MSbar",
+			"d_psi^MSbar", "d_A^MSbar", "d_m^MSbar", "d_u^MSbar", "d_xi^MSbar", "d_e^MSbar", "d_g^MSbar",
+			"Z_psi^MSbar", "Z_A^MSbar", "Z_m^MSbar", "Z_u^MSbar", "Z_xi^MSbar", "Z_e^MSbar", "Z_g^MSbar",
+			"dZ_psi^MSbar", "dZ_A^MSbar", "dZ_m^MSbar", "dZ_u^MSbar", "dZ_xi^MSbar", "dZ_e^MSbar", "dZ_g^MSbar",
 
-			"d_psi^OS", "d_A^OS", "d_m^OS", "d_u^OS", "d_xi^OS", "d_e^OS",
-			"Z_psi^OS", "Z_A^OS", "Z_m^OS", "Z_u^OS", "Z_xi^OS", "Z_e^OS",
-			"dZ_psi^OS", "dZ_A^OS", "dZ_m^OS", "dZ_u^OS", "dZ_xi^OS", "dZ_e^OS",
+			"d_psi^OS", "d_A^OS", "d_m^OS", "d_u^OS", "d_xi^OS", "d_e^OS", "d_g^OS",
+			"Z_psi^OS", "Z_A^OS", "Z_m^OS", "Z_u^OS", "Z_xi^OS", "Z_e^OS", "Z_g^OS",
+			"dZ_psi^OS", "dZ_A^OS", "dZ_m^OS", "dZ_u^OS", "dZ_xi^OS", "dZ_e^OS", "dZ_g^OS",
 
 			{"V_ud",I},{"V_ud",-I},
 			{"V_us",I},{"V_us",-I},
