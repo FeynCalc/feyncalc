@@ -72,6 +72,9 @@ Tests`SUN`fcstSUNSimplify = {
 {"fcstSUNSimplify-ID25","SUNSimplify[
 SUNTrace[SUNF[a, c, g] SUNF[b, e, h] SUNF[d, g,
 	h] SUNT[a].SUNT[b].SUNT[c].SUNT[d].SUNT[e]], Explicit -> True]",
-	"1/4 I CA^2 CF"}
+	"1/4 I CA^2 CF"},
+{"fcstSUNSimplify-ID26","SUNSimplify[SUND[a, e, r] SUND[b, d, r] SUND[a, b, s] SUND[d, e, s],
+Explicit -> True]",
+	"(4 - CA^2) (12 - CA^2) (CA - 2 CF) CF"}
 };
 
