@@ -44,6 +44,7 @@ Begin["`ToPaVe`Private`"]
 genpave::usage="";
 
 Options[ToPaVe] = {
+	FCI -> False,
 	GenPaVe->False,
 	OtherLoopMomenta -> {},
 	PaVeAutoOrder -> True,
@@ -67,10 +68,15 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 
 		genpave = OptionValue[GenPaVe];
 
-		ex = FCLoopSplit[expr,{q}];
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		ex = FCLoopSplit[ex,{q}, FCI->True];
 		irrel = ex[[1]]+ex[[3]]+ex[[4]];
 		rel = ex[[2]];
-		rel = FCLoopIsolate[rel,{q},Head->loopInt];
+		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True];
 
 		repList =
 			Union[Cases[{rel},  loopInt[x_] :> Rule[loopInt[x],
