@@ -19,4 +19,11 @@ cd $DIR
 
 $1 -nopromt -script TestSuite.m -run testType=4 -run onlyTest=\"$2\"
 
-notify-send "Finished running unit tests for PHI ($2)."
+if [ -z "$2" ]
+  then
+    outtxt="Finished running unit tests for PHI."
+  else
+    outtxt="Finished running unit tests for PHI ($2)."
+fi
+
+notify-send --urgency=low -i "$([ $? = 0 ] && echo sunny || echo error)" "$outtxt"

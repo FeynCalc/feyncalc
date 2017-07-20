@@ -20,4 +20,11 @@ cd $DIR
 
 $1 -nopromt -script TestSuite.m -run testType=2 -run onlyTest=\"$2\" -run onlySubTest=\"$3\"
 
-notify-send "Finished running integration tests for FeynCalc ($2)."
+if [ -z "$2" ]
+  then
+    outtxt="Finished running integration tests for FeynCalc."
+  else
+    outtxt="Finished running integration tests for FeynCalc ($2)."
+fi
+
+notify-send --urgency=low -i "$([ $? = 0 ] && echo sunny || echo error)" "$outtxt"
