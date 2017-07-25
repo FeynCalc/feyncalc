@@ -1,0 +1,18 @@
+
+
+(* :Title: TJR.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for TJR			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`TARCER`TJR = ({
+{"fcstTJR-ID1", "FreeQ2[DownValues[TJR], {Tarcer`Private`Schiebe}]", "True"}
+});
