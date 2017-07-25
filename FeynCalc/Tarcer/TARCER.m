@@ -255,10 +255,12 @@ set::usage="";
 factor::usage="";
 
 $TarcerVersion = "2.0";
+
+If[ !ValueQ[$RankLimit],
+	$RankLimit = {2, 5};
+];
+
 Expand3 = Identity;
-$RankLimit = {0, 6};
-$RankLimit = {1, 6};
-$RankLimit = {2, 5};
 $CheckRecursion = False;
 $PutPalettes = False;
 atime = AbsoluteTime[];
