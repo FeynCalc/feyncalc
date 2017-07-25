@@ -1719,7 +1719,10 @@ Tests`Dirac`fcstDiracTrickFiveFreeIndices = {
 
 Tests`Dirac`fcstDiracTrickLarin = {
 {"fcstDiracTrickLarin-ID1","$BreitMaison=False;\n$Larin=True;\nDiracTrick[GAD[a, b, c].GA[5].GAD[b, a, m]] // FCE",
-		"GAD[a].GAD[b].GAD[c].GA[5].GAD[b].GAD[a].GAD[m]"}
+		"GAD[a].GAD[b].GAD[c].GA[5].GAD[b].GAD[a].GAD[m]"},
+{"fcstDiracTrickLarin-ID2","MatchQ[DiracTrick[DiracTrace[GSD[p1].GA[6].GSD[p2].GA[6]],
+FCE -> True], DiracTrace[1/2 GSD[p1].GSD[p2].GA[6] + 1/12 I GAD[dtlarLia656_].GAD[dtlarLib657_].GAD[dtlarLic658_].GSD[p2].GA[6]
+LCD[dtlarLia656_, dtlarLib657_, dtlarLic658_][p1]]]", "True"}
 };
 
 Tests`Dirac`fcstDiracTrickInsideDiracTrace =
