@@ -19,12 +19,12 @@
 
 
 If[ MemberQ[$Packages,"FeynCalc`"],
-	Print["FeynCalc is already loaded! To reload it, please restart the kernel."];
+	Print[Style["FeynCalc is already loaded! To reload it, please restart the kernel.","Text", Red, Bold]];
 	Abort[]
 ];
 
 If[ ($VersionNumber < 8.0),
-	Print["You need at least Mathematica 8.0 to run FeynCalc. Quitting the Mathematica kernel."];
+	Print[Style["You need at least Mathematica 8.0 to run FeynCalc. Evaluation aborted.",Red, Bold]];
 	Abort[]
 ];
 
@@ -35,7 +35,7 @@ If[ !ValueQ[FeynCalc`$FeynCalcDirectory],
 ];
 
 If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
-	Print["Could not find a FeynCalc installation. Quitting the Mathematica kernel."];
+	Print[Style["Could not find a FeynCalc installation. Evaluation aborted.",Red,Bold]];
 	Clear[FeynCalc`$FeynCalcDirectory];
 	Abort[];
 ];
@@ -337,7 +337,7 @@ If[	$LoadFeynArts,
 			(* If everything went fine *)
 			If[ Global`$FeynCalcStartupMessages,
 				Print[	Style["FeynArts ", "Text", Bold],
-						Style[ToString[FeynArts`$FeynArts] <>" patched for use with FeynCalc, for documentation use the ",
+						Style[ToString[FeynArts`$FeynArts] <>" patched for use with FeynCalc, for documentation see the ",
 							"Text"],
 						Style[DisplayForm@ButtonBox["manual", BaseStyle -> "Hyperlink",	ButtonFunction :>
 							SystemOpen[First@FileNames[{"*.pdf", "*.PDF"}, FileNameJoin[{$FeynArtsDirectory, "manual"}]]],
@@ -364,15 +364,25 @@ If[ $LoadTARCER,
 		ToFileName[{FeynCalc`$FeynCalcDirectory,"Tarcer"}],IgnoreCase->True];
 		If[ FeynCalc`Private`tarcerfilenames=!={},
 			(*    If the .mx file of TARCER is found, load it now. *)
+
+			If[	Length[FeynCalc`Private`tarcerfilenames]>1,
+				Print[Style["Found multiple versions of TARCER: ", "Text"]];
+				Print[TableForm[FeynCalc`Private`tarcerfilenames]];
+				Print[Style["FeynCalc will load ","Text"], Last[FeynCalc`Private`tarcerfilenames]]
+			];
+
 			If[	Get[Last[FeynCalc`Private`tarcerfilenames]]=!=$Failed,
 				If[ $FeynCalcStartupMessages,
 					Print[	Style["TARCER ", "Text", Bold],
 						Style[Tarcer`$TarcerVersion <>
-							", for description see the preprint hep-ph/9801383 at ", "Text"],
-						Style[DisplayForm@ButtonBox["arxiv.org.",	ButtonData :>
-							{URL["http://arxiv.org/abs/hep-ph/9801383"], None},
-							BaseStyle -> {"Hyperlink"}, ButtonNote -> "http://arxiv.org/abs/hep-ph/9801383"],"Text"]
-					]
+							", for description see the accompanying ", "Text"],
+
+						Style[DisplayForm@ButtonBox["publication.", BaseStyle -> "Hyperlink",	ButtonFunction :>
+							SystemOpen[ToFileName[{FeynCalc`$FeynCalcDirectory,"Tarcer"},"9801383.pdf"]],
+							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
+							Style[" If you use TARCER in your research, please cite","Text"]
+					];
+					Print [Style[" \[Bullet] R. Mertig and R. Scharf, Comput. Phys. Commun., 111, 265-273, 1998, arXiv:hep-ph/9801383","Text"]];
 				],
 				Message[FeynCalc::taerror];
 				If [$Notebooks,
