@@ -229,7 +229,7 @@ $TarcerVersion::usage=
 "contains the version of TARCER."
 
 Begin["`Private`"];
-
+trVerbose::usage="";
 pal1::usage="";
 pal2::usage="";
 
@@ -3742,6 +3742,7 @@ FEPrint[a__String] :=
 	] /; $Notebooks === True;
 
 Options[TarcerRecurse] = {
+	FCVerbose -> False,
 	Factor -> Factor,
 	TimeConstraint -> Infinity,
 	Table :> $TTable,
@@ -3749,24 +3750,39 @@ Options[TarcerRecurse] = {
 	Replace -> {}
 };
 
-TarcerRecurse[z_, opts___] :=
+TarcerRecurse[expr_, OptionsPattern[]] :=
 	Catch[
 		Block[{	basisdone, factorfun, fertig, dummm1, dummm2, getvars,
 				te, time, cutoff, tog, ttable, facfun, nexp, oldexpr, rec,
-				special, sti, tl, tcheck, tjrd, tvrd, together, vars, $cc = 0, $cv, t0, tvars},
+				special, sti, tl, tcheck, tjrd, tvrd, together, vars, $cc = 0,
+				$cv, t0, tvars, time0},
 
-			time = AbsoluteTime[];
-			ttable = Table /. {opts} /. Options[TarcerRecurse];
+			time0 = AbsoluteTime[];
+
+			If [OptionValue[FCVerbose]===False,
+				trVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+					trVerbose=OptionValue[FCVerbose]
+				];
+			];
+
+			FCPrint[1, "TarcerRecurse: Entering.", FCDoControl->trVerbose];
+			FCPrint[3, "TarcerRecurse: Entering with", expr, FCDoControl->trVerbose];
+
 
 			If[ !MatchQ[ttable,
 				{__RuleDelayed}],
 				ttable = {}
 			];
 
-			special 	= Replace /. {opts} /. Options[TarcerRecurse];
-			cutoff 		= TimeConstraint /. {opts} /. Options[TarcerRecurse];
-			together 	= Together /. {opts} /. Options[TarcerRecurse];
-			factorfun	= Factor /. {opts} /. Options[TarcerRecurse]; $commentnb = False;
+			ttable = OptionValue[Table];
+
+			special 	= OptionValue[Replace];
+			cutoff 		= OptionValue[TimeConstraint];
+			together 	= OptionValue[Together];
+			factorfun	= OptionValue[Factor];
+
+			$commentnb = False;
 
 			tog =
 				((If[	#1 > 1001,
@@ -3792,24 +3808,53 @@ TarcerRecurse[z_, opts___] :=
 
 		$TarcerRecursed = {};
 
-		t0 = ToTFi[z] /. {TFi :> TFI, ToTFi :> Identity};
+		FCPrint[1, "TarcerRecurse: Applying ToTFi.", FCDoControl->trVerbose];
+		time=AbsoluteTime[];
+		t0 = ToTFi[expr] /. {TFi :> TFI, ToTFi :> Identity};
+		FCPrint[1, "TarcerRecurse: ToFi done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->trVerbose];
+		FCPrint[3, "TarcerRecurse: After ToTFi: ", t0,  FCDoControl->trVerbose];
 
-		If[
-			ttable =!= {},
-			t0 = t0 /. ttable
+		If[	ttable =!= {},
+			FCPrint[1, "TarcerRecurse: Applying custom reduction rules (Table).", FCDoControl->trVerbose];
+			time=AbsoluteTime[];
+			t0 = t0 /. ttable;
+			FCPrint[1, "TarcerRecurse: Done applying custom reduction rules , timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->trVerbose];
+			FCPrint[3, "TarcerRecurse: After applying custom reduction rules: ", t0,  FCDoControl->trVerbose]
 		];
 
-		getvars =
-		Select[Variables[#1], MatchQ[#1, TFI[__] | TVI[__] | TJI[__] | TBI[__] | TAI[__]] & ] & ;
+		getvars = Select[Variables[#1], MatchQ[#1, TFI[__] | TVI[__] | TJI[__] | TBI[__] | TAI[__]] & ] & ;
 
 		If[ !FreeQ[t0, TFI],
-			t0 = Collect[t0 = TFIRecurse[t0] /. ttable, getvars[t0], tog]
+
+			FCPrint[1, "TarcerRecurse: Applying TFIRecuse.", FCDoControl->trVerbose];
+			time=AbsoluteTime[];
+			t0 = TFIRecurse[t0];
+			FCPrint[1, "TarcerRecurse: TFIRecuse done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->trVerbose];
+			FCPrint[3, "TarcerRecurse: After TFIRecuse: ", t0,  FCDoControl->trVerbose];
+
+
+			If[	ttable =!= {},
+				FCPrint[1, "TarcerRecurse: Applying custom reduction rules (Table).", FCDoControl->trVerbose];
+				time=AbsoluteTime[];
+				t0 = t0 /. ttable;
+				FCPrint[1, "TarcerRecurse: Done applying custom reduction rules , timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->trVerbose];
+				FCPrint[3, "TarcerRecurse: After applying custom reduction rules: ", t0,  FCDoControl->trVerbose]
+			];
+
+
+			t0 = Collect[t0, getvars[t0], tog]
 		];
 
 		If[ !FreeQ[t0, TVI[_Plus, __]],
 
-			tvrd = Select[DownValues[TVR],  ! FreeQ[#1, TVI[_ - 2, __]] & ] /. TVR -> TVI;
-			t0 = Collect[t0 = t0 /. tvrd /. tvrd /. tvrd /. tvrd, getvars[t0], tog];
+			tvrd = Select[DownValues[TVR],  !FreeQ[#1, TVI[_ - 2, __]]&] /. TVR -> TVI;
+			FCPrint[3, "TarcerRecurse: Available rules for TVR: ", t0,  FCDoControl->trVerbose];
+
+
+			t0 = t0 /. tvrd /. tvrd /. tvrd /. tvrd;
+
+
+			t0 = Collect[t0, getvars[t0], tog];
 
 			If[ !FreeQ[t0, TVI[_Plus, __]],
 				t0 = Collect[t0 = t0 //. tvrd, getvars[t0], tog]
@@ -3820,7 +3865,7 @@ TarcerRecurse[z_, opts___] :=
 		tjrd = Select[DownValues[TJR],  ! FreeQ[#1, TJI[_ - 2, __]] & ] /. TJR -> TJI;
 
 		If[ !FreeQ[t0, TJI[_Plus, __]],
-			tjrd = Select[DownValues[TJR],  ! FreeQ[#1, TJI[_ - 2, __]] & ] /. TJR -> TJI;
+			(*tjrd = Select[DownValues[TJR],  ! FreeQ[#1, TJI[_ - 2, __]] & ] /. TJR -> TJI;*)
 			t0 = Collect[t0 = t0 /. tjrd /. tjrd /. tjrd /. tjrd, getvars[t0], tog];
 
 			If[ !FreeQ[t0, TJI[_Plus, __]],
@@ -3828,13 +3873,15 @@ TarcerRecurse[z_, opts___] :=
 			]
 		];
 
-		rec[expr_, {ti_, tr_}] :=
+		rec[exp_, {ti_, tr_}] :=
 			(
 			sti = ToString[ti];
 
-			If[	FreeQ[expr, ti],
-				expr,
-				nexp = expr;
+			FCPrint[4, "TarcerRecurse: rec: Entering with ", exp ," ",{ti,tr},  FCDoControl->trVerbose];
+
+			If[	FreeQ[exp, ti],
+				exp,
+				nexp = exp;
 
 				If[	$Comment,
 					(
@@ -3845,16 +3892,18 @@ TarcerRecurse[z_, opts___] :=
 				];
 
 				nexp = nexp /. ti -> tr /. tr -> ti;
+				FCPrint[4, "TarcerRecurse: rec: After ti -> tr replacements ", nexp ,  FCDoControl->trVerbose];
 
 				If[ !FreeQ[nexp, TJI[_Plus, __]],
-					nexp = nexp //. tjrd
+					nexp = nexp //. tjrd;
+					FCPrint[4, "TarcerRecurse: rec: After tjrd replacements ", nexp ,  FCDoControl->trVerbose];
 				];
 
 				tvars = getvars[nexp]; $cc = 0; $cv = Length[tvars];
 				nexp = Collect[nexp, tvars, tog];
 
 				If[	cutoff =!= Infinity,
-					If[	AbsoluteTime[] - time > cutoff,
+					If[	AbsoluteTime[] - time0 > cutoff,
 						Throw[$Failed]]
 					];
 				nexp
@@ -3864,14 +3913,24 @@ TarcerRecurse[z_, opts___] :=
 
 		tl = {{TFI, TFR}, {TVI, TVR}, {TJI, TJR}, {TBI, TBR}, {TAI, TAR}};
 
+		FCPrint[3, "TarcerRecurse: Intermediate result: ", t0,  FCDoControl->trVerbose];
+
+
+		FCPrint[1, "TarcerRecurse: Doing the final recursion.", FCDoControl->trVerbose];
+		time=AbsoluteTime[];
 		Do[
+			FCPrint[4, "TarcerRecurse: Iteration: ", i ,  FCDoControl->trVerbose];
 			t0 = FixedPoint[rec[#1, tl[[i]]] & , t0, 100];
+			FCPrint[4, "TarcerRecurse: After rec: ", t0 ,  FCDoControl->trVerbose];
+
 
 			If[	Head[t0] === Plus,
 				fertig = Select[t0,  ! FreeQ[#1, tl[[i, 1]]]];
 				basisdone = basisdone + fertig; t0 = t0 - fertig
 			], {i, Length[tl]}
 		];
+		FCPrint[1, "TarcerRecurse: Final recursion done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->trVerbose];
+		FCPrint[3, "TarcerRecurse: After the final recursion: ", t0,  FCDoControl->trVerbose];
 
 		t0 = t0 + basisdone;
 		$cv =. ;
@@ -3887,6 +3946,9 @@ TarcerRecurse[z_, opts___] :=
 		];
 
 		t0 = t0 /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list];
+
+		FCPrint[1, "TarcerRecurse: Leaving.", FCDoControl->trVerbose];
+		FCPrint[3, "TarcerRecurse: Leaving with: ", t0,  FCDoControl->trVerbose];
 
 		t0
 		]
