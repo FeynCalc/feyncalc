@@ -1733,7 +1733,7 @@ Subscript[e,44] =
 	(d - Subscript[\[Nu], 2] - Subscript[\[Nu], 4] - 2*Subscript[\[Nu], 5])*
 	TFI[d, {Subscript[\[Nu], 1], Subscript[\[Nu], 2], Subscript[\[Nu], 3], Subscript[\[Nu], 4], Subscript[\[Nu], 5]}] ==
 	(Subscript[\[Nu], 2] Schiebe[2, "+"]*(Schiebe[5, "-"] - Schiebe[1, "-"]) + Subscript[\[Nu], 4]*
-	Schiebe[4, "+"]*(Schiebe[5, "-"] - Schiebe[3, "-"]))
+	Schiebe[4, "+"]*(Schiebe[5, "-"] - Schiebe[3, "-"]))*
 	TFI[d, {Subscript[\[Nu], 1], Subscript[\[Nu], 2], Subscript[\[Nu], 3], Subscript[\[Nu], 4], Subscript[\[Nu], 5]}];
 
 Subscript[s, 44] =
