@@ -178,7 +178,8 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			If[ OptionValue[DiracTraceEvaluate],
 				time=AbsoluteTime[];
 				FCPrint[1, "DiracSimplify: Calculating Dirac traces.", FCDoControl->dsVerbose];
-				diracObjectsEval = diracObjectsEval /. DiracTrace[zz_, opts:OptionsPattern[]] :> DiracTrace[zz, DiracTraceEvaluate->True, opts];
+				diracObjectsEval = diracObjectsEval /. DiracTrace[zz_, opts:OptionsPattern[]] :> DiracTrace[zz,
+					DiracTraceEvaluate->True, Expand-> optExpandScalarProduct, opts];
 				FCPrint[1, "DiracSimplify: Done calculating Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjects , FCDoControl->dsVerbose]
 
@@ -260,14 +261,14 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 
 		res = freePart + tmp;
-
+		(*
 		If[	optExpanding,
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Expanding the result.", FCDoControl->dsVerbose];
 			res = Expand[res];
 			FCPrint[1,"DiracSimplify: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DiracSimplify: After expanding: ", res, FCDoControl->dsVerbose]
-		];
+		];*)
 
 
 		If[ OptionValue[FCE],
@@ -275,6 +276,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		];
 
 		(*res = ex;*)
+		FCPrint[1,"DiracSimplify: Leaving.", FCDoControl->dsVerbose];
 		FCPrint[3,"DiracSimplify: Leaving with ", res, FCDoControl->dsVerbose];
 		res
 	];
