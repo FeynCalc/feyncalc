@@ -84,20 +84,27 @@ PolarizationSum[mu_,nu_, OptionsPattern[]] :=
 (*	Same as above. Putting the auxiliary vector n^mu to zero essentially
 	omits the gauge terms.  *)
 PolarizationSum[mu_,nu_, k_, 0, OptionsPattern[]] :=
-	(If[ScalarProduct[k,k]=!=0 && !OptionValue[VirtualBoson],
-			Message[PolarizationSum::notmassless, k]
+	Block[{dim = OptionValue[Dimension]},
+
+	If[	Pair[Momentum[k,dim],Momentum[k,dim]]=!=0 && !OptionValue[VirtualBoson],
+		Message[PolarizationSum::notmassless, k]
 	];
+
 	-Pair[indSelect[OptionValue[Heads][[1]], mu , OptionValue[Dimension]],
-		indSelect[OptionValue[Heads][[1]], nu , OptionValue[Dimension]]])/; k=!=0;
+		indSelect[OptionValue[Heads][[1]], nu , OptionValue[Dimension]]]
+
+	]/; k=!=0;
 
 (*     Polarization sum for massive vector bosons, e.g. W's and Z's in the
 	Electroweak Theory. Note that the particle mass enters as k^2, where k
 	is the four-momentum of the boson.    *)
 PolarizationSum[mu_,nu_, k_, OptionsPattern[]] :=
 	Block[ {dim = OptionValue[Dimension],ind1, ind2},
-		If[ScalarProduct[k,k]===0  && !OptionValue[VirtualBoson],
+
+		If[	Pair[Momentum[k,dim],Momentum[k,dim]]===0  && !OptionValue[VirtualBoson],
 			Message[PolarizationSum::notmassive, k]
 		];
+
 		ind1 = indSelect[OptionValue[Heads][[1]], mu , dim];
 		ind2 = indSelect[OptionValue[Heads][[2]], nu , dim];
 
@@ -113,10 +120,10 @@ PolarizationSum[mu_,nu_, k_, OptionsPattern[]] :=
 	satisfied.    *)
 PolarizationSum[mu_,nu_, k_, n_, OptionsPattern[]] :=
 	Block[ {dim = OptionValue[Dimension],ind1,ind2},
-		If[ScalarProduct[k,k]=!=0 && !OptionValue[VirtualBoson],
+		If[	Pair[Momentum[k,dim],Momentum[k,dim]]=!=0 && !OptionValue[VirtualBoson],
 			Message[PolarizationSum::notmassless, k]
 		];
-		If[ScalarProduct[n,k]===0,
+		If[	Pair[Momentum[n,dim],Momentum[k,dim]]===0,
 			Message[PolarizationSum::auxerror,n, k]
 		];
 		ind1 = indSelect[OptionValue[Heads][[1]], mu , dim];
