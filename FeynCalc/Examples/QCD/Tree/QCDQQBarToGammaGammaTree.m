@@ -10,7 +10,7 @@
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
-		      q qbar -> gamma gamma scattering in QCD at tree level    *)
+			q qbar -> gamma gamma scattering in QCD at tree level    *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -22,7 +22,7 @@
 
 If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
-		Print["Computation of the matrix element squared for the 
+		Print["Computation of the matrix element squared for the
 				q qbar -> gamma gamma scattering in QCD at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
@@ -72,9 +72,9 @@ ReplaceAll[#,SUNN->3]&//TrickMandelstam[#,{s,t,u,0}]&
 
 
 (* ::Section:: *)
-(*Check with the known result*)
+(*Check with CalcHEP*)
 
 
 ampSquaredKnown=((t^2 + u^2)*SMP["e"]^4*SMP["e_Q"]^4)/(3*t*u);
-Print["Check with the known result: ",
+Print["Check with CalcHEP: ",
 			If[Simplify[FCI[ampSquared-ampSquaredKnown]]===0, "CORRECT.", "!!! WRONG !!!"]];
