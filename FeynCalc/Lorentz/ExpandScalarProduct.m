@@ -59,7 +59,7 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 			nx = nx /. Dispatch[Thread[pali -> pairexpand[pali]]]
 		];
 
-		If[	OptionValue[EpsEvaluate],
+		If[	OptionValue[EpsEvaluate] && !FreeQ[nx,Eps],
 			nx = EpsEvaluate[nx,FCI->True,Momentum->OptionValue[Momentum]]
 		];
 
