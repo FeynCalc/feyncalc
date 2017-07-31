@@ -87,6 +87,7 @@ Options[DiracSimplify] = {
 	EpsContract			-> True,
 	ExpandScalarProduct	-> True,
 	Expanding			-> True,
+	Expand2				-> True,
 	FCCheckSyntax		-> False,
 	FCDiracIsolate		-> True,
 	FCVerbose			-> False,
@@ -261,14 +262,14 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 
 		res = freePart + tmp;
-		(*
-		If[	optExpanding,
+
+		If[	optExpanding && OptionValue[Expand2],
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Expanding the result.", FCDoControl->dsVerbose];
-			res = Expand[res];
+			res = Expand2[res];
 			FCPrint[1,"DiracSimplify: Expanding done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DiracSimplify: After expanding: ", res, FCDoControl->dsVerbose]
-		];*)
+		];
 
 
 		If[ OptionValue[FCE],
