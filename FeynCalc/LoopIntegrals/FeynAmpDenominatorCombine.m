@@ -60,8 +60,7 @@ FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		res = Expand2[ex, FeynAmpDenominator] /.
-			FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor;
+		res = Expand2[ex, FeynAmpDenominator] /. FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor;
 
 		res
 

@@ -20,10 +20,10 @@ Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
 	"PropagatorDenominatorExplicit[FAD[{q, m}, {q - p, 0}] // FCI] // FCE",
 	"1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))"},
 {"fcstPropagatorDenominatorExplicit-ID2","PropagatorDenominatorExplicit[FAD[{q, m}, {q - p, 0}] // FCI,
-	PDEHead -> dummy] // FCE","dummy[1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))]"},
+	Head -> dummy] // FCE","dummy[1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))]"},
 {"fcstPropagatorDenominatorExplicit-ID3","PropagatorDenominatorExplicit[
 	FAD[{q, m}, {q - p, 0}] // FCI // FeynAmpDenominatorSplit,
-	PDEHead -> dummy] // FCE","dummy[1/(-m^2 + SPD[q, q])] dummy[1/(
+	Head -> dummy] // FCE","dummy[1/(-m^2 + SPD[q, q])] dummy[1/(
 	SPD[p, p] - 2 SPD[p, q] + SPD[q, q])]"},
 {"fcstPropagatorDenominatorExplicit-ID4",
 	"PropagatorDenominatorExplicit[FAD[{q, m}, {q + p}]] // FCE",
@@ -39,15 +39,13 @@ Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
 {"fcstPropagatorDenominatorExplicit-ID7",
 	"tmp = PropagatorDenominatorExplicit[FAD[{p + q, m}], FCE -> True]; \n FCClearScalarProducts[]; \n tmp",
 	"1/(-m^2 + s + 2 SPD[p, q] + SPD[q, q])"},
-
-
-
 {"fcstPropagatorDenominatorExplicit-ID8",
 	"PropagatorDenominatorExplicit[FAD[{p, SmallVariable[m]}], FCE -> True]",
 	"1/(-SmallVariable[m]^2 + SPD[p, p])"},
-
 {"fcstPropagatorDenominatorExplicit-ID9",
 	"PropagatorDenominatorExplicit[FAD[{p, SmallVariable[m]}], FCE -> True, SmallVariable->True]",
-	"1/(SPD[p, p])"}
-
+	"1/(SPD[p, p])"},
+{"fcstPropagatorDenominatorExplicit-ID10",
+	"PropagatorDenominatorExplicit[aa FAD[{q, m}], Denominator -> True, Head -> hd, FCE -> True]",
+	"aa/hd[-m^2 + SPD[q, q]]"}
 }

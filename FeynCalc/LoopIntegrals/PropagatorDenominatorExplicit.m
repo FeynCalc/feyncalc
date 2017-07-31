@@ -20,10 +20,9 @@ PropagatorDenominatorExplicit::usage =
 PropagatorDenominator[a,b] in exp into 1/(ScalarProduct[a,a]-b^2) and \
 replaces FeynAmpDenominator by Times.";
 
-PDEHead::usage =
-"PDEHead is an option of PropagatorDenominatorExplicit. It allows \
-to wrap propagators into a specified head after applying \
-PropagatorDenominatorExpliciti. The default value is Identity.";
+PropagatorDenominatorExplicit::failmsg =
+"Error! PropagatorDenominatorExplicit encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
 
@@ -33,16 +32,17 @@ End[]
 Begin["`PropagatorDenominatorExplicit`Private`"]
 
 Options[PropagatorDenominatorExplicit] = {
+	Denominator -> False,
+	Dimension -> False,
 	FCE -> False,
 	FCI -> False,
-	Dimension -> False,
+	Head -> Identity,
 	Mandelstam -> {},
-	SmallVariable -> False,
-	PDEHead->Identity
-}
+	SmallVariable -> False
+};
 
 PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
-	Block[{ex, dim, res, head, mandel, ruleNormal, ruleMandelstam, fad},
+	Block[{ex, dim, res, head1, head2, mandel, ruleNormal, ruleMandelstam, fad},
 
 		If[	OptionValue[FCI],
 			ex = expr,
@@ -56,7 +56,6 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 		ex = ex /. FeynAmpDenominator -> fad;
 
 		dim = OptionValue[Dimension];
-		head = OptionValue[PDEHead];
 		mandel = OptionValue[Mandelstam];
 
 		ruleNormal = {
@@ -79,11 +78,24 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 		];
 
 		If[	dim===False,
-			res = res /. fad[c___] :> head[Times[c]],
-			res = res /. fad[c___] :> head[ChangeDimension[Times[c],dim]]
+			res = res /. fad[c___] :> head1[Times[c]],
+			res = res /. fad[c___] :> head1[ChangeDimension[Times[c],dim]]
 		];
 
-		res = res /. fad -> FeynAmpDenominator;
+		If[	TrueQ[OptionValue[Denominator]],
+			res = res /. head1[x_] /; Numerator[x] === 1 :> 1/head2[Denominator[x]];
+			If[ !FreeQ[res,head1],
+				Message[PropagatorDenominatorExplicit::failmsg, "The numerator is not unity!"];
+				Abort[]
+			];
+			res = res /. head2->OptionValue[Head],
+			res = res /. head1->OptionValue[Head]
+		];
+
+		If[	!FreeQ2[res,{fad,FeynAmpDenominator,head1,head2}],
+			Message[PropagatorDenominatorExplicit::failmsg, "Something went wrong while writing out the denominators."];
+			Abort[]
+		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
