@@ -93,11 +93,11 @@ checkEinsteinSummation[expr0_, head_]:=
 				Which[
 
 					freeLiList=!=getFreeIndices[#,head],
-					Message[FCCheckSyntax::failmsg, "Different number of free indices in", ex];
+					Message[FCCheckSyntax::failmsg, "Different number of free indices in ", ex];
 					Abort[],
 
 					getMoreThanTwoIndices[#,head]=!={},
-					Message[FCCheckSyntax::failmsg, "More than two repeating indices in " <> InputForm[#]];
+					Message[FCCheckSyntax::failmsg, "More than two repeating indices in ", ToString[#,InputForm]];
 					Abort[],
 
 					True,
