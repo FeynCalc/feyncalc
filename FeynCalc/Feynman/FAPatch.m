@@ -44,6 +44,8 @@ FAPatch::already =
 Begin["`Package`"]
 End[]
 
+nmodels::usage="";
+
 Begin["`FAPatch`Private`"]
 
 FCFilePatch[input_String, output_String, replacements_List] :=
@@ -51,6 +53,7 @@ FCFilePatch[input_String, output_String, replacements_List] :=
 		tmp = Import[input, "Text"] <> "\n";
 
 		If[	!StringMatchQ[tmp, "*Patched for use with FeynCalc*", IgnoreCase -> True],
+			nmodels++;
 			res = StringReplace[tmp, replacements, MetaCharacters -> Automatic];
 			res = StringJoin[{"(* Patched for use with FeynCalc *)\n",res}],
 			res = tmp
@@ -161,16 +164,20 @@ FAPatch[OptionsPattern[]] :=
 			If[	ChoiceDialog["An installation of FeynArts has been found in \"" <> $FeynArtsDirectory <>
 				"\". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue?"],
 					(* The actual patching *)
-					WriteString["stdout","Patching FeynArts..."];
+					FCPrint[0, "Patching FeynArts... ", UseWriteString -> True];
 					Map[FCFilePatch[#, #, repList] &, allfiles];
-					WriteString["stdout"," done!\n"],
-					WriteString["stdout","Patching aborted, no files were changed.\n"];
+					FCPrint[0, "done!\n", UseWriteString -> True],
+
+					FCPrint[0, "Patching aborted, no files were changed.\n", UseWriteString -> True];
 					Return[]
 			],
 
-			WriteString["stdout","Patching FeynArts models..."];
+			nmodels=0;
 			Map[FCFilePatch[#, #, repList] &, allfiles];
-			WriteString["stdout"," done!\n"]
+			If[ nmodels=!=0,
+				FCPrint[0, "Patched " <> nmodels <> " FeynArts models.\n", UseWriteString -> True];
+			]
+
 		]
 	];
 
