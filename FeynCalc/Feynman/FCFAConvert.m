@@ -59,6 +59,7 @@ Begin["`FCFAConvert`Private`"]
 
 Options[FCFAConvert] = {
 	ChangeDimension -> False,
+	Contract -> False,
 	DropSumOver -> False,
 	FinalSubstitutions->{},
 	IncomingMomenta->{},
@@ -130,6 +131,10 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 
 		If[	OptionValue[ChangeDimension]=!=False,
 			diagsConverted= ChangeDimension[diagsConverted,dim]
+		];
+
+		If[	TrueQ[OptionValue[Contract]],
+			diagsConverted = Contract/@diagsConverted
 		];
 
 		If[	!OptionValue[List],
