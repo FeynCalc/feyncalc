@@ -69,7 +69,7 @@ ComplexConjugate[expr_, OptionsPattern[]]:=
 		];
 
 		res = compcon[ex/.SUNTrace->suntrac]/. SUNDelta -> SUNDeltaContract /. compcon -> compcon2 /.
-		compcon2 -> ComplexConjugate /. suntrac-> SUNTrace;
+		compcon2 -> ComplexConjugate /. suntrac-> SUNTrace /. SUNDeltaContract->SUNDelta;
 
 		If[	OptionValue[FCRenameDummyIndices],
 			res = FCRenameDummyIndices[res]

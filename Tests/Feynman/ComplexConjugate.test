@@ -36,5 +36,7 @@ Tests`Feynman`fcstComplexConjugate = {
 {"fcstComplexConjugate-ID10","ComplexConjugate[aaa]",
 	"aaa"},
 {"fcstComplexConjugate-ID11","ComplexConjugate[aaa,Conjugate->{aaa}]",
-	"Conjugate[aaa]"}
+	"Conjugate[aaa]"},
+{"fcstComplexConjugate-ID12","ComplexConjugate[SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]]",
+	"SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]"}
 };
