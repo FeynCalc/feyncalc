@@ -165,16 +165,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 			FCPrint[3,"After FeynAmpDenominatorCombine: ", t0 , FCDoControl->tidVerbose]
 		];
 
-		If[ fds,
-			FCPrint[1,"TID: Applying FDS.", FCDoControl->tidVerbose];
-			time=AbsoluteTime[];
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True];
-			(* The fact that we need to apply FDS twice here, tells a lot about the quality of FDS. *)
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True];
-			FCPrint[1, "TID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After FDS: ", t0 , FCDoControl->tidVerbose]
-		];
-
 		FCPrint[1,"TID: Applying FRH.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 		t0 = FRH[t0,IsolateNames->tempIsolate];
@@ -185,9 +175,20 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
 			FCPrint[1,"TID: Applying DiracSimplify.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace]];
+			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace], Expand2->False];
 			FCPrint[1, "TID: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After DiracSimplify: ", t0 , FCDoControl->tidVerbose]
+		];
+
+
+		If[ fds,
+			FCPrint[1,"TID: Applying FDS.", FCDoControl->tidVerbose];
+			time=AbsoluteTime[];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Factoring->False];
+			(* The fact that we need to apply FDS twice here, tells a lot about the quality of FDS. *)
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Factoring->False];
+			FCPrint[1, "TID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3,"After FDS: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		If[	OptionValue[ApartFF],
