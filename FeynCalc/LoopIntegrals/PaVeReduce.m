@@ -30,24 +30,27 @@ breduce::usage="";
 a0tob0::usage="";
 
 Options[ PaVeReduce ] = {
+	A0ToB0->False,
+	BReduce -> False,
+	Collecting -> Collect2,
 	Dimension -> True,
 	FCVerbose -> False,
+	Factoring -> Factor2,
 	IsolateNames->False,
 	Mandelstam->{},
+	PaVeAutoReduce -> False,
 	PaVeOrderList -> {},
-	WriteOutPaVe -> False,
-	BReduce -> False,
-	A0ToB0->False,
-	PaVeAutoReduce -> False
+	WriteOutPaVe -> False
 };
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
-	Block[ {op, wriout, nnx = x, res},
+	Block[ {op, wriout, nnx = x, res, time},
 
 		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
+
 
 		op=Join[FilterRules[Options[PaVeReduce], Except[{opts}]], {opts}];
 		wriout = OptionValue[WriteOutPaVe];
@@ -70,10 +73,15 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 		];
 
 
+		FCPrint[1,"PaVeReduce: Starting the reduction.", FCDoControl->pvrVerbose];
+		time=AbsoluteTime[];
 		If[ StringQ[wriout] && (Head[x] === PaVe),
 			res  = pavitp@@Join[{nnx, wriout}, op],
 			res = pavereduce[nnx, op]
 		];
+		FCPrint[1,"PaVeReduce: Reduction done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: After the reduction: ", res, FCDoControl->pvrVerbose];
+
 
 		If[ OptionValue[PaVeAutoReduce],
 			FCPrint[1,"PaVeReduce: Setting the PaVeAutoReduce option to all PaVe-functions", FCDoControl->pvrVerbose];
@@ -85,10 +93,16 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 			res = res /. (h:B0|B00|B1|B11)[a_,b_,c_,ops___]:> h[a,b,c,BReduce->True,ops]
 		];*)
 
-		res = Collect2[res, PaVeHeadsList,Factoring->Factor2];
-		FCPrint[3,"PaVeReduce: After Collect2: ", res, FCDoControl->pvrVerbose];
+		If[	OptionValue[Collecting],
+			FCPrint[1,"PaVeReduce: Applying Collect2.", FCDoControl->pvrVerbose];
+			time=AbsoluteTime[];
+			res = Collect2[res, PaVeHeadsList,Factoring->OptionValue[Factoring]];
+			FCPrint[1,"PaVeReduce: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvrVerbose];
+			FCPrint[3,"PaVeReduce: After Collect2: ", res, FCDoControl->pvrVerbose]
+		];
 
-		FCPrint[1,"PaVeReduce: Leaving with: ", res, FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: Leaving.", res, FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: Leaving with: ", res, FCDoControl->pvrVerbose];
 
 		res
 	];
