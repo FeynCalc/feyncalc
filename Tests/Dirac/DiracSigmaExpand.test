@@ -1,0 +1,55 @@
+
+
+(* :Title: DiracSigmaExpand.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracSigmaExpand       	*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstDiracSigmaExpand =
+({
+{"fcstDiracSigmaExpand-ID1", "DiracSigmaExpand[0,FCE\[Rule]True]",
+"0"},
+{"fcstDiracSigmaExpand-ID2",
+"DiracSigmaExpand[DiracSigma[GSD[p],GSD[r]],FCE\[Rule]True]",
+"DiracSigma[GSD[p], GSD[r]]"},
+{"fcstDiracSigmaExpand-ID3",
+"DiracSigmaExpand[DiracSigma[GSD[p]+GSD[q],GSD[r]+GSD[s]],FCE\
+\[Rule]True]",
+"DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[p], GSD[s]] + \
+DiracSigma[GSD[q], GSD[r]] + DiracSigma[GSD[q], GSD[s]]"},
+{"fcstDiracSigmaExpand-ID4",
+"DiracSigmaExpand[DiracSigma[GSD[p],GSD[r]+GSD[s]],FCE\[Rule]True]\
+", "DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[p], GSD[s]]"},
+{"fcstDiracSigmaExpand-ID5",
+"DiracSigmaExpand[DiracSigma[GSD[p]+GSD[q],GSD[r]],FCE\[Rule]True]\
+", "DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[q], GSD[r]]"},
+{"fcstDiracSigmaExpand-ID6",
+"DiracSigmaExpand[DiracSigma[GSD[p]+GSD[q],3GSD[r]],FCE\[Rule]True]\
+", "3*DiracSigma[GSD[p], GSD[r]] + 3*DiracSigma[GSD[q], GSD[r]]"},
+{"fcstDiracSigmaExpand-ID7",
+"DiracSigmaExpand[DiracSigma[x \
+GSD[p]+GSD[q],3GSD[r]],FCE\[Rule]True]",
+"3*x*DiracSigma[GSD[p], GSD[r]] + 3*DiracSigma[GSD[q], GSD[r]]"},
+{"fcstDiracSigmaExpand-ID8",
+"DiracSigmaExpand[DiracSigma[x \
+GSD[p+q],3GSD[r+s]],FCE\[Rule]True]",
+"3*x*DiracSigma[GSD[p + q], GSD[r + s]]"},
+{"fcstDiracSigmaExpand-ID9",
+"DiracSigmaExpand[DiracSigma[x \
+GSD[p+q],3GSD[r+s]],DiracGammaExpand\[Rule]True,FCE\[Rule]True]",
+"3*x*(DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[p], GSD[s]] + \
+DiracSigma[GSD[q], GSD[r]] + DiracSigma[GSD[q], GSD[s]])"},
+{"fcstDiracSigmaExpand-ID10",
+"DiracSigmaExpand[DiracSigma[GSD[p]+GSD[q],GAD[mu]],FCE\[Rule]True]\
+", "-DiracSigma[GAD[mu], GSD[p]] - DiracSigma[GAD[mu], GSD[q]]"}
+});
