@@ -41,5 +41,8 @@ DiracGamma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 GS[a] + 
 DiracGamma[
 5 CartesianMomentum[a, D - 1] + c CartesianMomentum[b + d, D - 1] +
 	CartesianMomentum[e, D - 1], D]] // FCE",
-	"5 CGSD[a] + c (CGSD[b] + CGSD[d]) + CGSD[e]"}
+	"5 CGSD[a] + c (CGSD[b] + CGSD[d]) + CGSD[e]"},
+{"fcstDiracGammaExpand-ID13","DiracGammaExpand[DiracSigma[x GSD[p + q], 3 GSD[r + s]], FCE -> True]",
+	"3 x (DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[p], GSD[s]] +
+DiracSigma[GSD[q], GSD[r]] + DiracSigma[GSD[q], GSD[s]])"}
 };
