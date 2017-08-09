@@ -31,10 +31,6 @@ FCReplaceD::resfail=
 FCReplaceD::repfail=
 "Error! Failed to replace all occurences of `1` with `2`. Evaluation aborted.";
 
-FCReplaceD::error="
-Error! Something went wrong while partial fractioning the loop integral `1` by FCReplaceD. \
-Evaluation aborted";
-
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
