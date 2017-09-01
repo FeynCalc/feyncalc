@@ -86,6 +86,10 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			ex = FCI[expr]/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]])
 		];
 
+		If[	lmoms==={},
+			(*Nothing to do!*)
+			Return[expr];
+		];
 
 		If[	OptionValue[Expanding],
 			ex = Expand2[ex, lmoms];
