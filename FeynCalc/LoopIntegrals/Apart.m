@@ -72,7 +72,8 @@ Options[ApartFF] = {
 	FCVerbose -> False,
 	FDS -> True,
 	FeynAmpDenominator -> True,
-	FeynAmpDenominatorCombine -> True
+	FeynAmpDenominatorCombine -> True,
+	MaxIterations -> Infinity
 };
 
 Apart2[y_, OptionsPattern[]] :=
@@ -149,7 +150,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[3,"ApartFF: List of the unique integrals: ", intsUnique, FCDoControl->affVerbose];
 
 		(*	Apply FCApart to each of the unique loop integrals	*)
-		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless]]&,(intsUnique/.loopHead->Identity)];
+		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless],MaxIterations->OptionValue[MaxIterations]]&,(intsUnique/.loopHead->Identity)];
 
 		If[Length[solsList]=!=Length[intsUnique],
 			Message[ApartFF::failmsg,"ApartFF can't create the solution list."];

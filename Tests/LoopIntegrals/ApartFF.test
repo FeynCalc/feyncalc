@@ -76,5 +76,9 @@ tmp = ApartFF[FAD[q, {-(p/2) + q, m}, {p/2 + q, m}, {p/2 + q, m}], {q}]//FCE; \n
 {"fcstApartFF-ID23","FCClearScalarProducts[]; \n SPD[p, p] = 4 m^2; \n
 tmp = ApartFF[FAD[{k1 - p/2 + q, m}, {k1 - p/2 + q, m}, {p/2 + q, m}, q, {-(p/2) + q, m}], {q}]//FCE; \n FCClearScalarProducts[]; \n tmp
 ","-FAD[q, {-(p/2) + q, m}, {-(p/2) + q, m}, {-k1 + p/2 + q, m}, {-k1 + p/2 + q, m}] + 2 FAD[{q, m}, {-k1 + q, m}, {-k1 + q, m},
-{-p + q, m}, {-p + q, m}]"}
+{-p + q, m}, {-p + q, m}]"},
+{"fcstApartFF-ID24","ApartFF[SPD[k1, p] SPD[p, p] FAD[{p, m0}], {p}, MaxIterations -> 1, FDS -> False] // FCE",
+"FAD[{p, m0}] SPD[k1, p] SPD[p, p]"},
+{"fcstApartFF-ID25","ApartFF[SPD[k1, p] SPD[p, p] FAD[{p, m0}], {p}, MaxIterations -> 2, FDS -> False] // FCE",
+"m0^2 FAD[{p, m0}] SPD[k1, p]"}
 })
