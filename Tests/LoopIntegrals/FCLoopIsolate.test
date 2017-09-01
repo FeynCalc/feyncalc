@@ -69,5 +69,6 @@ Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]
 {"fcstFCLoopIsolate-ID20","FCLoopIsolate[Foobar[x], {}, PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads],
 {Foobar}],Head -> loop]","loop[Foobar[x]]"},
 {"fcstFCLoopIsolate-ID21","FCLoopIsolate[CSP[q, p] x + z (q + y) + CGS[q], {q}, Head -> loop]","y z + z loop[q] + x loop[CartesianPair[CartesianMomentum[p], CartesianMomentum[q]]] +
-loop[DiracGamma[CartesianMomentum[q]]]"}
+loop[DiracGamma[CartesianMomentum[q]]]"},
+{"fcstFCLoopIsolate-ID22","FCLoopIsolate[0, {}, PaVe -> False, ExpandScalarProduct -> True]","0"}
 };
