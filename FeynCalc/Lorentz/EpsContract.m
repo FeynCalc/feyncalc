@@ -65,7 +65,7 @@ EpsContract[expr_, OptionsPattern[]]:=
 			Abort[]
 		];
 
-		epsList = Cases[res+null1+null2, _epsHead, Infinity];
+		epsList = Cases[res+null1+null2, _epsHead, Infinity]//Sort//DeleteDuplicates;
 
 		epsListEval = epsCleverCon/@(epsList/. epsHead->Identity);
 
@@ -76,6 +76,12 @@ EpsContract[expr_, OptionsPattern[]]:=
 
 	];
 
+(*
+	epsCleverCon first applies the determinant formula to those tensors,
+	that have the largest number of common indices. This helps to avoid
+	spurious terms due to the Schouten identity. C.f. the explanation of
+	Jos Vermaseren: https://github.com/vermaseren/form/issues/65
+*)
 epsCleverCon[expr_]:=
 	expr //. Power[Eps[a__],n_] :> epsHold[epscon[a]^n] //.
 	Eps[a__] Eps[b__]/; Length[Intersection[{a},{b}]]===3 :> epsHold[epscon[a]epscon[b]] //.
