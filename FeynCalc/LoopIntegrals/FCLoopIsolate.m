@@ -64,7 +64,7 @@ Options[FCLoopIsolate] = {
 };
 
 fullDep[z_,lmoms_]:=
-	(Union[Cases[ExpandScalarProduct[z], Momentum[x_, _ : 4]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
+	(Union[Cases[ExpandScalarProduct[z,FCI->True], Momentum[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads},

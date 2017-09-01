@@ -158,14 +158,32 @@ FVD[q1, mu] FVD[q2, nu] LCD[mu, nu][a,
 	q1] LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 -
 	SPD[p1, p1] SPD[p2, p2]) - (FAD[{-p1 + q1, m1}, {-p2 + q2, m2},
 	q1 - q2] SPD[p1, q1] SPD[p2, q2] LCD[][a, b, p1, p2])/(SPD[p1,
-	p2]^2 - SPD[p1, p1] SPD[p2, p2])"}
-
-
-
-
-
-
-
-
-
+	p2]^2 - SPD[p1, p1] SPD[p2, p2])"},
+{"fcstFCMultiLoopTID-ID15", "FCMultiLoopTID[
+FAD[p1, {p2, m}, {p3, m}, p1, p1,
+p1, {-p1 + p2, m}, {-p1 + p3, m}] FVD[p1, Lor1] FVD[p1, Lor2] (SPD[p1, p1] -
+	2 (SPD[p1, p2] + SPD[p1, p3] - 2 SPD[p2, p3]))^2, {p1, p2, p3},FCE -> True]",
+	"(2*FAD[p1, p1, p1, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D - (FAD[p1, p1, p1, {p2, m}, {-p1 + p2, m}]*MTD[Lor1, Lor2])/D -
+(2*FAD[p1, p1, p1, {p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D + (2*FAD[p1, p1, {p2, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D -
+(2*FAD[{p3, m}, p1, p1, p1, {-p1 + p2, m}]*MTD[Lor1, Lor2])/D + (FAD[{p3, m}, p1, p1, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D -
+(FAD[{p3, m}, p1, p1, {p2, m}, {-p1 + p2, m}]*MTD[Lor1, Lor2])/D - (FAD[{p3, m}, p1, p1, {p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D +
+(FAD[{p3, m}, p1, {p2, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D - (m^2*FAD[p1, p1, p1, {p2, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D +
+(2*FAD[{p3, m}, p1, p1, p1, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2])/D -
+(8*FAD[{p1, m}, p2, p2, p2, {p1 - p2, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p3])/D -
+(2*FAD[{p3, m}, p1, p1, p1, {p2, m}, {-p1 + p2, m}]*MTD[Lor1, Lor2]*SPD[p1, p3])/D -
+(8*FAD[{p3, m}, p2, p2, p2, {p1 - p2, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p3])/D +
+(8*FAD[{p3, m}, {p1, m}, p2, p2, p2, {-p1 + p2, m}]*MTD[Lor1, Lor2]*SPD[p1, p3])/D -
+(8*FAD[{p3, m}, {p1, m}, p2, p2, {p1 - p2, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p3])/D +
+(16*FAD[{p3, m}, {p1, m}, p2, p2, p2, {p1 - p2, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p3]^2)/D +
+(FAD[p1, p1, p1, {p2, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2]*SPD[p3, p3])/D"},
+{"fcstFCMultiLoopTID-ID16", "FCMultiLoopTID[(GSD[l] + m) SPD[l, p2] FAD[{l, m1}, {l + p, m2}], {l},
+FCE -> True]",
+"m*FAD[{l, m1}, {l + p, m2}]*SPD[l, p2] +
+(FAD[{l, m2}]*SPD[p, p2]*(GSD[p2]*SPD[p, p2] -
+GSD[p]*SPD[p2, p2]))/(2*(SPD[p, p2]^2 - SPD[p, p]*SPD[p2, p2])) +
+(FAD[{l, m1}, {l + p, m2}]*SPD[l, p2]^2*(GSD[p2]*SPD[p, p] -
+GSD[p]*SPD[p, p2]))/(-SPD[p, p2]^2 + SPD[p, p]*SPD[p2, p2]) -
+(FAD[{l, m1}, {l - p, m2}]*SPD[l, p2]*(m1^2 - m2^2 +
+SPD[p, p])*(GSD[p2]*SPD[p, p2] -
+GSD[p]*SPD[p2, p2]))/(2*(-SPD[p, p2]^2 + SPD[p, p]*SPD[p2, p2]))"}
 })

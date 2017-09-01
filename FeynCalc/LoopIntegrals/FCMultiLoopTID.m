@@ -58,9 +58,8 @@ Options[FCMultiLoopTID] = {
 };
 
 FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
-	Block[	{	n, ex, rest,loopInts,intsUnique,
-				repRule,ruleUncontract,solsList,
-				null1, null2, res, rest1Loop, loopInts1Loop, intsUnique1Loop},
+	Block[	{	n, ex, rest,loopInts,intsUnique, repRule,ruleUncontract,solsList,
+				null1, null2, res,  tmpli},
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -95,7 +94,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Contract] && !FreeQ[ex,LorentzIndex],
-			ex = Contract[ex]
+			ex = Contract[ex, FCI->True]
 		];
 
 		If[	!FreeQ2[Union[FCGetDimensions[ex/.DiracGamma[5|6|7]:>null1]],{4,-4}] && !$BreitMaison,
@@ -104,7 +103,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[DiracSimplify] && !FreeQ2[ex,{DiracGamma,DiracSigma,Spinor}],
-			ex = DiracSimplify[ex];
+			ex = DiracSimplify[ex, FCI->True];
 			FCPrint[3,"FCMultiLoopTID: After DiracSimplify: ", ex, FCDoControl->mltidVerbose]
 		];
 
@@ -114,7 +113,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		];
 
 		(* Single out relevant loop momenta *)
-		ex = ex//DiracGammaExpand[#,Momentum->qs]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True]&;
+		ex = ex//DiracGammaExpand[#,Momentum->qs, FCI->True]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True, FCI->True]&;
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)
@@ -133,26 +132,17 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 				Message[FCMultiLoopTID::failmsg,"Failed to eliminate 4 and D-4 dimensional loop momenta."];
 				Abort[]
 			];
-			FCPrint[2,"FCMultiLoopTID: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->tidVerbose];
+			FCPrint[2,"FCMultiLoopTID: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
 		];
 
 		FCPrint[3,"FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
 
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, qs,loopHead,
-			FCLoopSplit -> {4},MultiLoop->True,FCI->True,PaVe->False];
+			FCLoopSplit -> {4}, MultiLoop->False,FCI->True,PaVe->False];
 
-		{rest1Loop,loopInts1Loop,intsUnique1Loop} = FCLoopExtract[ex, qs,loopHead,
-			FCLoopSplit -> {4},MultiLoop->False,FCI->True,PaVe->False];
+		FCPrint[3,"FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
 
-		FCPrint[2,"FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
-
-		If[ intsUnique==={} && intsUnique1Loop=!={},
-			Message[FCMultiLoopTID::nomulti];
-			Return[ex]
-		];
-
-
-		(*	Apply fdsOneLoop to each of the unique loop integrals	*)
+		(*	Apply tidSingleIntegral to each of the unique loop integrals	*)
 		solsList = Map[tidSingleIntegral[#,qs,n]&,(intsUnique/.loopHead->Identity)];
 
 		If[!FreeQ[solsList,tidSingleIntegral],
@@ -164,7 +154,6 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		repRule = MapThread[Rule[#1,#2]&,{intsUnique,solsList}];
 		FCPrint[3,"FCMultiLoopTID: Replacement rule: ", repRule, FCDoControl->mltidVerbose];
 
-		(*	Substitute the simplified integrals back into the original expression	*)
 		res = rest + (loopInts/.repRule);
 
 		FCPrint[3,"FCMultiLoopTID: Prelmininary result: ", res, FCDoControl->mltidVerbose];
@@ -175,12 +164,12 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		];
 
 		If [OptionValue[ExpandScalarProduct],
-			res = ExpandScalarProduct[res];
+			res = ExpandScalarProduct[res, FCI->True];
 			FCPrint[3,"FCMultiLoopTID: After ExpandScalarProduct: ", res, FCDoControl->mltidVerbose]
 		];
 
 		If[	OptionValue[Contract],
-			res = Contract[res];
+			res = Contract[res, FCI->True];
 			FCPrint[3,"FCMultiLoopTID: After Contract: ", res, FCDoControl->mltidVerbose]
 		];
 
