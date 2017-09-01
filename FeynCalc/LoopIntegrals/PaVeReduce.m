@@ -32,7 +32,7 @@ a0tob0::usage="";
 Options[ PaVeReduce ] = {
 	A0ToB0->False,
 	BReduce -> False,
-	Collecting -> Collect2,
+	Collecting -> True,
 	Dimension -> True,
 	FCVerbose -> False,
 	Factoring -> Factor2,
