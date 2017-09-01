@@ -46,10 +46,10 @@ Options[FCCompareResults] = {
 	Text -> {"Check of the results:", "The results agree.", "The results disagree."}
 };
 
-FCCompareResults[r1_, r2_:Except[_?OptionQ], opts:OptionsPattern[]]:=
+FCCompareResults[r1_, r2:Except[_?OptionQ], opts:OptionsPattern[]]:=
 	FCCompareResults[{r1}, {r2}, opts]/; Head[r1]=!=List && Head[r2]=!=List;
 
-FCCompareResults[obtainedResult_List, knownResult_List:Except[_?OptionQ], OptionsPattern[]]:=
+FCCompareResults[obtainedResult_List, knownResult_List/;(knownResult==={} || !OptionQ[knownResult]), OptionsPattern[]]:=
 	Block[{	res1, res2, diff, factoring, match=False, text, function, interrupt,
 			interruptCommand, noFrontEnd, tmp, set},
 
