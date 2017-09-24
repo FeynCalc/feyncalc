@@ -274,7 +274,11 @@ tmp",
 mc2 (mc2^2 + ms2^2 - s - u) (YiPR Ys1CC Ys2 + YiPRCC Ys1 Ys2CC) -
 mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) +
-2 mc1 mc2 (YiPR Ys1 Ys2 + YiPRCC Ys1CC Ys2CC))"}
+2 mc1 mc2 (YiPR Ys1 Ys2 + YiPRCC Ys1CC Ys2CC))"},
+{"fcstTr-ID27",
+	"$BreitMaison=True; \n tmp = FCE[Simplify[Tr[GAD[al].GA[5].GAD[al, la, mu, nu, rho]] +
+	Tr[GA[5].GAD[al].GAD[al, la, mu, nu, rho]]]]; \n tmp",
+	"-8 I (-4 + D) LC[la, mu, nu, rho]"}
 };
 (*--------------------------------------------------------------------------------------------------*)
 Tests`Dirac`fcstTr4AllFreeNoGamma5 =
