@@ -136,10 +136,11 @@ If[ Names["Tests`LoopIntegrals`fcitTIDSTests"]=!={},
 ];
 
 If[ Names["Tests`LoopIntegrals`fcitTIDMTests"]=!={},
-	$LimitTo4=True;
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDMTests"])];
+
+	tmpTest = Map[test[ DiracSimplify[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]]],0,testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDMTests"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-	$LimitTo4=False
+
 ];
 
 If[ Names["Tests`LoopIntegrals`fcitTIDPTests"]=!={},
@@ -153,40 +154,3 @@ If[ Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
-
-(*
-
-
-
-Map[Test[ Simplify[ReplaceAll[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],kst],{B0[x__] :> B0[x, BReduce -> True],
-	PaVe[x__, PaVeAutoReduce -> False, y___] :> PaVe[x, PaVeAutoReduce -> True, y]}]],0,TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDFullRedCR1"])];
-
-
-
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join[
-		Tests`LoopIntegrals`fcitTIDMTests
-		]];
-$LimitTo4=False;
-
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join[
-		Tests`LoopIntegrals`fcitTIDPTests
-		]];
-
-
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join[
-		Tests`LoopIntegrals`fcitOneLoopMiscTests
-		]];
-
-
-*)
-
-
-
-
-
-
-
