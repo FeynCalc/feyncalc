@@ -54,5 +54,8 @@ ApartFF[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}], {qp}], qp]",
 	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"},
 {"fcstFeynAmpDenominatorSimplify-ID15",
 	"FDS[FAD[{qp, M}, {-q + qp, M, 2}], qp] // FCE",
-	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"}
+	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"},
+{"fcstFeynAmpDenominatorSimplify-ID16",
+	"FDS[FAD[p1, p4, p3, p2]] // FCE",
+	"FAD[p1, p2, p3, p4]"}
 }

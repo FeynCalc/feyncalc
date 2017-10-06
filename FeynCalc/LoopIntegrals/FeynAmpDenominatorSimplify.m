@@ -72,8 +72,8 @@ Options[FeynAmpDenominatorSimplify] = {
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
 
 (* For the case that there is nothing to do *)
-FeynAmpDenominatorSimplify[a_ /; FreeQ[a, PD], ___,OptionsPattern[]] :=
-	a /; FreeQ[a, FAD];
+FeynAmpDenominatorSimplify[a_, ___,OptionsPattern[]] :=
+	a /; FreeQ2[a, {FAD, PD}];
 
 (*	Simple wrappers	*)
 FeynAmpDenominatorSimplify[exp_,Momentum[q1_, _:4],opts:OptionsPattern[]] :=
@@ -85,7 +85,7 @@ FeynAmpDenominatorSimplify[exp_,Momentum[q1_, _:4], Momentum[q2_, _:4],opts:Opti
 (*	Without knowing what the loop momenta are, FDS can just try to sort propagators
 	and pull out the overall minus signs,	but nothing more	*)
 FeynAmpDenominatorSimplify[exp_, OptionsPattern[]] :=
-	exp /. PD -> procan /. procan ->
+	FCI[exp] /. PD -> procan /. procan ->
 	PD /. FeynAmpDenominator -> feyncan;
 
 procan[a_, m_] :=
