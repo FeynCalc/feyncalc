@@ -336,10 +336,10 @@ FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 
 
 FCPatternFreeQ[expr_List]:=
-	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence}];
+	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}];
 
 FCPatternFreeQ[expr_List ,objs_List]:=
-	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence}, objs]];
+	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}, objs]];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, time},

@@ -57,5 +57,31 @@ VAR^2 (Sum[xy[i], {i, 1, 10}] + Sum[xz[i], {i, 1, 10}])]",
 	"True"},
 {"fcstCollect2-ID13","Collect2[Together[a (1 + x) + 4 b (1 + y)],
 	{a, b}, FCFactorOut -> 4]",
-	"4 (1/4 a (x+1)+b (y+1))"}
+	"4 (1/4 a (x+1)+b (y+1))"},
+{"fcstCollect2-ID14","Collect2[a PolyLog[2, z] +
+s^2 PolyLog[2, z] + (1 - z) Log[2] + (2 + Pi^2) Log[1/(1 - z)] +
+f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z]]",
+	"-(-1 + z) Log[2] + (2 + f + \[Pi]^2) Log[1/(
+1 - z)] + (a + s^2) PolyLog[2, z]"},
+{"fcstCollect2-ID15","Collect2[a PolyLog[2, z] +
+s^2 PolyLog[2, z] + (1 - z) Log[2] + (2 + Pi^2) Log[1/(1 - z)] +
+f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z], Head -> {h1, h2}]",
+	"h2[2 + f + \[Pi]^2, h1[Log[1/(1 - z)]]] +
+h2[a + s^2, h1[PolyLog[2, z]]] + h2[-(-1 + z) Log[2], 1]"},
+{"fcstCollect2-ID16","Collect2[(a - b)^2 - a^2 - b^2, a, b, InitialFunction -> fu]",
+	"fu[-a^2 + (a - b)^2 - b^2]"},
+{"fcstCollect2-ID17","Collect2[(a - b)^2 - a^2 - b^2, a, b,
+InitialFunction -> {fu1, fu2, fu3}]",
+	"fu1[fu2[fu3[-a^2 + (a - b)^2 - b^2]]]"},
+{"fcstCollect2-ID18","Collect2[(a - b)^2 - a^2 - b^2, a, b,
+IntermediateSubstitutions -> {a - b -> c}]",
+	"-a^2 - b^2 + c^2"},
+{"fcstCollect2-ID19","MatchQ[FCE[
+Collect2[Isolate[
+	FCI[Isolate[(a + b + c + d)*FVD[p, mu]*FVD[p, nu]*FAD[p, {p, m}] +
+			(e + f + g)*FVD[p, mu]*FVD[p, nu]*FAD[{p, m}], p]], p,
+	IsolateNames -> loopisolate], FeynAmpDenominator[__]]],
+FAD[{p, m}]*FVD[p, mu]*FVD[p, nu]*HoldForm[KK[a_]] +
+FAD[p, {p, m}]*FVD[p, mu]*FVD[p, nu]*HoldForm[KK[b_]]]",
+	"True"}
 };

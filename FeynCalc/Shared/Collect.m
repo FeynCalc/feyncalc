@@ -57,6 +57,8 @@ Options[Collect2] = {
 	FCVerbose -> False,
 	Expanding -> True,
 	Factoring -> Factor,
+	InitialFunction -> Identity,
+	IntermediateSubstitutions -> {},
 	IsolateFast -> False,
 	IsolateNames -> False,
 	Head->Identity
@@ -81,10 +83,11 @@ Collect2[x_, y_, opts:OptionsPattern[]] :=
 Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
 	Collect2[x, {z,y}, opts] /; (Head[y]=!=List && !OptionQ[y]);
 
-Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
-	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,mp2,cd,co,dde,
+Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
+	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,monomialHead,cd,co,dde,
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
-		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut},
+		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
+		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -97,6 +100,16 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			{OptionValue[Factoring], OptionValue[IsolateNames],
 			OptionValue[Expanding], OptionValue[Denominator],
 			OptionValue[IsolateFast]  };
+
+
+		optHead = OptionValue[Head];
+		optInitialFunction = OptionValue[InitialFunction];
+
+		If[	Head[optHead]===List,
+			firstHead 	= optHead[[1]];
+			secondHead	= optHead[[2]],
+			firstHead 	= optHead
+		];
 
 		factorOut = OptionValue[FCFactorOut];
 
@@ -120,7 +133,13 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		FCPrint[1,"Collect2: Entering Collect2.", FCDoControl->cl2Verbose];
 		FCPrint[2,"Collect2: Entering with: ", expr, FCDoControl->cl2Verbose];
 
-		nx = expr;
+		If[	Head[optInitialFunction]===List,
+			nx = (Composition@@optInitialFunction)[expr],
+			nx = optInitialFunction[expr]
+		];
+
+
+		nx = nx /. OptionValue[IntermediateSubstitutions];
 
 		nx = nx/factorOut;
 
@@ -128,6 +147,15 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		monomList = Union[Select[ vv, ((Head[#] =!= Plus) && (Head[#] =!= Times) && (!NumberQ[#]))& ]];
 		monomList = Select[ monomList, !FreeQ[nx, #]&];
+
+		(*If the monomials are not atomic, we should better mask them beforehand *)
+		nonAtomicMonomials = Select[monomList, ! AtomQ[#] &];
+		If[nonAtomicMonomials=!={} && FCPatternFreeQ[nonAtomicMonomials],
+			monomRepRule = Thread[Rule[nonAtomicMonomials,Table[Unique["monom"], Length[nonAtomicMonomials] ]]];
+			monomList = monomList/.monomRepRule;
+			nx = nx/.monomRepRule;
+			monomRepRule = Reverse/@monomRepRule
+		];
 
 		FCPrint[1,"Collect2: Monomials w.r.t which we will collect: ", monomList, FCDoControl->cl2Verbose];
 
@@ -179,7 +207,8 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		(* lin denotes the part free of monomList *)
 		{lin,nx} = FCSplit[nx,monomList,Expanding->False];
 		FCPrint[1,"Collect2: Separation done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
-		FCPrint[2,"Collect2: Part that contains the monomials: ", nx, FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: Part that contains the monomials: ", nx, FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: Linear part: ", lin, FCDoControl->cl2Verbose];
 
 		If[factoring =!= False && lin=!=0,
 			time=AbsoluteTime[];
@@ -192,9 +221,9 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Wrapping the momomials with special heads.", FCDoControl->cl2Verbose];
 
-		nx = (Map[(SelectFree[#, monomList] mp2[SelectNotFree[#, monomList]]) &,
+		nx = (Map[(SelectFree[#, monomList] monomialHead[SelectNotFree[#, monomList]]) &,
 				nx + null1 + null2] /. {null1 | null2 -> 0}) ;
-		tv = Cases2[nx,mp2];
+		tv = Cases2[nx,monomialHead];
 		FCPrint[1,"Collect2: Wrapping done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
 
 		FCPrint[3,"Collect2: nx: ", nx , FCDoControl->cl2Verbose];
@@ -213,11 +242,12 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		FCPrint[1,"Collect2: Computing CoefficientArrays.", FCDoControl->cl2Verbose];
 		coeffArray = CoefficientArrays[nx,tv];
 		FCPrint[1,"Collect2: CoefficientArrays ready, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: CoefficientArrays:", coeffArray, FCDoControl->cl2Verbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Collecting the monomials.", FCDoControl->cl2Verbose];
 
-		tvm = (FRH[# /.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}] /. mp2 -> cd /. cd -> OptionValue[Head])&/@tv;
+		tvm = (FRH[# /.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}] /. monomialHead -> cd /. cd -> firstHead)&/@tv;
 
 		FCPrint[3,"Collect2: tvm: ", tvm, FCDoControl->cl2Verbose];
 
@@ -228,6 +258,8 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		new =  Sum[Dot[coeffHead[coeffArray[[i]]] , Sequence @@ Table[tvm, {i - 1}]], {i, 2, Length[coeffArray]}];
 
+		FCPrint[3,"Collect2: prelminiary new: ", new, FCDoControl->cl2Verbose];
+
 		coeffHead[li_SparseArray]:=
 			(tog[unity*#])&/@li /; optIsolateNames===False;
 
@@ -236,9 +268,11 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 				IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]&/@li /;optIsolateNames=!=False;
 
 		FCPrint[1,"Collect2: Done collecting the monomials, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: new: ", new, FCDoControl->cl2Verbose];
 
 		If[	!FreeQ2[lin,monomList],
 			Message[Collect2::failmsg,"Linear part contains monomials!"];
+			Print[lin];
 			Abort[]
 		];
 
@@ -247,9 +281,11 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			lin = FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}]
 		];
 
-		(*If[ factoring === False,
-			new = FRH[new,IsolateNames->{optIsolateNames,tempIso}]
-		];*)
+
+		If[	secondHead=!=Null,
+			lin = secondHead[lin,1] /. secondHead[0,_] -> 0;
+			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a]
+		];
 
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
 
@@ -264,7 +300,10 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		unity=1;
 
-		re = factorOut*re;
+		re = (factorOut re)/.monomRepRule;
+
+
+
 
 		FCPrint[1,"Collect2: Leaving.", FCDoControl->cl2Verbose];
 		FCPrint[3,"Collect2: Leaving with", re, FCDoControl->cl2Verbose];
