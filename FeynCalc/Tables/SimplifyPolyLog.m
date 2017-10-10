@@ -40,7 +40,7 @@ Options[SimplifyPolyLog] = {
 SimplifyPolyLog[y_, OptionsPattern[]] :=
 	Block[{loli, tmp},
 
-		loli = {Log :> logf, PolyLog :> li2f};
+		loli = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
 
 		tmp = y/.Zeta2->(Pi^2/6)/.loli/.simptab/.simptab/.simptab/.simptab/.simptab/.simptab/.loli/.Pi^2->6 Zeta2;
 
@@ -61,25 +61,34 @@ SimplifyPolyLog[y_, OptionsPattern[]] :=
 
 	];
 
-(*The arguments of logs and polylogs might be scalar products, so a naive memoization is not safe here! *)
-logf[su_] := logf[su] =
-			If[	FreeQ[su,Plus],
-				Log[su],
-				Log[Factor2[Cancel[Factor2[su]]]]
-			];
+(*The arguments of logs and polylogs might contain scalar products, so a naive memoization is not safe here! *)
 
-li2f[n_,su_] := li2f[n,su] =
-			If[	FreeQ[su,Plus],
-				PolyLog[n,su],
-				PolyLog[n,Factor2[Cancel[Factor2[su]]]]
-			];
+simplifyArgument[su_, head_, {}] :=
+	If[	FreeQ[su,Plus],
+		head[su],
+		head[Factor2[Cancel[Factor2[su]]]]
+	];
+
+simplifyArgument[su1_, su2_, head_, {}] :=
+	If[	FreeQ[su2,Plus],
+		head[su1,su2],
+		head[su1,Factor2[Cancel[Factor2[su2]]]]
+	];
+
+simplifyArgumentLog[su_, OptionsPattern[]] :=
+	FCUseCache[simplifyArgument,{su, Log}];
+
+simplifyArgumentPolyLog[su1_,su2_] :=
+	FCUseCache[simplifyArgument,{su1, su2, PolyLog}];
 
 funex[PolyGamma[2,2]] :>
 	2 - 2 Zeta[3];
 
 funex[PolyGamma[a_,b_]] :=
-	funex[PolyGamma[a,b]] =
-		Expand[FunctionExpand[PolyGamma[a,b]] /. EulerGamma->0];
+	FCUseCache[polyGammaExpand,{PolyGamma[a,b]}];
+
+polyGammaExpand[PolyGamma[a_,b_]]:=
+	Expand[FunctionExpand[PolyGamma[a,b]] /. EulerGamma->0];
 
 simptab =
 {
