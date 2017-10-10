@@ -53,7 +53,7 @@ SimplifyPolyLog[y_] :=
 		tmp = Expand2[tmp,{Log,Pi}];
 
 		tmp = tmp /. {
-			Pi^2 :> 6 Zeta2 , Pi^3 :> Pi 6 Zeta2,
+			Pi^2 :> 6 Zeta2 , Pi^3 :> Pi 6 Zeta2, Pi^4 :> 90 Zeta4,
 			Log[4]:> 2 Log[2],Log[8] :> 3 Log[2] , Log[16] :> 4 Log[2],
 			Log[32]:> 5 Log[2], Log[64]:>6 Log[2],
 			Log[128]:> 7 Log[2], Log[256]:>8 Log[2], Log[512]:>9 Log[2],

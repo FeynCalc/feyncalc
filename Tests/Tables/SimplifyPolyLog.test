@@ -65,5 +65,7 @@ x]*Zeta[3]"},
 {"fcstSimplifyPolyLog-ID17", "SimplifyPolyLog[ArcSinh[x]]",
 "Log[x + Sqrt[1 + x^2]]"},
 {"fcstSimplifyPolyLog-ID18", "SimplifyPolyLog[ArcCosh[x]]",
-"Log[x + Sqrt[-1 + x^2]]"}
+"Log[x + Sqrt[-1 + x^2]]"},
+{"fcstSimplifyPolyLog-ID19", "SimplifyPolyLog[Pi^4]",
+"90 Zeta4"}
 })

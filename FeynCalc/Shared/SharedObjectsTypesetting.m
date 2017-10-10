@@ -1366,6 +1366,10 @@ Zeta2 /:
 	MakeBoxes[Zeta2, TraditionalForm] :=
 		RowBox[{"\[Zeta]","(",2,")"}];
 
+Zeta4 /:
+	MakeBoxes[Zeta4, TraditionalForm] :=
+		RowBox[{"\[Zeta]","(",4,")"}];
+
 FCPrint[1,"SharedObjectsTypesetting loaded."];
 End[]
 
