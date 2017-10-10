@@ -32,22 +32,16 @@ Begin["`SimplifyPolyLog`Private`"]
 
 SPL=SimplifyPolyLog;
 
-SimplifyPolyLog[y_] :=
-	Block[{logf, li2f, loli, tmp},
+
+Options[SimplifyPolyLog] = {
+	Nielsen -> True
+};
+
+SimplifyPolyLog[y_, OptionsPattern[]] :=
+	Block[{loli, tmp},
 
 		loli = {Log :> logf, PolyLog :> li2f};
 
-		logf[su_] := logf[su] =
-			If[	FreeQ[su,Plus],
-				Log[su],
-				Log[Factor2[Cancel[Factor2[su]]]]
-			];
-
-		li2f[n_,su_] := li2f[n,su] =
-			If[	FreeQ[su,Plus],
-				PolyLog[n,su],
-				PolyLog[n,Factor2[Cancel[Factor2[su]]]]
-			];
 		tmp = y/.Zeta2->(Pi^2/6)/.loli/.simptab/.simptab/.simptab/.simptab/.simptab/.simptab/.loli/.Pi^2->6 Zeta2;
 
 		tmp = Expand2[tmp,{Log,Pi}];
@@ -59,9 +53,26 @@ SimplifyPolyLog[y_] :=
 			Log[128]:> 7 Log[2], Log[256]:>8 Log[2], Log[512]:>9 Log[2],
 			Log[1024] :> 10 Log[2]};
 
+		If[	!OptionValue[Nielsen],
+			tmp = tmp/. Nielsen[z__]:> Nielsen[z,PolyLog->True]
+		];
+
 		tmp
 
 	];
+
+(*The arguments of logs and polylogs might be scalar products, so a naive memoization is not safe here! *)
+logf[su_] := logf[su] =
+			If[	FreeQ[su,Plus],
+				Log[su],
+				Log[Factor2[Cancel[Factor2[su]]]]
+			];
+
+li2f[n_,su_] := li2f[n,su] =
+			If[	FreeQ[su,Plus],
+				PolyLog[n,su],
+				PolyLog[n,Factor2[Cancel[Factor2[su]]]]
+			];
 
 funex[PolyGamma[2,2]] :>
 	2 - 2 Zeta[3];

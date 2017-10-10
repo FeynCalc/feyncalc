@@ -26,10 +26,6 @@ Options[Nielsen] = {
 Nielsen[3,1,y_, OptionsPattern[]] :=
 	PolyLog[4, y] /; OptionValue[PolyLog];
 
-Nielsen[3,1,y_, OptionsPattern[]] :=
-	PolyLog[4, y]/; OptionValue[PolyLog];
-
-
 Nielsen[1,2,0, OptionsPattern[]] =
 	0;
 
