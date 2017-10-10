@@ -1,0 +1,127 @@
+
+
+(* :Title: Kummer.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Kummer	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Tables`fcstKummer =
+({
+{"fcstKummer-ID1", "Kummer[2][Hypergeometric2F1[a,b,c,z]]",
+"(1 - z)^(-a - b + c)*Hypergeometric2F1[-a + c, -b + c, c, z]"},
+{"fcstKummer-ID2", "Kummer[3][Hypergeometric2F1[a,b,c,z]]",
+"Hypergeometric2F1[a, -b + c, c, -(z/(1 - z))]/(1 - z)^a"},
+{"fcstKummer-ID3", "Kummer[4][Hypergeometric2F1[a,b,c,z]]",
+"Hypergeometric2F1[b, -a + c, c, -(z/(1 - z))]/(1 - z)^b"},
+{"fcstKummer-ID4", "Kummer[6][Hypergeometric2F1[a,b,c,1-z]]",
+"z^(-a - b + c)*Hypergeometric2F1[-a + c, -b + c, c, 1 - z]"},
+{"fcstKummer-ID5", "Kummer[6][Hypergeometric2F1[a,b,a+b+1-c,1-z]]",
+"z^(1 - c)*Hypergeometric2F1[1 + a - c, 1 + b - c, 1 + a + b - c, \
+1 - z]"},
+{"fcstKummer-ID6", "Kummer[7][Hypergeometric2F1[a,b,c,1-z]]",
+"Hypergeometric2F1[a, -b + c, c, -((1 - z)/z)]/z^a"},
+{"fcstKummer-ID7", "Kummer[7][Hypergeometric2F1[a,b,a+b+1-c,1-z]]",
+"Hypergeometric2F1[a, 1 + a - c, 1 + a + b - c, -((1 - z)/z)]/z^a"},
+{"fcstKummer-ID8", "Kummer[8][Hypergeometric2F1[a,b,c,1-z]]",
+"Hypergeometric2F1[b, -a + c, c, -((1 - z)/z)]/z^b"},
+{"fcstKummer-ID9", "Kummer[8][Hypergeometric2F1[a,b,a+b+1-c,1-z]]",
+"Hypergeometric2F1[b, 1 + b - c, 1 + a + b - c, -((1 - z)/z)]/z^b"},
+{"fcstKummer-ID10", "Kummer[10][Hypergeometric2F1[a,b,c,z^(-1)]]",
+"(1 - z)^(-a - b + c)*(-z)^(a + b - c)*Hypergeometric2F1[-a + c, \
+-b + c, c, z^(-1)]"},
+{"fcstKummer-ID11",
+"Kummer[10][Hypergeometric2F1[a,a+1-c,a-b+1,z^(-1)]]",
+"(1 - z)^(-a - b + c)*(-z)^(a + b - c)*Hypergeometric2F1[1 - b, -b \
++ c, 1 + a - b, z^(-1)]"},
+{"fcstKummer-ID12", "Kummer[11][Hypergeometric2F1[a,b,c,z^(-1)]]",
+"((-z)^a*Hypergeometric2F1[a, -b + c, c, (1 - z)^(-1)])/(-((1 - \
+z)/z))^a"},
+{"fcstKummer-ID13",
+"Kummer[11][Hypergeometric2F1[a,a+1-c,a-b+1,z^(-1)]]",
+"((-z)^a*Hypergeometric2F1[a, -b + c, 1 + a - b, (1 - \
+z)^(-1)])/(-((1 - z)/z))^a"},
+{"fcstKummer-ID14", "Kummer[12][Hypergeometric2F1[a,b,c,z^(-1)]]",
+"((-z)^(-a + b)*Hypergeometric2F1[b, -a + c, c, (1 - z)^(-1)])/(1 \
+- z)^b"},
+{"fcstKummer-ID15",
+"Kummer[12][Hypergeometric2F1[a,a+1-c,a-b+1,z^(-1)]]",
+"(1 - z)^(-1 - a + c)*(-z)^(1 - c)*Hypergeometric2F1[1 - b, 1 + a \
+- c, 1 + a - b, (1 - z)^(-1)]"},
+{"fcstKummer-ID16", "Kummer[14][Hypergeometric2F1[a,b,c,z^(-1)]]",
+"(1 - z)^(-a - b + c)*(-z)^(a + b - c)*Hypergeometric2F1[-a + c, \
+-b + c, c, z^(-1)]"},
+{"fcstKummer-ID17",
+"Kummer[14][Hypergeometric2F1[b+1-c,b,b+1-a,z^(-1)]]",
+"(1 - z)^(-a - b + c)*(-z)^(a + b - c)*Hypergeometric2F1[1 - a, -a \
++ c, 1 - a + b, z^(-1)]"},
+{"fcstKummer-ID18", "Kummer[15][Hypergeometric2F1[a,b,c,z^(-1)]]",
+"((-z)^b*Hypergeometric2F1[b, -a + c, c, (1 - z)^(-1)])/(1 - z)^b"},
+{"fcstKummer-ID19",
+"Kummer[15][Hypergeometric2F1[b+1-c,b,b+1-a,z^(-1)]]",
+"(1 - z)^(-1 - b + c)*(-z)^(1 + b - c)*Hypergeometric2F1[1 - a, 1 \
++ b - c, 1 - a + b, (1 - z)^(-1)]"},
+{"fcstKummer-ID20", "Kummer[16][Hypergeometric2F1[a,b,c,z^(-1)]]",
+"((-z)^a*Hypergeometric2F1[a, -b + c, c, (1 - z)^(-1)])/(1 - z)^a"},
+{"fcstKummer-ID21",
+"Kummer[16][Hypergeometric2F1[b+1-c,b,b+1-a,z^(-1)]]",
+"((-z)^b*Hypergeometric2F1[b, -a + c, 1 - a + b, (1 - z)^(-1)])/(1 \
+- z)^b"},
+{"fcstKummer-ID22", "Kummer[18][Hypergeometric2F1[a,b,c,z]]",
+"(1 - z)^(-a - b + c)*Hypergeometric2F1[-a + c, -b + c, c, z]"},
+{"fcstKummer-ID23",
+"Kummer[18][Hypergeometric2F1[a+1-c,b+1-c,2-c,z]]",
+"(1 - z)^(-a - b + c)*Hypergeometric2F1[1 - a, 1 - b, 2 - c, z]"},
+{"fcstKummer-ID24", "Kummer[19][Hypergeometric2F1[a,b,c,z]]",
+"Hypergeometric2F1[a, -b + c, c, z/(-1 + z)]/(1 - z)^a"},
+{"fcstKummer-ID25",
+"Kummer[19][Hypergeometric2F1[a+1-c,b+1-c,2-c,z]]",
+"(1 - z)^(-1 - a + c)*Hypergeometric2F1[1 - b, 1 + a - c, 2 - c, \
+z/(-1 + z)]"},
+{"fcstKummer-ID26", "Kummer[20][Hypergeometric2F1[a,b,c,z]]",
+"Hypergeometric2F1[b, -a + c, c, z/(-1 + z)]/(1 - z)^b"},
+{"fcstKummer-ID27",
+"Kummer[20][Hypergeometric2F1[a+1-c,b+1-c,2-c,z]]",
+"(1 - z)^(-1 - b + c)*Hypergeometric2F1[1 - a, 1 + b - c, 2 - c, \
+z/(-1 + z)]"},
+{"fcstKummer-ID28", "Kummer[22][Hypergeometric2F1[a,b,c,1-z]]",
+"z^(-a - b + c)*Hypergeometric2F1[-a + c, -b + c, c, 1 - z]"},
+{"fcstKummer-ID29",
+"Kummer[22][Hypergeometric2F1[c-a,c-b,c+1-a-b,1-z]]",
+"z^(1 - c)*Hypergeometric2F1[1 - a, 1 - b, 1 - a - b + c, 1 - \
+z]"},
+{"fcstKummer-ID30", "Kummer[23][Hypergeometric2F1[a,b,c,1-z]]",
+"Hypergeometric2F1[a, -b + c, c, 1 - (1 - z)^(-1)]/(1 - z)^a"},
+{"fcstKummer-ID31",
+"Kummer[23][Hypergeometric2F1[c-a,c-b,c+1-a-b,1-z]]",
+"(1 - z)^(a - c)*Hypergeometric2F1[1 - a, -a + c, 1 - a - b + c, 1 \
+- (1 - z)^(-1)]"},
+{"fcstKummer-ID32", "Kummer[24][Hypergeometric2F1[a,b,c,1-z]]",
+"Hypergeometric2F1[b, -a + c, c, -((1 - z)/z)]/z^b"},
+{"fcstKummer-ID33",
+"Kummer[24][Hypergeometric2F1[c-a,c-b,c+1-a-b,1-z]]",
+"z^(b - c)*Hypergeometric2F1[1 - b, -b + c, 1 - a - b + c, -((1 - \
+z)/z)]"},
+{"fcstKummer-ID34", "Kummer[94][Hypergeometric2F1[a,b,c,z]]",
+"(Gamma[c]*Gamma[-a - b + c]*Hypergeometric2F1[a, b, 1 + a + b - \
+c, 1 - z])/(Gamma[-a + c]*Gamma[-b + c]) + ((1 - z)^(-a - b + \
+c)*Gamma[a + b - c]*Gamma[c]*Hypergeometric2F1[-a + c, -b + c, 1 - a \
+- b + c, 1 - z])/(Gamma[a]*Gamma[b])"},
+{"fcstKummer-ID35", "Kummer[95][Hypergeometric2F1[a,b,c,z]]",
+"(Gamma[-a + b]*Gamma[c]*Hypergeometric2F1[a, -b + c, 1 + a - b, \
+(1 - z)^(-1)])/((1 - z)^a*Gamma[b]*Gamma[-a + c]) + (Gamma[a - \
+b]*Gamma[c]*Hypergeometric2F1[b, -a + c, 1 - a + b, (1 - \
+z)^(-1)])/((1 - z)^b*Gamma[a]*Gamma[-b + c])"},
+{"fcstKummer-ID36", "Kummer[96][Hypergeometric2F1[a,b,c,z]]",
+"((-1)^a*Gamma[-a + b]*Gamma[c]*Hypergeometric2F1[a, 1 + a - c, 1 \
++ a - b, z^(-1)])/(z^a*Gamma[b]*Gamma[-a + c]) + ((-1)^b*Gamma[a - \
+b]*Gamma[c]*Hypergeometric2F1[b, 1 + b - c, 1 - a + b, \
+z^(-1)])/(z^b*Gamma[a]*Gamma[-b + c])"}
+});
