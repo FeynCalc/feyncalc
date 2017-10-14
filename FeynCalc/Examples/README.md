@@ -34,7 +34,7 @@ Each particle interaction process is named according to to the following scheme
 * `Z` - Z boson
 * `H` - Higgs boson
 
-## Fermions
+## Fermions (except for leptons)
 
 * `F`, `Fbar` - fermion, antifermion
 
