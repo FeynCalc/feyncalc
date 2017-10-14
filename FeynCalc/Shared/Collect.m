@@ -160,9 +160,9 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		FCPrint[1,"Collect2: Monomials w.r.t which we will collect: ", monomList, FCDoControl->cl2Verbose];
 
 		If[Length[monomList] === 0,
-			(* The expression is free of terms in momomList*)
+			FCPrint[1,"Collect2: The input expression contains no relevant monomials, leaving.", FCDoControl->cl2Verbose];
 			unity = 1;
-			Return[factorOut nx]
+			Return[factorOut factor[nx]]
 		];
 
 

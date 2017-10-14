@@ -83,5 +83,7 @@ Collect2[Isolate[
 	IsolateNames -> loopisolate], FeynAmpDenominator[__]]],
 FAD[{p, m}]*FVD[p, mu]*FVD[p, nu]*HoldForm[KK[a_]] +
 FAD[p, {p, m}]*FVD[p, mu]*FVD[p, nu]*HoldForm[KK[b_]]]",
-	"True"}
+	"True"},
+{"fcstCollect2-ID19","Collect2[a^2 + 2 a b + b^2, c]",
+	"(a + b)^2"}
 };
