@@ -108,6 +108,26 @@ Tests`Shared`fcstSharedToolsFCAntiSymmetrize = {
 	f[d, b, a, c] - f[d, b, c, a] - f[d, c, a, b] + f[d, c, b, a])"}
 };
 
+Tests`Shared`fcstFCMakeIndex =
+{
+{"fcstFCMakeIndex-ID1", "FCMakeIndex[\"Lor\",\"1\"]", "Lor1"},
+{"fcstFCMakeIndex-ID2", "FCMakeIndex[\"Lor\",2]", "Lor2"},
+{"fcstFCMakeIndex-ID3", "FCMakeIndex[\"Lor\",0]", "Lor0"},
+{"fcstFCMakeIndex-ID4", "FCMakeIndex[\"Lor\",-2]", "LorMinus2"},
+{"fcstFCMakeIndex-ID5", "FCMakeIndex[\"Sun\",\"1\",SUNIndex]",
+"SUNIndex[Sun1]"},
+{"fcstFCMakeIndex-ID6", "FCMakeIndex[\"Sun\",2,SUNIndex]",
+"SUNIndex[Sun2]"},
+{"fcstFCMakeIndex-ID7", "FCMakeIndex[\"Sun\",0,SUNIndex]",
+"SUNIndex[Sun0]"},
+{"fcstFCMakeIndex-ID8", "FCMakeIndex[\"Sun\",-2,SUNIndex]",
+"SUNIndex[SunMinus2]"},
+{"fcstFCMakeIndex-ID9", "FCMakeIndex[\"Lor\",{3,1,4},LorentzIndex]",
+	"{LorentzIndex[Lor3], LorentzIndex[Lor1], LorentzIndex[Lor4]}"},
+{"fcstFCMakeIndex-ID10", "FCMakeIndex[\"Sun\",{\"a\",1,-4}]",
+"{Suna, Sun1, SunMinus4}"}
+};
+
 Tests`Shared`fcstSharedToolsFCPatternFreeQ = {
 {"fcstSharedToolsFCPatternFreeQ-ID1","FCPatternFreeQ[{0}]","True"},
 {"fcstSharedToolsFCPatternFreeQ-ID2","FCPatternFreeQ[{a_}]","False"},

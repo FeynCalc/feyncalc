@@ -42,13 +42,21 @@ Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 ExpandAll2::usage=
 "ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
 
+FCAntiSymmetrize::usage=
+"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
+to the variables a1, a2, ... ";
+
 FCFactorOut::usage=
 "FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
 bring exp into a particular form that Mathematica refuses to give";
 
-FCAntiSymmetrize::usage=
-"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
-to the variables a1, a2, ... ";
+FCMakeIndex::usage=
+"FCMakeIndex[str1, str2, head] generates an index with the given head out \
+of the string str1 and str2. For example, FCMakeIndex[\"Lor\",\"1\",LorentzIndex] \
+yields LorentzIndex[Lor1]. The second argument can also be an integer. FCMakeIndex \
+is useful for converting the output of different diagram generators such as \
+FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the \
+performance."
 
 FCPatternFreeQ::usage =
 "FCPatternFreeQ[{expr}] yields True if {expr} does not contain any \
@@ -183,27 +191,28 @@ SetAttributes[MemSet, HoldFirst];
 Options[Cases2] = {
 	Heads -> False
 };
+
 Options[Combine] = {
 	Expanding -> False
 };
+
 Options[SelectSplit] = {
 	Heads -> None
 };
-
 
 Options[FCFactorOut] = {
 	Factoring -> Simplify,
 	Head -> Identity
 };
 
-
-
 Options[ILimit] = {
 	FunctionLimits -> {Log -> Log}
 };
+
 Options[MemSet] = {
 	MemoryAvailable -> $MemoryAvailable
 };
+
 Options[MLimit] = {
 	Limit -> Limit
 };
@@ -330,6 +339,27 @@ FCAntiSymmetrize[x_,v_List] :=
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
 	];
+
+
+FCMakeIndex[x_String, y_List, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			FCMakeIndex[x,#,head]&/@y
+	];
+
+FCMakeIndex[x_String, y_String, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			head[ToExpression[x <> y]]
+	];
+
+FCMakeIndex[x_String, y_Integer, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			head[ToExpression[x <> ToString[y]]]
+	]/; y >= 0;
+
+FCMakeIndex[x_String, y_Integer, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			head[ToExpression[x <> "Minus" <> ToString[-y]]]
+	]/; y < 0;
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
