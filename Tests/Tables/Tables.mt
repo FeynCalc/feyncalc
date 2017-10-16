@@ -42,3 +42,9 @@ If[ Names["Tests`Tables`fcstKummer*"]=!={},
 	Join@@(ToExpression/@Names["Tests`Tables`fcstKummer*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
+
+If[ Names["Tests`Tables`fcstHill*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Tables`fcstHill*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];

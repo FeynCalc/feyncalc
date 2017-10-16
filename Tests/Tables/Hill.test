@@ -1,0 +1,29 @@
+
+
+(* :Title: Hill.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Hill	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Tables`fcstHill =
+({
+{"fcstHill-ID1", "Hill[a,b]",
+"-Pi^2/6 + Log[a]*(Log[1 - a] - Log[1 - b]) + Log[(1 - a)/(1 - \
+b)]*(-Log[a] + Log[1 - b] - Log[(a - b)/a] + Log[(a - b)/(1 - b)]) - \
+(Log[1 - b] - Log[(a - b)/a] + Log[(a - b)/(a*(1 - b))])*Log[((1 - \
+a)*b)/(a*(1 - b))] + PolyLog[2, a] + PolyLog[2, (1 - a)/(1 - b)] - \
+PolyLog[2, b] + PolyLog[2, b/a] - PolyLog[2, ((1 - a)*b)/(a*(1 - \
+b))]"},
+{"fcstHill-ID2", "Chop[Hill[a,b]/.a\[Rule].123/.b\[Rule].656]", "0"},
+{"fcstHill-ID3",
+"Chop[N[(Hill[x,x y]//SimplifyPolyLog)/.x\[Rule].34/.y\[Rule].6]]",
+	"0"}
+});
