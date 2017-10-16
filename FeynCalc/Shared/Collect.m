@@ -36,6 +36,12 @@ of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, T
 the latter two of these cause the coefficients to be factored. The option Head (default Plus) \
 specified the function applied to the list of monomials multiplied by their coefficients.";
 
+FactoringDenominator::usage = "FactoringDenominator is an option for Collect2. \
+It is taken into account only when the option numerator is set to True. \
+If FactoringDenominator is set to any function f, this function will be applied to \
+the denominator of the fraction. The default value is False, i.e. the denominator \
+will be left unchanged.";
+
 Collect2::failmsg =
 "Error! Collect2 has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -57,11 +63,13 @@ Options[Collect2] = {
 	FCVerbose -> False,
 	Expanding -> True,
 	Factoring -> Factor,
+	FactoringDenominator -> False,
 	InitialFunction -> Identity,
 	IntermediateSubstitutions -> {},
 	IsolateFast -> False,
 	IsolateNames -> False,
-	Head->Identity
+	Head->Identity,
+	Numerator->False
 };
 
 Options[Collect3] = {
@@ -87,7 +95,8 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,monomialHead,cd,co,dde,
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
 		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
-		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction},
+		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
+		optNumerator, optFactoringDenominator},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -104,6 +113,8 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		optHead = OptionValue[Head];
 		optInitialFunction = OptionValue[InitialFunction];
+		optNumerator = OptionValue[Numerator];
+		optFactoringDenominator = OptionValue[FactoringDenominator];
 
 		If[	Head[optHead]===List,
 			firstHead 	= optHead[[1]];
@@ -133,9 +144,21 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		FCPrint[1,"Collect2: Entering Collect2.", FCDoControl->cl2Verbose];
 		FCPrint[2,"Collect2: Entering with: ", expr, FCDoControl->cl2Verbose];
 
+		nx = expr;
+
+		If[	optNumerator && Head[nx]===Times,
+			numerator=Numerator[nx];
+			If[ optFactoringDenominator===False,
+				denominator=Denominator[nx],
+				denominator=optFactoringDenominator[Denominator[nx]]
+			];
+			nx = numerator,
+			denominator = 1
+		];
+
 		If[	Head[optInitialFunction]===List,
-			nx = (Composition@@optInitialFunction)[expr],
-			nx = optInitialFunction[expr]
+			nx = (Composition@@optInitialFunction)[nx],
+			nx = optInitialFunction[nx]
 		];
 
 
@@ -162,7 +185,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		If[Length[monomList] === 0,
 			FCPrint[1,"Collect2: The input expression contains no relevant monomials, leaving.", FCDoControl->cl2Verbose];
 			unity = 1;
-			Return[factorOut factor[nx]]
+			Return[factorOut factor[nx]/denominator]
 		];
 
 
@@ -300,10 +323,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		unity=1;
 
-		re = (factorOut re)/.monomRepRule;
-
-
-
+		re = (factorOut (re/denominator))/.monomRepRule;
 
 		FCPrint[1,"Collect2: Leaving.", FCDoControl->cl2Verbose];
 		FCPrint[3,"Collect2: Leaving with", re, FCDoControl->cl2Verbose];

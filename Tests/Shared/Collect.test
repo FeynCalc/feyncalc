@@ -85,5 +85,11 @@ FAD[{p, m}]*FVD[p, mu]*FVD[p, nu]*HoldForm[KK[a_]] +
 FAD[p, {p, m}]*FVD[p, mu]*FVD[p, nu]*HoldForm[KK[b_]]]",
 	"True"},
 {"fcstCollect2-ID19","Collect2[a^2 + 2 a b + b^2, c]",
-	"(a + b)^2"}
+	"(a + b)^2"},
+{"fcstCollect2-ID20","Collect2[(x1 a^2 + y 1 a^2 + 2 a b + x2 b^2 + y2 b^2)/(a + b + c^2 +
+2 c d + d^2), a, b, Numerator -> True]",
+"(2 a b + a^2 (x1 + y) + b^2 (x2 + y2))/(a + b + c^2 + 2 c d + d^2)"},
+{"fcstCollect2-ID21","Collect2[(x1 a^2 + y 1 a^2 + 2 a b + x2 b^2 + y2 b^2)/(a + b + c^2 +
+	2 c d + d^2), a, b, Numerator->True, FactoringDenominator -> Simplify]",
+"(2 a b + a^2 (x1 + y) + b^2 (x2 + y2))/(a + b + (c + d)^2)"}
 };
