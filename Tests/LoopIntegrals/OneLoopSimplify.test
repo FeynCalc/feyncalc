@@ -40,5 +40,32 @@ HoldForm[_]) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]]","True"},
 "(FAD[{p, m}] FVD[k, i])/D"},
 {"fcstOneLoopSimplify-ID8",
 "OneLoopSimplify[FV[p, i] FV[p, j] FAD[{p}, {p, m}], p] // FCE",
-"(FAD[{p, m}] MTD[i, j])/D"}
+"(FAD[{p, m}] MTD[i, j])/D"},
+{"fcstOneLoopSimplify-ID9",
+" OneLoopSimplify[
+GAD[mu].(1/2 Fal (1 - GA[5]) +
+	1/2 FalCC (1 + GA[5])).(1/2 Mcc (1 - GA[5]) +
+	1/2 M (1 + GA[5]) + GSD[k - p]).GAD[
+	nu].(1/2 Fbe (1 - GA[5]) + 1/2 FbeCC (1 + GA[5])) FAD[{k - p,
+	mF}, {k, mV},
+	k] (-FVD[k, mu] FVD[k, nu] + MTD[mu, nu] SPD[k, k]), k] // FCE",
+"-((-2 + D)*FAD[{k, mF}]*(-(Fal*Fbe*GSD[p] . GA[5]) + FalCC*FbeCC*GSD[p] . GA[5] + Fal*Fbe*GSD[p] + FalCC*FbeCC*GSD[p]))/
+(4*SPD[p, p]) - (FAD[k, {k - p, mF}]*(-(Fal*Fbe*GSD[p] . GA[5]) + FalCC*FbeCC*GSD[p] . GA[5] + Fal*Fbe*GSD[p] + FalCC*FbeCC*GSD[p])*
+(mF^2 - SPD[p, p])^2)/(4*mV^2*SPD[p, p]) +
+(FAD[{k, mV}]*(-(Fal*Fbe*GSD[p] . GA[5]) + FalCC*FbeCC*GSD[p] . GA[5] + Fal*Fbe*GSD[p] + FalCC*FbeCC*GSD[p])*
+(mF^2 - 2*mV^2 + D*mV^2 - SPD[p, p]))/(4*mV^2*SPD[p, p]) -
+(FAD[{k, mF}, {k - p, mV}]*(Fal*Fbe*mF^4*GSD[p] . GA[5] - FalCC*FbeCC*mF^4*GSD[p] . GA[5] - 3*Fal*Fbe*mF^2*mV^2*GSD[p] . GA[5] +
+	D*Fal*Fbe*mF^2*mV^2*GSD[p] . GA[5] + 3*FalCC*FbeCC*mF^2*mV^2*GSD[p] . GA[5] - D*FalCC*FbeCC*mF^2*mV^2*GSD[p] . GA[5] +
+	2*Fal*Fbe*mV^4*GSD[p] . GA[5] - D*Fal*Fbe*mV^4*GSD[p] . GA[5] - 2*FalCC*FbeCC*mV^4*GSD[p] . GA[5] +
+	D*FalCC*FbeCC*mV^4*GSD[p] . GA[5] - Fal*Fbe*mF^4*GSD[p] - FalCC*FbeCC*mF^4*GSD[p] + 3*Fal*Fbe*mF^2*mV^2*GSD[p] -
+	D*Fal*Fbe*mF^2*mV^2*GSD[p] + 3*FalCC*FbeCC*mF^2*mV^2*GSD[p] - D*FalCC*FbeCC*mF^2*mV^2*GSD[p] - 2*Fal*Fbe*mV^4*GSD[p] +
+	D*Fal*Fbe*mV^4*GSD[p] - 2*FalCC*FbeCC*mV^4*GSD[p] + D*FalCC*FbeCC*mV^4*GSD[p] + 2*FalCC*Fbe*M*mV^2*SPD[p, p] -
+	2*D*FalCC*Fbe*M*mV^2*SPD[p, p] + 2*Fal*FbeCC*Mcc*mV^2*SPD[p, p] - 2*D*Fal*FbeCC*Mcc*mV^2*SPD[p, p] -
+	2*Fal*Fbe*mF^2*GSD[p] . GA[5]*SPD[p, p] + 2*FalCC*FbeCC*mF^2*GSD[p] . GA[5]*SPD[p, p] - 3*Fal*Fbe*mV^2*GSD[p] . GA[5]*SPD[p, p] +
+	D*Fal*Fbe*mV^2*GSD[p] . GA[5]*SPD[p, p] + 3*FalCC*FbeCC*mV^2*GSD[p] . GA[5]*SPD[p, p] -
+	D*FalCC*FbeCC*mV^2*GSD[p] . GA[5]*SPD[p, p] - 2*FalCC*Fbe*M*mV^2*GA[5]*SPD[p, p] + 2*D*FalCC*Fbe*M*mV^2*GA[5]*SPD[p, p] +
+	2*Fal*FbeCC*Mcc*mV^2*GA[5]*SPD[p, p] - 2*D*Fal*FbeCC*Mcc*mV^2*GA[5]*SPD[p, p] + 2*Fal*Fbe*mF^2*GSD[p]*SPD[p, p] +
+	2*FalCC*FbeCC*mF^2*GSD[p]*SPD[p, p] + 3*Fal*Fbe*mV^2*GSD[p]*SPD[p, p] - D*Fal*Fbe*mV^2*GSD[p]*SPD[p, p] +
+	3*FalCC*FbeCC*mV^2*GSD[p]*SPD[p, p] - D*FalCC*FbeCC*mV^2*GSD[p]*SPD[p, p] + Fal*Fbe*GSD[p] . GA[5]*SPD[p, p]^2 -
+	FalCC*FbeCC*GSD[p] . GA[5]*SPD[p, p]^2 - Fal*Fbe*GSD[p]*SPD[p, p]^2 - FalCC*FbeCC*GSD[p]*SPD[p, p]^2))/(4*mV^2*SPD[p, p])"}
 }

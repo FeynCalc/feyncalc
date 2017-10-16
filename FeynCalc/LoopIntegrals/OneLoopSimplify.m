@@ -64,7 +64,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 		amp,
 		Block[ {q, dim, sunntocacf, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, spc,
 		substis, pae, lt6, lnt6,dirsimplify, nt6,dirsimp,
-		ope1loop, integraltable,loopisolate,time},
+		ope1loop, integraltable,time},
 
 
 			If [!FreeQ[$ScalarProducts, q],
@@ -97,21 +97,21 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			t1  = Trick[ChangeDimension[FeynCalcInternal[amp], dim]];
 			substis = ChangeDimension[substis, dim];
 
-			t1 = Collect2[Isolate[t1,q,IsolateNames->loopisolate],FeynAmpDenominator[__]];
+			(*t1 = Collect2[Isolate[t1,q,IsolateNames->loopisolate],FeynAmpDenominator[__]];*)
 			time = AbsoluteTime[];
 			t1 = FeynAmpDenominatorCombine[t1//Explicit];
 			FCPrint[2,"FeynAmpDenominatorCombine done. t1 = ",t1];
 			t1 = FeynAmpDenominatorSimplify[Collect2[t1,q,Factoring->False], q,
 											IntegralTable -> integraltable];
-			t1 = FRH[t1,IsolateNames->loopisolate];
-			If[!FreeQ[t1,loopisolate],
+			(*t1 = FRH[t1,IsolateNames->loopisolate];*)
+			(*If[!FreeQ[t1,loopisolate],
 				Print["Something went wrong: ", t1];
 				Abort[];
-			];
+			];*)
 			FCPrint[1,"OneLoopSimplify: Time spent on FeynAmpDenominatorSimplify: ", N[AbsoluteTime[] - time, 4]];
 			FCPrint[2,"OneLoopSimplify: FeynAmpDenominatorCombine done. t1 = ",t1];
-			t1 = Isolate[t1,{SUNIndex,SUNFIndex},IsolateNames->loopisolate]/. DOT->holdDOT/. holdDOT[x__]/;
-				!FreeQ2[x,{SUNIndex,SUNFIndex}]:>DOT[FRH[x,IsolateNames->loopisolate]]/. holdDOT->DOT;
+			(*t1 = Isolate[t1,{SUNIndex,SUNFIndex},IsolateNames->loopisolate]/. DOT->holdDOT/. holdDOT[x__]/;
+				!FreeQ2[x,{SUNIndex,SUNFIndex}]:>DOT[FRH[x,IsolateNames->loopisolate]]/. holdDOT->DOT;*)
 			FCPrint[2,"OneLoopSimplify: Doing SUNSimplify on ",t1];
 			time = AbsoluteTime[];
 			If[ !FreeQ2[t1, {SUNIndex,SUNFIndex}],
@@ -120,7 +120,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 									Explicit -> False],
 				t2 = t1
 			];
-			t2 = FRH[t2,IsolateNames->loopisolate];
+			(*t2 = FRH[t2,IsolateNames->loopisolate];*)
 			FCPrint[1,"OneLoopSimplify: Time spent on SUNSimplify: ", N[AbsoluteTime[] - time, 4]];
 			FCPrint[1,"OneLoopSimplify: After SUNSimplify: ", t2];
 			If[ !FreeQ[t2, DiracGamma],
@@ -133,9 +133,9 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				t3 = Contract[t2]
 			];
 			FCPrint[1,"OneLoopSimplify: After contractions: ", t3];
-			t3 = Isolate[Collect2[DiracGammaExpand[t3],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate]/.
+			(*t3 = Isolate[Collect2[DiracGammaExpand[t3],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate]/.
 			DOT->holdDOT/. holdDOT[x__]/;
-				!FreeQ2[x,{DiracGamma}]:>DOT[FRH[x,IsolateNames->loopisolate]]/. holdDOT->DOT;
+				!FreeQ2[x,{DiracGamma}]:>DOT[FRH[x,IsolateNames->loopisolate]]/. holdDOT->DOT;*)
 			time = AbsoluteTime[];
 			If[ (!FreeQ[t3, DiracGamma]) && (dirsimplify === True),
 				FCPrint[1,"OneLoopSimplify: Applying DiracSimplify on ", t3];
@@ -151,12 +151,12 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				];
 				FCPrint[1,"DiracOrdering done: ", t3];
 			];
-			t3 = FRH[t3,IsolateNames->loopisolate];
+			(*t3 = FRH[t3,IsolateNames->loopisolate];*)
 			FCPrint[1,"OneLoopSimplify: Time spent on Dirac algebra: ", N[AbsoluteTime[] - time, 4]];
 			FCPrint[1,"OneLoopSimplify: After doing Dirac algebra: ", t3];
 
-			t3= Isolate[Collect2[ ExpandScalarProduct[t3], {FeynAmpDenominator, q, OPEDelta}],
-				{q, OPEDelta, FeynAmpDenominator},IsolateNames->loopisolate];
+			t3= (*Isolate[*)Collect2[ ExpandScalarProduct[t3], {FeynAmpDenominator, q, OPEDelta}](*,
+				{q, OPEDelta, FeynAmpDenominator},IsolateNames->loopisolate]*);
 			time = AbsoluteTime[];
 			If[ (Collecting /. {opt} /. Options[OneLoopSimplify]) === True,
 				t4 = Collect2[ExpandScalarProduct[t3], q, Factoring->Factor],
@@ -177,9 +177,8 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			];
 
 			(* Need to reisolate things here *)
-			t5 = FRH[t5,IsolateNames->loopisolate];
-			t5= Isolate[Collect2[ ExpandScalarProduct[t5], {FeynAmpDenominator, q, OPEDelta}],
-				{q, OPEDelta,FeynAmpDenominator},IsolateNames->loopisolate];
+			(*t5 = FRH[t5,IsolateNames->loopisolate];*)
+			t5 = Collect2[ ExpandScalarProduct[t5], {FeynAmpDenominator, q, OPEDelta}];
 
 			t5 = Collect2[t5, q, Factoring->Factor];
 			FCPrint[1,"t5=", t5];
@@ -221,16 +220,17 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 
 
 
-			t6 = FRH[t6,IsolateNames->loopisolate];
+			(*t6 = FRH[t6,IsolateNames->loopisolate];*)
 			FCPrint[1,"OneLoopSimplify: Time spent on tensor reduction: ", N[AbsoluteTime[] - time, 4]];
 
 
 
 			If[ !FreeQ[t6,DiracGamma],
-				t6 = FRH[t6,IsolateNames->loopisolate];
+				(*t6 = FRH[t6,IsolateNames->loopisolate];
 				t6 = Isolate[Collect2[DiracGammaExpand[t6],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate]/.
 					DOT->holdDOT/. holdDOT[x__]/; !FreeQ2[x,{DiracGamma}]:>DOT[FRH[x,IsolateNames->loopisolate]]/.
-					holdDOT->DOT;
+					holdDOT->DOT;*)
+				t6 = Collect2[DiracGammaExpand[t6],DiracGamma[__]];
 				time = AbsoluteTime[];
 				FCPrint[1,"collecing after FRH in TID",t6];
 				t6 = Collect2[t6, DiracGamma, Factoring -> False];
@@ -242,18 +242,19 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 					t6 = ApartFF[t6, {q}]
 				];
 				FCPrint[1,"OneLoopSimplify: Time spent on Dirac algebra: ", N[AbsoluteTime[] - time, 4]];
-				t6 = FRH[t6,IsolateNames->loopisolate];
+				(*t6 = FRH[t6,IsolateNames->loopisolate];*)
 			];
 
 
 			(* Need to reisolate things here *)
-			t6 = FRH[t6,IsolateNames->loopisolate];
-			t6= Isolate[Collect2[ ExpandScalarProduct[t6], {FeynAmpDenominator, q, OPEDelta}],
-				{q, OPEDelta},IsolateNames->loopisolate];
+			(*s6 = FRH[t6,IsolateNames->loopisolate];*)
+
+			t6= Collect2[ ExpandScalarProduct[t6], {FeynAmpDenominator, q, OPEDelta}];
+
+			(*t6= Isolate[Collect2[ ExpandScalarProduct[t6], {FeynAmpDenominator, q, OPEDelta}],
+				{q, OPEDelta},IsolateNames->loopisolate];*)
 			time = AbsoluteTime[];
-
 			t6 = PowerSimplify[ChangeDimension[t6,dim]/.substis];
-
 			FCPrint[1,"OneLoopSimplify: Time spent on PowerSimplify: ", N[AbsoluteTime[] - time, 4]];
 
 			time = AbsoluteTime[];
@@ -274,7 +275,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 								];
 			pae[a_,b_] :=
 				MemSet[pae[a,b], ExpandScalarProduct[a,b]];
-			t7=FRH[t7,IsolateNames->loopisolate];
+			(*t7=FRH[t7,IsolateNames->loopisolate];*)
 			If[!FreeQ[t7/.FeynAmpDenominator[___]:>1,q],
 				Message[OneLoopSimplify::numerators]
 			];
