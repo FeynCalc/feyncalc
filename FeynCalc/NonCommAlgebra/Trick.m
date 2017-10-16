@@ -16,11 +16,11 @@ End[]
 Begin["`Trick`Private`"];
 
 Trick[x_] :=
-	Block[{tt, paulisigsimp, sigident,doot,cov,palr},
+	Block[{tt, sigident,doot,cov},
 
 		SetAttributes[cov,HoldFirst];
 		cov[y_] :=  y /. CovariantD[a__] :>	CovariantD[a, Explicit -> True];
-		SetAttributes[palr,HoldFirst];
+
 		tt = DotSimplify[FeynCalcInternal[x]//cov(*//palr*),
 		Expanding -> False] /. SUNDelta -> SUNDeltaContract /. SUNDeltaContract -> SUNDelta;
 		If[!FreeQ2[tt, {LorentzIndex,CartesianIndex}],

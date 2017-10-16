@@ -113,7 +113,9 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 
-
+		(* 	Notice that here we apply ChangeDimension only to the isolated tensor integrals,
+			not to the whole expression! If the dimension of the whole expression must be changed,
+			then this should be explicitly done by the user! *)
 		n 				= OptionValue[Dimension];
 		contractlabel	= OptionValue[Contract];
 		fds 			= OptionValue[FDS];
