@@ -2566,22 +2566,6 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 (*                          oneloop42                                    *)
 (* ********************************************************************* *)
 
-(* ---------------------------------------------------------------- *)
-(* ---------------------------------------------------------------- *)
-nterms[x_Plus] :=
-	Length[x];
-
-nterms[x_] :=
-	Block[ {ntermslex = Expand[x]},
-		If[ Head[ntermslex]===Plus,
-			ntermslex = Length[ntermslex],
-			If[ x===0,
-				ntermslex = 0,
-				ntermslex = 1
-			]
-		];
-		ntermslex
-	];
 
 dndummy[x__] :=
 	dummy FeynAmpDenominator[x];
@@ -2674,8 +2658,8 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 				mat = Expand[ (mat//ExpandScalarProduct)/.spinorsandpairs->DOT ];
 				mat = mat /. DOT -> spinorsandpairs;
 				mati1 = Expand[isolspc[mat[[i,1]]]];
-				For[j = 1, j<=nterms[mati1], j++,
-					If[ nterms[mati1] === 1,
+				For[j = 1, j<=NTerms[mati1], j++,
+					If[ NTerms[mati1] === 1,
 						sumand = mati1,
 						sumand = mati1[[j]]
 					];
@@ -2690,7 +2674,7 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 							If[ (neweq[[1]] - neweq[[2]]) =!= 0,
 								FCPrint[2, "setting", FCDoControl->oneloopVerbose];
 								newli = Append[ newli,neweq/.set->set2 ]//Expand;
-								j = nterms[mati1]+1
+								j = NTerms[mati1]+1
 							];
 						]
 					]
