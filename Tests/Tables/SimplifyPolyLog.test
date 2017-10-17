@@ -69,5 +69,34 @@ x]*Zeta[3]"},
 {"fcstSimplifyPolyLog-ID19", "SimplifyPolyLog[Pi^4]",
 "90 Zeta4"},
 {"fcstSimplifyPolyLog-ID20", "SimplifyPolyLog[Nielsen[3, 1, 1 - z], Nielsen -> False]",
-"PolyLog[4, 1 - z]"}
+"PolyLog[4, 1 - z]"},
+
+{"fcstSimplifyPolyLog-ID21", "SimplifyPolyLog[Log[Sqrt[z]]]",
+"Log[z]/2"},
+{"fcstSimplifyPolyLog-ID22",
+"SimplifyPolyLog[Log[1+Sqrt[z]]+Log[1-Sqrt[z]]]", "Log[1 - z]"},
+{"fcstSimplifyPolyLog-ID23",
+"SimplifyPolyLog[PolyLog[2,Sqrt[z]]+PolyLog[2,-Sqrt[z]]]",
+"Zeta2/2 - (Log[1 - z]*Log[z])/2 - PolyLog[2, 1 - z]/2"},
+{"fcstSimplifyPolyLog-ID24",
+"SimplifyPolyLog[PolyLog[3,Sqrt[z]]+PolyLog[3,-Sqrt[z]]]",
+"Zeta2/4 - (Log[1 - z]*Log[z])/4 - PolyLog[2, 1 - z]/4"},
+{"fcstSimplifyPolyLog-ID25",
+"SimplifyPolyLog[PolyLog[4,Sqrt[z]]+PolyLog[4,-Sqrt[z]]]",
+"Zeta2/8 - (Log[1 - z]*Log[z])/8 - PolyLog[2, 1 - z]/8"},
+{"fcstSimplifyPolyLog-ID26",
+"SimplifyPolyLog[Log[Sqrt[z]],Sqrt\[Rule]False]", "Log[Sqrt[z]]"},
+{"fcstSimplifyPolyLog-ID27",
+"SimplifyPolyLog[Log[1+Sqrt[z]]+Log[1-Sqrt[z]],Sqrt\[Rule]False]",
+"Log[1 - Sqrt[z]] + Log[1 + Sqrt[z]]"},
+{"fcstSimplifyPolyLog-ID28",
+"SimplifyPolyLog[PolyLog[2,Sqrt[z]]+PolyLog[2,-Sqrt[z]],Sqrt\[Rule]\
+False]", "PolyLog[2, -Sqrt[z]] + PolyLog[2, Sqrt[z]]"},
+{"fcstSimplifyPolyLog-ID29",
+"SimplifyPolyLog[PolyLog[3,Sqrt[z]]+PolyLog[3,-Sqrt[z]],Sqrt\[Rule]\
+False]", "PolyLog[3, -Sqrt[z]] + PolyLog[3, Sqrt[z]]"},
+{"fcstSimplifyPolyLog-ID30",
+"SimplifyPolyLog[PolyLog[4,Sqrt[z]]+PolyLog[4,-Sqrt[z]],Sqrt\[Rule]\
+False]", "PolyLog[4, -Sqrt[z]] + PolyLog[4, Sqrt[z]]"}
+
 })

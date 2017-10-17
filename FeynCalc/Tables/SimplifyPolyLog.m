@@ -31,14 +31,17 @@ End[]
 Begin["`SimplifyPolyLog`Private`"]
 
 SPL=SimplifyPolyLog;
-
+sqrtOption::usage="";
 
 Options[SimplifyPolyLog] = {
-	Nielsen -> True
+	Nielsen -> True,
+	Sqrt -> True
 };
 
 SimplifyPolyLog[y_, OptionsPattern[]] :=
 	Block[{loli, tmp},
+
+		sqrtOption = OptionValue[Sqrt];
 
 		loli = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
 
@@ -94,7 +97,12 @@ simptab =
 {
 	PolyGamma[a_Integer, b_?NumberQ] :>
 		funex[PolyGamma[a,b]],
-	(*NEW0897*)
+
+
+	(*The duplication formula *)
+	PolyLog[s_, Sqrt[x_Symbol]]/; sqrtOption :>
+		2^(1-s) PolyLog[2, x] - PolyLog[s, -Sqrt[x]],
+
 	PolyLog[2, -((1 - 2*t_Symbol)/t_Symbol)] :>
 		(
 		-Zeta2 +
@@ -821,6 +829,12 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	Log[r_?NumberQ x_]:>
 		Log[r] + Log[x] /;r>0,
+
+	Log[1-Sqrt[x_Symbol]]/; sqrtOption :>
+		Log[1-x] - Log[1+Sqrt[x]],
+
+	Log[Sqrt[x_Symbol]]/; sqrtOption :>
+		1/2 Log[x],
 
 	Pi^2 :>
 		6 Zeta2,
