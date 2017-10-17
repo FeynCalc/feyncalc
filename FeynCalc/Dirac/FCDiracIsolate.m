@@ -49,6 +49,7 @@ Options[FCDiracIsolate] = {
 	IsolateNames -> KK,
 	FCJoinDOTs -> True,
 	LorentzIndex -> False,
+	Polarization -> False,
 	Spinor -> True,
 	Split -> True,
 	ToDiracGamma67 -> False
@@ -61,13 +62,21 @@ makeSelectionList[expr_,heads_List]:=
 ];
 
 FCDiracIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2, time, fcdiVerbose},
+	Block[ {res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2, time, fcdiVerbose,
+		headsList},
 
 		If [OptionValue[FCVerbose]===False,
 			fcdiVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fcdiVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+
+		headsList =  DiracHeadsList;
+
+		If[	OptionValue[Polarization],
+			headsList = Join[headsList,{Polarization}];
 		];
 
 		head = OptionValue[Head];
@@ -80,7 +89,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		FCPrint[3, "FCDiracIsolate: Entering with: ", ex, FCDoControl->fcdiVerbose];
 
 
-		If[	FreeQ2[ex,DiracHeadsList],
+		If[	FreeQ2[ex,headsList],
 			Return[ex]
 		];
 
@@ -111,7 +120,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[	OptionValue[Expanding],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying Expand2.", FCDoControl->fcdiVerbose];
-			ex = Expand2[ex, DiracHeadsList];
+			ex = Expand2[ex, headsList];
 			FCPrint[1, "FCDiracIsolate: Done applying Expand2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 			FCPrint[3, "FCDiracIsolate: After Expand2: ", ex, FCDoControl->fcdiVerbose]
 		];
@@ -119,7 +128,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DotSimplify.", FCDoControl->fcdiVerbose];
-			tmp = FCSplit[ex, DiracHeadsList, Expanding->OptionValue[Expanding]];
+			tmp = FCSplit[ex, headsList, Expanding->OptionValue[Expanding]];
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->False, FCJoinDOTs->OptionValue[FCJoinDOTs]];
 			FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 			FCPrint[3, "FCDiracIsolate: After DotSimplify: ", ex, FCDoControl->fcdiVerbose]
@@ -128,16 +137,16 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying Collect2.", FCDoControl->fcdiVerbose];
-			ex = Collect2[ex,DiracHeadsList,Factoring->OptionValue[Factoring]];
+			ex = Collect2[ex,headsList,Factoring->OptionValue[Factoring]];
 			FCPrint[1, "FCDiracIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
 		];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCDiracIsolate: Handling Lorentz indices.", FCDoControl->fcdiVerbose];
 		If[ OptionValue[LorentzIndex],
-			res = (Map[(selectionList=makeSelectionList[#,DiracHeadsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
+			res = (Map[(selectionList=makeSelectionList[#,headsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
-			res = (Map[(restHead[SelectFree[#, DiracHeadsList]] head[SelectNotFree[#, DiracHeadsList]]) &,
+			res = (Map[(restHead[SelectFree[#, headsList]] head[SelectNotFree[#, headsList]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
 		];
 		FCPrint[1, "FCDiracIsolate: Done handling Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
@@ -183,7 +192,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		];
 
-		res = res //. head[x_]/; FreeQ2[x,DiracHeadsList] :> x;
+		res = res //. head[x_]/; FreeQ2[x,headsList] :> x;
 
 		FCPrint[1, "FCDiracIsolate: Done removing unneeded isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 
@@ -195,9 +204,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			FCPrint[1, "FCDiracIsolate: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 		];
 
+		tmp = headsList;
+
 		If[ OptionValue[LorentzIndex],
-			tmp = Join[DiracHeadsList,{LorentzIndex}],
-			tmp = DiracHeadsList
+			tmp = Join[tmp,{LorentzIndex}]
 		];
 
 		(* For LorentzIndex set to true, this check guarantees that all Lorentz tensors are inside head *)

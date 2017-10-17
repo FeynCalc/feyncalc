@@ -135,6 +135,18 @@ dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1
 	5].Spinor[Momentum[p], m, 1]]"},
 {"fcstFCDiracIsolate-ID24",
 "FCDiracIsolate[GA[mu].(1 + GA[5]).GA[nu], Head -> dsHead, ToDiracGamma67 -> True]//FCE",
-"2 dsHead[GA[mu].GA[6].GA[nu]]"}
+"2 dsHead[GA[mu].GA[6].GA[nu]]"},
+{"fcstFCDiracIsolate-ID25",
+"FCDiracIsolate[
+PolarizationVector[p, mu] SP[p1,
+	p2] SpinorUBar[p, m].GA[i].SpinorV[p, m] + -Eps[LorentzIndex[nu],
+	LorentzIndex[rho], LorentzIndex[si],
+	Momentum[Polarization[p, I]]] SP[p1,
+	p2] SpinorUBar[p2, m].GA[i].SpinorV[p2, m] + g,
+Polarization -> True, FCE -> True,Head->di]",
+"g + di[Spinor[Momentum[p], m, 1] . GA[i] . Spinor[-Momentum[p], m, 1]*
+	FV[Polarization[p, I], mu]]*SP[p1, p2] -
+di[Spinor[Momentum[p2], m, 1] . GA[i] . Spinor[-Momentum[p2], m, 1]*
+	LC[nu, rho, si][Polarization[p, I]]]*SP[p1, p2]"}
 });
 
