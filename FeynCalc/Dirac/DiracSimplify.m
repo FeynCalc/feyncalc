@@ -67,6 +67,7 @@ optExpanding::usage="";
 optExpandScalarProduct::usage="";
 optDiracGammaExpand::usage="";
 optDiracSubstitute67::usage="";
+optDiracSubstitute5::usage="";
 optDiracSigmaExplicit::usage="";
 optDiracEquation::usage="";
 optDiracOrder::usage="";
@@ -82,6 +83,7 @@ Options[DiracSimplify] = {
 	DiracSigmaExplicit	-> True,
 	DiracSimpCombine	-> False,
 	DiracSubstitute67	-> False,
+	DiracSubstitute5	-> False,
 	DiracTrace			-> True,
 	DiracTraceEvaluate	-> False,
 	EpsContract			-> True,
@@ -117,6 +119,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		optDiracOrder			= OptionValue[DiracCanonical];
 		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
 		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
+		optDiracSubstitute5		= OptionValue[DiracSubstitute5];
 		optEpsContract			= OptionValue[EpsContract];
 		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
 		optExpanding  			= OptionValue[Expanding];
@@ -384,6 +387,12 @@ diracSimplifyEval[expr_]:=
 		If[ optDiracSubstitute67 && !FreeQ2[tmp,{DiracGamma[6],DiracGamma[7]}],
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the chiral projectors.", FCDoControl->dsVerbose];
 			tmp = DiracSubstitute67[tmp, FCI->True]
+		];
+
+		(*	Rewriting DiracGamma[5] in terms of the chiral projectors 	*)
+		If[ optDiracSubstitute5 && !FreeQ[tmp,DiracGamma[5]],
+			FCPrint[1,"DiracSimplify: diracSimplifyEval: Rewriting DiracGamma[5] in terms of the chiral projectors.", FCDoControl->dsVerbose];
+			tmp = DiracSubstitute5[tmp, FCI->True]
 		];
 
 

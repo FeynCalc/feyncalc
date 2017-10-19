@@ -85,7 +85,10 @@ DiracTraceEvaluate -> True, FCE -> True]","GA[a].GA[b]"},
 DiracTraceEvaluate -> True, FCE -> True]","GA[a].GA[b].GA[c].GA[d] + 4 MT[a, d] MT[b, c] - 4 MT[a, c] MT[b, d] + 4 MT[a, b] MT[c, d]"},
 {"fcstDiracSimplify-ID26",
 "DiracSimplify[(1/2 - GA[5]/2).(-((a + GS[p + q])/b)).(1/2 + GA[5]/2), FCE -> True]",
-"-(GS[p].GA[6]/b) - GS[q].GA[6]/b"}
+"-(GS[p].GA[6]/b) - GS[q].GA[6]/b"},
+{"fcstDiracSimplify-ID27",
+"DiracSimplify[GA[i, 5, j, i], DiracSubstitute5 -> True, FCE -> True]",
+"-2 GA[j].GA[6] + 2 GA[j].GA[7]"}
 };
 
 
