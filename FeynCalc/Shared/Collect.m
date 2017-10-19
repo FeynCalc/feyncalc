@@ -146,6 +146,11 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		nx = expr;
 
+		If[	!FreeQ[nx,SeriesData],
+			Message[Collect2::failmsg,"Collect2 cannot work on expressions that contain SeriesData!"];
+			Abort[]
+		];
+
 		If[	optNumerator && Head[nx]===Times,
 			numerator=Numerator[nx];
 			If[ optFactoringDenominator===False,
