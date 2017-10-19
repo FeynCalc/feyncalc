@@ -79,11 +79,11 @@ x]*Zeta[3]"},
 "SimplifyPolyLog[PolyLog[2,Sqrt[z]]+PolyLog[2,-Sqrt[z]]]",
 "Zeta2/2 - (Log[1 - z]*Log[z])/2 - PolyLog[2, 1 - z]/2"},
 {"fcstSimplifyPolyLog-ID24",
-"SimplifyPolyLog[PolyLog[3,Sqrt[z]]+PolyLog[3,-Sqrt[z]]]",
-"Zeta2/4 - (Log[1 - z]*Log[z])/4 - PolyLog[2, 1 - z]/4"},
+"SimplifyPolyLog[PolyLog[3,Sqrt[z]]+PolyLog[3,-Sqrt[z]], Nielsen -> False]",
+"1/4 PolyLog[3, z]"},
 {"fcstSimplifyPolyLog-ID25",
-"SimplifyPolyLog[PolyLog[4,Sqrt[z]]+PolyLog[4,-Sqrt[z]]]",
-"Zeta2/8 - (Log[1 - z]*Log[z])/8 - PolyLog[2, 1 - z]/8"},
+"SimplifyPolyLog[PolyLog[4,Sqrt[z]]+PolyLog[4,-Sqrt[z]], Nielsen -> False]",
+"1/8 PolyLog[4, z]"},
 {"fcstSimplifyPolyLog-ID26",
 "SimplifyPolyLog[Log[Sqrt[z]],Sqrt\[Rule]False]", "Log[Sqrt[z]]"},
 {"fcstSimplifyPolyLog-ID27",
@@ -97,6 +97,173 @@ False]", "PolyLog[2, -Sqrt[z]] + PolyLog[2, Sqrt[z]]"},
 False]", "PolyLog[3, -Sqrt[z]] + PolyLog[3, Sqrt[z]]"},
 {"fcstSimplifyPolyLog-ID30",
 "SimplifyPolyLog[PolyLog[4,Sqrt[z]]+PolyLog[4,-Sqrt[z]],Sqrt\[Rule]\
-False]", "PolyLog[4, -Sqrt[z]] + PolyLog[4, Sqrt[z]]"}
-
+False]", "PolyLog[4, -Sqrt[z]] + PolyLog[4, Sqrt[z]]"},
+{"fcstSimplifyPolyLog-ID31",
+"SimplifyPolyLog[
+-((-1 + zz)*(312*Zeta2*Log[2] - 104*Log[2]^3 - 276*Zeta2*Log[1 + Sqrt[zz]] - 312*Log[2]*Log[1 + Sqrt[zz]]^2 - 52*Log[1 + Sqrt[zz]]^3 + 288*Zeta2*Log[1 - zz] +
+	156*Log[2]^2*Log[1 - zz] + 312*Log[2]*Log[1 + Sqrt[zz]]*Log[1 - zz] + 156*Log[1 + Sqrt[zz]]^2*Log[1 - zz] - 156*Log[2]*Log[1 - zz]^2 -
+	156*Log[1 + Sqrt[zz]]*Log[1 - zz]^2 + 52*Log[1 - zz]^3 - 180*Log[1 + Sqrt[zz]]^2*Log[-Sqrt[zz]] + 78*Zeta2*Log[zz] - 144*Log[1 + Sqrt[zz]]^2*Log[zz] +
+	300*Log[1 + Sqrt[zz]]*Log[1 - zz]*Log[zz] - 66*Log[1 - zz]^2*Log[zz] - 39*Log[1 - zz]*Log[zz]^2 - 78*Nielsen[1, 2, 1 - zz] -
+	24*(Log[1 + Sqrt[zz]] - Log[1 - zz])*PolyLog[2, 1 - Sqrt[zz]] - 24*Log[1 + Sqrt[zz]]*PolyLog[2, 1 + Sqrt[zz]] + 12*Log[1 + Sqrt[zz]]*PolyLog[2, 1 - zz] -
+	78*Log[zz]*PolyLog[2, 1 - zz] + 24*Log[1 - zz]*PolyLog[2, Sqrt[zz]] + 312*PolyLog[3, (1 - Sqrt[zz])/2] - 624*PolyLog[3, 1 - Sqrt[zz]] +
+	312*PolyLog[3, (1 + Sqrt[zz])/2] - 312*PolyLog[3, 1 + Sqrt[zz]] + 156*PolyLog[3, 1 - zz] - 312*PolyLog[3, Sqrt[zz]] -
+	312*PolyLog[3, (2*Sqrt[zz])/(-1 + Sqrt[zz])] + 312*PolyLog[3, Sqrt[zz]/(1 + Sqrt[zz])] - 312*PolyLog[3, (2*Sqrt[zz])/(1 + Sqrt[zz])] + 312*Zeta[3]))/(6*zz^2)
+]
+", "0"},
+{"fcstSimplifyPolyLog-ID32", "SimplifyPolyLog[Log[1048576]]",
+"20*Log[2]"},
+{"fcstSimplifyPolyLog-ID33", "SimplifyPolyLog[Log[16 1048576]]",
+"24*Log[2]"},
+{"fcstSimplifyPolyLog-ID34", "SimplifyPolyLog[Li2[(1-Sqrt[x])/2]]",
+"Zeta2 - Log[2]^2 + Log[1 + Sqrt[x]]^2 + Log[2]*Log[1 - x] - Log[1 \
++ Sqrt[x]]*Log[1 - x] - PolyLog[2, (1 + Sqrt[x])/2]"},
+{"fcstSimplifyPolyLog-ID35",
+"Chop[N[(Li2[(1-Sqrt[x])/2]-SimplifyPolyLog[Li2[(1-Sqrt[x])/2]])\
+/.x\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID36", "SimplifyPolyLog[Li2[(1+Sqrt[x])]]",
+"(3*Zeta2)/2 - I*Pi*Log[1 + Sqrt[x]] - PolyLog[2, 1 - Sqrt[x]] + \
+PolyLog[2, 1 - x]/2"},
+{"fcstSimplifyPolyLog-ID37",
+"Chop[N[(Li2[(1+Sqrt[x])]-SimplifyPolyLog[Li2[(1+Sqrt[x])]])/.x\
+\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID38", "SimplifyPolyLog[Li2[(Sqrt[x])]]",
+"Zeta2 + (Log[1 + Sqrt[x]]*Log[x])/2 - (Log[1 - x]*Log[x])/2 - \
+PolyLog[2, 1 - Sqrt[x]]"},
+{"fcstSimplifyPolyLog-ID39",
+"Chop[N[(Li2[(Sqrt[x])]-SimplifyPolyLog[Li2[(Sqrt[x])]])/.x\[Rule]\
+1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID40", "SimplifyPolyLog[Li2[2x/(1+x)]]",
+"Zeta2 - Log[2]*Log[1 - x] - Log[1 - x]*Log[x] + Log[2]*Log[1 + x] \
++ Log[1 - x]*Log[1 + x] + Log[x]*Log[1 + x] - Log[1 + x]^2 - \
+PolyLog[2, (1 - x)/(1 + x)]"},
+{"fcstSimplifyPolyLog-ID41",
+"Chop[N[(Li2[2x/(1+x)]-SimplifyPolyLog[Li2[2x/(1+x)]])/.x\[Rule]1/\
+3]]", "0"},
+{"fcstSimplifyPolyLog-ID42", "SimplifyPolyLog[Li3[(1+Sqrt[x])]]",
+"2*Zeta2*Log[1 + Sqrt[x]] - (I/2)*Pi*Log[1 + Sqrt[x]]^2 - Log[1 + \
+Sqrt[x]]^3/6 + PolyLog[3, (1 + Sqrt[x])^(-1)]"},
+{"fcstSimplifyPolyLog-ID43",
+"Chop[N[(Li3[(1+Sqrt[x])]-SimplifyPolyLog[Li3[(1+Sqrt[x])]])/.x\
+\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID44",
+"SimplifyPolyLog[Li3[2Sqrt[x]/(Sqrt[x]-1)]]",
+"-(Zeta2*Log[2]) - Log[2]^3/6 - Zeta2*Log[1 + Sqrt[x]] - \
+(Log[2]^2*Log[1 + Sqrt[x]])/2 - (Log[2]*Log[1 + Sqrt[x]]^2)/2 - Log[1 \
++ Sqrt[x]]^3/6 + Zeta2*Log[1 - x] + (Log[2]^2*Log[1 - x])/2 + \
+Log[2]*Log[1 + Sqrt[x]]*Log[1 - x] + (Log[1 + Sqrt[x]]^2*Log[1 - \
+x])/2 - (Log[2]*Log[1 - x]^2)/2 - (Log[1 + Sqrt[x]]*Log[1 - x]^2)/2 + \
+Log[1 - x]^3/6 - (Zeta2*Log[x])/2 - (Log[2]^2*Log[x])/4 - \
+(Log[2]*Log[1 + Sqrt[x]]*Log[x])/2 - (Log[1 + Sqrt[x]]^2*Log[x])/4 + \
+(Log[2]*Log[1 - x]*Log[x])/2 + (Log[1 + Sqrt[x]]*Log[1 - x]*Log[x])/2 \
+- (Log[1 - x]^2*Log[x])/4 - (Log[2]*Log[x]^2)/8 - (Log[1 + \
+Sqrt[x]]*Log[x]^2)/8 + (Log[1 - x]*Log[x]^2)/8 - Log[x]^3/48 + \
+PolyLog[3, -(1 - Sqrt[x])/(2*Sqrt[x])]"},
+{"fcstSimplifyPolyLog-ID45",
+"Chop[N[(Li3[2Sqrt[x]/(Sqrt[x]-1)]-SimplifyPolyLog[Li3[2Sqrt[x]/(\
+Sqrt[x]-1)]])/.x\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID46", "SimplifyPolyLog[Li3[(x-1)/(x+1)]]",
+"-(Zeta2*Log[2]) + Log[2]^3/3 - (Log[2]^2*Log[1 - x])/2 + \
+Zeta2*Log[1 + x] - (Log[2]^2*Log[1 + x])/2 + Log[2]*Log[1 - x]*Log[1 \
++ x] - (Log[1 - x]*Log[1 + x]^2)/2 + Log[1 + x]^3/6 - PolyLog[3, (1 - \
+x)/2] - PolyLog[3, (1 + x)/2] + Zeta[3]"},
+{"fcstSimplifyPolyLog-ID47",
+"Chop[N[(Li3[(x-1)/(x+1)]-SimplifyPolyLog[Li3[(x-1)/(x+1)]])/.x\
+\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID48",
+"SimplifyPolyLog[Li3[(Sqrt[x]-1)/(Sqrt[x]+1)]]",
+"-(Zeta2*Log[2]) + Log[2]^3/3 + Zeta2*Log[1 + Sqrt[x]] - \
+Log[2]*Log[1 + Sqrt[x]]^2 + (2*Log[1 + Sqrt[x]]^3)/3 - \
+(Log[2]^2*Log[1 - x])/2 + Log[2]*Log[1 + Sqrt[x]]*Log[1 - x] - (Log[1 \
++ Sqrt[x]]^2*Log[1 - x])/2 - PolyLog[3, (1 - Sqrt[x])/2] - PolyLog[3, \
+(1 + Sqrt[x])/2] + Zeta[3]"},
+{"fcstSimplifyPolyLog-ID49",
+"Chop[N[(Li3[(Sqrt[x]-1)/(Sqrt[x]+1)]-SimplifyPolyLog[Li3[(Sqrt[x]-\
+1)/(Sqrt[x]+1)]])/.x\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID50",
+"SimplifyPolyLog[Li3[(Sqrt[x])/(Sqrt[x]+1)]]",
+"-(Zeta2*Log[1 + Sqrt[x]]) + Log[1 + Sqrt[x]]^3/3 - \
+(Zeta2*Log[x])/4 - (Log[1 + Sqrt[x]]^2*Log[x])/4 + (Log[1 - \
+x]*Log[x]^2)/8 + Nielsen[1, 2, 1 - x]/4 + (Log[x]*PolyLog[2, 1 - \
+x])/4 - PolyLog[3, (1 + Sqrt[x])^(-1)] + PolyLog[3, Sqrt[x]] + \
+(3*Zeta[3])/4"},
+{"fcstSimplifyPolyLog-ID51",
+"Chop[N[(Li3[(Sqrt[x])/(Sqrt[x]+1)]-SimplifyPolyLog[Li3[(Sqrt[x])/(\
+Sqrt[x]+1)]])/.x\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID52", "SimplifyPolyLog[Li3[2x/(1+x)]]",
+"Zeta2*Log[2] + Log[2]^3/6 - (Log[2]^2*Log[1 - x])/2 + \
+Zeta2*Log[x] + (Log[2]^2*Log[x])/2 - Log[2]*Log[1 - x]*Log[x] + \
+(Log[2]*Log[x]^2)/2 - (Log[1 - x]*Log[x]^2)/2 + Log[x]^3/6 - \
+Zeta2*Log[1 + x] + Log[2]*Log[1 - x]*Log[1 + x] + Log[1 - \
+x]*Log[x]*Log[1 + x] - (Log[2]*Log[1 + x]^2)/2 - (Log[1 - x]*Log[1 + \
+x]^2)/2 - (Log[x]*Log[1 + x]^2)/2 + Log[1 + x]^3/3 - PolyLog[3, -(1 - \
+x)/(2*x)] - PolyLog[3, (1 - x)/(1 + x)] + Zeta[3]"},
+{"fcstSimplifyPolyLog-ID53",
+"Chop[N[(Li3[2x/(1+x)]-SimplifyPolyLog[Li3[2x/(1+x)]])/.x\[Rule]1/\
+3]]", "0"},
+{"fcstSimplifyPolyLog-ID54",
+"SimplifyPolyLog[Li3[2Sqrt[x]/(1+Sqrt[x])]]",
+"2*Zeta2*Log[2] - Log[2]^3/6 - 3*Zeta2*Log[1 + Sqrt[x]] + \
+(Log[2]^2*Log[1 + Sqrt[x]])/2 - (Log[2]*Log[1 + Sqrt[x]]^2)/2 + Log[1 \
++ Sqrt[x]]^3/2 + (Zeta2*Log[x])/2 + (Log[2]^2*Log[x])/4 + \
+(Log[2]*Log[1 + Sqrt[x]]*Log[x])/2 - (3*Log[1 + Sqrt[x]]^2*Log[x])/4 \
+- (Log[2]*Log[1 - x]*Log[x])/2 + (Log[1 + Sqrt[x]]*Log[1 - \
+x]*Log[x])/2 + (Log[2]*Log[x]^2)/8 + (Log[1 + Sqrt[x]]*Log[x]^2)/8 - \
+(Log[1 - x]*Log[x]^2)/8 + Log[x]^3/48 + PolyLog[3, (1 - Sqrt[x])/2] - \
+2*PolyLog[3, 1 - Sqrt[x]] - 2*PolyLog[3, (1 + Sqrt[x])^(-1)] + \
+PolyLog[3, (1 + Sqrt[x])/2] + PolyLog[3, 1 - x]/2 - PolyLog[3, -(1 - \
+Sqrt[x])/(2*Sqrt[x])] + (7*Zeta[3])/4"},
+{"fcstSimplifyPolyLog-ID55",
+"Chop[N[(Li3[2Sqrt[x]/(1+Sqrt[x])]-SimplifyPolyLog[Li3[2Sqrt[x]/(1+\
+Sqrt[x])]])/.x\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID56",
+"SimplifyPolyLog[Li3[(1-Sqrt[x])/(Sqrt[x]+1)]]",
+"-(Zeta2*Log[2]) + Log[2]^3/3 + 2*Zeta2*Log[1 + Sqrt[x]] - \
+Log[2]*Log[1 + Sqrt[x]]^2 + Log[1 + Sqrt[x]]^3/3 - (Log[2]^2*Log[1 - \
+x])/2 + Log[2]*Log[1 + Sqrt[x]]*Log[1 - x] - (Log[1 + \
+Sqrt[x]]^2*Log[1 - x])/2 - PolyLog[3, (1 - Sqrt[x])/2] + 2*PolyLog[3, \
+1 - Sqrt[x]] + 2*PolyLog[3, (1 + Sqrt[x])^(-1)] - PolyLog[3, (1 + \
+Sqrt[x])/2] - PolyLog[3, 1 - x]/2 - (3*Zeta[3])/4"},
+{"fcstSimplifyPolyLog-ID57",
+"Chop[N[(Li3[(1-Sqrt[x])/(Sqrt[x]+1)]-SimplifyPolyLog[Li3[(1-Sqrt[\
+x])/(Sqrt[x]+1)]])/.x\[Rule]1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID58", "SimplifyPolyLog[Li3[(x)/(x+1)]]",
+"-(Zeta2*Log[1 + x]) - (Log[x]*Log[1 + x]^2)/2 + Log[1 + x]^3/3 - \
+PolyLog[3, -x] - PolyLog[3, (1 + x)^(-1)] + Zeta[3]"},
+{"fcstSimplifyPolyLog-ID59",
+"Chop[N[(Li3[(x)/(x+1)]-SimplifyPolyLog[Li3[(x)/(x+1)]])/.x\[Rule]\
+1/3]]", "0"},
+{"fcstSimplifyPolyLog-ID60", "SimplifyPolyLog[Log[1/(1+x)]]",
+"-Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID61", "SimplifyPolyLog[Log[1/(1+x)^2]]",
+"2*Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID62", "SimplifyPolyLog[Log[1/(1+x)^3]]",
+"3*Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID63", "SimplifyPolyLog[Log[1/(1+x)^4]]",
+"4*Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID64", "SimplifyPolyLog[Log[1/(1+x^2)]]",
+"Log[1 + x^2]"},
+{"fcstSimplifyPolyLog-ID65", "SimplifyPolyLog[Log[1/(1+x^2)^2]]",
+"2*Log[1 + x^2]"},
+{"fcstSimplifyPolyLog-ID66", "SimplifyPolyLog[Log[1/(1+x^2)^3]]",
+"3*Log[1 + x^2]"},
+{"fcstSimplifyPolyLog-ID67", "SimplifyPolyLog[Log[1/(1+x^2)^4]]",
+"4*Log[1 + x^2]"},
+{"fcstSimplifyPolyLog-ID68", "SimplifyPolyLog[Log[1/(1-x)]]",
+"-Log[1 - x]"},
+{"fcstSimplifyPolyLog-ID69", "SimplifyPolyLog[Log[1/(1-x)^2]]",
+"2*Log[1 - x]"},
+{"fcstSimplifyPolyLog-ID70", "SimplifyPolyLog[Log[1/(1-x)^3]]",
+"3*Log[1 - x]"},
+{"fcstSimplifyPolyLog-ID71", "SimplifyPolyLog[Log[1/(1-x)^4]]",
+"4*Log[1 - x]"},
+{"fcstSimplifyPolyLog-ID72", "SimplifyPolyLog[Log[1/(1-x^2)]]",
+"Log[1 - x] + Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID73", "SimplifyPolyLog[Log[1/(1-x^2)^2]]",
+"2*Log[1 - x] + 2*Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID74", "SimplifyPolyLog[Log[1/(1-x^2)^3]]",
+"3*Log[1 - x] + 3*Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID75", "SimplifyPolyLog[Log[1/(1-x^2)^4]]",
+"4*Log[1 - x] + 4*Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID76", "SimplifyPolyLog[Log[-Sqrt[x]]]",
+"I*Pi + Log[x]/2"}
 })
