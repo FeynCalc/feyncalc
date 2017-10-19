@@ -1,0 +1,31 @@
+
+
+(* :Title: DiracSubstitute5.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracSubstitute5		*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstDiracSubstitute5 =
+({
+{"fcstDiracSubstitute5-ID1",
+"DiracSubstitute5[GA[5],FCE\[Rule]True]", "GA[6] - GA[7]"},
+{"fcstDiracSubstitute5-ID2",
+"DiracSubstitute67[DiracSubstitute5[GA[5]],FCE\[Rule]True]",
+"GA[5]"},
+{"fcstDiracSubstitute5-ID3",
+"DiracSubstitute5[SpinorUBar[p1,m1].GSD[p].GA[5].SpinorV[p2,m2]]\
+//DotSimplify//FCE",
+"Spinor[Momentum[p1], m1, 1] . GSD[p] . GA[6] . \
+Spinor[-Momentum[p2], m2, 1] - Spinor[Momentum[p1], m1, 1] . GSD[p] . \
+GA[7] . Spinor[-Momentum[p2], m2, 1]"}
+});
