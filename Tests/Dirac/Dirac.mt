@@ -42,9 +42,27 @@ If[ Names["Tests`Dirac`fcstAnti5*"]=!={},
 	$Larin = False
 ];
 
+If[ Names["Tests`Dirac`fcstDiracSubstitute67*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracSubstitute67*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
+If[ Names["Tests`Dirac`fcstDiracSubstitute5*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracSubstitute5*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
 If[ Names["Tests`Dirac`fcstSpinorChainTrick*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstSpinorChainTrick*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
+If[ Names["Tests`Dirac`fcstSpinorChainChiralSplit*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstSpinorChainChiralSplit*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
