@@ -29,6 +29,8 @@ Tests`SUN`fcstSUNTraceColorTraces = {
 {"fcstSUNTraceColorTraces-ID7","SUNTrace[SUNF[a, b, c] SUNT[a, b, c]] // SUNSimplify",
 	"(I/2)*CA^2*CF"},
 {"fcstSUNTraceColorTraces-ID8","SUNTrace[SUNF[a, r, s] SUNF[b, r, s]] // SUNSimplify",
-	"CA^2*SUNDelta[SUNIndex[a], SUNIndex[b]]"}
+	"CA^2*SUNDelta[SUNIndex[a], SUNIndex[b]]"},
+{"fcstSUNTraceColorTraces-ID9","SUNTrace[SUNT[a, b, c, a, b, c]]",
+	"-(1/(8 SUNN^2)) + SUNN^2/8"}
 };
 

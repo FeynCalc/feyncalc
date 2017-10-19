@@ -75,6 +75,14 @@ SUNTrace[SUNF[a, c, g] SUNF[b, e, h] SUNF[d, g,
 	"1/4 I CA^2 CF"},
 {"fcstSUNSimplify-ID26","SUNSimplify[SUND[a, e, r] SUND[b, d, r] SUND[a, b, s] SUND[d, e, s],
 Explicit -> True]",
-	"(4 - CA^2) (12 - CA^2) (CA - 2 CF) CF"}
+	"(4 - CA^2) (12 - CA^2) (CA - 2 CF) CF"},
+{"fcstSUNSimplify-ID27","SUNSimplify[SUNF[a, b, c]^2]",
+	"2 CA^2 CF"},
+{"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2]",
+	"-2 (4 - CA^2) CF"},
+{"fcstSUNSimplify-ID27","SUNSimplify[SUNF[a, b, c]^2, SUNNToCACF -> False]",
+	"SUNN (-1 + SUNN^2)"},
+{"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2, SUNNToCACF -> False]",
+	"-(((4 - SUNN^2) (-1 + SUNN^2))/SUNN)"}
 };
 
