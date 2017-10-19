@@ -1020,9 +1020,12 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			];
 
 			FCPrint[1, "after Collecting ", FCDoControl->oneloopVerbose];
+			(*
 			standmatd[xxx__] :=
 				StandardMatrixElement[dotdotlin[xxx]];
 			standmatd[] = 1;
+
+
 
 			(* this may take a lot of time ... *)
 			If[ (StandardMatrixElement =!= Identity),
@@ -1048,6 +1051,14 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 				FCPrint[1, "after tostandmat", FCDoControl->oneloopVerbose];
 				FCPrint[3, "after tostandmat : oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 			];
+			*)
+
+
+			If[ (StandardMatrixElement =!= Identity) && !FreeQ2[oneamp,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`SUNHeadsList,{Polarization}]] && !FreeQ[oneamp,Spinor],
+				oneamp = ToStandardMatrixElement[oneamp, FCI->True, DiracSubstitute67->reducegamma67, Spinor->True]
+			];
+
+
 			(* ********************************************************************* *)
 			(*                          oneloop25                                    *)
 			(* ********************************************************************* *)

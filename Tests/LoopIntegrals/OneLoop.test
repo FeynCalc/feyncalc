@@ -853,5 +853,27 @@ OneLoop[q, FVD[q, mu] FVD[q, nu] FAD[{q, Subscript[m, 0]}, {q + p1, m1}], OneLoo
 	PaVeAutoReduce -> True] - FV[p4, mu] PaVe[
 	2, {SP[p3, p3], SP[p3, p3] + 2 SP[p3, p4] + SP[p4, p4],
 	SP[p4, p4]}, {MB^2, MG^2, MT^2}, PaVeAutoOrder -> True,
-	PaVeAutoReduce -> True])"}
+	PaVeAutoReduce -> True])"},
+
+{"fcstOneLoop-ID11","$BreitMaison = True; \n
+res= FCE[OneLoop[q,
+SpinorUBar[p3, ms].GA[6].(GS[q] + mt).GA[7].PolarizationVector[p2,
+	mu].(2*FV[q, mu] + 2*FV[p1, mu] + FV[p2, mu]).SpinorU[p1,
+	mb] FAD[{q, mt}, {q + p1, mh}, {q + p1 + p2, mh}]]] \n
+	$BreitMaison = False; \n res",
+	"I*Pi^2*(2*PaVe[0, 0, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[Polarization[p2, I]] . GA[7] . Spinor[Momentum[p1], mb, 1]] +
+(2*mb*PaVe[1, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+	2*mb*PaVe[1, 1, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p1, Polarization[p2, I]]] -
+2*PaVe[1, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p1, Polarization[p2, I]]] +
+(-(mb*C0[SP[p1, p1], SP[p2, p2], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], mt^2, mh^2, mh^2]) -
+	mb*PaVe[1, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] -
+	2*mb*PaVe[2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] -
+	2*mb*PaVe[1, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]] +
+(PaVe[2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+	2*PaVe[2, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]])"}
 }
