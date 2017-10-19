@@ -82,14 +82,17 @@ SetAttributes[holdForm,HoldAll];
 Collect2[a_ == b_, y__] :=
 	Collect2[a,y] == Collect2[b,y];
 
+Collect2[(h:Rule|RuleDelayed)[a_,b_], y__] :=
+	With[{zz=Collect2[b,y]}, h[a,zz]];
+
 Collect2[x_List, y__] :=
 	Collect2[#, y]& /@ x;
 
 Collect2[x_, y_, opts:OptionsPattern[]] :=
-	Collect2[x, {y}, opts] /; (Head[y]=!=List && !OptionQ[y]);
+	Collect2[x, {y}, opts] /; (Head[y]=!=List && !OptionQ[y] && Head[x]=!=List && !OptionQ[x]);
 
 Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
-	Collect2[x, {z,y}, opts] /; (Head[y]=!=List && !OptionQ[y]);
+	Collect2[x, {z,y}, opts] /; (Head[y]=!=List && !OptionQ[y] && Head[x]=!=List && !OptionQ[x]);
 
 Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,monomialHead,cd,co,dde,
