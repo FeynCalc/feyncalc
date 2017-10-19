@@ -99,53 +99,6 @@ paveautoreduce::usage="";
 reducegamma67::usage="";
 
 
-
-
-(* ********************************************************************* *)
-(*                          oneloop10                                    *)
-(* ********************************************************************* *)
-(*
-coneins[ x_ ] :=
-	MemSet[coneins[x],
-	x/.Pair -> PairContract/. PairContract -> Pair];
-*)
-(*
-dotlin[x_] :=
-	DotSimplify[x, Expanding -> False];
-*)
-(* contractlidef *)
-(*
-contractli[x_] :=
-	Contract[x, Expanding->True, Factoring->False, EpsContract->False] // Expand;
-*)
-
-(*
-collin[ expr_, varh_, expa_] :=
-	Block[ {nx,se,i,co,new, null,res,frex,totvarh},
-		new = 0;
-		nx = expr;
-		If[ expa =!= True,
-			frex[yy__] :=
-				Plus[yy]/;!FreeQ2[{yy}, varh];
-			nx = nx/.Plus -> frex
-		];
-		nx = Expand[nx];
-		totvarh = Select[ Variables[ nx ], (!FreeQ2[#,varh])&];
-		If[ (Length[nx] < 2142) && (LeafCount[nx]< 10^6),
-			res = Collect[ nx, totvarh ],
-			For[ i = 1, i <= Length[totvarh], i++,
-				co = Coefficient[ nx, totvarh[[i]] ];
-				nx = nx - Expand[ co totvarh[[i]] ];
-				new = new + totvarh[[i]] co ];
-			res = nx + new
-		];
-		If[ expa =!= True,
-			res = res/.frex -> Plus
-		];
-		res
-	];
-*)
-
 spinorchainevaluate[x_] :=
 	Expand[DiracOrder[DiracSimplify[x]],q];
 
@@ -417,137 +370,11 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			];
 			FCPrint[1, "OneLoop: Done applying SUNSimplify.", FCDoControl->oneloopVerbose];
 
-			(* ********************************************************************* *)
-			(*                          oneloop16                                    *)
-			(* ********************************************************************* *)
-
-			(*
-			(* for propagators without the integration variable q *)
-			dnq[a___,PD[pe_,ma_],b___] :=
-				ExpandScalarProduct[(1/Factor2[ smalld[TrickMandelstam[
-					ExpandScalarProduct[Pair[pe,pe]]-ma^2, onemandel ]//Expand]] ) dnq[a,b] ] /; FreeQ[pe,q];
-
-			prode[a_,b_] :=
-				PD[a//MomentumExpand,b] /; !FreeQ[a,q];
-
-			prode[ppe_,mm_] :=
-				ExpandScalarProduct[(1/Factor2[ smalld[TrickMandelstam[
-					ExpandScalarProduct[Pair[ppe,ppe]]-mm^2, onemandel ]//Expand] ] ) ]  /; FreeQ[ppe,q];
-
-			(* ONEAMPCHANGE: extract denominators without q's *)
-			oneamp = oneamp/.FeynAmpDenominator->dnq/.dnq->FeynAmpDenominator/. PD->prode;
-
-			*)
-			(*
-			dfsor[ve_,ma_] :=
-				defs[ma][ve]//MomentumExpand;
-			dfsorb[a_][b_] :=
-				PD[b,a];
-
-			(* denomOrder orders the PD         , denomOrderdef *)
-			(* the eventually necessary translation of q is done with intcan.       *)
-			denomOrder[ a__ ] :=
-				Block[ { dfli = {a},ru },
-					(* this is checked always *)
-					ru = {
-					PD[c_. Momentum[ce_. q ,di___],ma0_]:> PD[Sqrt[c^2] Momentum[Sqrt[ce^2] q,di],ma0],
-					PD[x_+be_ Momentum[q,di___],mA_] :> PD[Expand[-x+Momentum[q,di] ],mA]/;(be===-1)
-					};
-
-					dfli = dfli//.ru;
-					If[ !MatchQ[ First[dfli], PD[Momentum[q,___],_] ],
-						denorder = True
-					];
-
-					If[ denorder === True,
-						dfli = Sort[ dfli/.PD->dfsor ]/.defs->dfsorb;
-						(* For boxes: bring a evtl. 0 at position 3 *)
-						If[ Length[ dfli ] === 4,
-							dfli = RotateRight[dfli,2]
-						]
-					];
-
-					If[ Length[dfli]===3 && denorder === True,
-						dfli = dfli/.{den1_, PD[pe2_,ma1_], PD[pe3_,ma2_]}:> {den1,  PD[pe3,ma2], PD[pe2,ma1]}/;Length[pe2] > Length[pe3]
-					];
-
-					If[ denorder === True,
-						dfli = dfli/.{den1_,PD[pe2_,ma2_],den3_, PD[pe3_,ma2_]}:> {den1, PD[pe3,ma2],den3,PD[pe2,ma2]}/;Length[pe2]>Length[pe3];
-						FCPrint[3, "after denomOrdering : ", dfli, FCDoControl->oneloopVerbose];
-					];
-					FeynAmpDenominator@@dfli
-				];
-			*)
-			(* ********************************************************************* *)
-			(*                          oneloop17                                    *)
-			(* ********************************************************************* *)
-			(*
-			vcid[pe_,___] :=
-				pe;
-			*)
-			(* for translating the integration variable q in the first propagator *)
-			(*
-			intcan[x_] :=
-				x/;FreeQ[x,q];
-
-			intcan[x_Plus] :=
-				intcan/@x;
-
-			intcan[ a_ b_ ] :=
-				a intcan[b]/; FreeQ[a,q];
-
-			intcan[x_Times] :=
-				(SelectFree[x, q] intcan[SelectNotFree[x,q]]) /;SelectFree[x, q] =!= 1;
-
-			intcan[any_. FeynAmpDenominator[PD[p_ + Momentum[q,dim], m1_],dfrest___ ]] :=
-				denomExpand[ ( any FeynAmpDenominator[PD[ p + Momentum[q,dim],m1], dfrest])/.q->( q - (p/. mom_Momentum:>First[mom]))];
-			*)
 			(*  bringing the denominator in a canonical form                         *)
 			FCPrint[1, "OneLoop: Applying FDS again to have the propagagators ordered canonically.", FCDoControl->oneloopVerbose];
 			oneamp = FDS[oneamp,q,FCI->True,ApartFF->False];
 			FCPrint[1, "OneLoop: Done applying FDS again.", FCDoControl->oneloopVerbose];
 
-			(*
-			(* ONEAMPCHANGE : fixing all denominators , evtl. ordering *)
-			oneamp = fa_FeynAmpDenominator :> MomentumExpand[fa] /. FeynAmpDenominator :> FeynCalc`Package`feynord[{q}];
-			oneamp = (intcan[oneamp//MomentumExpand]//MomentumExpand)/. intcan->Identity;
-			oneamp = Map[(Numerator[#]/Factor2[Denominator[#]])&, oneamp + null1];
-			oneamp = oneamp/.null1->0;
-			FCPrint[3, "oneamp after ordering = ", oneamp, FCDoControl->oneloopVerbose];
-			*)
-
-			(* ONEAMPCHANGE : bringing all denominator in standard order *)
-			(*
-			consum[x_] :=
-				conall[x]/;Head[x]=!=Plus;    (* consumdef *)
-
-			consum[x_Plus] :=
-				Block[ {nx = 0,ii},
-					For[ii = 1, ii<=Length[x], ii++,
-						FCPrint[2, "contracting # ", ii, " out of ", Length[x], FCDoControl->oneloopVerbose];
-						nx = nx + conall[x[[ii]]]
-					];
-					nx
-				];
-			*)
-			(* consum2def *)
-			(*
-			consum2[x_] :=
-				smalld[ExpandScalarProduct[conall[x]]]/;Head[x]=!=Plus;
-
-			consum2[x_Plus] :=
-				Block[ {nx = 0},
-					For[i = 1, i<=Length[x], i++,
-						FCPrint[2, "contracting # ", i, " out of ", Length[x], FCDoControl->oneloopVerbose];
-						nx = nx + (Expand[
-							ExpandScalarProduct[conall[x[[i]]]]]//smalld)
-						];
-					nx
-				];
-			*)
-			(* ********************************************************************* *)
-			(*                          oneloop18                                    *)
-			(* ********************************************************************* *)
 
 
 			FCPrint[1, "OneLoop: Applying Contract.", FCDoControl->oneloopVerbose];
@@ -579,61 +406,15 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 				oneamp = oneamp /. DiracTrace[tt_]:>DiracTrace[tt,DiracTraceEvaluate->True];
 				oneamp = Collect2[ oneamp, FeynAmpDenominator, Factoring -> False];
 				FCPrint[1, "OneLoop: Done calculating Dirac traces.", FCDoControl->oneloopVerbose]
-				(*If[ Head[oneamp] =!= Plus,
-					oneamp = Expand[oneamp /. DiracTrace->TR],
-					For[i = 1, i<=Length[oneamp], i++,
-						FCPrint[1, "calculating trace # ", i, "  out of ", Length[oneamp], FCDoControl->oneloopVerbose];
-						neuamp = neuamp + Expand[ oneamp[[i]]/.DiracTrace->TR]
-					];
-					oneamp = Collect2[neuamp, FeynAmpDenominator, Factoring -> False]
-				]*)
 			];
-				(*oneampzero = oneamp;*)
 
-			(* ONEAMPCHANGE : bringing gamma5, gamma6 and gamma7 into standard
-				way according to the setting of the option ReduceGamma
-			*)
-			(*
-			If[ !reducegamma67,
-				oneamp = oneamp /.
-				{DOT[ Spinor[p1__],(a___),Spinor[p2__]] :> (DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]])};
-			];*)
 
 			If[ reducegamma67,
 				FCPrint[1, "OneLoop: Inserting explicit chiral projectors.", FCDoControl->oneloopVerbose];
 				oneamp = oneamp /. DiracGamma[6] -> (1/2 + DiracGamma[5]/2)/. DiracGamma[7] -> (1/2 - DiracGamma[5]/2);
 				FCPrint[1, "OneLoop: Done inserting explicit chiral projectors.", FCDoControl->oneloopVerbose]
 			];
-			(*
-			diracorder[x_] :=
-				x /; FreeQ[ x, DiracGamma];
 
-			diracorder[x_] :=
-				Collect2[DiracOrder[x], DOT,Factoring->False] /; Head[x]=!=Plus;
-
-			diracorder[x_Plus] :=
-				Collect2[ Map[DiracOrder[#(*, {q}*)]&, x], DOT, Factoring->False];
-
-			paex[x_,y_] :=
-				If[ !FreeQ[{x,y}, Eps],
-					ExpandScalarProduct[Pair[x,y]],
-					Pair[x,y]
-				];
-			*)
-			(*
-			epsit[x_] :=
-				epschisholm[Collect2[x(*/.Pair->paex*), {Eps,Spinor}, Factoring -> False ]];
-			*)
-			(*
-			simpit[x_ /; FreeQ[x, DiracGamma]] :=
-				Contract[x, Expanding->True, EpsContract->True, Factoring->False]//ExpandScalarProduct//Expand//smalld;
-
-			simpit[x_] :=
-				(FCPrint[3, "OneLoop: simpit", FCDoControl->oneloopVerbose];
-				diracorder[ Collect2[ Contract[x, Expanding->True, EpsContract->True, Factoring->False]//ExpandScalarProduct//Expand//smalld//epschisholm, DOT, Factoring->False] // DiracSimplify]) /; !FreeQ[x, DiracGamma];
-			*)
-			(* we want to keep the distinction in different graphs *)
-			(* ONEAMPCHANGE *)
 
 			FCPrint[1, "oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 
@@ -644,29 +425,11 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			If[	!reducegamma67,
 				neuamp = neuamp /.DiracGamma[5] -> (DiracGamma[6]-DiracGamma[7])
 			];
-			(*neuamp = DiracSimplify[neuamp, FCI->True];*)
+
 			neuamp = DiracOrder[neuamp, FCI->True];
 			neuamp = neuamp//smalld;
 
-			(*
-			neuamp = 0;
-			If[ Head[oneamp] === Plus,
-				lenneu = Length[oneamp],
-				lenneu = 1
-			];
 
-			For[ ip = 1, ip <= lenneu, ip++,
-				FCPrint[2, "working with part # ", ip, " out of ", lenneu, FCDoControl->oneloopVerbose];
-				If[ lenneu > 1,
-					parf = PartitHead[oneamp[[ip]], FeynAmpDenominator]//smalld,
-					parf = PartitHead[oneamp, FeynAmpDenominator]//smalld
-				];
-				neuamp = neuamp + ((Expand[
-					If[	parf[[2]]=!=0,
-						parf[[2]],
-						1
-					] simpit[parf[[1]]]])//smalld)
-			];*)
 
 			FCPrint[2, "Length of neuamp = ", Length[neuamp], FCDoControl->oneloopVerbose];
 			If[ FreeQ[neuamp, DOT],
@@ -688,104 +451,9 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 				neuamp = neuamp//smalld
 			];
 
-			(*
-			(* ONEAMPCHANGE *)
-			If[ intermediateSubstitutions =!= {},
-				oneamp = oneamp /. intermediateSubstitutions /. intermediateSubstitutions;
-				neuamp = 0;
-				If[ Head[oneamp] === Plus,
-					lenneu = Length[oneamp],
-					lenneu = 1
-				];
-				For[iip = 1, iip <= lenneu, iip++,
-					FCPrint[2, "working with (substituted) part # ", iip, " out of ", lenneu, FCDoControl->oneloopVerbose];
-					If[ lenneu > 1,
-						parf = PartitHead[oneamp[[iip]], FeynAmpDenominator],
-						parf = PartitHead[oneamp, FeynAmpDenominator]
-					];
-					neuamp = neuamp + ((Expand[ parf[[2]] simpit[parf[[1]]]]) //smalld)
-				];
-			];
-			*)
-
 			oneamp = neuamp;
 			FCPrint[3, "neuamp = ", neuamp, FCDoControl->oneloopVerbose];
 
-			(* Zwischenspiel... *)
-			smadot[] =
-				1;
-			standard /: standard[a_] standard[b_] :=
-				standard[a b];
-
-			smadot[x___] :=
-				standard[ DotSimplify[DOT[x], Expanding->False](*/.dim->4*)] /. standard -> StandardMatrixElement;
-
-			If[ StandardMatrixElement =!= Identity,
-				StandardMatrixElement[x_Plus] :=
-					Map[StandardMatrixElement,x]
-			];
-
-			(* ********************************************************************* *)
-			(*                          oneloop20                                    *)
-			(* ********************************************************************* *)
-
-			(* tostandmatdef *)
-			tostandmat[xy_] :=
-				Block[ {te, standa},
-					standa[a__] :=
-						DotSimplify[DOT[a],Expanding->False] /; !FreeQ2[{a}, {DOT,Pair,Spinor}];
-
-					standa[a_,b__] :=
-						StandardMatrixElement[a,b]/; FreeQ2[a, {DOT,Pair,Spinor}];
-
-					te = tempstandmat[Expand[xy]]//Expand;
-
-					If[ !FreeQ[te, DiracGamma[6]],
-						te = te/.StandardMatrixElement -> standa/. standa -> spinorsandpairs/. spinorsandpairs->smadot/.
-							DiracGamma[6] -> (1/2 + DiracGamma[5]/2);
-						te = Expand[DiracOrder[DiracSimplify[te]],q]//Expand;
-						te = tempstandmat[te]//Expand
-					];
-
-					If[ !FreeQ[te, DiracGamma[7]],
-						te = te/.StandardMatrixElement -> standa/. standa -> spinorsandpairs/. spinorsandpairs->smadot/.
-							DiracGamma[7] -> (1/2 - DiracGamma[5]/2);
-						te = DiracSimplify[te]//DiracOrder//Expand;
-						te = tempstandmat[te//Contract]//Expand
-					];
-
-					te = te /.DOT->spinorsandpairs/. spinorsandpairs->smadot;
-					te
-				] /; reducegamma67 === True;
-
-			tostandmat[xy_] :=
-				Block[ {te, standa, pluh, pluh2},
-					standa[xx_] :=
-						xx/;!FreeQ2[xx, {DOT,Pair,Polarization}];
-					standa[a_,b__] :=
-						StandardMatrixElement[a,b];
-
-					pluh[x__] :=
-						Plus[x] /; !FreeQ2[{x},{Spinor,GellMannMatrix, SUNIndex, Polarization,Pair}];
-
-					te = xy /. Plus -> pluh /. pluh->pluh2;
-					te = tempstandmat[Expand[te]]//Expand;
-					te = te /. pluh2 -> Plus;
-					te = te/.StandardMatrixElement -> standa/. DiracGamma[5] -> (DiracGamma[6] - DiracGamma[7]);
-					te = DotSimplify[te,Expanding->False];
-					(* 1 = gamma6 + gamma7 *)
-					If[ !FreeQ[te, Spinor],
-						te = te //. {
-						DOT[Spinor[p1__],(a___),Spinor[p2__]]:>
-							(DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] + DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]) /; FreeQ2[{a}, {DiracGamma[6],DiracGamma[7]} ]
-						};
-						te = Expand[DiracSimplify[te]//DiracOrder, Spinor]//Contract;
-						te = Expand[ te, Pair ]
-					];
-					te = tempstandmat[te];
-					te = te /.DOT->spinorsandpairs/. spinorsandpairs->smadot;
-					te
-				] /; reducegamma67 =!= True;
 
 			(* ********************************************************************* *)
 			(*                          oneloop21                                    *)
@@ -795,35 +463,9 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			FCPrint[2, " Dirac-Algebra again", FCDoControl->oneloopVerbose];
 			FCPrint[2, "before spinorch: oneamp = ", oneamp//Length, FCDoControl->oneloopVerbose];
 
-			(*
-				oneamp =  conall[spinorchainevaluate[oneamp//smalld ]]//
-						ExpandScalarProduct;
-			*)
 
 			oneamp =  Contract[oneamp//smalld, FCI->True, Expanding->True, EpsContract->True, Factoring->False];
 			oneamp =  ExpandScalarProduct[oneamp,FCI->True];
-
-			(*
-			If[ Head[oneamp]===Plus,
-				FCPrint[2, "substituting", FCDoControl->oneloopVerbose];
-				If[ Length[oneamp]<10,
-					oneamp = oneamp/.{DiracGamma[Momentum[pe_,di_Symbol],di_Symbol]:> DiracGamma[Momentum[pe]]/;FreeQ[pe,q]};
-					oneamp =  Contract[oneamp//smalld, Expanding->True, EpsContract->True, Factoring->False] // Expand // ExpandScalarProduct,
-					newamp = 0;
-					For[ij = 1, ij <= Length[oneamp], ij++,
-						If[ IntegerQ[ij/100],
-							FCPrint[2, "ij = ", ij, FCDoControl->oneloopVerbose]
-						];
-						temp =  (oneamp[[ij]]/.
-							{DiracGamma[Momentum[pe_,di_Symbol],di_Symbol]:>
-							DiracGamma[Momentum[pe]]/;FreeQ[pe,q] });
-						temp =
-							Contract[temp//smalld, Expanding->True, EpsContract->True, Factoring->False] // Expand // ExpandScalarProduct;
-						newamp = newamp + Expand[temp, q]
-					];
-					oneamp = newamp
-				];
-			];*)
 
 			FCPrint[2, "collect w.r.t. ", q, FCDoControl->oneloopVerbose];
 			oneamp = Collect2[oneamp, q, Factoring -> False];
@@ -857,15 +499,8 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 				FCPrint[1, "OneLoop: Applying FDS again to have the propagagators ordered canonically.", FCDoControl->oneloopVerbose];
 				oneamp = FDS[oneamp,q,FCI->True,ApartFF->False];
 				FCPrint[1, "OneLoop: Done applying FDS again.", FCDoControl->oneloopVerbose]
-				(*
-				(* order the denominators again *)
-				If[ denorder === True,
-					oneamp = oneamp /. fa_FeynAmpDenominator :> MomentumExpand[fa]
-				];
-				oneamp = (intcan[oneamp//MomentumExpand]//ExpandScalarProduct)/. intcan->Identity;
-				*)
 			];
-			(*oneamp1 = oneamp;*)
+
 
 			FCPrint[1, "simplifying again in ", oneamp, FCDoControl->oneloopVerbose];
 
@@ -879,54 +514,15 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			oneamp = Collect2[oneamp, q];
 			oneamp = Isolate[oneamp, {q,dim}, IsolateNames ->fFC, IsolateSplit->Infinity];
 
-			(*
-			timecoll = $FactorTime;
-			$FactorTime = 360;
-			tim = Timing[
-				If[ $ToughStuff =!=True,
-					oneamp = Collect2[ oneamp, q ],
-					oneamp = Collect2[ oneamp, q, Factoring -> False];
-				];
 
-				If[ Head[oneamp] === Plus,
-					newoneamp = 0;
-					lenneu2 = Length[oneamp];
-					If[ dim=!=4,
-						qdi = {q,dim},
-						qdi = {q}
-					];
-
-					For[ii = 1, ii<=lenneu2, ii++,
-						FCPrint[2, "isolating; ii  = ", ii, " out of ", lenneu2, FCDoControl->oneloopVerbose];
-						newoneamp = newoneamp + Isolate[oneamp[[ii]], qdi, IsolateNames ->fFC, IsolateSplit->Infinity]
-					];
-					oneamp = newoneamp
-				];
-			];
-			$FactorTime =  timecoll;
-			FCPrint[1, "time for collect2  and isolate : ", tim[[1]]//FeynCalcForm, FCDoControl->oneloopVerbose];
-			*)
 			FCPrint[1, "isolated and collected, before tensorintegraldecomposition:/n
 					length of isolated graph = ", Length[oneamp], FCDoControl->oneloopVerbose];
 			FCPrint[1, "memory in use = ", MemoryInUse[], FCDoControl->oneloopVerbose];
 			FCPrint[3, "oneamp = ", oneamp, FCDoControl->oneloopVerbose];
 
-			(* ONEAMPCHANGE : tensorintegraldecomposition *)
-			(* relax this here. RM 20110622 *)
-			(*
-				If[!FreeQ2[oneamp, {Pair[x_,y_Plus] , DiracGamma[x_Plus,___]}],
-			*)
-			FCPrint[1, "cheCK", FCDoControl->oneloopVerbose];
-			oneamp = DiracSimplify[oneamp,FCI->True]//ExpandScalarProduct[#,FCI->True]&;
-		(*
-			];
-		*)
 
-		(* bug (found by Christian Bauer, 07/97)
-			fixed here for objects like eps[al,nu,si,p-q]  (can occur
-			after canonicalization of denominators; need then to expand the eps;
-			this is done with EpsEvaluate)
-		*)
+			oneamp = DiracSimplify[oneamp,FCI->True]//ExpandScalarProduct[#,FCI->True]&;
+
 			If[ !FreeQ[oneamp, Eps],
 				oneamp = Collect2[EpsEvaluate[oneamp],q],
 				(* add this here for safety, since otherwise tensint might now work correctly. RM 20110622*)
@@ -1008,39 +604,6 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			];
 
 			FCPrint[1, "after Collecting ", FCDoControl->oneloopVerbose];
-			(*
-			standmatd[xxx__] :=
-				StandardMatrixElement[dotdotlin[xxx]];
-			standmatd[] = 1;
-
-
-
-			(* this may take a lot of time ... *)
-			If[ (StandardMatrixElement =!= Identity),
-				If[ !FreeQ2[oneamp, {DOT, DiracGamma, Polarization, SUNF, SUNDelta, SUNT} ] && FreeQ[oneamp, Spinor],
-						If[ Head[oneamp]===Plus,
-							oneamp = Sum[(oneamp[[iii]] spip[])/. spip -> spinorsandpairs /. spinorsandpairs -> standmatd, {iii,1,Length[oneamp]}],
-							oneamp = Expand[oneamp spip[], Polarization]/. spip->spinorsandpairs /. spinorsandpairs -> standmatd
-						]
-				]
-			];
-
-			If[ (StandardMatrixElement =!= Identity) && (!FreeQ2[oneamp, {Spinor, Polarization, SUNIndex}]),
-				FCPrint[1, "before tostandmat", FCDoControl->oneloopVerbose];
-				If[ Head[oneamp] === Plus,
-					paone = Select[oneamp, !FreeQ2[#, {Spinor, Polarization, SUNIndex}]&];
-					paone = {oneamp - paone, paone},
-					paone = {0, oneamp}
-				];
-				paone2 = Isolate[Collect2[paone[[2]], {Spinor,Polarization,SUNIndex}, Factoring -> False], {Spinor,Polarization,SUNIndex},
-					IsolateNames -> tempFC, IsolateSplit->Infinity];
-				oneamp = FixedPoint[ReleaseHold, tostandmat[paone2] ] + paone[[1]];
-
-				FCPrint[1, "after tostandmat", FCDoControl->oneloopVerbose];
-				FCPrint[3, "after tostandmat : oneamp = ", oneamp, FCDoControl->oneloopVerbose];
-			];
-			*)
-
 
 			If[ (StandardMatrixElement =!= Identity) && !FreeQ2[oneamp,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`SUNHeadsList,{Polarization}]] && !FreeQ[oneamp,Spinor],
 				oneamp = ToStandardMatrixElement[oneamp, FCI->True, DiracSubstitute67->reducegamma67, Spinor->True]
@@ -1071,8 +634,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 				TrickMandelstam[x, onemandel]/;Length[onemandel]>0;
 			tric[x_] :=
 				x/;onemandel==={};
-			fma[xx_] :=
-				True/;Head[xx]===StandardMatrixElement;
+
 			vva[xx_] :=
 				True/;!FreeQ[{xx},PaVe];
 			If[ LeafCount[oneamp]<1000,
@@ -1239,24 +801,6 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 
 		oneampresult
 	] /; FreeQ[q,Rule] && FreeQ[q,Plus];
-
-(* ******************************************************************* *)
-
-(*
-epschisholm[x_] :=
-	x/;FreeQ2[x, {Eps,DiracGamma}];
-
-epschisholm[x_Plus] :=
-	Map[epschisholm,x];
-
-epschisholm[x_] :=
-	If[ reducegamma67,
-		EpsChisholm[Collect2[x, {Eps,Spinor}, Factoring -> False ]],
-		EpsChisholm[Collect2[x, {Eps,Spinor}, Factoring -> False ]]/.DiracGamma[5] -> (DiracGamma[6]-DiracGamma[7])
-	] /; Head[x]=!=Plus;
-*)
-
-
 
 
 (* ********************************************************************* *)
@@ -2090,12 +1634,6 @@ spinorsandpairs/:
 (* Tensorintegraldecomposition *)
 (* *************************************************************** *)
 
-denomExpand[y__] :=
-	y/.FeynAmpDenominator->denexp; (*denomExpanddef*)
-
-denexp[z__] :=
-	Expand //@ MomentumExpand[ FeynAmpDenominator[z] ];
-
 (* *************************************************************** *)
 (* suind substitutes for qu dummy indices for the tensor integral  *)
 (* decomposition, the first argument of suind is a sumand *)
@@ -2564,14 +2102,6 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 (* ********************************************************************* *)
 (*                          oneloop42                                    *)
 (* ********************************************************************* *)
-
-
-dndummy[x__] :=
-	dummy FeynAmpDenominator[x];
-
-vcid[x_,___] :=
-	x;
-
 
 (* SetStandardMatrixElementdef *)
 Options[SetStandardMatrixElements] = {
