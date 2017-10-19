@@ -1297,6 +1297,10 @@ SpinorVBar /:
 	MakeBoxes[SpinorVBar[p_,0,___], TraditionalForm]:=
 		RowBox[{OverscriptBox["v", "_"],"(",TBox[p],")"}];
 
+StandardMatrixElement /:
+	MakeBoxes[StandardMatrixElement[x_], TraditionalForm] :=
+		RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];
+
 SUND /:
 	MakeBoxes[SUND[a_, b_,c:Except[_?OptionQ], OptionsPattern[]], TraditionalForm]:=
 		SuperscriptBox["d", TBox[a,b,c]]

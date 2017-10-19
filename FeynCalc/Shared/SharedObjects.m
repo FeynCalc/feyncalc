@@ -458,6 +458,9 @@ SpinorVBarD::usage =
 "SpinorVBarD[p, m] denotes a vbar-spinor that depends on the \
 D-dimensional momentum p";
 
+StandardMatrixElement::usage =
+"StandardMatrixElement[ ... ] is the head for matrix element abbreviations.";
+
 SUND::usage =
 "SUND[a, b, c] is the symmetric SU(N) d_{a,b,c}.";
 
@@ -1928,6 +1931,12 @@ Spinor[p_ ] :=
 
 Spinor[p_, m_ /; FreeQ[m, Pattern]] :=
 	Spinor[p, m, 1]/; FCPatternFreeQ[{p}];
+
+StandardMatrixElement[0] :=
+	0;
+
+StandardMatrixElement[x_Plus] :=
+	Map[StandardMatrixElement,x];
 
 SUND[a_SUNIndex,a_SUNIndex, b:Except[_?OptionQ], OptionsPattern[]] :=
 	0;

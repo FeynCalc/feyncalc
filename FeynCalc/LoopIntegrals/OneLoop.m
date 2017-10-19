@@ -73,9 +73,6 @@ SmallVariables::usage =
 substitute \"SmallVariable[Melectron]\" \
 for all Melectron's in the calculation.";
 
-StandardMatrixElement::usage =
-"StandardMatrixElement[ ... ] is the head for matrix element abbreviations.";
-
 SetStandardMatrixElements::usage =
 "SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ...]. Set abbreviations \
 abb1, abb2, ... for matrix elements sm1, sm2, ... \\ \
@@ -101,17 +98,8 @@ paveautoorder::usage="";
 paveautoreduce::usage="";
 reducegamma67::usage="";
 
-StandardMatrixElement /:
-	MakeBoxes[StandardMatrixElement[x_], TraditionalForm] :=
-		RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];
 
-StandardMatrixElement[0] :=
-	0;
 
-If[ StandardMatrixElement =!= Identity,
-	StandardMatrixElement[x_Plus] :=
-		Map[StandardMatrixElement,x]
-];
 
 (* ********************************************************************* *)
 (*                          oneloop10                                    *)
