@@ -60,5 +60,21 @@ GAD[mu].(1/2 Fal (1 - GA[5]) +
 	2*Fal*Fbe*mF^2*GSD[p] . GA[7]*SPD[p, p] - 3*Fal*Fbe*mV^2*GSD[p] . GA[7]*SPD[p, p] + D*Fal*Fbe*mV^2*GSD[p] . GA[7]*SPD[p, p] -
 	2*Fal*FbeCC*Mcc*mV^2*GA[6]*SPD[p, p] + 2*D*Fal*FbeCC*Mcc*mV^2*GA[6]*SPD[p, p] - 2*FalCC*Fbe*M*mV^2*GA[7]*SPD[p, p] +
 	2*D*FalCC*Fbe*M*mV^2*GA[7]*SPD[p, p] + FalCC*FbeCC*GSD[p] . GA[6]*SPD[p, p]^2 + Fal*Fbe*GSD[p] . GA[7]*SPD[p, p]^2))/
-(2*mV^2*SPD[p, p])"}
+(2*mV^2*SPD[p, p])"},
+{"fcstOneLoopSimplify-ID10",
+"$KeepLogDivergentScalelessIntegrals = True; \n
+res=OneLoopSimplify[(-I GAD[Lor2] SMP[\"g_s\"] SUNTF[{Glu3}, Col2,
+Col3]).(M + GSD[q]).(-I GAD[Lor1] SMP[\"g_s\"] SUNTF[{Glu3}, Col3,
+Col1]) ((1 - GaugeXi) FAD[{q, M}, -p + q, -p + q] FVD[p - q,
+Lor2] FVD[-p + q, Lor1] + FAD[{q, M}, -p + q] MTD[Lor1, Lor2]), q, FCE -> True];
+$KeepLogDivergentScalelessIntegrals = False; \n res",
+"(CF*(2 - D)*FAD[{q, M}]*GSD[p]*SDF[Col1, Col2]*SMP[\"g_s\"]^2)/
+(2*SPD[p, p]) + (CF*(1 - GaugeXi)*FAD[q, q]*GSD[p]*SDF[Col1, Col2]*
+SMP[\"g_s\"]^2*(M^2 - SPD[p, p]))/(2*SPD[p, p]) +
+(CF*(1 - GaugeXi)*FAD[q, q, {-p + q, M}]*GSD[p]*SDF[Col1, Col2]*
+SMP[\"g_s\"]^2*(M^2 - SPD[p, p])^2)/(2*SPD[p, p]) -
+(CF*FAD[q, {-p + q, M}]*SDF[Col1, Col2]*SMP[\"g_s\"]^2*
+(3*M^2*GSD[p] - D*M^2*GSD[p] - GaugeXi*M^2*GSD[p] - 2*M*SPD[p, p] +
+2*D*M*SPD[p, p] + 2*GaugeXi*M*SPD[p, p] + 3*GSD[p]*SPD[p, p] -
+D*GSD[p]*SPD[p, p] - GaugeXi*GSD[p]*SPD[p, p]))/(2*SPD[p, p])"}
 }

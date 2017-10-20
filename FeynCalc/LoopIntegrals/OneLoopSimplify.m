@@ -44,7 +44,7 @@ Begin["`OneLoopSimplify`Private`"]
 olsVerbose::usage="";
 
 Options[OneLoopSimplify] = {
-	Collecting -> False,
+	Collecting -> True,
 	Dimension -> D,
 	DiracSimplify -> True,
 	ExpandScalarProduct -> True,
@@ -56,7 +56,9 @@ Options[OneLoopSimplify] = {
 	OPE1Loop -> False,
 	PowerSimplify -> True,
 	SUNNToCACF -> True,
-	SUNTrace -> False
+	SUNTrace -> False,
+	ToPaVe -> False,
+	UsePaVeBasis->False
 };
 
 (*Do we really need to support this syntax???*)
@@ -75,8 +77,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	$KeepLogDivergentScalelessIntegrals,
-			Message[OneLoopSimplify::failmsg, "OneLoopSimplify does not support the option $KeepLogDivergentScalelessIntegrals!."];
+		If[	$KeepLogDivergentScalelessIntegrals && OptionValue[OPE1Loop],
+			Message[OneLoopSimplify::failmsg, "OneLoopSimplify does not support the option $KeepLogDivergentScalelessIntegrals withe OPE1Loop set to true."];
 			Abort[]
 		];
 
@@ -93,6 +95,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		];
 
 		If[ FreeQ[expr, qu],
+			Print[expr];
+			Print[qu];
 			Message[OneLoopSimplify::nivar, qu];
 			Return[expr]
 		];
@@ -173,7 +177,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "OneLoopSimplify: Applying TID.", FCDoControl->olsVerbose];
-		tmp =  TID[tmp,  q, Dimension -> dim, ChangeDimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify];
+		tmp =  TID[tmp,  q, Dimension -> dim, ChangeDimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis]];
 		FCPrint[1, "OneLoopSimplify: TID done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 		FCPrint[3, "OneLoopSimplify: After TID: ", tmp, FCDoControl->olsVerbose];
 
@@ -221,7 +225,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		FCPrint[3, "OneLoopSimplify: After FeynAmpDenominatorSimplify: ", tmp, FCDoControl->olsVerbose];
 
 		If[ OptionValue[Collecting],
-			tmp = Collect2[tmp, qu, Expanding->False, Factoring->optFactoring]
+			tmp = Collect2[tmp, Join[{qu},FeynCalc`Package`PaVeHeadsList], Expanding->False, Factoring->optFactoring]
 		];
 
 		res = tmp;
