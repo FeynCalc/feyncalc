@@ -245,6 +245,13 @@ simptab =
 		2*PolyLog[2, (1 - x)/(1 + x)]
 		)/2,
 
+		PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt :>
+		(
+		-Log[2]^2/2 + Log[2]*Log[1 + Sqrt[x]] - Log[1 + Sqrt[x]]^2/2 +
+		2*PolyLog[2, 1 - Sqrt[x]] - PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] -
+		PolyLog[2, 1 - x]/2
+		),
+
 	PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt :>
 		(
 		- PolyLog[2, (1 + Sqrt[x])/2] +
@@ -483,6 +490,14 @@ simptab =
 		PolyLog[2, 1 - x] -
 		PolyLog[2, -x] +
 		PolyLog[2, (1 - x)/(1 + x)]
+		),
+
+	PolyLog[2, (1 + Sqrt[x_Symbol])/2]/; optSqrt :>
+		(
+		Zeta2 - Log[2]^2/2 - Log[2] Log[1 + Sqrt[x]] +
+		3/2 Log[1 + Sqrt[x]]^2 + Log[2] Log[1 - x] -
+		Log[1 + Sqrt[x]] Log[1 - x] - 2 PolyLog[2, 1 - Sqrt[x]] +
+		PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] + 1/2 PolyLog[2, 1 - x]
 		),
 
 	PolyLog[2, (1 + x_Symbol)/(1 - x_Symbol)] :>
