@@ -82,7 +82,7 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,Join[lmoms,loopIntHeads]];
+			ex = Collect2[ex,Join[lmoms,loopIntHeads],Factoring->Factor2];
 		];
 		loopFree = Select[ex+ null1+ null2,
 			FreeQ2[#,Join[lmoms,loopIntHeads]]&]/. {null1|null2 -> 0};
