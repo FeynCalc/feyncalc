@@ -79,6 +79,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			headsList = Join[headsList,{Polarization}];
 		];
 
+		If[	OptionValue[LorentzIndex]===All,
+			headsList = Join[headsList,{LorentzIndex}];
+		];
+
 		head = OptionValue[Head];
 
 		If[OptionValue[FCI],
@@ -143,7 +147,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCDiracIsolate: Handling Lorentz indices.", FCDoControl->fcdiVerbose];
-		If[ OptionValue[LorentzIndex],
+		If[ OptionValue[LorentzIndex]===True,
 			res = (Map[(selectionList=makeSelectionList[#,headsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
 			res = (Map[(restHead[SelectFree[#, headsList]] head[SelectNotFree[#, headsList]]) &,

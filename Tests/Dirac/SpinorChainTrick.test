@@ -77,5 +77,61 @@ Spinor[Momentum[p1], m1, 1].GA[l1_].GA[rho].GA[
 	Momentum[p3], m3, 1].GA[l1_].GA[tau].GA[
 	l2_].(1/2 + 1/2 la2 GA[5]).Spinor[Momentum[p4], m4, 1]
 ]",
-"True"}
+"True"},
+{"fcstSpinorChainTrick-ID10",
+"SpinorChainTrick[
+z (8 Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+		1] (2 FV[p, a] - FV[q, a]) +
+	8 Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+		1] (2 FV[p, b] - FV[q, b]) +
+	8 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+		1] MT[a,
+		b]) (4 Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[
+		Momentum[p], m2, 1] (2 FV[p, a] + FV[q, a]) +
+	4 Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+		1] (2 FV[p, b] + FV[q, b]) -
+	m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] MT[
+		a, b] + 4 Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[
+		Momentum[p], m2, 1] MT[a, b])] //
+FCCanonicalizeDummyIndices[#,
+	LorentzIndexNames -> {mu, nu}] & // FCE",
+"256 z Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[nu].Spinor[Momentum[p], m2,
+	1] FV[p, mu] FV[p, nu] +
+256 z Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
+	1] FV[p, nu]^2 +
+128 z Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[nu].Spinor[Momentum[p], m2,
+	1] FV[p, nu] FV[q, mu] -
+128 z Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[nu].Spinor[Momentum[p], m2,
+	1] FV[p, mu] FV[q, nu] -
+64 z Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[nu].Spinor[Momentum[p], m2,
+	1] FV[q, mu] FV[q, nu] -
+64 z Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
+	1] FV[q, nu]^2 +
+128 z Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
+	1] FV[p, nu] MT[mu, nu] +
+Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] (-32 m2 z Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p],
+	m2, 1] +
+	128 z Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+		1]) FV[p, nu] MT[mu, nu] +
+64 z Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
+	1] FV[q, nu] MT[mu, nu] +
+Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] (16 m2 z Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2,
+		1] - 64 z Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[
+	Momentum[p], m2, 1]) FV[q, nu] MT[mu,
+nu] + (-8 m2 z Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p],
+	m2, 1] Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p],
+		m1, 1] +
+	32 z Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+		1]) MT[mu, nu]^2"}
 });

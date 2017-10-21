@@ -76,7 +76,7 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		FCPrint[1, "SpinorChainTrick: Isolating spinor chains.", FCDoControl->spchtrVerbose];
 		time=AbsoluteTime[];
 		tmp = FCDiracIsolate[ex,FCI->True, Head->dsHead, DotSimplify->True, DiracGammaCombine->optDiracGammaCombine,
-				DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->True, Spinor->Join, DiracGamma->False, FCJoinDOTs-> OptionValue[FCJoinDOTs],
+				DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->All, Spinor->Join, DiracGamma->False, FCJoinDOTs-> OptionValue[FCJoinDOTs],
 				Isolate->True, IsolateNames->dsIso, Factoring -> False] /. dsHead->Identity;
 		FCPrint[1, "SpinorChainTrick: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
 		FCPrint[3, "SpinorChainTrick: After FCDiracIsolate ", tmp, FCDoControl->spchtrVerbose];
@@ -104,7 +104,7 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		FCPrint[1, "SpinorChainTrick: Isolating spinor chains (again).", FCDoControl->spchtrVerbose];
 		time=AbsoluteTime[];
 		tmp = FCDiracIsolate[tmp,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->optDiracGammaCombine, FCJoinDOTs-> OptionValue[FCJoinDOTs],
-			DiracSigmaExplicit->False, LorentzIndex->True, Spinor->Join, DiracGamma->False, Factoring -> OptionValue[Factoring]];
+			DiracSigmaExplicit->False, LorentzIndex->All, Spinor->Join, DiracGamma->False, Factoring -> OptionValue[Factoring]];
 		FCPrint[1, "SpinorChainTrick: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
 		FCPrint[3, "SpinorChainTrick: After second FCDiracIsolate ", tmp, FCDoControl->spchtrVerbose];
 
