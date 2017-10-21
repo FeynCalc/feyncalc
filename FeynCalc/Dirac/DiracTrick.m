@@ -763,8 +763,10 @@ chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), 
 	dd2 chiralTrickAnticommuting4Dim[b, (cc1 DiracGamma[6] + cc2 DiracGamma[7]), d]
 	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
+Off[Optional::opdef];
 chiralTrickAnticommuting4Dim[b___, (cc1_:0 + cc2_. DiracGamma[(h:6|7)]),(dd1_. (dg:DiracGamma[_[_]]) + dd2_:0),d___ ] :=
 	chiralTrickAnticommuting4Dim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[ga67Switch1[h]]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+On[Optional::opdef];
 
 chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],DiracGamma[_[_]] + mass_:0, xy:DiracGamma[_[_]].. , DiracGamma[(h2:6|7)], c___] :=
 	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[h2], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
@@ -811,8 +813,10 @@ chiralTrickAnticommutingDDim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), 
 	dd2 chiralTrickAnticommutingDDim[b, (cc1 DiracGamma[6] + cc2 DiracGamma[7]), d]
 	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
+Off[Optional::opdef];
 chiralTrickAnticommutingDDim[b___, (cc1_:0 + cc2_. DiracGamma[(h:6|7)]),(dd1_. (dg:DiracGamma[_[_,_],_]) + dd2_:0),d___ ] :=
 	chiralTrickAnticommutingDDim[b,(dd1 dg + dd2), (cc1 + cc2 DiracGamma[ga67Switch1[h]]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
+On[Optional::opdef];
 
 chiralTrickAnticommutingDDim[b___, DiracGamma[(h1:6|7)],DiracGamma[_[_,_],_] + mass_:0, xy:DiracGamma[_[_,_],_].. , DiracGamma[(h2:6|7)], c___] :=
 	mass chiralTrickAnticommutingDDim[b, xy, DiracGamma[h2], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
