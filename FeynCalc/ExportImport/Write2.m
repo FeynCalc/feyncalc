@@ -53,41 +53,59 @@ End[]
 Begin["`Write2`Private`"]
 
 ffDP::usage="";
+w2Verbose::usage="";
 
 Options[Write2] = {
-					D0Convention -> 0,
-					FinalSubstitutions -> {},
-					FormatType -> InputForm,
-					FortranFormatDoublePrecision -> True,
-					Precision -> Floor[$MachinePrecision],
-					PageWidth    -> 62,
-					PostFortranFile -> "",
-					PreFortranFile -> "",
-					StringReplace->{}
-				};
+	D0Convention -> 0,
+	FCVerbose -> False,
+	FinalSubstitutions -> {},
+	FormatType -> InputForm,
+	FortranFormatDoublePrecision -> True,
+	PageWidth    -> 62,
+	PostFortranFile -> {""},
+	PreFortranFile -> {""},
+	Precision -> Floor[$MachinePrecision],
+	StringReplace->{}
+};
 
 SetAttributes[Write2, HoldRest];
 
 $FortranContinuationCharacter = "&";
 
-Write2[f_String, x___, l_] :=
-	Write2[f, Hold[x, l], StringReplace->{} ]/; FreeQ[Hold[l], Rule];
+Write2[f_String, x__ , opts:OptionsPattern[]] :=
+	Write2[f, Hold[x], opts]/; !MatchQ[Hold[x], Hold[_Hold ..]] && FreeQ[Hold[x],Rule];
 
-Write2[file_String, eeq__, opts___Rule] :=
+Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 	Block[ {j,vhf,vv,eq,k2str,tmp,
-	ops,ide, aa0, be00, be11,be0,be1, db0, ce0, de0, ansg,d0convention,finsubst,
-	oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep,prec},
+	ide, aa0, be00, be11,be0,be1, db0, ce0, de0, ansg,d0convention,finsubst,
+	oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep,prec, eqj1, eqj2,
+	mantissa, exponent, jj, iir, iv, ii, rfile, rf1, rf2, ir, joinlabel, optFormatType},
 
-		If[	!FreeQ2[{eeq}, FeynCalc`Package`NRStuff],
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
 
-		ops         = Join[{opts}, Options[Write2]];
-		{finsubst, pagewidth } = {FinalSubstitutions, PageWidth} /. ops;
-		{prefortran, postfortran}  = Flatten /@ {{PreFortranFile},
-												{PostFortranFile}} /. ops;
-		strep = StringReplace/.ops/.Options[Write2];
+		If[	OptionValue[FCVerbose]===False,
+			w2Verbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				w2Verbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "Write2. Entering.", FCDoControl->w2Verbose];
+		FCPrint[3, "Write2: Entering with ", expr, FCDoControl->w2Verbose];
+
+		finsubst 	= OptionValue[FinalSubstitutions];
+		pagewidth	= OptionValue[PageWidth];
+		prefortran	= OptionValue[PreFortranFile];
+		postfortran	= OptionValue[PostFortranFile];
+		strep		= OptionValue[StringReplace];
+		ffDP 		= OptionValue[FortranFormatDoublePrecision];
+		prec 		= OptionValue[Precision];
+		optFormatType = OptionValue[FormatType];
+		d0convention = OptionValue[D0Convention];
+
 		(* a modified Power function, for avoiding Fortran-Complications *)
 		pww[x_?NumberQ, 1/2] :=
 			(Sqrt[N[x]]/. xxx_Real/; ffDP :> fhead[xxx]);
@@ -111,12 +129,13 @@ Write2[file_String, eeq__, opts___Rule] :=
 				arr
 			];
 
-		ffDP = OptionValue[Options[Write2], ops,FortranFormatDoublePrecision];
-		prec = OptionValue[Options[Write2], ops,Precision];
 
 		ide = {##}&;
-		eq = Flatten[{Hold[{eeq}]} /. Set -> Equal /. Hold -> ide];
-		FCPrint[1,"Write2: eq= ", eq];
+
+		eq = Flatten[{Hold[{expr}]} /. Set -> Equal /. Hold -> ide];
+
+		FCPrint[3, "Write2: Rewritten input expression ", eq, FCDoControl->w2Verbose];
+
 		mrel[x_] :=
 			MapAll[ReleaseHold, x];
 		(* vhf gives all "KK" which are really present *)
@@ -135,15 +154,18 @@ Write2[file_String, eeq__, opts___Rule] :=
 				var = Union[ var, allvar[te] ];
 				var/.finsubst
 			];
-		If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
+		If[ optFormatType === FortranForm,
 		(* N@ added by RM on Sept. 13th 2003, because of http://www.feyncalc.org/forum/0153.html*)
 			(*	When we apply N to the full expression, this also affects terms from Isolate, e.g.
 				HoldForm[KK[10]] will become HoldForm[KK[10.]], after which KK[10.] will not return
 				the original expressio anymore. The following prevents this from happending *)
+			FCPrint[1, "Write2: FormatType is FortranForm.", FCDoControl->w2Verbose];
 			eq = eq /. HoldForm[x_[y_]] :> With[{z = ToString[y]}, HoldForm[x[z]]];
 			eq = N[eq];
 			eq = eq /. HoldForm[x_[y_String]] :> With[{z = ToExpression[y]}, HoldForm[x[z]]];
-			FCPrint[2,"Write2: N[eq] = ", eq];
+
+			FCPrint[3, "Write2: Prepared expression: ", eq, FCDoControl->w2Verbose];
+
 			oldopenops = Options[OpenWrite];
 
 			If[	ffDP,
@@ -172,29 +194,43 @@ Write2[file_String, eeq__, opts___Rule] :=
 			"C  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *"];
 								Write[file];
 			*)
-				];
-		tostring = If[ Head[#] === String,
-					#,
-					ToString[#]
-				]&;
+		];
+
+
+		tostring =
+			If[ Head[#] === String,
+				#,
+				ToString[#]
+			]&;
+
 		If[ !FreeQ[ eq, HoldForm ],
-			vv = Union[Flatten[Table[vhf[eq[[jj,2]]], {jj, Length[eq]}]]
-						],
+			vv = Union[Flatten[Table[vhf[eq[[jj,2]]], {jj, Length[eq]}]]],
 			vv = {}
 		];
-		FCPrint[2,"Write2: vv ", vv];
+
+		FCPrint[3, "Write2: vv: ", vv, FCDoControl->w2Verbose];
+
+
+		FCPrint[1, "Write2: Starting the j-loop.", FCDoControl->w2Verbose];
 
 		For[ j = 1, j<=Length[eq], j++,
+
+				FCPrint[4, "Write2: Inside the j-loop: j: ", j, FCDoControl->w2Verbose];
 				eqj1 = eq[[j,1]];
-				If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
+				FCPrint[4, "Write2: Inside the j-loop: eqj1: ", eqj1, FCDoControl->w2Verbose];
+
+				If[ optFormatType === FortranForm,
+					FCPrint[4, "Write2: Inside the j-loop: FormatType is FortranForm.", FCDoControl->w2Verbose];
 					eqj2 = eq[[j,2]] /. Power->pww;
+					FCPrint[4, "Write2: Inside the j-loop: eqj2: ", eqj2, FCDoControl->w2Verbose];
 					If[ Head[eqj1] === FUNCTION,
-						WriteString[file, "      FUNCTION ", eqj1[[1]]//tostring,
-											"()"];
+						FCPrint[4, "Write2: Head is FUNCTION.", FCDoControl->w2Verbose];
+						WriteString[file, "      FUNCTION ", eqj1[[1]]//tostring, "()"];
 						Write[file];
 						eqj1 = eqj1[[1]]
 					];
 					If[ prefortran =!= {""},
+						FCPrint[4, "Write2: PreFortranFile is not empty.", FCDoControl->w2Verbose];
 						(*Mac fix 18/9-2000, F.Orellana. Ditto for FileType below*)
 						If[ FileType[prefortran[[1]]] =!= None,
 						(*If[FileNames[prefortran[[1]]] =!= {},*)
@@ -205,8 +241,7 @@ Write2[file_String, eeq__, opts___Rule] :=
 						flag = False;
 						For[iir = 1, iir <= Length[prerec], iir++,
 							If[ flag =!= True,
-								If[ !StringMatchQ[StringJoin @@
-													Drop[prerec,iir-1], "*IMPLICIT*"],
+								If[ !StringMatchQ[StringJoin@@Drop[prerec,iir-1], "*IMPLICIT*"],
 		(*
 									If[Length[eqj1]===2,
 										WriteString[file, eqj1[[2]]],
@@ -232,10 +267,13 @@ Write2[file_String, eeq__, opts___Rule] :=
 							Write[file];
 						]
 					],
+					FCPrint[4, "Write2: Inside the j-loop: FormatType is not FortranForm.", FCDoControl->w2Verbose];
 					eqj2 = eq[[j,2]]
 				];
+				FCPrint[4, "Write2: Inside the j-loop: Entering Which.", FCDoControl->w2Verbose];
 				Which[
-						(FormatType/.ops/.Options[Write2]) === InputForm,
+						optFormatType === InputForm,
+							FCPrint[4, "Write2: Inside the j-loop: Inside Which: FormatType is InputForm.", FCDoControl->w2Verbose];
 							If[ FreeQ[Streams[], file],
 								OpenWrite[file, FormatType -> InputForm]
 							];
@@ -254,10 +292,9 @@ Write2[file_String, eeq__, opts___Rule] :=
 									Write[file, ReleaseHold[ vv[[iv]] ] ];
 									If[ mal[vv[[iv]]//ReleaseHold]=!=True,
 										WriteString[file, "       );\n"],
-		(* NEW*)
 										WriteString[file, "       );\n"]
 									]
-									]
+								]
 							];(* Write[file];*)
 							If[ mal[eqj2]=!=True,
 								WriteString[file, eqj1//InputForm, " = ( " ],
@@ -267,101 +304,91 @@ Write2[file_String, eeq__, opts___Rule] :=
 							If[ mal[eqj2]=!=True,
 								WriteString[file, "       );\n"],
 								Null
-							(*
-(* NEW*)
-								WriteString[file, "        ;\n"]
-*)
-						],
+							],
 
-						(FormatType/.ops/.Options[Write2]) === FortranForm,
-						oldopenops = Options[OpenWrite];
-						SetOptions[OpenWrite, FormatType->FortranForm,
-											PageWidth-> pagewidth
-								];
-						d0convention = D0Convention /. ops /. Options[Write2];
-						If[ d0convention === 0,
-							ansg[x_] :=
-								x/. 0 -> Null/.  finsubst
-						];
-						If[ d0convention === 1,
-							ansg[v_. x_] :=
-								(v x)/; FreeQ2[(v x)/.finsubst,
-												{de0, ce0, be0, aa0, db0}];
-							ansg[v_. x_] :=
-								Block[ {args,t4,t5,t6,ll},
-									args = Apply[List, x];
-									t4 = Take[args,4];
-									t5 = args[[5]];
-									t6 = args[[6]];
-									ll = PowerExpand[ Sqrt[Take[args,-4]] ] /. finsubst;
-									(v (Apply[de0, Join[t4, {t6,t5}, ll]]) /. 0 -> Null)
-								] /;
-								( (Head[x/.finsubst]===(de0)) && (Head[v/.finsubst] =!= (de0)) );
-							ansg[v_. x_] :=
-								Block[ {args, mm},
-									args = List @@ x;
-									mm = PowerExpand[ Sqrt[Take[args,-3]] ] /. finsubst;
-									(v (ce0@@Join[Take[args,3], mm])/. 0 -> Null)
-								] /;
-								( (Head[x/.finsubst]===(ce0)) && (Head[v/.finsubst] =!= (ce0)) );
-							ansg[x_] :=
-								Block[ {args, mm},
-									args = List@@x;
-									mm = PowerExpand[ Sqrt[Take[args,-2]] ] /. finsubst;
-									((be0@@Join[{args[[1]]}, mm])/. 0 ->Null)
-								]/;
-										Head[x/.finsubst]===(be0);
-							ansg[v_. x_] :=
-								Block[ {args, mm},
-									args = List@@x;
-									mm = PowerExpand[ Sqrt[Take[args,-2]] ] /. finsubst;
-									(v (db0@@Join[{args[[1]]}, mm])/. 0 -> Null)
-								] /;
-								( (Head[x/.finsubst]===(db0)) && (Head[v/.finsubst] =!= (db0)) );
-							ansg[x_] :=
-								Block[ {mm},
-									mm = PowerExpand[ Sqrt[x] ] /. finsubst;
-									aa0[mm]
-								] /; Head[x/.finsubst]===(aa0);
-						];
-						If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
-							For[iv = 1, iv<=Length[vv], iv++,
+						optFormatType === FortranForm,
+							FCPrint[4, "Write2: Inside the j-loop: Inside Which: FormatType is FortranForm.", FCDoControl->w2Verbose];
+							oldopenops = Options[OpenWrite];
+							SetOptions[OpenWrite, FormatType->FortranForm, PageWidth-> pagewidth];
 
-								WriteString[file, "        ", (vv[[iv]])//FortranForm,"= "];
-								If[ !FreeQ2[{ be0, be1, be00, be11, db0, ce0, de0 },
-											Map[Head, Select[ Variables[ReleaseHold[ vv[[iv]] ]
-																	]/.finsubst,
-															!FreeQ2[{be0, be1, be00, be11,
-																	db0, ce0, de0
-																	}, Head[#] ]& ]
-												]
-											],
-									Apply[WriteString,{file, StringReplace[ToString[ansg[
-													( ReleaseHold[vv[[iv]]]/.finsubst ) /.
-													SmallVariable->Identity/.
-														Power->pww ] /. ansg->Identity,
-													FormatType->FortranForm, PageWidth->pagewidth],
-																	Flatten[{"Null" -> "0D0", strep}]]
-													}];
-									Write[file],
-									Write[file, ReleaseHold[vv[[iv]]]/.
-									SmallVariable->Identity/.Power->pww ];
-								];
+							If[ d0convention === 0,
+								ansg[x_] :=
+									x/. 0 -> Null/.  finsubst
+							];
+							If[ d0convention === 1,
+								ansg[v_. x_] :=
+									(v x)/; FreeQ2[(v x)/.finsubst,
+													{de0, ce0, be0, aa0, db0}];
+								ansg[v_. x_] :=
+									Block[ {args,t4,t5,t6,ll},
+										args = Apply[List, x];
+										t4 = Take[args,4];
+										t5 = args[[5]];
+										t6 = args[[6]];
+										ll = PowerExpand[ Sqrt[Take[args,-4]] ] /. finsubst;
+										(v (Apply[de0, Join[t4, {t6,t5}, ll]]) /. 0 -> Null)
+									] /;
+									( (Head[x/.finsubst]===(de0)) && (Head[v/.finsubst] =!= (de0)) );
+								ansg[v_. x_] :=
+									Block[ {args, mm},
+										args = List @@ x;
+										mm = PowerExpand[ Sqrt[Take[args,-3]] ] /. finsubst;
+										(v (ce0@@Join[Take[args,3], mm])/. 0 -> Null)
+									] /;
+									( (Head[x/.finsubst]===(ce0)) && (Head[v/.finsubst] =!= (ce0)) );
+								ansg[x_] :=
+									Block[ {args, mm},
+										args = List@@x;
+										mm = PowerExpand[ Sqrt[Take[args,-2]] ] /. finsubst;
+										((be0@@Join[{args[[1]]}, mm])/. 0 ->Null)
+									]/;
+											Head[x/.finsubst]===(be0);
+								ansg[v_. x_] :=
+									Block[ {args, mm},
+										args = List@@x;
+										mm = PowerExpand[ Sqrt[Take[args,-2]] ] /. finsubst;
+										(v (db0@@Join[{args[[1]]}, mm])/. 0 -> Null)
+									] /;
+									( (Head[x/.finsubst]===(db0)) && (Head[v/.finsubst] =!= (db0)) );
+								ansg[x_] :=
+									Block[ {mm},
+										mm = PowerExpand[ Sqrt[x] ] /. finsubst;
+										aa0[mm]
+									] /; Head[x/.finsubst]===(aa0);
+							];
+							If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
+								For[iv = 1, iv<=Length[vv], iv++,
+
+									WriteString[file, "        ", (vv[[iv]])//FortranForm,"= "];
+									If[ !FreeQ2[{ be0, be1, be00, be11, db0, ce0, de0 },
+										Map[Head, Select[ Variables[ReleaseHold[ vv[[iv]]]]/.finsubst, !FreeQ2[{be0, be1, be00, be11, db0, ce0, de0}, Head[#] ]& ]]
+										],
+										Apply[WriteString,{file, StringReplace[ToString[ansg[(ReleaseHold[vv[[iv]]]/.finsubst) /.
+											SmallVariable->Identity/. Power->pww ] /. ansg->Identity,
+											FormatType->FortranForm, PageWidth->pagewidth],
+											Flatten[{"Null" -> "0D0", strep}]]
+										}];
+										Write[file],
+										Write[file, ReleaseHold[vv[[iv]]]/. SmallVariable->Identity/.Power->pww ];
+									];
 								]
-						];
-						WriteString[file, "        ",FortranForm[eqj1]," = "];
-						(* 	Seems that the internal behavior of Write has changed in MMA 10, which is
-							why we need this trick with tmp...	*)
-						tmp = ansg[(eqj2/.SmallVariable-> Identity/. Power->pww )/.finsubst]
-							/. ansg -> Identity;
-						If [$VersionNumber >= 10,
-							tmp = FortranForm[tmp]
-						];
-						Write[file, tmp];
-						SetOptions @@ Prepend[oldopenops, OpenWrite]
+							];
+							WriteString[file, "        ",FortranForm[eqj1]," = "];
+							(* 	Seems that the internal behavior of Write has changed in MMA 10, which is
+								why we need this trick with tmp...	*)
+							tmp = ansg[(eqj2/.SmallVariable-> Identity/. Power->pww )/.finsubst] /. ansg -> Identity;
+							If [$VersionNumber >= 10,
+								tmp = FortranForm[tmp]
+							];
+							Write[file, tmp];
+							SetOptions @@ Prepend[oldopenops, OpenWrite]
 					](* endWhich *)
 			]; (* end j - loop *)
-		If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
+
+		FCPrint[1, "Write2: Finished the j-loop.", FCDoControl->w2Verbose];
+
+
+		If[ optFormatType === FortranForm,
 			If[ postfortran =!= {""},
 				If[ FileType[postfortran[[1]]] =!= None,
 					If[ Head[postfortran===String],
@@ -379,7 +406,7 @@ Write2[file_String, eeq__, opts___Rule] :=
 		];
 		Close @@ {file};
 		(* for Fortran: check if no line is larger than 72 columns*)
-		If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
+		If[ optFormatType === FortranForm,
 			rfile = ReadList[file, Record];
 			rfile = StringReplace[#, "=         "->"= "]&/@rfile;
 			If[ MatchQ[strep , {__Rule}],
