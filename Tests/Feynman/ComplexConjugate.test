@@ -38,5 +38,17 @@ Tests`Feynman`fcstComplexConjugate = {
 {"fcstComplexConjugate-ID11","ComplexConjugate[aaa,Conjugate->{aaa}]",
 	"Conjugate[aaa]"},
 {"fcstComplexConjugate-ID12","ComplexConjugate[SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]]",
-	"SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]"}
+	"SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]"},
+{"fcstComplexConjugate-ID13","ComplexConjugate[SpinorUBar[k].GA[mu].(1 - la GA[5]).SpinorU[p, m], FCE -> True]",
+"Spinor[Momentum[p], m, 1].(1 + la GA[5]).GA[mu].Spinor[Momentum[k], 0, 1]"},
+{"fcstComplexConjugate-ID14","ComplexConjugate[Spinor[-Momentum[p1], 0, 1].GA[al].(CRE GA[6] + CLE GA[7]).Spinor[Momentum[p2], 0, 1], FCE -> True]",
+"Spinor[Momentum[p2], 0, 1] . (CLE*GA[6] + CRE*GA[7]) . GA[al] . Spinor[-Momentum[p1], 0, 1]"},
+{"fcstComplexConjugate-ID15","ComplexConjugate[Spinor[Momentum[p4], M4, 1].GA[
+be].(OR GA[6] + OL GA[7]).(-MGJ + GS[p3] + GS[p5]).(CA1 FMIX1A (A2 GA[6] + A1 GA[7]) + CA2 FMIX2A (A4 GA[6] + A3 GA[7])).Spinor[-Momentum[p5], M5, 1], FCE -> True]",
+"Spinor[-Momentum[p5], M5, 1] . (CA1*FMIX1A*(A1*GA[6] + A2*GA[7]) + CA2*FMIX2A*(A3*GA[6] + A4*GA[7])) . (-MGJ + GS[p3] + GS[p5]) . (OL*GA[6] + OR*GA[7]) . GA[be] .
+Spinor[Momentum[p4], M4, 1]"},
+{"fcstComplexConjugate-ID16","ComplexConjugate[Spinor[Momentum[k2], mb, 1].(mb GA[6] + GA[7] mt), FCE -> True]",
+	"(mt*GA[6] + mb*GA[7]) . Spinor[Momentum[k2], mb, 1]"},
+{"fcstComplexConjugate-ID17","ComplexConjugate[(mb GA[6] + GA[7] mt), FCE -> True]",
+	"(mt*GA[6] + mb*GA[7])"}
 };

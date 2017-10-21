@@ -58,6 +58,9 @@ FCE -> True]//Simplify",
 	(FVD[q, nu]*(-SPD[k1hat, q] + 2*SPD[Phat, q] +
 	(-1 + SPD[k1hat, k1hat] - 4*SPD[k1hat, Phat] + 4*SPD[Phat, Phat])*
 	Sqrt[m^2 - SPD[q, q]]) + FVD[k1hat, nu]*(m^2 - SPD[q, q]) -
-	2*FVD[Phat, nu]*(m^2 - SPD[q, q])))/Sqrt[m^2 - SPD[q, q]]"}
+	2*FVD[Phat, nu]*(m^2 - SPD[q, q])))/Sqrt[m^2 - SPD[q, q]]"},
+{"fcstFourDivergence-ID15","FourDivergence[ScalarProduct[p, w]*SpinorUBar[p2, m].GS[w].SpinorU[p1, m], FV[w, a],FCE -> True]",
+	"Spinor[Momentum[p2], m, 1].GS[w].Spinor[Momentum[p1], m, 1] FV[p, a] +
+Spinor[Momentum[p2], m, 1].GA[a].Spinor[Momentum[p1], m, 1] SP[p, w]"}
 };
 

@@ -875,5 +875,33 @@ StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Mome
 StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]] +
 (PaVe[2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
 	2*PaVe[2, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
-StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]])"}
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]])"},
+{"fcstOneLoop-ID12","OneLoop[k,
+FVD[k, a] SPD[k, p] SPD[k] FAD[{k, my}, {k + p - q, mw}, {k + p + q, mw}], FCE -> True] //
+Collect2[#, FeynCalc`Package`PaVeHeadsList] &","((I/8)*my^2*Pi^2*B0[SP[p, p] - 2*SP[p, q] + SP[q, q], mw^2, my^2]*(FV[p, a] - FV[q, a])*(mw^2 - my^2 - SP[p, p] + 2*SP[p, q] - SP[q, q]))/
+(SP[p, p] - 2*SP[p, q] + SP[q, q]) + ((I/8)*my^2*Pi^2*B0[SP[p, p] + 2*SP[p, q] + SP[q, q], mw^2, my^2]*(FV[p, a] + FV[q, a])*
+(mw^2 - my^2 - SP[p, p] - 2*SP[p, q] - SP[q, q]))/(SP[p, p] + 2*SP[p, q] + SP[q, q]) -
+(2*I)*Pi^2*FV[q, a]*PaVe[1, {4*SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q]}, {mw^2, mw^2, my^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]*(SP[p, p] + SP[p, q])*(SP[p, p] + 2*SP[p, q] + SP[q, q]) +
+I*Pi^2*(FV[p, a] - FV[q, a])*PaVe[2, {4*SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q]}, {mw^2, mw^2, my^2},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]*(SP[p, p] + SP[p, q])*(SP[p, p] + 2*SP[p, q] + SP[q, q]) +
+((I/4)*my^2*Pi^2*A0[my^2]*(FV[p, a]*SP[p, p] - 2*FV[q, a]*SP[p, q] + FV[p, a]*SP[q, q]))/
+((SP[p, p] - 2*SP[p, q] + SP[q, q])*(SP[p, p] + 2*SP[p, q] + SP[q, q])) +
+I*Pi^2*FV[q, a]*PaVe[1, {4*SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q]}, {mw^2, mw^2, my^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]*(-(mw^2*my^2) + my^4 + my^2*SP[p, p] - 2*SP[p, p]^2 - 6*SP[p, p]*SP[p, q] - 4*SP[p, q]^2 + my^2*SP[q, q] - 2*SP[p, p]*SP[q, q] -
+2*SP[p, q]*SP[q, q]) + (I/2)*Pi^2*(FV[p, a] + FV[q, a])*PaVe[2, {4*SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q]},
+{mw^2, mw^2, my^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*(-(mw^2*my^2) + my^4 + my^2*SP[p, p] - 2*SP[p, p]^2 - 6*SP[p, p]*SP[p, q] -
+4*SP[p, q]^2 + my^2*SP[q, q] - 2*SP[p, p]*SP[q, q] - 2*SP[p, q]*SP[q, q]) +
+(I/2)*Pi^2*C0[4*SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q], mw^2, mw^2, my^2]*
+(-(mw^2*my^2*FV[p, a]) + my^4*FV[p, a] - mw^2*my^2*FV[q, a] + my^4*FV[q, a] + my^2*FV[p, a]*SP[p, p] + my^2*FV[q, a]*SP[p, p] - 4*FV[q, a]*SP[p, p]^2 -
+12*FV[q, a]*SP[p, p]*SP[p, q] - 8*FV[q, a]*SP[p, q]^2 + my^2*FV[p, a]*SP[q, q] + my^2*FV[q, a]*SP[q, q] - 4*FV[q, a]*SP[p, p]*SP[q, q] -
+4*FV[q, a]*SP[p, q]*SP[q, q]) + ((I/2)*Pi^2*B0[4*SP[q, q], mw^2, mw^2]*(-2*mw^2*FV[q, a]*SP[p, q] + 2*mw^2*FV[p, a]*SP[q, q] - my^2*FV[p, a]*SP[q, q] +
+	D*my^2*FV[p, a]*SP[q, q] - 2*FV[p, a]*SP[p, p]*SP[q, q] + 2*D*FV[p, a]*SP[p, p]*SP[q, q] + 2*FV[q, a]*SP[p, q]*SP[q, q] - 2*FV[p, a]*SP[q, q]^2))/
+((-1 + D)*SP[q, q]) + ((I/4)*Pi^2*A0[mw^2]*(4*FV[q, a]*SP[p, p]^2*SP[p, q] - 2*D*FV[q, a]*SP[p, p]^2*SP[p, q] - 16*FV[q, a]*SP[p, q]^3 +
+	8*D*FV[q, a]*SP[p, q]^3 - my^2*FV[p, a]*SP[p, p]*SP[q, q] + D*my^2*FV[p, a]*SP[p, p]*SP[q, q] - 2*FV[p, a]*SP[p, p]^2*SP[q, q] +
+	2*my^2*FV[q, a]*SP[p, q]*SP[q, q] - 2*D*my^2*FV[q, a]*SP[p, q]*SP[q, q] + 8*FV[q, a]*SP[p, p]*SP[p, q]*SP[q, q] -
+	4*D*FV[q, a]*SP[p, p]*SP[p, q]*SP[q, q] + 8*FV[p, a]*SP[p, q]^2*SP[q, q] - my^2*FV[p, a]*SP[q, q]^2 + D*my^2*FV[p, a]*SP[q, q]^2 -
+	4*FV[p, a]*SP[p, p]*SP[q, q]^2 + 4*FV[q, a]*SP[p, q]*SP[q, q]^2 - 2*D*FV[q, a]*SP[p, q]*SP[q, q]^2 - 2*FV[p, a]*SP[q, q]^3))/
+((-1 + D)*(-SP[p, p] + 2*SP[p, q] - SP[q, q])*SP[q, q]*(SP[p, p] + 2*SP[p, q] + SP[q, q]))"},
+{"fcstOneLoop-ID13","OneLoop[q, FAD[{q, m1}, {p + q - k, m2}]]//FCE","I \[Pi]^2 B0[SP[k, k] - 2 SP[k, p] + SP[p, p], m1^2, m2^2]"}
 }

@@ -88,8 +88,51 @@ DiracTraceEvaluate -> True, FCE -> True]","GA[a].GA[b].GA[c].GA[d] + 4 MT[a, d] 
 "-(GS[p].GA[6]/b) - GS[q].GA[6]/b"},
 {"fcstDiracSimplify-ID27",
 "DiracSimplify[GA[i, 5, j, i], DiracSubstitute5 -> True, FCE -> True]",
-"-2 GA[j].GA[6] + 2 GA[j].GA[7]"}
+"-2 GA[j].GA[6] + 2 GA[j].GA[7]"},
+{"fcstDiracSimplify-ID28",
+"DiracSimplify[DiracTrace[(m + GS[k1]).GA[6].GA[nu].
+(m + GS[k2]).GA[mu].GA[7]], DiracTraceEvaluate -> True,
+FCE -> True]",
+"2 FV[k1, nu] FV[k2, mu] + 2 FV[k1, mu] FV[k2, nu] -
+2 MT[mu, nu] SP[k1, k2] + 2 I LC[mu, nu][k1, k2]"},
+
+
+{"fcstDiracSimplify-ID29",
+"DiracSimplify[1/(2 (ieps + SP[q, q]))
+SpinorUBar[p - q,
+m1].(-(1/2)
+I kappa (1/4 ((FV[p, b] + FV[p - q, b]) GA[a] + (FV[p, a] + FV[p - q, a]) GA[b]) -
+1/2 (-m1 + 1/2 (GS[p] + GS[p - q])) MT[a, b])).SpinorU[p,
+m1] SpinorUBar[p + q, m2].(-(1/2) I kappa (1/4 ((FV[p, d] + FV[p + q, d]) GA[
+c] + (FV[p, c] + FV[p + q, c]) GA[d]) -
+1/2 (-m2 + 1/2 (GS[p] + GS[p + q])) MT[c, d])).SpinorU[p,
+m2] (MT[a, d] MT[b, c] + MT[a, c] MT[b, d] -
+MT[a, b] MT[c, d])] // Contract //
+FCCanonicalizeDummyIndices[#,
+	LorentzIndexNames -> {mu, nu}] & // FCE",
+"(kappa^2 m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2,
+	1] Spinor[Momentum[p - q], m1, 1].GS[p].Spinor[Momentum[p], m1,
+	1])/(8 (ieps + SP[q, q])) + (
+kappa^2 m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2,
+	1] Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1])/(16 (ieps + SP[q, q])) - (
+kappa^2 Spinor[Momentum[p - q], m1, 1].GS[p].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[p].Spinor[Momentum[p], m2,
+	1])/(8 (ieps + SP[q, q])) - (
+kappa^2 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[p].Spinor[Momentum[p], m2,
+	1])/(8 (ieps + SP[q, q])) - (
+kappa^2 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+	1])/(32 (ieps + SP[q, q])) +
+Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
+	1] (-((kappa^2 SP[p, p])/(8 (ieps + SP[q, q]))) + (
+	kappa^2 SP[q, q])/(32 (ieps + SP[q, q])))"}
 };
+
+
+
 
 
 Tests`Dirac`fcstDiracSimplifySirlin =
