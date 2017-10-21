@@ -13,10 +13,6 @@
 CombineGraphs::usage =
 "CombineGraphs is an option for OneLoopSum.";
 
-DenominatorOrder::usage =
-"DenominatorOrder is an option for OneLoop, if set to True the \
-PropagatorDenominator will be ordered in a standard way.";
-
 FinalFunction::usage = "FinalFunction is an option for OneLoopSum.";
 
 ExtraVariables::usage =
@@ -108,7 +104,6 @@ spinorchainevaluate[x_] :=
 
 
 Options[OneLoop] = {
-	DenominatorOrder			-> False,
 	Dimension					-> D,
 	FCE							-> False,
 	FCVerbose					-> False,
@@ -149,7 +144,7 @@ OneLoop[qq_,amp_, opts:OptionsPattern[]] :=
 	OneLoop[False, qq,amp,opts]/; qq=!=False;
 
 OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
-	Block[ {oneamp, iv,onemandel, denf, denorder, denprop,
+	Block[ {oneamp, iv,onemandel, denf, denprop,
 			isolateNames,tric, smallv,finalSubstitutions,writeOut, tostandmat, vva,isol,i,
 			$higherpoint, pva,pvar,arglist,npref, formatType, prode,
 			collpav,prefactor, newprefactor, newnewprefactor,
@@ -176,7 +171,6 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 		];
 
 		onemandel					= OptionValue[Mandelstam];
-		denorder					= OptionValue[DenominatorOrder];
 		dim							= OptionValue[Dimension];
 		formatType					= OptionValue[FormatType];
 		isolateNames				= OptionValue[IsolateNames];
@@ -1961,7 +1955,6 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 
 					FCPrint[3, "OneLoop: tdec: tdecenew ", tdecnew, FCDoControl->oneloopVerbose];
 
-					(* if the option DenominatorOrder is True, then order here again *)
 					pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]];
 
 					FCPrint[3, "OneLoop: tdec: pav0: ", pav0, FCDoControl->oneloopVerbose];
