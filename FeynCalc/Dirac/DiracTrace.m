@@ -439,7 +439,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 		];
 
-		FCPrint[1,"DiracTrace: diracTraceEvaluate: Main part finished, timing:",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+		FCPrint[1,"DiracTrace: diracTraceEvaluate: Main part finished, timing: ",N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 
 		(*	At this point there should be no Dirac matrices left, by definition.
 			The only allowed exception are objects wrapped into noSpur *)

@@ -235,6 +235,8 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			]
 		];
 
+		FCPrint[3, "DiracSimplify: Intermediate result: ", tmp, FCDoControl->dsVerbose];
+
 		(* To simplify products of spinor chains we need to work with the full expression	*)
 		If[	!FreeQ[tmp,Spinor],
 
