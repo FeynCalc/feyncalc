@@ -66,6 +66,7 @@ Options[TID] = {
 	EpsEvaluate ->True,
 	Factoring -> Factor2,
 	FCI -> False,
+	FCE -> False,
 	FCVerbose -> False,
 	FeynAmpDenominatorCombine -> True,
 	FDS -> True,
@@ -435,6 +436,10 @@ TID[am_ , q_, OptionsPattern[]] :=
 			res = EpsEvaluate[res, FCI->True];
 			FCPrint[1, "TID: Done applying EpsEvaluate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After EpsEvaluate: ", res , FCDoControl->tidVerbose]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		res
