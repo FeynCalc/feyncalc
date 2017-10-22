@@ -1,0 +1,35 @@
+(* :Title: FCSchoutenBruteForce.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCSchoutenBruteForce		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCSchoutenBruteForce =
+({
+{"fcstFCSchoutenBruteForce-ID1", "FCSchoutenBruteForce[1,{},{}]",
+"1"},
+{"fcstFCSchoutenBruteForce-ID2",
+"FCSchoutenBruteForce[LC[][p1,p2,p3,p4]SP[p5,p6]+LC[][p2,p3,p4,p5]\
+SP[p1,p6]+LC[][p3,p4,p5,p1]SP[p2,p6]+LC[][p4,p5,p1,p2]SP[p3,p6],{},{},\
+Rule\[Rule]False,Information\[Rule]False]",
+"Eps[Momentum[p1], Momentum[p2], Momentum[p3], \
+Momentum[p5]]*Pair[Momentum[p4], Momentum[p6]]"},
+{"fcstFCSchoutenBruteForce-ID3",
+"FCSchoutenBruteForce[LC[][p1,p2,p3,p4]SP[p5,p6]+LC[][p2,p3,p4,p5]\
+SP[p1,p6]+LC[][p3,p4,p5,p1]SP[p2,p6]+LC[][p4,p5,p1,p2]SP[p3,p6],{},{},\
+Rule\[Rule]False,Information\[Rule]False,Take\[Rule]2]",
+"Eps[Momentum[p1], Momentum[p2], Momentum[p3], \
+Momentum[p5]]*Pair[Momentum[p4], Momentum[p6]]"},
+{"fcstFCSchoutenBruteForce-ID4",
+"FCSchoutenBruteForce[LC[][p1,p2,p3,p4]SP[p5,p6]+LC[][p2,p3,p4,p5]\
+SP[p1,p6]+LC[][p3,p4,p5,p1]SP[p2,p6]+LC[][p4,p5,p1,p2]SP[p3,p6]+LC[][\
+p5,p1,p2,p3]SP[p4,p6],{},{},Rule\[Rule]False,Information\[Rule]False]\
+", "0"}
+});

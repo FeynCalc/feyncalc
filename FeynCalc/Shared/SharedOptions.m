@@ -204,6 +204,21 @@ specifying in which order the arguments of D0 are to be permuted.";
 
 QuarkMass::usage= "QuarkMass is an option of Amplitude.";
 
+SchoutenAllowZeroGain::usage=
+"SchoutenAllowZeroGain is an option for FCSchoutenBruteForce and other \
+functions that attempt to simplify the input expression by applying Schouten's \
+identity. When set to True, the algorithm would apply Schouten's identity \
+to the given expression even if this does not decrease the total number of terms \
+in the expression. This is sometimes useful when the algorithm gets stuck and
+cannot find further transformation that would make the expression shorter.";
+
+SchoutenAllowNegativeGain::usage=
+"SchoutenAllowZeroGain is an option for FCSchoutenBruteForce and other \
+functions that attempt to simplify the input expression by applying Schouten's \
+identity. It is similar to SchoutenAllowZeroGain with the difference that even \
+transformations that increase the total number of terms might be applied in an \
+attempt to  arrive to shorter expressions at a a later stage.";
+
 SpinPolarizationSum::usage=
 "SpinPolarizationSum is an option for SquareAmplitude and \
 FermionSpinSum. The set (pure) function acts on the usual spin sum.";
