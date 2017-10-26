@@ -44,9 +44,9 @@ FAPatch::already =
 Begin["`Package`"]
 End[]
 
-nmodels::usage="";
-
 Begin["`FAPatch`Private`"]
+
+nmodels::usage="";
 
 FCFilePatch[input_String, output_String, replacements_List] :=
 	Block[{tmp, res},
@@ -175,7 +175,7 @@ FAPatch[OptionsPattern[]] :=
 			nmodels=0;
 			Map[FCFilePatch[#, #, repList] &, allfiles];
 			If[ nmodels=!=0,
-				FCPrint[0, "Patched " <> nmodels <> " FeynArts models.\n", UseWriteString -> True];
+				FCPrint[0, "Patched " <> ToString[nmodels] <> " FeynArts models.\n", UseWriteString -> True];
 			]
 
 		]

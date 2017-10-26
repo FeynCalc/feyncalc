@@ -7,6 +7,9 @@
 (* Always load TARCER	*)
 (*	$LoadTARCER=True;	*)
 
+(* Do not check contexts for strange objects *)
+(* $FCCheckContext = False *)
+
 (* Disable automatic detection of unpatched FeynArts *)
 (*	$FAPatch = True;	*)
 

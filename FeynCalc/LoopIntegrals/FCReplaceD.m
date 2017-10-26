@@ -36,9 +36,9 @@ FCReplaceD::repfail=
 Begin["`Package`"]
 End[]
 
-fcrdVerbose::usage="";
-
 Begin["`FCReplaceD`Private`"]
+
+fcrdVerbose::usage="";
 
 Options[FCReplaceD] = {
 	FCE -> False,

@@ -77,10 +77,25 @@ during their evaluation. While this can be useful for long computations,
 on short expressions the progress bars make evaluating slightly slower.
 By default $FCCheckProgress is set to False.";
 
+$FCCheckContext::usage =
+"If set to True, FeynCalc will try to detect unwanted leakage of internal \
+objects into the Global or FeynCalc contexts. The default value is False,
+however $FCCheckContext will be automatically enabled in the development
+version.";
+
 $FCCloudTraditionalForm::usage=
 "$FCCloudTraditionalFormetermines whether the the cell output will be done \
 in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting
 $Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
+
+$FeynCalcStartupMessages::usage=
+"$FeynCalcStartupMessages specifies whether some additional information about \
+FeynCalc should be displayed when the package is loaded. Its value must be set \
+before loading FeynCalc. The default value is True.";
+
+$FeynCalcDevelopmentVersion::usage =
+"The boolean setting of $FeynCalcDevelopmentVersion determines whether \
+the current version is a development or a stable version.";
 
 $FCTensorList::usage =
 "$FCTensorList contains a list of all tensor heads present.";
@@ -194,6 +209,26 @@ of the user to ensure that IR divergences are properly regulated, \
 such that no mixing of Epsilons from IR and UV can occur. The default \
 value of $$LimitTo4IRUnsafe is False.";
 
+$LoadAddOns::usage =
+"$LoadAddOns specifies which addons should be loaded with FeynCalc. \
+E.g. $LoadAddOns={\"FeynHelpers\"}. The value must be set before \
+loading FeynCalc. The default value is False.";
+
+$LoadFeynArts::usage =
+"$LoadFeynArts specifices whether FeynArts should be loaded together \
+with FeynCalc. Its value must be set before loading FeynCalc. \
+The default value is False.";
+
+$LoadPhi::usage =
+"$LoadPhi specifices whether PHI should be loaded together \
+with FeynCalc. Its value must be set before loading FeynCalc. \
+The default value is False.";
+
+$LoadTARCER::usage =
+"$LoadTARCER specifices whether TARCER should be loaded together \
+with FeynCalc. Its value must be set before loading FeynCalc. \
+The default value is False.";
+
 $LorentzIndices::usage =
 "$LorentzIndices is a global variable. If set to True the dimension \
 of LorentzIndex is displayed as an index.";
@@ -223,6 +258,12 @@ scalar product value has been defined.";
 
 $OPEWard::usage =
 "$OPEWard is experimental.";
+
+$RenameFeynCalcObjects::usage =
+"$RenameFeynCalcObjects specifies a List of replacement rules that \
+allow to rename FeynCalc objects on the run to avoid conflicts with \
+other package before FeynCalc is loaded (monkey patching). The value
+of $RenameFeynCalcObjects must be specified before loading FeynCalc.";
 
 TBox::usage =
 "TBox[a, b, ...] produces a RowBox[{a,b, ...}] where \
@@ -266,6 +307,9 @@ Edit->Preferences->Evaluation.";
 FeynCalc::nrfail =
 "This function is not yet ready to work with new non-covariant objects \
 in FeynCalc.";
+
+FeynCalc::context =
+"FeynCalc has detected strange objects in the Global or FeynCalc contexts.";
 
 FCDoControl::usage =
 "FCDoControl is an option for FCPrint that specifies which variable

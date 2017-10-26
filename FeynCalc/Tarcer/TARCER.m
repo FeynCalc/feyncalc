@@ -3706,7 +3706,7 @@ TBIS[d_, (M_)^2, {{\[Alpha]_, 0}, {\[Beta]_, 0}}] :=
 	((Gamma[d/2 - \[Alpha]]*Gamma[d/2 - \[Beta]])/ Gamma[d - \[Alpha] - \[Beta]]));
 
 TJIS[d_Symbol, (M_)^2, {{1, M_}, {1, M_}, {1, M_}}] :=
-	M^2*SMu^2*(-(6/(-4 + d)^2) + 17/(2*(-4 + d)) + (1/8)*(-59 - 2*Pi^2) + (-4 + d)^3*TJI111e +
+	M^2*SMu^2*(-(6/(-4 + d)^2) + 17/(2*(-4 + d)) + (1/8)*(-59 - 2*Pi^2) + (-4 + d)^3*FCGV["TJI111e"] +
 	(1/ 1920)*((-4 + d)^2*(16755 - 4750*Pi^2 - 14*Pi^4 + 3840*Pi^2*Log[2] - 12080*Zeta[3])) +
 	(1/96)*(-4 + d)*(195 + 98*Pi^2 - 48*Zeta[3]));
 
@@ -4179,7 +4179,7 @@ $BasisIntegrals = {
 		(M^2*Gamma[3 - d]*Gamma[2 - d/2]*Gamma[-1 + d/2]^2*Gamma[-5 + 2*d]*E^((4 - d)*EulerGamma) Prefactor1[(M^2)^(-4 + d)*SEpsilon[d]^2])/(Gamma[-2 + d]*Gamma[-3 + (3*d)/2]),
 
 	TJI[d_Symbol, (M_)^2, {{1, M_}, {1, M_}, {1, M_}}]->
-		M^2*Prefactor1[(M^2)^(-4 + d)*SEpsilon[d]^2]*(-6/(-4 + d)^2 + 17/(2*(-4 + d)) + (-59 - 2*Pi^2)/8 + (-4 + d)^3*TJI111e +
+		M^2*Prefactor1[(M^2)^(-4 + d)*SEpsilon[d]^2]*(-6/(-4 + d)^2 + 17/(2*(-4 + d)) + (-59 - 2*Pi^2)/8 + (-4 + d)^3*FCGV["TJI111e"] +
 		((-4 + d)^2*(16755 - 4750*Pi^2 - 14*Pi^4 + 3840*Pi^2*Log[2] - 12080*Zeta[3]))/1920 + ((-4 + d)*(195 + 98*Pi^2 - 48*Zeta[3]))/96),
 
 	TJI[d_, 0, {{1, M_}, {1, M_}, {1, 0}}]->(M^2*Gamma[3 - d]*Gamma[2 - d/2]^2*Gamma[-1 + d/2]*E^((4 - d)*EulerGamma)*

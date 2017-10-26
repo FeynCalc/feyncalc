@@ -29,10 +29,12 @@ If[ ($VersionNumber < 8.0),
 ];
 
 (*    Find out where FeynCalc is installed    *)
-If[ !ValueQ[FeynCalc`$FeynCalcDirectory],
-	FeynCalc`$FeynCalcDirectory =
-	DirectoryName[$InputFileName]
+If[ !ValueQ[Global`$FeynCalcDirectory],
+	(* By default FeynCalc is assumed to be located in the directory that contains FeynCalc.m *)
+	FeynCalc`$FeynCalcDirectory = DirectoryName[$InputFileName],
+	FeynCalc`$FeynCalcDirectory = Global`$FeynCalcDirectory
 ];
+Remove[Global`$FeynCalcDirectory];
 
 If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 	Print[Style["Could not find a FeynCalc installation. Evaluation aborted.",Red,Bold]];
@@ -43,60 +45,94 @@ If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 (*    Set the version number    *)
 FeynCalc`$FeynCalcVersion = "9.3.0";
 
-(*    Set defaults here, not in the config file    *)
 If[ !ValueQ[Global`$FeynCalcStartupMessages],
-	Global`$FeynCalcStartupMessages = True
+	FeynCalc`$FeynCalcStartupMessages = True,
+	FeynCalc`$FeynCalcStartupMessages = Global`$FeynCalcStartupMessages
 ];
+Remove[Global`$FeynCalcStartupMessages];
 
 If[ !ValueQ[Global`$LoadTARCER],
-	Global`$LoadTARCER = False
+	(* Do not load TARCER by default *)
+	FeynCalc`$LoadTARCER = False,
+	FeynCalc`$LoadTARCER = Global`$LoadTARCER
 ];
+Remove[Global`$LoadTARCER]
 
 If[ !ValueQ[Global`$LoadPhi],
-	Global`$LoadPhi = False
+	(* Do not load Phi by default *)
+	FeynCalc`$LoadPhi = False,
+	FeynCalc`$LoadPhi = Global`$LoadPhi
 ];
+Remove[Global`$LoadPhi]
 
 If[ !ValueQ[Global`$LoadFeynArts],
-	Global`$LoadFeynArts = False
+	(* Do not load FeynArts by default *)
+	FeynCalc`$LoadFeynArts = False,
+	FeynCalc`$LoadFeynArts = Global`$LoadFeynArts
 ];
+Remove[Global`$LoadFeynArts];
 
-If[ !ValueQ[FeynCalc`$FAPatch],
-	FeynCalc`$FAPatch = True
+If[ !ValueQ[Global`$FAPatch],
+	FeynCalc`$FAPatch = True,
+	FeynCalc`$FAPatch = Global`$FAPatch
 ];
+Remove[Global`$FAPatch]
 
-If[ !ValueQ[FeynCalc`$FCAdvice],
-	FeynCalc`$FCAdvice = True
+If[ !ValueQ[Global`$FCAdvice],
+	FeynCalc`$FCAdvice = True,
+	FeynCalc`$FCAdvice = Global`$FCAdvice
 ];
+Remove[Global`$FCAdvice]
 
 If[ !ValueQ[Global`$LoadAddOns],
-	Global`$LoadAddOns = {}
+	FeynCalc`$LoadAddOns = {},
+	FeynCalc`$LoadAddOns = Global`$LoadAddOns
 ];
+Remove[Global`$LoadAddOns];
 
 If[ !ValueQ[Global`$RenameFeynCalcObjects],
-	Global`$RenameFeynCalcObjects = {}
+	FeynCalc`$RenameFeynCalcObjects = {},
+	FeynCalc`$RenameFeynCalcObjects = Global`$RenameFeynCalcObjects
 ];
+Remove[Global`$RenameFeynCalcObjects];
 
 If[ !ValueQ[Global`$FCCloudTraditionalForm],
-	FeynCalc`$FCCloudTraditionalForm = True;
-	Remove[Global`$FCCloudTraditionalForm],
-	FeynCalc`$FCCloudTraditionalForm = Global`$FCCloudTraditionalForm;
-	Remove[Global`$FCCloudTraditionalForm]
+	FeynCalc`$FCCloudTraditionalForm = True,
+	FeynCalc`$FCCloudTraditionalForm = Global`$FCCloudTraditionalForm
 ];
+Remove[Global`$FCCloudTraditionalForm];
 
 If[ !ValueQ[FeynCalc`$FeynArtsDirectory],
 	FeynCalc`$FeynArtsDirectory = FileNameJoin[{FeynCalc`$FeynCalcDirectory, "FeynArts"}]
 ];
 
-(*    Load configuration file    *)
+(*    Load the configuration file    *)
 If[ FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]],
 	Get[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]]
 ];
 
-If[ Global`$FeynCalcStartupMessages=!=False,
+If[ FeynCalc`$FeynCalcStartupMessages=!=False,
 	PrintTemporary[Style["Loading FeynCalc from "<>
 	FeynCalc`$FeynCalcDirectory, "Text"]]
 ];
 
+If[	TrueQ[FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory, ".testing"}]]],
+	FeynCalc`$FeynCalcDevelopmentVersion = True,
+	FeynCalc`$FeynCalcDevelopmentVersion = False
+];
+
+If[ !ValueQ[Global`$FCCheckContext],
+	If[	TrueQ[FeynCalc`$FeynCalcDevelopmentVersion],
+		FeynCalc`$FCCheckContext = True,
+		FeynCalc`$FCCheckContext = False
+	],
+	FeynCalc`$FCCheckContext = Global`$FCCheckContext
+];
+Remove[Global`$FCCheckContext];
+
+
+
+Global`globalContextBeforeLoadingFC = Names["Global`*"];
 
 BeginPackage["FeynCalc`"];
 
@@ -159,18 +195,15 @@ listExportImport = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"ExportImpor
 listMisc = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Misc"}]];
 
 fcSelfPatch[file_String]:=
-	Block[{originalCode,repList,patchedCode},
+	Block[{originalCode,repList},
 
 		repList = Map[{
 				Rule[RegularExpression["\\b" <> First[#] <> "\\b"], Last[#]],
 				Rule[RegularExpression["\\_" <> First[#] <> "\\b"], "_" <> Last[#]],
-				Rule[RegularExpression[First[#] <> "\\_\\b"], Last[#] <> "_"]} &, Global`$RenameFeynCalcObjects] // Flatten;
+				Rule[RegularExpression[First[#] <> "\\_\\b"], Last[#] <> "_"]} &, $RenameFeynCalcObjects] // Flatten;
 		originalCode = Import[file, "Text"];
 		StringReplace[originalCode, repList, MetaCharacters -> Automatic]
 	];
-
-
-
 
 
 AppendTo[$ContextPath, "FeynCalc`Package`"];
@@ -226,6 +259,15 @@ ToExpression/@patchedMisc;
 
 EndPackage[];
 
+Remove["FeynCalc`boostrappingList"];
+Remove["FeynCalc`fcSelfPatch"];
+Remove["FeynCalc`list*"];
+Remove["FeynCalc`patched*"];
+Remove["FeynCalc`originalCode"];
+Remove["FeynCalc`repList"];
+Remove["FeynCalc`file"];
+
+
 (*Let us check the configuration of Mathematica and give the user some advices, if necessary*)
 If[$FCAdvice,
 	If[ $Notebooks &&
@@ -250,7 +292,7 @@ Tr/:Options[Tr]:=Options[TR];
 Protect[Tr];
 
 
-If[ !$Notebooks && Global`$FeynCalcStartupMessages,
+If[ !$Notebooks && $FeynCalcStartupMessages,
 	$PrePrint = FeynCalcForm;
 	WriteString["stdout",
 	"$PrePrint is set to FeynCalcForm. Use FI and FC to change the display format.\n"],
@@ -262,9 +304,12 @@ If[ !$Notebooks && Global`$FeynCalcStartupMessages,
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* Print FeynCalc's startup message *)
-If[ Global`$FeynCalcStartupMessages =!= False,
-	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> " (development version). For help, use the ",
-				"Text"],
+If[ $FeynCalcStartupMessages =!= False,
+	Print[	Style["FeynCalc ", "Text", Bold],
+			If[ TrueQ[$FeynCalcDevelopmentVersion],
+				Style[$FeynCalcVersion <> " (development version). For help, use the ", "Text"],
+				Style[$FeynCalcVersion <> " (stable version). For help, use the ", "Text"]
+			],
 			Style[DisplayForm@ButtonBox["documentation center", BaseStyle->"Link", ButtonData :> "paclet:FeynCalc/",
 				ButtonNote -> "paclet:FeynCalc/"], "Text"],
 			Style[", check out the ", "Text"],
@@ -290,7 +335,7 @@ If[	$LoadPhi,
 	];
 
 	If[Get[FileNameJoin[{$FeynCalcDirectory, "Phi","Phi.m"}]] =!=$Failed,
-		If[ Global`$FeynCalcStartupMessages,
+		If[ $FeynCalcStartupMessages,
 			Print[	Style["PHI ", "Text", Bold],
 					Style[Phi`$PhiVersion <>", for examples visit ",
 						"Text"],
@@ -335,7 +380,7 @@ If[	$LoadFeynArts,
 		FeynCalc`Private`loadfa=Block[ {Print= System`Print},Get[FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]]];
 		If[FeynCalc`Private`loadfa =!=$Failed,
 			(* If everything went fine *)
-			If[ Global`$FeynCalcStartupMessages,
+			If[ $FeynCalcStartupMessages,
 				Print[	Style["FeynArts ", "Text", Bold],
 						Style[ToString[FeynArts`$FeynArts] <>" patched for use with FeynCalc, for documentation see the ",
 							"Text"],
@@ -345,7 +390,9 @@ If[	$LoadFeynArts,
 						Style[" or visit ", "Text"],
 						Style[DisplayForm@ButtonBox["www.feynarts.de.",	ButtonData :> {URL["http://www.feynarts.de/"], None},
 							BaseStyle -> "Hyperlink", ButtonNote -> "www.feynarts.de/"],"Text"]
-				]
+				];
+				Print[ Style["If you use FeynArts in your research, please cite","Text"]];
+				Print [Style[" \[Bullet] T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260","Text"]];
 			],
 			(* If FeynArts didn't load *)
 			Message[FeynCalc::faerror, $FeynArtsDirectory];
@@ -404,11 +451,54 @@ If[ $LoadTARCER,
 ];
 
 BeginPackage["FeynCalc`"];
-If[ Global`$LoadAddOns=!={},
-	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns];
-	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns]
+If[ $LoadAddOns=!={},
+	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, $LoadAddOns];
+	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, $LoadAddOns]
 ];
 EndPackage[];
+
+If[ $FCCheckContext,
+
+	Global`globalContextAfterLoadingFC = Names["Global`*"];
+
+	Global`fcContextLowerCase = Select[Names["FeynCalc`*"], LowerCaseQ[StringTake[#, 1]] &];
+
+	Global`whiteListedContextAdditions = {
+		"Colour", "CT", "cto", "d", "dD", "eE", "FAChiralityProjector",
+		"FADiracMatrix", "FADiracSlash", "FADiracSpinor", "FADiracTrace",
+		"FAFourVector", "FAGS", "FAMetricTensor", "FAPolarizationVector",
+		"FAScalarProduct", "FASUNF", "FASUNT", "ff", "gA", "gA5", "gA6",
+		"gA7", "globalContextAfterLoadingFC", "Gluon", "GraphName",
+		"Lorentz", "M", "pp", "TJI111e", "$INTC", "$Special", "$SpecialTLI",
+		"fcContextLowerCase", "newObjectsInTheContext",
+		"newObjectsInTheGlobalContext", "whiteListedContextAdditions"
+	};
+
+	Global`newObjectsInTheGlobalContext = Complement[Global`globalContextAfterLoadingFC, Global`globalContextBeforeLoadingFC]//
+		Complement[#,Global`whiteListedContextAdditions]&;
+
+
+
+	If[ Global`fcContextLowerCase=!={} || Global`newObjectsInTheGlobalContext=!={},
+		Message[FeynCalc::context];
+		If[	Global`fcContextLowerCase=!={},
+			Print["New lowercase objects in the FeynCalc context: ", Global`fcContextLowerCase]
+		];
+		If[	Global`newObjectsInTheGlobalContext=!={},
+			Print["New lowercase objects in the Global context: ", Global`newObjectsInTheGlobalContext]
+		]
+	];
+
+	Remove["Global`fcContextLowerCase"];
+	Remove["Global`newObjectsInTheGlobalContext"];
+	Remove["Global`whiteListedContextAdditions"];
+	Remove["Global`globalContextBeforeLoadingFC"];
+	Remove["Global`globalContextAfterLoadingFC"];
+
+]
+
+
+
 
 
 If[	$CloudEvaluation && $FCCloudTraditionalForm,
