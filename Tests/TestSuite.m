@@ -16,7 +16,10 @@
 $FeynCalcStartupMessages = False;
 
 If[testType===3,
-	$LoadTARCER=True;
+	If[	!ValueQ[$LoadAddOns],
+		$LoadAddOns={"TARCER"},
+		$LoadAddOns=Join[$LoadAddOns,{"TARCER"}]
+	];
 	WriteString["stdout","Tests for TARCER.\n"]
 ];
 

@@ -137,11 +137,6 @@ FI::usage =
 This is useful to see the internal representation of FeynCalc \
 objects. To change back to FeynCalcForm use FC.";
 
-GenerateTarcerMX::usage =
-"GenerateTarcerMX creates the *.mx file for TARCER. This is necessary to use
-TARCER and has to be done only once. The evaluation usually takes a
-couple of minutes."
-
 $KeepLogDivergentScalelessIntegrals::usage =
 "$KeepLogDivergentScalelessIntegrals is an experimental global option that forces \
 FeynCalc not to set 1-loop integrals of type 1/q^4 to zero. This is useful \
@@ -224,11 +219,6 @@ $LoadPhi::usage =
 with FeynCalc. Its value must be set before loading FeynCalc. \
 The default value is False.";
 
-$LoadTARCER::usage =
-"$LoadTARCER specifices whether TARCER should be loaded together \
-with FeynCalc. Its value must be set before loading FeynCalc. \
-The default value is False.";
-
 $LorentzIndices::usage =
 "$LorentzIndices is a global variable. If set to True the dimension \
 of LorentzIndex is displayed as an index.";
@@ -290,10 +280,6 @@ FeynCalc::faerror =
 "FeynArts not found or damaged. Please download the FeynArts \
 tarball from www.feynarts.de, unpack it to `1` and restart FeynCalc.";
 
-FeynCalc::taerror =
-"TARCER*.mx file not found or damaged. Please evaluate the command \
-GenerateTarcerMX to create it.";
-
 FeynCalc::phierror =
 "PHI failed to load. Please try resintalling FeynCalc.";
 
@@ -342,12 +328,6 @@ Begin["`Package`"]
 End[]
 
 Begin["`Private`"]
-
-
-TarcerDialogText = "TARCER*.mx file not found or damaged. Creating a new \
-file can take couple of minutes, but this has to be done only once. \
-After the new file is generated you need to restart FeynCalc. Should \
-we generate new TARCER*.mx now?"
 
 $Abbreviations = {
 	", "->"",
@@ -434,12 +414,6 @@ If[ !ValueQ[$FCTensorList],
 If[ !ValueQ[$ScalarProducts],
 	$ScalarProducts = {}
 ];
-
-
-GenerateTarcerMX :=
-	If[	Get@ToFileName[{$FeynCalcDirectory, "Tarcer"}, "TARCER.m"]=!= $Failed,
-		Print["Succesfully created ", Last@FileNames["*.mx", FileNameJoin[{$FeynCalcDirectory, "Tarcer"}]]]
-	]
 
 DOT = Dot;
 

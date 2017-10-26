@@ -51,10 +51,15 @@ If[ !ValueQ[Global`$FeynCalcStartupMessages],
 ];
 Remove[Global`$FeynCalcStartupMessages];
 
-If[ !ValueQ[Global`$LoadTARCER],
-	(* Do not load TARCER by default *)
-	FeynCalc`$LoadTARCER = False,
-	FeynCalc`$LoadTARCER = Global`$LoadTARCER
+If[ !ValueQ[Global`$LoadAddOns],
+	FeynCalc`$LoadAddOns = {},
+	FeynCalc`$LoadAddOns = Global`$LoadAddOns
+];
+Remove[Global`$LoadAddOns];
+
+If[ ValueQ[Global`$LoadTARCER],
+	Print[Style["$LoadTARCER is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"TARCER\"} instead!",Red, Bold]];
+	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"TARCER"}]
 ];
 Remove[Global`$LoadTARCER]
 
@@ -84,11 +89,7 @@ If[ !ValueQ[Global`$FCAdvice],
 ];
 Remove[Global`$FCAdvice]
 
-If[ !ValueQ[Global`$LoadAddOns],
-	FeynCalc`$LoadAddOns = {},
-	FeynCalc`$LoadAddOns = Global`$LoadAddOns
-];
-Remove[Global`$LoadAddOns];
+
 
 If[ !ValueQ[Global`$RenameFeynCalcObjects],
 	FeynCalc`$RenameFeynCalcObjects = {},
@@ -400,55 +401,12 @@ If[	$LoadFeynArts,
 	];
 ];
 
-(* Load TARCER... *)
-If[ $LoadTARCER,
-	If[ $FeynCalcStartupMessages,
-			PrintTemporary[Style["Loading TARCER from " <> FileNameJoin[{$FeynCalcDirectory, "Tarcer"}], "Text"]]
-	];
-	Block[{FeynCalc`Private`tarcerfilenames},
-		FeynCalc`Private`tarcerfilenames =
-		FileNames["tarcer"<> StringReplace[$System,{"-"->"","Microsoft"->"","("->"",")"->""," "->""}] <>"*.mx",
-		ToFileName[{FeynCalc`$FeynCalcDirectory,"Tarcer"}],IgnoreCase->True];
-		If[ FeynCalc`Private`tarcerfilenames=!={},
-			(*    If the .mx file of TARCER is found, load it now. *)
-
-			If[	Length[FeynCalc`Private`tarcerfilenames]>1,
-				Print[Style["Found multiple versions of TARCER: ", "Text"]];
-				Print[TableForm[FeynCalc`Private`tarcerfilenames]];
-				Print[Style["FeynCalc will load ","Text"], Last[FeynCalc`Private`tarcerfilenames]]
-			];
-
-			If[	Get[Last[FeynCalc`Private`tarcerfilenames]]=!=$Failed,
-				If[ $FeynCalcStartupMessages,
-					Print[	Style["TARCER ", "Text", Bold],
-						Style[Tarcer`$TarcerVersion <>
-							", for description see the accompanying ", "Text"],
-
-						Style[DisplayForm@ButtonBox["publication.", BaseStyle -> "Hyperlink",	ButtonFunction :>
-							SystemOpen[ToFileName[{FeynCalc`$FeynCalcDirectory,"Tarcer"},"9801383.pdf"]],
-							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
-							Style[" If you use TARCER in your research, please cite","Text"]
-					];
-					Print [Style[" \[Bullet] R. Mertig and R. Scharf, Comput. Phys. Commun., 111, 265-273, 1998, arXiv:hep-ph/9801383","Text"]];
-				],
-				Message[FeynCalc::taerror];
-				If [$Notebooks,
-					If[	ChoiceDialog[FeynCalc`Private`TarcerDialogText],
-						GenerateTarcerMX
-					]
-				]
-			],
-			Message[FeynCalc::taerror];
-			If [$Notebooks,
-					If[	ChoiceDialog[FeynCalc`Private`TarcerDialogText],
-						GenerateTarcerMX
-					]
-			]
-		];
-	];
-	(* This seems to be needed for MMA8 *)
-	If[FreeQ[$ContextPath,"Tarcer`"],PrependTo[$ContextPath,"Tarcer`"]];
-];
+(* 	Some addons might need to add new stuff to the $ContextPath. While inside the
+	FeynCalc` path they obviously cannot do this by themselves. However, via
+	FeynCalc`Private`AddToTheContextPath they can ask FeynCalc to do this for
+	them.
+*)
+FeynCalc`Private`AddToTheContextPath={};
 
 BeginPackage["FeynCalc`"];
 If[ $LoadAddOns=!={},
@@ -456,6 +414,10 @@ If[ $LoadAddOns=!={},
 	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, $LoadAddOns]
 ];
 EndPackage[];
+
+If[ FeynCalc`Private`AddToTheContextPath=!={} && ListQ[FeynCalc`Private`AddToTheContextPath],
+	$ContextPath = Join[FeynCalc`Private`AddToTheContextPath,$ContextPath]
+]
 
 If[ $FCCheckContext,
 

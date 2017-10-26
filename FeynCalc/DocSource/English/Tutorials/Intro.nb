@@ -479,46 +479,11 @@ The directory  \"FeynCalc\" contains various files and subdirectories \
 belonging to third-party packages which are not necessary to run 'standard' \
 FeynCalc calculations and which do not use the autoloading conventions of \
 FeynCalc. These packages are not initialized by default when starting \
-FeynCalc. Loading them can be switched on and off by setting appropiate \
+FeynCalc. Loading them can be switched on and off by setting appropriate \
 variables to False or True before loading FeynCalc.\
 \>", "Text",
  CellTags->"About Extras",
  CellID->953459903],
-
-Cell[BoxData[
- FormBox[
-  StyleBox[
-   FrameBox[
-    StyleBox[GridBox[{
-       {
-        StyleBox["$LoadTARCER",
-         FontFamily->"Courier"], 
-        RowBox[{
-        "Specifies", " ", "if", " ", "TARCER", " ", "should", " ", "be", " ", 
-         "loaded", " ", "by", " ", "FeynCalc"}]},
-       {
-        StyleBox["$LoadPhi",
-         FontFamily->"Courier"], 
-        RowBox[{
-        "Specifies", " ", "if", " ", "PHI", " ", "should", " ", "be", " ", 
-         "loaded", " ", "by", " ", "FeynCalc"}]},
-       {
-        StyleBox["$LoadFeynArts",
-         FontFamily->"Courier"], 
-        RowBox[{
-        "Specifies", " ", "if", " ", "FeynArts", " ", "should", " ", "be", 
-         " ", "loaded", " ", "by", " ", "FeynCalc"}]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {Right, {Left}}, "ColumnsIndexed" -> {}, 
-        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}}],
-     GridBoxOptions->{
-     GridBoxDividers->{
-      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
-       "RowsIndexed" -> {}}}]], "2ColumnBox"], TraditionalForm]], "Text",
- Background->None,
- CellTags->"About Extras",
- CellID->2108182812],
 
 Cell[CellGroupData[{
 
@@ -550,7 +515,8 @@ TARCER is distributed with FeynCalc. To have FeynCalc load TARCER, evaluate\
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$LoadTARCER", "=", "True"}], ";"}]], "Input",
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<TARCER\>\"", "}"}]}], ";"}]], "Input",
  CellTags->"tarcer",
  CellID->843778896]
 }, Open  ]],
@@ -805,7 +771,7 @@ Cell["XXXX", "TutorialRelatedLinks",
 }, Open  ]]
 },
 WindowSize->{957, 770},
-WindowMargins->{{Automatic, 190}, {114, Automatic}},
+WindowMargins->{{633, Automatic}, {Automatic, 262}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
@@ -814,3 +780,4 @@ StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb",
   CharacterEncoding -> "UTF-8"],
 $CellContext`FileOutlineCache -> False
 ]
+

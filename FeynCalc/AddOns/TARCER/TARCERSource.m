@@ -4188,7 +4188,7 @@ $BasisIntegrals = {
 	TJI[d_, 0, {{1,M_},{1,0},{1,0}}] ->(M^2*Gamma[3 - d]*Gamma[2 - d/2]*Gamma[-1 + d/2]^2*E^((4 - d)*EulerGamma)*Prefactor1[(M^2)^(-4 + d)*SEpsilon[d]^2])/Gamma[d/2]
 };
 
-filename= ToFileName[{$FeynCalcDirectory,"Tarcer"},StringJoin["tarcer", StringReplace[$System,{"-"->"","Microsoft"->"","("->"",")"->""," "->""}], StringJoin @@
+filename= ToFileName[{$TARCERDirectory},StringJoin["tarcer", StringReplace[$System,{"-"->"","Microsoft"->"","("->"",")"->""," "->""}], StringJoin @@
 		ToString /@ $RankLimit, ".mx"]];
 
 DumpSave[filename, {

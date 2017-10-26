@@ -4,9 +4,6 @@
 (* Always load FeynArts	*)
 (*$LoadFeynArts=True;	*)
 
-(* Always load TARCER	*)
-(*	$LoadTARCER=True;	*)
-
 (* Do not check contexts for strange objects *)
 (* $FCCheckContext = False *)
 

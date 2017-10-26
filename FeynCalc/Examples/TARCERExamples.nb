@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    206668,       6483]
-NotebookOptionsPosition[    203397,       6361]
-NotebookOutlinePosition[    204151,       6392]
-CellTagsIndexPosition[    204019,       6385]
+NotebookDataLength[    211485,       6620]
+NotebookOptionsPosition[    208087,       6495]
+NotebookOutlinePosition[    208843,       6526]
+CellTagsIndexPosition[    208711,       6519]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,15 +23,13 @@ Cell[CellGroupData[{
 Cell["TARCER examples", "Section",
  CellTags->"T1.11.1"],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LoadTARCER", "=", "True"}], ";"}]], "Input",
- CellChangeTimes->{{3.522783742124017*^9, 3.522783748194449*^9}}],
-
 Cell[CellGroupData[{
 
-Cell[BoxData[
- RowBox[{"<<", "FeynCalc`"}]], "Input"],
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<TARCER\>\"", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "FeynCalc`"}]}], "Input"],
 
 Cell[CellGroupData[{
 
@@ -42,44 +40,106 @@ Cell[BoxData[
     StyleBox["\<\"FeynCalc \"\>", "Text",
      StripOnInput->False,
      FontWeight->Bold], "\[InvisibleSpace]", 
-    StyleBox["\<\"9.0.0. For help, type ?FeynCalc, use the \"\>", "Text",
+    StyleBox["\<\"9.3.0 (development version). For help, use the \"\>", "Text",
      StripOnInput->False], "\[InvisibleSpace]", 
     StyleBox[
      TagBox[
       ButtonBox[
-       RowBox[{"help", " ", "browser"}],
-       BaseStyle->"AddOnsLink",
-       ButtonData:>{"Short Overview", "intro"},
-       ButtonNote->"FeynCalc"],
+       RowBox[{"documentation", " ", "center"}],
+       BaseStyle->"Link",
+       ButtonData:>"paclet:FeynCalc/",
+       ButtonNote->"paclet:FeynCalc/"],
       DisplayForm], "Text",
      StripOnInput->False], "\[InvisibleSpace]", 
-    StyleBox["\<\" or visit \"\>", "Text",
+    StyleBox["\<\", check out the \"\>", "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox[
+     TagBox[
+      ButtonBox["wiki",
+       BaseStyle->"Hyperlink",
+       ButtonData:>{
+         URL["https://github.com/FeynCalc/feyncalc/wiki"], None},
+       ButtonNote->"https://github.com/FeynCalc/feyncalc/wiki"],
+      DisplayForm], "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox["\<\" or write to the \"\>", "Text",
      StripOnInput->False], "\[InvisibleSpace]", 
     StyleBox[
      TagBox[
       ButtonBox[
-       RowBox[{"www", ".", "feyncalc", ".", "org", "."}],
+       RowBox[{"mailing", " ", 
+        RowBox[{"list", "."}]}],
        BaseStyle->"Hyperlink",
        ButtonData:>{
-         URL["http://www.feyncalc.org/"], None},
-       ButtonNote->"http://www.feyncalc.org/"],
+         URL["http://www.feyncalc.org/forum/"], None},
+       ButtonNote->"http://www.feyncalc.org/forum/"],
       DisplayForm], "Text",
      StripOnInput->False]}],
    SequenceForm[
     Style["FeynCalc ", "Text", Bold], 
-    Style["9.0.0. For help, type ?FeynCalc, use the ", "Text"], 
+    Style["9.3.0 (development version). For help, use the ", "Text"], 
     Style[
      DisplayForm[
       ButtonBox[
-      "help browser", ButtonData :> {"Short Overview", "intro"}, BaseStyle -> 
-       "AddOnsLink", ButtonNote -> "FeynCalc"]], "Text"], 
-    Style[" or visit ", "Text"], 
+      "documentation center", BaseStyle -> "Link", ButtonData :> 
+       "paclet:FeynCalc/", ButtonNote -> "paclet:FeynCalc/"]], "Text"], 
+    Style[", check out the ", "Text"], 
     Style[
      DisplayForm[
-      ButtonBox["www.feyncalc.org.", ButtonData :> {
-         URL["http://www.feyncalc.org/"], None}, BaseStyle -> "Hyperlink", 
-       ButtonNote -> "http://www.feyncalc.org/"]], "Text"]],
+      ButtonBox["wiki", ButtonData :> {
+         URL["https://github.com/FeynCalc/feyncalc/wiki"], None}, BaseStyle -> 
+       "Hyperlink", ButtonNote -> 
+       "https://github.com/FeynCalc/feyncalc/wiki"]], "Text"], 
+    Style[" or write to the ", "Text"], 
+    Style[
+     DisplayForm[
+      ButtonBox["mailing list.", ButtonData :> {
+         URL["http://www.feyncalc.org/forum/"], None}, BaseStyle -> 
+       "Hyperlink", ButtonNote -> "http://www.feyncalc.org/forum/"]], "Text"]],
    Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    StyleBox["\<\"See also the supplied \"\>", "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox[
+     TagBox[
+      ButtonBox[
+       RowBox[{"examples", "."}],
+       BaseStyle->"Hyperlink",
+       ButtonFunction:>SystemOpen[
+         FileNameJoin[{FeynCalc`$FeynCalcDirectory, "Examples"}]],
+       Evaluator->Automatic,
+       Method->"Preemptive"],
+      DisplayForm], "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox["\<\" If you use FeynCalc in your research, please cite\"\>", 
+     "Text",
+     StripOnInput->False]}],
+   SequenceForm[
+    Style["See also the supplied ", "Text"], 
+    Style[
+     DisplayForm[
+      ButtonBox[
+      "examples.", BaseStyle -> "Hyperlink", ButtonFunction :> SystemOpen[
+         FileNameJoin[{FeynCalc`$FeynCalcDirectory, "Examples"}]], Evaluator -> 
+       Automatic, Method -> "Preemptive"]], "Text"], 
+    Style[" If you use FeynCalc in your research, please cite", "Text"]],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["\<\" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput. \
+Phys. Commun., 207, 432-444, 2016, arXiv:1601.01167\"\>", "Text",
+   StripOnInput->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["\<\" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, \
+Comput. Phys. Commun., 64, 345-359, 1991.\"\>", "Text",
+   StripOnInput->False], TraditionalForm]], "Print"],
 
 Cell[BoxData[
  FormBox[
@@ -88,29 +148,39 @@ Cell[BoxData[
     StyleBox["\<\"TARCER \"\>", "Text",
      StripOnInput->False,
      FontWeight->Bold], "\[InvisibleSpace]", 
-    StyleBox["\<\"2.0, for description see the preprint hep-ph/9801383 at \
-\"\>", "Text",
+    StyleBox["\<\"2.0, for description see the accompanying \"\>", "Text",
      StripOnInput->False], "\[InvisibleSpace]", 
     StyleBox[
      TagBox[
       ButtonBox[
-       RowBox[{"arxiv", ".", "org", "."}],
-       BaseStyle->{"Hyperlink"},
-       ButtonData:>{
-         URL["http://arxiv.org/abs/hep-ph/9801383"], None},
-       ButtonNote->"http://arxiv.org/abs/hep-ph/9801383"],
+       RowBox[{"publication", "."}],
+       BaseStyle->"Hyperlink",
+       ButtonFunction:>SystemOpen[
+         ToFileName[{FeynCalc`$TARCERDirectory}, "9801383.pdf"]],
+       Evaluator->Automatic,
+       Method->"Preemptive"],
       DisplayForm], "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox["\<\" If you use TARCER in your research, please cite\"\>", 
+     "Text",
      StripOnInput->False]}],
    SequenceForm[
     Style["TARCER ", "Text", Bold], 
-    Style["2.0, for description see the preprint hep-ph/9801383 at ", "Text"], 
+    Style["2.0, for description see the accompanying ", "Text"], 
     Style[
      DisplayForm[
-      ButtonBox["arxiv.org.", ButtonData :> {
-         URL["http://arxiv.org/abs/hep-ph/9801383"], None}, 
-       BaseStyle -> {"Hyperlink"}, ButtonNote -> 
-       "http://arxiv.org/abs/hep-ph/9801383"]], "Text"]],
-   Editable->False], TraditionalForm]], "Print"]
+      ButtonBox[
+      "publication.", BaseStyle -> "Hyperlink", ButtonFunction :> SystemOpen[
+         ToFileName[{FeynCalc`$TARCERDirectory}, "9801383.pdf"]], Evaluator -> 
+       Automatic, Method -> "Preemptive"]], "Text"], 
+    Style[" If you use TARCER in your research, please cite", "Text"]],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["\<\" \[Bullet] R. Mertig and R. Scharf, Comput. Phys. Commun., \
+111, 265-273, 1998, arXiv:hep-ph/9801383\"\>", "Text",
+   StripOnInput->False], TraditionalForm]], "Print"]
 }, Open  ]]
 }, Open  ]],
 
@@ -342,30 +412,41 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"(", 
-    RowBox[{
-     SuperscriptBox[
-      RowBox[{"(", 
-       SuperscriptBox["M", "2"], ")"}], 
-      RowBox[{"\[CurlyEpsilon]", "-", "1"}]], " ", 
-     SuperscriptBox[
-      InterpretationBox[
-       StyleBox[
-        SubscriptBox["S", 
-         FormBox["\[CurlyEpsilon]",
-          TraditionalForm]],
-        FontWeight->"Bold"],
-       Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
-       Editable->False], "2"]}], ")"}], ".", 
+   FractionBox["1", 
+    SuperscriptBox["M", "2"]], ".", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"6", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      RowBox[{"log", "(", "2", ")"}]}], "-", 
-     FractionBox[
-      RowBox[{"3", " ", 
-       TemplateBox[{"3"},
-        "Zeta"]}], "2"]}], ")"}]}], TraditionalForm]], "Output"]
+      RowBox[{"log", "(", "2", ")"}], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+      SuperscriptBox[
+       InterpretationBox[
+        StyleBox[
+         SubscriptBox["S", 
+          FormBox["\[CurlyEpsilon]",
+           TraditionalForm]],
+         FontWeight->"Bold"],
+        Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+        Editable->False], "2"]}], "-", 
+     RowBox[{
+      FractionBox["3", "2"], " ", 
+      TemplateBox[{"3"},
+       "Zeta"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+      SuperscriptBox[
+       InterpretationBox[
+        StyleBox[
+         SubscriptBox["S", 
+          FormBox["\[CurlyEpsilon]",
+           TraditionalForm]],
+         FontWeight->"Bold"],
+        Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+        Editable->False], "2"]}]}], ")"}]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -374,8 +455,9 @@ Cell[BoxData[
  RowBox[{"%", "//", "InputForm"}]], "Input"],
 
 Cell["\<\
-((M^2)^(-1 + \[CurlyEpsilon])*SEpsilon[4 + \[CurlyEpsilon]]^2) . \
-(6*Zeta2*Log[2] - (3*Zeta[3])/2)\
+M^(-2) . (6*(M^2)^\[CurlyEpsilon]*Zeta2*Log[2]*SEpsilon[4 + \
+\[CurlyEpsilon]]^2 - (3*(M^2)^\[CurlyEpsilon]*SEpsilon[4 + \
+\[CurlyEpsilon]]^2*Zeta[3])/2)\
 \>", "Output"]
 }, Open  ]]
 }, Open  ]],
@@ -526,31 +608,34 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox[
-    RowBox[{
-     SuperscriptBox[
-      RowBox[{"(", 
-       SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
-     SuperscriptBox[
-      InterpretationBox[
-       StyleBox[
-        SubscriptBox["S", 
-         FormBox["\[CurlyEpsilon]",
-          TraditionalForm]],
-        FontWeight->"Bold"],
-       Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
-       Editable->False], "2"]}], 
+   FractionBox["1", 
     SuperscriptBox["M", "4"]], ".", 
    RowBox[{"(", 
-    RowBox[{
-     RowBox[{"-", 
-      FractionBox["1", 
-       RowBox[{"2", " ", 
-        SuperscriptBox["\[CurlyEpsilon]", "2"]}]]}], "-", 
+    RowBox[{"-", 
      FractionBox[
-      RowBox[{"7", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}]}], "8"], "+", 
-     FractionBox["1", "2"]}], ")"}]}], TraditionalForm]], "Output"]
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"7", " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+          RowBox[{"\[Zeta]", "(", "2", ")"}]}], "-", 
+         RowBox[{"4", " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", "4"}], ")"}], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+       SuperscriptBox[
+        InterpretationBox[
+         StyleBox[
+          SubscriptBox["S", 
+           FormBox["\[CurlyEpsilon]",
+            TraditionalForm]],
+          FontWeight->"Bold"],
+         Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+         Editable->False], "2"]}], 
+      RowBox[{"8", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", "2"]}]]}], ")"}]}], 
+  TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -699,38 +784,87 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox[
-    RowBox[{"\[CapitalDelta]p", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
-     SuperscriptBox[
-      InterpretationBox[
-       StyleBox[
-        SubscriptBox["S", 
-         FormBox["\[CurlyEpsilon]",
-          TraditionalForm]],
-        FontWeight->"Bold"],
-       Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
-       Editable->False], "2"]}], 
+   FractionBox["\[CapitalDelta]p", 
     SuperscriptBox["M", "4"]], ".", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"-", 
-      FractionBox["1", 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+        SuperscriptBox[
+         InterpretationBox[
+          StyleBox[
+           SubscriptBox["S", 
+            FormBox["\[CurlyEpsilon]",
+             TraditionalForm]],
+           FontWeight->"Bold"],
+          Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+          Editable->False], "2"]}], 
        RowBox[{"2", " ", 
         SuperscriptBox["\[CurlyEpsilon]", "2"]}]]}], "-", 
-     FractionBox[
-      RowBox[{"11", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}]}], "8"], "+", 
+     RowBox[{
+      FractionBox["11", "8"], " ", 
+      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+      SuperscriptBox[
+       InterpretationBox[
+        StyleBox[
+         SubscriptBox["S", 
+          FormBox["\[CurlyEpsilon]",
+           TraditionalForm]],
+         FontWeight->"Bold"],
+        Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+        Editable->False], "2"]}], "+", 
      RowBox[{"3", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      RowBox[{"log", "(", "2", ")"}]}], "-", 
-     FractionBox[
-      RowBox[{"3", " ", 
-       TemplateBox[{"3"},
-        "Zeta"]}], "4"], "+", 
-     FractionBox["1", "2"]}], ")"}]}], TraditionalForm]], "Output"]
+      RowBox[{"log", "(", "2", ")"}], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+      SuperscriptBox[
+       InterpretationBox[
+        StyleBox[
+         SubscriptBox["S", 
+          FormBox["\[CurlyEpsilon]",
+           TraditionalForm]],
+         FontWeight->"Bold"],
+        Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+        Editable->False], "2"]}], "+", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+      SuperscriptBox[
+       InterpretationBox[
+        StyleBox[
+         SubscriptBox["S", 
+          FormBox["\[CurlyEpsilon]",
+           TraditionalForm]],
+         FontWeight->"Bold"],
+        Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+        Editable->False], "2"]}], "-", 
+     RowBox[{
+      FractionBox["3", "4"], " ", 
+      TemplateBox[{"3"},
+       "Zeta"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox["M", "2"], ")"}], "\[CurlyEpsilon]"], " ", 
+      SuperscriptBox[
+       InterpretationBox[
+        StyleBox[
+         SubscriptBox["S", 
+          FormBox["\[CurlyEpsilon]",
+           TraditionalForm]],
+         FontWeight->"Bold"],
+        Tarcer`SEpsilon[4 + $CellContext`\[CurlyEpsilon]],
+        Editable->False], "2"]}]}], ")"}]}], TraditionalForm]], "Output"]
 }, Open  ]]
 }, Open  ]],
 
@@ -809,7 +943,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"0.0674140000000000016999734953060396947`4.849350009983598", ",", 
+   RowBox[{"0.06671`", ",", 
     RowBox[{
      RowBox[{
       FractionBox["1", "3"], " ", 
@@ -1227,7 +1361,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"1.13816600000000001102762325899675488472`6.076805521231836", ",", 
+   RowBox[{"0.983085`", ",", 
     RowBox[{
      FractionBox[
       RowBox[{
@@ -2711,7 +2845,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"10.01710500000000081399775808677077293396`7.021342139382858", ",", 
+   RowBox[{"7.060244`", ",", 
     RowBox[{
      RowBox[{"-", 
       RowBox[{
@@ -3576,6 +3710,219 @@ Cell[BoxData[
           FormBox["D",
            TraditionalForm], ")"}]],
         Tarcer`TAI[D, 0, {{1, $CellContext`m4}}],
+        Editable->True]}]}], "-", 
+     FractionBox[
+      RowBox[{"4", " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         InterpretationBox[
+          SubscriptBox["m", "3"],
+          $CellContext`m3], ")"}], "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         InterpretationBox[
+          SubscriptBox["m", "4"],
+          $CellContext`m4], ")"}], "2"], " ", 
+       InterpretationBox[
+        SubsuperscriptBox[
+         StyleBox["A",
+          SingleLetterItalics->False,
+          FontWeight->"Bold"], 
+         FormBox[
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3]}], "}"}],
+          TraditionalForm], 
+         RowBox[{"(", 
+          FormBox["D",
+           TraditionalForm], ")"}]],
+        Tarcer`TAI[D, 0, {{1, $CellContext`m3}}],
+        Editable->True], " ", 
+       InterpretationBox[
+        SubsuperscriptBox[
+         StyleBox["A",
+          SingleLetterItalics->False,
+          FontWeight->"Bold"], 
+         FormBox[
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4]}], "}"}],
+          TraditionalForm], 
+         RowBox[{"(", 
+          FormBox["D",
+           TraditionalForm], ")"}]],
+        Tarcer`TAI[D, 0, {{1, $CellContext`m4}}],
+        Editable->True]}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"D", "-", "1"}], ")"}], " ", "D"}]], "+", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"D", "-", "1"}]], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"D", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "4"]}], "-", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           InterpretationBox[
+            SubscriptBox["m", "3"],
+            $CellContext`m3], ")"}], "4"], "+", 
+         RowBox[{"D", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "2"],
+             $CellContext`m2], ")"}], "2"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "2"]}], "-", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "2"],
+             $CellContext`m2], ")"}], "2"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "2"]}], "+", 
+         RowBox[{"2", " ", "D", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "2"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "2"]}], "+", 
+         RowBox[{"2", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "2"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "2"]}], "-", 
+         RowBox[{"D", " ", 
+          InterpretationBox[
+           SuperscriptBox["p", "2"],
+           $CellContext`pp], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "2"]}], "+", 
+         RowBox[{
+          InterpretationBox[
+           SuperscriptBox["p", "2"],
+           $CellContext`pp], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3], ")"}], "2"]}], "+", 
+         RowBox[{"D", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "4"]}], "-", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           InterpretationBox[
+            SubscriptBox["m", "4"],
+            $CellContext`m4], ")"}], "4"], "+", 
+         RowBox[{"D", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "2"],
+             $CellContext`m2], ")"}], "2"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "2"]}], "-", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "2"],
+             $CellContext`m2], ")"}], "2"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "2"]}], "-", 
+         RowBox[{"D", " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "2"], " ", 
+          InterpretationBox[
+           SuperscriptBox["p", "2"],
+           $CellContext`pp]}], "+", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4], ")"}], "2"], " ", 
+          InterpretationBox[
+           SuperscriptBox["p", "2"],
+           $CellContext`pp]}]}], ")"}], " ", 
+       InterpretationBox[
+        SubsuperscriptBox[
+         StyleBox["A",
+          SingleLetterItalics->False,
+          FontWeight->"Bold"], 
+         FormBox[
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            InterpretationBox[
+             SubscriptBox["m", "3"],
+             $CellContext`m3]}], "}"}],
+          TraditionalForm], 
+         RowBox[{"(", 
+          FormBox["D",
+           TraditionalForm], ")"}]],
+        Tarcer`TAI[D, 0, {{1, $CellContext`m3}}],
+        Editable->True], " ", 
+       InterpretationBox[
+        SubsuperscriptBox[
+         StyleBox["A",
+          SingleLetterItalics->False,
+          FontWeight->"Bold"], 
+         FormBox[
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            InterpretationBox[
+             SubscriptBox["m", "4"],
+             $CellContext`m4]}], "}"}],
+          TraditionalForm], 
+         RowBox[{"(", 
+          FormBox["D",
+           TraditionalForm], ")"}]],
+        Tarcer`TAI[D, 0, {{1, $CellContext`m4}}],
         Editable->True]}]}], "+", 
      RowBox[{
       FractionBox["1", 
@@ -3879,219 +4226,6 @@ Cell[BoxData[
            TraditionalForm], ")"}]],
         Tarcer`TAI[D, 0, {{1, $CellContext`m4}}],
         Editable->True]}]}], "+", 
-     RowBox[{
-      FractionBox["1", 
-       RowBox[{"D", "-", "1"}]], 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"D", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "4"]}], "-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           InterpretationBox[
-            SubscriptBox["m", "3"],
-            $CellContext`m3], ")"}], "4"], "+", 
-         RowBox[{"D", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "2"],
-             $CellContext`m2], ")"}], "2"], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "2"]}], "-", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "2"],
-             $CellContext`m2], ")"}], "2"], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "2"]}], "+", 
-         RowBox[{"2", " ", "D", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "2"], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "2"]}], "+", 
-         RowBox[{"2", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "2"], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "2"]}], "-", 
-         RowBox[{"D", " ", 
-          InterpretationBox[
-           SuperscriptBox["p", "2"],
-           $CellContext`pp], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "2"]}], "+", 
-         RowBox[{
-          InterpretationBox[
-           SuperscriptBox["p", "2"],
-           $CellContext`pp], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3], ")"}], "2"]}], "+", 
-         RowBox[{"D", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "4"]}], "-", 
-         SuperscriptBox[
-          RowBox[{"(", 
-           InterpretationBox[
-            SubscriptBox["m", "4"],
-            $CellContext`m4], ")"}], "4"], "+", 
-         RowBox[{"D", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "2"],
-             $CellContext`m2], ")"}], "2"], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "2"]}], "-", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "2"],
-             $CellContext`m2], ")"}], "2"], " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "2"]}], "-", 
-         RowBox[{"D", " ", 
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "2"], " ", 
-          InterpretationBox[
-           SuperscriptBox["p", "2"],
-           $CellContext`pp]}], "+", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"(", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4], ")"}], "2"], " ", 
-          InterpretationBox[
-           SuperscriptBox["p", "2"],
-           $CellContext`pp]}]}], ")"}], " ", 
-       InterpretationBox[
-        SubsuperscriptBox[
-         StyleBox["A",
-          SingleLetterItalics->False,
-          FontWeight->"Bold"], 
-         FormBox[
-          RowBox[{"{", 
-           RowBox[{"1", ",", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4]}], "}"}],
-          TraditionalForm], 
-         RowBox[{"(", 
-          FormBox["D",
-           TraditionalForm], ")"}]],
-        Tarcer`TAI[D, 0, {{1, $CellContext`m4}}],
-        Editable->True], " ", 
-       InterpretationBox[
-        SubsuperscriptBox[
-         StyleBox["A",
-          SingleLetterItalics->False,
-          FontWeight->"Bold"], 
-         FormBox[
-          RowBox[{"{", 
-           RowBox[{"1", ",", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3]}], "}"}],
-          TraditionalForm], 
-         RowBox[{"(", 
-          FormBox["D",
-           TraditionalForm], ")"}]],
-        Tarcer`TAI[D, 0, {{1, $CellContext`m3}}],
-        Editable->True]}]}], "-", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SuperscriptBox[
-        RowBox[{"(", 
-         InterpretationBox[
-          SubscriptBox["m", "3"],
-          $CellContext`m3], ")"}], "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"(", 
-         InterpretationBox[
-          SubscriptBox["m", "4"],
-          $CellContext`m4], ")"}], "2"], " ", 
-       InterpretationBox[
-        SubsuperscriptBox[
-         StyleBox["A",
-          SingleLetterItalics->False,
-          FontWeight->"Bold"], 
-         FormBox[
-          RowBox[{"{", 
-           RowBox[{"1", ",", 
-            InterpretationBox[
-             SubscriptBox["m", "3"],
-             $CellContext`m3]}], "}"}],
-          TraditionalForm], 
-         RowBox[{"(", 
-          FormBox["D",
-           TraditionalForm], ")"}]],
-        Tarcer`TAI[D, 0, {{1, $CellContext`m3}}],
-        Editable->True], " ", 
-       InterpretationBox[
-        SubsuperscriptBox[
-         StyleBox["A",
-          SingleLetterItalics->False,
-          FontWeight->"Bold"], 
-         FormBox[
-          RowBox[{"{", 
-           RowBox[{"1", ",", 
-            InterpretationBox[
-             SubscriptBox["m", "4"],
-             $CellContext`m4]}], "}"}],
-          TraditionalForm], 
-         RowBox[{"(", 
-          FormBox["D",
-           TraditionalForm], ")"}]],
-        Tarcer`TAI[D, 0, {{1, $CellContext`m4}}],
-        Editable->True]}], 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"D", "-", "1"}], ")"}], " ", "D"}]], "+", 
      RowBox[{
       FractionBox["1", 
        RowBox[{"3", " ", 
@@ -5971,7 +6105,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"0.06323399999999999854249921327209449373`4.821550568174955", ",", 
+   RowBox[{"0.052655`", ",", 
     RowBox[{
      RowBox[{
       FractionBox["1", "6"], " ", 
@@ -6360,8 +6494,8 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1253, 681},
-WindowMargins->{{510, Automatic}, {Automatic, 96}},
-FrontEndVersion->"10.0 for Linux x86 (64-bit) (September 9, 2014)",
+WindowMargins->{{510, Automatic}, {Automatic, 127}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -6370,118 +6504,121 @@ StyleDefinitions->"Default.nb"
 (*CellTagsOutline
 CellTagsIndex->{
  "T1.11.1"->{
-  Cell[579, 22, 56, 1, 67, "Section",
+  Cell[579, 22, 56, 1, 64, "Section",
    CellTags->"T1.11.1"]},
  "T1.11.1.1"->{
-  Cell[3808, 128, 61, 1, 47, "Subsection",
+  Cell[6449, 198, 61, 1, 44, "Subsection",
    CellTags->"T1.11.1.1"]},
  "T1.11.2.1"->{
-  Cell[10628, 384, 61, 1, 47, "Subsection",
+  Cell[13723, 466, 61, 1, 44, "Subsection",
    CellTags->"T1.11.2.1"],
-  Cell[20585, 738, 70, 1, 47, "Subsection",
+  Cell[25472, 872, 70, 1, 44, "Subsection",
    CellTags->"T1.11.2.1"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"T1.11.1", 203686, 6371},
- {"T1.11.1.1", 203766, 6374},
- {"T1.11.2.1", 203853, 6377}
+ {"T1.11.1", 208378, 6505},
+ {"T1.11.1.1", 208458, 6508},
+ {"T1.11.2.1", 208545, 6511}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 56, 1, 67, "Section",
+Cell[579, 22, 56, 1, 64, "Section",
  CellTags->"T1.11.1"],
-Cell[638, 25, 146, 3, 32, "Input"],
 Cell[CellGroupData[{
-Cell[809, 32, 53, 1, 32, "Input"],
+Cell[660, 27, 170, 4, 58, "Input"],
 Cell[CellGroupData[{
-Cell[887, 37, 1574, 44, 28, "Print"],
-Cell[2464, 83, 1052, 29, 26, "Print"]
+Cell[855, 35, 2326, 63, 26, "Print"],
+Cell[3184, 100, 1067, 29, 26, "Print"],
+Cell[4254, 131, 222, 4, 26, "Print"],
+Cell[4479, 137, 208, 4, 26, "Print"],
+Cell[4690, 143, 1256, 33, 26, "Print"],
+Cell[5949, 178, 208, 4, 26, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[3543, 116, 139, 3, 31, "Text"],
-Cell[3685, 121, 98, 3, 32, "Input"],
+Cell[6184, 186, 139, 3, 31, "Text"],
+Cell[6326, 191, 98, 3, 35, "Input"],
 Cell[CellGroupData[{
-Cell[3808, 128, 61, 1, 47, "Subsection",
+Cell[6449, 198, 61, 1, 44, "Subsection",
  CellTags->"T1.11.1.1"],
-Cell[3872, 131, 2072, 76, 105, "Text"],
+Cell[6513, 201, 2072, 76, 115, "Text"],
 Cell[CellGroupData[{
-Cell[5969, 211, 116, 5, 86, "Input"],
-Cell[6088, 218, 3235, 110, 76, "Output"]
+Cell[8610, 281, 116, 5, 93, "Input"],
+Cell[8729, 288, 3235, 110, 67, "Output"]
 }, Open  ]],
-Cell[9338, 331, 53, 0, 31, "Text"],
+Cell[11979, 401, 53, 0, 31, "Text"],
 Cell[CellGroupData[{
-Cell[9416, 335, 169, 4, 32, "Input"],
-Cell[9588, 341, 768, 26, 61, "Output"]
+Cell[12057, 405, 169, 4, 35, "Input"],
+Cell[12229, 411, 1168, 37, 55, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10393, 372, 58, 1, 32, "Input"],
-Cell[10454, 375, 125, 3, 46, "Output"]
+Cell[13434, 453, 58, 1, 33, "Input"],
+Cell[13495, 456, 179, 4, 49, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10628, 384, 61, 1, 47, "Subsection",
+Cell[13723, 466, 61, 1, 44, "Subsection",
  CellTags->"T1.11.2.1"],
-Cell[10692, 387, 112, 4, 68, "Input"],
+Cell[13787, 469, 112, 4, 74, "Input"],
 Cell[CellGroupData[{
-Cell[10829, 395, 96, 2, 32, "Input"],
-Cell[10928, 399, 3432, 115, 76, "Output"]
+Cell[13924, 477, 96, 2, 33, "Input"],
+Cell[14023, 481, 3432, 115, 67, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14397, 519, 162, 4, 32, "Input"],
-Cell[14562, 525, 809, 27, 63, "Output"]
+Cell[17492, 601, 162, 4, 35, "Input"],
+Cell[17657, 607, 966, 30, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15408, 557, 96, 2, 32, "Input"],
-Cell[15507, 561, 3774, 126, 149, "Output"]
+Cell[18660, 642, 96, 2, 33, "Input"],
+Cell[18759, 646, 3774, 126, 67, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19318, 692, 162, 4, 32, "Input"],
-Cell[19483, 698, 1053, 34, 63, "Output"]
+Cell[22570, 777, 162, 4, 35, "Input"],
+Cell[22735, 783, 2688, 83, 70, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20585, 738, 70, 1, 47, "Subsection",
+Cell[25472, 872, 70, 1, 44, "Subsection",
  CellTags->"T1.11.2.1"],
-Cell[20658, 741, 34, 0, 31, "Text"],
-Cell[20695, 743, 1096, 36, 99, "Input"]
+Cell[25545, 875, 34, 0, 31, "Text"],
+Cell[25582, 877, 1096, 36, 107, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21828, 784, 110, 2, 47, "Subsection"],
+Cell[26715, 918, 110, 2, 51, "Subsection"],
 Cell[CellGroupData[{
-Cell[21963, 790, 596, 16, 77, "Input"],
-Cell[22562, 808, 11867, 386, 216, "Output"]
+Cell[26850, 924, 596, 16, 81, "Input"],
+Cell[27449, 942, 11818, 386, 182, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34478, 1200, 111, 2, 47, "Subsection"],
+Cell[39316, 1334, 111, 2, 51, "Subsection"],
 Cell[CellGroupData[{
-Cell[34614, 1206, 657, 18, 77, "Input"],
-Cell[35274, 1226, 19268, 628, 294, "Output"]
+Cell[39452, 1340, 657, 18, 81, "Input"],
+Cell[40112, 1360, 19219, 628, 249, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[54591, 1860, 111, 2, 47, "Subsection"],
+Cell[59380, 1994, 111, 2, 51, "Subsection"],
 Cell[CellGroupData[{
-Cell[54727, 1866, 1198, 33, 99, "Input"],
-Cell[55928, 1901, 25161, 779, 454, "Output"]
+Cell[59516, 2000, 1198, 33, 105, "Input"],
+Cell[60717, 2035, 25161, 779, 420, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[81138, 2686, 112, 2, 47, "Subsection"],
+Cell[85927, 2820, 112, 2, 51, "Subsection"],
 Cell[CellGroupData[{
-Cell[81275, 2692, 598, 16, 77, "Input"],
-Cell[81876, 2710, 108861, 3230, 1332, "Output"]
+Cell[86064, 2826, 598, 16, 81, "Input"],
+Cell[86665, 2844, 108811, 3230, 1372, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[190786, 5946, 110, 2, 47, "Subsection"],
+Cell[195525, 6080, 110, 2, 51, "Subsection"],
 Cell[CellGroupData[{
-Cell[190921, 5952, 596, 16, 77, "Input"],
-Cell[191520, 5970, 11837, 386, 216, "Output"]
+Cell[195660, 6086, 596, 16, 81, "Input"],
+Cell[196259, 6104, 11788, 386, 182, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -6489,4 +6626,3 @@ Cell[191520, 5970, 11837, 386, 216, "Output"]
 ]
 *)
 
-(* End of internal cache information *)

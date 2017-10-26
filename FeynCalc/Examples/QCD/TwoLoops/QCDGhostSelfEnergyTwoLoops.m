@@ -26,7 +26,8 @@ If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
 		Print["Computation of the ghost self-energy in QCD at 2-loops"];
 ];
-$LoadFeynArts = $LoadTARCER  = True;
+$LoadFeynArts = True;
+$LoadAddOns={"TACER"};
 <<FeynCalc`
 $FAVerbose=0;
 

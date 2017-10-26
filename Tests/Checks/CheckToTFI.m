@@ -26,7 +26,8 @@ Print["Checking ToTFI"];
 
 $FeynCalcStartupMessages = False;
 $LoadFeynArts=True;
-$LoadTARCER=True;
+$LoadAddOns={"TARCER"};
+
 <<FeynCalc`;
 
 $FAVerbose = 0;
