@@ -52,8 +52,9 @@ End[]
 
 Begin["`Write2`Private`"]
 
-ffDP::usage="";
+optFFDP::usage="";
 w2Verbose::usage="";
+finsubst::usage="";
 
 Options[Write2] = {
 	D0Convention -> 0,
@@ -76,9 +77,9 @@ Write2[f_String, x__ , opts:OptionsPattern[]] :=
 	Write2[f, Hold[x], opts]/; !MatchQ[Hold[x], Hold[_Hold ..]] && FreeQ[Hold[x],Rule];
 
 Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[ {j,vhf,vv,eq,k2str,tmp,
-	ide, aa0, be00, be11,be0,be1, db0, ce0, de0, ansg,d0convention,finsubst,
-	oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep,prec, eqj1, eqj2,
+	Block[ {j,vv,eq,k2str,tmp,
+	ide, aa0, be00, be11,be0,be1, db0, ce0, de0, ansg,d0convention,
+	oldopenops,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep,prec, eqj1, eqj2,
 	mantissa, exponent, jj, iir, iv, ii, rfile, rf1, rf2, ir, joinlabel, optFormatType},
 
 		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
@@ -101,33 +102,13 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 		prefortran	= OptionValue[PreFortranFile];
 		postfortran	= OptionValue[PostFortranFile];
 		strep		= OptionValue[StringReplace];
-		ffDP 		= OptionValue[FortranFormatDoublePrecision];
+		optFFDP		= OptionValue[FortranFormatDoublePrecision];
 		prec 		= OptionValue[Precision];
 		optFormatType = OptionValue[FormatType];
 		d0convention = OptionValue[D0Convention];
 
-		(* a modified Power function, for avoiding Fortran-Complications *)
-		pww[x_?NumberQ, 1/2] :=
-			(Sqrt[N[x]]/. xxx_Real/; ffDP :> fhead[xxx]);
-		pww[x_?NumberQ, rat_Rational] :=
-			((Power[N[x], N[rat]])/. xxx_Real/; ffDP -> fhead[xxx]);
-		pww[x_,1/2] :=
-			(Sqrt[x]/. xxx_Real/; ffDP :> fhead[xxx]);
-		pww[x_, rat_Rational] :=
-			(Power[x,N[rat]]/. xxx_Real/; ffDP :> fhead[xxx]);
-		pww[x_, he_] :=
-			((x^he)/. xxx_Real/; ffDP :> fhead[xxx]) /; Head[he]=!=Rational;
 		{aa0,be0,be1,be00,be11,db0,ce0,de0} = {A0,B0,B1,B00,B11,DB0,C0,D0}/.finsubst;
-		(* allvar gives all Variables in HoldForm,( KK[i] ) *)
-		allvar[y_] :=
-			Block[ {arr = {},ia,new,alt = Drop[#, -1]& /@ Position[y,HoldForm]},
-				For[ia = 1, ia <= Length[alt], ia++,
-					new = Part @@ Prepend[alt[[ia]], y];
-					If[ !MemberQ[arr, new],
-						AppendTo[arr,new]
-					] ];
-				arr
-			];
+
 
 
 		ide = {##}&;
@@ -136,24 +117,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		FCPrint[3, "Write2: Rewritten input expression ", eq, FCDoControl->w2Verbose];
 
-		mrel[x_] :=
-			MapAll[ReleaseHold, x];
-		(* vhf gives all "KK" which are really present *)
-		vhf[n_. y_HoldForm] :=
-			Block[ {kk, qq},
-				FCPrint[2,"Write2: vhf: Entering with ", n y];
-				kk = y[[1, 0]];
-				(Table[ HoldForm @@ {qq[ii]}, {ii, y[[1,1]]} ] /. qq -> kk)/.finsubst
-			] /; NumberQ[n];
-		vhf[y_] :=
-			Block[ {te = y, var = {}},
-				FCPrint[2,"Write2: vhf: Entering with ", y];
-				While[!FreeQ[te, HoldForm], var = Union[ var, allvar[te] ];
-											te = ReleaseHold[te]
-					];
-				var = Union[ var, allvar[te] ];
-				var/.finsubst
-			];
+
 		If[ optFormatType === FortranForm,
 		(* N@ added by RM on Sept. 13th 2003, because of http://www.feyncalc.org/forum/0153.html*)
 			(*	When we apply N to the full expression, this also affects terms from Isolate, e.g.
@@ -168,7 +132,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 
 			oldopenops = Options[OpenWrite];
 
-			If[	ffDP,
+			If[	optFFDP,
 				eq = eq  /. xxx_Real :> fhead[xxx];
 					(* Define a custom formatter that will generate Fortran's DOUBLE PRECISION format*)
 					fhead /: Format[fhead[r_Real], FortranForm] := (
@@ -457,7 +421,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 			Close @@ {file};
 
 			(* reestablish old FortranForm format behaviour *)
-			If[ ffDP,
+			If[ optFFDP,
 				Unset[FormatValues[fhead]];
 			]
 		];
@@ -466,6 +430,50 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 		];
 		file
 	];
+
+
+(* vhf gives all "KK" which are really present *)
+vhf[n_. y_HoldForm] :=
+	Block[ {kk, qq},
+		FCPrint[2,"Write2: vhf: Entering with ", n y];
+		kk = y[[1, 0]];
+		(Table[ HoldForm @@ {qq[ii]}, {ii, y[[1,1]]} ] /. qq -> kk)/.finsubst
+	] /; NumberQ[n];
+
+vhf[y_] :=
+	Block[ {te = y, var = {}},
+		FCPrint[2,"Write2: vhf: Entering with ", y];
+		While[	!FreeQ[te, HoldForm],
+				var = Union[ var, allvar[te] ];
+				te = ReleaseHold[te]
+		];
+		var = Union[ var, allvar[te] ];
+		var/.finsubst
+	];
+
+(* allvar gives all Variables in HoldForm,( KK[i] ) *)
+allvar[y_] :=
+	Block[ {arr = {},ia,new,alt = Drop[#, -1]& /@ Position[y,HoldForm]},
+		For[ia = 1, ia <= Length[alt], ia++,
+			new = Part @@ Prepend[alt[[ia]], y];
+			If[ !MemberQ[arr, new],
+				AppendTo[arr,new]
+			] ];
+		arr
+	];
+
+
+(* a modified Power function, for avoiding Fortran-Complications *)
+pww[x_?NumberQ, 1/2] :=
+	(Sqrt[N[x]]/. xxx_Real/; optFFDP :> fhead[xxx]);
+pww[x_?NumberQ, rat_Rational] :=
+	((Power[N[x], N[rat]])/. xxx_Real/; optFFDP -> fhead[xxx]);
+pww[x_,1/2] :=
+	(Sqrt[x]/. xxx_Real/; optFFDP :> fhead[xxx]);
+pww[x_, rat_Rational] :=
+	(Power[x,N[rat]]/. xxx_Real/; optFFDP :> fhead[xxx]);
+pww[x_, he_] :=
+	((x^he)/. xxx_Real/; optFFDP :> fhead[xxx]) /; Head[he]=!=Rational;
 
 fhead[x_]:=
 	x/; Head[x]=!=Real && FreeQ2[{x},{Pattern,Blank}];

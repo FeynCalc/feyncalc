@@ -23,8 +23,8 @@ FCAbbreviate::usage =
 "FCAbbreviate[expr, {q1,q2,...},{p1,p2,...}] introduces abbreivations for \
 scalar products of external momenta, SMP-objects and other variables that are \
 present in the expression. Functions (LeafCount > 1) are not supported. The \
-main purpose is to simplift export of FeynCalc expressions to other software \
-tools that might not be provide the richness of Mathematica's syntax. The \
+main purpose is to simplify the export of FeynCalc expressions to other software \
+tools that might not provide the richness of Mathematica's syntax. The \
 result is returned as a list of replacement rules for scalar products, SMPs \
 and all other variables present.";
 
