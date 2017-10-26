@@ -284,6 +284,15 @@ PolyLog[2, 1 - x]/2"},
 {"fcstSimplifyPolyLog-ID81",
 "SimplifyPolyLog[Zeta2 - Log[2]^2/2 - Log[2]*Log[1 + Sqrt[x]] + (3*Log[1 + Sqrt[x]]^2)/2 +
 Log[2]*Log[1 - x] - Log[1 + Sqrt[x]]*Log[1 - x] - 2*PolyLog[2, 1 - Sqrt[x]] +
-PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] - PolyLog[2, (1 + Sqrt[x])/2] + PolyLog[2, 1 - x]/2]", "0"}
-
+PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] - PolyLog[2, (1 + Sqrt[x])/2] + PolyLog[2, 1 - x]/2]", "0"},
+{"fcstSimplifyPolyLog-ID82",
+"SimplifyPolyLog[Log[x^4]]", "4 Log[x]"},
+{"fcstSimplifyPolyLog-ID83",
+"SimplifyPolyLog[Log[x^10]]", "10 Log[x]"},
+{"fcstSimplifyPolyLog-ID84",
+"SimplifyPolyLog[4 Zeta2^2]", "10 Zeta4"},
+{"fcstSimplifyPolyLog-ID85",
+"SimplifyPolyLog[Zeta2^2 - 5 Zeta[4]/2]", "0"},
+{"fcstSimplifyPolyLog-ID86",
+"SimplifyPolyLog[PolyLog[2, 2, x]]", "PolyLog[2, 2, x]"}
 })

@@ -45,14 +45,19 @@ Options[SimplifyPolyLog] = {
 };
 
 SimplifyPolyLog[expr_, OptionsPattern[]] :=
-	Block[{loli, tmp, repRule={}, var},
+	Block[{logSimp, tmp, repRule={}, var},
 
-		loli = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
+		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
 		optSqrt = OptionValue[Sqrt];
 
 		tmp = expr;
 
-		tmp = tmp/.Zeta2->(Pi^2/6)/.loli/.simptab/.simptab/.simptab/.simptab/.simptab/.simptab/.loli/.Pi^2->6 Zeta2;
+		tmp = tmp/.Zeta2->(Pi^2/6)/.logSimp/.simptab/.simptab/.simptab/.simptab/.simptab/.simptab/.logSimp/.Pi^2->6 Zeta2;
+
+		If[	!FreeQ2[tmp,{simplifyArgument,simplifyArgumentPolyLog}],
+			Message[SimplifyPolyLog::failmsg, "Simplification of the arguments of Polylogs failed."];
+			Abort[]
+		];
 
 		If[	!OptionValue[Nielsen],
 			tmp = tmp/. Nielsen[z__]:> Nielsen[z,PolyLog->True]
@@ -63,7 +68,7 @@ SimplifyPolyLog[expr_, OptionsPattern[]] :=
 		tmp = tmp /. {
 			Pi^2 :> 6 Zeta2 , Pi^3 :> Pi 6 Zeta2, Pi^4 :> 90 Zeta4,
 			Log[x_Integer?EvenQ] :> PowerExpand[Log[x]]
-		};
+		} /. {Zeta2^2 -> 5 Zeta[4]/2};
 
 		tmp
 
@@ -88,6 +93,11 @@ simplifyArgumentLog[su_, OptionsPattern[]] :=
 
 simplifyArgumentPolyLog[su1_,su2_] :=
 	FCUseCache[simplifyArgument,{su1, su2, PolyLog}];
+
+(*Currently no simplifications for Nielsen's polylogs*)
+simplifyArgumentPolyLog[su1_,su2_, su3_] :=
+	PolyLog[su1,su2,su3];
+
 
 funex[PolyGamma[2,2]] :>
 	2 - 2 Zeta[3];
@@ -930,8 +940,8 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[-Sqrt[x_Symbol]]/; optSqrt :>
 		1/2 Log[x] + I Pi,
 
-	Log[(x_Symbol)^2] :>
-		2 Log[x],
+	Log[(x_Symbol)^n_Integer?Positive] :>
+		n Log[x],
 
 	Log[-x_Symbol^2] :>
 		2 Log[x] + I Pi,
