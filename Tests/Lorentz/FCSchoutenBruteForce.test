@@ -31,5 +31,31 @@ Momentum[p5]]*Pair[Momentum[p4], Momentum[p6]]"},
 "FCSchoutenBruteForce[LC[][p1,p2,p3,p4]SP[p5,p6]+LC[][p2,p3,p4,p5]\
 SP[p1,p6]+LC[][p3,p4,p5,p1]SP[p2,p6]+LC[][p4,p5,p1,p2]SP[p3,p6]+LC[][\
 p5,p1,p2,p3]SP[p4,p6],{},{},Rule\[Rule]False,Information\[Rule]False]\
-", "0"}
+", "0"},
+{"fcstFCSchoutenBruteForce-ID5",
+"4 I (SP[p5, p6] LC[][p1, p2, p3, p4] -
+	SP[p4, p6] LC[][p1, p2, p3, p5] +
+	SP[p3, p5] LC[][p1, p2, p4, p6] -
+	SP[p3, p4] LC[][p1, p2, p5, p6] -
+	SP[p2, p6] LC[][p1, p3, p4, p5] +
+	SP[p2, p3] LC[][p1, p4, p5, p6] +
+	SP[p1, p6] LC[][p2, p3, p4, p5] -
+	SP[p1, p3] LC[][p2, p4, p5, p6]) //
+FCSchoutenBruteForce[#, {}, {}, Rule -> False,
+Information -> False] & // FCSchoutenBruteForce[#, {}, {},
+Rule -> False, Information -> False]&", "0"},
+{"fcstFCSchoutenBruteForce-ID6",
+"rule@@Last[list@@(FCSchoutenBruteForce[
+4 I (SP[p5, p6] LC[][p1, p2, p3, p4] -
+	SP[p4, p6] LC[][p1, p2, p3, p5] +
+	SP[p3, p5] LC[][p1, p2, p4, p6] -
+	SP[p3, p4] LC[][p1, p2, p5, p6] -
+	SP[p2, p6] LC[][p1, p3, p4, p5] +
+	SP[p2, p3] LC[][p1, p4, p5, p6] +
+	SP[p1, p6] LC[][p2, p3, p4, p5] -
+	SP[p1, p3] LC[][p2, p4, p5, p6]), {}, {}, Rule -> False,
+Information -> False, List -> True, FCE -> True])]",
+"rule[SP[p5, p6]*LC[][p1, p2, p3, p4],
+-(LC[][p2, p3, p4, p5]*SP[p1, p6]) + LC[][p1, p3, p4, p5]*SP[p2, p6] -
+LC[][p1, p2, p4, p5]*SP[p3, p6] + LC[][p1, p2, p3, p5]*SP[p4, p6]]"}
 });

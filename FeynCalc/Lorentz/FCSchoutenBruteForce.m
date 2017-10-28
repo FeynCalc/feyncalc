@@ -33,11 +33,14 @@ Begin["`FCSchoutenBruteForce`Private`"]
 fcsbVerbose::usage="";
 
 Options[FCSchoutenBruteForce] = {
+	Collecting -> True,
+	Factoring -> Factor2,
 	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
 	Information -> True,
 	Rule -> True,
+	List -> False,
 	Take -> 1,
 	Schouten -> False,
 	SchoutenAllowNegativeGain -> False,
@@ -55,8 +58,8 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 	Block[{
 		ex, res, sublists, combos, maxRed = 5, cs, gain=0,list,tmp=0,epsInds,moms,
 		repRule, join, optSchoutenAllowZeroGain, optSchoutenAllowNegativeGain, optRule, optTake,
-		resSchouten1, resSchouten2, resSchouten, lengthOriginal, lengthResSchouten, time, condition, resLength
-		},
+		resSchouten1, resSchouten2, resSchouten, lengthOriginal, lengthResSchouten, time, condition, resLength,
+		finalRule},
 
 
 		If[	OptionValue[FCVerbose]===False,
@@ -205,25 +208,27 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		res = ex /. repRule[[1]] :> repRule[[2]];
 
+		finalRule = RuleDelayed@@repRule;
+
 		resLength=Length[Expand2[res]];
 
 		If[ OptionValue[Information],
 			Which[
 				gain>0,
 				If [optRule,
-					FCPrint[0, "FCSchoutenBruteForce: The following rule was applied: ", repRule, " ", FCDoControl->fcsbVerbose];
+					FCPrint[0, "FCSchoutenBruteForce: The following rule was applied: ", finalRule, " ", FCDoControl->fcsbVerbose];
 				];
 				FCPrint[0, "FCSchoutenBruteForce: The numbers of terms in the expression decreased by: ", gain, FCDoControl->fcsbVerbose];
 				FCPrint[0, "FCSchoutenBruteForce: Current length of the expression: ", resLength, FCDoControl->fcsbVerbose],
 				gain===0 && (repRule =!= {{},{}}),
 				If [optRule,
-					FCPrint[0, "FCSchoutenBruteForce: The following rule was applied: ", repRule, " ", FCDoControl->fcsbVerbose];
+					FCPrint[0, "FCSchoutenBruteForce: The following rule was applied: ", finalRule, " ", FCDoControl->fcsbVerbose];
 				];
 				FCPrint[0, "FCSchoutenBruteForce: The numbers of terms remained unchanged.", FCDoControl->fcsbVerbose];
 				FCPrint[0, "FCSchoutenBruteForce: Current length of the expression: ", resLength, FCDoControl->fcsbVerbose],
 				gain<0 && (repRule =!= {{},{}}),
 				If [optRule,
-					FCPrint[0, "FCSchoutenBruteForce: The following rule was applied: ", repRule, " ", FCDoControl->fcsbVerbose];
+					FCPrint[0, "FCSchoutenBruteForce: The following rule was applied: ", finalRule, " ", FCDoControl->fcsbVerbose];
 				];
 				FCPrint[0, "FCSchoutenBruteForce: The number of terms increased by: ", gain, FCDoControl->fcsbVerbose];
 				FCPrint[0, "FCSchoutenBruteForce: Current length of the expression: ", resLength, FCDoControl->fcsbVerbose],
@@ -232,7 +237,13 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 			];
 		];
 
+		If[	OptionValue[Collecting],
+			res = Collect2[res,Eps,Pair,Factoring->OptionValue[Factoring]]
+		];
 
+		If[	OptionValue[List],
+			res = {res,finalRule}
+		];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
@@ -240,7 +251,6 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		FCPrint[1, "FCSchoutenBruteForce: Leaving.", FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: Leaving with: ", res, FCDoControl->fcsbVerbose];
-
 
 		res
 ];
