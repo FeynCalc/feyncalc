@@ -113,3 +113,42 @@ SPD[p, q2], SPD[k, q1]}]//FCE",
 "{FAD[p + q1, -k + q2] SPD[q1, q2], {FAD[{k + q2, m}],
 FAD[{-p + q1, m}], SPD[p, q2], SPD[k, q1]}}"}
 });
+
+Tests`LoopIntegrals`fcstFCLoopBasisSplit =
+({
+{"fcstFCLoopBasisSplit-ID1",
+"FCLoopBasisSplit[FCI@FAD[{q,m}],{q1,q2},Head\[Rule]loopInt,FCE\
+\[Rule]True]",
+"loopInt[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], \
+m]], 0]"},
+{"fcstFCLoopBasisSplit-ID2",
+"FCLoopBasisSplit[FCI@FAD[{q1,m}],{q1,q2},Head\[Rule]loopInt,FCE\
+\[Rule]True]", "{loopInt[FAD[{q1, m}], {q1}]}"},
+{"fcstFCLoopBasisSplit-ID3",
+"FCLoopBasisSplit[FCI@FAD[{q1,m},{q2,m},{p1-p2,0}],{q1,q2},Head\
+\[Rule]loopInt,FCE\[Rule]True]",
+"{loopInt[FAD[{q1, m}], {q1}], loopInt[FAD[{q2, m}], {q2}], \
+loopInt[FAD[p1 - p2], 0]}"},
+{"fcstFCLoopBasisSplit-ID4",
+"FCLoopBasisSplit[FCI@FAD[{q1,m},{q2,m}],{q1,q2},Head\[Rule]\
+loopInt,FCE\[Rule]True]",
+"{loopInt[FAD[{q1, m}], {q1}], loopInt[FAD[{q2, m}], {q2}]}"},
+{"fcstFCLoopBasisSplit-ID5",
+"FCLoopBasisSplit[FCI@FAD[{q1,m},{q2-q3,m}],{q1,q2},Head\[Rule]\
+loopInt,FCE\[Rule]True]",
+"{loopInt[FAD[{q1, m}], {q1}], loopInt[FAD[{q2 - q3, m}], \
+{q2}]}"},
+{"fcstFCLoopBasisSplit-ID6",
+"FCLoopBasisSplit[FCI@FAD[{q1,m},{q2,m},{q3-q4,0},{q3-p,m},{q5}],{\
+q1,q2,q3,q4,q5},Head\[Rule]loopInt,FCE\[Rule]True]",
+"{loopInt[FAD[{q1, m}], {q1}], loopInt[FAD[{q2, m}], {q2}], \
+loopInt[FAD[q5], {q5}], loopInt[FAD[{-p + q3, m}, q3 - q4], {q3, \
+q4}]}"},
+{"fcstFCLoopBasisSplit-ID7",
+"FCLoopBasisSplit[FCI@FAD[{q1,m},{q2,m},{q3-q4,0},{q3-p,m},{q5}],{\
+q1,q2,q3,q4,q5},Head\[Rule]loopInt,List\[Rule]False,FCE\[Rule]True]",
+"loopInt[FAD[q5], {q5}]*loopInt[FAD[{q1, m}], \
+{q1}]*loopInt[FAD[{q2, m}], {q2}]*loopInt[FAD[{-p + q3, m}, q3 - q4], \
+{q3, q4}]"}
+});
+

@@ -32,6 +32,10 @@ that do not form a basis, such a completion must be found prior to processing th
 integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE). \
 Furthermore, int must not contain propagators that are linearly dependent.";
 
+FCLoopBasisSplit::usage =
+"FCLoopBasisSplit[int, {q1,q2,...}] checks if the given loop integral factorizes \
+and if so splits it into independent integrals.";
+
 FCLoopBasis::unknownmoms =
 "Error! Loop integral `1` depends on momenta that were not specified or it doesn't depend on \
 some of the specified momenta. Evaluation aborted.";
@@ -75,6 +79,7 @@ End[]
 Begin["`FCLoopBasis`Private`"]
 
 null::usage="";
+lintegral::usage="";
 
 Options[FCLoopBasisIncompleteQ] = {
 	FCI -> False,
@@ -93,6 +98,13 @@ Options[FCLoopBasisFindCompletion] = {
 	FCVerbose -> False,
 	Method -> ScalarProduct,
 	SetDimensions-> {4,D}
+};
+
+Options[FCLoopBasisSplit] = {
+	FCE -> False,
+	FeynAmpDenominatorCombine -> True,
+	Head -> FCGV["LoopInt"],
+	List -> True
 };
 
 FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
@@ -165,6 +177,65 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 		{basisElements[[1]], coeffs, basisElements[[2]], basisElementsOrig[[1]]}
 
 ];
+
+
+loopSplitFu[done_List, remaining_, lmoms_, subsets_] :=
+	Block[{splitting,tmp},
+		splitting =
+			Catch[
+				Map[(
+					tmp = {SelectNotFree[remaining, #], #, SelectFree[remaining, #]};
+					If[	TrueQ[tmp[[1]] =!= 1 && FreeQ2[tmp[[1]], Complement[lmoms, #]]],
+						Throw[tmp],
+						Null
+					]
+					) &, subsets]
+			];
+		If[	TrueQ[Last[splitting]===1],
+			Join[done, {lintegral[splitting[[1]], splitting[[2]]]}],
+			loopSplitFu[Join[done, {lintegral[splitting[[1]], splitting[[2]]]}], splitting[[3]], lmoms, subsets]
+		]
+
+	]/; remaining =!= 1;
+
+loopSplitFu[done_List, 1, _, _] :=
+	done;
+
+FCLoopBasisSplit[sps_. fad_FeynAmpDenominator, lmoms_List, OptionsPattern[]] :=
+	Block[{ex, rest, res, loopMomenta},
+		ex = FeynAmpDenominatorSplit[sps fad, FCI->True];
+		loopMomenta=Select[lmoms,!FreeQ[ex,#]&];
+		If[	loopMomenta==={},
+			Return[OptionValue[Head][sps fad,0]]
+		];
+		{ex, rest} = {SelectNotFree[ex,loopMomenta],  SelectFree[ex,loopMomenta]};
+
+		res = loopSplitFu[{},ex, lmoms, Rest[Subsets[lmoms]]];
+
+		If[	rest=!=1,
+			res = Join[res,{lintegral[rest,0]}]
+		];
+
+		If [OptionValue[FeynAmpDenominatorCombine],
+			res = res/. lintegral[x_,y_] :> lintegral[FeynAmpDenominatorCombine[x,FCI->True],y]
+		];
+
+		res = res /. lintegral -> OptionValue[Head];
+
+
+
+		If[	!OptionValue[List],
+			res = Times@@res
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
+	]
+
+
 
 FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose, rank, len},
