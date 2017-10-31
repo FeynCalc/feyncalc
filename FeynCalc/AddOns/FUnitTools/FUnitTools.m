@@ -84,7 +84,7 @@ FUnitExtractUnitTests[{dir__, file_}, testVar_] :=
 
 
 (* Print startup message *)
-If[ Global`$FeynCalcStartupMessages =!= False,
+If[ $FeynCalcStartupMessages =!= False,
 	Print[Style["FUnitTools ", "Text", Bold], Style[$FUnitToolsVersion <> " loaded.", "Text"]]
 ];
 

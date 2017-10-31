@@ -126,7 +126,7 @@ projection[x_, p_, mu_, nu_,  type_, {dim_,fce_}]:=
 
 
 (* Print startup message *)
-If[ Global`$FeynCalcStartupMessages =!= False,
+If[ $FeynCalcStartupMessages =!= False,
 	Print[Style["FVProjector ", "Text", Bold], Style[$FVProjectionVersion <> " loaded.", "Text"]]
 ];
 
