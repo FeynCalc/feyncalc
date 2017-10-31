@@ -581,7 +581,7 @@ feynsimp[lmoms_List][a__PD] :=
 
 (*	FDS for 2-loop integrals	*)
 FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]] :=
-	Block[ {exp, res, null1, null2, fclsOutput, intsRest, intsFDS, intsFDS2, intsFDS3, intsFDS4,
+	Block[ {exp, res, null1, null2, fclsOutput, intsRest, intsFDS,
 			fds2Loops,fds1LoopQ1,fds1LoopQ2, intsFDSUnique, intsTops, intsTops2,
 			intsFDSUniqueFromSols, intsFDSUniqueFromSols2, intsFDSUniqueNested, solsListNested,
 			repRuleNested, fds2LoopsNested,
@@ -616,49 +616,13 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			exp = FeynAmpDenominatorCombine[exp]
 		];
 
-
-		(*	Let us first extract all the scalar loop integrals	*)
-		fclsOutput = FCLoopSplit[ex,{q1,q2},FCI->False];
-		intsRest = fclsOutput[[1]];
-		intsFDS = fclsOutput[[2]]+fclsOutput[[3]]+fclsOutput[[4]];
+		{intsRest,intsFDS,intsFDSUnique} = FCLoopExtract[ex, {q1,q2},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True];
 
 		FCPrint[3, "FDS: Terms to be ignored ", intsRest, FCDoControl->fdsVerbose];
 		FCPrint[3, "FDS: Possibly relevant terms ", intsFDS, FCDoControl->fdsVerbose];
-
-		(*	Nothing to do	*)
-		If[ intsFDS === 0,
-			Return[ex]
-		];
-
-		(*	Split FADs to extract only loop momenta dependent pieces *)
-		intsFDS = FeynAmpDenominatorSplit[intsFDS,Momentum->{q1,q2}];
-
-		(* Let us now isolate all the 2-loop and 1-loop integrals that depend on q1,q2 *)
-		intsFDS2 = FCLoopIsolate[intsFDS, {q1,q2}, FCI->True, MultiLoop->True, Head->fds2Loops];
-		intsFDS3 = FCLoopIsolate[intsFDS2, {q1}, FCI->True, MultiLoop->True, Head->fds1LoopQ1, ExceptHeads->{fds2Loops}];
-		intsFDS4 = FCLoopIsolate[intsFDS3, {q2}, FCI->True, MultiLoop->True, Head->fds1LoopQ2, ExceptHeads->{fds2Loops}];
-		(*	Put the FADs back together *)
-		intsFDS4 = intsFDS4/. (h:fds2Loops|fds1LoopQ1|fds1LoopQ2)[x__]:> h[FeynAmpDenominatorCombine[x]];
-
-		FCPrint[3, "FDS: Isolated terms ", intsFDS4, FCDoControl->fdsVerbose];
-
-		(* Extract all the unique integrals *)
-		intsFDSUnique = Cases[intsFDS4+null1+null2,(fds2Loops|fds1LoopQ1|fds1LoopQ2)[x__],Infinity]//Union;
 		FCPrint[3, "FDS: Unique terms ", intsFDSUnique, FCDoControl->fdsVerbose];
 
-
-		(* Apply standard simplifications *)
-		solsList = MapIndexed[
-								Which [	Head[#]===fds2Loops,
-										fds2Loops[oldFeynAmpDenominatorSimplify[(#/. fds2Loops->Identity),q1,q2,opt]],
-										Head[#]===fds1LoopQ1,
-										FeynAmpDenominatorSimplify[(#/. fds1LoopQ1->Identity),q1,opt],
-										Head[#]===fds1LoopQ2,
-										FeynAmpDenominatorSimplify[(#/. fds1LoopQ2->Identity),q2,opt],
-										True,
-										Message[FDS::failmsg,"Unknown integral type!"];
-								]&,intsFDSUnique];
-
+		solsList = intsFDSUnique /. loopHead[z_,{l_}] :> fdsOneLoop[z,l] /. loopHead[z_,{l1_,l2_}] :> fds2Loops[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]];
 
 
 		(*	Tailored simplifications for speical 2-loop topologies	*)
@@ -715,7 +679,7 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 		(* Final replacement rule *)
 		repRule = MapIndexed[(Rule[#1, First[solsList[[#2]]]]) &, intsFDSUnique];
 
-		res = intsRest + (intsFDS4/.repRule);
+		res = intsRest + (intsFDS/.repRule);
 
 		If[ !FreeQ2[res,{fds2Loops,fds1LoopQ1,fds1LoopQ2}],
 				Message[FDS::failmsg,"Some subroutines in FDS didn't work properly."];

@@ -56,5 +56,29 @@ m}]*FVD[q1, mu]]}}"},
 {"fcstFCLoopExtract-ID10",
 "FCLoopExtract[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q},
 loop, FCLoopIBPReducableQ -> True] // FCE",
-"{0, b FAD[q] + a loop[FAD[q, q]], {loop[FAD[q, q]]}}"}
+"{0, b FAD[q] + a loop[FAD[q, q]], {loop[FAD[q, q]]}}"},
+{"fcstFCLoopExtract-ID11",
+"FCLoopExtract[FAD[{q1,m0}],{q1},loopInt,FCLoopBasisSplit\[Rule]\
+True,FCE\[Rule]True]",
+"{0, loopInt[FAD[{q1, m0}], {q1}], {loopInt[FAD[{q1, m0}], \
+{q1}]}}"},
+{"fcstFCLoopExtract-ID12",
+"FCLoopExtract[FAD[{q1,m0},{p1+p2}],{q1},loopInt,FCLoopBasisSplit\
+\[Rule]True,FCE\[Rule]True]",
+"{0, FAD[p1 + p2]*loopInt[FAD[{q1, m0}], {q1}], {loopInt[FAD[{q1, \
+m0}], {q1}]}}"},
+{"fcstFCLoopExtract-ID13",
+"FCLoopExtract[FAD[{q1,m0},{p1+p2}],{q2},loopInt,FCLoopBasisSplit\
+\[Rule]True,FCE\[Rule]True]", "{FAD[{q1, m0}, p1 + p2], 0, {}}"},
+{"fcstFCLoopExtract-ID14",
+"FCLoopExtract[FAD[{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2},loopInt,\
+FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
+"{0, loopInt[FAD[q2, q1, q1 - q2, -p + q1], {q1, q2}], \
+{loopInt[FAD[q2, q1, q1 - q2, -p + q1], {q1, q2}]}}"},
+{"fcstFCLoopExtract-ID15",
+"FCLoopExtract[FAD[{q3,0},{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2,\
+q3},loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
+"{0, loopInt[FAD[q3], {q3}]*loopInt[FAD[q2, q1, q1 - q2, -p + q1], \
+{q1, q2}], {loopInt[FAD[q3], {q3}], loopInt[FAD[q2, q1, q1 - q2, -p + \
+q1], {q1, q2}]}}"}
 });
