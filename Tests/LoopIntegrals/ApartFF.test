@@ -35,7 +35,7 @@ Tests`LoopIntegrals`fcstApartFF =
 {"fcstApartFF-ID11",
 "ApartFF[SPD[q2,p]SPD[q1,p]FAD[{q1,m},{q2,m},q1-p,q2-p,q2-q1],{q1,\
 q2}]//FCE",
-"-FAD[{q1, m}, -p + q2, q1 - q2]/2 + FAD[{q1, m}, {q2, m}, -q1 + q2]/4 +
+"-FAD[{q1, m}, -p + q2, q1 - q2]/2 + FAD[{q1, m}, {q2, m}, q1 - q2]/4 +
 (FAD[q2, q1, {-p + q1, m}, q1 - q2]*(m^2 + SPD[p, p]))/2 -
 (FAD[{q1, m}, {q2, m}, q1 - q2, -p + q1]*(m^2 + SPD[p, p]))/2 +
 (FAD[{q1, m}, {q2, m}, -p + q2, q1 - q2, -p + q1]*(m^2 + SPD[p, p])^2)/4"},

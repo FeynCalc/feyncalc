@@ -62,50 +62,20 @@ Options[FeynAmpDenominatorSimplify] = {
 	ExpandScalarProduct -> True,
 	FC2RHI -> False,
 	FCI -> False,
+	FCE -> False,
 	FCVerbose -> False,
 	Factoring -> Factor2,
 	FeynAmpDenominatorCombine -> True,
 	IncludePair -> False,
-	IntegralTable -> {}
+	IntegralTable -> {},
+	Rename -> True
 };
 
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
 
-(* For the case that there is nothing to do *)
-FeynAmpDenominatorSimplify[a_, ___,OptionsPattern[]] :=
-	a /; FreeQ2[a, {FAD, PD}];
-
-(*	Simple wrappers	*)
-FeynAmpDenominatorSimplify[exp_,Momentum[q1_, _:4],opts:OptionsPattern[]] :=
-	FeynAmpDenominatorSimplify[exp, q1,opts];
-
-FeynAmpDenominatorSimplify[exp_,Momentum[q1_, _:4], Momentum[q2_, _:4],opts:OptionsPattern[]] :=
-	FeynAmpDenominatorSimplify[exp, q1, q2,opts];
-
-(*	Without knowing what the loop momenta are, FDS can just try to sort propagators
-	and pull out the overall minus signs,	but nothing more	*)
-FeynAmpDenominatorSimplify[exp_, OptionsPattern[]] :=
-	FCI[exp] /. PD -> procan /. procan ->
-	PD /. FeynAmpDenominator -> feyncan;
-
-procan[a_, m_] :=
-	Block[ {tt , one},
-		tt = Factor2[one MomentumExpand[a]];
-		If[ NumericalFactor[tt] === -1,
-			PD[-tt/.one->1, m],
-			PD[tt/.one->1, m]
-		]
-	];
-
-(*	Handling general multiloop integrals with more than 2 loop momenta	*)
-FeynAmpDenominatorSimplify[exp_, qmore__,
-	q1_/;Head[q1] =!= Rule, q2_ /;Head[q2] =!= Rule,opts:OptionsPattern[]] :=
-	FeynAmpDenominatorSimplify[exp /. FeynAmpDenominator -> feynsimp[{q2}], qmore, q1,opts];
-
-(*	FDS for 1-loop integrals	*)
-FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
-	Block[ {exp,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time},
-
+FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPattern[]] :=
+	Block[ {ex,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time, topoCheckUnique,
+		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2},
 
 		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
@@ -119,43 +89,127 @@ FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!FreeQ2[$ScalarProducts, {q1}],
+		If[	!FreeQ2[$ScalarProducts, {qs}],
 			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
 			Abort[]
 		];
 
+		If[ !OptionValue[FCI],
+			ex = FeynCalcInternal[expr],
+			ex = expr
+		];
 
-		FCPrint[1,"FDS: Entering 1-loop FDS. ", FCDoControl->fdsVerbose];
-		FCPrint[3,"FDS: Entering 1-loop FDS with: ", ex, FCDoControl->fdsVerbose];
+		FCPrint[1,"FDS: Entering FDS. ", FCDoControl->fdsVerbose];
+		FCPrint[3,"FDS: Entering with: ", ex, FCDoControl->fdsVerbose];
+
+		If[ FreeQ[ex,FeynAmpDenominator],
+			FCPrint[1,"FDS: Nothing to do.", FCDoControl->fdsVerbose];
+			Return[ex]
+		];
+
+		If[ Length[{qs}]===0,
+			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
+			Return[ex/.PD -> procan /. procan -> PD /. FeynAmpDenominator -> feyncan]
+		];
+
 
 
 		(*	Extract unique loop integrals	*)
 		FCPrint[1,"FDS: Extracting unique loop integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
-		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {q1},loopHead, DropScaleless->True,FCI->OptionValue[FCI], PaVe->False];
+		(*TODO Drop scaleless for 1-loop??? *)
+		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True];
 
 		FCPrint[1, "FDS: Done extracting unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 		FCPrint[3, "FDS: List of unique integrals ", intsUnique, FCDoControl->fdsVerbose];
 
-		(*	Apply fdsOneLoop to each of the unique loop integrals	*)
-		FCPrint[1,"FDS: Applying fdsOneLoop to the unique integrals. ", FCDoControl->fdsVerbose];
+		FCPrint[1,"FDS: Simplifying the unique integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
-		solsList = Map[fdsOneLoop[#,q1]&,(intsUnique/.loopHead->Identity)];
-		FCPrint[1, "FDS:Done applying fdsOneLoop, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
-		FCPrint[3, "FDS: List of simplified integrals ", solsList, FCDoControl->fdsVerbose];
+		solsList = intsUnique /. {
+			loopHead[z_,{l_}] :> fdsOneLoop[z,l],
+			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
+			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]]
+		};
 
+		solsList = (FeynAmpDenominatorCombine[#]/. FeynAmpDenominator -> feynord[{qs}])&/@solsList;
+
+		FCPrint[1, "FDS:Done simpifying the unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: List of the simplified integrals ", solsList, FCDoControl->fdsVerbose];
 
 		If[!FreeQ[solsList,fdsOneLoop],
 			Message[FDS::failmsg,"fdsOneLoop couldn't be applied to some of the unique integrals."];
 			Abort[]
 		];
 
-		repRule = MapThread[Rule[#1,#2]&,{intsUnique,solsList}];
+		(*	Tailored simplifications for speical 2-loop topologies	*)
+		If[ OptionValue[DetectLoopTopologies] && !FreeQ[solsList,multiLoopHead],
+			FCPrint[3, "FDS: Simplifying special topologies.", FCDoControl->fdsVerbose];
+
+
+			(* Isolate single loop integrals in every solution *)
+			solsList = solsList /.
+				{multiLoopHead[x__]:> Map[topoCheck,Expand2[x,FeynAmpDenominator]+null1+null2]}/. topoCheck[null1|null2] -> 0;
+
+			topoCheckUnique = Cases[solsList,topoCheck[x__],Infinity]//Sort//DeleteDuplicates;
+			FCPrint[3, "FDS: Unique terms ", topoCheckUnique, FCDoControl->fdsVerbose];
+
+
+			intsTops=getTopology[#,{qs}]&/@(topoCheckUnique/.topoCheck->Identity);
+			FCPrint[3, "FDS: Topologies ", intsTops, FCDoControl->fdsVerbose];
+
+			intsTops2 = checkTopology/@intsTops;
+			FCPrint[3, "FDS: Checked topologies ", intsTops2, FCDoControl->fdsVerbose];
+
+			If[ intsTops2=!={},
+				solsList2 = MapIndexed[
+						(* Here one could add more topologies if needed *)
+						Which[	#1==="2-loop-self-energy",
+									(fds2LoopsSE[(First[topoCheckUnique[[#2]]]/.topoCheck->Identity),qs,(Total[intsTops[[#2]]])[[3]][[1]]]/. FeynAmpDenominator -> feyncan),
+								#1==="generic",
+									(First[topoCheckUnique[[#2]]]/. topoCheck->Identity),
+								True,
+									Message[FDS::failmsg,"Unknown 2-loop topology!"];
+									Abort[]
+
+						]&,intsTops2],
+				solsList2= {}
+			];
+
+			solsList = solsList /. Thread[Rule[topoCheckUnique,solsList2]],
+
+			(* Otherwise just remove the multiLoopHead heads *)
+			solsList = solsList/.multiLoopHead->Identity
+		];
+
+		repRule = Thread[Rule[intsUnique,solsList]];
 		FCPrint[3, "FDS: Replacement rule: ", repRule, FCDoControl->fdsVerbose];
 
 		(*	Substitute the simplified integrals back into the original expression	*)
 		res = rest + (loopInts/.repRule);
 
+		(*
+			Some integrals might be identical up to a renaming of the loop momenta, e.g.
+			1/[(q1^2-m1^2)(q2^2-m2^2)] and 1/[(q2^2-m1^2)(q1^2-m2^2)]. In the following
+			we check all possible exchanges of the loop momentum variables and sort them
+			canonically.
+		*)
+
+		If[	OptionValue[Rename] && Length[{qs}]>=2,
+
+			time=AbsoluteTime[];
+			FCPrint[1, "FDS: fdsMultiLoop: Checking symmetries under renamings of the loop momenta.", FCDoControl->fdsVerbose];
+
+			{rest,loopInts,intsUnique} = FCLoopExtract[res, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->False];
+
+			solsList = intsUnique /. loopHead[x_]:> renameLoopMomenta[x,{qs}];
+			repRule = Thread[Rule[intsUnique,solsList]];
+
+			res = rest + (loopInts/.repRule);
+			FCPrint[1, "FDS: Done checking symmetries under renamings of the loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
+			FCPrint[3, "FDS: fdsMultiLoop: After the renaming of the loop momenta: ", res, FCDoControl->fdsVerbose]
+		];
+
+		(*TODO: DO NOT EXPAND IN THE LOOP MOMENTA!!!! *)
 		If [OptionValue[ExpandScalarProduct],
 			FCPrint[1,"FDS: Applying ExpandScalarProduct. ", FCDoControl->fdsVerbose];
 			time=AbsoluteTime[];
@@ -172,8 +226,42 @@ FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 			FCPrint[3, "FDS: After Collect2: ", res, FCDoControl->fdsVerbose]
 		];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		FCPrint[3, "FDS: Leaving with: ", res, FCDoControl->fdsVerbose];
 		res
+	];
+
+
+
+renameLoopMomenta[int_,qs_List]:=
+	Block[{	permutations,listOfRenamings,equivalentInts,
+			lmoms,nLoops,rule,res},
+
+		lmoms = Select[qs,!FreeQ[int,#]&];
+		nLoops = Length[lmoms];
+
+		permutations = Permute[lmoms, PermutationGroup[Cycles[{#}]&/@Subsets[Range[nLoops], {2, nLoops}]]];
+
+		listOfRenamings=Sort[MapThread[rule, {Table[lmoms, Length[permutations]], permutations}] /.rule[x_List,y_List] :> Thread[Rule[x,y]] /.
+			Rule[a_, a_] :> Unevaluated[Sequence[]]];
+
+		equivalentInts = Map[(int/. # /. FeynAmpDenominator -> feynsimp[lmoms] /. FeynAmpDenominator -> feynord[lmoms])&, listOfRenamings];
+
+		res = equivalentInts//Sort//First;
+
+		res
+	];
+
+procan[a_, m_] :=
+	Block[ {tt , one},
+		tt = Factor2[one MomentumExpand[a]];
+		If[ NumericalFactor[tt] === -1,
+			PD[-tt/.one->1, m],
+			PD[tt/.one->1, m]
+		]
 	];
 
 fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
@@ -184,14 +272,14 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		FCPrint[3, "FDS: fdsOneLoop: Entering with: ", loopInt, FCDoControl->fdsVerbose];
 
-		(* 	Order the propagators such, that the massless propagator with the smalles
+		(* 	Order the propagators such, that the massless propagator with the smallest
 			number of the external momenta goes first. This is not the standard ordering,
 			but it is useful as the first step to bring the integral into canonical form	*)
 		tmp = loopInt /. FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 		FCPrint[3, "FDS: fdsOneLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Integrals that are antisymmetric under q->-q are removed	*)
-		tmp = removeAnitsymmetricIntegrals[tmp,q];
+		tmp = removeAnitsymmetricIntegrals[tmp,{q}, {q}];
 		FCPrint[3, "FDS: fdsOneLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
 
 		(* Special trick for same mass propagators to avoid terms like 1/[q^2-m^2] [(q-p)^2-m^2]^3 instead of
@@ -254,7 +342,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
 		FCPrint[3, "FDS: fdsOneLoop: tmpNew: ", tmpNew, FCDoControl->fdsVerbose];
 
-		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
+		solsList = Map[removeAnitsymmetricIntegrals[#,{q}, {q}]&,(tmpNew[[3]]/.loopHead->Identity)];
 		FCPrint[3, "FDS: fdsOneLoop: solsList: ", solsList, FCDoControl->fdsVerbose];
 
 		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
@@ -488,14 +576,17 @@ sortWeightedShifts[{x1_,a1_,b1_,x2_},{y1_,a2_,b2_,y2_}]:=
 		];
 
 
-(*	Checks if the integral vanishes by symmetry. Memoization should be done via
-	FCUseCache	*)
-removeAnitsymmetricIntegrals[int_,q_]:=
-	If[	Expand[(MomentumExpand[EpsEvaluate[int/.q->-q]] /.
-		FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}])+int]===0,
+(*	Checks if the integral vanishes by symmetry (multiloop version).
+	Memoization should be done via FCUseCache	*)
+removeAnitsymmetricIntegrals[int_, qmin_List, qs_List]:=
+	If[	TrueQ[Expand[(MomentumExpand[EpsEvaluate[int/.Thread[Rule[qmin, -qmin]] ,FCI->True]] /.
+		FeynAmpDenominator -> feynsimp[qs] /. FeynAmpDenominator -> feynord2[qs])+int]===0],
 		0,
 		int
-	];
+	]/; int=!=0;
+
+removeAnitsymmetricIntegrals[0,{__}, {__}]:=
+	0;
 
 (*	Sort propagators in a FeynAmpDenominator.
 	Propagators with the smallest number of momenta go first. If the number of
@@ -574,122 +665,68 @@ feynord2[qs_List][a__] :=
 	inside FeynAmpDenominator, where feynsimpthere are no Pair's	*)
 feynsimp[lmoms_List][a__PD] :=
 	MemSet[feynsimp[lmoms][a],
-		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //.
-		PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] :> PD[Momentum[q,di] - pe, m])
+		Block[{null1,null2,pd},
+		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //. {
+			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] :> pd[Momentum[q,di] - pe, m],
+			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-Momentum[q,di] + pe + null1 + null2, Momentum[qq_, ___] :> qq,Infinity], lmoms]]] :>
+				pd[Momentum[q,di] - pe, m]
+		} /. pd -> PD)
+		]
 	];
 
+fdsMultiLoop[loopInt : (_. FeynAmpDenominator[props__]), qs__]:=
+	Block[{	tmp,res,tmpNew,solsList,repRule},
 
-(*	FDS for 2-loop integrals	*)
-FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]] :=
-	Block[ {exp, res, null1, null2, fclsOutput, intsRest, intsFDS,
-			fds2Loops,fds1LoopQ1,fds1LoopQ2, intsFDSUnique, intsTops, intsTops2,
-			intsFDSUniqueFromSols, intsFDSUniqueFromSols2, intsFDSUniqueNested, solsListNested,
-			repRuleNested, fds2LoopsNested,
-			solsList, repRule
-			},
+		(*	The input of fdsMultiLoop is guaranteed to contain
+			only a signle loop integral. This makes many things simpler.	*)
 
-		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
+		tmp = loopInt;
+
+		FCPrint[3, "FDS: fdsMultiLoop: Entering with: ", tmp, FCDoControl->fdsVerbose];
+
+
+		(* 	Order the propagators such, that the massless propagator with the smallest
+			number of the external momenta goes first. This is not the standard ordering,
+			but it is useful as the first step to bring the integral into canonical form	*)
+		tmp = tmp /. FeynAmpDenominator -> feynsimp[{qs}] /. FeynAmpDenominator -> feynord2[{qs}];
+		FCPrint[3, "FDS: fdsMultiLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
+
+		(*	Integrals that are antisymmetric under qi->-qi are removed	*)
+		tmp = Fold[removeAnitsymmetricIntegrals[#1, #2, {qs}] &, tmp, Subsets[{qs}]];
+
+		FCPrint[3, "FDS: fdsMultiLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
+
+		If[	tmp===0,
+			Return[0],
+			res = tmp
 		];
+		(*
+		FCPrint[3, "FDS: fdsMultiLoop: res: ", res, FCDoControl->fdsVerbose];
+		(* 	After the shifts our single integral usually turns into a sum of
+			integrals with different numerators. Some of them might vanish by symmetry	*)
 
-		If [OptionValue[FCVerbose]===False,
-			fdsVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				fdsVerbose=OptionValue[FCVerbose]
-			];
-		];
+		res = Expand2[ExpandScalarProduct[res,Momentum->{qs},EpsEvaluate->True],qs];
+		FCPrint[3, "FDS: fdsMultiLoop: res: ", res, FCDoControl->fdsVerbose];
 
-		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
-			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
-			Abort[]
-		];
+		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
+		FCPrint[3, "FDS: fdsOneLoop: tmpNew: ", tmpNew, FCDoControl->fdsVerbose];
 
-		FCPrint[1,"FDS: Entering 2-loop FDS with", ex, FCDoControl->fdsVerbose];
+		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
+		FCPrint[3, "FDS: fdsOneLoop: solsList: ", solsList, FCDoControl->fdsVerbose];
 
-		If[ !OptionValue[FCI],
-			exp = FeynCalcInternal[ex],
-			exp = ex
-		];
+		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
+		FCPrint[3, "FDS: fdsOneLoop: repRule: ", repRule, FCDoControl->fdsVerbose];
 
-		If [ OptionValue[FeynAmpDenominatorCombine],
-			exp = FeynAmpDenominatorCombine[exp]
-		];
+		res = tmpNew[[1]] + (tmpNew[[2]]/.repRule);
+		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
+		*)
+		(*	Finally, order all the propagators canonically	*)
+		res = res /. FeynAmpDenominator :> feynord[{qs}];
+		FCPrint[3, "FDS: fdsMultiLoop: Final ordering: ", res, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: fdsMultiLoop: Leaving with: ", res, FCDoControl->fdsVerbose];
 
-		{intsRest,intsFDS,intsFDSUnique} = FCLoopExtract[ex, {q1,q2},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True];
-
-		FCPrint[3, "FDS: Terms to be ignored ", intsRest, FCDoControl->fdsVerbose];
-		FCPrint[3, "FDS: Possibly relevant terms ", intsFDS, FCDoControl->fdsVerbose];
-		FCPrint[3, "FDS: Unique terms ", intsFDSUnique, FCDoControl->fdsVerbose];
-
-		solsList = intsFDSUnique /. loopHead[z_,{l_}] :> fdsOneLoop[z,l] /. loopHead[z_,{l1_,l2_}] :> fds2Loops[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]];
-
-
-		(*	Tailored simplifications for speical 2-loop topologies	*)
-		If[ OptionValue[DetectLoopTopologies],
-			FCPrint[3, "FDS: Simplifying special topologies.", FCDoControl->fdsVerbose];
-
-
-			(* Isolate single loop integrals in every solution *)
-			intsFDSUniqueFromSols2 = solsList/.
-										{fds2Loops[x__]:> Map[fds2LoopsNested,Expand2[x,FeynAmpDenominator]+null1+null2]}/.
-										fds2LoopsNested[null1|null2] -> 0;
-
-
-			(* Extract unique nested integrals *)
-			intsFDSUniqueNested = Cases[intsFDSUniqueFromSols2,fds2LoopsNested[x__],Infinity]//Union;
-			FCPrint[3, "FDS: Unique terms ", intsFDSUniqueNested, FCDoControl->fdsVerbose];
-
-
-			intsTops=getTopology[#,{q1,q2}]&/@(intsFDSUniqueNested/.fds2LoopsNested->Identity);
-			FCPrint[3, "FDS: Topologies ", intsTops, FCDoControl->fdsVerbose];
-
-			intsTops2 = checkTopology/@intsTops;
-			FCPrint[3, "FDS: Checked topologies ", intsTops2, FCDoControl->fdsVerbose];
-
-
-			solsListNested = MapIndexed[
-					(* Here one could add more topologies if needed *)
-					Which[	#1==="2-loop-self-energy",
-								(fds2LoopsSE[(First[intsFDSUniqueNested[[#2]]]/.fds2LoopsNested->Identity),q1,q2,(Total[intsTops[[#2]]])[[3]][[1]]]/. FeynAmpDenominator -> feyncan),
-							#1==="generic",
-								(First[intsFDSUniqueNested[[#2]]]/. fds2LoopsNested->Identity),
-							True,
-								Message[FDS::failmsg,"Unknown 2-loop topology!"];
-								Abort[]
-
-					]&,intsTops2];
-
-			If[Length[intsFDSUniqueNested]=!=Length[solsListNested] || !FreeQ2[solsListNested,{fds2Loops,fds1LoopQ1,fds1LoopQ2,fds2LoopsNested}],
-				Message[FDS::failmsg,"FDS can't create the solution list."];
-				Abort[]
-			];
-			repRuleNested = MapIndexed[(Rule[#1, First[solsListNested[[#2]]]]) &, intsFDSUniqueNested];
-
-			solsList = intsFDSUniqueFromSols2/.repRuleNested,
-			(* Otherwise just remove the fds2Loops heads *)
-			solsList = solsList/.fds2Loops->Identity
-		];
-
-
-		If[Length[solsList]=!=Length[intsFDSUnique] || !FreeQ2[solsList,{fds2Loops,fds1LoopQ1,fds1LoopQ2,fds2LoopsNested}],
-			Message[FDS::failmsg,"FDS can't create the solution list."];
-			Abort[]
-		];
-		(* Final replacement rule *)
-		repRule = MapIndexed[(Rule[#1, First[solsList[[#2]]]]) &, intsFDSUnique];
-
-		res = intsRest + (intsFDS/.repRule);
-
-		If[ !FreeQ2[res,{fds2Loops,fds1LoopQ1,fds1LoopQ2}],
-				Message[FDS::failmsg,"Some subroutines in FDS didn't work properly."];
-				Abort[]
-		];
-
-		FCPrint[1,"FDS: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
 		res
-	];
-
+	]/; !FreeQ2[{props},{qs}];
 
 oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]] :=
 	Block[ {exp=ex, ot, pot,topi, topi2, bas, basic,res,pru,oneONE,fadalll,fadallq1q2,amucheck},
@@ -713,8 +750,7 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 				(* to improve speed *)
 				zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /.	amucheck ->  nopcheck,
 				(* normal procedure *)
-				translat[ zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /.
-									amucheck ->  nopcheck,  zq1, zq2] /.
+				translat[ zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /. amucheck ->  nopcheck,  zq1, zq2] /.
 				FeynAmpDenominator -> feynsimp[{zq1}] /. FeynAmpDenominator -> feynsimp[{zq2}] /.
 				FeynAmpDenominator -> feynord
 			]  /. {
@@ -823,8 +859,7 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 		If[ Head[exp] =!= Plus,
 			If[	OptionValue[Options[FDS],{opt},FC2RHI],
 				(* This is OPE related stuff with FC2RHI *)
-				res = FC2RHI[FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru, q1, q2,
-				IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
+				res = FC2RHI[FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru, q1, q2, IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
 				(* This is the usual routine *)
 				res = FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru
 			],
@@ -843,6 +878,12 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 		If[ (ApartFF /. {opt} /. Options[FDS]),
 			res = ApartFF[res,{q1,q2}]
 		];
+
+
+
+
+
+
 
 		FCPrint[1,"FDS: oldFeynAmpDenominatorSimplify: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
 		res

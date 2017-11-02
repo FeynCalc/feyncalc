@@ -60,5 +60,23 @@ ApartFF[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}], {qp}], qp]",
 	"FAD[p1, p2, p3, p4]"},
 {"fcstFeynAmpDenominatorSimplify-ID17",
 	"FCE[FDS[x1 FAD[{q1 + p, m}, {q2, m}, {q1 + p - q2}, {q1}] + x2 FAD[{q1 + p, m}, {q1 + p}, {q2, m}], q1, q2]]",
-	"x2 FAD[{q2, m}] FAD[q1, {q1, m}] + x1 FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2]"}
+	"x2*FAD[q1, {q1, m}, {q2, m}] + x1*FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2]"},
+{"fcstFeynAmpDenominatorSimplify-ID18",
+	"FDS[SPD[q1, p] SPD[q2, p] SPD[q3, p] FAD[{q1, m}, {q2, m}, {q3,m}, {q1 - q2}, {q2 - q3}, {q1 - q3}], q1, q2, q3]",
+	"0"},
+{"fcstFeynAmpDenominatorSimplify-ID19",
+"FDS[FAD[{q1,m2},{q2,m1}],q1,q2,FCE\[Rule]True]",
+"FAD[{q1, m1}, {q2, m2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID20",
+"FDS[FAD[{q1,m2},{q2,m1}]-FAD[{q2,m2},{q1,m1}],q1,q2,FCE\[Rule]\
+True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID21",
+"FDS[FAD[{q2,m}] FAD[q1,{-p2+q1,m}]-FAD[{q1,m}] \
+FAD[q2,{-p2+q2,m}],q1,q2]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID22",
+"FDS[(1/(4 (1-D)))FAD[q2,-p1+q2] FAD[q1,q1,-p1+q1] (D FVD[p1,mu] \
+FVD[p1,nu]-MTD[mu,nu] SPD[p1,p1])-(1/(4 (1-D)))FAD[q1,-p1+q1] \
+FAD[q2,q2,-p1+q2] (D FVD[p1,mu] FVD[p1,nu]-MTD[mu,nu] \
+SPD[p1,p1]),q1,q2]", "0"}
+
 }

@@ -238,7 +238,7 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 
 		(*
 		Here one has to be careful; We can exchange the indices according to the symmetries,
-		but we are not allowed to change the overall oredering. Consider for example
+		but we are not allowed to change the overall ordering. Consider for example
 		{{1,0,0},{nu,mu,rho},{nu,rho}}
 		{{1,0,0},{rho,mu,nu},{nu,rho}}
 		The ordering {1,0,0} is fixed by the tensor structure, i.e. we cannot

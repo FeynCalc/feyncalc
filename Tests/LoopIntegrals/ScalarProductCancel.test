@@ -21,10 +21,10 @@ Tests`LoopIntegrals`fcstSPC={
 {"fcstSPC-ID2",
 	"SPC[SPD[q2,p]SPD[q1,p]FAD[{q1,m},{q2,m},q1-p,q2-p,
 	q2-q1],q1,q2,FDS->True]//FCE",
-	"-FAD[{q1, m}, q1 - q2, -p + q2]/2 + FAD[{q1, m},
-	{q2, m}, -q1 + q2]/4 + (FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2]*(-m^2 -
-	SPD[p, p]))/2 + (FAD[q1, q2, {-p + q1, m}, q1 - q2]*(m^2 + SPD[p, p]))/2 +
-	(FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2, -p + q2]*(m^2 + SPD[p, p])^2)/4"},
+	"-FAD[{q1, m}, q1 - q2, -p + q2]/2 + FAD[{q1, m}, {q2, m}, q1 - q2]/4 +
+(FAD[q1, q2, {-p + q1, m}, q1 - q2]*(m^2 + SPD[p, p]))/2 -
+(FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2]*(m^2 + SPD[p, p]))/2 +
+(FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2, -p + q2]*(m^2 + SPD[p, p])^2)/4"},
 {"fcstSPC-ID3",
 	"SPC[SPD[l,-p1+p3+p2]FAD[{l,m1},{l-p1+p3+p2,m3},
 	l-p1+p2,l-k1],l]//FCE",
