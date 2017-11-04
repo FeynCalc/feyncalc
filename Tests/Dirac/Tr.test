@@ -287,7 +287,7 @@ mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
 	tmp = (Expand[(-ChangeDimension[Contract[
 	Tr[GAD[rho].GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[mu].(1 - GA[5]).GSD[p].GAD[nu].(1 -
 	GA[5]).(GSD[l] + GSD[o])]*I*LCD[mu, nu, al, bet] FVD[p, al] FVD[o + l - p, bet]], 4]/
-	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // FCE); FCClearScalarProducts[]; \n tmp",
+	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // ExpandScalarProduct // Expand// FCE); FCClearScalarProducts[]; \n tmp",
 	"-((4 SP[l, p]^2)/SP[l, o]) - (4 eps SP[l, p]^2)/SP[l, o] - (4 SP[l, p] SP[o, p])/SP[l, o] - (4 eps SP[l, p] SP[o, p])/SP[l, o]"},
 {"fcstTr-ID31",
 	"$BreitMaison=True; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
@@ -295,7 +295,7 @@ mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
 	tmp = (Expand[(-ChangeDimension[Contract[
 	Tr[GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[mu].(1 - GA[5]).GSD[p].GAD[nu].(1 -
 	GA[5]).(GSD[l] + GSD[o]).GAD[rho]]*I*LCD[mu, nu, al, bet] FVD[p, al] FVD[o + l - p, bet]], 4]/
-	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // FCE); FCClearScalarProducts[]; \n tmp",
+	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // ExpandScalarProduct // Expand// FCE); FCClearScalarProducts[]; \n tmp",
 	"-((4 SP[l, p]^2)/SP[l, o]) - (4 eps SP[l, p]^2)/SP[l, o] - (4 SP[l, p] SP[o, p])/SP[l, o] - (4 eps SP[l, p] SP[o, p])/SP[l, o]"},
 {"fcstTr-ID32", "Tr[FV[k1 + k2, mu] (GA[al] FV[k1, al] + m).(GA[mu] f1 - 1/2 I/m 1/2 I (GA[mu, nu] - GA[nu, mu]) FV[k1 - k2, nu] f2).(GS[k1] + m)]//FCE",
 "8 f1 m (SP[k1, k1] + SP[k1, k2])"},
@@ -311,7 +311,8 @@ GS[q].GA[i])]] // FCE", "16*FV[q, i]*FV[q, j] - 16*MT[i, j]*SP[q, q]"},
 	2 GA[mu] FV[p2, nu]), FCE -> True]", "16 (4 m^2 SP[k, k] + 4 m^2 SP[k, p2] + 2 SP[k, p1] SP[k, p2] -
 SP[k, k] SP[p1, p2] + 4 m^2 SP[p2, p2] - 2 SP[k, p1] SP[p2, p2] -
 2 SP[p1, p2] SP[p2, p2])"},
-{"fcstTr-ID39", "Tr[GA[m].(GA[n].GA[6] + GA[n].GA[7])] // FCE", "4 MT[m, n]"}
+{"fcstTr-ID39", "Tr[GA[m].(GA[n].GA[6] + GA[n].GA[7])] // FCE", "4 MT[m, n]"},
+{"fcstTr-ID40", "Tr[GA[i1, i2, 5, i3, i4, i5, i6]] - Tr[GA[i1, i2, i3, i4, i5, i6, 5]]", "0"}
 };
 
 (*--------------------------------------------------------------------------------------------------*)

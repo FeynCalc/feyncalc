@@ -62,6 +62,7 @@ traceNo5Fun::usage="";
 trace5Fun::usage="";
 noSpur::usage="";
 leviCivitaSign::usage="";
+optSort::usage="";
 
 Options[DiracTrace] = {
 	Contract -> True,
@@ -74,6 +75,7 @@ Options[DiracTrace] = {
 	FeynCalcInternal -> False,
 	Mandelstam    -> {},
 	PairCollect    -> False,
+	Sort -> True,
 	Schouten-> 0,
 	TraceOfOne -> 4,
 	West -> True
@@ -105,6 +107,7 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		];
 
 		unitMatrixTrace = OptionValue[TraceOfOne];
+		optSort  = OptionValue[Sort];
 
 		FCPrint[1, "DiracTrace. Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrace: Entering with ", expr, FCDoControl->diTrVerbose];
@@ -205,6 +208,8 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		];
 		diTres = diTres/. diTr->DiracTrace;
 
+		diTrVerbose=$VeryVerbose;
+
 		FCPrint[1, "DiracTrace: Leaving.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrace: Leaving with", diTres, FCDoControl->diTrVerbose];
 
@@ -294,6 +299,21 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 				Abort[]
 			];
 
+			(* Sort the matrices in the traces lexicographically using the cyclicity of the trace*)
+
+			If[ optSort,
+				time2=AbsoluteTime[];
+				FCPrint[1,"DiracTrace: diracTraceEvaluate: Applying the cyclicity of the trace to sort the matrices lexicographically.", FCDoControl->diTrVerbose];
+				tmp = tmp /. spurHead[x__]/;(FCGetDimensions[{x},ChangeDimension->True]==={4})-> orderSpurHead[x];
+
+				If[	!FreeQ[tmp,orderSpurHead],
+					Message[DiracTrace::failmsg,"Lexicographical sorting inside Dirac traces failed."];
+					Abort[]
+				];
+
+				FCPrint[1,"DiracTrace: diracTraceEvaluate: Done sorting matrices lexicographically, timing:", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
+				FCPrint[3,"DiracTrace: diracTraceEvaluate: After sorting matrices lexicographically: ", tmp, FCDoControl->diTrVerbose]
+			];
 
 			(*	After all the simplifications we need to split terms that still containd Dirac matrices from those that don't.	*)
 			{gammaFree,gammaPart} = FCSplit[tmp,{spurHead}];
@@ -501,6 +521,40 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Leaving.", FCDoControl->diTrVerbose];
 		FCPrint[3,"DiracTrace: diracTraceEvaluate: Leaving with: ", diractrres, FCDoControl->diTrVerbose];
 		diractrres
+	];
+
+(*	since the cyclicity of the trace is respected in all the Gamma^5 schemes
+	used in FeynCalc and the sorting does not depend on the values of the scalar
+	products,  orderSpurHead is safe for memoization. This might change if we would
+	implement Kreimer's scheme in the future. *)
+
+orderSpurHead[x__DiracGamma, DiracGamma[5]] :=
+	Block[{p1, p2, tmpSpur, li = {x}, pos, tab},
+		tab =
+			Table[
+				(
+				p1 = li[[;; i]];
+				p2 = li[[i + 1 ;;]];
+				{((-1)^Length[p2]), tmpSpur[Sequence @@ p2, Sequence @@ p1]}
+				), {i, 1,Length[li] - 1}];
+		tab = Join[{{1, tmpSpur[x]}}, tab];
+		pos = First[Ordering[tab /. {_, tmpSpur[b__]} :> List[b]]];
+		tab[[pos]][[1]] spurHead[Sequence @@ (tab[[pos]][[2]]), DiracGamma[5]]
+	];
+
+
+orderSpurHead[x__DiracGamma,y_DiracGamma/;(y=!=DiracGamma[5] && y=!=DiracGamma[6] && y=!=DiracGamma[7])] :=
+	Block[{p1, p2, tmpSpur, li = {x,y}, pos, tab},
+		tab =
+			Table[
+				(
+				p1 = li[[;; i]];
+				p2 = li[[i + 1 ;;]];
+				{1, tmpSpur[Sequence @@ p2, Sequence @@ p1]}
+				), {i, 1,Length[li] - 1}];
+		tab = Join[{{1, tmpSpur[x,y]}}, tab];
+		pos = First[Ordering[tab /. {_, tmpSpur[b__]} :> List[b]]];
+			spurHead[Sequence @@ (tab[[pos]][[2]])]
 	];
 
 

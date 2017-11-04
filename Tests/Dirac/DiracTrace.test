@@ -226,12 +226,12 @@ SP[a, e]*SP[b, c]*SP[d, f]*SP[g, i] + SP[a, c]*SP[b, e]*SP[d, f]*SP[g, i] - SP[a
 SP[a, c]*SP[b, d]*SP[e, f]*SP[g, i] + SP[a, b]*SP[c, d]*SP[e, f]*SP[g, i])"},
 {"fcstDiracTrace-ID43",
 "DiracTrace[GS[p, k, d, c].GA[5].GS[t, z], DiracTraceEvaluate -> True, FCE -> True]",
-"(4*I)*(-(SP[t, z]*LC[][c, d, k, p]) - SP[p, z]*LC[][c, d, k, t] + SP[p, t]*LC[][c, d, k, z] + SP[d, k]*LC[][c, p, t, z] - SP[c, k]*LC[][d, p, t, z] +
-SP[c, d]*LC[][k, p, t, z])"},
+"(4*I)*(-(SP[t, z]*LC[][c, d, k, p]) + SP[k, p]*LC[][c, d, t, z] - SP[d, p]*LC[][c, k, t, z] + SP[d, k]*LC[][c, p, t, z] -
+SP[c, z]*LC[][d, k, p, t] + SP[c, t]*LC[][d, k, p, z])"},
 {"fcstDiracTrace-ID44",
 "DiracTrace[GA[5].GS[t, z].GS[p, k, d, c], DiracTraceEvaluate -> True, FCE -> True]",
-"(4*I)*(-(SP[t, z]*LC[][c, d, k, p]) - SP[p, z]*LC[][c, d, k, t] + SP[p, t]*LC[][c, d, k, z] + SP[d, k]*LC[][c, p, t, z] - SP[c, k]*LC[][d, p, t, z] +
-SP[c, d]*LC[][k, p, t, z])"},
+"(4*I)*(-(SP[t, z]*LC[][c, d, k, p]) + SP[k, p]*LC[][c, d, t, z] - SP[d, p]*LC[][c, k, t, z] + SP[d, k]*LC[][c, p, t, z] -
+SP[c, z]*LC[][d, k, p, t] + SP[c, t]*LC[][d, k, p, z])"},
 {"fcstDiracTrace-ID45",
 "DiracTrace[(GS[p2] + m).(GS[a, pp] - GS[pp, a]).(GS[p1] + m),DiracTraceEvaluate -> True, FCE -> True]",
 "8 (SP[a, p2] SP[p1, pp] - SP[a, p1] SP[p2, pp])"}
