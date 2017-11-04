@@ -19,6 +19,9 @@ among PairContract3's.";
 
 Begin["`Package`"]
 
+(*pairContract3NoExpand is like PairContract3, but without ExpandScalarProduct *)
+pairContract3NoExpand;
+
 End[]
 
 Begin["`PairContract`Private`"]
@@ -80,6 +83,33 @@ PairContract3/:
 		If[ FreeQ[{x,y}, LorentzIndex],
 			ExpandScalarProduct[x,y],
 			PairContract3[x,y]
+		];
+
+SetAttributes[pairContract3NoExpand,Orderless];
+
+pairContract3NoExpand[LorentzIndex[z_,di___], LorentzIndex[z_,di___]] :=
+	If[ {di}==={},
+		4,
+		di
+	];
+
+pairContract3NoExpand[Momentum[a__], Momentum[b__]] :=
+	Pair[Momentum[a], Momentum[b]];
+
+pairContract3NoExpand /:
+	pairContract3NoExpand[LorentzIndex[__],LorentzIndex[x__]]^2 :=
+		pairContract3NoExpand[LorentzIndex[x],LorentzIndex[x]];
+
+pairContract3NoExpand /:
+	pairContract3NoExpand[LorentzIndex[__],x_]^2 :=
+		Pair[x,x];
+
+
+pairContract3NoExpand/:
+	pairContract3NoExpand[LorentzIndex[z__],x_] pairContract3NoExpand[LorentzIndex[z__],y_] :=
+		If[ FreeQ[{x,y}, LorentzIndex],
+			Pair[x,y],
+			pairContract3NoExpand[x,y]
 		];
 
 (* this option is only to be set by SetOptions ... *)

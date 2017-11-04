@@ -53,6 +53,7 @@ End[]
 Begin["`Contract`Private`"]
 
 cnVerbose::usage="";
+optExpandScalarProduct::usage="";
 
 FCFastContract[x_,OptionsPattern[]]:=
 	x /. Pair -> PairContract /. PairContract -> Pair  /. CartesianPair -> CartesianPairContract /. CartesianPairContract -> CartesianPair;
@@ -65,7 +66,7 @@ Contract3[x_ /; (Head[x] =!= Times) && Head[x] =!= Plus,opts:OptionsPattern[]] :
 	Contract[x, Contract3->False,opts];
 
 Contract3[expr_Times, opts:OptionsPattern[]] :=
-	Block[{ex, nonli, lipa, nec = 0, ic,epli, time, res},
+	Block[{ex, nonli, lipa, nec = 0, ic,epli, time, res, time2},
 
 
 		If[	!OptionValue[Contract,{opts},FCI],
@@ -87,7 +88,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 			Return[ex]
 		];
 
-
+		time=AbsoluteTime[];
 		FCPrint[1,"Contract: Contract3: Applying Contract without expansions.", FCDoControl->cnVerbose];
 		ex = Contract[ex, FCI->True, Expanding -> False, Contract3->False, opts];
 		FCPrint[1,"Contract: Contract3: Contract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
@@ -98,6 +99,8 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 		];
 
 
+		time=AbsoluteTime[];
+		FCPrint[1,"Contract: Contract3: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
 		nonli = Select[ex, FreeQ[#, LorentzIndex]&];
 		lipa  = Select[ex,!FreeQ[#, LorentzIndex]&];
 
@@ -106,6 +109,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 			FCPrint[0,{nonli,lipa,ex}];
 			Abort[]
 		];
+		FCPrint[1,"Contract: Contract3: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
 		FCPrint[3,"Contract: Contract3: Part free of Lorentz indices:", nonli, FCDoControl->cnVerbose];
 		FCPrint[3,"Contract: Contract3: Part with Lorentz indices:", lipa, FCDoControl->cnVerbose];
@@ -129,11 +133,17 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 
 
 		If[ Length[lipa] < 2,
-			nec = Contract[lipa, FCI->True, Contract3->False, opts],
+			time2=AbsoluteTime[];
+			FCPrint[1,"Contract: Contract3: Applying Contract.", FCDoControl->cnVerbose];
+			nec = Contract[lipa, FCI->True, Contract3->False, opts];
+			FCPrint[1,"Contract: Contract3: Contract done. Timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->cnVerbose],
 
 
-			(* The expression is of the form A1*A2*A3*...*An, where each factor
-				contains Lorentz indices.*)
+
+			(* The expression is of the form A1*A2*A3*...*An, where each factor contains Lorentz indices.*)
+			time2=AbsoluteTime[];
+			FCPrint[1,"Contract: Contract3: Applying contractProduct.", FCDoControl->cnVerbose];
+
 			nec = lipa[[1]];
 			(* nec = A1 *)
 			For[ic = 2, ic <= Length[lipa], ic++,
@@ -144,10 +154,13 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 					nec = contractProduct[lipa[[ic]], nec, Contract3->False,opts],
 					nec = contractProduct[nec, lipa[[ic]], Contract3->False,opts]
 				];
-				FCPrint[2,"expand scalar products"];
-				nec = ExpandScalarProduct[nec];
 
-				FCPrint[2,"expand scalar products done"];
+
+				If[	optExpandScalarProduct,
+					FCPrint[2,"expand scalar products"];
+					nec = ExpandScalarProduct[nec];
+					FCPrint[2,"expand scalar products done"]
+				];
 
 				If[ !FreeQ[nec, LorentzIndex],
 					FCPrint[2,"expanding LorentzIndex now"];
@@ -157,6 +170,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 							TimeUsed[] - time];
 				];
 			];
+			FCPrint[1,"Contract: Contract3: contractProduct done. Timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->cnVerbose]
 		];
 
 		nec = nec nonli;
@@ -274,6 +288,7 @@ Options[Contract] = {
 	Contract3       -> True,
 	EpsContract     -> True,
 	Expanding       -> True,
+	ExpandScalarProduct -> True,
 	Factoring       -> False,
 	FCI				-> False,
 	FCVerbose		-> False,
@@ -295,6 +310,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 		epsContractOpt 	= OptionValue[EpsContract];
 		renameOpt 		= OptionValue[Rename];
 		schoutenOpt 	= OptionValue[Schouten];
+		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
 
 		If [OptionValue[FCVerbose]===False,
 			cnVerbose=$VeryVerbose,
@@ -571,14 +587,18 @@ Contract[expr_, z:OptionsPattern[]] :=
 			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
-		If[	!FreeQ[tmpFin,Pair],
+
+		If[	!FreeQ[tmpFin,Pair] && !DummyIndexFreeQ[tmpFin,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying PairContract.", FCDoControl->cnVerbose];
-			tmpFin = tmpFin /. Pair->PairContract3 /. PairContract3 -> PairContract /.PairContract->Pair;
-			FCPrint[1,"Contract: PairContract done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+			If[	TrueQ[optExpandScalarProduct],
+				tmpFin = tmpFin /. Pair->PairContract3 /. PairContract3 -> PairContract /.PairContract->Pair,
+				tmpFin = tmpFin /. Pair->FeynCalc`Package`pairContract3NoExpand /. FeynCalc`Package`pairContract3NoExpand -> PairContract /.PairContract->Pair;
+			];
+			FCPrint[1,"Contract: PairContract done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose]
 		];
 
-		If[	!FreeQ[tmpFin,CartesianPair],
+		If[	!FreeQ[tmpFin,CartesianPair] && !DummyIndexFreeQ[tmpFin,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying CartesianPairContract.", FCDoControl->cnVerbose];
 			tmpFin = tmpFin /. CartesianPair-> CartesianPairContract /. CartesianPairContract -> CartesianPair;
@@ -695,12 +715,21 @@ mainContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 				]
 			];
 
-			time=AbsoluteTime[];
-			FCPrint[1, "Contract: mainContract: Applying PairContract.", FCDoControl->cnVerbose];
-			contractres = contractres /. Pair -> PairContract3 /. PairContract3 -> PairContract/.
-							PairContract -> sceins /. sceins -> Pair;
-			FCPrint[1,"Contract: mainContract: PairContract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: mainContract: After PairContract: ", contractres , FCDoControl->cnVerbose];
+
+			If[ !DummyIndexFreeQ[contractres,{LorentzIndex,CartesianIndex}],
+				time=AbsoluteTime[];
+				FCPrint[1, "Contract: mainContract: Applying PairContract.", FCDoControl->cnVerbose];
+
+				If[	TrueQ[optExpandScalarProduct],
+					contractres = contractres /. Pair -> PairContract3 /. PairContract3 -> PairContract/.
+								PairContract -> sceins /. sceins -> Pair,
+					contractres = contractres /. Pair -> FeynCalc`Package`pairContract3NoExpand /. FeynCalc`Package`pairContract3NoExpand -> PairContract/.
+								PairContract -> sceins /. sceins -> Pair
+				];
+
+				FCPrint[1,"Contract: mainContract: PairContract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: mainContract: After PairContract: ", contractres , FCDoControl->cnVerbose]
+			];
 
 			(* optimization *)
 			If[ Head[contractres === Plus] && Length[contractres > 47],
@@ -828,7 +857,7 @@ fdi[xx_Symbol- 4, xx_] :=
 
 pairsave[a_, b_] :=
 	pairsave[a, b] =
-	If[ FreeQ[{a,b},LorentzIndex],
+	If[ FreeQ[{a,b},LorentzIndex] && optExpandScalarProduct,
 		ExpandScalarProduct[a,b],
 		pair2[a, b]
 	];
