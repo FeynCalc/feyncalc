@@ -165,7 +165,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		res = FeynAmpDenominatorCombine[rest + (loopInts/.repRule)];
 
 		If [OptionValue[ExpandScalarProduct],
-			res = ExpandScalarProduct[res]
+			res = ExpandScalarProduct[res, FCI->True]
 		];
 
 		If[	OptionValue[Collecting],

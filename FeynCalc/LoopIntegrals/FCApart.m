@@ -90,7 +90,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[ExpandScalarProduct],
-			ex = ExpandScalarProduct[ex]
+			ex = ExpandScalarProduct[ex, FCI->True]
 		];
 
 		(* To bring the propagators into a proper form *)

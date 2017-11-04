@@ -70,5 +70,16 @@ Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]
 {Foobar}],Head -> loop]","loop[Foobar[x]]"},
 {"fcstFCLoopIsolate-ID21","FCLoopIsolate[CSP[q, p] x + z (q + y) + CGS[q], {q}, Head -> loop]","y z + z loop[q] + x loop[CartesianPair[CartesianMomentum[p], CartesianMomentum[q]]] +
 loop[DiracGamma[CartesianMomentum[q]]]"},
-{"fcstFCLoopIsolate-ID22","FCLoopIsolate[0, {}, PaVe -> False, ExpandScalarProduct -> True]","0"}
+{"fcstFCLoopIsolate-ID22","FCLoopIsolate[0, {}, PaVe -> False, ExpandScalarProduct -> True]","0"},
+{"fcstFCLoopIsolate-ID23","FCLoopIsolate[xx FAD[l, l + p2, l + p2 - p3 - p4] FVD[l,
+nu] (FVD[p1, Lor4] + FVD[-l - p2 + p3 + p4, Lor4]) MTD[Lor3,mu] , {l}, Full -> False, ExpandScalarProduct -> True,
+Head -> loopInt] // FCE",
+"xx (FVD[p1, Lor4] + FVD[-p2 + p3 + p4, Lor4]) loopInt[FAD[l, l + p2, l + p2 - p3 - p4] FVD[l, nu]] MTD[Lor3, mu] -
+xx loopInt[FAD[l, l + p2, l + p2 - p3 - p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, mu]"},
+{"fcstFCLoopIsolate-ID24","FCLoopIsolate[xx FAD[l, l + p2, l + p2 - p3 - p4] FVD[l,
+nu] (FVD[p1, Lor4] + FVD[-l - p2 + p3 + p4, Lor4]) MTD[Lor3,mu] , {l}, ExpandScalarProduct -> True, Head -> loopInt] //
+FCE",
+"xx (FVD[p1, Lor4] - FVD[p2, Lor4] + FVD[p3, Lor4] + FVD[p4, Lor4]) loopInt[FAD[l, l + p2, l +
+p2 - p3 - p4] FVD[l, nu]] MTD[Lor3, mu] -xx loopInt[FAD[l, l + p2, l + p2 - p3 -
+p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, mu]"}
 };

@@ -43,24 +43,25 @@ End[]
 Begin["`FCLoopIsolate`Private`"]
 
 Options[FCLoopIsolate] = {
-	ExceptHeads -> {},
-	ExpandScalarProduct -> False,
-	Head -> FCGV["LoopInt"],
 	ClearHeads -> {FCGV["LoopInt"]},
 	Collecting -> True,
-	DotSimplify -> True,
 	DiracGammaExpand -> True,
+	DotSimplify -> True,
 	DropScaleless -> False,
+	ExceptHeads -> {},
+	ExpandScalarProduct -> False,
 	Expanding -> True,
-	FeynAmpDenominatorSplit -> True,
-	Factoring -> Factor,
+	FCI -> False,
 	FCLoopIBPReducableQ -> False,
+	Factoring -> Factor,
+	FeynAmpDenominatorSplit -> True,
+	Full -> True,
+	Head -> FCGV["LoopInt"],
 	Isolate -> False,
 	IsolateNames -> KK,
-	FCI -> False,
-	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList,
 	MultiLoop -> False,
-	PaVe->True
+	PaVe->True,
+	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
 };
 
 fullDep[z_,lmoms_]:=
@@ -98,7 +99,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		(* Here we pull loop momenta out of Dirac slashes  *)
 		If[	OptionValue[ExpandScalarProduct],
 			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms]
+			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms,Full->OptionValue[Full]]
 		];
 
 		(* Here we pull loop momenta out of Dirac slashes  *)
