@@ -67,6 +67,7 @@ Options[FCFAConvert] = {
 	LoopMomenta->{},
 	LorentzIndexNames->{},
 	OutgoingMomenta->{},
+	Prefactor -> 1,
 	SMP -> False,
 	SUNFIndexNames->{},
 	SUNIndexNames->{},
@@ -77,7 +78,8 @@ Options[FCFAConvert] = {
 FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]] :=
 	Block[ {	diagsConverted,repRuleMomenta,repRuleLorentzIndices,
 				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim,
-				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices},
+				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices,
+				prefactor},
 
 		inMoms		=	OptionValue[IncomingMomenta];
 		outMoms		=	OptionValue[OutgoingMomenta];
@@ -87,6 +89,7 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 		sunfNames	=	OptionValue[SUNFIndexNames];
 		polVecs		=	OptionValue[TransversePolarizationVectors];
 		dim			=	OptionValue[ChangeDimension];
+		prefactor	=	OptionValue[Prefactor];
 
 		repRuleMomenta={};
 		repRuleLorentzIndices={};
@@ -97,6 +100,8 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 		diagsConverted= Map[#[[3]]&,{diags}];
 
 		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP]];
+
+		diagsConverted = prefactor diagsConverted;
 
 		If[	OptionValue[DropSumOver],
 			diagsConverted = diagsConverted/.FeynArts`SumOver[___]:> 1
