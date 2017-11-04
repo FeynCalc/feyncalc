@@ -23,6 +23,8 @@ End[]
 
 Begin["`FourLaplacian`Private`"]
 
+xxx::usage="";
+
 Options[FourLaplacian] = {
 	Dimension -> D
 };

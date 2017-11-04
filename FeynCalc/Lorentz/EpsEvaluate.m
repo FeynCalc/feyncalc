@@ -62,10 +62,10 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 		(* List of the expanded epsilons	*)
 
 		repRule = Thread[rud[uniqList, uniqList/.Eps->epsEval]] /. rud->RuleDelayed;
-		repRule = repRule /. RuleDelayed[a_, a] :> Unevaluated@Sequence[];
+		repRule = repRule /. RuleDelayed[a_, a_] :> Unevaluated@Sequence[];
 
 		(* Simple cross check	*)
-		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSym}],
+		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSymm}],
 			Message[EpsEvaluate::fail];
 			Abort[]
 		];

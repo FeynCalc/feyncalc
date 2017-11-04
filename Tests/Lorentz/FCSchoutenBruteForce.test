@@ -57,5 +57,13 @@ Rule -> False, Information -> False]&", "0"},
 Information -> False, List -> True, FCE -> True])]",
 "rule[SP[p5, p6]*LC[][p1, p2, p3, p4],
 -(LC[][p2, p3, p4, p5]*SP[p1, p6]) + LC[][p1, p3, p4, p5]*SP[p2, p6] -
-LC[][p1, p2, p4, p5]*SP[p3, p6] + LC[][p1, p2, p3, p5]*SP[p4, p6]]"}
+LC[][p1, p2, p4, p5]*SP[p3, p6] + LC[][p1, p2, p3, p5]*SP[p4, p6]]"},
+{"fcstFCSchoutenBruteForce-ID7",
+"FCSchoutenBruteForce[
+4 I (SP[p, z] LC[][c, d, k, t] - SP[p, t] LC[][c, d, k, z] +
+	SP[k, p] LC[][c, d, t, z] - SP[d, p] LC[][c, k, t, z] -
+	SP[c, z] LC[][d, k, p, t] + SP[c, t] LC[][d, k, p, z] +
+	SP[c, k] LC[][d, p, t, z] - SP[c, d] LC[][k, p, t, z]), {}, {},
+Schouten -> True, Information -> 0]",
+"0"}
 });
