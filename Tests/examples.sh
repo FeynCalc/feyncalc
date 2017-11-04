@@ -43,6 +43,25 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/QED/OneLoop/$exFile
 done
 
+#QCD Examples
+
+for exFile in 'QiQibar-QiQibar.m' 'QiQibar-QjQjbar.m' 'QiQi-QiQi.m' 'QiQjbar-QiQjbar.m' 'QiQj-QiQj.m' 'QQbar-GaGa.m' 'QQbar-GlGl.m' \
+'QGl-QGl.m' 'GlGl-QQbar.m' 'GlGl-GlGl.m' 'QQbar-ElAel.m' 'ElAel-QQbar.m' 'GaGl-QQbar.m' 'QGa-GlQ.m' 'QQbar-GaGl.m'
+
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/QCD/Tree/$exFile
+done
+
+for exFile in 'Q-Q.m' 'Gl-Gl.m' 'Gh-Gh.m' 'Renormalization.m'
+
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/QCD/OneLoop/$exFile
+done
+
 #$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDABJAxialAnomaly.m &&
 #$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronGMinusTwoOneLoop.m &&
 #$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronSelfEnergyOneLoop.m &&

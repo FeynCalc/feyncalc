@@ -51,6 +51,8 @@ Each particle interaction process is named according to to the following scheme
 
 ## Quarks
 * `Q`, `Qbar` - quark, antiquark
+* `Qi`, `Qibar` - `i`-flavor quark, `i`-flavor antiquark
+* `Qj`, `Qjbar` - `j`-flavor quark, `j`-flavor antiquark
 * `Qh`, `Qhbar` - heavy quark, heavy antiquark
 * `Ql`, `Qlbar` - light quark, light antiquark
 

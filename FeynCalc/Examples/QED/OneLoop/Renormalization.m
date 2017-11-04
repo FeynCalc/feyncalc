@@ -23,6 +23,11 @@
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
+(* ::Text:: *)
+(*This example uses a custom QED model created with FeynRules. Please evaluate the file*)
+(*FeynCalc/Examples/FeynRules/QED/GenerateModelQED.m before running it for the first time.*)
+
+
 description="Renormalization, QED, MS and MSbar, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
