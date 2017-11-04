@@ -56,7 +56,7 @@ fdsVerbose::usage="";
 FDS = FeynAmpDenominatorSimplify;
 
 Options[FeynAmpDenominatorSimplify] = {
-	ApartFF -> True,
+	ApartFF -> False,
 	Collecting -> True,
 	DetectLoopTopologies -> True,
 	ExpandScalarProduct -> True,
@@ -64,7 +64,7 @@ Options[FeynAmpDenominatorSimplify] = {
 	FCI -> False,
 	FCE -> False,
 	FCVerbose -> False,
-	Factoring -> Factor2,
+	Factoring -> Factor,
 	FeynAmpDenominatorCombine -> True,
 	IncludePair -> False,
 	IntegralTable -> {},
@@ -75,12 +75,14 @@ SetAttributes[FeynAmpDenominatorSimplify, Listable];
 
 FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPattern[]] :=
 	Block[ {ex,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time, topoCheckUnique,
-		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2},
+		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting},
 
 		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
+
+		optCollecting = OptionValue[Collecting];
 
 		If [OptionValue[FCVerbose]===False,
 			fdsVerbose=$VeryVerbose,
@@ -118,9 +120,11 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		FCPrint[1,"FDS: Extracting unique loop integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
 		(*TODO Drop scaleless for 1-loop??? *)
-		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True];
+		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True,
+			ExpandScalarProduct->True, Full->False];
 
 		FCPrint[1, "FDS: Done extracting unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
+		FCPrint[1, "FDS: Number of the unique integrals: ", Length[intsUnique], FCDoControl->fdsVerbose];
 		FCPrint[3, "FDS: List of unique integrals ", intsUnique, FCDoControl->fdsVerbose];
 
 		FCPrint[1,"FDS: Simplifying the unique integrals. ", FCDoControl->fdsVerbose];
@@ -199,7 +203,8 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			time=AbsoluteTime[];
 			FCPrint[1, "FDS: fdsMultiLoop: Checking symmetries under renamings of the loop momenta.", FCDoControl->fdsVerbose];
 
-			{rest,loopInts,intsUnique} = FCLoopExtract[res, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->False];
+			{rest,loopInts,intsUnique} = FCLoopExtract[res, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->False,
+				ExpandScalarProduct->True, Full->False];
 
 			solsList = intsUnique /. loopHead[x_]:> renameLoopMomenta[x,{qs}];
 			repRule = Thread[Rule[intsUnique,solsList]];
@@ -218,10 +223,16 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			FCPrint[3, "FDS: After ExpandScalarProduct: ", res, FCDoControl->fdsVerbose]
 		];
 
-		If[	OptionValue[Collecting],
+		If[	optCollecting=!=False,
 			FCPrint[1,"FDS: Applying Collect2. ", FCDoControl->fdsVerbose];
 			time=AbsoluteTime[];
-			res = Collect2[res,FeynAmpDenominator,Factoring->OptionValue[Factoring]];
+
+
+			If[ TrueQ[optCollecting===True],
+				res = Collect2[res,FeynAmpDenominator, Factoring->OptionValue[Factoring]],
+				res = Collect2[res,optCollecting, Factoring->OptionValue[Factoring]]
+			];
+
 			FCPrint[1, "FDS: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 			FCPrint[3, "FDS: After Collect2: ", res, FCDoControl->fdsVerbose]
 		];
@@ -336,10 +347,11 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		(* 	After the shifts our single integral usually turns into a sum of
 			integrals with different numerators. Some of them might vanish by symmetry	*)
 
-		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True],q];
+		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True, Full->False],q];
 		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
 
-		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
+		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False,
+			ExpandScalarProduct->True, Full->False];
 		FCPrint[3, "FDS: fdsOneLoop: tmpNew: ", tmpNew, FCDoControl->fdsVerbose];
 
 		solsList = Map[removeAnitsymmetricIntegrals[#,{q}, {q}]&,(tmpNew[[3]]/.loopHead->Identity)];

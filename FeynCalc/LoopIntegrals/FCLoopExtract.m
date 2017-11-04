@@ -31,6 +31,8 @@ Begin["`FCLoopExtract`Private`"]
 
 Options[FCLoopExtract] = {
 	DropScaleless -> False,
+	ExpandScalarProduct-> False,
+	Full -> False,
 	FCI -> False,
 	FCE -> False,
 	FCLoopIBPReducableQ -> False,
@@ -75,7 +77,8 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 									DropScaleless-> OptionValue[DropScaleless],
 									MultiLoop-> OptionValue[MultiLoop],
 									PaVe-> OptionValue[PaVe],
-									ExpandScalarProduct -> False,
+									ExpandScalarProduct -> OptionValue[ExpandScalarProduct],
+									Full -> OptionValue[Full],
 									Factoring->OptionValue[Factoring],
 									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ]];
 

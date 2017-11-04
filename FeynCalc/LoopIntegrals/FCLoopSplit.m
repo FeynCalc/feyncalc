@@ -40,6 +40,7 @@ Options[FCLoopSplit] = {
 	DotSimplify -> True,
 	DiracGammaExpand -> True,
 	Expanding -> True,
+	Factoring -> Factor2,
 	FCI -> False,
 	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
 };
@@ -82,7 +83,7 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,Join[lmoms,loopIntHeads],Factoring->Factor2];
+			ex = Collect2[ex,Join[lmoms,loopIntHeads],Factoring->OptionValue[Factoring]];
 		];
 
 		loopFree = Select[ex+ null1+ null2,

@@ -68,6 +68,7 @@ Options[ApartFF] = {
 	Collecting -> True,
 	DropScaleless -> True,
 	ExpandScalarProduct -> True,
+	Factoring -> Factor,
 	FCI -> False,
 	FCVerbose -> False,
 	FDS -> True,
@@ -107,12 +108,15 @@ Apart3[expr_, x_] :=
 
 ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
-			loopInts,intsUnique,solsList,repRule},
+			loopInts,intsUnique,solsList,repRule, time,
+			optCollecting},
 
 		If[	!FreeQ2[{int}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
+
+		optCollecting = OptionValue[Collecting];
 
 		If [OptionValue[FCVerbose]===False,
 			affVerbose=$VeryVerbose,
@@ -130,9 +134,12 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 			exp = FeynAmpDenominatorCombine[exp]
 		];
 
+		FCPrint[1, "ApartFF: Entering.", FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Entering with ", exp, FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Loop momenta are ", lmoms, FCDoControl->affVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "ApartFF: Extracting unique loop integrals.", FCDoControl->affVerbose];
 		(*	Split loop integrals from the rest	*)
 		tmp = FCLoopSplit[exp,lmoms];
 
@@ -144,13 +151,22 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 			loopInts = FCLoopIsolate[Plus@@tmp[[3;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True, PaVe->False]
 		];
 
+
+
 		(*	Split loop integrals from the rest	*)
 		intsUnique = (Cases[loopInts+null1+null2,loopHead[___],Infinity]/.null1|null2->0)//Union;
+		FCPrint[1, "ApartFF: Done extracting unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
 
+		FCPrint[1,"ApartFF: Number of the unique integrals: ", Length[intsUnique], FCDoControl->affVerbose];
 		FCPrint[3,"ApartFF: List of the unique integrals: ", intsUnique, FCDoControl->affVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "ApartFF: Applying FCApart.", FCDoControl->affVerbose];
 		(*	Apply FCApart to each of the unique loop integrals	*)
 		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless],MaxIterations->OptionValue[MaxIterations]]&,(intsUnique/.loopHead->Identity)];
+
+		FCPrint[1, "ApartFF: Done applying FCApart, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
+		FCPrint[3, "ApartFF: After FCApart: ", solsList, FCDoControl->affVerbose];
 
 		If[Length[solsList]=!=Length[intsUnique],
 			Message[ApartFF::failmsg,"ApartFF can't create the solution list."];
@@ -162,16 +178,32 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[3, "ApartFF: Replacement rule ", repRule, FCDoControl->affVerbose];
 
 		(*	Substitute simplified integrals back into the original expression	*)
+
+		time=AbsoluteTime[];
+		FCPrint[1, "ApartFF: Inserting simplified integrals back into the original expression.", FCDoControl->affVerbose];
 		res = FeynAmpDenominatorCombine[rest + (loopInts/.repRule)];
+		FCPrint[1, "ApartFF: Done inserting simplified integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
 
 		If [OptionValue[ExpandScalarProduct],
-			res = ExpandScalarProduct[res, FCI->True]
+			time=AbsoluteTime[];
+			FCPrint[1, "ApartFF: Applying ExpandScalarProduct.", FCDoControl->affVerbose];
+			res = ExpandScalarProduct[res, FCI->True];
+			FCPrint[1, "ApartFF: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose]
 		];
 
-		If[	OptionValue[Collecting],
-			res = Collect2[res,FeynAmpDenominator]
+		If[	optCollecting=!=False,
+			time=AbsoluteTime[];
+			FCPrint[1, "ApartFF: Applying Collect2.", FCDoControl->affVerbose];
+
+			If[ TrueQ[optCollecting===True],
+				res = Collect2[res,FeynAmpDenominator, Factoring->OptionValue[Factoring]],
+				res = Collect2[res,optCollecting, Factoring->OptionValue[Factoring]]
+			];
+
+			FCPrint[1, "ApartFF: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose]
 		];
 
+		FCPrint[1, "ApartFF: Leaving.",  FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Leaving with ", res, FCDoControl->affVerbose];
 		res
 	]
