@@ -54,7 +54,7 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/QCD/Tree/$exFile
 done
 
-for exFile in 'Q-Q.m' 'Gl-Gl.m' 'Gh-Gh.m' 'Renormalization.m'
+for exFile in 'Q-Q.m' 'Gl-Gl.m' 'Gh-Gh.m' 'Renormalization.m' 'GlGl-Gl.m'
 
 do
   echo
