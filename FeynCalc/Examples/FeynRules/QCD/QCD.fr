@@ -133,5 +133,5 @@ LQCDCT = FR$CT (
       -1/4 (Zg^2 ZA^2 - 1) gs^2 f[aa,bb,cc] G[mu,bb] G[nu,cc] f[aa,dd,ee] G[mu,dd] G[nu,ee]
       - (Zu-1) ghGbar[ii].del[del[ghG[ii],mu],mu]
       (* Sign of gs adjusted to match the FeynArts' convention *)
-      + (Zg Sqrt[ZA] Zu -1) (-gs) f[aa,bb,cc] ghGbar[aa].del[G[mu,cc],mu].ghG[bb]
+      - (Zg Sqrt[ZA] Zu -1) (-gs) f[aa,bb,cc] del[ghGbar[aa],mu].ghG[bb] G[mu,cc]
       );
