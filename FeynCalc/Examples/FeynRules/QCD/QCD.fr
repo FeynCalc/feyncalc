@@ -129,7 +129,7 @@ LQCDCT = FR$CT (
       -1/4 (ZA-1) (del[G[mu,aa],nu] - del[G[nu,aa],mu])(del[G[mu,aa],nu] - del[G[nu,aa],mu])
       -1/(2 GaugeXi[V[5]])(ZA/Zxi-1) del[G[imu,aa],imu] del[G[inu,aa],inu]
       (* Sign of gs adjusted to match the FeynArts' convention *)
-      - (Zg ZA^3/2 -1) (-gs) del[G[nu,aa],mu] f[aa,bb,cc] G[mu,bb] G[nu,cc]
+      - (Zg ZA^(3/2) -1) (-gs) del[G[nu,aa],mu] f[aa,bb,cc] G[mu,bb] G[nu,cc]
       -1/4 (Zg^2 ZA^2 - 1) gs^2 f[aa,bb,cc] G[mu,bb] G[nu,cc] f[aa,dd,ee] G[mu,dd] G[nu,ee]
       - (Zu-1) ghGbar[ii].del[del[ghG[ii],mu],mu]
       (* Sign of gs adjusted to match the FeynArts' convention *)
