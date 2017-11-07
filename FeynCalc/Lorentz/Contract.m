@@ -158,7 +158,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 
 				If[	optExpandScalarProduct,
 					FCPrint[2,"expand scalar products"];
-					nec = ExpandScalarProduct[nec];
+					nec = ExpandScalarProduct[nec,FCI->False];
 					FCPrint[2,"expand scalar products done"]
 				];
 
@@ -858,7 +858,7 @@ fdi[xx_Symbol- 4, xx_] :=
 pairsave[a_, b_] :=
 	pairsave[a, b] =
 	If[ FreeQ[{a,b},LorentzIndex] && optExpandScalarProduct,
-		ExpandScalarProduct[a,b],
+		ExpandScalarProduct[Pair[a,b],FCI->False],
 		pair2[a, b]
 	];
 pair2[LorentzIndex[a_, di1___], LorentzIndex[a_, di2___]] :=

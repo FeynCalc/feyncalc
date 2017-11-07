@@ -110,7 +110,7 @@ PolarizationSum[mu_,nu_, k_, OptionsPattern[]] :=
 
 		-Pair[ind1,ind2] +
 		(Pair[Momentum[k,dim],ind1] Pair[Momentum[k,dim],ind2])/
-		Factor2[ExpandScalarProduct[Momentum[k,dim],Momentum[k,dim]]]
+		Factor2[ExpandScalarProduct[Pair[Momentum[k,dim],Momentum[k,dim]]],FCI->False]
 	]/; k=!=0;
 
 (*    Polarization sum for massless vector bosons with gauge terms included,
@@ -132,11 +132,11 @@ PolarizationSum[mu_,nu_, k_, n_, OptionsPattern[]] :=
 
 		(-Pair[ind1,ind2] -
 		(Pair[Momentum[k,dim],ind1] Pair[Momentum[k,dim],ind2] *
-		Factor2[ExpandScalarProduct[Momentum[n,dim],Momentum[n,dim]]])/
-		Factor2[ExpandScalarProduct[Momentum[k,dim],Momentum[n,dim]]^2] +
+		Factor2[ExpandScalarProduct[Pair[Momentum[n,dim],Momentum[n,dim]],FCI->False]])/
+		Factor2[ExpandScalarProduct[Pair[Momentum[k,dim],Momentum[n,dim]],FCI->False]^2] +
 		(Pair[Momentum[n,dim],ind1] Pair[Momentum[k,dim],ind2] +
 		Pair[Momentum[k,dim],ind1] Pair[Momentum[n,dim],ind2])/
-		Factor2[ExpandScalarProduct[Momentum[k,dim],Momentum[n,dim]]])//Collect2[#,Pair]&
+		Factor2[ExpandScalarProduct[Pair[Momentum[k,dim],Momentum[n,dim]],FCI->False]])//Collect2[#,Pair]&
 	]/; k=!=0 && n=!=0;
 
 FCPrint[1,"PolarizationSum.m loaded."];

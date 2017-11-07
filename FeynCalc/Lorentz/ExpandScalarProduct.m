@@ -97,10 +97,6 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 		ex
 	];
 
-(* TODO this is a legacy syntax that one should get rid of! *)
-ExpandScalarProduct[x_, y:Except[_?OptionQ], OptionsPattern[]] :=
-	scevdoit[Pair,x, y];
-
 pairexpand[x_] :=
 	x /. (head : (Alternatives @@ objects))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
 
