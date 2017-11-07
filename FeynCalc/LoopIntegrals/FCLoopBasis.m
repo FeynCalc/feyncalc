@@ -69,6 +69,10 @@ FCLoopBasisFindCompletion::failmsg =
 "Error! FCLoopBasisFindCompletion has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
+FCLoopBasisOverdeterminedQ::failmsg =
+"Error! FCLoopBasisOverdeterminedQ has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 FCLoopBasisIncompleteQ::failmsg =
 "Error! FCLoopBasisIncompleteQ has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -125,8 +129,7 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 		lmoms = Intersection[loopmoms,Complement[allmoms,extmoms]];
 
 
-		(* Collect all scalar products in the numerator that depend on the \
-		loop momenta *)
+		(* Collect all scalar products in the numerator that depend on the loop momenta *)
 		sprods = (List @@ (sps*one*two)) //ReplaceAll[#, one | two -> Unevaluated[Sequence[]]] &;
 
 		(* Pick out only those SPs that depend on loop momenta *)
@@ -247,6 +250,11 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
+		If[	FreeQ2[expr,lmoms],
+			Message[FCLoopBasisIncompleteQ::failmsg, "The input expression does not depend on the given loop momenta."];
+			Abort[]
+		];
+
 		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
@@ -303,6 +311,11 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[	FreeQ2[expr,lmoms],
+			Message[FCLoopBasisOverdeterminedQ::failmsg, "The input expression does not depend on the given loop momenta."];
+			Abort[]
+		];
+
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
@@ -343,6 +356,11 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 
 		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
+		If[	FreeQ2[expr,lmoms],
+			Message[FCLoopBasisFindCompletion::failmsg, "The input expression does not depend on the given loop momenta."];
 			Abort[]
 		];
 
