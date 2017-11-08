@@ -97,6 +97,8 @@ FCAbbreviate[expr_, loopmoms_List, extmoms_List, OptionsPattern[]] :=
 	allVars = Union[Cases[(ex /. replacementsSMPs),
 		x_ /; FreeQ2[x, exclusionList] && !NumberQ[x] && !MatchQ[x, (_Integer _) | (_Complex _)] && ! MatchQ[Head[x], Power | Sqrt| Plus | Complex] && ! MatchQ[x, D], Infinity]];
 
+	allVars = Variables[allVars];
+
 	If[!MatchQ[Union[LeafCount[#] & /@ allVars],{1}|{}],
 		FCPrint[1, "FCAbbreviate: allVars being too complicated: ", allVars, FCDoControl->abbVerbose];
 		Message[FCAbbreviate::failmsg,"Your expression is too complicated to be abbreviated effectively."];
