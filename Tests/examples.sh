@@ -25,6 +25,26 @@ if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 ##Tdec Examples
 #$MATH -nopromt -script ../FeynCalc/Examples/Tdec/GrossNeveuMultiloopTID.m &&
 
+#Phi3 Examples
+
+for exFile in 'Renormalization.m'
+
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/Phi3/OneLoop/$exFile
+done
+
+#Phi4 Examples
+
+for exFile in 'PhiPhi-PhiPhi.m' 'Renormalization.m'
+
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/Phi4/OneLoop/$exFile
+done
+
 #QED Examples
 
 for exFile in 'ElAel-ElAel.m' 'ElAel-GaGa.m' 'ElAel-MuAmu.m' 'ElEl-ElEl.m' 'ElGa-ElGa.m' 'ElMu-ElMu.m'
