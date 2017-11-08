@@ -93,5 +93,8 @@ Momentum[p1, D], 0, 1]"},
 {"fcstDotSimplify-ID17","DotSimplify[GA[i, j1, k] + GA[i, j2, k], Expanding -> False,
 FCE -> True]","GA[i].(GA[j1] + GA[j2]).GA[k]"},
 {"fcstDotSimplify-ID18","DotSimplify[GA[i, j1, k] + GA[i, j2, k], Expanding -> False,
-FCJoinDOTs -> False, FCE -> True]","GA[i].GA[j1].GA[k] + GA[i].GA[j2].GA[k]"}
+FCJoinDOTs -> False, FCE -> True]","GA[i].GA[j1].GA[k] + GA[i].GA[j2].GA[k]"},
+{"fcstDotSimplify-ID19","DataType[f, g, NonCommutative] = True; \n DotSimplify[f.g - g.(2 a).f]","f.g - 2 a g.f"},
+{"fcstDotSimplify-ID20","DataType[f, g, NonCommutative] = False; \n tmp = DotSimplify[f.g - g.(2 a).f]; \n
+	UnDeclareNonCommutative[f, g]; \n tmp","f g-2 a f g"}
 }

@@ -128,7 +128,10 @@ kappa^2 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
 Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
 	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
 	1] (-((kappa^2 SP[p, p])/(8 (ieps + SP[q, q]))) + (
-	kappa^2 SP[q, q])/(32 (ieps + SP[q, q])))"}
+	kappa^2 SP[q, q])/(32 (ieps + SP[q, q])))"},
+{"fcstDiracSimplify-ID30",
+"DiracSimplify[(GA[nu].GS[p] + GS[p].GA[nu] - 2 FV[p, nu]),DiracCanonical -> True]",
+"0"}
 };
 
 
