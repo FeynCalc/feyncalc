@@ -158,7 +158,7 @@ FAPatch[OptionsPattern[]] :=
 			If[FileNameTake[FileInformation[#, "AbsoluteFileName"]] === FileNameTake[#], #, Unevaluated@Sequence[]] &,
 			filenames
 		];
-
+		nmodels=0;
 		If[ !OptionValue[PatchModelsOnly],
 
 			If[	ChoiceDialog["An installation of FeynArts has been found in \"" <> $FeynArtsDirectory <>
@@ -172,13 +172,14 @@ FAPatch[OptionsPattern[]] :=
 					Return[]
 			],
 
-			nmodels=0;
+
 			Map[FCFilePatch[#, #, repList] &, allfiles];
 			If[ nmodels=!=0,
 				FCPrint[0, "Patched " <> ToString[nmodels] <> " FeynArts models.\n", UseWriteString -> True];
 			]
 
-		]
+		];
+		nmodels=0;
 	];
 
 
