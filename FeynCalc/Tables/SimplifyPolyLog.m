@@ -105,7 +105,7 @@ funex[PolyGamma[2,2]] :>
 funex[PolyGamma[a_,b_]] :=
 	FCUseCache[polyGammaExpand,{PolyGamma[a,b]}];
 
-polyGammaExpand[PolyGamma[a_,b_]]:=
+polyGammaExpand[PolyGamma[a_,b_], {}]:=
 	Expand[FunctionExpand[PolyGamma[a,b]] /. EulerGamma->0];
 
 (*
@@ -936,6 +936,9 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	Log[-x_Symbol] :>
 		Log[x] + I Pi,
+
+	Log[n_Integer?Negative x_Symbol] :>
+		Log[-n] + Log[x] + I Pi,
 
 	Log[-Sqrt[x_Symbol]]/; optSqrt :>
 		1/2 Log[x] + I Pi,

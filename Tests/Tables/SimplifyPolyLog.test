@@ -294,5 +294,15 @@ PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] - PolyLog[2, (1 + Sqrt[x])/2] + PolyLog[
 {"fcstSimplifyPolyLog-ID85",
 "SimplifyPolyLog[Zeta2^2 - 5 Zeta[4]/2]", "0"},
 {"fcstSimplifyPolyLog-ID86",
-"SimplifyPolyLog[PolyLog[2, 2, x]]", "PolyLog[2, 2, x]"}
+"SimplifyPolyLog[PolyLog[2, 2, x]]", "PolyLog[2, 2, x]"},
+{"fcstSimplifyPolyLog-ID87",
+"SimplifyPolyLog[(250 PolyGamma[2, 3])/(3 (2 - 2 zz) zz) - (
+250 Log[1 - (2 zz)/(-2 + 2 zz)] PolyGamma[2, 3])/(3 (2 - 2 zz))]", "(250 (9/4 - 2 Zeta[3]))/(3 (2 - 2 zz) zz) + (
+250 Log[1 - zz] (9/4 - 2 Zeta[3]))/(3 (2 - 2 zz))"},
+{"fcstSimplifyPolyLog-ID88",
+"SimplifyPolyLog[Log[-2 x]]", "I \[Pi] + Log[2] + Log[x]"},
+{"fcstSimplifyPolyLog-ID89",
+"SimplifyPolyLog[Log[-4 x]]", "I \[Pi] + 2 Log[2] + Log[x]"},
+{"fcstSimplifyPolyLog-ID90",
+"SimplifyPolyLog[Log[-10 x]]", "I \[Pi] + Log[2] + Log[5] + Log[x]"}
 })
