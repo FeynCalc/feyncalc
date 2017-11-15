@@ -164,17 +164,20 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			denominator = 1
 		];
 
-		If[	Head[optInitialFunction]===List,
-			nx = (Composition@@optInitialFunction)[nx],
-			nx = optInitialFunction[nx]
-		];
-
-
 		nx = nx /. OptionValue[IntermediateSubstitutions];
 
 		nx = nx/factorOut;
 
 		FCPrint[2,"Collect2: After factoring out ", factorOut, " :", nx,  FCDoControl->cl2Verbose];
+
+
+
+		FCPrint[1,"Collect2: Applying initial function.", FCDoControl->cl2Verbose];
+		If[	Head[optInitialFunction]===List,
+			nx = (Composition@@optInitialFunction)[nx],
+			nx = optInitialFunction[nx]
+		];
+		FCPrint[3,"Collect2: After initial function ", nx,  FCDoControl->cl2Verbose];
 
 		monomList = Union[Select[ vv, ((Head[#] =!= Plus) && (Head[#] =!= Times) && (!NumberQ[#]))& ]];
 		monomList = Select[ monomList, !FreeQ[nx, #]&];
