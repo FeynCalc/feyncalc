@@ -424,6 +424,13 @@ simptab =
 		2*PolyLog[2, (1 + x)/(1 - x)]
 		)/2,
 
+	PolyLog[2, 2/(1 + x_Symbol)] :>
+		(
+		-(Log[-1 + x]*Log[2/(1 + x)]) +
+		(Log[2/(1 + x)]*Log[2*(1 + x)])/2 +
+		PolyLog[2, (1 - x)/2] + Zeta2
+		),
+
 	PolyLog[2, -((1 + x_Symbol)/(1 - x_Symbol))] :>
 		(
 		-5*Pi^2 -
@@ -644,6 +651,20 @@ simptab =
 				2*Log[1 - x]*PolyLog[2, 1 - x] + 2*Zeta[3])/2
 	*)
 
+	PolyLog[3, 2/(1 + x_Symbol)] :>
+		(
+		(Zeta2*Log[2])/2 -
+		Log[2]^3/6 -
+		2*Zeta2*Log[1 + x] +
+		I*Pi*Log[2]*Log[1 + x] +
+		(Log[2]^2*Log[1 + x])/2 -
+		(I/2)*Pi*Log[1 + x]^2 -
+		(Log[2]*Log[1 + x]^2)/2 +
+		Log[1 + x]^3/6 +
+		PolyLog[3, 2] +
+		PolyLog[3, (1 + x)/2] -
+		(7*Zeta[3])/8
+		),
 
 	PolyLog[3, z_Symbol^2] :>
 		(
@@ -834,7 +855,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		6*Zeta[3]
 		)/6,
 
-	(* some weird formula ... *)
+	(* some weird formula, a shorter version below ... *)
 
 	PolyLog[3, x_Symbol/(1 + x_Symbol)] :>
 		(
@@ -910,6 +931,9 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[1/(x_Symbol+1)] :>
 		-Log[x+1],
 
+	Log[n_Integer?Positive/(x_Symbol+1)] :>
+		Log[n]-Log[x+1],
+
 	Log[Power[(x_Symbol+1),n_Integer]]/; n<0 :>
 		- n Log[x+1],
 
@@ -921,6 +945,9 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	Log[1/(1-x_Symbol)] :>
 		-Log[1-x],
+
+	Log[n_Integer?Positive/(1-x_Symbol)] :>
+		Log[n]-Log[1-x],
 
 	Log[Power[(1-x_Symbol),n_Integer]]/; n<0 :>
 		- n Log[1-x],
@@ -999,6 +1026,30 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	Log[Sqrt[x_Symbol]]/; optSqrt :>
 		1/2 Log[x],
+
+	Log[-((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2])]/; optSqrt :>
+		Log[-(Sqrt[1 - x] - Sqrt[-x])] - Log[Sqrt[-x]],
+
+	Log[(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2]]/; optSqrt :>
+		Log[(Sqrt[1 - x] + Sqrt[-x])] - Log[Sqrt[-x]],
+
+	Log[(Sqrt[-x_Symbol] - Sqrt[1 - x_Symbol])]/; optSqrt :>
+		-Log[(Sqrt[-x] + Sqrt[1 - x])] + I Pi,
+
+	Log[Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt :>
+		Log[Sqrt[1 - x]] - Log[Sqrt[-x]],
+
+	Log[Sqrt[-x_Symbol]]/; optSqrt :>
+		(I/2)*Pi + Log[x]/2,
+
+	Log[Sqrt[1 - x_Symbol]]/; optSqrt :>
+		1/2 Log[1 - x],
+
+	Log[-Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt :>
+		Log[-Sqrt[1 - x]] - Log[Sqrt[-x]],
+
+	Log[-Sqrt[1 - x_Symbol]]/; optSqrt :>
+		Log[Sqrt[1 - x]] + I Pi,
 
 	Pi^2 :>
 		6 Zeta2,

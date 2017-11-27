@@ -304,5 +304,70 @@ PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] - PolyLog[2, (1 + Sqrt[x])/2] + PolyLog[
 {"fcstSimplifyPolyLog-ID89",
 "SimplifyPolyLog[Log[-4 x]]", "I \[Pi] + 2 Log[2] + Log[x]"},
 {"fcstSimplifyPolyLog-ID90",
-"SimplifyPolyLog[Log[-10 x]]", "I \[Pi] + Log[2] + Log[5] + Log[x]"}
+"SimplifyPolyLog[Log[-10 x]]", "I \[Pi] + Log[2] + Log[5] + Log[x]"},
+{"fcstSimplifyPolyLog-ID91", "SimplifyPolyLog[Li2[2/(1+x)]]",
+"(3*Zeta2)/2 - I*Pi*Log[2] - Log[2]*Log[1 - x] + I*Pi*Log[1 + x] + \
+Log[2]*Log[1 + x] + Log[1 - x]*Log[1 + x] + Log[x]*Log[1 + x] - Log[1 \
++ x]^2 + PolyLog[2, 1 - x] + PolyLog[2, -x] - PolyLog[2, (1 - x)/(1 + \
+x)]"},
+{"fcstSimplifyPolyLog-ID92",
+"N[(SimplifyPolyLog[Li2[2/(1+x)]]-Li2[2/(1+x)])/.x\[Rule]0.3]\
+//Chop", "0"},
+{"fcstSimplifyPolyLog-ID93", "SimplifyPolyLog[Li3[2/(1+x)]]",
+"(Zeta2*Log[2])/2 - Log[2]^3/6 - 2*Zeta2*Log[1 + x] + \
+I*Pi*Log[2]*Log[1 + x] + (Log[2]^2*Log[1 + x])/2 - (I/2)*Pi*Log[1 + \
+x]^2 - (Log[2]*Log[1 + x]^2)/2 + Log[1 + x]^3/6 + PolyLog[3, 2] + \
+PolyLog[3, (1 + x)/2] - (7*Zeta[3])/8"},
+{"fcstSimplifyPolyLog-ID94",
+"N[(SimplifyPolyLog[Li3[2/(1+x)]]-Li3[2/(1+x)])/.x\[Rule]0.3]\
+//Chop", "0"},
+{"fcstSimplifyPolyLog-ID95", "SimplifyPolyLog[Log[2/(1+x)]]",
+"Log[2] - Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID96", "SimplifyPolyLog[Log[6/(1+x)]]",
+"Log[2] + Log[3] - Log[1 + x]"},
+{"fcstSimplifyPolyLog-ID97",
+"SimplifyPolyLog[Log[-(Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]]]",
+"(I/2)*Pi - Log[Sqrt[1 - x] + Sqrt[-x]] - Log[x]/2"},
+{"fcstSimplifyPolyLog-ID98",
+"N[(SimplifyPolyLog[Log[-(Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]]]-Log[-(\
+Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
+{"fcstSimplifyPolyLog-ID99",
+"SimplifyPolyLog[Log[(Sqrt[1-x]+Sqrt[-x])/Sqrt[-x]]]",
+"(-I/2)*Pi + Log[Sqrt[1 - x] + Sqrt[-x]] - Log[x]/2"},
+{"fcstSimplifyPolyLog-ID100",
+"N[(SimplifyPolyLog[Log[(Sqrt[1-x]+Sqrt[-x])/Sqrt[-x]]]-Log[(Sqrt[\
+1-x]+Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
+{"fcstSimplifyPolyLog-ID101",
+"SimplifyPolyLog[Log[Sqrt[-x]-Sqrt[1-x]]]",
+"I*Pi - Log[Sqrt[1 - x] + Sqrt[-x]]"},
+{"fcstSimplifyPolyLog-ID102",
+"N[(SimplifyPolyLog[Log[Sqrt[-x]-Sqrt[1-x]]]-Log[Sqrt[-x]-Sqrt[1-x]\
+])/.x\[Rule]0.3]//Chop", "0"},
+{"fcstSimplifyPolyLog-ID103",
+"SimplifyPolyLog[Log[Sqrt[1-x]/Sqrt[-x]]]",
+"(-I/2)*Pi + Log[1 - x]/2 - Log[x]/2"},
+{"fcstSimplifyPolyLog-ID104",
+"N[(SimplifyPolyLog[Log[Sqrt[1-x]/Sqrt[-x]]]-Log[Sqrt[1-x]/Sqrt[-x]\
+])/.x\[Rule]0.3]//Chop", "0"},
+{"fcstSimplifyPolyLog-ID105", "SimplifyPolyLog[Log[Sqrt[-x]]]",
+"(I/2)*Pi + Log[x]/2"},
+{"fcstSimplifyPolyLog-ID106",
+"N[(SimplifyPolyLog[Log[Sqrt[-x]]]-Log[Sqrt[-x]])/.x\[Rule]0.3]\
+//Chop", "0"},
+{"fcstSimplifyPolyLog-ID107", "SimplifyPolyLog[Log[Sqrt[1-x]]]",
+"Log[1 - x]/2"},
+{"fcstSimplifyPolyLog-ID108",
+"N[(SimplifyPolyLog[Log[Sqrt[1-x]]]-Log[Sqrt[1-x]])/.x\[Rule]0.3]\
+//Chop", "0"},
+{"fcstSimplifyPolyLog-ID109", "SimplifyPolyLog[Log[-Sqrt[1-x]]]",
+"I*Pi + Log[1 - x]/2"},
+{"fcstSimplifyPolyLog-ID110",
+"N[(SimplifyPolyLog[Log[-Sqrt[1-x]]]-Log[-Sqrt[1-x]])/.x\[Rule]0.3]\
+//Chop", "0"},
+{"fcstSimplifyPolyLog-ID111",
+"SimplifyPolyLog[Log[Sqrt[1-x]/Sqrt[-x]]]",
+"(-I/2)*Pi + Log[1 - x]/2 - Log[x]/2"},
+{"fcstSimplifyPolyLog-ID112",
+"N[(SimplifyPolyLog[Log[Sqrt[1-x]/Sqrt[-x]]]-Log[Sqrt[1-x]/Sqrt[-x]\
+])/.x\[Rule]0.3]//Chop", "0"}
 })
