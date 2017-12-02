@@ -38,8 +38,10 @@ Begin["`SimplifyPolyLog`Private`"]
 
 SPL=SimplifyPolyLog;
 optSqrt::usage="";
+optPolyLog::usage="";
 
 Options[SimplifyPolyLog] = {
+	PolyLog -> True,
 	Nielsen -> True,
 	Sqrt -> True
 };
@@ -48,7 +50,9 @@ SimplifyPolyLog[expr_, OptionsPattern[]] :=
 	Block[{logSimp, tmp, repRule={}, var},
 
 		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
+
 		optSqrt = OptionValue[Sqrt];
+		optPolyLog = OptionValue[PolyLog];
 
 		tmp = expr;
 
@@ -129,14 +133,14 @@ simptab =
 		funex[PolyGamma[a,b]],
 
 	(*The duplication formula *)
-	PolyLog[s_, -Sqrt[x_Symbol]]/; optSqrt :>
+	PolyLog[s_, -Sqrt[x_Symbol]]/; optSqrt && optPolyLog  :>
 		2^(1-s) PolyLog[s, x] - PolyLog[s, Sqrt[x]],(*,
 
 	PolyLog[s_, -x_Symbol] :>
 		2^(1-s) PolyLog[s, x^2] - PolyLog[s, x],
 	*)
 
-	PolyLog[2, -((1 - 2*t_Symbol)/t_Symbol)] :>
+	PolyLog[2, -((1 - 2*t_Symbol)/t_Symbol)]/; optPolyLog :>
 		(
 		-Zeta2 +
 		2*Log[2]*Log[1 - 2*t] +
@@ -150,7 +154,7 @@ simptab =
 		2*PolyLog[2, 2*t]
 		)/2,
 
-	PolyLog[2, (2*(1 - t_Symbol))/(1 - 2*t_Symbol)] :>
+	PolyLog[2, (2*(1 - t_Symbol))/(1 - 2*t_Symbol)]/; optPolyLog :>
 		(
 		6*Zeta2 -
 		2*Log[2]*Log[-(1 - 2*t)^(-1)] +
@@ -166,7 +170,7 @@ simptab =
 		2*PolyLog[2, 2*(1 - t)]
 		)/ 2,
 
-	PolyLog[2, (1 - t_Symbol)^2/(1 - 2*t_Symbol)] :>
+	PolyLog[2, (1 - t_Symbol)^2/(1 - 2*t_Symbol)]/; optPolyLog :>
 		(
 		2*I*Pi*Log[1 - 2*t] +
 		4*Log[2]*Log[1 - 2*t] -
@@ -181,7 +185,7 @@ simptab =
 		4*PolyLog[2, 2*t]
 		)/2,
 
-	PolyLog[2, (1 - t_Symbol)/(1 - 2*t_Symbol)] :>
+	PolyLog[2, (1 - t_Symbol)/(1 - 2*t_Symbol)]/; optPolyLog :>
 		(
 		3*Zeta2 +
 		2*I*Pi*Log[1 - 2*t] +
@@ -200,21 +204,21 @@ simptab =
 	Log[-(t_Symbol^2/(1 - 2*t_Symbol))] :>
 		Log[t] + Log[-(t/(1 - 2*t))],
 
-	PolyLog[2, -(t_Symbol/(1 - 2*t_Symbol))] :>
+	PolyLog[2, -(t_Symbol/(1 - 2*t_Symbol))]/; optPolyLog :>
 		(
 		Zeta2 -
 		Log[(1 - t)/(1 - 2*t)]*Log[-(t/(1 - 2*t))] -
 		PolyLog[2, (1 - t)/(1 - 2*t)]
 		),
 
-	PolyLog[2, -(t_Symbol^2/(1 - 2*t_Symbol))] :>
+	PolyLog[2, -(t_Symbol^2/(1 - 2*t_Symbol))]/; optPolyLog :>
 		(
 		Zeta2 -
 		Log[(1 - t)^2/(1 - 2*t)]*Log[-(t^2/(1 - 2*t))] -
 		PolyLog[2, (1 - t)^2/(1 - 2*t)]
 		),
 
-	PolyLog[3, (1 - t_Symbol)^2/t_Symbol^2] :>
+	PolyLog[3, (1 - t_Symbol)^2/t_Symbol^2]/; optPolyLog :>
 		(
 		2*Pi^2*Log[1 - t]/3 -
 		4*Log[1 - t]^2*Log[-((1 - 2*t)/t)] +
@@ -229,7 +233,7 @@ simptab =
 		4*Zeta[3]
 		),
 
-	PolyLog[2, 2 - x_Symbol] :>
+	PolyLog[2, 2 - x_Symbol]/; optPolyLog :>
 		(
 		Zeta2 -
 		I*Pi*Log[2 - x] -
@@ -237,7 +241,7 @@ simptab =
 		PolyLog[2, -1 + x]
 		),
 
-	PolyLog[2, (1 + x_Symbol)/x_Symbol] :>
+	PolyLog[2, (1 + x_Symbol)/x_Symbol]/; optPolyLog :>
 		(
 		2*Zeta2 +
 		I*Pi*Log[x] -
@@ -247,7 +251,7 @@ simptab =
 		PolyLog[2, -x]
 		),
 
-	PolyLog[2, (1 - x_Symbol)/2] :>
+	PolyLog[2, (1 - x_Symbol)/2]/; optPolyLog :>
 		(
 		Zeta2 -
 		Log[2]^2 + 2*Log[2]*Log[1 + x] + 2*Log[x]*Log[1 + x] -
@@ -255,14 +259,14 @@ simptab =
 		2*PolyLog[2, (1 - x)/(1 + x)]
 		)/2,
 
-		PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt :>
+		PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt && optPolyLog :>
 		(
 		-Log[2]^2/2 + Log[2]*Log[1 + Sqrt[x]] - Log[1 + Sqrt[x]]^2/2 +
 		2*PolyLog[2, 1 - Sqrt[x]] - PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] -
 		PolyLog[2, 1 - x]/2
 		),
 
-	PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt :>
+	PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt  && optPolyLog :>
 		(
 		- PolyLog[2, (1 + Sqrt[x])/2] +
 		Zeta2 -
@@ -270,7 +274,7 @@ simptab =
 		Log[1 + Sqrt[x]] Log[1 - x]
 		),
 
-	PolyLog[2, -(1 - x_Symbol)/(2*x_Symbol)] :>
+	PolyLog[2, -(1 - x_Symbol)/(2*x_Symbol)]/; optPolyLog :>
 		(
 		4*Zeta2 +
 		4*I*Pi*Log[2] -
@@ -289,7 +293,7 @@ simptab =
 		4*PolyLog[2, (1 + x)/(2*x)]
 		)/2,
 
-	PolyLog[3, -(x_^2/(1 - x_^2))] :>
+	PolyLog[3, -(x_^2/(1 - x_^2))]/; optPolyLog  :>
 		(
 		7*Zeta2*Log[1 - x] +
 		I*Pi*Log[1 - x]^2 +
@@ -312,7 +316,7 @@ simptab =
 		(9*Zeta[3])/2
 		),
 
-	PolyLog[2, -(x_^2/(1 - x_^2))] :>
+	PolyLog[2, -(x_^2/(1 - x_^2))]/; optPolyLog  :>
 		(
 		-2*Zeta2 -
 		Log[1 - x]^2/2 +
@@ -323,22 +327,22 @@ simptab =
 		2*PolyLog[2, -x]
 		),
 
-	PolyLog[3, -(1 - x_Symbol)^(-1)] :>
+	PolyLog[3, -(1 - x_Symbol)^(-1)]/; optPolyLog  :>
 		Log[1 - x]^3/6 + Zeta2*Log[1 - x] + PolyLog[3, -1 + x],
 
-	PolyLog[3, (1 - x_Symbol)^2] :>
+	PolyLog[3, (1 - x_Symbol)^2]/; optPolyLog  :>
 		4*PolyLog[3, 1 - x] + 4*PolyLog[3, -1 + x],
 
-	PolyLog[2, -1 + 2*x_Symbol] :>
+	PolyLog[2, -1 + 2*x_Symbol]/; optPolyLog  :>
 		Zeta2 - Log[2]*Log[-1 + 2*x] - Log[1 - x]*Log[-1 + 2*x] - PolyLog[2, 2*(1 - x)],
 
-	PolyLog[2, (1 - 2*x_Symbol)/(1 - x_Symbol)] :>
+	PolyLog[2, (1 - 2*x_Symbol)/(1 - x_Symbol)]/; optPolyLog  :>
 		-Log[1 - x]^2/2 + Log[1 - x]*Log[x] - Log[x]^2/2 - PolyLog[2, -((1 - 2*x)/x)],
 
-	PolyLog[2, (1 - 2*x_Symbol)/(2*(1 - x_Symbol))] :>
+	PolyLog[2, (1 - 2*x_Symbol)/(2*(1 - x_Symbol))]/; optPolyLog  :>
 		-Log[2]^2/2 - Log[2]*Log[1 - x] - Log[1 - x]^2/2 - PolyLog[2, -1 + 2*x],
 
-	PolyLog[2, (1 - x_Symbol)/x_Symbol] :>
+	PolyLog[2, (1 - x_Symbol)/x_Symbol]/; optPolyLog  :>
 		(
 		Zeta2 -
 		I*Pi*Log[1 - x] -
@@ -350,7 +354,7 @@ simptab =
 		PolyLog[2, -((1 - 2*x)/x)]
 		),
 
-	PolyLog[2, 1/(2*(1 - x_Symbol))] :>
+	PolyLog[2, 1/(2*(1 - x_Symbol))]/; optPolyLog  :>
 		(
 		Zeta2 -
 		Log[2]^2/2 +
@@ -361,10 +365,10 @@ simptab =
 		PolyLog[2, -1 + 2*x]
 		),
 
-	PolyLog[2, x_Symbol/(1 + x_Symbol)] :>
+	PolyLog[2, x_Symbol/(1 + x_Symbol)]/; optPolyLog  :>
 			-Pi^2/6 + I*Pi*Log[1 + x] + Log[x]*Log[1 + x] - Log[1 + x]^2/2 + PolyLog[2, 1 + x],
 
-	PolyLog[3, x_^(-2)] :>
+	PolyLog[3, x_^(-2)]/; optPolyLog  :>
 		(
 		2*Pi^2*Log[x] -
 		12*Zeta2*Log[x] -
@@ -377,7 +381,7 @@ simptab =
 		4*PolyLog[3, x]
 		),
 
-	PolyLog[3, (1 - x_Symbol^2)^(-1)] :>
+	PolyLog[3, (1 - x_Symbol^2)^(-1)]/; optPolyLog  :>
 		(
 		-8*Zeta2*Log[1 - x] -
 		(3*I)/2*Pi*Log[1 - x]^2 +
@@ -395,7 +399,7 @@ simptab =
 		(7*Zeta[3])/2
 		),
 
-	PolyLog[3, 1 - x_Symbol^2] :>
+	PolyLog[3, 1 - x_Symbol^2]/; optPolyLog  :>
 		(
 		-6*Zeta2*Log[1 - x] -
 		I*Pi*Log[1 - x]^2 +
@@ -408,7 +412,7 @@ simptab =
 		(7*Zeta[3])/2
 		),
 
-	PolyLog[2, 2/(1 - x_Symbol)] :>
+	PolyLog[2, 2/(1 - x_Symbol)]/; optPolyLog  :>
 		(
 		7*Zeta2 -
 		2*I*Pi*Log[2] +
@@ -424,14 +428,14 @@ simptab =
 		2*PolyLog[2, (1 + x)/(1 - x)]
 		)/2,
 
-	PolyLog[2, 2/(1 + x_Symbol)] :>
+	PolyLog[2, 2/(1 + x_Symbol)]/; optPolyLog  :>
 		(
 		-(Log[-1 + x]*Log[2/(1 + x)]) +
 		(Log[2/(1 + x)]*Log[2*(1 + x)])/2 +
 		PolyLog[2, (1 - x)/2] + Zeta2
 		),
 
-	PolyLog[2, -((1 + x_Symbol)/(1 - x_Symbol))] :>
+	PolyLog[2, -((1 + x_Symbol)/(1 - x_Symbol))]/; optPolyLog  :>
 		(
 		-5*Pi^2 -
 		12*I*Pi*Log[1 - x] +
@@ -442,7 +446,7 @@ simptab =
 		12*PolyLog[2, (1 + x)/(1 - x)]
 		)/12,
 
-	PolyLog[2, (1 + x_Symbol)/(-1 + x_Symbol)] :>
+	PolyLog[2, (1 + x_Symbol)/(-1 + x_Symbol)]/; optPolyLog  :>
 		(
 		-5*Pi^2 -
 		12*I*Pi*Log[1 - x] +
@@ -453,50 +457,50 @@ simptab =
 		12*PolyLog[2, (1 + x)/(1 - x)]
 		)/12,
 
-	PolyLog[2, 1 + x_Symbol] :>
+	PolyLog[2, 1 + x_Symbol]/; optPolyLog  :>
 		Zeta2 - I*Pi*Log[1 + x] - Log[x]*Log[1 + x] - PolyLog[2, -x],
 
-	PolyLog[2, 1 + Sqrt[x_Symbol]] /; optSqrt :>
+	PolyLog[2, 1 + Sqrt[x_Symbol]] /; optSqrt && optPolyLog  :>
 		(
 		- PolyLog[2, -Sqrt[x]] +
 		Zeta2 - I Pi Log[1 + Sqrt[x]] - 1/2 Log[1 + Sqrt[x]] Log[x]
 		),
 
 
-	PolyLog[2,1/x_] :>
+	PolyLog[2,1/x_]/; optPolyLog  :>
 		Log[(x-1)/x] Log[x] + Pi^2/3 - PolyLog[2,x] - Log[x] Log[1-x] + 1/2 Log[x]^2,
 
-	PolyLog[2,-1/x_] :>
+	PolyLog[2,-1/x_]/; optPolyLog  :>
 		Log[(+x+1)/x] Log[-x] + Pi^2/3 - PolyLog[2,-x] - Log[-x] Log[1+x] + 1/2 Log[-x]^2,
 
 	(* a matter of taste
 	PolyLog[2, 1 - x_] -> Zeta2 - Log[1 - x] Log[x] - PolyLog[2, x], *)
 
-	PolyLog[2, x_ /; FreeQ2[x,{Plus,Times,Power}]] :>
+	PolyLog[2, x_ /; FreeQ2[x,{Plus,Times,Power}]] && optPolyLog :>
 		Zeta2 - Log[1 - x] Log[x] - PolyLog[2, 1 - x],
 
-	PolyLog[2, Sqrt[x_Symbol]]/; optSqrt :>
+	PolyLog[2, Sqrt[x_Symbol]]/; optSqrt  && optPolyLog :>
 		(
 		- PolyLog[2, 1 - Sqrt[x]] +
 		Zeta2 + 1/2 Log[1 + Sqrt[x]] Log[x] - 1/2 Log[1 - x] Log[x]
 		),
 
-	PolyLog[2, x_^(-2)] :>
+	PolyLog[2, x_^(-2)]/; optPolyLog :>
 		2*Zeta2 + 2*I*Pi*Log[x] + 2*Log[1 - x]*Log[x] - Log[x]^2 + 2*PolyLog[2, 1 - x] + 2*PolyLog[2, -x^(-1)],
 
-	PolyLog[2, (1 + x_Symbol)/(1 - x_Symbol^2)] :>
+	PolyLog[2, (1 + x_Symbol)/(1 - x_Symbol^2)]/; optPolyLog :>
 		2*Zeta2 + I*Pi*Log[1 - x] - Log[1 - x]^2/2 - PolyLog[2, 1 - x],
 
-	PolyLog[2,1-x_^2] :>
+	PolyLog[2,1-x_^2]/; optPolyLog :>
 		PolyLog[2,1-x] - PolyLog[2,x]-2 PolyLog[2,-x]- Log[x] Log[1-x] - 2 Log[x] Log[1+x],
 
-	PolyLog[2, -((1 - x_Symbol)/(1 + x_Symbol))] :>
+	PolyLog[2, -((1 - x_Symbol)/(1 + x_Symbol))]/; optPolyLog :>
 		(-3*Zeta2)/2 - Log[x]*(-Log[1 - x] + Log[1 + x]) - PolyLog[2, -x] + PolyLog[2, x] + PolyLog[2, (1 - x)/(1 + x)],
 
-	PolyLog[2, ((x_Symbol -1)/(1 + x_Symbol))] :>
+	PolyLog[2, ((x_Symbol -1)/(1 + x_Symbol))]/; optPolyLog :>
 		(-3*Zeta2)/2 - Log[x]*(-Log[1 - x] + Log[1 + x]) - PolyLog[2, -x] + PolyLog[2, x] + PolyLog[2, (1 - x)/(1 + x)],
 
-	PolyLog[2, (1 + x_Symbol)/2] :>
+	PolyLog[2, (1 + x_Symbol)/2]/; optPolyLog :>
 		(
 		Zeta2/2 -
 		Log[2]^2/2 +
@@ -509,7 +513,7 @@ simptab =
 		PolyLog[2, (1 - x)/(1 + x)]
 		),
 
-	PolyLog[2, (1 + Sqrt[x_Symbol])/2]/; optSqrt :>
+	PolyLog[2, (1 + Sqrt[x_Symbol])/2]/; optSqrt && optPolyLog :>
 		(
 		Zeta2 - Log[2]^2/2 - Log[2] Log[1 + Sqrt[x]] +
 		3/2 Log[1 + Sqrt[x]]^2 + Log[2] Log[1 - x] -
@@ -517,7 +521,7 @@ simptab =
 		PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] + 1/2 PolyLog[2, 1 - x]
 		),
 
-	PolyLog[2, (1 + x_Symbol)/(1 - x_Symbol)] :>
+	PolyLog[2, (1 + x_Symbol)/(1 - x_Symbol)]/; optPolyLog :>
 		(
 		2*Zeta2 +
 		I*Pi*Log[1 - x] -
@@ -528,7 +532,7 @@ simptab =
 		PolyLog[2, (1 - x)/(1 + x)]
 		),
 
-	PolyLog[2, (-2*x_Symbol)/(1 - x_Symbol)] :>
+	PolyLog[2, (-2*x_Symbol)/(1 - x_Symbol)]/; optPolyLog :>
 		(
 		Zeta2 +
 		I*Pi*Log[1 - x] +
@@ -542,10 +546,10 @@ simptab =
 		PolyLog[2, (1 + x)/(1 - x)]
 		),
 
-	PolyLog[2, x_^2] :>
+	PolyLog[2, x_^2]/; optPolyLog :>
 		Zeta2 - Log[1 - x]*Log[x] - PolyLog[2, 1 - x] + 2*PolyLog[2, -x] + PolyLog[2, x],
 
-	PolyLog[2, (1 + x_Symbol)/(2*x_Symbol)] :>
+	PolyLog[2, (1 + x_Symbol)/(2*x_Symbol)]/; optPolyLog :>
 		(
 		2*Zeta2 +
 		2*I*Pi*Log[2] -
@@ -562,30 +566,30 @@ simptab =
 		)/2,
 
 
-	PolyLog[2, x_Symbol/(1 + x_Symbol)] :>
+	PolyLog[2, x_Symbol/(1 + x_Symbol)]/; optPolyLog :>
 		(-Log[1 + x]^2 - 2*PolyLog[2, -x])/2,
 
-	PolyLog[2, 2 x_Symbol/(1 + x_Symbol)] :>
+	PolyLog[2, 2 x_Symbol/(1 + x_Symbol)]/; optPolyLog :>
 		(
 		-Pi^2/12 + Log[2]^2/2 - Log[1 - x]*Log[2/(1 + x)] - Log[1 + x]^2/2 + PolyLog[2, (1 - x)/2] - PolyLog[2, -x] + PolyLog[2, x]
 		),
 
-	PolyLog[2, -x_Symbol/(1-x_Symbol)] :>
+	PolyLog[2, -x_Symbol/(1-x_Symbol)]/; optPolyLog :>
 		-1/2 Log[1-x]^2 - PolyLog[2, x],
 
-	PolyLog[2, 1 - 1/x_Symbol] :>
+	PolyLog[2, 1 - 1/x_Symbol]/; optPolyLog :>
 		-Log[x]^2/2 - PolyLog[2, 1 - x],
 
-	PolyLog[2, (x_Symbol - 1)/x_Symbol] :>
+	PolyLog[2, (x_Symbol - 1)/x_Symbol]/; optPolyLog :>
 		-Log[x]^2/2 - PolyLog[2, 1 - x],
 
-	PolyLog[2, -(1 - x_Symbol)/x_Symbol]:>
+	PolyLog[2, -(1 - x_Symbol)/x_Symbol]/; optPolyLog :>
 		-Log[x]^2/2 - PolyLog[2, 1 - x],
 
-	PolyLog[2,  x_Symbol/(x_Symbol -1)] :>
+	PolyLog[2,  x_Symbol/(x_Symbol -1)]/; optPolyLog :>
 		-1/2 Log[1-x]^2 - PolyLog[2, x],
 
-	PolyLog[3, x_Symbol] :>
+	PolyLog[3, x_Symbol]/; optPolyLog :>
 		(2*Zeta2*Log[x] - Log[1 - x]*Log[x]^2 - 2*Nielsen[1, 2, 1 - x] - 2*Log[x]*PolyLog[2, 1 - x] + 2*Zeta[3])/2,
 
 	(*
@@ -594,19 +598,19 @@ simptab =
 	Nielsen[1,2, -x_/(1-x_)] :>
 		-1/6 Log[1-x]^3 + Nielsen[1,2,x],
 
-	PolyLog[2, -(x_^2/(1 - x_^2))] :>
+	PolyLog[2, -(x_^2/(1 - x_^2))]/; optPolyLog :>
 		-2*Zeta2 - Log[1 - x]^2/2 + 2*Log[1 - x]*Log[x] - Log[1 - x]*Log[1 + x] - Log[1 + x]^2/2 + 2*PolyLog[2, 1 - x] - 2*PolyLog[2, -x],
 
-	PolyLog[2, 1 - 2*x_Symbol] :>
+	PolyLog[2, 1 - 2*x_Symbol]/; optPolyLog :>
 		-Zeta2/2 + Log[1 - x]*Log[x] - Log[x]^2/2 + PolyLog[2, 1 - x] + PolyLog[2, -1 + 2*x] - PolyLog[2, (-1 + 2*x)/x],
 
-	PolyLog[3, x_Symbol^(-1)] :>
+	PolyLog[3, x_Symbol^(-1)]/; optPolyLog :>
 		(-2*Pi^2*Log[x] - 3*I*Pi*Log[x]^2 + Log[x]^3 + 6*PolyLog[3, x])/6,
 
-	PolyLog[3, (1 - x_Symbol)^(-1)] :>
+	PolyLog[3, (1 - x_Symbol)^(-1)]/; optPolyLog :>
 		-2*Zeta2*Log[1 - x] - I/2*Pi*Log[1 - x]^2 + Log[1 - x]^3/6 + PolyLog[3, 1 - x],
 
-	PolyLog[3, (1 + x_Symbol)/x_Symbol] :>
+	PolyLog[3, (1 + x_Symbol)/x_Symbol]/; optPolyLog :>
 		(
 		-12*Zeta2*Log[x] -
 		3*I*Pi*Log[x]^2 +
@@ -626,7 +630,7 @@ simptab =
 		12*Log[1 + x]*PolyLog[2, -x] - 12*Log[1 + x]*PolyLog[2, 1 + x] +
 					6*PolyLog[3, 1 + x])/6
 		,*)
-	PolyLog[3, 1 + x_Symbol] :>
+	PolyLog[3, 1 + x_Symbol]/; optPolyLog :>
 		(
 		12*Zeta2*Log[1 + x] -
 		3*I*Pi*Log[1 + x]^2 -
@@ -634,7 +638,7 @@ simptab =
 		6*PolyLog[3, (1 + x)^(-1)]
 		)/6,
 
-	PolyLog[3, 1 + Sqrt[x_Symbol]]/; optSqrt :>
+	PolyLog[3, 1 + Sqrt[x_Symbol]]/; optSqrt && optPolyLog :>
 		(
 		2*Zeta2*Log[1 + Sqrt[x]] -
 		(I/2)*Pi*Log[1 + Sqrt[x]]^2 -
@@ -642,7 +646,7 @@ simptab =
 		PolyLog[3, (1 + Sqrt[x])^(-1)]
 		),
 
-	PolyLog[3, - (x_/;FreeQ[x,Plus])^(-1)] :>
+	PolyLog[3, - (x_/;FreeQ[x,Plus])^(-1)]/; optPolyLog :>
 		Zeta2*Log[x] + Log[x]^3/6 + PolyLog[3, -x],
 	(*
 	,
@@ -651,7 +655,7 @@ simptab =
 				2*Log[1 - x]*PolyLog[2, 1 - x] + 2*Zeta[3])/2
 	*)
 
-	PolyLog[3, 2/(1 + x_Symbol)] :>
+	PolyLog[3, 2/(1 + x_Symbol)]/; optPolyLog :>
 		(
 		(Zeta2*Log[2])/2 -
 		Log[2]^3/6 -
@@ -666,7 +670,7 @@ simptab =
 		(7*Zeta[3])/8
 		),
 
-	PolyLog[3, z_Symbol^2] :>
+	PolyLog[3, z_Symbol^2]/; optPolyLog :>
 		(
 		-4*((Log[1 - z]*Log[z]^2)/8 +
 		(Log[z]^2*Log[1 + z])/8 -
@@ -674,7 +678,7 @@ simptab =
 		PolyLog[3, -z] - PolyLog[3, z])
 		),
 
-	PolyLog[3, -x_Symbol/(1-x_Symbol)] :>
+	PolyLog[3, -x_Symbol/(1-x_Symbol)]/; optPolyLog :>
 		-PolyLog[3, x] - PolyLog[3,1-x] + 1/6 Log[1-x]^3 - 1/2 Log[x] Log[1-x]^2 + Zeta2 Log[1-x] + Zeta[3],
 (*
 ,
@@ -683,7 +687,7 @@ Nielsen[1,2,-x] + PolyLog[2,-x] Log[1-x] - PolyLog[3,-x] + 1/6 Log[1+x]^3
 Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 *)
 
-	PolyLog[3,1 - 1/(x_/;FreeQ[x,Plus])] :>
+	PolyLog[3,1 - 1/(x_/;FreeQ[x,Plus])]/; optPolyLog :>
 		(
 		Nielsen[1,2,x] -
 		PolyLog[3,x] +
@@ -693,7 +697,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		1/2Log[x] Log[1-x] (Log[1-x] - Log[x])
 		),
 
-	PolyLog[3,-(1 - x_Symbol)/x_Symbol] :>
+	PolyLog[3,-(1 - x_Symbol)/x_Symbol]/; optPolyLog :>
 		(
 		Nielsen[1,2,x] -
 		PolyLog[3,x] +
@@ -703,7 +707,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		1/2Log[x] Log[1-x] (Log[1-x] - Log[x])
 		),
 
-	PolyLog[3,(x_Symbol-1)/x_Symbol] :>
+	PolyLog[3,(x_Symbol-1)/x_Symbol]/; optPolyLog :>
 		(
 		Nielsen[1,2,x] -
 		PolyLog[3,x] +
@@ -713,7 +717,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		1/2Log[x] Log[1-x] (Log[1-x] - Log[x])
 		),
 
-	PolyLog[3, (1 + x_Symbol)/(2*x_Symbol)] :>
+	PolyLog[3, (1 + x_Symbol)/(2*x_Symbol)]/; optPolyLog :>
 		(
 		3*I*Pi*Log[2]^2 -
 		4*Log[2]^3 +
@@ -747,7 +751,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		6*Zeta[3]
 		)/6,
 
-	PolyLog[3, (-2*x_Symbol)/(1 - x_Symbol)] :>
+	PolyLog[3, (-2*x_Symbol)/(1 - x_Symbol)]/; optPolyLog :>
 		(
 		-6*Zeta2*Log[2] -
 		Log[2]^3 +
@@ -765,7 +769,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		)/6,
 
 
-	PolyLog[3, (-2*Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+	PolyLog[3, (-2*Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt && optPolyLog :>
 		(
 		-(Zeta2*Log[2]) - Log[2]^3/6 + Zeta2*Log[1 - Sqrt[x]] + (Log[2]^2*Log[1 - Sqrt[x]])/2 - (Log[2]*Log[1 - Sqrt[x]]^2)/2 + Log[1 - Sqrt[x]]^3/6 -
 		Zeta2*Log[Sqrt[x]] - (Log[2]^2*Log[Sqrt[x]])/2 + Log[2]*Log[1 - Sqrt[x]]*Log[Sqrt[x]] - (Log[1 - Sqrt[x]]^2*Log[Sqrt[x]])/2 - (Log[2]*Log[Sqrt[x]]^2)/2 +
@@ -773,7 +777,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		),
 
 
-	PolyLog[3, -((1 + x_Symbol)/ (1 - x_Symbol))] :>
+	PolyLog[3, -((1 + x_Symbol)/ (1 - x_Symbol))]/; optPolyLog :>
 		(
 		Zeta2*Log[1 - x] +
 		Log[1 - x]^3/6 -
@@ -784,7 +788,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		PolyLog[3, -((1 - x)/ (1 + x))]
 		),
 
-	PolyLog[3, (1 + x_Symbol)/(1 - x_Symbol)] :>
+	PolyLog[3, (1 + x_Symbol)/(1 - x_Symbol)]/; optPolyLog :>
 		+I/6*(
 		12*I*Zeta2*Log[1 - x] -
 		3*Pi*Log[1 - x]^2 - I*Log[1 - x]^3 -
@@ -798,13 +802,13 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		),
 
 
-	PolyLog[3, -(1 - x_Symbol)/(1 + x_Symbol)] :>
+	PolyLog[3, -(1 - x_Symbol)/(1 + x_Symbol)]/; optPolyLog :>
 		(
 		-(Zeta2*Log[2]) + Log[2]^3/3 - (Log[2]^2*Log[1 - x])/2 + Zeta2*Log[1 + x] - (Log[2]^2*Log[1 + x])/2 + Log[2]*Log[1 - x]*Log[1 + x] -
 		(Log[1 - x]*Log[1 + x]^2)/2 + Log[1 + x]^3/6 - PolyLog[3, (1 - x)/2] - PolyLog[3, (1 + x)/2] + Zeta[3]
 		),
 
-	PolyLog[3, -(1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+	PolyLog[3, -(1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol])]/; optSqrt && optPolyLog :>
 		(
 		-(Zeta2*Log[2]) + Log[2]^3/3 - (Log[2]^2*Log[1 - Sqrt[x]])/2 + Zeta2*Log[1 + Sqrt[x]] - (Log[2]^2*Log[1 + Sqrt[x]])/2 +
 		Log[2]*Log[1 - Sqrt[x]]*Log[1 + Sqrt[x]] - (Log[1 - Sqrt[x]]*Log[1 + Sqrt[x]]^2)/2 + Log[1 + Sqrt[x]]^3/6 - PolyLog[3, (1 - Sqrt[x])/2] -
@@ -821,7 +825,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 				6*I*PolyLog[3, (1 + x)/(1 - x)])
 		*)
 
-	PolyLog[2, (1 + x_Symbol)/(2*x_Symbol)] ->
+	PolyLog[2, (1 + x_Symbol)/(2*x_Symbol)]/; optPolyLog :>
 		(
 		Pi^2/6 +
 		I*Pi*Log[2] -
@@ -837,7 +841,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		PolyLog[2, (1 - x)/(1 + x)]
 		),
 
-	PolyLog[3, 2/(1 - x_Symbol)] :>
+	PolyLog[3, 2/(1 - x_Symbol)]/; optPolyLog :>
 		(
 		Pi^2*Log[2] -
 		3*I*Pi*Log[2]^2 +
@@ -857,7 +861,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	(* some weird formula, a shorter version below ... *)
 
-	PolyLog[3, x_Symbol/(1 + x_Symbol)] :>
+	PolyLog[3, x_Symbol/(1 + x_Symbol)]/; optPolyLog :>
 		(
 		3*Zeta2*Log[1 + x] -
 		Log[-x]*Log[1 + x]^2 +
@@ -870,7 +874,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		Zeta[3]
 		),
 
-	PolyLog[3, Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+	PolyLog[3, Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt && optPolyLog :>
 		(
 		-(Zeta2*Log[1 + Sqrt[x]]) +
 		Log[1 + Sqrt[x]]^3/3 -
@@ -880,7 +884,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		),
 
 
-	PolyLog[3, 2 x_Symbol/(1 + x_Symbol)] :>
+	PolyLog[3, 2 x_Symbol/(1 + x_Symbol)]/; optPolyLog :>
 		(
 		2*Zeta2*Log[2] - Log[2]^3/6 + (Log[2]^2*Log[x])/2 + (Log[2]*Log[x]^2)/2 + (Log[1 - x]*Log[x]^2)/2 + Log[x]^3/6 - Zeta2*Log[1 + x] + (Log[2]^2*Log[1 + x])/2 -
 		Log[2]*Log[1 - x]*Log[1 + x] - Log[2]*Log[x]*Log[1 + x] - Log[1 - x]*Log[x]*Log[1 + x] - Log[x]^2*Log[1 + x] + (Log[2]*Log[1 + x]^2)/2 +
@@ -890,7 +894,7 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		),
 
 
-	PolyLog[3, 2 Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+	PolyLog[3, 2 Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt && optPolyLog :>
 		(
 		2*Zeta2*Log[2] - Log[2]^3/6 - 2*Zeta2*Log[1 + Sqrt[x]] + (Log[2]^2*Log[1 + Sqrt[x]])/2 - (Log[2]*Log[1 + Sqrt[x]]^2)/2 + Log[1 + Sqrt[x]]^3/6 +
 		Zeta2*Log[Sqrt[x]] + (Log[2]^2*Log[Sqrt[x]])/2 - Log[2]*Log[1 - Sqrt[x]]*Log[Sqrt[x]] + Log[1 - Sqrt[x]]*Log[1 + Sqrt[x]]*Log[Sqrt[x]] -
@@ -899,20 +903,20 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		),
 
 
-	PolyLog[3, (1-Sqrt[z_Symbol])/(1 + Sqrt[z_Symbol])]/; optSqrt :>
+	PolyLog[3, (1-Sqrt[z_Symbol])/(1 + Sqrt[z_Symbol])]/; optSqrt && optPolyLog :>
 		(
 		-(Zeta2*Log[2]) + Log[2]^3/3 + 2*Zeta2*Log[1 + Sqrt[z]] - Log[2]*Log[1 + Sqrt[z]]^2 + Log[1 + Sqrt[z]]^3/3 - (Log[2]^2*Log[1 - z])/2 +
 		Log[2]*Log[1 + Sqrt[z]]*Log[1 - z] - (Log[1 + Sqrt[z]]^2*Log[1 - z])/2 - PolyLog[3, (1 - Sqrt[z])/2] + 2*PolyLog[3, 1 - Sqrt[z]] +
 		2*PolyLog[3, (1 + Sqrt[z])^(-1)] - PolyLog[3, (1 + Sqrt[z])/2] - PolyLog[3, 1 - z]/2 - (3*Zeta[3])/4
 		),
 
-	PolyLog[3, x_Symbol/(1 + x_Symbol)] :>
+	PolyLog[3, x_Symbol/(1 + x_Symbol)]/; optPolyLog  :>
 		(
 		-Zeta2 Log[1 + x] - 1/2 Log[x] Log[1 + x]^2 + 1/3 Log[1 + x]^3 -
 		PolyLog[3, -x] - PolyLog[3, 1/(1 + x)] + Zeta[3]
 		),
 
-	PolyLog[4, -x_/(1-x_)] :>
+	PolyLog[4, -x_/(1-x_)]/; optPolyLog  :>
 		(
 		-Log[1 - x]^4/24 -
 		Nielsen[1, 3, x] +
@@ -954,6 +958,9 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	Log[Power[(1-x_Symbol^2),n_Integer]]/; n<0 :>
 		- n Log[1-x^2],
+
+	Log[(n1_Integer?Positive - x_Symbol)/(n2_Integer?Positive - x_Symbol)] /; n1 >= 1 && n2 >= 1 :>
+		Log[n1 - x] - Log[n2 - x],
 
 	Log[-1/x_Symbol] :>
 		-Log[x] + I Pi,
@@ -1030,6 +1037,9 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[-((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2])]/; optSqrt :>
 		Log[-(Sqrt[1 - x] - Sqrt[-x])] - Log[Sqrt[-x]],
 
+	Log[Rational[-1, n_Integer?Positive] ((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol, -1/2])]/; optSqrt :>
+		Log[-(Sqrt[1 - x] - Sqrt[-x])] - Log[n Sqrt[-x]],
+
 	Log[(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2]]/; optSqrt :>
 		Log[(Sqrt[1 - x] + Sqrt[-x])] - Log[Sqrt[-x]],
 
@@ -1050,6 +1060,8 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 
 	Log[-Sqrt[1 - x_Symbol]]/; optSqrt :>
 		Log[Sqrt[1 - x]] + I Pi,
+
+
 
 	Pi^2 :>
 		6 Zeta2,
