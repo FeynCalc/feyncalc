@@ -379,5 +379,14 @@ Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
 	"(I \[Pi])/2 - 3 Log[2] - Log[Sqrt[1 - x] + Sqrt[-x]] - Log[x]/2"},
 {"fcstSimplifyPolyLog-ID116",
 "SimplifyPolyLog[Li2[x], PolyLog -> False]",
-	"PolyLog[2, x]"}
+	"PolyLog[2, x]"},
+{"fcstSimplifyPolyLog-ID117",
+"SimplifyPolyLog[Log[Sqrt[1 - zz] - Sqrt[-zz]]]",
+	"-Log[Sqrt[1 - zz] + Sqrt[-zz]]"},
+{"fcstSimplifyPolyLog-ID118",
+"SimplifyPolyLog[Log[Sqrt[-zz]/(Sqrt[1 - zz] + Sqrt[-zz])]]",
+	"(I \[Pi])/2 - Log[Sqrt[1 - zz] + Sqrt[-zz]] + Log[zz]/2"},
+{"fcstSimplifyPolyLog-ID119",
+"SimplifyPolyLog[Log[Sqrt[1 - zz]/(Sqrt[1 - zz] + Sqrt[-zz])]]",
+	"-Log[Sqrt[1 - zz] + Sqrt[-zz]] + 1/2 Log[1 - zz]"}
 })

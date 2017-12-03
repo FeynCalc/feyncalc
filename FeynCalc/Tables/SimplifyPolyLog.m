@@ -1046,8 +1046,17 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[(Sqrt[-x_Symbol] - Sqrt[1 - x_Symbol])]/; optSqrt :>
 		-Log[(Sqrt[-x] + Sqrt[1 - x])] + I Pi,
 
+	Log[(Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol])]/; optSqrt :>
+		-Log[Sqrt[1 - x] + Sqrt[-x]],
+
 	Log[Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt :>
 		Log[Sqrt[1 - x]] - Log[Sqrt[-x]],
+
+	Log[Sqrt[1 - x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt :>
+		1/2 Log[1-x]- Log[Sqrt[1 - x] + Sqrt[-x]],
+
+	Log[Sqrt[-x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt :>
+		Log[Sqrt[-x]] - Log[Sqrt[1 - x] + Sqrt[-x]],
 
 	Log[Sqrt[-x_Symbol]]/; optSqrt :>
 		(I/2)*Pi + Log[x]/2,
