@@ -97,6 +97,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 													tempvar = Unique[$AL];
 													SUNF[a,b,tempvar]SUNF[tempvar,c,d]),
 					Global`FASUNF[a_,b_,c_] :> SUNF[a,b,c],
+					Global`dSUN[a_,b_,c_] :> SUND[a,b,c],
 					Global`FASUNT :> SUNTF,
 					FeynArts`IndexDelta[a_SUNFIndex, b_SUNFIndex]:> SUNFDelta[a,b],
 					FeynArts`IndexDelta[a_SUNIndex, b_SUNIndex]:> SUNDelta[a,b],
