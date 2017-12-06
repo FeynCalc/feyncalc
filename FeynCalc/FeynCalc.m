@@ -430,7 +430,7 @@ If[ $FCCheckContext,
 		"FADiracMatrix", "FADiracSlash", "FADiracSpinor", "FADiracTrace",
 		"FAFourVector", "FAGS", "FAMetricTensor", "FAPolarizationVector",
 		"FAScalarProduct", "FASUNF", "FASUNT", "ff", "gA", "gA5", "gA6",
-		"gA7", "globalContextAfterLoadingFC", "Gluon", "GraphName",
+		"gA7", "globalContextAfterLoadingFC", "Gluon", "GraphName","dSUN",
 		"Lorentz", "M", "pp", "TJI111e", "$INTC", "$Special", "$SpecialTLI",
 		"fcContextLowerCase", "newObjectsInTheContext",
 		"newObjectsInTheGlobalContext", "whiteListedContextAdditions"
