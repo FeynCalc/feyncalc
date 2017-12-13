@@ -1025,8 +1025,8 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[-x_Symbol/(1-x_Symbol)] :>
 		Log[x] -Log[1-x] + I Pi,
 
-	Log[r_?NumberQ x_]:>
-		Log[r] + Log[x] /;r>0,
+	Log[(r_?NumberQ/; FreeQ[r, Complex]) x_]/;r>0 :>
+		Log[r] + Log[x] ,
 
 	Log[1-Sqrt[x_Symbol]]/; optSqrt :>
 		Log[1-x] - Log[1+Sqrt[x]],
@@ -1058,8 +1058,22 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[Sqrt[-x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt :>
 		Log[Sqrt[-x]] - Log[Sqrt[1 - x] + Sqrt[-x]],
 
+	Log[((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[1-x_Symbol,-1/2])]/; optSqrt :>
+		Log[Sqrt[1-x]-Sqrt[-x]]-Log[Sqrt[1-x]],
+
+
+	Log[((Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[1-x_Symbol,-1/2])]/; optSqrt :>
+		Log[Sqrt[1-x]+Sqrt[-x]]-Log[Sqrt[1-x]],
+
+	Log[Sqrt[- x_Symbol] Power[1-x_Symbol,-1/2]]/; optSqrt :>
+		Log[Sqrt[- x]] - Log[Sqrt[1-x]],
+
+
 	Log[Sqrt[-x_Symbol]]/; optSqrt :>
 		(I/2)*Pi + Log[x]/2,
+
+	Log[-Sqrt[-x_Symbol]]/; optSqrt :>
+		-I Pi/2 + Log[x]/2,
 
 	Log[Sqrt[1 - x_Symbol]]/; optSqrt :>
 		1/2 Log[1 - x],
@@ -1070,6 +1084,26 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Log[-Sqrt[1 - x_Symbol]]/; optSqrt :>
 		Log[Sqrt[1 - x]] + I Pi,
 
+	Log[Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+		Log[Sqrt[x]] - Log[1 + Sqrt[x]],
+
+	Log[(1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+		Log[1-Sqrt[x]] - Log[1+Sqrt[x]],
+
+	Log[(1 + Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+		Log[1+Sqrt[x]] - Log[1-Sqrt[x]],
+
+	Log[1/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+		- Log[1-Sqrt[x]],
+
+	Log[1/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+		- Log[1+Sqrt[x]],
+
+	Log[-(Sqrt[x_Symbol]/(1-Sqrt[x_Symbol]))]/; optSqrt:>
+		Log[-Sqrt[x]]-Log[1-Sqrt[x]],
+
+	Log[(1 - 2 Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+		Log[1 - 2 Sqrt[x]] - Log[1 - Sqrt[x]],
 
 
 	Pi^2 :>
@@ -1085,7 +1119,23 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		Log[z + Sqrt[z^2 - 1]],
 
 	ArcTanh[z_] :>
-		1/2 Log[(z+1)/(z-1)]
+		1/2 Log[(z+1)/(z-1)],
+
+	Log[1-Complex[0,1]] :>
+		(-I/4)*Pi + Log[2]/2,
+
+	Log[1+Complex[0,1]] :>
+		(I/4)*Pi + Log[2]/2,
+
+	PolyLog[3,Complex[Rational[1,2],Rational[1,2]]]:>
+		((21*I)/64)*Pi*Zeta2 + (Zeta2*Log[2])/32 + ((3*I)/32)*Pi*Log[2]^2 + Log[2]^3/48 - PolyLog[3, 1 + I] + (35*Zeta[3])/32,
+
+	PolyLog[3,Complex[1,-1]] ->
+		(3*Zeta2*Log[2])/8 - PolyLog[3, 1 + I] + (35*Zeta[3])/32,
+
+	PolyLog[3,Complex[0,1]] ->
+		((3*I)/16)*Pi*Zeta2 - (3*Zeta[3])/32
+
 };
 
 FCPrint[1,"SimplifyPolyLog.m loaded."];
