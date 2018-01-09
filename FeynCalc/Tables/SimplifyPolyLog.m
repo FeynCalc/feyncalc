@@ -39,8 +39,10 @@ Begin["`SimplifyPolyLog`Private`"]
 SPL=SimplifyPolyLog;
 optSqrt::usage="";
 optPolyLog::usage="";
+optEulerGamma::usage="";
 
 Options[SimplifyPolyLog] = {
+	EulerGamma -> True,
 	PolyLog -> True,
 	Nielsen -> True,
 	Sqrt -> True
@@ -53,6 +55,7 @@ SimplifyPolyLog[expr_, OptionsPattern[]] :=
 
 		optSqrt = OptionValue[Sqrt];
 		optPolyLog = OptionValue[PolyLog];
+		optEulerGamma = OptionValue[EulerGamma];
 
 		tmp = expr;
 
@@ -102,15 +105,11 @@ simplifyArgumentPolyLog[su1_,su2_] :=
 simplifyArgumentPolyLog[su1_,su2_, su3_] :=
 	PolyLog[su1,su2,su3];
 
+polyGammaExpand[PolyGamma[a_,b_]]:=
+	Expand[FunctionExpand[PolyGamma[a,b]] /. EulerGamma->0]/; !optEulerGamma;
 
-funex[PolyGamma[2,2]] :>
-	2 - 2 Zeta[3];
-
-funex[PolyGamma[a_,b_]] :=
-	FCUseCache[polyGammaExpand,{PolyGamma[a,b]}];
-
-polyGammaExpand[PolyGamma[a_,b_], {}]:=
-	Expand[FunctionExpand[PolyGamma[a,b]] /. EulerGamma->0];
+polyGammaExpand[PolyGamma[a_,b_]]:=
+	Expand[FunctionExpand[PolyGamma[a,b]]]/; optEulerGamma;
 
 (*
 	These relations follow from the basic properties of polylogs.
@@ -130,7 +129,7 @@ polyGammaExpand[PolyGamma[a_,b_], {}]:=
 simptab =
 {
 	PolyGamma[a_Integer, b_?NumberQ] :>
-		funex[PolyGamma[a,b]],
+		polyGammaExpand[PolyGamma[a,b]],
 
 	(*The duplication formula *)
 	PolyLog[s_, -Sqrt[x_Symbol]]/; optSqrt && optPolyLog  :>

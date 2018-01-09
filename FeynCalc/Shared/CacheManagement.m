@@ -56,8 +56,7 @@ whiteListNames = {
 	PairContract,
 	FCFastContract,
 	FeynCalc`NPointTo4Point`Private`getDet,
-	FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
-	FeynCalc`SimplifyPolyLog`Private`polyGammaExpand
+	FeynCalc`SimplifyPolyLog`Private`simplifyArgument
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
@@ -116,14 +115,6 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 											$BreitMaison,
 											$Larin}],
 
-			fcFunc === FeynCalc`SimplifyPolyLog`Private`polyGammaExpand,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]

@@ -437,5 +437,11 @@ Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
 	"((3*I)/16)*Pi*Zeta2 - (3*Zeta[3])/32"},
 {"fcstSimplifyPolyLog-ID135",
 "SimplifyPolyLog[Log[I*Sqrt[z/(1 - z)]]]",
-	"Log[I*Sqrt[z/(1 - z)]]"}
+	"Log[I*Sqrt[z/(1 - z)]]"},
+{"fcstSimplifyPolyLog-ID136",
+"SimplifyPolyLog[PolyGamma[0, 3/2], EulerGamma -> False]",
+	"2 - 2 Log[2]"},
+{"fcstSimplifyPolyLog-ID137",
+"SimplifyPolyLog[PolyGamma[0, 3/2]]",
+	"2 - 2 Log[2] - EulerGamma"}
 })
