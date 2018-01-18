@@ -177,7 +177,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "OneLoopSimplify: Applying TID.", FCDoControl->olsVerbose];
-		tmp =  TID[tmp,  q, Dimension -> dim, ChangeDimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis]];
+		tmp =  TID[tmp,  q, Dimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis]];
 		FCPrint[1, "OneLoopSimplify: TID done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 		FCPrint[3, "OneLoopSimplify: After TID: ", tmp, FCDoControl->olsVerbose];
 

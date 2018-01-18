@@ -57,7 +57,6 @@ procanonical[l_][y_,m_] :=
 
 Options[TID] = {
 	ApartFF -> True,
-	ChangeDimension -> D,
 	Check -> True,
 	Collecting -> True,
 	Contract -> True,
@@ -82,7 +81,7 @@ Options[TID] = {
 
 TID[am_ , q_, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
-		res,nres,irrelevant = 0, contractlabel, chd,fds, iter,sp,tp,
+		res,nres,irrelevant = 0, contractlabel, fds, iter,sp,tp,
 		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 		solsList, repSolList, reversedRepIndexList,reducedLoopList,
 		finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli, time, time0, fclcOutput,
@@ -123,7 +122,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 		n 				= OptionValue[Dimension];
 		contractlabel	= OptionValue[Contract];
 		fds 			= OptionValue[FDS];
-		chd 			= OptionValue[ChangeDimension];
 		paveao 			= OptionValue[PaVeAutoOrder];
 		pavear 			= OptionValue[PaVeAutoReduce];
 		genpave 		= OptionValue[GenPaVe];
@@ -301,18 +299,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 			uniqueCanIndexList  = fclcOutput[[4]] /. loopIntegral->Identity;
 
 
-			(* 	Before applying ChangeDimension, check again, that there are no 4-vectors that
-				are not D-dimensional *)
+			(* 	Check that there are no 4-vectors that are not D-dimensional *)
 			If[	FCGetDimensions[Union[Cases[uniqueCanIndexList, _LorentzIndex, Infinity]]]=!={n},
 				Message[TID::failmsg,"The tensor part still contains 4 or D-4 dimensional loop momenta."];
 				Abort[]
 			];
-
-			FCPrint[1,"TID: Applying ChangeDimension.", FCDoControl->tidVerbose];
-			time=AbsoluteTime[];
-			uniqueCanIndexList = ChangeDimension[#, chd, FCI->True]&/@uniqueCanIndexList;
-			FCPrint[1, "TID: Done applying ChangeDimension, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After ChangeDimension: ", uniqueCanIndexList , FCDoControl->tidVerbose];
 
 			(* Here we reduce the unique tensor integrals to scalar integrals *)
 
