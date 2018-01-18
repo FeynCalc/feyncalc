@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QQbar-ElAel                                              *)
+(* :Title: MuAmu-QQbar                                              *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,21 +9,21 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 	
-(* :Summary:  Q Qbar -> El Ael, QCD, total cross section, tree    *)
+(* :Summary:  Mu Amu -> Q Qbar, QCD, total cross section, tree    *)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
 (* ::Title:: *)
-(*Quark-antiquark annihilation into an electron-positron pair*)
+(*Quark-antiquark production in muon-antimuon annihilation*)
 
 
 (* ::Section:: *)
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-description="Q Qbar -> El Ael, QCD, total cross section, tree";
+description="Mu Amu -> Q Qbar, QCD, total cross section, tree";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -50,8 +50,8 @@ MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
 MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
-diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[3, {1}], -F[3, {1}]} -> 
-	{F[2, {1}], -F[2, {1}]}, InsertionLevel -> {Classes}, Model -> "SMQCD",
+diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[2, {2}], -F[2, {2}]} -> 
+	{F[3, {1}], -F[3, {1}]}, InsertionLevel -> {Classes}, Model -> "SMQCD",
 	ExcludeParticles -> {S[_],V[2]}];
 
 Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
@@ -73,22 +73,22 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], SMP["m_u"], 
-	SMP["m_e"], SMP["m_e"]];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_mu"]^2, SMP["m_mu"]^2, 
+	SMP["m_u"]^2, SMP["m_u"]^2];
 
 
 (* ::Section:: *)
 (*Square the amplitude*)
 
 
-ampSquared[0] = 1/(SUNN^2)(amp[0] (ComplexConjugate[amp[0]]))//
+ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 	PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 	DiracSimplify[#,DiracTraceEvaluate->True]&//
-	TrickMandelstam[#,{s,t,u,2SMP["m_u"]^2+2SMP["m_e"]^2}]&//Simplify
+	TrickMandelstam[#,{s,t,u,2SMP["m_u"]^2+2SMP["m_mu"]^2}]&//Simplify
 
 
-ampSquaredMassless[0] = ampSquared[0]//ReplaceAll[#,{SMP["m_u"|"m_e"] -> 0}]&//
+ampSquaredMassless[0] = ampSquared[0]//ReplaceAll[#,{SMP["m_u"|"m_mu"] -> 0}]&//
 	TrickMandelstam[#,{s,t,u,0}]&
 
 
@@ -118,15 +118,21 @@ crossSectionTotal=integral*prefac//PowerExpand//Factor2
 
 
 knownResults = {
-	(2*(t^2 + u^2)*SMP["e"]^4*SMP["e_Q"]^2)/(3*s^2),
-	(4*Pi*SMP["alpha_fs"]^2*SMP["e_Q"]^2)/(9*s)
+	(6*(t^2 + u^2)*SMP["e"]^4*SMP["e_Q"]^2)/(s^2),
+	(4*Pi*SMP["alpha_fs"]^2*SMP["e_Q"]^2)/s
 };
 FCCompareResults[{ampSquaredMasslessSUNN3[0],crossSectionTotal},
 knownResults,
-Text->{"\tCompare to CalcHEP  and to Field, \
-Applications of Perturbative QCD, Eq. 5.1.17:",
+Text->{"\tCompare to CalcHEP and to Field, \
+Applications of Perturbative QCD, Eq. 2.1.15",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+
+
+
+
 
 
 

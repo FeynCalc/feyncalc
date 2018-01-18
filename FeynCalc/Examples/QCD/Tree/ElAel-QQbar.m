@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: ElAel-QQbar                                                      *)
+(* :Title: ElAel-QQbar                                              *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 	
-(* :Summary:  El Ael -> Q Qbar, QCD, matrix element squared, tree             *)
+(* :Summary:  El Ael -> Q Qbar, QCD, total cross section, tree    *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,7 +23,7 @@
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-description="El Ael -> Q Qbar, QCD, matrix element squared, tree";
+description="El Ael -> Q Qbar, QCD, total cross section, tree";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -96,14 +96,35 @@ ampSquaredMasslessSUNN3[0] = ampSquaredMassless[0]/.SUNN->3
 
 
 (* ::Section:: *)
+(*Total cross-section*)
+
+
+integral=Integrate[Simplify[ampSquaredMasslessSUNN3[0]/(s/4) /.
+u-> -s-t],{t,-s,0}]/.SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2
+
+
+prefac=2Pi/(128 Pi^2 s)
+
+
+(* ::Text:: *)
+(*The total cross-section *)
+
+
+crossSectionTotal=integral*prefac//PowerExpand//Factor2
+
+
+(* ::Section:: *)
 (*Check the final results*)
 
 
 knownResults = {
-	(6*(t^2 + u^2)*SMP["e"]^4*SMP["e_Q"]^2)/(s^2)
+	(6*(t^2 + u^2)*SMP["e"]^4*SMP["e_Q"]^2)/(s^2),
+	(4*Pi*SMP["alpha_fs"]^2*SMP["e_Q"]^2)/s
 };
-FCCompareResults[{ampSquaredMasslessSUNN3[0]},{knownResults},
-Text->{"\tCompare to CalcHEP:",
+FCCompareResults[{ampSquaredMasslessSUNN3[0],crossSectionTotal},
+knownResults,
+Text->{"\tCompare to CalcHEP and to Field, \
+Applications of Perturbative QCD, Eq. 2.1.15:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
 

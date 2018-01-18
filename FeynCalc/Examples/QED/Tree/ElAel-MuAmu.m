@@ -121,6 +121,24 @@ ampSquaredPolarizedMassless[0] = ampSquaredPolarized[0]//ReplaceAll[#,{
 
 
 (* ::Section:: *)
+(*Total cross-section*)
+
+
+integral=Integrate[Simplify[ampSquaredMassless2[0]/(s/4) /.
+u-> -s-t],{t,-s,0}]/.SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2
+
+
+prefac=2Pi/(128 Pi^2 s)
+
+
+(* ::Text:: *)
+(*The total cross-section *)
+
+
+crossSectionTotal=integral*prefac//PowerExpand//Factor2
+
+
+(* ::Section:: *)
 (*Check the final results*)
 
 
@@ -129,12 +147,13 @@ knownResults = {
 	SMP["m_mu"]^2 SP[p1,p2]))/(SP[p1+p2])^2//ExpandScalarProduct//
 	ReplaceAll[#,SMP["m_e"]->0]&,
 	(16SMP["e"]^4 (SP[p1,k2]SP[p2,k1]))/(SP[p1+p2])^2,
-	((8SMP["e"]^4/s^2)((t/2)^2+(u/2)^2))
+	((8SMP["e"]^4/s^2)((t/2)^2+(u/2)^2)),(4*Pi*SMP["alpha_fs"]^2)/(3*s)
 };
 FCCompareResults[{ampSquaredMassless1[0],ampSquaredPolarized[0],
-ampSquaredMassless2[0]},knownResults,
+ampSquaredMassless2[0],crossSectionTotal},knownResults,
 Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
-Eqs 5.10, 5.21 and 5.70:",
+Eqs 5.10, 5.21, 5.70 and to Field, \
+Applications of Perturbative QCD, Eq. 2.1.14",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
 

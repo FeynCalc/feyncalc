@@ -66,7 +66,7 @@ done
 #QCD Examples
 
 for exFile in 'QiQibar-QiQibar.m' 'QiQibar-QjQjbar.m' 'QiQi-QiQi.m' 'QiQjbar-QiQjbar.m' 'QiQj-QiQj.m' 'QQbar-GaGa.m' 'QQbar-GlGl.m' \
-'QGl-QGl.m' 'GlGl-QQbar.m' 'GlGl-GlGl.m' 'QQbar-ElAel.m' 'ElAel-QQbar.m' 'GaGl-QQbar.m' 'QGa-GlQ.m' 'QQbar-GaGl.m'
+'QGl-QGl.m' 'GlGl-QQbar.m' 'GlGl-GlGl.m' 'QQbar-ElAel.m' 'QQbar-MuAmu' 'ElAel-QQbar.m' 'MuAmu-QQbar.m' 'GaGl-QQbar.m' 'QGa-GlQ.m' 'QQbar-GaGl.m'
 
 do
   echo
