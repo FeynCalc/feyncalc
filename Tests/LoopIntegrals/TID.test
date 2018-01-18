@@ -808,5 +808,16 @@ m^2 FAD[{q, mA}, {-p + q, mA}] (12 mA^4 - 4 Epsilon mA^4 -
 	4 mA^2 SPD[p, p] + SPD[p, p]^2))/mA^4 - (
 2 m^2 FAD[{q, mA}, {-p + q, Sqrt[GaugeXi] mA}] (mA^4 -
 	2 GaugeXi mA^4 + GaugeXi^2 mA^4 - 2 mA^2 SPD[p, p] -
-	2 GaugeXi mA^2 SPD[p, p] + SPD[p, p]^2))/mA^4"}
+	2 GaugeXi mA^2 SPD[p, p] + SPD[p, p]^2))/mA^4"},
+{"fcstTID-ID24", "TID[((DiracGamma[LorentzIndex[b, d], d] .
+	DiracGamma[Momentum[k + p, d], d] .
+	DiracGamma[LorentzIndex[b, d], d]*
+	FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1]]*
+		FeynAmpDenominator[
+	PropagatorDenominator[Momentum[k, d] + Momentum[p, d], m2]])/
+cw^2), k, Dimension -> d]",
+"((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1]])/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]]) -
+((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m2]])/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]]) -
+((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1], PropagatorDenominator[Momentum[k, d] - Momentum[p, d], m2]]*
+(m1^2 - m2^2 - Pair[Momentum[p, d], Momentum[p, d]]))/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]])"}
 };

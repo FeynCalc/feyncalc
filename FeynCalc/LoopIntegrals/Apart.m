@@ -74,7 +74,8 @@ Options[ApartFF] = {
 	FDS -> True,
 	FeynAmpDenominator -> True,
 	FeynAmpDenominatorCombine -> True,
-	MaxIterations -> Infinity
+	MaxIterations -> Infinity,
+	SetDimensions-> {4,D}
 };
 
 Apart2[y_, OptionsPattern[]] :=
@@ -163,7 +164,8 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		time=AbsoluteTime[];
 		FCPrint[1, "ApartFF: Applying FCApart.", FCDoControl->affVerbose];
 		(*	Apply FCApart to each of the unique loop integrals	*)
-		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless],MaxIterations->OptionValue[MaxIterations]]&,(intsUnique/.loopHead->Identity)];
+		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless],
+			MaxIterations->OptionValue[MaxIterations],SetDimensions->OptionValue[SetDimensions]]&,(intsUnique/.loopHead->Identity)];
 
 		FCPrint[1, "ApartFF: Done applying FCApart, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: After FCApart: ", solsList, FCDoControl->affVerbose];

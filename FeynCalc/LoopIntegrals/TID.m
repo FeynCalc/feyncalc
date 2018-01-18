@@ -198,7 +198,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[	OptionValue[ApartFF],
 			FCPrint[1,"TID: Applying ApartFF.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}];
+			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}, SetDimensions->{4,n}];
 			FCPrint[1, "TID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After ApartFF: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -326,7 +326,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			If[	OptionValue[ApartFF],
 				FCPrint[1,"TID: Applying ApartFF to the list of the reduced integrals.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
-				solsList = ApartFF[#,{q},FCI->True]&/@solsList;
+				solsList = ApartFF[#,{q},FCI->True, SetDimensions->{4,n}]&/@solsList;
 				FCPrint[1, "TID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 				FCPrint[3,"After ApartFF: ", solsList , FCDoControl->tidVerbose]
 			];
@@ -609,7 +609,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 			cancel all the scalar products without doing additional reductions	*)
 		time=AbsoluteTime[];
 
-		sList = Map[ApartFF[(#/.loopIntegral->Identity),{q},FCI->True,FeynAmpDenominatorCombine->False]&,uList];
+		sList = Map[ApartFF[(#/.loopIntegral->Identity),{q},FCI->True,FeynAmpDenominatorCombine->False, SetDimensions->{4,n}]&,uList];
 
 		FCPrint[2,"TID: tidFullReduce: List of unique integrals after cancelling scalar products ", sList,
 			FCDoControl->tidVerbose];
