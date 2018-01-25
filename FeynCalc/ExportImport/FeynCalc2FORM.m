@@ -41,6 +41,12 @@ If set to 4: trace, if set to n: tracen.";
 FeynCalc2FORM::failmsg = "Error! FeynCalc2FORM has encountered a fatal problem and must \
 abort the evaluation. The problem reads: `1`";
 
+FORMAbbreviations::usage =
+"FORMAbbreviations is an option for FeynCalc2FORM. It specifies how special symbols \
+will be abbreviated in the resulting FORM file.
+
+";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -55,6 +61,7 @@ Options[FeynCalc2FORM] = {
 	EpsDiscard -> False,
 	FCVerbose -> False,
 	FinalSubstitutions -> {},
+	FORMAbbreviations -> {"syFC","vFC"},
 	FORMEpilog -> {"print;",".end"},
 	FORMIdStatements -> True,
 	FORMProlog -> "write statistics;",
@@ -105,7 +112,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 
 		holdy = Hold@@
 			{(FeynCalcInternal[y]//DiracGammaExpand//MomentumExpand) /.
-				Pair -> ExpandScalarProduct /.
+				z_Pair -> ExpandScalarProduct[z] /.
 				{Pair[a_,b_]^2 :> (Pair[a,b] . Pair[a,b]) /;
 				!FreeQ[{a,b}, LorentzIndex]
 				}
@@ -164,7 +171,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 
 		(* replace the non-Symbol arguments of LorentzIndex and Momentum by Symbols *)
 		nosyml = Select[Join[momentumlist, lors], Head[#] =!= Symbol &];
-		lm2form = Table[ nosyml[[i]] -> ToExpression[ StringJoin[ "vFC", ToString[i] ] ], {i, Length[nosyml]}];
+		lm2form = Table[ nosyml[[i]] -> ToExpression[ StringJoin[ OptionValue[FORMAbbreviations][[2]], ToString[i] ] ], {i, Length[nosyml]}];
 		FCPrint[2, "FeynCalc2FORM: Replacement table for the non-Symbol arguments of LorentzIndex and Momentum:", lm2form, FCDoControl->fc2fVerbose];
 
 		(* get all other atomic variables *)         (* see p. 725  *)
@@ -207,7 +214,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 			b.a;
 
 		(* construct the list of substitutions for all noatomics *)
-		n2form  = Table[ noatomic[[i]] -> ToExpression[ StringJoin[ "syFC", ToString[i] ] ], {i, Length[noatomic]}];
+		n2form  = Table[ noatomic[[i]] -> ToExpression[ StringJoin[ OptionValue[FORMAbbreviations][[1]], ToString[i] ] ], {i, Length[noatomic]}];
 		FCPrint[2, "FeynCalc2FORM: n2form :", n2form, FCDoControl->fc2fVerbose];
 
 
