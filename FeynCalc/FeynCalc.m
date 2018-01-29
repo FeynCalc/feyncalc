@@ -103,13 +103,14 @@ If[ !ValueQ[Global`$FCCloudTraditionalForm],
 ];
 Remove[Global`$FCCloudTraditionalForm];
 
+If[ !ValueQ[Global`$FCTraditionalFormOutput],
+	FeynCalc`$FCTraditionalFormOutput = False,
+	FeynCalc`$FCTraditionalFormOutput = Global`$FCTraditionalFormOutput
+];
+Remove[Global`$FCTraditionalFormOutput];
+
 If[ !ValueQ[FeynCalc`$FeynArtsDirectory],
 	FeynCalc`$FeynArtsDirectory = FileNameJoin[{FeynCalc`$FeynCalcDirectory, "FeynArts"}]
-];
-
-(*    Load the configuration file    *)
-If[ FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]],
-	Get[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]]
 ];
 
 If[ FeynCalc`$FeynCalcStartupMessages=!=False,
@@ -173,6 +174,11 @@ FCDeclareHeader[file_, type_String:"file"] :=
 	];
 
 End[]
+
+(*    Load the configuration file    *)
+If[ FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]],
+	Get[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]]
+];
 
 (* need to do this first, otherwise $NonComm and $FCTensorList do not get built correctly *)
 boostrappingList = Join[
@@ -268,18 +274,12 @@ Remove["FeynCalc`originalCode"];
 Remove["FeynCalc`repList"];
 Remove["FeynCalc`file"];
 
+(* If necessary, swtich the output format of the current frontend to TraditionalForm *)
+If[	$FCTraditionalFormOutput,
+	CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm
+];
 
-(*Let us check the configuration of Mathematica and give the user some advices, if necessary*)
-If[$FCAdvice,
-	If[ $Notebooks &&
-		Cases[Options[$FrontEndSession, CommonDefaultFormatTypes], Rule["Output", Pattern[FeynCalc`Private`rulopt, Blank[]]] :> FeynCalc`Private`rulopt, Infinity]=!={TraditionalForm},
-		Message[FeynCalc::tfadvice]
-	]
-]
-
-(* From Mathematica 4.0 onwards there is  "Tr" functions;
-	Overload Tr to use TR
-*)
+(* From Mathematica 4.0 onwards there is  "Tr" functions; Overload Tr to use TR *)
 Unprotect[Tr];
 Tr[Pattern[FeynCalc`Private`trarg,BlankSequence[]]] :=
 	TR[FeynCalc`Private`trarg] /; !FreeQ[{FeynCalc`Private`trarg}, FeynCalc`Package`TrFeynCalcObjects];

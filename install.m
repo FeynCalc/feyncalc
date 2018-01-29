@@ -155,16 +155,17 @@ InstallFeynCalcQuiet[]:=
 
 InstallFeynCalc[OptionsPattern[]]:=
 	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir,
-				strDisableWarning,strFeynArts,FCGetUrl,
-				strOverwriteFCdit, faInstalled, zipDir, strEnableTraditionalForm},
+				strDisableWarning,strFeynArts,FCGetUrl, configFileProlog,
+				strOverwriteFCdit, faInstalled, zipDir, strEnableTraditionalForm,
+				useTraditionalForm, configFile},
 
 	If[OptionValue[InstallFeynCalcDevelopmentVersion],
-		gitzip = OptionValue[FeynCalcDevelopmentVersionLink];
-		zipDir = "feyncalc-master",
-		gitzip = OptionValue[FeynCalcStableVersionLink];
-		zipDir = "feyncalc-hotfix-stable"
+		gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
+		gitzip = OptionValue[FeynCalcStableVersionLink]
 	];
+
 	faInstalled=False;
+	useTraditionalForm=False;
 
 	packageName = "FeynCalc";
 	packageDir = OptionValue[InstallFeynCalcTo];
@@ -178,8 +179,9 @@ in Mathematica 8 and 9. This setting is harmless and can be always undone via \
 strEnableTraditionalForm="FeynCalc makes an extensive use of Mathematica's typesetting capabilities to \
 format the output in a nice and easily readable manner. However, the built-in typesetting is available \
 only if the format type of new output cells is set to TraditionalForm. The default value is StandardForm. \
-This can be always changed via Edit -> Preferences -> Evaluation -> Format type of new output cells. Should \
-we now set it to TraditionalForm?";
+Do you want to allow FeynCalc to change the default output format to TraditionalForm whenever it is loaded? \
+This will only affect the current FeynCalc front end session and will not influence any subsequent Mathematica \
+sessions, i.e. the changes are not persistent.";
 
 strFeynArts="Do you want to install FeynArts from "<> OptionValue[InstallFeynArts,FeynArtsMirrorLink] <> "? FeynArts is a Feynman diagram \
 generator which is currently developed by Thomas Hahn (www.feynarts.de). It is not a part of FeynCalc but it \
@@ -189,6 +191,9 @@ inside your FeynCalc installation.";
 strOverwriteFCdit="Looks like FeynCalc is already installed. Do you want to replace the content \
 of " <> packageDir <> " with the downloaded version of FeynCalc? If you are using any custom configuration \
 files or add-ons that are located in that directory, please backup them in advance.";
+
+configFileProlog ="(*Here you can put some commands and settings to be evaluated on every start of FeynCalc. \n
+This allows you to customize your FeynCalc installation to fit your needs best.*)";
 
 	If[$VersionNumber < 8,
 		Message[InstallFeynCalc::notcomp];
@@ -211,7 +216,7 @@ files or add-ons that are located in that directory, please backup them in advan
 
 			Null,
 			If[ ChoiceDialog[strOverwriteFCdit,{"Yes, overwrite the " <> packageName <>" directory"->True,
-				"No! I need to do a backup first."->False}],
+				"No, I need to do a backup first. Abort installation."->False}, WindowFloating->True, WindowTitle->"Existing FeynCalc Installation detected"],
 				Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
 				Abort[]
 			]
@@ -225,28 +230,48 @@ files or add-ons that are located in that directory, please backup them in advan
 		WriteString["stdout", "Downloading FeynCalc from ", gitzip," ..."];
 		tmpzip=FCGetUrl[gitzip];
 	];
-	unzipDir= tmpzip<>".dir";
-	WriteString["stdout", "done! \n"];
+
+	If[tmpzip===$Failed,
+		WriteString["stdout", "\nFailed to download FeynCalc. Please check your interent connection.\nInstallation aborted!"];
+		Abort[],
+
+		unzipDir= tmpzip<>".dir";
+		WriteString["stdout", "done! \n"];
+	];
 
 	(* Extract to the content	*)
 	WriteString["stdout", "FeynCalc zip file was saved to ", tmpzip,".\n"];
 	WriteString["stdout", "Extracting FeynCalc zip file to ", unzipDir, " ..."];
-	ExtractArchive[tmpzip, unzipDir];
-	WriteString["stdout", "done! \n"];
 
-	(* Delete the downloaded file	*)
-	If[ $PathToFCArc==="",
-		Quiet@DeleteFile[tmpzip];
+	If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
+		WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
+		Abort[],
+		WriteString["stdout", "done! \n"];
+		(* Delete the downloaded file	*)
+		If[ $PathToFCArc==="",
+			Quiet@DeleteFile[tmpzip];
+		]
 	];
 
-
+	WriteString["stdout", "Recognizing the directory structure..."];
+	zipDir = FileNames["FeynCalc.m", unzipDir, Infinity];
+	If[ Length[zipDir]===1,
+		zipDir = Last[FileNameSplit[DirectoryName[zipDir[[1]]]]];
+		WriteString["stdout", "done! \n"],
+		WriteString["stdout", "\nFailed to recognize the directory structure of the downloaded zip file. \nInstallation aborted!"];
+		Abort[]
+	];
 
 	(* Move the files to the final destination	*)
 	WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];
-	CopyDirectory[FileNameJoin[{unzipDir,zipDir,"FeynCalc"}],packageDir];
-	WriteString["stdout", "done! \n"];
-	(* Delete the extracted archive *)
-	Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
+
+	If[	CopyDirectory[FileNameJoin[{unzipDir,zipDir}],packageDir]===$Failed,
+		WriteString["stdout", "\nFailed to copy "  <>packageName<>" to ", packageDir <>". \nInstallation aborted!"];
+		Abort[],
+		WriteString["stdout", "done! \n"];
+		(* Delete the extracted archive *)
+		Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
+	];
 
 	(* Activate the documentation	*)
 	WriteString["stdout", "Setting up the help system ... "];
@@ -258,7 +283,7 @@ files or add-ons that are located in that directory, please backup them in advan
 		SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
 
 		Null,
-		If[ ChoiceDialog[strDisableWarning],
+		If[ ChoiceDialog[strDisableWarning, WindowFloating->True, WindowTitle->"Documentation system"],
 			SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
 		]
 	];
@@ -267,17 +292,22 @@ files or add-ons that are located in that directory, please backup them in advan
 	WriteString["stdout", "Setting up the format type of new output cells ... "];
 	If[ OptionValue[AutoEnableTraditionalForm],
 
-		SetOptions[$FrontEnd, CommonDefaultFormatTypes -> {"Output" -> TraditionalForm}],
-
+		useTraditionalForm = True,
 		Null,
-		If[ ChoiceDialog[strEnableTraditionalForm],
-			SetOptions[$FrontEnd, CommonDefaultFormatTypes -> {"Output" -> TraditionalForm}]
+		If[ ChoiceDialog[strEnableTraditionalForm, WindowFloating->True, WindowTitle->"TraditionalForm output"],
+			useTraditionalForm = True
 		]
 	];
+
+	WriteString["stdout", "done! \n"];
 
 	(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
 	RebuildPacletData[];
 
+	(* Generate FCConfig.m	*)
+	WriteString["stdout", "Creating the configuration file ... "];
+	configFile = StringJoin[configFileProlog, "\n\n(* Activate TraditionalForm output for each FeynCalc session *) \n$FCTraditionalFormOutput="<>ToString[useTraditionalForm]<>";"];
+	Export[FileNameJoin[{packageDir,"FCConfig.m"}], configFile, "Text"];
 	WriteString["stdout", "done! \n"];
 
 	If[ OptionValue[AutoInstallFeynArts],
@@ -285,7 +315,7 @@ files or add-ons that are located in that directory, please backup them in advan
 		faInstalled=True;
 		InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]],
 		Null,
-		If[ ChoiceDialog[strFeynArts],
+		If[ ChoiceDialog[strFeynArts, WindowFloating->True, WindowTitle->"Install FeynArts"],
 			faInstalled=True;
 			InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]]
 		]

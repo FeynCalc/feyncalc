@@ -71,12 +71,6 @@ FC::usage =
 "FC changes the output format to FeynCalcForm. \
 To change to InputForm use FI.";
 
-$FCCheckProgress::usage =
-"If set to True, some selected functions will display a progress monitor
-during their evaluation. While this can be useful for long computations,
-on short expressions the progress bars make evaluating slightly slower.
-By default $FCCheckProgress is set to False.";
-
 $FCCheckContext::usage =
 "If set to True, FeynCalc will try to detect unwanted leakage of internal \
 objects into the Global or FeynCalc contexts. The default value is False,
@@ -84,9 +78,20 @@ however $FCCheckContext will be automatically enabled in the development
 version.";
 
 $FCCloudTraditionalForm::usage=
-"$FCCloudTraditionalFormetermines whether the the cell output will be done \
+"$FCCloudTraditionalForm determines whether the the cell output will be done \
 in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting
 $Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
+
+$FCTraditionalFormOutput::usage=
+"The boolean setting of $FCTraditionalFormOutput determines which \
+output format type should be used in the notebook front end when \
+FeynCalc is loaded. If set to True, FeynCalc will activate the \
+TraditionalForm output. Otherwise, the StandardForm output \
+(Mathematica's default) will be used. This setting only changes \
+the output format of the current notebook, i.e. it is not persistent \
+and will not modify the global options of Mathematica. If unsure, it
+is recommended to set $FCTraditionalFormOutput to True, so that you \
+can benefit from the nice FeynCalc typesetting for various QFT quantities.";
 
 $FeynCalcStartupMessages::usage=
 "$FeynCalcStartupMessages specifies whether some additional information about \
@@ -321,6 +326,16 @@ FCGetPauliSigmaScheme::usage =
 "FCGetPauliSigmaScheme[] shows currently used scheme for handling Pauli
 matrices in D-1 dimensions.";
 
+FCEnableTraditionalFormOutput::usage =
+"FCEnableTraditionalFormOutput[] sets the output format of the current
+FrontEnd to TraditionalForm. The setting is not persistent, such that
+it does not influence any subequent Mathematica FrontEnd sessions.";
+
+FCDisableTraditionalFormOutput::usage =
+"FCDisableTraditionalFormOutput[] sets the output format of the current
+FrontEnd to StandardForm. The setting is not persistent, such that
+it does not influence any subequent Mathematica FrontEnd sessions.";
+
 
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
@@ -350,7 +365,6 @@ $Containers				= {};
 $Covariant				= False;
 $DisableMemSet 			= False;
 $DistributiveFunctions	= {Conjugate, Transpose};
-$FCCheckProgress		= False;
 
 $FCS = {
 	"CDr",
@@ -440,6 +454,11 @@ FeynCalc`Package`MetricT = 1;
 FeynCalc`Package`MetricS = -1;
 FeynCalc`Package`PauliSigmaScheme = "None";
 
+FCEnableTraditionalFormOutput[]:=
+	(CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm;);
+
+FCDisableTraditionalFormOutput[]:=
+	(CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = StandardForm; );
 
 FCSetPauliSigmaScheme[s_String]:=
 	If[	MatchQ[s,"None"|"Naive"],
