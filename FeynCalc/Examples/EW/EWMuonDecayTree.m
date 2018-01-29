@@ -46,7 +46,7 @@ InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 topMuonDecayTree = CreateTopologies[0, 1 -> 3];
 diagsMuonDecayTree = InsertFields[topMuonDecayTree, {F[2, {2}]} -> {F[2,
 		{1}],-F[1,{1}],F[1,{2}]}, InsertionLevel -> {Classes},
-		Model -> "UnitarySM",GenericModel->"UnitaryLorentz"];
+		Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
 Paint[diagsMuonDecayTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
 
 

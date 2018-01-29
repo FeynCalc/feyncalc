@@ -46,7 +46,7 @@ InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 topElNuScattering = CreateTopologies[0, 2 -> 2];
 diagsElNuScatteringTree = InsertFields[topElNuScattering, {F[2,
 		{1}],F[1, {2}]} -> {F[1,{1}],F[2,{2}]}, InsertionLevel -> {Classes},
-		Model -> "UnitarySM",GenericModel->"UnitaryLorentz"];
+		Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
 Paint[diagsElNuScatteringTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
 
 

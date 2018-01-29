@@ -53,7 +53,7 @@ InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 topQuarkNuScattering = CreateTopologies[0, 2 -> 2];
 diagsQuarkNuScatteringTree = InsertFields[topQuarkNuScattering, 
 {F[4,{1,1}],F[1,{2}]} -> {F[3,{1,1}],F[2,{2}]}, InsertionLevel -> {Classes},
-Model -> "UnitarySM",GenericModel->"UnitaryLorentz"];
+Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
 Paint[diagsQuarkNuScatteringTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
 
 
