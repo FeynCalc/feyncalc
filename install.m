@@ -154,7 +154,7 @@ InstallFeynCalcQuiet[]:=
 	];
 
 InstallFeynCalc[OptionsPattern[]]:=
-	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir,
+	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir, fullPath,
 				strDisableWarning,strFeynArts,FCGetUrl, configFileProlog,
 				strOverwriteFCdit, faInstalled, zipDir, strEnableTraditionalForm,
 				useTraditionalForm, configFile},
@@ -256,6 +256,7 @@ This allows you to customize your FeynCalc installation to fit your needs best.*
 	WriteString["stdout", "Recognizing the directory structure..."];
 	zipDir = FileNames["FeynCalc.m", unzipDir, Infinity];
 	If[ Length[zipDir]===1,
+		fullPath = DirectoryName[zipDir[[1]]];
 		zipDir = Last[FileNameSplit[DirectoryName[zipDir[[1]]]]];
 		WriteString["stdout", "done! \n"],
 		WriteString["stdout", "\nFailed to recognize the directory structure of the downloaded zip file. \nInstallation aborted!"];
@@ -265,8 +266,8 @@ This allows you to customize your FeynCalc installation to fit your needs best.*
 	(* Move the files to the final destination	*)
 	WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];
 
-	If[	CopyDirectory[FileNameJoin[{unzipDir,zipDir}],packageDir]===$Failed,
-		WriteString["stdout", "\nFailed to copy "  <>packageName<>" to ", packageDir <>". \nInstallation aborted!"];
+	If[	CopyDirectory[fullPath,packageDir]===$Failed,
+		WriteString["stdout", "\nFailed to copy "  <>fullPath<>" to ", packageDir <>". \nInstallation aborted!"];
 		Abort[],
 		WriteString["stdout", "done! \n"];
 		(* Delete the extracted archive *)
