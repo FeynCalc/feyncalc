@@ -79,6 +79,7 @@ If[ !ValueQ[Global`$FCCloudTraditionalForm],
 	Remove[Global`$FCCloudTraditionalForm]
 ];
 
+
 If[ !ValueQ[FeynCalc`$FeynArtsDirectory],
 	FeynCalc`$FeynArtsDirectory = FileNameJoin[{FeynCalc`$FeynCalcDirectory, "FeynArts"}]
 ];
@@ -87,6 +88,12 @@ If[ !ValueQ[FeynCalc`$FeynArtsDirectory],
 If[ FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]],
 	Get[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]]
 ];
+
+If[ !ValueQ[Global`$FCTraditionalFormOutput],
+	FeynCalc`$FCTraditionalFormOutput = False,
+	FeynCalc`$FCTraditionalFormOutput = Global`$FCTraditionalFormOutput
+];
+Remove[Global`$FCTraditionalFormOutput]
 
 If[ Global`$FeynCalcStartupMessages=!=False,
 	PrintTemporary[Style["Loading FeynCalc from "<>
@@ -377,6 +384,27 @@ FCDeclareHeader::usage =
 objects inside an .m file in the same manner as it is done in
 the JLink package. It may be used by FeynCalc addons."
 
+FCEnableTraditionalFormOutput::usage =
+"FCEnableTraditionalFormOutput[] sets the output format of the current
+FrontEnd to TraditionalForm. The setting is not persistent, such that
+it does not influence any subequent Mathematica FrontEnd sessions.";
+
+FCDisableTraditionalFormOutput::usage =
+"FCDisableTraditionalFormOutput[] sets the output format of the current
+FrontEnd to StandardForm. The setting is not persistent, such that
+it does not influence any subequent Mathematica FrontEnd sessions.";
+
+$FCTraditionalFormOutput::usage=
+"The boolean setting of $FCTraditionalFormOutput determines which \
+output format type should be used in the notebook front end when \
+FeynCalc is loaded. If set to True, FeynCalc will activate the \
+TraditionalForm output. Otherwise, the StandardForm output \
+(Mathematica's default) will be used. This setting only changes \
+the output format of the current notebook, i.e. it is not persistent \
+and will not modify the global options of Mathematica. If unsure, it
+is recommended to set $FCTraditionalFormOutput to True, so that you \
+can benefit from the nice FeynCalc typesetting for various QFT quantities.";
+
 Begin["`Private`"]
 
 TarcerDialogText = "TARCER*.mx file not found or damaged. Creating a new \
@@ -494,6 +522,12 @@ DOT = Dot;
 	In the context of the packages, $ContextPath is typically
 	{"System`", "FeynCalc`"}.
 	*)
+
+FCEnableTraditionalFormOutput[]:=
+	(CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm;);
+
+FCDisableTraditionalFormOutput[]:=
+	(CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = StandardForm; );
 
 SetAttributes[FCPrint, HoldRest];
 
@@ -637,13 +671,10 @@ Get/@listMisc;
 
 EndPackage[];
 
-(*Let us check the configuration of Mathematica and give the user some advices, if necessary*)
-If[$FCAdvice,
-	If[ $Notebooks &&
-		Cases[Options[$FrontEndSession, CommonDefaultFormatTypes], Rule["Output", Pattern[FeynCalc`Private`rulopt, Blank[]]] :> FeynCalc`Private`rulopt, Infinity]=!={TraditionalForm},
-		Message[FeynCalc::tfadvice]
-	]
-]
+(* If necessary, swtich the output format of the current frontend to TraditionalForm *)
+If[	$FCTraditionalFormOutput,
+	CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm
+];
 
 (* From Mathematica 4.0 onwards there is  "Tr" functions;
 	Overload Tr to use TR
