@@ -43,6 +43,7 @@ Options[FCDiracIsolate] = {
 	FCE -> False,
 	FCVerbose -> False,
 	Factoring -> Factor,
+	FermionicChain -> False,
 	Head -> FCGV["DiracChain"],
 	Isolate -> False,
 	IsolateFast -> False,
@@ -179,13 +180,18 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			res = res //. head[x_DiracTrace y_.] :> x head[y];
 		];
 
+		If[	!OptionValue[FermionicChain],
+			res = res /. DOT->holdDOT //. head[x_FermionicChain y_.] :> x head[y] //.
+			head[holdDOT[x__] y_.]/; !FreeQ[{x},FermionicChain] :> holdDOT[x] head[y] /. holdDOT -> DOT;
+		];
+
 		If[	!OptionValue[DiracGamma],
-			res = res //. head[x_DiracGamma y_.] :> x head[y] //.
-			head[DOT[x__] y_.]/; FreeQ[{x},Spinor] && !FreeQ[{x},DiracGamma] :> DOT[x] head[y];
+			res = res /. DOT->holdDOT //. head[x_DiracGamma y_.] :> x head[y] //.
+			head[holdDOT[x__] y_.]/; FreeQ[{x},Spinor] && !FreeQ[{x},DiracGamma] :> holdDOT[x] head[y]  /. holdDOT -> DOT;
 		];
 
 		If[	OptionValue[Spinor]===False,
-			res = res //. head[DOT[x__] y_.]/; !FreeQ[{x},Spinor] :> DOT[x] head[y],
+			res = res /. DOT->holdDOT //. head[holdDOT[x__] y_.]/; !FreeQ[{x},Spinor] :> holdDOT[x] head[y]  /. holdDOT -> DOT,
 
 
 			If[	OptionValue[Spinor]===Join,
@@ -195,6 +201,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			]
 
 		];
+
 
 		res = res //. head[x_]/; FreeQ2[x,headsList] :> x;
 

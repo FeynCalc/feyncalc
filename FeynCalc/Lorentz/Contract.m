@@ -78,7 +78,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 		FCPrint[1,"Contract: Contract3: Entering.", FCDoControl->cnVerbose];
 		FCPrint[3,"Contract: Contract3: Entering with:", expr, FCDoControl->cnVerbose];
 
-		If[ !FreeQ2[ex, {DiracGamma,Eps}],
+		If[ !FreeQ2[ex, {DiracGamma,FermionicChain,Eps}],
 			FCPrint[1,"Contract: Contract3: Expression contains DiracGamma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
 			Return[Contract[ex, FCI->True, Contract3 -> False,opts]]
 		];

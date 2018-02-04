@@ -148,7 +148,10 @@ MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3, i6]"},
 {"fcstContractContractionsIn4dims-ID29","Contract[Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c],
 	LorentzIndex[d]]*FV[p, a]*FV[p + q, b]] // FCE","LC[c, d][p, q]"},
 {"fcstContractContractionsIn4dims-ID30","Contract[FV[p1 + p2 + p3 + p4, i] FV[q1 + q2 + q3 + q4, i],
-ExpandScalarProduct -> False] // FCE","SP[p1 + p2 + p3 + p4, q1 + q2 + q3 + q4]"}
+ExpandScalarProduct -> False] // FCE","SP[p1 + p2 + p3 + p4, q1 + q2 + q3 + q4]"},
+{"fcstContractContractionsIn4dims-ID31","FCE[Contract[
+FermionicChain[GA[mu].(GS[p] + m).GA[nu], DiracIndex[i],
+	DiracIndex[j]] FV[p, mu]]]","FCHN[GS[p].(m + GS[p]).GA[nu], i, j]"}
 };
 
 Tests`Lorentz`fcstContractDDims = {

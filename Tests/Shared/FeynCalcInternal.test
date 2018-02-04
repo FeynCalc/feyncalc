@@ -211,7 +211,107 @@ PropagatorDenominator[-Momentum[p] + Momentum[q1], m]]"},
 	{"fcstFeynCalcInternal-ID85", "FCI[SO[a]]", "Pair[Momentum[a], Momentum[OPEDelta]]"},
 	{"fcstFeynCalcInternal-ID86", "FCI[SOD[a]]", "Pair[Momentum[a, D], Momentum[OPEDelta, D]]"},
 	{"fcstFeynCalcInternal-ID87", "FCI[PropagatorDenominator[Momentum[p,D], m]]", "PropagatorDenominator[Momentum[p, D], m]"},
-	{"fcstFeynCalcInternal-ID88", "FCI[PropagatorDenominator[Momentum[p + q], m]]", "PropagatorDenominator[Momentum[p + q], m]"}
+	{"fcstFeynCalcInternal-ID88", "FCI[PropagatorDenominator[Momentum[p + q], m]]", "PropagatorDenominator[Momentum[p + q], m]"},
+{"fcstFeynCalcInternal-ID89", "DIDelta[i,j]//FCI",
+"DiracIndexDelta[DiracIndex[i], DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID90", "DIDelta[i,2]//FCI",
+"DiracIndexDelta[DiracIndex[i], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternal-ID91", "DIDelta[1,2]//FCI",
+"DiracIndexDelta[ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternal-ID92", "DIDelta[2,2]//FCI",
+"DiracIndexDelta[ExplicitDiracIndex[2], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternal-ID93", "DIDelta[i,i]//FCI",
+"DiracIndexDelta[DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternal-ID94", "FCHN[GA[mu],i,j]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID95", "FCHN[GA[mu],1,j]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID96", "FCHN[GA[mu],3,1]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternal-ID97", "FCHN[GA[mu],3,3]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternal-ID98", "FCHN[GA[mu],1,2]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternal-ID99", "FCHN[GA[mu],i,i]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+DiracIndex[i]]"},
+{"fcstFeynCalcInternal-ID100", "FCHN[GA[mu].GSD[p],i,j]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID101", "FCHN[GA[mu].GSD[p],1,j]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID102", "FCHN[GA[mu].GSD[p],3,1]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
+ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternal-ID103", "FCHN[GA[mu].GSD[p],3,3]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
+ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternal-ID104", "FCHN[GA[mu].GSD[p],1,2]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], \
+ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternal-ID105", "FCHN[GA[mu].GSD[p],i,i]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternal-ID106",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],1,j]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID107",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,1]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternal-ID108",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternal-ID109",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],1,2]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternal-ID110",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternal-ID111",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],i,i]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternal-ID112", "FCHN[Spinor[Momentum[p],m],i]//FCI",
+	"FermionicChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
+{"fcstFeynCalcInternal-ID113",
+"FCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], Spinor[Momentum[p], m, 1], \
+DiracIndex[j]]"},
+{"fcstFeynCalcInternal-ID114",
+"FCHN[GA[mu].GSD[p],i,Spinor[Momentum[p],m]]//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], Spinor[Momentum[p], m, \
+1]]"},
+{"fcstFeynCalcInternal-ID115",
+"FCHN[GA[mu].GSD[p],Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]\
+]//FCI", "FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], Spinor[Momentum[p1], m1, 1], \
+Spinor[Momentum[p2], m2, 1]]"},
+{"fcstFeynCalcInternal-ID116",
+"FCHN[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]//FCI",
+"FermionicChain[1, Spinor[Momentum[p1], m1, 1], \
+Spinor[Momentum[p2], m2, 1]]"}
 
 };
 
@@ -409,7 +509,116 @@ Tests`Shared`fcstFeynCalcInternalDouble = {
 	{"fcstFeynCalcInternalDouble-ID85", "FCI[FCI[SO[a]]]", "Pair[Momentum[a], Momentum[OPEDelta]]"},
 	{"fcstFeynCalcInternalDouble-ID86", "FCI[FCI[SOD[a]]]", "Pair[Momentum[a, D], Momentum[OPEDelta, D]]"},
 	{"fcstFeynCalcInternalDouble-ID87", "FCI[FCI[PropagatorDenominator[Momentum[p,D], m]]]", "PropagatorDenominator[Momentum[p, D], m]"},
-	{"fcstFeynCalcInternalDouble-ID88", "FCI[FCI[PropagatorDenominator[Momentum[p + q], m]]]", "PropagatorDenominator[Momentum[p + q], m]"}
+	{"fcstFeynCalcInternalDouble-ID88", "FCI[FCI[PropagatorDenominator[Momentum[p + q], m]]]", "PropagatorDenominator[Momentum[p + q], m]"},
+{"fcstFeynCalcInternalDouble-ID89", "DIDelta[i,j]//FCI//FCI",
+"DiracIndexDelta[DiracIndex[i], DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID90", "DIDelta[i,2]//FCI//FCI",
+"DiracIndexDelta[DiracIndex[i], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalDouble-ID91", "DIDelta[1,2]//FCI//FCI",
+"DiracIndexDelta[ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalDouble-ID92", "DIDelta[2,2]//FCI//FCI",
+"DiracIndexDelta[ExplicitDiracIndex[2], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalDouble-ID93", "DIDelta[i,i]//FCI//FCI",
+"DiracIndexDelta[DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternalDouble-ID94", "FCHN[GA[mu],i,j]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID95", "FCHN[GA[mu],1,j]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID96", "FCHN[GA[mu],3,1]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternalDouble-ID97", "FCHN[GA[mu],3,3]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalDouble-ID98", "FCHN[GA[mu],1,2]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalDouble-ID99", "FCHN[GA[mu],i,i]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+DiracIndex[i]]"},
+{"fcstFeynCalcInternalDouble-ID100",
+"FCHN[GA[mu].GSD[p],i,j]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID101",
+"FCHN[GA[mu].GSD[p],1,j]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID102",
+"FCHN[GA[mu].GSD[p],3,1]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
+ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternalDouble-ID103",
+"FCHN[GA[mu].GSD[p],3,3]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
+ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalDouble-ID104",
+"FCHN[GA[mu].GSD[p],1,2]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], \
+ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalDouble-ID105",
+"FCHN[GA[mu].GSD[p],i,i]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternalDouble-ID106",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],1,j]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID107",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,1]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternalDouble-ID108",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalDouble-ID109",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],1,2]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalDouble-ID110",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalDouble-ID111",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],i,i]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternalDouble-ID112",
+"FCHN[Spinor[Momentum[p],m],i]//FCI//FCI",
+"FermionicChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
+{"fcstFeynCalcInternalDouble-ID113",
+"FCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], Spinor[Momentum[p], m, 1], \
+DiracIndex[j]]"},
+{"fcstFeynCalcInternalDouble-ID114",
+"FCHN[GA[mu].GSD[p],i,Spinor[Momentum[p],m]]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], Spinor[Momentum[p], m, \
+1]]"},
+{"fcstFeynCalcInternalDouble-ID115",
+"FCHN[GA[mu].GSD[p],Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]\
+]//FCI//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], Spinor[Momentum[p1], m1, 1], \
+Spinor[Momentum[p2], m2, 1]]"},
+{"fcstFeynCalcInternalDouble-ID116",
+"FCHN[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]\
+//FCI//FCI",
+"FermionicChain[1, Spinor[Momentum[p1], m1, 1], \
+Spinor[Momentum[p2], m2, 1]]"}
 
 };
 
@@ -605,7 +814,122 @@ Tests`Shared`fcstFeynCalcInternalTriple = {
 	{"fcstFeynCalcInternalTriple-ID84.1", "FCI[FCE[FCI[SPE[a, b]]]]", "Pair[Momentum[a, D-4], Momentum[b, D-4]]"},
 	{"fcstFeynCalcInternalTriple-ID85", "FCI[FCE[FCI[SO[a]]]]", "Pair[Momentum[a], Momentum[OPEDelta]]"},
 	{"fcstFeynCalcInternalTriple-ID86", "FCI[FCE[FCI[SOD[a]]]]", "Pair[Momentum[a, D], Momentum[OPEDelta, D]]"},
-	{"fcstFeynCalcInternalTriple-ID87", "FCI[FCE[FCI[PropagatorDenominator[Momentum[p,D], m]]]]", "PropagatorDenominator[Momentum[p, D], m]"}
+	{"fcstFeynCalcInternalTriple-ID87", "FCI[FCE[FCI[PropagatorDenominator[Momentum[p,D], m]]]]", "PropagatorDenominator[Momentum[p, D], m]"},
+{"fcstFeynCalcInternalTriple-ID88", "DIDelta[i,j]//FCI//FCE//FCI",
+"DiracIndexDelta[DiracIndex[i], DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID89", "DIDelta[i,2]//FCI//FCE//FCI",
+"DiracIndexDelta[DiracIndex[i], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalTriple-ID90", "DIDelta[1,2]//FCI//FCE//FCI",
+"DiracIndexDelta[ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalTriple-ID91", "DIDelta[2,2]//FCI//FCE//FCI",
+"DiracIndexDelta[ExplicitDiracIndex[2], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalTriple-ID92", "DIDelta[i,i]//FCI//FCE//FCI",
+"DiracIndexDelta[DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternalTriple-ID93",
+"FCHN[GA[mu],i,j]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID94",
+"FCHN[GA[mu],1,j]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID95",
+"FCHN[GA[mu],3,1]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternalTriple-ID96",
+"FCHN[GA[mu],3,3]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalTriple-ID97",
+"FCHN[GA[mu],1,2]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalTriple-ID98",
+"FCHN[GA[mu],i,i]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+DiracIndex[i]]"},
+{"fcstFeynCalcInternalTriple-ID99",
+"FCHN[GA[mu].GSD[p],i,j]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID100",
+"FCHN[GA[mu].GSD[p],1,j]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID101",
+"FCHN[GA[mu].GSD[p],3,1]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
+ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternalTriple-ID102",
+"FCHN[GA[mu].GSD[p],3,3]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
+ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalTriple-ID103",
+"FCHN[GA[mu].GSD[p],1,2]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], \
+ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalTriple-ID104",
+"FCHN[GA[mu].GSD[p],i,i]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternalTriple-ID105",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],1,j]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[1], DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID106",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,1]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
+{"fcstFeynCalcInternalTriple-ID107",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalTriple-ID108",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],1,2]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
+{"fcstFeynCalcInternalTriple-ID109",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
+{"fcstFeynCalcInternalTriple-ID110",
+"FCHN[GA[mu].(m+GS[p]).GA[nu],i,i]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
+DiracIndex[i], DiracIndex[i]]"},
+{"fcstFeynCalcInternalTriple-ID111",
+"FCHN[Spinor[Momentum[p],m],i]//FCI//FCE//FCI",
+"FermionicChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
+{"fcstFeynCalcInternalTriple-ID112",
+"FCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], Spinor[Momentum[p], m, 1], \
+DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID113",
+"FCHN[GA[mu].GSD[p],i,Spinor[Momentum[p],m]]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], DiracIndex[i], Spinor[Momentum[p], m, \
+1]]"},
+{"fcstFeynCalcInternalTriple-ID114",
+"FCHN[GA[mu].GSD[p],Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]\
+]//FCI//FCE//FCI",
+"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[Momentum[p, D], D], Spinor[Momentum[p1], m1, 1], \
+Spinor[Momentum[p2], m2, 1]]"},
+{"fcstFeynCalcInternalTriple-ID115",
+"FCHN[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]\
+//FCI//FCE//FCI",
+"FermionicChain[1, Spinor[Momentum[p1], m1, 1], \
+Spinor[Momentum[p2], m2, 1]]"}
 };
 
 

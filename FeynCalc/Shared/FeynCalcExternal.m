@@ -38,6 +38,7 @@ Begin["`FeynCalcExternal`Private`"]
 
 FCE = FeynCalcExternal;
 dimS::usage="";
+fermtmp::usage="";
 
 Options[FeynCalcExternal] = {
 	FinalSubstitutions -> {}
@@ -59,6 +60,8 @@ FeynCalcExternal[x_,opts___Rule] :=
 		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
 		ru = {
+			DiracIndexDelta :> diracdelta,
+			FermionicChain :> fermchain,
 			PauliSigma :> sigmaback,
 			DiracGamma :> diracback,
 			DiracSigma :> dirsig,
@@ -80,6 +83,8 @@ FeynCalcExternal[x_,opts___Rule] :=
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
 		vv = Cases2[x, {
+				FermionicChain,
+				DiracIndexDelta,
 				CartesianPair,
 				DiracGamma,
 				DiracSigma,
@@ -104,9 +109,20 @@ FeynCalcExternal[x_,opts___Rule] :=
 		rv = Map[(# ->  ((MomentumCombine[#])/.ru ) )&, vv]//Dispatch;
 		revru = Map[Reverse, SelectFree[ru,Power]];
 
-
 		x /. rv /. Dispatch[revru]
 	];
+
+diracdelta[i_,j_]:=
+	DIDelta[i,j] /. (DiracIndex|ExplicitDiracIndex) -> iDent;
+
+fermchain[a_,b_]:=
+	FCHN[FCE[a],b] /. (DiracIndex|ExplicitDiracIndex) -> iDent;
+
+fermchain[a_,b_,c_]:=
+	(
+	fermtmp=FCE[{a,b,c}];
+	(FCHN@@fermtmp) /. (DiracIndex|ExplicitDiracIndex) -> iDent
+	)
 
 dirsig[a__] :=
 	DiracSigma[DOT[a]];

@@ -33,6 +33,7 @@ Begin["`FeynCalcInternal`Private`"]
 
 fadim::usage="";
 repeated::usage="";
+fchntmp::usage="";
 
 FCI = FeynCalcInternal;
 
@@ -77,6 +78,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			MetricTensor :> metricT,
 			DiracMatrix  :> diracM,
 			DiracSlash :> diracS,
+			DIDelta :> didelta,
 			FourVector :> fourV,
 			SD :> sdeltacont,
 			SDF :> sfdeltacont,
@@ -91,6 +93,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			FVD :> fvd,
 			FVE :> fve,
 			FV :> fv,
+			FCHN :> fchn,
 			LeviCivita :> levicivita,
 			LC :> lc,
 			LCD :> lcd,
@@ -195,6 +198,9 @@ metricT[x__] :=
 metricT[x_, x_,op_:{}] :=
 	(Dimension/.op/.Options[MetricTensor]);
 
+didelta[i_,j_]:=
+	DiracIndexDelta[DiracIndex[i],DiracIndex[j]];
+
 Options[diracM] = {Dimension -> 4, FCI -> True};
 
 diracM[n_?NumberQ y:Except[_?OptionQ], opts:OptionsPattern[]] :=
@@ -264,6 +270,25 @@ fourV[x_,y_, OptionsPattern[]]:=
 fourV[x_, y_, OptionsPattern[]] :=
 	Pair[LorentzIndex[y,OptionValue[Dimension]],
 	Momentum[x,OptionValue[Dimension]]]/; FreeQ[x, Plus];
+
+dirIndex[a_Spinor]:=
+	a;
+
+dirIndex[a_]/;Head[a]=!=Spinor:=
+	DiracIndex[a/.DiracIndex->Identity];
+
+fchn[a_,b_]:=
+	(
+	fchntmp=FCI[{a,b}];
+	FermionicChain[fchntmp[[1]],dirIndex[fchntmp[[2]]]]
+	);
+
+fchn[a_,b_,c_]:=
+	(
+	fchntmp=FCI[{a,b,c}];
+	FermionicChain[fchntmp[[1]],dirIndex[fchntmp[[2]]],dirIndex[fchntmp[[3]]]]
+	);
+
 (*
 propagatorD[x_] :=
 	propagatorD[x, 0] /; FreeQ2[x, {Pattern, Pair, ScalarProduct}];

@@ -462,9 +462,45 @@ DiracGamma /:
 	MakeBoxes[ DiracGamma[(a : (5 | 6 | 7))], TraditionalForm ]:=
 		SuperscriptBox[RowBox[{gammaRep[4,4,"\[Gamma]"]}], TBox[a]];
 
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_,(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i],ind2[j]]];
+
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_Spinor,(ind1: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i]]];
+
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_,b_Spinor,(ind: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind[i]]];
+
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_,(ind: DiracIndex | ExplicitDiracIndex)[i_],b_Spinor], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind[i]]];
+
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_,b_Spinor,c_Spinor], TraditionalForm ]:=
+		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
+
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_Spinor,b_Spinor], TraditionalForm ]:=
+		RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_,b_], TraditionalForm ]:=
+		ToBoxes[FCI[FCHN[a,b]], TraditionalForm];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_,b_,c_], TraditionalForm ]:=
+		ToBoxes[FCI[FCHN[a,b,c]], TraditionalForm];
+
 DiracGammaT /:
 	MakeBoxes[DiracGammaT[a_,dim_:4], TraditionalForm]:=
 		SuperscriptBox[RowBox[{"(",ToBoxes[DiracGamma[a,dim],TraditionalForm],")"}],"T"];
+
+DiracIndex /:
+	MakeBoxes[DiracIndex[p_], TraditionalForm]:=
+		ToBoxes[p, TraditionalForm];
 
 DiracMatrix /:
 	MakeBoxes[DiracMatrix[x_, opts:OptionsPattern[]], TraditionalForm]:=
@@ -478,6 +514,14 @@ DiracSigma /:
 DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
 		ToBoxes[FCI[DiracSlash[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
+
+DiracIndexDelta /:
+	MakeBoxes[ DiracIndexDelta[(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
+		SubscriptBox["\[Delta]",TBox[ind1[i],ind2[j]]];
+
+DIDelta /:
+	MakeBoxes[ DIDelta[i_,j_], TraditionalForm ]:=
+		SubscriptBox["\[Delta]",TBox[i,j]];
 
 Eps /:
 	MakeBoxes[Eps[a__],TraditionalForm]:=
@@ -499,12 +543,15 @@ EpsilonIR /:
 	MakeBoxes[EpsilonIR, TraditionalForm] :=
 		SubscriptBox["\[CurlyEpsilon]", "IR"];
 
+ExplicitDiracIndex /:
+	MakeBoxes[ ExplicitDiracIndex[p_], TraditionalForm]:=
+		ToBoxes[p, TraditionalForm];
+
 ExplicitLorentzIndex /:
 	MakeBoxes[ ExplicitLorentzIndex[p_, dim_ : 4], TraditionalForm]:=
 		If[ $LorentzIndices =!= True,
 			ToBoxes[TypesettingExplicitLorentzIndex[p],TraditionalForm],
-			Subscr?$iptBox[ToBoxes[TypesettingExplicitLorentzIndex[p], TraditionalForm], ToBoxes[dim, TraditionalForm]]
-
+			SubscriptBox[ToBoxes[TypesettingExplicitLorentzIndex[p], TraditionalForm], ToBoxes[dim, TraditionalForm]]
 		];
 
 ExplicitLorentzIndex /:

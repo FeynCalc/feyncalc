@@ -266,6 +266,15 @@ Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] Spinor[
 	b]^2] + 8 a dsHead[
 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
 	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
-	1] MT[a, b]^2]"}
+	1] MT[a, b]^2]"},
+{"fcstFCDiracIsolate-ID27", "FCDiracIsolate[
+FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
+DiracIndex[j]], FCE -> True]", "FCHN[GA[mu], i, j]"},
+{"fcstFCDiracIsolate-ID28", "FCDiracIsolate[
+FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
+DiracIndex[j]], FermionicChain -> True, Head -> dirac, FCE -> True]", "dirac[FCHN[GA[mu], i, j]]"},
+{"fcstFCDiracIsolate-ID29", "FCDiracIsolate[FermionicChain[1, DiracIndex[i], DiracIndex[j]] GA[mu],
+DiracGamma -> False, FermionicChain -> True, Head -> dirac,
+FCE -> True]", "dirac[FCHN[1, i, j]] GA[mu]"}
 });
 

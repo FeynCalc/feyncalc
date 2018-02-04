@@ -63,6 +63,26 @@ Transpose[DiracGammaT[x]] gives DiracGamma[x]. \
 Note that x must have Head LorentzIndex or Momentum.";
 (* :Comments: still experimental !!!  check SUSY-calculations *)
 
+DiracIndex::usage =
+"DiracIndex is the head of Dirac indices. \
+The internal representation of a four-dimensional \
+spinorial index i is DiracIndex[mu]. If the first \
+argument is an integer, DiracIndex[i] turns into \
+ExplicitDiracIndex[i]. \n
+Dirac indices are the indices that denote the components \
+of Dirac matrices or spinors. They should not be confused with \
+the Lorentz indices attached to the Dirac matrices. For example \
+in case of g^mu_ij, mu is a Lorentz index, while i and j are \
+spinorial indices.";
+
+DiracIndexDelta::usage =
+"DiracIndexDelta[DiracIndex[i],DiracIndex[j]] is the Kronecker-delta \
+in the Dirac space with two explicit Dirac indices i and j.";
+
+DIDelta::usage =
+"DIDelta[i,j] is the Kronecker-delta in the Dirac space. DIDelta[i,j] is \
+transformed into DiracDelta[DiracIndex[i],DiracIndex[j]] by FeynCalcInternal.";
+
 DiracMatrix::usage =
 "DiracMatrix[m] denotes a Dirac gamma matrix with Lorentz index m. \
 DiracMatrix[m1, m2, ..] is a product of gamma matrices with Lorentz \
@@ -101,6 +121,10 @@ EpsilonIR::usage =
 "EpsilonIR denotes (D-4), where D is the number of space-time dimensions. EpsilonIR \
 stands for a small negative number that explicitly regulates only IR divergences.";
 
+ExplicitDiracIndex::usage =
+"ExplicitDiracIndex[ind] is an explicit Dirac index, i.e., ind is \
+an integer.";
+
 ExplicitLorentzIndex::usage =
 "ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is \
 an integer.";
@@ -119,6 +143,21 @@ FAD[{q1,m}, {q1-p,m}, q2, ...] is \
 1/( (q1^2 - m^2) ( (q1-p)^2 - m^2 ) q2^2 ... ).
 (Translation into FeynCalc internal form is performed by
 FeynCalcInternal.)";
+
+FCHN::usage =
+"FCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
+into FermionChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
+FeynCalcInternal.";
+
+FermionicChain::usage =
+"FermionicChain[x,i,j] denotes a chain of Dirac \
+matrices x, where the Dirac indices i and j \
+are explicit. For example, \
+FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],DiracIndex[j]] \
+denotes a standalone Dirac matrix g^mu_ij. A FermionicChain with only two \
+arguments denotes a spinor component, e.g. \
+FermionicChain[Spinor[Momentum[p],m],DiracIndex[i]] stands for the i-th \
+component of  Spinor[Momentum[p],m]";
 
 FeynAmp::usage =
 "FeynAmp[q, amp] denotes a Feynman amplitude. \
@@ -809,7 +848,6 @@ End[]
 
 Begin["`SharedObjects`Private`"]
 
-
 DeclareNonCommutative[ChiralityProjector];
 DeclareNonCommutative[DiracGamma];
 DeclareNonCommutative[DiracGammaT];
@@ -883,7 +921,10 @@ Conjugate[x_Pair] :=
 	Polarization[k, Conjugate[a], opts]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
+SetAttributes[DIDelta, Orderless];
+SetAttributes[DiracIndexDelta, Orderless];
 SetAttributes[ExplicitLorentzIndex, Constant];
+SetAttributes[ExplicitDiracIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[ExplicitSUNFIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[LorentzIndex, Constant];
@@ -926,13 +967,13 @@ Options[Polarization] = {Transversality -> False};
 
 (* 	TODO Explicit syntax checks in the definitions of core objects are too expensive :(
 	Instead we should use a syntax checker function that will be applied to the given expression *)
-DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma};
+DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma,FermionicChain, DiracIndexDelta};
 
 PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
-TrFeynCalcObjects = DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE;
+TrFeynCalcObjects = DiracGamma | DiracMatrix | DiracSlash | FermionicChain | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE | FCHN;
 
 TensorArgsList = {
 	LorentzIndex, ExplicitLorentzIndex, Momentum,
@@ -1230,6 +1271,40 @@ DiracGamma[x_?NumberQ, ___] :=
 DiracGamma[(n:5|6|7), dim_] :=
 	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[n],ToString[dim]]]];
 
+(* Explicit Dirac indices *)
+
+FermionicChain[0,__]:=
+	0;
+
+FermionicChain[_,0]:=
+	0;
+
+FermionicChain[1, i_Spinor, j : (_DiracIndex | _ExplicitDiracIndex)]:=
+	FermionicChain[i,j];
+
+FermionicChain[x_/;x=!=1, i_,j_]/; FreeQ2[{FCI[x]},DiracHeadsList] && FCPatternFreeQ[{x,i,j}]:=
+	x FermionicChain[1, i,j];
+
+FermionicChain[1, i : (_DiracIndex | _ExplicitDiracIndex),j : (_DiracIndex | _ExplicitDiracIndex)]/; FCPatternFreeQ[{x,i,j}]:=
+	DiracIndexDelta[i,j];
+
+FermionicChain[1, a_Spinor, b_Spinor]:=
+	FermionicChain[a,b];
+
+FCHN[0,__]:=
+	0;
+
+FCHN[_,0]:=
+	0;
+
+FCHN[1,a_Spinor,b_Spinor]:=
+	FCHN[a,b];
+
+
+DiracIndex[i_Integer] :=
+	ExplicitDiracIndex[i];
+
+(* ------------------------------------------------------------------------ *)
 
 DiracGammaT /:
 	Transpose[DiracGammaT[a__]]:= DiracGamma[a];
