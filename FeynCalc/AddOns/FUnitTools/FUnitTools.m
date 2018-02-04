@@ -49,7 +49,8 @@ $FUnitToolsDirectory =
 ToFileName[{$FeynCalcDirectory, "AddOns", "FUnitTools"}];
 
 Options[FUnitCreateUnitTestsTypesetting] = {
-	AddMakeBoxes -> True
+	AddMakeBoxes -> True,
+	"ZeroIDValue" -> 0
 };
 
 Options[FUnitCreateUnitTests] = {
@@ -61,7 +62,7 @@ FUnitCreateUnitTests[n_String, l_List, OptionsPattern[]] :=
 	MapIndexed[{n <> "-ID" <> ToString[OptionValue["ZeroIDValue"]+First[#2]], #, ToString[ToExpression[#], FormatType -> InputForm]} &, l];
 
 FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
-	MapIndexed[{n <> "-ID" <> ToString[First[#2]],
+	MapIndexed[{n <> "-ID" <> ToString[OptionValue["ZeroIDValue"]+First[#2]],
 		If[OptionValue[AddMakeBoxes],
 			StringReplace[ToString[System`MakeBoxees[#, TraditionalForm]],
 			"MakeBoxees" -> "MakeBoxes"],
