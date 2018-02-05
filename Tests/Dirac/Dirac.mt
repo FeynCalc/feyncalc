@@ -97,6 +97,12 @@ If[ Names["Tests`Dirac`fcstEpsChisholm*"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
+If[ Names["Tests`Dirac`fcstFermionicChainSimplify*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstFermionicChainSimplify*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
 If[ Names["Tests`Dirac`fcstToDiracSigma*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstToDiracSigma*"])];
