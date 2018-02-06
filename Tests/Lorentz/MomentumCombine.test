@@ -90,39 +90,95 @@ FCE->True]", "5*LC[][p1, q, r, s] + 4*LC[][p2, q, r, s]"},
 "MomentumCombine[5CLC[][p1,r,s]+4CLC[][p2,r,s],LC\[Rule]False,\
 FCE->True]", "5*CLC[][p1, r, s] + 4*CLC[][p2, r, s]"},
 {"fcstMomentumCombine-ID30",
-"MomentumCombine[Spinor[Momentum[q] + Momentum[p], 0, 1]]", "Spinor[Momentum[p + q], 0, 1]"}
+"MomentumCombine[Spinor[Momentum[q] + Momentum[p], 0, 1]]", "Spinor[Momentum[p + q], 0, 1]"},
+{"fcstMomentumCombine-ID31",
+"MomentumCombine[c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[p2 - p3]]"},
+{"fcstMomentumCombine-ID32",
+"MomentumCombine[-c1 SP[p1,p2]+c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[-p2 + p3]]"},
+{"fcstMomentumCombine-ID33",
+"MomentumCombine[-c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"-(c1*Pair[Momentum[p1], Momentum[p2 + p3]])"},
+{"fcstMomentumCombine-ID34",
+"MomentumCombine[c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 - \
+p3]]"},
+{"fcstMomentumCombine-ID35",
+"MomentumCombine[-c1 CSP[p1,p2]+c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[-p2 + \
+p3]]"},
+{"fcstMomentumCombine-ID36",
+"MomentumCombine[-c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"-(c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 + \
+p3]])"},
+{"fcstMomentumCombine-ID37",
+"MomentumCombine[c1 FV[p1,mu]-c1 FV[p2,mu]]",
+"c1*Pair[LorentzIndex[mu], Momentum[p1 - p2]]"},
+{"fcstMomentumCombine-ID38",
+"MomentumCombine[-c1 FV[p1,mu]+c1 FV[p2,mu]]",
+"c1*Pair[LorentzIndex[mu], Momentum[-p1 + p2]]"},
+{"fcstMomentumCombine-ID39",
+"MomentumCombine[c1 CV[p1,mu]-c1 CV[p2,mu]]",
+"c1*CartesianPair[CartesianIndex[mu], CartesianMomentum[p1 - p2]]"},
+{"fcstMomentumCombine-ID40",
+"MomentumCombine[-c1 CV[p1,mu]+c1 CV[p2,mu]]",
+"c1*CartesianPair[CartesianIndex[mu], CartesianMomentum[-p1 + \
+p2]]"},
+{"fcstMomentumCombine-ID41", "MomentumCombine[c1 TC[p1]-c1 TC[p2]]",
+	"c1*TemporalPair[TemporalIndex[], TemporalMomentum[p1 - p2]]"},
+{"fcstMomentumCombine-ID42",
+"MomentumCombine[-c1 TC[p1]+c1 TC[p2]]",
+"c1*TemporalPair[TemporalIndex[], TemporalMomentum[-p1 + p2]]"},
+{"fcstMomentumCombine-ID43",
+"MomentumCombine[c1 LC[][a,p1,b,c]+c1 LC[][a,p2,b,c]]",
+"c1*Eps[Momentum[a], Momentum[p1 + p2], Momentum[b], Momentum[c]]"},
+{"fcstMomentumCombine-ID44",
+"MomentumCombine[c1 LC[][a,p1,b,c]-c1 LC[][a,p2,b,c]]",
+"c1*Eps[Momentum[a], Momentum[p1 - p2], Momentum[b], Momentum[c]]"},
+{"fcstMomentumCombine-ID45",
+"MomentumCombine[-c1 LC[][a,p1,b,c]+c1 LC[][a,p2,b,c]]",
+"c1*Eps[Momentum[a], Momentum[-p1 + p2], Momentum[b], \
+Momentum[c]]"},
+{"fcstMomentumCombine-ID46",
+"MomentumCombine[c1 CLC[][a,p1,b]+c1 CLC[][a,p2,b]]",
+"c1*Eps[CartesianMomentum[a], CartesianMomentum[p1 + p2], \
+CartesianMomentum[b]]"},
+{"fcstMomentumCombine-ID47",
+"MomentumCombine[c1 CLC[][a,p1,b]-c1 CLC[][a,p2,b]]",
+"c1*Eps[CartesianMomentum[a], CartesianMomentum[p1 - p2], \
+CartesianMomentum[b]]"},
+{"fcstMomentumCombine-ID48",
+"MomentumCombine[-c1 CLC[][a,p1,b]+c1 CLC[][a,p2,b]]",
+"c1*Eps[CartesianMomentum[a], CartesianMomentum[-p1 + p2], \
+CartesianMomentum[b]]"},
+{"fcstMomentumCombine-ID49",
+"MomentumCombine[SP[p,p] (SP[p,q]+SP[p,r]-SP[q,q]-SP[q,r])]",
+"Pair[Momentum[p], Momentum[p]]*Pair[Momentum[p - q], Momentum[q + \
+r]]"},
+{"fcstMomentumCombine-ID50",
+"MomentumCombine[SP[p,p] (CSP[p,q]+CSP[p,r]-CSP[q,q]-CSP[q,r])]",
+"CartesianPair[CartesianMomentum[p - q], CartesianMomentum[q + \
+r]]*Pair[Momentum[p], Momentum[p]]"},
+{"fcstMomentumCombine-ID51",
+"MomentumCombine[c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[p2 - p3]]"},
+{"fcstMomentumCombine-ID52",
+"MomentumCombine[-c1 SP[p1,p2]+c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[-p2 + p3]]"},
+{"fcstMomentumCombine-ID53",
+"MomentumCombine[-c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"-(c1*Pair[Momentum[p1], Momentum[p2 + p3]])"},
+{"fcstMomentumCombine-ID54",
+"MomentumCombine[c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 - \
+p3]]"},
+{"fcstMomentumCombine-ID55",
+"MomentumCombine[-c1 CSP[p1,p2]+c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[-p2 + \
+p3]]"},
+{"fcstMomentumCombine-ID56",
+"MomentumCombine[-c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"-(c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 + \
+p3]])"}
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

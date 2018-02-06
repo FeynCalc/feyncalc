@@ -33,8 +33,10 @@ Tests`Lorentz`fcstContractContractionsIn4dims = {
 		"-6*Pair[LorentzIndex[a], LorentzIndex[b]]"},
 {"fcstContractContractionsIn4dims-ID11", "Contract[MetricTensor[a, sigma]*FourVector[p, a]
 	FourVector[p,sigma]*(FourVector[q, b] + FourVector[r, b])*(FourVector[p, b]
-	-FourVector[q, b]), Expanding -> False]", "Pair[Momentum[p], Momentum[p]]*(Pair[Momentum[p], Momentum[q]] +
-	Pair[Momentum[p], Momentum[r]] - Pair[Momentum[q], Momentum[q]] - Pair[Momentum[q], Momentum[r]])"},
+	-FourVector[q, b]), Expanding -> False]", "Pair[Momentum[p],
+Momentum[p]]*(Pair[Momentum[p], Momentum[q]] +
+Pair[Momentum[p], Momentum[r]] - Pair[Momentum[q], Momentum[q]] -
+Pair[Momentum[q], Momentum[r]])"},
 {"fcstContractContractionsIn4dims-ID12", "Contract[FourVector[k, mu] PolarizationVector[k, mu]]",
 	"Contract[FourVector[k, mu] PolarizationVector[k, mu]]"},
 {"fcstContractContractionsIn4dims-ID13", "Contract[FourVector[k, mu]

@@ -39,31 +39,51 @@ rulesMain = {
 
 rulesSP = {
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4]),
+		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4] && n3=!=n4),
+
+	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n3_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		n3 Pair[a, Momentum[Expand[x + y],dim]],
+
+	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] - n3_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		n3 Pair[a, Momentum[Expand[x - y],dim]],
 
 	(n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianMomentum, CartesianMomentum[y_, dim_:3]]):>
-		CartesianPair[a, CartesianMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4])
+		CartesianPair[a, CartesianMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4]  && n3=!=n4),
+
+	(n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[x_, dim_:3]] + n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[y_, dim_:3]]):>
+		n3 CartesianPair[a, CartesianMomentum[Expand[x + y],dim]],
+
+	(n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[x_, dim_:3]] - n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[y_, dim_:3]]):>
+		n3 CartesianPair[a, CartesianMomentum[Expand[x - y],dim]]
 }
 
 rulesFV = {
 	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
-		Pair[a, Momentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
+		Pair[a, Momentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4] && n3=!=n4),
 
 	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n3_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
-		n3 Pair[a, Momentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
+		n3 Pair[a, Momentum[Expand[x+y], dim]],
 
+	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] - n3_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
+		n3 Pair[a, Momentum[Expand[x-y], dim]],
 
 	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
-		CartesianPair[a, CartesianMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]),
+		CartesianPair[a, CartesianMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]  && n3=!=n4),
 
 	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] + n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
-		n3 CartesianPair[a, CartesianMomentum[Expand[x+y], dim]]/; (!NumberQ[n3]),
+		n3 CartesianPair[a, CartesianMomentum[Expand[x+y], dim]],
 
-	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n4_. TRair[TemporalIndex[], TemporalMomentum[y_]]):>
-		TemporalPair[TemporalIndex[], TemporalMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]),
+	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] - n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
+		n3 CartesianPair[a, CartesianMomentum[Expand[x-y], dim]],
+
+	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n4_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
+		TemporalPair[TemporalIndex[], TemporalMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]  && n3=!=n4),
 
 	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n3_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
-		n3 TemporalPair[a, TemporalMomentum[Expand[x+y]]]/; (!NumberQ[n3])
+		n3 TemporalPair[TemporalIndex[], TemporalMomentum[Expand[x+y]]],
+
+	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] - n3_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
+		n3 TemporalPair[TemporalIndex[], TemporalMomentum[Expand[x-y]]]
 
 (*
 	(n3_. Pair[a_LorentzIndex, Momentum[x_,dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_,dim_:4]]):>
@@ -76,7 +96,10 @@ rulesLC = {
 		Eps[a, h[ Expand[n3 x + n4 y],dim], b]/; (NumberQ[n3] && NumberQ[n4] && n3=!=n4),
 
 	(n3_. Eps[a___, (h:CartesianMomentum|Momentum)[x_, dim___], b___] + n3_. Eps[a___, (h:CartesianMomentum|Momentum)[y_, dim___], b___]):>
-		n3 Eps[a, h[ Expand[x + y],dim], b]/; NumberQ[n3]
+		n3 Eps[a, h[ Expand[x + y],dim], b],
+
+	(n3_. Eps[a___, (h:CartesianMomentum|Momentum)[x_, dim___], b___] - n3_. Eps[a___, (h:CartesianMomentum|Momentum)[y_, dim___], b___]):>
+		n3 Eps[a, h[ Expand[x - y],dim], b]
 
 };
 
