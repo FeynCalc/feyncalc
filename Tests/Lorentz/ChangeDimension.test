@@ -191,5 +191,8 @@ MTD[mu,nu] f[D]},n]//Contract)", "{n, n*f[D]}"},
 "ChangeDimension[CVE[p,q](a+b),D,FCE->True]",
 "(a + b)*CVD[p, q]"},
 {"fcstChangeDimension-ID66",
-"ChangeDimension[CVE[p,q](a+b),D-4,FCE->True]", "(a + b)*CVE[p, q]"}
+"ChangeDimension[CVE[p,q](a+b),D-4,FCE->True]", "(a + b)*CVE[p, q]"},
+{"fcstChangeDimension-ID67",
+"ChangeDimension[FermionicChain[DiracGamma[LorentzIndex[Lor1, D], D],
+DiracIndex[QGIDirMinus2], DiracIndex[QGIDirMinus1]],4,FCE->True]", "FCHN[GA[Lor1], QGIDirMinus2, QGIDirMinus1]"}
 });

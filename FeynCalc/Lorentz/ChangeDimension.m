@@ -40,7 +40,7 @@ Options[ChangeDimension] ={
 ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 	Block[
 		{	expr, res, tmp, lorentzDim, cartesianDim,
-			holdPair, holdDiracGamma, holdCartesianPair, holdEps, holdPauliSigma},
+			holdPair, holdFermionicChain, holdDiracGamma, holdCartesianPair, holdEps, holdPauliSigma},
 
 		If[ OptionValue[FCI],
 			expr = ex,
@@ -62,7 +62,7 @@ ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		tmp = expr /. DiracGamma -> holdDiracGamma /. PauliSigma -> holdPauliSigma /. Pair-> holdPair /. CartesianPair->holdCartesianPair  /. Eps -> holdEps;
+		tmp = expr /. FermionicChain -> holdFermionicChain /. DiracGamma -> holdDiracGamma /. PauliSigma -> holdPauliSigma /. Pair-> holdPair /. CartesianPair->holdCartesianPair  /. Eps -> holdEps;
 
 		tmp = tmp /. holdDiracGamma[(z: 5|6|7)] :> DiracGamma[z];
 
@@ -78,7 +78,7 @@ ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 			holdPauliSigma[z_,___] :> holdPauliSigma[z,cartesianDim]
 		};
 
-		res = tmp /. holdDiracGamma -> DiracGamma /. holdPauliSigma -> PauliSigma /. holdPair -> Pair /. holdCartesianPair -> CartesianPair /. holdEps -> Eps;
+		res = tmp /. holdDiracGamma -> DiracGamma /. holdPauliSigma -> PauliSigma /. holdPair -> Pair /. holdCartesianPair -> CartesianPair /. holdEps -> Eps /. holdFermionicChain -> FermionicChain;
 
 
 		If[	OptionValue[FCE],
