@@ -1057,6 +1057,15 @@ CVD[0,_] :=
 CVE[0,_] :=
 	0;
 
+CV[-a_Symbol,b_]:=
+	-CV[a,b];
+
+CVD[-a_Symbol,b_]:=
+	-CVD[a,b];
+
+CVE[-a_Symbol,b_]:=
+	-CVE[a,b];
+
 TC[0] =
 	0;
 
@@ -1477,6 +1486,15 @@ FVD[0,_] :=
 
 FVE[0,_] :=
 	0;
+
+FV[-a_Symbol,b_]:=
+	-FV[a,b];
+
+FVD[-a_Symbol,b_]:=
+	-FVD[a,b];
+
+FVE[-a_Symbol,b_]:=
+	-FVE[a,b];
 
 GA5 =
 	DiracGamma[5];
