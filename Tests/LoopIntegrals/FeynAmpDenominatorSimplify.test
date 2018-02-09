@@ -77,6 +77,16 @@ FAD[q2,{-p2+q2,m}],q1,q2]", "0"},
 "FDS[(1/(4 (1-D)))FAD[q2,-p1+q2] FAD[q1,q1,-p1+q1] (D FVD[p1,mu] \
 FVD[p1,nu]-MTD[mu,nu] SPD[p1,p1])-(1/(4 (1-D)))FAD[q1,-p1+q1] \
 FAD[q2,q2,-p1+q2] (D FVD[p1,mu] FVD[p1,nu]-MTD[mu,nu] \
-SPD[p1,p1]),q1,q2]", "0"}
-
+SPD[p1,p1]),q1,q2]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID13",
+"FDS[FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0]]^3] // FCE",
+"FAD[p1 + p2, p1 + p2, p1 + p2, Dimension -> 4]"},
+{"fcstFeynAmpDenominatorSimplify-ID14",
+"FDS[(FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0]]^2 -
+FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0],
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0]])]",
+"0"}
 }

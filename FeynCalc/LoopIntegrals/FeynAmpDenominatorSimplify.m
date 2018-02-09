@@ -111,7 +111,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 
 		If[ Length[{qs}]===0,
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
-			Return[ex/.PD -> procan /. procan -> PD /. FeynAmpDenominator -> feyncan]
+			Return[ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,n])]} /.PD -> procan /. procan -> PD /. FeynAmpDenominator -> feyncan]
 		];
 
 
