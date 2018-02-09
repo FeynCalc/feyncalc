@@ -1,0 +1,119 @@
+(* :Title: FCRerouteMomenta.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCRerouteMomenta  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCRerouteMomenta =
+({
+{"fcstRerouteMomenta-ID1",
+"FCRerouteMomenta[GS[p1]+GS[p2+p3],{k1,k2},{p1,p2,p3}]",
+"DiracGamma[Momentum[p1]] + DiracGamma[Momentum[p2 + p3]]"},
+{"fcstRerouteMomenta-ID2",
+"FCRerouteMomenta[GS[p1]+GS[p2+p3],{k1,k2},{p1,p2,p3},\
+DiracGammaCombine\[Rule]True]", "DiracGamma[Momentum[k1 + k2]]"},
+{"fcstRerouteMomenta-ID3",
+"FCRerouteMomenta[CGS[p1]+CGS[p2+p3],{k1,k2},{p1,p2,p3}]",
+"DiracGamma[CartesianMomentum[p1]] + \
+DiracGamma[CartesianMomentum[p2 + p3]]"},
+{"fcstRerouteMomenta-ID4",
+"FCRerouteMomenta[CGS[p1]+CGS[p2+p3],{k1,k2},{p1,p2,p3},\
+DiracGammaCombine\[Rule]True]",
+"DiracGamma[CartesianMomentum[p1 + p2 + p3]]"},
+{"fcstRerouteMomenta-ID5",
+"FCRerouteMomenta[FV[p1,mu]+FV[p2+p3,mu],{k1,k2},{p1,p2,p3}]",
+"Pair[LorentzIndex[mu], Momentum[p1]] + Pair[LorentzIndex[mu], \
+Momentum[p2 + p3]]"},
+{"fcstRerouteMomenta-ID6",
+"FCRerouteMomenta[FV[p1,mu]+FV[p2+p3,mu],{k1,k2},{p1,p2,p3},\
+MomentumCombine\[Rule]True]",
+"Pair[LorentzIndex[mu], Momentum[k1 + k2]]"},
+{"fcstRerouteMomenta-ID7",
+"FCRerouteMomenta[CV[p1,mu]+CV[p2+p3,mu],{k1,k2},{p1,p2,p3}]",
+"CartesianPair[CartesianIndex[mu], CartesianMomentum[p1]] + \
+CartesianPair[CartesianIndex[mu], CartesianMomentum[p2 + p3]]"},
+{"fcstRerouteMomenta-ID8",
+"FCRerouteMomenta[CV[p1,mu]+CV[p2+p3,mu],{k1,k2},{p1,p2,p3},\
+MomentumCombine\[Rule]True]",
+"CartesianPair[CartesianIndex[mu], CartesianMomentum[k1 + k2]]"},
+{"fcstRerouteMomenta-ID9",
+"FCRerouteMomenta[FAD[p1+p2+p3],{k1,k2},{p1,p2,p3}]",
+"FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] + \
+Momentum[k2, D], 0]]"},
+{"fcstRerouteMomenta-ID10",
+"FCRerouteMomenta[FAD[p1+p2+p3],{k1,k2},{p1,p2,p3},Eliminate\[Rule]\
+{k2}]", "FeynAmpDenominator[PropagatorDenominator[Momentum[p1, D] + \
+Momentum[p2, D] + Momentum[p3, D], 0]]"},
+{"fcstRerouteMomenta-ID11",
+"FCRerouteMomenta[FAD[pH],{k1,k2},{p1,p2,p3},InitialSubstitutions\
+\[Rule]{pH\[Rule]p1+p2+p3}]",
+"FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] + \
+Momentum[k2, D], 0]]"},
+{"fcstRerouteMomenta-ID12",
+"FCRerouteMomenta[FAD[p1+p2],{k1,k2},{p1,p2},Eliminate\[Rule]{p2}]\
+", "FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] + \
+Momentum[k2, D], 0]]"},
+{"fcstRerouteMomenta-ID13",
+"FCRerouteMomenta[FAD[p1+p2],{k1,k2},{p1,p2},Eliminate\[Rule]{p1,\
+p2}]", "FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] + \
+Momentum[k2, D], 0]]"},
+{"fcstRerouteMomenta-ID14",
+"FCRerouteMomenta[FAD[p1+p2],{k1,k2},{p1,p2},Eliminate\[Rule]{k1,\
+p2}]", "FeynAmpDenominator[PropagatorDenominator[Momentum[p1, D] + \
+Momentum[p2, D], 0]]"},
+{"fcstRerouteMomenta-ID15",
+"FCRerouteMomenta[Spinor[-Momentum[p2],m,1].GS[Polarization[k2,-\
+\[ImaginaryI]]].(GS[k2-p2]+m).GS[Polarization[k4,-\[ImaginaryI]]].(GS[\
+k2+k4-p2]+m).GS[Polarization[k3,-\[ImaginaryI]]].(GS[k2+k3+k4-p2]+m).\
+GS[Polarization[k1,-\[ImaginaryI]]].Spinor[Momentum[p1],m,1] \
+FAD[{-k2+p2,m}] FAD[{-k2-k4+p2,m}] FAD[{-k2-k3-k4+p2,m}] \
+,{p1,p2},{k1,k2,k3,k4},FCE->True]",
+"Spinor[-Momentum[p2], m, 1] . GS[Polarization[k2, -I]] . (m + \
+GS[k2 - p2]) . GS[Polarization[k4, -I]] . (m + GS[k2 + k4 - p2]) . \
+GS[Polarization[k3, -I]] . (m + GS[-k1 + p1]) . GS[Polarization[k1, \
+-I]] . Spinor[Momentum[p1], m, 1]*FAD[{k1 - p1, m}]*FAD[{-k2 + p2, \
+m}]*FAD[{-k2 - k4 + p2, m}]"},
+{"fcstRerouteMomenta-ID16",
+"FCRerouteMomenta[Spinor[-Momentum[p2],m,1].GS[Polarization[k2,-\
+\[ImaginaryI]]].(GS[k2-p2]+m).GS[Polarization[k4,-\[ImaginaryI]]].(GS[\
+k2+k4-p2]+m).GS[Polarization[k3,-\[ImaginaryI]]].(GS[k2+k3+k4-p2]+m).\
+GS[Polarization[k1,-\[ImaginaryI]]].Spinor[Momentum[p1],m,1] \
+FAD[{-k2+p2,m}] FAD[{-k2-k4+p2,m}] FAD[{-k2-k3-k4+p2,m}] \
+,{p1,p2},{k1,k2,k3,k4},Eliminate\[Rule]{p2},FCE->True]",
+"Spinor[-Momentum[p2], m, 1] . GS[Polarization[k2, -I]] . (m + \
+GS[k2 - p2]) . GS[Polarization[k4, -I]] . (m + GS[-k1 - k3 + p1]) . \
+GS[Polarization[k3, -I]] . (m + GS[-k1 + p1]) . GS[Polarization[k1, \
+-I]] . Spinor[Momentum[p1], m, 1]*FAD[{k1 - p1, m}]*FAD[{k1 + k3 - \
+p1, m}]*FAD[{-k2 + p2, m}]"},
+{"fcstRerouteMomenta-ID17",
+"FCRerouteMomenta[Spinor[-Momentum[p2],m,1].GS[Polarization[k2,-\
+\[ImaginaryI]]].(GS[k2-p2]+m).GS[Polarization[k4,-\[ImaginaryI]]].(GS[\
+k2+k4-p2]+m).GS[Polarization[k3,-\[ImaginaryI]]].(GS[k2+k3+k4-p2]+m).\
+GS[Polarization[k1,-\[ImaginaryI]]].Spinor[Momentum[p1],m,1] \
+FAD[{-k2+p2,m}] FAD[{-k2-k4+p2,m}] FAD[{-k2-k3-k4+p2,m}] \
+,{p1,p2},{k1,k2,k3,k4},Eliminate\[Rule]{p2},InitialSubstitutions\
+\[Rule]{p2\[Rule]k1+k2+k3+k4-p1},FCE->True]",
+"Spinor[-Momentum[p2], m, 1] . GS[Polarization[k2, -I]] . (m + \
+GS[-k1 - k3 - k4 + p1]) . GS[Polarization[k4, -I]] . (m + GS[-k1 - k3 \
++ p1]) . GS[Polarization[k3, -I]] . (m + GS[-k1 + p1]) . \
+GS[Polarization[k1, -I]] . Spinor[Momentum[p1], m, 1]*FAD[{k1 - p1, \
+m}]*FAD[{k1 + k3 - p1, m}]*FAD[{k1 + k3 + k4 - p1, m}]"},
+{"fcstRerouteMomenta-ID18",
+"FCRerouteMomenta[FAD[p1,p2,p3,p1+p2+p3-Q] \
+SPD[-p2-p3+Q,-p2-p3+Q],{Q},{p1,p2,p3,p4},FCE->True]",
+"FAD[p1, p2, p3, -p4]*SPD[p1 + p4, p1 + p4]"},
+{"fcstRerouteMomenta-ID19",
+"FCRerouteMomenta[FAD[p1,p2,p3,p3-Q,p1+p2+p3-Q] \
+SPD[-p2-p3+Q,-p2-p3+Q],{Q},{p1,p2,p3,p4},FCE->True]",
+"FAD[p1, p2, p3, p3 - Q, -p4]*SPD[p1 + p4, p1 + p4]"},
+{"fcstRerouteMomenta-ID20",
+"FCRerouteMomenta[FAD[p1,p2,p3,p1+p2+p3-Q],{Q},{p1,p2,p3,p4},\
+FCE->True]", "FAD[p1, p2, p3, -p4]"}
+});
