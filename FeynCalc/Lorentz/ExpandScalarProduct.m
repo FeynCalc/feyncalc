@@ -44,7 +44,7 @@ Options[ExpandScalarProduct] = {
 };
 
 ExpandScalarProduct[expr_, OptionsPattern[]] :=
-	Block[ {ex, pairList, pairListExpanded, moms, protect, momentum},
+	Block[ {ex, pairList, pairListExpanded, moms, protect, momentum, relevant, null1, null2},
 
 		moms = OptionValue[Momentum];
 
@@ -59,19 +59,29 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 			ex = expr
 		];
 
+
 		(* This is to speed up things when dealing with tirival scalar products *)
 		If[	MatchQ[ex, Pair[Momentum[_, ___], Momentum[_, ___]] | CartesianPair[CartesianMomentum[_, ___], CartesianMomentum[_, ___]]] && FreeQ[ex,Plus],
 			Return[ex]
 		];
 
+
 		If[ FreeQ2[ex,objects],
 			Return[ex]
 		];
 
+
+		relevant = Cases[ex + null1 + null2, (Alternatives @@ objects)[a_, b___] /; !FreeQ[{a, b}, Plus], Infinity];
+
+		If[relevant==={},
+			Return[ex],
+			relevant = relevant//Sort//DeleteDuplicates
+		];
+
 		If [moms===All,
-			pairList = Select[Cases2[ex, objects], !FreeQ2[#, TensorArgsList]&];
+			pairList = Select[Cases2[relevant, objects], !FreeQ2[#, TensorArgsList]&];
 			pairListExpanded = pairList,
-			pairList = Select[Cases2[ex, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&];
+			pairList = Select[Cases2[relevant, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&];
 			If[ TrueQ[!OptionValue[Full]],
 				pairListExpanded = pairList //. {
 					Momentum[c_. mom_ + rest_: 0, dim___] /; MemberQ[moms, mom] :> momentum[c mom + protect[rest], dim],
