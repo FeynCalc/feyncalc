@@ -228,9 +228,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 		diractrcoll, schoutenopt,
 		dtmp,dWrap,dtWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
 		gammaFree,gammaPart,
-		traceListChiral,traceListNonChiral,repRule,null1,null2
-
-		},
+		traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ},
 
 		wrapRule = {dWrap[5]->0, dWrap[6]->1/2, dWrap[7]->1/2, dWrap[LorentzIndex[_,_:4],___]->0,
 					dWrap[_. Momentum[_,_:4]+_:0,___]->0};
@@ -250,6 +248,16 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Entering", FCDoControl->diTrVerbose];
 		FCPrint[3,"DiracTrace: diracTraceEvaluate: Entering with: ",expr, FCDoControl->diTrVerbose];
+
+		(*	Even before we compute the trace, we can already decide if the expression contains dummy
+			indices. It is clearly better to do it here, while the expression is still in the most
+			compact form! *)
+		time=AbsoluteTime[];
+		FCPrint[1,"DiracTrace: diracTraceEvaluate: Checking if there are indices that need to be contracted. ", FCDoControl->diTrVerbose];
+		dummyIndexFreeQ = DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}];
+		FCPrint[1,"DiracTrace: diracTraceEvaluate: Check done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
+
+
 
 
 		time=AbsoluteTime[];
@@ -463,21 +471,20 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 		(*	At this point there should be no Dirac matrices left, by definition.
 			The only allowed exception are objects wrapped into noSpur *)
+
 		If[ !FreeQ[tmp /. _noSpur:>1, DiracGamma],
 			Message[DiracTrace::failmsg,"The output still contains Dirac matrices"];
 			Abort[]
 		];
 
 		(* If there are uncontracted Lorentz indices, try to contract them *)
-
-		If[ contract===True && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
+		If[ contract===True && !dummyIndexFreeQ,
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Contracting Lorentz indices. ", FCDoControl->diTrVerbose];
 			tmp=Contract[tmp,FCI->True];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: After Contract: ", tmp, FCDoControl->diTrVerbose];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose]
 		];
-
 
 		(* Special expansion for expressions that contain Levi-Civita tensors*)
 		If[ !FreeQ[tmp, Eps],
@@ -488,7 +495,6 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 				tmp = Contract[ tmp, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract],
 								Schouten->schoutenopt, Expanding -> False, FCI->True];
 			];
-			FCPrint[1,"DiracTrace: diracTraceEvaluate: Done with Eps tensors, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose]
 		];
 
 		(* Factor the result, if requested; This is where we put back the prefactor of 4. *)
