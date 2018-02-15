@@ -194,11 +194,11 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			res = res /. DOT->holdDOT //. head[holdDOT[x__] y_.]/; !FreeQ[{x},Spinor] :> holdDOT[x] head[y]  /. holdDOT -> DOT,
 
 
-			If[	OptionValue[Spinor]===Join,
+		If[	OptionValue[Spinor]===Join,
 				res = res /. DOT->holdDOT //.
 				head[holdDOT[a_Spinor,b___,c_Spinor] x_.] head[holdDOT[d_Spinor,e___,f_Spinor] y_.]/; FreeQ[{b,e},Spinor] :>
 					head[holdDOT[a,b,c] holdDOT[d,e,f] x y]/. holdDOT->DOT;
-			]
+		]
 
 		];
 

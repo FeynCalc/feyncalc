@@ -87,7 +87,7 @@ If[ tarcerfilenames=!={},
 	(* Print startup message *)
 	If[ $FeynCalcStartupMessages,
 		Print[	Style["TARCER ", "Text", Bold],
-			Style[$TARCERVersion <> ", for description see the accompanying ", "Text"],
+			Style[$TARCERVersion <> ", for more information see the accompanying ", "Text"],
 			Style[DisplayForm@ButtonBox["publication.", BaseStyle -> "Hyperlink",	ButtonFunction :>
 				SystemOpen[ToFileName[{$TARCERDirectory},"9801383.pdf"]],
 				Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
