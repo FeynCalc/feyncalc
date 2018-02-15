@@ -31,13 +31,12 @@ SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz]",
 xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . \
 Spinor[-Momentum[p2], m2, 1]]"},
 {"fcstFCDiracIsolate-ID8",
-"FCDiracIsolate[yy GA[i]+xx \
-SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz+DiracTrace[GA[i,j]],\
-DiracGamma\[Rule]False]",
-"zz + yy*DiracGamma[LorentzIndex[i]] + \
-DiracTrace[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]]] \
-+ xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] \
-. Spinor[-Momentum[p2], m2, 1]]"},
+"FCDiracIsolate[
+yy GA[i] + xx SpinorUBar[p1, m1].GA[5].SpinorVBar[p2, m2] + zz +
+DiracTrace[GA[i, j]], DiracGamma -> False]",
+"zz + yy*DiracGamma[LorentzIndex[i]] +
+FCGV[\"DiracChain\"][DiracTrace[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]]]] +
+xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . Spinor[-Momentum[p2], m2, 1]]"},
 {"fcstFCDiracIsolate-ID9",
 "FCDiracIsolate[yy GA[i]+xx \
 SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz+DiracTrace[GA[i,j]],\
@@ -275,6 +274,6 @@ FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
 DiracIndex[j]], FermionicChain -> True, Head -> dirac, FCE -> True]", "dirac[FCHN[GA[mu], i, j]]"},
 {"fcstFCDiracIsolate-ID29", "FCDiracIsolate[FermionicChain[1, DiracIndex[i], DiracIndex[j]] GA[mu],
 DiracGamma -> False, FermionicChain -> True, Head -> dirac,
-FCE -> True]", "dirac[FCHN[1, i, j]] GA[mu]"}
+FCE -> True]", "dirac[DIDelta[i, j]]*GA[mu]"}
 });
 

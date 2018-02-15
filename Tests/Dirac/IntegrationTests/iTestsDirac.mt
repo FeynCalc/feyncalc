@@ -1,4 +1,4 @@
-(* :Title: iTestsLorentz.mt													*)
+(* :Title: iTestsDirac.mt													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -7,7 +7,7 @@
 	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Integration tests for functions in the "Lorentz" directory	*)
+(* :Summary:  Integration tests for functions in the "Dirac" directory		*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -16,7 +16,7 @@ Needs["FeynCalc`"];
 (*$FCAdvice = False;*)
 
 ClearAll[itestsLorentz];
-itestsLorentz = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Lorentz", "IntegrationTests"}]]
+itestsLorentz = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Dirac", "IntegrationTests"}]]
 Get/@itestsLorentz;
 
 FCClearScalarProducts[];
@@ -25,6 +25,5 @@ FCClearScalarProducts[];
 
 Map[Test[ExpandAll[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]]]&,
 	Join[
-		Tests`Lorentz`fcitUncontract,
-		Tests`Lorentz`fcitContract
+		Tests`Dirac`fcitDiracTrace
 		]];

@@ -1,0 +1,20 @@
+Tests`Dirac`fcitDiracTrace =
+({
+{"fcitDiracTrace-ID1",
+"TimeConstrained[
+res = DiracTrace[(mc + GSD[k1]).GAD[
+	c[li3]].(mc + GSD[k1 + k2 + p - q]).GAD[
+	c[ga]].(-mc + GSD[p] - GSD[q]).GA[
+	5].(mc + GSD[p] + GSD[q]).GAD[c[li2]].(-mc + GSD[k2]).GAD[
+	li2].(mc + GSD[p] + GSD[q]).GA[5].(-mc + GSD[p] - GSD[q]).GAD[
+	ga].(mc - GSD[k2 + 2 p]).GAD[li3],
+	DiracTraceEvaluate -> True];, 25, $Failed];
+LeafCount[res] > 17000000", "True"},
+{"fcitDiracTrace-ID2",
+"TimeConstrained[
+res = DiracTrace[
+	Dot[GSD[i1],GSD[i2],GSD[i3],GSD[i4],GSD[i5],GSD[i6],GSD[i7],
+	GSD[i8],GSD[i9],GSD[i10],GSD[i11],GSD[i12],GSD[i13],GSD[i14]],
+	DiracTraceEvaluate -> True];, 16, $Failed];
+LeafCount[res] > 6500000", "True"}
+});

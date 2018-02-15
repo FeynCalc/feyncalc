@@ -3,168 +3,96 @@ Tests`LoopIntegrals`fcitTIDMTests =
 {"fcitTIDMTests-ID1",
 "TID[FAD[{z,M},{k+z,M},{-k+pp-z,MD},{p-z,m}] GSD[z] \
 SPD[k,z],z]//FCE",
-"(FAD[{z, M}, {-k - p + z, m}]*(-(GSD[pp]*(SPD[k, k] + 2*SPD[k, p] \
-+ SPD[p, p])) + GSD[-k - p]*(-SPD[k, pp] - SPD[p, pp])))/(4*((-SPD[k, \
-pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, \
-pp])) + (FAD[{z, M}, {-pp + z, MD}]*(-(GSD[pp]*(-SPD[k, pp] - SPD[p, \
-pp])) + GSD[-k - p]*SPD[pp, pp]))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - \
-(SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + (FAD[{z, m}, \
-{-p + z, M}]*(GSD[-k + pp]*SPD[p, p] - GSD[p]*(-SPD[k, p] + SPD[p, \
-pp])))/(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))) - (FAD[{z, MD}, {-k + pp + z, \
-M}]*(GSD[-k + pp]*(-SPD[k, p] + SPD[p, pp]) - GSD[p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp])))/(4*((-SPD[k, p] + SPD[p, pp])^2 - \
-SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) + (FAD[{z, M}, \
-{k + z, M}, {-p + z, m}]*SPD[k, k]*(GSD[-k + pp]*(SPD[k, p]^2 - \
-SPD[k, k]*SPD[p, p]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - \
-SPD[k, k]*(-SPD[k, p] + SPD[p, pp])) - GSD[k]*(-((-SPD[k, k] + SPD[k, \
-pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))))/(4*((-SPD[k, \
-k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) + \
-(FAD[{z, M}, {-k + z, M}, {-pp + z, MD}]*SPD[k, k]*(GSD[-k + \
-pp]*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])) - GSD[p]*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, \
-k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[k]*((-SPD[k, k] + \
-SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, \
-p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-+ SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))) - (FAD[{z, MD}, {-k - p + pp + z, \
-m}]*(GSD[-k + pp]*SPD[p, p]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, \
-k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) - GSD[p]*(-SPD[k, p] + \
-SPD[p, pp])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] \
-+ SPD[p, p])*SPD[pp, pp]) - GSD[-k + pp]*(-SPD[k, p] + SPD[p, \
-pp])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) + GSD[p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
-pp])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) - GSD[pp]*(SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp])) + GSD[-k - p]*(-SPD[k, pp] - SPD[p, \
-pp])*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp])) - GSD[pp]*(-SPD[k, pp] - SPD[p, pp])*((-SPD[k, p] \
-+ SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) \
-+ GSD[-k - p]*SPD[pp, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - \
-SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, \
-pp])*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp]))) - (FAD[{z, M}, {-k + z, M}, {p + z, m}, {-k + pp \
-+ z, MD}]*SPD[k, k]*(-(GSD[-k + pp]*(m^2 - M^2 - SPD[p, p])*(-(SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))) \
-- GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - \
-SPD[k, p]*(-SPD[k, p] + SPD[p, pp])) + GSD[-k + pp]*(SPD[k, p]^2 - \
-SPD[k, k]*SPD[p, p])*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
-pp]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, \
-k]*(-SPD[k, p] + SPD[p, pp]))*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] \
-+ SPD[pp, pp]) - GSD[k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + \
-SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*(M^2 - MD^2 + SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) + GSD[p]*(m^2 - M^2 - SPD[p, \
-p])*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp])) + GSD[p]*SPD[k, k]*((-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] \
-+ SPD[pp, pp])) + GSD[k]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + \
-SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp])) + GSD[k]*SPD[k, k]*(-(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
-pp]))))/(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, \
-k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + \
-SPD[pp, pp]))) - (FAD[{z, M}, {p + z, m}, {-k + pp + z, MD}]*(GSD[-k \
-+ pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, \
-p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*SPD[k, \
-k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, p] + SPD[p, \
-pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - \
-GSD[k]*SPD[k, k]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] \
-- 2*SPD[k, pp] + SPD[pp, pp]))*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[-k + pp]*(m^2 - \
-M^2 - SPD[p, p])*(-SPD[k, p] + SPD[p, pp])*((-SPD[k, k] + SPD[k, \
-pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] \
-+ SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, \
-p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*(m^2 - M^2 - \
-SPD[p, p])*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-GSD[-k + pp]*SPD[p, p]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + \
-SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, \
-k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + \
-SPD[pp, pp])) - GSD[p]*(-SPD[k, p] + SPD[p, pp])*(M^2 - MD^2 + SPD[k, \
-k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, \
-p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-+ SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, p] + SPD[p, pp])^2 - \
-SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) + \
-(FAD[{z, M}, {-pp + z, MD}, {-k - p + z, m}]*(-(GSD[-k + pp]*SPD[k, \
-k]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p])*((-SPD[k, pp] - SPD[p, pp])^2 \
-- (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + GSD[p]*SPD[k, \
-k]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] \
-+ SPD[p, p])*SPD[pp, pp]) - GSD[-k + pp]*SPD[k, k]*(-(SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) + GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + \
-SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, \
-pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) + GSD[k]*SPD[k, k]*(-((-SPD[k, k] + SPD[k, \
-pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] \
-- SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) \
-+ GSD[p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + \
-2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*(-(-SPD[k, k] + SPD[k, pp])^2 + \
-SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[k]*SPD[k, \
-k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-- SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*SPD[k, \
-k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-- SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[k]*SPD[k, \
-k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*SPD[pp, pp])*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] \
-- 2*SPD[k, pp] + SPD[pp, pp])) - GSD[pp]*(m^2 - M^2 - SPD[k, k] - \
-2*SPD[k, p] - SPD[p, p])*(-SPD[k, pp] - SPD[p, pp])*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-GSD[-k - p]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*SPD[pp, \
-pp]*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] \
-+ SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) \
-- SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-GSD[pp]*(SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*(M^2 - MD^2 + SPD[pp, \
-pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] \
-+ SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) \
-- SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - \
-GSD[-k - p]*(-SPD[k, pp] - SPD[p, pp])*(M^2 - MD^2 + SPD[pp, \
-pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] \
-+ SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) \
-- SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-2*GSD[k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - \
-2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + \
-SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - \
-(SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])))"},
+"-(FAD[{z, M}, {-k - p + z, m}]*(GSD[pp]*SPD[k, k] + 2*GSD[pp]*SPD[k, p] + GSD[-k - p]*SPD[k, pp] + GSD[pp]*SPD[p, p] + GSD[-k - p]*SPD[p, pp]))/
+(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + (FAD[{z, M}, {-pp + z, MD}]*(GSD[pp]*SPD[k, pp] + GSD[pp]*SPD[p, pp] + GSD[-k - p]*SPD[pp, pp]))/
+(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + (FAD[{z, m}, {-p + z, M}]*(GSD[p]*SPD[k, p] + GSD[-k + pp]*SPD[p, p] - GSD[p]*SPD[p, pp]))/
+(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, MD}, {-k + pp + z, M}]*(GSD[p]*SPD[k, k] + GSD[-k + pp]*SPD[k, p] - 2*GSD[p]*SPD[k, pp] - GSD[-k + pp]*SPD[p, pp] + GSD[p]*SPD[pp, pp]))/
+(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, M}, {k + z, M}, {-p + z, m}]*SPD[k, k]*(GSD[-k + pp]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + SPD[p, pp])) -
+	GSD[k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))))/
+(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, M}, {-k + z, M}, {-pp + z, MD}]*SPD[k, k]*(GSD[-k + pp]*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])) -
+	GSD[p]*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/
+(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, MD}, {-k - p + pp + z, m}]*(-(GSD[p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) -
+	GSD[-k + p + pp]*SPD[k, p]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	2*GSD[p]*SPD[k, pp]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) -
+	GSD[-k + pp]*SPD[p, p]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[-k + p + pp]*SPD[p, pp]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) -
+	GSD[p]*SPD[pp, pp]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[pp]*SPD[k, k]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[pp]*SPD[k, p]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k + p + pp]*SPD[k, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[pp]*SPD[p, p]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k + p + pp]*SPD[p, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[-k - p]*SPD[pp, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*
+((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) -
+(FAD[{z, M}, {-k + z, M}, {p + z, m}, {-k + pp + z, MD}]*SPD[k, k]*(-(GSD[-k + pp]*(m^2 - M^2 - SPD[p, p])*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))) -
+	GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, pp])) + GSD[-k + pp]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p])*
+	 (M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))*
+	 (M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - GSD[k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*
+	 (M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) + GSD[p]*(m^2 - M^2 - SPD[p, p])*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[p]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[k]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[k]*SPD[k, k]*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/
+(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) -
+(FAD[{z, M}, {p + z, m}, {-k + pp + z, MD}]*(GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*
+	 ((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) -
+	  SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k]*SPD[k, k]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[p]*SPD[k, k]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[-k + pp]*SPD[k, p]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[p]*SPD[k, pp]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k + pp]*(m^2 - M^2 - SPD[p, p])*SPD[p, pp]*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[p]*(m^2 - M^2 - SPD[p, p])*SPD[pp, pp]*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[p]*SPD[k, p]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*
+	 ((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k + pp]*SPD[p, p]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	  SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[p]*SPD[p, pp]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	  SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/
+(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, M}, {-pp + z, MD}, {-k - p + z, m}]*(-(GSD[-k + pp]*SPD[k, k]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) +
+	GSD[p]*SPD[k, k]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) -
+	GSD[-k + pp]*SPD[k, k]*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[k]*SPD[k, k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[k - p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) -
+	  SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[k]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*
+	 (-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[pp]*SPD[k, pp]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*
+	 ((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[pp]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*SPD[p, pp]*
+	 ((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[-k - p]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*SPD[pp, pp]*
+	 ((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[pp]*SPD[k, k]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[pp]*SPD[k, p]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k - p]*SPD[k, pp]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	  SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[pp]*SPD[p, p]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	  SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k - p]*SPD[p, pp]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	  SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] -
+	  2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) -
+	  SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*
+((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])))"},
 {"fcitTIDMTests-ID2",
 "TID[GSD[z].GA[5] FAD[{z,M},{k+z,M},{-k+pp-z,MD}] \
 SPD[k,z],z]//FCE",
