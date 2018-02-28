@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: CheckToTFI														*)
 
 (*
@@ -39,63 +37,35 @@ Paint[inserts = Rest@InsertFields[CreateTopologies[2, 1 -> 1,
 		SheetHeader -> False,   Numbering -> None];
 
 
-amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,Apply[List,
-	FCPrepareFAAmp[CreateFeynAmp[inserts, Truncated -> True,
-				GaugeRules -> {}, PreFactor -> 1/((2^D)*(Pi)^(D/2))],
-	UndoChiralSplittings -> True]]] /. {SumOver[__] :> 1,
-			MQU[Index[Generation, 3]] -> MQ,
-	GaugeXi[_] -> GaugeXi} /. {InMom1 -> p, OutMom1 -> p,
-	LoopMom1 -> q1, LoopMom2 -> q2};
+amps = FCFAConvert[CreateFeynAmp[inserts, Truncated -> True,
+GaugeRules -> {}, PreFactor -> 1/((2^D)*(Pi)^(D/2))],IncomingMomenta->{p},
+OutgoingMomenta->{p},LoopMomenta->{q1,q2},DropSumOver->True,
+FinalSubstitutions->{MQU[Index[Generation, 3]] -> MQ},List->False,ChangeDimension->D];
 
-xx = ApartFF[Total[amps], {q1, q2}];
-yy = Isolate[Collect2[xx, FeynAmpDenominator], FeynAmpDenominator] /.
+
+xx = ApartFF[amps, {q1, q2},Collecting->False];
+yy=Collect2[xx,FeynAmpDenominator,Factoring->False,IsolateNames->KK] /.
 FeynAmpDenominator[x__] :> FRH[FeynAmpDenominator[x]];
 zz = ToTFI[#, q1, q2, p] & /@
 	Cases[yy, FeynAmpDenominator[__], Infinity] // Union;
-a = Cases[zz, FAD[__], Infinity] // Union;
-b = Cases[zz, TFI[__], Infinity] // Union;
 
 
+a = Cases2[zz, FAD];
+b = Cases2[zz, TFI];
 
 
 On[Assert];
 
 Assert[a === {FAD[p]}]
-Assert[b === {TFI[D,
-	SPD[p, p], {{1, 0}, {1, 0}, {1, 0}, {1, 0}, {0, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {1, 0}, {1, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {1, 0}, {0, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {1, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {1, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {2, 0}, {0, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {2, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {2, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {0, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {2, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {2, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {2, 0}, {0, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {1, MQ}, {1, 0}, {0, 0}, {1, MQ}}],
-TFI[D, SPD[p,
-	p], {{2, 0}, {1, MQD[Index[Generation, 3]]}, {1, 0}, {0, 0}, {1,
-	MQD[Index[Generation, 3]]}}],
-TFI[D, SPD[p, p], {{2, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{2, 0}, {2, 0}, {1, 0}, {0, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{3, 0}, {1, 0}, {1, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{3, 0}, {1, 0}, {1, 0}, {0, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{3, 0}, {1, MQ}, {1, 0}, {0, 0}, {1, MQ}}],
-TFI[D, SPD[p,
-	p], {{3, 0}, {1, MQD[Index[Generation, 3]]}, {1, 0}, {0, 0}, {1,
-	MQD[Index[Generation, 3]]}}],
-TFI[D, SPD[p, p], {{3, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{3, 0}, {2, 0}, {1, 0}, {0, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{4, 0}, {1, 0}, {1, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{4, 0}, {1, 0}, {1, 0}, {0, 0}, {2, 0}}],
-TFI[D, SPD[p, p], {{4, 0}, {1, MQ}, {1, 0}, {0, 0}, {1, MQ}}],
-TFI[D, SPD[p,
-	p], {{4, 0}, {1, MQD[Index[Generation, 3]]}, {1, 0}, {0, 0}, {1,
-	MQD[Index[Generation, 3]]}}],
-TFI[D, SPD[p, p], {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}],
-TFI[D, SPD[p, p], {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {2, 0}}]}];
+Assert[b === {TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {1, 0}, {1, 0}, {0, 0}}], TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}}], TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {1, 0}, {1, 0}, {2, 0}}], 
+ TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {1, 0}, {1, 0}}], TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {1, 0}, {2, 0}}], TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {2, 0}, {1, 0}}], 
+ TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {2, 0}, {2, 0}, {2, 0}}], TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {0, 0}, {1, 0}}], TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {0, 0}, {2, 0}}], 
+ TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {1, 0}, {0, 0}}], TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}}], TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {1, 0}, {2, 0}, {1, 0}}], 
+ TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {2, 0}, {0, 0}, {1, 0}}], TFI[D, SPD[p, p], {{2, 0}, {1, 0}, {2, 0}, {0, 0}, {2, 0}}], TFI[D, SPD[p, p], {{2, 0}, {1, MQ}, {1, 0}, {0, 0}, {1, MQ}}], 
+ TFI[D, SPD[p, p], {{2, 0}, {1, MQD[Index[Generation, 3]]}, {1, 0}, {0, 0}, {1, MQD[Index[Generation, 3]]}}], TFI[D, SPD[p, p], {{2, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}], 
+ TFI[D, SPD[p, p], {{2, 0}, {2, 0}, {1, 0}, {0, 0}, {2, 0}}], TFI[D, SPD[p, p], {{2, 0}, {2, 0}, {1, 0}, {1, 0}, {0, 0}}], TFI[D, SPD[p, p], {{3, 0}, {1, 0}, {1, 0}, {0, 0}, {1, 0}}], 
+ TFI[D, SPD[p, p], {{3, 0}, {1, 0}, {1, 0}, {0, 0}, {2, 0}}], TFI[D, SPD[p, p], {{3, 0}, {1, MQ}, {1, 0}, {0, 0}, {1, MQ}}], 
+ TFI[D, SPD[p, p], {{3, 0}, {1, MQD[Index[Generation, 3]]}, {1, 0}, {0, 0}, {1, MQD[Index[Generation, 3]]}}], TFI[D, SPD[p, p], {{3, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}], 
+ TFI[D, SPD[p, p], {{3, 0}, {2, 0}, {1, 0}, {0, 0}, {2, 0}}], TFI[D, SPD[p, p], {{4, 0}, {1, 0}, {1, 0}, {0, 0}, {1, 0}}], TFI[D, SPD[p, p], {{4, 0}, {1, 0}, {1, 0}, {0, 0}, {2, 0}}], 
+ TFI[D, SPD[p, p], {{4, 0}, {1, MQ}, {1, 0}, {0, 0}, {1, MQ}}], TFI[D, SPD[p, p], {{4, 0}, {1, MQD[Index[Generation, 3]]}, {1, 0}, {0, 0}, {1, MQD[Index[Generation, 3]]}}], 
+ TFI[D, SPD[p, p], {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}], TFI[D, SPD[p, p], {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {2, 0}}]}];

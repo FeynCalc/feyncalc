@@ -44,12 +44,12 @@ top1To2 = CreateTopologies[0,1 -> 2];
 top2To2 = CreateTopologies[0,2 -> 2];
 
 
-compFu1To2[x_]:=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[x, Truncated -> True,PreFactor->1]],
+compFu1To2[x_]:=FCFAConvert[CreateFeynAmp[x, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1},OutgoingMomenta->{p2,p3},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True]//Contract;
 
 
-compFu2To2[x_]:=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[x, Truncated -> True,PreFactor->1]],
+compFu2To2[x_]:=FCFAConvert[CreateFeynAmp[x, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1,p2},OutgoingMomenta->{p3,p4},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True]//Contract;
 

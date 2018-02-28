@@ -45,7 +45,7 @@ InsertionLevel -> {Classes},Model -> FileNameJoin[{"EulerHeisenberg","EulerHeise
 GenericModel->FileNameJoin[{"EulerHeisenberg","EulerHeisenberg"}]];
 
 
-amp=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[diag, Truncated -> True,PreFactor->1]],
+amp=FCFAConvert[CreateFeynAmp[diag, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1,p2},OutgoingMomenta->{p2,p3},UndoChiralSplittings->True,
 DropSumOver->True, List->False,SMP->True];
 

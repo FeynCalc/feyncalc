@@ -43,7 +43,7 @@ FAPatch[PatchModelsOnly->True];
 top1To2 = CreateTopologies[0,1 -> 2];
 
 
-compFu1To2[x_]:=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[x, Truncated -> True,PreFactor->1]],
+compFu1To2[x_]:=FCFAConvert[CreateFeynAmp[x, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1},OutgoingMomenta->{p2,p3},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True]//Contract;
 
