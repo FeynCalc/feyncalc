@@ -23,5 +23,20 @@ m]] // FCPrepareFAAmp","FeynAmpDenominator[
 PropagatorDenominator[Momentum[P], MW Sqrt[GaugeXi[W]]],
 PropagatorDenominator[Momentum[k], m]]"},
 {"fcstFCPrepareFAAmp-ID2","FCPrepareFAAmp[FeynArts`IndexDelta[FeynArts`Index[Global`Gluon, 1],
-FeynArts`Index[Global`Gluon, 2]]]","SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]]"}
+FeynArts`Index[Global`Gluon, 2]]]","SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]]"},
+{"fcstFCPrepareFAAmp-ID2","FCPrepareFAAmp[Spinor[-Momentum[InMom2], m, 1] .
+	(I*(-1 + Zpsi)*(-DiracGamma[Momentum[InMom2]]) .
+	DiracGamma[6] +
+		I*(-1 + Zpsi)*(-DiracGamma[Momentum[InMom2]]) .
+	DiracGamma[7] -
+		I*(-1 + Zm*Zpsi)*m) . (-DiracGamma[Momentum[InMom2]] +
+		m) . ((-I)*DiracGamma[LorentzIndex[Lor2]]*gs*
+		SUNTF[{SUNIndex[Glu4]}, cqbar, SUNFIndex[Col5]]) .
+	(DiracGamma[Momentum[-InMom2 + OutMom2]] + m) .
+	((-I)*DiracGamma[LorentzIndex[Lor1]]*gs*
+		SUNTF[{SUNIndex[Glu3]}, SUNFIndex[Col5], cq]) .
+	Spinor[Momentum[InMom1], m, 1], UndoChiralSplittings -> True]",
+	"Spinor[-Momentum[InMom2], m, 1] . ((-I)*m*(-1 + Zm*Zpsi) - I*(-1 + Zpsi)*DiracGamma[Momentum[InMom2]]) . (m - DiracGamma[Momentum[InMom2]]) .
+((-I)*gs*DiracGamma[LorentzIndex[Lor2]]*SUNTF[{SUNIndex[Glu4]}, cqbar, SUNFIndex[Col5]]) . (m + DiracGamma[Momentum[-InMom2 + OutMom2]]) .
+((-I)*gs*DiracGamma[LorentzIndex[Lor1]]*SUNTF[{SUNIndex[Glu3]}, SUNFIndex[Col5], cq]) . Spinor[Momentum[InMom1], m, 1]"}
 };

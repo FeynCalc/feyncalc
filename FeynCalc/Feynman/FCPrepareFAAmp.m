@@ -38,7 +38,7 @@ Options[FCPrepareFAAmp] = {
 };
 
 FCPrepareFAAmp[expr_, OptionsPattern[]] :=
-	Block[ {replist0,replist1,replist2,replist3,repListSMP,tempvar,temp},
+	Block[ {replist0,replist1,replist2,replist3,repListSMP,tempvar,temp,holdDOT},
 
 		repListSMP = {
 			FCGV["EL"] -> SMP["e"],
@@ -117,7 +117,9 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[UndoChiralSplittings],
 			temp = temp//.{(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :> a1 DiracGamma[x] a2,
-			(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2}
+			(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2} /. DOT ->
+			holdDOT /. {a_. holdDOT[-DiracGamma[x_], DiracGamma[6]] + a_. holdDOT[-DiracGamma[x_], DiracGamma[7]] :> -a DiracGamma[x] }/.
+			holdDOT -> DOT
 		];
 		temp
 	];
