@@ -64,6 +64,13 @@ pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
 FCPatternFreeQ[{expr},{h1,h2,...}] checks that in addition to the pattern \
 objects, no heads h1, h2, ... are present.";
 
+FCProgressBar::usage =
+"FCProgressBar[text, i, total] is a simple auxiliary function that can \
+be used to display the progress of a certain evaluation, e.g. mapping a list \
+of integrals to some function. Here i is the number of the current step \
+while total denotes the overall number of steps. A simple usage example
+is Table[FCProgressBar[\"Calculating integral \", i, 10], {i, 1, 10}]";
+
 FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
@@ -370,6 +377,9 @@ FCPatternFreeQ[expr_List]:=
 
 FCPatternFreeQ[expr_List ,objs_List]:=
 	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}, objs]];
+
+FCProgressBar[text_String, i_Integer, tot_Integer] :=
+	FCPrint[0, text <> ToString[i] <> " / " <> ToString[tot] <> "\n", UseWriteString -> True];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, time},
