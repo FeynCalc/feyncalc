@@ -34,15 +34,30 @@ Begin["`PropagatorDenominatorExplicit`Private`"]
 Options[PropagatorDenominatorExplicit] = {
 	Denominator -> False,
 	Dimension -> False,
+	ExpandScalarProduct -> True,
 	FCE -> False,
 	FCI -> False,
 	Head -> Identity,
 	Mandelstam -> {},
+	MomentumCombine -> False,
 	SmallVariable -> False
 };
 
+id[x_, ___]:=
+	x;
+
 PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
-	Block[{ex, dim, res, head1, head2, mandel, ruleNormal, ruleMandelstam, fad},
+	Block[{ex, dim, res, head1, head2, mandel, ruleNormal, ruleMandelstam, fad, esp, mc},
+
+		If[ OptionValue[ExpandScalarProduct],
+			esp=ExpandScalarProduct,
+			esp=id
+		];
+
+		If[ OptionValue[MomentumCombine],
+			mc=MomentumCombine,
+			mc=id
+		];
 
 		If[	OptionValue[FCI],
 			ex = expr,
@@ -60,18 +75,18 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 
 		ruleNormal = {
 			PropagatorDenominator[a_ ,b_] :>
-			(1/Expand[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2]),
+			(1/Expand[esp[mc[Pair[a, a]],FCI->True] - b^2]),
 			(*TODO FCEta*)
 			GenericPropagatorDenominator[pr_ ,{n_, _}] :>
-			(1/Expand[ExpandScalarProduct[pr,FCI->True]])^n
+			(1/Expand[esp[mc[pr],FCI->True]])^n
 		};
 
 		ruleMandelstam = {
 			PropagatorDenominator[a_ ,b_] :>
-			(1/TrickMandelstam[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2, mandel]),
+			(1/TrickMandelstam[esp[mc[Pair[a, a]],FCI->True] - b^2, mandel]),
 
 			GenericPropagatorDenominator[pr_ , {n_, _}] :>
-			(1/TrickMandelstam[ExpandScalarProduct[pr,FCI->True],mandel])^n
+			(1/TrickMandelstam[esp[mc[pr],FCI->True],mandel])^n
 		};
 
 		If[	mandel==={},

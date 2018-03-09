@@ -50,5 +50,11 @@ Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
 	"aa/hd[-m^2 + SPD[q, q]]"},
 {"fcstPropagatorDenominatorExplicit-ID11",
 	"PropagatorDenominatorExplicit[GFAD[{SPD[q1, p] SPD[q2, p], 2, 1}], FCE -> True]",
-	"1/(SPD[p, q1]^2 SPD[p, q2]^2)"}
+	"1/(SPD[p, q1]^2 SPD[p, q2]^2)"},
+{"fcstPropagatorDenominatorExplicit-ID12",
+	"PropagatorDenominatorExplicit[FAD[{p1 + p2, 0}], ExpandScalarProduct -> False]",
+	"1/Pair[Momentum[p1, D] + Momentum[p2, D], Momentum[p1, D] + Momentum[p2, D]]"},
+{"fcstPropagatorDenominatorExplicit-ID13",
+	"PropagatorDenominatorExplicit[FAD[{p1 + p2, 0}], ExpandScalarProduct -> False, MomentumCombine -> True]",
+	"1/Pair[Momentum[p1 + p2, D], Momentum[p1 + p2, D]]"}
 }
