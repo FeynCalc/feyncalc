@@ -142,5 +142,7 @@ p1, {-p1 + p2, m}, {-p1 + p3, m}] FVD[p1, Lor1] FVD[p1, Lor2] (SPD[p1, p1] -
 FCE -> True]",
 "m*FAD[{l, m1}, {l + p, m2}]*SPD[l, p2] + (FAD[{l, m1}, {l - p, m2}]*SPD[l, p2]*(m1^2 - m2^2 + SPD[p, p])*(GSD[p2]*SPD[p, p2] - GSD[p]*SPD[p2, p2]))/
 (2*(SPD[p, p2]^2 - SPD[p, p]*SPD[p2, p2])) + (FAD[{l, m2}]*SPD[p, p2]*(GSD[p2]*SPD[p, p2] - GSD[p]*SPD[p2, p2]))/(2*(SPD[p, p2]^2 - SPD[p, p]*SPD[p2, p2])) +
-(FAD[{l, m1}, {l + p, m2}]*SPD[l, p2]^2*(GSD[p2]*SPD[p, p] - GSD[p]*SPD[p, p2]))/(-SPD[p, p2]^2 + SPD[p, p]*SPD[p2, p2])"}
+(FAD[{l, m1}, {l + p, m2}]*SPD[l, p2]^2*(GSD[p2]*SPD[p, p] - GSD[p]*SPD[p, p2]))/(-SPD[p, p2]^2 + SPD[p, p]*SPD[p2, p2])"},
+{"fcstFCMultiLoopTID-ID17", "FCMultiLoopTID[FAD[l, l + p] SPD[l, Polarization[k, I]], {l}, FCE -> True]",
+"-(FAD[l, l - p]*SPD[p, Polarization[k, I]])/2"}
 })
