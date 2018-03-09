@@ -109,9 +109,11 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			Return[ex]
 		];
 
+		ex = ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,n])]} /.PD -> procan /. procan -> PD;
+
 		If[ Length[{qs}]===0,
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
-			Return[ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,n])]} /.PD -> procan /. procan -> PD /. FeynAmpDenominator -> feyncan]
+			Return[ex /.  FeynAmpDenominator -> feyncan]
 		];
 
 
@@ -267,11 +269,12 @@ renameLoopMomenta[int_,qs_List]:=
 	];
 
 procan[a_, m_] :=
-	Block[ {tt , one},
+	Block[{tt, one, numfac},
 		tt = Factor2[one MomentumExpand[a]];
-		If[ NumericalFactor[tt] === -1,
-			PD[-tt/.one->1, m],
-			PD[tt/.one->1, m]
+		numfac = NumericalFactor[tt];
+		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
+			PD[Expand[-tt /. one -> 1], m],
+			PD[Expand[tt /. one -> 1], m]
 		]
 	];
 
