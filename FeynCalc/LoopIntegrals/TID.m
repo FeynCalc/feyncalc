@@ -188,9 +188,9 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[ fds,
 			FCPrint[1,"TID: Applying FDS.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->{q}];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
 			(* The fact that we need to apply FDS twice here, tells a lot about the quality of FDS. *)
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->{q}];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
 			FCPrint[1, "TID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After FDS: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -255,7 +255,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			This is needed only in the BMHV scheme *)
 		If[ $BreitMaison && !FreeQ[t1,LorentzIndex],
 			time=AbsoluteTime[];
-			FCPrint[1,"TID: Handling 4 and D-4 dimensional loop momenta: ", t1, FCDoControl->tidVerbose];
+			FCPrint[1,"TID: Handling 4 and D-4 dimensional loop momenta.", FCDoControl->tidVerbose];
 			t1 = t1 /. {
 				Pair[Momentum[q,n-4],LorentzIndex[i_,n-4]]:>
 					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli,n-4],LorentzIndex[i,n-4]]),
@@ -307,13 +307,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 			(* Here we reduce the unique tensor integrals to scalar integrals *)
 
-			FCPrint[1,"TID: Reducing unique 1-loop tensor integrals.", FCDoControl->tidVerbose];
+			FCPrint[1,"TID: Reducing ", Length[uniqueCanIndexList], " unique 1-loop tensor integrals.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			solsList= tidSingleIntegral[#, q , n, OptionValue[UsePaVeBasis]]&/@uniqueCanIndexList;
+
 			FCPrint[1, "TID: Done reducing unique 1-loop tensor integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After the reduction: ", solsList , FCDoControl->tidVerbose];
-
-
 
 			FCPrint[1, "TID: Done reducing tensor integrals, timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->tidVerbose];
 
@@ -560,6 +559,8 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 
 		res = Isolate[iList1 /. rList1 /. loopIntegral[z_tidPaVe]:>z, {LorentzIndex,q,FeynAmpDenominator,tidPaVe}, IsolateNames->tidIsolate];
 
+		res = res /. FeynAmpDenominator[x__]/;!FreeQ[{x},q] :> FRH[FeynAmpDenominator[x]];
+
 		If[	(!FreeQ[res, loopIntegral]),
 			Message[TID::failmsg, "tidSingleIntegral failed to achieve full tensor reduction in " <> ToString[sList2,InputForm]];
 			Abort[]
@@ -688,8 +689,8 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 		(*	The final step is to isolate all the prefactors that don't depend on the loop momentum in the full result	*)
 		time=AbsoluteTime[];
 		res = Isolate[Collect2[(sp + tpSP + tpTP), {q,FeynAmpDenominator,tidPaVe}]//.
-			{null1 | null2 | null3 | null4 -> 0}, {q, FeynAmpDenominator,tidPaVe}, IsolateNames->tidIsolate] /. Pair[x__] /;
-			!FreeQ[{x}, q] :> FRH[Pair[x], IsolateNames->tidIsolate];
+			{null1 | null2 | null3 | null4 -> 0}, {q, FeynAmpDenominator,tidPaVe}, IsolateNames->tidIsolate] /.
+			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->tidIsolate];
 		FCPrint[2,"TID: tidFullReduce: Time to sort the final result of this iteration ", N[AbsoluteTime[] - time, 4],
 			FCDoControl->tidVerbose];
 		FCPrint[2,"TID: tidFullReduce: Result of this iteration ", res, FCDoControl->tidVerbose];

@@ -819,5 +819,14 @@ cw^2), k, Dimension -> d]",
 "((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1]])/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]]) -
 ((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m2]])/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]]) -
 ((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1], PropagatorDenominator[Momentum[k, d] - Momentum[p, d], m2]]*
-(m1^2 - m2^2 - Pair[Momentum[p, d], Momentum[p, d]]))/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]])"}
+(m1^2 - m2^2 - Pair[Momentum[p, d], Momentum[p, d]]))/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]])"},
+{"fcstTID-ID25", "SPD[k1] = 0; SPD[k2] = 0; SPD[k1, k2] = 2 m^2; res = TID[ FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+PropagatorDenominator[1/2 Momentum[k1 + k2, D] + Momentum[l, D], m], PropagatorDenominator[-Momentum[k2, D] +
+1/2 Momentum[k1 + k2, D] + Momentum[l, D], m], PropagatorDenominator[-Momentum[k1, D] - Momentum[k2, D] + 1/2 Momentum[k1 + k2, D] +
+Momentum[l, D], m]]  Pair[LorentzIndex[mu, D], Momentum[l, D]], l, FCE->True]; FCClearScalarProducts[]; res",
+"(FAD[l, {-k1/2 + k2/2 + l, m}, {k1/2 + k2/2 + l, m}]*FVD[k1, mu])/(4*m^2) -
+(FAD[l, l, {-k1/2 - k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/(4*m^2) -
+(FAD[l, l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/4 -
+(FAD[l, l, {-k1/2 + k2/2 + l, m}, {k1/2 + k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/4 -
+(FAD[l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*FVD[k2, mu])/(4*m^2)"}
 };

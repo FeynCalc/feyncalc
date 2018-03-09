@@ -143,7 +143,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		time=AbsoluteTime[];
 		FCPrint[1, "ApartFF: Extracting unique loop integrals.", FCDoControl->affVerbose];
 		(*	Split loop integrals from the rest	*)
-		tmp = FCLoopSplit[exp,lmoms];
+		tmp = FCLoopSplit[exp,lmoms, Collecting->False];
 
 		If[	OptionValue[FeynAmpDenominator],
 			rest  = tmp[[1]];
