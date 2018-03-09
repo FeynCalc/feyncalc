@@ -81,5 +81,22 @@ nu] (FVD[p1, Lor4] + FVD[-l - p2 + p3 + p4, Lor4]) MTD[Lor3,mu] , {l}, ExpandSca
 FCE",
 "xx (FVD[p1, Lor4] - FVD[p2, Lor4] + FVD[p3, Lor4] + FVD[p4, Lor4]) loopInt[FAD[l, l + p2, l +
 p2 - p3 - p4] FVD[l, nu]] MTD[Lor3, mu] -xx loopInt[FAD[l, l + p2, l + p2 - p3 -
-p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, mu]"}
+p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, mu]"},
+{"fcstFCLoopIsolate-ID25",
+"FCLoopIsolate[GFAD[{SPD[q1,p]SPD[q2,p],n,1}],{q1,q2},\
+Head->loopInt]//FCE",
+"loopInt[GFAD[{SPD[p, q1]*SPD[p, q2], n, 1}]]"},
+{"fcstFCLoopIsolate-ID26",
+"FCLoopIsolate[GFAD[{SPD[q1,p]SPD[q2,p],2,1}],{q1,q2},\
+Head->loopInt]//FCE",
+"loopInt[GFAD[{SPD[p, q1]*SPD[p, q2], 2, 1}]]"},
+{"fcstFCLoopIsolate-ID27",
+"FCLoopIsolate[FAD[{q2,m}]GFAD[{SPD[q1,p]SPD[q2,p],2,1}],{q1,q2},\
+Head->loopInt]//FCE",
+"loopInt[FAD[{q2, m}]*GFAD[{SPD[p, q1]*SPD[p, q2], 2, 1}]]"},
+{"fcstFCLoopIsolate-ID28",
+"FCLoopIsolate[
+FAD[{q2, m}] GFAD[{SPD[q1, p] SPD[q2, p], 2, 1}], {q1, q2},
+Head -> loopInt, GFAD -> False] // FCE",
+"FAD[{q2, m}] GFAD[{SPD[p, q1] SPD[p, q2], 2, 1}]"}
 };

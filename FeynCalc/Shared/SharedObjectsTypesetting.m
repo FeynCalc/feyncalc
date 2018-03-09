@@ -578,6 +578,15 @@ ff[{y_}] :=
 ff[y_/;Head[y]=!=List] :=
 	SequenceForm[y^2];
 
+ff2[{ex_,n_,1}] :=
+	Row[{"(",ex,"+",I "\[Eta]",")"}]^n;
+
+ff2[{ex_,n_,-1}] :=
+	Row[{"(",ex,"-",I "\[Eta]",")"}]^n;
+
+MakeBoxes[pref_. GFAD[a__List], TraditionalForm]:=
+	ToBoxes[pref/(Apply[DOT,Map[ff2, {a}]]/. DOT -> dootpow), TraditionalForm]/; MatchQ[{a}, {{_, _, _} ..}];
+
 MakeBoxes[pref_. FAD[a__,OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[ff, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}];
 
@@ -595,7 +604,7 @@ FeynAmp /:
 		ToBoxes[FeynAmp[q,amp], TraditionalForm];
 
 MakeBoxes[f_. a_FeynAmpDenominator, TraditionalForm ] :=
-	ToBoxes[f FCE[a], TraditionalForm]/; MatchQ[List@@a,{__PD}];
+	ToBoxes[f FCE[a], TraditionalForm];
 
 FourVector /:
 	MakeBoxes[FourVector[a_,b_, opts:OptionsPattern[]], TraditionalForm]:=

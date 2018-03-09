@@ -47,5 +47,8 @@ Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
 	"1/(SPD[p, p])"},
 {"fcstPropagatorDenominatorExplicit-ID10",
 	"PropagatorDenominatorExplicit[aa FAD[{q, m}], Denominator -> True, Head -> hd, FCE -> True]",
-	"aa/hd[-m^2 + SPD[q, q]]"}
+	"aa/hd[-m^2 + SPD[q, q]]"},
+{"fcstPropagatorDenominatorExplicit-ID11",
+	"PropagatorDenominatorExplicit[GFAD[{SPD[q1, p] SPD[q2, p], 2, 1}], FCE -> True]",
+	"1/(SPD[p, q1]^2 SPD[p, q2]^2)"}
 }

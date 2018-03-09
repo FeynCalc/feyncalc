@@ -90,6 +90,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SUNT :> sunTint,
 			SUNTF :> sunTFint,
 			FAD :> fadint,
+			GFAD :> gfadint,
 			FVD :> fvd,
 			FVE :> fve,
 			FV :> fv,
@@ -155,7 +156,6 @@ FeynCalcInternal[x_, opts___Rule] :=
 
 
 			},
-			(*{PropagatorDenominator :> propagatorD},*)
 			{ScalarProduct :> scalarP},
 			{Dot -> DOT},
 			{ChiralityProjector[1] :> DiracGamma[6]},
@@ -289,19 +289,6 @@ fchn[a_,b_,c_]:=
 	FermionicChain[fchntmp[[1]],dirIndex[fchntmp[[2]]],dirIndex[fchntmp[[3]]]]
 	);
 
-(*
-propagatorD[x_] :=
-	propagatorD[x, 0] /; FreeQ2[x, {Pattern, Pair, ScalarProduct}];
-
-propagatorD[x_, y_] := (propagatorD[x, y] =
-	PropagatorDenominator[MomentumExpand[ Momentum[x,D] ],y]) /;FreeQ2[x,{Momentum, Pattern,HoldForm}];
-
-propagatorD[x_, y_] := (propagatorD[x, y] =
-	PropagatorDenominator[x//MomentumExpand, y]) /; (FreeQ[{x,y}, Pattern] ) &&	(MomentumExpand[x] =!= x);
-
-propagatorD[x_, y_] :=
-	PropagatorDenominator[x, y] /; (MomentumExpand[x] === x);
-*)
 sunTint[x__] :=
 	sunT[x] /. sunT -> SUNT;
 
@@ -345,9 +332,18 @@ scalarP[ x_, y_,opt___BlankNullSequence] :=
 		Pair[x, y]
 	];
 
+gfadint[b__List] :=
+	FeynAmpDenominator @@ Map[gpropp, FCI[{b}]]/; MatchQ[{b}, {{_, _, _} ..}]
+
+gpropp[{ex_, n_, s_}]:=
+	GenericPropagatorDenominator[ex, {n,s}];
+
 fadint[a__, opts:OptionsPattern[]] :=
 	(fadim = OptionValue[FAD,{opts},Dimension];
 	fadint2 @@ Map[Flatten[{#}]&, {a}]);
+
+fadint2[b__List] :=
+	FeynAmpDenominator @@ Map[propp, {b}/.Repeated->repeated];
 
 propp[{x_}]:=
 	PropagatorDenominator[Momentum[x, fadim],0]//MomentumExpand;
@@ -360,8 +356,8 @@ propp[{x_, m_}]:=
 	PropagatorDenominator[Momentum[x, fadim],
 	m] // MomentumExpand;
 
-fadint2[b__List] :=
-	FeynAmpDenominator @@ Map[propp, {b}/.Repeated->repeated];
+
+
 
 sp[a_,b_] :=
 	Pair[Momentum[a], Momentum[b]];

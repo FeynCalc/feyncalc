@@ -21,7 +21,7 @@ FCCheckSyntax::usage =
 "FCCheckSyntax[expr] attempts to detect mistakes and inconsistencies \
 in the user input. The function returns the original expression but \
 will abort the evaluation if it thinks that the input is incorrect. \n
-Notice that false potives are possible and it is not guaranteed \
+Notice that false positives are possible and it is not guaranteed \
 that the input which passes FCCheckSyntax is indeed fully correct. \n
 FCCheckSyntax is also an option for several FeynCalc routines \
 If set to True, those functions will try to check the syntax of the input \

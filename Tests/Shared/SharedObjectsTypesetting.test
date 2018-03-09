@@ -3118,7 +3118,237 @@ TraditionalForm],FormBox[OverscriptBox[FormBox[\"p1\",TraditionalForm],\"_\"],Tr
 TraditionalForm],FormBox[\"m1\",TraditionalForm],FormBox[\"\\\")\\\"\",TraditionalForm]}],TraditionalForm],\".\", \
 FormBox[RowBox[{FormBox[\"\\\"φ\\\"\",TraditionalForm],FormBox[\"\\\"(\\\"\",TraditionalForm], \
 FormBox[OverscriptBox[FormBox[\"p2\",TraditionalForm],\"_\"],TraditionalForm],FormBox[\"\\\",\\\"\",TraditionalForm], \
-FormBox[\"m2\",TraditionalForm],FormBox[\"\\\")\\\"\",TraditionalForm]}],TraditionalForm],\")\"}],TraditionalForm]"}
+FormBox[\"m2\",TraditionalForm],FormBox[\"\\\")\\\"\",TraditionalForm]}],TraditionalForm],\")\"}],TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID525",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], 4, 1}], \
+TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FractionBox[\"a\", \
+SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\", \
+RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"4\
+\"]], TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID526",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], 4, -1}], \
+TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FractionBox[\"a\", \
+SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\", \
+RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"4\
+\"]], TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID527",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], n, 1}], \
+TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[RowBox[{\"a\", \" \", \
+SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\", \
+RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \
+RowBox[{\"-\", \"n\"}]]}], TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID528",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], n, -1}], \
+TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[RowBox[{\"a\", \" \", \
+SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\", \
+RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \
+RowBox[{\"-\", \"n\"}]]}], TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID529",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], 4, 1}, {TC[p], 1, \
+1}], TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FractionBox[\"a\", \
+RowBox[{SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\
+\", RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"4\
+\"], \".\", TemplateBox[{\"\\\"(\\\"\", \
+FormBox[SuperscriptBox[RowBox[{FormBox[FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], TraditionalForm]}], 0], \
+TraditionalForm], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\", \" \", \"\
+\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"]}]], \
+TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID530",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], 4, -1}, {TC[p], 1, \
+1}], TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FractionBox[\"a\", \
+RowBox[{SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\
+\", RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"4\
+\"], \".\", TemplateBox[{\"\\\"(\\\"\", \
+FormBox[SuperscriptBox[RowBox[{FormBox[FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], TraditionalForm]}], 0], \
+TraditionalForm], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\", \" \", \"\
+\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"]}]], \
+TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID531",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], n, 1}, {TC[p], 1, \
+1}], TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FractionBox[\"a\", \
+RowBox[{SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\
+\", RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"n\
+\"], \".\", TemplateBox[{\"\\\"(\\\"\", \
+FormBox[SuperscriptBox[RowBox[{FormBox[FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], TraditionalForm]}], 0], \
+TraditionalForm], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\", \" \", \"\
+\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"]}]], \
+TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID532",
+"MakeBoxes[b + a GFAD[{1 - SPD[p, q] SPD[r, s], n, -1}, {TC[p], 1, \
+1}], TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FractionBox[\"a\", \
+RowBox[{SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", RowBox[{\"1\", \"-\
+\", RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"n\
+\"], \".\", TemplateBox[{\"\\\"(\\\"\", \
+FormBox[SuperscriptBox[RowBox[{FormBox[FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], TraditionalForm]}], 0], \
+TraditionalForm], \"\\\"+\\\"\", RowBox[{\"\[ImaginaryI]\", \" \", \"\
+\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"]}]], \
+TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID533",
+"MakeBoxes[b + a FeynAmpDenominator[GenericPropagatorDenominator[1 \
+- Pair[Momentum[p, D], Momentum[q, D]] Pair[Momentum[r, D], \
+Momentum[s, D]], {2, -1}], PropagatorDenominator[Momentum[p, D], m]], \
+TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FormBox[FormBox[FractionBox[\"a\", \
+RowBox[{RowBox[{\"(\", \
+InterpretationBox[RowBox[{SuperscriptBox[\"p\", \"2\"], \"\
+\[InvisibleSpace]\", \"\\\"-\\\"\", \"\[InvisibleSpace]\", \
+SuperscriptBox[\"m\", \"2\"]}], p^2\"-\"m^2, Editable -> False], \
+\")\"}], \" \", SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", \
+RowBox[{\"1\", \"-\", RowBox[{RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"p\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"q\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"2\
+\"]}]], TraditionalForm], TraditionalForm], TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID534",
+"MakeBoxes[b + a FeynAmpDenominator[GenericPropagatorDenominator[1 \
+- Pair[Momentum[p, D], Momentum[q, D]] Pair[Momentum[r, D], \
+Momentum[s, D]], {2, -1}], PropagatorDenominator[Momentum[p, D], m], \
+GenericPropagatorDenominator[1 + Pair[Momentum[p, D], Momentum[q, D]] \
+Pair[Momentum[r, D], Momentum[s, D]], {2, -1}]], TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FormBox[FormBox[FractionBox[\"a\", \
+RowBox[{RowBox[{\"(\", \
+InterpretationBox[RowBox[{SuperscriptBox[\"p\", \"2\"], \"\
+\[InvisibleSpace]\", \"\\\"-\\\"\", \"\[InvisibleSpace]\", \
+SuperscriptBox[\"m\", \"2\"]}], p^2\"-\"m^2, Editable -> False], \
+\")\"}], \" \", RowBox[{SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", \
+RowBox[{\"1\", \"-\", RowBox[{RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"p\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"q\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"2\
+\"], \".\", SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", \
+RowBox[{RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}], \"+\", \"1\"}], \"\\\"-\\\"\", \
+RowBox[{\"\[ImaginaryI]\", \" \", \"\\\"\[Eta]\\\"\"}], \
+\"\\\")\\\"\"}, \"RowDefault\"], \"2\"]}]}]], TraditionalForm], \
+TraditionalForm], TraditionalForm]}]"},
+{"fcstSharedObjectsTypesetting-ID535",
+"MakeBoxes[b + a FeynAmpDenominator[GenericPropagatorDenominator[1 \
+- Pair[Momentum[p, D], Momentum[q, D]] Pair[Momentum[r, D], \
+Momentum[s, D]], {2, -1}], PropagatorDenominator[Momentum[p, D], m], \
+GenericPropagatorDenominator[1 + Pair[Momentum[p, D], Momentum[q, D]] \
+Pair[Momentum[r, D], Momentum[s, D]], {2, -1}]], TraditionalForm]",
+"RowBox[{\"b\", \"+\", FormBox[FormBox[FormBox[FractionBox[\"a\", \
+RowBox[{RowBox[{\"(\", \
+InterpretationBox[RowBox[{SuperscriptBox[\"p\", \"2\"], \"\
+\[InvisibleSpace]\", \"\\\"-\\\"\", \"\[InvisibleSpace]\", \
+SuperscriptBox[\"m\", \"2\"]}], p^2\"-\"m^2, Editable -> False], \
+\")\"}], \" \", RowBox[{SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", \
+RowBox[{\"1\", \"-\", RowBox[{RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"p\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"q\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}]}], \"\\\"-\\\"\", RowBox[{\"\[ImaginaryI]\
+\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \"RowDefault\"], \"2\
+\"], \".\", SuperscriptBox[TemplateBox[{\"\\\"(\\\"\", \
+RowBox[{RowBox[{RowBox[{\"(\", FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \")\"}], \" \", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[FormBox[\"r\", TraditionalForm], \
+TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"s\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \")\"}]}], \"+\", \"1\"}], \"\\\"-\\\"\", \
+RowBox[{\"\[ImaginaryI]\", \" \", \"\\\"\[Eta]\\\"\"}], \
+\"\\\")\\\"\"}, \"RowDefault\"], \"2\"]}]}]], TraditionalForm], \
+TraditionalForm], TraditionalForm]}]"}
 })
 
 Tests`Shared`fcstNRSharedObjectsTypesetting =

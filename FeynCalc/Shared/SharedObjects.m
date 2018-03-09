@@ -221,11 +221,23 @@ GAE::usage =
 "GAE[mu] can be used as input for a D-4-dimensional gamma^mu and is \
 transformed into DiracGamma[LorentzIndex[mu, D-4], D-4] by FeynCalcInternal.";
 
+GFAD::usage =
+"GFAD[{expr,n,sign},...] denotes 1/(expr + sign I eta)^n. \
+(Translation into FeynCalc internal form is performed by \
+FeynCalcInternal.)";
+
 GaugeField::usage =
 "GaugeField is a name of a gauge field.";
 
 GaugeXi::usage =
 "GaugeXi is a head for gauge parameters.";
+
+GenericPropagatorDenominator::usage =
+"GenericPropagatorDenominator[expr, {n,sign}] is a generic factor of the denominator of a \
+propagator. Unlike PropagatorDenominator that is supposed to mean 1/(q^2-m^2), \
+expr in GenericPropagatorDenominator can be an arbitrary combination of Pair, \
+CartesianPair and TemporalPair objects. Using n one can specify the power of the
+propagator, while sign (+1 or -1) fixes the sign of  I*eta.";
 
 GluonField::usage =
 "GluonField is a name of a gauge field.";
@@ -1470,9 +1482,6 @@ FAD[{_,_,0}, OptionsPattern[]]:=
 
 FCGV[a_String, OptionsPattern[]] :=
 	ToExpression[a]/; OptionValue[EvaluateFCGV];
-
-FeynAmpDenominator[ar__List] :=
-	FeynAmpDenominator[ar] = FCI[FAD[ar]];
 
 FourVector[a_,b_, OptionsPattern[]] :=
 	Pair[Momentum[a, OptionValue[Dimension]],

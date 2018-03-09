@@ -40,5 +40,10 @@ FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], 
 {"fcstFeynAmpDenominatorSplit-ID7",
 	"FeynAmpDenominatorSplit[FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], m2],myPD[CartesianMomentum[q3], m3]], Momentum -> {q1}]",
 	"FeynAmpDenominator[myPD[CartesianMomentum[q1], m1]] FeynAmpDenominator[myPD[CartesianMomentum[q2], m2], myPD[CartesianMomentum[q3], m3]]"
+},
+{"fcstFeynAmpDenominatorSplit-ID8",
+	"FeynAmpDenominatorSplit[FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D], Momentum[q2, D]], {2, 1}],
+	PropagatorDenominator[Momentum[p, D], m]], FCE -> True]",
+	"FAD[{p, m}] GFAD[{SPD[p, q1] SPD[p, q2], 2, 1}]"
 }
 }

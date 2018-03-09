@@ -313,7 +313,10 @@ propd[a_, 0] :=
 propd[a_, b_/;b=!=0] :=
 	{a/.Momentum->iDent, b};
 
-feynampback[a__] :=
+feynampback[a__]/; !FreeQ[{a},GenericPropagatorDenominator] && !MatchQ[{a},{__GenericPropagatorDenominator}] :=
+	feynampback@@(SelectNotFree[{a}, GenericPropagatorDenominator]) feynampback@@(SelectFree[{a}, GenericPropagatorDenominator]);
+
+feynampback[a__PropagatorDenominator] :=
 	Switch [
 		dimS=Union[Cases[{a}, Momentum[_, dim_: 4] :> dim, Infinity]];
 		dimS,
@@ -334,9 +337,8 @@ feynampback[a__] :=
 		Abort[]
 	];
 
-
-
-
+feynampback[a__GenericPropagatorDenominator] :=
+	GFAD[Sequence@@({a}/. GenericPropagatorDenominator[ex_,{n_,s_}]:> {FCE[ex],n,s} )]
 
 eps[a_, b_, c_, d_] :=
 	Signature[{a,b,c,d}] eps@@Sort[{a,b,c,d}]/; !OrderedQ[{a,b,c,d}];

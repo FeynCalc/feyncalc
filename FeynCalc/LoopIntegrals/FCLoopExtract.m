@@ -41,6 +41,7 @@ Options[FCLoopExtract] = {
 	FCLoopBasisSplit -> False,
 	Factoring -> Factor,
 	FeynAmpDenominatorCombine -> True,
+	GFAD -> True,
 	MultiLoop -> False,
 	PaVe -> True
 };
@@ -82,7 +83,8 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 									ExpandScalarProduct -> OptionValue[ExpandScalarProduct],
 									Full -> OptionValue[Full],
 									Factoring->OptionValue[Factoring],
-									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ]];
+									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ],
+									GFAD -> OptionValue[GFAD]];
 
 		If[ OptionValue[FCLoopBasisSplit],
 			loopInts = loopInts/.loopHead[zz_] :> FCLoopBasisSplit[zz,lmoms,List->False,Head->loopHead] /. loopHead[zz_,0]:>loopHead[zz]

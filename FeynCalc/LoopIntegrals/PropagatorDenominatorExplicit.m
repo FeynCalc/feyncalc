@@ -60,12 +60,18 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 
 		ruleNormal = {
 			PropagatorDenominator[a_ ,b_] :>
-			(1/Expand[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2])
+			(1/Expand[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2]),
+			(*TODO FCEta*)
+			GenericPropagatorDenominator[pr_ ,{n_, _}] :>
+			(1/Expand[ExpandScalarProduct[pr,FCI->True]])^n
 		};
 
 		ruleMandelstam = {
 			PropagatorDenominator[a_ ,b_] :>
-			(1/TrickMandelstam[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2, mandel])
+			(1/TrickMandelstam[ExpandScalarProduct[Pair[a, a],FCI->True] - b^2, mandel]),
+
+			GenericPropagatorDenominator[pr_ , {n_, _}] :>
+			(1/TrickMandelstam[ExpandScalarProduct[pr,FCI->True],mandel])^n
 		};
 
 		If[	mandel==={},

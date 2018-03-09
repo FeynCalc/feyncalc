@@ -56,6 +56,7 @@ Options[FCLoopIsolate] = {
 	Factoring -> Factor,
 	FeynAmpDenominatorSplit -> True,
 	Full -> True,
+	GFAD -> True,
 	Head -> FCGV["LoopInt"],
 	Isolate -> False,
 	IsolateNames -> KK,
@@ -149,6 +150,10 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 
 		If [ OptionValue[MultiLoop],
 			res = res /. OptionValue[Head][z__]/; !fullDep[z,lmoms0] :> z;
+		];
+
+		If [ !OptionValue[GFAD],
+			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, GenericPropagatorDenominator] :> z;
 		];
 
 		(* Keep only integrals that are IBP-reducable *)
