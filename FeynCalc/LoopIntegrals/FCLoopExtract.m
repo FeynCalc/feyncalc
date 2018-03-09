@@ -30,6 +30,7 @@ End[]
 Begin["`FCLoopExtract`Private`"]
 
 Options[FCLoopExtract] = {
+	Collecting -> True,
 	DropScaleless -> False,
 	ExpandScalarProduct-> False,
 	Full -> False,
@@ -63,7 +64,7 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 		];
 
 		(*	Split loop integrals from the rest	*)
-		tmp = FCLoopSplit[exp,lmoms, FCI->True];
+		tmp = FCLoopSplit[exp,lmoms, FCI->True, Collecting->False];
 
 		rel = Sort[OptionValue[FCLoopSplit]];
 		irrel = Complement[{1,2,3,4},rel];
@@ -74,6 +75,7 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 
 		rest  = Plus@@tmp[[irrel]];
 		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms, FCI->True, Head->loopHead,
+									Collecting -> OptionValue[Collecting],
 									DropScaleless-> OptionValue[DropScaleless],
 									MultiLoop-> OptionValue[MultiLoop],
 									PaVe-> OptionValue[PaVe],
