@@ -19,7 +19,8 @@
 
 
 If[ MemberQ[$Packages,"FeynCalc`"],
-	Print[Style["FeynCalc is already loaded! To reload it, please restart the kernel.","Text", Red, Bold]];
+	Print[Style["FeynCalc is already loaded! If you are trying to reload FeynCalc or load \
+FeynArts, TARCER, PHI, FeynHelpers or any other add-on, please restart the kernel.","Text", Red, Bold]];
 	Abort[]
 ];
 

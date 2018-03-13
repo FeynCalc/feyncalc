@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopExtract::usage =
-"FCLoopExtract[expr,{q1,q2,...},loopHead] exctracts loop integrals \
+"FCLoopExtract[expr,{q1,q2,...},loopHead] extracts loop integrals \
 that depend on q1,q2,... from the given expression "  <> ToString[
 Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCLoopExtract"],
 StandardForm]
