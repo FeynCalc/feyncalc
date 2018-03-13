@@ -579,10 +579,16 @@ ff[y_/;Head[y]=!=List] :=
 	SequenceForm[y^2];
 
 ff2[{ex_,n_,1}] :=
-	Row[{"(",ex,"+",I "\[Eta]",")"}]^n;
+	Row[{"(",ex,")"}]^n;
 
 ff2[{ex_,n_,-1}] :=
-	Row[{"(",ex,"-",I "\[Eta]",")"}]^n;
+	Row[{"(",ex,")"}]^n;
+
+ff2[{ex_,n_,1}] :=
+	Row[{"(",ex,"+",I "\[Eta]",")"}]^n/; $FCShowIEta;
+
+ff2[{ex_,n_,-1}] :=
+	Row[{"(",ex,"-",I "\[Eta]",")"}]^n/; $FCShowIEta;
 
 MakeBoxes[pref_. GFAD[a__List], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[ff2, {a}]]/. DOT -> dootpow), TraditionalForm]/; MatchQ[{a}, {{_, _, _} ..}];

@@ -105,6 +105,13 @@ the current version is a development or a stable version.";
 $FCTensorList::usage =
 "$FCTensorList contains a list of all tensor heads present.";
 
+$FCShowIEta::usage =
+"The boolean setting of $FCShowIEta detrmines whether I \[Eta] should \
+be displayed in the typesetting of GFAD and GenericPropagatorDenominator \
+objects or not. This setting affects only the  TraditionalForm typesetting \
+and has absolutely no influence on the internal handling of propagator \
+denominators in FeynCalc.";
+
 FCSetMetricSignature::usage =
 "FCSetMetricSignature sets the signature of the Minkowski metric used when \
 working with Cartesian objects, like CartPair, CartIndex, CartMomentum etc. \
@@ -365,7 +372,7 @@ $Containers				= {};
 $Covariant				= False;
 $DisableMemSet 			= False;
 $DistributiveFunctions	= {Conjugate, Transpose};
-
+$FCShowIEta				= True;
 $FCS = {
 	"CDr",
 	"FAD",
