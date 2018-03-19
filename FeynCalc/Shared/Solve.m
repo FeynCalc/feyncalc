@@ -120,6 +120,9 @@ Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 
 		neq = eqq /. Equal[a_, b_] :> (a-b);
 		For[i = 1, i <= Length[eqq], i++,
+			If[ i>Length[cli],
+				Break[];
+			];
 			If[!FreeQ[neq, cli[[i]]],
 				FCPrint[1,"solve3 i = ",i,"    time used : ", Round[(starttime-AbsoluteTime[])/60], " minutes", FCDoControl->sol3Verbose];
 				While[FreeQ[neq1 = (*col[*)neq[[1]] /. res(*]*), cli[[i]]],
