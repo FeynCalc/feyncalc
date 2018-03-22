@@ -2080,6 +2080,15 @@ SUNTF[a_,b_,c_] :=
 SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=
 	0;
 
+SUNIndex[SUNFIndex[___]]:=
+	(Message[SharedObjects::failmsg,"SUNFIndex is not allowed inside SUNIndex"];
+	Abort[]);
+
+SUNFIndex[SUNIndex[___]]:=
+	(Message[SharedObjects::failmsg,"SUNIndex is not allowed inside SUNFIndex"];
+	Abort[]);
+
+
 (* ------------------------------------------------------------------------ *)
 
 Zeta2 /:
