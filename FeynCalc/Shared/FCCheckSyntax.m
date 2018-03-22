@@ -153,8 +153,12 @@ FCCheckSyntax[expr_, OptionsPattern[]] :=
 
 		ex = Expand2[ex,indexHeads];
 
+
+
 		(* Check Einstein summation for the relevant indices *)
 		Scan[checkIndices[ex,#]&,indexHeads];
+
+
 
 		(* Syntax errors for noncommutative objects *)
 		If[!FreeQ2[ex,nonCommHeads],
@@ -166,13 +170,16 @@ FCCheckSyntax[expr_, OptionsPattern[]] :=
 
 			ex = ex /. DOT -> dotHold;
 
-			ex = ex /. nonComRulePrep[DiracGamma,dotHold,times,timesGamma];
-			ex = ex /. nonComRulePrep[PauliSigma,dotHold,times,timesSigma];
-			ex = ex /. nonComRulePrep[SUNT,dotHold,times,timesSUNT];
+			ex = ex /. Dispatch[nonComRulePrep[DiracGamma,dotHold,times,timesGamma]];
+
+			ex = ex /. Dispatch[nonComRulePrep[PauliSigma,dotHold,times,timesSigma]];
+			ex = ex /. Dispatch[nonComRulePrep[SUNT,dotHold,times,timesSUNT]];
 
 			nonComCheck[ex,DiracGamma,times,timesGamma];
 			nonComCheck[ex,PauliSigma,times,timesSigma];
+
 			nonComCheck[ex,SUNT,times,timesSUNT];
+
 
 		];
 
