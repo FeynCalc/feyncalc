@@ -320,6 +320,8 @@ If[ $FeynCalcStartupMessages =!= False,
 			Style[" or write to the ", "Text"],
 			Style[DisplayForm@ButtonBox["mailing list.",ButtonData :> {URL["http://www.feyncalc.org/forum/"], None},BaseStyle -> "Hyperlink",
 				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]];
+	Print[ Style["To save your and our time, please check our ","Text"], Style[DisplayForm@ButtonBox["FAQ",ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/wiki/FAQ"], None},BaseStyle -> "Hyperlink",
+				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"] , Style[" for answers to some common FeynCalc questions.","Text"] ];
 	Print[ Style["See also the supplied ","Text"],
 
 	Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
