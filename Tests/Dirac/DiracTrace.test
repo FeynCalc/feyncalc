@@ -234,6 +234,12 @@ SP[c, z]*LC[][d, k, p, t] + SP[c, t]*LC[][d, k, p, z])"},
 SP[c, z]*LC[][d, k, p, t] + SP[c, t]*LC[][d, k, p, z])"},
 {"fcstDiracTrace-ID45",
 "DiracTrace[(GS[p2] + m).(GS[a, pp] - GS[pp, a]).(GS[p1] + m),DiracTraceEvaluate -> True, FCE -> True]",
-"8 (SP[a, p2] SP[p1, pp] - SP[a, p1] SP[p2, pp])"}
+"8 (SP[a, p2] SP[p1, pp] - SP[a, p1] SP[p2, pp])"},
+{"fcstDiracTrace-ID46",
+"$BreitMaison = True;
+tmp = (DiracTrace[GAD[i1, i2, i3].GA[6].GAD[i5, i6, i7].GA[6],
+	DiracTraceEvaluate -> True] -
+DiracTrace[GAD[i1, i2, i3].((1 + GA[5])/2).GAD[i5, i6, i7].((1 + GA[5])/2),
+	DiracTraceEvaluate -> True]); $BreitMaison = False; tmp","0"}
 }
 );
