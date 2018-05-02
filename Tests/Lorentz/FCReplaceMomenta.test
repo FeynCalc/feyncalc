@@ -1,0 +1,58 @@
+
+
+(* :Title: FCReplaceMomenta.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCReplaceMomenta  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCReplaceMomenta =
+({
+{"fcstFCReplaceMomenta-ID1",
+"FCReplaceMomenta[SPD[p,q],{p\[Rule]a}]",
+"Pair[Momentum[a, D], Momentum[q, D]]"},
+{"fcstFCReplaceMomenta-ID2",
+"FCReplaceMomenta[SPD[p,q],{p\[Rule]a},Dimensions\[Rule]{4}]",
+"Pair[Momentum[p, D], Momentum[q, D]]"},
+{"fcstFCReplaceMomenta-ID3",
+"FCReplaceMomenta[SPD[p,q],{p\[Rule]a},Dimensions\[Rule]{4,D}]",
+"Pair[Momentum[a, D], Momentum[q, D]]"},
+{"fcstFCReplaceMomenta-ID4",
+"FCReplaceMomenta[SPD[p,q],{p\[Rule]2a},Dimensions\[Rule]{4,D}]",
+"2*Pair[Momentum[a, D], Momentum[q, D]]"},
+{"fcstFCReplaceMomenta-ID5",
+"FCReplaceMomenta[SPD[p,q],{p\[Rule]a q1 +c q2 \
+},Dimensions\[Rule]{4,D},Variables\[Rule]{a,c}]",
+"Pair[Momentum[q, D], a*Momentum[q1, D] + c*Momentum[q2, D]]"},
+{"fcstFCReplaceMomenta-ID6",
+"FCReplaceMomenta[SPD[p,q],{p\[Rule]a q1 +c q2 \
+},Dimensions\[Rule]{4,D},Variables\[Rule]{a,c},Head\[Rule]{DiracGamma}\
+]", "Pair[Momentum[p, D], Momentum[q, D]]"},
+{"fcstFCReplaceMomenta-ID7",
+"FCReplaceMomenta[GSD[p]SPD[p,q],{p\[Rule]a q1 +c q2 },Dimensions\
+\[Rule]{4,D},Variables\[Rule]{a,c},Head\[Rule]{DiracGamma}]",
+"(a*DiracGamma[Momentum[q1, D], D] + c*DiracGamma[Momentum[q2, D], \
+D])*Pair[Momentum[p, D], Momentum[q, D]]"},
+{"fcstFCReplaceMomenta-ID8",
+"FCReplaceMomenta[Spinor[p,m],{p\[Rule]a},Dimensions\[Rule]{4,D}]",
+	"Spinor[Momentum[p], m, 1]"},
+{"fcstFCReplaceMomenta-ID9",
+"FCReplaceMomenta[Spinor[p,m],{p\[Rule]a},Dimensions\[Rule]{4,D},\
+Head->Join[OptionValue[FCReplaceMomenta, Head],{Spinor}]]",
+"Spinor[Momentum[a], m, 1]"},
+{"fcstFCReplaceMomenta-ID10",
+"FCReplaceMomenta[PolarizationVector[p,mu],{p\[Rule]a},Dimensions\
+\[Rule]{4,D}]",
+"Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]]"},
+{"fcstFCReplaceMomenta-ID11",
+"FCReplaceMomenta[PolarizationVector[p,mu],{p\[Rule]a},Dimensions\
+\[Rule]{4,D},Polarization\[Rule]True]",
+"Pair[LorentzIndex[mu], Momentum[Polarization[a, I]]]"}
+});
