@@ -122,6 +122,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		FCPrint[1,"FDS: Extracting unique loop integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
 		(*TODO Drop scaleless for 1-loop??? *)
+		(* Here we can exploit the possible factorization in a multiloop integral *)
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True,
 			ExpandScalarProduct->True, Full->False, GFAD->False];
 
@@ -205,8 +206,10 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			time=AbsoluteTime[];
 			FCPrint[1, "FDS: fdsMultiLoop: Checking symmetries under renamings of the loop momenta.", FCDoControl->fdsVerbose];
 
+			(* 	The option FeynAmpDenominatorCombine effectively decides whether the detected factorization of a loop integral
+				will be preserved (FeynAmpDenominatorCombine->False) or broken (FeynAmpDenominatorCombine->True) *)
 			{rest,loopInts,intsUnique} = FCLoopExtract[res, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->False,
-				ExpandScalarProduct->True, Full->False];
+				ExpandScalarProduct->True, Full->False, FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
 
 			solsList = intsUnique /. loopHead[x_]:> renameLoopMomenta[x,{qs}];
 			repRule = Thread[Rule[intsUnique,solsList]];
@@ -693,7 +696,7 @@ fdsMultiLoop[loopInt : (_. FeynAmpDenominator[props__]), qs__]:=
 	Block[{	tmp,res,tmpNew,solsList,repRule},
 
 		(*	The input of fdsMultiLoop is guaranteed to contain
-			only a signle loop integral. This makes many things simpler.	*)
+			only a single loop integral. This makes many things simpler.	*)
 
 		tmp = loopInt;
 
