@@ -29,19 +29,24 @@ End[]
 
 Begin["`FeynAmpDenominatorSplit`Private`"]
 
-Options[FeynAmpDenominatorSplit]={
+Options[FeynAmpDenominatorSplit] = {
 	FCI -> False,
 	FCE -> False,
+	List->False,
 	Momentum -> All,
 	MomentumExpand -> True
 };
 
 FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
-	Block[{res,momList,fad},
+	Block[{res,momList,fad,head},
 
 		If[ !OptionValue[FCI],
 			res = FCI[expr],
 			res = expr
+		];
+		If[	TrueQ[OptionValue[List]],
+			head = List,
+			head = Times
 		];
 
 		momList = OptionValue[Momentum];
@@ -51,9 +56,9 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 		];
 
 		If[ momList=!=All && Head[momList]===List,
-			res = res /. FeynAmpDenominator[props__] :> fad[SelectFree[{props},Sequence@@momList]]*
-				fad[SelectNotFree[{props},Sequence@@momList]] /. fad[{}]:>1 /. fad[{pr__}]:>FeynAmpDenominator[pr],
-			res = res /. FeynAmpDenominator[a__] :> Times@@Map[FeynAmpDenominator, {a}]
+			res = res /. FeynAmpDenominator[props__] :> head[fad[SelectFree[{props},Sequence@@momList]],
+				fad[SelectNotFree[{props},Sequence@@momList]]] /. fad[{}]:>1 /. fad[{pr__}]:>FeynAmpDenominator[pr],
+			res = res /. FeynAmpDenominator[a__] :> head@@Map[FeynAmpDenominator, {a}]
 		];
 
 		If [OptionValue[FCE],
