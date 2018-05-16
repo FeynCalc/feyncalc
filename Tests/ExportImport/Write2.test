@@ -17,34 +17,33 @@ Tests`ExportImport`fcstWrite2 =
 ({
 {"fcstWrite2-ID1",
 "Write2[\"tmpfcst.f\",test=100., \
-FormatType\[Rule]FortranForm];res=ReadString[\"tmpfcst.f\"];\
+FormatType\[Rule]FortranForm];res=Import[\"tmpfcst.f\",\"String\"];\
 DeleteFile[\"tmpfcst.f\"];res",
 "\"        test = 1.D2\\n                  \\n\""},
 {"fcstWrite2-ID2",
 "Write2[\"tmpfcst.f\",test=100., \
 FormatType\[Rule]FortranForm,FortranFormatDoublePrecision\[Rule]False]\
-;res=ReadString[\"tmpfcst.f\"];DeleteFile[\"tmpfcst.f\"];res",
+;res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
 "\"        test = 100.\\n                  \\n\""},
 {"fcstWrite2-ID3",
 "Write2[\"tmpfcst.f\",test=a/100+5 x, \
-FormatType\[Rule]FortranForm];res=ReadString[\"tmpfcst.f\"];\
+FormatType\[Rule]FortranForm];res=Import[\"tmpfcst.f\",\"String\"];\
 DeleteFile[\"tmpfcst.f\"];res",
 "\"        test = a*1.D-2 + x*5D0\\n                  \\n\""},
 {"fcstWrite2-ID4",
 "Write2[\"tmpfcst.f\",test=a/100+5 \
-x];res=ReadString[\"tmpfcst.f\"];DeleteFile[\"tmpfcst.f\"];res",
+x];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
 "\"test = a/100 + 5*x\\n\""},
 {"fcstWrite2-ID5",
 "Write2[\"tmpfcst.f\",abc=0.6*(-8+12 \
 Log[5+y[1]]),abc1=1/x^(2/3),FormatType->FortranForm,Precision\
-\[Rule]10];res=ReadString[\"tmpfcst.f\"];DeleteFile[\"tmpfcst.f\"];\
+\[Rule]10];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];\
 res",
 "\"        abc = 6.D-1*(-8D0 + 1.2D1*Log(5D0 + y(1D0)))\\n        abc1 = x**-6.666666667D-1\\n\""},
 {"fcstWrite2-ID6",
 "Write2[\"tmpfcst.f\",abc=0.6*(-8+12 \
 Log[5+y[1]]),abc1=1/x^(2/3),FormatType\[Rule]FortranForm,\
-FortranFormatDoublePrecision\[Rule]False];res=ReadString[\"tmpfcst.f\"\
-];DeleteFile[\"tmpfcst.f\"];res",
+FortranFormatDoublePrecision\[Rule]False];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
 "\"        abc = 0.6*(-8. + 12.*Log(5. + y(1.)))\\n        abc1 = \
 x**(-0.6666666666666666)\\n\""}
 });

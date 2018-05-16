@@ -109,7 +109,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			Return[ex]
 		];
 
-		ex = ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,n])]} /.PD -> procan /. procan -> PD;
+		ex = ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{iii,1,n}])]} /.PD -> procan /. procan -> PD;
 
 		If[ Length[{qs}]===0,
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
@@ -261,8 +261,8 @@ renameLoopMomenta[int_,qs_List]:=
 
 		permutations = Permute[lmoms, PermutationGroup[Cycles[{#}]&/@Subsets[Range[nLoops], {2, nLoops}]]];
 
-		listOfRenamings=Sort[MapThread[rule, {Table[lmoms, Length[permutations]], permutations}] /.rule[x_List,y_List] :> Thread[Rule[x,y]] /.
-			Rule[a_, a_] :> Unevaluated[Sequence[]]];
+		listOfRenamings=Sort[MapThread[rule, {Table[lmoms, {iii,1,Length[permutations]}], permutations}] /.rule[x_List,y_List] :> Thread[rule[x,y]] /.
+			rule[a_, a_] :> Unevaluated[Sequence[]]] /. rule -> Rule;
 
 		equivalentInts = Map[(int/. # /. FeynAmpDenominator -> feynsimp[lmoms] /. FeynAmpDenominator -> feynord[lmoms])&, listOfRenamings];
 
