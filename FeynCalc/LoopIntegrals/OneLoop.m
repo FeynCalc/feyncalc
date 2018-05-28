@@ -306,7 +306,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			FCPrint[1, "OneLoop: Simplyfing non-loop propagators.", FCDoControl->oneloopVerbose];
 			oneamp = FeynAmpDenominatorSplit[oneamp, Momentum->{q}];
 			oneamp = oneamp /. FeynAmpDenominator[x__]/;FreeQ[{x}, q] :> PropagatorDenominatorExplicit[FeynAmpDenominator[x],
-				Manelstam->onemandel,SmallVariable->True];
+				Mandelstam->onemandel,SmallVariable->True];
 			FCPrint[1, "OneLoop: Done simplyfing non-loop propagators.", FCDoControl->oneloopVerbose];
 
 			If[ oneloopSimplify,
@@ -1887,7 +1887,7 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 						FCPrint[3, "OneLoop: tdec: add: pv: ", pv, FCDoControl->oneloopVerbose];
 						FCPrint[3, "OneLoop: tdec: add: exp: ", exp, FCDoControl->oneloopVerbose];
 						If[ breakdown,
-							pv = PaVeReduce[pv, WriteOutPaVe -> writeOutPaVe, dimension->di]
+							pv = PaVeReduce[pv, WriteOutPaVe -> writeOutPaVe, Dimension->di]
 						];
 						If[ $LimitTo4 === True,
 							addre = gra + (Expand[ExpandScalarProduct[ pv to4dim[ exp/.di->4 ]]]),
