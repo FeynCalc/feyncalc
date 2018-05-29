@@ -26,4 +26,4 @@ M$ClassesDescription = {
 LPhi4 = LPhi4R + LPhi4CT;
 
 LPhi4R = 1/2 del[phi, mu] del[phi, mu] - 1/2 Mphi^2*phi^2 - 1/(4!) g*phi^4;
-LPhi4CT =  1/2 FR$CT (Zphi-1) del[phi, mu] del[phi, mu] - 1/2 FR$CT (Zm Zphi-1)*phi^2 - 1/(4!) FR$CT (Zg Zphi^2-1)*g*phi^4;
+LPhi4CT =  1/2 FR$CT (Zphi-1) del[phi, mu] del[phi, mu] - 1/2 Mphi^2 FR$CT (Zm Zphi-1)*phi^2 - 1/(4!) FR$CT (Zg Zphi^2-1)*g*phi^4;
