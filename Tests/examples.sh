@@ -55,7 +55,7 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/QED/Tree/$exFile
 done
 
-for exFile in 'El-El.m' 'El-GaEl.m' 'Ga.m' 'Ga-Ga.m' 'Ga-GaGa.m' 'PiToGaGa.m' 'Renormalization.m'
+for exFile in 'El-El.m' 'El-GaEl.m' 'Ga.m' 'Ga-Ga.m' 'Ga-GaGa.m' 'PiToGaGa.m' 'Renormalization.m' 'Ga-GaGaGaGa.m'
 
 do
   echo
