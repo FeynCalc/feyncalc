@@ -83,7 +83,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1,
 (*We obtain two triangle diagrams. The sum vanishes because the contribution of the first diagram cancels the contribution of the second diagram.*)
 
 
-amp[1] = DiracSimplify[amp[0],DiracTraceEvaluate->True]
+amp[1] = amp[0]//FCTraceFactor
 
 
 (* ::Section:: *)
