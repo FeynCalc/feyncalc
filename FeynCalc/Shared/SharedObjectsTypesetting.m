@@ -23,7 +23,7 @@ End[]
 
 Begin["`SharedObjectsTypesetting`Private`"]
 
-
+dootpow::usage="";
 
 CartesianIndex /:
 	MakeBoxes[ CartesianIndex[p_, dim_ : 3], TraditionalForm]:=
@@ -566,17 +566,17 @@ ExplicitSUNFIndex /:
 	MakeBoxes[ ExplicitSUNFIndex[p_], TraditionalForm]:=
 		ToBoxes[p, TraditionalForm];
 
-ff[{y_,z_}] :=
-	SequenceForm[y^2, "-", z^2];
+fadTypeset[{y_,z_/;z=!=0}, dim_] :=
+	SequenceForm[Pair[Momentum[y,dim],Momentum[y,dim]], "-", z^2];
 
-ff[{y_,0}] :=
-	ff[y];
+fadTypeset[{y_,0}, dim_] :=
+	fadTypeset[y, dim];
 
-ff[{y_}] :=
-	ff[y];
+fadTypeset[{y_}, dim_] :=
+	fadTypeset[y, dim];
 
-ff[y_/;Head[y]=!=List] :=
-	SequenceForm[y^2];
+fadTypeset[y_/;Head[y]=!=List, dim_] :=
+	SequenceForm[Pair[Momentum[y,dim],Momentum[y,dim]]];
 
 ff2[{ex_,n_,1}] :=
 	Row[{"(",ex,")"}]^n;
@@ -590,11 +590,12 @@ ff2[{ex_,n_,1}] :=
 ff2[{ex_,n_,-1}] :=
 	Row[{"(",ex,"-",I "\[Eta]",")"}]^n/; $FCShowIEta;
 
+MakeBoxes[pref_. FAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
+	ToBoxes[pref/(Apply[DOT,Map[fadTypeset[#,OptionValue[FAD,{opts},Dimension]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}] && !MemberQ[{a},{_,_,_,_,_}];
+
 MakeBoxes[pref_. GFAD[a__List], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[ff2, {a}]]/. DOT -> dootpow), TraditionalForm]/; MatchQ[{a}, {{_, _, _} ..}];
 
-MakeBoxes[pref_. FAD[a__,OptionsPattern[]], TraditionalForm]:=
-	ToBoxes[pref/(Apply[DOT,Map[ff, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}];
 
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=
 	ToBoxes[a, TraditionalForm];
