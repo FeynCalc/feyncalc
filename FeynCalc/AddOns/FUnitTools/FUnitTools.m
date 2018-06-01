@@ -31,7 +31,10 @@ valid FeynCalc expression."
 FUnitCreateUnitTestsTypesetting::usage = \
 "FUnitCreateUnitTestsTypesetting[TestName,Tests] is like FUnitCreateUnitTests \
 but with the sole purpose of creating unit tests for typesetting, \
-i.e. the TraditionalForm output."
+i.e. the TraditionalForm output. Notice that when creating typesetting tests, \
+the list elements must not be strings, i.e. li = {FV[p,mu], FV[q,nu]}. Then \
+FUnitCreateUnitTestsTypesetting[fcstFV,li] does the job and the output (copied as\
+Input Text) can be directly pasted into the test file."
 
 AddMakeBoxes::usage =
 "AddMakeBoxes is an option for FUnitCreateUnitTestsTypesetting, which \
@@ -43,7 +46,7 @@ End[]
 
 Begin["`FUnitTools`Private`"];
 
-$FUnitToolsVersion="0.1";
+$FUnitToolsVersion="0.2";
 
 $FUnitToolsDirectory =
 ToFileName[{$FeynCalcDirectory, "AddOns", "FUnitTools"}];
@@ -59,12 +62,24 @@ Options[FUnitCreateUnitTests] = {
 };
 
 FUnitCreateUnitTests[n_String, l_List, OptionsPattern[]] :=
-	MapIndexed[{n <> "-ID" <> ToString[OptionValue["ZeroIDValue"]+First[#2]], #, ToString[ToExpression[#], FormatType -> InputForm]} &, l];
+	MapIndexed[{n <> "-ID" <>
+		If[ StringQ[OptionValue["ZeroIDValue"]],
+				ToString[OptionValue["ZeroIDValue"]]<>ToString[First[#2]],
+				ToString[OptionValue["ZeroIDValue"]+First[#2]]
+		],
+		#, ToString[ToExpression[#], FormatType -> InputForm]} &, l]
+
+
 
 FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
-	MapIndexed[{n <> "-ID" <> ToString[OptionValue["ZeroIDValue"]+First[#2]],
+	MapIndexed[{n <> "-ID" <>
+
+		If[ StringQ[OptionValue["ZeroIDValue"]],
+				ToString[OptionValue["ZeroIDValue"]]<>ToString[First[#2]],
+				ToString[OptionValue["ZeroIDValue"]+First[#2]]
+		],
 		If[OptionValue[AddMakeBoxes],
-			StringReplace[ToString[System`MakeBoxees[#, TraditionalForm]],
+			StringReplace[ToString[System`MakeBoxees[#, TraditionalForm], InputForm],
 			"MakeBoxees" -> "MakeBoxes"],
 			ToString[#]
 		],
