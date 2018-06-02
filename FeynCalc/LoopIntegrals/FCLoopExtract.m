@@ -30,6 +30,7 @@ End[]
 Begin["`FCLoopExtract`Private`"]
 
 Options[FCLoopExtract] = {
+	CFAD -> True,
 	Collecting -> True,
 	DropScaleless -> False,
 	ExpandScalarProduct-> False,
@@ -48,11 +49,6 @@ Options[FCLoopExtract] = {
 
 FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 	Block[ {exp, tmp, rel, irrel, rest, loopInts, intsUnique, null1, null2},
-
-		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		(*This is the list of all the loop integrals in the expression.*)
 		If[ !OptionValue[FCI],
@@ -76,6 +72,7 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 
 		rest  = Plus@@tmp[[irrel]];
 		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms, FCI->True, Head->loopHead,
+									CFAD -> OptionValue[CFAD],
 									Collecting -> OptionValue[Collecting],
 									DropScaleless-> OptionValue[DropScaleless],
 									MultiLoop-> OptionValue[MultiLoop],
@@ -84,7 +81,8 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 									Full -> OptionValue[Full],
 									Factoring->OptionValue[Factoring],
 									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ],
-									GFAD -> OptionValue[GFAD]];
+									GFAD -> OptionValue[GFAD]
+		];
 
 		If[ OptionValue[FCLoopBasisSplit],
 			loopInts = loopInts/.loopHead[zz_] :> FCLoopBasisSplit[zz,lmoms,List->False,Head->loopHead] /. loopHead[zz_,0]:>loopHead[zz]

@@ -58,6 +58,15 @@ EpsilonOrder::usage =
 "EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting \
 determines the order n (Epsilon^n) which should be kept.";
 
+EtaSign::usage =
+"EtaSign is an option for SFAD, GFAD, CFAD and other objects representing \
+propagators. It specifies the default sign of the I \[Eta] prescription  in the \
+propagators, e.g. for standard Feynman propagators the value 1 corresponds to \
+1/( p^2-m^2 + I \[Eta]), while the value -1 sets 1/( p^2-m^2 - I \[Eta]). \
+Notice that if the sign of I \[Eta] is already specified in the propagator, \
+e.g. CFAD[{q,{m^2,1}}], then this specification always overrides the EtaSign \
+option. Hence CFAD[{q,{m^2,1}}, EtaSign->-1] still has the positive I \[Eta].";
+
 ExceptHeads::usage = "ExceptHeads is an option of FCLoopIsolate, \
 FCDiracIsolate and other functions. It takes a list of heads that  \
 are not allowed to appear inside isolated expression. For example, \

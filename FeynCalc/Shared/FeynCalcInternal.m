@@ -31,9 +31,17 @@ End[]
 
 Begin["`FeynCalcInternal`Private`"]
 
+cfadim::usage="";
 fadim::usage="";
 repeated::usage="";
 fchntmp::usage="";
+cfadEtaSign::usage="";
+gfadEtaSign::usage="";
+head::usage="";
+
+cproptmp1::usage="";
+cproptmp2::usage="";
+holdDOT::usage="";
 
 FCI = FeynCalcInternal;
 
@@ -91,6 +99,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SUNTF :> sunTFint,
 			FAD :> fadint,
 			GFAD :> gfadint,
+			CFAD :> cfadint,
 			FVD :> fvd,
 			FVE :> fve,
 			FV :> fv,
@@ -332,10 +341,36 @@ scalarP[ x_, y_,opt___BlankNullSequence] :=
 		Pair[x, y]
 	];
 
-gfadint[b__List] :=
-	FeynAmpDenominator @@ Map[gpropp, FCI[{b}]]/; MatchQ[{b}, {{_, _, _} ..}]
+cfadint[a___, b_, opts:OptionsPattern[]] :=
+	(
+	cfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{y,0},z]),opts]
+	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
 
-gpropp[{ex_, n_, s_}]:=
+cfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
+	(
+	cfadim = OptionValue[CFAD,{opts},Dimension];
+	cfadEtaSign = OptionValue[CFAD,{opts},EtaSign];
+	cfadint2 @@ Map[#&, {a,b}]
+	);
+
+gfadint[a___, b_, opts:OptionsPattern[]] :=
+	(
+	gfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{{y,1},1},z]),opts]
+	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
+
+gfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
+	(
+	gfadEtaSign = OptionValue[GFAD,{opts},EtaSign];
+	FeynAmpDenominator @@ Map[gpropp, FCI[{a,b}]]
+	);
+
+gpropp[{ex_, n_:1}]:=
+	GenericPropagatorDenominator[ex, {n, gfadEtaSign}];
+
+gpropp[{{ex_}, n_:1}]:=
+	GenericPropagatorDenominator[ex, {n, gfadEtaSign}];
+
+gpropp[{{ex_, s_}, n_:1}]:=
 	GenericPropagatorDenominator[ex, {n,s}];
 
 fadint[a__, opts:OptionsPattern[]] :=
@@ -345,9 +380,13 @@ fadint[a__, opts:OptionsPattern[]] :=
 fadint2[b__List] :=
 	FeynAmpDenominator @@ Map[propp, {b}/.Repeated->repeated];
 
+cfadint2[b__List] :=
+	FeynAmpDenominator @@ Map[cpropp[#,cfadim,cfadEtaSign]&, {b}/. Repeated->repeated];
+
 propp[{x_}]:=
 	PropagatorDenominator[Momentum[x, fadim],0]//MomentumExpand;
 
+(* Pattern matching related *)
 propp[{repeated[{x_, m_}]}]:=
 	Repeated[PropagatorDenominator[Momentum[x, fadim],
 	m] // MomentumExpand];
@@ -357,7 +396,33 @@ propp[{x_, m_}]:=
 	m] // MomentumExpand;
 
 
+cproppMomPart[{ex1_,ex2_}, dim_]:=
+	{CartesianMomentum[ex1, dim], ex2}//MomentumExpand;
 
+cproppMomPart[ex_/;Head[ex]=!=List, dim_]:=
+	{CartesianMomentum[ex, dim],0}//MomentumExpand;
+
+
+cproppMassPart[{m2_, etasign_}, _]:=
+	{m2,etasign};
+
+(*If the sign of I*eta is not specified, we take the default option! *)
+cproppMassPart[m2_/;Head[m2]=!=List, etaOpt_]:=
+	{m2, etaOpt};
+
+cproppMassPart[{m2_/;Head[m2]=!=List}, etaOpt_]:=
+	{m2, etaOpt};
+
+
+cpropp[{a_}, dim_, etaOpt_]:=
+	cpropp[{a,  0 , 1}, dim, etaOpt];
+
+cpropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
+	(
+	cproptmp1= cproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],dim];
+	cproptmp2= cproppMassPart[b, etaOpt];
+	CartesianPropagatorDenominator[cproptmp1[[1]],cproptmp1[[2]],cproptmp2[[1]],{n, cproptmp2[[2]]}]
+	);
 
 sp[a_,b_] :=
 	Pair[Momentum[a], Momentum[b]];

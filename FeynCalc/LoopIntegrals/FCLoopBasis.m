@@ -65,6 +65,10 @@ FCLoopBasisExtract::nodims=
 "Error! FCLoopBasisExtract is unable to build up a list of possible scalar products, because the supplied \
 dimensions are not present in the given expression. Evaluation aborted."
 
+FCLoopBasisExtract::failmsg =
+"Error! FCLoopBasisExtract has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 FCLoopBasisFindCompletion::failmsg =
 "Error! FCLoopBasisFindCompletion has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -88,20 +92,21 @@ lintegral::usage="";
 Options[FCLoopBasisIncompleteQ] = {
 	FCI -> False,
 	FCVerbose -> False,
-	SetDimensions-> {4,D}
+	SetDimensions-> {3,4,D,D-1}
 };
 
 Options[FCLoopBasisOverdeterminedQ] = {
 	FCI -> False,
 	FCVerbose -> False,
-	SetDimensions-> {4,D}
+	SetDimensions-> {3,4,D,D-1}
 };
 
 Options[FCLoopBasisFindCompletion] = {
+	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
 	Method -> ScalarProduct,
-	SetDimensions-> {4,D}
+	SetDimensions-> {3,4,D,D-1}
 };
 
 Options[FCLoopBasisSplit] = {
@@ -113,17 +118,22 @@ Options[FCLoopBasisSplit] = {
 
 FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 	Block[{one, two,  coeffs, spd, lmoms,allmoms, extmoms, sprods, props, basisElements,
-		basisElementsOrig, availableDims},
+		basisElementsOrig, availableDims, isCartesian},
 		SetAttributes[spd,Orderless];
 
-
-		If[	!FreeQ2[{sps,fad}, FeynCalc`Package`NRStuff],
+		If[	!FreeQ2[{sps fad}, {TemporalPair,TemporalMomentum,TemporalIndex, TC, GenericPropagatorDenominator}],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
 
+		isCartesian = cartesianIntegralQ[sps fad];
+
 		(* List of all the momenta that appear inside the integral *)
-		allmoms=Union[Cases[sps*fad,Momentum[x_,_:4]:>x,Infinity]];
+		If[	!isCartesian,
+			allmoms=Union[Cases[sps*fad,Momentum[x_,_:4]:>x,Infinity]],
+			allmoms=Union[Cases[sps*fad,CartesianMomentum[x_,_:3]:>x,Infinity]]
+		];
+
 		extmoms = Complement[allmoms,loopmoms];
 
 		lmoms = Intersection[loopmoms,Complement[allmoms,extmoms]];
@@ -156,10 +166,10 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 
 		basisElements = fdsInvert[basisElementsOrig];
 
-		availableDims = Intersection[Union[Cases[basisElements, Momentum[_, dim_: 4] :> dim, Infinity]],dims];
+		availableDims = Intersection[FCGetDimensions[basisElements],dims];
 
-		If [availableDims==={},
-			Message[FCLoopBasisExtract::nodims];
+		If[	availableDims==={},
+			Message[FCLoopBasisExtract::failmsg,"The supplied dimensions are not present in the given expression."];
 			Abort[]
 		];
 
@@ -168,9 +178,11 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 		coeffs =
 			Union[Join[Flatten[Outer[spd, lmoms, extmoms]],
 			Flatten[Outer[spd, lmoms, lmoms]]]];
-		coeffs = Union[Flatten[coeffs/.spd[a_,b_]:>(Pair[Momentum[a,#],Momentum[b,#]]&/@availableDims)]];
 
-
+		If[	TrueQ[!isCartesian],
+			coeffs = Union[Flatten[coeffs/.spd[a_,b_]:>(Pair[Momentum[a,#],Momentum[b,#]]&/@availableDims)]],
+			coeffs = Union[Flatten[coeffs/.spd[a_,b_]:>(CartesianPair[CartesianMomentum[a,#],CartesianMomentum[b,#]]&/@availableDims)]]
+		];
 
 		(* 	Now we have all the polynomials that appear in the loop integral.
 			We also save their exponents as the second element of this list*)
@@ -238,10 +250,8 @@ FCLoopBasisSplit[sps_. fad_FeynAmpDenominator, lmoms_List, OptionsPattern[]] :=
 		res
 	]
 
-
-
 FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose, rank, len},
+	Block[ {ex, vecs, ca, res, fclbVerbose, rank, len, dims},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -255,11 +265,6 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
@@ -270,10 +275,17 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[ TrueQ[cartesianIntegralQ[ex]],
+			(*Cartesian integral *)
+			dims = Cases[OptionValue[SetDimensions], 3 | _Symbol - 1],
+			(*Lorentzian integral *)
+			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
+		];
+
 		FCPrint[3,"FCLoopBasisIncompleteQ: Entering with: ", ex, FCDoControl->fclbVerbose];
 		FCPrint[3,"FCLoopBasisIncompleteQ: Loop momenta: ", lmoms, FCDoControl->fclbVerbose];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, OptionValue[SetDimensions]];
+		vecs= FCLoopBasisExtract[ex, lmoms, dims];
 
 		FCPrint[3,"FCLoopBasisIncompleteQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
@@ -297,18 +309,13 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 	];
 
 FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose},
+	Block[ {ex, vecs, ca, res, fclbVerbose, dims},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fclbVerbose=OptionValue[FCVerbose]
 			];
-		];
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
 		];
 
 		If[	FreeQ2[expr,lmoms],
@@ -329,7 +336,14 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Entering with: ", ex, FCDoControl->fclbVerbose];
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Loop momenta: ", lmoms, FCDoControl->fclbVerbose];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, OptionValue[SetDimensions]];
+		If[ TrueQ[cartesianIntegralQ[ex]],
+			(*Cartesian integral *)
+			dims = Cases[OptionValue[SetDimensions], 3 | _Symbol - 1],
+			(*Lorentzian integral *)
+			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
+		];
+
+		vecs= FCLoopBasisExtract[ex, lmoms, dims];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
@@ -340,23 +354,19 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(* ... and check if some of those vectors are linearly dependent *)
 		res = (NullSpace[Transpose[Last[ca]]] =!= {});
+
 		res
 	];
 
 FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps={}, method,
-			missingSPs, oldRank, newRank, len,prs={},null},
+			missingSPs, oldRank, newRank, len,prs={},null, isCartesian, dims},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fclbVerbose=OptionValue[FCVerbose]
 			];
-		];
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
 		];
 
 		If[	FreeQ2[expr,lmoms],
@@ -390,7 +400,14 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, OptionValue[SetDimensions]];
+		If[ TrueQ[cartesianIntegralQ[ex]],
+			(*Cartesian integral *)
+			dims = Cases[OptionValue[SetDimensions], 3 | _Symbol - 1],
+			(*Lorentzian integral *)
+			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
+		];
+
+		vecs= FCLoopBasisExtract[ex, lmoms, dims];
 		FCPrint[3,"FCLoopBasisFindCompletion: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
 		(* Finally, convert all these polynomials into vectors ... *)
@@ -470,6 +487,10 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 
 		res = {ex, extraProps};
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	];
 
@@ -478,7 +499,8 @@ fdsInvert[x_]:=
 	(x/.f_FeynAmpDenominator:> 1/PropagatorDenominatorExplicit[f, FCI->True]);
 
 propCheck[x_]:=
-	MatchQ[#, ((c_. FeynAmpDenominator[__])/;FreeQ[c, Pair])|((c_. Pair[__])/;FreeQ[c, Pair])|(c_/;FreeQ[c, Pair])]&/@(List@@(Expand2[x, Pair]+null) /.
+	MatchQ[#, ((c_. FeynAmpDenominator[__])/;FreeQ2[c, {Pair, CartesianPair}])|((c_. (Pair|CartesianPair)[__])/;
+			FreeQ2[c, {Pair, CartesianPair}])|(c_/;FreeQ2[c, {Pair, CartesianPair}])]&/@(List@@(Expand2[x, {Pair, CartesianPair}]+null) /.
 		null -> Unevaluated[Sequence[]]);
 
 (* Compute rank of the propagator matrix. Safe for memoization	*)
@@ -486,6 +508,22 @@ getRank[x_List]:=
 	MemSet[getRank[x],
 		MatrixRank[Transpose[Last[Normal[CoefficientArrays@@x]]]]
 	];
+
+
+cartesianIntegralQ[ex_]:=
+	Which[
+			(*Lorentzian integral *)
+			!FreeQ[ex,Momentum] && FreeQ[ex,CartesianMomentum],
+			Return[False],
+			(*Cartesian integral *)
+			FreeQ[ex,Momentum] && !FreeQ[ex,CartesianMomentum],
+			Return[True],
+			!FreeQ[ex,Momentum] && !FreeQ[ex,CartesianMomentum],
+			(*Mixed integral*)
+			Message[FCLoopBasisExtract::failmsg,"Integrals that simultaneously depend on Lorentz and Cartesian vectors are not supported."];
+			Abort[]
+		];
+
 
 FCPrint[1,"FCLoopBasis.m loaded."];
 End[]

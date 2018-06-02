@@ -37,7 +37,30 @@ Tests`LoopIntegrals`fcstFCLoopBasisIncompleteQ =
 "FCLoopBasisIncompleteQ[FAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "True"},
 {"fcstFCLoopBasisIncompleteQ-ID9",
 "FCLoopBasisIncompleteQ[SPD[q1,q2]SPD[q1,l2]SPD[q2,l1]FAD[q1,q2,{\
-q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"}
+q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID10",
+"FCLoopBasisIncompleteQ[CFAD[{q1,m1}],{q1}]", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID11",
+"FCLoopBasisIncompleteQ[CFAD[q1,{q1,m1}],{q1}]", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID12",
+"FCLoopBasisIncompleteQ[CFAD[{q1,m1},{q1-l+p,m}],{q1}]", "True"},
+{"fcstFCLoopBasisIncompleteQ-ID13",
+"FCLoopBasisIncompleteQ[CSPD[q1,l]CFAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"False"},
+{"fcstFCLoopBasisIncompleteQ-ID14",
+"FCLoopBasisIncompleteQ[CFAD[{q1,m1},{q2,m2}],{q1,q2}]", "True"},
+{"fcstFCLoopBasisIncompleteQ-ID15",
+"FCLoopBasisIncompleteQ[CSPD[q1,q2]CFAD[{q1,m1},{q2,m2}],{q1,q2}]",
+	"False"},
+{"fcstFCLoopBasisIncompleteQ-ID16",
+"FCLoopBasisIncompleteQ[CFAD[{q1,m1},{q2,m2},q1-q2],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisIncompleteQ-ID17",
+"FCLoopBasisIncompleteQ[CFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]\
+", "True"},
+{"fcstFCLoopBasisIncompleteQ-ID18",
+"FCLoopBasisIncompleteQ[CSPD[q1,q2]CSPD[q1,l2]CSPD[q2,l1]CFAD[q1,\
+q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisOverdeterminedQ =
@@ -73,7 +96,41 @@ q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
 "True"},
 {"fcstFCLoopBasisOverdeterminedQ-ID12",
 "FCLoopBasisOverdeterminedQ[FAD[q1,q2,{q1+l,m1},{q1-l,m1},{q2+l,m1}\
-,{q2-l,m1}],{q1,q2}]", "True"}
+,{q2-l,m1}],{q1,q2}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID13",
+"FCLoopBasisOverdeterminedQ[CFAD[{q1,m1}],{q1},{}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID14",
+"FCLoopBasisOverdeterminedQ[CFAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID15",
+"FCLoopBasisOverdeterminedQ[CSPD[q1,l]CFAD[{q1,m1},{q1-l+p,m}],{q1}\
+]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID16",
+"FCLoopBasisOverdeterminedQ[CFAD[{q1,m1},{q2,m2}],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID17",
+"FCLoopBasisOverdeterminedQ[CSPD[q1,q2]CFAD[{q1,m1},{q2,m2}],{q1,\
+q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID18",
+"FCLoopBasisOverdeterminedQ[CFAD[{q1,m1},{q2,m2},q1-q2],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID19",
+"FCLoopBasisOverdeterminedQ[CFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,\
+q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID20",
+"FCLoopBasisOverdeterminedQ[CSPD[q1,q2]CSPD[q1,l2]CSPD[q2,l1]CFAD[\
+q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID21",
+"FCLoopBasisOverdeterminedQ[CFAD[q1,{q1,m1}],{q1}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID22",
+"FCLoopBasisOverdeterminedQ[CFAD[q1,{q1+l,m1},{q1-l,m2}],{q1}]",
+"True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID23",
+"FCLoopBasisOverdeterminedQ[CSPD[q1,l]CFAD[q1,{q1+l,m1}],{q1}]",
+"True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID24",
+"FCLoopBasisOverdeterminedQ[CFAD[q1,q2,{q1+l,m1},{q1-l,m1},{q2+l,\
+m1},{q2-l,m1}],{q1,q2}]", "True"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisFindCompletion =
@@ -111,7 +168,20 @@ SPD[l2, q1], SPD[q1, q2]}}"},
 q2 - k] SPD[q1, q2], {q1, q2}, Method -> { FAD[{q2 + k, m}], FAD[{q1 - p, m}],
 SPD[p, q2], SPD[k, q1]}]//FCE",
 "{FAD[p + q1, -k + q2] SPD[q1, q2], {FAD[{k + q2, m}],
-FAD[{-p + q1, m}], SPD[p, q2], SPD[k, q1]}}"}
+FAD[{-p + q1, m}], SPD[p, q2], SPD[k, q1]}}"},
+{"fcstFCLoopBasisFindCompletion-ID9","FCLoopBasisFindCompletion[CFAD[q1 + p, q2 - k] CSPD[q1, q2], {q1, q2},
+Method -> {CFAD[{q2 + k, m}], CFAD[{q1 - p, m}], CSPD[p, q2],
+CSPD[k, q1]}, FCE -> True]","{CFAD[{{p + q1, 0}, {0, -1}, 1}, {{-k + q2, 0}, {0, -1}, 1}] CSPD[q1,
+q2], {CFAD[{{k + q2, 0}, {m, -1}, 1}],
+CFAD[{{-p + q1, 0}, {m, -1}, 1}], CSPD[p, q2], CSPD[k, q1]}}"},
+{"fcstFCLoopBasisFindCompletion-ID10","FCLoopBasisFindCompletion[
+CFAD[q1, q2, {q1 - l1, m1}, {q2 - l2, m2}], {q1, q2}, FCE -> True]","{CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1},
+1}, {{-l1 + q1, 0}, {m1, -1}, 1}, {{-l2 + q2, 0}, {m2, -1},
+1}], {CSPD[l1, q2], CSPD[l2, q1], CSPD[q1, q2]}}"},
+{"fcstFCLoopBasisFindCompletion-ID11","FCLoopBasisFindCompletion[CFAD[{q1, m1}, {q2, m2}], {q1, q2},
+FCE -> True]","{CFAD[{{q1, 0}, {m1, -1}, 1}, {{q2, 0}, {m2, -1}, 1}], {CSPD[q1, q2]}}"},
+{"fcstFCLoopBasisFindCompletion-ID12","FCLoopBasisFindCompletion[CFAD[{q1, m1}, {q1 - l + p, m}], {q1},
+FCE -> True]","{CFAD[{{q1, 0}, {m1, -1}, 1}, {{-l + p + q1, 0}, {m, -1}, 1}], {CSPD[l, q1]}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisSplit =
@@ -149,6 +219,63 @@ q4}]}"},
 q1,q2,q3,q4,q5},Head\[Rule]loopInt,List\[Rule]False,FCE\[Rule]True]",
 "loopInt[FAD[q5], {q5}]*loopInt[FAD[{q1, m}], \
 {q1}]*loopInt[FAD[{q2, m}], {q2}]*loopInt[FAD[{-p + q3, m}, q3 - q4], \
-{q3, q4}]"}
+{q3, q4}]"},
+{"fcstFCLoopBasisSplit-ID8",
+"FCLoopBasisSplit[FCI[CFAD[q1, q1 - q2, q2, {q3, m^2}]], {q1, q2, q3},
+Head -> loop, FCE -> True]",
+"{loop[CFAD[{{q3, 0}, {m^2, -1}, 1}], {q3}],
+loop[CFAD[{{q2, 0}, {0, -1}, 1}, {{q1, 0}, {0, -1},
+	1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}"}
 });
+
+Tests`LoopIntegrals`fcstFCLoopBasisExtract =
+{{"fcstFCLoopBasisExtract-ID1",
+"FCLoopBasisExtract[FCI[CFAD[q,q-p,q-p]],{q},{D-1}]",
+"{{CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, \
+-1 + D]], CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[p, -1 + D]] - 2*CartesianPair[CartesianMomentum[p, \
+-1 + D], CartesianMomentum[q, -1 + D]] + \
+CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, -1 + \
+D]]}, {CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D]], CartesianPair[CartesianMomentum[q, -1 \
++ D], CartesianMomentum[q, -1 + D]]}, {1, 2}, \
+{FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[\
+q, -1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"}, \
+{"fcstFCLoopBasisExtract-ID2",
+"FCLoopBasisExtract[FCI[CSP[q,p]CFAD[q,q-p,q-p]],{q},{3,D-1}]",
+"{{CartesianPair[CartesianMomentum[p], CartesianMomentum[q]], \
+CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, -1 + \
+D]], CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, \
+-1 + D]] - 2*CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D]] + CartesianPair[CartesianMomentum[q, -1 \
++ D], CartesianMomentum[q, -1 + D]]}, \
+{CartesianPair[CartesianMomentum[p], CartesianMomentum[q]], \
+CartesianPair[CartesianMomentum[q], CartesianMomentum[q]], \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + \
+D]], CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, \
+-1 + D]]}, {-1, 1, 2}, {CartesianPair[CartesianMomentum[p], \
+CartesianMomentum[q]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,\
+-1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"}, \
+{"fcstFCLoopBasisExtract-ID3",
+"FCLoopBasisExtract[FCI[CSPD[q,p]CFAD[q,q-p,q-p]],{q},{3,D-1}]",
+"{{CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, \
+-1 + D]], CartesianPair[CartesianMomentum[q, -1 + D], \
+CartesianMomentum[q, -1 + D]], CartesianPair[CartesianMomentum[p, -1 \
++ D], CartesianMomentum[p, -1 + D]] - \
+2*CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 \
++ D]] + CartesianPair[CartesianMomentum[q, -1 + D], \
+CartesianMomentum[q, -1 + D]]}, {CartesianPair[CartesianMomentum[p, \
+-1 + D], CartesianMomentum[q, -1 + D]], \
+CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, -1 + \
+D]]}, {-1, 1, 2}, {CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,\
+-1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"}};
 

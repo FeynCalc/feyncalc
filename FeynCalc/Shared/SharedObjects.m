@@ -28,6 +28,35 @@ CA::usage =
 CF::usage =
 "CF is one of the Casimir operator eigenvalues of SU(N); CF = (N^2-1)/(2 N)";
 
+CFAD::usage =
+"CFAD[{{q1+ ..., p1.q2 + ...,} {m^2, s}, n}, ...] denotes a Cartesian propagator \
+given by 1/[(q1+...)^2 + p1.q2 ... + m^2 + sign*I*eta]^n, where  \
+q1^2 and p1.q2 are Cartesian sclar products in D-1 dimensions. \
+For brevity one can also use shorter forms \
+such as CFAD[{q1+ ...,  m^2}, ...], CFAD[{q1+ ...,  m^2 , n}, ...], \
+CFAD[{q1+ ...,  {m^2, -1}}, ...], CFAD[q1,...]  etc. If s is not explicitly specified, \
+then its value is determined by the \
+option EtaSign, which has the default value +1. If n is not explicitly \
+specified, then the default value 1 is assumed. Translation into FeynCalc \
+internal form is performed by FeynCalcInternal, where a CFAD is encoded \
+using the special head CartesianPropagatorDenominator.";
+
+CartesianPropagatorDenominator::usage =
+"CartesianPropagatorDenominator[CartesianMomentum[q1,D-1]+..., \
+CartesianPair[CartesianMomentum[q1,D-1],CartesianMomentum[p1,D-1] + ...,m^2, \
+{n,s}] encodes a generic Cartesian propagator denominator \
+1/[(q1+...)^2 + q1.p1 + ... + m^2 + s*I eta]^n. \
+CartesianPropagatorDenominator is an internal object. To enter such propagators \
+in FeynCalc you should use CFAD.";
+
+PropagatorDenominator::usage =
+"PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a \
+propagator.  If q is supposed to be D-dimensional enter: \
+PropagatorDenominator[Momentum[q, D], m].  What is meant is \
+1/(q^2-m^2). PropagatorDenominator[p] evaluates to PropagatorDenominator[p,0].
+PropagatorDenominator is an internal object. To enter such propagators \
+in FeynCalc you should use FAD.";
+
 ChiralityProjector::usage =
 "ChiralityProjector[+1] denotes DiracGamma[6] (=1/2(1 + DiracMatrix[5])). \
 ChiralityProjector[-1] denotes DiracGamma[7] (=1/2(1 - DiracMatrix[5])).";
@@ -226,6 +255,17 @@ GFAD::usage =
 (Translation into FeynCalc internal form is performed by \
 FeynCalcInternal.)";
 
+GFAD::usage =
+"GFAD[{{{x, s}, n}, ...] denotes a generic propagator \
+given by 1/[x + s*I*eta]^n, where x can be an arbitray expression. \
+For brevity one can also use shorter forms \
+such as GFAD[{x, n}, ...], GFAD[{x}, ...] or GFAD[x, ...]. \
+If s is not explicitly specified, then its value is determined by the \
+option EtaSign, which has the default value +1. If n is not explicitly
+specified, then the default value 1 is assumed. Translation into FeynCalc \
+internal form is performed by FeynCalcInternal, where a GFAD is encoded \
+using the special head GenericPropagatorDenominator.";
+
 GaugeField::usage =
 "GaugeField is a name of a gauge field.";
 
@@ -233,11 +273,11 @@ GaugeXi::usage =
 "GaugeXi is a head for gauge parameters.";
 
 GenericPropagatorDenominator::usage =
-"GenericPropagatorDenominator[expr, {n,sign}] is a generic factor of the denominator of a \
+"GenericPropagatorDenominator[expr, {n,s}] is a generic factor of the denominator of a \
 propagator. Unlike PropagatorDenominator that is supposed to mean 1/(q^2-m^2), \
 expr in GenericPropagatorDenominator can be an arbitrary combination of Pair, \
 CartesianPair and TemporalPair objects. Using n one can specify the power of the
-propagator, while sign (+1 or -1) fixes the sign of  I*eta.";
+propagator, while s (+1 or -1) fixes the sign of  I*eta.";
 
 GluonField::usage =
 "GluonField is a name of a gauge field.";
@@ -964,6 +1004,10 @@ SetAttributes[SUNFIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[CartesianPair, Orderless];
 SetAttributes[TemporalPair, Orderless];
 
+(* 	Here we define the default I*eta prescription to be -I*eta!
+	for Cartesian propagators *)
+Options[CFAD] = {Dimension -> D-1, EtaSign -> -1};
+Options[GFAD] = {EtaSign -> 1};
 Options[ChiralityProjector] = {FCI -> True};
 Options[DiracMatrix] = {Dimension -> 4, FCI -> True};
 Options[DiracSlash] = {Dimension -> 4, FCI -> True};

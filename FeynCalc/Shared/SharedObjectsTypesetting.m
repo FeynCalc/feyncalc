@@ -24,6 +24,7 @@ End[]
 Begin["`SharedObjectsTypesetting`Private`"]
 
 dootpow::usage="";
+csp::usage="";
 
 CartesianIndex /:
 	MakeBoxes[ CartesianIndex[p_, dim_ : 3], TraditionalForm]:=
@@ -578,23 +579,92 @@ fadTypeset[{y_}, dim_] :=
 fadTypeset[y_/;Head[y]=!=List, dim_] :=
 	SequenceForm[Pair[Momentum[y,dim],Momentum[y,dim]]];
 
-ff2[{ex_,n_,1}] :=
-	Row[{"(",ex,")"}]^n;
 
-ff2[{ex_,n_,-1}] :=
-	Row[{"(",ex,")"}]^n;
 
-ff2[{ex_,n_,1}] :=
-	Row[{"(",ex,"+",I "\[Eta]",")"}]^n/; $FCShowIEta;
+gfadTypeset[ex_/;Head[ex]=!=List, etaOpt_] :=
+	gfadTypeset[{{ex,etaOpt}, 1}, etaOpt];
 
-ff2[{ex_,n_,-1}] :=
-	Row[{"(",ex,"-",I "\[Eta]",")"}]^n/; $FCShowIEta;
+gfadTypeset[{ex_/;Head[ex]=!=List, rest___}, etaOpt_] :=
+	gfadTypeset[{{ex,etaOpt},rest}, etaOpt];
+
+gfadTypeset[{{ex_}, rest___}, etaOpt_] :=
+	gfadTypeset[{{ex,etaOpt},rest}, etaOpt];
+
+gfadTypeset[{a_List}, etaOpt_] :=
+	gfadTypeset[{a, 1}, etaOpt];
+
+gfadTypeset[{{ex_,s_},n_}, etaOpt_] :=
+	Row[{"(",ex,
+		If[$FCShowIEta,
+
+			Sequence@@{If[s===1,
+				"+",
+				"-"
+			],
+			I "\[Eta]"},
+			Unevaluated[Sequence[]]
+		],")"}]^n;
+
+cfadTypeset[ex_/;Head[ex]=!=List, dim_, etaOpt_] :=
+	cfadTypeset[{{ex,0},{0,etaOpt}}, dim, etaOpt];
+
+cfadTypeset[{ex_/;Head[ex]=!=List, rest__}, dim_, etaOpt_] :=
+	cfadTypeset[{{ex,0},rest}, dim, etaOpt];
+
+cfadTypeset[{a_List, m2_/;Head[m2]=!=List, rest___}, dim_, etaOpt_] :=
+	cfadTypeset[{a,{m2,etaOpt},rest}, dim, etaOpt];
+
+cfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
+Row[{"(",
+
+		If[	ex1=!=0,
+			CartesianPair[CartesianMomentum[ex1,dim],CartesianMomentum[ex1,dim]],
+			Unevaluated[Sequence[]]
+		],
+
+		If[ex2=!=0,
+
+			If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
+				Unevaluated@Sequence["-", Expand[-ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]]]],
+				If[	ex1===0,
+					ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],
+					Unevaluated@Sequence["+", ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]]]
+				]
+			],
+
+			Unevaluated[Sequence[]]
+		],
+
+		If[m2=!=0,
+
+			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= m2) || (ex1===0 && ex2===0),
+				Unevaluated[Sequence[]],
+				"+"
+			],
+			m2},
+			Unevaluated[Sequence[]]
+		],
+
+		If[$FCShowIEta,
+
+			Sequence@@{If[etasign===1,
+				"+",
+				"-"
+			],
+			I "\[Eta]"},
+			Unevaluated[Sequence[]]
+		],
+
+	")"}]^(n);
 
 MakeBoxes[pref_. FAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[fadTypeset[#,OptionValue[FAD,{opts},Dimension]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}] && !MemberQ[{a},{_,_,_,_,_}];
 
-MakeBoxes[pref_. GFAD[a__List], TraditionalForm]:=
-	ToBoxes[pref/(Apply[DOT,Map[ff2, {a}]]/. DOT -> dootpow), TraditionalForm]/; MatchQ[{a}, {{_, _, _} ..}];
+MakeBoxes[pref_. GFAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
+	ToBoxes[pref/(Apply[DOT,Map[gfadTypeset[#,OptionValue[GFAD,{opts},EtaSign]]&, {a}]]/. DOT -> dootpow), TraditionalForm];
+
+MakeBoxes[pref_. CFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
+ToBoxes[pref/(Apply[DOT, Map[cfadTypeset[# /. DOT[x_,y_]:> csp[x,y], OptionValue[CFAD,{opts},Dimension], OptionValue[CFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm];
 
 
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=

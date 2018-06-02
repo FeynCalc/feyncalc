@@ -313,8 +313,23 @@ propd[a_, 0] :=
 propd[a_, b_/;b=!=0] :=
 	{a/.Momentum->iDent, b};
 
+cpropd[ex1_, ex2_, m2_, {n_, etasign_}] :=
+	{{ex1 /. CartesianMomentum -> iDent, ex2 //. {
+		CartesianPair[CartesianMomentum[x_, ___], CartesianMomentum[y_, ___]] :>
+		DOT[x, y], (CSPD | CSP | CSPE)[x_, y_] :> DOT[x, y]}}, {m2, etasign}, n};
+
 feynampback[a__]/; !FreeQ[{a},GenericPropagatorDenominator] && !MatchQ[{a},{__GenericPropagatorDenominator}] :=
 	feynampback@@(SelectNotFree[{a}, GenericPropagatorDenominator]) feynampback@@(SelectFree[{a}, GenericPropagatorDenominator]);
+
+
+feynampback[a__]/; !MatchQ[Union[Head/@{a}],{_}] :=
+	feynampback@@(SelectNotFree[{a}, GenericPropagatorDenominator]) *
+	feynampback@@(SelectNotFree[{a}, CartesianPropagatorDenominator]) *
+	feynampback@@(SelectNotFree[{a}, PropagatorDenominator])*
+	feynampback@@(SelectFree[{a}, {GenericPropagatorDenominator,CartesianPropagatorDenominator,PropagatorDenominator}]);
+
+feynampback[]:=
+	1;
 
 feynampback[a__PropagatorDenominator] :=
 	Switch [
@@ -337,8 +352,26 @@ feynampback[a__PropagatorDenominator] :=
 		Abort[]
 	];
 
+feynampback[a__CartesianPropagatorDenominator] :=
+	Switch [
+		dimS=FCGetDimensions[{a},FCI->True];
+		dimS,
+		{D-1} | {},
+		CFAD @@ ({a} /. CartesianPropagatorDenominator -> cpropd),
+
+		{3},
+		CFAD[Sequence @@ ({a} /. CartesianPropagatorDenominator -> cpropd),Dimension->3],
+
+		{_},
+		CFAD[Sequence @@ ({a} /. CartesianPropagatorDenominator -> cpropd),Dimension->First[dimS]],
+
+		_,
+		Message[FCE::feynamp,ToString[{a},InputForm]];
+		Abort[]
+	];
+
 feynampback[a__GenericPropagatorDenominator] :=
-	GFAD[Sequence@@({a}/. GenericPropagatorDenominator[ex_,{n_,s_}]:> {FCE[ex],n,s} )]
+	GFAD[Sequence@@({a}/. GenericPropagatorDenominator[ex_,{n_,s_}]:> {{FCE[ex],s},n} )]
 
 eps[a_, b_, c_, d_] :=
 	Signature[{a,b,c,d}] eps@@Sort[{a,b,c,d}]/; !OrderedQ[{a,b,c,d}];

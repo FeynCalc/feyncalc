@@ -32,15 +32,13 @@ Begin["`FCLoopBasis`Private`"]
 (* Safe for memoization *)
 FCLoopIBPReducableQ[sps_. fad_FeynAmpDenominator]:=
 	MemSet[FCLoopIBPReducableQ[sps fad],
-		Block[{fadList,res},
-
-			If[	!FreeQ2[{sps,fad}, FeynCalc`Package`NRStuff],
-				Message[FeynCalc::nrfail];
-				Abort[]
-			];
+		Block[{fadList,res, propPowers},
 
 			fadList = Sort[List@@fad];
-			res = (fadList=!=Union[fadList] || MatchQ[sps, _. Power[Pair[__], _]]);
+
+			propPowers = Union[Flatten[{1,Cases[List@@fad, (CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{n_,_}]:>n, Infinity]}]];
+
+			res = (fadList=!=Union[fadList] || MatchQ[sps, _. Power[(Pair|CartesianPair)[__], _]] || MatchQ[propPowers,{1,__}]);
 			res
 		]
 	];

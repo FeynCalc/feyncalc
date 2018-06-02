@@ -49,12 +49,74 @@ Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
 	"PropagatorDenominatorExplicit[aa FAD[{q, m}], Denominator -> True, Head -> hd, FCE -> True]",
 	"aa/hd[-m^2 + SPD[q, q]]"},
 {"fcstPropagatorDenominatorExplicit-ID11",
-	"PropagatorDenominatorExplicit[GFAD[{SPD[q1, p] SPD[q2, p], 2, 1}], FCE -> True]",
+	"PropagatorDenominatorExplicit[GFAD[{{SPD[q1, p] SPD[q2, p], 1}, 2}], FCE -> True]",
 	"1/(SPD[p, q1]^2 SPD[p, q2]^2)"},
 {"fcstPropagatorDenominatorExplicit-ID12",
 	"PropagatorDenominatorExplicit[FAD[{p1 + p2, 0}], ExpandScalarProduct -> False]",
 	"1/Pair[Momentum[p1, D] + Momentum[p2, D], Momentum[p1, D] + Momentum[p2, D]]"},
 {"fcstPropagatorDenominatorExplicit-ID13",
 	"PropagatorDenominatorExplicit[FAD[{p1 + p2, 0}], ExpandScalarProduct -> False, MomentumCombine -> True]",
-	"1/Pair[Momentum[p1 + p2, D], Momentum[p1 + p2, D]]"}
+	"1/Pair[Momentum[p1 + p2, D], Momentum[p1 + p2, D]]"},
+{"fcstPropagatorDenominatorExplicit-ID14",
+"PropagatorDenominatorExplicit[CFAD[p1],FCE\[Rule]True]",
+"CSPD[p1, p1]^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID15",
+"PropagatorDenominatorExplicit[CFAD[p1,p2],FCE\[Rule]True]",
+"1/(CSPD[p1, p1]*CSPD[p2, p2])"},
+{"fcstPropagatorDenominatorExplicit-ID16",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2}}],FCE\[Rule]True]",
+	"(CSPD[p1, p1] + CSPD[p1, p2])^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID17",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},0}],FCE\[Rule]True]\
+", "(CSPD[p1, p1] + CSPD[p1, p2])^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID18",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},0,0}],FCE\[Rule]\
+True]", "1"},
+{"fcstPropagatorDenominatorExplicit-ID19",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},m2}],FCE\[Rule]\
+True]", "(m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID20",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},m2,2}],FCE\[Rule]\
+True]", "(m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-2)"},
+{"fcstPropagatorDenominatorExplicit-ID21",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},m2,n}],FCE\[Rule]\
+True]", "((m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-1))^n"},
+{"fcstPropagatorDenominatorExplicit-ID22",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},2}],FCE\
+\[Rule]True]", "(m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-2)"},
+{"fcstPropagatorDenominatorExplicit-ID23",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},n}],FCE\
+\[Rule]True]", "((m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-1))^n"},
+{"fcstPropagatorDenominatorExplicit-ID24",
+"PropagatorDenominatorExplicit[CFAD[p1,Dimension->3],FCE\[Rule]\
+True]", "CSP[p1, p1]^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID25",
+"PropagatorDenominatorExplicit[CFAD[p1,p2,Dimension->3],FCE\[Rule]\
+True]", "1/(CSP[p1, p1]*CSP[p2, p2])"},
+{"fcstPropagatorDenominatorExplicit-ID26",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2}},Dimension->3],FCE\
+\[Rule]True]", "(CSP[p1, p1] + CSP[p1, p2])^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID27",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},0},Dimension->3],\
+FCE\[Rule]True]", "(CSP[p1, p1] + CSP[p1, p2])^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID28",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},0,0},Dimension->3],\
+FCE\[Rule]True]", "1"},
+{"fcstPropagatorDenominatorExplicit-ID29",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},m2},Dimension->3],\
+FCE\[Rule]True]", "(m2 + CSP[p1, p1] + CSP[p1, p2])^(-1)"},
+{"fcstPropagatorDenominatorExplicit-ID30",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},m2,2},Dimension->3]\
+,FCE\[Rule]True]", "(m2 + CSP[p1, p1] + CSP[p1, p2])^(-2)"},
+{"fcstPropagatorDenominatorExplicit-ID31",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},m2,n},Dimension->3]\
+,FCE\[Rule]True]", "((m2 + CSP[p1, p1] + CSP[p1, p2])^(-1))^n"},
+{"fcstPropagatorDenominatorExplicit-ID32",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},2},\
+Dimension->3],FCE\[Rule]True]",
+"(m2 + CSP[p1, p1] + CSP[p1, p2])^(-2)"},
+{"fcstPropagatorDenominatorExplicit-ID33",
+"PropagatorDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},n},\
+Dimension->3],FCE\[Rule]True]",
+"((m2 + CSP[p1, p1] + CSP[p1, p2])^(-1))^n"}
 }

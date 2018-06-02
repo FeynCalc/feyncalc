@@ -41,6 +41,7 @@ Options[FCLoopSplit] = {
 	DiracGammaExpand -> True,
 	Expanding -> True,
 	Factoring -> Factor2,
+	FCE -> False,
 	FCI -> False,
 	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
 };
@@ -48,12 +49,7 @@ Options[FCLoopSplit] = {
 FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 	Block[{	null1, null2, ex, loopFree, loopScalar,
 			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
-			addToLoopScalar,tmp,loopIntHeads},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
+			addToLoopScalar,tmp,loopIntHeads, res},
 
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
@@ -94,7 +90,7 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 
 		loopTensorQP = Select[ex-loopScalar+ null1+ null2,
 			(!FreeQ2[#,lmoms] && FreeQ2[# /. {FeynAmpDenominator[__] :> Unique[],
-				Pair[Momentum[a_,_:4],Momentum[b_,_:4]]/;!FreeQ2[{a,b},lmoms] :> Unique[]}, lmoms]) &]/. {null1|null2 -> 0};
+				(Pair|CartesianPair|TemporalPair)[(CartesianMomentum|TemporalMomentum|Momentum)[a_,___],(CartesianMomentum|TemporalIndex|Momentum)[b_,___]]/;!FreeQ2[{a,b},lmoms] :> Unique[]}, lmoms]) &]/. {null1|null2 -> 0};
 
 		loopTensorFreeInd = ex - loopFree - loopScalar - loopTensorQP;
 
@@ -118,13 +114,20 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 		(*Check that different pieces are what they should be	*)
 		If[!FreeQ2[loopFree,{lmoms}] ||
 			!FreeQ2[loopScalar/. FeynAmpDenominator[__] :> Unique[],{lmoms}] ||
-			!FreeQ2[loopTensorQP/.Pair[Momentum[a_,_:4],Momentum[b_,_:4]]/;!FreeQ2[{a,b},lmoms] :> Unique[],{lmoms}] ||
-			!FreeQ2[loopTensorFreeInd/.Pair[Momentum[a_,_:4],LorentzIndex[_,_:4]]/;!FreeQ2[a,lmoms] :> Unique[],{lmoms}] ||
+			!FreeQ2[loopTensorQP/.(Pair|CartesianPair|TemporalPair)[(CartesianMomentum|Momentum|TemporalMomentum)[a_,___],(CartesianMomentum|Momentum|TemporalIndex)[b_,___]]/;!FreeQ2[{a,b},lmoms] :> Unique[],{lmoms}] ||
+			!FreeQ2[loopTensorFreeInd/.(Pair|CartesianPair)[(Momentum|CartesianMomentum)[a_,___],(LorentzIndex|CartesianIndex)[_,___]]/;!FreeQ2[a,lmoms] :> Unique[],{lmoms}] ||
 			Together[loopFree+loopScalar+loopTensorQP+loopTensorFreeInd - ex]=!=0,
 			Message[FCLoopSplit::fail, ex];
 			Abort[]
 		];
-		{loopFree,loopScalar,loopTensorQP,loopTensorFreeInd}
+
+		res = {loopFree,loopScalar,loopTensorQP,loopTensorFreeInd};
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 	];
 
 FCPrint[1,"FCLoopSplit.m loaded."];

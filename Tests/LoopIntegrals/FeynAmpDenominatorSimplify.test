@@ -100,11 +100,13 @@ PropagatorDenominator[-Momentum[k1, D] - Momentum[k2, D] +
 	m]] , l, FCE -> True]",
 "-2*FAD[l, {-k1/2 - k2/2 + l, m}]"},
 {"fcstFeynAmpDenominatorSimplify-ID16",
-"FDS[FVD[l, mu] FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1, 1}], l,
+"FDS[FVD[l, mu] FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1}], l,
 FCE -> True]",
-"FAD[{l, m}, {l + p, m}] FVD[l, mu] GFAD[{SPD[l, p], 1, 1}]"},
+"FAD[{l, m}, {l + p, m}] FVD[l, mu] GFAD[{{SPD[l, p], 1}, 1}]"},
 {"fcstFeynAmpDenominatorSimplify-ID17",
 "FDS[FAD[q1, q1 + p, q2, q2 + p], q1, q2,
 FeynAmpDenominatorCombine -> False, FCE -> True]",
-"FAD[q1, -p + q1] FAD[q2, -p + q2]"}
+"FAD[q1, -p + q1] FAD[q2, -p + q2]"},
+{"fcstFeynAmpDenominatorSimplify-ID18","FDS[CFAD[q, {q - p, 0, 2}], q, FCE -> True]",
+	"CFAD[{{q, 0}, {0, -1}, 1}, {{-p + q, 0}, {0, -1}, 2}]"}
 }

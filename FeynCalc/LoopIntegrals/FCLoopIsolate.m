@@ -43,6 +43,7 @@ End[]
 Begin["`FCLoopIsolate`Private`"]
 
 Options[FCLoopIsolate] = {
+	CFAD -> True,
 	ClearHeads -> {FCGV["LoopInt"]},
 	Collecting -> True,
 	DiracGammaExpand -> True,
@@ -52,6 +53,7 @@ Options[FCLoopIsolate] = {
 	ExpandScalarProduct -> False,
 	Expanding -> True,
 	FCI -> False,
+	FCE -> False,
 	FCLoopIBPReducableQ -> False,
 	Factoring -> Factor,
 	FeynAmpDenominatorSplit -> True,
@@ -66,7 +68,7 @@ Options[FCLoopIsolate] = {
 };
 
 fullDep[z_,lmoms_]:=
-	(Union[Cases[ExpandScalarProduct[z,FCI->True], Momentum[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
+	(Union[Cases[ExpandScalarProduct[z,FCI->True], (CartesianMomentum|Momentum)[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads},
@@ -152,6 +154,10 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			res = res /. OptionValue[Head][z__]/; !fullDep[z,lmoms0] :> z;
 		];
 
+		If [ !OptionValue[CFAD],
+			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, CartesianPropagatorDenominator] :> z;
+		];
+
 		If [ !OptionValue[GFAD],
 			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, GenericPropagatorDenominator] :> z;
 		];
@@ -161,8 +167,9 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			res = res /. OptionValue[Head][z__]/; !FCLoopIBPReducableQ[z] :> z;
 		];
 
-
-
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		res
 	];

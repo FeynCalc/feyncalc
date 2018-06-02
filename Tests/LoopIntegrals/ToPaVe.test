@@ -75,6 +75,8 @@ PaVeAutoReduce -> True]"},
 "I Pi^2 B0[ma^2, 0, 0]"},
 {"fcstToPaVe-ID21","FCClearScalarProducts[];\n SPD[p, p] = mb^2; \n ToPaVe[FAD[q, q + p], q]",
 "I Pi^2 B0[mb^2, 0, 0]"},
-{"fcstToPaVe-ID22","ToPaVe[FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1, 1}], l] // FCE",
-"FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1, 1}]"}
+{"fcstToPaVe-ID22","ToPaVe[FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1}], l] // FCE",
+"FAD[{l, m}, {l + p, m}] GFAD[{{SPD[l, p], 1}, 1}]"},
+{"fcstToPaVe-ID23","ToPaVe[FAD[{l, m}, {l + p, m}] CFAD[{{0, l.p}, m^2}], l] // FCE",
+"CFAD[{{0, l.p}, {m^2, -1}, 1}] FAD[{l, m}, {l + p, m}]"}
 };

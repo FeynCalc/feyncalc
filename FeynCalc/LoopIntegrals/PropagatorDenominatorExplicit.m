@@ -74,11 +74,15 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 		mandel = OptionValue[Mandelstam];
 
 		ruleNormal = {
+
 			PropagatorDenominator[a_ ,b_] :>
 			(1/Expand[esp[mc[Pair[a, a]],FCI->True] - b^2]),
-			(*TODO FCEta*)
+			(*TODO Do not ignore I*eta!*)
 			GenericPropagatorDenominator[pr_ ,{n_, _}] :>
-			(1/Expand[esp[mc[pr],FCI->True]])^n
+			(1/Expand[esp[mc[pr],FCI->True]])^n,
+
+			CartesianPropagatorDenominator[ex1_, ex2_, m2_ ,{n_, s_}] :>
+			(1/Expand[esp[mc[CartesianPair[ex1,ex1]+ ex2 + m2],FCI->True]])^n
 		};
 
 		ruleMandelstam = {
