@@ -205,5 +205,89 @@ CartesianMomentum[q1, -1 + D], 0, m, {1, -1}]]], \
 loopInt[FeynAmpDenominator[CartesianPropagatorDenominator[\
 CartesianMomentum[q1, -1 + D], 0, 0, {1, -1}], \
 CartesianPropagatorDenominator[CartesianMomentum[p, -1 + D] + \
-CartesianMomentum[q1, -1 + D], 0, m, {1, -1}]]]}}"}
+CartesianMomentum[q1, -1 + D], 0, m, {1, -1}]]]}}"},
+{"fcstFCLoopExtract-ID29",
+"FCLoopExtract[SFAD[{q3,0},{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2,\
+q3},loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
+"{0, loopInt[SFAD[{{q3, 0}, {0, 1}, 1}], {q3}]*loopInt[SFAD[{{q1, \
+0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, 1}, {{q1 - q2, 0}, {0, 1}, 1}, \
+{{q2, 0}, {0, 1}, 1}], {q1, q2}], {loopInt[SFAD[{{q3, 0}, {0, 1}, \
+1}], {q3}], loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, \
+1}, {{q1 - q2, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}], {q1, q2}]}}"},
+{"fcstFCLoopExtract-ID30",
+"FCLoopExtract[SFAD[{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2},\
+loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
+"{0, loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, 1}, \
+{{q1 - q2, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}], {q1, q2}], \
+{loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, 1}, {{q1 - \
+q2, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}], {q1, q2}]}}"},
+{"fcstFCLoopExtract-ID31",
+"FCLoopExtract[SFAD[{q1,m0},{p1+p2}],{q1},loopInt,FCLoopBasisSplit\
+\[Rule]True,FCE\[Rule]True]",
+"{0, loopInt[SFAD[{{q1, 0}, {m0, 1}, 1}], {q1}]*SFAD[{{p1 + p2, \
+0}, {0, 1}, 1}], {loopInt[SFAD[{{q1, 0}, {m0, 1}, 1}], {q1}]}}"},
+{"fcstFCLoopExtract-ID32",
+"FCLoopExtract[SFAD[{q1,m0}],{q1},loopInt,FCLoopBasisSplit\[Rule]\
+True,FCE\[Rule]True]",
+"{0, loopInt[SFAD[{{q1, 0}, {m0, 1}, 1}], {q1}], \
+{loopInt[SFAD[{{q1, 0}, {m0, 1}, 1}], {q1}]}}"},
+{"fcstFCLoopExtract-ID33",
+"FCLoopExtract[a FCI[SFAD[{q,0,2}]]+b \
+FCI[SFAD[{q,0,1}]],{q},loop,FCLoopIBPReducableQ\[Rule]True,FCE\[Rule]\
+True]", "{0, a*loop[SFAD[{{q, 0}, {0, 1}, 2}]] + b*SFAD[{{q, 0}, {0, \
+1}, 1}], {loop[SFAD[{{q, 0}, {0, 1}, 2}]]}}"},
+{"fcstFCLoopExtract-ID34",
+"FCLoopExtract[FVD[q1,mu]SFAD[{q1,m}]+A0[m],{q1,q2},loopInt,\
+DropScaleless\[Rule]True,FCLoopSplit\[Rule]{3,4},FCE\[Rule]True]",
+"{A0[m], loopInt[FVD[q1, mu]*SFAD[{{q1, 0}, {m, 1}, 1}]], \
+{loopInt[FVD[q1, mu]*SFAD[{{q1, 0}, {m, 1}, 1}]]}}"},
+{"fcstFCLoopExtract-ID35",
+"FCLoopExtract[SFAD[{q1,m}]+SPD[q1,q2],{q1,q2},loopInt,\
+DropScaleless\[Rule]True]",
+"{0, loopInt[FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[q1, D], 0, -m, {1, 1}]]], \
+{loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1,\
+D], 0, -m, {1, 1}]]]}}"},
+{"fcstFCLoopExtract-ID36",
+"FCLoopExtract[FVD[q1,mu]FVD[q2,nu]SFAD[{q1,m}]+GAD[mu].(GSD[q1]+M)\
+.GAD[nu]SFAD[q1,{q1+p,m}],{q1,q2},loopInt]",
+"{0, M*DiracGamma[LorentzIndex[mu, D], D] . \
+DiracGamma[LorentzIndex[nu, D], \
+D]*loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[\
+q1, D], 0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
+Momentum[q1, D], 0, -m, {1, 1}]]] + \
+loopInt[DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[Momentum[q1, \
+D], D] . DiracGamma[LorentzIndex[nu, D], \
+D]*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], \
+0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
+Momentum[q1, D], 0, -m, {1, 1}]]] + \
+loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, \
+D], 0, -m, {1, 1}]]*Pair[LorentzIndex[mu, D], Momentum[q1, \
+D]]*Pair[LorentzIndex[nu, D], Momentum[q2, D]]], \
+{loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1,\
+D], 0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
+Momentum[q1, D], 0, -m, {1, 1}]]], \
+loopInt[DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[Momentum[q1, \
+D], D] . DiracGamma[LorentzIndex[nu, D], \
+D]*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], \
+0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
+Momentum[q1, D], 0, -m, {1, 1}]]], \
+loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, \
+D], 0, -m, {1, 1}]]*Pair[LorentzIndex[mu, D], Momentum[q1, \
+D]]*Pair[LorentzIndex[nu, D], Momentum[q2, D]]]}}"},
+{"fcstFCLoopExtract-ID37",
+"FCLoopExtract[FVD[q1,mu]SFAD[{q1,m}]+FVD[p,mu]SFAD[q1,{q1+p,m}],{\
+q1,q2},loopInt]",
+"{0, loopInt[FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[q1, D], 0, -m, {1, 1}]]*Pair[LorentzIndex[mu, D], \
+Momentum[q1, D]]] + \
+loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, \
+D], 0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
+Momentum[q1, D], 0, -m, {1, 1}]]]*Pair[LorentzIndex[mu, D], \
+Momentum[p, D]], \
+{loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1,\
+D], 0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
+Momentum[q1, D], 0, -m, {1, 1}]]], \
+loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, \
+D], 0, -m, {1, 1}]]*Pair[LorentzIndex[mu, D], Momentum[q1, D]]]}}"}
 });

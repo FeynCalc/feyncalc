@@ -44,7 +44,8 @@ Options[FCLoopExtract] = {
 	FeynAmpDenominatorCombine -> True,
 	GFAD -> True,
 	MultiLoop -> False,
-	PaVe -> True
+	PaVe -> True,
+	SFAD -> True
 };
 
 FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
@@ -73,6 +74,7 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 		rest  = Plus@@tmp[[irrel]];
 		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms, FCI->True, Head->loopHead,
 									CFAD -> OptionValue[CFAD],
+									SFAD -> OptionValue[SFAD],
 									Collecting -> OptionValue[Collecting],
 									DropScaleless-> OptionValue[DropScaleless],
 									MultiLoop-> OptionValue[MultiLoop],

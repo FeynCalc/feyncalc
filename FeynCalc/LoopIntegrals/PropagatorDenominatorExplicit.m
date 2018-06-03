@@ -82,7 +82,10 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 			(1/Expand[esp[mc[pr],FCI->True]])^n,
 
 			CartesianPropagatorDenominator[ex1_, ex2_, m2_ ,{n_, s_}] :>
-			(1/Expand[esp[mc[CartesianPair[ex1,ex1]+ ex2 + m2],FCI->True]])^n
+			(1/Expand[esp[mc[CartesianPair[ex1,ex1]+ ex2 + m2],FCI->True]])^n,
+
+			StandardPropagatorDenominator[ex1_, ex2_, m2_ ,{n_, s_}] :>
+			(1/Expand[esp[mc[Pair[ex1,ex1]+ ex2 + m2],FCI->True]])^n
 		};
 
 		ruleMandelstam = {

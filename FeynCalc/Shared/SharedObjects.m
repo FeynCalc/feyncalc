@@ -458,6 +458,30 @@ ScaleMu::usage =
 "ScaleMu is the mass scale used for dimensional regularization \
 of loop integrals";
 
+SFAD::usage =
+"SFAD[{{q1+ ..., p1.q2 + ...,} {m^2, s}, n}, ...] denotes a Lorentzian propagator \
+given by 1/[(q1+...)^2 + p1.q2 ... + m^2 + sign*I*eta]^n, where  \
+q1^2 and p1.q2 are Minkowski sclar products in D dimensions. \
+For brevity one can also use shorter forms \
+such as SFAD[{q1+ ...,  m^2}, ...], SFAD[{q1+ ...,  m^2 , n}, ...], \
+SFAD[{q1+ ...,  {m^2, -1}}, ...], SFAD[q1,...]  etc. If s is not explicitly specified, \
+then its value is determined by the \
+option EtaSign, which has the default value +1. If n is not explicitly \
+specified, then the default value 1 is assumed. Translation into FeynCalc \
+internal form is performed by FeynCalcInternal, where a SFAD is encoded \
+using the special head StandardPropagatorDenominator.";
+
+StandardPropagatorDenominator::usage =
+"StandardPropagatorDenominator[Momentum[q1,D]+..., \
+Pair[Momentum[q1,D],Momentum[p1,D] + ...,m^2, \
+{n,s}] encodes a generic Lorentzian propagator denominator \
+1/[(q1+...)^2 + q1.p1 + ... + m^2 + s*I eta]^n. \
+This allows to accomodate for standard propagators of the type \
+1/(p^2-m^2) but also for propagators encountered in manifestly \
+Lorentz covariant effective field theories such as HQET or SCET. \
+StandardPropagatorDenominator is an internal object. To enter such propagators \
+in FeynCalc you should use SFAD.";
+
 OPE::usage =
 "OPE is a convenience variable to separate OPE insertions. OPE is also \
 an option of several input functions like GluonPropagator.";
@@ -1016,6 +1040,7 @@ Options[FCGV] = {SilentTypeSetting -> False, EvaluateFCGV -> False};
 Options[FourVector]  = {Dimension -> 4, FCI -> True};
 Options[LeviCivita] = {Dimension -> 4, FCI->True};
 Options[MetricTensor] = {Dimension -> 4, FCI -> True};
+Options[SFAD] = {Dimension -> D, EtaSign -> 1};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
 Options[Polarization] = {Transversality -> False};

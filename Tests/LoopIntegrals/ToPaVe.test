@@ -78,5 +78,7 @@ PaVeAutoReduce -> True]"},
 {"fcstToPaVe-ID22","ToPaVe[FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1}], l] // FCE",
 "FAD[{l, m}, {l + p, m}] GFAD[{{SPD[l, p], 1}, 1}]"},
 {"fcstToPaVe-ID23","ToPaVe[FAD[{l, m}, {l + p, m}] CFAD[{{0, l.p}, m^2}], l] // FCE",
-"CFAD[{{0, l.p}, {m^2, -1}, 1}] FAD[{l, m}, {l + p, m}]"}
+"CFAD[{{0, l.p}, {m^2, -1}, 1}] FAD[{l, m}, {l + p, m}]"},
+{"fcstToPaVe-ID24","ToPaVe[SFAD[{l, m}, {l + p, m}], l] // FCE",
+"SFAD[{{l, 0}, {m, 1}, 1}, {{l + p, 0}, {m, 1}, 1}]"}
 };

@@ -31,12 +31,14 @@ End[]
 
 Begin["`FeynCalcInternal`Private`"]
 
+sfadim::usage="";
 cfadim::usage="";
 fadim::usage="";
 repeated::usage="";
 fchntmp::usage="";
 cfadEtaSign::usage="";
 gfadEtaSign::usage="";
+sfadEtaSign::usage="";
 head::usage="";
 
 cproptmp1::usage="";
@@ -97,6 +99,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SUNFDeltaContract :> sfdeltacontr,
 			SUNT :> sunTint,
 			SUNTF :> sunTFint,
+			SFAD :> sfadint,
 			FAD :> fadint,
 			GFAD :> gfadint,
 			CFAD :> cfadint,
@@ -364,6 +367,18 @@ gfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
 	FeynAmpDenominator @@ Map[gpropp, FCI[{a,b}]]
 	);
 
+sfadint[a___, b_, opts:OptionsPattern[]] :=
+	(
+	sfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{y,0},z]),opts]
+	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
+
+sfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
+	(
+	sfadim = OptionValue[SFAD,{opts},Dimension];
+	sfadEtaSign = OptionValue[SFAD,{opts},EtaSign];
+	sfadint2 @@ Map[#&, {a,b}]
+	);
+
 gpropp[{ex_, n_:1}]:=
 	GenericPropagatorDenominator[ex, {n, gfadEtaSign}];
 
@@ -382,6 +397,9 @@ fadint2[b__List] :=
 
 cfadint2[b__List] :=
 	FeynAmpDenominator @@ Map[cpropp[#,cfadim,cfadEtaSign]&, {b}/. Repeated->repeated];
+
+sfadint2[b__List] :=
+	FeynAmpDenominator @@ Map[spropp[#,sfadim,sfadEtaSign]&, {b}/. Repeated->repeated];
 
 propp[{x_}]:=
 	PropagatorDenominator[Momentum[x, fadim],0]//MomentumExpand;
@@ -423,6 +441,37 @@ cpropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
 	cproptmp2= cproppMassPart[b, etaOpt];
 	CartesianPropagatorDenominator[cproptmp1[[1]],cproptmp1[[2]],cproptmp2[[1]],{n, cproptmp2[[2]]}]
 	);
+
+
+sproppMomPart[{ex1_,ex2_}, dim_]:=
+	{Momentum[ex1, dim], ex2}//MomentumExpand;
+
+sproppMomPart[ex_/;Head[ex]=!=List, dim_]:=
+	{Momentum[ex, dim],0}//MomentumExpand;
+
+(*Notice that m^2 has the minus sign by default!*)
+sproppMassPart[{m2_, etasign_}, _]:=
+	{-m2,etasign};
+
+(*If the sign of I*eta is not specified, we take the default option! *)
+sproppMassPart[m2_/;Head[m2]=!=List, etaOpt_]:=
+	{-m2, etaOpt};
+
+sproppMassPart[{m2_/;Head[m2]=!=List}, etaOpt_]:=
+	{-m2, etaOpt};
+
+
+spropp[{a_}, dim_, etaOpt_]:=
+	spropp[{a,  0 , 1}, dim, etaOpt];
+
+spropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
+	(
+	sproptmp1= sproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> Pair[Momentum[x,dim],Momentum[y,dim]],dim];
+	sproptmp2= sproppMassPart[b, etaOpt];
+	StandardPropagatorDenominator[sproptmp1[[1]],sproptmp1[[2]],sproptmp2[[1]],{n, sproptmp2[[2]]}]
+	);
+
+
 
 sp[a_,b_] :=
 	Pair[Momentum[a], Momentum[b]];

@@ -512,6 +512,9 @@ getRank[x_List]:=
 
 cartesianIntegralQ[ex_]:=
 	Which[
+			!FreeQ[ex,PropagatorDenominator] && !FreeQ[ex,StanardPropagatorDenominator],
+			Message[FCLoopBasisExtract::failmsg,"Integrals that contain both FADs and SFADs are not supported."];
+			Abort[],
 			(*Lorentzian integral *)
 			!FreeQ[ex,Momentum] && FreeQ[ex,CartesianMomentum],
 			Return[False],

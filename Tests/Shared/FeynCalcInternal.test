@@ -1099,7 +1099,583 @@ CartesianPropagatorDenominator[CartesianMomentum[q4], 0, 0, {1, -1}]]"},
 "FeynAmpDenominator[
 CartesianPropagatorDenominator[CartesianMomentum[p1, -1 + D],
 CartesianPair[CartesianMomentum[p1, -1 + D],
-CartesianMomentum[p2, -1 + D]], 0, {1, -1}]]"}
+CartesianMomentum[p2, -1 + D]], 0, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID290", "SFAD[{{q, -p1 . p2}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID291",
+"SFAD[{{q, -p1 . p2}, m^2}, EtaSign -> 1]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID292",
+"SFAD[{{q, -p1 . p2}, {m^2, -1}}, EtaSign -> 1]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID293", "SFAD[{{q, -p1 . p2}, m^2, 2}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID294", "SFAD[{{q, -p1 . p2}, m^2, n}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID295", "SFAD[{{q, x*p1 . p2}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID296",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID297",
+"SFAD[{{q, x*p1 . p2}, m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID298",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID299",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID300",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID301", "SFAD[{0, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID302", "SFAD[{0, m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID303", "SFAD[{0, m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID304", "SFAD[{{0, p1 . p2}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID305", "SFAD[{{0, p1 . p2}, m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID306", "SFAD[{{0, p1 . p2}, m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID307", "SFAD[{{0, -p1 . p2}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID308", "SFAD[{{0, -p1 . p2}, m^2, 2}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID309", "SFAD[{{0, -p1 . p2}, m^2, n}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID310", "SFAD[{{0, -p1 . p2}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID311", "SFAD[{{0, -p1 . p2}, m^2, 2}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID312", "SFAD[{{0, -p1 . p2}, m^2, n}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID313", "SFAD[{{0, x*p1 . p2}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID314",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID315",
+"SFAD[{{0, x*p1 . p2}, m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID316",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID317",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID318",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID319",
+"SFAD[{{q, -p1 . p2}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID320",
+"SFAD[{{q, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID321",
+"SFAD[{{q, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID322",
+"SFAD[{{q, x*p1 . p2}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID323",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID324",
+"SFAD[{{q, x*p1 . p2}, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID325",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID326",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> \
+4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID327",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> \
+4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID328",
+"SFAD[{0, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID329",
+"SFAD[{0, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID330",
+"SFAD[{0, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID331",
+"SFAD[{{0, p1 . p2}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID332",
+"SFAD[{{0, p1 . p2}, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID333",
+"SFAD[{{0, p1 . p2}, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID334",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID335",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID336",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID337",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID338",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID339",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID340",
+"SFAD[{{0, x*p1 . p2}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID341",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID342",
+"SFAD[{{0, x*p1 . p2}, m^2, n}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID343",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> 4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID344",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> \
+4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID345",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> \
+4]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID346",
+"SFAD[{{q, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID347",
+"SFAD[{{q, -p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID348",
+"SFAD[{{q, -p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID349",
+"SFAD[{{q, x*p1 . p2}, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID350",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID351",
+"SFAD[{{q, x*p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID352",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> -4 + \
+D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID353",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> -4 + \
+D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID354",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> -4 + \
+D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID355",
+"SFAD[{0, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID356",
+"SFAD[{0, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID357",
+"SFAD[{0, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID358",
+"SFAD[{{0, p1 . p2}, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID359",
+"SFAD[{{0, p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID360",
+"SFAD[{{0, p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID361",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID362",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID363",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID364",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID365",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID366",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID367",
+"SFAD[{{0, x*p1 . p2}, m^2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID368",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID369",
+"SFAD[{{0, x*p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID370",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> -4 + \
+D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID371",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> -4 + \
+D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID372",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> -4 + \
+D]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID373", "SFAD[{q, 0}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID374", "SFAD[{q, -m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID375", "SFAD[{q, -2*m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID376", "SFAD[{q, m2^2 - m1^2*x}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID377", "SFAD[{q, {0, 1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID378", "SFAD[{q, {-m^2, 1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID379", "SFAD[{q, {-2*m^2, 1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID380", "SFAD[{q, {m2^2 - m1^2*x, 1}}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID381", "SFAD[{q, {0, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID382", "SFAD[{q, {-m^2, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID383", "SFAD[{q, {-2*m^2, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID384",
+"SFAD[{q, {m2^2 - m1^2*x, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID385", "SFAD[{q, 0, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID386", "SFAD[{q, -m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID387", "SFAD[{q, -2*m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID388", "SFAD[{q, m2^2 - m1^2*x, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID389", "SFAD[{q, {0, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID390", "SFAD[{q, {-m^2, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID391", "SFAD[{q, {-2*m^2, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID392",
+"SFAD[{q, {m2^2 - m1^2*x, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID393", "SFAD[{q, {0, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, -1}]]"},
+{"fcstFeynCalcInternal-ID394", "SFAD[{q, {-m^2, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, -1}]]"},
+{"fcstFeynCalcInternal-ID395", "SFAD[{q, {-2*m^2, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, -1}]]"},
+{"fcstFeynCalcInternal-ID396",
+"SFAD[{q, {m2^2 - m1^2*x, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, -1}]]"},
+{"fcstFeynCalcInternal-ID397", "SFAD[{q, 0, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID398", "SFAD[{q, -m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID399", "SFAD[{q, -2*m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID400", "SFAD[{q, m2^2 - m1^2*x, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID401", "SFAD[{q, {0, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID402", "SFAD[{q, {-m^2, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID403", "SFAD[{q, {-2*m^2, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID404",
+"SFAD[{q, {m2^2 - m1^2*x, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID405", "SFAD[{q, {0, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, -1}]]"},
+{"fcstFeynCalcInternal-ID406", "SFAD[{q, {-m^2, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, -1}]]"},
+{"fcstFeynCalcInternal-ID407", "SFAD[{q, {-2*m^2, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, -1}]]"},
+{"fcstFeynCalcInternal-ID408",
+"SFAD[{q, {m2^2 - m1^2*x, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, -1}]]"},
+{"fcstFeynCalcInternal-ID409", "SFAD[{0, 0}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID410", "SFAD[{0, -m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID411", "SFAD[{0, -2*m^2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID412", "SFAD[{0, m2^2 - m1^2*x}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID413", "SFAD[{0, {0, 1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID414", "SFAD[{0, {-m^2, 1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID415", "SFAD[{0, {-2*m^2, 1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternal-ID416", "SFAD[{0, {m2^2 - m1^2*x, 1}}]//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternal-ID417", "SFAD[{0, {0, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID418", "SFAD[{0, {-m^2, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID419", "SFAD[{0, {-2*m^2, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID420",
+"SFAD[{0, {m2^2 - m1^2*x, -1}}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, -1}]]"},
+{"fcstFeynCalcInternal-ID421", "SFAD[{0, 0, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID422", "SFAD[{0, -m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID423", "SFAD[{0, -2*m^2, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID424", "SFAD[{0, m2^2 - m1^2*x, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID425", "SFAD[{0, {0, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID426", "SFAD[{0, {-m^2, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID427", "SFAD[{0, {-2*m^2, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternal-ID428",
+"SFAD[{0, {m2^2 - m1^2*x, 1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternal-ID429", "SFAD[{0, {0, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID430", "SFAD[{0, {-m^2, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID431", "SFAD[{0, {-2*m^2, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID432",
+"SFAD[{0, {m2^2 - m1^2*x, -1}, 2}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, -1}]]"},
+{"fcstFeynCalcInternal-ID433", "SFAD[{0, 0, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID434", "SFAD[{0, -m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID435", "SFAD[{0, -2*m^2, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID436", "SFAD[{0, m2^2 - m1^2*x, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID437", "SFAD[{0, {0, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID438", "SFAD[{0, {-m^2, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID439", "SFAD[{0, {-2*m^2, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternal-ID440",
+"SFAD[{0, {m2^2 - m1^2*x, 1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternal-ID441", "SFAD[{0, {0, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID442", "SFAD[{0, {-m^2, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID443", "SFAD[{0, {-2*m^2, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+-1}]]"},
+{"fcstFeynCalcInternal-ID444",
+"SFAD[{0, {m2^2 - m1^2*x, -1}, n}]//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, -1}]]"}
+
 };
 
 
@@ -2261,7 +2837,642 @@ CartesianPropagatorDenominator[CartesianMomentum[q4], 0, 0, {1, -1}]]"},
 "FeynAmpDenominator[
 CartesianPropagatorDenominator[CartesianMomentum[p1, -1 + D],
 CartesianPair[CartesianMomentum[p1, -1 + D],
-CartesianMomentum[p2, -1 + D]], 0, {1, -1}]]"}
+CartesianMomentum[p2, -1 + D]], 0, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID290",
+"SFAD[{{q, -p1 . p2}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID291",
+"SFAD[{{q, -p1 . p2}, m^2}, EtaSign -> 1]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID292",
+"SFAD[{{q, -p1 . p2}, {m^2, -1}}, EtaSign -> 1]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID293",
+"SFAD[{{q, -p1 . p2}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID294",
+"SFAD[{{q, -p1 . p2}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID295",
+"SFAD[{{q, x*p1 . p2}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID296",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID297",
+"SFAD[{{q, x*p1 . p2}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID298",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID299",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID300",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID301", "SFAD[{0, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID302", "SFAD[{0, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID303", "SFAD[{0, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID304",
+"SFAD[{{0, p1 . p2}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID305",
+"SFAD[{{0, p1 . p2}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID306",
+"SFAD[{{0, p1 . p2}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID307",
+"SFAD[{{0, -p1 . p2}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID308",
+"SFAD[{{0, -p1 . p2}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID309",
+"SFAD[{{0, -p1 . p2}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID310",
+"SFAD[{{0, -p1 . p2}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID311",
+"SFAD[{{0, -p1 . p2}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID312",
+"SFAD[{{0, -p1 . p2}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID313",
+"SFAD[{{0, x*p1 . p2}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID314",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID315",
+"SFAD[{{0, x*p1 . p2}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID316",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID317",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID318",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID319",
+"SFAD[{{q, -p1 . p2}, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID320",
+"SFAD[{{q, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID321",
+"SFAD[{{q, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID322",
+"SFAD[{{q, x*p1 . p2}, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID323",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID324",
+"SFAD[{{q, x*p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID325",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> \
+4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID326",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> \
+4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID327",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> \
+4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID328",
+"SFAD[{0, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID329",
+"SFAD[{0, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID330",
+"SFAD[{0, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID331",
+"SFAD[{{0, p1 . p2}, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID332",
+"SFAD[{{0, p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID333",
+"SFAD[{{0, p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID334",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID335",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID336",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID337",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID338",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID339",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID340",
+"SFAD[{{0, x*p1 . p2}, m^2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID341",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID342",
+"SFAD[{{0, x*p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID343",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> \
+4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID344",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> \
+4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID345",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> \
+4]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID346",
+"SFAD[{{q, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID347",
+"SFAD[{{q, -p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID348",
+"SFAD[{{q, -p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID349",
+"SFAD[{{q, x*p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID350",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID351",
+"SFAD[{{q, x*p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID352",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> -4 + \
+D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID353",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID354",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID355",
+"SFAD[{0, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID356",
+"SFAD[{0, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID357",
+"SFAD[{0, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID358",
+"SFAD[{{0, p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID359",
+"SFAD[{{0, p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID360",
+"SFAD[{{0, p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID361",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID362",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID363",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID364",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID365",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID366",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID367",
+"SFAD[{{0, x*p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID368",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID369",
+"SFAD[{{0, x*p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID370",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> -4 + \
+D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID371",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID372",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID373", "SFAD[{q, 0}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID374", "SFAD[{q, -m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID375", "SFAD[{q, -2*m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID376",
+"SFAD[{q, m2^2 - m1^2*x}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID377", "SFAD[{q, {0, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID378",
+"SFAD[{q, {-m^2, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID379",
+"SFAD[{q, {-2*m^2, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID380",
+"SFAD[{q, {m2^2 - m1^2*x, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID381", "SFAD[{q, {0, -1}}]//FCI//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID382",
+"SFAD[{q, {-m^2, -1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID383",
+"SFAD[{q, {-2*m^2, -1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID384",
+"SFAD[{q, {m2^2 - m1^2*x, -1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID385", "SFAD[{q, 0, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID386", "SFAD[{q, -m^2, 2}]//FCI//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID387",
+"SFAD[{q, -2*m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID388",
+"SFAD[{q, m2^2 - m1^2*x, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID389",
+"SFAD[{q, {0, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID390",
+"SFAD[{q, {-m^2, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID391",
+"SFAD[{q, {-2*m^2, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID392",
+"SFAD[{q, {m2^2 - m1^2*x, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID393",
+"SFAD[{q, {0, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID394",
+"SFAD[{q, {-m^2, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID395",
+"SFAD[{q, {-2*m^2, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID396",
+"SFAD[{q, {m2^2 - m1^2*x, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID397", "SFAD[{q, 0, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID398", "SFAD[{q, -m^2, n}]//FCI//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID399",
+"SFAD[{q, -2*m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID400",
+"SFAD[{q, m2^2 - m1^2*x, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID401",
+"SFAD[{q, {0, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID402",
+"SFAD[{q, {-m^2, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID403",
+"SFAD[{q, {-2*m^2, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID404",
+"SFAD[{q, {m2^2 - m1^2*x, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID405",
+"SFAD[{q, {0, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID406",
+"SFAD[{q, {-m^2, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID407",
+"SFAD[{q, {-2*m^2, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID408",
+"SFAD[{q, {m2^2 - m1^2*x, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID409", "SFAD[{0, 0}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID410", "SFAD[{0, -m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID411", "SFAD[{0, -2*m^2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID412",
+"SFAD[{0, m2^2 - m1^2*x}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID413", "SFAD[{0, {0, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID414",
+"SFAD[{0, {-m^2, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID415",
+"SFAD[{0, {-2*m^2, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID416",
+"SFAD[{0, {m2^2 - m1^2*x, 1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID417", "SFAD[{0, {0, -1}}]//FCI//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID418",
+"SFAD[{0, {-m^2, -1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID419",
+"SFAD[{0, {-2*m^2, -1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID420",
+"SFAD[{0, {m2^2 - m1^2*x, -1}}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID421", "SFAD[{0, 0, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID422", "SFAD[{0, -m^2, 2}]//FCI//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID423",
+"SFAD[{0, -2*m^2, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID424",
+"SFAD[{0, m2^2 - m1^2*x, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID425",
+"SFAD[{0, {0, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID426",
+"SFAD[{0, {-m^2, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID427",
+"SFAD[{0, {-2*m^2, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID428",
+"SFAD[{0, {m2^2 - m1^2*x, 1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID429",
+"SFAD[{0, {0, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID430",
+"SFAD[{0, {-m^2, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID431",
+"SFAD[{0, {-2*m^2, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID432",
+"SFAD[{0, {m2^2 - m1^2*x, -1}, 2}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, -1}]]"},
+{"fcstFeynCalcInternalDouble-ID433", "SFAD[{0, 0, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID434", "SFAD[{0, -m^2, n}]//FCI//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID435",
+"SFAD[{0, -2*m^2, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID436",
+"SFAD[{0, m2^2 - m1^2*x, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID437",
+"SFAD[{0, {0, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID438",
+"SFAD[{0, {-m^2, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID439",
+"SFAD[{0, {-2*m^2, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalDouble-ID440",
+"SFAD[{0, {m2^2 - m1^2*x, 1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalDouble-ID441",
+"SFAD[{0, {0, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID442",
+"SFAD[{0, {-m^2, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID443",
+"SFAD[{0, {-2*m^2, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+-1}]]"},
+{"fcstFeynCalcInternalDouble-ID444",
+"SFAD[{0, {m2^2 - m1^2*x, -1}, n}]//FCI//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, -1}]]"}
 };
 
 Tests`Shared`fcstFeynCalcInternalTriple = {
@@ -3458,7 +4669,672 @@ CartesianPropagatorDenominator[CartesianMomentum[q4], 0, 0, {1, -1}]]"},
 "FeynAmpDenominator[
 CartesianPropagatorDenominator[CartesianMomentum[p1, -1 + D],
 CartesianPair[CartesianMomentum[p1, -1 + D],
-CartesianMomentum[p2, -1 + D]], 0, {1, -1}]]"}
+CartesianMomentum[p2, -1 + D]], 0, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID290",
+"SFAD[{{q, -p1 . p2}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID291",
+"SFAD[{{q, -p1 . p2}, m^2}, EtaSign -> 1]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID292",
+"SFAD[{{q, -p1 . p2}, {m^2, -1}}, EtaSign -> 1]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID293",
+"SFAD[{{q, -p1 . p2}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID294",
+"SFAD[{{q, -p1 . p2}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID295",
+"SFAD[{{q, x*p1 . p2}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID296",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID297",
+"SFAD[{{q, x*p1 . p2}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID298",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID299",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID300",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID301",
+"SFAD[{0, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID302",
+"SFAD[{0, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID303",
+"SFAD[{0, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID304",
+"SFAD[{{0, p1 . p2}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID305",
+"SFAD[{{0, p1 . p2}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID306",
+"SFAD[{{0, p1 . p2}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID307",
+"SFAD[{{0, -p1 . p2}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID308",
+"SFAD[{{0, -p1 . p2}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID309",
+"SFAD[{{0, -p1 . p2}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID310",
+"SFAD[{{0, -p1 . p2}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID311",
+"SFAD[{{0, -p1 . p2}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID312",
+"SFAD[{{0, -p1 . p2}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID313",
+"SFAD[{{0, x*p1 . p2}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID314",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID315",
+"SFAD[{{0, x*p1 . p2}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID316",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID317",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID318",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID319",
+"SFAD[{{q, -p1 . p2}, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID320",
+"SFAD[{{q, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID321",
+"SFAD[{{q, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+-Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID322",
+"SFAD[{{q, x*p1 . p2}, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID323",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID324",
+"SFAD[{{q, x*p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID325",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> \
+4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID326",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> \
+4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID327",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> \
+4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q], \
+x*Pair[Momentum[p1], Momentum[p2]] - 2*Pair[Momentum[p3], \
+Momentum[p4]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID328",
+"SFAD[{0, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID329",
+"SFAD[{0, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID330",
+"SFAD[{0, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID331",
+"SFAD[{{0, p1 . p2}, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID332",
+"SFAD[{{0, p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID333",
+"SFAD[{{0, p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID334",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID335",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID336",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID337",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID338",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID339",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID340",
+"SFAD[{{0, x*p1 . p2}, m^2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID341",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID342",
+"SFAD[{{0, x*p1 . p2}, m^2, n}, Dimension -> 4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID343",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> \
+4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID344",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> \
+4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID345",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> \
+4]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID346",
+"SFAD[{{q, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID347",
+"SFAD[{{q, -p1 . p2}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID348",
+"SFAD[{{q, -p1 . p2}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], -Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID349",
+"SFAD[{{q, x*p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID350",
+"SFAD[{{q, x*p1 . p2}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID351",
+"SFAD[{{q, x*p1 . p2}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]], -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID352",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID353",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID354",
+"SFAD[{{q, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, -4 + \
+D], x*Pair[Momentum[p1, -4 + D], Momentum[p2, -4 + D]] - \
+2*Pair[Momentum[p3, -4 + D], Momentum[p4, -4 + D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID355",
+"SFAD[{0, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID356",
+"SFAD[{0, m^2, 2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID357",
+"SFAD[{0, m^2, n}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID358",
+"SFAD[{{0, p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID359",
+"SFAD[{{0, p1 . p2}, m^2, 2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID360",
+"SFAD[{{0, p1 . p2}, m^2, n}, Dimension -> -4 + D]//FCI//FCE//FCI",
+	"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID361",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID362",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID363",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID364",
+"SFAD[{{0, -p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID365",
+"SFAD[{{0, -p1 . p2}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID366",
+"SFAD[{{0, -p1 . p2}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID367",
+"SFAD[{{0, x*p1 . p2}, m^2}, Dimension -> -4 + D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID368",
+"SFAD[{{0, x*p1 . p2}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID369",
+"SFAD[{{0, x*p1 . p2}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID370",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID371",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, 2}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID372",
+"SFAD[{{0, x*p1 . p2 - (2*p3) . p4}, m^2, n}, Dimension -> -4 + \
+D]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+x*Pair[Momentum[p1, D], Momentum[p2, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p4, D]], -m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID373", "SFAD[{q, 0}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID374",
+"SFAD[{q, -m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID375",
+"SFAD[{q, -2*m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID376",
+"SFAD[{q, m2^2 - m1^2*x}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID377",
+"SFAD[{q, {0, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID378",
+"SFAD[{q, {-m^2, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID379",
+"SFAD[{q, {-2*m^2, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID380",
+"SFAD[{q, {m2^2 - m1^2*x, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID381",
+"SFAD[{q, {0, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID382",
+"SFAD[{q, {-m^2, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID383",
+"SFAD[{q, {-2*m^2, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID384",
+"SFAD[{q, {m2^2 - m1^2*x, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID385",
+"SFAD[{q, 0, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID386",
+"SFAD[{q, -m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID387",
+"SFAD[{q, -2*m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID388",
+"SFAD[{q, m2^2 - m1^2*x, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID389",
+"SFAD[{q, {0, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID390",
+"SFAD[{q, {-m^2, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID391",
+"SFAD[{q, {-2*m^2, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID392",
+"SFAD[{q, {m2^2 - m1^2*x, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID393",
+"SFAD[{q, {0, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {2, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID394",
+"SFAD[{q, {-m^2, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {2, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID395",
+"SFAD[{q, {-2*m^2, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {2, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID396",
+"SFAD[{q, {m2^2 - m1^2*x, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {2, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID397",
+"SFAD[{q, 0, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID398",
+"SFAD[{q, -m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID399",
+"SFAD[{q, -2*m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID400",
+"SFAD[{q, m2^2 - m1^2*x, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID401",
+"SFAD[{q, {0, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID402",
+"SFAD[{q, {-m^2, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID403",
+"SFAD[{q, {-2*m^2, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID404",
+"SFAD[{q, {m2^2 - m1^2*x, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID405",
+"SFAD[{q, {0, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {n, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID406",
+"SFAD[{q, {-m^2, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, m^2, {n, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID407",
+"SFAD[{q, {-2*m^2, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 2*m^2, {n, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID408",
+"SFAD[{q, {m2^2 - m1^2*x, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, -m2^2 + m1^2*x, {n, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID409", "SFAD[{0, 0}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID410",
+"SFAD[{0, -m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID411",
+"SFAD[{0, -2*m^2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID412",
+"SFAD[{0, m2^2 - m1^2*x}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID413",
+"SFAD[{0, {0, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID414",
+"SFAD[{0, {-m^2, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID415",
+"SFAD[{0, {-2*m^2, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID416",
+"SFAD[{0, {m2^2 - m1^2*x, 1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID417",
+"SFAD[{0, {0, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {1, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID418",
+"SFAD[{0, {-m^2, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {1, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID419",
+"SFAD[{0, {-2*m^2, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {1, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID420",
+"SFAD[{0, {m2^2 - m1^2*x, -1}}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {1, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID421",
+"SFAD[{0, 0, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID422",
+"SFAD[{0, -m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID423",
+"SFAD[{0, -2*m^2, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID424",
+"SFAD[{0, m2^2 - m1^2*x, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID425",
+"SFAD[{0, {0, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID426",
+"SFAD[{0, {-m^2, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID427",
+"SFAD[{0, {-2*m^2, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID428",
+"SFAD[{0, {m2^2 - m1^2*x, 1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID429",
+"SFAD[{0, {0, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {2, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID430",
+"SFAD[{0, {-m^2, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {2, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID431",
+"SFAD[{0, {-2*m^2, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {2, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID432",
+"SFAD[{0, {m2^2 - m1^2*x, -1}, 2}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {2, -1}]]"},
+{"fcstFeynCalcInternalTriple-ID433",
+"SFAD[{0, 0, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID434",
+"SFAD[{0, -m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID435",
+"SFAD[{0, -2*m^2, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID436",
+"SFAD[{0, m2^2 - m1^2*x, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID437",
+"SFAD[{0, {0, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID438",
+"SFAD[{0, {-m^2, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID439",
+"SFAD[{0, {-2*m^2, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+1}]]"},
+{"fcstFeynCalcInternalTriple-ID440",
+"SFAD[{0, {m2^2 - m1^2*x, 1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, 1}]]"},
+{"fcstFeynCalcInternalTriple-ID441",
+"SFAD[{0, {0, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 0, {n, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID442",
+"SFAD[{0, {-m^2, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, m^2, {n, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID443",
+"SFAD[{0, {-2*m^2, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, 2*m^2, {n, \
+-1}]]"},
+{"fcstFeynCalcInternalTriple-ID444",
+"SFAD[{0, {m2^2 - m1^2*x, -1}, n}]//FCI//FCE//FCI",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
+m1^2*x, {n, -1}]]"}
+
 };
 
 

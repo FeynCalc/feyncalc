@@ -51,8 +51,16 @@ FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], 
 	"{FAD[q], FAD[p + q], FAD[-a + q], FAD[q2]}"
 },
 {"fcstFeynAmpDenominatorSplit-ID10",
-	"FeynAmpDenominatorSplit[FAD[q, q + p, q2 - p, q - a, q2], List -> True, Momentum -> {q}, FCE -> True]",
-	"{FAD[-p + q2, q2], FAD[q, p + q, -a + q]}"
-}
+	"FeynAmpDenominatorSplit[CFAD[q, q + p, q2 - p, q - a, q2],
+List -> True, Momentum -> {q}, FCE -> True]",
+	"{CFAD[{{-p + q2, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1}],
+CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1},
+1}, {{-a + q, 0}, {0, -1}, 1}]}"
+},
+{"fcstFeynAmpDenominatorSplit-ID11",
+	"FeynAmpDenominatorSplit[SFAD[q, q + p, q - a, q2], List -> True, FCE -> True]",
+	"{SFAD[{{q, 0}, {0, 1}, 1}], SFAD[{{p + q, 0}, {0, 1}, 1}],
+SFAD[{{-a + q, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}]}"}
+
 
 }

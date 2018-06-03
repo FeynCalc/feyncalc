@@ -614,6 +614,9 @@ cfadTypeset[{ex_/;Head[ex]=!=List, rest__}, dim_, etaOpt_] :=
 cfadTypeset[{a_List, m2_/;Head[m2]=!=List, rest___}, dim_, etaOpt_] :=
 	cfadTypeset[{a,{m2,etaOpt},rest}, dim, etaOpt];
 
+cfadTypeset[{a_List}, dim_, etaOpt_] :=
+	cfadTypeset[{a,{0,etaOpt},1}, dim, etaOpt];
+
 cfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
 Row[{"(",
 
@@ -657,6 +660,64 @@ Row[{"(",
 
 	")"}]^(n);
 
+
+
+sfadTypeset[ex_/;Head[ex]=!=List, dim_, etaOpt_] :=
+	sfadTypeset[{{ex,0},{0,etaOpt}}, dim, etaOpt];
+
+sfadTypeset[{ex_/;Head[ex]=!=List, rest__}, dim_, etaOpt_] :=
+	sfadTypeset[{{ex,0},rest}, dim, etaOpt];
+
+sfadTypeset[{a_List, m2_/;Head[m2]=!=List, rest___}, dim_, etaOpt_] :=
+	sfadTypeset[{a,{m2,etaOpt},rest}, dim, etaOpt];
+
+sfadTypeset[{a_List}, dim_, etaOpt_] :=
+	sfadTypeset[{a,{0,etaOpt},1}, dim, etaOpt];
+
+sfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
+Row[{"(",
+
+		If[	ex1=!=0,
+			Pair[Momentum[ex1,dim],Momentum[ex1,dim]],
+			Unevaluated[Sequence[]]
+		],
+
+		If[ex2=!=0,
+
+			If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
+				Unevaluated@Sequence["-", Expand[-ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]]]],
+				If[	ex1===0,
+					ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]],
+					Unevaluated@Sequence["+", ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]]]
+				]
+			],
+
+			Unevaluated[Sequence[]]
+		],
+
+		If[m2=!=0,
+
+			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= (m2)) || (ex1===0 && ex2===0),
+				"+",
+				Unevaluated[Sequence[]]
+
+			],
+			Expand[-m2]},
+			Unevaluated[Sequence[]]
+		],
+
+		If[$FCShowIEta,
+
+			Sequence@@{If[etasign===1,
+				"+",
+				"-"
+			],
+			I "\[Eta]"},
+			Unevaluated[Sequence[]]
+		],
+
+	")"}]^(n);
+
 MakeBoxes[pref_. FAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[fadTypeset[#,OptionValue[FAD,{opts},Dimension]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}] && !MemberQ[{a},{_,_,_,_,_}];
 
@@ -664,7 +725,10 @@ MakeBoxes[pref_. GFAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[gfadTypeset[#,OptionValue[GFAD,{opts},EtaSign]]&, {a}]]/. DOT -> dootpow), TraditionalForm];
 
 MakeBoxes[pref_. CFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
-ToBoxes[pref/(Apply[DOT, Map[cfadTypeset[# /. DOT[x_,y_]:> csp[x,y], OptionValue[CFAD,{opts},Dimension], OptionValue[CFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm];
+	ToBoxes[pref/(Apply[DOT, Map[cfadTypeset[# /. DOT[x_,y_]:> csp[x,y], OptionValue[CFAD,{opts},Dimension], OptionValue[CFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm];
+
+MakeBoxes[pref_. SFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
+	ToBoxes[pref/(Apply[DOT, Map[sfadTypeset[# /. DOT[x_,y_]:> sp[x,y], OptionValue[SFAD,{opts},Dimension], OptionValue[SFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm];
 
 
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=

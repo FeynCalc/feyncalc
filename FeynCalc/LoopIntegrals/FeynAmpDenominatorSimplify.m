@@ -124,7 +124,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		(*TODO Drop scaleless for 1-loop??? *)
 		(* Here we can exploit the possible factorization in a multiloop integral *)
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True,
-			ExpandScalarProduct->True, Full->False, GFAD->False, CFAD->False];
+			ExpandScalarProduct->True, Full->False, GFAD->False, CFAD->False, SFAD->False];
 
 		FCPrint[1, "FDS: Done extracting unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 		FCPrint[1, "FDS: Number of the unique integrals: ", Length[intsUnique], FCDoControl->fdsVerbose];

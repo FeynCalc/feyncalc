@@ -54,5 +54,36 @@ FVD[q, i]*SUNT[a]}"},
 "{(m1^2 + m2^2)/6, A0[m2^2]/6 + (m1^2*B0[0, m1^2, m2^2])/3 + ((m1^2 - m2^2)*B1[0, m1^2, m2^2])/6, 0, 0}"},
 {"fcstFCLoopSplit-ID13","FCLoopSplit[Foobar[x], {},
 PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads], {Foobar}]]",
-"{0, Foobar[x], 0, 0}"}
+"{0, Foobar[x], 0, 0}"},
+{"fcstFCLoopSplit-ID14",
+"FCLoopSplit[c CSPD[q,p] CFAD[{q,m}],{q},FCE\[Rule]True]",
+"{0, 0, c*CFAD[{{q, 0}, {m, -1}, 1}]*CSPD[p, q], 0}"},
+{"fcstFCLoopSplit-ID15",
+"FCLoopSplit[CVD[q,mu] CFAD[{q,m}],{q},FCE\[Rule]True]",
+"{0, 0, 0, CFAD[{{q, 0}, {m, -1}, 1}]*CVD[q, mu]}"},
+{"fcstFCLoopSplit-ID16",
+"FCLoopSplit[c CVD[q,mu] CFAD[{q,m}],{q},FCE->True]",
+"{0, 0, 0, c*CFAD[{{q, 0}, {m, -1}, 1}]*CVD[q, mu]}"},
+{"fcstFCLoopSplit-ID17",
+"FCLoopSplit[c+b CFAD[{q,mu}]+CSPD[q,k] CSPD[q,l] CFAD[{q,m}]+b \
+CVD[q,mu] CSPD[q,l] CFAD[{q,m}],{q},FCE\[Rule]True]",
+"{c, b*CFAD[{{q, 0}, {mu, -1}, 1}], CFAD[{{q, 0}, {m, -1}, \
+1}]*CSPD[k, q]*CSPD[l, q], b*CFAD[{{q, 0}, {m, -1}, 1}]*CSPD[l, \
+q]*CVD[q, mu]}"},
+{"fcstFCLoopSplit-ID18",
+"FCLoopSplit[c SPD[q,p] SFAD[{q,m}],{q},FCE\[Rule]True]",
+"{0, 0, c*SFAD[{{q, 0}, {m, 1}, 1}]*SPD[p, q], 0}"},
+{"fcstFCLoopSplit-ID19",
+"FCLoopSplit[FVD[q,mu] SFAD[{q,m}],{q},FCE\[Rule]True]",
+"{0, 0, 0, FVD[q, mu]*SFAD[{{q, 0}, {m, 1}, 1}]}"},
+{"fcstFCLoopSplit-ID20",
+"FCLoopSplit[c FVD[q,mu] SFAD[{q,m}],{q},FCE->True]",
+"{0, 0, 0, c*FVD[q, mu]*SFAD[{{q, 0}, {m, 1}, 1}]}"},
+{"fcstFCLoopSplit-ID21",
+"FCLoopSplit[c+b SFAD[{q,mu}]+SPD[q,k] SPD[q,l] SFAD[{q,m}]+b \
+FVD[q,mu] SPD[q,l]SFAD[{q,m}],{q},FCE\[Rule]True]",
+"{c, b*SFAD[{{q, 0}, {mu, 1}, 1}], SFAD[{{q, 0}, {m, 1}, \
+1}]*SPD[k, q]*SPD[l, q], b*FVD[q, mu]*SFAD[{{q, 0}, {m, 1}, \
+1}]*SPD[l, q]}"}
+
 };

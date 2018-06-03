@@ -60,7 +60,31 @@ q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
 ", "True"},
 {"fcstFCLoopBasisIncompleteQ-ID18",
 "FCLoopBasisIncompleteQ[CSPD[q1,q2]CSPD[q1,l2]CSPD[q2,l1]CFAD[q1,\
-q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"}
+q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
+{"FCLoopBasisIncompleteQ-ID19",
+"FCLoopBasisIncompleteQ[SFAD[{q1,m1}],{q1}]", "False"},
+{"FCLoopBasisIncompleteQ-ID20",
+"FCLoopBasisIncompleteQ[SFAD[q1,{q1,m1}],{q1}]", "False"},
+{"FCLoopBasisIncompleteQ-ID21",
+"FCLoopBasisIncompleteQ[SFAD[{q1,m1},{q1-l+p,m}],{q1}]", "True"},
+{"FCLoopBasisIncompleteQ-ID22",
+"FCLoopBasisIncompleteQ[SPD[q1,l]SFAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"False"},
+{"FCLoopBasisIncompleteQ-ID23",
+"FCLoopBasisIncompleteQ[SFAD[{q1,m1},{q2,m2}],{q1,q2}]", "True"},
+{"FCLoopBasisIncompleteQ-ID24",
+"FCLoopBasisIncompleteQ[SPD[q1,q2]SFAD[{q1,m1},{q2,m2}] ,{q1,q2}]",
+	"False"},
+{"FCLoopBasisIncompleteQ-ID25",
+"FCLoopBasisIncompleteQ[SFAD[{q1,m1},{q2,m2},q1-q2],{q1,q2} ]",
+"False"},
+{"FCLoopBasisIncompleteQ-ID26",
+"FCLoopBasisIncompleteQ[SFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}] \
+,{q1,q2}]", "True"},
+{"FCLoopBasisIncompleteQ-ID27",
+"FCLoopBasisIncompleteQ[SPD[q1,q2]SPD[q1,l2]SPD[q2,l1]SFAD[q1,q2,{\
+q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"}
+
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisOverdeterminedQ =
@@ -130,7 +154,42 @@ q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
 "True"},
 {"fcstFCLoopBasisOverdeterminedQ-ID24",
 "FCLoopBasisOverdeterminedQ[CFAD[q1,q2,{q1+l,m1},{q1-l,m1},{q2+l,\
+m1},{q2-l,m1}],{q1,q2}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID25",
+"FCLoopBasisOverdeterminedQ[SFAD[{q1,m1}],{q1},{}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID26",
+"FCLoopBasisOverdeterminedQ[SFAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID27",
+"FCLoopBasisOverdeterminedQ[SPD[q1,l]SFAD[{q1,m1},{q1-l+p,m}],{q1}]\
+", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID28",
+"FCLoopBasisOverdeterminedQ[SFAD[{q1,m1},{q2,m2}],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID29",
+"FCLoopBasisOverdeterminedQ[SPD[q1,q2]SFAD[{q1,m1},{q2,m2}],{q1,q2}\
+]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID30",
+"FCLoopBasisOverdeterminedQ[SFAD[{q1,m1},{q2,m2},q1-q2],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID31",
+"FCLoopBasisOverdeterminedQ[SFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,\
+q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID32",
+"FCLoopBasisOverdeterminedQ[SPD[q1,q2]SPD[q1,l2]SPD[q2,l1]SFAD[q1,\
+q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID33",
+"FCLoopBasisOverdeterminedQ[SFAD[q1,{q1,m1}],{q1}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID34",
+"FCLoopBasisOverdeterminedQ[SFAD[q1,{q1+l,m1},{q1-l,m2}],{q1}]",
+"True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID35",
+"FCLoopBasisOverdeterminedQ[SPD[q1,l]SFAD[q1,{q1+l,m1}],{q1}]",
+"True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID36",
+"FCLoopBasisOverdeterminedQ[SFAD[q1,q2,{q1+l,m1},{q1-l,m1},{q2+l,\
 m1},{q2-l,m1}],{q1,q2}]", "True"}
+
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisFindCompletion =
@@ -181,7 +240,28 @@ CFAD[q1, q2, {q1 - l1, m1}, {q2 - l2, m2}], {q1, q2}, FCE -> True]","{CFAD[{{q1,
 {"fcstFCLoopBasisFindCompletion-ID11","FCLoopBasisFindCompletion[CFAD[{q1, m1}, {q2, m2}], {q1, q2},
 FCE -> True]","{CFAD[{{q1, 0}, {m1, -1}, 1}, {{q2, 0}, {m2, -1}, 1}], {CSPD[q1, q2]}}"},
 {"fcstFCLoopBasisFindCompletion-ID12","FCLoopBasisFindCompletion[CFAD[{q1, m1}, {q1 - l + p, m}], {q1},
-FCE -> True]","{CFAD[{{q1, 0}, {m1, -1}, 1}, {{-l + p + q1, 0}, {m, -1}, 1}], {CSPD[l, q1]}}"}
+FCE -> True]","{CFAD[{{q1, 0}, {m1, -1}, 1}, {{-l + p + q1, 0}, {m, -1}, 1}], {CSPD[l, q1]}}"},
+{"fcstFCLoopBasisFindCompletion-ID13",
+"FCLoopBasisFindCompletion[SFAD[q1+p,q2-k] \
+SPD[q1,q2],{q1,q2},Method\[Rule]{SFAD[{q2+k,m}],SFAD[{q1-p,m}],SPD[p,\
+q2],SPD[k,q1]},FCE\[Rule]True]",
+"{SFAD[{{p + q1, 0}, {0, 1}, 1}, {{-k + q2, 0}, {0, 1}, \
+1}]*SPD[q1, q2], {SFAD[{{k + q2, 0}, {m, 1}, 1}], SFAD[{{-p + q1, 0}, \
+{m, 1}, 1}], SPD[p, q2], SPD[k, q1]}}"},
+{"fcstFCLoopBasisFindCompletion-ID14",
+"FCLoopBasisFindCompletion[SFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,\
+q2},FCE\[Rule]True]",
+"{SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}, {{-l1 + q1, 0}, \
+{m1, 1}, 1}, {{-l2 + q2, 0}, {m2, 1}, 1}], {SPD[l1, q2], SPD[l2, q1], \
+SPD[q1, q2]}}"},
+{"fcstFCLoopBasisFindCompletion-ID15",
+"FCLoopBasisFindCompletion[SFAD[{q1,m1},{q2,m2}],{q1,q2},FCE\[Rule]\
+True]", "{SFAD[{{q1, 0}, {m1, 1}, 1}, {{q2, 0}, {m2, 1}, 1}], \
+{SPD[q1, q2]}}"},
+{"fcstFCLoopBasisFindCompletion-ID16",
+"FCLoopBasisFindCompletion[SFAD[{q1,m1},{q1-l+p,m}],{q1},FCE\[Rule]\
+True]", "{SFAD[{{q1, 0}, {m1, 1}, 1}, {{-l + p + q1, 0}, {m, 1}, 1}], \
+{SPD[l, q1]}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisSplit =
@@ -225,7 +305,13 @@ q1,q2,q3,q4,q5},Head\[Rule]loopInt,List\[Rule]False,FCE\[Rule]True]",
 Head -> loop, FCE -> True]",
 "{loop[CFAD[{{q3, 0}, {m^2, -1}, 1}], {q3}],
 loop[CFAD[{{q2, 0}, {0, -1}, 1}, {{q1, 0}, {0, -1},
-	1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}"}
+	1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}"},
+{"fcstFCLoopBasisSplit-ID9",
+"FCLoopBasisSplit[FCI[SFAD[q1, q1 - q2, q2, {q3, m^2}]], {q1, q2, q3},
+Head -> loop, FCE -> True]",
+"{loop[SFAD[{{q3, 0}, {m^2, 1}, 1}], {q3}],
+loop[SFAD[{{q2, 0}, {0, 1}, 1}, {{q1, 0}, {0, 1},
+	1}, {{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisExtract =
@@ -277,5 +363,43 @@ CartesianMomentum[q, -1 + D]], \
 FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,\
 -1 + D], 0, 0, {1, -1}]], \
 FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
-p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"}};
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"},
+{"fcstFCLoopBasisExtract-ID4","FCLoopBasisExtract[FCI[SFAD[q, q - p, q - p]], {q}, {D}]",
+"{{Pair[Momentum[q, D], Momentum[q, D]],
+Pair[Momentum[p, D], Momentum[p, D]] -
+2 Pair[Momentum[p, D], Momentum[q, D]] +
+Pair[Momentum[q, D], Momentum[q, D]]}, {Pair[Momentum[p, D],
+Momentum[q, D]], Pair[Momentum[q, D], Momentum[q, D]]}, {1,
+2}, {FeynAmpDenominator[
+StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0,
+	0, {1, 1}]]}}"},
+{"fcstFCLoopBasisExtract-ID5","FCLoopBasisExtract[FCI[SPD[q, p] SFAD[q, q - p, q - p]], {q}, {4, D}]",
+"{{Pair[Momentum[p, D], Momentum[q, D]],
+Pair[Momentum[q, D], Momentum[q, D]],
+Pair[Momentum[p, D], Momentum[p, D]] -
+2 Pair[Momentum[p, D], Momentum[q, D]] +
+Pair[Momentum[q, D], Momentum[q, D]]}, {Pair[Momentum[p, D],
+Momentum[q, D]], Pair[Momentum[q, D], Momentum[q, D]]}, {-1, 1,
+2}, {Pair[Momentum[p, D], Momentum[q, D]],
+FeynAmpDenominator[
+StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0,
+	0, {1, 1}]]}}"},
+{"fcstFCLoopBasisExtract-ID6","FCLoopBasisExtract[FCI[SPD[q, p] SFAD[q, q - p, q - p]], {q}, {4, D}]",
+"{{Pair[Momentum[p, D], Momentum[q, D]],
+Pair[Momentum[q, D], Momentum[q, D]],
+Pair[Momentum[p, D], Momentum[p, D]] -
+2 Pair[Momentum[p, D], Momentum[q, D]] +
+Pair[Momentum[q, D], Momentum[q, D]]}, {Pair[Momentum[p, D],
+Momentum[q, D]], Pair[Momentum[q, D], Momentum[q, D]]}, {-1, 1,
+2}, {Pair[Momentum[p, D], Momentum[q, D]],
+FeynAmpDenominator[
+StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0,
+	0, {1, 1}]]}}"}
+};
 

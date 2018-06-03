@@ -36,7 +36,7 @@ FCLoopIBPReducableQ[sps_. fad_FeynAmpDenominator]:=
 
 			fadList = Sort[List@@fad];
 
-			propPowers = Union[Flatten[{1,Cases[List@@fad, (CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{n_,_}]:>n, Infinity]}]];
+			propPowers = Union[Flatten[{1,Cases[List@@fad, (StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{n_,_}]:>n, Infinity]}]];
 
 			res = (fadList=!=Union[fadList] || MatchQ[sps, _. Power[(Pair|CartesianPair)[__], _]] || MatchQ[propPowers,{1,__}]);
 			res

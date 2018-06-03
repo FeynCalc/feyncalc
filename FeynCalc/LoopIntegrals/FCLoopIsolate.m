@@ -64,7 +64,8 @@ Options[FCLoopIsolate] = {
 	IsolateNames -> KK,
 	MultiLoop -> False,
 	PaVe->True,
-	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
+	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList,
+	SFAD -> True
 };
 
 fullDep[z_,lmoms_]:=
@@ -152,6 +153,10 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 
 		If [ OptionValue[MultiLoop],
 			res = res /. OptionValue[Head][z__]/; !fullDep[z,lmoms0] :> z;
+		];
+
+		If [ !OptionValue[SFAD],
+			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, StandardPropagatorDenominator] :> z;
 		];
 
 		If [ !OptionValue[CFAD],

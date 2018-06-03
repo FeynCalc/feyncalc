@@ -23,5 +23,11 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorCombine = {
 	"FeynAmpDenominator[GenericPropagatorDenominator[
 Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D],
 	Momentum[q2, D]], {2, 1}],
-PropagatorDenominator[Momentum[p, D], m]]"}
+PropagatorDenominator[Momentum[p, D], m]]"},
+{"fcstFeynAmpDenominatorCombine-ID3",
+	"FeynAmpDenominatorCombine[ SFAD[{SPD[q1, p] SPD[q2, p], 2}] FAD[{p, m}]]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m],
+StandardPropagatorDenominator[
+Momentum[Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D],
+	Momentum[q2, D]], D], 0, -2, {1, 1}]]"}
 }
