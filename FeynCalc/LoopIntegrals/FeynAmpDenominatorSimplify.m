@@ -692,6 +692,43 @@ feynsimp[lmoms_List][a__PD] :=
 		]
 	];
 
+(*	If there are not only PropagatorDenominators inside FeynAmpDenominator, then
+	the memoization is not safe anymore! *)
+feynsimp[lmoms_List][a__ /; !MatchQ[{a},{__PD}] && FreeQ[{a},GenericPropagatorDenominator]] :=
+	Block[{null1,null2,pd, stpd, cpd},
+		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //. {
+
+			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] && scetPropagatorFreeQ[{a}, q]  :>
+				pd[Momentum[q,di] - pe, m],
+
+			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-Momentum[q,di] + pe + null1 + null2, Momentum[qq_, ___] :> qq,Infinity], lmoms]]]
+				&& scetPropagatorFreeQ[{a}, q]  :>
+				pd[Momentum[q,di] - pe, m],
+
+			StandardPropagatorDenominator[-Momentum[q_,di_:4] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] && scetPropagatorFreeQ[{a}, q]  :>
+				stpd[Momentum[q,di] - pe, (x1 /. q -> - q) , x2, x3],
+
+			StandardPropagatorDenominator[-Momentum[q_,di_:4] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-Momentum[q,di] + pe + null1 + null2,
+				Momentum[qq_, ___] :> qq, Infinity], lmoms]]] && scetPropagatorFreeQ[{a}, q]  :>
+				stpd[Momentum[q,di] - pe, (x1 /. q -> - q) , x2, x3],
+
+
+			CartesianPropagatorDenominator[-CartesianMomentum[q_,di_:3] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] && scetPropagatorFreeQ[{a}, q]  :>
+				cpd[CartesianMomentum[q,di] - pe, (x1 /. q -> - q) , x2, x3],
+
+			CartesianPropagatorDenominator[-CartesianMomentum[q_,di_:3] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-CartesianMomentum[q,di] + pe + null1 + null2,
+					CartesianMomentum[qq_, ___] :> qq, Infinity], lmoms]]] && scetPropagatorFreeQ[{a}, q]  :>
+				cpd[CartesianMomentum[q,di] - pe, (x1 /. q -> - q) , x2, x3]
+
+
+		} /. {pd -> PD, stpd -> StandardPropagatorDenominator, cpd -> CartesianPropagatorDenominator})
+	];
+
+
+scetPropagatorFreeQ[{a__}, l_]:=
+	(Cases[{a}, (StandardPropagatorDenominator|CartesianPropagatorDenominator)[0, x_ /; ! FreeQ[x, l], _, _], Infinity] === {})
+
+
 fdsMultiLoop[loopInt : (_. FeynAmpDenominator[props__]), qs__]:=
 	Block[{	tmp,res,tmpNew,solsList,repRule},
 

@@ -52,10 +52,11 @@ Options[FCApart] = {
 	DropScaleless -> True,
 	ExpandScalarProduct -> True,
 	FCI -> False,
+	FCE -> False,
 	FCVerbose -> False,
 	FDS -> True,
 	MaxIterations -> Infinity,
-	SetDimensions-> {4,D}
+	SetDimensions-> {3,4,D, D-1}
 };
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
@@ -67,11 +68,6 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				fcaVerbose=OptionValue[FCVerbose]
 			];
-		];
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
 		];
 
 		If[	!OptionValue[FCI],
@@ -104,11 +100,11 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
-		If[	!FreeQ2[ex,{LorentzIndex,Eps,DiracGamma}],
-			scalarTerm = SelectFree[ex, LorentzIndex,Eps,DiracGamma];
-			vectorTerm = SelectNotFree[ex, LorentzIndex,Eps,DiracGamma];
+		If[	!FreeQ2[ex,{LorentzIndex,CartesianIndex,TemporalIndex,Eps,DiracGamma}],
+			scalarTerm = SelectFree[ex, LorentzIndex,CartesianIndex,TemporalIndex,Eps,DiracGamma];
+			vectorTerm = SelectNotFree[ex, LorentzIndex,CartesianIndex,TemporalIndex,Eps,DiracGamma];
 
-			If[	scalarTerm*vectorTerm =!= ex || !FreeQ[scalarTerm,LorentzIndex],
+			If[	scalarTerm*vectorTerm =!= ex || !FreeQ2[scalarTerm,{LorentzIndex,CartesianIndex,TemporalIndex}],
 				Message[FCApart::error, ex];
 				Abort[]
 			],
@@ -205,6 +201,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCApart: Leaving with ", res,FCDoControl->fcaVerbose];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		Return[res]
 	]/; (lmoms=!={}) && !FreeQ2[expr,lmoms];

@@ -69,6 +69,7 @@ Options[ApartFF] = {
 	DropScaleless -> True,
 	ExpandScalarProduct -> True,
 	Factoring -> Factor,
+	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
 	FDS -> True,
@@ -76,7 +77,7 @@ Options[ApartFF] = {
 	FeynAmpDenominatorCombine -> True,
 	FCProgressBar -> False,
 	MaxIterations -> Infinity,
-	SetDimensions-> {4,D}
+	SetDimensions-> {3, 4, D-1, D}
 };
 
 Apart2[y_, OptionsPattern[]] :=
@@ -112,11 +113,6 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
 			optCollecting},
-
-		If[	!FreeQ2[{int}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		optCollecting = OptionValue[Collecting];
 
@@ -212,6 +208,11 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 
 		FCPrint[1, "ApartFF: Leaving.",  FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Leaving with ", res, FCDoControl->affVerbose];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	]
 
