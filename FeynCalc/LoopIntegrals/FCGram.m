@@ -36,22 +36,27 @@ nptfpVerbose=Null;
 
 Options[FCGramMatrix]  = {
 	Dimension -> D,
-	Prefactor -> 2,
-	FCE -> False
+	FCE -> False,
+	Head -> {Pair, Momentum},
+	Prefactor -> 2
 };
 
 Options[FCGramDeterminant]  = {
 	Dimension -> D,
-	Prefactor -> 2,
 	ExpandScalarProduct -> True,
-	FCE -> False
+	FCE -> False,
+	Head -> {Pair, Momentum},
+	Prefactor -> 2
 };
 
 FCGramMatrix[moms_List,OptionsPattern[]]:=
-	Block[{mat,len, dim, res},
+	Block[{mat,len, dim, res, pairHead,momHead},
 		len = Length[moms];
 		dim = OptionValue[Dimension];
-		mat = Table[Pair[Momentum[moms[[i]],dim], Momentum[moms[[j]],dim]], {i, 1, len}, {j, 1, len}];
+		pairHead = OptionValue[Head][[1]];
+		momHead = OptionValue[Head][[2]];
+
+		mat = Table[pairHead[momHead[moms[[i]],dim], momHead[moms[[j]],dim]], {i, 1, len}, {j, 1, len}];
 
 		If[	!MatrixQ[mat],
 			Message[FCGram::failmsg, "The created Gram matrix is incorrect."];
@@ -71,7 +76,7 @@ FCGramMatrix[moms_List,OptionsPattern[]]:=
 
 FCGramDeterminant[moms_List,OptionsPattern[]]:=
 	Block[{mat,det},
-		mat = FCGramMatrix[moms,Dimension->OptionValue[Dimension],Prefactor->OptionValue[Prefactor]];
+		mat = FCGramMatrix[moms,Dimension->OptionValue[Dimension],Prefactor->OptionValue[Prefactor], Head->OptionValue[Head]];
 		det = Det[mat];
 
 		If[OptionValue[ExpandScalarProduct],
