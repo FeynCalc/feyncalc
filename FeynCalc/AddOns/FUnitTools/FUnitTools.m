@@ -61,6 +61,10 @@ Options[FUnitCreateUnitTests] = {
 	"ZeroIDValue" -> 0
 };
 
+Options[FUnitExtractUnitTests] = {
+	Names -> False
+};
+
 FUnitCreateUnitTests[n_String, l_List, OptionsPattern[]] :=
 	MapIndexed[{n <> "-ID" <>
 		If[ StringQ[OptionValue["ZeroIDValue"]],
@@ -90,12 +94,15 @@ FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
 			],
 		InputForm, CharacterEncoding -> "Unicode"]} &, l];
 
-FUnitExtractUnitTests[{dir__, file_}, testVar_] :=
+FUnitExtractUnitTests[{dir__, file_}, testVar_, OptionsPattern[]] :=
 	Module[{li},
 		Get[FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", dir,	file <> ".test"}]];
 		li = "Tests`" <> First[{dir}] <> "`" <> testVar;
 		li = ToExpression[li];
-		Map[#[[2]] &, li]
+		If[	OptionValue[Names],
+			Map[#[[1;;2]] &, li],
+			Map[#[[2]] &, li]
+		]
 	];
 
 

@@ -106,14 +106,6 @@ MakeBoxes[CartesianPair[c1_. CartesianMomentum[a_, dim1_ : 3], c2_. CartesianMom
 		RowBox[{SuperscriptBox[TBox["(",CartesianPair[c1 CartesianMomentum[a,dim1],c2 CartesianMomentum[b,dim2]],")"],n]}]
 	] /; a=!=b;
 
-CartesianPair /:
-	MakeBoxes[CartesianPair[c_. CartesianMomentum[a_, dim_ : 3],c_. CartesianMomentum[a_, dim_ : 3]],
-	TraditionalForm]:=
-		If[ Head[a]===Plus,
-			RowBox[{SuperscriptBox[TBox["(",c CartesianMomentum[a,dim],")"],2]}],
-			SuperscriptBox[TBox[c CartesianMomentum[a,dim]],2]
-		];
-
 MakeBoxes[Power[CartesianPair[c_. CartesianMomentum[a_, dim_ : 3], c_. CartesianMomentum[a_, dim_ : 3]],n_Integer?Positive],
 TraditionalForm] :=
 	If[ Head[a]===Plus,
@@ -126,6 +118,13 @@ CartesianPair /:
 	Block[ {    m1 = MomentumExpand[c1 CartesianMomentum[a,dim1]+a1],
 			m2 = MomentumExpand[c2 CartesianMomentum[b,dim2]+b1]},
 		Which[
+
+			m1===m2,
+				If[ Head[m1]===Plus,
+					RowBox[{SuperscriptBox[TBox["(",m1,")"],2]}],
+					SuperscriptBox[TBox[m1],2]
+				],
+
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
 				If[ $PairBrackets === True && (m1)=!=(m2),
 					TBox["(", m1, "\[CenterDot]", m2, ")"],
@@ -719,16 +718,16 @@ Row[{"(",
 	")"}]^(n);
 
 MakeBoxes[pref_. FAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
-	ToBoxes[pref/(Apply[DOT,Map[fadTypeset[#,OptionValue[FAD,{opts},Dimension]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}] && !MemberQ[{a},{_,_,_,_,_}];
+	ToBoxes[pref/(Apply[DOT,Map[fadTypeset[#,OptionValue[FAD,{opts},Dimension]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}] && !MemberQ[{a},{_,_,_,_,_}] && FCPatternFreeQ[{a,opts}];
 
 MakeBoxes[pref_. GFAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
-	ToBoxes[pref/(Apply[DOT,Map[gfadTypeset[#,OptionValue[GFAD,{opts},EtaSign]]&, {a}]]/. DOT -> dootpow), TraditionalForm];
+	ToBoxes[pref/(Apply[DOT,Map[gfadTypeset[#,OptionValue[GFAD,{opts},EtaSign]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; FCPatternFreeQ[{a,opts}];
 
 MakeBoxes[pref_. CFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
-	ToBoxes[pref/(Apply[DOT, Map[cfadTypeset[# /. DOT[x_,y_]:> csp[x,y], OptionValue[CFAD,{opts},Dimension], OptionValue[CFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm];
+	ToBoxes[pref/(Apply[DOT, Map[cfadTypeset[# /. DOT[x_,y_]:> csp[x,y], OptionValue[CFAD,{opts},Dimension], OptionValue[CFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm]/; FCPatternFreeQ[{a,opts}];
 
 MakeBoxes[pref_. SFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
-	ToBoxes[pref/(Apply[DOT, Map[sfadTypeset[# /. DOT[x_,y_]:> sp[x,y], OptionValue[SFAD,{opts},Dimension], OptionValue[SFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm];
+	ToBoxes[pref/(Apply[DOT, Map[sfadTypeset[# /. DOT[x_,y_]:> sp[x,y], OptionValue[SFAD,{opts},Dimension], OptionValue[SFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm]/; FCPatternFreeQ[{a,opts}];
 
 
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=
@@ -744,8 +743,125 @@ FeynAmp /:
 	MakeBoxes[FeynAmp[_[__], q__Symbol, amp_], TraditionalForm]:=
 		ToBoxes[FeynAmp[q,amp], TraditionalForm];
 
-MakeBoxes[f_. a_FeynAmpDenominator, TraditionalForm ] :=
-	ToBoxes[f FCE[a], TraditionalForm];
+MakeBoxes[pref_. FeynAmpDenominator[a__], TraditionalForm]:=
+	ToBoxes[pref / (Apply[DOT, (feynAmpDenominatorTypeset/@{a})]/. DOT -> dootpow), TraditionalForm]/; FCPatternFreeQ[{a}];
+
+feynAmpDenominatorTypeset[PropagatorDenominator[p_,0]]:=
+	SequenceForm[Pair[p,p]];
+
+feynAmpDenominatorTypeset[PropagatorDenominator[p_,m_]]:=
+	SequenceForm[Pair[p,p], "-", m^2];
+
+feynAmpDenominatorTypeset[StandardPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:=
+	Row[{"(",
+
+		If[	ex1=!=0,
+			Pair[ex1,ex1],
+			Unevaluated[Sequence[]]
+		],
+
+		If[ex2=!=0,
+
+			If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
+				Unevaluated@Sequence["-", Expand[-ex2]],
+				If[	ex1===0,
+					ex2,
+					Unevaluated@Sequence["+", ex2]
+				]
+			],
+
+			Unevaluated[Sequence[]]
+		],
+
+		If[m2=!=0,
+			(*If m2 is negative *)
+			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= (-m2)),
+				If[	(ex1===0 && ex2===0),
+					Unevaluated[Sequence[]],
+					"+"
+				],
+				Unevaluated[Sequence[]]
+			],
+			Expand[m2]},
+			Unevaluated[Sequence[]]
+		],
+
+		If[$FCShowIEta,
+
+			Sequence@@{If[s===1,
+				"+",
+				"-"
+			],
+			I "\[Eta]"},
+			Unevaluated[Sequence[]]
+		],
+
+	")"}]^(n);
+
+feynAmpDenominatorTypeset[CartesianPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:=
+	Row[{"(",
+
+		If[	ex1=!=0,
+			CartesianPair[ex1,ex1],
+			Unevaluated[Sequence[]]
+		],
+
+		If[ex2=!=0,
+
+			If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
+				Unevaluated@Sequence["-", Expand[-ex2]],
+				If[	ex1===0,
+					ex2,
+					Unevaluated@Sequence["+", ex2]
+				]
+			],
+
+			Unevaluated[Sequence[]]
+		],
+
+		If[m2=!=0,
+
+			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= m2) || (ex1===0 && ex2===0),
+				Unevaluated[Sequence[]],
+				"+"
+			],
+			m2},
+			Unevaluated[Sequence[]]
+		],
+
+		If[$FCShowIEta,
+
+			Sequence@@{If[s===1,
+				"+",
+				"-"
+			],
+			I "\[Eta]"},
+			Unevaluated[Sequence[]]
+		],
+
+	")"}]^(n);
+
+
+
+feynAmpDenominatorTypeset[GenericPropagatorDenominator[ex1_,{n_,s_}]]:=
+	Row[{"(",
+
+		If[	ex1=!=0,
+			ex1,
+			Unevaluated[Sequence[]]
+		],
+
+		If[$FCShowIEta,
+
+			Sequence@@{If[s===1,
+				"+",
+				"-"
+			],
+			I "\[Eta]"},
+			Unevaluated[Sequence[]]
+		],
+
+	")"}]^(n);
 
 FourVector /:
 	MakeBoxes[FourVector[a_,b_, opts:OptionsPattern[]], TraditionalForm]:=
@@ -1041,19 +1157,11 @@ Pair /:
 (*    Typesetting for scalar products.    *)
 (* ------------------------------------------------------------------------ *)
 
-MakeBoxes[Pair[c1_. Momentum[a_, dim1_ : 4], c2_.Momentum[b_, dim2_ : 4]]^n_Integer?Positive, TraditionalForm] :=
+MakeBoxes[Pair[c1_. Momentum[a_, dim1_ : 4], c2_. Momentum[b_, dim2_ : 4]]^n_Integer?Positive, TraditionalForm] :=
 	If[ $PairBrackets === True,
 		RowBox[{SuperscriptBox[TBox[Pair[c1 Momentum[a,dim1],c2 Momentum[b,dim2]]],n]}],
 		RowBox[{SuperscriptBox[TBox["(",Pair[c1 Momentum[a,dim1],c2 Momentum[b,dim2]],")"],n]}]
 	] /; a=!=b;
-
-Pair /:
-	MakeBoxes[Pair[c_. Momentum[a_, dim_ : 4],c_. Momentum[a_, dim_ : 4]],
-	TraditionalForm]:=
-		If[ Head[a]===Plus,
-			RowBox[{SuperscriptBox[TBox["(",c Momentum[a,dim],")"],2]}],
-			SuperscriptBox[TBox[c Momentum[a,dim]],2]
-		];
 
 MakeBoxes[Power[Pair[c_. Momentum[a_, dim_ : 4], c_. Momentum[a_, dim_ : 4]],n_Integer?Positive], TraditionalForm] :=
 	If[ Head[a]===Plus,
@@ -1066,23 +1174,29 @@ Pair /:
 	Block[ {    m1 = MomentumExpand[c1 Momentum[a,dim1]+a1],
 			m2 = MomentumExpand[c2 Momentum[b,dim2]+b1]},
 		Which[
+			m1===m2,
+				If[ Head[m1]===Plus,
+					RowBox[{SuperscriptBox[TBox["(",m1,")"],2]}],
+					SuperscriptBox[TBox[m1],2]
+				],
+
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
+				If[ $PairBrackets === True,
 					TBox["(", m1, "\[CenterDot]", m2, ")"],
 					TBox[m1, "\[CenterDot]", m2]
 				],
 			Head[m1]=!=Plus && Head[m2]===Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
+				If[ $PairBrackets === True,
 					TBox["(",m1,"\[CenterDot]", "(",m2,")",")"],
 					TBox[m1,"\[CenterDot]", "(",m2,")"]
 				],
 			Head[m1]===Plus && Head[m2]=!=Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
+				If[ $PairBrackets === True,
 					TBox["(","(",m1,")","\[CenterDot]", m2,")"],
 					TBox["(",m1,")","\[CenterDot]", m2]
 				],
 			Head[m1]===Plus && Head[m2]===Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
+				If[ $PairBrackets === True,
 					TBox["(","(",m1,")","\[CenterDot]", "(",m2,")",")"],
 					TBox["(",m1,")","\[CenterDot]", "(",m2,")"]
 				]
