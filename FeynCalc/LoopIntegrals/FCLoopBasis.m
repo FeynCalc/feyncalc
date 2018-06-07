@@ -149,7 +149,24 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 		(*TODO Need to check that there are no scalar products with negative powers!!!*)
 
 		(* Collect all the propagator denominators *)
-		props  = fad/.FeynAmpDenominator[x__]:> FeynAmpDenominator/@{x};
+		props  = fad /.{
+		(*TODO For now it is a dirty hack, we should do better!  *)
+			StandardPropagatorDenominator[a__,  {n_,s_}]/;(IntegerQ[n] && n>1):>
+			Sequence@@ConstantArray[StandardPropagatorDenominator[a,  {1,s}], n],
+
+			CartesianPropagatorDenominator[a__,  {n_,s_}]/;(IntegerQ[n] && n>1):>
+			Sequence@@ConstantArray[CartesianPropagatorDenominator[a,  {1,s}], n],
+
+			GenericPropagatorDenominator[a_,  {n_,s_}]/;(IntegerQ[n] && n>1):>
+			Sequence@@ConstantArray[GenericPropagatorDenominator[a,  {1,s}], n]
+
+
+		}/.FeynAmpDenominator[x__]:> FeynAmpDenominator/@{x};
+
+		If[	!FreeQ[props /. (StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{n_,_}]/;n=!=1 :> mark, mark],
+			Message[FCLoopBasisExtract::failmsg,"Non-integer powers of propagators are currently not supported."];
+			Abort[]
+		];
 
 		If[	sprods=!={},
 			sprods  = Transpose[Tally[sprods]],
