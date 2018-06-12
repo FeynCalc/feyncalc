@@ -70,12 +70,40 @@ SimplifyPolyLog[expr_, OptionsPattern[]] :=
 			tmp = tmp/. Nielsen[z__]:> Nielsen[z,PolyLog->True]
 		];
 
-		tmp = Expand2[tmp,{Log,Pi}];
+		tmp = Expand2[tmp,{Log,Pi,Zeta2,Zeta4,Zeta6}];
 
 		tmp = tmp /. {
-			Pi^2 :> 6 Zeta2 , Pi^3 :> Pi 6 Zeta2, Pi^4 :> 90 Zeta4,
-			Log[x_Integer?EvenQ] :> PowerExpand[Log[x]]
-		} /. {Zeta2^2 -> 5 Zeta[4]/2};
+				Pi^2 :> 6 Zeta2,
+				Pi^3 :> 6 Pi Zeta2,
+				Pi^4 :> 90 Zeta4,
+				Pi^5 :> 90 Pi Zeta4,
+				Pi^6 :> 945 Zeta6,
+				Pi^7 :> 945 Pi Zeta6,
+				Pi^8 :> 9450 Zeta8,
+				Pi^9 :> 9450 Pi Zeta8,
+				Pi^10 :> 93555 Zeta10,
+				Pi^11 :> 93555 Pi Zeta10,
+				Log[x_Integer?EvenQ] :> PowerExpand[Log[x]]
+		};
+
+		tmp = tmp //. {
+			Zeta2^2 -> 5 Zeta4/2,
+			Zeta2^3 -> 35 Zeta6/8,
+			Zeta2^4 -> 175 Zeta8/24,
+			Zeta2^5 -> 385 Zeta10/32,
+
+			Zeta4^2 -> 7 Zeta8/6,
+			Zeta2*Zeta4 -> 7 Zeta6/4,
+			Zeta2*Zeta6 -> 5 Zeta8/3,
+			Zeta2*Zeta8 -> 33 Zeta10/20,
+			Zeta4*Zeta6 -> 11 Zeta10/10,
+
+			Zeta2^n_/; n>5 -> Zeta[2]^n,
+			Zeta4^n_/; n>2 -> Zeta[4]^n,
+			Zeta6^n_/; n>1 -> Zeta[6]^n,
+			Zeta8^n_/; n>1 -> Zeta[8]^n,
+			Zeta10^n_/; n>1 -> Zeta[10]^n
+		};
 
 		tmp
 

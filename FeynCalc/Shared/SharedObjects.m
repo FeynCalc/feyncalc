@@ -654,6 +654,15 @@ OPEIntegrateDelta is replaced by (6 Zeta2).";
 Zeta4::usage =
 "Zeta4 denotes Zeta[4]";
 
+Zeta6::usage =
+"Zeta6 denotes Zeta[6]";
+
+Zeta8::usage =
+"Zeta8 denotes Zeta[8]";
+
+Zeta10::usage =
+"Zeta10 denotes Zeta[10]";
+
 DiracGamma::gamma5fail =
 "`1` is forbidden in FeynCalc. You should always use 4-dimensional Gamma^5 or chiral projectors. \
 This is fine for all dimensional regularization schemes supported by FeynCalc including NDR. \
@@ -2171,6 +2180,24 @@ Zeta4 /:
 
 Zeta4 /:
 	N[Zeta4, prec_] := N[Zeta[4], prec];
+
+Zeta6 /:
+	N[Zeta6] = N[Zeta[6]];
+
+Zeta6 /:
+	N[Zeta6, prec_] := N[Zeta[6], prec];
+
+Zeta8 /:
+	N[Zeta8] = N[Zeta[8]];
+
+Zeta8 /:
+	N[Zeta8, prec_] := N[Zeta[8], prec];
+
+Zeta10 /:
+	N[Zeta10] = N[Zeta[10]];
+
+Zeta10 /:
+	N[Zeta10, prec_] := N[Zeta[10], prec];
 
 (* ------------------------------------------------------------------------ *)
 (*							New NR objects									*)
