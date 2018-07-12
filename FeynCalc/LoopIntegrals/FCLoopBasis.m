@@ -105,6 +105,7 @@ Options[FCLoopBasisFindCompletion] = {
 	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
+	Check -> True,
 	Method -> ScalarProduct,
 	SetDimensions-> {3,4,D,D-1}
 };
@@ -496,10 +497,14 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
-		(* Check that with those propagators the basis is now complete *)
-		If [getRank[{Join[vecs[[1]], fdsInvert[extraProps]],vecs[[2]]}] =!= len,
-			Message[FCLoopBasisFindCompletion::notcomplete, ToString[ex,InputForm]];
-			Abort[]
+		(* 	Check that with those propagators the basis is now complete. We can also disable this check, which is
+			useful when we want to augment the topology step by step by succesively adding new propagators. *)
+		If[	OptionValue[Check],
+			If [getRank[{Join[vecs[[1]], fdsInvert[extraProps]],vecs[[2]]}] =!= len,
+				Message[FCLoopBasisFindCompletion::notcomplete, ToString[ex,InputForm]];
+				Abort[]
+			]
+		];
 		];
 
 		res = {ex, extraProps};
