@@ -138,7 +138,11 @@ Tests`Shared`fcstSharedObjectsOwnValues =  {
 {"fcstSharedObjectsOwnValues-ID82", "OwnValues[SUNTF]", "{}"},
 {"fcstSharedObjectsOwnValues-ID83", "OwnValues[SUNFIndex]", "{}"},
 {"fcstSharedObjectsOwnValues-ID84", "OwnValues[ExplicitSUNFIndex]", "{}"},
-{"fcstSharedObjectsOwnValues-ID85", "OwnValues[Zeta2]", "{}"}
+{"fcstSharedObjectsOwnValues-ID85", "OwnValues[Zeta2]", "{}"},
+{"fcstSharedObjectsOwnValues-ID86", "OwnValues[Zeta4]", "{}"},
+{"fcstSharedObjectsOwnValues-ID87", "OwnValues[Zeta6]", "{}"},
+{"fcstSharedObjectsOwnValues-ID88", "OwnValues[Zeta8]", "{}"},
+{"fcstSharedObjectsOwnValues-ID89", "OwnValues[Zeta10]", "{}"}
 };
 
 
@@ -265,7 +269,11 @@ DiracGamma[FeynCalc`SharedObjects`Private`a]}"},
 {"fcstSharedObjectsUpValues-ID84", "UpValues[ExplicitSUNFIndex]",
 	"{HoldPattern[SUNFIndex[FeynCalc`SharedObjects`Private`i_ExplicitSUNFIndex]] :>
 	ExplicitSUNFIndex[FeynCalc`SharedObjects`Private`i]}"},
-{"fcstSharedObjectsUpValues-ID85", "UpValues[Zeta2]", "{}"}
+{"fcstSharedObjectsUpValues-ID85", "UpValues[Zeta2]", "{HoldPattern[Conjugate[Zeta2]] :> Zeta2}"},
+{"fcstSharedObjectsUpValues-ID86", "UpValues[Zeta4]", "{HoldPattern[Conjugate[Zeta4]] :> Zeta4}"},
+{"fcstSharedObjectsUpValues-ID87", "UpValues[Zeta6]", "{HoldPattern[Conjugate[Zeta6]] :> Zeta6}"},
+{"fcstSharedObjectsUpValues-ID88", "UpValues[Zeta8]", "{HoldPattern[Conjugate[Zeta8]] :> Zeta8}"},
+{"fcstSharedObjectsUpValues-ID89", "UpValues[Zeta10]", "{HoldPattern[Conjugate[Zeta10]] :> Zeta10}"}
 }
 
 
@@ -970,7 +978,12 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"},
 {"fcstSharedObjectsBehavior-ID216", "SUNFIndex[4]", "ExplicitSUNFIndex[4]"},
 {"fcstSharedObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"},
-{"fcstSharedObjectsBehavior-ID218", "FCI[SUNTF[a,x,x]]", "0"}
+{"fcstSharedObjectsBehavior-ID218", "FCI[SUNTF[a,x,x]]", "0"},
+{"fcstSharedObjectsBehavior-ID219", "Conjugate[Zeta2]", "Zeta2"},
+{"fcstSharedObjectsBehavior-ID220", "Conjugate[Zeta4]", "Zeta4"},
+{"fcstSharedObjectsBehavior-ID221", "Conjugate[Zeta6]", "Zeta6"},
+{"fcstSharedObjectsBehavior-ID222", "Conjugate[Zeta8]", "Zeta8"},
+{"fcstSharedObjectsBehavior-ID223", "Conjugate[Zeta10]", "Zeta10"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =

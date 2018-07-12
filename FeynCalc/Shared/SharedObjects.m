@@ -2175,11 +2175,17 @@ Zeta2 /:
 Zeta2 /:
 	N[Zeta2, prec_] := N[Zeta[2], prec];
 
+Zeta2 /:
+	Conjugate[Zeta2] := Zeta2;
+
 Zeta4 /:
 	N[Zeta4] = N[Zeta[4]];
 
 Zeta4 /:
 	N[Zeta4, prec_] := N[Zeta[4], prec];
+
+Zeta4 /:
+	Conjugate[Zeta4] := Zeta4;
 
 Zeta6 /:
 	N[Zeta6] = N[Zeta[6]];
@@ -2187,17 +2193,27 @@ Zeta6 /:
 Zeta6 /:
 	N[Zeta6, prec_] := N[Zeta[6], prec];
 
+Zeta6 /:
+	Conjugate[Zeta6] := Zeta6;
+
 Zeta8 /:
 	N[Zeta8] = N[Zeta[8]];
 
 Zeta8 /:
 	N[Zeta8, prec_] := N[Zeta[8], prec];
 
+Zeta8 /:
+	Conjugate[Zeta8] := Zeta8;
+
 Zeta10 /:
 	N[Zeta10] = N[Zeta[10]];
 
 Zeta10 /:
 	N[Zeta10, prec_] := N[Zeta[10], prec];
+
+Zeta10 /:
+	Conjugate[Zeta10] := Zeta10;
+
 
 (* ------------------------------------------------------------------------ *)
 (*							New NR objects									*)
