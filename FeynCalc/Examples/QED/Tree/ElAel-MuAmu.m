@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  El Ael -> Mu Amu, QED, matrix element squared, tree			*)
+(* :Summary:  El Ael -> Mu Amu, QED, total cross section, tree			*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,7 +23,7 @@
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-description="El Ael -> Mu Amu, QED, matrix element squared, tree";
+description="El Ael -> Mu Amu, QED, total cross section, tree";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -124,18 +124,41 @@ ampSquaredPolarizedMassless[0] = ampSquaredPolarized[0]//ReplaceAll[#,{
 (*Total cross-section*)
 
 
-integral=Integrate[Simplify[ampSquaredMassless2[0]/(s/4) /.
-u-> -s-t],{t,-s,0}]/.SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2
+(* ::Text:: *)
+(*The differential cross-section d sigma/ d Omega is given by*)
 
 
-prefac=2Pi/(128 Pi^2 s)
+prefac1=1/(64 Pi^2 s);
+
+
+integral1=(Factor[ampSquaredMassless2[0]/.{t->-s/2(1-Cos[Th]),u->-s/2(1+Cos[Th]),
+SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2}])
+
+
+diffXSection1= prefac1 integral1
 
 
 (* ::Text:: *)
-(*The total cross-section *)
+(*The differential cross-section d sigma/ d t d phi is given by*)
 
 
-crossSectionTotal=integral*prefac//PowerExpand//Factor2
+prefac2=1/(128 Pi^2 s)
+
+
+integral2=Simplify[ampSquaredMassless2[0]/(s/4) /.{u-> -s-t,SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2}]
+
+
+diffXSection2=prefac2 integral2
+
+
+(* ::Text:: *)
+(*The total cross-section. We see that integrating both expressions gives the same result*)
+
+
+2 Pi Integrate[diffXSection1 Sin[Th],{Th,0,Pi}]
+
+
+crossSectionTotal=2 Pi Integrate[diffXSection2,{t,-s,0}]
 
 
 (* ::Section:: *)
