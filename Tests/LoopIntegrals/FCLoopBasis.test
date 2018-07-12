@@ -291,7 +291,39 @@ FCE -> True]", "{SFAD[{{k2, 0}, {0, 1}, 1}, {{-k1 + k2, 0}, {0, 1},
 1}, {{k1 + k3 - q, 0}, {0, 1}, 1}, {{-k1 + q, 0}, {0, 1},
 1}, {{0, (k1 - k2).r1}, {0, 1}, 1}, {{0, (k2 + k3).r2}, {0, 1},
 1}, {{0, (-k1 + k2 + q).r2}, {0, 1}, 1}, {{k1, 0}, {0, 1},
-1}], {SPD[k1, k3]}}"}
+1}], {SPD[k1, k3]}}"},
+
+{"fcstFCLoopBasisFindCompletion-ID19",
+"FCLoopBasisFindCompletion[
+FCI@SFAD[{{k2, 0}, {0, 1}, 1}, {{-k1 + k2, 0}, {0, 1},
+	1}, {{k3, 0}, {0, 1}, 1}, {{k2 + k3, 0}, {0, 1},
+	1}, {{k1 + k3 - q, 0}, {0, 1}, 1}, {{-k1 + q, 0}, {0, 1},
+	1}, {{0, (k1 - k2).r1}, {0, 1}, 1}, {{0, (k2 + k3).r2}, {0, 1},
+	1}, {{0, (-k1 + k2 + q).r2}, {0, 1}, 1}, {{k1, 0}, {0, 1},
+	1}], {k1, k2, k3}, Method -> {SFAD[{{0, (k1 + k2).k3}}]},
+Check -> False, ExpandScalarProduct -> False]", "{FeynAmpDenominator[
+StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}],
+StandardPropagatorDenominator[-Momentum[k1, D] + Momentum[k2, D], 0,
+	0, {1, 1}],
+StandardPropagatorDenominator[Momentum[k3, D], 0, 0, {1, 1}],
+StandardPropagatorDenominator[Momentum[k2, D] + Momentum[k3, D], 0,
+0, {1, 1}],
+StandardPropagatorDenominator[
+Momentum[k1, D] + Momentum[k3, D] - Momentum[q, D], 0, 0, {1, 1}],
+StandardPropagatorDenominator[-Momentum[k1, D] + Momentum[q, D], 0,
+0, {1, 1}],
+StandardPropagatorDenominator[0,
+Pair[Momentum[k1, D] - Momentum[k2, D], Momentum[r1, D]],
+0, {1, 1}],
+StandardPropagatorDenominator[0,
+Pair[Momentum[k2, D] + Momentum[k3, D], Momentum[r2, D]],
+0, {1, 1}],
+StandardPropagatorDenominator[0,
+Pair[-Momentum[k1, D] + Momentum[k2, D] + Momentum[q, D],
+	Momentum[r2, D]], 0, {1, 1}],
+StandardPropagatorDenominator[Momentum[k1, D], 0,
+0, {1, 1}]], {SFAD[{{0, (k1 + k2).k3}}]}}"}
+
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisSplit =

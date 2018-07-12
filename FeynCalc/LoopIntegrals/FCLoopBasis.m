@@ -102,6 +102,7 @@ Options[FCLoopBasisOverdeterminedQ] = {
 };
 
 Options[FCLoopBasisFindCompletion] = {
+	ExpandScalarProduct -> True,
 	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
@@ -378,7 +379,8 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps={}, method,
-			missingSPs, oldRank, newRank, len,prs={},null, isCartesian, dims},
+			missingSPs, oldRank, newRank, len,prs={},null, isCartesian, dims, originalPrs={},
+			posList, extraProps2},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -398,6 +400,9 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			FCPrint[1,"FCLoopBasisFindCompletion: Using user-supplied propagators to complete the basis.",
 				FCDoControl->fclbVerbose];
 			prs = ExpandScalarProduct[FCI[method],Momentum->lmoms];
+
+			originalPrs = {method,prs};
+
 			FCPrint[3,"FCLoopBasisFindCompletion: prs: ", prs, FCDoControl->fclbVerbose];
 			If[ Union[Flatten[propCheck/@prs]]=!={True},
 				Message[FCLoopBasisFindCompletion::failmsg,"User-supplied propagators are not in a proper form."];
@@ -505,6 +510,22 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 				Abort[]
 			]
 		];
+
+		If[	originalPrs=!={} && !OptionValue[ExpandScalarProduct],
+			posList = Position[originalPrs[[2]], #] & /@ extraProps;
+
+			If[	!MatchQ[posList, {{{_Integer}}...}],
+				Message[FCLoopBasisFindCompletion::failmsg,"Something went wrong when determining the positions of custom propagators."];
+			];
+			posList = posList /. {{i_Integer}} :> {i};
+
+			extraProps2= Extract[originalPrs[[1]], posList];
+
+			If[	Length[extraProps]=!=Length[extraProps2],
+				Message[FCLoopBasisFindCompletion::failmsg,"Something went wrong when selecting custom propagators."];
+			];
+			extraProps = extraProps2;
+
 		];
 
 		res = {ex, extraProps};
