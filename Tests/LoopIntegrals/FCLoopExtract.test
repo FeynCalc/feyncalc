@@ -289,5 +289,14 @@ Momentum[p, D]], \
 D], 0, 0, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + \
 Momentum[q1, D], 0, -m, {1, 1}]]], \
 loopInt[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, \
-D], 0, -m, {1, 1}]]*Pair[LorentzIndex[mu, D], Momentum[q1, D]]]}}"}
+D], 0, -m, {1, 1}]]*Pair[LorentzIndex[mu, D], Momentum[q1, D]]]}}"},
+{"fcstFCLoopExtract-ID38",
+"FCLoopExtract[
+FVD[q1, mu] FVD[q2, nu] FAD[{q1, m}] +
+GAD[mu].(GSD[q1] + M).GAD[nu] FAD[q1, {q1 + p, m}], {q1,
+q2}, loopInt, Numerator -> False, FCE -> True]",
+"{0, FVD[q1, mu] FVD[q2, nu] loopInt[FAD[{q1, m}]] +
+M GAD[mu].GAD[nu] loopInt[FAD[q1, {p + q1, m}]] +
+GAD[mu].GSD[q1].GAD[nu] loopInt[FAD[q1, {p + q1, m}]], {loopInt[
+FAD[{q1, m}]], loopInt[FAD[q1, {p + q1, m}]]}}"}
 });

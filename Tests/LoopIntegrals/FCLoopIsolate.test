@@ -149,5 +149,9 @@ Lor4])*KDD[Lor3, mu]*loopInt[CFAD[{{l, 0}, {0, -1}, 1}, {{l + p2, 0}, \
 {0, -1}, 1}, {{l + p2 - p3 - p4, 0}, {0, -1}, 1}]*CVD[l, nu]] - \
 xx*KDD[Lor3, mu]*loopInt[CFAD[{{l, 0}, {0, -1}, 1}, {{l + p2, 0}, {0, \
 -1}, 1}, {{l + p2 - p3 - p4, 0}, {0, -1}, 1}]*CVD[l, Lor4]*CVD[l, \
-nu]]"}
+nu]]"},
+{"fcstFCLoopIsolate-ID37",
+"FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q}, Numerator -> False,
+Head -> loop, FCE -> True]",
+"loop[FAD[{q, m}]] SPD[l + p, k + q]"}
 };

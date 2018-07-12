@@ -63,6 +63,7 @@ Options[FCLoopIsolate] = {
 	Isolate -> False,
 	IsolateNames -> KK,
 	MultiLoop -> False,
+	Numerator -> True,
 	PaVe->True,
 	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList,
 	SFAD -> True
@@ -149,6 +150,10 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		If [ !FreeQ[res/. OptionValue[Head][__] :> 1, lmoms] & ,
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
+		];
+
+		If [ !OptionValue[Numerator],
+			res = res /. OptionValue[Head][z_] :> OptionValue[Head][SelectNotFree[z  dummy1 dummy2,FeynAmpDenominator]]*SelectFree[z  dummy1 dummy2,FeynAmpDenominator] /. dummy1|dummy2->1
 		];
 
 		If [ OptionValue[MultiLoop],
