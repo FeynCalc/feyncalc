@@ -77,6 +77,13 @@ those variables. This works both on sums and products. The output \
 is provided in the form of a two element list. One can recover the \
 original expression by applying Total to that list";
 
+FCSubsetQ::usage=
+"FCSubsetQ[list1,list2] yields True if list2 is a subset of list1 and \
+False otherwise. It returns the same results as the standard SubsetQ. \
+The only reason for introducing FCSubsetQ is that SubsetQ is not available \
+in Mathematica 8 and 9, which are still supported by FeynCalc.";
+
+
 FCSymmetrize::usage=
 "FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect \
 to the variables a1, a2, ... .";
@@ -420,6 +427,13 @@ FCSymmetrize[x_,v_List] :=
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[su[x, v, #]&, Permutations[v]]
 	];
+
+
+FCSubsetQ[l1_List, l2_List] :=
+(DeleteDuplicates[Sort[MemberQ[l1, #] & /@ l2]] === {True}) /; l2 =!= {};
+
+FCSubsetQ[_List, {}] :=
+	True;
 
 FreeQ2[_,{}] :=
 	True;

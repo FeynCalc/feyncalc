@@ -343,3 +343,16 @@ Tests`Shared`fcstSharedToolsFCFactorOut = {
 {"fcstSharedToolsFCFactorOut-ID4","FCFactorOut[(a + 3 b), 3 b, Head -> head]",
 	"3 b head[1 + a/(3 b)]"}
 };
+
+Tests`Shared`fcstSharedToolsFCSubsetQ =
+({
+{"fcstSharedToolsFCSubsetQ-ID1", "FCSubsetQ[{a,b,c,d},{a,d,e}]",
+"False"},
+{"fcstSharedToolsFCSubsetQ-ID2", "FCSubsetQ[{a,b,c,d},{a,d}]",
+"True"},
+{"fcstSharedToolsFCSubsetQ-ID3", "FCSubsetQ[{a,b,c,d},{}]",
+"True"},
+{"fcstSharedToolsFCSubsetQ-ID4", "FCSubsetQ[{},{}]", "True"},
+{"fcstSharedToolsFCSubsetQ-ID5", "FCSubsetQ[{},{a}]", "False"}
+});
+
