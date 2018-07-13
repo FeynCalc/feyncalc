@@ -408,6 +408,13 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 				Message[FCLoopBasisFindCompletion::failmsg,"User-supplied propagators are not in a proper form."];
 				Abort[]
 			];
+
+			If[	Length[prs] =!= Length[Union[prs]],
+				Message[FCLoopBasisFindCompletion::failmsg,"The list of the user-supplied propagators may not contain duplicates."];
+				Abort[]
+			];
+
+
 			method=ScalarProduct;
 
 
