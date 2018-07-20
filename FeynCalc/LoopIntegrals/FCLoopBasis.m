@@ -102,6 +102,7 @@ Options[FCLoopBasisOverdeterminedQ] = {
 };
 
 Options[FCLoopBasisFindCompletion] = {
+	Abort -> False,
 	ExpandScalarProduct -> True,
 	FCE -> False,
 	FCI -> False,
@@ -437,18 +438,29 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
 		];
 
+		FCPrint[1,"FCLoopBasisFindCompletion: Additional checks done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
+
+		FCPrint[1,"FCLoopBasisFindCompletion: Applying FCLoopBasisExtract and converting to vectors.", FCDoControl->fclbVerbose];
+		time=AbsoluteTime[];
+
 		vecs= FCLoopBasisExtract[ex, lmoms, dims];
+
+
+
 		FCPrint[3,"FCLoopBasisFindCompletion: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
 		(* Finally, convert all these polynomials into vectors ... *)
 		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
+		matrix = Transpose[Last[ca]];
 		FCPrint[3,"FCLoopBasisFindCompletion: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
 
 		len = Length[vecs[[2]]];
-		oldRank = MatrixRank[Transpose[Last[ca]]];
+		oldRank = MatrixRank[matrix];
+
+		FCPrint[1,"FCLoopBasisFindCompletion: Done applying FCLoopBasisExtract and converting to vectors, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
 
 		(* If the basis is overcomplete, stop here *)
-		If[	NullSpace[Transpose[Last[ca]]] =!= {},
+		If[	NullSpace[matrix] =!= {},
 			Message[FCLoopBasisFindCompletion::basisoverdet, ToString[ex,InputForm]];
 			Abort[]
 		];
@@ -458,8 +470,12 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			Return[{{ex},{1}}];
 		];
 
+
+		FCPrint[1,"FCLoopBasisFindCompletion: Finding a completion of the basis.", FCDoControl->fclbVerbose];
+		time=AbsoluteTime[];
+
 		(* There are different possibilities to complete the basis *)
-		Catch[
+		throwRes = Catch[
 			Which[
 				(* 	The main idea is quite simple: We compute the nullspace and contract each of the null space vectors
 					with the list of the loop momentum dependent scalar products. This is quite fast, but the extra propagators
@@ -498,7 +514,12 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 						(* Otherwise, decide if this scalar products increases the matrix rank*)
 						If[ newRank>oldRank,
 							oldRank = newRank;
-							extraProps = Append[extraProps, #]
+							extraProps = Append[extraProps, #],
+							(*	If the option Abort is set to True, stop the loop once we encounter a user-supplied propagator that cannot be
+								used to complete the basis	*)
+							If[ optAbort,
+								Throw[0]
+							];
 						]
 					])&,
 					If[prs==={},vecs[[2]],prs]
@@ -509,30 +530,37 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
-		(* 	Check that with those propagators the basis is now complete. We can also disable this check, which is
-			useful when we want to augment the topology step by step by succesively adding new propagators. *)
-		If[	OptionValue[Check],
-			If [getRank[{Join[vecs[[1]], fdsInvert[extraProps]],vecs[[2]]}] =!= len,
-				Message[FCLoopBasisFindCompletion::notcomplete, ToString[ex,InputForm]];
-				Abort[]
+		FCPrint[1,"FCLoopBasisFindCompletion: Done finding a completion of the basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
+
+		If[	TrueQ[throwRes===0],
+
+			extraProps = {},
+
+			(* 	Check that with those propagators the basis is now complete. We can also disable this check, which is
+				useful when we want to augment the topology step by step by succesively adding new propagators. *)
+			If[	OptionValue[Check],
+				If [getRank[{Join[vecs[[1]], fdsInvert[extraProps]],vecs[[2]]}] =!= len,
+					Message[FCLoopBasisFindCompletion::notcomplete, ToString[ex,InputForm]];
+					Abort[]
+				]
+			];
+
+			If[	originalPrs=!={} && !OptionValue[ExpandScalarProduct],
+				posList = Position[originalPrs[[2]], #] & /@ extraProps;
+
+				If[	!MatchQ[posList, {{{_Integer}}...}],
+					Message[FCLoopBasisFindCompletion::failmsg,"Something went wrong when determining the positions of custom propagators."];
+				];
+				posList = posList /. {{i_Integer}} :> {i};
+
+				extraProps2= Extract[originalPrs[[1]], posList];
+
+				If[	Length[extraProps]=!=Length[extraProps2],
+					Message[FCLoopBasisFindCompletion::failmsg,"Something went wrong when selecting custom propagators."];
+				];
+				extraProps = extraProps2;
+
 			]
-		];
-
-		If[	originalPrs=!={} && !OptionValue[ExpandScalarProduct],
-			posList = Position[originalPrs[[2]], #] & /@ extraProps;
-
-			If[	!MatchQ[posList, {{{_Integer}}...}],
-				Message[FCLoopBasisFindCompletion::failmsg,"Something went wrong when determining the positions of custom propagators."];
-			];
-			posList = posList /. {{i_Integer}} :> {i};
-
-			extraProps2= Extract[originalPrs[[1]], posList];
-
-			If[	Length[extraProps]=!=Length[extraProps2],
-				Message[FCLoopBasisFindCompletion::failmsg,"Something went wrong when selecting custom propagators."];
-			];
-			extraProps = extraProps2;
-
 		];
 
 		res = {ex, extraProps};
@@ -540,6 +568,8 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1,"FCLoopBasisFindCompletion: Leaving, toal timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fclbVerbose];
 
 		res
 	];

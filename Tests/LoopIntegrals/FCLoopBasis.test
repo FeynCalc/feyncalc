@@ -322,8 +322,34 @@ StandardPropagatorDenominator[0,
 Pair[-Momentum[k1, D] + Momentum[k2, D] + Momentum[q, D],
 	Momentum[r2, D]], 0, {1, 1}],
 StandardPropagatorDenominator[Momentum[k1, D], 0,
-0, {1, 1}]], {SFAD[{{0, (k1 + k2).k3}}]}}"}
-
+0, {1, 1}]], {SFAD[{{0, (k1 + k2).k3}}]}}"},
+{"fcstFCLoopBasisFindCompletion-ID20,"FCLoopBasisFindCompletion[
+SFAD[{{k2, 0}, {0, 1}, 1}, {{-k1 + k2, 0}, {0, 1},
+1}, {{k3, 0}, {0, 1}, 1}, {{k2 + k3, 0}, {0, 1},
+1}, {{k1 + k3 - q, 0}, {0, 1}, 1}, {{-k1 + q, 0}, {0, 1},
+1}, {{0, (k1 - k2).n}, {0, 1}, 1}, {{0, (k1 + k3).n}, {0, 1},
+1}, {{0, nb.(-k1 - k3 + q)}, {0, 1}, 1}, {{k1, 0}, {0, 1},
+1}], {k1, k2, k3},
+Method -> {SPD[k1, k3], SPD[k2, k3], SPD[k1, nb], SPD[k2, nb],
+SPD[k2, q]}, Check -> False, FCE -> True]","{SFAD[{{k2, 0}, {0, 1}, 1}, {{-k1 + k2, 0}, {0, 1},
+1}, {{k3, 0}, {0, 1}, 1}, {{k2 + k3, 0}, {0, 1},
+1}, {{k1 + k3 - q, 0}, {0, 1}, 1}, {{-k1 + q, 0}, {0, 1},
+1}, {{0, (k1 - k2).n}, {0, 1}, 1}, {{0, (k1 + k3).n}, {0, 1},
+1}, {{0, nb.(-k1 - k3 + q)}, {0, 1}, 1}, {{k1, 0}, {0, 1},
+1}], {SPD[k1, k3], SPD[k1, nb], SPD[k2, nb], SPD[k2, q]}}"},
+{"fcstFCLoopBasisFindCompletion-ID21,"FCLoopBasisFindCompletion[
+SFAD[{{k2, 0}, {0, 1}, 1}, {{-k1 + k2, 0}, {0, 1},
+1}, {{k3, 0}, {0, 1}, 1}, {{k2 + k3, 0}, {0, 1},
+1}, {{k1 + k3 - q, 0}, {0, 1}, 1}, {{-k1 + q, 0}, {0, 1},
+1}, {{0, (k1 - k2).n}, {0, 1}, 1}, {{0, (k1 + k3).n}, {0, 1},
+1}, {{0, nb.(-k1 - k3 + q)}, {0, 1}, 1}, {{k1, 0}, {0, 1},
+1}], {k1, k2, k3},
+Method -> {SPD[k1, k3], SPD[k2, k3], SPD[k1, nb], SPD[k2, nb],
+SPD[k2, q]}, Check -> False, Abort -> True, FCE -> True]","{SFAD[{{k2, 0}, {0, 1}, 1}, {{-k1 + k2, 0}, {0, 1},
+1}, {{k3, 0}, {0, 1}, 1}, {{k2 + k3, 0}, {0, 1},
+1}, {{k1 + k3 - q, 0}, {0, 1}, 1}, {{-k1 + q, 0}, {0, 1},
+1}, {{0, (k1 - k2).n}, {0, 1}, 1}, {{0, (k1 + k3).n}, {0, 1},
+1}, {{0, nb.(-k1 - k3 + q)}, {0, 1}, 1}, {{k1, 0}, {0, 1}, 1}], {}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisSplit =
