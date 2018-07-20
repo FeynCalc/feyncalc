@@ -486,5 +486,7 @@ Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
 {"fcstSimplifyPolyLog-ID154",
 "SimplifyPolyLog[Log[y-1],Log\[Rule]False]", "Log[-1 + y]"},
 {"fcstSimplifyPolyLog-ID155",
-"SimplifyPolyLog[Log[-x^2],Log\[Rule]False]", "Log[-x^2]"}
+"SimplifyPolyLog[Log[-x^2],Log\[Rule]False]", "Log[-x^2]"},
+{"fcstSimplifyPolyLog-ID156",
+"Head[SimplifyPolyLog[Log[-x_Symbol^2]]]", "SimplifyPolyLog"}
 })

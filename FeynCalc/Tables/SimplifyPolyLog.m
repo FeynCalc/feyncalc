@@ -53,7 +53,7 @@ Options[SimplifyPolyLog] = {
 	Trig -> True
 };
 
-SimplifyPolyLog[expr_, OptionsPattern[]] :=
+SimplifyPolyLog[expr_, OptionsPattern[]]/; FCPatternFreeQ[{expr}] :=
 	Block[{logSimp, tmp, repRule={}, var},
 
 		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
