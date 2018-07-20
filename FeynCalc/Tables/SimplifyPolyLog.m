@@ -40,12 +40,14 @@ SPL=SimplifyPolyLog;
 optSqrt::usage="";
 optPolyLog::usage="";
 optEulerGamma::usage="";
+optTrig::usage="";
 
 Options[SimplifyPolyLog] = {
 	EulerGamma -> True,
 	PolyLog -> True,
 	Nielsen -> True,
-	Sqrt -> True
+	Sqrt -> True,
+	Trig -> True
 };
 
 SimplifyPolyLog[expr_, OptionsPattern[]] :=
@@ -54,6 +56,7 @@ SimplifyPolyLog[expr_, OptionsPattern[]] :=
 		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
 
 		optSqrt = OptionValue[Sqrt];
+		optTrig = OptionValue[Trig];
 		optPolyLog = OptionValue[PolyLog];
 		optEulerGamma = OptionValue[EulerGamma];
 
@@ -1139,13 +1142,13 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	Pi^3 :>
 		Pi 6 Zeta2,
 
-	ArcSinh[z_] :>
+	ArcSinh[z_Symbol]/; optTrig :>
 		Log[z + Sqrt[z^2 + 1]],
 
-	ArcCosh[z_] :>
+	ArcCosh[z_Symbol]/; optTrig :>
 		Log[z + Sqrt[z^2 - 1]],
 
-	ArcTanh[z_] :>
+	ArcTanh[z_Symbol]/; optTrig :>
 		1/2 Log[(z+1)/(z-1)],
 
 	Log[1-Complex[0,1]] :>

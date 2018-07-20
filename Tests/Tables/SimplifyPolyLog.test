@@ -476,5 +476,11 @@ Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
 {"fcstSimplifyPolyLog-ID149", "SimplifyPolyLog[Zeta[4]^2Zeta[2]]",
 "(77*Zeta10)/40"},
 {"fcstSimplifyPolyLog-ID150", "SimplifyPolyLog[Zeta4^2 Zeta2]",
-"(77*Zeta10)/40"}
+"(77*Zeta10)/40"},
+{"fcstSimplifyPolyLog-ID151", "SimplifyPolyLog[ArcTanh[z]]",
+"Log[-((1 + z)/(1 - z))]/2"},
+{"fcstSimplifyPolyLog-ID152", "SimplifyPolyLog[ArcTanh[1+z]]",
+"ArcTanh[1 + z]"},
+{"fcstSimplifyPolyLog-ID153",
+"SimplifyPolyLog[ArcTanh[z],Trig\[Rule]False]", "ArcTanh[z]"}
 })
