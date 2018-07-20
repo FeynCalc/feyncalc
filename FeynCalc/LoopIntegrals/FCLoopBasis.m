@@ -193,8 +193,7 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 			Abort[]
 		];
 
-			(* all possible scalar products of loop momenta among themselves \
-		and with external momenta *)
+		(* all possible scalar products of loop momenta among themselves and with external momenta *)
 		coeffs =
 			Union[Join[Flatten[Outer[spd, lmoms, extmoms]],
 			Flatten[Outer[spd, lmoms, lmoms]]]];
@@ -381,7 +380,9 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps={}, method,
 			missingSPs, oldRank, newRank, len,prs={},null, isCartesian, dims, originalPrs={},
-			posList, extraProps2},
+			posList, extraProps2,time, matrix, time0, optAbort, throwRes},
+
+		time0 = AbsoluteTime[];
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -390,34 +391,51 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
+		If[	Length[lmoms]<1,
+			Message[FCLoopBasisFindCompletion::failmsg, "The number of loop momenta must be larger or equal than one."];
+			Abort[]
+		];
+
 		If[	FreeQ2[expr,lmoms],
 			Message[FCLoopBasisFindCompletion::failmsg, "The input expression does not depend on the given loop momenta."];
 			Abort[]
 		];
 
 		method = OptionValue[Method];
+		optAbort = OptionValue[Abort];
 
 		If[	Head[method]===List && method=!={},
-			FCPrint[1,"FCLoopBasisFindCompletion: Using user-supplied propagators to complete the basis.",
-				FCDoControl->fclbVerbose];
+			FCPrint[1,"FCLoopBasisFindCompletion: Using user-supplied propagators to complete the basis.", FCDoControl->fclbVerbose];
+
+
+			FCPrint[1,"FCLoopBasisFindCompletion: Verifying and rewriting the user-supplied propagators.", FCDoControl->fclbVerbose];
+			time=AbsoluteTime[];
+
 			prs = ExpandScalarProduct[FCI[method],Momentum->lmoms];
 
 			originalPrs = {method,prs};
 
 			FCPrint[3,"FCLoopBasisFindCompletion: prs: ", prs, FCDoControl->fclbVerbose];
-			If[ Union[Flatten[propCheck/@prs]]=!={True},
-				Message[FCLoopBasisFindCompletion::failmsg,"User-supplied propagators are not in a proper form."];
-				Abort[]
+
+
+			(* If the heads of the user-supplied scalar products are all known, we can bypass the more complicated check *)
+			If[ !FCSubsetQ[{FeynAmpDenominator,Pair,CartesianPair}, DeleteDuplicates[Sort[Head/@prs]]],
+
+				If[ Union[Flatten[propCheck/@prs]]=!={True},
+					Message[FCLoopBasisFindCompletion::failmsg,"User-supplied propagators are not in a proper form."];
+					Abort[]
+				];
 			];
 
-			If[	Length[prs] =!= Length[Union[prs]],
+
+			If[	Length[prs] =!= Length[DeleteDuplicates[Sort[prs]]],
 				Message[FCLoopBasisFindCompletion::failmsg,"The list of the user-supplied propagators may not contain duplicates."];
 				Abort[]
 			];
 
 
 			method=ScalarProduct;
-
+			FCPrint[1,"FCLoopBasisFindCompletion: Done verifying and rewriting the user-supplied propagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
 
 		];
 
@@ -426,7 +444,10 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = expr
 		];
 
-		If[	!MatchQ[ex, _. _FeynAmpDenominator],
+		FCPrint[1,"FCLoopBasisFindCompletion: Doing some additional checks.", FCDoControl->fclbVerbose];
+		time=AbsoluteTime[];
+
+		If[	!MatchQ[ex, n_. _FeynAmpDenominator/;FreeQ[n, FeynAmpDenominator]],
 			Message[FCLoopBasis::fail,ToString[ex,InputForm]];
 			Abort[]
 		];
