@@ -37,15 +37,18 @@ End[]
 Begin["`SimplifyPolyLog`Private`"]
 
 SPL=SimplifyPolyLog;
-optSqrt::usage="";
-optPolyLog::usage="";
+
 optEulerGamma::usage="";
+optLog::usage="";
+optPolyLog::usage="";
+optSqrt::usage="";
 optTrig::usage="";
 
 Options[SimplifyPolyLog] = {
 	EulerGamma -> True,
-	PolyLog -> True,
+	Log -> True,
 	Nielsen -> True,
+	PolyLog -> True,
 	Sqrt -> True,
 	Trig -> True
 };
@@ -55,10 +58,12 @@ SimplifyPolyLog[expr_, OptionsPattern[]] :=
 
 		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
 
-		optSqrt = OptionValue[Sqrt];
-		optTrig = OptionValue[Trig];
-		optPolyLog = OptionValue[PolyLog];
-		optEulerGamma = OptionValue[EulerGamma];
+		optEulerGamma 	= OptionValue[EulerGamma];
+		optLog 			= OptionValue[Log];
+		optPolyLog 		= OptionValue[PolyLog];
+		optSqrt 		= OptionValue[Sqrt];
+		optTrig 		= OptionValue[Trig];
+
 
 		tmp = expr;
 
@@ -956,183 +961,183 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 		PolyLog[4, x]
 		),
 
-	Log[1/x_Symbol] :>
+	Log[1/x_Symbol]/; optLog :>
 		-Log[x],
 
-	Log[1/x_Symbol^2] :>
+	Log[1/x_Symbol^2]/; optLog :>
 		- 2 Log[x],
 
-	Log[1/(x_Symbol+1)] :>
+	Log[1/(x_Symbol+1)]/; optLog :>
 		-Log[x+1],
 
-	Log[n_Integer?Positive/(x_Symbol+1)] :>
+	Log[n_Integer?Positive/(x_Symbol+1)]/; optLog :>
 		Log[n]-Log[x+1],
 
-	Log[Power[(x_Symbol+1),n_Integer]]/; n<0 :>
+	Log[Power[(x_Symbol+1),n_Integer]]/; n<0 && optLog :>
 		- n Log[x+1],
 
-	Log[Power[(x_Symbol^2+1),n_Integer]]/; n<0 :>
+	Log[Power[(x_Symbol^2+1),n_Integer]]/; n<0 && optLog :>
 		- n Log[x^2+1],
 
-	Log[x_Symbol/(x_Symbol+1)] :>
+	Log[x_Symbol/(x_Symbol+1)]/; optLog :>
 		Log[x]-Log[x+1],
 
-	Log[1/(1-x_Symbol)] :>
+	Log[1/(1-x_Symbol)]/; optLog :>
 		-Log[1-x],
 
-	Log[n_Integer?Positive/(1-x_Symbol)] :>
+	Log[n_Integer?Positive/(1-x_Symbol)]/; optLog :>
 		Log[n]-Log[1-x],
 
-	Log[Power[(1-x_Symbol),n_Integer]]/; n<0 :>
+	Log[Power[(1-x_Symbol),n_Integer]]/; n<0  && optLog :>
 		- n Log[1-x],
 
-	Log[Power[(1-x_Symbol^2),n_Integer]]/; n<0 :>
+	Log[Power[(1-x_Symbol^2),n_Integer]]/; n<0  && optLog :>
 		- n Log[1-x^2],
 
-	Log[(n1_Integer?Positive - x_Symbol)/(n2_Integer?Positive - x_Symbol)] /; n1 >= 1 && n2 >= 1 :>
+	Log[(n1_Integer?Positive - x_Symbol)/(n2_Integer?Positive - x_Symbol)] /; n1 >= 1 && n2 >= 1  && optLog :>
 		Log[n1 - x] - Log[n2 - x],
 
-	Log[-1/x_Symbol] :>
+	Log[-1/x_Symbol]/; optLog :>
 		-Log[x] + I Pi,
 
-	Log[-1/(1-x_Symbol)] :>
+	Log[-1/(1-x_Symbol)]/; optLog :>
 		-Log[1-x] + I Pi,
 
-	Log[-x_Symbol] :>
+	Log[-x_Symbol]/; optLog :>
 		Log[x] + I Pi,
 
-	Log[n_Integer?Negative x_Symbol] :>
+	Log[n_Integer?Negative x_Symbol]/; optLog :>
 		Log[-n] + Log[x] + I Pi,
 
 	Log[-Sqrt[x_Symbol]]/; optSqrt :>
 		1/2 Log[x] + I Pi,
 
-	Log[(x_Symbol)^n_Integer?Positive] :>
+	Log[(x_Symbol)^n_Integer?Positive]/; optLog :>
 		n Log[x],
 
-	Log[-x_Symbol^2] :>
+	Log[-x_Symbol^2]/; optLog :>
 		2 Log[x] + I Pi,
 
-	Log[x_Symbol-1] :>
+	Log[x_Symbol-1]/; optLog :>
 		Log[1-x] + I Pi,
 
-	Log[(x_Symbol-1)/x_Symbol] :>
+	Log[(x_Symbol-1)/x_Symbol]/; optLog :>
 		Log[1-x]-Log[x]+I Pi,
 
-	Log[-(1-x_Symbol)/x_Symbol] :>
+	Log[-(1-x_Symbol)/x_Symbol]/; optLog :>
 		Log[1-x]-Log[x]+I Pi,
 
-	Log[-1-x_Symbol] :>
+	Log[-1-x_Symbol]/; optLog :>
 		Log[1 + x] + I Pi,
 
-	Log[1-x_Symbol^2] :>
+	Log[1-x_Symbol^2]/; optLog :>
 		Log[1-x] + Log[1+x],
 
-	Log[(1-x_Symbol) x_Symbol] :>
+	Log[(1-x_Symbol) x_Symbol]/; optLog :>
 		Log[1-x] + Log[x],
 
-	Log[(1-x_Symbol)/x_Symbol] :>
+	Log[(1-x_Symbol)/x_Symbol]/; optLog :>
 		Log[1-x] - Log[x],
 
-	Log[(1-x_Symbol)/(1+x_Symbol)] :>
+	Log[(1-x_Symbol)/(1+x_Symbol)]/; optLog :>
 		Log[1-x] - Log[1+x],
 
-	Log[(1+x_Symbol)/(1-x_Symbol)] :>
+	Log[(1+x_Symbol)/(1-x_Symbol)]/; optLog :>
 		Log[1+x] - Log[1-x],
 
-	Log[(x_Symbol + 1)/x_Symbol] :>
+	Log[(x_Symbol + 1)/x_Symbol]/; optLog :>
 		Log[x+1] - Log[x],
 
-	Log[x_Symbol/(1-x_Symbol)] :>
+	Log[x_Symbol/(1-x_Symbol)]/; optLog :>
 		Log[x] -Log[1-x],
 
-	Log[x_Symbol/(x_Symbol-1)] :>
+	Log[x_Symbol/(x_Symbol-1)]/; optLog :>
 		Log[x] -Log[1-x] + I Pi,
 
-	Log[x_Symbol/(x_Symbol+1)] :>
+	Log[x_Symbol/(x_Symbol+1)]/; optLog :>
 		Log[x] -Log[1+x],
 
-	Log[-x_Symbol/(1-x_Symbol)] :>
+	Log[-x_Symbol/(1-x_Symbol)]/; optLog :>
 		Log[x] -Log[1-x] + I Pi,
 
-	Log[(r_?NumberQ/; FreeQ[r, Complex]) x_]/;r>0 :>
+	Log[(r_?NumberQ/; FreeQ[r, Complex]) x_]/; r>0  && optLog :>
 		Log[r] + Log[x] ,
 
-	Log[1-Sqrt[x_Symbol]]/; optSqrt :>
+	Log[1-Sqrt[x_Symbol]]/; optSqrt && optLog :>
 		Log[1-x] - Log[1+Sqrt[x]],
 
-	Log[Sqrt[x_Symbol]]/; optSqrt :>
+	Log[Sqrt[x_Symbol]]/; optSqrt && optLog :>
 		1/2 Log[x],
 
-	Log[-((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2])]/; optSqrt :>
+	Log[-((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2])]/; optSqrt && optLog :>
 		Log[-(Sqrt[1 - x] - Sqrt[-x])] - Log[Sqrt[-x]],
 
-	Log[Rational[-1, n_Integer?Positive] ((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol, -1/2])]/; optSqrt :>
+	Log[Rational[-1, n_Integer?Positive] ((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[-x_Symbol, -1/2])]/; optSqrt && optLog :>
 		Log[-(Sqrt[1 - x] - Sqrt[-x])] - Log[n Sqrt[-x]],
 
-	Log[(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2]]/; optSqrt :>
+	Log[(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[-x_Symbol,-1/2]]/; optSqrt && optLog :>
 		Log[(Sqrt[1 - x] + Sqrt[-x])] - Log[Sqrt[-x]],
 
-	Log[(Sqrt[-x_Symbol] - Sqrt[1 - x_Symbol])]/; optSqrt :>
+	Log[(Sqrt[-x_Symbol] - Sqrt[1 - x_Symbol])]/; optSqrt && optLog :>
 		-Log[(Sqrt[-x] + Sqrt[1 - x])] + I Pi,
 
-	Log[(Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol])]/; optSqrt :>
+	Log[(Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol])]/; optSqrt && optLog :>
 		-Log[Sqrt[1 - x] + Sqrt[-x]],
 
-	Log[Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt :>
+	Log[Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt && optLog :>
 		Log[Sqrt[1 - x]] - Log[Sqrt[-x]],
 
-	Log[Sqrt[1 - x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt :>
+	Log[Sqrt[1 - x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt && optLog :>
 		1/2 Log[1-x]- Log[Sqrt[1 - x] + Sqrt[-x]],
 
-	Log[Sqrt[-x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt :>
+	Log[Sqrt[-x_Symbol]/(Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol])]/; optSqrt && optLog :>
 		Log[Sqrt[-x]] - Log[Sqrt[1 - x] + Sqrt[-x]],
 
-	Log[((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[1-x_Symbol,-1/2])]/; optSqrt :>
+	Log[((Sqrt[1 - x_Symbol] - Sqrt[-x_Symbol]) Power[1-x_Symbol,-1/2])]/; optSqrt && optLog :>
 		Log[Sqrt[1-x]-Sqrt[-x]]-Log[Sqrt[1-x]],
 
 
-	Log[((Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[1-x_Symbol,-1/2])]/; optSqrt :>
+	Log[((Sqrt[1 - x_Symbol] + Sqrt[-x_Symbol]) Power[1-x_Symbol,-1/2])]/; optSqrt && optLog :>
 		Log[Sqrt[1-x]+Sqrt[-x]]-Log[Sqrt[1-x]],
 
-	Log[Sqrt[- x_Symbol] Power[1-x_Symbol,-1/2]]/; optSqrt :>
+	Log[Sqrt[- x_Symbol] Power[1-x_Symbol,-1/2]]/; optSqrt && optLog :>
 		Log[Sqrt[- x]] - Log[Sqrt[1-x]],
 
 
-	Log[Sqrt[-x_Symbol]]/; optSqrt :>
+	Log[Sqrt[-x_Symbol]]/; optSqrt && optLog :>
 		(I/2)*Pi + Log[x]/2,
 
-	Log[-Sqrt[-x_Symbol]]/; optSqrt :>
+	Log[-Sqrt[-x_Symbol]]/; optSqrt && optLog :>
 		-I Pi/2 + Log[x]/2,
 
-	Log[Sqrt[1 - x_Symbol]]/; optSqrt :>
+	Log[Sqrt[1 - x_Symbol]]/; optSqrt && optLog :>
 		1/2 Log[1 - x],
 
-	Log[-Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt :>
+	Log[-Sqrt[1 - x_Symbol] Power[-x_Symbol,-1/2]]/; optSqrt && optLog :>
 		Log[-Sqrt[1 - x]] - Log[Sqrt[-x]],
 
-	Log[-Sqrt[1 - x_Symbol]]/; optSqrt :>
+	Log[-Sqrt[1 - x_Symbol]]/; optSqrt && optLog :>
 		Log[Sqrt[1 - x]] + I Pi,
 
-	Log[Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+	Log[Sqrt[x_Symbol]/(1 + Sqrt[x_Symbol])]/; optSqrt && optLog :>
 		Log[Sqrt[x]] - Log[1 + Sqrt[x]],
 
-	Log[(1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+	Log[(1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol])]/; optSqrt && optLog :>
 		Log[1-Sqrt[x]] - Log[1+Sqrt[x]],
 
-	Log[(1 + Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+	Log[(1 + Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt && optLog :>
 		Log[1+Sqrt[x]] - Log[1-Sqrt[x]],
 
-	Log[1/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+	Log[1/(1 - Sqrt[x_Symbol])]/; optSqrt && optLog :>
 		- Log[1-Sqrt[x]],
 
-	Log[1/(1 + Sqrt[x_Symbol])]/; optSqrt :>
+	Log[1/(1 + Sqrt[x_Symbol])]/; optSqrt && optLog :>
 		- Log[1+Sqrt[x]],
 
-	Log[-(Sqrt[x_Symbol]/(1-Sqrt[x_Symbol]))]/; optSqrt:>
+	Log[-(Sqrt[x_Symbol]/(1-Sqrt[x_Symbol]))]/; optSqrt && optLog :>
 		Log[-Sqrt[x]]-Log[1-Sqrt[x]],
 
-	Log[(1 - 2 Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt :>
+	Log[(1 - 2 Sqrt[x_Symbol])/(1 - Sqrt[x_Symbol])]/; optSqrt && optLog :>
 		Log[1 - 2 Sqrt[x]] - Log[1 - Sqrt[x]],
 
 
@@ -1151,19 +1156,19 @@ Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
 	ArcTanh[z_Symbol]/; optTrig :>
 		1/2 Log[(z+1)/(z-1)],
 
-	Log[1-Complex[0,1]] :>
+	Log[1-Complex[0,1]]/; optLog :>
 		(-I/4)*Pi + Log[2]/2,
 
-	Log[1+Complex[0,1]] :>
+	Log[1+Complex[0,1]]/; optLog :>
 		(I/4)*Pi + Log[2]/2,
 
-	PolyLog[3,Complex[Rational[1,2],Rational[1,2]]]:>
+	PolyLog[3,Complex[Rational[1,2],Rational[1,2]]]/; optPolyLog :>
 		((21*I)/64)*Pi*Zeta2 + (Zeta2*Log[2])/32 + ((3*I)/32)*Pi*Log[2]^2 + Log[2]^3/48 - PolyLog[3, 1 + I] + (35*Zeta[3])/32,
 
-	PolyLog[3,Complex[1,-1]] ->
+	PolyLog[3,Complex[1,-1]]/; optPolyLog :>
 		(3*Zeta2*Log[2])/8 - PolyLog[3, 1 + I] + (35*Zeta[3])/32,
 
-	PolyLog[3,Complex[0,1]] ->
+	PolyLog[3,Complex[0,1]]/; optPolyLog :>
 		((3*I)/16)*Pi*Zeta2 - (3*Zeta[3])/32
 
 };
