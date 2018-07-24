@@ -36,6 +36,10 @@ FCLoopBasisSplit::usage =
 "FCLoopBasisSplit[int, {q1,q2,...}] checks if the given loop integral factorizes \
 and if so splits it into independent integrals.";
 
+FCLoopBasisGetSize::usage =
+"FCLoopBasisGetSize[n1,n2] returns the number of linearly independent propagators \
+for a topology that contains n1 loop momenta and n2 external momenta."
+
 FCLoopBasis::unknownmoms =
 "Error! Loop integral `1` depends on momenta that were not specified or it doesn't depend on \
 some of the specified momenta. Evaluation aborted.";
@@ -118,6 +122,10 @@ Options[FCLoopBasisSplit] = {
 	Head -> FCGV["LoopInt"],
 	List -> True
 };
+
+FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=
+	lmoms*(lmoms + 1)/2 + lmoms*emoms + extra;
+
 
 FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 	Block[{one, two,  coeffs, spd, lmoms,allmoms, extmoms, sprods, props, basisElements,
