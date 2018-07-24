@@ -12,7 +12,7 @@ Visit our [wiki](https://github.com/FeynCalc/feyncalc/wiki) to learn more about 
 
 # Using FeynCalc in your research
 
-Development of FeynCalc costs of a lot of effort and is done on a largely voluntarily basis.
+Development of FeynCalc costs a lot of effort and is done on a largely voluntarily basis.
 To support the developers and increase their academic visibility, please acknowledge our work
 when you use FeynCalc in your research. You can do so by citing the two FeynCalc papers:
 
@@ -27,9 +27,9 @@ Comput. Phys. Commun., 64, 345--359, 1991.
 
 FeynCalc is covered by the GNU General Public License 3.
 
-Copyright (C) 1990-2018 Rolf Mertig 
+Copyright (C) 1990-2018 Rolf Mertig
 
-Copyright (C) 1997-2018 Frederik Orellana 
+Copyright (C) 1997-2018 Frederik Orellana
 
 Copyright (C) 2014-2018 Vladyslav Shtabovenko
 
