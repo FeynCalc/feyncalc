@@ -46,6 +46,11 @@ FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
+FCGetNotebookDirectory::usage=
+"FCGetNotebookDirectory is a simple convenience function that returns the directory \
+in which the current notebook or .m file is located. It also works when the FrontEnd
+is not available.";
+
 FCFactorOut::usage=
 "FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
 bring exp into a particular form that Mathematica refuses to give";
@@ -378,6 +383,14 @@ FCMakeIndex[x_String, y_Integer, head_: Identity] :=
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
 
+FCGetNotebookDirectory[]:=
+	Block[{dir},
+		If[$FrontEnd===Null,
+			dir=ParentDirectory@DirectoryName[$InputFileName],
+			dir=ParentDirectory@NotebookDirectory[]
+		];
+		dir
+	];
 
 FCPatternFreeQ[expr_List]:=
 	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}];
