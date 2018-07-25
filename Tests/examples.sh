@@ -15,8 +15,9 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
-if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 
+
+MATH=$1
 
 
 ##Misc Examples
