@@ -69,7 +69,7 @@ SP[p,k2]=(SMP["m_W"]^2-SMP["m_e"]^2)/2;
 (*We average over the polarizations of the W-boson*)
 
 
-ampTreeSquared=ampTree ComplexConjugate[ampTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//FermionSpinSum//DiracSimplify[#,DiracTraceEvaluate->True]&//Simplify
+ampTreeSquared=ampTree ComplexConjugate[ampTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//FermionSpinSum//DiracSimplify//Simplify
 
 
 (* ::Section:: *)

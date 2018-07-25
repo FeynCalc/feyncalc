@@ -76,7 +76,7 @@ SP[p,k2]=Simplify[ExpandScalarProduct[SP[k1+k2,k2]]];
 
 
 ampTreeSquared=ampTree ComplexConjugate[ampTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//
-FermionSpinSum//DiracSimplify[#,DiracTraceEvaluate->True]&//SUNSimplify
+FermionSpinSum//DiracSimplify//SUNSimplify
 
 
 (* ::Section:: *)

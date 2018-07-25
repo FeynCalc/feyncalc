@@ -85,7 +85,7 @@ Options[DiracSimplify] = {
 	DiracSubstitute67	-> False,
 	DiracSubstitute5	-> False,
 	DiracTrace			-> True,
-	DiracTraceEvaluate	-> False,
+	DiracTraceEvaluate	-> True,
 	EpsContract			-> True,
 	ExpandScalarProduct	-> True,
 	Expanding			-> True,

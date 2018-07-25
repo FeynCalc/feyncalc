@@ -75,7 +75,7 @@ SetMandelstam[s,t,u,q1,pe,-q2,-pm,0,SMP["m_e"],0,SMP["m_mu"]];
 
 
 sqElNuScatteringTree=ampElNuScatteringTree ComplexConjugate[ampElNuScatteringTree]//
-FermionSpinSum[#,ExtraFactor->1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//Factor2
+FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Contract//Factor2
 
 
 (* ::Text:: *)

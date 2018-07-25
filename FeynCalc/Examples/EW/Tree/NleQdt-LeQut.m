@@ -86,7 +86,7 @@ SetMandelstam[s,t,u,pd,pn,-pu,-pl,SMP["m_d"],0,SMP["m_u"],SMP["m_l"]];
 
 
 sqAmpQuarkNuScatteringTree=ampQuarkNuScatteringTree ComplexConjugate[ampQuarkNuScatteringTree]//
-FermionSpinSum[#,ExtraFactor->1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//Factor2
+FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Factor2
 
 
 (* ::Text:: *)

@@ -68,8 +68,8 @@ DropSumOver->True,SMP->True,UndoChiralSplittings->True,FinalSubstitutions->{MQU[
 (*Calculate the total decay rates*)
 
 
-ampSqLeptons=ampdiagsHiggsToLeptonsTree*ComplexConjugate[ampdiagsHiggsToLeptonsTree]//FermionSpinSum//ReplaceAll[#,DiracTrace->Tr]&//Simplify
-ampSqQuarks=ampdiagsHiggsToQuarksTree*ComplexConjugate[ampdiagsHiggsToQuarksTree]//FermionSpinSum//ReplaceAll[#,DiracTrace->Tr]&//SUNSimplify[#,SUNNToCACF->False]&//Simplify
+ampSqLeptons=ampdiagsHiggsToLeptonsTree*ComplexConjugate[ampdiagsHiggsToLeptonsTree]//FermionSpinSum//DiracSimplify//Simplify
+ampSqQuarks=ampdiagsHiggsToQuarksTree*ComplexConjugate[ampdiagsHiggsToQuarksTree]//FermionSpinSum//DiracSimplify//SUNSimplify[#,SUNNToCACF->False]&//Simplify
 
 
 $Assumptions={SMP["m_H"]>0,SMP["m_l"]>0};

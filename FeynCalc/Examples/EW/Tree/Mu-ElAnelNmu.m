@@ -77,7 +77,7 @@ SP[q2,q2]=0;
 (*We average over the polarizations of the muon, hence the additional factor 1/2*)
 
 
-sqAmpMuonDecayTree = ampMuonDecayTree ComplexConjugate[ampMuonDecayTree]//FermionSpinSum[#,ExtraFactor -> 1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//
+sqAmpMuonDecayTree = ampMuonDecayTree ComplexConjugate[ampMuonDecayTree]//FermionSpinSum[#,ExtraFactor -> 1/2]&//DiracSimplify//
 Factor2
 
 

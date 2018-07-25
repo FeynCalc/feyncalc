@@ -86,7 +86,7 @@ SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], qQ, 0, SMP["m_u"]];
 ampSquared[0] = 1/(SUNN)(amp[0] (ComplexConjugate[amp[0]]))//
 	PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2]&//
-	DiracSimplify[#,DiracTraceEvaluate->True]&//DoPolarizationSums[#,p2,0,
+	DiracSimplify//DoPolarizationSums[#,p2,0,
 	VirtualBoson->True,GaugeTrickN->4]&//DoPolarizationSums[#,k1,p2]&//
 	TrickMandelstam[#,{s,t,u, 2SMP["m_u"]^2+qQ^2}]&//Simplify
 

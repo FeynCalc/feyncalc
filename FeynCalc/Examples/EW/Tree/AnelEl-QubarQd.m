@@ -81,7 +81,7 @@ SetMandelstam[s,t,u,q,pe,-l1,-l2,0,SMP["m_e"],SMP["m_u"],SMP["m_d"]];
 
 
 ampTreeSquared=ampTree ComplexConjugate[ampTree]//
-FermionSpinSum[#,ExtraFactor->1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//Factor2
+FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Contract//Factor2
 
 
 (* ::Text:: *)

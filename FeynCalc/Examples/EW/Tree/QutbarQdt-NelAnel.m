@@ -82,7 +82,7 @@ SetMandelstam[s,t,u,p1,p2,-k1,-k2,0,0,0,0];
 
 
 ampSquared=1/3^2 ampTree ComplexConjugate[ampTree]//FermionSpinSum[#,ExtraFactor -> 1/2^2]&//
-DiracSimplify[#,DiracTraceEvaluate->True]&//PropagatorDenominatorExplicit//SUNSimplify[#,SUNNToCACF->False]&//
+DiracSimplify//PropagatorDenominatorExplicit//SUNSimplify[#,SUNNToCACF->False]&//
 ReplaceAll[#,SUNN->3]&
 
 

@@ -84,8 +84,7 @@ ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 	PropagatorDenominatorExplicit//
 	DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&//
 	FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
-	DiracSimplify[#,DiracTraceEvaluate->True]&//
-	TrickMandelstam[#,{s,t,u,2SMP["m_e"]^2}]&//Simplify
+	DiracSimplify//TrickMandelstam[#,{s,t,u,2SMP["m_e"]^2}]&//Simplify
 
 
 (* ::Section:: *)

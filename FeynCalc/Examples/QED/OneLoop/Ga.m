@@ -79,7 +79,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1,
 (*vanish because the loop integral is antisymmetric under q^mu -> - q^mu.*)
 
 
-amp[1] = DiracSimplify[amp[0],DiracTraceEvaluate->True]
+amp[1] = DiracSimplify[amp[0]]
 
 
 (* ::Text:: *)

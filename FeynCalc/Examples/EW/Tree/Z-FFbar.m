@@ -115,19 +115,19 @@ SP[p,l2]=Simplify[ExpandScalarProduct[SP[l1+l2,l2]]];
 
 
 ampsMasslessLeptonsTreeSquared=ampsMasslessLeptonsTree ComplexConjugate[ampsMasslessLeptonsTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//
-FermionSpinSum//DiracSimplify[#,DiracTraceEvaluate->True]&//Simplify
+FermionSpinSum//DiracSimplify//Simplify
 
 
 ampsMassiveLeptonsTreeSquared=ampsMassiveLeptonsTree ComplexConjugate[ampsMassiveLeptonsTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//
-FermionSpinSum//DiracSimplify[#,DiracTraceEvaluate->True]&//Simplify
+FermionSpinSum//DiracSimplify//Simplify
 
 
 ampsUpQuarksTreeSquared=ampsUpQuarksTree ComplexConjugate[ampsUpQuarksTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//
-FermionSpinSum//DiracSimplify[#,DiracTraceEvaluate->True]&//SUNSimplify//Simplify
+FermionSpinSum//DiracSimplify//SUNSimplify//Simplify
 
 
 ampsDownQuarksTreeSquared=ampsDownQuarksTree ComplexConjugate[ampsDownQuarksTree]//DoPolarizationSums[#,p, ExtraFactor->1/3]&//
-FermionSpinSum//DiracSimplify[#,DiracTraceEvaluate->True]&//SUNSimplify//Simplify
+FermionSpinSum//DiracSimplify//SUNSimplify//Simplify
 
 
 (* ::Section:: *)

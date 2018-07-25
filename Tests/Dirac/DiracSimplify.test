@@ -131,8 +131,53 @@ Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
 	kappa^2 SP[q, q])/(32 (ieps + SP[q, q])))"},
 {"fcstDiracSimplify-ID30",
 "DiracSimplify[(GA[nu].GS[p] + GS[p].GA[nu] - 2 FV[p, nu]),DiracCanonical -> True]",
-"0"}
+"0"},
+{"fcstDiracSimplify-ID31",
+"DiracSimplify[
+DiracTrace[(m2 + GSD[l - p1 - p2 - p3]).(I EL GAD[Lor3]).(m2 +
+	GSD[l - p3]).(I EL GAD[Lor1]).(m2 +
+	GSD[l]).(-((I EL m2)/(4 m1)))] Spinor[Momentum[p1, D], 0,
+	1].(I EL GAD[Lor2]).Spinor[-Momentum[p2, D], 0, 1] FVD[
+Polarization[p3, -I, Transversality -> True], Lor1] MTD[Lor2,
+Lor3],FCE->True]",
+"-((EL^4 m2^4 Spinor[Momentum[p1, D], 0, 1].GSD[
+	Polarization[p3, -I,
+	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1])/m1) + (
+EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	Polarization[p3, -I,
+	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1] SPD[l,
+l])/m1 - (
+2 EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	Polarization[p3, -I,
+	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1] SPD[l,
+p3])/m1 - (
+4 EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	l].Spinor[-Momentum[p2, D], 0, 1] SPD[l,
+Polarization[p3, -I, Transversality -> True]])/m1 + (
+4 EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	p3].Spinor[-Momentum[p2, D], 0, 1] SPD[l,
+Polarization[p3, -I, Transversality -> True]])/m1 + (
+EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	Polarization[p3, -I,
+	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1] SPD[p1,
+p3])/m1 - (
+EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	p3].Spinor[-Momentum[p2, D], 0, 1] SPD[p1,
+Polarization[p3, -I, Transversality -> True]])/m1 + (
+EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	Polarization[p3, -I,
+	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1] SPD[p2,
+p3])/m1 - (
+EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	p3].Spinor[-Momentum[p2, D], 0, 1] SPD[p2,
+Polarization[p3, -I, Transversality -> True]])/m1 + (
+EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
+	Polarization[p3, -I,
+	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1] SPD[p3,
+p3])/m1"}
 };
+
+
 
 
 
