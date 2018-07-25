@@ -122,5 +122,18 @@ SUNT[a_].SUNT[a_].CGA[i].(m + CGS[p]).CGA[i]]","True"},
 GAD[FCGV[a_]].GAD[FCGV[a_]] + GAD[FCGV[a_]].GAE[FCGV[a_]]]","True"},
 {"fcstFCCanonicalizeDummyIndices-ID22",
 "MatchQ[FCCanonicalizeDummyIndices[CGAD[i].CGAD[i] + CGAD[i].CGAE[i],
-FCE -> True], CGAD[FCGV[a_]].CGAD[FCGV[a_]] + CGAD[FCGV[a_]].CGAE[FCGV[a_]]]","True"}
+FCE -> True], CGAD[FCGV[a_]].CGAD[FCGV[a_]] + CGAD[FCGV[a_]].CGAE[FCGV[a_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID23",
+"FCCanonicalizeDummyIndices[
+DiracTrace[(-  GAD[Lor2].GSD[a1].GA[6] - GAD[Lor2].GSD[a1].GA[7] +
+	GAD[Lor2].GSD[pPh].GSD[a1].GA[6])] Spinor[Momentum[p1, D], 0,
+	1].GAD[Lor2].GA[6].Spinor[-Momentum[p2, D], 0, 1],
+LorentzIndexNames -> {lor}, FCE -> True]","-DiracTrace[GAD[lor].GSD[a1].GA[6]] Spinor[Momentum[p1, D], 0, 1].GAD[
+	lor].GA[6].Spinor[-Momentum[p2, D], 0, 1] -
+DiracTrace[
+GAD[lor].GSD[a1].GA[7]] Spinor[Momentum[p1, D], 0, 1].GAD[lor].GA[
+	6].Spinor[-Momentum[p2, D], 0, 1] +
+DiracTrace[
+GAD[lor].GSD[pPh].GSD[a1].GA[6]] Spinor[Momentum[p1, D], 0, 1].GAD[
+	lor].GA[6].Spinor[-Momentum[p2, D], 0, 1]"}
 });

@@ -129,13 +129,15 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
+		If[ OptionValue[FCTraceExpand],
+			ex = FCTraceExpand[ex,FCI->True]
+		];
+
 		tmp = Expand2[ex, indhead];
 
 		{rest0,tmp} = FCSplit[tmp,indhead];
 
-		If[ OptionValue[FCTraceExpand],
-			tmp = FCTraceExpand[tmp,FCI->True]
-		];
+
 
 		If[	!FreeQ[tmp,Power],
 			tmp = tmp /. Power[z_, n_Integer?Positive]/;!FreeQ2[z, indhead] :> Apply[times, Table[z, {Abs[n]}]]^Sign[n]
