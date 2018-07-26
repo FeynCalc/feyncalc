@@ -541,3 +541,87 @@ Tests`LoopIntegrals`fcstFCLoopBasisGetSize =
 {"fcstFCLoopBasisGetSize-ID9", "FCLoopBasisGetSize[3,3]", "15"}
 })
 
+Tests`LoopIntegrals`fcstFCLoopBasisIntegralToTopology =
+({
+{"fcstFCLoopBasisIntegralToTopology-ID1",
+"FCLoopBasisIntegralToTopology[FCI[SFAD[p1]],{p1}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, \
+D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID2",
+"FCLoopBasisIntegralToTopology[x FCI[SFAD[p1]],{p1}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, \
+D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID3",
+"FCLoopBasisIntegralToTopology[FCI[SFAD[p1,p2]],{p1,p2}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p2, D], 0, \
+0, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID4",
+"FCLoopBasisIntegralToTopology[FCI[SFAD[p1,p2]],{p2}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p2, \
+D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID5",
+"FCLoopBasisIntegralToTopology[FCI[SPD[p1,p2]],{p2}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], 0, {-1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID6",
+"FCLoopBasisIntegralToTopology[FCI[ty CFAD[q,q-p,q-p]],{q}]",
+"{FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID7",
+"FCLoopBasisIntegralToTopology[FCI[CSP[q,p]CFAD[q,q-p,q-p]],{q}]",
+"{FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+CartesianPair[CartesianMomentum[p], CartesianMomentum[q]], 0, {-1, \
+-1}]], FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID8",
+"FCLoopBasisIntegralToTopology[FCI[CSPD[q,p]CFAD[q,q-p,q-p]],{q}]",
+	"{FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + \
+D]], 0, {-1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,\
+-1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID9",
+"FCLoopBasisIntegralToTopology[FCI[SFAD[q,q-p,q-p]],{q}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p, D] + \
+Momentum[q, D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID10",
+"FCLoopBasisIntegralToTopology[FCI[SPD[q,p] SFAD[q,q-p,q-p]],{q}]",
+	"{FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p, D], Momentum[q, D]], 0, {-1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p, D] + \
+Momentum[q, D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID11",
+"FCLoopBasisIntegralToTopology[FCI@CFAD[{k,0,4},l-k],{k}]",
+"{FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[k, -1 + D], 0, 0, {1, -1}]], \
+FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
+k, -1 + D] + CartesianMomentum[l, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID12",
+"FCLoopBasisIntegralToTopology[FCI[FAD[q,{q,0,3}]],{q}]",
+"{FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID13",
+"FCLoopBasisIntegralToTopology[FCI[SPD[q,p] SFAD[q,q-p,q-p] \
+SFAD[q-p]],{q},Tally\[Rule]True]",
+"{{FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p, \
+D] + Momentum[q, D], 0, 0, {1, 1}]], 3}, \
+{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, \
+0, {1, 1}]], 1}, {FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p, D], Momentum[q, D]], 0, {-1, 1}]], 1}}"},
+{"fcstFCLoopBasisIntegralToTopology-ID14",
+"FCLoopBasisIntegralToTopology[FCI[SPD[q,p] SFAD[q,q-p,q-p] \
+SFAD[q-p]],{q},Tally\[Rule]True,FCE->True]",
+"{{SFAD[{{-p + q, 0}, {0, 1}, 1}], 3}, {SFAD[{{q, 0}, {0, 1}, 1}], \
+1}, {SFAD[{{0, p . q}, {0, 1}, -1}], 1}}"}
+})
