@@ -145,8 +145,10 @@ Options[FCLoopBasisSplit] = {
 };
 
 Options[FCLoopBasisIntegralToTopology] = {
+	FCI -> False,
 	FCE -> False,
 	Tally -> False,
+	ToSFAD -> True,
 	EtaSign -> {1,-1,1}
 }
 
@@ -194,12 +196,17 @@ auxIntegralToTopology[exp_TemporalPair, _]:=
 	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]];
 
 
-FCLoopBasisIntegralToTopology[exp_, lmoms_List, OptionsPattern[]]:=
-	Block[{tmp, res, dummy, expAsList},
+FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
+	Block[{exp, tmp, res, dummy, expAsList},
 
 		If[	Length[lmoms]<1,
 			Message[FCLoopBasisIntegralToTopology::failmsg,"The list of the loop momenta cannot be empty."];
 			Abort[]
+		];
+
+		If[!OptionValue[FCI],
+			exp = FCI[expr],
+			exp = expr
 		];
 
 		If[	!MemberQ[{Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[exp]] || FreeQ2[exp,lmoms],
@@ -210,6 +217,11 @@ FCLoopBasisIntegralToTopology[exp_, lmoms_List, OptionsPattern[]]:=
 		optEtaSign = OptionValue[EtaSign];
 
 		expAsList = List@@(dummy*exp);
+
+		If[	OptionValue[ToSFAD] && !FreeQ[expAsList,PropagatorDenominator],
+			expAsList = ToSFAD[expAsList]
+		];
+
 		tmp = Select[expAsList,(MemberQ[{FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[#]] && !FreeQ2[#,lmoms])&];
 
 		If[	!FreeQ2[Complement[expAsList,tmp],lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
