@@ -177,24 +177,35 @@ rulePropagatorPowersToOne = {
 		GenericPropagatorDenominator[arg, {1, s}]
 };
 
-auxIntegralToTopology[exp_FeynAmpDenominator/; Length[List@@exp]>1, lmoms_List]:=
-	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms];
+auxIntegralToTopology[exp_FeynAmpDenominator, lmoms_List]:=
+	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms]/; Length[List@@exp]>1
 
-auxIntegralToTopology[exp_FeynAmpDenominator/; Length[List@@exp]===1, lmoms_List]:=
-	If[	TrueQ[!FreeQ2[exp,lmoms]],
-		{exp},
-		{}
-	];
+auxIntegralToTopology[Power[exp_FeynAmpDenominator, n_Integer?Positive], lmoms_List]:=
+	ConstantArray[SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms], n]/; Length[List@@exp]>1;
+
+auxIntegralToTopology[exp_FeynAmpDenominator, _]:=
+	{exp}/; Length[List@@exp]===1;
+
+auxIntegralToTopology[Power[exp_FeynAmpDenominator, n_Integer?Positive], _]:=
+	ConstantArray[{exp}, n]/; Length[List@@exp]===1;
 
 auxIntegralToTopology[exp_Pair, _]:=
 	FeynAmpDenominator[StandardPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[1]]}]];
 
+auxIntegralToTopology[Power[exp_Pair, n_Integer?Positive], _]:=
+	ConstantArray[FeynAmpDenominator[StandardPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[1]]}]], n];
+
 auxIntegralToTopology[exp_CartesianPair, _]:=
 	FeynAmpDenominator[CartesianPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[2]]}]];
+
+auxIntegralToTopology[Power[exp_CartesianPair, n_Integer?Positive], _]:=
+	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[2]]}]], n];
 
 auxIntegralToTopology[exp_TemporalPair, _]:=
 	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]];
 
+auxIntegralToTopology[Power[exp_TemporalPair, n_Integer?Positive], _]:=
+	ConstnatArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]];
 
 FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 	Block[{exp, tmp, res, dummy, expAsList},
@@ -222,7 +233,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 			expAsList = ToSFAD[expAsList]
 		];
 
-		tmp = Select[expAsList,(MemberQ[{FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[#]] && !FreeQ2[#,lmoms])&];
+		tmp = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power},Head[#]] && !FreeQ2[#,lmoms])&];
 
 		If[	!FreeQ2[Complement[expAsList,tmp],lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
 			Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression does not seem to be a valid scalar loop integral."];
@@ -230,6 +241,12 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 		];
 
 		tmp = auxIntegralToTopology[#,lmoms]&/@tmp;
+
+		If[	!FreeQ[tmp,auxIntegralToTopology],
+			Message[FCLoopBasisIntegralToTopology::failmsg, "Failed to extract the propagators."];
+			Abort[]
+		];
+
 
 		If[	OptionValue[Tally],
 			res = Sort[Tally[Flatten[tmp]],(#1[[1]]>#2[[1]])&];
@@ -248,8 +265,6 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 				Abort[]
 			]
 		];
-
-
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
