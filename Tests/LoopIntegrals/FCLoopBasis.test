@@ -404,7 +404,7 @@ loop[SFAD[{{q2, 0}, {0, 1}, 1}, {{q1, 0}, {0, 1},
 
 Tests`LoopIntegrals`fcstFCLoopBasisExtract =
 {{"fcstFCLoopBasisExtract-ID1",
-"FCLoopBasisExtract[FCI[CFAD[q,q-p,q-p]],{q},{D-1}]",
+"FCLoopBasisExtract[FCI[CFAD[q,q-p,q-p]],{q},SetDimensions->{D-1}]",
 "{{CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, \
 -1 + D]], CartesianPair[CartesianMomentum[p, -1 + D], \
 CartesianMomentum[p, -1 + D]] - 2*CartesianPair[CartesianMomentum[p, \
@@ -418,7 +418,7 @@ q, -1 + D], 0, 0, {1, -1}]], \
 FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
 p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"}, \
 {"fcstFCLoopBasisExtract-ID2",
-"FCLoopBasisExtract[FCI[CSP[q,p]CFAD[q,q-p,q-p]],{q},{3,D-1}]",
+"FCLoopBasisExtract[FCI[CSP[q,p]CFAD[q,q-p,q-p]],{q},SetDimensions->{3,D-1}]",
 "{{CartesianPair[CartesianMomentum[p], CartesianMomentum[q]], \
 CartesianPair[CartesianMomentum[q, -1 + D], CartesianMomentum[q, -1 + \
 D]], CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, \
@@ -436,7 +436,7 @@ FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,\
 FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
 p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"}, \
 {"fcstFCLoopBasisExtract-ID3",
-"FCLoopBasisExtract[FCI[CSPD[q,p]CFAD[q,q-p,q-p]],{q},{3,D-1}]",
+"FCLoopBasisExtract[FCI[CSPD[q,p]CFAD[q,q-p,q-p]],{q},SetDimensions->{3,D-1}]",
 "{{CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, \
 -1 + D]], CartesianPair[CartesianMomentum[q, -1 + D], \
 CartesianMomentum[q, -1 + D]], CartesianPair[CartesianMomentum[p, -1 \
@@ -452,7 +452,7 @@ FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,\
 -1 + D], 0, 0, {1, -1}]], \
 FeynAmpDenominator[CartesianPropagatorDenominator[-CartesianMomentum[\
 p, -1 + D] + CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]]}}"},
-{"fcstFCLoopBasisExtract-ID4","FCLoopBasisExtract[FCI[SFAD[q, q - p, q - p]], {q}, {D}]",
+{"fcstFCLoopBasisExtract-ID4","FCLoopBasisExtract[FCI[SFAD[q, q - p, q - p]], {q}, SetDimensions->{D}]",
 "{{Pair[Momentum[q, D], Momentum[q, D]],
 Pair[Momentum[p, D], Momentum[p, D]] -
 2 Pair[Momentum[p, D], Momentum[q, D]] +
@@ -463,7 +463,7 @@ StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
 FeynAmpDenominator[
 StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0,
 	0, {1, 1}]]}}"},
-{"fcstFCLoopBasisExtract-ID5","FCLoopBasisExtract[FCI[SPD[q, p] SFAD[q, q - p, q - p]], {q}, {4, D}]",
+{"fcstFCLoopBasisExtract-ID5","FCLoopBasisExtract[FCI[SPD[q, p] SFAD[q, q - p, q - p]], {q}, SetDimensions->{4, D}]",
 "{{Pair[Momentum[p, D], Momentum[q, D]],
 Pair[Momentum[q, D], Momentum[q, D]],
 Pair[Momentum[p, D], Momentum[p, D]] -
@@ -476,7 +476,7 @@ StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
 FeynAmpDenominator[
 StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0,
 	0, {1, 1}]]}}"},
-{"fcstFCLoopBasisExtract-ID6","FCLoopBasisExtract[FCI[SPD[q, p] SFAD[q, q - p, q - p]], {q}, {4, D}]",
+{"fcstFCLoopBasisExtract-ID6","FCLoopBasisExtract[FCI[SPD[q, p] SFAD[q, q - p, q - p]], {q}, SetDimensions->{4, D}]",
 "{{Pair[Momentum[p, D], Momentum[q, D]],
 Pair[Momentum[q, D], Momentum[q, D]],
 Pair[Momentum[p, D], Momentum[p, D]] -
@@ -489,7 +489,7 @@ StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
 FeynAmpDenominator[
 StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0,
 	0, {1, 1}]]}}"},
-{"fcstFCLoopBasisExtract-ID7","FCLoopBasisExtract[FCI@CFAD[{k, 0, 4}, l - k], {k}, {D - 1}]",
+{"fcstFCLoopBasisExtract-ID7","FCLoopBasisExtract[FCI@CFAD[{k, 0, 4}, l - k], {k}, SetDimensions->{D - 1}]",
 "{{CartesianPair[CartesianMomentum[k, -1 + D],
 CartesianMomentum[k, -1 + D]],
 CartesianPair[CartesianMomentum[k, -1 + D],
@@ -507,7 +507,7 @@ CartesianPropagatorDenominator[CartesianMomentum[k, -1 + D], 0,
 FeynAmpDenominator[
 CartesianPropagatorDenominator[-CartesianMomentum[k, -1 + D] +
 	CartesianMomentum[l, -1 + D], 0, 0, {1, -1}]]}}"},
-{"fcstFCLoopBasisExtract-ID8","FCLoopBasisExtract[FCI@SFAD[{k, 0, 4}, l - k], {k}, {D}]",
+{"fcstFCLoopBasisExtract-ID8","FCLoopBasisExtract[FCI@SFAD[{k, 0, 4}, l - k], {k}, SetDimensions->{D}]",
 "{{Pair[Momentum[k, D], Momentum[k, D]],
 Pair[Momentum[k, D], Momentum[k, D]] -
 2 Pair[Momentum[k, D], Momentum[l, D]] +
@@ -517,7 +517,15 @@ Momentum[k, D]], Pair[Momentum[k, D], Momentum[l, D]]}, {4,
 StandardPropagatorDenominator[Momentum[k, D], 0, 0, {1, 1}]],
 FeynAmpDenominator[
 StandardPropagatorDenominator[-Momentum[k, D] + Momentum[l, D], 0,
-	0, {1, 1}]]}}"}
+	0, {1, 1}]]}}"},
+{"fcstFCLoopBasisExtract-ID9","FCLoopBasisExtract[FCI[SFAD[p1]], {p1, p2}, FCTopology -> True,
+FCE -> True]",
+"{{SPD[p1, p1]}, {SPD[p1, p1], SPD[p1, p2],
+SPD[p2, p2]}, {1}, {SFAD[{{p1, 0}, {0, 1}, 1}]}}"},
+{"fcstFCLoopBasisExtract-ID10","FCLoopBasisExtract[FCI[SFAD[p1]], {p1, p2, p3}, FCTopology -> True,
+FCE -> True]",
+"{{SPD[p1, p1]}, {SPD[p1, p1], SPD[p1, p2], SPD[p1, p3], SPD[p2, p2],
+SPD[p2, p3], SPD[p3, p3]}, {1}, {SFAD[{{p1, 0}, {0, 1}, 1}]}}"}
 };
 
 Tests`LoopIntegrals`fcstFCLoopBasisGetSize =

@@ -92,6 +92,17 @@ Begin["`FCLoopBasis`Private`"]
 
 null::usage="";
 lintegral::usage="";
+fclbeVerbose::usage="";
+
+SetAttributes[spd,Orderless];
+
+Options[FCLoopBasisExtract] = {
+	FCI -> False,
+	FCE -> False,
+	FCVerbose -> False,
+	FCTopology -> False,
+	SetDimensions-> {3,4,D,D-1}
+};
 
 Options[FCLoopBasisIncompleteQ] = {
 	FCI -> False,
@@ -127,28 +138,66 @@ FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Intege
 	lmoms*(lmoms + 1)/2 + lmoms*emoms + extra;
 
 
-FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
-	Block[{one, two,  coeffs, spd, lmoms,allmoms, extmoms, sprods, props, basisElements,
-		basisElementsOrig, availableDims, isCartesian},
-		SetAttributes[spd,Orderless];
+FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]]:=
+	Block[{one, two,  coeffs, lmoms,allmoms, extmoms, sprods, props, basisElements,
+		basisElementsOrig, availableDims, isCartesian, dims, res},
 
+
+		If [OptionValue[FCVerbose]===False,
+				fclbeVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+					fclbeVerbose=OptionValue[FCVerbose]
+				];
+		];
+
+		dims = OptionValue[SetDimensions];
+
+
+		If[	dims==={},
+			Message[FCLoopBasisExtract::failmsg,"The list of dimensions cannot be empty."];
+			Abort[]
+		];
+
+		If[	loopmoms==={},
+			Message[FCLoopBasisExtract::failmsg,"The list of loop momenta cannot be empty."];
+			Abort[]
+		];
+
+
+		FCPrint[1,"FCLoopBasisExtract: Entering.", FCDoControl->fclbeVerbose];
+		FCPrint[3,"FCLoopBasisExtract: Entering with: ", sps fad, FCDoControl->fclbeVerbose];
+		FCPrint[3,"FCLoopBasisExtract: Loop momenta: ", loopmoms, FCDoControl->fclbeVerbose];
+
+
+		(* TODO We need to support also temporal and generic propagators *)
 		If[	!FreeQ2[{sps fad}, {TemporalPair,TemporalMomentum,TemporalIndex, TC, GenericPropagatorDenominator}],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
 
-		isCartesian = cartesianIntegralQ[sps fad];
 
-		(* List of all the momenta that appear inside the integral *)
+		isCartesian = cartesianIntegralQ[sps fad];
+		FCPrint[1,"FCLoopBasisExtract: Is the loop integral Cartesian? ", isCartesian, FCDoControl->fclbeVerbose];
+
+		(*	List of all momenta that appear inside the integral	*)
 		If[	!isCartesian,
-			allmoms=Union[Cases[sps*fad,Momentum[x_,_:4]:>x,Infinity]],
-			allmoms=Union[Cases[sps*fad,CartesianMomentum[x_,_:3]:>x,Infinity]]
+			allmoms=Cases[sps*fad,Momentum[x_,_:4]:>x,Infinity]//Sort//DeleteDuplicates,
+			allmoms=Cases[sps*fad,CartesianMomentum[x_,_:3]:>x,Infinity]//Sort//DeleteDuplicates
 		];
 
+		(*	All momenta that are not listed as loop momenta will be treated as external momenta.	*)
 		extmoms = Complement[allmoms,loopmoms];
 
-		lmoms = Intersection[loopmoms,Complement[allmoms,extmoms]];
-
+		(*
+			Normally, if the integral does not depend on some of the loop momenta specified by the user,
+			we will not include this momenta to the basis. However, if we are dealing with a subtopology
+			of a given topology, the full dependence must be taken into account. This is achieved by setting
+			the option FCTopology to True.
+		*)
+		If[	OptionValue[FCTopology],
+			lmoms = loopmoms,
+			lmoms = Intersection[loopmoms,Complement[allmoms,extmoms]]
+		];
 
 		(* Collect all scalar products in the numerator that depend on the loop momenta *)
 		sprods = (List @@ (sps*one*two)) //ReplaceAll[#, one | two -> Unevaluated[Sequence[]]] &;
@@ -214,9 +263,17 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, dims_List]:=
 		(* 	Now we have all the polynomials that appear in the loop integral.
 			We also save their exponents as the second element of this list*)
 
+		FCPrint[1,"FCLoopBasisExtract: Leaving.", FCDoControl->fclbeVerbose];
+
 
 		(* Finally, convert all these polynomials into vectors ... *)
-		{basisElements[[1]], coeffs, basisElements[[2]], basisElementsOrig[[1]]}
+		res =  {basisElements[[1]], coeffs, basisElements[[2]], basisElementsOrig[[1]]};
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 
 ];
 
@@ -312,7 +369,7 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCLoopBasisIncompleteQ: Entering with: ", ex, FCDoControl->fclbVerbose];
 		FCPrint[3,"FCLoopBasisIncompleteQ: Loop momenta: ", lmoms, FCDoControl->fclbVerbose];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, dims];
+		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
 
 		FCPrint[3,"FCLoopBasisIncompleteQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
@@ -370,7 +427,7 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
 		];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, dims];
+		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
@@ -472,7 +529,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[1,"FCLoopBasisFindCompletion: Applying FCLoopBasisExtract and converting to vectors.", FCDoControl->fclbVerbose];
 		time=AbsoluteTime[];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, dims];
+		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
 
 
 

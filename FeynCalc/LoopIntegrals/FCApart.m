@@ -134,7 +134,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Otherwise, we need to first obtain the list of polynomials that appear in the integral
 			plus their vector representation.	*)
-		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, OptionValue[SetDimensions]];
+		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
 
 		(* All the partial fractioning is done by pfrac *)
 		res = pref*vectorTerm*pfrac[vectorSet];

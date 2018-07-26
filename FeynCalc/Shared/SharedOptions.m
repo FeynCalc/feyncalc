@@ -228,6 +228,16 @@ identity. It is similar to SchoutenAllowZeroGain with the difference that even \
 transformations that increase the total number of terms might be applied in an \
 attempt to  arrive to shorter expressions at a a later stage.";
 
+SetDimensions::usage =
+"SetDimensions is an option for ScalarProduct, CartesianScalarProduct and \
+various FCLoopBasis* functions. For scalar products it specifies the dimensions \
+for which the scalar products will be set when ScalarProduct or CartesianScalarProduct  \
+are used with the equality sign, e.g. in ScalarProduct[a, b] = m^2. By default, the \
+scalar products are set for 4 and D dimensions. By changing this option \
+the user can add other dimensions or delete the exising ones. In case of the FCLoopBasis*
+functions this option specifies the dimensions of the loop and external momenta to be taken \
+into account when extracting the propagator basis.";
+
 SpinPolarizationSum::usage=
 "SpinPolarizationSum is an option for SquareAmplitude and \
 FermionSpinSum. The set (pure) function acts on the usual spin sum.";

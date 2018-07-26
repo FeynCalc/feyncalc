@@ -43,13 +43,6 @@ SetTemporalComponent::usage =
 "SetTemporalComponent[p, val] sets the value of the temporal
 component of a 4-vector p, TemporalPair[TemporalIndex[],TemporalMomentum[p]] to val.";
 
-SetDimensions::usage =
-"SetDimensions is an option for ScalarProduct and CartesianScalarProduct. It determines \
-for which dimensions the scalar products will be set when ScalarProduct or CartesianScalarProduct  \
-are used with the equality sign, e.g in ScalarProduct[a, b] = m^2. By default, the \
-scalar products are set for 4 and D dimensions. By changing this option \
-the user can add other dimensions or delete the exising ones.";
-
 ScalarProduct::emptydim =
 "If you want to set scalar products via ScalarProduct[a, b] = m^2, you must \
 specify at least one dimension via the option SetDimensions->{dims...}! Evaluation \
