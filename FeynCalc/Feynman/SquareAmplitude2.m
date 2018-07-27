@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SquareAmplitude *)
+(* :Title: SquareAmplitude2 *)
 
 (* :Author: Rolf Mertig *)
 
@@ -13,24 +13,24 @@
 (* ------------------------------------------------------------------------ *)
 
 EnergyMomentumConservation::usage =
-"EnergyMomentumConservation is an option of SquareAmplitude (experimental).";
+"EnergyMomentumConservation is an option of SquareAmplitude2 (experimental).";
 
-SquareAmplitude::usage =
-"SquareAmplitude[amp] squares the amplitude amp. EXPERIMENTAL!!! \
+SquareAmplitude2::usage =
+"SquareAmplitude2[amp] squares the amplitude amp. EXPERIMENTAL!!! \
 Don't rely on it.";
 
 SpinSumExternalMomentum::usage =
-"SpinSumExternalMomentum is an option of SquareAmplitude (experimental).";
+"SpinSumExternalMomentum is an option of SquareAmplitude2 (experimental).";
 
 SelectedGraphs::usage =
-"SelectedGraphs is an option of SquareAmplitude (experimental).";
+"SelectedGraphs is an option of SquareAmplitude2 (experimental).";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]
 
-Begin["`SquareAmplitude`Private`"]
+Begin["`SquareAmplitude2`Private`"]
 
 (* ************************************************************* *)
 duM = Unique[System`C];
@@ -119,7 +119,7 @@ specsir2[x_] :=
 (* end of specsir2 *)
 
 (* **************************************************************** *)
-(* SquareAmplitudedef *)
+(* SquareAmplitude2def *)
 (* **************************************************************** *)
 (* careful: this function is still under development!!! *)
 
@@ -139,7 +139,7 @@ susm[xx_ /;( (Head[xx] =!= Plus) && (!FreeQ[xx, SUNIndex]))
 	Select[xx, FreeQ[#1, SUNIndex] & ]*
 	susa[Select[xx, !FreeQ[#1, SUNIndex] & ]] (*, SUNIndex*)];
 
-Options[SquareAmplitude] = {
+Options[SquareAmplitude2] = {
 					Dimension -> 4,
 				EnergyMomentumConservation -> {},
 				EpsDiscard -> False,
@@ -161,7 +161,7 @@ Options[SquareAmplitude] = {
 (* the FeynArts convention is to  put the Process -> {}  rule
 	as the last argument in FeynAmpList
 *)
-SquareAmplitude[ FeynAmpList[he___,
+SquareAmplitude2[ FeynAmpList[he___,
 				process_Rule][amps__],
 	opts___Rule] :=
 	Block[ {sli = {}, amp = FeynCalcInternal[{amps}], proctype, dim, nam,
@@ -176,15 +176,15 @@ SquareAmplitude[ FeynAmpList[he___,
 			Abort[]
 		];
 
-		dim       = Dimension   /. {opts} /. Options[SquareAmplitude];
-		mand      = Mandelstam  /. {opts} /. Options[SquareAmplitude];
-		inisubst  = FeynCalcInternal[InitialSubstitutions /.  {opts} /. Options[SquareAmplitude]];
-		collecting = Collecting /. {opts} /. Options[SquareAmplitude];
-		factoring = Factoring   /. {opts} /. Options[SquareAmplitude];
-		finsubst  = FeynCalcInternal[FinalSubstitutions /. {opts} /. Options[SquareAmplitude]];
-		isolhead  = IsolateNames /. {opts} /. Options[SquareAmplitude];
-		exmom     = SpinSumExternalMomentum /. {opts} /. Options[SquareAmplitude];
-		extrafact = ExtraFactor /. {opts} /. Options[SquareAmplitude];
+		dim       = Dimension   /. {opts} /. Options[SquareAmplitude2];
+		mand      = Mandelstam  /. {opts} /. Options[SquareAmplitude2];
+		inisubst  = FeynCalcInternal[InitialSubstitutions /.  {opts} /. Options[SquareAmplitude2]];
+		collecting = Collecting /. {opts} /. Options[SquareAmplitude2];
+		factoring = Factoring   /. {opts} /. Options[SquareAmplitude2];
+		finsubst  = FeynCalcInternal[FinalSubstitutions /. {opts} /. Options[SquareAmplitude2]];
+		isolhead  = IsolateNames /. {opts} /. Options[SquareAmplitude2];
+		exmom     = SpinSumExternalMomentum /. {opts} /. Options[SquareAmplitude2];
+		extrafact = ExtraFactor /. {opts} /. Options[SquareAmplitude2];
 		extrafact = FeynCalcInternal[extrafact];
 		{es, te} = {mand[[1]], mand[[2]]};
 		If[ Length[mand === 3],
@@ -192,7 +192,7 @@ SquareAmplitude[ FeynAmpList[he___,
 		];
 		amp = amp /. SUNDelta -> SUNDeltaContract /.
 					SUNDeltaContract -> SUNDelta;
-		sel = SelectedGraphs /. {opts} /. Options[SquareAmplitude];
+		sel = SelectedGraphs /. {opts} /. Options[SquareAmplitude2];
 		If[ sel === All,
 			sli = amp,
 			For[jj = 1, jj <= Length[amp], jj++,
@@ -623,7 +623,7 @@ mU = Unique[mUUn]; sU = Unique[sUUu]; gL = Unique[glLLu];
 		den1 >> "den1.s"; prod >>"prod.s" ];
 		*)
 		prod = Collect2[prod, LorentzIndex];
-		amp = SquareAmplitude[nam, ExtraFactor -> (prod colorfactor),
+		amp = SquareAmplitude2[nam, ExtraFactor -> (prod colorfactor),
 									IsolateNames -> isolhead,
 									Mandelstam -> {}, Factoring -> False,
 									IntermediateSubstitutions -> enmomsubst,
@@ -665,22 +665,22 @@ mU = Unique[mUUn]; sU = Unique[sUUu]; gL = Unique[glLLu];
 
 
 (* XFX *)
-SquareAmplitude[ exp_ /; FreeQ[exp, FeynAmp], ops___Rule ] :=
+SquareAmplitude2[ exp_ /; FreeQ[exp, FeynAmp], ops___Rule ] :=
 	Block[ {ts,sps,amp2,cts,plu3,neamp,intermed,amp,
 	amps1, amps2,pamp,lis, saveminamp, file,finsubst2, isolhead2,
 	nwres, mand2, extrafact2,factoring2,epsAway,myfile},
 		ts = FeynCalcInternal[exp] /. SUNDelta -> SUNDeltaContract /.
 							SUNDeltaContract ->SUNDelta;
-		enmo = EnergyMomentumConservation /. {ops} /. Options[SquareAmplitude];
+		enmo = EnergyMomentumConservation /. {ops} /. Options[SquareAmplitude2];
 		intermed = FeynCalcInternal[IntermediateSubstitutions /. {ops} /.
-						Options[SquareAmplitude]];
-		isolhead2 = IsolateNames /. {ops} /. Options[SquareAmplitude];
-		saveminamp = WriteOut    /. {ops} /. Options[SquareAmplitude];
-		extrafact2 = FeynCalcInternal[ExtraFactor /. {ops} /. Options[SquareAmplitude]];
-		factoring2 = Factoring   /. {ops} /. Options[SquareAmplitude];
+						Options[SquareAmplitude2]];
+		isolhead2 = IsolateNames /. {ops} /. Options[SquareAmplitude2];
+		saveminamp = WriteOut    /. {ops} /. Options[SquareAmplitude2];
+		extrafact2 = FeynCalcInternal[ExtraFactor /. {ops} /. Options[SquareAmplitude2]];
+		factoring2 = Factoring   /. {ops} /. Options[SquareAmplitude2];
 		finsubst2  = FeynCalcInternal[FinalSubstitutions  /. {ops} /.
-						Options[SquareAmplitude]];
-		epsAway    = EpsDiscard /. {ops} /. Options[SquareAmplitude];
+						Options[SquareAmplitude2]];
+		epsAway    = EpsDiscard /. {ops} /. Options[SquareAmplitude2];
 
 		(*Mac fix, 18/9-2000, F.Orellana. Ditto for FileType's below*)
 		If[ StringQ[saveminamp],
@@ -729,17 +729,17 @@ nuLL1 = Unique[cCU]; nuLL2 = Unique[cCU];
 		nuLlLL = Unique[cCUn];
 		 *)
 		(*
-		FCPrint[2,"colling2insquareamplitudeagain"];
+		FCPrint[2,"colling2inSquareAmplitude2again"];
 			ts = ((#/.Plus->etl)& /@ (ts + nuLlLL)) /. nuLlLL->0
 		*)
 		,
 			ts = propdenexp[ts, enmo];
-			FCPrint[2,"diracsimplifyinginsquareamplitude"];
+			FCPrint[2,"diracsimplifyinginSquareAmplitude2"];
 			ts = DiracSimplify[ts];
 			ots = ts;
 			FCPrint[2,LeafCount[ots]];
 			If[ Head[ts] === Plus,
-				FCPrint[2,"colling2insquareamplitude"];
+				FCPrint[2,"colling2inSquareAmplitude2"];
 				ts = Collect2[ts, {Spinor,SUNIndex}, Factoring -> False];
 				ots2 = ts;
 			(*
@@ -802,7 +802,7 @@ nuLL1 = Unique[cCU]; nuLL2 = Unique[cCU];
 			If[ (!FreeQ[ts, Spinor]) && (enmo=!= {}),
 				FCPrint[2,"minimizing SME's"];
 				ts = spmin[ts, enmo];
-				FCPrint[2,"colling2insquareamplitudeagain"];
+				FCPrint[2,"colling2inSquareAmplitude2again"];
 				ts = (Collect2[ts, {Spinor, SUNIndex} ] + nuLlLL) /. nuLlLL->0;
 			];
 			FCPrint[1,"ts//Length = ",ts//Length];
@@ -1057,5 +1057,5 @@ propdenexp[x_, {en__}] :=
 		] /. pdsave -> PropagatorDenominator/.
 			fdpsave2 -> FeynAmpDenominator;
 
-FCPrint[1,"SquareAmplitude.m loaded."];
+FCPrint[1,"SquareAmplitude2.m loaded."];
 End[]
