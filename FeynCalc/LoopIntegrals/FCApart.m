@@ -279,7 +279,7 @@ pfrac[inputVectorSet_List]:=
 					],
 					tmpNS[[1]]
 				];
-			f = ExpandAll[Dot[vectorSet[[1]],v]];
+			f = Together[ExpandAll[Dot[vectorSet[[1]],v]]];
 
 			(* Now we need to check the value of the coefficient fi (spfCoeff) of that scalar product *)
 			spType = vectorSet[[1]][[spPosition]];
@@ -323,7 +323,7 @@ pfrac[inputVectorSet_List]:=
 			],
 			(* If there are no scalar products to cancel, we just pick the first basis vector *)
 			v = First[tmpNS];
-			f = ExpandAll[Dot[vectorSet[[1]],v]]
+			f = Together[ExpandAll[Dot[vectorSet[[1]],v]]]
 		];
 
 		(*	If we are here, this means that the integral does not contain any scalar produts, only propagators
