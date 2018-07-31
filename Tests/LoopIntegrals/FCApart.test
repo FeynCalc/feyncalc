@@ -137,18 +137,10 @@ k1])^2)/4 - (m0^2*FAD[{p, m0}]*SPD[k1, p])/2 \
 p])/4 + (FAD[{-k1 + p, m1}]*SPD[p, p]^2)/4"},
 {"fcstFCApart-ID22",
 "FCApart[CFAD[-q+x,{{0,q.p}}],{q},FCE\[Rule]True,FDS\[Rule]False]",
-	"FeynAmpDenominator[CartesianPropagatorDenominator[-\
-CartesianMomentum[q, -1 + D] + CartesianMomentum[x, -1 + D], 0, 0, \
-{1, -1}], CartesianPropagatorDenominator[0, \
-CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + \
-D]], 0, {1, -1}]]"},
+	"CFAD[{{-q + x, 0}, {0, -1}, 1}, {{0, p . q}, {0, -1}, 1}]"},
 {"fcstFCApart-ID23",
 "FCApart[CFAD[-q+x,{{q,q.p}}],{q},FCE\[Rule]True,FDS\[Rule]False]",
-	"FeynAmpDenominator[CartesianPropagatorDenominator[\
-CartesianMomentum[q, -1 + D] - CartesianMomentum[x, -1 + D], 0, 0, \
-{1, -1}], CartesianPropagatorDenominator[CartesianMomentum[q, -1 + \
-D], CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, \
--1 + D]], 0, {1, -1}]]"},
+	"CFAD[{{-q + x, 0}, {0, -1}, 1}, {{q, p.q}, {0, -1}, 1}]"},
 {"fcstFCApart-ID24",
 "FCApart[CVD[q,i]CVD[q,j]CFAD[q,q+l,q-l],{q},FDS\[Rule]False,FCE\
 \[Rule]True]",
@@ -224,15 +216,10 @@ CSPD[p2, p2]))/4 + (CFAD[{{p2 + q2, 0}, {-m^2, -1}, 1}, {{p2 + q2, \
 p2]))/4"},
 {"fcstFCApart-ID31",
 "FCApart[SFAD[-q+x,{{0,q.p}}],{q},FCE\[Rule]True,FDS\[Rule]False]",
-	"FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[q, D] \
-+ Momentum[x, D], 0, 0, {1, 1}], StandardPropagatorDenominator[0, \
-Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]"},
+	"SFAD[{{-q + x, 0}, {0, 1}, 1}, {{0, p.q}, {0, 1}, 1}]"},
 {"fcstFCApart-ID32",
 "FCApart[SFAD[-q+x,{{q,q.p}}],{q},FCE\[Rule]True,FDS\[Rule]False]",
-	"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D] \
-- Momentum[x, D], 0, 0, {1, 1}], \
-StandardPropagatorDenominator[Momentum[q, D], Pair[Momentum[p, D], \
-Momentum[q, D]], 0, {1, 1}]]"},
+	"SFAD[{{-q + x, 0}, {0, 1}, 1}, {{q, p.q}, {0, 1}, 1}]"},
 {"fcstFCApart-ID33",
 "FCApart[FVD[q,mu]FVD[q,nu]SFAD[q,q+l,q-l],{q},FDS\[Rule]False,FCE\
 \[Rule]True]",
@@ -384,5 +371,11 @@ a b))(-1 + a b) SFAD[{{-p2 + p4, 0}, {0, 1},
 2 SFAD[{{-p2 + p4, 0}, {0, 1}, 1}, {{-p2 + p4, 0}, {0, 1},
 	1}, {{p2, 0}, {0, 1}, 1}, {{p3, 0}, {0, 1},
 	1}, {{p2 + p3, 0}, {0, 1}, 1}, {{-p2 - p3 + p4, 0}, {0, 1}, 1}])/(
-a b)"}
+a b)"},
+{"fcstFCApart-ID46",
+"FCApart[SFAD[p1, p2, p3, -p1 - p2 - p3 + Q, -p2 + Q, -p1 - p2 + Q,
+p1 + p3], {p1, p2, p3}, FDS -> False, FCE -> True]",
+"SFAD[{{p1, 0}, {0, 1}, 1}, {{p2, 0}, {0, 1}, 1}, {{p3, 0}, {0, 1},
+1}, {{-p1 - p2 - p3 + Q, 0}, {0, 1}, 1}, {{-p2 + Q, 0}, {0, 1},
+1}, {{-p1 - p2 + Q, 0}, {0, 1}, 1}, {{p1 + p3, 0}, {0, 1}, 1}]"}
 })

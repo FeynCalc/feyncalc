@@ -89,11 +89,21 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = ExpandScalarProduct[ex, FCI->True]
 		];
 
-		(* To bring the propagators into a proper form *)
-		ex = ex /. FeynAmpDenominator -> feynsimp[lmoms];
+		(*	To bring the propagators into a proper form.
+			However, this might also mess up the signs of the
+			propagators in the already fixed topology, so if FDS is set to False,
+			this simplification should not be done as well!	*)
+		If[	OptionValue[FDS],
+			ex = ex /. FeynAmpDenominator -> feynsimp[lmoms]
+		];
 
 		If [ FreeQ2[ex,lmoms],
 			FCPrint[3,"FCApart: The intermediate expression contains no loop integrals ", ex, FCDoControl->fcaVerbose];
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
 			Return[ex];
 		];
 
@@ -116,6 +126,12 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(* If the integral can't be partial fractioned any further, then we have nothing to do here *)
 		If[	!FCLoopBasisOverdeterminedQ[scalarTerm,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],
+			FCPrint[3,"FCApart: No furher partial fractioning is possible in ", ex, FCDoControl->fcaVerbose];
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
 			Return[ex];
 		];
 
