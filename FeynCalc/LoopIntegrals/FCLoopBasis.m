@@ -275,7 +275,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 
 
 
-
+(*TODO FeynHelpers!!! *)
 FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]]:=
 	Block[{one, two,  coeffs, lmoms,allmoms, extmoms, sprods, props, basisElements,
 		basisElementsOrig, availableDims, isCartesian, dims, res},
@@ -389,9 +389,7 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 		];
 
 		(* all possible scalar products of loop momenta among themselves and with external momenta *)
-		coeffs =
-			Union[Join[Flatten[Outer[spd, lmoms, extmoms]],
-			Flatten[Outer[spd, lmoms, lmoms]]]];
+		coeffs = Union[Join[Flatten[Outer[spd, lmoms, extmoms]], Flatten[Outer[spd, lmoms, lmoms]]]];
 
 		If[	TrueQ[!isCartesian],
 			coeffs = Union[Flatten[coeffs/.spd[a_,b_]:>(Pair[Momentum[a,#],Momentum[b,#]]&/@availableDims)]],
@@ -405,6 +403,16 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 
 
 		(* Finally, convert all these polynomials into vectors ... *)
+
+		(*	basisElements[[1]] propagators in the LR/FIRE notation;
+			coeffs: all possible scalar products;
+
+			basisElements[[2]]: the propagator powers;
+
+			basisElementsOrig[[1]]:  basisElements[[1]] as they appear in the integral
+		*)
+
+
 		res =  {basisElements[[1]], coeffs, basisElements[[2]], basisElementsOrig[[1]]};
 
 		If[	OptionValue[FCE],
