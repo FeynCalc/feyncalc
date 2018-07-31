@@ -175,7 +175,7 @@ FeynCalcInternal.)";
 
 FCHN::usage =
 "FCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
-into FermionChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
+into FermionicChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
 FeynCalcInternal.";
 
 FermionicChain::usage =
