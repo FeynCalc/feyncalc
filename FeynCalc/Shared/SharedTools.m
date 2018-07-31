@@ -386,8 +386,8 @@ FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 FCGetNotebookDirectory[]:=
 	Block[{dir},
 		If[$FrontEnd===Null,
-			dir=ParentDirectory@DirectoryName[$InputFileName],
-			dir=ParentDirectory@NotebookDirectory[]
+			dir=DirectoryName[$InputFileName],
+			dir=NotebookDirectory[]
 		];
 		dir
 	];
