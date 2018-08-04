@@ -525,7 +525,12 @@ SPD[p2, p2]}, {1}, {SFAD[{{p1, 0}, {0, 1}, 1}]}}"},
 {"fcstFCLoopBasisExtract-ID10","FCLoopBasisExtract[FCI[SFAD[p1]], {p1, p2, p3}, FCTopology -> True,
 FCE -> True]",
 "{{SPD[p1, p1]}, {SPD[p1, p1], SPD[p1, p2], SPD[p1, p3], SPD[p2, p2],
-SPD[p2, p3], SPD[p3, p3]}, {1}, {SFAD[{{p1, 0}, {0, 1}, 1}]}}"}
+SPD[p2, p3], SPD[p3, p3]}, {1}, {SFAD[{{p1, 0}, {0, 1}, 1}]}}"},
+{"fcstFCLoopBasisExtract-ID11","FCLoopBasisExtract[
+GFAD[{p1.q p2.q + x}] SFAD[p1] SPD[p2, r]^2, {p1, p2}, FCE -> True]",
+"{{SPD[p2, r], x + p1.q p2.q, SPD[p1, p1]}, {SPD[p1, p1], SPD[p1, p2],
+SPD[p1, r], SPD[p2, p2], SPD[p2, r]}, {-2, 1, 1}, {SPD[p2, r],
+GFAD[{{x + p1.q p2.q, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}}"}
 };
 
 Tests`LoopIntegrals`fcstFCLoopBasisGetSize =
@@ -708,7 +713,13 @@ Tally -> True, FCE -> True]",
 MomentumCombine -> True, Tally -> False]",
 "{FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[k1 + k2, D], Momentum[l, D]]/2, 0, {-1, 1}]],
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[l, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[k1, D]/2 - Momentum[k2, D]/2 + Momentum[l, D],
-0, m^2, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D]/2 - Momentum[k2, D]/2 + Momentum[l, D], 0, m^2, {1, 1}]]}"}
+0, m^2, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D]/2 - Momentum[k2, D]/2 + Momentum[l, D], 0, m^2, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID32",
+"FCLoopBasisIntegralToTopology[GFAD[{p1.q p2.q + x}] SFAD[p1], {p1, p2}, FCE -> True]",
+"{GFAD[{{x + p1.q p2.q, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisIntegralToTopology-ID33",
+"FCLoopBasisIntegralToTopology[GFAD[{p1.q p2.q + x, 2}] SFAD[p1], {p1, p2}, Tally -> True,FCE -> True]",
+"{{GFAD[{{x + p1.q p2.q, 1}, 1}], 2}, {SFAD[{{p1, 0}, {0, 1}, 1}], 1}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

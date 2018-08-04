@@ -444,8 +444,8 @@ FCLoopBasisCreateScalarProducts[lmoms_List, extmoms_List, dims_List, head_Symbol
 
 
 (*TODO FeynHelpers!!! *)
-FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]]:=
-	Block[{	coeffs, lmoms,allmoms, extmoms, basisElements,
+FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
+	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, isCartesian, dims, res, useToSFAD, integralBasis, integralBasisT},
 
 		If [OptionValue[FCVerbose]===False,
@@ -467,26 +467,31 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 			Abort[]
 		];
 
+		If[	!OptionValue[FCI],
+			expr = FCI[exp],
+			expr = exp
+		];
+
 
 		FCPrint[1,"FCLoopBasisExtract: Entering.", FCDoControl->fclbeVerbose];
-		FCPrint[3,"FCLoopBasisExtract: Entering with: ", sps fad, FCDoControl->fclbeVerbose];
+		FCPrint[3,"FCLoopBasisExtract: Entering with: ", expr, FCDoControl->fclbeVerbose];
 		FCPrint[3,"FCLoopBasisExtract: Loop momenta: ", loopmoms, FCDoControl->fclbeVerbose];
 
 
-		(* TODO We need to support also temporal and generic propagators *)
-		If[	!FreeQ2[{sps fad}, {TemporalPair,TemporalMomentum,TemporalIndex, TC, GenericPropagatorDenominator}],
+		(* TODO We need to support also temporal propagators *)
+		If[	!FreeQ2[expr, {TemporalPair,TemporalMomentum,TemporalIndex}],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];
 
-		isCartesian = cartesianIntegralQ[sps fad];
-		useToSFAD = !FreeQ[sps fad, StandardPropagatorDenominator];
+		isCartesian = cartesianIntegralQ[expr];
+		useToSFAD = !FreeQ[expr, StandardPropagatorDenominator];
 
 
 		FCPrint[1,"FCLoopBasisExtract: Is the loop integral Cartesian? ", isCartesian, FCDoControl->fclbeVerbose];
 
 
-		integralBasis = FCLoopBasisIntegralToTopology[sps fad, loopmoms, Rest->None, Negative->True, Tally->True,
+		integralBasis = FCLoopBasisIntegralToTopology[expr, loopmoms, FCI->True, Rest->None, Negative->True, Tally->True,
 			Pair->True,CartesianPair->True, ToSFAD->useToSFAD, MomentumCombine -> True, ExpandScalarProduct->True,
 			Sort->False
 		];
