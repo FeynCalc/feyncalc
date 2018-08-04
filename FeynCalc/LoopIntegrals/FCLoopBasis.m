@@ -150,7 +150,8 @@ Options[FCLoopBasisIntegralToTopology] = {
 	FCI -> False,
 	Rest -> False,
 	Tally -> False,
-	ToSFAD -> True
+	ToSFAD -> True,
+	Negative -> False
 }
 
 FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=
@@ -284,6 +285,19 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 				Abort[]
 			]
 		];
+
+		(*
+			When Negative is set to True, the powers of numerators are counted as negative.
+		*)
+
+		If[	OptionValue[Negative],
+			res = res /. {
+				{FeynAmpDenominator[(h : StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__, {n_Integer, s_}]],
+					pow_} /; (n < 0 && pow > 0) :>
+				{FeynAmpDenominator[h[a, {n, s}]], -pow}
+			}
+		];
+
 
 		(*
 			The loop integral may be multiplied with other non-loop terms. The option

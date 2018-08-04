@@ -674,5 +674,11 @@ FCE -> True]",
 {"fcstFCLoopBasisIntegralToTopology-ID25",
 "FCLoopBasisIntegralToTopology[x*t  FCI[SFAD[p1]], {p1}, Rest -> True,
 FCE -> True]",
-"{{SFAD[{{p1, 0}, {0, 1}, 1}]}, x*t}"}
+"{{SFAD[{{p1, 0}, {0, 1}, 1}]}, x*t}"},
+
+{"fcstFCLoopBasisIntegralToTopology-ID26",
+"FCLoopBasisIntegralToTopology[SPD[p, q]^2 FCI[SPD[p, q]] SFAD[q, p - q], {q},
+	Tally -> True, FCE -> True, Negative -> True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{p - q, 0}, {0, 1}, 1}],
+1}, {SFAD[{{0, p.q}, {0, 1}, -1}], -3}}"}
 })
