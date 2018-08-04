@@ -691,4 +691,80 @@ CSPD[p, q]^2 FCI[CSPD[p, q]] CFAD[q, p - q], {q}, Tally -> True,
 FCE -> True, Negative -> True, CartesianPair -> True]",
 "{{CSPD[p, q], -3}, {CFAD[{{q, 0}, {0, -1}, 1}],
 1}, {CFAD[{{p - q, 0}, {0, -1}, 1}], 1}}"}
+});
+
+Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =
+({
+{"fcstFCLoopBasisCreateScalarProducts-ID1",
+"FCLoopBasisCreateScalarProducts[{l},{},{D},Pair]",
+"{Pair[Momentum[l, D], Momentum[l, D]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID2",
+"FCLoopBasisCreateScalarProducts[{l},{},{d1,d2},Pair]",
+"{Pair[Momentum[l, d1], Momentum[l, d1]], Pair[Momentum[l, d2], \
+Momentum[l, d2]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID3",
+"FCLoopBasisCreateScalarProducts[{l},{p1,p2},{4},Pair]",
+"{Pair[Momentum[l], Momentum[l]], Pair[Momentum[l], Momentum[p1]], \
+Pair[Momentum[l], Momentum[p2]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID4",
+"FCLoopBasisCreateScalarProducts[{l},{p1,p2},{d1,d2},Pair]",
+"{Pair[Momentum[l, d1], Momentum[l, d1]], Pair[Momentum[l, d1], \
+Momentum[p1, d1]], Pair[Momentum[l, d1], Momentum[p2, d1]], \
+Pair[Momentum[l, d2], Momentum[l, d2]], Pair[Momentum[l, d2], \
+Momentum[p1, d2]], Pair[Momentum[l, d2], Momentum[p2, d2]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID5",
+"FCLoopBasisCreateScalarProducts[{l1,l2},{p1,p2},{D},Pair]",
+"{Pair[Momentum[l1, D], Momentum[l1, D]], Pair[Momentum[l2, D], \
+Momentum[l2, D]], Pair[Momentum[l1, D], Momentum[l2, D]], \
+Pair[Momentum[l1, D], Momentum[p1, D]], Pair[Momentum[l1, D], \
+Momentum[p2, D]], Pair[Momentum[l2, D], Momentum[p1, D]], \
+Pair[Momentum[l2, D], Momentum[p2, D]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID6",
+"FCLoopBasisCreateScalarProducts[{l},{},{D-1},CartesianPair]",
+"{CartesianPair[CartesianMomentum[l, -1 + D], CartesianMomentum[l, \
+-1 + D]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID7",
+"FCLoopBasisCreateScalarProducts[{l},{},{d1,d2},CartesianPair]",
+"{CartesianPair[CartesianMomentum[l, d1], CartesianMomentum[l, \
+d1]], CartesianPair[CartesianMomentum[l, d2], CartesianMomentum[l, \
+d2]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID8",
+"FCLoopBasisCreateScalarProducts[{l},{p1,p2},{3},CartesianPair]",
+"{CartesianPair[CartesianMomentum[l], CartesianMomentum[l]], \
+CartesianPair[CartesianMomentum[l], CartesianMomentum[p1]], \
+CartesianPair[CartesianMomentum[l], CartesianMomentum[p2]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID9",
+"FCLoopBasisCreateScalarProducts[{l},{p1,p2},{d1,d2},CartesianPair]\
+", "{CartesianPair[CartesianMomentum[l, d1], CartesianMomentum[l, \
+d1]], CartesianPair[CartesianMomentum[l, d1], CartesianMomentum[p1, \
+d1]], CartesianPair[CartesianMomentum[l, d1], CartesianMomentum[p2, \
+d1]], CartesianPair[CartesianMomentum[l, d2], CartesianMomentum[l, \
+d2]], CartesianPair[CartesianMomentum[l, d2], CartesianMomentum[p1, \
+d2]], CartesianPair[CartesianMomentum[l, d2], CartesianMomentum[p2, \
+d2]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID10",
+"FCLoopBasisCreateScalarProducts[{l1,l2},{p1,p2},{D-1},\
+CartesianPair]",
+"{CartesianPair[CartesianMomentum[l1, -1 + D], \
+CartesianMomentum[l1, -1 + D]], CartesianPair[CartesianMomentum[l2, \
+-1 + D], CartesianMomentum[l2, -1 + D]], \
+CartesianPair[CartesianMomentum[l1, -1 + D], CartesianMomentum[l2, -1 \
++ D]], CartesianPair[CartesianMomentum[l1, -1 + D], \
+CartesianMomentum[p1, -1 + D]], CartesianPair[CartesianMomentum[l1, \
+-1 + D], CartesianMomentum[p2, -1 + D]], \
+CartesianPair[CartesianMomentum[l2, -1 + D], CartesianMomentum[p1, -1 \
++ D]], CartesianPair[CartesianMomentum[l2, -1 + D], \
+CartesianMomentum[p2, -1 + D]]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID11",
+"FCLoopBasisCreateScalarProducts[{l1,l2,l3},{p1,p2},{D},Pair,FCE\
+\[Rule]True]",
+"{SPD[l1, l1], SPD[l2, l2], SPD[l3, l3], SPD[l1, l2], SPD[l1, l3], \
+SPD[l2, l3], SPD[l1, p1], SPD[l1, p2], SPD[l2, p1], SPD[l2, p2], \
+SPD[l3, p1], SPD[l3, p2]}"},
+{"fcstFCLoopBasisCreateScalarProducts-ID12",
+"FCLoopBasisCreateScalarProducts[{l1,l2,l3},{p1,p2},{D-1},\
+CartesianPair,FCE\[Rule]True]",
+"{CSPD[l1, l1], CSPD[l2, l2], CSPD[l3, l3], CSPD[l1, l2], CSPD[l1, \
+l3], CSPD[l2, l3], CSPD[l1, p1], CSPD[l1, p2], CSPD[l2, p1], CSPD[l2, \
+p2], CSPD[l3, p1], CSPD[l3, p2]}"}
 })
