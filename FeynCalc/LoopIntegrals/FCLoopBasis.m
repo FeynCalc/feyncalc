@@ -66,9 +66,9 @@ that form the basis of the loop integral in int. It needs to know the loop momen
 depends and the dimensions of the momenta that may occur in the integral.";
 
 FCLoopBasisIntegralToTopology::usage=
-"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that converts the loop integral int that
-depends on the loop momenta q1, q2, ... to a list of propagators and scalar products. All propagators and
-scalar products that do not depend on the loop momenta are discarded.";
+"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that converts the loop integral int that \
+depends on the loop momenta q1, q2, ... to a list of propagators and scalar products. All propagators and \
+scalar products that do not depend on the loop momenta are discarded, unless the Rest option is set to True.";
 
 FCLoopBasisIntegralToTopology::failmsg =
 "Error! FCLoopBasisIntegralToTopology has encountered a fatal problem and must abort the computation. \
@@ -145,11 +145,12 @@ Options[FCLoopBasisSplit] = {
 };
 
 Options[FCLoopBasisIntegralToTopology] = {
-	FCI -> False,
+	EtaSign -> {1,-1,1},
 	FCE -> False,
+	FCI -> False,
+	Rest -> False,
 	Tally -> False,
-	ToSFAD -> True,
-	EtaSign -> {1,-1,1}
+	ToSFAD -> True
 }
 
 FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=
@@ -208,7 +209,7 @@ auxIntegralToTopology[Power[exp_TemporalPair, n_Integer?Positive], _]:=
 	ConstnatArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]];
 
 FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
-	Block[{exp, tmp, res, dummy, expAsList},
+	Block[{exp, tmp, res, dummy, expAsList, rest},
 
 		If[	Length[lmoms]<1,
 			Message[FCLoopBasisIntegralToTopology::failmsg,"The list of the loop momenta cannot be empty."];
@@ -229,13 +230,31 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 
 		expAsList = List@@(dummy*exp);
 
+		If[	Head[expAsList]=!=List,
+			Message[FCLoopBasisIntegralToTopology::failmsg, "Failed to convert the input expression to a list."];
+			Abort[]
+		];
+
 		If[	OptionValue[ToSFAD] && !FreeQ[expAsList,PropagatorDenominator],
 			expAsList = ToSFAD[expAsList]
 		];
 
-		tmp = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power},Head[#]] && !FreeQ2[#,lmoms])&];
+		tmp  = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power},Head[#]] && !FreeQ2[#,lmoms])&];
+		rest = Complement[expAsList,tmp] /. dummy -> Unevaluated[Sequence[]];
 
-		If[	!FreeQ2[Complement[expAsList,tmp],lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
+		If[	Head[tmp]=!=List || Head[rest]=!=List,
+			Message[FCLoopBasisIntegralToTopology::failmsg, "Failed to extract the loop structure of the input expression."];
+			Abort[]
+		];
+
+
+		If[	rest==={},
+			rest = 1,
+			rest = Times@@rest
+		];
+
+
+		If[	!FreeQ2[rest,lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
 			Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression does not seem to be a valid scalar loop integral."];
 			Abort[]
 		];
@@ -265,6 +284,31 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 				Abort[]
 			]
 		];
+
+		(*
+			The loop integral may be multiplied with other non-loop terms. The option
+			rest specifies what should be done with those. When set to False, the non-loop
+			terms are simply dropped. When set to True, the non-loop term will be returned as
+			the second list element. When set to False, it will be dropped. The setting None
+			specifies that by definition there should be no non-loop terms, so that when rest
+			is not equal 1, it will generate an error.
+		*)
+		Switch[
+			OptionValue[Rest],
+				True,
+					res = {res,rest},
+				False,
+					Null,
+				None,
+					If[	rest=!=1,
+						Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression may not contain non-loop terms!"];
+						Abort[]
+					],
+				_,
+				Message[FCLoopBasisIntegralToTopology::failmsg,"Unknown value of the option Rest."];
+				Abort[]
+		];
+
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
