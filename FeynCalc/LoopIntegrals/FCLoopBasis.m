@@ -72,13 +72,13 @@ FCLoopBasisExtract::usage=
 that form the basis of the loop integral in int. It needs to know the loop momenta on which the integral \
 depends and the dimensions of the momenta that may occur in the integral.";
 
-FCLoopBasisIntegralToTopology::usage=
+FCLoopBasisIntegralToPropagators::usage=
 "FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that converts the loop integral int that \
 depends on the loop momenta q1, q2, ... to a list of propagators and scalar products. All propagators and \
 scalar products that do not depend on the loop momenta are discarded, unless the Rest option is set to True.";
 
-FCLoopBasisIntegralToTopology::failmsg =
-"Error! FCLoopBasisIntegralToTopology has encountered a fatal problem and must abort the computation. \
+FCLoopBasisIntegralToPropagators::failmsg =
+"Error! FCLoopBasisIntegralToPropagators has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 FCLoopBasisCreateScalarProducts::failmsg =
@@ -159,7 +159,7 @@ Options[FCLoopBasisCreateScalarProducts] = {
 	FCE -> False
 };
 
-Options[FCLoopBasisIntegralToTopology] = {
+Options[FCLoopBasisIntegralToPropagators] = {
 	CartesianPair -> False,
 	EtaSign -> {1,-1,1},
 	FCE -> False,
@@ -200,41 +200,41 @@ rulePropagatorPowersToOne = {
 		GenericPropagatorDenominator[arg, {1, s}]
 };
 
-auxIntegralToTopology[exp_FeynAmpDenominator, lmoms_List]:=
+auxIntegralToPropagators[exp_FeynAmpDenominator, lmoms_List]:=
 	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms]/; Length[List@@exp]>1
 
-auxIntegralToTopology[Power[exp_FeynAmpDenominator, n_Integer?Positive], lmoms_List]:=
+auxIntegralToPropagators[Power[exp_FeynAmpDenominator, n_Integer?Positive], lmoms_List]:=
 	ConstantArray[SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms], n]/; Length[List@@exp]>1;
 
-auxIntegralToTopology[exp_FeynAmpDenominator, _]:=
+auxIntegralToPropagators[exp_FeynAmpDenominator, _]:=
 	{exp}/; Length[List@@exp]===1;
 
-auxIntegralToTopology[Power[exp_FeynAmpDenominator, n_Integer?Positive], _]:=
+auxIntegralToPropagators[Power[exp_FeynAmpDenominator, n_Integer?Positive], _]:=
 	ConstantArray[{exp}, n]/; Length[List@@exp]===1;
 
-auxIntegralToTopology[pref_. exp_Pair, lmoms_]:=
+auxIntegralToPropagators[pref_. exp_Pair, lmoms_]:=
 	FeynAmpDenominator[StandardPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[1]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[Power[pref_. exp_Pair, n_Integer?Positive], lmoms_]:=
+auxIntegralToPropagators[Power[pref_. exp_Pair, n_Integer?Positive], lmoms_]:=
 	ConstantArray[FeynAmpDenominator[StandardPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[1]]}]], n]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[pref_. exp_CartesianPair, lmoms_]:=
+auxIntegralToPropagators[pref_. exp_CartesianPair, lmoms_]:=
 	FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[Power[pref_. exp_CartesianPair, n_Integer?Positive], lmoms_]:=
+auxIntegralToPropagators[Power[pref_. exp_CartesianPair, n_Integer?Positive], lmoms_]:=
 	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]], n]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[pref_. exp_TemporalPair, lmoms_]:=
+auxIntegralToPropagators[pref_. exp_TemporalPair, lmoms_]:=
 	FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[Power[pref_. exp_TemporalPair, n_Integer?Positive], _]:=
+auxIntegralToPropagators[Power[pref_. exp_TemporalPair, n_Integer?Positive], _]:=
 	ConstnatArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]]/; FreeQ2[pref,lmoms];
 
-FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
+FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 	Block[{exp, tmp, res, dummy, expAsList, rest},
 
 		If[	Length[lmoms]<1,
-			Message[FCLoopBasisIntegralToTopology::failmsg,"The list of the loop momenta cannot be empty."];
+			Message[FCLoopBasisIntegralToPropagators::failmsg,"The list of the loop momenta cannot be empty."];
 			Abort[]
 		];
 
@@ -244,7 +244,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 		];
 
 		If[	!MemberQ[{Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[exp]] || FreeQ2[exp,lmoms],
-			Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression does not seem to be a valid loop integral."];
+			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid loop integral."];
 			Abort[]
 		];
 
@@ -253,7 +253,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 		expAsList = List@@(dummy*exp);
 
 		If[	Head[expAsList]=!=List,
-			Message[FCLoopBasisIntegralToTopology::failmsg, "Failed to convert the input expression to a list."];
+			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to convert the input expression to a list."];
 			Abort[]
 		];
 
@@ -273,7 +273,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 		rest = Complement[expAsList,tmp] /. dummy -> Unevaluated[Sequence[]];
 
 		If[	Head[tmp]=!=List || Head[rest]=!=List,
-			Message[FCLoopBasisIntegralToTopology::failmsg, "Failed to extract the loop structure of the input expression."];
+			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to extract the loop structure of the input expression."];
 			Abort[]
 		];
 
@@ -284,7 +284,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 		];
 
 		If[	!FreeQ2[rest,lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
-			Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression does not seem to be a valid scalar loop integral."];
+			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid scalar loop integral."];
 			Abort[]
 		];
 
@@ -293,10 +293,10 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 				Abs[n]=!=1 :> Sequence@@ConstantArray[h[a,  {Sign[n],s}], Abs[n]]
 		};
 
-		tmp = auxIntegralToTopology[#,lmoms]&/@tmp;
+		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
 
-		If[	!FreeQ[tmp,auxIntegralToTopology],
-			Message[FCLoopBasisIntegralToTopology::failmsg, "Failed to extract the propagators."];
+		If[	!FreeQ[tmp,auxIntegralToPropagators],
+			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to extract the propagators."];
 			Abort[]
 		];
 
@@ -311,7 +311,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 
 			(*	This extra check should catch things like SFAD[{{0, p1.q}, {0, 1}, -1}] SFAD[{{0, p1.q}, {0, 1}, 2}].	*)
 			If[ Length[First[Transpose[res]]]=!=Length[Union[First[Transpose[res]]/. Dispatch[rulePropagatorPowersToOne]]],
-				Message[FCLoopBasisIntegralToTopology::failmsg,"The loop integral contains uncancelled scalar products."];
+				Message[FCLoopBasisIntegralToPropagators::failmsg,"The loop integral contains uncancelled scalar products."];
 				Abort[]
 			],
 
@@ -324,7 +324,7 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 
 			(*	This extra check should catch things like SFAD[{{0, p1.q}, {0, 1}, -1}] SFAD[{{0, p1.q}, {0, 1}, 2}].	*)
 			If[ Length[res]=!=Length[Union[res/. Dispatch[rulePropagatorPowersToOne]]],
-				Message[FCLoopBasisIntegralToTopology::failmsg,"The loop integral contains uncancelled scalar products."];
+				Message[FCLoopBasisIntegralToPropagators::failmsg,"The loop integral contains uncancelled scalar products."];
 				Abort[]
 			]
 		];
@@ -373,11 +373,11 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 					Null,
 				None,
 					If[	rest=!=1,
-						Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression may not contain non-loop terms!"];
+						Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression may not contain non-loop terms!"];
 						Abort[]
 					],
 				_,
-				Message[FCLoopBasisIntegralToTopology::failmsg,"Unknown value of the option Rest."];
+				Message[FCLoopBasisIntegralToPropagators::failmsg,"Unknown value of the option Rest."];
 				Abort[]
 		];
 
@@ -491,7 +491,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		FCPrint[1,"FCLoopBasisExtract: Is the loop integral Cartesian? ", isCartesian, FCDoControl->fclbeVerbose];
 
 
-		integralBasis = FCLoopBasisIntegralToTopology[expr, loopmoms, FCI->True, Rest->None, Negative->True, Tally->True,
+		integralBasis = FCLoopBasisIntegralToPropagators[expr, loopmoms, FCI->True, Rest->None, Negative->True, Tally->True,
 			Pair->True,CartesianPair->True, ToSFAD->useToSFAD, MomentumCombine -> True, ExpandScalarProduct->True,
 			Sort->False
 		];
