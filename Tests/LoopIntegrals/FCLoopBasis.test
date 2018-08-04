@@ -690,7 +690,16 @@ FCE -> True, Negative -> True, Pair -> True]",
 CSPD[p, q]^2 FCI[CSPD[p, q]] CFAD[q, p - q], {q}, Tally -> True,
 FCE -> True, Negative -> True, CartesianPair -> True]",
 "{{CSPD[p, q], -3}, {CFAD[{{q, 0}, {0, -1}, 1}],
-1}, {CFAD[{{p - q, 0}, {0, -1}, 1}], 1}}"}
+1}, {CFAD[{{p - q, 0}, {0, -1}, 1}], 1}}"},
+{"fcstFCLoopBasisIntegralToTopology-ID29",
+"FCLoopBasisIntegralToTopology[CFAD[{k, 0, 4}, l - k], {k},
+Tally -> True, FCE -> True]",
+"{{CFAD[{{k, 0}, {0, -1}, 1}], 4}, {CFAD[{{-k + l, 0}, {0, -1}, 1}],
+1}}"},
+{"fcstFCLoopBasisIntegralToTopology-ID30",
+"FCLoopBasisIntegralToTopology[SFAD[{k, 0, 4}, l - k], {k},
+Tally -> True, FCE -> True]",
+"{{SFAD[{{k, 0}, {0, 1}, 1}], 4}, {SFAD[{{-k + l, 0}, {0, 1}, 1}], 1}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

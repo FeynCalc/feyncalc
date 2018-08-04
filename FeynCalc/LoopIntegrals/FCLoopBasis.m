@@ -278,6 +278,11 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 			Abort[]
 		];
 
+		tmp = tmp /. {
+			(h : StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__, {n_Integer, s_}]/;
+				Abs[n]=!=1 :> Sequence@@ConstantArray[h[a,  {Sign[n],s}], Abs[n]]
+		};
+
 		tmp = auxIntegralToTopology[#,lmoms]&/@tmp;
 
 		If[	!FreeQ[tmp,auxIntegralToTopology],
