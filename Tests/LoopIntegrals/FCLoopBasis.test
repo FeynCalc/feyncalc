@@ -699,7 +699,16 @@ Tally -> True, FCE -> True]",
 {"fcstFCLoopBasisIntegralToTopology-ID30",
 "FCLoopBasisIntegralToTopology[SFAD[{k, 0, 4}, l - k], {k},
 Tally -> True, FCE -> True]",
-"{{SFAD[{{k, 0}, {0, 1}, 1}], 4}, {SFAD[{{-k + l, 0}, {0, 1}, 1}], 1}}"}
+"{{SFAD[{{k, 0}, {0, 1}, 1}], 4}, {SFAD[{{-k + l, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopBasisIntegralToTopology-ID31",
+"FCLoopBasisIntegralToTopology[(Pair[Momentum[-k1/2, D],
+	Momentum[l, D]] +
+	Pair[Momentum[-k2/2, D], Momentum[l, D]]) FAD[{l, 0,
+	2}, {-k1/2 - k2/2 + l, m}, {k1/2 - k2/2 + l, m}], {l},
+MomentumCombine -> True, Tally -> False]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[k1 + k2, D], Momentum[l, D]]/2, 0, {-1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[l, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[k1, D]/2 - Momentum[k2, D]/2 + Momentum[l, D],
+0, m^2, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D]/2 - Momentum[k2, D]/2 + Momentum[l, D], 0, m^2, {1, 1}]]}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

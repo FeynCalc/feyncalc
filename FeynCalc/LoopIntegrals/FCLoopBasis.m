@@ -169,7 +169,10 @@ Options[FCLoopBasisIntegralToTopology] = {
 	Rest -> False,
 	Tally -> False,
 	TemporalPair -> False,
-	ToSFAD -> True
+	ToSFAD -> True,
+	MomentumCombine -> False,
+	ExpandScalarProduct -> False,
+	Sort -> True
 }
 
 FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=
@@ -209,23 +212,23 @@ auxIntegralToTopology[exp_FeynAmpDenominator, _]:=
 auxIntegralToTopology[Power[exp_FeynAmpDenominator, n_Integer?Positive], _]:=
 	ConstantArray[{exp}, n]/; Length[List@@exp]===1;
 
-auxIntegralToTopology[exp_Pair, _]:=
-	FeynAmpDenominator[StandardPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[1]]}]];
+auxIntegralToTopology[pref_. exp_Pair, lmoms_]:=
+	FeynAmpDenominator[StandardPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[1]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[Power[exp_Pair, n_Integer?Positive], _]:=
-	ConstantArray[FeynAmpDenominator[StandardPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[1]]}]], n];
+auxIntegralToTopology[Power[pref_. exp_Pair, n_Integer?Positive], lmoms_]:=
+	ConstantArray[FeynAmpDenominator[StandardPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[1]]}]], n]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[exp_CartesianPair, _]:=
-	FeynAmpDenominator[CartesianPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[2]]}]];
+auxIntegralToTopology[pref_. exp_CartesianPair, lmoms_]:=
+	FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[Power[exp_CartesianPair, n_Integer?Positive], _]:=
-	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, exp, 0, {-1, optEtaSign[[2]]}]], n];
+auxIntegralToTopology[Power[pref_. exp_CartesianPair, n_Integer?Positive], lmoms_]:=
+	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]], n]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[exp_TemporalPair, _]:=
-	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]];
+auxIntegralToTopology[pref_. exp_TemporalPair, lmoms_]:=
+	FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToTopology[Power[exp_TemporalPair, n_Integer?Positive], _]:=
-	ConstnatArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]];
+auxIntegralToTopology[Power[pref_. exp_TemporalPair, n_Integer?Positive], _]:=
+	ConstnatArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]]/; FreeQ2[pref,lmoms];
 
 FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 	Block[{exp, tmp, res, dummy, expAsList, rest},
@@ -258,7 +261,15 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 			expAsList = ToSFAD[expAsList]
 		];
 
-		tmp  = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power},Head[#]] && !FreeQ2[#,lmoms])&];
+
+		If[	OptionValue[MomentumCombine],
+			expAsList = If[	FreeQ[#,FeynAmpDenominator],
+							MomentumCombine[#,FCI->True],
+							#]&/@expAsList
+		];
+
+		tmp  = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power, Times},Head[#]] && !FreeQ2[#,lmoms])&];
+
 		rest = Complement[expAsList,tmp] /. dummy -> Unevaluated[Sequence[]];
 
 		If[	Head[tmp]=!=List || Head[rest]=!=List,
@@ -271,7 +282,6 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 			rest = 1,
 			rest = Times@@rest
 		];
-
 
 		If[	!FreeQ2[rest,lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
 			Message[FCLoopBasisIntegralToTopology::failmsg,"The input expression does not seem to be a valid scalar loop integral."];
@@ -292,8 +302,12 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 
 
 		If[	OptionValue[Tally],
-			(* TODO, here we would need a better sorting algorithm. *)
-			res = Sort[Tally[Flatten[tmp]],(#1[[1]]>#2[[1]])&];
+			res = Tally[Flatten[tmp]];
+
+			(*TODO For the future one might add a better sorting *)
+			If[OptionValue[Sort],
+				res = Sort[res,(#1[[1]]>#2[[1]])&]
+			];
 
 			(*	This extra check should catch things like SFAD[{{0, p1.q}, {0, 1}, -1}] SFAD[{{0, p1.q}, {0, 1}, 2}].	*)
 			If[ Length[First[Transpose[res]]]=!=Length[Union[First[Transpose[res]]/. Dispatch[rulePropagatorPowersToOne]]],
@@ -301,7 +315,12 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 				Abort[]
 			],
 
-			res = Union[Flatten[tmp]/.Dispatch[rulePropagatorPowers]];
+			res = DeleteDuplicates[Flatten[tmp]/.Dispatch[rulePropagatorPowers]];
+
+			If[OptionValue[Sort],
+				res = Sort[res]
+			];
+
 
 			(*	This extra check should catch things like SFAD[{{0, p1.q}, {0, 1}, -1}] SFAD[{{0, p1.q}, {0, 1}, 2}].	*)
 			If[ Length[res]=!=Length[Union[res/. Dispatch[rulePropagatorPowersToOne]]],
@@ -360,6 +379,10 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 				_,
 				Message[FCLoopBasisIntegralToTopology::failmsg,"Unknown value of the option Rest."];
 				Abort[]
+		];
+
+		If[	OptionValue[ExpandScalarProduct],
+			res = ExpandScalarProduct[res,FCI->True]
 		];
 
 
