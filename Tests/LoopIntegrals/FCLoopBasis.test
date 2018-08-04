@@ -797,3 +797,29 @@ CartesianPair,FCE\[Rule]True]",
 l3], CSPD[l2, l3], CSPD[l1, p1], CSPD[l1, p2], CSPD[l2, p1], CSPD[l2, \
 p2], CSPD[l3, p1], CSPD[l3, p2]}"}
 })
+
+
+Tests`LoopIntegrals`fcstFCLoopBasisPropagatorsToTopology =
+({
+{"fcstFCLoopBasisPropagatorsToTopology-ID1",
+"FCLoopBasisPropagatorsToTopology[{SPD[q]},FCE\[Rule]True]",
+"{SPD[q, q]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID2",
+"FCLoopBasisPropagatorsToTopology[{2SPD[q]},FCE\[Rule]True]",
+"{2*SPD[q, q]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID3",
+"FCLoopBasisPropagatorsToTopology[{FAD[q]},FCE\[Rule]True]",
+"{SPD[q, q]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID4",
+"FCLoopBasisPropagatorsToTopology[{FAD[{q,m}]},FCE\[Rule]True]",
+"{-m^2 + SPD[q, q]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID5",
+"FCLoopBasisPropagatorsToTopology[{FAD[{q,m}],SPD[q,p]},FCE\[Rule]\
+True]", "{-m^2 + SPD[q, q], SPD[p, q]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID6",
+"FCLoopBasisPropagatorsToTopology[{SFAD[{q,m}],SPD[q,p]},FCE\[Rule]\
+True]", "{-m + SPD[q, q], SPD[p, q]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID7",
+"FCLoopBasisPropagatorsToTopology[{CFAD[{q,m}],SPD[q,p]},FCE\[Rule]\
+True]", "{m + CSPD[q, q], SPD[p, q]}"}
+})

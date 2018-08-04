@@ -40,6 +40,11 @@ FCLoopBasisGetSize::usage =
 "FCLoopBasisGetSize[n1,n2] returns the number of linearly independent propagators \
 for a topology that contains n1 loop momenta and n2 external momenta."
 
+FCLoopBasisPropagatorsToTopology::usage =
+"FCLoopBasisPropagatorsToTopology[{pr1, pr2, ...}] takes the list \
+of Pairs and FeynAmpDenominators pr1, p2, ... and converts it into a \
+list of propagators that can be used to describe a topology."
+
 FCLoopBasisCreateScalarProducts::usage=
 "FCLoopBasisCreateScalarProducts[{q1, q2, ...},{p1, p2,...},{d1, d2, ...}, head] generates \
 a list of all loop-momentum dependent scalar products made out of the loop momenta q1, q2, ... and \
@@ -83,6 +88,10 @@ The problem reads: `1`"
 
 FCLoopBasisCreateScalarProducts::failmsg =
 "Error! FCLoopBasisCreateScalarProducts encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
+FCLoopBasisPropagatorsToTopology::failmsg =
+"Error! FCLoopBasisPropagatorsToTopology encountered a fatal problem and must abort the computation. \
 The problem reads: `1`";
 
 FCLoopBasisExtract::nodims=
@@ -174,6 +183,13 @@ Options[FCLoopBasisIntegralToPropagators] = {
 	ExpandScalarProduct -> False,
 	Sort -> True
 }
+
+Options[FCLoopBasisPropagatorsToTopology] = {
+	ExpandScalarProduct -> False,
+	FCE -> False,
+	FCI -> False,
+	MomentumCombine -> False
+};
 
 FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=
 	lmoms*(lmoms + 1)/2 + lmoms*emoms + extra;
@@ -441,6 +457,49 @@ FCLoopBasisCreateScalarProducts[lmoms_List, extmoms_List, dims_List, head_Symbol
 		res
 	];
 
+
+
+FCLoopBasisPropagatorsToTopology[props_List /; props =!= {},
+OptionsPattern[]] :=
+	Block[{expr, tmp, res},
+
+		If[! OptionValue[FCI],
+			expr = FCI[props],
+			expr = props
+		];
+
+		If[	OptionValue[MomentumCombine],
+			expr = MomentumCombine[expr, FCI -> True]
+		];
+
+		tmp = expr /. {
+			FeynAmpDenominator[a_PropagatorDenominator] :>
+				1/FeynAmpDenominator[a],
+			FeynAmpDenominator[(h : StandardPropagatorDenominator | CartesianPropagatorDenominator | GenericPropagatorDenominator)[a__, {n_Integer, s_}]] /;
+				n > 0 :> FeynAmpDenominator[h[a, {-n, s}]]
+		};
+
+		res = PropagatorDenominatorExplicit[#, FCI -> True, ExpandScalarProduct -> False] & /@ tmp;
+
+		If[	OptionValue[ExpandScalarProduct],
+			res = ExpandScalarProduct[res, FCI -> True]
+		];
+
+		If[	DeleteDuplicates[res]=!=res,
+			Message[FCLoopBasisPropagatorsToTopology::failmsg, "The list of propagators contains dupicates."];
+			Abort[]
+		];
+
+		If[	!FreeQ2[Denominator/@res,{Pair,CartesianPair,TemporalPair}],
+			Message[FCLoopBasisPropagatorsToTopology::failmsg, "Inverse scalar products should be entered via FeynAmpDenominators."];
+			Abort[]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+res
+];
 
 
 (*TODO FeynHelpers!!! *)
