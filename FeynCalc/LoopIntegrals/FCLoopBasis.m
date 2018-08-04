@@ -68,7 +68,7 @@ FCLoopBasisFindCompletion::basisoverdet=
 with linearly independent propagators before you can proceed with the completion of the propagator basis."
 
 FCLoopBasisExtract::usage=
-"FCLoopBasisExtract[int, {q1,q2,...},{4,D}] is an auxiliary function that extract the scalar products \
+"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that extract the scalar products \
 that form the basis of the loop integral in int. It needs to know the loop momenta on which the integral \
 depends and the dimensions of the momenta that may occur in the integral.";
 
@@ -445,9 +445,8 @@ FCLoopBasisCreateScalarProducts[lmoms_List, extmoms_List, dims_List, head_Symbol
 
 (*TODO FeynHelpers!!! *)
 FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]]:=
-	Block[{one, two,  coeffs, lmoms,allmoms, extmoms, sprods, props, basisElements,
-		basisElementsOrig, availableDims, isCartesian, dims, res},
-
+	Block[{	coeffs, lmoms,allmoms, extmoms, basisElements,
+			availableDims, isCartesian, dims, res, useToSFAD, integralBasis, integralBasisT},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -457,7 +456,6 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 		];
 
 		dims = OptionValue[SetDimensions];
-
 
 		If[	dims==={},
 			Message[FCLoopBasisExtract::failmsg,"The list of dimensions cannot be empty."];
@@ -481,14 +479,26 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 			Abort[]
 		];
 
-
 		isCartesian = cartesianIntegralQ[sps fad];
+		useToSFAD = !FreeQ[sps fad, StandardPropagatorDenominator];
+
+
 		FCPrint[1,"FCLoopBasisExtract: Is the loop integral Cartesian? ", isCartesian, FCDoControl->fclbeVerbose];
+
+
+		integralBasis = FCLoopBasisIntegralToTopology[sps fad, loopmoms, Rest->None, Negative->True, Tally->True,
+			Pair->True,CartesianPair->True, ToSFAD->useToSFAD, MomentumCombine -> True, ExpandScalarProduct->True,
+			Sort->False
+		];
+
+		integralBasis = Join[SelectNotFree[integralBasis,Pair,CartesianPair],SelectFree[integralBasis,Pair,CartesianPair]];
+
+		integralBasisT = Transpose[integralBasis];
 
 		(*	List of all momenta that appear inside the integral	*)
 		If[	!isCartesian,
-			allmoms=Cases[sps*fad,Momentum[x_,_:4]:>x,Infinity]//Sort//DeleteDuplicates,
-			allmoms=Cases[sps*fad,CartesianMomentum[x_,_:3]:>x,Infinity]//Sort//DeleteDuplicates
+			allmoms=Cases[MomentumExpand[integralBasis], Momentum[x_,_:4]:>x,Infinity]//Sort//DeleteDuplicates,
+			allmoms=Cases[MomentumExpand[integralBasis], CartesianMomentum[x_,_:3]:>x,Infinity]//Sort//DeleteDuplicates
 		];
 
 		(*	All momenta that are not listed as loop momenta will be treated as external momenta.	*)
@@ -496,7 +506,7 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 
 		(*
 			Normally, if the integral does not depend on some of the loop momenta specified by the user,
-			we will not include this momenta to the basis. However, if we are dealing with a subtopology
+			we will not include these momenta to the basis. However, if we are dealing with a subtopology
 			of a given topology, the full dependence must be taken into account. This is achieved by setting
 			the option FCTopology to True.
 		*)
@@ -505,49 +515,12 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 			lmoms = Intersection[loopmoms,Complement[allmoms,extmoms]]
 		];
 
-		(* Collect all scalar products in the numerator that depend on the loop momenta *)
-		sprods = (List @@ (sps*one*two)) //ReplaceAll[#, one | two -> Unevaluated[Sequence[]]] &;
-
-		(* Pick out only those SPs that depend on loop momenta *)
-		sprods = Select[sprods,!FreeQ2[#,lmoms]&];
-
-		sprods = sprods /. Power[x_,y_]/; y>1:> Sequence@@Table[x,{i,1,y}];
-		(*TODO Need to check that there are no scalar products with negative powers!!!*)
-
-		(* Collect all the propagator denominators *)
-		props  = fad /.{
-		(*TODO For now it is a dirty hack, we should do better!  *)
-			StandardPropagatorDenominator[a__,  {n_,s_}]/;(IntegerQ[n] && n>1):>
-			Sequence@@ConstantArray[StandardPropagatorDenominator[a,  {1,s}], n],
-
-			CartesianPropagatorDenominator[a__,  {n_,s_}]/;(IntegerQ[n] && n>1):>
-			Sequence@@ConstantArray[CartesianPropagatorDenominator[a,  {1,s}], n],
-
-			GenericPropagatorDenominator[a_,  {n_,s_}]/;(IntegerQ[n] && n>1):>
-			Sequence@@ConstantArray[GenericPropagatorDenominator[a,  {1,s}], n]
-
-
-		}/.FeynAmpDenominator[x__]:> FeynAmpDenominator/@{x};
-
-		If[	!FreeQ[props /. (StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{n_,_}]/;n=!=1 :> mark, mark],
-			Message[FCLoopBasisExtract::failmsg,"Non-integer powers of propagators are currently not supported."];
-			Abort[]
-		];
-
-		If[	sprods=!={},
-			sprods  = Transpose[Tally[sprods]],
-			sprods  = {{},{}}
-		];
-		props  = Transpose[Tally[props]];
-
-		(*(* Make propagators have negative exponents*)
-		props[[2]] = -props[[2]];*)
-		(* Make scalar products have negative exponents*)
-		sprods[[2]] = -sprods[[2]];
-
-		basisElementsOrig = {Join[sprods[[1]],props[[1]]],Join[sprods[[2]],props[[2]]]};
-
-		basisElements = fdsInvert[basisElementsOrig];
+		basisElements = integralBasisT[[1]] /. {	FeynAmpDenominator[a_PropagatorDenominator] :>
+				1/FeynAmpDenominator[a],
+			FeynAmpDenominator[(h : StandardPropagatorDenominator | CartesianPropagatorDenominator | GenericPropagatorDenominator)[a__, {n_Integer, s_}]] /; n > 0 :>
+				FeynAmpDenominator[h[a, {-n, s}]]
+		};
+		basisElements = PropagatorDenominatorExplicit/@basisElements;
 
 		availableDims = Intersection[FCGetDimensions[basisElements],dims];
 
@@ -556,31 +529,14 @@ FCLoopBasisExtract[sps_. fad_FeynAmpDenominator, loopmoms_List, OptionsPattern[]
 			Abort[]
 		];
 
-		(* all possible scalar products of loop momenta among themselves and with external momenta *)
-
 		If[	TrueQ[!isCartesian],
 			coeffs = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,Pair]],
 			coeffs = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,CartesianPair]]
 		];
 
-		(* 	Now we have all the polynomials that appear in the loop integral.
-			We also save their exponents as the second element of this list*)
-
 		FCPrint[1,"FCLoopBasisExtract: Leaving.", FCDoControl->fclbeVerbose];
 
-
-		(* Finally, convert all these polynomials into vectors ... *)
-
-		(*	basisElements[[1]] propagators in the LR/FIRE notation;
-			coeffs: all possible scalar products;
-
-			basisElements[[2]]: the propagator powers;
-
-			basisElementsOrig[[1]]:  basisElements[[1]] as they appear in the integral
-		*)
-
-
-		res =  {basisElements[[1]], coeffs, basisElements[[2]], basisElementsOrig[[1]]};
+		res =  {basisElements, coeffs, integralBasisT[[2]], integralBasisT[[1]]};
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
