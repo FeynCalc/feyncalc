@@ -145,13 +145,16 @@ Options[FCLoopBasisSplit] = {
 };
 
 Options[FCLoopBasisIntegralToTopology] = {
+	CartesianPair -> False,
 	EtaSign -> {1,-1,1},
 	FCE -> False,
 	FCI -> False,
+	Negative -> False,
+	Pair -> False,
 	Rest -> False,
 	Tally -> False,
-	ToSFAD -> True,
-	Negative -> False
+	TemporalPair -> False,
+	ToSFAD -> True
 }
 
 FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=
@@ -296,6 +299,21 @@ FCLoopBasisIntegralToTopology[expr_, lmoms_List, OptionsPattern[]]:=
 					pow_} /; (n < 0 && pow > 0) :>
 				{FeynAmpDenominator[h[a, {n, s}]], -pow}
 			}
+		];
+
+		(*	If we do not want the scalar products to be represent as FADs, we can undo it here.	*)
+		If[ OptionValue[Pair],
+			res = res /. FeynAmpDenominator[StandardPropagatorDenominator[0, sp_, 0, {-1, _}]] :> sp
+
+		];
+
+		If[ OptionValue[CartesianPair],
+			res = res /. FeynAmpDenominator[CartesianPropagatorDenominator[0, sp_, 0, {-1, _}]] :> sp
+
+		];
+
+		If[ OptionValue[TemporalPair],
+			res = res /. FeynAmpDenominator[GenericPropagatorDenominator[sp_, {-1, _}]] :> sp
 		];
 
 
