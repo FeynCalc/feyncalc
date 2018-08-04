@@ -38,19 +38,19 @@ and if so splits it into independent integrals.";
 
 FCLoopBasisGetSize::usage =
 "FCLoopBasisGetSize[n1,n2] returns the number of linearly independent propagators \
-for a topology that contains n1 loop momenta and n2 external momenta."
+for a topology that contains n1 loop momenta and n2 external momenta.";
 
 FCLoopBasisPropagatorsToTopology::usage =
 "FCLoopBasisPropagatorsToTopology[{pr1, pr2, ...}] takes the list \
 of Pairs and FeynAmpDenominators pr1, p2, ... and converts it into a \
-list of propagators that can be used to describe a topology."
+list of propagators that can be used to describe a topology.";
 
 FCLoopBasisCreateScalarProducts::usage=
 "FCLoopBasisCreateScalarProducts[{q1, q2, ...},{p1, p2,...},{d1, d2, ...}, head] generates \
 a list of all loop-momentum dependent scalar products made out of the loop momenta q1, q2, ... and \
 external momenta p1, p2, ... in the space-time dimensions d1, d2, .... The argument head can \
 be Pair to generate Lorentzian scalar products or CartesianPair to generate Cartesian scalar \
-products."
+products.";
 
 FCLoopBasis::unknownmoms =
 "Error! Loop integral `1` depends on momenta that were not specified or it doesn't depend on \
@@ -62,15 +62,15 @@ without any prefactors or scalar products that do not depend on the loop momenta
 
 FCLoopBasisFindCompletion::fail=
 "FCLoopBasisFindCompletion failed to determine propagators that are required to complete basis of `1`. \
-Evaluation aborted."
+Evaluation aborted.";
 
 FCLoopBasisFindCompletion::notcomplete=
 "The propagators determined by FCLoopBasisFindCompletion for `1` do not lead to a complete basis! \
-Evaluation aborted."
+Evaluation aborted.";
 
 FCLoopBasisFindCompletion::basisoverdet=
 "The integral `1` contains linearly dependent propagators. You need to rewrite it as a sum of integrals \
-with linearly independent propagators before you can proceed with the completion of the propagator basis."
+with linearly independent propagators before you can proceed with the completion of the propagator basis.";
 
 FCLoopBasisExtract::usage=
 "FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that extract the scalar products \
@@ -84,7 +84,7 @@ scalar products that do not depend on the loop momenta are discarded, unless the
 
 FCLoopBasisIntegralToPropagators::failmsg =
 "Error! FCLoopBasisIntegralToPropagators has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCLoopBasisCreateScalarProducts::failmsg =
 "Error! FCLoopBasisCreateScalarProducts encountered a fatal problem and must abort the computation. \
@@ -94,25 +94,21 @@ FCLoopBasisPropagatorsToTopology::failmsg =
 "Error! FCLoopBasisPropagatorsToTopology encountered a fatal problem and must abort the computation. \
 The problem reads: `1`";
 
-FCLoopBasisExtract::nodims=
-"Error! FCLoopBasisExtract is unable to build up a list of possible scalar products, because the supplied \
-dimensions are not present in the given expression. Evaluation aborted."
-
 FCLoopBasisExtract::failmsg =
 "Error! FCLoopBasisExtract has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCLoopBasisFindCompletion::failmsg =
 "Error! FCLoopBasisFindCompletion has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCLoopBasisOverdeterminedQ::failmsg =
 "Error! FCLoopBasisOverdeterminedQ has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCLoopBasisIncompleteQ::failmsg =
 "Error! FCLoopBasisIncompleteQ has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 Begin["`Package`"]
 End[]
@@ -185,6 +181,7 @@ Options[FCLoopBasisIntegralToPropagators] = {
 }
 
 Options[FCLoopBasisPropagatorsToTopology] = {
+	DeleteDuplicates-> True,
 	ExpandScalarProduct -> False,
 	FCE -> False,
 	FCI -> False,
@@ -485,9 +482,13 @@ OptionsPattern[]] :=
 			res = ExpandScalarProduct[res, FCI -> True]
 		];
 
-		If[	DeleteDuplicates[res]=!=res,
-			Message[FCLoopBasisPropagatorsToTopology::failmsg, "The list of propagators contains dupicates."];
-			Abort[]
+
+		If[	OptionValue[DeleteDuplicates],
+			If[	DeleteDuplicates[res]=!=res,
+				Print[res];
+				Message[FCLoopBasisPropagatorsToTopology::failmsg, "The list of propagators contains dupicates."];
+				Abort[]
+			]
 		];
 
 		If[	!FreeQ2[Denominator/@res,{Pair,CartesianPair,TemporalPair}],
@@ -579,12 +580,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 			lmoms = Intersection[loopmoms,Complement[allmoms,extmoms]]
 		];
 
-		basisElements = integralBasisT[[1]] /. {	FeynAmpDenominator[a_PropagatorDenominator] :>
-				1/FeynAmpDenominator[a],
-			FeynAmpDenominator[(h : StandardPropagatorDenominator | CartesianPropagatorDenominator | GenericPropagatorDenominator)[a__, {n_Integer, s_}]] /; n > 0 :>
-				FeynAmpDenominator[h[a, {-n, s}]]
-		};
-		basisElements = PropagatorDenominatorExplicit/@basisElements;
+		basisElements = FCLoopBasisPropagatorsToTopology[integralBasisT[[1]],FCI->True,ExpandScalarProduct->True, DeleteDuplicates->False];
 
 		availableDims = Intersection[FCGetDimensions[basisElements],dims];
 
