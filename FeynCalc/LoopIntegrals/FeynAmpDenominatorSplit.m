@@ -38,7 +38,7 @@ Options[FeynAmpDenominatorSplit] = {
 };
 
 FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
-	Block[{res,momList,fad,head},
+	Block[{res,momList,fad,head, allFads, allFadsEval,repRule},
 
 		If[ !OptionValue[FCI],
 			res = FCI[expr],
@@ -51,15 +51,22 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 
 		momList = OptionValue[Momentum];
 
+		allFads = Cases2[res,FeynAmpDenominator];
+		allFadsEval = allFads;
+
+
 		If[	OptionValue[MomentumExpand],
-			res = res/. f_FeynAmpDenominator :> MomentumExpand[f]
+			allFadsEval = MomentumExpand/@allFadsEval
 		];
 
 		If[ momList=!=All && Head[momList]===List,
-			res = res /. FeynAmpDenominator[props__] :> head[fad[SelectFree[{props},Sequence@@momList]],
+			allFadsEval = allFadsEval /. FeynAmpDenominator[props__] :> head[fad[SelectFree[{props},Sequence@@momList]],
 				fad[SelectNotFree[{props},Sequence@@momList]]] /. fad[{}]:>1 /. fad[{pr__}]:>FeynAmpDenominator[pr],
-			res = res /. FeynAmpDenominator[a__] :> head@@Map[FeynAmpDenominator, {a}]
+			allFadsEval = allFadsEval /. FeynAmpDenominator[a__] :> head@@Map[FeynAmpDenominator, {a}]
 		];
+
+		repRule = Thread[Rule[allFads,allFadsEval]];
+		res = res/. Dispatch[repRule];
 
 		If [OptionValue[FCE],
 			res=FCE[res]
