@@ -151,7 +151,14 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			time = AbsoluteTime[];
 			FCPrint[1,"FCLoopIsolate: Applying Collect2.", FCDoControl->fcliVerbose];
-			ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]];
+
+			If[	TrueQ[OptionValue[Numerator]],
+				ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]],
+				(*If we care only about the denominators, we can speed up this step*)
+				ex = Collect2[ex,FeynAmpDenominator,Factoring->OptionValue[Factoring]]
+			];
+
+
 			FCPrint[1, "FCLoopIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
