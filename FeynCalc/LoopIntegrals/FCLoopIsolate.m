@@ -41,6 +41,7 @@ Begin["`Package`"]
 End[]
 
 Begin["`FCLoopIsolate`Private`"]
+fcliVerbose::usage="";
 
 Options[FCLoopIsolate] = {
 	CFAD -> True,
@@ -52,9 +53,10 @@ Options[FCLoopIsolate] = {
 	ExceptHeads -> {},
 	ExpandScalarProduct -> False,
 	Expanding -> True,
-	FCI -> False,
 	FCE -> False,
+	FCI -> False,
 	FCLoopIBPReducableQ -> False,
+	FCVerbose -> False,
 	Factoring -> Factor,
 	FeynAmpDenominatorSplit -> True,
 	Full -> True,
@@ -73,9 +75,21 @@ fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z,FCI->True], (CartesianMomentum|Momentum)[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads},
+	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads, time, optExceptHeads, optHead},
 
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
+		optExceptHeads = OptionValue[ExceptHeads];
+		optHead = OptionValue[Head];
+
+		If [OptionValue[FCVerbose]===False,
+				fcliVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+					fcliVerbose=OptionValue[FCVerbose]
+				];
+		];
+
+		FCPrint[1,"FCLoopIsolate: Entering.", FCDoControl->fcliVerbose];
+		FCPrint[3,"FCLoopIsolate: Entering with: ", glis, FCDoControl->fcliVerbose];
 
 		If[	MatchQ[lmoms0,{{___}}],
 			Message[FCLoopIsolate::fail, ex];
@@ -87,10 +101,13 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			lmoms = lmoms0
 		];
 
+		time = AbsoluteTime[];
+		FCPrint[1,"FCLoopIsolate: Applying FCI and ClearHeads.", FCDoControl->fcliVerbose];
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
 			ex = FCI[expr]/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]])
 		];
+		FCPrint[1, "FCLoopIsolate: Done applying FCI and ClearHeads, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
 
 		If[	lmoms==={},
 			(*Nothing to do!*)
@@ -98,88 +115,149 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Expanding],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying Expand2.", FCDoControl->fcliVerbose];
 			ex = Expand2[ex, lmoms];
+			FCPrint[1, "FCLoopIsolate: Done applying Expand2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		(* Here we pull loop momenta out of Dirac slashes  *)
 		If[	OptionValue[ExpandScalarProduct],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying ExpandScalarProduct.", FCDoControl->fcliVerbose];
 			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms,Full->OptionValue[Full]]
+			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms,Full->OptionValue[Full]];
+			FCPrint[1, "FCLoopIsolate: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		(* Here we pull loop momenta out of Dirac slashes  *)
 		If[	OptionValue[DiracGammaExpand] && !FreeQ[ex,DiracGamma],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying DiracGammaExpand.", FCDoControl->fcliVerbose];
 			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ tmp[[2]]/. DiracGamma[x_,dim_:4]/;!FreeQ2[x,lmoms] :> DiracGammaExpand[DiracGamma[x,dim]]
+			ex = tmp[[1]]+ tmp[[2]]/. DiracGamma[x_,dim_:4]/;!FreeQ2[x,lmoms] :> DiracGammaExpand[DiracGamma[x,dim]];
+			FCPrint[1, "FCLoopIsolate: Done applying DiracGammaExpand, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		(*	and out of the DOTs	*)
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying DotSimplify.", FCDoControl->fcliVerbose];
 			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ DotSimplify[tmp[[2]]]
+			ex = tmp[[1]]+ DotSimplify[tmp[[2]]];
+			FCPrint[1, "FCLoopIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		If[	OptionValue[Collecting],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying Collect2.", FCDoControl->fcliVerbose];
 			ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]];
+			FCPrint[1, "FCLoopIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		If[	OptionValue[FeynAmpDenominatorSplit] && !FreeQ[ex,FeynAmpDenominator],
-			ex = FeynAmpDenominatorSplit[ex,Momentum->lmoms]
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying FeynAmpDenominatorSplit.", FCDoControl->fcliVerbose];
+			ex = FeynAmpDenominatorSplit[ex,Momentum->lmoms];
+			FCPrint[1, "FCLoopIsolate: Done applying FeynAmpDenominatorSplit, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
-		res = (Map[(SelectFree[#, lmoms]*
-				OptionValue[Head][SelectNotFree[#, lmoms]]) &,
-				ex + null1 + null2] /. {null1 | null2 -> 0} /.
-			OptionValue[Head][1] -> 1);
-		res = res /. {OptionValue[Head][x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
 
-		If[ Together[(res /. OptionValue[Head] -> Identity)-ex] =!= 0,
+		time = AbsoluteTime[];
+		FCPrint[1,"FCLoopIsolate: Splitting products of loop and non-loop terms.", FCDoControl->fcliVerbose];
+		res = (Map[(SelectFree[#, lmoms] optHead[SelectNotFree[#, lmoms]]) &, ex + null1 + null2] /. {null1 | null2 -> 0} /. optHead[1] -> 1);
+		FCPrint[1, "FCLoopIsolate: Done splitting products of loop and non-loop terms, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
+
+
+		If[	optExceptHeads=!={},
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option ExceptHeads.", FCDoControl->fcliVerbose];
+			res = res /. {optHead[x_] /; !FreeQ2[x, optExceptHeads] :> x};
+			FCPrint[1, "FCLoopIsolate: Done applying the option ExceptHeads, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
+		];
+
+
+		time = AbsoluteTime[];
+		FCPrint[1,"FCLoopIsolate: Checking the intermediate result.", FCDoControl->fcliVerbose];
+		If[ Together[(res /. optHead -> Identity)-ex] =!= 0,
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
 		];
+		FCPrint[1, "FCLoopIsolate: Done checking the intermediate result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
 
 		If[ OptionValue[DropScaleless],
-			res  = res /. OptionValue[Head][z__]/; FreeQ2[z,Join[{FeynAmpDenominator},loopIntHeads]] :> 0;
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Removing scaleless integrals.", FCDoControl->fcliVerbose];
+			res  = res /. optHead[z__]/; FreeQ2[z,Join[{FeynAmpDenominator},loopIntHeads]] :> 0;
+			FCPrint[1, "FCLoopIsolate: Done removing scaleless integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
 		];
 
 		If[	OptionValue[Isolate],
-			res = Isolate[res,OptionValue[Head],IsolateNames->OptionValue[IsolateNames]]/.
-			OptionValue[Head][x_] :> OptionValue[Head][FRH[x]]
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying Isolate.", FCDoControl->fcliVerbose];
+			res = Isolate[res,optHead,IsolateNames->OptionValue[IsolateNames]]/. optHead[x_] :> optHead[FRH[x]];
+			FCPrint[1, "FCLoopIsolate: Done applying isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
 		];
 
-		If [ !FreeQ[res/. OptionValue[Head][__] :> 1, lmoms] & ,
+		time = AbsoluteTime[];
+		FCPrint[1,"FCLoopIsolate: Checking the intermediate result.", FCDoControl->fcliVerbose];
+		If [ !FreeQ[res/. optHead[__] :> 1, lmoms] & ,
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
 		];
+		FCPrint[1, "FCLoopIsolate: Done checking the intermediate result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
 
 		If [ !OptionValue[Numerator],
-			res = res /. OptionValue[Head][z_] :> OptionValue[Head][SelectNotFree[z  dummy1 dummy2,FeynAmpDenominator]]*SelectFree[z  dummy1 dummy2,FeynAmpDenominator] /. dummy1|dummy2->1
+
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option Numerator.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z_] :> optHead[SelectNotFree[z dummy1 dummy2,FeynAmpDenominator]]*SelectFree[z  dummy1 dummy2,FeynAmpDenominator] /. dummy1|dummy2->1;
+			FCPrint[1, "FCLoopIsolate: Done applying the option Numerator, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		If [ OptionValue[MultiLoop],
-			res = res /. OptionValue[Head][z__]/; !fullDep[z,lmoms0] :> z;
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option MultiLoop.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z__]/; !fullDep[z,lmoms0] :> z;
+			FCPrint[1, "FCLoopIsolate: Done applying the option MultiLoop, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
-		If [ !OptionValue[SFAD],
-			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, StandardPropagatorDenominator] :> z;
+		If [ !OptionValue[SFAD] && !FreeQ[res,StandardPropagatorDenominator],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option SFAD.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z__]/; !FreeQ[{z}, StandardPropagatorDenominator] :> z;
+			FCPrint[1, "FCLoopIsolate: Done applying the option SFAD, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
-		If [ !OptionValue[CFAD],
-			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, CartesianPropagatorDenominator] :> z;
+		If [ !OptionValue[CFAD] && !FreeQ[res,CartesianPropagatorDenominator],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option CFAD.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z__]/; !FreeQ[{z}, CartesianPropagatorDenominator] :> z;
+			FCPrint[1, "FCLoopIsolate: Done applying the option CFAD, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
-		If [ !OptionValue[GFAD],
-			res = res /. OptionValue[Head][z__]/; !FreeQ[{z}, GenericPropagatorDenominator] :> z;
+		If [ !OptionValue[GFAD] && !FreeQ[res,GenericPropagatorDenominator],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option GFAD.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z__]/; !FreeQ[{z}, GenericPropagatorDenominator] :> z;
+			FCPrint[1, "FCLoopIsolate: Done applying the option GFAD, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
-		(* Keep only integrals that are IBP-reducable *)
+		(* Keep only integrals that are IBP-reducible *)
 		If [ OptionValue[FCLoopIBPReducableQ],
-			res = res /. OptionValue[Head][z__]/; !FCLoopIBPReducableQ[z] :> z;
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option FCLoopIBPReducableQ.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z__]/; !FCLoopIBPReducableQ[z] :> z;
+			FCPrint[1, "FCLoopIsolate: Done applying the option FCLoopIBPReducableQ, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1,"FCLoopIsolate: Leaving.", FCDoControl->fcliVerbose];
+		FCPrint[3,"FCLoopIsolate: Leaving with: ", res, FCDoControl->fcliVerbose];
+
 
 		res
 	];
