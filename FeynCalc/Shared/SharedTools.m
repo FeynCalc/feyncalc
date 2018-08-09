@@ -196,7 +196,8 @@ appends the subset of remaining unmatched elements.";
 XYT::usage=
 "XYT[exp, x,y] transforms  (x y)^m away ..."
 
-FCSplit::fail = "Error! Splitting `1` w.r.t `2` failed!";
+FCSplit::failmsg = "Error! FCSplit has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
 
 Begin["`Package`"]
 End[]
@@ -425,7 +426,7 @@ FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 		FCPrint[1,"FCSplit: Splitting, timing: ", N[AbsoluteTime[] - time, 4]];
 
 		If[ free + notfree =!= tmp || ! FreeQ2[free, vars],
-			Message[FCSplit::fail, expr, vars];
+			Message[FCSplit::failmsg, "Error! Splitting" <>ToString[expr,InputForm]<> " w.r.t" <>ToString[vars,InputForm]<> " failed!"];
 			Abort[]
 		];
 		{free, notfree}
@@ -434,6 +435,11 @@ FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 FCSplit[expr_List, vars_List /; vars =!= {}, opts:OptionsPattern[]]:=
 	Map[FCSplit[#, vars, opts]&, expr];
 
+FCSplit[_, vars_, OptionsPattern[]]:=
+	(
+	Message[FCSplit::failmsg, "The second argument must be a list."];
+	Abort[]
+	)/; Head[vars]=!=List;
 
 FCSymmetrize[x_,v_List] :=
 	Block[{su},
