@@ -188,8 +188,13 @@ q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
 "True"},
 {"fcstFCLoopBasisOverdeterminedQ-ID36",
 "FCLoopBasisOverdeterminedQ[SFAD[q1,q2,{q1+l,m1},{q1-l,m1},{q2+l,\
-m1},{q2-l,m1}],{q1,q2}]", "True"}
-
+m1},{q2-l,m1}],{q1,q2}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID37",
+"FCLoopBasisOverdeterminedQ[
+SFAD[p1, p2, Q - p1 - p2, {{0, p2.Q - p1.p2}}], {p1, p2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID38",
+"FCLoopBasisOverdeterminedQ[
+SFAD[p1, p2, Q - p1 - p2] GFAD[SPD[p2, Q] - SPD[p1, p2]], {p1, p2}]", "False"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisFindCompletion =

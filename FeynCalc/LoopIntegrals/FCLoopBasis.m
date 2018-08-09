@@ -307,7 +307,6 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		};
 
 		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
-
 		If[	!FreeQ[tmp,auxIntegralToPropagators],
 			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to extract the propagators."];
 			Abort[]
@@ -316,7 +315,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 
 		If[	OptionValue[Tally],
 			res = Tally[Flatten[tmp]];
-
+			(* TODO Need the possibility to have a custom sort function *)
 			(*TODO For the future one might add a better sorting *)
 			If[OptionValue[Sort],
 				res = Sort[res,(#1[[1]]>#2[[1]])&]
@@ -722,7 +721,7 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 	];
 
 FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose, dims},
+	Block[ {ex, vecs, ca, res, fclbVerbose, dims, lmomSP, check},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -759,6 +758,20 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
+
+		If[	!FreeQ[vecs[[4]], GenericPropagatorDenominator],
+			(*
+				Once we need to deal with GFADs, there is no guarantee that the propagators are linear
+				in the loop-momentum dependent scalar products. So this has to be checked explicitly.
+			*)
+
+			check = Exponent[#, lmomSP] & /@ (vecs[[1]] /. (h:Pair|CartesianPair|TemporalPair)[a__] /; ! FreeQ2[{a}, lmoms] :> lmomSP h[a]);
+
+			If[	Select[check, (# >1) &]=!={},
+				Message[FCLoopBasisOverdeterminedQ::failmsg, "Propagators that are not linear in the loop-momentum dependent scalar products are not supported."];
+				Abort[]
+			]
+		];
 
 		(* Finally, convert all these polynomials into vectors ... *)
 		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
