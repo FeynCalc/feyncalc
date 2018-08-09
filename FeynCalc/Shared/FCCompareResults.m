@@ -100,7 +100,7 @@ FCCompareResults[obtainedResult_List, knownResult_List/;(knownResult==={} || !Op
 			diff = factoring/@diff
 		];
 
-		If[	TrueQ[MatchQ[diff, {0..}] || MatchQ[diff, {{0}..}] || diff==={}],
+		If[	TrueQ[MatchQ[diff, {0..}] || MatchQ[diff, {{0}..}] || diff==={} || Union[Flatten[diff]]==={0} ],
 			match = True
 		];
 
