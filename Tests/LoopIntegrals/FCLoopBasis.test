@@ -724,7 +724,17 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[l, D], 0, 0, {1, 1}]],
 "{GFAD[{{x + p1.q p2.q, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}"},
 {"fcstFCLoopBasisIntegralToPropagators-ID33",
 "FCLoopBasisIntegralToPropagators[GFAD[{p1.q p2.q + x, 2}] SFAD[p1], {p1, p2}, Tally -> True,FCE -> True]",
-"{{GFAD[{{x + p1.q p2.q, 1}, 1}], 2}, {SFAD[{{p1, 0}, {0, 1}, 1}], 1}}"}
+"{{GFAD[{{x + p1.q p2.q, 1}, 1}], 2}, {SFAD[{{p1, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID34",
+"FCLoopBasisIntegralToPropagators[FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p2, D] + Momentum[Q, D], 0,
+0, {1, 1}]]^2, {p1, p2, p3}, FCE -> True]",
+"{SFAD[{{-p2 + Q, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID35",
+"FCLoopBasisIntegralToPropagators[FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p2, D] + Momentum[Q, D], 0,
+0, {1, 1}]]^2, {p1, p2, p3}, FCE -> True, Tally->True]",
+"{{SFAD[{{-p2 + Q, 0}, {0, 1}, 1}], 2}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

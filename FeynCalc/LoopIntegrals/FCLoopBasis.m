@@ -256,7 +256,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 			exp = expr
 		];
 
-		If[	!MemberQ[{Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[exp]] || FreeQ2[exp,lmoms],
+		If[	!MemberQ[{Power, Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[exp]] || FreeQ2[exp,lmoms],
 			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid loop integral."];
 			Abort[]
 		];
