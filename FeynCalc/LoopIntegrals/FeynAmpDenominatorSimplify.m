@@ -261,6 +261,10 @@ renameLoopMomenta[int_,qs_List]:=
 
 		permutations = Permute[lmoms, PermutationGroup[Cycles[{#}]&/@Subsets[Range[nLoops], {2, nLoops}]]];
 
+		If[	permutations==={{}},
+			Return[int]
+		];
+
 		listOfRenamings=Sort[MapThread[rule, {Table[lmoms, {iii,1,Length[permutations]}], permutations}] /.rule[x_List,y_List] :> Thread[rule[x,y]] /.
 			rule[a_, a_] :> Unevaluated[Sequence[]]] /. rule -> Rule;
 

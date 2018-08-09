@@ -110,5 +110,7 @@ FeynAmpDenominatorCombine -> False, FCE -> True]",
 {"fcstFeynAmpDenominatorSimplify-ID18","FDS[CFAD[q, {q - p, 0, 2}], q, FCE -> True]",
 	"CFAD[{{q, 0}, {0, -1}, 1}, {{-p + q, 0}, {0, -1}, 2}]"},
 {"fcstFeynAmpDenominatorSimplify-ID19","FDS[SFAD[q, {q - p, 0, 2}], q, FCE -> True]",
-	"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 2}]"}
+	"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID20","FDS[SFAD[{{0, (k1 + k3).n}, {0, 1}, 1}], k1, k2, FCE->True]",
+	"SFAD[{{0, (k1 + k3).n}, {0, 1}, 1}]"}
 }
