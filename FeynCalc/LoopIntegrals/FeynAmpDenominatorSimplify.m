@@ -109,7 +109,21 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			Return[ex]
 		];
 
-		ex = ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{iii,1,n}])]} /.PD -> procan /. procan -> PD;
+		ex = ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{iii,1,n}])]};
+		If[	!FreeQ[ex, PD],
+			ex = ex /. PD -> procan /. procan -> PD
+		];
+
+		If[	!FreeQ[ex, StandardPropagatorDenominator],
+			ex = ex /. StandardPropagatorDenominator ->  procanSFAD /.  procanSFAD -> StandardPropagatorDenominator
+		];
+
+		If[	!FreeQ[ex, CartesianPropagatorDenominator],
+			ex = ex /. CartesianPropagatorDenominator ->  procanCFAD /.  procanCFAD -> CartesianPropagatorDenominator
+		];
+
+
+		FCPrint[3,"FDS: After fixing the signs of squared momenta in the propagators: ", ex, FCDoControl->fdsVerbose];
 
 		If[ Length[{qs}]===0,
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
@@ -121,6 +135,8 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		(*	Extract unique loop integrals	*)
 		FCPrint[1,"FDS: Extracting unique loop integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
+
+		(*TODO Need to speed this up for cases where there is only one single FAD! *)
 		(*TODO Drop scaleless for 1-loop??? *)
 		(* Here we can exploit the possible factorization in a multiloop integral *)
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True,
@@ -284,6 +300,37 @@ procan[a_, m_] :=
 			PD[Expand[tt /. one -> 1], m]
 		]
 	];
+
+
+procanSFAD[0, rest__]:=
+	StandardPropagatorDenominator[0, rest];
+
+procanCFAD[0, rest__]:=
+	CartesianPropagatorDenominator[0, rest];
+
+
+procanSFAD[a_, rest__] :=
+	Block[{tt, one, numfac},
+		tt = Factor2[one MomentumExpand[a]];
+		numfac = NumericalFactor[tt];
+		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
+			StandardPropagatorDenominator[Expand[-tt /. one -> 1], rest],
+			StandardPropagatorDenominator[Expand[tt /. one -> 1], rest]
+		]
+	]/; a=!=0;
+
+procanCFAD[a_, rest__] :=
+	Block[{tt, one, numfac},
+		tt = Factor2[one MomentumExpand[a]];
+		numfac = NumericalFactor[tt];
+		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
+			CartesianPropagatorDenominator[Expand[-tt /. one -> 1], rest],
+			CartesianPropagatorDenominator[Expand[tt /. one -> 1], rest]
+		]
+	]/; a=!=0;
+
+
+
 
 fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 	Block[{tmp,res,tmpNew,solsList,repRule},
