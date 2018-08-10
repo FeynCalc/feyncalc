@@ -229,7 +229,7 @@ fullBasis[lis_List, moms_List, dim_] :=
 	We start with 2 loops since for 1-loop integrals the symmetrization is much simpler and can be done
 	inside TID	*)
 CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
-	Block[ {gg, detPos, detPos2, nonsymPart, symPart,tmp,permGroup,res,mt},
+	Block[ {gg, detPos, detPos2, nonsymPart, symPart,tmp,permGroup,res,mt, seq},
 		(* small cross check *)
 		If[ Signature[Flatten[syms]] === 0 || Complement[Flatten[syms], li] =!= {},
 			Message[Tdec::basis];
@@ -249,13 +249,28 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 		*)
 
 		FCPrint[1, "Tdec: CCSymmetrize: Entering with ", {ins,li,syms}, "" , FCDoControl->tdecVerbose];
+
+
 		detPos[x_] :=
 			Flatten[First@Position[li, #] & /@ x];
 		detPos2[x_] :=
 			detPos /@ x;
 		gg = detPos2[syms];
+
+
+		(*
+			We need to take into account that the maximal permutation group might miss
+			some of the symmetries. That is, smaller subgroups should be considered as well.
+		*)
+
+		gg = Map[If[	Length[#]>2,
+						seq[Subsets[#,{2,Length[#]}]],
+						#]&,
+			gg] /. seq->Sequence;
+
 		(* We obtain different permutations, sort them and take the first one.*)
 		permGroup = PermutationGroup[Map[Cycles[{#}]&,gg]];
+		FCPrint[3, "Tdec: CCSymmetrize: Permutation groups ", permGroup, "" , FCDoControl->tdecVerbose];
 		tmp = Sort[Permute[li,permGroup]];
 		tmp = Transpose[{ins,First[tmp]}];
 		FCPrint[3, "Tdec: CCSymmetrize: Intermediate result ", tmp, "" , FCDoControl->tdecVerbose];
@@ -331,7 +346,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		(* detect if we are dealing with a multiloop integral	*)
 		If[ Length@Union[mlis]=!=1,
 			multiLoop=True;
-			multiLoopSyms = Map[Cases[Sort[li], {#, x_} :> x, Infinity] &, Union[mlis]] //Cases[#, {x__} /; Length[{x}] > 1] &
+			multiLoopSyms = Map[Cases[Sort[li], {#, x_} :> x, Infinity] &, Union[mlis]];
+			multiLoopSyms = Cases[multiLoopSyms, {x__} /; Length[{x}] > 1]
 		];
 		FCPrint[2, "Tdec: multiLoopSyms: ",multiLoopSyms, FCDoControl->tdecVerbose];
 
@@ -446,6 +462,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			FCPrint[2, "Tdec: For: ", ccli, FCDoControl->tdecVerbose];
 
 			solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
+
 			FCPrint[1, "Tdec: Solve3 done. Used memory: ", MemoryInUse[], FCDoControl->tdecVerbose];
 			FCPrint[1, "Tdec: Solve3 bytecount", ByteCount[solu], FCDoControl->tdecVerbose];
 			FCPrint[2, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
@@ -459,6 +476,11 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			solu = solu /. Dispatch[Map[Reverse, scqli]];
 			FCPrint[2, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
 			tt = nttt /. Dispatch[solu];
+		];
+
+		If[ !FreeQ[tt,CC],
+			Message[Tdec::failmsg,"The solution to the system of linear equations is incorrect."];
+			Abort[]
 		];
 
 		FCPrint[1, "Tdec: after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ", TimeUsed[]//FeynCalcForm, FCDoControl->tdecVerbose];
