@@ -52,7 +52,7 @@ Options[FCRerouteMomenta] = {
 	FCVerbose -> False,
 	MaxIterations -> Infinity,
 	MomentumCombine -> False,
-	Replace -> {FAD, GS, GSD, GSE, FV, FVD, FVE, CV, CVD, CVE, SP, SPD, SPE, CSP, CSPD, CSPE, TC}
+	Replace -> {FAD, SFAD, CFAD, GFAD, GS, GSD, GSE, FV, FVD, FVE, CV, CVD, CVE, SP, SPD, SPE, CSP, CSPD, CSPE, TC}
 };
 
 FCRerouteMomenta[expr_, in_List/; in=!={}, out_List /; (out =!= {} && ! OptionQ[out]), OptionsPattern[]] :=

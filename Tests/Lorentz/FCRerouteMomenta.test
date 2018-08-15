@@ -115,5 +115,13 @@ SPD[-p2-p3+Q,-p2-p3+Q],{Q},{p1,p2,p3,p4},FCE->True]",
 "FAD[p1, p2, p3, p3 - Q, -p4]*SPD[p1 + p4, p1 + p4]"},
 {"fcstRerouteMomenta-ID20",
 "FCRerouteMomenta[FAD[p1,p2,p3,p1+p2+p3-Q],{Q},{p1,p2,p3,p4},\
-FCE->True]", "FAD[p1, p2, p3, -p4]"}
+FCE->True]", "FAD[p1, p2, p3, -p4]"},
+{"fcstRerouteMomenta-ID21",
+"FCRerouteMomenta[GFAD[{{-Q2 SPD[p2,p4]+(1-c) SPD[p2,Q] SPD[p4,Q],1},1}] SFAD[{{p1,0},{0,1},1}] *
+SFAD[{{p2,0},{0,1},1}] SFAD[{{p1+p2,0},{0,1},1}] SFAD[{{p4,0},{0,1},1}] SFAD[{{p1+p4,0},{0,1},1}] *
+SFAD[{{-p1-p2-p4+Q,0},{0,1},1}],{Q},{p1,p2,p3,p4},FCE->True]", "GFAD[{{-Q2 SPD[p2, p4] + SPD[p2, Q] SPD[p4, Q] -
+	c SPD[p2, Q] SPD[p4, Q], 1}, 1}] SFAD[{{p1, 0}, {0, 1},
+1}] SFAD[{{p2, 0}, {0, 1}, 1}] SFAD[{{p1 + p2, 0}, {0, 1},
+1}] SFAD[{{p3, 0}, {0, 1}, 1}] SFAD[{{p4, 0}, {0, 1},
+1}] SFAD[{{p1 + p4, 0}, {0, 1}, 1}]"}
 });
