@@ -241,7 +241,7 @@ auxIntegralToPropagators[pref_. exp_TemporalPair, lmoms_]:=
 	FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]/; FreeQ2[pref,lmoms];
 
 auxIntegralToPropagators[Power[pref_. exp_TemporalPair, n_Integer?Positive], _]:=
-	ConstnatArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]]/; FreeQ2[pref,lmoms];
+	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]]/; FreeQ2[pref,lmoms];
 
 FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 	Block[{exp, tmp, res, dummy, expAsList, rest},
@@ -502,7 +502,6 @@ res
 ];
 
 
-(*TODO FeynHelpers!!! *)
 FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, isCartesian, dims, res, useToSFAD, integralBasis, integralBasisT},
@@ -660,7 +659,7 @@ FCLoopBasisSplit[sps_. fad_FeynAmpDenominator, lmoms_List, OptionsPattern[]] :=
 		];
 
 		res
-	]
+	];
 
 FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose, rank, len, dims},

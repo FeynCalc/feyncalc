@@ -89,6 +89,16 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = ExpandScalarProduct[ex, FCI->True]
 		];
 
+		(*
+			We need to cancel things like p.q/(p.q+i Eta) before invoking FCLoopBasis functions!
+		*)
+		If[!FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator}],
+			ex = cancelSP[ex];
+			ex = ex /. fadHold[r1___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], r2___]/;n<0 :>
+				fadHold[r1,r2] PropagatorDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
+			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator
+		];
+
 		(*	To bring the propagators into a proper form.
 			However, this might also mess up the signs of the
 			propagators in the already fixed topology, so if FDS is set to False,
@@ -96,6 +106,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		If[	OptionValue[FDS],
 			ex = ex /. FeynAmpDenominator -> feynsimp[lmoms]
 		];
+
 
 		If [ FreeQ2[ex,lmoms],
 			FCPrint[3,"FCApart: The intermediate expression contains no loop integrals ", ex, FCDoControl->fcaVerbose];
@@ -150,6 +161,10 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Otherwise, we need to first obtain the list of polynomials that appear in the integral
 			plus their vector representation.	*)
+
+
+
+
 		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
 
 		(* All the partial fractioning is done by pfrac *)
@@ -376,6 +391,22 @@ pfrac[inputVectorSet_List]:=
 
 		res
 ]/; counter=!=0;
+
+cancelSP[ex_]:=
+	ex /. FeynAmpDenominator -> fadHold //. Dispatch[{
+
+		b_Pair fadHold[r1___, StandardPropagatorDenominator[a_, b_Pair, c_, {n_, s_}],r2___] :>
+					fadHold[r1, StandardPropagatorDenominator[a, b, c, {n - 1, s}], r2],
+
+		Power[b_Pair,m_] fadHold[r1___, StandardPropagatorDenominator[a_, b_Pair, c_, {n_, s_}],r2___] :>
+					fadHold[r1, StandardPropagatorDenominator[a, b, c, {n - m, s}], r2],
+
+		b_CartesianPair fadHold[r1___, CartesianPropagatorDenominator[a_, b_CartesianPair, c_, {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[a, b, c, {n - 1, s}], r2],
+
+		Power[b_CartesianPair,m_] fadHold[r1___, CartesianPropagatorDenominator[a_, b_CartesianPair, c_, {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[a, b, c, {n - m, s}], r2]
+	}] /. fadHold[r1___, (StandardPropagatorDenominator|CartesianPropagatorDenominator)[__, {0, _}], r2___] :> fadHold[r1,r2];
 
 
 FCPrint[1,"FCApart.m loaded."];
