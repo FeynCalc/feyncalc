@@ -178,6 +178,12 @@ FCHN::usage =
 into FermionicChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
 FeynCalcInternal.";
 
+FCTopology::usage=
+"FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id \
+that is characterized by the propagators {prop1, prop2, ...}. The propagators \
+in the list do not necessarily have to form a valid basis, i.e. the basis may also
+be incomplete or overdetermined.";
+
 FermionicChain::usage =
 "FermionicChain[x,i,j] denotes a chain of Dirac \
 matrices x, where the Dirac indices i and j \
