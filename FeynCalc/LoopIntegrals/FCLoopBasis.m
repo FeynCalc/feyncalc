@@ -133,6 +133,7 @@ Options[FCLoopBasisExtract] = {
 Options[FCLoopBasisIncompleteQ] = {
 	FCI -> False,
 	FCVerbose -> False,
+	FCTopology -> False,
 	SetDimensions-> {3,4,D,D-1}
 };
 
@@ -681,6 +682,10 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = expr
 		];
 
+		If[ Head[ex]===FCTopology,
+			ex = Times@@(ex[[2]])
+		];
+
 		If[	!MatchQ[ex, _. _FeynAmpDenominator],
 			Message[FCLoopBasis::fail,ToString[ex,InputForm],lmoms];
 			Abort[]
@@ -696,7 +701,7 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCLoopBasisIncompleteQ: Entering with: ", ex, FCDoControl->fclbVerbose];
 		FCPrint[3,"FCLoopBasisIncompleteQ: Loop momenta: ", lmoms, FCDoControl->fclbVerbose];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
+		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims, FCTopology->OptionValue[FCTopology]];
 
 		FCPrint[3,"FCLoopBasisIncompleteQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
@@ -737,6 +742,10 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
+		];
+
+		If[ Head[ex]===FCTopology,
+			ex = Times@@(ex[[2]])
 		];
 
 		If[	!MatchQ[ex, _. _FeynAmpDenominator],
