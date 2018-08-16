@@ -105,7 +105,8 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 		];
 
 		If[ OptionValue[MomentumExpand],
-			relevantObjects = MomentumExpand/@relevantObjects
+			relevantObjectsEval = MomentumExpand/@relevantObjects,
+			relevantObjectsEval = relevantObjects
 		];
 
 		(* Then we generate the replacement rules*)
@@ -130,7 +131,7 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 
 		FCPrint[3,"FCReplaceMomenta: Intermediate repalcement rule:.", intermediateRepRule, FCDoControl->fcrmVerbose];
 
-		relevantObjectsEval = relevantObjects /. Dispatch[intermediateRepRule];
+		relevantObjectsEval = relevantObjectsEval /. Dispatch[intermediateRepRule];
 
 
 		relevantObjectsEval = (MomentumExpand/@relevantObjectsEval) //. (h:sel)[x_ y_, dm___]/; MemberQ[vars,x] :>  x h[y, dm] ;

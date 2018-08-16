@@ -54,5 +54,16 @@ Head->Join[OptionValue[FCReplaceMomenta, Head],{Spinor}]]",
 {"fcstFCReplaceMomenta-ID11",
 "FCReplaceMomenta[PolarizationVector[p,mu],{p\[Rule]a},Dimensions\
 \[Rule]{4,D},Polarization\[Rule]True]",
-"Pair[LorentzIndex[mu], Momentum[Polarization[a, I]]]"}
+"Pair[LorentzIndex[mu], Momentum[Polarization[a, I]]]"},
+{"fcstFCReplaceMomenta-ID12",
+"FCReplaceMomenta[
+SFAD[{{p1, 0}, {0, 1}, 1}] SFAD[{{p2, 0}, {0, 1},
+	1}] SFAD[{{p1 + p2, 0}, {0, 1}, 1}] SFAD[{{p4, 0}, {0, 1},
+	1}] SFAD[{{p1 + p4, 0}, {0, 1},
+	1}] SFAD[{{-p1 - p2 - p4 + Q, 0}, {0, 1}, 1}] SPD[-p1 - p4 +
+Q, -p1 - p4 + Q], {Q -> p1 + p2 + p3 + p4}, FCE -> True]",
+"SFAD[{{p1, 0}, {0, 1}, 1}] SFAD[{{p2, 0}, {0, 1},
+1}] SFAD[{{p1 + p2, 0}, {0, 1}, 1}] SFAD[{{p3, 0}, {0, 1},
+1}] SFAD[{{p4, 0}, {0, 1}, 1}] SFAD[{{p1 + p4, 0}, {0, 1}, 1}] SPD[
+p2 + p3, p2 + p3]"}
 });
