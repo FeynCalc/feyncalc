@@ -41,6 +41,7 @@ Options[FCReplaceMomenta] = {
 	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
+	SelectFree -> {},
 	MomentumExpand -> True,
 	Variables -> {},
 	Head -> {DiracGamma,PauliSigma,Pair,FeynAmpDenominator}, (*All is also possible*)
@@ -51,7 +52,8 @@ Options[FCReplaceMomenta] = {
 FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPattern[]] :=
 	Block[{	ex,res, relevantMomenta,relevantObjects,sel, relevantMomentumHeads,
 			objectHeads, momentumHeads,dims, rule, pat, finalRepRule, intermediateRepRule,
-			relevantObjectsEval, variableRule, vars, null1, null2
+			relevantObjectsEval, variableRule, vars, null1, null2, selectFree, tmp, maskedObjects,
+			ruleMask
 		},
 
 		If [OptionValue[FCVerbose]===False,
@@ -66,7 +68,9 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 		momentumHeads	= OptionValue[Replace];
 		dims 			= OptionValue[Dimensions];
 		vars 			= OptionValue[Variables];
+		selectFree		= OptionValue[SelectFree];
 
+		maskedObjects = {};
 
 		FCPrint[1,"FCReplaceMomenta: Entering.", FCDoControl->fcrmVerbose];
 		FCPrint[3,"FCReplaceMomenta: Entering with ", expr, FCDoControl->fcrmVerbose];
@@ -97,7 +101,17 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 			];
 
 			relevantObjects = Cases[ex+null1+null2, sel, Infinity]//Sort//DeleteDuplicates;
+
+			If[	selectFree=!={} && Head[selectFree]===List,
+				tmp = SelectFree[relevantObjects,Sequence@@selectFree];
+				maskedObjects = Complement[relevantObjects,tmp];
+				relevantObjects = tmp;
+				FCPrint[2,"FCReplaceMomenta: Filtered objects according to the SelectFree option: ", relevantObjects, FCDoControl->fcrmVerbose]
+			];
+
 			relevantObjects = SelectNotFree[relevantObjects,relevantMomenta],
+
+
 
 
 			relevantObjects = Cases[ex+null1+null2, h_[x__]/;!FreeQ2[{x}, relevantMomenta], Infinity]//Sort//DeleteDuplicates
@@ -140,8 +154,14 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 
 		FCPrint[3,"FCReplaceMomenta: Final repalcement rule:.", finalRepRule, FCDoControl->fcrmVerbose];
 
+		If[	TrueQ[maskedObjects=!={}],
+			(*	We do not want any replacements inside the heads that were previously filtered out!	*)
+			ruleMask = Thread[Rule[maskedObjects, Table[Unique["fcReplaceMomentaMask"], {i, 1, Length[maskedObjects]}]]];
+			res = ex /. ruleMask /. finalRepRule /. Reverse /@ ruleMask,
 
-		res = ex /. finalRepRule;
+			res = ex /. finalRepRule
+		];
+
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
