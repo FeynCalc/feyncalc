@@ -46,6 +46,14 @@ FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
+FCDuplicateFreeQ::usage=
+"FCDuplicateFreeQ[list] yields True if list contains no duplicates and False otherwise. \n
+FCDuplicateFreeQ[list,test] uses test to determine whether two objects should be considered \
+duplicates.\n
+FCDuplicateFreeQ returns the same results as the standard DuplicateFreeQ. \
+The only reason for introducing FCDuplicateFreeQ is that DuplicateFreeQ is not available \
+in Mathematica 8 and 9, which are still supported by FeynCalc.";
+
 FCGetNotebookDirectory::usage=
 "FCGetNotebookDirectory is a simple convenience function that returns the directory \
 in which the current notebook or .m file is located. It also works when the FrontEnd
@@ -198,6 +206,12 @@ XYT::usage=
 
 FCSplit::failmsg = "Error! FCSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
+
+FCDuplicateFreeQ::failmsg = "Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+
+
 
 Begin["`Package`"]
 End[]
@@ -358,6 +372,39 @@ FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
+	];
+
+
+FCDuplicateFreeQ[ex_/; Head[ex] =!= List, ___] :=
+	(
+	Message[FCDuplicateFreeQ::failmsg, "The input expression is not a list."];
+	Abort[]
+	);
+
+FCDuplicateFreeQ[{}, ___] :=
+	True;
+
+FCDuplicateFreeQ[ex_List, test_ : FCGV[""]] :=
+	Block[{tmp, num},
+
+		If[	test === FCGV[""],
+			tmp = Last[SortBy[Tally[ex], Last]],
+			tmp = Check[Last[SortBy[Tally[ex, test], Last]], $Failed, Tally::smtst]
+		];
+
+		If[	Head[tmp] =!= List || tmp === {},
+			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
+			Abort[]
+		];
+
+		num = Last[tmp];
+
+		If[	!MatchQ[num, _Integer?NonNegative],
+			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
+			Abort[]
+		];
+
+		num < 2
 	];
 
 
