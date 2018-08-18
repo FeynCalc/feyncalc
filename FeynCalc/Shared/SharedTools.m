@@ -84,6 +84,15 @@ of integrals to some function. Here i is the number of the current step \
 while total denotes the overall number of steps. A simple usage example
 is Table[FCProgressBar[\"Calculating integral \", i, 10], {i, 1, 10}]";
 
+FCReloadFunctionFromFile::usage =
+"FCReloadFunctionFromFile[function, path] is an auxiliary function that \
+attempts to remove all the definitions of the given FeynCalc function and \
+then reload them from the specified file. It is intended to be a helper tool \
+for FeynCalc developers, which allows one to debug/improve internal functions \
+and test the results without restarting the kernel. Depending on the complexity \
+of the given function, there might also be unknown side effects. The function is \
+not meant to be invoked by the normal users. ";
+
 FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
@@ -95,7 +104,6 @@ FCSubsetQ::usage=
 False otherwise. It returns the same results as the standard SubsetQ. \
 The only reason for introducing FCSubsetQ is that SubsetQ is not available \
 in Mathematica 8 and 9, which are still supported by FeynCalc.";
-
 
 FCSymmetrize::usage=
 "FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect \
@@ -173,8 +181,8 @@ an integer (even if it is symbolic). Furthermore \
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 SelectFree2::usage=
-"SelectFree2[expr, a, b, ...] is like SelectFree but
-it first expands the expression w.r.t to the arguments via
+"SelectFree2[expr, a, b, ...] is like SelectFree but \
+it first expands the expression w.r.t to the arguments via \
 Expand2";
 
 SelectFree::usage=
@@ -192,8 +200,8 @@ SelectNotFree[a,a] returns a (where a is not a product or \
 a sum).";
 
 SelectNotFree2::usage=
-"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but
-it first expands the expression w.r.t to the arguments via
+"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but \
+it first expands the expression w.r.t to the arguments via \
 Expand2";
 
 SelectSplit::usage=
@@ -205,6 +213,9 @@ XYT::usage=
 "XYT[exp, x,y] transforms  (x y)^m away ..."
 
 FCSplit::failmsg = "Error! FCSplit has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+FCReloadFunctionFromFile::failmsg = "Error! FCReloadFunctionFromFile has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
 FCDuplicateFreeQ::failmsg = "Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
@@ -448,6 +459,36 @@ FCPatternFreeQ[expr_List ,objs_List]:=
 
 FCProgressBar[text_String, i_Integer, tot_Integer] :=
 	FCPrint[0, text <> ToString[i] <> " / " <> ToString[tot] <> "\n", UseWriteString -> True];
+
+
+FCReloadFunctionFromFile[fun_, file_String] :=
+	Block[{names, names1, names2, str1, str2},
+
+	If[! TrueQ[FileExistsQ[file]],
+			Message[FCReloadFunctionFromFile::failmsg, "The file " <> file <> " does not exist."];
+			Abort[]
+	];
+
+	str1 = "FeynCalc`" <> ToString[fun] <> "`*";
+	str2 = "FeynCalc`" <> ToString[fun] <> "`Private`*";
+	names = Join[Names[str1], Names[str2]];
+
+	With[{x = str1}, ClearAll[x]];
+	With[{x = str2}, ClearAll[x]];
+
+	If[	names =!= {},
+		Quiet[Remove /@ names, Remove::rmnsm]
+	];
+
+	ClearAll[fun];
+	Quiet[Remove[fun], Remove::rmnsm];
+
+	BeginPackage["FeynCalc`"];
+		FCDeclareHeader[file];
+		Get[file];
+	EndPackage[];
+	Null
+];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, time},
