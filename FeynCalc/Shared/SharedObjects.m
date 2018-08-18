@@ -170,7 +170,7 @@ FAD::usage =
 "FAD[q, q-p, ...] denotes 1/(q^2 (q-p)^2 ...). \
 FAD[{q1,m}, {q1-p,m}, q2, ...] is \
 1/( (q1^2 - m^2) ( (q1-p)^2 - m^2 ) q2^2 ... ).
-(Translation into FeynCalc internal form is performed by
+(Translation into FeynCalc internal form is performed by \
 FeynCalcInternal.)";
 
 FCHN::usage =
@@ -181,7 +181,7 @@ FeynCalcInternal.";
 FCTopology::usage=
 "FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id \
 that is characterized by the propagators {prop1, prop2, ...}. The propagators \
-in the list do not necessarily have to form a valid basis, i.e. the basis may also
+in the list do not necessarily have to form a valid basis, i.e. the basis may also \
 be incomplete or overdetermined.";
 
 FermionicChain::usage =
