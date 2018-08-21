@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: EWElectronAntineutrinoElectronToMuonAntineutrinoMuonTree             *)
+(* :Title: AnEl-AnmuMu                                                       *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,23 +9,28 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the scattering cross section for an electron
-			  anineutrino and an electron going to a muon antineutrino and
-			  a muon in Electroweak theory at tree level                     *)
+(* :Summary:  Anel El -> Anmu Mu, EW, total cross section, tree              *)
 
 (* ------------------------------------------------------------------------ *)
 
+
+
+(* ::Title:: *)
+(*Electron antineutrino-electron annihilation into a muon antineutrino and muon*)
 
 
 (* ::Section:: *)
 (*Load FeynCalc and FeynArts*)
 
 
+description="Anel El -> Anmu Mu, EW, total cross section, tree";
 If[ $FrontEnd === Null,
-		$FeynCalcStartupMessages = False;
-		Print["Computation of the scattering cross section for an electron anineutrino and an electron going to a muon antineutrino and a muon in Electroweak theory at tree level "];
+	$FeynCalcStartupMessages = False;
+	Print[description];
 ];
-If[$Notebooks === False, $FeynCalcStartupMessages = False];
+If[ $Notebooks === False,
+	$FeynCalcStartupMessages = False
+];
 $LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
@@ -36,34 +41,49 @@ $FAVerbose = 0;
 
 
 (* ::Text:: *)
+(*Nicer typesetting*)
+
+
+MakeBoxes[q1,TraditionalForm]:="\!\(\*SubscriptBox[\(q\), \(1\)]\)";
+MakeBoxes[q2,TraditionalForm]:="\!\(\*SubscriptBox[\(q\), \(2\)]\)";
+MakeBoxes[pe,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(e\)]\)";
+MakeBoxes[pm,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(m\)]\)";
+
+
+(* ::Text:: *)
 (*To avoid dealing with Goldstone bosons we do  the computation in the unitary gauge*)
 
 
 InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 
 
-topElNuScattering = CreateTopologies[0, 2 -> 2];
-diagsElNuScatteringTree = InsertFields[topElNuScattering, {-F[1,
-		{1}],F[2, {1}]} -> {-F[1,{2}],F[2,{2}]}, InsertionLevel -> {Classes},
-		Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
-Paint[diagsElNuScatteringTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
+diags = InsertFields[CreateTopologies[0, 2 -> 2], {-F[1, {1}],
+	F[2, {1}]} -> {-F[1,{2}],F[2,{2}]}, InsertionLevel -> {Classes},
+	Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
+Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain the amplitude*)
 
 
-ampElNuScatteringTree=FCFAConvert[CreateFeynAmp[diagsElNuScatteringTree],
-List->False,SMP->True,ChangeDimension->4, IncomingMomenta->{q1,pe},OutgoingMomenta->{q2,pm},
-FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2] SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]}]//Contract
+amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{q1,pe},
+	OutgoingMomenta->{q2,pm},ChangeDimension->4,List->False, SMP->True,
+	Contract->True,DropSumOver->True,  FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2]*
+	SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]}]
 
 
 (* ::Section:: *)
-(*Setup the kinematics*)
+(*Fix the kinematics*)
 
 
 FCClearScalarProducts[];
 SetMandelstam[s,t,u,q1,pe,-q2,-pm,0,SMP["m_e"],0,SMP["m_mu"]];
+
+
+(* ::Section:: *)
+(*Square the amplitude*)
 
 
 (* ::Section:: *)
@@ -74,6 +94,10 @@ SetMandelstam[s,t,u,q1,pe,-q2,-pm,0,SMP["m_e"],0,SMP["m_mu"]];
 (*There is no polarization averaging for neutrinos here, as right handed neutrinos do not interact*)
 
 
+ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
+	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify
+
+
 sqElNuScatteringTree=ampElNuScatteringTree ComplexConjugate[ampElNuScatteringTree]//
 FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Contract//Factor2
 
@@ -82,7 +106,8 @@ FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Contract//Factor2
 (*In the following we neglect the momentum in the W-propagator as compared to the W-mass. This is a very good approximation at low energies, as then (pm-q2)^2  <= m_mu^2 << m_W^2.*)
 
 
-sqElNuScatteringTree2=(FCE[sqElNuScatteringTree]/.{pm+q2->0})//PropagatorDenominatorExplicit//Factor2
+ampSquared[1]=ampSquared[0]//FCE//ReplaceAll[#,{pm+q2->0}]&//
+	PropagatorDenominatorExplicit//Factor2
 
 
 (* ::Section:: *)
@@ -100,17 +125,18 @@ CSP[pm]=(s-SMP["m_mu"]^2)^2/(4s);
 CSP[q2]=(s-SMP["m_mu"]^2)^2/(4s);
 
 
-sqElNuScatteringTree3=Integrate[Simplify[sqElNuScatteringTree2 /.u-> SMP["m_e"]^2-2(TC[q2]TC[pe]-Sqrt[CSP[q2]]Sqrt[CSP[pe]]x)],{x,-1,1}]
+prefac=2Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_mu"]^2)^2]/Sqrt[(s-SMP["m_e"]^2)^2]
+
+
+integral1=Integrate[Simplify[ampSquared[1]/.u-> SMP["m_e"]^2-
+	2(TC[q2]TC[pe]-Sqrt[CSP[q2]]Sqrt[CSP[pe]]x)],{x,-1,1}]
 
 
 (* ::Text:: *)
 (*The total cross-section *)
 
 
-prefac=2Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_mu"]^2)^2]/Sqrt[(s-SMP["m_e"]^2)^2]
-
-
-crossSectionTotal=sqElNuScatteringTree3*prefac//PowerExpand//Factor2
+crossSectionTotal=integral1*prefac//PowerExpand//Factor2
 
 
 (* ::Section:: *)
@@ -120,3 +146,22 @@ crossSectionTotal=sqElNuScatteringTree3*prefac//PowerExpand//Factor2
 crossSectionTotalKnown=(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2)(s^2+(SMP["m_mu"]^2+SMP["m_e"]^2)/2 s+SMP["m_mu"]^2 SMP["m_e"]^2)/(3Pi s^3);
 Print["Check with Grozin, Using REDUCE in High Energy Physics, Chapter 5.3: ",
 			If[Simplify[crossSectionTotal-crossSectionTotalKnown]===0, "CORRECT.", "!!! WRONG !!!"]];
+
+
+(* ::Section:: *)
+(*Check the final results*)
+
+
+knownResults = {
+	(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2)(s^2+(SMP["m_mu"]^2+SMP["m_e"]^2)/2 s+
+	SMP["m_mu"]^2 SMP["m_e"]^2)/(3Pi s^3)
+};
+FCCompareResults[{crossSectionTotalKnown},
+knownResults,
+Text->{"\tCompare to Grozin, \
+Using REDUCE in High Energy Physics, Chapter 5.3:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
+Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+
