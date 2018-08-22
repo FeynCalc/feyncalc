@@ -281,7 +281,7 @@ solMSbar2=sol[3]/.{SMP["d_A"]->SMP["d_A^MSbar"]}
 
 
 (* ::Text:: *)
-(*Tensor reduction allows us to express the electron self-energy in tems of the Passarino-Veltman coefficient functions.*)
+(*Tensor reduction allows us to express the ghost self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
 AbsoluteTiming[amp3[1]=TID[amp3[0],
@@ -316,7 +316,7 @@ solMSbar3=sol[4]/.{SMP["d_u"]->SMP["d_u^MSbar"]}
 
 
 (* ::Text:: *)
-(*Tensor reduction allows us to express the electron self-energy in tems of the Passarino-Veltman coefficient functions.*)
+(*Tensor reduction allows us to express the quark-gluon vertex in tems of the Passarino-Veltman coefficient functions.*)
 
 
 AbsoluteTiming[amp4[1]=TID[amp4[0],l,UsePaVeBasis->True,ToPaVe->True,
@@ -389,6 +389,9 @@ Text->{"\tCompare to Muta, Foundations of QCD, \
 Eqs 2.5.131-2.5.147:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+
 
 
 
