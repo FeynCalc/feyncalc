@@ -72,6 +72,7 @@ End[]
 Begin["`Tdec`Private`"]
 
 tdecVerbose::usage="";
+symmMT::usage="";
 
 Options[Tdec] =	{
 	BasisOnly -> False,
@@ -83,6 +84,8 @@ Options[Tdec] =	{
 	UseParallelization -> True,
 	UseTIDL -> True
 };
+
+SetAttributes[symmMT,Orderless];
 
 (* 	gPart generates the "metric" piece of the tensor decomposition, i.e. terms
 	that are proportional only to the products of metric tensors	*)
@@ -229,7 +232,8 @@ fullBasis[lis_List, moms_List, dim_] :=
 	We start with 2 loops since for 1-loop integrals the symmetrization is much simpler and can be done
 	inside TID	*)
 CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
-	Block[ {gg, detPos, detPos2, nonsymPart, symPart,tmp,permGroup,res,mt, seq},
+	Block[ {gg, detPos, detPos2, nonsymPart, symPart,tmp,permGroup,
+			res, mt, seq, tmpList},
 		(* small cross check *)
 		If[ Signature[Flatten[syms]] === 0 || Complement[Flatten[syms], li] =!= {},
 			Message[Tdec::basis];
@@ -265,14 +269,22 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 
 		gg = Map[If[	Length[#]>2,
 						seq[Subsets[#,{2,Length[#]}]],
-						#]&,
+						{#}]&,
 			gg] /. seq->Sequence;
-
 		(* We obtain different permutations, sort them and take the first one.*)
-		permGroup = PermutationGroup[Map[Cycles[{#}]&,gg]];
+
+		permGroup = PermutationGroup[Map[Cycles[{#}]&,First[gg]]];
+
+		If[	!IntegerQ[GroupOrder[permGroup]],
+			Message[Tdec::failmsg, "Failed to build the correct permutation group."];
+			Abort[]
+		];
+
 		FCPrint[3, "Tdec: CCSymmetrize: Permutation groups ", permGroup, "" , FCDoControl->tdecVerbose];
 		tmp = Sort[Permute[li,permGroup]];
+		tmpList = Transpose[{ins,#}]&/@tmp;
 		tmp = Transpose[{ins,First[tmp]}];
+
 		FCPrint[3, "Tdec: CCSymmetrize: Intermediate result ", tmp, "" , FCDoControl->tdecVerbose];
 
 		(* Of course we still can (and should) reorder groups of indices that belong to different tensors.
@@ -281,11 +293,18 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 		Notice that we respected the fact that {{0, i3}, {0, i4} and {0, i7}, {0, i8} correspond to
 		g^{i3 i4} an g^{i7 i8} respectively.*)
 
-		res = tmp //. {a___, {0, x_}, {0, y_}, b___} :> {a, mt[{0, x}, {0, y}], b};
-		res = Join[Sort[Cases2[res, mt]], Sort[res /. mt[__] -> Unevaluated[Sequence[]]]];
-		res = res/. mt -> Sequence;
+		tmpList = Map[(# //. {a___, {0, x_}, {0, y_}, b___} :> {a, symmMT[{0, x}, {0, y}], b})&,tmpList];
+
+		tmpList = Map[Join[Sort[Cases2[#, symmMT]], Sort[# /. symmMT[__] -> Unevaluated[Sequence[]]]]&, tmpList];
+
+		tmpList = tmpList /. symmMT -> Sequence;
+
+		tmpList = Sort[tmpList];
+
+		res = First[tmpList];
 
 		FCPrint[3, "Tdec: CCSymmetrize: Leaving with ", res, "" , FCDoControl->tdecVerbose];
+
 		res
 	];
 
