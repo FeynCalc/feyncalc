@@ -1,33 +1,36 @@
 (* ::Package:: *)
 
-(* :Title: EWUpAntiquarkDownQuarkToElectronAntielectronNeutrinoTree                                                  *)
+(* :Title: QutbarQdt-NelAnel                                             	*)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2018 Rolf Mertig
-	 Copyright (C) 1997-2018 Frederik Orellana
-	 Copyright (C) 2014-2018 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the matrix element squared for an antiup quark
-			  and a down quark annihilating into an electron and an 
-			  antielectron neutrino in Electroweak Theory at tree level. *)
+(* :Summary:  Qutbar Qdt -> Nel Anel, EW, matrix element squared, tree    	*)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
+(* ::Title:: *)
+(*Antiup quark down quark annihilation into an electron and an antielectron-neutrino*)
+
+
 (* ::Section:: *)
-(*Load FeynCalc and FeynArts*)
+(*Load FeynCalc and the necessary add-ons or other packages*)
 
 
+description="Qutbar Qdt -> Nel Anel, EW, matrix element squared, tree";
 If[ $FrontEnd === Null,
-		$FeynCalcStartupMessages = False;
-		Print["Computation of the matrix element squared for an antiup quark
-			  and a down quark annihilating into an electron and an 
-			  antielectron neutrino in Electroweak Theory at tree level."];
+	$FeynCalcStartupMessages = False;
+	Print[description];
 ];
-If[$Notebooks === False, $FeynCalcStartupMessages = False];
+If[ $Notebooks === False,
+	$FeynCalcStartupMessages = False
+];
 $LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
@@ -35,6 +38,16 @@ $FAVerbose = 0;
 
 (* ::Section:: *)
 (*Generate Feynman diagrams*)
+
+
+(* ::Text:: *)
+(*Nicer typesetting*)
+
+
+MakeBoxes[p1,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(1\)]\)";
+MakeBoxes[p2,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(2\)]\)";
+MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
+MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
 (* ::Text:: *)
@@ -51,45 +64,55 @@ $CKM=True;
 InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 
 
-diagsAmpTree = InsertFields[CreateTopologies[0, 2 -> 2], {-F[3, {1}],F[4, {1}]} -> {F[2,
-		{1}],-F[1,{1}]}, InsertionLevel -> {Particles},
-		Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
-Paint[diagsAmpTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
+diags = InsertFields[CreateTopologies[0, 2 -> 2],
+	{-F[3, {1}],F[4, {1}]} -> {F[2, {1}],-F[1,{1}]},
+	InsertionLevel -> {Particles}, Model -> {SM, UnitarySM},
+	GenericModel->{Lorentz, UnitaryLorentz}];
+
+Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain the amplitude*)
 
 
-ampTree=FCFAConvert[CreateFeynAmp[diagsAmpTree,Truncated -> False],List->False,SMP->True,ChangeDimension->4,
-IncomingMomenta->{p2,p1},OutgoingMomenta->{k1,k2},DropSumOver->True]//Contract
+amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p2,p1},
+	OutgoingMomenta->{k1,k2},ChangeDimension->4,List->False, SMP->True,
+	Contract->True, DropSumOver->True]
 
 
 (* ::Section:: *)
-(*Setup the kinematics*)
+(*Fix the kinematics*)
 
 
 FCClearScalarProducts[]
-SetMandelstam[s,t,u,p1,p2,-k1,-k2,0,0,0,0];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2 , 0, 0, 0, 0];
 
 
 (* ::Section:: *)
-(*Obtain squared amplitude for the unpolarized process*)
+(*Square the amplitude*)
 
 
 (* ::Text:: *)
-(*We average over the spins and colors of the quarks hence the additional factor 1/3^2 1/2^2*)
+(*We average over the spins and the colors of the quarks, hence the additional factor 1/3^2 1/2^2.*)
 
 
-ampSquared=1/3^2 ampTree ComplexConjugate[ampTree]//FermionSpinSum[#,ExtraFactor -> 1/2^2]&//
-DiracSimplify//PropagatorDenominatorExplicit//SUNSimplify[#,SUNNToCACF->False]&//
-ReplaceAll[#,SUNN->3]&
+ampSquared[0] = 1/3^2*(amp[0] (ComplexConjugate[amp[0]]))//
+	FermionSpinSum[#, ExtraFactor -> 1/2^2]&//DiracSimplify//
+	PropagatorDenominatorExplicit//SUNSimplify[#,SUNNToCACF->False]&//
+	ReplaceAll[#,SUNN->3]&
 
 
 (* ::Section:: *)
-(*Check with CompHEP*)
+(*Check the final results*)
 
 
-ampSquaredKnown=(u^2*SMP["e"]^4*SMP["V_ud", -I]*SMP["V_ud", I])/(12*(s - SMP["m_W"]^2)^2*SMP["sin_W"]^4);
-Print["Check with CompHEP: ",
-			If[Simplify[FCI[ampSquared-ampSquaredKnown]]===0, "CORRECT.", "!!! WRONG !!!"]];
+knownResults = {
+	(u^2*SMP["e"]^4*SMP["V_ud", -I]*SMP["V_ud", I])/(12*(s - SMP["m_W"]^2)^2*SMP["sin_W"]^4)
+};
+FCCompareResults[{ampSquared[0]},
+knownResults,
+Text->{"\tCompare to CompHEP:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];

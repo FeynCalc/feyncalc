@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QGl-QGl                                                           *)
+(* :Title: QGl-QGl                                                          *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -8,8 +8,8 @@
 	Copyright (C) 1997-2018 Frederik Orellana
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
-	
-(* :Summary:  Q Gl -> Q Gl, QCD, matrix element squared, tree                *)
+
+(* :Summary:  Q Gl -> Q Gl, QCD, matrix element squared, tree               *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -50,7 +50,7 @@ MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
 MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
-diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[3, {1}],V[5]}-> 
+diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[3, {1}],V[5]}->
 		{F[3, {1}],V[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"];
 
 Paint[diags, ColumnsXRows -> {2, 2}, Numbering -> Simple,
@@ -107,9 +107,3 @@ Table 7.1:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-
-
-
-

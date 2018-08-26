@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: MuAmu-QQbar                                              *)
+(* :Title: MuAmu-QQbar                                              		*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -8,8 +8,8 @@
 	Copyright (C) 1997-2018 Frederik Orellana
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
-	
-(* :Summary:  Mu Amu -> Q Qbar, QCD, total cross section, tree    *)
+
+(* :Summary:  Mu Amu -> Q Qbar, QCD, total cross section, tree    			*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -50,7 +50,7 @@ MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
 MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
-diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[2, {2}], -F[2, {2}]} -> 
+diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[2, {2}], -F[2, {2}]} ->
 	{F[3, {1}], -F[3, {1}]}, InsertionLevel -> {Classes}, Model -> "SMQCD",
 	ExcludeParticles -> {S[_],V[2]}];
 
@@ -64,7 +64,7 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 	OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,
-	List->False, SMP->True, Contract->True,DropSumOver->True, 
+	List->False, SMP->True, Contract->True,DropSumOver->True,
 	Prefactor->3/2 SMP["e_Q"]]
 
 
@@ -73,7 +73,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_mu"]^2, SMP["m_mu"]^2, 
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_mu"]^2, SMP["m_mu"]^2,
 	SMP["m_u"]^2, SMP["m_u"]^2];
 
 
@@ -127,12 +127,3 @@ Text->{"\tCompare to CalcHEP and to Field, \
 Applications of Perturbative QCD, Eq. 2.1.15",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-
-
-
-
-
-
-

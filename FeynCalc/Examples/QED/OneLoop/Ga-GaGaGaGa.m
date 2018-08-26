@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Ga -> Ga Ga Ga Ga, QED, amplitude, 1-loop							*)
+(* :Summary:  Ga -> Ga Ga Ga Ga, QED, amplitude, 1-loop						*)
 
 (* ------------------------------------------------------------------------ *)
 

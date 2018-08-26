@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QiQjbar-QiQjbar                                                   *)
+(* :Title: QiQjbar-QiQjbar                                                 	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -8,8 +8,8 @@
 	Copyright (C) 1997-2018 Frederik Orellana
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
-	
-(* :Summary:  Qi Qjbar -> Qi Qjbar, QCD, matrix element squared, tree         *)
+
+(* :Summary:  Qi Qjbar -> Qi Qjbar, QCD, matrix element squared, tree      	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -50,8 +50,8 @@ MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
 MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
-diags = InsertFields[CreateTopologies[0, 2 -> 2],  {F[3, {1}], -F[3, {2}]} -> 
-	{F[3, {1}], -F[3, {2}]}, InsertionLevel -> {Classes}, Model -> "SMQCD", 
+diags = InsertFields[CreateTopologies[0, 2 -> 2],  {F[3, {1}], -F[3, {2}]} ->
+	{F[3, {1}], -F[3, {2}]}, InsertionLevel -> {Classes}, Model -> "SMQCD",
 	ExcludeParticles -> {S[_],V[1|2]}];
 
 Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
@@ -72,7 +72,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], SMP["m_c"], 
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], SMP["m_c"],
 	SMP["m_u"], SMP["m_c"]];
 
 
@@ -106,9 +106,3 @@ Table 7.1:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-
-
-
-

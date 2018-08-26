@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QQbar-GaGa                                                         *)
+(* :Title: QQbar-GaGa                                                    	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Q Qbar -> Ga Ga, QCD, matrix element squared, tree             *)
+(* :Summary:  Q Qbar -> Ga Ga, QCD, matrix element squared, tree          	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -110,6 +110,3 @@ FCCompareResults[{ampSquaredMasslessSUNN3[0]},{knownResults},
 Text->{"\tCompare to CalcHEP:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-

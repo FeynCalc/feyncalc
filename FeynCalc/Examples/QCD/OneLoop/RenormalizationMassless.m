@@ -9,14 +9,14 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Renormalization, QCD, MS and MSbar, 1-loop					*)
+(* :Summary:  Renormalization, massless QCD, MS and MSbar, 1-loop			*)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
 (* ::Title:: *)
-(*1-loop QCD renormalization in the minimal subtraction schemes*)
+(*1-loop massless QCD renormalization in the minimal subtraction schemes*)
 
 
 (* ::Section:: *)
@@ -28,7 +28,7 @@
 (*FeynCalc/Examples/FeynRules/QCD/GenerateModelQCD.m before running it for the first time.*)
 
 
-description="Renormalization, QCD, MS and MSbar, 1-loop";
+description="Renormalization, massless QCD, MS and MSbar, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -139,7 +139,7 @@ ampQuarkSE[0] = FCFAConvert[CreateFeynAmp[diag1[0],Truncated->True,
 	LoopMomenta->{l}, UndoChiralSplittings->True,
 	ChangeDimension->D, List->False, SMP->True,
 	FinalSubstitutions->{Zm->SMP["Z_m"], Zpsi->SMP["Z_psi"],
-	SMP["m_u"]->SMP["m_q"]}]
+	SMP["m_u"]->0}]
 
 
 (* ::Text:: *)
@@ -153,7 +153,7 @@ ampGluonSE[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
 	LoopMomenta->{l}, UndoChiralSplittings->True,
 	ChangeDimension->D, List->True, SMP->True,
 	FinalSubstitutions->{ZA->SMP["Z_A"], Zxi->SMP["Z_xi"],
-	SMP["m_u"]->SMP["m_q"]}]
+	SMP["m_u"]->0}]
 
 
 (* ::Text:: *)
@@ -180,7 +180,7 @@ ampQGlVertex[0] = FCFAConvert[CreateFeynAmp[diag4[0],Truncated->True,
 	UndoChiralSplittings->True, ChangeDimension->D,
 	List->False, SMP->True, FinalSubstitutions->
 	{ZA->SMP["Z_A"], Zg->SMP["Z_g"], Zpsi->SMP["Z_psi"],
-	SMP["m_u"]->SMP["m_q"]}]
+	SMP["m_u"]->0}]
 
 
 (* ::Section:: *)
@@ -221,21 +221,15 @@ ampQuarkSEDiv[3]=ampQuarkSEDiv[2]//SUNSimplify//
 	Collect2[#,DiracGamma,Factoring->Simplify]&
 
 
-sol[1]=Solve[SelectNotFree2[ampQuarkSEDiv[3], DiracGamma]==0,SMP["d_psi"]]//
+sol[1]=Solve[ampQuarkSEDiv[3]==0,SMP["d_psi"]]//
 	Flatten//ReplaceAll[#,Rule[a_,b_]:>Rule[a,SUNSimplify[b]]]&//
 	ReplaceAll[#,SMP["g_s"]^2->4Pi SMP["alpha_s"]]&;
 
-sol[2]=Solve[(SelectFree2[ampQuarkSEDiv[3], DiracGamma]==0)/.sol[1],SMP["d_m"]]//
-	Flatten//ReplaceAll[#,Rule[a_,b_]:>Rule[a,SUNSimplify[b]]]&//
-	ReplaceAll[#,SMP["g_s"]^2->4Pi SMP["alpha_s"]]&;
-
-solMS1=Join[sol[1],sol[2]]/.{
-	SMP["d_psi"]->SMP["d_psi^MS"],
-	SMP["d_m"]->SMP["d_m^MS"],SMP["Delta"]->1/Epsilon
+solMS1=sol[1]/.{
+	SMP["d_psi"]->SMP["d_psi^MS"],SMP["Delta"]->1/Epsilon
 }
-solMSbar1=Join[sol[1],sol[2]]/.{
-	SMP["d_psi"]->SMP["d_psi^MSbar"],
-	SMP["d_m"]->SMP["d_m^MSbar"]
+solMSbar1=sol[1]/.{
+	SMP["d_psi"]->SMP["d_psi^MSbar"]
 }
 
 
@@ -384,9 +378,7 @@ solMSbar4=sol[5]/.{SMP["d_g"]->SMP["d_g^MSbar"],1/Epsilon->SMP["Delta"]}
 
 knownResult = {
 	SMP["d_psi^MS"]->-SMP["alpha_s"]/(4Pi) 1/Epsilon CF GaugeXi["G"],
-	SMP["d_m^MS"]->-SMP["alpha_s"]/(4Pi) 1/Epsilon 3 CF,
 	SMP["d_psi^MSbar"]->-SMP["alpha_s"]/(4Pi) SMP["Delta"] CF GaugeXi["G"],
-	SMP["d_m^MSbar"]->-SMP["alpha_s"]/(4Pi) SMP["Delta"] 3 CF,
 	SMP["d_A^MS"]->SMP["alpha_s"]/(4Pi) 1/Epsilon (1/2 CA(13/3-GaugeXi["G"])-2/3 Nf),
 	SMP["d_A^MSbar"]->SMP["alpha_s"]/(4Pi) SMP["Delta"] (1/2 CA(13/3-GaugeXi["G"])-2/3 Nf),
 	SMP["d_u^MS"]->SMP["alpha_s"]/(4Pi) CA/Epsilon (3-GaugeXi["G"])/4,
@@ -397,5 +389,5 @@ knownResult = {
 FCCompareResults[Join[solMS1,solMSbar1,solMS2,solMSbar2,solMS3,solMSbar3,solMS4,solMSbar4]//Factor2,knownResult,
 Text->{"\tCompare to Muta, Foundations of QCD, \
 Eqs 2.5.131-2.5.147:",
-"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];

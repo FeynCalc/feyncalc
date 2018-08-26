@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QCDGhostSelfEnergyTwoLoops                                       *)
+(* :Title: Gh-Gh															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,57 +9,75 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the ghost self-energy in QCD at 2-loops        *)
+(* :Summary:  Gh -> Gh, massless QCD, 2-loops								*)
 
 (* ------------------------------------------------------------------------ *)
 
 
+(* ::Title:: *)
+(*QCD ghost self-energy*)
+
+
 (* ::Section:: *)
-(*The 2-loop ghost self-energy in QCD*)
+(*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-(* ::Subsection:: *)
-(*Load FeynCalc, FeynArts and Tarcer*)
-
-
+description="Gh -> Gh, massless QCD, 2-loops";
 If[ $FrontEnd === Null,
-		$FeynCalcStartupMessages = False;
-		Print["Computation of the ghost self-energy in QCD at 2-loops"];
+	$FeynCalcStartupMessages = False;
+	Print[description];
 ];
-$LoadFeynArts = True;
+If[ $Notebooks === False,
+	$FeynCalcStartupMessages = False
+];
+$LoadFeynArts= True;
 $LoadAddOns={"TARCER"};
 <<FeynCalc`
-$FAVerbose=0;
+$FAVerbose = 0;
 
 
-(* ::Subsection:: *)
+(* ::Section:: *)
 (*Generate Feynman diagrams*)
 
 
-tops=CreateTopologies[2, 1 -> 1,ExcludeTopologies -> {Tadpoles}];
-diags=InsertFields[tops, {U[5]} -> {U[5]},InsertionLevel -> {Classes}, GenericModel -> "Lorentz",Model -> "SMQCD"];
-Paint[diags,SheetHeader -> False,   Numbering -> None,ImageSize->{512,512}];
+(* ::Text:: *)
+(*Nicer typesetting*)
 
 
-(* ::Subsection:: *)
-(*Calculating the bare 2-loop off-shell ghost selfenergy diagrams*)
+diags = InsertFields[CreateTopologies[2, 1 -> 1,ExcludeTopologies -> {Tadpoles}],
+		{U[5]} -> {U[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"];
+
+Paint[diags, ColumnsXRows -> {4,1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{768,256}];
+
+
+(* ::Section:: *)
+(*Obtain the amplitude*)
 
 
 (* ::Text:: *)
-(*The computation is performed with massless quarks. Furthermore, we choose to abbreviate square of the ingoing (and outgoing) momentum p by pp.*)
+(*The prefactor 1/(2Pi)^(2D) for the loop integrals is understood. Notice that we ignore the first diagram (zero in DR) and the the fifth diagram, since its contribution is identical to that of the fourth diagram.*)
 
 
+amp[0] = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{2,3,4,6,7,8,9}], Truncated -> True, GaugeRules->{},
+	PreFactor->-I], IncomingMomenta->{p}, OutgoingMomenta->{p},LoopMomenta->{q1,q2},
+	UndoChiralSplittings->True, ChangeDimension->D, List->True, SMP->True,
+	DropSumOver->True,FinalSubstitutions->{MQU[Index[Generation, 3]]->0,GaugeXi[_]->1-GaugeXi}];
+
+
+(* ::Section:: *)
+(*Fix the kinematics*)
+
+
+FCClearScalarProducts[];
 ScalarProduct[p,p]=pp;
 
 
-(* ::Text:: *)
-(*Now we obtain the corresponding amplitudes. The prefactor 1/(2Pi)^(2D) for the loop integrals is understood. Notice that we ignore the first diagram (zero in DR) and the the fifth diagram, since*)
-(*its contribution is identical to that of the fourth diagram.*)
+(* ::Section:: *)
+(*Calculate the amplitude*)
 
 
-amps=FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{2,3,4,6,7,8,9}],Truncated -> True,GaugeRules->{},PreFactor->-I],
-IncomingMomenta->{p},OutgoingMomenta->{p},LoopMomenta->{q1,q2},UndoChiralSplittings->True,DropSumOver->True,
-ChangeDimension->D,SMP->True]/.{MQU[Index[Generation, 3]]->0,GaugeXi[_]->GaugeXi}/.GaugeXi->1-GaugeXi;
+amp[1]=FCTraceFactor/@amp[0];
 
 
 (* ::Text:: *)
@@ -97,17 +115,15 @@ ReplaceAll[#,loopHead->Identity]&//ToTFI[#,q1,q2,p]&;
 (*and apply it to every single amplitude.*)
 
 
-tmp=AbsoluteTiming[diagCompute/@amps];
-Print["Needed ",AccountingForm[tmp[[1]],3]," s for the algebraic simplifications"];
-res=tmp[[2]];
+AbsoluteTiming[amp[2]=diagCompute/@amp[1];]
 
 
-allints = Cases2[res, TFI];
+allints = Cases2[amp[2], TFI];
 allints // Length
 
 
 (* ::Text:: *)
-(*There are 272 integrals to be done for the ghost self energy. There are several possibilities how to proceed. One possibility is to calculate the integrals one by one and save them to a file in the Database directory. This can be conveniently done using the CheckDB function. If the file "IntegralsQCDTwoLoopGhostSelfEnergy.db" does not exist the first argument of CheckDB is evaluated, otherwise the list is loaded and assigned to inttable. A laptop with one i5-560m CPU running Mathematica 10 on Fedora 22 needs about 15 seconds to generate the file.*)
+(*There are 271 integrals to be done for the ghost self energy. There are several possibilities how to proceed. One possibility is to calculate the integrals one by one and save them to a file in the Database directory. This can be conveniently done using the CheckDB function. If the file "IntegralsQCDTwoLoopGhostSelfEnergy.db" does not exist the first argument of CheckDB is evaluated, otherwise the list is loaded and assigned to inttable.*)
 
 
 Timing[inttable =
@@ -122,16 +138,20 @@ Timing[inttable =
 (*Now we need to insert the calculated integrals and rewrite the whole expression into a nicer form. Note that the Tarcer two loop integrals are defined to have only 1/(Pi)^D in the measure. Therefore, we will need to multiply the full result by 1/(4Pi)^D, since we did not include the prefactor (1/(2Pi)^D)^2 in the very beginning.*)
 
 
-Timing[result =
-	PropagatorDenominatorExplicit[FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@ (res /.
-			inttable))]];]
+Timing[amp[3] =
+	PropagatorDenominatorExplicit[FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@
+	(amp[2] /. inttable))]];]
 
 
 (* ::Text:: *)
-(*Here is the full result.*)
+(*The final result*)
 
 
-result=result//.SMP["g_s"]:>gs
+resFinal=amp[3]//.SMP["g_s"]:>gs
+
+
+(* ::Section:: *)
+(*Check the final results*)
 
 
 (* ::Text:: *)
@@ -142,15 +162,15 @@ result=result//.SMP["g_s"]:>gs
 (*The quark loop contribution is given by the third diagram*)
 
 
-G2q=result[[3]]
+G2q=resFinal[[3]]
 
 
 (* ::Text:: *)
 (*This should give us the same as Eq 6.13, with T = Nf Tf (c.f. Eq. 4.6) and eta  = ( Gamma[D/2-1]^2 Gamma[3-D/2] ) / Gamma[D-3]. Remember that we must remove - delta^{ab} p^2 from our G2q and multiply it by (1/(4Pi)^D).*)
 
 
-G2qEval= -1/(4Pi)^D TarcerExpand[G2q, D -> 4 - 2 Epsilon, 0]//
-ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,CA^2->2T*CA}]&
+G2qEval= (-1/(4Pi)^D TarcerExpand[G2q, D -> 4 - 2 Epsilon, 0])/.
+	pp SUNDelta[a_,b_]->1/.CA->2T*CA
 
 
 (* ::Text:: *)
@@ -161,16 +181,15 @@ G2qFinal=G2qEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 E
 ReplaceAll[#,{SEpsilon[4 - 2*Epsilon]^2->eta^2,gs->SMP["g_s"]}]&
 
 
-G2qFinalPaper = (((CA*eta^2*SMP["g_s"]^4*T)/(-pp)^(2*Epsilon))(-53/8 - 1/(2*Epsilon^2) - 7/(4*Epsilon))/(4*Pi)^D);
-Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.13: ",
-			If[Simplify[((G2qFinal/.{Dot->Times})-G2qFinalPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
+G2qFinalPaper=(((CA*eta^2*SMP["g_s"]^4*T)/(-pp)^(2*Epsilon))*
+	(-53/8 - 1/(2*Epsilon^2) - 7/(4*Epsilon))/(4*Pi)^D);
 
 
 (* ::Text:: *)
-(*Now let us repeat the same game for G^{(2,\[Xi])(red)}(p^2) which is given by Eq. 6.14. The reducible part comes from the diagram 7, hence*)
+(*Repeat the same for G^{(2,\[Xi])(red)}(p^2) which is given by Eq. 6.14. The reducible part comes from the diagram 7, hence*)
 
 
-G2xiRed=result[[7]];
+G2xiRed=resFinal[[7]];
 G2xiRedEval= -1/(4Pi)^D TarcerExpand[G2xiRed, D -> 4 - 2 Epsilon, 0]//
 ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1}]&;
 G2xiRedFinal=G2xiRedEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//
@@ -179,15 +198,13 @@ ReplaceAll[#,{SEpsilon[4 - 2*Epsilon]^2->eta^2,gs->SMP["g_s"]}]&
 
 G2xiRedPaper=(((CA^2*eta^2*SMP["g_s"]^4)/(-pp)^(2*Epsilon)) *( 3 + (1 + GaugeXi/2)/Epsilon + GaugeXi +
 		(4 + 4*GaugeXi + GaugeXi^2)/(16*Epsilon^2))/(4*Pi)^D);
-Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.14: ",
-			If[Simplify[((G2xiRedFinal/.{Dot->Times})-G2xiRedPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
 (*Finally, we still need to verify G^{(2,\[Xi])(irred)}(p^2), the irreducible contribution of the gluon and ghost loops given by the remaining diagrams and shown in Eq 6.12*)
 
 
-G2xiIrred=Collect2[Plus@@Join[result[[1;;2]],result[[4;;6]]], {TBI, TJI}];
+G2xiIrred=Collect2[Plus@@Join[resFinal[[1;;2]],resFinal[[4;;6]]], {TBI, TJI}];
 G2xiIrredEval= -1/(4Pi)^D TarcerExpand[G2xiIrred, D -> 4 - 2 Epsilon, 0]//
 ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,Nf*Tf->T}]&;
 G2xiIrredFinal=G2xiIrredEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a,Collect[b,{SEpsilon[_],(-pp)^(-2Epsilon)}]]]&//
@@ -199,8 +216,6 @@ ReplaceAll[#,{SEpsilon[4 - 2*Epsilon]^2->eta^2,gs->SMP["g_s"]}]&
 G2xiIrredPaper=(((CA^2*eta^2*SMP["g_s"]^4)/(-pp)^(2*Epsilon)) (  1/Epsilon(67/16 - (9*GaugeXi)/32) +
 		(1 + (3*GaugeXi)/16 - (3*GaugeXi^2)/32)/Epsilon^2 + 503/32 +(-73*GaugeXi)/64 +
 (3*GaugeXi^2)/8 - (3*Zeta[3])/4 - (3*GaugeXi^2*Zeta[3])/16)/(4*Pi)^D);
-Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.12: ",
-			If[Simplify[((G2xiIrredFinal/.{Dot->Times})-G2xiIrredPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
@@ -213,5 +228,14 @@ G2xFinal=(G2xiIrredFinal+G2xiRedFinal)//ReplaceAll[#,f_ Dot[a_,b_]+ f_ Dot[a_,c_
 G2xPaper=(((CA^2*eta^2*SMP["g_s"]^4)/(-pp)^(2*Epsilon)) * ((83/16 + 7/32*GaugeXi)/Epsilon +
 		(5/4 + 7/16*GaugeXi - 1/32 GaugeXi^2)/Epsilon^2 + 599/32 - 3/4 Zeta[3] - 9/64 GaugeXi + 3/8 GaugeXi^2 - 3/16 GaugeXi^2 Zeta[3] )/
 	(4*Pi)^D);
-Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.15: ",
-			If[Simplify[((G2xFinal/.{Dot->Times})-G2xPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
+
+
+knownResult = {G2qFinalPaper,G2xiRedPaper,G2xiIrredPaper,G2xPaper};
+FCCompareResults[({G2qFinal,G2xiRedFinal,G2xiIrredFinal,G2xFinal}/.{Dot->Times}),knownResult,
+Text->{"\tCompare to Davydychev, Osland and Tarasov, hep-ph/9801380, \
+Eqs. 6.12-6.15:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->Simplify];
+Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: GlGl-GlGl                                                      *)
+(* :Title: GlGl-GlGl                                                      	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Gl Gl -> Gl Gl, QCD, matrix element squared, tree           *)
+(* :Summary:  Gl Gl -> Gl Gl, QCD, matrix element squared, tree           	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -91,7 +91,7 @@ DoPolarizationSums[#,vec,aux,ExtraFactor->spinfac]&//FixedPoint[ReleaseHold,#]&
 
 ClearAll[re];
 Table[Print["    calculating color factors in products of the amplitudes ", i,
- " and ", j," (CC), time = ",
+" and ", j," (CC), time = ",
 Timing[re[i,j]=(amp[0][[i]]ComplexConjugate[amp[0]][[j]]//
 PropagatorDenominatorExplicit//
 SUNSimplify[#,Explicit->True,SUNNToCACF->False]&)][[1]]];re[i,j],{i,4},{j,i}];
@@ -132,6 +132,3 @@ Text->{"\tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, \
 Table 7.1:","CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-

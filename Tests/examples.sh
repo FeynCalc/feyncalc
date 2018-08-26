@@ -27,7 +27,7 @@ MATH=$1
 #$MATH -nopromt -script ../FeynCalc/Examples/Tdec/GrossNeveuMultiloopTID.m &&
 
 #Phi3 Examples
-
+#-------------------------------------------------------------------------------
 for exFile in 'Renormalization.m'
 
 do
@@ -36,8 +36,9 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/Phi3/OneLoop/$exFile
 done
 
-#Phi4 Examples
 
+#Phi^4 Examples
+#-------------------------------------------------------------------------------
 for exFile in 'PhiPhi-PhiPhi.m' 'Renormalization.m'
 
 do
@@ -45,10 +46,13 @@ do
   echo -e "* \c"
   $MATH -nopromt -script ../FeynCalc/Examples/Phi4/OneLoop/$exFile
 done
+#-------------------------------------------------------------------------------
+
 
 #QED Examples
-
-for exFile in 'ElAel-ElAel.m' 'ElAel-GaGa.m' 'ElAel-MuAmu.m' 'ElEl-ElEl.m' 'ElGa-ElGa.m' 'ElMu-ElMu.m'
+#-------------------------------------------------------------------------------
+for exFile in 'ElAel-ElAel.m' 'ElAel-GaGa.m' 'ElAel-MuAmu.m' 'ElEl-ElEl.m' \
+'ElGa-ElGa.m' 'ElMu-ElMu.m' 'Ga-MuAmu.m'
 
 do
   echo
@@ -56,18 +60,24 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/QED/Tree/$exFile
 done
 
-for exFile in 'El-El.m' 'El-GaEl.m' 'Ga.m' 'Ga-Ga.m' 'Ga-GaGa.m' 'PiToGaGa.m' 'Renormalization.m' 'Ga-GaGaGaGa.m'
+for exFile in 'El-El.m' 'El-GaEl.m' 'Ga.m' 'Ga-Ga.m' 'Ga-GaGa.m' 'Ga-GaGaGaGa.m' \
+'PiToGaGa.m' 'Renormalization.m'
 
 do
   echo
   echo -e "* \c"
   $MATH -nopromt -script ../FeynCalc/Examples/QED/OneLoop/$exFile
 done
+#-------------------------------------------------------------------------------
+
 
 #QCD Examples
-
-for exFile in 'QiQibar-QiQibar.m' 'QiQibar-QjQjbar.m' 'QiQi-QiQi.m' 'QiQjbar-QiQjbar.m' 'QiQj-QiQj.m' 'QQbar-GaGa.m' 'QQbar-GlGl.m' \
-'QGl-QGl.m' 'GlGl-QQbar.m' 'GlGl-GlGl.m' 'QQbar-ElAel.m' 'QQbar-MuAmu.m' 'ElAel-QQbar.m' 'MuAmu-QQbar.m' 'GaGl-QQbar.m' 'QGa-GlQ.m' 'QQbar-GaGl.m'
+#-------------------------------------------------------------------------------
+for exFile in 'ElAel-QQbar.m' 'GaGl-QQbar.m' 'Ga-QQbar.m' 'Ga-QQbarGl.m' \
+'GlGl-GlGl.m' 'GlGl-QQbar.m' 'MuAmu-QQbar.m' 'QGa-GlQ.m' 'QGl-QGl.m' \
+'QiQibar-QiQibar.m' 'QiQibar-QjQjbar.m' 'QiQi-QiQi.m' 'QiQjbar-QiQjbar.m' \
+'QiQj-QiQj.m' 'QQbar-ElAel.m' 'QQbar-GaGa.m' 'QQbar-GaGl.m' 'QQbar-GlGl.m' \
+'QQbar-MuAmu.m'
 
 do
   echo
@@ -75,7 +85,8 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/QCD/Tree/$exFile
 done
 
-for exFile in 'Q-Q.m' 'Gl-Gl.m' 'Gh-Gh.m' 'Renormalization.m' 'GlGl-Gl.m' 'GhGl-Gh.m'
+for exFile in 'Gh-Gh.m' 'GhGl-Gh.m' 'Gl-Gl.m' 'Gl-Gl-BackgroundFieldGauge.m' \
+'Gl-GlGl.m' 'Q-Q.m' 'Renormalization.m' 'RenormalizationMassless.m'
 
 do
   echo
@@ -83,9 +94,22 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/QCD/OneLoop/$exFile
 done
 
-##EW Examples
+for exFile in 'Gh-Gh.m'
 
-for exFile in 'AnelEl-AnmuMu.m'
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/QCD/TwoLoops/$exFile
+done
+#-------------------------------------------------------------------------------
+
+
+##EW Examples
+#-------------------------------------------------------------------------------
+for exFile in 'AnelEl-AnmuMu.m' 'AnelEl-QubarQd.m' 'AnelEl-WW.m' 'AnelEl-ZZ.m' \
+'ElNmu-MuNel.m' 'H-FFbar.m' 'H-WW.m' 'H-ZZ.m' 'Mu-ElAnelNmu.m' 'NleQdt-LeQut.m' \
+'QQbar-ZZ.m' 'Qt-QbW.m' 'QuQdbar-AelNel.m' 'QutbarQdt-NelAnel.m' 'W-ElAnel.m' \
+'W-QiQjbar.m' 'Z-FFbar.m'
 
 do
   echo
@@ -93,55 +117,14 @@ do
   $MATH -nopromt -script ../FeynCalc/Examples/EW/Tree/$exFile
 done
 
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDABJAxialAnomaly.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronGMinusTwoOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronSelfEnergyOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDPhotonSelfEnergyOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDBhabhaScatteringTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDComptonScatteringTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronMuonScatteringTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDMoellerScatteringTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDMuonProductionTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDPairAnnihilationTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDOnePhotonTadpoleOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDThreePhotonDiagramsOneLoop.m &&
+for exFile in 'H-GG.m'
 
-##EW Examples
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWMuonDecayTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronMuonNeutrinoToMuonElectronNeutrinoTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronAntineutrinoElectronToMuonAntineutrinoMuonTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWElectronAntineutrinoElectronToAntiupQuarkDownQuarkTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWNeutrinoDownQuarkToLeptonUpQuarkTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWWBosonToElectronElectronAntineutrino.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoFermionsTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToWPlusWMinusTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToZZTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWWBosonToQQbarp.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWT-QW.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWZ-ffbar.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWHiggsToTwoGluonsOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWAntiupQuarkDownQuarkToElectronAntielectronNeutrinoTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWUpQuarkDownAntiquarkToPositronElectronNeutrinoTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/EW/EWQQBarToZZTree.m &&
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/EW/OneLoop/$exFile
+done
+#-------------------------------------------------------------------------------
 
-##QCD Examples
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGammaStarGToQiQBari.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiGammaStarToQiGTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToGammaStarGTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQjToQiQjTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBarjToQiQBarjTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQiToQiQiTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToQjQBarjTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToQiQBariTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToGGTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGGToQiQBariTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGQiToGQi.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGGToGGTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQQBarToElectronPositronTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQQBarToGammaGammaTree.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQuarkSelfEnergyOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGluonSelfEnergyOneLoop.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGhostSelfEnergyTwoLoops.m &&
-#$MATH -nopromt -script ../FeynCalc/Examples/FeynRules/QCDBGF/PureYMSelfEnergyInQCDBGFAtOneLoop.m
 
 notify-send --urgency=low -i "$([ $? = 0 ] && echo sunny || echo error)" "Finished running examples for FeynCalc."

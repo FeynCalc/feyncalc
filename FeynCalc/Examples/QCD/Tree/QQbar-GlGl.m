@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QQbar-GlGl                                                      *)
+(* :Title: QQbar-GlGl                                                     	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Q Qbar -> Gl Gl, QCD, matrix element squared, tree           *)
+(* :Summary:  Q Qbar -> Gl Gl, QCD, matrix element squared, tree           	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -106,9 +106,3 @@ Text->{"\tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, \
 Table 7.1:","CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-
-
-
-

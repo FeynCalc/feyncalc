@@ -4,14 +4,118 @@ This directory contains examples of interesting calculations from textbooks and 
 _FeynCalc_.
 
 # Available examples
-TODO
+
+## Phi^3
+
+### 1-loop level
+
+* Renormalization
+
+## Phi^4
+
+### 1-loop level
+
+* Phi Phi -> Phi Phi
+* Renormalization
+
+### 1-loop level
+
+## QED
+
+### Tree level
+
+* El Ael -> El Ael
+* El Ael-> Ga Ga
+* El Ael-> Mu Amu
+* El El-> El El
+* El Ga-> El Ga
+* El Mu-> El Mu
+* Ga -> Mu Amu
+
+
+### 1-loop level
+
+* El -> El
+* El -> Ga El
+* Ga
+* Ga -> Ga
+* Ga -> Ga Ga
+* Ga -> Ga Ga Ga Ga
+* Pi -> GaGa
+* Renormalization in the MS and MSbar schemes
+
+## QCD
+
+### Tree level
+
+* El Ael -> Q Qbar
+* Ga Gl -> Q Qbar
+* Ga -> Q Qbar
+* Ga -> Q Qbar Gl
+* Gl Gl -> Gl Gl
+* Gl Gl -> Q Qbar
+* Mu Amu -> Q Qbar
+* Q Ga -> Gl Q
+* Q Gl -> Q Gl
+* Qi Qibar -> Qi Qibar
+* Qi Qibar -> Qj Qjbar
+* Qi Qi -> Qi Qi
+* Qi Qjbar -> Qi Qjbar
+* Qi Qj -> Qi Qj
+* Q Qbar -> El Ael
+* Q Qbar -> Ga Ga
+* Q Qbar -> Ga Gl
+* Q Qbar -> Gl Gl
+* Q Qbar -> Mu Amu
+
+
+### 1-loop level
+
+* Gh -> Gh
+* Gh Gl -> Gh
+* Gl -> Gl
+* Gl -> Gl in the background field gauge
+* Gl -> Gl Gl
+* Q -> Q
+* Renormalization
+* Renormalization Massless
+
+### 2-loop level
+
+* Gh -> Gh
+
+## EW
+
+### Tree level
+
+* Anel El -> Anmu Mu
+* Anel El -> Qubar Qd
+* Anel El -> W W
+* Anel El -> Z Z
+* El Nmu -> Mu Nel
+* H -> F Fbar
+* H -> W W
+* H -> Z Z
+* Mu -> El Anel Nmu
+* NleQdt -> Le Qut
+* QQbar -> Z Z
+* Qt -> Qb W
+* Qu Qdbar -> Ael Nel
+* Qutbar Qdt -> Nel Anel
+* W -> El Anel
+* W -> Qi Qjbar
+* Z -> F Fbar
+
+### 1-loop level
+
+* H -> Gl Gl
 
 # Directory structure
 
 ## Main directories
 
 * `QCD` - calculations in Quantum Chromodynamics (including electroweak corrections to QCD processes and Effective Field Theories of QCD)
-* `EW` - calculations in Electroweak Theory (including Effective Field Theories of EW interactions)
+* `EW` - calculations in Electroweak Theory (including QCD corrections to EW processes and Effective Field Theories of EW interactions)
 * `QED` - calculation in Quantum Electrodynamics (including Effective Field Theories of QED)
 * `FeynRules` - New _FeynRules_ models for _FeynArts_ (to generate the models and use them with _FeynArts_ you must have the [FeynRules](http://feynrules.irmp.ucl.ac.be/) package installed)
 * `Misc` - miscellaneous examples that do not fit into other categories (including showcases for single _FeynCalc_ functions)

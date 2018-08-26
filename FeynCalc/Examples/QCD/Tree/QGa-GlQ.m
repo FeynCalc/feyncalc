@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QGa-GlQ                                                      *)
+(* :Title: QGa-GlQ                                                      	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Q Ga -> Gl Q, QCD, matrix element squared, tree           *)
+(* :Summary:  Q Ga -> Gl Q, QCD, matrix element squared, tree           	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -95,7 +95,7 @@ ampSquaredMassless[0] = ampSquared[0]//ReplaceAll[#,{SMP["m_u"] -> 0}]&//
 	TrickMandelstam[#,{s,t,u,qQ^2}]&
 
 
-ampSquaredMasslessSUNN3[0] = 
+ampSquaredMasslessSUNN3[0] =
 	Simplify[ampSquaredMassless[0]/.SUNN->3/.u->qQ^2-s-t/.qQ->I Q]
 
 
@@ -110,6 +110,3 @@ FCCompareResults[{ampSquaredMasslessSUNN3[0]},{knownResults},
 Text->{"\tCheck with R. Field, Applications of Perturbative QCD, Eq 4.3.10:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-

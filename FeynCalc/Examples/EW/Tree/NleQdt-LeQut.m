@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: EWNeutrinoDownQuarkToLeptonUpQuarkTree                   *)
+(* :Title: NleQdt-LeQut                                                  	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,26 +9,28 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:
-		Computation of the scattering cross section for a 
-		neutrino and a down-type quark going to the 
-		corresponding lepton and up-type quark in the 
-		Electroweak theory at tree level.                          *)
+(* :Summary:  Nle Qdt -> Le Qut, EW, total cross section, tree              *)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
+(* ::Title:: *)
+(*Neutrino down-type quark annihilation into a lepton and an up-type quark*)
+
+
 (* ::Section:: *)
-(*Load FeynCalc and FeynArts*)
+(*Load FeynCalc and the necessary add-ons or other packages*)
 
 
+description="Nle Qdt -> Le Qut, EW, total cross section, tree";
 If[ $FrontEnd === Null,
-		$FeynCalcStartupMessages = False;
-		Print["Computation of the scattering cross section for a neutrino and
-a down-type quark going to the corresponding lepton and up-type quark in Electroweak theory at tree level."];
+	$FeynCalcStartupMessages = False;
+	Print[description];
 ];
-If[$Notebooks === False, $FeynCalcStartupMessages = False];
+If[ $Notebooks === False,
+	$FeynCalcStartupMessages = False
+];
 $LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
@@ -36,6 +38,16 @@ $FAVerbose = 0;
 
 (* ::Section:: *)
 (*Generate Feynman diagrams*)
+
+
+(* ::Text:: *)
+(*Nicer typesetting*)
+
+
+MakeBoxes[pu,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(u\)]\)";
+MakeBoxes[pd,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(d\)]\)";
+MakeBoxes[pn,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(n\)]\)";
+MakeBoxes[pl,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(l\)]\)";
 
 
 (* ::Text:: *)
@@ -52,79 +64,85 @@ $CKM=True;
 InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 
 
-topQuarkNuScattering = CreateTopologies[0, 2 -> 2];
-diagsQuarkNuScatteringTree = InsertFields[topQuarkNuScattering,
+diags = InsertFields[CreateTopologies[0, 2 -> 2],
 {F[4,{1,1}],F[1,{2}]} -> {F[3,{1,1}],F[2,{2}]}, InsertionLevel -> {Classes},
 Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
-Paint[diagsQuarkNuScatteringTree, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->False];
+
+Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain the amplitude*)
 
 
-ampQuarkNuScatteringTree=FCFAConvert[CreateFeynAmp[diagsQuarkNuScatteringTree],DropSumOver->True,
-List->False,SMP->True,ChangeDimension->4, IncomingMomenta->{pd,pn},OutgoingMomenta->{pu,pl},
-FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2] SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2],
-CKM[1,1]->SMP[{"V_ud",I}]}]//Contract
+amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{pd,pn},
+	OutgoingMomenta->{pu,pl},ChangeDimension->4,List->False, SMP->True,
+	Contract->True,DropSumOver->True,  FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2]*
+	SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]}]
 
 
 (* ::Section:: *)
-(*Setup the kinematics*)
+(*Fix the kinematics*)
 
 
 FCClearScalarProducts[];
-SetMandelstam[s,t,u,pd,pn,-pu,-pl,SMP["m_d"],0,SMP["m_u"],SMP["m_l"]];
+SetMandelstam[s, t, u, pd, pn, -pu, -pl, SMP["m_d"], 0, SMP["m_u"], SMP["m_l"]];
 
 
 (* ::Section:: *)
-(*Obtain squared amplitude for the unpolarized process*)
+(*Square the amplitude*)
 
 
 (* ::Text:: *)
 (*There is no polarization averaging for neutrinos here, as right handed neutrinos do not interact*)
 
 
-sqAmpQuarkNuScatteringTree=ampQuarkNuScatteringTree ComplexConjugate[ampQuarkNuScatteringTree]//
-FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Factor2
+ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
+	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify
 
 
 (* ::Text:: *)
-(*In the following we neglect the momentum in the W-propagator as compared to the W-mass. This is a very good approximation at low energies, as then (pl-pn)^2  <= m_l^2 << m_W^2.*)
+(*In the following we neglect the momentum in the W-propagator as compared to the W-mass. This is a very good approximation at low energies, as then (pl-pn)^2  <= m_mu^2 << m_W^2.*)
 
 
-sqAmpQuarkNuScatteringTree2=(FCE[sqAmpQuarkNuScatteringTree]/.{pl-pn->0})//PropagatorDenominatorExplicit//Factor2
+ampSquared[1]=ampSquared[0]//FCE//ReplaceAll[#,{pl-pn->0}]&//
+	PropagatorDenominatorExplicit//Factor2
 
 
 (* ::Section:: *)
-(*Total cross-section*)
+(*Total cross section*)
 
 
 (* ::Text:: *)
 (*The total cross-section *)
 
 
-prefac=4Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_l"]^2-SMP["m_u"]^2)^2-4 SMP["m_l"]^2 SMP["m_u"]^2]/Sqrt[(s-SMP["m_d"]^2)^2]
+prefac=4Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_l"]^2-SMP["m_u"]^2)^2-4 SMP["m_l"]^2 *
+	SMP["m_u"]^2]/Sqrt[(s-SMP["m_d"]^2)^2]
 
 
-crossSectionTotal=sqAmpQuarkNuScatteringTree2*prefac//PowerExpand
+crossSectionTotal=prefac*ampSquared[1]//PowerExpand
 
 
 (* ::Text:: *)
 (*If the lepton is a muon, then the up quark mass can be neglected*)
 
 
-crossSectionTotalMuon=PowerExpand[crossSectionTotal/.{SMP["m_u"]->0,SMP["m_l"]->SMP["m_mu"]}]
+crossSectionTotalMuon=PowerExpand[crossSectionTotal/.{SMP["m_u"]->0,
+	SMP["m_l"]->SMP["m_mu"]}]
 
 
 (* ::Section:: *)
-(*Check with the literature*)
+(*Check the final results*)
 
 
-(* ::Text:: *)
-(*The result for the muon and neglected up quark mass can be found in Grozin, "Using REDUCE in High Energy Physics", Chapter 5.3*)
-
-
-crossSectionTotalMuonKnown=(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2*SMP["V_ud", -I]*SMP["V_ud", I])/(Pi*s);
-Print["Check with Grozin, Chapter 5.3:",
-			If[Simplify[crossSectionTotalMuon-crossSectionTotalMuonKnown]===0, "CORRECT.", "!!! WRONG !!!"]];
+knownResults = {
+	(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2*SMP["V_ud", -I]*SMP["V_ud", I])/(Pi*s)
+};
+FCCompareResults[{crossSectionTotalMuon},
+knownResults,
+Text->{"\tCompare to Grozin, \
+Using REDUCE in High Energy Physics, Chapter 5.3:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];

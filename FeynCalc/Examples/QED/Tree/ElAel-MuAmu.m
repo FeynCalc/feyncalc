@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  El Ael -> Mu Amu, QED, total cross section, tree			*)
+(* :Summary:  El Ael -> Mu Amu, QED, total cross section, tree				*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -143,7 +143,8 @@ diffXSection1= prefac1 integral1
 prefac2=1/(128 Pi^2 s)
 
 
-integral2=Simplify[ampSquaredMassless2[0]/(s/4) /.{u-> -s-t,SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2}]
+integral2=Simplify[ampSquaredMassless2[0]/(s/4) /.
+	{u-> -s-t,SMP["e"]^4->(4 Pi SMP["alpha_fs"])^2}]
 
 
 diffXSection2=prefac2 integral2
@@ -177,6 +178,3 @@ Eqs 5.10, 5.21, 5.70 and to Field, \
 Applications of Perturbative QCD, Eq. 2.1.14",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-

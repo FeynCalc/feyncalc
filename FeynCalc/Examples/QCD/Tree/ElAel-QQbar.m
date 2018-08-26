@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: ElAel-QQbar                                              *)
+(* :Title: ElAel-QQbar                                              		*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -8,8 +8,8 @@
 	Copyright (C) 1997-2018 Frederik Orellana
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
-	
-(* :Summary:  El Ael -> Q Qbar, QCD, total cross section, tree    *)
+
+(* :Summary:  El Ael -> Q Qbar, QCD, total cross section, tree    			*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -50,7 +50,7 @@ MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
 MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
-diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[2, {1}], -F[2, {1}]} -> 
+diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[2, {1}], -F[2, {1}]} ->
 	{F[3, {1}], -F[3, {1}]}, InsertionLevel -> {Classes}, Model -> "SMQCD",
 	ExcludeParticles -> {S[_],V[2]}];
 
@@ -64,7 +64,7 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 	OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,
-	List->False, SMP->True, Contract->True,DropSumOver->True, 
+	List->False, SMP->True, Contract->True,DropSumOver->True,
 	Prefactor->3/2 SMP["e_Q"],FinalSubstitutions->{SMP["m_u"]->SMP["m_q"]}]
 
 
@@ -73,7 +73,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"]^2, SMP["m_e"]^2, 
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"]^2, SMP["m_e"]^2,
 	SMP["m_q"]^2, SMP["m_q"]^2];
 
 
@@ -145,7 +145,7 @@ crossSectionTotalQED=4*Pi*SMP["alpha_fs"]^2/3/s
 
 
 (* ::Text:: *)
-(*Taking the ration of the two gives us the famous R-ration prediction of the parton mode, where the summation over the quark flavors in front of the charge squared is understood*)
+(*Taking the ratio of the two gives us the famous R-ration prediction of the parton mode, where the summation over the quark flavors in front of the charge squared is understood*)
 
 
 crossSectionTotal/crossSectionTotalQED
@@ -156,7 +156,7 @@ quarkCharges={ eq[u|c|t]->2/3,eq[d|s|b]->-1/3};
 
 (* ::Text:: *)
 (*Depending on the available center of mass energy, we may not be able to produce all the existing*)
-(*quark flavors. Below 3 GeV we have only up, down and strange quarks and the R-ratio is given by*)
+(*quark flavors. Below 3 GeV (roughly twice the mass of the charm quark) we have only up, down and strange quarks and the R-ratio is given by*)
 
 
 Sum[3 eq[i]^2,{i,{u,d,s}}]/.quarkCharges
@@ -198,6 +198,3 @@ Text->{"\tCompare to CalcHEP and to Field, \
 Applications of Perturbative QCD, Eq. 2.1.15:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-

@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: GlGl-Gl													*)
+(* :Title: Gl-GlGl															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  GlGl - Gl, QCD, only UV divergences, 1-loop					*)
+(* :Summary:  Gl - Gl Gl, QCD, only UV divergences, 1-loop					*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,7 +28,7 @@
 (*FeynCalc/Examples/FeynRules/QCD/GenerateModelQCD.m before running it for the first time.*)
 
 
-description="GlGl - Gl, QCD, only UV divergences, 1-loop";
+description="Gl - Gl Gl, QCD, only UV divergences, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -70,8 +70,8 @@ MakeBoxes[rho,TraditionalForm]:="\[Rho]";
 
 template = insertFields[createTopologies[1, 1 -> 2,
 		ExcludeTopologies -> {Tadpoles,WFCorrections,
-		WFCorrectionCTs,SelfEnergies}], {V[5]} -> 
-		{V[5],V[5]}, InsertionLevel -> {Particles}, 
+		WFCorrectionCTs,SelfEnergies}], {V[5]} ->
+		{V[5],V[5]}, InsertionLevel -> {Particles},
 		Model -> FileNameJoin[{"QCD","QCD"}],
 		GenericModel -> FileNameJoin[{"QCD","QCD"}],
 		ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
@@ -215,7 +215,7 @@ amp2Div[2]=amp2Div[1]/. {2p1+p2->p1-p3,p1+2p2->p2-p3}
 
 
 (* ::Text:: *)
-(*This calculation requires about 70 seconds on a modern quad core laptop*)
+(*This calculation requires about 70 seconds on a modern laptop*)
 
 
 AbsoluteTiming[amp3[1]=TID[FCE[amp3[0]]/.{p2+p3->-p1,-p2-p3->p1},l,
@@ -233,7 +233,7 @@ amp3Div[1]=amp3Div[0]//SUNSimplify//FCReplaceD[#,D->4-2 Epsilon]&//
 
 amp3Div[2]=(((amp3Div[1]/.{p3->-p1-p2})//ExpandScalarProduct//FCE//
 	Collect2[#,MTD,GaugeXi,Factoring->Function[x,MomentumCombine[Factor[x]]]]&)/.
-	2p1+p2->p1-p3/.p1+2p2->p2-p3/. 22p1+11p2 -> 11p1-11p3/. 
+	2p1+p2->p1-p3/.p1+2p2->p2-p3/. 22p1+11p2 -> 11p1-11p3/.
 	-22p2-11p1 -> -11p2+11p3)//ExpandScalarProduct//FCE//
 	Collect2[#,MTD,Factoring->Function[x,MomentumCombine[Factor[x]]]]&
 
@@ -290,17 +290,11 @@ knownResult = {
 
 
 	(I SMP["g_s"]) SMP["g_s"]^2/(4Pi)^2  CA/8 SMP["Delta"]*(
-		-4-9GaugeXi["G"]+15+3GaugeXi["G"])* 
+		-4-9GaugeXi["G"]+15+3GaugeXi["G"])*
 	VertexLorentzStruct[{p1,p2,p3},{mu,nu,rho},{a,b,c}]
 }//FCI;
-FCCompareResults[{amp1Div[2],amp2Div[2],amp3Div[2]}, knownResult, 
+FCCompareResults[{amp1Div[2],amp2Div[2],amp3Div[2]}, knownResult,
 	Text->{"\tCompare to Pascual and Tarrach, QCD: Renormalization \
 for the Practitioner, Eq III.46:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-
-
-
-

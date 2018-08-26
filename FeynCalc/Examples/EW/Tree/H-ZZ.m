@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: EWHiggsToZZTree										*)
+(* :Title: H-ZZ																*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,22 +9,28 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the total decay rate  for the decay
-		of a Higgs into Z^0 Z^0 in Electroweak Theory at tree level.		*)
+(* :Summary:  H -> Z Z, EW, total decay rate, tree              			*)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
+(* ::Title:: *)
+(*Higgs decaying into a Z boson pair*)
+
+
 (* ::Section:: *)
-(*Load FeynCalc and FeynArts*)
+(*Load FeynCalc and the necessary add-ons or other packages*)
 
 
+description="H -> Z Z, EW, total decay rate, tree";
 If[ $FrontEnd === Null,
-		$FeynCalcStartupMessages = False;
-		Print["Computation of the total decay rate for the decay of a Higgs into Z^0 Z^0 in Electroweak Theory at tree level."];
+	$FeynCalcStartupMessages = False;
+	Print[description];
 ];
-If[$Notebooks === False, $FeynCalcStartupMessages = False];
+If[ $Notebooks === False,
+	$FeynCalcStartupMessages = False
+];
 $LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
@@ -34,13 +40,24 @@ $FAVerbose = 0;
 (*Generate Feynman diagrams*)
 
 
-diagsHiggsToZZTree = InsertFields[CreateTopologies[0,1 -> 2], {S[1]} -> {V[2],V[2]},
-InsertionLevel -> {Classes}];
-Paint[diagsHiggsToZZTree,ColumnsXRows->{1,1},Numbering -> None,SheetHeader->None,ImageSize->{256,256}];
+diags = InsertFields[CreateTopologies[0,1 -> 2], {S[1]} -> {V[2],V[2]},
+	InsertionLevel -> {Classes}];
+
+Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
-(*Obtain corresponding amplitudes*)
+(*Obtain the amplitudes*)
+
+
+amp[0]=FCFAConvert[CreateFeynAmp[diags],IncomingMomenta->{pH},
+	OutgoingMomenta->{k1,k2},List->False,ChangeDimension->4,
+	DropSumOver->True,SMP->True,Contract->True,UndoChiralSplittings->True]
+
+
+(* ::Section:: *)
+(*Fix the kinematics*)
 
 
 FCClearScalarProducts[];
@@ -49,32 +66,48 @@ SP[k2,k2]=SMP["m_Z"]^2;
 SP[pH,pH]=SMP["m_H"]^2;
 SP[k1,k2]=(SMP["m_H"]^2-2 SMP["m_Z"]^2)/2;
 
-ampHiggsToZZTree=FCFAConvert[CreateFeynAmp[diagsHiggsToZZTree],IncomingMomenta->{pH},OutgoingMomenta->{k1,k2},List->False,ChangeDimension->4,
-DropSumOver->True,SMP->True,UndoChiralSplittings->True]//Contract//DotSimplify
+
+(* ::Section:: *)
+(*Square the amplitudes*)
+
+
+ampSquared[0]=1/2(amp[0] (ComplexConjugate[amp[0]]))//
+	PropagatorDenominatorExplicit//DoPolarizationSums[#,k1]&//
+	DoPolarizationSums[#,k2]&//Simplify
 
 
 (* ::Section:: *)
-(*Calculate the total decay rate*)
+(*Total decay rates*)
 
 
-ampSq=ampHiggsToZZTree*ComplexConjugate[ampHiggsToZZTree]//DoPolarizationSums[#,k1]&//DoPolarizationSums[#,k2]&//Simplify
-
-
-$Assumptions={SMP["m_H"]>0,SMP["m_W"]>0};
-symmetryFactor=1/2;
+$Assumptions={SMP["m_H"]>0,SMP["m_Z"]>0};
 phaseSpacePrefactor[m_]:=1/(16 Pi SMP["m_H"])Sqrt[1-4 m^2 / SMP["m_H"]^2];
-decayRateTotalTree=symmetryFactor phaseSpacePrefactor[SMP["m_Z"]] ampSq//
-ReplaceAll[#,SMP["e"]^2->4 Pi SMP["alpha_fs"]]&//FullSimplify
 
 
-(decayRateTotalTree/.SMP["m_Z"]^2-> h[SMP["m_Z"]^2/SMP["m_H"]^2]SMP["m_H"]^2/.
+totalDecayRate=phaseSpacePrefactor[SMP["m_Z"]] ampSquared[0]//
+ReplaceRepeated[#,{SMP["e"]^2->4 Pi SMP["alpha_fs"], 1/SMP["m_Z"]^4->
+	SMP["cos_W"]^4/SMP["m_W"]^4}]&//Simplify
+
+
+(* ::Text:: *)
+(*Rewrite the result in a nicer way*)
+
+
+(totalDecayRate/.SMP["m_Z"]^2-> h[SMP["m_Z"]^2/SMP["m_H"]^2]SMP["m_H"]^2/.
 SMP["m_Z"]^4-> h[SMP["m_Z"]^4/SMP["m_H"]^4]SMP["m_H"]^4)//FullSimplify//ReplaceAll[#,h->Identity]&
 
 
-decayRateTotalTreeKnown= SMP["g_W"]^2/(128 Pi) SMP["m_H"]^3/SMP["m_W"]^2 Sqrt[1- 4 SMP["m_Z"]^2/SMP["m_H"]^2](1-
-4 SMP["m_Z"]^2/SMP["m_H"]^2 + 12 SMP["m_Z"]^4/SMP["m_H"]^4);
-Print["Check with Gunion, Haber, Kane, Dawson, Higgs Hunter Guide, Eq 2.10: ",
-			If[(Simplify[decayRateTotalTree-
-			(decayRateTotalTreeKnown//ReplaceAll[#,SMP["g_W"]-> SMP["e"]/SMP["sin_W"]]&//ReplaceAll[#,SMP["e"]^2->4 Pi SMP["alpha_fs"]]&)]//
-			ReplaceRepeated[#,SMP["cos_W"] -> SMP["m_W"]/SMP["m_Z"]]&)===0, 
-			"CORRECT.", "!!! WRONG !!!"]];
+(* ::Section:: *)
+(*Check the final results*)
+
+
+knownResults = {
+	(SMP["alpha_fs"]*SMP["m_H"]^3*Sqrt[1 - (4*SMP["m_Z"]^2)/SMP["m_H"]^2]*
+(1 - (4*SMP["m_Z"]^2)/SMP["m_H"]^2 + (12*SMP["m_Z"]^4)/SMP["m_H"]^4))/
+(32*SMP["m_W"]^2*SMP["sin_W"]^2)};
+FCCompareResults[{totalDecayRate},
+knownResults,Factoring->Simplify,
+Text->{"\tCompare to Gunion, Haber, Kane and Dawson, \
+Higgs Hunter Guide, Eq 2.10:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];

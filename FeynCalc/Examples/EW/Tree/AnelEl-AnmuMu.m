@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: AnEl-AnmuMu                                                       *)
+(* :Title: AnEl-AnmuMu                                                      *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,18 +9,18 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Anel El -> Anmu Mu, EW, total cross section, tree              *)
+(* :Summary:  Anel El -> Anmu Mu, EW, total cross section, tree            	*)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
 (* ::Title:: *)
-(*Electron antineutrino-electron annihilation into a muon antineutrino and muon*)
+(*Electron electron-antineutrino annihilation into a muon-antineutrino and a muon*)
 
 
 (* ::Section:: *)
-(*Load FeynCalc and FeynArts*)
+(*Load FeynCalc and the necessary add-ons or other packages*)
 
 
 description="Anel El -> Anmu Mu, EW, total cross section, tree";
@@ -60,6 +60,7 @@ InitializeModel[{SM, UnitarySM}, GenericModel -> {Lorentz, UnitaryLorentz}];
 diags = InsertFields[CreateTopologies[0, 2 -> 2], {-F[1, {1}],
 	F[2, {1}]} -> {-F[1,{2}],F[2,{2}]}, InsertionLevel -> {Classes},
 	Model -> {SM, UnitarySM},GenericModel->{Lorentz, UnitaryLorentz}];
+
 Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 	SheetHeader->None,ImageSize->{512,256}];
 
@@ -79,15 +80,11 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{q1,pe},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s,t,u,q1,pe,-q2,-pm,0,SMP["m_e"],0,SMP["m_mu"]];
+SetMandelstam[s, t, u, q1, pe, -q2, -pm, 0, SMP["m_e"], 0, SMP["m_mu"]];
 
 
 (* ::Section:: *)
 (*Square the amplitude*)
-
-
-(* ::Section:: *)
-(*Obtain squared amplitude for the unpolarized process*)
 
 
 (* ::Text:: *)
@@ -96,10 +93,6 @@ SetMandelstam[s,t,u,q1,pe,-q2,-pm,0,SMP["m_e"],0,SMP["m_mu"]];
 
 ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify
-
-
-sqElNuScatteringTree=ampElNuScatteringTree ComplexConjugate[ampElNuScatteringTree]//
-FermionSpinSum[#,ExtraFactor->1/2]&//DiracSimplify//Contract//Factor2
 
 
 (* ::Text:: *)
@@ -111,7 +104,7 @@ ampSquared[1]=ampSquared[0]//FCE//ReplaceAll[#,{pm+q2->0}]&//
 
 
 (* ::Section:: *)
-(*Total cross-section*)
+(*Total cross section*)
 
 
 (* ::Text:: *)
@@ -128,7 +121,7 @@ CSP[q2]=(s-SMP["m_mu"]^2)^2/(4s);
 prefac=2Pi/(64 Pi^2 s) Sqrt[(s-SMP["m_mu"]^2)^2]/Sqrt[(s-SMP["m_e"]^2)^2]
 
 
-integral1=Integrate[Simplify[ampSquared[1]/.u-> SMP["m_e"]^2-
+integral=Integrate[Simplify[ampSquared[1]/.u-> SMP["m_e"]^2-
 	2(TC[q2]TC[pe]-Sqrt[CSP[q2]]Sqrt[CSP[pe]]x)],{x,-1,1}]
 
 
@@ -136,16 +129,7 @@ integral1=Integrate[Simplify[ampSquared[1]/.u-> SMP["m_e"]^2-
 (*The total cross-section *)
 
 
-crossSectionTotal=integral1*prefac//PowerExpand//Factor2
-
-
-(* ::Section:: *)
-(*Check with the literature*)
-
-
-crossSectionTotalKnown=(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2)(s^2+(SMP["m_mu"]^2+SMP["m_e"]^2)/2 s+SMP["m_mu"]^2 SMP["m_e"]^2)/(3Pi s^3);
-Print["Check with Grozin, Using REDUCE in High Energy Physics, Chapter 5.3: ",
-			If[Simplify[crossSectionTotal-crossSectionTotalKnown]===0, "CORRECT.", "!!! WRONG !!!"]];
+crossSectionTotal=integral*prefac//PowerExpand//Factor2
 
 
 (* ::Section:: *)
@@ -156,12 +140,9 @@ knownResults = {
 	(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2)(s^2+(SMP["m_mu"]^2+SMP["m_e"]^2)/2 s+
 	SMP["m_mu"]^2 SMP["m_e"]^2)/(3Pi s^3)
 };
-FCCompareResults[{crossSectionTotalKnown},
+FCCompareResults[{crossSectionTotal},
 knownResults,
 Text->{"\tCompare to Grozin, \
 Using REDUCE in High Energy Physics, Chapter 5.3:",
-"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-

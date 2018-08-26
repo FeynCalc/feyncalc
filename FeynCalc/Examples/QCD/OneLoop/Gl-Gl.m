@@ -60,7 +60,7 @@ MakeBoxes[nu,TraditionalForm]:="\[Nu]";
 
 
 diags = InsertFields[CreateTopologies[1, 1 -> 1, ExcludeTopologies->{Tadpoles}],
-		 {V[5]} -> {V[5]}, InsertionLevel -> {Particles}, Model -> "SMQCD",
+		{V[5]} -> {V[5]}, InsertionLevel -> {Particles}, Model -> "SMQCD",
 		ExcludeParticles->{S[_],V[2|3],F[4],F[3,{2|3}]}];
 
 Paint[diags, ColumnsXRows -> {2,2}, Numbering -> Simple,
@@ -75,7 +75,7 @@ Paint[diags, ColumnsXRows -> {2,2}, Numbering -> Simple,
 (*The 1/(2Pi)^D prefactor is implicit.*)
 
 
-amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{}, 
+amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{},
 	PreFactor->1], IncomingMomenta->{p}, OutgoingMomenta->{p},LoopMomenta->{q},
 	LorentzIndexNames->{mu,nu}, UndoChiralSplittings->True,
 	ChangeDimension->D, List->True, SMP->True, DropSumOver->True,
@@ -194,6 +194,3 @@ Text->{"\tCompare to Muta, Foundations of QCD, \
 Eqs 2.5.131-2.5.132:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-

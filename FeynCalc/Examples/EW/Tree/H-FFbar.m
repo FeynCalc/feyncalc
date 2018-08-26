@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: EWHiggsToTwoFermionsTree											*)
+(* :Title: H-FFbar															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,22 +9,28 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the total decay rate  for the decay
-		of a Higgs into 2 fermions in Electroweak Theory at tree level.		*)
+(* :Summary:  H -> F Fbar, EW, total decay rate, tree              			*)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
+(* ::Title:: *)
+(*Higgs decaying into a fermion-antifermion pair*)
+
+
 (* ::Section:: *)
-(*Load FeynCalc and FeynArts*)
+(*Load FeynCalc and the necessary add-ons or other packages*)
 
 
+description="H -> F Fbar, EW, total decay rate, tree";
 If[ $FrontEnd === Null,
-		$FeynCalcStartupMessages = False;
-		Print["Computation of the total decay rate  for the decay of a Higgs into 2 fermions in Electroweak Theory at tree level."];
+	$FeynCalcStartupMessages = False;
+	Print[description];
 ];
-If[$Notebooks === False, $FeynCalcStartupMessages = False];
+If[ $Notebooks === False,
+	$FeynCalcStartupMessages = False
+];
 $LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
@@ -34,18 +40,44 @@ $FAVerbose = 0;
 (*Generate Feynman diagrams*)
 
 
-diagsHiggsToLeptonsTree = InsertFields[CreateTopologies[0,1 -> 2], {S[1]} -> {F[2,{l}],-F[2,{l}]},
-InsertionLevel -> {Classes}];
-Paint[diagsHiggsToLeptonsTree,ColumnsXRows->{1,1},Numbering -> None,SheetHeader->None,ImageSize->{256,256}];
+diagsLeptons = InsertFields[CreateTopologies[0,1 -> 2], {S[1]} ->
+	{F[2,{l}],-F[2,{l}]}, InsertionLevel -> {Classes}];
+
+Paint[diagsLeptons, ColumnsXRows -> {2, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{512,256}];
 
 
-diagsHiggsToQuarksTree = InsertFields[CreateTopologies[0,1 -> 2], {S[1]} -> {F[3,{l}],-F[3,{l}]},
-InsertionLevel -> {Classes}];
-Paint[diagsHiggsToQuarksTree,ColumnsXRows->{1,1},Numbering -> None,SheetHeader->None,ImageSize->{256,256}];
+diagsQuarks = InsertFields[CreateTopologies[0,1 -> 2], {S[1]} ->
+	{F[3,{l}],-F[3,{l}]}, InsertionLevel -> {Classes}];
+
+Paint[diagsQuarks, ColumnsXRows -> {2, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
-(*Obtain corresponding amplitudes*)
+(*Obtain the amplitudes*)
+
+
+ampLeptons[0]=FCFAConvert[CreateFeynAmp[diagsLeptons],IncomingMomenta->{pH},
+	OutgoingMomenta->{p1,p2},List->False,ChangeDimension->4,
+	DropSumOver->True,SMP->True,Contract->True,UndoChiralSplittings->True,
+	FinalSubstitutions->{MLE[l]->SMP["m_l"]}]
+
+
+ampQuarks[0]=FCFAConvert[CreateFeynAmp[diagsQuarks],IncomingMomenta->{pH},
+	OutgoingMomenta->{k1,k2},List->False,ChangeDimension->4,
+	DropSumOver->True,SMP->True,Contract->True,UndoChiralSplittings->True,
+	FinalSubstitutions->{MQU[l]->SMP["m_q"]}]
+
+
+ampLeptons[1]=ampLeptons[0]//DiracSimplify
+
+
+ampQuarks[1]=ampQuarks[0]//DiracSimplify
+
+
+(* ::Section:: *)
+(*Fix the kinematics*)
 
 
 FCClearScalarProducts[];
@@ -57,34 +89,52 @@ SP[pH,pH]=SMP["m_H"]^2;
 SP[p1,p2]=(SMP["m_H"]^2-2 SMP["m_l"]^2)/2;
 SP[k1,k2]=(SMP["m_H"]^2-2 SMP["m_q"]^2)/2;
 
-ampdiagsHiggsToLeptonsTree=FCFAConvert[CreateFeynAmp[diagsHiggsToLeptonsTree],IncomingMomenta->{pH},OutgoingMomenta->{p1,p2},List->False,ChangeDimension->4,
-DropSumOver->True,SMP->True,UndoChiralSplittings->True,FinalSubstitutions->{MLE[l]->SMP["m_l"]}]//Contract//DotSimplify
 
-ampdiagsHiggsToQuarksTree=FCFAConvert[CreateFeynAmp[diagsHiggsToQuarksTree],IncomingMomenta->{pH},OutgoingMomenta->{k1,k2},List->False,ChangeDimension->4,
-DropSumOver->True,SMP->True,UndoChiralSplittings->True,FinalSubstitutions->{MQU[l]->SMP["m_q"]}]//Contract//DotSimplify
+(* ::Section:: *)
+(*Square the amplitudes*)
+
+
+ampLeptonsSquared[0]=ampLeptons[1]*ComplexConjugate[ampLeptons[1]]//
+	FermionSpinSum//DiracSimplify//Simplify
+
+
+ampQuarksSquared[0]=ampQuarks[1]*ComplexConjugate[ampQuarks[1]]//
+	FermionSpinSum//DiracSimplify//SUNSimplify
 
 
 (* ::Section:: *)
-(*Calculate the total decay rates*)
-
-
-ampSqLeptons=ampdiagsHiggsToLeptonsTree*ComplexConjugate[ampdiagsHiggsToLeptonsTree]//FermionSpinSum//DiracSimplify//Simplify
-ampSqQuarks=ampdiagsHiggsToQuarksTree*ComplexConjugate[ampdiagsHiggsToQuarksTree]//FermionSpinSum//DiracSimplify//SUNSimplify[#,SUNNToCACF->False]&//Simplify
+(*Total decay rates*)
 
 
 $Assumptions={SMP["m_H"]>0,SMP["m_l"]>0};
 phaseSpacePrefactor[m_]:=1/(16 Pi SMP["m_H"])Sqrt[1-4 m^2 / SMP["m_H"]^2];
-decayRateTotalLeptonsTree=phaseSpacePrefactor[SMP["m_l"]] ampSqLeptons//
-ReplaceAll[#,SMP["e"]^2->4 Pi SMP["alpha_fs"]]&//FullSimplify//Factor2
-
-decayRateTotalQuarksTree=phaseSpacePrefactor[SMP["m_q"]]*ampSqQuarks//
-ReplaceAll[#,SMP["e"]^2->4 Pi SMP["alpha_fs"]]&//FullSimplify//Factor2
 
 
-decayRateTotalLeptonsTreeKnown=(AlphaFS SMP["m_H"])/(8 SMP["sin_W"]^2)( SMP["m_l"]^2/SMP["m_W"]^2 (1- 4 SMP["m_l"]^2/SMP["m_H"]^2)^(3/2));
-decayRateTotalQuarksTreeKnown=SUNN(decayRateTotalLeptonsTreeKnown/.SMP["m_l"]->SMP["m_q"]);
+totalDecayRateLeptons=phaseSpacePrefactor[SMP["m_l"]]ampLeptonsSquared[0]//
+ReplaceAll[#,SMP["e"]^2->4 Pi SMP["alpha_fs"]]&//Simplify
 
-Print["Check with Peskin and Schroeder, Final Project III, part (a): ",
-			If[(Simplify[decayRateTotalLeptonsTree-decayRateTotalLeptonsTreeKnown]===0) &&
-			(Simplify[decayRateTotalQuarksTree-decayRateTotalQuarksTreeKnown]===0), "CORRECT.", "!!! WRONG !!!"]];
 
+totalDecayRateQuarks=phaseSpacePrefactor[SMP["m_q"]]ampQuarksSquared[0]//
+ReplaceAll[#,SMP["e"]^2->4 Pi SMP["alpha_fs"]]&//Simplify
+
+
+(AlphaFS SMP["m_H"])/(8 SMP["sin_W"]^2)( SMP["m_l"]^2/SMP["m_W"]^2*
+	(1- 4 SMP["m_l"]^2/SMP["m_H"]^2)^(3/2))-totalDecayRateLeptons//Factor
+
+
+(* ::Section:: *)
+(*Check the final results*)
+
+
+knownResults = {
+	(AlphaFS SMP["m_H"])/(8 SMP["sin_W"]^2)( SMP["m_l"]^2/SMP["m_W"]^2*
+	(1- 4 SMP["m_l"]^2/SMP["m_H"]^2)^(3/2)),
+	(CA*SMP["alpha_fs"]*SMP["m_H"]*SMP["m_q"]^2*
+(1 - (4*SMP["m_q"]^2)/SMP["m_H"]^2)^(3/2))/(8*SMP["m_W"]^2*SMP["sin_W"]^2)
+};
+FCCompareResults[{totalDecayRateLeptons,totalDecayRateQuarks},
+knownResults,Factoring->Simplify,
+Text->{"\tCompare to Peskin and Schroeder,An Introduction to QFT, \
+Final Project III, part (a):",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];

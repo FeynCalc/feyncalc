@@ -181,7 +181,7 @@ Series[#,{alpha,0,1}]&//Normal//ReplaceAll[#,alpha->1]&
 
 
 (* ::Text:: *)
-(*Express the quartic vertex in tems of the Passarino-Veltman coefficient functions.*)
+(*Express the cubic vertex in tems of the Passarino-Veltman coefficient functions.*)
 
 
 amp2[2]=ToPaVe[amp2[1],l]
@@ -212,11 +212,11 @@ solMSbar2=sol[3]/.{
 
 
 knownResult = {
-	SMP["d_phi^MS"] -> 0, 
+	SMP["d_phi^MS"] -> 0,
 	SMP["d_m^MS"] -> (g^2*1/Epsilon)/(32*Pi^2 m^2),
 	SMP["d_g^MS"] -> 0,
 
-	SMP["d_phi^MSbar"] -> 0, 
+	SMP["d_phi^MSbar"] -> 0,
 	SMP["d_m^MSbar"] -> (g^2*SMP["Delta"])/(32*Pi^2 m^2),
 	SMP["d_g^MSbar"] -> 0
 	};
@@ -225,9 +225,3 @@ Text->{"\tCompare to Cheng and Li, Gauge theory of elementary particle \
 physics, Problems and Solutions, Eq. 2.120:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-
-
-
-

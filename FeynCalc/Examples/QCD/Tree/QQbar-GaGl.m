@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: QQbar-GaGl                                                      *)
+(* :Title: QQbar-GaGl                                                     	*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Q Qbar -> Ga Gl, QCD, matrix element squared, tree           *)
+(* :Summary:  Q Qbar -> Ga Gl, QCD, matrix element squared, tree           	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -80,8 +80,7 @@ SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], SMP["m_u"], M, 0];
 
 
 (* ::Text:: *)
-(*Now come the usual steps, but with some special features. We do not average over the polarizations of the virtual photon*)
-(*but use the gauge trick for the sum over its polarizations. In this case the sum goes over all 4 unphysical polarizations,  not just 2.*)
+(*Now come the usual steps, but with some special features. We do not average over the polarizations of the virtual photon but use the gauge trick for the sum over its polarizations. In this case the sum goes over all 4 unphysical polarizations,  not just 2.*)
 
 
 ampSquared[0] = 1/(SUNN^2)(amp[0] (ComplexConjugate[amp[0]]))//

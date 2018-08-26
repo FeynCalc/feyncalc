@@ -212,11 +212,11 @@ solMSbar2=sol[3]/.{
 
 
 knownResult = {
-	SMP["d_phi^MS"] -> 0, 
+	SMP["d_phi^MS"] -> 0,
 	SMP["d_m^MS"] -> (g*1/Epsilon)/(32*Pi^2),
 	SMP["d_g^MS"] -> (3*g*1/Epsilon)/(32*Pi^2),
 
-	SMP["d_phi^MSbar"] -> 0, 
+	SMP["d_phi^MSbar"] -> 0,
 	SMP["d_m^MSbar"] -> (g*SMP["Delta"])/(32*Pi^2),
 	SMP["d_g^MSbar"] -> (3*g*SMP["Delta"])/(32*Pi^2)
 	};
@@ -225,12 +225,3 @@ Text->{"\tCompare to Bailin and Love, Introduction to Gauge Field Theory, \
 Eqs. 7.73-7.74 and Eqs. 7.76-7.77:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: GhGl-Gh													*)
+(* :Title: GhGl-Gh															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -70,8 +70,8 @@ MakeBoxes[rho,TraditionalForm]:="\[Rho]";
 
 template = insertFields[createTopologies[1, 1 -> 2,
 		ExcludeTopologies -> {Tadpoles,WFCorrections,
-		WFCorrectionCTs,SelfEnergies}], {U[5]} -> 
-		{V[5],U[5]}, InsertionLevel -> {Particles}, 
+		WFCorrectionCTs,SelfEnergies}], {U[5]} ->
+		{V[5],U[5]}, InsertionLevel -> {Particles},
 		Model -> FileNameJoin[{"QCD","QCD"}],
 		GenericModel -> FileNameJoin[{"QCD","QCD"}]];
 
@@ -129,7 +129,7 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diagsCT,
 (*Ghost-gluon vertex*)
 
 
-AbsoluteTiming[amp1[1]=TID[(FCE[amp1[0]]/.{-p2-p3->-p1}),l, 
+AbsoluteTiming[amp1[1]=TID[(FCE[amp1[0]]/.{-p2-p3->-p1}),l,
 	UsePaVeBasis->True,ToPaVe->True];]
 
 
@@ -182,17 +182,11 @@ the counter-term :",
 (*Check the final results*)
 
 
-knownResult = 
+knownResult =
 	-I(-I SMP["g_s"] FVD[p3,mu]SUNF[a,b,c]( SMP["g_s"]^2/(4Pi)^2 CA*
 		GaugeXi["G"]/2 SMP["Delta"]));
-FCCompareResults[amp1Div[1],knownResult, 
+FCCompareResults[amp1Div[1],knownResult,
 Text->{"\tCompare to Muta, Foundations of QCD, \
 Eq. 2.5.142:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-
-
-
-

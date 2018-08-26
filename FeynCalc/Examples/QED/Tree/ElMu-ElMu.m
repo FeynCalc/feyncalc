@@ -108,6 +108,3 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Eqs 5.61 and 5.71:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
-

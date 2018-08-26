@@ -63,15 +63,15 @@ MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
 
 
 diags = InsertFields[CreateTopologies[1, 2 -> 2,
-		ExcludeTopologies->{WFCorrections}],  
-		{S[1],S[1]}-> {S[1],S[1]}, InsertionLevel -> {Classes}, 
+		ExcludeTopologies->{WFCorrections}],
+		{S[1],S[1]}-> {S[1],S[1]}, InsertionLevel -> {Classes},
 		Model -> FileNameJoin[{"Phi4","Phi4"}]];
 Paint[diags, ColumnsXRows -> {3, 1}, Numbering -> None,SheetHeader->None,
 ImageSize->{512,256}];
 
 
 diagsCT = InsertFields[CreateCTTopologies[1, 2 -> 2,
-	ExcludeTopologies->{WFCorrectionCTs}],  {S[1],S[1]}-> {S[1],S[1]}, 
+	ExcludeTopologies->{WFCorrectionCTs}],  {S[1],S[1]}-> {S[1],S[1]},
 	InsertionLevel -> {Classes},  Model -> FileNameJoin[{"Phi4","Phi4"}]];
 Paint[diagsCT, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->None,
 ImageSize->{256,256}];
@@ -87,13 +87,13 @@ ImageSize->{256,256}];
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1],
 	IncomingMomenta->{p1,p2}, OutgoingMomenta->{k1,k2},
-	LoopMomenta->{q},ChangeDimension->D,List->False, 
+	LoopMomenta->{q},ChangeDimension->D,List->False,
 	FinalSubstitutions->{Mphi->m}]
 
 
 ampCT[0] = FCFAConvert[CreateFeynAmp[diagsCT,PreFactor->1],
 	IncomingMomenta->{p1,p2}, OutgoingMomenta->{k1,k2},
-	LoopMomenta->{q},ChangeDimension->D,List->False, 
+	LoopMomenta->{q},ChangeDimension->D,List->False,
 	FinalSubstitutions->{Mphi->m,Zg->1+SMP["d_g^MSbar"]}]
 
 
@@ -121,7 +121,7 @@ amp[1]=amp[0]//ReplaceAll[#,m->0]&//ToPaVe[#,q]&
 
 
 loopInt={
-B0[s_,0,0]:>-(-2 + Log[4*Pi] - 
+B0[s_,0,0]:>-(-2 + Log[4*Pi] -
 	Log[(-4*Pi*ScaleMu^2)/s])/(16*Pi^4) + SMP["Delta"]/(16*Pi^4)
 };
 
@@ -162,6 +162,3 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Ex 10.4:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-

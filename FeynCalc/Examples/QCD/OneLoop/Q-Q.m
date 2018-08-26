@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: Q-Q															*)
+(* :Title: Q-Q																*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Q -> Q, QCD, only UV divergences, 1-loop					*)
+(* :Summary:  Q -> Q, QCD, only UV divergences, 1-loop						*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -52,7 +52,7 @@ $KeepLogDivergentScalelessIntegrals=True;
 
 
 diags = InsertFields[CreateTopologies[1, 1 -> 1,
-		ExcludeTopologies->Tadpoles], {F[3,{1}]} -> 
+		ExcludeTopologies->Tadpoles], {F[3,{1}]} ->
 		{F[3,{1}]}, InsertionLevel -> {Particles}, Model -> "SMQCD",
 		ExcludeParticles->{S[_],V[1|2|3]}];
 
@@ -118,6 +118,3 @@ Text->{"\tCompare to Muto, Foundations of QCD, \
 Eq 10.41:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-

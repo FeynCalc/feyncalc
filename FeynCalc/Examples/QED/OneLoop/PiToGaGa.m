@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Pi -> Ga Ga, QED, axial current, 1-loop					*)
+(* :Summary:  Pi -> Ga Ga, QED, axial current, 1-loop						*)
 
 (* ------------------------------------------------------------------------ *)
 

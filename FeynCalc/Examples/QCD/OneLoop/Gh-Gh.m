@@ -51,12 +51,8 @@ $KeepLogDivergentScalelessIntegrals=True;
 (*Generate Feynman diagrams*)
 
 
-(* ::Text:: *)
-(*Nicer typesetting*)
-
-
 diags = InsertFields[CreateTopologies[1, 1 -> 1, ExcludeTopologies->{Tadpoles}],
-		 {U[5]} -> {U[5]}, InsertionLevel -> {Particles}, Model -> "SMQCD"];
+		{U[5]} -> {U[5]}, InsertionLevel -> {Particles}, Model -> "SMQCD"];
 
 Paint[diags, ColumnsXRows -> {1,1}, Numbering -> Simple,
 	SheetHeader->None,ImageSize->{256,256}];
@@ -70,9 +66,9 @@ Paint[diags, ColumnsXRows -> {1,1}, Numbering -> Simple,
 (*The 1/(2Pi)^D prefactor is implicit.*)
 
 
-amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{}, 
+amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{},
 	PreFactor->1], IncomingMomenta->{p}, OutgoingMomenta->{p},LoopMomenta->{q},
-	UndoChiralSplittings->True, ChangeDimension->D, List->False, SMP->True, 
+	UndoChiralSplittings->True, ChangeDimension->D, List->False, SMP->True,
 	DropSumOver->True, Contract->True]
 
 
@@ -111,6 +107,3 @@ Text->{"\tCompare to Muta, Foundations of QCD, \
 Eq. 2.5.136:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
-
