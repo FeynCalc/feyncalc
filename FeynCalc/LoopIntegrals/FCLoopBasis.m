@@ -242,7 +242,15 @@ auxIntegralToPropagators[pref_. exp_TemporalPair, lmoms_]:=
 	FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]/; FreeQ2[pref,lmoms];
 
 auxIntegralToPropagators[Power[pref_. exp_TemporalPair, n_Integer?Positive], _]:=
-	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]]/; FreeQ2[pref,lmoms];
+	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]], n]/; FreeQ2[pref,lmoms];
+
+(* This one should catch all nonstandard propagators.	*)
+auxIntegralToPropagators2[exp_, lmoms_]:=
+	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]/; !FreeQ2[exp,lmoms];
+
+auxIntegralToPropagators2[Power[exp_, n_Integer?Positive], _]:=
+	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]], n]/; !FreeQ2[exp,lmoms];
+
 
 FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 	Block[{exp, tmp, res, dummy, expAsList, rest},
@@ -282,7 +290,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 							#]&/@expAsList
 		];
 
-		tmp  = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power, Times},Head[#]] && !FreeQ2[#,lmoms])&];
+		tmp  = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power, Times, Plus},Head[#]] && !FreeQ2[#,lmoms])&];
 
 		rest = Complement[expAsList,tmp] /. dummy -> Unevaluated[Sequence[]];
 
@@ -307,8 +315,8 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 				Abs[n]=!=1 :> Sequence@@ConstantArray[h[a,  {Sign[n],s}], Abs[n]]
 		};
 
-		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
-		If[	!FreeQ[tmp,auxIntegralToPropagators],
+		tmp = (auxIntegralToPropagators[#,lmoms] /. auxIntegralToPropagators -> auxIntegralToPropagators2)&/@tmp;
+		If[	!FreeQ2[tmp,{auxIntegralToPropagators,auxIntegralToPropagators2}],
 			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to extract the propagators."];
 			Abort[]
 		];

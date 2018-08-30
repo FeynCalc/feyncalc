@@ -222,5 +222,14 @@ Lor2] (SPD[p1, p1] - 2 SPD[p1, p3] - SPD[p2, p2] +
 (6*MTD[Lor1, Lor2]*SFAD[{{-p1 - p2 + p3, 0}, {-mE^2, 1}, 1}, {{p1, 0}, {-mE^2, 1}, 1}, {{p3, 0}, {-mE^2, 1}, 1}, {{p2, 0}, {-mE^2, 1}, 1}, {{p2, 0}, {-mE^2, 1}, 1},
 	{{p1 + p2, 0}, {0, 1}, 1}, {{p1 + p2, 0}, {0, 1}, 1}]*SPD[p2, p3]^2)/D +
 (12*mE^2*MTD[Lor1, Lor2]*SFAD[{{p1, 0}, {-mE^2, 1}, 1}, {{p1, 0}, {-mE^2, 1}, 1}, {{p2, 0}, {-mE^2, 1}, 1}, {{p2, 0}, {-mE^2, 1}, 1}, {{p1 + p2, 0}, {0, 1}, 1},
-	{{p1 + p2, 0}, {0, 1}, 1}, {{p3, 0}, {-mE^2, 1}, 1}, {{-p1 - p2 + p3, 0}, {-mE^2, 1}, 1}]*SPD[p2, p3]^2)/D"}
+	{{p1 + p2, 0}, {0, 1}, 1}, {{p3, 0}, {-mE^2, 1}, 1}, {{-p1 - p2 + p3, 0}, {-mE^2, 1}, 1}]*SPD[p2, p3]^2)/D"},
+{"fcstFCMultiLoopTID-ID20", "FCMultiLoopTID[
+FAD[q1, q1 - k1, q1 - k1, q1 - k1, q2] SPD[k1 - q1, k1 + q1] SPD[
+q1 - k1, q1 + k1], {q1, q2}]","0"},
+{"fcstFCMultiLoopTID-ID21", "FCMultiLoopTID[
+FAD[q1, q1 - k1, q2, q1 + q2] SPD[2 k1 - q1, q1 + 2 q2], {q1, q2},
+FCE -> True]","2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q1] +
+4 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q2] -
+FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q1] -
+2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q2]"}
 })
