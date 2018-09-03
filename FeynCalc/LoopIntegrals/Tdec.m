@@ -80,6 +80,7 @@ Options[Tdec] =	{
 	FCVerbose -> False,
 	Factoring -> Factor2,
 	FeynCalcExternal -> True,
+	Head -> Identity,
 	List -> True,
 	UseParallelization -> True,
 	UseTIDL -> True
@@ -323,7 +324,7 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]] :=
 	Block[ {tt, factor, dim, proli, nccli, ccli, pli,
 			eqli, neqli,  nttt,listlabel, fce,
-			veqli, seqli, scqli, solu,ii,ex,ce,xy,
+			veqli, seqli, scqli, solu,ii,ex,ce,xy, optHead,
 			extMom,basisonly,multiLoop=False,lis,mlis,basis,multiLoopSyms={}},
 
 		dim         = OptionValue[Dimension];
@@ -331,6 +332,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		fce			= OptionValue[FeynCalcExternal];
 		factor		= OptionValue[Factoring];
 		basisonly	= OptionValue[BasisOnly];
+		optHead 	= OptionValue[Head];
 
 		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
@@ -412,8 +414,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		If[	basisonly,
 			If[multiLoop,
 				(* for multiloop coefficient functions some more infos can be useful	*)
-				Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["GCF"][xx,li,ppli])],
-				Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["PaVe"][xx])]
+				Return[(basis/.extMom->optHead/.CC[xx__]:> FCGV["GCF"][xx,li,ppli])],
+				Return[(basis/.extMom->optHead/.CC[xx__]:> FCGV["PaVe"][xx])]
 			]
 		];
 		FCPrint[1, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
@@ -505,8 +507,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		FCPrint[1, "Tdec: after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ", TimeUsed[]//FeynCalcForm, FCDoControl->tdecVerbose];
 		FCPrint[2, "Tdec: tt: ", tt, FCDoControl->tdecVerbose];
 		FCPrint[2, "Tdec: seqli: ", seqli, FCDoControl->tdecVerbose];
-		tt = tt/.extMom->Identity;
-		seqli = seqli/.extMom->Identity;
+		tt = tt/.extMom->optHead;
+		seqli = seqli/.extMom->optHead;
 		If[ fce,
 			tt = FeynCalcExternal[tt];
 			seqli = FeynCalcExternal[seqli];
