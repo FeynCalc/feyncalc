@@ -1,0 +1,427 @@
+
+
+(* :Title: Tdec.test                    	                                *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for CTdec	                *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstCTdec =
+({
+{"fcstCTdec-ID1", "CTdec[{{l,i1},{l,i2}},{p1}]",
+"{{X1 -> -1 + D, X2 -> CSPD[l, l], X3 -> CSPD[l, p1], X4 -> \
+CSPD[p1, p1]}, -(((X1*X3^2 - X2*X4)*CVD[p1, i1]*CVD[p1, i2])/((1 - \
+X1)*X4^2)) + ((X3^2 - X2*X4)*KDD[i1, i2])/((1 - X1)*X4)}"},
+{"fcstCTdec-ID2", "CTdec[{{l,i1},{l,i2}},{p1},UseTIDL\[Rule]False]",
+	"{{X1 -> -1 + D, X2 -> CSPD[l, l], X3 -> CSPD[l, p1], X4 -> \
+CSPD[p1, p1]}, -(((X1*X3^2 - X2*X4)*CVD[p1, i1]*CVD[p1, i2])/((1 - \
+X1)*X4^2)) + ((X3^2 - X2*X4)*KDD[i1, i2])/((1 - X1)*X4)}"},
+{"fcstCTdec-ID3", "CTdec[{{l,i1},{l,i2}},{p1},List\[Rule]False]",
+"-((((-1 + D)*CSPD[l, p1]^2 - CSPD[l, l]*CSPD[p1, p1])*CVD[p1, \
+i1]*CVD[p1, i2])/((2 - D)*CSPD[p1, p1]^2)) + ((CSPD[l, p1]^2 - \
+CSPD[l, l]*CSPD[p1, p1])*KDD[i1, i2])/((2 - D)*CSPD[p1, p1])"},
+{"fcstCTdec-ID4",
+"CTdec[{{l,i1},{l,i2}},{p1},UseTIDL\[Rule]False,List\[Rule]False]",
+	"-((((-1 + D)*CSPD[l, p1]^2 - CSPD[l, l]*CSPD[p1, p1])*CVD[p1, \
+i1]*CVD[p1, i2])/((2 - D)*CSPD[p1, p1]^2)) + ((CSPD[l, p1]^2 - \
+CSPD[l, l]*CSPD[p1, p1])*KDD[i1, i2])/((2 - D)*CSPD[p1, p1])"},
+{"fcstCTdec-ID5",
+"CTdec[{{l,i1},{l,i2}},{p1},List\[Rule]False,FeynCalcExternal\
+\[Rule]False]",
+"(CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i2, -1 \
++ D]]*(CartesianPair[CartesianMomentum[l, -1 + D], \
+CartesianMomentum[p1, -1 + D]]^2 - CartesianPair[CartesianMomentum[l, \
+-1 + D], CartesianMomentum[l, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p1, -1 + D]]))/((2 - \
+D)*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, \
+-1 + D]]) - (CartesianPair[CartesianIndex[i1, -1 + D], \
+CartesianMomentum[p1, -1 + D]]*CartesianPair[CartesianIndex[i2, -1 + \
+D], CartesianMomentum[p1, -1 + D]]*((-1 + \
+D)*CartesianPair[CartesianMomentum[l, -1 + D], CartesianMomentum[p1, \
+-1 + D]]^2 - CartesianPair[CartesianMomentum[l, -1 + D], \
+CartesianMomentum[l, -1 + D]]*CartesianPair[CartesianMomentum[p1, -1 \
++ D], CartesianMomentum[p1, -1 + D]]))/((2 - \
+D)*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, \
+-1 + D]]^2)"},
+{"fcstCTdec-ID6",
+"CTdec[{{l,i1},{l,i2}},{p1},UseTIDL\[Rule]False,List\[Rule]False,\
+FeynCalcExternal\[Rule]False]",
+"(CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i2, -1 \
++ D]]*(CartesianPair[CartesianMomentum[l, -1 + D], \
+CartesianMomentum[p1, -1 + D]]^2 - CartesianPair[CartesianMomentum[l, \
+-1 + D], CartesianMomentum[l, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p1, -1 + D]]))/((2 - \
+D)*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, \
+-1 + D]]) - (CartesianPair[CartesianIndex[i1, -1 + D], \
+CartesianMomentum[p1, -1 + D]]*CartesianPair[CartesianIndex[i2, -1 + \
+D], CartesianMomentum[p1, -1 + D]]*((-1 + \
+D)*CartesianPair[CartesianMomentum[l, -1 + D], CartesianMomentum[p1, \
+-1 + D]]^2 - CartesianPair[CartesianMomentum[l, -1 + D], \
+CartesianMomentum[l, -1 + D]]*CartesianPair[CartesianMomentum[p1, -1 \
++ D], CartesianMomentum[p1, -1 + D]]))/((2 - \
+D)*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, \
+-1 + D]]^2)"},
+{"fcstCTdec-ID7",
+"CTdec[{{l,i1},{l,i2}},{p1},List\[Rule]False,Dimension\[Rule]3]",
+"((3*CSP[l, p1]^2 - CSP[l, l]*CSP[p1, p1])*CV[p1, i1]*CV[p1, \
+i2])/(2*CSP[p1, p1]^2) - ((CSP[l, p1]^2 - CSP[l, l]*CSP[p1, \
+p1])*KD[i1, i2])/(2*CSP[p1, p1])"},
+{"fcstCTdec-ID8",
+"CTdec[{{l,i1},{l,i2}},{p1},UseTIDL\[Rule]False,List\[Rule]False,\
+Dimension\[Rule]3]",
+"((3*CSP[l, p1]^2 - CSP[l, l]*CSP[p1, p1])*CV[p1, i1]*CV[p1, \
+i2])/(2*CSP[p1, p1]^2) - ((CSP[l, p1]^2 - CSP[l, l]*CSP[p1, \
+p1])*KD[i1, i2])/(2*CSP[p1, p1])"},
+{"fcstCTdec-ID9",
+"CTdec[{{l,i1},{l,i2}},{p1},List\[Rule]False,Dimension\[Rule]3,\
+FeynCalcExternal\[Rule]False]",
+"-(CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i2]]*(CartesianPair[CartesianMomentum[l], \
+CartesianMomentum[p1]]^2 - CartesianPair[CartesianMomentum[l], \
+CartesianMomentum[l]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p1]]))/(2*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p1]]) + (CartesianPair[CartesianIndex[i1], \
+CartesianMomentum[p1]]*CartesianPair[CartesianIndex[i2], \
+CartesianMomentum[p1]]*(3*CartesianPair[CartesianMomentum[l], \
+CartesianMomentum[p1]]^2 - CartesianPair[CartesianMomentum[l], \
+CartesianMomentum[l]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p1]]))/(2*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p1]]^2)"},
+{"fcstCTdec-ID10",
+"CTdec[{{l,i1},{l,i2},{l,i3}},{},UseTIDL\[Rule]False]", "{0, 0}"},
+{"fcstCTdec-ID11",
+"CTdec[{{q1,$3050},{q1,$3489},{q2,$3047},{q2,$3488}},{k1},\
+Dimension\[Rule]D-1,List\[Rule]True,UseTIDL\[Rule]False,FCE\[Rule]\
+True]", "{{X1 -> -1 + D, X2 -> CSPD[q1, q1], X3 -> CSPD[q1, q2], X4 -> \
+CSPD[k1, q1], X5 -> CSPD[q2, q2], X6 -> CSPD[k1, q2], X7 -> CSPD[k1, \
+k1]}, -(((8*X4^2*X6^2 + 6*X1*X4^2*X6^2 + X1^2*X4^2*X6^2 - \
+2*X4^2*X5*X7 - X1*X4^2*X5*X7 - 8*X3*X4*X6*X7 - 4*X1*X3*X4*X6*X7 - \
+2*X2*X6^2*X7 - X1*X2*X6^2*X7 + 2*X3^2*X7^2 + X2*X5*X7^2)*CVD[k1, \
+$3047]*CVD[k1, $3050]*CVD[k1, $3488]*CVD[k1, $3489])/((1 - \
+X1^2)*X7^4)) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - 2*X4^2*X5*X7 + \
+X1^2*X4^2*X5*X7 - 4*X3*X4*X6*X7 + X1*X2*X6^2*X7 + 2*X3^2*X7^2 - \
+X1*X2*X5*X7^2)*CVD[k1, $3050]*CVD[k1, $3489]*KDD[$3047, $3488])/((2 - \
+X1)*(1 - X1^2)*X7^3) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - X4^2*X5*X7 - \
+4*X3*X4*X6*X7 + X1*X3*X4*X6*X7 + X1^2*X3*X4*X6*X7 - X2*X6^2*X7 + \
+X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(CVD[k1, $3488]*CVD[k1, \
+$3489]*KDD[$3047, $3050] + CVD[k1, $3050]*CVD[k1, $3488]*KDD[$3047, \
+$3489]))/((2 - X1)*(1 - X1^2)*X7^3) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 \
++ X1*X4^2*X5*X7 - 4*X3*X4*X6*X7 - 2*X2*X6^2*X7 + X1^2*X2*X6^2*X7 + \
+2*X3^2*X7^2 - X1*X2*X5*X7^2)*CVD[k1, $3047]*CVD[k1, $3488]*KDD[$3050, \
+$3489])/((2 - X1)*(1 - X1^2)*X7^3) - ((2*X4^2*X6^2 - X1*X4^2*X6^2 + \
+X1*X4^2*X5*X7 - 4*X3*X4*X6*X7 + X1*X2*X6^2*X7 + 2*X3^2*X7^2 - \
+X1*X2*X5*X7^2)*KDD[$3047, $3488]*KDD[$3050, $3489])/((2 - X1)*(1 - \
+X1^2)*X7^2) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - X4^2*X5*X7 - \
+4*X3*X4*X6*X7 + X1*X3*X4*X6*X7 + X1^2*X3*X4*X6*X7 - X2*X6^2*X7 + \
+X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(CVD[k1, $3047]*CVD[k1, \
+$3489]*KDD[$3050, $3488] + CVD[k1, $3047]*CVD[k1, $3050]*KDD[$3488, \
+$3489]))/((2 - X1)*(1 - X1^2)*X7^3) - ((2*X4^2*X6^2 - X1*X4^2*X6^2 - \
+X4^2*X5*X7 - 2*X3*X4*X6*X7 + 2*X1*X3*X4*X6*X7 - X2*X6^2*X7 + \
+X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(KDD[$3047, $3489]*KDD[$3050, \
+$3488] + KDD[$3047, $3050]*KDD[$3488, $3489]))/((2 - X1)*(1 - \
+X1^2)*X7^2)}"},
+{"fcstCTdec-ID12",
+"CTdec[{{l,i1},{l,i2},{l,i3}},{},UseTIDL\[Rule]False,List\[Rule]\
+False]", "0"},
+{"fcstCTdec-ID13",
+"CTdec[{{l1,i1},{l1,i2},{l2,i3}},{},UseTIDL\[Rule]False]",
+"{0, 0}"},
+{"fcstCTdec-ID14",
+"CTdec[{{l1,i1},{l1,i2},{l2,i3}},{},UseTIDL\[Rule]False,List\[Rule]\
+False]", "0"},
+{"fcstCTdec-ID15",
+"CTdec[{{q2, mu1}, {q1, mu2}, {q1, mu3}, {q1, mu4}, {q1, mu5}}, \
+{k1},
+UseParallelization -> False, List -> False]",
+"-(((24*CSPD[k1, q1]^4*CSPD[k1, q2] + 10*(-1 + D)*CSPD[k1, \
+q1]^4*CSPD[k1, q2] + (-1 + D)^2*CSPD[k1, q1]^4*CSPD[k1, q2] - \
+24*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[k1, q2]*CSPD[q1, q1] - 6*(-1 + \
+D)*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[k1, q2]*CSPD[q1, q1] + 3*CSPD[k1, \
+k1]^2*CSPD[k1, q2]*CSPD[q1, q1]^2 - 16*CSPD[k1, k1]*CSPD[k1, \
+q1]^3*CSPD[q1, q2] - 4*(-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]^3*CSPD[q1, \
+q2] + 12*CSPD[k1, k1]^2*CSPD[k1, q1]*CSPD[q1, q1]*CSPD[q1, \
+q2])*CVD[k1, mu1]*CVD[k1, mu2]*CVD[k1, mu3]*CVD[k1, mu4]*CVD[k1, \
+mu5])/((1 - (-1 + D)^2)*CSPD[k1, k1]^5)) + (CSPD[k1, q1]*(4*CSPD[k1, \
+q1]^2 + (-1 + D)*CSPD[k1, q1]^2 - 3*CSPD[k1, k1]*CSPD[q1, \
+q1])*(CSPD[k1, q1]*CSPD[k1, q2] - CSPD[k1, k1]*CSPD[q1, q2])*(CVD[k1, \
+mu3]*CVD[k1, mu4]*CVD[k1, mu5]*KDD[mu1, mu2] + CVD[k1, mu2]*CVD[k1, \
+mu4]*CVD[k1, mu5]*KDD[mu1, mu3] + CVD[k1, mu2]*CVD[k1, mu3]*CVD[k1, \
+mu5]*KDD[mu1, mu4] + CVD[k1, mu2]*CVD[k1, mu3]*CVD[k1, mu4]*KDD[mu1, \
+mu5]))/((1 - (-1 + D)^2)*CSPD[k1, k1]^4) + ((CSPD[k1, q1]^2 - \
+CSPD[k1, k1]*CSPD[q1, q1])*(4*CSPD[k1, q1]^2*CSPD[k1, q2] + (-1 + \
+D)*CSPD[k1, q1]^2*CSPD[k1, q2] - CSPD[k1, k1]*CSPD[k1, q2]*CSPD[q1, \
+q1] - 2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[q1, q2])*(CVD[k1, mu1]*CVD[k1, \
+mu4]*CVD[k1, mu5]*KDD[mu2, mu3] + CVD[k1, mu1]*CVD[k1, mu3]*CVD[k1, \
+mu5]*KDD[mu2, mu4] + CVD[k1, mu1]*CVD[k1, mu3]*CVD[k1, mu4]*KDD[mu2, \
+mu5] + CVD[k1, mu1]*CVD[k1, mu2]*CVD[k1, mu5]*KDD[mu3, mu4] + CVD[k1, \
+mu1]*CVD[k1, mu2]*CVD[k1, mu4]*KDD[mu3, mu5] + CVD[k1, mu1]*CVD[k1, \
+mu2]*CVD[k1, mu3]*KDD[mu4, mu5]))/((1 - (-1 + D)^2)*CSPD[k1, k1]^4) - \
+(CSPD[k1, q1]*(CSPD[k1, q1]^2 - CSPD[k1, k1]*CSPD[q1, q1])*(CSPD[k1, \
+q1]*CSPD[k1, q2] - CSPD[k1, k1]*CSPD[q1, q2])*(CVD[k1, mu5]*KDD[mu1, \
+mu4]*KDD[mu2, mu3] + CVD[k1, mu4]*KDD[mu1, mu5]*KDD[mu2, mu3] + \
+CVD[k1, mu5]*KDD[mu1, mu3]*KDD[mu2, mu4] + CVD[k1, mu3]*KDD[mu1, \
+mu5]*KDD[mu2, mu4] + CVD[k1, mu4]*KDD[mu1, mu3]*KDD[mu2, mu5] + \
+CVD[k1, mu3]*KDD[mu1, mu4]*KDD[mu2, mu5] + CVD[k1, mu5]*KDD[mu1, \
+mu2]*KDD[mu3, mu4] + CVD[k1, mu2]*KDD[mu1, mu5]*KDD[mu3, mu4] + \
+CVD[k1, mu4]*KDD[mu1, mu2]*KDD[mu3, mu5] + CVD[k1, mu2]*KDD[mu1, \
+mu4]*KDD[mu3, mu5] + CVD[k1, mu3]*KDD[mu1, mu2]*KDD[mu4, mu5] + \
+CVD[k1, mu2]*KDD[mu1, mu3]*KDD[mu4, mu5]))/((1 - (-1 + D)^2)*CSPD[k1, \
+k1]^3) - (CSPD[k1, q2]*(CSPD[k1, q1]^2 - CSPD[k1, k1]*CSPD[q1, \
+q1])^2*(CVD[k1, mu1]*KDD[mu2, mu5]*KDD[mu3, mu4] + CVD[k1, \
+mu1]*KDD[mu2, mu4]*KDD[mu3, mu5] + CVD[k1, mu1]*KDD[mu2, \
+mu3]*KDD[mu4, mu5]))/((1 - (-1 + D)^2)*CSPD[k1, k1]^3)"},
+{"fcstCTdec-ID16",
+"CTdec[{{q1,$3050},{q1,$3489},{q2,$3047},{q2,$3488}},{k1},\
+Dimension\[Rule]D-1,List\[Rule]False,UseTIDL\[Rule]False,FCE\[Rule]\
+True]", "-(((8*CSPD[k1, q1]^2*CSPD[k1, q2]^2 + 6*(-1 + D)*CSPD[k1, \
+q1]^2*CSPD[k1, q2]^2 + (-1 + D)^2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - \
+2*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - (-1 + D)*CSPD[k1, \
+k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - 8*CSPD[k1, k1]*CSPD[k1, \
+q1]*CSPD[k1, q2]*CSPD[q1, q2] - 4*(-1 + D)*CSPD[k1, k1]*CSPD[k1, \
+q1]*CSPD[k1, q2]*CSPD[q1, q2] + 2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 - \
+2*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*CSPD[k1, \
+k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + CSPD[k1, k1]^2*CSPD[q1, \
+q1]*CSPD[q2, q2])*CVD[k1, $3047]*CVD[k1, $3050]*CVD[k1, \
+$3488]*CVD[k1, $3489])/((1 - (-1 + D)^2)*CSPD[k1, k1]^4)) + \
+((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, \
+q1]^2*CSPD[k1, q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, \
+q1] - 4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + \
+2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 - 2*CSPD[k1, k1]*CSPD[k1, \
+q1]^2*CSPD[q2, q2] + (-1 + D)^2*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, \
+q2] - (-1 + D)*CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, \
+$3050]*CVD[k1, $3489]*KDD[$3047, $3488])/((1 - (-1 + D)^2)*(3 - \
+D)*CSPD[k1, k1]^3) + ((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + \
+D)^2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - CSPD[k1, k1]*CSPD[k1, \
+q2]^2*CSPD[q1, q1] - 4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
+q2]*CSPD[q1, q2] + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
+q2]*CSPD[q1, q2] + (-1 + D)^2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
+q2]*CSPD[q1, q2] + CSPD[k1, k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, \
+k1]^2*CSPD[q1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + \
+CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*(CVD[k1, $3488]*CVD[k1, \
+$3489]*KDD[$3047, $3050] + CVD[k1, $3050]*CVD[k1, $3488]*KDD[$3047, \
+$3489]))/((1 - (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^3) + ((4*CSPD[k1, \
+q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - \
+2*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] + (-1 + D)^2*CSPD[k1, \
+k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - 4*CSPD[k1, k1]*CSPD[k1, \
+q1]*CSPD[k1, q2]*CSPD[q1, q2] + 2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 + (-1 \
++ D)*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*CSPD[k1, \
+k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, $3047]*CVD[k1, \
+$3488]*KDD[$3050, $3489])/((1 - (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^3) - \
+((2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)*CSPD[k1, q1]^2*CSPD[k1, \
+q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - \
+4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + 2*CSPD[k1, \
+k1]^2*CSPD[q1, q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, \
+q2] - (-1 + D)*CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*KDD[$3047, \
+$3488]*KDD[$3050, $3489])/((1 - (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^2) + \
+((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, \
+q1]^2*CSPD[k1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - \
+4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + (-1 + \
+D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + (-1 + \
+D)^2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + CSPD[k1, \
+k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, k1]^2*CSPD[q1, q2]^2 - \
+CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + CSPD[k1, k1]^2*CSPD[q1, \
+q1]*CSPD[q2, q2])*(CVD[k1, $3047]*CVD[k1, $3489]*KDD[$3050, $3488] + \
+CVD[k1, $3047]*CVD[k1, $3050]*KDD[$3488, $3489]))/((1 - (-1 + \
+D)^2)*(3 - D)*CSPD[k1, k1]^3) - ((2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - \
+(-1 + D)*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - CSPD[k1, k1]*CSPD[k1, \
+q2]^2*CSPD[q1, q1] - 2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
+q2]*CSPD[q1, q2] + 2*(-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
+q2]*CSPD[q1, q2] + CSPD[k1, k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, \
+k1]^2*CSPD[q1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + \
+CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*(KDD[$3047, \
+$3489]*KDD[$3050, $3488] + KDD[$3047, $3050]*KDD[$3488, $3489]))/((1 \
+- (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^2)"}
+});
+
+
+Tests`LoopIntegrals`fcstCTdecNegativeMomenta =
+({
+{"fcstCTdecNegativeMomenta-ID1",
+"ExpandScalarProduct[(CTdec[{{q,mu}},{-p1}]/.{p1\[Rule]-p1})]\
+===FCI[CTdec[{{q,mu}},{p1}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID2",
+"ExpandScalarProduct[(CTdec[{{q,mu}},{-p1,p2}]/.{p1\[Rule]-p1})]\
+===FCI[CTdec[{{q,mu}},{p1,p2}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID3",
+"ExpandScalarProduct[(CTdec[{{q,mu}},{-p1,-p2}]/.{p1\[Rule]-p1,p2\
+\[Rule]-p2})]===FCI[CTdec[{{q,mu}},{p1,p2}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID4",
+"ExpandScalarProduct[(CTdec[{{q,mu}},{-p1,-p2,p3}]/.{p1\[Rule]-p1,\
+p2\[Rule]-p2})]===FCI[CTdec[{{q,mu}},{p1,p2,p3}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID5",
+"ExpandScalarProduct[(CTdec[{{q,mu}},{p1,-p2,p3}]/.{p2\[Rule]-p2})]\
+===FCI[CTdec[{{q,mu}},{p1,p2,p3}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID6",
+"ExpandScalarProduct[(CTdec[{{q,mu}},{-p1,-p2,-p3}]/.{p1\[Rule]-p1,\
+p2\[Rule]-p2,p3\[Rule]-p3})]===FCI[CTdec[{{q,mu}},{p1,p2,p3}]]",
+"True"},
+{"fcstCTdecNegativeMomenta-ID7",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu}},{-p1}]/.{p1\[Rule]-p1})\
+]===FCI[CTdec[{{q,mu},{q,nu}},{p1}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID8",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu}},{-p1,p2}]/.{p1\[Rule]-\
+p1})]===FCI[CTdec[{{q,mu},{q,nu}},{p1,p2}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID9",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu}},{-p1,-p2}]/.{p1\[Rule]-\
+p1,p2\[Rule]-p2})]===FCI[CTdec[{{q,mu},{q,nu}},{p1,p2}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID10",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu}},{-p1,-p2,p3}]/.{p1\
+\[Rule]-p1,p2\[Rule]-p2})]===FCI[CTdec[{{q,mu},{q,nu}},{p1,p2,p3}]]",
+"True"},
+{"fcstCTdecNegativeMomenta-ID11",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu}},{p1,-p2,p3}]/.{p2\
+\[Rule]-p2})]===FCI[CTdec[{{q,mu},{q,nu}},{p1,p2,p3}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID12",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu}},{-p1,-p2,-p3}]/.{p1\
+\[Rule]-p1,p2\[Rule]-p2,p3\[Rule]-p3})]===FCI[CTdec[{{q,mu},{q,nu}},{\
+p1,p2,p3}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID13",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu},{q,rho}},{-p1}]/.{p1\
+\[Rule]-p1})]===FCI[CTdec[{{q,mu},{q,nu},{q,rho}},{p1}]]", "True"},
+{"fcstCTdecNegativeMomenta-ID14",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu},{q,rho}},{-p1,p2}]/.{p1\
+\[Rule]-p1})]===FCI[CTdec[{{q,mu},{q,nu},{q,rho}},{p1,p2}]]",
+"True"},
+{"fcstCTdecNegativeMomenta-ID15",
+"ExpandScalarProduct[(CTdec[{{q,mu},{q,nu},{q,rho}},{-p1,-p2}]/.{\
+p1\[Rule]-p1,p2\[Rule]-p2})]===FCI[CTdec[{{q,mu},{q,nu},{q,rho}},{p1,\
+p2}]]", "True"}
+})
+
+Tests`LoopIntegrals`fcstCTdecVanishingGD =
+({
+{"fcstCTdecVanishingGD-ID1",
+"FCClearScalarProducts[];CartesianScalarProduct[p1,p1]=0;\
+CartesianScalarProduct[p2,p2]=0;CartesianScalarProduct[p1,p2]=0;CTdec[\
+{{q,mu}},{p1}]", "{{}, CVD[q, mu]}"},
+{"fcstCTdecVanishingGD-ID2",
+"CTdec[{{q,mu}},{p1},List\[Rule]False]", "CVD[q, mu]"},
+{"fcstCTdecVanishingGD-ID3", "CTdec[{{q,mu},{q,nu}},{p1}]",
+"{{}, CVD[q, mu]*CVD[q, nu]}"},
+{"fcstCTdecVanishingGD-ID4",
+"CTdec[{{q,mu},{q,nu}},{p1},List\[Rule]False]",
+"CVD[q, mu]*CVD[q, nu]"},
+{"fcstCTdecVanishingGD-ID5", "CTdec[{{q,mu}},{p1,p2}]",
+"{{}, CVD[q, mu]}"},
+{"fcstCTdecVanishingGD-ID6",
+"CTdec[{{q,mu}},{p1,p2},List\[Rule]False]", "CVD[q, mu]"},
+{"fcstCTdecVanishingGD-ID7", "CTdec[{{q,mu},{q,nu}},{p1,p2}]",
+"{{}, CVD[q, mu]*CVD[q, nu]}"},
+{"fcstCTdecVanishingGD-ID8",
+"CTdec[{{q,mu},{q,nu}},{p1,p2},List\[Rule]False]",
+"CVD[q, mu]*CVD[q, nu]"},
+{"fcstCTdecVanishingGD-ID9",
+"FCClearScalarProducts[]; CartesianScalarProduct[p3,p3]=m^2; \
+CartesianScalarProduct[p4,p4]=m^2; CartesianScalarProduct[p3,p4]=m^2; \
+CTdec[{{q,mu}},{p3,p4}]", "{{}, CVD[q, mu]}"},
+{"fcstCTdecVanishingGD-ID10",
+"CTdec[{{q,mu}},{p3,p4},List\[Rule]False]", "CVD[q, mu]"},
+{"fcstCTdecVanishingGD-ID11",
+"tmp = CTdec[{{q,mu}},{p,p},List\[Rule]False]; FCClearScalarProducts[]; tmp", "CVD[q, mu]"}
+});
+
+Tests`LoopIntegrals`fcstCTdecVanishingMultiLoop =
+({
+{"fcstCTdecVanishingMultiLoop-ID1",
+"CTdec[{{q1,mu},{q2,nu},{q2,rho}},{p},List\[Rule]False,UseTIDL\
+\[Rule]False]//FCE",
+"-(((2*CSPD[p, q1]*CSPD[p, q2]^2 + (-1 + D)*CSPD[p, q1]*CSPD[p, \
+q2]^2 - 2*CSPD[p, p]*CSPD[p, q2]*CSPD[q1, q2] - CSPD[p, p]*CSPD[p, \
+q1]*CSPD[q2, q2])*CVD[p, mu]*CVD[p, nu]*CVD[p, rho])/((2 - D)*CSPD[p, \
+p]^3)) + (CSPD[p, q2]*(CSPD[p, q1]*CSPD[p, q2] - CSPD[p, p]*CSPD[q1, \
+q2])*(CVD[p, rho]*KDD[mu, nu] + CVD[p, nu]*KDD[mu, rho]))/((2 - \
+D)*CSPD[p, p]^2) + (CSPD[p, q1]*(CSPD[p, q2]^2 - CSPD[p, p]*CSPD[q2, \
+q2])*CVD[p, mu]*KDD[nu, rho])/((2 - D)*CSPD[p, p]^2)"},
+{"fcstCTdecVanishingMultiLoop-ID2",
+"CTdec[{{q1,mu},{q2,nu},{q3,rho}},{p},List\[Rule]False,UseTIDL\
+\[Rule]False]//FCE",
+"-(((2*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3] + (-1 + D)*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[p, q3] - CSPD[p, p]*CSPD[p, q3]*CSPD[q1, q2] - \
+CSPD[p, p]*CSPD[p, q2]*CSPD[q1, q3] - CSPD[p, p]*CSPD[p, q1]*CSPD[q2, \
+q3])*CVD[p, mu]*CVD[p, nu]*CVD[p, rho])/((2 - D)*CSPD[p, p]^3)) + \
+(CSPD[p, q3]*(CSPD[p, q1]*CSPD[p, q2] - CSPD[p, p]*CSPD[q1, \
+q2])*CVD[p, rho]*KDD[mu, nu])/((2 - D)*CSPD[p, p]^2) + (CSPD[p, \
+q2]*(CSPD[p, q1]*CSPD[p, q3] - CSPD[p, p]*CSPD[q1, q3])*CVD[p, \
+nu]*KDD[mu, rho])/((2 - D)*CSPD[p, p]^2) + (CSPD[p, q1]*(CSPD[p, \
+q2]*CSPD[p, q3] - CSPD[p, p]*CSPD[q2, q3])*CVD[p, mu]*KDD[nu, \
+rho])/((2 - D)*CSPD[p, p]^2)"},
+{"fcstCTdecVanishingMultiLoop-ID3",
+"CTdec[{{q1,mu},{q2,nu},{q3,rho},{q3,si}},{p},List\[Rule]False,\
+UseTIDL\[Rule]False]//FCE",
+"-(((8*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3]^2 + 6*(-1 + D)*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[p, q3]^2 + (-1 + D)^2*CSPD[p, q1]*CSPD[p, \
+q2]*CSPD[p, q3]^2 - 2*CSPD[p, p]*CSPD[p, q3]^2*CSPD[q1, q2] - (-1 + \
+D)*CSPD[p, p]*CSPD[p, q3]^2*CSPD[q1, q2] - 4*CSPD[p, p]*CSPD[p, \
+q2]*CSPD[p, q3]*CSPD[q1, q3] - 2*(-1 + D)*CSPD[p, p]*CSPD[p, \
+q2]*CSPD[p, q3]*CSPD[q1, q3] - 4*CSPD[p, p]*CSPD[p, q1]*CSPD[p, \
+q3]*CSPD[q2, q3] - 2*(-1 + D)*CSPD[p, p]*CSPD[p, q1]*CSPD[p, \
+q3]*CSPD[q2, q3] + 2*CSPD[p, p]^2*CSPD[q1, q3]*CSPD[q2, q3] - \
+2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q2]*CSPD[q3, q3] - (-1 + D)*CSPD[p, \
+p]*CSPD[p, q1]*CSPD[p, q2]*CSPD[q3, q3] + CSPD[p, p]^2*CSPD[q1, \
+q2]*CSPD[q3, q3])*CVD[p, mu]*CVD[p, nu]*CVD[p, rho]*CVD[p, si])/((1 - \
+(-1 + D)^2)*CSPD[p, p]^4)) + ((4*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, \
+q3]^2 - (-1 + D)^2*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3]^2 - 2*CSPD[p, \
+p]*CSPD[p, q3]^2*CSPD[q1, q2] + (-1 + D)^2*CSPD[p, p]*CSPD[p, \
+q3]^2*CSPD[q1, q2] - 2*CSPD[p, p]*CSPD[p, q2]*CSPD[p, q3]*CSPD[q1, \
+q3] - 2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q3]*CSPD[q2, q3] + 2*CSPD[p, \
+p]^2*CSPD[q1, q3]*CSPD[q2, q3] + (-1 + D)*CSPD[p, p]*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[q3, q3] - (-1 + D)*CSPD[p, p]^2*CSPD[q1, \
+q2]*CSPD[q3, q3])*CVD[p, rho]*CVD[p, si]*KDD[mu, nu])/((1 - (-1 + \
+D)^2)*(3 - D)*CSPD[p, p]^3) + ((4*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, \
+q3]^2 - (-1 + D)^2*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3]^2 - CSPD[p, \
+p]*CSPD[p, q3]^2*CSPD[q1, q2] - 3*CSPD[p, p]*CSPD[p, q2]*CSPD[p, \
+q3]*CSPD[q1, q3] + (-1 + D)^2*CSPD[p, p]*CSPD[p, q2]*CSPD[p, \
+q3]*CSPD[q1, q3] - CSPD[p, p]*CSPD[p, q1]*CSPD[p, q3]*CSPD[q2, q3] + \
+(-1 + D)*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q3]*CSPD[q2, q3] + CSPD[p, \
+p]^2*CSPD[q1, q3]*CSPD[q2, q3] - (-1 + D)*CSPD[p, p]^2*CSPD[q1, \
+q3]*CSPD[q2, q3] - CSPD[p, p]*CSPD[p, q1]*CSPD[p, q2]*CSPD[q3, q3] + \
+CSPD[p, p]^2*CSPD[q1, q2]*CSPD[q3, q3])*(CVD[p, nu]*CVD[p, \
+si]*KDD[mu, rho] + CVD[p, nu]*CVD[p, rho]*KDD[mu, si]))/((1 - (-1 + \
+D)^2)*(3 - D)*CSPD[p, p]^3) + ((4*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, \
+q3]^2 - (-1 + D)^2*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3]^2 - CSPD[p, \
+p]*CSPD[p, q3]^2*CSPD[q1, q2] - CSPD[p, p]*CSPD[p, q2]*CSPD[p, \
+q3]*CSPD[q1, q3] + (-1 + D)*CSPD[p, p]*CSPD[p, q2]*CSPD[p, \
+q3]*CSPD[q1, q3] - 3*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q3]*CSPD[q2, q3] \
++ (-1 + D)^2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q3]*CSPD[q2, q3] + \
+CSPD[p, p]^2*CSPD[q1, q3]*CSPD[q2, q3] - (-1 + D)*CSPD[p, \
+p]^2*CSPD[q1, q3]*CSPD[q2, q3] - CSPD[p, p]*CSPD[p, q1]*CSPD[p, \
+q2]*CSPD[q3, q3] + CSPD[p, p]^2*CSPD[q1, q2]*CSPD[q3, q3])*(CVD[p, \
+mu]*CVD[p, si]*KDD[nu, rho] + CVD[p, mu]*CVD[p, rho]*KDD[nu, \
+si]))/((1 - (-1 + D)^2)*(3 - D)*CSPD[p, p]^3) - ((2*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[p, q3]^2 - (-1 + D)*CSPD[p, q1]*CSPD[p, \
+q2]*CSPD[p, q3]^2 - CSPD[p, p]*CSPD[p, q3]^2*CSPD[q1, q2] - CSPD[p, \
+p]*CSPD[p, q2]*CSPD[p, q3]*CSPD[q1, q3] + (-1 + D)*CSPD[p, p]*CSPD[p, \
+q2]*CSPD[p, q3]*CSPD[q1, q3] - CSPD[p, p]*CSPD[p, q1]*CSPD[p, \
+q3]*CSPD[q2, q3] + (-1 + D)*CSPD[p, p]*CSPD[p, q1]*CSPD[p, \
+q3]*CSPD[q2, q3] + CSPD[p, p]^2*CSPD[q1, q3]*CSPD[q2, q3] - (-1 + \
+D)*CSPD[p, p]^2*CSPD[q1, q3]*CSPD[q2, q3] - CSPD[p, p]*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[q3, q3] + CSPD[p, p]^2*CSPD[q1, q2]*CSPD[q3, \
+q3])*(KDD[mu, si]*KDD[nu, rho] + KDD[mu, rho]*KDD[nu, si]))/((1 - (-1 \
++ D)^2)*(3 - D)*CSPD[p, p]^2) + ((4*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, \
+q3]^2 - (-1 + D)^2*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3]^2 + (-1 + \
+D)*CSPD[p, p]*CSPD[p, q3]^2*CSPD[q1, q2] - 2*CSPD[p, p]*CSPD[p, \
+q2]*CSPD[p, q3]*CSPD[q1, q3] - 2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, \
+q3]*CSPD[q2, q3] + 2*CSPD[p, p]^2*CSPD[q1, q3]*CSPD[q2, q3] - \
+2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q2]*CSPD[q3, q3] + (-1 + \
+D)^2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q2]*CSPD[q3, q3] - (-1 + \
+D)*CSPD[p, p]^2*CSPD[q1, q2]*CSPD[q3, q3])*CVD[p, mu]*CVD[p, \
+nu]*KDD[rho, si])/((1 - (-1 + D)^2)*(3 - D)*CSPD[p, p]^3) - \
+((2*CSPD[p, q1]*CSPD[p, q2]*CSPD[p, q3]^2 - (-1 + D)*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[p, q3]^2 + (-1 + D)*CSPD[p, p]*CSPD[p, \
+q3]^2*CSPD[q1, q2] - 2*CSPD[p, p]*CSPD[p, q2]*CSPD[p, q3]*CSPD[q1, \
+q3] - 2*CSPD[p, p]*CSPD[p, q1]*CSPD[p, q3]*CSPD[q2, q3] + 2*CSPD[p, \
+p]^2*CSPD[q1, q3]*CSPD[q2, q3] + (-1 + D)*CSPD[p, p]*CSPD[p, \
+q1]*CSPD[p, q2]*CSPD[q3, q3] - (-1 + D)*CSPD[p, p]^2*CSPD[q1, \
+q2]*CSPD[q3, q3])*KDD[mu, nu]*KDD[rho, si])/((1 - (-1 + D)^2)*(3 - \
+D)*CSPD[p, p]^2)"}
+});
+
