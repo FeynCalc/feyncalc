@@ -1,6 +1,6 @@
 # FeynCalc
 
-[![license: GPLv3](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/LICENSE.md)
+[![license: GPLv3](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/blob/master/LICENSE)
 [![latest release](https://img.shields.io/github/release/FeynCalc/feyncalc.svg)](https://github.com/FeynCalc/feyncalc/releases)
 ![compatibility](https://img.shields.io/badge/Mathematica-8.x_9.x_10.x_11.x-brightgreen.svg)
 
