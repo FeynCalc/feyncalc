@@ -207,7 +207,15 @@ FCTopology[top1, {SFAD[p1], SFAD[p2], SFAD[p1 - p2]}], {p1, p2}]", "False"},
 "FCLoopBasisOverdeterminedQ[
 FCTopology[
 top1, {SFAD[p1], SFAD[p2], SFAD[p1 - p2], SFAD[{{0, p1.p2}}]}], {p1,
-p2}]", "True"}
+p2}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID41",
+"FCLoopBasisOverdeterminedQ[
+ExpandScalarProduct[
+SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID42",
+"FCLoopBasisOverdeterminedQ[
+ExpandScalarProduct[
+SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l}]", "True"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisFindCompletion =
@@ -767,7 +775,37 @@ StandardPropagatorDenominator[-Momentum[p2, D] + Momentum[Q, D], 0,
 "FCLoopBasisIntegralToPropagators[FeynAmpDenominator[
 StandardPropagatorDenominator[-Momentum[p2, D] + Momentum[Q, D], 0,
 0, {1, 1}]]^2, {p1, p2, p3}, FCE -> True, Tally->True]",
-"{{SFAD[{{-p2 + Q, 0}, {0, 1}, 1}], 2}}"}
+"{{SFAD[{{-p2 + Q, 0}, {0, 1}, 1}], 2}}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID36",
+"FCLoopBasisIntegralToPropagators[
+ExpandScalarProduct[SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+FCE -> True]",
+"{GFAD[{{-SPD[l, p1 + p2 + p3], 1}, -1}], SFAD[{{l, 0}, {0, 1}, 1}],
+SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID37",
+"FCLoopBasisIntegralToPropagators[
+ExpandScalarProduct[SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+FCE -> True, MomentumCombine->True]",
+"{SFAD[{{0, -l.(p1 + p2 + p3)}, {0, 1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID38",
+"FCLoopBasisIntegralToPropagators[
+ExpandScalarProduct[
+CSPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+MomentumCombine -> True, FCE -> True]",
+"{CFAD[{{0, -l.(p1 + p2 + p3)}, {0, -1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID40",
+"FCLoopBasisIntegralToPropagators[
+ExpandScalarProduct[
+CSPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+MomentumCombine -> True, FCE -> True]",
+"{CFAD[{{0, -l.(p1 + p2 + p3)}, {0, -1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

@@ -115,6 +115,7 @@ End[]
 
 Begin["`FCLoopBasis`Private`"]
 
+pow::usage="";
 null::usage="";
 lintegral::usage="";
 fclbeVerbose::usage="";
@@ -214,42 +215,43 @@ rulePropagatorPowersToOne = {
 		GenericPropagatorDenominator[arg, {1, s}]
 };
 
-auxIntegralToPropagators[exp_FeynAmpDenominator, lmoms_List]:=
-	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms]/; Length[List@@exp]>1
-
+(* FADs *)
 auxIntegralToPropagators[Power[exp_FeynAmpDenominator, n_Integer?Positive], lmoms_List]:=
 	ConstantArray[SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms], n]/; Length[List@@exp]>1;
-
-auxIntegralToPropagators[exp_FeynAmpDenominator, _]:=
-	{exp}/; Length[List@@exp]===1;
 
 auxIntegralToPropagators[Power[exp_FeynAmpDenominator, n_Integer?Positive], _]:=
 	ConstantArray[{exp}, n]/; Length[List@@exp]===1;
 
+auxIntegralToPropagators[exp_FeynAmpDenominator, lmoms_List]:=
+	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms]/; Length[List@@exp]>1 && Head[exp]=!=Power;
+
+auxIntegralToPropagators[exp_FeynAmpDenominator, _]:=
+	{exp}/; Length[List@@exp]===1;
+
+
+(* SPDs *)
+auxIntegralToPropagators[pref0_. Power[pref_. exp_Pair, n_Integer?Positive], lmoms_]:=
+	ConstantArray[FeynAmpDenominator[StandardPropagatorDenominator[0, pow[pref0,1/n] pref exp, 0, {-1, optEtaSign[[1]]}]], n]/; FreeQ2[{pref,pref0},lmoms];
+
 auxIntegralToPropagators[pref_. exp_Pair, lmoms_]:=
 	FeynAmpDenominator[StandardPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[1]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToPropagators[Power[pref_. exp_Pair, n_Integer?Positive], lmoms_]:=
-	ConstantArray[FeynAmpDenominator[StandardPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[1]]}]], n]/; FreeQ2[pref,lmoms];
+
+(* CSPDs *)
+auxIntegralToPropagators[pref0_. Power[pref_. exp_CartesianPair, n_Integer?Positive], lmoms_]:=
+	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, pow[pref0,1/n] pref exp, 0, {-1, optEtaSign[[2]]}]], n]/; FreeQ2[{pref,pref0},lmoms];
 
 auxIntegralToPropagators[pref_. exp_CartesianPair, lmoms_]:=
 	FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]]/; FreeQ2[pref,lmoms];
 
-auxIntegralToPropagators[Power[pref_. exp_CartesianPair, n_Integer?Positive], lmoms_]:=
-	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]], n]/; FreeQ2[pref,lmoms];
-
-auxIntegralToPropagators[pref_. exp_TemporalPair, lmoms_]:=
-	FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]]/; FreeQ2[pref,lmoms];
-
-auxIntegralToPropagators[Power[pref_. exp_TemporalPair, n_Integer?Positive], _]:=
-	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[pref exp, {-1, optEtaSign[[3]]}]], n]/; FreeQ2[pref,lmoms];
-
 (* This one should catch all nonstandard propagators.	*)
-auxIntegralToPropagators2[exp_, lmoms_]:=
-	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]/; !FreeQ2[exp,lmoms];
+auxIntegralToPropagators2[pref0_. Power[exp_, n_Integer?Positive], lmoms_]:=
+	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]], n]/; !FreeQ2[exp,lmoms] && FreeQ2[pref0,lmoms];
 
-auxIntegralToPropagators2[Power[exp_, n_Integer?Positive], _]:=
-	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]], n]/; !FreeQ2[exp,lmoms];
+auxIntegralToPropagators2[exp_, lmoms_]:=
+	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]/; !FreeQ2[exp,lmoms] && Head[exp]=!=Power;
+
+
 
 
 FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
@@ -315,7 +317,19 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 				Abs[n]=!=1 :> Sequence@@ConstantArray[h[a,  {Sign[n],s}], Abs[n]]
 		};
 
-		tmp = (auxIntegralToPropagators[#,lmoms] /. auxIntegralToPropagators -> auxIntegralToPropagators2)&/@tmp;
+		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
+
+
+		(*
+			This  tricky construction is needed to handle integrals with scalar products like
+			(-a.q - b.q - c.q)^n which, upon applying MomentumCombine, yield -(q.(a+b+c))^3.
+			We want to write this as 1/[-(q.(a+b+c))]^3 instead of -1/[(q.(a+b+c))]^3, since
+			otherwise Rest->None will return errors.
+		*)
+		tmp = tmp /. auxIntegralToPropagators -> auxIntegralToPropagators2 /.
+			pow[a_Integer?Negative, b_]/; MatchQ[1/b, _Integer?Positive] :> - Power[-a,1/b] /.
+			pow -> Power;
+
 		If[	!FreeQ2[tmp,{auxIntegralToPropagators,auxIntegralToPropagators2}],
 			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to extract the propagators."];
 			Abort[]
