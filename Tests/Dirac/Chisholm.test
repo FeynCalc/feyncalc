@@ -117,5 +117,76 @@ GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"},
 "MatchQ[$LeviCivitaSign=-1; \
 Chisholm[GS[p].DiracSigma[GA[mu],GA[nu]].GA[5].GS[q],Mode\[Rule]2,FCE\
 \[Rule]True],\[IndentingNewLine]I\!\(\*FractionBox[\(1\), \(2\)]\) \
-GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"}
+GS[p].DiracSigma[GA[a_],GA[b_]].GS[q] LC[mu,nu,a_,b_]]", "True"},
+{"fcstChisholm-ID26",
+"FCCanonicalizeDummyIndices[
+Chisholm[SpinorUBar[p1].GA[a, b, c, d, e].SpinorU[p2], FCE -> True],
+LorentzIndexNames -> {mu}]",
+"I Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[b]].DiracGamma[
+	5].Spinor[Momentum[p2], 0, 1] Eps[LorentzIndex[a],
+LorentzIndex[c], LorentzIndex[d], LorentzIndex[e]] -
+I Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[a]].DiracGamma[
+	5].Spinor[Momentum[p2], 0, 1] Eps[LorentzIndex[b],
+LorentzIndex[c], LorentzIndex[d], LorentzIndex[e]] +
+I Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	5].Spinor[Momentum[p2], 0, 1] Eps[LorentzIndex[c],
+LorentzIndex[d], LorentzIndex[e], LorentzIndex[mu]] Pair[
+LorentzIndex[a], LorentzIndex[b]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[e]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[d]] Pair[
+LorentzIndex[b], LorentzIndex[c]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[d]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[e]] Pair[
+LorentzIndex[b], LorentzIndex[c]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[e]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[c]] Pair[
+LorentzIndex[b], LorentzIndex[d]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[c]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[e]] Pair[
+LorentzIndex[b], LorentzIndex[d]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[d]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[c]] Pair[
+LorentzIndex[b], LorentzIndex[e]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[c]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[d]] Pair[
+LorentzIndex[b], LorentzIndex[e]] +
+I Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	5].Spinor[Momentum[p2], 0, 1] Eps[LorentzIndex[a],
+LorentzIndex[b], LorentzIndex[e], LorentzIndex[mu]] Pair[
+LorentzIndex[c], LorentzIndex[d]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[e]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[b]] Pair[
+LorentzIndex[c], LorentzIndex[d]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[b]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[e]] Pair[
+LorentzIndex[c], LorentzIndex[d]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[a]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[b], LorentzIndex[e]] Pair[
+LorentzIndex[c], LorentzIndex[d]] -
+I Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	5].Spinor[Momentum[p2], 0, 1] Eps[LorentzIndex[a],
+LorentzIndex[b], LorentzIndex[d], LorentzIndex[mu]] Pair[
+LorentzIndex[c], LorentzIndex[e]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[d]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[b]] Pair[
+LorentzIndex[c], LorentzIndex[e]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[b]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[d]] Pair[
+LorentzIndex[c], LorentzIndex[e]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[a]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[b], LorentzIndex[d]] Pair[
+LorentzIndex[c], LorentzIndex[e]] +
+I Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	5].Spinor[Momentum[p2], 0, 1] Eps[LorentzIndex[a],
+LorentzIndex[b], LorentzIndex[c], LorentzIndex[mu]] Pair[
+LorentzIndex[d], LorentzIndex[e]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[c]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[b]] Pair[
+LorentzIndex[d], LorentzIndex[e]] -
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[b]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[a], LorentzIndex[c]] Pair[
+LorentzIndex[d], LorentzIndex[e]] +
+Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[a]].Spinor[
+	Momentum[p2], 0, 1] Pair[LorentzIndex[b], LorentzIndex[c]] Pair[
+LorentzIndex[d], LorentzIndex[e]]"}
 })

@@ -62,6 +62,135 @@ FCI) - (GA[i, j, k, l] // Chisholm //
 		ToDiracSigma[#, GA[i], GA[k]] & //
 	ToDiracSigma[#, GA[i], GA[j]] & //
 	ToDiracSigma[#, GA[i], GA[l]] & // Expand // DiracOrder //
-Chisholm[#, Mode -> 2] &)","0"}
-
+Chisholm[#, Mode -> 2] &)","0"},
+{"fcstDiracReduce-ID11",
+	"FCCanonicalizeDummyIndices[
+DiracReduce[(I*EL^3*
+	Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[
+		Polarization[kg, -I, Transversality -> True]]].DiracGamma[
+	Momentum[kg]].DiracGamma[Momentum[{L, I}]].DiracGamma[
+	Momentum[kp]].DiracGamma[
+	Momentum[Polarization[kp, -I]]].Spinor[-Momentum[p2], QMass,
+	1]*FeynAmpDenominator[
+	PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+	PropagatorDenominator[Momentum[kp] + Momentum[p2], QMass]]*
+	SUNTF[{SUNIndex[cg]}, SUNFIndex[cq], SUNFIndex[cqbar]])/s],
+LorentzIndexNames -> {mu}]",
+"-(1/s)EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[
+	Polarization[kg, -I, Transversality -> True]]].DiracGamma[
+	5].Spinor[-Momentum[p2], QMass, 1] Eps[Momentum[kg],
+	Momentum[kp], Momentum[{L, I}],
+	Momentum[Polarization[kp, -I]]] FeynAmpDenominator[
+	PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+	PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] SUNTF[{SUNIndex[cg]}, SUNFIndex[cq],
+	SUNFIndex[cqbar]] - (1/s)
+EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[kg]].DiracGamma[5].Spinor[-Momentum[p2], QMass, 1] Eps[
+Momentum[kp], Momentum[{L, I}], Momentum[Polarization[kp, -I]],
+Momentum[
+	Polarization[kg, -I, Transversality -> True]]] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] SUNTF[{SUNIndex[cg]}, SUNFIndex[cq],
+SUNFIndex[cqbar]] + (1/s)
+EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[5].Spinor[-Momentum[p2], QMass,
+	1] Eps[LorentzIndex[mu], Momentum[kg],
+Momentum[Polarization[kp, -I]],
+Momentum[
+	Polarization[kg, -I, Transversality -> True]]] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2], QMass]] Pair[
+Momentum[kp], Momentum[{L, I}]] SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]] + (1/s)
+EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[5].Spinor[-Momentum[p2], QMass,
+	1] Eps[LorentzIndex[mu], Momentum[kg], Momentum[{L, I}],
+Momentum[
+	Polarization[kg, -I, Transversality -> True]]] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2], QMass]] Pair[
+Momentum[kp], Momentum[Polarization[kp, -I]]] SUNTF[{SUNIndex[cg]},
+	SUNFIndex[cq], SUNFIndex[cqbar]] - (1/s)
+EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[5].Spinor[-Momentum[p2], QMass,
+	1] Eps[LorentzIndex[mu], Momentum[kg], Momentum[kp],
+Momentum[
+	Polarization[kg, -I, Transversality -> True]]] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2], QMass]] Pair[
+Momentum[{L, I}],
+Momentum[Polarization[kp, -I]]] SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]] + (1/s)
+I EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[
+	Polarization[kg, -I, Transversality -> True]]].Spinor[-Momentum[
+	p2], QMass, 1] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] (Pair[Momentum[kg], Momentum[Polarization[kp, -I]]] Pair[
+	Momentum[kp], Momentum[{L, I}]] +
+	Pair[Momentum[kg], Momentum[{L, I}]] Pair[Momentum[kp],
+	Momentum[Polarization[kp, -I]]] -
+	Pair[Momentum[kg], Momentum[kp]] Pair[Momentum[{L, I}],
+	Momentum[Polarization[kp, -I]]]) SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]] + (1/s)
+I EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[Polarization[kp, -I]]].Spinor[-Momentum[p2], QMass,
+	1] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] (Pair[Momentum[kg], Momentum[{L, I}]] Pair[Momentum[kp],
+	Momentum[Polarization[kg, -I, Transversality -> True]]] -
+	Pair[Momentum[kg], Momentum[kp]] Pair[Momentum[{L, I}],
+	Momentum[
+	Polarization[kg, -I,
+		Transversality -> True]]]) SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]] - (1/s)
+I EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[{L, I}]].Spinor[-Momentum[p2], QMass,
+	1] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] (Pair[Momentum[kg], Momentum[Polarization[kp, -I]]] Pair[
+	Momentum[kp],
+	Momentum[Polarization[kg, -I, Transversality -> True]]] -
+	Pair[Momentum[kg], Momentum[kp]] Pair[
+	Momentum[Polarization[kp, -I]],
+	Momentum[
+	Polarization[kg, -I,
+		Transversality -> True]]]) SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]] + (1/s)
+I EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[kp]].Spinor[-Momentum[p2], QMass, 1] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] (Pair[Momentum[kg], Momentum[Polarization[kp, -I]]] Pair[
+	Momentum[{L, I}],
+	Momentum[Polarization[kg, -I, Transversality -> True]]] -
+	Pair[Momentum[kg], Momentum[{L, I}]] Pair[
+	Momentum[Polarization[kp, -I]],
+	Momentum[
+	Polarization[kg, -I,
+		Transversality -> True]]]) SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]] + (1/s)
+I EL^3 Spinor[Momentum[p1], QMass, 1].DiracGamma[
+	Momentum[kg]].Spinor[-Momentum[p2], QMass, 1] FeynAmpDenominator[
+PropagatorDenominator[-Momentum[kg] - Momentum[p1], QMass],
+PropagatorDenominator[Momentum[kp] + Momentum[p2],
+	QMass]] (Pair[Momentum[kp],
+	Momentum[Polarization[kg, -I, Transversality -> True]]] Pair[
+	Momentum[{L, I}], Momentum[Polarization[kp, -I]]] -
+	Pair[Momentum[kp], Momentum[Polarization[kp, -I]]] Pair[
+	Momentum[{L, I}],
+	Momentum[Polarization[kg, -I, Transversality -> True]]] -
+	Pair[Momentum[kp], Momentum[{L, I}]] Pair[
+	Momentum[Polarization[kp, -I]],
+	Momentum[
+	Polarization[kg, -I,
+		Transversality -> True]]]) SUNTF[{SUNIndex[cg]},
+SUNFIndex[cq], SUNFIndex[cqbar]]"}
 }

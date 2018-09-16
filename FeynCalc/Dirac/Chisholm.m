@@ -73,7 +73,24 @@ Chisholm[expr_, OptionsPattern[]] :=
 					Pair[lv1, lv2] dsHead[holdDOT[a, DiracGamma[lv3],DiracGamma[5]]] -
 					Pair[lv1, lv3] dsHead[holdDOT[a, DiracGamma[lv2],DiracGamma[5]]] +
 					Pair[lv2, lv3] dsHead[holdDOT[a, DiracGamma[lv1],DiracGamma[5]]] -
-					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a,DiracGamma[tmpli]]]))
+					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a,DiracGamma[tmpli]]])),
+
+			(*The same with the spinors*)
+			dsHead[holdDOT[a___,DiracGamma[(lv1:(LorentzIndex|Momentum)[_])], DiracGamma[(lv2:(LorentzIndex|Momentum)[_])],
+				DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], b_Spinor]] :>
+					(tmpli= LorentzIndex[$MU[Unique[]]]; (
+					Pair[lv1, lv2] dsHead[holdDOT[a,DiracGamma[lv3], b]] -
+					Pair[lv1, lv3] dsHead[holdDOT[a,DiracGamma[lv2], b]] +
+					Pair[lv2, lv3] dsHead[holdDOT[a,DiracGamma[lv1], b]] -
+					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a,DiracGamma[tmpli],DiracGamma[5], b]]
+					)),
+			dsHead[holdDOT[a___, DiracGamma[(lv1:(LorentzIndex|Momentum)[_])], DiracGamma[(lv2:(LorentzIndex|Momentum)[_])],
+				DiracGamma[(lv3:(LorentzIndex|Momentum)[_])], DiracGamma[5], b_Spinor]] :>
+					(tmpli= LorentzIndex[$MU[Unique[]]]; (
+					Pair[lv1, lv2] dsHead[holdDOT[a, DiracGamma[lv3],DiracGamma[5], b]] -
+					Pair[lv1, lv3] dsHead[holdDOT[a, DiracGamma[lv2],DiracGamma[5], b]] +
+					Pair[lv2, lv3] dsHead[holdDOT[a, DiracGamma[lv1],DiracGamma[5], b]] -
+					$LeviCivitaSign I Eps[lv1,lv2,lv3, tmpli] dsHead[holdDOT[a,DiracGamma[tmpli],b]]))
 		};
 
 		chisholmRuleInsideTrace = {
@@ -124,6 +141,8 @@ Chisholm[expr_, OptionsPattern[]] :=
 			FCPrint[3,"Chisholm: freePart: ",freePart , FCDoControl->chVerbose];
 
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//DeleteDuplicates//Sort;
+			Global`AAA = {freePart,dsPart};
+			Global`BBB = diracObjects;
 			FCPrint[1, "Chisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose];
 
 			time=AbsoluteTime[];
@@ -141,6 +160,7 @@ Chisholm[expr_, OptionsPattern[]] :=
 					If [OptionValue[InsideDiracTrace],
 						diracObjectsEval = diracObjectsEval/.chisholmRuleInsideTrace;
 					];
+					Global`ZZZ = diracObjectsEval;
 
 					FCPrint[1, "Done applying Chisholm identity  (mode 1), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
 

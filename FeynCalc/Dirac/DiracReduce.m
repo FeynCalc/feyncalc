@@ -90,10 +90,14 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		FCPrint[3, "DiracReduce: After DiracOrder: ", tmp, FCDoControl->drVerbose];
 
 		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2];
+		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
+
 		tmp = tmp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :> (-I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]]+Pair[b[yy], a[xx]]);
+		FCPrint[3, "DiracReduce: After introducing DiracSigma: ", tmp, FCDoControl->drVerbose];
 
 		If[	diracSimplify,
-			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True]
+			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True];
+			FCPrint[3, "DiracReduce: After DiracSimplify: ", tmp, FCDoControl->drVerbose]
 		];
 
 		tmp = Collect2[tmp, DiracGamma, Factoring -> factoring];
