@@ -2158,7 +2158,7 @@ SUNFIndex[i_Integer] :=
 	ExplicitSUNFIndex[i];
 
 SUNTF[a_,b_,c_] :=
-	SUNTF[{a},b,c]/;Head[a]=!=List;
+	SUNTF[{a},b,c]/;Head[a]=!=List && FCPatternFreeQ[{a,b,c}];
 
 (* Tr[T^a] = 0 *)
 SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=

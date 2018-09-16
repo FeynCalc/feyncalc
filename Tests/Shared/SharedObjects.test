@@ -978,6 +978,8 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"},
 {"fcstSharedObjectsBehavior-ID216", "SUNFIndex[4]", "ExplicitSUNFIndex[4]"},
 {"fcstSharedObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"},
+{"fcstSharedObjectsBehavior-ID217.1", "SUNTF[{SUNIndex[a1], SUNIndex[a2]}, SUNFIndex[b], SUNFIndex[c]] /.
+SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
 {"fcstSharedObjectsBehavior-ID218", "FCI[SUNTF[a,x,x]]", "0"},
 {"fcstSharedObjectsBehavior-ID219", "Conjugate[Zeta2]", "Zeta2"},
 {"fcstSharedObjectsBehavior-ID220", "Conjugate[Zeta4]", "Zeta4"},
