@@ -92,5 +92,18 @@ m2].GA[5].GA[i].Spinor[p1, m1],m],Momentum\[Rule]{p1,p2}]//FCE",
 "DiracTrace[(m1 + DiracGamma[Momentum[p1, m], m]) . \
 DiracGamma[LorentzIndex[i, m], m] . GA[5] . (m2 + \
 DiracGamma[Momentum[p2, m], m]) . GA[5] . DiracGamma[LorentzIndex[i, \
-m], m]]"}
+m], m]]"},
+{"fcstFermionSpinSum-ID15",
+"FermionSpinSum[
+Spinor[Momentum[l1], 0, 1].CGA[aa].Spinor[-Momentum[l2], 0,
+	1] SpinorVBar[l2].CGA[bb].SpinorU[l1] Eps[
+CartesianMomentum[kphat], CartesianIndex[aa],
+CartesianMomentum[Polarization[kp, I]]] Eps[
+CartesianMomentum[kphat], CartesianIndex[bb],
+CartesianMomentum[Polarization[kp, -I]]], FCE -> True]",
+"DiracTrace[GS[l1].CGA[aa].GS[l2].CGA[bb]] Eps[
+CartesianMomentum[kphat], CartesianIndex[aa],
+CartesianMomentum[Polarization[kp, I]]] Eps[
+CartesianMomentum[kphat], CartesianIndex[bb],
+CartesianMomentum[Polarization[kp, -I]]]"}
 });
