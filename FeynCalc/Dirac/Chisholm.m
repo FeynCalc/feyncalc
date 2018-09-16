@@ -141,8 +141,6 @@ Chisholm[expr_, OptionsPattern[]] :=
 			FCPrint[3,"Chisholm: freePart: ",freePart , FCDoControl->chVerbose];
 
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//DeleteDuplicates//Sort;
-			Global`AAA = {freePart,dsPart};
-			Global`BBB = diracObjects;
 			FCPrint[1, "Chisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose];
 
 			time=AbsoluteTime[];
@@ -160,7 +158,6 @@ Chisholm[expr_, OptionsPattern[]] :=
 					If [OptionValue[InsideDiracTrace],
 						diracObjectsEval = diracObjectsEval/.chisholmRuleInsideTrace;
 					];
-					Global`ZZZ = diracObjectsEval;
 
 					FCPrint[1, "Done applying Chisholm identity  (mode 1), timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose],
 
