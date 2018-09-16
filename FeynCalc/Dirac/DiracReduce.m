@@ -82,6 +82,10 @@ DiracReduce[expr_, OptionsPattern[]] :=
 			tmp = DiracGammaCombine[tmp,FCI->True]
 		];
 
+		If[	OptionValue[DotSimplify],
+			tmp = DotSimplify[tmp,FCI->False]
+		];
+
 		(* Chisholm identity recursively *)
 		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
