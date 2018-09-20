@@ -1,0 +1,66 @@
+
+
+(* :Title: Write2.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Write2	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`ExportImport`fcstWrite2 =
+({
+{"fcstWrite2-ID1",
+"Write2[\"tmpfcst.f\",test=100., \
+FormatType\[Rule]FortranForm];res=Import[\"tmpfcst.f\",\"String\"];\
+DeleteFile[\"tmpfcst.f\"];res",
+"\"        test = 1.D2\\n                  \\n\""},
+{"fcstWrite2-ID2",
+"Write2[\"tmpfcst.f\",test=100., \
+FormatType\[Rule]FortranForm,FortranFormatDoublePrecision\[Rule]False]\
+;res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
+"\"        test = 100.\\n                  \\n\""},
+{"fcstWrite2-ID3",
+"Write2[\"tmpfcst.f\",test=a/100+5 x, \
+FormatType\[Rule]FortranForm];res=Import[\"tmpfcst.f\",\"String\"];\
+DeleteFile[\"tmpfcst.f\"];res",
+"\"        test = a*1.D-2 + x*5D0\\n                  \\n\""},
+{"fcstWrite2-ID4",
+"Write2[\"tmpfcst.f\",test=a/100+5 \
+x];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
+"\"test = a/100 + 5*x\\n\""},
+{"fcstWrite2-ID5",
+"Write2[\"tmpfcst.f\",abc=0.6*(-8+12 \
+Log[5+y[1]]),abc1=1/x^(2/3),FormatType->FortranForm,Precision\
+\[Rule]10];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];\
+res",
+"\"        abc = 6.D-1*(-8D0 + 1.2D1*Log(5D0 + y(1D0)))\\n        abc1 = x**-6.666666667D-1\\n\""},
+{"fcstWrite2-ID6",
+"Write2[\"tmpfcst.f\",abc=0.6*(-8+12 \
+Log[5+y[1]]),abc1=1/x^(2/3),FormatType\[Rule]FortranForm,\
+FortranFormatDoublePrecision\[Rule]False];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
+"\"        abc = 0.6*(-8. + 12.*Log(5. + y(1.)))\\n        abc1 = \
+x**(-0.6666666666666666)\\n\""},
+{"fcstWrite2-ID7",
+"Write2[\"tmpfcst.f\",
+testout = 64*mb^8*(4*psq1*psq2 - 16*psk*psq1*psq2 - 16*psq1^2*psq2 - \
+	8*psq1*psq2^2 + 4*psq2*q1k - 2*psk*psq2*q1k + 2*psq1*psq2*q1k + \
+	8*psq2*q1k^2 + 6*psk*q1q2 - 10*psk^2*q1q2 + 2*psq1*q1q2 - \
+	10*psk*psq1*q1q2 - 4*psq1^2*q1q2 + 8*psq2*q1q2 - \
+	28*psk*psq2*q1q2 - 32*psq1*psq2*q1q2 - 16*psq2^2*q1q2 - \
+	4*psq1*q1k*q1q2 - 2*psq2*q1k*q1q2 - 2*psk*q1q2^2 - \
+	4*psq1*q1q2^2 - 12*psq2*q1q2^2 + 2*psk*q2k + 6*psk*psq1*q2k + \
+	2*psq1^2*q2k), FormatType -> FortranForm];res=Import[\"tmpfcst.f\",\"String\"];DeleteFile[\"tmpfcst.f\"];res",
+"\"        testout = mb**8*(psq1*psq2*q1q2*-3.2D1 + psk*psq2*q1q2*-2.8D1 + \n     \
+&    psk*psq1*psq2*-1.6D1 + psq1**2*psq2*-1.6D1 + \n     &    psq2**2*q1q2*-1.6D1 + psq2*q1q2**2*-1.2D1 + \n     \
+&    psk**2*q1q2*-1.D1 + psk*psq1*q1q2*-1.D1 + \n     &    psq1*psq2**2*-8D0 + psq1**2*q1q2*-4D0 + \n     \
+&    psq1*q1k*q1q2*-4D0 + psq1*q1q2**2*-4D0 + \n     &    psk*psq2*q1k*-2D0 + psq2*q1k*q1q2*-2D0 + \n     \
+&    psk*q1q2**2*-2D0 + psq1*psq2*q1k*2D0 + \n     &    psq1*q1q2*2D0 + psk*q2k*2D0 + psq1**2*q2k*2D0 + \n     \
+&    psq1*psq2*4D0 + psq2*q1k*4D0 + psk*q1q2*6D0 + \n     \
+&    psk*psq1*q2k*6D0 + psq2*q1k**2*8D0 + psq2*q1q2*8D0)*\n     &  6.4D1\n\""}
+});
