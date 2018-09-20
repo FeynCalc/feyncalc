@@ -1225,6 +1225,17 @@ Cell[TextData[{
  CellID->693139341],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCCanonicalizeDummyIndices",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCCanonicalizeDummyIndices"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " canonicalizes dummy Lorentz and SU(N) indices"
+}], "GuideText",
+ CellID->530074450],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCClearScalarProducts",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCClearScalarProducts"]], 
