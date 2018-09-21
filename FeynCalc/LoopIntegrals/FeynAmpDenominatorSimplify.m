@@ -75,7 +75,8 @@ SetAttributes[FeynAmpDenominatorSimplify, Listable];
 
 FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPattern[]] :=
 	Block[ {ex,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time, topoCheckUnique,
-		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting},
+		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting, power, fadList,
+		fadListEval, fadHold},
 
 		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
@@ -109,27 +110,36 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			Return[ex]
 		];
 
-		ex = ex /. {FeynAmpDenominator[a__]^n_ /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{iii,1,n}])]};
-		If[	!FreeQ[ex, PD],
-			ex = ex /. PD -> procan /. procan -> PD
+		ex = ex /. Power[FeynAmpDenominator[a__], b_ ] :> power[fadHold[a],b];
+
+		fadList = Cases2[ex+null1+null2,FeynAmpDenominator,power];
+
+		fadListEval = fadList /. {power[fadHold[a__],n_] /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{iii,1,n}])]} /.
+			power -> Power /. fadHold -> FeynAmpDenominator;
+
+		If[	!FreeQ[fadListEval, PD],
+			fadListEval = fadListEval /. PD -> procan /. procan -> PD
 		];
 
-		If[	!FreeQ[ex, StandardPropagatorDenominator],
-			ex = ex /. StandardPropagatorDenominator ->  procanSFAD /.  procanSFAD -> StandardPropagatorDenominator
+		If[	!FreeQ[fadListEval, StandardPropagatorDenominator],
+			fadListEval = fadListEval /. StandardPropagatorDenominator ->  procanSFAD /.  procanSFAD -> StandardPropagatorDenominator
 		];
 
-		If[	!FreeQ[ex, CartesianPropagatorDenominator],
-			ex = ex /. CartesianPropagatorDenominator ->  procanCFAD /.  procanCFAD -> CartesianPropagatorDenominator
+		If[	!FreeQ[fadListEval, CartesianPropagatorDenominator],
+			fadListEval = fadListEval /. CartesianPropagatorDenominator ->  procanCFAD /.  procanCFAD -> CartesianPropagatorDenominator
 		];
 
-
-		FCPrint[3,"FDS: After fixing the signs of squared momenta in the propagators: ", ex, FCDoControl->fdsVerbose];
+		FCPrint[3,"FDS: After fixing the signs of squared momenta in the propagators: ", fadListEval, FCDoControl->fdsVerbose];
 
 		If[ Length[{qs}]===0,
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
-			Return[ex /.  FeynAmpDenominator -> feyncan]
+			fadListEval = fadListEval /. FeynAmpDenominator -> feyncan;
+			repRule = Thread[Rule[fadList,fadListEval]];
+			Return[ex /.  Dispatch[repRule]]
 		];
 
+		repRule = Thread[Rule[fadList,fadListEval]];
+		ex = ex /.  Dispatch[repRule];
 
 
 		(*	Extract unique loop integrals	*)
