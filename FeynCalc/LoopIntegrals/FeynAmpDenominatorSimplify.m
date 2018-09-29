@@ -52,7 +52,9 @@ End[]
 Begin["`FeynAmpDenominatorSimplify`Private`"]
 
 fdsVerbose::usage="";
-
+loopHead::usage="";
+cLoopHead::usage="";
+sLoopHead::usage="";
 FDS = FeynAmpDenominatorSimplify;
 
 Options[FeynAmpDenominatorSimplify] = {
@@ -76,7 +78,7 @@ SetAttributes[FeynAmpDenominatorSimplify, Listable];
 FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPattern[]] :=
 	Block[ {ex,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time, topoCheckUnique,
 		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting, power, fadList,
-		fadListEval, fadHold},
+		fadListEval, fadHold, intsUniqueClassified},
 
 		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
@@ -141,6 +143,8 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		repRule = Thread[Rule[fadList,fadListEval]];
 		ex = ex /.  Dispatch[repRule];
 
+		FCPrint[3,"FDS: New ex: ", ex, FCDoControl->fdsVerbose];
+
 
 		(*	Extract unique loop integrals	*)
 		FCPrint[1,"FDS: Extracting unique loop integrals. ", FCDoControl->fdsVerbose];
@@ -149,19 +153,30 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		(*TODO Need to speed this up for cases where there is only one single FAD! *)
 		(*TODO Drop scaleless for 1-loop??? *)
 		(* Here we can exploit the possible factorization in a multiloop integral *)
+
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {qs},loopHead, FCI->True, PaVe->False, FCLoopBasisSplit->True,
-			ExpandScalarProduct->True, Full->False, GFAD->False, CFAD->False, SFAD->False];
+			ExpandScalarProduct->True, Full->False, GFAD->False, CFAD->True, SFAD->True];
 
 		FCPrint[1, "FDS: Done extracting unique loop integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 		FCPrint[1, "FDS: Number of the unique integrals: ", Length[intsUnique], FCDoControl->fdsVerbose];
 		FCPrint[3, "FDS: List of unique integrals ", intsUnique, FCDoControl->fdsVerbose];
+
+		(* All the mixed integrals will be ignored *)
+		intsUniqueClassified = integralClassify/@intsUnique;
+
+		FCPrint[3, "FDS: List of the unique integrals after their classification ", intsUniqueClassified, FCDoControl->fdsVerbose];
+
+		loopInts = loopInts /. Thread[Rule[intsUnique,intsUniqueClassified]];
+		intsUnique = intsUniqueClassified;
 
 		FCPrint[1,"FDS: Simplifying the unique integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
 		solsList = intsUnique /. {
 			loopHead[z_,{l_}] :> fdsOneLoop[z,l],
 			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
-			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]]
+			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]],
+			sLoopHead[z_,{__}] :> z,
+			cLoopHead[z_,{__}] :> z
 		};
 
 		solsList = (FeynAmpDenominatorCombine[#]/. FeynAmpDenominator -> feynord[{qs}])&/@solsList;
@@ -1647,6 +1662,25 @@ translat[x_, q1_, q2_] :=
 	Block[ {nuLlL1, nuLlL2},
 		Map[ trach[#, q1, q2]&,
 		(FCPrint[1,"in translat" , x, "|", q1, "|" ,q2]; Expand2[x, FeynAmpDenominator] + nuLlL1 + nuLlL2)] /. {nuLlL1:>0, nuLlL2:>0}
+	]];
+
+integralClassify[loopHead[x_,y_]]:=
+	MemSet[integralClassify[loopHead[x,y]],
+	Which[
+		FreeQ2[x,{StandardPropagatorDenominator,CartesianPropagatorDenominator,GenericPropagatorDenominator}] &&
+			!FreeQ2[x,{PropagatorDenominator}],
+		(* FAD *)
+		loopHead[x,y],
+		FreeQ2[x,{PropagatorDenominator,CartesianPropagatorDenominator,GenericPropagatorDenominator}] &&
+			!FreeQ2[x,{StandardPropagatorDenominator}],
+		(* SFAD *)
+		sLoopHead[x,y],
+		FreeQ2[x,{PropagatorDenominator,StadndardPropagatorDenominator,GenericPropagatorDenominator}] &&
+			!FreeQ2[x,{CartesianPropagatorDenominator}],
+		(* CFAD *)
+		cLoopHead[x,y],
+		True,
+		x
 	]];
 
 
