@@ -41,11 +41,24 @@ lev[PropagatorDenominator[a_, 0], PropagatorDenominator[b_, 0]] :=
 		False
 	];
 
+lev[CartesianPropagatorDenominator[a1_, a2_, _, _], CartesianPropagatorDenominator[b1_, b2_, _, _]] :=
+	If[ Length[Variables[{a1,a2}]] < Length[Variables[{b1,b2}]],
+		True,
+		False
+	];
+
+lev[StandardPropagatorDenominator[a1_, a2_, _, _], StandardPropagatorDenominator[b1_, b2_, _, _]] :=
+	If[ Length[Variables[{a1,a2}]] < Length[Variables[{b1,b2}]],
+		True,
+		False
+	];
+
 fdsor[a__] :=
 	Apply[FeynAmpDenominator, Sort[MomentumExpand[{a}], lev]];
 
 Options[FeynAmpDenominatorCombine] = {
-	FCI -> False
+	FCI -> False,
+	FCE -> False
 };
 
 FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
@@ -61,6 +74,10 @@ FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
 		];
 
 		res = Expand2[ex, FeynAmpDenominator] /. FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor;
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		res
 

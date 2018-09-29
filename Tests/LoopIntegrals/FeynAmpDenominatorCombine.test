@@ -29,5 +29,19 @@ PropagatorDenominator[Momentum[p, D], m]]"},
 	"FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m],
 StandardPropagatorDenominator[
 Momentum[Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D],
-	Momentum[q2, D]], D], 0, -2, {1, 1}]]"}
+	Momentum[q2, D]], D], 0, -2, {1, 1}]]"},
+{"fcstFeynAmpDenominatorCombine-ID4",
+	"FeynAmpDenominatorCombine[
+FeynAmpDenominator[CartesianPropagatorDenominator[
+CartesianMomentum[p, -1 + D] - CartesianMomentum[q, -1 + D],0, 0,
+{1, -1}]]*FeynAmpDenominator[CartesianPropagatorDenominator[
+CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]], FCE -> True]",
+	"CFAD[{{q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorCombine-ID5",
+	"FeynAmpDenominatorCombine[
+FeynAmpDenominator[StandardPropagatorDenominator[
+		Momentum[p, D] - Momentum[q,  D], 0, 0,
+		{1, -1}]]*FeynAmpDenominator[StandardPropagatorDenominator[
+		Momentum[q, D], 0, 0, {1, -1}]], FCE -> True]",
+"SFAD[{{q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]"}
 }
