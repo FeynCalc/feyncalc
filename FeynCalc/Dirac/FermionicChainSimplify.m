@@ -17,10 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FermionicChainSimplify::usage =
-"FermionicChainSimplify[x] simplifies spinor chains that contain Dirac matrices \
-using relations derived by Sirlin in Nuclear Physics B192 (1981) 93-99. \
-Contrary to the original paper, the sign of the Levi-Civita tensor is \
-choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";
+"FermionicChainSimplify[expr] simplifies chains of Dirac matrices with explicit \
+Dirac indices wrapped with a head FermionicChain.";
 
 FermionicChainSimplify::failmsg =
 "Error! FermionicChainSimplify has encountered a fatal problem and must abort the computation. \
@@ -41,6 +39,7 @@ li3::usage="";
 li4::usage="";
 
 holdDOT::usage="";
+optTraceOfOne::usage="";
 
 Options[FermionicChainSimplify] = {
 	Contract -> True,
@@ -54,7 +53,8 @@ Options[FermionicChainSimplify] = {
 	FCI -> False,
 	FCJoinDOTs -> True,
 	FCVerbose -> False,
-	SpinorChainTrick -> True
+	SpinorChainTrick -> True,
+	TraceOfOne -> 4
 };
 
 FermionicChainSimplify[expr_, OptionsPattern[]] :=
@@ -66,6 +66,7 @@ FermionicChainSimplify[expr_, OptionsPattern[]] :=
 		optDiracGammaCombine			= OptionValue[DiracGammaCombine];
 		optContract						= OptionValue[Contract];
 		optFCCanonicalizeDummyIndices	= OptionValue[FCCanonicalizeDummyIndices];
+		optTraceOfOne					= OptionValue[TraceOfOne];
 
 		FCPrint[1, "FermionicChainSimplify. Entering.", FCDoControl->fchsVerbose];
 		FCPrint[3, "FermionicChainSimplify: Entering with ", expr, FCDoControl->fchsVerbose];
@@ -159,12 +160,11 @@ fermionicChainEval[rest_. FermionicChain[a__,i_DiracIndex,b___] DiracIndexDelta[
 fermionicChainEval[rest_. FermionicChain[chain1_,a_,i_DiracIndex] FermionicChain[chain2_,i_DiracIndex,b_]]:=
 	fermionicChainEval[rest FermionicChain[holdDOT[chain1,chain2],a,b]]/; a=!=i && b=!=i;
 
-(* TODO: $TraceOfOne*)
 fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex,i_DiracIndex]]:=
-	4 fermionicChainEval[rest];
+	optTraceOfOne fermionicChainEval[rest];
 
 fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex,j_DiracIndex]^2]:=
-	4 fermionicChainEval[rest];
+	optTraceOfOne fermionicChainEval[rest];
 
 
 FCPrint[1,"FermionicChainSimplify.m loaded"];
