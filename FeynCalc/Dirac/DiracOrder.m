@@ -138,7 +138,8 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 
 		res = tmp;
 
-		If[	OptionValue[DiracTrick],
+		(* If orderingList contains a TemporalIndex, do not apply DiracTrick, since it would mess up the ordering!	*)
+		If[	OptionValue[DiracTrick] && FreeQ[orderList,TemporalIndex[]],
 				time=AbsoluteTime[];
 				FCPrint[1, "DiracOrder: Applying DiracTrick.", FCDoControl->doVerbose];
 				res = DiracTrick[res, FCI->True];
@@ -163,6 +164,11 @@ diracOrderLex[x_, maxIterations_]:=
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
 			2 PairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
+		(* The g^0 matrices are moved to the very right *)
+		holdDOT[a___,DiracGamma[TemporalIndex[]],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___] :>
+			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[TemporalIndex[]] ,b] +
+			2 PairContract[TemporalIndex[],h2[ar2]] holdDOT[a,b],
+
 		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:4],
 			DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:4],b___] :>
 			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar],dim].DiracGamma[h[ar],dim]],FCI->True,FCDiracIsolate->False]
@@ -172,10 +178,22 @@ diracOrderLex[x_, maxIterations_]:=
 
 customOrdering[x_, currentElement_]:=
 	x //. {
-		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],
+			DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
 			!FreeQ[h2[First[{ar2}],dim2],currentElement] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
 			2 PairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
+
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],DiracGamma[TemporalIndex[]],b___]/;
+			!FreeQ[TemporalIndex[],currentElement] && h1[First[{ar1}],dim1]=!=TemporalIndex[] :>
+			-holdDOT[a, DiracGamma[TemporalIndex[]], DiracGamma[h1[ar1],dim1] ,b] +
+			2 PairContract[h1[ar1],TemporalIndex[]] holdDOT[a,b],
+
+		holdDOT[a___,DiracGamma[TemporalIndex[]],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
+			!FreeQ[h2[First[{ar2}],dim2],currentElement] && TemporalIndex[]=!=h2[First[{ar2}],dim2] :>
+			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[TemporalIndex[]] ,b] +
+			2 PairContract[TemporalIndex[],h2[ar2]] holdDOT[a,b],
+
 
 		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:4],
 			DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:4],b___] :>
