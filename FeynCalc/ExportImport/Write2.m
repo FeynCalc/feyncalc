@@ -137,7 +137,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 			FCPrint[3, "Write2: Prepared expression: ", eq, FCDoControl->w2Verbose];
 
 			If[	optFFDP,
-				eq = eq  /. xxx_Real :> fhead[xxx];
+				eq = eq  /. xxx_Real :> fhead[xxx] /. fhead[xxx_?Negative] :> - fhead[-xxx];
 					(* Define a custom formatter that will generate Fortran's DOUBLE PRECISION format*)
 					fhead /: Format[fhead[r_Real], FortranForm] := (
 						{mantissa, exponent} = MantissaExponent[r];
