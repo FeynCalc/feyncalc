@@ -43,5 +43,20 @@ FeynAmpDenominator[StandardPropagatorDenominator[
 		Momentum[p, D] - Momentum[q,  D], 0, 0,
 		{1, -1}]]*FeynAmpDenominator[StandardPropagatorDenominator[
 		Momentum[q, D], 0, 0, {1, -1}]], FCE -> True]",
-"SFAD[{{q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]"}
+"SFAD[{{q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorCombine-ID6",
+	"FeynAmpDenominatorCombine[
+SFAD[{{q1, 0}, {0, -1}, 1}] SFAD[{{-p + q1, 0}, {0, -1},
+	1}] SFAD[{{q1 - q2, 0}, {0, -1}, 1}] SFAD[{{q2, 0}, {0, -1}, 1}],
+FCE -> True]",
+"SFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1},
+1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}]"},
+
+{"fcstFeynAmpDenominatorCombine-ID7",
+	"FeynAmpDenominatorCombine[
+CFAD[{{q1, 0}, {0, -1}, 1}] CFAD[{{-p + q1, 0}, {0, -1},
+	1}] CFAD[{{q1 - q2, 0}, {0, -1}, 1}] CFAD[{{q2, 0}, {0, -1}, 1}],
+FCE -> True]",
+"CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1},
+1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}]"}
 }
