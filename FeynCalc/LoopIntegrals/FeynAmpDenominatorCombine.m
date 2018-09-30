@@ -44,13 +44,19 @@ lev[PropagatorDenominator[a_, 0], PropagatorDenominator[b_, 0]] :=
 lev[CartesianPropagatorDenominator[a1_, a2_, _, _], CartesianPropagatorDenominator[b1_, b2_, _, _]] :=
 	If[ Length[Variables[{a1,a2}]] < Length[Variables[{b1,b2}]],
 		True,
-		False
+		If[	Length[Variables[{a1,a2}]] === Length[Variables[{b1,b2}]],
+			OrderedQ[{{a1,a2},{b1,b2}}],
+			False
+		]
 	];
 
 lev[StandardPropagatorDenominator[a1_, a2_, _, _], StandardPropagatorDenominator[b1_, b2_, _, _]] :=
 	If[ Length[Variables[{a1,a2}]] < Length[Variables[{b1,b2}]],
 		True,
-		False
+		If[	Length[Variables[{a1,a2}]] === Length[Variables[{b1,b2}]],
+			OrderedQ[{{a1,a2},{b1,b2}}],
+			False
+		]
 	];
 
 fdsor[a__] :=

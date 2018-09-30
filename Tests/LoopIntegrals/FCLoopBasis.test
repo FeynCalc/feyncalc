@@ -418,14 +418,14 @@ q1,q2,q3,q4,q5},Head\[Rule]loopInt,List\[Rule]False,FCE\[Rule]True]",
 "FCLoopBasisSplit[FCI[CFAD[q1, q1 - q2, q2, {q3, m^2}]], {q1, q2, q3},
 Head -> loop, FCE -> True]",
 "{loop[CFAD[{{q3, 0}, {m^2, -1}, 1}], {q3}],
-loop[CFAD[{{q2, 0}, {0, -1}, 1}, {{q1, 0}, {0, -1},
-	1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}"},
+loop[CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1},
+{{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}"},
 {"fcstFCLoopBasisSplit-ID9",
 "FCLoopBasisSplit[FCI[SFAD[q1, q1 - q2, q2, {q3, m^2}]], {q1, q2, q3},
 Head -> loop, FCE -> True]",
 "{loop[SFAD[{{q3, 0}, {m^2, 1}, 1}], {q3}],
-loop[SFAD[{{q2, 0}, {0, 1}, 1}, {{q1, 0}, {0, 1},
-	1}, {{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}"}
+loop[SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1},
+{{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisExtract =

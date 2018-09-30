@@ -104,19 +104,19 @@ GFAD -> False] // FCE",
 {"fcstFCLoopExtract-ID19",
 "FCLoopExtract[CFAD[{q3,0},{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2,\
 q3},loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
-"{0, loopInt[CFAD[{{q3, 0}, {0, -1}, 1}], {q3}]*loopInt[CFAD[{{q1, \
-0}, {0, -1}, 1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, \
-1}, {{q2, 0}, {0, -1}, 1}], {q1, q2}], {loopInt[CFAD[{{q3, 0}, {0, \
--1}, 1}], {q3}], loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{-p + q1, 0}, \
-{0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1}], {q1, \
-q2}]}}"},
+"{0, loopInt[CFAD[{{q3, 0}, {0, -1}, 1}], {q3}]*
+loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1},
+	{{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}],
+{loopInt[CFAD[{{q3, 0}, {0, -1}, 1}], {q3}],
+loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1},
+	{{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}}"},
 {"fcstFCLoopExtract-ID20",
 "FCLoopExtract[CFAD[{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2},\
 loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
-"{0, loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{-p + q1, 0}, {0, -1}, \
-1}, {{q1 - q2, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1}], {q1, q2}], \
-{loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 \
-- q2, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1}], {q1, q2}]}}"},
+"{0, loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1},
+{{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}],
+{loopInt[CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1},
+	{{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}], {q1, q2}]}}"},
 {"fcstFCLoopExtract-ID21",
 "FCLoopExtract[CFAD[{q1,m0},{p1+p2}],{q2},loopInt,FCLoopBasisSplit\
 \[Rule]True,FCE\[Rule]True]",
@@ -209,18 +209,19 @@ CartesianMomentum[q1, -1 + D], 0, m, {1, -1}]]]}}"},
 {"fcstFCLoopExtract-ID29",
 "FCLoopExtract[SFAD[{q3,0},{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2,\
 q3},loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
-"{0, loopInt[SFAD[{{q3, 0}, {0, 1}, 1}], {q3}]*loopInt[SFAD[{{q1, \
-0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, 1}, {{q1 - q2, 0}, {0, 1}, 1}, \
-{{q2, 0}, {0, 1}, 1}], {q1, q2}], {loopInt[SFAD[{{q3, 0}, {0, 1}, \
-1}], {q3}], loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, \
-1}, {{q1 - q2, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}], {q1, q2}]}}"},
+"{0, loopInt[SFAD[{{q3, 0}, {0, 1}, 1}], {q3}]*
+loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1},
+	{{-p + q1, 0}, {0, 1}, 1}, {{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}],
+{loopInt[SFAD[{{q3, 0}, {0, 1}, 1}], {q3}],
+loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1},
+	{{-p + q1, 0}, {0, 1}, 1}, {{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}}"},
 {"fcstFCLoopExtract-ID30",
 "FCLoopExtract[SFAD[{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2},\
 loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
-"{0, loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, 1}, \
-{{q1 - q2, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}], {q1, q2}], \
-{loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{-p + q1, 0}, {0, 1}, 1}, {{q1 - \
-q2, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1}], {q1, q2}]}}"},
+"{0, loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1},
+{{-p + q1, 0}, {0, 1}, 1}, {{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}],
+{loopInt[SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1},
+	{{-p + q1, 0}, {0, 1}, 1}, {{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}}"},
 {"fcstFCLoopExtract-ID31",
 "FCLoopExtract[SFAD[{q1,m0},{p1+p2}],{q1},loopInt,FCLoopBasisSplit\
 \[Rule]True,FCE\[Rule]True]",
