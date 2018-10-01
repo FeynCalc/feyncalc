@@ -172,11 +172,11 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		FCPrint[1,"FDS: Simplifying the unique integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
 		solsList = intsUnique /. {
-			loopHead[z_,{l_}] :> fdsOneLoop[z,l],
+			(loopHead|sLoopHead|cLoopHead)[z_,{l_}] :> fdsOneLoop[z,l],
 			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
 			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]],
-			sLoopHead[z_,{__}] :> z,
-			cLoopHead[z_,{__}] :> z
+			sLoopHead[z_,{_,__}] :> z,
+			cLoopHead[z_,{_,__}] :> z
 		};
 
 		solsList = (FeynAmpDenominatorCombine[#]/. FeynAmpDenominator -> feynord[{qs}])&/@solsList;
@@ -190,7 +190,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		];
 
 		(*	Tailored simplifications for speical 2-loop topologies	*)
-		If[ OptionValue[DetectLoopTopologies] && !FreeQ[solsList,multiLoopHead],
+		If[ OptionValue[DetectLoopTopologies] && !FreeQ[solsList,multiLoopHead] && FreeQ2[solsList,{StandardPropagatorDenominator,CartesianPropagatorDenominator}] ,
 			FCPrint[3, "FDS: Simplifying special topologies.", FCDoControl->fdsVerbose];
 
 
@@ -377,36 +377,97 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		(* Special trick for same mass propagators to avoid terms like 1/[q^2-m^2] [(q-p)^2-m^2]^3 instead of
 			1/[q^2-m^2]^3 [(q-p)^2-m^2] *)
-		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],m_]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,m_]..),rest___]/;
-			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
-					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
-					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
-					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}];
+		If[	!FreeQ[tmp,PropagatorDenominator],
+			tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],m_]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,m_]..),rest___]/;
+				FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
+						((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+						FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
+						FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}]
+		];
+
+		If[	!FreeQ[tmp,StandardPropagatorDenominator],
+			tmp = tmp/. {a_. FeynAmpDenominator[(ch1: StandardPropagatorDenominator[Momentum[q,dim_:4],0,m_,s_]..),
+												(ch2: StandardPropagatorDenominator[Momentum[q,dim_:4]+ pe_,0,m_, s_]..),rest___]/;
+				FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
+						((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+						FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
+						FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}]
+		];
+
+		If[	!FreeQ[tmp,CartesianPropagatorDenominator],
+			tmp = tmp/. {a_. FeynAmpDenominator[(ch1: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3],0,m_,s_]..),
+												(ch2: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3]+ pe_,0,m_, s_]..),rest___]/;
+				FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
+						((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.CartesianMomentum->extractm))} /.
+						FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]]/. FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}]
+		];
 
 		FCPrint[3, "FDS: fdsOneLoop: After using special trick for same mass propagators:  ", tmp, FCDoControl->fdsVerbose];
 
 		(* Special trick for massless propagators to avoid terms like 1/q^2 [(q-p)^2]^3 instead of
 			1/[q^2]^3 [(q-p)^2] *)
+		If[ !FreeQ[tmp,PropagatorDenominator],
 		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],0]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,0]..),rest___]/;
 			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
 					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
-					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
+					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}]
+		];
+
+		If[ !FreeQ[tmp,StandardPropagatorDenominator],
+		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: StandardPropagatorDenominator[Momentum[q,dim_:4],0,0,s_]..),
+											(ch2: StandardPropagatorDenominator[Momentum[q,dim_:4]+ pe_,0,0,s_]..),rest___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
+					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
+					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}]
+		];
+
+		If[ !FreeQ[tmp,CartesianPropagatorDenominator],
+		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3],0,0,s_]..),
+											(ch2: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3]+ pe_,0,0,s_]..),rest___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
+					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.CartesianMomentum->extractm))} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
+					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}]
+		];
 
 		FCPrint[3, "FDS: fdsOneLoop: After using special trick for massless propagators:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Perform a shift to make the very first propagator free of external momenta	*)
+		If[ !FreeQ[tmp, PropagatorDenominator],
 		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q,dim_:4]+pe_, m_],rest___]/; FreeQ[pe,q] :>
 					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
+		];
+
+		If[ !FreeQ[tmp, StandardPropagatorDenominator],
+		tmp = tmp/. {a_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,dim_:4]+pe_,x_, m_, s_],rest___]/; FreeQ[pe,q] :>
+					((a FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,dim]+pe, x, m, s],rest])/. q :> q - (pe/.Momentum->extractm))} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
+		];
+
+		If[ !FreeQ[tmp, CartesianPropagatorDenominator],
+		tmp = tmp/. {a_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3]+pe_,x_, m_, s_],rest___]/; FreeQ[pe,q] :>
+					((a FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,dim]+pe, x, m, s],rest])/. q :> q - (pe/.CartesianMomentum->extractm))} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
+		];
+
 
 		FCPrint[3, "FDS: fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Remove massless tadpoles (vanish in DR)	*)
 		If[!$KeepLogDivergentScalelessIntegrals,
-			tmp = tmp /. {_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0},
+			tmp = tmp /. {
+				_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0,
+				_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..] :> 0,
+				_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,_:3], 0]..] :> 0
+			},
 			If[	(tmp/. FeynAmpDenominator[___]->1)===1,
-				tmp = tmp /. {_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0}
+				tmp = tmp /. {
+					_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0,
+					_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..]/;Length[{l}]=!=2 :> 0
+				}
 			]
 		];
 
@@ -464,7 +525,11 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 
 		(*	Convert the integral to a more suitable form, i.e. 1/[q^2-m1^2][(q+p)^2-m2^2]
 			becomes  {q,q+p}	*)
-		prs = Expand/@({props} /. PropagatorDenominator[z_, _ : 0] :> (z /. Momentum[a_, _ : 4] :> a));
+		prs = Expand/@({props} /. {
+			PropagatorDenominator[z_, _ : 0] :> (z /. Momentum[a_, _ : 4] :> a),
+			StandardPropagatorDenominator[z_, _ ,_ ,_] :> (z /. Momentum[a_, _ : 4] :> a),
+			CartesianPropagatorDenominator[z_, _ ,_ ,_] :> (z /. CartesianMomentum[a_, _ : 3] :> a)
+		});
 
 		(* List of possible canonical propagators *)
 		canonicalProps = createOneLoopCanonicalPropsList[prs,q,True];
@@ -575,11 +640,13 @@ checkOneLoopProp[x_, canonicalProps_]:=
 	checkOneLoopProp[x, canonicalProps]=
 		MatchQ[x, Alternatives @@ canonicalProps];
 
-(*	Generate some posssible canonical propagators out of the given
+(*
+	Generate some posssible canonical propagators out of the given
 	list of all momenta and their prefactors. This is of course
 	pure heuristics, since a priori we don't know how the momenta
 	realy flow through the diagram...
-	Safe for memoization.	*)
+	Safe for memoization.
+*)
 createOneLoopCanonicalPropsList[prs_,q_,ext_]:=
 	createOneLoopCanonicalPropsList[prs,q,ext]=
 		Block[{moms,extra,fu,res},
@@ -682,12 +749,14 @@ removeAnitsymmetricIntegrals[int_, qmin_List, qs_List]:=
 removeAnitsymmetricIntegrals[0,{__}, {__}]:=
 	0;
 
-(*	Sort propagators in a FeynAmpDenominator.
+(*
+	Sort propagators in a FeynAmpDenominator.
 	Propagators with the smallest number of momenta go first. If the number of
 	momenta is the same, do the lexicographic ordering of the momenta. If the
 	momenta are the same, do the lexicographic ordering of the masses.
 
-	Safe for memoization.
+	Safe for memoization. The second slots of SFADs and CFADs are not an issue,
+	as no momentum expansions are involved.
 *)
 lenso[PD[x_, m1_], PD[y_, m2_]]:=
 	lenso[PD[x, m1], PD[y, m2]]=
@@ -704,13 +773,33 @@ lenso[PD[x_, m1_], PD[y_, m2_]]:=
 			Abort[]
 		];
 
+lenso[	(h1:StandardPropagatorDenominator|CartesianPropagatorDenominator)[x1_, x2_, m1_, s1_],
+		(h2:StandardPropagatorDenominator|CartesianPropagatorDenominator)[y1_, y2_, m2_, s2_]]:=
+	lenso[	h1[x1, x2, m1, s1], h2[y1, y2, m2, s2]]=
+		Which[
+			h1===StandardPropagatorDenominator && h2===CartesianPropagatorDenominator,
+				True,
+			h1===CartesianPropagatorDenominator && h2===StandardPropagatorDenominator,
+				False,
+			NTerms[x1+x2] =!= NTerms[y1+y2],
+					NTerms[x1+x2] < NTerms[y1+y2],
+				NTerms[x1+x2] === NTerms[y1+y2],
+					If[	x1+x2=!=y1+y2,
+						OrderedQ[{x1+x2,y1+y2}],
+						OrderedQ[{m1,m2}]
+					],
+			True,
+			Message[FDS::failmsg,"Can't sort the list of propagators."];
+			Abort[]
+		];
 
-(*	Special sorting for fdsOneLoopGeneral. The massless propagator with the
-	smallest number of external momenta is put first.
 
-	Safe for memoization.
+(*
+	Special sorting for fdsOneLoopGeneral. The massless propagator with the
+	smallest number of external momenta is put first. Safe for memoization.
+	The second slots of SFADs and CFADs are not an issue, as no momentum
+	expansions are involved.
 *)
-
 lenso2[PD[x_, m1_], PD[y_, m2_]]:=
 	lenso2[PD[x, m1], PD[y, m2]]=
 		Which[
@@ -734,24 +823,55 @@ lenso2[PD[x_, m1_], PD[y_, m2_]]:=
 			Abort[]
 		];
 
-(* Sort the propagators into some canonical order. Safe for memoization	*)
-feynord[a__PD] :=
+lenso2[	(h1:StandardPropagatorDenominator|CartesianPropagatorDenominator)[x1_, x2_, m1_, s1_],
+		(h2:StandardPropagatorDenominator|CartesianPropagatorDenominator)[y1_, y2_, m2_, s2_]]:=
+	lenso2[	h1[x1, x2, m1, s1], h2[y1, y2, m2, s2]]=
+		Which[
+			h1===StandardPropagatorDenominator && h2===CartesianPropagatorDenominator,
+				True,
+			h1===CartesianPropagatorDenominator && h2===StandardPropagatorDenominator,
+				False,
+			m1=!=0 && m2=!=0,
+				OrderedQ[{m1,m2}],
+			m1===0 && m2=!=0,
+				True,
+			m1=!=0 && m2===0,
+				False,
+			m1===0 && m2===0,
+				If[ NTerms[x1+x2] < NTerms[y1+y2],
+						True,
+						If[ NTerms[x1+x2] === NTerms[y1+y2],
+							OrderedQ[{x1+x2,y1+y2}],
+							False
+						],
+						False
+				],
+			True,
+			Message[FDS::failmsg,"Can't sort the list of propagators."];
+			Abort[]
+		];
+
+(*
+	Sort the propagators into some canonical order. Safe for memoization.
+	The second slots of SFADs and CFADs are not an issue, as no momentum
+	expansions are involved.
+*)
+feynord[a__] :=
 	MemSet[feynord[a],
 		FeynAmpDenominator @@ Sort[{a}, lenso]
-	];
+	]/;!FreeQ2[{a},{PropagatorDenominator,StandardPropagatorDenominator,CartesianPropagatorDenominator}];
 
 feynord[qs_List][a__] :=
 	MemSet[feynord[qs][a],
 		FeynAmpDenominator @@
 		Join[Sort[SelectNotFree[{a}, Sequence@@qs], lenso], Sort[SelectFree[{a}, Sequence@@qs], lenso]]
-	];
+	]/;!FreeQ2[{a},{PropagatorDenominator,StandardPropagatorDenominator,CartesianPropagatorDenominator}];
 
 feynord2[qs_List][a__] :=
 	MemSet[feynord2[qs][a],
 		FeynAmpDenominator @@
 		Join[Sort[SelectNotFree[{a}, Sequence@@qs], lenso2], Sort[SelectFree[{a}, Sequence@@qs], lenso2]]
-	];
-
+	]/;!FreeQ2[{a},{PropagatorDenominator,StandardPropagatorDenominator,CartesianPropagatorDenominator}];
 
 (* 	Replaces 1/[(-q+x)^2-m^2] by 1/[(q-x)^2-m^2] (multiloop version).
 
@@ -800,7 +920,10 @@ feynsimp[lmoms_List][a__ /; !MatchQ[{a},{__PD}] && FreeQ[{a},GenericPropagatorDe
 		} /. {pd -> PD, stpd -> StandardPropagatorDenominator, cpd -> CartesianPropagatorDenominator})
 	];
 
-
+(*
+	Check for the presence of the propagators like 1/(p.q+I eta) where the shift q-> -q
+	would yields 1/(p.q+I eta) ==== 1/(-p.q+I eta) =!= -1/(p.q+I eta)
+*)
 scetPropagatorFreeQ[{a__}, l_]:=
 	(Cases[{a}, (StandardPropagatorDenominator|CartesianPropagatorDenominator)[0, x_ /; ! FreeQ[x, l], _, _], Infinity] === {})
 
