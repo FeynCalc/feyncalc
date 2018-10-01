@@ -44,6 +44,7 @@ Begin["`ToPaVe`Private`"]
 genpave::usage="";
 
 Options[ToPaVe] = {
+	FCE -> False,
 	FCI -> False,
 	GenPaVe->False,
 	OtherLoopMomenta -> {},
@@ -61,8 +62,7 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 
 
 		If [!FreeQ[$ScalarProducts, q],
-			Message[ToPaVe::failmsg, "The loop momentum " <> ToString[q,InputForm] <>
-					" has scalar product rules attached to it."];
+			Message[ToPaVe::failmsg, "The loop momentum " <> ToString[q,InputForm] <> " has scalar product rules attached to it."];
 			Abort[]
 		];
 
@@ -76,7 +76,7 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		ex = FCLoopSplit[ex,{q}, FCI->True];
 		irrel = ex[[1]]+ex[[3]]+ex[[4]];
 		rel = ex[[2]];
-		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True, GFAD->False, CFAD->False, SFAD->False];
+		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True, GFAD->False, CFAD->False, SFAD->True];
 
 		repList =
 			Union[Cases[{rel},  loopInt[x_] :> Rule[loopInt[x],
@@ -85,11 +85,19 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 					x
 				]
 			], Infinity]];
+
+		(* Not all SFADs can be converted to PaVe functions! *)
+		repList = repList/. toPaVe[z_,_,_,_]/;!FreeQ[z,StandardPropagatorDenominator] :> z;
+
 		res = (rel/.repList) + irrel;
 
 		If[	!FreeQ[res,toPaVe],
 			Message[ToPaVe::failmsg,"Not all 1-loop scalar integrals could be converted to PaVe functions. Please apply FDS to the input and try again."];
 			Abort[]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		res
@@ -145,6 +153,29 @@ toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] 
 		];
 		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
 			Power[#, 2] & /@ Join[{m1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
+		res
+	]/;!genpave;
+
+
+toPaVe[FeynAmpDenominator[a___,StandardPropagatorDenominator[x_, 0, mm1_, {n_,1}],
+	b___],q_,paveao_,pavear_]:=
+toPaVe[FeynAmpDenominator[a, Sequence@@ConstantArray[StandardPropagatorDenominator[x, 0, mm1, {1,1}],n],
+	b], q, paveao, pavear]/;n>1 && !FreeQ[x,q];
+
+
+toPaVe[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q_, dim_], 0, mm1_, {1,1}],
+	re:StandardPropagatorDenominator[Momentum[q_, dim_] + _ : 0, 0, _, {1,1}] ...],q_,paveao_,pavear_]:=
+	Block[{tmp,res,pair},
+		If[ {re} === {},
+			tmp = {{},{}},
+			tmp = Transpose[Cases[{re}, StandardPropagatorDenominator[Momentum[q, dim] + x_: 0,0, m_: 0, {1,1}] :> {x, -m}]];
+		];
+		If[ Length[tmp[[1]]]=!=Length[{re}] || Length[tmp[[2]]]=!=Length[{re}],
+			Message[ToPaVe::failmsg, "toPave: Wrong number of the kinematic invariants!"];
+			Abort[]
+		];
+		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
+			Join[{-mm1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
 		res
 	]/;!genpave;
 
