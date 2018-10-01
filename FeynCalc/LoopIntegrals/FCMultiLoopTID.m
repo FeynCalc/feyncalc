@@ -183,6 +183,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		FCPrint[1, "FCMultiLoopTID: Applying tidSingleIntegral.", FCDoControl->mltidVerbose];
 		solsList = Map[tidSingleIntegral[#,qs,n]&,(intsUnique/.loopHead->Identity)];
 		FCPrint[1, "FCMultiLoopTID: Done applying tidSingleIntegral, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3,"FCMultiLoopTID: List of the simplified integrals: ", solsList, FCDoControl->mltidVerbose];
 
 		If[!FreeQ[solsList,tidSingleIntegral],
 			Message[FCMultiLoopTID::failmsg,
@@ -196,6 +197,14 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			solsList = ApartFF[#,qs,FCI->True,FDS->OptionValue[FDS]]&/@solsList;
 			FCPrint[3,"FCMultiLoopTID: After last ApartFF: ", solsList, FCDoControl->mltidVerbose];
 			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
+		];
+
+		If[	OptionValue[FDS],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Applying FDS to each of the unique integrals.", FCDoControl->mltidVerbose];
+			solsList = FDS[#,Sequence@@qs,FCI->True]&/@solsList;
+			FCPrint[3,"FCMultiLoopTID: After last FDS: ", solsList, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
 		repRule = MapThread[Rule[#1,#2]&,{intsUnique,solsList}];
