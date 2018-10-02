@@ -1,0 +1,34 @@
+
+
+(* :Title: fcstFCLoopSamePropagatorHeadsQ.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				fcstFCLoopSamePropagatorHeadsQ							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopSamePropagatorHeadsQ =
+({
+{"fcstFCLoopSamePropagatorHeadsQ-ID1",
+"FCLoopSamePropagatorHeadsQ[FCI[FAD[q,q-p]]]", "True"},
+{"fcstFCLoopSamePropagatorHeadsQ-ID2",
+"FCLoopSamePropagatorHeadsQ[FCI[SFAD[q,q-p]]]", "True"},
+{"fcstFCLoopSamePropagatorHeadsQ-ID3",
+"FCLoopSamePropagatorHeadsQ[FCI[CFAD[q,q-p]]]", "True"},
+{"fcstFCLoopSamePropagatorHeadsQ-ID4",
+"FCLoopSamePropagatorHeadsQ[FeynAmpDenominatorCombine[FAD[q,q-p]\
+FAD[l,l+k]]]", "True"},
+{"fcstFCLoopSamePropagatorHeadsQ-ID5",
+"FCLoopSamePropagatorHeadsQ[FeynAmpDenominatorCombine[CFAD[q,q-p]\
+SFAD[l,l+k]]]", "False"},
+{"fcstFCLoopSamePropagatorHeadsQ-ID6",
+"FCLoopSamePropagatorHeadsQ[FeynAmpDenominatorCombine[FAD[q,q-p]\
+SFAD[l,l+k]]]", "False"}
+});
