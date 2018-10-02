@@ -98,5 +98,82 @@ Tests`LoopIntegrals`fcstFCLoopCanonicalize = {
 	FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
 	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
 	LorentzIndex[x_FCGV, D], Momentum[q, D]] Pair[
-	LorentzIndex[y_FCGV, D], Momentum[q, D]]]}}]","True"}
+	LorentzIndex[y_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID12","MatchQ[FCLoopCanonicalize[FCL[CVD[q, mu]], q,
+	FCL], {{FCL[
+	CartesianPair[CartesianIndex[mu, D - 1],
+	CartesianMomentum[q, D - 1]]]}, {{CartesianIndex[x_FCGV,
+	D - 1] -> CartesianIndex[mu, D - 1]}}, {FCL[
+	CartesianPair[CartesianIndex[x_FCGV, D - 1],
+	CartesianMomentum[q, D - 1]]]}, {FCL[
+	CartesianPair[CartesianIndex[x_FCGV, D - 1],
+	CartesianMomentum[q, D - 1]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID13","MatchQ[FCLoopCanonicalize[
+	FCL[CVD[q, mu]] + FCL[CVD[q, nu]] + FCL[CVD[q, rho]], q,
+	FCL], {{FCL[
+	CartesianPair[CartesianIndex[mu, D - 1],
+	CartesianMomentum[q, D - 1]]],
+	FCL[CartesianPair[CartesianIndex[nu, D - 1],
+	CartesianMomentum[q, D - 1]]],
+	FCL[CartesianPair[CartesianIndex[rho, D - 1],
+	CartesianMomentum[q, D - 1]]]}, {{CartesianIndex[x_FCGV,
+	D - 1] ->
+	CartesianIndex[mu, D - 1]}, {CartesianIndex[x_FCGV, D - 1] ->
+	CartesianIndex[nu, D - 1]}, {CartesianIndex[x_FCGV, D - 1] ->
+	CartesianIndex[rho, D - 1]}}, {FCL[
+	CartesianPair[CartesianIndex[x_FCGV, D - 1],
+	CartesianMomentum[q, D - 1]]],
+	FCL[CartesianPair[CartesianIndex[x_FCGV, D - 1],
+	CartesianMomentum[q, D - 1]]],
+	FCL[CartesianPair[CartesianIndex[x_FCGV, D - 1],
+	CartesianMomentum[q, D - 1]]]}, {FCL[
+	CartesianPair[CartesianIndex[x_FCGV, D - 1],
+	CartesianMomentum[q, D - 1]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID14","MatchQ[FCLoopCanonicalize[a
+	FCL[CartesianPair[CartesianMomentum[q], CartesianIndex[mu]]],
+	q, FCL], {{FCL[
+	CartesianPair[CartesianIndex[mu], CartesianMomentum[q]]]},
+	{{CartesianIndex[x_FCGV] -> CartesianIndex[mu]}}, {FCL[
+	CartesianPair[CartesianIndex[x_FCGV],
+	CartesianMomentum[q]]]}, {FCL[
+	CartesianPair[CartesianIndex[x_FCGV], CartesianMomentum[q]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID15","MatchQ[FCLoopCanonicalize[FCL[FVD[q, mu]] + FCL[CVD[q, i]], q,
+FCL], {{FCL[
+	CartesianPair[CartesianIndex[i, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[Pair[LorentzIndex[mu, D],
+	Momentum[q, D]]]}, {{CartesianIndex[a_FCGV, -1 + D] ->
+	CartesianIndex[i, -1 + D]}, {LorentzIndex[a_FCGV, D] ->
+	LorentzIndex[mu, D]}}, {FCL[
+	CartesianPair[CartesianIndex[a_FCGV, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}, {FCL[
+	CartesianPair[CartesianIndex[a_FCGV, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID16","MatchQ[FCLoopCanonicalize[
+a FCL[FVD[q, mu]] + b FCL[CVD[q, i]] + c FCL[FVD[q, rho]] +
+d FCL[CVD[q, j]], q,
+FCL], {{FCL[
+	CartesianPair[CartesianIndex[i, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[CartesianPair[CartesianIndex[j, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[Pair[LorentzIndex[mu, D], Momentum[q, D]]],
+FCL[Pair[LorentzIndex[rho, D],
+	Momentum[q, D]]]}, {{CartesianIndex[a_FCGV, -1 + D] ->
+	CartesianIndex[i, -1 + D]}, {CartesianIndex[a_FCGV, -1 + D] ->
+	CartesianIndex[j, -1 + D]}, {LorentzIndex[a_FCGV, D] ->
+	LorentzIndex[mu, D]}, {LorentzIndex[a_FCGV, D] ->
+	LorentzIndex[rho, D]}}, {FCL[
+	CartesianPair[CartesianIndex[a_FCGV, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[CartesianPair[CartesianIndex[a_FCGV, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]],
+FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}, {FCL[
+	CartesianPair[CartesianIndex[a_FCGV, -1 + D],
+	CartesianMomentum[q, -1 + D]]],
+FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}}]","True"}
 };
+
