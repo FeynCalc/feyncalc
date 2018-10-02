@@ -34,6 +34,7 @@ Options[FCLoopExtract] = {
 	Collecting -> True,
 	DropScaleless -> False,
 	ExpandScalarProduct-> False,
+	FAD -> True,
 	Full -> False,
 	FCI -> False,
 	FCE -> False,
@@ -74,6 +75,7 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 
 		rest  = Plus@@tmp[[irrel]];
 		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms, FCI->True, Head->loopHead,
+									FAD  -> OptionValue[FAD],
 									CFAD -> OptionValue[CFAD],
 									SFAD -> OptionValue[SFAD],
 									Collecting -> OptionValue[Collecting],

@@ -53,6 +53,7 @@ Options[FCLoopIsolate] = {
 	ExceptHeads -> {},
 	ExpandScalarProduct -> False,
 	Expanding -> True,
+	FAD -> True,
 	FCE -> False,
 	FCI -> False,
 	FCLoopIBPReducableQ -> False,
@@ -248,6 +249,13 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			FCPrint[1,"FCLoopIsolate: Applying the option GFAD.", FCDoControl->fcliVerbose];
 			res = res /. optHead[z__]/; !FreeQ[{z}, GenericPropagatorDenominator] :> z;
 			FCPrint[1, "FCLoopIsolate: Done applying the option GFAD, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
+		];
+
+		If [ !OptionValue[FAD] && !FreeQ[res,PropagatorDenominator],
+			time = AbsoluteTime[];
+			FCPrint[1,"FCLoopIsolate: Applying the option FAD.", FCDoControl->fcliVerbose];
+			res = res /. optHead[z__]/; !FreeQ[{z}, PropagatorDenominator] :> z;
+			FCPrint[1, "FCLoopIsolate: Done applying the option FAD, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose]
 		];
 
 		(* Keep only integrals that are IBP-reducible *)

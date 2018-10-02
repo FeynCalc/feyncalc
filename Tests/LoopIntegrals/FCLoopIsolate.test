@@ -153,5 +153,9 @@ nu]]"},
 {"fcstFCLoopIsolate-ID37",
 "FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q}, Numerator -> False,
 Head -> loop, FCE -> True]",
-"loop[FAD[{q, m}]] SPD[l + p, k + q]"}
+"loop[FAD[{q, m}]] SPD[l + p, k + q]"},
+{"fcstFCLoopIsolate-ID38",
+"FCLoopIsolate[FAD[q1] GFAD[{SPD[q1, p] SPD[q2, p], 2}], {q1, q2},
+Head -> loopInt, FAD -> False, FCE -> True]",
+"FAD[q1] GFAD[{{SPD[p, q1] SPD[p, q2], 1}, 2}]"}
 };
