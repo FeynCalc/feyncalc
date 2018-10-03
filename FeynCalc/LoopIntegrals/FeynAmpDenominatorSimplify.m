@@ -475,7 +475,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		(*	If the integral topology is more complicated than a massive tadpole, then
 			we possibly need to do some shifts *)
-		If[ Length[Union[{props}]]>1,
+		If[ Length[Union[{props}]]>1 && FCLoopEikonalPropagatorFreeQ[tmp],
 			FCPrint[3, "FDS: fdsOneLoop: The integral is at least a bubble:  ", tmp, FCDoControl->fdsVerbose];
 			tmp=fdsOneLoopsGeneric[tmp,q]
 		];

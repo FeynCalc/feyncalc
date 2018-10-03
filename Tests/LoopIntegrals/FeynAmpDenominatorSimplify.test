@@ -126,5 +126,15 @@ DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
 \[Rule]False,FCE\[Rule]True]", "SFAD[{{k1 + k2 + k3, 0}, {0, 1}, 1}]"},
 {"fcstFeynAmpDenominatorSimplify-ID24",
 "FDS[CFAD[-k2-k3-k1],k1,k2,Rename\[Rule]False,DetectLoopTopologies\
-\[Rule]False,FCE\[Rule]True]", "CFAD[{{k1 + k2 + k3, 0}, {0, -1}, 1}]"}
+\[Rule]False,FCE\[Rule]True]", "CFAD[{{k1 + k2 + k3, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID25",
+"FDS[SFAD[q, q - p, {{0, q.k}}], q, FCE -> True]", "SFAD[{{q, 0},
+{0, 1}, 1}, {{0, k.q}, {0, 1}, 1}, {{p - q, 0}, {0, 1},
+1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID26",
+"FDS[SFAD[q, q - p, {{0, q.k}}], q, FCE -> True]",
+"SFAD[{{q, 0}, {0, 1}, 1}, {{0, k.q}, {0, 1}, 1}, {{p - q, 0}, {0, 1},1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID27",
+"FDS[SFAD[q, q - p, {{q, q.k}}], q, FCE -> True]",
+"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}, {{q, k.q}, {0, 1},1}]"}
 }
