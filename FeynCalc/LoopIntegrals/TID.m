@@ -84,6 +84,7 @@ Options[TID] = {
 	FCE -> False,
 	FCI -> False,
 	FCLoopRemoveNegativePropagatorPowers -> True,
+	FCLoopMixedToCartesianAndTemporal -> True,
 	FCVerbose -> False,
 	FDS -> True,
 	Factoring -> Factor2,
@@ -207,11 +208,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[PauliTrick] && !FreeQ2[t0,{PauliSigma}],
-			FCPrint[1,"CTID: Applying PauliTrick.", FCDoControl->ctidVerbose];
+			FCPrint[1,"TID: Applying PauliTrick.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = PauliTrick[t0,FCI->True, Expand2->False];
-			FCPrint[1, "CTID: Done applying PauliTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ctidVerbose];
-			FCPrint[3,"After PauliTrick: ", t0 , FCDoControl->ctidVerbose]
+			FCPrint[1, "TID: Done applying PauliTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3,"After PauliTrick: ", t0 , FCDoControl->tidVerbose]
 		];
 
 
@@ -324,6 +325,14 @@ TID[am_ , q_, OptionsPattern[]] :=
 			wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral, FCI->True];
 			FCPrint[1, "TID: Done applying FCLoopIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
+			If[ OptionValue[FCLoopMixedToCartesianAndTemporal],
+				wrapped = wrapped /. loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :>
+					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}]/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
+						TemporalIndex[] :> holdTemporalIndex[],
+						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
+						TemporalPair[x__]/;FreeQ[{x},q] :> holdTemporalPair[x]
+					},{q},Head->loopIntegral, FCI->True];
+			];
 
 
 			(*	remove all kinds of integrals that cannot be handled by TID	*)
@@ -422,18 +431,21 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 			(* 	We had to uncontract some Lorentz indices at the beginning, so we should better contract them
 				again at the end	*)
-			If[	contractlabel && !FreeQ[res,LorentzIndex],
+			If[	contractlabel && !FreeQ2[res,{LorentzIndex,CartesianIndex}],
 
 					FCPrint[1,"TID: Applying Isolate.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					res= Isolate[res,LorentzIndex,IsolateNames->isoContract]//
-					ReplaceAll[#,LorentzIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[LorentzIndex[pp]]]&;
+					res= Isolate[res,{LorentzIndex,CartesianIndex,holdTemporalIndex},IsolateNames->isoContract]//
+					ReplaceAll[#,LorentzIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[LorentzIndex[pp]]]&//
+					ReplaceAll[#,CartesianIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[CartesianIndex[pp]]]&;
 					FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 					FCPrint[3,"After Isolate: ", res , FCDoControl->tidVerbose];
 
 					FCPrint[1,"TID: Applying Contract.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct]//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[Pair[pp]]]&;
+					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct]//
+					ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[Pair[pp]]]&//
+					ReplaceAll[#,CartesianPair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[CartesianPair[pp]]]&;
 					FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 					FCPrint[3,"After Contract: ", res , FCDoControl->tidVerbose];
 
@@ -463,7 +475,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 				(* Check that the isolated prefactors are free of loop-momenta and Lorentz indices*)
 				If[	!FreeQ2[Cases[res+irrelevant, HoldForm[__], Infinity]//DeleteDuplicates//
-					FRH[#,IsolateNames->tidIsolate]&,{q,LorentzIndex}],
+					FRH[#,IsolateNames->tidIsolate]&,{q,LorentzIndex,CartesianIndex}],
 					Message[TID::failmsg, "Isolated prefactors of" <>ToString[res,InputForm] <> " contain loop momenta or isolated Lorentz indices."];
 					Abort[]
 				];
@@ -476,7 +488,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		res = (res+irrelevant)/. noTID->1;
 
 		If[ OptionValue[FeynAmpDenominatorCombine]  &&
-			!FreeQ2[res, (FeynAmpDenominator[xxx__]^_.) *(FeynAmpDenominator[yyy__]^_.)],
+			!FreeQ2[res, (FeynAmpDenominator[x__]^_.) *(FeynAmpDenominator[y__]^_.)],
 			FCPrint[1,"TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			res = FeynAmpDenominatorCombine[res, FCI->True];
@@ -489,7 +501,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			FCPrint[1,"TID: Applying Collect2.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			res= Collect2[res,Join[{FeynAmpDenominator},PaVeHeadsList],Factoring->OptionValue[Factoring]];
+
+			res= Collect2[res,Join[{FeynAmpDenominator,q0},PaVeHeadsList],Factoring->OptionValue[Factoring]];
 			FCPrint[1, "TID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After Collect2: ", res , FCDoControl->tidVerbose]
 
@@ -512,9 +525,13 @@ TID[am_ , q_, OptionsPattern[]] :=
 							};
 							FCPrint[1, "TID: Done improving abbreviations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose],
 						True,
-							res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex}, IsolateNames->tidIsolate]
+							res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex,CartesianIndex,holdTemporalIndex,
+								holdTemporalMomentum,holdTemporalPair}, IsolateNames->tidIsolate]
 				]
 		];
+
+		res = res //. {holdTemporalIndex->TemporalIndex, holdTemporalMomentum->TemporalMomentum,holdTemporalPair->TemporalPair, q0->q};
+
 
 		If[	optExpandScalarProduct,
 			FCPrint[1,"TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
@@ -620,7 +637,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 		rList1 = MapIndexed[(Rule[loopIntegral[#1], First[(iList2 /. rList2)[[#2]]]]) &, uList1];
 
 		res = Isolate[iList1 /. rList1 /. loopIntegral[z_tidPaVe]:>z, {LorentzIndex,CartesianIndex,
-			q,FeynAmpDenominator,tidPaVe}, IsolateNames->tidIsolate];
+			q,FeynAmpDenominator,tidPaVe,holdTemporalIndex,holdTemporalMomentum,holdTemporalPair,q0}, IsolateNames->tidIsolate];
 
 		res = res /. {
 			FeynAmpDenominator[x__]/;!FreeQ[{x},q] :> FRH[FeynAmpDenominator[x]],
@@ -742,7 +759,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 			(* 	To perform the tensor reduction on unique integrals in the tensor part we had to uncontract all the
 				loop momenta. Now we contract existing dummy Lorentz indices *)
 			time=AbsoluteTime[];
-			tpTP = Isolate[tpTP,LorentzIndex,CartesianIndex,IsolateNames->tempIso];
+			tpTP = Isolate[tpTP,{LorentzIndex,CartesianIndex,holdTemporalIndex,holdTemporalMomentum,holdTemporalPair,q0},IsolateNames->tempIso];
 			tpTP = Contract[tpTP, FCI->True];
 			tpTP = FRH[tpTP,IsolateNames->tempIso];
 			FCPrint[2,"TID: tidFullReduce: Time to contract the indices after another tensor reduction ",
@@ -756,8 +773,8 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 		];
 		(*	The final step is to isolate all the prefactors that don't depend on the loop momentum in the full result	*)
 		time=AbsoluteTime[];
-		res = Isolate[Collect2[(sp + tpSP + tpTP), {q,FeynAmpDenominator,tidPaVe}]//.
-			{null1 | null2 | null3 | null4 -> 0}, {q, FeynAmpDenominator,tidPaVe}, IsolateNames->tidIsolate] /.
+		res = Isolate[Collect2[(sp + tpSP + tpTP), {q,FeynAmpDenominator,tidPaVe, q0}]//.
+			{null1 | null2 | null3 | null4 -> 0}, {q, FeynAmpDenominator,tidPaVe, q0}, IsolateNames->tidIsolate] /.
 			(h: Pair|CartesianPair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->tidIsolate];
 		FCPrint[2,"TID: tidFullReduce: Time to sort the final result of this iteration ", N[AbsoluteTime[] - time, 4],
 			FCDoControl->tidVerbose];
@@ -834,7 +851,7 @@ tidConvert[expr_, q_]:=
 
 tidConvert[expr_, q_]:=
 	Block[{ex=expr,qQQprepare,getfdp,res,temp},
-		FCPrint[2,"CTID: tidConvert: Entering with ", expr];
+		FCPrint[2,"TID: tidConvert: Entering with ", expr];
 		getfdp[w__] :=
 			(ffdp@@(First/@(MomentumCombine[{w},FCI->True,FV->False,SP->False] /. q->0)) /. CartesianMomentum[a_,___] :> a)/;
 				FreeQ[{w}, CartesianPropagatorDenominator[_ CartesianMomentum[q, ___] + _., __]];
@@ -847,7 +864,7 @@ tidConvert[expr_, q_]:=
 		res = temp/. ffdp[0,r___]:>ffdp[r];
 
 		If[	!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
-			Message[CTID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
+			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
 
@@ -960,7 +977,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 		If[momList=!={},
 			If[	FCGramDeterminant[momList,Dimension->n-1,Head->{CartesianPair,CartesianMomentum}] === 0,
 				vanishingGramDet = True;
-				Message[CTID::failmsg, "Reduction of Cartesian integrals with vanishing Gram determinants is currently not supported."];
+				Message[TID::failmsg, "Reduction of Cartesian integrals with vanishing Gram determinants is currently not supported."];
 				Abort[]
 			];
 

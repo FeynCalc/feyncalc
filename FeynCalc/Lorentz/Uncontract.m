@@ -246,7 +246,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "Uncontract: Uncontracting Pair objects.", FCDoControl->ucVerbose];
 			(* now all q's are marked with qMark *)
 			exp = powerExpand[exp, q, Pair, times];
-			allObjects = Cases[exp + null1 + null2, _Pair, Infinity]//DeleteDuplicates//Sort;
+			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _Pair, Infinity]//DeleteDuplicates//Sort;
 			Which[	pairs===All,
 						selectedObjects = allObjects,
 					Head[pairs]===List,
@@ -276,7 +276,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[cpairs=!={},
 			FCPrint[1, "Uncontract: Uncontracting CartesianPair objects.", FCDoControl->ucVerbose];
 			exp = powerExpand[exp, q, CartesianPair, times];
-			allObjects = Cases[exp + null1 + null2, _CartesianPair, Infinity]//DeleteDuplicates//Sort;
+			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _CartesianPair, Infinity]//DeleteDuplicates//Sort;
 			Which[	cpairs===All,
 						selectedObjects = allObjects,
 					Head[cpairs]===List,
@@ -306,7 +306,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[	!FreeQ[exp,DiracGamma] && OptionValue[DiracGamma],
 			FCPrint[1, "Uncontract: Uncontracting DiracGamma objects.", FCDoControl->ucVerbose];
 			exp = powerExpand[exp, q, DiracGamma, dotTimes] /. qRule;
-			allObjects = Cases[exp + null1 + null2, _DiracGamma, Infinity]//DeleteDuplicates//Sort;
+			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _DiracGamma, Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
@@ -324,7 +324,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[	!FreeQ[exp,PauliSigma] && OptionValue[PauliSigma],
 			FCPrint[1, "Uncontract: Uncontracting PauliSigma objects.", FCDoControl->ucVerbose];
 			exp = powerExpand[exp, q, PauliSigma, dotTimes] /. qRule;
-			allObjects = Cases[exp + null1 + null2, _PauliSigma, Infinity]//DeleteDuplicates//Sort;
+			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _PauliSigma, Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
@@ -343,7 +343,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "Uncontract: Uncontracting Eps objects.", FCDoControl->ucVerbose];
 			exp = EpsEvaluate[exp,FCI->True,Momentum->{q}];
 			exp = powerExpand[exp, q, Eps, times] /. qRule;
-			allObjects = Cases[exp + null1 + null2, _Eps, Infinity]//DeleteDuplicates//Sort;
+			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _Eps, Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
@@ -361,7 +361,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[	!FreeQ2[exp,tensorList]  && tensoruncontract,
 			FCPrint[1, "Uncontract: Uncontracting tensors: ", tensorList , FCDoControl->ucVerbose];
 			exp = Fold[powerExpand[#1, q, #2, times] &, exp, tensorList] /. qRule;
-			allObjects = Cases[exp + null1 + null2, alternativesTensorList , Infinity]//DeleteDuplicates//Sort;
+			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], alternativesTensorList , Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
