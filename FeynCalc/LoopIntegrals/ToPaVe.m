@@ -53,13 +53,8 @@ Options[ToPaVe] = {
 };
 
 ToPaVe[expr_, q_, OptionsPattern[]] :=
-	Block[{ex,loopInt,irrel,rel,repList,res},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
+	Block[{	ex, loopInt, irrel, rel, repList, res, loopList,
+			optOtherLoopMomenta, loopListEval},
 
 		If [!FreeQ[$ScalarProducts, q],
 			Message[ToPaVe::failmsg, "The loop momentum " <> ToString[q,InputForm] <> " has scalar product rules attached to it."];
@@ -67,6 +62,7 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		];
 
 		genpave = OptionValue[GenPaVe];
+		optOtherLoopMomenta = OptionValue[OtherLoopMomenta];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -78,18 +74,22 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		rel = ex[[2]];
 		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True, GFAD->False, CFAD->False, SFAD->True];
 
-		repList =
-			Union[Cases[{rel},  loopInt[x_] :> Rule[loopInt[x],
-				If[	FreeQ2[x,OptionValue[OtherLoopMomenta]],
-					toPaVe[x,q,OptionValue[PaVeAutoOrder],OptionValue[PaVeAutoReduce]],
-					x
-				]
-			], Infinity]];
+		loopList = Cases2[rel,loopInt];
+
+		loopListEval = FCLoopPropagatorPowersExpand[#,FCI->True]&/@(loopList/.loopInt->Identity);
+
+		loopListEval = Map[
+				If[	FreeQ2[#,optOtherLoopMomenta],
+					toPaVe[#,q,OptionValue[PaVeAutoOrder],OptionValue[PaVeAutoReduce]],
+					#
+				]&,loopListEval];
 
 		(* Not all SFADs can be converted to PaVe functions! *)
-		repList = repList/. toPaVe[z_,_,_,_]/;!FreeQ[z,StandardPropagatorDenominator] :> z;
+		loopListEval = loopListEval /. toPaVe[z_,_,_,_]/;!FreeQ[z,StandardPropagatorDenominator] :> z;
 
-		res = (rel/.repList) + irrel;
+		repList = Thread[Rule[loopList,loopListEval]];
+
+		res = (rel/. Dispatch[repList]) + irrel;
 
 		If[	!FreeQ[res,toPaVe],
 			Message[ToPaVe::failmsg,"Not all 1-loop scalar integrals could be converted to PaVe functions. Please apply FDS to the input and try again."];
@@ -155,13 +155,6 @@ toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] 
 			Power[#, 2] & /@ Join[{m1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
 		res
 	]/;!genpave;
-
-
-toPaVe[FeynAmpDenominator[a___,StandardPropagatorDenominator[x_, 0, mm1_, {n_,1}],
-	b___],q_,paveao_,pavear_]:=
-toPaVe[FeynAmpDenominator[a, Sequence@@ConstantArray[StandardPropagatorDenominator[x, 0, mm1, {1,1}],n],
-	b], q, paveao, pavear]/;n>1 && !FreeQ[x,q];
-
 
 toPaVe[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q_, dim_], 0, mm1_, {1,1}],
 	re:StandardPropagatorDenominator[Momentum[q_, dim_] + _ : 0, 0, _, {1,1}] ...],q_,paveao_,pavear_]:=
