@@ -414,5 +414,11 @@ SPD[k,l]^2,{k},FCE\[Rule]True]",
 "SFAD[{{0, k . l}, {0, 1}, 1}, {{k, 0}, {0, 1}, 1}]"},
 {"fcstFCApart-ID50",
 "FCApart[SFAD[{{0,k.l},{0,1},1},{{k,0},{0,1},1}] \
-SPD[k,l]^2,{k},FCE\[Rule]True]", "SFAD[{{k, 0}, {0, 1}, 1}]*SPD[k, l]"}
+SPD[k,l]^2,{k},FCE\[Rule]True]", "SFAD[{{k, 0}, {0, 1}, 1}]*SPD[k, l]"},
+{"fcstFCApart-ID51",
+"FCApart[FCI[SPD[p, q]^2 SFAD[{{0, p.q}, x}]], {q},FCE->True]",
+"x^2 SFAD[{{0, p.q}, {x, 1}, 1}]"},
+{"fcstFCApart-ID52",
+"FCApart[FCI[CSPD[p, q]^2 CFAD[{{0, p.q}, x}]], {q}, FCE -> True]",
+"x^2 CFAD[{{0, p.q}, {x, -1}, 1}]"}
 })

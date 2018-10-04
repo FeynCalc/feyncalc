@@ -96,7 +96,8 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = cancelSP[ex];
 			ex = ex /. fadHold[r1___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], r2___]/;n<0 :>
 				fadHold[r1,r2] PropagatorDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
-			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator
+			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator;
+			FCPrint[3,"FCApart: After the initial cancelling of scalar products ", ex, FCDoControl->fcaVerbose]
 		];
 
 		(*	To bring the propagators into a proper form.
@@ -395,17 +396,17 @@ pfrac[inputVectorSet_List]:=
 cancelSP[ex_]:=
 	ex /. FeynAmpDenominator -> fadHold //. Dispatch[{
 
-		b_Pair fadHold[r1___, StandardPropagatorDenominator[a_, b_Pair, c_, {n_, s_}],r2___] :>
-					fadHold[r1, StandardPropagatorDenominator[a, b, c, {n - 1, s}], r2],
+		b_Pair fadHold[r1___, StandardPropagatorDenominator[0, b_Pair, 0_, {n_, s_}],r2___] :>
+					fadHold[r1, StandardPropagatorDenominator[0, b, 0, {n - 1, s}], r2],
 
-		Power[b_Pair,m_] fadHold[r1___, StandardPropagatorDenominator[a_, b_Pair, c_, {n_, s_}],r2___] :>
-					fadHold[r1, StandardPropagatorDenominator[a, b, c, {n - m, s}], r2],
+		Power[b_Pair,m_] fadHold[r1___, StandardPropagatorDenominator[0, b_Pair, 0, {n_, s_}],r2___] :>
+					fadHold[r1, StandardPropagatorDenominator[0, b, 0, {n - m, s}], r2],
 
-		b_CartesianPair fadHold[r1___, CartesianPropagatorDenominator[a_, b_CartesianPair, c_, {n_, s_}],r2___] :>
-					fadHold[r1, CartesianPropagatorDenominator[a, b, c, {n - 1, s}], r2],
+		b_CartesianPair fadHold[r1___, CartesianPropagatorDenominator[0, b_CartesianPair, 0, {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - 1, s}], r2],
 
-		Power[b_CartesianPair,m_] fadHold[r1___, CartesianPropagatorDenominator[a_, b_CartesianPair, c_, {n_, s_}],r2___] :>
-					fadHold[r1, CartesianPropagatorDenominator[a, b, c, {n - m, s}], r2]
+		Power[b_CartesianPair,m_] fadHold[r1___, CartesianPropagatorDenominator[0, b_CartesianPair, 0, {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - m, s}], r2]
 	}] /. fadHold[r1___, (StandardPropagatorDenominator|CartesianPropagatorDenominator)[__, {0, _}], r2___] :> fadHold[r1,r2];
 
 
