@@ -29,6 +29,7 @@ Begin["`ToStandardMatrixElement`Private`"]
 tsmeVerbose::usage="";
 
 Options[ToStandardMatrixElement] = {
+	ChangeDimension -> False,
 	DiracCanonical -> True,
 	DiracSubstitute5 -> True,
 	DiracSubstitute67 -> False,
@@ -118,6 +119,12 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 		FCPrint[3, "ToStandardMatrixElement: After Collect2: ", ex, FCDoControl->tsmeVerbose];
 
 		ex = ex //. chead|dhead->standmat /. standmat -> StandardMatrixElement;
+
+		If[	OptionValue[ChangeDimension]=!=False,
+			FCPrint[1, "ToStandardMatrixElement: Applying ChangeDimension.", FCDoControl->tsmeVerbose];
+			ex = ChangeDimension[ex,OptionValue[ChangeDimension],FCI->True];
+			FCPrint[3, "ToStandardMatrixElement: After ChangeDimension: ", ex, FCDoControl->tsmeVerbose];
+		];
 
 
 		res = ex;
