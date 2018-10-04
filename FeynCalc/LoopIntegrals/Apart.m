@@ -137,10 +137,18 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[3, "ApartFF: Entering with ", exp, FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Loop momenta are ", lmoms, FCDoControl->affVerbose];
 
-		time=AbsoluteTime[];
-		FCPrint[1, "ApartFF: Extracting unique loop integrals.", FCDoControl->affVerbose];
+
 		(*	Split loop integrals from the rest	*)
 		tmp = FCLoopSplit[exp,lmoms, Collecting->False];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "ApartFF: Applying FCLoopRemoveNegativePropagatorPowers.", FCDoControl->affVerbose];
+		tmp = FCLoopRemoveNegativePropagatorPowers[tmp,FCI->True,FCLoopPropagatorPowersCombine -> False];
+		FCPrint[1, "ApartFF: Done applying FCLoopRemoveNegativePropagatorPowers, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
+		FCPrint[3, "ApartFF: After FCLoopRemoveNegativePropagatorPowers: ", tmp, FCDoControl->affVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "ApartFF: Extracting unique loop integrals.", FCDoControl->affVerbose];
 
 		If[	OptionValue[FeynAmpDenominator],
 			rest  = tmp[[1]];
