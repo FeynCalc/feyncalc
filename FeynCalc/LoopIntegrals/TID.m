@@ -83,6 +83,7 @@ Options[TID] = {
 	ExpandScalarProduct -> True,
 	FCE -> False,
 	FCI -> False,
+	FCLoopRemoveNegativePropagatorPowers -> True,
 	FCVerbose -> False,
 	FDS -> True,
 	Factoring -> Factor2,
@@ -180,6 +181,14 @@ TID[am_ , q_, OptionsPattern[]] :=
 			t0 = FeynAmpDenominatorCombine[t0, FCI->True];
 			FCPrint[1, "TID: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After FeynAmpDenominatorCombine: ", t0 , FCDoControl->tidVerbose]
+		];
+
+		If[ OptionValue[FCLoopRemoveNegativePropagatorPowers],
+			FCPrint[1,"TID: Applying FCLoopRemoveNegativePropagatorPowers.", FCDoControl->tidVerbose];
+			time=AbsoluteTime[];
+			t0 = FCLoopRemoveNegativePropagatorPowers[t0, FCI->True];
+			FCPrint[1, "TID: Done applying FCLoopRemoveNegativePropagatorPowers, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3,"After FCLoopRemoveNegativePropagatorPowers: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		FCPrint[1,"TID: Applying FRH.", FCDoControl->tidVerbose];
@@ -538,6 +547,9 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 			sList1, sList2, rList2, rList1},
 
 		FCPrint[3,"TID: tidSingleIntegral: Entering with ", ex, FCDoControl->tidVerbose];
+
+
+		ex = FCLoopPropagatorPowersExpand[ex,FCI->True];
 
 		Which[
 			FreeQ[ex, CartesianIndex] && !FreeQ[ex,LorentzIndex],

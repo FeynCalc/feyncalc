@@ -1,0 +1,43 @@
+
+
+(* :Title: FCLoopRemoveNegativePropagatorPowers.test						*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				FCLoopRemoveNegativePropagatorPowers						*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopRemoveNegativePropagatorPowers =
+({
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID1",
+"FCLoopRemoveNegativePropagatorPowers[SFAD[{q,m,2}],FCE->True]",
+"SFAD[{{q, 0}, {m, 1}, 2}]"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID2",
+"FCLoopRemoveNegativePropagatorPowers[SFAD[{q,m,-1}],FCE->True]",
+"-m + SPD[q, q]"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID3",
+"FCLoopRemoveNegativePropagatorPowers[SFAD[{q,m},{q,m,-2}],\
+FCE->True]", "-m + SPD[q, q]"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID4",
+"FCLoopRemoveNegativePropagatorPowers[SFAD[{q,m},q+p,{q,m,-2}],\
+FCE->True]", "SFAD[{{p + q, 0}, {0, 1}, 1}]*(-m + SPD[q, q])"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID5",
+"FCLoopRemoveNegativePropagatorPowers[CFAD[{q,m,2}],FCE->True]",
+"CFAD[{{q, 0}, {m, -1}, 2}]"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID6",
+"FCLoopRemoveNegativePropagatorPowers[CFAD[{q,m,-1}],FCE->True]",
+"m + CSPD[q, q]"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID7",
+"FCLoopRemoveNegativePropagatorPowers[CFAD[{q,m},{q,m,-2}],\
+FCE->True]", "m + CSPD[q, q]"},
+{"fcstFCLoopRemoveNegativePropagatorPowers-ID8",
+"FCLoopRemoveNegativePropagatorPowers[CFAD[{q,m},q+p,{q,m,-2}],\
+FCE->True]", "CFAD[{{p + q, 0}, {0, -1}, 1}]*(m + CSPD[q, q])"}
+});

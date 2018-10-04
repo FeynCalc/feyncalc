@@ -20,6 +20,9 @@ in expr into one FeynAmpDenominator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+fdsor;
+
 End[]
 
 Begin["`FeynAmpDenominatorCombine`Private`"]

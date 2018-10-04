@@ -1,0 +1,33 @@
+
+
+(* :Title: fcstFCLoopPropagatorPowersExpand.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				fcstFCLoopPropagatorPowersExpand							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopPropagatorPowersExpand =
+({
+{"fcstFCLoopPropagatorPowersExpand-ID1",
+"FCLoopPropagatorPowersExpand[FCI[SFAD[{q,m,2}]],FCE\[Rule]True]",
+"SFAD[{{q, 0}, {m, 1}, 1}, {{q, 0}, {m, 1}, 1}]"},
+{"fcstFCLoopPropagatorPowersExpand-ID2",
+"FCLoopPropagatorPowersExpand[FCI[CFAD[{q,m,2}]],FCE\[Rule]True]",
+"CFAD[{{q, 0}, {m, -1}, 1}, {{q, 0}, {m, -1}, 1}]"},
+{"fcstFCLoopPropagatorPowersExpand-ID3",
+"FCLoopPropagatorPowersExpand[FCI[SFAD[q,{q,m,2}]],FCE\[Rule]True]\
+", "SFAD[{{q, 0}, {0, 1}, 1}, {{q, 0}, {m, 1}, 1}, {{q, 0}, {m, 1}, \
+1}]"},
+{"fcstFCLoopPropagatorPowersExpand-ID4",
+"FCLoopPropagatorPowersExpand[FCI[SFAD[{q,m,2},q+p]],FCE\[Rule]\
+True]", "SFAD[{{q, 0}, {m, 1}, 1}, {{q, 0}, {m, 1}, 1}, {{p + q, 0}, \
+{0, 1}, 1}]"}
+});

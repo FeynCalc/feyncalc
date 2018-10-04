@@ -566,6 +566,12 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		];
 
 		isCartesian = cartesianIntegralQ[expr];
+
+		If[	!FCLoopNonIntegerPropagatorPowersFreeQ[expr],
+			Message[FCLoopBasisExtract::failmsg, "Integrals with noninteger propagator powers are not supported."];
+			Abort[]
+		];
+
 		useToSFAD = !FreeQ[expr, StandardPropagatorDenominator];
 
 
