@@ -1,0 +1,78 @@
+
+
+(* :Title: fcstFCLoopMixedToCartesianAndTemporal.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary: 	Framework independent unit tests for
+				FCLoopMixedToCartesianAndTemporal							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopMixedToCartesianAndTemporal =
+({
+{"fcstFCLoopMixedToCartesianAndTemporal-ID1",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[q],{q},FCE->True]",
+"-CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID2",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[q+p],{q},FCE->True]",
+"-CFAD[{{p + q, 0}, {-TC[p + q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID3",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[q1+q2+p],{q1,q2},\
+FCE->True]", "-CFAD[{{p + q1 + q2, 0}, {-TC[p + q1 + q2]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID4",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{q,m^2}],{q},FCE->True]\
+", "-CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID5",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{q+p,m^2}],{q},\
+FCE->True]", "-CFAD[{{p + q, 0}, {m^2 - TC[p + q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID6",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{q1+q2+p,m^2}],{q1,q2},\
+FCE->True]",
+"-CFAD[{{p + q1 + q2, 0}, {m^2 - TC[p + q1 + q2]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID7",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{q,q.p},m^2}],{q},\
+FCE->True]",
+"-CFAD[{{q, p . q}, {m^2 - TC[p]*TC[q] - TC[q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID8",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{q,q.p},m^2,2}],{q},\
+FCE->True]",
+"CFAD[{{q, p . q}, {m^2 - TC[p]*TC[q] - TC[q]^2, -1}, 2}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID9",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{q,q.p},m^2,3}],{q},\
+FCE->True]",
+"-CFAD[{{q, p . q}, {m^2 - TC[p]*TC[q] - TC[q]^2, -1}, 3}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID10",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{q,q.p},0}],{q},\
+FCE->True]", "-CFAD[{{q, p . q}, {-(TC[p]*TC[q]) - TC[q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID11",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{q,q.p},0,2}],{q},\
+FCE->True]",
+"CFAD[{{q, p . q}, {-(TC[p]*TC[q]) - TC[q]^2, -1}, 2}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID12",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{q,q.p},0,3}],{q},\
+FCE->True]", "-CFAD[{{q, p . q}, {-(TC[p]*TC[q]) - TC[q]^2, -1}, 3}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID13",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{q,0}],{q},FCE->True]",
+	"-CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID14",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{q,0,2}],{q},FCE->True]\
+", "CFAD[{{q, 0}, {-TC[q]^2, -1}, 2}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID15",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{q,0,3}],{q},FCE->True]\
+", "-CFAD[{{q, 0}, {-TC[q]^2, -1}, 3}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID16",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{0,q.p},0}],{q},\
+FCE->True]", "-CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 1}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID17",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{0,q.p},0,2}],{q},\
+FCE->True]", "CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 2}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID18",
+"FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{0,q.p},0,3}],{q},\
+FCE->True]", "-CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 3}]"}
+});
