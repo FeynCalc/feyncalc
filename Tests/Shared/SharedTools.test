@@ -206,7 +206,8 @@ Tests`Shared`fcstSharedToolsNTerms = {
 {"fcstSharedToolsNTerms-ID2","NTerms[a b c]","1"},
 {"fcstSharedToolsNTerms-ID3","NTerms[9]","1"},
 {"fcstSharedToolsNTerms-ID4","NTerms[0]","0"},
-{"fcstSharedToolsNTerms-ID5","NTerms[a (b + c (d + e))]","3"}
+{"fcstSharedToolsNTerms-ID5","NTerms[a (b + c (d + e))]","3"},
+{"fcstSharedToolsNTerms-ID6","NTerms[(a^2 + b)*b, Expand -> False]","1"}
 };
 
 Tests`Shared`fcstSharedToolsNumericalFactor = {

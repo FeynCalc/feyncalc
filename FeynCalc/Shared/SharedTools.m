@@ -262,6 +262,10 @@ Options[MLimit] = {
 	Limit -> Limit
 };
 
+Options[NTerms] = {
+	Expand -> True
+};
+
 Options[FCSplit] = {
 	Expanding -> True
 };
@@ -633,11 +637,17 @@ MLimit[x_, l_List, OptionsPattern[]] :=
 	Fold[OptionValue[Limit][#1, Flatten[{##2}][[1]]]&, x, l];
 
 
-NTerms[x_Plus] :=
+NTerms[x_Plus, OptionsPattern[]] :=
 	Length[x];
 
-NTerms[x_] :=
-	Block[{ntermslex = Expand[x]},
+NTerms[x_, OptionsPattern[]] :=
+	Block[{ntermslex},
+
+		If[	OptionValue[Expand],
+			ntermslex = Expand[x],
+			ntermslex = x
+		];
+
 		If[ Head[ntermslex]===Plus,
 			ntermslex = Length[ntermslex],
 			If[x===0,
