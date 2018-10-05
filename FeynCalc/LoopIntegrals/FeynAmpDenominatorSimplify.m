@@ -356,74 +356,87 @@ procanCFAD[a_, rest__] :=
 fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 	Block[{tmp,res,tmpNew,solsList,repRule},
 
-		(*	The input of fdsOneLoop is guaranteed to contain
-			only a signle 1-loop integral. This makes many things simpler.	*)
+		(*
+			The input of fdsOneLoop is guaranteed to contain
+			only a signle 1-loop integral. This makes many things simpler.
+		*)
 
 		FCPrint[3, "FDS: fdsOneLoop: Entering with: ", loopInt, FCDoControl->fdsVerbose];
 
-		(* 	Order the propagators such, that the massless propagator with the smallest
+		(*
+			Order the propagators such, that the massless propagator with the smallest
 			number of the external momenta goes first. This is not the standard ordering,
-			but it is useful as the first step to bring the integral into canonical form	*)
+			but it is useful as the first step to bring the integral into canonical form
+		*)
 		tmp = loopInt /. FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 		FCPrint[3, "FDS: fdsOneLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Integrals that are antisymmetric under q->-q are removed	*)
 		tmp = removeAnitsymmetricIntegrals[tmp,{q}, {q}];
+
+		If[	tmp===0,
+			Return[0]
+		];
+
 		FCPrint[3, "FDS: fdsOneLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
 
-		(* Special trick for same mass propagators to avoid terms like 1/[q^2-m^2] [(q-p)^2-m^2]^3 instead of
-			1/[q^2-m^2]^3 [(q-p)^2-m^2] *)
+		(*
+			Special trick for same mass propagators to avoid terms like 1/[q^2-m^2] [(q-p)^2-m^2]^3 instead of
+			1/[q^2-m^2]^3 [(q-p)^2-m^2]
+		*)
 		If[	!FreeQ[tmp,PropagatorDenominator],
-			tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],m_]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,m_]..),rest___]/;
-				FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
-						((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+			tmp = tmp/. {a_. FeynAmpDenominator[(v: PD[Momentum[q, dim___],m_]..),(w: PD[Momentum[q, dim___]+ pe_,m_]..), r___]/;
+				FreeQ[pe,q] && pe=!=0 && Length[{v}] < Length[{w}] && m=!=0  :>
+						((a FeynAmpDenominator[v,w,r])/. q :> - q - (pe/.Momentum->extractm))} /.
 						FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 						FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}]
 		];
 
 		If[	!FreeQ[tmp,StandardPropagatorDenominator],
-			tmp = tmp/. {a_. FeynAmpDenominator[(ch1: StandardPropagatorDenominator[Momentum[q,dim_:4],0,m_,s_]..),
-												(ch2: StandardPropagatorDenominator[Momentum[q,dim_:4]+ pe_,0,m_, s_]..),rest___]/;
-				FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
-						((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+			tmp = tmp/. {a_. FeynAmpDenominator[(v: StandardPropagatorDenominator[Momentum[q,dim___],0,m_,s_]..),
+												(w: StandardPropagatorDenominator[Momentum[q,dim___]+ pe_,0,m_, s_]..), r___]/;
+				FreeQ[pe,q] && pe=!=0 && Length[{v}] < Length[{w}] && m=!=0  :>
+						((a FeynAmpDenominator[v,w,r])/. q :> - q - (pe/.Momentum->extractm))} /.
 						FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 						FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}]
 		];
 
 		If[	!FreeQ[tmp,CartesianPropagatorDenominator],
-			tmp = tmp/. {a_. FeynAmpDenominator[(ch1: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3],0,m_,s_]..),
-												(ch2: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3]+ pe_,0,m_, s_]..),rest___]/;
-				FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] && m=!=0  :>
-						((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.CartesianMomentum->extractm))} /.
+			tmp = tmp/. {a_. FeynAmpDenominator[(v: CartesianPropagatorDenominator[CartesianMomentum[q,dim___],0,m_,s_]..),
+												(w: CartesianPropagatorDenominator[CartesianMomentum[q,dim___]+ pe_,0,m_, s_]..),r___]/;
+				FreeQ[pe,q] && pe=!=0 && Length[{v}] < Length[{w}] && m=!=0  :>
+						((a FeynAmpDenominator[v,w,r])/. q :> - q - (pe/.CartesianMomentum->extractm))} /.
 						FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]]/. FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}]
 		];
 
 		FCPrint[3, "FDS: fdsOneLoop: After using special trick for same mass propagators:  ", tmp, FCDoControl->fdsVerbose];
 
-		(* Special trick for massless propagators to avoid terms like 1/q^2 [(q-p)^2]^3 instead of
-			1/[q^2]^3 [(q-p)^2] *)
+		(*
+			Special trick for massless propagators to avoid terms like 1/q^2 [(q-p)^2]^3 instead of
+			1/[q^2]^3 [(q-p)^2]
+		*)
 		If[ !FreeQ[tmp,PropagatorDenominator],
-		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],0]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,0]..),rest___]/;
-			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
-					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+		tmp = tmp/. {a_. FeynAmpDenominator[(v: PD[Momentum[q,dim___],0]..),(w: PD[Momentum[q,dim___]+ pe_,0]..), r___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{v}] < Length[{w}] :>
+					((a FeynAmpDenominator[v,w,r])/. q :> - q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}]
 		];
 
 		If[ !FreeQ[tmp,StandardPropagatorDenominator],
-		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: StandardPropagatorDenominator[Momentum[q,dim_:4],0,0,s_]..),
-											(ch2: StandardPropagatorDenominator[Momentum[q,dim_:4]+ pe_,0,0,s_]..),rest___]/;
-			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
-					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
+		tmp = tmp/. {a_. FeynAmpDenominator[(v: StandardPropagatorDenominator[Momentum[q,dim___],0,0,s_]..),
+											(w: StandardPropagatorDenominator[Momentum[q,dim___]+ pe_,0,0,s_]..),r___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{v}] < Length[{w}] :>
+					((a FeynAmpDenominator[v,w,r])/. q :> - q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}]
 		];
 
 		If[ !FreeQ[tmp,CartesianPropagatorDenominator],
-		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3],0,0,s_]..),
-											(ch2: CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3]+ pe_,0,0,s_]..),rest___]/;
-			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
-					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.CartesianMomentum->extractm))} /.
+		tmp = tmp/. {a_. FeynAmpDenominator[(v: CartesianPropagatorDenominator[CartesianMomentum[q,dim___],0,0,s_]..),
+											(w: CartesianPropagatorDenominator[CartesianMomentum[q,dim___]+ pe_,0,0,s_]..), r___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{v}] < Length[{w}] :>
+					((a FeynAmpDenominator[v,w,r])/. q :> - q - (pe/.CartesianMomentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}]
 		];
@@ -432,23 +445,32 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		(*	Perform a shift to make the very first propagator free of external momenta	*)
 		If[ !FreeQ[tmp, PropagatorDenominator],
-		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q,dim_:4]+pe_, m_],rest___]/; FreeQ[pe,q] :>
-					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - (pe/.Momentum->extractm))} /.
+		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q, d___]+pe_, m_],r___]/; FreeQ[pe,q] :>
+					((a FeynAmpDenominator[PD[Momentum[q, d]+pe, m], r])/. q :> q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
 		];
 
 		If[ !FreeQ[tmp, StandardPropagatorDenominator],
-		tmp = tmp/. {a_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,dim_:4]+pe_,x_, m_, s_],rest___]/; FreeQ[pe,q] :>
-					((a FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,dim]+pe, x, m, s],rest])/. q :> q - (pe/.Momentum->extractm))} /.
+		tmp = tmp/. {a_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, d___]+pe_,x_, m_, s_],r___]/; FreeQ[pe,q] :>
+					((a FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, d]+pe, x, m, s], r])/. q :> q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
 		];
 
 		If[ !FreeQ[tmp, CartesianPropagatorDenominator],
-		tmp = tmp/. {a_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,dim_:3]+pe_,x_, m_, s_],rest___]/; FreeQ[pe,q] :>
-					((a FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,dim]+pe, x, m, s],rest])/. q :> q - (pe/.CartesianMomentum->extractm))} /.
+		tmp = tmp/. {a_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q, d___]+pe_,x_, m_, s_], r___]/; FreeQ[pe,q] :>
+					((a FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q, d]+pe, x, m, s], r])/. q :> q - (pe/.CartesianMomentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
 		];
 
+		If[	tmp===0,
+			Return[0]
+		];
+
+		(*	Prior to removing scaleless integrals we want to ensure that the loop integral is of a particular form	*)
+		If[	!MatchQ[tmp, (a_. b_FeynAmpDenominator)/;FreeQ[a,FeynAmpDenominator]],
+			Message[FeynAmpDenominatorSimplify::failmsg, "The loop integral is not in the expected form."];
+			Abort[]
+		];
 
 		FCPrint[3, "FDS: fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
@@ -476,8 +498,10 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		FCPrint[3, "FDS: fdsOneLoop: After removing massless tadpoles:  ", tmp, FCDoControl->fdsVerbose];
 
-		(*	If the integral topology is more complicated than a massive tadpole, then
-			we possibly need to do some shifts *)
+		(*
+			If the integral topology is more complicated than a massive tadpole, then
+			we possibly need to do some shifts.
+		*)
 		If[ Length[Union[{props}]]>1 && FCLoopEikonalPropagatorFreeQ[tmp],
 			FCPrint[3, "FDS: fdsOneLoop: The integral is at least a bubble:  ", tmp, FCDoControl->fdsVerbose];
 			tmp=fdsOneLoopsGeneric[tmp,q]
@@ -490,20 +514,23 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 			res = tmp
 		];
 		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
-		(* 	After the shifts our single integral usually turns into a sum of
-			integrals with different numerators. Some of them might vanish by symmetry	*)
-
-		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True, Full->False],q];
+		(*
+			After the shifts our single integral usually turns into a sum of
+			integrals with different numerators. Some of them might vanish by symmetry
+		*)
+		res = Expand2[ExpandScalarProduct[res,Momentum->{q},EpsEvaluate->True, Full->False, FCI->True],q];
 		FCPrint[3, "FDS: fdsOneLoop: res: ", res, FCDoControl->fdsVerbose];
 
 		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False,
-			ExpandScalarProduct->True, Full->False];
+			ExpandScalarProduct->True, Full->False, FCI->True ];
 		FCPrint[3, "FDS: fdsOneLoop: tmpNew: ", tmpNew, FCDoControl->fdsVerbose];
 
 		solsList = Map[removeAnitsymmetricIntegrals[#,{q}, {q}]&,(tmpNew[[3]]/.loopHead->Identity)];
 		FCPrint[3, "FDS: fdsOneLoop: solsList: ", solsList, FCDoControl->fdsVerbose];
 
-		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
+
+		repRule = Thread[Rule[tmpNew[[3]],solsList]];
+
 		FCPrint[3, "FDS: fdsOneLoop: repRule: ", repRule, FCDoControl->fdsVerbose];
 
 		res = tmpNew[[1]] + (tmpNew[[2]]/.repRule);
@@ -1135,12 +1162,6 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 		If[ (ApartFF /. {opt} /. Options[FDS]),
 			res = ApartFF[res,{q1,q2}]
 		];
-
-
-
-
-
-
 
 		FCPrint[1,"FDS: oldFeynAmpDenominatorSimplify: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
 		res
