@@ -576,7 +576,17 @@ SPD[q1, q1], SPD[k1, k1] - 2 SPD[k1, q1] + SPD[q1, q1], SPD[q2, q2],
 SPD[q1, q1] + 2 SPD[q1, q2] + SPD[q2, q2]}, {SPD[k1, q1],
 SPD[k1, q2], SPD[q1, q1], SPD[q1, q2], SPD[q2, q2]}, {-1, 1, 1, 1,
 1}, {2 SPD[k1, q1] + 4 SPD[k1, q2] - SPD[q1, q1] - 2 SPD[q1, q2],
-FAD[q1], FAD[-k1 + q1], FAD[q2], FAD[q1 + q2]}}"}
+FAD[q1], FAD[-k1 + q1], FAD[q2], FAD[q1 + q2]}}"},
+{"fcstFCLoopBasisExtract-ID14","FCLoopBasisExtract[GFAD[(TC[q] - x)] *
+SFAD[{{0, p.q}, x}], {q}, FCE -> True]",
+"{{-x + SPD[p, q], -x + TC[q]}, {SP[p, q], SP[q, q], SPD[p, q],
+SPD[q, q], TC[q]}, {1, 1}, {SFAD[{{0, p.q}, {x, 1}, 1}],
+GFAD[{{-x + TC[q], 1}, 1}]}}"},
+{"fcstFCLoopBasisExtract-ID15","FCLoopBasisExtract[TC[q] GFAD[(TC[q] -
+x)] SFAD[{{0, p.q}, x}], {q}, FCE -> True]",
+"{{-x + SPD[p, q], -x + TC[q], TC[q]}, {SP[p, q], SP[q, q], SPD[p, q],
+SPD[q, q], TC[q]}, {1, 1, -1}, {SFAD[{{0, p.q}, {x, 1}, 1}],
+GFAD[{{-x + TC[q], 1}, 1}], GFAD[{{TC[q], 1}, -1}]}}"}
 };
 
 Tests`LoopIntegrals`fcstFCLoopBasisGetSize =
@@ -805,7 +815,38 @@ CSPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
 MomentumCombine -> True, FCE -> True]",
 "{CFAD[{{0, -l.(p1 + p2 + p3)}, {0, -1}, -1}],
 SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
-SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"}
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID41",
+"FCLoopBasisIntegralToPropagators[GFAD[(TC[q]-x)]SFAD[{{0,p.q},x}],\
+{q}]", "{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID42",
+"FCLoopBasisIntegralToPropagators[GFAD[(TC[q]-x)]SFAD[{{0,p.q},x}],\
+{q},Tally\[Rule]True]",
+"{{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], 1}, \
+{FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]], 1}}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID43",
+"FCLoopBasisIntegralToPropagators[TC[q]GFAD[(TC[q]-x)]SFAD[{{0,p.q}\
+,x}],{q}]",
+"{FeynAmpDenominator[GenericPropagatorDenominator[TemporalPair[\
+TemporalIndex[], TemporalMomentum[q]], {-1, 1}]], \
+FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID44",
+"FCLoopBasisIntegralToPropagators[TC[q]GFAD[(TC[q]-x)]SFAD[{{0,p.q}\
+,x}],{q},Tally\[Rule]True]",
+"{{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], 1}, \
+{FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]], 1}, \
+{FeynAmpDenominator[GenericPropagatorDenominator[TemporalPair[\
+TemporalIndex[], TemporalMomentum[q]], {-1, 1}]], 1}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

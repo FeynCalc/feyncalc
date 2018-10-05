@@ -120,6 +120,8 @@ null::usage="";
 lintegral::usage="";
 fclbeVerbose::usage="";
 optEtaSign::usage="";
+itpVerbose::usage="";
+spd::usage="";
 
 SetAttributes[spd,Orderless];
 
@@ -169,17 +171,18 @@ Options[FCLoopBasisCreateScalarProducts] = {
 Options[FCLoopBasisIntegralToPropagators] = {
 	CartesianPair -> False,
 	EtaSign -> {1,-1,1},
+	ExpandScalarProduct -> False,
 	FCE -> False,
 	FCI -> False,
+	FCVerbose -> False,
+	MomentumCombine -> False,
 	Negative -> False,
 	Pair -> False,
 	Rest -> False,
+	Sort -> True,
 	Tally -> False,
 	TemporalPair -> False,
-	ToSFAD -> True,
-	MomentumCombine -> False,
-	ExpandScalarProduct -> False,
-	Sort -> True
+	ToSFAD -> True
 }
 
 Options[FCLoopBasisPropagatorsToTopology] = {
@@ -257,6 +260,13 @@ auxIntegralToPropagators2[exp_, lmoms_]:=
 FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 	Block[{exp, tmp, res, dummy, expAsList, rest},
 
+		If [OptionValue[FCVerbose]===False,
+			itpVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				itpVerbose=OptionValue[FCVerbose]
+			];
+		];
+
 		If[	Length[lmoms]<1,
 			Message[FCLoopBasisIntegralToPropagators::failmsg,"The list of the loop momenta cannot be empty."];
 			Abort[]
@@ -266,6 +276,8 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 			exp = FCI[expr],
 			exp = expr
 		];
+		FCPrint[1,"FCLoopBasisIntegralToPropagators: Entering.", FCDoControl->itpVerbose];
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: Entering with ", exp, FCDoControl->itpVerbose];
 
 		If[	!MemberQ[{Power, Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[exp]] || FreeQ2[exp,lmoms],
 			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid loop integral."];
@@ -292,6 +304,8 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 							#]&/@expAsList
 		];
 
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: Expression as list: ", expAsList, FCDoControl->itpVerbose];
+
 		tmp  = Select[expAsList,(MemberQ[{FeynAmpDenominator, Pair, CartesianPair, TemporalPair, Power, Times, Plus},Head[#]] && !FreeQ2[#,lmoms])&];
 
 		rest = Complement[expAsList,tmp] /. dummy -> Unevaluated[Sequence[]];
@@ -307,7 +321,10 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 			rest = Times@@rest
 		];
 
-		If[	!FreeQ2[rest,lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex,TemporalIndex}],
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: tmp: ", tmp, FCDoControl->itpVerbose];
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: rest: ", rest, FCDoControl->itpVerbose];
+
+		If[	!FreeQ2[rest,lmoms] || !FreeQ2[tmp,{LorentzIndex,CartesianIndex}],
 			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid scalar loop integral."];
 			Abort[]
 		];
@@ -425,6 +442,9 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 			res = FCE[res]
 		];
 
+		FCPrint[1,"FCLoopBasisIntegralToPropagators: Leaving.", FCDoControl->itpVerbose];
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: Leaving with ", res, FCDoControl->itpVerbose];
+
 		res
 	];
 
@@ -527,7 +547,8 @@ res
 
 FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
-			availableDims, isCartesian, dims, res, useToSFAD, integralBasis, integralBasisT},
+			availableDims, dims, res, useToSFAD, integralBasis, integralBasisT,
+			coeffsPair, coeffsCartesianPair, coeffsTemporalPair},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -558,25 +579,12 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		FCPrint[3,"FCLoopBasisExtract: Entering with: ", expr, FCDoControl->fclbeVerbose];
 		FCPrint[3,"FCLoopBasisExtract: Loop momenta: ", loopmoms, FCDoControl->fclbeVerbose];
 
-
-		(* TODO We need to support also temporal propagators *)
-		If[	!FreeQ2[expr, {TemporalPair,TemporalMomentum,TemporalIndex}],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
-		isCartesian = cartesianIntegralQ[expr];
-
 		If[	!FCLoopNonIntegerPropagatorPowersFreeQ[expr],
 			Message[FCLoopBasisExtract::failmsg, "Integrals with noninteger propagator powers are not supported."];
 			Abort[]
 		];
 
 		useToSFAD = !FreeQ[expr, StandardPropagatorDenominator];
-
-
-		FCPrint[1,"FCLoopBasisExtract: Is the loop integral Cartesian? ", isCartesian, FCDoControl->fclbeVerbose];
-
 
 		integralBasis = FCLoopBasisIntegralToPropagators[expr, loopmoms, FCI->True, Rest->None, Negative->True, Tally->True,
 			Pair->True,CartesianPair->True, ToSFAD->useToSFAD, MomentumCombine -> True, ExpandScalarProduct->True,
@@ -588,10 +596,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		integralBasisT = Transpose[integralBasis];
 
 		(*	List of all momenta that appear inside the integral	*)
-		If[	!isCartesian,
-			allmoms=Cases[MomentumExpand[integralBasis], Momentum[x_,_:4]:>x,Infinity]//Sort//DeleteDuplicates,
-			allmoms=Cases[MomentumExpand[integralBasis], CartesianMomentum[x_,_:3]:>x,Infinity]//Sort//DeleteDuplicates
-		];
+		allmoms=Cases[MomentumExpand[integralBasis], (Momentum|CartesianMomentum|TemporalMomentum)[x_,___]:>x,Infinity]//Sort//DeleteDuplicates;
 
 		(*	All momenta that are not listed as loop momenta will be treated as external momenta.	*)
 		extmoms = Complement[allmoms,loopmoms];
@@ -616,9 +621,21 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 			Abort[]
 		];
 
-		If[	TrueQ[!isCartesian],
-			coeffs = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,Pair]],
-			coeffs = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,CartesianPair]]
+		coeffsPair 			= Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,Pair]];
+		coeffsCartesianPair = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,CartesianPair]];
+		coeffsTemporalPair 	= Sort[TemporalPair[TemporalIndex[],TemporalMomentum[#]]&/@lmoms];
+		coeffs				= {};
+
+		If[	!FreeQ[expr,Momentum],
+			coeffs = Join[coeffs,coeffsPair]
+		];
+
+		If[	!FreeQ[expr,CartesianMomentum],
+			coeffs = Join[coeffs,coeffsCartesianPair]
+		];
+
+		If[	!FreeQ[expr,TemporalMomentum],
+			coeffs = Join[coeffs,coeffsTemporalPair]
 		];
 
 		FCPrint[1,"FCLoopBasisExtract: Leaving.", FCDoControl->fclbeVerbose];
