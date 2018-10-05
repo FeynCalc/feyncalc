@@ -828,5 +828,74 @@ Momentum[l, D], m]]  Pair[LorentzIndex[mu, D], Momentum[l, D]], l, FCE->True]; F
 (FAD[l, l, {-k1/2 - k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/(4*m^2) -
 (FAD[l, l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/4 -
 (FAD[l, l, {-k1/2 + k2/2 + l, m}, {k1/2 + k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/4 -
-(FAD[l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*FVD[k2, mu])/(4*m^2)"}
+(FAD[l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*FVD[k2, mu])/(4*m^2)"},
+{"fcstTID-ID26", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m}],q,FCE->True]",
+"-((m*CFAD[{{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D))"},
+{"fcstTID-ID27", "TID[CVD[q,i]CFAD[{q,m}],q,FCE->True]", "0"},
+{"fcstTID-ID28",
+"TID[CVD[q,i]CVD[q,j]CVD[q,k]CVD[q,l]CFAD[{q,m}],q,FCE->True]",
+"(m^2*CFAD[{{q, 0}, {m, -1}, 1}]*(KDD[i, l]*KDD[j, k] + KDD[i, \
+k]*KDD[j, l] + KDD[i, j]*KDD[k, l]))/((-1 + D)*(1 + D))"},
+{"fcstTID-ID29", "TID[CVD[q,i]CVD[q,j]CFAD[q,q+p],q,FCE->True]",
+"(CFAD[{{q, 0}, {0, -1}, 1}]*(2*CVD[p, i]*CVD[p, j] - (-1 + \
+D)*CVD[p, i]*CVD[p, j] - CSPD[p, p]*KDD[i, j]))/(2*(2 - D)*CSPD[p, \
+p]) + (CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1}, 1}]*(-((-1 + \
+D)*CVD[p, i]*CVD[p, j]) + CSPD[p, p]*KDD[i, j]))/(4*(2 - D))"},
+{"fcstTID-ID30", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m,2}],q,FCE->True]",
+"(CFAD[{{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D) - (m*CFAD[{{q, \
+0}, {m, -1}, 1}, {{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D)"},
+{"fcstTID-ID31", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m,-1}],q,FCE->True]",
+"0"},
+{"fcstTID-ID32", "TID[FVD[q,i]FVD[q,j]SFAD[{q,m}],q,FCE->True]",
+"(m*MTD[i, j]*SFAD[{{q, 0}, {m, 1}, 1}])/D"},
+{"fcstTID-ID33", "TID[FVD[q,i]SFAD[{q,m}],q,FCE->True]", "0"},
+{"fcstTID-ID34",
+"TID[FVD[q,i]FVD[q,j]FVD[q,k]FVD[q,l]SFAD[{q,m}],q,FCE->True]",
+"(m^2*(MTD[i, l]*MTD[j, k] + MTD[i, k]*MTD[j, l] + MTD[i, \
+j]*MTD[k, l])*SFAD[{{q, 0}, {m, 1}, 1}])/(D*(2 + D))"},
+{"fcstTID-ID35", "TID[FVD[q,i]FVD[q,j]SFAD[{q,m,2}],q,FCE->True]",
+"(MTD[i, j]*SFAD[{{q, 0}, {m, 1}, 1}])/D + (m*MTD[i, j]*SFAD[{{q, \
+0}, {m, 1}, 1}, {{q, 0}, {m, 1}, 1}])/D"},
+{"fcstTID-ID36",
+"TID[FVD[q,i]SFAD[{q,m,2},q+p],q,UsePaVeBasis\[Rule]True,FCE->True]\
+", "(-2*I)*Pi^2*FVD[p, i]*PaVe[1, {SPD[p, p], 0, SPD[p, p]}, {0, m, \
+m}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] - FVD[p, \
+i]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {m, 1}, 2}]"},
+{"fcstTID-ID37",
+"TID[FVD[q,i]SFAD[{q,m,3},q+p],q,UsePaVeBasis\[Rule]True,FCE->True]\
+", "(-3*I)*Pi^2*FVD[p, i]*PaVe[1, {SPD[p, p], 0, 0, SPD[p, p], SPD[p, \
+p], 0}, {0, m, m, m}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] \
+- FVD[p, i]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {m, 1}, 3}]"},
+{"fcstTID-ID38",
+"TID[FCI[FVD[q,mu] FVD[q,nu] \
+SFAD[{q,m0^2},{q+p1,m1^2},{q+p2,m2^2}]]/(I*Pi^2),q,UsePaVeBasis\[Rule]\
+True,GenPaVe\[Rule]True,FCE\[Rule]True]",
+"FVD[p1, mu]*FVD[p1, nu]*GenPaVe[{1, 1}, {{0, m0}, {-p1, m1}, \
+{-p2, m2}}] + (FVD[p1, nu]*FVD[p2, mu] + FVD[p1, mu]*FVD[p2, \
+nu])*GenPaVe[{1, 2}, {{0, m0}, {-p1, m1}, {-p2, m2}}] + FVD[p2, \
+mu]*FVD[p2, nu]*GenPaVe[{2, 2}, {{0, m0}, {-p1, m1}, {-p2, m2}}] + \
+GenPaVe[{0, 0}, {{0, m0}, {-p1, m1}, {-p2, m2}}]*MTD[mu, nu]"},
+{"fcstTID-ID39", "TID[FVD[q,mu]SFAD[-q,q-p]FAD[q-p],q,FCE->True]",
+"FAD[-p + q]*FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, \
+{0, 1}, 1}]"},
+{"fcstTID-ID40", "TID[FVD[q,mu]SFAD[q,q-p]FAD[q-p],q,FCE->True]",
+"FAD[-p + q]*FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, \
+{0, 1}, 1}]"},
+{"fcstTID-ID41", "TID[FVD[q,mu]SFAD[q,q-p,{{0,q.k}}],q,FCE->True]",
+"FVD[q, mu]*SFAD[{{0, k . q}, {0, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{p \
+- q, 0}, {0, 1}, 1}]"},
+{"fcstTID-ID42",
+"TID[FCI[CVD[q,i]CVD[q,j]SFAD[{q,m^2,2}]],q,FCE->True]",
+"(CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, 1}]*KDD[i, j])/(-1 + D) - \
+(m^2*CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, 1}, {{q, 0}, {m^2 - TC[q]^2, \
+-1}, 1}]*KDD[i, j])/(-1 + D) + (CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, \
+1}, {{q, 0}, {m^2 - TC[q]^2, -1}, 1}]*KDD[i, j]*TC[q]^2)/(-1 + D)"},
+{"fcstTID-ID43",
+"TID[(-(-1/2 \
+GA[5].(GAD[mu].GSD[v]-FVD[v,mu])FVD[k,mu]))SFAD[{{0,v.(r-k)}},{k,-M^2}\
+]*\[IndentingNewLine](-1/2 \
+GA[5].(GAD[nu].GSD[v]-FVD[v,nu]))FVD[k,nu],k,FCE->True]",
+"(SFAD[{{k, 0}, {-M^2, 1}, 1}]*SPD[r, v])/4 - (SFAD[{{k, 0}, \
+{-M^2, 1}, 1}, {{0, (-k + r) . v}, {0, 1}, 1}]*(SPD[r, v]^2 + \
+M^2*SPD[v, v]))/4"}
 };

@@ -164,5 +164,5 @@ CFAD[{{q, 0}, {0, -1}, 1}] (-3 CVD[p, i] CVD[p, j] +
 "GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}] TC[q]"},
 {"fcstApartFF-ID36", "ApartFF[TC[q] GFAD[(TC[q] - x)] SFAD[{{0, p.q}, x}], {q},
 TemporalMomentum -> True, FCE -> True]",
-"SFAD[{{0, p.q}, {x, 1}, 1}] + x GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}]]"}
+"x GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}]"}
 })

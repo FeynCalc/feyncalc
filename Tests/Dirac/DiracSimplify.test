@@ -176,7 +176,8 @@ EL^4 m2^2 Spinor[Momentum[p1, D], 0, 1].GSD[
 	Transversality -> True]].Spinor[-Momentum[p2, D], 0, 1] SPD[p3,
 p3])/m1"},
 {"fcstDiracSimplify-ID32","DiracSimplify[TGA[].CGA[i].TGA[].CGA[i]]","3"},
-{"fcstDiracSimplify-ID33","DiracSimplify[TGA[].CGA[i].CGA[i].TGA[]]","-3"}
+{"fcstDiracSimplify-ID33","DiracSimplify[TGA[].CGA[i].CGA[i].TGA[]]","-3"},
+{"fcstDiracSimplify-ID34","DiracSimplify[-1/2 GA[5].(GAD[mu].GSD[v] - FVD[v, mu]) FVD[v, mu]]","0"}
 };
 
 
