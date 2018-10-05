@@ -190,6 +190,8 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(* The output is converted back into the standard FeynCalc notation *)
 		res = res/. pfracOut[{_,_,x_,y_}]:> FeynAmpDenominatorCombine[Times@@MapIndexed[Power[y[[First[#2]]],Abs[#1]]&,x]];
 
+		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> False];
+
 		If [OptionValue[Collecting],
 			res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
 		];

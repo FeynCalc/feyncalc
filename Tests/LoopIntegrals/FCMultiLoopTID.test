@@ -264,8 +264,12 @@ FCE -> True]","2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q1] +
 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q1] -
 2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q2]"},
 {"fcstFCMultiLoopTID-ID22", "FCMultiLoopTID[FVD[q, i] FVD[q, j] SFAD[{{0, p.q}, x}], {q},
-FCE -> True]","(x^2 SFAD[{{0, p.q}, {x, 1}, 1}] (D FVD[p, i] FVD[p, j] -
-	MTD[i, j] SPD[p, p]))/((-1 + D) SPD[p, p]^2) + (
-SFAD[{{0, p.q}, {x, 1}, 1}] (-FVD[p, i] FVD[p, j] +
-	MTD[i, j] SPD[p, p]) SPD[q, q])/((-1 + D) SPD[p, p])"}
+FCE -> True]","0"},
+{"fcstFCMultiLoopTID-ID23", "FCMultiLoopTID[FVD[q, i] FVD[q, j] SFAD[{{0, p.q}, x}, q + p], {q},
+FCE -> True]",
+"(1/((-1 + D) SPD[p, p]^2))*SFAD[{{q, 0}, {0, 1}, 1}, {{0, p.(-p + q)}, {x, 1},
+1}] (D x^2 FVD[p, i] FVD[p, j] +
+2 x FVD[p, i] FVD[p, j] SPD[p, p] - x^2 MTD[i, j] SPD[p, p] +
+FVD[p, i] FVD[p, j] SPD[p, p]^2 - 2 x MTD[i, j] SPD[p, p]^2 -
+MTD[i, j] SPD[p, p]^3)"}
 })
