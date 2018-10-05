@@ -548,7 +548,8 @@ res
 FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, dims, res, useToSFAD, integralBasis, integralBasisT,
-			coeffsPair, coeffsCartesianPair, coeffsTemporalPair},
+			coeffsPair, coeffsCartesianPair, coeffsTemporalPair,
+			lorentzianDims, cartesianDims},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -621,8 +622,18 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 			Abort[]
 		];
 
-		coeffsPair 			= Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,Pair]];
-		coeffsCartesianPair = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,availableDims,CartesianPair]];
+		lorentzianDims=Cases[availableDims, 4 | _Symbol];
+		If[	lorentzianDims=!={},
+			coeffsPair = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,lorentzianDims,Pair]],
+			coeffsPair = {}
+		];
+
+		cartesianDims=Cases[availableDims, 3 | _Symbol - 1];
+		If[	cartesianDims=!={},
+			coeffsCartesianPair = Sort[FCLoopBasisCreateScalarProducts[lmoms,extmoms,cartesianDims,CartesianPair]],
+			coeffsCartesianPair = {}
+		];
+
 		coeffsTemporalPair 	= Sort[TemporalPair[TemporalIndex[],TemporalMomentum[#]]&/@lmoms];
 		coeffs				= {};
 
@@ -801,14 +812,7 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Entering with: ", ex, FCDoControl->fclbVerbose];
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Loop momenta: ", lmoms, FCDoControl->fclbVerbose];
 
-		If[ TrueQ[cartesianIntegralQ[ex]],
-			(*Cartesian integral *)
-			dims = Cases[OptionValue[SetDimensions], 3 | _Symbol - 1],
-			(*Lorentzian integral *)
-			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
-		];
-
-		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
+		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->OptionValue[SetDimensions]];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 

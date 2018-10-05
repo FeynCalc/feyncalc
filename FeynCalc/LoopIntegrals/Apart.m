@@ -78,7 +78,8 @@ Options[ApartFF] = {
 	FCProgressBar -> False,
 	MaxIterations -> Infinity,
 	Numerator -> True,
-	SetDimensions-> {3, 4, D-1, D}
+	SetDimensions-> {3, 4, D-1, D},
+	TemporalMomentum -> False
 };
 
 Apart2[y_, OptionsPattern[]] :=
@@ -113,7 +114,7 @@ Apart3[expr_, x_] :=
 ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
-			optCollecting},
+			optCollecting, tcRepList},
 
 		optCollecting = OptionValue[Collecting];
 
@@ -136,6 +137,17 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[1, "ApartFF: Entering.", FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Entering with ", exp, FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Loop momenta are ", lmoms, FCDoControl->affVerbose];
+
+
+		(*
+			By default we will not do partial fractioning w.r.t the temporal loop momenta, since those
+			are not regularized in DR.
+		*)
+		tcRepList = {};
+		If[	!OptionValue[TemporalMomentum] && !FreeQ[exp,TemporalMomentum],
+			tcRepList = Map[Rule[TemporalMomentum[#], TemporalMomentum[Unique["fctm"]]] &, lmoms];
+			exp = exp /. Dispatch[tcRepList]
+		];
 
 
 		(*	Split loop integrals from the rest	*)
@@ -185,8 +197,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 			Abort[]
 		];
 
-		repRule = MapIndexed[(Rule[#1, First[solsList[[#2]]]]) &, intsUnique];
-
+		repRule = Thread[Rule[intsUnique, solsList]];
 		FCPrint[3, "ApartFF: Replacement rule ", repRule, FCDoControl->affVerbose];
 
 		(*	Substitute simplified integrals back into the original expression	*)
@@ -195,6 +206,11 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[1, "ApartFF: Inserting simplified integrals back into the original expression.", FCDoControl->affVerbose];
 		res = FeynAmpDenominatorCombine[rest + (loopInts/.repRule)];
 		FCPrint[1, "ApartFF: Done inserting simplified integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
+
+
+		If[	tcRepList=!={},
+				res = res /. Dispatch[Reverse/@tcRepList]
+		];
 
 		If [OptionValue[ExpandScalarProduct],
 			time=AbsoluteTime[];

@@ -80,13 +80,6 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting, power, fadList,
 		fadListEval, fadHold, intsUniqueClassified},
 
-		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
-		optCollecting = OptionValue[Collecting];
-
 		If [OptionValue[FCVerbose]===False,
 			fdsVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
@@ -98,6 +91,9 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			Message[FDS::failmsg, "Some loop momenta have scalar product rules attached to them. Evaluation aborted!"];
 			Abort[]
 		];
+
+
+		optCollecting = OptionValue[Collecting];
 
 		If[ !OptionValue[FCI],
 			ex = FeynCalcInternal[expr],
@@ -890,7 +886,7 @@ feynsimp[lmoms_List][a__PD] :=
 
 (*	If there are not only PropagatorDenominators inside FeynAmpDenominator, then
 	the memoization is not safe anymore! *)
-feynsimp[lmoms_List][a__ /; !MatchQ[{a},{__PD}] && FreeQ[{a},GenericPropagatorDenominator]] :=
+feynsimp[lmoms_List][a__ /; !MatchQ[{a},{__PD}](* && FreeQ[{a},GenericPropagatorDenominator]*)] :=
 	Block[{null1,null2,pd, stpd, cpd},
 		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //. {
 

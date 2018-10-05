@@ -89,6 +89,10 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = ExpandScalarProduct[ex, FCI->True]
 		];
 
+
+
+
+
 		(*
 			We need to cancel things like p.q/(p.q+i Eta) before invoking FCLoopBasis functions!
 		*)
@@ -122,11 +126,11 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
-		If[	!FreeQ2[ex,{LorentzIndex,CartesianIndex,TemporalIndex,Eps,DiracGamma}],
-			scalarTerm = SelectFree[ex, LorentzIndex,CartesianIndex,TemporalIndex,Eps,DiracGamma];
-			vectorTerm = SelectNotFree[ex, LorentzIndex,CartesianIndex,TemporalIndex,Eps,DiracGamma];
+		If[	!FreeQ2[ex,{LorentzIndex,CartesianIndex,Eps,DiracGamma}],
+			scalarTerm = SelectFree[ex, LorentzIndex,CartesianIndex,Eps,DiracGamma];
+			vectorTerm = SelectNotFree[ex, LorentzIndex,CartesianIndex,Eps,DiracGamma];
 
-			If[	scalarTerm*vectorTerm =!= ex || !FreeQ2[scalarTerm,{LorentzIndex,CartesianIndex,TemporalIndex}],
+			If[	scalarTerm*vectorTerm =!= ex || !FreeQ2[scalarTerm,{LorentzIndex,CartesianIndex}],
 				Message[FCApart::error, ex];
 				Abort[]
 			],
@@ -333,8 +337,7 @@ pfrac[inputVectorSet_List]:=
 				res = pfrac[{Delete[vectorSet[[1]],{spPosition}],vectorSet[[2]],Delete[expCounts,{spPosition}],Delete[vectorSet[[4]],{spPosition}]}];
 				(* Here we reinsert the factored out scalar product *)
 				FCPrint[3,"FCApart: pfrac: Output after treating the vanishing coefficient f_i", res," ",FCDoControl->fcaVerbose];
-				res = res/.(h:pfrac|pfracOut)[{b1_,b2_,b3_,b4_}]:>h[{Join[b1,{spType}],b2,Join[b3,{spExponent}],
-					Join[b4,{spType}]}];
+				res = res/.(h:pfrac|pfracOut)[{a_,b_,c_,d_}]:>h[{Join[a,{spType}],b,Join[c,{spExponent}], Join[d,{spType}]}];
 				Return[res],
 
 				FCPrint[3,"FCApart: pfrac: The coefficient of ", spType, " is not zero",FCDoControl->fcaVerbose];
