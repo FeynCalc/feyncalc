@@ -452,21 +452,25 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		FCPrint[3, "FDS: fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
-		(*	Remove single eikonal integrals (scaleless, hence vanish in DR)	*)
-		tmp = tmp /. { FeynAmpDenominator[StandardPropagatorDenominator[0, x_,  _,{1,_}]]/;!FreeQ[x,Momentum[q,___]]:> 0};
+		(* It is not safe to remove scaleless integrals if the integral is mixed.*)
+		If[FCLoopMixedIntegralQ[tmp]===False,
 
-		(*	Remove massless tadpoles (vanish in DR)	*)
-		If[!$KeepLogDivergentScalelessIntegrals,
-			tmp = tmp /. {
-				_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0,
-				_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..] :> 0,
-				_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,_:3], 0]..] :> 0
-			},
-			If[	(tmp/. FeynAmpDenominator[___]->1)===1,
+			(*	Remove single eikonal integrals (scaleless, hence vanish in DR)	*)
+			tmp = tmp /. { FeynAmpDenominator[StandardPropagatorDenominator[0, x_,  _,{1,_}]]/;!FreeQ[x,Momentum[q,___]]:> 0};
+
+			(*	Remove massless tadpoles (vanish in DR)	*)
+			If[!$KeepLogDivergentScalelessIntegrals,
 				tmp = tmp /. {
-					_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0,
-					_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..]/;Length[{l}]=!=2 :> 0
-				}
+					_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0,
+					_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..] :> 0,
+					_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,_:3], 0]..] :> 0
+				},
+				If[	(tmp/. FeynAmpDenominator[___]->1)===1,
+					tmp = tmp /. {
+						_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0,
+						_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..]/;Length[{l}]=!=2 :> 0
+					}
+				]
 			]
 		];
 
