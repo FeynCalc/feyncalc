@@ -452,6 +452,9 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		FCPrint[3, "FDS: fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
+		(*	Remove single eikonal integrals (scaleless, hence vanish in DR)	*)
+		tmp = tmp /. { FeynAmpDenominator[StandardPropagatorDenominator[0, x_,  _,{1,_}]]/;!FreeQ[x,Momentum[q,___]]:> 0};
+
 		(*	Remove massless tadpoles (vanish in DR)	*)
 		If[!$KeepLogDivergentScalelessIntegrals,
 			tmp = tmp /. {

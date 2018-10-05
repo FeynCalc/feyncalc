@@ -112,7 +112,7 @@ FeynAmpDenominatorCombine -> False, FCE -> True]",
 {"fcstFeynAmpDenominatorSimplify-ID19","FDS[SFAD[q, {q - p, 0, 2}], q, FCE -> True]",
 	"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 2}]"},
 {"fcstFeynAmpDenominatorSimplify-ID20","FDS[SFAD[{{0, (k1 + k3).n}, {0, 1}, 1}], k1, k2, FCE->True]",
-	"SFAD[{{0, (k1 + k3).n}, {0, 1}, 1}]"},
+	"0"},
 {"fcstFeynAmpDenominatorSimplify-ID21",
 "FDS[SFAD[-k2-k3-k1],k1,k2,k3,Rename\[Rule]False,\
 DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
@@ -136,5 +136,11 @@ DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
 "SFAD[{{q, 0}, {0, 1}, 1}, {{0, k.q}, {0, 1}, 1}, {{p - q, 0}, {0, 1},1}]"},
 {"fcstFeynAmpDenominatorSimplify-ID27",
 "FDS[SFAD[q, q - p, {{q, q.k}}], q, FCE -> True]",
-"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}, {{q, k.q}, {0, 1},1}]"}
+"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}, {{q, k.q}, {0, 1},1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID28",
+"FDS[SFAD[{{0, p.q}}], q]","0"},
+{"fcstFeynAmpDenominatorSimplify-ID29",
+"FDS[SFAD[{{p, p.q}}], q, FCE -> True]","SFAD[{{p, p.q}, {0, 1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID30",
+"FDS[SFAD[{{0, p.q}, m^2}], q]","0"}
 }
