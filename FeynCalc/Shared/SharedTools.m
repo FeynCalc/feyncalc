@@ -97,7 +97,13 @@ FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
 is provided in the form of a two element list. One can recover the \
-original expression by applying Total to that list";
+original expression by applying Total to that list.";
+
+FCProductSplit::usage = "FCProductSplit[expr,{v1, v2, ...}] splits expr \
+into two products, where the first one is free  of \
+v1, v2, ... and the second one contains those variables. \
+The output is provided in the form of a two element list. One can recover the \
+original expression by multiplying both elements with each other.";
 
 FCSubsetQ::usage=
 "FCSubsetQ[list1,list2] yields True if list2 is a subset of list1 and \
@@ -212,6 +218,9 @@ appends the subset of remaining unmatched elements.";
 XYT::usage=
 "XYT[exp, x,y] transforms  (x y)^m away ..."
 
+FCProductSplit::failmsg = "Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
 FCSplit::failmsg = "Error! FCSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
@@ -268,6 +277,10 @@ Options[NTerms] = {
 
 Options[FCSplit] = {
 	Expanding -> True
+};
+
+Options[FCProductSplit] = {
+	Abort -> False
 };
 
 Options[FRH] = {
@@ -494,6 +507,35 @@ FCReloadFunctionFromFile[fun_, file_String] :=
 	Null
 ];
 
+FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
+	Block[{dummy,exprAsList,pow,free,notfree},
+		If[	NTerms[expr,Expand->False] > 1,
+			Message[FCProductSplit::failmsg,"The input expression is not a product"];
+			Abort[]
+		];
+
+		exprAsList = List@@(expr*dummy);
+		If[	!FreeQ[exprAsList,Power],
+			exprAsList /. Power -> pow //. {
+				{a___,pow[b_,n_Integer?Positive],c___} :> {a,Sequence@@ConstantArray[b,n],c},
+				{a___,pow[b_,n_Integer?Negative],c___} :> {a,Sequence@@ConstantArray[1/b,n],c}
+			} /. pow -> Power
+		];
+
+		free = SelectFree[exprAsList,vars] /. dummy :> Unevaluated[Sequence[]];
+		notfree = SelectNotFree[exprAsList,vars];
+
+		free = Times@@free;
+		notfree = Times@@notfree;
+
+		If[ free*notfree =!= expr || ! FreeQ2[free, vars],
+			Message[FCProductSplit::failmsg, "Error! Splitting" <>ToString[expr,InputForm]<> " w.r.t " <>ToString[vars,InputForm]<> " failed!"];
+			Abort[]
+		];
+
+		{free,notfree}
+	];
+
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, time},
 		If[ OptionValue[Expanding],
@@ -518,7 +560,7 @@ FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 		FCPrint[1,"FCSplit: Splitting, timing: ", N[AbsoluteTime[] - time, 4]];
 
 		If[ free + notfree =!= tmp || ! FreeQ2[free, vars],
-			Message[FCSplit::failmsg, "Error! Splitting" <>ToString[expr,InputForm]<> " w.r.t" <>ToString[vars,InputForm]<> " failed!"];
+			Message[FCSplit::failmsg, "Error! Splitting" <>ToString[expr,InputForm]<> " w.r.t " <>ToString[vars,InputForm]<> " failed!"];
 			Abort[]
 		];
 		{free, notfree}

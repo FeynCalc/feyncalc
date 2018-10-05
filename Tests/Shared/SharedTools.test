@@ -134,6 +134,24 @@ Tests`Shared`fcstSharedToolsFCPatternFreeQ = {
 {"fcstSharedToolsFCPatternFreeQ-ID3","FCPatternFreeQ[{g[x]},{g}]","False"}
 };
 
+Tests`Shared`fcstSharedToolsFCProductSplit =
+({
+{"fcstSharedToolsFCProductSplit-ID1", "FCProductSplit[0,{a}]",
+"{0, 0}"},
+{"fcstSharedToolsFCProductSplit-ID2", "FCProductSplit[c,{a}]",
+"{c, 1}"},
+{"fcstSharedToolsFCProductSplit-ID3", "FCProductSplit[c^2,{a}]",
+"{c^2, 1}"},
+{"fcstSharedToolsFCProductSplit-ID4", "FCProductSplit[a*b,{a}]",
+"{b, a}"},
+{"fcstSharedToolsFCProductSplit-ID5", "FCProductSplit[a^2*b,{a}]",
+"{b, a^2}"},
+{"fcstSharedToolsFCProductSplit-ID6",
+"FCProductSplit[(a^2+b)*b,{a}]", "{b, a^2 + b}"},
+{"fcstSharedToolsFCProductSplit-ID7",
+"FCProductSplit[(a^2+b)*b*(c+d),{a,c}]", "{b, (a^2 + b)*(c + d)}"}
+});
+
 Tests`Shared`fcstSharedToolsFCSplit = {
 {"fcstSharedToolsFCSplit-ID1","FCSplit[0, {z}]","{0,0}"},
 {"fcstSharedToolsFCSplit-ID2","FCSplit[1, {z}]","{1,0}"},
