@@ -837,10 +837,9 @@ Momentum[l, D], m]]  Pair[LorentzIndex[mu, D], Momentum[l, D]], l, FCE->True]; F
 "(m^2*CFAD[{{q, 0}, {m, -1}, 1}]*(KDD[i, l]*KDD[j, k] + KDD[i, \
 k]*KDD[j, l] + KDD[i, j]*KDD[k, l]))/((-1 + D)*(1 + D))"},
 {"fcstTID-ID29", "TID[CVD[q,i]CVD[q,j]CFAD[q,q+p],q,FCE->True]",
-"(CFAD[{{q, 0}, {0, -1}, 1}]*(2*CVD[p, i]*CVD[p, j] - (-1 + \
-D)*CVD[p, i]*CVD[p, j] - CSPD[p, p]*KDD[i, j]))/(2*(2 - D)*CSPD[p, \
-p]) + (CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1}, 1}]*(-((-1 + \
-D)*CVD[p, i]*CVD[p, j]) + CSPD[p, p]*KDD[i, j]))/(4*(2 - D))"},
+"(CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1},
+1}] (-(-1 + D) CVD[p, i] CVD[p, j] + CSPD[p, p] KDD[i, j]))/(4 (2 -
+	D))"},
 {"fcstTID-ID30", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m,2}],q,FCE->True]",
 "(CFAD[{{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D) - (m*CFAD[{{q, \
 0}, {m, -1}, 1}, {{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D)"},

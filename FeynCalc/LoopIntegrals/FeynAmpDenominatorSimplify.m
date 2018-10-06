@@ -354,7 +354,7 @@ procanCFAD[a_, rest__] :=
 
 
 fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
-	Block[{tmp,res,tmpNew,solsList,repRule},
+	Block[{tmp,res,tmpNew,solsList,repRule,sps,fad},
 
 		(*
 			The input of fdsOneLoop is guaranteed to contain
@@ -474,27 +474,48 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 
 		FCPrint[3, "FDS: fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
 
-		(* It is not safe to remove scaleless integrals if the integral is mixed.*)
-		If[FCLoopMixedIntegralQ[tmp]===False,
+		{sps,fad} = FCProductSplit[tmp,{FeynAmpDenominator}];
 
-			(*	Remove single eikonal integrals (scaleless, hence vanish in DR)	*)
-			tmp = tmp /. { FeynAmpDenominator[StandardPropagatorDenominator[0, x_,  _,{1,_}]]/;!FreeQ[x,Momentum[q,___]]:> 0};
+		(* If FAD has no dependence on the loop momentum, the integral is clearly scaleless	*)
+		If[	FreeQ[fad,q],
+			Return[0]
+		];
 
-			(*	Remove massless tadpoles (vanish in DR)	*)
+
+		(*
+			An integral that contains only Cartesian eikonal propagators vanishes by symmetry q->-q, while
+			massless Cartesian tadpoles vanish in DR. This is true also for mixed integrals.
+		*)
+		fad = fad /. {
+			FeynAmpDenominator[x : CartesianPropagatorDenominator[0, _, _, {_, _}] ..] /; !FreeQ[{x}, CartesianMomentum[q, __]] -> 0,
+			FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q, ___], 0, 0, _]..] -> 0
+		};
+
+		(*
+			It is not safe to remove certain scaleless integrals (like 1/q^2) if the integral depends both on
+			Lorentzian and Cartesian quantities.
+		*)
+		If[	FCLoopMixedIntegralQ[sps*fad]===False,
+
+			(*	An integral that contains only Lorentzian eikonal propagators vanishes by symmetry q->-q	*)
+			fad = fad /. {FeynAmpDenominator[x : StandardPropagatorDenominator[0, _, _, {_, _}] ..] /; !FreeQ[{x}, Momentum[q, __]] -> 0};
+
+			(*	Remove massless Lorentzian tadpoles (vanish in DR)	*)
 			If[!$KeepLogDivergentScalelessIntegrals,
-				tmp = tmp /. {
-					_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0,
-					_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..] :> 0,
-					_. FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q,_:3], 0]..] :> 0
+				fad = fad /. {
+					FeynAmpDenominator[PD[Momentum[q,___], 0]..] -> 0,
+					FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,___], 0, 0 ,_]..] -> 0
 				},
-				If[	(tmp/. FeynAmpDenominator[___]->1)===1,
-					tmp = tmp /. {
-						_. FeynAmpDenominator[l:PD[Momentum[q,_:4], 0]..]/;Length[{l}]=!=2 :> 0,
-						_. FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,_:4], 0, 0 ,_]..]/;Length[{l}]=!=2 :> 0
+				If[	sps===1,
+					fad = fad /. {
+						FeynAmpDenominator[l:PD[Momentum[q,___], 0]..]/;Length[{l}]=!=2 -> 0,
+						FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q,___], 0, 0 , {1,_}]..]/;Length[{l}]=!=2 :> 0
 					}
 				]
 			]
 		];
+
+		tmp = sps*fad;
 
 		FCPrint[3, "FDS: fdsOneLoop: After removing massless tadpoles:  ", tmp, FCDoControl->fdsVerbose];
 
