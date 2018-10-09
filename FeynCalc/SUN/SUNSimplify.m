@@ -396,12 +396,16 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
 						dotT[aa___, SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
 						I/2 SUNN dotT[aa,SUNT[xx],bb] /; noint[yy,zz],
-						SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-							SUNT[xx_SUNIndex]  :>
-					I DOT[SUNT[zz] , SUNT[yy]] - I DOT[SUNT[yy] , SUNT[zz]] /; noint[xx],
-						SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-							SUNT[zz_SUNIndex] :>
-					I DOT[SUNT[yy] , SUNT[xx]] - I DOT[SUNT[xx] , SUNT[yy]] /; noint[zz]
+
+					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[xx_SUNIndex]  :>
+						I DOT[SUNT[zz] , SUNT[yy]] - I DOT[SUNT[yy] , SUNT[zz]] /; noint[xx],
+
+					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[zz_SUNIndex] :>
+						I DOT[SUNT[yy] , SUNT[xx]] - I DOT[SUNT[xx] , SUNT[yy]] /; noint[zz],
+
+					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[yy_SUNIndex] :>
+						I DOT[SUNT[xx] , SUNT[zz]] - I DOT[SUNT[zz] , SUNT[xx]] /; noint[yy]
+
 					}  /. dotT[] -> 1 //. {dotT[a___,1,b___] :> dotT[a,b]} /.
 							dotT[] -> 1 /. dotT -> DOT;
 			If[ sft === True,

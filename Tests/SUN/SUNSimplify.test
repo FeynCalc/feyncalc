@@ -83,6 +83,9 @@ Explicit -> True]",
 {"fcstSUNSimplify-ID27","SUNSimplify[SUNF[a, b, c]^2, SUNNToCACF -> False]",
 	"SUNN (-1 + SUNN^2)"},
 {"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2, SUNNToCACF -> False]",
-	"-(((4 - SUNN^2) (-1 + SUNN^2))/SUNN)"}
+	"-(((4 - SUNN^2) (-1 + SUNN^2))/SUNN)"},
+{"fcstSUNSimplify-ID29","SUNSimplify[SUNF[a, b, c] SUNT[b]]",
+	"I (SUNT[SUNIndex[a]].SUNT[SUNIndex[c]] -
+SUNT[SUNIndex[c]].SUNT[SUNIndex[a]])"}
 };
 
