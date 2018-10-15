@@ -34,6 +34,7 @@ Options[ PaVeReduce ] = {
 	BReduce -> False,
 	Collecting -> True,
 	Dimension -> True,
+	FCE -> True,
 	FCVerbose -> False,
 	Factoring -> Factor2,
 	IsolateNames->False,
@@ -45,12 +46,6 @@ Options[ PaVeReduce ] = {
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
 	Block[ {op, wriout, nnx = x, res, time},
-
-		If[	!FreeQ2[{x}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 
 		op=Join[FilterRules[Options[PaVeReduce], Except[{opts}]], {opts}];
 		wriout = OptionValue[WriteOutPaVe];
@@ -101,8 +96,14 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 			FCPrint[3,"PaVeReduce: After Collect2: ", res, FCDoControl->pvrVerbose]
 		];
 
-		FCPrint[3,"PaVeReduce: Leaving.", res, FCDoControl->pvrVerbose];
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		FCPrint[3,"PaVeReduce: Leaving.", FCDoControl->pvrVerbose];
 		FCPrint[3,"PaVeReduce: Leaving with: ", res, FCDoControl->pvrVerbose];
+
+
 
 		res
 	];
