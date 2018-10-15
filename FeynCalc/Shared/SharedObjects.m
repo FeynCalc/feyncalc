@@ -1329,34 +1329,28 @@ DiracGamma[x_, 4] :=
 DiracGamma[x_ (h:TemporalMomentum|CartesianMomentum|Momentum)[p_, dim1___], dim2___] :=
 	x DiracGamma[h[p, dim1], dim2];
 
-DiracGamma[x_ExplicitLorentzIndex, _Symbol] :=
-	DiracGamma[x];
-
-DiracGamma[_ExplicitLorentzIndex, _Symbol-4] :=
-	0;
-
-DiracGamma[(LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
+DiracGamma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
 	0; (* 4 or 3, D-4 *)
 
 DiracGamma[_TemporalMomentum | _TemporalIndex, _Symbol-4]:=
 	0;
 
-DiracGamma[(LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_, _Symbol-4]] :=
+DiracGamma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_, _Symbol-4]] :=
 	0; (* D-4, 4 *)
 
-DiracGamma[(h:LorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4] :=
+DiracGamma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4] :=
 	DiracGamma[h[x, dim-4], dim-4]; (* D, D-4 *)
 
 DiracGamma[(h:CartesianIndex|CartesianMomentum)[i_, dim_Symbol-1], dim_Symbol-4]:=
 	DiracGamma[h[i, dim-4], dim-4]; (* D, D-4 *)
 
-DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_, dim_Symbol-4], dim_Symbol] :=
+DiracGamma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_, dim_Symbol-4], dim_Symbol] :=
 	DiracGamma[h[x, dim-4], dim-4]; (* D-4, D *)
 
-DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_], _Symbol] :=
+DiracGamma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_], _Symbol] :=
 	DiracGamma[h[x]]; (* 4 or 3, D *)
 
-DiracGamma[(h:LorentzIndex|Momentum)[x_,_Symbol]] :=
+DiracGamma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_,_Symbol]] :=
 	DiracGamma[h[x]]; (* D, 4 *)
 
 DiracGamma[(h:CartesianIndex|CartesianMomentum)[i_,_Symbol -1]]:=
@@ -1510,10 +1504,10 @@ Eps[x__]/; !MemberQ[{3, 4}, Length[{x}]] && FCPatternFreeQ[{x}] :=
 Eps[x___, n_ a:( _Momentum| _CartesianMomentum),y___]:=
 	n Eps[x,a,y];
 
-Eps[x___, (h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[b_, _Symbol] ,z___]:=
+Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[b_, _Symbol] ,z___]:=
 	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}];
 
-Eps[x___, (h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:CartesianIndex|CartesianMomentum)[b_, _Symbol -1] ,z___]:=
+Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:CartesianIndex|CartesianMomentum)[b_, _Symbol -1] ,z___]:=
 	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}];
 
 Eps[x___, m_TemporalMomentum, y___]:=
@@ -1535,14 +1529,26 @@ Eps[x1 : (_Momentum | _CartesianMomentum | _CartesianIndex),
 ExplicitLorentzIndex[x_, 4] :=
 	ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
 
-ExplicitLorentzIndex[x_, dim_Symbol] :=
+ExplicitLorentzIndex[x: (1|2|3), dim_Symbol] :=
 	ExplicitLorentzIndex[x, dim] = ExplicitLorentzIndex[x];
 
-ExplicitLorentzIndex[x_, dim_Symbol-4] :=
+ExplicitLorentzIndex[x: ((Upper|Lower)[1|2|3]), dim_Symbol] :=
+	ExplicitLorentzIndex[x, dim] = ExplicitLorentzIndex[x];
+
+ExplicitLorentzIndex[x: (1|2|3), dim_Symbol-4] :=
+	ExplicitLorentzIndex[x, dim-4] = 0;
+
+ExplicitLorentzIndex[x: ((Upper|Lower)[1|2|3]), dim_Symbol-4] :=
 	ExplicitLorentzIndex[x, dim-4] = 0;
 
 ExplicitLorentzIndex[0]:=
 	TemporalIndex[];
+
+ExplicitLorentzIndex[0, _Symbol]:=
+	TemporalIndex[];
+
+ExplicitLorentzIndex[0, _Symbol-4]:=
+	0;
 
 ExplicitSUNIndex/:
 	SUNIndex[i_ExplicitSUNIndex]:= ExplicitSUNIndex[i];
@@ -1823,7 +1829,7 @@ Pair[n_ x_Momentum, y_] :=
 	scalar product where one momentum lives in D and the other
 	in 4 dimensions.    *)
 
-Pair[(a : LorentzIndex | Momentum)[x_, _Symbol], (b : LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[y_]] :=
+Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, _Symbol], (b : LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[y_]] :=
 	Pair[a[x], b[y]];
 
 (*     A momentum vector with 4 components and the Lorentz index in
@@ -1832,7 +1838,7 @@ Pair[(a : LorentzIndex | Momentum)[x_, _Symbol], (b : LorentzIndex | Momentum | 
 	in D-4 dimensions and for a scalar product where one momentum
 	lives in 4 and the other in D-4 dimensions.    *)
 
-Pair[(LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4], (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_]] :=
+Pair[(LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4], (LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_]] :=
 	0;
 
 (*     A momentum vector with D components and the Lorentz index in
@@ -1842,22 +1848,22 @@ Pair[(LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4
 	product where one momentum lives in D and the other in D-4
 	dimensions.    *)
 
-Pair[(a : LorentzIndex | Momentum)[x_, dim_Symbol], (b : LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[y_, dim_Symbol-4]] :=
+Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol], (b : LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[y_, dim_Symbol-4]] :=
 	Pair[a[x, dim-4], b[y, dim-4]];
 
-Pair[i:(_ExplicitLorentzIndex | _TemporalIndex), (h : LorentzIndex | Momentum)[x_, _Symbol]]:=
-	Pair[i,h[x]];
+Pair[TemporalIndex[], (h : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, _Symbol]]:=
+	Pair[TemporalIndex[],h[x]];
 
-Pair[i:(_ExplicitLorentzIndex | _TemporalIndex), (h: CartesianIndex | CartesianMomentum)[x_, _Symbol-1]]:=
-	Pair[i, h[x]];
+Pair[TemporalIndex[], (h: CartesianIndex | CartesianMomentum)[x_, _Symbol-1]]:=
+	Pair[TemporalIndex[], h[x]];
 
-Pair[_ExplicitLorentzIndex | _TemporalIndex, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4]]:=
+Pair[TemporalIndex[], (LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4]]:=
 	0;
 
-Pair[(a : LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[x_], CartesianIndex[y_, _Symbol-1]] :=
+Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[x_], CartesianIndex[y_, _Symbol-1]] :=
 	Pair[a[x], CartesianIndex[y]];
 
-Pair[(a : LorentzIndex | Momentum)[x_, dim_Symbol-4], (h: CartesianIndex | CartesianMomentum)[y_, dim_Symbol-1]] :=
+Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol-4], (h: CartesianIndex | CartesianMomentum)[y_, dim_Symbol-1]] :=
 	Pair[a[x,dim-4], h[y,dim-4]];
 
 
@@ -2310,34 +2316,28 @@ PauliSigma[x_, 3] :=
 PauliSigma[x_ (h:TemporalMomentum|CartesianMomentum|Momentum)[p_, dim1___], dim2___] :=
 	x PauliSigma[h[p, dim1], dim2];
 
-PauliSigma[x_ExplicitLorentzIndex, _Symbol-1] :=
-	PauliSigma[x];
-
-PauliSigma[_ExplicitLorentzIndex, _Symbol-4] :=
-	0;
-
-PauliSigma[(LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
+PauliSigma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
 	0; (* 4 or 3, D-4 *)
 
 PauliSigma[_TemporalMomentum | _TemporalIndex, _Symbol-4]:=
 	0;
 
-PauliSigma[(LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_, _Symbol-4]] :=
+PauliSigma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_, _Symbol-4]] :=
 	0; (* D-4, 3 *)
 
-PauliSigma[(h:LorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4] :=
+PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4] :=
 	PauliSigma[h[x, dim-4], dim-4]; (* D, D-4 *)
 
 PauliSigma[(h:CartesianIndex|CartesianMomentum)[i_, dim_Symbol-1], dim_Symbol-4]:=
 	PauliSigma[h[i, dim-4], dim-4]; (* D, D-4 *)
 
-PauliSigma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_, dim_Symbol-4], dim_Symbol-1] :=
+PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_, dim_Symbol-4], dim_Symbol-1] :=
 	PauliSigma[h[x, dim-4], dim-4]; (* D-4, D-1 *)
 
-PauliSigma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_], _Symbol-1] :=
+PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_], _Symbol-1] :=
 	PauliSigma[h[x]]; (* 4 or 3, D-1 *)
 
-PauliSigma[(h:LorentzIndex|Momentum)[x_,_Symbol]] :=
+PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_,_Symbol]] :=
 	PauliSigma[h[x]]; (* D, 3 *)
 
 PauliSigma[(h:CartesianIndex|CartesianMomentum)[i_,_Symbol -1]]:=

@@ -550,8 +550,8 @@ ExplicitDiracIndex /:
 ExplicitLorentzIndex /:
 	MakeBoxes[ ExplicitLorentzIndex[p_, dim_ : 4], TraditionalForm]:=
 		If[ $LorentzIndices =!= True,
-			ToBoxes[TypesettingExplicitLorentzIndex[p],TraditionalForm],
-			SubscriptBox[ToBoxes[TypesettingExplicitLorentzIndex[p], TraditionalForm], ToBoxes[dim, TraditionalForm]]
+			ToBoxes[TypesettingExplicitLorentzIndex[p, dim],TraditionalForm],
+			SubscriptBox[ToBoxes[TypesettingExplicitLorentzIndex[p, dim], TraditionalForm], ToBoxes[dim, TraditionalForm]]
 		];
 
 ExplicitLorentzIndex /:
