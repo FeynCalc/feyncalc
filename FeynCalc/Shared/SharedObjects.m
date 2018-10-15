@@ -1083,9 +1083,7 @@ CHeadsList =  {
 
 
 NRStuff={
-	CartesianPair, CartesianMomentum, CartesianIndex, TemporalIndex, TemporalMomentum, TemporalPair, AbsCartesianPair,
-	FCNablaD, CFieldDerivative,
-	FFieldStrength, EField, BField, CCovariantD,
+	CartesianPair, CartesianMomentum, CartesianIndex, TemporalMomentum, TemporalPair,
 
 	CV, CVD, CVE, TC,
 	KD, KDD, KDE,
