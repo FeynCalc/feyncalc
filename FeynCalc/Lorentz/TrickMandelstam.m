@@ -112,8 +112,6 @@ short1[x_,__] :=
 
 trickmandelstam[x_Plus,man_List] :=
 	Block[ {tricktemp,merk,nx = x,plusch, plusch0},
-		merk[y_] :=
-			MemSet[ merk[y],drickstu[y,man] ];
 
 		plusch0[z__] :=
 			Plus[z] /; !FreeQ[{z},plusch0];
@@ -125,7 +123,8 @@ trickmandelstam[x_Plus,man_List] :=
 		plusch[z__] :=
 			(factor3 /@ Collect2[ Plus[z], Take[man, 3] ] ) /; Length[{z}]=!=(Length[Plus@@man]-1);
 
-		tricktemp = merk[ nx ];
+		tricktemp = drickstu[nx,man];
+
 		(tricktemp/.Plus->plusch0/.plusch0->plusch /. plusch->Plus)
 	]/;(Length[man]===4 || man==={}) && Head[x]=!=Times;
 
