@@ -33,11 +33,6 @@ PaVeOrder[expr_,opt___Rule] :=
 	Block[ {new, dordering, opli, cordering,
 	be0, be1, aa0, be11, be00, dordering0,j,nulL },
 
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		opli = PaVeOrderList/.{opt}/. Options[PaVeOrder];
 		If[ opli === False,
 			new = expr,

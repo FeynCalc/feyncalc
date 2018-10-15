@@ -68,11 +68,6 @@ TrickMandelstam[x_List,y__] :=
 TrickMandelstam[a_ , {es_, te_, uu_, mm_}] :=
 	Block[ {tres},
 
-		If[	!FreeQ2[{a,es,te,uu,mm}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
 		tres = trickmandelstam[a//factor3, {es,te,uu,mm}];
 		If[ LeafCount[tres]<2000,
 			tres = Cancel[tres]

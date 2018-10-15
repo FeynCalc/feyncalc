@@ -87,11 +87,6 @@ Apart2[y_, OptionsPattern[]] :=
 	factoring = OptionValue[Factoring];
 	exclM  = OptionValue[ExcludeMasses];
 
-	If[	!FreeQ2[{y}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-	];
-
 	If[factoring,
 		factFun=Factor2,
 		factFun=Identity,
