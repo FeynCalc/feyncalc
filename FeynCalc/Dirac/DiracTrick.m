@@ -479,7 +479,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
-		dim = FCGetDimensions[ex/.DiracGamma[5|6|7|TemporalIndex[]]:>diga];
+		dim = FCGetDimensions[ex/.DiracGamma[5|6|7]:>diga];
 
 		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
@@ -519,7 +519,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			Return[res]
 		];
 
-		dim = FCGetDimensions[res/.DiracGamma[5|6|7|TemporalIndex[]]:>diga];
+		dim = FCGetDimensions[res/.DiracGamma[5|6|7]:>diga];
 
 
 		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
@@ -1252,21 +1252,24 @@ diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_]],
 
 (* D-4, (... 4 ... ), D-4 *)
 diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
-			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+			ch : DiracGamma[((LorentzIndex | ExplicitLorentzIndex | Momentum)[_]) | TemporalIndex[]]..,
 			DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
 	(dim - 4) (-1)^Length[{ch}] diracologyBMHV2[b,ch, d];
 
+(* D, (... 4 ... ), D *)
 (* Simplification for g^mu g^nu_1 ... g^nu_n g_mu where g^mu is in D and
 	g^nu_i are in 4 dimensions. Applies for n>4, since for n<=4 we have
-	explicit expressions in the code                                        *)
+	explicit expressions in the code. However, if g^nu_i contain g^0, we
+	apply this formula independently of the length of the chain.	*)
 (* ------------------------------------------------------------------------ *)
 
 diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
-			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_] | TemporalIndex[]]..,
 			DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol], d___] :=
 	diracologyBMHV2[b,DiracGamma[LorentzIndex[c]], ch, DiracGamma[LorentzIndex[c]], d] +
-	(dim - 4) (-1)^Length[{ch}] diracologyBMHV2[b,ch, d]/; Length[{ch}]>4;
+	(dim - 4) (-1)^Length[{ch}] diracologyBMHV2[b,ch, d]/; Length[{ch}]>4 && FreeQ[{ch},TemporalIndex[]];
 
+(* D, (... D-4 ... ), D *)
 (* Simplification for g^mu g^nu_1 ... g^nu_n g_mu where g^mu is in D and
 	g^nu_i are in D-4 dimensions. Applies for n>4, since for n<=4 we have
 	explicit expressions in the code                                        *)

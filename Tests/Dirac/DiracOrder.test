@@ -150,7 +150,8 @@ CGA[i1]*KD[i2, i4] + 2*CGA[i2] . CGA[i1]*KD[i3, i4] + 4*(KD[i1, \
 i4]*KD[i2, i3] - KD[i1, i3]*KD[i2, i4] + KD[i1, i2]*KD[i3, i4])"},
 {"fcstDiracOrder-ID47", "DiracOrder[TGA[].CGA[i],FCE\[Rule]True]",
 "-CGA[i] . TGA[]"},
-{"fcstDiracOrder-ID48", "DiracOrder[TGA[].CGAD[i],FCE\[Rule]True]",
+{"fcstDiracOrder-ID48", "$BreitMaison=True; \n tmp=DiracOrder[TGA[].CGAD[i],FCE\[Rule]True];
+$BreitMaison=False; \n tmp",
 "-CGAD[i] . TGA[]"},
 {"fcstDiracOrder-ID49", "DiracOrder[TGA[].GA[mu],FCE\[Rule]True]",
 "-GA[mu] . TGA[] + 2*MT[0, mu]"},

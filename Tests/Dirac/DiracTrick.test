@@ -1218,7 +1218,9 @@ Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor
 {"fcstDiracTrickCoreProperties-ID121",
 "DiracTrick[GA[mu].(cc1 + cc2 GA[5]).(GS[p] + m).GA[rho], FCE -> True]", "cc1 GA[mu].(m + GS[p]).GA[rho] + cc2 GA[mu].(-m + GS[p]).GA[rho].GA[5]"},
 {"fcstDiracTrickCoreProperties-ID122",
-"$BreitMaison=False;\n DiracTrick[GAD[mu].(cc1 + cc2 GA[5]).(GSD[p] + m).GAD[rho], FCE -> True]", "cc1 GAD[mu].(m + GSD[p]).GAD[rho] + cc2 GAD[mu].(-m + GSD[p]).GAD[rho].GA[5]"}
+"$BreitMaison=False;\n DiracTrick[GAD[mu].(cc1 + cc2 GA[5]).(GSD[p] + m).GAD[rho], FCE -> True]", "cc1 GAD[mu].(m + GSD[p]).GAD[rho] + cc2 GAD[mu].(-m + GSD[p]).GAD[rho].GA[5]"},
+{"fcstDiracTrickCoreProperties-ID123",
+"DiracTrick[GAD[mu].DiracGamma[ExplicitLorentzIndex[i, D], D].GAD[mu]]", "(2 - D) DiracGamma[ExplicitLorentzIndex[i, D], D]"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
@@ -1361,7 +1363,11 @@ DiracTrick[GA[5].GAD[mu]]//FCE",
 {"fcstDiracTrickBMHV-ID26", "DiracTrick[GS[l1].GA[mu].GS[p].GA[mu].GS[l2], FCE -> True]",
 "-2 GS[l1].GS[p].GS[l2]"},
 {"fcstDiracTrickBMHV-ID27", "DiracTrick[GSE[l1].GAE[mu].GSE[p].GAE[mu].GSE[l2], FCE -> True]",
-"(6 - D) GSE[l1].GSE[p].GSE[l2]"}
+"(6 - D) GSE[l1].GSE[p].GSE[l2]"},
+{"fcstDiracTrickBMHV-ID28",
+"DiracTrick[GAE[mu].TGA[].GA[x, 0, y].GAE[mu], FCE -> True]", "(-4 + D) TGA[].GA[x].TGA[].GA[y]"},
+{"fcstDiracTrickBMHV-ID29",
+"DiracTrick[FCI[GAE[mu].TGA[].GAE[mu]], FCE -> True]", "-(-4 + D) TGA[]"}
 });
 
 Tests`Dirac`fcstDiracTrickOneFreeIndex = {
