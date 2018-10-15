@@ -41,7 +41,7 @@ calculation. This improves the performance of FeynCalc .";
 
 SetTemporalComponent::usage =
 "SetTemporalComponent[p, val] sets the value of the temporal
-component of a 4-vector p, TemporalPair[TemporalIndex[],TemporalMomentum[p]] to val.";
+component of a 4-vector p, TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p]] to val.";
 
 ScalarProduct::emptydim =
 "If you want to set scalar products via ScalarProduct[a, b] = m^2, you must \
@@ -394,7 +394,7 @@ SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
 		valsListOrig = {setval, setval, -setval};
 
 		setval = z/(NumericalFactor[a]);
-		tPairList = Flatten[Map[HoldPattern[TemporalPair[TemporalIndex[],TemporalMomentum[#]]] &,tuples]];
+		tPairList = Flatten[Map[HoldPattern[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[#]]] &,tuples]];
 		fceList = Flatten[Map[HoldPattern[TC[#]] &,tuples]];
 		valsList = valsListOrig;
 
@@ -404,7 +404,7 @@ SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
 
 		(*	Check if temporal componeents have already been set to something. If yes,
 		remove existing value.	*)
-		If[	Head[TemporalPair[TemporalIndex[],TemporalMomentum[a]]]=!=TemporalPair,
+		If[	Head[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[a]]]=!=TemporalPair,
 
 			FCPrint[1,"SetTemporalComponent: Removing old values for and its variations"];
 

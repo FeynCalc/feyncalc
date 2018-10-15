@@ -76,10 +76,10 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 epsEval[a_,b_,c__] :=
 	(Expand/@(Distribute[DOT[a,b,c]//MomentumExpand]))/.
-	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> Eps
+	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> epsEvalAntiSymm2 /. epsEvalAntiSymm2 -> Eps
 
 
-epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum | TemporalIndex | TemporalMomentum)[__]),d___] :=
+epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum | TemporalMomentum)[__]),d___] :=
 	b epsEvalLinearity[a,c,d];
 
 epsEvalLinearity[___,0,___] :=
@@ -90,6 +90,9 @@ epsEvalAntiSymm[x__] :=
 
 epsEvalAntiSymm[x__] :=
 	Signature[{x}] epsEvalAntiSymm@@Sort[{x}] /; !OrderedQ[{x}] && MemberQ[{3,4},Length[{x}]];
+
+epsEvalAntiSymm2[x___, ExplicitLorentzIndex[0], y__] :=
+	(-1)^Length[{y}]*epsEvalAntiSymm2[x,y,ExplicitLorentzIndex[0]];
 
 FCPrint[1,"EpsEvaluate.m loaded."];
 End[]

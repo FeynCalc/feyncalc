@@ -67,8 +67,8 @@ indSelect[type_, name_, dim_]:=
 		LorentzIndex[name,dim],
 		CartesianIndex,
 		CartesianIndex[name,dim-1],
-		TemporalIndex,
-		TemporalIndex[],
+		ExplicitLorentzIndex[0],
+		ExplicitLorentzIndex[0],
 		_,
 		Message[PolarizationSum::failmsg,"Unknown head."];
 		Abort[]

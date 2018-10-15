@@ -16,19 +16,19 @@
 Tests`Lorentz`fcstCartesianToLorentz =
 ({
 {"fcstCartesianToLorentz-ID1", "CartesianToLorentz[CSP[p,q]]",
-"-Pair[Momentum[p], Momentum[q]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+"-Pair[Momentum[p], Momentum[q]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstCartesianToLorentz-ID2", "CartesianToLorentz[CSPD[p,q]]",
-"-Pair[Momentum[p, D], Momentum[q, D]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+"-Pair[Momentum[p, D], Momentum[q, D]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstCartesianToLorentz-ID3", "CartesianToLorentz[CSPE[p,q]]",
 "-Pair[Momentum[p, -4 + D], Momentum[q, -4 + D]]"},
 {"fcstCartesianToLorentz-ID4", "CartesianToLorentz[CGS[p]]",
-"-DiracGamma[Momentum[p]] + DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+"-DiracGamma[Momentum[p]] + DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p]]"},
 {"fcstCartesianToLorentz-ID5", "CartesianToLorentz[CGSD[p]]",
 "-DiracGamma[Momentum[p, D], D] + \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstCartesianToLorentz-ID6", "CartesianToLorentz[CGSE[p]]",
 "-DiracGamma[Momentum[p, -4 + D], -4 + D]"},
 {"fcstCartesianToLorentz-ID7",

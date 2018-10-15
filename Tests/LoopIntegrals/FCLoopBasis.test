@@ -819,34 +819,34 @@ SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
 {"fcstFCLoopBasisIntegralToPropagators-ID41",
 "FCLoopBasisIntegralToPropagators[GFAD[(TC[q]-x)]SFAD[{{0,p.q},x}],\
 {q}]", "{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
-TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], \
 FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
 D], Momentum[q, D]], -x, {1, 1}]]}"},
 {"fcstFCLoopBasisIntegralToPropagators-ID42",
 "FCLoopBasisIntegralToPropagators[GFAD[(TC[q]-x)]SFAD[{{0,p.q},x}],\
 {q},Tally\[Rule]True]",
 "{{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
-TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], 1}, \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], 1}, \
 {FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
 D], Momentum[q, D]], -x, {1, 1}]], 1}}"},
 {"fcstFCLoopBasisIntegralToPropagators-ID43",
 "FCLoopBasisIntegralToPropagators[TC[q]GFAD[(TC[q]-x)]SFAD[{{0,p.q}\
 ,x}],{q}]",
 "{FeynAmpDenominator[GenericPropagatorDenominator[TemporalPair[\
-TemporalIndex[], TemporalMomentum[q]], {-1, 1}]], \
+ExplicitLorentzIndex[0], TemporalMomentum[q]], {-1, 1}]], \
 FeynAmpDenominator[GenericPropagatorDenominator[-x + \
-TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], \
 FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
 D], Momentum[q, D]], -x, {1, 1}]]}"},
 {"fcstFCLoopBasisIntegralToPropagators-ID44",
 "FCLoopBasisIntegralToPropagators[TC[q]GFAD[(TC[q]-x)]SFAD[{{0,p.q}\
 ,x}],{q},Tally\[Rule]True]",
 "{{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
-TemporalPair[TemporalIndex[], TemporalMomentum[q]], {1, 1}]], 1}, \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], 1}, \
 {FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
 D], Momentum[q, D]], -x, {1, 1}]], 1}, \
 {FeynAmpDenominator[GenericPropagatorDenominator[TemporalPair[\
-TemporalIndex[], TemporalMomentum[q]], {-1, 1}]], 1}}"}
+ExplicitLorentzIndex[0], TemporalMomentum[q]], {-1, 1}]], 1}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

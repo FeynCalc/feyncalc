@@ -500,7 +500,7 @@ fv[a_,b_] :=
 	Pair[Momentum[a], LorentzIndex[b]];
 
 tc[a_]:=
-	TemporalPair[TemporalMomentum[a],TemporalIndex[]];
+	TemporalPair[TemporalMomentum[a],ExplicitLorentzIndex[0]];
 cvd[a_,b_] :=
 	CartesianPair[CartesianMomentum[a, D-1], CartesianIndex[b, D-1]];
 cve[a_,b_] :=
@@ -551,7 +551,7 @@ gae[a_Integer] :=
 
 
 tga[] :=
-	DiracGamma[TemporalIndex[]];
+	DiracGamma[ExplicitLorentzIndex[0]];
 
 cga[a_] :=
 	DiracGamma[CartesianIndex[a]]/; !IntegerQ[a];

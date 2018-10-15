@@ -200,13 +200,13 @@ PairContract[ _[_,_Symbol-4],_[_] ] :=
 	0;
 
 PairContract[ v_[x_,di_Symbol-4],w_[y_,di_Symbol] ] :=
-	PairContract[v[x,di-4],w[y,di-4] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,TemporalIndex,TemporalMomentum}];
+	PairContract[v[x,di-4],w[y,di-4] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,ExplicitLorentzIndex[0],TemporalMomentum}];
 
 PairContract[ w_[y_,_Symbol],v_[x_] ] :=
-	PairContract[ v[x], w[y] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,TemporalIndex,TemporalMomentum}];
+	PairContract[ v[x], w[y] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,ExplicitLorentzIndex[0],TemporalMomentum}];
 
 PairContract[ v_[x_], w_[y_,_Symbol] ] :=
-	PairContract[ v[x], w[y] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,TemporalIndex,TemporalMomentum}];
+	PairContract[ v[x], w[y] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,ExplicitLorentzIndex[0],TemporalMomentum}];
 
 
 

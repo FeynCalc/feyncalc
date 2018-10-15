@@ -17,47 +17,47 @@ Tests`Lorentz`fcstLorentzToCartesian =
 ({
 {"fcstLorentzToCartesian-ID1", "LorentzToCartesian[FVD[p,mu]]",
 "-Pair[CartesianMomentum[p, -1 + D], LorentzIndex[mu, D]] + \
-Pair[LorentzIndex[mu], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
+Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstLorentzToCartesian-ID2", "LorentzToCartesian[FV[p,mu]]",
 "-Pair[CartesianMomentum[p], LorentzIndex[mu]] + Pair[LorentzIndex[mu], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstLorentzToCartesian-ID3", "LorentzToCartesian[FVE[p,mu]]",
 "-Pair[CartesianMomentum[p, -4 + D], LorentzIndex[mu, -4 + D]]"},
 {"fcstLorentzToCartesian-ID4",
 "LorentzToCartesian[Pair[LorentzIndex[mu],x Momentum[p1]+y \
 Momentum[p2]]]",
 "x*(-Pair[CartesianMomentum[p1], LorentzIndex[mu]] + \
-Pair[LorentzIndex[mu], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p1]]) + \
+Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p1]]) + \
 y*(-Pair[CartesianMomentum[p2], LorentzIndex[mu]] + Pair[LorentzIndex[mu], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p2]])"},
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p2]])"},
 {"fcstLorentzToCartesian-ID5",
 "LorentzToCartesian[Pair[LorentzIndex[mu],x Momentum[p1+p2]+y \
 Momentum[p3]]]",
 "x*(-Pair[CartesianMomentum[p1], LorentzIndex[mu]] + \
-Pair[LorentzIndex[mu], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p1]]) + \
+Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p1]]) + \
 x*(-Pair[CartesianMomentum[p2], LorentzIndex[mu]] + Pair[LorentzIndex[mu], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p2]]) + y*(-Pair[CartesianMomentum[p3], \
-LorentzIndex[mu]] + Pair[LorentzIndex[mu], TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p2]]) + y*(-Pair[CartesianMomentum[p3], \
+LorentzIndex[mu]] + Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p3]])"},
 {"fcstLorentzToCartesian-ID6", "LorentzToCartesian[SP[p,q]]",
-"-CartesianPair[CartesianMomentum[p], CartesianMomentum[q]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+"-CartesianPair[CartesianMomentum[p], CartesianMomentum[q]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstLorentzToCartesian-ID7", "LorentzToCartesian[SPD[p,q]]",
 "-CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + D]] + \
-TemporalPair[TemporalIndex[], TemporalMomentum[p]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstLorentzToCartesian-ID8", "LorentzToCartesian[SPE[p,q]]",
 "-CartesianPair[CartesianMomentum[p, -4 + D], CartesianMomentum[q, -4 + D]]"},
 {"fcstLorentzToCartesian-ID9",
 "LorentzToCartesian[Pair[c1 Momentum[p1]+c2 Momentum[p2],c3 \
 Momentum[q1]+c4 Momentum[q2]]]",
-"c1*c3*(-CartesianPair[CartesianMomentum[p1], CartesianMomentum[q1]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p1]]*TemporalPair[TemporalIndex[], TemporalMomentum[q1]]) + \
-c2*c3*(-CartesianPair[CartesianMomentum[p2], CartesianMomentum[q1]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p2]]*TemporalPair[TemporalIndex[], TemporalMomentum[q1]]) + \
-c1*c4*(-CartesianPair[CartesianMomentum[p1], CartesianMomentum[q2]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p1]]*TemporalPair[TemporalIndex[], TemporalMomentum[q2]]) + \
-c2*c4*(-CartesianPair[CartesianMomentum[p2], CartesianMomentum[q2]] + TemporalPair[TemporalIndex[], \
-TemporalMomentum[p2]]*TemporalPair[TemporalIndex[], TemporalMomentum[q2]])"},
+"c1*c3*(-CartesianPair[CartesianMomentum[p1], CartesianMomentum[q1]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p1]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]) + \
+c2*c3*(-CartesianPair[CartesianMomentum[p2], CartesianMomentum[q1]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p2]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]) + \
+c1*c4*(-CartesianPair[CartesianMomentum[p1], CartesianMomentum[q2]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p1]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q2]]) + \
+c2*c4*(-CartesianPair[CartesianMomentum[p2], CartesianMomentum[q2]] + TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p2]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q2]])"},
 {"fcstLorentzToCartesian-ID10",
 "LorentzToCartesian[LC[mu,nu,rho,si],LorentzIndex -> False]",
 "Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], \
@@ -66,27 +66,27 @@ LorentzIndex[si]]"},
 "LorentzToCartesian[LC[mu,nu,rho][p],LorentzIndex -> False]",
 "Eps[CartesianMomentum[p], LorentzIndex[mu], LorentzIndex[nu], \
 LorentzIndex[rho]] + Eps[LorentzIndex[mu], LorentzIndex[nu], \
-LorentzIndex[rho], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
+LorentzIndex[rho],ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstLorentzToCartesian-ID12",
 "LorentzToCartesian[LC[mu,nu][p,q],LorentzIndex -> False]",
 "Eps[CartesianMomentum[p], CartesianMomentum[q], LorentzIndex[mu], \
 LorentzIndex[nu]] + Eps[CartesianMomentum[q], LorentzIndex[mu], \
-LorentzIndex[nu], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]] - \
+LorentzIndex[nu], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - \
 Eps[CartesianMomentum[p], LorentzIndex[mu], LorentzIndex[nu], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstLorentzToCartesian-ID13", "LorentzToCartesian[LC[mu][p,q,r],LorentzIndex -> False]",
 	"Eps[CartesianMomentum[p], CartesianMomentum[q], CartesianMomentum[r], LorentzIndex[mu]] \
 + Eps[CartesianMomentum[q], CartesianMomentum[r], LorentzIndex[mu], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]] - Eps[CartesianMomentum[p], \
-CartesianMomentum[r], LorentzIndex[mu], TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - Eps[CartesianMomentum[p], \
+CartesianMomentum[r], LorentzIndex[mu], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[q]] + Eps[CartesianMomentum[p], CartesianMomentum[q], LorentzIndex[mu], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[r]]"},
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[r]]"},
 {"fcstLorentzToCartesian-ID14", "LorentzToCartesian[LC[][a,x,y,z],LorentzIndex -> False]",
-	"-(Eps[CartesianMomentum[x], CartesianMomentum[y], CartesianMomentum[z]]*TemporalPair[TemporalIndex[], \
+	"-(Eps[CartesianMomentum[x], CartesianMomentum[y], CartesianMomentum[z]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[a]]) + Eps[CartesianMomentum[a], CartesianMomentum[y], \
-CartesianMomentum[z]]*TemporalPair[TemporalIndex[], TemporalMomentum[x]] - Eps[CartesianMomentum[a], \
-CartesianMomentum[x], CartesianMomentum[z]]*TemporalPair[TemporalIndex[], TemporalMomentum[y]] + \
-Eps[CartesianMomentum[a], CartesianMomentum[x], CartesianMomentum[y]]*TemporalPair[TemporalIndex[], \
+CartesianMomentum[z]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[x]] - Eps[CartesianMomentum[a], \
+CartesianMomentum[x], CartesianMomentum[z]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[y]] + \
+Eps[CartesianMomentum[a], CartesianMomentum[x], CartesianMomentum[y]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[z]]"},
 {"fcstLorentzToCartesian-ID15",
 "LorentzToCartesian[LCD[mu,nu,rho,si],LorentzIndex -> False]",
@@ -96,45 +96,45 @@ D], LorentzIndex[si, D]]"},
 "LorentzToCartesian[LCD[mu,nu,rho][p],LorentzIndex -> False]",
 "Eps[CartesianMomentum[p, -1 + D], LorentzIndex[mu, D], LorentzIndex[nu, \
 D], LorentzIndex[rho, D]] + Eps[LorentzIndex[mu, D], LorentzIndex[nu, \
-D], LorentzIndex[rho, D], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
+D], LorentzIndex[rho, D],ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstLorentzToCartesian-ID17",
 "LorentzToCartesian[LCD[mu,nu][p,q],LorentzIndex -> Falses]",
 "Eps[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + D], LorentzIndex[mu, \
 D], LorentzIndex[nu, D]] + Eps[CartesianMomentum[q, -1 + D], LorentzIndex[mu, \
-D], LorentzIndex[nu, D], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]] - \
+D], LorentzIndex[nu, D], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - \
 Eps[CartesianMomentum[p, -1 + D], LorentzIndex[mu, D], LorentzIndex[nu, D], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstLorentzToCartesian-ID18",
 "LorentzToCartesian[LCD[mu][p,q,r],LorentzIndex -> False]",
 "Eps[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + D], CartesianMomentum[r, -1 + \
 D], LorentzIndex[mu, D]] + Eps[CartesianMomentum[q, -1 + D], CartesianMomentum[r, -1 \
-+ D], LorentzIndex[mu, D], TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]] - \
++ D], LorentzIndex[mu, D], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - \
 Eps[CartesianMomentum[p, -1 + D], CartesianMomentum[r, -1 + D], LorentzIndex[mu, D], \
-TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]] + Eps[CartesianMomentum[p, -1 + D], \
-CartesianMomentum[q, -1 + D], LorentzIndex[mu, D], TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]] + Eps[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D], LorentzIndex[mu, D], ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[r]]"},
 {"fcstLorentzToCartesian-ID19",
 "LorentzToCartesian[LCD[][a,x,y,z],LorentzIndex -> False]",
 "-(Eps[CartesianMomentum[x, -1 + D], CartesianMomentum[y, -1 + D], CartesianMomentum[z, -1 \
-+ D]]*TemporalPair[TemporalIndex[], TemporalMomentum[a]]) + Eps[CartesianMomentum[a, -1 + D], \
-CartesianMomentum[y, -1 + D], CartesianMomentum[z, -1 + D]]*TemporalPair[TemporalIndex[], \
++ D]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[a]]) + Eps[CartesianMomentum[a, -1 + D], \
+CartesianMomentum[y, -1 + D], CartesianMomentum[z, -1 + D]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[x]] - Eps[CartesianMomentum[a, -1 + D], CartesianMomentum[x, -1 + D], \
-CartesianMomentum[z, -1 + D]]*TemporalPair[TemporalIndex[], TemporalMomentum[y]] + \
+CartesianMomentum[z, -1 + D]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[y]] + \
 Eps[CartesianMomentum[a, -1 + D], CartesianMomentum[x, -1 + D], CartesianMomentum[y, -1 + \
-D]]*TemporalPair[TemporalIndex[], TemporalMomentum[z]]"},
+D]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[z]]"},
 {"fcstLorentzToCartesian-ID20",
 "MatchQ[LorentzToCartesian[
 DiracGamma[
 LorentzIndex[mu]]], -DiracGamma[CartesianIndex[$MU[a_]]] Pair[
 	CartesianIndex[$MU[a_]], LorentzIndex[mu]] +
-DiracGamma[TemporalIndex[]] Pair[LorentzIndex[mu], TemporalIndex[]]]",
+DiracGamma[ExplicitLorentzIndex[0]] Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]]",
 "True"},
 {"fcstLorentzToCartesian-ID21",
 "MatchQ[LorentzToCartesian[
 DiracGamma[LorentzIndex[mu, D],
 D]], -DiracGamma[CartesianIndex[$MU[a_], -1 + D], D] Pair[
 	CartesianIndex[$MU[a_], -1 + D], LorentzIndex[mu, D]] +
-DiracGamma[TemporalIndex[]] Pair[LorentzIndex[mu], TemporalIndex[]]]",
+DiracGamma[ExplicitLorentzIndex[0]] Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]]",
 "True"},
 {"fcstLorentzToCartesian-ID22",
 "MatchQ[LorentzToCartesian[
@@ -144,12 +144,12 @@ CartesianIndex[$MU[a_], -4 + D], LorentzIndex[mu, -4 + D]]]",
 "True"},
 {"fcstLorentzToCartesian-ID23",
 "LorentzToCartesian[DiracGamma[Momentum[p]]]",
-"-DiracGamma[CartesianMomentum[p]] + DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+"-DiracGamma[CartesianMomentum[p]] + DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p]]"},
 {"fcstLorentzToCartesian-ID24",
 "LorentzToCartesian[DiracGamma[Momentum[p,D],D]]",
 "-DiracGamma[CartesianMomentum[p, -1 + D], D] + \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstLorentzToCartesian-ID25",
 "LorentzToCartesian[DiracGamma[Momentum[p,D-4],D-4]]",
 "-DiracGamma[CartesianMomentum[p, -4 + D], -4 + D]"},
@@ -159,49 +159,49 @@ si]], -DiracGamma[CartesianIndex[$MU[a_]]].DiracGamma[
 	CartesianIndex[$MU[b_]]].DiracGamma[CartesianIndex[$MU[c_]]] Pair[
 	CartesianIndex[$MU[a_]], LorentzIndex[mu]] Pair[CartesianIndex[$MU[b_]],
 	LorentzIndex[rho]] Pair[CartesianIndex[$MU[c_]], LorentzIndex[si]] +
-DiracGamma[TemporalIndex[]].DiracGamma[CartesianIndex[$MU[b_]]].DiracGamma[
+DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[CartesianIndex[$MU[b_]]].DiracGamma[
 	CartesianIndex[$MU[c_]]] Pair[CartesianIndex[$MU[b_]], LorentzIndex[rho]] Pair[
 	CartesianIndex[$MU[c_]], LorentzIndex[si]] Pair[LorentzIndex[mu],
-	TemporalIndex[]] +
-DiracGamma[CartesianIndex[$MU[a_]]].DiracGamma[TemporalIndex[]].DiracGamma[
+	ExplicitLorentzIndex[0]] +
+DiracGamma[CartesianIndex[$MU[a_]]].DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[
 	CartesianIndex[$MU[c_]]] Pair[CartesianIndex[$MU[a_]], LorentzIndex[mu]] Pair[
 	CartesianIndex[$MU[c_]], LorentzIndex[si]] Pair[LorentzIndex[rho],
-	TemporalIndex[]] -
-DiracGamma[TemporalIndex[]].DiracGamma[TemporalIndex[]].DiracGamma[
+	ExplicitLorentzIndex[0]] -
+DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[
 	CartesianIndex[$MU[c_]]] Pair[CartesianIndex[$MU[c_]], LorentzIndex[si]] Pair[
-	LorentzIndex[mu], TemporalIndex[]] Pair[LorentzIndex[rho], TemporalIndex[]] +
+	LorentzIndex[mu], ExplicitLorentzIndex[0]] Pair[LorentzIndex[rho], ExplicitLorentzIndex[0]] +
 DiracGamma[CartesianIndex[$MU[a_]]].DiracGamma[CartesianIndex[$MU[b_]]].DiracGamma[
-	TemporalIndex[]] Pair[CartesianIndex[$MU[a_]], LorentzIndex[mu]] Pair[
+	ExplicitLorentzIndex[0]] Pair[CartesianIndex[$MU[a_]], LorentzIndex[mu]] Pair[
 	CartesianIndex[$MU[b_]], LorentzIndex[rho]] Pair[LorentzIndex[si],
-	TemporalIndex[]] -
-DiracGamma[TemporalIndex[]].DiracGamma[CartesianIndex[$MU[b_]]].DiracGamma[
-	TemporalIndex[]] Pair[CartesianIndex[$MU[b_]], LorentzIndex[rho]] Pair[
-	LorentzIndex[mu], TemporalIndex[]] Pair[LorentzIndex[si], TemporalIndex[]] -
-DiracGamma[CartesianIndex[$MU[a_]]].DiracGamma[TemporalIndex[]].DiracGamma[
-	TemporalIndex[]] Pair[CartesianIndex[$MU[a_]], LorentzIndex[mu]] Pair[
-	LorentzIndex[rho], TemporalIndex[]] Pair[LorentzIndex[si], TemporalIndex[]] +
-DiracGamma[TemporalIndex[]].DiracGamma[TemporalIndex[]].DiracGamma[TemporalIndex[]] Pair[
-	LorentzIndex[mu], TemporalIndex[]] Pair[LorentzIndex[rho],
-	TemporalIndex[]] Pair[LorentzIndex[si], TemporalIndex[]]]",
+	ExplicitLorentzIndex[0]] -
+DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[CartesianIndex[$MU[b_]]].DiracGamma[
+	ExplicitLorentzIndex[0]] Pair[CartesianIndex[$MU[b_]], LorentzIndex[rho]] Pair[
+	LorentzIndex[mu], ExplicitLorentzIndex[0]] Pair[LorentzIndex[si], ExplicitLorentzIndex[0]] -
+DiracGamma[CartesianIndex[$MU[a_]]].DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[
+	ExplicitLorentzIndex[0]] Pair[CartesianIndex[$MU[a_]], LorentzIndex[mu]] Pair[
+	LorentzIndex[rho], ExplicitLorentzIndex[0]] Pair[LorentzIndex[si], ExplicitLorentzIndex[0]] +
+DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[ExplicitLorentzIndex[0]].DiracGamma[ExplicitLorentzIndex[0]] Pair[
+	LorentzIndex[mu], ExplicitLorentzIndex[0]] Pair[LorentzIndex[rho],
+	ExplicitLorentzIndex[0]] Pair[LorentzIndex[si], ExplicitLorentzIndex[0]]]",
 	"True"},
 {"fcstLorentzToCartesian-ID27", "LorentzToCartesian[GS[p1,p2,p3]]",
 "-DiracGamma[CartesianMomentum[p1]] . DiracGamma[CartesianMomentum[p2]] . \
-DiracGamma[CartesianMomentum[p3]] + DiracGamma[TemporalIndex[]] . \
-DiracGamma[CartesianMomentum[p2]] . DiracGamma[CartesianMomentum[p3]]*TemporalPair[TemporalIndex[], \
-TemporalMomentum[p1]] + DiracGamma[CartesianMomentum[p1]] . DiracGamma[TemporalIndex[]] . \
-DiracGamma[CartesianMomentum[p3]]*TemporalPair[TemporalIndex[], TemporalMomentum[p2]] - \
-DiracGamma[TemporalIndex[]] . DiracGamma[TemporalIndex[]] . \
-DiracGamma[CartesianMomentum[p3]]*TemporalPair[TemporalIndex[], \
-TemporalMomentum[p1]]*TemporalPair[TemporalIndex[], TemporalMomentum[p2]] + \
+DiracGamma[CartesianMomentum[p3]] + DiracGamma[ExplicitLorentzIndex[0]] . \
+DiracGamma[CartesianMomentum[p2]] . DiracGamma[CartesianMomentum[p3]]*TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p1]] + DiracGamma[CartesianMomentum[p1]] . DiracGamma[ExplicitLorentzIndex[0]] . \
+DiracGamma[CartesianMomentum[p3]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p2]] - \
+DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[ExplicitLorentzIndex[0]] . \
+DiracGamma[CartesianMomentum[p3]]*TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p1]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p2]] + \
 DiracGamma[CartesianMomentum[p1]] . DiracGamma[CartesianMomentum[p2]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p3]] - \
-DiracGamma[TemporalIndex[]] . DiracGamma[CartesianMomentum[p2]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p1]]*TemporalPair[TemporalIndex[], \
-TemporalMomentum[p3]] - DiracGamma[CartesianMomentum[p1]] . DiracGamma[TemporalIndex[]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p2]]*TemporalPair[TemporalIndex[], \
-TemporalMomentum[p3]] + DiracGamma[TemporalIndex[]] . DiracGamma[TemporalIndex[]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p1]]*TemporalPair[TemporalIndex[], \
-TemporalMomentum[p2]]*TemporalPair[TemporalIndex[], TemporalMomentum[p3]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p3]] - \
+DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[CartesianMomentum[p2]] . \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p1]]*TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p3]] - DiracGamma[CartesianMomentum[p1]] . DiracGamma[ExplicitLorentzIndex[0]] . \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p2]]*TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p3]] + DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[ExplicitLorentzIndex[0]] . \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p1]]*TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p2]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p3]]"},
 {"fcstLorentzToCartesian-ID28", "MatchQ[LorentzToCartesian[GA[j].GA[i]^2, DotSimplify -> False,
 FCE -> True], (-CGA[a_] Pair[CartesianIndex[a_], LorentzIndex[j]] +
 	MT[0,j] TGA[]).(-CGA[b_] Pair[CartesianIndex[b_],
@@ -216,19 +216,19 @@ mytensor[bla, bla, Momentum[p],
 	mu]]^2], (-Pair[CartesianIndex[a_],
 		LorentzIndex[
 		mu]] (-mytensor[bla, bla, CartesianMomentum[p], CartesianIndex[a_]] +
-		mytensor[bla, bla, TemporalIndex[], CartesianIndex[a_]] TemporalPair[TemporalIndex[],
+		mytensor[bla, bla, ExplicitLorentzIndex[0], CartesianIndex[a_]] TemporalPair[ExplicitLorentzIndex[0],
 		TemporalMomentum[p]]) +
 	Pair[LorentzIndex[mu],
-	TemporalIndex[]] (-mytensor[bla, bla, CartesianMomentum[p], TemporalIndex[]] +
-		mytensor[bla, bla, TemporalIndex[], TemporalIndex[]] TemporalPair[TemporalIndex[],
+	ExplicitLorentzIndex[0]] (-mytensor[bla, bla, CartesianMomentum[p], ExplicitLorentzIndex[0]] +
+		mytensor[bla, bla, ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]] TemporalPair[ExplicitLorentzIndex[0],
 		TemporalMomentum[p]])) (-Pair[CartesianIndex[b_],
 		LorentzIndex[
 		mu]] (-mytensor[bla, bla, CartesianMomentum[p], CartesianIndex[b_]] +
-		mytensor[bla, bla, TemporalIndex[], CartesianIndex[b_]] TemporalPair[TemporalIndex[],
+		mytensor[bla, bla, ExplicitLorentzIndex[0], CartesianIndex[b_]] TemporalPair[ExplicitLorentzIndex[0],
 		TemporalMomentum[p]]) +
 	Pair[LorentzIndex[mu],
-	TemporalIndex[]] (-mytensor[bla, bla, CartesianMomentum[p], TemporalIndex[]] +
-		mytensor[bla, bla, TemporalIndex[], TemporalIndex[]] TemporalPair[TemporalIndex[],
+	ExplicitLorentzIndex[0]] (-mytensor[bla, bla, CartesianMomentum[p], ExplicitLorentzIndex[0]] +
+		mytensor[bla, bla, ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]] TemporalPair[ExplicitLorentzIndex[0],
 		TemporalMomentum[p]])) /; a =!= b]","True"},
 {"fcstLorentzToCartesian-ID30", "MatchQ[LorentzToCartesian[LC[mu, nu, rho, si], LorentzIndex -> True,
 FCE -> True] // Expand2,

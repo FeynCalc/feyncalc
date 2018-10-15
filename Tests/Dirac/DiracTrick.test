@@ -1912,16 +1912,16 @@ Tests`Dirac`fcstDiracTrickCartesianFourDimNoGamma5 =
 "DiracTrick[TGA[].TGA[]]", "1"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID2",
 "DiracTrick[TGA[].CGA[i]]",
-"-DiracGamma[CartesianIndex[i]] . DiracGamma[TemporalIndex[]]"},
+"-DiracGamma[CartesianIndex[i]] . DiracGamma[ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID3",
 "DiracTrick[TGA[].CGA[i,j,k,l]]",
 "DiracGamma[CartesianIndex[i]] . DiracGamma[CartesianIndex[j]] . \
-DiracGamma[CartesianIndex[k]] . DiracGamma[CartesianIndex[l]] . DiracGamma[TemporalIndex[]]"},
+DiracGamma[CartesianIndex[k]] . DiracGamma[CartesianIndex[l]] . DiracGamma[ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID4",
 "DiracTrick[TGA[].CGA[i,j,k,l,m]]",
 "-DiracGamma[CartesianIndex[i]] . DiracGamma[CartesianIndex[j]] . \
 DiracGamma[CartesianIndex[k]] . DiracGamma[CartesianIndex[l]] . DiracGamma[CartesianIndex[m]] \
-. DiracGamma[TemporalIndex[]]"},
+. DiracGamma[ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID5",
 "DiracTrick[CGA[i].CGA[i]]", "-3"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID6",
@@ -1970,43 +1970,43 @@ Momentum[p]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID16",
 "DiracTrick[TGA[].GA[mu].TGA[]]",
 "-DiracGamma[LorentzIndex[mu]] + \
-2*DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[mu], TemporalIndex[]]"},
+2*DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID17",
 "DiracTrick[TGA[].GA[mu,nu].TGA[]]",
 "DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] + \
 2*DiracGamma[LorentzIndex[nu]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[mu], TemporalIndex[]] - \
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]] - \
 2*DiracGamma[LorentzIndex[mu]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[nu], TemporalIndex[]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[nu], ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID18",
 "DiracTrick[TGA[].GA[mu,nu,rho].TGA[]]",
 "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . \
 DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[nu]] . \
 DiracGamma[LorentzIndex[rho]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[mu], TemporalIndex[]] - \
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]] - \
 2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[rho]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[nu], TemporalIndex[]] + \
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[nu], ExplicitLorentzIndex[0]] + \
 2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[rho], TemporalIndex[]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[rho], ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID19",
 "DiracTrick[TGA[].GS[p].TGA[]]",
-"-DiracGamma[Momentum[p]] + 2*DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+"-DiracGamma[Momentum[p]] + 2*DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID20",
 "DiracTrick[TGA[].GS[p,q].TGA[]]",
 "DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] + \
-2*DiracGamma[Momentum[q]] . DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+2*DiracGamma[Momentum[q]] . DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p]] - 2*DiracGamma[Momentum[p]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID21",
 "DiracTrick[TGA[].GS[p,q,r].TGA[]]",
 "-DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] . \
 DiracGamma[Momentum[r]] + 2*DiracGamma[Momentum[q]] . \
-DiracGamma[Momentum[r]] . DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+DiracGamma[Momentum[r]] . DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p]] - 2*DiracGamma[Momentum[p]] . DiracGamma[Momentum[r]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]] + \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]] + \
 2*DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[r]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[r]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID22",
 "DiracTrick[TGA[].CGA[i].TGA[]]", "-DiracGamma[CartesianIndex[i]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID23",
@@ -2028,36 +2028,36 @@ DiracGamma[CartesianMomentum[r]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID28",
 "DiracTrick[CGA[ii].GA[mu].CGA[ii]]",
 "DiracGamma[LorentzIndex[mu]] + \
-2*DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[mu], TemporalIndex[]]"},
+2*DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID29",
 "DiracTrick[CGA[ii].GA[mu,nu].CGA[ii]]",
 "DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] - \
 4*Pair[LorentzIndex[mu], LorentzIndex[nu]] + \
 2*DiracGamma[LorentzIndex[nu]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[mu], TemporalIndex[]] - \
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]] - \
 2*DiracGamma[LorentzIndex[mu]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[nu], TemporalIndex[]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[nu], ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID30",
 "DiracTrick[CGA[ii].GA[mu,nu,rho].CGA[ii]]",
 "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . \
 DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[rho]] . \
 DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[mu]] + \
 2*DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[mu], TemporalIndex[]] - \
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[mu], ExplicitLorentzIndex[0]] - \
 2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[rho]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[nu], TemporalIndex[]] + \
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[nu], ExplicitLorentzIndex[0]] + \
 2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . \
-DiracGamma[TemporalIndex[]]*Pair[LorentzIndex[rho], TemporalIndex[]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*Pair[LorentzIndex[rho], ExplicitLorentzIndex[0]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID31",
 "DiracTrick[CGA[ii].GS[p].CGA[ii]]",
-"DiracGamma[Momentum[p]] + 2*DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+"DiracGamma[Momentum[p]] + 2*DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[p]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID32",
 "DiracTrick[CGA[ii].GS[p,q].CGA[ii]]",
 "DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] - \
 4*Pair[Momentum[p], Momentum[q]] + 2*DiracGamma[Momentum[q]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]] - \
-2*DiracGamma[Momentum[p]] . DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - \
+2*DiracGamma[Momentum[p]] . DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[q]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID33",
 "DiracTrick[CGA[ii].GS[p,q,r].CGA[ii]]",
@@ -2065,11 +2065,11 @@ TemporalMomentum[q]]"},
 DiracGamma[Momentum[r]] + 2*DiracGamma[Momentum[r]] . \
 DiracGamma[Momentum[q]] . DiracGamma[Momentum[p]] + \
 2*DiracGamma[Momentum[q]] . DiracGamma[Momentum[r]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[p]] - \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - \
 2*DiracGamma[Momentum[p]] . DiracGamma[Momentum[r]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[q]] + \
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]] + \
 2*DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] . \
-DiracGamma[TemporalIndex[]]*TemporalPair[TemporalIndex[], TemporalMomentum[r]]"},
+DiracGamma[ExplicitLorentzIndex[0]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[r]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID34",
 "DiracTrick[CGA[ii].CGA[i].CGA[ii]]", "DiracGamma[CartesianIndex[i]]"},
 {"fcstDiracTrickCartesianFourDimNoGamma5-ID35",
@@ -2158,63 +2158,63 @@ DiracGamma[5]"},
 "6*DiracGamma[CartesianIndex[i]] . DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID19",
 "DiracTrick[TGA[].GA[5].(2 GA[5]+4)]",
-"2*DiracGamma[TemporalIndex[]] + 4*DiracGamma[TemporalIndex[]] . \
+"2*DiracGamma[ExplicitLorentzIndex[0]] + 4*DiracGamma[ExplicitLorentzIndex[0]] . \
 DiracGamma[5]"},
 {"fcstDiracTrickCartesianChiralTricks-ID20",
 "DiracTrick[TGA[].(2 GA[5]+4).GA[5]]",
-"2*DiracGamma[TemporalIndex[]] + 4*DiracGamma[TemporalIndex[]] . \
+"2*DiracGamma[ExplicitLorentzIndex[0]] + 4*DiracGamma[ExplicitLorentzIndex[0]] . \
 DiracGamma[5]"},
 {"fcstDiracTrickCartesianChiralTricks-ID21",
 "DiracTrick[TGA[].GA[5].(2 GA[6]+4)]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[5] + 2*DiracGamma[TemporalIndex[]] . \
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[5] + 2*DiracGamma[ExplicitLorentzIndex[0]] . \
 DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID22",
 "DiracTrick[TGA[].(2 GA[6]+4).GA[5]]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[5] + 2*DiracGamma[TemporalIndex[]] . \
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[5] + 2*DiracGamma[ExplicitLorentzIndex[0]] . \
 DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID23",
 "DiracTrick[TGA[].GA[5].(2 GA[7]+4)]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[5] - 2*DiracGamma[TemporalIndex[]] . \
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[5] - 2*DiracGamma[ExplicitLorentzIndex[0]] . \
 DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID24",
 "DiracTrick[TGA[].(2 GA[7]+4).GA[5]]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[5] - 2*DiracGamma[TemporalIndex[]] . \
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[5] - 2*DiracGamma[ExplicitLorentzIndex[0]] . \
 DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID25",
 "DiracTrick[TGA[].GA[6].(2 GA[5]+4)]",
-"6*DiracGamma[TemporalIndex[]] . DiracGamma[6]"},
+"6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID26",
 "DiracTrick[TGA[].(2 GA[5]+4).GA[6]]",
-"6*DiracGamma[TemporalIndex[]] . DiracGamma[6]"},
+"6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID27",
 "DiracTrick[TGA[].GA[6].(2 GA[6]+4)]",
-"6*DiracGamma[TemporalIndex[]] . DiracGamma[6]"},
+"6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID28",
 "DiracTrick[TGA[].(2 GA[6]+4).GA[6]]",
-"6*DiracGamma[TemporalIndex[]] . DiracGamma[6]"},
+"6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID29",
 "DiracTrick[TGA[].GA[6].(2 GA[7]+4)]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[6]"},
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID30",
 "DiracTrick[TGA[].(2 GA[7]+4).GA[6]]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[6]"},
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[6]"},
 {"fcstDiracTrickCartesianChiralTricks-ID31",
 "DiracTrick[TGA[].GA[7].(2 GA[5]+4)]",
-"2*DiracGamma[TemporalIndex[]] . DiracGamma[7]"},
+"2*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID32",
 "DiracTrick[TGA[].(2 GA[5]+4).GA[7]]",
-"2*DiracGamma[TemporalIndex[]] . DiracGamma[7]"},
+"2*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID33",
 "DiracTrick[TGA[].GA[7].(2 GA[6]+4)]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[7]"},
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID34",
 "DiracTrick[TGA[].(2 GA[6]+4).GA[7]]",
-"4*DiracGamma[TemporalIndex[]] . DiracGamma[7]"},
+"4*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID35",
 "DiracTrick[TGA[].GA[7].(2 GA[7]+4)]",
-"6*DiracGamma[TemporalIndex[]] . DiracGamma[7]"},
+"6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"},
 {"fcstDiracTrickCartesianChiralTricks-ID36",
 "DiracTrick[TGA[].(2 GA[7]+4).GA[7]]",
-"6*DiracGamma[TemporalIndex[]] . DiracGamma[7]"}
+"6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"}
 });
 

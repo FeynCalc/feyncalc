@@ -32,21 +32,21 @@ Begin["`FCLoopMixedIntegralQ`Private`"]
 FCLoopMixedIntegralQ[sps_. fad_FeynAmpDenominator]:=
 	Block[{heads,res},
 
-			heads = Cases[sps fad, (h:LorentzIndex|CartesianIndex|TemporalIndex|Momentum|CartesianMomentum|TemporalMomentum)[__]:>h,Infinity]//Union;
+			heads = Cases[sps fad, (h:LorentzIndex|CartesianIndex|ExplicitLorentzIndex|Momentum|CartesianMomentum|TemporalMomentum)[__]:>h,Infinity]//Union;
 
 			Which[
 				heads==={},
 				res=False,
 
-				(FreeQ2[heads,{LorentzIndex,Momentum,TemporalIndex,TemporalMomentum}] && !FreeQ2[heads,{CartesianIndex,CartesianMomentum}]) ||
-				(FreeQ2[heads,{LorentzIndex,Momentum,CartesianIndex,CartesianMomentum}] && !FreeQ2[heads,{TemporalIndex,TemporalMomentum}]) ||
-				(FreeQ2[heads,{TemporalIndex,TemporalMomentum,CartesianIndex,CartesianMomentum}] && !FreeQ2[heads,{LorentzIndex,Momentum}]),
+				(FreeQ2[heads,{LorentzIndex,Momentum,ExplicitLorentzIndex,TemporalMomentum}] && !FreeQ2[heads,{CartesianIndex,CartesianMomentum}]) ||
+				(FreeQ2[heads,{LorentzIndex,Momentum,CartesianIndex,CartesianMomentum}] && !FreeQ2[heads,{ExplicitLorentzIndex,TemporalMomentum}]) ||
+				(FreeQ2[heads,{ExplicitLorentzIndex,TemporalMomentum,CartesianIndex,CartesianMomentum}] && !FreeQ2[heads,{LorentzIndex,Momentum}]),
 				res=False,
 
 				(!FreeQ2[heads,{LorentzIndex,Momentum}] && !FreeQ2[heads,{CartesianIndex,CartesianMomentum}]) ||
-				(!FreeQ2[heads,{LorentzIndex,Momentum}] && !FreeQ2[heads,{TemporalIndex,TemporalMomentum}]) ||
-				(!FreeQ2[heads,{CartesianIndex,CartesianMomentum}] && !FreeQ2[heads,{TemporalIndex,TemporalMomentum}]) ||
-				(!FreeQ2[heads,{LorentzIndex,Momentum}] && !FreeQ2[heads,{TemporalIndex,TemporalMomentum}] && !FreeQ2[heads,{CartesianIndex,CartesianMomentum}]),
+				(!FreeQ2[heads,{LorentzIndex,Momentum}] && !FreeQ2[heads,{ExplicitLorentzIndex,TemporalMomentum}]) ||
+				(!FreeQ2[heads,{CartesianIndex,CartesianMomentum}] && !FreeQ2[heads,{ExplicitLorentzIndex,TemporalMomentum}]) ||
+				(!FreeQ2[heads,{LorentzIndex,Momentum}] && !FreeQ2[heads,{ExplicitLorentzIndex,TemporalMomentum}] && !FreeQ2[heads,{CartesianIndex,CartesianMomentum}]),
 				res=True,
 
 				True,

@@ -159,7 +159,7 @@ $BreitMaison=False; \n tmp",
 "DiracOrder[CGA[j].TGA[].CGA[i],FCE\[Rule]True]",
 "CGA[i] . CGA[j] . TGA[] + 2*KD[i, j]*TGA[]"},
 {"fcstDiracOrder-ID51",
-"DiracOrder[TGA[].CGA[i]-CGA[i].TGA[],{TemporalIndex[],i},FCE\
+"DiracOrder[TGA[].CGA[i]-CGA[i].TGA[],{ExplicitLorentzIndex[0],i},FCE\
 \[Rule]True]", "2*TGA[] . CGA[i]"},
 {"fcstDiracOrder-ID52",
 "DiracOrder[CGA[i].TGA[]-TGA[].CGA[i],FCE\[Rule]True]",

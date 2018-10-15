@@ -76,14 +76,14 @@ rulesFV = {
 	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] - n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
 		n3 CartesianPair[a, CartesianMomentum[Expand[x-y], dim]],
 
-	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n4_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
-		TemporalPair[TemporalIndex[], TemporalMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]  && n3=!=n4),
+	(n3_. TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[x_]] + n4_. TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[y_]]):>
+		TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[ Expand[n3 x + n4 y]]]/; (NumberQ[n3] && NumberQ[n4]  && n3=!=n4),
 
-	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] + n3_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
-		n3 TemporalPair[TemporalIndex[], TemporalMomentum[Expand[x+y]]],
+	(n3_. TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[x_]] + n3_. TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[y_]]):>
+		n3 TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[Expand[x+y]]],
 
-	(n3_. TemporalPair[TemporalIndex[], TemporalMomentum[x_]] - n3_. TemporalPair[TemporalIndex[], TemporalMomentum[y_]]):>
-		n3 TemporalPair[TemporalIndex[], TemporalMomentum[Expand[x-y]]]
+	(n3_. TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[x_]] - n3_. TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[y_]]):>
+		n3 TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[Expand[x-y]]]
 
 (*
 	(n3_. Pair[a_LorentzIndex, Momentum[x_,dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_,dim_:4]]):>

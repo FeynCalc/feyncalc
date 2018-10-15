@@ -448,10 +448,6 @@ DiracGamma /:
 		];
 
 DiracGamma /:
-	MakeBoxes[ DiracGamma[TemporalIndex[]], TraditionalForm ]:=
-		SuperscriptBox[RowBox[{gammaRep[4, 4, "\[Gamma]"]}], "0"];
-
-DiracGamma /:
 	MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[(in: Upper| Lower)[x_], dim1_:4], dim2_:4], TraditionalForm ]:=
 		If[ in===Upper,
 			SuperscriptBox[RowBox[{gammaRep[dim2,dim1,"\[Gamma]"]}], TBox[lo[in[x],dim1]]],
@@ -1105,16 +1101,6 @@ metricRep[dim_] :=
 
 
 Pair /:
-	MakeBoxes[Pair[TemporalIndex[], l_LorentzIndex],TraditionalForm]:=
-		SuperscriptBox[RowBox[{metricRep[{4,4}]}],
-			TBox[TemporalIndex[], l]];
-
-Pair /:
-	MakeBoxes[Pair[TemporalIndex[], l_CartesianIndex],TraditionalForm]:=
-		SuperscriptBox[RowBox[{metricRep[{4,4}]}],
-			TBox[TemporalIndex[], l]];
-
-Pair /:
 	MakeBoxes[Pair[CartesianIndex[i_], LorentzIndex[l_,dim2_:4]],TraditionalForm]:=
 		SuperscriptBox[RowBox[{metricRep[{4,dim2}]}],
 			TBox[CartesianIndex[i], LorentzIndex[l,dim2]]];
@@ -1657,18 +1643,17 @@ SUNTF /:
 		SubscriptBox[RowBox[Join[{"("},Map[SuperscriptBox["T",
 		ToBoxes[#, TraditionalForm]] &, {a1,a2}], {")"}]], TBox[b, c]];
 
-TemporalIndex /:
-	MakeBoxes[ TemporalIndex[], TraditionalForm]:=
-		ToBoxes[0,TraditionalForm];
 
 TemporalPair /:
-	MakeBoxes[TemporalPair[TemporalIndex[], (c0: _. TemporalMomentum[b_]) + c1_:0], TraditionalForm]:=
+	MakeBoxes[TemporalPair[ExplicitLorentzIndex[0], (c0: _. TemporalMomentum[b_]) + c1_:0], TraditionalForm]:=
 		If[ Head[b]===Plus || c1=!=0,
 			SuperscriptBox[ RowBox[{"(",TBox[TemporalMomentum[c0+c1]],")"}],
 				0],
 			SuperscriptBox[ RowBox[{TBox[c0+c1]}],
 				0]
-		];
+	];
+
+
 
 (*    Typesetting for momenta.    *)
 (* ------------------------------------------------------------------------ *)

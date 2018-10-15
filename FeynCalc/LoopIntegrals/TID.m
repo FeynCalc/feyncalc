@@ -329,7 +329,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			If[ OptionValue[FCLoopMixedToCartesianAndTemporal],
 				wrapped = wrapped /. loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :>
 					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}]/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
-						TemporalIndex[] :> holdTemporalIndex[],
+						ExplicitLorentzIndex[0] :> holdExplicitLorentzIndex[0],
 						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
 						TemporalPair[x__]/;FreeQ[{x},q] :> holdTemporalPair[x]
 					},{q},Head->loopIntegral, FCI->True];
@@ -436,7 +436,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 					FCPrint[1,"TID: Applying Isolate.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					res= Isolate[res,{LorentzIndex,CartesianIndex,holdTemporalIndex},IsolateNames->isoContract]//
+					res= Isolate[res,{LorentzIndex,CartesianIndex,holdExplicitLorentzIndex},IsolateNames->isoContract]//
 					ReplaceAll[#,LorentzIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[LorentzIndex[pp]]]&//
 					ReplaceAll[#,CartesianIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[CartesianIndex[pp]]]&;
 					FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -526,12 +526,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 							};
 							FCPrint[1, "TID: Done improving abbreviations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose],
 						True,
-							res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex,CartesianIndex,holdTemporalIndex,
+							res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex,CartesianIndex,holdExplicitLorentzIndex,
 								holdTemporalMomentum,holdTemporalPair}, IsolateNames->tidIsolate]
 				]
 		];
 
-		res = res //. {holdTemporalIndex->TemporalIndex, holdTemporalMomentum->TemporalMomentum,holdTemporalPair->TemporalPair, q0->q};
+		res = res //. {holdExplicitLorentzIndex->ExplicitLorentzIndex, holdTemporalMomentum->TemporalMomentum,holdTemporalPair->TemporalPair, q0->q};
 
 
 		If[	optExpandScalarProduct,
@@ -638,7 +638,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 		rList1 = MapIndexed[(Rule[loopIntegral[#1], First[(iList2 /. rList2)[[#2]]]]) &, uList1];
 
 		res = Isolate[iList1 /. rList1 /. loopIntegral[z_tidPaVe]:>z, {LorentzIndex,CartesianIndex,
-			q,FeynAmpDenominator,tidPaVe,holdTemporalIndex,holdTemporalMomentum,holdTemporalPair,q0}, IsolateNames->tidIsolate];
+			q,FeynAmpDenominator,tidPaVe,holdExplicitLorentzIndex,holdTemporalMomentum,holdTemporalPair,q0}, IsolateNames->tidIsolate];
 
 		res = res /. {
 			FeynAmpDenominator[x__]/;!FreeQ[{x},q] :> FRH[FeynAmpDenominator[x]],
@@ -760,7 +760,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 			(* 	To perform the tensor reduction on unique integrals in the tensor part we had to uncontract all the
 				loop momenta. Now we contract existing dummy Lorentz indices *)
 			time=AbsoluteTime[];
-			tpTP = Isolate[tpTP,{LorentzIndex,CartesianIndex,holdTemporalIndex,holdTemporalMomentum,holdTemporalPair,q0},IsolateNames->tempIso];
+			tpTP = Isolate[tpTP,{LorentzIndex,CartesianIndex,holdExplicitLorentzIndex,holdTemporalMomentum,holdTemporalPair,q0},IsolateNames->tempIso];
 			tpTP = Contract[tpTP, FCI->True];
 			tpTP = FRH[tpTP,IsolateNames->tempIso];
 			FCPrint[2,"TID: tidFullReduce: Time to contract the indices after another tensor reduction ",

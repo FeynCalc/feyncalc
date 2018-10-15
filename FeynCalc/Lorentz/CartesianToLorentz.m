@@ -97,22 +97,22 @@ CartesianToLorentz[expr_, OptionsPattern[]]:=
 
 cspToSp[CartesianMomentum[a_], CartesianMomentum[b_]]:=
 	FeynCalc`Package`MetricS (Pair[Momentum[a],Momentum[b]] -
-	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[a]] TemporalPair[TemporalIndex[],TemporalMomentum[b]]);
+	FeynCalc`Package`MetricT TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[a]] TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[b]]);
 
 cspToSp[CartesianMomentum[a_, dim_Symbol-1], CartesianMomentum[b_, dim_Symbol-1]]:=
 	FeynCalc`Package`MetricS (Pair[Momentum[a,dim],Momentum[b,dim]] -
-	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[a]] TemporalPair[TemporalIndex[],TemporalMomentum[b]]);
+	FeynCalc`Package`MetricT TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[a]] TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[b]]);
 
 cspToSp[CartesianMomentum[a_, dim_Symbol-4], CartesianMomentum[b_, dim_Symbol-4]]:=
 	FeynCalc`Package`MetricS Pair[Momentum[a,dim-4],Momentum[b,dim-4]];
 
 cdiracSlashToDiracSlash[CartesianMomentum[p_]]:=
 	FeynCalc`Package`MetricS (DiracGamma[Momentum[p]] -
-	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[p]] DiracGamma[TemporalIndex[]]);
+	FeynCalc`Package`MetricT TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p]] DiracGamma[ExplicitLorentzIndex[0]]);
 
 cdiracSlashToDiracSlash[CartesianMomentum[p_, dim_Symbol-1], dim_Symbol]:=
 	FeynCalc`Package`MetricS (DiracGamma[Momentum[p,dim],dim] -
-	FeynCalc`Package`MetricT TemporalPair[TemporalIndex[],TemporalMomentum[p]] DiracGamma[TemporalIndex[]]);
+	FeynCalc`Package`MetricT TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p]] DiracGamma[ExplicitLorentzIndex[0]]);
 
 cdiracSlashToDiracSlash[CartesianMomentum[p_, dim_Symbol-4], dim_Symbol-4]:=
 	FeynCalc`Package`MetricS DiracGamma[Momentum[p,dim-4],dim-4];

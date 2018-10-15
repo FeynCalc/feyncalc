@@ -51,8 +51,8 @@ Tests`Lorentz`fcstMomentumExpandNR =
 "TemporalMomentum[p]"}, {"fcstMomentumExpandNR-ID2",
 "MomentumExpand[TemporalMomentum[p+3q]]",
 "TemporalMomentum[p] + 3*TemporalMomentum[q]"}, {"fcstMomentumExpandNR-ID4",
-"MomentumExpand[TemporalPair[TemporalIndex[],TemporalMomentum[p+3q]]]",
-"TemporalPair[TemporalIndex[], TemporalMomentum[p] + 3*TemporalMomentum[q]]"}, \
+"MomentumExpand[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p+3q]]]",
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p] + 3*TemporalMomentum[q]]"}, \
 {"fcstMomentumExpandNR-ID5", "MomentumExpand[CartesianMomentum[p]]",
 "CartesianMomentum[p]"}, {"fcstMomentumExpandNR-ID6",
 "MomentumExpand[CartesianMomentum[p,D-1]]",
@@ -95,8 +95,8 @@ D]]"}, {"fcstMomentumExpandNR-ID20", "MomentumExpand[TemporalMomentum[p]]",
 "TemporalMomentum[p]"}, {"fcstMomentumExpandNR-ID21",
 "MomentumExpand[TemporalMomentum[p+3q]]",
 "TemporalMomentum[p] + 3*TemporalMomentum[q]"}, {"fcstMomentumExpandNR-ID23",
-"MomentumExpand[TemporalPair[TemporalIndex[],TemporalMomentum[p+3q]]]",
-"TemporalPair[TemporalIndex[], TemporalMomentum[p] + 3*TemporalMomentum[q]]"}};
+"MomentumExpand[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p+3q]]]",
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p] + 3*TemporalMomentum[q]]"}};
 
 
 

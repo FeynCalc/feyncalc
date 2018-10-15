@@ -147,13 +147,6 @@ scalarmul[a_, b_,dim___] :=
 	ScalarProduct[a,b,dim];
 
 
-pairback[TemporalIndex[], TemporalIndex[]] :=
-	MT[0,0];
-pairback[ExplicitLorentzIndex[b_?NumberQ], TemporalIndex[]] :=
-	MT[0,b];
-pairback[LorentzIndex[b_], TemporalIndex[]] :=
-	MT[0,b];
-
 pairback[ExplicitLorentzIndex[a_?NumberQ], ExplicitLorentzIndex[b_?NumberQ]] :=
 	MT[a,b];
 pairback[ExplicitLorentzIndex[a_?NumberQ], LorentzIndex[b_]] :=
@@ -222,10 +215,10 @@ cpairback[CartesianMomentum[a_, D-1], CartesianMomentum[b_, D-1]] :=
 cpairback[CartesianMomentum[a_, D-4], CartesianMomentum[b_, D-4]] :=
 	CSPE[a, b];
 
-tpairback[TemporalIndex[],TemporalMomentum[a_]]:=
+tpairback[ExplicitLorentzIndex[0],TemporalMomentum[a_]]:=
 	TC[a];
 
-diracback[TemporalIndex[]]:=
+diracback[ExplicitLorentzIndex[0]]:=
 	TGA[];
 
 diracback[LorentzIndex[a_]] :=

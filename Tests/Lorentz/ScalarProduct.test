@@ -1655,7 +1655,7 @@ Tests`Lorentz`fcstSetTemporalComponent = {
 "a"},
 {"fcstSetTemporalComponent-ID2", "SetTemporalComponent[p, b]; \n TC[p]",
 "b"},
-{"fcstSetTemporalComponent-ID3", "TC[p] = c; TemporalPair[TemporalMomentum[p], TemporalIndex[]]",
+{"fcstSetTemporalComponent-ID3", "TC[p] = c; TemporalPair[TemporalMomentum[p], ExplicitLorentzIndex[0]]",
 "c"},
 {"fcstSetTemporalComponent-ID4", "FCClearScalarProducts[]; \n Head[TC[p]]",
 "TC"}

@@ -96,7 +96,7 @@ epscon/:
 			{PairContract[a2,a1],PairContract[a2,a2],PairContract[a2,a3],PairContract[a2,a4]},
 			{PairContract[a3,a1],PairContract[a3,a2],PairContract[a3,a3],PairContract[a3,a4]},
 			{PairContract[a4,a1],PairContract[a4,a2],PairContract[a4,a3],PairContract[a4,a4]}
-		}])/.PairContract->Pair)/; Complement[DeleteDuplicates[Head/@{a1,a2,a3,a4}], {LorentzIndex, Momentum,  TemporalIndex}]==={};
+		}])/.PairContract->Pair)/; Complement[DeleteDuplicates[Head/@{a1,a2,a3,a4}], {LorentzIndex, Momentum,  ExplicitLorentzIndex}]==={};
 
 epscon/:
 	epscon[a1_,a2_,a3_]^2 :=
@@ -122,7 +122,7 @@ epscon/:
 		{PairContract[a2,b1],PairContract[a2,b2],PairContract[a2,b3],PairContract[a2,b4]},
 		{PairContract[a3,b1],PairContract[a3,b2],PairContract[a3,b3],PairContract[a3,b4]},
 		{PairContract[a4,b1],PairContract[a4,b2],PairContract[a4,b3],PairContract[a4,b4]}}]//Expand)/.PairContract->Pair)/;
-		Complement[DeleteDuplicates[Head/@{a1,a2,a3,a4,b1,b2,b3,b4}], {LorentzIndex, Momentum,  TemporalIndex}]==={};
+		Complement[DeleteDuplicates[Head/@{a1,a2,a3,a4,b1,b2,b3,b4}], {LorentzIndex, Momentum,  ExplicitLorentzIndex}]==={};
 
 epscon/:
 	epscon[a1_,a2_,a3_] epscon[b1_,b2_,b3_] :=

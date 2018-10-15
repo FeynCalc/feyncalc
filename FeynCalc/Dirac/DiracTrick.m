@@ -276,8 +276,11 @@ DiracTrick[expr_,OptionsPattern[]] :=
 diracTrickEvalFast[ex:DiracGamma[__]]:=
 	ex/; !insideDiracTrace && !diracOrder;
 
+diracTrickEvalFast[DOT[DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[ExplicitLorentzIndex[0]]]]:=
+	1;
+
 diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
-	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], TemporalIndex}] &&
+	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], ExplicitLorentzIndex[0]}] &&
 	(Sort[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]] ===
 	Union[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]])/; !insideDiracTrace && !diracOrder;
 
@@ -557,7 +560,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 					dim=!={} && $BreitMaison && !$Larin,
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
 					(* special case that the expression contains only chiral or g^0 matrices*)
-					dim==={} && !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[TemporalIndex[]]}] && FreeQ[(res/.DiracGamma[5|6|7|TemporalIndex[]]:>diga),DiracGamma],
+					dim==={} && !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[5|6|7|ExplicitLorentzIndex[0]]:>diga),DiracGamma],
 					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
@@ -598,13 +601,13 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 				res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
 				res = res /. diracologyBMHV1 -> holdDOT,
 			(* special case that the expression contains only g^0 matrices*)
-			dim==={} && !FreeQ2[res,{DiracGamma[TemporalIndex[]]}] && FreeQ[(res/.DiracGamma[TemporalIndex[]]:>diga),DiracGamma],
+			dim==={} && !FreeQ2[res,{DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[ExplicitLorentzIndex[0]]:>diga),DiracGamma],
 				FCPrint[2, "DiracTrick: diracTrickEval: Only g^0 matrices.", FCDoControl->diTrVerbose];
 				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* special case that the expression contains only chiral or g^0 matrices*)
-					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[TemporalIndex[]]}] && FreeQ[(res/.DiracGamma[5|6|7|TemporalIndex[]]:>diga),DiracGamma],
+					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[5|6|7|ExplicitLorentzIndex[0]]:>diga),DiracGamma],
 					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
@@ -669,69 +672,69 @@ diracology4Dim[b___,DiracGamma[l_CartesianIndex], DiracGamma[l_CartesianIndex], 
 	3 FeynCalc`Package`MetricS diracology4Dim[ b,d ];
 
 (*	g^0 g^0	*)
-diracology4Dim[b___,DiracGamma[TemporalIndex[]], DiracGamma[TemporalIndex[]], d___] :=
+diracology4Dim[b___,DiracGamma[ExplicitLorentzIndex[0]], DiracGamma[ExplicitLorentzIndex[0]], d___] :=
 	diracology4Dim[ b,d ];
 
 (*	g^0 g^i_1 ... g^i_n  -> (-1)^n g^i_1 ... g^i_n g^0	*)
-diracology4Dim[ b___,  DiracGamma[TemporalIndex[]], Longest[ch : DiracGamma[(_CartesianIndex | _CartesianMomentum)]..], f___ ] :=
-	(-1)^Length[{ch}] diracology4Dim[b,ch,DiracGamma[TemporalIndex[]],f];
+diracology4Dim[ b___,  DiracGamma[ExplicitLorentzIndex[0]], Longest[ch : DiracGamma[(_CartesianIndex | _CartesianMomentum)]..], f___ ] :=
+	(-1)^Length[{ch}] diracology4Dim[b,ch,DiracGamma[ExplicitLorentzIndex[0]],f];
 
 (*	g^mu g^nu g_mu	*)
 diracology4Dim[b___ , DiracGamma[c_LorentzIndex],
-			DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)],
+			DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)],
 			DiracGamma[c_LorentzIndex], d___] :=
 	- 2 diracology4Dim[b,DiracGamma[x], d];
 
 (*	g^mu g^nu g^rho g_mu	*)
 diracology4Dim[b___ , DiracGamma[c_LorentzIndex],
-			DiracGamma[x1: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)],
-			DiracGamma[x2: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)],
+			DiracGamma[x1: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)],
+			DiracGamma[x2: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)],
 			DiracGamma[c_LorentzIndex], d___] :=
 	4 FCUseCache[FCFastContract,{Pair[x1,x2] diracology4Dim[b, d]},{}];
 
 (*	g^mu g^nu g^rho g^sigma g_mu	*)
 diracology4Dim[b___ , DiracGamma[c_LorentzIndex],
-			(dg1: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]),
-			(dg2: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]),
-			(dg3: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]), DiracGamma[c_LorentzIndex], d___] :=
+			(dg1: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]),
+			(dg2: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]),
+			(dg3: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]), DiracGamma[c_LorentzIndex], d___] :=
 	- 2 diracology4Dim[b, dg3, dg2, dg1, d];
 
 diracology4Dim[b___ , DiracGamma[c_LorentzIndex],
-			(dg1: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]),
-			(dg2: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]),
-			(dg3: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]),
-			(dg4: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]),
+			(dg1: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]),
+			(dg2: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]),
+			(dg3: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]),
+			(dg4: DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]),
 			DiracGamma[c_LorentzIndex], d___] :=
 	2 diracology4Dim[b, dg3, dg2, dg1, dg4, d] + 2 diracology4Dim[b, dg4, dg1, dg2, dg3, d];
 
 (*	g^mu g^nu_1 ... g^nu_i g_mu  -> -2 g^nu_i ... g^nu_1, where i is odd	*)
 diracology4Dim[ b___,  DiracGamma[c_LorentzIndex],
-		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)].., DiracGamma[c_LorentzIndex], f___ ] :=
+		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)].., DiracGamma[c_LorentzIndex], f___ ] :=
 	-2 diracology4Dim @@ Join[ {b},Reverse[{ch}],{f} ] /; OddQ[Length[{ch}]] && Length[{ch}]>3;
 
 (*	g^mu g^nu_1 ... g^nu_i g_mu  -> 2 g^nu_i-1 ... g^nu_1 g^nu_i + 2 g^nu_i g^nu_1 ... g^nu_i-1, where i is even	*)
 diracology4Dim[ b___,  DiracGamma[c_LorentzIndex],
-		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]..,
-		end : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)],
+		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex  | _CartesianMomentum)]..,
+		end : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)],
 		DiracGamma[c_LorentzIndex], f___ ] :=
 	(2 diracology4Dim @@ Join[ {b},Reverse[{ch}],{end}, {f}] + 2 diracology4Dim[ b,end,ch,f ])/; OddQ[Length[{ch}]]  && Length[{ch}]>4;
 
 (*	g^0 g^nu_1 ... g^nu_i g^0  -> ...	*)
 (*	This is rather simplistic and inefficient, but for the time being ... *)
-diracology4Dim[ b___,  DiracGamma[TemporalIndex[]],
-		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)].., DiracGamma[TemporalIndex[]], f___ ] :=
+diracology4Dim[ b___,  DiracGamma[ExplicitLorentzIndex[0]],
+		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)].., DiracGamma[ExplicitLorentzIndex[0]], f___ ] :=
 		Block[{len=Length[{ch}],iVar},
-			(-1)^len diracology4Dim[b,ch,f] + Sum[2 (-1)^(iVar+1) Pair[TemporalIndex[],({ch}[[iVar]])[[1]]] *
-				diracology4Dim@@Join[{b},Drop[{ch}, {iVar, iVar}],{DiracGamma[TemporalIndex[]],f}],{iVar,1,len}]
+			(-1)^len diracology4Dim[b,ch,f] + Sum[2 (-1)^(iVar+1) Pair[ExplicitLorentzIndex[0],({ch}[[iVar]])[[1]]] *
+				diracology4Dim@@Join[{b},Drop[{ch}, {iVar, iVar}],{DiracGamma[ExplicitLorentzIndex[0]],f}],{iVar,1,len}]
 		];
 
 (*	g^i g^nu_1 ... g^nu_i g^i  -> s ( g^mu g^nu_1 ... g^nu_i g_mu - t g^0  g^nu_1 ... g^nu_i g^0   )	*)
 diracology4Dim[ b___,  DiracGamma[c_CartesianIndex],
-		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)].., DiracGamma[c_CartesianIndex], f___ ] :=
+		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)].., DiracGamma[c_CartesianIndex], f___ ] :=
 	(
 	tmpli= LorentzIndex[$MU[Unique[]]];
 	FeynCalc`Package`MetricS (diracology4Dim[b,DiracGamma[tmpli],ch,DiracGamma[tmpli],f] -
-	FeynCalc`Package`MetricT diracology4Dim[b,DiracGamma[TemporalIndex[]],ch,DiracGamma[TemporalIndex[]],f] )
+	FeynCalc`Package`MetricT diracology4Dim[b,DiracGamma[ExplicitLorentzIndex[0]],ch,DiracGamma[ExplicitLorentzIndex[0]],f] )
 	);
 
 (*	Slash(p).Slash(p)	*)
@@ -739,12 +742,12 @@ diracology4Dim[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,d];
 
 (*	Slash(p) g^nu Slash(p)	*)
-diracology4Dim[b___ , DiracGamma[c_Momentum], DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)],
+diracology4Dim[b___ , DiracGamma[c_Momentum], DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)],
 		DiracGamma[c_Momentum], d___] :=
 	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,DiracGamma[x], d] + 2 FCUseCache[FCFastContract,{Pair[c,x] diracology4Dim[b, DiracGamma[c], d]},{}];
 
 (* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely 4-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
-diracology4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]..,
+diracology4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]..,
 			DiracGamma[c_Momentum],f___ ] :=
 	Block[ {iVar, len = Length[{ch}]},
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,ch,f]
@@ -756,9 +759,9 @@ diracology4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(_LorentzIndex | _Expl
 diracology4Dim[b___,DiracGamma[c_CartesianMomentum], DiracGamma[c_CartesianMomentum], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,d];
 
-
+y__DiracGamma
 (*	g^i g^nu_1 ... g^nu_n g^i p^i p^j *)
-diracology4Dim[b___, DiracGamma[c_CartesianMomentum],ch:DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _TemporalIndex | _CartesianMomentum)]..,
+diracology4Dim[b___, DiracGamma[c_CartesianMomentum],ch:DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]..,
 			DiracGamma[c_CartesianMomentum],f___ ] :=
 	Block[{len=Length[{ch}],iVar},
 			(-1)^len FeynCalc`Package`MetricS CartesianPair[c,c] diracology4Dim[b,ch,f] +
@@ -1006,57 +1009,57 @@ ga67Switch1[7]=
 ga67Switch1[6]=
 	7;
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[5], c:DiracGamma[_[_] | TemporalIndex[]].. , d___] :=
+chiralTrickAnticommuting4Dim[b___,DiracGamma[5], c:DiracGamma[_[_]].. , d___] :=
 	(-1)^Length[{c}] chiralTrickAnticommuting4Dim[ b,c,DiracGamma[5],d];
 
-chiralTrickAnticommuting4Dim[b___, DiracGamma[5], (dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0 ),d___ ] :=
+chiralTrickAnticommuting4Dim[b___, DiracGamma[5], (dd1_. (dg:DiracGamma[_[_]]) + dd2_:0 ),d___ ] :=
 	chiralTrickAnticommuting4Dim[b,(- dd1 dg + dd2), DiracGamma[5],d ]/; NonCommFreeQ[{dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_]].. ,d___] :=
 	chiralTrickAnticommuting4Dim[ b,c,DiracGamma[h],d]/; EvenQ[Length[{c}]];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_] | TemporalIndex[]].. ,d___] :=
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_]].. ,d___] :=
 	chiralTrickAnticommuting4Dim[ b,c,DiracGamma[ga67Switch1[h]],d]/; OddQ[Length[{c}]];
 
 chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), (dd1_. DiracGamma[6] + dd2_. DiracGamma[7]),d___ ] :=
 	chiralTrickAnticommuting4Dim[b, (cc1 dd1 DiracGamma[6] + cc2 dd2 DiracGamma[7]),d ]/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), dd1_. (c:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0, d___ ] :=
+chiralTrickAnticommuting4Dim[b___, (cc1_. DiracGamma[6] + cc2_. DiracGamma[7]), dd1_. (c:DiracGamma[_[_]]) + dd2_:0, d___ ] :=
 	(
 	dd1 chiralTrickAnticommuting4Dim[b, c, (cc1 DiracGamma[7] + cc2 DiracGamma[6]), d] +
 	dd2 chiralTrickAnticommuting4Dim[b, (cc1 DiracGamma[6] + cc2 DiracGamma[7]), d]
 	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___, (cc1_. + cc2_. DiracGamma[5]), dd1_. (c:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0, d___ ] :=
+chiralTrickAnticommuting4Dim[b___, (cc1_. + cc2_. DiracGamma[5]), dd1_. (c:DiracGamma[_[_]]) + dd2_:0, d___ ] :=
 	(
 	cc1 chiralTrickAnticommuting4Dim[b,  dd1 c + dd2 , d] - cc2 chiralTrickAnticommuting4Dim[b,  dd1 c - dd2 , DiracGamma[5], d]
 	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}];
 
-chiralTrickAnticommuting4Dim[b___,(cc2_. DiracGamma[(h:6|7)] + cc1_:0),(dd1_. (dg:DiracGamma[_[_] | TemporalIndex[]]) + dd2_:0),d___ ] :=
+chiralTrickAnticommuting4Dim[b___,(cc2_. DiracGamma[(h:6|7)] + cc1_:0),(dd1_. (dg:DiracGamma[_[_]]) + dd2_:0),d___ ] :=
 	(
 	dd1 chiralTrickAnticommuting4Dim[b,dg, (cc1 + cc2 DiracGamma[ga67Switch1[h]]),d ] +
 	dd2 chiralTrickAnticommuting4Dim[b, (cc1 + cc2 DiracGamma[h]),d ]
 	)/; NonCommFreeQ[{cc1,cc2,dd1,dd2}]
 
-chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[(h2:6|7)], c___] :=
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],DiracGamma[_[_]] + mass_:0, xy:DiracGamma[_[_]].. , DiracGamma[(h2:6|7)], c___] :=
 	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[h2], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommuting4Dim[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_] | TemporalIndex[]].. , DiracGamma[(h:6|7)], c___] :=
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_]]) + mass_:0, xy:DiracGamma[_[_]].. , DiracGamma[(h:6|7)], c___] :=
 	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[h], c]/; OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, xy:DiracGamma[_[_]  | TemporalIndex[]].. , DiracGamma[(h2:6|7)], c___] :=
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_]]) + mass_:0, xy:DiracGamma[_[_]].. , DiracGamma[(h2:6|7)], c___] :=
 	chiralTrickAnticommuting4Dim[b, dg, xy, DiracGamma[h2], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommuting4Dim[b___, DiracGamma[(h:6|7)],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, xy:DiracGamma[_[_]  | TemporalIndex[]].. , DiracGamma[(h:6|7)], c___] :=
+chiralTrickAnticommuting4Dim[b___, DiracGamma[(h:6|7)],DiracGamma[_[_]] + mass_:0, xy:DiracGamma[_[_]].. , DiracGamma[(h:6|7)], c___] :=
 	mass chiralTrickAnticommuting4Dim[b, xy, DiracGamma[h], c]/; EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)],DiracGamma[_[_] | TemporalIndex[]] + mass_:0, DiracGamma[(h:6|7)], c___] :=
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)],DiracGamma[_[_]] + mass_:0, DiracGamma[(h:6|7)], c___] :=
 	mass chiralTrickAnticommuting4Dim[b, DiracGamma[h], c]/; NonCommFreeQ[mass];
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, DiracGamma[(h2:6|7)], c___] :=
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_]]) + mass_:0, DiracGamma[(h2:6|7)], c___] :=
 	chiralTrickAnticommuting4Dim[b, dg, DiracGamma[h2], c]/; NonCommFreeQ[mass] && h1=!=h2;
 
-chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)],(dg:DiracGamma[_[_] | TemporalIndex[]]) + mass_:0, c___] :=
+chiralTrickAnticommuting4Dim[b___,DiracGamma[(h:6|7)],(dg:DiracGamma[_[_]]) + mass_:0, c___] :=
 	(chiralTrickAnticommuting4Dim[b, dg, DiracGamma[ga67Switch1[h]], c] +
 	mass chiralTrickAnticommuting4Dim[b, DiracGamma[h], c])/; NonCommFreeQ[mass];
 
@@ -1252,7 +1255,7 @@ diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_]],
 
 (* D-4, (... 4 ... ), D-4 *)
 diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
-			ch : DiracGamma[((LorentzIndex | ExplicitLorentzIndex | Momentum)[_]) | TemporalIndex[]]..,
+			ch : DiracGamma[((LorentzIndex | ExplicitLorentzIndex | Momentum)[_])]..,
 			DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
 	(dim - 4) (-1)^Length[{ch}] diracologyBMHV2[b,ch, d];
 
@@ -1264,10 +1267,10 @@ diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
 (* ------------------------------------------------------------------------ *)
 
 diracologyBMHV2[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
-			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_] | TemporalIndex[]]..,
+			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
 			DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol], d___] :=
 	diracologyBMHV2[b,DiracGamma[LorentzIndex[c]], ch, DiracGamma[LorentzIndex[c]], d] +
-	(dim - 4) (-1)^Length[{ch}] diracologyBMHV2[b,ch, d]/; Length[{ch}]>4 && FreeQ[{ch},TemporalIndex[]];
+	(dim - 4) (-1)^Length[{ch}] diracologyBMHV2[b,ch, d]/; Length[{ch}]>4;
 
 (* D, (... D-4 ... ), D *)
 (* Simplification for g^mu g^nu_1 ... g^nu_n g_mu where g^mu is in D and

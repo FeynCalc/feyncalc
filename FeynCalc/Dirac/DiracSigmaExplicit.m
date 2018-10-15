@@ -48,18 +48,18 @@ DiracSigmaExplicit[expr_, OptionsPattern[]] :=
 		];
 
 		res = ex /. DOT->holdDOT //. {
-			holdDOT[x___, c_. DiracSigma[DiracGamma[TemporalIndex[]], (a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])],y___]/; NonCommFreeQ[c] :>
-				I c (holdDOT[x,DiracGamma[TemporalIndex[]],a,y]),
-			holdDOT[x___, c_. DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]),DiracGamma[TemporalIndex[]]],y___]/; NonCommFreeQ[c] :>
-				-I c (holdDOT[x,DiracGamma[TemporalIndex[]], a,y]),
+			holdDOT[x___, c_. DiracSigma[DiracGamma[ExplicitLorentzIndex[0]], (a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])],y___]/; NonCommFreeQ[c] :>
+				I c (holdDOT[x,DiracGamma[ExplicitLorentzIndex[0]],a,y]),
+			holdDOT[x___, c_. DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]),DiracGamma[ExplicitLorentzIndex[0]]],y___]/; NonCommFreeQ[c] :>
+				-I c (holdDOT[x,DiracGamma[ExplicitLorentzIndex[0]], a,y]),
 			holdDOT[x___, c_. DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]), (b: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])],y___]/; NonCommFreeQ[c] :>
 				I c (holdDOT[x,a,b,y] + CartesianPair[First[a],First[b]] holdDOT[x,y])
 
 		} //. {
 			holdDOT[x___, c_. DiracSigma[a_DiracGamma,b_DiracGamma],y___]/; NonCommFreeQ[c] :> I/2 c (holdDOT[x,a,b,y] - holdDOT[x,b,a,y])
 		} //. {
-			DiracSigma[DiracGamma[TemporalIndex[]], (a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])] :> I holdDOT[DiracGamma[TemporalIndex[]], a],
-			DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]),DiracGamma[TemporalIndex[]]] :> - I holdDOT[DiracGamma[TemporalIndex[]], a],
+			DiracSigma[DiracGamma[ExplicitLorentzIndex[0]], (a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])] :> I holdDOT[DiracGamma[ExplicitLorentzIndex[0]], a],
+			DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]),DiracGamma[ExplicitLorentzIndex[0]]] :> - I holdDOT[DiracGamma[ExplicitLorentzIndex[0]], a],
 			DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]), (b: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])] :> I (holdDOT[a,b] + CartesianPair[First[a],First[b]])
 		}	//. {
 			DiracSigma[a_DiracGamma,b_DiracGamma]:> I/2 (DOT[a, b] - DOT[b, a])

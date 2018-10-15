@@ -634,7 +634,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 			coeffsCartesianPair = {}
 		];
 
-		coeffsTemporalPair 	= Sort[TemporalPair[TemporalIndex[],TemporalMomentum[#]]&/@lmoms];
+		coeffsTemporalPair 	= Sort[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[#]]&/@lmoms];
 		coeffs				= {};
 
 		If[	!FreeQ[expr,Momentum],

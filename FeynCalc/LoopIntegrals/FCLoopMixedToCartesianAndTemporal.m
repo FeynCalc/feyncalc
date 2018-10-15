@@ -67,7 +67,7 @@ FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmom
 
 SFADToCFAD[x_, y_, mm_, {n_,s_}]:=
 	Block[{tp,sp,cfadSlot1,cfadSlot2,relSign,tmp},
-		{sp,tp} = FCSplit[LorentzToCartesian[Pair[x,x],ExpandScalarProduct->False,FCI->False],{TemporalIndex}];
+		{sp,tp} = FCSplit[LorentzToCartesian[Pair[x,x],ExpandScalarProduct->False,FCI->False],{ExplicitLorentzIndex[0]}];
 
 		Which[
 			MatchQ[sp, CartesianPair[a_CartesianMomentum,a_CartesianMomentum]],
@@ -87,7 +87,7 @@ SFADToCFAD[x_, y_, mm_, {n_,s_}]:=
 			tp = tp + y;
 			cfadSlot2 = 0,
 
-			tmp = FCSplit[LorentzToCartesian[y,ExpandScalarProduct->False,FCI->False],{TemporalIndex}];
+			tmp = FCSplit[LorentzToCartesian[y,ExpandScalarProduct->False,FCI->False],{ExplicitLorentzIndex[0]}];
 			tp = tp + tmp[[2]];
 			cfadSlot2 = tmp[[1]]
 		];

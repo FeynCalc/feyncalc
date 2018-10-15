@@ -284,9 +284,9 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 
 		If[	FreeQ[holdy,OPEDelta],
 			downp = SelectFree[downp,OPEDelta];
-			idlist = Map[Join[#, {SP @@ #}] &, SelectFree[$ScalarProducts, Plus, OPEDelta, TemporalIndex, TemporalMomentum, CartesianIndex, CartesianMomentum] /. Momentum[z_, ___] :> z],
+			idlist = Map[Join[#, {SP @@ #}] &, SelectFree[$ScalarProducts, Plus, OPEDelta, ExplicitLorentzIndex[0], TemporalMomentum, CartesianIndex, CartesianMomentum] /. Momentum[z_, ___] :> z],
 
-			idlist = Map[Join[#, {SP @@ #}] &, SelectFree[$ScalarProducts, Plus, TemporalIndex, TemporalMomentum, CartesianIndex, CartesianMomentum] /. Momentum[z_, ___] :> z]
+			idlist = Map[Join[#, {SP @@ #}] &, SelectFree[$ScalarProducts, Plus, ExplicitLorentzIndex[0], TemporalMomentum, CartesianIndex, CartesianMomentum] /. Momentum[z_, ___] :> z]
 		];
 
 

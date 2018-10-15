@@ -166,8 +166,8 @@ pauliOrderLex[x_, maxIterations_]:=
 			-holdDOT[a, PauliSigma[h2[ar2],dim2], PauliSigma[h1[ar1],dim1] ,b] +
 			2 CartesianPairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],
-			PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],b___] :>
+		holdDOT[a___,PauliSigma[(h:CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:3],
+			PauliSigma[(h:CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:3],b___] :>
 			holdDOT[a,b] PauliTrick[DOT[PauliSigma[h[ar],dim].PauliSigma[h[ar],dim]],FCI->True,FCPauliIsolate->False, PauliReduce->pauliReduce]
 
 
@@ -180,8 +180,8 @@ customOrdering[x_, currentElement_]:=
 			-holdDOT[a, PauliSigma[h2[ar2],dim2], PauliSigma[h1[ar1],dim1] ,b] +
 			2 CartesianPairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],
-			PauliSigma[(h:CartesianIndex|CartesianMomentum|TemporalIndex)[ar___], dim_:3],b___] :>
+		holdDOT[a___,PauliSigma[(h:CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:3],
+			PauliSigma[(h:CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:3],b___] :>
 			holdDOT[a,b] PauliTrick[DOT[PauliSigma[h[ar],dim].PauliSigma[h[ar],dim]],FCI->True,FCPauliIsolate->False, PauliReduce->pauliReduce]
 };
 

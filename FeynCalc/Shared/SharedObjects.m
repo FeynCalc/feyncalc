@@ -757,7 +757,7 @@ CartesianMomentum, a Cartesian vector (p^i) is understood.";
 
 TC::usage =
 "TC[p] is the temporal component of a 4-vector and is transformed into \
-TemporalPair[TemporalMomentum[p], TemporalIndex[]] by FeynCalcInternal.";
+TemporalPair[TemporalMomentum[p], ExplicitLorentzIndex[0]] by FeynCalcInternal.";
 
 CV::usage =
 "CV[p,i] is a 3-dimensional Cartesian vector and is transformed into \
@@ -809,7 +809,7 @@ applying FeynCalcInternal.";
 
 TGA::usage =
 "TGA[] can be used as input for gamma^0 in 4-dimensions and is \
-transformed into DiracGamma[TemporalIndex[]] by FeynCalcInternal.";
+transformed into DiracGamma[ExplicitLorentzIndex[0]] by FeynCalcInternal.";
 
 CGA::usage =
 "CGA[i] can be used as input for gamma^i in 4-dimensions and is \
@@ -896,17 +896,13 @@ PauliEta::usage =
 "PauliEta[I] represents a two-component Pauli spinor \[Eta], while PauliEta[-I] stands for \
 \[Eta]^\[Dagger].";
 
-TemporalIndex::usage =
-"TemporalIndex[] denotes the temporal component of a tensor. It can \
-appear in any tensor, except for purely cartesian tensors like CartesianPair.";
-
 TemporalMomentum::usage =
 "TemporalMomentum is the head of the temporal component of a four momentum p^0. \
 The internal representation of the temporal component p^0 is \
 TemporalMomentum[p]. TemporalMomentum may appear only inside TemporalPair.";
 
 TemporalPair::usage =
-"TemporalPair[TemporalIndex[], TemporalMomentum[p]] is a special pairing used in the internal \
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] is a special pairing used in the internal \
 representation to denote p^0, the temporal components of a four momentum p.";
 
 
@@ -1073,11 +1069,11 @@ TrFeynCalcObjects = DiracGamma | DiracMatrix | DiracSlash | FermionicChain | GA 
 
 TensorArgsList = {
 	LorentzIndex, ExplicitLorentzIndex, Momentum,
-	CartesianIndex, TemporalIndex, CartesianMomentum, TemporalMomentum
+	CartesianIndex, CartesianMomentum, TemporalMomentum
 };
 
 CHeadsList =  {
-	CartesianIndex, CartesianMomentum, CartesianPair, TemporalIndex, TemporalMomentum, TemporalPair
+	CartesianIndex, CartesianMomentum, CartesianPair, TemporalMomentum, TemporalPair
 };
 
 
@@ -1330,7 +1326,7 @@ DiracGamma[x_ (h:TemporalMomentum|CartesianMomentum|Momentum)[p_, dim1___], dim2
 DiracGamma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
 	0; (* 4 or 3, D-4 *)
 
-DiracGamma[_TemporalMomentum | _TemporalIndex, _Symbol-4]:=
+DiracGamma[_TemporalMomentum, _Symbol-4]:=
 	0;
 
 DiracGamma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_, _Symbol-4]] :=
@@ -1354,11 +1350,11 @@ DiracGamma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_,_Symbol]] :=
 DiracGamma[(h:CartesianIndex|CartesianMomentum)[i_,_Symbol -1]]:=
 	DiracGamma[h[i]]; (* D-1, 4 *)
 
-DiracGamma[m : (_TemporalMomentum | _TemporalIndex), _Symbol]:=
+DiracGamma[m_TemporalMomentum, _Symbol]:=
 	DiracGamma[m];
 
 DiracGamma[m_TemporalMomentum]:=
-	FeynCalc`Package`MetricT DiracGamma[TemporalIndex[]] TemporalPair[m,TemporalIndex[]];
+	FeynCalc`Package`MetricT DiracGamma[ExplicitLorentzIndex[0]] TemporalPair[m, ExplicitLorentzIndex[0]];
 
 (* Explicit indices and gamma^5*)
 
@@ -1487,7 +1483,7 @@ Eps[x__] :=
 Eps[x___, a:(CartesianMomentum|Momentum|LorentzIndex|CartesianIndex)[_,_Symbol-4], y___]:=
 	0/; FCPatternFreeQ[{x,a,y}];
 
-Eps[x___, _TemporalIndex | _TemporalMomentum, y___]:=
+Eps[x___, ExplicitLorentzIndex[0] | _TemporalMomentum, y___]:=
 	0/; Length[{x,y}]===2;
 
 Eps[(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex),(_CartesianMomentum | _CartesianIndex)]:=
@@ -1503,13 +1499,13 @@ Eps[x___, n_ a:( _Momentum| _CartesianMomentum),y___]:=
 	n Eps[x,a,y];
 
 Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[b_, _Symbol] ,z___]:=
-	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}];
+	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}] && h1[a]=!=ExplicitLorentzIndex[0];
 
 Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:CartesianIndex|CartesianMomentum)[b_, _Symbol -1] ,z___]:=
-	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}];
+	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}]  && h1[a]=!=ExplicitLorentzIndex[0] ;
 
 Eps[x___, m_TemporalMomentum, y___]:=
-	TemporalPair[TemporalIndex[],m]Eps[x,TemporalIndex[],y];
+	TemporalPair[ExplicitLorentzIndex[0],m]Eps[x,ExplicitLorentzIndex[0],y];
 
 Eps[x___, Momentum[p_], y___]:=
 	FeynCalc`Package`MetricS Eps[x,CartesianMomentum[p],y]/; Length[{x,y}]===2;
@@ -1521,8 +1517,13 @@ Eps[x___, Momentum[p_, dim_Symbol], y___]:=
 	it is correct to have $LeviCivitaSign and not -$LeviCivitaSign here. *)
 Eps[x1 : (_Momentum | _CartesianMomentum | _CartesianIndex),
 	x2 : (_Momentum | _CartesianMomentum | _CartesianIndex),
-	x3 : (_Momentum | _CartesianMomentum | _CartesianIndex), TemporalIndex[]]:=
+	x3 : (_Momentum | _CartesianMomentum | _CartesianIndex), ExplicitLorentzIndex[0]]:=
 	$LeviCivitaSign Eps[x1,x2,x3];
+
+Eps[ExplicitLorentzIndex[0], x1 : (_Momentum | _CartesianMomentum | _CartesianIndex),
+	x2 : (_Momentum | _CartesianMomentum | _CartesianIndex),
+	x3 : (_Momentum | _CartesianMomentum | _CartesianIndex)]:=
+	-$LeviCivitaSign Eps[x1,x2,x3];
 
 ExplicitLorentzIndex[x_, 4] :=
 	ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
@@ -1539,11 +1540,8 @@ ExplicitLorentzIndex[x: (1|2|3), dim_Symbol-4] :=
 ExplicitLorentzIndex[x: ((Upper|Lower)[1|2|3]), dim_Symbol-4] :=
 	ExplicitLorentzIndex[x, dim-4] = 0;
 
-ExplicitLorentzIndex[0]:=
-	TemporalIndex[];
-
 ExplicitLorentzIndex[0, _Symbol]:=
-	TemporalIndex[];
+	ExplicitLorentzIndex[0];
 
 ExplicitLorentzIndex[0, _Symbol-4]:=
 	0;
@@ -1849,15 +1847,6 @@ Pair[(LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4
 Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol], (b : LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[y_, dim_Symbol-4]] :=
 	Pair[a[x, dim-4], b[y, dim-4]];
 
-Pair[TemporalIndex[], (h : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, _Symbol]]:=
-	Pair[TemporalIndex[],h[x]];
-
-Pair[TemporalIndex[], (h: CartesianIndex | CartesianMomentum)[x_, _Symbol-1]]:=
-	Pair[TemporalIndex[], h[x]];
-
-Pair[TemporalIndex[], (LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[_, _Symbol-4]]:=
-	0;
-
 Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[x_], CartesianIndex[y_, _Symbol-1]] :=
 	Pair[a[x], CartesianIndex[y]];
 
@@ -1882,17 +1871,17 @@ Pair[Momentum[pi_,___], Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]...,
 	Momentum[Polarization[x, ki, opts],dii]]]] /; ( pi - Last[x] ) === 0;
 
 
-Pair[TemporalIndex[], TemporalIndex[]]:=
+Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]]:=
 	FeynCalc`Package`MetricT;
 
-Pair[TemporalIndex[], Momentum[p_]]:=
-	TemporalPair[TemporalIndex[], TemporalMomentum[p]];
+Pair[ExplicitLorentzIndex[0], Momentum[p_]]:=
+	TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]];
 
 (* g^0i is zero by definition *)
-Pair[TemporalIndex[], _CartesianIndex]:=
+Pair[ExplicitLorentzIndex[0], _CartesianIndex]:=
 	0;
 
-Pair[TemporalIndex[], _CartesianMomentum]:=
+Pair[ExplicitLorentzIndex[0], _CartesianMomentum]:=
 	0;
 
 Pair[i_CartesianIndex, j_CartesianIndex]:=
@@ -2253,7 +2242,7 @@ CartesianMomentum[0, _:3] :=
 CartesianMomentum[_, 0] :=
 	0;
 
-CartesianMomentum[(h:LorentzIndex|ExplicitLorentzIndex|CartesianIndex|TemporalIndex|Momentum|TemporalMomentum)[___], _:3]:=
+CartesianMomentum[(h:LorentzIndex|ExplicitLorentzIndex|CartesianIndex|Momentum|TemporalMomentum)[___], _:3]:=
 	(Message[SharedObjects::failmsg,ToString[h,InputForm]<>" is not allowed inside CartesianMomentum"];
 	Abort[])
 
@@ -2272,7 +2261,7 @@ CartesianPair[0,_] :=
 CartesianPair[(CartesianIndex | CartesianMomentum)[_, _Symbol-4], (CartesianIndex | CartesianMomentum)[_]] :=
 	0;
 
-CartesianPair[(h:LorentzIndex|ExplicitLorentzIndex|TemporalIndex|Momentum|TemporalMomentum)[___], _]:=
+CartesianPair[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|TemporalMomentum)[___], _]:=
 	(Message[SharedObjects::failmsg,ToString[h,InputForm]<>" is not allowed inside CartesianPair"];
 	Abort[]);
 
@@ -2317,7 +2306,7 @@ PauliSigma[x_ (h:TemporalMomentum|CartesianMomentum|Momentum)[p_, dim1___], dim2
 PauliSigma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
 	0; (* 4 or 3, D-4 *)
 
-PauliSigma[_TemporalMomentum | _TemporalIndex, _Symbol-4]:=
+PauliSigma[_TemporalMomentum | ExplicitLorentzIndex[0], _Symbol-4]:=
 	0;
 
 PauliSigma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_, _Symbol-4]] :=
@@ -2332,7 +2321,7 @@ PauliSigma[(h:CartesianIndex|CartesianMomentum)[i_, dim_Symbol-1], dim_Symbol-4]
 PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_, dim_Symbol-4], dim_Symbol-1] :=
 	PauliSigma[h[x, dim-4], dim-4]; (* D-4, D-1 *)
 
-PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[x_], _Symbol-1] :=
+PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|TemporalMomentum|CartesianIndex|CartesianMomentum)[x_], _Symbol-1] :=
 	PauliSigma[h[x]]; (* 4 or 3, D-1 *)
 
 PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_,_Symbol]] :=
@@ -2341,24 +2330,21 @@ PauliSigma[(h:LorentzIndex|ExplicitLorentzIndex|Momentum)[x_,_Symbol]] :=
 PauliSigma[(h:CartesianIndex|CartesianMomentum)[i_,_Symbol -1]]:=
 	PauliSigma[h[i]]; (* D-1, 3 *)
 
-PauliSigma[m : (_TemporalMomentum | _TemporalIndex), _Symbol-1]:=
-	PauliSigma[m];
-
 PauliSigma[m_TemporalMomentum]:=
-	FeynCalc`Package`MetricT TemporalPair[m,TemporalIndex[]];
+	FeynCalc`Package`MetricT TemporalPair[m,ExplicitLorentzIndex[0]];
 
-PauliSigma[TemporalIndex[]]=
+PauliSigma[ExplicitLorentzIndex[0]]=
 	1;
-
-
-TemporalIndex[x__] :=
-	(Message[TemporalIndex::argrx, "TemporalIndex["<>ToString[{x}]<>"]", Length[{x}], 0]; Abort[]);
 
 TemporalPair[0,_] :=
 	0;
 
-TemporalPair[(h:CartesianMomentum|Momentum|LorentzIndex|ExplicitLorentzIndex|CartesianIndex)[__], _]:=
+TemporalPair[(h:CartesianMomentum|Momentum|LorentzIndex|CartesianIndex)[__], _]:=
 	(Message[SharedObjects::failmsg,ToString[h,InputForm]<>" is not allowed inside TemporalPair"];
+	Abort[]);
+
+TemporalPair[ExplicitLorentzIndex[x_/;x=!=0], _]:=
+	(Message[SharedObjects::failmsg,ToString[ExplicitLorentzIndex[x],InputForm]<>" is not allowed inside TemporalPair"];
 	Abort[]);
 
 TemporalPair[n_ x_TemporalMomentum, y_] :=
