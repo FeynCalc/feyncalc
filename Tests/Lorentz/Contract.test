@@ -349,28 +349,6 @@ Lor6] (FVE[k, Lor5] MTE[Lor3, i] + FVD[k, Lor3] MTE[Lor5, i])]//FCE",
 "(-4 + D) SPD[k, k] + 2 SPE[k, k] + (-4 + D) SPE[k, k]"}
 };
 
-Tests`Lorentz`fcstContractContractionsUpperLower = {
-
-{"fcstContractContractionsNR-ID1","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]]
-Pair[Momentum[q], LorentzIndex[Upper[mu]]]]","Pair[LorentzIndex[Upper[mu]], Momentum[p]]*Pair[LorentzIndex[Upper[mu]], Momentum[q]]"},
-
-{"fcstContractContractionsNR-ID2","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]]
-Pair[Momentum[p], LorentzIndex[Upper[mu]]]]","Pair[LorentzIndex[Upper[mu]], Momentum[p]]^2"},
-
-{"fcstContractContractionsNR-ID3","Contract[Pair[Momentum[p], LorentzIndex[Lower[mu]]]
-Pair[Momentum[q], LorentzIndex[Lower[mu]]]]","Pair[LorentzIndex[Lower[mu]], Momentum[p]]*Pair[LorentzIndex[Lower[mu]], Momentum[q]]"},
-
-{"fcstContractContractionsNR-ID4","Contract[Pair[Momentum[p], LorentzIndex[Lower[mu]]]
-Pair[Momentum[p], LorentzIndex[Lower[mu]]]]","Pair[LorentzIndex[Lower[mu]], Momentum[p]]^2"},
-
-{"fcstContractContractionsNR-ID5","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]]
-Pair[Momentum[q], LorentzIndex[Lower[mu]]]]","Pair[Momentum[p], Momentum[q]]"},
-
-{"fcstContractContractionsNR-ID6","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]]
-Pair[Momentum[p], LorentzIndex[Lower[mu]]]]","Pair[Momentum[p], Momentum[p]]"}
-};
-
-
 Tests`Lorentz`fcstContractCartesian = {
 {"fcstContractCartesian-ID1","FCE[Contract[FVD[v1, mu] FVD[v2, nu] Pair[LorentzIndex[mu], CartesianIndex[i]] Pair[ LorentzIndex[nu], CartesianIndex[i]]]]","CSP[v1, v2]"},
 {"fcstContractCartesian-ID2","Contract[3 +I CLC[i, j,aa] (CSI[j] KD[i, aa] + I CLC[aa, i, bb] (I CLC[bb, j, cc] CSI[cc] + KD[j, bb]))]","-3"},

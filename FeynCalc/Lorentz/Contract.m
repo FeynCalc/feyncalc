@@ -369,22 +369,6 @@ Contract[expr_, z:OptionsPattern[]] :=
 		FCPrint[3, "Contract: Terms that contain Lorentz indices with a FreeIndex DataType: ", rest2, FCDoControl->cnVerbose];
 		FCPrint[3, "Contract: Other terms: ", tmp, FCDoControl->cnVerbose];
 
-		(* Assuming that numer of terms Upper and Lower is rather small*)
-
-		If[	!FreeQ2[tmp, {Upper,Lower}],
-			FCPrint[1,"Contract: Separating terms that contain Lorentz indices with Upper or Lower", FCDoControl->cnVerbose];
-			time=AbsoluteTime[];
-			{tmp,rest3} = FCSplit[tmp, {Upper,Lower},Expanding->False];
-			FCPrint[3, "Contract: Terms that contain Upper or Lower: ", rest3, FCDoControl->cnVerbose];
-			FCPrint[3, "Contract: Other terms: ", tmp, FCDoControl->cnVerbose];
-			If[rest3=!=0,
-				rest3 = Contract1[rest3]
-			];
-			FCPrint[1,"Contract: Splitting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-			FCPrint[3, "Contract: Terms that contain Lorentz indices with Upper or Lower: ", tmp, FCDoControl->cnVerbose];
-			FCPrint[3, "Contract: Other terms: ", rest3, FCDoControl->cnVerbose]
-		];
-
 		(* Now we determine terms that contain dummy indices *)
 		(* TODO Fish out the eps terms beforehand!!! *)
 		time=AbsoluteTime[];

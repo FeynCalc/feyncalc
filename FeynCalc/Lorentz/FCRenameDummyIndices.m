@@ -71,10 +71,9 @@ FCRenameDummyIndices[expr_, OptionsPattern[]] :=
 
 		If[ Head[exprFCI]===Plus,
 			indexList =
-				Map[Tally, Map[Cases[#, (patt)[ind_, ___]/;(Head[ind]=!=Upper &&
-						Head[ind]=!=Lower) :> ind, Infinity]&,Apply[List, exprFCI]]]// Flatten[#, 1] & // Union,
+				Map[Tally, Map[Cases[#, (patt)[ind_, ___] :> ind, Infinity]&,Apply[List, exprFCI]]]// Flatten[#, 1] & // Union,
 			indexList =
-				Cases[exprFCI, (patt)[ind_,___]/;(Head[ind]=!=Upper && Head[ind]=!=Lower) :> ind, Infinity] // Tally;
+				Cases[exprFCI, (patt)[ind_,___] :> ind, Infinity] // Tally;
 		];
 
 		FCPrint[1,"List of indices to be randomized: ", StandardForm[indexList]];

@@ -293,105 +293,7 @@ Cell[BoxData[
  CellTags->"Dimension",
  CellLabel->"Out[3]//StandardForm=",
  CellID->379657902]
-}, Open  ]],
-
-Cell["\<\
-Setting the global variable $LorentzIndices to True will display the \
-dimension (if different from 4) as a subscript.\
-\>", "Text",
- CellTags->"Dimension",
- CellID->1658312621],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "True"}], ";"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[4]:=",
- CellID->136991377],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"MetricTensor", "[", 
-   RowBox[{"\[Alpha]", ",", "\[Beta]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}], 
-  RowBox[{"DiracMatrix", "[", 
-   RowBox[{"\[Alpha]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}]}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[5]:=",
- CellID->1877198136],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox["\[Gamma]", 
-    FormBox[
-     SubscriptBox[
-      FormBox["\[Alpha]",
-       TraditionalForm], 
-      FormBox["n",
-       TraditionalForm]],
-     TraditionalForm]], " ", 
-   FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        SubscriptBox[
-         FormBox["\[Alpha]",
-          TraditionalForm], 
-         FormBox["n",
-          TraditionalForm]],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        SubscriptBox[
-         FormBox["\[Beta]",
-          TraditionalForm], 
-         FormBox["n",
-          TraditionalForm]],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"Dimension",
- CellLabel->"Out[5]=",
- CellID->1953179545]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[6]:=",
- CellID->40947459],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "n"}], "]"}], ",", "n"}], "]"}], " ", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "n"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Beta]", ",", "n"}], "]"}]}], "]"}]}]], "Output",
- CellTags->"Dimension",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1903897849]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "False"}], ";"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[7]:=",
- CellID->889371773]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -455,7 +357,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{0, Automatic}, {Automatic, 62}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

@@ -27,12 +27,8 @@ dootpow::usage="";
 csp::usage="";
 
 CartesianIndex /:
-	MakeBoxes[ CartesianIndex[p_, dim_ : 3], TraditionalForm]:=
-		If[ $LorentzIndices =!= True,
-			ToBoxes[Style[p,Bold],TraditionalForm],
-			SubscriptBox[ToBoxes[Style[p,Bold], TraditionalForm],
-			ToBoxes[dim, TraditionalForm]]
-		];
+	MakeBoxes[ CartesianIndex[p_, ___], TraditionalForm]:=
+		ToBoxes[Style[p,Bold],TraditionalForm];
 
 (*    Typesetting for cartesian momenta.    *)
 (* ------------------------------------------------------------------------ *)
@@ -442,13 +438,6 @@ DiracGamma /:
 		SuperscriptBox[RowBox[{cgammaSigmaRep[dim1,dim2,"\[Gamma]"]}], TBox[CartesianIndex[in,dim1]]];
 
 DiracGamma /:
-	MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[(in: Upper| Lower)[x_], dim1_:4], dim2_:4], TraditionalForm ]:=
-		If[ in===Upper,
-			SuperscriptBox[RowBox[{gammaRep[dim2,dim1,"\[Gamma]"]}], TBox[lo[in[x],dim1]]],
-			SubscriptBox[RowBox[{gammaRep[dim2,dim1,"\[Gamma]"]}], TBox[lo[in[x],dim1]]]
-		];
-
-DiracGamma /:
 	MakeBoxes[ DiracGamma[(a : (5 | 6 | 7))], TraditionalForm ]:=
 		SuperscriptBox[RowBox[{gammaRep[4,4,"\[Gamma]"]}], TBox[a]];
 
@@ -539,14 +528,7 @@ ExplicitDiracIndex /:
 
 ExplicitLorentzIndex /:
 	MakeBoxes[ ExplicitLorentzIndex[p_, dim_ : 4], TraditionalForm]:=
-		If[ $LorentzIndices =!= True,
-			ToBoxes[TypesettingExplicitLorentzIndex[p, dim],TraditionalForm],
-			SubscriptBox[ToBoxes[TypesettingExplicitLorentzIndex[p, dim], TraditionalForm], ToBoxes[dim, TraditionalForm]]
-		];
-
-ExplicitLorentzIndex /:
-	MakeBoxes[ ExplicitLorentzIndex[(Upper|Lower)[p_], dim_ : 4], TraditionalForm]:=
-		ToBoxes[ExplicitLorentzIndex[Identity@@p,dim], TraditionalForm];
+		ToBoxes[TypesettingExplicitLorentzIndex[p, dim],TraditionalForm];
 
 ExplicitSUNIndex /:
 	MakeBoxes[ ExplicitSUNIndex[p_], TraditionalForm]:=
@@ -995,17 +977,8 @@ LeviCivita /:
 		Length[{x,y}] === 4 && !OptionValue[LeviCivita,{opts1,opts2},FCI];
 
 LorentzIndex /:
-	MakeBoxes[ LorentzIndex[p_, dim_ : 4], TraditionalForm]:=
-		If[ $LorentzIndices =!= True,
-			ToBoxes[p,TraditionalForm],
-			SubscriptBox[ToBoxes[p, TraditionalForm],
-			ToBoxes[dim, TraditionalForm]]
-		];
-
-LorentzIndex /:
-	MakeBoxes[ LorentzIndex[(Upper|Lower)[p_], dim_ : 4], TraditionalForm]:=
-		ToBoxes[LorentzIndex[p,dim],
-		TraditionalForm];
+	MakeBoxes[ LorentzIndex[p_, ___], TraditionalForm]:=
+		ToBoxes[p,TraditionalForm];
 
 MetricTensor /:
 	MakeBoxes[MetricTensor[a_, b_, opts:OptionsPattern[]], TraditionalForm]:=
@@ -1108,28 +1081,9 @@ Pair /:
 	MakeBoxes[Pair[CartesianIndex[i_,dim1_Symbol-4], LorentzIndex[l_,dim2_:4]],TraditionalForm]:=
 		SuperscriptBox[RowBox[{metricRep[{dim1-4,dim2}]}],
 			TBox[CartesianIndex[i,dim1-4], LorentzIndex[l,dim2]]];
-
-Pair /:
-	MakeBoxes[Pair[ (LorentzIndex|ExplicitLorentzIndex)[(a : Upper | Lower)[x_], dim1_:4],
-	(LorentzIndex|ExplicitLorentzIndex)[(b : Upper | Lower)[y_], dim2_:4]], TraditionalForm]:=
-	Which[
-		a===Upper && b===Upper,
-			SuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
-			TBox[LorentzIndex[a[x],dim1], LorentzIndex[b[y],dim2]]],
-		a===Lower && b===Lower,
-			SubscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
-			TBox[LorentzIndex[a[x],dim1], LorentzIndex[b[y],dim2]] ],
-		a===Lower && b===Upper,
-			SubsuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
-			TBox[LorentzIndex[a[x],dim1]], TBox[LorentzIndex[b[y],dim2]]  ],
-		a===Upper && b===Lower,
-			SubsuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
-			TBox[LorentzIndex[b[y],dim2]], TBox[LorentzIndex[a[x],dim1]]  ]
-	];
-
 Pair /:
 	MakeBoxes[Pair[(LorentzIndex|ExplicitLorentzIndex)[a_, dim1_:4], (LorentzIndex|ExplicitLorentzIndex)[b_, dim2_:4] ], TraditionalForm]:=
-		ToBoxes[Pair[LorentzIndex[Upper[a],dim1],LorentzIndex[Upper[b],dim2]],TraditionalForm];
+		SuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}], TBox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]]];
 
 (*    Typesetting for scalar products.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1209,41 +1163,21 @@ polarizationRep[pol_,dim_] :=
 
 Pair /:
 	MakeBoxes[Pair[
-		(LorentzIndex|
-		ExplicitLorentzIndex)[(x: Upper | Lower)[a_], dim_ : 4],
+		(LorentzIndex| ExplicitLorentzIndex)[a_, dim_ : 4],
 		Momentum[Polarization[b_, c:Except[_?OptionQ], OptionsPattern[]], dim_: 4]], TraditionalForm]:=
-		If[ x===Upper,
-			RowBox[{SuperscriptBox[polarizationRep[c,dim], TBox[LorentzIndex[x[a]]]], "(",TBox[b],")"}],
-			RowBox[{SubscriptBox[polarizationRep[c,dim], TBox[LorentzIndex[x[a]]]], "(",TBox[b],")"}]
-		];
-
-Pair /:
-	MakeBoxes[Pair[
-		(l : LorentzIndex|
-		ExplicitLorentzIndex)[a_, dim_ : 4],
-		Momentum[Polarization[b_, c_, opts:OptionsPattern[]], dim_: 4]], TraditionalForm]:=
-			ToBoxes[Pair[l[Upper[a],dim],Momentum[Polarization[b, c, opts],dim]],TraditionalForm];
+			RowBox[{SuperscriptBox[polarizationRep[c,dim], TBox[LorentzIndex[a]]], "(",TBox[b],")"}];
 
 (*    Typesetting for momentum vectors.    *)
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
-	MakeBoxes[Pair[(h : LorentzIndex| ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim_ : 4],
-		(c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
-		If[ !FreeQ2[{(c0+c1)/.dim->Identity},{Plus,Times}],
-			If[ x===Upper,
-				SuperscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[h[x[a],dim]]],
-				SubscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[h[x[a],dim]]]
-			],
-			If[ x===Upper,
-				SuperscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[h[x[a],dim]]],
-				SubscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[h[x[a],dim]]]
-			]
-		];
-
-Pair /:
 	MakeBoxes[Pair[(h : LorentzIndex| ExplicitLorentzIndex)[a_, dim_ : 4], (c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
-			ToBoxes[Pair[h[Upper[a],dim], c0 + c1],TraditionalForm];
+	If[ !FreeQ2[{(c0+c1)/.dim->Identity},{Plus,Times}],
+			SuperscriptBox[ RowBox[{"(",TBox[c0 + c1],")"}], TBox[h[a,dim]]],
+			SuperscriptBox[ RowBox[{TBox[c0 + c1]}], TBox[h[a,dim]]]
+	];
+
+
 
 MakeBoxes[Power[Pair[(h : LorentzIndex | ExplicitLorentzIndex)[a___], c0_. b_Momentum + c1_: 0], n_], TraditionalForm] :=
 	SuperscriptBox[RowBox[{"(", ToBoxes[Pair[h[a], c0 b + c1], TraditionalForm], ")"}],ToBoxes[n]];

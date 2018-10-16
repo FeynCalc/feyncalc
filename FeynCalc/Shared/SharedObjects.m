@@ -357,9 +357,6 @@ LorentzIndex[mu, 4] simplifies to LorentzIndex[mu]. \
 If the first argument is an integer, LorentzIndex[i] turns into \
 ExplicitLorentzIndex[i].";
 
-Lower::usage =
-"Lower may be used inside LorentzIndex to indicate a covariant LorentzIndex.";
-
 MetricTensor::usage =
 "MetricTensor[mu, nu] is the metric tensor in 4 dimensions. \
 The metric tensor in d dimensions is obtained by supplying the
@@ -649,9 +646,6 @@ the physical behavior of those objects."
 TypesettingExplicitLorentzIndex::usage =
 "TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of
 explicit Lorentz indices.."
-
-Upper::usage = "Upper may be used inside LorentzIndex to indicate an \
-contravariant LorentzIndex.";
 
 Zeta2::usage =
 "Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in \
@@ -1531,13 +1525,7 @@ ExplicitLorentzIndex[x_, 4] :=
 ExplicitLorentzIndex[x: (1|2|3), dim_Symbol] :=
 	ExplicitLorentzIndex[x, dim] = ExplicitLorentzIndex[x];
 
-ExplicitLorentzIndex[x: ((Upper|Lower)[1|2|3]), dim_Symbol] :=
-	ExplicitLorentzIndex[x, dim] = ExplicitLorentzIndex[x];
-
 ExplicitLorentzIndex[x: (1|2|3), dim_Symbol-4] :=
-	ExplicitLorentzIndex[x, dim-4] = 0;
-
-ExplicitLorentzIndex[x: ((Upper|Lower)[1|2|3]), dim_Symbol-4] :=
 	ExplicitLorentzIndex[x, dim-4] = 0;
 
 ExplicitLorentzIndex[0, _Symbol]:=

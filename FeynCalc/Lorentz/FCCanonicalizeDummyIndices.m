@@ -147,7 +147,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		FCPrint[3,"FCCanonicalizeDummyIndices: dimensions: ", dimensions, FCDoControl->canodummyVerbose];
 
 		indexList = Map[
-			ReplaceAll[Cases[#, (Alternatives@@indhead)[ind_, ___]/;(Head[ind]=!=Upper && Head[ind]=!=Lower), Infinity],(h:(Alternatives@@indhead))[ind_, ___]:>h[ind]]&,
+			ReplaceAll[Cases[#, (Alternatives@@indhead)[_, ___], Infinity],(h:(Alternatives@@indhead))[ind_, ___]:>h[ind]]&,
 		Apply[List, tmp+null1+null2]];
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: Preliminary indexList: ", indexList, FCDoControl->canodummyVerbose];

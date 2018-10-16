@@ -240,83 +240,7 @@ Cell[BoxData[
  CellTags->"LorentzIndex",
  CellLabel->"Out[2]=",
  CellID->361522335]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ComplexConjugate", "[", 
-  RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}]], "Input",
- CellTags->"LorentzIndex",
- CellLabel->"In[4]:=",
- CellID->1542722880],
-
-Cell[BoxData[
- FormBox["\[Mu]", TraditionalForm]], "Output",
- CellTags->"LorentzIndex",
- CellLabel->"Out[4]=",
- CellID->225253784]
-}, Open  ]],
-
-Cell["\<\
-Setting $LorentzIndices=True displays the dimension (if different from 4) as \
-a subindex.\
-\>", "Text",
- CellTags->"LorentzIndex",
- CellID->745501605],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "True"}], ";"}]], "Input",
- CellTags->"LorentzIndex",
- CellLabel->"In[6]:=",
- CellID->209941583],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Alpha]", ",", "D"}], "]"}], ",", 
-   RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Nu]", ",", "n"}], "]"}], ",", 
-   RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Beta]", ",", "4"}], "]"}]}], "}"}]], "Input",
- CellTags->"LorentzIndex",
- CellLabel->"In[7]:=",
- CellID->490327018],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    SubscriptBox[
-     FormBox["\[Alpha]",
-      TraditionalForm], 
-     FormBox["D",
-      TraditionalForm]], ",", 
-    SubscriptBox[
-     FormBox["\[Nu]",
-      TraditionalForm], 
-     FormBox["n",
-      TraditionalForm]], ",", 
-    SubscriptBox[
-     FormBox["\[Beta]",
-      TraditionalForm], 
-     FormBox["4",
-      TraditionalForm]]}], "}"}], TraditionalForm]], "Output",
- CellTags->"LorentzIndex",
- CellLabel->"Out[7]=",
- CellID->648573594]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", " ", "=", " ", "False"}], ";"}]], "Input",
- CellTags->"LorentzIndex",
- CellLabel->"In[8]:=",
- CellID->1095442238]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -380,7 +304,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{0, Automatic}, {Automatic, 62}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

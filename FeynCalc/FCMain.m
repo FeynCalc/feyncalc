@@ -226,10 +226,6 @@ $LoadPhi::usage =
 with FeynCalc. Its value must be set before loading FeynCalc. \
 The default value is False.";
 
-$LorentzIndices::usage =
-"$LorentzIndices is a global variable. If set to True the dimension \
-of LorentzIndex is displayed as an index.";
-
 $MemoryAvailable::usage =
 "$MemoryAvailable is  a global variable which is set to an integer \
 n, where n is the available amount of main memory in MB. \
@@ -409,7 +405,6 @@ $Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
 $LimitTo4IRUnsafe	= False;
-$LorentzIndices		= False;
 $MemoryAvailable	= 4096;
 $Multiplications	= {Times, DOT};
 $OPEWard			= False;

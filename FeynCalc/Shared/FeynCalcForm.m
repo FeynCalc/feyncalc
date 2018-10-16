@@ -364,10 +364,6 @@ feynCalcForm[x_,opt___Rule]:=
 					feynden[v]/.
 				PropagatorDenominator[v__] :>
 					fdprop[v]/.
-				Lower[v_,___] :>
-					v /.
-				Upper[v_,___] :>
-					v /.
 				Momentum[v__] :>
 					didm[v]  /.
 				LorentzIndex[v__] :>
