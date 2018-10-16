@@ -39,11 +39,6 @@ FieldDerivative[c[f, g, h][x], x, {mu}] ->
 c[FieldDerivative[f[x], x, {mu}], FieldDerivative[f[x], x, {mu}],
 FieldDerivative[f[x], x, {mu}]].";
 
-$Covariant::usage =
-"The boolean setting of $Covariant determines whether \
-lorentz indices are displayed as lower indices (True) or as \
-upper ones (False).";
-
 $DisableMemSet::usage=
 "The boolean setting of $DisableMemSet allows to disable \
 memoizaion that is activated via MemSet. This can be \
@@ -369,7 +364,6 @@ $Abbreviations = {
 
 $BreitMaison			= False;
 $Containers				= {};
-$Covariant				= False;
 $DisableMemSet 			= False;
 $DistributiveFunctions	= {Conjugate, Transpose};
 $FCShowIEta				= True;

@@ -435,17 +435,11 @@ DiracGamma /:
 
 DiracGamma /:
 	MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[in_, dim1_:4], dim2_:4], TraditionalForm ]:=
-		If[ $Covariant===False,
-			SuperscriptBox[RowBox[{gammaRep[dim2,dim1,"\[Gamma]"]}], TBox[lo[in,dim1]]],
-			SubscriptBox[RowBox[{gammaRep[dim2,dim1,"\[Gamma]"]}], TBox[lo[in,dim1]]]
-		];
+		SuperscriptBox[RowBox[{gammaRep[dim2,dim1,"\[Gamma]"]}], TBox[lo[in,dim1]]];
 
 DiracGamma /:
 	MakeBoxes[ DiracGamma[CartesianIndex[in_, dim1_:3], dim2_:4], TraditionalForm ]:=
-		If[ $Covariant===False,
-			SuperscriptBox[RowBox[{cgammaSigmaRep[dim1,dim2,"\[Gamma]"]}], TBox[CartesianIndex[in,dim1]]],
-			SubscriptBox[RowBox[{cgammaSigmaRep[dim1,dim2,"\[Gamma]"]}], TBox[CartesianIndex[in,dim1]]]
-		];
+		SuperscriptBox[RowBox[{cgammaSigmaRep[dim1,dim2,"\[Gamma]"]}], TBox[CartesianIndex[in,dim1]]];
 
 DiracGamma /:
 	MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[(in: Upper| Lower)[x_], dim1_:4], dim2_:4], TraditionalForm ]:=
@@ -1135,10 +1129,7 @@ Pair /:
 
 Pair /:
 	MakeBoxes[Pair[(LorentzIndex|ExplicitLorentzIndex)[a_, dim1_:4], (LorentzIndex|ExplicitLorentzIndex)[b_, dim2_:4] ], TraditionalForm]:=
-		If[ $Covariant===False,
-			ToBoxes[Pair[LorentzIndex[Upper[a],dim1],LorentzIndex[Upper[b],dim2]],TraditionalForm],
-			ToBoxes[Pair[LorentzIndex[Lower[a],dim1],LorentzIndex[Lower[b],dim2]],TraditionalForm]
-		];
+		ToBoxes[Pair[LorentzIndex[Upper[a],dim1],LorentzIndex[Upper[b],dim2]],TraditionalForm];
 
 (*    Typesetting for scalar products.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1231,10 +1222,7 @@ Pair /:
 		(l : LorentzIndex|
 		ExplicitLorentzIndex)[a_, dim_ : 4],
 		Momentum[Polarization[b_, c_, opts:OptionsPattern[]], dim_: 4]], TraditionalForm]:=
-		If[ $Covariant===False,
-			ToBoxes[Pair[l[Upper[a],dim],Momentum[Polarization[b, c, opts],dim]],TraditionalForm],
-			ToBoxes[Pair[l[Lower[a],dim],Momentum[Polarization[b, c, opts],dim]],TraditionalForm]
-		];
+			ToBoxes[Pair[l[Upper[a],dim],Momentum[Polarization[b, c, opts],dim]],TraditionalForm];
 
 (*    Typesetting for momentum vectors.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1255,10 +1243,7 @@ Pair /:
 
 Pair /:
 	MakeBoxes[Pair[(h : LorentzIndex| ExplicitLorentzIndex)[a_, dim_ : 4], (c0: _. Momentum[_, dim_ : 4])+ c1_:0], TraditionalForm]:=
-			If[ $Covariant===False,
-				ToBoxes[Pair[h[Upper[a],dim], c0 + c1],TraditionalForm],
-				ToBoxes[Pair[h[Lower[a],dim], c0 + c1],TraditionalForm]
-			];
+			ToBoxes[Pair[h[Upper[a],dim], c0 + c1],TraditionalForm];
 
 MakeBoxes[Power[Pair[(h : LorentzIndex | ExplicitLorentzIndex)[a___], c0_. b_Momentum + c1_: 0], n_], TraditionalForm] :=
 	SuperscriptBox[RowBox[{"(", ToBoxes[Pair[h[a], c0 b + c1], TraditionalForm], ")"}],ToBoxes[n]];
