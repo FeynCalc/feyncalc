@@ -136,12 +136,20 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			times = OptionValue[Dot]
 		];
 
-		If[factoring === True || factoring === Factor2,
-			factor = Factor2,
-			If[factoring =!= False,
-				factor = factoring; factoring = True,
-				factor = Identity
-			];
+		Switch[factoring,
+			False,
+				factor = Identity,
+			True|Factor2,
+				factor = Factor2,
+			{_,_Integer},
+				factor = Function[fuArg,
+					If[	TrueQ[LeafCount[fuArg]<factoring[[2]]],
+						(factoring[[1]])[fuArg],
+						fuArg
+					]
+				],
+			_,
+				factor = factoring
 		];
 
 		FCPrint[1,"Collect2: Entering Collect2.", FCDoControl->cl2Verbose];
