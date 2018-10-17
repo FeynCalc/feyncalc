@@ -245,7 +245,16 @@ D]]*Spinor[-Momentum[p, D], m, 1]"},
 "DiracEquation[SpinorVD[p,m].CGSD[r].GSD[p]]",
 "m*Spinor[-Momentum[p, D], m, 1] . DiracGamma[CartesianMomentum[r, -1 + \
 D], D] + 2*CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[r, -1 + \
-D]]*Spinor[-Momentum[p, D], m, 1]"}
-
-
+D]]*Spinor[-Momentum[p, D], m, 1]"},
+{"fcstDiracEquation-ID57",
+"DiracEquation[
+Spinor[Momentum[pE2, D], 0, 1].GAD[mu].GA[
+	7].Spinor[-Momentum[pE1, D], 0, 1] Spinor[
+	Momentum[pB, D] - Momentum[pE1, D] - Momentum[pE2, D], 0, 1].GSD[
+	pE1].GSD[pE1].GAD[mu].GA[7].Spinor[Momentum[pB, D], mB, 1]]",
+"Spinor[Momentum[pB, D] - Momentum[pE1, D] - Momentum[pE2, D], 0,
+1].DiracGamma[LorentzIndex[mu, D], D].DiracGamma[7].Spinor[
+Momentum[pB, D], mB, 1] Spinor[Momentum[pE2, D], 0, 1].DiracGamma[
+LorentzIndex[mu, D], D].DiracGamma[7].Spinor[-Momentum[pE1, D], 0,
+1] Pair[Momentum[pE1, D], Momentum[pE1, D]]"}
 }

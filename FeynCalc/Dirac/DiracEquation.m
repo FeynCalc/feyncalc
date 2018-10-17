@@ -87,7 +87,7 @@ spCDieqRules = {
 		]) /; last[n Momentum[p]+k]===Momentum[p],
 
 	HoldDOT[ a___,DiracGamma[Momentum[y_,dim_:4],dim_:4], DiracGamma[Momentum[y_,dim_:4],dim_:4],b___] :>
-		ExpandScalarProduct[Momentum[y,dim],Momentum[y,dim]] HoldDOT[a,b],
+		ExpandScalarProduct[Pair[Momentum[y,dim],Momentum[y,dim]]] HoldDOT[a,b],
 
 (* 	Here the situation is more complicated since we need to move the slash through a certain number
 	of other Dirac matrices before we reach the spinor. Note that the matrices
