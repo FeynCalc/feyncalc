@@ -25,6 +25,7 @@ Begin["`SharedObjectsTypesetting`Private`"]
 
 dootpow::usage="";
 csp::usage="";
+sp::usage="";
 
 CartesianIndex /:
 	MakeBoxes[ CartesianIndex[p_, ___], TraditionalForm]:=
@@ -48,10 +49,9 @@ CartesianMomentum /:
 			SuperscriptBox[TBox[CartesianMomentum[Style[x,Bold], dim]], ToBoxes[y,TraditionalForm]]
 		];
 
-(* TODO performance-wise not so clever... *)
 CartesianMomentum /:
-	MakeBoxes[ CartesianMomentum[p_Plus,dim_: 3], TraditionalForm]:=
-			TBox[MomentumExpand[CartesianMomentum[p,dim]]];
+	MakeBoxes[CartesianMomentum[p_Plus,dim_: 3], TraditionalForm]:=
+			TBox[CartesianMomentum[#,dim]&/@Expand[p]];
 
 CartesianMomentumRep[p_,dim_] :=
 	Which[
@@ -111,8 +111,8 @@ TraditionalForm] :=
 
 CartesianPair /:
 	MakeBoxes[CartesianPair[c1_. CartesianMomentum[a_, dim1_ : 3]+a1_:0, c2_. CartesianMomentum[b_, dim2_ : 3]+b1_:0],TraditionalForm]:=
-	Block[ {    m1 = MomentumExpand[c1 CartesianMomentum[a,dim1]+a1],
-			m2 = MomentumExpand[c2 CartesianMomentum[b,dim2]+b1]},
+	Block[{ m1 = Expand[(c1*a +a1)/.CartesianMomentum[z_,___]:>z],
+			m2 = Expand[(c2*b +b1)/.CartesianMomentum[z_,___]:>z]},
 		Which[
 
 			m1===m2,
@@ -123,23 +123,23 @@ CartesianPair /:
 
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
 				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(", m1, "\[CenterDot]", m2, ")"],
-					TBox[m1, "\[CenterDot]", m2]
+					TBox["(", CartesianMomentum[m1,dim1], "\[CenterDot]", CartesianMomentum[m2,dim2], ")"],
+					TBox[CartesianMomentum[m1,dim1], "\[CenterDot]", CartesianMomentum[m2,dim2]]
 				],
 			Head[m1]=!=Plus && Head[m2]===Plus,
 				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(",m1,"\[CenterDot]", "(",m2,")",")"],
-					TBox[m1,"\[CenterDot]", "(",m2,")"]
+					TBox["(",CartesianMomentum[m1,dim1],"\[CenterDot]", "(",CartesianMomentum[m2,dim2],")",")"],
+					TBox[CartesianMomentum[m1,dim1],"\[CenterDot]", "(",CartesianMomentum[m2,dim2],")"]
 				],
 			Head[m1]===Plus && Head[m2]=!=Plus,
 				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(","(",m1,")","\[CenterDot]", m2,")"],
-					TBox["(",m1,")","\[CenterDot]", m2]
+					TBox["(","(",CartesianMomentum[m1,dim1],")","\[CenterDot]", CartesianMomentum[m2,dim2],")"],
+					TBox["(",CartesianMomentum[m1,dim1],")","\[CenterDot]", CartesianMomentum[m2,dim2]]
 				],
 			Head[m1]===Plus && Head[m2]===Plus,
 				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(","(",m1,")","\[CenterDot]", "(",m2,")",")"],
-					TBox["(",m1,")","\[CenterDot]", "(",m2,")"]
+					TBox["(","(",CartesianMomentum[m1,dim1],")","\[CenterDot]", "(",CartesianMomentum[m2,dim2],")",")"],
+					TBox["(",CartesianMomentum[m1,dim1],")","\[CenterDot]", "(",CartesianMomentum[m2,dim2],")"]
 				]
 		]
 	];
@@ -195,153 +195,153 @@ MakeBoxes[Power[CartesianPair[h_CartesianIndex, c0_. b_CartesianMomentum + c1_: 
 
 TGA /:
 	MakeBoxes[ TGA[], TraditionalForm ]:=
-		ToBoxes[FCI[TGA[]], TraditionalForm];
+		ToBoxes[DiracGamma[ExplicitLorentzIndex[0]], TraditionalForm];
 
 CGA /:
 	MakeBoxes[ CGA[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CGA[x]], TraditionalForm];
+		ToBoxes[DiracGamma[CartesianIndex[x]], TraditionalForm];
 
 CGAD /:
 	MakeBoxes[ CGAD[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CGAD[x]], TraditionalForm];
+		ToBoxes[DiracGamma[CartesianIndex[x, D-1],D], TraditionalForm];
 
 CGAE /:
 	MakeBoxes[ CGAE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CGAE[x]], TraditionalForm];
+		ToBoxes[DiracGamma[CartesianIndex[x, D-4], D-4], TraditionalForm];
 
 CGS /:
 	MakeBoxes[ CGS[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CGS[x]], TraditionalForm];
+		ToBoxes[DiracGamma[CartesianMomentum[x]], TraditionalForm];
 
 CGSD /:
 	MakeBoxes[ CGSD[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CGSD[x]], TraditionalForm];
+		ToBoxes[DiracGamma[CartesianMomentum[x, D-1],D], TraditionalForm];
 
 CGSE /:
 	MakeBoxes[ CGSE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CGSE[x]], TraditionalForm];
+		ToBoxes[DiracGamma[CartesianMomentum[x, D-4],D-4], TraditionalForm];
 
 
 SI /:
 	MakeBoxes[ SI[x_], TraditionalForm ]:=
-		ToBoxes[FCI[SI[x]], TraditionalForm];
+		ToBoxes[PauliSigma[LorentzIndex[x]], TraditionalForm];
 
 SID /:
 	MakeBoxes[ SID[x_], TraditionalForm ]:=
-		ToBoxes[FCI[SID[x]], TraditionalForm];
+		ToBoxes[PauliSigma[LorentzIndex[x,D],D-1], TraditionalForm];
 
 SIE /:
 	MakeBoxes[ SIE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[SIE[x]], TraditionalForm];
+		ToBoxes[PauliSigma[LorentzIndex[x,D-4],D-4], TraditionalForm];
 
 
 SIS /:
 	MakeBoxes[ SIS[x_], TraditionalForm ]:=
-		ToBoxes[FCI[SIS[x]], TraditionalForm];
+		ToBoxes[PauliSigma[Momentum[x]], TraditionalForm];
 
 SISD /:
 	MakeBoxes[ SISD[x_], TraditionalForm ]:=
-		ToBoxes[FCI[SISD[x]], TraditionalForm];
+		ToBoxes[PauliSigma[Momentum[x,D],D-1], TraditionalForm];
 
 SISE /:
 	MakeBoxes[ SISE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[SISE[x]], TraditionalForm];
+		ToBoxes[PauliSigma[Momentum[x,D-4],D-4], TraditionalForm];
 
 
 
 CSI /:
 	MakeBoxes[ CSI[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CSI[x]], TraditionalForm];
+		ToBoxes[PauliSigma[CartesianIndex[x]], TraditionalForm];
 
 CSID /:
 	MakeBoxes[ CSID[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CSID[x]], TraditionalForm];
+		ToBoxes[PauliSigma[CartesianIndex[x,D-1],D-1], TraditionalForm];
 
 CSIE /:
 	MakeBoxes[ CSIE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CSIE[x]], TraditionalForm];
+		ToBoxes[PauliSigma[CartesianIndex[x,D-4],D-4], TraditionalForm];
 
 
 CSIS /:
 	MakeBoxes[ CSIS[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CSIS[x]], TraditionalForm];
+		ToBoxes[PauliSigma[CartesianMomentum[x]], TraditionalForm];
 
 CSISD /:
 	MakeBoxes[ CSISD[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CSISD[x]], TraditionalForm];
+		ToBoxes[PauliSigma[CartesianMomentum[x,D-1],D-1], TraditionalForm];
 
 CSISE /:
 	MakeBoxes[ CSISE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[CSISE[x]], TraditionalForm];
+		ToBoxes[PauliSigma[CartesianMomentum[x,D-4],D-4], TraditionalForm];
 
 TC /:
 	MakeBoxes[TC[a_], TraditionalForm]:=
-		ToBoxes[FCI[TC[a]], TraditionalForm];
+		ToBoxes[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[a]], TraditionalForm];
 
 MakeBoxes[Power[TC[a_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[TC[a]], n], TraditionalForm];
+	ToBoxes[Power[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[a]], n], TraditionalForm];
 
 CV /:
 	MakeBoxes[CV[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[CV[a,b]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianMomentum[a],CartesianIndex[b]], TraditionalForm];
 
 MakeBoxes[Power[CV[a_, b_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[CV[a, b]], n], TraditionalForm];
+	ToBoxes[Power[CartesianPair[CartesianMomentum[a],CartesianIndex[b]], n], TraditionalForm];
 
 CVD /:
 	MakeBoxes[CVD[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[CVD[a,b]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianMomentum[a,D-1],CartesianIndex[b,D-1]], TraditionalForm];
 
 MakeBoxes[Power[CVD[a_, b_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[CVD[a, b]], n], TraditionalForm];
+	ToBoxes[Power[CartesianPair[CartesianMomentum[a,D-1],CartesianIndex[b,D-1]], n], TraditionalForm];
 
 CVE /:
 	MakeBoxes[CVE[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[CVE[a,b]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianMomentum[a,D-4],CartesianIndex[b,D-4]], TraditionalForm];
 
 MakeBoxes[Power[CVE[a_, b_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[CVE[a, b]], n], TraditionalForm];
+	ToBoxes[Power[CartesianPair[CartesianMomentum[a,D-4],CartesianIndex[b,D-4]], n], TraditionalForm];
 
 KD /:
 	MakeBoxes[ KD[x_,y_], TraditionalForm ]:=
-		ToBoxes[FCI[KD[x,y]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianIndex[x],CartesianIndex[y]], TraditionalForm];
 
 KDE /:
 	MakeBoxes[ KDE[x_,y_], TraditionalForm ]:=
-		ToBoxes[FCI[KDE[x,y]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianIndex[x,D-4],CartesianIndex[y,D-4]], TraditionalForm];
 
 KDD /:
 	MakeBoxes[ KDD[x_,y_], TraditionalForm ]:=
-		ToBoxes[FCI[KDD[x,y]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianIndex[x,D-1],CartesianIndex[y,D-1]], TraditionalForm];
 
 
 CSP /:
 	MakeBoxes[CSP[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[CSP[a,b]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianMomentum[a],CartesianMomentum[b]], TraditionalForm];
 
 CSPD /:
 	MakeBoxes[CSPD[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[CSPD[a,b]], TraditionalForm];
+		ToBoxes[CartesianPair[CartesianMomentum[a,D-1],CartesianMomentum[b,D-1]], TraditionalForm];
 
 CSPE /:
 	MakeBoxes[CSPE[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[CSPE[a,b]], TraditionalForm];
-
+		ToBoxes[CartesianPair[CartesianMomentum[a,D-4],CartesianMomentum[b,D-4]], TraditionalForm];
 CLC/:
 	MakeBoxes[CLC[x___][y___] ,TraditionalForm]:=
-		ToBoxes[FCI[CLC[x][y]],TraditionalForm]/; Length[{x,y}]===3;
+		ToBoxes[Eps[Sequence@@(CartesianIndex/@{x}),Sequence@@(CartesianMomentum/@{y})],TraditionalForm]/; Length[{x,y}]===3;
 
 CLC/:
-	MakeBoxes[CLC[x__] ,TraditionalForm]:=
-		ToBoxes[FCI[CLC[x]],TraditionalForm]/; Length[{x}]===3;
+	MakeBoxes[CLC[a_,b_,c_] ,TraditionalForm]:=
+		ToBoxes[Eps[CartesianIndex[a],CartesianIndex[b],CartesianIndex[c]],TraditionalForm];
+
+
+CLCD/:
+	MakeBoxes[CLCD[x___][y___] ,TraditionalForm]:=
+		ToBoxes[Eps[Sequence@@(CartesianIndex[#,D-1]&/@{x}),Sequence@@(CartesianMomentum[#,D-1]&/@{y})],TraditionalForm]/; Length[{x,y}]===3;
 
 CLCD /:
-	MakeBoxes[CLCD [x___][y___] ,TraditionalForm]:=
-		ToBoxes[FCI[CLCD[x][y]],TraditionalForm]/; Length[{x,y}]===3;
-
-CLCD /:
-	MakeBoxes[CLCD [x__] ,TraditionalForm]:=
-		ToBoxes[FCI[CLCD[x]],TraditionalForm]/; Length[{x}]===3;
+	MakeBoxes[CLCD [a_,b_,c_] ,TraditionalForm]:=
+		ToBoxes[Eps[CartesianIndex[a,D-1],CartesianIndex[b,D-1],CartesianIndex[c,D-1]],TraditionalForm];
 
 
 (*    Typesetting for matrices and slashes.    *)
@@ -441,20 +441,13 @@ DiracGamma /:
 	MakeBoxes[ DiracGamma[(a : (5 | 6 | 7))], TraditionalForm ]:=
 		SuperscriptBox[RowBox[{gammaRep[4,4,"\[Gamma]"]}], TBox[a]];
 
-FermionicChain /:
-	MakeBoxes[ FermionicChain[a_,(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
-		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i],ind2[j]]];
-
-FermionicChain /:
-	MakeBoxes[ FermionicChain[a_Spinor,(ind1: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
-		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i]]];
-
+(* Fermionic chains with 3 arguments *)
 FermionicChain /:
 	MakeBoxes[ FermionicChain[a_,b_Spinor,(ind: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind[i]]];
 
 FermionicChain /:
-	MakeBoxes[ FermionicChain[a_,(ind: DiracIndex | ExplicitDiracIndex)[i_],b_Spinor], TraditionalForm ]:=
+	MakeBoxes[ FermionicChain[a_, (ind: DiracIndex | ExplicitDiracIndex)[i_], b_Spinor], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind[i]]];
 
 FermionicChain /:
@@ -462,16 +455,45 @@ FermionicChain /:
 		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
 
 FermionicChain /:
+	MakeBoxes[ FermionicChain[a_,(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i],ind2[j]]];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,b_Spinor,ind_/;Head[ind]=!=Spinor], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,b,DiracIndex[ind]], TraditionalForm];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,ind_/;Head[ind]=!=Spinor,b_Spinor], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,DiracIndex[ind],b], TraditionalForm];
+FCHN /:
+	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,b_Spinor,c_Spinor], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,b,c], TraditionalForm];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_,ind1_/;Head[ind1]=!=Spinor, ind2_/;Head[ind2]=!=Spinor], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,DiracIndex[ind1],DiracIndex[ind2]], TraditionalForm];
+
+(* Fermionic chains with 2 arguments *)
+
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_Spinor,(ind1: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i]]];
+
+FermionicChain /:
 	MakeBoxes[ FermionicChain[a_Spinor,b_Spinor], TraditionalForm ]:=
 		RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}];
 
 FCHN /:
-	MakeBoxes[ FCHN[a_,b_], TraditionalForm ]:=
-		ToBoxes[FCI[FCHN[a,b]], TraditionalForm];
+	MakeBoxes[ FCHN[a_Spinor,b_/;Head[b]=!=Spinor], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,DiracIndex[b]], TraditionalForm];
 
 FCHN /:
-	MakeBoxes[ FCHN[a_,b_,c_], TraditionalForm ]:=
-		ToBoxes[FCI[FCHN[a,b,c]], TraditionalForm];
+	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,b_], TraditionalForm ]:=
+		ToBoxes[FermionicChain[DiracIndnex[a],b], TraditionalForm];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_Spinor,b_Spinor], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,b], TraditionalForm];
 
 DiracGammaT /:
 	MakeBoxes[DiracGammaT[a_,dim_:4], TraditionalForm]:=
@@ -482,8 +504,13 @@ DiracIndex /:
 		ToBoxes[p, TraditionalForm];
 
 DiracMatrix /:
-	MakeBoxes[DiracMatrix[x_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[FCI[DiracMatrix[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
+	MakeBoxes[DiracMatrix[x_/;!MemberQ[{5,6,7},x], opts:OptionsPattern[]], TraditionalForm]:=
+		ToBoxes[DiracGamma[LorentzIndex[x,OptionValue[DiracMatrix, {opts},Dimension]],
+			OptionValue[DiracMatrix, {opts},Dimension]],TraditionalForm]/; !OptionValue[{opts},FCI];
+
+DiracMatrix /:
+	MakeBoxes[DiracMatrix[(x:5|6|7), opts:OptionsPattern[]], TraditionalForm]:=
+		ToBoxes[DiracGamma[x],TraditionalForm]/; !OptionValue[{opts},FCI];
 
 DiracSigma /:
 	MakeBoxes[DiracSigma[(DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD | CGA | CGAD | CGS | CGSD | TGA )[x_,___],
@@ -492,7 +519,8 @@ DiracSigma /:
 
 DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[FCI[DiracSlash[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
+		ToBoxes[DiracGamma[Momentum[x,OptionValue[DiracSlash, {opts},Dimension]],
+			OptionValue[DiracSlash, {opts},Dimension]],TraditionalForm]/; !OptionValue[{opts},FCI];
 
 DiracIndexDelta /:
 	MakeBoxes[ DiracIndexDelta[(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
@@ -564,7 +592,7 @@ gfadTypeset[{{ex_}, rest___}, etaOpt_] :=
 gfadTypeset[{a_List}, etaOpt_] :=
 	gfadTypeset[{a, 1}, etaOpt];
 
-gfadTypeset[{{ex_,s_},n_}, etaOpt_] :=
+gfadTypeset[{{ex_,s_},n_}, _] :=
 	Row[{"(",ex,
 		If[$FCShowIEta,
 
@@ -837,31 +865,32 @@ feynAmpDenominatorTypeset[GenericPropagatorDenominator[ex1_,{n_,s_}]]:=
 
 FourVector /:
 	MakeBoxes[FourVector[a_,b_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[FCI[FourVector[a,b,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
+		ToBoxes[Pair[Momentum[a, OptionValue[FourVector, {opts},Dimension]], LorentzIndex[b, OptionValue[FourVector, {opts},Dimension]]],TraditionalForm]/;
+			!OptionValue[FourVector, {opts},FCI];
 
 (*    Typesetting for vectors in the FCE notation.    *)
 (* ------------------------------------------------------------------------ *)
 
 FV /:
 	MakeBoxes[FV[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[FV[a,b]], TraditionalForm];
+		ToBoxes[Pair[Momentum[a],LorentzIndex[b]], TraditionalForm];
 
 MakeBoxes[Power[FV[a_, b_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[FV[a, b]], n], TraditionalForm];
+	ToBoxes[Power[Pair[Momentum[a],LorentzIndex[b]], n], TraditionalForm];
 
 FVD /:
 	MakeBoxes[FVD[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[FVD[a,b]], TraditionalForm];
+		ToBoxes[Pair[Momentum[a, D],LorentzIndex[b, D]], TraditionalForm];
 
 MakeBoxes[Power[FVD[a_, b_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[FVD[a, b]], n], TraditionalForm];
+	ToBoxes[Power[Pair[Momentum[a, D],LorentzIndex[b, D]], n], TraditionalForm];
 
 FVE /:
 	MakeBoxes[FVE[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[FVE[a,b]], TraditionalForm];
+		ToBoxes[Pair[Momentum[a, D-4],LorentzIndex[b, D-4]], TraditionalForm];
 
 MakeBoxes[Power[FVE[a_, b_], n_], TraditionalForm] :=
-	ToBoxes[Power[FCI[FVE[a, b]], n], TraditionalForm];
+	ToBoxes[Power[Pair[Momentum[a, D-4],LorentzIndex[b, D-4]], n], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -870,16 +899,20 @@ MakeBoxes[Power[FVE[a_, b_], n_], TraditionalForm] :=
 (* ------------------------------------------------------------------------ *)
 
 GA /:
-	MakeBoxes[ GA[x_], TraditionalForm ]:=
-		ToBoxes[FCI[GA[x]], TraditionalForm];
+	MakeBoxes[GA[x_/;!MemberQ[{5,6,7},x]], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LorentzIndex[x]], TraditionalForm];
+
+GA /:
+	MakeBoxes[GA[x_/;MemberQ[{5,6,7},x]], TraditionalForm ]:=
+		ToBoxes[DiracGamma[x], TraditionalForm];
 
 GAD /:
-	MakeBoxes[ GAD[x_], TraditionalForm ]:=
-		ToBoxes[FCI[GAD[x]], TraditionalForm];
+	MakeBoxes[GAD[x_], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LorentzIndex[x, D], D], TraditionalForm];
 
 GAE /:
-	MakeBoxes[ GAE[x_], TraditionalForm ]:=
-		ToBoxes[FCI[GAE[x]], TraditionalForm];
+	MakeBoxes[GAE[x_], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LorentzIndex[x, D-4], D-4], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -904,15 +937,15 @@ GluonField /:
 
 GS/:
 	MakeBoxes[GS[a_], TraditionalForm ]:=
-		ToBoxes[FCI[GS[a]], TraditionalForm];
+		ToBoxes[DiracGamma[Momentum[a]], TraditionalForm];
 
 GSD/:
 	MakeBoxes[GSD[a_], TraditionalForm ]:=
-		ToBoxes[FCI[GSD[a]], TraditionalForm];
+		ToBoxes[DiracGamma[Momentum[a,D],D], TraditionalForm];
 
 GSE/:
 	MakeBoxes[GSE[a_], TraditionalForm ]:=
-		ToBoxes[FCI[GSE[a]], TraditionalForm];
+		ToBoxes[DiracGamma[Momentum[a,D-4],D-4], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -931,19 +964,19 @@ Integratedx /:
 
 LC/:
 	MakeBoxes[LC[x___][y___] ,TraditionalForm]:=
-		ToBoxes[FCI[LC[x][y]],TraditionalForm]/; Length[{x,y}]===4;
+		ToBoxes[Eps[Sequence@@(LorentzIndex/@{x}),Sequence@@(Momentum/@{y})],TraditionalForm]/; Length[{x,y}]===4;
 
 LC/:
-	MakeBoxes[LC[x__] ,TraditionalForm]:=
-		ToBoxes[FCI[LC[x]],TraditionalForm]/; Length[{x}]===4;
+	MakeBoxes[LC[a_,b_,c_,d_] ,TraditionalForm]:=
+		ToBoxes[Eps[LorentzIndex[a],LorentzIndex[b],LorentzIndex[c],LorentzIndex[d]],TraditionalForm];
 
 LCD /:
 	MakeBoxes[LCD [x___][y___] ,TraditionalForm]:=
-		ToBoxes[FCI[LCD[x][y]],TraditionalForm]/; Length[{x,y}]===4;
+		ToBoxes[Eps[Sequence@@(LorentzIndex[#,D]&/@{x}),Sequence@@(Momentum[#,D]&/@{y})],TraditionalForm]/; Length[{x,y}]===4;
 
 LCD /:
-	MakeBoxes[LCD [x__] ,TraditionalForm]:=
-		ToBoxes[FCI[LCD[x]],TraditionalForm]/; Length[{x}]===4;
+	MakeBoxes[LCD [a_,b_,c_,d_] ,TraditionalForm]:=
+		ToBoxes[Eps[LorentzIndex[a,D],LorentzIndex[b,D],LorentzIndex[c,D],LorentzIndex[d,D]],TraditionalForm];
 
 LeftPartialD/:
 	MakeBoxes[LeftPartialD[x_ ^n_],TraditionalForm]:=
@@ -967,13 +1000,12 @@ LeftRightPartialD2 /:
 LeviCivita /:
 	MakeBoxes[LeviCivita[(a:Except[_?OptionQ]..)/; Length[{a}] === 4, opts:OptionsPattern[LeviCivita]/;!OptionValue[LeviCivita,{opts},FCI]],
 	TraditionalForm]:=
-		ToBoxes[FCI[LeviCivita[a,Join[{FCI->False},FilterRules[{opts},Except[FCI]]]]],TraditionalForm];
+		ToBoxes[Eps[Sequence@@(LorentzIndex[#,OptionValue[LeviCivita,{opts},Dimension]]&/@{a})],TraditionalForm];
 
 LeviCivita /:
-	MakeBoxes[LeviCivita[x:Except[_?OptionQ]...,
-	opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]...,
-	opts2:OptionsPattern[LeviCivita]], TraditionalForm]:=
-		ToBoxes[FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]],TraditionalForm]/;
+	MakeBoxes[LeviCivita[x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]], TraditionalForm]:=
+		ToBoxes[Eps[Sequence@@(LorentzIndex[#,OptionValue[LeviCivita,{opts1},Dimension]]&/@{x}),
+				Sequence@@(Momentum[#,OptionValue[LeviCivita,{opts2},Dimension]]&/@{y})],TraditionalForm]/;
 		Length[{x,y}] === 4 && !OptionValue[LeviCivita,{opts1,opts2},FCI];
 
 LorentzIndex /:
@@ -982,7 +1014,7 @@ LorentzIndex /:
 
 MetricTensor /:
 	MakeBoxes[MetricTensor[a_, b_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[FCI[MetricTensor[a,b,opts]], TraditionalForm]/; !OptionValue[{opts},FCI];
+		ToBoxes[Pair[LorentzIndex[a,OptionValue[{opts},Dimension]],LorentzIndex[b,OptionValue[{opts},Dimension]]], TraditionalForm]/; !OptionValue[{opts},FCI];
 
 (*    Typesetting for momenta.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1023,22 +1055,22 @@ Momentum /:
 		];
 
 Momentum /:
-	MakeBoxes[ Momentum[p_Plus,dim_: 4], TraditionalForm]:=
-			TBox[MomentumExpand[Momentum[p,dim]]];
+	MakeBoxes[Momentum[p_Plus,dim_: 4], TraditionalForm]:=
+			TBox[Momentum[#,dim]&/@Expand[p]];
 
 (* ------------------------------------------------------------------------ *)
 
 MT /:
-	MakeBoxes[ MT[x_,y_], TraditionalForm ]:=
-		ToBoxes[FCI[MT[x,y]], TraditionalForm];
+	MakeBoxes[MT[x_,y_], TraditionalForm ]:=
+		ToBoxes[Pair[LorentzIndex[x],LorentzIndex[y]], TraditionalForm];
 
 MTE /:
-	MakeBoxes[ MTE[x_,y_], TraditionalForm ]:=
-		ToBoxes[FCI[MTE[x,y]], TraditionalForm];
+	MakeBoxes[MTE[x_,y_], TraditionalForm ]:=
+		ToBoxes[Pair[LorentzIndex[x, D-4],LorentzIndex[y, D-4]], TraditionalForm];
 
 MTD /:
-	MakeBoxes[ MTD[x_,y_], TraditionalForm ]:=
-		ToBoxes[FCI[MTD[x,y]], TraditionalForm];
+	MakeBoxes[MTD[x_,y_], TraditionalForm ]:=
+		ToBoxes[Pair[LorentzIndex[x, D],LorentzIndex[y, D]], TraditionalForm];
 
 Nf /:
 	MakeBoxes[Nf, TraditionalForm]:=
@@ -1102,8 +1134,8 @@ MakeBoxes[Power[Pair[c_. Momentum[a_, dim_ : 4], c_. Momentum[a_, dim_ : 4]],n_I
 
 Pair /:
 	MakeBoxes[Pair[c1_. Momentum[a_, dim1_ : 4]+a1_:0, c2_. Momentum[b_, dim2_ : 4]+b1_:0],TraditionalForm]:=
-	Block[ {    m1 = MomentumExpand[c1 Momentum[a,dim1]+a1],
-			m2 = MomentumExpand[c2 Momentum[b,dim2]+b1]},
+	Block[ {    m1 = Expand[(c1*a +a1)/.Momentum[z_,___]:>z],
+				m2 = Expand[(c2*b +b1)/.Momentum[z_,___]:>z]},
 		Which[
 			m1===m2,
 				If[ Head[m1]===Plus,
@@ -1113,23 +1145,23 @@ Pair /:
 
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
 				If[ $PairBrackets === True,
-					TBox["(", m1, "\[CenterDot]", m2, ")"],
-					TBox[m1, "\[CenterDot]", m2]
+					TBox["(", Momentum[m1,dim1], "\[CenterDot]", Momentum[m2,dim2], ")"],
+					TBox[Momentum[m1,dim1], "\[CenterDot]", Momentum[m2,dim2]]
 				],
 			Head[m1]=!=Plus && Head[m2]===Plus,
 				If[ $PairBrackets === True,
-					TBox["(",m1,"\[CenterDot]", "(",m2,")",")"],
-					TBox[m1,"\[CenterDot]", "(",m2,")"]
+					TBox["(",Momentum[m1,dim1],"\[CenterDot]", "(",Momentum[m2,dim2],")",")"],
+					TBox[Momentum[m1,dim1],"\[CenterDot]", "(",Momentum[m2,dim2],")"]
 				],
-			Head[m1]===Plus && Head[m2]=!=Plus,
+			Head[Momentum[m1,dim1]]===Plus && Head[m2]=!=Plus,
 				If[ $PairBrackets === True,
-					TBox["(","(",m1,")","\[CenterDot]", m2,")"],
-					TBox["(",m1,")","\[CenterDot]", m2]
+					TBox["(","(",Momentum[m1,dim1],")","\[CenterDot]", Momentum[m2,dim2],")"],
+					TBox["(",Momentum[m1,dim1],")","\[CenterDot]", Momentum[m2,dim2]]
 				],
 			Head[m1]===Plus && Head[m2]===Plus,
 				If[ $PairBrackets === True,
-					TBox["(","(",m1,")","\[CenterDot]", "(",m2,")",")"],
-					TBox["(",m1,")","\[CenterDot]", "(",m2,")"]
+					TBox["(","(",Momentum[m1,dim1],")","\[CenterDot]", "(",Momentum[m2,dim2],")",")"],
+					TBox["(",Momentum[m1,dim1],")","\[CenterDot]", "(",Momentum[m2,dim2],")"]
 				]
 		]
 	];
@@ -1444,15 +1476,15 @@ SOD /:
 
 SP /:
 	MakeBoxes[SP[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[SP[a,b]], TraditionalForm];
+		ToBoxes[Pair[Momentum[a],Momentum[b]], TraditionalForm];
 
 SPD /:
 	MakeBoxes[SPD[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[SPD[a,b]], TraditionalForm];
+		ToBoxes[Pair[Momentum[a,D],Momentum[b,D]], TraditionalForm];
 
 SPE /:
 	MakeBoxes[SPE[a_, b_], TraditionalForm]:=
-		ToBoxes[FCI[SPE[a,b]], TraditionalForm];
+		ToBoxes[Pair[Momentum[a,D-4],Momentum[b,D-4]], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1551,7 +1583,7 @@ SUNT /:
 
 SUNT /:
 	MakeBoxes[SUNT[a_,b__], TraditionalForm]:=
-		ToBoxes[FCI[SUNT[a,b]],TraditionalForm];
+		ToBoxes[DOT@@(SUNT/@{a, b}),TraditionalForm];
 
 SUNTF /:
 	MakeBoxes[SUNTF[{a_}, b_, c_], TraditionalForm]:=
