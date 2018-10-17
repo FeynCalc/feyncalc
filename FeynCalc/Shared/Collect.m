@@ -69,16 +69,17 @@ Options[Collect2] = {
 	IsolateFast -> False,
 	IsolateNames -> False,
 	Head->Identity,
-	Numerator->False
+	Numerator->False,
+	TimeConstrained -> Infinity
 };
 
 Options[Collect3] = {
 	Factoring -> False,
 	Head -> Plus
 };
-
+(*
 SetAttributes[holdForm,HoldAll];
-
+*)
 Collect2[a_ == b_, y__] :=
 	Collect2[a,y] == Collect2[b,y];
 
@@ -99,7 +100,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
 		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
 		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
-		optNumerator, optFactoringDenominator},
+		optNumerator, optFactoringDenominator, optTimeConstrained},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -118,6 +119,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		optInitialFunction = OptionValue[InitialFunction];
 		optNumerator = OptionValue[Numerator];
 		optFactoringDenominator = OptionValue[FactoringDenominator];
+		optTimeConstrained = OptionValue[TimeConstrained];
 
 		If[	Head[optHead]===List,
 			firstHead 	= optHead[[1]];
@@ -140,11 +142,11 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			False,
 				factor = Identity,
 			True|Factor2,
-				factor = Factor2,
+				factor = Function[fuArg,TimeConstrained[Factor2[fuArg],optTimeConstrained,fuArg]],
 			{_,_Integer},
 				factor = Function[fuArg,
 					If[	TrueQ[LeafCount[fuArg]<factoring[[2]]],
-						(factoring[[1]])[fuArg],
+						TimeConstrained[(factoring[[1]])[fuArg],optTimeConstrained,fuArg],
 						fuArg
 					]
 				],
@@ -298,18 +300,26 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			Abort[]
 		];
 
-		new =  Sum[Dot[coeffHead[coeffArray[[i]]] , Sequence @@ Table[tvm, {i - 1}]], {i, 2, Length[coeffArray]}];
-
-		FCPrint[3,"Collect2: prelminiary new: ", new, FCDoControl->cl2Verbose];
-
-		coeffHead[li_SparseArray]:=
-			(tog[unity*#])&/@li /; optIsolateNames===False;
-
-		coeffHead[li_SparseArray]:=
-			Isolate[tog[unity*#]/. {unity:>1, lk[ka_][j_] :> holdForm[ka[j]]},
-				IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]&/@li /;optIsolateNames=!=False;
+		new =  Sum[dotHold[coeffHead[coeffArray[[i]]] , Sequence @@ Table[tvm, {i - 1}]], {i, 2, Length[coeffArray]}];
 
 		FCPrint[1,"Collect2: Done collecting the monomials, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: prelminiary new: ", new, FCDoControl->cl2Verbose];
+		time=AbsoluteTime[];
+		FCPrint[1,"Collect2: Obtaining the final result.", FCDoControl->cl2Verbose];
+
+		If[	optIsolateNames===False,
+
+			coeffHead[li_SparseArray]:=
+				tog[unity*#]&/@li,
+
+			coeffHead[li_SparseArray]:=
+				Isolate[tog[unity*#]/. {unity:>1, lk[ka_][j_] :> holdForm[ka[j]]},
+					IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]&/@li;
+		];
+
+		new = new/.dotHold-> Dot;
+
+		FCPrint[1,"Collect2: The final result is ready, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		FCPrint[3,"Collect2: new: ", new, FCDoControl->cl2Verbose];
 
 		If[	!FreeQ2[lin,monomList],
@@ -320,23 +330,25 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 
+		FCPrint[1,"Collect2: Releasing tempIso.", FCDoControl->cl2Verbose];
 		If[ optIsolateNames =!= False,
 			lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}], IsolateNames->optIsolateNames, IsolateFast->optIsolateFast],
 			lin = FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}]
 		];
-
+		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		If[	secondHead=!=Null,
+			time=AbsoluteTime[];
+			FCPrint[1,"Collect2: Applying secondHead.", FCDoControl->cl2Verbose];
 			lin = secondHead[lin,1] /. secondHead[0,_] -> 0;
-			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a]
+			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a];
+			FCPrint[1,"Collect2: Done applying secondHead, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		];
 
+		time=AbsoluteTime[];
+		FCPrint[1,"Collect2: Putting re togehter.", FCDoControl->cl2Verbose];
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
-
-
-
-
-		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: Done putting re togehter, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		(*Just a small consistency check *)
 		If[	optIsolateNames =!= False,
