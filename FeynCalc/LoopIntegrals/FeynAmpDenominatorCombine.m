@@ -67,22 +67,31 @@ fdsor[a__] :=
 
 Options[FeynAmpDenominatorCombine] = {
 	FCI -> False,
-	FCE -> False
+	FCE -> False,
+	Momentum -> All
 };
 
 FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
-	Block[{ex,res},
+	Block[{ex,res, optMomentum},
 
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
 		];
 
+		optMomentum = OptionValue[Momentum];
+
 		If[FreeQ[ex,FeynAmpDenominator],
 			Return[ex]
 		];
 
-		res = Expand2[ex, FeynAmpDenominator] /. FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor;
+		res = Expand2[ex, FeynAmpDenominator];
+
+
+		If[ optMomentum=!=All && Head[optMomentum]===List,
+			res = res /. FeynAmpDenominator[x__]/;!FreeQ2[{x},OptMomentum] :> feyncomb[x] /. feyncomb -> fdsor,
+			res = res /. FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor
+		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
@@ -92,11 +101,6 @@ FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
 
 
 	];
-
-
-
-
-
 
 FCPrint[1,"FeynAmpDenominatorCombine.m loaded."];
 End[]

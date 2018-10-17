@@ -58,5 +58,10 @@ CFAD[{{q1, 0}, {0, -1}, 1}] CFAD[{{-p + q1, 0}, {0, -1},
 	1}] CFAD[{{q1 - q2, 0}, {0, -1}, 1}] CFAD[{{q2, 0}, {0, -1}, 1}],
 FCE -> True]",
 "CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1},
-1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}]"}
+1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorCombine-ID8",
+	"FeynAmpDenominatorCombine[
+FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], Momentum -> {q},
+FCE -> True]",
+"FAD[p1 + p2] FAD[p3] FAD[p2 + q] FAD[q, p1 + q]"}
 }
