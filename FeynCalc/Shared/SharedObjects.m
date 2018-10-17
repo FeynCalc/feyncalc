@@ -2076,7 +2076,7 @@ SPE[a_] :=
 HoldPattern[Spinor[a__,{1}]] :=
 	Spinor[a];
 
-Spinor[n_. x_/; (FCPatternFreeQ[{x}]&&FreeQ[x, Momentum]), y___/;FCPatternFreeQ[{y}]] :=
+Spinor[n_. x_/; (FCPatternFreeQ[{x}]&&FreeQ2[x, {Momentum, Hold, HoldForm}]), y___/;FCPatternFreeQ[{y}]] :=
 	(Spinor[n x, y] = Spinor[n Momentum[x], y]) /;
 	(FCPatternFreeQ[{n, x, y}] && (n^2)===1);
 (*
