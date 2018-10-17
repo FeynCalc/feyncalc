@@ -252,7 +252,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			];
 
 
-			If [ OptionValue[SirlinSimplify],
+			If [ OptionValue[SirlinSimplify] && FCGetDimensions[tmp]==={4},
 
 				FCPrint[1, "DiracSimplify: Applying SirlinSimplify.", FCDoControl->dsVerbose];
 				time=AbsoluteTime[];
