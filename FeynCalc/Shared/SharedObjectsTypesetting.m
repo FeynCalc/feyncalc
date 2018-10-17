@@ -97,10 +97,7 @@ CartesianPair /:
 
 MakeBoxes[CartesianPair[c1_. CartesianMomentum[a_, dim1_ : 3], c2_. CartesianMomentum[b_, dim2_ : 3]]^n_Integer?Positive,
 	TraditionalForm] :=
-	If[ $PairBrackets === True,
-		RowBox[{SuperscriptBox[TBox[CartesianPair[c1 CartesianMomentum[a,dim1],c2 CartesianMomentum[b,dim2]]],n]}],
-		RowBox[{SuperscriptBox[TBox["(",CartesianPair[c1 CartesianMomentum[a,dim1],c2 CartesianMomentum[b,dim2]],")"],n]}]
-	] /; a=!=b;
+		RowBox[{SuperscriptBox[TBox["(",CartesianPair[c1 CartesianMomentum[a,dim1],c2 CartesianMomentum[b,dim2]],")"],n]}]/; a=!=b;
 
 MakeBoxes[Power[CartesianPair[c_. CartesianMomentum[a_, dim_ : 3], c_. CartesianMomentum[a_, dim_ : 3]],n_Integer?Positive],
 TraditionalForm] :=
@@ -122,25 +119,13 @@ CartesianPair /:
 				],
 
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(", CartesianMomentum[m1,dim1], "\[CenterDot]", CartesianMomentum[m2,dim2], ")"],
-					TBox[CartesianMomentum[m1,dim1], "\[CenterDot]", CartesianMomentum[m2,dim2]]
-				],
+				TBox[CartesianMomentum[m1,dim1], "\[CenterDot]", CartesianMomentum[m2,dim2]],
 			Head[m1]=!=Plus && Head[m2]===Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(",CartesianMomentum[m1,dim1],"\[CenterDot]", "(",CartesianMomentum[m2,dim2],")",")"],
-					TBox[CartesianMomentum[m1,dim1],"\[CenterDot]", "(",CartesianMomentum[m2,dim2],")"]
-				],
+				TBox[CartesianMomentum[m1,dim1],"\[CenterDot]", "(",CartesianMomentum[m2,dim2],")"],
 			Head[m1]===Plus && Head[m2]=!=Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(","(",CartesianMomentum[m1,dim1],")","\[CenterDot]", CartesianMomentum[m2,dim2],")"],
-					TBox["(",CartesianMomentum[m1,dim1],")","\[CenterDot]", CartesianMomentum[m2,dim2]]
-				],
+				TBox["(",CartesianMomentum[m1,dim1],")","\[CenterDot]", CartesianMomentum[m2,dim2]],
 			Head[m1]===Plus && Head[m2]===Plus,
-				If[ $PairBrackets === True && (m1)=!=(m2),
-					TBox["(","(",CartesianMomentum[m1,dim1],")","\[CenterDot]", "(",CartesianMomentum[m2,dim2],")",")"],
-					TBox["(",CartesianMomentum[m1,dim1],")","\[CenterDot]", "(",CartesianMomentum[m2,dim2],")"]
-				]
+				TBox["(",CartesianMomentum[m1,dim1],")","\[CenterDot]", "(",CartesianMomentum[m2,dim2],")"]
 		]
 	];
 
@@ -1121,10 +1106,7 @@ Pair /:
 (* ------------------------------------------------------------------------ *)
 
 MakeBoxes[Pair[c1_. Momentum[a_, dim1_ : 4], c2_. Momentum[b_, dim2_ : 4]]^n_Integer?Positive, TraditionalForm] :=
-	If[ $PairBrackets === True,
-		RowBox[{SuperscriptBox[TBox[Pair[c1 Momentum[a,dim1],c2 Momentum[b,dim2]]],n]}],
-		RowBox[{SuperscriptBox[TBox["(",Pair[c1 Momentum[a,dim1],c2 Momentum[b,dim2]],")"],n]}]
-	] /; a=!=b;
+		RowBox[{SuperscriptBox[TBox["(",Pair[c1 Momentum[a,dim1],c2 Momentum[b,dim2]],")"],n]}]/; a=!=b;
 
 MakeBoxes[Power[Pair[c_. Momentum[a_, dim_ : 4], c_. Momentum[a_, dim_ : 4]],n_Integer?Positive], TraditionalForm] :=
 	If[ Head[a]===Plus,
@@ -1144,25 +1126,13 @@ Pair /:
 				],
 
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
-				If[ $PairBrackets === True,
-					TBox["(", Momentum[m1,dim1], "\[CenterDot]", Momentum[m2,dim2], ")"],
-					TBox[Momentum[m1,dim1], "\[CenterDot]", Momentum[m2,dim2]]
-				],
+				TBox[Momentum[m1,dim1], "\[CenterDot]", Momentum[m2,dim2]],
 			Head[m1]=!=Plus && Head[m2]===Plus,
-				If[ $PairBrackets === True,
-					TBox["(",Momentum[m1,dim1],"\[CenterDot]", "(",Momentum[m2,dim2],")",")"],
-					TBox[Momentum[m1,dim1],"\[CenterDot]", "(",Momentum[m2,dim2],")"]
-				],
+				TBox[Momentum[m1,dim1],"\[CenterDot]", "(",Momentum[m2,dim2],")"],
 			Head[Momentum[m1,dim1]]===Plus && Head[m2]=!=Plus,
-				If[ $PairBrackets === True,
-					TBox["(","(",Momentum[m1,dim1],")","\[CenterDot]", Momentum[m2,dim2],")"],
-					TBox["(",Momentum[m1,dim1],")","\[CenterDot]", Momentum[m2,dim2]]
-				],
+				TBox["(",Momentum[m1,dim1],")","\[CenterDot]", Momentum[m2,dim2]],
 			Head[m1]===Plus && Head[m2]===Plus,
-				If[ $PairBrackets === True,
-					TBox["(","(",Momentum[m1,dim1],")","\[CenterDot]", "(",Momentum[m2,dim2],")",")"],
-					TBox["(",Momentum[m1,dim1],")","\[CenterDot]", "(",Momentum[m2,dim2],")"]
-				]
+				TBox["(",Momentum[m1,dim1],")","\[CenterDot]", "(",Momentum[m2,dim2],")"]
 		]
 	];
 

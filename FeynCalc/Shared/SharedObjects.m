@@ -428,10 +428,6 @@ PropagatorDenominator[Momentum[q, D], m].  What is meant is \
 PD::usage =
 "PD is an abbreviation for PropagatorDenominator.";
 
-$PairBrackets::usage =
-"$PairBrackets determines whether brackets are drawn around \
-scalar products in the notebook interface.";
-
 QuantumField::usage =
 "QuantumField[par1, par2, ..., ftype, {lorind}, {sunind}] \
 denotes a quantum field of type ftype with (possible) \
@@ -985,7 +981,6 @@ $TypesettingDimD = "";
 TypesettingExplicitLorentzIndex = Function[x,x];
 
 DataType[Epsilon, PositiveNumber] = True;
-$PairBrackets = False;
 
 Unprotect[Greater];
 Greater[Re[Epsilon],-4] = True;
