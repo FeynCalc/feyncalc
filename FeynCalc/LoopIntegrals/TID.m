@@ -49,6 +49,7 @@ paveao::usage="";
 pavear::usage="";
 ffdp::usage="";
 qQQ::usage="";
+optTimeConstrained::usage="";
 
 procanonical[l_][y_,m_] :=
 	PropagatorDenominator[y /.
@@ -87,7 +88,7 @@ Options[TID] = {
 	FCLoopMixedToCartesianAndTemporal -> True,
 	FCVerbose -> False,
 	FDS -> True,
-	Factoring -> Factor2,
+	Factoring -> {Factor2, 5000},
 	FeynAmpDenominatorCombine -> True,
 	GenPaVe->False,
 	Isolate -> False,
@@ -95,7 +96,8 @@ Options[TID] = {
 	PaVeAutoReduce -> True,
 	PauliTrick -> True,
 	ToPaVe->False,
-	UsePaVeBasis -> False
+	UsePaVeBasis -> False,
+	TimeConstrained -> 3
 };
 
 TID[am_ , q_, OptionsPattern[]] :=
@@ -104,10 +106,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 		solsList, repSolList, reversedRepIndexList,reducedLoopList,
 		finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli, time, time0, fclcOutput,
-		optExpandScalarProduct, noTID
+		optExpandScalarProduct, noTID, fadCollect
 	},
 
 		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
+		optTimeConstrained = OptionValue[TimeConstrained];
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -161,7 +164,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		FCPrint[1,"TID: Applying Collect2.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
-		t0 = Collect2[t0,{q,FeynAmpDenominator}];
+
+		t0 = Collect2[t0,{q,FeynAmpDenominator}, TimeConstrained->optTimeConstrained];
 		FCPrint[1, "TID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		FCPrint[3,"After Collect2: ", t0 , FCDoControl->tidVerbose];
 
@@ -179,7 +183,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[ OptionValue[FeynAmpDenominatorCombine],
 			FCPrint[1,"TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = FeynAmpDenominatorCombine[t0, FCI->True];
+			t0 = FeynAmpDenominatorCombine[t0, FCI->True, Momentum->{q}];
 			FCPrint[1, "TID: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After FeynAmpDenominatorCombine: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -432,6 +436,9 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 			(* 	We had to uncontract some Lorentz indices at the beginning, so we should better contract them
 				again at the end	*)
+
+
+
 			If[	contractlabel && !FreeQ2[res,{LorentzIndex,CartesianIndex}],
 
 					FCPrint[1,"TID: Applying Isolate.", FCDoControl->tidVerbose];
@@ -484,15 +491,13 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 
 		];
-
 		(*	The final result is a sum of the reduced tensor part and the original scalar part *)
 		res = (res+irrelevant)/. noTID->1;
 
-		If[ OptionValue[FeynAmpDenominatorCombine]  &&
-			!FreeQ2[res, (FeynAmpDenominator[x__]^_.) *(FeynAmpDenominator[y__]^_.)],
+		If[ OptionValue[FeynAmpDenominatorCombine]  && !FreeQ2[res, (FeynAmpDenominator[x__]^_.) *(FeynAmpDenominator[y__]^_.)],
 			FCPrint[1,"TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			res = FeynAmpDenominatorCombine[res, FCI->True];
+			res = FeynAmpDenominatorCombine[res, FCI->True, Momentum->{q}];
 			FCPrint[1, "TID: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After FeynAmpDenominatorCombine: ", res , FCDoControl->tidVerbose]
 		];
@@ -502,8 +507,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			FCPrint[1,"TID: Applying Collect2.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-
-			res= Collect2[res,Join[{FeynAmpDenominator,q0},PaVeHeadsList],Factoring->OptionValue[Factoring]];
+			fadCollect = Cases[res, FeynAmpDenominator[x__]/;!FreeQ2[{x},q], Infinity];
+			res= Collect2[res,Join[Join[fadCollect,{q0}],PaVeHeadsList],Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
 			FCPrint[1, "TID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After Collect2: ", res , FCDoControl->tidVerbose]
 
@@ -604,7 +609,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 		(* Now we expand the loopIntegrate pieces in q thus breaking them into sums
 			of scalar and tensor integrals	*)
 		iList2 = ((Map[SelectFree[#, {q,tidPaVe}] loopIntegral[SelectNotFree[#, {q,tidPaVe}]] &, # +
-		null] /.null -> 0) & /@ (Collect2[#, {q, FeynAmpDenominator}] & /@uList1));
+		null] /.null -> 0) & /@ (Collect2[#, {q, FeynAmpDenominator}, TimeConstrained->optTimeConstrained] & /@uList1));
 
 		(* 	Again, create a list of unique loopIntegrate pieces from the previous list. This
 			list contains all the unique integrals from the original tensor integral that need
@@ -620,7 +625,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 			! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &, 1, rank+2]);
 
 		sList2 = nwr/@uList2;
-		sList2 = Collect2[#,{q,FeynAmpDenominator}]&/@sList2;
+		sList2 = Collect2[#,{q,FeynAmpDenominator}, TimeConstrained->optTimeConstrained]&/@sList2;
 
 		(* Here we drop all the scaleless integrals, unless something scaleless
 		is wrapped in tidPaVe, which means that it comes from the PaVe functions*)
@@ -712,7 +717,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 		(* 	After FCApart our original tensor part contains both tensor and scalar pieces. Separate
 			them again	*)
 		time=AbsoluteTime[];
-		tp = Collect2[tp,{q,FeynAmpDenominator}] + null3 + null4;
+		tp = Collect2[tp,{q,FeynAmpDenominator}, TimeConstrained->optTimeConstrained] + null3 + null4;
 		tpSP = Select[tp, FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &];
 		tpTP = Select[tp, ! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &];
 		If[tpSP + tpTP =!= tp || !FreeQ[tpTP,tidPaVe],
@@ -774,7 +779,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 		];
 		(*	The final step is to isolate all the prefactors that don't depend on the loop momentum in the full result	*)
 		time=AbsoluteTime[];
-		res = Isolate[Collect2[(sp + tpSP + tpTP), {q,FeynAmpDenominator,tidPaVe, q0}]//.
+		res = Isolate[Collect2[(sp + tpSP + tpTP), {q,FeynAmpDenominator,tidPaVe, q0}, TimeConstrained->optTimeConstrained]//.
 			{null1 | null2 | null3 | null4 -> 0}, {q, FeynAmpDenominator,tidPaVe, q0}, IsolateNames->tidIsolate] /.
 			(h: Pair|CartesianPair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->tidIsolate];
 		FCPrint[2,"TID: tidFullReduce: Time to sort the final result of this iteration ", N[AbsoluteTime[] - time, 4],
