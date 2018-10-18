@@ -269,7 +269,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 		FCPrint[1,"TID: Sorting loop integrals.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 
-		tmp = FCLoopSplit[t1,{q},FCI->True, Factoring->Factor];
+		tmp = FCLoopSplit[t1/. TemporalMomentum[q] -> TemporalMomentum[q0],{q},FCI->True, Factoring->Factor]/.
+			TemporalMomentum[q0] -> TemporalMomentum[q];
 		irrelevant = tmp[[1]]+tmp[[2]]+tmp[[3]];
 		tp = tmp[[4]];
 
@@ -295,17 +296,18 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[ $BreitMaison && !FreeQ2[t1,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1,"TID: Handling 4 and D-4 dimensional loop momenta.", FCDoControl->tidVerbose];
-			t1 = t1 /. {
+			t1 = t1 //. {
 				Pair[Momentum[q,n-4],LorentzIndex[i_,n-4]]:>
 					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli,n-4],LorentzIndex[i,n-4]]),
 				Pair[Momentum[q],LorentzIndex[i_]]:>
 					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli],LorentzIndex[i]]),
-				CartesianPair[CartesianMomentum[q,n-4],CatesianIndex[i_,n-4]]:>
+				CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[i_,n-4]]:>
 					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli,n-4],CartesianIndex[i,n-4]]),
-				CartesianPair[CartesianMomentum[q],CatesianIndex[i_]]:>
+				CartesianPair[CartesianMomentum[q],CartesianIndex[i_]]:>
 					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli],CartesianIndex[i]])
 			};
-			If[ !FreeQ2[t1, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]]}],
+			If[ !FreeQ2[t1, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]],
+							CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[_,n-4]],CartesianPair[CartesianMomentum[q],CartesianIndex[_]]}],
 				Message[TID::failmsg,"Failed to eliminate 4 and D-4 dimensional loop momenta."];
 				Abort[]
 			];
@@ -330,13 +332,17 @@ TID[am_ , q_, OptionsPattern[]] :=
 			wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral, FCI->True];
 			FCPrint[1, "TID: Done applying FCLoopIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
-			If[ OptionValue[FCLoopMixedToCartesianAndTemporal],
+			If[ OptionValue[FCLoopMixedToCartesianAndTemporal] && !FreeQ2[{wrapped,irrelevant},{CartesianMomentum,TemporalMomentum}],
 				wrapped = wrapped /. loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :>
 					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}]/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
 						ExplicitLorentzIndex[0] :> holdExplicitLorentzIndex[0],
 						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
 						TemporalPair[x__]/;FreeQ[{x},q] :> holdTemporalPair[x]
 					},{q},Head->loopIntegral, FCI->True];
+
+
+				irrelevant = FCLoopIsolate[irrelevant,{q},Head->loopIntegral, FCI->True] /.
+					loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :> FCLoopMixedToCartesianAndTemporal[xx,{q}] /. loopIntegral-> Identity
 			];
 
 
@@ -348,7 +354,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 				(*	The 4th element in fclcOutput is our list of unique tensor integrals that need to be reduced. *)
 				FCPrint[1,"TID: Applying FCLoopCanonicalize.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
-
 				fclcOutput = FCLoopCanonicalize[wrapped, q, loopIntegral,FCI->True];
 				FCPrint[1, "TID: Done applying FCLoopCanonicalize, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 				FCPrint[3,"After FCLoopCanonicalize: ", fclcOutput , FCDoControl->tidVerbose];
@@ -427,7 +432,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 				FCPrint[1,"TID: Doing some cross-checks.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
 
-				If[	(!FreeQ[FRH[res] /. noTID -> 0 /. FeynAmpDenominator[__] :> Unique[], q]) || (!FreeQ[irrelevant/. FeynAmpDenominator[__] :> Unique[], q]),
+				If[	(!FreeQ[FRH[res] /. noTID -> 0 /. FeynAmpDenominator[__] :> Unique[], q]) || (!FreeQ[irrelevant/. {
+					FeynAmpDenominator[__] :> Unique[], TemporalMomentum[q] :> Unique[] }, q]),
 					Message[TID::failmsg, "tidSingleIntegral failed to achieve a full tensor reduction in", res+irrelevant];
 					Abort[]
 				];
@@ -475,7 +481,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 				(* Check again that the parts of the final result contain only scalar intnegrals *)
 
-				If[	!FreeQ[FRH[res]/. noTID -> 0 /. FeynAmpDenominator[__] :> Unique[], q] || !FreeQ[irrelevant/. FeynAmpDenominator[__] :> Unique[], q],
+				If[	!FreeQ[FRH[res]/. noTID -> 0 /. FeynAmpDenominator[__] :> Unique[], q] || (!FreeQ[irrelevant/. {
+					FeynAmpDenominator[__] :> Unique[], TemporalMomentum[q] :> Unique[] }, q]),
 					Message[TID::failmsg, "tidSingleIntegral failed to achieve full tensor reduction in", res+irrelevant];
 					Abort[]
 				];
