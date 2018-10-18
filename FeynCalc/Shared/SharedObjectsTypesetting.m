@@ -26,6 +26,8 @@ Begin["`SharedObjectsTypesetting`Private`"]
 dootpow::usage="";
 csp::usage="";
 sp::usage="";
+m2Exp::usage="";
+m2ExpFirst::usage="";
 
 CartesianIndex /:
 	MakeBoxes[ CartesianIndex[p_, ___], TraditionalForm]:=
@@ -114,8 +116,8 @@ CartesianPair /:
 
 			m1===m2,
 				If[ Head[m1]===Plus,
-					RowBox[{SuperscriptBox[TBox["(",m1,")"],2]}],
-					SuperscriptBox[TBox[m1],2]
+					RowBox[{SuperscriptBox[TBox["(",CartesianMomentum[m1,dim1],")"],2]}],
+					SuperscriptBox[TBox[CartesianMomentum[m1,dim1]],2]
 				],
 
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
@@ -601,48 +603,115 @@ cfadTypeset[{a_List, m2_/;Head[m2]=!=List, rest___}, dim_, etaOpt_] :=
 cfadTypeset[{a_List}, dim_, etaOpt_] :=
 	cfadTypeset[{a,{0,etaOpt},1}, dim, etaOpt];
 
+
+(* When updating cfadTypeset, please check that
+
+{CFAD[{{0, 0}, m}],
+CFAD[{{0, 0}, -m}],
+CFAD[{{0, 0}, m1 + m2}],
+CFAD[{{0, 0}, m1 - m2}],
+CFAD[{{0, 0}, -m1 + m2}],
+CFAD[{{0, 0}, -m1 - m2}],
+CFAD[{{0, p.q}, m}],
+CFAD[{{0, p.q}, -m}],
+CFAD[{{0, p.q}, m1 + m2}],
+CFAD[{{0, p.q}, m1 - m2}],
+CFAD[{{0, p.q}, -m1 + m2}],
+CFAD[{{0, p.q}, -m1 - m2}],
+
+CFAD[{{p, 0}, m}],
+CFAD[{{p, 0}, -m}],
+CFAD[{{p, 0}, m1 + m2}],
+CFAD[{{p, 0}, m1 - m2}],
+CFAD[{{p, 0}, -m1 + m2}],
+CFAD[{{p, 0}, -m1 - m2}],
+
+CFAD[{{p, p.q}, m}],
+CFAD[{{p, p.q}, -m}],
+CFAD[{{p, p.q}, m1 + m2}],
+CFAD[{{p, p.q}, m1 - m2}],
+CFAD[{{p, p.q}, -m1 + m2}],
+CFAD[{{p, p.q}, -m1 - m2}]
+}
+
+is displayed correctly!
+
+*)
+
 cfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
-Row[{"(",
+	(
+	m2Exp=Expand[m2];
+	Row[{"(",
 
-		If[	ex1=!=0,
-			CartesianPair[CartesianMomentum[ex1,dim],CartesianMomentum[ex1,dim]],
-			Unevaluated[Sequence[]]
-		],
-
-		If[ex2=!=0,
-
-			If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
-				Unevaluated@Sequence["-", Expand[-ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]]]],
-				If[	ex1===0,
-					ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],
-					Unevaluated@Sequence["+", ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]]]
-				]
+			If[	ex1=!=0,
+				CartesianPair[CartesianMomentum[ex1,dim],CartesianMomentum[ex1,dim]],
+				Unevaluated[Sequence[]]
 			],
 
-			Unevaluated[Sequence[]]
-		],
+			If[ex2=!=0,
 
-		If[m2=!=0,
+				If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
+					Unevaluated@Sequence["-", Expand[-ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]]]],
+					If[	ex1===0,
+						ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],
+						Unevaluated@Sequence["+", ex2 /. csp[x_,y_] :> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]]]
+					]
+				],
 
-			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= m2) || (ex1===0 && ex2===0),
-				Unevaluated[Sequence[]],
-				"+"
+				Unevaluated[Sequence[]]
 			],
-			m2},
-			Unevaluated[Sequence[]]
-		],
 
-		If[$FCShowIEta,
 
-			Sequence@@{If[etasign===1,
-				"+",
-				"-"
+
+
+			If[	m2Exp=!=0,
+
+				Sequence@@{
+					If[	(ex1===0 && ex2===0),
+						(*	ex1 and ex2 are both zero -> no extra sign	*)
+						Unevaluated[Sequence[]],
+
+						(*	at least one of the two is not zero -> extra sign might be needed	*)
+						If[	Head[m2Exp]===Plus,
+							(*	we have a sum	*)
+							m2ExpFirst = With[{xx = m2Exp}, ToExpression[First[First[MakeBoxes[xx, TraditionalForm]]]]];
+							If[
+								(Abs[m2ExpFirst]/.Abs->Identity) =!= m2ExpFirst,
+								(*there is a relative minus sign! *)
+								Unevaluated[Sequence[]],
+								(*there is no relative minus sign! *)
+								"+"
+							],
+							(*	we have a single term	*)
+							If[	((Abs[m2Exp] /. Abs -> Identity) =!= (m2Exp)),
+								(*there is a relative minus sign! *)
+								Unevaluated[Sequence[]],
+								(*there is no relative minus sign! *)
+								"+"
+							]
+						]
+					],
+					m2Exp
+				},
+				Unevaluated[Sequence[]]
 			],
-			I "\[Eta]"},
-			Unevaluated[Sequence[]]
-		],
 
-	")"}]^(n);
+
+
+
+
+			If[$FCShowIEta,
+
+				Sequence@@{If[etasign===1,
+					"+",
+					"-"
+				],
+				I "\[Eta]"},
+				Unevaluated[Sequence[]]
+			],
+
+		")"}]^(n)
+		);
 
 
 
@@ -658,49 +727,108 @@ sfadTypeset[{a_List, m2_/;Head[m2]=!=List, rest___}, dim_, etaOpt_] :=
 sfadTypeset[{a_List}, dim_, etaOpt_] :=
 	sfadTypeset[{a,{0,etaOpt},1}, dim, etaOpt];
 
+(* When updating sfadTypeset, please check that
+
+{SFAD[{{0, 0}, m}],
+SFAD[{{0, 0}, -m}],
+SFAD[{{0, 0}, m1 + m2}],
+SFAD[{{0, 0}, m1 - m2}],
+SFAD[{{0, 0}, -m1 + m2}],
+SFAD[{{0, 0}, -m1 - m2}],
+SFAD[{{0, p.q}, m}],
+SFAD[{{0, p.q}, -m}],
+SFAD[{{0, p.q}, m1 + m2}],
+SFAD[{{0, p.q}, m1 - m2}],
+SFAD[{{0, p.q}, -m1 + m2}],
+SFAD[{{0, p.q}, -m1 - m2}],
+
+SFAD[{{p, 0}, m}],
+SFAD[{{p, 0}, -m}],
+SFAD[{{p, 0}, m1 + m2}],
+SFAD[{{p, 0}, m1 - m2}],
+SFAD[{{p, 0}, -m1 + m2}],
+SFAD[{{p, 0}, -m1 - m2}],
+
+SFAD[{{p, p.q}, m}],
+SFAD[{{p, p.q}, -m}],
+SFAD[{{p, p.q}, m1 + m2}],
+SFAD[{{p, p.q}, m1 - m2}],
+SFAD[{{p, p.q}, -m1 + m2}],
+SFAD[{{p, p.q}, -m1 - m2}]
+
+
+}
+is displayed correctly!
+
+*)
+
 sfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
-Row[{"(",
+	(
+	m2Exp=Expand[-m2];
+	Row[{"(",
 
-		If[	ex1=!=0,
-			Pair[Momentum[ex1,dim],Momentum[ex1,dim]],
-			Unevaluated[Sequence[]]
-		],
-
-		If[ex2=!=0,
-
-			If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
-				Unevaluated@Sequence["-", Expand[-ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]]]],
-				If[	ex1===0,
-					ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]],
-					Unevaluated@Sequence["+", ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]]]
-				]
-			],
-
-			Unevaluated[Sequence[]]
-		],
-
-		If[m2=!=0,
-
-			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= (m2)) || (ex1===0 && ex2===0),
-				"+",
+			If[	ex1=!=0,
+				Pair[Momentum[ex1,dim],Momentum[ex1,dim]],
 				Unevaluated[Sequence[]]
-
 			],
-			Expand[-m2]},
-			Unevaluated[Sequence[]]
-		],
 
-		If[$FCShowIEta,
+			If[ex2=!=0,
 
-			Sequence@@{If[etasign===1,
-				"+",
-				"-"
+				If[	((Abs[ex2] /. Abs -> Identity) =!= ex2),
+					Unevaluated@Sequence["-", Expand[-ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]]]],
+					If[	ex1===0,
+						ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]],
+						Unevaluated@Sequence["+", ex2 /. sp[x_,y_] :> Pair[Momentum[x,dim],Momentum[y,dim]]]
+					]
+				],
+
+				Unevaluated[Sequence[]]
 			],
-			I "\[Eta]"},
-			Unevaluated[Sequence[]]
-		],
 
-	")"}]^(n);
+			If[	m2Exp=!=0,
+
+				Sequence@@{
+					If[	(ex1===0 && ex2===0),
+						(*	ex1 and ex2 are both zero -> no extra sign	*)
+						Unevaluated[Sequence[]],
+
+						(*	at least one of the two is not zero -> extra sign might be needed	*)
+						If[	Head[m2Exp]===Plus,
+							(*	we have a sum	*)
+							m2ExpFirst = With[{xx = m2Exp}, ToExpression[First[First[MakeBoxes[xx, TraditionalForm]]]]];
+							If[
+								(Abs[m2ExpFirst]/.Abs->Identity) =!= m2ExpFirst,
+								(*there is a relative minus sign! *)
+								Unevaluated[Sequence[]],
+								(*there is no relative minus sign! *)
+								"+"
+							],
+							(*	we have a single term	*)
+							If[	((Abs[m2Exp] /. Abs -> Identity) =!= (m2Exp)),
+								(*there is a relative minus sign! *)
+								Unevaluated[Sequence[]],
+								(*there is no relative minus sign! *)
+								"+"
+							]
+						]
+					],
+					m2Exp
+				},
+				Unevaluated[Sequence[]]
+			],
+
+			If[$FCShowIEta,
+
+				Sequence@@{If[etasign===1,
+					"+",
+					"-"
+				],
+				I "\[Eta]"},
+				Unevaluated[Sequence[]]
+			],
+
+		")"}]^(n)
+);
 
 MakeBoxes[pref_. FAD[a__, opts:OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[pref/(Apply[DOT,Map[fadTypeset[#,OptionValue[FAD,{opts},Dimension]]&, {a}]]/. DOT -> dootpow), TraditionalForm]/; !MemberQ[{a},{_,_,_}] && !MemberQ[{a},{_,_,_,_,_}] && FCPatternFreeQ[{a,opts}];
@@ -1121,18 +1249,19 @@ Pair /:
 		Which[
 			m1===m2,
 				If[ Head[m1]===Plus,
-					RowBox[{SuperscriptBox[TBox["(",m1,")"],2]}],
-					SuperscriptBox[TBox[m1],2]
+					RowBox[{SuperscriptBox[TBox["(",Momentum[m1,dim1],")"],2]}],
+					SuperscriptBox[TBox[Momentum[m1,dim1]],2]
 				],
 
 			Head[m1]=!=Plus && Head[m2]=!=Plus,
 				TBox[Momentum[m1,dim1], "\[CenterDot]", Momentum[m2,dim2]],
 			Head[m1]=!=Plus && Head[m2]===Plus,
 				TBox[Momentum[m1,dim1],"\[CenterDot]", "(",Momentum[m2,dim2],")"],
-			Head[Momentum[m1,dim1]]===Plus && Head[m2]=!=Plus,
+			Head[m1]===Plus && Head[m2]=!=Plus,
 				TBox["(",Momentum[m1,dim1],")","\[CenterDot]", Momentum[m2,dim2]],
 			Head[m1]===Plus && Head[m2]===Plus,
 				TBox["(",Momentum[m1,dim1],")","\[CenterDot]", "(",Momentum[m2,dim2],")"]
+
 		]
 	];
 
