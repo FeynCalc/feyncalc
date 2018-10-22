@@ -1647,7 +1647,37 @@ Tests`Lorentz`fcstCartesianScalarProductSet = ({
 {"fcstCartesianScalarProductSet-ID305", "CSPE[-a1-a2,b1+b2]",
 "CSPE[-a1 - a2, b1 + b2]"},
 {"fcstCartesianScalarProductSet-ID306", "CSPE[-a1-a2,-b1-b2]",
-"CSPE[-a1 - a2, -b1 - b2]"}
+"CSPE[-a1 - a2, -b1 - b2]"},
+{"fcstCartesianScalarProductSet-ID307",
+"FCClearScalarProducts[];CartesianScalarProduct[p,p]=0; \
+{CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}", "{0, 0, CartesianMomentum[p, -4 + D]}"},
+{"fcstCartesianScalarProductSet-ID308",
+"FCClearScalarProducts[];CSP[p,p]=0; \
+{CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}", "{0, CartesianMomentum[p, -1 + D], CartesianMomentum[p, -4 + \
+D]}"},
+{"fcstCartesianScalarProductSet-ID309",
+"FCClearScalarProducts[];CSPD[p,p]=0; \
+{CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}", "{CartesianMomentum[p], 0, CartesianMomentum[p, -4 + D]}"},
+{"fcstCartesianScalarProductSet-ID310",
+"FCClearScalarProducts[];CSPE[p,p]=0; \
+{CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}", "{CartesianMomentum[p], CartesianMomentum[p, -1 + D], 0}"},
+{"fcstCartesianScalarProductSet-ID311",
+"FCClearScalarProducts[];CartesianMomentum[p]=ab;CSP[p,p]=0; \
+{CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}", "{0, CartesianMomentum[p, -1 + D], CartesianMomentum[p, -4 + \
+D]}"},
+{"fcstCartesianScalarProductSet-ID312",
+"FCClearScalarProducts[];CartesianMomentum[p,D-1]=ab;CSPD[p,p]=0; \
+{CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}", "{CartesianMomentum[p], 0, CartesianMomentum[p, -4 + D]}"},
+{"fcstCartesianScalarProductSet-ID313",
+"FCClearScalarProducts[];CartesianMomentum[p,D-4]=ab;CSPE[p,p]=0; \
+tmp = {CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
+4]}; \n FCClearScalarProducts[]; \n tmp", "{CartesianMomentum[p], CartesianMomentum[p, -1 + D], 0}"}
 });
 
 Tests`Lorentz`fcstSetTemporalComponent = {

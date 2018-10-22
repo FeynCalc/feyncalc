@@ -928,5 +928,8 @@ D)))"},
 (CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
 (-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^2*(TC[k] - TC[q])^2)/(2*(2 - D)*CSPD[q, q]^2) +
 (CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
-(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^4)/(4*(2 - D)*CSPD[q, q]^2)"}
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^4)/(4*(2 - D)*CSPD[q, q]^2)"},
+{"fcstTID-ID48", "FCClearScalarProducts[]; \n CSPD[p] = 0; \n TID[CVD[q, i] CVD[q, j] CFAD[{q, m^2}, {q - p, m^2}], q, FCE -> True]",
+"(CFAD[{{q, 0}, {m^2, -1}, 1}] KDD[i, j])/(-1 + D) - (
+m^2 CFAD[{{q, 0}, {m^2, -1}, 1}, {{q, 0}, {m^2, -1}, 1}] KDD[i,j])/(-1 + D)"}
 };

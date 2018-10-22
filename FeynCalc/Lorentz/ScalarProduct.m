@@ -254,7 +254,8 @@ CartesianScalarProduct/:
 	Block[ {downv, cpair,  ruleClearCSP,ruleClearCartesianPair, a,b,
 			ruleClearFCECSP,ruleClearFCECSPD,ruleClearFCECSPE,
 			cspList, cpairList, fceList, valsListOrig, valsList,
-			slot,dims,setval,dummy, tuples, hp, cpr, csp, entry},
+			slot,dims,setval,dummy, tuples, hp, cpr, csp, entry,
+			ruleClearCartesianMomentum, cmomList},
 
 		dims = OptionValue[CartesianScalarProduct,{c},SetDimensions];
 		{a,b} = Sort[{araw,braw}];
@@ -277,6 +278,9 @@ CartesianScalarProduct/:
 
 		fceList = Flatten[Outer[HoldPattern[cpair[#1, #2]] &, Sequence@@tuples]];
 
+		cmomList = DeleteDuplicates[Flatten[Map[Map[dummy[hp[cm[#, slot]], 0] &, tuples[[1]]] /. slot -> Slot[1] &, dims]]] /.
+			cm[x_,3]:> cm[x] /. hp->HoldPattern;
+
 
 
 		valsList = Flatten[Table[valsListOrig, {i, 1,Length[dims]}]];
@@ -294,6 +298,15 @@ CartesianScalarProduct/:
 		ruleClearCartesianPair =	DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[hp[cpr[CartesianMomentum[#1, slot], CartesianMomentum[#2, slot]]],
 			cpair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
 			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed]] /. hp->HoldPattern /. cpr->CartesianPair;
+
+		(*For a^2 = 0 we need to set CartesianMomentum[a]=0 as well! *)
+
+		If[setval===0 && a===b,
+			ruleClearCartesianMomentum = DeleteDuplicates[
+			Flatten[Map[(Flatten[Outer[dummy[hp[cm[#1, slot]], CartesianMomentum
+			[#1, slot]] &, Sequence @@ tuples]] /. slot -> Slot[1]) &, dims] /.
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed]]/. cm[x_,3]:> cm[x] /. hp -> HoldPattern /. cm -> CartesianMomentum;
+		];
 
 		ruleClearFCECSP = DeleteDuplicates[Flatten[Outer[dummy[HoldPattern[CSP[#1,#2]],
 			cpair[#1, #2, Rule[Dimension, 3]]] &, Sequence@@tuples] /. slot -> Slot[1] /.
@@ -344,6 +357,15 @@ CartesianScalarProduct/:
 				DownValues[CSPE] = downv;
 			];
 
+			(*	 for CartesianMomentum	*)
+
+			(*For a^2 = 0 we need to set CartesianMomentum[a]=0 as well! *)
+			If[setval===0 && a===b,
+				downv = DownValues[CartesianMomentum];
+				downv = Complement[downv,ruleClearCartesianMomentum];
+				DownValues[CartesianMomentum] = downv;
+			];
+
 			FCPrint[3,"CartesianScalarProduct: Downvalues for CartesianScalarProduct after removal ", DownValues[CartesianScalarProduct]];
 			FCPrint[3,"CartesianScalarProduct: Downvalues for CartesianPair after removal ", DownValues[CartesianPair]];
 			FCPrint[3,"CartesianScalarProduct: Downvalues for CSP after removal ", DownValues[CSP]];
@@ -371,6 +393,11 @@ CartesianScalarProduct/:
 		FCPrint[1,"CartesianScalarProduct: Setting DownValues for CSP"];
 		If[	MemberQ[dims,3],
 			DownValues[CSP]=Join[DeleteDuplicates[Thread[dummy[fceList/.cpair->CSP,valsListOrig]]]/.dummy->RuleDelayed,DownValues[CSP]]
+		];
+
+		If[	setval===0 && a===b,
+			FCPrint[1,"CartesianScalarProduct: Setting DownValues for CartesianMomentum"];
+			DownValues[CartesianMomentum]=Join[cmomList/.cm->CartesianMomentum/.dummy->RuleDelayed,DownValues[CartesianMomentum]];
 		];
 
 		(* Last but not least, add the set scalar product to our list*)
