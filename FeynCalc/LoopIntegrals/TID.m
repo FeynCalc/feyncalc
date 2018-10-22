@@ -334,12 +334,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 			If[ OptionValue[FCLoopMixedToCartesianAndTemporal] && !FreeQ2[{wrapped,irrelevant},{CartesianMomentum,TemporalMomentum}],
 				wrapped = wrapped /. loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :>
-					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}]/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
+					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}] /. TemporalPair[x__]/;!FreeQ[{x},q] :> MomentumExpand[TemporalPair[x]]
+						/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
 						ExplicitLorentzIndex[0] :> holdExplicitLorentzIndex[0],
 						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
 						TemporalPair[x__]/;FreeQ[{x},q] :> holdTemporalPair[x]
 					},{q},Head->loopIntegral, FCI->True];
-
 
 				irrelevant = FCLoopIsolate[irrelevant,{q},Head->loopIntegral, FCI->True] /.
 					loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :> FCLoopMixedToCartesianAndTemporal[xx,{q}] /. loopIntegral-> Identity

@@ -906,5 +906,27 @@ D))"},
 "-((CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]*(KDD[i, l]*KDD[j, k] + \
 KDD[i, k]*KDD[j, l] + KDD[i, j]*KDD[k, l])*TC[q]^4)/((-1 + D)*(1 + \
 D)))"},
-{"fcstTID-ID46", "TID[TC[q]^2SFAD[q]CVD[q,i],q]", "0"}
+{"fcstTID-ID46", "TID[TC[q]^2*SFAD[q]CVD[q,i],q]", "0"},
+{"fcstTID-ID47", "TID[CVD[k, i] CVD[k, j] SFAD[k, k - q], k, FCE -> True]",
+"(CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(4*CVD[q, i]*CVD[q, j] - 3*(-1 + D)*CVD[q, i]*CVD[q, j] -
+	CSPD[q, q]*KDD[i, j]))/(4*(2 - D)*CSPD[q, q]) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j]))/(4*(2 - D)) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j]))/
+(4*(2 - D)*CSPD[q, q]) + (CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(2*CVD[q, i]*CVD[q, j] - (-1 + D)*CVD[q, i]*CVD[q, j] - CSPD[q, q]*KDD[i, j])*TC[k]^2)/(2*(2 - D)*CSPD[q, q]) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^2)/
+(4*(2 - D)*CSPD[q, q]^2) + (CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) +
+	CSPD[q, q]*KDD[i, j])*TC[k]^2)/(4*(2 - D)*CSPD[q, q]^2) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^4)/(4*(2 - D)*CSPD[q, q]^2) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^2)/
+(4*(2 - D)*CSPD[q, q]^2) - (CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) +
+	CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^2)/(4*(2 - D)*CSPD[q, q]^2) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^2)/(2*(2 - D)*CSPD[q, q]) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^2*(TC[k] - TC[q])^2)/(2*(2 - D)*CSPD[q, q]^2) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^4)/(4*(2 - D)*CSPD[q, q]^2)"}
 };
