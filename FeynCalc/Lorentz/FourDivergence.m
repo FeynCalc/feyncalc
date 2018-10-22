@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FourDivergence::usage =
-"FourDivergence[exp, FourVector[p, mu]] calculates the partial derivative of exp w.r.t. p(mu). \
-FourDivergence[exp, FourVector[p, mu], FourVector[p,nu], ...] gives the multiple derivative.";
+"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t. p(mu). \
+FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple derivative.";
 
 PartialFourVector::usage=
 "PartialFourVector is equivalent to FourDivergence";
@@ -42,6 +42,12 @@ The derivative of a vector in one dimension w.r.t the same vector in a different
 dimension is zero by convention. Please check that this is indeed intended. You \
 can deactivate this message for the current session by evaluating \
 Off[FourDivergence::warn].";
+
+FourDivergence::warnCartesian =
+"Warning! The input expression also depends on the 3-momentum `1`. The derivatives of \
+such quantities w.r.t the corresponding 4-vector are zero. Please check that \
+this is indeed intended. You can deactivate this message for the current session by \
+evaluating  Off[ThreeDivergence::warnCartesian].";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -69,11 +75,6 @@ Options[FourDivergence] = {
 
 FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 	Block[{ex, ve, tliflag = False, time, args, hold},
-
-		If[	!FreeQ2[{x,fv}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
 
 		If [OptionValue[FCVerbose]===False,
 			fdVerbose=$VeryVerbose,
@@ -206,6 +207,10 @@ fourDerivative[x_, ve_]:=
 
 		nx = ExpandScalarProduct[nx, Momentum -> {p0}, EpsEvaluate->True, FCI->True];
 		FCPrint[3, "FourDivergence: fourDerivative: After ExpandScalarProduct: ", nx, FCDoControl->fdVerbose];
+
+		If[	!FreeQ[nx,CartesianMomentum[p0,___]],
+			Message[FourDivergence::warnCartesian, ToString[p0,InputForm]];
+		];
 
 		(*	Differentation of FADs is very easy to mess up, so we need to be careful here.
 			Essentially, we have d/dx  1/f(g(x)) = -1/[f(g(x))]^2 * f'(g(x))* g'(x), where f(x)=x, i.e.
