@@ -82,5 +82,9 @@ q1] + SP[l, q2] + SP[l, q3] + SP[l, q4] + SP[p1, q1] + SP[p1, q2] + SP[p1, q3] +
 SP[p2, q1] + SP[p2, q2] + SP[p2, q3] + SP[p2, q4] + SP[p3, q1] + SP[p3, q2] + SP[p3, q3] + \
 SP[p3, q4]"}, {"fcstExpandScalarProduct-ID22",
 "ExpandScalarProduct[SP[l+p1+p2+p3,q1+q2+q3+q4],Momentum->l,Full->False,FCE->True]",
-"SP[l, q1 + q2 + q3 + q4] + SP[p1 + p2 + p3, q1 + q2 + q3 + q4]"}
+"SP[l, q1 + q2 + q3 + q4] + SP[p1 + p2 + p3, q1 + q2 + q3 + q4]"},
+{"fcstExpandScalarProduct-ID22",
+"ExpandScalarProduct[Pair[Momentum[k + P], Momentum[Polarization[k + P, I]]]]",
+"Pair[Momentum[k], Momentum[Polarization[k + P, I]]] +
+Pair[Momentum[P], Momentum[Polarization[k + P, I]]]"}
 }

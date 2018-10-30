@@ -1843,17 +1843,6 @@ Pair[Momentum[x_, ___], Momentum[Polarization[x_, y:Except[_?OptionQ]..., Option
 Pair[Momentum[x_,___], Momentum[Polarization[_?NumberQ x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] :=
 	0/; OptionValue[Polarization,Transversality];
 
-Pair[Momentum[pi_,___], Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]..., opts:OptionsPattern[Polarization]], dii___]] :=
-	Contract[ExpandScalarProduct[Pair[Momentum[x+pi, dii],
-	Momentum[Polarization[x, ki ,opts],
-	dii]]]] /; ( pi + Last[x] ) === 0;
-
-Pair[Momentum[pi_,___], Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]...,
-	opts:OptionsPattern[Polarization]], dii___]] :=
-	Contract[ExpandScalarProduct[Pair[Momentum[pi-x,dii],
-	Momentum[Polarization[x, ki, opts],dii]]]] /; ( pi - Last[x] ) === 0;
-
-
 Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]]:=
 	FeynCalc`Package`MetricT;
 
