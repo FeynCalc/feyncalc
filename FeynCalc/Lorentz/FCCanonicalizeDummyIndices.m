@@ -83,7 +83,7 @@ renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 	];
 
 FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
-	Block[ {indexList = {}, ex,tmp,null1,null2, renamingRule,
+	Block[ {indexList = {}, ex,exUnexpanded,tmp,null1,null2, renamingRule,
 			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
 			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
@@ -124,6 +124,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			ex = expr,
 			ex = FCI[expr]
 		];
+		exUnexpanded = ex;
 
 		If[	FreeQ2[ex,indhead],
 			Return[ex]
@@ -131,6 +132,10 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[FCTraceExpand],
 			ex = FCTraceExpand[ex,FCI->True]
+		];
+
+		If[ OptionValue[DotSimplify],
+			ex = DotSimplify[ex,FCI->False]
 		];
 
 		tmp = Expand2[ex, indhead];
@@ -171,6 +176,11 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		finalList = Flatten[finalList];
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: finalList: ", finalList, FCDoControl->canodummyVerbose];
+		(*
+		If[	finalList==={},
+			FCPrint[1,"FCCanonicalizeDummyIndices: No dummy indices to canonicalize, returning the original expression.", FCDoControl->canodummyVerbose];
+			Return[exUnexpanded];
+		];*)
 
 		tmp  = FCLoopIsolate[tmp,finalList,Head->isoHead,Factoring->False,DotSimplify->OptionValue[DotSimplify]];
 
