@@ -38,12 +38,13 @@ Options[ToStandardMatrixElement] = {
 	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
-	Factoring -> Factor,
+	Factoring -> {Factor, 5000},
 	Polarization -> True,
 	SirlinSimplify -> False,
 	Spinor -> False,
 	SpinorChainChiralSplit -> True,
-	SpinorChainTrick -> False
+	SpinorChainTrick -> False,
+	TimeConstrained -> 3
 }
 
 standmat/:
@@ -51,7 +52,7 @@ standmat/:
 		standmat[x y];
 
 ToStandardMatrixElement[expr_, OptionsPattern[]]:=
-	Block[{ex,res,time, chead, dhead, holdDOT},
+	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -60,6 +61,8 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 				tsmeVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		optTimeConstrained = OptionValue[TimeConstrained];
 
 		FCPrint[1,"ToStandardMatrixElement: Entering.", FCDoControl->tsmeVerbose];
 		FCPrint[3,"ToStandardMatrixElement: Entering with: ", expr, FCDoControl->tsmeVerbose];
@@ -114,7 +117,7 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "ToStandardMatrixElement: Applying Collect2.", FCDoControl->tsmeVerbose];
-		ex = Collect2[ex,dhead,chead, Factoring->OptionValue[Factoring]];
+		ex = Collect2[ex,dhead,chead, Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
 		FCPrint[1, "ToStandardMatrixElement: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 		FCPrint[3, "ToStandardMatrixElement: After Collect2: ", ex, FCDoControl->tsmeVerbose];
 
