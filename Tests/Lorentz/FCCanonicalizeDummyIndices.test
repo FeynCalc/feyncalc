@@ -150,73 +150,21 @@ Spinor[Momentum[pE2, D], 0,
 	Sqrt[2] me sw)).Spinor[Momentum[pB, D], mb, 1] FAD[{k,
 	mU}, {k + pS, Sqrt[GaugeXi[W]] me}, {k - pE2 + pS,
 	me}, {k - pE1 - pE2 + pS, Sqrt[GaugeXi[W]] me}], FCE -> True]",
-"(EL^2*mb*mU^2*VUb*Spinor[-Momentum[pS, D], ms, 1] . GA[6] . GA[6] .
-	Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GA[7] .
-		Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FAD[{k, mU}, {k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) - (EL^2*mU^3*VUb*Spinor[-Momentum[pS, D], ms, 1] . GA[6] .
-	GA[7] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GA[7] .
-		Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FAD[{k, mU}, {k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) - (EL^2*mb*ms*mU*VUb*Spinor[-Momentum[pS, D], ms, 1] .
-	GA[7] . GA[6] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GA[7] .
-		Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FAD[{k, mU}, {k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) + (EL^2*ms*mU^2*VUb*Spinor[-Momentum[pS, D], ms, 1] .
-	GA[7] . GA[7] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GA[7] .
-		Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FAD[{k, mU}, {k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) +
-(EL^2*mb*mU*VUb*(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] .
-		GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . GA[6] . GSD[k] . GA[6] .
-	Spinor[Momentum[pB, D], mb, 1]*FAD[{k, mU},
-	{k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) -
-(EL^2*mU^2*VUb*(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] .
-		GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . GA[6] . GSD[k] . GA[7] .
-	Spinor[Momentum[pB, D], mb, 1]*FAD[{k, mU},
-	{k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) -
-(EL^2*mb*ms*VUb*(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] .
-		GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . GA[7] . GSD[k] . GA[6] .
-	Spinor[Momentum[pB, D], mb, 1]*FAD[{k, mU},
-	{k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2) +
-(EL^2*ms*mU*VUb*(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . GA[6] .
-		GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . GA[6] . GSD[-k + pE2 - pS] .
-	   GA[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . GA[7] . GSD[k] . GA[7] .
-	Spinor[Momentum[pB, D], mb, 1]*FAD[{k, mU},
-	{k + pS, me*Sqrt[GaugeXi[W]]}, {k - pE2 + pS, me},
-	{k - pE1 - pE2 + pS, me*Sqrt[GaugeXi[W]]}]*SDF[Col1, Col2])/
-(2*me^2*sw^2)"}
+"Spinor[Momentum[pE2, D], 0, 1] . (((-I)*EL*DiracGamma[6])/(Sqrt[2]*sw)) .
+(me + DiracGamma[Momentum[-k + pE2 - pS, D], D]) .
+(((-I)*EL*DiracGamma[7])/(Sqrt[2]*sw)) . Spinor[-Momentum[pE1, D], 0, 1]*
+Spinor[-Momentum[pS, D], ms, 1] .
+((I*EL*mU*DiracGamma[6]*SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/
+	(Sqrt[2]*me*sw) - (I*EL*ms*DiracGamma[7]*SUNFDelta[SUNFIndex[Col1],
+	  SUNFIndex[Col2]])/(Sqrt[2]*me*sw)) .
+(mU + DiracGamma[Momentum[k, D], D]) .
+(((-I)*EL*mb*VUb*DiracGamma[6])/(Sqrt[2]*me*sw) +
+(I*EL*mU*VUb*DiracGamma[7])/(Sqrt[2]*me*sw)) .
+Spinor[Momentum[pB, D], mb, 1]*FeynAmpDenominator[
+PropagatorDenominator[Momentum[k, D], mU], PropagatorDenominator[
+Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
+PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
+	Momentum[pS, D], me], PropagatorDenominator[
+Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] + Momentum[pS, D],
+me*Sqrt[GaugeXi[W]]]]"}
 });

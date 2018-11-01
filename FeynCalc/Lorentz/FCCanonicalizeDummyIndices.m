@@ -176,11 +176,11 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		finalList = Flatten[finalList];
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: finalList: ", finalList, FCDoControl->canodummyVerbose];
-		(*
+
 		If[	finalList==={},
 			FCPrint[1,"FCCanonicalizeDummyIndices: No dummy indices to canonicalize, returning the original expression.", FCDoControl->canodummyVerbose];
 			Return[exUnexpanded];
-		];*)
+		];
 
 		tmp  = FCLoopIsolate[tmp,finalList,Head->isoHead,Factoring->False,DotSimplify->OptionValue[DotSimplify]];
 
