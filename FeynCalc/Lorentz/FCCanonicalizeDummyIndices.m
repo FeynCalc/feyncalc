@@ -126,6 +126,11 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
+		If[ OptionValue[DotSimplify],
+			ex = DotSimplify[ex,FCI->False]
+		];
+
+
 		tmp = Expand2[ex, indhead];
 
 		{rest0,tmp} = FCSplit[tmp,indhead];
