@@ -39,7 +39,7 @@ Options[CTdec] =	{
 	BasisOnly 			-> False,
 	Dimension 			-> D-1,
 	FCVerbose 			-> False,
-	Factoring 			-> Factor2,
+	Factoring 			-> {Factor2, Factor},
 	FeynCalcExternal	-> True,
 	List 				-> True,
 	UseParallelization	-> True,

@@ -75,10 +75,10 @@ Solve3[a_/;Head[a]=!=List, b__] :=
 	Solve3[{a}, b];
 
 Solve3[eqq_List, clii_List, OptionsPattern[]] :=
-	Block[{cli = clii, factor , finsub,newel, lneq, neqh,isol, neq, newneq,
+	Block[{cli = clii, factor, factorSpecial, optFactoring, finsub,newel, lneq, neqh,isol, neq, newneq,
 		col,  new, res = {}, parmap, pmap, starttime = AbsoluteTime[]},
 
-		factor = OptionValue[Factoring];
+		optFactoring = OptionValue[Factoring];
 		finsub = OptionValue[FinalSubstitutions];
 		parmap = OptionValue[ParallelMap];
 
@@ -87,6 +87,21 @@ Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
 				sol3Verbose=OptionValue[FCVerbose]
 			];
+		];
+
+		Switch[optFactoring,
+			False,
+				factor = Identity;
+				factorSpecial = Identity,
+			True|Factor2,
+				factor = Factor2;
+				factorSpecial = Identity,
+			{_, _},
+				factor = optFactoring[[1]];
+				factorSpecial = optFactoring[[2]],
+			_,
+				factor = optFactoring;
+				factorSpecial = optFactoring
 		];
 
 		(* High - school algorithm *)
@@ -98,8 +113,8 @@ Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 			];
 
 		With[{cli = cli},
-			col = ( FCPrint[2," Collect with Factor "];
-			Collect[#, cli, Factor] ) &
+			col = ( FCPrint[2," Collect with ", factorSpecial];
+			Collect[#, cli, factorSpecial] ) &
 		];
 
 		If[TrueQ[parmap],
@@ -151,7 +166,7 @@ Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 				*)
 
 				FCPrint[3,"Solve3: Calling Collect.", FCDoControl->sol3Verbose];
-				new = new[[1]] -> Collect[new[[2]], cli, Factor];
+				new = new[[1]] -> Collect[new[[2]], cli, factorSpecial];
 				FCPrint[3,"Solve3: Collect done.", FCDoControl->sol3Verbose];
 
 				If[!FreeQ2[new[[2]], cli],

@@ -78,7 +78,7 @@ Options[Tdec] =	{
 	BasisOnly -> False,
 	Dimension -> D,
 	FCVerbose -> False,
-	Factoring -> Factor2,
+	Factoring -> {Factor2, Factor},
 	FeynCalcExternal -> True,
 	Head -> Identity,
 	List -> True,
