@@ -42,6 +42,10 @@ PreservePropagatorStructures::usage =
 numerators of fermionic propagators like (GS[p]+m) that appear in \
 chains of Dirac matrices will not be expanded.";
 
+DotSimplify::failmsg =
+"Error! DotSimplify has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -318,7 +322,16 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 					If[ Head[b] === Times,
 						If[ Select[b, NonCommFreeQ[#]&] =!= 1,
 							Select[b, NonCommFreeQ[#]&] dlin1[{ok, Select[b, !NonCommFreeQ[#]&]}, c],
-							dlin1[{ok},b[[1]]] dlin1[{},Rest[b],c]
+							(*The head is Times, and there are only noncommutative objects inside *)
+							(*dlin1[{ok},b[[1]]] dlin1[{},Rest[b],c]*)
+							(*	If there is a Times between noncommutative objects with the same head, there clearly must be
+								something wrong; TODO: head2 instead of Head to map all relevant Dirac heads to the same name. *)
+							If[ Intersection[(Head/@Cases2[b[[1]],$NonComm]),(Head/@Cases2[Rest[b],$NonComm])]=!={},
+								Message[DotSimplify::failmsg,"Detected commutative multiplication of noncommutative objects."];
+								Abort[]
+							];
+
+							dlin1[{ok},b[[1]],Rest[b],c]
 						],
 						dlin1[{ok,b},c]
 					]

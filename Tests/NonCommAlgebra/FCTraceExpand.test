@@ -98,5 +98,25 @@ SI[x1].SI[x2] (M + GSD[k + p]).GA[5].GSD[l - p].GAD[
 	nu].(M + GSD[l]).GAD[la].GSD[k + l].(M + GSD[x])] +
 DiracTrace[
 SI[x1].SI[x2] (M + GSD[k1 + p1]).GA[6].GSD[l1 - p1].GAD[
-	nu].(M + GSD[l]).GAD[la].GSD[k1 + l1].(M + GSD[x])]"}
+	nu].(M + GSD[l]).GAD[la].GSD[k1 + l1].(M + GSD[x])]"},
+{"fcstFCTraceExpand-ID18",
+"FCTraceExpand[
+DiracTrace[
+DiracGamma[
+	Momentum[
+	q]].(DiracGamma[LorentzIndex[mu]].DiracGamma[6] SUNT[
+	SUNIndex[b]]).(DiracGamma[Momentum[k]] +
+	DiracGamma[
+	Momentum[q]]).(DiracGamma[LorentzIndex[mu]].DiracGamma[7] SUNT[
+	SUNIndex[a]])]]",
+"DiracTrace[
+SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[
+	Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	6].DiracGamma[Momentum[k]].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[7]] +
+DiracTrace[
+SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[
+	Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	6].DiracGamma[Momentum[q]].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[7]]"}
 })

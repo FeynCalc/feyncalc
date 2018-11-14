@@ -96,5 +96,24 @@ FCE -> True]","GA[i].(GA[j1] + GA[j2]).GA[k]"},
 FCJoinDOTs -> False, FCE -> True]","GA[i].GA[j1].GA[k] + GA[i].GA[j2].GA[k]"},
 {"fcstDotSimplify-ID19","DataType[f, g, NonCommutative] = True; \n DotSimplify[f.g - g.(2 a).f]","f.g - 2 a g.f"},
 {"fcstDotSimplify-ID20","DataType[f, g, NonCommutative] = False; \n tmp = DotSimplify[f.g - g.(2 a).f]; \n
-	UnDeclareNonCommutative[f, g]; \n tmp","f g-2 a f g"}
+	UnDeclareNonCommutative[f, g]; \n tmp","f g-2 a f g"},
+{"fcstDotSimplify-ID21","DotSimplify[DiracGamma[
+Momentum[q]].(DiracGamma[LorentzIndex[mu]].DiracGamma[6] c1).(DiracGamma[Momentum[k]] +
+	DiracGamma[Momentum[q]]).(DiracGamma[LorentzIndex[mu]].DiracGamma[7] c2)]",
+	"c1 c2 DiracGamma[Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	6].DiracGamma[Momentum[k]].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[7] +
+c1 c2 DiracGamma[Momentum[q]].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[6].DiracGamma[
+	Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[7]"},
+{"fcstDotSimplify-ID22","DotSimplify[
+DiracGamma[Momentum[q]].(DiracGamma[LorentzIndex[mu]].DiracGamma[6] SUNT[SUNIndex[b]]).(DiracGamma[Momentum[k]] +
+	DiracGamma[Momentum[q]]).(DiracGamma[LorentzIndex[mu]].DiracGamma[7] SUNT[SUNIndex[a]])]",
+	"SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	6].DiracGamma[Momentum[k]].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[7] +
+SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[
+	Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
+	6].DiracGamma[Momentum[q]].DiracGamma[
+	LorentzIndex[mu]].DiracGamma[7]"}
 }
