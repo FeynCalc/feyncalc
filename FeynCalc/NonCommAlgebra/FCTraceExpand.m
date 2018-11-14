@@ -51,6 +51,13 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 		dotSimp = OptionValue[DotSimplify];
 		propPres = OptionValue[PreservePropagatorStructures];
 
+		If [OptionValue[FCVerbose]===False,
+			fctreVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				fctreVerbose=OptionValue[FCVerbose]
+			];
+		];
+
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
@@ -89,17 +96,21 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 			FCPrint[1, "FCTraceExpand: Done expanding Dirac traces: ", diracTraces2, FCDoControl->fctreVerbose];
 
 			If [OptionValue[DiracGammaExpand],
-				diracTraces2 = DiracGammaExpand/@diracTraces2
+				FCPrint[1, "FCTraceExpand: Applying DiracGammaExpand to the Dirac traces", FCDoControl->fctreVerbose];
+				diracTraces2 = DiracGammaExpand[#,FCI->True]&/@diracTraces2;
+				FCPrint[3, "FCTraceExpand: After applying DiracGammaExpand ", diracTraces2,  FCDoControl->fctreVerbose]
 			];
 
 			If[	OptionValue[FCTraceFactor],
-				FCPrint[1, "FCTraceExpand: Applying FCTraceFactor ", FCDoControl->fctreVerbose];
+				FCPrint[1, "FCTraceExpand: Applying FCTraceFactor to the Dirac traces", FCDoControl->fctreVerbose];
 				diracTraces2 = FCTraceFactor/@diracTraces2;
 				FCPrint[3, "FCTraceExpand: After applying FCTraceFactor ", diracTraces2,  FCDoControl->fctreVerbose]
 			];
 
 			If[ diracTraces =!= {},
-				ex = ex /. Dispatch[Thread[diracTraces -> traceexpand[diracTraces2]]]
+				FCPrint[1, "FCTraceExpand: Expanding Dirac traces.", FCDoControl->fctreVerbose];
+				ex = ex /. Dispatch[Thread[diracTraces -> traceexpand[diracTraces2]]];
+				FCPrint[3, "FCTraceExpand: After the expansion of Dirac traces: ", ex,  FCDoControl->fctreVerbose]
 			];
 		];
 

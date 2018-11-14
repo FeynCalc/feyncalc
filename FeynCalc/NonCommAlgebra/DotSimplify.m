@@ -339,6 +339,9 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			simpf[y_] :=
 				(y /. DOT -> dlin0 /. dlin0 -> dlin  //. dlin[a__] :> dlin1[{}, a] //. dlin1[{a___}] :> DOT[a] /. DOT -> DOTcomm) /. dlin -> DOT;
 			x = FixedPoint[simpf, x, maxIterations];
+
+			FCPrint[4, "DotSimplify: After simpf:", x, FCDoControl->dsVerbose];
+
 			(*];*)
 			x = x/. sunTrace -> SUNTrace /. holdDOT -> DOT;
 
