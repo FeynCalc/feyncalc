@@ -1765,6 +1765,9 @@ Momentum[x_ GaugeXi[y_], dim_:4] :=
 Momentum[x_ n_?NumberQ, dim_ :4] :=
 	n Momentum[x, dim];
 
+Momentum[x_ n_/;DataType[n,FCVariable], dim_ :4] :=
+	n Momentum[x, dim];
+
 Momentum[x:Except[_Pattern], 4] :=
 	Momentum[x, 4]  = Momentum[x];
 
@@ -2205,6 +2208,9 @@ CartesianIndex[_Integer, ___] :=
 CartesianMomentum[x_ n_?NumberQ, dim_ :3] :=
 	n CartesianMomentum[x, dim];
 
+CartesianMomentum[x_ n_/;DataType[n,FCVariable], dim_ :3] :=
+	n CartesianMomentum[x, dim];
+
 CartesianMomentum[x:Except[_Pattern], 3] :=
 	CartesianMomentum[x, 3]  = CartesianMomentum[x];
 
@@ -2332,6 +2338,9 @@ TemporalMomentum[x_, dim_Symbol-4] :=
 	TemporalMomentum[x, dim-4] = 0;
 
 TemporalMomentum[x_ n_?NumberQ] :=
+	n TemporalMomentum[x];
+
+TemporalMomentum[x_ n_/;DataType[n,FCVariable]] :=
 	n TemporalMomentum[x];
 
 TemporalMomentum[0] :=

@@ -15,5 +15,9 @@ Tests`Shared`fcstDataType = {
 {"fcstDataType-ID1","ClearAll[f, g]; \n DataType[f, g, NonCommutative] = True; \n DotExpand[f.g - g.(2 a).f]",
 	"f.g - 2 a g.f"},
 {"fcstDataType-ID2","DataType[f, g, NonCommutative] = False; \n DotExpand[f.g - g.(2 a).f]",
-	"f g - 2 a f g"}
+	"f g - 2 a f g"},
+{"fcstDataType-ID3","DataType[z, FCVariable] = True; \n tmp=FCI[FAD[q - z p]]; \n DataType[z, FCVariable] = True; \n tmp",
+"FeynAmpDenominator[PropagatorDenominator[-z Momentum[p, D] + Momentum[q, D], 0]]"},
+{"fcstDataType-ID4","DataType[z, FCVariable] = True; \n tmp=FCI[SFAD[{{0, (z p).q}}]]; \n DataType[z, FCVariable] = True; \n tmp",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, z Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]"}
 };
