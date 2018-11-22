@@ -93,6 +93,16 @@ and test the results without restarting the kernel. Depending on the complexity 
 of the given function, there might also be unknown side effects. The function is \
 not meant to be invoked by the normal users. ";
 
+FCReplaceAll::usage=
+"FCReplaceAll[expr, ru1, ...] is like ReplaceAll, but it also allows to apply multiple \
+replacement rules sequentially. Instead of doing expr /. ru1 /. ru2 /. ru3 one can just
+write FCReplaceAll[expr, ru1, ru2, ru3].";
+
+FCReplaceRepeated::usage=
+"FCReplaceRepeated[expr, ru1, ...] is like ReplaceRepeated, but it also allows to apply multiple \
+replacement rules sequentially. Instead of doing expr //. ru1 //. ru2 //. ru3 one can just
+write FCReplaceRepeated[expr, ru1, ru2, ru3].";
+
 FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
@@ -535,6 +545,19 @@ FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 
 		{free,notfree}
 	];
+
+
+FCReplaceAll[ex_, ru_] :=
+	ReplaceAll[ex, ru];
+
+FCReplaceAll[ex_, ru1_, ru2__] :=
+	Fold[ReplaceAll, ex, {ru1, ru2}];
+
+FCReplaceRepeated[ex_, ru_] :=
+	ReplaceRepeated[ex, ru];
+
+FCReplaceRepeated[ex_, ru1_, ru2__] :=
+	Fold[ReplaceRepeated, ex, {ru1, ru2}];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 	Block[ {free, notfree, tmp, time},

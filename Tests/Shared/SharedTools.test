@@ -166,6 +166,34 @@ Tests`Shared`fcstSharedToolsFCSplit = {
 	"{{b^2, a^2 + 2 a b}, {d^2, a^2 + 2 a d}}"}
 };
 
+Tests`Shared`fcstSharedToolsFCReplaceAll = {
+{"fcstSharedToolsFCReplaceAll-ID1", "FCReplaceAll[a,a\[Rule]b]",
+"b"},
+{"fcstSharedToolsFCReplaceAll-ID2",
+"FCReplaceAll[a c,{a\[Rule]b,c\[Rule]d}]", "b*d"},
+{"fcstSharedToolsFCReplaceAll-ID3",
+"FCReplaceAll[a c,a\[Rule]b,c\[Rule]d]", "b*d"},
+{"fcstSharedToolsFCReplaceAll-ID4",
+"FCReplaceAll[a c,a\[Rule]b,c\[Rule]d,d\[Rule]e,b\[Rule]f]", "e*f"}
+};
+
+Tests`Shared`fcstSharedToolsFCReplaceRepeated ={
+{"fcstSharedToolsFCReplaceRepeated-ID1",
+"FCReplaceRepeated[a,a\[Rule]b]", "b"},
+{"fcstSharedToolsFCReplaceRepeated-ID2",
+"FCReplaceRepeated[a c,{a\[Rule]b,c\[Rule]d}]", "b*d"},
+{"fcstSharedToolsFCReplaceRepeated-ID3",
+"FCReplaceRepeated[a c,a\[Rule]b,c\[Rule]d]", "b*d"},
+{"fcstSharedToolsFCReplaceRepeated-ID4",
+"FCReplaceRepeated[a c,a\[Rule]b,c\[Rule]d,d\[Rule]e,b\[Rule]f]",
+"e*f"}
+};
+
+
+
+
+
+
 Tests`Shared`fcstSharedToolsFCSymmetrize = {
 {"fcstSharedToolsFCSymmetrize-ID1","FCSymmetrize[f[a, b], {a, b}]","1/2 (f[a, b] + f[b, a])"},
 {"fcstSharedToolsFCSymmetrize-ID2","FCSymmetrize[f[a, b, c], {a, b, c}]",
