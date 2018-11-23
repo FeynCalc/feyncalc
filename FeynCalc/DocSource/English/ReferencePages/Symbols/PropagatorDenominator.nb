@@ -179,10 +179,10 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominator",
   ButtonNote->"FeynAmpDenominator"],
  ", ",
- ButtonBox["PropagatorDenominatorExplicit",
+ ButtonBox["FeynAmpDenominatorExplicit",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/PropagatorDenominatorExplicit",
-  ButtonNote->"PropagatorDenominatorExplicit"],
+  ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominatorExplicit",
+  ButtonNote->"FeynAmpDenominatorExplicit"],
  ", ",
  ButtonBox["IFPD",
   BaseStyle->"Link",
@@ -319,7 +319,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"PropagatorDenominatorExplicit", "[", "t1", "]"}]], "Input",
+ RowBox[{"FeynAmpDenominatorExplicit", "[", "t1", "]"}]], "Input",
  CellTags->"PropagatorDenominator",
  CellLabel->"In[6]:=",
  CellID->253071892],

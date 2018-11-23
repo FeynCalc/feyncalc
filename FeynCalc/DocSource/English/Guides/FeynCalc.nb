@@ -2262,9 +2262,9 @@ Cell[TextData[{
  CellID->1268052330],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["PropagatorDenominatorExplicit",
+ Cell[TextData[ButtonBox["FeynAmpDenominatorExplicit",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/PropagatorDenominatorExplicit"]], 
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorExplicit"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],

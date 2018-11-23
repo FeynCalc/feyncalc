@@ -81,7 +81,7 @@ FCAbbreviate[expr_, loopmoms_List, extmoms_List, OptionsPattern[]] :=
 	First[Cases[OptionValue[Names], Rule[Variables, x_String] :> x]];
 	head = OptionValue[Head];
 
-	ex = FCE[PropagatorDenominatorExplicit[expr]];
+	ex = FCE[FeynAmpDenominatorExplicit[expr]];
 	(*List of all possible scalar products of external momenta *)
 
 	allSPs = Union[Flatten[Outer[spd, extmoms, extmoms]]];

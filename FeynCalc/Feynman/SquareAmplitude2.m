@@ -1047,7 +1047,7 @@ fdpsave[x__] :=
 propdenexp[x_ /;FreeQ[x,PropagatorDenominator],___] :=
 	x;
 propdenexp[x_] :=
-	PropagatorDenominatorExplicit[x];
+	FeynAmpDenominatorExplicit[x];
 propdenexp[x_, {}] :=
 	propdenexp[x];
 propdenexp[x_, {en__}] :=

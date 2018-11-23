@@ -139,7 +139,7 @@ Timing[inttable =
 
 
 Timing[amp[3] =
-	PropagatorDenominatorExplicit[FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@
+	FeynAmpDenominatorExplicit[FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@
 	(amp[2] /. inttable))]];]
 
 

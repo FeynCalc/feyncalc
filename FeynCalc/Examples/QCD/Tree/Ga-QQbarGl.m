@@ -88,7 +88,7 @@ ampSquared[0] =(amp[0] (ComplexConjugate[amp[0]]))//SUNSimplify//
 	DoPolarizationSums[#,p,0,
 	VirtualBoson->True]&//DoPolarizationSums[#,k3,0,
 	VirtualBoson->True]&//FermionSpinSum//
-	DiracSimplify//PropagatorDenominatorExplicit//Simplify
+	DiracSimplify//FeynAmpDenominatorExplicit//Simplify
 
 
 ampSquaredMassless[0] = ampSquared[0]//ReplaceAll[#,{SMP["m_q"] -> 0,

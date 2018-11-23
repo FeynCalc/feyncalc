@@ -99,7 +99,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		If[!FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator}],
 			ex = cancelSP[ex];
 			ex = ex /. fadHold[r1___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], r2___]/;n<0 :>
-				fadHold[r1,r2] PropagatorDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
+				fadHold[r1,r2] FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
 			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator;
 			FCPrint[3,"FCApart: After the initial cancelling of scalar products ", ex, FCDoControl->fcaVerbose]
 		];
@@ -202,7 +202,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(* 	Check that the sum of the resulting integrals brought to the commond denominator
 			is identical to the original integral *)
 		If [OptionValue[Check],
-			If[	check=Together[PropagatorDenominatorExplicit[ex] - Together[PropagatorDenominatorExplicit[res]]]; check=!=0,
+			If[	check=Together[FeynAmpDenominatorExplicit[ex] - Together[FeynAmpDenominatorExplicit[res]]]; check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];
 				Abort[]

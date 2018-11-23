@@ -305,7 +305,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 
 			FCPrint[1, "OneLoop: Simplyfing non-loop propagators.", FCDoControl->oneloopVerbose];
 			oneamp = FeynAmpDenominatorSplit[oneamp, Momentum->{q}];
-			oneamp = oneamp /. FeynAmpDenominator[x__]/;FreeQ[{x}, q] :> PropagatorDenominatorExplicit[FeynAmpDenominator[x],
+			oneamp = oneamp /. FeynAmpDenominator[x__]/;FreeQ[{x}, q] :> FeynAmpDenominatorExplicit[FeynAmpDenominator[x],
 				Mandelstam->onemandel,SmallVariable->True];
 			FCPrint[1, "OneLoop: Done simplyfing non-loop propagators.", FCDoControl->oneloopVerbose];
 

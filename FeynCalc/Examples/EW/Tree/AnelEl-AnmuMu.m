@@ -100,7 +100,7 @@ ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 
 
 ampSquared[1]=ampSquared[0]//FCE//ReplaceAll[#,{pm+q2->0}]&//
-	PropagatorDenominatorExplicit//Factor2
+	FeynAmpDenominatorExplicit//Factor2
 
 
 (* ::Section:: *)

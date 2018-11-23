@@ -80,7 +80,7 @@ SetMandelstam[s, t, u, k1, k2, -k3, -k4, 0, 0, 0, 0];
 
 
 ampSquared[0] = 1/((SUNN^2-1)^2)(amp[1] (ComplexConjugate[amp[0]]))//
-	PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
+	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&;
 
 
@@ -93,7 +93,7 @@ ClearAll[re];
 Table[Print["    calculating color factors in products of the amplitudes ", i,
 " and ", j," (CC), time = ",
 Timing[re[i,j]=(amp[0][[i]]ComplexConjugate[amp[0]][[j]]//
-PropagatorDenominatorExplicit//
+FeynAmpDenominatorExplicit//
 SUNSimplify[#,Explicit->True,SUNNToCACF->False]&)][[1]]];re[i,j],{i,4},{j,i}];
 
 

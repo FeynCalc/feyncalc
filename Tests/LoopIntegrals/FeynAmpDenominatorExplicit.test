@@ -1,0 +1,187 @@
+
+
+(* :Title: FeynAmpDenominatorExplicit.test								*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  	Framework independent unit tests for
+				FeynAmpDenominatorExplicit								*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFeynAmpDenominatorExplicit = {
+
+{"fcstFeynAmpDenominatorExplicit-ID1",
+	"FeynAmpDenominatorExplicit[FAD[{q, m}, {q - p, 0}] // FCI] // FCE",
+	"1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))"},
+{"fcstFeynAmpDenominatorExplicit-ID2","FeynAmpDenominatorExplicit[FAD[{q, m}, {q - p, 0}] // FCI,
+	Head -> dummy] // FCE","dummy[1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))]"},
+{"fcstFeynAmpDenominatorExplicit-ID3","FeynAmpDenominatorExplicit[
+	FAD[{q, m}, {q - p, 0}] // FCI // FeynAmpDenominatorSplit,
+	Head -> dummy] // FCE","dummy[1/(-m^2 + SPD[q, q])] dummy[1/(
+	SPD[p, p] - 2 SPD[p, q] + SPD[q, q])]"},
+{"fcstFeynAmpDenominatorExplicit-ID4",
+	"FeynAmpDenominatorExplicit[FAD[{q, m}, {q + p}]] // FCE",
+	"1/((-m^2 + SPD[q, q]) (SPD[p, p] + 2 SPD[p, q] + SPD[q, q]))"
+},
+{"fcstFeynAmpDenominatorExplicit-ID5",
+	"FeynAmpDenominatorExplicit[FAD[{q, m}, {q + p}], Dimension -> 4]//FCE",
+	"1/((-m^2 + SP[q, q]) (SP[p, p] + 2 SP[p, q] + SP[q, q]))"
+},
+{"fcstFeynAmpDenominatorExplicit-ID6",
+	"FCClearScalarProducts[]; \n SPD[p, p] = s; FeynAmpDenominatorExplicit[FAD[{p + q, m}], Mandelstam -> {s, t, u, m^2}, FCE->True]",
+	"1/(-t - u + 2 SPD[p, q] + SPD[q, q])"},
+{"fcstFeynAmpDenominatorExplicit-ID7",
+	"tmp = FeynAmpDenominatorExplicit[FAD[{p + q, m}], FCE -> True]; \n FCClearScalarProducts[]; \n tmp",
+	"1/(-m^2 + s + 2 SPD[p, q] + SPD[q, q])"},
+{"fcstFeynAmpDenominatorExplicit-ID8",
+	"FeynAmpDenominatorExplicit[FAD[{p, SmallVariable[m]}], FCE -> True]",
+	"1/(-SmallVariable[m]^2 + SPD[p, p])"},
+{"fcstFeynAmpDenominatorExplicit-ID9",
+	"FeynAmpDenominatorExplicit[FAD[{p, SmallVariable[m]}], FCE -> True, SmallVariable->True]",
+	"1/(SPD[p, p])"},
+{"fcstFeynAmpDenominatorExplicit-ID10",
+	"FeynAmpDenominatorExplicit[aa FAD[{q, m}], Denominator -> True, Head -> hd, FCE -> True]",
+	"aa/hd[-m^2 + SPD[q, q]]"},
+{"fcstFeynAmpDenominatorExplicit-ID11",
+	"FeynAmpDenominatorExplicit[GFAD[{{SPD[q1, p] SPD[q2, p], 1}, 2}], FCE -> True]",
+	"1/(SPD[p, q1]^2 SPD[p, q2]^2)"},
+{"fcstFeynAmpDenominatorExplicit-ID12",
+	"FeynAmpDenominatorExplicit[FAD[{p1 + p2, 0}], ExpandScalarProduct -> False]",
+	"1/Pair[Momentum[p1, D] + Momentum[p2, D], Momentum[p1, D] + Momentum[p2, D]]"},
+{"fcstFeynAmpDenominatorExplicit-ID13",
+	"FeynAmpDenominatorExplicit[FAD[{p1 + p2, 0}], ExpandScalarProduct -> False, MomentumCombine -> True]",
+	"1/Pair[Momentum[p1 + p2, D], Momentum[p1 + p2, D]]"},
+{"fcstFeynAmpDenominatorExplicit-ID14",
+"FeynAmpDenominatorExplicit[CFAD[p1],FCE\[Rule]True]",
+"CSPD[p1, p1]^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID15",
+"FeynAmpDenominatorExplicit[CFAD[p1,p2],FCE\[Rule]True]",
+"1/(CSPD[p1, p1]*CSPD[p2, p2])"},
+{"fcstFeynAmpDenominatorExplicit-ID16",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2}}],FCE\[Rule]True]",
+	"(CSPD[p1, p1] + CSPD[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID17",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},0}],FCE\[Rule]True]\
+", "(CSPD[p1, p1] + CSPD[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID18",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},0,0}],FCE\[Rule]\
+True]", "1"},
+{"fcstFeynAmpDenominatorExplicit-ID19",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},m2}],FCE\[Rule]\
+True]", "(m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID20",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},m2,2}],FCE\[Rule]\
+True]", "(m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID21",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},m2,n}],FCE\[Rule]\
+True]", "((m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID22",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},2}],FCE\
+\[Rule]True]", "(m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID23",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},n}],FCE\
+\[Rule]True]", "((m2 + CSPD[p1, p1] + CSPD[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID24",
+"FeynAmpDenominatorExplicit[CFAD[p1,Dimension->3],FCE\[Rule]\
+True]", "CSP[p1, p1]^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID25",
+"FeynAmpDenominatorExplicit[CFAD[p1,p2,Dimension->3],FCE\[Rule]\
+True]", "1/(CSP[p1, p1]*CSP[p2, p2])"},
+{"fcstFeynAmpDenominatorExplicit-ID26",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2}},Dimension->3],FCE\
+\[Rule]True]", "(CSP[p1, p1] + CSP[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID27",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},0},Dimension->3],\
+FCE\[Rule]True]", "(CSP[p1, p1] + CSP[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID28",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},0,0},Dimension->3],\
+FCE\[Rule]True]", "1"},
+{"fcstFeynAmpDenominatorExplicit-ID29",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},m2},Dimension->3],\
+FCE\[Rule]True]", "(m2 + CSP[p1, p1] + CSP[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID30",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},m2,2},Dimension->3]\
+,FCE\[Rule]True]", "(m2 + CSP[p1, p1] + CSP[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID31",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},m2,n},Dimension->3]\
+,FCE\[Rule]True]", "((m2 + CSP[p1, p1] + CSP[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID32",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},2},\
+Dimension->3],FCE\[Rule]True]",
+"(m2 + CSP[p1, p1] + CSP[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID33",
+"FeynAmpDenominatorExplicit[CFAD[{{p1,p1.p2},{m2,-1},n},\
+Dimension->3],FCE\[Rule]True]",
+"((m2 + CSP[p1, p1] + CSP[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID34",
+"FeynAmpDenominatorExplicit[SFAD[p1],FCE\[Rule]True]",
+"SPD[p1, p1]^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID35",
+"FeynAmpDenominatorExplicit[SFAD[p1,p2],FCE\[Rule]True]",
+"1/(SPD[p1, p1]*SPD[p2, p2])"},
+{"fcstFeynAmpDenominatorExplicit-ID36",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2}}],FCE\[Rule]True]",
+	"(SPD[p1, p1] + SPD[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID37",
+"FeynAmpDenominatorExplicit[SFAD[{{0,p1.p2}}],FCE\[Rule]True]",
+"SPD[p1, p2]^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID38",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},0}],FCE\[Rule]True]\
+", "(SPD[p1, p1] + SPD[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID39",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},0,0}],FCE\[Rule]\
+True]", "1"},
+{"fcstFeynAmpDenominatorExplicit-ID40",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},m2}],FCE\[Rule]\
+True]", "(-m2 + SPD[p1, p1] + SPD[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID41",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},m2,2}],FCE\[Rule]\
+True]", "(-m2 + SPD[p1, p1] + SPD[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID42",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},m2,n}],FCE\[Rule]\
+True]", "((-m2 + SPD[p1, p1] + SPD[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID43",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},{m2,-1},2}],FCE\
+\[Rule]True]", "(-m2 + SPD[p1, p1] + SPD[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID44",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},{m2,-1},n}],FCE\
+\[Rule]True]", "((-m2 + SPD[p1, p1] + SPD[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID45",
+"FeynAmpDenominatorExplicit[SFAD[p1,Dimension->4],FCE\[Rule]\
+True]", "SP[p1, p1]^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID46",
+"FeynAmpDenominatorExplicit[SFAD[p1,p2,Dimension->4],FCE\[Rule]\
+True]", "1/(SP[p1, p1]*SP[p2, p2])"},
+{"fcstFeynAmpDenominatorExplicit-ID47",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2}},Dimension->4],FCE\
+\[Rule]True]", "(SP[p1, p1] + SP[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID48",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},0},Dimension->4],\
+FCE\[Rule]True]", "(SP[p1, p1] + SP[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID49",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},0,0},Dimension->4],\
+FCE\[Rule]True]", "1"},
+{"fcstFeynAmpDenominatorExplicit-ID50",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},m2},Dimension->4],\
+FCE\[Rule]True]", "(-m2 + SP[p1, p1] + SP[p1, p2])^(-1)"},
+{"fcstFeynAmpDenominatorExplicit-ID51",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},m2,2},Dimension->4]\
+,FCE\[Rule]True]", "(-m2 + SP[p1, p1] + SP[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID52",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},m2,n},Dimension->4]\
+,FCE\[Rule]True]", "((-m2 + SP[p1, p1] + SP[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID53",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},{m2,-1},2},\
+Dimension->4],FCE\[Rule]True]",
+"(-m2 + SP[p1, p1] + SP[p1, p2])^(-2)"},
+{"fcstFeynAmpDenominatorExplicit-ID54",
+"FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},{m2,-1},n},\
+Dimension->4],FCE\[Rule]True]",
+"((-m2 + SP[p1, p1] + SP[p1, p2])^(-1))^n"}
+}

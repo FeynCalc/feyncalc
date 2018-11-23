@@ -79,7 +79,7 @@ SP[k1,k2]= (QQ - SP[k1] - SP[k2])/2;
 
 
 ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
-	PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
+	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum//DoPolarizationSums[#,p,0,
 	VirtualBoson->True]&//DiracSimplify
 

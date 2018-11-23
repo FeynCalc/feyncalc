@@ -80,7 +80,7 @@ SetMandelstam[s, t, u, p1, k1, -p2, -k2, SMP["m_u"], 0, SMP["m_u"], 0];
 
 
 ampSquared[0] = 1/(SUNN (SUNN^2-1))(amp[0] (ComplexConjugate[amp[0]]))//
-	PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
+	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2]&//
 	DiracSimplify//DoPolarizationSums[#,k1,k2,
 	ExtraFactor->1/2]&//DoPolarizationSums[#,k2,k1]&//

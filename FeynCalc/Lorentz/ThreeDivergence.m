@@ -206,7 +206,7 @@ threeDerivative[x_, ve_]:=
 				but they become too complicated.	*)
 			nx = FeynAmpDenominatorSplit[nx,FCI->True];
 			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p], Infinity];
-			fadListEval = PropagatorDenominatorExplicit[#,FCI->True,Head->fadHead,Denominator->True]&/@fadList;
+			fadListEval = FeynAmpDenominatorExplicit[#,FCI->True,Head->fadHead,Denominator->True]&/@fadList;
 			repRule1 = Thread[Rule[fadList,fadListEval]];
 			repRule2 = (Reverse /@ repRule1) /. Rule[a_, b_] :> Rule[1/a, 1/b];
 

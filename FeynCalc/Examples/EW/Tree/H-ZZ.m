@@ -72,7 +72,7 @@ SP[k1,k2]=(SMP["m_H"]^2-2 SMP["m_Z"]^2)/2;
 
 
 ampSquared[0]=1/2(amp[0] (ComplexConjugate[amp[0]]))//
-	PropagatorDenominatorExplicit//DoPolarizationSums[#,k1]&//
+	FeynAmpDenominatorExplicit//DoPolarizationSums[#,k1]&//
 	DoPolarizationSums[#,k2]&//Simplify
 
 

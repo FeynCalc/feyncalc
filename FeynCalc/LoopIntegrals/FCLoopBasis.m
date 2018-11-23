@@ -518,7 +518,7 @@ OptionsPattern[]] :=
 				n > 0 :> FeynAmpDenominator[h[a, {-n, s}]]
 		};
 
-		res = PropagatorDenominatorExplicit[#, FCI -> True, ExpandScalarProduct -> False] & /@ tmp;
+		res = FeynAmpDenominatorExplicit[#, FCI -> True, ExpandScalarProduct -> False] & /@ tmp;
 
 		If[	OptionValue[ExpandScalarProduct],
 			res = ExpandScalarProduct[res, FCI -> True]
@@ -1061,7 +1061,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 fdsInvert[x_]:=
-	(x/.f_FeynAmpDenominator:> 1/PropagatorDenominatorExplicit[f, FCI->True]);
+	(x/.f_FeynAmpDenominator:> 1/FeynAmpDenominatorExplicit[f, FCI->True]);
 
 propCheck[x_]:=
 	MatchQ[#, ((c_. FeynAmpDenominator[__])/;FreeQ2[c, {Pair, CartesianPair}])|((c_. (Pair|CartesianPair)[__])/;

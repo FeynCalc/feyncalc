@@ -57,7 +57,7 @@ FCLoopRemoveNegativePropagatorPowers[expr_, OptionsPattern[]] :=
 		fadsListEval = fadsList /. FeynAmpDenominator -> fad /. {
 			fad[a___,
 				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {n_Integer,s_}], b___]/; n<0 :>
-			PropagatorDenominatorExplicit[FeynAmpDenominator[h[x,{n,s}]],FCI->True] fad[a,b]
+			FeynAmpDenominatorExplicit[FeynAmpDenominator[h[x,{n,s}]],FCI->True] fad[a,b]
 		} /. fad[] -> 1 /. fad -> FeynAmpDenominator;
 
 		repRule = Thread[Rule[fadsList,fadsListEval]];

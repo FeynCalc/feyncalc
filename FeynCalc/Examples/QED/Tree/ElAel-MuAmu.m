@@ -97,13 +97,13 @@ SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"],
 
 
 ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
-	PropagatorDenominatorExplicit//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
+	FeynAmpDenominatorExplicit//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 	DiracSimplify//Simplify
 
 
 ampSquaredPolarized[0] =
 	(ampPolarized[0] (ComplexConjugate[ampPolarized[0]]))//
-	PropagatorDenominatorExplicit//FermionSpinSum//DiracSimplify//Simplify
+	FeynAmpDenominatorExplicit//FermionSpinSum//DiracSimplify//Simplify
 
 
 ampSquaredMassless1[0] = ampSquared[0]//ReplaceAll[#,{

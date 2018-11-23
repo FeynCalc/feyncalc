@@ -81,7 +81,7 @@ SetMandelstam[s, t, u, p1, p2, -k1, -k2,
 
 
 ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
-	PropagatorDenominatorExplicit//
+	FeynAmpDenominatorExplicit//
 	FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 	DiracSimplify//Simplify
 

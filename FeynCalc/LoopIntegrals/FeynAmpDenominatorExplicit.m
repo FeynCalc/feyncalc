@@ -2,7 +2,7 @@
 
 
 
-(* :Title: PropagatorDenominatorExplicit									*)
+(* :Title: FeynAmpDenominatorExplicit									*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -15,23 +15,26 @@
 
 (* ------------------------------------------------------------------------ *)
 
-PropagatorDenominatorExplicit::usage =
-"PropagatorDenominatorExplicit[exp] changes each occurence of \
+FeynAmpDenominatorExplicit::usage =
+"FeynAmpDenominatorExplicit[exp] changes each occurence of \
 PropagatorDenominator[a,b] in exp into 1/(ScalarProduct[a,a]-b^2) and \
 replaces FeynAmpDenominator by Times.";
 
-PropagatorDenominatorExplicit::failmsg =
-"Error! PropagatorDenominatorExplicit encountered a fatal problem and must abort the computation. \
+FeynAmpDenominatorExplicit::failmsg =
+"Error! FeynAmpDenominatorExplicit encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
+
+FeynAmpDenominatorExplicit::usage=
+"FeynAmpDenominatorExplicit is equivalent to FeynAmpDenominatorExplicit";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]
 
-Begin["`PropagatorDenominatorExplicit`Private`"]
+Begin["`FeynAmpDenominatorExplicit`Private`"]
 
-Options[PropagatorDenominatorExplicit] = {
+Options[FeynAmpDenominatorExplicit] = {
 	Denominator -> False,
 	Dimension -> False,
 	ExpandScalarProduct -> True,
@@ -46,7 +49,7 @@ Options[PropagatorDenominatorExplicit] = {
 id[x_, ___]:=
 	x;
 
-PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
+FeynAmpDenominatorExplicit[expr_, OptionsPattern[]] :=
 	Block[{ex, dim, res, head1, head2, mandel, ruleNormal, ruleMandelstam, fad, esp, mc},
 
 		If[ OptionValue[ExpandScalarProduct],
@@ -113,7 +116,7 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 		If[	TrueQ[OptionValue[Denominator]],
 			res = res /. head1[x_] /; Numerator[x] === 1 :> 1/head2[Denominator[x]];
 			If[ !FreeQ[res,head1],
-				Message[PropagatorDenominatorExplicit::failmsg, "The numerator is not unity!"];
+				Message[FeynAmpDenominatorExplicit::failmsg, "The numerator is not unity!"];
 				Abort[]
 			];
 			res = res /. head2->OptionValue[Head],
@@ -121,7 +124,7 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 		];
 
 		If[	!FreeQ2[res,{fad,FeynAmpDenominator,head1,head2}],
-			Message[PropagatorDenominatorExplicit::failmsg, "Something went wrong while writing out the denominators."];
+			Message[FeynAmpDenominatorExplicit::failmsg, "Something went wrong while writing out the denominators."];
 			Abort[]
 		];
 
@@ -133,5 +136,5 @@ PropagatorDenominatorExplicit[expr_, OptionsPattern[]] :=
 
 	];
 
-FCPrint[1,"PropagatorDenominatorExplicit.m loaded."];
+FCPrint[1,"FeynAmpDenominatorExplicit.m loaded."];
 End[]

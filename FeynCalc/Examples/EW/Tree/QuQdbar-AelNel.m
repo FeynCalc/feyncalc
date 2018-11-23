@@ -100,7 +100,7 @@ SetMandelstam[s, t, u, p1, p2, -k1, -k2 , 0, 0, 0, 0];
 
 ampSquared[0] = 1/3^2*(amp[0] (ComplexConjugate[amp[0]]))//
 	FermionSpinSum[#, ExtraFactor -> 1/2^2]&//DiracSimplify//
-	PropagatorDenominatorExplicit//SUNSimplify[#,SUNNToCACF->False]&//
+	FeynAmpDenominatorExplicit//SUNSimplify[#,SUNNToCACF->False]&//
 	ReplaceAll[#,SUNN->3]&
 
 

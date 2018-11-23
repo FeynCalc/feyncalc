@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/PropagatorDenominatorExplicit", "Categorization",
+Cell["FeynCalc/ref/FeynAmpDenominatorExplicit", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,13 +111,13 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["PropagatorDenominatorExplicit", "ObjectName",
+Cell["FeynAmpDenominatorExplicit", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"PropagatorDenominatorExplicit", "[", "exp", "]"}]], 
+  RowBox[{"FeynAmpDenominatorExplicit", "[", "exp", "]"}]], 
   "InlineFormula"],
  " \[LineSeparator]",
  "changes each occurence of PropagatorDenominator[a,b] in exp into \
@@ -173,7 +173,7 @@ Cell[TextData[{
   ButtonNote->"PropagatorDenominator"],
  "."
 }], "Text",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellID->413051005]
 }, Open  ]],
 
@@ -213,7 +213,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"q", "-", "p"}], ",", "0"}], "}"}]}], "]"}], "//", 
   "FCI"}]], "Input",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellLabel->"In[1]:=",
  CellID->1979434489],
 
@@ -234,7 +234,7 @@ Cell[BoxData[
         TraditionalForm], "-", 
        FormBox["p",
         TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellLabel->"Out[1]=",
  CellID->184591534]
 }, Open  ]],
@@ -243,9 +243,9 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"PropagatorDenominatorExplicit", "[", "%", "]"}], "//", 
+  RowBox[{"FeynAmpDenominatorExplicit", "[", "%", "]"}], "//", 
   "FCE"}]], "Input",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellLabel->"In[2]:=",
  CellID->1414487344],
 
@@ -295,7 +295,7 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm], "2"],
        TraditionalForm]}], ")"}]}]], TraditionalForm]], "Output",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellLabel->"Out[2]=",
  CellID->1018418607]
 }, Open  ]],
@@ -304,7 +304,7 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellLabel->"In[3]:=",
  CellID->1009314577],
 
@@ -326,7 +326,7 @@ Cell[BoxData[
        RowBox[{"p", ",", "q"}], "]"}]}], "+", 
      RowBox[{"SPD", "[", 
       RowBox[{"q", ",", "q"}], "]"}]}], ")"}]}]]], "Output",
- CellTags->"PropagatorDenominatorExplicit",
+ CellTags->"FeynAmpDenominatorExplicit",
  CellLabel->"Out[3]//StandardForm=",
  CellID->2031191550]
 }, Open  ]]

@@ -90,7 +90,7 @@ SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], SMP["m_W"], SMP
 
 
 ampSquared[0]=(amp[2] (ComplexConjugate[amp[2]]))//
-	PropagatorDenominatorExplicit//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
+	FeynAmpDenominatorExplicit//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 	DiracSimplify//DoPolarizationSums[#,k1]&//DoPolarizationSums[#,k2]&//
 	TrickMandelstam[#,{s,t,u,2SMP["m_e"]^2+2SMP["m_W"]^2}]&;
 
