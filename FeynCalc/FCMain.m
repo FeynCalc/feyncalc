@@ -226,11 +226,11 @@ $LoadPhi::usage =
 with FeynCalc. Its value must be set before loading FeynCalc. \
 The default value is False.";
 
-$MemoryAvailable::usage =
-"$MemoryAvailable is  a global variable which is set to an integer \
+$FCMemoryAvailable::usage =
+"$FCMemoryAvailable is  a global variable which is set to an integer \
 n, where n is the available amount of main memory in MB. \
 The default is 4096. It should be increased if possible. \
-The higher $MemoryAvailable can be, the more intermediate \
+The higher $FCMemoryAvailable can be, the more intermediate \
 steps do not have to be repeated by FeynCalc.";
 
 $MU::usage =
@@ -405,7 +405,7 @@ $Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
 $LimitTo4IRUnsafe	= False;
-$MemoryAvailable	= 4096;
+$FCMemoryAvailable	= 4096;
 $Multiplications	= {Times, DOT};
 $OPEWard			= False;
 

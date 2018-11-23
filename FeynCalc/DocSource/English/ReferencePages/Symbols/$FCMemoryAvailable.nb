@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/MemoryAvailable", "Categorization",
+Cell["FeynCalc/ref/$FCMemoryAvailable", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,16 +111,22 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["MemoryAvailable", "ObjectName",
+Cell["$FCMemoryAvailable", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["MemoryAvailable"], "InlineFormula"],
+ Cell[BoxData["$FCMemoryAvailable"], "InlineFormula"],
  " \[LineSeparator]",
- "is an option of MemSet. It can be set to an integer n, where n is the \
-available amount of main memory in Mega Byte. The default setting is \
-$MemoryAvailable."
+ "is  a global variable which is set to an integer ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ ", where ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " is the available amount of main memory in MB. The default is 128. It \
+should be increased if possible. The higher $FCMemoryAvailable can be, the more \
+intermediate steps do not have to be repeated by FeynCalc."
 }], "Usage",
  CellID->982511436],
 
@@ -160,20 +166,8 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- ButtonBox["MemSet",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/MemSet",
-  ButtonNote->"MemSet"],
- ", ",
- ButtonBox["$MemoryAvailable",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/$MemoryAvailable",
-  ButtonNote->"$MemoryAvailable"],
- "."
-}], "Text",
- CellTags->"MemoryAvailable",
- CellID->134961378]
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -184,6 +178,8 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -197,6 +193,25 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell["Examples", "Subsubsection",
+ CellTags->"$FCMemoryAvailable",
+ CellID->343639326],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$FCMemoryAvailable"], "Input",
+ CellTags->"$FCMemoryAvailable",
+ CellLabel->"In[1]:=",
+ CellID->695439641],
+
+Cell[BoxData[
+ FormBox["4096", TraditionalForm]], "Output",
+ CellTags->"$FCMemoryAvailable",
+ CellLabel->"Out[1]=",
+ CellID->1467745985]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 

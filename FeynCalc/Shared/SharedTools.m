@@ -152,14 +152,14 @@ otherwise Map2[f, exp] gives f[exp].";
 
 MemSet::usage =
 "MemSet[f[x_], body] is like f[x_] := f[x] = body, \
-but dependend on the value of the setting of MemoryAvailable -> \
+but dependend on the value of the setting of FCMemoryAvailable -> \
 memorycut (memorycut - MemoryInUse[]/10.^6) \
 MemSet[f[x_], body] may evaluate as f[x_] := body."
 
-MemoryAvailable::usage =
-"MemoryAvailable is an option of MemSet. It can be set to an integer n, \
+FCMemoryAvailable::usage =
+"FCMemoryAvailable is an option of MemSet. It can be set to an integer n, \
 where n is the available amount of main memory in Mega Byte. \
-The default setting is $MemoryAvailable.";
+The default setting is $FCMemoryAvailable.";
 
 MLimit::usage=
 "MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";
@@ -274,7 +274,7 @@ Options[ILimit] = {
 };
 
 Options[MemSet] = {
-	MemoryAvailable -> $MemoryAvailable
+	FCMemoryAvailable -> $FCMemoryAvailable
 };
 
 Options[MLimit] = {
@@ -693,7 +693,7 @@ Map2[f_, exp_] :=
 	];
 
 MemSet[x_,y_, OptionsPattern[]] :=
-	If[(OptionValue[MemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
+	If[(OptionValue[FCMemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
 		y,
 		Set[x, y]
 	];

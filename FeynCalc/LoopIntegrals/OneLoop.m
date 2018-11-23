@@ -2128,8 +2128,8 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 			temp/.Literal->Identity/.RuleDelayed->Set;
 			FCPrint[2, "loading old matrixelementdefinitions from ", filename, FCDoControl->oneloopVerbose];
 			FCPrint[3, "lold matrixelementdefinitions: ", temp, FCDoControl->oneloopVerbose],
-			savmem = $MemoryAvailable;
-			$MemoryAvailable = 0;
+			savmem = $FCMemoryAvailable;
+			$FCMemoryAvailable = 0;
 			x = {};
 			For[ix = 1, ix <= Length[rx], ix ++,
 				If[ FreeQ[rx[[ix,1]], Plus],
@@ -2205,7 +2205,7 @@ SetStandardMatrixElements[rx_List,en_:{}, op___Rule] :=
 
 			FCPrint[2, "Solving the system of linear equations for standard matrix elements", FCDoControl->oneloopVerbose];
 
-			$MemoryAvailable = savmem;
+			$FCMemoryAvailable = savmem;
 			If[ StringQ[filename],
 				Put @@ {DownValues[spinorsandpairs], filename}
 			]

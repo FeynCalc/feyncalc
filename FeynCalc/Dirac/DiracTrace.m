@@ -588,7 +588,7 @@ traceNo5Wrap[SI1_, SI2__] :=
 		If[Head[finalRes] === traceNo5Fun,
 			(* The trace needs to be computed *)
 			tmpRes = traceNo5 @@ tab;
-			If[	($MemoryAvailable - MemoryInUse[]/1000000.) >1. ,
+			If[	($FCMemoryAvailable - MemoryInUse[]/1000000.) >1. ,
 				(* If there is enough memory, we save the computed result as a function *)
 				args = Sequence @@ (Pattern[#, _] & /@ tab);
 				setDel[traceNo5Fun[args], fastExpand[tmpRes]] /. setDel -> SetDelayed;
@@ -633,7 +633,7 @@ trace5Wrap[SI1__, 5] :=
 		If[Head[realRes] === trace5Fun,
 			(* The trace needs to be computed *)
 			tmpRes = trace5 @@ (Join[tab, {5}]);
-			If[	($MemoryAvailable - MemoryInUse[]/1000000.) >1. ,
+			If[	($FCMemoryAvailable - MemoryInUse[]/1000000.) >1. ,
 				(* If there is enough memory, we save the computed result as a function *)
 				args = Sequence @@ Join[(Pattern[#, _] & /@ tab), {5}];
 				setDel[trace5Fun[args], fastExpand[tmpRes]] /. setDel -> SetDelayed;
