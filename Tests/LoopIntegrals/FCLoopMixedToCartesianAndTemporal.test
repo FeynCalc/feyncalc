@@ -74,5 +74,26 @@ FCE->True]", "-CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 1}]"},
 FCE->True]", "CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 2}]"},
 {"fcstFCLoopMixedToCartesianAndTemporal-ID18",
 "FCLoopMixedToCartesianAndTemporal[FCI@SFAD[{{0,q.p},0,3}],{q},\
-FCE->True]", "-CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 3}]"}
+FCE->True]", "-CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 3}]"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID19",
+"FCLoopMixedToCartesianAndTemporal[ \
+FCI[TC[k]FAD[{k,m3},{k-pH,m2},{k-pE1,pPH}]],{k},FCE\[Rule]True]",
+"-(CFAD[{{k, 0}, {-m3^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - \
+TC[k - pH]^2, -1}, 1}, {{k - pE1, 0}, {-pPH^2 - TC[k - pE1]^2, -1}, \
+1}]*TC[k])"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID20",
+"FCLoopMixedToCartesianAndTemporal[FCI[TC[k] FVD[k,mu] \
+FAD[k,k+p]],{k},FCE\[Rule]True]",
+"CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k + p, 0}, {-TC[k + p]^2, \
+-1}, 1}]*TC[k]*(-Pair[CartesianMomentum[k, -1 + D], LorentzIndex[mu, \
+D]] + MT[0, mu]*TC[k])"},
+{"fcstFCLoopMixedToCartesianAndTemporal-ID21",
+"FCLoopMixedToCartesianAndTemporal[
+FCI[TC[k] FVD[k, mu] FAD[k, k + p]], {k}, Uncontract -> True,
+FCE -> True] // FCCanonicalizeDummyIndices[#, CartesianIndexNames -> {i}] &//FCE",
+"-CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k + p, 0}, {-TC[k + p]^2, -1},
+	1}] CVD[k, i] Pair[CartesianIndex[i, -1 + D],
+LorentzIndex[mu, D]] TC[k] +
+CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k + p, 0}, {-TC[k + p]^2, -1},
+	1}] MT[0, mu] TC[k]^2"}
 });

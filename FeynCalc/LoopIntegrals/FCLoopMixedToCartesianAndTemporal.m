@@ -34,7 +34,8 @@ loopMomenta::usage="";
 prefactor::usage="";
 
 Options[FCLoopMixedToCartesianAndTemporal] = {
-	FCE->False
+	FCE->False,
+	Uncontract -> False
 };
 
 FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmoms=!={}, OptionsPattern[]]:=
@@ -49,7 +50,16 @@ FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmom
 
 			prefactor=1;
 
+			If[!FreeQ[fad,PropagatorDenominator],
+				fad = ToSFAD[fad]
+			];
+
 			spsConverted = LorentzToCartesian[sps,FCI->True];
+
+			If[	OptionValue[Uncontract],
+				spsConverted = Uncontract[spsConverted, Sequence@@lmoms, Pair -> All, CartesianPair->All]
+			];
+
 			fadConverted = MomentumCombine[fad,FCI->True] /. StandardPropagatorDenominator-> SFADToCFAD/.
 				SFADToCFAD -> StandardPropagatorDenominator;
 
