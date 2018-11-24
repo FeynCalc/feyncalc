@@ -333,21 +333,29 @@ TID[am_ , q_, OptionsPattern[]] :=
 			FCPrint[1, "TID: Done applying FCLoopIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
 			If[ OptionValue[FCLoopMixedToCartesianAndTemporal] && !FreeQ2[{wrapped,irrelevant},{CartesianMomentum,TemporalMomentum}],
+
+				FCPrint[1, "TID: Applying FCLoopMixedToCartesianAndTemporal, timing: ", FCDoControl->tidVerbose];
 				wrapped = wrapped /. loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :>
-					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}] /. TemporalPair[x__]/;!FreeQ[{x},q] :> MomentumExpand[TemporalPair[x]]
+					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}, Uncontract->True] /. TemporalPair[x__]/;!FreeQ[{x},q] :> MomentumExpand[TemporalPair[x]]
 						/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
 						ExplicitLorentzIndex[0] :> holdExplicitLorentzIndex[0],
 						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
 						TemporalPair[x__]/;FreeQ[{x},q] :> holdTemporalPair[x]
 					},{q},Head->loopIntegral, FCI->True];
 
+				FCPrint[1, "TID: Done applying FCLoopMixedToCartesianAndTemporal, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+
 				irrelevant = FCLoopIsolate[irrelevant,{q},Head->loopIntegral, FCI->True] /.
 					loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :> FCLoopMixedToCartesianAndTemporal[xx,{q}] /. loopIntegral-> Identity
 			];
 
 
-			(*	remove all kinds of integrals that cannot be handled by TID	*)
-			wrapped = wrapped /. loopIntegral[xx_]/; (FCLoopMixedIntegralQ[xx] || !FCLoopEikonalPropagatorFreeQ[xx,First->False] || !FCLoopSamePropagatorHeadsQ[xx]) :> noTID xx;
+			(*	remove all kinds of integrals that cannot or should not be handled by TID	*)
+			wrapped = wrapped /. {
+				loopIntegral[xx_]/; (FCLoopMixedIntegralQ[xx] || !FCLoopEikonalPropagatorFreeQ[xx,First->False] || !FCLoopSamePropagatorHeadsQ[xx]) :> noTID xx,
+				(*This one is for cases like TC[k] FVD[k,mu] FAD[k,k+p]*)
+				loopIntegral[xx_FeynAmpDenominator] :> noTID xx
+			};
 
 			FCPrint[3,"After FCLoopIsolate: ", wrapped , FCDoControl->tidVerbose];
 			If[	!FreeQ[wrapped,loopIntegral],
@@ -599,6 +607,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 		(* 	Note that if the integral contains vanishing Gram determinants, tidReduce
 			will return the result in terms of PaVe integrals and then there is not much left
 			to do here *)
+
 		ex=tidReduce[tidConvert[ex,q],q,n,pavebasis];
 
 		(*	This wraps loop-momentum dependent pieces in the output of tidReduce into
@@ -857,7 +866,7 @@ tidConvert[expr_, q_]:=
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
-
+		FCPrint[4,"TID: tidConvert: Leaving with ", res];
 		res
 	]/; Head[expr]=!=Plus && MatchQ[expr,(FeynAmpDenominator[(x : (PropagatorDenominator|StandardPropagatorDenominator)[__] ..)] /;
 		!FreeQ[{x}, q]) Times[Pair[Momentum[q, ___], LorentzIndex[_, ___]] ..]];
@@ -876,7 +885,7 @@ tidConvert[expr_, q_]:=
 		temp = qQQprepare[ex];
 		res = temp/. ffdp[0,r___]:>ffdp[r];
 
-		If[	!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
+		If[	!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || FreeQ[res,ffdp] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
@@ -908,9 +917,8 @@ tidReduce[int_,q_,n_,pavebasis_]:=
 Block[{massless=False,masses,nPoint,time,qrule,
 	vanishingGramDet=False,gramMatrix,res,momList,cartesianIntegral},
 
-	If[pavebasis,
-		vanishingGramDet=True
-	];
+
+	FCPrint[4,"TID: tidReduce: entering with: ", int, FCDoControl->tidVerbose];
 
 	Which[
 		!FreeQ[int, PropagatorDenominator] && FreeQ[int, StandardPropagatorDenominator],
@@ -939,6 +947,10 @@ Block[{massless=False,masses,nPoint,time,qrule,
 		Abort[]
 	];
 
+	If[pavebasis && !cartesianIntegral,
+		vanishingGramDet=True
+	];
+
 	If [ (massless && !MatchQ[masses,{0..}]) || Head[masses=!=List],
 		Message[TID::failmsg, "tidReduce failed to extract the mass dependence of the integral " <> ToString[int, InputForm]];
 		Abort[]
@@ -951,7 +963,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 				the integral " <> ToString[int, InputForm]];
 		Abort[]
 	];
-	FCPrint[2,"TID: tidReduce: we are dealing with a ", nPoint, "-point function" FCDoControl->tidVerbose];
+	FCPrint[2,"TID: tidReduce: we are dealing with a ", nPoint, "-point function", FCDoControl->tidVerbose];
 
 
 	If[Length[masses]=!=nPoint,
@@ -965,6 +977,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 	momList = int/. _ qQQ[_ ffdp[x___]]:> List@@fdp[x];
 
 	If[	!cartesianIntegral,
+		FCPrint[4,"TID: tidReduce: Lorentzian integral!", FCDoControl->tidVerbose];
 		(*	Lorentzian integrals	*)
 		If[momList=!={},
 			If[	FCGramDeterminant[momList,Dimension->n] === 0,
@@ -985,7 +998,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 				Tdec[(Sequence @@ tdeclistLorentzian[{v}, {m}]), Dimension -> n, BasisOnly -> True,
 				FeynCalcExternal->False]/.FCGV["PaVe"][x_]:>tidPaVe[pavePrepare[FCGV["PaVe"][x],nPoint,{m},masses, n]])
 		},
-
+		FCPrint[4,"TID: tidReduce: Cartesian integral!", FCDoControl->tidVerbose];
 		(*	Cartesian integrals	*)
 		If[momList=!={},
 			If[	FCGramDeterminant[momList,Dimension->n-1,Head->{CartesianPair,CartesianMomentum}] === 0,
@@ -1018,6 +1031,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 		functions."];
 		Abort[]
 	];
+
 	If[	!FreeQ2[res,{qQQ,Pair[Momentum[q, ___], LorentzIndex[__]], qQQ,CartesianPair[CartesianMomentum[q, ___], CartesianIndex[__]]}],
 		Message[TID::failmsg, "tidReduce failed to reduce the integral " <> ToString[int,InputForm]];
 		Abort[]

@@ -51,7 +51,8 @@ FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmom
 			prefactor=1;
 
 			If[!FreeQ[fad,PropagatorDenominator],
-				fad = ToSFAD[fad]
+				fadConverted = ToSFAD[fad],
+				fadConverted = fad
 			];
 
 			spsConverted = LorentzToCartesian[sps,FCI->True];
@@ -60,7 +61,7 @@ FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmom
 				spsConverted = Uncontract[spsConverted, Sequence@@lmoms, Pair -> All, CartesianPair->All]
 			];
 
-			fadConverted = MomentumCombine[fad,FCI->True] /. StandardPropagatorDenominator-> SFADToCFAD/.
+			fadConverted = MomentumCombine[fadConverted,FCI->True] /. StandardPropagatorDenominator-> SFADToCFAD/.
 				SFADToCFAD -> StandardPropagatorDenominator;
 
 			res = prefactor*spsConverted*fadConverted;
