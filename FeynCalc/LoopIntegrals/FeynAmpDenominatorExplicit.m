@@ -24,15 +24,19 @@ FeynAmpDenominatorExplicit::failmsg =
 "Error! FeynAmpDenominatorExplicit encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
-FeynAmpDenominatorExplicit::usage=
-"FeynAmpDenominatorExplicit is equivalent to FeynAmpDenominatorExplicit";
+PropagatorDenominatorExplicit::usage=
+"PropagatorDenominatorExplicit is equivalent to FeynAmpDenominatorExplicit";
 
 (* ------------------------------------------------------------------------ *)
+
+
 
 Begin["`Package`"]
 End[]
 
 Begin["`FeynAmpDenominatorExplicit`Private`"]
+
+PropagatorDenominatorExplicit = FeynAmpDenominatorExplicit;
 
 Options[FeynAmpDenominatorExplicit] = {
 	Denominator -> False,

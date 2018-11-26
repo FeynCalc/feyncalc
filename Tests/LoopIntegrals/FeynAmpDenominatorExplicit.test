@@ -183,5 +183,8 @@ Dimension->4],FCE\[Rule]True]",
 {"fcstFeynAmpDenominatorExplicit-ID54",
 "FeynAmpDenominatorExplicit[SFAD[{{p1,p1.p2},{m2,-1},n},\
 Dimension->4],FCE\[Rule]True]",
-"((-m2 + SP[p1, p1] + SP[p1, p2])^(-1))^n"}
+"((-m2 + SP[p1, p1] + SP[p1, p2])^(-1))^n"},
+{"fcstFeynAmpDenominatorExplicit-ID55",
+"PropagatorDenominatorExplicit[FAD[{q, m}, {q - p, 0}], FCE -> True]",
+"1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))"}
 }
