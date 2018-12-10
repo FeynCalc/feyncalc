@@ -261,7 +261,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				FeynAmpDenominator[___]:>Unique[],
 				TemporalMomentum[q]:> Unique
 				}, q],
-			Message[TID::failmsg, "Ucontracting loop momenta in " <> ToString[t1,InputForm] <>
+			Message[TID::failmsg, "Uncontracting loop momenta in " <> ToString[t1,InputForm] <>
 				"failed."];
 			Abort[]
 		];
