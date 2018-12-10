@@ -706,6 +706,9 @@ Momentum::lorentzhead =
 LorentzIndex::momentumhead =
 "`1` is forbidden in FeynCalc. LorentzIndex cannot be the head of a Momentum !";
 
+LorentzIndex::explicitlorentzhead =
+"`1` is forbidden in FeynCalc. LorentzIndex cannot be the head of an ExplicitLorentzIndex!";
+
 Pair::invalid =
 "`1` does not represent a valid Pair object!";
 
@@ -1743,7 +1746,11 @@ LorentzIndex[Momentum[x_], dim_:4]:=
 	(Message[LorentzIndex::momentumhead,ToString[LorentzIndex[FCGV["Momentum"][x],dim],InputForm]];
 	LorentzIndex[FCGV["Momentum"][x],dim]);
 
-(* expanded because of CreateFCAmp's strange results  ... *)
+LorentzIndex[ExplicitLorentzIndex[x_], dim_:4]:=
+	(Message[LorentzIndex::explicitlorentzhead,ToString[LorentzIndex[FCGV["ExplicitLorentzIndex"][x],dim],InputForm]];
+	LorentzIndex[FCGV["ExplicitLorentzIndex"][x],dim]);
+
+(* To allow things like FVD[p,LorentzIndex[mu,D]]  ... *)
 LorentzIndex[LorentzIndex[in_, dim_ :4], dim_ :4] :=
 	LorentzIndex[in,dim];
 
