@@ -528,7 +528,7 @@ FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 		If[	!FreeQ[exprAsList,Power],
 			exprAsList /. Power -> pow //. {
 				{a___,pow[b_,n_Integer?Positive],c___} :> {a,Sequence@@ConstantArray[b,n],c},
-				{a___,pow[b_,n_Integer?Negative],c___} :> {a,Sequence@@ConstantArray[1/b,n],c}
+				{a___,pow[b_,n_Integer?Negative],c___} :> {a,Sequence@@ConstantArray[1/b,-n],c}
 			} /. pow -> Power
 		];
 
