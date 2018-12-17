@@ -294,7 +294,7 @@ PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] - PolyLog[2, (1 + Sqrt[x])/2] + PolyLog[
 {"fcstSimplifyPolyLog-ID85",
 "SimplifyPolyLog[Zeta2^2 - 5 Zeta[4]/2]", "0"},
 {"fcstSimplifyPolyLog-ID86",
-"SimplifyPolyLog[PolyLog[2, 2, x]]", "PolyLog[2, 2, x]"},
+"SimplifyPolyLog[PolyLog[2, 2, x]]", "Nielsen[2, 2, x]"},
 {"fcstSimplifyPolyLog-ID87",
 "SimplifyPolyLog[(250 PolyGamma[2, 3])/(3 (2 - 2 zz) zz) - (
 250 Log[1 - (2 zz)/(-2 + 2 zz)] PolyGamma[2, 3])/(3 (2 - 2 zz))]", "(250 (9/4 - 2 Zeta[3]))/(3 (2 - 2 zz) zz) + (
@@ -488,5 +488,12 @@ Sqrt[1-x]-Sqrt[-x])/Sqrt[-x]])/.x\[Rule]0.3]//Chop", "0"},
 {"fcstSimplifyPolyLog-ID155",
 "SimplifyPolyLog[Log[-x^2],Log\[Rule]False]", "Log[-x^2]"},
 {"fcstSimplifyPolyLog-ID156",
-"Head[SimplifyPolyLog[Log[-x_Symbol^2]]]", "SimplifyPolyLog"}
+"Head[SimplifyPolyLog[Log[-x_Symbol^2]]]", "SimplifyPolyLog"},
+{"fcstSimplifyPolyLog-ID157",
+"SimplifyPolyLog[PolyLog[2, 2, x], Nielsen -> False]", "Zeta4 + 1/2 Zeta2 Log[1 - x]^2 + 1/24 Log[1 - x]^4 -
+1/6 Log[1 - x]^3 Log[x] - Log[1 - x] PolyLog[3, x] -
+PolyLog[4, 1 - x] + PolyLog[4, x] + PolyLog[4, x/(-1 + x)] +
+Log[1 - x] Zeta[3]"},
+{"fcstSimplifyPolyLog-ID157",
+"SimplifyPolyLog[PolyLog[4, 4, x]]", "Nielsen[4, 4, x]"}
 })

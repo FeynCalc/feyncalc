@@ -74,6 +74,9 @@ SimplifyPolyLog[expr_, OptionsPattern[]]/; FCPatternFreeQ[{expr}] :=
 			Abort[]
 		];
 
+
+		tmp = tmp/. PolyLog[a_,b_,c_]:> Nielsen[a,b,c];
+
 		If[	!OptionValue[Nielsen],
 			tmp = tmp/. Nielsen[z__]:> Nielsen[z,PolyLog->True]
 		];
