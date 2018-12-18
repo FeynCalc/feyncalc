@@ -348,6 +348,9 @@ Li2::usage =
 Li3::usage =
 "Li3 is an abbreviation for the trilog function, i.e., Li3 = PolyLog[3,#]&.";
 
+Li4::usage =
+"Li4 is an abbreviation for the PolyLog[4,x] function, i.e., Li4 = PolyLog[4,#]&.";
+
 LorentzIndex::usage =
 "LorentzIndex is the head of Lorentz indices. \
 The internal representation of a four-dimensional mu is \
@@ -1737,6 +1740,8 @@ LeviCivita[x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]][y:Except[_?
 	FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]]/;
 	Length[{x,y}] === 4 && OptionValue[LeviCivita,{opts1},FCI] && OptionValue[LeviCivita,{opts2},FCI];
 
+Li4 =
+	PolyLog[4,#]&;
 Li3 =
 	PolyLog[3,#]&;
 Li2 =

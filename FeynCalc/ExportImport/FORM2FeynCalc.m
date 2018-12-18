@@ -56,6 +56,7 @@ Replace -> {   (*     "d_" -> "SUNDelta",*)
 							"Li2" -> "(PolyLog[2,#]&)",
 							"li2" -> "(PolyLog[2,#]&)",
 							"Li3" -> "(PolyLog[3,#]&)",
+							"Li4" -> "(PolyLog[4,#]&)",
 							"li3" -> "(PolyLog[3,#]&)",
 							"S12(1 - y)" -> "Nielsen[1,2,1-y]",
 							"[d_(1-x)]"  -> "DeltaFunction[1-x]",

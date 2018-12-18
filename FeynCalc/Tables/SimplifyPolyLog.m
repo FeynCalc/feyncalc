@@ -718,12 +718,6 @@ simptab =
 
 	PolyLog[3, -x_Symbol/(1-x_Symbol)]/; optPolyLog :>
 		-PolyLog[3, x] - PolyLog[3,1-x] + 1/6 Log[1-x]^3 - 1/2 Log[x] Log[1-x]^2 + Zeta2 Log[1-x] + Zeta[3],
-(*
-,
-	PolyLog[3, x_/(1+x_)] :>
-Nielsen[1,2,-x] + PolyLog[2,-x] Log[1-x] - PolyLog[3,-x] + 1/6 Log[1+x]^3
-Li3(x/(1+x)) = S12(-x) + Li2(-x) ln(1-x) - Li3(-x) + 1/6 ln(1+x)^3
-*)
 
 	PolyLog[3,1 - 1/(x_/;FreeQ[x,Plus])]/; optPolyLog :>
 		(
