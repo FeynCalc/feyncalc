@@ -949,6 +949,7 @@ DeclareNonCommutative[LeftPartialD];
 DeclareNonCommutative[LeftRightPartialD];
 DeclareNonCommutative[LeftRightPartialD2];
 DeclareNonCommutative[FCPartialD];
+DeclareNonCommutative[OPESum];
 DeclareNonCommutative[QuantumField];
 DeclareNonCommutative[RightPartialD];
 DeclareNonCommutative[Spinor];

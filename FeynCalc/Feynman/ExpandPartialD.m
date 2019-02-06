@@ -31,40 +31,92 @@ End[]
 
 Begin["`ExpandPartialD`Private`"]
 
-(* ******************************************************************** *)
+epdVerbose::usage="";
+optPartialDRelations::usage="";
 
-With[ {lor = LorentzIndex, dot = DOT, fd = FieldDerivative},
-	Options[ExpandPartialD] =
-		(*Expensive, I'm afraid... F.Orellana*)
-		{PartialDRelations -> {dot[a___, FCPartialD[x_,lor[mu_]], b___] :>
-		dot[a, fd[dot[b], x, lor[mu]]]}}
-];
+quanfDot = DOT;
+epskillDot = DOT;
+
+Options[ExpandPartialD] = {
+	FCI -> False,
+	FCVerbose -> False,
+	PartialDRelations -> {DOT[a___, FCPartialD[x_,LorentzIndex[i_]], b___] :> DOT[a, FieldDerivative[dot[b], x, LorentzIndex[i]]]}
+}
 
 (* Expand one multiplication at a time. F.Orellana *)
-ExpandPartialD[x_, opts___Rule] :=
-	(
-	If[	!FreeQ2[x, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
+ExpandPartialD[expr_, OptionsPattern[]] :=
+	Block[{res, ex},
+
+		If [OptionValue[FCVerbose]===False,
+			epdVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				epdVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		optPartialDRelations = OptionValue[PartialDRelations];
+
+		FCPrint[1, "ExpandPartialD: Entering.", FCDoControl->epdVerbose];
+
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+
+
+		If[	!FreeQ2[x, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+		];
+
+		res = Fold[internalExpand[#1, #2]&, ex, Complement[$Multiplications, {Times}]];
+
+		FCPrint[1, "ExpandPartialD: Leaving.", FCDoControl->epdVerbose];
+
+		res
+
 	];
 
-	Fold[ExpandPartialD1[#1, #2, opts]&, x, Complement[$Multiplications, {Times}]]
-	);
+internalExpand[x_Plus, dot_] :=
+	Map[internalExpand[#,dot]&,x];
 
-(*
-ExpandPartialD1[x_] := Expand[FixedPoint[qfe, FCI[x], 7], QuantumField];
-*)
+internalExpand[x_, dot_] :=
+	Block[{res},
+		If[	FreeQ2[x, {FCPartialD, LeftPartialD, RightPartialD, LeftRightPartialD, FieldStrength, QuantumField}],
+			Return[x]
+		];
 
-(* moet dat ???? *)
-DeclareNonCommutative[OPESum];
+		FCPrint[3,"ExpandPartialD: internalExpand: Entering with ", x, FCDoControl->epdVerbose];
+
+		(*	This allows for other multiplications than just DOT. *)
+		quanfDot = dot;
+		epskillDot = dot;
+
+		res = FixedPoint[qfe[dot,#]&,x,3];
+		FCPrint[3,"ExpandPartialD: internalExpand: After qfe ", res, FCDoControl->epdVerbose];
+
+		If[!FreeQ[res,SUNIndex],
+			res = Expand[res,SUNIndex] /. SUNDelta -> SUNDeltaContract /. SUNDeltaContract -> SUNDelta
+		];
+
+		If[!FreeQ[res,Eps],
+			FCPrint[1,"ExpandPartialD: Applying epskill.", FCDoControl->epdVerbose];
+			res = epskill[Expand[res,Eps]]  /. epskill -> Identity;
+			FCPrint[3,"ExpandPartialD: internalExpand: After epskill: ", res, FCDoControl->epdVerbose];
+		];
+
+		(*Allow for other products through setting of PartialDRelations. This will of course
+		manipulate these products only by applying PartialDRelations. Still... F.Orellana, 22/2-2003.*)
+		res = res //. optPartialDRelations;
+
+		FCPrint[3,"ExpandPartialD: internalExpand: Leaving with ", res, FCDoControl->epdVerbose];
+
+		res
+
+	] /; Head[x] =!= Plus;
 
 $OPEKCOUNT = 0;
-
-sunsi[xx_] :=
-	If[ FreeQ[xx, SUNIndex],
-		xx,
-		xx /. SUNDelta -> SUNDeltaContract /. SUNDeltaContract -> SUNDelta
-	];
 
 (* suggested by Peter Cho; ADDED 03/16/1998 *)
 epskill[exp_ /; FreeQ[exp, Eps]] :=
@@ -79,7 +131,7 @@ epskill[any_ /; FreeQ2[any,{RightPartialD, LeftPartialD}]] :=
 (* careful, ..., LeftPartialD and RightPartialD are operators,
 	thus here is no need to look at QuantumField's	*)
 epskill[prod_Times] :=
-	( (prod /. (*DOT*)(fcdot/.Options[epskill]) -> mydot) //. {
+	( (prod /. epskillDot -> mydot) //. {
 
 		(Eps[a___, LorentzIndex[mu_,___],b___, LorentzIndex[nu_, ___], c___] *
 		mydot[pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]], pa2___,
@@ -111,71 +163,24 @@ epskill[prod_Times] :=
 		) * QuantumField[p1___FCPartialD, FCPartialD[LorentzIndex[mu_,di___]], p2___FCPartialD,
 		name_ /; (Head[name] =!= FCPartialD) && (Head[name] =!= LorentzIndex), LorentzIndex[nu_,de___], rest___]
 		) :>
-			(EpsEvaluate[ep/.{mu:>nu, nu:>mu}] QuantumField[p1,FCPartialD[LorentzIndex[nu,de]], p2, name,
+			(EpsEvaluate[ep/.{mu:>nu, nu:>mu}, FCI->True] QuantumField[p1,FCPartialD[LorentzIndex[nu,de]], p2, name,
 			LorentzIndex[mu, di],rest]) /; !OrderedQ[{mu,nu}],
 
 		((ep : (Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] |
 				Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___])) *
 				mydot[quf1___, QuantumField[p1___FCPartialD, FCPartialD[LorentzIndex[mu_,de___]], p2___FCPartialD,
 				name_ /; (Head[name] =!= FCPartialD) && (Head[name] =!= LorentzIndex), LorentzIndex[nu_,di___], rest___], quf2___]
-		) :> (EpsEvaluate[ep/.{mu:>nu, nu:>mu}] mydot[quf1, QuantumField[p1,FCPartialD[LorentzIndex[nu, di]], p2, name,
+		) :> (EpsEvaluate[ep/.{mu:>nu, nu:>mu}, FCI->True] mydot[quf1, QuantumField[p1,FCPartialD[LorentzIndex[nu, di]], p2, name,
 		LorentzIndex[mu,de], rest], quf2]
 		) /; !OrderedQ[{mu, nu}]
 
-		} /. mydot->(fcdot/.Options[epskill])) /; !FreeQ2[prod, {Eps,LeftPartialD,RightPartialD}] && $EpsRules===True;
+		} /. mydot-> epskillDot) /; !FreeQ2[prod, {Eps,LeftPartialD,RightPartialD}];
 
-$EpsRules = True;
 
-ExpandPartialD1[x_Plus, dot_, opts___Rule] :=
-	Map[ExpandPartialD1[#,dot,opts]&,x];
-
-(*Hack to allow other multiplications. F.Orellana. 24/2-2003*)
-Options[quanf] = {fcdot->DOT};
-Options[epskill] = {fcdot->DOT};
-
-ExpandPartialD1[x_, dot_, opts___Rule] :=
-
-	Block[{res},
-		If[	FreeQ2[x, {FCPartialD, LeftPartialD, RightPartialD, LeftRightPartialD, FieldStrength, QuantumField}],
-			Return[x]
-		];
-
-		FCPrint[3,"ExpandPartialD: ExpandPartialD1: Entering with ", x];
-
-		SetOptions[quanf, fcdot->dot];
-		SetOptions[epskill, fcdot->dot];
-
-		res = Expand[Expand[FixedPoint[qfe[dot,#]&,FCI[x],3],SUNIndex] // sunsi, Eps];
-
-		FCPrint[3,"ExpandPartialD: ExpandPartialD1: After qfe ", res];
-
-		res = epskill[res] /. epskill -> Identity;
-
-		FCPrint[3,"ExpandPartialD: ExpandPartialD1: After epskill ", res];
-
-		(*Allow for other products through setting
-		of PartialDRelations. This will of course
-		manipulate these products only by applying
-		PartialDRelations. Still...
-		F.Orellana, 22/2-2003.*)
-		res = res //. (PartialDRelations/.{opts}/.Options[ExpandPartialD]);
-
-		FCPrint[3,"ExpandPartialD: ExpandPartialD1: Leaving with ", res];
-
-		res
-
-	] /; Head[x] =!= Plus;
-
+(* Ignore CovariantD[x, LorentzIndex[mu]] - it will be caught by PartialDRelations*)
 fcovcheck[y_] :=
-	If[ True,
-		y /. FieldStrength[ab__] :> FieldStrength[ab, Explicit -> True]/.
-		(*Small change (condition) 26/2-2003. F.Orellana.
-		Ignore CovariantD[x, LorentzIndex[mu]] - it will be
-		caught by PartialDRelations*)
-		CovariantD[ab__] :> CovariantD[ab, Explicit -> True] /;
-		Length[{ab}] =!= 2 || Or@@((Head[#]===List)&/@{ab}),
-		y
-	];
+	y /. FieldStrength[ab__] :> FieldStrength[ab, Explicit -> True]/. CovariantD[ab__] :> CovariantD[ab, Explicit -> True] /;
+	Length[{ab}] =!= 2 || Or@@((Head[#]===List)&/@{ab});
 
 opesumplus2[y_,b__] :=
 	If[ Head[y]===Plus,
@@ -197,12 +202,13 @@ qfe[dot_, x_] :=
 	LeftPartialD[Momentum[OPEDelta]^mm],
 	RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
 	RightPartialD[Momentum[OPEDelta]^mm]
-	}] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
-		quanf /. quanf -> QuantumField /. OPESum -> opesumplus
-	];
+	}, FCI->True] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
+		quanf /. quanf -> QuantumField /. OPESum -> opesumplus, FCI->True];
+
 (* linearity *)
 qf1[1,b___] :=
 	qf1[b];
+
 qf1[a__, OPESum[b_, c__], d___] :=
 	OPESum[qf1[a, b, d], c];
 
@@ -294,7 +300,7 @@ qf5[a___,RightPartialD[Momentum[OPEDelta]^m_], QuantumField[f1__], b___,c_/;Free
 	);
 
 quanf[quanf[a__], b___, c_ /; Head[c] =!= FCPartialD] :=
-	((fcdot/.Options[quanf])[quanf[a], qf5[b,c]]);
+	quanfDot[quanf[a], qf5[b,c]];
 
 quanf[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]], f2___] :=
 	quanf[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
