@@ -143,6 +143,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				simrel = Map[sru, simrel];
 			];
 			FCPrint[1, "DotSimplify: Done applying DotSimplifyRelations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After DotSimplifyRelations: ", xx, FCDoControl->dsVerbose];
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Writing out commutators and anticommutators.", FCDoControl->dsVerbose];
@@ -182,7 +183,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
 			];
 			FCPrint[1, "DotSimplify: Done writing out non-commutative objects explicitly, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After writing out non-commutuative objects ",x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After writing out non-commutuative objects: ",x, FCDoControl->dsVerbose];
 
 			(* check special case *)
 
@@ -205,7 +206,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			];
 			FCPrint[1, "DotSimplify: Done working out user-defined non-commutative objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
-			FCPrint[3, "DotSimplify: After checking simrel", x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After checking simrel: ", x, FCDoControl->dsVerbose];
 
 			If[	OptionValue[PreservePropagatorStructures],
 				time=AbsoluteTime[];
@@ -222,25 +223,26 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				u;
 
 			(* This is for converting DownValues of Commutator and AntiCommutator to rules *)
-			cru[{commm[a_ /; FreeQ[a, Pattern], b_ /; FreeQ[b, Pattern]], ww_}] :=
+			cru[{commm[a_, b_], ww_}]/; FreeQ[{a,b},Pattern] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					cdoot[xxX, ww, yyY] + cdoot[xxX, b, a,  yyY]} /.  cdoot[]-> 1 /. cdoot -> DOT
 				);
 
-			cru[{commm[a_ /; !FreeQ[a, Pattern], b_ /; !FreeQ[b, Pattern]],	ww_}] :=
+			cru[{commm[a_, b_],	ww_}]/; !FreeQ[{a,b},Pattern] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					condition[cdoot[xxX, ww, yyY] + cdoot[xxX, b/.Pattern -> pid, a/.Pattern -> pid,yyY],
 						(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid}])]} /.  cdoot[]-> 1 /. cdoot -> DOT
 				) /. condition :> Condition /. orderedQ :> OrderedQ;
 
-			aru[{acommm[a_ /; FreeQ[a, Pattern], b_ /; FreeQ[b, Pattern]], ww_}] :=
+			aru[{acommm[a_ , b_], ww_}]/; FreeQ[{a,b},Pattern] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					cdoot[xxX, ww, yyY] - cdoot[xxX, b, a,  yyY]} /.  cdoot[]-> 1 /. cdoot -> DOT);
 
-			aru[{acommm[a_ /; !FreeQ[a, Pattern], b_ /; !FreeQ[b, Pattern]], ww_ }] := {
+			aru[{acommm[a_, b_], ww_ }]/; !FreeQ[{a,b},Pattern] :=
+				{
 					(RuleDelayed @@ {cdoot[ Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					condition[ 1/2 cdoot[xxX, ww, yyY], sameQ[a /. Pattern :> pid, b /. Pattern :> pid]]} /.  cdoot[]-> 1 /.
 					cdoot -> DOT) /. {sameQ :> SameQ, condition :> Condition},
@@ -252,23 +254,23 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 			cotorules[{}] = {};
 			cotorules[a__List] :=
-				(cotorules[a] =
+				(
+				cotorules[a] =
 					Select[Map[cru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
 						/. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List
 						], FreeQ[#, cru]&]
-
-
-				)/;
-				a=!={};
+				)/; a=!={};
 
 			actorules[{}] = {};
 			actorules[a__List] :=
-				(actorules[a] = Select[Map[aru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
-					/. Commutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&])/;
-				a=!={};
+				(
+				actorules[a] = Select[Map[aru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+					/. AntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&]
+				)/; a=!={};
 
 			comall[ yy__ ] :=
 				yy //. (Flatten[cotorules[DownValues@@{Commutator}]] //. hold[h_]:> h);
+
 			acomall[ yy__ ] :=
 				yy //. (Flatten[actorules[DownValues@@{AntiCommutator}]] //. hold[h_]:> h);
 
