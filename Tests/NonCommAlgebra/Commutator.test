@@ -18,5 +18,13 @@ Tests`NonCommAlgebra`fcstCommutator = {
 "-(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"},
 {"Commutator-ID3", "Do[Commutator[a, b] = 1, {i, 1, 5}] \n DownValues[Commutator]",
 "{HoldPattern[Commutator[a, b]] :> 1,
-HoldPattern[Commutator[RightPartialD[FeynCalc`SharedObjects`Private`x_], LeftPartialD[FeynCalc`SharedObjects`Private`y_]]] :> 0}"}
+HoldPattern[Commutator[RightPartialD[FeynCalc`SharedObjects`Private`x_], LeftPartialD[FeynCalc`SharedObjects`Private`y_]]] :> 0}"},
+{"Commutator-ID4", "Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
+QuantumField[A1]] = 0; DotSimplify[
+ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]];
+UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
+QuantumField[A1]]; DotSimplify[
+ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]",
+"QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1] +
+QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"}
 };

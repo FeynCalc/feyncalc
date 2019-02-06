@@ -18,5 +18,14 @@ Tests`NonCommAlgebra`fcstAntiCommutator = {
 	"CommutatorExplicit[AntiCommutator[a+b,a-2b]]",
 	"(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"},
 {"AntiCommutator-ID3", "Do[AntiCommutator[a, b] = 1, {i, 1, 5}] \n DownValues[AntiCommutator]",
-"{HoldPattern[AntiCommutator[a, b]] :> 1}"}
+"{HoldPattern[AntiCommutator[a, b]] :> 1}"},
+{"Commutator-ID4", "AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
+QuantumField[A1]] = 0; DotSimplify[
+ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]];
+UnDeclareAntiCommutator[
+QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
+QuantumField[A1]]; DotSimplify[
+ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]",
+"QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1] +
+QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"}
 };
