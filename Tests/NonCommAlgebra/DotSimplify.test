@@ -53,5 +53,9 @@ M]*SUNT[a] + GA[i] . (M +
 GS[p]) . GA[j] . GA[6] . GA[k] . GA[j] . (m +
 GS[q]) . GA[n] . (M + GS[p]) . GA[l]*FAD[k + p,
 M]*SUNT[a]"},
-{"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"}
+{"fcstDotSimplify-ID10","DotSimplify[GA[5].(1/2).GA[5]]","1/2 DiracGamma[5].DiracGamma[5]"},
+{"fcstDotSimplify-ID23","Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1], QuantumField[A1]] = 0;
+DotSimplify[ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]","2 QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1]"},
+{"fcstDotSimplify-ID24","AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A2], QuantumField[A2]] = 0;
+DotSimplify[ExpandPartialD[QuantumField[A2].QuantumField[A2].LeftPartialD[nu]]]","0"}
 }

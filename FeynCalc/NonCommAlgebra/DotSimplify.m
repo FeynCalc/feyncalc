@@ -202,25 +202,26 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				u;
 
 			(* This is for converting DownValues of Commutator and AntiCommutator to rules *)
-			cru[{commm[a_ /; FreeQ[a, Pattern], b_ /; FreeQ[b, Pattern]], ww_}] :=
+			cru[{commm[a_, b_], ww_}]/; FreeQ[{a,b},Pattern] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					cdoot[xxX, ww, yyY] + cdoot[xxX, b, a,  yyY]} /.  cdoot[]-> 1 /. cdoot -> DOT
 				);
 
-			cru[{commm[a_ /; !FreeQ[a, Pattern], b_ /; !FreeQ[b, Pattern]],	ww_}] :=
+			cru[{commm[a_, b_],	ww_}]/; !FreeQ[{a,b},Pattern] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					condition[cdoot[xxX, ww, yyY] + cdoot[xxX, b/.Pattern -> pid, a/.Pattern -> pid,yyY],
 						(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid}])]} /.  cdoot[]-> 1 /. cdoot -> DOT
 				) /. condition :> Condition /. orderedQ :> OrderedQ;
 
-			aru[{acommm[a_ /; FreeQ[a, Pattern], b_ /; FreeQ[b, Pattern]], ww_}] :=
+			aru[{acommm[a_ , b_], ww_}]/; FreeQ[{a,b},Pattern] :=
 				(RuleDelayed @@ {
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					cdoot[xxX, ww, yyY] - cdoot[xxX, b, a,  yyY]} /.  cdoot[]-> 1 /. cdoot -> DOT);
 
-			aru[{acommm[a_ /; !FreeQ[a, Pattern], b_ /; !FreeQ[b, Pattern]], ww_ }] := {
+			aru[{acommm[a_, b_], ww_ }]/; !FreeQ[{a,b},Pattern] :=
+				{
 					(RuleDelayed @@ {cdoot[ Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					condition[ 1/2 cdoot[xxX, ww, yyY], sameQ[a /. Pattern :> pid, b /. Pattern :> pid]]} /.  cdoot[]-> 1 /.
 					cdoot -> DOT) /. {sameQ :> SameQ, condition :> Condition},
@@ -244,7 +245,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			actorules[{}] = {};
 			actorules[a__List] :=
 				(actorules[a] = Select[Map[aru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
-					/. Commutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&])/;
+					/. AntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&])/;
 				a=!={};
 
 			comall[ yy__ ] :=
