@@ -186,7 +186,6 @@ opesumplus[a_,b__] :=
 	opesumplus2[Expand[a],b];
 
 qfe[dot_, x_] :=
-	MemSet[qfe[dot,x],
 	DotSimplify[
 	(*The replacement below commented out by F.Orellana, 12/3/2005.
 	It breaks the procedure of applying the expansion to all
@@ -200,7 +199,6 @@ qfe[dot_, x_] :=
 	RightPartialD[Momentum[OPEDelta]^mm]
 	}] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
 		quanf /. quanf -> QuantumField /. OPESum -> opesumplus
-	]
 	];
 (* linearity *)
 qf1[1,b___] :=
