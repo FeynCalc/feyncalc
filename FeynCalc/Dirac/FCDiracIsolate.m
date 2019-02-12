@@ -39,8 +39,9 @@ Options[FCDiracIsolate] = {
 	DotSimplify -> True,
 	ExceptHeads -> {},
 	Expanding -> True,
-	FCI -> False,
 	FCE -> False,
+	FCI -> False,
+	FCJoinDOTs -> True,
 	FCVerbose -> False,
 	Factoring -> Factor,
 	FermionicChain -> False,
@@ -48,11 +49,11 @@ Options[FCDiracIsolate] = {
 	Isolate -> False,
 	IsolateFast -> False,
 	IsolateNames -> KK,
-	FCJoinDOTs -> True,
 	LorentzIndex -> False,
 	Polarization -> False,
 	Spinor -> True,
 	Split -> True,
+	TimeConstrained -> 3,
 	ToDiracGamma67 -> False
 };
 
@@ -64,7 +65,7 @@ makeSelectionList[expr_,heads_List]:=
 
 FCDiracIsolate[expr_, OptionsPattern[]] :=
 	Block[ {res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2, time, fcdiVerbose,
-		headsList},
+		headsList, optTimeConstrained},
 
 		If [OptionValue[FCVerbose]===False,
 			fcdiVerbose=$VeryVerbose,
@@ -72,6 +73,8 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 				fcdiVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		optTimeConstrained = OptionValue[TimeConstrained];
 
 
 		headsList =  DiracHeadsList;
@@ -142,7 +145,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying Collect2.", FCDoControl->fcdiVerbose];
-			ex = Collect2[ex,headsList,Factoring->OptionValue[Factoring]];
+			ex = Collect2[ex,headsList,Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
 			FCPrint[1, "FCDiracIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
 		];
 
