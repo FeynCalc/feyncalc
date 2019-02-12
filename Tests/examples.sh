@@ -26,6 +26,16 @@ MATH=$1
 ##Tdec Examples
 #$MATH -nopromt -script ../FeynCalc/Examples/Tdec/GrossNeveuMultiloopTID.m &&
 
+#MSSM Examples
+#-------------------------------------------------------------------------------
+for exFile in 'MnelEl-MnelEl.m'
+
+do
+  echo
+  echo -e "* \c"
+  $MATH -nopromt -script ../FeynCalc/Examples/MSSM/Tree/$exFile
+done
+
 #Phi3 Examples
 #-------------------------------------------------------------------------------
 for exFile in 'Renormalization.m'
