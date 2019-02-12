@@ -29,9 +29,12 @@ Options[Explicit] = {
 	OPE -> False
 };
 
-Explicit[y_, opts:OptionsPattern[]] :=
-	Block[{dim, gh, gp, gvv, ghv, gv, qp, qgv, t2g, t2q, fis, pr, r = y},
-		dim = OptionValue[Explicit,{opts},Dimension];
+Explicit[expr_, opts:OptionsPattern[]] :=
+	Block[{gh, gp, gvv, ghv, gv, qp, qgv, t2g, t2q, fis, ex},
+
+
+		ex = expr;
+
 		gv[x__]  := ExpandScalarProduct[ GluonVertex[x, Explicit -> True,
 			FilterRules[{opts}, Options[GluonVertex]]]];
 		gp[x__]  := ExpandScalarProduct[GluonPropagator[x, Explicit -> True,
@@ -50,7 +53,8 @@ Explicit[y_, opts:OptionsPattern[]] :=
 			FilterRules[{opts}, Options[Twist2QuarkOperator]]];
 		fis[x__] := FieldStrength[x, Explicit->True,
 			FilterRules[{opts}, Options[FieldStrength]]];
-		r = r /. {
+
+		ex = ex /. {
 			GluonVertex :> gv,
 			GluonPropagator :> gp,
 			GhostPropagator :> gh,
@@ -61,11 +65,8 @@ Explicit[y_, opts:OptionsPattern[]] :=
 			Twist2QuarkOperator :> t2q,
 			FieldStrength :> fis
 		};
-		(* use ChangeDimension only if there have been changes *)
-		If[r =!= y,
-			r = ChangeDimension[r, dim]
-		];
-		r
+
+		ex
 	];
 
 FCPrint[1,"Explicit.m loaded"];

@@ -74,7 +74,7 @@ Pair[LorentzIndex[la, D],
 	Pair[LorentzIndex[la],
 	LorentzIndex[mu]] (Pair[LorentzIndex[nu], Momentum[k]] -
 	Pair[LorentzIndex[nu], Momentum[p]]))"},
-{"fcstExplicit-ID17","Explicit[FieldStrength[mu, nu]]",
+{"fcstExplicit-ID17","Explicit[FieldStrength[mu, nu]]//ChangeDimension[#,D]&",
 	"QuantumField[FCPartialD[LorentzIndex[mu, D]], GaugeField,
 	LorentzIndex[nu, D]] -
 	QuantumField[FCPartialD[LorentzIndex[nu, D]], GaugeField,

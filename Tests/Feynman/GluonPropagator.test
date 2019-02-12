@@ -19,7 +19,7 @@ Tests`Feynman`fcstGluonPropagator = ({
 "I*FAD[p]*((1 - al)*FAD[p]*FVD[p, mu]*FVD[p, nu] - MTD[mu, \
 nu])*SD[a, b]"},
 {"fcstGluonPropagator-ID2",
-"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{Momentum[n],1}]\
+"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{Momentum[n,D],1}]\
 //Explicit//FCE",
 "I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
 mu]*FVD[p, nu])/SPD[n, p] - (FVD[p, mu]*FVD[p, nu]*SPD[n, n] - FVD[n, \

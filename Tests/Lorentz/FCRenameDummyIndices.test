@@ -15,7 +15,7 @@ Tests`Lorentz`fcstFCRenameDummyIndices =
 {
 {"FCRenameDummyIndices-ID1",
 	"MatchQ[FieldStrength[a,b].FieldStrength[a,b]\
-	//Explicit//Expand//FCRenameDummyIndices,(QuantumField[FCPartialD[\
+	//Explicit//ChangeDimension[#,D]&//Expand//FCRenameDummyIndices,(QuantumField[FCPartialD[\
 	LorentzIndex[$AL[i_],D]],GaugeField,LorentzIndex[$AL[j_],D]]-\
 	QuantumField[FCPartialD[LorentzIndex[$AL[j_],D]],GaugeField,\
 	LorentzIndex[$AL[i_],D]]).(QuantumField[FCPartialD[LorentzIndex[$AL[$i_]\
