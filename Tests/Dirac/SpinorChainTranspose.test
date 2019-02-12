@@ -1,0 +1,91 @@
+
+
+(* :Title: SpinorChainTranspose.test                                                    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2018 Rolf Mertig
+	Copyright (C) 1997-2018 Frederik Orellana
+	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SpinorChainTranspose                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstSpinorChainTranspose =
+({
+{"fcstSpinorChainTranspose-ID1", "SpinorChainTranspose[1]", "1"},
+{"fcstSpinorChainTranspose-ID2", "SpinorChainTranspose[GA[mu]]",
+"DiracGamma[LorentzIndex[mu]]"},
+{"fcstSpinorChainTranspose-ID3",
+"SpinorChainTranspose[SpinorUBar[p1,m1].SpinorU[p2,m2]]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstSpinorChainTranspose-ID4",
+"SpinorChainTranspose[SpinorUBar[p1,m1].SpinorV[p2,m2]]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
+{"fcstSpinorChainTranspose-ID5",
+"SpinorChainTranspose[SpinorUBarD[p1,m1].SpinorUD[p2,m2]]",
+"Spinor[Momentum[p1, D], m1, 1] . Spinor[Momentum[p2, D], m2, \
+1]"},
+{"fcstSpinorChainTranspose-ID6",
+"SpinorChainTranspose[SpinorUBarD[p1,m1].SpinorVD[p2,m2]]",
+"Spinor[Momentum[p1, D], m1, 1] . Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstSpinorChainTranspose-ID7",
+"SpinorChainTranspose[SpinorVBar[p1,m1].SpinorU[p2,m2]]",
+"-Spinor[-Momentum[p2], m2, 1] . Spinor[Momentum[p1], m1, 1]"},
+{"fcstSpinorChainTranspose-ID8",
+"SpinorChainTranspose[SpinorVBar[p1,m1].SpinorV[p2,m2]]",
+"-Spinor[Momentum[p2], m2, 1] . Spinor[Momentum[p1], m1, 1]"},
+{"fcstSpinorChainTranspose-ID9",
+"SpinorChainTranspose[SpinorVBarD[p1,m1].SpinorUD[p2,m2]]",
+"-Spinor[-Momentum[p2, D], m2, 1] . Spinor[Momentum[p1, D], m1, \
+1]"},
+{"fcstSpinorChainTranspose-ID10",
+"SpinorChainTranspose[SpinorVBarD[p1,m1].SpinorVD[p2,m2]]",
+"-Spinor[Momentum[p2, D], m2, 1] . Spinor[Momentum[p1, D], m1, 1]"},
+{"fcstSpinorChainTranspose-ID11",
+"SpinorChainTranspose[SpinorVBar[p1,m1].GA[mu,nu].SpinorU[p2,m2]]",
+	"-Spinor[-Momentum[p2], m2, 1] . DiracGamma[LorentzIndex[nu]] . \
+DiracGamma[LorentzIndex[mu]] . Spinor[Momentum[p1], m1, 1]"},
+{"fcstSpinorChainTranspose-ID12",
+"SpinorChainTranspose[SpinorVBar[p1,m1].GA[mu,nu].SpinorV[p2,m2]]",
+	"-Spinor[Momentum[p2], m2, 1] . DiracGamma[LorentzIndex[nu]] . \
+DiracGamma[LorentzIndex[mu]] . Spinor[Momentum[p1], m1, 1]"},
+{"fcstSpinorChainTranspose-ID13",
+"SpinorChainTranspose[SpinorVBarD[p1,m1].GAD[mu,nu].SpinorUD[p2,m2]\
+]", "-Spinor[-Momentum[p2, D], m2, 1] . DiracGamma[LorentzIndex[nu, \
+D], D] . DiracGamma[LorentzIndex[mu, D], D] . Spinor[Momentum[p1, D], \
+m1, 1]"},
+{"fcstSpinorChainTranspose-ID14",
+"SpinorChainTranspose[SpinorVBarD[p1,m1].GAD[mu,nu].SpinorVD[p2,m2]\
+]", "-Spinor[Momentum[p2, D], m2, 1] . DiracGamma[LorentzIndex[nu, \
+D], D] . DiracGamma[LorentzIndex[mu, D], D] . Spinor[Momentum[p1, D], \
+m1, 1]"},
+{"fcstSpinorChainTranspose-ID15",
+"SpinorChainTranspose[SpinorVBarD[p1,m1].GAD[mu,nu].FCNCA.SpinorVD[\
+p2,m2]]",
+"-Spinor[Momentum[p2, D], m2, 1] . \
+FCChargeConjugateTransposed[FCNCA, Explicit -> False, \
+FeynCalcInternal -> True, DotSimplify -> False] . \
+DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[mu, D], \
+D] . Spinor[Momentum[p1, D], m1, 1]"},
+{"fcstSpinorChainTranspose-ID16",
+"SpinorChainTranspose[Spinor[Momentum[k],m,1].GA[6].GS[l].GA[7].\
+Spinor[-Momentum[l],m,1]+Spinor[Momentum[l],m,1].GA[6].GS[l].GA[7].\
+Spinor[-Momentum[k],m,1]]",
+"Spinor[Momentum[k], m, 1] . DiracGamma[6] . \
+DiracGamma[Momentum[l]] . DiracGamma[7] . Spinor[-Momentum[l], m, 1] \
++ Spinor[Momentum[l], m, 1] . DiracGamma[6] . DiracGamma[Momentum[l]] \
+. DiracGamma[7] . Spinor[-Momentum[k], m, 1]"},
+{"fcstSpinorChainTranspose-ID17",
+"SpinorChainTranspose[Spinor[Momentum[k],m,1].GA[6].GS[l].GA[7].\
+Spinor[-Momentum[l],m,1]+Spinor[Momentum[l],m,1].GA[6].GS[l].GA[7].\
+Spinor[-Momentum[k],m,1],Select\[Rule]{{SpinorUBar[k,m],SpinorV[l,m]}}\
+]", "Spinor[Momentum[l], m, 1] . DiracGamma[6] . \
+DiracGamma[Momentum[l]] . DiracGamma[7] . Spinor[-Momentum[k], m, 1] \
++ Spinor[Momentum[l], m, 1] . DiracGamma[7] . DiracGamma[Momentum[l]] \
+. DiracGamma[6] . Spinor[-Momentum[k], m, 1]"}
+});
