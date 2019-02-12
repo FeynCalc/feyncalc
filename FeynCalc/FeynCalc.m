@@ -435,7 +435,7 @@ If[ $FCCheckContext,
 		"FAScalarProduct", "FASUNF", "FASUNT", "ff", "gA", "gA5", "gA6",
 		"gA7", "globalContextAfterLoadingFC", "Gluon", "GraphName","dSUN",
 		"Lorentz", "M", "pp", "TJI111e", "$INTC", "$Special", "$SpecialTLI",
-		"fcContextLowerCase", "newObjectsInTheContext",
+		"fcContextLowerCase", "newObjectsInTheContext", "MajoranaSpinor",
 		"newObjectsInTheGlobalContext", "whiteListedContextAdditions", "GetFlip"
 	};
 

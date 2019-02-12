@@ -108,7 +108,8 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					FeynArts`FAGaugeXi :> GaugeXi,
 					FeynArts`FANonCommutative :> DOT,
 					FeynArts`FermionChain :> DOT,
-					FeynArts`MatrixTrace :> DiracTrace
+					FeynArts`MatrixTrace :> DiracTrace,
+					Global`MajoranaSpinor :> Spinor
 					}];
 		replist3 = {FeynArts`FAPropagatorDenominator[x_,y_] :> FeynAmpDenominator[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y]]};
 		temp = expr //. replist0 //. replist1 //. replist2 //. replist3;
