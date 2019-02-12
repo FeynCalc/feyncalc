@@ -759,7 +759,6 @@ diracology4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(_LorentzIndex | _Expl
 diracology4Dim[b___,DiracGamma[c_CartesianMomentum], DiracGamma[c_CartesianMomentum], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,d];
 
-y__DiracGamma
 (*	g^i g^nu_1 ... g^nu_n g^i p^i p^j *)
 diracology4Dim[b___, DiracGamma[c_CartesianMomentum],ch:DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]..,
 			DiracGamma[c_CartesianMomentum],f___ ] :=
