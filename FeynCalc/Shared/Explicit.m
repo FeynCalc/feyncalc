@@ -63,7 +63,9 @@ Explicit[expr_, opts:OptionsPattern[]] :=
 			QuarkGluonVertex :> qgv,
 			Twist2GluonOperator :> t2g,
 			Twist2QuarkOperator :> t2q,
-			FieldStrength :> fis
+			FieldStrength :> fis,
+			FCChargeConjugateTransposed[xx_, op:OptionsPattern[]]  :> FCChargeConjugateTransposed[xx, Explicit->True,
+				Sequence@@FilterRules[{op}, Except[Explicit]]]
 		};
 
 		ex
