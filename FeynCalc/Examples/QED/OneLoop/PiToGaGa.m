@@ -34,6 +34,17 @@ If[ $Notebooks === False,
 <<FeynCalc`
 $FAVerbose = 0;
 
+If[!MatchQ[ToExpression[StringSplit[$FeynCalcVersion, "."]],{a_/;a>=9,b_/;b>=3,_}],
+	If[ ($FrontEnd === Null||$Notebooks===False),
+	Print["Your FeynCalc version is too old. \
+This example requires at least FeynCalc 9.3!"];
+	Quit[],
+	CreateDialog[{TextCell["Your FeynCalc version is too old. \
+This example requires at least FeynCalc 9.3!"],DefaultButton[]},
+	Modal->True];
+	]
+];
+
 
 (* ::Section:: *)
 (*Obtain the amplitude*)
