@@ -968,7 +968,10 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					oneamp = denomExpand[ oneamp ]/.FeynAmpDenominator->denomOrder
 				];
 				oneamp = (intcan[oneamp//MomentumExpand]//ExpandScalarProduct)/.
-						intcan->Identity;
+						intcan->Identity,
+				(*oneamp = 0*)
+				nonLoopTerms=0;
+				loopTerms=0;
 			];
 		(*oneamp1 = oneamp;*)
 			FCPrint[1, "simplifying again in ", oneamp, FCDoControl->oneloopVerbose];
