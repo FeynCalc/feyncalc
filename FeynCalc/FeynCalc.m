@@ -779,7 +779,7 @@ If[	$LoadFeynArts,
 			(* If everything went fine *)
 			If[ Global`$FeynCalcStartupMessages,
 				Print[	Style["FeynArts ", "Text", Bold],
-						Style[ToString[FeynArts`$FeynArts] <>" patched for use with FeynCalc, for documentation use the ",
+						Style[StringReplace[ToString[FeynArts`$FeynArtsVersion],"FeynArts "->""] <>" patched for use with FeynCalc, for documentation use the ",
 							"Text"],
 						Style[DisplayForm@ButtonBox["manual", BaseStyle -> "Hyperlink",	ButtonFunction :>
 							SystemOpen[First@FileNames[{"*.pdf", "*.PDF"}, FileNameJoin[{$FeynArtsDirectory, "manual"}]]],

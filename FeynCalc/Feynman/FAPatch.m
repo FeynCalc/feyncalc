@@ -126,7 +126,8 @@ FAPatch[OptionsPattern[]] :=
 		feynartsFile = Import[ToFileName[{$FeynArtsDirectory}, "FeynArts.m"], "Text"];
 
 		(*	Check the FeynArts version	*)
-		If[	First[StringCases[feynartsFile, "$FeynArts = " ~~ x : NumberString ~~ "\n" :> x]] < 3.,
+		If[	Union[StringCases[feynartsFile, "$FeynArts = " ~~ x : NumberString ~~ "\n" :> x],
+				StringCases[feynartsFile, "$FeynArtsVersionNumber = " ~~ x : NumberString ~~ "\n" :> x]] < 3.,
 			Message[FAPatch::old];
 			Abort[]
 		];
@@ -158,7 +159,8 @@ FAPatch[OptionsPattern[]] :=
 		If[ !OptionValue[PatchModelsOnly],
 
 			If[	ChoiceDialog["An installation of FeynArts has been found in \"" <> $FeynArtsDirectory <>
-				"\". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue?"],
+				"\". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue?",
+					WindowTitle->"Patch Feynarts"],
 					(* The actual patching *)
 					WriteString["stdout","Patching FeynArts..."];
 					Map[FCFilePatch[#, #, repList] &, allfiles];
