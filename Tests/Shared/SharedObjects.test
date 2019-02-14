@@ -428,7 +428,16 @@ Tests`Shared`fcstSharedObjectsBehaviorDiracGamma =
 {"fcstSharedObjectsBehaviorDiracGamma-ID48",
 "Transpose[DiracGamma[x]]", "DiracGammaT[x]"},
 {"fcstSharedObjectsBehaviorDiracGamma-ID49",
-"Transpose[DiracGammaT[x]]", "DiracGamma[x]"}
+"Transpose[DiracGammaT[x]]", "DiracGamma[x]"},
+{"fcstSharedObjectsBehaviorDiracGamma-ID50",
+"DataType[SoftScale, FCVariable] = True; \n DiracGamma[
+SoftScale*(qvabs*CartesianMomentum[qhat] -
+qvabs*CartesianMomentum[kphat]*
+CartesianPair[CartesianMomentum[kphat],
+CartesianMomentum[qhat]] + (qvabs*CartesianMomentum[kphat]*
+CartesianPair[CartesianMomentum[kphat], CartesianMomentum[qhat]]*m1)/m2)] // FCE",
+"SoftScale (qvabs CGS[qhat] - qvabs CGS[kphat] CSP[kphat, qhat] + (m1 qvabs CGS[kphat] CSP[kphat, qhat])/m2)"}
+
 });
 
 Tests`Shared`fcstSharedObjectsBehaviorEps =
@@ -580,7 +589,17 @@ Tests`Shared`fcstSharedObjectsBehaviorPauliSigma =
 {"fcstSharedObjectsBehaviorPauliSigma-ID43",
 "PauliSigma[TemporalMomentum[p],D-1]", "TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
 {"fcstSharedObjectsBehaviorPauliSigma-ID44",
-"PauliSigma[TemporalMomentum[p]]", "TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"}
+"PauliSigma[TemporalMomentum[p]]", "TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
+{"fcstSharedObjectsBehaviorPauliSigma-ID45",
+"DataType[SoftScale, FCVariable] = True; \n PauliSigma[
+SoftScale*(qvabs*CartesianMomentum[qhat] -
+	qvabs*CartesianMomentum[kphat]*
+	CartesianPair[CartesianMomentum[kphat],
+	CartesianMomentum[qhat]] +
+			(qvabs*CartesianMomentum[kphat]*
+		CartesianPair[CartesianMomentum[kphat],
+		CartesianMomentum[qhat]]*m1)/m2)] // FCE", "SoftScale (qvabs CSIS[qhat] - qvabs CSIS[kphat] CSP[kphat, qhat] + (
+m1 qvabs CSIS[kphat] CSP[kphat, qhat])/m2)"}
 });
 
 

@@ -78,5 +78,11 @@ FCE -> True]",
 "GFAD[{{-Q2 SPD[p2, p4] + (1 - c) SPD[p2, Q] SPD[p4, Q], 1},
 1}] SFAD[{{p1, 0}, {0, 1}, 1}] SFAD[{{p2, 0}, {0, 1},
 1}] SFAD[{{p1 + p2, 0}, {0, 1}, 1}] SFAD[{{p3, 0}, {0, 1},
-1}] SFAD[{{p4, 0}, {0, 1}, 1}] SFAD[{{p1 + p4, 0}, {0, 1}, 1}]"}
+1}] SFAD[{{p4, 0}, {0, 1}, 1}] SFAD[{{p1 + p4, 0}, {0, 1}, 1}]"},
+{"fcstFCReplaceMomenta-ID9",
+"FCReplaceMomenta[
+CartesianPair[CartesianMomentum[kphat],
+CartesianMomentum[p2]], {p2 -> 1/2 P - Q},
+ExpandScalarProduct -> True,FCE->True]",
+"1/2 CSP[kphat, P] - CSP[kphat, Q]"}
 });

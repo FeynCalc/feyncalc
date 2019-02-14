@@ -1352,6 +1352,9 @@ DiracGamma[m_TemporalMomentum, _Symbol]:=
 DiracGamma[m_TemporalMomentum]:=
 	FeynCalc`Package`MetricT DiracGamma[ExplicitLorentzIndex[0]] TemporalPair[m, ExplicitLorentzIndex[0]];
 
+DiracGamma[x_ n_ /; DataType[n, FCVariable], dim_: 4] :=
+	n DiracGamma[x, dim];
+
 (* Explicit indices and gamma^5*)
 
 DiracGamma[x_?NumberQ, ___] :=
@@ -2326,6 +2329,9 @@ PauliSigma[m_TemporalMomentum]:=
 
 PauliSigma[ExplicitLorentzIndex[0]]=
 	1;
+
+PauliSigma[x_ n_ /; DataType[n, FCVariable], dim_: 3] :=
+	n PauliSigma[x, dim];
 
 TemporalPair[0,_] :=
 	0;
