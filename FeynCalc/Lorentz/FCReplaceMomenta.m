@@ -38,13 +38,15 @@ fcrmVerbose::usage="";
 
 Options[FCReplaceMomenta] = {
 	Dimensions -> All,
+	EpsEvaluate -> False,
+	ExpandScalarProduct -> False,
 	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
 	SelectFree -> {},
 	MomentumExpand -> True,
 	Variables -> {},
-	Head -> {DiracGamma,PauliSigma,Pair,FeynAmpDenominator}, (*All is also possible*)
+	Head -> {DiracGamma,PauliSigma,CartesianPair,TemporalPair,Pair,Eps,FeynAmpDenominator}, (*All is also possible*)
 	Replace->{Momentum,CartesianMomentum,TemporalMomentum},
 	Polarization -> False
 };
@@ -160,6 +162,14 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 			res = ex /. ruleMask /. finalRepRule /. Reverse /@ ruleMask,
 
 			res = ex /. finalRepRule
+		];
+
+		If [OptionValue[EpsEvaluate],
+			res = EpsEvaluate[res,FCI->True]
+		];
+
+		If [OptionValue[ExpandScalarProduct],
+			res = ExpandScalarProduct[res,FCI->True]
 		];
 
 		If[	OptionValue[FCE],
