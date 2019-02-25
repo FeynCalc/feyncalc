@@ -33,6 +33,8 @@ Begin["`Uncontract`Private`"]
 
 ucVerbose::usage="";
 dim::usage="";
+nPower::usage="";
+sPower::usage="";
 
 Options[Uncontract] = {
 	CartesianMomentum -> True,
@@ -246,6 +248,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "Uncontract: Uncontracting Pair objects.", FCDoControl->ucVerbose];
 			(* now all q's are marked with qMark *)
 			exp = powerExpand[exp, q, Pair, times];
+
+			If[	!FreeQ2[exp,{nPower,sPower}],
+				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
+				Abort[]
+			];
+
 			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _Pair, Infinity]//DeleteDuplicates//Sort;
 			Which[	pairs===All,
 						selectedObjects = allObjects,
@@ -276,6 +284,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[cpairs=!={},
 			FCPrint[1, "Uncontract: Uncontracting CartesianPair objects.", FCDoControl->ucVerbose];
 			exp = powerExpand[exp, q, CartesianPair, times];
+
+			If[	!FreeQ2[exp,{nPower,sPower}],
+				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
+				Abort[]
+			];
+
 			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _CartesianPair, Infinity]//DeleteDuplicates//Sort;
 			Which[	cpairs===All,
 						selectedObjects = allObjects,
@@ -306,6 +320,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[	!FreeQ[exp,DiracGamma] && OptionValue[DiracGamma],
 			FCPrint[1, "Uncontract: Uncontracting DiracGamma objects.", FCDoControl->ucVerbose];
 			exp = powerExpand[exp, q, DiracGamma, dotTimes] /. qRule;
+
+			If[	!FreeQ2[exp,{nPower,sPower}],
+				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
+				Abort[]
+			];
+
 			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _DiracGamma, Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
@@ -324,6 +344,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[	!FreeQ[exp,PauliSigma] && OptionValue[PauliSigma],
 			FCPrint[1, "Uncontract: Uncontracting PauliSigma objects.", FCDoControl->ucVerbose];
 			exp = powerExpand[exp, q, PauliSigma, dotTimes] /. qRule;
+
+			If[	!FreeQ2[exp,{nPower,sPower}],
+				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
+				Abort[]
+			];
+
 			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _PauliSigma, Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
@@ -343,6 +369,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "Uncontract: Uncontracting Eps objects.", FCDoControl->ucVerbose];
 			exp = EpsEvaluate[exp,FCI->True,Momentum->{q}];
 			exp = powerExpand[exp, q, Eps, times] /. qRule;
+
+			If[	!FreeQ2[exp,{nPower,sPower}],
+				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
+				Abort[]
+			];
+
 			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _Eps, Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
@@ -361,6 +393,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		If[	!FreeQ2[exp,tensorList]  && tensoruncontract,
 			FCPrint[1, "Uncontract: Uncontracting tensors: ", tensorList , FCDoControl->ucVerbose];
 			exp = Fold[powerExpand[#1, q, #2, times] &, exp, tensorList] /. qRule;
+
+			If[	!FreeQ2[exp,{nPower,sPower}],
+				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
+				Abort[]
+			];
+
 			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], alternativesTensorList , Infinity]//DeleteDuplicates//Sort;
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
@@ -392,8 +430,16 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 	]/; q=!=All;
 
 powerExpand[ex_, q_, head_, times_]:=
-	ex /. Power[Pattern[z,Blank[head]], n_Integer?Positive]/;!FreeQ[z,q] :>
-		Apply[times, Table[z, {Abs[n]}]]^Sign[n]/; !FreeQ[ex,Power];
+	(
+	ex /. {
+		Power[Pattern[z,Blank[head]], n_Integer?Positive]/;!FreeQ[z,q] :>
+			Apply[times, Table[z, {Abs[n]}]]^Sign[n],
+		Power[Pattern[z,Blank[head]], n_Integer?Negative]/;!FreeQ[z,q] :>
+			nPower[z,n],
+		Power[Pattern[z,Blank[head]], n_Symbol]/;!FreeQ[z,q] :>
+			sPower[z,n]
+	}
+	)/; !FreeQ[ex,Power];
 
 powerExpand[ex_, _, _, _]:=
 	ex/; FreeQ[ex,Power];
