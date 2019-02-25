@@ -96,7 +96,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			epsRules={}, digaRules={}, sigmaRules={}, pairRules={}, cpairRules={},
 			repRuleObjects = {}, res, uniqueHead, qRule,
 			tensorList, tensorRules = {},
-			alternativesTensorList, tensoruncontract, fctensor,qMark
+			alternativesTensorList, tensoruncontract, fctensor, qMark
 		},
 
 		If [OptionValue[FCVerbose]===False,
@@ -143,89 +143,89 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If[	momAllow,
 
-			pairRules = Join[pairRules, {Pair[Momentum[arg_,di_:4], Momentum[pe_, dim2_:4]]/;!FreeQ[arg,qMark] && FreeQ[pe,qMark] :>
-			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di]];
-			Pair[Momentum[arg, dimSelectLorentz[di]],li] Pair[li, Momentum[pe,dimSelectLorentz[dim2]] ]),
+			pairRules = Join[pairRules, {Pair[Momentum[g_,d_:4], Momentum[p_, e_:4]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
+			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+			Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li, Momentum[p,dimSelectLorentz[e]] ]),
 
-			Pair[Momentum[arg_,di_:4], Momentum[pe_, di_:4]]/;!FreeQ[arg,qMark] && !FreeQ[pe,qMark] :>
-			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di]];
-				li2 = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di]];
-				Pair[li, li2] Pair[Momentum[arg, dimSelectLorentz[di]],li] Pair[li2, Momentum[pe,dimSelectLorentz[di]]])
+			Pair[Momentum[g_,d_:4], Momentum[p_, d_:4]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
+			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+				li2 = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+				Pair[li, li2] Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li2, Momentum[p,dimSelectLorentz[d]]])
 
 			}];
 
 			epsRules = Join[epsRules,
-				{Eps[a___, Momentum[arg_,di_:4]  ,b___]/;!FreeQ[arg,qMark] :>
-				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di]];
-				Pair[Momentum[arg, dimSelectLorentz[di]],li]Eps[a,li,b])
+				{Eps[a___, Momentum[g_,d_:4]  ,b___]/;!FreeQ[g,qMark] :>
+				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+				Pair[Momentum[g, dimSelectLorentz[d]],li] Eps[a,li,b])
 			}];
 
 			digaRules = Join[digaRules,
-				{DiracGamma[Momentum[arg_,di_:4],di_:4]/;!FreeQ[arg,qMark] :>
-				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di]];
-				Pair[Momentum[arg, dimSelectLorentz[di]],li] DiracGamma[li,dimSelectLorentz[di]])
+				{DiracGamma[Momentum[g_,d_:4],d_:4]/;!FreeQ[g,qMark] :>
+				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+				Pair[Momentum[g, dimSelectLorentz[d]],li] DiracGamma[li,dimSelectLorentz[d]])
 			}];
 
 			sigmaRules = Join[sigmaRules,
-				{PauliSigma[Momentum[arg_,di1_:4],di2_:3]/;!FreeQ[arg,qMark] :>
-				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di1]];
-				Pair[Momentum[arg, dimSelectLorentz[di1]],li] PauliSigma[li,dimSelectCartesian[di2]])
+				{PauliSigma[Momentum[g_,d_:4],e_:3]/;!FreeQ[g,qMark] :>
+				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+				Pair[Momentum[g, dimSelectLorentz[d]],li] PauliSigma[li,dimSelectCartesian[e]])
 			}];
 
 			tensorRules = Join[tensorRules,
-				{(hd_/;MemberQ[tensorList,hd])[a___, Momentum[arg_,di_:4]  ,b___]/;!FreeQ[arg,qMark] :>
-				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[di]];
-				Pair[Momentum[arg, dimSelectLorentz[di]],li] hd[a,li,b])
+				{(h_/;MemberQ[tensorList,h])[a___, Momentum[g_,d_:4]  ,b___]/;!FreeQ[g,qMark] :>
+				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+				Pair[Momentum[g, dimSelectLorentz[d]],li] h[a,li,b])
 			}];
 
 		];
 
 		If[	cmomAllow,
 
-			pairRules = Join[pairRules, {Pair[CartesianMomentum[arg_,di_:3], LorentzIndex[pe_, dim2_:4]]/;!FreeQ[arg,qMark] :>
-			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] Pair[li, LorentzIndex[pe,dimSelectLorentz[dim2]] ])
+			pairRules = Join[pairRules, {Pair[CartesianMomentum[g_,d_:3], LorentzIndex[p_, e_:4]]/;!FreeQ[g,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+			CartesianPair[CartesianMomentum[g, dimSelectCartesian[d]],li] Pair[li, LorentzIndex[p,dimSelectLorentz[e]] ])
 			}];
 
 
-			cpairRules = Join[cpairRules, {CartesianPair[CartesianMomentum[arg_,di_:3], CartesianMomentum[pe_, di_:3]]/;!FreeQ[arg,qMark] && FreeQ[pe,qMark] :>
-			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] CartesianPair[li, CartesianMomentum[pe,dimSelectCartesian[di]] ]),
+			cpairRules = Join[cpairRules, {CartesianPair[CartesianMomentum[g_,d_:3], CartesianMomentum[p_, d_:3]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+			CartesianPair[CartesianMomentum[g, dimSelectCartesian[d]],li] CartesianPair[li, CartesianMomentum[p,dimSelectCartesian[d]] ]),
 
-			CartesianPair[CartesianMomentum[arg_,di_:3], CartesianMomentum[pe_, di_:3]]/;!FreeQ[arg,qMark] && !FreeQ[pe,qMark] :>
-			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-				li2 = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CartesianPair[li,li2] CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] CartesianPair[li2, CartesianMomentum[pe,dimSelectCartesian[di]] ])
+			CartesianPair[CartesianMomentum[g_,d_:3], CartesianMomentum[p_, d_:3]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+				li2 = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+			CartesianPair[li,li2] CartesianPair[CartesianMomentum[g, dimSelectCartesian[d]],li] CartesianPair[li2, CartesianMomentum[p,dimSelectCartesian[d]] ])
 			}];
 
-			epsRules = Join[epsRules,{Eps[a___, CartesianMomentum[arg_,di_:3]  ,b___]/;!FreeQ[arg,qMark] :>
-			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-				CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li]Eps[a,li,b])
+			epsRules = Join[epsRules,{Eps[a___, CartesianMomentum[g_,d_:3]  ,b___]/;!FreeQ[g,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+				CartesianPair[CartesianMomentum[g, dimSelectCartesian[d]],li]Eps[a,li,b])
 			}];
 
 			digaRules = Join[digaRules,
-				{DiracGamma[CartesianMomentum[arg_]]/;!FreeQ[arg,qMark] :>
+				{DiracGamma[CartesianMomentum[g_]]/;!FreeQ[g,qMark] :>
 				(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[3]];
-				CartesianPair[CartesianMomentum[arg, dimSelectCartesian[3]],li] DiracGamma[li,dimSelectLorentz[4]]),
+				CartesianPair[CartesianMomentum[g, dimSelectCartesian[3]],li] DiracGamma[li,dimSelectLorentz[4]]),
 
 
-				DiracGamma[CartesianMomentum[arg_,di_Symbol-1],di_Symbol]/;!FreeQ[arg,qMark] :>
-					(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di-1]];
-						CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di-1]],li] DiracGamma[li,dimSelectLorentz[di]]),
+				DiracGamma[CartesianMomentum[g_,d_Symbol-1],d_Symbol]/;!FreeQ[g,qMark] :>
+					(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d-1]];
+						CartesianPair[CartesianMomentum[g, dimSelectCartesian[d-1]],li] DiracGamma[li,dimSelectLorentz[d]]),
 
-				DiracGamma[CartesianMomentum[arg_,di_Symbol-4],di_Symbol-4]/;!FreeQ[arg,qMark] :>
-					(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di-4]];
-						CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di-4]],li] DiracGamma[li,dimSelectLorentz[di-4]])
+				DiracGamma[CartesianMomentum[g_,d_Symbol-4],d_Symbol-4]/;!FreeQ[g,qMark] :>
+					(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d-4]];
+						CartesianPair[CartesianMomentum[g, dimSelectCartesian[d-4]],li] DiracGamma[li,dimSelectLorentz[d-4]])
 			}];
 
-			sigmaRules = Join[sigmaRules, {PauliSigma[CartesianMomentum[arg_,di_:3],di_:3]/;!FreeQ[arg,qMark] :>
-			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-			CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li] PauliSigma[li, dimSelectCartesian[di]])
+			sigmaRules = Join[sigmaRules, {PauliSigma[CartesianMomentum[g_,d_:3],d_:3]/;!FreeQ[g,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+			CartesianPair[CartesianMomentum[g, dimSelectCartesian[d]],li] PauliSigma[li, dimSelectCartesian[d]])
 			}];
 
-			tensorRules = Join[tensorRules,{(hd_/;MemberQ[tensorList,hd])[a___, CartesianMomentum[arg_,di_:3]  ,b___]/;!FreeQ[arg,qMark] :>
-			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[di]];
-				CartesianPair[CartesianMomentum[arg, dimSelectCartesian[di]],li]hd[a,li,b])
+			tensorRules = Join[tensorRules,{(h_/;MemberQ[tensorList,h])[a___, CartesianMomentum[g_,d_:3]  ,b___]/;!FreeQ[g,qMark] :>
+			(	li = CartesianIndex[$AL[Unique[]],dimSelectCartesian[d]];
+				CartesianPair[CartesianMomentum[g, dimSelectCartesian[d]],li]h[a,li,b])
 			}];
 
 

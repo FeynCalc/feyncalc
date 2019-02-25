@@ -358,7 +358,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"Contract: Separating terms that contain Lorentz indices with a FreeIndex DataType", FCDoControl->cnVerbose];
 		freeIndList = Cases[res, _LorentzIndex, Infinity] // DeleteDuplicates // Sort //
-			Cases[#, LorentzIndex[ind_, ___] /; DataType[ind, FreeIndex] :> {ind, freeHead[ind]}, Infinity] & // DeleteDuplicates // Sort;
+			Cases[#, LorentzIndex[i_, ___] /; DataType[i, FreeIndex] :> {i, freeHead[i]}, Infinity] & // DeleteDuplicates // Sort;
 		If[	freeIndList=!={},
 			FCPrint[3, "Contract: List of indices that should not be summed over", freeIndList, FCDoControl->cnVerbose];
 			tmp/. Map[(Rule @@ #) &, freeIndList];
@@ -669,7 +669,7 @@ contractProduct[a_, b_Plus, opts:OptionsPattern[]] :=
 	];
 
 hasDummyIndices[expr_] :=
-	(Cases[expr, (LorentzIndex|CartesianIndex)[ind_, ___] :> ind, Infinity,Heads->True]//Tally//Transpose//Last//Max//Greater[#, 1]&) /;
+	(Cases[expr, (LorentzIndex|CartesianIndex)[i_, ___] :> i, Infinity,Heads->True]//Tally//Transpose//Last//Max//Greater[#, 1]&) /;
 	!FreeQ2[{expr}, {LorentzIndex,CartesianIndex}];
 
 hasDummyIndices[expr_] := False/;
@@ -849,13 +849,14 @@ pair2[LorentzIndex[a_, di1___], LorentzIndex[a_, di2___]] :=
 	fdi[di1, di2];
 
 pair2/: pair2[LorentzIndex[a_, dim1___], LorentzIndex[b_, dim2___]]^2 :=
-	fdi[dim1, dim2];
+	fdi[dim1, dim2]/; a=!=b;
 
-pair2/: pair2[LorentzIndex[a_,de1___], Momentum[b_, de2___]]^2 :=
+pair2/: pair2[LorentzIndex[_,de1___], Momentum[b_, de2___]]^2 :=
 	Pair[Momentum[b, fdi[de1,de2]], Momentum[b,fdi[de1,de2]]];
 
-pair2/: pair2[LorentzIndex[al_,di___], z_] pair2[LorentzIndex[al_,di2___],
-												w_] := pair2[z, w];
+pair2/: pair2[LorentzIndex[al_,___], z_] pair2[LorentzIndex[al_,___], w_] :=
+	pair2[z, w];
+
 (* ???????? BLOEDSINN; PairContract does it
 (*NEW*)
 	pair2/: pair2[LorentzIndex[al_,di___], z_] Twist2GluonOperator[ww__] :=
@@ -935,9 +936,9 @@ contit[xx_ , yy_, opts:OptionsPattern[]] :=
 					FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
 						Length[xx[[2]]], " term sum"];
 					(* that's the common situation !! *)
-					Apply[ Plus, Flatten[Table[ (xx[[1, ii]] xx[[2, jj]] yy) /.
-						Pair -> pairsave /. pair2  -> Pair, {ii,1,Length[xx[[1]]]},
-						{jj,1,Length[xx[[2]]]}]]],
+					Apply[ Plus, Flatten[Table[ (xx[[1, i]] xx[[2, j]] yy) /.
+						Pair -> pairsave /. pair2  -> Pair, {i,1,Length[xx[[1]]]},
+						{j,1,Length[xx[[2]]]}]]],
 					Contract[xx yy, FCI->True, opts]
 				]
 			]
@@ -977,13 +978,16 @@ ordq[expr_,inds_List] :=
 	];
 
 
-eps2rules = {Eps[LorentzIndex[a_,dia___], b_Momentum, c_Momentum, d_Momentum]^2 :>
+eps2rules = {Eps[LorentzIndex[_,dia___], b_Momentum, c_Momentum, d_Momentum]^2 :>
 				Eps[LorentzIndex[$MU[1], dia], b, c, d]^2,
-			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], c_Momentum, d_Momentum]^2 :>
+
+			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], c_Momentum, d_Momentum]^2/; a=!=b :>
 				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia], c, d]^2,
-			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], LorentzIndex[c_,dia___], d_Momentum]^2 :>
+
+			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], LorentzIndex[c_,dia___], d_Momentum]^2/; a=!=b && b=!=c :>
 				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia], LorentzIndex[$MU[3], dia], d]^2,
-			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], LorentzIndex[c_,dia___], LorentzIndex[d_,dia___]]^2 :>
+
+			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], LorentzIndex[c_,dia___], LorentzIndex[d_,dia___]]^2/; a=!=b && b=!=c && c=!=d  :>
 			Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia], LorentzIndex[$MU[3], dia], LorentzIndex[$MU[4], dia]]^2
 };
 
@@ -995,9 +999,9 @@ doubleindex[0] =
 
 doubleindex[x_] :=
 	Block[ {xy = x, suli = {}, muUU},
-		For[ijj = 1, ijj < 7, ijj ++,
-			If[ EvenQ[Length[Position[x, $MU[ijj]]]] && !FreeQ[x, $MU[ijj]],
-				AppendTo[suli, RuleDelayed @@ {$MU[ijj], muUU[ijj]}]
+		For[i = 1, i < 7, i ++,
+			If[ EvenQ[Length[Position[x, $MU[i]]]] && !FreeQ[x, $MU[i]],
+				AppendTo[suli, RuleDelayed @@ {$MU[i], muUU[i]}]
 			];
 		];
 		If[ Length[suli] > 0,

@@ -155,7 +155,7 @@ SetMandelstam[x_, pl_List, ml_List, OptionsPattern[]] :=
 
 		Do[
 			eqq = {sq2[psu] == 0};
-			eqq = Join[ eqq, Table[ sq2[pl[[ii]] +  pl[[n]]] - sq2[enm[ii] + pl[[n]]] ==0 , {ii, 2,n-3}]
+			eqq = Join[ eqq, Table[ sq2[pl[[l]] +  pl[[n]]] - sq2[enm[l] + pl[[n]]] ==0 , {l, 2,n-3}]
 								];
 			For[ j1 = 1, j1<n-2, j1++,
 				For[ j2 = j1 + 2, j2<n, j2++,

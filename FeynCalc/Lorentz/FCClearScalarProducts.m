@@ -36,24 +36,24 @@ ClearScalarProducts:=FCClearScalarProducts[];
 
 FCClearScalarProducts[OptionsPattern[]] :=
 	(
-		DownValues[Pair] = initialPairDownValues;
-		DownValues[CartesianPair] = initialCartesianPairDownValues;
-		DownValues[TemporalPair] = initialTemporalPairDownValues;
-		DownValues[ScalarProduct] = initialScalarProductDownValues;
-		UpValues[ScalarProduct] = initialScalarProductUpValues;
-		DownValues[CartesianScalarProduct] = initialCartesianScalarProductDownValues;
-		UpValues[CartesianScalarProduct] = initialCartesianScalarProductUpValues;
-		DownValues[SP] = initialSPDownValues;
-		DownValues[SPD] = initialSPDDownValues;
-		DownValues[SPE] = initialSPEDownValues;
-		DownValues[CSP] = initialCSPDownValues;
-		DownValues[CSPD] = initialCSPDDownValues;
-		DownValues[CSPE] = initialCSPEDownValues;
-		DownValues[TC] = initialTCDownValues;
-		DownValues[Momentum] = initialMomentumDownValues;
-		DownValues[TemporalMomentum] = initialTemporalMomentumDownValues;
-		DownValues[CartesianMomentum] = initialCartesianMomentumDownValues;
-		$ScalarProducts = initialScalarProducts;
+		DownValues[Pair] = FeynCalc`Package`initialPairDownValues;
+		DownValues[CartesianPair] = FeynCalc`Package`initialCartesianPairDownValues;
+		DownValues[TemporalPair] = FeynCalc`Package`initialTemporalPairDownValues;
+		DownValues[ScalarProduct] = FeynCalc`Package`initialScalarProductDownValues;
+		UpValues[ScalarProduct] = FeynCalc`Package`initialScalarProductUpValues;
+		DownValues[CartesianScalarProduct] = FeynCalc`Package`initialCartesianScalarProductDownValues;
+		UpValues[CartesianScalarProduct] = FeynCalc`Package`initialCartesianScalarProductUpValues;
+		DownValues[SP] = FeynCalc`Package`initialSPDownValues;
+		DownValues[SPD] = FeynCalc`Package`initialSPDDownValues;
+		DownValues[SPE] = FeynCalc`Package`initialSPEDownValues;
+		DownValues[CSP] = FeynCalc`Package`initialCSPDownValues;
+		DownValues[CSPD] = FeynCalc`Package`initialCSPDDownValues;
+		DownValues[CSPE] = FeynCalc`Package`initialCSPEDownValues;
+		DownValues[TC] = FeynCalc`Package`initialTCDownValues;
+		DownValues[Momentum] = FeynCalc`Package`initialMomentumDownValues;
+		DownValues[TemporalMomentum] = FeynCalc`Package`initialTemporalMomentumDownValues;
+		DownValues[CartesianMomentum] = FeynCalc`Package`initialCartesianMomentumDownValues;
+		$ScalarProducts = FeynCalc`Package`initialScalarProducts;
 	);
 
 FCPrint[1,"FCClearScalarProducts.m loaded"];

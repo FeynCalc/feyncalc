@@ -243,7 +243,7 @@ remIsolate[x_, {___Plus, abb_ /; Head[abb] =!= Plus, ___}] :=
 	];
 
 remIsolate[x_, abb_ /; Head[abb] =!= List] :=
-	Block[{re, h},
+	Block[{re, h, temp},
 		If[Length[(re = Select[DownValues @@ {abb}, (#[[2]]===x) &])] > 0,
 			re = re[[1,1]] /. {Literal :> HoldForm, HoldPattern :> HoldForm},
 			If[ Head[abb]===Symbol,

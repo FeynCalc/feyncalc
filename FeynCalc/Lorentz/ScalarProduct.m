@@ -135,7 +135,7 @@ ScalarProduct/:
 		];
 
 		spList = Flatten[Map[(Flatten[Outer[HoldPattern[sp[#1,#2,dummy[Dimension,slot]]]&,
-			Sequence@@tuples]]/.slot->Slot[1])&,dims]/.dummy->Rule]/.sp[xxx__,Dimension->4]->sp[xxx]/.sp->ScalarProduct;
+			Sequence@@tuples]]/.slot->Slot[1])&,dims]/.dummy->Rule]/.sp[j__,Dimension->4]->sp[j]/.sp->ScalarProduct;
 
 		pairList = Flatten[Map[(Flatten[Outer[hp[pair[Momentum[#1, slot], Momentum[#2, slot]]] &,
 			Sequence@@tuples]]/.slot->Slot[1])&,dims]] /. hp->HoldPattern;
@@ -154,7 +154,7 @@ ScalarProduct/:
 		(* Rules for removing previous DownValues *)
 		ruleClearSP = DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[HoldPattern[sp[#1, #2, Rule[Dimension, slot]]],
 			pair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
-			pair -> ScalarProduct /. dummy -> RuleDelayed /.sp[xxx__,Dimension->4]->sp[xxx]/.sp->ScalarProduct]];
+			pair -> ScalarProduct /. dummy -> RuleDelayed /.sp[j__,Dimension->4]->sp[j]/.sp->ScalarProduct]];
 
 		ruleClearPair =	DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[hp[pr[Momentum[#1, slot], Momentum[#2, slot]]],
 			pair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
@@ -271,7 +271,7 @@ CartesianScalarProduct/:
 		];
 
 		cspList = Flatten[Map[(Flatten[Outer[HoldPattern[csp[#1,#2,dummy[Dimension,slot]]]&,
-			Sequence@@tuples]]/.slot->Slot[1])&,dims]/.dummy->Rule]/.csp[xxx__,Dimension->3]:>csp[xxx]/.csp->CartesianScalarProduct;
+			Sequence@@tuples]]/.slot->Slot[1])&,dims]/.dummy->Rule]/.csp[j__,Dimension->3]:>csp[j]/.csp->CartesianScalarProduct;
 
 		cpairList = Flatten[Map[(Flatten[Outer[hp[cpair[CartesianMomentum[#1, slot], CartesianMomentum[#2, slot]]] &,
 			Sequence@@tuples]]/.slot->Slot[1])&,dims]] /. hp->HoldPattern;
@@ -293,7 +293,7 @@ CartesianScalarProduct/:
 		(* Rules for removing previous DownValues *)
 		ruleClearCSP = DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[HoldPattern[csp[#1, #2, Rule[Dimension, slot]]],
 			cpair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
-			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed /.csp[xxx__,Dimension->3]:>csp[xxx]/.csp->CartesianScalarProduct]];
+			cpair -> CartesianScalarProduct /. dummy -> RuleDelayed /.csp[j__,Dimension->3]:>csp[j]/.csp->CartesianScalarProduct]];
 
 		ruleClearCartesianPair =	DeleteDuplicates[Flatten[Map[(Flatten[Outer[dummy[hp[cpr[CartesianMomentum[#1, slot], CartesianMomentum[#2, slot]]],
 			cpair[#1, #2, Rule[Dimension, slot]]] &, Sequence@@tuples]] /. slot -> Slot[1]) &, dims] /.
