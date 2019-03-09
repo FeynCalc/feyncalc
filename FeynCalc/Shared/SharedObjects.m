@@ -643,7 +643,7 @@ This is concerns only typesetting in the TraditionalForm output and doesn't chan
 the physical behavior of those objects."
 
 TypesettingExplicitLorentzIndex::usage =
-"TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of
+"TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of \
 explicit Lorentz indices.."
 
 Zeta2::usage =
