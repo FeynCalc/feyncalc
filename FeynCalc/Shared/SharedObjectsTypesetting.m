@@ -429,58 +429,75 @@ DiracGamma /:
 		SuperscriptBox[RowBox[{gammaRep[4,4,"\[Gamma]"]}], TBox[a]];
 
 (* Fermionic chains with 3 arguments *)
-FermionicChain /:
-	MakeBoxes[ FermionicChain[a_,b_Spinor,(ind: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
-		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind[i]]];
 
+(* (UBar.X)_i or (VBar.X)_j *)
 FermionicChain /:
-	MakeBoxes[ FermionicChain[a_, (ind: DiracIndex | ExplicitDiracIndex)[i_], b_Spinor], TraditionalForm ]:=
-		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind[i]]];
-
-FermionicChain /:
-	MakeBoxes[ FermionicChain[a_,b_Spinor,c_Spinor], TraditionalForm ]:=
-		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
-
-FermionicChain /:
-	MakeBoxes[ FermionicChain[a_,(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
-		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i],ind2[j]]];
+	MakeBoxes[ FermionicChain[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar), ind : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 
 FCHN /:
-	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,b_Spinor,ind_/;Head[ind]=!=Spinor], TraditionalForm ]:=
+	MakeBoxes[ FCHN[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar),
+		ind_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind]]], TraditionalForm ]:=
 		ToBoxes[FermionicChain[a,b,DiracIndex[ind]], TraditionalForm];
 
-FCHN /:
-	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,ind_/;Head[ind]=!=Spinor,b_Spinor], TraditionalForm ]:=
-		ToBoxes[FermionicChain[a,DiracIndex[ind],b], TraditionalForm];
-FCHN /:
-	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,b_Spinor,c_Spinor], TraditionalForm ]:=
-		ToBoxes[FermionicChain[a,b,c], TraditionalForm];
+(* (X.U)_i or (X.V)_j *)
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_, ind : (_DiracIndex | _ExplicitDiracIndex), b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind]];
 
 FCHN /:
-	MakeBoxes[ FCHN[a_,ind1_/;Head[ind1]=!=Spinor, ind2_/;Head[ind2]=!=Spinor], TraditionalForm ]:=
+	MakeBoxes[ FCHN[a_, ind_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind]],
+		b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,DiracIndex[ind],b], TraditionalForm];
+
+(* UBar.X.U, UBar.X.V, VBar.X.U or VBar.X.V  *)
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_,b : (_Spinor | _SpinorUBar | _SpinorVBar), c : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar), c : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,b,c], TraditionalForm];
+
+(* X_ij  *)
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a_, ind1 : (_DiracIndex | _ExplicitDiracIndex), ind2 : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1,ind2]];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_,
+		ind1_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind1]],
+		ind2_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind2]]], TraditionalForm ]:=
 		ToBoxes[FermionicChain[a,DiracIndex[ind1],DiracIndex[ind2]], TraditionalForm];
 
 (* Fermionic chains with 2 arguments *)
 
+(* UBar_i or VBar_i *)
 FermionicChain /:
-	MakeBoxes[ FermionicChain[a_Spinor,(ind1: DiracIndex | ExplicitDiracIndex)[i_]], TraditionalForm ]:=
-		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1[i]]];
+	MakeBoxes[ FermionicChain[a : (_Spinor | _SpinorUBar | _SpinorVBar), ind : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
+FCHN /:
+	MakeBoxes[ FCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar),b_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[b]]], TraditionalForm ]:=
+		ToBoxes[FermionicChain[a,DiracIndex[b]], TraditionalForm];
 
+(* U_i or V_i *)
 FermionicChain /:
-	MakeBoxes[ FermionicChain[a_Spinor,b_Spinor], TraditionalForm ]:=
+	MakeBoxes[ FermionicChain[ind : (_DiracIndex | _ExplicitDiracIndex), a : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
+
+FCHN /:
+	MakeBoxes[ FCHN[a_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[a]], b_], TraditionalForm ]:=
+		ToBoxes[FermionicChain[DiracIndex[a],b], TraditionalForm];
+
+(* UBar.U, UBar.V, VBar.U or VBar.V  *)
+FermionicChain /:
+	MakeBoxes[ FermionicChain[a : (_Spinor | _SpinorUBar | _SpinorVBar),b: (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
 		RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}];
 
 FCHN /:
-	MakeBoxes[ FCHN[a_Spinor,b_/;Head[b]=!=Spinor], TraditionalForm ]:=
-		ToBoxes[FermionicChain[a,DiracIndex[b]], TraditionalForm];
-
-FCHN /:
-	MakeBoxes[ FCHN[a_/;Head[a]=!=Spinor,b_], TraditionalForm ]:=
-		ToBoxes[FermionicChain[DiracIndnex[a],b], TraditionalForm];
-
-FCHN /:
-	MakeBoxes[ FCHN[a_Spinor,b_Spinor], TraditionalForm ]:=
+	MakeBoxes[ FCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
 		ToBoxes[FermionicChain[a,b], TraditionalForm];
+
 
 DiracGammaT /:
 	MakeBoxes[DiracGammaT[a_,dim_:4], TraditionalForm]:=

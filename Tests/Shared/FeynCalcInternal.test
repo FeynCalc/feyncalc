@@ -293,6 +293,8 @@ DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 DiracIndex[i], DiracIndex[i]]"},
 {"fcstFeynCalcInternal-ID112", "FCHN[Spinor[Momentum[p],m],i]//FCI",
 	"FermionicChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
+{"fcstFeynCalcInternal-ID112.1", "FCHN[i, Spinor[Momentum[p],m]]//FCI",
+	"FermionicChain[DiracIndex[i], Spinor[Momentum[p], m, 1]]"},
 {"fcstFeynCalcInternal-ID113",
 "FCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]//FCI",
 "FermionicChain[DiracGamma[LorentzIndex[mu]] . \
@@ -1961,6 +1963,8 @@ DiracIndex[i], DiracIndex[i]]"},
 {"fcstFeynCalcInternalDouble-ID112",
 "FCHN[Spinor[Momentum[p],m],i]//FCI//FCI",
 "FermionicChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
+{"fcstFeynCalcInternalDouble-ID112.1", "FCHN[i, Spinor[Momentum[p],m]]//FCI//FCI",
+	"FermionicChain[DiracIndex[i], Spinor[Momentum[p], m, 1]]"},
 {"fcstFeynCalcInternalDouble-ID113",
 "FCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]//FCI//FCI",
 "FermionicChain[DiracGamma[LorentzIndex[mu]] . \
@@ -3767,6 +3771,8 @@ DiracIndex[i], DiracIndex[i]]"},
 "FermionicChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], Spinor[Momentum[p], m, 1], \
 DiracIndex[j]]"},
+{"fcstFeynCalcInternalTriple-ID112.1", "FCHN[i, Spinor[Momentum[p],m]]//FCI//FCE//FCI",
+	"FermionicChain[DiracIndex[i], Spinor[Momentum[p], m, 1]]"},
 {"fcstFeynCalcInternalTriple-ID113",
 "FCHN[GA[mu].GSD[p],i,Spinor[Momentum[p],m]]//FCI//FCE//FCI",
 "FermionicChain[DiracGamma[LorentzIndex[mu]] . \

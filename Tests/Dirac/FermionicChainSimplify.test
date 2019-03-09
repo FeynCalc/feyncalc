@@ -29,20 +29,20 @@ Spinor[Momentum[p2],m1,1]],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . GA[i] . Spinor[Momentum[p2], m1, \
 1]"},
 {"fcstFermionicChainSimplify-ID5",
-"FermionicChainSimplify[FCHN[Spinor[Momentum[p1],m1,1],i]FCHN[\
-Spinor[Momentum[p2],m1,1],j]DIDelta[i,j],FCE\[Rule]True]",
+"FermionicChainSimplify[FCHN[Spinor[Momentum[p1],m1,1],i]FCHN[j,
+Spinor[Momentum[p2],m1,1]]DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m1, 1]"},
 {"fcstFermionicChainSimplify-ID6",
-"FermionicChainSimplify[FCHN[Spinor[Momentum[p1],m1,1],i]FCHN[\
-Spinor[Momentum[p2],m1,1],i],FCE\[Rule]True]",
+"FermionicChainSimplify[FCHN[Spinor[Momentum[p1],m1,1],i]FCHN[i,
+Spinor[Momentum[p2],m1,1]],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m1, 1]"},
 {"fcstFermionicChainSimplify-ID7",
-"FermionicChainSimplify[FCHN[Spinor[Momentum[p1],m1,1],i]FCHN[GS[p]\
+"FermionicChainSimplify[FCHN[i,Spinor[Momentum[p1],m1,1]]FCHN[GS[p]\
 +m,Spinor[Momentum[p2],m1,1],j]DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p2], m1, 1] . (m + GS[p]) . Spinor[Momentum[p1], \
 m1, 1]"},
 {"fcstFermionicChainSimplify-ID8",
-"FermionicChainSimplify[FCHN[Spinor[Momentum[p1],m1,1],i]FCHN[GS[p]\
+"FermionicChainSimplify[FCHN[i,Spinor[Momentum[p1],m1,1]]FCHN[GS[p]\
 +m,Spinor[Momentum[p2],m1,1],i],FCE\[Rule]True]",
 "Spinor[Momentum[p2], m1, 1] . (m + GS[p]) . Spinor[Momentum[p1], \
 m1, 1]"},

@@ -136,11 +136,11 @@ FermionicChainSimplify[expr_, OptionsPattern[]] :=
 
 ];
 
-fermionicChainEval[rest_. FermionicChain[spinor_,i_DiracIndex] FermionicChain[chain_, i_DiracIndex, j_]]:=
+fermionicChainEval[rest_. FermionicChain[spinor_, i_DiracIndex] FermionicChain[chain_, i_DiracIndex, j_]]:=
 	fermionicChainEval[rest FermionicChain[chain,spinor,j]];
 
-fermionicChainEval[rest_. FermionicChain[spinor_,i_DiracIndex] FermionicChain[chain_, j_, i_DiracIndex]]:=
-	fermionicChainEval[rest FermionicChain[chain,j,spinor]];
+fermionicChainEval[rest_. FermionicChain[chain_, i_, j_DiracIndex] FermionicChain[j_DiracIndex, spinor_]]:=
+	fermionicChainEval[rest FermionicChain[chain,i,spinor]];
 
 fermionicChainEval[rest_. FermionicChain[1, spinor1_Spinor, spinor2_Spinor]]:=
 	holdDOT[spinor1,spinor2] fermionicChainEval[rest];
@@ -148,7 +148,7 @@ fermionicChainEval[rest_. FermionicChain[1, spinor1_Spinor, spinor2_Spinor]]:=
 fermionicChainEval[rest_. FermionicChain[chain_/;chain=!=1, spinor1_Spinor, spinor2_Spinor]]:=
 	holdDOT[spinor1,chain,spinor2] fermionicChainEval[rest];
 
-fermionicChainEval[rest_. FermionicChain[spinor1_, i_DiracIndex] FermionicChain[spinor2_, i_DiracIndex]]:=
+fermionicChainEval[rest_. FermionicChain[spinor1_, i_DiracIndex] FermionicChain[i_DiracIndex, spinor2_]]:=
 	holdDOT[spinor1,spinor2] fermionicChainEval[rest];
 
 fermionicChainEval[rest_. FermionicChain[chain_,i_DiracIndex,i_DiracIndex]]:=
@@ -163,8 +163,8 @@ fermionicChainEval[rest_. FermionicChain[chain1_,a_,i_DiracIndex] FermionicChain
 fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex,i_DiracIndex]]:=
 	optTraceOfOne fermionicChainEval[rest];
 
-fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex,j_DiracIndex]^2]:=
-	optTraceOfOne fermionicChainEval[rest];
+fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex, j_DiracIndex]^2]:=
+	optTraceOfOne fermionicChainEval[rest]/; i=!=j;
 
 
 FCPrint[1,"FermionicChainSimplify.m loaded"];

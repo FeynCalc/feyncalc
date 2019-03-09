@@ -289,11 +289,25 @@ dirIndex[a_Spinor]:=
 dirIndex[a_]/;Head[a]=!=Spinor:=
 	DiracIndex[a/.DiracIndex->Identity];
 
-fchn[a_,b_]:=
+fchn[a: (_Spinor | _SpinorUBar | _SpinorVBar),b_]:=
 	(
 	fchntmp=FCI[{a,b}];
 	FermionicChain[fchntmp[[1]],dirIndex[fchntmp[[2]]]]
+	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[b]];
+
+
+fchn[a_,b : (_Spinor | _SpinorU | _SpinorV)]:=
+	(
+	fchntmp=FCI[{a,b}];
+	FermionicChain[dirIndex[fchntmp[[1]]],fchntmp[[2]]]
+	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[a]];
+
+fchn[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)]:=
+	(
+	fchntmp=FCI[{a,b}];
+	FermionicChain[fchntmp[[1]],fchntmp[[2]]]
 	);
+
 
 fchn[a_,b_,c_]:=
 	(
