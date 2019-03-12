@@ -98,37 +98,12 @@ FCE -> True]",
 
 
 {"fcstDiracSimplify-ID29",
-"DiracSimplify[1/(2 (ieps + SP[q, q]))
-SpinorUBar[p - q,
-m1].(-(1/2)
-I kappa (1/4 ((FV[p, b] + FV[p - q, b]) GA[a] + (FV[p, a] + FV[p - q, a]) GA[b]) -
-1/2 (-m1 + 1/2 (GS[p] + GS[p - q])) MT[a, b])).SpinorU[p,
-m1] SpinorUBar[p + q, m2].(-(1/2) I kappa (1/4 ((FV[p, d] + FV[p + q, d]) GA[
-c] + (FV[p, c] + FV[p + q, c]) GA[d]) -
-1/2 (-m2 + 1/2 (GS[p] + GS[p + q])) MT[c, d])).SpinorU[p,
-m2] (MT[a, d] MT[b, c] + MT[a, c] MT[b, d] -
-MT[a, b] MT[c, d])] // Contract //
-FCCanonicalizeDummyIndices[#,
-	LorentzIndexNames -> {mu, nu}] & // FCE",
-"(kappa^2 m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2,
-	1] Spinor[Momentum[p - q], m1, 1].GS[p].Spinor[Momentum[p], m1,
-	1])/(8 (ieps + SP[q, q])) + (
-kappa^2 m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2,
-	1] Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
-	1])/(16 (ieps + SP[q, q])) - (
-kappa^2 Spinor[Momentum[p - q], m1, 1].GS[p].Spinor[Momentum[p], m1,
-	1] Spinor[Momentum[p + q], m2, 1].GS[p].Spinor[Momentum[p], m2,
-	1])/(8 (ieps + SP[q, q])) - (
-kappa^2 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
-	1] Spinor[Momentum[p + q], m2, 1].GS[p].Spinor[Momentum[p], m2,
-	1])/(8 (ieps + SP[q, q])) - (
-kappa^2 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
-	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
-	1])/(32 (ieps + SP[q, q])) +
-Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
-	1] Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
-	1] (-((kappa^2 SP[p, p])/(8 (ieps + SP[q, q]))) + (
-	kappa^2 SP[q, q])/(32 (ieps + SP[q, q])))"},
+"(I GA[al].GA[5] LC[\[Mu], \[Nu], \[Rho], al] +
+GA[\[Rho]] MT[\[Mu], \[Nu]] - GA[\[Nu]] MT[\[Mu], \[Rho]] +
+GA[\[Mu]] MT[\[Nu], \[Rho]]).(I GA[be].GA[
+	5] LC[\[Mu], \[Nu], \[Rho], be] + GA[\[Rho]] MT[\[Mu], \[Nu]] -
+GA[\[Nu]] MT[\[Mu], \[Rho]] + GA[\[Mu]] MT[\[Nu], \[Rho]])//DiracSimplify",
+"16"},
 {"fcstDiracSimplify-ID30",
 "DiracSimplify[(GA[nu].GS[p] + GS[p].GA[nu] - 2 FV[p, nu]),DiracCanonical -> True]",
 "0"},

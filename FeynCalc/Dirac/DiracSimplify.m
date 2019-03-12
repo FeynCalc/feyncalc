@@ -323,21 +323,28 @@ diracSimplifyEval[expr_]:=
 		FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose];
 
 		(*	Expansion of Dirac slashes	*)
-		If[	optDiracGammaExpand,
+		If[	optDiracGammaExpand && !FreeQ[tmp, DiracGamma],
 			tmp = DiracGammaExpand[tmp,FCI->True];
 		];
 
 
+		If[	optExpanding && !FreeQ[tmp, DiracGamma],
+				time2=AbsoluteTime[];
+				FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
+				tmp = DotSimplify[tmp, FCI->True, Expanding -> True, FCJoinDOTs->False];
+				FCPrint[1,"DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+				FCPrint[3,"DiracSimplify: diracSimplifyEval: After Dotsimplify: ", tmp, FCDoControl->dsVerbose];
+		];
 
-		time=AbsoluteTime[];
-		If[ !FreeQ[tmp, DiracGamma] && optExpanding,
-			(*	If the output of DiracTrick still contains Dirac matrices, apply DotSimplify and use DiracTrick again	*)
-			time2=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
-			tmp = DotSimplify[tmp, FCI->True, Expanding -> True, FCJoinDOTs->False];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
-			FCPrint[3,"DiracSimplify: diracSimplifyEval: After Dotsimplify: ", tmp, FCDoControl->dsVerbose];
+		If[ !FreeQ[tmp, DiracGamma],
 
+			If[	optContract=!=False && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
+				time2=AbsoluteTime[];
+				FCPrint[1, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
+				tmp = Contract[tmp, Expanding->True, EpsContract-> optEpsContract, Factoring->False];
+				FCPrint[1, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+				FCPrint[3, "DiracSimplify: diracSimplifyEval: After Contract: ", tmp, FCDoControl->dsVerbose]
+			];
 
 			time2=AbsoluteTime[];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
