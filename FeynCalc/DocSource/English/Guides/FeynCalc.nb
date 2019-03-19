@@ -260,16 +260,6 @@ Cell[TextData[{
  CellID->1686448459],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["DiracGammaT",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracGammaT"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " tranpose of a Dirac matrix"
-}], "GuideText",
- CellID->264840152],
-
-Cell[TextData[{
  Cell[TextData[ButtonBox["DiracSigma",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracSigma"]], "InlineFunctionSans"],
@@ -786,7 +776,7 @@ Cell[TextData[{
   SubscriptBox["\[Zeta]", "2"]], "InlineFormula"]
 }], "GuideText",
  CellID->1924638314]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1156,7 +1146,7 @@ Cell[TextData[{
  " different summations"
 }], "GuideText",
  CellID->869117662]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1541,7 +1531,7 @@ Cell[TextData[{
  " according to the Larin scheme"
 }], "GuideText",
  CellID->1707494307]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1674,7 +1664,7 @@ Cell[TextData[{
  " undeclares non-commutative objects"
 }], "GuideText",
  CellID->1309406098]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1736,7 +1726,7 @@ Cell[TextData[{
  " computes traces over SU(N) matrices"
 }], "GuideText",
  CellID->1561361899]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2483,7 +2473,7 @@ Cell[TextData[{
 specified output file"
 }], "GuideText",
  CellID->390527761]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2811,7 +2801,7 @@ Cell[TextData[{
  " some SM vertices"
 }], "GuideText",
  CellID->1716995820]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2992,7 +2982,7 @@ Cell[TextData[{
  " database of splitting functiosn"
 }], "GuideText",
  CellID->2052229439]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3039,7 +3029,7 @@ WindowMargins->{{Automatic, 163}, {0, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
   CharacterEncoding -> "UTF-8"],
 PrivateNotebookOptions -> {"TrackCellChangeTimes" -> False}

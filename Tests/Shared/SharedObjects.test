@@ -22,7 +22,6 @@ Tests`Shared`fcstSharedObjectsOwnValues =  {
 {"fcstSharedObjectsOwnValues-ID6", "OwnValues[DeltaFunctionDoublePrime]", "{}"},
 {"fcstSharedObjectsOwnValues-ID7", "OwnValues[DeltaFunctionPrime]", "{}"},
 {"fcstSharedObjectsOwnValues-ID8", "OwnValues[DiracGamma]", "{}"},
-{"fcstSharedObjectsOwnValues-ID9", "OwnValues[DiracGammaT]", "{}"},
 {"fcstSharedObjectsOwnValues-ID10", "OwnValues[DiracMatrix]", "{}"},
 {"fcstSharedObjectsOwnValues-ID11", "OwnValues[DiracSigma]", "{}"},
 {"fcstSharedObjectsOwnValues-ID12", "OwnValues[DiracSlash]", "{}"},
@@ -157,10 +156,7 @@ Tests`Shared`fcstSharedObjectsUpValues = {
 {"fcstSharedObjectsUpValues-ID5", "UpValues[DeltaFunction]", "{}"},
 {"fcstSharedObjectsUpValues-ID6", "UpValues[DeltaFunctionDoublePrime]", "{}"},
 {"fcstSharedObjectsUpValues-ID7", "UpValues[DeltaFunctionPrime]", "{}"},
-{"fcstSharedObjectsUpValues-ID8", "UpValues[DiracGamma]", "{HoldPattern[Transpose[DiracGamma[FeynCalc`SharedObjects`Private`a__\
-]]] :> \n\n \n   DiracGammaT[FeynCalc`SharedObjects`Private`a]}"},
-{"fcstSharedObjectsUpValues-ID9", "UpValues[DiracGammaT]", "{HoldPattern[Transpose[DiracGammaT[FeynCalc`SharedObjects`Private`a__]]] :> \n\n \n   \
-DiracGamma[FeynCalc`SharedObjects`Private`a]}"},
+{"fcstSharedObjectsUpValues-ID8", "UpValues[DiracGamma]", "{}"},
 {"fcstSharedObjectsUpValues-ID10", "UpValues[DiracMatrix]", "{}"},
 {"fcstSharedObjectsUpValues-ID11", "UpValues[DiracSigma]", "{}"},
 {"fcstSharedObjectsUpValues-ID12", "UpValues[DiracSlash]", "{}"},
@@ -425,10 +421,6 @@ Tests`Shared`fcstSharedObjectsBehaviorDiracGamma =
 "DiracGamma[6]"},
 {"fcstSharedObjectsBehaviorDiracGamma-ID47", "DiracGamma[7]",
 "DiracGamma[7]"},
-{"fcstSharedObjectsBehaviorDiracGamma-ID48",
-"Transpose[DiracGamma[x]]", "DiracGammaT[x]"},
-{"fcstSharedObjectsBehaviorDiracGamma-ID49",
-"Transpose[DiracGammaT[x]]", "DiracGamma[x]"},
 {"fcstSharedObjectsBehaviorDiracGamma-ID50",
 "DataType[SoftScale, FCVariable] = True; \n DiracGamma[
 SoftScale*(qvabs*CartesianMomentum[qhat] -

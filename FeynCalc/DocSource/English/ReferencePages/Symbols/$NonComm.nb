@@ -117,8 +117,7 @@ Cell["$NonComm", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["$NonComm"], "InlineFormula"],
- " \[LineSeparator]",
- "contains a list of all non-commutative heads present."
+ " \[LineSeparator]contains a list of all noncommutative heads present."
 }], "Usage",
  CellID->982511436],
 
@@ -213,24 +212,26 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
-   "ChiralityProjector", ",", "DiracGamma", ",", "DiracGammaT", ",", 
-    "DiracMatrix", ",", "DiracSigma", ",", "DiracSlash", ",", "DiracSpinor", 
-    ",", "GA", ",", 
+   "ChiralityProjector", ",", "DiracGamma", ",", "DiracMatrix", ",", 
+    "DiracSigma", ",", "DiracSlash", ",", "Spinor", ",", "GA", ",", 
     SuperscriptBox[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["5",
       TraditionalForm]], ",", "GAD", ",", "GAE", ",", "GS", ",", "GSD", ",", 
     "GSE", ",", "LeftPartialD", ",", "LeftRightPartialD", ",", 
-    "LeftRightPartialD2", ",", "FCPartialD", ",", "PauliSigma", ",", 
+    "LeftRightPartialD2", ",", "FCPartialD", ",", "OPESum", ",", 
     "QuantumField", ",", "RightPartialD", ",", "Spinor", ",", "SpinorU", ",", 
-    "SpinorUBar", ",", "SpinorV", ",", "SpinorVBar", ",", "SUNT", ",", "C", 
-    ",", "CovariantD", ",", "OPESum", ",", "FieldStrength", ",", 
-    "QuarkGluonVertex", ",", "QuarkPropagator", ",", "Twist2AlienOperator", 
-    ",", "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
+    "SpinorUBar", ",", "SpinorV", ",", "SpinorVBar", ",", "SUNT", ",", 
+    "PauliSigma", ",", "PauliXi", ",", "PauliEta", ",", "TGA", ",", "CGA", 
+    ",", "CGAD", ",", "CGAE", ",", "CGS", ",", "CGSD", ",", "CGSE", ",", "SI",
+     ",", "SID", ",", "SIE", ",", "CSI", ",", "CSID", ",", "CSIE", ",", 
+    "FeynCalc`Package`dotsimpHold", ",", "FCChargeConjugateTransposed", ",", 
+    "C", ",", "CovariantD", ",", "FieldStrength", ",", "QuarkGluonVertex", 
+    ",", "QuarkPropagator", ",", "Twist2AlienOperator", ",", 
+    "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"$NonComm",
- CellLabel->"Out[1]=",
- CellID->1539262372]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -301,7 +302,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

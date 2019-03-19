@@ -3582,7 +3582,6 @@ UDotExpand[expr_] :=
 		$UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
 					DiracBasis,
 					DiracGamma,
-					DiracGammaT,
 					DiracMatrix,
 					DiracSlash,
 					DiracSigma,
@@ -6304,7 +6303,6 @@ CommutatorReduce[expr_, op___?OptionQ] :=
 			$UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
 						DiracBasis,
 						DiracGamma,
-						DiracGammaT,
 						DiracMatrix,
 						DiracSlash,
 						DiracSigma, FST}];

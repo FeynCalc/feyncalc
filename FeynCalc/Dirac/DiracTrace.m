@@ -89,9 +89,6 @@ DiracTrace /:
 DiracTrace[0, OptionsPattern[]] :=
 	0;
 
-DiracTrace[a_ /; (FreeQ[a, DiracGamma] && !FreeQ[a, DiracGammaT]), b:OptionsPattern[]] :=
-	DiracTrace[(a//Transpose)//Reverse, b];
-
 DiracTrace[a:Except[_HoldAll]..., x_,y_, z___] :=
 	DiracTrace[a,x.y,z]/;FCPatternFreeQ[{x,y},{Rule}];
 
@@ -117,27 +114,6 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 			ex = expr,
 			ex = FCI[expr]
 		];
-		(*
-		time=AbsoluteTime[];
-		FCPrint[1, "DiracTrace. Checking the syntax.", FCDoControl->diTrVerbose];
-		If [ !FreeQ2[ex,
-			{
-			(*Times instead of DOT between two Dirac or SU(N) matrices*)
-			(DiracGamma | DiracGammaT)[a__]*(DiracGamma | DiracGammaT)[b__],
-			SUNT[a__]*SUNT[b__],
-			(*Two DOT objects multiplied with each other via Times, unless those are closed spinor chains*)
-			DOT[a:Except[_Spinor]...,(DiracGamma | DiracGammaT )[b__],c:Except[_Spinor]...]*
-			DOT[d:Except[_Spinor]...,(DiracGamma | DiracGammaT)[e__],f:Except[_Spinor]...],
-			(*Open spinor chains*)
-			DOT[a_Spinor,b:Except[_Spinor]...],
-			(*DOT object multiplied by a Dirac or SU(N) matrix via Times*)
-			DOT[a:Except[_Spinor]...,(DiracGamma | DiracGammaT)[b__],c:Except[_Spinor]...]*
-			(DiracGamma | DiracGammaT)[d__]}],
-			Message[DiracTrace::noncom, InputForm[ex]];
-			Abort[]
-		];
-		FCPrint[1,"DiracTrace: Syntax check done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
-		*)
 
 		(* Doing contractions can often simplify the underlying expression *)
 		time=AbsoluteTime[];
@@ -226,7 +202,7 @@ diracTraceEvaluate[alreadyDone[expr_],OptionsPattern[]] :=
 diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 	Block[ { diractrres, tmp = expr, diractrfact,
 		diractrcoll, schoutenopt,
-		dtmp,dWrap,dtWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
+		dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
 		gammaFree,gammaPart,
 		traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ},
 
@@ -287,8 +263,8 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: DiracTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: After DiracTrick: ", tmp, FCDoControl->diTrVerbose];
 
-			tmp = tmp /.  {DiracGamma -> dWrap,DiracGammaT -> dtWrap} /. DOT -> prepSpur;
-			tmp = tmp /. prepSpur[zzz__] :> spurHead@@({zzz} /. {dWrap -> DiracGamma,dtWrap->DiracGammaT});
+			tmp = tmp /.  {DiracGamma -> dWrap} /. DOT -> prepSpur;
+			tmp = tmp /. prepSpur[zzz__] :> spurHead@@({zzz} /. {dWrap -> DiracGamma});
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Wrapped in spurHead: ",tmp, FCDoControl->diTrVerbose];
 
 

@@ -86,12 +86,6 @@ Use DiracMatrix (or GA, GAD) and DiracSlash (or GS, GSD) \
 for manual (short) input. \
 DiraGamma[x, 4] simplifies to DiracGamma[x].";
 
-DiracGammaT::usage =
-"DiracGammaT[x] denotes the transpose of DiracGamma. \
-Transpose[DiracGammaT[x]] gives DiracGamma[x]. \
-Note that x must have Head LorentzIndex or Momentum.";
-(* :Comments: still experimental !!!  check SUSY-calculations *)
-
 DiracIndex::usage =
 "DiracIndex is the head of Dirac indices. \
 The internal representation of a four-dimensional \
@@ -936,7 +930,6 @@ Begin["`SharedObjects`Private`"]
 
 DeclareNonCommutative[ChiralityProjector];
 DeclareNonCommutative[DiracGamma];
-DeclareNonCommutative[DiracGammaT];
 DeclareNonCommutative[DiracMatrix];
 DeclareNonCommutative[DiracSigma];
 DeclareNonCommutative[DiracSlash];
@@ -1058,7 +1051,7 @@ Options[Polarization] = {Transversality -> False};
 
 (* 	TODO Explicit syntax checks in the definitions of core objects are too expensive :(
 	Instead we should use a syntax checker function that will be applied to the given expression *)
-DiracHeadsList = {DiracGamma,DiracGammaT,Spinor,DiracSigma,FermionicChain, DiracIndexDelta};
+DiracHeadsList = {DiracGamma,Spinor,DiracSigma,FermionicChain, DiracIndexDelta};
 
 PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
 
@@ -1400,13 +1393,6 @@ DiracIndex[i_Integer] :=
 	ExplicitDiracIndex[i];
 
 (* ------------------------------------------------------------------------ *)
-
-DiracGammaT /:
-	Transpose[DiracGammaT[a__]]:= DiracGamma[a];
-
-DiracGamma /:
-	Transpose[DiracGamma[a__]]:= DiracGammaT[a];
-
 
 DiracMatrix[(a:5|6|7), opts:OptionsPattern[]] :=
 	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[a],ToString[opts]]]]/;

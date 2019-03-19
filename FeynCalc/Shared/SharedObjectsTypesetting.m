@@ -498,11 +498,6 @@ FCHN /:
 	MakeBoxes[ FCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
 		ToBoxes[FermionicChain[a,b], TraditionalForm];
 
-
-DiracGammaT /:
-	MakeBoxes[DiracGammaT[a_,dim_:4], TraditionalForm]:=
-		SuperscriptBox[RowBox[{"(",ToBoxes[DiracGamma[a,dim],TraditionalForm],")"}],"T"];
-
 DiracIndex /:
 	MakeBoxes[DiracIndex[p_], TraditionalForm]:=
 		ToBoxes[p, TraditionalForm];

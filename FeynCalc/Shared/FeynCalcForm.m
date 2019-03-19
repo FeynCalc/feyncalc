@@ -242,8 +242,6 @@ feynCalcForm[x_,opt___Rule]:=
 					DiracGamma[Momentum[v_,di_],di_] :>
 						DiracSlash[v, Dimension -> 4]
 				} /.
-				DiracGammaT[aa_,___]:>
-					"gat"[aa] /.
 				{
 					DiracGamma[5] :> "ga[5]",
 					DiracGamma[6] :> "ga[6]",
