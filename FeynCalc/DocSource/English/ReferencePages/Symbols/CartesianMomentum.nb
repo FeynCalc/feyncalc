@@ -1,0 +1,903 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22557,        894]
+NotebookOptionsPosition[     13800,        575]
+NotebookOutlinePosition[     16570,        673]
+CellTagsIndexPosition[     16464,        667]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.3", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/CartesianMomentum", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["CartesianMomentum", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"CartesianMomentum", "[", "p", "]"}]], "InlineFormula"],
+ " \[LineSeparator]is the head of a three momentum (p). The internal \
+representation of a three-dimensional p is CartesianMomentum[p]. For other \
+than three dimensions: CartesianMomentum[p, Dimension]. CartesianMomentum[p, \
+3] simplifies to CartesianMomentum[p]."
+}], "Usage",
+ CellChangeTimes->{{3.761970931347333*^9, 3.761970943000486*^9}},
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell["This is a 3-dimensional momentum.", "Text",
+ CellChangeTimes->{{3.761971889267115*^9, 3.761971889340907*^9}},
+ CellTags->"Momentum",
+ CellID->44749889],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CartesianMomentum", "[", "p", "]"}]], "Input",
+ CellChangeTimes->{{3.761971890603612*^9, 3.761971892043648*^9}},
+ CellTags->"Momentum",
+ CellLabel->"In[37]:=",
+ CellID->600679238],
+
+Cell[BoxData[
+ FormBox[
+  OverscriptBox[
+   FormBox[
+    StyleBox["p",
+     StripOnInput->False,
+     FontWeight->Bold],
+    TraditionalForm], "_"], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761971892689356*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[37]=",
+ CellID->1847189121]
+}, Open  ]],
+
+Cell["\<\
+As an optional second argument the dimension must be specified if it is \
+different from 3.\
+\>", "Text",
+ CellChangeTimes->{{3.761971895402487*^9, 3.761971895538682*^9}},
+ CellTags->"Momentum",
+ CellID->799788808],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CartesianMomentum", "[", 
+  RowBox[{"p", ",", 
+   RowBox[{"D", "-", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.761971897034829*^9, 3.761971901827469*^9}},
+ CellTags->"Momentum",
+ CellLabel->"In[24]:=",
+ CellID->298033535],
+
+Cell[BoxData[
+ FormBox["p", TraditionalForm]], "Output",
+ CellTags->"Momentum",
+ CellLabel->"Out[24]=",
+ CellID->1288297410]
+}, Open  ]],
+
+Cell["The dimension index is supressed in the output.", "Text",
+ CellTags->"Momentum",
+ CellID->179507545],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CartesianMomentum", "[", 
+  RowBox[{"p", ",", 
+   RowBox[{"d", "-", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.761971904923151*^9, 3.761971910579392*^9}},
+ CellTags->"Momentum",
+ CellLabel->"In[39]:=",
+ CellID->22007276],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["p",
+   StripOnInput->False,
+   FontWeight->Bold], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.76197190640485*^9, 3.761971910943293*^9}},
+ CellTags->"Momentum",
+ CellLabel->"Out[39]=",
+ CellID->528138943]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a1", "=", 
+  RowBox[{"CartesianMomentum", "[", 
+   RowBox[{"-", "q"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.761971914322803*^9, 3.7619719158356247`*^9}},
+ CellTags->"Momentum",
+ CellLabel->"In[40]:=",
+ CellID->1076166182],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   OverscriptBox[
+    FormBox[
+     StyleBox["q",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], "_"]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761971916128579*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[40]=",
+ CellID->156886815]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a1", "//", "StandardForm"}]], "Input",
+ CellTags->"Momentum",
+ CellLabel->"In[41]:=",
+ CellID->1156784400],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  RowBox[{"CartesianMomentum", "[", "q", "]"}]}]], "Output",
+ CellChangeTimes->{3.761971917352068*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[41]//StandardForm=",
+ CellID->2073519559]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a2", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"CartesianMomentum", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], " ", "+", " ", 
+   RowBox[{"CartesianMomentum", "[", 
+    RowBox[{"2", "q"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7619719208512506`*^9, 3.761971928553796*^9}},
+ CellTags->"Momentum",
+ CellLabel->"In[42]:=",
+ CellID->1010535805],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["p",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox[
+        StyleBox["q",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"]}],
+     TraditionalForm], ")"}], "+", 
+   RowBox[{"2", " ", 
+    OverscriptBox[
+     FormBox[
+      StyleBox["q",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761971928932715*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[42]=",
+ CellID->614085143]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a2", "//", "StandardForm"}]], "Input",
+ CellTags->"Momentum",
+ CellLabel->"In[43]:=",
+ CellID->856207433],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CartesianMomentum", "[", 
+   RowBox[{"p", "-", "q"}], "]"}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"CartesianMomentum", "[", "q", "]"}]}]}]], "Output",
+ CellChangeTimes->{3.761971930235538*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[43]//StandardForm=",
+ CellID->1788675006]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a2", "//", "MomentumExpand"}], "//", "StandardForm"}]], "Input",
+ CellTags->"Momentum",
+ CellLabel->"In[44]:=",
+ CellID->265634009],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CartesianMomentum", "[", "p", "]"}], "+", 
+  RowBox[{"CartesianMomentum", "[", "q", "]"}]}]], "Output",
+ CellChangeTimes->{3.761971933832494*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[44]//StandardForm=",
+ CellID->1340719601]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a2", "//", "MomentumCombine"}], "//", "StandardForm"}]], "Input",
+ CellTags->"Momentum",
+ CellLabel->"In[45]:=",
+ CellID->168866988],
+
+Cell[BoxData[
+ RowBox[{"CartesianMomentum", "[", 
+  RowBox[{"p", "+", "q"}], "]"}]], "Output",
+ CellChangeTimes->{3.76197193533337*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[45]//StandardForm=",
+ CellID->375822768]
+}, Open  ]],
+
+Cell["\<\
+Notice that when changing the dimension, one must specify its value as if the \
+the 3-vector were the spatial component of the corresponding 4-vector\
+\>", "Notes",
+ CellChangeTimes->{{3.761972007019414*^9, 3.761972060011554*^9}},
+ CellID->257067347],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ChangeDimension", "[", 
+   RowBox[{
+    RowBox[{"CartesianMomentum", "[", "p", "]"}], ",", 
+    RowBox[{"d", "-", "1"}]}], "]"}], "//", "StandardForm"}]], "Input",
+ CellChangeTimes->{{3.76197206485958*^9, 3.7619720654359283`*^9}},
+ CellLabel->"In[50]:=",
+ CellID->2130880073],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   StyleBox[
+    RowBox[{"ChangeDimension", "::", "failmsg"}], "MessageName"], 
+   RowBox[{
+   ":", " "}], "\<\"Error! ChangeDimension has encountered a fatal problem \
+and must abort the computation. The problem reads: \
+\[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Unsupported choice of dimension!\\\\\\\
+\"\\\", TraditionalForm]\\)\[NoBreak] \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\
+\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:FeynCalc/ref/ChangeDimension\\\", ButtonNote -> \
+\\\"FeynCalc`ChangeDimension::failmsg\\\"]\\)\"\>"}], 
+  TraditionalForm]], "Message", "MSG",
+ CellChangeTimes->{3.761972065994821*^9},
+ CellLabel->"During evaluation of In[50]:=",
+ CellID->797702113],
+
+Cell[BoxData[
+ FormBox["$Aborted", TraditionalForm]], "Output",
+ CellChangeTimes->{3.7619720659961157`*^9},
+ CellLabel->"Out[50]=",
+ CellID->702918981]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ChangeDimension", "[", 
+   RowBox[{
+    RowBox[{"CartesianMomentum", "[", "p", "]"}], ",", "d"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellChangeTimes->{{3.761971940875211*^9, 3.7619719567073383`*^9}, {
+  3.761971994267436*^9, 3.761971995043393*^9}},
+ CellTags->"Momentum",
+ CellLabel->"In[51]:=",
+ CellID->1679956191],
+
+Cell[BoxData[
+ RowBox[{"CartesianMomentum", "[", 
+  RowBox[{"p", ",", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "d"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.761971941809003*^9, 3.761971957183312*^9}, 
+   3.7619719954304047`*^9, 3.7619720666641293`*^9},
+ CellTags->"Momentum",
+ CellLabel->"Out[51]//StandardForm=",
+ CellID->1638010115]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"a1", ",", "a2"}], "]"}]], "Input",
+ CellTags->"Momentum",
+ CellLabel->"In[52]:=",
+ CellID->919568834]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{849, Automatic}, {Automatic, 193}},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Momentum"->{
+  Cell[4393, 211, 157, 3, 22, "Text",
+   CellTags->"Momentum",
+   CellID->44749889],
+  Cell[4575, 218, 203, 5, 26, "Input",
+   CellTags->"Momentum",
+   CellID->600679238],
+  Cell[4781, 225, 287, 11, 26, "Output",
+   CellTags->"Momentum",
+   CellID->1847189121],
+  Cell[5083, 239, 224, 6, 23, "Text",
+   CellTags->"Momentum",
+   CellID->799788808],
+  Cell[5332, 249, 250, 7, 26, "Input",
+   CellTags->"Momentum",
+   CellID->298033535],
+  Cell[5585, 258, 124, 4, 26, "Output",
+   CellTags->"Momentum",
+   CellID->1288297410],
+  Cell[5724, 265, 106, 2, 23, "Text",
+   CellTags->"Momentum",
+   CellID->179507545],
+  Cell[5855, 271, 249, 7, 26, "Input",
+   CellTags->"Momentum",
+   CellID->22007276],
+  Cell[6107, 280, 246, 8, 26, "Output",
+   CellTags->"Momentum",
+   CellID->528138943],
+  Cell[6390, 293, 249, 7, 26, "Input",
+   CellTags->"Momentum",
+   CellID->1076166182],
+  Cell[6642, 302, 310, 12, 26, "Output",
+   CellTags->"Momentum",
+   CellID->156886815],
+  Cell[6989, 319, 130, 4, 26, "Input",
+   CellTags->"Momentum",
+   CellID->1156784400],
+  Cell[7122, 325, 213, 6, 25, "Output",
+   CellTags->"Momentum",
+   CellID->2073519559],
+  Cell[7372, 336, 364, 10, 26, "Input",
+   CellTags->"Momentum",
+   CellID->1010535805],
+  Cell[7739, 348, 721, 29, 26, "Output",
+   CellTags->"Momentum",
+   CellID->614085143],
+  Cell[8497, 382, 129, 4, 26, "Input",
+   CellTags->"Momentum",
+   CellID->856207433],
+  Cell[8629, 388, 310, 9, 25, "Output",
+   CellTags->"Momentum",
+   CellID->1788675006],
+  Cell[8976, 402, 166, 5, 26, "Input",
+   CellTags->"Momentum",
+   CellID->265634009],
+  Cell[9145, 409, 262, 7, 25, "Output",
+   CellTags->"Momentum",
+   CellID->1340719601],
+  Cell[9444, 421, 167, 5, 26, "Input",
+   CellTags->"Momentum",
+   CellID->168866988],
+  Cell[9614, 428, 216, 6, 25, "Output",
+   CellTags->"Momentum",
+   CellID->375822768],
+  Cell[11376, 483, 361, 10, 26, "Input",
+   CellTags->"Momentum",
+   CellID->1679956191],
+  Cell[11740, 495, 338, 9, 25, "Output",
+   CellTags->"Momentum",
+   CellID->1638010115],
+  Cell[12093, 507, 150, 5, 26, "Input",
+   CellTags->"Momentum",
+   CellID->919568834]},
+ "ExtendedExamples"->{
+  Cell[12280, 517, 100, 2, 54, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Momentum", 14190, 587},
+ {"ExtendedExamples", 16325, 660}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 14, 24, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 28, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 81, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1145, 49, 78, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1226, 53, 75, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1338, 59, 55, 1, 18, "KeywordsSection",
+ CellID->477174294],
+Cell[1396, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1478, 68, 65, 1, 18, "TemplatesSection",
+ CellID->1872225408],
+Cell[1546, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1643, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1728, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1812, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1931, 90, 53, 1, 18, "DetailsSection",
+ CellID->307771771],
+Cell[1987, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2053, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2125, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2192, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2264, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2328, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2392, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2458, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2539, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2643, 132, 60, 1, 62, "ObjectName",
+ CellID->1224892054],
+Cell[2706, 135, 488, 10, 105, "Usage",
+ CellID->982511436],
+Cell[3197, 147, 42, 1, 24, "Notes",
+ CellID->1067943069]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3276, 153, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[3336, 156, 45, 1, 16, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3418, 162, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[3504, 165, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3599, 171, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[3667, 174, 49, 1, 16, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3753, 180, 55, 1, 30, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[3811, 183, 43, 1, 16, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3891, 189, 57, 1, 30, "MoreAboutSection",
+ CellID->38303248],
+Cell[3951, 192, 46, 1, 16, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4034, 198, 356, 11, 69, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[4393, 211, 157, 3, 22, "Text",
+ CellTags->"Momentum",
+ CellID->44749889],
+Cell[CellGroupData[{
+Cell[4575, 218, 203, 5, 26, "Input",
+ CellTags->"Momentum",
+ CellID->600679238],
+Cell[4781, 225, 287, 11, 26, "Output",
+ CellTags->"Momentum",
+ CellID->1847189121]
+}, Open  ]],
+Cell[5083, 239, 224, 6, 23, "Text",
+ CellTags->"Momentum",
+ CellID->799788808],
+Cell[CellGroupData[{
+Cell[5332, 249, 250, 7, 26, "Input",
+ CellTags->"Momentum",
+ CellID->298033535],
+Cell[5585, 258, 124, 4, 26, "Output",
+ CellTags->"Momentum",
+ CellID->1288297410]
+}, Open  ]],
+Cell[5724, 265, 106, 2, 23, "Text",
+ CellTags->"Momentum",
+ CellID->179507545],
+Cell[CellGroupData[{
+Cell[5855, 271, 249, 7, 26, "Input",
+ CellTags->"Momentum",
+ CellID->22007276],
+Cell[6107, 280, 246, 8, 26, "Output",
+ CellTags->"Momentum",
+ CellID->528138943]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6390, 293, 249, 7, 26, "Input",
+ CellTags->"Momentum",
+ CellID->1076166182],
+Cell[6642, 302, 310, 12, 26, "Output",
+ CellTags->"Momentum",
+ CellID->156886815]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6989, 319, 130, 4, 26, "Input",
+ CellTags->"Momentum",
+ CellID->1156784400],
+Cell[7122, 325, 213, 6, 25, "Output",
+ CellTags->"Momentum",
+ CellID->2073519559]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7372, 336, 364, 10, 26, "Input",
+ CellTags->"Momentum",
+ CellID->1010535805],
+Cell[7739, 348, 721, 29, 26, "Output",
+ CellTags->"Momentum",
+ CellID->614085143]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8497, 382, 129, 4, 26, "Input",
+ CellTags->"Momentum",
+ CellID->856207433],
+Cell[8629, 388, 310, 9, 25, "Output",
+ CellTags->"Momentum",
+ CellID->1788675006]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8976, 402, 166, 5, 26, "Input",
+ CellTags->"Momentum",
+ CellID->265634009],
+Cell[9145, 409, 262, 7, 25, "Output",
+ CellTags->"Momentum",
+ CellID->1340719601]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9444, 421, 167, 5, 26, "Input",
+ CellTags->"Momentum",
+ CellID->168866988],
+Cell[9614, 428, 216, 6, 25, "Output",
+ CellTags->"Momentum",
+ CellID->375822768]
+}, Open  ]],
+Cell[9845, 437, 260, 5, 41, "Notes",
+ CellID->257067347],
+Cell[CellGroupData[{
+Cell[10130, 446, 310, 8, 26, "Input",
+ CellID->2130880073],
+Cell[10443, 456, 742, 16, 57, "Message",
+ CellID->797702113],
+Cell[11188, 474, 151, 4, 24, "Output",
+ CellID->702918981]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11376, 483, 361, 10, 26, "Input",
+ CellTags->"Momentum",
+ CellID->1679956191],
+Cell[11740, 495, 338, 9, 25, "Output",
+ CellTags->"Momentum",
+ CellID->1638010115]
+}, Open  ]],
+Cell[12093, 507, 150, 5, 26, "Input",
+ CellTags->"Momentum",
+ CellID->919568834]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12280, 517, 100, 2, 54, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[12383, 521, 125, 3, 32, "ExampleSection",
+ CellID->1293636265],
+Cell[12511, 526, 148, 3, 20, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[12684, 533, 127, 3, 20, "ExampleSection",
+ CellID->2061341341],
+Cell[12814, 538, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[12947, 543, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[13092, 549, 131, 3, 20, "ExampleSection",
+ CellID->258228157],
+Cell[13226, 554, 142, 3, 20, "ExampleSection",
+ CellID->2123667759],
+Cell[13371, 559, 135, 3, 20, "ExampleSection",
+ CellID->1305812373],
+Cell[13509, 564, 140, 3, 20, "ExampleSection",
+ CellID->1653164318],
+Cell[13652, 569, 132, 3, 20, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

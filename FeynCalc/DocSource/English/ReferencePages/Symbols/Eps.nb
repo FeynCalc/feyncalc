@@ -167,6 +167,11 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
+ ButtonBox["EpsContract",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/EpsContract",
+  ButtonNote->"EpsContract"],
+ ", ",
  ButtonBox["EpsEvaluate",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/EpsEvaluate",
@@ -219,23 +224,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Eps", "]"}]], "Input",
- CellTags->"Eps",
- CellLabel->"In[4]:=",
- CellID->1709394854],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Dimension", "\[Rule]", "4"}], "}"}], TraditionalForm]], "Output",
- CellTags->"Eps",
- CellLabel->"Out[4]=",
- CellID->587042521]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Eps", "[", 
   RowBox[{
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
@@ -243,12 +231,13 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[5]:=",
+ CellLabel->"In[27]:=",
  CellID->882253219],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -267,8 +256,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[5]=",
- CellID->1273521224]
+ CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -281,12 +269,13 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[6]:=",
+ CellLabel->"In[28]:=",
  CellID->1187356604],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      OverscriptBox[
@@ -306,8 +295,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[6]=",
- CellID->1062644924]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -318,59 +306,53 @@ Cell[BoxData[
    RowBox[{"b", ",", "a", ",", "c", ",", "d"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[7]:=",
+ CellLabel->"In[29]:=",
  CellID->2026742577],
 
 Cell[BoxData[
- RowBox[{"-", 
-  RowBox[{"Eps", "[", 
-   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}]}]], "Output",
+ RowBox[{"Eps", "[", 
+  RowBox[{"b", ",", "a", ",", "c", ",", "d"}], "]"}]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[7]//StandardForm=",
- CellID->1877955055]
+ CellLabel->"Out[29]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Eps", "[", 
-  RowBox[{"0", ",", "1", ",", "2", ",", "3"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{"ExplicitLorentzIndex", "[", "0", "]"}], ",", 
+   RowBox[{"ExplicitLorentzIndex", "[", "1", "]"}], ",", 
+   RowBox[{"ExplicitLorentzIndex", "[", "2", "]"}], ",", 
+   RowBox[{"ExplicitLorentzIndex", "[", "3", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[8]:=",
+ CellLabel->"In[31]:=",
  CellID->1867659172],
 
 Cell[BoxData[
- FormBox["1", TraditionalForm]], "Output",
- CellTags->"Eps",
- CellLabel->"Out[8]=",
- CellID->76823232]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Eps", "[", 
-  RowBox[{"1", ",", "0", ",", "2", ",", "3"}], "]"}]], "Input",
- CellTags->"Eps",
- CellLabel->"In[9]:=",
- CellID->272160740],
-
-Cell[BoxData[
  FormBox[
-  RowBox[{"-", "1"}], TraditionalForm]], "Output",
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox["0",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["1",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["2",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["3",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[9]=",
- CellID->94949868]
+ CellLabel->"Out[31]="]
 }, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Eps", ",", 
-    RowBox[{"Dimension", "\[Rule]", "4"}]}], "]"}], ";"}]], "Input",
- CellTags->"Eps",
- CellLabel->"In[10]:=",
- CellID->1590807400],
 
 Cell[CellGroupData[{
 
@@ -378,21 +360,18 @@ Cell[BoxData[
  RowBox[{"a1", " ", "=", 
   RowBox[{"Eps", "[", 
    RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]}]], "Input",
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[11]:=",
+ CellLabel->"In[36]:=",
  CellID->49792760],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -411,8 +390,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[11]=",
- CellID->766535201]
+ CellLabel->"Out[36]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -421,25 +399,15 @@ Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{"a1", " ", "a1"}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[12]:=",
+ CellLabel->"In[37]:=",
  CellID->1112439860],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "24"}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[12]=",
- CellID->2017064115]
+ CellLabel->"Out[37]="]
 }, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Eps", ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], ";"}]], "Input",
- CellTags->"Eps",
- CellLabel->"In[13]:=",
- CellID->578443879],
 
 Cell[CellGroupData[{
 
@@ -456,12 +424,13 @@ Cell[BoxData[
     RowBox[{"LorentzIndex", "[", 
      RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[14]:=",
+ CellLabel->"In[38]:=",
  CellID->864825422],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -480,8 +449,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[14]=",
- CellID->721475866]
+ CellLabel->"Out[38]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -491,7 +459,7 @@ Cell[BoxData[
   RowBox[{"Contract", "[", 
    RowBox[{"a2", " ", "a2"}], "]"}], "//", "Factor2"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[15]:=",
+ CellLabel->"In[39]:=",
  CellID->225723746],
 
 Cell[BoxData[
@@ -504,8 +472,7 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[15]=",
- CellID->943115930]
+ CellLabel->"Out[39]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -524,7 +491,7 @@ Cell[BoxData[
       RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Alpha]"}], 
       "]"}]}]}], "//", "FCI"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[16]:=",
+ CellLabel->"In[40]:=",
  CellID->1182317355],
 
 Cell[BoxData[
@@ -533,7 +500,8 @@ Cell[BoxData[
    RowBox[{"-", 
     FractionBox["1", "24"]}], " ", "\[ImaginaryI]", " ", 
    RowBox[{
-    SuperscriptBox["\[Epsilon]", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
      RowBox[{
       FormBox[
        FormBox["\[Mu]",
@@ -572,8 +540,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[16]=",
- CellID->338258002]
+ CellLabel->"Out[40]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -606,7 +573,7 @@ Cell[BoxData[
        SuperscriptBox["\[Alpha]", "\[Prime]",
         MultilineFunction->None]}], "]"}]}]}], "//", "FCI"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[17]:=",
+ CellLabel->"In[41]:=",
  CellID->1736669356],
 
 Cell[BoxData[
@@ -615,7 +582,8 @@ Cell[BoxData[
    RowBox[{"-", 
     FractionBox["1", "24"]}], " ", "\[ImaginaryI]", " ", 
    RowBox[{
-    SuperscriptBox["\[Epsilon]", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
      RowBox[{
       FormBox[
        FormBox[
@@ -670,8 +638,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[17]=",
- CellID->1568766861]
+ CellLabel->"Out[41]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -682,7 +649,7 @@ Cell[BoxData[
    RowBox[{"Calc", "[", 
     RowBox[{"g5", ".", "g5p"}], "]"}], "]"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[18]:=",
+ CellLabel->"In[42]:=",
  CellID->1776301198],
 
 Cell[BoxData[
@@ -697,8 +664,7 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[18]=",
- CellID->1865773591]
+ CellLabel->"Out[42]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -707,14 +673,13 @@ Cell[BoxData[
  RowBox[{"g52", "/.", 
   RowBox[{"D", "\[Rule]", "4"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[19]:=",
+ CellLabel->"In[43]:=",
  CellID->505384444],
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[19]=",
- CellID->82320275]
+ CellLabel->"Out[43]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -722,7 +687,7 @@ Cell[BoxData[
   RowBox[{"a1", ",", "a2", ",", "g5", ",", "g5p", ",", "g52"}], 
   "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[20]:=",
+ CellLabel->"In[44]:=",
  CellID->1000155621]
 }, Open  ]],
 
@@ -787,13 +752,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{567, Automatic}, {Automatic, 78}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

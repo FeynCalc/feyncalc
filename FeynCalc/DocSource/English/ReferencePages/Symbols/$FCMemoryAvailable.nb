@@ -125,8 +125,8 @@ Cell[TextData[{
  StyleBox["n",
   FontSlant->"Italic"],
  " is the available amount of main memory in MB. The default is 128. It \
-should be increased if possible. The higher $FCMemoryAvailable can be, the more \
-intermediate steps do not have to be repeated by FeynCalc."
+should be increased if possible. The higher $FCMemoryAvailable can be, the \
+more intermediate steps do not have to be repeated by FeynCalc."
 }], "Usage",
  CellID->982511436],
 
@@ -194,22 +194,17 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"$FCMemoryAvailable",
- CellID->343639326],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["$FCMemoryAvailable"], "Input",
  CellTags->"$FCMemoryAvailable",
- CellLabel->"In[1]:=",
+ CellLabel->"In[53]:=",
  CellID->695439641],
 
 Cell[BoxData[
  FormBox["4096", TraditionalForm]], "Output",
  CellTags->"$FCMemoryAvailable",
- CellLabel->"Out[1]=",
- CellID->1467745985]
+ CellLabel->"Out[53]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -280,7 +275,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

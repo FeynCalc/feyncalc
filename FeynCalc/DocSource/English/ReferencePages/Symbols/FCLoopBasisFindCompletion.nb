@@ -1,0 +1,1162 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     32287,       1153]
+NotebookOptionsPosition[     27312,        976]
+NotebookOutlinePosition[     27929,       1000]
+CellTagsIndexPosition[     27850,        995]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.3", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/FCLoopBasisFindCompletion", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FCLoopBasisFindCompletion", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FCLoopBasisFindCompletion", "[", 
+   RowBox[{"int", ",", 
+    RowBox[{"{", 
+     RowBox[{"q1", ",", "q2", ",", "..."}], "}"}]}], "]"}]], 
+  "InlineFormula"],
+ " \[LineSeparator]determines propagators that need to be included in the \
+loop integral int (that depends on the loop momenta q1,q2,...), to ensure \
+that the propagators of int form a basis. For integrals with propagators that \
+do not form a basis, such a completion must be found prior to processing \
+those integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. \
+FIRE). Furthermore, int must not contain propagators that are linearly \
+dependent."
+}], "Usage",
+ CellChangeTimes->{{3.7613677350810966`*^9, 3.761367755269408*^9}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCLoopBasisFindCompletion", "]"}]], "Input",
+ CellChangeTimes->{{3.761367883165701*^9, 3.761367888770133*^9}},
+ CellLabel->"In[107]:=",
+ CellID->725102416],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Abort", "\[Rule]", "False"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Check", "\[Rule]", "True"}], ",", 
+    RowBox[{"Method", "\[Rule]", "ScalarProduct"}], ",", 
+    RowBox[{"SetDimensions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4", ",", "D", ",", 
+       RowBox[{"D", "-", "1"}]}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.761367889016865*^9},
+ CellLabel->"Out[107]=",
+ CellID->2036209922]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"FAD", "[", 
+  RowBox[{"q", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"q", "-", "p", "+", "l"}], ",", "m"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FCLoopBasisFindCompletion", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"{", "q", "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.761367785329772*^9, 3.7613677923969173`*^9}},
+ CellLabel->"In[99]:=",
+ CellID->1061934835],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`q, D], 
+       FeynCalc`Momentum[$CellContext`q, D]]],
+     Editable->False], ".", 
+    RowBox[{"(", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{
+         FormBox["\<\"(\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["l",
+             TraditionalForm], "-", 
+            FormBox["p",
+             TraditionalForm], "+", 
+            FormBox["q",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\")\"\>",
+          TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`l - $CellContext`p + $CellContext`q, 
+         D], 
+        FeynCalc`Momentum[$CellContext`l - $CellContext`p + $CellContext`q, 
+         D]], "-", $CellContext`m^2],
+      Editable->False], ")"}]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761367792700632*^9},
+ CellLabel->"Out[99]=",
+ CellID->460246592],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FormBox[
+     FractionBox["1", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`q, D], 
+          FeynCalc`Momentum[$CellContext`q, D]]],
+        Editable->False], ".", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["l",
+                TraditionalForm], "-", 
+               FormBox["p",
+                TraditionalForm], "+", 
+               FormBox["q",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`l, D] - 
+           FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q, D], 
+           FeynCalc`Momentum[$CellContext`l, D] - 
+           FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]],
+     TraditionalForm], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      FormBox[
+       FormBox["l",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}], "}"}]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761367792717256*^9},
+ CellLabel->"Out[100]=",
+ CellID->985964776]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"FAD", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"q1", ",", "m1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q2", ",", "m2"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FCLoopBasisFindCompletion", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"{", 
+    RowBox[{"q1", ",", "q2"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.761367810618486*^9, 3.761367817779943*^9}},
+ CellLabel->"In[101]:=",
+ CellID->1012989858],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   RowBox[{
+    RowBox[{"(", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        FormBox[
+         FormBox["q1",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m1", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q1, D], 
+        FeynCalc`Momentum[$CellContext`q1, D]], "-", $CellContext`m1^2],
+      Editable->False], ")"}], ".", 
+    RowBox[{"(", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        FormBox[
+         FormBox["q2",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m2", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q2, D], 
+        FeynCalc`Momentum[$CellContext`q2, D]], "-", $CellContext`m2^2],
+      Editable->False], ")"}]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.7613678181993933`*^9},
+ CellLabel->"Out[101]=",
+ CellID->252279535],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FormBox[
+     FractionBox["1", 
+      RowBox[{
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["q1",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m1", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q1, D], 
+           FeynCalc`Momentum[$CellContext`q1, D]], "-", $CellContext`m1^2],
+         Editable->False], ")"}], ".", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["q2",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m2", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q2, D], 
+           FeynCalc`Momentum[$CellContext`q2, D]], "-", $CellContext`m2^2],
+         Editable->False], ")"}]}]],
+     TraditionalForm], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      FormBox[
+       FormBox["q1",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q2",
+        TraditionalForm],
+       TraditionalForm]}], "}"}]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.76136781821983*^9},
+ CellLabel->"Out[102]=",
+ CellID->1102694099]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"FAD", "[", 
+   RowBox[{
+    RowBox[{"q1", "+", "p"}], ",", 
+    RowBox[{"q2", "-", "k"}]}], "]"}], " ", 
+  RowBox[{"SPD", "[", 
+   RowBox[{"q1", ",", "q2"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"FCLoopBasisFindCompletion", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"{", 
+    RowBox[{"q1", ",", "q2"}], "}"}], ",", 
+   RowBox[{"Method", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"FAD", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"q2", "+", "k"}], ",", "m"}], "}"}], "]"}], ",", 
+      RowBox[{"FAD", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"q1", "-", "p"}], ",", "m"}], "}"}], "]"}], ",", 
+      RowBox[{"SPD", "[", 
+       RowBox[{"p", ",", "q2"}], "]"}], ",", 
+      RowBox[{"SPD", "[", 
+       RowBox[{"k", ",", "q1"}], "]"}]}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.761367829625963*^9, 3.761367840534127*^9}},
+ CellLabel->"In[103]:=",
+ CellID->149942360],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   FormBox[
+    RowBox[{
+     FormBox[
+      FormBox["q1",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["q2",
+       TraditionalForm],
+      TraditionalForm]}],
+    TraditionalForm], 
+   RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["p",
+           TraditionalForm], "+", 
+          FormBox["q1",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`p + $CellContext`q1, D], 
+       FeynCalc`Momentum[$CellContext`p + $CellContext`q1, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q2",
+           TraditionalForm], "-", 
+          FormBox["k",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`k + $CellContext`q2, D], 
+       FeynCalc`Momentum[-$CellContext`k + $CellContext`q2, D]]],
+     Editable->False]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.7613678407982693`*^9},
+ CellLabel->"Out[103]=",
+ CellID->1915281963],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FormBox[
+     FractionBox[
+      RowBox[{
+       FormBox[
+        FormBox["q1",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox["q2",
+         TraditionalForm],
+        TraditionalForm]}], 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["p",
+              TraditionalForm], "+", 
+             FormBox["q1",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`p, D] + 
+          FeynCalc`Momentum[$CellContext`q1, D], 
+          FeynCalc`Momentum[$CellContext`p, D] + 
+          FeynCalc`Momentum[$CellContext`q1, D]]],
+        Editable->False], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q2",
+              TraditionalForm], "-", 
+             FormBox["k",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`k, D] + 
+          FeynCalc`Momentum[$CellContext`q2, D], -
+           FeynCalc`Momentum[$CellContext`k, D] + 
+          FeynCalc`Momentum[$CellContext`q2, D]]],
+        Editable->False]}]],
+     TraditionalForm], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      FormBox[
+       FractionBox["1", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["k",
+                TraditionalForm], "+", 
+               FormBox["q2",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D] + 
+           FeynCalc`Momentum[$CellContext`q2, D], 
+           FeynCalc`Momentum[$CellContext`k, D] + 
+           FeynCalc`Momentum[$CellContext`q2, D]], "-", $CellContext`m^2],
+         Editable->False]],
+       TraditionalForm], ",", 
+      FormBox[
+       FractionBox["1", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["q1",
+                TraditionalForm], "-", 
+               FormBox["p",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          
+          FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q1, D], -
+            FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q1, D]], "-", $CellContext`m^2],
+         Editable->False]],
+       TraditionalForm], ",", 
+      RowBox[{
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox["q2",
+         TraditionalForm],
+        TraditionalForm]}], ",", 
+      RowBox[{
+       FormBox[
+        FormBox["k",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox["q1",
+         TraditionalForm],
+        TraditionalForm]}]}], "}"}]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761367840819488*^9},
+ CellLabel->"Out[104]=",
+ CellID->1517536499]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"CFAD", "[", 
+  RowBox[{"q1", ",", "q2", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"q1", "-", "l1"}], ",", "m1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"q2", "-", "l2"}], ",", "m2"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FCLoopBasisFindCompletion", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"{", 
+    RowBox[{"q1", ",", "q2"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.761367861425866*^9, 3.761367871574008*^9}},
+ CellLabel->"In[105]:=",
+ CellID->958430790],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   RowBox[{
+    TemplateBox[{"\"(\"",SuperscriptBox[
+       FormBox[
+        FormBox[
+         StyleBox["q1", Bold, StripOnInput -> False], TraditionalForm], 
+        TraditionalForm], 2],"\"-\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"], ".", 
+    TemplateBox[{"\"(\"",SuperscriptBox[
+       FormBox[
+        FormBox[
+         StyleBox["q2", Bold, StripOnInput -> False], TraditionalForm], 
+        TraditionalForm], 2],"\"-\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"], ".", 
+    TemplateBox[{"\"(\"",RowBox[{
+        SuperscriptBox[
+         RowBox[{
+           FormBox["\"(\"", TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+               FormBox[
+                StyleBox["q1", Bold, StripOnInput -> False], TraditionalForm],
+                "-", 
+               FormBox[
+                StyleBox["l1", Bold, StripOnInput -> False], 
+                TraditionalForm]}], TraditionalForm], TraditionalForm], 
+           FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"","m1","\"-\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"], ".", 
+    TemplateBox[{"\"(\"",RowBox[{
+        SuperscriptBox[
+         RowBox[{
+           FormBox["\"(\"", TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+               FormBox[
+                StyleBox["q2", Bold, StripOnInput -> False], TraditionalForm],
+                "-", 
+               FormBox[
+                StyleBox["l2", Bold, StripOnInput -> False], 
+                TraditionalForm]}], TraditionalForm], TraditionalForm], 
+           FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"","m2","\"-\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761367871900063*^9},
+ CellLabel->"Out[105]=",
+ CellID->803919351],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FormBox[
+     FractionBox["1", 
+      RowBox[{
+       TemplateBox[{"\"(\"",SuperscriptBox[
+          FormBox[
+           FormBox[
+            StyleBox["q1", Bold, StripOnInput -> False], TraditionalForm], 
+           TraditionalForm], 2],"\"-\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"], ".", 
+       TemplateBox[{"\"(\"",SuperscriptBox[
+          FormBox[
+           FormBox[
+            StyleBox["q2", Bold, StripOnInput -> False], TraditionalForm], 
+           TraditionalForm], 2],"\"-\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"], ".", 
+       TemplateBox[{"\"(\"",RowBox[{
+           SuperscriptBox[
+            RowBox[{
+              FormBox["\"(\"", TraditionalForm], 
+              FormBox[
+               FormBox[
+                RowBox[{
+                  FormBox[
+                   StyleBox["q1", Bold, StripOnInput -> False], 
+                   TraditionalForm], "-", 
+                  FormBox[
+                   StyleBox["l1", Bold, StripOnInput -> False], 
+                   TraditionalForm]}], TraditionalForm], TraditionalForm], 
+              FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"","m1","\"-\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"], ".", 
+       TemplateBox[{"\"(\"",RowBox[{
+           SuperscriptBox[
+            RowBox[{
+              FormBox["\"(\"", TraditionalForm], 
+              FormBox[
+               FormBox[
+                RowBox[{
+                  FormBox[
+                   StyleBox["q2", Bold, StripOnInput -> False], 
+                   TraditionalForm], "-", 
+                  FormBox[
+                   StyleBox["l2", Bold, StripOnInput -> False], 
+                   TraditionalForm]}], TraditionalForm], TraditionalForm], 
+              FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"","m2","\"-\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"]}]],
+     TraditionalForm], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        FormBox[
+         StyleBox["l1",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["q2",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]}], ",", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         StyleBox["l2",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["q1",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]}], ",", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         StyleBox["q1",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["q2",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]}]}], "}"}]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761367871928471*^9},
+ CellLabel->"Out[106]=",
+ CellID->284707597]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{1682, Automatic}, {Automatic, 236}},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[25792, 918, 100, 2, 54, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 27711, 988}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 14, 24, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 28, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 81, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1145, 49, 78, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1226, 53, 83, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1346, 59, 55, 1, 18, "KeywordsSection",
+ CellID->477174294],
+Cell[1404, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1486, 68, 65, 1, 18, "TemplatesSection",
+ CellID->1872225408],
+Cell[1554, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1651, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1736, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1820, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1939, 90, 53, 1, 18, "DetailsSection",
+ CellID->307771771],
+Cell[1995, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2061, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2133, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2200, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2272, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2336, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2400, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2466, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2547, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2651, 132, 68, 1, 63, "ObjectName",
+ CellID->1224892054],
+Cell[2722, 135, 797, 17, 153, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3544, 156, 195, 4, 26, "Input",
+ CellID->725102416],
+Cell[3742, 162, 718, 18, 64, "Output",
+ CellID->2036209922]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4497, 185, 408, 12, 46, "Input",
+ CellID->1061934835],
+Cell[4908, 199, 1368, 46, 52, "Output",
+ CellID->460246592],
+Cell[6279, 247, 1961, 64, 52, "Output",
+ CellID->985964776]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8277, 316, 448, 13, 46, "Input",
+ CellID->1012989858],
+Cell[8728, 331, 1132, 36, 52, "Output",
+ CellID->252279535],
+Cell[9863, 369, 1585, 52, 52, "Output",
+ CellID->1102694099]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11485, 426, 963, 29, 84, "Input",
+ CellID->149942360],
+Cell[12451, 457, 1631, 61, 50, "Output",
+ CellID->1915281963],
+Cell[14085, 520, 4469, 148, 50, "Output",
+ CellID->1517536499]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18591, 673, 527, 16, 46, "Input",
+ CellID->958430790],
+Cell[19121, 691, 1976, 52, 50, "Output",
+ CellID->803919351],
+Cell[21100, 745, 3526, 109, 80, "Output",
+ CellID->284707597]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24675, 860, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[24735, 863, 45, 1, 16, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24817, 869, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[24903, 872, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24998, 878, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[25066, 881, 49, 1, 16, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25152, 887, 55, 1, 30, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[25210, 890, 43, 1, 16, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25290, 896, 57, 1, 30, "MoreAboutSection",
+ CellID->38303248],
+Cell[25350, 899, 46, 1, 16, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[25411, 903, 356, 11, 69, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[25792, 918, 100, 2, 54, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[25895, 922, 125, 3, 32, "ExampleSection",
+ CellID->1293636265],
+Cell[26023, 927, 148, 3, 20, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[26196, 934, 127, 3, 20, "ExampleSection",
+ CellID->2061341341],
+Cell[26326, 939, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[26459, 944, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[26604, 950, 131, 3, 20, "ExampleSection",
+ CellID->258228157],
+Cell[26738, 955, 142, 3, 20, "ExampleSection",
+ CellID->2123667759],
+Cell[26883, 960, 135, 3, 20, "ExampleSection",
+ CellID->1305812373],
+Cell[27021, 965, 140, 3, 20, "ExampleSection",
+ CellID->1653164318],
+Cell[27164, 970, 132, 3, 20, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

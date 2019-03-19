@@ -122,8 +122,8 @@ Cell[TextData[{
  "can be used as input for a 4-dimensional ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[Gamma]", 
-    RowBox[{"\[Mu]", " "}]], TraditionalForm]]],
+   SubscriptBox[
+    SuperscriptBox["\[Gamma]", "\[Mu]"], " "], TraditionalForm]]],
  "and is transformed into DiracGamma[LorentzIndex[",
  Cell[BoxData[
   FormBox["\[Mu]", TraditionalForm]]],
@@ -497,13 +497,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1402, Automatic}, {Automatic, 48}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

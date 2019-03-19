@@ -117,11 +117,11 @@ Cell["FeynAmpDenominator", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FeynAmpDenominator", "["}]], "InlineFormula"],
- " \[LineSeparator]",
- "PropagatorDenominator[ ... ], PropagatorDenominator[ ... ], ...] is the \
-head of the denominators of the propagators, i.e., FeynAmpDenominator[x] is \
-the representation of 1/x ."
+  RowBox[{"FeynAmpDenominator", "[", "...", "]"}]], "InlineFormula"],
+ " represents the inverse denominators of the propagators, i.e. \
+FeynAmpDenominator[x] is 1/x. Different propagator denominators are \
+represented using special heads such as PropagatorDenominator, \
+StandardPropagatorDenominator, CartesianPropagatorDenominator etc."
 }], "Usage",
  CellID->982511436],
 
@@ -167,6 +167,21 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FAD",
   ButtonNote->"FAD"],
  ", ",
+ ButtonBox["SFAD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SFAD",
+  ButtonNote->"SFAD"],
+ ", ",
+ ButtonBox["CFAD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/CFAD",
+  ButtonNote->"CFAD"],
+ ", ",
+ ButtonBox["GFAD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GFAD",
+  ButtonNote->"GFAD"],
+ ", ",
  ButtonBox["FeynAmpDenominatorSimplify",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominatorSimplify",
@@ -201,25 +216,51 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
+Cell[TextData[{
+ "The old way to represent standard Lorentzian propagators is to use \
+PropagatorDenominator. Here the sign of the mass term is fixed to be ",
+ Cell[BoxData[
+  RowBox[{"-", "1"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " and no information on the ",
+ Cell[BoxData[
+  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "- prescription is available. Furterhmore, this way it is not possible to \
+enter eikonal propagators"
+}], "Notes"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FeynAmpDenominator", "[", 
   RowBox[{"PropagatorDenominator", "[", 
-   RowBox[{"p", ",", "m"}], "]"}], "]"}]], "Input",
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], "]"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[1]:=",
+ CellLabel->"In[127]:=",
  CellID->1348679348],
 
 Cell[BoxData[
  FormBox[
   FractionBox["1", 
-   RowBox[{
-    SuperscriptBox["p", "2"], "-", 
-    SuperscriptBox["m", "2"]}]], TraditionalForm]], "Output",
+   InterpretationBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+     "\[InvisibleSpace]", 
+     SuperscriptBox["m", "2"]}],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+    Editable->False]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[1]=",
- CellID->1385454227]
+ CellLabel->"Out[127]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -228,12 +269,17 @@ Cell[BoxData[
  RowBox[{"FeynAmpDenominator", "[", 
   RowBox[{
    RowBox[{"PropagatorDenominator", "[", 
-    RowBox[{"p", ",", "m"}], "]"}], ",", 
+    RowBox[{
+     RowBox[{"Momentum", "[", 
+      RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], ",", 
    RowBox[{"PropagatorDenominator", "[", 
     RowBox[{
-     RowBox[{"p", "-", "q"}], ",", "m"}], "]"}]}], "]"}]], "Input",
+     RowBox[{"Momentum", "[", 
+      RowBox[{
+       RowBox[{"p", "-", "q"}], ",", "D"}], "]"}], ",", "m"}], "]"}]}], 
+  "]"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[2]:=",
+ CellLabel->"In[128]:=",
  CellID->1096136338],
 
 Cell[BoxData[
@@ -241,57 +287,67 @@ Cell[BoxData[
   FractionBox["1", 
    RowBox[{
     RowBox[{"(", 
-     RowBox[{
-      SuperscriptBox["p", "2"], "-", 
-      SuperscriptBox["m", "2"]}], ")"}], ".", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`p, D], 
+        FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+      Editable->False], ")"}], ".", 
     RowBox[{"(", 
-     RowBox[{
-      SuperscriptBox[
-       RowBox[{"(", 
-        RowBox[{"p", "-", "q"}], ")"}], "2"], "-", 
-      SuperscriptBox["m", "2"]}], ")"}]}]], TraditionalForm]], "Output",
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{
+         FormBox["\<\"(\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["p",
+             TraditionalForm], "-", 
+            FormBox["q",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\")\"\>",
+          TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`p - $CellContext`q, D], 
+        FeynCalc`Momentum[$CellContext`p - $CellContext`q, D]], 
+       "-", $CellContext`m^2],
+      Editable->False], ")"}]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[2]=",
- CellID->303237864]
+ CellLabel->"Out[128]="]
 }, Open  ]],
+
+Cell["\<\
+The shortcut to enter FeynAmpDenominators with PropagatorDenominators is FAD\
+\>", "Notes"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"t", "=", 
+  RowBox[{
    RowBox[{"FeynAmpDenominator", "[", 
     RowBox[{"PropagatorDenominator", "[", 
-     RowBox[{"p", ",", "m"}], "]"}], "]"}]}], ";"}]], "Input",
+     RowBox[{
+      RowBox[{"Momentum", "[", 
+       RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], "]"}], "//", 
+   "FCE"}], "//", "StandardForm"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[3]:=",
- CellID->1741601383],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"t", "//", "FCI"}], "]"}]], "Input",
- CellTags->"FeynAmpDenominator",
- CellLabel->"In[4]:=",
- CellID->1540629635],
-
-Cell[BoxData[
- RowBox[{"FeynAmpDenominator", "[", 
-  RowBox[{"PropagatorDenominator", "[", 
-   RowBox[{
-    RowBox[{"Momentum", "[", 
-     RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], "]"}]], "Output",
- CellTags->"FeynAmpDenominator",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1126645796]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"t", "//", "FCE"}], "]"}]], "Input",
- CellTags->"FeynAmpDenominator",
- CellLabel->"In[5]:=",
+ CellLabel->"In[130]:=",
  CellID->1592188506],
 
 Cell[BoxData[
@@ -299,16 +355,706 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"p", ",", "m"}], "}"}], "]"}]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1536013774]
+ CellLabel->"Out[130]//StandardForm="]
 }, Open  ]],
+
+Cell["\<\
+Since version 9.3, a more flexible input is possible using \
+StandardPropagatorDenominator\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"-", 
+     RowBox[{"m", "^", "2"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[115]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],RowBox[{"-", 
+       SuperscriptBox["m", "2"]}],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[115]="]
+}, Open  ]],
+
+Cell["\<\
+The mass term can be anything, as long as it does not depend on the loop \
+momenta\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"m", "^", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[120]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"",
+     SuperscriptBox["m", "2"],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[120]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", "MM", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[121]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"","MM",
+     "\"+\"",RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[121]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"SPD", "[", 
+     RowBox[{"q", ",", "q"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[122]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"",FormBox[
+      SuperscriptBox[
+       FormBox[
+        FormBox["q", TraditionalForm], TraditionalForm], 2], TraditionalForm],
+     "\"+\"",RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[122]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "One can also change the sign of the  ",
+ Cell[BoxData[
+  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "- prescription, although currently no internal functions make use of it"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"-", 
+     RowBox[{"m", "^", "2"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[123]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],RowBox[{"-", 
+       SuperscriptBox["m", "2"]}],"\"-\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[123]="]
+}, Open  ]],
+
+Cell["The propagator may be rised to integer or symbolic powers", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"m", "^", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[124]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   SuperscriptBox[
+    TemplateBox[{"\"(\"",SuperscriptBox[
+       FormBox[
+        FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"",
+      SuperscriptBox["m", "2"],"\"+\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"], "3"]], TraditionalForm]], "Output",
+ CellLabel->"Out[124]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"m", "^", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "2"}], ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[125]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"",
+     SuperscriptBox["m", "2"],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"], "2"], TraditionalForm]], "Output",
+ CellLabel->"Out[125]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+    RowBox[{"m", "^", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[126]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"",
+     SuperscriptBox["m", "2"],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"], 
+   RowBox[{"-", "n"}]], TraditionalForm]], "Output",
+ CellLabel->"Out[126]="]
+}, Open  ]],
+
+Cell["Eikonal propagators are also supported", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{"0", ",", 
+    RowBox[{"Pair", "[", 
+     RowBox[{
+      RowBox[{"Momentum", "[", 
+       RowBox[{"p", ",", "D"}], "]"}], ",", 
+      RowBox[{"Momentum", "[", 
+       RowBox[{"q", ",", "D"}], "]"}]}], "]"}], ",", 
+    RowBox[{"-", 
+     RowBox[{"m", "^", "2"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[132]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",RowBox[{
+       FormBox[
+        FormBox["p", TraditionalForm], TraditionalForm], 
+       FormBox["\"\[CenterDot]\"", TraditionalForm], 
+       FormBox[
+        FormBox["q", TraditionalForm], TraditionalForm]}],RowBox[{"-", 
+       SuperscriptBox["m", "2"]}],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[132]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{"0", ",", 
+    RowBox[{"Pair", "[", 
+     RowBox[{
+      RowBox[{"Momentum", "[", 
+       RowBox[{"p", ",", "D"}], "]"}], ",", 
+      RowBox[{"Momentum", "[", 
+       RowBox[{"q", ",", "D"}], "]"}]}], "]"}], ",", "0", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[133]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",RowBox[{
+       FormBox[
+        FormBox["p", TraditionalForm], TraditionalForm], 
+       FormBox["\"\[CenterDot]\"", TraditionalForm], 
+       FormBox[
+        FormBox["q", TraditionalForm], TraditionalForm]}],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[133]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "FeynCalc keeps trace of the signs of the scalar products in the eikonal \
+propagators. This is where the  ",
+ Cell[BoxData[
+  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "- prescription may come handy"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{"0", ",", 
+    RowBox[{"-", 
+     RowBox[{"Pair", "[", 
+      RowBox[{
+       RowBox[{"Momentum", "[", 
+        RowBox[{"p", ",", "D"}], "]"}], ",", 
+       RowBox[{"Momentum", "[", 
+        RowBox[{"q", ",", "D"}], "]"}]}], "]"}]}], ",", "0", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[134]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"","\"-\"",RowBox[{
+       FormBox[
+        FormBox["p", TraditionalForm], TraditionalForm], 
+       FormBox["\"\[CenterDot]\"", TraditionalForm], 
+       FormBox[
+        FormBox["q", TraditionalForm], TraditionalForm]}],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[134]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"StandardPropagatorDenominator", "[", 
+   RowBox[{"0", ",", 
+    RowBox[{"Pair", "[", 
+     RowBox[{
+      RowBox[{"Momentum", "[", 
+       RowBox[{"p", ",", "D"}], "]"}], ",", 
+      RowBox[{"Momentum", "[", 
+       RowBox[{"q", ",", "D"}], "]"}]}], "]"}], ",", "0", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[135]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",RowBox[{
+       FormBox[
+        FormBox["p", TraditionalForm], TraditionalForm], 
+       FormBox["\"\[CenterDot]\"", TraditionalForm], 
+       FormBox[
+        FormBox["q", TraditionalForm], TraditionalForm]}],"\"-\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[135]="]
+}, Open  ]],
+
+Cell["\<\
+The shortcut to enter FeynAmpDenominators with StandardPropagatorDenominators \
+is SFAD\
+\>", "Notes"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"Clear", "[", "t", "]"}], ";"}]], "Input",
+  RowBox[{
+   RowBox[{"FeynAmpDenominator", "[", 
+    RowBox[{"StandardPropagatorDenominator", "[", 
+     RowBox[{
+      RowBox[{"Momentum", "[", 
+       RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", 
+      RowBox[{"-", 
+       RowBox[{"m", "^", "2"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}], "//", "FCE"}], "//", 
+  "StandardForm"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[6]:=",
- CellID->1230382152]
+ CellLabel->"In[136]:=",
+ CellID->484409356],
+
+Cell[BoxData[
+ RowBox[{"SFAD", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      SuperscriptBox["m", "2"], ",", "1"}], "}"}], ",", "1"}], "}"}], 
+  "]"}]], "Output",
+ CellTags->"FeynAmpDenominator",
+ CellLabel->"Out[136]//StandardForm="]
+}, Open  ]],
+
+Cell["\<\
+Eikonal propagators are entered using the dot (\".\") as in noncommutative \
+products\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FeynAmpDenominator", "[", 
+    RowBox[{"StandardPropagatorDenominator", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"Pair", "[", 
+       RowBox[{
+        RowBox[{"Momentum", "[", 
+         RowBox[{"p", ",", "D"}], "]"}], ",", 
+        RowBox[{"Momentum", "[", 
+         RowBox[{"q", ",", "D"}], "]"}]}], "]"}], ",", 
+      RowBox[{"-", 
+       RowBox[{"m", "^", "2"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}], "//", "FCE"}], "//", 
+  "StandardForm"}]], "Input",
+ CellLabel->"In[137]:="],
+
+Cell[BoxData[
+ RowBox[{"SFAD", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      RowBox[{"p", ".", "q"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      SuperscriptBox["m", "2"], ",", "1"}], "}"}], ",", "1"}], "}"}], 
+  "]"}]], "Output",
+ CellLabel->"Out[137]//StandardForm="]
+}, Open  ]],
+
+Cell["\<\
+The Cartesian version of StandardPropagatorDenominator is called \
+CartesianPropagatorDenominator. The syntax is almost the same as in \
+StandardPropagatorDenominator, except that the momenta and scalar products \
+must be Cartesian.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"CartesianPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{"CartesianMomentum", "[", 
+     RowBox[{"p", ",", 
+      RowBox[{"D", "-", "1"}]}], "]"}], ",", "0", ",", 
+    RowBox[{"m", "^", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[142]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox[
+        StyleBox["p", Bold, StripOnInput -> False], TraditionalForm], 
+       TraditionalForm], 2],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[142]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"CartesianPropagatorDenominator", "[", 
+   RowBox[{"0", ",", 
+    RowBox[{"CartesianPair", "[", 
+     RowBox[{
+      RowBox[{"CartesianMomentum", "[", 
+       RowBox[{"p", ",", 
+        RowBox[{"D", "-", "1"}]}], "]"}], ",", 
+      RowBox[{"CartesianMomentum", "[", 
+       RowBox[{"q", ",", 
+        RowBox[{"D", "-", "1"}]}], "]"}]}], "]"}], ",", 
+    RowBox[{"m", "^", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[143]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",RowBox[{
+       FormBox[
+        FormBox[
+         StyleBox["p", Bold, StripOnInput -> False], TraditionalForm], 
+        TraditionalForm], 
+       FormBox["\"\[CenterDot]\"", TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["q", Bold, StripOnInput -> False], TraditionalForm], 
+        TraditionalForm]}],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[143]="]
+}, Open  ]],
+
+Cell["\<\
+The shortcut to enter FeynAmpDenominators with \
+CartesianPropagatorDenominators is CFAD\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCE", "[", 
+   RowBox[{"FeynAmpDenominator", "[", 
+    RowBox[{"CartesianPropagatorDenominator", "[", 
+     RowBox[{
+      RowBox[{"CartesianMomentum", "[", 
+       RowBox[{"p", ",", 
+        RowBox[{"D", "-", "1"}]}], "]"}], ",", "0", ",", 
+      RowBox[{"m", "^", "2"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellLabel->"In[146]:="],
+
+Cell[BoxData[
+ RowBox[{"CFAD", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      SuperscriptBox["m", "2"], ",", 
+      RowBox[{"-", "1"}]}], "}"}], ",", "1"}], "}"}], "]"}]], "Output",
+ CellLabel->"Out[146]//StandardForm="]
+}, Open  ]],
+
+Cell["\<\
+To represent completely arbitrary propagators one can use \
+GenericPropagatorDenominator. However, one should keep in mind that the \
+number of operations using such propagators is very limited.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"GenericPropagatorDenominator", "[", 
+   RowBox[{"x", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[148]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{
+    "\"(\"","x","\"+\"",RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[148]="]
+}, Open  ]],
+
+Cell["\<\
+This is a nonlinear propagator that appears in the calculation of the QCD \
+Energy-Energy-Correlation function\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominator", "[", 
+  RowBox[{"GenericPropagatorDenominator", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"2", " ", "z", " ", 
+      RowBox[{"Pair", "[", 
+       RowBox[{
+        RowBox[{"Momentum", "[", 
+         RowBox[{"p1", ",", "D"}], "]"}], ",", 
+        RowBox[{"Momentum", "[", 
+         RowBox[{"Q", ",", "D"}], "]"}]}], "]"}], 
+      RowBox[{"Pair", "[", 
+       RowBox[{
+        RowBox[{"Momentum", "[", 
+         RowBox[{"p2", ",", "D"}], "]"}], ",", 
+        RowBox[{"Momentum", "[", 
+         RowBox[{"Q", ",", "D"}], "]"}]}], "]"}]}], "-", 
+     RowBox[{"Pair", "[", 
+      RowBox[{
+       RowBox[{"Momentum", "[", 
+        RowBox[{"p1", ",", "D"}], "]"}], ",", 
+       RowBox[{"Momentum", "[", 
+        RowBox[{"p2", ",", "D"}], "]"}]}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[151]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",RowBox[{
+       RowBox[{"2", " ", "z", " ", 
+         RowBox[{"(", 
+           RowBox[{
+             FormBox[
+              FormBox["p1", TraditionalForm], TraditionalForm], 
+             FormBox["\"\[CenterDot]\"", TraditionalForm], 
+             FormBox[
+              FormBox["Q", TraditionalForm], TraditionalForm]}], ")"}], " ", 
+         RowBox[{"(", 
+           RowBox[{
+             FormBox[
+              FormBox["p2", TraditionalForm], TraditionalForm], 
+             FormBox["\"\[CenterDot]\"", TraditionalForm], 
+             FormBox[
+              FormBox["Q", TraditionalForm], TraditionalForm]}], ")"}]}], "-", 
+       RowBox[{
+         FormBox[
+          FormBox["p1", TraditionalForm], TraditionalForm], 
+         FormBox["\"\[CenterDot]\"", TraditionalForm], 
+         FormBox[
+          FormBox["p2", TraditionalForm], TraditionalForm]}]}],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[151]="]
+}, Open  ]],
+
+Cell["\<\
+The shortcut to enter FeynAmpDenominators with GenericPropagatorDenominators \
+is GFAD\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FeynAmpDenominator", "[", 
+    RowBox[{"GenericPropagatorDenominator", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", " ", "z", " ", 
+        RowBox[{"Pair", "[", 
+         RowBox[{
+          RowBox[{"Momentum", "[", 
+           RowBox[{"p1", ",", "D"}], "]"}], ",", 
+          RowBox[{"Momentum", "[", 
+           RowBox[{"Q", ",", "D"}], "]"}]}], "]"}], 
+        RowBox[{"Pair", "[", 
+         RowBox[{
+          RowBox[{"Momentum", "[", 
+           RowBox[{"p2", ",", "D"}], "]"}], ",", 
+          RowBox[{"Momentum", "[", 
+           RowBox[{"Q", ",", "D"}], "]"}]}], "]"}]}], "-", 
+       RowBox[{"Pair", "[", 
+        RowBox[{
+         RowBox[{"Momentum", "[", 
+          RowBox[{"p1", ",", "D"}], "]"}], ",", 
+         RowBox[{"Momentum", "[", 
+          RowBox[{"p2", ",", "D"}], "]"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}], "//", "FCE"}], "//", 
+  "StandardForm"}]], "Input",
+ CellLabel->"In[152]:="],
+
+Cell[BoxData[
+ RowBox[{"GFAD", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"SPD", "[", 
+         RowBox[{"p1", ",", "p2"}], "]"}]}], "+", 
+       RowBox[{"2", " ", "z", " ", 
+        RowBox[{"SPD", "[", 
+         RowBox[{"p1", ",", "Q"}], "]"}], " ", 
+        RowBox[{"SPD", "[", 
+         RowBox[{"p2", ",", "Q"}], "]"}]}]}], ",", "1"}], "}"}], ",", "1"}], 
+   "}"}], "]"}]], "Output",
+ CellLabel->"Out[152]//StandardForm="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -371,14 +1117,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{1403, 1068},
+WindowMargins->{{782, Automatic}, {128, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

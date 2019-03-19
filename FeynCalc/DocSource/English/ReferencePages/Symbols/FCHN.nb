@@ -1,0 +1,1013 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24708,       1004]
+NotebookOptionsPosition[     18638,        785]
+NotebookOutlinePosition[     19253,        809]
+CellTagsIndexPosition[     19174,        804]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.3", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/FCHN", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FCHN", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FCHN", "[", 
+   RowBox[{"x", ",", "i", ",", "j"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]is a chain of Dirac matrices x and is transformed into \
+FermionicChain[FCI[x],DiracIndex[i],DiracIndex[j]] by FeynCalcInternal."
+}], "Usage",
+ CellChangeTimes->{{3.761468795976832*^9, 3.761468806160301*^9}},
+ CellID->982511436],
+
+Cell["A standalone Dirac matrix with open Dirac indices", "Notes",
+ CellID->562724937],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], ",", "i", ",", "j"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.7614688258239098`*^9, {3.761468985587317*^9, 3.7614689858588943`*^9}},
+ CellLabel->"In[96]:=",
+ CellID->883461262],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm],
+     TraditionalForm], ")"}], 
+   RowBox[{
+    FormBox[
+     FormBox["i",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["j",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761468826589696*^9, 3.7614689990447187`*^9},
+ CellLabel->"Out[96]=",
+ CellID->1835872362]
+}, Open  ]],
+
+Cell["A chain of Dirac matrices with open Dirac indices", "Notes",
+ CellID->1618780636],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", "i", ",", "j"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{
+  3.7614688336094847`*^9, {3.761468988308559*^9, 3.761468995622402*^9}},
+ CellLabel->"In[95]:=",
+ CellID->2010253364],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], 
+   RowBox[{
+    FormBox[
+     FormBox["i",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["j",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.7614688340956173`*^9, 3.7614689967578363`*^9},
+ CellLabel->"Out[95]=",
+ CellID->663204944]
+}, Open  ]],
+
+Cell[TextData[{
+ "A single ",
+ Cell[BoxData[
+  OverscriptBox["u", "-"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor with an open Dirac index"
+}], "Notes",
+ CellChangeTimes->{{3.761468871421298*^9, 3.761468896304358*^9}},
+ CellID->1250331575],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{"SpinorUBar", "[", 
+    RowBox[{"p", ",", "m"}], "]"}], ",", "i"}], "]"}]], "Input",
+ CellChangeTimes->{3.761468840243532*^9},
+ CellLabel->"In[90]:=",
+ CellID->1134519360],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["u", "_"], "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["i",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761468840675346*^9},
+ CellLabel->"Out[90]=",
+ CellID->818754642]
+}, Open  ]],
+
+Cell[TextData[{
+ "A single ",
+ Cell[BoxData[
+  OverscriptBox["v", "-"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor with an open Dirac index"
+}], "Notes",
+ CellChangeTimes->{{3.7614689192712393`*^9, 3.7614689192713137`*^9}},
+ CellID->63600432],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{"SpinorVBar", "[", 
+    RowBox[{"p", ",", "m"}], "]"}], ",", "i"}], "]"}]], "Input",
+ CellChangeTimes->{3.761468908775094*^9},
+ CellLabel->"In[91]:=",
+ CellID->443709048],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["v", "_"], "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["i",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761468920595847*^9},
+ CellLabel->"Out[91]=",
+ CellID->1652644036]
+}, Open  ]],
+
+Cell[TextData[{
+ "A single ",
+ Cell[BoxData["u"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor with an open Dirac index"
+}], "Notes",
+ CellChangeTimes->{{3.761468871421298*^9, 3.761468896304358*^9}, {
+  3.761468939031314*^9, 3.7614689414202137`*^9}},
+ CellID->1458298795],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{"i", ",", 
+   RowBox[{"SpinorU", "[", 
+    RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.761468840243532*^9, {3.7614689517414217`*^9, 3.7614689581264353`*^9}},
+ CellLabel->"In[93]:=",
+ CellID->791949561],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"u", "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["i",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.761468840675346*^9, {3.761468952213572*^9, 3.761468958502739*^9}},
+ CellLabel->"Out[93]=",
+ CellID->1773819971]
+}, Open  ]],
+
+Cell[TextData[{
+ "A single ",
+ Cell[BoxData["v"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor with an open Dirac index"
+}], "Notes",
+ CellChangeTimes->{{3.7614689192712393`*^9, 3.761468947431448*^9}},
+ CellID->2030312156],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{"i", ",", 
+   RowBox[{"SpinorV", "[", 
+    RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.761468908775094*^9, {3.761468962984741*^9, 3.7614689660095787`*^9}},
+ CellLabel->"In[94]:=",
+ CellID->227593440],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"v", "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["i",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761468920595847*^9, 3.7614689663562717`*^9},
+ CellLabel->"Out[94]=",
+ CellID->2105031118]
+}, Open  ]],
+
+Cell[TextData[{
+ " ",
+ Cell[BoxData[
+  OverscriptBox["u", "-"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor contracted with a chain of Dirac matrices"
+}], "Notes",
+ CellChangeTimes->{{3.761468871421298*^9, 3.761468896304358*^9}, {
+  3.761469013193533*^9, 3.761469024266252*^9}},
+ CellID->1268031370],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", 
+   RowBox[{"SpinorUBar", "[", 
+    RowBox[{"p", ",", "m"}], "]"}], ",", "j"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.761468980756207*^9, {3.761469026613298*^9, 3.761469030082944*^9}},
+ CellLabel->"In[97]:=",
+ CellID->1380755633],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["u", "_"], "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ".", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["j",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761469030786222*^9},
+ CellLabel->"Out[97]=",
+ CellID->893522576]
+}, Open  ]],
+
+Cell[TextData[{
+ " ",
+ Cell[BoxData[
+  OverscriptBox["v", "-"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor contracted with a chain of Dirac matrices"
+}], "Notes",
+ CellChangeTimes->{{3.761468871421298*^9, 3.761468896304358*^9}, {
+  3.761469013193533*^9, 3.761469024266252*^9}, {3.761469054502943*^9, 
+  3.7614690587736*^9}},
+ CellID->867998080],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", 
+   RowBox[{"SpinorVBar", "[", 
+    RowBox[{"p", ",", "m"}], "]"}], ",", "j"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.761468980756207*^9, {3.761469026613298*^9, 3.761469030082944*^9}, {
+   3.761469062003161*^9, 3.761469062155045*^9}},
+ CellLabel->"In[98]:=",
+ CellID->1948837227],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["v", "_"], "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ".", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["j",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761469030786222*^9, 3.761469062614088*^9},
+ CellLabel->"Out[98]=",
+ CellID->78758291]
+}, Open  ]],
+
+Cell[TextData[{
+ " ",
+ Cell[BoxData["u"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor contracted with a chain of Dirac matrices"
+}], "Notes",
+ CellChangeTimes->{{3.761468871421298*^9, 3.761468896304358*^9}, {
+  3.761469013193533*^9, 3.761469024266252*^9}, {3.7614690821179256`*^9, 
+  3.7614690888378353`*^9}},
+ CellID->1238042528],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", "i", ",", 
+   RowBox[{"SpinorU", "[", 
+    RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.761468980756207*^9, {3.761469026613298*^9, 3.761469030082944*^9}, {
+   3.76146909437004*^9, 3.7614690972385063`*^9}},
+ CellLabel->"In[99]:=",
+ CellID->1936823151],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}],
+     TraditionalForm], ".", 
+    FormBox[
+     RowBox[{"u", "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["i",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.761469030786222*^9, 3.761469097699767*^9},
+ CellLabel->"Out[99]=",
+ CellID->229362152]
+}, Open  ]],
+
+Cell[TextData[{
+ " ",
+ Cell[BoxData["v"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " spinor contracted with a chain of Dirac matrices"
+}], "Notes",
+ CellChangeTimes->{{3.761468871421298*^9, 3.761468896304358*^9}, {
+  3.761469013193533*^9, 3.761469024266252*^9}, {3.7614690821179256`*^9, 
+  3.7614691039858*^9}},
+ CellID->1861495104],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHN", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", "i", ",", 
+   RowBox[{"SpinorV", "[", 
+    RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.761468980756207*^9, {3.761469026613298*^9, 3.761469030082944*^9}, {
+   3.76146909437004*^9, 3.761469108880446*^9}},
+ CellLabel->"In[100]:=",
+ CellID->1335889439],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], ".", 
+      FormBox[
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}],
+     TraditionalForm], ".", 
+    FormBox[
+     RowBox[{"v", "(", 
+      FormBox["p",
+       TraditionalForm], ",", 
+      FormBox["m",
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["i",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.761469030786222*^9, {3.761469097699767*^9, 3.761469109306473*^9}},
+ CellLabel->"Out[100]=",
+ CellID->2049458169]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{202, Automatic}, {Automatic, 93}},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[17118, 727, 100, 2, 54, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 19035, 797}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 14, 24, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 28, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 81, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1145, 49, 78, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1226, 53, 62, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1325, 59, 55, 1, 18, "KeywordsSection",
+ CellID->477174294],
+Cell[1383, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1465, 68, 65, 1, 18, "TemplatesSection",
+ CellID->1872225408],
+Cell[1533, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1630, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1715, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1799, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1918, 90, 53, 1, 18, "DetailsSection",
+ CellID->307771771],
+Cell[1974, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2040, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2112, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2179, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2251, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2315, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2379, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2445, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2526, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2630, 132, 47, 1, 62, "ObjectName",
+ CellID->1224892054],
+Cell[2680, 135, 391, 9, 89, "Usage",
+ CellID->982511436],
+Cell[3074, 146, 86, 1, 25, "Notes",
+ CellID->562724937],
+Cell[CellGroupData[{
+Cell[3185, 151, 264, 7, 26, "Input",
+ CellID->883461262],
+Cell[3452, 160, 579, 24, 29, "Output",
+ CellID->1835872362]
+}, Open  ]],
+Cell[4046, 187, 87, 1, 25, "Notes",
+ CellID->1618780636],
+Cell[CellGroupData[{
+Cell[4158, 192, 327, 10, 26, "Input",
+ CellID->2010253364],
+Cell[4488, 204, 783, 32, 29, "Output",
+ CellID->663204944]
+}, Open  ]],
+Cell[5286, 239, 256, 8, 25, "Notes",
+ CellID->1250331575],
+Cell[CellGroupData[{
+Cell[5567, 251, 230, 7, 26, "Input",
+ CellID->1134519360],
+Cell[5800, 260, 442, 18, 27, "Output",
+ CellID->818754642]
+}, Open  ]],
+Cell[6257, 281, 258, 8, 25, "Notes",
+ CellID->63600432],
+Cell[CellGroupData[{
+Cell[6540, 293, 229, 7, 26, "Input",
+ CellID->443709048],
+Cell[6772, 302, 443, 18, 27, "Output",
+ CellID->1652644036]
+}, Open  ]],
+Cell[7230, 323, 284, 8, 25, "Notes",
+ CellID->1458298795],
+Cell[CellGroupData[{
+Cell[7539, 335, 279, 8, 26, "Input",
+ CellID->791949561],
+Cell[7821, 345, 465, 18, 27, "Output",
+ CellID->1773819971]
+}, Open  ]],
+Cell[8301, 366, 235, 7, 25, "Notes",
+ CellID->2030312156],
+Cell[CellGroupData[{
+Cell[8561, 377, 277, 8, 26, "Input",
+ CellID->227593440],
+Cell[8841, 387, 440, 17, 27, "Output",
+ CellID->2105031118]
+}, Open  ]],
+Cell[9296, 407, 314, 9, 25, "Notes",
+ CellID->1268031370],
+Cell[CellGroupData[{
+Cell[9635, 420, 385, 11, 26, "Input",
+ CellID->1380755633],
+Cell[10023, 433, 854, 35, 29, "Output",
+ CellID->893522576]
+}, Open  ]],
+Cell[10892, 471, 360, 10, 25, "Notes",
+ CellID->867998080],
+Cell[CellGroupData[{
+Cell[11277, 485, 435, 12, 26, "Input",
+ CellID->1948837227],
+Cell[11715, 499, 875, 35, 29, "Output",
+ CellID->78758291]
+}, Open  ]],
+Cell[12605, 537, 344, 9, 25, "Notes",
+ CellID->1238042528],
+Cell[CellGroupData[{
+Cell[12974, 550, 433, 12, 26, "Input",
+ CellID->1936823151],
+Cell[13410, 564, 849, 34, 27, "Output",
+ CellID->229362152]
+}, Open  ]],
+Cell[14274, 601, 340, 9, 25, "Notes",
+ CellID->1861495104],
+Cell[CellGroupData[{
+Cell[14639, 614, 432, 12, 26, "Input",
+ CellID->1335889439],
+Cell[15074, 628, 878, 35, 27, "Output",
+ CellID->2049458169]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16001, 669, 57, 1, 43, "TutorialsSection",
+ CellID->250839057],
+Cell[16061, 672, 45, 1, 16, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16143, 678, 83, 1, 30, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[16229, 681, 58, 1, 16, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16324, 687, 65, 1, 30, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[16392, 690, 49, 1, 16, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16478, 696, 55, 1, 30, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[16536, 699, 43, 1, 16, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16616, 705, 57, 1, 30, "MoreAboutSection",
+ CellID->38303248],
+Cell[16676, 708, 46, 1, 16, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[16737, 712, 356, 11, 69, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[17118, 727, 100, 2, 54, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[17221, 731, 125, 3, 32, "ExampleSection",
+ CellID->1293636265],
+Cell[17349, 736, 148, 3, 20, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[17522, 743, 127, 3, 20, "ExampleSection",
+ CellID->2061341341],
+Cell[17652, 748, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[17785, 753, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[17930, 759, 131, 3, 20, "ExampleSection",
+ CellID->258228157],
+Cell[18064, 764, 142, 3, 20, "ExampleSection",
+ CellID->2123667759],
+Cell[18209, 769, 135, 3, 20, "ExampleSection",
+ CellID->1305812373],
+Cell[18347, 774, 140, 3, 20, "ExampleSection",
+ CellID->1653164318],
+Cell[18490, 779, 132, 3, 20, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

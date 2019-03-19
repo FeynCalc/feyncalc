@@ -199,13 +199,12 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{"DiracSigma", "[", 
-   RowBox[{
-    RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
-    RowBox[{"GA", "[", "\[Beta]", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"GA", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[1]:=",
+ CellLabel->"In[80]:=",
  CellID->1797257280],
 
 Cell[BoxData[
@@ -217,16 +216,15 @@ Cell[BoxData[
     FormBox["\[Beta]",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[1]=",
- CellID->669982831]
+ CellLabel->"Out[80]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSigmaExplicit", "[", "t1", "]"}]], "Input",
+ RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[2]:=",
+ CellLabel->"In[81]:=",
  CellID->350892177],
 
 Cell[BoxData[
@@ -262,20 +260,18 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[2]=",
- CellID->249746681]
+ CellLabel->"Out[81]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"DiracSigma", "[", 
-   RowBox[{
-    RowBox[{"GA", "[", "\[Beta]", "]"}], ",", 
-    RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Beta]", "]"}], ",", 
+   RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[3]:=",
+ CellLabel->"In[82]:=",
  CellID->334267816],
 
 Cell[BoxData[
@@ -288,20 +284,18 @@ Cell[BoxData[
      FormBox["\[Beta]",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[3]=",
- CellID->838537027]
+ CellLabel->"Out[82]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{"DiracSigma", "[", 
-   RowBox[{
-    RowBox[{"GS", "[", "p", "]"}], ",", 
-    RowBox[{"GS", "[", "q", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GS", "[", "p", "]"}], ",", 
+   RowBox[{"GS", "[", "q", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[4]:=",
+ CellLabel->"In[83]:=",
  CellID->938175920],
 
 Cell[BoxData[
@@ -313,16 +307,15 @@ Cell[BoxData[
     FormBox["q",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[4]=",
- CellID->1981550461]
+ CellLabel->"Out[83]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSigmaExplicit", "[", "t3", "]"}]], "Input",
+ RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[5]:=",
+ CellLabel->"In[84]:=",
  CellID->493035408],
 
 Cell[BoxData[
@@ -366,16 +359,24 @@ Cell[BoxData[
            TraditionalForm], "_"],
          TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[5]=",
- CellID->360348225]
+ CellLabel->"Out[84]="]
 }, Open  ]],
 
+Cell["The symmetry propery is built-in", "Notes"],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2", ",", "t3"}], "]"}]], "Input",
- CellTags->"DiracSigma",
- CellLabel->"In[6]:=",
- CellID->1941239189]
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[85]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[85]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -438,14 +439,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{700, 718},
+WindowMargins->{{656, Automatic}, {Automatic, 216}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

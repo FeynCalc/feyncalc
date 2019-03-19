@@ -243,9 +243,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["This represents a four-dimensional metric tensor.", "Text",
- CellTags->"Pair",
- CellID->1660838641],
+Cell["This represents a four-dimensional metric tensor", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -280,9 +278,7 @@ Cell[BoxData[
  CellID->1133543032]
 }, Open  ]],
 
-Cell["This is a D-dimensional metric tensor.", "Text",
- CellTags->"Pair",
- CellID->1732482457],
+Cell["This is a D-dimensional metric tensor", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -318,6 +314,32 @@ Cell[BoxData[
  CellID->395860998]
 }, Open  ]],
 
+Cell["\<\
+If the Lorentz indices live in different dimensions, this gets resolved \
+according to the t'Hoft-Veltman-Breitenlohner-Maison prescription\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Alpha]", ",", 
+     RowBox[{"n", "-", "4"}]}], "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
+ CellTags->"Pair",
+ CellLabel->"In[4]:=",
+ CellID->1343625376],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellTags->"Pair",
+ CellLabel->"Out[4]="]
+}, Open  ]],
+
+Cell["A 4-dimensional Lorentz vector", "Notes"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -347,6 +369,38 @@ Cell[BoxData[
  CellLabel->"Out[3]=",
  CellID->53465480]
 }, Open  ]],
+
+Cell["A D-dimensional Lorentz vector", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Alpha]", ",", "D"}], "]"}], ",", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", ",", "D"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Pair",
+ CellLabel->"In[5]:=",
+ CellID->106742008],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    FormBox["p",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox[
+    FormBox["\[Alpha]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"Pair",
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell["4-dimensional scalar products of Lorentz vectors", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -496,28 +550,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", 
-      RowBox[{"n", "-", "4"}]}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}], "//", 
-  "Contract"}]], "Input",
- CellTags->"Pair",
- CellLabel->"In[9]:=",
- CellID->1343625376],
-
-Cell[BoxData[
- FormBox["0", TraditionalForm]], "Output",
- CellTags->"Pair",
- CellLabel->"Out[9]=",
- CellID->1776583038]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"ExpandScalarProduct", "[", 
   RowBox[{"Pair", "[", 
    RowBox[{
@@ -647,7 +679,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

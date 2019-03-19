@@ -117,8 +117,7 @@ Cell["Zeta2", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["Zeta2"], "InlineFormula"],
- " \[LineSeparator]",
- "denotes Zeta[2]. N[Zeta[2]] evaluates to N[Zeta[2]]."
+ " \[LineSeparator]denotes Zeta[2]."
 }], "Usage",
  CellID->982511436],
 
@@ -240,6 +239,18 @@ Cell[BoxData[
  CellTags->"Zeta2",
  CellLabel->"Out[3]=",
  CellID->494970297]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Conjugate", "[", "Zeta2", "]"}]], "Input",
+ CellLabel->"In[202]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Zeta]", "(", "2", ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[202]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -304,13 +315,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{851, Automatic}, {Automatic, 104}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -117,8 +117,7 @@ Cell["FeynAmpDenominatorExplicit", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FeynAmpDenominatorExplicit", "[", "exp", "]"}]], 
-  "InlineFormula"],
+  RowBox[{"FeynAmpDenominatorExplicit", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]",
  "changes each occurence of PropagatorDenominator[a,b] in exp into \
 1/(ScalarProduct[a,a]-b^2) and replaces FeynAmpDenominator by Identity."
@@ -204,6 +203,30 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ RowBox[{"Options", "[", "FeynAmpDenominatorExplicit", "]"}]], "Input",
+ CellLabel->"In[69]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Denominator", "\[Rule]", "False"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "False"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Head", "\[Rule]", "Identity"}], ",", 
+    RowBox[{"Mandelstam", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"MomentumCombine", "\[Rule]", "False"}], ",", 
+    RowBox[{"SmallVariable", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[69]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{
   RowBox[{"FAD", "[", 
    RowBox[{
@@ -214,7 +237,7 @@ Cell[BoxData[
       RowBox[{"q", "-", "p"}], ",", "0"}], "}"}]}], "]"}], "//", 
   "FCI"}]], "Input",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[67]:=",
  CellID->1979434489],
 
 Cell[BoxData[
@@ -222,21 +245,44 @@ Cell[BoxData[
   FractionBox["1", 
    RowBox[{
     RowBox[{"(", 
-     RowBox[{
-      SuperscriptBox[
-       FormBox["q",
-        TraditionalForm], "2"], "-", 
-      SuperscriptBox["m", "2"]}], ")"}], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
+     InterpretationBox[
       RowBox[{
-       FormBox["q",
-        TraditionalForm], "-", 
-       FormBox["p",
-        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q, D], 
+        FeynCalc`Momentum[$CellContext`q, D]], "-", $CellContext`m^2],
+      Editable->False], ")"}], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+       FeynCalc`Momentum[$CellContext`q, D], -
+        FeynCalc`Momentum[$CellContext`p, D] + 
+       FeynCalc`Momentum[$CellContext`q, D]]],
+     Editable->False]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"Out[1]=",
- CellID->184591534]
+ CellLabel->"Out[67]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,7 +292,7 @@ Cell[BoxData[
   RowBox[{"FeynAmpDenominatorExplicit", "[", "%", "]"}], "//", 
   "FCE"}]], "Input",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"In[2]:=",
+ CellLabel->"In[68]:=",
  CellID->1414487344],
 
 Cell[BoxData[
@@ -296,8 +342,7 @@ Cell[BoxData[
          TraditionalForm], "2"],
        TraditionalForm]}], ")"}]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"Out[2]=",
- CellID->1018418607]
+ CellLabel->"Out[68]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -393,13 +438,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{641, Automatic}, {Automatic, 125}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

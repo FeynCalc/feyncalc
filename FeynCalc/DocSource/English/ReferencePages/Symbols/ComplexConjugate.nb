@@ -164,10 +164,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["ComplexIndex",
+ ButtonBox["FCRenameDummyIndices",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/ComplexIndex",
-  ButtonNote->"ComplexIndex"],
+  ButtonData:>"paclet:FeynCalc/ref/FCRenameDummyIndices",
+  ButtonNote->"FCRenameDummyIndices"],
  ", ",
  ButtonBox["FermionSpinSum",
   BaseStyle->"Link",
@@ -463,6 +463,187 @@ Cell[BoxData[
  CellID->588930123]
 }, Open  ]],
 
+Cell["\<\
+Since version 9.3 ComplexConjugate will automatically rename the dummy \
+indices.\
+\>", "Text",
+ CellTags->"ComplexConjugate",
+ CellID->1326672219],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], 
+  RowBox[{
+   RowBox[{"LC", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
+   RowBox[{"p1", ",", "p2"}], "]"}]}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], " ", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p2",
+         TraditionalForm], "_"],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[4]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ComplexConjugate", "[", "%", "]"}]], "Input",
+ CellLabel->"In[5]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"$AL", "\[InvisibleApplication]", 
+        RowBox[{"(", "$26", ")"}]}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"$AL", "\[InvisibleApplication]", 
+        RowBox[{"(", "$27", ")"}]}],
+       TraditionalForm],
+      TraditionalForm]]}], " ", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox[
+       RowBox[{"$AL", "\[InvisibleApplication]", 
+        RowBox[{"(", "$27", ")"}]}],
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       RowBox[{"$AL", "\[InvisibleApplication]", 
+        RowBox[{"(", "$26", ")"}]}],
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell["\<\
+This behavior can be disabled by setting the option FCRenameDummyIndices to \
+False\
+\>", "Text",
+ CellTags->"ComplexConjugate",
+ CellID->346435355],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ComplexConjugate", "[", 
+  RowBox[{"%%", ",", 
+   RowBox[{"FCRenameDummyIndices", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[6]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}], " ", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[6]="]
+}, Open  ]],
+
+Cell["\<\
+Notice that SpinorUBar and SpinorU are only input functions. Internally they \
+are converted to Spinor objects.\
+\>", "Text",
+ CellTags->"ComplexConjugate",
+ CellID->833839056],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -566,14 +747,7 @@ Cell[BoxData[
  CellTags->"ComplexConjugate",
  CellLabel->"Out[10]=",
  CellID->1665250585]
-}, Open  ]],
-
-Cell["\<\
-Notice that SpinorUBar and SpinorU are only input functions. Internally they \
-are converted to Spinor objects.\
-\>", "Text",
- CellTags->"ComplexConjugate",
- CellID->833839056]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -637,13 +811,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{385, Automatic}, {209, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

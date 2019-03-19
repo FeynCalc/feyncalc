@@ -213,26 +213,39 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "DiracSimplify", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[1]:=",
+ CellLabel->"In[7]:=",
  CellID->2098245619],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
+    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracCanonical", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracEquation", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracSigmaExplicit", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracSimpCombine", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracSubstitute5", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracTraceEvaluate", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsContract", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
     RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expand2", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCCheckSyntax", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
     RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
-    RowBox[{"SirlinRelations", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
     RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"InsideDiracTrace", "\[Rule]", "False"}]}], "}"}], 
+    RowBox[{"InsideDiracTrace", "\[Rule]", "False"}], ",", 
+    RowBox[{"SirlinSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"SpinorChainTrick", "\[Rule]", "True"}], ",", 
+    RowBox[{"ToDiracGamma67", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[1]=",
- CellID->1444421220]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell["This is a string of Dirac matrices in four dimensions. ", "Text",
@@ -1868,7 +1881,142 @@ Cell[BoxData[
   "]"}]], "Input",
  CellTags->"DiracSimplify",
  CellLabel->"In[20]:=",
- CellID->1926028871]
+ CellID->1926028871],
+
+Cell["\<\
+Dirac traces are evaluated on the immediately, unless the option \
+DiracTraceEvaluate is set to False\
+\>", "Text",
+ CellTags->"DiracSimplify",
+ CellID->1876292209],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{"GA", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[10]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[10]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{"GA", "[", 
+     RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}], "]"}], ",", 
+   RowBox[{"DiracTraceEvaluate", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[12]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[12]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1932,13 +2080,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{378, Automatic}, {Automatic, 232}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
