@@ -19,7 +19,7 @@
 Tdec::usage = "Tdec[{q,mu}, {p}]; \
 Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or \
 Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] \
-calculates the tensorial decomposition formulas. \
+calculates the tensorial decomposition formulas for Lorentzian integrals. \
 The more common ones are saved in TIDL.";
 
 UseParallelization::usage =

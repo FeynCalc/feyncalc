@@ -17,8 +17,8 @@
 
 
 CartesianToLorentz::usage=
-"CartesianToLorentz[expr] rewrites Cartesian tensors in form of Lorentz tensors \
-(when possible). Using options one can specify which types of tensors
+"CartesianToLorentz[exp] rewrites Cartesian tensors in form of Lorentz tensors \
+(when possible). Using options one can specify which types of tensors \
 should be converted.";
 
 CartesianToLorentz::fail=

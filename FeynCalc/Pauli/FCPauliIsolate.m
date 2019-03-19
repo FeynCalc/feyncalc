@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCPauliIsolate::usage =
-"FCPauliIsolate[expr,{q1,q2,...}] wraps chains of Pauli matrices into heads specified \
+"FCPauliIsolate[exp] wraps chains of Pauli matrices into heads specified \
 by the user " <> ToString[
 Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCPauliIsolate"],
 StandardForm];

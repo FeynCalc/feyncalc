@@ -26,10 +26,10 @@ PositiveNumber::usage =
 "PositiveNumber is a data type. E.g. DataType[Epsilon, PositiveNumber] = True (by default). ";
 
 FCTensor::usage =
-"FCTensor is a data type. E.g. DataType[R, FCTensor] = True. ";
+"FCTensor is a data type. E.g. DataType[R, FCTensor] = True.";
 
 FCVariable::usage =
-"FCVariable is a data type. E.g. DataType[R, Variable] = True. ";
+"FCVariable is a data type. E.g. DataType[z, FCVariable] = True.";
 
 DataType::usage =
 "DataType[exp, type] = True   defines the object exp to have datatype type. \

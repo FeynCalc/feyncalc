@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopPropagatorPowersCombine::usage =
-"FCLoopPropagatorPowersCombine[expr] combines the same propagators in a \
+"FCLoopPropagatorPowersCombine[exp] combines the same propagators in a \
 FeynAmpDenominator to one propagator raised to an integer power.";
 
 FCLoopPropagatorPowersCombine::failmsg =

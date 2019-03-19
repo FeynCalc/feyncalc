@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FermionicChainSimplify::usage =
-"FermionicChainSimplify[expr] simplifies chains of Dirac matrices with explicit \
+"FermionicChainSimplify[exp] simplifies chains of Dirac matrices with explicit \
 Dirac indices wrapped with a head FermionicChain.";
 
 FermionicChainSimplify::failmsg =
@@ -162,6 +162,9 @@ fermionicChainEval[rest_. FermionicChain[chain1_,a_,i_DiracIndex] FermionicChain
 
 fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex,i_DiracIndex]]:=
 	optTraceOfOne fermionicChainEval[rest];
+
+fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex,j_DiracIndex] DiracIndexDelta[j_DiracIndex,k_DiracIndex]]:=
+	fermionicChainEval[rest DiracIndexDelta[i,k]];
 
 fermionicChainEval[rest_. DiracIndexDelta[i_DiracIndex, j_DiracIndex]^2]:=
 	optTraceOfOne fermionicChainEval[rest]/; i=!=j;

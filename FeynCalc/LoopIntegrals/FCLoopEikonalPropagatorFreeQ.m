@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopEikonalPropagatorFreeQ::usage =
-"FCLoopEikonalPropagatorFreeQ[int] checks if the integral is free of eikonal propagators \
+"FCLoopEikonalPropagatorFreeQ[exp] checks if the integral is free of eikonal propagators \
 1/[p.q+x]. If the option First is set to False, propagators that have both a quadratic and \
 linear piece, e.g. 1/[(q-p)^2+q.r+x] will also count as eikonal propagators. The option Momentum can be \
 used to check for the presence of eikonal propagators only with respect to particular \
 momenta. The check is performed only for StandardPropagatorDenominator and \
-CartesianPropagatorDenominator";
+CartesianPropagatorDenominator.";
 
 FCLoopEikonalPropagatorFreeQ::failmsg =
 "FCLoopEikonalPropagatorFreeQ has encountered a fatal problem and must abort the computation. \

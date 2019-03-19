@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCRerouteMomenta::usage =
-"FCRerouteMomenta[expr,{p1,p2,...},{k1,k2,...}] changes the routing of the \
+"FCRerouteMomenta[exp,{p1,p2,...},{k1,k2,...}] changes the routing of the \
 momenta by exploiting the 4-momentum conservation law p1+p2+... = k1+k2+... \
 The main aim of this function is to simplify the input expression by replacing \
 simple linear combinations of the external momenta with shorter expressions. \

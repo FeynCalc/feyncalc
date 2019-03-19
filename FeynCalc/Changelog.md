@@ -65,7 +65,7 @@
 * Completely removed the option `DimensionalReduction`. Reason: It looks like some attempt to implement dimensional reduction which, however, never made it to a properly working feature (329f70ed)
 * Removed the old syntax in `DiracSimplify` where matrices are entered using commas (not dots). Reason: This is not used anywhere in code and is not a good way to enter expressions. (d990e683)
 * Removed `Chisholm2`. Reason: The functionality of this function was merged into `Chisholm` and can be accessed via the option `Mode->2`. (45496b34)
-* `$SpinorChainMinimal` and `ChisholmSpinor`. This functionality is now available via `SirlinSimplify` (153c344d)
+* Removed `$SpinorChainMinimal` and `ChisholmSpinor`. (153c344d)
 * Removed the option `Dimension` in `Eps`. Reason: `Eps` is an `FCI` object so that the dimension of the indices or momenta is always unambiguous (a82bb76e)
 * Removed `MomentumCombine2`. Reason: it only duplicated `MomentumCombine`. (4233f90e)
 * Removed `Upper`, `Lower`, `Contract1`, `$Covariant` and `$LorentzIndices`. Reason: With the introduction of Cartesian tensors in `FeynCalc` 9.3, there is no more ambiguity regarding the positions of the indices. Moreover, `Upper` and `Lower` never were fully integrated into `FeynCalc`. (76a6ae59) (9a3ba199)
@@ -85,7 +85,7 @@
 * Renamed `PropagatorDenominatorExplicit` to `FeynAmpDenominatorExplicit`. Reason: more consistent naming scheme. This way it fits to other functions that start with `FeynAmpDenominator`. Of course, `PropagatorDenominatorExplicit` still works in order not to break the existing codes. (8bfefcda)
 * Renamed `SquareAmplitude` to `SquareAmplitude2`. Reason: `SquareAmplitude2` is an experimental function that never became sufficiently stable. The name `SquareAmplitude` will be used for a different function. (23667615)
 * Removed a call to `ChangeDimension` from `Explicit`. Reason: The `Dimension` option should already handle this, so that we don't need to call another function. (d1dd1def)
-* Renamed the `PDEHead` option in `PropagatorDenominatorExplicit` to `Head`. (51fc4da4)
+* Renamed the `PDEHead` option in `FeynAmpDenominatorExplicit` to `Head`. (51fc4da4)
 
 * Modified the syntax of `FCLoopBasisExtract` so that the dimensions are now given via the `SetDimensions` option. Reason: This unifies the behavior among the other `FCLoopBasis*` functions. Furthermore, the new `FCTopology` option allows to include loop momenta that are not actually present in the input expression. This is useful when working with integral topologies. (8ab84fdd)
 
@@ -94,11 +94,11 @@
 
 ### Noncommutative algebra
 
-* Added new function `DiracSigmaExpand` that handles expansions of `DiracSigmas`. (2ed72ef9)
+* Added new function `DiracSigmaExpand` that handles expansions of `DiracSigma`s. (2ed72ef9)
 
     * Example: Expand a suitable `DiracSigma`
 
-              DiracSigma[GSD[p]+GSD[q],GSD[r]]
+              DiracSigma[GSD[p]+GSD[q],GSD[r]]//DiracSigmaExpand
 
 * Outsourced `DiracSubstitute67` out of `DiracSimplify`. Now it is a proper function for replacing chirality projectors with their definitions. (9efa4451)
 
@@ -569,7 +569,10 @@ The support for the manipulation of the new integral is still somewhat experimen
               
               (* Pauli matrices with a Lorentz index *)
               {SI[mu], SID[mu], SIE[mu]}
-              
+
+              (* Pauli matrices contracted with a 4-vector *)
+              {SIS[p], SISD[p], SISE[p]}             
+
               (* Pauli matrices with a spatial index *)
               {CSI[i], CSID[i], CSIE[i]}
               
@@ -725,10 +728,10 @@ The support for the manipulation of the new integral is still somewhat experimen
 
 
               FCCheckSyntax[GA[mu]*GA[nu]]
-              (* Typical error, using Times instead of Dot in noncommutative products *)
+              (* Typical mistake, using Times instead of Dot in noncommutative products *)
               
               FCCheckSyntax[FV[p, mu]*FV[q, mu]*FV[r, mu]]
-              (* Another common error, Einstein summation convention violated *)
+              (* Another common mistake, Einstein summation convention violated *)
 
 
 * Added a new function `FCCompareResults`. It offers a convenient way to compare intermediate of final results to the known values. This function was originally written for example calculations to compare the final results with the literature. (1dab575b) (6287947b)

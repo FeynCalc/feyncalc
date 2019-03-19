@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 ThreeDivergence::usage =
-"ThreeDivergence[exp, CV[p, i]] calculates the partial derivative of exp w.r.t. p(mu). \
+"ThreeDivergence[exp, CV[p, i]] calculates the partial derivative of exp w.r.t. p^i. \
 ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple derivative.";
 
 ThreeDivergence::notvec=

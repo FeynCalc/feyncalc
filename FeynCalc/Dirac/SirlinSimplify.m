@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 SirlinSimplify::usage =
-"SirlinSimplify[x] simplifies spinor chains that contain Dirac matrices \
+"SirlinSimplify[exp] simplifies spinor chains that contain Dirac matrices \
 using relations derived by Sirlin in Nuclear Physics B192 (1981) 93-99. \
 Contrary to the original paper, the sign of the Levi-Civita tensor is \
 choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";

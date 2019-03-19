@@ -18,7 +18,7 @@
 
 
 FCCheckSyntax::usage =
-"FCCheckSyntax[expr] attempts to detect mistakes and inconsistencies \
+"FCCheckSyntax[exp] attempts to detect mistakes and inconsistencies \
 in the user input. The function returns the original expression but \
 will abort the evaluation if it thinks that the input is incorrect. \n
 Notice that false positives are possible and it is not guaranteed \

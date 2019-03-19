@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCDiracIsolate::usage =
-"FCDiracIsolate[expr,{q1,q2,...}] wraps chains of Dirac matrices into heads specified \
+"FCDiracIsolate[exp] wraps chains of Dirac matrices into heads specified \
 by the user " <> ToString[
 Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCDiracIsolate"],
 StandardForm];

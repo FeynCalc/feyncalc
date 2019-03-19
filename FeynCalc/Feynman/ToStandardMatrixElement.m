@@ -16,8 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 ToStandardMatrixElement::usage =
-"ToStandardMatrixElement[expr] wraps Dirac structures, color structures and
-polarization vectors with the head StandardMatrixElement.";
+"ToStandardMatrixElement[exp] wraps Dirac structures, color structures and \
+polarization vectors with the head StandardMatrixElement. \
+The idea of having standard matrix elements stems from A. Denner's \
+\"Techniques for the calculation of electroweak radiative corrections \
+at the one-loop level and results for W-physics at LEP200\", \
+cf. arXiv:0709.1075.";
 
 (* ------------------------------------------------------------------------ *)
 

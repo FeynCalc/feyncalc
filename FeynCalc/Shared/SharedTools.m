@@ -55,8 +55,8 @@ The only reason for introducing FCDuplicateFreeQ is that DuplicateFreeQ is not a
 in Mathematica 8 and 9, which are still supported by FeynCalc.";
 
 FCGetNotebookDirectory::usage=
-"FCGetNotebookDirectory is a simple convenience function that returns the directory \
-in which the current notebook or .m file is located. It also works when the FrontEnd
+"FCGetNotebookDirectory[] is a convenience function that returns the directory \
+in which the current notebook or .m file is located. It also works when the FrontEnd \
 is not available.";
 
 FCFactorOut::usage=
@@ -72,17 +72,17 @@ FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the 
 performance."
 
 FCPatternFreeQ::usage =
-"FCPatternFreeQ[{expr}] yields True if {expr} does not contain any \
+"FCPatternFreeQ[{exp}] yields True if {exp} does not contain any \
 pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
-FCPatternFreeQ[{expr},{h1,h2,...}] checks that in addition to the pattern \
+FCPatternFreeQ[{exp},{h1,h2,...}] checks that in addition to the pattern \
 objects, no heads h1, h2, ... are present.";
 
 FCProgressBar::usage =
 "FCProgressBar[text, i, total] is a simple auxiliary function that can \
 be used to display the progress of a certain evaluation, e.g. mapping a list \
 of integrals to some function. Here i is the number of the current step \
-while total denotes the overall number of steps. A simple usage example
-is Table[FCProgressBar[\"Calculating integral \", i, 10], {i, 1, 10}]";
+while total denotes the overall number of steps. A simple usage example \
+is Table[FCProgressBar[\"Calculating integral \", i, 10], {i, 1, 10}].";
 
 FCReloadFunctionFromFile::usage =
 "FCReloadFunctionFromFile[function, path] is an auxiliary function that \
@@ -94,14 +94,14 @@ of the given function, there might also be unknown side effects. The function is
 not meant to be invoked by the normal users. ";
 
 FCReplaceAll::usage=
-"FCReplaceAll[expr, ru1, ...] is like ReplaceAll, but it also allows to apply multiple \
-replacement rules sequentially. Instead of doing expr /. ru1 /. ru2 /. ru3 one can just
-write FCReplaceAll[expr, ru1, ru2, ru3].";
+"FCReplaceAll[exp, ru1, ...] is like ReplaceAll, but it also allows to apply multiple \
+replacement rules sequentially. Instead of doing exp /. ru1 /. ru2 /. ru3 one can just \
+write FCReplaceAll[exp, ru1, ru2, ru3].";
 
 FCReplaceRepeated::usage=
-"FCReplaceRepeated[expr, ru1, ...] is like ReplaceRepeated, but it also allows to apply multiple \
-replacement rules sequentially. Instead of doing expr //. ru1 //. ru2 //. ru3 one can just
-write FCReplaceRepeated[expr, ru1, ru2, ru3].";
+"FCReplaceRepeated[exp, ru1, ...] is like ReplaceRepeated, but it also allows to apply multiple \
+replacement rules sequentially. Instead of doing exp //. ru1 //. ru2 //. ru3 one can just \
+write FCReplaceRepeated[exp, ru1, ru2, ru3].";
 
 FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
@@ -109,7 +109,7 @@ those variables. This works both on sums and products. The output \
 is provided in the form of a two element list. One can recover the \
 original expression by applying Total to that list.";
 
-FCProductSplit::usage = "FCProductSplit[expr,{v1, v2, ...}] splits expr \
+FCProductSplit::usage = "FCProductSplit[exp,{v1, v2, ...}] splits exp \
 into two products, where the first one is free  of \
 v1, v2, ... and the second one contains those variables. \
 The output is provided in the form of a two element list. One can recover the \

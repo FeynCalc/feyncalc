@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopRemoveNegativePropagatorPowers::usage =
-"FCLoopRemoveNegativePropagatorPowers[expr] rewrites propagators raised to integer \
+"FCLoopRemoveNegativePropagatorPowers[exp] rewrites propagators raised to integer \
 powers as products.";
 
 FCLoopRemoveNegativePropagatorPowers::failmsg =

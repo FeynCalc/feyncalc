@@ -87,7 +87,7 @@ NPointTo4Point[pref_. fad_FeynAmpDenominator,qu_, OptionsPattern[]]:=
 	Block[{pp, res, tim,pl,ml, termHold,tmp, factoring},
 
 
-		If[	!FreeQ2[{sps fad}, FeynCalc`Package`NRStuff],
+		If[	!FreeQ2[{pref fad}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
 		];

@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FourDivergence::usage =
-"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t. p(mu). \
+"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t. p^mu. \
 FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple derivative.";
 
 PartialFourVector::usage=

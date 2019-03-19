@@ -103,19 +103,19 @@ $FCTensorList::usage =
 $FCShowIEta::usage =
 "The boolean setting of $FCShowIEta detrmines whether I \[Eta] should \
 be displayed in the typesetting of GFAD and GenericPropagatorDenominator \
-objects or not. This setting affects only the  TraditionalForm typesetting \
+objects or not. This setting affects only the TraditionalForm typesetting \
 and has absolutely no influence on the internal handling of propagator \
 denominators in FeynCalc.";
 
 FCSetMetricSignature::usage =
 "FCSetMetricSignature sets the signature of the Minkowski metric used when \
-working with Cartesian objects, like CartPair, CartIndex, CartMomentum etc. \
+working with Cartesian objects, like CartesianPair, CartesianIndex, CartesianMomentum etc. \
 The default choice is (1,-1,-1,-1) which corresponds to \
 FCSetMetricSignature[{1,-1}]";
 
 FCGetMetricSignature::usage =
-"FCGetMetricSignature returns the signature of the Minkowski metric used when \
-working with Cartesian objects, like CartPair, CartIndex, CartMomentum etc. \
+"FCGetMetricSignature[] returns the signature of the Minkowski metric used when \
+working with Cartesian objects, like CartesianPair, CartesianIndex, CartesianMomentum etc. \
 {1,-1} corresponds to (1,-1,-1,-1) and {-1,1} means (-1, 1, 1, 1)";
 
 FCPrint::usage =

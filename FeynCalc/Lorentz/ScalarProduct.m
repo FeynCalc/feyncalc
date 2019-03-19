@@ -16,28 +16,26 @@
 (* ------------------------------------------------------------------------ *)
 
 ScalarProduct::usage =
-"ScalarProduct[p, q] is the input for scalar product. \
-ScalarProduct[p] is equivalent to ScalarProduct[p, p]. \
-Expansion of sums of momenta in ScalarProduct is done with \
-ExpandScalarProduct. Scalar products may be set, e.g. \
+"ScalarProduct[p, q] is the input for the scalar product of two \
+Lorentz vectors p and q. ScalarProduct[p] is equivalent to \
+ScalarProduct[p, p]. Expansion of sums of momenta in ScalarProduct is
+done with ExpandScalarProduct. Scalar products may be set, e.g. via \
 ScalarProduct[a, b] = m^2; but a and b may not contain sums. \
-Note that ScalarProduct[a, b] = m^2 actually sets also: \
-Pair[Momentum[a, ___], Momentum[b, ___]] = m^2 and \
-SPD[a,b] = m^2 and SP[a,b]=m^2. \
-It is enouraged to always set ScalarProduct's BEFORE any \
-calculation. This improves the performance of FeynCalc .";
+Note that ScalarProduct[a, b] = m^2 actually sets Lorentzian scalar products \
+in different dimensions specified by the value of the SetDimensions option. \
+It is highly recommended to set ScalarProduct's BEFORE any \
+calculation. This improves the performance of FeynCalc.";
 
 CartesianScalarProduct::usage =
-"CartesianScalarProduct[p, q] is the input for scalar product. \
-CartesianScalarProduct[p] is equivalent to CartesianScalarProduct[p, p]. \
-Expansion of sums of momenta in CartesianScalarProduct is done with \
-ExpandScalarProduct. Scalar products may be set, e.g. \
-CartesianScalarProduct[a, b] = m^2; but a and b may not contain sums. \
-Note that CartesianScalarProduct[a, b] = m^2 actually sets also: \
-CartesianPair[CartesianMomentum[a, ___], CartesianMomentum[b, ___]] = m^2 and \
-CSPD[a,b] = m^2 and CSP[a,b]=m^2. \
-It is enouraged to always set CartesianScalarProduct's BEFORE any \
-calculation. This improves the performance of FeynCalc .";
+"CartesianScalarProduct[p, q] is the input for the scalar product of two \
+Cartesian vectors p and q. CartesianScalarProduct[p] is equivalent to \
+CartesianScalarProduct[p, p]. Expansion of sums of momenta in CartesianScalarProduct is
+done with ExpandScalarProduct. Scalar products may be set, e.g. via \
+ScalarProduct[a, b] = m^2; but a and b may not contain sums. \
+Note that ScalarProduct[a, b] = m^2 actually sets Cartesian scalar products \
+in different dimensions specified by the value of the SetDimensions option. \
+It is highly recommended to set ScalarProduct's BEFORE any \
+calculation. This improves the performance of FeynCalc.";
 
 SetTemporalComponent::usage =
 "SetTemporalComponent[p, val] sets the value of the temporal

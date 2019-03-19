@@ -1661,6 +1661,23 @@ SpinorVBar /:
 	MakeBoxes[SpinorVBar[p_,0,___], TraditionalForm]:=
 		RowBox[{OverscriptBox["v", "_"],"(",TBox[p],")"}];
 
+
+SpinorUBarD /:
+	MakeBoxes[SpinorUBarD[p_,m___], TraditionalForm]:=
+		ToBoxes[SpinorUBar[p,m],TraditionalForm];
+
+SpinorVBarD /:
+	MakeBoxes[SpinorVBarD[p_,m___], TraditionalForm]:=
+		ToBoxes[SpinorVBar[p,m],TraditionalForm];
+
+SpinorUD /:
+	MakeBoxes[SpinorUD[p_,m___], TraditionalForm]:=
+		ToBoxes[SpinorU[p,m],TraditionalForm];
+
+SpinorVD /:
+	MakeBoxes[SpinorVD[p_,m___], TraditionalForm]:=
+		ToBoxes[SpinorV[p,m],TraditionalForm];
+
 StandardMatrixElement /:
 	MakeBoxes[StandardMatrixElement[x_], TraditionalForm] :=
 		RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];

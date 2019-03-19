@@ -201,10 +201,11 @@ where q is the integration variable. \
 FeynAmp[q1, q2, amp] denotes a two-loop amplitude.";
 
 FeynAmpDenominator::usage =
-"FeynAmpDenominator[ PropagatorDenominator[ ... ], \
-PropagatorDenominator[ ... ], ... ] represents \
+"FeynAmpDenominator[...] represents \
 the inverse denominators of the propagators, i.e. FeynAmpDenominator[x] \
-is 1/x .";
+is 1/x. Different propagator denominators are represented using special \
+heads such as PropagatorDenominator, StandardPropagatorDenominator, \
+CartesianPropagatorDenominator etc. ";
 
 FeynAmpList::usage =
 "FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of \
@@ -267,7 +268,7 @@ given by 1/[x + s*I*eta]^n, where x can be an arbitray expression. \
 For brevity one can also use shorter forms \
 such as GFAD[{x, n}, ...], GFAD[{x}, ...] or GFAD[x, ...]. \
 If s is not explicitly specified, then its value is determined by the \
-option EtaSign, which has the default value +1. If n is not explicitly
+option EtaSign, which has the default value +1. If n is not explicitly \
 specified, then the default value 1 is assumed. Translation into FeynCalc \
 internal form is performed by FeynCalcInternal, where a GFAD is encoded \
 using the special head GenericPropagatorDenominator.";
@@ -282,8 +283,9 @@ GenericPropagatorDenominator::usage =
 "GenericPropagatorDenominator[expr, {n,s}] is a generic factor of the denominator of a \
 propagator. Unlike PropagatorDenominator that is supposed to mean 1/(q^2-m^2), \
 expr in GenericPropagatorDenominator can be an arbitrary combination of Pair, \
-CartesianPair and TemporalPair objects. Using n one can specify the power of the
-propagator, while s (+1 or -1) fixes the sign of  I*eta.";
+CartesianPair and TemporalPair objects. Using n one can specify the power of the \
+propagator, while s (+1 or -1) fixes the sign of  I*eta. GenericPropagatorDenominator \
+is an internal object. To enter such propagators in FeynCalc you should use GFAD.";
 
 GluonField::usage =
 "GluonField is a name of a gauge field.";
@@ -424,9 +426,10 @@ PolarizationVector::usage =
 
 PropagatorDenominator::usage =
 "PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a \
-propagator.  If q is supposed to be D-dimensional enter: \
-PropagatorDenominator[Momentum[q, D], m].  What is meant is \
-1/(q^2-m^2). PropagatorDenominator[p] evaluates to PropagatorDenominator[p,0].";
+propagator. If q is supposed to be D-dimensional, use \
+PropagatorDenominator[Momentum[q, D], m]. What is meant is \
+1/(q^2-m^2). PropagatorDenominator must appear inside FeynAmpDenominator, it \
+is not a standalone object.";
 
 PD::usage =
 "PD is an abbreviation for PropagatorDenominator.";
@@ -463,7 +466,7 @@ of loop integrals";
 SFAD::usage =
 "SFAD[{{q1+ ..., p1.q2 + ...,} {m^2, s}, n}, ...] denotes a Lorentzian propagator \
 given by 1/[(q1+...)^2 + p1.q2 ... + m^2 + sign*I*eta]^n, where  \
-q1^2 and p1.q2 are Minkowski sclar products in D dimensions. \
+q1^2 and p1.q2 are scalar products of Lorentz vectors in D dimensions. \
 For brevity one can also use shorter forms \
 such as SFAD[{q1+ ...,  m^2}, ...], SFAD[{q1+ ...,  m^2 , n}, ...], \
 SFAD[{q1+ ...,  {m^2, -1}}, ...], SFAD[q1,...]  etc. If s is not explicitly specified, \
@@ -644,7 +647,7 @@ the physical behavior of those objects."
 
 TypesettingExplicitLorentzIndex::usage =
 "TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of \
-explicit Lorentz indices.."
+explicit Lorentz indices."
 
 Zeta2::usage =
 "Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in \
@@ -777,17 +780,17 @@ KDE::usage =
 "KDE[i,j] is the Kronecker delta in D-4 dimensions.";
 
 CSP::usage =
-"CSP[p,q] is the 3-dimensional scalar product of p with q. and is \
+"CSP[p,q] is the 3-dimensional scalar product of p with q and is \
 transformed into CartesianPair[CartesianMomentum[p],CartesianMomentum[q]] by FeynCalcInternal. \
 CSP[p] is the same as CSP[p,p] (=p^2).";
 
 CSPD::usage =
-"CSPD[p,q] is the D-1-dimensional scalar product of p with q. and is \
+"CSPD[p,q] is the D-1-dimensional scalar product of p with q and is \
 transformed into CartesianPair[CartesianMomentum[p, D-1],CartesianMomentum[q, D-1]] by FeynCalcInternal. \
 CSPD[p] is the same as CSPD[p,p] (=p^2).";
 
 CSPE::usage =
-"CSPE[p,q] is the D-4-dimensional scalar product of p with q. and is \
+"CSPE[p,q] is the D-4-dimensional scalar product of p with q and is \
 transformed into CartesianPair[CartesianMomentum[p, D-4],CartesianMomentum[q, D-4]] by FeynCalcInternal. \
 CSPE[p] is the same as CSPE[p,p] (=p^2).";
 
@@ -804,19 +807,19 @@ CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m, D-1], ..., CartesianMoment
 applying FeynCalcInternal.";
 
 TGA::usage =
-"TGA[] can be used as input for gamma^0 in 4-dimensions and is \
+"TGA[] can be used as input for gamma^0 in 4 dimensions and is \
 transformed into DiracGamma[ExplicitLorentzIndex[0]] by FeynCalcInternal.";
 
 CGA::usage =
-"CGA[i] can be used as input for gamma^i in 4-dimensions and is \
+"CGA[i] can be used as input for gamma^i in 4 dimensions, where i is a Cartesian index, and is \
 transformed into DiracGamma[CartesianIndex[i]] by FeynCalcInternal.";
 
 CGAD::usage =
-"CGAD[i] can be used as input for gamma^i in D-dimensions and is \
+"CGAD[i] can be used as input for gamma^i in D dimensions, where i is a Cartesian index, and is \
 transformed into DiracGamma[CartesianIndex[i,D-1],D] by FeynCalcInternal.";
 
 CGAE::usage =
-"CGAE[i] can be used as input for gamma^i in D-4-dimensions and is \
+"CGAE[i] can be used as input for gamma^i in D-4 dimensions, where i is a Cartesian index, and is \
 transformed into DiracGamma[CartesianIndex[i,D-4],D-4] by FeynCalcInternal.";
 
 CGS::usage =
@@ -893,7 +896,7 @@ PauliEta::usage =
 \[Eta]^\[Dagger].";
 
 TemporalMomentum::usage =
-"TemporalMomentum is the head of the temporal component of a four momentum p^0. \
+"TemporalMomentum[p] is the head of the temporal component of a four momentum p^0. \
 The internal representation of the temporal component p^0 is \
 TemporalMomentum[p]. TemporalMomentum may appear only inside TemporalPair.";
 

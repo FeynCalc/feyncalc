@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCReplaceMomenta::usage =
-"FCReplaceMomenta[expr,rule] replaces the given momentum according to the \
+"FCReplaceMomenta[exp,rule] replaces the given momentum according to the \
 specified replacement rules. Various options can be used to customize the replacement \
 procedure.";
 

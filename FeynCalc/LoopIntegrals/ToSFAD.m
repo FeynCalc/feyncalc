@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 
-ToSFAD::usage = "ToSFAD[expr] converts all propagator denominators written \
+ToSFAD::usage = "ToSFAD[exp] converts all propagator denominators written \
 as FAD or FeynAmpDenmoninator[...,PropagatorDenominator[...],...] to SFAD \
 or FeynAmpDenmoninator[...,StandardPropagatorDenominator[...],...] respectively.";
 

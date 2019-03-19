@@ -17,8 +17,8 @@
 
 
 EpsContract::usage=
-"EpsContract[expr] is a function that handles contractions of two Levi-Civita
-tensors. It is also an option of Contract and other functions that specifies
+"EpsContract[exp] handles contractions of two Levi-Civita \
+tensors. It is also an option of Contract and other functions that specifies \
 whether such contractions should be done or not.";
 
 EpsContract::fail=

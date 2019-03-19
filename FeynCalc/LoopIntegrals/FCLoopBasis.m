@@ -52,6 +52,16 @@ external momenta p1, p2, ... in the space-time dimensions d1, d2, .... The argum
 be Pair to generate Lorentzian scalar products or CartesianPair to generate Cartesian scalar \
 products.";
 
+FCLoopBasisExtract::usage=
+"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that extract the scalar products \
+that form the basis of the loop integral in int. It needs to know the loop momenta on which the integral \
+depends and the dimensions of the momenta that may occur in the integral.";
+
+FCLoopBasisIntegralToPropagators::usage=
+"FCLoopBasisIntegralToPropagators[int, {q1,q2,...}] is an auxiliary function that converts the loop integral int that \
+depends on the loop momenta q1, q2, ... to a list of propagators and scalar products. All propagators and \
+scalar products that do not depend on the loop momenta are discarded, unless the Rest option is set to True.";
+
 FCLoopBasis::unknownmoms =
 "Error! Loop integral `1` depends on momenta that were not specified or it doesn't depend on \
 some of the specified momenta. Evaluation aborted.";
@@ -71,16 +81,6 @@ Evaluation aborted.";
 FCLoopBasisFindCompletion::basisoverdet=
 "The integral `1` contains linearly dependent propagators. You need to rewrite it as a sum of integrals \
 with linearly independent propagators before you can proceed with the completion of the propagator basis.";
-
-FCLoopBasisExtract::usage=
-"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that extract the scalar products \
-that form the basis of the loop integral in int. It needs to know the loop momenta on which the integral \
-depends and the dimensions of the momenta that may occur in the integral.";
-
-FCLoopBasisIntegralToPropagators::usage=
-"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that converts the loop integral int that \
-depends on the loop momenta q1, q2, ... to a list of propagators and scalar products. All propagators and \
-scalar products that do not depend on the loop momenta are discarded, unless the Rest option is set to True.";
 
 FCLoopBasisIntegralToPropagators::failmsg =
 "Error! FCLoopBasisIntegralToPropagators has encountered a fatal problem and must abort the computation. \

@@ -64,5 +64,9 @@ Polarization[k2, -I]].GSD[-k1 + p1].GSD[
 Polarization[k1, -I]].Spinor[Momentum[p1, D], QGMassQ, 1]"},
 {"fcstFermionicChainSimplify-ID13",
 "FermionicChainSimplify[DiracIndexDelta[DiracIndex[i], DiracIndex[i]],
-TraceOfOne -> D]", "D"}
+TraceOfOne -> D]", "D"},
+{"fcstFermionicChainSimplify-ID14",
+"FermionicChainSimplify[
+DiracIndexDelta[DiracIndex[i], DiracIndex[j]] DiracIndexDelta[
+DiracIndex[j], DiracIndex[k]], FCE -> True]", "DIDelta[i,k]"}
 });

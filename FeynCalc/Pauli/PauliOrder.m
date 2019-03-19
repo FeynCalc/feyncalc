@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliOrder::usage =
-"PauliOrder[expr] orders the Pauli matrices in expr alphabetically. \
-PauliOrder[expr, orderlist] orders the Pauli matrices in expr according \
+"PauliOrder[exp] orders the Pauli matrices in expr alphabetically. \
+PauliOrder[exp, orderlist] orders the Pauli matrices in expr according \
 to orderlist.";
 
 PauliOrder::failmsg =

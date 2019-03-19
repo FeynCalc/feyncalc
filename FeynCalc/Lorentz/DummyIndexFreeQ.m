@@ -18,7 +18,7 @@
 
 
 DummyIndexFreeQ::usage =
-"DummyIndexFreeQ[expr, {head1, head2, ...}] returns True if the expression \
+"DummyIndexFreeQ[exp, {head1, head2, ...}] returns True if the expression \
 contains dummy indices with heads head1, head2, ... and False otherwise. \
 As always in FeynCalc, Einstein summation convention is implicitly assumed. \
 The function is optimized for large expressions, i.e. it is not so good as \
