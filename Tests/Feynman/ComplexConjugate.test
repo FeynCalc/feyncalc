@@ -50,5 +50,7 @@ Spinor[Momentum[p4], M4, 1]"},
 {"fcstComplexConjugate-ID16","ComplexConjugate[Spinor[Momentum[k2], mb, 1].(mb GA[6] + GA[7] mt), FCE -> True]",
 	"(mt*GA[6] + mb*GA[7]) . Spinor[Momentum[k2], mb, 1]"},
 {"fcstComplexConjugate-ID17","ComplexConjugate[(mb GA[6] + GA[7] mt), FCE -> True]",
-	"(mt*GA[6] + mb*GA[7])"}
+	"(mt*GA[6] + mb*GA[7])"},
+{"fcstComplexConjugate-ID18","ComplexConjugate[FCChargeConjugateTransposed[GA[\[Mu], 5, \[Nu]]],
+FCE -> True]",	"-GA[\[Mu]] . GA[5] . GA[\[Nu]]"}
 };

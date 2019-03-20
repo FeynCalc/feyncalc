@@ -60,6 +60,10 @@ ComplexConjugate[expr_, OptionsPattern[]]:=
 			ex = expr
 		];
 
+		If[ !FreeQ[ex, FCChargeConjugateTransposed],
+			ex = ex /. x_FCChargeConjugateTransposed :> Explicit[x]
+		];
+
 		dotsim = OptionValue[DotSimplify];
 
 		If[ Head[ex]===HoldForm && FreeQ2[ex, {DOT,LorentzIndex,SUNIndex,SUNTF,DiracGamma,PauliSigma,Complex}],
