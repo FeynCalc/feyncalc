@@ -25,10 +25,12 @@ Gstrong::usage =
 "Gstrong is a shortcut for SMP[\"g_s\"].";
 
 AlphaStrong::usage =
-"AlphaStrong is a shortcut for SMP[\"alpha_s\"].";
+"AlphaStrong is a shortcut for SMP[\"alpha_s\"] which represents the strong coupling \
+constant.";
 
 AlphaFS::usage =
-"AlphaFS is a shortcut for SMP[\"alpha_fs\"].";
+"AlphaFS is a shortcut for SMP[\"alpha_fs\"] which represents the fine-structure \
+constant.";
 
 Begin["`Package`"]
 End[]

@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 
-ToPaVe::usage = "ToPaVe[expr,q] converts all the scalar 1-loop integrals that \
-depend on the momentum q to scalar Passarino Veltman functions
+ToPaVe::usage = "ToPaVe[exp,q] converts all scalar 1-loop integrals in exp that \
+depend on the momentum q to scalar Passarino Veltman functions \
 A0, B0, C0, D0 etc.";
 
 OtherLoopMomenta::usage = "OtherLoopMomenta is an option of ToPaVe. It takes \

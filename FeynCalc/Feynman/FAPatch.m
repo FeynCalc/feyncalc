@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FAPatch::usage =
-"If an unpatched copy of FeynArts is present in $FeynArtsDirectory, \
-evaluating FAPatch causes the files making up FeynArts to be modified in \
-order for FeynArts to be compatible with FeynCalc.";
+"FAPatch[] is an auxiliary function that patches FeynArts to be compatible \
+with FeynCalc. If an unpatched copy of FeynArts is present in $FeynArtsDirectory, \
+evaluating FAPatch[] will start the patching process.";
 
 PatchModelsOnly::usage =
 "PatchModelsOnly is an Option of FAPatch. When set to True, FAPatch will patch \

@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 TFIOrder::usage =
-"TFIOrder[expr] orders the arguments of some TFI functions in a \
+"TFIOrder[exp] orders the arguments of some TFI functions in exp in a \
 standard way.";
 
 

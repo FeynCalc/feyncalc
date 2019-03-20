@@ -511,27 +511,7 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 								} /. sUNF -> SUNF;
 			];
 
-			(*Dropped ComplexIndex. F.Orellana, 20/2-2003*)
-			(*If[!FreeQ[temp, ComplexIndex],
-				temp = temp /. DOT -> dooot /.
-				{
-				(SUNT[SUNIndex[a_]] /; FreeQ[{a}, ComplexIndex]) *
-				SUNT[SUNIndex[ComplexIndex[b_]]] :>
-				DOT[SUNTrace[SUNT[SUNIndex[a]] , SUNT[SUNIndex[b]]] ],
 
-				(SUNT[SUNIndex[ComplexIndex[a_]]] ) *
-				dooot[(b:SUNT[SUNIndex[_]]..) /; FreeQ[{b}, ComplexIndex]]  :>
-				DOT[SUNTrace[SUNT[SUNIndex[a]] , b] ],
-
-				(SUNT[SUNIndex[a_ /; FreeQ[{a}, ComplexIndex]] ]) *
-				dooot[b:SUNT[SUNIndex[ComplexIndex[_]]]..]  :>
-				DOT[SUNTrace[SUNT[SUNIndex[a]] , b] ],
-
-				dooot[(a:SUNT[SUNIndex[_]]..) /; FreeQ[{a}, ComplexIndex]] *
-				dooot[b:SUNT[SUNIndex[ComplexIndex[_]]]..] :>
-				SUNTrace[dooot @@ Join[{a}, Reverse[{b}]/.ComplexIndex -> Identity]]
-				} /. dooot -> DOT;
-			];*)
 			If[ !FreeQ[temp, SUNIndex],
 				temp = temp /. sunsi;
 			];

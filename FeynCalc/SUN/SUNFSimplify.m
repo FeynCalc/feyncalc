@@ -15,8 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNFSimplify::usage = "
-SUNFSimplify[expr] simplifies expression that contain SU(N) indices in the \
-fundamental representation";
+SUNFSimplify[exp] simplifies expression that contain SU(N) indices in the \
+fundamental representation.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -29,7 +29,10 @@ SetAttributes[SUNFSimplify, Listable];
 
 fci[z_ /; FreeQ[z, Pattern]] := (fci[z] = FCI[z]);
 
-Options[SUNFSimplify] = {SUNNToCACF->True ,Explicit->False};
+Options[SUNFSimplify] = {
+	SUNNToCACF->True,
+	Explicit->False
+};
 
 SUNFSimplify[expr_, OptionsPattern[]] :=
 	Block[ {temp = fci[expr],simplify},

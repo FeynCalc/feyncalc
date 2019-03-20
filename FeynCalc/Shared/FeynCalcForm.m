@@ -9,10 +9,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FCF::usage=
-"FCF is a short form for FeynCalcForm.";
+"FCF[exp] is a short form for FeynCalcForm[exp].";
 
 FeynCalcForm::usage=
-"FeynCalcForm[expr] changes the printed output to an easy to read \
+"FeynCalcForm[exp] changes the printed output to an easy to read \
 form. Whether the result of FeynCalcForm[expr] is displayed \
 or not, depends on the setting of $PrePrint. \
 $PrePrint = FeynCalcForm forces displaying everything \

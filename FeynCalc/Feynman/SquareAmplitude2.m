@@ -529,9 +529,8 @@ mU = Unique[mUUn]; sU = Unique[sUUu]; gL = Unique[glLLu];
 		For[ij = 1, ij < 7, ij++,
 			If[ pli =!= 0,
 			(* check for photon *)
-			(*Dropped ComplexIndex. This should be adjusted accordingly. F.Orellana, 20/2-2003*)
 				If[ (fields[[ij]] === tmp`V[1]) &&  !FreeQ[amp, mU[ij]],
-					prod = prod (- MetricTensor[mU[ij], ComplexIndex[mU[ij]],
+					prod = prod (- MetricTensor[mU[ij], mU[ij],
 										Dimension -> dim])
 				];
 				(* check for gluon*)
@@ -548,13 +547,13 @@ mU = Unique[mUUn]; sU = Unique[sUUu]; gL = Unique[glLLu];
 							exm = {pli[[3]], pli[[1]], pli[[2]]}
 							];
 					];
-					prod = prod PolarizationSum[mU[ij, gL], ComplexIndex[mU[ij, gL]],
+					prod = prod PolarizationSum[mU[ij, gL], mU[ij, gL],
 												pli[[ij]], exm[[ij]], Dimension -> dim];
 				];
 				(* check for massive Vectorbosons *)
 				If[ MatchQ[fields[[ij]],
 							tmp`V[iii_ /; iii=!=1]] && !FreeQ[amp, mU[ij]],
-					prod = prod PolarizationSum[mU[ij], ComplexIndex[mU[ij]],
+					prod = prod PolarizationSum[mU[ij], mU[ij],
 									pli[[ij]], Dimension -> dim]
 				];
 				(* check for ghosts *)

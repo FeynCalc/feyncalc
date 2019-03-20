@@ -15,7 +15,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopCanonicalize::usage = "FCLoopCanonicalize[expr,q,loopHead] is an auxiliary \
+FCLoopCanonicalize::usage = "FCLoopCanonicalize[exp,q,loopHead] is an auxiliary \
 internal function that canonicalizes indices of 1-loop integrals \
 with loop momentum q that are wrapped inside loopHead. The output is given as a \
 list of four entries, from which the last one contains a list of all the unique \

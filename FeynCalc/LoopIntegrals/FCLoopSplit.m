@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopSplit::usage =
-"FCLoopSplit[expr,{q1,q2,...}] separates expr \
+"FCLoopSplit[exp,{q1,q2,...}] separates exp \
 into following four pieces: \n
 1) 	terms that are free of loop integrals \
 2) 	terms with scalar loop integrals \
@@ -25,7 +25,7 @@ into following four pieces: \n
 	are contracted \
 4) 	terms with tensor loop integrals, where at least some \
 	loop momenta have free indices \
-The result is returned as a list with the 4 above elements";
+The result is returned as a list with the 4 above elements.";
 
 FCLoopSplit::fail =
 "Splitting the expression `1` into loop and non-loop pieces failed!";

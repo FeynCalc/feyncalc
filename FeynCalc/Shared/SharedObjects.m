@@ -154,11 +154,11 @@ an integer.";
 
 ExplicitSUNIndex::usage =
 "ExplicitSUNIndex[ind] is a specific SU(N) index in the adjoint \
-representation, i.e., ind is an integer.";
+representation, i.e. ind is an integer.";
 
 ExplicitSUNFIndex::usage =
 "ExplicitSUNIndex[ind] is a specific SU(N) index in the fundamental \
-representation, i.e., ind is an integer.";
+representation, i.e. ind is an integer.";
 
 FAD::usage =
 "FAD[q, q-p, ...] denotes 1/(q^2 (q-p)^2 ...). \
@@ -486,12 +486,12 @@ OPE::usage =
 an option of several input functions like GluonPropagator.";
 
 SD::usage =
-"SD[i, j] is the (FeynCalc-external) Kronecker-delta for SU(N) with color \
+"SD[i, j] denotes the SU(N) Kronecker delta with color \
 indices i and j in the adjoint represnetation. SD[i,j] is transformed into \
 SUNDelta[SUNIndex[i],SUNIndex[j]] by FeynCalcInternal.";
 
 SDF::usage =
-"SDF[i, j] is the (FeynCalc-external) Kronecker-delta for SU(N) with color \
+"SDF[i, j] denotes the SU(N) Kronecker delta with color \
 indices i and j in the fundamental represnetation. SDF[i,j] is transformed into \
 SUNFDelta[SUNFIndex[i],SUNFIndex[j]] by FeynCalcInternal.";
 
@@ -592,22 +592,22 @@ SUNF[a, b, c, d] is a shorthand notation for SUNF[a,b,i] SUNF[i,c,d]."
 
 SUNIndex::usage =
 "SUNIndex[a] is an SU(N) index in the adjoint representation. \
-If the argument is an integer SUNIndex[a] turns into ExplicitSUNIndex[a].";
+If the argument is an integer, SUNIndex[a] turns into ExplicitSUNIndex[a].";
 
 SUNFIndex::usage =
 "SUNFIndex[a] is an SU(N) index in the fundamental representation. \
-If the argument is an integer SUNIndex[a] turns into ExplicitSUNFIndex[a].";
+If the argument is an integer, SUNFIndex[a] turns into ExplicitSUNFIndex[a].";
 
 SUNN::usage =
 "SUNN denotes the number of colors. Trick[SUNDelta[a, a]] yields (SUNN^2 -1).";
 
 SUNT::usage =
 "SUNT[a] is the SU(N) T^a generator in the fundamental representation. \
-The fundamental indices are implicit"
+The fundamental indices are implicit."
 
 SUNTF::usage =
 "SUNTF[{a},i,j] is the SU(N) T^a_ij generator in the fundamental representation. \
-The fundamental indices i and j are explicit"
+The fundamental indices i and j are explicit."
 
 Tf::usage =
 "Tf is a group constant (sometimes called TR, as in eq. (2.5.133) in T. Muta, \

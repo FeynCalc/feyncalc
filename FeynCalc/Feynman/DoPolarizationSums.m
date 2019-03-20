@@ -17,15 +17,14 @@ DoPolarizationSums::usage =
 "DoPolarizationSums[exp,k,n] sums over physical (transverse) \
 polarizations of external massless vector bosons with momentum k. \
 Here, n is an auxiliary four vector that goes into the gauge-dependent \
-polarization sum to ensure that we are summing only over physical polarizations.
+polarization sum to ensure that we are summing only over physical polarizations. \n
 
 DoPolarizationSums[exp,k,0] replaces the polarization sum of external massless vector \
 bosons with momentum k by -g(mu,nu). This corresponds to summing over all four \
-physical and unphysical polarizations.
+physical and unphysical polarizations. \n
 
 DoPolarizationSums[exp,k] sums over polarizations \
-of external massive vector bosons with momentum k and mass k^2.
-";
+of external massive vector bosons with momentum k and mass k^2.";
 
 GaugeTrickN::usage =
 "GaugeTrickN is an option for DoPolarizationSums. It specifies the number \

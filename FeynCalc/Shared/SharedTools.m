@@ -103,7 +103,7 @@ FCReplaceRepeated::usage=
 replacement rules sequentially. Instead of doing exp //. ru1 //. ru2 //. ru3 one can just \
 write FCReplaceRepeated[exp, ru1, ru2, ru3].";
 
-FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
+FCSplit::usage = "FCSplit[exp,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
 is provided in the form of a two element list. One can recover the \

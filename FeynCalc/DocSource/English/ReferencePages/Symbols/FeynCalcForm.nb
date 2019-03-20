@@ -211,9 +211,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["This is the normal notebook display:", "Text",
- CellTags->"FeynCalcForm",
- CellID->1383220456],
+Cell["This is the normal notebook display:", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -224,7 +222,7 @@ Cell[BoxData[
    RowBox[{"SUNT", "[", "b", "]"}], ".", 
    RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[1]:=",
+ CellLabel->"In[164]:=",
  CellID->1625719649],
 
 Cell[BoxData[
@@ -255,34 +253,32 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"FeynCalcForm",
- CellLabel->"Out[1]=",
- CellID->2135875157]
+ CellLabel->"Out[164]="]
 }, Open  ]],
 
 Cell["\<\
 This is the shorthand (terminal) display (easy-to-read form):\
-\>", "Text",
- CellTags->"FeynCalcForm",
- CellID->981626969],
+\>", "Notes"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$PrePrint", " ", "=", " ", "FeynCalcForm"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[2]:=",
+ CellLabel->"In[165]:=",
  CellID->1192476093],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"SetOptions", "[", 
-   RowBox[{"$FrontEnd", ",", 
+   RowBox[{"$FrontEndSession", ",", 
     RowBox[{"Evaluate", "[", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
         RowBox[{"Options", "[", 
-         RowBox[{"$FrontEnd", ",", "\"\<CommonDefaultFormatTypes\>\""}], 
-         "]"}], "/.", 
+         RowBox[{
+         "$FrontEndSession", ",", "\"\<CommonDefaultFormatTypes\>\""}], "]"}],
+         "/.", 
         RowBox[{
          RowBox[{"(", 
           RowBox[{"\"\<Output\>\"", "\[Rule]", "_"}], ")"}], "\[Rule]", 
@@ -291,7 +287,7 @@ Cell[BoxData[
        ")"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[3]:=",
+ CellLabel->"In[166]:=",
  CellID->204502333],
 
 Cell[CellGroupData[{
@@ -303,7 +299,7 @@ Cell[BoxData[
    RowBox[{"SUNT", "[", "b", "]"}], ".", 
    RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[4]:=",
+ CellLabel->"In[167]:=",
  CellID->1641498185],
 
 Cell[OutputFormData["\<\
@@ -313,32 +309,30 @@ SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] .
 tr[T[a] T[b] T[c]]\
 \>"], "Output",
  CellTags->"FeynCalcForm",
- CellLabel->"Out[4]=",
- CellID->1930690446]
+ CellLabel->"Out[167]="]
 }, Open  ]],
 
-Cell["Reset to normal notebook display:", "Text",
- CellTags->"FeynCalcForm",
- CellID->1776666281],
+Cell["Reset to normal notebook display:", "Notes"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$PrePrint", "=."}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[5]:=",
+ CellLabel->"In[168]:=",
  CellID->1847759077],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"SetOptions", "[", 
-   RowBox[{"$FrontEnd", ",", 
+   RowBox[{"$FrontEndSession", ",", 
     RowBox[{"Evaluate", "[", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
         RowBox[{"Options", "[", 
-         RowBox[{"$FrontEnd", ",", "\"\<CommonDefaultFormatTypes\>\""}], 
-         "]"}], "/.", 
+         RowBox[{
+         "$FrontEndSession", ",", "\"\<CommonDefaultFormatTypes\>\""}], "]"}],
+         "/.", 
         RowBox[{
          RowBox[{"(", 
           RowBox[{"\"\<Output\>\"", "\[Rule]", "_"}], ")"}], "\[Rule]", 
@@ -347,7 +341,7 @@ Cell[BoxData[
         ")"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[6]:=",
+ CellLabel->"In[169]:=",
  CellID->803099917]
 }, Open  ]],
 
@@ -412,13 +406,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{608, Automatic}, {Automatic, 62}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -2714,17 +2714,6 @@ Cell[TextData[{
  CellID->202849658],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["QCDFeynmanRuleConvention",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/QCDFeynmanRuleConvention"]], 
-  "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " sign convention for QCD Feynman rules"
-}], "GuideText",
- CellID->1044703852],
-
-Cell[TextData[{
  Cell[TextData[ButtonBox["QuarkGluonVertex",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/QuarkGluonVertex"]], 
@@ -2999,7 +2988,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1117, 889},
-WindowMargins->{{Automatic, 163}, {0, Automatic}},
+WindowMargins->{{678, Automatic}, {Automatic, 201}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,

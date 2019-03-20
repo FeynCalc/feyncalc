@@ -118,12 +118,10 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"ComplexConjugate", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "complex conjugates expr. It operates on fermion lines, i.e., products of \
-Spinor[..] .DiracMatrix[..] . Spinor[..], and changes all occuring \
-LorentzIndex[mu] into LorentzIndex[ComplexIndex[mu]]. For taking the spin sum \
-(i.e. constructing the traces) use FermionSpinSum. WARNING: In expr should be \
-NO explicit I's in denominators!"
+ " \[LineSeparator]complex conjugates expr. It operates on fermion lines, \
+i.e., products of Spinor[..] .DiracMatrix[..] . Spinor[..]. For taking the \
+spin sum (i.e. constructing the traces) use FermionSpinSum. WARNING: In expr \
+should be NO explicit I's in denominators!"
 }], "Usage",
  CellID->982511436],
 
@@ -215,7 +213,7 @@ Cell[BoxData[
   RowBox[{"MetricTensor", "[", 
    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[1]:=",
+ CellLabel->"In[9]:=",
  CellID->1414819233],
 
 Cell[BoxData[
@@ -224,20 +222,15 @@ Cell[BoxData[
    OverscriptBox["g", "_"], 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+     FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Nu]",
-       TraditionalForm],
+     FormBox["\[Nu]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[1]=",
- CellID->1140505195]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -245,7 +238,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[10]:=",
  CellID->138437204],
 
 Cell[BoxData[
@@ -254,8 +247,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}]}], "]"}]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[2]//StandardForm=",
- CellID->32067236]
+ CellLabel->"Out[10]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -264,7 +256,7 @@ Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "5"}], "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[11]:=",
  CellID->1239389489],
 
 Cell[BoxData[
@@ -293,8 +285,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[3]=",
- CellID->1874159857]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -302,7 +293,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ComplexConjugate", "[", "%", "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[4]:=",
+ CellLabel->"In[12]:=",
  CellID->697323905],
 
 Cell[BoxData[
@@ -326,8 +317,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[4]=",
- CellID->1416373229]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -337,7 +327,7 @@ Cell[BoxData[
   RowBox[{"SUNT", "[", 
    RowBox[{"a", ",", "b", ",", "c"}], "]"}], "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[5]:=",
+ CellLabel->"In[13]:=",
  CellID->1573088048],
 
 Cell[BoxData[
@@ -368,8 +358,7 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[5]=",
- CellID->964261874]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -377,7 +366,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ComplexConjugate", "[", "%", "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[6]:=",
+ CellLabel->"In[14]:=",
  CellID->1138817196],
 
 Cell[BoxData[
@@ -408,8 +397,7 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[6]=",
- CellID->1059122773]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -419,7 +407,7 @@ Cell[BoxData[
   RowBox[{"SUNF", "[", 
    RowBox[{"a", ",", "b", ",", "c"}], "]"}], "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[7]:=",
+ CellLabel->"In[15]:=",
  CellID->243405382],
 
 Cell[BoxData[
@@ -439,8 +427,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[7]=",
- CellID->13446686]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -452,23 +439,20 @@ Cell[BoxData[
     RowBox[{"MetricTensor", "[", 
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}], "]"}], "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[8]:=",
+ CellLabel->"In[16]:=",
  CellID->110906282],
 
 Cell[BoxData[
  RowBox[{"MT", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[8]//StandardForm=",
- CellID->588930123]
+ CellLabel->"Out[16]//StandardForm="]
 }, Open  ]],
 
 Cell["\<\
 Since version 9.3 ComplexConjugate will automatically rename the dummy \
 indices.\
-\>", "Text",
- CellTags->"ComplexConjugate",
- CellID->1326672219],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -480,7 +464,7 @@ Cell[BoxData[
    RowBox[{"LC", "[", 
     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
    RowBox[{"p1", ",", "p2"}], "]"}]}]], "Input",
- CellLabel->"In[4]:="],
+ CellLabel->"In[17]:="],
 
 Cell[BoxData[
  FormBox[
@@ -525,14 +509,14 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[4]="]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ComplexConjugate", "[", "%", "]"}]], "Input",
- CellLabel->"In[5]:="],
+ CellLabel->"In[18]:="],
 
 Cell[BoxData[
  FormBox[
@@ -543,7 +527,7 @@ Cell[BoxData[
      FormBox[
       FormBox[
        RowBox[{"$AL", "\[InvisibleApplication]", 
-        RowBox[{"(", "$26", ")"}]}],
+        RowBox[{"(", "$24", ")"}]}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -551,7 +535,7 @@ Cell[BoxData[
      FormBox[
       FormBox[
        RowBox[{"$AL", "\[InvisibleApplication]", 
-        RowBox[{"(", "$27", ")"}]}],
+        RowBox[{"(", "$25", ")"}]}],
        TraditionalForm],
       TraditionalForm]]}], " ", 
    SuperscriptBox[
@@ -560,13 +544,13 @@ Cell[BoxData[
      FormBox[
       FormBox[
        RowBox[{"$AL", "\[InvisibleApplication]", 
-        RowBox[{"(", "$27", ")"}]}],
+        RowBox[{"(", "$25", ")"}]}],
        TraditionalForm],
       TraditionalForm], 
      FormBox[
       FormBox[
        RowBox[{"$AL", "\[InvisibleApplication]", 
-        RowBox[{"(", "$26", ")"}]}],
+        RowBox[{"(", "$24", ")"}]}],
        TraditionalForm],
       TraditionalForm], 
      FormBox[
@@ -579,15 +563,13 @@ Cell[BoxData[
        FormBox["p2",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellLabel->"Out[5]="]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell["\<\
 This behavior can be disabled by setting the option FCRenameDummyIndices to \
 False\
-\>", "Text",
- CellTags->"ComplexConjugate",
- CellID->346435355],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -595,7 +577,7 @@ Cell[BoxData[
  RowBox[{"ComplexConjugate", "[", 
   RowBox[{"%%", ",", 
    RowBox[{"FCRenameDummyIndices", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[6]:="],
+ CellLabel->"In[19]:="],
 
 Cell[BoxData[
  FormBox[
@@ -634,7 +616,7 @@ Cell[BoxData[
        FormBox["p2",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellLabel->"Out[6]="]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell["\<\
@@ -654,7 +636,7 @@ Cell[BoxData[
   RowBox[{"SpinorU", "[", 
    RowBox[{"p1", ",", "m"}], "]"}]}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[9]:=",
+ CellLabel->"In[20]:=",
  CellID->1286596517],
 
 Cell[BoxData[
@@ -674,23 +656,13 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm], ".", 
-   RowBox[{"(", 
-    RowBox[{
-     FormBox["\<\"u\"\>",
-      TraditionalForm], 
-     FormBox["\<\"(\"\>",
-      TraditionalForm], 
-     FormBox["p1",
-      TraditionalForm], 
-     FormBox["\<\",\"\>",
-      TraditionalForm], 
-     FormBox["m",
-      TraditionalForm], 
-     FormBox["\<\")\"\>",
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+   RowBox[{"u", "(", 
+    FormBox["p1",
+     TraditionalForm], ",", 
+    FormBox["m",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[9]=",
- CellID->936868064]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -698,7 +670,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ComplexConjugate", "[", "%", "]"}]], "Input",
  CellTags->"ComplexConjugate",
- CellLabel->"In[10]:=",
+ CellLabel->"In[21]:=",
  CellID->822445915],
 
 Cell[BoxData[
@@ -745,8 +717,7 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ComplexConjugate",
- CellLabel->"Out[10]=",
- CellID->1665250585]
+ CellLabel->"Out[21]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -810,8 +781,8 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{385, Automatic}, {209, Automatic}},
+WindowSize->{700, 777},
+WindowMargins->{{730, Automatic}, {Automatic, 220}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

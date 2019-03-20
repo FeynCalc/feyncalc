@@ -116,17 +116,11 @@ Cell["DoPolarizationSums", "ObjectName",
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData[
-  RowBox[{"DoPolarizationSums", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "sums over vector polarizations for expressions with a factor of the form\n\
-Pair[LorentzIndex[rho1_], Momentum[Polarization[p_, -I]]]*\n\
-Pair[LorentzIndex[rho2_], Momentum[Polarization[p_, I]]]."
+ Cell[BoxData["DoPolarizationSums"], "InlineFormula"],
+ " \[LineSeparator]handles sums over polarizations massive or massless vector \
+bosons."
 }], "Usage",
- CellID->982511436],
-
-Cell["XXXX", "Notes",
- CellID->1067943069]
+ CellID->982511436]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,19 +196,19 @@ Cell[BoxData[
  CellID->880084151],
 
 Cell["\<\
-In the following (and indeed everywhere else within FeynCalc), notice that \
-Lorentz indices written as super or subscripts are not to be taken as such. \
-Instead, by convention, when two indices are contracted one is always lower \
-and the other upper.\
-\>", "Text",
- CellTags->"DoPolarizationSums",
- CellID->1284060336],
+DoPolarizationSums[exp,k,n] sums over physical (transverse) polarizations of \
+external massless vector bosons with momentum k. Here, n is an auxiliary four \
+vector that goes into the gauge-dependent polarization sum to ensure that we \
+are summing only over physical polarizations.\
+\>", "Notes",
+ CellID->1067943069],
 
-Cell["\<\
-FeynCalc uses the following normalization of Polarization vectors:\
-\>", "Text",
- CellTags->"DoPolarizationSums",
- CellID->714795038],
+Cell[BoxData[{
+ RowBox[{"FCClearScalarProducts", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SP", "[", "p", "]"}], "=", "0"}], ";"}]}], "Input",
+ CellLabel->"In[4]:="],
 
 Cell[CellGroupData[{
 
@@ -225,577 +219,374 @@ Cell[BoxData[
     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
     RowBox[{"Momentum", "[", 
      RowBox[{"Polarization", "[", 
-      RowBox[{"p4", ",", 
+      RowBox[{"p", ",", 
        RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], "]"}]}], "]"}], " ", 
   RowBox[{"Pair", "[", 
    RowBox[{
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
     RowBox[{"Momentum", "[", 
      RowBox[{"Polarization", "[", 
-      RowBox[{"p4", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], "]"}]}]], "Input",
- 
- CellTags->"DoPolarizationSums",
- CellLabel->"In[1]:=",
- CellID->492835519],
+      RowBox[{"p", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellLabel->"In[14]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    RowBox[{
+   RowBox[{
+    SuperscriptBox[
      SuperscriptBox[
-      SuperscriptBox[
-       OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox["p4",
-      TraditionalForm], ")"}],
-    TraditionalForm], " ", 
-   FormBox[
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[CurlyEpsilon]", "_"], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox["p4",
-      TraditionalForm], ")"}],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[1]=",
- CellID->1142913811]
+      OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}], " ", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[CurlyEpsilon]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "//", "Contract"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[2]:=",
- CellID->771272059],
+ RowBox[{"DoPolarizationSums", "[", 
+  RowBox[{"%", ",", "p", ",", "n"}], "]"}]], "Input",
+ CellLabel->"In[15]:="],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"-", "1"}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[2]=",
- CellID->1791104588]
-}, Open  ]],
-
-Cell[TextData[{
- "DoPolarizationSums is chosen in such a way as to be consistent with this \
-normalization and with ",
- Cell[BoxData[
-  FormBox[
-   UnderscriptBox["\[Sum]", "Polarizations"], TraditionalForm]]],
- Cell[BoxData[
-  FormBox[
-   RowBox[{
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["n",
+          TraditionalForm], "_"],
+        TraditionalForm], "2"], " ", 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]]}], 
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["n",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm]}],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"]]}], "-", 
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
     RowBox[{
-     SubscriptBox["\[CurlyEpsilon]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["n",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
       FormBox[
        FormBox["\[Mu]",
         TraditionalForm],
-       TraditionalForm]], "(", 
+       TraditionalForm]]}], 
+    RowBox[{
      FormBox[
-      SubscriptBox[
-       TagBox[
-        StyleBox["\"\<p\>\"",
-         FontSlant->"Italic"],
-        StyleForm[#, FontSlant -> "Italic"]& ], "4"],
-      TraditionalForm], ")"}], " ", 
-    RowBox[{
-     SubscriptBox[
-      RowBox[{"(", 
-       SuperscriptBox["\[CurlyEpsilon]", "\[Nu]"], ")"}], 
-      FormBox["",
-       TraditionalForm]], "(", 
+      OverscriptBox[
+       FormBox["n",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
      FormBox[
-      SubscriptBox[
-       TagBox[
-        StyleBox["\"\<p\>\"",
-         FontSlant->"Italic"],
-        StyleForm[#, FontSlant -> "Italic"]& ], "4"],
-      TraditionalForm], ")"}]}], TraditionalForm]]],
- "=",
- Cell[BoxData[
-  FormBox["Null", TraditionalForm]]],
- ":"
-}], "Text",
- CellTags->"DoPolarizationSums",
- CellID->504712587],
-
-Cell[TextData[{
- "We can choose e.g. the following polarization vectors, labeled with a \
-subscript, {",
- Cell[BoxData[
-  FormBox[
-   SubscriptBox["e", "1"], TraditionalForm]]],
- ",",
- Cell[BoxData[
-  FormBox[
-   SubscriptBox["e", "2"], TraditionalForm]]],
- ",",
- Cell[BoxData[
-  FormBox[
-   SubscriptBox["e", "3"], TraditionalForm]]],
- ",",
- Cell[BoxData[
-  FormBox[
-   SubscriptBox["e", "4"], TraditionalForm]]],
- "} = {(\[ImaginaryI],0,0,0), (0,\[ImaginaryI],0,0), (0,0,\[ImaginaryI],0), \
-(0,0,0,\[ImaginaryI])}."
-}], "Text",
- CellTags->"DoPolarizationSums",
- CellID->1216514784],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"ee", ",", "tt"}], "]"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[3]:=",
- CellID->243887081],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"ev", "[", "i_", "]"}], ":=", 
-   RowBox[{"ReplacePart", "[", 
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm]}]], "+", 
+   FractionBox[
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", "I", ",", 
-     "i"}], "]"}]}], ";"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[4]:=",
- CellID->1289026175],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"ev", "[", "1", "]"}], ",", 
-   RowBox[{"ev", "[", "2", "]"}], ",", 
-   RowBox[{"ev", "[", "3", "]"}], ",", 
-   RowBox[{"ev", "[", "4", "]"}]}], "}"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[5]:=",
- CellID->654636595],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"(", "\[NoBreak]", GridBox[{
-     {"\[ImaginaryI]", "0", "0", "0"},
-     {"0", "\[ImaginaryI]", "0", "0"},
-     {"0", "0", "\[ImaginaryI]", "0"},
-     {"0", "0", "0", "\[ImaginaryI]"}
-    },
-    GridBoxAlignment->{
-     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-      "RowsIndexed" -> {}},
-    GridBoxSpacings->{"Columns" -> {
-        Offset[0.27999999999999997`], {
-         Offset[0.7]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-        Offset[0.2], {
-         Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
-  TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[5]=",
- CellID->635199725]
-}, Open  ]],
-
-Cell[TextData[{
- StyleBox["ee[i][\[Mu]]", "Input"],
- " is ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox[
-    SubscriptBox["e", "i"], "\[Mu]"], TraditionalForm]]],
- ":"
-}], "Text",
- CellTags->"DoPolarizationSums",
- CellID->883749055],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"ee", "[", "i_", "]"}], "[", "mu_", "]"}], ":=", 
-   RowBox[{
-    RowBox[{"ev", "[", "i", "]"}], "[", 
-    RowBox[{"[", "mu", "]"}], "]"}]}], ";"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[6]:=",
- CellID->1065974135],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"tt", "[", 
-   RowBox[{"i_", ",", "j_", ",", "mu_", ",", "nu_"}], "]"}], ":=", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"ee", "[", "i", "]"}], "[", "mu", "]"}], 
-   RowBox[{
-    RowBox[{"ee", "[", "j", "]"}], "[", "nu", "]"}]}]}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[7]:=",
- CellID->1862975452],
-
-Cell[TextData[{
- StyleBox["tt[i,j,\[Mu],\[Nu]]", "Input"],
- " is ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox[
-    SubscriptBox["e", "i"], "\[Mu]"], TraditionalForm]]],
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox[
-    SubscriptBox["e", "j"], "\[Nu]"], TraditionalForm]]],
- ":"
-}], "Text",
- CellTags->"DoPolarizationSums",
- CellID->1445508132],
-
-Cell[TextData[{
- Cell[BoxData[
-  FormBox[
-   UnderscriptBox["\[Sum]", 
-    RowBox[{"i", ",", "j"}]], TraditionalForm]]],
- Cell[BoxData[
-  FormBox[
-   RowBox[{" ", 
-    FormBox["Null",
-     TraditionalForm]}], TraditionalForm]]],
- "=",
- Cell[BoxData[
-  FormBox["Null", TraditionalForm]]],
- ":"
-}], "Text",
- CellTags->"DoPolarizationSums",
- CellID->1899952175],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Table", "[", 
-  RowBox[{
-   RowBox[{
-    UnderoverscriptBox["\[Sum]", 
-     RowBox[{"i", "=", "1"}], "4"], 
-    RowBox[{"tt", "[", 
-     RowBox[{"i", ",", "i", ",", "mu", ",", "nu"}], "]"}]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"mu", ",", "1", ",", "4"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"nu", ",", "1", ",", "4"}], "}"}]}], "]"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[8]:=",
- CellID->522265467],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"(", "\[NoBreak]", GridBox[{
-     {
-      RowBox[{"-", "1"}], "0", "0", "0"},
-     {"0", 
-      RowBox[{"-", "1"}], "0", "0"},
-     {"0", "0", 
-      RowBox[{"-", "1"}], "0"},
-     {"0", "0", "0", 
-      RowBox[{"-", "1"}]}
-    },
-    GridBoxAlignment->{
-     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-      "RowsIndexed" -> {}},
-    GridBoxSpacings->{"Columns" -> {
-        Offset[0.27999999999999997`], {
-         Offset[0.7]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-        Offset[0.2], {
-         Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
-  TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[8]=",
- CellID->438599116]
-}, Open  ]],
-
-Cell[TextData[{
- Cell[BoxData[
-  FormBox[
-   UnderscriptBox["\[Sum]", 
-    RowBox[{"\[Mu]", ",", "\[Nu]"}]], TraditionalForm]]],
- Cell[BoxData[
-  FormBox[
-   RowBox[{" ", 
-    FormBox["Null",
-     TraditionalForm]}], TraditionalForm]]],
- "=",
- Cell[BoxData[
-  FormBox["Null", TraditionalForm]]],
- ":"
-}], "Text",
- CellTags->"DoPolarizationSums",
- CellID->631136558],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Table", "[", 
-  RowBox[{
-   RowBox[{
-    UnderoverscriptBox["\[Sum]", 
-     RowBox[{"mu", "=", "1"}], "4"], 
-    RowBox[{"tt", "[", 
-     RowBox[{"i", ",", "j", ",", "mu", ",", "mu"}], "]"}]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"i", ",", "1", ",", "4"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"j", ",", "1", ",", "4"}], "}"}]}], "]"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[9]:=",
- CellID->1912639269],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"(", "\[NoBreak]", GridBox[{
-     {
-      RowBox[{"-", "1"}], "0", "0", "0"},
-     {"0", 
-      RowBox[{"-", "1"}], "0", "0"},
-     {"0", "0", 
-      RowBox[{"-", "1"}], "0"},
-     {"0", "0", "0", 
-      RowBox[{"-", "1"}]}
-    },
-    GridBoxAlignment->{
-     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-      "RowsIndexed" -> {}},
-    GridBoxSpacings->{"Columns" -> {
-        Offset[0.27999999999999997`], {
-         Offset[0.7]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-        Offset[0.2], {
-         Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
-  TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[9]=",
- CellID->584196470]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ptest", "=", 
-  RowBox[{
-   RowBox[{"Pair", "[", 
-    RowBox[{
-     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-     RowBox[{"LorentzIndex", "[", 
-      RowBox[{"ComplexIndex", "[", "\[Mu]", "]"}], "]"}]}], "]"}], " ", 
-   RowBox[{"Pair", "[", 
-    RowBox[{
-     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-     RowBox[{"Momentum", "[", 
-      RowBox[{"Polarization", "[", 
-       RowBox[{"p4", ",", 
-        RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], "]"}]}], "]"}], " ", 
-   RowBox[{"Pair", "[", 
-    RowBox[{
-     RowBox[{"LorentzIndex", "[", 
-      RowBox[{"ComplexIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
-     RowBox[{"Momentum", "[", 
-      RowBox[{"Polarization", "[", 
-       RowBox[{"p4", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], 
-    "]"}]}]}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[10]:=",
- CellID->1927925269],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
+     SuperscriptBox[
       FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
+       OverscriptBox[
+        FormBox["n",
+         TraditionalForm], "_"],
        TraditionalForm], 
       FormBox[
-       FormBox[
-        FormBox[
-         RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
-         TraditionalForm],
+       FormBox["\[Mu]",
         TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm], " ", 
-   FormBox[
-    RowBox[{
+       TraditionalForm]], " ", 
      SuperscriptBox[
-      SuperscriptBox[
-       OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
       FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
         TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox["p4",
-      TraditionalForm], ")"}],
-    TraditionalForm], " ", 
-   FormBox[
+       TraditionalForm]]}], 
     RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[CurlyEpsilon]", "_"], 
-      FormBox[
-       FormBox[
-        FormBox[
-         RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox["p4",
-      TraditionalForm], ")"}],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[10]=",
- CellID->289002701]
+     FormBox[
+      OverscriptBox[
+       FormBox["n",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[15]="]
 }, Open  ]],
+
+Cell["\<\
+DoPolarizationSums[exp,k,0] replaces the polarization sum of external \
+massless vector 
+bosons with momentum k by -g(mu,nu). This corresponds to summing over all \
+four physical and unphysical polarizations.\
+\>", "Notes"],
+
+Cell[BoxData[{
+ RowBox[{"FCClearScalarProducts", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SP", "[", "p", "]"}], "=", "0"}], ";"}]}], "Input",
+ CellLabel->"In[16]:="],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ptest", "//", "DoPolarizationSums"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[11]:=",
- CellID->683494559],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"DoPolarizationSums", "(", 
+ RowBox[{
+  RowBox[{"Pair", "[", 
    RowBox[{
-    FormBox[
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"p", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], "]"}]}], "]"}], " ", 
+  RowBox[{"Pair", "[", 
+   RowBox[{
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"p", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellLabel->"In[18]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
      SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox[
-          RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm], " ", 
-    FormBox[
-     RowBox[{
-      SuperscriptBox[
-       SuperscriptBox[
-        OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]], "(", 
-      FormBox["p4",
-       TraditionalForm], ")"}],
-     TraditionalForm], " ", 
-    FormBox[
-     RowBox[{
-      SuperscriptBox[
-       OverscriptBox["\[CurlyEpsilon]", "_"], 
-       FormBox[
-        FormBox[
-         FormBox[
-          RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]], "(", 
-      FormBox["p4",
-       TraditionalForm], ")"}],
-     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[11]=",
- CellID->1187724286]
+      OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}], " ", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[CurlyEpsilon]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "//", "Contract"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[12]:=",
- CellID->1480522060],
+ RowBox[{"DoPolarizationSums", "[", 
+  RowBox[{"%", ",", "p", ",", "0"}], "]"}]], "Input",
+ CellLabel->"In[19]:="],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"DoPolarizationSums", "(", 
-   RowBox[{"-", "1"}], ")"}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[12]=",
- CellID->1321184712]
+  RowBox[{"-", 
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[19]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "DoPolarizationSums[exp,k] sums over polarizations of external massive \
+vector bosons with momentum k and mass ",
+ Cell[BoxData[
+  SuperscriptBox["k", "2"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "."
+}], "Notes"],
+
+Cell[BoxData[{
+ RowBox[{"FCClearScalarProducts", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SP", "[", "p", "]"}], "=", 
+   RowBox[{"m", "^", "2"}]}], ";"}]}], "Input",
+ CellLabel->"In[22]:="],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Pair", "[", 
+   RowBox[{
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"p", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], "]"}]}], "]"}], " ", 
+  RowBox[{"Pair", "[", 
+   RowBox[{
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"p", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellLabel->"In[24]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     SuperscriptBox[
+      OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}], " ", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[CurlyEpsilon]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ptest", "//", "Contract"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[13]:=",
- CellID->1260436699],
+ RowBox[{"DoPolarizationSums", "[", 
+  RowBox[{"%", ",", "p"}], "]"}]], "Input",
+ CellLabel->"In[25]:="],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"-", "1"}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[13]=",
- CellID->1626281081]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"%", "//", "DoPolarizationSums"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[14]:=",
- CellID->1965173944],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"DoPolarizationSums", "(", 
-   RowBox[{"-", "1"}], ")"}], TraditionalForm]], "Output",
- CellTags->"DoPolarizationSums",
- CellLabel->"Out[14]=",
- CellID->170747363]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"ee", ",", "tt", ",", "ev", ",", "ptest"}], "]"}]], "Input",
- CellTags->"DoPolarizationSums",
- CellLabel->"In[15]:=",
- CellID->1673171946]
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
+    SuperscriptBox["m", "2"]], "-", 
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[25]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -858,14 +649,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{877, 832},
+WindowMargins->{{1090, Automatic}, {211, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
