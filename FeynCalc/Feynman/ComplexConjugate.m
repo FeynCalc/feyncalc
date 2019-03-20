@@ -34,9 +34,7 @@ Begin["`ComplexConjugate`Private`"]
 dotsim::usage="";
 
 rev[yz__] :=
-	(DOT @@ (Reverse[FRH[{ yz }]]/.  {
-		ChargeConjugationMatrix :> (-ChargeConjugationMatrix),  ChargeConjugationMatrixInv -> (-ChargeConjugationMatrixInv)
-	})) /; Length[Position[{yz}, Spinor]] < 3;
+	(DOT @@ (Reverse[FRH[{ yz }]])) /; Length[Position[{yz}, Spinor]] < 3;
 
 c$CCfrh /: HoldForm[c$CCfrh[ii_]] := c$CC[ii];
 

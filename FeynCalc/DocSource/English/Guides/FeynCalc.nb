@@ -2493,32 +2493,6 @@ Cell[TextData[{
  CellID->594655451],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["ChargeConjugationMatrix",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/ChargeConjugationMatrix"]], 
-  "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " charge conjugation matrix"
-}], "GuideText",
- CellID->231184642],
-
-Cell[TextData[{
- Cell[TextData[ButtonBox["ChargeConjugationMatrixInv",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/ChargeConjugationMatrixInv"]], 
-  "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " inverse of ",
- Cell[TextData[ButtonBox["ChargeConjugationMatrix",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/ChargeConjugationMatrix"]], 
-  "InlineFunctionSans"]
-}], "GuideText",
- CellID->2057902261],
-
-Cell[TextData[{
  Cell[TextData[ButtonBox["ComplexConjugate",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/ComplexConjugate"]], 
