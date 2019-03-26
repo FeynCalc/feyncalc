@@ -30,6 +30,7 @@ End[]
 Begin["`FCDiracIsolate`Private`"]
 
 Options[FCDiracIsolate] = {
+	CartesianIndex -> False,
 	ClearHeads -> {FCGV["DiracChain"]},
 	Collecting -> True,
 	DiracGamma -> True,
@@ -59,8 +60,8 @@ Options[FCDiracIsolate] = {
 
 makeSelectionList[expr_,heads_List]:=
 	MemSet[makeSelectionList[expr,heads],
-		Join[heads,Intersection[Cases[SelectFree[expr, heads],l_LorentzIndex:>l[[1]],Infinity],
-			Cases[SelectNotFree[expr, heads],l_LorentzIndex:>l[[1]],Infinity]]]
+		Join[heads,Intersection[Cases[SelectFree[expr, heads], l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity],
+			Cases[SelectNotFree[expr, heads],  l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity]]]
 ];
 
 FCDiracIsolate[expr_, OptionsPattern[]] :=
@@ -85,6 +86,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[LorentzIndex]===All,
 			headsList = Join[headsList,{LorentzIndex}];
+		];
+
+		If[	OptionValue[CartesianIndex]===All,
+			headsList = Join[headsList,{CartesianIndex}];
 		];
 
 		head = OptionValue[Head];
@@ -151,9 +156,10 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCDiracIsolate: Handling Lorentz indices.", FCDoControl->fcdiVerbose];
-		If[ OptionValue[LorentzIndex]===True,
-			res = (Map[(selectionList=makeSelectionList[#,headsList];  restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
+		If[ OptionValue[LorentzIndex]===True || OptionValue[CartesianIndex]===True,
+			res = (Map[(selectionList=makeSelectionList[#,headsList]; restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
+
 			res = (Map[(restHead[SelectFree[#, headsList]] head[SelectNotFree[#, headsList]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
 		];
@@ -197,11 +203,11 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			res = res /. DOT->holdDOT //. head[holdDOT[x__] y_.]/; !FreeQ[{x},Spinor] :> holdDOT[x] head[y]  /. holdDOT -> DOT,
 
 
-		If[	OptionValue[Spinor]===Join,
-				res = res /. DOT->holdDOT //.
-				head[holdDOT[a_Spinor,b___,c_Spinor] x_.] head[holdDOT[d_Spinor,e___,f_Spinor] y_.]/; FreeQ[{b,e},Spinor] :>
-					head[holdDOT[a,b,c] holdDOT[d,e,f] x y]/. holdDOT->DOT;
-		]
+			If[	OptionValue[Spinor]===Join,
+					res = res /. DOT->holdDOT //.
+					head[holdDOT[a_Spinor,b___,c_Spinor] x_.] head[holdDOT[d_Spinor,e___,f_Spinor] y_.]/; FreeQ[{b,e},Spinor] :>
+						head[holdDOT[a,b,c] holdDOT[d,e,f] x y]/. holdDOT->DOT;
+			]
 
 		];
 
@@ -220,8 +226,12 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		tmp = headsList;
 
-		If[ OptionValue[LorentzIndex],
+		If[ OptionValue[LorentzIndex]===True,
 			tmp = Join[tmp,{LorentzIndex}]
+		];
+
+		If[ OptionValue[CartesianIndex]===True,
+			tmp = Join[tmp,{CartesianIndex}]
 		];
 
 		(* For LorentzIndex set to true, this check guarantees that all Lorentz tensors are inside head *)

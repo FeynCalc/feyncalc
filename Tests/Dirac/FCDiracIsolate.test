@@ -274,6 +274,8 @@ FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
 DiracIndex[j]], FermionicChain -> True, Head -> dirac, FCE -> True]", "dirac[FCHN[GA[mu], i, j]]"},
 {"fcstFCDiracIsolate-ID29", "FCDiracIsolate[FermionicChain[1, DiracIndex[i], DiracIndex[j]] GA[mu],
 DiracGamma -> False, FermionicChain -> True, Head -> dirac,
-FCE -> True]", "dirac[DIDelta[i, j]]*GA[mu]"}
+FCE -> True]", "dirac[DIDelta[i, j]]*GA[mu]"},
+{"fcstFCDiracIsolate-ID30", "FCDiracIsolate[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j],
+CartesianIndex -> True, Head -> dch, FCE -> True]", "dch[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j]]"}
 });
 
