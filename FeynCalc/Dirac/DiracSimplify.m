@@ -164,7 +164,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
-				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, ToDiracGamma67->optToDiracGamma67];
+				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, CartesianIndex->True, ToDiracGamma67->optToDiracGamma67];
 
 			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
 				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz
