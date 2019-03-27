@@ -57,6 +57,7 @@ trace5Fun::usage="";
 noSpur::usage="";
 leviCivitaSign::usage="";
 optSort::usage="";
+alreadyDone::usage="";
 
 Options[DiracTrace] = {
 	Contract -> True,

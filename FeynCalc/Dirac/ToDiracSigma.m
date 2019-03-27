@@ -18,9 +18,10 @@ ToDiracSigma::usage =
 "ToDiracSigma[exp,x,y] substitutes the neighboring Dirac matrices x and y by \
 DiracSigma and the metric tensor.";
 
-ToDiracSigma::noddim =
-"Error. ToDiracSigma does not work with Dirac matrices in other dimensions than 4. \
-Evaluation aborted.";
+ToDiracSigma::failmsg =
+"Error! ToDiracSigma has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -29,34 +30,42 @@ End[]
 Begin["`ToDiracSigma`Private`"]
 
 Options[ToDiracSigma] = {
-	FCI -> False,
-	DotSimplify -> True
+	DotSimplify -> True,
+	FCE -> False,
+	FCI -> False
 }
 
 ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
-	Block[{ x, y,  ex},
-
-		{x,y} = FCI[{xx,yy}];
+	Block[{x, y,  ex, holdDOT},
 
 		If[ OptionValue[FCI],
-				ex = expr,
-				ex = FCI[expr]
+				ex = expr;
+				{x,y} = FCI[{xx,yy}],
+				{ex,x,y} = FCI[{expr,xx,yy}]
 		];
 
 		If[ !MatchQ[x,DiracGamma[_]] || !MatchQ[y,DiracGamma[_]],
-			Message[ToDiracSigma::noddim];
+			Message[ToDiracSigma::failmsg,"Only Dirac matrices in 4 dimensions are supported."];
 			Abort[]
 		];
 
-		ex = (ex /. DOT[a___, x, y, b___] :> (- I DOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] DOT[a, b]) /. DOT[] -> 1);
+		ex = ex /. DOT -> holdDOT;
+
+		ex = (ex //. holdDOT[a___, x, y, b___] :> (- I holdDOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] holdDOT[a, b]));
+
+		ex = ex /. holdDOT[] -> 1 /. holdDOT -> DOT;
 
 		If[ OptionValue[DotSimplify],
 			ex = DotSimplify[ex, FCI->False]
 		];
 
-	ex
+		If[ OptionValue[FCE],
+			ex = FCE[ex]
+		];
 
-]
+		ex
+
+	]
 
 FCPrint[1,"ToDiracSigma.m loaded"];
 End[]

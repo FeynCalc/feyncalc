@@ -27,6 +27,7 @@ Begin["`ToLarin`Private`"]
 
 Options[ToLarin] = {
 	Dimension -> D,
+	FCE -> False,
 	FCI -> False
 };
 
@@ -48,6 +49,11 @@ ToLarin[expr_, OptionsPattern[]] :=
 			(drsi I/6 Eps[mUU, fi1, fi2, fi3] dotHold[a,DiracGamma[fi1,dim],DiracGamma[fi2,dim],DiracGamma[fi3,dim],b]));
 
 		res = ex /. dotHold -> DOT;
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	];
 

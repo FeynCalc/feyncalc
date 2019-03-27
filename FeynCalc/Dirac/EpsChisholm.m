@@ -110,17 +110,13 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 				FCPrint[1, "EpsChisholm: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose]
 		];
 
-		FCPrint[1, "EpsChisholm: Leaving.", FCDoControl->esVerbose];
-		FCPrint[3, "EpsChisholm: Leaving with ", res, FCDoControl->esVerbose];
-
 		If[ OptionValue[FCE],
 			res = FCE[res]
 		];
 
 
-
-		FCPrint[3, "EpsChisholm: Leaving with: ", res , FCDoControl->esVerbose];
-		FCPrint[3, "EpsChisholm: Leaving. ", res , FCDoControl->esVerbose];
+		FCPrint[1, "EpsChisholm: Leaving.", FCDoControl->esVerbose];
+		FCPrint[3, "EpsChisholm: Leaving with ", res, FCDoControl->esVerbose];
 
 		res
 	]

@@ -27,9 +27,9 @@ Begin["`ToDiracGamma67`Private`"]
 
 Options[ToDiracGamma67] = {
 	All -> False,
-	FCI -> False,
+	DotSimplify -> False,
 	FCE -> False,
-	DotSimplify -> False
+	FCI -> False
 }
 
 ToDiracGamma67[expr_, OptionsPattern[]] :=
@@ -39,7 +39,6 @@ ToDiracGamma67[expr_, OptionsPattern[]] :=
 				ex = expr,
 				ex = FCI[expr]
 		];
-
 
 		ex = ex /.{
 			1/2+DiracGamma[5]/2 -> DiracGamma[6],
@@ -59,7 +58,6 @@ ToDiracGamma67[expr_, OptionsPattern[]] :=
 		If[ OptionValue[FCE],
 			ex = FCE[ex]
 		];
-
 
 		ex
 
