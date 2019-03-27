@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 CovariantFieldDerivative::usage =
-"CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is a covariant \
+"CovariantFieldDerivative[f[x],x,{li1,li2,...}] is a covariant \
 derivative of f[x] with respect to space-time variables x and with Lorentz \
 indices li1, li2,... CovariantFieldDerivative has only typesetting \
 definitions by default. The user is must supply his/her own \

@@ -43,8 +43,8 @@ The setting should always be 4, a symbol (D, n, ...), or \
 (D-4), (n-4), ... .";
 
 DiracTraceEvaluate::usage =
-"DiracTraceEvaluate is an option for DiracTrace and TR. \
-If set to False, DiracTrace remains unevaluated.";
+"DiracTraceEvaluate is an option for DiracTrace, DiracSimplify and \
+some other functions. If set to False, Dirac traces remain unevaluated.";
 
 Divideout::usage =
 "Divideout is an option for OPEInt and OPEInsert. \
@@ -268,12 +268,12 @@ that is not massless. This is usueful when computing processes \
 that involve a virtual photon as an external state."
 
 West::usage =
-"West is an option for DiracTrace, TR and other functions that deal \
-with traces of Dirac matrices. It applies only to the computation of \
-D-dimensional chiral traces (i.e. those that involve one gamma5) in the \
-Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to True, such \
-traces will be computed according to formula  (A.5) from \
-Comp. Phys. Comm 77 (1993) 286-298, which is also known as West's formula.";
+"West is an option for DiracTrace and several other functions that deal \
+with traces of Dirac matrices. The option applies only to the computation \
+of D-dimensional traces with an odd number of \[Gamma]^5 in the \
+Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. With West->True (default setting), \
+such traces are computed according to formula  (A.5) from Comp. Phys. Comm 77 (1993) \
+286-298, which is also known as West's formula.";
 
 WriteOut::usage =
 "WriteOut is an option for OneLoop and SquareAmplitude2. \

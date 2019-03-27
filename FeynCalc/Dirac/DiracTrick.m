@@ -16,8 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracTrick::usage =
-"DiracTrick[exp] contracts gamma matrices with each other and \
-performs several simplifications (no expansion, use DiracSimplify for this).";
+"DiracTrick[exp] contracts Dirac matrices with each other and \
+performs several simplifications but no expansions. There are not many \
+cases when a user will need to call this function directly. Use DiracSimplify \
+to achieve maximal simplification of Dirac matrix chains.";
 
 DiracTrick::failmsg =
 "Error! DiracTrick has encountered a fatal problem and must abort the computation. \

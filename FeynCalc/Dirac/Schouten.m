@@ -13,12 +13,12 @@
 (* ------------------------------------------------------------------------ *)
 
 Schouten::usage =
-"Schouten[expr] applies the Schouten identity for four-vectors on at most \
-42 terms in a sum. If Schouten should operate on larger expression you \
-can give a second argument, e.g.: \
-Schouten[expr, 4711] which will work \
-on sums with less than 4711 terms.\n\n
-
+"Schouten[exp] attempts to automatically remove spurious terms in exp by applying \
+the Schouten identity. \n
+Schouten applies the identity for 4-vectors on at most \
+42 terms in a sum. If it should operate on a larger expression you \
+can give a second argument, e.g.: Schouten[expr, 4711] which will work \
+on sums with less than 4711 terms.\n
 Schouten is also an option of Contract and \
 DiracTrace. It may be set to an integer \
 indicating the maximum number of terms onto which the \

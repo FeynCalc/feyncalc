@@ -19,10 +19,11 @@
 (* ------------------------------------------------------------------------ *)
 
 ComplexConjugate::usage =
-"ComplexConjugate[expr] complex conjugates expr. It operates on \
-Fermion-lines, i.e., products of Spinor[..] .DiracMatrix[..] . Spinor[..]. \
-For taking the spin sum (i.e. constructing the traces) use FermionSpinSum. \n \n
-WARNING: In expr should be NO explicit I in denominators!";
+"ComplexConjugate[exp] returns the complex conjugate of exp, where the input \
+expression must be a proper matrix element. In particular, all Dirac \
+matrices are assumed to be inside closed Dirac spinor chains. If this is not \
+the case, the result will be inconsistent. Futhermore, denominators may not contain \
+explicit I's!";
 
 (* ------------------------------------------------------------------------ *)
 

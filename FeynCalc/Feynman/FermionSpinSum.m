@@ -17,7 +17,9 @@
 
 
 FermionSpinSum::usage =
-"FermionSpinSum[x] constructs Traces out of squared ampliudes in x.";
+"FermionSpinSum[exp] converts products of closed spinor chains in exp into
+Dirac traces. Both Dirac and Majorana particles are supported. It is understood,
+that exp represents a squared amplitude.";
 
 FermionSpinSum::spinorsleft =
 "Error! After applying FermionSpinSum to all spinor chains the output \

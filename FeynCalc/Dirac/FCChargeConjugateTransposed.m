@@ -22,8 +22,8 @@ FCChargeConjugateTransposed::usage =
 "FCChargeConjugateTransposed[exp] represents the application of the charge \
 conjugation operator to the transposed of exp, i.e. C exp^T C^(-1). Here exp \
 is understood to be a single Dirac matrix or a chain thereof. \n
-The option setting Explicit determines whether the explicit result \
-is returned or whether it is left in the unevaluated form. This form will be \
+The option Explicit determines whether to substitute the explicit result or \
+to leave the expression in the unevaluated form. This form will be \
 also maintained if the function does not know how to obtain C exp^T C^(-1) \
 from the given exp.";
 

@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracOrder::usage =
-"DiracOrder[expr] orders the Dirac matrices in expr alphabetically. \
-DiracOrder[expr, orderlist] orders the Dirac matrices in expr according \
+"DiracOrder[exp] orders the Dirac matrices in exp lexicographically. \
+DiracOrder[exp, orderlist] orders the Dirac matrices in exp according \
 to orderlist.";
 
 DiracOrder::failmsg =

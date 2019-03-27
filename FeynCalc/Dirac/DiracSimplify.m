@@ -17,11 +17,11 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSimplify::usage =
-"DiracSimplify[expr] simplifies products of Dirac matrices \
-in expr and expands non-commutative products. \
+"DiracSimplify[exp] simplifies products of Dirac matrices \
+and expands non-commutative products. \
 Double Lorentz indices and four vectors are contracted. \
 The Dirac equation is applied. \
-All DiracMatrix[5], DiracMatrix[6] and DiracMatrix[7] are moved to \
+All DiracGamma[5], DiracGamma[6] and DiracGamma[7] are moved to \
 the right. The order of the Dirac matrices is not changed.";
 
 DiracCanonical::usage =
@@ -32,23 +32,12 @@ internally.";
 InsideDiracTrace::usage =
 "InsideDiracTrace is an option of DiracSimplify. \
 If set to True, DiracSimplify assumes to operate \
-inside a DiracTrace, i.e., products of an odd number \
-of Dirac matrices are discarded. Furthermore simple \
-traces are calculated (but divided by a factor 4, \
-i.e. :  DiracSimplify[DiracMatrix[a,b], InsideDiracTrace->True] \
-yields  ScalarProduct[a,b]) \n
-Traces involving more than \
-four DiracGammas and DiracGamma[5] are not performed.";
+inside a Dirac trace, i.e., products of an odd number \
+of Dirac matrices are discarded.";
 
 DiracSimpCombine::usage =
 "DiracSimpCombine is an option for DiracSimplify. If set to \
-True, sums of DiracGamma's will be merged as much as \
-possible in DiracGamma[ .. + .. + ]'s.";
-
-DiracSubstitute67::usage =
-"DiracSubstitute67 is an option for DiracSimplify. If set to \
-True the chirality-projectors DiracGamma[6] and DiracGamma[7] are \
-substituted by their definitions.";
+True, DiracSimplify uses the function DiracGammaCombine internally.";
 
 DiracSimplify::failmsg =
 "Error! DiracSimplifys encountered a fatal problem and must abort the computation. \

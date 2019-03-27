@@ -17,17 +17,11 @@
 
 
 DiracTrace::usage =
-"DiracTrace[expr] is the head of Dirac traces. \
-Whether the trace is  evaluated depends on the option \
-DiracTraceEvaluate. See also TR. \
-The argument expr may be a product of Dirac matrices or slashes \
-separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).
-The option Factoring determines the final function to be applied. If \
-it is set to False no simplification is done. \
-It might be set to, e.g., Factor or Factor2 to get simpler results. \
-With the default setting Factoring -> Automatic factorization is performed on \
-not too long (LeafCount[ ] < 5000 ) expressions.
-";
+"DiracTrace[exp] is the head of Dirac traces. \
+By default the trace is not evaluated. The evaluation occurs only when \
+the option DiracTraceEvaluate is set to True. It is recommended to use \
+DiracSimplify, which will automatically evaluate all Dirac traces in the \
+input expression.";
 
 DiracTrace::noncom =
 "Wrong syntax! The Dirac trace of `1` contains Dirac matrices multiplied via \

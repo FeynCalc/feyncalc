@@ -17,11 +17,9 @@
 
 ScalarGluonVertex::usage =
 "ScalarGluonVertex[{p}, {q}, {mu,a}] or ScalarGluonVertex[ p,  q,  mu, a ] yields \
-the scalar-scalar-gluon vertex (p and q are incoming momenta).
-
-ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex \
-(p and q are incoming momenta).
-
+the scalar-scalar-gluon vertex, where p and q are incoming momenta. \n
+ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex, \
+where p and q are incoming momenta.\n
 The dimension  and the name of the coupling constant are determined by the \
 options Dimension and CouplingConstant.";
 

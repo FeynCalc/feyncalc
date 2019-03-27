@@ -19,9 +19,8 @@ FieldDerivative::usage =
 "FieldDerivative[f[x],x,li1,li2,...] is the derivative of f[x] with \
 respect to space-time variables x and with Lorentz indices li1, li2, ...,  \
 where li1, li2, ... have head LorentzIndex.  \n
-
 FieldDerivative[f[x],x,li1,li2,...] can be given as  \
-FieldDerivative[f[x],x,{l1,l2,...}], where l1 is li1 without the head, ... \
+FieldDerivative[f[x],x,{l1,l2,...}], where l1 is li1 without the head. \n
 NOTICE: FieldDerivative is defined only for objects with head QuantumField[...]. \
 If the space-time derivative of other objects is wanted, the corresponding \
 rule must be specified.";

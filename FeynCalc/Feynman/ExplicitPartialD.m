@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ExplicitPartialD::usage =
-"ExplicitPartialD[exp] inserts in exp the definition for \
-LeftRightPartialD[z] (and LeftRightPartialD2[z]).";
+"ExplicitPartialD[exp] inserts the definitions for \
+LeftRightPartialD[z] and LeftRightPartialD2[z].";
 
 Begin["`Package`"]
 End[]

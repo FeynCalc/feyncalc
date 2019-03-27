@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SMVertex::usage =
-"SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives the photon-W-W vertex \
-(p,mu correspond to the photon, q,nu to the (incoming) W+ and k,rho \
-to the (incoming) W-. All momenta are flowing into the vertex. \n
-SMVertex[\"HHH\", ___] give the three-higgs coupling.";
+"is a library of SM vertices. Currently it implements only few vertices and \
+is not really useful.";
 
 (* ------------------------------------------------------------------------ *)
 

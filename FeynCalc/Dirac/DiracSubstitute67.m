@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSubstitute67::usage =
-"DiracSubstitute67[exp] inserts in exp the definitions of \
+"DiracSubstitute67[exp] inserts the explicit definitions of \
 the chirality projectors DiracGamma[6] and DiracGamma[7]. \
 DiracSubstitute67 is also an option of various FeynCalc functions \
 that handle Dirac algebra.";

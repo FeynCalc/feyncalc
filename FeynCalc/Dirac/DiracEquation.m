@@ -18,7 +18,7 @@
 
 DiracEquation::usage =
 "DiracEquation[exp] applies the Dirac equation without \
-expanding exp. If that is needed, use DiracSimplify.";
+expanding exp. If expansions are necessary, use DiracSimplify.";
 
 (* ------------------------------------------------------------------------ *)
 

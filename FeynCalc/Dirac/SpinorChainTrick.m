@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 SpinorChainTrick::usage =
-"SpinorChainTrick[exp] performs several simplifications of products of spinor \
+"SpinorChainTrick[exp] applies several simplifications to products of spinor \
 chains.";
 
 SpinorChainTrick::failmsg =

@@ -35,8 +35,12 @@ Options[GhostPropagator] = {
 	Explicit -> False
 };
 
-GhostPropagator[p_, OptionsPattern[]] :=
-	(I FeynAmpDenominator[PropagatorDenominator[p, 0]]) /;OptionValue[Explicit];
+GhostPropagator[pi_, OptionsPattern[]] :=
+	Block[ {p, glp},
+		p = Momentum[pi, OptionValue[Dimension]];
+		glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]];
+		QCDFeynmanRuleConvention[GhostPropagator] glp
+	] /; OptionValue[Explicit];
 
 GhostPropagator[pi_, ai_, bi_, OptionsPattern[]] :=
 	Block[ {p, a, b, glp},

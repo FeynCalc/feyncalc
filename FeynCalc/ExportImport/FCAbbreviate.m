@@ -20,7 +20,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCAbbreviate::usage =
-"FCAbbreviate[expr, {q1,q2,...},{p1,p2,...}] introduces abbreivations for \
+"FCAbbreviate[exp, {q1,q2,...},{p1,p2,...}] introduces abbreivations for \
 scalar products of external momenta, SMP-objects and other variables that are \
 present in the expression. Functions (LeafCount > 1) are not supported. The \
 main purpose is to simplify the export of FeynCalc expressions to other software \

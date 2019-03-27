@@ -17,9 +17,9 @@
 
 SMP::usage= "SMP[\"par\"] displays a symbol for the model parameter par. \
 Typical parameters are masses, coupling constants, mixing angles etc. \
-Parameters that are complex, like CKM matrix element, have an I as an additional parameter,
+Parameters that are complex, like CKM matrix element, have an I as an additional argument,
 i.e. SMP[\"V_ud\",I] and SMP[\"V_ud\",-I]. \n
-SMP[] shows the list of available parameters.";
+SMP[] shows the list of all available parameters.";
 
 Gstrong::usage =
 "Gstrong is a shortcut for SMP[\"g_s\"].";

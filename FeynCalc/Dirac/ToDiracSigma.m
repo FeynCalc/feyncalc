@@ -15,9 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ToDiracSigma::usage =
-"ToDiracSigma[ex,x,y] substitutes the neighboring Gamma matrices x and y by \
-DiracSigma and the metric tensor, e.g. ToDiracSigma[GA[i,j],GA[i],GA[j]] \
-gives MT[i, j] - I DiracSigma[GA[i], GA[j]].";
+"ToDiracSigma[exp,x,y] substitutes the neighboring Dirac matrices x and y by \
+DiracSigma and the metric tensor.";
 
 ToDiracSigma::noddim =
 "Error. ToDiracSigma does not work with Dirac matrices in other dimensions than 4. \

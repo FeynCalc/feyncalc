@@ -19,19 +19,15 @@ GV::usage =
 "GV is equivalent to GluonVertex.";
 
 GluonVertex::usage =
-"GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the
-3-gluon vertex.
-
-GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the 3-gluon vertex without color structure and the \
-coupling constant.
-
+"GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or \
+GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the 3-gluon vertex. \n
+GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the 3-gluon vertex without color structure \
+and the coupling constant. \n
 GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] or GluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or \
 GluonVertex[p,mu,a ,  q,nu,b ,  k,la,c ,  s,si,d] or GluonVertex[ mu,a ,  nu,b ,  la,c ,  si,d ] \
-yields the  4-gluon vertex.
-
+yields the  4-gluon vertex. \n
 The dimension  and the name of the coupling constant are determined by the options
-Dimension and CouplingConstant.
-
+Dimension and CouplingConstant. \n
 The Option setting Explicit determines whether the explicit Feynman rule \
 is returned or whether it is left as an operator.";
 

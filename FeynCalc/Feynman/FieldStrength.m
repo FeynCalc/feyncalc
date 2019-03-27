@@ -18,10 +18,9 @@
 FieldStrength::usage =
 "FieldStrength[mu,nu,a] is the field strength tensor \
 F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu^a + \
-g f^{abc} A_mu^b A_nu^c. \
-
+g f^{abc} A_mu^b A_nu^c. \n
 FieldStrength[mu,nu] is the field strength tensor \
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu. \
+F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu. \n
 The name of the field (A) and the coupling constant (g) \
 can be set through the options or by additional arguments: \
 FieldStrength[mu,nu,a, A, g] or, specifying the dummy \

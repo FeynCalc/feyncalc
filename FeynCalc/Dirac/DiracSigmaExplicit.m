@@ -16,8 +16,9 @@
 
 DiracSigmaExplicit::usage =
 "DiracSigmaExplicit[exp] inserts in exp the definition of \
-DiracSigma. DiracSigmaExplict is also an option of various FeynCalc functions \
-that handle Dirac algebra.";
+DiracSigma. \n
+DiracSigmaExplict is also an option of various FeynCalc functions \
+that handle the Dirac algebra.";
 
 DiracSigmaExplicit::failmsg =
 "Error! DiracSigmaExplicit has encountered a fatal problem and must abort the computation. \

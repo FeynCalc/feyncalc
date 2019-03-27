@@ -74,10 +74,8 @@ DeltaFunctionPrime::usage =
 "DeltaFunctionPrime denotes the derivative of the Dirac delta-function.";
 
 DiracBasis::usage =
-"DiracBasis[any] is a head which is wrapped around Dirac structures \
-(and the 1) as a result of the function DiracReduce. \
-Eventually you want to substitute DiracBasis by Identity (or \
-set: DiracBasis[1] = S; DiracBasis[DiracMatrix[mu]] = P; etc.).";
+"DiracBasis[exp] is a head which is wrapped around Dirac structures \
+(and the 1) as a result of the function DiracReduce.";
 
 DiracGamma::usage =
 "DiracGamma[x, dim] is the way all Dirac \

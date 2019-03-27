@@ -21,12 +21,11 @@
 
 
 PolarizationSum::usage =
-"PolarizationSum[ mu,nu, ... ] defines (as abbreviations) different polarization sums. \
-PolarizationSum[mu, nu] = -g(mu nu); \
-PolarizationSum[mu, nu, k] = -g(mu nu) + k(mu) k(nu)/k^2; \
-PolarizationSum[mu, nu, k, n] = polarization sum for spin 1 fields; \
-(n = external momentum). \
-PolarizationSum[mu, nu, k, 0] is equivalent to -g(mu nu)";
+"PolarizationSum[mu,nu, ... ] returns different polarization sums depending on \
+its arguments. \n
+PolarizationSum[mu, nu] or PolarizationSum[mu, nu, k, 0] gives -g(mu nu); \n
+PolarizationSum[mu, nu, k] returns -g(mu nu) + k(mu) k(nu)/k^2; \n
+PolarizationSum[mu, nu, k, n] yields the general polarization sum for spin 1 fields;";
 
 PolarizationSum::notmassless=
 "Warning! You are inserting a polarization sum for massless vector bosons, \

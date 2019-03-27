@@ -20,11 +20,10 @@ GP::usage =
 
 GluonPropagator::usage =
 "GluonPropagator[p, {mu, a}, {nu, b}] or GluonPropagator[p,  mu, a ,  nu, b ] \
-yields the gluon propagator.
-
+yields the gluon propagator. \n
 GluonPropagator[p, {mu}, {nu}] or GluonPropagator[p, mu, nu] omits the SUNDelta. \
 Using {p,M} instead of p as the first argument gives the Gluon a mass. \
-The gauge and the dimension is determined by the option Gauge and Dimension. \
+The gauge and the dimension are determined by the options Gauge and Dimension. \
 The following settings of Gauge are possible: \
 1 :  the Feynman gauge; \
 alpha : the general covariant gauge; \

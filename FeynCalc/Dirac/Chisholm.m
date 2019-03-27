@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 Chisholm::usage =
-"Chisholm[x] substitutes products of three Dirac matrices or \
+"Chisholm[exp] substitutes products of three Dirac matrices or \
 slashes by the Chisholm identity.";
 
 Chisholm::failmsg =
@@ -35,6 +35,7 @@ chVerbose::usage="";
 
 Options[Chisholm] = {
 	Contract -> True,
+	DiracSigmaExplicit -> False,
 	DiracSimplify -> True,
 	DotSimplify -> True,
 	FCDiracIsolate -> True,
@@ -42,11 +43,10 @@ Options[Chisholm] = {
 	FCI -> False,
 	FCJoinDOTs -> True,
 	FCVerbose -> False,
-	Mode -> 1,
-	DiracSigmaExplicit -> False,
-	NonCommutative -> True,
+	InsideDiracTrace -> False,
 	MaxIterations -> Infinity,
-	InsideDiracTrace -> False
+	Mode -> 1,
+	NonCommutative -> True
 };
 
 Chisholm[expr_, OptionsPattern[]] :=

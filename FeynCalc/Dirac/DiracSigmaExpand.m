@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Expands Feynman slashes										*)
+(* :Summary: Expands Feynman slashes inside DiracSigma						*)
 
 (* ------------------------------------------------------------------------ *)
 
