@@ -1051,7 +1051,7 @@ Options[Polarization] = {Transversality -> False};
 
 (* 	TODO Explicit syntax checks in the definitions of core objects are too expensive :(
 	Instead we should use a syntax checker function that will be applied to the given expression *)
-DiracHeadsList = {DiracGamma,Spinor,DiracSigma,FermionicChain, DiracIndexDelta};
+DiracHeadsList = {DiracGamma,Spinor,DiracSigma,FermionicChain, DiracIndexDelta, DiracTrace};
 
 PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
 

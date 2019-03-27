@@ -153,8 +153,12 @@ p3])/m1"},
 {"fcstDiracSimplify-ID32","DiracSimplify[TGA[].CGA[i].TGA[].CGA[i]]","3"},
 {"fcstDiracSimplify-ID33","DiracSimplify[TGA[].CGA[i].CGA[i].TGA[]]","-3"},
 {"fcstDiracSimplify-ID34","DiracSimplify[-1/2 GA[5].(GAD[mu].GSD[v] - FVD[v, mu]) FVD[v, mu]]","0"},
-{"fcstDiracSimplify-ID35","DiracSimplify[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j], FCE -> True]","-CSP[p, p] + CGS[p].CGS[q]"}
+{"fcstDiracSimplify-ID35","DiracSimplify[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j], FCE -> True]","-CSP[p, p] + CGS[p].CGS[q]"},
+{"fcstDiracSimplify-ID36","DiracSimplify[DiracTrace[1]]","4"}
 };
+
+
+
 
 Tests`Dirac`fcstDiracSimplifySirlin =
 ({
