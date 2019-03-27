@@ -117,17 +117,46 @@ Cell["SUNDeltaContract", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"SUNDeltaContract", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "substitues for all SUNDelta in expr SUNDeltaContract, contracts the SUN(N) \
-indices and resubstitutes SUNDelta. SUNDeltaContract[i, j] is the \
-Kronecker-delta for SU(",
- StyleBox["N",
-  FontSlant->"Italic"],
- ") with contraction properties. SUNDeltaContract wraps also the head \
-SUNIndex around its arguments."
+  RowBox[{"SUNDeltaContract", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]substitues for all ",
+ ButtonBox["SUNDelta",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNDelta",
+  ButtonNote->"SUNDelta"],
+ " in ",
+ Cell[BoxData["exp"], "InlineFormula"],
+ " ",
+ ButtonBox["SUNDeltaContract",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNDeltaContract",
+  ButtonNote->"SUNDeltaContract"],
+ ", contracts the adjoint ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   RowBox[{"(", "N", ")"}]}]], "InlineFormula"],
+ " indices and resubstitutes ",
+ ButtonBox["SUNDelta",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNDelta",
+  ButtonNote->"SUNDelta"],
+ ".\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"SUNDeltaContract", "[", 
+   RowBox[{"i", ",", "j"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]is the Kronecker-delta for ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   RowBox[{"(", "N", ")"}]}]], "InlineFormula"],
+ " in the adjoint representation with contraction properties. It wraps the \
+head ",
+ ButtonBox["SUNIndex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNIndex",
+  ButtonNote->"SUNIndex"],
+ " around its arguments."
 }], "Usage",
- CellID->982511436],
+ CellID->455417684],
 
 Cell["XXXX", "Notes",
  CellID->1067943069]
@@ -176,9 +205,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNIndex",
   ButtonNote->"SUNIndex"],
  "."
-}], "Text",
- CellTags->"SUNDeltaContract",
- CellID->332681775]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -189,6 +216,8 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -202,6 +231,47 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNDelta", "[", 
+   RowBox[{
+    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
+    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}], "^", "2"}]], "Input",
+ CellLabel->"In[56]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{"(", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], ")"}], "2"], TraditionalForm]], "Output",
+ CellLabel->"Out[56]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNDeltaContract", "[", "%", "]"}]], "Input",
+ CellLabel->"In[57]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["N", "2"], "-", "1"}], TraditionalForm]], "Output",
+ CellLabel->"Out[57]="]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -263,14 +333,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{700, 740},
+WindowMargins->{{Automatic, 151}, {61, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

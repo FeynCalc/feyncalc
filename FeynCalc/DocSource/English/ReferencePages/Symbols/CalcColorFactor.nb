@@ -117,19 +117,35 @@ Cell["CalcColorFactor", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"CalcColorFactor", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "calculates the color factor of expr.  CalcColorFactor is useful for \
-application on FeynArts produced amplitudes. CalcColorFactor is just a macro \
-function for CalcColorFactor[x_] := \nIf[FreeQ2[FeynCalcInternal[x], \
-SUNIndex],  x, \n                    SUNSimplify[SUNSimplify[  (If[ \
-!FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[  SUNSimplify[x]], Explicit \
--> False], Explicit -> True]]."
+  RowBox[{"CalcColorFactor", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]calculates the color factor of ",
+ Cell[BoxData["exp"], "InlineFormula",
+  FormatType->"StandardForm"],
+ "."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ ButtonBox["CalcColorFactor",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/CalcColorFactor",
+  ButtonNote->"CalcColorFactor"],
+ " is useful for application on FeynArts produced amplitudes."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "CalcColorFactor", "]"}]], "Input",
+ CellLabel->"In[41]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"SUNNToCACF", "\[Rule]", "True"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[41]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,15 +180,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- ButtonBox["SUNSimplify",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/SUNSimplify",
-  ButtonNote->"SUNSimplify"],
- "."
-}], "Text",
- CellTags->"CalcColorFactor",
- CellID->1899752684]
+Cell[TextData[ButtonBox["SUNSimplify",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/SUNSimplify",
+ ButtonNote->"SUNSimplify"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -199,10 +210,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"CalcColorFactor",
- CellID->86935840],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -213,7 +220,7 @@ Cell[BoxData[
    RowBox[{"SUNF", "[", 
     RowBox[{"a", ",", "b", ",", "d"}], "]"}]}], "]"}]], "Input",
  CellTags->"CalcColorFactor",
- CellLabel->"In[1]:=",
+ CellLabel->"In[42]:=",
  CellID->1491586567],
 
 Cell[BoxData[
@@ -231,253 +238,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"CalcColorFactor",
- CellLabel->"Out[1]=",
- CellID->1436200004]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Amplitude", "[", "\"\<q2se2\>\"", "]"}]], "Input",
- CellTags->"CalcColorFactor",
- CellLabel->"In[2]:=",
- CellID->1818256691],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"SUNDeltaContract", "(", 
-   RowBox[{
-    RowBox[{
-     SubsuperscriptBox["\[CapitalPi]", 
-      RowBox[{
-       FormBox["ci1",
-        TraditionalForm], 
-       FormBox["ci3",
-        TraditionalForm]}], 
-      RowBox[{
-       FormBox["li1",
-        TraditionalForm], 
-       FormBox["li3",
-        TraditionalForm]}]], "(", 
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-      TraditionalForm], ")"}], " ", 
-    RowBox[{
-     SubsuperscriptBox["\[CapitalPi]", 
-      RowBox[{
-       FormBox["ci9",
-        TraditionalForm], 
-       FormBox["ci11",
-        TraditionalForm]}], 
-      RowBox[{
-       FormBox["li9",
-        TraditionalForm], 
-       FormBox["li11",
-        TraditionalForm]}]], "(", 
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-      TraditionalForm], ")"}], " ", 
-    RowBox[{
-     SubsuperscriptBox["Q", 
-      FormBox["ci11",
-       TraditionalForm], 
-      FormBox["li11",
-       TraditionalForm]], ".", 
-     RowBox[{
-      SubscriptBox["\[CapitalPi]", "q"], "(", 
-      FormBox[
-       RowBox[{
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}], "-", 
-        RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}]}],
-       TraditionalForm], ")"}], ".", 
-     SubsuperscriptBox["Q", 
-      FormBox["ci1",
-       TraditionalForm], 
-      FormBox["li1",
-       TraditionalForm]]}], " ", 
-    RowBox[{"(", 
-     RowBox[{"-", 
-      RowBox[{"tr", "(", 
-       FormBox[
-        RowBox[{"2", " ", 
-         SubscriptBox["T", "f"], " ", 
-         RowBox[{
-          RowBox[{
-           SubscriptBox["\[CapitalPi]", "q"], "(", 
-           FormBox[
-            RowBox[{"-", 
-             RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}]}],
-            TraditionalForm], ")"}], ".", 
-          SubsuperscriptBox["Q", 
-           FormBox["ci9",
-            TraditionalForm], 
-           FormBox["li9",
-            TraditionalForm]], ".", 
-          RowBox[{
-           SubscriptBox["\[CapitalPi]", "q"], "(", 
-           FormBox[
-            RowBox[{
-             RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}], "-", 
-             RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}]}],
-            TraditionalForm], ")"}], ".", 
-          SubsuperscriptBox["Q", 
-           FormBox["ci3",
-            TraditionalForm], 
-           FormBox["li3",
-            TraditionalForm]]}]}],
-        TraditionalForm], ")"}]}], ")"}]}], ")"}], TraditionalForm]], "Output",
- CellTags->"CalcColorFactor",
- CellLabel->"Out[2]=",
- CellID->1553911339]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"CalcColorFactor", "@", 
-  RowBox[{"Explicit", "@", "%"}]}]], "Input",
- CellTags->"CalcColorFactor",
- CellLabel->"In[3]:=",
- CellID->361683152],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"(", 
-    RowBox[{"\[ImaginaryI]", " ", 
-     SubscriptBox["C", "F"], " ", 
-     SubscriptBox["T", "f"], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       FractionBox["1", 
-        SuperscriptBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-          TraditionalForm], "2"]], ")"}], "2"], " ", 
-     SubsuperscriptBox["g", "s", "4"], " ", 
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["C", "A"], "-", 
-       RowBox[{"2", " ", 
-        SubscriptBox["C", "F"]}]}], ")"}], " ", 
-     FormBox[
-      SuperscriptBox["g", 
-       RowBox[{
-        FormBox[
-         FormBox[
-          FormBox["li1",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["li3",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]}]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox["g", 
-       RowBox[{
-        FormBox[
-         FormBox[
-          FormBox["li11",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["li9",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]}]],
-      TraditionalForm], " ", 
-     RowBox[{
-      SuperscriptBox["\[Gamma]", 
-       FormBox[
-        FormBox["li11",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      RowBox[{"(", 
-       RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
-        FormBox[
-         FormBox[
-          RowBox[{
-           FormBox[
-            RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-            TraditionalForm], "-", 
-           FormBox[
-            RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-            TraditionalForm]}],
-          TraditionalForm],
-         TraditionalForm], ")"}], ")"}], ".", 
-      SuperscriptBox["\[Gamma]", 
-       FormBox[
-        FormBox["li1",
-         TraditionalForm],
-        TraditionalForm]]}], " ", 
-     RowBox[{"tr", "(", 
-      FormBox[
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"\[Gamma]", "\[CenterDot]", 
-          FormBox[
-           FormBox[
-            RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-            TraditionalForm],
-           TraditionalForm]}], ")"}], ".", 
-        SuperscriptBox["\[Gamma]", 
-         FormBox[
-          FormBox["li9",
-           TraditionalForm],
-          TraditionalForm]], ".", 
-        RowBox[{"(", 
-         RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
-          FormBox[
-           FormBox[
-            RowBox[{
-             FormBox[
-              RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-              TraditionalForm], "-", 
-             FormBox[
-              RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-              TraditionalForm]}],
-            TraditionalForm],
-           TraditionalForm], ")"}], ")"}], ".", 
-        SuperscriptBox["\[Gamma]", 
-         FormBox[
-          FormBox["li3",
-           TraditionalForm],
-          TraditionalForm]]}],
-       TraditionalForm], ")"}]}], ")"}], "/", 
-   RowBox[{"(", 
-    RowBox[{
-     SuperscriptBox[
-      FormBox[
-       RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-       TraditionalForm], "2"], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-         TraditionalForm], "-", 
-        FormBox[
-         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-         TraditionalForm]}], ")"}], "2"], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-         TraditionalForm], "-", 
-        FormBox[
-         RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-         TraditionalForm]}], ")"}], "2"]}], ")"}]}], 
-  TraditionalForm]], "Output",
- CellTags->"CalcColorFactor",
- CellLabel->"Out[3]=",
- CellID->1233692379]
+ CellLabel->"Out[42]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -542,13 +303,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{591, Automatic}, {Automatic, 224}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
