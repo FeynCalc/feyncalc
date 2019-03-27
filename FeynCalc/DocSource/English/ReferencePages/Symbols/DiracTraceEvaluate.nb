@@ -117,13 +117,36 @@ Cell["DiracTraceEvaluate", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["DiracTraceEvaluate"], "InlineFormula"],
- " \[LineSeparator]",
- "is an option for DiracTrace and Tr. If set to False, DiracTrace remains \
-unevaluated."
+ " \[LineSeparator]is an option for ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " and some other functions. If set to ",
+ Cell[BoxData["False"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", Dirac traces remain unevaluated."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "For more details, see the documentation for ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ " and ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ "."
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -160,20 +183,16 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ ", ",
  ButtonBox["DiracTrace",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
-  ButtonNote->"DiracTrace"],
- ", ",
- ButtonBox["TR",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/TR",
-  ButtonNote->"TR"],
- "."
-}], "Text",
- CellTags->"DiracTraceEvaluate",
- CellID->1627432666]
+  ButtonNote->"DiracTrace"]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -259,13 +278,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1012, Automatic}, {Automatic, 276}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

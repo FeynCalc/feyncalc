@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9820,        409]
-NotebookOptionsPosition[      5834,        268]
-NotebookOutlinePosition[      6448,        292]
-CellTagsIndexPosition[      6370,        287]
+NotebookDataLength[     10148,        421]
+NotebookOptionsPosition[      6161,        280]
+NotebookOutlinePosition[      6775,        304]
+CellTagsIndexPosition[      6697,        299]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -138,13 +138,25 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FAPatch", "[", "]"}]], "InlineFormula"],
  " \[LineSeparator]is an auxiliary function that patches FeynArts to be \
-compatible with FeynCalc. If an unpatched copy of FeynArts is present in \
-$FeynArtsDirectory, evaluating FAPatch[] will start the patching process"
+compatible with FeynCalc."
 }], "Usage",
- CellChangeTimes->{{3.762052763271558*^9, 3.762052767869672*^9}},
+ CellChangeTimes->{{3.762052763271558*^9, 3.762052767869672*^9}, 
+   3.76266294436469*^9},
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "If an unpatched copy of FeynArts is present in ",
+ ButtonBox["$FeynArtsDirectory",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/$FeynArtsDirectory",
+  ButtonNote->"$FeynArtsDirectory"],
+ ", evaluating ",
+ Cell[BoxData[
+  RowBox[{"FAPatch", "[", "]"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " will start the patching process."
+}], "Notes",
+ CellChangeTimes->{{3.762662945803875*^9, 3.762662999117628*^9}},
  CellID->1067943069]
 }, Open  ]],
 
@@ -279,14 +291,14 @@ StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb",
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[4314, 210, 100, 2, 54, "ExtendedExamplesSection",
+  Cell[4641, 222, 100, 2, 54, "ExtendedExamplesSection",
    CellTags->"ExtendedExamples",
    CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 6232, 280}
+ {"ExtendedExamples", 6559, 292}
  }
 *)
 (*NotebookFileOutline
@@ -347,68 +359,68 @@ Cell[2529, 125, 67, 2, 70, "Details",
 Cell[CellGroupData[{
 Cell[2633, 132, 50, 1, 62, "ObjectName",
  CellID->1224892054],
-Cell[2686, 135, 429, 9, 105, "Usage",
+Cell[2686, 135, 332, 9, 73, "Usage",
  CellID->982511436],
-Cell[3118, 146, 42, 1, 24, "Notes",
+Cell[3021, 146, 466, 13, 41, "Notes",
  CellID->1067943069]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3197, 152, 57, 1, 43, "TutorialsSection",
+Cell[3524, 164, 57, 1, 43, "TutorialsSection",
  CellID->250839057],
-Cell[3257, 155, 45, 1, 16, "Tutorials",
+Cell[3584, 167, 45, 1, 16, "Tutorials",
  CellID->341631938]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3339, 161, 83, 1, 30, "RelatedDemonstrationsSection",
+Cell[3666, 173, 83, 1, 30, "RelatedDemonstrationsSection",
  CellID->1268215905],
-Cell[3425, 164, 58, 1, 16, "RelatedDemonstrations",
+Cell[3752, 176, 58, 1, 16, "RelatedDemonstrations",
  CellID->1129518860]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3520, 170, 65, 1, 30, "RelatedLinksSection",
+Cell[3847, 182, 65, 1, 30, "RelatedLinksSection",
  CellID->1584193535],
-Cell[3588, 173, 49, 1, 16, "RelatedLinks",
+Cell[3915, 185, 49, 1, 16, "RelatedLinks",
  CellID->1038487239]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3674, 179, 55, 1, 30, "SeeAlsoSection",
+Cell[4001, 191, 55, 1, 30, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3732, 182, 43, 1, 16, "SeeAlso",
+Cell[4059, 194, 43, 1, 16, "SeeAlso",
  CellID->929782353]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3812, 188, 57, 1, 30, "MoreAboutSection",
+Cell[4139, 200, 57, 1, 30, "MoreAboutSection",
  CellID->38303248],
-Cell[3872, 191, 46, 1, 16, "MoreAbout",
+Cell[4199, 203, 46, 1, 16, "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-Cell[3933, 195, 356, 11, 69, "PrimaryExamplesSection",
+Cell[4260, 207, 356, 11, 69, "PrimaryExamplesSection",
  CellID->880084151],
 Cell[CellGroupData[{
-Cell[4314, 210, 100, 2, 54, "ExtendedExamplesSection",
+Cell[4641, 222, 100, 2, 54, "ExtendedExamplesSection",
  CellTags->"ExtendedExamples",
  CellID->1854448968],
-Cell[4417, 214, 125, 3, 32, "ExampleSection",
+Cell[4744, 226, 125, 3, 32, "ExampleSection",
  CellID->1293636265],
-Cell[4545, 219, 148, 3, 20, "ExampleSection",
+Cell[4872, 231, 148, 3, 20, "ExampleSection",
  CellID->1020263627],
 Cell[CellGroupData[{
-Cell[4718, 226, 127, 3, 20, "ExampleSection",
+Cell[5045, 238, 127, 3, 20, "ExampleSection",
  CellID->2061341341],
-Cell[4848, 231, 130, 3, 70, "ExampleSubsection",
+Cell[5175, 243, 130, 3, 70, "ExampleSubsection",
  CellID->1757724783],
-Cell[4981, 236, 130, 3, 70, "ExampleSubsection",
+Cell[5308, 248, 130, 3, 70, "ExampleSubsection",
  CellID->1295379749]
 }, Closed]],
-Cell[5126, 242, 131, 3, 20, "ExampleSection",
+Cell[5453, 254, 131, 3, 20, "ExampleSection",
  CellID->258228157],
-Cell[5260, 247, 142, 3, 20, "ExampleSection",
+Cell[5587, 259, 142, 3, 20, "ExampleSection",
  CellID->2123667759],
-Cell[5405, 252, 135, 3, 20, "ExampleSection",
+Cell[5732, 264, 135, 3, 20, "ExampleSection",
  CellID->1305812373],
-Cell[5543, 257, 140, 3, 20, "ExampleSection",
+Cell[5870, 269, 140, 3, 20, "ExampleSection",
  CellID->1653164318],
-Cell[5686, 262, 132, 3, 20, "ExampleSection",
+Cell[6013, 274, 132, 3, 20, "ExampleSection",
  CellID->589267740]
 }, Open  ]]
 }
@@ -416,4 +428,3 @@ Cell[5686, 262, 132, 3, 20, "ExampleSection",
 *)
 
 (* End of internal cache information *)
-

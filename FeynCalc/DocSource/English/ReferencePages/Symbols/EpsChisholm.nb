@@ -117,15 +117,30 @@ Cell["EpsChisholm", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"EpsChisholm", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "substitutes for a gamma matrix contracted with a Levi-Civita tensor (Eps) \
-the Chisholm identity."
+  RowBox[{"EpsChisholm", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]applies the Chisholm identiy to a Dirac matrix contracted \
+with a Levi-Civita tensor"
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "EpsChisholm", "]"}]], "Input",
+ CellLabel->"In[54]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracTrick", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCJoinDOTs", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[54]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -165,10 +180,18 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Chisholm",
   ButtonNote->"Chisholm"],
- "."
-}], "Text",
- CellTags->"EpsChisholm",
- CellID->2052423258]
+ ", ",
+ ButtonBox["Eps",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
+ ", ",
+ ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"]
+}], "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,13 +221,60 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Chisholm", "[", 
-  RowBox[{"GA", "[", 
+ RowBox[{
+  RowBox[{"LC", "[", 
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-  "]"}]], "Input",
- CellTags->"EpsChisholm",
- CellLabel->"In[1]:=",
- CellID->1696563627],
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Sigma]", ",", "5"}], "]"}]}]], "Input",
+ CellLabel->"In[55]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]],
+     TraditionalForm]}], " ", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[55]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EpsChisholm", "[", "%", "]"}]], "Input",
+ CellLabel->"In[56]:="],
 
 Cell[BoxData[
  FormBox[
@@ -215,173 +285,76 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["$MU$6147",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Sigma]",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox["5",
-        TraditionalForm]]}], " ", 
-     SuperscriptBox["\[Epsilon]", 
-      RowBox[{
-       FormBox[
         FormBox["\[Mu]",
          TraditionalForm],
-        TraditionalForm], 
+        TraditionalForm]], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
        FormBox[
         FormBox["\[Nu]",
          TraditionalForm],
-        TraditionalForm], 
+        TraditionalForm]], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
        FormBox[
         FormBox["\[Rho]",
          TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox["$MU$6147",
-         TraditionalForm],
-        TraditionalForm]}]]}]}], "+", 
-   RowBox[{
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Rho]",
-        TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Sigma]",
-        TraditionalForm],
-       TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
-   RowBox[{
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Sigma]",
-        TraditionalForm],
-       TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
-   RowBox[{
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
       FormBox[
        FormBox["\[Mu]",
         TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
+       TraditionalForm], 
       FormBox[
-       FormBox["\[Sigma]",
+       FormBox["\[Nu]",
         TraditionalForm],
-       TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}]}], TraditionalForm]], "Output",
- CellTags->"EpsChisholm",
- CellLabel->"Out[1]=",
- CellID->378756372]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"EpsChisholm", "[", "%", "]"}]], "Input",
- CellTags->"EpsChisholm",
- CellLabel->"In[2]:=",
- CellID->1192722750],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Rho]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Sigma]",
-      TraditionalForm],
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"EpsChisholm",
- CellLabel->"Out[2]=",
- CellID->1298618997]
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[56]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -446,13 +419,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1232, Automatic}, {Automatic, 192}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -118,29 +118,42 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"ToLarin", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "translates all ",
+ " \[LineSeparator] substitutes ",
  Cell[BoxData[
-  FormBox[
-   RowBox[{
-    SuperscriptBox["\[Gamma]", "\[Mu]"], " ", 
-    SuperscriptBox["\[Gamma]", "5"]}], TraditionalForm]]],
- " in exp into ",
+  RowBox[{
+   SuperscriptBox["\[Gamma]", "\[Mu]"], 
+   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " with ",
  Cell[BoxData[
-  FormBox[
-   RowBox[{
-    RowBox[{
-     RowBox[{"-", "\[ImaginaryI]"}], "/", "6"}], " ", 
-    SuperscriptBox["\[CurlyEpsilon]", "\[Mu]\[Nu]\[Lambda]\[Sigma]"], 
-    SuperscriptBox["\[Gamma]", "\[Nu]"], " ", 
-    SuperscriptBox["\[Gamma]", "\[Lambda]"], " ", 
-    RowBox[{
-     SuperscriptBox["\[Gamma]", "\[Sigma]"], "."}]}], TraditionalForm]]]
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["I", "6"]}], 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{"\[Mu]", " ", "\[Nu]", " ", "\[Lambda]", " ", "\[Sigma]"}]], 
+   SuperscriptBox["\[Gamma]", "\[Nu]"], 
+   SuperscriptBox["\[Gamma]", "\[Lambda]"], 
+   SuperscriptBox["\[Gamma]", "\[Sigma]"]}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ToLarin", "]"}]], "Input",
+ CellLabel->"In[60]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[60]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -180,10 +193,13 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Eps",
   ButtonNote->"Eps"],
- "."
-}], "Text",
- CellTags->"ToLarin",
- CellID->2133763221]
+ ", ",
+ ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"]
+}], "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -214,67 +230,92 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracMatrix", "[", "\[Nu]", "]"}], ".", 
-  RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}], ".", 
-  RowBox[{"DiracMatrix", "[", "5", "]"}]}]], "Input",
+  RowBox[{"GAD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], ".", 
+  RowBox[{"GA", "[", "5", "]"}]}]], "Input",
  CellTags->"ToLarin",
- CellLabel->"In[1]:=",
+ CellLabel->"In[58]:=",
  CellID->975355057],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox["5",
-     TraditionalForm]]}], TraditionalForm]], "Output",
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"ToLarin",
- CellLabel->"Out[1]=",
- CellID->1694360393]
+ CellLabel->"Out[58]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ToLarin", "[", "%", "]"}]], "Input",
- CellTags->"ToLarin",
- CellLabel->"In[2]:=",
- CellID->24926200],
+ CellLabel->"In[59]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "6"]}], " ", "\[ImaginaryI]", " ", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["du28",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["du29",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["du30",
+       TraditionalForm],
+      TraditionalForm]]}], " ", 
    SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox["5",
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"ToLarin",
- CellLabel->"Out[2]=",
- CellID->758627970]
+    OverscriptBox["\[Epsilon]", ""], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["du28",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["du29",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["du30",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[59]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -339,13 +380,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1286, Automatic}, {Automatic, 245}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

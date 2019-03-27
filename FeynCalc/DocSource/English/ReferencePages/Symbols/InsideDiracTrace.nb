@@ -117,17 +117,32 @@ Cell["InsideDiracTrace", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["InsideDiracTrace"], "InlineFormula"],
- " \[LineSeparator]",
- "is and option of DiracSimplify. If set to True, DiracSimplify assumes to \
-operate inside a DiracTrace, i.e., products of an odd number of Dirac \
-matrices are discarded. Furthermore simple traces are calculated (but divided \
-by a factor 4, i.e. :  DiracSimplify[DiracMatrix[a,b], \
-InsideDiracTrace\[Rule]True]  yields ScalarProduct[a,b]) Traces involving \
-more than four DiracGamma's and DiracGamma[5] are not performed."
+ " \[LineSeparator]is and option of ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ ". If set to ",
+ Cell[BoxData["True"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " assumes to operate inside a Dirac trace, i.e., products of an odd number \
+of Dirac matrices are discarded."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "For more details, see the documentation for ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ "."
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -163,20 +178,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- ButtonBox["DiracSimplify",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- ", ",
- ButtonBox["DiracTrace",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
-  ButtonNote->"DiracTrace"],
- "."
-}], "Text",
- CellTags->"InsideDiracTrace",
- CellID->1537569404]
+Cell[TextData[ButtonBox["DiracSimplify",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+ ButtonNote->"DiracSimplify"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -262,13 +267,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1022, Automatic}, {Automatic, 159}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

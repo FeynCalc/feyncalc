@@ -117,13 +117,35 @@ Cell["DiracSimpCombine", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["DiracSimpCombine"], "InlineFormula"],
- " \[LineSeparator]",
- "is an option for DiracSimplify. If set to True, sums of DiracGamma's will \
-be merged as much as possible in DiracGamma[ .. + .. + ]'s."
+ " \[LineSeparator]is an option for ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ ". If set to ",
+ Cell[BoxData["True"], "InlineFormula"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " uses the function ",
+ ButtonBox["DiracGammaCombine",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaCombine",
+  ButtonNote->"DiracGammaCombine"],
+ " internally."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "For more details, see the documentation for ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ "."
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -159,16 +181,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- "See also: ",
- ButtonBox["DiracSimplify",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- "."
-}], "Text",
- CellTags->"DiracSimpCombine",
- CellID->1079786131]
+Cell[TextData[ButtonBox["DiracSimplify",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+ ButtonNote->"DiracSimplify"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -254,13 +270,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1118, Automatic}, {Automatic, 214}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

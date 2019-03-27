@@ -118,26 +118,47 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"Anti5", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "anticommutes all ",
+ " \[LineSeparator]anticommutes all ",
  Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- "in exp to the right. Anti5[exp, n] anticommutes all ",
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " in exp to the right.\n",
+ Cell["   ", "ModInfo"],
  Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", 
-    RowBox[{"5", " "}]], TraditionalForm]]],
- "n times to the right. Anti5[exp, -n] anticommutes all ",
+  RowBox[{"Anti5", "[", 
+   RowBox[{"exp", ",", "n"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]anticommutes all  ",
  Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- " n times to the left."
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " ",
+ Cell[BoxData["n"], "InlineFormula",
+  FormatType->"StandardForm"],
+ "-times to the right.\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"Anti5", "[", 
+   RowBox[{"exp", ",", 
+    RowBox[{"-", "n"}]}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]anticommutes all ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " ",
+ Cell[BoxData["n"], "InlineFormula",
+  FormatType->"StandardForm"],
+ "-times to the left."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Anti5", "]"}]], "Input",
+ CellLabel->"In[54]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[54]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -188,9 +209,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
   ButtonNote->"DiracTrick"],
  "."
-}], "Text",
- CellTags->"Anti5",
- CellID->1283449801]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,19 +240,31 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracMatrix", "[", 
+  RowBox[{"GA", "[", 
    RowBox[{"5", ",", "\[Mu]"}], "]"}], " "}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[1]:=",
+ CellLabel->"In[42]:=",
  CellID->2080632323],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"DiracMatrix", "(", 
-   RowBox[{"5", ",", "\[Mu]"}], ")"}], TraditionalForm]], "Output",
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[1]=",
- CellID->294517214]
+ CellLabel->"Out[42]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -241,7 +272,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Anti5", "[", "%", "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[2]:=",
+ CellLabel->"In[43]:=",
  CellID->1232582412],
 
 Cell[BoxData[
@@ -259,9 +290,14 @@ Cell[BoxData[
      FormBox["5",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[2]=",
- CellID->1246682665]
+ CellLabel->"Out[43]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -270,7 +306,7 @@ Cell[BoxData[
   RowBox[{"%", ",", 
    RowBox[{"-", "1"}]}], "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[3]:=",
+ CellLabel->"In[44]:=",
  CellID->1609506190],
 
 Cell[BoxData[
@@ -287,30 +323,63 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[3]=",
- CellID->741917191]
+ CellLabel->"Out[44]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracMatrix", "[", 
+ RowBox[{"GA", "[", 
   RowBox[{
   "5", ",", "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
   "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[4]:=",
+ CellLabel->"In[45]:=",
  CellID->1286690073],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"DiracMatrix", "(", 
-   RowBox[{
-   "5", ",", "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
-   ")"}], TraditionalForm]], "Output",
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Gamma]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Delta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[4]=",
- CellID->733245772]
+ CellLabel->"Out[45]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -319,7 +388,7 @@ Cell[BoxData[
  RowBox[{"Anti5", "[", 
   RowBox[{"%", ",", "2"}], "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[5]:=",
+ CellLabel->"In[46]:=",
  CellID->197831622],
 
 Cell[BoxData[
@@ -354,8 +423,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[5]=",
- CellID->446711059]
+ CellLabel->"Out[46]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -364,7 +432,7 @@ Cell[BoxData[
  RowBox[{"Anti5", "[", 
   RowBox[{"%%", ",", "Infinity"}], "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[6]:=",
+ CellLabel->"In[47]:=",
  CellID->1010214576],
 
 Cell[BoxData[
@@ -399,8 +467,7 @@ Cell[BoxData[
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[6]=",
- CellID->1568263833]
+ CellLabel->"Out[47]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -410,7 +477,7 @@ Cell[BoxData[
   RowBox[{"%", ",", 
    RowBox[{"-", "Infinity"}]}], "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[7]:=",
+ CellLabel->"In[48]:=",
  CellID->1359760692],
 
 Cell[BoxData[
@@ -445,26 +512,31 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[7]=",
- CellID->177899299]
+ CellLabel->"Out[48]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[TextData[{
  "In the naive ",
  Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- "- scheme D-dimensional ",
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ "-scheme ",
+ Cell[BoxData["D"], "InlineFormula",
+  FormatType->"StandardForm"],
+ "-dimensional ",
+ Cell[BoxData["\[Gamma]"], "InlineFormula",
+  FormatType->"StandardForm"],
+ "-matrices anticommute with",
  Cell[BoxData[
-  FormBox["\[Gamma]", TraditionalForm]]],
- "-matrices anticommute with ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  "."
-}], "Text",
- CellTags->"Anti5",
- CellID->1633748802],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -472,7 +544,7 @@ Cell[BoxData[
  RowBox[{"GA5", ".", 
   RowBox[{"GAD", "[", "\[Mu]", "]"}]}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[8]:=",
+ CellLabel->"In[49]:=",
  CellID->1799781971],
 
 Cell[BoxData[
@@ -490,8 +562,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[8]=",
- CellID->1994871864]
+ CellLabel->"Out[49]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -499,7 +570,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Anti5", "[", "%", "]"}]], "Input",
  CellTags->"Anti5",
- CellLabel->"In[9]:=",
+ CellLabel->"In[50]:=",
  CellID->42617734],
 
 Cell[BoxData[
@@ -516,8 +587,81 @@ Cell[BoxData[
      FormBox["5",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Anti5",
- CellLabel->"Out[9]=",
- CellID->1660721309]
+ CellLabel->"Out[50]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ ButtonBox["Anti5",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Anti5",
+  ButtonNote->"Anti5"],
+ " also works in the t'Hooft-Veltman-Breitenlohner-Maison scheme"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$BreitMaison", "=", "True"}]], "Input",
+ CellLabel->"In[51]:="],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[51]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Anti5", "[", 
+  RowBox[{"GA5", ".", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[52]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "^"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[52]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$BreitMaison", "=", "False"}]], "Input",
+ CellLabel->"In[53]:="],
+
+Cell[BoxData[
+ FormBox["False", TraditionalForm]], "Output",
+ CellLabel->"Out[53]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -581,14 +725,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{864, 877},
+WindowMargins->{{740, Automatic}, {Automatic, 107}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

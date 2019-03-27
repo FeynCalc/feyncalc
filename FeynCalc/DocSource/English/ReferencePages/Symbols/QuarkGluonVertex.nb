@@ -118,14 +118,59 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"QuarkGluonVertex", "[", 
-   RowBox[{"mu", ",", " ", "a"}], "]"}]], "InlineFormula"],
+   RowBox[{"\[Mu]", ",", " ", "a"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]",
  "gives the Feynman rule for the quark-gluon vertex. "
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ Cell[BoxData["QGV"], "InlineFormula"],
+ " can be used as an abbreviation of ",
+ ButtonBox["QuarkGluonVertex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/QuarkGluonVertex",
+  ButtonNote->"QuarkGluonVertex"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "The dimension and the name of the coupling constant are determined by the \
+options ",
+ ButtonBox["Dimension",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Dimension",
+  ButtonNote->"Dimension"],
+ " and ",
+ ButtonBox["CouplingConstant",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/CouplingConstant",
+  ButtonNote->"CouplingConstant"],
+ ". "
+}], "Notes",
+ CellID->14058075],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "QuarkGluonVertex", "]"}]], "Input",
+ CellLabel->"In[38]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[38]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -166,9 +211,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GluonVertex",
   ButtonNote->"GluonVertex"],
  "."
-}], "Text",
- CellTags->"QuarkGluonVertex",
- CellID->507567203]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,36 +241,11 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "QuarkGluonVertex", "]"}]], "Input",
- CellTags->"QuarkGluonVertex",
- CellLabel->"In[1]:=",
- CellID->1162740224],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
-    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"QuarkGluonVertex",
- CellLabel->"Out[1]=",
- CellID->1237177013]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"QuarkGluonVertex", "[", 
   RowBox[{"\[Mu]", ",", "a", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[39]:=",
  CellID->158944719],
 
 Cell[BoxData[
@@ -246,9 +264,62 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[2]=",
- CellID->1997015232]
+ CellLabel->"Out[39]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QGV", "[", 
+  RowBox[{"\[Mu]", ",", "a"}], "]"}]], "Input",
+ CellLabel->"In[43]:="],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox["Q", 
+   FormBox["a",
+    TraditionalForm], 
+   FormBox["\[Mu]",
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellLabel->"Out[43]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[44]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[ImaginaryI]", " ", 
+   SubscriptBox["g", "s"], " ", 
+   RowBox[{
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[44]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -258,7 +329,7 @@ Cell[BoxData[
    RowBox[{"CounterTerm", " ", "\[Rule]", "1"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[3]:=",
+ CellLabel->"In[45]:=",
  CellID->196044183],
 
 Cell[BoxData[
@@ -286,8 +357,7 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[3]=",
- CellID->1493367329]
+ CellLabel->"Out[45]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,7 +368,7 @@ Cell[BoxData[
    RowBox[{"CounterTerm", " ", "\[Rule]", "2"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[4]:=",
+ CellLabel->"In[46]:=",
  CellID->1947570088],
 
 Cell[BoxData[
@@ -322,8 +392,7 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[4]=",
- CellID->559873087]
+ CellLabel->"Out[46]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -334,7 +403,7 @@ Cell[BoxData[
    RowBox[{"CounterTerm", " ", "\[Rule]", "3"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[5]:=",
+ CellLabel->"In[47]:=",
  CellID->339282308],
 
 Cell[BoxData[
@@ -361,9 +430,15 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[5]=",
- CellID->1688386600]
+ CellLabel->"Out[47]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -377,26 +452,22 @@ Cell[BoxData[
    RowBox[{"OPE", "\[Rule]", "True"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[6]:=",
+ CellLabel->"In[48]:=",
  CellID->2017937273],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"\[CapitalOmega]", " ", 
-    FormBox[
-     SuperscriptBox[
-      FormBox[
-       FormBox["\[CapitalDelta]",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
     SubscriptBox["g", "s"], " ", 
     RowBox[{
      RowBox[{"(", 
@@ -466,8 +537,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]]}]}]}], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[6]=",
- CellID->389181480]
+ CellLabel->"Out[48]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -482,7 +552,7 @@ Cell[BoxData[
    RowBox[{"OPE", "\[Rule]", "False"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[7]:=",
+ CellLabel->"In[49]:=",
  CellID->729288779],
 
 Cell[BoxData[
@@ -501,8 +571,8 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[7]=",
- CellID->1936603618]
+ CellLabel->"Out[49]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -567,13 +637,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{446, Automatic}, {115, Automatic}},
+WindowMargins->{{Automatic, 478}, {-14, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

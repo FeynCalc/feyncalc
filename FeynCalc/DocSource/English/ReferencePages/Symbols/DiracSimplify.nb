@@ -117,18 +117,106 @@ Cell["DiracSimplify", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"DiracSimplify", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "simplifies products of Dirac matrices in expr and expands non-commutative \
-products. Double Lorentz indices and four vectors are contracted. The Dirac \
-equation is applied. All DiracMatrix[5], DiracMatrix[6] and DiracMatrix[7] \
-are moved to the right. The order of the other Dirac matrices is not \
-changed."
+  RowBox[{"DiracSimplify", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]simplifies products of Dirac matrices in ",
+ Cell[BoxData["exp"], "InlineFormula"],
+ " and expands non-commutative products."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "The simplifications are done by applying ",
+ ButtonBox["Contract",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Contract",
+  ButtonNote->"Contract"],
+ ", ",
+ ButtonBox["DiracEquation",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracEquation",
+  ButtonNote->"DiracEquation"],
+ ", ",
+ ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"],
+ ", ",
+ ButtonBox["SpinorChainTrick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorChainTrick",
+  ButtonNote->"SpinorChainTrick"],
+ " and ",
+ ButtonBox["SirlinSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SirlinSimplify",
+  ButtonNote->"SirlinSimplify"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "All ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "6"]], "InlineFormula"],
+ " and ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "7"]], "InlineFormula"],
+ " are moved to the right ."
+}], "Notes"],
+
+Cell[TextData[{
+ "The order of the other Dirac matrices is not changed, unless the option ",
+ ButtonBox["DiracCanonical",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracCanonical",
+  ButtonNote->"DiracCanonical"],
+ " is set to ",
+ Cell[BoxData["True"], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracSimplify", "]"}]], "Input",
+ CellTags->"DiracSimplify",
+ CellLabel->"In[66]:=",
+ CellID->2098245619],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracCanonical", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracEquation", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracSigmaExplicit", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracSimpCombine", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracSubstitute5", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracTraceEvaluate", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsContract", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expand2", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCCheckSyntax", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"InsideDiracTrace", "\[Rule]", "False"}], ",", 
+    RowBox[{"SirlinSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"SpinorChainTrick", "\[Rule]", "True"}], ",", 
+    RowBox[{"ToDiracGamma67", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"DiracSimplify",
+ CellLabel->"Out[66]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,24 +252,82 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Calc",
+ ButtonBox["Contract",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Calc",
-  ButtonNote->"Calc"],
+  ButtonData:>"paclet:FeynCalc/ref/Contract",
+  ButtonNote->"Contract"],
+ ", ",
+ ButtonBox["DiracEquation",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracEquation",
+  ButtonNote->"DiracEquation"],
+ ", ",
+ ButtonBox["DiracSigmaExplicit",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSigmaExplicit",
+  ButtonNote->"DiracSigmaExplicit"],
+ ", ",
+ ButtonBox["DiracSubstitute5",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSubstitute5",
+  ButtonNote->"DiracSubstitute5"],
+ ", ",
+ ButtonBox["DiracSubstitute67",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSubstitute67",
+  ButtonNote->"DiracSubstitute67"],
+ ", ",
+ ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
  ", ",
  ButtonBox["DiracGammaExpand",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
-  ButtonNote->"DiracGammaExpand"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaCombine",
+  ButtonNote->"DiracGammaCombine"],
+ ", ",
+ ButtonBox["DiracOrder",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
+ ", ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ ", ",
+ ButtonBox["DiracTraceEvaluate",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTraceEvaluate",
+  ButtonNote->"DiracTraceEvaluate"],
  ", ",
  ButtonBox["DiracTrick",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
   ButtonNote->"DiracTrick"],
+ ", ",
+ ButtonBox["FCDiracIsolate",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCDiracIsolate",
+  ButtonNote->"FCDiracIsolate"],
+ ", ",
+ ButtonBox["SirlinSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SirlinSimplify",
+  ButtonNote->"SirlinSimplify"],
+ ", ",
+ ButtonBox["SpinorChainTrick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorChainTrick",
+  ButtonNote->"SpinorChainTrick"],
+ ", ",
+ ButtonBox["ToDiracGamma67",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ToDiracGamma67",
+  ButtonNote->"ToDiracGamma67"],
  "."
-}], "Text",
- CellTags->"DiracSimplify",
- CellID->1981859865]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -208,58 +354,17 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "DiracSimplify", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[7]:=",
- CellID->2098245619],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracCanonical", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracEquation", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracSigmaExplicit", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracSimpCombine", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracSubstitute5", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracTraceEvaluate", "\[Rule]", "True"}], ",", 
-    RowBox[{"EpsContract", "\[Rule]", "True"}], ",", 
-    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
-    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
-    RowBox[{"Expand2", "\[Rule]", "True"}], ",", 
-    RowBox[{"FCCheckSyntax", "\[Rule]", "False"}], ",", 
-    RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
-    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
-    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"InsideDiracTrace", "\[Rule]", "False"}], ",", 
-    RowBox[{"SirlinSimplify", "\[Rule]", "True"}], ",", 
-    RowBox[{"SpinorChainTrick", "\[Rule]", "True"}], ",", 
-    RowBox[{"ToDiracGamma67", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[7]="]
-}, Open  ]],
-
-Cell["This is a string of Dirac matrices in four dimensions. ", "Text",
- CellTags->"DiracSimplify",
- CellID->1154366536],
+Cell["\<\
+Simplify a 4-dimensional Dirac matrix chain with a dummy Lorentz index\
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{"GA", "[", 
-   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
+ RowBox[{"GA", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->201005194],
 
 Cell[BoxData[
@@ -290,16 +395,15 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[2]=",
- CellID->642203150]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t1", "]"}]], "Input",
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->28604534],
 
 Cell[BoxData[
@@ -313,22 +417,639 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[3]=",
- CellID->1608459635]
+ CellLabel->"Out[2]="]
 }, Open  ]],
-
-Cell["This is a string of Dirac matrices in D dimensions. ", "Text",
- CellTags->"DiracSimplify",
- CellID->321850317],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"GAD", "[", 
-   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Another common concerns Dirac matrices contracted to the same ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-vector"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[3]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], "2"], TraditionalForm]], "Output",
+ CellLabel->"Out[4]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Unlike ",
+ ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " does noncommutative expansion."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", 
+   RowBox[{"a", "+", "b"}], "]"}], " ", ".", " ", 
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", 
+   RowBox[{"c", "+", "d"}], "]"}], ".", 
+  RowBox[{"GS", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[5]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["a",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["b",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["c",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["d",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[6]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["c",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["a",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["a",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["c",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "+", 
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["d",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["a",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["a",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["d",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "+", 
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["c",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["b",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["b",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["c",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "+", 
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["d",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["b",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["b",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["d",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[6]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrick", "[", 
+  RowBox[{
+   RowBox[{"GS", "[", 
+    RowBox[{"a", "+", "b"}], "]"}], " ", ".", " ", 
+   RowBox[{"GS", "[", "p", "]"}], ".", 
+   RowBox[{"GS", "[", 
+    RowBox[{"c", "+", "d"}], "]"}], ".", 
+   RowBox[{"GS", "[", "p", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[7]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox["a",
+            TraditionalForm], "_"], "+", 
+          OverscriptBox[
+           FormBox["b",
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["c",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["d",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox["a",
+            TraditionalForm], "_"], "+", 
+          OverscriptBox[
+           FormBox["b",
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox["c",
+            TraditionalForm], "_"], "+", 
+          OverscriptBox[
+           FormBox["d",
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[7]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Some of those expansions can be inhibited via the option ",
+ ButtonBox["Expanding",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Expanding",
+  ButtonNote->"Expanding"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GS", "[", 
+     RowBox[{"a", "+", "b"}], "]"}], " ", ".", " ", 
+    RowBox[{"GS", "[", "p", "]"}], ".", 
+    RowBox[{"GS", "[", 
+     RowBox[{"c", "+", "d"}], "]"}], ".", 
+    RowBox[{"GS", "[", "p", "]"}]}], ",", 
+   RowBox[{"Expanding", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[8]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        OverscriptBox[
+         FormBox["c",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], "+", 
+      RowBox[{
+       FormBox[
+        OverscriptBox[
+         FormBox["d",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}]}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["a",
+           TraditionalForm], "_"],
+         TraditionalForm]}], "+", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["b",
+           TraditionalForm], "_"],
+         TraditionalForm]}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["a",
+           TraditionalForm], "_"],
+         TraditionalForm]}], "+", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["b",
+           TraditionalForm], "_"],
+         TraditionalForm]}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["c",
+           TraditionalForm], "_"],
+         TraditionalForm]}], "+", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["d",
+           TraditionalForm], "_"],
+         TraditionalForm]}]}], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[8]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "The matrix chain may also live in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensions"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GAD", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[4]:=",
+ CellLabel->"In[9]:=",
  CellID->149362799],
 
 Cell[BoxData[
@@ -356,267 +1077,87 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[4]=",
- CellID->786634532]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t1", "]"}]], "Input",
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[5]:=",
+ CellLabel->"In[10]:=",
  CellID->1129253480],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", "2"}], " ", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[5]=",
- CellID->120098280]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{"GA", "[", 
-   RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[6]:=",
- CellID->570896083],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox["5",
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
+   RowBox[{"2", " ", 
+    SuperscriptBox["\[Gamma]", 
      FormBox[
       FormBox["\[Nu]",
        TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[6]=",
- CellID->333412029]
-}, Open  ]],
-
-Cell[TextData[{
- "By default ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- "is moved to the right."
-}], "Text",
- CellTags->"DiracSimplify",
- CellID->766299813],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t3", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[7]:=",
- CellID->264425668],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox["5",
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[7]=",
- CellID->1845106993]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t4", "=", 
-  RowBox[{"GA", "[", 
-   RowBox[{"6", ",", "\[Mu]", ",", "7"}], "]"}]}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[8]:=",
- CellID->1307415504],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox["6",
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
+      TraditionalForm]]}], "-", 
+   RowBox[{"D", " ", 
+    SuperscriptBox["\[Gamma]", 
      FormBox[
-      FormBox["\[Mu]",
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"DiracSimplify",
+ CellLabel->"Out[10]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GSD", "[", "p", "]"}], ".", 
+  RowBox[{"GAD", "[", 
+   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ".", 
+  RowBox[{"GSD", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[11]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Alpha]",
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm], ".", 
    FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox["7",
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
       TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[8]=",
- CellID->1842675018]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t4", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[9]:=",
- CellID->1923692276],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox["7",
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[9]=",
- CellID->312699584]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t5", "=", 
-  RowBox[{
-   RowBox[{"GS", "[", 
-    RowBox[{"a", "+", "b"}], "]"}], " ", ".", " ", 
-   RowBox[{"GS", "[", "p", "]"}], ".", 
-   RowBox[{"GS", "[", "p", "]"}], ".", 
-   RowBox[{"GS", "[", 
-    RowBox[{"c", "+", "d"}], "]"}]}]}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[10]:=",
- CellID->1879344534],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
+    TraditionalForm], ".", 
    RowBox[{"(", 
     FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
       FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["a",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["b",
-           TraditionalForm], "_"]}],
+       FormBox["p",
         TraditionalForm],
-       TraditionalForm], ")"}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
        TraditionalForm]}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm]}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
-      FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["c",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["d",
-           TraditionalForm], "_"]}],
-        TraditionalForm],
-       TraditionalForm], ")"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[10]=",
- CellID->1520402677]
+ CellLabel->"Out[11]="]
 }, Open  ]],
-
-Cell["\<\
-Contrary to DiracTrick DiracSimplify does non-commutative expansion.\
-\>", "Text",
- CellTags->"DiracSimplify",
- CellID->1032130436],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t5", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[11]:=",
- CellID->697887732],
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[12]:="],
 
 Cell[BoxData[
  FormBox[
@@ -624,206 +1165,65 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["a",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["c",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}], "+", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["a",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["d",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}], "+", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["b",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["c",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}], "+", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["b",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["d",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[11]=",
- CellID->865972170]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracTrick", "[", "t5", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[12]:=",
- CellID->1805591394],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    FormBox[
-     OverscriptBox[
       FormBox["p",
-       TraditionalForm], "_"],
-     TraditionalForm], "2"], " ", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+       TraditionalForm],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
       FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["a",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["b",
-           TraditionalForm], "_"]}],
+       FormBox["\[Alpha]",
         TraditionalForm],
-       TraditionalForm], ")"}], ")"}], ".", 
-    RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
       FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["c",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["d",
-           TraditionalForm], "_"]}],
+       FormBox["\[Beta]",
         TraditionalForm],
-       TraditionalForm], ")"}], ")"}]}]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[12]=",
- CellID->1568743885]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t6", " ", "=", " ", 
-  RowBox[{
-   RowBox[{"SpinorVBar", "[", "p", "]"}], " ", ".", " ", 
-   RowBox[{"GS", "[", "p", "]"}], " ", ".", " ", 
-   RowBox[{"SpinorUBar", "[", "q", "]"}]}]}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[13]:=",
- CellID->106324036],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{
-    OverscriptBox["v", "_"], "(", 
-    FormBox["p",
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"2", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
       FormBox[
-       OverscriptBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
         FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm]}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{
-    OverscriptBox["u", "_"], "(", 
-    FormBox["q",
-     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[13]=",
- CellID->759706260]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t6", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[14]:=",
- CellID->1935005981],
-
-Cell[BoxData[
- FormBox["0", TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[14]=",
- CellID->1632860123]
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{"2", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -839,9 +1239,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"i", ",", "6"}], "}"}]}], "]"}], ",", 
     RowBox[{"{", "\[Mu]", "}"}]}], "]"}]}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[15]:=",
- CellID->1949590828],
+ CellLabel->"In[13]:="],
 
 Cell[BoxData[
  FormBox[
@@ -908,18 +1306,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[15]=",
- CellID->376958677]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[16]:=",
- CellID->789913816],
+ CellLabel->"In[14]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1027,24 +1421,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "1"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "1"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "2"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+        SubscriptBox["\[Nu]", "2"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1071,24 +1459,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "1"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "1"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "3"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "3"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1115,24 +1497,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "1"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "1"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "4"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+        SubscriptBox["\[Nu]", "4"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1159,24 +1535,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "1"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "1"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "5"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "5"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1203,24 +1573,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "5"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "1"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "1"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "6"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "6"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1247,24 +1611,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "2"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "2"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "3"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+        SubscriptBox["\[Nu]", "3"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1291,24 +1649,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "2"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "2"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "4"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "4"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1335,24 +1687,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "2"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "2"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "5"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+        SubscriptBox["\[Nu]", "5"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1379,24 +1725,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "5"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "2"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "2"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "6"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "6"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1423,24 +1763,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "3"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "3"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "4"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+        SubscriptBox["\[Nu]", "4"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1467,24 +1801,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "3"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "3"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "5"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "5"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1511,24 +1839,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "5"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "3"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "3"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "6"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "6"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1555,24 +1877,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "4"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "4"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "5"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+        SubscriptBox["\[Nu]", "5"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1599,24 +1915,18 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "5"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "4"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "4"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "6"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
+        SubscriptBox["\[Nu]", "6"],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
     RowBox[{
      SuperscriptBox["\[Gamma]", 
@@ -1643,34 +1953,2269 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "4"],
         TraditionalForm],
        TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox["g", 
-      RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "5"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
+        SubscriptBox["\[Nu]", "5"],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
        FormBox[
-        FormBox[
-         FormBox[
-          SubscriptBox["\[Nu]", "6"],
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[16]=",
- CellID->1001867930]
+        SubscriptBox["\[Nu]", "6"],
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
-Cell["\<\
- With the option DiracCanonical an alphabetic ordering is done.\
-\>", "Text",
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "1"}], "/", "2"}], " ", 
+  RowBox[{
+   RowBox[{"GA", "[", "5", "]"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+      RowBox[{"GSD", "[", "v", "]"}]}], "-", 
+     RowBox[{"FVD", "[", 
+      RowBox[{"v", ",", "\[Mu]"}], "]"}]}], ")"}]}], " ", 
+  RowBox[{"FVD", "[", 
+   RowBox[{"v", ",", "\[Mu]"}], "]"}]}]], "Input",
+ CellLabel->"In[16]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], " ", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["v",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SuperscriptBox["\[Gamma]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], ".", 
+       RowBox[{"(", 
+        FormBox[
+         RowBox[{"\[Gamma]", "\[CenterDot]", 
+          FormBox[
+           FormBox["v",
+            TraditionalForm],
+           TraditionalForm]}],
+         TraditionalForm], ")"}]}], "-", 
+      FormBox[
+       SuperscriptBox[
+        FormBox[
+         FormBox["v",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[16]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[17]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[17]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " and the chirality projectors are always moved to the right"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", 
+  RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellID->1099320763],
+ CellLabel->"In[18]:=",
+ CellID->570896083],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"DiracSimplify",
+ CellLabel->"Out[18]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[19]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox["5",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[19]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GA", "[", "6", "]"}], ".", 
+  RowBox[{"GS", "[", 
+   RowBox[{"p", "+", "q"}], "]"}]}]], "Input",
+ CellLabel->"In[20]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[20]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[21]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["7",
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["7",
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[21]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "The properties of the chirality projectors are taken into account without \
+substituting explicit expressions for ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "6"]], "InlineFormula"],
+ " and ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "7"]], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"c1", " ", 
+     RowBox[{"GA", "[", "6", "]"}]}], "+", 
+    RowBox[{"c2", " ", 
+     RowBox[{"GA", "[", "7", "]"}]}]}], ")"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GA", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"c3", " ", 
+     RowBox[{"GA", "[", "6", "]"}]}], "+", 
+    RowBox[{"c4", " ", 
+     RowBox[{"GA", "[", "7", "]"}]}]}], ")"}], ".", 
+  RowBox[{"GA", "[", "\[Mu]", "]"}]}]], "Input",
+ CellLabel->"In[22]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"c1", " ", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["6",
+         TraditionalForm]],
+       TraditionalForm]}], "+", 
+     RowBox[{"c2", " ", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["7",
+         TraditionalForm]],
+       TraditionalForm]}]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], "+", "m"}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"c3", " ", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["6",
+         TraditionalForm]],
+       TraditionalForm]}], "+", 
+     RowBox[{"c4", " ", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["7",
+         TraditionalForm]],
+       TraditionalForm]}]}], ")"}], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[22]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Moreover,  ",
+ Cell[BoxData[
+  RowBox[{" ", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{"(", 
+     RowBox[{"1", "\[PlusMinus]", 
+      SuperscriptBox["\[Gamma]", "5"]}], ")"}]}]}]], "InlineFormula"],
+ " is automatically replaced by ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", 
+   RowBox[{"6", "/", "7"}]]], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"1", "/", "2"}], "-", 
+    RowBox[{
+     RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}], ".", 
+  RowBox[{"(", 
+   RowBox[{"-", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"a", "+", 
+        RowBox[{"GS", "[", 
+         RowBox[{"p", "+", "q"}], "]"}]}], ")"}], "/", "b"}], ")"}]}], ")"}], 
+  ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"1", "/", "2"}], "+", 
+    RowBox[{
+     RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}]], "Input",
+ CellLabel->"In[23]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox["1", "2"], "-", 
+     FractionBox[
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["5",
+         TraditionalForm]],
+       TraditionalForm], "2"]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{
+       FormBox[
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+         FormBox[
+          FormBox[
+           RowBox[{
+            OverscriptBox[
+             FormBox["p",
+              TraditionalForm], "_"], "+", 
+            OverscriptBox[
+             FormBox["q",
+              TraditionalForm], "_"]}],
+           TraditionalForm],
+          TraditionalForm], ")"}],
+        TraditionalForm], "+", "a"}], "b"]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["5",
+         TraditionalForm]],
+       TraditionalForm], "2"], "+", 
+     FractionBox["1", "2"]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[23]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[24]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["6",
+        TraditionalForm]]}], "b"]}], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]]}], "b"]}], TraditionalForm]], "Output",
+ CellLabel->"Out[24]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Suitable combinations of ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " will not be rewritten in terms of chirality projectors, if the option ",
+ ButtonBox["ToDiracGamma67",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ToDiracGamma67",
+  ButtonNote->"ToDiracGamma67"],
+ " is set to ",
+ Cell[BoxData["False"], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "-", 
+      RowBox[{
+       RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"a", "+", 
+          RowBox[{"GS", "[", 
+           RowBox[{"p", "+", "q"}], "]"}]}], ")"}], "/", "b"}], ")"}]}], 
+     ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "+", 
+      RowBox[{
+       RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}], ",", 
+   RowBox[{"ToDiracGamma67", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[25]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], 
+     RowBox[{"2", " ", "b"}]]}], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}], 
+    RowBox[{"2", " ", "b"}]], "-", 
+   FractionBox[
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", "b"}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}], 
+    RowBox[{"2", " ", "b"}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[25]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "However, it the final result must contain only ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " but not ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "6"]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "7"]], "InlineFormula"],
+ ", it is better to invoke the option ",
+ ButtonBox["DiracSubstitute67",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSubstitute67",
+  ButtonNote->"DiracSubstitute67"],
+ ". This way ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " can perform more intermediate simplifications before presenting the final \
+result."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "-", 
+      RowBox[{
+       RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"a", "+", 
+          RowBox[{"GS", "[", 
+           RowBox[{"p", "+", "q"}], "]"}]}], ")"}], "/", "b"}], ")"}]}], 
+     ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "+", 
+      RowBox[{
+       RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}], ",", 
+   RowBox[{"DiracSubstitute67", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[26]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], 
+     RowBox[{"2", " ", "b"}]]}], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}], 
+    RowBox[{"2", " ", "b"}]], "-", 
+   FractionBox[
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", "b"}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}], 
+    RowBox[{"2", " ", "b"}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[26]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "It is also possible to eliminate ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " by rewriting it in terms of the chirality projectors"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", 
+    RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}], ",", 
+   RowBox[{"DiracSubstitute5", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[27]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["7",
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[27]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell["\<\
+The Dirac equation is routinely used to simplify closed spinor chains.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SpinorVBar", "[", 
+   RowBox[{
+    SubscriptBox["p", "2"], ",", 
+    SubscriptBox["m", "2"]}], "]"}], " ", ".", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GS", "[", 
+     SubscriptBox["p", "1"], "]"}], "+", 
+    SubscriptBox["m", "1"]}], ")"}], " ", ".", " ", 
+  RowBox[{"SpinorU", "[", 
+   RowBox[{
+    SubscriptBox["p", "1"], ",", 
+    SubscriptBox["m", "1"]}], "]"}]}]], "Input",
+ CellLabel->"In[28]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["v", "_"], "(", 
+    FormBox[
+     SubscriptBox["p", "2"],
+     TraditionalForm], ",", 
+    FormBox[
+     SubscriptBox["m", "2"],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["1",
+          TraditionalForm]],
+        TraditionalForm]}],
+      TraditionalForm], "+", 
+     SubscriptBox["m", "1"]}], ")"}], ".", 
+   RowBox[{"u", "(", 
+    FormBox[
+     SubscriptBox["p", "1"],
+     TraditionalForm], ",", 
+    FormBox[
+     SubscriptBox["m", "1"],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[28]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[29]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"2", " ", 
+   SubscriptBox["m", "1"], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{"-", 
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["2",
+          TraditionalForm]]}],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "2"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "1"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[29]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SpinorVBar", "[", "p", "]"}], " ", ".", " ", 
+  RowBox[{"GS", "[", "p", "]"}], " ", ".", " ", 
+  RowBox[{"SpinorU", "[", "q", "]"}]}]], "Input",
+ CellLabel->"In[30]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["v", "_"], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"u", "(", 
+    FormBox["q",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[30]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[31]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[31]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Use the option ",
+ ButtonBox["DiracEquation",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracEquation",
+  ButtonNote->"DiracEquation"],
+ " to deactivate this type of simplifications."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SpinorVBar", "[", "p", "]"}], " ", ".", " ", 
+    RowBox[{"GS", "[", "p", "]"}], " ", ".", " ", 
+    RowBox[{"SpinorU", "[", "q", "]"}]}], ",", 
+   RowBox[{"DiracEquation", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[32]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{"-", 
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"]}],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[32]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Suitable products of ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-dimensional spinor chains are simplified using Sirlin's identities"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SpinorUBar", "[", 
+    RowBox[{
+     SubscriptBox["p", "3"], ",", 
+     SubscriptBox["m", "3"]}], "]"}], ".", 
+   RowBox[{"GA", "[", 
+    RowBox[{"\[Mu]", ",", "\[Rho]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+   RowBox[{"SpinorU", "[", 
+    RowBox[{
+     SubscriptBox["p", "1"], ",", 
+     SubscriptBox["m", "1"]}], "]"}]}], 
+  RowBox[{
+   RowBox[{"SpinorUBar", "[", 
+    RowBox[{
+     SubscriptBox["p", "4"], ",", 
+     SubscriptBox["m", "4"]}], "]"}], ".", 
+   RowBox[{"GA", "[", 
+    RowBox[{"\[Mu]", ",", "\[Tau]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+   RowBox[{"SpinorU", "[", 
+    RowBox[{
+     SubscriptBox["p", "2"], ",", 
+     SubscriptBox["m", "2"]}], "]"}]}]}]], "Input",
+ CellLabel->"In[33]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     OverscriptBox["u", "_"], "(", 
+     FormBox[
+      SubscriptBox["p", "3"],
+      TraditionalForm], ",", 
+     FormBox[
+      SubscriptBox["m", "3"],
+      TraditionalForm], ")"}], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"u", "(", 
+     FormBox[
+      SubscriptBox["p", "1"],
+      TraditionalForm], ",", 
+     FormBox[
+      SubscriptBox["m", "1"],
+      TraditionalForm], ")"}]}], " ", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox["u", "_"], "(", 
+     FormBox[
+      SubscriptBox["p", "4"],
+      TraditionalForm], ",", 
+     FormBox[
+      SubscriptBox["m", "4"],
+      TraditionalForm], ")"}], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"u", "(", 
+     FormBox[
+      SubscriptBox["p", "2"],
+      TraditionalForm], ",", 
+     FormBox[
+      SubscriptBox["m", "2"],
+      TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[33]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[34]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Tau]",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "3"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["liS46",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "1"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["4",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "4"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["liS46",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "2"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[34]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "The applications of Sirlin's identities can be disabled by setting the \
+option ",
+ ButtonBox["SirlinSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SirlinSimplify",
+  ButtonNote->"SirlinSimplify"],
+ " to ",
+ Cell[BoxData["False"], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"SpinorUBar", "[", 
+      RowBox[{
+       SubscriptBox["p", "3"], ",", 
+       SubscriptBox["m", "3"]}], "]"}], ".", 
+     RowBox[{"GA", "[", 
+      RowBox[{"\[Mu]", ",", "\[Rho]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+     RowBox[{"SpinorU", "[", 
+      RowBox[{
+       SubscriptBox["p", "1"], ",", 
+       SubscriptBox["m", "1"]}], "]"}]}], 
+    RowBox[{
+     RowBox[{"SpinorUBar", "[", 
+      RowBox[{
+       SubscriptBox["p", "4"], ",", 
+       SubscriptBox["m", "4"]}], "]"}], ".", 
+     RowBox[{"GA", "[", 
+      RowBox[{"\[Mu]", ",", "\[Tau]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+     RowBox[{"SpinorU", "[", 
+      RowBox[{
+       SubscriptBox["p", "2"], ",", 
+       SubscriptBox["m", "2"]}], "]"}]}]}], ",", 
+   RowBox[{"SirlinSimplify", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[35]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "3"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li471\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li472\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "1"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["4",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "4"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li471\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Tau]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li472\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "2"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[35]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Even when the usage of Sirlin's identities is disabled, ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " will still try to perform some simplficiations on the spinor chains, e.g. \
+by canonicalizing the dummy indices."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"c1", " ", 
+   RowBox[{
+    RowBox[{"SpinorUBar", "[", 
+     RowBox[{
+      SubscriptBox["p", "3"], ",", 
+      SubscriptBox["m", "3"]}], "]"}], ".", 
+    RowBox[{"GA", "[", 
+     RowBox[{"\[Mu]", ",", "\[Rho]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+    RowBox[{"SpinorU", "[", 
+     RowBox[{
+      SubscriptBox["p", "1"], ",", 
+      SubscriptBox["m", "1"]}], "]"}]}], 
+   RowBox[{
+    RowBox[{"SpinorUBar", "[", 
+     RowBox[{
+      SubscriptBox["p", "4"], ",", 
+      SubscriptBox["m", "4"]}], "]"}], ".", 
+    RowBox[{"GA", "[", 
+     RowBox[{"\[Mu]", ",", "\[Tau]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+    RowBox[{"SpinorU", "[", 
+     RowBox[{
+      SubscriptBox["p", "2"], ",", 
+      SubscriptBox["m", "2"]}], "]"}]}]}], "+", 
+  RowBox[{"c2", " ", 
+   RowBox[{
+    RowBox[{"SpinorUBar", "[", 
+     RowBox[{
+      SubscriptBox["p", "3"], ",", 
+      SubscriptBox["m", "3"]}], "]"}], ".", 
+    RowBox[{"GA", "[", 
+     RowBox[{"\[Alpha]", ",", "\[Rho]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+    
+    RowBox[{"SpinorU", "[", 
+     RowBox[{
+      SubscriptBox["p", "1"], ",", 
+      SubscriptBox["m", "1"]}], "]"}]}], 
+   RowBox[{
+    RowBox[{"SpinorUBar", "[", 
+     RowBox[{
+      SubscriptBox["p", "4"], ",", 
+      SubscriptBox["m", "4"]}], "]"}], ".", 
+    RowBox[{"GA", "[", 
+     RowBox[{"\[Alpha]", ",", "\[Tau]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+    
+    RowBox[{"SpinorU", "[", 
+     RowBox[{
+      SubscriptBox["p", "2"], ",", 
+      SubscriptBox["m", "2"]}], "]"}]}]}]}]], "Input",
+ CellLabel->"In[36]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"c1", " ", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["u", "_"], "(", 
+      FormBox[
+       SubscriptBox["p", "3"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "3"],
+       TraditionalForm], ")"}], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["6",
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"u", "(", 
+      FormBox[
+       SubscriptBox["p", "1"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "1"],
+       TraditionalForm], ")"}]}], " ", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["u", "_"], "(", 
+      FormBox[
+       SubscriptBox["p", "4"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "4"],
+       TraditionalForm], ")"}], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Tau]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["6",
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"u", "(", 
+      FormBox[
+       SubscriptBox["p", "2"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "2"],
+       TraditionalForm], ")"}]}]}], "+", 
+   RowBox[{"c2", " ", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["u", "_"], "(", 
+      FormBox[
+       SubscriptBox["p", "3"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "3"],
+       TraditionalForm], ")"}], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Alpha]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["6",
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"u", "(", 
+      FormBox[
+       SubscriptBox["p", "1"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "1"],
+       TraditionalForm], ")"}]}], " ", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["u", "_"], "(", 
+      FormBox[
+       SubscriptBox["p", "4"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "4"],
+       TraditionalForm], ")"}], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Alpha]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Tau]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["6",
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"u", "(", 
+      FormBox[
+       SubscriptBox["p", "2"],
+       TraditionalForm], ",", 
+      FormBox[
+       SubscriptBox["m", "2"],
+       TraditionalForm], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[36]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"%", ",", 
+    RowBox[{"SirlinSimplify", "\[Rule]", "False"}]}], "]"}], "//", 
+  "Factor"}]], "Input",
+ CellLabel->"In[37]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"c1", "+", "c2"}], ")"}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "3"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li531\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li532\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "1"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["4",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "4"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li531\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Tau]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"li532\"\>", ")"}],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["6",
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "2"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[37]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Setting ",
+ ButtonBox["SpinorChainTrick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorChainTrick",
+  ButtonNote->"SpinorChainTrick"],
+ " to ",
+ Cell[BoxData["False"], "InlineFormula"],
+ " disables this behavior."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"c1", " ", 
+     RowBox[{
+      RowBox[{"SpinorUBar", "[", 
+       RowBox[{
+        SubscriptBox["p", "3"], ",", 
+        SubscriptBox["m", "3"]}], "]"}], ".", 
+      RowBox[{"GA", "[", 
+       RowBox[{"\[Mu]", ",", "\[Rho]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+      RowBox[{"SpinorU", "[", 
+       RowBox[{
+        SubscriptBox["p", "1"], ",", 
+        SubscriptBox["m", "1"]}], "]"}]}], 
+     RowBox[{
+      RowBox[{"SpinorUBar", "[", 
+       RowBox[{
+        SubscriptBox["p", "4"], ",", 
+        SubscriptBox["m", "4"]}], "]"}], ".", 
+      RowBox[{"GA", "[", 
+       RowBox[{"\[Mu]", ",", "\[Tau]", ",", "\[Nu]", ",", "6"}], "]"}], ".", 
+      RowBox[{"SpinorU", "[", 
+       RowBox[{
+        SubscriptBox["p", "2"], ",", 
+        SubscriptBox["m", "2"]}], "]"}]}]}], "+", 
+    RowBox[{"c2", " ", 
+     RowBox[{
+      RowBox[{"SpinorUBar", "[", 
+       RowBox[{
+        SubscriptBox["p", "3"], ",", 
+        SubscriptBox["m", "3"]}], "]"}], ".", 
+      RowBox[{"GA", "[", 
+       RowBox[{"\[Alpha]", ",", "\[Rho]", ",", "\[Nu]", ",", "6"}], "]"}], 
+      ".", 
+      RowBox[{"SpinorU", "[", 
+       RowBox[{
+        SubscriptBox["p", "1"], ",", 
+        SubscriptBox["m", "1"]}], "]"}]}], 
+     RowBox[{
+      RowBox[{"SpinorUBar", "[", 
+       RowBox[{
+        SubscriptBox["p", "4"], ",", 
+        SubscriptBox["m", "4"]}], "]"}], ".", 
+      RowBox[{"GA", "[", 
+       RowBox[{"\[Alpha]", ",", "\[Tau]", ",", "\[Nu]", ",", "6"}], "]"}], 
+      ".", 
+      RowBox[{"SpinorU", "[", 
+       RowBox[{
+        SubscriptBox["p", "2"], ",", 
+        SubscriptBox["m", "2"]}], "]"}]}]}]}], ",", 
+   RowBox[{"SirlinSimplify", "\[Rule]", "False"}], ",", 
+   RowBox[{"SpinorChainTrick", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[38]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"c1", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["3",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "3"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["1",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "1"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}]}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["4",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "4"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["2",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "2"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}]}]}], "+", 
+   RowBox[{"c2", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["3",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "3"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["1",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "1"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}]}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["4",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "4"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["2",
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["m", "2"],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[38]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " will not reorder Dirac matrices lexicographically, but can be forced to do \
+so via the option ",
+ ButtonBox["DiracCanonical",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracCanonical",
+  ButtonNote->"DiracCanonical"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[39]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[39]="]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1681,30 +4226,24 @@ Cell[BoxData[
     RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}], ",", 
    RowBox[{"DiracCanonical", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[17]:=",
+ CellLabel->"In[40]:=",
  CellID->990886795],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"2", " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
    RowBox[{
     SuperscriptBox[
      OverscriptBox["\[Gamma]", "_"], 
@@ -1719,185 +4258,231 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[17]=",
- CellID->611510418]
+ CellLabel->"Out[40]="]
+}, Open  ]]
 }, Open  ]],
-
-Cell["\<\
-Setting InsideDiracTrace\[Rule]True assumes that a trace is still to be taken \
-later on.\
-\>", "Text",
- CellTags->"DiracSimplify",
- CellID->120600204],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSimplify", "[", 
-  RowBox[{
-   RowBox[{"GA", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-   ",", 
-   RowBox[{"InsideDiracTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[18]:=",
- CellID->634548915],
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Setting ",
+ Cell[BoxData[
+  RowBox[{"InsideDiracTrace", "\[Rule]", "True"}]], "InlineFormula"],
+ " makes the function assume that it is acting inside a Dirac trace. For \
+instance, chains with an odd number of Dirac matrices will be set to zero."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}]], "Input",
+ CellLabel->"In[41]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Sigma]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
-   RowBox[{
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Sigma]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
-   RowBox[{
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Sigma]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}]}], TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[18]=",
- CellID->665614645]
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[41]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
-  RowBox[{
-   RowBox[{"GA", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}], ",", 
+  RowBox[{"%", ",", 
    RowBox[{"InsideDiracTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[19]:=",
- CellID->1157409425],
+ CellLabel->"In[42]:="],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- CellTags->"DiracSimplify",
- CellLabel->"Out[19]=",
- CellID->1005658115]
+ CellLabel->"Out[42]="]
 }, Open  ]],
 
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4", ",", "t5", ",", "t6"}], 
-  "]"}]], "Input",
- CellTags->"DiracSimplify",
- CellLabel->"In[20]:=",
- CellID->1926028871],
+Cell["Yet, it will not explicitly calculate the trace", "Notes"],
 
-Cell["\<\
-Dirac traces are evaluated on the immediately, unless the option \
-DiracTraceEvaluate is set to False\
-\>", "Text",
- CellTags->"DiracSimplify",
- CellID->1876292209],
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[43]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[43]="]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
-  RowBox[{"DiracTrace", "[", 
-   RowBox[{"GA", "[", 
-    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}], "]"}], "]"}]], "Input",
- CellLabel->"In[10]:="],
+  RowBox[{"%", ",", 
+   RowBox[{"InsideDiracTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[44]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Rho]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Sigma]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[44]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Since FeynCalc 9.3, ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " will automatically evaluate Dirac traces in the input expression "
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[45]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[45]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[46]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1907,22 +4492,22 @@ Cell[BoxData[
      OverscriptBox["g", "_"], 
      RowBox[{
       FormBox[
-       FormBox["a",
+       FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["d",
+       FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]], " ", 
     SuperscriptBox[
      OverscriptBox["g", "_"], 
      RowBox[{
       FormBox[
-       FormBox["b",
+       FormBox["\[Nu]",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["c",
+       FormBox["\[Rho]",
         TraditionalForm],
        TraditionalForm]}]]}], "-", 
    RowBox[{"4", " ", 
@@ -1930,22 +4515,22 @@ Cell[BoxData[
      OverscriptBox["g", "_"], 
      RowBox[{
       FormBox[
-       FormBox["a",
+       FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["c",
+       FormBox["\[Rho]",
         TraditionalForm],
        TraditionalForm]}]], " ", 
     SuperscriptBox[
      OverscriptBox["g", "_"], 
      RowBox[{
       FormBox[
-       FormBox["b",
+       FormBox["\[Nu]",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["d",
+       FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]]}], "+", 
    RowBox[{"4", " ", 
@@ -1953,26 +4538,229 @@ Cell[BoxData[
      OverscriptBox["g", "_"], 
      RowBox[{
       FormBox[
-       FormBox["a",
+       FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["b",
+       FormBox["\[Nu]",
         TraditionalForm],
        TraditionalForm]}]], " ", 
     SuperscriptBox[
      OverscriptBox["g", "_"], 
      RowBox[{
       FormBox[
-       FormBox["c",
+       FormBox["\[Rho]",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["d",
+       FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[10]="]
+ CellLabel->"Out[46]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"GSD", "[", "q", "]"}]}], "+", 
+      RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GSD", "[", 
+       RowBox[{"p", "-", "q"}], "]"}], "+", 
+      RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
+    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}], " "}]], "Input",
+ CellLabel->"In[47]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["m", "e"], "-", 
+       FormBox[
+        RowBox[{"\[Gamma]", "\[CenterDot]", 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}],
+        TraditionalForm]}], ")"}], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["m", "e"], "+", 
+       FormBox[
+        RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["p",
+             TraditionalForm], "-", 
+            FormBox["q",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], ")"}],
+        TraditionalForm]}], ")"}], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[47]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[48]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SubsuperscriptBox["m", "e", "2"], " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}], ")"}]}], "-", 
+   RowBox[{"4", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], "2"], " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{"4", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{"8", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[48]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "This will not happen in the option ",
+ ButtonBox["DiracTraceEvaluate",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTraceEvaluate",
+  ButtonNote->"DiracTraceEvaluate"],
+ " is set to False. However, ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " will still perform some simplifications inside the trace, without \
+evaluating it explicitly."
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -1980,42 +4768,1822 @@ Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
   RowBox[{
    RowBox[{"DiracTrace", "[", 
-    RowBox[{"GA", "[", 
-     RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}], "]"}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"GSD", "[", "q", "]"}]}], "+", 
+       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
+     RowBox[{"GAD", "[", "\[Nu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GSD", "[", 
+        RowBox[{"p", "-", "q"}], "]"}], "+", 
+       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
+     RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}], " ", ",", 
    RowBox[{"DiracTraceEvaluate", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[12]:="],
+ CellLabel->"In[49]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"tr", "(", 
    FormBox[
     RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
+     RowBox[{
+      SubsuperscriptBox["m", "e", "2"], " ", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]]}]}], "+", 
+     RowBox[{
+      SubscriptBox["m", "e"], " ", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]", "\[CenterDot]", 
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]]}]}], "-", 
+     RowBox[{
+      SubscriptBox["m", "e"], " ", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]", "\[CenterDot]", 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]]}]}], "-", 
+     RowBox[{
+      SubscriptBox["m", "e"], " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]", "\[CenterDot]", 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]]}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]]}], "-", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], "2"], " ", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]]}]}], "+", 
+     RowBox[{"2", " ", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]", "\[CenterDot]", 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], ".", 
+       SuperscriptBox["\[Gamma]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]]}]}]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[49]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Set ",
+ Cell[BoxData[
+  RowBox[{"DiracTrace", "\[Rule]", "False"}]], "InlineFormula"],
+ " if you want ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " not to touch the the Dirac traces."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"GSD", "[", "q", "]"}]}], "+", 
+       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
+     RowBox[{"GAD", "[", "\[Nu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GSD", "[", 
+        RowBox[{"p", "-", "q"}], "]"}], "+", 
+       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
+     RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}], " ", ",", 
+   RowBox[{"DiracTraceEvaluate", "\[Rule]", "False"}], ",", 
+   RowBox[{"DiracTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[50]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["m", "e"], "-", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}]}], ")"}], ".", 
+     SuperscriptBox["\[Gamma]", 
       FormBox[
-       FormBox["a",
+       FormBox["\[Nu]",
         TraditionalForm],
        TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["m", "e"], "+", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox["p",
+            TraditionalForm], "-", 
+           FormBox["q",
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], ")"}]}], ")"}], ".", 
+     SuperscriptBox["\[Gamma]", 
       FormBox[
-       FormBox["b",
-        TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["c",
-        TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["d",
+       FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm]]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[12]="]
+ CellLabel->"Out[50]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "When doing calculations at one loop and above, you may encounter \
+expressions that contain ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "- and ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-dimensional objects."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GA", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+  RowBox[{"GAD", "[", "\[Mu]", "]"}]}]], "Input",
+ CellLabel->"In[52]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], "+", "m"}], ")"}], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[52]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Although ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " can handle such terms effortlessly, it will not do so unless you certify \
+that you fully understand what you are doing: being sloppy with the \
+dimensions easily leads to inconsistencies and wrong results!"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[53]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   StyleBox[
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], 
+   RowBox[{
+   ":", " "}], "\<\"Error! DiracTrick has encountered a fatal problem and \
+must abort the computation. The problem reads: \
+\[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
+and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak]\"\>"}], 
+  TraditionalForm]], "Message", "MSG",
+ CellLabel->"During evaluation of In[53]:="],
+
+Cell[BoxData[
+ FormBox["$Aborted", TraditionalForm]], "Output",
+ CellLabel->"Out[53]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "By default, FeynCalc uses the naive dimensional regularization (NDR) \
+scheme, where all Dirac matrices are taken to be ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional. Therefore, in NDR you may not have mixtures of Dirac matrices \
+living in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ " and 4 dimensions. However, such expressions are possible in the \
+t'Hooft-Veltman-Breitenlohner-Maison (BMHV) scheme."
+}], "Notes"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
+ CellLabel->"In[54]:="],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"GA", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[55]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"D", " ", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"2", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{"D", " ", "m"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[55]="]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
+ CellLabel->"In[56]:="],
+
+Cell[TextData[{
+ "The BMHV scheme is a special prescription for handling ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " in dimensional regularization. Do not activate this scheme mindlessly just \
+to get rid of errors from ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ "! If you are doing a calculation in NDR or a calculation that does not \
+involve ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ ", better make sure that your input expressions are correctly written to be ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional objects."
+}], "Notes"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Traces that contain an odd number of  ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ "  or chirality projectors cannot be calculated unambigously in NDR. To \
+avoid inconsistencies, ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ " will refuse to evaluate such traces in NDR."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{
+   RowBox[{"GAD", "[", 
+    RowBox[{
+    "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Alpha]", 
+     ",", "\[Beta]"}], "]"}], ".", 
+   RowBox[{"GA", "[", "5", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[57]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Alpha]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Beta]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]],
+      TraditionalForm]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[57]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[58]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   StyleBox[
+    RowBox[{"DiracTrace", "::", "ndranomaly"}], "MessageName"], 
+   RowBox[{
+   ":", " "}], "\<\"You are using naive dimensional regularization (NDR), \
+such that in D dimensions gamma^5 anticommutes with all other Dirac matrices. \
+In this scheme (without additional prescriptions) it is not possible to \
+compute traces with an odd number of gamma^5 unambiguously. Evaluation \
+aborted!\"\>"}], TraditionalForm]], "Message", "MSG",
+ CellLabel->"During evaluation of In[58]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[58]="]
+}, Open  ]],
+
+Cell["\<\
+Such traces can be consistently calculated in the BMHV scheme. Our scheme \
+choice as of course also possible, but those are not implemented in FeynCalc.\
+\
+\>", "Notes"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
+ CellLabel->"In[59]:="],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{
+    RowBox[{"GAD", "[", 
+     RowBox[{
+     "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Alpha]", 
+      ",", "\[Beta]"}], "]"}], ".", 
+    RowBox[{"GA", "[", "5", "]"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[60]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Alpha]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Beta]",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[60]="]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
+ CellLabel->"In[61]:="],
+
+Cell[TextData[{
+ "Keep in mind that the BMHV scheme violates axial Ward identities and \
+requires special model-dependent counter-terms to restore those. Therefore, \
+just setting ",
+ ButtonBox["$BreitMaison",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/$BreitMaison",
+  ButtonNote->"$BreitMaison"],
+ " to ",
+ Cell[BoxData["True"], "InlineFormula"],
+ " does not automatically resolve all your troubles with ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensions. The proper treatment of ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " in dimensional regularization is an intricate issue that cannot be boiled \
+down to a simple and universal recipe. FeynCalc merely carries out the \
+algebraic operations that you request, but it is still your task to ensure \
+that what you do makes sense."
+}], "Notes"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell["\<\
+Since FeynCalc 9.3 it is also possible to simplify Dirac matrices with \
+Cartesian or temporal indices. However, the support of nonrelativistic \
+calculations is a very new feature, so that things may not work as smooth as \
+they do for manifestly Lorentz covariant expressions.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CGA", "[", "i", "]"}], ".", 
+  RowBox[{"CGA", "[", "i", "]"}]}]], "Input",
+ CellLabel->"In[62]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["i",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["i",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[62]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[63]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "3"}], TraditionalForm]], "Output",
+ CellLabel->"Out[63]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CGA", "[", "i", "]"}], ".", 
+  RowBox[{"CGS", "[", "p", "]"}], ".", 
+  RowBox[{"CGA", "[", "j", "]"}], ".", 
+  RowBox[{"CGS", "[", 
+   RowBox[{"p", "+", "q"}], "]"}]}]], "Input",
+ CellLabel->"In[64]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["i",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["p",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["j",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox[
+           StyleBox["p",
+            StripOnInput->False,
+            FontWeight->Bold],
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox[
+           StyleBox["q",
+            StripOnInput->False,
+            FontWeight->Bold],
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[64]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[65]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["p",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"],
+      TraditionalForm], "2"], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], 
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], 
+      FormBox[
+       FormBox[
+        StyleBox["j",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"2", " ", 
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["p",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       StyleBox["j",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], 
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox[
+        FormBox[
+         StyleBox["\<\"\[Gamma]\"\>",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox[
+          StyleBox["p",
+           StripOnInput->False,
+           FontWeight->Bold],
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "+", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["i",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["p",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], ".", 
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["j",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["q",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[65]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"CGA", "[", "i", "]"}], ".", 
+   RowBox[{"CGS", "[", "p", "]"}], ".", 
+   RowBox[{"CGA", "[", "j", "]"}], ".", 
+   RowBox[{"CGS", "[", 
+    RowBox[{"p", "+", "q"}], "]"}]}], 
+  RowBox[{"KD", "[", 
+   RowBox[{"i", ",", "j"}], "]"}]}]], "Input",
+ CellLabel->"In[66]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Delta]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["j",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm], " ", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], 
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       OverscriptBox[
+        FormBox[
+         StyleBox["\<\"\[Gamma]\"\>",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox[
+          StyleBox["p",
+           StripOnInput->False,
+           FontWeight->Bold],
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], ")"}], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], 
+      FormBox[
+       FormBox[
+        StyleBox["j",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       OverscriptBox[
+        FormBox[
+         StyleBox["\<\"\[Gamma]\"\>",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"], "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox[
+            StyleBox["p",
+             StripOnInput->False,
+             FontWeight->Bold],
+            TraditionalForm], "_"], "+", 
+          OverscriptBox[
+           FormBox[
+            StyleBox["q",
+             StripOnInput->False,
+             FontWeight->Bold],
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}],
+      TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[66]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[67]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["p",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["q",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}]}], "-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["p",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"],
+     TraditionalForm], "2"]}], TraditionalForm]], "Output",
+ CellLabel->"Out[67]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TGA", "[", "]"}], ".", 
+  RowBox[{"CGA", "[", "i", "]"}], ".", 
+  RowBox[{"TGA", "[", "]"}]}]], "Input",
+ CellLabel->"In[68]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["0",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Gamma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], 
+     FormBox[
+      FormBox[
+       StyleBox["i",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["0",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[68]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[69]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   SuperscriptBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["\<\"\[Gamma]\"\>",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"], 
+    FormBox[
+     FormBox[
+      StyleBox["i",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[69]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{"CGAD", "[", 
+   RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[70]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["i",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["j",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["k",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Gamma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         StyleBox["l",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[70]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[71]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["l",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["j",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["k",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["k",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["j",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["l",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["j",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox["k",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["l",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[71]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -2079,8 +6647,8 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{378, Automatic}, {Automatic, 232}},
+WindowSize->{894, 1033},
+WindowMargins->{{Automatic, 879}, {Automatic, 122}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

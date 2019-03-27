@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     55944,       1970]
-NotebookOptionsPosition[     51101,       1799]
-NotebookOutlinePosition[     51718,       1823]
-CellTagsIndexPosition[     51638,       1818]
+NotebookDataLength[     56532,       1991]
+NotebookOptionsPosition[     51673,       1818]
+NotebookOutlinePosition[     52291,       1842]
+CellTagsIndexPosition[     52211,       1837]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -149,13 +149,14 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "FCDiracIsolate", "]"}]], "Input",
  CellChangeTimes->{{3.761470259669435*^9, 3.7614702626776133`*^9}},
- CellLabel->"In[45]:=",
+ CellLabel->"In[88]:=",
  CellID->1538410322],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
+    RowBox[{"CartesianIndex", "\[Rule]", "False"}], ",", 
     RowBox[{"ClearHeads", "\[Rule]", 
      RowBox[{"{", 
       RowBox[{"FCGV", "(", "\<\"DiracChain\"\>", ")"}], "}"}]}], ",", 
@@ -186,10 +187,95 @@ Cell[BoxData[
     RowBox[{"TimeConstrained", "\[Rule]", "3"}], ",", 
     RowBox[{"ToDiracGamma67", "\[Rule]", "False"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.761470262991818*^9},
- CellLabel->"Out[45]=",
- CellID->255838212]
+ CellChangeTimes->{3.761470262991818*^9, 3.762580049802609*^9},
+ CellLabel->"Out[88]=",
+ CellID->1412443888]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+ ", ",
+ ButtonBox["Spinor",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Spinor",
+  ButtonNote->"Spinor"],
+ "."
+}], "SeeAlso",
+ CellChangeTimes->{3.762580046410817*^9},
+ CellID->655647701]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[TextData[{
+ ButtonBox["FCDiracIsolate",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCDiracIsolate",
+  ButtonNote->"FCDiracIsolate"],
+ " provides an easy way to extract the Dirac structures present in the \
+expression (e.g. an amplitude)"
+}], "Notes",
+ CellChangeTimes->{{3.761518669397114*^9, 3.761518713094462*^9}, 
+   3.762580349696373*^9},
+ CellID->108055865],
 
 Cell[CellGroupData[{
 
@@ -240,16 +326,13 @@ Cell[BoxData[
     RowBox[{"FV", "[", 
      RowBox[{
       RowBox[{"Polarization", "[", 
-       RowBox[{"k1", ",", "\[ImaginaryI]", ",", 
-        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], ",", 
-      "\[Mu]"}], "]"}], " ", 
+       RowBox[{"k1", ",", "\[ImaginaryI]"}], "]"}], ",", "\[Mu]"}], "]"}], 
+    " ", 
     RowBox[{"FV", "[", 
      RowBox[{
       RowBox[{"Polarization", "[", 
        RowBox[{"k2", ",", 
-        RowBox[{"-", "\[ImaginaryI]"}], ",", 
-        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], ",", 
-      "\[Nu]"}], "]"}]}], "+", 
+        RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], ",", "\[Nu]"}], "]"}]}], "+", 
    RowBox[{
     RowBox[{
      RowBox[{"Spinor", "[", 
@@ -294,16 +377,13 @@ Cell[BoxData[
     RowBox[{"FV", "[", 
      RowBox[{
       RowBox[{"Polarization", "[", 
-       RowBox[{"k1", ",", "\[ImaginaryI]", ",", 
-        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], ",", 
-      "\[Mu]"}], "]"}], " ", 
+       RowBox[{"k1", ",", "\[ImaginaryI]"}], "]"}], ",", "\[Mu]"}], "]"}], 
+    " ", 
     RowBox[{"FV", "[", 
      RowBox[{
       RowBox[{"Polarization", "[", 
        RowBox[{"k2", ",", 
-        RowBox[{"-", "\[ImaginaryI]"}], ",", 
-        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], ",", 
-      "\[Nu]"}], "]"}]}], "-", 
+        RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], ",", "\[Nu]"}], "]"}]}], "-", 
    RowBox[{
     RowBox[{
      RowBox[{"Spinor", "[", 
@@ -331,16 +411,13 @@ Cell[BoxData[
     RowBox[{"FV", "[", 
      RowBox[{
       RowBox[{"Polarization", "[", 
-       RowBox[{"k1", ",", "\[ImaginaryI]", ",", 
-        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], ",", 
-      "\[Mu]"}], "]"}], " ", 
+       RowBox[{"k1", ",", "\[ImaginaryI]"}], "]"}], ",", "\[Mu]"}], "]"}], 
+    " ", 
     RowBox[{"FV", "[", 
      RowBox[{
       RowBox[{"Polarization", "[", 
        RowBox[{"k2", ",", 
-        RowBox[{"-", "\[ImaginaryI]"}], ",", 
-        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], ",", 
-      "\[Nu]"}], "]"}], " ", 
+        RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], ",", "\[Nu]"}], "]"}], " ", 
     RowBox[{"MT", "[", 
      RowBox[{"Lor3", ",", "Lor4"}], "]"}], " ", 
     RowBox[{"(", 
@@ -370,7 +447,8 @@ Cell[BoxData[
     RowBox[{"SMP", "[", "\"\<g_s\>\"", "]"}], " ", 
     RowBox[{"SUNF", "[", 
      RowBox[{"Glu2", ",", "Glu4", ",", "Glu5"}], "]"}]}]}]}]], "Input",
- CellLabel->"In[46]:=",
+ CellChangeTimes->{{3.7625800751537647`*^9, 3.7625800940637712`*^9}},
+ CellLabel->"In[90]:=",
  CellID->678574635],
 
 Cell[BoxData[
@@ -911,17 +989,11 @@ Cell[BoxData[
          FormBox["\<\")\"\>",
           TraditionalForm]}], ")"}]}]}]}],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.761518618150386*^9},
- CellLabel->"Out[46]=",
- CellID->159775674]
+ CellChangeTimes->{3.761518618150386*^9, 3.762580096476698*^9, 
+  3.762580368961215*^9},
+ CellLabel->"Out[90]=",
+ CellID->276868004]
 }, Open  ]],
-
-Cell["\<\
-FCDiracIsolate provides an easy way to extract the Dirac structures present \
-in the expression (e.g. an amplitude)\
-\>", "Notes",
- CellChangeTimes->{{3.761518669397114*^9, 3.761518713094462*^9}},
- CellID->108055865],
 
 Cell[CellGroupData[{
 
@@ -930,7 +1002,7 @@ Cell[BoxData[
   RowBox[{"FCDiracIsolate", "[", 
    RowBox[{"amp", ",", 
     RowBox[{"Head", "\[Rule]", "diracS"}]}], "]"}]}]], "Input",
- CellLabel->"In[47]:=",
+ CellLabel->"In[91]:=",
  CellID->184667609],
 
 Cell[BoxData[
@@ -1455,31 +1527,30 @@ Cell[BoxData[
           FormBox["\<\")\"\>",
            TraditionalForm]}], ")"}]}], ")"}]}]}],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.76151863523944*^9},
- CellLabel->"Out[47]=",
- CellID->225251235]
+ CellChangeTimes->{3.76151863523944*^9, 3.762580372041016*^9},
+ CellLabel->"Out[91]=",
+ CellID->474582901]
 }, Open  ]],
 
 Cell[TextData[{
- "Now all the Dirac structures are wrapped into the Head ",
- StyleBox["diracS",
-  FontWeight->"Bold"],
- ". So we can do something like"
+ "Now that all Dirac structures are wrapped into the head ",
+ Cell[BoxData[
+  RowBox[{"diracS", " "}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " it is easy to extract them to a separate list"
 }], "Notes",
- CellChangeTimes->{{3.761518749888723*^9, 3.761518751858032*^9}},
+ CellChangeTimes->{{3.761518749888723*^9, 3.761518751858032*^9}, {
+  3.762580379237626*^9, 3.762580409396747*^9}},
  CellID->959852842],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"li", "=", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"Cases", "[", 
-     RowBox[{"ampIso", ",", "_diracS", ",", "Infinity"}], "]"}], "//", 
-    "DeleteDuplicates"}], "//", "Sort"}]}]], "Input",
- CellLabel->"In[48]:=",
- CellID->1986171329],
+ RowBox[{"Cases2", "[", 
+  RowBox[{"ampIso", ",", "diracS"}], "]"}]], "Input",
+ CellChangeTimes->{{3.762580413907222*^9, 3.762580422025565*^9}},
+ CellLabel->"In[92]:=",
+ CellID->532893225],
 
 Cell[BoxData[
  FormBox[
@@ -1662,80 +1733,28 @@ Cell[BoxData[
         FormBox["\<\")\"\>",
          TraditionalForm]}], ")"}]}], ")"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.7615187289573393`*^9},
- CellLabel->"Out[48]=",
- CellID->754045305]
+ CellChangeTimes->{3.7625804222525263`*^9},
+ CellLabel->"Out[92]=",
+ CellID->1394310795]
 }, Open  ]],
 
-Cell["\<\
-which gives us  a sorted list of all unique Dirac structures  in amp. \
-\>", "Notes",
- CellChangeTimes->{{3.7615187748013906`*^9, 3.761518784562031*^9}},
- CellID->253947234],
+Cell[TextData[{
+ "This way we obtain a sorted list of all unique Dirac structures in ",
+ Cell[BoxData["amp"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ". "
+}], "Notes",
+ CellChangeTimes->{{3.7625804489088383`*^9, 3.762580467561283*^9}},
+ CellID->111681314],
 
 Cell[BoxData[
- RowBox[{"ClearAll", "[", "amp", "]"}]], "Input",
- CellChangeTimes->{{3.761518789906906*^9, 3.761518793246088*^9}},
+ RowBox[{"ClearAll", "[", 
+  RowBox[{"amp", ",", "ampIso", ",", "diracS"}], "]"}]], "Input",
+ CellChangeTimes->{{3.761518789906906*^9, 3.761518793246088*^9}, {
+  3.7625804351122437`*^9, 3.762580438560289*^9}},
+ CellLabel->"In[93]:=",
  CellID->1836486841]
 }, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Tutorials", "TutorialsSection",
- CellID->250839057],
-
-Cell["XXXX", "Tutorials",
- CellID->341631938]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Related Demonstrations", "RelatedDemonstrationsSection",
- CellID->1268215905],
-
-Cell["XXXX", "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Related Links", "RelatedLinksSection",
- CellID->1584193535],
-
-Cell["XXXX", "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["See Also", "SeeAlsoSection",
- CellID->1255426704],
-
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["More About", "MoreAboutSection",
- CellID->38303248],
-
-Cell["XXXX", "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-
-Cell[BoxData[
- InterpretationBox[GridBox[{
-    {
-     StyleBox["Examples", "PrimaryExamplesSection"], 
-     ButtonBox[
-      RowBox[{
-       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
-      BaseStyle->"ExtendedExamplesLink",
-      ButtonData:>"ExtendedExamples"]}
-   }],
-  $Line = 0; Null]], "PrimaryExamplesSection",
- CellID->880084151],
 
 Cell[CellGroupData[{
 
@@ -1797,8 +1816,8 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{333, Automatic}, {15, Automatic}},
+WindowSize->{822, 841},
+WindowMargins->{{781, Automatic}, {131, Automatic}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
@@ -1810,14 +1829,14 @@ StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb",
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[49581, 1741, 100, 2, 54, "ExtendedExamplesSection",
+  Cell[50153, 1760, 100, 2, 54, "ExtendedExamplesSection",
    CellTags->"ExtendedExamples",
    CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 51498, 1811}
+ {"ExtendedExamples", 52071, 1830}
  }
 *)
 (*NotebookFileOutline
@@ -1883,93 +1902,95 @@ Cell[2700, 135, 358, 9, 73, "Usage",
 Cell[CellGroupData[{
 Cell[3083, 148, 186, 4, 26, "Input",
  CellID->1538410322],
-Cell[3272, 154, 1673, 36, 158, "Output",
- CellID->255838212]
+Cell[3272, 154, 1754, 37, 158, "Output",
+ CellID->1412443888]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4982, 195, 6248, 178, 499, "Input",
- CellID->678574635],
-Cell[11233, 375, 15580, 540, 243, "Output",
- CellID->159775674]
-}, Open  ]],
-Cell[26828, 918, 226, 5, 41, "Notes",
- CellID->108055865],
-Cell[CellGroupData[{
-Cell[27079, 927, 204, 6, 26, "Input",
- CellID->184667609],
-Cell[27286, 935, 15173, 524, 238, "Output",
- CellID->225251235]
-}, Open  ]],
-Cell[42474, 1462, 250, 7, 25, "Notes",
- CellID->959852842],
-Cell[CellGroupData[{
-Cell[42749, 1473, 255, 8, 28, "Input",
- CellID->1986171329],
-Cell[43007, 1483, 5069, 183, 76, "Output",
- CellID->754045305]
-}, Open  ]],
-Cell[48091, 1669, 183, 4, 25, "Notes",
- CellID->253947234],
-Cell[48277, 1675, 150, 3, 26, "Input",
- CellID->1836486841]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[48464, 1683, 57, 1, 43, "TutorialsSection",
+Cell[5075, 197, 57, 1, 43, "TutorialsSection",
  CellID->250839057],
-Cell[48524, 1686, 45, 1, 16, "Tutorials",
+Cell[5135, 200, 45, 1, 16, "Tutorials",
  CellID->341631938]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48606, 1692, 83, 1, 30, "RelatedDemonstrationsSection",
+Cell[5217, 206, 83, 1, 30, "RelatedDemonstrationsSection",
  CellID->1268215905],
-Cell[48692, 1695, 58, 1, 16, "RelatedDemonstrations",
+Cell[5303, 209, 58, 1, 16, "RelatedDemonstrations",
  CellID->1129518860]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48787, 1701, 65, 1, 30, "RelatedLinksSection",
+Cell[5398, 215, 65, 1, 30, "RelatedLinksSection",
  CellID->1584193535],
-Cell[48855, 1704, 49, 1, 16, "RelatedLinks",
+Cell[5466, 218, 49, 1, 16, "RelatedLinks",
  CellID->1038487239]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48941, 1710, 55, 1, 30, "SeeAlsoSection",
+Cell[5552, 224, 55, 1, 30, "SeeAlsoSection",
  CellID->1255426704],
-Cell[48999, 1713, 43, 1, 16, "SeeAlso",
- CellID->929782353]
+Cell[5610, 227, 338, 13, 16, "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[49079, 1719, 57, 1, 30, "MoreAboutSection",
+Cell[5985, 245, 57, 1, 30, "MoreAboutSection",
  CellID->38303248],
-Cell[49139, 1722, 46, 1, 16, "MoreAbout",
+Cell[6045, 248, 46, 1, 16, "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-Cell[49200, 1726, 356, 11, 69, "PrimaryExamplesSection",
- CellID->880084151],
 Cell[CellGroupData[{
-Cell[49581, 1741, 100, 2, 54, "ExtendedExamplesSection",
+Cell[6128, 254, 356, 11, 69, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[6487, 267, 380, 10, 41, "Notes",
+ CellID->108055865],
+Cell[CellGroupData[{
+Cell[6892, 281, 5925, 170, 442, "Input",
+ CellID->678574635],
+Cell[12820, 453, 15627, 541, 243, "Output",
+ CellID->276868004]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28484, 999, 204, 6, 26, "Input",
+ CellID->184667609],
+Cell[28691, 1007, 15195, 524, 238, "Output",
+ CellID->474582901]
+}, Open  ]],
+Cell[43901, 1534, 365, 9, 41, "Notes",
+ CellID->959852842],
+Cell[CellGroupData[{
+Cell[44291, 1547, 202, 5, 26, "Input",
+ CellID->532893225],
+Cell[44496, 1554, 5070, 183, 76, "Output",
+ CellID->1394310795]
+}, Open  ]],
+Cell[49581, 1740, 264, 7, 25, "Notes",
+ CellID->111681314],
+Cell[49848, 1749, 268, 6, 26, "Input",
+ CellID->1836486841]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50153, 1760, 100, 2, 54, "ExtendedExamplesSection",
  CellTags->"ExtendedExamples",
  CellID->1854448968],
-Cell[49684, 1745, 125, 3, 32, "ExampleSection",
+Cell[50256, 1764, 125, 3, 32, "ExampleSection",
  CellID->1293636265],
-Cell[49812, 1750, 148, 3, 20, "ExampleSection",
+Cell[50384, 1769, 148, 3, 20, "ExampleSection",
  CellID->1020263627],
 Cell[CellGroupData[{
-Cell[49985, 1757, 127, 3, 20, "ExampleSection",
+Cell[50557, 1776, 127, 3, 20, "ExampleSection",
  CellID->2061341341],
-Cell[50115, 1762, 130, 3, 70, "ExampleSubsection",
+Cell[50687, 1781, 130, 3, 70, "ExampleSubsection",
  CellID->1757724783],
-Cell[50248, 1767, 130, 3, 70, "ExampleSubsection",
+Cell[50820, 1786, 130, 3, 70, "ExampleSubsection",
  CellID->1295379749]
 }, Closed]],
-Cell[50393, 1773, 131, 3, 20, "ExampleSection",
+Cell[50965, 1792, 131, 3, 20, "ExampleSection",
  CellID->258228157],
-Cell[50527, 1778, 142, 3, 20, "ExampleSection",
+Cell[51099, 1797, 142, 3, 20, "ExampleSection",
  CellID->2123667759],
-Cell[50672, 1783, 135, 3, 20, "ExampleSection",
+Cell[51244, 1802, 135, 3, 20, "ExampleSection",
  CellID->1305812373],
-Cell[50810, 1788, 140, 3, 20, "ExampleSection",
+Cell[51382, 1807, 140, 3, 20, "ExampleSection",
  CellID->1653164318],
-Cell[50953, 1793, 132, 3, 20, "ExampleSection",
+Cell[51525, 1812, 132, 3, 20, "ExampleSection",
  CellID->589267740]
 }, Open  ]]
 }

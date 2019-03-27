@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11525,        464]
-NotebookOptionsPosition[      7351,        315]
-NotebookOutlinePosition[      7966,        339]
-CellTagsIndexPosition[      7888,        334]
+NotebookDataLength[     11553,        465]
+NotebookOptionsPosition[      7380,        316]
+NotebookOutlinePosition[      7995,        340]
+CellTagsIndexPosition[      7917,        335]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -245,12 +245,13 @@ Cell[BoxData[
  CellID->880084151],
 
 Cell["\<\
-For examples on using FCFAConvert please check the example calculations \
-supplied with FeynCalc they can be found in the Examples directory inside \
-$FeynCalcDirectory\
+For examples on using FCFAConvert please examine the example calculations \
+shipped with FeynCalc.\
 \>", "Notes",
- CellChangeTimes->{{3.762052615115925*^9, 3.762052657129657*^9}},
- CellID->1614736121]
+ CellChangeTimes->{{3.762663088870201*^9, 3.7626631030007277`*^9}, {
+  3.762663240156611*^9, 3.762663248806015*^9}, {3.762663367437385*^9, 
+  3.762663371894134*^9}},
+ CellID->930737328]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -313,8 +314,8 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{1394, Automatic}, {Automatic, 136}},
+WindowSize->{1007, 770},
+WindowMargins->{{1077, Automatic}, {Automatic, 97}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
@@ -326,14 +327,14 @@ StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb",
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[5831, 257, 100, 2, 54, "ExtendedExamplesSection",
+  Cell[5860, 258, 100, 2, 54, "ExtendedExamplesSection",
    CellTags->"ExtendedExamples",
    CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 7750, 327}
+ {"ExtendedExamples", 7779, 328}
  }
 *)
 (*NotebookFileOutline
@@ -436,34 +437,34 @@ Cell[5072, 227, 46, 1, 16, "MoreAbout",
 Cell[CellGroupData[{
 Cell[5155, 233, 356, 11, 69, "PrimaryExamplesSection",
  CellID->880084151],
-Cell[5514, 246, 280, 6, 41, "Notes",
- CellID->1614736121]
+Cell[5514, 246, 309, 7, 41, "Notes",
+ CellID->930737328]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5831, 257, 100, 2, 54, "ExtendedExamplesSection",
+Cell[5860, 258, 100, 2, 54, "ExtendedExamplesSection",
  CellTags->"ExtendedExamples",
  CellID->1854448968],
-Cell[5934, 261, 125, 3, 32, "ExampleSection",
+Cell[5963, 262, 125, 3, 32, "ExampleSection",
  CellID->1293636265],
-Cell[6062, 266, 148, 3, 20, "ExampleSection",
+Cell[6091, 267, 148, 3, 20, "ExampleSection",
  CellID->1020263627],
 Cell[CellGroupData[{
-Cell[6235, 273, 127, 3, 20, "ExampleSection",
+Cell[6264, 274, 127, 3, 20, "ExampleSection",
  CellID->2061341341],
-Cell[6365, 278, 130, 3, 70, "ExampleSubsection",
+Cell[6394, 279, 130, 3, 70, "ExampleSubsection",
  CellID->1757724783],
-Cell[6498, 283, 130, 3, 70, "ExampleSubsection",
+Cell[6527, 284, 130, 3, 70, "ExampleSubsection",
  CellID->1295379749]
 }, Closed]],
-Cell[6643, 289, 131, 3, 20, "ExampleSection",
+Cell[6672, 290, 131, 3, 20, "ExampleSection",
  CellID->258228157],
-Cell[6777, 294, 142, 3, 20, "ExampleSection",
+Cell[6806, 295, 142, 3, 20, "ExampleSection",
  CellID->2123667759],
-Cell[6922, 299, 135, 3, 20, "ExampleSection",
+Cell[6951, 300, 135, 3, 20, "ExampleSection",
  CellID->1305812373],
-Cell[7060, 304, 140, 3, 20, "ExampleSection",
+Cell[7089, 305, 140, 3, 20, "ExampleSection",
  CellID->1653164318],
-Cell[7203, 309, 132, 3, 20, "ExampleSection",
+Cell[7232, 310, 132, 3, 20, "ExampleSection",
  CellID->589267740]
 }, Open  ]]
 }

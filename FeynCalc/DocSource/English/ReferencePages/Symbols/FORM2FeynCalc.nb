@@ -117,19 +117,85 @@ Cell["FORM2FeynCalc", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FORM2FeynCalc", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "translates the FORM expr into FeynCalc notation. FORM2FeynCalc[file] \
-translates the FORM expresssions in file into FeynCalcnotation. \
-FORM2FeynCalc[file, x1, x2, ...] reads in a file in FORM-format and \
-translates the assignments for the variables a, b, ... into FeynCalc syntax. \
-If the option Set is True, the variables x1, x2 are assigned to the right \
-hand sides defined in the FORM-file."
+  RowBox[{"FORM2FeynCalc", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]translates the FORM ",
+ Cell[BoxData["exp"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " into FeynCalc notation.\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FORM2FeynCalc", "[", "file", "]"}]], "InlineFormula"],
+ " \[LineSeparator] translates the FORM expresssions in ",
+ Cell[BoxData["file"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " into FeynCalc notation.\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FORM2FeynCalc", "[", 
+   RowBox[{"file", ",", "x1", ",", "x2", ",", "..."}], "]"}]], 
+  "InlineFormula"],
+ " \[LineSeparator]reads in a file in FORM-format and translates the \
+assignments for the variables ",
+ Cell[BoxData[
+  RowBox[{"a", ",", " ", "b", ",", " ", "..."}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " into FeynCalc syntax."
 }], "Usage",
- CellID->982511436],
+ CellID->2010081510],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "If the option ",
+ Cell[BoxData["Set"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " is ",
+ Cell[BoxData["True"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", the variables ",
+ Cell[BoxData["x1"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", ",
+ Cell[BoxData["x2"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " are assigned to the right hand sides defined in the FORM-file."
+}], "Notes"],
+
+Cell["\<\
+The capabilities of this function are very limited, so that you should not \
+expect it to easily handle large and compicated expressions.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FORM2FeynCalc", "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[136]:=",
+ CellID->1139385107],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Dot", "\[Rule]", "Dot"}], ",", 
+    RowBox[{"HoldForm", "\[Rule]", "True"}], ",", 
+    RowBox[{"LorentzIndex", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FCGV", "(", "\<\"mu\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"nu\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"al\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"be\"\>", ")"}]}], "}"}]}], ",", 
+    RowBox[{"Set", "\[Rule]", "False"}], ",", 
+    RowBox[{"Replace", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Vectors", "\[Rule]", "Automatic"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[136]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,15 +230,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- ButtonBox["FeynCalc2FORM",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FeynCalc2FORM",
-  ButtonNote->"FeynCalc2FORM"],
- "."
-}], "Text",
- CellTags->"FORM2FeynCalc",
- CellID->1782635377]
+Cell[TextData[ButtonBox["FeynCalc2FORM",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/FeynCalc2FORM",
+ ButtonNote->"FeynCalc2FORM"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,43 +263,9 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "FORM2FeynCalc", "]"}]], "Input",
- CellTags->"FORM2FeynCalc",
- CellLabel->"In[1]:=",
- CellID->1139385107],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"Dot", "\[Rule]", "Dot"}], ",", 
-    RowBox[{"HoldForm", "\[Rule]", "True"}], ",", 
-    RowBox[{"LorentzIndex", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"mu\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"nu\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"al\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"be\"\>", ")"}]}], "}"}]}], ",", 
-    RowBox[{"Set", "\[Rule]", "False"}], ",", 
-    RowBox[{"Replace", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"Vectors", "\[Rule]", "Automatic"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"FORM2FeynCalc",
- CellLabel->"Out[1]=",
- CellID->1509057543]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"FORM2FeynCalc", "[", "\"\<p.q + 2*x m^2\>\"", "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[2]:=",
+ CellLabel->"In[137]:=",
  CellID->1971183578],
 
 Cell[BoxData[
@@ -263,8 +290,7 @@ Cell[BoxData[
     RowBox[{"x", ".", 
      SuperscriptBox["m", "2"]}]}]}], TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[2]=",
- CellID->437204044]
+ CellLabel->"Out[137]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -272,7 +298,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[3]:=",
+ CellLabel->"In[138]:=",
  CellID->1292875249],
 
 Cell[BoxData[
@@ -283,16 +309,19 @@ Cell[BoxData[
   RowBox[{"SP", "[", 
    RowBox[{"p", ",", "q"}], "]"}]}]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1525941930]
+ CellLabel->"Out[138]//StandardForm="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell["\<\
 Functions are automatically converted right, but bracketed expressions need \
 to be substituted explicitly.\
-\>", "Text",
- CellTags->"FORM2FeynCalc",
- CellID->1823304465],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -304,7 +333,7 @@ Cell[BoxData[
      RowBox[{"\"\<[li2(1-x)]\>\"", "\[Rule]", "\"\<PolyLog[2,1-x]\>\""}], 
      "}"}]}]}], "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[4]:=",
+ CellLabel->"In[139]:=",
  CellID->1620741920],
 
 Cell[BoxData[
@@ -316,8 +345,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[4]=",
- CellID->827693663]
+ CellLabel->"Out[139]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -325,7 +353,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[5]:=",
+ CellLabel->"In[140]:=",
  CellID->1897584456],
 
 Cell[BoxData[
@@ -337,8 +365,7 @@ Cell[BoxData[
    RowBox[{"2", ",", 
     RowBox[{"1", "-", "x"}]}], "]"}]}]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[5]//StandardForm=",
- CellID->879638641]
+ CellLabel->"Out[140]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -347,7 +374,7 @@ Cell[BoxData[
  RowBox[{"FORM2FeynCalc", "[", "\"\<x + [(1)]*y -[(-1)^m]\>\"", 
   "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[6]:=",
+ CellLabel->"In[141]:=",
  CellID->1533060910],
 
 Cell[BoxData[
@@ -362,8 +389,7 @@ Cell[BoxData[
     RowBox[{"Hold", "[", "1", "]"}], ".", "y"}], "+", "x"}], 
   TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[6]=",
- CellID->1027470118]
+ CellLabel->"Out[141]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -371,7 +397,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ReleaseHold", "[", "%", "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[7]:=",
+ CellLabel->"In[142]:=",
  CellID->1512515442],
 
 Cell[BoxData[
@@ -383,8 +409,7 @@ Cell[BoxData[
     RowBox[{"m", "+", "1"}]], "+", "x", "+", 
    RowBox[{"1", ".", "y"}]}], TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[7]=",
- CellID->1640354437]
+ CellLabel->"Out[142]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -393,37 +418,30 @@ Cell[BoxData[
  RowBox[{"FORM2FeynCalc", "[", "\"\<p(mu)*q(nu)+d_(mu,nu)\>\"", 
   "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[8]:=",
+ CellLabel->"In[143]:=",
  CellID->2089442701],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["nu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm],
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["nu",
+        TraditionalForm],
+       TraditionalForm]}]],
     TraditionalForm], "+", 
    RowBox[{
     RowBox[{"p", "(", "mu", ")"}], ".", 
     RowBox[{"q", "(", "nu", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[8]=",
- CellID->758219802]
+ CellLabel->"Out[143]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -431,7 +449,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[9]:=",
+ CellLabel->"In[144]:=",
  CellID->1054646204],
 
 Cell[BoxData[
@@ -442,8 +460,7 @@ Cell[BoxData[
   RowBox[{"MT", "[", 
    RowBox[{"mu", ",", "nu"}], "]"}]}]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[9]//StandardForm=",
- CellID->11165984]
+ CellLabel->"Out[144]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -457,37 +474,30 @@ Cell[BoxData[
       RowBox[{"mu", "\[Rule]", "\[Mu]"}], ",", 
       RowBox[{"nu", "\[Rule]", "\[Nu]"}]}], "}"}]}]}], "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[10]:=",
+ CellLabel->"In[145]:=",
  CellID->1352382070],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm],
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]],
     TraditionalForm], "+", 
    RowBox[{
     RowBox[{"p", "(", "\[Mu]", ")"}], ".", 
     RowBox[{"q", "(", "\[Nu]", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[10]=",
- CellID->291792517]
+ CellLabel->"Out[145]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -497,7 +507,7 @@ Cell[BoxData[
   "\"\<i_*az*bz*aM^2*D1*[(1)]*b_G1 * ( 4*eperp(mu,nu)*avec.bvec*blam )\>\"", 
   "]"}]], "Input",
  CellTags->"FORM2FeynCalc",
- CellLabel->"In[11]:=",
+ CellLabel->"In[146]:=",
  CellID->476542838],
 
 Cell[BoxData[
@@ -526,8 +536,8 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ")"}], ".", "blam"}], TraditionalForm]], "Output",
  CellTags->"FORM2FeynCalc",
- CellLabel->"Out[11]=",
- CellID->276944378]
+ CellLabel->"Out[146]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -592,13 +602,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{870, Automatic}, {Automatic, 258}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

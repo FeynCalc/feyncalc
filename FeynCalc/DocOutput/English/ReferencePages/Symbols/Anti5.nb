@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18889,        724]
-NotebookOptionsPosition[     12625,        510]
-NotebookOutlinePosition[     16515,        628]
-CellTagsIndexPosition[     16406,        622]
+NotebookDataLength[     25461,        985]
+NotebookOptionsPosition[     18654,        758]
+NotebookOutlinePosition[     22177,        862]
+CellTagsIndexPosition[     22068,        856]
 WindowTitle->Anti5
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Anti5\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Anti5"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Anti5.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracOrder\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracOrder"], "\<\"DiracSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSimplify"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracTrick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Anti5\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Anti5"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Anti5.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$17327], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Anti5", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$4512], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Anti5",
+              ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,35 +98,106 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Anti5", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Anti5", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"Anti5", "[", "exp", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "anticommutes all ",
+     " \[LineSeparator]anticommutes all ",
      Cell[BoxData[
-      FormBox[
-       SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
-     "in exp to the right. Anti5[exp, n] anticommutes all ",
+      SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+     " in exp to the right."
+    }]]},
+   {"", Cell[TextData[{
      Cell[BoxData[
-      FormBox[
-       SuperscriptBox["\[Gamma]", 
-        RowBox[{"5", " "}]], TraditionalForm]]],
-     "n times to the right. Anti5[exp, -n] anticommutes all ",
+      RowBox[{"Anti5", "[", 
+       RowBox[{"exp", ",", "n"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]anticommutes all  ",
      Cell[BoxData[
-      FormBox[
-       SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
-     " n times to the left."
+      SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+     " ",
+     Cell[BoxData["n"], "InlineFormula"],
+     "-times to the right."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Anti5", "[", 
+       RowBox[{"exp", ",", 
+        RowBox[{"-", "n"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]anticommutes all ",
+     Cell[BoxData[
+      SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+     " ",
+     Cell[BoxData["n"], "InlineFormula"],
+     "-times to the left."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}},
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {None, None, {None}}, "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->133424746],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Anti5", "]"}]], "Input",
+ CellLabel->"In[54]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "}"}], TraditionalForm]], "Output",
+ ImageSize->{16, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[54]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -116,11 +212,11 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(3)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->840004482],
+ CellID->642283598],
 
 Cell[CellGroupData[{
 
@@ -130,13 +226,13 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->719455314],
+ CellID->1097140362],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracMatrix", "[", 
+  RowBox[{"GA", "[", 
    RowBox[{"5", ",", "\[Mu]"}], "]"}], " "}]], "Input",
  CellTags->"Anti5",
  CellLabel->"In[1]:=",
@@ -144,14 +240,26 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"DiracMatrix", "(", 
-   RowBox[{"5", ",", "\[Mu]"}], ")"}], TraditionalForm]], "Output",
- ImageSize->{118, 15},
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{48, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[1]=",
- CellID->294517214]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -176,12 +284,11 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["5",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{55, 18},
+ ImageSize->{59, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[2]=",
- CellID->1246682665]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -207,18 +314,17 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{45, 18},
+ ImageSize->{48, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[3]=",
- CellID->741917191]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracMatrix", "[", 
+ RowBox[{"GA", "[", 
   RowBox[{
   "5", ",", "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
   "]"}]], "Input",
@@ -228,16 +334,50 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"DiracMatrix", "(", 
-   RowBox[{
-   "5", ",", "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
-   ")"}], TraditionalForm]], "Output",
- ImageSize->{171, 15},
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Gamma]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Delta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{120, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[4]=",
- CellID->733245772]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -280,12 +420,11 @@ Cell[BoxData[
      FormBox["\[Delta]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{116, 19},
+ ImageSize->{120, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[5]=",
- CellID->446711059]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -328,12 +467,11 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{116, 19},
+ ImageSize->{120, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[6]=",
- CellID->1568263833]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -377,30 +515,26 @@ Cell[BoxData[
      FormBox["\[Delta]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{116, 19},
+ ImageSize->{120, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[7]=",
- CellID->177899299]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[TextData[{
  "In the naive ",
  Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- "- scheme D-dimensional ",
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ "-scheme ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional ",
+ Cell[BoxData["\[Gamma]"], "InlineFormula"],
+ "-matrices anticommute with",
  Cell[BoxData[
-  FormBox["\[Gamma]", TraditionalForm]]],
- "-matrices anticommute with ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  "."
-}], "Text",
- CellTags->"Anti5",
- CellID->1633748802],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -425,12 +559,11 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{44, 18},
+ ImageSize->{47, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[8]=",
- CellID->1994871864]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -454,14 +587,131 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["5",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{54, 18},
+ ImageSize->{58, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Anti5",
- CellLabel->"Out[9]=",
- CellID->1660721309]
+ CellLabel->"Out[9]="]
+}, Open  ]],
+
+Cell[TextData[{
+ ButtonBox["Anti5",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Anti5",
+  ButtonNote->"Anti5"],
+ " also works in the t'Hooft-Veltman-Breitenlohner-Maison scheme"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$BreitMaison", "=", "True"}]], "Input",
+ CellLabel->"In[10]:="],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ ImageSize->{33, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[10]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Anti5", "[", 
+  RowBox[{"GA5", ".", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[11]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "^"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox["5",
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ ImageSize->{117, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$BreitMaison", "=", "False"}]], "Input",
+ CellLabel->"In[12]:="],
+
+Cell[BoxData[
+ FormBox["False", TraditionalForm]], "Output",
+ ImageSize->{36, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]="]
 }, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Options",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(2)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2061341341],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Opt1",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->1757724783],
+
+Cell["fdgdfgdfg", "Notes"],
+
+Cell[BoxData["dfgdfgfdg"], "Input",
+ CellLabel->"In[1]:="]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Opt2",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CellID->1295379749],
+
+Cell["dgdfgdfgdfg", "Notes"],
+
+Cell[BoxData["dgdfgdfgdf"], "Input",
+ CellLabel->"In[1]:="]
+}, Closed]]
+}, Closed]],
 
 Cell["", "SectionFooterSpacer"]
 }, Open  ]],
@@ -501,9 +751,7 @@ Cell[TextData[{
   ButtonNote->"DiracTrick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Anti5",
- CellID->1283449801]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -520,20 +768,21 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 12.506137}", 
+   "built" -> "{2019, 3, 25, 15, 23, 21.965792}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "Anti5[exp] anticommutes all \\[Gamma]^5in exp to the right. Anti5[exp, \
-n] anticommutes all \\[Gamma] 5 n times to the right. Anti5[exp, -n] \
-anticommutes all \\[Gamma]^5 n times to the left.", "synonyms" -> {}, "title" -> 
-    "Anti5", "titlemodifier" -> "", "windowtitle" -> "Anti5", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/Anti5"}, "SearchTextTranslated" -> ""},
+    "Anti5[exp] anticommutes all \\[Gamma]^5 in exp to the right. Anti5[exp, \
+n] anticommutes all \\[Gamma]^5 n-times to the right. Anti5[exp, -n] \
+anticommutes all \\[Gamma]^5 n-times to the left.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "Anti5", "titlemodifier" -> "", 
+    "windowtitle" -> "Anti5", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Anti5"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -553,179 +802,191 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3707, 107, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6409, 203, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->840004482]},
+   CellID->642283598]},
  "Anti5"->{
-  Cell[4339, 136, 174, 6, 27, "Input",
+  Cell[7042, 232, 165, 6, 27, "Input",
    CellTags->"Anti5",
    CellID->2080632323],
-  Cell[4516, 144, 273, 9, 36, "Output",
-   CellTags->"Anti5",
-   CellID->294517214],
-  Cell[4826, 158, 122, 4, 27, "Input",
+  Cell[7210, 240, 515, 21, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[7762, 266, 122, 4, 27, "Input",
    CellTags->"Anti5",
    CellID->1232582412],
-  Cell[4951, 164, 487, 19, 39, "Output",
-   CellTags->"Anti5",
-   CellID->1246682665],
-  Cell[5475, 188, 164, 6, 27, "Input",
+  Cell[7887, 272, 466, 18, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[8390, 295, 164, 6, 27, "Input",
    CellTags->"Anti5",
    CellID->1609506190],
-  Cell[5642, 196, 457, 18, 39, "Output",
-   CellTags->"Anti5",
-   CellID->741917191],
-  Cell[6136, 219, 214, 7, 27, "Input",
+  Cell[8557, 303, 437, 17, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[9031, 325, 205, 7, 27, "Input",
    CellTags->"Anti5",
    CellID->1286690073],
-  Cell[6353, 228, 334, 11, 36, "Output",
-   CellTags->"Anti5",
-   CellID->733245772],
-  Cell[6724, 244, 144, 5, 27, "Input",
+  Cell[9239, 334, 1082, 45, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[10358, 384, 144, 5, 27, "Input",
    CellTags->"Anti5",
    CellID->197831622],
-  Cell[6871, 251, 904, 36, 40, "Output",
-   CellTags->"Anti5",
-   CellID->446711059],
-  Cell[7812, 292, 153, 5, 27, "Input",
+  Cell[10505, 391, 884, 35, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[11426, 431, 153, 5, 27, "Input",
    CellTags->"Anti5",
    CellID->1010214576],
-  Cell[7968, 299, 905, 36, 40, "Output",
-   CellTags->"Anti5",
-   CellID->1568263833],
-  Cell[8910, 340, 171, 6, 27, "Input",
+  Cell[11582, 438, 884, 35, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[12503, 478, 171, 6, 27, "Input",
    CellTags->"Anti5",
    CellID->1359760692],
-  Cell[9084, 348, 904, 36, 40, "Output",
-   CellTags->"Anti5",
-   CellID->177899299],
-  Cell[10003, 387, 372, 15, 33, "Text",
-   CellTags->"Anti5",
-   CellID->1633748802],
-  Cell[10400, 406, 149, 5, 27, "Input",
+  Cell[12677, 486, 884, 35, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[13935, 540, 149, 5, 27, "Input",
    CellTags->"Anti5",
    CellID->1799781971],
-  Cell[10552, 413, 472, 19, 39, "Output",
-   CellTags->"Anti5",
-   CellID->1994871864],
-  Cell[11061, 437, 120, 4, 27, "Input",
+  Cell[14087, 547, 451, 18, 40, "Output",
+   CellTags->"Anti5"],
+  Cell[14575, 570, 120, 4, 27, "Input",
    CellTags->"Anti5",
    CellID->42617734],
-  Cell[11184, 443, 461, 18, 39, "Output",
-   CellTags->"Anti5",
-   CellID->1660721309],
-  Cell[12013, 484, 570, 21, 32, "Text",
-   CellTags->"Anti5",
-   CellID->1283449801]}
+  Cell[14698, 576, 440, 17, 40, "Output",
+   CellTags->"Anti5"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14535, 554},
- {"Anti5", 14667, 558}
+ {"PrimaryExamplesSection", 20563, 803},
+ {"Anti5", 20695, 807}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2232, 52, 51, "AnchorBarGrid",
+Cell[577, 21, 3186, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2812, 75, 48, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2863, 78, 819, 25, 105, "Usage",
+Cell[3766, 100, 282, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4073, 115, 1177, 37, 205, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3707, 107, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5275, 156, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->133424746],
+Cell[6016, 182, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[6072, 186, 88, 2, 27, "Input"],
+Cell[6163, 190, 185, 6, 37, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6409, 203, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->840004482],
+ CellID->642283598],
 Cell[CellGroupData[{
-Cell[4119, 126, 195, 6, 25, "ExampleSection",
- CellID->719455314],
+Cell[6821, 222, 196, 6, 25, "ExampleSection",
+ CellID->1097140362],
 Cell[CellGroupData[{
-Cell[4339, 136, 174, 6, 27, "Input",
+Cell[7042, 232, 165, 6, 27, "Input",
  CellTags->"Anti5",
  CellID->2080632323],
-Cell[4516, 144, 273, 9, 36, "Output",
- CellTags->"Anti5",
- CellID->294517214]
+Cell[7210, 240, 515, 21, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4826, 158, 122, 4, 27, "Input",
+Cell[7762, 266, 122, 4, 27, "Input",
  CellTags->"Anti5",
  CellID->1232582412],
-Cell[4951, 164, 487, 19, 39, "Output",
- CellTags->"Anti5",
- CellID->1246682665]
+Cell[7887, 272, 466, 18, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5475, 188, 164, 6, 27, "Input",
+Cell[8390, 295, 164, 6, 27, "Input",
  CellTags->"Anti5",
  CellID->1609506190],
-Cell[5642, 196, 457, 18, 39, "Output",
- CellTags->"Anti5",
- CellID->741917191]
+Cell[8557, 303, 437, 17, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6136, 219, 214, 7, 27, "Input",
+Cell[9031, 325, 205, 7, 27, "Input",
  CellTags->"Anti5",
  CellID->1286690073],
-Cell[6353, 228, 334, 11, 36, "Output",
- CellTags->"Anti5",
- CellID->733245772]
+Cell[9239, 334, 1082, 45, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6724, 244, 144, 5, 27, "Input",
+Cell[10358, 384, 144, 5, 27, "Input",
  CellTags->"Anti5",
  CellID->197831622],
-Cell[6871, 251, 904, 36, 40, "Output",
- CellTags->"Anti5",
- CellID->446711059]
+Cell[10505, 391, 884, 35, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7812, 292, 153, 5, 27, "Input",
+Cell[11426, 431, 153, 5, 27, "Input",
  CellTags->"Anti5",
  CellID->1010214576],
-Cell[7968, 299, 905, 36, 40, "Output",
- CellTags->"Anti5",
- CellID->1568263833]
+Cell[11582, 438, 884, 35, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8910, 340, 171, 6, 27, "Input",
+Cell[12503, 478, 171, 6, 27, "Input",
  CellTags->"Anti5",
  CellID->1359760692],
-Cell[9084, 348, 904, 36, 40, "Output",
- CellTags->"Anti5",
- CellID->177899299]
+Cell[12677, 486, 884, 35, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
-Cell[10003, 387, 372, 15, 33, "Text",
- CellTags->"Anti5",
- CellID->1633748802],
+Cell[13576, 524, 334, 12, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[10400, 406, 149, 5, 27, "Input",
+Cell[13935, 540, 149, 5, 27, "Input",
  CellTags->"Anti5",
  CellID->1799781971],
-Cell[10552, 413, 472, 19, 39, "Output",
- CellTags->"Anti5",
- CellID->1994871864]
+Cell[14087, 547, 451, 18, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11061, 437, 120, 4, 27, "Input",
+Cell[14575, 570, 120, 4, 27, "Input",
  CellTags->"Anti5",
  CellID->42617734],
-Cell[11184, 443, 461, 18, 39, "Output",
- CellTags->"Anti5",
- CellID->1660721309]
-}, Open  ]]
+Cell[14698, 576, 440, 17, 40, "Output",
+ CellTags->"Anti5"]
 }, Open  ]],
-Cell[11672, 465, 31, 0, 29, "SectionFooterSpacer"]
+Cell[15153, 596, 202, 6, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[15380, 606, 87, 2, 27, "Input"],
+Cell[15470, 610, 170, 5, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11740, 470, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[12013, 484, 570, 21, 32, "Text",
- CellTags->"Anti5",
- CellID->1283449801]
+Cell[15677, 620, 142, 4, 27, "Input"],
+Cell[15822, 626, 724, 28, 40, "Output"]
 }, Open  ]],
-Cell[12598, 508, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[16583, 659, 88, 2, 27, "Input"],
+Cell[16674, 663, 171, 5, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16894, 674, 189, 6, 25, "ExampleSection",
+ CellID->2061341341],
+Cell[CellGroupData[{
+Cell[17108, 684, 192, 6, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[17303, 692, 26, 0, 70, "Notes"],
+Cell[17332, 694, 58, 1, 70, "Input"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17427, 700, 192, 6, 70, "ExampleSubsection",
+ CellID->1295379749],
+Cell[17622, 708, 28, 0, 70, "Notes"],
+Cell[17653, 710, 59, 1, 70, "Input"]
+}, Closed]]
+}, Closed]],
+Cell[17739, 715, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17807, 720, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[18080, 734, 532, 19, 55, "SeeAlso"]
+}, Open  ]],
+Cell[18627, 756, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

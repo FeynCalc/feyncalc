@@ -118,9 +118,17 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"ExplicitPartialD", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "inserts in exp the definition for LeftRightPartialD[z] (and \
-LeftRightPartialD2[z])."
+ " \[LineSeparator]inserts the definitions for ",
+ ButtonBox["LeftRightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD",
+  ButtonNote->"LeftRightPartialD"],
+ " and ",
+ ButtonBox["LeftRightPartialD2",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD2",
+  ButtonNote->"LeftRightPartialD2"],
+ "."
 }], "Usage",
  CellID->982511436],
 
@@ -161,7 +169,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["ExpandPartialD",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
@@ -177,9 +184,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD2",
   ButtonNote->"LeftRightPartialD2"],
  "."
-}], "Text",
- CellTags->"ExplicitPartialD",
- CellID->1172851554]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -209,10 +214,27 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ExplicitPartialD", "[", " ", 
-  RowBox[{"LeftRightPartialD", "[", "\[Mu]", "]"}], " ", "]"}]], "Input",
+ RowBox[{" ", 
+  RowBox[{"LeftRightPartialD", "[", "\[Mu]", "]"}], " "}]], "Input",
+ CellLabel->"In[85]:="],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellLabel->"Out[85]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExplicitPartialD", "[", "%", "]"}]], "Input",
  CellTags->"ExplicitPartialD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[86]:=",
  CellID->2001527654],
 
 Cell[BoxData[
@@ -234,18 +256,37 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ExplicitPartialD",
- CellLabel->"Out[1]=",
- CellID->1715328697]
+ CellLabel->"Out[86]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ExplicitPartialD", "[", " ", 
-  RowBox[{"LeftRightPartialD2", "[", "\[Mu]", "]"}], " ", "]"}]], "Input",
- CellTags->"ExplicitPartialD",
- CellLabel->"In[2]:=",
- CellID->1875131375],
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LeftRightPartialD2", "[", "\[Mu]", "]"}]], "Input",
+ CellLabel->"In[1]:="],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExplicitPartialD", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -262,18 +303,40 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"ExplicitPartialD",
- CellLabel->"Out[2]=",
- CellID->1071634399]
+ CellLabel->"Out[2]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ExplicitPartialD", "[", " ", 
-  RowBox[{"LeftRightPartialD", "[", "OPEDelta", "]"}], " ", "]"}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LeftRightPartialD", "[", "OPEDelta", "]"}], " "}]], "Input",
+ CellLabel->"In[3]:="],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox[
+   OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+   FormBox[
+    FormBox["\[CapitalDelta]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExplicitPartialD", "[", "%", "]"}]], "Input",
  CellTags->"ExplicitPartialD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->1791671183],
 
 Cell[BoxData[
@@ -295,9 +358,15 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ExplicitPartialD",
- CellLabel->"Out[3]=",
- CellID->490499430]
+ CellLabel->"Out[4]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -306,7 +375,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"LeftRightPartialD", "[", "OPEDelta", "]"}], "^", "4"}]}]], "Input",
  CellTags->"ExplicitPartialD",
- CellLabel->"In[4]:=",
+ CellLabel->"In[5]:=",
  CellID->2120633580],
 
 Cell[BoxData[
@@ -319,8 +388,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm], "4"]}], TraditionalForm]], "Output",
  CellTags->"ExplicitPartialD",
- CellLabel->"Out[4]=",
- CellID->962398275]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -328,7 +396,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExplicitPartialD", "[", "%", "]"}]], "Input",
  CellTags->"ExplicitPartialD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[6]:=",
  CellID->1962668305],
 
 Cell[BoxData[
@@ -349,8 +417,8 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]]}], ")"}], "4"], TraditionalForm]], "Output",
  CellTags->"ExplicitPartialD",
- CellLabel->"Out[5]=",
- CellID->2132998296]
+ CellLabel->"Out[6]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -415,13 +483,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{886, Automatic}, {88, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -118,16 +118,103 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"PolarizationSum", "[", 
-   RowBox[{"mu", ",", "nu", ",", " ", "..."}], " ", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "defines (as abbreviations) several polarization sums. The first two \
-arguments are the interpreted as Lorentz indices, all further ones are \
-momenta. PolarizationSum performs no calculations."
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", " ", "..."}], " ", "]"}]], 
+  "InlineFormula"],
+ " \[LineSeparator]returns different polarization sums depending on its \
+arguments"
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]"}], "]"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " or ",
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k", ",", " ", "0"}], "]"}]],
+   "InlineFormula",
+  FormatType->"StandardForm"],
+ " gives ",
+ Cell[BoxData[
+  RowBox[{"-", 
+   SuperscriptBox["g", "\[Mu]\[Nu]"]}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k"}], "]"}]], 
+  "InlineFormula",
+  FormatType->"StandardForm"],
+ " returns ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["g", "\[Mu]\[Nu]"]}], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["k", "\[Mu]"], 
+     SuperscriptBox["k", "\[Nu]"]}], 
+    SuperscriptBox["k", "2"]]}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "."
+}], "Notes"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k", ",", " ", "n"}], "]"}]],
+   "InlineFormula",
+  FormatType->"StandardForm"],
+ " yields ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["g", "\[Mu]\[Nu]"]}], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["k", "\[Mu]"], 
+      SuperscriptBox["n", "\[Nu]"]}], "+", 
+     RowBox[{
+      SuperscriptBox["k", "\[Nu]"], 
+      SuperscriptBox["n", "\[Mu]"]}]}], 
+    RowBox[{"k", "\[CenterDot]", "n"}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["n", "2"], 
+     SuperscriptBox["k", "\[Mu]"], 
+     SuperscriptBox["k", "\[Nu]"]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"k", "\[CenterDot]", "n"}], ")"}], "2"]]}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PolarizationSum", "]"}]], "Input",
+ CellLabel->"In[28]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"VirtualBoson", "\[Rule]", "False"}], ",", 
+    RowBox[{"Heads", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"LorentzIndex", ",", "LorentzIndex"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[28]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -163,14 +250,22 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Polarization",
+ ButtonBox["Polariazation",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Polarization",
-  ButtonNote->"Polarization"],
+  ButtonData:>"paclet:FeynCalc/ref/Polariazation",
+  ButtonNote->"Polariazation"],
+ ", ",
+ ButtonBox["DoPolariazationSums",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DoPolariazationSums",
+  ButtonNote->"DoPolariazationSums"],
+ ", ",
+ ButtonBox["Uncontract",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Uncontract",
+  ButtonNote->"Uncontract"],
  "."
-}], "Text",
- CellTags->"PolarizationSum",
- CellID->986230835]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -200,56 +295,35 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "PolarizationSum", "]"}]], "Input",
- CellTags->"PolarizationSum",
- CellLabel->"In[1]:=",
- CellID->2045558864],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"VirtualBoson", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"PolarizationSum",
- CellLabel->"Out[1]=",
- CellID->993421841]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"PolarizationSum", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"PolarizationSum",
- CellLabel->"In[2]:=",
+ CellLabel->"In[29]:=",
  CellID->1305140513],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"PolarizationSum",
- CellLabel->"Out[2]=",
- CellID->430115432]
+ CellLabel->"Out[29]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -257,7 +331,7 @@ Cell[BoxData[
  RowBox[{"PolarizationSum", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k"}], "]"}]], "Input",
  CellTags->"PolarizationSum",
- CellLabel->"In[3]:=",
+ CellLabel->"In[30]:=",
  CellID->225444567],
 
 Cell[BoxData[
@@ -265,61 +339,109 @@ Cell[BoxData[
   RowBox[{
    FractionBox[
     RowBox[{
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
     SuperscriptBox[
      FormBox[
       OverscriptBox[
        FormBox["k",
         TraditionalForm], "_"],
       TraditionalForm], "2"]], "-", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellTags->"PolarizationSum",
+ CellLabel->"Out[30]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PolarizationSum", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k", ",", 
+   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Input",
+ CellLabel->"In[31]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
       FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+       FormBox["k",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
+       FormBox["\[Mu]",
         TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"PolarizationSum",
- CellLabel->"Out[3]=",
- CellID->1457144102]
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
+    SuperscriptBox[
+     FormBox[
+      FormBox["k",
+       TraditionalForm],
+      TraditionalForm], "2"]], "-", 
+   SuperscriptBox["g", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[31]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[BoxData[{
+ RowBox[{"FCClearScalarProducts", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SP", "[", "k", "]"}], "=", "0"}], ";"}]}], "Input",
+ CellLabel->"In[35]:="],
 
 Cell[CellGroupData[{
 
@@ -327,28 +449,8 @@ Cell[BoxData[
  RowBox[{"PolarizationSum", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k", ",", "n"}], "]"}]], "Input",
  CellTags->"PolarizationSum",
- CellLabel->"In[4]:=",
+ CellLabel->"In[37]:=",
  CellID->697709473],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   StyleBox[
-    RowBox[{"PolarizationSum", "::", "notmassless"}], "MessageName"], ":", 
-   " ", "\<\"Warning! You are inserting a polarization sum for massless \
-vector bosons, but the momentum of the external boson \
-\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\[NoBreak] is not \
-on-shell. Please put it on-shell via \
-ScalarProduct[\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\
-\[NoBreak],\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", \
-TraditionalForm]\\)\[NoBreak]]=0 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:FeynCalc/ref/PolarizationSum\\\", ButtonNote -> \
-\\\"FeynCalc`PolarizationSum::notmassless\\\"]\\)\"\>"}], 
-  TraditionalForm]], "Message", "MSG",
- CellTags->"PolarizationSum",
- CellLabel->"During evaluation of In[4]:=",
- CellID->268895154],
 
 Cell[BoxData[
  FormBox[
@@ -362,34 +464,26 @@ Cell[BoxData[
          FormBox["n",
           TraditionalForm], "_"],
         TraditionalForm], "2"], " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["k",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["k",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]]}], 
      SuperscriptBox[
       RowBox[{
        FormBox["\<\"(\"\>",
@@ -411,53 +505,39 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\<\")\"\>",
         TraditionalForm]}], "2"]]}], "-", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm], "+", 
-   FractionBox[
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
     RowBox[{
      FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
      FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["n",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["n",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
     RowBox[{
      FormBox[
       OverscriptBox[
@@ -473,34 +553,26 @@ Cell[BoxData[
       TraditionalForm]}]], "+", 
    FractionBox[
     RowBox[{
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["n",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["n",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
     RowBox[{
      FormBox[
       OverscriptBox[
@@ -515,487 +587,8 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"PolarizationSum",
- CellLabel->"Out[4]=",
- CellID->1315646059]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"PolarizationSum", "[", 
-  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k", ",", 
-   RowBox[{
-    SubscriptBox["p", "1"], "-", 
-    SubscriptBox["p", "2"]}]}], "]"}]], "Input",
- CellTags->"PolarizationSum",
- CellLabel->"In[5]:=",
- CellID->1841435515],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   StyleBox[
-    RowBox[{"PolarizationSum", "::", "notmassless"}], "MessageName"], ":", 
-   " ", "\<\"Warning! You are inserting a polarization sum for massless \
-vector bosons, but the momentum of the external boson \
-\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\[NoBreak] is not \
-on-shell. Please put it on-shell via \
-ScalarProduct[\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\
-\[NoBreak],\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", \
-TraditionalForm]\\)\[NoBreak]]=0 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:FeynCalc/ref/PolarizationSum\\\", ButtonNote -> \
-\\\"FeynCalc`PolarizationSum::notmassless\\\"]\\)\"\>"}], 
-  TraditionalForm]], "Message", "MSG",
- CellTags->"PolarizationSum",
- CellLabel->"During evaluation of In[5]:=",
- CellID->1845572420],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"-", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
-   FractionBox[
-    RowBox[{
-     SuperscriptBox[
-      FormBox[
-       SubscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["p",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["1",
-         TraditionalForm]],
-       TraditionalForm], "2"], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         SubscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], 
-          FormBox["1",
-           TraditionalForm]],
-         TraditionalForm]}], "-", 
-       RowBox[{
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         SubscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], 
-          FormBox["2",
-           TraditionalForm]],
-         TraditionalForm]}]}], ")"}], "2"]], "+", 
-   FractionBox[
-    RowBox[{"2", " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        SubscriptBox[
-         FormBox[
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"],
-          TraditionalForm], 
-         FormBox["1",
-          TraditionalForm]],
-        TraditionalForm], 
-       FormBox["\<\"\[CenterDot]\"\>",
-        TraditionalForm], 
-       FormBox[
-        SubscriptBox[
-         FormBox[
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"],
-          TraditionalForm], 
-         FormBox["2",
-          TraditionalForm]],
-        TraditionalForm]}], ")"}]}], 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         SubscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], 
-          FormBox["1",
-           TraditionalForm]],
-         TraditionalForm]}], "-", 
-       RowBox[{
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         SubscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], 
-          FormBox["2",
-           TraditionalForm]],
-         TraditionalForm]}]}], ")"}], "2"]], "-", 
-   FractionBox[
-    RowBox[{
-     SuperscriptBox[
-      FormBox[
-       SubscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["p",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["2",
-         TraditionalForm]],
-       TraditionalForm], "2"], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         SubscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], 
-          FormBox["1",
-           TraditionalForm]],
-         TraditionalForm]}], "-", 
-       RowBox[{
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         SubscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], 
-          FormBox["2",
-           TraditionalForm]],
-         TraditionalForm]}]}], ")"}], "2"]], "+", 
-   FractionBox[
-    RowBox[{
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       RowBox[{"(", 
-        FormBox[
-         FormBox[
-          RowBox[{
-           SubscriptBox[
-            FormBox[
-             OverscriptBox[
-              FormBox["p",
-               TraditionalForm], "_"],
-             TraditionalForm], 
-            FormBox["1",
-             TraditionalForm]], "-", 
-           SubscriptBox[
-            FormBox[
-             OverscriptBox[
-              FormBox["p",
-               TraditionalForm], "_"],
-             TraditionalForm], 
-            FormBox["2",
-             TraditionalForm]]}],
-          TraditionalForm],
-         TraditionalForm], ")"}], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
-    RowBox[{
-     RowBox[{
-      FormBox[
-       OverscriptBox[
-        FormBox["k",
-         TraditionalForm], "_"],
-       TraditionalForm], 
-      FormBox["\<\"\[CenterDot]\"\>",
-       TraditionalForm], 
-      FormBox[
-       SubscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["p",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["1",
-         TraditionalForm]],
-       TraditionalForm]}], "-", 
-     RowBox[{
-      FormBox[
-       OverscriptBox[
-        FormBox["k",
-         TraditionalForm], "_"],
-       TraditionalForm], 
-      FormBox["\<\"\[CenterDot]\"\>",
-       TraditionalForm], 
-      FormBox[
-       SubscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["p",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["2",
-         TraditionalForm]],
-       TraditionalForm]}]}]], "+", 
-   FractionBox[
-    RowBox[{
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       RowBox[{"(", 
-        FormBox[
-         FormBox[
-          RowBox[{
-           SubscriptBox[
-            FormBox[
-             OverscriptBox[
-              FormBox["p",
-               TraditionalForm], "_"],
-             TraditionalForm], 
-            FormBox["1",
-             TraditionalForm]], "-", 
-           SubscriptBox[
-            FormBox[
-             OverscriptBox[
-              FormBox["p",
-               TraditionalForm], "_"],
-             TraditionalForm], 
-            FormBox["2",
-             TraditionalForm]]}],
-          TraditionalForm],
-         TraditionalForm], ")"}], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
-    RowBox[{
-     RowBox[{
-      FormBox[
-       OverscriptBox[
-        FormBox["k",
-         TraditionalForm], "_"],
-       TraditionalForm], 
-      FormBox["\<\"\[CenterDot]\"\>",
-       TraditionalForm], 
-      FormBox[
-       SubscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["p",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["1",
-         TraditionalForm]],
-       TraditionalForm]}], "-", 
-     RowBox[{
-      FormBox[
-       OverscriptBox[
-        FormBox["k",
-         TraditionalForm], "_"],
-       TraditionalForm], 
-      FormBox["\<\"\[CenterDot]\"\>",
-       TraditionalForm], 
-      FormBox[
-       SubscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["p",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox["2",
-         TraditionalForm]],
-       TraditionalForm]}]}]]}], TraditionalForm]], "Output",
- CellTags->"PolarizationSum",
- CellLabel->"Out[5]=",
- CellID->395480012]
+ CellLabel->"Out[37]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -1060,13 +653,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{698, Automatic}, {Automatic, 171}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

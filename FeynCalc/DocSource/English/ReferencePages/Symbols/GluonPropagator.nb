@@ -120,24 +120,99 @@ Cell[TextData[{
   RowBox[{"GluonPropagator", "[", 
    RowBox[{"p", ",", " ", 
     RowBox[{"{", 
-     RowBox[{"mu", ",", " ", "a"}], "}"}], ",", " ", 
+     RowBox[{"\[Mu]", ",", " ", "a"}], "}"}], ",", " ", 
     RowBox[{"{", 
-     RowBox[{"nu", ",", " ", "b"}], "}"}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "or GluonPropagator[p, mu, a , nu, b ] yields the gluon propagator. \
-GluonPropagator[p, {mu}, {nu}] or GluonPropagator[p, mu, nu] omits the \
-SUNDelta. The gauge and the dimension is determined by the option Gauge and \
-Dimension. The following settings of Gauge are possible: 1 for the Feynman \
-gauge; ",
+     RowBox[{"\[Nu]", ",", " ", "b"}], "}"}]}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]or ",
  Cell[BoxData[
-  FormBox["\[Alpha]", TraditionalForm]]],
- " for the general covariant gauge; {Momentum[n] ,1} for the axial gauge.\n\n\
-GP can be used as an abbreviation of GluonPropagator."
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{
+   "p", ",", " ", "\[Mu]", ",", " ", "a", ",", " ", "\[Nu]", ",", " ", "b"}], 
+   "]"}]], "InlineFormula"],
+ " yields the gluon propagator.\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", 
+    RowBox[{"{", "\[Mu]", "}"}], ",", 
+    RowBox[{"{", "\[Nu]", "}"}]}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]or ",
+ Cell[BoxData[
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", " ", "\[Mu]", ",", " ", "\[Nu]"}], "]"}]], 
+  "InlineFormula"],
+ " omits the ",
+ ButtonBox["SUNDelta",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNDelta",
+  ButtonNote->"SUNDelta"],
+ "."
 }], "Usage",
- CellID->982511436],
+ CellID->2010081510],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ Cell[BoxData["GP"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " can be used as an abbreviation of ",
+ ButtonBox["GluonPropagator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GluonPropagator",
+  ButtonNote->"GluonPropagator"],
+ "."
+}], "Notes"],
+
+Cell[TextData[{
+ "The gauge and the dimension are determined by the options ",
+ ButtonBox["Gauge",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Gauge",
+  ButtonNote->"Gauge"],
+ " and ",
+ ButtonBox["Dimension",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Dimension",
+  ButtonNote->"Dimension"],
+ ". "
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "The following settings of Gauge are possible: ",
+ Cell[BoxData["1"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " for the Feynman gauge;  ",
+ Cell[BoxData["\[Alpha]"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " for the general covariant gauge; ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Momentum", "[", "n", "]"}], " ", ",", "1"}], "}"}]], 
+  "InlineFormula",
+  FormatType->"StandardForm"],
+ " for the axial gauge."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "GluonPropagator", "]"}]], "Input",
+ CellLabel->"In[392]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"Gauge", "\[Rule]", "1"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[392]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -183,6 +258,11 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GluonVertex",
   ButtonNote->"GluonVertex"],
  ", ",
+ ButtonBox["GhostVertex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GhostVertex",
+  ButtonNote->"GhostVertex"],
+ ", ",
  ButtonBox["GhostPropagator",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GhostPropagator",
@@ -193,9 +273,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GluonGhostVertex",
   ButtonNote->"GluonGhostVertex"],
  "."
-}], "Text",
- CellTags->"GluonPropagator",
- CellID->1661110705]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -222,49 +300,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"GluonPropagator",
- CellID->1676340970],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["GP"], "Input",
- CellTags->"GluonPropagator",
- CellLabel->"In[1]:=",
- CellID->730734970],
-
-Cell[BoxData[
- FormBox["GluonPropagator", TraditionalForm]], "Output",
- CellTags->"GluonPropagator",
- CellLabel->"Out[1]=",
- CellID->9606294]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "GluonPropagator", "]"}]], "Input",
- CellTags->"GluonPropagator",
- CellLabel->"In[2]:=",
- CellID->1962710719],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"Gauge", "\[Rule]", "1"}], ",", 
-    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"GluonPropagator",
- CellLabel->"Out[2]=",
- CellID->2023427444]
-}, Open  ]],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -272,7 +307,7 @@ Cell[BoxData[
   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b"}], 
   "]"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[3]:=",
+ CellLabel->"In[393]:=",
  CellID->1432103581],
 
 Cell[BoxData[
@@ -292,18 +327,66 @@ Cell[BoxData[
    FormBox["p",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[3]=",
- CellID->879390685]
+ CellLabel->"Out[393]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"GluonPropagator", "[", 
-   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
-    RowBox[{"Gauge", "\[Rule]", "\[Alpha]"}]}], "]"}], "//", 
-  "Explicit"}]], "Input",
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[394]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]}]]}], 
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`p, D], 
+       FeynCalc`Momentum[$CellContext`p, D]]],
+     Editable->False]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[394]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GP", "[", 
+  RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+   RowBox[{"Gauge", "\[Rule]", "\[Alpha]"}]}], "]"}]], "Input",
  CellTags->"GluonPropagator",
  CellLabel->"In[4]:=",
  CellID->922890899],
@@ -384,16 +467,103 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"GluonPropagator", "[", 
-   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
-    RowBox[{"Gauge", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"Momentum", "[", "n", "]"}], ",", "1"}], "}"}]}]}], "]"}], "//",
-   "Explicit"}]], "Input",
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[396]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "\[Alpha]"}], ")"}], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], 
+        InterpretationBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], "2"],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`p, D], 
+           FeynCalc`Momentum[$CellContext`p, D]]],
+         Editable->False]],
+       TraditionalForm], "-", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]]}], ")"}]}], 
+   InterpretationBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], "2"],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]]],
+    Editable->False]], TraditionalForm]], "Output",
+ CellLabel->"Out[396]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonPropagator", "[", 
+  RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+   RowBox[{"Gauge", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Momentum", "[", "n", "]"}], ",", "1"}], "}"}]}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[5]:=",
+ CellLabel->"In[397]:=",
  CellID->617351725],
 
 Cell[BoxData[
@@ -418,67 +588,54 @@ Cell[BoxData[
          RowBox[{
           SuperscriptBox[
            FormBox[
-            FormBox["n",
-             TraditionalForm],
+            OverscriptBox[
+             FormBox["n",
+              TraditionalForm], "_"],
             TraditionalForm], "2"], " ", 
-          FormBox[
-           SuperscriptBox[
-            FormBox[
-             FormBox["p",
-              TraditionalForm],
-             TraditionalForm], 
-            FormBox[
-             FormBox[
-              FormBox["\[Mu]",
-               TraditionalForm],
-              TraditionalForm],
-             TraditionalForm]],
-           TraditionalForm], " ", 
-          FormBox[
-           SuperscriptBox[
-            FormBox[
-             FormBox["p",
-              TraditionalForm],
-             TraditionalForm], 
-            FormBox[
-             FormBox[
-              FormBox["\[Nu]",
-               TraditionalForm],
-              TraditionalForm],
-             TraditionalForm]],
-           TraditionalForm]}], "-", 
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm]], " ", 
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm]]}], "-", 
          RowBox[{
           SuperscriptBox[
            FormBox[
             FormBox["p",
              TraditionalForm],
             TraditionalForm], "2"], " ", 
-          FormBox[
-           SuperscriptBox[
-            FormBox[
+          SuperscriptBox[
+           FormBox[
+            OverscriptBox[
              FormBox["n",
-              TraditionalForm],
-             TraditionalForm], 
-            FormBox[
-             FormBox[
-              FormBox["\[Mu]",
-               TraditionalForm],
-              TraditionalForm],
-             TraditionalForm]],
-           TraditionalForm], " ", 
-          FormBox[
-           SuperscriptBox[
-            FormBox[
+              TraditionalForm], "_"],
+            TraditionalForm], 
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm]], " ", 
+          SuperscriptBox[
+           FormBox[
+            OverscriptBox[
              FormBox["n",
-              TraditionalForm],
-             TraditionalForm], 
-            FormBox[
-             FormBox[
-              FormBox["\[Nu]",
-               TraditionalForm],
-              TraditionalForm],
-             TraditionalForm]],
-           TraditionalForm]}]}], 
+              TraditionalForm], "_"],
+            TraditionalForm], 
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm]]}]}], 
         SuperscriptBox[
          RowBox[{
           FormBox["\<\"(\"\>",
@@ -486,267 +643,172 @@ Cell[BoxData[
           FormBox[
            RowBox[{
             FormBox[
-             FormBox["n",
-              TraditionalForm],
+             OverscriptBox[
+              FormBox["n",
+               TraditionalForm], "_"],
              TraditionalForm], 
             FormBox["\<\"\[CenterDot]\"\>",
              TraditionalForm], 
             FormBox[
-             FormBox["p",
-              TraditionalForm],
+             OverscriptBox[
+              FormBox["p",
+               TraditionalForm], "_"],
              TraditionalForm]}],
            TraditionalForm], 
           FormBox["\<\")\"\>",
-           TraditionalForm]}], "2"]]}], "-", 
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], "+", 
+           TraditionalForm]}], "2"]]}], "+", 
       FractionBox[
        RowBox[{
         RowBox[{
-         FormBox[
-          SuperscriptBox[
-           FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           OverscriptBox[
             FormBox["n",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "+", 
+             TraditionalForm], "_"],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], "+", 
         RowBox[{
-         FormBox[
-          SuperscriptBox[
-           FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           OverscriptBox[
             FormBox["n",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}]}], 
+             TraditionalForm], "_"],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]]}]}], 
        RowBox[{
         FormBox[
-         FormBox["n",
-          TraditionalForm],
+         OverscriptBox[
+          FormBox["n",
+           TraditionalForm], "_"],
          TraditionalForm], 
         FormBox["\<\"\[CenterDot]\"\>",
          TraditionalForm], 
         FormBox[
-         FormBox["p",
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"],
+         TraditionalForm]}]], "-", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]}]]}], ")"}]}], 
-   SuperscriptBox[
-    FormBox["p",
-     TraditionalForm], "2"]], TraditionalForm]], "Output",
+   InterpretationBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], "2"],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]]],
+    Editable->False]], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[5]=",
- CellID->780926605]
+ CellLabel->"Out[397]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"GluonPropagator", "[", 
-   RowBox[{"p", ",", "\[Mu]", ",", "\[Nu]"}], "]"}], "//", 
-  "Explicit"}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GP", "[", 
+  RowBox[{"p", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[6]:=",
+ CellLabel->"In[401]:=",
  CellID->1065132203],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["\[CapitalPi]", "g", 
+    RowBox[{
+     FormBox["\[Mu]",
+      TraditionalForm], 
+     FormBox["\[Nu]",
+      TraditionalForm]}]], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[401]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[402]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", 
    FractionBox[
     RowBox[{"\[ImaginaryI]", " ", 
-     FormBox[
-      SuperscriptBox["g", 
-       RowBox[{
-        FormBox[
-         FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]}]],
-      TraditionalForm]}], 
-    SuperscriptBox[
-     FormBox["p",
-      TraditionalForm], "2"]]}], TraditionalForm]], "Output",
- CellTags->"GluonPropagator",
- CellLabel->"Out[6]=",
- CellID->315989703]
-}, Open  ]],
-
-Cell["\<\
-This is a convenient way to enter amplitudes by hand (GP is an abbreviation \
-GluonPropagator).\
-\>", "Text",
- CellTags->"GluonPropagator",
- CellID->688757709],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Explicit", "[", 
-  RowBox[{
-   RowBox[{"GP", "[", 
-    RowBox[{"p", ",", "1", ",", "2"}], "]"}], ",", 
-   RowBox[{"Gauge", "\[Rule]", "\[Xi]"}]}], "]"}]], "Input",
- CellTags->"GluonPropagator",
- CellLabel->"In[7]:=",
- CellID->629708898],
-
-Cell[BoxData[
- FormBox[
-  FractionBox[
-   RowBox[{"\[ImaginaryI]", " ", 
-    SuperscriptBox["\[Delta]", 
-     RowBox[{
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]}]]}], 
+    InterpretationBox[
+     SuperscriptBox[
       FormBox[
-       FormBox["ci1",
+       FormBox["p",
         TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["ci2",
-        TraditionalForm],
-       TraditionalForm]}]], " ", 
-    RowBox[{"(", 
-     RowBox[{
-      FractionBox[
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"1", "-", "\[Xi]"}], ")"}], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["p",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["li1",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["p",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["li2",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm]}], 
-       SuperscriptBox[
-        FormBox["p",
-         TraditionalForm], "2"]], "-", 
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["li1",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["li2",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm]}], ")"}]}], 
-   SuperscriptBox[
-    FormBox["p",
-     TraditionalForm], "2"]], TraditionalForm]], "Output",
- CellTags->"GluonPropagator",
- CellLabel->"Out[7]=",
- CellID->1689747408]
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`p, D], 
+       FeynCalc`Momentum[$CellContext`p, D]]],
+     Editable->False]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[402]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"GP", "[", 
-     RowBox[{
-      RowBox[{"-", "k"}], ",", "3", ",", "4"}], "]"}], "//", "Explicit"}], "//",
-    "FCE"}], "//", "StandardForm"}]], "Input",
- CellTags->"GluonPropagator",
- CellLabel->"In[8]:=",
- CellID->1462464756],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"-", "\[ImaginaryI]"}], " ", 
-  RowBox[{"FAD", "[", "k", "]"}], " ", 
-  RowBox[{"MTD", "[", 
-   RowBox[{"li3", ",", "li4"}], "]"}], " ", 
-  RowBox[{"SD", "[", 
-   RowBox[{"ci3", ",", "ci4"}], "]"}]}]], "Output",
- CellTags->"GluonPropagator",
- CellLabel->"Out[8]//StandardForm=",
- CellID->1893476356]
-}, Open  ]],
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -757,7 +819,7 @@ Cell[BoxData[
     RowBox[{"CounterTerm", "\[Rule]", " ", "1"}]}], "]"}], "//", 
   "Explicit"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[9]:=",
+ CellLabel->"In[403]:=",
  CellID->739433365],
 
 Cell[BoxData[
@@ -782,32 +844,24 @@ Cell[BoxData[
       RowBox[{
        FractionBox[
         RowBox[{"11", " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "3"], "-", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], "3"], "-", 
        RowBox[{
         FractionBox["19", "6"], " ", 
         SuperscriptBox[
@@ -815,27 +869,20 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}]}], ")"}]}], 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]}]]}]}], ")"}]}], 
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[9]=",
- CellID->417079749]
+ CellLabel->"Out[403]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -847,7 +894,7 @@ Cell[BoxData[
     RowBox[{"CounterTerm", "\[Rule]", " ", "2"}]}], "]"}], "//", 
   "Explicit"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[10]:=",
+ CellLabel->"In[404]:=",
  CellID->493368144],
 
 Cell[BoxData[
@@ -878,55 +925,40 @@ Cell[BoxData[
            FormBox["p",
             TraditionalForm],
            TraditionalForm], "2"], " ", 
-         FormBox[
-          SuperscriptBox["g", 
-           RowBox[{
-            FormBox[
-             FormBox[
-              FormBox["\[Mu]",
-               TraditionalForm],
-              TraditionalForm],
-             TraditionalForm], 
-            FormBox[
-             FormBox[
-              FormBox["\[Nu]",
-               TraditionalForm],
-              TraditionalForm],
-             TraditionalForm]}]],
-          TraditionalForm]}]}], "-", 
-       RowBox[{
-        FractionBox["1", "3"], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["p",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
+         SuperscriptBox["g", 
+          RowBox[{
            FormBox[
             FormBox["\[Mu]",
              TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["p",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
+            TraditionalForm], 
            FormBox[
             FormBox["\[Nu]",
              TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm]}]}], ")"}]}], 
+            TraditionalForm]}]]}]}], "-", 
+       RowBox[{
+        FractionBox["1", "3"], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]]}]}], ")"}]}], 
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[10]=",
- CellID->1754648571]
+ CellLabel->"Out[404]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -938,7 +970,7 @@ Cell[BoxData[
     RowBox[{"CounterTerm", "\[Rule]", " ", "3"}]}], "]"}], "//", 
   "Explicit"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[11]:=",
+ CellLabel->"In[405]:=",
  CellID->2062559987],
 
 Cell[BoxData[
@@ -968,55 +1000,40 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}], "-", 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]}]]}], "-", 
        FractionBox[
         RowBox[{"4", " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "3"]}], ")"}]}], 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], "3"]}], ")"}]}], 
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[11]=",
- CellID->674017829]
+ CellLabel->"Out[405]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1028,7 +1045,7 @@ Cell[BoxData[
     RowBox[{"CounterTerm", "\[Rule]", " ", "4"}]}], "]"}], "//", 
   "Explicit"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[12]:=",
+ CellLabel->"In[406]:=",
  CellID->807671915],
 
 Cell[BoxData[
@@ -1053,32 +1070,24 @@ Cell[BoxData[
       RowBox[{
        FractionBox[
         RowBox[{"10", " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "3"], "-", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], "3"], "-", 
        RowBox[{
         FractionBox["10", "3"], " ", 
         SuperscriptBox[
@@ -1086,27 +1095,20 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}]}], ")"}]}], 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]}]]}]}], ")"}]}], 
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[12]=",
- CellID->2094855988]
+ CellLabel->"Out[406]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1118,7 +1120,7 @@ Cell[BoxData[
     RowBox[{"CounterTerm", "\[Rule]", " ", "5"}]}], "]"}], "//", 
   "Explicit"}]], "Input",
  CellTags->"GluonPropagator",
- CellLabel->"In[13]:=",
+ CellLabel->"In[407]:=",
  CellID->1621125251],
 
 Cell[BoxData[
@@ -1143,32 +1145,24 @@ Cell[BoxData[
       RowBox[{
        FractionBox[
         RowBox[{"10", " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "3"], "-", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], "3"], "-", 
        RowBox[{
         FractionBox["10", "3"], " ", 
         SuperscriptBox[
@@ -1176,22 +1170,16 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}]}], ")"}]}], 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]}]]}]}], ")"}]}], 
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]], "+", 
    FractionBox[
@@ -1218,55 +1206,41 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm]}], "-", 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]}]]}], "-", 
        FractionBox[
         RowBox[{"4", " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "3"]}], ")"}]}], 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}], "3"]}], ")"}]}], 
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"GluonPropagator",
- CellLabel->"Out[13]=",
- CellID->1304358400]
+ CellLabel->"Out[407]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -1331,13 +1305,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{921, Automatic}, {Automatic, 126}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
