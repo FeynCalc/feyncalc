@@ -123,7 +123,7 @@ GluonVertex /:
 
 GluonVertex /:
 	MakeBoxes[GluonVertex[{_,mu1_},{_,mu2_},{_,mu3_},{_,mu4_}],    TraditionalForm] :=
-		SuperscriptBox["W",TBox[mu1,mu2,mu3,mu4]];
+		SuperscriptBox["V",TBox[mu1,mu2,mu3,mu4]];
 
 GluonVertex /:
 	MakeBoxes[GluonVertex[{p1_,mu1_, a_},{p2_,mu2_,b_},{p3_,mu3_,c_},{p4_,mu4_,d_}], TraditionalForm] :=

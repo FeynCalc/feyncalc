@@ -14,12 +14,8 @@
 
 
 CalcColorFactor::usage =
-"CalcColorFactor[expr] calculates the color factor of expr. \
-CalcColorFactor is useful for application on FeynArts produced amplitudes. \
-CalcColorFactor is just a macro function for \
-CalcColorFactor[x_] := If[FreeQ2[FeynCalcInternal[x], SUNIndex], x, \
-SUNSimplify[SUNSimplify[(If[ !FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[ \
-SUNSimplify[x]], Explicit -> False], Explicit -> True]].";
+"CalcColorFactor[exp] calculates the color factor of exp. \n
+CalcColorFactor is useful for application on FeynArts produced amplitudes.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -37,7 +33,7 @@ SetAttributes[CalcColorFactor, Listable];
 CalcColorFactor[x_Plus, opts:OptionsPattern[]] := CalcColorFactor[#, opts]& /@ x;
 
 CalcColorFactor[x_, OptionsPattern[]] :=
-	Module[{tmp = FeynCalcInternal[x]},
+	Module[{tmp = FeynCalcInternal[x], fac},
 		If[FreeQ[tmp, SUNIndex],
 			tmp,
 			If[Head[tmp]=!=Times,

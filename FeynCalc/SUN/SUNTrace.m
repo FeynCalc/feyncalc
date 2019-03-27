@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNTrace::usage=
-"SUNTrace[expr] calculates the color-trace.";
+"SUNTrace[exp] calculates the color-trace.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]

@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCColorIsolate::usage =
-"FCColorIsolate[expr,{q1,q2,...}] wraps colored objetcts (SUNT,SUNF,...) into heads \
-specified by the user " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCColorIsolate"],
-StandardForm];
+"FCColorIsolate[exp] wraps colored objects (SUNT,SUNF etc.) into heads \
+specified by the user.";
 
 FCColorIsolate::fail =
 "FCColorIsolate failed to isolate colored objects in `1`!";

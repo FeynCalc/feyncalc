@@ -165,10 +165,10 @@ CovariantD[OPEDelta, a___,
 			{m_ /; (Head[m] =!= Integer), n_Integer}, ru___Rule
 			] :=
 	Block[ {geen},
-		(Sum[geen[jj, m, a,
+		(Sum[geen[j, m, a,
 				QuantumField /. {ru} /. Options[CovariantD],
 				CouplingConstant /. {ru} /. Options[CovariantD]
-				], {jj, 0, n}
+				], {j, 0, n}
 			] /. geen -> gen[Join[{ru}, Options[CovariantD]]]
 		)
 	];

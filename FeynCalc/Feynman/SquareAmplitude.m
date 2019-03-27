@@ -17,8 +17,8 @@
 
 
 SquareAmplitude::usage =
-"SquareAmplitude[M,Mcc] multiplies the amplitudes from the list M with their
-complex conjugate from the list Mcc to obtain the list of products M_i*Mcc_j.";
+"SquareAmplitude[m1,m2] multiplies the amplitudes from the list m1 with their
+complex conjugate from the list m2 to obtain the list of products m1_i*m2_j.";
 
 SquareAmplitude::failmsg =
 "Error! SquareAmplitude has encountered a fatal problem and must abort the computation. \

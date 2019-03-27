@@ -15,12 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNSimplify::usage =
-"SUNSimplify simplifies products of SUNT (and complex conjugated)
-matrices. Renaming of dummy indices may be performed.
-If the option SUNTrace is set to False, then any SUNT-matrices are
-taken out of DiracTrace[...]; otherwise a color-trace is taken (by
-SUNTrace) before taking the SUN-objects in front of DiracTrace[...].
-Whether SUNF is replaced by traces is determined by the option Explicit.";
+"SUNSimplify[exp] simplifies products of SUNT and SUNTF \
+matrices in the expression.";
 
 SUNFJacobi::usage="SUNFJacobi is an option for SUNSimplify, indicating
 whether the Jacobi identity should be used.";
@@ -41,6 +37,9 @@ Begin["`SUNSimplify`Private`"]
 *)
 
 (* *********************************************************************** *)
+
+suntrace::usage="";
+sunt::usage="";
 
 fcis[z_ /; FreeQ[z, Pattern]] :=
 	(fcis[z] = FeynCalcInternal[z]);

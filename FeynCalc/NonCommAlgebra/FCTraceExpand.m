@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCTraceExpand::usage =
-"FCTraceExpand[expr]  expands traces of Dirac and SU(N) matrices \
+"FCTraceExpand[expr] expands traces of Dirac and SU(N) matrices \
 using linearity of the trace. The traces themselves are not \
 evaluated.";
 
