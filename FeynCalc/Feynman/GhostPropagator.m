@@ -48,7 +48,7 @@ GhostPropagator[pi_, ai_, bi_, OptionsPattern[]] :=
 		a = SUNIndex[ai];
 		b = SUNIndex[bi];
 		glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]] SUNDelta[a, b];
-		glp
+		QCDFeynmanRuleConvention[GhostPropagator] glp
 	] /; OptionValue[Explicit];
 
 GhostPropagator /:
