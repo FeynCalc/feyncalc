@@ -188,19 +188,19 @@ boostrappingList = Join[
 	Map[ToFileName[{$FeynCalcDirectory,"Lorentz"},#]&, {"DeclareFCTensor.m"}]
 ];
 
-listMain = {ToFileName[{$FeynCalcDirectory}, "FCMain.m"]};
-listShared = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Shared"}]];
-listNonCommAlgebra = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"}]];
-listLorentz = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Lorentz"}]];
-listDirac = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Dirac"}]];
-listPauli = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Pauli"}]];
-listSUN = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"SUN"}]];
-listLoopIntegrals = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"LoopIntegrals"}]];
-listFeynman = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Feynman"}]];
-listQCD = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"QCD"}]];
-listTables = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Tables"}]];
-listExportImport = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"ExportImport"}]];
-listMisc = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Misc"}]];
+listMain = 				{ToFileName[{$FeynCalcDirectory}, "FCMain.m"]};
+listShared =			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Shared"}]];
+listNonCommAlgebra =	FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"}]];
+listLorentz = 			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Lorentz"}]];
+listDirac =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Dirac"}]];
+listPauli =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Pauli"}]];
+listSUN =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"SUN"}]];
+listLoopIntegrals =		FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"LoopIntegrals"}]];
+listFeynman =			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Feynman"}]];
+listQCD =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"QCD"}]];
+listTables =			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Tables"}]];
+listExportImport =		FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"ExportImport"}]];
+listMisc =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Misc"}]];
 
 fcSelfPatch[file_String]:=
 	Block[{originalCode,repList},
@@ -444,7 +444,7 @@ If[ $FCCheckContext,
 
 
 
-	If[ Global`fcContextLowerCase=!={} || Global`newObjectsInTheGlobalContext=!={},
+	If[ (Global`fcContextLowerCase=!={} || Global`newObjectsInTheGlobalContext=!={}) && $LoadPhi=!=True,
 		Message[FeynCalc::context];
 		If[	Global`fcContextLowerCase=!={},
 			Print["New lowercase objects in the FeynCalc context: ", Global`fcContextLowerCase]
