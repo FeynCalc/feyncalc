@@ -267,7 +267,7 @@ amp3[2]=TID[amp3[1],l,ToPaVe->True,UsePaVeBasis->True]
 (*Discard all the finite pieces of the 1-loop amplitude*)
 
 
-amp3Div[0]=PaVeUVPart[amp3[2],Prefactor->1/(2Pi)^D]//
+amp3Div[0]=PaVeUVPart[amp3[2],Prefactor->1/(2Pi)^D]//DiracSimplify//
 FCReplaceD[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//
 FCHideEpsilon//SelectNotFree2[#,{SMP["Delta"],SMP["d_A"],
 SMP["d_e"],SMP["d_psi"]}]&//Simplify
@@ -305,3 +305,6 @@ FCCompareResults[Join[solMS1,solMS2,solMSbar1,solMSbar2],knownResult,
 Text->{"\tCheck the final result:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+
