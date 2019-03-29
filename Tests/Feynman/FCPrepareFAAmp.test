@@ -38,5 +38,9 @@ FeynArts`Index[Global`Gluon, 2]]]","SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]]"},
 	Spinor[Momentum[InMom1], m, 1], UndoChiralSplittings -> True]",
 	"Spinor[-Momentum[InMom2], m, 1] . ((-I)*m*(-1 + Zm*Zpsi) - I*(-1 + Zpsi)*DiracGamma[Momentum[InMom2]]) . (m - DiracGamma[Momentum[InMom2]]) .
 ((-I)*gs*DiracGamma[LorentzIndex[Lor2]]*SUNTF[{SUNIndex[Glu4]}, cqbar, SUNFIndex[Col5]]) . (m + DiracGamma[Momentum[-InMom2 + OutMom2]]) .
-((-I)*gs*DiracGamma[LorentzIndex[Lor1]]*SUNTF[{SUNIndex[Glu3]}, SUNFIndex[Col5], cq]) . Spinor[Momentum[InMom1], m, 1]"}
+((-I)*gs*DiracGamma[LorentzIndex[Lor1]]*SUNTF[{SUNIndex[Glu3]}, SUNFIndex[Col5], cq]) . Spinor[Momentum[InMom1], m, 1]"},
+{"fcstFCPrepareFAAmp-ID2","FCPrepareFAAmp[
+FeynArts`FAPropagatorDenominator[
+FeynArts`FourMomentum[FeynArts`Incoming, 2] -
+FeynArts`FourMomentum[FeynArts`Outgoing, 1], MU, 2]]","FeynAmpDenominator[PropagatorDenominator[Momentum[InMom2 - OutMom1], MU], PropagatorDenominator[Momentum[InMom2 - OutMom1], MU]]"}
 };
