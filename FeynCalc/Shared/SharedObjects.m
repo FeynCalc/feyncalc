@@ -87,7 +87,7 @@ DiraGamma[x, 4] simplifies to DiracGamma[x].";
 DiracIndex::usage =
 "DiracIndex is the head of Dirac indices. \
 The internal representation of a four-dimensional \
-spinorial index i is DiracIndex[mu]. If the first \
+spinorial index i is DiracIndex[i]. If the first \
 argument is an integer, DiracIndex[i] turns into \
 ExplicitDiracIndex[i]. \n
 Dirac indices are the indices that denote the components \
@@ -876,8 +876,8 @@ vector p and is transformed into PauliSigma[CartesianMomentum[p, D-4], D-4] by F
 
 PauliSigma::usage =
 "PauliSigma[x,dim] is the internal representation of a Pauli matrix \
-with a Lorentz index or a contraction of a Pauli matrix and a Lorentz \
-vector. PauliSigma[x,3] simplifies to PauliSigma[x].";
+with a Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz \
+or Cartesian vector. PauliSigma[x,3] simplifies to PauliSigma[x].";
 
 PauliXi::usage =
 "PauliXi[I] represents a two-component Pauli spinor \[Xi], while PauliXi[-I] stands for \

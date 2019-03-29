@@ -61,7 +61,7 @@ is not available.";
 
 FCFactorOut::usage=
 "FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
-bring exp into a particular form that Mathematica refuses to give";
+bring exp into a particular form that Mathematica refuses to give.";
 
 FCMakeIndex::usage=
 "FCMakeIndex[str1, str2, head] generates an index with the given head out \

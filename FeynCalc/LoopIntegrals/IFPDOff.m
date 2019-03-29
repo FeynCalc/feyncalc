@@ -97,7 +97,7 @@ IFPDOff[exp_,qu__] :=
 			int = int /. sub;
 			int = Operate[# /. Hold -> Identity&, int];
 			int = int /. FEP[a_, b_]^n_Integer?Negative :>
-								(ExpandScalarProduct[a, a] - b^2)^(-n);
+								(ExpandScalarProduct[Pair[a, a]] - b^2)^(-n);
 			int = int /. {FEP :> FP, IFPD :> ifex};
 			int
 		]

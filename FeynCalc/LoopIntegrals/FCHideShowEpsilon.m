@@ -22,7 +22,7 @@ SMP[\"Delta\"]";
 
 FCShowEpsilon::usage =
 "FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - \
-EulerGamma + Log[4Pi] with";
+EulerGamma + Log[4Pi]";
 
 FCHideEpsilon::failmsg =
 "Error! FCHideEpsilon has encountered a fatal problem and must abort the computation. \

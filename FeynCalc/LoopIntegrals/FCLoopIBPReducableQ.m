@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopIBPReducableQ::usage =
-"FCLoopBasisIncompleteQ[int] checks if the integral contains propagators raised to
-integer powers";
+"FCLoopIBPReducableQ[int] checks if the integral contains propagators raised to
+integer powers.";
 
 FCLoopIBPReducableQ::failmsg =
 "ErroFCLoopIBPReducableQ has encountered a fatal problem and must abort the computation. \
