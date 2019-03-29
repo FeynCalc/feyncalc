@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7732,        253]
-NotebookOptionsPosition[      4799,        164]
-NotebookOutlinePosition[      7120,        229]
-CellTagsIndexPosition[      7015,        223]
+NotebookDataLength[      7110,        214]
+NotebookOptionsPosition[      4966,        156]
+NotebookOutlinePosition[      6903,        206]
+CellTagsIndexPosition[      6860,        203]
 WindowTitle->RHP
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/RHP\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/RHP"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/RHP.html"],
-                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
-           Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129263], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/RHP", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"RHO\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/RHO"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/RHP\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/RHP"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/RHP.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$229639], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/RHP", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["RHP", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["RHP", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -105,44 +137,6 @@ Cell[TextData[{
      ImageSize->{6, 0}],
     CacheGraphics->False],
    Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
- WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1],
-
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1],
-
-Cell[BoxData[""], "Input",
- CellTags->"RHP",
- CellLabel->"In[1]:=",
- CellID->374441694]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["", "SectionFooterSpacer"],
-
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
  "See Also"
 }], "SeeAlsoSection",
  WholeCellGroupOpener->True,
@@ -155,9 +149,7 @@ Cell[TextData[{
   ButtonNote->"RHO"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"RHP",
- CellID->1242736892]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -174,10 +166,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 11.170645}", 
+   "built" -> "{2019, 3, 29, 17, 52, 50.751700}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -186,8 +178,8 @@ TaggingRules->{
     "RHP[i, mu, nu, p] with i from 1 to 4 gives the projectors for RHO[i]. \
 RHP[mu, nu, p] gives Sum[RHP[i,mu, nu, p] RHO[i], {i, 4}] collected with \
 respect to mu and nu. See the thesis of Roelof Hamberg (but correcting a \
-misprint).", "synonyms" -> {}, "title" -> "RHP", "titlemodifier" -> "", 
-    "windowtitle" -> "RHP", "type" -> "Symbol", "uri" -> 
+misprint).", "synonyms" -> {}, "tabletags" -> {}, "title" -> "RHP", 
+    "titlemodifier" -> "", "windowtitle" -> "RHP", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/RHP"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -206,55 +198,24 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3512, 98, 379, 15, 70, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1]},
- "RHP"->{
-  Cell[4106, 125, 87, 3, 70, "Input",
-   CellTags->"RHP",
-   CellID->374441694],
-  Cell[4549, 150, 208, 9, 70, "Text",
-   CellTags->"RHP",
-   CellID->1242736892]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"PrimaryExamplesSection", 6707, 209},
- {"RHP", 6828, 213}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 2238, 52, 70, "AnchorBarGrid",
+Cell[575, 21, 2971, 74, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2816, 75, 46, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2865, 78, 622, 16, 70, "Usage",
+Cell[3549, 97, 280, 11, 70, "ObjectNameGrid"],
+Cell[3832, 110, 622, 16, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3512, 98, 379, 15, 70, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1],
-Cell[CellGroupData[{
-Cell[3916, 117, 187, 6, 70, "ExampleSection",
- CellID->1],
-Cell[4106, 125, 87, 3, 70, "Input",
- CellTags->"RHP",
- CellID->374441694]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4242, 134, 31, 0, 70, "SectionFooterSpacer"],
-Cell[4276, 136, 270, 12, 70, "SeeAlsoSection",
+Cell[4479, 130, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4549, 150, 208, 9, 70, "Text",
- CellTags->"RHP",
- CellID->1242736892]
+Cell[4752, 144, 172, 7, 70, "SeeAlso"]
 }, Open  ]],
-Cell[4772, 162, 23, 0, 70, "FooterCell"]
+Cell[4939, 154, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

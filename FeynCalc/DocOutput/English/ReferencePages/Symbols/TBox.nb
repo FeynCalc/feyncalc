@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5473,        150]
-NotebookOptionsPosition[      3470,         97]
-NotebookOutlinePosition[      5395,        146]
-CellTagsIndexPosition[      5352,        143]
+NotebookDataLength[      5719,        161]
+NotebookOptionsPosition[      3732,        108]
+NotebookOutlinePosition[      5655,        158]
+CellTagsIndexPosition[      5612,        155]
 WindowTitle->TBox
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152029], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$271136], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/TBox", 
             ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["TBox", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["TBox", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,10 +118,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 52.301633}", 
+   "built" -> "{2019, 3, 29, 17, 54, 26.785018}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -119,8 +130,9 @@ TaggingRules->{
     "TBox[a, b, ...] or Tbox[a, b, ...] produces a RowBox[{a,b, ...}] where \
 a, b, ... are boxed in TraditionalForm. TBox and Tbox are used internally by \
 FeynCalc to produce the typeset output in TraditionalForm", "synonyms" -> {}, 
-    "title" -> "TBox", "titlemodifier" -> "", "windowtitle" -> "TBox", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/TBox"}},
+    "tabletags" -> {}, "title" -> "TBox", "titlemodifier" -> "", 
+    "windowtitle" -> "TBox", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/TBox"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -145,13 +157,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2229, 52, 70, "AnchorBarGrid",
+Cell[576, 21, 2257, 53, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2808, 75, 47, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2858, 78, 582, 15, 70, "Usage",
+Cell[2836, 76, 281, 11, 70, "ObjectNameGrid"],
+Cell[3120, 89, 582, 15, 70, "Usage",
  CellID->982511436],
-Cell[3443, 95, 23, 0, 70, "FooterCell"]
+Cell[3705, 106, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

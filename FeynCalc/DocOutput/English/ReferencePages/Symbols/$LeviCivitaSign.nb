@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9955,        332]
-NotebookOptionsPosition[      6695,        236]
-NotebookOutlinePosition[      9003,        295]
-CellTagsIndexPosition[      8919,        290]
+NotebookDataLength[     10185,        342]
+NotebookOptionsPosition[      6950,        247]
+NotebookOutlinePosition[      9246,        306]
+CellTagsIndexPosition[      9162,        301]
 WindowTitle->$LeviCivitaSign
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ LeviCivitaSign.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170533], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$305092], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$LeviCivitaSign", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,17 +74,27 @@ LeviCivitaSign.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["$LeviCivitaSign", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["$LeviCivitaSign", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["$LeviCivitaSign"], "InlineFormula"],
      " \[LineSeparator]is a global variable that determines the sign in the \
 result of a Dirac trace of four gamma matrices and gamma5.  $LeviCivitaSign \
-is by default set to -1 which corresponds to the convention \
-Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I  \
-will switch to the FORM-convention."
+is by default set to -1 which corresponds to the convention Tr[LC[a,b,c,d,5]] \
+= -4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I  will switch to the \
+FORM-convention."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -109,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->62338071],
+ CellID->1700441923],
 
 Cell[CellGroupData[{
 
@@ -119,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1709334668],
+ CellID->106769145],
 
 Cell[CellGroupData[{
 
@@ -130,7 +141,7 @@ Cell[BoxData["$LeviCivitaSign"], "Input",
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "1"}], TraditionalForm]], "Output",
- ImageSize->{21, 15},
+ ImageSize->{22, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -169,7 +180,7 @@ Cell[BoxData[
       FormBox["\[Sigma]",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{87, 18},
+ ImageSize->{82, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -213,7 +224,7 @@ Cell[BoxData[
       FormBox["\[Sigma]",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{66, 18},
+ ImageSize->{62, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -246,10 +257,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 14.224707}", 
+   "built" -> "{2019, 3, 29, 17, 55, 53.440481}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -257,9 +268,9 @@ TaggingRules->{
     "None", "summary" -> 
     "$LeviCivitaSign is a global variable that determines the sign in the \
 result of a Dirac trace of four gamma matrices and gamma5. $LeviCivitaSign is \
-by default set to -1 which corresponds to the convention \
-Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I \
-will switch to the FORM-convention.", "synonyms" -> {}, "title" -> 
+by default set to -1 which corresponds to the convention Tr[LC[a,b,c,d,5]] = \
+-4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I will switch to the \
+FORM-convention.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "$LeviCivitaSign", "titlemodifier" -> "", "windowtitle" -> 
     "$LeviCivitaSign", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/$LeviCivitaSign"}, "SearchTextTranslated" -> ""},
@@ -282,58 +293,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3566, 96, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[3820, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->62338071]}
+   CellID->1700441923]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8778, 283}
+ {"PrimaryExamplesSection", 9018, 294}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2274, 52, 51, "AnchorBarGrid",
+Cell[587, 21, 2302, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2864, 75, 58, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2925, 78, 616, 14, 130, "Usage",
+Cell[2892, 76, 292, 11, 44, "ObjectNameGrid"],
+Cell[3187, 89, 608, 14, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3566, 96, 386, 15, 31, "PrimaryExamplesSection",
+Cell[3820, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->62338071],
+ CellID->1700441923],
 Cell[CellGroupData[{
-Cell[3977, 115, 196, 6, 25, "ExampleSection",
- CellID->1709334668],
+Cell[4233, 126, 195, 6, 25, "ExampleSection",
+ CellID->106769145],
 Cell[CellGroupData[{
-Cell[4198, 125, 85, 2, 27, "Input",
+Cell[4453, 136, 85, 2, 27, "Input",
  CellID->1712420789],
-Cell[4286, 129, 205, 7, 36, "Output",
+Cell[4541, 140, 205, 7, 35, "Output",
  CellID->2017735240]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4528, 141, 205, 6, 27, "Input",
+Cell[4783, 152, 205, 6, 27, "Input",
  CellID->722943498],
-Cell[4736, 149, 645, 26, 39, "Output",
+Cell[4991, 160, 645, 26, 35, "Output",
  CellID->24019145]
 }, Open  ]],
-Cell[5396, 178, 78, 1, 31, "Notes",
+Cell[5651, 189, 78, 1, 31, "Notes",
  CellID->1734027625],
 Cell[CellGroupData[{
-Cell[5499, 183, 309, 9, 45, "Input",
+Cell[5754, 194, 309, 9, 45, "Input",
  CellID->1075951969],
-Cell[5811, 194, 606, 25, 39, "Output",
+Cell[6066, 205, 606, 25, 35, "Output",
  CellID->1430392236]
 }, Open  ]],
-Cell[6432, 222, 63, 1, 31, "Notes",
+Cell[6687, 233, 63, 1, 31, "Notes",
  CellID->223764811],
-Cell[6498, 225, 143, 5, 27, "Input",
+Cell[6753, 236, 143, 5, 27, "Input",
  CellID->955635605]
 }, Open  ]]
 }, Open  ]],
-Cell[6668, 234, 23, 0, 42, "FooterCell"]
+Cell[6923, 245, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

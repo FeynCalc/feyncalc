@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7955,        212]
-NotebookOptionsPosition[      4814,        134]
-NotebookOutlinePosition[      7681,        201]
-CellTagsIndexPosition[      7600,        196]
+NotebookDataLength[      8679,        232]
+NotebookOptionsPosition[      5775,        164]
+NotebookOutlinePosition[      8471,        224]
+CellTagsIndexPosition[      8428,        221]
 WindowTitle->Twist2QuarkOperator
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Twist2QuarkOperator\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Twist2QuarkOperator"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Twist2GluonOperator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Twist2GluonOperator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Twist2QuarkOperator\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Twist2QuarkOperator"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 Twist2QuarkOperator.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161259], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Twist2QuarkOperator", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$289027], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Twist2QuarkOperator", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ Twist2QuarkOperator.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Twist2QuarkOperator", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Twist2QuarkOperator", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -125,9 +157,7 @@ Cell[TextData[{
   ButtonNote->"Twist2GluonOperator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Twist2QuarkOperator",
- CellID->1216439856]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -144,10 +174,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 33.108820}", 
+   "built" -> "{2019, 3, 29, 17, 55, 12.630474}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -165,7 +195,7 @@ a}, {p4, nu, b}] or Twist2QuarkOperator[{p1,___}, {p2,___}, {p3, mu, a}, {p4, \
 nu, b}] or Twist2QuarkOperator[p1,_,_, p2,_,_, p3,mu,a, p4, nu, b] gives the \
 Quark-Quark-Gluon-Gluon-operator. The setting of the option Polarization \
 (unpolarized: 0; polarized: 1) determines whether the unpolarized or \
-polarized operator is returned", "synonyms" -> {}, "title" -> 
+polarized operator is returned", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "Twist2QuarkOperator", "titlemodifier" -> "", "windowtitle" -> 
     "Twist2QuarkOperator", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Twist2QuarkOperator"}},
@@ -186,34 +216,24 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "Twist2QuarkOperator"->{
-  Cell[4500, 120, 272, 9, 70, "Text",
-   CellTags->"Twist2QuarkOperator",
-   CellID->1216439856]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"Twist2QuarkOperator", 7478, 189}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 2290, 52, 70, "AnchorBarGrid",
+Cell[591, 21, 3069, 74, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2884, 75, 62, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2949, 78, 1253, 24, 70, "Usage",
+Cell[3663, 97, 296, 11, 70, "ObjectNameGrid"],
+Cell[3962, 110, 1253, 24, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4227, 106, 270, 12, 70, "SeeAlsoSection",
+Cell[5240, 138, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4500, 120, 272, 9, 70, "Text",
- CellTags->"Twist2QuarkOperator",
- CellID->1216439856]
+Cell[5513, 152, 220, 7, 70, "SeeAlso"]
 }, Open  ]],
-Cell[4787, 132, 23, 0, 70, "FooterCell"]
+Cell[5748, 162, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

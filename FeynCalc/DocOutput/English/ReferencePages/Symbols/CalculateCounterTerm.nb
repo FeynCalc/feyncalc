@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5326,        147]
-NotebookOptionsPosition[      3404,         95]
-NotebookOutlinePosition[      5248,        143]
-CellTagsIndexPosition[      5205,        140]
+NotebookDataLength[      7482,        231]
+NotebookOptionsPosition[      5168,        166]
+NotebookOutlinePosition[      7041,        215]
+CellTagsIndexPosition[      6998,        212]
 WindowTitle->CalculateCounterTerm
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ CalculateCounterTerm.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23867], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31759], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CalculateCounterTerm", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ CalculateCounterTerm.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["CalculateCounterTerm", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["CalculateCounterTerm", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -91,12 +104,70 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->982511436],
 
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->932272986],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["\<\
+This is a rather special function designed for some specific OPE \
+calculations. Not a universal routine for daily use.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "CalculateCounterTerm", "]"}]], "Input",
+ CellLabel->"In[240]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Chisholm", "\[Rule]", "False"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"D", "\[Rule]", "4"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{304, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[240]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"CalculateCounterTerm",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -105,19 +176,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 41.391613}", 
+   "built" -> "{2019, 3, 29, 17, 45, 23.931244}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "CalculateCounterTerm[exp, k] calculates the residue of exp.", 
-    "synonyms" -> {}, "title" -> "CalculateCounterTerm", "titlemodifier" -> 
-    "", "windowtitle" -> "CalculateCounterTerm", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/CalculateCounterTerm"}},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "CalculateCounterTerm", 
+    "titlemodifier" -> "", "windowtitle" -> "CalculateCounterTerm", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/CalculateCounterTerm"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -142,15 +214,28 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[592, 21, 2293, 52, 70, "AnchorBarGrid",
+Cell[592, 21, 2321, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2888, 75, 63, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2954, 78, 420, 13, 70, "Usage",
+Cell[2916, 76, 297, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3238, 91, 420, 13, 83, "Usage",
  CellID->982511436],
-Cell[3377, 93, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[3683, 108, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->932272986],
+Cell[4424, 134, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[4458, 136, 144, 3, 47, "Notes"],
+Cell[CellGroupData[{
+Cell[4627, 143, 104, 2, 27, "Input"],
+Cell[4734, 147, 368, 12, 37, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[5141, 164, 23, 0, 40, "FooterCell"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     28644,       1059]
-NotebookOptionsPosition[     24531,        927]
-NotebookOutlinePosition[     26648,        983]
-CellTagsIndexPosition[     26563,        978]
+NotebookDataLength[     31414,       1156]
+NotebookOptionsPosition[     27016,       1016]
+NotebookOutlinePosition[     29131,       1073]
+CellTagsIndexPosition[     29045,       1068]
 WindowTitle->FCTraceExpand
 WindowFrame->Normal*)
 
@@ -80,12 +80,13 @@ FCTraceExpand.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63400], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129577], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCTraceExpand", ".html"]], None}]}]},
        Appearance->None,
-       MenuAppearance->Automatic]],
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
       LineSpacing->{1.4, 0}]
     }], "AnchorBar"]}
   }]], "AnchorBarGrid",
@@ -95,15 +96,31 @@ FCTraceExpand.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FCTraceExpand", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FCTraceExpand", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"FCTraceExpand", "[", "expr", "]"}]], "InlineFormula"],
-     " expands traces of Dirac and SU(N) matrices using linearity of the \
-trace. The traces themselves are not evaluated."
+      RowBox[{"FCTraceExpand", "[", "exp", "]"}]], "InlineFormula"],
+     " expands traces of Dirac and ",
+     Cell[BoxData[
+      RowBox[{"SU", 
+       RowBox[{"(", "N", ")"}]}]], "InlineFormula"],
+     " matrices using linearity of the trace. The traces themselves are not \
+evaluated."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -111,6 +128,65 @@ trace. The traces themselves are not evaluated."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->2105953650],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCTraceExpand", "]"}]], "Input",
+ CellLabel->"In[115]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracGammaExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCTraceFactor", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}], ",", 
+    RowBox[{"PreservePropagatorStructures", "\[Rule]", "False"}], ",", 
+    RowBox[{"SUNTrace", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{457, 72},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[115]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -125,38 +201,37 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(3)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->216663855],
+ CellID->1266983699],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(3)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->718614792],
+ CellID->1476677843],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"dtr1", "=", 
-  RowBox[{"DiracTrace", "[", 
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{
    RowBox[{
-    RowBox[{
-     RowBox[{"GA", "[", "mu", "]"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
-     RowBox[{"GA", "[", "nu", "]"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
-     RowBox[{"GA", "[", "rho", "]"}]}], "+", "x"}], "]"}]}]], "Input",
+    RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
+    RowBox[{"GA", "[", "\[Nu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
+    RowBox[{"GA", "[", "\[Rho]", "]"}]}], "+", "x"}], "]"}]], "Input",
  CellLabel->"In[1]:=",
  CellID->55860621],
 
@@ -170,7 +245,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm], ".", 
@@ -189,7 +264,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm], ".", 
@@ -208,22 +283,21 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm]}], "+", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{314, 25},
+ ImageSize->{287, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
- CellID->632138578]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCTraceExpand", "[", "dtr1", "]"}]], "Input",
+ RowBox[{"FCTraceExpand", "[", "%", "]"}]], "Input",
  CellLabel->"In[2]:=",
  CellID->502042032],
 
@@ -237,19 +311,19 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}], "+", 
@@ -260,13 +334,13 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        RowBox[{"(", 
@@ -280,7 +354,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}], "+", 
@@ -291,7 +365,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        RowBox[{"(", 
@@ -305,13 +379,13 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}], "+", 
@@ -321,7 +395,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["mu",
+        FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -335,7 +409,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["nu",
+        FormBox["\[Nu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -349,7 +423,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["rho",
+        FormBox["\[Rho]",
          TraditionalForm],
         TraditionalForm]]}],
      TraditionalForm], ")"}], "+", 
@@ -357,18 +431,17 @@ Cell[BoxData[
     RowBox[{"tr", "(", 
      FormBox["1",
       TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
- ImageSize->{494, 54},
+ ImageSize->{439, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
- CellID->712633835]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"dtr1", ",", 
+  RowBox[{"%%", ",", 
    RowBox[{"DotSimplify", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellLabel->"In[3]:=",
  CellID->611074974],
@@ -382,7 +455,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["mu",
+        FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -397,7 +470,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["nu",
+        FormBox["\[Nu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -412,7 +485,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["rho",
+        FormBox["\[Rho]",
          TraditionalForm],
         TraditionalForm]]}],
      TraditionalForm], ")"}], "+", 
@@ -420,18 +493,17 @@ Cell[BoxData[
     RowBox[{"tr", "(", 
      FormBox["1",
       TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
- ImageSize->{348, 25},
+ ImageSize->{321, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[3]=",
- CellID->1845830738]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"dtr1", ",", 
+  RowBox[{"%%%", ",", 
    RowBox[{"DiracTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellLabel->"In[4]:=",
  CellID->1030948092],
@@ -445,7 +517,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["mu",
+        FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -460,7 +532,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["nu",
+        FormBox["\[Nu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -475,39 +547,43 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["rho",
+        FormBox["\[Rho]",
          TraditionalForm],
         TraditionalForm]]}], "+", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{314, 25},
+ ImageSize->{287, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[4]=",
- CellID->1121814026]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"dtr2", "=", 
-  RowBox[{
-   RowBox[{"a", "*", 
-    RowBox[{"DiracTrace", "[", 
-     RowBox[{
-      RowBox[{"GA", "[", "mu", "]"}], ".", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
-      RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}], "+", 
-   RowBox[{"b", "*", 
-    RowBox[{"DiracTrace", "[", 
-     RowBox[{
-      RowBox[{"GA", "[", "mu", "]"}], ".", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
-      RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}]}]}]], "Input",
- CellLabel->"In[5]:=",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "*", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
+     RowBox[{"GA", "[", "\[Nu]", "]"}]}], "]"}]}], "+", 
+  RowBox[{"b", "*", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
+     RowBox[{"GA", "[", "\[Nu]", "]"}]}], "]"}]}]}]], "Input",
+ CellLabel->"In[1]:=",
  CellID->312665650],
 
 Cell[BoxData[
@@ -521,7 +597,7 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["mu",
+          FormBox["\[Mu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm], ".", 
@@ -540,7 +616,7 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["nu",
+          FormBox["\[Nu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm]}],
@@ -553,7 +629,7 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["mu",
+          FormBox["\[Mu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm], ".", 
@@ -572,26 +648,25 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["nu",
+          FormBox["\[Nu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm]}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{381, 21},
+ ImageSize->{342, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[5]=",
- CellID->141070294]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"dtr2", ",", 
+  RowBox[{"%", ",", 
    RowBox[{"Momentum", "\[Rule]", 
     RowBox[{"{", "p1", "}"}]}]}], "]"}]], "Input",
- CellLabel->"In[6]:=",
+ CellLabel->"In[2]:=",
  CellID->851121632],
 
 Cell[BoxData[
@@ -607,13 +682,13 @@ Cell[BoxData[
           SuperscriptBox[
            OverscriptBox["\[Gamma]", "_"], 
            FormBox[
-            FormBox["mu",
+            FormBox["\[Mu]",
              TraditionalForm],
             TraditionalForm]], ".", 
           SuperscriptBox[
            OverscriptBox["\[Gamma]", "_"], 
            FormBox[
-            FormBox["nu",
+            FormBox["\[Nu]",
              TraditionalForm],
             TraditionalForm]]}],
          TraditionalForm], ")"}]}], "+", 
@@ -623,7 +698,7 @@ Cell[BoxData[
          SuperscriptBox[
           OverscriptBox["\[Gamma]", "_"], 
           FormBox[
-           FormBox["mu",
+           FormBox["\[Mu]",
             TraditionalForm],
            TraditionalForm]], ".", 
          RowBox[{"(", 
@@ -637,7 +712,7 @@ Cell[BoxData[
          SuperscriptBox[
           OverscriptBox["\[Gamma]", "_"], 
           FormBox[
-           FormBox["nu",
+           FormBox["\[Nu]",
             TraditionalForm],
            TraditionalForm]]}],
         TraditionalForm], ")"}]}], ")"}]}], "+", 
@@ -648,7 +723,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        RowBox[{"(", 
@@ -663,34 +738,48 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{480, 21},
+ ImageSize->{422, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[6]=",
- CellID->1128579487]
+ CellLabel->"Out[2]="]
+}, Open  ]]
 }, Open  ]],
 
-Cell["\<\
-At the moment SUNTrace automatically expands its content, so here \
-FCTraceExpand is not needed. However, this may change in the future.\
-\>", "Notes",
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "At the moment ",
+ ButtonBox["SUNTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNTrace",
+  ButtonNote->"SUNTrace"],
+ " automatically expands its content, so here ",
+ ButtonBox["FCTraceExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCTraceExpand",
+  ButtonNote->"FCTraceExpand"],
+ " is not needed. However, this may change in the future."
+}], "Notes",
  CellID->1671076290],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"str", "=", 
-  RowBox[{"SUNTrace", "[", 
-   RowBox[{
-    RowBox[{"SUNT", "[", 
-     RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
-    RowBox[{"SUNT", "[", 
-     RowBox[{"l", ",", "m", ",", "n"}], "]"}]}], "]"}]}]], "Input",
- CellLabel->"In[7]:=",
+ RowBox[{"SUNTrace", "[", 
+  RowBox[{
+   RowBox[{"SUNT", "[", 
+    RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
+   RowBox[{"SUNT", "[", 
+    RowBox[{"l", ",", "m", ",", "n"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
  CellID->1858007214],
 
 Cell[BoxData[
@@ -746,18 +835,17 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{217, 19},
+ ImageSize->{250, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[7]=",
- CellID->1073657663]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCTraceExpand", "[", "str", "]"}]], "Input",
- CellLabel->"In[8]:=",
+ RowBox[{"FCTraceExpand", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:=",
  CellID->1593699893],
 
 Cell[BoxData[
@@ -813,20 +901,19 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{217, 19},
+ ImageSize->{250, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[8]=",
- CellID->1696291909]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"str", ",", 
+  RowBox[{"%%", ",", 
    RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[9]:=",
+ CellLabel->"In[3]:=",
  CellID->805159379],
 
 Cell[BoxData[
@@ -882,11 +969,11 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{217, 19},
+ ImageSize->{250, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[9]=",
- CellID->555663597]
+ CellLabel->"Out[3]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -912,15 +999,17 @@ Cell[TextData[{
 Cell[TextData[{
  StyleBox[ButtonBox["DiracTrace",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracTrace"],
+  ButtonData->"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["SUNTrace",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SUNTrace"],
-  FontFamily->"Verdana"]
-}], "SeeAlso",
- CellID->929782353]
+  ButtonData->"paclet:FeynCalc/ref/SUNTrace",
+  ButtonNote->"SUNTrace"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -937,20 +1026,21 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 30.422965}", 
+   "built" -> "{2019, 3, 29, 17, 49, 14.737705}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "FCTraceExpand[expr] expands traces of Dirac and SU(N) matrices using \
+    "FCTraceExpand[exp] expands traces of Dirac and SU (N) matrices using \
 linearity of the trace. The traces themselves are not evaluated.", 
-    "synonyms" -> {}, "title" -> "FCTraceExpand", "titlemodifier" -> "", 
-    "windowtitle" -> "FCTraceExpand", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/FCTraceExpand"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "FCTraceExpand", 
+    "titlemodifier" -> "", "windowtitle" -> "FCTraceExpand", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/FCTraceExpand"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -970,97 +1060,104 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4196, 116, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6304, 192, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->216663855]}
+   CellID->1266983699]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 26420, 971}
+ {"PrimaryExamplesSection", 28901, 1061}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 3083, 74, 51, "AnchorBarGrid",
+Cell[585, 21, 3113, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[3671, 97, 56, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[3730, 100, 441, 12, 82, "Usage",
+Cell[3701, 98, 290, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4016, 113, 537, 16, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4196, 116, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4578, 133, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->2105953650],
+Cell[5320, 159, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[5376, 163, 97, 2, 27, "Input"],
+Cell[5476, 167, 767, 18, 93, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6304, 192, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->216663855],
+ CellID->1266983699],
 Cell[CellGroupData[{
-Cell[4608, 135, 195, 6, 25, "ExampleSection",
- CellID->718614792],
+Cell[6717, 211, 196, 6, 25, "ExampleSection",
+ CellID->1476677843],
 Cell[CellGroupData[{
-Cell[4828, 145, 488, 15, 27, "Input",
+Cell[6938, 221, 460, 14, 27, "Input",
  CellID->55860621],
-Cell[5319, 162, 1544, 57, 46, "Output",
- CellID->632138578]
+Cell[7401, 237, 1533, 56, 41, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6900, 224, 112, 3, 27, "Input",
+Cell[8971, 298, 109, 3, 27, "Input",
  CellID->502042032],
-Cell[7015, 229, 3653, 134, 75, "Output",
- CellID->712633835]
+Cell[9083, 303, 3669, 133, 62, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10705, 368, 179, 5, 27, "Input",
+Cell[12789, 441, 177, 5, 27, "Input",
  CellID->611074974],
-Cell[10887, 375, 1399, 51, 46, "Output",
- CellID->1845830738]
+Cell[12969, 448, 1387, 50, 41, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12323, 431, 179, 5, 27, "Input",
+Cell[14393, 503, 178, 5, 27, "Input",
  CellID->1030948092],
-Cell[12505, 438, 1305, 47, 46, "Output",
- CellID->1121814026]
+Cell[14574, 510, 1293, 46, 41, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13847, 490, 636, 20, 45, "Input",
+Cell[15904, 561, 105, 2, 8, "ExampleDelimiter"],
+Cell[CellGroupData[{
+Cell[16034, 567, 606, 19, 45, "Input",
  CellID->312665650],
-Cell[14486, 512, 1932, 71, 42, "Output",
- CellID->141070294]
+Cell[16643, 588, 1924, 70, 41, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16455, 588, 198, 6, 27, "Input",
+Cell[18604, 663, 195, 6, 27, "Input",
  CellID->851121632],
-Cell[16656, 596, 2181, 77, 42, "Output",
- CellID->1128579487]
-}, Open  ]],
-Cell[18852, 676, 182, 4, 45, "Notes",
- CellID->1671076290],
-Cell[CellGroupData[{
-Cell[19059, 684, 292, 9, 27, "Input",
- CellID->1858007214],
-Cell[19354, 695, 1363, 57, 40, "Output",
- CellID->1073657663]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[20754, 757, 112, 3, 27, "Input",
- CellID->1593699893],
-Cell[20869, 762, 1363, 57, 40, "Output",
- CellID->1696291909]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[22269, 824, 175, 5, 27, "Input",
- CellID->805159379],
-Cell[22447, 831, 1362, 57, 40, "Output",
- CellID->555663597]
+Cell[18802, 671, 2178, 76, 41, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[23836, 892, 31, 0, 29, "SectionFooterSpacer"]
+Cell[CellGroupData[{
+Cell[21029, 753, 105, 2, 8, "ExampleDelimiter"],
+Cell[21137, 757, 425, 13, 47, "Notes",
+ CellID->1671076290],
+Cell[CellGroupData[{
+Cell[21587, 774, 262, 8, 27, "Input",
+ CellID->1858007214],
+Cell[21852, 784, 1342, 56, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23904, 897, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[24177, 911, 312, 11, 55, "SeeAlso",
- CellID->929782353]
+Cell[23231, 845, 110, 3, 27, "Input",
+ CellID->1593699893],
+Cell[23344, 850, 1342, 56, 40, "Output"]
 }, Open  ]],
-Cell[24504, 925, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[24723, 911, 174, 5, 27, "Input",
+ CellID->805159379],
+Cell[24900, 918, 1342, 56, 40, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[26281, 979, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26349, 984, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[26622, 998, 352, 13, 55, "SeeAlso"]
+}, Open  ]],
+Cell[26989, 1014, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

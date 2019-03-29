@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16207,        602]
-NotebookOptionsPosition[     10641,        414]
-NotebookOutlinePosition[     14257,        522]
-CellTagsIndexPosition[     14150,        516]
+NotebookDataLength[     14530,        520]
+NotebookOptionsPosition[     10285,        383]
+NotebookOutlinePosition[     13184,        467]
+CellTagsIndexPosition[     13077,        461]
 WindowTitle->LCD
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/LCD\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/LCD"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/LCD.html"],
-                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
-           Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$97579], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/LCD", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Eps\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Eps"], "\<\"LC\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LC"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/LCD\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/LCD"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/LCD.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$181974], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/LCD", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,20 +96,39 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["LCD", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["LCD", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"LCD", "[", 
        RowBox[{"m", ",", "n", ",", "r", ",", "s"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "evaluates to D-dimensional LeviCivita[m,n,r,s] by virtue of \
-FeynCalcInternal. LCD[m,...][p, ...] evaluates to D-dimensional \
-LeviCivita[m,...][p,...] applying FeynCalcInternal.\n\nYou need to do \
-SetOptions[Eps, Dimension\[Rule]D] before LCD can be used as D-dimensional \
-Levi-Civita input function."
+     " \[LineSeparator]evaluates to D-dimensional ",
+     Cell[BoxData[
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"m", " ", "n", " ", "r", " ", "s"}]]], "InlineFormula"],
+     " by virtue of FeynCalcInternal. LCD[m,...][p, ...] evaluates to \
+D-dimensional ",
+     Cell[BoxData[
+      RowBox[{
+       SuperscriptBox["\[Epsilon]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"m", " ", ".."}], " ", "\[Mu]"}], " ", ".."}]], 
+       SubscriptBox["p", 
+        RowBox[{"\[Mu]", " ", ".."}]]}]], "InlineFormula"],
+     " applying FeynCalcInternal."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -112,7 +154,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1729963782],
+ CellID->1518024235],
 
 Cell[CellGroupData[{
 
@@ -122,16 +164,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1361724083],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Eps", ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], ";"}]], "Input",
- CellTags->"LCD",
- CellLabel->"In[1]:=",
- CellID->246917287],
+ CellID->2105337864],
 
 Cell[CellGroupData[{
 
@@ -140,12 +173,13 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->163498575],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -163,57 +197,21 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{54, 18},
+ ImageSize->{50, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LCD",
- CellLabel->"Out[2]=",
- CellID->1669873163]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "//", "FCI"}]], "Input",
+ RowBox[{
+  RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->950730684],
-
-Cell[BoxData[
- FormBox[
-  SuperscriptBox["\[Epsilon]", 
-   RowBox[{
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Rho]",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Sigma]",
-      TraditionalForm],
-     TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{54, 18},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"LCD",
- CellLabel->"Out[3]=",
- CellID->774559606]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"LCD",
- CellLabel->"In[4]:=",
- CellID->1738716456],
 
 Cell[BoxData[
  RowBox[{"Eps", "[", 
@@ -225,14 +223,12 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", 
     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
    RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Sigma]", ",", "D"}], "]"}], ",", 
-   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Output",
- ImageSize->{444, 33},
+    RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]], "Output",
+ ImageSize->{345, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LCD",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1281931789]
+ CellLabel->"Out[2]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -243,12 +239,13 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
   RowBox[{"p", ",", "q"}], "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[3]:=",
  CellID->1568724284],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -266,12 +263,11 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{52, 17},
+ ImageSize->{53, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LCD",
- CellLabel->"Out[5]=",
- CellID->474988897]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -280,7 +276,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[6]:=",
+ CellLabel->"In[4]:=",
  CellID->531209658],
 
 Cell[BoxData[
@@ -293,14 +289,12 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
-    RowBox[{"q", ",", "D"}], "]"}], ",", 
-   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Output",
- ImageSize->{382, 33},
+    RowBox[{"q", ",", "D"}], "]"}]}], "]"}]], "Output",
+ ImageSize->{416, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LCD",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1647742492]
+ CellLabel->"Out[4]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -318,7 +312,7 @@ Cell[BoxData[
       RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}], "[", "q", 
      "]"}]}], "]"}], "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[7]:=",
+ CellLabel->"In[5]:=",
  CellID->173575058],
 
 Cell[BoxData[
@@ -342,34 +336,11 @@ Cell[BoxData[
       FormBox["q",
        TraditionalForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{194, 17},
+ ImageSize->{214, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LCD",
- CellLabel->"Out[7]=",
- CellID->932361259]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SetOptions", "[", 
-  RowBox[{"Eps", ",", 
-   RowBox[{"Dimension", "\[Rule]", "4"}]}], "]"}]], "Input",
- CellTags->"LCD",
- CellLabel->"In[8]:=",
- CellID->1229900885],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Dimension", "\[Rule]", "4"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{116, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"LCD",
- CellLabel->"Out[8]=",
- CellID->1904977628]
+ CellLabel->"Out[5]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -393,10 +364,10 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- StyleBox[ButtonBox["LeviCivita",
+ StyleBox[ButtonBox["Eps",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
+  ButtonData->"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["LC",
@@ -405,9 +376,7 @@ Cell[TextData[{
   ButtonNote->"LC"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"LCD",
- CellID->552899823]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -424,21 +393,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 59.254051}", 
+   "built" -> "{2019, 3, 29, 17, 51, 7.615238}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "LCD[m, n, r, s] evaluates to D-dimensional LeviCivita[m,n,r,s] by virtue \
+    "LCD[m, n, r, s] evaluates to D-dimensional \\[Epsilon] m n r s by virtue \
 of FeynCalcInternal. LCD[m,...][p, ...] evaluates to D-dimensional \
-LeviCivita[m,...][p,...] applying FeynCalcInternal. You need to do \
-SetOptions[Eps, Dimension->D] before LCD can be used as D-dimensional \
-Levi-Civita input function.", "synonyms" -> {}, "title" -> "LCD", 
-    "titlemodifier" -> "", "windowtitle" -> "LCD", "type" -> "Symbol", "uri" -> 
+\\[Epsilon] m .. \\[Mu] .. p \\[Mu] .. applying FeynCalcInternal.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "LCD", "titlemodifier" -> 
+    "", "windowtitle" -> "LCD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/LCD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -459,151 +427,101 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3579, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4847, 141, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1729963782]},
+   CellID->1518024235]},
  "LCD"->{
-  Cell[4191, 126, 207, 7, 27, "Input",
-   CellTags->"LCD",
-   CellID->246917287],
-  Cell[4423, 137, 183, 6, 27, "Input",
+  Cell[5481, 170, 183, 6, 27, "Input",
    CellTags->"LCD",
    CellID->163498575],
-  Cell[4609, 145, 583, 25, 39, "Output",
-   CellTags->"LCD",
-   CellID->1669873163],
-  Cell[5229, 175, 113, 4, 27, "Input",
+  Cell[5667, 178, 585, 25, 35, "Output",
+   CellTags->"LCD"],
+  Cell[6289, 208, 148, 5, 27, "Input",
    CellTags->"LCD",
    CellID->950730684],
-  Cell[5345, 181, 582, 25, 39, "Output",
-   CellTags->"LCD",
-   CellID->774559606],
-  Cell[5964, 211, 123, 4, 27, "Input",
-   CellTags->"LCD",
-   CellID->1738716456],
-  Cell[6090, 217, 592, 17, 67, "Output",
-   CellTags->"LCD",
-   CellID->1281931789],
-  Cell[6719, 239, 201, 7, 27, "Input",
+  Cell[6440, 215, 523, 15, 67, "Output",
+   CellTags->"LCD"],
+  Cell[7000, 235, 201, 7, 27, "Input",
    CellTags->"LCD",
    CellID->1568724284],
-  Cell[6923, 248, 570, 25, 38, "Output",
-   CellTags->"LCD",
-   CellID->474988897],
-  Cell[7530, 278, 148, 5, 27, "Input",
+  Cell[7204, 244, 573, 25, 35, "Output",
+   CellTags->"LCD"],
+  Cell[7814, 274, 148, 5, 27, "Input",
    CellTags->"LCD",
    CellID->531209658],
-  Cell[7681, 285, 572, 17, 67, "Output",
-   CellTags->"LCD",
-   CellID->1647742492],
-  Cell[8290, 307, 417, 14, 27, "Input",
+  Cell[7965, 281, 503, 15, 67, "Output",
+   CellTags->"LCD"],
+  Cell[8505, 301, 417, 14, 27, "Input",
    CellTags->"LCD",
    CellID->173575058],
-  Cell[8710, 323, 657, 26, 38, "Output",
-   CellTags->"LCD",
-   CellID->932361259],
-  Cell[9404, 354, 188, 6, 27, "Input",
-   CellTags->"LCD",
-   CellID->1229900885],
-  Cell[9595, 362, 267, 9, 36, "Output",
-   CellTags->"LCD",
-   CellID->1904977628],
-  Cell[10230, 394, 369, 15, 31, "Text",
-   CellTags->"LCD",
-   CellID->552899823]}
+  Cell[8925, 317, 637, 25, 37, "Output",
+   CellTags->"LCD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12662, 460},
- {"LCD", 12792, 464}
+ {"PrimaryExamplesSection", 12200, 428},
+ {"LCD", 12331, 432}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 2237, 52, 51, "AnchorBarGrid",
+Cell[575, 21, 3046, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2815, 75, 46, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2864, 78, 690, 17, 163, "Usage",
+Cell[3624, 98, 280, 11, 44, "ObjectNameGrid"],
+Cell[3907, 111, 915, 26, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3579, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4847, 141, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1729963782],
+ CellID->1518024235],
 Cell[CellGroupData[{
-Cell[3992, 118, 196, 6, 25, "ExampleSection",
- CellID->1361724083],
-Cell[4191, 126, 207, 7, 27, "Input",
- CellTags->"LCD",
- CellID->246917287],
+Cell[5260, 160, 196, 6, 25, "ExampleSection",
+ CellID->2105337864],
 Cell[CellGroupData[{
-Cell[4423, 137, 183, 6, 27, "Input",
+Cell[5481, 170, 183, 6, 27, "Input",
  CellTags->"LCD",
  CellID->163498575],
-Cell[4609, 145, 583, 25, 39, "Output",
- CellTags->"LCD",
- CellID->1669873163]
+Cell[5667, 178, 585, 25, 35, "Output",
+ CellTags->"LCD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5229, 175, 113, 4, 27, "Input",
+Cell[6289, 208, 148, 5, 27, "Input",
  CellTags->"LCD",
  CellID->950730684],
-Cell[5345, 181, 582, 25, 39, "Output",
- CellTags->"LCD",
- CellID->774559606]
+Cell[6440, 215, 523, 15, 67, "Output",
+ CellTags->"LCD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5964, 211, 123, 4, 27, "Input",
- CellTags->"LCD",
- CellID->1738716456],
-Cell[6090, 217, 592, 17, 67, "Output",
- CellTags->"LCD",
- CellID->1281931789]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6719, 239, 201, 7, 27, "Input",
+Cell[7000, 235, 201, 7, 27, "Input",
  CellTags->"LCD",
  CellID->1568724284],
-Cell[6923, 248, 570, 25, 38, "Output",
- CellTags->"LCD",
- CellID->474988897]
+Cell[7204, 244, 573, 25, 35, "Output",
+ CellTags->"LCD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7530, 278, 148, 5, 27, "Input",
+Cell[7814, 274, 148, 5, 27, "Input",
  CellTags->"LCD",
  CellID->531209658],
-Cell[7681, 285, 572, 17, 67, "Output",
- CellTags->"LCD",
- CellID->1647742492]
+Cell[7965, 281, 503, 15, 67, "Output",
+ CellTags->"LCD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8290, 307, 417, 14, 27, "Input",
+Cell[8505, 301, 417, 14, 27, "Input",
  CellTags->"LCD",
  CellID->173575058],
-Cell[8710, 323, 657, 26, 38, "Output",
- CellTags->"LCD",
- CellID->932361259]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9404, 354, 188, 6, 27, "Input",
- CellTags->"LCD",
- CellID->1229900885],
-Cell[9595, 362, 267, 9, 36, "Output",
- CellTags->"LCD",
- CellID->1904977628]
+Cell[8925, 317, 637, 25, 37, "Output",
+ CellTags->"LCD"]
 }, Open  ]]
 }, Open  ]],
-Cell[9889, 375, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9589, 346, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9957, 380, 270, 12, 31, "SeeAlsoSection",
+Cell[9657, 351, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10230, 394, 369, 15, 31, "Text",
- CellTags->"LCD",
- CellID->552899823]
+Cell[9930, 365, 313, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[10614, 412, 23, 0, 42, "FooterCell"]
+Cell[10258, 381, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

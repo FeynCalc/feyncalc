@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8706,        290]
-NotebookOptionsPosition[      5343,        188]
-NotebookOutlinePosition[      7857,        258]
-CellTagsIndexPosition[      7746,        252]
+NotebookDataLength[      9412,        307]
+NotebookOptionsPosition[      6385,        217]
+NotebookOutlinePosition[      8707,        281]
+CellTagsIndexPosition[      8596,        275]
 WindowTitle->$LimitTo4
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/$LimitTo4\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/$LimitTo4"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/$LimitTo4.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"PaVe\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PaVe"], "\<\"PaVeReduce\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PaVeReduce"], "\<\"OneLoop\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/OneLoop"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/$LimitTo4\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/$LimitTo4"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/$LimitTo4.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170872], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/$LimitTo4", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$305545], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/$LimitTo4", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +98,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["$LimitTo4", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["$LimitTo4", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,7 +142,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1772191243],
+ CellID->788779675],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -115,13 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->199274007],
-
-Cell[CellGroupData[{
-
-Cell["Examples", "Subsubsection",
- CellTags->"$LimitTo4",
- CellID->1433837082],
+ CellID->1223694052],
 
 Cell[CellGroupData[{
 
@@ -132,16 +163,16 @@ Cell[BoxData["$LimitTo4"], "Input",
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ ImageSize->{33, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"$LimitTo4",
  CellLabel->"Out[1]=",
  CellID->477908355]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
-}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -179,9 +210,7 @@ Cell[TextData[{
   ButtonNote->"OneLoop"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"$LimitTo4",
- CellID->1267840867]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -198,10 +227,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 15.736072}", 
+   "built" -> "{2019, 3, 29, 17, 55, 54.746689}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -209,9 +238,9 @@ TaggingRules->{
     "None", "summary" -> 
     "$LimitTo4 is a variable with default setting True. If set to False, no \
 limit Dimension -> 4 is performed after tensor integral decomposition.", 
-    "synonyms" -> {}, "title" -> "$LimitTo4", "titlemodifier" -> "", 
-    "windowtitle" -> "$LimitTo4", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/$LimitTo4"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "$LimitTo4", 
+    "titlemodifier" -> "", "windowtitle" -> "$LimitTo4", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/$LimitTo4"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -231,67 +260,55 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3363, 94, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4528, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1772191243]},
+   CellID->788779675]},
  "$LimitTo4"->{
-  Cell[3974, 121, 78, 2, 35, "Subsubsection",
-   CellTags->"$LimitTo4",
-   CellID->1433837082],
-  Cell[4077, 127, 102, 3, 27, "Input",
+  Cell[5161, 158, 102, 3, 27, "Input",
    CellTags->"$LimitTo4",
    CellID->731036389],
-  Cell[4182, 132, 213, 7, 36, "Output",
+  Cell[5266, 163, 213, 7, 35, "Output",
    CellTags->"$LimitTo4",
-   CellID->477908355],
-  Cell[4763, 162, 538, 21, 32, "Text",
-   CellTags->"$LimitTo4",
-   CellID->1267840867]}
+   CellID->477908355]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7224, 232},
- {"$LimitTo4", 7360, 236}
+ {"PrimaryExamplesSection", 8259, 261},
+ {"$LimitTo4", 8395, 265}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 2249, 52, 51, "AnchorBarGrid",
+Cell[581, 21, 3180, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2833, 75, 52, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2888, 78, 450, 12, 97, "Usage",
+Cell[3764, 100, 286, 11, 44, "ObjectNameGrid"],
+Cell[4053, 113, 450, 12, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3363, 94, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4528, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1772191243],
-Cell[3754, 111, 195, 6, 25, "ExampleSection",
- CellID->199274007],
+ CellID->788779675],
 Cell[CellGroupData[{
-Cell[3974, 121, 78, 2, 35, "Subsubsection",
- CellTags->"$LimitTo4",
- CellID->1433837082],
+Cell[4940, 148, 196, 6, 25, "ExampleSection",
+ CellID->1223694052],
 Cell[CellGroupData[{
-Cell[4077, 127, 102, 3, 27, "Input",
+Cell[5161, 158, 102, 3, 27, "Input",
  CellTags->"$LimitTo4",
  CellID->731036389],
-Cell[4182, 132, 213, 7, 36, "Output",
+Cell[5266, 163, 213, 7, 35, "Output",
  CellTags->"$LimitTo4",
  CellID->477908355]
-}, Open  ]],
-Cell[4410, 142, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[4490, 148, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[4763, 162, 538, 21, 32, "Text",
- CellTags->"$LimitTo4",
- CellID->1267840867]
+Cell[5506, 174, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
-Cell[5316, 186, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[5574, 179, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5847, 193, 496, 19, 55, "SeeAlso"]
+}, Open  ]],
+Cell[6358, 215, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9799,        309]
-NotebookOptionsPosition[      6218,        207]
-NotebookOutlinePosition[      9039,        280]
-CellTagsIndexPosition[      8920,        274]
+NotebookDataLength[     11432,        374]
+NotebookOptionsPosition[      8008,        275]
+NotebookOutlinePosition[     10524,        341]
+CellTagsIndexPosition[     10403,        335]
 WindowTitle->ScalarGluonVertex
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ ScalarGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130635], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$231508], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ScalarGluonVertex", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ ScalarGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ScalarGluonVertex", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ScalarGluonVertex", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -84,20 +97,106 @@ Cell[BoxData[GridBox[{
         RowBox[{"{", "p", "}"}], ",", " ", 
         RowBox[{"{", "q", "}"}], ",", " ", 
         RowBox[{"{", 
-         RowBox[{"mu", ",", "a"}], "}"}]}], "]"}]], "InlineFormula"],
-     " \n\tor ScalarGluonVertex[ p,  q,  mu, a ] yields the \
-scalar-scalar-gluon vertex (p and q are incoming momenta). \
-ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex \
-(p and q are incoming momenta).\n\tThe dimension  and the name of the \
-coupling constant are determined by the options Dimension and \
-CouplingConstant."
+         RowBox[{"\[Mu]", ",", "a"}], "}"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]or ",
+     Cell[BoxData[
+      RowBox[{"ScalarGluonVertex", "[", 
+       RowBox[{"p", ",", "  ", "q", ",", "  ", "\[Mu]", ",", " ", "a"}], 
+       "]"}]], "InlineFormula"],
+     " yields the scalar-scalar-gluon vertex, where ",
+     Cell[BoxData["p"], "InlineFormula"],
+     " and ",
+     Cell[BoxData["q"], "InlineFormula"],
+     " are incoming momenta."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ScalarGluonVertex", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\[Mu]", ",", "a"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Nu]", ",", "b"}], "}"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]yields the scalar-scalar-gluon-gluon vertex, where ",
+     Cell[BoxData["p"], "InlineFormula"],
+     " and ",
+     Cell[BoxData["q"], "InlineFormula"],
+     " are incoming momenta. syntax."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
    "RowsIndexed" -> {}}},
- CellID->982511436],
+ CellID->2010081510],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->266127673],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The dimension and the name of the coupling constant are determined by the \
+options ",
+ ButtonBox["Dimension",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Dimension",
+  ButtonNote->"Dimension"],
+ " and ",
+ ButtonBox["CouplingConstant",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CouplingConstant",
+  ButtonNote->"CouplingConstant"],
+ ". "
+}], "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ScalarGluonVertex", "]"}]], "Input",
+ CellLabel->"In[55]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Gauge", "\[Rule]", "1"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{333, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[55]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -116,7 +215,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1584676055],
+ CellID->352944075],
 
 Cell[CellGroupData[{
 
@@ -126,31 +225,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1754245303],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "ScalarGluonVertex", "]"}]], "Input",
- CellTags->"ScalarGluonVertex",
- CellLabel->"In[1]:=",
- CellID->1577288725],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Gauge", "\[Rule]", "1"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{351, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"ScalarGluonVertex",
- CellLabel->"Out[1]=",
- CellID->1150833543]
-}, Open  ]],
+ CellID->1874412141],
 
 Cell[CellGroupData[{
 
@@ -160,9 +235,9 @@ Cell[BoxData[
    RowBox[{"{", "p", "}"}], ",", " ", 
    RowBox[{"{", "q", "}"}], ",", " ", 
    RowBox[{"{", 
-    RowBox[{"mu", ",", " ", "a"}], "}"}]}], "]"}]], "Input",
+    RowBox[{"\[Mu]", ",", " ", "a"}], "}"}]}], "]"}]], "Input",
  CellTags->"ScalarGluonVertex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->581447761],
 
 Cell[BoxData[
@@ -174,31 +249,24 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]], " ", 
    SubscriptBox["g", "s"], " ", 
-   FormBox[
-    SuperscriptBox[
-     RowBox[{"(", 
-      FormBox[
-       FormBox[
-        RowBox[{
-         FormBox["p",
-          TraditionalForm], "-", 
-         FormBox["q",
-          TraditionalForm]}],
-        TraditionalForm],
-       TraditionalForm], ")"}], 
+   SuperscriptBox[
+    RowBox[{"(", 
      FormBox[
-      FormBox[
-       FormBox["mu",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{122, 17},
+      RowBox[{
+       FormBox["p",
+        TraditionalForm], "-", 
+       FormBox["q",
+        TraditionalForm]}],
+      TraditionalForm], ")"}], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{121, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarGluonVertex",
- CellLabel->"Out[2]=",
- CellID->260312021]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -217,23 +285,23 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 16.807308}", 
+   "built" -> "{2019, 3, 29, 17, 52, 54.673498}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "ScalarGluonVertex[{p}, {q}, {mu, a}] or ScalarGluonVertex[p, q, mu, a ] \
-yields the scalar-scalar-gluon vertex (p and q are incoming momenta). \
-ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex \
-(p and q are incoming momenta). The dimension and the name of the coupling \
-constant are determined by the options Dimension and CouplingConstant.", 
-    "synonyms" -> {}, "title" -> "ScalarGluonVertex", "titlemodifier" -> "", 
-    "windowtitle" -> "ScalarGluonVertex", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/ScalarGluonVertex"}, "SearchTextTranslated" -> ""},
+    "ScalarGluonVertex[{p}, {q}, {\\[Mu], a}] or ScalarGluonVertex[p, q, \
+\\[Mu], a] yields the scalar-scalar-gluon vertex, where p and q are incoming \
+momenta. ScalarGluonVertex[{\\[Mu], a}, {\\[Nu], b}] yields the \
+scalar-scalar-gluon-gluon vertex, where p and q are incoming momenta. \
+syntax.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "ScalarGluonVertex",
+     "titlemodifier" -> "", "windowtitle" -> "ScalarGluonVertex", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/ScalarGluonVertex"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -253,64 +321,61 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3804, 103, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6359, 202, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1584676055]},
+   CellID->352944075]},
  "ScalarGluonVertex"->{
-  Cell[4438, 132, 152, 4, 27, "Input",
-   CellTags->"ScalarGluonVertex",
-   CellID->1577288725],
-  Cell[4593, 138, 422, 13, 36, "Output",
-   CellTags->"ScalarGluonVertex",
-   CellID->1150833543],
-  Cell[5052, 156, 291, 9, 27, "Input",
+  Cell[6992, 231, 294, 9, 27, "Input",
    CellTags->"ScalarGluonVertex",
    CellID->581447761],
-  Cell[5346, 167, 806, 33, 38, "Output",
-   CellTags->"ScalarGluonVertex",
-   CellID->260312021]}
+  Cell[7289, 242, 653, 26, 37, "Output",
+   CellTags->"ScalarGluonVertex"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8361, 254},
- {"ScalarGluonVertex", 8506, 258}
+ {"PrimaryExamplesSection", 10063, 322},
+ {"ScalarGluonVertex", 10207, 326}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 2282, 52, 51, "AnchorBarGrid",
+Cell[589, 21, 2310, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2874, 75, 60, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2937, 78, 842, 21, 163, "Usage",
- CellID->982511436],
+Cell[2902, 76, 294, 11, 44, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3804, 103, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1584676055],
+Cell[3221, 91, 1364, 39, 160, "Usage",
+ CellID->2010081510],
 Cell[CellGroupData[{
-Cell[4217, 122, 196, 6, 25, "ExampleSection",
- CellID->1754245303],
+Cell[4610, 134, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->266127673],
+Cell[5351, 160, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5385, 162, 415, 14, 47, "Notes",
+ CellID->1067943069],
 Cell[CellGroupData[{
-Cell[4438, 132, 152, 4, 27, "Input",
- CellTags->"ScalarGluonVertex",
- CellID->1577288725],
-Cell[4593, 138, 422, 13, 36, "Output",
- CellTags->"ScalarGluonVertex",
- CellID->1150833543]
+Cell[5825, 180, 100, 2, 27, "Input"],
+Cell[5928, 184, 370, 11, 37, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5052, 156, 291, 9, 27, "Input",
+Cell[6359, 202, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->352944075],
+Cell[CellGroupData[{
+Cell[6771, 221, 196, 6, 25, "ExampleSection",
+ CellID->1874412141],
+Cell[CellGroupData[{
+Cell[6992, 231, 294, 9, 27, "Input",
  CellTags->"ScalarGluonVertex",
  CellID->581447761],
-Cell[5346, 167, 806, 33, 38, "Output",
- CellTags->"ScalarGluonVertex",
- CellID->260312021]
+Cell[7289, 242, 653, 26, 37, "Output",
+ CellTags->"ScalarGluonVertex"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6191, 205, 23, 0, 42, "FooterCell"]
+Cell[7981, 273, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

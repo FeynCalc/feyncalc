@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5450,        148]
-NotebookOptionsPosition[      3429,         95]
-NotebookOutlinePosition[      5372,        144]
-CellTagsIndexPosition[      5329,        141]
+NotebookDataLength[     15393,        556]
+NotebookOptionsPosition[     11972,        454]
+NotebookOutlinePosition[     14154,        511]
+CellTagsIndexPosition[     14069,        506]
 WindowTitle->PauliSigma
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$117200], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$210152], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PauliSigma", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,16 +74,27 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["PauliSigma", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["PauliSigma", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData["PauliSigma"], "InlineFormula"],
-     " \[LineSeparator]",
-     "denotes the vector of the 3 Pauli matrices. PauliSigma[1], \
-PauliSigma[2], PauliSigma[3] give the explicit Pauli matrices. PauliSigma[] \
-yields {PauliSigma[1], PauliSigma[2], PauliSigma[3]}."
+     Cell[BoxData[
+      RowBox[{"PauliSigma", "[", 
+       RowBox[{"x", ",", "dim"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]is the internal representation of a Pauli matrix with \
+a Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz \
+or Cartesian vector. PauliSigma[x,3] simplifies to PauliSigma[x]."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -91,12 +103,359 @@ yields {PauliSigma[1], PauliSigma[2], PauliSigma[3]}."
    "RowsIndexed" -> {}}},
  CellID->982511436],
 
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->505769554],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->273909892],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PauliSigma", "[", 
+  RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], "]"}]], "Input",
+ CellLabel->"In[1]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Sigma]", "_"], 
+   FormBox[
+    FormBox["\[Alpha]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{25, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PauliSigma", "[", 
+  RowBox[{"CartesianIndex", "[", "i", "]"}], "]"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Sigma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], "_"], 
+   FormBox[
+    FormBox[
+     StyleBox["i",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{24, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "A Pauli matrix contracted with a Lorentz or Cartesian vector is displayed \
+as ",
+ Cell[BoxData[
+  RowBox[{"\[Sigma]", "\[CenterDot]", 
+   StyleBox["p",
+    FontSlant->"Italic"]}]], "InlineFormula"]
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PauliSigma", "[", 
+  RowBox[{"Momentum", "[", "p", "]"}], "]"}]], "Input",
+ CellLabel->"In[3]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["\[Sigma]", "_"], "\[CenterDot]", 
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{37, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PauliSigma", "[", 
+  RowBox[{"CartesianMomentum", "[", "p", "]"}], "]"}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Sigma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], "_"], "\[CenterDot]", 
+   FormBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["p",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{37, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PauliSigma", "[", 
+   RowBox[{"Momentum", "[", "q", "]"}], "]"}], " ", ".", " ", 
+  RowBox[{"PauliSigma", "[", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[5]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Sigma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Sigma]", "_"], "\[CenterDot]", "(", 
+     FormBox[
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "-", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}],
+       TraditionalForm],
+      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{143, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "PauliSigmaExpand"}]], "Input",
+ CellLabel->"In[6]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Sigma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["\[Sigma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], "-", 
+     RowBox[{
+      OverscriptBox["\[Sigma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{151, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PauliSigma", "[", 
+   RowBox[{"CartesianMomentum", "[", "q", "]"}], "]"}], " ", ".", " ", 
+  RowBox[{"PauliSigma", "[", 
+   RowBox[{"CartesianMomentum", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[7]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Sigma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["q",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Sigma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], "\[CenterDot]", "(", 
+     FormBox[
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox[
+          StyleBox["p",
+           StripOnInput->False,
+           FontWeight->Bold],
+          TraditionalForm], "_"], "-", 
+        OverscriptBox[
+         FormBox[
+          StyleBox["q",
+           StripOnInput->False,
+           FontWeight->Bold],
+          TraditionalForm], "_"]}],
+       TraditionalForm],
+      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{144, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "PauliSigmaExpand"}]], "Input",
+ CellLabel->"In[8]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox[
+      FormBox[
+       StyleBox["\<\"\[Sigma]\"\>",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox[
+        StyleBox["q",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Sigma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["p",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}], "-", 
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["\<\"\[Sigma]\"\>",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox[
+         StyleBox["q",
+          StripOnInput->False,
+          FontWeight->Bold],
+         TraditionalForm], "_"],
+       TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{151, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]="]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"PauliSigma",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -105,20 +464,21 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 22.950694}", 
+   "built" -> "{2019, 3, 29, 17, 52, 9.054865}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "PauliSigma denotes the vector of the 3 Pauli matrices. PauliSigma[1], \
-PauliSigma[2], PauliSigma[3] give the explicit Pauli matrices. PauliSigma[] \
-yields {PauliSigma[1], PauliSigma[2], PauliSigma[3]}.", "synonyms" -> {}, 
-    "title" -> "PauliSigma", "titlemodifier" -> "", "windowtitle" -> 
-    "PauliSigma", "type" -> "Symbol", "uri" -> "FeynCalc/ref/PauliSigma"}},
+    "PauliSigma[x, dim] is the internal representation of a Pauli matrix with \
+a Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz \
+or Cartesian vector. PauliSigma[x,3] simplifies to PauliSigma[x].", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "PauliSigma", 
+    "titlemodifier" -> "", "windowtitle" -> "PauliSigma", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/PauliSigma"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -136,22 +496,71 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3748, 107, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->505769554]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 13926, 499}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2253, 52, 70, "AnchorBarGrid",
+Cell[582, 21, 2281, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2838, 75, 53, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2894, 78, 505, 13, 70, "Usage",
+Cell[2866, 76, 287, 11, 44, "ObjectNameGrid"],
+Cell[3156, 89, 567, 14, 99, "Usage",
  CellID->982511436],
-Cell[3402, 93, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[3748, 107, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->505769554],
+Cell[CellGroupData[{
+Cell[4160, 126, 195, 6, 25, "ExampleSection",
+ CellID->273909892],
+Cell[CellGroupData[{
+Cell[4380, 136, 132, 3, 27, "Input"],
+Cell[4515, 141, 298, 11, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4850, 157, 127, 3, 27, "Input"],
+Cell[4980, 162, 469, 19, 38, "Output"]
+}, Open  ]],
+Cell[5464, 184, 229, 7, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[5718, 195, 121, 3, 27, "Input"],
+Cell[5842, 200, 328, 12, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6207, 217, 130, 3, 27, "Input"],
+Cell[6340, 222, 509, 20, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6886, 247, 253, 7, 27, "Input"],
+Cell[7142, 256, 749, 28, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7928, 289, 88, 2, 27, "Input"],
+Cell[8019, 293, 805, 30, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8861, 328, 271, 7, 27, "Input"],
+Cell[9135, 337, 1231, 47, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10403, 389, 88, 2, 27, "Input"],
+Cell[10494, 393, 1412, 54, 37, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[11945, 452, 23, 0, 40, "FooterCell"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8222,        276]
-NotebookOptionsPosition[      5136,        181]
-NotebookOutlinePosition[      7470,        247]
-CellTagsIndexPosition[      7362,        241]
+NotebookDataLength[      8916,        294]
+NotebookOptionsPosition[      6230,        212]
+NotebookOutlinePosition[      8285,        270]
+CellTagsIndexPosition[      8217,        265]
 WindowTitle->TLIHYP
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/TLIHYP\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/TLIHYP"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/TLIHYP.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"TLI\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/TLI"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/TLIHYP\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/TLIHYP"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/TLIHYP.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$155825], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/TLIHYP",
-             ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$278495], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/TLIHYP", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["TLIHYP", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["TLIHYP", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -93,32 +127,33 @@ possible."
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1190045159],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1888562718],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1841621955],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
@@ -137,16 +172,14 @@ Cell[BoxData[
     RowBox[{"Momentum", "\[Rule]", 
      RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{425, 15},
+ ImageSize->{403, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TLIHYP",
  CellLabel->"Out[1]=",
  CellID->1697792562]
 }, Open  ]]
-}, Open  ]],
-
-Cell["", "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -172,9 +205,7 @@ Cell[TextData[{
   ButtonNote->"TLI"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"TLIHYP",
- CellID->827493739]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -191,19 +222,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 8.209733}", 
+   "built" -> "{2019, 3, 29, 17, 54, 45.570688}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "TLIHYP[exp] expresses TLI's in exp. in terms of hypergeometric \
-functions, where possible.", "synonyms" -> {}, "title" -> "TLIHYP", 
-    "titlemodifier" -> "", "windowtitle" -> "TLIHYP", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/TLIHYP"}, "SearchTextTranslated" -> ""},
+functions, where possible.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "TLIHYP", "titlemodifier" -> "", "windowtitle" -> "TLIHYP", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/TLIHYP"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -222,62 +253,49 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3317, 95, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1190045159]},
  "TLIHYP"->{
-  Cell[3951, 124, 130, 4, 27, "Input",
+  Cell[5117, 159, 130, 4, 27, "Input",
    CellTags->"TLIHYP",
    CellID->1476708263],
-  Cell[4084, 130, 432, 14, 36, "Output",
+  Cell[5250, 165, 432, 14, 37, "Output",
    CellTags->"TLIHYP",
-   CellID->1697792562],
-  Cell[4884, 167, 210, 9, 31, "Text",
-   CellTags->"TLIHYP",
-   CellID->827493739]}
+   CellID->1697792562]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6947, 224},
- {"TLIHYP", 7080, 228}
+ {"TLIHYP", 8019, 255}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2237, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 2983, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2818, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2870, 78, 422, 13, 82, "Usage",
+Cell[3564, 97, 283, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3872, 112, 422, 13, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3317, 95, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1190045159],
+Cell[4319, 129, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1888562718],
+Cell[5061, 155, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3730, 114, 196, 6, 25, "ExampleSection",
- CellID->1841621955],
-Cell[CellGroupData[{
-Cell[3951, 124, 130, 4, 27, "Input",
+Cell[5117, 159, 130, 4, 27, "Input",
  CellTags->"TLIHYP",
  CellID->1476708263],
-Cell[4084, 130, 432, 14, 36, "Output",
+Cell[5250, 165, 432, 14, 37, "Output",
  CellTags->"TLIHYP",
  CellID->1697792562]
 }, Open  ]]
-}, Open  ]],
-Cell[4543, 148, 31, 0, 29, "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4611, 153, 270, 12, 31, "SeeAlsoSection",
+Cell[5743, 186, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4884, 167, 210, 9, 31, "Text",
- CellTags->"TLIHYP",
- CellID->827493739]
+Cell[6016, 200, 172, 7, 54, "SeeAlso"]
 }, Open  ]],
-Cell[5109, 179, 23, 0, 42, "FooterCell"]
+Cell[6203, 210, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

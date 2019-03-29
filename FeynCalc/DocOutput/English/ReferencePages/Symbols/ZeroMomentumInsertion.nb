@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6641,        199]
-NotebookOptionsPosition[      4319,        133]
-NotebookOutlinePosition[      6367,        188]
-CellTagsIndexPosition[      6284,        183]
+NotebookDataLength[      7560,        223]
+NotebookOptionsPosition[      5475,        166]
+NotebookOutlinePosition[      7351,        215]
+CellTagsIndexPosition[      7308,        212]
 WindowTitle->ZeroMomentumInsertion
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/ZeroMomentumInsertion\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/ZeroMomentumInsertion"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynRule\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynRule"], "\<\"Twist2GluonOperator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Twist2GluonOperator"], "\<\"Twist2QuarkOperator\"\
+\>":>Documentation`HelpLookup["paclet:FeynCalc/ref/Twist2QuarkOperator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/ZeroMomentumInsertion\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/ZeroMomentumInsertion"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 ZeroMomentumInsertion.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166091], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/ZeroMomentumInsertion", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$296424], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/ZeroMomentumInsertion", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +98,18 @@ ZeroMomentumInsertion.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ZeroMomentumInsertion", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ZeroMomentumInsertion", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -124,9 +159,7 @@ Cell[TextData[{
   ButtonNote->"Twist2QuarkOperator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"ZeroMomentumInsertion",
- CellID->237936766]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -143,19 +176,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 54.477094}", 
+   "built" -> "{2019, 3, 29, 17, 55, 31.069891}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and \
-Twist2QuarkOperator.", "synonyms" -> {}, "title" -> "ZeroMomentumInsertion", 
-    "titlemodifier" -> "", "windowtitle" -> "ZeroMomentumInsertion", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/ZeroMomentumInsertion"}},
+Twist2QuarkOperator.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "ZeroMomentumInsertion", "titlemodifier" -> "", "windowtitle" -> 
+    "ZeroMomentumInsertion", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/ZeroMomentumInsertion"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -173,34 +207,24 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "ZeroMomentumInsertion"->{
-  Cell[3653, 107, 624, 21, 70, "Text",
-   CellTags->"ZeroMomentumInsertion",
-   CellID->237936766]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"ZeroMomentumInsertion", 6160, 176}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 2298, 52, 70, "AnchorBarGrid",
+Cell[593, 21, 3273, 77, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2894, 75, 64, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2961, 78, 394, 11, 70, "Usage",
+Cell[3869, 100, 298, 11, 70, "ObjectNameGrid"],
+Cell[4170, 113, 394, 11, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3380, 93, 270, 12, 70, "SeeAlsoSection",
+Cell[4589, 128, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3653, 107, 624, 21, 70, "Text",
- CellTags->"ZeroMomentumInsertion",
- CellID->237936766]
+Cell[4862, 142, 571, 19, 70, "SeeAlso"]
 }, Open  ]],
-Cell[4292, 131, 23, 0, 70, "FooterCell"]
+Cell[5448, 164, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

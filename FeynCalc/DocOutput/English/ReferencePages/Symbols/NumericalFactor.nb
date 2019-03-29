@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5259,        146]
-NotebookOptionsPosition[      3351,         94]
-NotebookOutlinePosition[      5181,        142]
-CellTagsIndexPosition[      5138,        139]
+NotebookDataLength[      5500,        156]
+NotebookOptionsPosition[      3613,        105]
+NotebookOutlinePosition[      5436,        153]
+CellTagsIndexPosition[      5393,        150]
 WindowTitle->NumericalFactor
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ NumericalFactor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$108276], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$196331], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/NumericalFactor", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ NumericalFactor.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["NumericalFactor", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["NumericalFactor", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -104,19 +115,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 22, 45.533308}", 
+   "built" -> "{2019, 3, 29, 17, 51, 40.144556}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "NumericalFactor[expr] gives the overall numerical factor of expr.", 
-    "synonyms" -> {}, "title" -> "NumericalFactor", "titlemodifier" -> "", 
-    "windowtitle" -> "NumericalFactor", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/NumericalFactor"}},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "NumericalFactor", 
+    "titlemodifier" -> "", "windowtitle" -> "NumericalFactor", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/NumericalFactor"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -141,13 +152,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2274, 52, 70, "AnchorBarGrid",
+Cell[587, 21, 2302, 53, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2864, 75, 58, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2925, 78, 396, 12, 70, "Usage",
+Cell[2892, 76, 292, 11, 70, "ObjectNameGrid"],
+Cell[3187, 89, 396, 12, 70, "Usage",
  CellID->982511436],
-Cell[3324, 92, 23, 0, 70, "FooterCell"]
+Cell[3586, 103, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

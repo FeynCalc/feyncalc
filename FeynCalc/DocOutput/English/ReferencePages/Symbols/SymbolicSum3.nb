@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5611,        151]
-NotebookOptionsPosition[      3528,         96]
-NotebookOutlinePosition[      5533,        147]
-CellTagsIndexPosition[      5490,        144]
+NotebookDataLength[      5849,        160]
+NotebookOptionsPosition[      3790,        107]
+NotebookOutlinePosition[      5785,        157]
+CellTagsIndexPosition[      5742,        154]
 WindowTitle->SymbolicSymbolicSum3
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ SymbolicSymbolicSum3.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151688], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$270678], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SymbolicSymbolicSum3", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ SymbolicSymbolicSum3.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SymbolicSymbolicSum3", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SymbolicSymbolicSum3", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -106,10 +117,9 @@ TaggingRules->{
         ButtonBox[
         "Wolfram Language", ButtonData -> "paclet:guide/WolframRoot", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
-  None, "RootCaptions" -> "", 
-  "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 51.085218}", 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2019, 3, 29, 17, 54, 26.058603}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -118,8 +128,8 @@ TaggingRules->{
     "SymbolicSymbolicSum3 is similar to SymbolicSum \
 (Algegra`SymbolicSum`SymbolicSum was a function to do symbolic summation. It \
 was obsolete from version 3 - all functionality is now autoloaded by Sum), \
-but extended to several double sums.", "synonyms" -> {}, "title" -> 
-    "SymbolicSymbolicSum3", "titlemodifier" -> "", "windowtitle" -> 
+but extended to several double sums.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "SymbolicSymbolicSum3", "titlemodifier" -> "", "windowtitle" -> 
     "SymbolicSymbolicSum3", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SymbolicSymbolicSum3"}},
 CellContext->"Global`",
@@ -146,13 +156,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[592, 21, 2294, 52, 70, "AnchorBarGrid",
+Cell[592, 21, 2322, 53, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2889, 75, 63, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2955, 78, 543, 14, 70, "Usage",
+Cell[2917, 76, 297, 11, 70, "ObjectNameGrid"],
+Cell[3217, 89, 543, 14, 70, "Usage",
  CellID->982511436],
-Cell[3501, 94, 23, 0, 70, "FooterCell"]
+Cell[3763, 105, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

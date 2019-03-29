@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13608,        452]
-NotebookOptionsPosition[      7789,        278]
-NotebookOutlinePosition[     11553,        381]
-CellTagsIndexPosition[     11428,        375]
+NotebookDataLength[     13822,        454]
+NotebookOptionsPosition[      8663,        303]
+NotebookOutlinePosition[     12031,        394]
+CellTagsIndexPosition[     11904,        388]
 WindowTitle->UnDeclareNonCommutative
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/UnDeclareNonCommutative\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/UnDeclareNonCommutative"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DataType\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DataType"], "\<\"DeclareNonCommutative\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DeclareNonCommutative"]},
+       
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/UnDeclareNonCommutative\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/UnDeclareNonCommutative"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 UnDeclareNonCommutative.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162974], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/UnDeclareNonCommutative", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$293147], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/UnDeclareNonCommutative", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +98,18 @@ UnDeclareNonCommutative.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["UnDeclareNonCommutative", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["UnDeclareNonCommutative", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -109,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->686793750],
+ CellID->4492498],
 
 Cell[CellGroupData[{
 
@@ -119,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->989163990],
+ CellID->1185669752],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", "x", "]"}]], "Input",
@@ -130,9 +165,7 @@ Cell[BoxData[
 Cell["\<\
 As a side-effect of DeclareNonCommutative x is declared to be of DataType \
 NonCommutative.\
-\>", "Text",
- CellTags->"UnDeclareNonCommutative",
- CellID->467320049],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -143,17 +176,14 @@ Cell["DataType[x,NonCommutative]", "Input",
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ ImageSize->{33, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"UnDeclareNonCommutative",
- CellLabel->"Out[2]=",
- CellID->415876422]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
-Cell["The inverse operation is UnDeclareNonCommutative.", "Text",
- CellTags->"UnDeclareNonCommutative",
- CellID->568029723],
+Cell["The inverse operation is UnDeclareNonCommutative.", "Notes"],
 
 Cell[BoxData[
  RowBox[{"UnDeclareNonCommutative", "[", "x", "]"}]], "Input",
@@ -172,12 +202,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
- ImageSize->{37, 15},
+ ImageSize->{36, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"UnDeclareNonCommutative",
- CellLabel->"Out[4]=",
- CellID->1002154582]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -200,12 +229,11 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"True", ",", "True"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{83, 15},
+ ImageSize->{82, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"UnDeclareNonCommutative",
- CellLabel->"Out[6]=",
- CellID->799895096]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -228,12 +256,11 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"False", ",", "False"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{91, 15},
+ ImageSize->{88, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"UnDeclareNonCommutative",
- CellLabel->"Out[8]=",
- CellID->493928013]
+ CellLabel->"Out[8]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -269,9 +296,7 @@ Cell[TextData[{
   ButtonNote->"DeclareNonCommutative"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"UnDeclareNonCommutative",
- CellID->349709371]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -288,10 +313,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 41.388763}", 
+   "built" -> "{2019, 3, 29, 17, 55, 23.364084}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -299,9 +324,10 @@ TaggingRules->{
     "None", "summary" -> 
     "UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be \
 noncommutative, i.e., DataType[a,b, ..., NonCommutative] is set to False.", 
-    "synonyms" -> {}, "title" -> "UnDeclareNonCommutative", "titlemodifier" -> 
-    "", "windowtitle" -> "UnDeclareNonCommutative", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/UnDeclareNonCommutative"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "UnDeclareNonCommutative",
+     "titlemodifier" -> "", "windowtitle" -> "UnDeclareNonCommutative", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/UnDeclareNonCommutative"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -321,139 +347,115 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3507, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4632, 131, 385, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->686793750]},
+   CellID->4492498]},
  "UnDeclareNonCommutative"->{
-  Cell[4117, 123, 156, 4, 27, "Input",
+  Cell[5241, 158, 156, 4, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->1470795437],
-  Cell[4276, 129, 173, 5, 51, "Text",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->467320049],
-  Cell[4474, 138, 123, 3, 27, "Input",
+  Cell[5541, 171, 123, 3, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->88675667],
-  Cell[4600, 143, 227, 7, 36, "Output",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->415876422],
-  Cell[4842, 153, 123, 2, 32, "Text",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->568029723],
-  Cell[4968, 157, 157, 4, 27, "Input",
+  Cell[5667, 176, 207, 6, 35, "Output",
+   CellTags->"UnDeclareNonCommutative"],
+  Cell[5958, 187, 157, 4, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->669742468],
-  Cell[5150, 165, 178, 5, 27, "Input",
+  Cell[6140, 195, 178, 5, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->294586102],
-  Cell[5331, 172, 229, 7, 36, "Output",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->1002154582],
-  Cell[5575, 182, 179, 5, 27, "Input",
+  Cell[6321, 202, 208, 6, 35, "Output",
+   CellTags->"UnDeclareNonCommutative"],
+  Cell[6544, 211, 179, 5, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->1907752862],
-  Cell[5779, 191, 189, 5, 27, "Input",
+  Cell[6748, 220, 189, 5, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->1458539742],
-  Cell[5971, 198, 277, 9, 36, "Output",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->799895096],
-  Cell[6263, 210, 181, 5, 27, "Input",
+  Cell[6940, 227, 257, 8, 37, "Output",
+   CellTags->"UnDeclareNonCommutative"],
+  Cell[7212, 238, 181, 5, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->1096625129],
-  Cell[6469, 219, 188, 5, 27, "Input",
+  Cell[7418, 247, 188, 5, 27, "Input",
    CellTags->"UnDeclareNonCommutative",
    CellID->702684679],
-  Cell[6660, 226, 279, 9, 36, "Output",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->493928013],
-  Cell[7307, 258, 440, 15, 70, "Text",
-   CellTags->"UnDeclareNonCommutative",
-   CellID->349709371]}
+  Cell[7609, 254, 259, 8, 37, "Output",
+   CellTags->"UnDeclareNonCommutative"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9719, 322},
- {"UnDeclareNonCommutative", 9868, 326}
+ {"PrimaryExamplesSection", 10589, 348},
+ {"UnDeclareNonCommutative", 10737, 352}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[595, 21, 2306, 52, 51, "AnchorBarGrid",
+Cell[595, 21, 3197, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2904, 75, 66, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2973, 78, 509, 14, 83, "Usage",
+Cell[3795, 100, 300, 11, 44, "ObjectNameGrid"],
+Cell[4098, 113, 509, 14, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3507, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4632, 131, 385, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->686793750],
+ CellID->4492498],
 Cell[CellGroupData[{
-Cell[3919, 115, 195, 6, 25, "ExampleSection",
- CellID->989163990],
-Cell[4117, 123, 156, 4, 27, "Input",
+Cell[5042, 150, 196, 6, 25, "ExampleSection",
+ CellID->1185669752],
+Cell[5241, 158, 156, 4, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->1470795437],
-Cell[4276, 129, 173, 5, 51, "Text",
- CellTags->"UnDeclareNonCommutative",
- CellID->467320049],
+Cell[5400, 164, 116, 3, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[4474, 138, 123, 3, 27, "Input",
+Cell[5541, 171, 123, 3, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->88675667],
-Cell[4600, 143, 227, 7, 36, "Output",
- CellTags->"UnDeclareNonCommutative",
- CellID->415876422]
+Cell[5667, 176, 207, 6, 35, "Output",
+ CellTags->"UnDeclareNonCommutative"]
 }, Open  ]],
-Cell[4842, 153, 123, 2, 32, "Text",
- CellTags->"UnDeclareNonCommutative",
- CellID->568029723],
-Cell[4968, 157, 157, 4, 27, "Input",
+Cell[5889, 185, 66, 0, 31, "Notes"],
+Cell[5958, 187, 157, 4, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->669742468],
 Cell[CellGroupData[{
-Cell[5150, 165, 178, 5, 27, "Input",
+Cell[6140, 195, 178, 5, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->294586102],
-Cell[5331, 172, 229, 7, 36, "Output",
- CellTags->"UnDeclareNonCommutative",
- CellID->1002154582]
+Cell[6321, 202, 208, 6, 35, "Output",
+ CellTags->"UnDeclareNonCommutative"]
 }, Open  ]],
-Cell[5575, 182, 179, 5, 27, "Input",
+Cell[6544, 211, 179, 5, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->1907752862],
 Cell[CellGroupData[{
-Cell[5779, 191, 189, 5, 27, "Input",
+Cell[6748, 220, 189, 5, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->1458539742],
-Cell[5971, 198, 277, 9, 36, "Output",
- CellTags->"UnDeclareNonCommutative",
- CellID->799895096]
+Cell[6940, 227, 257, 8, 37, "Output",
+ CellTags->"UnDeclareNonCommutative"]
 }, Open  ]],
-Cell[6263, 210, 181, 5, 27, "Input",
+Cell[7212, 238, 181, 5, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->1096625129],
 Cell[CellGroupData[{
-Cell[6469, 219, 188, 5, 27, "Input",
+Cell[7418, 247, 188, 5, 27, "Input",
  CellTags->"UnDeclareNonCommutative",
  CellID->702684679],
-Cell[6660, 226, 279, 9, 36, "Output",
- CellTags->"UnDeclareNonCommutative",
- CellID->493928013]
+Cell[7609, 254, 259, 8, 37, "Output",
+ CellTags->"UnDeclareNonCommutative"]
 }, Open  ]]
 }, Open  ]],
-Cell[6966, 239, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7895, 266, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7034, 244, 270, 12, 70, "SeeAlsoSection",
+Cell[7963, 271, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7307, 258, 440, 15, 70, "Text",
- CellTags->"UnDeclareNonCommutative",
- CellID->349709371]
+Cell[8236, 285, 385, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[7762, 276, 23, 0, 70, "FooterCell"]
+Cell[8636, 301, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

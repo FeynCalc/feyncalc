@@ -10,62 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12072,        336]
-NotebookOptionsPosition[      7503,        223]
-NotebookOutlinePosition[     11281,        307]
-CellTagsIndexPosition[     11159,        301]
+NotebookDataLength[     12807,        354]
+NotebookOptionsPosition[      8707,        255]
+NotebookOutlinePosition[     12170,        331]
+CellTagsIndexPosition[     12089,        326]
 WindowTitle->FeynmanDoIntegrals
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/FeynmanDoIntegrals\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/FeynmanDoIntegrals"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynmanReduce\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynmanReduce"], "\<\"FeynmanParametrize1\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FeynmanParametrize1"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FeynmanDoIntegrals\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FeynmanDoIntegrals"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 FeynmanDoIntegrals.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68894], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/FeynmanDoIntegrals", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138946], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FeynmanDoIntegrals", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,20 @@ FeynmanDoIntegrals.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FeynmanDoIntegrals", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FeynmanDoIntegrals", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -112,39 +148,40 @@ and are passed on to these."
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1576791235],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->781559963],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->51204219],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "FeynmanDoIntegrals", "]"}]], "Input",
  CellTags->"FeynmanDoIntegrals",
- CellLabel->"In[1]:=",
+ CellLabel->"In[108]:=",
  CellID->1175204601],
 
 Cell[BoxData[
@@ -173,16 +210,13 @@ Cell[BoxData[
              RowBox[{"Integratedx", "@@", "#1"}], "&"}], ")"}], "/@", 
            RowBox[{"{", "##2", "}"}]}]}], ",", "#1"}], ")"}], "&"}], 
       ")"}]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{535, 54},
+ ImageSize->{504, 54},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FeynmanDoIntegrals",
- CellLabel->"Out[1]=",
- CellID->503306959]
+ CellLabel->"Out[108]="]
 }, Open  ]]
-}, Open  ]],
-
-Cell["", "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -214,9 +248,7 @@ Cell[TextData[{
   ButtonNote->"FeynmanParametrize1"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"FeynmanDoIntegrals",
- CellID->1859627924]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -233,10 +265,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 54.252004}", 
+   "built" -> "{2019, 3, 29, 17, 49, 35.538227}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -261,9 +293,10 @@ neither analytically nor numerically doable are left unevaluated, but can of \
 course be attempted evaluated by a simple sustitution. Beside the explicit \
 options of FeynmanDoIntegrals options of the integration functions specified \
 (FCIntegrate and FCNIntegrate) may be given and are passed on to these.", 
-    "synonyms" -> {}, "title" -> "FeynmanDoIntegrals", "titlemodifier" -> "", 
-    "windowtitle" -> "FeynmanDoIntegrals", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/FeynmanDoIntegrals"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "FeynmanDoIntegrals", 
+    "titlemodifier" -> "", "windowtitle" -> "FeynmanDoIntegrals", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/FeynmanDoIntegrals"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -282,62 +315,47 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[4786, 114, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1576791235]},
  "FeynmanDoIntegrals"->{
-  Cell[5418, 143, 154, 4, 27, "Input",
+  Cell[6723, 180, 156, 4, 27, "Input",
    CellTags->"FeynmanDoIntegrals",
    CellID->1175204601],
-  Cell[5575, 149, 1073, 31, 75, "Output",
-   CellTags->"FeynmanDoIntegrals",
-   CellID->503306959],
-  Cell[7016, 203, 445, 15, 32, "Text",
-   CellTags->"FeynmanDoIntegrals",
-   CellID->1859627924]}
+  Cell[6882, 186, 1055, 30, 75, "Output",
+   CellTags->"FeynmanDoIntegrals"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10693, 284},
- {"FeynmanDoIntegrals", 10839, 288}
+ {"FeynmanDoIntegrals", 11889, 317}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 2285, 52, 51, "AnchorBarGrid",
+Cell[590, 21, 3169, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2878, 75, 61, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2942, 78, 1819, 32, 292, "Usage",
+Cell[3762, 99, 295, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4082, 114, 1819, 32, 292, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4786, 114, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1576791235],
+Cell[5926, 150, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->781559963],
+Cell[6667, 176, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5199, 133, 194, 6, 25, "ExampleSection",
- CellID->51204219],
-Cell[CellGroupData[{
-Cell[5418, 143, 154, 4, 27, "Input",
+Cell[6723, 180, 156, 4, 27, "Input",
  CellTags->"FeynmanDoIntegrals",
  CellID->1175204601],
-Cell[5575, 149, 1073, 31, 75, "Output",
- CellTags->"FeynmanDoIntegrals",
- CellID->503306959]
+Cell[6882, 186, 1055, 30, 75, "Output",
+ CellTags->"FeynmanDoIntegrals"]
 }, Open  ]]
-}, Open  ]],
-Cell[6675, 184, 31, 0, 29, "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6743, 189, 270, 12, 31, "SeeAlsoSection",
+Cell[7998, 223, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7016, 203, 445, 15, 32, "Text",
- CellTags->"FeynmanDoIntegrals",
- CellID->1859627924]
+Cell[8271, 237, 394, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[7476, 221, 23, 0, 42, "FooterCell"]
+Cell[8680, 253, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10482,        339]
-NotebookOptionsPosition[      7013,        238]
-NotebookOutlinePosition[      9729,        310]
-CellTagsIndexPosition[      9612,        304]
+NotebookDataLength[     10589,        343]
+NotebookOptionsPosition[      7224,        246]
+NotebookOutlinePosition[      9891,        317]
+CellTagsIndexPosition[      9774,        311]
 WindowTitle->TrickMandelstam
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ TrickMandelstam.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$159202], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$286283], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TrickMandelstam", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ TrickMandelstam.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["TrickMandelstam", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["TrickMandelstam", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -88,9 +99,8 @@ Cell[BoxData[GridBox[{
            RowBox[{"m2", "^", "2"}], "+", 
            RowBox[{"m3", "^", "2"}], "+", 
            RowBox[{"m4", "^", "2"}]}]}], "}"}]}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "simplifies all sums in expr so that one of the \nMandelstam variables \
-s, t or u is eliminated by the relation ",
+     " \[LineSeparator]simplifies all sums in expr so that one of the \
+Mandelstam variables s, t or u is eliminated by the relation ",
      StyleBox["s",
       FontSlant->"Italic"],
      " + ",
@@ -144,7 +154,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2111662586],
+ CellID->1417438180],
 
 Cell[CellGroupData[{
 
@@ -154,7 +164,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->556438600],
+ CellID->356648591],
 
 Cell[CellGroupData[{
 
@@ -187,12 +197,11 @@ Cell[BoxData[
     RowBox[{"u", "-", 
      SubsuperscriptBox["M", "W", "2"]}], ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{101, 21},
+ ImageSize->{104, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TrickMandelstam",
- CellLabel->"Out[1]=",
- CellID->1660674587]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,12 +233,11 @@ Cell[BoxData[
     SuperscriptBox["M", "4"]}], "-", 
    SuperscriptBox["s", "2"], "-", "st", "-", "su"}], 
   TraditionalForm]], "Output",
- ImageSize->{127, 18},
+ ImageSize->{131, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TrickMandelstam",
- CellLabel->"Out[2]=",
- CellID->26761965]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -248,10 +256,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 23.720203}", 
+   "built" -> "{2019, 3, 29, 17, 55, 5.257262}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -261,9 +269,10 @@ TaggingRules->{
 all sums in expr so that one of the Mandelstam variables s, t or u is \
 eliminated by the relation s + t + u = m_1^2 + m_2^2+ m_3^2+ m_4^2 . The \
 trick is that the resulting sum has the most short number of terms.", 
-    "synonyms" -> {}, "title" -> "TrickMandelstam", "titlemodifier" -> "", 
-    "windowtitle" -> "TrickMandelstam", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/TrickMandelstam"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "TrickMandelstam", 
+    "titlemodifier" -> "", "windowtitle" -> "TrickMandelstam", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/TrickMandelstam"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -283,64 +292,59 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4445, 131, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4696, 141, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2111662586]},
+   CellID->1417438180]},
  "TrickMandelstam"->{
-  Cell[5078, 160, 545, 19, 31, "Input",
+  Cell[5329, 170, 545, 19, 33, "Input",
    CellTags->"TrickMandelstam",
    CellID->576381697],
-  Cell[5626, 181, 356, 13, 42, "Output",
-   CellTags->"TrickMandelstam",
-   CellID->1660674587],
-  Cell[6019, 199, 586, 18, 45, "Input",
+  Cell[5877, 191, 335, 12, 41, "Output",
+   CellTags->"TrickMandelstam"],
+  Cell[6249, 208, 586, 18, 45, "Input",
    CellTags->"TrickMandelstam",
    CellID->2075024335],
-  Cell[6608, 219, 339, 12, 39, "Output",
-   CellTags->"TrickMandelstam",
-   CellID->26761965]}
+  Cell[6838, 228, 320, 11, 37, "Output",
+   CellTags->"TrickMandelstam"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9062, 284},
- {"TrickMandelstam", 9205, 288}
+ {"PrimaryExamplesSection", 9268, 293},
+ {"TrickMandelstam", 9411, 297}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2274, 52, 51, "AnchorBarGrid",
+Cell[587, 21, 2302, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2864, 75, 58, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2925, 78, 1495, 49, 124, "Usage",
+Cell[2892, 76, 292, 11, 44, "ObjectNameGrid"],
+Cell[3187, 89, 1484, 48, 105, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4445, 131, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4696, 141, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2111662586],
+ CellID->1417438180],
 Cell[CellGroupData[{
-Cell[4858, 150, 195, 6, 25, "ExampleSection",
- CellID->556438600],
+Cell[5109, 160, 195, 6, 25, "ExampleSection",
+ CellID->356648591],
 Cell[CellGroupData[{
-Cell[5078, 160, 545, 19, 31, "Input",
+Cell[5329, 170, 545, 19, 33, "Input",
  CellTags->"TrickMandelstam",
  CellID->576381697],
-Cell[5626, 181, 356, 13, 42, "Output",
- CellTags->"TrickMandelstam",
- CellID->1660674587]
+Cell[5877, 191, 335, 12, 41, "Output",
+ CellTags->"TrickMandelstam"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6019, 199, 586, 18, 45, "Input",
+Cell[6249, 208, 586, 18, 45, "Input",
  CellTags->"TrickMandelstam",
  CellID->2075024335],
-Cell[6608, 219, 339, 12, 39, "Output",
- CellTags->"TrickMandelstam",
- CellID->26761965]
+Cell[6838, 228, 320, 11, 37, "Output",
+ CellTags->"TrickMandelstam"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6986, 236, 23, 0, 42, "FooterCell"]
+Cell[7197, 244, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

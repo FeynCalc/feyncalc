@@ -10,62 +10,97 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12682,        458]
-NotebookOptionsPosition[      7875,        301]
-NotebookOutlinePosition[     11027,        394]
-CellTagsIndexPosition[     10915,        388]
+NotebookDataLength[     14243,        500]
+NotebookOptionsPosition[     10444,        380]
+NotebookOutlinePosition[     12859,        448]
+CellTagsIndexPosition[     12748,        442]
 WindowTitle->SpinorUBar
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/SpinorUBar\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/SpinorUBar"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/SpinorUBar.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$142651], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/SpinorUBar", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Spinor\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Spinor"], "\<\"SpinorU\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorU"], "\<\"SpinorV\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorV"], "\<\"SpinorVBar\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorVBar"], "\<\"SpinorUBarD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorUBarD"], "\<\"SpinorUD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorUD"], "\<\"SpinorVD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorVD"], "\<\"SpinorVBarD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SpinorVBarD"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/SpinorUBar\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/SpinorUBar"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+SpinorUBar.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$253236], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/SpinorUBar", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,20 +108,35 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SpinorUBar", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SpinorUBar", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"SpinorUBar", "[", 
        RowBox[{"p", ",", " ", "m"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "denotes a ",
+     " \[LineSeparator]denotes a ",
      Cell[BoxData[
       FormBox[
-       OverscriptBox["u", "_"], TraditionalForm]]],
-     "-spinor."
+       RowBox[{
+        OverscriptBox["u", "_"], "(", 
+        RowBox[{"p", ",", "m"}], ")"}], TraditionalForm]], "InlineFormula"],
+     "-spinor that depends on the ",
+     Cell[BoxData["4"], "InlineFormula"],
+     "-dimensional momentum ",
+     Cell[BoxData["p"], "InlineFormula"],
+     "."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -112,7 +162,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1212950574],
+ CellID->383791461],
 
 Cell[CellGroupData[{
 
@@ -122,42 +172,16 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2055207211],
-
-Cell["One argument only assumes a massless spinor.", "Text",
- CellTags->"SpinorUBar",
- CellID->1710109400],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SpinorUBar", "[", "p", "]"}]], "Input",
- CellTags->"SpinorUBar",
- CellLabel->"In[1]:=",
- CellID->1755344465],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   OverscriptBox["u", "_"], "(", 
-   FormBox["p",
-    TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{37, 17},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SpinorUBar",
- CellLabel->"Out[1]=",
- CellID->1842146552]
-}, Open  ]],
+ CellID->1769382307],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SpinorUBar", "[", 
   RowBox[{"p", ",", "m"}], "]"}]], "Input",
- CellTags->"SpinorUBar",
- CellLabel->"In[2]:=",
- CellID->427410867],
+ CellTags->"SpinorU",
+ CellLabel->"In[1]:=",
+ CellID->1066488732],
 
 Cell[BoxData[
  FormBox[
@@ -167,84 +191,117 @@ Cell[BoxData[
     TraditionalForm], ",", 
    FormBox["m",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{59, 17},
+ ImageSize->{64, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SpinorUBar",
- CellLabel->"Out[2]=",
- CellID->1886464450]
+ CellTags->"SpinorU",
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"SpinorUBar", "[", 
-   RowBox[{"p", ",", "m"}], "]"}], "//", "StandardForm"}]], "Input",
- CellTags->"SpinorUBar",
- CellLabel->"In[3]:=",
- CellID->148613319],
-
-Cell[BoxData[
- RowBox[{"SpinorUBar", "[", 
-  RowBox[{"p", ",", "m"}], "]"}]], "Output",
- ImageSize->{134, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SpinorUBar",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1176797979]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"SpinorUBar", "[", 
-    RowBox[{"p", ",", "m"}], "]"}], "//", "FCI"}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"SpinorUBar",
- CellLabel->"In[4]:=",
- CellID->477030617],
+  RowBox[{"FCI", "[", "%", "]"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->2060242592],
 
 Cell[BoxData[
  RowBox[{"Spinor", "[", 
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}]], "Output",\
 
- ImageSize->{206, 15},
+ ImageSize->{205, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SpinorUBar",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1179870937]
+ CellLabel->"Out[2]//StandardForm="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SpinorUBar", "[", "p", "]"}]], "Input",
+ CellTags->"SpinorU",
+ CellLabel->"In[3]:=",
+ CellID->1219506664],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["u", "_"], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{41, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SpinorU",
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{"FCI", "[", "%", "]"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1046277707],
+
+Cell[BoxData[
+ RowBox[{"Spinor", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",\
+
+ ImageSize->{202, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]//StandardForm="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SpinorUBar", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->19834725],
+
+Cell[BoxData[
+ FormBox[
   RowBox[{
    RowBox[{
-    RowBox[{"SpinorUBar", "[", 
-     RowBox[{"p", ",", "m"}], "]"}], "//", "FCI"}], "//", "FCE"}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"SpinorUBar",
- CellLabel->"In[5]:=",
- CellID->1397974308],
-
-Cell[BoxData[
- RowBox[{"Spinor", "[", 
-  RowBox[{
-   RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}]], "Output",\
-
- ImageSize->{206, 15},
+    OverscriptBox["u", "_"], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{90, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SpinorUBar",
- CellLabel->"Out[5]//StandardForm=",
- CellID->118588427]
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracEquation", "[", "%", "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->1275256319],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{14, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -291,10 +348,32 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/SpinorVBar",
   ButtonNote->"SpinorVBar"],
   FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SpinorUBarD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorUBarD",
+  ButtonNote->"SpinorUBarD"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SpinorUD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorUD",
+  ButtonNote->"SpinorUD"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SpinorVD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorVD",
+  ButtonNote->"SpinorVD"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SpinorVBarD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorVBarD",
+  ButtonNote->"SpinorVBarD"],
+  FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"SpinorUBar",
- CellID->350873739]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -311,19 +390,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 10.940056}", 
+   "built" -> "{2019, 3, 29, 17, 53, 45.253933}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "SpinorUBar[p, m] denotes a OverscriptBox[u, _]-spinor.", 
-    "synonyms" -> {}, "title" -> "SpinorUBar", "titlemodifier" -> "", 
-    "windowtitle" -> "SpinorUBar", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/SpinorUBar"}, "SearchTextTranslated" -> ""},
+    "SpinorUBar[p, m] denotes a OverscriptBox[u, _](p, m)-spinor that depends \
+on the 4-dimensional momentum p.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "SpinorUBar", "titlemodifier" -> "", "windowtitle" -> 
+    "SpinorUBar", "type" -> "Symbol", "uri" -> "FeynCalc/ref/SpinorUBar"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -343,123 +423,85 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3410, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5276, 149, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1212950574]},
- "SpinorUBar"->{
-  Cell[4022, 126, 106, 2, 32, "Text",
-   CellTags->"SpinorUBar",
-   CellID->1710109400],
-  Cell[4153, 132, 132, 4, 27, "Input",
-   CellTags->"SpinorUBar",
-   CellID->1755344465],
-  Cell[4288, 138, 298, 11, 38, "Output",
-   CellTags->"SpinorUBar",
-   CellID->1842146552],
-  Cell[4623, 154, 154, 5, 27, "Input",
-   CellTags->"SpinorUBar",
-   CellID->427410867],
-  Cell[4780, 161, 342, 13, 38, "Output",
-   CellTags->"SpinorUBar",
-   CellID->1886464450],
-  Cell[5159, 179, 190, 6, 27, "Input",
-   CellTags->"SpinorUBar",
-   CellID->148613319],
-  Cell[5352, 187, 258, 8, 49, "Output",
-   CellTags->"SpinorUBar",
-   CellID->1176797979],
-  Cell[5647, 200, 221, 8, 27, "Input",
-   CellTags->"SpinorUBar",
-   CellID->477030617],
-  Cell[5871, 210, 302, 10, 49, "Output",
-   CellTags->"SpinorUBar",
-   CellID->1179870937],
-  Cell[6210, 225, 251, 9, 27, "Input",
-   CellTags->"SpinorUBar",
-   CellID->1397974308],
-  Cell[6464, 236, 301, 10, 49, "Output",
-   CellTags->"SpinorUBar",
-   CellID->118588427],
-  Cell[7133, 269, 700, 27, 70, "Text",
-   CellTags->"SpinorUBar",
-   CellID->350873739]}
+   CellID->383791461]},
+ "SpinorU"->{
+  Cell[5909, 178, 152, 5, 27, "Input",
+   CellTags->"SpinorU",
+   CellID->1066488732],
+  Cell[6064, 185, 318, 12, 37, "Output",
+   CellTags->"SpinorU"],
+  Cell[6850, 221, 129, 4, 27, "Input",
+   CellTags->"SpinorU",
+   CellID->1219506664],
+  Cell[6982, 227, 274, 10, 37, "Output",
+   CellTags->"SpinorU"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9671, 344},
- {"SpinorUBar", 9808, 348}
+ {"PrimaryExamplesSection", 12284, 424},
+ {"SpinorU", 12418, 428}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2253, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3669, 87, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2838, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2894, 78, 491, 17, 82, "Usage",
+Cell[4254, 110, 287, 11, 44, "ObjectNameGrid"],
+Cell[4544, 123, 707, 22, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3410, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5276, 149, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1212950574],
+ CellID->383791461],
 Cell[CellGroupData[{
-Cell[3823, 118, 196, 6, 25, "ExampleSection",
- CellID->2055207211],
-Cell[4022, 126, 106, 2, 32, "Text",
- CellTags->"SpinorUBar",
- CellID->1710109400],
+Cell[5688, 168, 196, 6, 25, "ExampleSection",
+ CellID->1769382307],
 Cell[CellGroupData[{
-Cell[4153, 132, 132, 4, 27, "Input",
- CellTags->"SpinorUBar",
- CellID->1755344465],
-Cell[4288, 138, 298, 11, 38, "Output",
- CellTags->"SpinorUBar",
- CellID->1842146552]
+Cell[5909, 178, 152, 5, 27, "Input",
+ CellTags->"SpinorU",
+ CellID->1066488732],
+Cell[6064, 185, 318, 12, 37, "Output",
+ CellTags->"SpinorU"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4623, 154, 154, 5, 27, "Input",
- CellTags->"SpinorUBar",
- CellID->427410867],
-Cell[4780, 161, 342, 13, 38, "Output",
- CellTags->"SpinorUBar",
- CellID->1886464450]
+Cell[6419, 202, 135, 4, 27, "Input",
+ CellID->2060242592],
+Cell[6557, 208, 256, 8, 49, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5159, 179, 190, 6, 27, "Input",
- CellTags->"SpinorUBar",
- CellID->148613319],
-Cell[5352, 187, 258, 8, 49, "Output",
- CellTags->"SpinorUBar",
- CellID->1176797979]
+Cell[6850, 221, 129, 4, 27, "Input",
+ CellTags->"SpinorU",
+ CellID->1219506664],
+Cell[6982, 227, 274, 10, 37, "Output",
+ CellTags->"SpinorU"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5647, 200, 221, 8, 27, "Input",
- CellTags->"SpinorUBar",
- CellID->477030617],
-Cell[5871, 210, 302, 10, 49, "Output",
- CellTags->"SpinorUBar",
- CellID->1179870937]
+Cell[7293, 242, 135, 4, 27, "Input",
+ CellID->1046277707],
+Cell[7431, 248, 256, 8, 49, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6210, 225, 251, 9, 27, "Input",
- CellTags->"SpinorUBar",
- CellID->1397974308],
-Cell[6464, 236, 301, 10, 49, "Output",
- CellTags->"SpinorUBar",
- CellID->118588427]
+Cell[7724, 261, 157, 5, 27, "Input",
+ CellID->19834725],
+Cell[7884, 268, 522, 20, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8443, 293, 110, 3, 27, "Input",
+ CellID->1275256319],
+Cell[8556, 298, 166, 5, 35, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[6792, 250, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8749, 307, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6860, 255, 270, 12, 31, "SeeAlsoSection",
+Cell[8817, 312, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7133, 269, 700, 27, 70, "Text",
- CellTags->"SpinorUBar",
- CellID->350873739]
+Cell[9090, 326, 1312, 49, 70, "SeeAlso"]
 }, Open  ]],
-Cell[7848, 299, 23, 0, 70, "FooterCell"]
+Cell[10417, 378, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25472,        942]
-NotebookOptionsPosition[     16187,        632]
-NotebookOutlinePosition[     21760,        799]
-CellTagsIndexPosition[     21648,        793]
+NotebookDataLength[     25920,        961]
+NotebookOptionsPosition[     17435,        683]
+NotebookOutlinePosition[     22268,        826]
+CellTagsIndexPosition[     22156,        820]
 WindowTitle->DataType
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/DataType\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/DataType"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/DataType.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DeclareNonCommutative\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DeclareNonCommutative"]},
+       
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DataType\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DataType"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/DataType.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$34891], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/DataType", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$57952], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DataType", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,60 +96,32 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["DataType", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["DataType", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"DataType", "[", 
-       RowBox[{"exp", ",", " ", "type"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "= True defines the object exp to have data-type type. DataType[exp1, \
-exp2, ..., type] defines the objects exp1, exp2, ...to have data-type type. \
-The default setting is DataType[__, _] := False. To assign a certain \
-data-type, do, e.g., DataType[x, PositiveInteger] = True.\n\nCurrently used \
-DataTypes: ",
-     ButtonBox["NonCommutative",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"NonCommutative",
-      ButtonNote->"NonCommutative"],
-     ", ",
-     ButtonBox["PositiveInteger",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"PositiveInteger",
-      ButtonNote->"PositiveInteger"],
-     ", ",
-     ButtonBox["NegativeInteger",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"NegativeInteger",
-      ButtonNote->"NegativeInteger"],
-     ", ",
-     ButtonBox["PositiveNumber",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"PositiveNumber",
-      ButtonNote->"PositiveNumber"],
-     ", ",
-     ButtonBox["FreeIndex",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"FreeIndex",
-      ButtonNote->"FreeIndex"],
-     ", ",
-     ButtonBox["GrassmannParity\n\n",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"GrassmannParity",
-      ButtonNote->"GrassmannParity"],
-     "PHI adds the DataTypes: ",
-     ButtonBox["UMatrix",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"UMatrix",
-      ButtonNote->"UMatrix"],
-     ", ",
-     ButtonBox["UScalar",
-      BaseStyle->"AddOnsLink",
-      ButtonData:>"UScalar",
-      ButtonNote->"UScalar"],
-     "."
+      RowBox[{
+       RowBox[{"DataType", "[", 
+        RowBox[{"exp", ",", " ", "type"}], "]"}], "=", "True"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]defines the object exp to have data-type type. \
+DataType[exp1, exp2, ..., type] defines the objects exp1, exp2, ...to have \
+data-type type. The default setting is DataType[__, _] := False. To assign a \
+certain data-type, do, e.g., DataType[x, PositiveInteger] = True."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -134,6 +129,86 @@ DataTypes: ",
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->737413801],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "Currently used DataTypes: ",
+ ButtonBox["NonCommutative",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"NonCommutative",
+  ButtonNote->"NonCommutative"],
+ ", ",
+ ButtonBox["PositiveInteger",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"PositiveInteger",
+  ButtonNote->"PositiveInteger"],
+ ", ",
+ ButtonBox["NegativeInteger",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"NegativeInteger",
+  ButtonNote->"NegativeInteger"],
+ ", ",
+ ButtonBox["PositiveNumber",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"PositiveNumber",
+  ButtonNote->"PositiveNumber"],
+ ", ",
+ ButtonBox["FreeIndex",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"FreeIndex",
+  ButtonNote->"FreeIndex"],
+ ", ",
+ ButtonBox["GrassmannParity",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"GrassmannParity",
+  ButtonNote->"GrassmannParity"]
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "If loaded, PHI adds the DataTypes: ",
+ ButtonBox["UMatrix",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"UMatrix",
+  ButtonNote->"UMatrix"],
+ ", ",
+ ButtonBox["UScalar",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"UScalar",
+  ButtonNote->"UScalar"],
+ "."
+}], "Notes"]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -152,7 +227,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1824112295],
+ CellID->1467822550],
 
 Cell[CellGroupData[{
 
@@ -162,11 +237,9 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->576268529],
+ CellID->1649406713],
 
-Cell["NonCommutative is just a data-type.", "Text",
- CellTags->"DataType",
- CellID->1046565146],
+Cell["NonCommutative is just a data-type.", "Notes"],
 
 Cell[BoxData[
  RowBox[{
@@ -199,18 +272,17 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"2", " ", "a"}], ")"}], ".", "f"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{105, 15},
+ ImageSize->{111, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[2]=",
- CellID->353088944]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell["\<\
 Since \"f \"and \"g\" have DataType NonCommutative the function DotSimplify \
 extracts only \"a\" out of the noncommutative product.\
-\>", "Text",
+\>", "Notes",
  CellTags->"DataType",
  CellID->2142748174],
 
@@ -228,12 +300,11 @@ Cell[BoxData[
    RowBox[{"f", ".", "g"}], "-", 
    RowBox[{"2", " ", "a", " ", 
     RowBox[{"g", ".", "f"}]}]}], TraditionalForm]], "Output",
- ImageSize->{92, 15},
+ ImageSize->{97, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[3]=",
- CellID->1728093744]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -312,12 +383,11 @@ Cell[BoxData[
    SuperscriptBox[
     RowBox[{"(", 
      RowBox[{"-", "1"}], ")"}], "z"]}], TraditionalForm]], "Output",
- ImageSize->{152, 15},
+ ImageSize->{162, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[7]=",
- CellID->538518934]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -338,12 +408,11 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"-", "1"}], ")"}], "z"], "-", "1"}], TraditionalForm]], "Output",\
 
- ImageSize->{117, 15},
+ ImageSize->{125, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[8]=",
- CellID->1174286962]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -359,12 +428,11 @@ Cell[BoxData[
   SuperscriptBox[
    RowBox[{"(", 
     RowBox[{"-", "1"}], ")"}], "z"], TraditionalForm]], "Output",
- ImageSize->{42, 15},
+ ImageSize->{46, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[9]=",
- CellID->1170774235]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -380,7 +448,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"DataType", "[", 
-    RowBox[{"m", ",", "ganzeZahl"}], "]"}], "=", "True"}], ";"}]], "Input",
+    RowBox[{"m", ",", "integer"}], "]"}], "=", "True"}], ";"}]], "Input",
  CellTags->"DataType",
  CellLabel->"In[11]:=",
  CellID->585585082],
@@ -397,7 +465,7 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"-", "1"}], ")"}], "^", "p_"}], "/;", 
        RowBox[{"DataType", "[", 
-        RowBox[{"p", ",", "ganzeZahl"}], "]"}]}], "\[RuleDelayed]", "1"}], 
+        RowBox[{"p", ",", "integer"}], "]"}]}], "\[RuleDelayed]", "1"}], 
      "}"}]}]}], ";"}]], "Input",
  CellTags->"DataType",
  CellLabel->"In[12]:=",
@@ -430,12 +498,11 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"-", "1"}], ")"}], "n"], " ", "x"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{112, 15},
+ ImageSize->{120, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[13]=",
- CellID->41432149]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -454,12 +521,11 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"-", "1"}], ")"}], "n"], " ", "x"}], "+", "1"}], 
   TraditionalForm]], "Output",
- ImageSize->{77, 15},
+ ImageSize->{82, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[14]=",
- CellID->1117139634]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -494,9 +560,7 @@ Cell[BoxData[
 
 Cell["\<\
 Certain FeynCalc objects have DataType PositiveInteger set to True.\
-\>", "Text",
- CellTags->"DataType",
- CellID->1789811013],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -509,17 +573,14 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ ImageSize->{33, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[18]=",
- CellID->1327437721]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
-Cell["PowerSimplify uses the DataType information.", "Text",
- CellTags->"DataType",
- CellID->2130197226],
+Cell["PowerSimplify uses the DataType information.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -536,12 +597,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{11, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[19]=",
- CellID->410693850]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -582,12 +642,11 @@ Cell[BoxData[
        "Floor"]}], "+", 
      RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", "m"}]}]]}], 
   TraditionalForm]], "Output",
- ImageSize->{233, 36},
+ ImageSize->{229, 27},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DataType",
- CellLabel->"Out[20]=",
- CellID->359212449]
+ CellLabel->"Out[20]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -616,16 +675,8 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/DeclareNonCommutative",
   ButtonNote->"DeclareNonCommutative"],
   FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["\"PHI - A Mathematica package for ChPT calculations\"",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/phi",
-  ButtonNote->"phi"],
-  FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"DataType",
- CellID->1742681066]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -642,10 +693,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 29.100598}", 
+   "built" -> "{2019, 3, 29, 17, 46, 26.799509}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -654,12 +705,10 @@ TaggingRules->{
     "DataType[exp, type] = True defines the object exp to have data-type \
 type. DataType[exp1, exp2, ..., type] defines the objects exp1, exp2, ...to \
 have data-type type. The default setting is DataType[__, _] := False. To \
-assign a certain data-type, do, e.g., DataType[x, PositiveInteger] = True. \
-Currently used DataTypes: NonCommutative, PositiveInteger, NegativeInteger, \
-PositiveNumber, FreeIndex, GrassmannParity PHI adds the DataTypes: UMatrix, \
-UScalar.", "synonyms" -> {}, "title" -> "DataType", "titlemodifier" -> "", 
-    "windowtitle" -> "DataType", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/DataType"}, "SearchTextTranslated" -> ""},
+assign a certain data-type, do, e.g., DataType[x, PositiveInteger] = True.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "DataType", 
+    "titlemodifier" -> "", "windowtitle" -> "DataType", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/DataType"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -679,271 +728,241 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4757, 139, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6575, 214, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1824112295]},
+   CellID->1467822550]},
  "DataType"->{
-  Cell[5368, 166, 95, 2, 32, "Text",
-   CellTags->"DataType",
-   CellID->1046565146],
-  Cell[5466, 170, 240, 8, 27, "Input",
+  Cell[7242, 243, 240, 8, 27, "Input",
    CellTags->"DataType",
    CellID->1643430273],
-  Cell[5731, 182, 242, 9, 27, "Input",
+  Cell[7507, 255, 242, 9, 27, "Input",
    CellTags->"DataType",
    CellID->370505351],
-  Cell[5976, 193, 344, 13, 36, "Output",
-   CellTags->"DataType",
-   CellID->353088944],
-  Cell[6335, 209, 200, 5, 52, "Text",
+  Cell[7752, 266, 324, 12, 37, "Output",
+   CellTags->"DataType"],
+  Cell[8091, 281, 201, 5, 47, "Notes",
    CellTags->"DataType",
    CellID->2142748174],
-  Cell[6560, 218, 131, 4, 27, "Input",
+  Cell[8317, 290, 131, 4, 27, "Input",
    CellTags->"DataType",
    CellID->1089346644],
-  Cell[6694, 224, 316, 11, 36, "Output",
-   CellTags->"DataType",
-   CellID->1728093744],
-  Cell[7025, 238, 290, 10, 27, "Input",
+  Cell[8451, 296, 295, 10, 37, "Output",
+   CellTags->"DataType"],
+  Cell[8761, 309, 290, 10, 27, "Input",
    CellTags->"DataType",
    CellID->2121249133],
-  Cell[7318, 250, 431, 15, 29, "Input",
+  Cell[9054, 321, 431, 15, 29, "Input",
    CellTags->"DataType",
    CellID->1782213069],
-  Cell[7752, 267, 414, 15, 29, "Input",
+  Cell[9488, 338, 414, 15, 29, "Input",
    CellTags->"DataType",
    CellID->1543768294],
-  Cell[8191, 286, 359, 14, 27, "Input",
+  Cell[9927, 357, 359, 14, 27, "Input",
    CellTags->"DataType",
    CellID->1135363295],
-  Cell[8553, 302, 456, 17, 36, "Output",
-   CellTags->"DataType",
-   CellID->538518934],
-  Cell[9046, 324, 125, 4, 27, "Input",
+  Cell[10289, 373, 436, 16, 37, "Output",
+   CellTags->"DataType"],
+  Cell[10762, 394, 125, 4, 27, "Input",
    CellTags->"DataType",
    CellID->703322505],
-  Cell[9174, 330, 388, 15, 36, "Output",
-   CellTags->"DataType",
-   CellID->1174286962],
-  Cell[9599, 350, 126, 4, 27, "Input",
+  Cell[10890, 400, 367, 14, 37, "Output",
+   CellTags->"DataType"],
+  Cell[11294, 419, 126, 4, 27, "Input",
    CellTags->"DataType",
    CellID->1711798640],
-  Cell[9728, 356, 278, 10, 36, "Output",
-   CellTags->"DataType",
-   CellID->1170774235],
-  Cell[10021, 369, 211, 7, 27, "Input",
+  Cell[11423, 425, 257, 9, 37, "Output",
+   CellTags->"DataType"],
+  Cell[11695, 437, 211, 7, 27, "Input",
    CellTags->"DataType",
    CellID->1299043006],
-  Cell[10235, 378, 206, 7, 27, "Input",
+  Cell[11909, 446, 204, 7, 27, "Input",
    CellTags->"DataType",
    CellID->585585082],
-  Cell[10444, 387, 448, 16, 29, "Input",
+  Cell[12116, 455, 446, 16, 29, "Input",
    CellTags->"DataType",
    CellID->846476868],
-  Cell[10917, 407, 310, 12, 27, "Input",
+  Cell[12587, 475, 310, 12, 27, "Input",
    CellTags->"DataType",
    CellID->1533391272],
-  Cell[11230, 421, 405, 16, 36, "Output",
-   CellTags->"DataType",
-   CellID->41432149],
-  Cell[11672, 442, 125, 4, 27, "Input",
+  Cell[12900, 489, 386, 15, 37, "Output",
+   CellTags->"DataType"],
+  Cell[13323, 509, 125, 4, 27, "Input",
    CellTags->"DataType",
    CellID->1293981643],
-  Cell[11800, 448, 335, 13, 36, "Output",
-   CellTags->"DataType",
-   CellID->1117139634],
-  Cell[12150, 464, 170, 6, 27, "Input",
+  Cell[13451, 515, 314, 12, 37, "Output",
+   CellTags->"DataType"],
+  Cell[13780, 530, 170, 6, 27, "Input",
    CellTags->"DataType",
    CellID->943541195],
-  Cell[12323, 472, 242, 8, 27, "Input",
+  Cell[13953, 538, 242, 8, 27, "Input",
    CellTags->"DataType",
    CellID->1739727758],
-  Cell[12568, 482, 292, 10, 27, "Input",
+  Cell[14198, 548, 292, 10, 27, "Input",
    CellTags->"DataType",
    CellID->1265503982],
-  Cell[12863, 494, 135, 4, 32, "Text",
-   CellTags->"DataType",
-   CellID->1789811013],
-  Cell[13023, 502, 168, 5, 27, "Input",
+  Cell[14610, 566, 168, 5, 27, "Input",
    CellTags->"DataType",
    CellID->693329232],
-  Cell[13194, 509, 214, 7, 36, "Output",
-   CellTags->"DataType",
-   CellID->1327437721],
-  Cell[13423, 519, 104, 2, 32, "Text",
-   CellTags->"DataType",
-   CellID->2130197226],
-  Cell[13552, 525, 253, 9, 27, "Input",
+  Cell[14781, 573, 193, 6, 35, "Output",
+   CellTags->"DataType"],
+  Cell[15075, 586, 253, 9, 27, "Input",
    CellTags->"DataType",
    CellID->1014422116],
-  Cell[13808, 536, 210, 7, 36, "Output",
-   CellTags->"DataType",
-   CellID->410693850],
-  Cell[14055, 548, 246, 8, 27, "Input",
+  Cell[15331, 597, 190, 6, 35, "Output",
+   CellTags->"DataType"],
+  Cell[15558, 608, 246, 8, 27, "Input",
    CellTags->"DataType",
    CellID->1682583494],
-  Cell[14304, 558, 1012, 31, 57, "Output",
-   CellTags->"DataType",
-   CellID->359212449],
-  Cell[15684, 612, 461, 15, 32, "Text",
-   CellTags->"DataType",
-   CellID->1742681066]}
+  Cell[15807, 618, 992, 30, 48, "Output",
+   CellTags->"DataType"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18380, 680},
- {"DataType", 18516, 684}
+ {"PrimaryExamplesSection", 19459, 729},
+ {"DataType", 19595, 733}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2244, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 3035, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2827, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2881, 78, 1851, 57, 229, "Usage",
+Cell[3618, 98, 285, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3928, 113, 681, 17, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4757, 139, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1824112295],
+Cell[4634, 134, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->737413801],
+Cell[5375, 160, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5409, 162, 834, 32, 47, "Notes",
+ CellID->1067943069],
+Cell[6246, 196, 280, 12, 31, "Notes"]
+}, Closed]]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[5170, 158, 195, 6, 25, "ExampleSection",
- CellID->576268529],
-Cell[5368, 166, 95, 2, 32, "Text",
- CellTags->"DataType",
- CellID->1046565146],
-Cell[5466, 170, 240, 8, 27, "Input",
+Cell[6575, 214, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1467822550],
+Cell[CellGroupData[{
+Cell[6988, 233, 196, 6, 25, "ExampleSection",
+ CellID->1649406713],
+Cell[7187, 241, 52, 0, 31, "Notes"],
+Cell[7242, 243, 240, 8, 27, "Input",
  CellTags->"DataType",
  CellID->1643430273],
 Cell[CellGroupData[{
-Cell[5731, 182, 242, 9, 27, "Input",
+Cell[7507, 255, 242, 9, 27, "Input",
  CellTags->"DataType",
  CellID->370505351],
-Cell[5976, 193, 344, 13, 36, "Output",
- CellTags->"DataType",
- CellID->353088944]
+Cell[7752, 266, 324, 12, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
-Cell[6335, 209, 200, 5, 52, "Text",
+Cell[8091, 281, 201, 5, 47, "Notes",
  CellTags->"DataType",
  CellID->2142748174],
 Cell[CellGroupData[{
-Cell[6560, 218, 131, 4, 27, "Input",
+Cell[8317, 290, 131, 4, 27, "Input",
  CellTags->"DataType",
  CellID->1089346644],
-Cell[6694, 224, 316, 11, 36, "Output",
- CellTags->"DataType",
- CellID->1728093744]
+Cell[8451, 296, 295, 10, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
-Cell[7025, 238, 290, 10, 27, "Input",
+Cell[8761, 309, 290, 10, 27, "Input",
  CellTags->"DataType",
  CellID->2121249133],
-Cell[7318, 250, 431, 15, 29, "Input",
+Cell[9054, 321, 431, 15, 29, "Input",
  CellTags->"DataType",
  CellID->1782213069],
-Cell[7752, 267, 414, 15, 29, "Input",
+Cell[9488, 338, 414, 15, 29, "Input",
  CellTags->"DataType",
  CellID->1543768294],
 Cell[CellGroupData[{
-Cell[8191, 286, 359, 14, 27, "Input",
+Cell[9927, 357, 359, 14, 27, "Input",
  CellTags->"DataType",
  CellID->1135363295],
-Cell[8553, 302, 456, 17, 36, "Output",
- CellTags->"DataType",
- CellID->538518934]
+Cell[10289, 373, 436, 16, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9046, 324, 125, 4, 27, "Input",
+Cell[10762, 394, 125, 4, 27, "Input",
  CellTags->"DataType",
  CellID->703322505],
-Cell[9174, 330, 388, 15, 36, "Output",
- CellTags->"DataType",
- CellID->1174286962]
+Cell[10890, 400, 367, 14, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9599, 350, 126, 4, 27, "Input",
+Cell[11294, 419, 126, 4, 27, "Input",
  CellTags->"DataType",
  CellID->1711798640],
-Cell[9728, 356, 278, 10, 36, "Output",
- CellTags->"DataType",
- CellID->1170774235]
+Cell[11423, 425, 257, 9, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
-Cell[10021, 369, 211, 7, 27, "Input",
+Cell[11695, 437, 211, 7, 27, "Input",
  CellTags->"DataType",
  CellID->1299043006],
-Cell[10235, 378, 206, 7, 27, "Input",
+Cell[11909, 446, 204, 7, 27, "Input",
  CellTags->"DataType",
  CellID->585585082],
-Cell[10444, 387, 448, 16, 29, "Input",
+Cell[12116, 455, 446, 16, 29, "Input",
  CellTags->"DataType",
  CellID->846476868],
 Cell[CellGroupData[{
-Cell[10917, 407, 310, 12, 27, "Input",
+Cell[12587, 475, 310, 12, 27, "Input",
  CellTags->"DataType",
  CellID->1533391272],
-Cell[11230, 421, 405, 16, 36, "Output",
- CellTags->"DataType",
- CellID->41432149]
+Cell[12900, 489, 386, 15, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11672, 442, 125, 4, 27, "Input",
+Cell[13323, 509, 125, 4, 27, "Input",
  CellTags->"DataType",
  CellID->1293981643],
-Cell[11800, 448, 335, 13, 36, "Output",
- CellTags->"DataType",
- CellID->1117139634]
+Cell[13451, 515, 314, 12, 37, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
-Cell[12150, 464, 170, 6, 27, "Input",
+Cell[13780, 530, 170, 6, 27, "Input",
  CellTags->"DataType",
  CellID->943541195],
-Cell[12323, 472, 242, 8, 27, "Input",
+Cell[13953, 538, 242, 8, 27, "Input",
  CellTags->"DataType",
  CellID->1739727758],
-Cell[12568, 482, 292, 10, 27, "Input",
+Cell[14198, 548, 292, 10, 27, "Input",
  CellTags->"DataType",
  CellID->1265503982],
-Cell[12863, 494, 135, 4, 32, "Text",
- CellTags->"DataType",
- CellID->1789811013],
+Cell[14493, 560, 92, 2, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[13023, 502, 168, 5, 27, "Input",
+Cell[14610, 566, 168, 5, 27, "Input",
  CellTags->"DataType",
  CellID->693329232],
-Cell[13194, 509, 214, 7, 36, "Output",
- CellTags->"DataType",
- CellID->1327437721]
+Cell[14781, 573, 193, 6, 35, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
-Cell[13423, 519, 104, 2, 32, "Text",
- CellTags->"DataType",
- CellID->2130197226],
+Cell[14989, 582, 61, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[13552, 525, 253, 9, 27, "Input",
+Cell[15075, 586, 253, 9, 27, "Input",
  CellTags->"DataType",
  CellID->1014422116],
-Cell[13808, 536, 210, 7, 36, "Output",
- CellTags->"DataType",
- CellID->410693850]
+Cell[15331, 597, 190, 6, 35, "Output",
+ CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14055, 548, 246, 8, 27, "Input",
+Cell[15558, 608, 246, 8, 27, "Input",
  CellTags->"DataType",
  CellID->1682583494],
-Cell[14304, 558, 1012, 31, 57, "Output",
- CellTags->"DataType",
- CellID->359212449]
+Cell[15807, 618, 992, 30, 48, "Output",
+ CellTags->"DataType"]
 }, Open  ]]
 }, Open  ]],
-Cell[15343, 593, 31, 0, 29, "SectionFooterSpacer"]
+Cell[16826, 652, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15411, 598, 270, 12, 31, "SeeAlsoSection",
+Cell[16894, 657, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[15684, 612, 461, 15, 32, "Text",
- CellTags->"DataType",
- CellID->1742681066]
+Cell[17167, 671, 226, 7, 54, "SeeAlso"]
 }, Open  ]],
-Cell[16160, 630, 23, 0, 42, "FooterCell"]
+Cell[17408, 681, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

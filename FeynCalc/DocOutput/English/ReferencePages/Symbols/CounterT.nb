@@ -10,62 +10,88 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13591,        458]
-NotebookOptionsPosition[     10463,        363]
-NotebookOutlinePosition[     12829,        429]
-CellTagsIndexPosition[     12717,        423]
+NotebookDataLength[     13858,        459]
+NotebookOptionsPosition[     10918,        372]
+NotebookOutlinePosition[     13167,        434]
+CellTagsIndexPosition[     13055,        428]
 WindowTitle->CounterT
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/CounterT\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/CounterT"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/CounterT.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"CounterTerm\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CounterTerm"], "\<\"GluonPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonPropagator"], "\<\"QuarkPropagator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/QuarkPropagator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/CounterT\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/CounterT"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/CounterT.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32472], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/CounterT", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49031], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/CounterT", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +99,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["CounterT", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["CounterT", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->771362176],
+ CellID->1489451875],
 
 Cell[CellGroupData[{
 
@@ -117,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1163533640],
+ CellID->1189793411],
 
 Cell[CellGroupData[{
 
@@ -155,32 +191,24 @@ Cell[BoxData[
          RowBox[{
           FractionBox[
            RowBox[{"10", " ", 
-            FormBox[
-             SuperscriptBox[
-              FormBox[
-               FormBox["p",
-                TraditionalForm],
-               TraditionalForm], 
-              FormBox[
-               FormBox[
-                FormBox["\[Mu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm]],
-             TraditionalForm], " ", 
-            FormBox[
-             SuperscriptBox[
-              FormBox[
-               FormBox["p",
-                TraditionalForm],
-               TraditionalForm], 
-              FormBox[
-               FormBox[
-                FormBox["\[Nu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm]],
-             TraditionalForm]}], "3"], "-", 
+            SuperscriptBox[
+             FormBox[
+              FormBox["p",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm]], " ", 
+            SuperscriptBox[
+             FormBox[
+              FormBox["p",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm]]}], "3"], "-", 
           RowBox[{
            FractionBox["10", "3"], " ", 
            SuperscriptBox[
@@ -188,22 +216,16 @@ Cell[BoxData[
              FormBox["p",
               TraditionalForm],
              TraditionalForm], "2"], " ", 
-           FormBox[
-            SuperscriptBox["g", 
-             RowBox[{
-              FormBox[
-               FormBox[
-                FormBox["\[Mu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm], 
-              FormBox[
-               FormBox[
-                FormBox["\[Nu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm]}]],
-            TraditionalForm]}]}], ")"}]}], 
+           SuperscriptBox["g", 
+            RowBox[{
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm]}]]}]}], ")"}]}], 
        TagBox["\[CurlyEpsilon]",
         TraditionalForm]], "+", 
       FractionBox[
@@ -230,89 +252,78 @@ Cell[BoxData[
              FormBox["p",
               TraditionalForm],
              TraditionalForm], "2"], " ", 
-           FormBox[
-            SuperscriptBox["g", 
-             RowBox[{
-              FormBox[
-               FormBox[
-                FormBox["\[Mu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm], 
-              FormBox[
-               FormBox[
-                FormBox["\[Nu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm]}]],
-            TraditionalForm]}], "-", 
+           SuperscriptBox["g", 
+            RowBox[{
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm]}]]}], "-", 
           FractionBox[
            RowBox[{"4", " ", 
-            FormBox[
-             SuperscriptBox[
-              FormBox[
-               FormBox["p",
-                TraditionalForm],
-               TraditionalForm], 
-              FormBox[
-               FormBox[
-                FormBox["\[Mu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm]],
-             TraditionalForm], " ", 
-            FormBox[
-             SuperscriptBox[
-              FormBox[
-               FormBox["p",
-                TraditionalForm],
-               TraditionalForm], 
-              FormBox[
-               FormBox[
-                FormBox["\[Nu]",
-                 TraditionalForm],
-                TraditionalForm],
-               TraditionalForm]],
-             TraditionalForm]}], "3"]}], ")"}]}], 
+            SuperscriptBox[
+             FormBox[
+              FormBox["p",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm]], " ", 
+            SuperscriptBox[
+             FormBox[
+              FormBox["p",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm]]}], "3"]}], ")"}]}], 
        TagBox["\[CurlyEpsilon]",
         TraditionalForm]]}], ")"}]}], "-", 
-   FractionBox[
-    RowBox[{"\[ImaginaryI]", " ", 
-     SuperscriptBox["\[Delta]", 
-      RowBox[{
-       FormBox[
-        FormBox["a",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox["b",
-         TraditionalForm],
-        TraditionalForm]}]], " ", 
-     FormBox[
-      SuperscriptBox["g", 
+   FormBox[
+    FractionBox[
+     RowBox[{"\[ImaginaryI]", " ", 
+      SuperscriptBox["\[Delta]", 
        RowBox[{
         FormBox[
-         FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
+         FormBox["a",
           TraditionalForm],
          TraditionalForm], 
         FormBox[
-         FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
+         FormBox["b",
           TraditionalForm],
-         TraditionalForm]}]],
-      TraditionalForm]}], 
-    SuperscriptBox[
-     FormBox["p",
-      TraditionalForm], "2"]]}], TraditionalForm]], "Output",
- ImageSize->{406, 166},
+         TraditionalForm]}]], " ", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]]}], 
+     InterpretationBox[
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`p, D], 
+        FeynCalc`Momentum[$CellContext`p, D]]],
+      Editable->False]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{418, 168},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CounterT",
- CellLabel->"Out[1]=",
- CellID->1579672535]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -354,9 +365,7 @@ Cell[TextData[{
   ButtonNote->"QuarkPropagator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"CounterT",
- CellID->1128461713]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -373,19 +382,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 18.762961}", 
+   "built" -> "{2019, 3, 29, 17, 46, 5.592400}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "CounterT is a factor used by GluonPropagator and QuarkPropagator when \
-CounterTerms is set to All.", "synonyms" -> {}, "title" -> "CounterT", 
-    "titlemodifier" -> "", "windowtitle" -> "CounterT", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/CounterT"}, "SearchTextTranslated" -> ""},
+CounterTerms is set to All.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "CounterT", "titlemodifier" -> "", "windowtitle" -> "CounterT", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/CounterT"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -405,61 +414,53 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3307, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4520, 130, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->771362176]},
+   CellID->1489451875]},
  "CounterT"->{
-  Cell[3940, 123, 302, 7, 27, "Input",
+  Cell[5154, 159, 302, 7, 27, "Input",
    CellTags->"CounterT",
    CellID->505594925],
-  Cell[4245, 132, 5211, 182, 187, "Output",
-   CellTags->"CounterT",
-   CellID->1579672535],
-  Cell[9824, 337, 597, 21, 32, "Text",
-   CellTags->"CounterT",
-   CellID->1128461713]}
+  Cell[5459, 168, 4493, 157, 189, "Output",
+   CellTags->"CounterT"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12291, 406},
- {"CounterT", 12425, 410}
+ {"PrimaryExamplesSection", 12738, 415},
+ {"CounterT", 12874, 419}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2244, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 3223, 78, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2827, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2881, 78, 401, 12, 82, "Usage",
+Cell[3806, 101, 285, 11, 44, "ObjectNameGrid"],
+Cell[4094, 114, 401, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3307, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4520, 130, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->771362176],
+ CellID->1489451875],
 Cell[CellGroupData[{
-Cell[3719, 113, 196, 6, 25, "ExampleSection",
- CellID->1163533640],
+Cell[4933, 149, 196, 6, 25, "ExampleSection",
+ CellID->1189793411],
 Cell[CellGroupData[{
-Cell[3940, 123, 302, 7, 27, "Input",
+Cell[5154, 159, 302, 7, 27, "Input",
  CellTags->"CounterT",
  CellID->505594925],
-Cell[4245, 132, 5211, 182, 187, "Output",
- CellTags->"CounterT",
- CellID->1579672535]
+Cell[5459, 168, 4493, 157, 189, "Output",
+ CellTags->"CounterT"]
 }, Open  ]]
 }, Open  ]],
-Cell[9483, 318, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9979, 329, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9551, 323, 270, 12, 31, "SeeAlsoSection",
+Cell[10047, 334, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9824, 337, 597, 21, 32, "Text",
- CellTags->"CounterT",
- CellID->1128461713]
+Cell[10320, 348, 556, 19, 55, "SeeAlso"]
 }, Open  ]],
-Cell[10436, 361, 23, 0, 42, "FooterCell"]
+Cell[10891, 370, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7707,        238]
-NotebookOptionsPosition[      4785,        153]
-NotebookOutlinePosition[      7164,        217]
-CellTagsIndexPosition[      7044,        211]
+NotebookDataLength[      7870,        242]
+NotebookOptionsPosition[      5218,        166]
+NotebookOutlinePosition[      7380,        224]
+CellTagsIndexPosition[      7300,        219]
 WindowTitle->FeynmanParametrize
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ FeynmanParametrize.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69902], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140310], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynmanParametrize", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ FeynmanParametrize.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FeynmanParametrize", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FeynmanParametrize", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -94,39 +107,40 @@ integration momentum)."
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->399710816],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->704720213],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1051760138],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "FeynmanParametrize", "]"}]], "Input",
  CellTags->"FeynmanParametrize",
- CellLabel->"In[1]:=",
+ CellLabel->"In[109]:=",
  CellID->1392922438],
 
 Cell[BoxData[
@@ -139,14 +153,13 @@ Cell[BoxData[
       RowBox[{"FCGV", "(", "\<\"y\"\>", ")"}], ",", 
       RowBox[{"FCGV", "(", "\<\"z\"\>", ")"}]}], "}"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{408, 15},
+ ImageSize->{399, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FeynmanParametrize",
- CellLabel->"Out[1]=",
- CellID->600789752]
+ CellLabel->"Out[109]="]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -163,10 +176,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 58.377530}", 
+   "built" -> "{2019, 3, 29, 17, 49, 38.314416}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -174,8 +187,8 @@ TaggingRules->{
     "None", "summary" -> 
     "FeynmanParametrize[exp, k] introduces feynman parameters for all \
 one-loop integrals in exp (k = integration momentum).", "synonyms" -> {}, 
-    "title" -> "FeynmanParametrize", "titlemodifier" -> "", "windowtitle" -> 
-    "FeynmanParametrize", "type" -> "Symbol", "uri" -> 
+    "tabletags" -> {}, "title" -> "FeynmanParametrize", "titlemodifier" -> "",
+     "windowtitle" -> "FeynmanParametrize", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FeynmanParametrize"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -195,51 +208,42 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3443, 96, 387, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->399710816]},
  "FeynmanParametrize"->{
-  Cell[4076, 125, 154, 4, 27, "Input",
+  Cell[4525, 139, 156, 4, 27, "Input",
    CellTags->"FeynmanParametrize",
    CellID->1392922438],
-  Cell[4233, 131, 486, 15, 36, "Output",
-   CellTags->"FeynmanParametrize",
-   CellID->600789752]}
+  Cell[4684, 145, 468, 14, 37, "Output",
+   CellTags->"FeynmanParametrize"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6679, 197},
- {"FeynmanParametrize", 6823, 201}
+ {"FeynmanParametrize", 7101, 210}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 2285, 52, 51, "AnchorBarGrid",
+Cell[590, 21, 2314, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2878, 75, 61, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2942, 78, 476, 14, 83, "Usage",
+Cell[2907, 76, 295, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3227, 91, 476, 14, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3443, 96, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->399710816],
+Cell[3728, 109, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->704720213],
+Cell[4469, 135, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3855, 115, 196, 6, 25, "ExampleSection",
- CellID->1051760138],
-Cell[CellGroupData[{
-Cell[4076, 125, 154, 4, 27, "Input",
+Cell[4525, 139, 156, 4, 27, "Input",
  CellTags->"FeynmanParametrize",
  CellID->1392922438],
-Cell[4233, 131, 486, 15, 36, "Output",
- CellTags->"FeynmanParametrize",
- CellID->600789752]
+Cell[4684, 145, 468, 14, 37, "Output",
+ CellTags->"FeynmanParametrize"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
-Cell[4758, 151, 23, 0, 42, "FooterCell"]
+Cell[5191, 164, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

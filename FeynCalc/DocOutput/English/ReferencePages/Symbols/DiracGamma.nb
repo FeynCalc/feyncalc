@@ -10,62 +10,92 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23803,        891]
-NotebookOptionsPosition[     16594,        654]
-NotebookOutlinePosition[     21039,        784]
-CellTagsIndexPosition[     20925,        778]
+NotebookDataLength[     28753,       1096]
+NotebookOptionsPosition[     21578,        864]
+NotebookOutlinePosition[     25334,        972]
+CellTagsIndexPosition[     25220,        966]
 WindowTitle->DiracGamma
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/DiracGamma\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/DiracGamma"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/DiracGamma.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40066], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/DiracGamma", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracGammaExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGammaExpand"], "\<\"GA\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GA"], "\<\"DiracSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSimplify"], "\<\"GS\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GS"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracTrick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DiracGamma\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DiracGamma"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+DiracGamma.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65002], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DiracGamma", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,38 +103,28 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["DiracGamma", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["DiracGamma", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"DiracGamma", "[", 
        RowBox[{"x", ",", " ", "dim"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "is the head of all Dirac matrices and slashes (in the internal \
-representation). Use DiracMatrix (or GA, GAD) and DiracSlash (or GS, GSD) for \
-manual (short) input. DiracGamma[x, 4] simplifies to DiracGamma[x]. \
-DiracGamma[5] is ",
-     Cell[BoxData[
-      FormBox[
-       SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
-     ". DiracGamma[6] is ",
-     Cell[BoxData[
-      FormBox[
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"1", "+", 
-          SuperscriptBox["\[Gamma]", "5"]}], ")"}], "/", "2."}], 
-       TraditionalForm]]],
-     " DiracGamma[7] is ",
-     Cell[BoxData[
-      FormBox[
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"1", "-", 
-          SuperscriptBox["\[Gamma]", "5"]}], ")"}], "/", "2."}], 
-       TraditionalForm]]]
+     " \[LineSeparator]is the head of all Dirac matrices and slashes (in the \
+internal representation). Use GA, GAD, GS or GSD for manual (short) input."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -112,6 +132,70 @@ DiracGamma[5] is ",
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->824433544],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["DiracGamma[x, 4] simplifies to DiracGamma[x].", "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "DiracGamma[5] is ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]]
+}], "Notes"],
+
+Cell[TextData[{
+ "DiracGamma[6] is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      SuperscriptBox["\[Gamma]", "5"]}], ")"}], "/", "2."}], 
+   TraditionalForm]]],
+ " "
+}], "Notes"],
+
+Cell[TextData[{
+ "DiracGamma[7] is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      SuperscriptBox["\[Gamma]", "5"]}], ")"}], "/", "2."}], TraditionalForm]]]
+}], "Notes"]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -130,7 +214,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->149641272],
+ CellID->649140632],
 
 Cell[CellGroupData[{
 
@@ -140,7 +224,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->568553789],
+ CellID->330910910],
 
 Cell[CellGroupData[{
 
@@ -156,12 +240,11 @@ Cell[BoxData[
    OverscriptBox["\[Gamma]", "_"], 
    FormBox["5",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{22, 18},
+ ImageSize->{24, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[1]=",
- CellID->842552946]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,12 +264,11 @@ Cell[BoxData[
     FormBox["\[Alpha]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 17},
+ ImageSize->{24, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[2]=",
- CellID->1687472527]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -201,9 +283,7 @@ Cell[TextData[{
   FormBox[
    RowBox[{"\[Gamma]", "\[CenterDot]", "q"}], TraditionalForm]]],
  "."
-}], "Text",
- CellTags->"DiracGamma",
- CellID->299092642],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -224,12 +304,11 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{32, 17},
+ ImageSize->{37, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[3]=",
- CellID->1138458552]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -270,12 +349,11 @@ Cell[BoxData[
           TraditionalForm], "_"]}],
        TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{129, 18},
+ ImageSize->{141, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[4]=",
- CellID->1631372749]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -297,22 +375,20 @@ Cell[BoxData[
     FormBox["q",
      TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{30, 17},
+ ImageSize->{34, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[5]=",
- CellID->567019698]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", "=", 
-  RowBox[{
-   RowBox[{"GS", "[", 
-    RowBox[{"p", "-", "q"}], "]"}], ".", 
-   RowBox[{"GS", "[", "p", "]"}]}]}]], "Input",
+ RowBox[{
+  RowBox[{"GS", "[", 
+   RowBox[{"p", "-", "q"}], "]"}], ".", 
+  RowBox[{"GS", "[", "p", "]"}]}]], "Input",
  CellTags->"DiracGamma",
  CellLabel->"In[6]:=",
  CellID->294479801],
@@ -346,19 +422,17 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{130, 18},
+ ImageSize->{140, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[6]=",
- CellID->445474776]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a2", "=", 
-  RowBox[{"DiracGammaExpand", "[", "a1", "]"}]}]], "Input",
+ RowBox[{"DiracGammaExpand", "[", "%", "]"}]], "Input",
  CellTags->"DiracGamma",
  CellLabel->"In[7]:=",
  CellID->324312499],
@@ -390,24 +464,22 @@ Cell[BoxData[
        FormBox["p",
         TraditionalForm], "_"],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{135, 18},
+ ImageSize->{147, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[7]=",
- CellID->754251999]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a3", "=", 
-  RowBox[{
-   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
-   RowBox[{"GSD", "[", 
-    RowBox[{"p", "-", "q"}], "]"}], ".", 
-   RowBox[{"GSD", "[", "q", "]"}], ".", 
-   RowBox[{"GAD", "[", "\[Mu]", "]"}]}]}]], "Input",
+ RowBox[{
+  RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"GSD", "[", 
+   RowBox[{"p", "-", "q"}], "]"}], ".", 
+  RowBox[{"GSD", "[", "q", "]"}], ".", 
+  RowBox[{"GAD", "[", "\[Mu]", "]"}]}]], "Input",
  CellTags->"DiracGamma",
  CellLabel->"In[8]:=",
  CellID->667969280],
@@ -450,19 +522,17 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{165, 19},
+ ImageSize->{180, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[8]=",
- CellID->712838090]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a4", "=", 
-  RowBox[{"DiracTrick", "[", "a3", "]"}]}]], "Input",
+ RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
  CellTags->"DiracGamma",
  CellLabel->"In[9]:=",
  CellID->1907296195],
@@ -476,11 +546,13 @@ Cell[BoxData[
       FormBox["\<\"(\"\>",
        TraditionalForm], 
       FormBox[
-       RowBox[{
-        FormBox["p",
-         TraditionalForm], "-", 
-        FormBox["q",
-         TraditionalForm]}],
+       FormBox[
+        RowBox[{
+         FormBox["p",
+          TraditionalForm], "-", 
+         FormBox["q",
+          TraditionalForm]}],
+        TraditionalForm],
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm], 
@@ -511,19 +583,17 @@ Cell[BoxData[
         FormBox["q",
          TraditionalForm],
         TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
- ImageSize->{282, 17},
+ ImageSize->{309, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[9]=",
- CellID->1654426864]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a5", "=", 
-  RowBox[{"DiracSimplify", "[", "a4", "]"}]}]], "Input",
+ RowBox[{"DiracSimplify", "[", "%%", "]"}]], "Input",
  CellTags->"DiracGamma",
  CellLabel->"In[10]:=",
  CellID->41068363],
@@ -578,21 +648,163 @@ Cell[BoxData[
        FormBox["q",
         TraditionalForm],
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{323, 20},
+ ImageSize->{356, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracGamma",
- CellLabel->"Out[10]=",
- CellID->1950498776]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"a1", ",", "a2", ",", "a3", ",", "a4", ",", "a5"}], "]"}]], "Input",\
+Cell["\<\
+DiracGamma may also carry Cartesian indices or appear contracted with \
+Cartesian momenta.\
+\>", "Notes"],
 
- CellTags->"DiracGamma",
- CellLabel->"In[11]:=",
- CellID->2054807508]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{"CartesianIndex", "[", "i", "]"}], "]"}]], "Input",
+ CellLabel->"In[11]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Gamma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], "_"], 
+   FormBox[
+    FormBox[
+     StyleBox["i",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{23, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{
+   RowBox[{"CartesianIndex", "[", 
+    RowBox[{"i", ",", 
+     RowBox[{"D", "-", "1"}]}], "]"}], ",", "D"}], "]"}]], "Input",
+ CellLabel->"In[12]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    StyleBox["\<\"\[Gamma]\"\>",
+     StripOnInput->False,
+     FontWeight->Bold],
+    TraditionalForm], 
+   FormBox[
+    FormBox[
+     StyleBox["i",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{23, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{"CartesianMomentum", "[", "p", "]"}], "]"}]], "Input",
+ CellLabel->"In[13]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Gamma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], "_"], "\[CenterDot]", 
+   FormBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["p",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{36, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[13]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{
+   RowBox[{"CartesianMomentum", "[", 
+    RowBox[{"p", ",", 
+     RowBox[{"D", "-", "1"}]}], "]"}], ",", "D"}], "]"}]], "Input",
+ CellLabel->"In[14]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    StyleBox["\<\"\[Gamma]\"\>",
+     StripOnInput->False,
+     FontWeight->Bold],
+    TraditionalForm], "\[CenterDot]", 
+   FormBox[
+    FormBox[
+     StyleBox["p",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{35, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[14]="]
+}, Open  ]],
+
+Cell["\<\
+Temporal indices are represented using ExplicitLorentzIndex[0]\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{"ExplicitLorentzIndex", "[", "0", "]"}], "]"}]], "Input",
+ CellLabel->"In[15]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox[
+    FormBox["0",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{23, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[15]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
@@ -621,10 +833,10 @@ Cell[TextData[{
   ButtonNote->"DiracGammaExpand"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["DiracMatrix",
+ StyleBox[ButtonBox["GA",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData->"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["DiracSimplify",
@@ -633,10 +845,10 @@ Cell[TextData[{
   ButtonNote->"DiracSimplify"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["DiracSlash",
+ StyleBox[ButtonBox["GS",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
+  ButtonData->"paclet:FeynCalc/ref/GS",
+  ButtonNote->"GS"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["DiracTrick",
@@ -645,9 +857,7 @@ Cell[TextData[{
   ButtonNote->"DiracTrick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"DiracGamma",
- CellID->1692507192]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -664,23 +874,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 51.472111}", 
+   "built" -> "{2019, 3, 29, 17, 46, 42.172116}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "DiracGamma[x, dim] is the head of all Dirac matrices and slashes (in the \
-internal representation). Use DiracMatrix (or GA, GAD) and DiracSlash (or GS, \
-GSD) for manual (short) input. DiracGamma[x, 4] simplifies to DiracGamma[x]. \
-DiracGamma[5] is \\[Gamma]^5. DiracGamma[6] is (1 + \\[Gamma]^5)/2. \
-DiracGamma[7] is (1 - \\[Gamma]^5)/2.", "synonyms" -> {}, "title" -> 
-    "DiracGamma", "titlemodifier" -> "", "windowtitle" -> "DiracGamma", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/DiracGamma"}, 
-  "SearchTextTranslated" -> ""},
+internal representation). Use GA, GAD, GS or GSD for manual (short) input.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "DiracGamma", 
+    "titlemodifier" -> "", "windowtitle" -> "DiracGamma", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/DiracGamma"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -700,199 +907,197 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4065, 117, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6292, 201, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->149641272]},
+   CellID->649140632]},
  "DiracGamma"->{
-  Cell[4697, 146, 132, 4, 27, "Input",
+  Cell[6924, 230, 132, 4, 27, "Input",
    CellTags->"DiracGamma",
    CellID->1046278698],
-  Cell[4832, 152, 300, 11, 39, "Output",
-   CellTags->"DiracGamma",
-   CellID->842552946],
-  Cell[5169, 168, 178, 5, 27, "Input",
+  Cell[7059, 236, 280, 10, 40, "Output",
+   CellTags->"DiracGamma"],
+  Cell[7376, 251, 178, 5, 27, "Input",
    CellTags->"DiracGamma",
    CellID->1161111346],
-  Cell[5350, 175, 344, 13, 38, "Output",
-   CellTags->"DiracGamma",
-   CellID->1687472527],
-  Cell[5709, 191, 352, 14, 35, "Text",
-   CellTags->"DiracGamma",
-   CellID->299092642],
-  Cell[6086, 209, 186, 6, 27, "Input",
+  Cell[7557, 258, 323, 12, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[8228, 289, 186, 6, 27, "Input",
    CellTags->"DiracGamma",
    CellID->1887452273],
-  Cell[6275, 217, 374, 14, 38, "Output",
-   CellTags->"DiracGamma",
-   CellID->1138458552],
-  Cell[6686, 236, 299, 9, 27, "Input",
+  Cell[8417, 297, 353, 13, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[8807, 315, 299, 9, 27, "Input",
    CellTags->"DiracGamma",
    CellID->1345474698],
-  Cell[6988, 247, 795, 30, 39, "Output",
-   CellTags->"DiracGamma",
-   CellID->1631372749],
-  Cell[7820, 282, 235, 8, 27, "Input",
+  Cell[9109, 326, 774, 29, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[9920, 360, 235, 8, 27, "Input",
    CellTags->"DiracGamma",
    CellID->38879465],
-  Cell[8058, 292, 322, 12, 38, "Output",
-   CellTags->"DiracGamma",
-   CellID->567019698],
-  Cell[8417, 309, 226, 8, 27, "Input",
+  Cell[10158, 370, 302, 11, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[10497, 386, 199, 7, 27, "Input",
    CellTags->"DiracGamma",
    CellID->294479801],
-  Cell[8646, 319, 886, 34, 39, "Output",
-   CellTags->"DiracGamma",
-   CellID->445474776],
-  Cell[9569, 358, 162, 5, 27, "Input",
+  Cell[10699, 395, 866, 33, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[11602, 433, 137, 4, 27, "Input",
    CellTags->"DiracGamma",
    CellID->324312499],
-  Cell[9734, 365, 850, 32, 39, "Output",
-   CellTags->"DiracGamma",
-   CellID->754251999],
-  Cell[10621, 402, 318, 10, 27, "Input",
+  Cell[11742, 439, 830, 31, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[12609, 475, 289, 9, 27, "Input",
    CellTags->"DiracGamma",
    CellID->667969280],
-  Cell[10942, 414, 1056, 43, 40, "Output",
-   CellTags->"DiracGamma",
-   CellID->712838090],
-  Cell[12035, 462, 157, 5, 27, "Input",
+  Cell[12901, 486, 1036, 42, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[13974, 533, 132, 4, 27, "Input",
    CellTags->"DiracGamma",
    CellID->1907296195],
-  Cell[12195, 469, 1264, 49, 38, "Output",
-   CellTags->"DiracGamma",
-   CellID->1654426864],
-  Cell[13496, 523, 159, 5, 27, "Input",
+  Cell[14109, 539, 1290, 50, 37, "Output",
+   CellTags->"DiracGamma"],
+  Cell[15436, 594, 135, 4, 27, "Input",
    CellTags->"DiracGamma",
    CellID->41068363],
-  Cell[13658, 530, 1409, 55, 41, "Output",
-   CellTags->"DiracGamma",
-   CellID->1950498776],
-  Cell[15082, 588, 188, 6, 27, "Input",
-   CellTags->"DiracGamma",
-   CellID->2054807508],
-  Cell[15626, 616, 926, 33, 32, "Text",
-   CellTags->"DiracGamma",
-   CellID->1692507192]}
+  Cell[15574, 600, 1388, 54, 39, "Output",
+   CellTags->"DiracGamma"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18675, 701},
- {"DiracGamma", 18812, 705}
+ {"PrimaryExamplesSection", 23462, 908},
+ {"DiracGamma", 23599, 912}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3392, 82, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 1147, 35, 120, "Usage",
+Cell[3977, 105, 287, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4289, 120, 501, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4065, 117, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4815, 137, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->824433544],
+Cell[5556, 163, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5590, 165, 83, 1, 31, "Notes",
+ CellID->1067943069],
+Cell[5676, 168, 131, 5, 34, "Notes"],
+Cell[5810, 175, 220, 10, 39, "Notes"],
+Cell[6033, 187, 210, 8, 39, "Notes"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6292, 201, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->149641272],
+ CellID->649140632],
 Cell[CellGroupData[{
-Cell[4477, 136, 195, 6, 25, "ExampleSection",
- CellID->568553789],
+Cell[6704, 220, 195, 6, 25, "ExampleSection",
+ CellID->330910910],
 Cell[CellGroupData[{
-Cell[4697, 146, 132, 4, 27, "Input",
+Cell[6924, 230, 132, 4, 27, "Input",
  CellTags->"DiracGamma",
  CellID->1046278698],
-Cell[4832, 152, 300, 11, 39, "Output",
- CellTags->"DiracGamma",
- CellID->842552946]
+Cell[7059, 236, 280, 10, 40, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5169, 168, 178, 5, 27, "Input",
+Cell[7376, 251, 178, 5, 27, "Input",
  CellTags->"DiracGamma",
  CellID->1161111346],
-Cell[5350, 175, 344, 13, 38, "Output",
- CellTags->"DiracGamma",
- CellID->1687472527]
+Cell[7557, 258, 323, 12, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
-Cell[5709, 191, 352, 14, 35, "Text",
- CellTags->"DiracGamma",
- CellID->299092642],
+Cell[7895, 273, 308, 12, 34, "Notes"],
 Cell[CellGroupData[{
-Cell[6086, 209, 186, 6, 27, "Input",
+Cell[8228, 289, 186, 6, 27, "Input",
  CellTags->"DiracGamma",
  CellID->1887452273],
-Cell[6275, 217, 374, 14, 38, "Output",
- CellTags->"DiracGamma",
- CellID->1138458552]
+Cell[8417, 297, 353, 13, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6686, 236, 299, 9, 27, "Input",
+Cell[8807, 315, 299, 9, 27, "Input",
  CellTags->"DiracGamma",
  CellID->1345474698],
-Cell[6988, 247, 795, 30, 39, "Output",
- CellTags->"DiracGamma",
- CellID->1631372749]
+Cell[9109, 326, 774, 29, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7820, 282, 235, 8, 27, "Input",
+Cell[9920, 360, 235, 8, 27, "Input",
  CellTags->"DiracGamma",
  CellID->38879465],
-Cell[8058, 292, 322, 12, 38, "Output",
- CellTags->"DiracGamma",
- CellID->567019698]
+Cell[10158, 370, 302, 11, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8417, 309, 226, 8, 27, "Input",
+Cell[10497, 386, 199, 7, 27, "Input",
  CellTags->"DiracGamma",
  CellID->294479801],
-Cell[8646, 319, 886, 34, 39, "Output",
- CellTags->"DiracGamma",
- CellID->445474776]
+Cell[10699, 395, 866, 33, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9569, 358, 162, 5, 27, "Input",
+Cell[11602, 433, 137, 4, 27, "Input",
  CellTags->"DiracGamma",
  CellID->324312499],
-Cell[9734, 365, 850, 32, 39, "Output",
- CellTags->"DiracGamma",
- CellID->754251999]
+Cell[11742, 439, 830, 31, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10621, 402, 318, 10, 27, "Input",
+Cell[12609, 475, 289, 9, 27, "Input",
  CellTags->"DiracGamma",
  CellID->667969280],
-Cell[10942, 414, 1056, 43, 40, "Output",
- CellTags->"DiracGamma",
- CellID->712838090]
+Cell[12901, 486, 1036, 42, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12035, 462, 157, 5, 27, "Input",
+Cell[13974, 533, 132, 4, 27, "Input",
  CellTags->"DiracGamma",
  CellID->1907296195],
-Cell[12195, 469, 1264, 49, 38, "Output",
- CellTags->"DiracGamma",
- CellID->1654426864]
+Cell[14109, 539, 1290, 50, 37, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13496, 523, 159, 5, 27, "Input",
+Cell[15436, 594, 135, 4, 27, "Input",
  CellTags->"DiracGamma",
  CellID->41068363],
-Cell[13658, 530, 1409, 55, 41, "Output",
- CellTags->"DiracGamma",
- CellID->1950498776]
+Cell[15574, 600, 1388, 54, 39, "Output",
+ CellTags->"DiracGamma"]
 }, Open  ]],
-Cell[15082, 588, 188, 6, 27, "Input",
- CellTags->"DiracGamma",
- CellID->2054807508]
-}, Open  ]],
-Cell[15285, 597, 31, 0, 29, "SectionFooterSpacer"]
+Cell[16977, 657, 115, 3, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[17117, 664, 128, 3, 27, "Input"],
+Cell[17248, 669, 470, 19, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15353, 602, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[15626, 616, 926, 33, 32, "Text",
- CellTags->"DiracGamma",
- CellID->1692507192]
+Cell[17755, 693, 203, 6, 27, "Input"],
+Cell[17961, 701, 441, 18, 40, "Output"]
 }, Open  ]],
-Cell[16567, 652, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[18439, 724, 131, 3, 27, "Input"],
+Cell[18573, 729, 510, 20, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19120, 754, 206, 6, 27, "Input"],
+Cell[19329, 762, 451, 18, 37, "Output"]
+}, Open  ]],
+Cell[19795, 783, 87, 2, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[19907, 789, 134, 3, 27, "Input"],
+Cell[20044, 794, 292, 11, 39, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[20363, 809, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20431, 814, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[20704, 828, 832, 31, 55, "SeeAlso"]
+}, Open  ]],
+Cell[21551, 862, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

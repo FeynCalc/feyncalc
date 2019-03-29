@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10247,        343]
-NotebookOptionsPosition[      6584,        231]
-NotebookOutlinePosition[      9261,        306]
-CellTagsIndexPosition[      9111,        299]
+NotebookDataLength[     10833,        358]
+NotebookOptionsPosition[      7478,        258]
+NotebookOutlinePosition[      9951,        326]
+CellTagsIndexPosition[      9835,        320]
 WindowTitle->FCAntiSymmetrize
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/FCAntiSymmetrize\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/FCAntiSymmetrize"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FCSymmetrize\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FCSymmetrize"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FCAntiSymmetrize\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FCAntiSymmetrize"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 FCAntiSymmetrize.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$57627], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/FCAntiSymmetrize", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$93545], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FCAntiSymmetrize", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ FCAntiSymmetrize.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FCAntiSymmetrize", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FCAntiSymmetrize", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -111,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1304146194],
+ CellID->894085239],
 
 Cell[CellGroupData[{
 
@@ -121,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1177220505],
+ CellID->2127408344],
 
 Cell[CellGroupData[{
 
@@ -146,12 +178,11 @@ Cell[BoxData[
       RowBox[{"a", ",", "b"}], ")"}], "-", 
      RowBox[{"f", "(", 
       RowBox[{"b", ",", "a"}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{143, 41},
+ ImageSize->{152, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"AntiSymmetrize",
- CellLabel->"Out[1]=",
- CellID->2011321581]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -186,12 +217,11 @@ Cell[BoxData[
      RowBox[{"f", "(", 
       RowBox[{"z", ",", "y", ",", "x"}], ")"}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{496, 41},
+ ImageSize->{560, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"AntiSymmetrize",
- CellLabel->"Out[2]=",
- CellID->668392956]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -215,16 +245,13 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["FCSymmetrize",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCSymmetrize",
   ButtonNote->"FCSymmetrize"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"FCAntiSymmetrize",
- CellID->145979915]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -241,17 +268,17 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 4.791493}", 
+   "built" -> "{2019, 3, 29, 17, 47, 47.449449}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
-to the variables a1,a2, ... ", "synonyms" -> {}, "title" -> 
+to the variables a1,a2, ... ", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "FCAntiSymmetrize", "titlemodifier" -> "", "windowtitle" -> 
     "FCAntiSymmetrize", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FCAntiSymmetrize"}, "SearchTextTranslated" -> ""},
@@ -274,77 +301,65 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3494, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4493, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1304146194]},
+   CellID->894085239]},
  "AntiSymmetrize"->{
-  Cell[4128, 127, 266, 9, 27, "Input",
+  Cell[5126, 159, 266, 9, 27, "Input",
    CellTags->"AntiSymmetrize",
    CellID->74722925],
-  Cell[4397, 138, 427, 15, 62, "Output",
-   CellTags->"AntiSymmetrize",
-   CellID->2011321581],
-  Cell[4861, 158, 287, 9, 27, "Input",
+  Cell[5395, 170, 406, 14, 56, "Output",
+   CellTags->"AntiSymmetrize"],
+  Cell[5838, 189, 287, 9, 27, "Input",
    CellTags->"AntiSymmetrize",
    CellID->685327648],
-  Cell[5151, 169, 761, 24, 62, "Output",
-   CellTags->"AntiSymmetrize",
-   CellID->668392956]},
- "FCAntiSymmetrize"->{
-  Cell[6280, 216, 262, 10, 32, "Text",
-   CellTags->"FCAntiSymmetrize",
-   CellID->145979915]}
+  Cell[6128, 200, 741, 23, 56, "Output",
+   CellTags->"AntiSymmetrize"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8451, 275},
- {"AntiSymmetrize", 8592, 279},
- {"FCAntiSymmetrize", 8992, 292}
+ {"PrimaryExamplesSection", 9339, 302},
+ {"AntiSymmetrize", 9480, 306}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2277, 52, 51, "AnchorBarGrid",
+Cell[588, 21, 3042, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 75, 59, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2930, 78, 539, 16, 82, "Usage",
+Cell[3633, 97, 293, 11, 44, "ObjectNameGrid"],
+Cell[3929, 110, 539, 16, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3494, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4493, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1304146194],
+ CellID->894085239],
 Cell[CellGroupData[{
-Cell[3907, 117, 196, 6, 25, "ExampleSection",
- CellID->1177220505],
+Cell[4905, 149, 196, 6, 25, "ExampleSection",
+ CellID->2127408344],
 Cell[CellGroupData[{
-Cell[4128, 127, 266, 9, 27, "Input",
+Cell[5126, 159, 266, 9, 27, "Input",
  CellTags->"AntiSymmetrize",
  CellID->74722925],
-Cell[4397, 138, 427, 15, 62, "Output",
- CellTags->"AntiSymmetrize",
- CellID->2011321581]
+Cell[5395, 170, 406, 14, 56, "Output",
+ CellTags->"AntiSymmetrize"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4861, 158, 287, 9, 27, "Input",
+Cell[5838, 189, 287, 9, 27, "Input",
  CellTags->"AntiSymmetrize",
  CellID->685327648],
-Cell[5151, 169, 761, 24, 62, "Output",
- CellTags->"AntiSymmetrize",
- CellID->668392956]
+Cell[6128, 200, 741, 23, 56, "Output",
+ CellTags->"AntiSymmetrize"]
 }, Open  ]]
 }, Open  ]],
-Cell[5939, 197, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6896, 227, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6007, 202, 270, 12, 31, "SeeAlsoSection",
+Cell[6964, 232, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6280, 216, 262, 10, 32, "Text",
- CellTags->"FCAntiSymmetrize",
- CellID->145979915]
+Cell[7237, 246, 199, 7, 55, "SeeAlso"]
 }, Open  ]],
-Cell[6557, 229, 23, 0, 42, "FooterCell"]
+Cell[7451, 256, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

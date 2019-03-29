@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6709,        208]
-NotebookOptionsPosition[      4125,        131]
-NotebookOutlinePosition[      6319,        192]
-CellTagsIndexPosition[      6208,        186]
+NotebookDataLength[      5587,        158]
+NotebookOptionsPosition[      3650,        106]
+NotebookOutlinePosition[      5523,        155]
+CellTagsIndexPosition[      5480,        152]
 WindowTitle->Simplify2
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136102], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$239777], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Simplify2", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Simplify2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Simplify2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -91,42 +102,6 @@ PlusDistribution, PolyLog, Zeta2, Epsilon and Deltafunction."
    "RowsIndexed" -> {}}},
  CellID->982511436],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
- WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1],
-
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1],
-
-Cell[BoxData[""], "Input",
- CellTags->"Simplify2",
- CellLabel->"In[1]:=",
- CellID->1866023548]
-}, Open  ]]
-}, Open  ]],
-
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
@@ -141,10 +116,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 42.019927}", 
+   "built" -> "{2019, 3, 29, 17, 53, 13.878708}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -152,9 +127,9 @@ TaggingRules->{
     "None", "summary" -> 
     "Simplify2[exp] does some ordering on the expression exp with respect to \
 Log, PlusDistribution, PolyLog, Zeta2, Epsilon and Deltafunction.", 
-    "synonyms" -> {}, "title" -> "Simplify2", "titlemodifier" -> "", 
-    "windowtitle" -> "Simplify2", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Simplify2"}},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Simplify2", 
+    "titlemodifier" -> "", "windowtitle" -> "Simplify2", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Simplify2"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -172,44 +147,19 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3383, 95, 379, 15, 70, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1]},
- "Simplify2"->{
-  Cell[3977, 122, 94, 3, 70, "Input",
-   CellTags->"Simplify2",
-   CellID->1866023548]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"PrimaryExamplesSection", 5969, 175},
- {"Simplify2", 6096, 179}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 2249, 52, 70, "AnchorBarGrid",
+Cell[581, 21, 2277, 53, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2833, 75, 52, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2888, 78, 470, 13, 70, "Usage",
+Cell[2861, 76, 286, 11, 70, "ObjectNameGrid"],
+Cell[3150, 89, 470, 13, 70, "Usage",
  CellID->982511436],
-Cell[CellGroupData[{
-Cell[3383, 95, 379, 15, 70, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1],
-Cell[CellGroupData[{
-Cell[3787, 114, 187, 6, 70, "ExampleSection",
- CellID->1],
-Cell[3977, 122, 94, 3, 70, "Input",
- CellTags->"Simplify2",
- CellID->1866023548]
-}, Open  ]]
-}, Open  ]],
-Cell[4098, 129, 23, 0, 70, "FooterCell"]
+Cell[3623, 104, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

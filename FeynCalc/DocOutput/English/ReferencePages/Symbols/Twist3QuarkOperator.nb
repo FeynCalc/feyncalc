@@ -10,62 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11526,        360]
-NotebookOptionsPosition[      7250,        242]
-NotebookOutlinePosition[     10515,        323]
-CellTagsIndexPosition[     10394,        317]
+NotebookDataLength[     13377,        422]
+NotebookOptionsPosition[      9125,        306]
+NotebookOutlinePosition[     12243,        382]
+CellTagsIndexPosition[     12120,        376]
 WindowTitle->Twist3QuarkOperator
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Twist3QuarkOperator\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Twist3QuarkOperator"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Twist2QuarkOperator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Twist2QuarkOperator"], "\<\"Twist2GluonOperator\"\
+\>":>Documentation`HelpLookup["paclet:FeynCalc/ref/Twist2GluonOperator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Twist3QuarkOperator\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Twist3QuarkOperator"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 Twist3QuarkOperator.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161604], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Twist3QuarkOperator", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$289492], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Twist3QuarkOperator", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,20 @@ Twist3QuarkOperator.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Twist3QuarkOperator", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Twist3QuarkOperator", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -101,6 +137,62 @@ uppolarized or polarized operator is returned."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1595437988],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Twist3QuarkOperator", "]"}]], "Input",
+ CellTags->"Twist3QuarkOperator",
+ CellLabel->"In[4]:=",
+ CellID->336849087],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{364, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Twist3QuarkOperator",
+ CellLabel->"Out[4]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -116,7 +208,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1138662884],
+ CellID->1534486153],
 
 Cell[CellGroupData[{
 
@@ -126,39 +218,14 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->468637050],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Twist3QuarkOperator", "]"}]], "Input",
- CellTags->"Twist3QuarkOperator",
- CellLabel->"In[1]:=",
- CellID->336849087],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Polarization", "\[Rule]", "1"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{388, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Twist3QuarkOperator",
- CellLabel->"Out[1]=",
- CellID->1826060487]
-}, Open  ]],
+ CellID->73802924],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Twist3QuarkOperator", "[", "p", "]"}]], "Input",
  CellTags->"Twist3QuarkOperator",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->645443038],
 
 Cell[BoxData[
@@ -192,12 +259,11 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}], ")"}], 
     RowBox[{"m", "-", "1"}]]}], TraditionalForm]], "Output",
- ImageSize->{185, 20},
+ ImageSize->{194, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist3QuarkOperator",
- CellLabel->"Out[2]=",
- CellID->32412919]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -233,9 +299,7 @@ Cell[TextData[{
   ButtonNote->"Twist2GluonOperator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Twist3QuarkOperator",
- CellID->325391970]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -252,10 +316,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 34.433694}", 
+   "built" -> "{2019, 3, 29, 17, 55, 13.674992}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -270,9 +334,9 @@ where p1 is the incoming quark, p2 the incoming antiquark and p3 denotes the \
 a}, {p4, nu, b}] or Twist3QuarkOperator[p1,_,_, p2,_,_, p3,mu,a, p4, nu, b] \
 gives the Quark-Quark-Gluon-Gluon-operator. The setting of the option \
 Polarization (unpolarized: 0; polarized: 1) determines whether the \
-uppolarized or polarized operator is returned.", "synonyms" -> {}, "title" -> 
-    "Twist3QuarkOperator", "titlemodifier" -> "", "windowtitle" -> 
-    "Twist3QuarkOperator", "type" -> "Symbol", "uri" -> 
+uppolarized or polarized operator is returned.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "Twist3QuarkOperator", "titlemodifier" -> 
+    "", "windowtitle" -> "Twist3QuarkOperator", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Twist3QuarkOperator"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -292,76 +356,74 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[4015, 103, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1138662884]},
  "Twist3QuarkOperator"->{
-  Cell[4648, 132, 155, 4, 27, "Input",
+  Cell[5958, 169, 155, 4, 27, "Input",
    CellTags->"Twist3QuarkOperator",
    CellID->336849087],
-  Cell[4806, 138, 434, 14, 36, "Output",
-   CellTags->"Twist3QuarkOperator",
-   CellID->1826060487],
-  Cell[5277, 157, 149, 4, 27, "Input",
+  Cell[6116, 175, 413, 13, 37, "Output",
+   CellTags->"Twist3QuarkOperator"],
+  Cell[7222, 224, 149, 4, 27, "Input",
    CellTags->"Twist3QuarkOperator",
    CellID->645443038],
-  Cell[5429, 163, 948, 36, 41, "Output",
-   CellTags->"Twist3QuarkOperator",
-   CellID->32412919],
-  Cell[6745, 222, 463, 15, 32, "Text",
-   CellTags->"Twist3QuarkOperator",
-   CellID->325391970]}
+  Cell[7374, 230, 929, 35, 40, "Output",
+   CellTags->"Twist3QuarkOperator"]},
+ "PrimaryExamplesSection"->{
+  Cell[6590, 195, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1534486153]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9729, 294},
- {"Twist3QuarkOperator", 9876, 298}
+ {"Twist3QuarkOperator", 11594, 358},
+ {"PrimaryExamplesSection", 11976, 369}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 2290, 52, 51, "AnchorBarGrid",
+Cell[591, 21, 3179, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2884, 75, 62, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2949, 78, 1041, 21, 194, "Usage",
+Cell[3773, 99, 296, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4094, 114, 1041, 21, 179, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4015, 103, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1138662884],
+Cell[5160, 139, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1595437988],
+Cell[5902, 165, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4428, 122, 195, 6, 25, "ExampleSection",
- CellID->468637050],
-Cell[CellGroupData[{
-Cell[4648, 132, 155, 4, 27, "Input",
+Cell[5958, 169, 155, 4, 27, "Input",
  CellTags->"Twist3QuarkOperator",
  CellID->336849087],
-Cell[4806, 138, 434, 14, 36, "Output",
- CellTags->"Twist3QuarkOperator",
- CellID->1826060487]
+Cell[6116, 175, 413, 13, 37, "Output",
+ CellTags->"Twist3QuarkOperator"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5277, 157, 149, 4, 27, "Input",
+Cell[6590, 195, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1534486153],
+Cell[CellGroupData[{
+Cell[7003, 214, 194, 6, 25, "ExampleSection",
+ CellID->73802924],
+Cell[CellGroupData[{
+Cell[7222, 224, 149, 4, 27, "Input",
  CellTags->"Twist3QuarkOperator",
  CellID->645443038],
-Cell[5429, 163, 948, 36, 41, "Output",
- CellTags->"Twist3QuarkOperator",
- CellID->32412919]
+Cell[7374, 230, 929, 35, 40, "Output",
+ CellTags->"Twist3QuarkOperator"]
 }, Open  ]]
 }, Open  ]],
-Cell[6404, 203, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8330, 269, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6472, 208, 270, 12, 31, "SeeAlsoSection",
+Cell[8398, 274, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6745, 222, 463, 15, 32, "Text",
- CellTags->"Twist3QuarkOperator",
- CellID->325391970]
+Cell[8671, 288, 412, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[7223, 240, 23, 0, 42, "FooterCell"]
+Cell[9098, 304, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11672,        395]
-NotebookOptionsPosition[      8336,        295]
-NotebookOutlinePosition[     10949,        366]
-CellTagsIndexPosition[     10837,        360]
+NotebookDataLength[     14509,        512]
+NotebookOptionsPosition[     10891,        401]
+NotebookOutlinePosition[     13151,        464]
+CellTagsIndexPosition[     13039,        458]
 WindowTitle->SMVertex
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/SMVertex\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/SMVertex"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/SMVertex.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SMP\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SMP"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/SMVertex\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/SMVertex"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/SMVertex.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139547], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/SMVertex", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$246721], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/SMVertex", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,20 +95,26 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SMVertex", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SMVertex", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData[
-      RowBox[{"SMVertex", "[", 
-       RowBox[{
-       "\"\<AWW\>\"", ",", " ", "p", ",", "mu", ",", " ", "q", ",", "nu", ",",
-         " ", "k", ",", "rho"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "gives the photon-W-W vertex (p,mu correspond to the photon, q,nu to the \
-(incoming) W+ and k,rho to the (incoming) W-. All momenta are flowing into \
-the vertex.  SMVertex[\"HHH\", ___] give the three-higgs coupling. "
+     Cell[BoxData["SMVertex"], "InlineFormula"],
+     " \[LineSeparator]is a library of SM vertices. Currently it implements \
+only few vertices and is not really useful."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -94,6 +122,57 @@ the vertex.  SMVertex[\"HHH\", ___] give the three-higgs coupling. "
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1901384379],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SMVertex", "]"}]], "Input",
+ CellLabel->"In[58]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{207, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[58]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -112,7 +191,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->580320162],
+ CellID->1067736523],
 
 Cell[CellGroupData[{
 
@@ -122,30 +201,9 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2136770321],
+ CellID->535817333],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "SMVertex", "]"}]], "Input",
- CellTags->"SMVertex",
- CellLabel->"In[1]:=",
- CellID->537549751],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{221, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SMVertex",
- CellLabel->"Out[1]=",
- CellID->1908910905]
-}, Open  ]],
+Cell["This is the photon-W-W vertex (all momenta ingoing)", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -155,140 +213,188 @@ Cell[BoxData[
   "\"\<AWW\>\"", ",", "p", ",", "\[Mu]", ",", " ", "q", ",", "\[Nu]", ",", 
    " ", "k", ",", "\[Rho]"}], "]"}]], "Input",
  CellTags->"SMVertex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->1911879451],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", "\[ImaginaryI]"}], " ", "e", " ", 
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "\<\"e\"\>", " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        RowBox[{"(", 
-         FormBox[
-          FormBox[
-           RowBox[{
-            OverscriptBox[
-             FormBox["p",
-              TraditionalForm], "_"], "-", 
-            OverscriptBox[
-             FormBox["k",
-              TraditionalForm], "_"]}],
-           TraditionalForm],
-          TraditionalForm], ")"}], 
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
         FormBox[
          FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
+          RowBox[{
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"], "-", 
+           OverscriptBox[
+            FormBox["k",
+             TraditionalForm], "_"]}],
           TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "+", 
+         TraditionalForm], ")"}], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]]}], "+", 
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        RowBox[{"(", 
-         FormBox[
-          FormBox[
-           RowBox[{
-            OverscriptBox[
-             FormBox["k",
-              TraditionalForm], "_"], "-", 
-            OverscriptBox[
-             FormBox["q",
-              TraditionalForm], "_"]}],
-           TraditionalForm],
-          TraditionalForm], ")"}], 
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
         FormBox[
          FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
+          RowBox[{
+           OverscriptBox[
+            FormBox["k",
+             TraditionalForm], "_"], "-", 
+           OverscriptBox[
+            FormBox["q",
+             TraditionalForm], "_"]}],
           TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "+", 
+         TraditionalForm], ")"}], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]]}], "+", 
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        RowBox[{"(", 
-         FormBox[
-          FormBox[
-           RowBox[{
-            OverscriptBox[
-             FormBox["q",
-              TraditionalForm], "_"], "-", 
-            OverscriptBox[
-             FormBox["p",
-              TraditionalForm], "_"]}],
-           TraditionalForm],
-          TraditionalForm], ")"}], 
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
         FormBox[
          FormBox[
-          FormBox["\[Rho]",
-           TraditionalForm],
+          RowBox[{
+           OverscriptBox[
+            FormBox["q",
+             TraditionalForm], "_"], "-", 
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"]}],
           TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{351, 25},
+         TraditionalForm], ")"}], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{368, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SMVertex",
- CellLabel->"Out[2]=",
- CellID->60024772]
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell["This is the HHH-coupling", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMVertex", "[", "\"\<HHH\>\"", "]"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"3", " ", "\[ImaginaryI]", " ", "\<\"e\"\>", " ", 
+     SubsuperscriptBox["m", "H", "2"]}], 
+    RowBox[{"2", " ", 
+     SubscriptBox["m", "W"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"sin", "("}], 
+       SubscriptBox["\[Theta]", "W"], ")"}], ")"}]}]]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{130, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]],
+
+Cell["This is the H-electron-coupling", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMVertex", "[", "\"\<eeH\>\"", "]"}]], "Input",
+ CellLabel->"In[3]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", "\<\"e\"\>", " ", 
+     SubscriptBox["m", "e"]}], 
+    RowBox[{"2", " ", 
+     SubscriptBox["m", "W"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"sin", "("}], 
+       SubscriptBox["\[Theta]", "W"], ")"}], ")"}]}]]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{130, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]="]
 }, Open  ]]
-}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[StyleBox[ButtonBox["SMP",
+ BaseStyle->"Link",
+ ButtonData->"paclet:FeynCalc/ref/SMP",
+ ButtonNote->"SMP"],
+ FontFamily->"Verdana"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -305,21 +411,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 57.855545}", 
+   "built" -> "{2019, 3, 29, 17, 53, 29.292938}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "SMVertex[\"AWW\", p, mu, q, nu, k, rho] gives the photon-W-W vertex \
-(p,mu correspond to the photon, q,nu to the (incoming) W+ and k,rho to the \
-(incoming) W-. All momenta are flowing into the vertex. SMVertex[\"HHH\", \
-___] give the three-higgs coupling. ", "synonyms" -> {}, "title" -> 
-    "SMVertex", "titlemodifier" -> "", "windowtitle" -> "SMVertex", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/SMVertex"}, "SearchTextTranslated" -> ""},
+    "SMVertex is a library of SM vertices. Currently it implements only few \
+vertices and is not really useful.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "SMVertex", "titlemodifier" -> "", "windowtitle" -> "SMVertex",
+     "type" -> "Symbol", "uri" -> "FeynCalc/ref/SMVertex"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -339,64 +444,76 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3592, 99, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5561, 178, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->580320162]},
+   CellID->1067736523]},
  "SMVertex"->{
-  Cell[4225, 128, 133, 4, 27, "Input",
-   CellTags->"SMVertex",
-   CellID->537549751],
-  Cell[4361, 134, 341, 12, 36, "Output",
-   CellTags->"SMVertex",
-   CellID->1908910905],
-  Cell[4739, 151, 241, 7, 27, "Input",
+  Cell[6265, 209, 241, 7, 27, "Input",
    CellTags->"SMVertex",
    CellID->1911879451],
-  Cell[4983, 160, 3287, 128, 46, "Output",
-   CellTags->"SMVertex",
-   CellID->60024772]}
+  Cell[6509, 218, 2508, 97, 39, "Output",
+   CellTags->"SMVertex"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10324, 340},
- {"SMVertex", 10458, 344}
+ {"PrimaryExamplesSection", 12723, 445},
+ {"SMVertex", 12859, 449}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2245, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 2992, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2828, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2882, 78, 685, 17, 114, "Usage",
+Cell[3575, 97, 285, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3885, 112, 400, 11, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3592, 99, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->580320162],
+Cell[4310, 127, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1901384379],
+Cell[5052, 153, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4004, 118, 196, 6, 25, "ExampleSection",
- CellID->2136770321],
-Cell[CellGroupData[{
-Cell[4225, 128, 133, 4, 27, "Input",
- CellTags->"SMVertex",
- CellID->537549751],
-Cell[4361, 134, 341, 12, 36, "Output",
- CellTags->"SMVertex",
- CellID->1908910905]
+Cell[5108, 157, 91, 2, 27, "Input"],
+Cell[5202, 161, 298, 10, 37, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4739, 151, 241, 7, 27, "Input",
+Cell[5561, 178, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1067736523],
+Cell[CellGroupData[{
+Cell[5974, 197, 195, 6, 25, "ExampleSection",
+ CellID->535817333],
+Cell[6172, 205, 68, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[6265, 209, 241, 7, 27, "Input",
  CellTags->"SMVertex",
  CellID->1911879451],
-Cell[4983, 160, 3287, 128, 46, "Output",
- CellTags->"SMVertex",
- CellID->60024772]
-}, Open  ]]
+Cell[6509, 218, 2508, 97, 39, "Output",
+ CellTags->"SMVertex"]
+}, Open  ]],
+Cell[9032, 318, 41, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[9098, 322, 94, 2, 27, "Input"],
+Cell[9195, 326, 482, 16, 63, "Output"]
+}, Open  ]],
+Cell[9692, 345, 48, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[9765, 349, 94, 2, 27, "Input"],
+Cell[9862, 353, 462, 16, 58, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[8309, 293, 23, 0, 42, "FooterCell"]
+Cell[10351, 373, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10419, 378, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10692, 392, 157, 4, 54, "SeeAlso"]
+}, Open  ]],
+Cell[10864, 399, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

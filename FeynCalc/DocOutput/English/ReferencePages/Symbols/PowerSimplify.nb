@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14432,        510]
-NotebookOptionsPosition[      9780,        369]
-NotebookOutlinePosition[     13032,        457]
-CellTagsIndexPosition[     12915,        451]
+NotebookDataLength[     15047,        524]
+NotebookOptionsPosition[     10723,        396]
+NotebookOutlinePosition[     13786,        478]
+CellTagsIndexPosition[     13669,        472]
 WindowTitle->PowerSimplify
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/PowerSimplify\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/PowerSimplify"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DataType\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DataType"], "\<\"OPEm\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/OPEi"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/PowerSimplify\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/PowerSimplify"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 PowerSimplify.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$122341], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/PowerSimplify", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$218454], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/PowerSimplify", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +96,18 @@ PowerSimplify.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["PowerSimplify", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["PowerSimplify", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -216,7 +249,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->192981915],
+ CellID->1272231808],
 
 Cell[CellGroupData[{
 
@@ -226,7 +259,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->601132939],
+ CellID->1856821281],
 
 Cell[CellGroupData[{
 
@@ -243,12 +276,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{11, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PowerSimplify",
- CellLabel->"Out[1]=",
- CellID->1102382447]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -269,12 +301,11 @@ Cell[BoxData[
   SuperscriptBox[
    RowBox[{"(", 
     RowBox[{"-", "1"}], ")"}], "m"], TraditionalForm]], "Output",
- ImageSize->{46, 15},
+ ImageSize->{49, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PowerSimplify",
- CellLabel->"Out[2]=",
- CellID->1909539921]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -295,12 +326,11 @@ Cell[BoxData[
   SuperscriptBox[
    RowBox[{"(", 
     RowBox[{"-", "1"}], ")"}], "m"], TraditionalForm]], "Output",
- ImageSize->{46, 15},
+ ImageSize->{49, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PowerSimplify",
- CellLabel->"Out[3]=",
- CellID->2035038976]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -319,12 +349,11 @@ Cell[BoxData[
   SuperscriptBox[
    RowBox[{"(", 
     RowBox[{"-", "1"}], ")"}], "m"], TraditionalForm]], "Output",
- ImageSize->{46, 15},
+ ImageSize->{49, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PowerSimplify",
- CellLabel->"Out[4]=",
- CellID->952797373]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -360,9 +389,7 @@ Cell[TextData[{
   ButtonNote->"OPEm"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"PowerSimplify",
- CellID->219988964]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -379,10 +406,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 44.262033}", 
+   "built" -> "{2019, 3, 29, 17, 52, 28.403716}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -393,9 +420,10 @@ n (x - y) n; thus assuming that the exponent is an integer (even if it is \
 symbolic). Furthermore (-1) a + n and I a + n are expanded and I 2 m -> (-1) \
 m and (-1)^(n m) -> 1 and (-1)^(n m) -> TraditionalForm\\`(-1) m for n even \
 and odd respectively and (-1) -n -> (-1) n and E Im\\[Pi] -> (-1) m.", 
-    "synonyms" -> {}, "title" -> "PowerSimplify", "titlemodifier" -> "", 
-    "windowtitle" -> "PowerSimplify", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/PowerSimplify"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "PowerSimplify", 
+    "titlemodifier" -> "", "windowtitle" -> "PowerSimplify", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/PowerSimplify"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -415,103 +443,89 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6200, 203, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7269, 236, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->192981915]},
+   CellID->1272231808]},
  "PowerSimplify"->{
-  Cell[6832, 232, 252, 9, 27, "Input",
+  Cell[7903, 265, 252, 9, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->1178513781],
-  Cell[7087, 243, 215, 7, 36, "Output",
-   CellTags->"PowerSimplify",
-   CellID->1102382447],
-  Cell[7339, 255, 257, 9, 27, "Input",
+  Cell[8158, 276, 194, 6, 35, "Output",
+   CellTags->"PowerSimplify"],
+  Cell[8389, 287, 257, 9, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->1283744805],
-  Cell[7599, 266, 283, 10, 36, "Output",
-   CellTags->"PowerSimplify",
-   CellID->1909539921],
-  Cell[7919, 281, 256, 9, 27, "Input",
+  Cell[8649, 298, 262, 9, 37, "Output",
+   CellTags->"PowerSimplify"],
+  Cell[8948, 312, 256, 9, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->604286428],
-  Cell[8178, 292, 283, 10, 36, "Output",
-   CellTags->"PowerSimplify",
-   CellID->2035038976],
-  Cell[8498, 307, 208, 7, 27, "Input",
+  Cell[9207, 323, 262, 9, 37, "Output",
+   CellTags->"PowerSimplify"],
+  Cell[9506, 337, 208, 7, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->1089003122],
-  Cell[8709, 316, 282, 10, 36, "Output",
-   CellTags->"PowerSimplify",
-   CellID->952797373],
-  Cell[9359, 349, 379, 15, 32, "Text",
-   CellTags->"PowerSimplify",
-   CellID->219988964]}
+  Cell[9717, 346, 262, 9, 37, "Output",
+   CellTags->"PowerSimplify"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11910, 416},
- {"PowerSimplify", 12050, 420}
+ {"PrimaryExamplesSection", 12849, 444},
+ {"PowerSimplify", 12990, 448}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2266, 52, 51, "AnchorBarGrid",
+Cell[585, 21, 3101, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2854, 75, 56, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2913, 78, 3262, 121, 145, "Usage",
+Cell[3689, 98, 290, 11, 44, "ObjectNameGrid"],
+Cell[3982, 111, 3262, 121, 140, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[6200, 203, 387, 15, 31, "PrimaryExamplesSection",
+Cell[7269, 236, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->192981915],
+ CellID->1272231808],
 Cell[CellGroupData[{
-Cell[6612, 222, 195, 6, 25, "ExampleSection",
- CellID->601132939],
+Cell[7682, 255, 196, 6, 25, "ExampleSection",
+ CellID->1856821281],
 Cell[CellGroupData[{
-Cell[6832, 232, 252, 9, 27, "Input",
+Cell[7903, 265, 252, 9, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->1178513781],
-Cell[7087, 243, 215, 7, 36, "Output",
- CellTags->"PowerSimplify",
- CellID->1102382447]
+Cell[8158, 276, 194, 6, 35, "Output",
+ CellTags->"PowerSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7339, 255, 257, 9, 27, "Input",
+Cell[8389, 287, 257, 9, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->1283744805],
-Cell[7599, 266, 283, 10, 36, "Output",
- CellTags->"PowerSimplify",
- CellID->1909539921]
+Cell[8649, 298, 262, 9, 37, "Output",
+ CellTags->"PowerSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7919, 281, 256, 9, 27, "Input",
+Cell[8948, 312, 256, 9, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->604286428],
-Cell[8178, 292, 283, 10, 36, "Output",
- CellTags->"PowerSimplify",
- CellID->2035038976]
+Cell[9207, 323, 262, 9, 37, "Output",
+ CellTags->"PowerSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8498, 307, 208, 7, 27, "Input",
+Cell[9506, 337, 208, 7, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->1089003122],
-Cell[8709, 316, 282, 10, 36, "Output",
- CellTags->"PowerSimplify",
- CellID->952797373]
+Cell[9717, 346, 262, 9, 37, "Output",
+ CellTags->"PowerSimplify"]
 }, Open  ]]
 }, Open  ]],
-Cell[9018, 330, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10006, 359, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9086, 335, 270, 12, 31, "SeeAlsoSection",
+Cell[10074, 364, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9359, 349, 379, 15, 32, "Text",
- CellTags->"PowerSimplify",
- CellID->219988964]
+Cell[10347, 378, 334, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[9753, 367, 23, 0, 42, "FooterCell"]
+Cell[10696, 394, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

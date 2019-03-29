@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13469,        468]
-NotebookOptionsPosition[      9187,        330]
-NotebookOutlinePosition[     12131,        415]
-CellTagsIndexPosition[     12021,        409]
+NotebookDataLength[     17594,        603]
+NotebookOptionsPosition[     13394,        471]
+NotebookOutlinePosition[     16156,        549]
+CellTagsIndexPosition[     16046,        543]
 WindowTitle->Apart2
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Apart2\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Apart2"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Apart2.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FAD\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FAD"], "\<\"FeynAmpDenominator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominator"], "\<\"ApartFF\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/ApartFF"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Apart2\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Apart2"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Apart2.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18704], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Apart2",
-             ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24716], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Apart2", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +98,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Apart2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Apart2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -93,6 +130,60 @@ Please use ApartFF instead."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->303586472],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Apart2", "]"}]], "Input",
+ CellTags->"Apart2",
+ CellLabel->"In[223]:=",
+ CellID->1571464480],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExcludeMasses", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{248, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Apart2",
+ CellLabel->"Out[223]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -108,7 +199,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1089764331],
+ CellID->980918701],
 
 Cell[CellGroupData[{
 
@@ -118,30 +209,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1867734952],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Apart2", "]"}]], "Input",
- CellTags->"Apart2",
- CellLabel->"In[1]:=",
- CellID->1571464480],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
-    RowBox[{"ExcludeMasses", "\[Rule]", 
-     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{266, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Apart2",
- CellLabel->"Out[1]=",
- CellID->1842118848]
-}, Open  ]],
+ CellID->1882123726],
 
 Cell[CellGroupData[{
 
@@ -154,7 +222,7 @@ Cell[BoxData[
     RowBox[{"q", ",", "M"}], "}"}], ",", 
    RowBox[{"q", "-", "p"}]}], "]"}]], "Input",
  CellTags->"Apart2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->1580962822],
 
 Cell[BoxData[
@@ -163,35 +231,60 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"(", 
      InterpretationBox[
-      RowBox[{"\<\"[\"\>", "\[InvisibleSpace]", 
-       SuperscriptBox["q", "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
-       "\[InvisibleSpace]", 
-       SuperscriptBox["m", "2"], "\[InvisibleSpace]", "\<\"]\"\>"}],
-      SequenceForm["[", $CellContext`q^2, "-", $CellContext`m^2, "]"],
-      Editable->False], ")"}], ".", 
-    RowBox[{"(", 
-     InterpretationBox[
-      RowBox[{"\<\"[\"\>", "\[InvisibleSpace]", 
-       SuperscriptBox["q", "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
-       "\[InvisibleSpace]", 
-       SuperscriptBox["M", "2"], "\[InvisibleSpace]", "\<\"]\"\>"}],
-      SequenceForm["[", $CellContext`q^2, "-", $CellContext`M^2, "]"],
-      Editable->False], ")"}], ".", 
-    RowBox[{"(", 
-     InterpretationBox[
-      RowBox[{"\<\"[\"\>", "\[InvisibleSpace]", 
+      RowBox[{
        SuperscriptBox[
-        RowBox[{"(", 
-         RowBox[{"q", "-", "p"}], ")"}], "2"], 
-       "\[InvisibleSpace]", "\<\"]\"\>"}],
-      SequenceForm["[", (-$CellContext`p + $CellContext`q)^2, "]"],
-      Editable->False], ")"}]}]], TraditionalForm]], "Output",
- ImageSize->{241, 48},
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q, D], 
+        FeynCalc`Momentum[$CellContext`q, D]], "-", $CellContext`m^2],
+      Editable->False], ")"}], ".", 
+    RowBox[{"(", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["M", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q, D], 
+        FeynCalc`Momentum[$CellContext`q, D]], "-", $CellContext`M^2],
+      Editable->False], ")"}], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+     Editable->False]}]], TraditionalForm]], "Output",
+ ImageSize->{208, 42},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Apart2",
- CellLabel->"Out[2]=",
- CellID->1281611536]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -199,52 +292,103 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Apart2", "[", "%", "]"}]], "Input",
  CellTags->"Apart2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->867958772],
 
 Cell[BoxData[
  FormBox[
   FractionBox[
    RowBox[{
-    FractionBox["1", 
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        SuperscriptBox[
-         FormBox["q",
-          TraditionalForm], "2"], "-", 
-        SuperscriptBox["m", "2"]}], ")"}], ".", 
-      SuperscriptBox[
+    FormBox[
+     FractionBox["1", 
+      RowBox[{
        RowBox[{"(", 
-        RowBox[{
-         FormBox["q",
-          TraditionalForm], "-", 
-         FormBox["p",
-          TraditionalForm]}], ")"}], "2"]}]], "-", 
-    FractionBox["1", 
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["q",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q, D], 
+           FeynCalc`Momentum[$CellContext`q, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}], ".", 
+       InterpretationBox[
         SuperscriptBox[
-         FormBox["q",
-          TraditionalForm], "2"], "-", 
-        SuperscriptBox["M", "2"]}], ")"}], ".", 
-      SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+          FeynCalc`Momentum[$CellContext`q, D], -
+           FeynCalc`Momentum[$CellContext`p, D] + 
+          FeynCalc`Momentum[$CellContext`q, D]]],
+        Editable->False]}]],
+     TraditionalForm], "-", 
+    FormBox[
+     FractionBox["1", 
+      RowBox[{
        RowBox[{"(", 
-        RowBox[{
-         FormBox["q",
-          TraditionalForm], "-", 
-         FormBox["p",
-          TraditionalForm]}], ")"}], "2"]}]]}], 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["q",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["M", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q, D], 
+           FeynCalc`Momentum[$CellContext`q, D]], "-", $CellContext`M^2],
+         Editable->False], ")"}], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+          FeynCalc`Momentum[$CellContext`q, D], -
+           FeynCalc`Momentum[$CellContext`p, D] + 
+          FeynCalc`Momentum[$CellContext`q, D]]],
+        Editable->False]}]],
+     TraditionalForm]}], 
    RowBox[{
     SuperscriptBox["m", "2"], "-", 
     SuperscriptBox["M", "2"]}]], TraditionalForm]], "Output",
- ImageSize->{234, 61},
+ ImageSize->{297, 62},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Apart2",
- CellLabel->"Out[3]=",
- CellID->496976710]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,7 +397,7 @@ Cell[BoxData[
  RowBox[{"StandardForm", "[", 
   RowBox[{"FCE", "[", "%", "]"}], "]"}]], "Input",
  CellTags->"Apart2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->168515472],
 
 Cell[BoxData[
@@ -274,12 +418,11 @@ Cell[BoxData[
   RowBox[{
    SuperscriptBox["m", "2"], "-", 
    SuperscriptBox["M", "2"]}]]], "Output",
- ImageSize->{315, 40},
+ ImageSize->{310, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Apart2",
- CellLabel->"Out[4]//StandardForm=",
- CellID->638625530]
+ CellLabel->"Out[3]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -321,9 +464,7 @@ Cell[TextData[{
   ButtonNote->"ApartFF"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Apart2",
- CellID->1960323984]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -340,10 +481,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 18.319132}", 
+   "built" -> "{2019, 3, 29, 17, 45, 7.652520}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -351,9 +492,9 @@ TaggingRules->{
     "None", "summary" -> 
     "Apart2[expr] partial fractions very simple 1-loop integrals of the form \
 1/[(q^2-m1^2)(q^2-m2^2)]. Since FeynCalc 9 this function is deprecated. \
-Please use ApartFF instead.", "synonyms" -> {}, "title" -> "Apart2", 
-    "titlemodifier" -> "", "windowtitle" -> "Apart2", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/Apart2"}, "SearchTextTranslated" -> ""},
+Please use ApartFF instead.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "Apart2", "titlemodifier" -> "", "windowtitle" -> "Apart2", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Apart2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -372,104 +513,98 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3391, 95, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1089764331]},
  "Apart2"->{
-  Cell[4025, 124, 130, 4, 27, "Input",
+  Cell[5389, 162, 132, 4, 27, "Input",
    CellTags->"Apart2",
    CellID->1571464480],
-  Cell[4158, 130, 362, 12, 36, "Output",
-   CellTags->"Apart2",
-   CellID->1842118848],
-  Cell[4557, 147, 276, 10, 27, "Input",
+  Cell[5524, 168, 343, 11, 37, "Output",
+   CellTags->"Apart2"],
+  Cell[6561, 215, 276, 10, 27, "Input",
    CellTags->"Apart2",
    CellID->1580962822],
-  Cell[4836, 159, 1296, 34, 69, "Output",
-   CellTags->"Apart2",
-   CellID->1281611536],
-  Cell[6169, 198, 123, 4, 27, "Input",
+  Cell[6840, 227, 1756, 59, 63, "Output",
+   CellTags->"Apart2"],
+  Cell[8633, 291, 123, 4, 27, "Input",
    CellTags->"Apart2",
    CellID->867958772],
-  Cell[6295, 204, 1103, 42, 82, "Output",
-   CellTags->"Apart2",
-   CellID->496976710],
-  Cell[7435, 251, 159, 5, 27, "Input",
+  Cell[8759, 297, 2905, 93, 83, "Output",
+   CellTags->"Apart2"],
+  Cell[11701, 395, 159, 5, 27, "Input",
    CellTags->"Apart2",
    CellID->168515472],
-  Cell[7597, 258, 624, 23, 74, "Output",
-   CellTags->"Apart2",
-   CellID->638625530],
-  Cell[8589, 304, 556, 21, 70, "Text",
-   CellTags->"Apart2",
-   CellID->1960323984]}
+  Cell[11863, 402, 604, 22, 68, "Output",
+   CellTags->"Apart2"]},
+ "PrimaryExamplesSection"->{
+  Cell[5928, 186, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->980918701]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11083, 374},
- {"Apart2", 11216, 378}
+ {"Apart2", 15266, 515},
+ {"PrimaryExamplesSection", 15903, 536}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 3181, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2817, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2869, 78, 497, 13, 98, "Usage",
+Cell[3762, 100, 283, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4070, 115, 497, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3391, 95, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1089764331],
+Cell[4592, 132, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->303586472],
+Cell[5333, 158, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3804, 114, 196, 6, 25, "ExampleSection",
- CellID->1867734952],
-Cell[CellGroupData[{
-Cell[4025, 124, 130, 4, 27, "Input",
+Cell[5389, 162, 132, 4, 27, "Input",
  CellTags->"Apart2",
  CellID->1571464480],
-Cell[4158, 130, 362, 12, 36, "Output",
- CellTags->"Apart2",
- CellID->1842118848]
+Cell[5524, 168, 343, 11, 37, "Output",
+ CellTags->"Apart2"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4557, 147, 276, 10, 27, "Input",
+Cell[5928, 186, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->980918701],
+Cell[CellGroupData[{
+Cell[6340, 205, 196, 6, 25, "ExampleSection",
+ CellID->1882123726],
+Cell[CellGroupData[{
+Cell[6561, 215, 276, 10, 27, "Input",
  CellTags->"Apart2",
  CellID->1580962822],
-Cell[4836, 159, 1296, 34, 69, "Output",
- CellTags->"Apart2",
- CellID->1281611536]
+Cell[6840, 227, 1756, 59, 63, "Output",
+ CellTags->"Apart2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6169, 198, 123, 4, 27, "Input",
+Cell[8633, 291, 123, 4, 27, "Input",
  CellTags->"Apart2",
  CellID->867958772],
-Cell[6295, 204, 1103, 42, 82, "Output",
- CellTags->"Apart2",
- CellID->496976710]
+Cell[8759, 297, 2905, 93, 83, "Output",
+ CellTags->"Apart2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7435, 251, 159, 5, 27, "Input",
+Cell[11701, 395, 159, 5, 27, "Input",
  CellTags->"Apart2",
  CellID->168515472],
-Cell[7597, 258, 624, 23, 74, "Output",
- CellTags->"Apart2",
- CellID->638625530]
+Cell[11863, 402, 604, 22, 68, "Output",
+ CellTags->"Apart2"]
 }, Open  ]]
 }, Open  ]],
-Cell[8248, 285, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12494, 428, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8316, 290, 270, 12, 31, "SeeAlsoSection",
+Cell[12562, 433, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8589, 304, 556, 21, 70, "Text",
- CellTags->"Apart2",
- CellID->1960323984]
+Cell[12835, 447, 517, 19, 55, "SeeAlso"]
 }, Open  ]],
-Cell[9160, 328, 23, 0, 70, "FooterCell"]
+Cell[13367, 469, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

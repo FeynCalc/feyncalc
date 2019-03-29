@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11444,        394]
-NotebookOptionsPosition[      8288,        303]
-NotebookOutlinePosition[     10561,        361]
-CellTagsIndexPosition[     10476,        356]
+NotebookDataLength[     12777,        449]
+NotebookOptionsPosition[      9294,        346]
+NotebookOutlinePosition[     11563,        405]
+CellTagsIndexPosition[     11478,        400]
 WindowTitle->FCReplaceD
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62730], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$123629], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCReplaceD", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FCReplaceD", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FCReplaceD", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -96,6 +109,58 @@ ChangeDimension."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1369580624],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCReplaceD", "]"}]], "Input",
+ CellLabel->"In[61]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{455, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[61]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -111,7 +176,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1131085421],
+ CellID->1000105362],
 
 Cell[CellGroupData[{
 
@@ -121,52 +186,50 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->843909327],
+ CellID->1649940101],
 
 Cell["\<\
 Applying the replacement rule directly to the expression doesn't give the \
 desired result\
-\>", "ExampleText",
- CellID->1023979741],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{"FCI", "[", 
   RowBox[{"D", " ", 
    RowBox[{"MTD", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"%", "/.", 
-  RowBox[{"D", "\[Rule]", 
-   RowBox[{"4", "-", 
-    RowBox[{"2", "Epsilon"}]}]}]}]}], "Input",
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "]"}]], "Input",
  CellLabel->"In[1]:=",
  CellID->1718131501],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"D", " ", 
-   FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{48, 17},
+   SuperscriptBox["g", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{52, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
- CellID->871175171],
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "/.", 
+  RowBox[{"D", "\[Rule]", 
+   RowBox[{"4", "-", 
+    RowBox[{"2", "Epsilon"}]}]}]}]], "Input",
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -176,52 +239,40 @@ Cell[BoxData[
      RowBox[{"2", " ", 
       TagBox["\[CurlyEpsilon]",
        TraditionalForm]}]}], ")"}], " ", 
-   FormBox[
-    SuperscriptBox[
-     SubscriptBox["g", 
-      FormBox[
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"4", "-", 
-          RowBox[{"2", " ", 
-           TagBox["\[CurlyEpsilon]",
-            TraditionalForm]}]}], ",", 
-         RowBox[{"4", "-", 
-          RowBox[{"2", " ", 
-           TagBox["\[CurlyEpsilon]",
-            TraditionalForm]}]}]}], "}"}],
-       TraditionalForm]], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{170, 22},
+   SuperscriptBox[
+    SubscriptBox["g", 
+     FormBox[
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"4", "-", 
+         RowBox[{"2", " ", 
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm]}]}], ",", 
+        RowBox[{"4", "-", 
+         RowBox[{"2", " ", 
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm]}]}]}], "}"}],
+      TraditionalForm]], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{171, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
- CellID->430882547]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
-Cell[TextData[{
- "With ",
- StyleBox["FCReplaceD", "Input"],
- " we get what we want"
-}], "ExampleText",
- CellID->961744640],
+Cell["With FCReplaceD we get what we want", "Notes"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{"FCReplaceD", "[", 
   RowBox[{
    RowBox[{"D", " ", 
@@ -229,10 +280,8 @@ Cell[BoxData[{
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], ",", 
    RowBox[{"D", "\[Rule]", 
     RowBox[{"4", "-", 
-     RowBox[{"2", "Epsilon"}]}]}]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"ChangeDimension", "[", 
-  RowBox[{"%", ",", "4"}], "]"}]}], "Input",
- CellLabel->"In[2]:=",
+     RowBox[{"2", "Epsilon"}]}]}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
  CellID->1500698710],
 
 Cell[BoxData[
@@ -243,27 +292,28 @@ Cell[BoxData[
      RowBox[{"2", " ", 
       TagBox["\[CurlyEpsilon]",
        TraditionalForm]}]}], ")"}], " ", 
-   FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{92, 17},
+   SuperscriptBox["g", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{95, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
- CellID->582387944],
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ChangeDimension", "[", 
+  RowBox[{"%", ",", "4"}], "]"}]], "Input",
+ CellLabel->"In[4]:="],
 
 Cell[BoxData[
  FormBox[
@@ -273,28 +323,21 @@ Cell[BoxData[
      RowBox[{"2", " ", 
       TagBox["\[CurlyEpsilon]",
        TraditionalForm]}]}], ")"}], " ", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{94, 17},
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{97, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
- CellID->2085927952]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -313,10 +356,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 27.296247}", 
+   "built" -> "{2019, 3, 29, 17, 49, 0.924314}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -326,9 +369,10 @@ TaggingRules->{
 replacement rule (e.g. D -> 4 - 2*Epsilon) but doesn't touch D inside Pairs \
 and DiracGammas, i.e the dimension of scalar products, metric tensors and \
 dirac matrices is unchanged. The latter can and should be done via \
-ChangeDimension.", "synonyms" -> {}, "title" -> "FCReplaceD", "titlemodifier" -> 
-    "", "windowtitle" -> "FCReplaceD", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/FCReplaceD"}, "SearchTextTranslated" -> ""},
+ChangeDimension.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "FCReplaceD", "titlemodifier" -> "", "windowtitle" -> "FCReplaceD", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/FCReplaceD"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -348,54 +392,65 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3573, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5184, 163, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1131085421]}
+   CellID->1000105362]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10333, 349}
+ {"PrimaryExamplesSection", 11334, 393}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 2281, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 655, 16, 113, "Usage",
+Cell[2866, 76, 287, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3178, 91, 655, 16, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3573, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3858, 111, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1369580624],
+Cell[4600, 137, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[4656, 141, 93, 2, 27, "Input"],
+Cell[4752, 145, 371, 11, 37, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5184, 163, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1131085421],
+ CellID->1000105362],
 Cell[CellGroupData[{
-Cell[3986, 117, 195, 6, 25, "ExampleSection",
- CellID->843909327],
-Cell[4184, 125, 142, 4, 34, "ExampleText",
- CellID->1023979741],
+Cell[5597, 182, 196, 6, 25, "ExampleSection",
+ CellID->1649940101],
+Cell[5796, 190, 115, 3, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[4351, 133, 319, 10, 45, "Input",
+Cell[5936, 197, 187, 6, 27, "Input",
  CellID->1718131501],
-Cell[4673, 145, 550, 23, 38, "Output",
- CellID->871175171],
-Cell[5226, 170, 1049, 41, 43, "Output",
- CellID->430882547]
+Cell[6126, 205, 398, 16, 37, "Output"]
 }, Open  ]],
-Cell[6290, 214, 122, 5, 35, "ExampleText",
- CellID->961744640],
 Cell[CellGroupData[{
-Cell[6437, 223, 396, 12, 45, "Input",
+Cell[6561, 226, 152, 5, 27, "Input"],
+Cell[6716, 233, 884, 34, 39, "Output"]
+}, Open  ]],
+Cell[7615, 270, 52, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[7692, 274, 302, 10, 27, "Input",
  CellID->1500698710],
-Cell[6836, 237, 678, 28, 38, "Output",
- CellID->582387944],
-Cell[7517, 267, 705, 29, 38, "Output",
- CellID->2085927952]
+Cell[7997, 286, 526, 21, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8560, 312, 114, 3, 27, "Input"],
+Cell[8677, 317, 551, 22, 37, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8261, 301, 23, 0, 42, "FooterCell"]
+Cell[9267, 344, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

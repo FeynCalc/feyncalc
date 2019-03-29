@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12575,        443]
-NotebookOptionsPosition[      7849,        291]
-NotebookOutlinePosition[     11071,        384]
-CellTagsIndexPosition[     10962,        378]
+NotebookDataLength[     13863,        483]
+NotebookOptionsPosition[      9480,        347]
+NotebookOutlinePosition[     12350,        427]
+CellTagsIndexPosition[     12239,        421]
 WindowTitle->Combine
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Combine\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Combine"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Combine.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Factor2\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Factor2"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Combine\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Combine"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Combine.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29022], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Combine", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44336], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Combine", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Combine", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Combine", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -95,6 +129,58 @@ with sums in the denominator."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1490034144],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Combine", "]"}]], "Input",
+ CellTags->"Combine",
+ CellLabel->"In[394]:=",
+ CellID->194899276],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Expanding", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{128, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Combine",
+ CellLabel->"Out[394]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -110,7 +196,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1555962841],
+ CellID->728059853],
 
 Cell[CellGroupData[{
 
@@ -120,28 +206,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1898342962],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Combine", "]"}]], "Input",
- CellTags->"Combine",
- CellLabel->"In[1]:=",
- CellID->194899276],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Expanding", "\[Rule]", "False"}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{138, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Combine",
- CellLabel->"Out[1]=",
- CellID->1836728683]
-}, Open  ]],
+ CellID->1837302837],
 
 Cell[CellGroupData[{
 
@@ -155,7 +220,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"c", "-", "d"}], ")"}]}], "e"], "+", "g"}], "]"}]], "Input",
  CellTags->"Combine",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->809742744],
 
 Cell[BoxData[
@@ -168,19 +233,16 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"c", "-", "d"}], ")"}]}], "+", 
     RowBox[{"e", " ", "g"}]}], "e"], TraditionalForm]], "Output",
- ImageSize->{139, 43},
+ ImageSize->{150, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Combine",
- CellLabel->"Out[2]=",
- CellID->1151883280]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell["\<\
 Here the result from Together where the numerator is automatically expanded.\
-\>", "Text",
- CellTags->"Combine",
- CellID->18145815],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -194,7 +256,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"c", "-", "d"}], ")"}]}], "e"], "+", "g"}], "]"}]], "Input",
  CellTags->"Combine",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->990215666],
 
 Cell[BoxData[
@@ -206,20 +268,17 @@ Cell[BoxData[
     RowBox[{"b", " ", "c"}], "+", 
     RowBox[{"b", " ", "d"}], "+", 
     RowBox[{"e", " ", "g"}]}], "e"], TraditionalForm]], "Output",
- ImageSize->{175, 43},
+ ImageSize->{189, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Combine",
- CellLabel->"Out[3]=",
- CellID->1980431254]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell["\<\
 If the option Expanding is set to True, the result of Combine is the same as \
 Together, but uses a slightly different algorithm.\
-\>", "Text",
- CellTags->"Combine",
- CellID->484864717],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -235,7 +294,7 @@ Cell[BoxData[
        RowBox[{"c", "-", "d"}], ")"}]}], "e"], "+", "g"}], ",", 
    RowBox[{"Expanding", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"Combine",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->758144630],
 
 Cell[BoxData[
@@ -247,12 +306,11 @@ Cell[BoxData[
     RowBox[{"b", " ", "c"}], "+", 
     RowBox[{"b", " ", "d"}], "+", 
     RowBox[{"e", " ", "g"}]}], "e"], TraditionalForm]], "Output",
- ImageSize->{175, 43},
+ ImageSize->{189, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Combine",
- CellLabel->"Out[4]=",
- CellID->1932335260]
+ CellLabel->"Out[3]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -282,9 +340,7 @@ Cell[TextData[{
   ButtonNote->"Factor2"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Combine",
- CellID->2027442052]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -301,10 +357,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 3.435623}", 
+   "built" -> "{2019, 3, 29, 17, 45, 53.892072}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -313,10 +369,10 @@ TaggingRules->{
     "Combine[expr] puts terms in a sum over a common denominator,and cancels \
 factors in the result. Combine is similar to Together, but accepts the option \
 Expanding and works usually better than Together for polynomials involving \
-rationals with sums in the denominator.", "synonyms" -> {}, "title" -> 
-    "Combine", "titlemodifier" -> "", "windowtitle" -> "Combine", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/Combine"}, "SearchTextTranslated" -> 
-  ""},
+rationals with sums in the denominator.", "synonyms" -> {}, "tabletags" -> {},
+     "title" -> "Combine", "titlemodifier" -> "", "windowtitle" -> "Combine", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/Combine"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -335,116 +391,100 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3501, 97, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1555962841]},
  "Combine"->{
-  Cell[4135, 126, 131, 4, 27, "Input",
+  Cell[5310, 161, 133, 4, 27, "Input",
    CellTags->"Combine",
    CellID->194899276],
-  Cell[4269, 132, 278, 10, 36, "Output",
-   CellTags->"Combine",
-   CellID->1836728683],
-  Cell[4584, 147, 301, 11, 52, "Input",
+  Cell[5446, 167, 259, 9, 37, "Output",
+   CellTags->"Combine"],
+  Cell[6399, 212, 301, 11, 53, "Input",
    CellTags->"Combine",
    CellID->809742744],
-  Cell[4888, 160, 411, 15, 64, "Output",
-   CellTags->"Combine",
-   CellID->1151883280],
-  Cell[5314, 178, 141, 4, 32, "Text",
-   CellTags->"Combine",
-   CellID->18145815],
-  Cell[5480, 186, 302, 11, 52, "Input",
+  Cell[6703, 225, 390, 14, 56, "Output",
+   CellTags->"Combine"],
+  Cell[7234, 248, 302, 11, 53, "Input",
    CellTags->"Combine",
    CellID->990215666],
-  Cell[5785, 199, 410, 14, 64, "Output",
-   CellTags->"Combine",
-   CellID->1980431254],
-  Cell[6210, 216, 195, 5, 52, "Text",
-   CellTags->"Combine",
-   CellID->484864717],
-  Cell[6430, 225, 372, 13, 52, "Input",
+  Cell[7539, 261, 389, 13, 56, "Output",
+   CellTags->"Combine"],
+  Cell[8122, 284, 372, 13, 53, "Input",
    CellTags->"Combine",
    CellID->758144630],
-  Cell[6805, 240, 410, 14, 64, "Output",
-   CellTags->"Combine",
-   CellID->1932335260],
-  Cell[7583, 277, 224, 9, 31, "Text",
-   CellTags->"Combine",
-   CellID->2027442052]}
+  Cell[8497, 299, 389, 13, 56, "Output",
+   CellTags->"Combine"]},
+ "PrimaryExamplesSection"->{
+  Cell[5766, 183, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->728059853]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9846, 337},
- {"Combine", 9980, 341}
+ {"Combine", 11456, 393},
+ {"PrimaryExamplesSection", 12096, 414}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+Cell[579, 21, 2995, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2822, 75, 50, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2875, 78, 601, 15, 112, "Usage",
+Cell[3577, 97, 284, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3886, 112, 601, 15, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3501, 97, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1555962841],
+Cell[4512, 131, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1490034144],
+Cell[5254, 157, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3914, 116, 196, 6, 25, "ExampleSection",
- CellID->1898342962],
-Cell[CellGroupData[{
-Cell[4135, 126, 131, 4, 27, "Input",
+Cell[5310, 161, 133, 4, 27, "Input",
  CellTags->"Combine",
  CellID->194899276],
-Cell[4269, 132, 278, 10, 36, "Output",
- CellTags->"Combine",
- CellID->1836728683]
+Cell[5446, 167, 259, 9, 37, "Output",
+ CellTags->"Combine"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4584, 147, 301, 11, 52, "Input",
+Cell[5766, 183, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->728059853],
+Cell[CellGroupData[{
+Cell[6178, 202, 196, 6, 25, "ExampleSection",
+ CellID->1837302837],
+Cell[CellGroupData[{
+Cell[6399, 212, 301, 11, 53, "Input",
  CellTags->"Combine",
  CellID->809742744],
-Cell[4888, 160, 411, 15, 64, "Output",
- CellTags->"Combine",
- CellID->1151883280]
+Cell[6703, 225, 390, 14, 56, "Output",
+ CellTags->"Combine"]
 }, Open  ]],
-Cell[5314, 178, 141, 4, 32, "Text",
- CellTags->"Combine",
- CellID->18145815],
+Cell[7108, 242, 101, 2, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[5480, 186, 302, 11, 52, "Input",
+Cell[7234, 248, 302, 11, 53, "Input",
  CellTags->"Combine",
  CellID->990215666],
-Cell[5785, 199, 410, 14, 64, "Output",
- CellTags->"Combine",
- CellID->1980431254]
+Cell[7539, 261, 389, 13, 56, "Output",
+ CellTags->"Combine"]
 }, Open  ]],
-Cell[6210, 216, 195, 5, 52, "Text",
- CellTags->"Combine",
- CellID->484864717],
+Cell[7943, 277, 154, 3, 47, "Notes"],
 Cell[CellGroupData[{
-Cell[6430, 225, 372, 13, 52, "Input",
+Cell[8122, 284, 372, 13, 53, "Input",
  CellTags->"Combine",
  CellID->758144630],
-Cell[6805, 240, 410, 14, 64, "Output",
- CellTags->"Combine",
- CellID->1932335260]
+Cell[8497, 299, 389, 13, 56, "Output",
+ CellTags->"Combine"]
 }, Open  ]]
 }, Open  ]],
-Cell[7242, 258, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8913, 316, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7310, 263, 270, 12, 31, "SeeAlsoSection",
+Cell[8981, 321, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7583, 277, 224, 9, 31, "Text",
- CellTags->"Combine",
- CellID->2027442052]
+Cell[9254, 335, 184, 7, 54, "SeeAlso"]
 }, Open  ]],
-Cell[7822, 289, 23, 0, 42, "FooterCell"]
+Cell[9453, 345, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

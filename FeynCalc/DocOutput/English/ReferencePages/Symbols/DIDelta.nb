@@ -1,0 +1,1021 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26861,       1011]
+NotebookOptionsPosition[     22391,        864]
+NotebookOutlinePosition[     24492,        920]
+CellTagsIndexPosition[     24407,        915]
+WindowTitle->DIDelta
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracIndexDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracIndexDelta"], "\<\"FCHN\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCHN"], "\<\"FermionicChain\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FermionicChain"], \
+"\<\"FermionicChainSimplify\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FermionicChainSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DIDelta\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DIDelta"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/DIDelta.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$61665], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DIDelta", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["DIDelta", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"DIDelta", "[", 
+       RowBox[{"i", ",", "j"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]is the Kronecker-delta in the Dirac space. \
+DIDelta[i,j] is transformed into DiracDelta[DiracIndex[i],DiracIndex[j]] by \
+FeynCalcInternal."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1655988145],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->831349787],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DIDelta", "[", 
+  RowBox[{"i", ",", "j"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1903212195],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["\[Delta]", 
+   RowBox[{
+    FormBox["i",
+     TraditionalForm], 
+    FormBox["j",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{31, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1647206544]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DIDelta", "[", 
+  RowBox[{"i", ",", "i"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->221486333],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["\[Delta]", 
+   RowBox[{
+    FormBox["i",
+     TraditionalForm], 
+    FormBox["i",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{30, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1722328628]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1175096586],
+
+Cell[BoxData[
+ FormBox["4", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->565415250]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DIDelta", "[", 
+   RowBox[{"i", ",", "j"}], "]"}], "^", "2"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->280996541],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox["\[Delta]", 
+   RowBox[{
+    FormBox["i",
+     TraditionalForm], 
+    FormBox["j",
+     TraditionalForm]}], "2"], TraditionalForm]], "Output",
+ ImageSize->{31, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->552874525]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->717719024],
+
+Cell[BoxData[
+ FormBox["4", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->1577326774]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DIDelta", "[", 
+   RowBox[{"i", ",", "j"}], "]"}], 
+  RowBox[{"DIDelta", "[", 
+   RowBox[{"j", ",", "k"}], "]"}]}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->66063638],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox["i",
+      TraditionalForm], 
+     FormBox["j",
+      TraditionalForm]}]], " ", 
+   SubscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox["j",
+      TraditionalForm], 
+     FormBox["k",
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{64, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->916684113]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->804321979],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["\[Delta]", 
+   RowBox[{
+    FormBox[
+     FormBox["i",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["k",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{33, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]=",
+ CellID->1567272290]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCHN", "[", 
+   RowBox[{
+    RowBox[{"SpinorUBar", "[", 
+     RowBox[{"p", ",", "m"}], "]"}], ",", "i0"}], "]"}], 
+  RowBox[{"FCHN", "[", 
+   RowBox[{
+    RowBox[{"GA", "[", "\[Mu]", "]"}], ",", "i1", ",", "i2"}], "]"}], 
+  RowBox[{"FCHN", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GS", "[", "p", "]"}], "+", "m"}], ",", "i3", ",", "i4"}], "]"}], 
+  RowBox[{"FCHN", "[", 
+   RowBox[{
+    RowBox[{"GA", "[", "\[Nu]", "]"}], ",", "i5", ",", "i6"}], "]"}], 
+  RowBox[{"DIDelta", "[", 
+   RowBox[{"i2", ",", "i3"}], "]"}], 
+  RowBox[{"DIDelta", "[", 
+   RowBox[{"i4", ",", "i5"}], "]"}], 
+  RowBox[{"FCHN", "[", 
+   RowBox[{"i7", ",", 
+    RowBox[{"SpinorV", "[", "q", "]"}]}], "]"}]}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->758241863],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox["i2",
+      TraditionalForm], 
+     FormBox["i3",
+      TraditionalForm]}]], " ", 
+   SubscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox["i4",
+      TraditionalForm], 
+     FormBox["i5",
+      TraditionalForm]}]], " ", 
+   FormBox[
+    SubscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       RowBox[{"v", "(", 
+        FormBox["q",
+         TraditionalForm], ")"}],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["i7",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   FormBox[
+    SubscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm], ")"}], 
+     RowBox[{
+      FormBox[
+       FormBox["i1",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["i2",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm], " ", 
+   FormBox[
+    SubscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm], ")"}], 
+     RowBox[{
+      FormBox[
+       FormBox["i5",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["i6",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm], " ", 
+   FormBox[
+    SubscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       RowBox[{
+        OverscriptBox["u", "_"], "(", 
+        FormBox["p",
+         TraditionalForm], ",", 
+        FormBox["m",
+         TraditionalForm], ")"}],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["i0",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   FormBox[
+    SubscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"],
+           TraditionalForm]}],
+         TraditionalForm], "+", "m"}],
+       TraditionalForm], ")"}], 
+     RowBox[{
+      FormBox[
+       FormBox["i3",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["i4",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{441, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]=",
+ CellID->1481144973]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FCHN", "[", 
+     RowBox[{
+      RowBox[{"SpinorUBar", "[", 
+       RowBox[{"p", ",", "m"}], "]"}], ",", "i0"}], "]"}], 
+    RowBox[{"FCHN", "[", 
+     RowBox[{
+      RowBox[{"GA", "[", "\[Mu]", "]"}], ",", "i1", ",", "i2"}], "]"}], 
+    RowBox[{"FCHN", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"GS", "[", "p", "]"}], "+", "m"}], ",", "i3", ",", "i4"}], 
+     "]"}], 
+    RowBox[{"FCHN", "[", 
+     RowBox[{
+      RowBox[{"GA", "[", "\[Nu]", "]"}], ",", "i5", ",", "i6"}], "]"}], 
+    RowBox[{"DIDelta", "[", 
+     RowBox[{"i2", ",", "i3"}], "]"}], 
+    RowBox[{"DIDelta", "[", 
+     RowBox[{"i4", ",", "i5"}], "]"}], 
+    RowBox[{"FCHN", "[", 
+     RowBox[{"i7", ",", 
+      RowBox[{"SpinorV", "[", "q", "]"}]}], "]"}]}], "//", "FCI"}], "//", 
+  "StandardForm"}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->1093996001],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracIndexDelta", "[", 
+   RowBox[{
+    RowBox[{"DiracIndex", "[", "i2", "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i3", "]"}]}], "]"}], " ", 
+  RowBox[{"DiracIndexDelta", "[", 
+   RowBox[{
+    RowBox[{"DiracIndex", "[", "i4", "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i5", "]"}]}], "]"}], " ", 
+  RowBox[{"FermionicChain", "[", 
+   RowBox[{
+    RowBox[{"DiracIndex", "[", "i7", "]"}], ",", 
+    RowBox[{"Spinor", "[", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Momentum", "[", "q", "]"}]}], ",", "0", ",", "1"}], "]"}]}], 
+   "]"}], " ", 
+  RowBox[{"FermionicChain", "[", 
+   RowBox[{
+    RowBox[{"Spinor", "[", 
+     RowBox[{
+      RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i0", "]"}]}], "]"}], " ", 
+  RowBox[{"FermionicChain", "[", 
+   RowBox[{
+    RowBox[{"DiracGamma", "[", 
+     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i1", "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i2", "]"}]}], "]"}], " ", 
+  RowBox[{"FermionicChain", "[", 
+   RowBox[{
+    RowBox[{"DiracGamma", "[", 
+     RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i5", "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i6", "]"}]}], "]"}], " ", 
+  RowBox[{"FermionicChain", "[", 
+   RowBox[{
+    RowBox[{"m", "+", 
+     RowBox[{"DiracGamma", "[", 
+      RowBox[{"Momentum", "[", "p", "]"}], "]"}]}], ",", 
+    RowBox[{"DiracIndex", "[", "i3", "]"}], ",", 
+    RowBox[{"DiracIndex", "[", "i4", "]"}]}], "]"}]}]], "Output",
+ ImageSize->{492, 135},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[9]//StandardForm=",
+ CellID->1943025584]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[10]:=",
+ CellID->1092912350],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        RowBox[{"-", 
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"]}],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}],
+      TraditionalForm], ")"}], 
+    FormBox[
+     FormBox["i7",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SubscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox["m",
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}],
+      TraditionalForm], ")"}], 
+    FormBox[
+     FormBox["i0",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SubscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"],
+           TraditionalForm]}], "+", "m"}], ")"}], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]]}],
+      TraditionalForm], ")"}], 
+    RowBox[{
+     FormBox[
+      FormBox["i1",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["i6",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{340, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[10]=",
+ CellID->523514846]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FermionicChainSimplify", "[", 
+  RowBox[{"%", " ", 
+   RowBox[{"DIDelta", "[", 
+    RowBox[{"i0", ",", "i1"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->654220270],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        RowBox[{"-", 
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"]}],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}],
+      TraditionalForm], ")"}], 
+    FormBox[
+     FormBox["i7",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SubscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       FormBox["\<\"\[CurlyPhi]\"\>",
+        TraditionalForm], 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox["\<\",\"\>",
+        TraditionalForm], 
+       FormBox["m",
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}],
+      TraditionalForm], ".", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+          FormBox[
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"],
+           TraditionalForm]}], "+", "m"}], ")"}], ".", 
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]]}],
+      TraditionalForm], ")"}], 
+    FormBox[
+     FormBox["i6",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{305, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->1345169628]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FermionicChainSimplify", "[", 
+  RowBox[{"%", " ", 
+   RowBox[{"DIDelta", "[", 
+    RowBox[{"i7", ",", "i6"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->427410435],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], "+", "m"}], ")"}], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{"-", 
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"]}],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{283, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->1753713613]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracIndexDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracIndexDelta",
+  ButtonNote->"DiracIndexDelta"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCHN",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCHN",
+  ButtonNote->"FCHN"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FermionicChain",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FermionicChain",
+  ButtonNote->"FermionicChain"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FermionicChainSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FermionicChainSimplify",
+  ButtonNote->"FermionicChainSimplify"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso",
+ CellID->644176972]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DIDelta",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 3, 29, 17, 46, 34.914668}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "DIDelta[i, j] is the Kronecker-delta in the Dirac space. DIDelta[i,j] is \
+transformed into DiracDelta[DiracIndex[i],DiracIndex[j]] by \
+FeynCalcInternal.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "DIDelta",
+     "titlemodifier" -> "", "windowtitle" -> "DIDelta", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/DIDelta"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4722, 135, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1655988145]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 24263, 908}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 3327, 81, 50, "AnchorBarGrid",
+ CellID->1],
+Cell[3909, 104, 284, 11, 44, "ObjectNameGrid"],
+Cell[4196, 117, 501, 14, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4722, 135, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1655988145],
+Cell[CellGroupData[{
+Cell[5135, 154, 195, 6, 25, "ExampleSection",
+ CellID->831349787],
+Cell[CellGroupData[{
+Cell[5355, 164, 127, 4, 27, "Input",
+ CellID->1903212195],
+Cell[5485, 170, 307, 12, 39, "Output",
+ CellID->1647206544]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5829, 187, 126, 4, 27, "Input",
+ CellID->221486333],
+Cell[5958, 193, 307, 12, 37, "Output",
+ CellID->1722328628]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6302, 210, 119, 3, 27, "Input",
+ CellID->1175096586],
+Cell[6424, 215, 186, 6, 35, "Output",
+ CellID->565415250]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6647, 226, 150, 5, 27, "Input",
+ CellID->280996541],
+Cell[6800, 233, 316, 12, 42, "Output",
+ CellID->552874525]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7153, 250, 118, 3, 27, "Input",
+ CellID->717719024],
+Cell[7274, 255, 187, 6, 35, "Output",
+ CellID->1577326774]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7498, 266, 202, 7, 27, "Input",
+ CellID->66063638],
+Cell[7703, 275, 461, 19, 40, "Output",
+ CellID->916684113]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8201, 299, 118, 3, 27, "Input",
+ CellID->804321979],
+Cell[8322, 304, 383, 16, 38, "Output",
+ CellID->1567272290]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8742, 325, 773, 24, 45, "Input",
+ CellID->758241863],
+Cell[9518, 351, 2790, 119, 38, "Output",
+ CellID->1481144973]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12345, 475, 887, 28, 62, "Input",
+ CellID->1093996001],
+Cell[13235, 505, 1735, 47, 169, "Output",
+ CellID->1943025584]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15007, 557, 120, 3, 27, "Input",
+ CellID->1092912350],
+Cell[15130, 562, 2177, 87, 38, "Output",
+ CellID->523514846]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17344, 654, 204, 6, 27, "Input",
+ CellID->654220270],
+Cell[17551, 662, 1952, 76, 38, "Output",
+ CellID->1345169628]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19540, 743, 204, 6, 27, "Input",
+ CellID->427410435],
+Cell[19747, 751, 1481, 59, 37, "Output",
+ CellID->1753713613]
+}, Open  ]]
+}, Open  ]],
+Cell[21255, 814, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21323, 819, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[21596, 833, 753, 26, 55, "SeeAlso",
+ CellID->644176972]
+}, Open  ]],
+Cell[22364, 862, 23, 0, 40, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

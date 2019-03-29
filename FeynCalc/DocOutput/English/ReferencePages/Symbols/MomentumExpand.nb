@@ -10,62 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17543,        649]
-NotebookOptionsPosition[     11559,        455]
-NotebookOutlinePosition[     15297,        564]
-CellTagsIndexPosition[     15179,        558]
+NotebookDataLength[     16355,        583]
+NotebookOptionsPosition[     11227,        423]
+NotebookOutlinePosition[     14521,        516]
+CellTagsIndexPosition[     14403,        510]
 WindowTitle->MomentumExpand
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/MomentumExpand\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/MomentumExpand"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"ExpandScalarProduct\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExpandScalarProduct"], "\<\"MomentumCombine\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/MomentumCombine"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/MomentumExpand\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/MomentumExpand"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 MomentumExpand.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$104109], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/MomentumExpand", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$190275], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/MomentumExpand", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,18 @@ MomentumExpand.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["MomentumExpand", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["MomentumExpand", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1826585113],
+ CellID->394338584],
 
 Cell[CellGroupData[{
 
@@ -118,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->269887304],
+ CellID->946195898],
 
 Cell[CellGroupData[{
 
@@ -135,12 +169,11 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"Momentum", "[", "p", "]"}], "+", 
   RowBox[{"Momentum", "[", "q", "]"}]}]], "Output",
- ImageSize->{202, 15},
+ ImageSize->{201, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[1]//StandardForm=",
- CellID->1133313171]
+ CellLabel->"Out[1]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -159,13 +192,15 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -176,12 +211,11 @@ Cell[BoxData[
      FormBox["r",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{77, 17},
+ ImageSize->{85, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[2]=",
- CellID->27880999]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,12 +232,11 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", "+", "q"}], "]"}], ",", 
    RowBox[{"Momentum", "[", "r", "]"}]}], "]"}]], "Output",
- ImageSize->{275, 15},
+ ImageSize->{272, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[3]//StandardForm=",
- CellID->581832414]
+ CellLabel->"Out[3]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,13 +256,15 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -240,12 +275,11 @@ Cell[BoxData[
      FormBox["r",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{77, 17},
+ ImageSize->{85, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[4]=",
- CellID->872056569]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,12 +297,11 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "p", "]"}], "+", 
     RowBox[{"Momentum", "[", "q", "]"}]}], ",", 
    RowBox[{"Momentum", "[", "r", "]"}]}], "]"}]], "Output",
- ImageSize->{357, 15},
+ ImageSize->{353, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1334904373]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -289,13 +322,15 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -304,22 +339,23 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["r",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["r",
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{121, 17},
+ ImageSize->{132, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[6]=",
- CellID->549274117]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -340,77 +376,11 @@ Cell[BoxData[
     RowBox[{"-", 
      RowBox[{"Momentum", "[", "p", "]"}]}], "+", 
     RowBox[{"Momentum", "[", "r", "]"}]}]}], "]"}]], "Output",
- ImageSize->{472, 15},
+ ImageSize->{468, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MomentumExpand",
- CellLabel->"Out[7]//StandardForm=",
- CellID->1535384153]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Calc", "[", "%", "]"}]], "Input",
- CellTags->"MomentumExpand",
- CellLabel->"In[8]:=",
- CellID->924306475],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"-", 
-    RowBox[{
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox["\<\"\[CenterDot]\"\>",
-      TraditionalForm], 
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm]}]}], "+", 
-   RowBox[{
-    FormBox[
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"],
-     TraditionalForm], 
-    FormBox["\<\"\[CenterDot]\"\>",
-     TraditionalForm], 
-    FormBox[
-     OverscriptBox[
-      FormBox["r",
-       TraditionalForm], "_"],
-     TraditionalForm]}], "-", 
-   SuperscriptBox[
-    FormBox[
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"],
-     TraditionalForm], "2"], "+", 
-   RowBox[{
-    FormBox[
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"],
-     TraditionalForm], 
-    FormBox["\<\"\[CenterDot]\"\>",
-     TraditionalForm], 
-    FormBox[
-     OverscriptBox[
-      FormBox["r",
-       TraditionalForm], "_"],
-     TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{168, 20},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"MomentumExpand",
- CellLabel->"Out[8]=",
- CellID->857785691]
+ CellLabel->"Out[7]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -446,9 +416,7 @@ Cell[TextData[{
   ButtonNote->"MomentumCombine"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"MomentumExpand",
- CellID->669888532]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -465,20 +433,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 22, 27.582443}", 
+   "built" -> "{2019, 3, 29, 17, 51, 26.344888}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into Momentum[a] \
-+ Momentum[b] + ... .", "synonyms" -> {}, "title" -> "MomentumExpand", 
-    "titlemodifier" -> "", "windowtitle" -> "MomentumExpand", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/MomentumExpand"}, "SearchTextTranslated" -> 
-  ""},
++ Momentum[b] + ... .", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "MomentumExpand", "titlemodifier" -> "", "windowtitle" -> 
+    "MomentumExpand", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/MomentumExpand"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -498,159 +466,125 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3371, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4492, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1826585113]},
+   CellID->394338584]},
  "MomentumExpand"->{
-  Cell[4004, 124, 236, 7, 27, "Input",
+  Cell[5124, 158, 236, 7, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->2119019213],
-  Cell[4243, 133, 295, 9, 49, "Output",
-   CellTags->"MomentumExpand",
-   CellID->1133313171],
-  Cell[4575, 147, 185, 6, 27, "Input",
+  Cell[5363, 167, 274, 8, 49, "Output",
+   CellTags->"MomentumExpand"],
+  Cell[5674, 180, 185, 6, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->840853851],
-  Cell[4763, 155, 672, 28, 38, "Output",
-   CellTags->"MomentumExpand",
-   CellID->27880999],
-  Cell[5472, 188, 133, 4, 27, "Input",
+  Cell[5862, 188, 696, 29, 37, "Output",
+   CellTags->"MomentumExpand"],
+  Cell[6595, 222, 133, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->422127778],
-  Cell[5608, 194, 352, 11, 49, "Output",
-   CellTags->"MomentumExpand",
-   CellID->581832414],
-  Cell[5997, 210, 229, 7, 27, "Input",
+  Cell[6731, 228, 332, 10, 49, "Output",
+   CellTags->"MomentumExpand"],
+  Cell[7100, 243, 229, 7, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->1994358378],
-  Cell[6229, 219, 673, 28, 38, "Output",
-   CellTags->"MomentumExpand",
-   CellID->872056569],
-  Cell[6939, 252, 134, 4, 27, "Input",
+  Cell[7332, 252, 696, 29, 37, "Output",
+   CellTags->"MomentumExpand"],
+  Cell[8065, 286, 134, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->1059717092],
-  Cell[7076, 258, 390, 12, 49, "Output",
-   CellTags->"MomentumExpand",
-   CellID->1334904373],
-  Cell[7503, 275, 253, 8, 27, "Input",
+  Cell[8202, 292, 369, 11, 49, "Output",
+   CellTags->"MomentumExpand"],
+  Cell[8608, 308, 253, 8, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->242711247],
-  Cell[7759, 285, 862, 36, 38, "Output",
-   CellTags->"MomentumExpand",
-   CellID->549274117],
-  Cell[8658, 326, 133, 4, 27, "Input",
+  Cell[8864, 318, 928, 39, 37, "Output",
+   CellTags->"MomentumExpand"],
+  Cell[9829, 362, 133, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->277317176],
-  Cell[8794, 332, 473, 15, 49, "Output",
-   CellTags->"MomentumExpand",
-   CellID->1535384153],
-  Cell[9304, 352, 129, 4, 27, "Input",
-   CellTags->"MomentumExpand",
-   CellID->924306475],
-  Cell[9436, 358, 1267, 54, 41, "Output",
-   CellTags->"MomentumExpand",
-   CellID->857785691],
-  Cell[11071, 435, 446, 15, 32, "Text",
-   CellTags->"MomentumExpand",
-   CellID->669888532]}
+  Cell[9965, 368, 452, 14, 49, "Output",
+   CellTags->"MomentumExpand"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13411, 499},
- {"MomentumExpand", 13552, 503}
+ {"PrimaryExamplesSection", 13074, 467},
+ {"MomentumExpand", 13215, 471}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
+Cell[586, 21, 3157, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2859, 75, 57, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2919, 78, 427, 13, 83, "Usage",
+Cell[3746, 99, 291, 11, 44, "ObjectNameGrid"],
+Cell[4040, 112, 427, 13, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3371, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4492, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1826585113],
+ CellID->394338584],
 Cell[CellGroupData[{
-Cell[3784, 114, 195, 6, 25, "ExampleSection",
- CellID->269887304],
+Cell[4904, 148, 195, 6, 25, "ExampleSection",
+ CellID->946195898],
 Cell[CellGroupData[{
-Cell[4004, 124, 236, 7, 27, "Input",
+Cell[5124, 158, 236, 7, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->2119019213],
-Cell[4243, 133, 295, 9, 49, "Output",
- CellTags->"MomentumExpand",
- CellID->1133313171]
+Cell[5363, 167, 274, 8, 49, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4575, 147, 185, 6, 27, "Input",
+Cell[5674, 180, 185, 6, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->840853851],
-Cell[4763, 155, 672, 28, 38, "Output",
- CellTags->"MomentumExpand",
- CellID->27880999]
+Cell[5862, 188, 696, 29, 37, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5472, 188, 133, 4, 27, "Input",
+Cell[6595, 222, 133, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->422127778],
-Cell[5608, 194, 352, 11, 49, "Output",
- CellTags->"MomentumExpand",
- CellID->581832414]
+Cell[6731, 228, 332, 10, 49, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5997, 210, 229, 7, 27, "Input",
+Cell[7100, 243, 229, 7, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->1994358378],
-Cell[6229, 219, 673, 28, 38, "Output",
- CellTags->"MomentumExpand",
- CellID->872056569]
+Cell[7332, 252, 696, 29, 37, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6939, 252, 134, 4, 27, "Input",
+Cell[8065, 286, 134, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->1059717092],
-Cell[7076, 258, 390, 12, 49, "Output",
- CellTags->"MomentumExpand",
- CellID->1334904373]
+Cell[8202, 292, 369, 11, 49, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7503, 275, 253, 8, 27, "Input",
+Cell[8608, 308, 253, 8, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->242711247],
-Cell[7759, 285, 862, 36, 38, "Output",
- CellTags->"MomentumExpand",
- CellID->549274117]
+Cell[8864, 318, 928, 39, 37, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8658, 326, 133, 4, 27, "Input",
+Cell[9829, 362, 133, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->277317176],
-Cell[8794, 332, 473, 15, 49, "Output",
- CellTags->"MomentumExpand",
- CellID->1535384153]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9304, 352, 129, 4, 27, "Input",
- CellTags->"MomentumExpand",
- CellID->924306475],
-Cell[9436, 358, 1267, 54, 41, "Output",
- CellTags->"MomentumExpand",
- CellID->857785691]
+Cell[9965, 368, 452, 14, 49, "Output",
+ CellTags->"MomentumExpand"]
 }, Open  ]]
 }, Open  ]],
-Cell[10730, 416, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10444, 386, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10798, 421, 270, 12, 31, "SeeAlsoSection",
+Cell[10512, 391, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11071, 435, 446, 15, 32, "Text",
- CellTags->"MomentumExpand",
- CellID->669888532]
+Cell[10785, 405, 400, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[11532, 453, 23, 0, 42, "FooterCell"]
+Cell[11200, 421, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

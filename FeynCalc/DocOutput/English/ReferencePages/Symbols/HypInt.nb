@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9004,        300]
-NotebookOptionsPosition[      5798,        201]
-NotebookOutlinePosition[      8289,        271]
-CellTagsIndexPosition[      8181,        265]
+NotebookDataLength[      9114,        304]
+NotebookOptionsPosition[      6018,        210]
+NotebookOutlinePosition[      8456,        278]
+CellTagsIndexPosition[      8348,        272]
 WindowTitle->HypInt
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$88883], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168910], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/HypInt",
              ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["HypInt", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["HypInt", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -110,7 +121,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1638895535],
+ CellID->463085778],
 
 Cell[CellGroupData[{
 
@@ -120,7 +131,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1480924129],
+ CellID->1055277733],
 
 Cell[CellGroupData[{
 
@@ -135,12 +146,11 @@ Cell[BoxData[
  FormBox[
   TemplateBox[{"a","b","c","z"},
    "Hypergeometric2F1"], TraditionalForm]], "Output",
- ImageSize->{101, 15},
+ ImageSize->{106, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypInt",
- CellLabel->"Out[1]=",
- CellID->1455067917]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -187,12 +197,11 @@ Cell[BoxData[
      "Gamma"], " ", 
     TemplateBox[{RowBox[{"c", "-", "b"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
- ImageSize->{280, 52},
+ ImageSize->{304, 56},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypInt",
- CellLabel->"Out[2]=",
- CellID->1838289676]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -211,10 +220,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 22.202783}", 
+   "built" -> "{2019, 3, 29, 17, 50, 40.043052}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -222,9 +231,9 @@ TaggingRules->{
     "None", "summary" -> 
     "HypInt[exp, t] substitutes for all Hypergeometric2F1[a,b,c,z] in exp \
 Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] t^(b-1) (1-t)^(c-b-1) (1-t \
-z)^(-a).", "synonyms" -> {}, "title" -> "HypInt", "titlemodifier" -> "", 
-    "windowtitle" -> "HypInt", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/HypInt"}, "SearchTextTranslated" -> ""},
+z)^(-a).", "synonyms" -> {}, "tabletags" -> {}, "title" -> "HypInt", 
+    "titlemodifier" -> "", "windowtitle" -> "HypInt", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/HypInt"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -244,64 +253,59 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3416, 97, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3679, 108, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1638895535]},
+   CellID->463085778]},
  "HypInt"->{
-  Cell[4050, 126, 177, 5, 27, "Input",
+  Cell[4312, 137, 177, 5, 27, "Input",
    CellTags->"HypInt",
    CellID->204607872],
-  Cell[4230, 133, 263, 9, 36, "Output",
-   CellTags->"HypInt",
-   CellID->1455067917],
-  Cell[4530, 147, 147, 5, 27, "Input",
+  Cell[4492, 144, 242, 8, 38, "Output",
+   CellTags->"HypInt"],
+  Cell[4771, 157, 147, 5, 27, "Input",
    CellTags->"HypInt",
    CellID->1185900959],
-  Cell[4680, 154, 1052, 40, 73, "Output",
-   CellTags->"HypInt",
-   CellID->1838289676]}
+  Cell[4921, 164, 1031, 39, 77, "Output",
+   CellTags->"HypInt"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7677, 245},
- {"HypInt", 7810, 249}
+ {"PrimaryExamplesSection", 7890, 254},
+ {"HypInt", 8023, 258}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 2265, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2817, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2869, 78, 522, 15, 99, "Usage",
+Cell[2846, 76, 283, 11, 44, "ObjectNameGrid"],
+Cell[3132, 89, 522, 15, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3416, 97, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3679, 108, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1638895535],
+ CellID->463085778],
 Cell[CellGroupData[{
-Cell[3829, 116, 196, 6, 25, "ExampleSection",
- CellID->1480924129],
+Cell[4091, 127, 196, 6, 25, "ExampleSection",
+ CellID->1055277733],
 Cell[CellGroupData[{
-Cell[4050, 126, 177, 5, 27, "Input",
+Cell[4312, 137, 177, 5, 27, "Input",
  CellTags->"HypInt",
  CellID->204607872],
-Cell[4230, 133, 263, 9, 36, "Output",
- CellTags->"HypInt",
- CellID->1455067917]
+Cell[4492, 144, 242, 8, 38, "Output",
+ CellTags->"HypInt"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4530, 147, 147, 5, 27, "Input",
+Cell[4771, 157, 147, 5, 27, "Input",
  CellTags->"HypInt",
  CellID->1185900959],
-Cell[4680, 154, 1052, 40, 73, "Output",
- CellTags->"HypInt",
- CellID->1838289676]
+Cell[4921, 164, 1031, 39, 77, "Output",
+ CellTags->"HypInt"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5771, 199, 23, 0, 42, "FooterCell"]
+Cell[5991, 208, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

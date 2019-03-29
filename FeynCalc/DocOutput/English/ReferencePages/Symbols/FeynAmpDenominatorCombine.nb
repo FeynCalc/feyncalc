@@ -10,64 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11443,        375]
-NotebookOptionsPosition[      7169,        250]
-NotebookOutlinePosition[     10173,        330]
-CellTagsIndexPosition[     10046,        324]
+NotebookDataLength[     15111,        511]
+NotebookOptionsPosition[     10908,        390]
+NotebookOutlinePosition[     13742,        464]
+CellTagsIndexPosition[     13613,        458]
 WindowTitle->FeynAmpDenominatorCombine
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->
-        False], {"\<\"FeynCalc/ref/FeynAmpDenominatorCombine\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/FeynAmpDenominatorCombine"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynAmpDenominatorSplit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominatorSplit"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"FeynCalc/ref/FeynAmpDenominatorCombine\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FeynAmpDenominatorCombine"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 FeynAmpDenominatorCombine.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$64781], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/FeynAmpDenominatorCombine", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$132835], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FeynAmpDenominatorCombine", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -75,8 +98,18 @@ FeynAmpDenominatorCombine.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FeynAmpDenominatorCombine", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FeynAmpDenominatorCombine", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -111,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->325844074],
+ CellID->1845900126],
 
 Cell[CellGroupData[{
 
@@ -121,12 +154,12 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->138877958],
+ CellID->1574962884],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{
    RowBox[{"FAD", "[", "q", "]"}], " ", 
    RowBox[{"FAD", "[", 
@@ -137,68 +170,179 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   FormBox[
-    FractionBox["1", 
+  FormBox[
+   FractionBox["1", 
+    RowBox[{
      InterpretationBox[
-      RowBox[{"\<\"[\"\>", "\[InvisibleSpace]", 
-       SuperscriptBox["q", "2"], "\[InvisibleSpace]", "\<\"]\"\>"}],
-      SequenceForm["[", $CellContext`q^2, "]"],
-      Editable->False]],
-    TraditionalForm], " ", 
-   FormBox[
-    FractionBox["1", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], "2"],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q, D], 
+        FeynCalc`Momentum[$CellContext`q, D]]],
+      Editable->False], " ", 
      InterpretationBox[
-      RowBox[{"\<\"[\"\>", "\[InvisibleSpace]", 
-       SuperscriptBox[
-        RowBox[{"(", 
-         RowBox[{"q", "-", "p"}], ")"}], "2"], 
-       "\[InvisibleSpace]", "\<\"]\"\>"}],
-      SequenceForm["[", (-$CellContext`p + $CellContext`q)^2, "]"],
-      Editable->False]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{109, 47},
+      SuperscriptBox[
+       RowBox[{
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], "2"],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+        FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+      Editable->False]}]],
+   TraditionalForm], TraditionalForm]], "Output",
+ ImageSize->{95, 40},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FeynAmpDenominatorCombine",
- CellLabel->"Out[1]=",
- CellID->947419754]
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominatorCombine", "[", "%", "]"}]], "Input",
+ CellTags->"FeynAmpDenominatorCombine",
+ CellLabel->"In[2]:=",
+ CellID->102451509],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`q, D], 
+       FeynCalc`Momentum[$CellContext`q, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+       FeynCalc`Momentum[$CellContext`q, D], -
+        FeynCalc`Momentum[$CellContext`p, D] + 
+       FeynCalc`Momentum[$CellContext`q, D]]],
+     Editable->False]}]], TraditionalForm]], "Output",
+ ImageSize->{96, 40},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FeynAmpDenominatorCombine",
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"FeynAmpDenominatorCombine", "[", "%", "]"}], "//", "FCE"}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"FeynAmpDenominatorCombine",
- CellLabel->"In[2]:=",
- CellID->102451509],
+  RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
  RowBox[{"FAD", "[", 
   RowBox[{"q", ",", 
    RowBox[{
     RowBox[{"-", "p"}], "+", "q"}]}], "]"}]], "Output",
- ImageSize->{111, 15},
+ ImageSize->{110, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]//StandardForm="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominatorSplit", "[", "%", "]"}]], "Input",
+ CellTags->"FeynAmpDenominatorCombine",
+ CellLabel->"In[4]:=",
+ CellID->1679025277],
+
+Cell[BoxData[
+ FormBox[
+  FormBox[
+   FractionBox["1", 
+    RowBox[{
+     InterpretationBox[
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], "2"],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`q, D], 
+        FeynCalc`Momentum[$CellContext`q, D]]],
+      Editable->False], " ", 
+     InterpretationBox[
+      SuperscriptBox[
+       RowBox[{
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], "2"],
+      SequenceForm[
+       FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+        FeynCalc`Momentum[$CellContext`q, D], -
+         FeynCalc`Momentum[$CellContext`p, D] + 
+        FeynCalc`Momentum[$CellContext`q, D]]],
+      Editable->False]}]],
+   TraditionalForm], TraditionalForm]], "Output",
+ ImageSize->{95, 40},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FeynAmpDenominatorCombine",
- CellLabel->"Out[2]//StandardForm=",
- CellID->230589417]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"FeynAmpDenominatorSplit", "[", "%", "]"}], "//", "FCE"}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"FeynAmpDenominatorCombine",
- CellLabel->"In[3]:=",
- CellID->1679025277],
+  RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[5]:="],
 
 Cell[BoxData[
  RowBox[{
@@ -206,12 +350,10 @@ Cell[BoxData[
   RowBox[{"FAD", "[", 
    RowBox[{
     RowBox[{"-", "p"}], "+", "q"}], "]"}]}]], "Output",
- ImageSize->{143, 15},
+ ImageSize->{140, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"FeynAmpDenominatorCombine",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1242071440]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -241,9 +383,7 @@ Cell[TextData[{
   ButtonNote->"FeynAmpDenominatorSplit"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"FeynAmpDenominatorCombine",
- CellID->842767494]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -260,10 +400,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 36.409820}", 
+   "built" -> "{2019, 3, 29, 17, 49, 21.986593}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -271,7 +411,7 @@ TaggingRules->{
     "None", "summary" -> 
     "FeynAmpDenominatorCombine[expr] expands expr with respect to \
 FeynAmpDenominator and combines products of FeynAmpDenominator in expr into \
-one FeynAmpDenominator.", "synonyms" -> {}, "title" -> 
+one FeynAmpDenominator.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "FeynAmpDenominatorCombine", "titlemodifier" -> "", "windowtitle" -> 
     "FeynAmpDenominatorCombine", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FeynAmpDenominatorCombine"}, "SearchTextTranslated" -> ""},
@@ -294,89 +434,85 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3531, 98, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4563, 131, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->325844074]},
+   CellID->1845900126]},
  "FeynAmpDenominatorCombine"->{
-  Cell[4163, 127, 253, 8, 27, "Input",
+  Cell[5197, 160, 238, 8, 27, "Input",
    CellTags->"FeynAmpDenominatorCombine",
    CellID->1769548352],
-  Cell[4419, 137, 871, 27, 68, "Output",
-   CellTags->"FeynAmpDenominatorCombine",
-   CellID->947419754],
-  Cell[5327, 169, 226, 7, 27, "Input",
+  Cell[5438, 170, 1186, 42, 61, "Output",
+   CellTags->"FeynAmpDenominatorCombine"],
+  Cell[6661, 217, 161, 4, 27, "Input",
    CellTags->"FeynAmpDenominatorCombine",
    CellID->102451509],
-  Cell[5556, 178, 309, 10, 49, "Output",
-   CellTags->"FeynAmpDenominatorCombine",
-   CellID->230589417],
-  Cell[5902, 193, 225, 7, 27, "Input",
+  Cell[6825, 223, 1173, 41, 61, "Output",
+   CellTags->"FeynAmpDenominatorCombine"],
+  Cell[8434, 287, 160, 4, 27, "Input",
    CellTags->"FeynAmpDenominatorCombine",
    CellID->1679025277],
-  Cell[6130, 202, 340, 11, 49, "Output",
-   CellTags->"FeynAmpDenominatorCombine",
-   CellID->1242071440],
-  Cell[6838, 236, 289, 9, 32, "Text",
-   CellTags->"FeynAmpDenominatorCombine",
-   CellID->842767494]}
+  Cell[8597, 293, 1240, 43, 61, "Output",
+   CellTags->"FeynAmpDenominatorCombine"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9135, 295},
- {"FeynAmpDenominatorCombine", 9286, 299}
+ {"PrimaryExamplesSection", 12867, 435},
+ {"FeynAmpDenominatorCombine", 13020, 439}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[597, 21, 2335, 54, 51, "AnchorBarGrid",
+Cell[597, 21, 3133, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2935, 77, 68, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[3006, 80, 500, 14, 97, "Usage",
+Cell[3733, 100, 302, 11, 44, "ObjectNameGrid"],
+Cell[4038, 113, 500, 14, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3531, 98, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4563, 131, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->325844074],
+ CellID->1845900126],
 Cell[CellGroupData[{
-Cell[3943, 117, 195, 6, 25, "ExampleSection",
- CellID->138877958],
+Cell[4976, 150, 196, 6, 25, "ExampleSection",
+ CellID->1574962884],
 Cell[CellGroupData[{
-Cell[4163, 127, 253, 8, 27, "Input",
+Cell[5197, 160, 238, 8, 27, "Input",
  CellTags->"FeynAmpDenominatorCombine",
  CellID->1769548352],
-Cell[4419, 137, 871, 27, 68, "Output",
- CellTags->"FeynAmpDenominatorCombine",
- CellID->947419754]
+Cell[5438, 170, 1186, 42, 61, "Output",
+ CellTags->"FeynAmpDenominatorCombine"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5327, 169, 226, 7, 27, "Input",
+Cell[6661, 217, 161, 4, 27, "Input",
  CellTags->"FeynAmpDenominatorCombine",
  CellID->102451509],
-Cell[5556, 178, 309, 10, 49, "Output",
- CellTags->"FeynAmpDenominatorCombine",
- CellID->230589417]
+Cell[6825, 223, 1173, 41, 61, "Output",
+ CellTags->"FeynAmpDenominatorCombine"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5902, 193, 225, 7, 27, "Input",
+Cell[8035, 269, 110, 3, 27, "Input"],
+Cell[8148, 274, 249, 8, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8434, 287, 160, 4, 27, "Input",
  CellTags->"FeynAmpDenominatorCombine",
  CellID->1679025277],
-Cell[6130, 202, 340, 11, 49, "Output",
- CellTags->"FeynAmpDenominatorCombine",
- CellID->1242071440]
-}, Open  ]]
-}, Open  ]],
-Cell[6497, 217, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8597, 293, 1240, 43, 61, "Output",
+ CellTags->"FeynAmpDenominatorCombine"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6565, 222, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[6838, 236, 289, 9, 32, "Text",
- CellTags->"FeynAmpDenominatorCombine",
- CellID->842767494]
+Cell[9874, 341, 110, 3, 27, "Input"],
+Cell[9987, 346, 279, 9, 49, "Output"]
+}, Open  ]]
 }, Open  ]],
-Cell[7142, 248, 23, 0, 42, "FooterCell"]
+Cell[10293, 359, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10361, 364, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10634, 378, 232, 7, 70, "SeeAlso"]
+}, Open  ]],
+Cell[10881, 388, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

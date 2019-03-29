@@ -10,62 +10,89 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10675,        380]
-NotebookOptionsPosition[      6857,        256]
-NotebookOutlinePosition[      9555,        335]
-CellTagsIndexPosition[      9450,        329]
+NotebookDataLength[     11554,        400]
+NotebookOptionsPosition[      8002,        288]
+NotebookOutlinePosition[     10545,        361]
+CellTagsIndexPosition[     10440,        355]
 WindowTitle->SOD
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/SOD\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/SOD"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/SOD.html"],
-                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
-           Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140231], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/SOD", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"OPEDelta\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OPEDelta"], "\<\"Pair\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Pair"], "\<\"ScalarProduct\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScalarProduct"], "\<\"SOD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SOD"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/SOD\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/SOD"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/SOD.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$247644], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SOD", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +100,18 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SOD", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SOD", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1345673083],
+ CellID->1816810601],
 
 Cell[CellGroupData[{
 
@@ -118,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1544719042],
+ CellID->1344151831],
 
 Cell[CellGroupData[{
 
@@ -137,12 +174,11 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["p",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{35, 17},
+ ImageSize->{36, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SOD",
- CellLabel->"Out[1]=",
- CellID->1608750131]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -168,12 +204,11 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{77, 17},
+ ImageSize->{82, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SOD",
- CellLabel->"Out[2]=",
- CellID->1010314656]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -194,12 +229,11 @@ Cell[BoxData[
     RowBox[{"OPEDelta", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}]}], "]"}]], "Output",
- ImageSize->{353, 15},
+ ImageSize->{348, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SOD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1393449003]
+ CellLabel->"Out[3]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -247,9 +281,7 @@ Cell[TextData[{
   ButtonNote->"SOD"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"SOD",
- CellID->1925156465]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -266,10 +298,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 0.515545}", 
+   "built" -> "{2019, 3, 29, 17, 53, 31.178377}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -277,9 +309,9 @@ TaggingRules->{
     "None", "summary" -> 
     "SOD[q] is a D-dimensional scalar product of OPEDelta with q. It is \
 transformed into Pair[Momentum[q,D], Momentum[OPEDelta,D] by \
-FeynCalcInternal.", "synonyms" -> {}, "title" -> "SOD", "titlemodifier" -> "",
-     "windowtitle" -> "SOD", "type" -> "Symbol", "uri" -> "FeynCalc/ref/SOD"},
-   "SearchTextTranslated" -> ""},
+FeynCalcInternal.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "SOD", 
+    "titlemodifier" -> "", "windowtitle" -> "SOD", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/SOD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -299,89 +331,77 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3368, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4612, 132, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1345673083]},
+   CellID->1816810601]},
  "SOD"->{
-  Cell[4002, 124, 117, 4, 27, "Input",
+  Cell[5246, 161, 117, 4, 27, "Input",
    CellTags->"SOD",
    CellID->950791209],
-  Cell[4122, 130, 371, 14, 38, "Output",
-   CellTags->"SOD",
-   CellID->1608750131],
-  Cell[4530, 149, 140, 5, 27, "Input",
+  Cell[5366, 167, 350, 13, 37, "Output",
+   CellTags->"SOD"],
+  Cell[5753, 185, 140, 5, 27, "Input",
    CellTags->"SOD",
    CellID->720250068],
-  Cell[4673, 156, 490, 19, 38, "Output",
-   CellTags->"SOD",
-   CellID->1010314656],
-  Cell[5200, 180, 182, 7, 27, "Input",
+  Cell[5896, 192, 469, 18, 37, "Output",
+   CellTags->"SOD"],
+  Cell[6402, 215, 182, 7, 27, "Input",
    CellTags->"SOD",
    CellID->737230779],
-  Cell[5385, 189, 374, 12, 49, "Output",
-   CellTags->"SOD",
-   CellID->1393449003],
-  Cell[6127, 224, 688, 27, 31, "Text",
-   CellTags->"SOD",
-   CellID->1925156465]}
+  Cell[6587, 224, 353, 11, 49, "Output",
+   CellTags->"SOD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8712, 300},
- {"SOD", 8842, 304}
+ {"PrimaryExamplesSection", 9853, 332},
+ {"SOD", 9984, 336}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 2238, 52, 51, "AnchorBarGrid",
+Cell[575, 21, 3248, 79, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2816, 75, 46, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2865, 78, 478, 13, 99, "Usage",
+Cell[3826, 102, 280, 11, 44, "ObjectNameGrid"],
+Cell[4109, 115, 478, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3368, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4612, 132, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1345673083],
+ CellID->1816810601],
 Cell[CellGroupData[{
-Cell[3781, 114, 196, 6, 25, "ExampleSection",
- CellID->1544719042],
+Cell[5025, 151, 196, 6, 25, "ExampleSection",
+ CellID->1344151831],
 Cell[CellGroupData[{
-Cell[4002, 124, 117, 4, 27, "Input",
+Cell[5246, 161, 117, 4, 27, "Input",
  CellTags->"SOD",
  CellID->950791209],
-Cell[4122, 130, 371, 14, 38, "Output",
- CellTags->"SOD",
- CellID->1608750131]
+Cell[5366, 167, 350, 13, 37, "Output",
+ CellTags->"SOD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4530, 149, 140, 5, 27, "Input",
+Cell[5753, 185, 140, 5, 27, "Input",
  CellTags->"SOD",
  CellID->720250068],
-Cell[4673, 156, 490, 19, 38, "Output",
- CellTags->"SOD",
- CellID->1010314656]
+Cell[5896, 192, 469, 18, 37, "Output",
+ CellTags->"SOD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5200, 180, 182, 7, 27, "Input",
+Cell[6402, 215, 182, 7, 27, "Input",
  CellTags->"SOD",
  CellID->737230779],
-Cell[5385, 189, 374, 12, 49, "Output",
- CellTags->"SOD",
- CellID->1393449003]
+Cell[6587, 224, 353, 11, 49, "Output",
+ CellTags->"SOD"]
 }, Open  ]]
 }, Open  ]],
-Cell[5786, 205, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6967, 239, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5854, 210, 270, 12, 31, "SeeAlsoSection",
+Cell[7035, 244, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6127, 224, 688, 27, 31, "Text",
- CellTags->"SOD",
- CellID->1925156465]
+Cell[7308, 258, 652, 25, 55, "SeeAlso"]
 }, Open  ]],
-Cell[6830, 254, 23, 0, 42, "FooterCell"]
+Cell[7975, 286, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

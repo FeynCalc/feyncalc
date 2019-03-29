@@ -10,62 +10,98 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10136,        334]
-NotebookOptionsPosition[      6788,        236]
-NotebookOutlinePosition[      9366,        305]
-CellTagsIndexPosition[      9252,        299]
+NotebookDataLength[     11647,        372]
+NotebookOptionsPosition[      8449,        280]
+NotebookOutlinePosition[     10933,        346]
+CellTagsIndexPosition[     10817,        340]
 WindowTitle->Abbreviation
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Abbreviation\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Abbreviation"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"$Abbreviations\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/$Abbreviations"], "\<\"OneLoop\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OneLoop"], "\<\"PaVeReduce\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PaVeReduce"], "\<\"WriteOut\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/WriteOut"], "\<\"WriteOutPaVe\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/WriteOutPaVe"], "\<\"GluonPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonPropagator"], "\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonVertex"], "\<\"QuarkPropagator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/QuarkPropagator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Abbreviation\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Abbreviation"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 Abbreviation.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15953], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Abbreviation", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$19966], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Abbreviation", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +109,18 @@ Abbreviation.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Abbreviation", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Abbreviation", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -109,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->974762014],
+ CellID->197700525],
 
 Cell[CellGroupData[{
 
@@ -119,7 +165,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->891133844],
+ CellID->1845240717],
 
 Cell[CellGroupData[{
 
@@ -150,7 +196,7 @@ Cell[BoxData[
       TraditionalForm]}]], "(", 
    FormBox["p",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{54, 21},
+ ImageSize->{61, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Abbreviation",
@@ -227,9 +273,7 @@ Cell[TextData[{
   ButtonNote->"QuarkPropagator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Abbreviation",
- CellID->1098399815]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -246,10 +290,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 5.658213}", 
+   "built" -> "{2019, 3, 29, 17, 44, 51.242587}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -258,10 +302,10 @@ TaggingRules->{
     "Abbreviation is a function used by OneLoop and PaVeReduce for generating \
 smaller files when saving results to the hard disk. The convention is that a \
 definition like GP = GluonPropagator should be accompanied by the definition \
-Abbreviation[GluonPropagator] = HoldForm[GP].", "synonyms" -> {}, "title" -> 
-    "Abbreviation", "titlemodifier" -> "", "windowtitle" -> "Abbreviation", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/Abbreviation"}, 
-  "SearchTextTranslated" -> ""},
+Abbreviation[GluonPropagator] = HoldForm[GP].", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "Abbreviation", "titlemodifier" -> "", 
+    "windowtitle" -> "Abbreviation", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Abbreviation"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -281,61 +325,55 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3511, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5216, 142, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->974762014]},
+   CellID->197700525]},
  "Abbreviation"->{
-  Cell[4143, 125, 284, 9, 27, "Input",
+  Cell[5849, 171, 284, 9, 27, "Input",
    CellTags->"Abbreviation",
    CellID->333600762],
-  Cell[4430, 136, 519, 21, 42, "Output",
+  Cell[6136, 182, 519, 21, 39, "Output",
    CellTags->"Abbreviation",
-   CellID->908274881],
-  Cell[5317, 180, 1429, 51, 52, "Text",
-   CellTags->"Abbreviation",
-   CellID->1098399815]}
+   CellID->908274881]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8813, 282},
- {"Abbreviation", 8951, 286}
+ {"PrimaryExamplesSection", 10470, 326},
+ {"Abbreviation", 10609, 330}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2261, 52, 51, "AnchorBarGrid",
+Cell[584, 21, 3732, 88, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2848, 75, 55, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2906, 78, 580, 14, 115, "Usage",
+Cell[4319, 111, 289, 11, 44, "ObjectNameGrid"],
+Cell[4611, 124, 580, 14, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3511, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5216, 142, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->974762014],
+ CellID->197700525],
 Cell[CellGroupData[{
-Cell[3923, 115, 195, 6, 25, "ExampleSection",
- CellID->891133844],
+Cell[5628, 161, 196, 6, 25, "ExampleSection",
+ CellID->1845240717],
 Cell[CellGroupData[{
-Cell[4143, 125, 284, 9, 27, "Input",
+Cell[5849, 171, 284, 9, 27, "Input",
  CellTags->"Abbreviation",
  CellID->333600762],
-Cell[4430, 136, 519, 21, 42, "Output",
+Cell[6136, 182, 519, 21, 39, "Output",
  CellTags->"Abbreviation",
  CellID->908274881]
 }, Open  ]]
 }, Open  ]],
-Cell[4976, 161, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6682, 207, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5044, 166, 270, 12, 31, "SeeAlsoSection",
+Cell[6750, 212, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5317, 180, 1429, 51, 52, "Text",
- CellTags->"Abbreviation",
- CellID->1098399815]
+Cell[7023, 226, 1384, 49, 69, "SeeAlso"]
 }, Open  ]],
-Cell[6761, 234, 23, 0, 42, "FooterCell"]
+Cell[8422, 278, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

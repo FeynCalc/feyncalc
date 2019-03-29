@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12819,        461]
-NotebookOptionsPosition[      9250,        351]
-NotebookOutlinePosition[     11846,        424]
-CellTagsIndexPosition[     11731,        418]
+NotebookDataLength[     14104,        496]
+NotebookOptionsPosition[     10943,        401]
+NotebookOutlinePosition[     13011,        457]
+CellTagsIndexPosition[     12926,        452]
 WindowTitle->EpsChisholm
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/EpsChisholm\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/EpsChisholm"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Chisholm\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Chisholm"], "\<\"Eps\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Eps"], "\<\"DiracGamma\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracGamma"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/EpsChisholm\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/EpsChisholm"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 EpsChisholm.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48713], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/EpsChisholm", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78247], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/EpsChisholm", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,16 +98,27 @@ EpsChisholm.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["EpsChisholm", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["EpsChisholm", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"EpsChisholm", "[", "expr", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "substitutes for a gamma matrix contracted with a Levi-Civita tensor \
-(Eps) the Chisholm identity."
+      RowBox[{"EpsChisholm", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]applies the Chisholm identiy to a Dirac matrix \
+contracted with a Levi-Civita tensor"
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -90,6 +126,60 @@ Cell[BoxData[GridBox[{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->388464304],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "EpsChisholm", "]"}]], "Input",
+ CellLabel->"In[54]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracTrick", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCJoinDOTs", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{432, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[54]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -108,7 +198,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1704552531],
+ CellID->1184313521],
 
 Cell[CellGroupData[{
 
@@ -118,18 +208,68 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->847503033],
+ CellID->2044288600],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Chisholm", "[", 
-  RowBox[{"GA", "[", 
+ RowBox[{
+  RowBox[{"LC", "[", 
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-  "]"}]], "Input",
- CellTags->"EpsChisholm",
- CellLabel->"In[1]:=",
- CellID->1696563627],
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Sigma]", ",", "5"}], "]"}]}]], "Input",
+ CellLabel->"In[1]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]],
+     TraditionalForm]}], " ", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{99, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EpsChisholm", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -140,179 +280,79 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["$MU$6147",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Sigma]",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox["5",
-        TraditionalForm]]}], " ", 
-     SuperscriptBox["\[Epsilon]", 
-      RowBox[{
-       FormBox[
         FormBox["\[Mu]",
          TraditionalForm],
-        TraditionalForm], 
+        TraditionalForm]], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
        FormBox[
         FormBox["\[Nu]",
          TraditionalForm],
-        TraditionalForm], 
+        TraditionalForm]], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
        FormBox[
         FormBox["\[Rho]",
          TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox["$MU$6147",
-         TraditionalForm],
-        TraditionalForm]}]]}]}], "+", 
-   RowBox[{
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Rho]",
-        TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Sigma]",
-        TraditionalForm],
-       TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "-", 
-   RowBox[{
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
-      FormBox[
-       FormBox["\[Sigma]",
-        TraditionalForm],
-       TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}], "+", 
-   RowBox[{
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
       FormBox[
        FormBox["\[Mu]",
         TraditionalForm],
-       TraditionalForm]], ".", 
-     SuperscriptBox[
-      OverscriptBox["\[Gamma]", "_"], 
+       TraditionalForm], 
       FormBox[
-       FormBox["\[Sigma]",
+       FormBox["\[Nu]",
         TraditionalForm],
-       TraditionalForm]]}], " ", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{505, 19},
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{329, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"EpsChisholm",
- CellLabel->"Out[1]=",
- CellID->378756372]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"EpsChisholm", "[", "%", "]"}]], "Input",
- CellTags->"EpsChisholm",
- CellLabel->"In[2]:=",
- CellID->1192722750],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Rho]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Sigma]",
-      TraditionalForm],
-     TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{93, 18},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"EpsChisholm",
- CellLabel->"Out[2]=",
- CellID->1298618997]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -341,10 +381,20 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/Chisholm",
   ButtonNote->"Chisholm"],
   FontFamily->"Verdana"],
- "."
-}], "Text",
- CellTags->"EpsChisholm",
- CellID->2052423258]
+ ", ",
+ StyleBox[ButtonBox["Eps",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+  FontFamily->"Verdana"]
+}], "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -361,19 +411,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 27.526990}", 
+   "built" -> "{2019, 3, 29, 17, 47, 13.648937}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "EpsChisholm[expr] substitutes for a gamma matrix contracted with a \
-Levi-Civita tensor (Eps) the Chisholm identity.", "synonyms" -> {}, "title" -> 
-    "EpsChisholm", "titlemodifier" -> "", "windowtitle" -> "EpsChisholm", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/EpsChisholm"}, 
+    "EpsChisholm[exp] applies the Chisholm identiy to a Dirac matrix \
+contracted with a Levi-Civita tensor", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "EpsChisholm", "titlemodifier" -> "", "windowtitle" -> 
+    "EpsChisholm", "type" -> "Symbol", "uri" -> "FeynCalc/ref/EpsChisholm"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -394,75 +444,60 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3372, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5968, 185, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1704552531]},
- "EpsChisholm"->{
-  Cell[4005, 124, 227, 7, 27, "Input",
-   CellTags->"EpsChisholm",
-   CellID->1696563627],
-  Cell[4235, 133, 3400, 138, 40, "Output",
-   CellTags->"EpsChisholm",
-   CellID->378756372],
-  Cell[7672, 276, 134, 4, 27, "Input",
-   CellTags->"EpsChisholm",
-   CellID->1192722750],
-  Cell[7809, 282, 800, 32, 39, "Output",
-   CellTags->"EpsChisholm",
-   CellID->1298618997],
-  Cell[8977, 337, 231, 9, 31, "Text",
-   CellTags->"EpsChisholm",
-   CellID->2052423258]}
+   CellID->1184313521]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11110, 395},
- {"EpsChisholm", 11248, 399}
+ {"PrimaryExamplesSection", 12782, 445}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+Cell[583, 21, 3188, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2843, 75, 54, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2900, 78, 447, 13, 83, "Usage",
+Cell[3774, 100, 288, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4087, 115, 424, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3372, 95, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1704552531],
+Cell[4536, 131, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->388464304],
+Cell[5277, 157, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3785, 114, 195, 6, 25, "ExampleSection",
- CellID->847503033],
-Cell[CellGroupData[{
-Cell[4005, 124, 227, 7, 27, "Input",
- CellTags->"EpsChisholm",
- CellID->1696563627],
-Cell[4235, 133, 3400, 138, 40, "Output",
- CellTags->"EpsChisholm",
- CellID->378756372]
+Cell[5333, 161, 94, 2, 27, "Input"],
+Cell[5430, 165, 477, 13, 56, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7672, 276, 134, 4, 27, "Input",
- CellTags->"EpsChisholm",
- CellID->1192722750],
-Cell[7809, 282, 800, 32, 39, "Output",
- CellTags->"EpsChisholm",
- CellID->1298618997]
+Cell[5968, 185, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1184313521],
+Cell[CellGroupData[{
+Cell[6381, 204, 196, 6, 25, "ExampleSection",
+ CellID->2044288600],
+Cell[CellGroupData[{
+Cell[6602, 214, 220, 6, 27, "Input"],
+Cell[6825, 222, 1010, 42, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7872, 269, 87, 2, 27, "Input"],
+Cell[7962, 273, 2061, 81, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[8636, 318, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10050, 358, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8704, 323, 270, 12, 31, "SeeAlsoSection",
+Cell[10118, 363, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8977, 337, 231, 9, 31, "Text",
- CellTags->"EpsChisholm",
- CellID->2052423258]
+Cell[10391, 377, 510, 19, 55, "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
-Cell[9223, 349, 23, 0, 42, "FooterCell"]
+Cell[10916, 399, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,89 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6714,        202]
-NotebookOptionsPosition[      4381,        135]
-NotebookOutlinePosition[      6448,        191]
-CellTagsIndexPosition[      6373,        186]
+NotebookDataLength[      7710,        228]
+NotebookOptionsPosition[      5582,        170]
+NotebookOutlinePosition[      7501,        220]
+CellTagsIndexPosition[      7458,        217]
 WindowTitle->IntegralTable
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/IntegralTable\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/IntegralTable"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"OneLoopSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OneLoopSimplify"], "\<\"TwoLoopSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/TwoLoopSimplify"], \
+"\<\"FeynAmpDenominatorSimplify\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominatorSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/IntegralTable\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/IntegralTable"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 IntegralTable.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$91982], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/IntegralTable", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173090], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/IntegralTable", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +100,18 @@ IntegralTable.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["IntegralTable", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["IntegralTable", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -126,9 +163,7 @@ Cell[TextData[{
   ButtonNote->"FeynAmpDenominatorSimplify"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"IntegralTable",
- CellID->498155720]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -145,10 +180,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 34.777477}", 
+   "built" -> "{2019, 3, 29, 17, 50, 47.612549}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -156,9 +191,10 @@ TaggingRules->{
     "None", "summary" -> 
     "IntegralTable is an option of OneLoopSimplify, TwoLoopSimplify and \
 FeynAmpDenominatorSimplify. It may be set to a list of the form : \
-{FCIntegral[ ... ] :> bla, ...}.", "synonyms" -> {}, "title" -> 
-    "IntegralTable", "titlemodifier" -> "", "windowtitle" -> "IntegralTable", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/IntegralTable"}},
+{FCIntegral[ ... ] :> bla, ...}.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "IntegralTable", "titlemodifier" -> "", "windowtitle" -> 
+    "IntegralTable", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/IntegralTable"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -176,34 +212,24 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "IntegralTable"->{
-  Cell[3693, 109, 646, 21, 70, "Text",
-   CellTags->"IntegralTable",
-   CellID->498155720]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"IntegralTable", 6257, 179}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2265, 52, 70, "AnchorBarGrid",
+Cell[585, 21, 3277, 79, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2853, 75, 56, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2912, 78, 483, 13, 70, "Usage",
+Cell[3865, 102, 290, 11, 70, "ObjectNameGrid"],
+Cell[4158, 115, 483, 13, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3420, 95, 270, 12, 70, "SeeAlsoSection",
+Cell[4666, 132, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3693, 109, 646, 21, 70, "Text",
- CellTags->"IntegralTable",
- CellID->498155720]
+Cell[4939, 146, 601, 19, 70, "SeeAlso"]
 }, Open  ]],
-Cell[4354, 133, 23, 0, 70, "FooterCell"]
+Cell[5555, 168, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

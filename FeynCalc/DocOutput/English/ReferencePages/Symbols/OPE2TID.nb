@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9053,        291]
-NotebookOptionsPosition[      5738,        193]
-NotebookOutlinePosition[      8295,        262]
-CellTagsIndexPosition[      8186,        256]
+NotebookDataLength[      8978,        294]
+NotebookOptionsPosition[      6295,        212]
+NotebookOutlinePosition[      8345,        270]
+CellTagsIndexPosition[      8276,        265]
 WindowTitle->OPE2TID
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/OPE2TID\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/OPE2TID"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/OPE2TID.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"OPESum\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OPESum"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/OPE2TID\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/OPE2TID"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/OPE2TID.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$110348], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/OPE2TID", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$199106], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/OPE2TID", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,28 +95,28 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["OPE2TID", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["OPE2TID", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{
-       RowBox[{
-        RowBox[{
-         RowBox[{
-          RowBox[{"OPE2TID", "[", 
-           RowBox[{"exp", ",", " ", "k1", ",", " ", "k2", ",", " ", "p"}], 
-           "]"}], ".", " ", "The"}], " ", "setting", " ", "of", " ", "the", 
-         " ", "option", " ", "EpsContract", " ", "determines", " ", "the", 
-         " ", "dimension", " ", "in", " ", "which", " ", "the", " ", "Levi"}],
-         "-", 
-        RowBox[{"Civita", " ", "tensors", " ", "are", " ", 
-         RowBox[{"contracted", "."}]}]}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "Part[{\"OPE2TID[exp, k1, k2, p]. The setting of the option EpsContract \
-determines the dimension in which the Levi-Civita tensors are contracted.\"}, \
-2]"
+      RowBox[{"OPE2TID", "[", 
+       RowBox[{"exp", ",", " ", "k1", ",", " ", "k2", ",", " ", "p"}], "]"}]],
+       "InlineFormula"],
+     "\n\tdoes a special tensor integral decomposition of exp."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -105,32 +127,33 @@ determines the dimension in which the Levi-Civita tensors are contracted.\"}, \
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1024732886],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1331960496],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->2114051963],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
@@ -149,16 +172,14 @@ Cell[BoxData[
     RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
     RowBox[{"EpsContract", "\[Rule]", "False"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{504, 15},
+ ImageSize->{475, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPE2TID",
  CellLabel->"Out[1]=",
  CellID->1228598425]
 }, Open  ]]
-}, Open  ]],
-
-Cell["", "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -184,9 +205,7 @@ Cell[TextData[{
   ButtonNote->"OPESum"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"OPE2TID",
- CellID->2032594420]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -203,22 +222,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 22, 54.666298}", 
+   "built" -> "{2019, 3, 29, 17, 51, 46.164790}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "OPE2TID[exp, k1, k2, p]. The setting of the option EpsContract \
-determines the dimension in \\ which the Levi - Civita tensors are \
-contracted.] Part[{\"OPE2TID[exp, k1, k2, p]. The setting of the option \
-EpsContract determines the dimension in which the Levi-Civita tensors are \
-contracted.\"}, 2]", "synonyms" -> {}, "title" -> "OPE2TID", "titlemodifier" -> 
-    "", "windowtitle" -> "OPE2TID", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/OPE2TID"}, "SearchTextTranslated" -> ""},
+    "OPE2TID[exp, k1, k2, p] does a special tensor integral decomposition of \
+exp.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "OPE2TID", 
+    "titlemodifier" -> "", "windowtitle" -> "OPE2TID", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/OPE2TID"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -237,62 +253,49 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3889, 107, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1024732886]},
  "OPE2TID"->{
-  Cell[4523, 136, 132, 4, 27, "Input",
+  Cell[5154, 159, 132, 4, 27, "Input",
    CellTags->"OPE2TID",
    CellID->1639885788],
-  Cell[4658, 142, 449, 14, 36, "Output",
+  Cell[5289, 165, 449, 14, 37, "Output",
    CellTags->"OPE2TID",
-   CellID->1228598425],
-  Cell[5475, 179, 221, 9, 31, "Text",
-   CellTags->"OPE2TID",
-   CellID->2032594420]}
+   CellID->1228598425]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7765, 239},
- {"OPE2TID", 7900, 243}
+ {"OPE2TID", 8076, 255}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2241, 52, 51, "AnchorBarGrid",
+Cell[579, 21, 2994, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2823, 75, 50, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2876, 78, 988, 25, 117, "Usage",
+Cell[3576, 97, 284, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3885, 112, 446, 13, 92, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3889, 107, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1024732886],
+Cell[4356, 129, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1331960496],
+Cell[5098, 155, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4302, 126, 196, 6, 25, "ExampleSection",
- CellID->2114051963],
-Cell[CellGroupData[{
-Cell[4523, 136, 132, 4, 27, "Input",
+Cell[5154, 159, 132, 4, 27, "Input",
  CellTags->"OPE2TID",
  CellID->1639885788],
-Cell[4658, 142, 449, 14, 36, "Output",
+Cell[5289, 165, 449, 14, 37, "Output",
  CellTags->"OPE2TID",
  CellID->1228598425]
 }, Open  ]]
-}, Open  ]],
-Cell[5134, 160, 31, 0, 29, "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5202, 165, 270, 12, 31, "SeeAlsoSection",
+Cell[5799, 186, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5475, 179, 221, 9, 31, "Text",
- CellTags->"OPE2TID",
- CellID->2032594420]
+Cell[6072, 200, 181, 7, 54, "SeeAlso"]
 }, Open  ]],
-Cell[5711, 191, 23, 0, 42, "FooterCell"]
+Cell[6268, 210, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

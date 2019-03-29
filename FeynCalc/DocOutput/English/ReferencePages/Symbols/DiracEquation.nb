@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10218,        351]
-NotebookOptionsPosition[      6630,        241]
-NotebookOutlinePosition[      9236,        314]
-CellTagsIndexPosition[      9121,        308]
+NotebookDataLength[     16580,        613]
+NotebookOptionsPosition[     12710,        494]
+NotebookOutlinePosition[     14804,        550]
+CellTagsIndexPosition[     14719,        545]
 WindowTitle->DiracEquation
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/DiracEquation\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/DiracEquation"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracSimplify\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DiracEquation\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DiracEquation"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 DiracEquation.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39025], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/DiracEquation", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63525], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DiracEquation", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,16 +95,33 @@ DiracEquation.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["DiracEquation", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["DiracEquation", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"DiracEquation", "[", "exp", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "applies the Dirac equation without expanding exp. If that is needed, \
-use DiracSimplify."
+     " \[LineSeparator]applies the Dirac equation without expanding ",
+     Cell[BoxData["exp"], "InlineFormula"],
+     ". If expansions are necessary, use ",
+     ButtonBox["DiracSimplify",
+      BaseStyle->"Link",
+      ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+      ButtonNote->"DiracSimplify"],
+     "."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -90,6 +129,55 @@ use DiracSimplify."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1361102152],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracEquation", "]"}]], "Input",
+ CellLabel->"In[129]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{166, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[129]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -108,7 +196,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1880471451],
+ CellID->1047096214],
 
 Cell[CellGroupData[{
 
@@ -118,64 +206,46 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1537458895],
+ CellID->2070982621],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"Spinor", "[", 
-   RowBox[{
-    RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}], ".", 
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"Momentum", "[", "p", "]"}], "]"}]}]], "Input",
- CellTags->"DiracEquation",
- CellLabel->"In[1]:=",
- CellID->1948002457],
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"SpinorU", "[", 
+   RowBox[{"p", ",", "m"}], "]"}]}]], "Input",
+ CellLabel->"In[1]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"(", 
-    RowBox[{
-     FormBox["\<\"\[CurlyPhi]\"\>",
-      TraditionalForm], 
-     FormBox["\<\"(\"\>",
-      TraditionalForm], 
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox["\<\",\"\>",
-      TraditionalForm], 
-     FormBox["m",
-      TraditionalForm], 
-     FormBox["\<\")\"\>",
-      TraditionalForm]}], ")"}], ".", 
-   RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{129, 18},
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"u", "(", 
+    FormBox["p",
+     TraditionalForm], ",", 
+    FormBox["m",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{111, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracEquation",
- CellLabel->"Out[1]=",
- CellID->1390956545]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracEquation", "[", "%", "]"}]], "Input",
- CellTags->"DiracEquation",
- CellLabel->"In[2]:=",
- CellID->831374241],
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -197,12 +267,200 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{100, 18},
+ ImageSize->{103, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracEquation",
- CellLabel->"Out[2]=",
- CellID->1802781574]
+ CellLabel->"Out[2]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"SpinorV", "[", 
+   RowBox[{"p", ",", "m"}], "]"}]}]], "Input",
+ CellLabel->"In[3]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"v", "(", 
+    FormBox["p",
+     TraditionalForm], ",", 
+    FormBox["m",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{111, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracEquation", "[", "%", "]"}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "m"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{"-", 
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"]}],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{125, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SpinorUBar", "[", 
+   RowBox[{"p", ",", "0"}], "]"}], ".", 
+  RowBox[{"GS", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[5]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["u", "_"], "(", 
+    FormBox["p",
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{90, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracEquation", "[", "%", "]"}]], "Input",
+ CellLabel->"In[6]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{14, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]="]
+}, Open  ]],
+
+Cell[TextData[{
+ ButtonBox["DiracEquation",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracEquation",
+  ButtonNote->"DiracEquation"],
+ " also works in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensions"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SpinorVBarD", "[", 
+   RowBox[{"p", ",", "m"}], "]"}], ".", 
+  RowBox[{"GSD", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[7]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    RowBox[{
+     OverscriptBox["v", "_"], "(", 
+     FormBox["p",
+      TraditionalForm], ",", 
+     FormBox["m",
+      TraditionalForm], ")"}],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{111, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracEquation", "[", "%", "]"}]], "Input",
+ CellLabel->"In[8]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "m"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{"-", 
+       FormBox["p",
+        TraditionalForm]}],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{124, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -225,16 +483,11 @@ Cell[TextData[{
  WholeCellGroupOpener->True,
  CellID->1255426704],
 
-Cell[TextData[{
- StyleBox[ButtonBox["DiracSimplify",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
-  FontFamily->"Verdana"],
- "."
-}], "Text",
- CellTags->"DiracEquation",
- CellID->1088896111]
+Cell[TextData[StyleBox[ButtonBox["DiracSimplify",
+ BaseStyle->"Link",
+ ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+ ButtonNote->"DiracSimplify"],
+ FontFamily->"Verdana"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -251,20 +504,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 46.874858}", 
+   "built" -> "{2019, 3, 29, 17, 46, 38.723216}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "DiracEquation[exp] applies the Dirac equation without expanding exp. If \
-that is needed, use DiracSimplify.", "synonyms" -> {}, "title" -> 
-    "DiracEquation", "titlemodifier" -> "", "windowtitle" -> "DiracEquation", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/DiracEquation"}, 
-  "SearchTextTranslated" -> ""},
+expansions are necessary, use DiracSimplify.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "DiracEquation", "titlemodifier" -> "", 
+    "windowtitle" -> "DiracEquation", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/DiracEquation"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -284,75 +537,84 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3376, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5795, 183, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1880471451]},
- "DiracEquation"->{
-  Cell[4010, 124, 298, 9, 27, "Input",
-   CellTags->"DiracEquation",
-   CellID->1948002457],
-  Cell[4311, 135, 842, 33, 39, "Output",
-   CellTags->"DiracEquation",
-   CellID->1390956545],
-  Cell[5190, 173, 137, 4, 27, "Input",
-   CellTags->"DiracEquation",
-   CellID->831374241],
-  Cell[5330, 179, 642, 25, 39, "Output",
-   CellTags->"DiracEquation",
-   CellID->1802781574],
-  Cell[6340, 227, 248, 9, 32, "Text",
-   CellTags->"DiracEquation",
-   CellID->1088896111]}
+   CellID->1047096214]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8490, 285},
- {"DiracEquation", 8630, 289}
+ {"PrimaryExamplesSection", 14575, 538}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2265, 52, 51, "AnchorBarGrid",
+Cell[585, 21, 3032, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2853, 75, 56, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2912, 78, 439, 13, 82, "Usage",
+Cell[3620, 97, 290, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3935, 112, 632, 18, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3376, 95, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1880471451],
+Cell[4592, 134, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1361102152],
+Cell[5334, 160, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3789, 114, 196, 6, 25, "ExampleSection",
- CellID->1537458895],
-Cell[CellGroupData[{
-Cell[4010, 124, 298, 9, 27, "Input",
- CellTags->"DiracEquation",
- CellID->1948002457],
-Cell[4311, 135, 842, 33, 39, "Output",
- CellTags->"DiracEquation",
- CellID->1390956545]
+Cell[5390, 164, 97, 2, 27, "Input"],
+Cell[5490, 168, 244, 8, 37, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5190, 173, 137, 4, 27, "Input",
- CellTags->"DiracEquation",
- CellID->831374241],
-Cell[5330, 179, 642, 25, 39, "Output",
- CellTags->"DiracEquation",
- CellID->1802781574]
+Cell[5795, 183, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1047096214],
+Cell[CellGroupData[{
+Cell[6208, 202, 196, 6, 25, "ExampleSection",
+ CellID->2070982621],
+Cell[CellGroupData[{
+Cell[6429, 212, 159, 5, 27, "Input"],
+Cell[6591, 219, 544, 21, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7172, 245, 89, 2, 27, "Input"],
+Cell[7264, 249, 593, 23, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7894, 277, 159, 5, 27, "Input"],
+Cell[8056, 284, 544, 21, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8637, 310, 89, 2, 27, "Input"],
+Cell[8729, 314, 637, 25, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9403, 344, 162, 5, 27, "Input"],
+Cell[9568, 351, 522, 20, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10127, 376, 89, 2, 27, "Input"],
+Cell[10219, 380, 166, 5, 35, "Output"]
+}, Open  ]],
+Cell[10400, 388, 233, 8, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[10658, 400, 164, 5, 27, "Input"],
+Cell[10825, 407, 552, 22, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11414, 434, 89, 2, 27, "Input"],
+Cell[11506, 438, 607, 24, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[5999, 208, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12140, 466, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6067, 213, 270, 12, 31, "SeeAlsoSection",
+Cell[12208, 471, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6340, 227, 248, 9, 32, "Text",
- CellTags->"DiracEquation",
- CellID->1088896111]
+Cell[12481, 485, 187, 4, 55, "SeeAlso"]
 }, Open  ]],
-Cell[6603, 239, 23, 0, 42, "FooterCell"]
+Cell[12683, 492, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

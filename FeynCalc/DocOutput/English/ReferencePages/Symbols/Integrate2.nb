@@ -10,62 +10,93 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    120460,       3982]
-NotebookOptionsPosition[    103951,       3432]
-NotebookOutlinePosition[    113194,       3703]
-CellTagsIndexPosition[    113076,       3697]
+NotebookDataLength[     82816,       2951]
+NotebookOptionsPosition[     68414,       2482]
+NotebookOutlinePosition[     76057,       2701]
+CellTagsIndexPosition[     75941,       2695]
 WindowTitle->Integrate2
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Integrate2\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Integrate2"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Integrate2.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92337], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Integrate2", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DeltaFunction\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DeltaFunction"], "\<\"Integrate3\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate3"], "\<\"Integrate4\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate4"], "\<\"Integrate5\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate5"], "\<\"SumS\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SumS"], "\<\"SumT\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SumT"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Integrate2\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Integrate2"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+Integrate2.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173567], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Integrate2", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,32 +104,39 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Integrate2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Integrate2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["Integrate2"], "InlineFormula"],
-     " \[LineSeparator]",
-     "is like Integrate, but : Integrate2[a_Plus, b__] := Map[Integrate2[#, \
-b]&, a] ( more linear algebra and partial fraction decomposition is done) \
-Integrate2[f[x] DeltaFunction[x], x] \[Rule] f[0] Integrate2[f[x] \
-DeltaFunction[x0-x], x] \[Rule] f[x0]. Integrate2[f[x] DeltaFunction[a + b \
-x], x] \[Rule] Integrate[f[x] (1/Abs[b]) DeltaFunction[a/b + x], x], where \
-abs[b] \[Rule] b, if b is a Symbol, and if b = -c, then abs[-c] \[Rule] c, \
-i.e., the variable contained in b is supposed to be positive. ",
+     " \[LineSeparator]is like Integrate, but : Integrate2[a_Plus, b__] := \
+Map[Integrate2[#, b]&, a] ( more linear algebra and partial fraction \
+decomposition is done) Integrate2[f[x] DeltaFunction[x], x] \[Rule] f[0] \
+Integrate2[f[x] DeltaFunction[x0-x], x] \[Rule] f[x0]. Integrate2[f[x] \
+DeltaFunction[a + b x], x] \[Rule] Integrate[f[x] (1/Abs[b]) \
+DeltaFunction[a/b + x], x], where abs[b] \[Rule] b, if b is a Symbol, and if \
+b = -c, then abs[-c] \[Rule] c, i.e., the variable contained in b is supposed \
+to be positive. ",
      Cell[BoxData[
       FormBox[
        RowBox[{" ", 
         SuperscriptBox["\[Pi]", "2"]}], TraditionalForm]]],
      " is replaced by 6 Zeta2. Integrate2[1/(1-y),{y,x,1}] is intepreted as \
 distribution, i.e. as Integrate2[-1/(1-y)],{y, 0, x}] \[Rule] Log[1-y]. \
-Integrate2[1/(1-x),{x,0,1}] \[Rule] 0.\n\nNOTE: Since Integrate2 does do a \
-reordering and partial fraction decomposition before calling the integral \
-table of Integrate3 it will in general be slower compared to Integrate3 for \
-sums of integrals. I.e., if the integrand has already an expanded form and if \
-partial fraction decomposition is not necessary it is more effective to use \
-Integrate3."
+Integrate2[1/(1-x),{x,0,1}] \[Rule] 0."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -106,6 +144,47 @@ Integrate3."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1715548291],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["\<\
+Since Integrate2 does do a reordering and partial fraction decomposition \
+before calling the integral table of Integrate3 it will in general be slower \
+compared to Integrate3 for sums of integrals. I.e., if the integrand has \
+already an expanded form and if partial fraction decomposition is not \
+necessary it is more effective to use Integrate3.\
+\>", "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -124,7 +203,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1621069730],
+ CellID->666000514],
 
 Cell[CellGroupData[{
 
@@ -134,7 +213,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->756384805],
+ CellID->1978727204],
 
 Cell[CellGroupData[{
 
@@ -159,7 +238,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"0.006734`", ",", 
+   RowBox[{"0.028933`", ",", 
     RowBox[{
      TemplateBox[{"3"},
       "Zeta"], "-", 
@@ -168,12 +247,11 @@ Cell[BoxData[
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{"log", "(", "2", ")"}]}]}]}], "}"}], TraditionalForm]], "Output",\
 
- ImageSize->{222, 41},
+ ImageSize->{215, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[1]=",
- CellID->1871676459]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -181,9 +259,7 @@ Cell[TextData[{
  StyleBox["Mathematica",
   FontSlant->"Italic"],
  "'s Integrate."
-}], "Text",
- CellTags->"Integrate2",
- CellID->1563728584],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -205,12 +281,11 @@ Cell[BoxData[
    RowBox[{"\[Zeta]", "(", "2", ")"}], "-", "4", "+", 
    RowBox[{"4", " ", 
     RowBox[{"log", "(", "2", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{128, 15},
+ ImageSize->{128, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[2]=",
- CellID->1681597308]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -238,12 +313,11 @@ Cell[BoxData[
       "Zeta"]}], "4"], "+", "1", "-", 
    RowBox[{"2", " ", 
     RowBox[{"log", "(", "2", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{191, 42},
+ ImageSize->{190, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[3]=",
- CellID->133418904]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -281,12 +355,11 @@ Cell[BoxData[
     SuperscriptBox["log", "2"], "(", "2", ")"}], "+", 
    RowBox[{"2", " ", 
     RowBox[{"log", "(", "2", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{362, 45},
+ ImageSize->{364, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[4]=",
- CellID->1994437751]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -307,12 +380,11 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"f", "(", "1", ")"}], TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ ImageSize->{35, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[5]=",
- CellID->809684251]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -366,10 +438,7 @@ Cell[TextData[{
         RowBox[{"log", "(", "\[Delta]", ")"}]}], "+", 
        RowBox[{"log", "(", "1", ")"}]}], "\[Implies]", "0."}]}], " "}], 
    TraditionalForm]]]
-}], "Text",
- ZeroWidthTimes->False,
- CellTags->"Integrate2",
- CellID->1657711161],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -387,12 +456,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{14, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[6]=",
- CellID->1845418056]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -418,9 +486,7 @@ the ",
     RowBox[{
      RowBox[{"(", 
       RowBox[{"1", "-", "x"}], ")"}], " ", "."}]}], TraditionalForm]]]
-}], "Text",
- CellTags->"Integrate2",
- CellID->1551126642],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -439,12 +505,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{14, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[7]=",
- CellID->1834494178]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -469,12 +534,11 @@ Cell[BoxData[
  FormBox[
   RowBox[{"2", "-", 
    RowBox[{"\[Zeta]", "(", "2", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{58, 15},
+ ImageSize->{58, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[8]=",
- CellID->1270782167]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -502,12 +566,11 @@ Cell[BoxData[
    FractionBox[
     TemplateBox[{"3"},
      "Zeta"], "8"]}], TraditionalForm]], "Output",
- ImageSize->{50, 42},
+ ImageSize->{49, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[9]=",
- CellID->710630625]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -531,12 +594,11 @@ Cell[BoxData[
   RowBox[{"2", " ", 
    TemplateBox[{"3"},
     "Zeta"]}], TraditionalForm]], "Output",
- ImageSize->{46, 15},
+ ImageSize->{45, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[10]=",
- CellID->826875645]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -566,12 +628,11 @@ Cell[BoxData[
     FractionBox["1", "2"], " ", 
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
     RowBox[{"log", "(", "2", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{146, 42},
+ ImageSize->{144, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[11]=",
- CellID->1360635255]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -594,12 +655,11 @@ Cell[BoxData[
   RowBox[{"3", "-", 
    RowBox[{"2", " ", 
     RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{69, 15},
+ ImageSize->{69, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[12]=",
- CellID->1951902872]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -626,12 +686,11 @@ Cell[BoxData[
     TemplateBox[{"3"},
      "Zeta"], "2"], "+", 
    FractionBox["3", "16"]}], TraditionalForm]], "Output",
- ImageSize->{133, 42},
+ ImageSize->{132, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[13]=",
- CellID->2097277253]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -657,25 +716,23 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
+   RowBox[{"\[Zeta]", "(", "4", ")"}], "+", 
    RowBox[{
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
     RowBox[{
      SuperscriptBox["log", "2"], "(", "2", ")"}]}], "-", 
    RowBox[{"4", " ", 
     TemplateBox[{"4",FractionBox["1", "2"]},
-     "PolyLog"]}], "+", 
-   FractionBox[
-    SuperscriptBox["\[Pi]", "4"], "90"], "-", 
+     "PolyLog"]}], "-", 
    FractionBox[
     RowBox[{
      SuperscriptBox["log", "4"], "(", "2", ")"}], "6"]}], 
   TraditionalForm]], "Output",
- ImageSize->{271, 47},
+ ImageSize->{276, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[14]=",
- CellID->442263874]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -714,6 +771,12 @@ Cell[BoxData[
     RowBox[{"2", " ", "\[ImaginaryI]", " ", "\[Pi]", " ", 
      TemplateBox[{"2",RowBox[{"-", "z"}]},
       "PolyLog"]}], 
+    RowBox[{"1", "-", "z"}]], "-", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     TemplateBox[{"3",FractionBox[
+        RowBox[{"1", "-", "z"}], "2"]},
+      "PolyLog"]}], 
     RowBox[{"1", "-", "z"}]], "+", 
    FractionBox[
     RowBox[{"4", " ", 
@@ -730,20 +793,18 @@ Cell[BoxData[
      TemplateBox[{"3",FractionBox["1", 
         RowBox[{"z", "+", "1"}]]},
       "PolyLog"]}], 
-    RowBox[{"1", "-", "z"}]], "+", 
-   FractionBox[
-    RowBox[{"4", " ", 
-     TemplateBox[{"3",RowBox[{"-", 
-         FractionBox[
-          RowBox[{"1", "-", "z"}], 
-          RowBox[{"z", "+", "1"}]]}]},
-      "PolyLog"]}], 
     RowBox[{"1", "-", "z"}]], "-", 
    FractionBox[
     RowBox[{"4", " ", 
      TemplateBox[{"3",FractionBox[
         RowBox[{"1", "-", "z"}], 
         RowBox[{"z", "+", "1"}]]},
+      "PolyLog"]}], 
+    RowBox[{"1", "-", "z"}]], "-", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     TemplateBox[{"3",FractionBox[
+        RowBox[{"z", "+", "1"}], "2"]},
       "PolyLog"]}], 
     RowBox[{"1", "-", "z"}]], "-", 
    FractionBox[
@@ -794,11 +855,16 @@ Cell[BoxData[
       RowBox[{"1", "-", "z"}], ")"}]}], 
     RowBox[{"1", "-", "z"}]], "+", 
    FractionBox[
-    RowBox[{"2", " ", 
+    RowBox[{"6", " ", 
      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
      RowBox[{"log", "(", 
       RowBox[{"z", "+", "1"}], ")"}]}], 
     RowBox[{"1", "-", "z"}]], "-", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", "2", ")"}]}], 
+    RowBox[{"1", "-", "z"}]], "+", 
    FractionBox[
     RowBox[{"2", " ", 
      TemplateBox[{"3"},
@@ -809,12 +875,11 @@ Cell[BoxData[
      SuperscriptBox["log", "3"], "(", "z", ")"}], 
     RowBox[{"6", " ", 
      RowBox[{"(", 
-      RowBox[{"1", "-", "z"}], ")"}]}]], "-", 
+      RowBox[{"1", "-", "z"}], ")"}]}]], "+", 
    FractionBox[
-    RowBox[{"2", " ", 
+    RowBox[{"4", " ", 
      RowBox[{
-      SuperscriptBox["log", "3"], "(", 
-      RowBox[{"z", "+", "1"}], ")"}]}], 
+      SuperscriptBox["log", "3"], "(", "2", ")"}]}], 
     RowBox[{"3", " ", 
      RowBox[{"(", 
       RowBox[{"1", "-", "z"}], ")"}]}]], "-", 
@@ -838,7 +903,29 @@ Cell[BoxData[
       SuperscriptBox["log", "2"], "(", "z", ")"}]}], 
     RowBox[{"2", " ", 
      RowBox[{"(", 
-      RowBox[{"1", "-", "z"}], ")"}]}]], "+", 
+      RowBox[{"1", "-", "z"}], ")"}]}]], "-", 
+   FractionBox[
+    RowBox[{"2", " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "z"}], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"z", "+", "1"}], ")"}]}], 
+    RowBox[{"1", "-", "z"}]], "-", 
+   FractionBox[
+    RowBox[{"2", " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "z"}], ")"}]}], 
+    RowBox[{"1", "-", "z"}]], "-", 
+   FractionBox[
+    RowBox[{"2", " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"z", "+", "1"}], ")"}]}], 
+    RowBox[{"1", "-", "z"}]], "+", 
    FractionBox[
     RowBox[{"4", " ", 
      RowBox[{"log", "(", 
@@ -852,13 +939,20 @@ Cell[BoxData[
      RowBox[{"log", "(", 
       RowBox[{"z", "+", "1"}], ")"}], " ", 
      RowBox[{"log", "(", "z", ")"}]}], 
+    RowBox[{"1", "-", "z"}]], "+", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     RowBox[{"log", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "z"}], ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"z", "+", "1"}], ")"}]}], 
     RowBox[{"1", "-", "z"}]]}], TraditionalForm]], "Output",
- ImageSize->{544, 283},
+ ImageSize->{574, 348},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[15]=",
- CellID->747999287]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -885,34 +979,36 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    FractionBox["1", "m"], 
-    RowBox[{"(", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"\[Zeta]", "(", "2", ")"}], 
+     SuperscriptBox["m", "2"]]}], "-", 
+   FractionBox[
+    RowBox[{"\[Zeta]", "(", "2", ")"}], 
+    RowBox[{"m", "-", "1"}]], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"\[Zeta]", "(", "2", ")"}], "+", 
      RowBox[{
-      RowBox[{
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"(", 
-        RowBox[{"-", 
-         RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-          RowBox[{"1", ",", 
-           RowBox[{"m", "-", "2"}]}], ")"}]}], ")"}]}], "+", 
-      RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-       RowBox[{"1", ",", "2", ",", "m"}], ")"}], "+", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], "+", 
-      TemplateBox[{"3"},
-       "Zeta"]}], ")"}]}], "-", 
-   FractionBox[
-    RowBox[{"\[Zeta]", "(", "2", ")"}], 
-    SuperscriptBox["m", "2"]], "-", 
-   FractionBox[
-    RowBox[{"\[Zeta]", "(", "2", ")"}], 
-    RowBox[{"m", "-", "1"}]]}], TraditionalForm]], "Output",
- ImageSize->{501, 93},
+      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "2"}],
+          TraditionalForm], ")"}]}], ")"}]}], "+", 
+     RowBox[{
+      SubscriptBox["S", "12"], "(", 
+      FormBox["m",
+       TraditionalForm], ")"}], "+", 
+     TemplateBox[{"3"},
+      "Zeta"]}], "m"]}], TraditionalForm]], "Output",
+ ImageSize->{407, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[16]=",
- CellID->112611139]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -942,17 +1038,19 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox["1", "360"], " ", 
+   FractionBox["1", "24"], " ", 
    SuperscriptBox[
     RowBox[{"(", 
      RowBox[{"-", "1"}], ")"}], "m"], " ", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"450", " ", 
+     RowBox[{"48", " ", 
+      RowBox[{"\[Zeta]", "(", "4", ")"}]}], "+", 
+     RowBox[{"30", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{
        SuperscriptBox["log", "2"], "(", "2", ")"}]}], "+", 
-     RowBox[{"90", " ", 
+     RowBox[{"6", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{
        SubsuperscriptBox["S", 
@@ -960,14 +1058,14 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"270", " ", 
+     RowBox[{"18", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{
        SubscriptBox["S", "2"], "(", 
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{
        SubscriptBox["S", 
@@ -975,7 +1073,7 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"180", " ", 
+     RowBox[{"12", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{"-", "2"}]], "(", 
@@ -995,7 +1093,7 @@ Cell[BoxData[
            TraditionalForm], ")"}]}], "-", 
         RowBox[{
          SuperscriptBox["log", "2"], "(", "2", ")"}]}], ")"}]}], "-", 
-     RowBox[{"540", " ", 
+     RowBox[{"36", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{"log", "(", "2", ")"}], " ", 
       RowBox[{
@@ -1003,7 +1101,7 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"180", " ", 
+     RowBox[{"12", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{"-", "1"}]], "(", 
@@ -1018,7 +1116,7 @@ Cell[BoxData[
         RowBox[{"2", " ", 
          TemplateBox[{"3"},
           "Zeta"]}]}], ")"}]}], "+", 
-     RowBox[{"585", " ", 
+     RowBox[{"39", " ", 
       TemplateBox[{"3"},
        "Zeta"], " ", 
       RowBox[{
@@ -1026,7 +1124,7 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{
@@ -1034,7 +1132,7 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{
@@ -1042,7 +1140,7 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{
@@ -1050,28 +1148,28 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{"1", "-", "21"}]], "(", 
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{"1", "-", "12"}]], "(", 
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{
        SubscriptBox["S", 
         RowBox[{"2", "-", "11"}]], "(", 
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"180", " ", 
+     RowBox[{"12", " ", 
       RowBox[{
        SuperscriptBox["log", "2"], "(", "2", ")"}], " ", 
       RowBox[{
@@ -1079,14 +1177,14 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{"log", "(", "2", ")"}], " ", 
       RowBox[{
        SubscriptBox["S", "3"], "(", 
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{"log", "(", "2", ")"}], " ", 
       RowBox[{
        SubscriptBox["S", 
@@ -1094,7 +1192,7 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"360", " ", 
+     RowBox[{"24", " ", 
       RowBox[{"log", "(", "2", ")"}], " ", 
       RowBox[{
        SubscriptBox["S", 
@@ -1102,25 +1200,22 @@ Cell[BoxData[
        FormBox[
         RowBox[{"m", "-", "1"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"720", " ", 
+     RowBox[{"48", " ", 
       TemplateBox[{"4",FractionBox["1", "2"]},
        "PolyLog"]}], "-", 
-     RowBox[{"945", " ", 
+     RowBox[{"63", " ", 
       TemplateBox[{"3"},
        "Zeta"], " ", 
-      RowBox[{"log", "(", "2", ")"}]}], "+", 
-     RowBox[{"8", " ", 
-      SuperscriptBox["\[Pi]", "4"]}], "-", 
-     RowBox[{"30", " ", 
+      RowBox[{"log", "(", "2", ")"}]}], "-", 
+     RowBox[{"2", " ", 
       RowBox[{
        SuperscriptBox["log", "4"], "(", "2", ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{573, 243},
+ ImageSize->{539, 182},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[17]=",
- CellID->1666831938]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1135,29 +1230,31 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox["1", "360"], " ", 
+   FractionBox["1", "24"], " ", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"720", " ", 
+     RowBox[{"48", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}]}], "+", 
-     RowBox[{"450", " ", 
+     RowBox[{"48", " ", 
+      RowBox[{"\[Zeta]", "(", "4", ")"}]}], "+", 
+     RowBox[{"30", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{
        SuperscriptBox["log", "2"], "(", "2", ")"}]}], "+", 
-     RowBox[{"180", " ", 
+     RowBox[{"12", " ", 
       RowBox[{"(", 
        RowBox[{
         RowBox[{"\[Zeta]", "(", "2", ")"}], "-", 
         RowBox[{
          SuperscriptBox["log", "2"], "(", "2", ")"}], "+", 
         RowBox[{"log", "(", "4", ")"}]}], ")"}]}], "-", 
-     RowBox[{"540", " ", 
+     RowBox[{"36", " ", 
       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
       RowBox[{"log", "(", "2", ")"}]}], "-", 
-     RowBox[{"720", " ", 
+     RowBox[{"48", " ", 
       TemplateBox[{"4",FractionBox["1", "2"]},
        "PolyLog"]}], "-", 
-     RowBox[{"180", " ", 
+     RowBox[{"12", " ", 
       RowBox[{"(", 
        RowBox[{
         RowBox[{
@@ -1166,30 +1263,27 @@ Cell[BoxData[
         RowBox[{"2", " ", 
          TemplateBox[{"3"},
           "Zeta"]}]}], ")"}]}], "+", 
-     RowBox[{"585", " ", 
+     RowBox[{"39", " ", 
       TemplateBox[{"3"},
        "Zeta"]}], "-", 
-     RowBox[{"945", " ", 
+     RowBox[{"63", " ", 
       TemplateBox[{"3"},
        "Zeta"], " ", 
-      RowBox[{"log", "(", "2", ")"}]}], "+", 
-     RowBox[{"8", " ", 
-      SuperscriptBox["\[Pi]", "4"]}], "-", "2160", "-", 
-     RowBox[{"30", " ", 
+      RowBox[{"log", "(", "2", ")"}]}], "-", "144", "-", 
+     RowBox[{"2", " ", 
       RowBox[{
        SuperscriptBox["log", "4"], "(", "2", ")"}]}], "-", 
-     RowBox[{"180", " ", 
+     RowBox[{"12", " ", 
       RowBox[{
        SuperscriptBox["log", "2"], "(", "2", ")"}]}], "+", 
-     RowBox[{"1080", " ", 
+     RowBox[{"72", " ", 
       RowBox[{"log", "(", "2", ")"}]}]}], ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{497, 142},
+ ImageSize->{472, 118},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[18]=",
- CellID->1607309345]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1201,13 +1295,12 @@ Cell[BoxData[
  CellID->1653791497],
 
 Cell[BoxData[
- FormBox["0.05051383540274483`", TraditionalForm]], "Output",
- ImageSize->{64, 15},
+ FormBox["0.050513835402744935`", TraditionalForm]], "Output",
+ ImageSize->{65, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[19]=",
- CellID->1825975069]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1378,12 +1471,11 @@ Cell[BoxData[
      TemplateBox[{"3"},
       "Zeta"]}], 
     RowBox[{"8", " ", "m"}]]}], TraditionalForm]], "Output",
- ImageSize->{469, 201},
+ ImageSize->{494, 173},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[20]=",
- CellID->1776776365]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1397,12 +1489,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ ImageSize->{33, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[21]=",
- CellID->536196094]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1424,26 +1515,27 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{11, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[22]=",
- CellID->1332564146]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell["\<\
 This is the polarized non-singlet spin splitting function whose first moment \
 vanishes.\
-\>", "Text",
- CellTags->"Integrate2",
- CellID->1160689999],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"t", "=", 
-  RowBox[{"SplittingFunction", "[", "PQQNS", "]"}]}]], "Input",
+  RowBox[{
+   RowBox[{"SplittingFunction", "[", "PQQNS", "]"}], "/.", 
+   RowBox[{
+    RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+    RowBox[{"ToExpression", "[", "z", "]"}]}]}]}]], "Input",
  CellTags->"Integrate2",
  CellLabel->"In[23]:=",
  CellID->18981591],
@@ -1461,53 +1553,50 @@ Cell[BoxData[
        SubscriptBox["C", "A"], "2"]}], ")"}], " ", 
     RowBox[{"(", 
      RowBox[{
-      RowBox[{
-       FractionBox["1", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], 
-       RowBox[{"(", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-       " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"-", 
-          RowBox[{"2", " ", 
-           RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "-", 
-         RowBox[{"4", " ", 
-          TemplateBox[{"2",RowBox[{"-", 
-              RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-           "PolyLog"]}], "+", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
          RowBox[{
-          SuperscriptBox["log", "2"], "(", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], "-", 
-         RowBox[{"4", " ", 
-          RowBox[{"log", "(", 
-           RowBox[{
-            RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-          RowBox[{"log", "(", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], "+", 
+          SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"2", " ", 
+            RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "-", 
+          RowBox[{"4", " ", 
+           TemplateBox[{"2",RowBox[{"-", "x"}]},
+            "PolyLog"]}], "+", 
+          RowBox[{
+           SuperscriptBox["log", "2"], "(", "x", ")"}], "-", 
+          RowBox[{"4", " ", 
+           RowBox[{"log", "(", 
+            RowBox[{"x", "+", "1"}], ")"}], " ", 
+           RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], 
+       RowBox[{"x", "+", "1"}]], "+", 
       RowBox[{"4", " ", 
        RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{"2", " ", 
        RowBox[{"(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], "+", 
+        RowBox[{"x", "+", "1"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], "+", 
    RowBox[{
     SubscriptBox["C", "A"], " ", 
     SubscriptBox["C", "F"], " ", 
     RowBox[{"(", 
      RowBox[{
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+       RowBox[{"1", "-", "x"}]], "+", 
       RowBox[{"8", " ", 
        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
        RowBox[{"(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], "+", 
+        RowBox[{"x", "+", "1"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
@@ -1517,9 +1606,12 @@ Cell[BoxData[
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
       RowBox[{
+       RowBox[{"\[Delta]", "(", 
+        FormBox[
+         RowBox[{"1", "-", "x"}],
+         TraditionalForm], ")"}], " ", 
        RowBox[{"(", 
         RowBox[{
          FractionBox[
@@ -1528,46 +1620,35 @@ Cell[BoxData[
          RowBox[{"24", " ", 
           TemplateBox[{"3"},
            "Zeta"]}], "+", 
-         FractionBox["17", "3"]}], ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], "+", 
+         FractionBox["17", "3"]}], ")"}]}], "+", 
       RowBox[{
        FractionBox["4", "9"], " ", 
        RowBox[{"(", 
         RowBox[{"53", "-", 
-         RowBox[{"187", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}]}], "+", 
-      FractionBox[
-       RowBox[{"4", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-        " ", 
-        RowBox[{
-         SuperscriptBox["log", "2"], "(", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-       RowBox[{"1", "-", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "-", 
+         RowBox[{"187", " ", "x"}]}], ")"}]}], "-", 
       RowBox[{
        FractionBox["4", "3"], " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"5", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
+         RowBox[{"5", " ", "x"}], "-", 
          FractionBox["22", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", "5"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], "+", 
+          RowBox[{"1", "-", "x"}]], "+", "5"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], "+", 
    RowBox[{
     SubscriptBox["C", "F"], " ", 
     SubscriptBox["N", "f"], " ", 
     RowBox[{"(", 
      RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"8", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+         RowBox[{"log", "(", "x", ")"}]}], 
+        RowBox[{"3", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "x"}], ")"}]}]]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
@@ -1578,38 +1659,36 @@ Cell[BoxData[
          FractionBox["2", "3"]}], ")"}], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "+", 
       FractionBox[
-       RowBox[{"88", " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "9"], "-", 
+       RowBox[{"88", " ", "x"}], "9"], "-", 
       RowBox[{
        FractionBox["80", "9"], " ", 
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-      FractionBox[
-       RowBox[{"8", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-        " ", 
-        RowBox[{"log", "(", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-       RowBox[{"3", " ", 
-        RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}]], "-", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", 
       FractionBox["8", "9"]}], ")"}]}], "+", 
    RowBox[{
     SubsuperscriptBox["C", "F", "2"], " ", 
     RowBox[{"(", 
      RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"16", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+         RowBox[{"log", "(", 
+          RowBox[{"1", "-", "x"}], ")"}], " ", 
+         RowBox[{"log", "(", "x", ")"}]}], 
+        RowBox[{"1", "-", "x"}]]}], "+", 
       RowBox[{
+       RowBox[{"\[Delta]", "(", 
+        FormBox[
+         RowBox[{"1", "-", "x"}],
+         TraditionalForm], ")"}], " ", 
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
@@ -1617,54 +1696,355 @@ Cell[BoxData[
            RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "+", 
          RowBox[{"48", " ", 
           TemplateBox[{"3"},
-           "Zeta"]}], "+", "3"}], ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], "-", 
+           "Zeta"]}], "+", "3"}], ")"}]}], "-", 
       RowBox[{"40", " ", 
        RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "-", 
       RowBox[{"4", " ", 
        RowBox[{"(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
+        RowBox[{"x", "+", "1"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "-", 
       RowBox[{"8", " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"2", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+         RowBox[{"2", " ", "x"}], "+", 
          FractionBox["3", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
-      FractionBox[
-       RowBox[{"16", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-        " ", 
-        RowBox[{"log", "(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"log", "(", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-       RowBox[{"1", "-", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]]}], ")"}]}]}], 
+          RowBox[{"1", "-", "x"}]]}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{579, 682},
+ ImageSize->{567, 356},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[23]=",
- CellID->1090179756]
+ CellLabel->"Out[23]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t", "//", "Expand"}]], "Input",
+ CellLabel->"In[24]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"8", " ", 
+    RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"]}], "-", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     TemplateBox[{"2",RowBox[{"-", "x"}]},
+      "PolyLog"]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     TemplateBox[{"2",RowBox[{"-", "x"}]},
+      "PolyLog"]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+    RowBox[{"1", "-", "x"}]], "+", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"x", "+", "1"}], ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   RowBox[{
+    FractionBox["88", "3"], " ", 
+    RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["17", "3"], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"8", " ", 
+    RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"]}], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   RowBox[{"16", " ", 
+    RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+    SubscriptBox[
+     RowBox[{"(", 
+      FractionBox["1", 
+       RowBox[{"1", "-", "x"}]], ")"}], "+"], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"]}], "-", 
+   RowBox[{"24", " ", 
+    TemplateBox[{"3"},
+     "Zeta"], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "-", 
+   RowBox[{
+    FractionBox["892", "9"], " ", "x", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"]}], "+", 
+   RowBox[{
+    FractionBox["536", "9"], " ", 
+    SubscriptBox[
+     RowBox[{"(", 
+      FractionBox["1", 
+       RowBox[{"1", "-", "x"}]], ")"}], "+"], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"]}], "+", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+    RowBox[{"1", "-", "x"}]], "+", 
+   FractionBox[
+    RowBox[{"4", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   RowBox[{
+    FractionBox["4", "3"], " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    RowBox[{"log", "(", "x", ")"}]}], "+", 
+   RowBox[{
+    FractionBox["4", "3"], " ", "x", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    RowBox[{"log", "(", "x", ")"}]}], "+", 
+   FractionBox[
+    RowBox[{"88", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], 
+    RowBox[{"3", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]], "-", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"x", "+", "1"}], ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   FractionBox[
+    RowBox[{"356", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"]}], "9"], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     SubscriptBox["N", "f"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], 
+    RowBox[{"3", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]], "-", 
+   RowBox[{
+    FractionBox["16", "3"], " ", 
+    RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["N", "f"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "-", 
+   RowBox[{
+    FractionBox["2", "3"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["N", "f"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["88", "9"], " ", "x", " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["N", "f"]}], "-", 
+   RowBox[{
+    FractionBox["80", "9"], " ", 
+    SubscriptBox[
+     RowBox[{"(", 
+      FractionBox["1", 
+       RowBox[{"1", "-", "x"}]], ")"}], "+"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["N", "f"]}], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SubscriptBox["C", "F"], " ", 
+     SubscriptBox["N", "f"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], 
+    RowBox[{"3", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SubscriptBox["C", "F"], " ", 
+     SubscriptBox["N", "f"]}], "9"], "+", 
+   FractionBox[
+    RowBox[{"32", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     TemplateBox[{"2",RowBox[{"-", "x"}]},
+      "PolyLog"]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   FractionBox[
+    RowBox[{"32", " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     TemplateBox[{"2",RowBox[{"-", "x"}]},
+      "PolyLog"]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubsuperscriptBox["C", "F", "2"]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], 
+    RowBox[{"1", "-", "x"}]], "+", 
+   FractionBox[
+    RowBox[{"32", " ", 
+     SuperscriptBox["x", "2"], " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"x", "+", "1"}], ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   RowBox[{"24", " ", 
+    RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"3", " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "+", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     SubsuperscriptBox["C", "F", "2"]}], 
+    RowBox[{"x", "+", "1"}]], "+", 
+   RowBox[{"48", " ", 
+    TemplateBox[{"3"},
+     "Zeta"], " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"72", " ", "x", " ", 
+    SubsuperscriptBox["C", "F", "2"]}], "-", 
+   RowBox[{"4", " ", "x", " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{
+     SuperscriptBox["log", "2"], "(", "x", ")"}]}], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   RowBox[{"4", " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{
+     SuperscriptBox["log", "2"], "(", "x", ")"}]}], "-", 
+   RowBox[{"32", " ", "x", " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"log", "(", "x", ")"}]}], "-", 
+   FractionBox[
+    RowBox[{"16", " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], 
+    RowBox[{"1", "-", "x"}]], "-", 
+   FractionBox[
+    RowBox[{"24", " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], 
+    RowBox[{"1", "-", "x"}]], "-", 
+   RowBox[{"16", " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"log", "(", "x", ")"}]}], "+", 
+   FractionBox[
+    RowBox[{"32", " ", 
+     SubsuperscriptBox["C", "F", "2"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"x", "+", "1"}], ")"}]}], 
+    RowBox[{"x", "+", "1"}]], "-", 
+   RowBox[{"72", " ", 
+    SubsuperscriptBox["C", "F", "2"]}]}], TraditionalForm]], "Output",
+ ImageSize->{569, 584},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1677,947 +2057,24 @@ Cell[BoxData[
      RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "//", 
   "Timing"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[24]:=",
+ CellLabel->"In[25]:=",
  CellID->182134904],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"0.311061`", ",", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"12", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"72", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"892", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"88", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "3"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"536", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox[
-        RowBox[{"(", 
-         FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"80", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       SubscriptBox[
-        RowBox[{"(", 
-         FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SubscriptBox[
-        RowBox[{"(", 
-         FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"72", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"356", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"3", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"17", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"24", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"88", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"48", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       TemplateBox[{"3"},
-        "Zeta"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"24", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       TemplateBox[{"3"},
-        "Zeta"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"56", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"92", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"72", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"892", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"88", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"12", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"40", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"92", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"536", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox[
-        RowBox[{"(", 
-         FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"80", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       SubscriptBox[
-        RowBox[{"(", 
-         FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SubscriptBox[
-        RowBox[{"(", 
-         FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"72", " ", 
-       SubsuperscriptBox["C", "F", "2"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"356", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"]}], 
-      RowBox[{"9", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"3", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"17", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"24", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "+", 
-     FractionBox[
-      RowBox[{"88", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"48", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       TemplateBox[{"3"},
-        "Zeta"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]], "-", 
-     FractionBox[
-      RowBox[{"24", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}], " ", 
-       TemplateBox[{"3"},
-        "Zeta"]}], 
-      RowBox[{"1", "-", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}]]}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{574, 2664},
+   RowBox[{"0.047429`", ",", "0"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{89, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[24]=",
- CellID->1275810940]
+ CellLabel->"Out[25]="]
 }, Open  ]],
 
 Cell["\<\
 Expanding t with respect to x yields a form already suitable for Integrate3 \
 and therefore the following is faster:\
-\>", "Text",
- CellTags->"Integrate2",
- CellID->1779842562],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -2632,425 +2089,25 @@ Cell[BoxData[
       RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "//", "Expand"}], "//",
    "Timing"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[25]:=",
+ CellLabel->"In[26]:=",
  CellID->237838384],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"0.000832`", ",", 
-    RowBox[{
-     RowBox[{"8", " ", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"]}], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     RowBox[{
-      FractionBox["88", "3"], " ", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "+", 
-     RowBox[{
-      FractionBox["17", "3"], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "+", 
-     RowBox[{"8", " ", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
-     RowBox[{"16", " ", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      SubscriptBox[
-       RowBox[{"(", 
-        FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     RowBox[{"24", " ", 
-      TemplateBox[{"3"},
-       "Zeta"], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "-", 
-     RowBox[{
-      FractionBox["892", "9"], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
-     RowBox[{
-      FractionBox["536", "9"], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      SubscriptBox[
-       RowBox[{"(", 
-        FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     FractionBox[
-      RowBox[{"4", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     RowBox[{
-      FractionBox["4", "3"], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"log", "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
-     RowBox[{
-      FractionBox["4", "3"], " ", 
-      SubscriptBox["C", "A"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], " ", 
-      RowBox[{"log", "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
-     FractionBox[
-      RowBox[{"88", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     FractionBox[
-      RowBox[{"356", " ", 
-       SubscriptBox["C", "A"], " ", 
-       SubscriptBox["C", "F"]}], "9"], "-", 
-     RowBox[{
-      FractionBox["16", "3"], " ", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      SubscriptBox["C", "F"], " ", 
-      SubscriptBox["N", "f"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "-", 
-     RowBox[{
-      FractionBox["2", "3"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      SubscriptBox["N", "f"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "+", 
-     RowBox[{
-      FractionBox["88", "9"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      SubscriptBox["N", "f"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
-     RowBox[{
-      FractionBox["80", "9"], " ", 
-      SubscriptBox["C", "F"], " ", 
-      SubscriptBox["N", "f"], " ", 
-      SubscriptBox[
-       RowBox[{"(", 
-        FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"3", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubscriptBox["C", "F"], " ", 
-       SubscriptBox["N", "f"]}], "9"], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-        "PolyLog"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     RowBox[{"24", " ", 
-      RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "+", 
-     RowBox[{"3", " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       SubsuperscriptBox["C", "F", "2"]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     RowBox[{"48", " ", 
-      TemplateBox[{"3"},
-       "Zeta"], " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"\[Delta]", "(", 
-       FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-        TraditionalForm], ")"}]}], "+", 
-     RowBox[{"72", " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
-     RowBox[{"4", " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], " ", 
-      RowBox[{
-       SuperscriptBox["log", "2"], "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     FractionBox[
-      RowBox[{"8", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     RowBox[{"4", " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{
-       SuperscriptBox["log", "2"], "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
-     RowBox[{"32", " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], " ", 
-      RowBox[{"log", "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"16", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "-", 
-     FractionBox[
-      RowBox[{"24", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "-", 
-     RowBox[{"16", " ", 
-      SubsuperscriptBox["C", "F", "2"], " ", 
-      RowBox[{"log", "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       SuperscriptBox[
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", 
-     FractionBox[
-      RowBox[{"32", " ", 
-       SubsuperscriptBox["C", "F", "2"], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "-", 
-     RowBox[{"72", " ", 
-      SubsuperscriptBox["C", "F", "2"]}]}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{573, 1200},
+   RowBox[{"0.028382`", ",", "0"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{88, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[25]=",
- CellID->115302396]
+ CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Clear", "[", "t", "]"}], ";"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[26]:=",
+ CellLabel->"In[27]:=",
  CellID->1890146765],
 
 Cell[CellGroupData[{
@@ -3065,18 +2122,17 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[27]:=",
+ CellLabel->"In[28]:=",
  CellID->593727658],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"f", "(", "1", ")"}], TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ ImageSize->{35, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[27]=",
- CellID->592730520]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3092,7 +2148,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[28]:=",
+ CellLabel->"In[29]:=",
  CellID->1759046432],
 
 Cell[BoxData[
@@ -3102,12 +2158,11 @@ Cell[BoxData[
     RowBox[{"46", " ", 
      RowBox[{"log", "(", "2", ")"}]}], "45"], "-", 
    FractionBox["6959", "10800"]}], TraditionalForm]], "Output",
- ImageSize->{125, 42},
+ ImageSize->{128, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[28]=",
- CellID->396258688]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3115,17 +2170,16 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"N", "@", "%"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[29]:=",
+ CellLabel->"In[30]:=",
  CellID->1795528063],
 
 Cell[BoxData[
  FormBox["0.06419859938720329`", TraditionalForm]], "Output",
- ImageSize->{64, 15},
+ ImageSize->{65, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[29]=",
- CellID->958489189]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3141,17 +2195,16 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[30]:=",
+ CellLabel->"In[31]:=",
  CellID->190638847],
 
 Cell[BoxData[
  FormBox["0.06419859938720252`", TraditionalForm]], "Output",
- ImageSize->{64, 15},
+ ImageSize->{65, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[30]=",
- CellID->1001542201]
+ CellLabel->"Out[31]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3169,7 +2222,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate2",
- CellLabel->"In[31]:=",
+ CellLabel->"In[32]:=",
  CellID->1701338238],
 
 Cell[BoxData[
@@ -3358,12 +2411,11 @@ Cell[BoxData[
     RowBox[{
      SuperscriptBox["log", "2"], "(", "2", ")"}], "m"]}], 
   TraditionalForm]], "Output",
- ImageSize->{482, 310},
+ ImageSize->{516, 306},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
- CellLabel->"Out[31]=",
- CellID->164627498]
+ CellLabel->"Out[32]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -3423,9 +2475,7 @@ Cell[TextData[{
   ButtonNote->"SumT"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Integrate2",
- CellID->1134437741]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -3442,10 +2492,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 36.247350}", 
+   "built" -> "{2019, 3, 29, 17, 50, 48.580227}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -3460,14 +2510,10 @@ x], x], where abs[b] -> b, if b is a Symbol, and if b = -c, then abs[-c] -> \
 c, i.e., the variable contained in b is supposed to be positive. \\[Pi]^2 is \
 replaced by 6 Zeta2. Integrate2[1/(1-y),{y,x,1}] is intepreted as \
 distribution, i.e. as Integrate2[-1/(1-y)],{y, 0, x}] -> Log[1-y]. \
-Integrate2[1/(1-x),{x,0,1}] -> 0. NOTE: Since Integrate2 does do a reordering \
-and partial fraction decomposition before calling the integral table of \
-Integrate3 it will in general be slower compared to Integrate3 for sums of \
-integrals. I.e., if the integrand has already an expanded form and if partial \
-fraction decomposition is not necessary it is more effective to use \
-Integrate3.", "synonyms" -> {}, "title" -> "Integrate2", "titlemodifier" -> 
-    "", "windowtitle" -> "Integrate2", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Integrate2"}, "SearchTextTranslated" -> ""},
+Integrate2[1/(1-x),{x,0,1}] -> 0.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "Integrate2", "titlemodifier" -> "", "windowtitle" -> 
+    "Integrate2", "type" -> "Symbol", "uri" -> "FeynCalc/ref/Integrate2"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -3487,503 +2533,426 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4410, 111, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6745, 190, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1621069730]},
+   CellID->666000514]},
  "Integrate2"->{
-  Cell[5043, 140, 443, 16, 27, "Input",
+  Cell[7378, 219, 443, 16, 27, "Input",
    CellTags->"Integrate2",
    CellID->524907050],
-  Cell[5489, 158, 463, 17, 62, "Output",
-   CellTags->"Integrate2",
-   CellID->1871676459],
-  Cell[5967, 178, 211, 7, 52, "Text",
-   CellTags->"Integrate2",
-   CellID->1563728584],
-  Cell[6203, 189, 299, 10, 27, "Input",
+  Cell[7824, 237, 442, 16, 55, "Output",
+   CellTags->"Integrate2"],
+  Cell[8472, 265, 299, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->546710902],
-  Cell[6505, 201, 337, 11, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1681597308],
-  Cell[6879, 217, 293, 10, 27, "Input",
+  Cell[8774, 277, 316, 10, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[9127, 292, 293, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->89878903],
-  Cell[7175, 229, 451, 16, 63, "Output",
-   CellTags->"Integrate2",
-   CellID->133418904],
-  Cell[7663, 250, 355, 12, 27, "Input",
+  Cell[9423, 304, 431, 15, 55, "Output",
+   CellTags->"Integrate2"],
+  Cell[9891, 324, 355, 12, 27, "Input",
    CellTags->"Integrate2",
    CellID->1742557754],
-  Cell[8021, 264, 682, 24, 66, "Output",
-   CellTags->"Integrate2",
-   CellID->1994437751],
-  Cell[8740, 293, 336, 11, 27, "Input",
+  Cell[10249, 338, 661, 23, 59, "Output",
+   CellTags->"Integrate2"],
+  Cell[10947, 366, 336, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->1356840886],
-  Cell[9079, 306, 239, 8, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->809684251],
-  Cell[9333, 317, 1610, 54, 91, "Text",
-   CellTags->"Integrate2",
-   CellID->1657711161],
-  Cell[10968, 375, 289, 10, 27, "Input",
+  Cell[11286, 379, 219, 7, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[13086, 444, 289, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->1084770727],
-  Cell[11260, 387, 212, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1845418056],
-  Cell[11487, 397, 670, 25, 65, "Text",
-   CellTags->"Integrate2",
-   CellID->1551126642],
-  Cell[12182, 426, 336, 11, 27, "Input",
+  Cell[13378, 456, 191, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[14234, 492, 336, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->1725124689],
-  Cell[12521, 439, 212, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1834494178],
-  Cell[12770, 451, 405, 14, 27, "Input",
+  Cell[14573, 505, 191, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[14801, 516, 405, 14, 27, "Input",
    CellTags->"Integrate2",
    CellID->1940746510],
-  Cell[13178, 467, 270, 9, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1270782167],
-  Cell[13485, 481, 435, 15, 27, "Input",
+  Cell[15209, 532, 249, 8, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[15495, 545, 435, 15, 27, "Input",
    CellTags->"Integrate2",
    CellID->582396558],
-  Cell[13923, 498, 284, 11, 63, "Output",
-   CellTags->"Integrate2",
-   CellID->710630625],
-  Cell[14244, 514, 347, 12, 27, "Input",
+  Cell[15933, 562, 264, 10, 55, "Output",
+   CellTags->"Integrate2"],
+  Cell[16234, 577, 347, 12, 27, "Input",
    CellTags->"Integrate2",
    CellID->845490247],
-  Cell[14594, 528, 266, 10, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->826875645],
-  Cell[14897, 543, 374, 13, 27, "Input",
+  Cell[16584, 591, 246, 9, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[16867, 605, 374, 13, 27, "Input",
    CellTags->"Integrate2",
    CellID->1121674397],
-  Cell[15274, 558, 417, 15, 63, "Output",
-   CellTags->"Integrate2",
-   CellID->1360635255],
-  Cell[15728, 578, 333, 11, 27, "Input",
+  Cell[17244, 620, 396, 14, 56, "Output",
+   CellTags->"Integrate2"],
+  Cell[17677, 639, 333, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->1584122311],
-  Cell[16064, 591, 296, 10, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1951902872],
-  Cell[16397, 606, 301, 10, 27, "Input",
+  Cell[18013, 652, 275, 9, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[18325, 666, 301, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->1907301251],
-  Cell[16701, 618, 404, 15, 63, "Output",
-   CellTags->"Integrate2",
-   CellID->2097277253],
-  Cell[17142, 638, 465, 16, 27, "Input",
+  Cell[18629, 678, 383, 14, 55, "Output",
+   CellTags->"Integrate2"],
+  Cell[19049, 697, 465, 16, 27, "Input",
    CellTags->"Integrate2",
    CellID->1237143526],
-  Cell[17610, 656, 594, 21, 68, "Output",
-   CellTags->"Integrate2",
-   CellID->442263874],
-  Cell[18241, 682, 741, 25, 45, "Input",
+  Cell[19517, 715, 556, 19, 59, "Output",
+   CellTags->"Integrate2"],
+  Cell[20110, 739, 741, 25, 45, "Input",
    CellTags->"Integrate2",
    CellID->2080558124],
-  Cell[18985, 709, 4459, 151, 304, "Output",
-   CellTags->"Integrate2",
-   CellID->747999287],
-  Cell[23481, 865, 490, 17, 27, "Input",
+  Cell[20854, 766, 5608, 188, 369, "Output",
+   CellTags->"Integrate2"],
+  Cell[26499, 959, 490, 17, 27, "Input",
    CellTags->"Integrate2",
    CellID->204763000],
-  Cell[23974, 884, 943, 30, 114, "Output",
-   CellTags->"Integrate2",
-   CellID->112611139],
-  Cell[24954, 919, 587, 20, 69, "Input",
+  Cell[26992, 978, 906, 32, 56, "Output",
+   CellTags->"Integrate2"],
+  Cell[27935, 1015, 587, 20, 52, "Input",
    CellTags->"Integrate2",
    CellID->1234589200],
-  Cell[25544, 941, 5361, 181, 264, "Output",
-   CellTags->"Integrate2",
-   CellID->1666831938],
-  Cell[30942, 1127, 162, 5, 27, "Input",
+  Cell[28525, 1037, 5325, 180, 203, "Output",
+   CellTags->"Integrate2"],
+  Cell[33887, 1222, 162, 5, 27, "Input",
    CellTags->"Integrate2",
    CellID->1839623139],
-  Cell[31107, 1134, 1805, 57, 163, "Output",
-   CellTags->"Integrate2",
-   CellID->1607309345],
-  Cell[32949, 1196, 124, 4, 27, "Input",
+  Cell[34052, 1229, 1777, 56, 139, "Output",
+   CellTags->"Integrate2"],
+  Cell[35866, 1290, 124, 4, 27, "Input",
    CellTags->"Integrate2",
    CellID->1653791497],
-  Cell[33076, 1202, 232, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1825975069],
-  Cell[33345, 1214, 704, 24, 77, "Input",
+  Cell[35993, 1296, 212, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[36242, 1307, 704, 24, 77, "Input",
    CellTags->"Integrate2",
    CellID->1526670238],
-  Cell[34052, 1240, 3841, 145, 222, "Output",
-   CellTags->"Integrate2",
-   CellID->1776776365],
-  Cell[37930, 1390, 169, 5, 27, "Input",
+  Cell[36949, 1333, 3820, 144, 194, "Output",
+   CellTags->"Integrate2"],
+  Cell[40806, 1482, 169, 5, 27, "Input",
    CellTags->"Integrate2",
    CellID->20428829],
-  Cell[38102, 1397, 215, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->536196094],
-  Cell[38354, 1409, 387, 13, 27, "Input",
+  Cell[40978, 1489, 195, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[41210, 1500, 387, 13, 27, "Input",
    CellTags->"Integrate2",
    CellID->512808203],
-  Cell[38744, 1424, 213, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1332564146],
-  Cell[38972, 1434, 158, 5, 32, "Text",
-   CellTags->"Integrate2",
-   CellID->1160689999],
-  Cell[39155, 1443, 165, 5, 27, "Input",
+  Cell[41600, 1515, 192, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[41945, 1531, 302, 9, 29, "Input",
    CellTags->"Integrate2",
    CellID->18981591],
-  Cell[39323, 1450, 7127, 216, 703, "Output",
-   CellTags->"Integrate2",
-   CellID->1090179756],
-  Cell[46487, 1671, 249, 9, 27, "Input",
+  Cell[42250, 1542, 5465, 177, 377, "Output",
+   CellTags->"Integrate2"],
+  Cell[57844, 2051, 249, 9, 27, "Input",
    CellTags->"Integrate2",
    CellID->182134904],
-  Cell[46739, 1682, 32693, 929, 2685, "Output",
-   CellTags->"Integrate2",
-   CellID->1275810940],
-  Cell[79447, 2614, 186, 5, 52, "Text",
-   CellTags->"Integrate2",
-   CellID->1779842562],
-  Cell[79658, 2623, 345, 12, 27, "Input",
+  Cell[58096, 2062, 247, 8, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[58524, 2080, 345, 12, 27, "Input",
    CellTags->"Integrate2",
    CellID->237838384],
-  Cell[80006, 2637, 14506, 408, 1221, "Output",
-   CellTags->"Integrate2",
-   CellID->115302396],
-  Cell[94527, 3048, 146, 5, 27, "Input",
+  Cell[58872, 2094, 247, 8, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[59134, 2105, 146, 5, 27, "Input",
    CellTags->"Integrate2",
    CellID->1890146765],
-  Cell[94698, 3057, 336, 11, 27, "Input",
+  Cell[59305, 2114, 336, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->593727658],
-  Cell[95037, 3070, 240, 8, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->592730520],
-  Cell[95314, 3083, 345, 12, 31, "Input",
+  Cell[59644, 2127, 220, 7, 37, "Output",
+   CellTags->"Integrate2"],
+  Cell[59901, 2139, 345, 12, 33, "Input",
    CellTags->"Integrate2",
    CellID->1759046432],
-  Cell[95662, 3097, 347, 12, 63, "Output",
-   CellTags->"Integrate2",
-   CellID->396258688],
-  Cell[96046, 3114, 119, 4, 27, "Input",
+  Cell[60249, 2153, 327, 11, 56, "Output",
+   CellTags->"Integrate2"],
+  Cell[60613, 2169, 119, 4, 27, "Input",
    CellTags->"Integrate2",
    CellID->1795528063],
-  Cell[96168, 3120, 231, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->958489189],
-  Cell[96436, 3132, 344, 12, 31, "Input",
+  Cell[60735, 2175, 211, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[60983, 2186, 344, 12, 33, "Input",
    CellTags->"Integrate2",
    CellID->190638847],
-  Cell[96783, 3146, 232, 7, 36, "Output",
-   CellTags->"Integrate2",
-   CellID->1001542201],
-  Cell[97052, 3158, 401, 14, 31, "Input",
+  Cell[61330, 2200, 211, 6, 35, "Output",
+   CellTags->"Integrate2"],
+  Cell[61578, 2211, 401, 14, 33, "Input",
    CellTags->"Integrate2",
    CellID->1701338238],
-  Cell[97456, 3174, 5051, 191, 331, "Output",
-   CellTags->"Integrate2",
-   CellID->164627498],
-  Cell[102875, 3388, 1034, 39, 32, "Text",
-   CellTags->"Integrate2",
-   CellID->1134437741]}
+  Cell[61982, 2227, 5031, 190, 327, "Output",
+   CellTags->"Integrate2"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 106726, 3488},
- {"Integrate2", 106864, 3492}
+ {"PrimaryExamplesSection", 70826, 2534},
+ {"Integrate2", 70963, 2538}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3479, 83, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 1492, 29, 274, "Usage",
+Cell[4064, 106, 287, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4376, 121, 1123, 24, 182, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4410, 111, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5524, 149, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1715548291],
+Cell[6266, 175, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[6300, 177, 396, 7, 79, "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6745, 190, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1621069730],
+ CellID->666000514],
 Cell[CellGroupData[{
-Cell[4823, 130, 195, 6, 25, "ExampleSection",
- CellID->756384805],
+Cell[7157, 209, 196, 6, 25, "ExampleSection",
+ CellID->1978727204],
 Cell[CellGroupData[{
-Cell[5043, 140, 443, 16, 27, "Input",
+Cell[7378, 219, 443, 16, 27, "Input",
  CellTags->"Integrate2",
  CellID->524907050],
-Cell[5489, 158, 463, 17, 62, "Output",
- CellTags->"Integrate2",
- CellID->1871676459]
+Cell[7824, 237, 442, 16, 55, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
-Cell[5967, 178, 211, 7, 52, "Text",
- CellTags->"Integrate2",
- CellID->1563728584],
+Cell[8281, 256, 166, 5, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[6203, 189, 299, 10, 27, "Input",
+Cell[8472, 265, 299, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->546710902],
-Cell[6505, 201, 337, 11, 36, "Output",
- CellTags->"Integrate2",
- CellID->1681597308]
+Cell[8774, 277, 316, 10, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6879, 217, 293, 10, 27, "Input",
+Cell[9127, 292, 293, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->89878903],
-Cell[7175, 229, 451, 16, 63, "Output",
- CellTags->"Integrate2",
- CellID->133418904]
+Cell[9423, 304, 431, 15, 55, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7663, 250, 355, 12, 27, "Input",
+Cell[9891, 324, 355, 12, 27, "Input",
  CellTags->"Integrate2",
  CellID->1742557754],
-Cell[8021, 264, 682, 24, 66, "Output",
- CellTags->"Integrate2",
- CellID->1994437751]
+Cell[10249, 338, 661, 23, 59, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8740, 293, 336, 11, 27, "Input",
+Cell[10947, 366, 336, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->1356840886],
-Cell[9079, 306, 239, 8, 36, "Output",
- CellTags->"Integrate2",
- CellID->809684251]
+Cell[11286, 379, 219, 7, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
-Cell[9333, 317, 1610, 54, 91, "Text",
- CellTags->"Integrate2",
- CellID->1657711161],
+Cell[11520, 389, 1541, 51, 83, "Notes"],
 Cell[CellGroupData[{
-Cell[10968, 375, 289, 10, 27, "Input",
+Cell[13086, 444, 289, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->1084770727],
-Cell[11260, 387, 212, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->1845418056]
+Cell[13378, 456, 191, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
-Cell[11487, 397, 670, 25, 65, "Text",
- CellTags->"Integrate2",
- CellID->1551126642],
+Cell[13584, 465, 625, 23, 63, "Notes"],
 Cell[CellGroupData[{
-Cell[12182, 426, 336, 11, 27, "Input",
+Cell[14234, 492, 336, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->1725124689],
-Cell[12521, 439, 212, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->1834494178]
+Cell[14573, 505, 191, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12770, 451, 405, 14, 27, "Input",
+Cell[14801, 516, 405, 14, 27, "Input",
  CellTags->"Integrate2",
  CellID->1940746510],
-Cell[13178, 467, 270, 9, 36, "Output",
- CellTags->"Integrate2",
- CellID->1270782167]
+Cell[15209, 532, 249, 8, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13485, 481, 435, 15, 27, "Input",
+Cell[15495, 545, 435, 15, 27, "Input",
  CellTags->"Integrate2",
  CellID->582396558],
-Cell[13923, 498, 284, 11, 63, "Output",
- CellTags->"Integrate2",
- CellID->710630625]
+Cell[15933, 562, 264, 10, 55, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14244, 514, 347, 12, 27, "Input",
+Cell[16234, 577, 347, 12, 27, "Input",
  CellTags->"Integrate2",
  CellID->845490247],
-Cell[14594, 528, 266, 10, 36, "Output",
- CellTags->"Integrate2",
- CellID->826875645]
+Cell[16584, 591, 246, 9, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14897, 543, 374, 13, 27, "Input",
+Cell[16867, 605, 374, 13, 27, "Input",
  CellTags->"Integrate2",
  CellID->1121674397],
-Cell[15274, 558, 417, 15, 63, "Output",
- CellTags->"Integrate2",
- CellID->1360635255]
+Cell[17244, 620, 396, 14, 56, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15728, 578, 333, 11, 27, "Input",
+Cell[17677, 639, 333, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->1584122311],
-Cell[16064, 591, 296, 10, 36, "Output",
- CellTags->"Integrate2",
- CellID->1951902872]
+Cell[18013, 652, 275, 9, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16397, 606, 301, 10, 27, "Input",
+Cell[18325, 666, 301, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->1907301251],
-Cell[16701, 618, 404, 15, 63, "Output",
- CellTags->"Integrate2",
- CellID->2097277253]
+Cell[18629, 678, 383, 14, 55, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17142, 638, 465, 16, 27, "Input",
+Cell[19049, 697, 465, 16, 27, "Input",
  CellTags->"Integrate2",
  CellID->1237143526],
-Cell[17610, 656, 594, 21, 68, "Output",
- CellTags->"Integrate2",
- CellID->442263874]
+Cell[19517, 715, 556, 19, 59, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18241, 682, 741, 25, 45, "Input",
+Cell[20110, 739, 741, 25, 45, "Input",
  CellTags->"Integrate2",
  CellID->2080558124],
-Cell[18985, 709, 4459, 151, 304, "Output",
- CellTags->"Integrate2",
- CellID->747999287]
+Cell[20854, 766, 5608, 188, 369, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23481, 865, 490, 17, 27, "Input",
+Cell[26499, 959, 490, 17, 27, "Input",
  CellTags->"Integrate2",
  CellID->204763000],
-Cell[23974, 884, 943, 30, 114, "Output",
- CellTags->"Integrate2",
- CellID->112611139]
+Cell[26992, 978, 906, 32, 56, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24954, 919, 587, 20, 69, "Input",
+Cell[27935, 1015, 587, 20, 52, "Input",
  CellTags->"Integrate2",
  CellID->1234589200],
-Cell[25544, 941, 5361, 181, 264, "Output",
- CellTags->"Integrate2",
- CellID->1666831938]
+Cell[28525, 1037, 5325, 180, 203, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30942, 1127, 162, 5, 27, "Input",
+Cell[33887, 1222, 162, 5, 27, "Input",
  CellTags->"Integrate2",
  CellID->1839623139],
-Cell[31107, 1134, 1805, 57, 163, "Output",
- CellTags->"Integrate2",
- CellID->1607309345]
+Cell[34052, 1229, 1777, 56, 139, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32949, 1196, 124, 4, 27, "Input",
+Cell[35866, 1290, 124, 4, 27, "Input",
  CellTags->"Integrate2",
  CellID->1653791497],
-Cell[33076, 1202, 232, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->1825975069]
+Cell[35993, 1296, 212, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33345, 1214, 704, 24, 77, "Input",
+Cell[36242, 1307, 704, 24, 77, "Input",
  CellTags->"Integrate2",
  CellID->1526670238],
-Cell[34052, 1240, 3841, 145, 222, "Output",
- CellTags->"Integrate2",
- CellID->1776776365]
+Cell[36949, 1333, 3820, 144, 194, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37930, 1390, 169, 5, 27, "Input",
+Cell[40806, 1482, 169, 5, 27, "Input",
  CellTags->"Integrate2",
  CellID->20428829],
-Cell[38102, 1397, 215, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->536196094]
+Cell[40978, 1489, 195, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38354, 1409, 387, 13, 27, "Input",
+Cell[41210, 1500, 387, 13, 27, "Input",
  CellTags->"Integrate2",
  CellID->512808203],
-Cell[38744, 1424, 213, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->1332564146]
+Cell[41600, 1515, 192, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
-Cell[38972, 1434, 158, 5, 32, "Text",
- CellTags->"Integrate2",
- CellID->1160689999],
+Cell[41807, 1524, 113, 3, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[39155, 1443, 165, 5, 27, "Input",
+Cell[41945, 1531, 302, 9, 29, "Input",
  CellTags->"Integrate2",
  CellID->18981591],
-Cell[39323, 1450, 7127, 216, 703, "Output",
- CellTags->"Integrate2",
- CellID->1090179756]
+Cell[42250, 1542, 5465, 177, 377, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[46487, 1671, 249, 9, 27, "Input",
+Cell[47752, 1724, 79, 2, 27, "Input"],
+Cell[47834, 1728, 9973, 318, 605, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57844, 2051, 249, 9, 27, "Input",
  CellTags->"Integrate2",
  CellID->182134904],
-Cell[46739, 1682, 32693, 929, 2685, "Output",
- CellTags->"Integrate2",
- CellID->1275810940]
+Cell[58096, 2062, 247, 8, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
-Cell[79447, 2614, 186, 5, 52, "Text",
- CellTags->"Integrate2",
- CellID->1779842562],
+Cell[58358, 2073, 141, 3, 47, "Notes"],
 Cell[CellGroupData[{
-Cell[79658, 2623, 345, 12, 27, "Input",
+Cell[58524, 2080, 345, 12, 27, "Input",
  CellTags->"Integrate2",
  CellID->237838384],
-Cell[80006, 2637, 14506, 408, 1221, "Output",
- CellTags->"Integrate2",
- CellID->115302396]
+Cell[58872, 2094, 247, 8, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
-Cell[94527, 3048, 146, 5, 27, "Input",
+Cell[59134, 2105, 146, 5, 27, "Input",
  CellTags->"Integrate2",
  CellID->1890146765],
 Cell[CellGroupData[{
-Cell[94698, 3057, 336, 11, 27, "Input",
+Cell[59305, 2114, 336, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->593727658],
-Cell[95037, 3070, 240, 8, 36, "Output",
- CellTags->"Integrate2",
- CellID->592730520]
+Cell[59644, 2127, 220, 7, 37, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[95314, 3083, 345, 12, 31, "Input",
+Cell[59901, 2139, 345, 12, 33, "Input",
  CellTags->"Integrate2",
  CellID->1759046432],
-Cell[95662, 3097, 347, 12, 63, "Output",
- CellTags->"Integrate2",
- CellID->396258688]
+Cell[60249, 2153, 327, 11, 56, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[96046, 3114, 119, 4, 27, "Input",
+Cell[60613, 2169, 119, 4, 27, "Input",
  CellTags->"Integrate2",
  CellID->1795528063],
-Cell[96168, 3120, 231, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->958489189]
+Cell[60735, 2175, 211, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[96436, 3132, 344, 12, 31, "Input",
+Cell[60983, 2186, 344, 12, 33, "Input",
  CellTags->"Integrate2",
  CellID->190638847],
-Cell[96783, 3146, 232, 7, 36, "Output",
- CellTags->"Integrate2",
- CellID->1001542201]
+Cell[61330, 2200, 211, 6, 35, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[97052, 3158, 401, 14, 31, "Input",
+Cell[61578, 2211, 401, 14, 33, "Input",
  CellTags->"Integrate2",
  CellID->1701338238],
-Cell[97456, 3174, 5051, 191, 331, "Output",
- CellTags->"Integrate2",
- CellID->164627498]
+Cell[61982, 2227, 5031, 190, 327, "Output",
+ CellTags->"Integrate2"]
 }, Open  ]]
 }, Open  ]],
-Cell[102534, 3369, 31, 0, 29, "SectionFooterSpacer"]
+Cell[67040, 2421, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[102602, 3374, 270, 12, 31, "SeeAlsoSection",
+Cell[67108, 2426, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[102875, 3388, 1034, 39, 32, "Text",
- CellTags->"Integrate2",
- CellID->1134437741]
+Cell[67381, 2440, 991, 37, 55, "SeeAlso"]
 }, Open  ]],
-Cell[103924, 3430, 23, 0, 42, "FooterCell"]
+Cell[68387, 2480, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

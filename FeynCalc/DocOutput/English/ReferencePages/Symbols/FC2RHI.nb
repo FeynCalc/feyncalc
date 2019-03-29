@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8555,        280]
-NotebookOptionsPosition[      5304,        183]
-NotebookOutlinePosition[      7804,        251]
-CellTagsIndexPosition[      7696,        245]
+NotebookDataLength[      9196,        296]
+NotebookOptionsPosition[      6382,        213]
+NotebookOutlinePosition[      8586,        273]
+CellTagsIndexPosition[      8518,        268]
 WindowTitle->FC2RHI
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/FC2RHI\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/FC2RHI"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/FC2RHI.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"RHI\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/RHI"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FC2RHI\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FC2RHI"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/FC2RHI.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56955], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/FC2RHI",
-             ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92148], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FC2RHI", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FC2RHI", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FC2RHI", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -97,39 +131,40 @@ IncludePair governs the inclusion  of scalar products p.k1, p.k2 and k1.k2 \
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->163322982],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1949263586],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1794007483],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "FC2RHI", "]"}]], "Input",
  CellTags->"FC2RHI",
- CellLabel->"In[1]:=",
+ CellLabel->"In[756]:=",
  CellID->744239659],
 
 Cell[BoxData[
@@ -139,16 +174,13 @@ Cell[BoxData[
     RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
     RowBox[{"IncludePair", "\[Rule]", "True"}], ",", 
     RowBox[{"Do", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{327, 15},
+ ImageSize->{309, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FC2RHI",
- CellLabel->"Out[1]=",
- CellID->283717471]
+ CellLabel->"Out[756]="]
 }, Open  ]]
-}, Open  ]],
-
-Cell["", "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -174,9 +206,7 @@ Cell[TextData[{
   ButtonNote->"RHI"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"FC2RHI",
- CellID->2109849659]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -193,10 +223,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 1.918910}", 
+   "built" -> "{2019, 3, 29, 17, 47, 44.235143}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -205,9 +235,10 @@ TaggingRules->{
     "FC2RHI[exp, k1, k2] transforms all 2-loop OPE-integrals in \
 FeynAmpDenominator form to the RHI-integrals. FC2RHI[exp] is equivalent to \
 FC2RHI[exp,q1,q2]. The option IncludePair governs the inclusion of scalar \
-products p.k1, p.k2 and k1.k2 (setting True).", "synonyms" -> {}, "title" -> 
-    "FC2RHI", "titlemodifier" -> "", "windowtitle" -> "FC2RHI", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/FC2RHI"}, "SearchTextTranslated" -> ""},
+products p.k1, p.k2 and k1.k2 (setting True).", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "FC2RHI", "titlemodifier" -> "", 
+    "windowtitle" -> "FC2RHI", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FC2RHI"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -226,62 +257,47 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3535, 99, 387, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->163322982]},
  "FC2RHI"->{
-  Cell[4168, 128, 129, 4, 27, "Input",
+  Cell[5335, 163, 131, 4, 27, "Input",
    CellTags->"FC2RHI",
    CellID->744239659],
-  Cell[4300, 134, 383, 12, 36, "Output",
-   CellTags->"FC2RHI",
-   CellID->283717471],
-  Cell[5051, 169, 211, 9, 31, "Text",
-   CellTags->"FC2RHI",
-   CellID->2109849659]}
+  Cell[5469, 169, 365, 11, 37, "Output",
+   CellTags->"FC2RHI"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7283, 228},
- {"FC2RHI", 7415, 232}
+ {"FC2RHI", 8344, 259}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 2982, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2817, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2869, 78, 641, 17, 115, "Usage",
+Cell[3563, 97, 283, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3871, 112, 641, 17, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3535, 99, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->163322982],
+Cell[4537, 133, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1949263586],
+Cell[5279, 159, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3947, 118, 196, 6, 25, "ExampleSection",
- CellID->1794007483],
-Cell[CellGroupData[{
-Cell[4168, 128, 129, 4, 27, "Input",
+Cell[5335, 163, 131, 4, 27, "Input",
  CellTags->"FC2RHI",
  CellID->744239659],
-Cell[4300, 134, 383, 12, 36, "Output",
- CellTags->"FC2RHI",
- CellID->283717471]
+Cell[5469, 169, 365, 11, 37, "Output",
+ CellTags->"FC2RHI"]
 }, Open  ]]
-}, Open  ]],
-Cell[4710, 150, 31, 0, 29, "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4778, 155, 270, 12, 31, "SeeAlsoSection",
+Cell[5895, 187, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5051, 169, 211, 9, 31, "Text",
- CellTags->"FC2RHI",
- CellID->2109849659]
+Cell[6168, 201, 172, 7, 54, "SeeAlso"]
 }, Open  ]],
-Cell[5277, 181, 23, 0, 42, "FooterCell"]
+Cell[6355, 211, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9247,        299]
-NotebookOptionsPosition[      5969,        198]
-NotebookOutlinePosition[      8397,        267]
-CellTagsIndexPosition[      8287,        261]
+NotebookDataLength[     10056,        313]
+NotebookOptionsPosition[      7154,        226]
+NotebookOutlinePosition[      9369,        288]
+CellTagsIndexPosition[      9259,        282]
 WindowTitle->$NonComm
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/$NonComm\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/$NonComm"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/$NonComm.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"NonCommQ\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/NonCommQ"], "\<\"NonCommutative\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/NonCommutative"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/$NonComm\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/$NonComm"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/$NonComm.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$172569], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/$NonComm", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$307375], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/$NonComm", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,14 +96,23 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["$NonComm", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["$NonComm", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["$NonComm"], "InlineFormula"],
-     " \[LineSeparator]",
-     "contains a list of all non-commutative heads present."
+     " \[LineSeparator]contains a list of all noncommutative heads present."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -106,7 +138,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1491486043],
+ CellID->1666440061],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -114,13 +148,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->249210430],
-
-Cell[CellGroupData[{
-
-Cell["Examples", "Subsubsection",
- CellTags->"$NonComm",
- CellID->2045411989],
+ CellID->1457083740],
 
 Cell[CellGroupData[{
 
@@ -133,31 +161,33 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
-   "ChiralityProjector", ",", "DiracGamma", ",", "DiracGammaT", ",", 
-    "DiracMatrix", ",", "DiracSigma", ",", "DiracSlash", ",", "DiracSpinor", 
-    ",", "GA", ",", 
+   "ChiralityProjector", ",", "DiracGamma", ",", "DiracMatrix", ",", 
+    "DiracSigma", ",", "DiracSlash", ",", "Spinor", ",", "GA", ",", 
     SuperscriptBox[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["5",
       TraditionalForm]], ",", "GAD", ",", "GAE", ",", "GS", ",", "GSD", ",", 
     "GSE", ",", "LeftPartialD", ",", "LeftRightPartialD", ",", 
-    "LeftRightPartialD2", ",", "FCPartialD", ",", "PauliSigma", ",", 
+    "LeftRightPartialD2", ",", "FCPartialD", ",", "OPESum", ",", 
     "QuantumField", ",", "RightPartialD", ",", "Spinor", ",", "SpinorU", ",", 
-    "SpinorUBar", ",", "SpinorV", ",", "SpinorVBar", ",", "SUNT", ",", "C", 
-    ",", "CovariantD", ",", "OPESum", ",", "FieldStrength", ",", 
-    "QuarkGluonVertex", ",", "QuarkPropagator", ",", "Twist2AlienOperator", 
-    ",", "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
+    "SpinorUBar", ",", "SpinorV", ",", "SpinorVBar", ",", "SUNT", ",", 
+    "PauliSigma", ",", "PauliXi", ",", "PauliEta", ",", "TGA", ",", "CGA", 
+    ",", "CGAD", ",", "CGAE", ",", "CGS", ",", "CGSD", ",", "CGSE", ",", "SI",
+     ",", "SID", ",", "SIE", ",", "CSI", ",", "CSID", ",", "CSIE", ",", 
+    "FeynCalc`Package`dotsimpHold", ",", "FCChargeConjugateTransposed", ",", 
+    "CovariantD", ",", "FieldStrength", ",", "QuarkGluonVertex", ",", 
+    "QuarkPropagator", ",", "Twist2AlienOperator", ",", 
+    "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{505, 118},
+ ImageSize->{566, 138},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"$NonComm",
- CellLabel->"Out[1]=",
- CellID->1539262372]
+ CellLabel->"Out[1]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
-}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -189,9 +219,7 @@ Cell[TextData[{
   ButtonNote->"NonCommutative"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"$NonComm",
- CellID->1040108898]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -208,19 +236,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 23.412519}", 
+   "built" -> "{2019, 3, 29, 17, 55, 59.727474}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "$NonComm contains a list of all non-commutative heads present.", 
-    "synonyms" -> {}, "title" -> "$NonComm", "titlemodifier" -> "", 
-    "windowtitle" -> "$NonComm", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/$NonComm"}, "SearchTextTranslated" -> ""},
+    "$NonComm contains a list of all noncommutative heads present.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "$NonComm", 
+    "titlemodifier" -> "", "windowtitle" -> "$NonComm", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/$NonComm"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -240,67 +268,53 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3271, 93, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4350, 125, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1491486043]},
+   CellID->1666440061]},
  "$NonComm"->{
-  Cell[3882, 120, 77, 2, 35, "Subsubsection",
-   CellTags->"$NonComm",
-   CellID->2045411989],
-  Cell[3984, 126, 101, 3, 27, "Input",
+  Cell[4984, 154, 101, 3, 27, "Input",
    CellTags->"$NonComm",
    CellID->1876740578],
-  Cell[4088, 131, 1066, 24, 139, "Output",
-   CellTags->"$NonComm",
-   CellID->1539262372],
-  Cell[5522, 178, 405, 15, 31, "Text",
-   CellTags->"$NonComm",
-   CellID->1040108898]}
+  Cell[5088, 159, 1292, 26, 159, "Output",
+   CellTags->"$NonComm"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7765, 241},
- {"$NonComm", 7900, 245}
+ {"PrimaryExamplesSection", 8942, 269},
+ {"$NonComm", 9078, 273}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2245, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 3100, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2828, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2882, 78, 364, 11, 82, "Usage",
+Cell[3683, 98, 285, 11, 44, "ObjectNameGrid"],
+Cell[3971, 111, 354, 10, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3271, 93, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4350, 125, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1491486043],
-Cell[3662, 110, 195, 6, 25, "ExampleSection",
- CellID->249210430],
+ CellID->1666440061],
 Cell[CellGroupData[{
-Cell[3882, 120, 77, 2, 35, "Subsubsection",
- CellTags->"$NonComm",
- CellID->2045411989],
+Cell[4763, 144, 196, 6, 25, "ExampleSection",
+ CellID->1457083740],
 Cell[CellGroupData[{
-Cell[3984, 126, 101, 3, 27, "Input",
+Cell[4984, 154, 101, 3, 27, "Input",
  CellTags->"$NonComm",
  CellID->1876740578],
-Cell[4088, 131, 1066, 24, 139, "Output",
- CellTags->"$NonComm",
- CellID->1539262372]
-}, Open  ]],
-Cell[5169, 158, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5088, 159, 1292, 26, 159, "Output",
+ CellTags->"$NonComm"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[5249, 164, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[5522, 178, 405, 15, 31, "Text",
- CellTags->"$NonComm",
- CellID->1040108898]
+Cell[6407, 189, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
-Cell[5942, 196, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[6475, 194, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6748, 208, 364, 13, 55, "SeeAlso"]
+}, Open  ]],
+Cell[7127, 224, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

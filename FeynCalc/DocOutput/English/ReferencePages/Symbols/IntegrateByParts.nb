@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9316,        303]
-NotebookOptionsPosition[      5996,        204]
-NotebookOutlinePosition[      8563,        274]
-CellTagsIndexPosition[      8445,        268]
+NotebookDataLength[      9591,        314]
+NotebookOptionsPosition[      6329,        217]
+NotebookOutlinePosition[      8771,        284]
+CellTagsIndexPosition[      8653,        278]
 WindowTitle->IntegrateByParts
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ IntegrateByParts.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$93734], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$175446], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/IntegrateByParts", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ IntegrateByParts.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["IntegrateByParts", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["IntegrateByParts", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -97,6 +110,57 @@ integral over t from 0 to 1."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->781168565],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "IntegrateByParts", "]"}]], "Input",
+ CellTags->"IntegrateByParts",
+ CellLabel->"In[89]:=",
+ CellID->1168038147],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Hold", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{96, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"IntegrateByParts",
+ CellLabel->"Out[89]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -112,7 +176,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1996315664],
+ CellID->92518231],
 
 Cell[CellGroupData[{
 
@@ -122,81 +186,30 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->584307735],
-
-Cell[CellGroupData[{
+ CellID->693776801],
 
 Cell[BoxData[
- RowBox[{"Options", "[", "IntegrateByParts", "]"}]], "Input",
- CellTags->"IntegrateByParts",
- CellLabel->"In[1]:=",
- CellID->1168038147],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Hold", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{104, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"IntegrateByParts",
- CellLabel->"Out[1]=",
- CellID->247717548]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"IntegrateByParts", "[", 
-  RowBox[{
+ RowBox[{"(*", 
+  RowBox[{"IntegrateByParts", "[", 
    RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", "t"}], ")"}], "^", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], " ", 
+     RowBox[{"g", "[", "t", "]"}]}], ",", 
     RowBox[{
      RowBox[{"(", 
       RowBox[{"1", "-", "t"}], ")"}], "^", 
      RowBox[{"(", 
       RowBox[{
-       RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], " ", 
-    RowBox[{"g", "[", "t", "]"}]}], ",", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"1", "-", "t"}], ")"}], "^", 
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], ",", "t"}], 
-  "]"}]], "Input",
+       RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], ",", "t"}], "]"}], 
+  "*)"}]], "Input",
  CellTags->"IntegrateByParts",
- CellLabel->"In[2]:=",
- CellID->328713984],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FractionBox[
-    RowBox[{
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{"1", "-", "t"}], ")"}], 
-      RowBox[{"a", " ", 
-       TagBox["\[CurlyEpsilon]",
-        TraditionalForm]}]], " ", 
-     RowBox[{
-      SuperscriptBox["g", "\[Prime]",
-       MultilineFunction->None], "(", "t", ")"}]}], 
-    RowBox[{"a", " ", 
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm]}]], "+", 
-   FractionBox[
-    RowBox[{"g", "(", "0", ")"}], 
-    RowBox[{"a", " ", 
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{158, 44},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"IntegrateByParts",
- CellLabel->"Out[2]=",
- CellID->2082695933]
-}, Open  ]]
+ CellLabel->"In[1]:=",
+ CellID->328713984]
 }, Open  ]]
 }, Open  ]],
 
@@ -214,10 +227,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 43.164251}", 
+   "built" -> "{2019, 3, 29, 17, 50, 52.736106}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -225,9 +238,10 @@ TaggingRules->{
     "None", "summary" -> 
     "IntegrateByParts[(1 - t)^(a Epsilon -1)g[t], deriv, t] does an \
 integration by parts of the definite integral over t from 0 to 1.", 
-    "synonyms" -> {}, "title" -> "IntegrateByParts", "titlemodifier" -> "", 
-    "windowtitle" -> "IntegrateByParts", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/IntegrateByParts"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "IntegrateByParts", 
+    "titlemodifier" -> "", "windowtitle" -> "IntegrateByParts", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/IntegrateByParts"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -246,65 +260,62 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3514, 99, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1996315664]},
  "IntegrateByParts"->{
-  Cell[4147, 128, 150, 4, 27, "Input",
+  Cell[4596, 142, 151, 4, 27, "Input",
    CellTags->"IntegrateByParts",
    CellID->1168038147],
-  Cell[4300, 134, 278, 9, 36, "Output",
+  Cell[4750, 148, 258, 8, 37, "Output",
+   CellTags->"IntegrateByParts"],
+  Cell[5678, 190, 597, 21, 27, "Input",
    CellTags->"IntegrateByParts",
-   CellID->247717548],
-  Cell[4615, 148, 557, 20, 27, "Input",
-   CellTags->"IntegrateByParts",
-   CellID->328713984],
-  Cell[5175, 170, 755, 27, 65, "Output",
-   CellTags->"IntegrateByParts",
-   CellID->2082695933]}
+   CellID->328713984]},
+ "PrimaryExamplesSection"->{
+  Cell[5069, 163, 386, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->92518231]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7892, 248},
- {"IntegrateByParts", 8035, 252}
+ {"IntegrateByParts", 8215, 262},
+ {"PrimaryExamplesSection", 8511, 271}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2277, 52, 51, "AnchorBarGrid",
+Cell[588, 21, 2306, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 75, 59, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2930, 78, 559, 17, 83, "Usage",
+Cell[2897, 76, 293, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3215, 91, 559, 17, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3514, 99, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1996315664],
+Cell[3799, 112, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->781168565],
+Cell[4540, 138, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3927, 118, 195, 6, 25, "ExampleSection",
- CellID->584307735],
-Cell[CellGroupData[{
-Cell[4147, 128, 150, 4, 27, "Input",
+Cell[4596, 142, 151, 4, 27, "Input",
  CellTags->"IntegrateByParts",
  CellID->1168038147],
-Cell[4300, 134, 278, 9, 36, "Output",
- CellTags->"IntegrateByParts",
- CellID->247717548]
+Cell[4750, 148, 258, 8, 37, "Output",
+ CellTags->"IntegrateByParts"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4615, 148, 557, 20, 27, "Input",
+Cell[5069, 163, 386, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->92518231],
+Cell[CellGroupData[{
+Cell[5480, 182, 195, 6, 25, "ExampleSection",
+ CellID->693776801],
+Cell[5678, 190, 597, 21, 27, "Input",
  CellTags->"IntegrateByParts",
- CellID->328713984],
-Cell[5175, 170, 755, 27, 65, "Output",
- CellTags->"IntegrateByParts",
- CellID->2082695933]
-}, Open  ]]
+ CellID->328713984]
 }, Open  ]]
 }, Open  ]],
-Cell[5969, 202, 23, 0, 42, "FooterCell"]
+Cell[6302, 215, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

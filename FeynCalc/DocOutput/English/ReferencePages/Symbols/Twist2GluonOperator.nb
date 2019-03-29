@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10624,        310]
-NotebookOptionsPosition[      6466,        199]
-NotebookOutlinePosition[      9792,        280]
-CellTagsIndexPosition[      9671,        274]
+NotebookDataLength[     12499,        380]
+NotebookOptionsPosition[      8606,        280]
+NotebookOutlinePosition[     11755,        354]
+CellTagsIndexPosition[     11632,        348]
 WindowTitle->Twist2GluonOperator
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Twist2GluonOperator\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Twist2GluonOperator"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Twist2QuarkOperator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Twist2QuarkOperator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Twist2GluonOperator\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Twist2GluonOperator"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 Twist2GluonOperator.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160913], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Twist2GluonOperator", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$288574], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Twist2GluonOperator", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ Twist2GluonOperator.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Twist2GluonOperator", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Twist2GluonOperator", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -123,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1],
+ CellID->1811421247],
 
 Cell[CellGroupData[{
 
@@ -133,41 +165,92 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1],
+ CellID->9634612],
 
-Cell["The setting All for Explicit performs the sums.", "Text",
- CellTags->"Twist2GluonOperator",
- CellID->820989411],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Twist2GluonOperator", ",", " ", 
-    RowBox[{"Polarization", " ", "\[Rule]", " ", "1"}], ",", " ", 
-    RowBox[{"Explicit", "\[Rule]", "All"}]}], "]"}], ";"}]], "Input",
- CellTags->"Twist2GluonOperator",
- CellLabel->"In[1]:=",
- CellID->1824993691],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Twist2GluonOperator", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}], ";"}]], "Input",
- CellTags->"Twist2GluonOperator",
- CellLabel->"In[2]:=",
- CellID->1893252067]
-}, Open  ]]
-}, Open  ]],
+Cell["The setting All for Explicit performs the sums.", "Notes"],
 
 Cell[CellGroupData[{
 
-Cell["", "SectionFooterSpacer"],
+Cell[BoxData[
+ RowBox[{"Twist2GluonOperator", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}], ",", " ", 
+   RowBox[{"Polarization", " ", "\[Rule]", " ", "1"}], ",", " ", 
+   RowBox[{"Explicit", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellTags->"Twist2GluonOperator",
+ CellLabel->"In[1]:=",
+ CellID->1893252067],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     FormBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "m"],
+      TraditionalForm]}], ")"}], " ", 
+   SubscriptBox["g", "s"], " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     SubsuperscriptBox["O", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], "\[VeryThinSpace]", 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm], "\[VeryThinSpace]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]}], "G3"], "(", 
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], ",", 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm], ",", 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{262, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Twist2GluonOperator",
+ CellLabel->"Out[1]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
@@ -190,9 +273,7 @@ Cell[TextData[{
   ButtonNote->"Twist2QuarkOperator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Twist2GluonOperator",
- CellID->171220448]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -200,7 +281,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Twist2GluonOperator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -209,10 +290,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 31.779510}", 
+   "built" -> "{2019, 3, 29, 17, 55, 11.313328}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -230,10 +311,10 @@ setting of the option Polarization (unpolarized: 0; polarized: 1) determines \
 whether the unpolarized or polarized feynman rule is returned. With the \
 setting Explicit to False the color-structure and the (1+(-1)^OPEm) (for \
 polarized: (1-(-1)^OPEm)) is extracted and the color indices are omitted in \
-the arguments of Twist2GluonOperator.", "synonyms" -> {}, "title" -> 
-    "Twist2GluonOperator", "titlemodifier" -> "", "windowtitle" -> 
+the arguments of Twist2GluonOperator.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "Twist2GluonOperator", "titlemodifier" -> "", "windowtitle" -> 
     "Twist2GluonOperator", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Twist2GluonOperator"}},
+    "FeynCalc/ref/Twist2GluonOperator"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -253,67 +334,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4369, 110, 379, 15, 70, "PrimaryExamplesSection",
+  Cell[5382, 142, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1]},
+   CellID->1811421247]},
  "Twist2GluonOperator"->{
-  Cell[4963, 137, 117, 2, 70, "Text",
-   CellTags->"Twist2GluonOperator",
-   CellID->820989411],
-  Cell[5083, 141, 313, 8, 70, "Input",
-   CellTags->"Twist2GluonOperator",
-   CellID->1824993691],
-  Cell[5399, 151, 398, 12, 70, "Input",
+  Cell[6080, 173, 493, 13, 45, "Input",
    CellTags->"Twist2GluonOperator",
    CellID->1893252067],
-  Cell[6153, 185, 271, 9, 70, "Text",
-   CellTags->"Twist2GluonOperator",
-   CellID->171220448]}
+  Cell[6576, 188, 1400, 57, 43, "Output",
+   CellTags->"Twist2GluonOperator"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9116, 254},
- {"Twist2GluonOperator", 9254, 258}
+ {"PrimaryExamplesSection", 11282, 335},
+ {"Twist2GluonOperator", 11429, 339}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 2290, 52, 70, "AnchorBarGrid",
+Cell[591, 21, 3069, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2884, 75, 62, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2949, 78, 1395, 28, 70, "Usage",
+Cell[3663, 97, 296, 11, 44, "ObjectNameGrid"],
+Cell[3962, 110, 1395, 28, 212, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4369, 110, 379, 15, 70, "PrimaryExamplesSection",
+Cell[5382, 142, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1],
+ CellID->1811421247],
 Cell[CellGroupData[{
-Cell[4773, 129, 187, 6, 70, "ExampleSection",
- CellID->1],
-Cell[4963, 137, 117, 2, 70, "Text",
+Cell[5795, 161, 193, 6, 25, "ExampleSection",
+ CellID->9634612],
+Cell[5991, 169, 64, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[6080, 173, 493, 13, 45, "Input",
  CellTags->"Twist2GluonOperator",
- CellID->820989411],
-Cell[5083, 141, 313, 8, 70, "Input",
- CellTags->"Twist2GluonOperator",
- CellID->1824993691],
-Cell[5399, 151, 398, 12, 70, "Input",
- CellTags->"Twist2GluonOperator",
- CellID->1893252067]
+ CellID->1893252067],
+Cell[6576, 188, 1400, 57, 43, "Output",
+ CellTags->"Twist2GluonOperator"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[5846, 169, 31, 0, 70, "SectionFooterSpacer"],
-Cell[5880, 171, 270, 12, 70, "SeeAlsoSection",
- CellID->1255426704],
-Cell[6153, 185, 271, 9, 70, "Text",
- CellTags->"Twist2GluonOperator",
- CellID->171220448]
+Cell[8003, 249, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
-Cell[6439, 197, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[8071, 254, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8344, 268, 220, 7, 55, "SeeAlso"]
+}, Open  ]],
+Cell[8579, 278, 23, 0, 40, "FooterCell"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

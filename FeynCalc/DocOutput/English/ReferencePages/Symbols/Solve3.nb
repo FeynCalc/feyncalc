@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8886,        290]
-NotebookOptionsPosition[      5608,        190]
-NotebookOutlinePosition[      8169,        261]
-CellTagsIndexPosition[      8061,        255]
+NotebookDataLength[     10129,        337]
+NotebookOptionsPosition[      6728,        234]
+NotebookOutlinePosition[      9239,        303]
+CellTagsIndexPosition[      9131,        297]
 WindowTitle->Solve3
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140906], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$248555], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Solve3",
              ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Solve3", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Solve3", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -93,6 +106,63 @@ sometimes better than Solve for systems involving rational polyonomials."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1819892224],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Solve3", "]"}]], "Input",
+ CellTags->"Solve3",
+ CellLabel->"In[26]:=",
+ CellID->1333669928],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"ParallelMap", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{513, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve3",
+ CellLabel->"Out[26]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -108,7 +178,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1651359721],
+ CellID->1650985781],
 
 Cell[CellGroupData[{
 
@@ -118,32 +188,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1038726886],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Solve3", "]"}]], "Input",
- CellTags->"Solve3",
- CellLabel->"In[1]:=",
- CellID->1333669928],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"ParallelMap", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{427, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Solve3",
- CellLabel->"Out[1]=",
- CellID->1579913582]
-}, Open  ]],
+ CellID->1287076519],
 
 Cell[CellGroupData[{
 
@@ -161,7 +206,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
  CellTags->"Solve3",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->1175774569],
 
 Cell[BoxData[
@@ -176,12 +221,11 @@ Cell[BoxData[
         RowBox[{"2", " ", "b"}], "-", "w"}], ")"}]}]}], ",", 
     RowBox[{"y", "\[Rule]", 
      RowBox[{"d", "+", "p"}]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{201, 41},
+ ImageSize->{204, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Solve3",
- CellLabel->"Out[2]=",
- CellID->158619342]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -200,10 +244,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 3.529024}", 
+   "built" -> "{2019, 3, 29, 17, 53, 33.388194}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -212,9 +256,9 @@ TaggingRules->{
     "Solve3 is equivalent to Solve, except that it works only for linear \
 equations (and returns just a list) and uses the \"high school algorithm\" \
 and is sometimes better than Solve for systems involving rational \
-polyonomials.", "synonyms" -> {}, "title" -> "Solve3", "titlemodifier" -> "", 
-    "windowtitle" -> "Solve3", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Solve3"}, "SearchTextTranslated" -> ""},
+polyonomials.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Solve3", 
+    "titlemodifier" -> "", "windowtitle" -> "Solve3", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Solve3"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -233,65 +277,68 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3423, 95, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1651359721]},
  "Solve3"->{
-  Cell[4057, 124, 130, 4, 27, "Input",
+  Cell[4505, 138, 131, 4, 27, "Input",
    CellTags->"Solve3",
    CellID->1333669928],
-  Cell[4190, 130, 426, 14, 36, "Output",
-   CellTags->"Solve3",
-   CellID->1579913582],
-  Cell[4653, 149, 408, 15, 27, "Input",
+  Cell[4639, 144, 459, 14, 37, "Output",
+   CellTags->"Solve3"],
+  Cell[5793, 194, 408, 15, 27, "Input",
    CellTags->"Solve3",
    CellID->1175774569],
-  Cell[5064, 166, 478, 17, 62, "Output",
-   CellTags->"Solve3",
-   CellID->158619342]}
+  Cell[6204, 211, 458, 16, 56, "Output",
+   CellTags->"Solve3"]},
+ "PrimaryExamplesSection"->{
+  Cell[5159, 165, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1650985781]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7556, 235},
- {"Solve3", 7689, 239}
+ {"Solve3", 8654, 279},
+ {"PrimaryExamplesSection", 8987, 290}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2237, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 2265, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2818, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2870, 78, 528, 13, 113, "Usage",
+Cell[2846, 76, 283, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3154, 91, 528, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3423, 95, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1651359721],
+Cell[3707, 108, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1819892224],
+Cell[4449, 134, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3836, 114, 196, 6, 25, "ExampleSection",
- CellID->1038726886],
-Cell[CellGroupData[{
-Cell[4057, 124, 130, 4, 27, "Input",
+Cell[4505, 138, 131, 4, 27, "Input",
  CellTags->"Solve3",
  CellID->1333669928],
-Cell[4190, 130, 426, 14, 36, "Output",
- CellTags->"Solve3",
- CellID->1579913582]
+Cell[4639, 144, 459, 14, 37, "Output",
+ CellTags->"Solve3"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4653, 149, 408, 15, 27, "Input",
+Cell[5159, 165, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1650985781],
+Cell[CellGroupData[{
+Cell[5572, 184, 196, 6, 25, "ExampleSection",
+ CellID->1287076519],
+Cell[CellGroupData[{
+Cell[5793, 194, 408, 15, 27, "Input",
  CellTags->"Solve3",
  CellID->1175774569],
-Cell[5064, 166, 478, 17, 62, "Output",
- CellTags->"Solve3",
- CellID->158619342]
+Cell[6204, 211, 458, 16, 56, "Output",
+ CellTags->"Solve3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5581, 188, 23, 0, 42, "FooterCell"]
+Cell[6701, 232, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

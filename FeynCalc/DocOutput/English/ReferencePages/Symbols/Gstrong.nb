@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8478,        288]
-NotebookOptionsPosition[      5266,        188]
-NotebookOutlinePosition[      7646,        256]
-CellTagsIndexPosition[      7537,        250]
+NotebookDataLength[     11012,        373]
+NotebookOptionsPosition[      7709,        271]
+NotebookOutlinePosition[      9935,        334]
+CellTagsIndexPosition[      9826,        328]
 WindowTitle->Gstrong
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Gstrong\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Gstrong"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Gstrong.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"CovariantD\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CovariantD"], "\<\"FieldStrength\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FieldStrength"], "\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GluonVertex"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Gstrong\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Gstrong"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Gstrong.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86155], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Gstrong", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$165220], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Gstrong", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,14 +98,28 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Gstrong", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Gstrong", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["Gstrong"], "InlineFormula"],
-     " \[LineSeparator]",
-     "denotes the strong coupling constant."
+     " \[LineSeparator] is a shortcut for ",
+     Cell[BoxData[
+      RowBox[{"SMP", "[", "\"\<g_s\>\"", "]"}]], "InlineFormula"],
+     " which represents the strong coupling constant."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -88,6 +127,46 @@ Cell[BoxData[GridBox[{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->938965227],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The shortcut Gstrong is deprecated, please use ",
+ Cell[BoxData[
+  RowBox[{"SMP", "[", "\"\<g_s\>\"", "]"}]], "InlineFormula"],
+ " instead!"
+}], "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -106,7 +185,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1919399898],
+ CellID->773853342],
 
 Cell[CellGroupData[{
 
@@ -116,13 +195,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1193391299],
-
-Cell["\<\
-Gstrong has no functional properties. Only a typesetting rule is defined.\
-\>", "Text",
- CellTags->"Gstrong",
- CellID->1604993747],
+ CellID->1688551871],
 
 Cell[CellGroupData[{
 
@@ -134,12 +207,25 @@ Cell[BoxData["Gstrong"], "Input",
 Cell[BoxData[
  FormBox[
   SubscriptBox["g", "s"], TraditionalForm]], "Output",
- ImageSize->{20, 15},
+ ImageSize->{22, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Gstrong",
- CellLabel->"Out[1]=",
- CellID->50548467]
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ RowBox[{"SMP", "[", "\<\"g_s\"\>", "]"}]], "Output",
+ ImageSize->{66, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -163,7 +249,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["CovariantD",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/CovariantD"],
@@ -179,9 +264,7 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/GluonVertex"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Gstrong",
- CellID->317682057]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -198,18 +281,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 9.382200}", 
+   "built" -> "{2019, 3, 29, 17, 50, 32.136968}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
-    "None", "summary" -> "Gstrong denotes the strong coupling constant.", 
-    "synonyms" -> {}, "title" -> "Gstrong", "titlemodifier" -> "", 
-    "windowtitle" -> "Gstrong", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Gstrong"}, "SearchTextTranslated" -> ""},
+    "None", "summary" -> 
+    "Gstrong is a shortcut for SMP[\"g_s\"] which represents the strong \
+coupling constant.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "Gstrong", "titlemodifier" -> "", "windowtitle" -> "Gstrong", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Gstrong"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -229,67 +314,67 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3247, 93, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5592, 172, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1919399898]},
+   CellID->773853342]},
  "Gstrong"->{
-  Cell[3859, 120, 140, 4, 32, "Text",
-   CellTags->"Gstrong",
-   CellID->1604993747],
-  Cell[4024, 128, 99, 3, 27, "Input",
+  Cell[6225, 201, 99, 3, 27, "Input",
    CellTags->"Gstrong",
    CellID->1539112275],
-  Cell[4126, 133, 229, 8, 36, "Output",
-   CellTags->"Gstrong",
-   CellID->50548467],
-  Cell[4723, 164, 501, 19, 32, "Text",
-   CellTags->"Gstrong",
-   CellID->317682057]}
+  Cell[6327, 206, 210, 7, 37, "Output",
+   CellTags->"Gstrong"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7035, 230},
- {"Gstrong", 7169, 234}
+ {"PrimaryExamplesSection", 9517, 315},
+ {"Gstrong", 9651, 319}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+Cell[579, 21, 3198, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2822, 75, 50, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2875, 78, 347, 11, 82, "Usage",
+Cell[3780, 100, 284, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4089, 115, 462, 13, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3247, 93, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4576, 132, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->938965227],
+Cell[5317, 158, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5351, 160, 192, 6, 31, "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5592, 172, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1919399898],
+ CellID->773853342],
 Cell[CellGroupData[{
-Cell[3660, 112, 196, 6, 25, "ExampleSection",
- CellID->1193391299],
-Cell[3859, 120, 140, 4, 32, "Text",
- CellTags->"Gstrong",
- CellID->1604993747],
+Cell[6004, 191, 196, 6, 25, "ExampleSection",
+ CellID->1688551871],
 Cell[CellGroupData[{
-Cell[4024, 128, 99, 3, 27, "Input",
+Cell[6225, 201, 99, 3, 27, "Input",
  CellTags->"Gstrong",
  CellID->1539112275],
-Cell[4126, 133, 229, 8, 36, "Output",
- CellTags->"Gstrong",
- CellID->50548467]
-}, Open  ]]
-}, Open  ]],
-Cell[4382, 145, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6327, 206, 210, 7, 37, "Output",
+ CellTags->"Gstrong"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4450, 150, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[4723, 164, 501, 19, 32, "Text",
- CellTags->"Gstrong",
- CellID->317682057]
+Cell[6574, 218, 84, 2, 27, "Input"],
+Cell[6661, 222, 191, 5, 49, "Output"]
+}, Open  ]]
 }, Open  ]],
-Cell[5239, 186, 23, 0, 42, "FooterCell"]
+Cell[6879, 231, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6947, 236, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[7220, 250, 447, 16, 55, "SeeAlso"]
+}, Open  ]],
+Cell[7682, 269, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24582,        940]
-NotebookOptionsPosition[     19371,        772]
-NotebookOutlinePosition[     22818,        871]
-CellTagsIndexPosition[     22706,        865]
+NotebookDataLength[     23196,        873]
+NotebookOptionsPosition[     18392,        723]
+NotebookOutlinePosition[     21609,        813]
+CellTagsIndexPosition[     21497,        807]
 WindowTitle->Explicit
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Explicit\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Explicit"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Explicit.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonVertex"], "\<\"Twist2GluonOperator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Twist2GluonOperator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Explicit\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Explicit"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Explicit.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$53171], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Explicit", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86096], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Explicit", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Explicit", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Explicit", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -112,7 +146,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2137769523],
+ CellID->637669957],
 
 Cell[CellGroupData[{
 
@@ -122,7 +156,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1555052173],
+ CellID->1976116840],
 
 Cell[CellGroupData[{
 
@@ -184,12 +218,11 @@ Cell[BoxData[
       FormBox["r",
        TraditionalForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{152, 21},
+ ImageSize->{166, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Explicit",
- CellLabel->"Out[1]=",
- CellID->1698625354]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,146 +254,104 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
          FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
+          FormBox["p",
            TraditionalForm],
           TraditionalForm], 
          FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
+          FormBox["\[Rho]",
            TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["p",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Rho]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], "-", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["q",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Rho]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm]}], ")"}]}], "+", 
+          TraditionalForm]], "-", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Rho]",
+           TraditionalForm],
+          TraditionalForm]]}], ")"}]}], "+", 
      RowBox[{
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
          FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
+          FormBox["r",
            TraditionalForm],
           TraditionalForm], 
          FormBox[
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
+          FormBox["\[Nu]",
            TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["r",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Nu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], "-", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["p",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Nu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm]}], ")"}]}], "+", 
+          TraditionalForm]], "-", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]]}], ")"}]}], "+", 
      RowBox[{
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
          FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
+          FormBox["q",
            TraditionalForm],
           TraditionalForm], 
          FormBox[
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
+          FormBox["\[Mu]",
            TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["q",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Mu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], "-", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["r",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Mu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{394, 22},
+          TraditionalForm]], "-", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["r",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",\
+
+ ImageSize->{416, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Explicit",
- CellLabel->"Out[2]=",
- CellID->1578200832]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -410,12 +401,11 @@ Cell[BoxData[
       FormBox["p",
        TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{194, 41},
+ ImageSize->{199, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Explicit",
- CellLabel->"Out[3]=",
- CellID->524953586]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -466,22 +456,16 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
       SuperscriptBox[
        RowBox[{
         FormBox["\<\"(\"\>",
@@ -507,32 +491,24 @@ Cell[BoxData[
         FormBox["p",
          TraditionalForm],
         TraditionalForm], "2"], " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "-", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]]}], "-", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
@@ -549,66 +525,49 @@ Cell[BoxData[
       RowBox[{"(", 
        RowBox[{
         RowBox[{
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["\[CapitalDelta]",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}], "+", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]]}], "+", 
         RowBox[{
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["\[CapitalDelta]",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Mu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm], " ", 
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["\[Nu]",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]],
-          TraditionalForm]}]}], ")"}]}]}], ")"}]}], 
+         SuperscriptBox[
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm]], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm]]}]}], ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{557, 41},
+ ImageSize->{565, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Explicit",
- CellLabel->"Out[4]=",
- CellID->993425694]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -630,12 +589,11 @@ Cell[BoxData[
      TraditionalForm]}], 
    FormBox["a",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{30, 19},
+ ImageSize->{31, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Explicit",
- CellLabel->"Out[5]=",
- CellID->342672291]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -653,17 +611,11 @@ Cell[BoxData[
     SubscriptBox["g", "s"], " ", 
     SuperscriptBox["f", 
      RowBox[{
-      FormBox[
-       FormBox["a",
-        TraditionalForm],
+      FormBox["a",
        TraditionalForm], 
-      FormBox[
-       FormBox["b24",
-        TraditionalForm],
+      FormBox["b186",
        TraditionalForm], 
-      FormBox[
-       FormBox["c25",
-        TraditionalForm],
+      FormBox["c187",
        TraditionalForm]}]], " ", 
     RowBox[{
      SubsuperscriptBox[
@@ -674,7 +626,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["b24",
+       FormBox["b186",
         TraditionalForm],
        TraditionalForm]], ".", 
      SubsuperscriptBox[
@@ -685,11 +637,12 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["c25",
+       FormBox["c187",
         TraditionalForm],
        TraditionalForm]]}]}], "+", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Mu]",
        TraditionalForm],
@@ -704,9 +657,10 @@ Cell[BoxData[
      FormBox[
       FormBox["a",
        TraditionalForm],
-      TraditionalForm]]}], "-", 
+      TraditionalForm]], ")"}], "-", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Nu]",
        TraditionalForm],
@@ -721,13 +675,12 @@ Cell[BoxData[
      FormBox[
       FormBox["a",
        TraditionalForm],
-      TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{254, 23},
+      TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{325, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Explicit",
- CellLabel->"Out[6]=",
- CellID->559853350]
+ CellLabel->"Out[6]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -763,9 +716,7 @@ Cell[TextData[{
   ButtonNote->"Twist2GluonOperator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Explicit",
- CellID->1892239370]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -782,10 +733,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 46.225373}", 
+   "built" -> "{2019, 3, 29, 17, 47, 31.674077}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -795,9 +746,9 @@ TaggingRules->{
 Twist2GluonOperator. If set to True the full form of the operator is \
 inserted. Explicit[exp] inserts explicit expressions of GluonVertex, \
 Twist2GluonOperator etc. in exp. SUNF's are replaced by SUNTrace objects.", 
-    "synonyms" -> {}, "title" -> "Explicit", "titlemodifier" -> "", 
-    "windowtitle" -> "Explicit", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Explicit"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Explicit", 
+    "titlemodifier" -> "", "windowtitle" -> "Explicit", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Explicit"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -817,131 +768,113 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3565, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4678, 133, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2137769523]},
+   CellID->637669957]},
  "Explicit"->{
-  Cell[4199, 128, 248, 7, 27, "Input",
+  Cell[5311, 162, 248, 7, 27, "Input",
    CellTags->"Explicit",
    CellID->672712555],
-  Cell[4450, 137, 1221, 54, 42, "Output",
-   CellTags->"Explicit",
-   CellID->1698625354],
-  Cell[5708, 196, 128, 4, 27, "Input",
+  Cell[5562, 171, 1200, 53, 40, "Output",
+   CellTags->"Explicit"],
+  Cell[6799, 229, 128, 4, 27, "Input",
    CellTags->"Explicit",
    CellID->1603275034],
-  Cell[5839, 202, 3986, 160, 43, "Output",
-   CellTags->"Explicit",
-   CellID->1578200832],
-  Cell[9862, 367, 202, 6, 27, "Input",
+  Cell[6930, 235, 2887, 118, 40, "Output",
+   CellTags->"Explicit"],
+  Cell[9854, 358, 202, 6, 27, "Input",
    CellTags->"Explicit",
    CellID->221852196],
-  Cell[10067, 375, 1040, 42, 62, "Output",
-   CellTags->"Explicit",
-   CellID->524953586],
-  Cell[11144, 422, 127, 4, 27, "Input",
+  Cell[10059, 366, 1020, 41, 56, "Output",
+   CellTags->"Explicit"],
+  Cell[11116, 412, 127, 4, 27, "Input",
    CellTags->"Explicit",
    CellID->441966106],
-  Cell[11274, 428, 4653, 182, 62, "Output",
-   CellTags->"Explicit",
-   CellID->993425694],
-  Cell[15964, 615, 171, 5, 27, "Input",
+  Cell[11246, 418, 3853, 151, 56, "Output",
+   CellTags->"Explicit"],
+  Cell[15136, 574, 171, 5, 27, "Input",
    CellTags->"Explicit",
    CellID->3454152],
-  Cell[16138, 622, 374, 15, 40, "Output",
-   CellTags->"Explicit",
-   CellID->342672291],
-  Cell[16549, 642, 128, 4, 27, "Input",
+  Cell[15310, 581, 354, 14, 40, "Output",
+   CellTags->"Explicit"],
+  Cell[15701, 600, 128, 4, 27, "Input",
    CellTags->"Explicit",
    CellID->1217375686],
-  Cell[16680, 648, 1852, 81, 44, "Output",
-   CellTags->"Explicit",
-   CellID->559853350],
-  Cell[18900, 752, 429, 15, 32, "Text",
-   CellTags->"Explicit",
-   CellID->1892239370]}
+  Cell[15832, 606, 1762, 76, 43, "Output",
+   CellTags->"Explicit"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 21386, 818},
- {"Explicit", 21521, 822}
+ {"PrimaryExamplesSection", 20400, 769},
+ {"Explicit", 20535, 773}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2244, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 3123, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2827, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2881, 78, 659, 17, 113, "Usage",
+Cell[3706, 99, 285, 11, 44, "ObjectNameGrid"],
+Cell[3994, 112, 659, 17, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3565, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4678, 133, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2137769523],
+ CellID->637669957],
 Cell[CellGroupData[{
-Cell[3978, 118, 196, 6, 25, "ExampleSection",
- CellID->1555052173],
+Cell[5090, 152, 196, 6, 25, "ExampleSection",
+ CellID->1976116840],
 Cell[CellGroupData[{
-Cell[4199, 128, 248, 7, 27, "Input",
+Cell[5311, 162, 248, 7, 27, "Input",
  CellTags->"Explicit",
  CellID->672712555],
-Cell[4450, 137, 1221, 54, 42, "Output",
- CellTags->"Explicit",
- CellID->1698625354]
+Cell[5562, 171, 1200, 53, 40, "Output",
+ CellTags->"Explicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5708, 196, 128, 4, 27, "Input",
+Cell[6799, 229, 128, 4, 27, "Input",
  CellTags->"Explicit",
  CellID->1603275034],
-Cell[5839, 202, 3986, 160, 43, "Output",
- CellTags->"Explicit",
- CellID->1578200832]
+Cell[6930, 235, 2887, 118, 40, "Output",
+ CellTags->"Explicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9862, 367, 202, 6, 27, "Input",
+Cell[9854, 358, 202, 6, 27, "Input",
  CellTags->"Explicit",
  CellID->221852196],
-Cell[10067, 375, 1040, 42, 62, "Output",
- CellTags->"Explicit",
- CellID->524953586]
+Cell[10059, 366, 1020, 41, 56, "Output",
+ CellTags->"Explicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11144, 422, 127, 4, 27, "Input",
+Cell[11116, 412, 127, 4, 27, "Input",
  CellTags->"Explicit",
  CellID->441966106],
-Cell[11274, 428, 4653, 182, 62, "Output",
- CellTags->"Explicit",
- CellID->993425694]
+Cell[11246, 418, 3853, 151, 56, "Output",
+ CellTags->"Explicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15964, 615, 171, 5, 27, "Input",
+Cell[15136, 574, 171, 5, 27, "Input",
  CellTags->"Explicit",
  CellID->3454152],
-Cell[16138, 622, 374, 15, 40, "Output",
- CellTags->"Explicit",
- CellID->342672291]
+Cell[15310, 581, 354, 14, 40, "Output",
+ CellTags->"Explicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16549, 642, 128, 4, 27, "Input",
+Cell[15701, 600, 128, 4, 27, "Input",
  CellTags->"Explicit",
  CellID->1217375686],
-Cell[16680, 648, 1852, 81, 44, "Output",
- CellTags->"Explicit",
- CellID->559853350]
+Cell[15832, 606, 1762, 76, 43, "Output",
+ CellTags->"Explicit"]
 }, Open  ]]
 }, Open  ]],
-Cell[18559, 733, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17621, 686, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18627, 738, 270, 12, 31, "SeeAlsoSection",
+Cell[17689, 691, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[18900, 752, 429, 15, 32, "Text",
- CellTags->"Explicit",
- CellID->1892239370]
+Cell[17962, 705, 388, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[19344, 770, 23, 0, 42, "FooterCell"]
+Cell[18365, 721, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5176,        145]
-NotebookOptionsPosition[      3288,         93]
-NotebookOutlinePosition[      5098,        141]
-CellTagsIndexPosition[      5055,        138]
+NotebookDataLength[      6920,        219]
+NotebookOptionsPosition[      4473,        148]
+NotebookOutlinePosition[      6500,        203]
+CellTagsIndexPosition[      6416,        198]
 WindowTitle->ScaleMu
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$132024], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$232904], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ScaleMu", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ScaleMu", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ScaleMu", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -89,12 +100,56 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->982511436],
 
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->690679770],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1840683562],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["ScaleMu"], "Input",
+ CellLabel->"In[1]:="],
+
+Cell[BoxData[
+ FormBox["\[Mu]", TraditionalForm]], "Output",
+ ImageSize->{14, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"ScaleMu",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -103,19 +158,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 23.922754}", 
+   "built" -> "{2019, 3, 29, 17, 52, 57.953564}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "ScaleMu is the mass scale used for dimensional regularization of loop \
-integrals.", "synonyms" -> {}, "title" -> "ScaleMu", "titlemodifier" -> "", 
-    "windowtitle" -> "ScaleMu", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/ScaleMu"}},
+integrals.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "ScaleMu", 
+    "titlemodifier" -> "", "windowtitle" -> "ScaleMu", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/ScaleMu"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -133,22 +188,42 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3545, 104, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->690679770]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 6273, 191}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2241, 52, 70, "AnchorBarGrid",
+Cell[579, 21, 2269, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2823, 75, 50, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2876, 78, 382, 11, 70, "Usage",
+Cell[2851, 76, 284, 11, 44, "ObjectNameGrid"],
+Cell[3138, 89, 382, 11, 83, "Usage",
  CellID->982511436],
-Cell[3261, 91, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[3545, 104, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->690679770],
+Cell[CellGroupData[{
+Cell[3957, 123, 196, 6, 25, "ExampleSection",
+ CellID->1840683562],
+Cell[CellGroupData[{
+Cell[4178, 133, 56, 1, 27, "Input"],
+Cell[4237, 136, 170, 5, 37, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[4446, 146, 23, 0, 40, "FooterCell"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

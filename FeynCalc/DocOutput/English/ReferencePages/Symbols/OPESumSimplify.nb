@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15450,        549]
-NotebookOptionsPosition[     10715,        399]
-NotebookOutlinePosition[     13834,        488]
-CellTagsIndexPosition[     13716,        482]
+NotebookDataLength[     17900,        638]
+NotebookOptionsPosition[     12972,        481]
+NotebookOutlinePosition[     15999,        568]
+CellTagsIndexPosition[     15881,        562]
 WindowTitle->OPESumSimplify
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/OPESumSimplify\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/OPESumSimplify"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"OPESum\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OPESum"], "\<\"OPESumExplicit\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/OPESumExplicit"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/OPESumSimplify\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/OPESumSimplify"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 OPESumSimplify.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$113422], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/OPESumSimplify", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$203247], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/OPESumSimplify", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +96,20 @@ OPESumSimplify.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["OPESumSimplify", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["OPESumSimplify", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -89,6 +124,55 @@ Cell[BoxData[GridBox[{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1006435632],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "OPESumSimplify", "]"}]], "Input",
+ CellLabel->"In[34]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Assumptions", "\[Rule]", "True"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{139, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[34]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -107,7 +191,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->214949193],
+ CellID->231988791],
 
 Cell[CellGroupData[{
 
@@ -117,7 +201,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1016907880],
+ CellID->1268137937],
 
 Cell[CellGroupData[{
 
@@ -164,7 +248,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"-", "2"}], "-", "i", "+", "m"}]]}]}],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{247, 45},
+ ImageSize->{270, 44},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESumSimplify",
@@ -242,7 +326,7 @@ Cell[BoxData[
            RowBox[{"-", "2"}], "-", "i", "+", "m"}]]}]}],
        HoldForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{317, 46},
+ ImageSize->{345, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESumSimplify",
@@ -273,7 +357,7 @@ Cell[BoxData[
      SuperscriptBox["a", "i"],
      TraditionalForm]}],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{40, 45},
+ ImageSize->{47, 44},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESumSimplify",
@@ -321,7 +405,7 @@ Cell[BoxData[
      SuperscriptBox["a", 
       RowBox[{"j", "-", "i"}]]}],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{119, 45},
+ ImageSize->{140, 44},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESumSimplify",
@@ -349,7 +433,7 @@ Cell[BoxData[
     RowBox[{"i", ",", "0", ",", "m"}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{"j", ",", "0", ",", "i"}], "}"}]}], "]"}]], "Output",
- ImageSize->{291, 20},
+ ImageSize->{288, 25},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESumSimplify",
@@ -390,9 +474,7 @@ Cell[TextData[{
   ButtonNote->"OPESumExplicit"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"OPESumSimplify",
- CellID->189414120]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -409,18 +491,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 7.832950}", 
+   "built" -> "{2019, 3, 29, 17, 51, 54.715351}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> "OPESumSimplify[exp] simplifies OPESum's in exp.", 
-    "synonyms" -> {}, "title" -> "OPESumSimplify", "titlemodifier" -> "", 
-    "windowtitle" -> "OPESumSimplify", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/OPESumSimplify"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "OPESumSimplify", 
+    "titlemodifier" -> "", "windowtitle" -> "OPESumSimplify", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/OPESumSimplify"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -440,117 +523,123 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3322, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5625, 178, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->214949193]},
+   CellID->231988791]},
  "OPESumSimplify"->{
-  Cell[3955, 123, 160, 5, 27, "Input",
+  Cell[6258, 207, 160, 5, 27, "Input",
    CellTags->"OPESumSimplify",
    CellID->301700583],
-  Cell[4118, 130, 1157, 41, 66, "Output",
+  Cell[6421, 214, 1157, 41, 65, "Output",
    CellTags->"OPESumSimplify",
    CellID->843585068],
-  Cell[5312, 176, 106, 3, 27, "Input",
+  Cell[7615, 260, 106, 3, 27, "Input",
    CellTags->"OPESumSimplify",
    CellID->603012719],
-  Cell[5421, 181, 1926, 68, 67, "Output",
+  Cell[7724, 265, 1926, 68, 66, "Output",
    CellTags->"OPESumSimplify",
    CellID->276666428],
-  Cell[7384, 254, 290, 9, 27, "Input",
+  Cell[9687, 338, 290, 9, 27, "Input",
    CellTags->"OPESumSimplify",
    CellID->341981151],
-  Cell[7677, 265, 387, 15, 66, "Output",
+  Cell[9980, 349, 387, 15, 65, "Output",
    CellTags->"OPESumSimplify",
    CellID->956192019],
-  Cell[8101, 285, 456, 15, 27, "Input",
+  Cell[10404, 369, 456, 15, 27, "Input",
    CellTags->"OPESumSimplify",
    CellID->445474412],
-  Cell[8560, 302, 658, 26, 66, "Output",
+  Cell[10863, 386, 658, 26, 65, "Output",
    CellTags->"OPESumSimplify",
    CellID->630874009],
-  Cell[9255, 333, 134, 4, 27, "Input",
+  Cell[11558, 417, 134, 4, 27, "Input",
    CellTags->"OPESumSimplify",
    CellID->1811258609],
-  Cell[9392, 339, 509, 17, 54, "Output",
+  Cell[11695, 423, 509, 17, 59, "Output",
    CellTags->"OPESumSimplify",
-   CellID->899717952],
-  Cell[10269, 379, 404, 15, 70, "Text",
-   CellTags->"OPESumSimplify",
-   CellID->189414120]}
+   CellID->899717952]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12514, 441},
- {"OPESumSimplify", 12654, 445}
+ {"PrimaryExamplesSection", 14768, 524},
+ {"OPESumSimplify", 14909, 528}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
+Cell[586, 21, 3121, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2859, 75, 57, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2919, 78, 378, 12, 82, "Usage",
+Cell[3710, 98, 291, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4026, 113, 378, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3322, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4429, 129, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1006435632],
+Cell[5171, 155, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[5227, 159, 97, 2, 27, "Input"],
+Cell[5327, 163, 237, 8, 37, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5625, 178, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->214949193],
+ CellID->231988791],
 Cell[CellGroupData[{
-Cell[3734, 113, 196, 6, 25, "ExampleSection",
- CellID->1016907880],
+Cell[6037, 197, 196, 6, 25, "ExampleSection",
+ CellID->1268137937],
 Cell[CellGroupData[{
-Cell[3955, 123, 160, 5, 27, "Input",
+Cell[6258, 207, 160, 5, 27, "Input",
  CellTags->"OPESumSimplify",
  CellID->301700583],
-Cell[4118, 130, 1157, 41, 66, "Output",
+Cell[6421, 214, 1157, 41, 65, "Output",
  CellTags->"OPESumSimplify",
  CellID->843585068]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5312, 176, 106, 3, 27, "Input",
+Cell[7615, 260, 106, 3, 27, "Input",
  CellTags->"OPESumSimplify",
  CellID->603012719],
-Cell[5421, 181, 1926, 68, 67, "Output",
+Cell[7724, 265, 1926, 68, 66, "Output",
  CellTags->"OPESumSimplify",
  CellID->276666428]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7384, 254, 290, 9, 27, "Input",
+Cell[9687, 338, 290, 9, 27, "Input",
  CellTags->"OPESumSimplify",
  CellID->341981151],
-Cell[7677, 265, 387, 15, 66, "Output",
+Cell[9980, 349, 387, 15, 65, "Output",
  CellTags->"OPESumSimplify",
  CellID->956192019]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8101, 285, 456, 15, 27, "Input",
+Cell[10404, 369, 456, 15, 27, "Input",
  CellTags->"OPESumSimplify",
  CellID->445474412],
-Cell[8560, 302, 658, 26, 66, "Output",
+Cell[10863, 386, 658, 26, 65, "Output",
  CellTags->"OPESumSimplify",
  CellID->630874009]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9255, 333, 134, 4, 27, "Input",
+Cell[11558, 417, 134, 4, 27, "Input",
  CellTags->"OPESumSimplify",
  CellID->1811258609],
-Cell[9392, 339, 509, 17, 54, "Output",
+Cell[11695, 423, 509, 17, 59, "Output",
  CellTags->"OPESumSimplify",
  CellID->899717952]
 }, Open  ]]
 }, Open  ]],
-Cell[9928, 360, 31, 0, 70, "SectionFooterSpacer"]
+Cell[12231, 444, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9996, 365, 270, 12, 70, "SeeAlsoSection",
+Cell[12299, 449, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10269, 379, 404, 15, 70, "Text",
- CellTags->"OPESumSimplify",
- CellID->189414120]
+Cell[12572, 463, 358, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[10688, 397, 23, 0, 70, "FooterCell"]
+Cell[12945, 479, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10846,        383]
-NotebookOptionsPosition[      6649,        247]
-NotebookOutlinePosition[      9551,        332]
-CellTagsIndexPosition[      9443,        326]
+NotebookDataLength[     10234,        346]
+NotebookOptionsPosition[      6882,        244]
+NotebookOutlinePosition[      9308,        312]
+CellTagsIndexPosition[      9200,        306]
 WindowTitle->B0Real
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/B0Real\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/B0Real"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/B0Real.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"B0\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/B0"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/B0Real\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/B0Real"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/B0Real.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20437], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/B0Real",
-             ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27087], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/B0Real", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["B0Real", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["B0Real", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,7 +139,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->955343210],
+ CellID->1662861194],
 
 Cell[CellGroupData[{
 
@@ -117,11 +149,9 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1561501857],
+ CellID->201676362],
 
-Cell["By default the arguments are not assumed real.", "Text",
- CellTags->"B0Real",
- CellID->130288840],
+Cell["By default the arguments are not assumed real.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -134,60 +164,31 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
+  TagBox[
    FormBox[
-    TagBox[
-     FormBox[
-      RowBox[{
-       SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-       RowBox[{"0", ",", "s", ",", "s"}], ")"}],
-      TraditionalForm],
-     HoldForm],
-    TraditionalForm], "+", "2"}], TraditionalForm]], "Output",
- ImageSize->{96, 15},
+    RowBox[{
+     SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+     RowBox[{"s", ",", "0", ",", "s"}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
+ ImageSize->{78, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"B0Real",
- CellLabel->"Out[1]=",
- CellID->997660714]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"B0", "//", "Options"}]], "Input",
- CellTags->"B0Real",
- CellLabel->"In[2]:=",
- CellID->168010706],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
-    RowBox[{"B0Unique", "\[Rule]", "True"}], ",", 
-    RowBox[{"B0Real", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{350, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"B0Real",
- CellLabel->"Out[2]=",
- CellID->994724143]
-}, Open  ]],
-
-Cell["With B0Real\[Rule]True, transformation is done.", "Text",
- CellTags->"B0Real",
- CellID->617964813],
+Cell["With B0Real\[Rule]True, transformation is done.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{"s", ",", "0", ",", "s", ",", 
-   RowBox[{"B0Real", "\[Rule]", "True"}]}], "]"}]], "Input",
+   RowBox[{"B0Real", "\[Rule]", "True"}], ",", 
+   RowBox[{"B0Unique", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"B0Real",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->848873063],
 
 Cell[BoxData[
@@ -202,12 +203,11 @@ Cell[BoxData[
       TraditionalForm],
      HoldForm],
     TraditionalForm], "+", "2"}], TraditionalForm]], "Output",
- ImageSize->{96, 15},
+ ImageSize->{101, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"B0Real",
- CellLabel->"Out[3]=",
- CellID->1655563844]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -231,16 +231,13 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["B0",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/B0",
   ButtonNote->"B0"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"B0Real",
- CellID->1839543320]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -257,10 +254,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 25.763973}", 
+   "built" -> "{2019, 3, 29, 17, 45, 13.260587}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -268,8 +265,8 @@ TaggingRules->{
     "None", "summary" -> 
     "B0Real is an option of B0 (default False). If set to True, B0 is assumed \
 to be real and the relation B0[a,0,a] = 2 + B0[0,a,a] is applied.", 
-    "synonyms" -> {}, "title" -> "B0Real", "titlemodifier" -> "", 
-    "windowtitle" -> "B0Real", "type" -> "Symbol", "uri" -> 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "B0Real", "titlemodifier" -> 
+    "", "windowtitle" -> "B0Real", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/B0Real"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -290,101 +287,67 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3337, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4315, 126, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->955343210]},
+   CellID->1662861194]},
  "B0Real"->{
-  Cell[3948, 121, 103, 2, 32, "Text",
-   CellTags->"B0Real",
-   CellID->130288840],
-  Cell[4076, 127, 153, 5, 27, "Input",
+  Cell[5014, 157, 153, 5, 27, "Input",
    CellTags->"B0Real",
    CellID->1048836421],
-  Cell[4232, 134, 443, 17, 36, "Output",
-   CellTags->"B0Real",
-   CellID->997660714],
-  Cell[4712, 156, 121, 4, 27, "Input",
-   CellTags->"B0Real",
-   CellID->168010706],
-  Cell[4836, 162, 389, 13, 36, "Output",
-   CellTags->"B0Real",
-   CellID->994724143],
-  Cell[5240, 178, 104, 2, 31, "Text",
-   CellTags->"B0Real",
-   CellID->617964813],
-  Cell[5369, 184, 200, 6, 27, "Input",
+  Cell[5170, 164, 352, 13, 37, "Output",
+   CellTags->"B0Real"],
+  Cell[5626, 184, 250, 7, 27, "Input",
    CellTags->"B0Real",
    CellID->848873063],
-  Cell[5572, 192, 444, 17, 36, "Output",
-   CellTags->"B0Real",
-   CellID->1655563844],
-  Cell[6384, 232, 223, 10, 31, "Text",
-   CellTags->"B0Real",
-   CellID->1839543320]}
+  Cell[5879, 193, 424, 16, 37, "Output",
+   CellTags->"B0Real"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8515, 291},
- {"B0Real", 8647, 295}
+ {"PrimaryExamplesSection", 8741, 288},
+ {"B0Real", 8875, 292}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 2980, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2817, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2869, 78, 443, 12, 99, "Usage",
+Cell[3561, 97, 283, 11, 44, "ObjectNameGrid"],
+Cell[3847, 110, 443, 12, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3337, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4315, 126, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->955343210],
+ CellID->1662861194],
 Cell[CellGroupData[{
-Cell[3749, 113, 196, 6, 25, "ExampleSection",
- CellID->1561501857],
-Cell[3948, 121, 103, 2, 32, "Text",
- CellTags->"B0Real",
- CellID->130288840],
+Cell[4728, 145, 195, 6, 25, "ExampleSection",
+ CellID->201676362],
+Cell[4926, 153, 63, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[4076, 127, 153, 5, 27, "Input",
+Cell[5014, 157, 153, 5, 27, "Input",
  CellTags->"B0Real",
  CellID->1048836421],
-Cell[4232, 134, 443, 17, 36, "Output",
- CellTags->"B0Real",
- CellID->997660714]
+Cell[5170, 164, 352, 13, 37, "Output",
+ CellTags->"B0Real"]
 }, Open  ]],
+Cell[5537, 180, 64, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[4712, 156, 121, 4, 27, "Input",
- CellTags->"B0Real",
- CellID->168010706],
-Cell[4836, 162, 389, 13, 36, "Output",
- CellTags->"B0Real",
- CellID->994724143]
-}, Open  ]],
-Cell[5240, 178, 104, 2, 31, "Text",
- CellTags->"B0Real",
- CellID->617964813],
-Cell[CellGroupData[{
-Cell[5369, 184, 200, 6, 27, "Input",
+Cell[5626, 184, 250, 7, 27, "Input",
  CellTags->"B0Real",
  CellID->848873063],
-Cell[5572, 192, 444, 17, 36, "Output",
- CellTags->"B0Real",
- CellID->1655563844]
+Cell[5879, 193, 424, 16, 37, "Output",
+ CellTags->"B0Real"]
 }, Open  ]]
 }, Open  ]],
-Cell[6043, 213, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6330, 213, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6111, 218, 270, 12, 31, "SeeAlsoSection",
+Cell[6398, 218, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6384, 232, 223, 10, 31, "Text",
- CellTags->"B0Real",
- CellID->1839543320]
+Cell[6671, 232, 169, 7, 54, "SeeAlso"]
 }, Open  ]],
-Cell[6622, 245, 23, 0, 42, "FooterCell"]
+Cell[6855, 242, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

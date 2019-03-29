@@ -10,62 +10,91 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21595,        832]
-NotebookOptionsPosition[     14317,        581]
-NotebookOutlinePosition[     18784,        717]
-CellTagsIndexPosition[     18676,        711]
+NotebookDataLength[     22805,        852]
+NotebookOptionsPosition[     15912,        623]
+NotebookOutlinePosition[     20025,        744]
+CellTagsIndexPosition[     19917,        738]
 WindowTitle->Pair
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Pair\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Pair"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Pair.html"]\
-, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115502], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Pair", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FV\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FV"], "\<\"FVD\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FVD"], "\<\"MT\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/MT"], "\<\"MTD\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/MTD"], "\<\"ScalarProduct\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScalarProduct"], "\<\"SP\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SP"], "\<\"SPD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SPD"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Pair\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Pair"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Pair.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$206050], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Pair", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +102,18 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Pair", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Pair", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -116,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1751102170],
+ CellID->1079880710],
 
 Cell[CellGroupData[{
 
@@ -126,11 +165,9 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->431213674],
+ CellID->378955684],
 
-Cell["This represents a four-dimensional metric tensor.", "Text",
- CellTags->"Pair",
- CellID->1660838641],
+Cell["This represents a four-dimensional metric tensor", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -149,28 +186,21 @@ Cell[BoxData[
    OverscriptBox["g", "_"], 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Alpha]",
-       TraditionalForm],
+     FormBox["\[Alpha]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Beta]",
-       TraditionalForm],
+     FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{38, 19},
+ ImageSize->{37, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[1]=",
- CellID->1133543032]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
-Cell["This is a D-dimensional metric tensor.", "Text",
- CellTags->"Pair",
- CellID->1732482457],
+Cell["This is a D-dimensional metric tensor", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -190,24 +220,48 @@ Cell[BoxData[
   SuperscriptBox["g", 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Alpha]",
-       TraditionalForm],
+     FormBox["\[Alpha]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Beta]",
-       TraditionalForm],
+     FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{36, 19},
+ ImageSize->{35, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[2]=",
- CellID->395860998]
+ CellLabel->"Out[2]="]
 }, Open  ]],
+
+Cell["\<\
+If the Lorentz indices live in different dimensions, this gets resolved \
+according to the t'Hoft-Veltman-Breitenlohner-Maison prescription\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Alpha]", ",", 
+     RowBox[{"n", "-", "4"}]}], "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
+ CellTags->"Pair",
+ CellLabel->"In[3]:=",
+ CellID->1343625376],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{14, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Pair",
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell["A 4-dimensional Lorentz vector", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -217,7 +271,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->958079821],
 
 Cell[BoxData[
@@ -229,18 +283,50 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], 
    FormBox[
-    FormBox[
-     FormBox["\[Alpha]",
-      TraditionalForm],
+    FormBox["\[Alpha]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{25, 19},
+ ImageSize->{25, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[3]=",
- CellID->53465480]
+ CellLabel->"Out[4]="]
 }, Open  ]],
+
+Cell["A D-dimensional Lorentz vector", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Alpha]", ",", "D"}], "]"}], ",", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", ",", "D"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Pair",
+ CellLabel->"In[5]:=",
+ CellID->106742008],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    FormBox["p",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox[
+    FormBox["\[Alpha]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{24, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Pair",
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell["4-dimensional scalar products of Lorentz vectors", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -250,7 +336,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "q", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[4]:=",
+ CellLabel->"In[6]:=",
  CellID->1770091706],
 
 Cell[BoxData[
@@ -268,12 +354,11 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{35, 17},
+ ImageSize->{40, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[4]=",
- CellID->2098206398]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -284,7 +369,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[5]:=",
+ CellLabel->"In[7]:=",
  CellID->227830423],
 
 Cell[BoxData[
@@ -295,12 +380,11 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{23, 20},
+ ImageSize->{24, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[5]=",
- CellID->212297594]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -312,7 +396,7 @@ Cell[BoxData[
     RowBox[{"p", "-", "q"}], "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[6]:=",
+ CellLabel->"In[8]:=",
  CellID->25203155],
 
 Cell[BoxData[
@@ -328,22 +412,23 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{79, 17},
+ ImageSize->{87, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[6]=",
- CellID->1189007863]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -355,7 +440,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "p", "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "^", "2"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[7]:=",
+ CellLabel->"In[9]:=",
  CellID->1431519685],
 
 Cell[BoxData[
@@ -366,12 +451,11 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "4"], TraditionalForm]], "Output",
- ImageSize->{24, 20},
+ ImageSize->{25, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[7]=",
- CellID->966009047]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -383,7 +467,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "p", "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "^", "3"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[8]:=",
+ CellLabel->"In[10]:=",
  CellID->721851127],
 
 Cell[BoxData[
@@ -394,37 +478,11 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "6"], TraditionalForm]], "Output",
- ImageSize->{23, 20},
+ ImageSize->{24, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[8]=",
- CellID->1932921647]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", 
-      RowBox[{"n", "-", "4"}]}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}], "//", 
-  "Contract"}]], "Input",
- CellTags->"Pair",
- CellLabel->"In[9]:=",
- CellID->1343625376],
-
-Cell[BoxData[
- FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Pair",
- CellLabel->"Out[9]=",
- CellID->1776583038]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -437,7 +495,7 @@ Cell[BoxData[
      RowBox[{"p", "-", "q"}], "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[10]:=",
+ CellLabel->"In[11]:=",
  CellID->294431519],
 
 Cell[BoxData[
@@ -462,12 +520,11 @@ Cell[BoxData[
       FormBox["q",
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{69, 20},
+ ImageSize->{76, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[10]=",
- CellID->1562380290]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -484,17 +541,16 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "q", "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[11]:=",
+ CellLabel->"In[12]:=",
  CellID->1586756083],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{14, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Pair",
- CellLabel->"Out[11]=",
- CellID->824407583]
+ CellLabel->"Out[12]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -518,12 +574,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- StyleBox[ButtonBox["FourVector",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FourVector",
-  ButtonNote->"FourVector"],
-  FontFamily->"Verdana"],
- ", ",
  StyleBox[ButtonBox["FV",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FV",
@@ -534,12 +584,6 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FVD",
   ButtonNote->"FVD"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["MetricTensor",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/MetricTensor",
-  ButtonNote->"MetricTensor"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["MT",
@@ -572,9 +616,7 @@ Cell[TextData[{
   ButtonNote->"SPD"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Pair",
- CellID->1831653521]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -591,10 +633,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 15.768597}", 
+   "built" -> "{2019, 3, 29, 17, 51, 59.918914}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -605,8 +647,8 @@ representation: x and y may have heads LorentzIndex or Momentum. If both x \
 and y have head LorentzIndex, the metric tensor is understood. If x and y \
 have head Momentum, a scalar product is meant. If one of x and y has head \
 LorentzIndex and the other Momentum, a Lorentz vector p^\\[Mu] is \
-understood.", "synonyms" -> {}, "title" -> "Pair", "titlemodifier" -> "", 
-    "windowtitle" -> "Pair", "type" -> "Symbol", "uri" -> 
+understood.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Pair", 
+    "titlemodifier" -> "", "windowtitle" -> "Pair", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Pair"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -627,213 +669,191 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3709, 103, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5168, 142, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1751102170]},
+   CellID->1079880710]},
  "Pair"->{
-  Cell[4320, 130, 105, 2, 32, "Text",
-   CellTags->"Pair",
-   CellID->1660838641],
-  Cell[4450, 136, 236, 7, 27, "Input",
+  Cell[5869, 173, 236, 7, 27, "Input",
    CellTags->"Pair",
    CellID->1043747934],
-  Cell[4689, 145, 514, 22, 40, "Output",
-   CellTags->"Pair",
-   CellID->1133543032],
-  Cell[5218, 170, 94, 2, 31, "Text",
-   CellTags->"Pair",
-   CellID->1732482457],
-  Cell[5337, 176, 286, 9, 27, "Input",
+  Cell[6108, 182, 413, 17, 39, "Output",
+   CellTags->"Pair"],
+  Cell[6615, 206, 286, 9, 27, "Input",
    CellTags->"Pair",
    CellID->1359804749],
-  Cell[5626, 187, 489, 21, 40, "Output",
-   CellTags->"Pair",
-   CellID->395860998],
-  Cell[6152, 213, 225, 7, 27, "Input",
-   CellTags->"Pair",
-   CellID->958079821],
-  Cell[6380, 222, 440, 19, 40, "Output",
-   CellTags->"Pair",
-   CellID->53465480],
-  Cell[6857, 246, 215, 7, 27, "Input",
-   CellTags->"Pair",
-   CellID->1770091706],
-  Cell[7075, 255, 476, 20, 38, "Output",
-   CellTags->"Pair",
-   CellID->2098206398],
-  Cell[7588, 280, 214, 7, 27, "Input",
-   CellTags->"Pair",
-   CellID->227830423],
-  Cell[7805, 289, 326, 13, 41, "Output",
-   CellTags->"Pair",
-   CellID->212297594],
-  Cell[8168, 307, 238, 8, 27, "Input",
-   CellTags->"Pair",
-   CellID->25203155],
-  Cell[8409, 317, 664, 28, 38, "Output",
-   CellTags->"Pair",
-   CellID->1189007863],
-  Cell[9110, 350, 241, 8, 27, "Input",
-   CellTags->"Pair",
-   CellID->1431519685],
-  Cell[9354, 360, 326, 13, 41, "Output",
-   CellTags->"Pair",
-   CellID->966009047],
-  Cell[9717, 378, 240, 8, 27, "Input",
-   CellTags->"Pair",
-   CellID->721851127],
-  Cell[9960, 388, 327, 13, 41, "Output",
-   CellTags->"Pair",
-   CellID->1932921647],
-  Cell[10324, 406, 326, 11, 27, "Input",
+  Cell[6904, 217, 389, 16, 39, "Output",
+   CellTags->"Pair"],
+  Cell[7497, 243, 287, 9, 27, "Input",
    CellTags->"Pair",
    CellID->1343625376],
-  Cell[10653, 419, 206, 7, 36, "Output",
+  Cell[7787, 254, 185, 6, 35, "Output",
+   CellTags->"Pair"],
+  Cell[8059, 267, 225, 7, 27, "Input",
    CellTags->"Pair",
-   CellID->1776583038],
-  Cell[10896, 431, 290, 9, 27, "Input",
+   CellID->958079821],
+  Cell[8287, 276, 383, 16, 37, "Output",
+   CellTags->"Pair"],
+  Cell[8757, 299, 275, 9, 27, "Input",
+   CellTags->"Pair",
+   CellID->106742008],
+  Cell[9035, 310, 356, 15, 37, "Output",
+   CellTags->"Pair"],
+  Cell[9496, 332, 215, 7, 27, "Input",
+   CellTags->"Pair",
+   CellID->1770091706],
+  Cell[9714, 341, 455, 19, 37, "Output",
+   CellTags->"Pair"],
+  Cell[10206, 365, 214, 7, 27, "Input",
+   CellTags->"Pair",
+   CellID->227830423],
+  Cell[10423, 374, 306, 12, 39, "Output",
+   CellTags->"Pair"],
+  Cell[10766, 391, 238, 8, 27, "Input",
+   CellTags->"Pair",
+   CellID->25203155],
+  Cell[11007, 401, 686, 29, 37, "Output",
+   CellTags->"Pair"],
+  Cell[11730, 435, 241, 8, 27, "Input",
+   CellTags->"Pair",
+   CellID->1431519685],
+  Cell[11974, 445, 306, 12, 39, "Output",
+   CellTags->"Pair"],
+  Cell[12317, 462, 241, 8, 27, "Input",
+   CellTags->"Pair",
+   CellID->721851127],
+  Cell[12561, 472, 307, 12, 39, "Output",
+   CellTags->"Pair"],
+  Cell[12905, 489, 290, 9, 27, "Input",
    CellTags->"Pair",
    CellID->294431519],
-  Cell[11189, 442, 640, 27, 41, "Output",
-   CellTags->"Pair",
-   CellID->1562380290],
-  Cell[11866, 474, 402, 13, 27, "Input",
+  Cell[13198, 500, 619, 26, 39, "Output",
+   CellTags->"Pair"],
+  Cell[13854, 531, 402, 13, 27, "Input",
    CellTags->"Pair",
    CellID->1586756083],
-  Cell[12271, 489, 206, 7, 36, "Output",
-   CellTags->"Pair",
-   CellID->824407583],
-  Cell[12845, 519, 1430, 57, 31, "Text",
-   CellTags->"Pair",
-   CellID->1831653521]}
+  Cell[14259, 546, 186, 6, 35, "Output",
+   CellTags->"Pair"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16405, 628},
- {"Pair", 16537, 632}
+ {"PrimaryExamplesSection", 17993, 670},
+ {"Pair", 18125, 674}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
+Cell[576, 21, 3454, 81, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2808, 75, 47, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2858, 78, 826, 21, 127, "Usage",
+Cell[4033, 104, 281, 11, 44, "ObjectNameGrid"],
+Cell[4317, 117, 826, 21, 132, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3709, 103, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5168, 142, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1751102170],
+ CellID->1079880710],
 Cell[CellGroupData[{
-Cell[4122, 122, 195, 6, 25, "ExampleSection",
- CellID->431213674],
-Cell[4320, 130, 105, 2, 32, "Text",
- CellTags->"Pair",
- CellID->1660838641],
+Cell[5581, 161, 195, 6, 25, "ExampleSection",
+ CellID->378955684],
+Cell[5779, 169, 65, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[4450, 136, 236, 7, 27, "Input",
+Cell[5869, 173, 236, 7, 27, "Input",
  CellTags->"Pair",
  CellID->1043747934],
-Cell[4689, 145, 514, 22, 40, "Output",
- CellTags->"Pair",
- CellID->1133543032]
+Cell[6108, 182, 413, 17, 39, "Output",
+ CellTags->"Pair"]
 }, Open  ]],
-Cell[5218, 170, 94, 2, 31, "Text",
- CellTags->"Pair",
- CellID->1732482457],
+Cell[6536, 202, 54, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[5337, 176, 286, 9, 27, "Input",
+Cell[6615, 206, 286, 9, 27, "Input",
  CellTags->"Pair",
  CellID->1359804749],
-Cell[5626, 187, 489, 21, 40, "Output",
- CellTags->"Pair",
- CellID->395860998]
+Cell[6904, 217, 389, 16, 39, "Output",
+ CellTags->"Pair"]
 }, Open  ]],
+Cell[7308, 236, 164, 3, 47, "Notes"],
 Cell[CellGroupData[{
-Cell[6152, 213, 225, 7, 27, "Input",
- CellTags->"Pair",
- CellID->958079821],
-Cell[6380, 222, 440, 19, 40, "Output",
- CellTags->"Pair",
- CellID->53465480]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6857, 246, 215, 7, 27, "Input",
- CellTags->"Pair",
- CellID->1770091706],
-Cell[7075, 255, 476, 20, 38, "Output",
- CellTags->"Pair",
- CellID->2098206398]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7588, 280, 214, 7, 27, "Input",
- CellTags->"Pair",
- CellID->227830423],
-Cell[7805, 289, 326, 13, 41, "Output",
- CellTags->"Pair",
- CellID->212297594]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8168, 307, 238, 8, 27, "Input",
- CellTags->"Pair",
- CellID->25203155],
-Cell[8409, 317, 664, 28, 38, "Output",
- CellTags->"Pair",
- CellID->1189007863]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9110, 350, 241, 8, 27, "Input",
- CellTags->"Pair",
- CellID->1431519685],
-Cell[9354, 360, 326, 13, 41, "Output",
- CellTags->"Pair",
- CellID->966009047]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9717, 378, 240, 8, 27, "Input",
- CellTags->"Pair",
- CellID->721851127],
-Cell[9960, 388, 327, 13, 41, "Output",
- CellTags->"Pair",
- CellID->1932921647]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10324, 406, 326, 11, 27, "Input",
+Cell[7497, 243, 287, 9, 27, "Input",
  CellTags->"Pair",
  CellID->1343625376],
-Cell[10653, 419, 206, 7, 36, "Output",
+Cell[7787, 254, 185, 6, 35, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[7987, 263, 47, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[8059, 267, 225, 7, 27, "Input",
  CellTags->"Pair",
- CellID->1776583038]
+ CellID->958079821],
+Cell[8287, 276, 383, 16, 37, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[8685, 295, 47, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[8757, 299, 275, 9, 27, "Input",
+ CellTags->"Pair",
+ CellID->106742008],
+Cell[9035, 310, 356, 15, 37, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[9406, 328, 65, 0, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[9496, 332, 215, 7, 27, "Input",
+ CellTags->"Pair",
+ CellID->1770091706],
+Cell[9714, 341, 455, 19, 37, "Output",
+ CellTags->"Pair"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10896, 431, 290, 9, 27, "Input",
+Cell[10206, 365, 214, 7, 27, "Input",
+ CellTags->"Pair",
+ CellID->227830423],
+Cell[10423, 374, 306, 12, 39, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10766, 391, 238, 8, 27, "Input",
+ CellTags->"Pair",
+ CellID->25203155],
+Cell[11007, 401, 686, 29, 37, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11730, 435, 241, 8, 27, "Input",
+ CellTags->"Pair",
+ CellID->1431519685],
+Cell[11974, 445, 306, 12, 39, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12317, 462, 241, 8, 27, "Input",
+ CellTags->"Pair",
+ CellID->721851127],
+Cell[12561, 472, 307, 12, 39, "Output",
+ CellTags->"Pair"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12905, 489, 290, 9, 27, "Input",
  CellTags->"Pair",
  CellID->294431519],
-Cell[11189, 442, 640, 27, 41, "Output",
- CellTags->"Pair",
- CellID->1562380290]
+Cell[13198, 500, 619, 26, 39, "Output",
+ CellTags->"Pair"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11866, 474, 402, 13, 27, "Input",
+Cell[13854, 531, 402, 13, 27, "Input",
  CellTags->"Pair",
  CellID->1586756083],
-Cell[12271, 489, 206, 7, 36, "Output",
- CellTags->"Pair",
- CellID->824407583]
+Cell[14259, 546, 186, 6, 35, "Output",
+ CellTags->"Pair"]
 }, Open  ]]
 }, Open  ]],
-Cell[12504, 500, 31, 0, 29, "SectionFooterSpacer"]
+Cell[14472, 556, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12572, 505, 270, 12, 31, "SeeAlsoSection",
+Cell[14540, 561, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12845, 519, 1430, 57, 31, "Text",
- CellTags->"Pair",
- CellID->1831653521]
+Cell[14813, 575, 1057, 43, 55, "SeeAlso"]
 }, Open  ]],
-Cell[14290, 579, 23, 0, 42, "FooterCell"]
+Cell[15885, 621, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

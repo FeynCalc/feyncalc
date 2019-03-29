@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8036,        249]
-NotebookOptionsPosition[      5110,        159]
-NotebookOutlinePosition[      7439,        225]
-CellTagsIndexPosition[      7333,        219]
+NotebookDataLength[      8282,        259]
+NotebookOptionsPosition[      5373,        170]
+NotebookOutlinePosition[      7698,        236]
+CellTagsIndexPosition[      7592,        230]
 WindowTitle->$FCS
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168169], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$301459], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$FCS", 
             ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["$FCS", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["$FCS", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,7 +118,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->275219115],
+ CellID->1131675587],
 
 Cell[TextData[{
  "Basic Examples",
@@ -115,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->318828667],
+ CellID->314892807],
 
 Cell[CellGroupData[{
 
@@ -145,7 +156,7 @@ Cell[BoxData[
     ",", "\<\"SDF\"\>", ",", "\<\"SOD\"\>", ",", "\<\"SP\"\>", 
     ",", "\<\"SPC\"\>", ",", "\<\"SPD\"\>", ",", "\<\"SPE\"\>", 
     ",", "\<\"SPL\"\>"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{412, 54},
+ ImageSize->{435, 53},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"$FCS",
@@ -169,19 +180,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 3.627449}", 
+   "built" -> "{2019, 3, 29, 17, 55, 43.872824}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "$FCS is a list of functions with a short name. E.g. GA[nu] can be used \
-instead of DiracGamma[nu].", "synonyms" -> {}, "title" -> "$FCS", 
-    "titlemodifier" -> "", "windowtitle" -> "$FCS", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/$FCS"}, "SearchTextTranslated" -> ""},
+instead of DiracGamma[nu].", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "$FCS", "titlemodifier" -> "", "windowtitle" -> "$FCS", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/$FCS"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -201,56 +212,55 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3284, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3546, 105, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->275219115]},
+   CellID->1131675587]},
  "$FCS"->{
-  Cell[3894, 121, 73, 2, 35, "Subsubsection",
+  Cell[4157, 132, 73, 2, 35, "Subsubsection",
    CellTags->"$FCS",
    CellID->1728378026],
-  Cell[3992, 127, 92, 3, 27, "Input",
+  Cell[4255, 138, 92, 3, 27, "Input",
    CellTags->"$FCS",
    CellID->376757099],
-  Cell[4087, 132, 957, 20, 75, "Output",
+  Cell[4350, 143, 957, 20, 74, "Output",
    CellTags->"$FCS",
    CellID->194077646]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6921, 202},
- {"$FCS", 7051, 206}
+ {"PrimaryExamplesSection", 7178, 213},
+ {"$FCS", 7310, 217}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
+Cell[576, 21, 2257, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2808, 75, 47, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2858, 78, 401, 12, 83, "Usage",
+Cell[2836, 76, 281, 11, 44, "ObjectNameGrid"],
+Cell[3120, 89, 401, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3284, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3546, 105, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->275219115],
-Cell[3674, 111, 195, 6, 25, "ExampleSection",
- CellID->318828667],
+ CellID->1131675587],
+Cell[3937, 122, 195, 6, 25, "ExampleSection",
+ CellID->314892807],
 Cell[CellGroupData[{
-Cell[3894, 121, 73, 2, 35, "Subsubsection",
+Cell[4157, 132, 73, 2, 35, "Subsubsection",
  CellTags->"$FCS",
  CellID->1728378026],
 Cell[CellGroupData[{
-Cell[3992, 127, 92, 3, 27, "Input",
+Cell[4255, 138, 92, 3, 27, "Input",
  CellTags->"$FCS",
  CellID->376757099],
-Cell[4087, 132, 957, 20, 75, "Output",
+Cell[4350, 143, 957, 20, 74, "Output",
  CellTags->"$FCS",
  CellID->194077646]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5083, 157, 23, 0, 42, "FooterCell"]
+Cell[5346, 168, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -10,62 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11346,        395]
-NotebookOptionsPosition[      7336,        271]
-NotebookOutlinePosition[     10169,        350]
-CellTagsIndexPosition[     10056,        344]
+NotebookDataLength[     12517,        435]
+NotebookOptionsPosition[      8900,        326]
+NotebookOutlinePosition[     11422,        395]
+CellTagsIndexPosition[     11307,        389]
 WindowTitle->EpsContract
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/EpsContract\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/EpsContract"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Eps\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Eps"], "\<\"Contract\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Contract"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/EpsContract\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/EpsContract"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 EpsContract.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49048], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/EpsContract", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$79163], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/EpsContract", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,16 +97,26 @@ EpsContract.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["EpsContract", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["EpsContract", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData["EpsContract"], "InlineFormula"],
-     " \[LineSeparator]",
-     "is an option of Contract specifying whether Levi-Civita tensors \
-Eps[...] will be contracted, i.e., products of two  Eps are replaced via the \
-determinant formula."
+     Cell[BoxData[
+      RowBox[{"EpsContract", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]handles contractions of two Levi-Civita tensors. It is \
+also an option of Contract and other functions that specifies whether such \
+contractions should be done or not."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -108,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1783233241],
+ CellID->428588165],
 
 Cell[CellGroupData[{
 
@@ -118,29 +152,20 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1533026957],
+ CellID->606771224],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", " ", "=", 
-  RowBox[{"Eps", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]}]], "Input",
- CellTags->"EpsContract",
- CellLabel->"In[1]:=",
- CellID->1863867389],
+ RowBox[{"LCD", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:="],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -158,12 +183,63 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{54, 18},
+ ImageSize->{50, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EpsContract", "[", 
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"2", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
+ ImageSize->{183, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Contract", "[", 
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
+ CellTags->"EpsContract",
+ CellLabel->"In[3]:=",
+ CellID->1929247061],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"2", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"3", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox["D", "2"]}], TraditionalForm]], "Output",
+ ImageSize->{215, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"EpsContract",
- CellLabel->"Out[1]=",
- CellID->1306724827]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,17 +247,21 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{
-   RowBox[{"a1", " ", "a1"}], ",", 
+   RowBox[{
+    RowBox[{"LCD", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+    "^", "2"}], ",", 
    RowBox[{"EpsContract", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"EpsContract",
- CellLabel->"In[2]:=",
- CellID->1929247061],
+ CellLabel->"In[4]:=",
+ CellID->903937612],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox[
    RowBox[{"(", 
-    SuperscriptBox["\[Epsilon]", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
      RowBox[{
       FormBox[
        FormBox["\[Mu]",
@@ -199,34 +279,11 @@ Cell[BoxData[
        FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]], ")"}], "2"], TraditionalForm]], "Output",
- ImageSize->{75, 21},
+ ImageSize->{71, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"EpsContract",
- CellLabel->"Out[2]=",
- CellID->1644037415]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Contract", "[", 
-  RowBox[{
-   RowBox[{"a1", " ", "a1"}], ",", 
-   RowBox[{"EpsContract", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"EpsContract",
- CellLabel->"In[3]:=",
- CellID->903937612],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"-", "24"}], TraditionalForm]], "Output",
- ImageSize->{30, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"EpsContract",
- CellLabel->"Out[3]=",
- CellID->848962305]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -262,9 +319,7 @@ Cell[TextData[{
   ButtonNote->"Contract"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"EpsContract",
- CellID->1380465394]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -281,20 +336,21 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 28.981206}", 
+   "built" -> "{2019, 3, 29, 17, 47, 15.736081}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "EpsContract is an option of Contract specifying whether Levi-Civita \
-tensors Eps[...] will be contracted, i.e., products of two Eps are replaced \
-via the determinant formula.", "synonyms" -> {}, "title" -> "EpsContract", 
-    "titlemodifier" -> "", "windowtitle" -> "EpsContract", "type" -> "Symbol",
-     "uri" -> "FeynCalc/ref/EpsContract"}, "SearchTextTranslated" -> ""},
+    "EpsContract[exp] handles contractions of two Levi-Civita tensors. It is \
+also an option of Contract and other functions that specifies whether such \
+contractions should be done or not.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "EpsContract", "titlemodifier" -> "", "windowtitle" -> 
+    "EpsContract", "type" -> "Symbol", "uri" -> "FeynCalc/ref/EpsContract"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -314,89 +370,73 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3404, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4517, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1783233241]},
+   CellID->428588165]},
  "EpsContract"->{
-  Cell[4038, 124, 487, 14, 45, "Input",
-   CellTags->"EpsContract",
-   CellID->1863867389],
-  Cell[4528, 140, 591, 25, 39, "Output",
-   CellTags->"EpsContract",
-   CellID->1306724827],
-  Cell[5156, 170, 224, 7, 27, "Input",
+  Cell[6439, 216, 185, 6, 27, "Input",
    CellTags->"EpsContract",
    CellID->1929247061],
-  Cell[5383, 179, 675, 27, 42, "Output",
-   CellTags->"EpsContract",
-   CellID->1644037415],
-  Cell[6095, 211, 222, 7, 27, "Input",
+  Cell[6627, 224, 489, 17, 39, "Output",
+   CellTags->"EpsContract"],
+  Cell[7153, 246, 324, 10, 27, "Input",
    CellTags->"EpsContract",
    CellID->903937612],
-  Cell[6320, 220, 231, 8, 36, "Output",
-   CellTags->"EpsContract",
-   CellID->848962305],
-  Cell[6919, 251, 375, 15, 32, "Text",
-   CellTags->"EpsContract",
-   CellID->1380465394]}
+  Cell[7480, 258, 679, 27, 39, "Output",
+   CellTags->"EpsContract"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9253, 315},
- {"EpsContract", 9391, 319}
+ {"PrimaryExamplesSection", 10823, 371},
+ {"EpsContract", 10961, 375}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+Cell[583, 21, 3107, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2843, 75, 54, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2900, 78, 479, 13, 98, "Usage",
+Cell[3693, 99, 288, 11, 44, "ObjectNameGrid"],
+Cell[3984, 112, 508, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3404, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4517, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1783233241],
+ CellID->428588165],
 Cell[CellGroupData[{
-Cell[3817, 114, 196, 6, 25, "ExampleSection",
- CellID->1533026957],
+Cell[4929, 148, 195, 6, 25, "ExampleSection",
+ CellID->606771224],
 Cell[CellGroupData[{
-Cell[4038, 124, 487, 14, 45, "Input",
- CellTags->"EpsContract",
- CellID->1863867389],
-Cell[4528, 140, 591, 25, 39, "Output",
- CellTags->"EpsContract",
- CellID->1306724827]
+Cell[5149, 158, 145, 4, 27, "Input"],
+Cell[5297, 164, 567, 24, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5156, 170, 224, 7, 27, "Input",
+Cell[5901, 193, 141, 4, 27, "Input"],
+Cell[6045, 199, 357, 12, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6439, 216, 185, 6, 27, "Input",
  CellTags->"EpsContract",
  CellID->1929247061],
-Cell[5383, 179, 675, 27, 42, "Output",
- CellTags->"EpsContract",
- CellID->1644037415]
+Cell[6627, 224, 489, 17, 39, "Output",
+ CellTags->"EpsContract"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6095, 211, 222, 7, 27, "Input",
+Cell[7153, 246, 324, 10, 27, "Input",
  CellTags->"EpsContract",
  CellID->903937612],
-Cell[6320, 220, 231, 8, 36, "Output",
- CellTags->"EpsContract",
- CellID->848962305]
+Cell[7480, 258, 679, 27, 39, "Output",
+ CellTags->"EpsContract"]
 }, Open  ]]
 }, Open  ]],
-Cell[6578, 232, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8186, 289, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6646, 237, 270, 12, 31, "SeeAlsoSection",
+Cell[8254, 294, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6919, 251, 375, 15, 32, "Text",
- CellTags->"EpsContract",
- CellID->1380465394]
+Cell[8527, 308, 331, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[7309, 269, 23, 0, 42, "FooterCell"]
+Cell[8873, 324, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

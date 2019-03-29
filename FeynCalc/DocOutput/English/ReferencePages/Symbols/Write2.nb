@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24443,        861]
-NotebookOptionsPosition[     16738,        598]
-NotebookOutlinePosition[     21405,        741]
-CellTagsIndexPosition[     21295,        735]
+NotebookDataLength[     23691,        821]
+NotebookOptionsPosition[     17790,        630]
+NotebookOutlinePosition[     21132,        728]
+CellTagsIndexPosition[     21022,        722]
 WindowTitle->Write2
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Write2\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Write2"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Write2.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Isolate\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Isolate"], "\<\"PaVeReduce\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/PaVeReduce"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Write2\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Write2"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Write2.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$164701], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Write2",
-             ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$294558], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Write2", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +96,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Write2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Write2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -84,10 +119,12 @@ Cell[BoxData[GridBox[{
         RowBox[{"val1", " ", "=", " ", "expr1"}], ",", " ", 
         RowBox[{"val2", " ", "=", " ", "expr2"}], ",", " ", "..."}], "]"}]], 
       "InlineFormula"],
-     " \[LineSeparator]",
-     "writes the settings val1 = expr1, val2 = expr2 in sequence followed by \
-a newline, to the specified output file. Setting the option FormatType of \
-Write2 to FortranForm results in FORTRAN syntax output."
+     " \[LineSeparator]writes the settings ",
+     Cell[BoxData[
+      RowBox[{
+       RowBox[{"val1", " ", "=", " ", "expr1"}], ",", " ", 
+       RowBox[{"val2", " ", "=", " ", "expr2"}]}]], "InlineFormula"],
+     " in sequence followed by a newline, to the specified output file."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -95,6 +132,81 @@ Write2 to FortranForm results in FORTRAN syntax output."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1249016513],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "Setting the option ",
+ Cell[BoxData["FormatType"], "InlineFormula"],
+ " of ",
+ ButtonBox["Write2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Write2",
+  ButtonNote->"Write2"],
+ " to ",
+ Cell[BoxData["FortranForm"], "InlineFormula"],
+ " results in Fortran syntax output."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Write2", "]"}]], "Input",
+ CellLabel->"In[150]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"D0Convention", "\[Rule]", "0"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"FormatType", "\[Rule]", "InputForm"}], ",", 
+    RowBox[{"FortranFormatDoublePrecision", "\[Rule]", "True"}], ",", 
+    RowBox[{"PageWidth", "\[Rule]", "62"}], ",", 
+    RowBox[{"PostFortranFile", "\[Rule]", 
+     RowBox[{"{", "\<\"\"\>", "}"}]}], ",", 
+    RowBox[{"PreFortranFile", "\[Rule]", 
+     RowBox[{"{", "\<\"\"\>", "}"}]}], ",", 
+    RowBox[{"Precision", "\[Rule]", "15"}], ",", 
+    RowBox[{"StringReplace", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{513, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[150]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -109,21 +221,21 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(2)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1897199636],
+ CellID->959533352],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(2)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1995411025],
+ CellID->2040215081],
 
 Cell[CellGroupData[{
 
@@ -141,62 +253,18 @@ Cell[BoxData[
     ShowStringCharacters->True,
     NumberMarks->True],
    FullForm], TraditionalForm]], "Output",
- ImageSize->{27, 15},
+ ImageSize->{26, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Write2",
- CellLabel->"Out[1]//FullForm=",
- CellID->296766764]
+ CellLabel->"Out[1]//FullForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Write2", "]"}]], "Input",
- CellTags->"Write2",
- CellLabel->"In[2]:=",
- CellID->2021664467],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"D0Convention", "\[Rule]", "0"}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"FormatType", "\[Rule]", "InputForm"}], ",", 
-    RowBox[{"FortranFormatDoublePrecision", "\[Rule]", "True"}], ",", 
-    RowBox[{"PageWidth", "\[Rule]", "62"}], ",", 
-    RowBox[{"PostFortranFile", "\[Rule]", "\<\"\"\>"}], ",", 
-    RowBox[{"PreFortranFile", "\[Rule]", "\<\"\"\>"}], ",", 
-    RowBox[{"StringReplace", "\[Rule]", 
-     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{465, 54},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Write2",
- CellLabel->"Out[2]=",
- CellID->426630983]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Attributes", "[", "Write2", "]"}]], "Input",
- CellTags->"Write2",
- CellLabel->"In[3]:=",
- CellID->653070552],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", "HoldRest", "}"}], TraditionalForm]], "Output",
- ImageSize->{76, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Write2",
- CellLabel->"Out[3]=",
- CellID->930779746]
-}, Open  ]],
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -215,7 +283,7 @@ Cell[BoxData[
          RowBox[{"a", "-", "b"}], ")"}], "2"]}], ")"}], "2"], ",", "a", ",", 
     "Factor"}], "]"}]}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[1]:=",
  CellID->568187661],
 
 Cell[BoxData[
@@ -246,13 +314,14 @@ Cell[BoxData[
      RowBox[{
       SuperscriptBox["b", "2"], "+", 
       SuperscriptBox["c", "2"]}], ")"}], "2"]}], TraditionalForm]], "Output",
- ImageSize->{495, 21},
+ ImageSize->{516, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Write2",
- CellLabel->"Out[4]=",
- CellID->1801200835]
+ CellLabel->"Out[1]="]
 }, Open  ]],
+
+Cell["This writes the assignment r=t to a file.", "Notes"],
 
 Cell[BoxData[
  RowBox[{
@@ -261,25 +330,17 @@ Cell[BoxData[
     RowBox[{"ToString", "[", "$SessionID", "]"}], "<>", "\"\<.s\>\""}]}], 
   ";"}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[5]:=",
+ CellLabel->"In[2]:=",
  CellID->158339237],
-
-Cell["This writes the assignment r=t to a file.", "Text",
- CellTags->"Write2",
- CellID->956230713],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Write2", "[", 
    RowBox[{"tempfilename", ",", 
     RowBox[{"r", "=", "t"}]}], "]"}], ";"}]], "Input",
- CellTags->"Write2",
- CellLabel->"In[6]:=",
- CellID->1599031587],
+ CellLabel->"In[3]:="],
 
-Cell["This shows the contents of the file.", "Text",
- CellTags->"Write2",
- CellID->304283335],
+Cell["This shows the contents of the file.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -293,17 +354,14 @@ Cell[BoxData[
        RowBox[{"$OperatingSystem", "===", "\"\<MacOS\>\""}], ",", "\"\<:\>\"",
         ",", "\"\<\>\""}], "]"}], "<>", "tempfilename"}], ",", "String"}], 
    "]"}], "]"}]], "Input",
- CellTags->"Write2",
- CellLabel->"In[7]:=",
- CellID->1505586368],
+ CellLabel->"In[4]:="],
 
 Cell[BoxData[
  FormBox[
   TagBox[
    TagBox[GridBox[{
-      {"\<\"r = ( 4*a^4 - 8*a^3*(b + c) - 4*a*(b + c)*(b^2 + c^2) + (b^2 + \
-c^2)^2 + \"\>"},
-      {"\<\" 8*a^2*(b^2 + b*c + c^2)\"\>"},
+      {"\<\"r = ( 4*a^4 - 8*a^3*(b + c) - 4*a*(b + c)*(b^2 + c^2) + \"\>"},
+      {"\<\" (b^2 + c^2)^2 + 8*a^2*(b^2 + b*c + c^2)\"\>"},
       {"\<\"       );\"\>"}
      },
      GridBoxAlignment->{
@@ -319,12 +377,10 @@ c^2)^2 + \"\>"},
     Column],
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
- ImageSize->{497, 51},
+ ImageSize->{385, 50},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Write2",
- CellLabel->"Out[7]//TableForm=",
- CellID->432817826]
+ CellLabel->"Out[4]//TableForm="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -334,9 +390,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"$OperatingSystem", "===", "\"\<MacOS\>\""}], ",", "\"\<:\>\"", 
      ",", "\"\<\>\""}], "]"}], "<>", "tempfilename"}], "]"}]], "Input",
- CellTags->"Write2",
- CellLabel->"In[8]:=",
- CellID->62208628],
+ CellLabel->"In[5]:="],
 
 Cell[CellGroupData[{
 
@@ -347,7 +401,7 @@ Cell[BoxData[
     RowBox[{"t", ",", "a", ",", 
      RowBox[{"IsolateNames", "\[Rule]", "w"}]}], "]"}]}]}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[9]:=",
+ CellLabel->"In[6]:=",
  CellID->170691261],
 
 Cell[BoxData[
@@ -358,30 +412,29 @@ Cell[BoxData[
    RowBox[{"8", " ", 
     SuperscriptBox["a", "3"], " ", 
     TagBox[
-     RowBox[{"w", "(", "1423", ")"}],
+     RowBox[{"w", "(", "24", ")"}],
      HoldForm]}], "+", 
    RowBox[{"8", " ", 
     SuperscriptBox["a", "2"], " ", 
     TagBox[
-     RowBox[{"w", "(", "1425", ")"}],
+     RowBox[{"w", "(", "26", ")"}],
      HoldForm]}], "-", 
    RowBox[{"4", " ", "a", " ", 
     TagBox[
-     RowBox[{"w", "(", "1423", ")"}],
+     RowBox[{"w", "(", "24", ")"}],
      HoldForm], " ", 
     TagBox[
-     RowBox[{"w", "(", "1424", ")"}],
+     RowBox[{"w", "(", "25", ")"}],
      HoldForm]}], "+", 
    SuperscriptBox[
     TagBox[
-     RowBox[{"w", "(", "1424", ")"}],
+     RowBox[{"w", "(", "25", ")"}],
      HoldForm], "2"], "+", "x"}], TraditionalForm]], "Output",
- ImageSize->{475, 18},
+ ImageSize->{429, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Write2",
- CellLabel->"Out[9]=",
- CellID->1764933631]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -390,7 +443,7 @@ Cell[BoxData[
    RowBox[{"tempfilename", ",", 
     RowBox[{"r", "=", "t2"}]}], "]"}], ";"}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[10]:=",
+ CellLabel->"In[7]:=",
  CellID->2074608494],
 
 Cell[CellGroupData[{
@@ -406,23 +459,23 @@ Cell[BoxData[
         ",", "\"\<\>\""}], "]"}], "<>", "tempfilename"}], ",", "String"}], 
    "]"}], "]"}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[11]:=",
+ CellLabel->"In[8]:=",
  CellID->1647925835],
 
 Cell[BoxData[
  FormBox[
   TagBox[
    TagBox[GridBox[{
-      {"\<\"w[1423] = (b + c\"\>"},
+      {"\<\"w[24] = (b + c\"\>"},
       {"\<\"       );\"\>"},
-      {"\<\"w[1424] = (b^2 + c^2\"\>"},
+      {"\<\"w[25] = (b^2 + c^2\"\>"},
       {"\<\"       );\"\>"},
-      {"\<\"w[1425] = (b^2 + b*c + c^2\"\>"},
+      {"\<\"w[26] = (b^2 + b*c + c^2\"\>"},
       {"\<\"       );\"\>"},
-      {"\<\"r = ( 4*a^4 + x - 8*a^3*HoldForm[w[1423]] - \
-4*a*HoldForm[w[1423]]*\"\>"},
-      {"\<\"  HoldForm[w[1424]] + HoldForm[w[1424]]^2 + \
-8*a^2*HoldForm[w[1425]]\"\>"},
+      {"\<\"r = ( 4*a^4 + x - 8*a^3*HoldForm[w[24]] - \
+4*a*HoldForm[w[24]]*\"\>"},
+      {"\<\"  HoldForm[w[25]] + HoldForm[w[25]]^2 + \
+8*a^2*HoldForm[w[26]]\"\>"},
       {"\<\"       );\"\>"}
      },
      GridBoxAlignment->{
@@ -438,12 +491,11 @@ Cell[BoxData[
     Column],
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
- ImageSize->{496, 159},
+ ImageSize->{440, 155},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Write2",
- CellLabel->"Out[11]//TableForm=",
- CellID->342974912]
+ CellLabel->"Out[8]//TableForm="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -454,16 +506,14 @@ Cell[BoxData[
      RowBox[{"$OperatingSystem", "===", "\"\<MacOS\>\""}], ",", "\"\<:\>\"", 
      ",", "\"\<\>\""}], "]"}], "<>", "tempfilename"}], "]"}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[12]:=",
+ CellLabel->"In[9]:=",
  CellID->1908725708],
 
-Cell["\<\
-This is how to write out the expression t2 in Fortran format.\
-\>", "Text",
- CellTags->"Write2",
- CellID->422363964],
-
-Cell[CellGroupData[{
+Cell[TextData[{
+ "This is how to write out the expression ",
+ Cell[BoxData["t2"], "InlineFormula"],
+ " in Fortran format."
+}], "Notes"],
 
 Cell[BoxData[
  RowBox[{
@@ -473,23 +523,8 @@ Cell[BoxData[
     RowBox[{"FormatType", "\[Rule]", "FortranForm"}]}], "]"}], ";"}]], "Input",\
 
  CellTags->"Write2",
- CellLabel->"In[13]:=",
+ CellLabel->"In[10]:=",
  CellID->1416932507],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "3", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "4"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 3, " and ", 4],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"Write2",
- CellLabel->"During evaluation of In[13]:=",
- CellID->1570874226]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -504,20 +539,19 @@ Cell[BoxData[
         ",", "\"\<\>\""}], "]"}], "<>", "tempfilename"}], ",", "String"}], 
    "]"}], "]"}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[14]:=",
+ CellLabel->"In[11]:=",
  CellID->2122464458],
 
 Cell[BoxData[
  FormBox[
   TagBox[
    TagBox[GridBox[{
-      {"\<\"        w(1423)= b + c\"\>"},
-      {"\<\"        w(1424)= b^2 + c^2\"\>"},
-      {"\<\"        w(1425)= b^2 + b*c + c^2\"\>"},
-      {"\<\"        r = 4.*a^4 + x - 8.*a^3*HoldForm[w[1423]] - \
-4.*a*HoldForm[w[1423]]*\"\>"},
-      {"\<\"  HoldForm[w[1424]] + HoldForm[w[1424]]^2 + \
-8.*a^2*HoldForm[w[1425]]\"\>"},
+      {"\<\"        w(24)= b + c\"\>"},
+      {"\<\"        w(25)= b**2 + c**2\"\>"},
+      {"\<\"        w(26)= b**2 + b*c + c**2\"\>"},
+      {"\<\"        r = x + a**4*4D0 - a**3*8D0*w(24) - a*4D0*w(24)*w(25) + \
+\"\>"},
+      {"\<\"     &  w(25)**2 + a**2*8D0*w(26)\"\>"},
       {"\<\"                  \"\>"}
      },
      GridBoxAlignment->{
@@ -533,12 +567,11 @@ Cell[BoxData[
     Column],
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
- ImageSize->{508, 105},
+ ImageSize->{447, 104},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Write2",
- CellLabel->"Out[14]//TableForm=",
- CellID->1300360264]
+ CellLabel->"Out[11]//TableForm="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -553,8 +586,9 @@ Cell[BoxData[
    RowBox[{"w", ",", "t", ",", "t2", ",", "r", ",", "tempfilename"}], "]"}], 
   ";"}]], "Input",
  CellTags->"Write2",
- CellLabel->"In[15]:=",
+ CellLabel->"In[12]:=",
  CellID->1809491647]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
@@ -589,9 +623,7 @@ Cell[TextData[{
   ButtonNote->"PaVeReduce"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Write2",
- CellID->1387459580]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -608,10 +640,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 48.718211}", 
+   "built" -> "{2019, 3, 29, 17, 55, 26.542976}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -619,8 +651,7 @@ TaggingRules->{
     "None", "summary" -> 
     "Write2[file, val1 = expr1, val2 = expr2, ...] writes the settings val1 = \
 expr1, val2 = expr2 in sequence followed by a newline, to the specified \
-output file. Setting the option FormatType of Write2 to FortranForm results \
-in FORTRAN syntax output.", "synonyms" -> {}, "title" -> "Write2", 
+output file.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Write2", 
     "titlemodifier" -> "", "windowtitle" -> "Write2", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Write2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
@@ -642,227 +673,156 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3607, 100, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6880, 212, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1897199636]},
+   CellID->959533352]},
  "Write2"->{
-  Cell[4241, 129, 154, 4, 27, "Input",
+  Cell[7513, 241, 154, 4, 27, "Input",
    CellTags->"Write2",
    CellID->1324211307],
-  Cell[4398, 135, 352, 13, 49, "Output",
-   CellTags->"Write2",
-   CellID->296766764],
-  Cell[4787, 153, 130, 4, 27, "Input",
-   CellTags->"Write2",
-   CellID->2021664467],
-  Cell[4920, 159, 742, 19, 75, "Output",
-   CellTags->"Write2",
-   CellID->426630983],
-  Cell[5699, 183, 132, 4, 27, "Input",
-   CellTags->"Write2",
-   CellID->653070552],
-  Cell[5834, 189, 237, 8, 36, "Output",
-   CellTags->"Write2",
-   CellID->930779746],
-  Cell[6108, 202, 446, 16, 33, "Input",
+  Cell[7670, 247, 332, 12, 48, "Output",
+   CellTags->"Write2"],
+  Cell[8169, 270, 446, 16, 33, "Input",
    CellTags->"Write2",
    CellID->568187661],
-  Cell[6557, 220, 961, 33, 42, "Output",
-   CellTags->"Write2",
-   CellID->1801200835],
-  Cell[7533, 256, 225, 8, 27, "Input",
+  Cell[8618, 288, 940, 32, 41, "Output",
+   CellTags->"Write2"],
+  Cell[9634, 325, 225, 8, 27, "Input",
    CellTags->"Write2",
    CellID->158339237],
-  Cell[7761, 266, 98, 2, 32, "Text",
-   CellTags->"Write2",
-   CellID->956230713],
-  Cell[7862, 270, 202, 7, 27, "Input",
-   CellTags->"Write2",
-   CellID->1599031587],
-  Cell[8067, 279, 93, 2, 31, "Text",
-   CellTags->"Write2",
-   CellID->304283335],
-  Cell[8185, 285, 381, 12, 45, "Input",
-   CellTags->"Write2",
-   CellID->1505586368],
-  Cell[8569, 299, 908, 27, 85, "Output",
-   CellTags->"Write2",
-   CellID->432817826],
-  Cell[9492, 329, 302, 9, 27, "Input",
-   CellTags->"Write2",
-   CellID->62208628],
-  Cell[9819, 342, 250, 8, 27, "Input",
+  Cell[11612, 396, 250, 8, 27, "Input",
    CellTags->"Write2",
    CellID->170691261],
-  Cell[10072, 352, 821, 31, 39, "Output",
-   CellTags->"Write2",
-   CellID->1764933631],
-  Cell[10908, 386, 204, 7, 27, "Input",
+  Cell[11865, 406, 790, 30, 39, "Output",
+   CellTags->"Write2"],
+  Cell[12670, 439, 203, 7, 27, "Input",
    CellTags->"Write2",
    CellID->2074608494],
-  Cell[11137, 397, 382, 12, 45, "Input",
+  Cell[12898, 450, 381, 12, 45, "Input",
    CellTags->"Write2",
    CellID->1647925835],
-  Cell[11522, 411, 1158, 34, 193, "Output",
-   CellTags->"Write2",
-   CellID->342974912],
-  Cell[12695, 448, 305, 9, 27, "Input",
+  Cell[13282, 464, 1121, 33, 189, "Output",
+   CellTags->"Write2"],
+  Cell[14418, 500, 304, 9, 27, "Input",
    CellTags->"Write2",
    CellID->1908725708],
-  Cell[13003, 459, 126, 4, 32, "Text",
-   CellTags->"Write2",
-   CellID->422363964],
-  Cell[13154, 467, 266, 9, 27, "Input",
+  Cell[14863, 517, 266, 9, 27, "Input",
    CellTags->"Write2",
    CellID->1416932507],
-  Cell[13423, 478, 544, 12, 62, "Print",
-   CellTags->"Write2",
-   CellID->1570874226],
-  Cell[14004, 495, 382, 12, 45, "Input",
+  Cell[15154, 530, 382, 12, 45, "Input",
    CellTags->"Write2",
    CellID->2122464458],
-  Cell[14389, 509, 1109, 31, 139, "Output",
+  Cell[15539, 544, 1038, 29, 138, "Output",
+   CellTags->"Write2"],
+  Cell[16592, 576, 439, 13, 45, "Input",
    CellTags->"Write2",
-   CellID->1300360264],
-  Cell[15513, 543, 439, 13, 45, "Input",
-   CellTags->"Write2",
-   CellID->1809491647],
-  Cell[16308, 578, 388, 15, 31, "Text",
-   CellTags->"Write2",
-   CellID->1387459580]}
+   CellID->1809491647]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18711, 643},
- {"Write2", 18845, 647}
+ {"PrimaryExamplesSection", 19665, 674},
+ {"Write2", 19798, 678}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2237, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 3082, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2818, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2870, 78, 712, 18, 97, "Usage",
+Cell[3663, 98, 283, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3971, 113, 757, 20, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3607, 100, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4753, 137, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1249016513],
+Cell[5495, 163, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5529, 165, 314, 11, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[5868, 180, 90, 2, 27, "Input"],
+Cell[5961, 184, 858, 21, 75, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6880, 212, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1897199636],
+ CellID->959533352],
 Cell[CellGroupData[{
-Cell[4020, 119, 196, 6, 25, "ExampleSection",
- CellID->1995411025],
+Cell[7292, 231, 196, 6, 25, "ExampleSection",
+ CellID->2040215081],
 Cell[CellGroupData[{
-Cell[4241, 129, 154, 4, 27, "Input",
+Cell[7513, 241, 154, 4, 27, "Input",
  CellTags->"Write2",
  CellID->1324211307],
-Cell[4398, 135, 352, 13, 49, "Output",
- CellTags->"Write2",
- CellID->296766764]
+Cell[7670, 247, 332, 12, 48, "Output",
+ CellTags->"Write2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4787, 153, 130, 4, 27, "Input",
- CellTags->"Write2",
- CellID->2021664467],
-Cell[4920, 159, 742, 19, 75, "Output",
- CellTags->"Write2",
- CellID->426630983]
-}, Open  ]],
+Cell[8039, 264, 105, 2, 8, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[5699, 183, 132, 4, 27, "Input",
- CellTags->"Write2",
- CellID->653070552],
-Cell[5834, 189, 237, 8, 36, "Output",
- CellTags->"Write2",
- CellID->930779746]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6108, 202, 446, 16, 33, "Input",
+Cell[8169, 270, 446, 16, 33, "Input",
  CellTags->"Write2",
  CellID->568187661],
-Cell[6557, 220, 961, 33, 42, "Output",
- CellTags->"Write2",
- CellID->1801200835]
+Cell[8618, 288, 940, 32, 41, "Output",
+ CellTags->"Write2"]
 }, Open  ]],
-Cell[7533, 256, 225, 8, 27, "Input",
+Cell[9573, 323, 58, 0, 31, "Notes"],
+Cell[9634, 325, 225, 8, 27, "Input",
  CellTags->"Write2",
  CellID->158339237],
-Cell[7761, 266, 98, 2, 32, "Text",
- CellTags->"Write2",
- CellID->956230713],
-Cell[7862, 270, 202, 7, 27, "Input",
- CellTags->"Write2",
- CellID->1599031587],
-Cell[8067, 279, 93, 2, 31, "Text",
- CellTags->"Write2",
- CellID->304283335],
+Cell[9862, 335, 160, 5, 27, "Input"],
+Cell[10025, 342, 53, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[8185, 285, 381, 12, 45, "Input",
- CellTags->"Write2",
- CellID->1505586368],
-Cell[8569, 299, 908, 27, 85, "Output",
- CellTags->"Write2",
- CellID->432817826]
+Cell[10103, 346, 339, 10, 45, "Input"],
+Cell[10445, 358, 865, 24, 84, "Output"]
 }, Open  ]],
-Cell[9492, 329, 302, 9, 27, "Input",
- CellTags->"Write2",
- CellID->62208628],
+Cell[11325, 385, 262, 7, 27, "Input"],
 Cell[CellGroupData[{
-Cell[9819, 342, 250, 8, 27, "Input",
+Cell[11612, 396, 250, 8, 27, "Input",
  CellTags->"Write2",
  CellID->170691261],
-Cell[10072, 352, 821, 31, 39, "Output",
- CellTags->"Write2",
- CellID->1764933631]
+Cell[11865, 406, 790, 30, 39, "Output",
+ CellTags->"Write2"]
 }, Open  ]],
-Cell[10908, 386, 204, 7, 27, "Input",
+Cell[12670, 439, 203, 7, 27, "Input",
  CellTags->"Write2",
  CellID->2074608494],
 Cell[CellGroupData[{
-Cell[11137, 397, 382, 12, 45, "Input",
+Cell[12898, 450, 381, 12, 45, "Input",
  CellTags->"Write2",
  CellID->1647925835],
-Cell[11522, 411, 1158, 34, 193, "Output",
- CellTags->"Write2",
- CellID->342974912]
+Cell[13282, 464, 1121, 33, 189, "Output",
+ CellTags->"Write2"]
 }, Open  ]],
-Cell[12695, 448, 305, 9, 27, "Input",
+Cell[14418, 500, 304, 9, 27, "Input",
  CellTags->"Write2",
  CellID->1908725708],
-Cell[13003, 459, 126, 4, 32, "Text",
- CellTags->"Write2",
- CellID->422363964],
-Cell[CellGroupData[{
-Cell[13154, 467, 266, 9, 27, "Input",
+Cell[14725, 511, 135, 4, 31, "Notes"],
+Cell[14863, 517, 266, 9, 27, "Input",
  CellTags->"Write2",
  CellID->1416932507],
-Cell[13423, 478, 544, 12, 62, "Print",
- CellTags->"Write2",
- CellID->1570874226]
-}, Open  ]],
 Cell[CellGroupData[{
-Cell[14004, 495, 382, 12, 45, "Input",
+Cell[15154, 530, 382, 12, 45, "Input",
  CellTags->"Write2",
  CellID->2122464458],
-Cell[14389, 509, 1109, 31, 139, "Output",
- CellTags->"Write2",
- CellID->1300360264]
+Cell[15539, 544, 1038, 29, 138, "Output",
+ CellTags->"Write2"]
 }, Open  ]],
-Cell[15513, 543, 439, 13, 45, "Input",
+Cell[16592, 576, 439, 13, 45, "Input",
  CellTags->"Write2",
  CellID->1809491647]
+}, Open  ]]
 }, Open  ]],
-Cell[15967, 559, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17058, 593, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16035, 564, 270, 12, 31, "SeeAlsoSection",
+Cell[17126, 598, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[16308, 578, 388, 15, 31, "Text",
- CellTags->"Write2",
- CellID->1387459580]
+Cell[17399, 612, 349, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[16711, 596, 23, 0, 42, "FooterCell"]
+Cell[17763, 628, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

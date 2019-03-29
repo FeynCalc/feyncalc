@@ -10,62 +10,87 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9261,        319]
-NotebookOptionsPosition[      5787,        211]
-NotebookOutlinePosition[      8363,        284]
-CellTagsIndexPosition[      8258,        278]
+NotebookDataLength[      9427,        309]
+NotebookOptionsPosition[      6414,        218]
+NotebookOutlinePosition[      8735,        283]
+CellTagsIndexPosition[      8630,        277]
 WindowTitle->$MU
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/$MU\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/$MU"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/$MU.html"],
-                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
-           Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$172228], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/$MU", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Chisholm\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Chisholm"], "\<\"Contract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Contract"], "\<\"DiracSimplify\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/$MU\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/$MU"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/$MU.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$306919], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$MU", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +98,18 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["$MU", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["$MU", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +143,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->941736283],
+ CellID->1572659999],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,13 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1922664524],
-
-Cell[CellGroupData[{
-
-Cell["Examples", "Subsubsection",
- CellTags->"$MU",
- CellID->1771415745],
+ CellID->935546263],
 
 Cell[CellGroupData[{
 
@@ -133,38 +164,16 @@ Cell[BoxData["$MU"], "Input",
 
 Cell[BoxData[
  FormBox["$MU", TraditionalForm]], "Output",
- ImageSize->{36, 15},
+ ImageSize->{35, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"$MU",
  CellLabel->"Out[1]=",
  CellID->418655578]
+}, Open  ]]
 }, Open  ]],
 
-Cell[TextData[{
- "See also: ",
- " ",
- ButtonBox["Chisholm",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"Chisholm",
-  ButtonNote->"Chisholm"],
- ", ",
- ButtonBox["Contract",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"Contract",
-  ButtonNote->"Contract"],
- ", ",
- ButtonBox["DiracSimplify",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- "."
-}], "Text",
- CellTags->"$MU",
- CellID->265635386],
-
 Cell["", "SectionFooterSpacer"]
-}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,9 +211,7 @@ Cell[TextData[{
   ButtonNote->"DiracSimplify"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"$MU",
- CellID->58635825]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -221,10 +228,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 21.848260}", 
+   "built" -> "{2019, 3, 29, 17, 55, 58.432747}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -232,9 +239,10 @@ TaggingRules->{
     "None", "summary" -> 
     "$MU is the head of dummy indices which may be introduced by Chisholm, \
 Contract, DiracSimplify, FermionSpinSum and various QCD functions. By default \
-it is unset, but can be set to anything.", "synonyms" -> {}, "title" -> "$MU",
-     "titlemodifier" -> "", "windowtitle" -> "$MU", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/$MU"}, "SearchTextTranslated" -> ""},
+it is unset, but can be set to anything.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "$MU", "titlemodifier" -> "", "windowtitle" -> 
+    "$MU", "type" -> "Symbol", "uri" -> "FeynCalc/ref/$MU"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -254,73 +262,55 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3384, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4552, 130, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->941736283]},
+   CellID->1572659999]},
  "$MU"->{
-  Cell[3995, 122, 72, 2, 35, "Subsubsection",
-   CellTags->"$MU",
-   CellID->1771415745],
-  Cell[4092, 128, 90, 3, 27, "Input",
+  Cell[5185, 159, 90, 3, 27, "Input",
    CellTags->"$MU",
    CellID->816086457],
-  Cell[4185, 133, 206, 7, 36, "Output",
+  Cell[5278, 164, 206, 7, 35, "Output",
    CellTags->"$MU",
-   CellID->418655578],
-  Cell[4406, 143, 429, 20, 32, "Text",
-   CellTags->"$MU",
-   CellID->265635386],
-  Cell[5191, 185, 554, 21, 32, "Text",
-   CellTags->"$MU",
-   CellID->58635825]}
+   CellID->418655578]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7688, 255},
- {"$MU", 7817, 259}
+ {"PrimaryExamplesSection", 8311, 263},
+ {"$MU", 8442, 267}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 2238, 52, 51, "AnchorBarGrid",
+Cell[575, 21, 3172, 77, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2816, 75, 46, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2865, 78, 494, 13, 97, "Usage",
+Cell[3750, 100, 280, 11, 44, "ObjectNameGrid"],
+Cell[4033, 113, 494, 13, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3384, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4552, 130, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->941736283],
-Cell[3774, 112, 196, 6, 25, "ExampleSection",
- CellID->1922664524],
+ CellID->1572659999],
 Cell[CellGroupData[{
-Cell[3995, 122, 72, 2, 35, "Subsubsection",
- CellTags->"$MU",
- CellID->1771415745],
+Cell[4965, 149, 195, 6, 25, "ExampleSection",
+ CellID->935546263],
 Cell[CellGroupData[{
-Cell[4092, 128, 90, 3, 27, "Input",
+Cell[5185, 159, 90, 3, 27, "Input",
  CellTags->"$MU",
  CellID->816086457],
-Cell[4185, 133, 206, 7, 36, "Output",
+Cell[5278, 164, 206, 7, 35, "Output",
  CellTags->"$MU",
  CellID->418655578]
-}, Open  ]],
-Cell[4406, 143, 429, 20, 32, "Text",
- CellTags->"$MU",
- CellID->265635386],
-Cell[4838, 165, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[4918, 171, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[5191, 185, 554, 21, 32, "Text",
- CellTags->"$MU",
- CellID->58635825]
+Cell[5511, 175, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
-Cell[5760, 209, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[5579, 180, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5852, 194, 520, 19, 55, "SeeAlso"]
+}, Open  ]],
+Cell[6387, 216, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

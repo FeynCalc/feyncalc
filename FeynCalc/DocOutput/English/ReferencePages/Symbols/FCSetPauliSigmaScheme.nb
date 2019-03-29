@@ -1,0 +1,718 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21051,        708]
+NotebookOptionsPosition[     16714,        571]
+NotebookOutlinePosition[     18992,        632]
+CellTagsIndexPosition[     18872,        626]
+WindowTitle->FCSetPauliSigmaScheme
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"PauliSigma\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PauliSigma"], "\<\"FCGetPauliSigmaScheme\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FCGetPauliSigmaScheme"]},
+       
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FCSetPauliSigmaScheme\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FCSetPauliSigmaScheme"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCSetPauliSigmaScheme.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$126346], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FCSetPauliSigmaScheme", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["FCSetPauliSigmaScheme", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCSetPauliSigmaScheme", "[", "\"\<scheme\>\"", "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]allows you to specify how Pauli matrices will be \
+handled in ",
+     Cell[BoxData[
+      RowBox[{"D", "-", "1"}]], "InlineFormula"],
+     " dimensions."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1073130888],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "This is mainly related to the commutator of two Pauli matrices, which \
+involves a Levi-Civita tensor. The latter is not a well-defined quantity in \
+",
+ Cell[BoxData[
+  RowBox[{"D", "-", "1"}]], "InlineFormula"],
+ " dimensions."
+}], "Notes",
+ CellID->108611295],
+
+Cell["Following schemes are supported:", "Notes",
+ CellID->1537905166],
+
+Cell[TextData[{
+ "\"None\" - This is the default value. The anticommutator relation is not \
+applied to ",
+ Cell[BoxData[
+  RowBox[{"D", "-", "1"}]], "InlineFormula"],
+ " dimensional Pauli matrices."
+}], "Notes",
+ CellID->1063338329],
+
+Cell[TextData[{
+ "\"Naive\" - Naively apply the commutator relation in ",
+ Cell[BoxData[
+  RowBox[{"D", "-", "1"}]], "InlineFormula"],
+ "-dimensions, i.e. ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    RowBox[{"CSID", "[", 
+     RowBox[{"i", ",", "j"}], "]"}], "-", 
+    RowBox[{"CSID", "[", 
+     RowBox[{"i", ",", "j"}], "]"}]}], " ", "=", " ", 
+   RowBox[{"2", " ", "i", " ", 
+    RowBox[{"CLCD", "[", 
+     RowBox[{"i", ",", "j", ",", "k"}], "]"}], " ", 
+    RowBox[{"CSID", "[", "k", "]"}]}]}]], "InlineFormula"],
+ ". The Levi-Civita tensor lives in ",
+ Cell[BoxData[
+  RowBox[{"D", "-", "1"}]], "InlineFormula"],
+ "-dimensions, so that a contraction of two such tensors which have all \
+indices in common yields ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"D", "-", "3"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"D", "-", "2"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"D", "-", "1"}], ")"}]}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->848562608]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->743102823],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1508800139],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetPauliSigmaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1875419531],
+
+Cell[BoxData[
+ FormBox["\<\"None\"\>", TraditionalForm]], "Output",
+ ImageSize->{38, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->20101800]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CSID", "[", 
+  RowBox[{"i", ",", "j", ",", "k"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->179609494],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      StyleBox["\<\"\[Sigma]\"\>",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       StyleBox["i",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      StyleBox["\<\"\[Sigma]\"\>",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       StyleBox["j",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      StyleBox["\<\"\[Sigma]\"\>",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       StyleBox["k",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{76, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->3552359]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", 
+  RowBox[{
+   RowBox[{"PauliTrick", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"PauliReduce", "\[Rule]", "True"}]}], "]"}], "&"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1706373353],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Sigma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      StyleBox["i",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Sigma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      StyleBox["j",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    FormBox[
+     StyleBox["\<\"\[Sigma]\"\>",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      StyleBox["k",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{76, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->2061667095]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCSetPauliSigmaScheme", "[", "\"\<Naive\>\"", "]"}], 
+  ";"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->320749020],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetPauliSigmaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->504297775],
+
+Cell[BoxData[
+ FormBox["\<\"Naive\"\>", TraditionalForm]], "Output",
+ ImageSize->{39, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->773704112]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PauliTrick", "[", 
+   RowBox[{
+    RowBox[{"CSID", "[", 
+     RowBox[{"i", ",", "j", ",", "k"}], "]"}], ",", 
+    RowBox[{"PauliReduce", "\[Rule]", "True"}]}], "]"}], "//", 
+  "Contract"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->1542692665],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+QoUKFSpUqFAhJf4H4je+zA==
+    "], {{0, 18}, {454, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  BaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{454, 18},
+  PlotRange->{{0, 454}, {0, 18}}]], "Output",
+ ImageSize->{458, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[6]=",
+ CellID->1051459852]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->1864890408],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[ImaginaryI]", " ", 
+   RowBox[{"CLCD", "[", 
+    RowBox[{"i", ",", "j", ",", "k"}], "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"CSID", "[", "k", "]"}], " ", 
+   RowBox[{"KDD", "[", 
+    RowBox[{"i", ",", "j"}], "]"}]}], "+", 
+  RowBox[{"3", " ", 
+   RowBox[{"CSID", "[", "j", "]"}], " ", 
+   RowBox[{"KDD", "[", 
+    RowBox[{"i", ",", "k"}], "]"}]}], "-", 
+  RowBox[{"D", " ", 
+   RowBox[{"CSID", "[", "j", "]"}], " ", 
+   RowBox[{"KDD", "[", 
+    RowBox[{"i", ",", "k"}], "]"}]}], "-", 
+  RowBox[{"3", " ", 
+   RowBox[{"CSID", "[", "i", "]"}], " ", 
+   RowBox[{"KDD", "[", 
+    RowBox[{"j", ",", "k"}], "]"}]}], "+", 
+  RowBox[{"D", " ", 
+   RowBox[{"CSID", "[", "i", "]"}], " ", 
+   RowBox[{"KDD", "[", 
+    RowBox[{"j", ",", "k"}], "]"}]}]}]], "Output",
+ ImageSize->{464, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]//StandardForm=",
+ CellID->915050494]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCSetPauliSigmaScheme", "[", "\"\<None\>\"", "]"}], ";"}]], "Input",\
+
+ CellLabel->"In[8]:=",
+ CellID->1277991442]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["PauliSigma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliSigma",
+  ButtonNote->"PauliSigma"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCGetPauliSigmaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGetPauliSigmaScheme",
+  ButtonNote->"FCSetPauliSigmaScheme"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso",
+ CellID->655647701]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCSetPauliSigmaScheme",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 3, 29, 17, 49, 7.187228}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCSetPauliSigmaScheme[\"scheme\"] allows you to specify how Pauli \
+matrices will be handled in D - 1 dimensions.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "FCSetPauliSigmaScheme", "titlemodifier" -> 
+    "", "windowtitle" -> "FCSetPauliSigmaScheme", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FCSetPauliSigmaScheme"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[7033, 221, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->743102823]},
+ "RasterizedOutput"->{
+  Cell[11532, 423, 3106, 59, 40, "Output",
+   CellTags->"RasterizedOutput",
+   CellID->1051459852]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 18605, 615},
+ {"RasterizedOutput", 18748, 619}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[593, 21, 3179, 76, 50, "AnchorBarGrid",
+ CellID->1],
+Cell[3775, 99, 298, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4098, 114, 519, 16, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4642, 134, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1073130888],
+Cell[5384, 160, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5418, 162, 280, 8, 47, "Notes",
+ CellID->108611295],
+Cell[5701, 172, 70, 1, 31, "Notes",
+ CellID->1537905166],
+Cell[5774, 175, 233, 7, 46, "Notes",
+ CellID->1063338329],
+Cell[6010, 184, 974, 31, 79, "Notes",
+ CellID->848562608]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7033, 221, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->743102823],
+Cell[CellGroupData[{
+Cell[7445, 240, 196, 6, 25, "ExampleSection",
+ CellID->1508800139],
+Cell[CellGroupData[{
+Cell[7666, 250, 113, 3, 27, "Input",
+ CellID->1875419531],
+Cell[7782, 255, 196, 6, 35, "Output",
+ CellID->20101800]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8015, 266, 133, 4, 27, "Input",
+ CellID->179609494],
+Cell[8151, 272, 1219, 52, 39, "Output",
+ CellID->3552359]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9407, 329, 220, 7, 27, "Input",
+ CellID->1706373353],
+Cell[9630, 338, 1081, 46, 39, "Output",
+ CellID->2061667095]
+}, Open  ]],
+Cell[10726, 387, 150, 5, 27, "Input",
+ CellID->320749020],
+Cell[CellGroupData[{
+Cell[10901, 396, 112, 3, 27, "Input",
+ CellID->504297775],
+Cell[11016, 401, 198, 6, 35, "Output",
+ CellID->773704112]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11251, 412, 278, 9, 27, "Input",
+ CellID->1542692665],
+Cell[11532, 423, 3106, 59, 40, "Output",
+ CellTags->"RasterizedOutput",
+ CellID->1051459852]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14675, 487, 131, 4, 27, "Input",
+ CellID->1864890408],
+Cell[14809, 493, 932, 29, 67, "Output",
+ CellID->915050494]
+}, Open  ]],
+Cell[15756, 525, 149, 5, 70, "Input",
+ CellID->1277991442]
+}, Open  ]],
+Cell[15920, 533, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15988, 538, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[16261, 552, 411, 14, 70, "SeeAlso",
+ CellID->655647701]
+}, Open  ]],
+Cell[16687, 569, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

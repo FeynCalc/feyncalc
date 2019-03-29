@@ -1,0 +1,511 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14135,        501]
+NotebookOptionsPosition[      9739,        358]
+NotebookOutlinePosition[     12309,        432]
+CellTagsIndexPosition[     12197,        426]
+WindowTitle->DiracIndex
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"ExplicitDiracIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExplicitDiracIndex"], "\<\"FCHN\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FCHN"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DiracIndex\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DiracIndex"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+DiracIndex.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65943], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DiracIndex", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["DiracIndex", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["DiracIndex"], "InlineFormula"],
+     " \[LineSeparator]",
+     "is the head of Dirac indices."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->63172536],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The internal representation of a four-dimensional spinorial index ",
+ Cell[BoxData["i"], "InlineFormula"],
+ " is ",
+ Cell[BoxData[
+  RowBox[{"DiracIndex", "[", "i", "]"}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "If the first argument is an integer, ",
+ Cell[BoxData[
+  RowBox[{"DiracIndex", "[", "i", "]"}]], "InlineFormula"],
+ " turns into ",
+ Cell[BoxData[
+  RowBox[{"ExplicitDiracIndex", "[", "i", "]"}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->1624463599],
+
+Cell[TextData[{
+ "Dirac indices are the indices that denote the components of Dirac matrices \
+or spinors. They should not be confused with the Lorentz indices attached to \
+the Dirac matrices. For example \nin case of ",
+ Cell[BoxData[
+  SuperscriptBox[
+   SubscriptBox["\[Gamma]", "ij"], "\[Mu]"]], "InlineFormula"],
+ ", ",
+ Cell[BoxData["\[Mu]"], "InlineFormula"],
+ " is a Lorentz index, while ",
+ Cell[BoxData["i"], "InlineFormula"],
+ " and ",
+ Cell[BoxData["j"], "InlineFormula"],
+ " are Dirac (spinorial) indices."
+}], "Notes",
+ CellID->1835295214]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1917992617],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1814142147],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracIndex", "[", "i", "]"}]], "Input",
+ CellTags->"SUNIndex",
+ CellLabel->"In[1]:=",
+ CellID->973923672],
+
+Cell[BoxData[
+ FormBox["i", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SUNIndex",
+ CellLabel->"Out[1]=",
+ CellID->2017526493]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"SUNIndex",
+ CellLabel->"In[2]:=",
+ CellID->293124345],
+
+Cell[BoxData[
+ RowBox[{"DiracIndex", "[", "i", "]"}]], "Output",
+ ImageSize->{108, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SUNIndex",
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->1562880488]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracIndex", "[", "2", "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1927371187],
+
+Cell[BoxData[
+ FormBox["2", TraditionalForm]], "Output",
+ ImageSize->{12, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1717337875]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1807480238],
+
+Cell[BoxData[
+ RowBox[{"ExplicitDiracIndex", "[", "2", "]"}]], "Output",
+ ImageSize->{172, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->125060963]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DIDelta", "[", 
+    RowBox[{"i", ",", "j"}], "]"}], "//", "FCI"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"SUNIndex",
+ CellLabel->"In[5]:=",
+ CellID->874008605],
+
+Cell[BoxData[
+ RowBox[{"DiracIndexDelta", "[", 
+  RowBox[{
+   RowBox[{"DiracIndex", "[", "i", "]"}], ",", 
+   RowBox[{"DiracIndex", "[", "j", "]"}]}], "]"}]], "Output",
+ ImageSize->{362, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SUNIndex",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->270559869]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["ExplicitDiracIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExplicitDiracIndex",
+  ButtonNote->"ExplicitDiracIndex"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCHN",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCHN",
+  ButtonNote->"FCHN"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso",
+ CellID->442356255]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DiracIndex",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 3, 29, 17, 46, 44.436066}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> "DiracIndex is the head of Dirac indices.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "DiracIndex", 
+    "titlemodifier" -> "", "windowtitle" -> "DiracIndex", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/DiracIndex"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[6281, 199, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1917992617]},
+ "SUNIndex"->{
+  Cell[6915, 228, 129, 4, 27, "Input",
+   CellTags->"SUNIndex",
+   CellID->973923672],
+  Cell[7047, 234, 210, 7, 35, "Output",
+   CellTags->"SUNIndex",
+   CellID->2017526493],
+  Cell[7294, 246, 127, 4, 27, "Input",
+   CellTags->"SUNIndex",
+   CellID->293124345],
+  Cell[7424, 252, 233, 7, 49, "Output",
+   CellTags->"SUNIndex",
+   CellID->1562880488],
+  Cell[8390, 296, 216, 8, 27, "Input",
+   CellTags->"SUNIndex",
+   CellID->874008605],
+  Cell[8609, 306, 336, 10, 49, "Output",
+   CellTags->"SUNIndex",
+   CellID->270559869]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11509, 400},
+ {"SUNIndex", 11645, 404}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[582, 21, 3116, 76, 50, "AnchorBarGrid",
+ CellID->1],
+Cell[3701, 99, 287, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4013, 114, 342, 11, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4380, 129, 737, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->63172536],
+Cell[5120, 155, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5154, 157, 247, 8, 31, "Notes",
+ CellID->1067943069],
+Cell[5404, 167, 271, 9, 31, "Notes",
+ CellID->1624463599],
+Cell[5678, 178, 554, 15, 67, "Notes",
+ CellID->1835295214]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6281, 199, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1917992617],
+Cell[CellGroupData[{
+Cell[6694, 218, 196, 6, 25, "ExampleSection",
+ CellID->1814142147],
+Cell[CellGroupData[{
+Cell[6915, 228, 129, 4, 27, "Input",
+ CellTags->"SUNIndex",
+ CellID->973923672],
+Cell[7047, 234, 210, 7, 35, "Output",
+ CellTags->"SUNIndex",
+ CellID->2017526493]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7294, 246, 127, 4, 27, "Input",
+ CellTags->"SUNIndex",
+ CellID->293124345],
+Cell[7424, 252, 233, 7, 49, "Output",
+ CellTags->"SUNIndex",
+ CellID->1562880488]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7694, 264, 107, 3, 27, "Input",
+ CellID->1927371187],
+Cell[7804, 269, 187, 6, 35, "Output",
+ CellID->1717337875]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8028, 280, 105, 3, 27, "Input",
+ CellID->1807480238],
+Cell[8136, 285, 217, 6, 49, "Output",
+ CellID->125060963]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8390, 296, 216, 8, 27, "Input",
+ CellTags->"SUNIndex",
+ CellID->874008605],
+Cell[8609, 306, 336, 10, 49, "Output",
+ CellTags->"SUNIndex",
+ CellID->270559869]
+}, Open  ]]
+}, Open  ]],
+Cell[8972, 320, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9040, 325, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9313, 339, 384, 14, 70, "SeeAlso",
+ CellID->442356255]
+}, Open  ]],
+Cell[9712, 356, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

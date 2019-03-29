@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13717,        449]
-NotebookOptionsPosition[     10343,        350]
-NotebookOutlinePosition[     12948,        420]
-CellTagsIndexPosition[     12825,        414]
+NotebookDataLength[     13748,        450]
+NotebookOptionsPosition[     10476,        355]
+NotebookOutlinePosition[     13033,        424]
+CellTagsIndexPosition[     12910,        418]
 WindowTitle->Twist2AlienOperator
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ Twist2AlienOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160245], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$287674], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2AlienOperator", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ Twist2AlienOperator.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Twist2AlienOperator", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Twist2AlienOperator", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -109,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1055910193],
+ CellID->1279812915],
 
 Cell[CellGroupData[{
 
@@ -119,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1997862075],
+ CellID->1669574507],
 
 Cell[CellGroupData[{
 
@@ -165,12 +176,11 @@ Cell[BoxData[
      RowBox[{"m", "-", "1"}]]}], 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{311, 54},
+ ImageSize->{344, 54},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2AlienOperator",
- CellLabel->"Out[1]=",
- CellID->891789414]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,19 +208,15 @@ Cell[BoxData[
        RowBox[{"(", 
         RowBox[{"-", "1"}], ")"}], "m"], "+", "1"}], ")"}], " ", 
     SubsuperscriptBox["g", "s", "3"], " ", 
-    FormBox[
-     SuperscriptBox[
-      FormBox[
-       FormBox["\[CapitalDelta]",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["mu",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["mu",
+       TraditionalForm],
+      TraditionalForm]], " ", 
     SubscriptBox["S", "n"], " ", 
     RowBox[{
      SuperscriptBox["T", 
@@ -336,12 +342,11 @@ Cell[BoxData[
               TraditionalForm],
              TraditionalForm]}], ")"}]}], ")"}], 
         RowBox[{"m", "-", "2"}]]}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{420, 154},
+ ImageSize->{418, 139},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2AlienOperator",
- CellLabel->"Out[2]=",
- CellID->589738199]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -360,10 +365,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 28.694522}", 
+   "built" -> "{2019, 3, 29, 17, 55, 8.924027}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -371,9 +376,10 @@ TaggingRules->{
     "None", "summary" -> 
     "Twist2AlienOperator[p, 0] : (7); Twist2AlienOperator[p1,p2,{p3,mu,a}, 0] \
 (p1: incoming quark momentum, p3: incoming gluon (count1)).", 
-    "synonyms" -> {}, "title" -> "Twist2AlienOperator", "titlemodifier" -> "",
-     "windowtitle" -> "Twist2AlienOperator", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Twist2AlienOperator"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Twist2AlienOperator", 
+    "titlemodifier" -> "", "windowtitle" -> "Twist2AlienOperator", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Twist2AlienOperator"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -393,64 +399,59 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3471, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3733, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1055910193]},
+   CellID->1279812915]},
  "Twist2AlienOperator"->{
-  Cell[4105, 125, 177, 5, 27, "Input",
+  Cell[4367, 136, 177, 5, 27, "Input",
    CellTags->"Twist2AlienOperator",
    CellID->902933513],
-  Cell[4285, 132, 1124, 40, 75, "Output",
-   CellTags->"Twist2AlienOperator",
-   CellID->891789414],
-  Cell[5446, 177, 263, 8, 27, "Input",
+  Cell[4547, 143, 1104, 39, 75, "Output",
+   CellTags->"Twist2AlienOperator"],
+  Cell[5688, 187, 263, 8, 27, "Input",
    CellTags->"Twist2AlienOperator",
    CellID->581588333],
-  Cell[5712, 187, 4565, 156, 175, "Output",
-   CellTags->"Twist2AlienOperator",
-   CellID->589738199]}
+  Cell[5954, 197, 4456, 151, 160, "Output",
+   CellTags->"Twist2AlienOperator"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12255, 394},
- {"Twist2AlienOperator", 12401, 398}
+ {"PrimaryExamplesSection", 12383, 400},
+ {"Twist2AlienOperator", 12530, 404}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 2290, 52, 51, "AnchorBarGrid",
+Cell[591, 21, 2318, 53, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2884, 75, 62, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2949, 78, 497, 14, 99, "Usage",
+Cell[2912, 76, 296, 11, 44, "ObjectNameGrid"],
+Cell[3211, 89, 497, 14, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3471, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3733, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1055910193],
+ CellID->1279812915],
 Cell[CellGroupData[{
-Cell[3884, 115, 196, 6, 25, "ExampleSection",
- CellID->1997862075],
+Cell[4146, 126, 196, 6, 25, "ExampleSection",
+ CellID->1669574507],
 Cell[CellGroupData[{
-Cell[4105, 125, 177, 5, 27, "Input",
+Cell[4367, 136, 177, 5, 27, "Input",
  CellTags->"Twist2AlienOperator",
  CellID->902933513],
-Cell[4285, 132, 1124, 40, 75, "Output",
- CellTags->"Twist2AlienOperator",
- CellID->891789414]
+Cell[4547, 143, 1104, 39, 75, "Output",
+ CellTags->"Twist2AlienOperator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5446, 177, 263, 8, 27, "Input",
+Cell[5688, 187, 263, 8, 27, "Input",
  CellTags->"Twist2AlienOperator",
  CellID->581588333],
-Cell[5712, 187, 4565, 156, 175, "Output",
- CellTags->"Twist2AlienOperator",
- CellID->589738199]
+Cell[5954, 197, 4456, 151, 160, "Output",
+ CellTags->"Twist2AlienOperator"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[10316, 348, 23, 0, 42, "FooterCell"]
+Cell[10449, 353, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

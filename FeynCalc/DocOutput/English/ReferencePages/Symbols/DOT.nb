@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6713,        199]
-NotebookOptionsPosition[      4247,        129]
-NotebookOutlinePosition[      6455,        188]
-CellTagsIndexPosition[      6390,        183]
+NotebookDataLength[      8342,        260]
+NotebookOptionsPosition[      6048,        195]
+NotebookOutlinePosition[      7889,        244]
+CellTagsIndexPosition[      7846,        241]
 WindowTitle->DOT
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/DOT\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/DOT"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/DOT.html"],
-                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
-           Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46648], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/DOT", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DotSimplify\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DotSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DOT\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DOT"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/DOT.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75427], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/DOT", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,21 +95,29 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["DOT", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["DOT", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"DOT", "[", 
        RowBox[{"a", ",", " ", "b", ",", " ", "..."}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "is the FeynCalc function for non-commutative multiplication. By default \
-it is set to the Mathematica Dot function. This can in principle be disabled \
-by setting DOT=. (or by commenting out \[OpenCurlyDoubleQuote]DOT = Dot;\
-\[CloseCurlyDoubleQuote] in the file \"FeynCalc.m\"), but then \
-non-commutative products should to be entered like DOT[ DiracMatrix[mu], m + \
-DiracSlash[p], DiracMatrix[mu] ] etc."
+     " \[LineSeparator]is the FeynCalc function for non-commutative \
+multiplication. By default it is set to the ",
+     StyleBox["Mathematica",
+      FontSlant->"Italic"],
+     " Dot function. "
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -95,6 +125,45 @@ DiracSlash[p], DiracMatrix[mu] ] etc."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["\<\
+This can in principle be disabled by setting DOT=. (or by commenting out \
+\[OpenCurlyDoubleQuote]DOT = Dot;\[CloseCurlyDoubleQuote] in the file \
+\"FCConfig.m\"), but then non-commutative products should to be entered like \
+DOT[ GA[mu], m + GS[p], GA[mu] ] etc.\
+\>", "Notes",
+ CellID->1067943069]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -113,16 +182,13 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["DotSimplify",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DotSimplify",
   ButtonNote->"DotSimplify"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"DOT",
- CellID->1131348229]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -139,22 +205,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 19.498470}", 
+   "built" -> "{2019, 3, 29, 17, 47, 7.857094}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "DOT[a, b, ...] is the FeynCalc function for non-commutative \
-multiplication. By default it is set to the Mathematica Dot function. This \
-can in principle be disabled by setting DOT=. (or by commenting out \"DOT = \
-Dot;\" in the file \"FeynCalc.m\"), but then non-commutative products should \
-to be entered like DOT[DiracMatrix[mu], m + DiracSlash[p], DiracMatrix[mu] ] \
-etc.", "synonyms" -> {}, "title" -> "DOT", "titlemodifier" -> "", 
-    "windowtitle" -> "DOT", "type" -> "Symbol", "uri" -> 
+multiplication. By default it is set to the Mathematica Dot function. ", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "DOT", "titlemodifier" -> 
+    "", "windowtitle" -> "DOT", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/DOT"}},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
@@ -173,34 +236,32 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "DOT"->{
-  Cell[3958, 114, 247, 10, 70, "Text",
-   CellTags->"DOT",
-   CellID->1131348229]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"DOT", 6283, 176}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 2237, 52, 70, "AnchorBarGrid",
+Cell[575, 21, 2987, 74, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2815, 75, 46, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2864, 78, 796, 18, 70, "Usage",
+Cell[3565, 97, 280, 11, 70, "ObjectNameGrid"],
+Cell[3848, 110, 551, 16, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3685, 100, 270, 12, 70, "SeeAlsoSection",
+Cell[4424, 130, 730, 24, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[5157, 156, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5191, 158, 309, 6, 70, "Notes",
+ CellID->1067943069]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5537, 169, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3958, 114, 247, 10, 70, "Text",
- CellTags->"DOT",
- CellID->1131348229]
+Cell[5810, 183, 196, 7, 70, "SeeAlso"]
 }, Open  ]],
-Cell[4220, 127, 23, 0, 70, "FooterCell"]
+Cell[6021, 193, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

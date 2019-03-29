@@ -10,62 +10,92 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25214,        999]
-NotebookOptionsPosition[     17285,        716]
-NotebookOutlinePosition[     21906,        863]
-CellTagsIndexPosition[     21798,        857]
+NotebookDataLength[     26369,       1020]
+NotebookOptionsPosition[     19062,        768]
+NotebookOutlinePosition[     23200,        895]
+CellTagsIndexPosition[     23092,        889]
 WindowTitle->SUNF
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/SUNF\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/SUNF"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/SUNF.html"]\
-, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$148553], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/SUNF", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SUND\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUND"], "\<\"SUNDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNDelta"], "\<\"SUNIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNIndex"], "\<\"SUNSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNSimplify"], "\<\"SUNT\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SUNT"], "\<\"Trick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Trick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/SUNF\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/SUNF"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/SUNF.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$265385], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SUNF", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +103,20 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SUNF", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SUNF", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -96,6 +138,58 @@ Cell[BoxData[GridBox[{
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1036043268],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SUNF", "]"}]], "Input",
+ CellTags->"SUNF",
+ CellLabel->"In[11]:=",
+ CellID->121887364],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Explicit", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{111, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SUNF",
+ CellLabel->"Out[11]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -111,7 +205,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->55069536],
+ CellID->1464675923],
 
 Cell[CellGroupData[{
 
@@ -121,42 +215,20 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1000495346],
+ CellID->1701082612],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "SUNF", "]"}]], "Input",
+ RowBox[{
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], "x"}], "+", 
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"b", ",", "a", ",", "c"}], "]"}], "y"}]}]], "Input",
  CellTags->"SUNF",
  CellLabel->"In[1]:=",
- CellID->121887364],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Explicit", "\[Rule]", "False"}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{118, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"SUNF",
- CellLabel->"Out[1]=",
- CellID->788322241]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"SUNF", "[", 
-     RowBox[{"a", ",", "b", ",", "c"}], "]"}], "x"}], "+", 
-   RowBox[{
-    RowBox[{"SUNF", "[", 
-     RowBox[{"b", ",", "a", ",", "c"}], "]"}], "y"}]}]}]], "Input",
- CellTags->"SUNF",
- CellLabel->"In[2]:=",
  CellID->1766434801],
 
 Cell[BoxData[
@@ -180,20 +252,19 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["c",
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{119, 19},
+ ImageSize->{137, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[2]=",
- CellID->1741928660]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Calc", "[", "t1", "]"}]], "Input",
+ RowBox[{"Calc", "[", "%", "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->139383085],
 
 Cell[BoxData[
@@ -229,20 +300,19 @@ Cell[BoxData[
        FormBox["c",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{119, 19},
+ ImageSize->{138, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[3]=",
- CellID->1893375491]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", "t1", "]"}]], "Input",
+ RowBox[{"SUNSimplify", "[", "%%", "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->479451850],
 
 Cell[BoxData[
@@ -264,12 +334,11 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{90, 19},
+ ImageSize->{104, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[4]=",
- CellID->622570571]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -278,7 +347,7 @@ Cell[BoxData[
  RowBox[{"SUNF", "[", 
   RowBox[{"a", ",", "a", ",", "b"}], "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->1757637776],
 
 Cell[BoxData[
@@ -291,12 +360,11 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["b",
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{43, 19},
+ ImageSize->{48, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[5]=",
- CellID->752391067]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,31 +374,25 @@ Cell[BoxData[
   RowBox[{"SUNF", "[", 
    RowBox[{"a", ",", "a", ",", "b"}], "]"}], "//", "Calc"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[6]:=",
+ CellLabel->"In[5]:=",
  CellID->169262538],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{14, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[6]=",
- CellID->1205699996]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[TextData[{
  "This is a consequence of the usual choice for the normalization of the ",
  Cell[BoxData[
   FormBox[
-   RowBox[{
-    SubscriptBox["T", "a"], " ", "generatorsin", " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{"see", "  ", "SUNT"}], ")"}], "."}]}], TraditionalForm]]]
-}], "Text",
- CellTags->"SUNF",
- CellID->565916861],
+   SubscriptBox["T", "a"], TraditionalForm]]],
+ " generators."
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -339,7 +401,7 @@ Cell[BoxData[
   RowBox[{"a", ",", "b", ",", "c", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[7]:=",
+ CellLabel->"In[6]:=",
  CellID->2026232239],
 
 Cell[BoxData[
@@ -397,12 +459,11 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{253, 25},
+ ImageSize->{278, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[7]=",
- CellID->621120740]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -415,7 +476,7 @@ Cell[BoxData[
    RowBox[{"SUNF", "[", 
     RowBox[{"a", ",", "b", ",", "d"}], "]"}]}], "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->386944916],
 
 Cell[BoxData[
@@ -432,12 +493,11 @@ Cell[BoxData[
       FormBox["d",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{54, 19},
+ ImageSize->{61, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[8]=",
- CellID->631419441]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -449,7 +509,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b", ",", "c"}], "]"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[9]:=",
+ CellLabel->"In[8]:=",
  CellID->963311023],
 
 Cell[BoxData[
@@ -508,12 +568,11 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{263, 25},
+ ImageSize->{289, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[9]=",
- CellID->215339899]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -524,7 +583,7 @@ Cell[BoxData[
    RowBox[{"a", ",", "b", ",", "c"}], "]"}], "//", "StandardForm"}]], "Input",\
 
  CellTags->"SUNF",
- CellLabel->"In[10]:=",
+ CellLabel->"In[9]:=",
  CellID->1003312113],
 
 Cell[BoxData[
@@ -534,8 +593,7 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[10]//StandardForm=",
- CellID->792790909]
+ CellLabel->"Out[9]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -547,7 +605,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b", ",", "c"}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->2081826967],
 
 Cell[BoxData[
@@ -556,12 +614,11 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "c", "]"}]}], "]"}]], "Output",
- ImageSize->{346, 15},
+ ImageSize->{343, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[11]//StandardForm=",
- CellID->1149570291]
+ CellLabel->"Out[10]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -574,7 +631,7 @@ Cell[BoxData[
      RowBox[{"a", ",", "b", ",", "c"}], "]"}], "//", "FCI"}], "//", "FCE"}], "//",
    "StandardForm"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[12]:=",
+ CellLabel->"In[11]:=",
  CellID->1938677300],
 
 Cell[BoxData[
@@ -584,8 +641,7 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[12]//StandardForm=",
- CellID->1462891621]
+ CellLabel->"Out[11]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -594,7 +650,7 @@ Cell[BoxData[
  RowBox[{"SUNF", "[", 
   RowBox[{"b", ",", "a", ",", "c"}], "]"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[13]:=",
+ CellLabel->"In[12]:=",
  CellID->334638901],
 
 Cell[BoxData[
@@ -607,12 +663,11 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["c",
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{42, 19},
+ ImageSize->{48, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[13]=",
- CellID->532100486]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -622,7 +677,7 @@ Cell[BoxData[
   RowBox[{"SUNF", "[", 
    RowBox[{"b", ",", "a", ",", "c"}], "]"}], "//", "FCI"}]], "Input",
  CellTags->"SUNF",
- CellLabel->"In[14]:=",
+ CellLabel->"In[13]:=",
  CellID->1328454294],
 
 Cell[BoxData[
@@ -642,12 +697,11 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{52, 19},
+ ImageSize->{59, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNF",
- CellLabel->"Out[14]=",
- CellID->1815424467]
+ CellLabel->"Out[13]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -707,9 +761,7 @@ Cell[TextData[{
   ButtonNote->"Trick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"SUNF",
- CellID->639373109]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -726,19 +778,19 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 37.487904}", 
+   "built" -> "{2019, 3, 29, 17, 54, 13.720114}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "SUNF[a, b, c] are the structure constants of SU(N). The arguments a,b,c \
-should be of symbolic type.", "synonyms" -> {}, "title" -> "SUNF", 
-    "titlemodifier" -> "", "windowtitle" -> "SUNF", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/SUNF"}, "SearchTextTranslated" -> ""},
+should be of symbolic type.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "SUNF", "titlemodifier" -> "", "windowtitle" -> "SUNF", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/SUNF"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -757,250 +809,219 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3400, 98, 386, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->55069536]},
  "SUNF"->{
-  Cell[4032, 127, 125, 4, 27, "Input",
+  Cell[5649, 170, 126, 4, 27, "Input",
    CellTags->"SUNF",
    CellID->121887364],
-  Cell[4160, 133, 273, 10, 36, "Output",
-   CellTags->"SUNF",
-   CellID->788322241],
-  Cell[4470, 148, 312, 11, 27, "Input",
+  Cell[5778, 176, 254, 9, 37, "Output",
+   CellTags->"SUNF"],
+  Cell[6727, 221, 282, 10, 27, "Input",
    CellTags->"SUNF",
    CellID->1766434801],
-  Cell[4785, 161, 622, 26, 40, "Output",
-   CellTags->"SUNF",
-   CellID->1741928660],
-  Cell[5444, 192, 120, 4, 27, "Input",
+  Cell[7012, 233, 601, 25, 40, "Output",
+   CellTags->"SUNF"],
+  Cell[7650, 263, 119, 4, 27, "Input",
    CellTags->"SUNF",
    CellID->139383085],
-  Cell[5567, 198, 874, 38, 40, "Output",
-   CellTags->"SUNF",
-   CellID->1893375491],
-  Cell[6478, 241, 127, 4, 27, "Input",
+  Cell[7772, 269, 853, 37, 40, "Output",
+   CellTags->"SUNF"],
+  Cell[8662, 311, 127, 4, 27, "Input",
    CellTags->"SUNF",
    CellID->479451850],
-  Cell[6608, 247, 561, 24, 40, "Output",
-   CellTags->"SUNF",
-   CellID->622570571],
-  Cell[7206, 276, 153, 5, 27, "Input",
+  Cell[8792, 317, 542, 23, 40, "Output",
+   CellTags->"SUNF"],
+  Cell[9371, 345, 153, 5, 27, "Input",
    CellTags->"SUNF",
    CellID->1757637776],
-  Cell[7362, 283, 361, 15, 40, "Output",
-   CellTags->"SUNF",
-   CellID->752391067],
-  Cell[7760, 303, 180, 6, 27, "Input",
+  Cell[9527, 352, 341, 14, 38, "Output",
+   CellTags->"SUNF"],
+  Cell[9905, 371, 180, 6, 27, "Input",
    CellTags->"SUNF",
    CellID->169262538],
-  Cell[7943, 311, 206, 7, 36, "Output",
-   CellTags->"SUNF",
-   CellID->1205699996],
-  Cell[8164, 321, 339, 11, 49, "Text",
-   CellTags->"SUNF",
-   CellID->565916861],
-  Cell[8528, 336, 203, 6, 27, "Input",
+  Cell[10088, 379, 185, 6, 35, "Output",
+   CellTags->"SUNF"],
+  Cell[10506, 398, 203, 6, 27, "Input",
    CellTags->"SUNF",
    CellID->2026232239],
-  Cell[8734, 344, 1552, 60, 46, "Output",
-   CellTags->"SUNF",
-   CellID->621120740],
-  Cell[10323, 409, 283, 9, 27, "Input",
+  Cell[10712, 406, 1532, 59, 42, "Output",
+   CellTags->"SUNF"],
+  Cell[12281, 470, 283, 9, 27, "Input",
    CellTags->"SUNF",
    CellID->386944916],
-  Cell[10609, 420, 459, 19, 40, "Output",
-   CellTags->"SUNF",
-   CellID->631419441],
-  Cell[11105, 444, 256, 8, 27, "Input",
+  Cell[12567, 481, 439, 18, 40, "Output",
+   CellTags->"SUNF"],
+  Cell[13043, 504, 256, 8, 27, "Input",
    CellTags->"SUNF",
    CellID->963311023],
-  Cell[11364, 454, 1571, 61, 46, "Output",
-   CellTags->"SUNF",
-   CellID->215339899],
-  Cell[12972, 520, 192, 7, 27, "Input",
+  Cell[13302, 514, 1551, 60, 42, "Output",
+   CellTags->"SUNF"],
+  Cell[14890, 579, 191, 7, 27, "Input",
    CellTags->"SUNF",
    CellID->1003312113],
-  Cell[13167, 529, 256, 8, 49, "Output",
-   CellTags->"SUNF",
-   CellID->792790909],
-  Cell[13460, 542, 221, 8, 27, "Input",
+  Cell[15084, 588, 235, 7, 49, "Output",
+   CellTags->"SUNF"],
+  Cell[15356, 600, 221, 8, 27, "Input",
    CellTags->"SUNF",
    CellID->2081826967],
-  Cell[13684, 552, 365, 11, 49, "Output",
-   CellTags->"SUNF",
-   CellID->1149570291],
-  Cell[14086, 568, 250, 9, 27, "Input",
+  Cell[15580, 610, 344, 10, 49, "Output",
+   CellTags->"SUNF"],
+  Cell[15961, 625, 250, 9, 27, "Input",
    CellTags->"SUNF",
    CellID->1938677300],
-  Cell[14339, 579, 257, 8, 49, "Output",
-   CellTags->"SUNF",
-   CellID->1462891621],
-  Cell[14633, 592, 153, 5, 27, "Input",
+  Cell[16214, 636, 236, 7, 49, "Output",
+   CellTags->"SUNF"],
+  Cell[16487, 648, 153, 5, 27, "Input",
    CellTags->"SUNF",
    CellID->334638901],
-  Cell[14789, 599, 362, 15, 40, "Output",
-   CellTags->"SUNF",
-   CellID->532100486],
-  Cell[15188, 619, 181, 6, 27, "Input",
+  Cell[16643, 655, 342, 14, 38, "Output",
+   CellTags->"SUNF"],
+  Cell[17022, 674, 181, 6, 27, "Input",
    CellTags->"SUNF",
    CellID->1328454294],
-  Cell[15372, 627, 509, 22, 40, "Output",
-   CellTags->"SUNF",
-   CellID->1815424467],
-  Cell[16249, 672, 994, 39, 32, "Text",
-   CellTags->"SUNF",
-   CellID->639373109]}
+  Cell[17206, 682, 488, 21, 38, "Output",
+   CellTags->"SUNF"]},
+ "PrimaryExamplesSection"->{
+  Cell[6093, 192, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1464675923]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19099, 759},
- {"SUNF", 19228, 763}
+ {"SUNF", 20851, 811},
+ {"PrimaryExamplesSection", 22948, 882}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
+Cell[576, 21, 3424, 82, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2808, 75, 47, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2858, 78, 517, 16, 83, "Usage",
+Cell[4003, 105, 281, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4309, 120, 517, 16, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3400, 98, 386, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->55069536],
+Cell[4851, 140, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1036043268],
+Cell[5593, 166, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3811, 117, 196, 6, 25, "ExampleSection",
- CellID->1000495346],
-Cell[CellGroupData[{
-Cell[4032, 127, 125, 4, 27, "Input",
+Cell[5649, 170, 126, 4, 27, "Input",
  CellTags->"SUNF",
  CellID->121887364],
-Cell[4160, 133, 273, 10, 36, "Output",
- CellTags->"SUNF",
- CellID->788322241]
+Cell[5778, 176, 254, 9, 37, "Output",
+ CellTags->"SUNF"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4470, 148, 312, 11, 27, "Input",
+Cell[6093, 192, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1464675923],
+Cell[CellGroupData[{
+Cell[6506, 211, 196, 6, 25, "ExampleSection",
+ CellID->1701082612],
+Cell[CellGroupData[{
+Cell[6727, 221, 282, 10, 27, "Input",
  CellTags->"SUNF",
  CellID->1766434801],
-Cell[4785, 161, 622, 26, 40, "Output",
- CellTags->"SUNF",
- CellID->1741928660]
+Cell[7012, 233, 601, 25, 40, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5444, 192, 120, 4, 27, "Input",
+Cell[7650, 263, 119, 4, 27, "Input",
  CellTags->"SUNF",
  CellID->139383085],
-Cell[5567, 198, 874, 38, 40, "Output",
- CellTags->"SUNF",
- CellID->1893375491]
+Cell[7772, 269, 853, 37, 40, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6478, 241, 127, 4, 27, "Input",
+Cell[8662, 311, 127, 4, 27, "Input",
  CellTags->"SUNF",
  CellID->479451850],
-Cell[6608, 247, 561, 24, 40, "Output",
- CellTags->"SUNF",
- CellID->622570571]
+Cell[8792, 317, 542, 23, 40, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7206, 276, 153, 5, 27, "Input",
+Cell[9371, 345, 153, 5, 27, "Input",
  CellTags->"SUNF",
  CellID->1757637776],
-Cell[7362, 283, 361, 15, 40, "Output",
- CellTags->"SUNF",
- CellID->752391067]
+Cell[9527, 352, 341, 14, 38, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7760, 303, 180, 6, 27, "Input",
+Cell[9905, 371, 180, 6, 27, "Input",
  CellTags->"SUNF",
  CellID->169262538],
-Cell[7943, 311, 206, 7, 36, "Output",
- CellTags->"SUNF",
- CellID->1205699996]
+Cell[10088, 379, 185, 6, 35, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
-Cell[8164, 321, 339, 11, 49, "Text",
- CellTags->"SUNF",
- CellID->565916861],
+Cell[10288, 388, 193, 6, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[8528, 336, 203, 6, 27, "Input",
+Cell[10506, 398, 203, 6, 27, "Input",
  CellTags->"SUNF",
  CellID->2026232239],
-Cell[8734, 344, 1552, 60, 46, "Output",
- CellTags->"SUNF",
- CellID->621120740]
+Cell[10712, 406, 1532, 59, 42, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10323, 409, 283, 9, 27, "Input",
+Cell[12281, 470, 283, 9, 27, "Input",
  CellTags->"SUNF",
  CellID->386944916],
-Cell[10609, 420, 459, 19, 40, "Output",
- CellTags->"SUNF",
- CellID->631419441]
+Cell[12567, 481, 439, 18, 40, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11105, 444, 256, 8, 27, "Input",
+Cell[13043, 504, 256, 8, 27, "Input",
  CellTags->"SUNF",
  CellID->963311023],
-Cell[11364, 454, 1571, 61, 46, "Output",
- CellTags->"SUNF",
- CellID->215339899]
+Cell[13302, 514, 1551, 60, 42, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12972, 520, 192, 7, 27, "Input",
+Cell[14890, 579, 191, 7, 27, "Input",
  CellTags->"SUNF",
  CellID->1003312113],
-Cell[13167, 529, 256, 8, 49, "Output",
- CellTags->"SUNF",
- CellID->792790909]
+Cell[15084, 588, 235, 7, 49, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13460, 542, 221, 8, 27, "Input",
+Cell[15356, 600, 221, 8, 27, "Input",
  CellTags->"SUNF",
  CellID->2081826967],
-Cell[13684, 552, 365, 11, 49, "Output",
- CellTags->"SUNF",
- CellID->1149570291]
+Cell[15580, 610, 344, 10, 49, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14086, 568, 250, 9, 27, "Input",
+Cell[15961, 625, 250, 9, 27, "Input",
  CellTags->"SUNF",
  CellID->1938677300],
-Cell[14339, 579, 257, 8, 49, "Output",
- CellTags->"SUNF",
- CellID->1462891621]
+Cell[16214, 636, 236, 7, 49, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14633, 592, 153, 5, 27, "Input",
+Cell[16487, 648, 153, 5, 27, "Input",
  CellTags->"SUNF",
  CellID->334638901],
-Cell[14789, 599, 362, 15, 40, "Output",
- CellTags->"SUNF",
- CellID->532100486]
+Cell[16643, 655, 342, 14, 38, "Output",
+ CellTags->"SUNF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15188, 619, 181, 6, 27, "Input",
+Cell[17022, 674, 181, 6, 27, "Input",
  CellTags->"SUNF",
  CellID->1328454294],
-Cell[15372, 627, 509, 22, 40, "Output",
- CellTags->"SUNF",
- CellID->1815424467]
+Cell[17206, 682, 488, 21, 38, "Output",
+ CellTags->"SUNF"]
 }, Open  ]]
 }, Open  ]],
-Cell[15908, 653, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17721, 707, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15976, 658, 270, 12, 31, "SeeAlsoSection",
+Cell[17789, 712, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[16249, 672, 994, 39, 32, "Text",
- CellTags->"SUNF",
- CellID->639373109]
+Cell[18062, 726, 958, 37, 55, "SeeAlso"]
 }, Open  ]],
-Cell[17258, 714, 23, 0, 42, "FooterCell"]
+Cell[19035, 766, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

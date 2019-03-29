@@ -10,62 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17283,        614]
-NotebookOptionsPosition[     12127,        453]
-NotebookOutlinePosition[     15590,        550]
-CellTagsIndexPosition[     15474,        544]
+NotebookDataLength[     23065,        806]
+NotebookOptionsPosition[     18036,        652]
+NotebookOutlinePosition[     21243,        740]
+CellTagsIndexPosition[     21127,        734]
 WindowTitle->RussianTrick
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/RussianTrick\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/RussianTrick"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FourDivergence\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FourDivergence"], "\<\"FourLaplacian\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FourLaplacian"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/RussianTrick\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/RussianTrick"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 RussianTrick.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130297], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/RussianTrick", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$231039], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/RussianTrick", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,20 @@ RussianTrick.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["RussianTrick", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["RussianTrick", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -84,11 +120,10 @@ Cell[BoxData[GridBox[{
         RowBox[{"{", 
          RowBox[{"q1", ",", "q2", ",", "p"}], "}"}]}], "]"}]], 
       "InlineFormula"],
-     " \[LineSeparator]",
-     "(=RussianTrick[exp,p,p,{q1,q2,p}]) does the integration by parts where \
-p is the external momentum. RussianTrick[exp, k,l, {q1,q2,p}] \
-(=RussianTrick[exp,k,l]) does integration by parts where l is the momentum to \
-be differentiated.\n\nThe result is an expression which is vanishing."
+     " \[LineSeparator](=RussianTrick[exp,p,p,{q1,q2,p}]) does the \
+integration by parts where p is the external momentum. RussianTrick[exp, k,l, \
+{q1,q2,p}] (=RussianTrick[exp,k,l]) does integration by parts where l is the \
+momentum to be differentiated."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -96,6 +131,41 @@ be differentiated.\n\nThe result is an expression which is vanishing."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1075200914],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["The result is an expression which is vanishing.", "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -114,7 +184,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1414267960],
+ CellID->1805751151],
 
 Cell[CellGroupData[{
 
@@ -124,7 +194,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2071258702],
+ CellID->547874990],
 
 Cell[CellGroupData[{
 
@@ -163,12 +233,11 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["0",
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{88, 20},
+ ImageSize->{86, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RussianTrick",
- CellLabel->"Out[1]=",
- CellID->2099872204]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,47 +272,114 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], "2"], "/", 
    RowBox[{
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"]}]}], TraditionalForm]], "Output",
- ImageSize->{520, 43},
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False]}]}], TraditionalForm]], "Output",
+ ImageSize->{465, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RussianTrick",
- CellLabel->"Out[2]=",
- CellID->1909433347]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -282,47 +418,114 @@ Cell[BoxData[
        FormBox["\<\")\"\>",
         TraditionalForm]}], "2"]}], ")"}], "/", 
    RowBox[{
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm], "-", 
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
        FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"]}]}], TraditionalForm]], "Output",
- ImageSize->{520, 43},
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D]]],
+     Editable->False]}]}], TraditionalForm]], "Output",
+ ImageSize->{493, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RussianTrick",
- CellLabel->"Out[3]=",
- CellID->2087454288]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -356,12 +559,11 @@ Cell[BoxData[
       FormBox["0",
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{103, 20},
+ ImageSize->{104, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RussianTrick",
- CellLabel->"Out[4]=",
- CellID->641619861]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -397,12 +599,11 @@ Cell[BoxData[
        FormBox["0",
         TraditionalForm]}]],
      TraditionalForm], "\[Rule]", "0"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{130, 21},
+ ImageSize->{128, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RussianTrick",
- CellLabel->"Out[5]=",
- CellID->1453686089]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -444,9 +645,7 @@ Cell[TextData[{
   ButtonNote->"FourLaplacian"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"RussianTrick",
- CellID->1345403817]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -463,10 +662,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 15.233421}", 
+   "built" -> "{2019, 3, 29, 17, 52, 53.580539}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -475,11 +674,10 @@ TaggingRules->{
     "RussianTrick[exp, k, {q1, q2, p}] (=RussianTrick[exp,p,p,{q1,q2,p}]) \
 does the integration by parts where p is the external momentum. \
 RussianTrick[exp, k,l, {q1,q2,p}] (=RussianTrick[exp,k,l]) does integration \
-by parts where l is the momentum to be differentiated. The result is an \
-expression which is vanishing.", "synonyms" -> {}, "title" -> "RussianTrick", 
-    "titlemodifier" -> "", "windowtitle" -> "RussianTrick", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/RussianTrick"}, "SearchTextTranslated" -> 
-  ""},
+by parts where l is the momentum to be differentiated.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "RussianTrick", "titlemodifier" -> "", 
+    "windowtitle" -> "RussianTrick", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/RussianTrick"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -499,123 +697,117 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3693, 101, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5672, 171, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1414267960]},
+   CellID->1805751151]},
  "RussianTrick"->{
-  Cell[4327, 130, 387, 13, 27, "Input",
+  Cell[6305, 200, 387, 13, 27, "Input",
    CellTags->"RussianTrick",
    CellID->202624512],
-  Cell[4717, 145, 606, 25, 41, "Output",
-   CellTags->"RussianTrick",
-   CellID->2099872204],
-  Cell[5360, 175, 125, 4, 27, "Input",
+  Cell[6695, 215, 585, 24, 42, "Output",
+   CellTags->"RussianTrick"],
+  Cell[7317, 244, 125, 4, 27, "Input",
    CellTags->"RussianTrick",
    CellID->195595910],
-  Cell[5488, 181, 1772, 64, 64, "Output",
-   CellTags->"RussianTrick",
-   CellID->1909433347],
-  Cell[7297, 250, 189, 6, 27, "Input",
+  Cell[7445, 250, 3791, 131, 62, "Output",
+   CellTags->"RussianTrick"],
+  Cell[11273, 386, 189, 6, 27, "Input",
    CellTags->"RussianTrick",
    CellID->767131830],
-  Cell[7489, 258, 1861, 66, 64, "Output",
-   CellTags->"RussianTrick",
-   CellID->2087454288],
-  Cell[9387, 329, 130, 4, 27, "Input",
+  Cell[11465, 394, 3880, 133, 62, "Output",
+   CellTags->"RussianTrick"],
+  Cell[15382, 532, 130, 4, 27, "Input",
    CellTags->"RussianTrick",
    CellID->2066492260],
-  Cell[9520, 335, 699, 28, 41, "Output",
-   CellTags->"RussianTrick",
-   CellID->641619861],
-  Cell[10256, 368, 153, 5, 27, "Input",
+  Cell[15515, 538, 679, 27, 42, "Output",
+   CellTags->"RussianTrick"],
+  Cell[16231, 570, 153, 5, 27, "Input",
    CellTags->"RussianTrick",
    CellID->1029114011],
-  Cell[10412, 375, 750, 29, 42, "Output",
+  Cell[16387, 577, 729, 28, 42, "Output",
+   CellTags->"RussianTrick"],
+  Cell[17131, 608, 128, 4, 70, "Input",
    CellTags->"RussianTrick",
-   CellID->1453686089],
-  Cell[11177, 407, 128, 4, 27, "Input",
-   CellTags->"RussianTrick",
-   CellID->659830929],
-  Cell[11661, 433, 424, 15, 32, "Text",
-   CellTags->"RussianTrick",
-   CellID->1345403817]}
+   CellID->659830929]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14194, 500},
- {"RussianTrick", 14334, 504}
+ {"PrimaryExamplesSection", 20048, 698},
+ {"RussianTrick", 20188, 702}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2262, 52, 51, "AnchorBarGrid",
+Cell[584, 21, 3135, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2849, 75, 55, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2907, 78, 761, 19, 162, "Usage",
+Cell[3722, 99, 289, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4036, 114, 701, 18, 114, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3693, 101, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4762, 136, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1075200914],
+Cell[5504, 162, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5538, 164, 85, 1, 31, "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5672, 171, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1414267960],
+ CellID->1805751151],
 Cell[CellGroupData[{
-Cell[4106, 120, 196, 6, 25, "ExampleSection",
- CellID->2071258702],
+Cell[6085, 190, 195, 6, 25, "ExampleSection",
+ CellID->547874990],
 Cell[CellGroupData[{
-Cell[4327, 130, 387, 13, 27, "Input",
+Cell[6305, 200, 387, 13, 27, "Input",
  CellTags->"RussianTrick",
  CellID->202624512],
-Cell[4717, 145, 606, 25, 41, "Output",
- CellTags->"RussianTrick",
- CellID->2099872204]
+Cell[6695, 215, 585, 24, 42, "Output",
+ CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5360, 175, 125, 4, 27, "Input",
+Cell[7317, 244, 125, 4, 27, "Input",
  CellTags->"RussianTrick",
  CellID->195595910],
-Cell[5488, 181, 1772, 64, 64, "Output",
- CellTags->"RussianTrick",
- CellID->1909433347]
+Cell[7445, 250, 3791, 131, 62, "Output",
+ CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7297, 250, 189, 6, 27, "Input",
+Cell[11273, 386, 189, 6, 27, "Input",
  CellTags->"RussianTrick",
  CellID->767131830],
-Cell[7489, 258, 1861, 66, 64, "Output",
- CellTags->"RussianTrick",
- CellID->2087454288]
+Cell[11465, 394, 3880, 133, 62, "Output",
+ CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9387, 329, 130, 4, 27, "Input",
+Cell[15382, 532, 130, 4, 27, "Input",
  CellTags->"RussianTrick",
  CellID->2066492260],
-Cell[9520, 335, 699, 28, 41, "Output",
- CellTags->"RussianTrick",
- CellID->641619861]
+Cell[15515, 538, 679, 27, 42, "Output",
+ CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10256, 368, 153, 5, 27, "Input",
+Cell[16231, 570, 153, 5, 27, "Input",
  CellTags->"RussianTrick",
  CellID->1029114011],
-Cell[10412, 375, 750, 29, 42, "Output",
- CellTags->"RussianTrick",
- CellID->1453686089]
+Cell[16387, 577, 729, 28, 42, "Output",
+ CellTags->"RussianTrick"]
 }, Open  ]],
-Cell[11177, 407, 128, 4, 27, "Input",
+Cell[17131, 608, 128, 4, 70, "Input",
  CellTags->"RussianTrick",
  CellID->659830929]
 }, Open  ]],
-Cell[11320, 414, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17274, 615, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11388, 419, 270, 12, 31, "SeeAlsoSection",
+Cell[17342, 620, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11661, 433, 424, 15, 32, "Text",
- CellTags->"RussianTrick",
- CellID->1345403817]
+Cell[17615, 634, 379, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[12100, 451, 23, 0, 42, "FooterCell"]
+Cell[18009, 650, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

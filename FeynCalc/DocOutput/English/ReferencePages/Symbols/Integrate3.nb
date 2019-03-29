@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16341,        570]
-NotebookOptionsPosition[     11091,        402]
-NotebookOutlinePosition[     14563,        501]
-CellTagsIndexPosition[     14449,        495]
+NotebookDataLength[     16817,        588]
+NotebookOptionsPosition[     11957,        438]
+NotebookOutlinePosition[     15209,        528]
+CellTagsIndexPosition[     15095,        522]
 WindowTitle->Integrate3
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Integrate3\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Integrate3"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Integrate3.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92705], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Integrate3", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Integrate2\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate2"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Integrate3\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Integrate3"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+Integrate3.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$174057], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Integrate3", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Integrate3", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Integrate3", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -109,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->6353955],
+ CellID->1700620645],
 
 Cell[CellGroupData[{
 
@@ -119,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1881561257],
+ CellID->1429976007],
 
 Cell[CellGroupData[{
 
@@ -142,12 +174,11 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"(", 
       RowBox[{"m", "+", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
- ImageSize->{75, 46},
+ ImageSize->{77, 40},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
- CellLabel->"Out[1]=",
- CellID->559999213]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -173,20 +204,25 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-    RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-     RowBox[{"1", ",", "m"}], ")"}]}], "-", 
-   RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-    RowBox[{"1", ",", "2", ",", "m"}], ")"}], "-", 
-   RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-    RowBox[{"2", ",", "1", ",", "m"}], ")"}], "+", 
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox["m",
+      TraditionalForm], ")"}]}], "-", 
+   RowBox[{
+    SubscriptBox["S", "12"], "(", 
+    FormBox["m",
+     TraditionalForm], ")"}], "-", 
+   RowBox[{
+    SubscriptBox["S", "21"], "(", 
+    FormBox["m",
+     TraditionalForm], ")"}], "+", 
    TemplateBox[{"3"},
     "Zeta"]}], TraditionalForm]], "Output",
- ImageSize->{564, 35},
+ ImageSize->{257, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
- CellLabel->"Out[2]=",
- CellID->279018012]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -225,12 +261,18 @@ Cell[BoxData[
      RowBox[{
       RowBox[{
        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-        RowBox[{"1", ",", "m"}], ")"}]}], "-", 
-      RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-       RowBox[{"1", ",", "2", ",", "m"}], ")"}], "-", 
-      RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-       RowBox[{"2", ",", "1", ",", "m"}], ")"}], "+", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox["m",
+         TraditionalForm], ")"}]}], "-", 
+      RowBox[{
+       SubscriptBox["S", "12"], "(", 
+       FormBox["m",
+        TraditionalForm], ")"}], "-", 
+      RowBox[{
+       SubscriptBox["S", "21"], "(", 
+       FormBox["m",
+        TraditionalForm], ")"}], "+", 
       TemplateBox[{"3"},
        "Zeta"]}], ")"}]}], "+", 
    RowBox[{"b", " ", 
@@ -283,12 +325,11 @@ Cell[BoxData[
         "Zeta"], " ", 
        RowBox[{"log", "(", "2", ")"}]}]}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{553, 145},
+ ImageSize->{409, 115},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
- CellLabel->"Out[3]=",
- CellID->243111463]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,12 +347,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{14, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
- CellLabel->"Out[4]=",
- CellID->1705014554]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -334,12 +374,11 @@ Cell[BoxData[
   RowBox[{
    SuperscriptBox["f", "\[Prime]",
     MultilineFunction->None], "(", "1", ")"}], TraditionalForm]], "Output",
- ImageSize->{39, 15},
+ ImageSize->{41, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
- CellLabel->"Out[5]=",
- CellID->929710671]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -358,12 +397,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{14, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
- CellLabel->"Out[6]=",
- CellID->64714700]
+ CellLabel->"Out[6]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -393,9 +431,7 @@ Cell[TextData[{
   ButtonNote->"Integrate2"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Integrate3",
- CellID->622342761]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -412,10 +448,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 38.901293}", 
+   "built" -> "{2019, 3, 29, 17, 50, 49.968374}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -425,9 +461,9 @@ TaggingRules->{
 is performed in a distributional sense. Integrate3 works more effectively on \
 a sum of expressions if they are expanded or collected with respect to the \
 integration variable. See the examples in Integrate2.", "synonyms" -> {}, 
-    "title" -> "Integrate3", "titlemodifier" -> "", "windowtitle" -> 
-    "Integrate3", "type" -> "Symbol", "uri" -> "FeynCalc/ref/Integrate3"}, 
-  "SearchTextTranslated" -> ""},
+    "tabletags" -> {}, "title" -> "Integrate3", "titlemodifier" -> "", 
+    "windowtitle" -> "Integrate3", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Integrate3"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -447,131 +483,113 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3502, 96, 385, 15, 31, "PrimaryExamplesSection",
+  Cell[4499, 128, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->6353955]},
+   CellID->1700620645]},
  "Integrate3"->{
-  Cell[4133, 125, 298, 10, 31, "Input",
+  Cell[5133, 157, 298, 10, 31, "Input",
    CellTags->"Integrate3",
    CellID->425224867],
-  Cell[4434, 137, 330, 12, 67, "Output",
-   CellTags->"Integrate3",
-   CellID->559999213],
-  Cell[4801, 154, 419, 14, 54, "Input",
+  Cell[5434, 169, 310, 11, 61, "Output",
+   CellTags->"Integrate3"],
+  Cell[5781, 185, 419, 14, 56, "Input",
    CellTags->"Integrate3",
    CellID->1726046539],
-  Cell[5223, 170, 614, 18, 56, "Output",
-   CellTags->"Integrate3",
-   CellID->279018012],
-  Cell[5874, 193, 695, 24, 54, "Input",
+  Cell[6203, 201, 599, 23, 38, "Output",
+   CellTags->"Integrate3"],
+  Cell[6839, 229, 695, 24, 56, "Input",
    CellTags->"Integrate3",
    CellID->1210488286],
-  Cell[6572, 219, 2119, 71, 166, "Output",
-   CellTags->"Integrate3",
-   CellID->243111463],
-  Cell[8728, 295, 284, 9, 27, "Input",
+  Cell[7537, 255, 2122, 76, 136, "Output",
+   CellTags->"Integrate3"],
+  Cell[9696, 336, 284, 9, 27, "Input",
    CellTags->"Integrate3",
    CellID->757263318],
-  Cell[9015, 306, 212, 7, 36, "Output",
-   CellTags->"Integrate3",
-   CellID->1705014554],
-  Cell[9264, 318, 340, 11, 27, "Input",
+  Cell[9983, 347, 191, 6, 35, "Output",
+   CellTags->"Integrate3"],
+  Cell[10211, 358, 340, 11, 27, "Input",
    CellTags->"Integrate3",
    CellID->818446262],
-  Cell[9607, 331, 300, 10, 36, "Output",
-   CellTags->"Integrate3",
-   CellID->929710671],
-  Cell[9944, 346, 289, 10, 27, "Input",
+  Cell[10554, 371, 280, 9, 37, "Output",
+   CellTags->"Integrate3"],
+  Cell[10871, 385, 289, 10, 27, "Input",
    CellTags->"Integrate3",
    CellID->1567611943],
-  Cell[10236, 358, 210, 7, 36, "Output",
-   CellTags->"Integrate3",
-   CellID->64714700],
-  Cell[10814, 388, 235, 9, 32, "Text",
-   CellTags->"Integrate3",
-   CellID->622342761]}
+  Cell[11163, 397, 191, 6, 35, "Output",
+   CellTags->"Integrate3"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13113, 448},
- {"Integrate3", 13247, 452}
+ {"PrimaryExamplesSection", 13974, 484},
+ {"Integrate3", 14112, 488}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3015, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 584, 14, 112, "Usage",
+Cell[3600, 97, 287, 11, 44, "ObjectNameGrid"],
+Cell[3890, 110, 584, 14, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3502, 96, 385, 15, 31, "PrimaryExamplesSection",
+Cell[4499, 128, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->6353955],
+ CellID->1700620645],
 Cell[CellGroupData[{
-Cell[3912, 115, 196, 6, 25, "ExampleSection",
- CellID->1881561257],
+Cell[4912, 147, 196, 6, 25, "ExampleSection",
+ CellID->1429976007],
 Cell[CellGroupData[{
-Cell[4133, 125, 298, 10, 31, "Input",
+Cell[5133, 157, 298, 10, 31, "Input",
  CellTags->"Integrate3",
  CellID->425224867],
-Cell[4434, 137, 330, 12, 67, "Output",
- CellTags->"Integrate3",
- CellID->559999213]
+Cell[5434, 169, 310, 11, 61, "Output",
+ CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4801, 154, 419, 14, 54, "Input",
+Cell[5781, 185, 419, 14, 56, "Input",
  CellTags->"Integrate3",
  CellID->1726046539],
-Cell[5223, 170, 614, 18, 56, "Output",
- CellTags->"Integrate3",
- CellID->279018012]
+Cell[6203, 201, 599, 23, 38, "Output",
+ CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5874, 193, 695, 24, 54, "Input",
+Cell[6839, 229, 695, 24, 56, "Input",
  CellTags->"Integrate3",
  CellID->1210488286],
-Cell[6572, 219, 2119, 71, 166, "Output",
- CellTags->"Integrate3",
- CellID->243111463]
+Cell[7537, 255, 2122, 76, 136, "Output",
+ CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8728, 295, 284, 9, 27, "Input",
+Cell[9696, 336, 284, 9, 27, "Input",
  CellTags->"Integrate3",
  CellID->757263318],
-Cell[9015, 306, 212, 7, 36, "Output",
- CellTags->"Integrate3",
- CellID->1705014554]
+Cell[9983, 347, 191, 6, 35, "Output",
+ CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9264, 318, 340, 11, 27, "Input",
+Cell[10211, 358, 340, 11, 27, "Input",
  CellTags->"Integrate3",
  CellID->818446262],
-Cell[9607, 331, 300, 10, 36, "Output",
- CellTags->"Integrate3",
- CellID->929710671]
+Cell[10554, 371, 280, 9, 37, "Output",
+ CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9944, 346, 289, 10, 27, "Input",
+Cell[10871, 385, 289, 10, 27, "Input",
  CellTags->"Integrate3",
  CellID->1567611943],
-Cell[10236, 358, 210, 7, 36, "Output",
- CellTags->"Integrate3",
- CellID->64714700]
+Cell[11163, 397, 191, 6, 35, "Output",
+ CellTags->"Integrate3"]
 }, Open  ]]
 }, Open  ]],
-Cell[10473, 369, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11381, 407, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10541, 374, 270, 12, 31, "SeeAlsoSection",
+Cell[11449, 412, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10814, 388, 235, 9, 32, "Text",
- CellTags->"Integrate3",
- CellID->622342761]
+Cell[11722, 426, 193, 7, 55, "SeeAlso"]
 }, Open  ]],
-Cell[11064, 400, 23, 0, 42, "FooterCell"]
+Cell[11930, 436, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

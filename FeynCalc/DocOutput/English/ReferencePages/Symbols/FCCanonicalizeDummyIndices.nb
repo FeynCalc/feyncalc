@@ -10,64 +10,86 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15462,        573]
-NotebookOptionsPosition[     12117,        476]
-NotebookOutlinePosition[     14518,        536]
-CellTagsIndexPosition[     14433,        531]
+NotebookDataLength[     18679,        666]
+NotebookOptionsPosition[     14892,        555]
+NotebookOutlinePosition[     17292,        616]
+CellTagsIndexPosition[     17207,        611]
 WindowTitle->FCCanonicalizeDummyIndices
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->
-        False], {"\<\"FeynCalc/ref/FCCanonicalizeDummyIndices\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/FCCanonicalizeDummyIndices"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FCRenameDummyIndices\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FCRenameDummyIndices"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"FeynCalc/ref/FCCanonicalizeDummyIndices\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FCCanonicalizeDummyIndices"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 FCCanonicalizeDummyIndices.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58303], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/FCCanonicalizeDummyIndices", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$94457], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FCCanonicalizeDummyIndices", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -75,8 +97,20 @@ FCCanonicalizeDummyIndices.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FCCanonicalizeDummyIndices", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FCCanonicalizeDummyIndices", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -99,6 +133,95 @@ names."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1830468828],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCCanonicalizeDummyIndices", "]"}]], "Input",
+ CellLabel->"In[758]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CartesianIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"CustomIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCTraceExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Function", "\[Rule]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "FeynCalc`FCCanonicalizeDummyIndices`Private`x", ",", 
+         "FeynCalc`FCCanonicalizeDummyIndices`Private`seed"}], "}"}], 
+       "\[Function]", 
+       RowBox[{"FCGV", "(", 
+        RowBox[{
+         RowBox[{
+         "ToString", "[", "FeynCalc`FCCanonicalizeDummyIndices`Private`seed", 
+          "]"}], "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{
+          "Identity", "@@", "FeynCalc`FCCanonicalizeDummyIndices`Private`x"}],
+           "]"}]}], ")"}]}], ")"}]}], ",", 
+    RowBox[{"Head", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "LorentzIndex", ",", "CartesianIndex", ",", "SUNIndex", ",", 
+       "SUNFIndex"}], "}"}]}], ",", 
+    RowBox[{"LorentzIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}], ",", 
+    RowBox[{"NotMomentum", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"SUNFIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"SUNIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{518, 206},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[758]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -114,7 +237,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->372157526],
+ CellID->685365128],
 
 Cell[CellGroupData[{
 
@@ -124,7 +247,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->898809491],
+ CellID->1027554553],
 
 Cell[CellGroupData[{
 
@@ -153,102 +276,77 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["p",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm], " ", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["q",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}], "+", 
    RowBox[{
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["p",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["nu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["nu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm], " ", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["q",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["nu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["nu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}], "+", 
    RowBox[{
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["q",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["si",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["si",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm], " ", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["r",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["si",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["r",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["si",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{188, 21},
+ ImageSize->{193, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[1]=",
- CellID->1037526668]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,56 +361,43 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"li481\"\>", ")"}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
+      RowBox[{"FCGV", "(", "\<\"li1881\"\>", ")"}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"2", " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["p",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"li481\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "+", 
-     FormBox[
       SuperscriptBox[
        FormBox[
-        FormBox["r",
+        FormBox["p",
          TraditionalForm],
         TraditionalForm], 
        FormBox[
         FormBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"li481\"\>", ")"}],
-          TraditionalForm],
+         RowBox[{"FCGV", "(", "\<\"li1881\"\>", ")"}],
          TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{264, 26},
+        TraditionalForm]]}], "+", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["r",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        RowBox[{"FCGV", "(", "\<\"li1881\"\>", ")"}],
+        TraditionalForm],
+       TraditionalForm]]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{284, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[2]=",
- CellID->305063659]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -330,71 +415,54 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$195", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$196", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$195", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{303, 22},
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$196", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{277, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[3]=",
- CellID->2035882105]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -411,65 +479,76 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{85, 19},
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{91, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[4]=",
- CellID->1590489350]
+ CellLabel->"Out[4]="]
 }, Open  ]]
-}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FCRenameDummyIndices",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCRenameDummyIndices",
+  ButtonNote->"FCRenameDummyIndices"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -486,10 +565,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 7.902366}", 
+   "built" -> "{2019, 3, 29, 17, 47, 49.718979}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -500,10 +579,11 @@ in the expression. The option Momentum provides a possibilitiy to limit the \
 canonicalization only to particular Momenta. With the option \
 LorentzIndexNames one can provide a list of names to be used for the \
 canonicalized indices, to have say mu, nu, rho etc. instead of some random \
-names.", "synonyms" -> {}, "title" -> "FCCanonicalizeDummyIndices", 
-    "titlemodifier" -> "", "windowtitle" -> "FCCanonicalizeDummyIndices", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/FCCanonicalizeDummyIndices"}, 
-  "SearchTextTranslated" -> ""},
+names.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "FCCanonicalizeDummyIndices", "titlemodifier" -> "", "windowtitle" -> 
+    "FCCanonicalizeDummyIndices", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FCCanonicalizeDummyIndices"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -523,58 +603,71 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3737, 101, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7567, 224, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->372157526]}
+   CellID->685365128]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14290, 524}
+ {"PrimaryExamplesSection", 17064, 604}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[598, 21, 2339, 54, 51, "AnchorBarGrid",
+Cell[598, 21, 3122, 76, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2940, 77, 69, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[3012, 80, 700, 17, 127, "Usage",
+Cell[3723, 99, 303, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4051, 114, 700, 17, 130, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3737, 101, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4776, 135, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1830468828],
+Cell[5518, 161, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[5574, 165, 110, 2, 27, "Input"],
+Cell[5687, 169, 1819, 48, 227, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7567, 224, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->372157526],
+ CellID->685365128],
 Cell[CellGroupData[{
-Cell[4149, 120, 195, 6, 25, "ExampleSection",
- CellID->898809491],
+Cell[7979, 243, 196, 6, 25, "ExampleSection",
+ CellID->1027554553],
 Cell[CellGroupData[{
-Cell[4369, 130, 498, 18, 27, "Input",
+Cell[8200, 253, 498, 18, 27, "Input",
  CellID->720389846],
-Cell[4870, 150, 2219, 100, 42, "Output",
- CellID->1037526668]
+Cell[8701, 273, 1640, 75, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7126, 255, 156, 5, 27, "Input",
+Cell[10378, 353, 156, 5, 27, "Input",
  CellID->1752687288],
-Cell[7285, 262, 1276, 52, 47, "Output",
- CellID->305063659]
+Cell[10537, 360, 978, 39, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8598, 319, 267, 8, 27, "Input",
+Cell[11552, 404, 267, 8, 27, "Input",
  CellID->1834012343],
-Cell[8868, 329, 1615, 67, 43, "Output",
- CellID->2035882105]
+Cell[11822, 414, 1230, 50, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10520, 401, 250, 7, 27, "Input",
+Cell[13089, 469, 250, 7, 27, "Input",
  CellID->151485661],
-Cell[10773, 410, 1278, 59, 40, "Output",
- CellID->1590489350]
-}, Open  ]]
+Cell[13342, 478, 917, 42, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[12090, 474, 23, 0, 42, "FooterCell"]
+Cell[14286, 524, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14354, 529, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[14627, 543, 223, 7, 55, "SeeAlso"]
+}, Open  ]],
+Cell[14865, 553, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

@@ -1,0 +1,605 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16565,        595]
+NotebookOptionsPosition[     11760,        442]
+NotebookOutlinePosition[     14720,        525]
+CellTagsIndexPosition[     14602,        519]
+WindowTitle->ThreeDivergence
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ThreeDivergence\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ThreeDivergence"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+ThreeDivergence.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$275251], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ThreeDivergence", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["ThreeDivergence", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ThreeDivergence", "[", 
+       RowBox[{"exp", ",", 
+        RowBox[{"CV", "[", 
+         RowBox[{"p", ",", "i"}], "]"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator] calculates the partial derivative of exp w.r.t. ",
+     Cell[BoxData[
+      SuperscriptBox["p", "i"]], "InlineFormula"],
+     ". ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple \
+derivative."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1328219120],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ThreeDivergence", "]"}]], "Input",
+ CellLabel->"In[299]:=",
+ CellID->1897893490],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Abort", "\[Rule]", "True"}], ",", 
+    RowBox[{"ApartFF", "\[Rule]", "False"}], ",", 
+    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsEvaluate", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{461, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[299]=",
+ CellID->1768309366]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1122261242],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2022934456],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CSP", "[", 
+  RowBox[{"p", ",", "q"}], "]"}]], "Input",
+ CellTags->"FourDivergence",
+ CellLabel->"In[1]:=",
+ CellID->1686706616],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["p",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["q",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{42, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourDivergence",
+ CellLabel->"Out[1]=",
+ CellID->1220009152]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ThreeDivergence", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"CV", "[", 
+    RowBox[{"q", ",", "i"}], "]"}]}], "]"}]], "Input",
+ CellTags->"FourDivergence",
+ CellLabel->"In[2]:=",
+ CellID->1594453358],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["p",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox[
+    FormBox[
+     StyleBox["i",
+      StripOnInput->False,
+      FontWeight->Bold],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{26, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourDivergence",
+ CellLabel->"Out[2]=",
+ CellID->1633407757]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CSP", "[", 
+  RowBox[{
+   RowBox[{"p", "-", "k"}], ",", "q"}], "]"}]], "Input",
+ CellTags->"FourDivergence",
+ CellLabel->"In[3]:=",
+ CellID->1521326595],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox[
+        StyleBox["p",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox[
+        StyleBox["k",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm], "_"]}],
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox[
+    OverscriptBox[
+     FormBox[
+      StyleBox["q",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{93, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourDivergence",
+ CellLabel->"Out[3]=",
+ CellID->622756803]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ThreeDivergence", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"CV", "[", 
+    RowBox[{"k", ",", "i"}], "]"}]}], "]"}]], "Input",
+ CellTags->"FourDivergence",
+ CellLabel->"In[4]:=",
+ CellID->822682822],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox[
+       StyleBox["q",
+        StripOnInput->False,
+        FontWeight->Bold],
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      StyleBox["i",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{38, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourDivergence",
+ CellLabel->"Out[4]=",
+ CellID->1912109557]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CFAD", "[", 
+  RowBox[{"{", 
+   RowBox[{"p", ",", 
+    RowBox[{"m", "^", "2"}]}], "}"}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->1112899700],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox[
+        StyleBox["p", Bold, StripOnInput -> False], TraditionalForm], 
+       TraditionalForm], 2],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ ImageSize->{101, 40},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->234224878]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ThreeDivergence", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"CVD", "[", 
+    RowBox[{"p", ",", "i"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->703915902],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox[
+        StyleBox["p",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        StyleBox["i",
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm]]}], 
+    SuperscriptBox[
+     TemplateBox[{"\"(\"",SuperscriptBox[
+        FormBox[
+         FormBox[
+          StyleBox["p", Bold, StripOnInput -> False], TraditionalForm], 
+         TraditionalForm], 2],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+       RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+      "RowDefault"], "2"]]}], TraditionalForm]], "Output",
+ ImageSize->{120, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->2017197915]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ThreeDivergence",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 3, 29, 17, 54, 37.314965}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ThreeDivergence[exp, CV[p, i]] calculates the partial derivative of exp \
+w.r.t. p^i. ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple \
+derivative.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "ThreeDivergence", "titlemodifier" -> "", "windowtitle" -> 
+    "ThreeDivergence", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/ThreeDivergence"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5625, 174, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1122261242]},
+ "FourDivergence"->{
+  Cell[6259, 203, 152, 5, 27, "Input",
+   CellTags->"FourDivergence",
+   CellID->1686706616],
+  Cell[6414, 210, 626, 26, 37, "Output",
+   CellTags->"FourDivergence",
+   CellID->1220009152],
+  Cell[7077, 241, 219, 7, 27, "Input",
+   CellTags->"FourDivergence",
+   CellID->1594453358],
+  Cell[7299, 250, 544, 23, 40, "Output",
+   CellTags->"FourDivergence",
+   CellID->1633407757],
+  Cell[7880, 278, 176, 6, 27, "Input",
+   CellTags->"FourDivergence",
+   CellID->1521326595],
+  Cell[8059, 286, 938, 39, 39, "Output",
+   CellTags->"FourDivergence",
+   CellID->622756803],
+  Cell[9034, 330, 218, 7, 27, "Input",
+   CellTags->"FourDivergence",
+   CellID->822682822],
+  Cell[9255, 339, 578, 24, 40, "Output",
+   CellTags->"FourDivergence",
+   CellID->1912109557]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 13678, 487},
+ {"FourDivergence", 13820, 491}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2302, 53, 50, "AnchorBarGrid",
+ CellID->1],
+Cell[2892, 76, 292, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3209, 91, 643, 18, 101, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3877, 113, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1328219120],
+Cell[4619, 139, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[4675, 143, 120, 3, 27, "Input",
+ CellID->1897893490],
+Cell[4798, 148, 766, 19, 75, "Output",
+ CellID->1768309366]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5625, 174, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1122261242],
+Cell[CellGroupData[{
+Cell[6038, 193, 196, 6, 25, "ExampleSection",
+ CellID->2022934456],
+Cell[CellGroupData[{
+Cell[6259, 203, 152, 5, 27, "Input",
+ CellTags->"FourDivergence",
+ CellID->1686706616],
+Cell[6414, 210, 626, 26, 37, "Output",
+ CellTags->"FourDivergence",
+ CellID->1220009152]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7077, 241, 219, 7, 27, "Input",
+ CellTags->"FourDivergence",
+ CellID->1594453358],
+Cell[7299, 250, 544, 23, 40, "Output",
+ CellTags->"FourDivergence",
+ CellID->1633407757]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7880, 278, 176, 6, 27, "Input",
+ CellTags->"FourDivergence",
+ CellID->1521326595],
+Cell[8059, 286, 938, 39, 39, "Output",
+ CellTags->"FourDivergence",
+ CellID->622756803]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9034, 330, 218, 7, 27, "Input",
+ CellTags->"FourDivergence",
+ CellID->822682822],
+Cell[9255, 339, 578, 24, 40, "Output",
+ CellTags->"FourDivergence",
+ CellID->1912109557]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9870, 368, 173, 6, 27, "Input",
+ CellID->1112899700],
+Cell[10046, 376, 495, 14, 61, "Output",
+ CellID->234224878]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10578, 395, 190, 6, 27, "Input",
+ CellID->703915902],
+Cell[10771, 403, 923, 32, 65, "Output",
+ CellID->2017197915]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[11733, 440, 23, 0, 40, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

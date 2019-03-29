@@ -10,62 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16976,        591]
-NotebookOptionsPosition[     11809,        429]
-NotebookOutlinePosition[     15314,        527]
-CellTagsIndexPosition[     15200,        521]
+NotebookDataLength[     17309,        594]
+NotebookOptionsPosition[     12640,        453]
+NotebookOutlinePosition[     15848,        540]
+CellTagsIndexPosition[     15734,        534]
 WindowTitle->Lagrangian
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Lagrangian\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Lagrangian"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Lagrangian.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$97235], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Lagrangian", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynRule\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynRule"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Lagrangian\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Lagrangian"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+Lagrangian.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$181510], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Lagrangian", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Lagrangian", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Lagrangian", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -112,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->169144531],
+ CellID->252707425],
 
 Cell[CellGroupData[{
 
@@ -122,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->74171254],
+ CellID->1175983937],
 
 Cell[CellGroupData[{
 
@@ -160,17 +192,14 @@ Cell[BoxData[
      FormBox[
       RowBox[{"FCGV", "(", "\<\"a\"\>", ")"}],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{253, 41},
+ ImageSize->{259, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Lagrangian",
- CellLabel->"Out[1]=",
- CellID->2119348269]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
-Cell["Twist-2 operator product expansion operators", "Text",
- CellTags->"Lagrangian",
- CellID->1898296666],
+Cell["Twist-2 operator product expansion operators", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -224,12 +253,11 @@ Cell[BoxData[
      FormBox[
       RowBox[{"FCGV", "(", "\<\"b\"\>", ")"}],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{355, 41},
+ ImageSize->{363, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Lagrangian",
- CellLabel->"Out[2]=",
- CellID->105197133]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -247,7 +275,8 @@ Cell[BoxData[
    SuperscriptBox["\[ImaginaryI]", "m"], " ", 
    RowBox[{
     FormBox[
-     SuperscriptBox["\[Epsilon]", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", "_"], 
       RowBox[{
        FormBox[
         FormBox[
@@ -305,12 +334,11 @@ Cell[BoxData[
      FormBox[
       RowBox[{"FCGV", "(", "\<\"b\"\>", ")"}],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{553, 41},
+ ImageSize->{570, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Lagrangian",
- CellLabel->"Out[3]=",
- CellID->658984245]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -343,12 +371,11 @@ Cell[BoxData[
      RowBox[{"m", "-", "1"}]], ".", 
     FormBox["\[Psi]",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{156, 21},
+ ImageSize->{154, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Lagrangian",
- CellLabel->"Out[4]=",
- CellID->2085030261]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -385,12 +412,11 @@ Cell[BoxData[
      RowBox[{"m", "-", "1"}]], ".", 
     FormBox["\[Psi]",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{178, 21},
+ ImageSize->{178, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Lagrangian",
- CellLabel->"Out[5]=",
- CellID->1018219384]
+ CellLabel->"Out[5]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -420,9 +446,7 @@ Cell[TextData[{
   ButtonNote->"FeynRule"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Lagrangian",
- CellID->1051170443]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -439,10 +463,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 57.699556}", 
+   "built" -> "{2019, 3, 29, 17, 51, 6.422081}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -454,9 +478,9 @@ Lagrangian[\"ogu\"] gives the unpolarized gluon OPE operator. \
 Lagrangian[\"ogp\"] gives the polarized gluon OPE operator. \
 Lagrangian[\"ogd\"] gives the sigma-term part of the QCD lagrangian. \
 Lagrangian[\"QCD\"] gives the gluon self interaction part of the QCD \
-lagrangian.", "synonyms" -> {}, "title" -> "Lagrangian", "titlemodifier" -> 
-    "", "windowtitle" -> "Lagrangian", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Lagrangian"}, "SearchTextTranslated" -> ""},
+lagrangian.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Lagrangian", 
+    "titlemodifier" -> "", "windowtitle" -> "Lagrangian", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Lagrangian"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -476,123 +500,102 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3656, 99, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4649, 131, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->169144531]},
+   CellID->252707425]},
  "Lagrangian"->{
-  Cell[4287, 128, 141, 4, 27, "Input",
+  Cell[5282, 160, 141, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->345064330],
-  Cell[4431, 134, 936, 33, 62, "Output",
-   CellTags->"Lagrangian",
-   CellID->2119348269],
-  Cell[5382, 170, 106, 2, 32, "Text",
-   CellTags->"Lagrangian",
-   CellID->1898296666],
-  Cell[5513, 176, 142, 4, 27, "Input",
+  Cell[5426, 166, 915, 32, 56, "Output",
+   CellTags->"Lagrangian"],
+  Cell[6442, 205, 142, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->1741218479],
-  Cell[5658, 182, 1382, 49, 62, "Output",
-   CellTags->"Lagrangian",
-   CellID->105197133],
-  Cell[7077, 236, 142, 4, 27, "Input",
+  Cell[6587, 211, 1362, 48, 56, "Output",
+   CellTags->"Lagrangian"],
+  Cell[7986, 264, 142, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->1557246101],
-  Cell[7222, 242, 1981, 70, 62, "Output",
-   CellTags->"Lagrangian",
-   CellID->658984245],
-  Cell[9240, 317, 141, 4, 27, "Input",
+  Cell[8131, 270, 1988, 70, 56, "Output",
+   CellTags->"Lagrangian"],
+  Cell[10156, 345, 141, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->249786913],
-  Cell[9384, 323, 748, 27, 42, "Output",
-   CellTags->"Lagrangian",
-   CellID->2085030261],
-  Cell[10169, 355, 142, 4, 27, "Input",
+  Cell[10300, 351, 727, 26, 40, "Output",
+   CellTags->"Lagrangian"],
+  Cell[11064, 382, 142, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->1220998815],
-  Cell[10314, 361, 855, 31, 42, "Output",
-   CellTags->"Lagrangian",
-   CellID->1018219384],
-  Cell[11537, 415, 230, 9, 32, "Text",
-   CellTags->"Lagrangian",
-   CellID->1051170443]}
+  Cell[11209, 388, 834, 30, 40, "Output",
+   CellTags->"Lagrangian"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13951, 477},
- {"Lagrangian", 14087, 481}
+ {"PrimaryExamplesSection", 14774, 501},
+ {"Lagrangian", 14911, 505}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3011, 74, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 738, 17, 131, "Usage",
+Cell[3596, 97, 287, 11, 44, "ObjectNameGrid"],
+Cell[3886, 110, 738, 17, 131, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3656, 99, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4649, 131, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->169144531],
+ CellID->252707425],
 Cell[CellGroupData[{
-Cell[4068, 118, 194, 6, 25, "ExampleSection",
- CellID->74171254],
+Cell[5061, 150, 196, 6, 25, "ExampleSection",
+ CellID->1175983937],
 Cell[CellGroupData[{
-Cell[4287, 128, 141, 4, 27, "Input",
+Cell[5282, 160, 141, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->345064330],
-Cell[4431, 134, 936, 33, 62, "Output",
- CellTags->"Lagrangian",
- CellID->2119348269]
+Cell[5426, 166, 915, 32, 56, "Output",
+ CellTags->"Lagrangian"]
 }, Open  ]],
-Cell[5382, 170, 106, 2, 32, "Text",
- CellTags->"Lagrangian",
- CellID->1898296666],
+Cell[6356, 201, 61, 0, 31, "Notes"],
 Cell[CellGroupData[{
-Cell[5513, 176, 142, 4, 27, "Input",
+Cell[6442, 205, 142, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->1741218479],
-Cell[5658, 182, 1382, 49, 62, "Output",
- CellTags->"Lagrangian",
- CellID->105197133]
+Cell[6587, 211, 1362, 48, 56, "Output",
+ CellTags->"Lagrangian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7077, 236, 142, 4, 27, "Input",
+Cell[7986, 264, 142, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->1557246101],
-Cell[7222, 242, 1981, 70, 62, "Output",
- CellTags->"Lagrangian",
- CellID->658984245]
+Cell[8131, 270, 1988, 70, 56, "Output",
+ CellTags->"Lagrangian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9240, 317, 141, 4, 27, "Input",
+Cell[10156, 345, 141, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->249786913],
-Cell[9384, 323, 748, 27, 42, "Output",
- CellTags->"Lagrangian",
- CellID->2085030261]
+Cell[10300, 351, 727, 26, 40, "Output",
+ CellTags->"Lagrangian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10169, 355, 142, 4, 27, "Input",
+Cell[11064, 382, 142, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->1220998815],
-Cell[10314, 361, 855, 31, 42, "Output",
- CellTags->"Lagrangian",
- CellID->1018219384]
+Cell[11209, 388, 834, 30, 40, "Output",
+ CellTags->"Lagrangian"]
 }, Open  ]]
 }, Open  ]],
-Cell[11196, 396, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12070, 422, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11264, 401, 270, 12, 31, "SeeAlsoSection",
+Cell[12138, 427, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11537, 415, 230, 9, 32, "Text",
- CellTags->"Lagrangian",
- CellID->1051170443]
+Cell[12411, 441, 187, 7, 55, "SeeAlso"]
 }, Open  ]],
-Cell[11782, 427, 23, 0, 42, "FooterCell"]
+Cell[12613, 451, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

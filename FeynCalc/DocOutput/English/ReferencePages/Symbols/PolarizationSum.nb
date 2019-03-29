@@ -10,62 +10,88 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     28926,        858]
-NotebookOptionsPosition[     23358,        687]
-NotebookOutlinePosition[     27083,        791]
-CellTagsIndexPosition[     26929,        784]
+NotebookDataLength[     20939,        774]
+NotebookOptionsPosition[     16406,        635]
+NotebookOutlinePosition[     19058,        708]
+CellTagsIndexPosition[     18939,        702]
 WindowTitle->PolarizationSum
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/PolarizationSum\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/PolarizationSum"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Polariazation\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Polariazation"], "\<\"DoPolariazationSums\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DoPolariazationSums"], "\<\"Uncontract\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Uncontract"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/PolarizationSum\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/PolarizationSum"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 PolarizationSum.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$119607], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/PolarizationSum", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$215226], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/PolarizationSum", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,19 +99,29 @@ PolarizationSum.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["PolarizationSum", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["PolarizationSum", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"PolarizationSum", "[", 
-       RowBox[{"mu", ",", "nu", ",", " ", "..."}], " ", "]"}]], 
+       RowBox[{"\[Mu]", ",", "\[Nu]", ",", " ", "..."}], " ", "]"}]], 
       "InlineFormula"],
-     " \[LineSeparator]",
-     "defines (as abbreviations) several polarization sums. The first two \
-arguments are the interpreted as Lorentz indices, all further ones are \
-momenta. PolarizationSum performs no calculations."
+     " \[LineSeparator]returns different polarization sums depending on its \
+arguments"
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -93,6 +129,125 @@ momenta. PolarizationSum performs no calculations."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->410088894],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]"}], "]"}]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k", ",", " ", "0"}], "]"}]],
+   "InlineFormula"],
+ " gives ",
+ Cell[BoxData[
+  RowBox[{"-", 
+   SuperscriptBox["g", "\[Mu]\[Nu]"]}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k"}], "]"}]], 
+  "InlineFormula"],
+ " returns ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["g", "\[Mu]\[Nu]"]}], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["k", "\[Mu]"], 
+     SuperscriptBox["k", "\[Nu]"]}], 
+    SuperscriptBox["k", "2"]]}]], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"PolarizationSum", "[", 
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k", ",", " ", "n"}], "]"}]],
+   "InlineFormula"],
+ " yields ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["g", "\[Mu]\[Nu]"]}], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["k", "\[Mu]"], 
+      SuperscriptBox["n", "\[Nu]"]}], "+", 
+     RowBox[{
+      SuperscriptBox["k", "\[Nu]"], 
+      SuperscriptBox["n", "\[Mu]"]}]}], 
+    RowBox[{"k", "\[CenterDot]", "n"}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["n", "2"], 
+     SuperscriptBox["k", "\[Mu]"], 
+     SuperscriptBox["k", "\[Nu]"]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"k", "\[CenterDot]", "n"}], ")"}], "2"]]}]], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PolarizationSum", "]"}]], "Input",
+ CellLabel->"In[28]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"VirtualBoson", "\[Rule]", "False"}], ",", 
+    RowBox[{"Heads", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"LorentzIndex", ",", "LorentzIndex"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{487, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[28]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -107,44 +262,21 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(3)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->245803775],
+ CellID->346335419],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(3)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1478638315],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "PolarizationSum", "]"}]], "Input",
- CellTags->"PolarizationSum",
- CellLabel->"In[1]:=",
- CellID->2045558864],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"VirtualBoson", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{260, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"PolarizationSum",
- CellLabel->"Out[1]=",
- CellID->993421841]
-}, Open  ]],
+ CellID->2098569557],
 
 Cell[CellGroupData[{
 
@@ -152,36 +284,35 @@ Cell[BoxData[
  RowBox[{"PolarizationSum", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"PolarizationSum",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->1305140513],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{45, 17},
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{47, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PolarizationSum",
- CellLabel->"Out[2]=",
- CellID->430115432]
+ CellLabel->"Out[1]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -189,7 +320,7 @@ Cell[BoxData[
  RowBox[{"PolarizationSum", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k"}], "]"}]], "Input",
  CellTags->"PolarizationSum",
- CellLabel->"In[3]:=",
+ CellLabel->"In[1]:=",
  CellID->225444567],
 
 Cell[BoxData[
@@ -197,64 +328,115 @@ Cell[BoxData[
   RowBox[{
    FractionBox[
     RowBox[{
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
     SuperscriptBox[
      FormBox[
       OverscriptBox[
        FormBox["k",
         TraditionalForm], "_"],
       TraditionalForm], "2"]], "-", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{95, 51},
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{106, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PolarizationSum",
- CellLabel->"Out[3]=",
- CellID->1457144102]
+ CellLabel->"Out[1]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PolarizationSum", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k", ",", 
+   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
+    SuperscriptBox[
+     FormBox[
+      FormBox["k",
+       TraditionalForm],
+      TraditionalForm], "2"]], "-", 
+   SuperscriptBox["g", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{98, 38},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[BoxData[{
+ RowBox[{"FCClearScalarProducts", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SP", "[", "k", "]"}], "=", "0"}], ";"}]}], "Input",
+ CellLabel->"In[1]:="],
 
 Cell[CellGroupData[{
 
@@ -262,28 +444,8 @@ Cell[BoxData[
  RowBox[{"PolarizationSum", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k", ",", "n"}], "]"}]], "Input",
  CellTags->"PolarizationSum",
- CellLabel->"In[4]:=",
+ CellLabel->"In[2]:=",
  CellID->697709473],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   StyleBox[
-    RowBox[{"PolarizationSum", "::", "notmassless"}], "MessageName"], ":", 
-   " ", "\<\"Warning! You are inserting a polarization sum for massless \
-vector bosons, but the momentum of the external boson \
-\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\[NoBreak] is not \
-on-shell. Please put it on-shell via \
-ScalarProduct[\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\
-\[NoBreak],\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", \
-TraditionalForm]\\)\[NoBreak]]=0 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:FeynCalc/ref/PolarizationSum\\\", ButtonNote -> \
-\\\"FeynCalc`PolarizationSum::notmassless\\\"]\\)\"\>"}], 
-  TraditionalForm]], "Message", "MSG",
- CellTags->"PolarizationSum",
- CellLabel->"During evaluation of In[4]:=",
- CellID->268895154],
 
 Cell[BoxData[
  FormBox[
@@ -297,34 +459,26 @@ Cell[BoxData[
          FormBox["n",
           TraditionalForm], "_"],
         TraditionalForm], "2"], " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         OverscriptBox[
-          FormBox["k",
-           TraditionalForm], "_"],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["k",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["k",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]]}], 
      SuperscriptBox[
       RowBox[{
        FormBox["\<\"(\"\>",
@@ -346,53 +500,39 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\<\")\"\>",
         TraditionalForm]}], "2"]]}], "-", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm], "+", 
-   FractionBox[
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
     RowBox[{
      FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
      FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["n",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["n",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
     RowBox[{
      FormBox[
       OverscriptBox[
@@ -408,34 +548,26 @@ Cell[BoxData[
       TraditionalForm]}]], "+", 
    FractionBox[
     RowBox[{
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["k",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        OverscriptBox[
-         FormBox["n",
-          TraditionalForm], "_"],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["k",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["n",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
     RowBox[{
      FormBox[
       OverscriptBox[
@@ -449,206 +581,12 @@ Cell[BoxData[
        FormBox["n",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{247, 54},
+ ImageSize->{275, 43},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PolarizationSum",
- CellLabel->"Out[4]=",
- CellID->1315646059]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"PolarizationSum", "[", 
-  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "k", ",", 
-   RowBox[{
-    SubscriptBox["p", "1"], "-", 
-    SubscriptBox["p", "2"]}]}], "]"}]], "Input",
- CellTags->"PolarizationSum",
- CellLabel->"In[5]:=",
- CellID->1841435515],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   StyleBox[
-    RowBox[{"PolarizationSum", "::", "notmassless"}], "MessageName"], ":", 
-   " ", "\<\"Warning! You are inserting a polarization sum for massless \
-vector bosons, but the momentum of the external boson \
-\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\[NoBreak] is not \
-on-shell. Please put it on-shell via \
-ScalarProduct[\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", TraditionalForm]\\)\
-\[NoBreak],\[NoBreak]\\!\\(\\*FormBox[\\\"k\\\", \
-TraditionalForm]\\)\[NoBreak]]=0 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:FeynCalc/ref/PolarizationSum\\\", ButtonNote -> \
-\\\"FeynCalc`PolarizationSum::notmassless\\\"]\\)\"\>"}], 
-  TraditionalForm]], "Message", "MSG",
- CellTags->"PolarizationSum",
- CellLabel->"During evaluation of In[5]:=",
- CellID->1845572420],
-
-Cell[BoxData[
- GraphicsBox[
-  TagBox[RasterBox[CompressedData["
-1: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
-H/e6rxY=
-    "], {{0, 131}, {361, 0}}, {0, 255},
-    ColorFunction->RGBColor],
-   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
-   Selectable->False],
-  BaseStyle->"ImageGraphics",
-  ImageSize->Automatic,
-  ImageSizeRaw->{361, 131},
-  PlotRange->{{0, 361}, {0, 131}}]], "Output",
- ImageSize->{365, 131},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->{"PolarizationSum", "RasterizedOutput"},
- CellLabel->"Out[5]=",
- CellID->281630538]
+ CellLabel->"Out[2]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -672,15 +610,25 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- StyleBox[ButtonBox["Polarization",
+ StyleBox[ButtonBox["Polariazation",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Polarization",
-  ButtonNote->"Polarization"],
+  ButtonData->"paclet:FeynCalc/ref/Polariazation",
+  ButtonNote->"Polariazation"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DoPolariazationSums",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DoPolariazationSums",
+  ButtonNote->"DoPolariazationSums"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Uncontract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Uncontract",
+  ButtonNote->"Uncontract"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"PolarizationSum",
- CellID->986230835]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -697,22 +645,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 33.118398}", 
+   "built" -> "{2019, 3, 29, 17, 52, 21.213139}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "PolarizationSum[mu, nu, ... ] defines (as abbreviations) several \
-polarization sums. The first two arguments are the interpreted as Lorentz \
-indices, all further ones are momenta. PolarizationSum performs no \
-calculations.", "synonyms" -> {}, "title" -> "PolarizationSum", 
-    "titlemodifier" -> "", "windowtitle" -> "PolarizationSum", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/PolarizationSum"}, 
-  "SearchTextTranslated" -> ""},
+    "PolarizationSum[\\[Mu], \\[Nu], ... ] returns different polarization \
+sums depending on its arguments", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "PolarizationSum", "titlemodifier" -> "", "windowtitle" -> 
+    "PolarizationSum", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/PolarizationSum"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -732,134 +678,104 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3552, 98, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7707, 253, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->245803775]},
+   CellID->346335419]},
  "PolarizationSum"->{
-  Cell[4185, 127, 148, 4, 27, "Input",
-   CellTags->"PolarizationSum",
-   CellID->2045558864],
-  Cell[4336, 133, 352, 12, 36, "Output",
-   CellTags->"PolarizationSum",
-   CellID->993421841],
-  Cell[4725, 150, 173, 5, 27, "Input",
+  Cell[8340, 282, 173, 5, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->1305140513],
-  Cell[4901, 157, 601, 25, 38, "Output",
-   CellTags->"PolarizationSum",
-   CellID->430115432],
-  Cell[5539, 187, 182, 5, 27, "Input",
+  Cell[8516, 289, 448, 18, 37, "Output",
+   CellTags->"PolarizationSum"],
+  Cell[9131, 318, 182, 5, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->225444567],
-  Cell[5724, 194, 1425, 61, 72, "Output",
-   CellTags->"PolarizationSum",
-   CellID->1457144102],
-  Cell[7186, 260, 192, 5, 27, "Input",
+  Cell[9316, 325, 1084, 46, 60, "Output",
+   CellTags->"PolarizationSum"],
+  Cell[11933, 442, 192, 5, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->697709473],
-  Cell[7381, 267, 886, 18, 73, "Message",
-   CellTags->"PolarizationSum",
-   CellID->268895154],
-  Cell[8270, 287, 4023, 169, 75, "Output",
-   CellTags->"PolarizationSum",
-   CellID->1315646059],
-  Cell[12330, 461, 265, 8, 27, "Input",
-   CellTags->"PolarizationSum",
-   CellID->1841435515],
-  Cell[12598, 471, 887, 18, 73, "Message",
-   CellTags->"PolarizationSum",
-   CellID->1845572420],
-  Cell[13488, 491, 9214, 159, 152, "Output",
-   CellTags->{"PolarizationSum", "RasterizedOutput"},
-   CellID->281630538],
-  Cell[23070, 673, 246, 9, 31, "Text",
-   CellTags->"PolarizationSum",
-   CellID->986230835]},
- "RasterizedOutput"->{
-  Cell[13488, 491, 9214, 159, 152, "Output",
-   CellTags->{"PolarizationSum", "RasterizedOutput"},
-   CellID->281630538]}
+  Cell[12128, 449, 3297, 138, 64, "Output",
+   CellTags->"PolarizationSum"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 25343, 733},
- {"PolarizationSum", 25484, 737},
- {"RasterizedOutput", 26783, 777}
+ {"PrimaryExamplesSection", 18263, 679},
+ {"PolarizationSum", 18405, 683}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2274, 52, 51, "AnchorBarGrid",
+Cell[587, 21, 3255, 78, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2864, 75, 58, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2925, 78, 602, 16, 98, "Usage",
+Cell[3845, 101, 292, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4162, 116, 470, 14, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3552, 98, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->245803775],
+Cell[4657, 134, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->410088894],
+Cell[5398, 160, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5432, 162, 432, 15, 31, "Notes",
+ CellID->1067943069],
+Cell[5867, 179, 427, 16, 47, "Notes"],
+Cell[6297, 197, 800, 28, 50, "Notes"],
 Cell[CellGroupData[{
-Cell[3964, 117, 196, 6, 25, "ExampleSection",
- CellID->1478638315],
-Cell[CellGroupData[{
-Cell[4185, 127, 148, 4, 27, "Input",
- CellTags->"PolarizationSum",
- CellID->2045558864],
-Cell[4336, 133, 352, 12, 36, "Output",
- CellTags->"PolarizationSum",
- CellID->993421841]
+Cell[7122, 229, 98, 2, 27, "Input"],
+Cell[7223, 233, 423, 13, 37, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4725, 150, 173, 5, 27, "Input",
+Cell[7707, 253, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->346335419],
+Cell[CellGroupData[{
+Cell[8119, 272, 196, 6, 25, "ExampleSection",
+ CellID->2098569557],
+Cell[CellGroupData[{
+Cell[8340, 282, 173, 5, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->1305140513],
-Cell[4901, 157, 601, 25, 38, "Output",
- CellTags->"PolarizationSum",
- CellID->430115432]
+Cell[8516, 289, 448, 18, 37, "Output",
+ CellTags->"PolarizationSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5539, 187, 182, 5, 27, "Input",
+Cell[9001, 312, 105, 2, 8, "ExampleDelimiter"],
+Cell[CellGroupData[{
+Cell[9131, 318, 182, 5, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->225444567],
-Cell[5724, 194, 1425, 61, 72, "Output",
- CellTags->"PolarizationSum",
- CellID->1457144102]
+Cell[9316, 325, 1084, 46, 60, "Output",
+ CellTags->"PolarizationSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7186, 260, 192, 5, 27, "Input",
- CellTags->"PolarizationSum",
- CellID->697709473],
-Cell[7381, 267, 886, 18, 73, "Message",
- CellTags->"PolarizationSum",
- CellID->268895154],
-Cell[8270, 287, 4023, 169, 75, "Output",
- CellTags->"PolarizationSum",
- CellID->1315646059]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[12330, 461, 265, 8, 27, "Input",
- CellTags->"PolarizationSum",
- CellID->1841435515],
-Cell[12598, 471, 887, 18, 73, "Message",
- CellTags->"PolarizationSum",
- CellID->1845572420],
-Cell[13488, 491, 9214, 159, 152, "Output",
- CellTags->{"PolarizationSum", "RasterizedOutput"},
- CellID->281630538]
+Cell[10437, 376, 180, 4, 27, "Input"],
+Cell[10620, 382, 939, 41, 59, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[22729, 654, 31, 0, 29, "SectionFooterSpacer"]
+Cell[CellGroupData[{
+Cell[11608, 429, 105, 2, 8, "ExampleDelimiter"],
+Cell[11716, 433, 192, 5, 45, "Input"],
+Cell[CellGroupData[{
+Cell[11933, 442, 192, 5, 27, "Input",
+ CellTags->"PolarizationSum",
+ CellID->697709473],
+Cell[12128, 449, 3297, 138, 64, "Output",
+ CellTags->"PolarizationSum"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[15464, 592, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22797, 659, 270, 12, 31, "SeeAlsoSection",
+Cell[15532, 597, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[23070, 673, 246, 9, 31, "Text",
- CellTags->"PolarizationSum",
- CellID->986230835]
+Cell[15805, 611, 559, 19, 55, "SeeAlso"]
 }, Open  ]],
-Cell[23331, 685, 23, 0, 42, "FooterCell"]
+Cell[16379, 633, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

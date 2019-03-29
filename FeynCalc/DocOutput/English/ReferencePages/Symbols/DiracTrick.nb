@@ -10,62 +10,95 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41960,       1355]
-NotebookOptionsPosition[     32968,       1054]
-NotebookOutlinePosition[     38270,       1213]
-CellTagsIndexPosition[     38118,       1206]
+NotebookDataLength[     23152,        844]
+NotebookOptionsPosition[     18867,        711]
+NotebookOutlinePosition[     20943,        767]
+CellTagsIndexPosition[     20858,        762]
 WindowTitle->DiracTrick
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/DiracTrick\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/DiracTrick"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/DiracTrick.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45249], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/DiracTrick", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Contract\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Contract"], "\<\"DiracEquation\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracEquation"], "\<\"DiracGamma\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGamma"], "\<\"DiracGammaExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGammaCombine"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracTrick"], "\<\"SirlinSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SirlinSimplify"], "\<\"SpinorChainTrick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SpinorChainTrick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DiracTrick\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DiracTrick"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+DiracTrick.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73474], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DiracTrick", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,17 +106,27 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["DiracTrick", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["DiracTrick", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"DiracTrick", "[", "exp", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "contracts gamma matrices with each other and performs several \
-simplifications, but no expansion, use Calc or DiracSimplify for \
-non-commutative expansion."
+     " \[LineSeparator]contracts Dirac matrices with each other and performs \
+several simplifications but no expansions."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -91,6 +134,94 @@ non-commutative expansion."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->806316534],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "There are not many cases when a user will need to call this function \
+directly. Use ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " to achieve maximal simplification of Dirac matrix chains."
+}], "Notes"],
+
+Cell[TextData[{
+ "Regarding the treatment of ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional expressions or the evaluation of expressions with tensors \
+living in different dimensions, see the explanations on the help pages for ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " and ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracTrick", "]"}]], "Input",
+ CellLabel->"In[19]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracGammaCombine", "\[Rule]", "False"}], ",", 
+    RowBox[{"Expanding", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCJoinDOTs", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"InsideDiracTrace", "\[Rule]", "False"}], ",", 
+    RowBox[{"ToDiracGamma67", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{468, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[19]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -105,56 +236,44 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(2)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1110718304],
+ CellID->267946891],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(2)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->648884452],
+ CellID->156775265],
+
+Cell[TextData[{
+ "When applied to chains of Dirac matrices that do not require noncommutative \
+expansions, contractions with other tensors, simplifications of spinor chains \
+or evaluations of Dirac traces,  ",
+ ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"],
+ " will produce results similar to those of ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ "."
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "DiracTrick", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[1]:=",
- CellID->1322032984],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Expanding", "\[Rule]", "False"}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{138, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[1]=",
- CellID->781797726]
-}, Open  ]],
-
-Cell["This is a string of Dirac matrices in four dimensions. ", "Text",
- CellTags->"DiracTrick",
- CellID->13267635],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{"GA", "[", 
-   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[2]:=",
- CellID->207148738],
+ RowBox[{"GA", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]], "Input",
+ CellLabel->"In[1]:="],
 
 Cell[BoxData[
  FormBox[
@@ -183,21 +302,17 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{68, 17},
+ ImageSize->{71, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[2]=",
- CellID->2097052651]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracTrick", "[", "t1", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[3]:=",
- CellID->2118167618],
+ RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -209,95 +324,75 @@ Cell[BoxData[
      FormBox["\[Nu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{43, 17},
+ ImageSize->{45, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[3]=",
- CellID->1662180879]
-}, Open  ]],
-
-Cell["This is a string of Dirac matrices in D dimensions. ", "Text",
- CellTags->"DiracTrick",
- CellID->978307705],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"GAD", "[", 
-   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[4]:=",
- CellID->1487919140],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox["\[Nu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{65, 17},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[4]=",
- CellID->258742289]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracTrick", "[", "t2", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[5]:=",
- CellID->315088051],
+ RowBox[{
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"(", 
-    RowBox[{"2", "-", "D"}], ")"}], " ", 
-   SuperscriptBox["\[Gamma]", 
     FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{71, 17},
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{98, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[5]=",
- CellID->2070854929]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{"GA", "[", 
-   RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[6]:=",
- CellID->1279797135],
+ RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], "2"], TraditionalForm]], "Output",
+ ImageSize->{24, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", 
+  RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
+ CellLabel->"In[5]:="],
 
 Cell[BoxData[
  FormBox[
@@ -324,31 +419,17 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{67, 18},
+ ImageSize->{71, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[6]=",
- CellID->1240378771]
+ CellLabel->"Out[5]="]
 }, Open  ]],
-
-Cell[TextData[{
- "By default ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- "is moved to the right."
-}], "Text",
- CellTags->"DiracTrick",
- CellID->1416181159],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracTrick", "[", "t3", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[7]:=",
- CellID->1789422594],
+ RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
+ CellLabel->"In[6]:="],
 
 Cell[BoxData[
  FormBox[
@@ -369,641 +450,195 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{67, 18},
+ ImageSize->{71, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[7]=",
- CellID->238505660]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t4", "=", 
-  RowBox[{"GA", "[", 
-   RowBox[{"6", ",", "\[Mu]", ",", "7"}], "]"}]}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[8]:=",
- CellID->350857109],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox["6",
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox["7",
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{67, 18},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[8]=",
- CellID->549489564]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracTrick", "[", "t4", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[9]:=",
- CellID->1190020038],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox["7",
-     TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{45, 18},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[9]=",
- CellID->1831405200]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t5", "=", 
-  RowBox[{
-   RowBox[{"GS", "[", 
-    RowBox[{"a", "+", "b"}], "]"}], " ", ".", " ", 
-   RowBox[{"GS", "[", "p", "]"}], ".", 
-   RowBox[{"GS", "[", "p", "]"}], ".", 
-   RowBox[{"GS", "[", 
-    RowBox[{"c", "+", "d"}], "]"}]}]}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[10]:=",
- CellID->182403082],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
-      FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["a",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["b",
-           TraditionalForm], "_"]}],
-        TraditionalForm],
-       TraditionalForm], ")"}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm]}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm]}],
-     TraditionalForm], ")"}], ".", 
-   RowBox[{"(", 
-    FormBox[
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
-      FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["c",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["d",
-           TraditionalForm], "_"]}],
-        TraditionalForm],
-       TraditionalForm], ")"}],
-     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{254, 26},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[10]=",
- CellID->461822174]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracTrick", "[", "t5", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[11]:=",
- CellID->954210510],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    FormBox[
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"],
-     TraditionalForm], "2"], " ", 
+ RowBox[{
+  RowBox[{"(", 
    RowBox[{
+    RowBox[{"1", "/", "2"}], "-", 
+    RowBox[{
+     RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}], ".", 
+  RowBox[{"(", 
+   RowBox[{"-", 
     RowBox[{"(", 
      RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
-      FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["a",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["b",
-           TraditionalForm], "_"]}],
-        TraditionalForm],
-       TraditionalForm], ")"}], ")"}], ".", 
-    RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
-      FormBox[
-       FormBox[
-        RowBox[{
-         OverscriptBox[
-          FormBox["c",
-           TraditionalForm], "_"], "+", 
-         OverscriptBox[
-          FormBox["d",
-           TraditionalForm], "_"]}],
-        TraditionalForm],
-       TraditionalForm], ")"}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{184, 26},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[11]=",
- CellID->146580751]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Calc", "[", "t5", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[12]:=",
- CellID->1092849662],
+      RowBox[{"(", 
+       RowBox[{"a", "+", 
+        RowBox[{"GS", "[", 
+         RowBox[{"p", "+", "q"}], "]"}]}], ")"}], "/", "b"}], ")"}]}], ")"}], 
+  ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"1", "/", "2"}], "+", 
+    RowBox[{
+     RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}]], "Input",
+ CellLabel->"In[7]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
+   RowBox[{"(", 
     RowBox[{
-     RowBox[{"(", 
+     FractionBox["1", "2"], "-", 
+     FractionBox[
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["5",
+         TraditionalForm]],
+       TraditionalForm], "2"]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{"-", 
+     FractionBox[
       RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
        FormBox[
-        OverscriptBox[
-         FormBox["a",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["c",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}], "+", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
+        RowBox[{
+         OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+         FormBox[
+          FormBox[
+           RowBox[{
+            OverscriptBox[
+             FormBox["p",
+              TraditionalForm], "_"], "+", 
+            OverscriptBox[
+             FormBox["q",
+              TraditionalForm], "_"]}],
+           TraditionalForm],
+          TraditionalForm], ")"}],
+        TraditionalForm], "+", "a"}], "b"]}], ")"}], ".", 
+   RowBox[{"(", 
     RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["a",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["d",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}], "+", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["b",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["c",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}], "+", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], "2"], " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["b",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-       FormBox[
-        OverscriptBox[
-         FormBox["d",
-          TraditionalForm], "_"],
-        TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
- ImageSize->{477, 26},
+     FractionBox[
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["5",
+         TraditionalForm]],
+       TraditionalForm], "2"], "+", 
+     FractionBox["1", "2"]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{263, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[12]=",
- CellID->1347024237]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"GAD", "@@", 
-  RowBox[{"Join", "[", 
-   RowBox[{
-    RowBox[{"{", "\[Mu]", "}"}], ",", 
-    RowBox[{"Table", "[", 
-     RowBox[{
-      SubscriptBox["\[Nu]", "i"], ",", 
-      RowBox[{"{", 
-       RowBox[{"i", ",", "6"}], "}"}]}], "]"}], ",", 
-    RowBox[{"{", "\[Mu]", "}"}]}], "]"}]}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[13]:=",
- CellID->774999439],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox[
-       SubscriptBox["\[Nu]", "1"],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox[
-       SubscriptBox["\[Nu]", "2"],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox[
-       SubscriptBox["\[Nu]", "3"],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox[
-       SubscriptBox["\[Nu]", "4"],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox[
-       SubscriptBox["\[Nu]", "5"],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox[
-       SubscriptBox["\[Nu]", "6"],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox["\[Gamma]", 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{213, 17},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"DiracTrick",
- CellLabel->"Out[13]=",
- CellID->1703893469]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
- CellTags->"DiracTrick",
- CellLabel->"In[14]:=",
- CellID->1243868217],
+ CellLabel->"In[8]:="],
 
 Cell[BoxData[
- GraphicsBox[
-  TagBox[RasterBox[CompressedData["
-1:eJztnQtYE1fexlv3q/u1235tH91WtFpA5VatVJFgWmG92+Jl8dqqpSjrteAF
-sSKICFIUoWIWF7Ssyq6XoqAVhfXa1qot4qUCuoooiiAgIJcEAiFhki8JginM
-JDOTOWRO8v89T/uACe+c+b/nzH3Oa7NgxbRF3V544YXV/6v+37T5a0cFBMxf
-N/1/1L+MXhe4cMEf1D+Eqv9zUn9H87MKAAAAAAAWKKsyxjj75UjVPzbdDhdO
-3FuiAE3+ySJqKgAAgMmQ5vh/MOF0tZKoPDF7xOpr9aDJS1lETQUAADAVLaX7
-PEbE3hfnR3lMOVCqPaImJLmHvv7c2X7ihTrONFXK+pz4xT5B27avn7Mw8W4j
-J5qE+ErMgvkb4nfFfrkg8lItwYWmlqb86OF9R53ncPWb728TODq7CgQCoef6
-vAYuNAnx1Z2BQdt374kPmbdo5wMZu8YCAIAtiif/id6RI1GathVK8fXtm4+X
-y5n/ZX2293Dvk6nz3IO1F3aeUfvTX6z/wnbzS6bZcH2F54abjSqi8thI+9mX
-JVxotjy9uP+Mep2VVSfcudJUIytKWRfs9A6nq994a4t/Fls9Mk2lJGupy/TM
-Ks0uV15dWNpo4g4IAEAXoyg/NMvV71fx78Y+Ic75V+jHb3f/k92nARsioyLD
-1gWujv7+dj3jg3PNAp7+/I/A2R/Z2X2scyaiPjv51t9rzuqNoSs/+yzi55oW
-9dao5scFzpP//Zjx/QD5A5Gb3SSXmWnlLTr/WnfemL0PuWbbRy5OX+pu7I3R
-VDYVZe7/Ni40IPy7AhbbXzJNefHhsJTcMxyvfn1uWGRmxsFdSYcuPJax2VF0
-1JTm+A12jd0bONr69Z4OU7deE7PpXAAAYIske9kgt78/6HzKIc1dYdvDdV/p
-s82PourM2g+nJj1icW6iRvn0PyPf1dkYSnP9+/ca+12ZWry5MM51aOidJvW/
-ygo2f+CwOIvxWVjdz559nUJv/v5imHF7H3JNNc2PDi6cvCajgs09cypNZWNB
-spdw4amqTns6FpqK0qNBCXcaa7le/cZ7iQmnC6orrsaNcpx1rML4ptZdGN+r
-z4z4rNK6x+fDXayGbitsZttaAACwQ/n01GRbwe7izttSeVHiBz3sN2j3Cq0o
-Hn0rHKb7D0zosC9oqbuelnqnXrObUVYe/8hmQutpkfrw+APrqWeqSXY/NefG
-Ww0MfLbpIqoyZ9kOCeu8HadeIhmMNRVPTkWsScrRdwrIWFOLsjL9o/6TLomN
-1iSenvR2m7s2YlOIr82bNr4Re+80UO7L2TWVeJL24cBpv1JcJGSgKbk82979
-eKVSq5kqtPnkIsXqAwBghtRdnPGuE9keRfn05Li3+nz2u41M9Sl32wks7+NT
-7wskWYucBN/cbz3ubby1xt569q8km6Gm2+sdrMaerdH8LM1ZN2iAzw81ei/V
-0Nj7MNMkai9F+ScXaGpFyCplFF9kpKkoS/NdcqRcoVKU7BE6B1Jt+hmvu4r7
-1ZfeSYxKL5NrDksS3IaG3qY4CGGgSVSmTxcG39Kss/qoQ+Cy6S48dgAAFkPz
-va2Deo3MfNr58Ljh+sJ3e448UqGz5ZA/jB82cN4Vdo/KUmwMW6rOfDV+zo5b
-bQfoyqoTH1m9T3YNRlmV6dF7cKx6LyUv3j3adqze90UIya2MxKW2b/Rflphx
-S0K5RWWkKSuIGvKW3TCBGtehgrlUTwgw0lTJig4u9/oiRCQK9g5KL6f6JjNN
-NfKK0wmL1au//MBdKfVlTEay8rK0VV5z18btigtcsvViDdWFN2YlfZQavGxT
-wp6kmFV+oitw3wcALIjGvFUDrCaSXPFovh87uMegrfd09gItpftH2oz9vuL3
-2whJ9mf9XvmjLq85kB3Dk+19NCcTX3x1tFh3VyO+NKnPwNVkJwGNeQF21p9m
-i2t+nG/nHHaL+RPPJFiyJiJZrjXpdjAAALBCdneTUy/3k53OfYiKY+49+/le
-e/5WB1F3adV77/lf7vhEgFJWWVz0UJeix9XyzsfbnfY+hPhKnN+ms5UdDo1r
-zo6yei+qgOQaDPHkiLCPa9IP4cPsaVx4ooclayKS5VqTbgcDAAArlNVnP37n
-vYj8jht7yeV57/x5zH/a9kotNZe3TX//k+icetajXvv2zU+1bb/KS5Knu4fd
-kCg0yGvv/fSktQnN96IH9/U8V0O2HOmNJf17Og7oNy6Z/SQtzSWHow+XPD/Z
-siRNvJoKAIB501J+yKOfsP2xag2yR9//fZVHj5detp62YkP4xrDQtcvm+65N
-/Kmc7fOwiqrze7cGftLrT70818TsPV+l0DxwvdK2+wvt/OFtr9bHG4jywx7W
-o1I7v2OjbWvpPtfXXhm00ZirOdKcgHGrdF7VsSRNRLKImgoAgJlDPD05feDI
-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
-/kxHhKxe0dZdSCugZ3R3/n7jvcSE0wXVFVfjRjnOOlbBomIGAeu5qjmH1hvT
-A+nDtJGsNHlnE5Um0lGvoh5QKAYL/6g5N95qYFssOFGVOct2SJjekHDFk1MR
-a5Jy9EX7MdbUoqxM/6j/pEudQsMZaxJPT3q7zV0bsSnE1+ZNG9+IvXeoU6AY
-yEouz7Z3P16pkSKepAptPrlI0VRF1YUd/nMWfxUWEbF+pbfn5JlTJ0zwOVqu
-d4PNanQTT9I+HDiNdcgIWM+iqfprjtZ62j3QIIzXnUYjMbKJL6OexoDqjP7B
-ov2G+DdR5M5CDGahbrq93sFq7Nkazc/SnHWDBuhNQSdqL0X5Jxdo1ouQVcoo
-vshIU1GW5rvkiNolRckeoXMgVcdi1s5WaAwZBrJEZfp0YbA2KlF9Xixw2XSX
-9Aak/NGu0XZTDhS3BmC0lH0noHNflcneR3onMSq9TK0vL0pwGxrKeq5zsJ6+
-LK2ao7aeZg+kAeOScl1PRLI0hwYvRj29AdUOzcHSunhEoduco6zK9Og9OPZ+
-s0pevHu07Vi9j5bLCqKGvGU3TKDGdahgLtWdL0aaKlnRweVeX4SIRMHeQemU
-xwrMNNXIK04nLLZ9o//yA3el1NdIma3+o9TgZZsS9iTFrPITXaG4AizJmjFQ
-mFLe+mFL+ZHptsMi9W8lCMmtjMSl6qYuS8y4JTF8HCQvS1vlNXdt3K64wCVb
-L9awPgUH6+nL0qo5eutp9UAaMFp3mo3ExiZ+jHqaA0rnD2gNFu3ysdn7qBrz
-AuysP80W1/w43845jJsUdFw0UcgqG25+M8lhhNfioPCNa/820yfiWAmCB2MN
-Icn+rN8rf9TlNYdOx0u42ATWM8GsrEcka+7Wv9TtxW7dKaznFcSTI8I+rkk/
-hA+zp3GqbF6aKGSbCjaPdYvI0XM01xUoZZXFRQ91KXpcLe/QJlxsAuuZYFbW
-I5I1b+sLs0XOvYUpeeTW8wvpjSX9ezoO6Dcumf18Ds0lh6MPlzx/GoSvmuhk
-25EX753Z9+WXrd4fM2flln+dK2B2S7Fr4atNYD1yLMwmi7IeoytvmvdqXV97
-ZdBGY84/pTkB41bpPLLOV010ss9QVJyK8gsRpZ44nBQTsnSGa69Xe0+IzaN+
-ose08NUmsB45FmaTRVlPVJ8P8Am+iWASFO5puL7C9nXH8Hwur1Piosm1bMM1
-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
-D3UAAAAAc4OouRi+Lq0UTnwAAAAAvvH/1gUW/Q==
-    "], {{0, 125}, {554, 0}}, {0, 
-    255},
-    ColorFunction->RGBColor],
-   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
-   Selectable->False],
-  BaseStyle->"ImageGraphics",
-  ImageSize->Automatic,
-  ImageSizeRaw->{554, 125},
-  PlotRange->{{0, 554}, {0, 125}}]], "Output",
- ImageSize->{558, 125},
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"], "+", 
+          OverscriptBox[
+           FormBox["q",
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], ")"}], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]]}], "b"]}], TraditionalForm]], "Output",
+ ImageSize->{128, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->{"DiracTrick", "RasterizedOutput"},
- CellLabel->"Out[14]=",
- CellID->1589226394]
+ CellLabel->"Out[8]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Dirac traces are not evaluated by ",
+ ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"]
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{"GAD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[1]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{69, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{69, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -1027,27 +662,49 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- StyleBox[ButtonBox["Calc",
+ StyleBox[ButtonBox["Contract",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Calc",
-  ButtonNote->"Calc"],
+  ButtonData->"paclet:FeynCalc/ref/Contract",
+  ButtonNote->"Contract"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracEquation",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracEquation",
+  ButtonNote->"DiracEquation"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["DiracGammaExpand",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracGammaExpand",
-  ButtonNote->"DiracGammaExpand"],
+  ButtonData->"paclet:FeynCalc/ref/DiracGammaCombine",
+  ButtonNote->"DiracGammaCombine"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["DiracSimplify",
+ StyleBox[ButtonBox["DiracTrick",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
+  ButtonData->"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SirlinSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SirlinSimplify",
+  ButtonNote->"SirlinSimplify"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SpinorChainTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorChainTrick",
+  ButtonNote->"SpinorChainTrick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"DiracTrick",
- CellID->505712200]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -1064,20 +721,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 13.550429}", 
+   "built" -> "{2019, 3, 29, 17, 47, 2.972012}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "DiracTrick[exp] contracts gamma matrices with each other and performs \
-several simplifications, but no expansion, use Calc or DiracSimplify for \
-non-commutative expansion.", "synonyms" -> {}, "title" -> "DiracTrick", 
-    "titlemodifier" -> "", "windowtitle" -> "DiracTrick", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/DiracTrick"}, "SearchTextTranslated" -> ""},
+    "DiracTrick[exp] contracts Dirac matrices with each other and performs \
+several simplifications but no expansions.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "DiracTrick", "titlemodifier" -> "", 
+    "windowtitle" -> "DiracTrick", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/DiracTrick"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -1097,266 +754,98 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3422, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[7571, 227, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1110718304]},
- "DiracTrick"->{
-  Cell[4055, 125, 138, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1322032984],
-  Cell[4196, 131, 280, 10, 36, "Output",
-   CellTags->"DiracTrick",
-   CellID->781797726],
-  Cell[4491, 144, 115, 2, 32, "Text",
-   CellTags->"DiracTrick",
-   CellID->13267635],
-  Cell[4631, 150, 193, 6, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->207148738],
-  Cell[4827, 158, 770, 32, 38, "Output",
-   CellTags->"DiracTrick",
-   CellID->2097052651],
-  Cell[5634, 195, 133, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->2118167618],
-  Cell[5770, 201, 389, 15, 38, "Output",
-   CellTags->"DiracTrick",
-   CellID->1662180879],
-  Cell[6174, 219, 113, 2, 32, "Text",
-   CellTags->"DiracTrick",
-   CellID->978307705],
-  Cell[6312, 225, 195, 6, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1487919140],
-  Cell[6510, 233, 691, 29, 38, "Output",
-   CellTags->"DiracTrick",
-   CellID->258742289],
-  Cell[7238, 267, 132, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->315088051],
-  Cell[7373, 273, 394, 15, 38, "Output",
-   CellTags->"DiracTrick",
-   CellID->2070854929],
-  Cell[7804, 293, 190, 6, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1279797135],
-  Cell[7997, 301, 726, 30, 39, "Output",
-   CellTags->"DiracTrick",
-   CellID->1240378771],
-  Cell[8738, 334, 197, 8, 33, "Text",
-   CellTags->"DiracTrick",
-   CellID->1416181159],
-  Cell[8960, 346, 133, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1789422594],
-  Cell[9096, 352, 607, 24, 39, "Output",
-   CellTags->"DiracTrick",
-   CellID->238505660],
-  Cell[9740, 381, 185, 6, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->350857109],
-  Cell[9928, 389, 681, 28, 39, "Output",
-   CellTags->"DiracTrick",
-   CellID->549489564],
-  Cell[10646, 422, 133, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1190020038],
-  Cell[10782, 428, 463, 18, 39, "Output",
-   CellTags->"DiracTrick",
-   CellID->1831405200],
-  Cell[11282, 451, 342, 11, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->182403082],
-  Cell[11627, 464, 1558, 60, 47, "Output",
-   CellTags->"DiracTrick",
-   CellID->461822174],
-  Cell[13222, 529, 133, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->954210510],
-  Cell[13358, 535, 1133, 43, 47, "Output",
-   CellTags->"DiracTrick",
-   CellID->146580751],
-  Cell[14528, 583, 128, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1092849662],
-  Cell[14659, 589, 2713, 104, 47, "Output",
-   CellTags->"DiracTrick",
-   CellID->1347024237],
-  Cell[17409, 698, 389, 13, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->774999439],
-  Cell[17801, 713, 1651, 70, 38, "Output",
-   CellTags->"DiracTrick",
-   CellID->1703893469],
-  Cell[19489, 788, 133, 4, 27, "Input",
-   CellTags->"DiracTrick",
-   CellID->1243868217],
-  Cell[19625, 794, 12359, 211, 137, "Output",
-   CellTags->{"DiracTrick", "RasterizedOutput"},
-   CellID->1589226394],
-  Cell[32352, 1028, 574, 21, 32, "Text",
-   CellTags->"DiracTrick",
-   CellID->505712200]},
- "RasterizedOutput"->{
-  Cell[19625, 794, 12359, 211, 137, "Output",
-   CellTags->{"DiracTrick", "RasterizedOutput"},
-   CellID->1589226394]}
+   CellID->267946891]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 34878, 1098},
- {"DiracTrick", 35015, 1102},
- {"RasterizedOutput", 37975, 1199}
+ {"PrimaryExamplesSection", 20715, 755}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3629, 85, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 504, 14, 97, "Usage",
+Cell[4214, 108, 287, 11, 44, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4526, 123, 436, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3422, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4987, 139, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->806316534],
+Cell[5728, 165, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5762, 167, 312, 8, 47, "Notes"],
+Cell[6077, 177, 599, 18, 62, "Notes"],
+Cell[CellGroupData[{
+Cell[6701, 199, 93, 2, 27, "Input"],
+Cell[6797, 203, 713, 17, 75, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7571, 227, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1110718304],
+ CellID->267946891],
 Cell[CellGroupData[{
-Cell[3835, 115, 195, 6, 25, "ExampleSection",
- CellID->648884452],
+Cell[7983, 246, 195, 6, 25, "ExampleSection",
+ CellID->156775265],
+Cell[8181, 254, 531, 14, 63, "Notes"],
 Cell[CellGroupData[{
-Cell[4055, 125, 138, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1322032984],
-Cell[4196, 131, 280, 10, 36, "Output",
- CellTags->"DiracTrick",
- CellID->781797726]
-}, Open  ]],
-Cell[4491, 144, 115, 2, 32, "Text",
- CellTags->"DiracTrick",
- CellID->13267635],
-Cell[CellGroupData[{
-Cell[4631, 150, 193, 6, 27, "Input",
- CellTags->"DiracTrick",
- CellID->207148738],
-Cell[4827, 158, 770, 32, 38, "Output",
- CellTags->"DiracTrick",
- CellID->2097052651]
+Cell[8737, 272, 123, 3, 27, "Input"],
+Cell[8863, 277, 724, 30, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5634, 195, 133, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->2118167618],
-Cell[5770, 201, 389, 15, 38, "Output",
- CellTags->"DiracTrick",
- CellID->1662180879]
-}, Open  ]],
-Cell[6174, 219, 113, 2, 32, "Text",
- CellTags->"DiracTrick",
- CellID->978307705],
-Cell[CellGroupData[{
-Cell[6312, 225, 195, 6, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1487919140],
-Cell[6510, 233, 691, 29, 38, "Output",
- CellTags->"DiracTrick",
- CellID->258742289]
+Cell[9624, 312, 86, 2, 27, "Input"],
+Cell[9713, 316, 343, 13, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7238, 267, 132, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->315088051],
-Cell[7373, 273, 394, 15, 38, "Output",
- CellTags->"DiracTrick",
- CellID->2070854929]
+Cell[10093, 334, 130, 4, 27, "Input"],
+Cell[10226, 340, 675, 26, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7804, 293, 190, 6, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1279797135],
-Cell[7997, 301, 726, 30, 39, "Output",
- CellTags->"DiracTrick",
- CellID->1240378771]
-}, Open  ]],
-Cell[8738, 334, 197, 8, 33, "Text",
- CellTags->"DiracTrick",
- CellID->1416181159],
-Cell[CellGroupData[{
-Cell[8960, 346, 133, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1789422594],
-Cell[9096, 352, 607, 24, 39, "Output",
- CellTags->"DiracTrick",
- CellID->238505660]
+Cell[10938, 371, 86, 2, 27, "Input"],
+Cell[11027, 375, 287, 11, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9740, 381, 185, 6, 27, "Input",
- CellTags->"DiracTrick",
- CellID->350857109],
-Cell[9928, 389, 681, 28, 39, "Output",
- CellTags->"DiracTrick",
- CellID->549489564]
+Cell[11351, 391, 119, 3, 27, "Input"],
+Cell[11473, 396, 680, 28, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10646, 422, 133, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1190020038],
-Cell[10782, 428, 463, 18, 39, "Output",
- CellTags->"DiracTrick",
- CellID->1831405200]
+Cell[12190, 429, 86, 2, 27, "Input"],
+Cell[12279, 433, 562, 22, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11282, 451, 342, 11, 27, "Input",
- CellTags->"DiracTrick",
- CellID->182403082],
-Cell[11627, 464, 1558, 60, 47, "Output",
- CellTags->"DiracTrick",
- CellID->461822174]
+Cell[12878, 460, 556, 21, 27, "Input"],
+Cell[13437, 483, 1216, 45, 66, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13222, 529, 133, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->954210510],
-Cell[13358, 535, 1133, 43, 47, "Output",
- CellTags->"DiracTrick",
- CellID->146580751]
+Cell[14690, 533, 86, 2, 27, "Input"],
+Cell[14779, 537, 720, 26, 59, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14528, 583, 128, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1092849662],
-Cell[14659, 589, 2713, 104, 47, "Output",
- CellTags->"DiracTrick",
- CellID->1347024237]
+Cell[15536, 568, 105, 2, 8, "ExampleDelimiter"],
+Cell[15644, 572, 189, 6, 31, "Notes"],
+Cell[CellGroupData[{
+Cell[15858, 582, 148, 4, 27, "Input"],
+Cell[16009, 588, 580, 23, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17409, 698, 389, 13, 27, "Input",
- CellTags->"DiracTrick",
- CellID->774999439],
-Cell[17801, 713, 1651, 70, 38, "Output",
- CellTags->"DiracTrick",
- CellID->1703893469]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[19489, 788, 133, 4, 27, "Input",
- CellTags->"DiracTrick",
- CellID->1243868217],
-Cell[19625, 794, 12359, 211, 137, "Output",
- CellTags->{"DiracTrick", "RasterizedOutput"},
- CellID->1589226394]
+Cell[16626, 616, 86, 2, 27, "Input"],
+Cell[16715, 620, 494, 19, 37, "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[32011, 1009, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17248, 644, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32079, 1014, 270, 12, 31, "SeeAlsoSection",
+Cell[17316, 649, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[32352, 1028, 574, 21, 32, "Text",
- CellTags->"DiracTrick",
- CellID->505712200]
+Cell[17589, 663, 1236, 43, 69, "SeeAlso"]
 }, Open  ]],
-Cell[32941, 1052, 23, 0, 42, "FooterCell"]
+Cell[18840, 709, 23, 0, 40, "FooterCell"]
 }
 ]
 *)

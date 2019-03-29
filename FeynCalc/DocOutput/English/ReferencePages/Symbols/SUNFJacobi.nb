@@ -10,62 +10,85 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11386,        412]
-NotebookOptionsPosition[      7860,        303]
-NotebookOutlinePosition[     10419,        375]
-CellTagsIndexPosition[     10307,        369]
+NotebookDataLength[     12151,        432]
+NotebookOptionsPosition[      8854,        332]
+NotebookOutlinePosition[     11279,        400]
+CellTagsIndexPosition[     11165,        394]
 WindowTitle->SUNFJacobi
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/SUNFJacobi\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/SUNFJacobi"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/SUNFJacobi.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$148207], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/SUNFJacobi", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SUNF\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNF"], "\<\"SUNSimplify\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SUNSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/SUNFJacobi\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/SUNFJacobi"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+SUNFJacobi.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$264919], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/SUNFJacobi", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +96,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SUNFJacobi", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SUNFJacobi", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,7 +140,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1313177361],
+ CellID->1954515379],
 
 Cell[CellGroupData[{
 
@@ -117,7 +150,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1159165310],
+ CellID->1275397159],
 
 Cell[CellGroupData[{
 
@@ -167,12 +200,11 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{81, 19},
+ ImageSize->{95, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNFJacobi",
- CellLabel->"Out[1]=",
- CellID->311054380]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,12 +285,11 @@ Cell[BoxData[
        FormBox["e",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{173, 19},
+ ImageSize->{202, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SUNFJacobi",
- CellLabel->"Out[2]=",
- CellID->692961439]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -294,9 +325,7 @@ Cell[TextData[{
   ButtonNote->"SUNSimplify"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"SUNFJacobi",
- CellID->614882988]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -313,19 +342,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 25, 36.017251}", 
+   "built" -> "{2019, 3, 29, 17, 54, 12.580071}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "SUNFJacobi is an option for SUNSimplify, indicating whether the Jacobi \
-identity should be used.", "synonyms" -> {}, "title" -> "SUNFJacobi", 
-    "titlemodifier" -> "", "windowtitle" -> "SUNFJacobi", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/SUNFJacobi"}, "SearchTextTranslated" -> ""},
+identity should be used.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "SUNFJacobi", "titlemodifier" -> "", "windowtitle" -> "SUNFJacobi", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/SUNFJacobi"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
@@ -345,75 +375,65 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3318, 94, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4394, 127, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1313177361]},
+   CellID->1954515379]},
  "SUNFJacobi"->{
-  Cell[3952, 123, 397, 13, 27, "Input",
+  Cell[5028, 156, 397, 13, 27, "Input",
    CellTags->"SUNFJacobi",
    CellID->167388740],
-  Cell[4352, 138, 802, 36, 40, "Output",
-   CellTags->"SUNFJacobi",
-   CellID->311054380],
-  Cell[5191, 179, 396, 13, 27, "Input",
+  Cell[5428, 171, 782, 35, 38, "Output",
+   CellTags->"SUNFJacobi"],
+  Cell[6247, 211, 396, 13, 27, "Input",
    CellTags->"SUNFJacobi",
    CellID->693485776],
-  Cell[5590, 194, 1475, 66, 40, "Output",
-   CellTags->"SUNFJacobi",
-   CellID->692961439],
-  Cell[7433, 283, 385, 15, 32, "Text",
-   CellTags->"SUNFJacobi",
-   CellID->614882988]}
+  Cell[6646, 226, 1455, 65, 38, "Output",
+   CellTags->"SUNFJacobi"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9694, 346},
- {"SUNFJacobi", 9831, 350}
+ {"PrimaryExamplesSection", 10684, 376},
+ {"SUNFJacobi", 10822, 380}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2253, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3095, 75, 50, "AnchorBarGrid",
  CellID->1],
-Cell[2838, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2894, 78, 399, 12, 82, "Usage",
+Cell[3680, 98, 287, 11, 44, "ObjectNameGrid"],
+Cell[3970, 111, 399, 12, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3318, 94, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4394, 127, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1313177361],
+ CellID->1954515379],
 Cell[CellGroupData[{
-Cell[3731, 113, 196, 6, 25, "ExampleSection",
- CellID->1159165310],
+Cell[4807, 146, 196, 6, 25, "ExampleSection",
+ CellID->1275397159],
 Cell[CellGroupData[{
-Cell[3952, 123, 397, 13, 27, "Input",
+Cell[5028, 156, 397, 13, 27, "Input",
  CellTags->"SUNFJacobi",
  CellID->167388740],
-Cell[4352, 138, 802, 36, 40, "Output",
- CellTags->"SUNFJacobi",
- CellID->311054380]
+Cell[5428, 171, 782, 35, 38, "Output",
+ CellTags->"SUNFJacobi"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5191, 179, 396, 13, 27, "Input",
+Cell[6247, 211, 396, 13, 27, "Input",
  CellTags->"SUNFJacobi",
  CellID->693485776],
-Cell[5590, 194, 1475, 66, 40, "Output",
- CellTags->"SUNFJacobi",
- CellID->692961439]
+Cell[6646, 226, 1455, 65, 38, "Output",
+ CellTags->"SUNFJacobi"]
 }, Open  ]]
 }, Open  ]],
-Cell[7092, 264, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8128, 295, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7160, 269, 270, 12, 31, "SeeAlsoSection",
+Cell[8196, 300, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7433, 283, 385, 15, 32, "Text",
- CellTags->"SUNFJacobi",
- CellID->614882988]
+Cell[8469, 314, 343, 13, 55, "SeeAlso"]
 }, Open  ]],
-Cell[7833, 301, 23, 0, 42, "FooterCell"]
+Cell[8827, 330, 23, 0, 40, "FooterCell"]
 }
 ]
 *)
