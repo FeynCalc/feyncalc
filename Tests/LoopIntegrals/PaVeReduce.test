@@ -974,7 +974,13 @@ PaVe[2, {p10, p12, p20}, {m1^2, m2^2,
 "0"},
 {"fcstPaVeReduce-ID9", "PaVe[0, 0, {0}, {0, m^2}, PaVeAutoOrder -> True] // PaVeReduce",
 "-(PaVe[0, {}, {m^2}]/(2 (1 - D))) + (m^2 PaVe[1, {0}, {0, m^2}])/(
-2 (1 - D))"}
+2 (1 - D))"},
+{"fcstPaVeReduce-ID10", "PaVeReduce[PaVe[0, 0, 1, {pp}, {mm1, mm2}], MaxIterations -> 1]",
+"(mm1 PaVe[0, {}, {mm1}])/(
+2 D pp) - ((mm1 + mm2 + pp) PaVe[0, {}, {mm2}])/(4 D pp) - (
+mm1 (mm1 - mm2 + pp) PaVe[0, {pp}, {mm1, mm2}])/(
+2 D pp) - ((mm1 - mm2 + pp)^2 PaVe[1, {pp}, {mm1, mm2}])/(
+4 D pp) - ((mm1 - mm2 + pp) PaVe[0, 0, {pp}, {mm1, mm2}])/(2 D pp)"}
 })
 
 

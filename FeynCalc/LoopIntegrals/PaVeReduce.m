@@ -28,6 +28,7 @@ Begin["`PaVeReduce`Private`"]
 pvrVerbose::usage="";
 breduce::usage="";
 a0tob0::usage="";
+maxIterations::usage="";
 
 Options[ PaVeReduce ] = {
 	A0ToB0->False,
@@ -41,7 +42,8 @@ Options[ PaVeReduce ] = {
 	Mandelstam->{},
 	PaVeAutoReduce -> False,
 	PaVeOrderList -> {},
-	WriteOutPaVe -> False
+	WriteOutPaVe -> False,
+	MaxIterations -> Infinity
 };
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
@@ -52,6 +54,7 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 
 		breduce = OptionValue[BReduce];
 		a0tob0 = OptionValue[A0ToB0];
+		maxIterations = OptionValue[MaxIterations];
 
 		If [OptionValue[FCVerbose]===False,
 			pvrVerbose=$VeryVerbose,
@@ -120,12 +123,6 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 (* ***************************************************************** *)
 PaVeBr[i__, p_List, m_List, OptionsPattern[]] :=
 	tT[Length[m]][i][Join[p, m]];
-
-breakdown[x_] :=
-	If[ FreeQ[x,PaVe],
-		x,
-		FixedPoint[(#/.T->tT)&,x/.PaVe->PaVeBr]
-	];
 
 drop[] =
 	{}; (* i.e. no index is an empty list *)
@@ -738,7 +735,10 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 
 			breakx = ToPaVe2[breakx];
 
-			t =  breakdown[breakx];
+			If[ FreeQ[breakx,PaVe],
+				t = breakx,
+				t = FixedPoint[(#/.T->tT)&,breakx/.PaVe->PaVeBr, maxIterations]
+			];
 
 			FCPrint[3,"PaVeReduce: pavereduce: First stage done: ", t, FCDoControl->pvrVerbose];
 
@@ -750,8 +750,8 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 				t = FRH[t]
 			];
 
-			If[	!FreeQ[t,tT],
-				t = t//. tT[n_Integer][inds__][{a__}] :> PaVe[inds,Drop[{a},-n],Take[{a},-n]]
+			If[	!FreeQ2[t,{T,tT}],
+				t = t//. (T|tT)[n_Integer][inds__][{a__}] :> PaVe[inds,Drop[{a},-n],Take[{a},-n]]
 			];
 
 			t = Expand2[t,Join[PaVeHeadsList,{$epsilon}]];
