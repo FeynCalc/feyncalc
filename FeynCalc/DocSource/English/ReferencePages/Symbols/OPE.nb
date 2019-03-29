@@ -117,13 +117,13 @@ Cell["OPE", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["OPE"], "InlineFormula"],
- " \[LineSeparator]",
- "is a convenience variable to separate OPE insertions.\nOPE is also an \
-option of several input functions like GluonPropagator."
+ " \[LineSeparator]is a convenience variable to separate OPE insertions."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+OPE is also an option of several input functions like GluonPropagator.\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -165,9 +165,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPE1Loop",
   ButtonNote->"OPE1Loop"],
  "."
-}], "Text",
- CellTags->"OPE",
- CellID->1798984343]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -259,7 +257,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

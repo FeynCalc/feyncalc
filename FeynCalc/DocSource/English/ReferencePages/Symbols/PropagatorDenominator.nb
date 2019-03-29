@@ -175,9 +175,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominatorExplicit",
   ButtonNote->"FeynAmpDenominatorExplicit"],
  "."
-}], "Text",
- CellTags->"PropagatorDenominator",
- CellID->1480042296]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -213,7 +211,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}], "]"}]}]], "Input",
  CellTags->"PropagatorDenominator",
- CellLabel->"In[155]:=",
+ CellLabel->"In[7]:=",
  CellID->158185315],
 
 Cell[BoxData[
@@ -235,7 +233,7 @@ Cell[BoxData[
       FeynCalc`Momentum[$CellContext`p]], "-", $CellContext`m^2],
     Editable->False]], TraditionalForm]], "Output",
  CellTags->"PropagatorDenominator",
- CellLabel->"Out[155]="]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,7 +244,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"Momentum", "[", 
      RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], "]"}]], "Input",
- CellLabel->"In[156]:="],
+ CellLabel->"In[8]:="],
 
 Cell[BoxData[
  FormBox[
@@ -265,7 +263,7 @@ Cell[BoxData[
       FeynCalc`Momentum[$CellContext`p, D], 
       FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
     Editable->False]], TraditionalForm]], "Output",
- CellLabel->"Out[156]="]
+ CellLabel->"Out[8]="]
 }, Open  ]]
 }, Open  ]],
 

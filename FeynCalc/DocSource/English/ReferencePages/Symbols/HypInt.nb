@@ -195,7 +195,7 @@ Cell[BoxData[
  RowBox[{"Hypergeometric2F1", "[", 
   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}]], "Input",
  CellTags->"HypInt",
- CellLabel->"In[1]:=",
+ CellLabel->"In[218]:=",
  CellID->204607872],
 
 Cell[BoxData[
@@ -203,8 +203,7 @@ Cell[BoxData[
   TemplateBox[{"a","b","c","z"},
    "Hypergeometric2F1"], TraditionalForm]], "Output",
  CellTags->"HypInt",
- CellLabel->"Out[1]=",
- CellID->1455067917]
+ CellLabel->"Out[218]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -213,7 +212,7 @@ Cell[BoxData[
  RowBox[{"HypInt", "[", 
   RowBox[{"%", ",", "t"}], "]"}]], "Input",
  CellTags->"HypInt",
- CellLabel->"In[2]:=",
+ CellLabel->"In[219]:=",
  CellID->1185900959],
 
 Cell[BoxData[
@@ -252,8 +251,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"c", "-", "b"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
  CellTags->"HypInt",
- CellLabel->"Out[2]=",
- CellID->1838289676]
+ CellLabel->"Out[219]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -318,13 +316,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1065, Automatic}, {Automatic, 177}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -128,7 +128,22 @@ will work faster than Factor2."
  CellID->982511436],
 
 Cell["XXXX", "Notes",
- CellID->1067943069]
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Factor2", "]"}]], "Input",
+ CellLabel->"In[191]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FactorFull", "\[Rule]", "False"}], ",", 
+    RowBox[{"Method", "\[Rule]", "3"}]}], "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[191]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,9 +184,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Collect2",
   ButtonNote->"Collect2"],
  "."
-}], "Text",
- CellTags->"Factor2",
- CellID->1336134208]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,33 +214,13 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Factor2", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"a", "-", "x"}], ")"}], 
+  RowBox[{"(", 
+   RowBox[{"b", "-", "x"}], ")"}]}]], "Input",
  CellTags->"Factor2",
- CellLabel->"In[1]:=",
- CellID->1016935483],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"FactorFull", "\[Rule]", "False"}], ",", 
-    RowBox[{"Method", "\[Rule]", "3"}]}], "}"}], TraditionalForm]], "Output",
- CellTags->"Factor2",
- CellLabel->"Out[1]=",
- CellID->607387604]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{
-   RowBox[{"(", 
-    RowBox[{"a", "-", "x"}], ")"}], 
-   RowBox[{"(", 
-    RowBox[{"b", "-", "x"}], ")"}]}]}]], "Input",
- CellTags->"Factor2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[192]:=",
  CellID->1709627606],
 
 Cell[BoxData[
@@ -238,20 +231,18 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"b", "-", "x"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Factor2",
- CellLabel->"Out[2]=",
- CellID->309712518]
+ CellLabel->"Out[192]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factor2", "[", "t1", "]"}], ",", " ", 
-    RowBox[{"Factor", "[", "t1", "]"}]}], "}"}]}]], "Input",
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Factor2", "[", "%", "]"}], ",", " ", 
+   RowBox[{"Factor", "[", "%", "]"}]}], "}"}]], "Input",
  CellTags->"Factor2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[193]:=",
  CellID->1823984490],
 
 Cell[BoxData[
@@ -270,22 +261,20 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"x", "-", "b"}], ")"}]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Factor2",
- CellLabel->"Out[3]=",
- CellID->136738799]
+ CellLabel->"Out[193]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{"Expand", "[", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"a", "-", "b"}], ")"}], 
-    RowBox[{"(", 
-     RowBox[{"a", "+", "b"}], ")"}]}], "]"}]}]], "Input",
+ RowBox[{"Expand", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "-", "b"}], ")"}], 
+   RowBox[{"(", 
+    RowBox[{"a", "+", "b"}], ")"}]}], "]"}]], "Input",
  CellTags->"Factor2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[194]:=",
  CellID->3094581],
 
 Cell[BoxData[
@@ -294,16 +283,15 @@ Cell[BoxData[
    SuperscriptBox["a", "2"], "-", 
    SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
  CellTags->"Factor2",
- CellLabel->"Out[4]=",
- CellID->470899621]
+ CellLabel->"Out[194]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Factor", "[", "t3", "]"}]], "Input",
+ RowBox[{"Factor", "[", "%", "]"}]], "Input",
  CellTags->"Factor2",
- CellLabel->"In[5]:=",
+ CellLabel->"In[195]:=",
  CellID->791609042],
 
 Cell[BoxData[
@@ -314,16 +302,15 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"a", "+", "b"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Factor2",
- CellLabel->"Out[5]=",
- CellID->2074352994]
+ CellLabel->"Out[195]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Factor2", "[", "t3", "]"}]], "Input",
+ RowBox[{"Factor2", "[", "%%", "]"}]], "Input",
  CellTags->"Factor2",
- CellLabel->"In[6]:=",
+ CellLabel->"In[196]:=",
  CellID->880415397],
 
 Cell[BoxData[
@@ -332,18 +319,17 @@ Cell[BoxData[
    SuperscriptBox["a", "2"], "-", 
    SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
  CellTags->"Factor2",
- CellLabel->"Out[6]=",
- CellID->611482702]
+ CellLabel->"Out[196]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Factor2", "[", 
-  RowBox[{"t3", ",", 
+  RowBox[{"%%%", ",", 
    RowBox[{"FactorFull", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"Factor2",
- CellLabel->"In[7]:=",
+ CellLabel->"In[197]:=",
  CellID->17862753],
 
 Cell[BoxData[
@@ -354,16 +340,8 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"a", "+", "b"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Factor2",
- CellLabel->"Out[7]=",
- CellID->1886805891]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2", ",", "t3"}], "]"}]], "Input",
- CellTags->"Factor2",
- CellLabel->"In[8]:=",
- CellID->2010909365]
+ CellLabel->"Out[197]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -427,13 +405,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{996, Automatic}, {Automatic, 248}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -124,8 +124,21 @@ be safely factrored out from every Dirac trace."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCTraceFactor", "]"}]], "Input",
+ CellLabel->"In[148]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[148]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -160,8 +173,18 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
+Cell[TextData[{
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ ", ",
+ ButtonBox["SUNTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNTrace",
+  ButtonNote->"SUNTrace"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -188,7 +211,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Pull out constants out of the Dirac trace", "Notes",
+Cell["Pull constants out of the Dirac trace", "Notes",
  CellID->1912475528],
 
 Cell[CellGroupData[{
@@ -209,7 +232,7 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"GS", "[", "p2", "]"}], "+", "M2"}], ")"}]}], ")"}]}], "]"}], 
   "]"}]], "Input",
- CellLabel->"In[141]:=",
+ CellLabel->"In[149]:=",
  CellID->802335918],
 
 Cell[BoxData[
@@ -243,8 +266,7 @@ Cell[BoxData[
             TraditionalForm], "_"],
           TraditionalForm]}], "+", "M2"}], ")"}]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[141]=",
- CellID->1311852686]
+ CellLabel->"Out[149]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -309,12 +331,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 684},
-WindowMargins->{{Automatic, 0}, {13, Automatic}},
+WindowMargins->{{1059, Automatic}, {320, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

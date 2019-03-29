@@ -158,15 +158,12 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["SimplifyPolyLog",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/SimplifyPolyLog",
   ButtonNote->"SimplifyPolyLog"],
  "."
-}], "Text",
- CellTags->"Zeta2",
- CellID->798811969]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{

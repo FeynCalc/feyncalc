@@ -131,8 +131,37 @@ be set to False."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Collect2", "]"}]], "Input",
+ CellTags->"Collect2",
+ CellLabel->"In[375]:=",
+ CellID->538422816],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Denominator", "\[Rule]", "False"}], ",", 
+    RowBox[{"Dot", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCFactorOut", "\[Rule]", "1"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
+    RowBox[{"FactoringDenominator", "\[Rule]", "False"}], ",", 
+    RowBox[{"InitialFunction", "\[Rule]", "Identity"}], ",", 
+    RowBox[{"IntermediateSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"IsolateFast", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
+    RowBox[{"Head", "\[Rule]", "Identity"}], ",", 
+    RowBox[{"Numerator", "\[Rule]", "False"}], ",", 
+    RowBox[{"TimeConstrained", "\[Rule]", "\[Infinity]"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Collect2",
+ CellLabel->"Out[375]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -173,9 +202,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Isolate",
   ButtonNote->"Isolate"],
  "."
-}], "Text",
- CellTags->"Collect2",
- CellID->389701827]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -205,32 +232,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Collect2", "]"}]], "Input",
- CellTags->"Collect2",
- CellLabel->"In[90]:=",
- CellID->538422816],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Denominator", "\[Rule]", "False"}], ",", 
-    RowBox[{"Dot", "\[Rule]", "False"}], ",", 
-    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
-    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
-    RowBox[{"IsolateFast", "\[Rule]", "False"}], ",", 
-    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
-    RowBox[{"Head", "\[Rule]", "Identity"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Collect2",
- CellLabel->"Out[90]=",
- CellID->1317311527]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Collect2", "[", 
   RowBox[{
    RowBox[{"t1", "=", 
@@ -244,7 +245,7 @@ Cell[BoxData[
      FractionBox["x", "2"], "-", 
      FractionBox["y", "w"]}]}], ",", "a"}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[91]:=",
+ CellLabel->"In[376]:=",
  CellID->1914400776],
 
 Cell[BoxData[
@@ -263,8 +264,7 @@ Cell[BoxData[
      RowBox[{"2", " ", "y"}]}], 
     RowBox[{"2", " ", "w"}]]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[91]=",
- CellID->27818195]
+ CellLabel->"Out[376]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -274,7 +274,7 @@ Cell[BoxData[
   RowBox[{"t1", ",", "a", ",", 
    RowBox[{"Factoring", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[92]:=",
+ CellLabel->"In[377]:=",
  CellID->269033150],
 
 Cell[BoxData[
@@ -291,8 +291,7 @@ Cell[BoxData[
    FractionBox["y", "w"], "+", 
    FractionBox["x", "2"]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[92]=",
- CellID->151726169]
+ CellLabel->"Out[377]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -302,7 +301,7 @@ Cell[BoxData[
   RowBox[{"t1", ",", "a", ",", 
    RowBox[{"Factoring", "\[Rule]", "Factor"}]}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[93]:=",
+ CellLabel->"In[378]:=",
  CellID->772013483],
 
 Cell[BoxData[
@@ -321,8 +320,7 @@ Cell[BoxData[
      RowBox[{"2", " ", "y"}]}], 
     RowBox[{"2", " ", "w"}]]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[93]=",
- CellID->836248448]
+ CellLabel->"Out[378]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -331,7 +329,7 @@ Cell[BoxData[
  RowBox[{"Collect2", "[", 
   RowBox[{"t1", ",", "a", ",", 
    RowBox[{"Factoring", "\[Rule]", "Simplify"}]}], "]"}]], "Input",
- CellLabel->"In[94]:=",
+ CellLabel->"In[379]:=",
  CellID->321654602],
 
 Cell[BoxData[
@@ -346,8 +344,7 @@ Cell[BoxData[
      RowBox[{"r", "+", "1"}], ")"}]}], "-", 
    FractionBox["y", "w"], "+", 
    FractionBox["x", "2"]}], TraditionalForm]], "Output",
- CellLabel->"Out[94]=",
- CellID->1221933307]
+ CellLabel->"Out[379]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,7 +367,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "b"}], "}"}]}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[95]:=",
+ CellLabel->"In[380]:=",
  CellID->708606765],
 
 Cell[BoxData[
@@ -391,8 +388,7 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"c", "+", "1"}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[95]=",
- CellID->2073132438]
+ CellLabel->"Out[380]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -405,9 +401,9 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"a", "-", "b", "-", "c", "-", "d"}], ")"}], "5"], "]"}], ",", 
    "a", ",", 
-   RowBox[{"IsolateNames", "\[Rule]", "l"}]}], "]"}]], "Input",
+   RowBox[{"IsolateNames", "\[Rule]", "KK"}]}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[98]:=",
+ CellLabel->"In[381]:=",
  CellID->741587872],
 
 Cell[BoxData[
@@ -417,36 +413,35 @@ Cell[BoxData[
    RowBox[{"5", " ", 
     SuperscriptBox["a", "4"], " ", 
     TagBox[
-     RowBox[{"l", "(", "1398", ")"}],
+     RowBox[{"KK", "(", "114", ")"}],
      HoldForm]}], "+", 
    RowBox[{"10", " ", 
     SuperscriptBox["a", "3"], " ", 
     TagBox[
-     RowBox[{"l", "(", "1400", ")"}],
+     RowBox[{"KK", "(", "115", ")"}],
      HoldForm]}], "-", 
    RowBox[{"10", " ", 
     SuperscriptBox["a", "2"], " ", 
     TagBox[
-     RowBox[{"l", "(", "1402", ")"}],
+     RowBox[{"KK", "(", "117", ")"}],
      HoldForm]}], "+", 
    RowBox[{"5", " ", "a", " ", 
     TagBox[
-     RowBox[{"l", "(", "1401", ")"}],
+     RowBox[{"KK", "(", "116", ")"}],
      HoldForm]}], "-", 
    TagBox[
-    RowBox[{"l", "(", "1399", ")"}],
+    RowBox[{"KK", "(", "118", ")"}],
     HoldForm]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[98]=",
- CellID->195196847]
+ CellLabel->"Out[381]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ReleaseHold", "[", "%", "]"}]], "Input",
+ RowBox[{"FRH", "[", "%", "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[99]:=",
+ CellLabel->"In[382]:=",
  CellID->683646211],
 
 Cell[BoxData[
@@ -460,27 +455,23 @@ Cell[BoxData[
    RowBox[{"10", " ", 
     SuperscriptBox["a", "3"], " ", 
     SuperscriptBox[
-     TagBox[
-      RowBox[{"l", "(", "1398", ")"}],
-      HoldForm], "2"]}], "-", 
+     RowBox[{"(", 
+      RowBox[{"b", "+", "c", "+", "d"}], ")"}], "2"]}], "-", 
    RowBox[{"10", " ", 
     SuperscriptBox["a", "2"], " ", 
     SuperscriptBox[
-     TagBox[
-      RowBox[{"l", "(", "1398", ")"}],
-      HoldForm], "3"]}], "+", 
+     RowBox[{"(", 
+      RowBox[{"b", "+", "c", "+", "d"}], ")"}], "3"]}], "+", 
    RowBox[{"5", " ", "a", " ", 
     SuperscriptBox[
-     TagBox[
-      RowBox[{"l", "(", "1398", ")"}],
-      HoldForm], "4"]}], "-", 
+     RowBox[{"(", 
+      RowBox[{"b", "+", "c", "+", "d"}], ")"}], "4"]}], "-", 
    SuperscriptBox[
-    TagBox[
-     RowBox[{"l", "(", "1398", ")"}],
-     HoldForm], "5"]}], TraditionalForm]], "Output",
+    RowBox[{"(", 
+     RowBox[{"b", "+", "c", "+", "d"}], ")"}], "5"]}], 
+  TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[99]=",
- CellID->1584671269]
+ CellLabel->"Out[382]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -494,7 +485,7 @@ Cell[BoxData[
       RowBox[{"a", "-", "b", "-", "c", "-", "d"}], ")"}], "5"], "]"}], ",", 
    "a", ",", 
    RowBox[{"Head", "\[Rule]", "h"}]}], "]"}]], "Input",
- CellLabel->"In[100]:=",
+ CellLabel->"In[383]:=",
  CellID->1338628687],
 
 Cell[BoxData[
@@ -528,15 +519,14 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"b", "+", "c", "+", "d"}], ")"}], "5"]}], 
   TraditionalForm]], "Output",
- CellLabel->"Out[100]=",
- CellID->638446957]
+ CellLabel->"Out[383]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"t1", ",", "l"}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[101]:=",
+ CellLabel->"In[384]:=",
  CellID->1111657644],
 
 Cell[CellGroupData[{
@@ -550,7 +540,7 @@ Cell[BoxData[
       RowBox[{"a", "-", "b", "-", "c"}], ")"}], "3"], "]"}], ",", "a", ",", 
    RowBox[{"Factoring", "\[Rule]", "fun"}]}], "]"}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[102]:=",
+ CellLabel->"In[385]:=",
  CellID->1492093352],
 
 Cell[BoxData[
@@ -584,8 +574,7 @@ Cell[BoxData[
       SuperscriptBox["c", "2"]}], "-", 
      SuperscriptBox["c", "3"]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[102]=",
- CellID->444068994]
+ CellLabel->"Out[385]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -594,7 +583,7 @@ Cell[BoxData[
  RowBox[{"%", " ", "/.", " ", 
   RowBox[{"fun", "\[Rule]", "FactorTerms"}]}]], "Input",
  CellTags->"Collect2",
- CellLabel->"In[103]:=",
+ CellLabel->"In[386]:=",
  CellID->1964581263],
 
 Cell[BoxData[
@@ -618,8 +607,7 @@ Cell[BoxData[
     SuperscriptBox["c", "2"]}], "-", 
    SuperscriptBox["c", "3"]}], TraditionalForm]], "Output",
  CellTags->"Collect2",
- CellLabel->"Out[103]=",
- CellID->1797163188]
+ CellLabel->"Out[386]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -655,7 +643,7 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{"i", ",", "1", ",", "200000"}], "}"}]}], "]"}], "*", 
      "c"}]}]}], ";"}]], "Input",
- CellLabel->"In[124]:=",
+ CellLabel->"In[387]:=",
  CellID->18062506],
 
 Cell[CellGroupData[{
@@ -669,28 +657,27 @@ Cell[BoxData[
     RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
     RowBox[{"IsolateNames", "\[Rule]", "KK"}], ",", 
     RowBox[{"Expanding", "\[Rule]", "False"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[129]:=",
+ CellLabel->"In[388]:=",
  CellID->908574489],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"2.427166`", ",", 
+   RowBox[{"2.648394`", ",", 
     RowBox[{
      RowBox[{"a", " ", 
       TagBox[
-       RowBox[{"KK", "(", "1416", ")"}],
+       RowBox[{"KK", "(", "123", ")"}],
        HoldForm]}], "+", 
      RowBox[{"b", " ", 
       TagBox[
-       RowBox[{"KK", "(", "1417", ")"}],
+       RowBox[{"KK", "(", "124", ")"}],
        HoldForm]}], "+", 
      RowBox[{"c", " ", 
       TagBox[
-       RowBox[{"KK", "(", "1415", ")"}],
+       RowBox[{"KK", "(", "122", ")"}],
        HoldForm]}]}]}], "}"}], TraditionalForm]], "Output",
- CellLabel->"Out[129]=",
- CellID->428829446]
+ CellLabel->"Out[388]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -705,29 +692,32 @@ Cell[BoxData[
     RowBox[{"IsolateNames", "\[Rule]", "KK"}], ",", 
     RowBox[{"IsolateFast", "\[Rule]", "True"}], ",", 
     RowBox[{"Expanding", "\[Rule]", "False"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[130]:=",
+ CellLabel->"In[389]:=",
  CellID->1760353952],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
-   RowBox[{"1.824256`", ",", 
+   RowBox[{"1.940384`", ",", 
     RowBox[{
      RowBox[{"a", " ", 
       TagBox[
-       RowBox[{"KK", "(", "1416", ")"}],
+       RowBox[{"KK", "(", "123", ")"}],
        HoldForm]}], "+", 
      RowBox[{"b", " ", 
       TagBox[
-       RowBox[{"KK", "(", "1417", ")"}],
+       RowBox[{"KK", "(", "124", ")"}],
        HoldForm]}], "+", 
      RowBox[{"c", " ", 
       TagBox[
-       RowBox[{"KK", "(", "1415", ")"}],
+       RowBox[{"KK", "(", "122", ")"}],
        HoldForm]}]}]}], "}"}], TraditionalForm]], "Output",
- CellLabel->"Out[130]=",
- CellID->1586544186]
-}, Open  ]]
+ CellLabel->"Out[389]="]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "exp", "]"}]], "Input",
+ CellLabel->"In[390]:="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -791,13 +781,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{83, Automatic}, {Automatic, 101}},
+WindowMargins->{{796, Automatic}, {Automatic, 131}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

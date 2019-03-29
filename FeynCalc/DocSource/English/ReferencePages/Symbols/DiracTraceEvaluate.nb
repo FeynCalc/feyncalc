@@ -128,8 +128,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
   ButtonNote->"DiracSimplify"],
  " and some other functions. If set to ",
- Cell[BoxData["False"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["False"], "InlineFormula"],
  ", Dirac traces remain unevaluated."
 }], "Usage",
  CellID->982511436],

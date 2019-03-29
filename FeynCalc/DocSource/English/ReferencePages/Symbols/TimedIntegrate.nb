@@ -125,8 +125,30 @@ option Timing. Options of Integrate can be given and are passed on."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "TimedIntegrate", "]"}]], "Input",
+ CellTags->"TimedIntegrate",
+ CellLabel->"In[1]:=",
+ CellID->92169636],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Timing", "\[Rule]", "10"}], ",", 
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], ">", "0"}]}], ",", 
+    RowBox[{"Integrate", "\[Rule]", "Integrate"}], ",", 
+    RowBox[{"Expand", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"TimedIntegrate",
+ CellLabel->"Out[1]=",
+ CellID->1160941869]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -189,34 +211,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "TimedIntegrate", "]"}]], "Input",
- CellTags->"TimedIntegrate",
- CellLabel->"In[1]:=",
- CellID->92169636],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Timing", "\[Rule]", "10"}], ",", 
-    RowBox[{"Assumptions", "\[Rule]", 
-     RowBox[{
-      TagBox["\[CurlyEpsilon]",
-       TraditionalForm], ">", "0"}]}], ",", 
-    RowBox[{"Integrate", "\[Rule]", "Integrate"}], ",", 
-    RowBox[{"Expand", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"TimedIntegrate",
- CellLabel->"Out[1]=",
- CellID->1160941869]
-}, Open  ]],
-
-Cell["This should reach to be done", "Text",
- CellTags->"TimedIntegrate",
- CellID->2077974742],
+Cell["This should reach to be done", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -229,20 +224,17 @@ Cell[BoxData[
     RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
    RowBox[{"Timing", "\[Rule]", "1"}]}], "]"}]], "Input",
  CellTags->"TimedIntegrate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[4]:=",
  CellID->2109784600],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "5"}], TraditionalForm]], "Output",
  CellTags->"TimedIntegrate",
- CellLabel->"Out[2]=",
- CellID->2016361212]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
-Cell["This shouldn't", "Text",
- CellTags->"TimedIntegrate",
- CellID->1118158911],
+Cell["This shouldn't", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -257,7 +249,7 @@ Cell[BoxData[
    RowBox[{"Timing", "\[Rule]", "10"}], ",", 
    RowBox[{"Integrate", "\[Rule]", "int"}]}], "]"}]], "Input",
  CellTags->"TimedIntegrate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[5]:=",
  CellID->2007698884],
 
 Cell[BoxData[
@@ -274,8 +266,7 @@ Cell[BoxData[
       TagBox["\[CurlyEpsilon]",
        TraditionalForm], ">", "0"}]}]}], ")"}], TraditionalForm]], "Output",
  CellTags->"TimedIntegrate",
- CellLabel->"Out[3]=",
- CellID->176617232]
+ CellLabel->"Out[5]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -340,13 +331,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{770, Automatic}, {Automatic, 187}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

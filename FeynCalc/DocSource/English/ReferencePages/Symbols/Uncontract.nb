@@ -127,8 +127,28 @@ momenta except OPEDelta."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Uncontract", "]"}]], "Input",
+ CellTags->"Uncontract",
+ CellLabel->"In[1]:=",
+ CellID->1318320011],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "Automatic"}], ",", 
+    RowBox[{"DimensionalReduction", "\[Rule]", "False"}], ",", 
+    RowBox[{"Pair", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Uncontract",
+ CellLabel->"Out[1]=",
+ CellID->659553310]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,9 +189,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Contract",
   ButtonNote->"Contract"],
  "."
-}], "Text",
- CellTags->"Uncontract",
- CellID->1158023183]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,41 +219,19 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Uncontract", "]"}]], "Input",
- CellTags->"Uncontract",
- CellLabel->"In[1]:=",
- CellID->1318320011],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "Automatic"}], ",", 
-    RowBox[{"DimensionalReduction", "\[Rule]", "False"}], ",", 
-    RowBox[{"Pair", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Uncontract",
- CellLabel->"Out[1]=",
- CellID->659553310]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t1", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{
-   RowBox[{"LeviCivita", "[", 
+   RowBox[{"LC", "[", 
     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
    RowBox[{"p", ",", "q"}], "]"}]}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[2]:=",
+ CellLabel->"In[13]:=",
  CellID->851114003],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -256,39 +252,35 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[2]=",
- CellID->1899728699]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
-  RowBox[{"t1", ",", " ", "p"}], "]"}]], "Input",
+  RowBox[{"%", ",", " ", "p"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[3]:=",
+ CellLabel->"In[14]:=",
  CellID->1865320721],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$44995", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   SuperscriptBox["\[Epsilon]", 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$343", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
     RowBox[{
      FormBox[
       FormBox["\[Mu]",
@@ -300,8 +292,8 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox[
       FormBox[
-       RowBox[{"$AL$44995", "\[InvisibleApplication]", 
-        RowBox[{"(", "1", ")"}]}],
+       RowBox[{"$AL", "\[InvisibleApplication]", 
+        RowBox[{"(", "$343", ")"}]}],
        TraditionalForm],
       TraditionalForm], 
      FormBox[
@@ -310,17 +302,15 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[3]=",
- CellID->203669378]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"DiracSlash", "[", "p", "]"}]}]], "Input",
+ RowBox[{"GS", "[", "p", "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[4]:=",
+ CellLabel->"In[15]:=",
  CellID->1250693732],
 
 Cell[BoxData[
@@ -333,17 +323,16 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[4]=",
- CellID->581231134]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
-  RowBox[{"t2", ",", " ", "p"}], "]"}]], "Input",
+  RowBox[{"%", ",", " ", "p"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[5]:=",
+ CellLabel->"In[16]:=",
  CellID->1980864082],
 
 Cell[BoxData[
@@ -353,115 +342,106 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox[
      FormBox[
-      RowBox[{"$AL$45000", "\[InvisibleApplication]", 
-       RowBox[{"(", "1", ")"}]}],
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$344", ")"}]}],
       TraditionalForm],
      TraditionalForm]], " ", 
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45000", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$344", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[5]=",
- CellID->382965877]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
-  RowBox[{"t1", ",", " ", "p", ",", "q"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{
+    RowBox[{"LC", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
+    RowBox[{"p", ",", "q"}], "]"}], ",", " ", "p", ",", "q"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[6]:=",
+ CellLabel->"In[18]:=",
  CellID->1016696995],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$347", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$346", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   RowBox[{"(", 
+    RowBox[{"-", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", "_"], 
+      RowBox[{
        FormBox[
-        RowBox[{"$AL$45005", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
        FormBox[
-        RowBox[{"$AL$45004", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   SuperscriptBox["\[Epsilon]", 
-    RowBox[{
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox["\[Nu]",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       RowBox[{"$AL$45005", "\[InvisibleApplication]", 
-        RowBox[{"(", "1", ")"}]}],
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       RowBox[{"$AL$45004", "\[InvisibleApplication]", 
-        RowBox[{"(", "1", ")"}]}],
-       TraditionalForm],
-      TraditionalForm]}]]}], TraditionalForm]], "Output",
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{"$AL", "\[InvisibleApplication]", 
+          RowBox[{"(", "$346", ")"}]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{"$AL", "\[InvisibleApplication]", 
+          RowBox[{"(", "$347", ")"}]}],
+         TraditionalForm],
+        TraditionalForm]}]]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[6]=",
- CellID->337635539]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
-Cell["By default scalar products are not uncontracted.", "Text",
- CellTags->"Uncontract",
- CellID->1308085383],
+Cell["By default scalar products are not uncontracted.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
   RowBox[{
-   RowBox[{"ScalarProduct", "[", 
+   RowBox[{"SP", "[", 
     RowBox[{"p", ",", "q"}], "]"}], ",", " ", "q"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[7]:=",
+ CellLabel->"In[19]:=",
  CellID->618827731],
 
 Cell[BoxData[
@@ -480,65 +460,53 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[7]=",
- CellID->545272743]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell["With the option Pair\[Rule]All they are \
-\[OpenCurlyDoubleQuote]uncontracted \[CloseCurlyDoubleQuote].", "Text",
- CellTags->"Uncontract",
- CellID->1560681362],
+\[OpenCurlyDoubleQuote]uncontracted \[CloseCurlyDoubleQuote].", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
   RowBox[{
-   RowBox[{"ScalarProduct", "[", 
+   RowBox[{"SP", "[", 
     RowBox[{"p", ",", "q"}], "]"}], ",", "q", ",", 
    RowBox[{"Pair", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[8]:=",
+ CellLabel->"In[21]:=",
  CellID->765993198],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$349", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45013", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45013", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$349", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[8]=",
- CellID->7406466]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -547,91 +515,67 @@ Cell[BoxData[
  RowBox[{"Uncontract", "[", 
   RowBox[{
    RowBox[{
-    RowBox[{"ScalarProduct", "[", 
+    RowBox[{"SP", "[", 
      RowBox[{"p", ",", "q"}], "]"}], "^", "2"}], ",", "q", ",", 
    RowBox[{"Pair", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[9]:=",
+ CellLabel->"In[22]:=",
  CellID->1461988505],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$350", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$351", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$350", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$351", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"Uncontract",
- CellLabel->"Out[9]=",
- CellID->1916509902]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
- CellTags->"Uncontract",
- CellLabel->"In[10]:=",
- CellID->1699220508]
+ CellLabel->"Out[22]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -695,13 +639,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{710, Automatic}, {Automatic, 127}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

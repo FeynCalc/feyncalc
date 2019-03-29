@@ -124,8 +124,25 @@ fixed. Series3[f, e, n] is equivalent to  Series3[f, {e, 0, n}]."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Series3", "]"}]], "Input",
+ CellTags->"Series3",
+ CellLabel->"In[1]:=",
+ CellID->457203194],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ CellTags->"Series3",
+ CellLabel->"Out[1]=",
+ CellID->2070948847]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -166,9 +183,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Series2",
   ButtonNote->"Series2"],
  "."
-}], "Text",
- CellTags->"Series3",
- CellID->601286817]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,26 +213,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Series3", "]"}]], "Input",
- CellTags->"Series3",
- CellLabel->"In[1]:=",
- CellID->457203194],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
- CellTags->"Series3",
- CellLabel->"Out[1]=",
- CellID->2070948847]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Series3", "[", 
   RowBox[{
    RowBox[{
@@ -229,7 +224,7 @@ Cell[BoxData[
      RowBox[{"\[Delta]", "/", "2"}], ")"}]}], ",", "\[Delta]", ",", "1"}], 
   "]"}]], "Input",
  CellTags->"Series3",
- CellLabel->"In[2]:=",
+ CellLabel->"In[11]:=",
  CellID->1953540257],
 
 Cell[BoxData[
@@ -243,8 +238,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "+", "1"}], 
   TraditionalForm]], "Output",
  CellTags->"Series3",
- CellLabel->"Out[2]=",
- CellID->2052658342]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -256,7 +250,7 @@ Cell[BoxData[
     RowBox[{"Gamma", "[", "x", "]"}], ",", "x", ",", "1"}], "]"}], "//", 
   "FullSimplify"}]], "Input",
  CellTags->"Series3",
- CellLabel->"In[3]:=",
+ CellLabel->"In[12]:=",
  CellID->1278931466],
 
 Cell[BoxData[
@@ -266,8 +260,7 @@ Cell[BoxData[
    TagBox["\[DoubledGamma]",
     Function[{}, EulerGamma]], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"Series3",
- CellLabel->"Out[3]=",
- CellID->654585164]
+ CellLabel->"Out[12]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -332,13 +325,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{694, Automatic}, {Automatic, 124}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

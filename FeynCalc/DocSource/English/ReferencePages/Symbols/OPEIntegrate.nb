@@ -117,31 +117,38 @@ Cell["OPEIntegrate", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{
-   RowBox[{
-    RowBox[{
-     RowBox[{
-      RowBox[{"OPEIntegrate", "[", 
-       RowBox[{"expr", ",", " ", "q", ",", " ", "x"}], "]"}], ".", "  ", 
-      "The"}], " ", "dimension", " ", "is", " ", "changed", " ", "to", " ", 
-     "the", " ", "one", " ", "indicated", " ", "by", " ", "the", " ", 
-     "option", "  ", 
-     RowBox[{"Dimension", ".", " ", "The"}], " ", "setting", " ", "of", " ", 
-     "the", " ", "option", " ", "EpsContract", " ", "determines", "  ", "the",
-      " ", "dimension", " ", "in", " ", "which", " ", "the", " ", "Levi"}], 
-    "-", 
-    RowBox[{"Civita", " ", "tensors", " ", "are", " ", 
-     RowBox[{"contracted", "."}]}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "Part[{\"OPEIntegrate[expr, q, x].  The dimension is changed to the one \
-indicated by the option  Dimension. The setting of the option EpsContract \
-determines  the dimension in which the Levi-Civita tensors are \
-contracted.\"}, 2]"
+  RowBox[{"OPEIntegrate", "[", 
+   RowBox[{"expr", ",", " ", "q", ",", " ", "x"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]calculates a one-loop OPE-type integral."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "OPEIntegrate", "]"}]], "Input",
+ CellLabel->"In[18]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Divideout", "\[Rule]", "1"}], ",", 
+    RowBox[{"EpsContract", "\[Rule]", "4"}], ",", 
+    RowBox[{"EpsilonOrder", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factorout", "\[Rule]", "1"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"D", "\[Rule]", 
+       RowBox[{
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm], "+", "4"}]}], "}"}]}], ",", 
+    RowBox[{"OPEIntegrateDelta", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[18]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -182,9 +189,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RHI",
   ButtonNote->"RHI"],
  "."
-}], "Text",
- CellTags->"OPEIntegrate",
- CellID->1317066831]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -195,8 +200,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -210,12 +213,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[BoxData[""], "Input",
- CellTags->"OPEIntegrate",
- CellLabel->"In[1]:=",
- CellID->614498431]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -278,13 +275,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{890, Automatic}, {Automatic, 226}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

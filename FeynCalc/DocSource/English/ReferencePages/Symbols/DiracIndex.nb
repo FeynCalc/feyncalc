@@ -1,7 +1,7 @@
 Notebook[{
 Cell[TextData[{
  "New in: ",
- Cell["9.0", "HistoryData",
+ Cell["9.3", "HistoryData",
   CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
@@ -32,9 +32,9 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/EpsUncontract", "Categorization",
+Cell["FeynCalc/ref/DiracIndex", "Categorization",
  CellLabel->"URI"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -111,19 +111,54 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["EpsUncontract", "ObjectName",
+Cell["DiracIndex", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["EpsUncontract"], "InlineFormula"],
+ Cell[BoxData["DiracIndex"], "InlineFormula"],
  " \[LineSeparator]",
- "does Uncontract on scalar products involving Eps."
+ "is the head of Dirac indices."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "The internal representation of a four-dimensional spinorial index ",
+ Cell[BoxData["i"], "InlineFormula"],
+ " is ",
+ Cell[BoxData[
+  RowBox[{"DiracIndex", "[", "i", "]"}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "If the first argument is an integer, ",
+ Cell[BoxData[
+  RowBox[{"DiracIndex", "[", "i", "]"}]], "InlineFormula"],
+ " turns into ",
+ Cell[BoxData[
+  RowBox[{"ExplicitDiracIndex", "[", "i", "]"}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->1624463599],
+
+Cell[TextData[{
+ "Dirac indices are the indices that denote the components of Dirac matrices \
+or spinors. They should not be confused with the Lorentz indices attached to \
+the Dirac matrices. For example \nin case of ",
+ Cell[BoxData[
+  SuperscriptBox[
+   SubscriptBox["\[Gamma]", "ij"], "\[Mu]"]], "InlineFormula"],
+ ", ",
+ Cell[BoxData["\[Mu]"], "InlineFormula"],
+ " is a Lorentz index, while ",
+ Cell[BoxData["i"], "InlineFormula"],
+ " and ",
+ Cell[BoxData["j"], "InlineFormula"],
+ " are Dirac (spinorial) indices."
+}], "Notes",
+ CellID->1835295214]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -159,19 +194,18 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Eps",
+ ButtonBox["ExplicitDiracIndex",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Eps",
-  ButtonNote->"Eps"],
+  ButtonData:>"paclet:FeynCalc/ref/ExplicitDiracIndex",
+  ButtonNote->"ExplicitDiracIndex"],
  ", ",
- ButtonBox["Uncontract",
+ ButtonBox["FCHN",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Uncontract",
-  ButtonNote->"Uncontract"],
+  ButtonData:>"paclet:FeynCalc/ref/FCHN",
+  ButtonNote->"FCHN"],
  "."
-}], "Text",
- CellTags->"EpsUncontract",
- CellID->2022012771]
+}], "SeeAlso",
+ CellID->442356255]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -182,6 +216,8 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -195,6 +231,85 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracIndex", "[", "i", "]"}]], "Input",
+ CellTags->"SUNIndex",
+ CellLabel->"In[30]:=",
+ CellID->973923672],
+
+Cell[BoxData[
+ FormBox["i", TraditionalForm]], "Output",
+ CellTags->"SUNIndex",
+ CellLabel->"Out[30]=",
+ CellID->2017526493]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"SUNIndex",
+ CellLabel->"In[31]:=",
+ CellID->293124345],
+
+Cell[BoxData[
+ RowBox[{"DiracIndex", "[", "i", "]"}]], "Output",
+ CellTags->"SUNIndex",
+ CellLabel->"Out[31]//StandardForm=",
+ CellID->1562880488]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracIndex", "[", "2", "]"}]], "Input",
+ CellLabel->"In[32]:=",
+ CellID->1927371187],
+
+Cell[BoxData[
+ FormBox["2", TraditionalForm]], "Output",
+ CellLabel->"Out[32]=",
+ CellID->1717337875]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellLabel->"In[33]:=",
+ CellID->1807480238],
+
+Cell[BoxData[
+ RowBox[{"ExplicitDiracIndex", "[", "2", "]"}]], "Output",
+ CellLabel->"Out[33]//StandardForm=",
+ CellID->125060963]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DIDelta", "[", 
+    RowBox[{"i", ",", "j"}], "]"}], "//", "FCI"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"SUNIndex",
+ CellLabel->"In[34]:=",
+ CellID->874008605],
+
+Cell[BoxData[
+ RowBox[{"DiracIndexDelta", "[", 
+  RowBox[{
+   RowBox[{"DiracIndex", "[", "i", "]"}], ",", 
+   RowBox[{"DiracIndex", "[", "j", "]"}]}], "]"}]], "Output",
+ CellTags->"SUNIndex",
+ CellLabel->"Out[34]//StandardForm=",
+ CellID->270559869]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -257,14 +372,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
-Visible->True,
+WindowMargins->{{1140, Automatic}, {Automatic, 183}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-

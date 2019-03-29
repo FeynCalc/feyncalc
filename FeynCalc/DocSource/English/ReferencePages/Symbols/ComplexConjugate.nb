@@ -119,8 +119,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"ComplexConjugate", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]returns the complex conjugate of ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  ", where the input expression must be a proper matrix element. "
 }], "Usage",
  CellID->982511436],
@@ -132,8 +131,7 @@ this is not the case, the result will be inconsistent. \
 
 Cell[TextData[{
  "Denominators may not contain explicit ",
- Cell[BoxData["I"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["I"], "InlineFormula"],
  "'s!"
 }], "Notes"],
 
@@ -234,17 +232,19 @@ Cell[BoxData[
  CellID->880084151],
 
 Cell[TextData[{
- ButtonBox["ComplexConjugate is meant to be applied to amplitudes, i.e. given \
-a matrix element ",
+ ButtonBox["ComplexConjugate",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ComplexConjugate",
   ButtonNote->"ComplexConjugate"],
- Cell[BoxData["\[ScriptCapitalM]"], "InlineFormula",
-  FormatType->"StandardForm"],
+ " is meant to be applied to amplitudes, i.e. given a matrix element",
+ ButtonBox[" ",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ComplexConjugate",
+  ButtonNote->"ComplexConjugate"],
+ Cell[BoxData["\[ScriptCapitalM]"], "InlineFormula"],
  ", it will return ",
  Cell[BoxData[
-  SuperscriptBox["\[ScriptCapitalM]", "*"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[ScriptCapitalM]", "*"]], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -1057,8 +1057,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FCRenameDummyIndices",
   ButtonNote->"FCRenameDummyIndices"],
  " to ",
- Cell[BoxData["False"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["False"], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -1127,8 +1126,7 @@ Cell[BoxData[
 Cell[TextData[{
  "If particular variables must be replaced with their conjugate values, use \
 the option ",
- Cell[BoxData["Conjugate"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["Conjugate"], "InlineFormula"],
  "."
 }], "Notes"],
 

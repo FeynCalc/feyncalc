@@ -1,7 +1,7 @@
 Notebook[{
 Cell[TextData[{
  "New in: ",
- Cell["9.0", "HistoryData",
+ Cell["9.3", "HistoryData",
   CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
@@ -32,9 +32,9 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/Select1", "Categorization",
+Cell["FeynCalc/ref/FCHideEpsilon", "Categorization",
  CellLabel->"URI"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -111,24 +111,54 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["Select1", "ObjectName",
+Cell["FCHideEpsilon", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"Select1", "[", 
-   RowBox[{"expr", ",", " ", "a", ",", " ", "b", ",", " ", "..."}], "]"}]], 
-  "InlineFormula"],
- " \[LineSeparator]",
- "is equivalent to Select[expr, FreeQ2[#, {a,b, ...}]&], except the special \
-cases: Select1[a, b] returns a and Select1[a,a] returns 1 (where a is not a \
-product or a sum)."
+  RowBox[{"FCHideEpsilon", "[", "expr", "]"}]], "InlineFormula"],
+ " \[LineSeparator]substitutes ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"1", "/", "Epsilon"}], " ", "-", " ", "EulerGamma", " ", "+", " ", 
+   
+   RowBox[{"Log", "[", 
+    RowBox[{"4", "Pi"}], "]"}]}]], "InlineFormula"],
+ " with ",
+ Cell[BoxData[
+  RowBox[{"SMP", "[", "\"\<Delta\>\"", "]"}]], "InlineFormula"]
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCHideEpsilon", "]"}]], "Input",
+ CellLabel->"In[17]:=",
+ CellID->875137331],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"D", "\[Rule]", 
+     RowBox[{"4", "-", 
+      RowBox[{"2", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]}]}], ",", 
+    RowBox[{"Subtract", "\[Rule]", 
+     RowBox[{
+      TagBox["\[DoubledGamma]",
+       Function[{}, EulerGamma]], "-", 
+      RowBox[{"log", "(", 
+       RowBox[{"4", " ", "\[Pi]"}], ")"}]}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[17]=",
+ CellID->1011910224]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -163,15 +193,8 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- ButtonBox["Select2",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Select2",
-  ButtonNote->"Select2"],
- "."
-}], "Text",
- CellTags->"Select1",
- CellID->1574663120]
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -182,6 +205,8 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -195,6 +220,118 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "/", "Epsilon"}], "+", 
+  RowBox[{"Log", "[", 
+   RowBox[{"4", "Pi"}], "]"}], "-", "EulerGamma"}]], "Input",
+ CellLabel->"In[20]:=",
+ CellID->689856247],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]], "-", 
+   TagBox["\[DoubledGamma]",
+    Function[{}, EulerGamma]], "+", 
+   RowBox[{"log", "(", 
+    RowBox[{"4", " ", "\[Pi]"}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[20]=",
+ CellID->1799260438]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHideEpsilon", "[", "%", "]"}]], "Input",
+ CellLabel->"In[21]:=",
+ CellID->797045486],
+
+Cell[BoxData[
+ FormBox["\<\"\[CapitalDelta]\"\>", TraditionalForm]], "Output",
+ CellLabel->"Out[21]=",
+ CellID->1721094091]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "/", "EpsilonUV"}], "+", 
+  RowBox[{"Log", "[", 
+   RowBox[{"4", "Pi"}], "]"}], "-", "EulerGamma"}]], "Input",
+ CellLabel->"In[22]:=",
+ CellID->683090948],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    SubscriptBox["\[CurlyEpsilon]", "UV"]], "-", 
+   TagBox["\[DoubledGamma]",
+    Function[{}, EulerGamma]], "+", 
+   RowBox[{"log", "(", 
+    RowBox[{"4", " ", "\[Pi]"}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[22]=",
+ CellID->1053040782]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHideEpsilon", "[", "%", "]"}]], "Input",
+ CellLabel->"In[23]:=",
+ CellID->1248592482],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["\[CapitalDelta]", "UV"], TraditionalForm]], "Output",
+ CellLabel->"Out[23]=",
+ CellID->614374293]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "/", "EpsilonIR"}], "+", 
+  RowBox[{"Log", "[", 
+   RowBox[{"4", "Pi"}], "]"}], "-", "EulerGamma"}]], "Input",
+ CellLabel->"In[24]:=",
+ CellID->2072723527],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    SubscriptBox["\[CurlyEpsilon]", "IR"]], "-", 
+   TagBox["\[DoubledGamma]",
+    Function[{}, EulerGamma]], "+", 
+   RowBox[{"log", "(", 
+    RowBox[{"4", " ", "\[Pi]"}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[24]=",
+ CellID->775606093]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCHideEpsilon", "[", "%", "]"}]], "Input",
+ CellLabel->"In[25]:=",
+ CellID->577739633],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["\[CapitalDelta]", "IR"], TraditionalForm]], "Output",
+ CellLabel->"Out[25]=",
+ CellID->1128425775]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -257,8 +394,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
-Visible->True,
+WindowMargins->{{919, Automatic}, {2, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
@@ -267,4 +403,3 @@ FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-

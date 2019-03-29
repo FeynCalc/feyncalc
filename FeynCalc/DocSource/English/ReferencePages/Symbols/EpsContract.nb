@@ -171,9 +171,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Contract",
   ButtonNote->"Contract"],
  "."
-}], "Text",
- CellTags->"EpsContract",
- CellID->1380465394]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -206,7 +204,7 @@ Cell[BoxData[
  RowBox[{"LCD", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
- CellLabel->"In[398]:="],
+ CellLabel->"In[697]:="],
 
 Cell[BoxData[
  FormBox[
@@ -229,56 +227,54 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- CellLabel->"Out[398]="]
+ CellLabel->"Out[697]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"EpsContract", "[", 
-  RowBox[{
-   RowBox[{"LCD", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-   "^", "2"}], "]"}]], "Input",
- CellLabel->"In[399]:="],
+ RowBox[{
+  RowBox[{"EpsContract", "[", 
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
+ CellLabel->"In[698]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", 
-    SuperscriptBox["D", "4"]}], "+", 
-   RowBox[{"6", " ", 
-    SuperscriptBox["D", "3"]}], "-", 
-   RowBox[{"11", " ", 
-    SuperscriptBox["D", "2"]}], "+", 
-   RowBox[{"6", " ", "D"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[399]="]
+   RowBox[{"(", 
+    RowBox[{"1", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"2", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
+ CellLabel->"Out[698]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Contract", "[", 
-  RowBox[{
-   RowBox[{"LCD", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-   "^", "2"}], "]"}]], "Input",
+ RowBox[{
+  RowBox[{"Contract", "[", 
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
  CellTags->"EpsContract",
- CellLabel->"In[400]:=",
+ CellLabel->"In[699]:=",
  CellID->1929247061],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", 
-    SuperscriptBox["D", "4"]}], "+", 
-   RowBox[{"6", " ", 
-    SuperscriptBox["D", "3"]}], "-", 
-   RowBox[{"11", " ", 
-    SuperscriptBox["D", "2"]}], "+", 
-   RowBox[{"6", " ", "D"}]}], TraditionalForm]], "Output",
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"2", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"3", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox["D", "2"]}], TraditionalForm]], "Output",
  CellTags->"EpsContract",
- CellLabel->"Out[400]="]
+ CellLabel->"Out[699]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -292,7 +288,7 @@ Cell[BoxData[
     "^", "2"}], ",", 
    RowBox[{"EpsContract", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"EpsContract",
- CellLabel->"In[401]:=",
+ CellLabel->"In[700]:=",
  CellID->903937612],
 
 Cell[BoxData[
@@ -319,7 +315,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}]], ")"}], "2"], TraditionalForm]], "Output",
  CellTags->"EpsContract",
- CellLabel->"Out[401]="]
+ CellLabel->"Out[700]="]
 }, Open  ]]
 }, Open  ]],
 

@@ -234,8 +234,7 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"Twist2AlienOperator",
- CellLabel->"Out[1]=",
- CellID->891789414]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,19 +262,15 @@ Cell[BoxData[
        RowBox[{"(", 
         RowBox[{"-", "1"}], ")"}], "m"], "+", "1"}], ")"}], " ", 
     SubsuperscriptBox["g", "s", "3"], " ", 
-    FormBox[
-     SuperscriptBox[
-      FormBox[
-       FormBox["\[CapitalDelta]",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["mu",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["mu",
+       TraditionalForm],
+      TraditionalForm]], " ", 
     SubscriptBox["S", "n"], " ", 
     RowBox[{
      SuperscriptBox["T", 
@@ -402,8 +397,7 @@ Cell[BoxData[
              TraditionalForm]}], ")"}]}], ")"}], 
         RowBox[{"m", "-", "2"}]]}]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"Twist2AlienOperator",
- CellLabel->"Out[2]=",
- CellID->589738199]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -468,13 +462,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{646, Automatic}, {Automatic, 68}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

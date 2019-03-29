@@ -164,15 +164,12 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["FCAntiSymmetrize",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FCAntiSymmetrize",
   ButtonNote->"FCAntiSymmetrize"],
  "."
-}], "Text",
- CellTags->"FCSymmetrize",
- CellID->714962705]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -209,7 +206,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "b"}], "}"}]}], "]"}]], "Input",
  CellTags->"Symmetrize",
- CellLabel->"In[2]:=",
+ CellLabel->"In[111]:=",
  CellID->848650980],
 
 Cell[BoxData[
@@ -223,8 +220,7 @@ Cell[BoxData[
      RowBox[{"f", "(", 
       RowBox[{"b", ",", "a"}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Symmetrize",
- CellLabel->"Out[2]=",
- CellID->371734059]
+ CellLabel->"Out[111]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,7 +233,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]], "Input",
  CellTags->"Symmetrize",
- CellLabel->"In[3]:=",
+ CellLabel->"In[112]:=",
  CellID->1287424961],
 
 Cell[BoxData[
@@ -260,8 +256,7 @@ Cell[BoxData[
       RowBox[{"z", ",", "y", ",", "x"}], ")"}]}], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"Symmetrize",
- CellLabel->"Out[3]=",
- CellID->125642352]
+ CellLabel->"Out[112]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -326,13 +321,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{901, Automatic}, {Automatic, 129}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -173,9 +173,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DeltaFunctionPrime",
   ButtonNote->"DeltaFunctionPrime"],
  "."
-}], "Text",
- CellTags->"SimplifyDeltaFunction",
- CellID->2042613065]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -222,8 +220,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[1]=",
- CellID->117200739]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -248,8 +245,7 @@ Cell[BoxData[
       RowBox[{"x", "\[Rule]", "1"}]], "\[ThinSpace]", 
      RowBox[{"g", "(", "x", ")"}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[2]=",
- CellID->226766481]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -273,8 +269,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[3]=",
- CellID->1487082282]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -313,8 +308,7 @@ Cell[BoxData[
        RowBox[{"x", "\[Rule]", "1"}]], "\[ThinSpace]", 
       RowBox[{"g", "(", "x", ")"}]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[4]=",
- CellID->1033550143]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -338,8 +332,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[5]=",
- CellID->2058651279]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -358,8 +351,7 @@ Cell[BoxData[
     RowBox[{"1", "-", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[6]=",
- CellID->214547923]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -386,8 +378,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[7]=",
- CellID->102107043]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -407,8 +398,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[8]=",
- CellID->1247820634]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -437,8 +427,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[9]=",
- CellID->1462784843]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -453,8 +442,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[10]=",
- CellID->1037602810]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -481,8 +469,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[11]=",
- CellID->1786873704]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -502,8 +489,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[12]=",
- CellID->1434858408]
+ CellLabel->"Out[12]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -568,13 +554,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{614, Automatic}, {Automatic, 65}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -176,11 +176,6 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FCI",
   ButtonNote->"FCI"],
  ", ",
- ButtonBox["MetricTensor",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/MetricTensor",
-  ButtonNote->"MetricTensor"],
- ", ",
  ButtonBox["MTD",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/MTD",
@@ -191,9 +186,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/MTE",
   ButtonNote->"MTE"],
  "."
-}], "Text",
- CellTags->"MT",
- CellID->897903284]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -226,31 +219,24 @@ Cell[BoxData[
  RowBox[{"MT", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
  CellTags->"MT",
- CellLabel->"In[1]:=",
+ CellLabel->"In[21]:=",
  CellID->2071184026],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    OverscriptBox["g", "_"], 
-    RowBox[{
-     FormBox[
-      FormBox[
-       FormBox["\[Alpha]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Beta]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]}]],
-   TraditionalForm], TraditionalForm]], "Output",
+  SuperscriptBox[
+   OverscriptBox["g", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox["\[Alpha]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Beta]",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"MT",
- CellLabel->"Out[1]=",
- CellID->839261192]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,14 +249,13 @@ Cell[BoxData[
    RowBox[{"MT", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
  CellTags->"MT",
- CellLabel->"In[2]:=",
+ CellLabel->"In[22]:=",
  CellID->828510540],
 
 Cell[BoxData[
  FormBox["4", TraditionalForm]], "Output",
  CellTags->"MT",
- CellLabel->"Out[2]=",
- CellID->1733599790]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -280,15 +265,14 @@ Cell[BoxData[
   RowBox[{"MT", "[", 
    RowBox[{"a", ",", "b"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"MT",
- CellLabel->"In[3]:=",
+ CellLabel->"In[23]:=",
  CellID->493237874],
 
 Cell[BoxData[
  RowBox[{"MT", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"MT",
- CellLabel->"Out[3]//StandardForm=",
- CellID->2108634469]
+ CellLabel->"Out[23]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,7 +283,7 @@ Cell[BoxData[
    RowBox[{"MT", "[", 
     RowBox[{"a", ",", "b"}], "]"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"MT",
- CellLabel->"In[4]:=",
+ CellLabel->"In[24]:=",
  CellID->2090805972],
 
 Cell[BoxData[
@@ -308,8 +292,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "a", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"MT",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1337434264]
+ CellLabel->"Out[24]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -322,15 +305,14 @@ Cell[BoxData[
      RowBox[{"a", ",", "b"}], "]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MT",
- CellLabel->"In[5]:=",
+ CellLabel->"In[25]:=",
  CellID->921483723],
 
 Cell[BoxData[
  RowBox[{"MT", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"MT",
- CellLabel->"Out[5]//StandardForm=",
- CellID->62630223]
+ CellLabel->"Out[25]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -395,13 +377,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{Automatic, 0}, {Automatic, 137}},
+WindowMargins->{{Automatic, 409}, {248, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

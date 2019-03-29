@@ -21,16 +21,20 @@ Cell["Categorization", "CategorizationSection",
  CellID->1122911449],
 
 Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
  CellID->686433507],
 
 Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
  CellID->605800465],
 
 Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/PaVeReduce", "Categorization"]
-}, Open  ]],
+Cell["FeynCalc/ref/PaVeReduce", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -39,7 +43,7 @@ Cell["Keywords", "KeywordsSection",
 
 Cell["XXXX", "Keywords",
  CellID->1164421360]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -47,17 +51,21 @@ Cell["Syntax Templates", "TemplatesSection",
  CellID->1872225408],
 
 Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
  CellID->1562036412],
 
 Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
  CellID->158391909],
 
 Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
  CellID->1360575930],
 
 Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
  CellID->793782254]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -65,32 +73,41 @@ Cell["Details", "DetailsSection",
  CellID->307771771],
 
 Cell["XXXX", "Details",
+ CellLabel->"Lead",
  CellID->670882175],
 
 Cell["XXXX", "Details",
+ CellLabel->"Developers",
  CellID->350963985],
 
 Cell["XXXX", "Details",
+ CellLabel->"Authors",
  CellID->8391405],
 
 Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
  CellID->3610269],
 
 Cell["XXXX", "Details",
+ CellLabel->"QA",
  CellID->401364205],
 
 Cell["XXXX", "Details",
+ CellLabel->"DA",
  CellID->350204745],
 
 Cell["XXXX", "Details",
+ CellLabel->"Docs",
  CellID->732958810],
 
 Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
  CellID->222905350],
 
 Cell["XXXX", "Details",
+ CellLabel->"Comments",
  CellID->240026365]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -101,14 +118,43 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"PaVeReduce", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "reduces all Passarino-Veltman integrals (i.e. all PaVe's) in expr down to \
-scalar A0, B0, C0 and D0."
+ " \[LineSeparator]reduces all Passarino-Veltman integrals (i.e. all PaVe's) \
+in expr down to scalar A0, B0, C0 and D0."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PaVeReduce", "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[26]:=",
+ CellID->1685498711],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"A0ToB0", "\[Rule]", "False"}], ",", 
+    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "Factor2"}], ",", 
+    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
+    RowBox[{"Mandelstam", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"PaVeAutoReduce", "\[Rule]", "False"}], ",", 
+    RowBox[{"PaVeOrderList", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"WriteOutPaVe", "\[Rule]", "False"}], ",", 
+    RowBox[{"MaxIterations", "\[Rule]", "\[Infinity]"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[26]=",
+ CellID->458544387]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -154,9 +200,8 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVeOrder",
   ButtonNote->"PaVeOrder"],
  "."
-}], "Text",
- CellTags->"PaVeReduce",
- CellID->1234185302]
+}], "SeeAlso",
+ CellID->939950363]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -186,37 +231,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "PaVeReduce", "]"}]], "Input",
- CellTags->"PaVeReduce",
- CellLabel->"In[51]:=",
- CellID->1685498711],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"A0ToB0", "\[Rule]", "False"}], ",", 
-    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
-    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "True"}], ",", 
-    RowBox[{"FeynCalcExternal", "\[Rule]", "True"}], ",", 
-    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "Factor2"}], ",", 
-    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
-    RowBox[{"Mandelstam", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"PaVeAutoReduce", "\[Rule]", "False"}], ",", 
-    RowBox[{"PaVeOrderList", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"WriteOutPaVe", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"PaVeReduce",
- CellLabel->"Out[51]="]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"PaVeReduce", "[", 
   RowBox[{
    RowBox[{"PaVe", "[", 
@@ -232,16 +246,17 @@ Cell[BoxData[
        RowBox[{"M", "^", "2"}]}], "}"}]}], "]"}], ",", 
    RowBox[{"IsolateNames", "\[Rule]", "FF"}]}], "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[53]:=",
+ CellLabel->"In[60]:=",
  CellID->311139632],
 
 Cell[BoxData[
  FormBox[
   TagBox[
-   RowBox[{"FF", "(", "192", ")"}],
+   RowBox[{"FF", "(", "45", ")"}],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"PaVeReduce",
- CellLabel->"Out[53]="]
+ CellLabel->"Out[60]=",
+ CellID->516283693]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -249,7 +264,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"FRH", "[", "%", "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[54]:=",
+ CellLabel->"In[61]:=",
  CellID->927282004],
 
 Cell[BoxData[
@@ -426,7 +441,8 @@ Cell[BoxData[
         SuperscriptBox["m", "2"]}], "-", "s"}], ")"}]}]]}], 
   TraditionalForm]], "Output",
  CellTags->"PaVeReduce",
- CellLabel->"Out[54]="]
+ CellLabel->"Out[61]=",
+ CellID->1592936160]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -446,7 +462,7 @@ Cell[BoxData[
       "}"}]}], "]"}], ",", 
    RowBox[{"WriteOutPaVe", "\[Rule]", "\"\<p\>\""}]}], "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[55]:=",
+ CellLabel->"In[62]:=",
  CellID->1031771651],
 
 Cell[BoxData[
@@ -467,7 +483,8 @@ Cell[BoxData[
      TraditionalForm], 
     RowBox[{"mw2", "-", "t"}]]}], TraditionalForm]], "Output",
  CellTags->"PaVeReduce",
- CellLabel->"Out[55]="]
+ CellLabel->"Out[62]=",
+ CellID->1972744154]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -484,7 +501,7 @@ Cell[BoxData[
      "\"\<pPaVe2Csmame2mw2tCsmame20mw2.s\>\""}], ",", "String"}], "]"}], 
   "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[56]:=",
+ CellLabel->"In[63]:=",
  CellID->2052937684],
 
 Cell[BoxData[
@@ -510,7 +527,8 @@ SmallVariable[me2]}]/\"\>"},
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
  CellTags->"PaVeReduce",
- CellLabel->"Out[56]//TableForm="]
+ CellLabel->"Out[63]//TableForm=",
+ CellID->1778677368]
 }, Open  ]],
 
 Cell[BoxData[
@@ -520,7 +538,7 @@ Cell[BoxData[
    "FileNames", "[", "\"\<pPaVe2Csmame2mw2tCsmame20mw2.s\>\"", "]"}]}], 
   ";"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[57]:=",
+ CellLabel->"In[64]:=",
  CellID->1002068234],
 
 Cell[BoxData[
@@ -528,7 +546,7 @@ Cell[BoxData[
   RowBox[{"se", "=", 
    RowBox[{"SmallVariable", "[", "ME2", "]"}]}], ";"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[58]:=",
+ CellLabel->"In[65]:=",
  CellID->175960789],
 
 Cell[CellGroupData[{
@@ -552,7 +570,7 @@ Cell[BoxData[
      RowBox[{"IsolateNames", "\[Rule]", "F"}]}], "]"}], "//", 
    "FRH"}]}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[59]:=",
+ CellLabel->"In[66]:=",
  CellID->1868254708],
 
 Cell[BoxData[
@@ -988,7 +1006,8 @@ Cell[BoxData[
          RowBox[{"S", " ", "U"}]}], ")"}], "3"]}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"PaVeReduce",
- CellLabel->"Out[59]="]
+ CellLabel->"Out[66]=",
+ CellID->775966781]
 }, Open  ]],
 
 Cell[BoxData[
@@ -998,7 +1017,7 @@ Cell[BoxData[
     RowBox[{"d122res", "==", "d122"}], ",", 
     RowBox[{"FormatType", "\[Rule]", "FortranForm"}]}], "]"}], ";"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[60]:=",
+ CellLabel->"In[67]:=",
  CellID->1848976065],
 
 Cell[CellGroupData[{
@@ -1014,7 +1033,7 @@ Cell[BoxData[
         ",", "\"\<\>\""}], "]"}], "<>", "\"\<fctd122.for\>\""}], ",", 
     "String"}], "]"}], "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[61]:=",
+ CellLabel->"In[68]:=",
  CellID->193852328],
 
 Cell[BoxData[
@@ -1119,17 +1138,19 @@ D*MW2**4*S**2*T*1.84D3)\"\>"},
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
  CellTags->"PaVeReduce",
- CellLabel->"Out[61]//TableForm="]
+ CellLabel->"Out[68]//TableForm=",
+ CellID->2020509582]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DeleteFile", "/@", 
-   RowBox[{"FileNames", "[", "\"\<fctd122.for\>\"", "]"}]}], ";", 
-  RowBox[{"Clear", "[", 
-   RowBox[{"d122", ",", "se"}], "]"}], ";"}]], "Input",
+  RowBox[{
+   RowBox[{"DeleteFile", "/@", 
+    RowBox[{"FileNames", "[", "\"\<fctd122.for\>\"", "]"}]}], ";", 
+   RowBox[{"Clear", "[", 
+    RowBox[{"d122", ",", "se"}], "]"}], ";"}], " "}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[62]:=",
+ CellLabel->"In[69]:=",
  CellID->793776799]
 }, Open  ]],
 
@@ -1165,7 +1186,7 @@ Cell[BoxData[
  InterpretationBox[Cell["XXXX", "ExampleSubsection"],
   $Line = 0; Null]], "ExampleSubsection",
  CellID->1295379749]
-}, Open  ]],
+}, Closed]],
 
 Cell[BoxData[
  InterpretationBox[Cell["Applications", "ExampleSection"],
@@ -1193,15 +1214,13 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 741},
-WindowMargins->{{1053, Automatic}, {Automatic, 284}},
-Visible->True,
+WindowSize->{700, 770},
+WindowMargins->{{1083, Automatic}, {Automatic, 178}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-

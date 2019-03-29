@@ -127,8 +127,22 @@ ChangeDimension."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCReplaceD", "]"}]], "Input",
+ CellLabel->"In[61]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[61]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -194,44 +208,42 @@ Cell[BoxData[
 Cell["\<\
 Applying the replacement rule directly to the expression doesn't give the \
 desired result\
-\>", "ExampleText",
- CellID->1023979741],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{"FCI", "[", 
   RowBox[{"D", " ", 
    RowBox[{"MTD", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"%", "/.", 
-  RowBox[{"D", "\[Rule]", 
-   RowBox[{"4", "-", 
-    RowBox[{"2", "Epsilon"}]}]}]}]}], "Input",
- CellLabel->"In[2]:=",
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[70]:=",
  CellID->1718131501],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"D", " ", 
-   FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[2]=",
- CellID->871175171],
+   SuperscriptBox["g", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[70]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "/.", 
+  RowBox[{"D", "\[Rule]", 
+   RowBox[{"4", "-", 
+    RowBox[{"2", "Epsilon"}]}]}]}]], "Input",
+ CellLabel->"In[71]:="],
 
 Cell[BoxData[
  FormBox[
@@ -241,49 +253,37 @@ Cell[BoxData[
      RowBox[{"2", " ", 
       TagBox["\[CurlyEpsilon]",
        TraditionalForm]}]}], ")"}], " ", 
-   FormBox[
-    SuperscriptBox[
-     SubscriptBox["g", 
-      FormBox[
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"4", "-", 
-          RowBox[{"2", " ", 
-           TagBox["\[CurlyEpsilon]",
-            TraditionalForm]}]}], ",", 
-         RowBox[{"4", "-", 
-          RowBox[{"2", " ", 
-           TagBox["\[CurlyEpsilon]",
-            TraditionalForm]}]}]}], "}"}],
-       TraditionalForm]], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[3]=",
- CellID->430882547]
+   SuperscriptBox[
+    SubscriptBox["g", 
+     FormBox[
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"4", "-", 
+         RowBox[{"2", " ", 
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm]}]}], ",", 
+        RowBox[{"4", "-", 
+         RowBox[{"2", " ", 
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm]}]}]}], "}"}],
+      TraditionalForm]], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[71]="]
 }, Open  ]],
 
-Cell[TextData[{
- "With ",
- StyleBox["FCReplaceD", "Input"],
- " we get what we want"
-}], "ExampleText",
- CellID->961744640],
+Cell["With FCReplaceD we get what we want", "Notes"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{"FCReplaceD", "[", 
   RowBox[{
    RowBox[{"D", " ", 
@@ -291,10 +291,8 @@ Cell[BoxData[{
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], ",", 
    RowBox[{"D", "\[Rule]", 
     RowBox[{"4", "-", 
-     RowBox[{"2", "Epsilon"}]}]}]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"ChangeDimension", "[", 
-  RowBox[{"%", ",", "4"}], "]"}]}], "Input",
- CellLabel->"In[5]:=",
+     RowBox[{"2", "Epsilon"}]}]}]}], "]"}]], "Input",
+ CellLabel->"In[68]:=",
  CellID->1500698710],
 
 Cell[BoxData[
@@ -305,24 +303,25 @@ Cell[BoxData[
      RowBox[{"2", " ", 
       TagBox["\[CurlyEpsilon]",
        TraditionalForm]}]}], ")"}], " ", 
-   FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[5]=",
- CellID->582387944],
+   SuperscriptBox["g", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[68]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ChangeDimension", "[", 
+  RowBox[{"%", ",", "4"}], "]"}]], "Input",
+ CellLabel->"In[69]:="],
 
 Cell[BoxData[
  FormBox[
@@ -332,25 +331,18 @@ Cell[BoxData[
      RowBox[{"2", " ", 
       TagBox["\[CurlyEpsilon]",
        TraditionalForm]}]}], ")"}], " ", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["g", "_"], 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[6]=",
- CellID->2085927952]
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[69]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -415,12 +407,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{241, Automatic}, {Automatic, 122}},
+WindowMargins->{{1082, Automatic}, {Automatic, 251}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

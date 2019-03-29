@@ -119,16 +119,14 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FeynCalcToLaTeX", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]generates LaTeX with line-breaking  for ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  ".\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"FeynCalcToLaTeX", "[", 
    RowBox[{"expr", ",", "500"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]generates LaTeX for ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " where 500 is the Window width  setting for the Mathematica frontend. \
 Increasing its value will generate less line breaks."
 }], "Usage",

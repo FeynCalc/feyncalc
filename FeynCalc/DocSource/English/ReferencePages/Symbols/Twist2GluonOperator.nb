@@ -181,9 +181,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Twist2QuarkOperator",
   ButtonNote->"Twist2QuarkOperator"],
  "."
-}], "Text",
- CellTags->"Twist2GluonOperator",
- CellID->171220448]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,33 +208,81 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["The setting All for Explicit performs the sums.", "Text",
- CellTags->"Twist2GluonOperator",
- CellID->820989411],
+Cell["The setting All for Explicit performs the sums.", "Notes"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Twist2GluonOperator", ",", " ", 
-    RowBox[{"Polarization", " ", "\[Rule]", " ", "1"}], ",", " ", 
-    RowBox[{"Explicit", "\[Rule]", "All"}]}], "]"}], ";"}]], "Input",
+ RowBox[{"Twist2GluonOperator", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}], ",", " ", 
+   RowBox[{"Polarization", " ", "\[Rule]", " ", "1"}], ",", " ", 
+   RowBox[{"Explicit", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellTags->"Twist2GluonOperator",
- CellLabel->"In[1]:=",
- CellID->1824993691],
+ CellLabel->"In[3]:=",
+ CellID->1893252067],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"Twist2GluonOperator", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}], ";"}]], "Input",
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     FormBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "m"],
+      TraditionalForm]}], ")"}], " ", 
+   SubscriptBox["g", "s"], " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     SubsuperscriptBox["O", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], "\[VeryThinSpace]", 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm], "\[VeryThinSpace]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]}], "G3"], "(", 
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], ",", 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm], ",", 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Twist2GluonOperator",
- CellLabel->"In[2]:=",
- CellID->1893252067]
+ CellLabel->"Out[3]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -300,13 +346,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{713, Automatic}, {Automatic, 44}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

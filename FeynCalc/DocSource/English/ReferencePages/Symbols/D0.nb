@@ -195,9 +195,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVeOrder",
   ButtonNote->"PaVeOrder"],
  "."
-}], "Text",
- CellTags->"D0",
- CellID->1437823057]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -235,7 +233,7 @@ Cell[BoxData[
    RowBox[{"m3", "^", "2"}], ",", 
    RowBox[{"m4", "^", "2"}]}], "]"}]], "Input",
  CellTags->"D0",
- CellLabel->"In[1]:=",
+ CellLabel->"In[532]:=",
  CellID->1703594627],
 
 Cell[BoxData[
@@ -253,8 +251,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"D0",
- CellLabel->"Out[1]=",
- CellID->2083359639]
+ CellLabel->"Out[532]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -273,7 +270,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"p13", ",", "p20"}], "}"}]}]}], "]"}]], "Input",
  CellTags->"D0",
- CellLabel->"In[2]:=",
+ CellLabel->"In[533]:=",
  CellID->493215523],
 
 Cell[BoxData[
@@ -291,8 +288,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"D0",
- CellLabel->"Out[2]=",
- CellID->1336389725]
+ CellLabel->"Out[533]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -300,7 +296,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"PaVeOrder", "[", "%", "]"}]], "Input",
  CellTags->"D0",
- CellLabel->"In[3]:=",
+ CellLabel->"In[534]:=",
  CellID->1818800785],
 
 Cell[BoxData[
@@ -318,8 +314,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"D0",
- CellLabel->"Out[3]=",
- CellID->871188946]
+ CellLabel->"Out[534]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -384,13 +379,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{948, Automatic}, {Automatic, 160}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

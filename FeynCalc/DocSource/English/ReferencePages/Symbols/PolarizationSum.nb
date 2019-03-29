@@ -128,19 +128,16 @@ arguments"
 Cell[TextData[{
  Cell[BoxData[
   RowBox[{"PolarizationSum", "[", 
-   RowBox[{"\[Mu]", ",", " ", "\[Nu]"}], "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   RowBox[{"\[Mu]", ",", " ", "\[Nu]"}], "]"}]], "InlineFormula"],
  " or ",
  Cell[BoxData[
   RowBox[{"PolarizationSum", "[", 
    RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k", ",", " ", "0"}], "]"}]],
-   "InlineFormula",
-  FormatType->"StandardForm"],
+   "InlineFormula"],
  " gives ",
  Cell[BoxData[
   RowBox[{"-", 
-   SuperscriptBox["g", "\[Mu]\[Nu]"]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   SuperscriptBox["g", "\[Mu]\[Nu]"]}]], "InlineFormula"],
  "."
 }], "Notes",
  CellID->1067943069],
@@ -149,8 +146,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"PolarizationSum", "[", 
    RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k"}], "]"}]], 
-  "InlineFormula",
-  FormatType->"StandardForm"],
+  "InlineFormula"],
  " returns ",
  Cell[BoxData[
   RowBox[{
@@ -160,8 +156,7 @@ Cell[TextData[{
     RowBox[{
      SuperscriptBox["k", "\[Mu]"], 
      SuperscriptBox["k", "\[Nu]"]}], 
-    SuperscriptBox["k", "2"]]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+    SuperscriptBox["k", "2"]]}]], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -169,8 +164,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"PolarizationSum", "[", 
    RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "k", ",", " ", "n"}], "]"}]],
-   "InlineFormula",
-  FormatType->"StandardForm"],
+   "InlineFormula"],
  " yields ",
  Cell[BoxData[
   RowBox[{
@@ -192,8 +186,7 @@ Cell[TextData[{
      SuperscriptBox["k", "\[Nu]"]}], 
     SuperscriptBox[
      RowBox[{"(", 
-      RowBox[{"k", "\[CenterDot]", "n"}], ")"}], "2"]]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+      RowBox[{"k", "\[CenterDot]", "n"}], ")"}], "2"]]}]], "InlineFormula"],
  "."
 }], "Notes"],
 

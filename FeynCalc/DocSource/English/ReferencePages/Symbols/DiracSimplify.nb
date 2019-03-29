@@ -5078,10 +5078,9 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], 
-   RowBox[{
-   ":", " "}], "\<\"Error! DiracTrick has encountered a fatal problem and \
-must abort the computation. The problem reads: \
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
+   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
+the computation. The problem reads: \
 \[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
 and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak]\"\>"}], 
   TraditionalForm]], "Message", "MSG",
@@ -5265,12 +5264,11 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrace", "::", "ndranomaly"}], "MessageName"], 
-   RowBox[{
-   ":", " "}], "\<\"You are using naive dimensional regularization (NDR), \
-such that in D dimensions gamma^5 anticommutes with all other Dirac matrices. \
-In this scheme (without additional prescriptions) it is not possible to \
-compute traces with an odd number of gamma^5 unambiguously. Evaluation \
+    RowBox[{"DiracTrace", "::", "ndranomaly"}], "MessageName"], ":", 
+   " ", "\<\"You are using naive dimensional regularization (NDR), such that \
+in D dimensions gamma^5 anticommutes with all other Dirac matrices. In this \
+scheme (without additional prescriptions) it is not possible to compute \
+traces with an odd number of gamma^5 unambiguously. Evaluation \
 aborted!\"\>"}], TraditionalForm]], "Message", "MSG",
  CellLabel->"During evaluation of In[58]:="],
 

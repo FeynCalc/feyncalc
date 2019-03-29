@@ -143,13 +143,11 @@ field.\n",
  " \[LineSeparator]yields the 4-gluon vertex, with ",
  Cell[BoxData[
   RowBox[{"{", 
-   RowBox[{"p", ",", "mu", ",", "a"}], "}"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   RowBox[{"p", ",", "mu", ",", "a"}], "}"}]], "InlineFormula"],
  " and ",
  Cell[BoxData[
   RowBox[{"{", 
-   RowBox[{"k", ",", "la", ",", "c"}], "}"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   RowBox[{"k", ",", "la", ",", "c"}], "}"}]], "InlineFormula"],
  " denoting the external background fields."
 }], "Usage",
  CellID->2010081510],

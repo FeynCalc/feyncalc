@@ -119,8 +119,12 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"Spinor", "[", 
    RowBox[{"p", ",", " ", "m", ",", " ", "o"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the head of Dirac spinors. Which of the spinors ",
+ " \[LineSeparator]is the head of Dirac spinors. "
+}], "Usage",
+ CellID->982511436],
+
+Cell[TextData[{
+ "Which of the spinors ",
  StyleBox["u",
   FontSlant->"Italic"],
  ", ",
@@ -130,21 +134,47 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    OverscriptBox["u", "_"], TraditionalForm]]],
- " ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{",", " "}], TraditionalForm]]],
- "or ",
+ " or ",
  Cell[BoxData[
   FormBox[
    OverscriptBox["v", 
     RowBox[{"_", " "}]], TraditionalForm]]],
  "is understood, depends on the sign of the momentum (p) argument and the \
-relative position of DiracSlash[p]: Spinor[sign p, mass] is that spinor which \
-yields: sign*mass*Spinor[p, mass] if the Dirac equation is applied (by \
-DiracEquation or DiracSimplify).\nThe optional argument o can be used for \
-additional degrees of freedom. If no optional argument o is supplied, a 1 is \
-subsituted in.\nSpinors of fermions of mass ",
+relative position in the chain."
+}], "Notes"],
+
+Cell[TextData[{
+ "Spinor[Momentum[p],m] means \.7f",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["u", "_"], TraditionalForm]]],
+ " if it stands at the beginning of the chain."
+}], "Notes"],
+
+Cell[TextData[{
+ "Spinor[Momentum[p],m] means \.7f",
+ Cell[BoxData[
+  FormBox["u", TraditionalForm]]],
+ " if it stands at the end of the chain."
+}], "Notes"],
+
+Cell[TextData[{
+ "Spinor[-Momentum[p],m] means \.7f",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["v", "_"], TraditionalForm]]],
+ " if it stands at the beginning of the chain."
+}], "Notes"],
+
+Cell[TextData[{
+ "Spinor[-Momentum[p],m] means \.7f",
+ Cell[BoxData[
+  FormBox["v", TraditionalForm]]],
+ " if it stands at the end of the chain."
+}], "Notes"],
+
+Cell[TextData[{
+ "Spinors of fermions of mass ",
  StyleBox["m",
   FontSlant->"Italic"],
  " are normalized to have square ",
@@ -167,11 +197,13 @@ subsituted in.\nSpinors of fermions of mass ",
  StyleBox["m",
   FontSlant->"Italic"],
  "."
-}], "Usage",
- CellID->982511436],
+}], "Notes",
+ CellID->1067943069],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell["\<\
+The optional argument o can be used for additional degrees of freedom. If no \
+optional argument o is supplied, a 1 is subsituted in.\
+\>", "Notes"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,9 +269,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SpinorVBar",
   ButtonNote->"SpinorVBar"],
  "."
-}], "Text",
- CellTags->"Spinor",
- CellID->659330762]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -271,7 +301,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Spinor", "[", "p", "]"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[1]:=",
+ CellLabel->"In[28]:=",
  CellID->1573141935],
 
 Cell[BoxData[
@@ -289,8 +319,7 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[1]=",
- CellID->50146827]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,7 +328,7 @@ Cell[BoxData[
  RowBox[{"Spinor", "[", 
   RowBox[{"p", ",", "m"}], "]"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[2]:=",
+ CellLabel->"In[29]:=",
  CellID->67205944],
 
 Cell[BoxData[
@@ -321,16 +350,13 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[2]=",
- CellID->1920456025]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell["\<\
 FeynCalc uses covariant normalization (as opposed to e.g. the normalization \
 used in Bjorken&Drell).\
-\>", "Text",
- CellTags->"Spinor",
- CellID->815063905],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -342,15 +368,14 @@ Cell[BoxData[
    RowBox[{"Spinor", "[", 
     RowBox[{"p", ",", "m"}], "]"}]}], "//", "DiracSimplify"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[3]:=",
+ CellLabel->"In[30]:=",
  CellID->540190510],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"2", " ", "m"}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[3]=",
- CellID->18406301]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -361,9 +386,9 @@ Cell[BoxData[
    RowBox[{"Spinor", "[", 
     RowBox[{
      RowBox[{"-", "p"}], ",", "m"}], "]"}], ".", 
-   RowBox[{"DiracSlash", "[", "p", "]"}]}], "]"}]], "Input",
+   RowBox[{"GS", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[4]:=",
+ CellLabel->"In[26]:=",
  CellID->654515033],
 
 Cell[BoxData[
@@ -389,8 +414,7 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[4]=",
- CellID->1309692921]
+ CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -399,7 +423,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"Spinor", "[", "p", "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[5]:=",
+ CellLabel->"In[32]:=",
  CellID->864077691],
 
 Cell[BoxData[
@@ -407,16 +431,8 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1424658698]
+ CellLabel->"Out[32]//StandardForm="]
 }, Open  ]],
-
-Cell["\<\
-By convention, ChangeDimension does not operate on momenta in Spinor's (but \
-on e.g.  DiracSlash[Momentum[p]]). \
-\>", "Text",
- CellTags->"Spinor",
- CellID->1281981934],
 
 Cell[CellGroupData[{
 
@@ -427,7 +443,7 @@ Cell[BoxData[
     RowBox[{"Spinor", "[", "p", "]"}], ",", "D"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[6]:=",
+ CellLabel->"In[34]:=",
  CellID->39280367],
 
 Cell[BoxData[
@@ -436,8 +452,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1111090170]
+ CellLabel->"Out[34]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -447,7 +462,7 @@ Cell[BoxData[
   RowBox[{"Spinor", "[", 
    RowBox[{"p", ",", "m"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[7]:=",
+ CellLabel->"In[35]:=",
  CellID->1410615258],
 
 Cell[BoxData[
@@ -455,13 +470,10 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[7]//StandardForm=",
- CellID->601318454]
+ CellLabel->"Out[35]//StandardForm="]
 }, Open  ]],
 
-Cell["SmallVariable's are discarded by Spinor.", "Text",
- CellTags->"Spinor",
- CellID->1926267215],
+Cell["SmallVariable's are discarded by Spinor.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -472,7 +484,7 @@ Cell[BoxData[
     RowBox[{"SmallVariable", "[", "m", "]"}]}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[8]:=",
+ CellLabel->"In[37]:=",
  CellID->557218901],
 
 Cell[BoxData[
@@ -480,8 +492,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[8]//StandardForm=",
- CellID->485940583]
+ CellLabel->"Out[37]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -546,13 +557,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1091, Automatic}, {Automatic, 33}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

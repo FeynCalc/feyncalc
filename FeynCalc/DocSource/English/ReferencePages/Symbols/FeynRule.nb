@@ -122,11 +122,9 @@ Cell[TextData[{
     RowBox[{"{", "fields", "}"}]}], "]"}]], "InlineFormula"],
  " \[LineSeparator]derives the Feynman rule corresponding to the field \
 configuration ",
- Cell[BoxData["fields"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["fields"], "InlineFormula"],
  " of the lagrangian ",
- Cell[BoxData["lag"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["lag"], "InlineFormula"],
  "."
 }], "Usage",
  CellID->982511436],
@@ -261,8 +259,7 @@ Cell[BoxData[
 Cell[TextData[{
  "Derive the Feyman rule for the ",
  Cell[BoxData[
-  SuperscriptBox["\[Phi]", "4"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Phi]", "4"]], "InlineFormula"],
  " theory."
 }], "Notes"],
 

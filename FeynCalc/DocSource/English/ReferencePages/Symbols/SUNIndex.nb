@@ -160,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["ExplicitSUNIndex",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ExplicitSUNIndex",
@@ -176,9 +175,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNF",
   ButtonNote->"SUNF"],
  "."
-}], "Text",
- CellTags->"SUNIndex",
- CellID->341377518]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,13 +207,13 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"SUNIndex", "[", "i", "]"}]], "Input",
  CellTags->"SUNIndex",
- CellLabel->"In[7]:=",
+ CellLabel->"In[1]:=",
  CellID->973923672],
 
 Cell[BoxData[
  FormBox["i", TraditionalForm]], "Output",
  CellTags->"SUNIndex",
- CellLabel->"Out[7]="]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,35 +221,35 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"SUNIndex",
- CellLabel->"In[8]:=",
+ CellLabel->"In[2]:=",
  CellID->293124345],
 
 Cell[BoxData[
  RowBox[{"SUNIndex", "[", "i", "]"}]], "Output",
  CellTags->"SUNIndex",
- CellLabel->"Out[8]//StandardForm="]
+ CellLabel->"Out[2]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNIndex", "[", "2", "]"}]], "Input",
- CellLabel->"In[10]:="],
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
  FormBox["2", TraditionalForm]], "Output",
- CellLabel->"Out[10]="]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellLabel->"In[11]:="],
+ CellLabel->"In[4]:="],
 
 Cell[BoxData[
  RowBox[{"ExplicitSUNIndex", "[", "2", "]"}]], "Output",
- CellLabel->"Out[11]//StandardForm="]
+ CellLabel->"Out[4]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -264,7 +261,7 @@ Cell[BoxData[
     RowBox[{"i", ",", "j"}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUNIndex",
- CellLabel->"In[9]:=",
+ CellLabel->"In[5]:=",
  CellID->874008605],
 
 Cell[BoxData[
@@ -273,7 +270,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "i", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "j", "]"}]}], "]"}]], "Output",
  CellTags->"SUNIndex",
- CellLabel->"Out[9]//StandardForm="]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -338,7 +335,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{574, Automatic}, {Automatic, 202}},
+WindowMargins->{{731, Automatic}, {Automatic, 155}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

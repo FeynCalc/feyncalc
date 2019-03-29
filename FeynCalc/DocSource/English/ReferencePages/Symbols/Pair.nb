@@ -169,11 +169,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["FourVector",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FourVector",
-  ButtonNote->"FourVector"],
- ", ",
  ButtonBox["FV",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FV",
@@ -183,11 +178,6 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FVD",
   ButtonNote->"FVD"],
- ", ",
- ButtonBox["MetricTensor",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/MetricTensor",
-  ButtonNote->"MetricTensor"],
  ", ",
  ButtonBox["MT",
   BaseStyle->"Link",
@@ -214,9 +204,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SPD",
   ButtonNote->"SPD"],
  "."
-}], "Text",
- CellTags->"Pair",
- CellID->1831653521]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -262,20 +250,15 @@ Cell[BoxData[
    OverscriptBox["g", "_"], 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Alpha]",
-       TraditionalForm],
+     FormBox["\[Alpha]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Beta]",
-       TraditionalForm],
+     FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[1]=",
- CellID->1133543032]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell["This is a D-dimensional metric tensor", "Notes"],
@@ -298,20 +281,15 @@ Cell[BoxData[
   SuperscriptBox["g", 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Alpha]",
-       TraditionalForm],
+     FormBox["\[Alpha]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Beta]",
-       TraditionalForm],
+     FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[2]=",
- CellID->395860998]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell["\<\
@@ -329,13 +307,13 @@ Cell[BoxData[
      RowBox[{"n", "-", "4"}]}], "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->1343625376],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[4]="]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell["A 4-dimensional Lorentz vector", "Notes"],
@@ -348,7 +326,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->958079821],
 
 Cell[BoxData[
@@ -360,14 +338,11 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], 
    FormBox[
-    FormBox[
-     FormBox["\[Alpha]",
-      TraditionalForm],
+    FormBox["\[Alpha]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[3]=",
- CellID->53465480]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell["A D-dimensional Lorentz vector", "Notes"],
@@ -410,7 +385,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "q", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[4]:=",
+ CellLabel->"In[6]:=",
  CellID->1770091706],
 
 Cell[BoxData[
@@ -429,8 +404,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[4]=",
- CellID->2098206398]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -441,7 +415,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[5]:=",
+ CellLabel->"In[7]:=",
  CellID->227830423],
 
 Cell[BoxData[
@@ -453,8 +427,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[5]=",
- CellID->212297594]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -466,7 +439,7 @@ Cell[BoxData[
     RowBox[{"p", "-", "q"}], "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[6]:=",
+ CellLabel->"In[8]:=",
  CellID->25203155],
 
 Cell[BoxData[
@@ -482,19 +455,20 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[6]=",
- CellID->1189007863]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -506,7 +480,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "p", "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "^", "2"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[7]:=",
+ CellLabel->"In[9]:=",
  CellID->1431519685],
 
 Cell[BoxData[
@@ -518,8 +492,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "4"], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[7]=",
- CellID->966009047]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -531,7 +504,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "p", "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "^", "3"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[8]:=",
+ CellLabel->"In[10]:=",
  CellID->721851127],
 
 Cell[BoxData[
@@ -543,8 +516,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "6"], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[8]=",
- CellID->1932921647]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -557,7 +529,7 @@ Cell[BoxData[
      RowBox[{"p", "-", "q"}], "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "]"}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[10]:=",
+ CellLabel->"In[11]:=",
  CellID->294431519],
 
 Cell[BoxData[
@@ -583,8 +555,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[10]=",
- CellID->1562380290]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -601,14 +572,13 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "q", "]"}], ",", 
     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}]], "Input",
  CellTags->"Pair",
- CellLabel->"In[11]:=",
+ CellLabel->"In[12]:=",
  CellID->1586756083],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Pair",
- CellLabel->"Out[11]=",
- CellID->824407583]
+ CellLabel->"Out[12]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -673,7 +643,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{665, Automatic}, {Automatic, 76}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

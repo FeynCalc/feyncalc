@@ -118,14 +118,32 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"ExpandScalarProduct", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "expands scalar products of sums of momenta in expr. ExpandScalarProduct \
-does not use Expand on expr.\nScalarProductExpand=ExpandScalarProduct."
+ " \[LineSeparator]expands scalar products of sums of momenta in expr. \
+ExpandScalarProduct does not use Expand on expr."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ExpandScalarProduct", "]"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[723]:=",
+ CellID->668026966],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"EpsEvaluate", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Full", "\[Rule]", "True"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[723]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -176,9 +194,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/MomentumCombine",
   ButtonNote->"MomentumCombine"],
  "."
-}], "Text",
- CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellID->2118240248]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -205,30 +221,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellID->2116782470],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "ExpandScalarProduct", "]"}]], "Input",
- CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[1]:=",
- CellID->668026966],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
-    RowBox[{"Momentum", "\[Rule]", 
-     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
- CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[1]=",
- CellID->4871317]
-}, Open  ]],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -238,7 +230,7 @@ Cell[BoxData[
     RowBox[{"p1", "+", "p2", "+", "p3"}], ",", 
     RowBox[{"p4", "+", "p5", "+", "p6"}]}], "]"}]}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[2]:=",
+ CellLabel->"In[724]:=",
  CellID->1575091533],
 
 Cell[BoxData[
@@ -247,16 +239,18 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p1",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["p2",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["p3",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["p3",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -265,22 +259,23 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p4",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["p5",
-       TraditionalForm], "_"], "+", 
-     OverscriptBox[
-      FormBox["p6",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p4",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["p5",
+        TraditionalForm], "_"], "+", 
+      OverscriptBox[
+       FormBox["p6",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[2]=",
- CellID->831714443]
+ CellLabel->"Out[724]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -288,7 +283,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "ScalarProductExpand"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[3]:=",
+ CellLabel->"In[725]:=",
  CellID->1729317327],
 
 Cell[BoxData[
@@ -412,8 +407,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[3]=",
- CellID->1718079082]
+ CellLabel->"Out[725]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -423,7 +417,7 @@ Cell[BoxData[
   RowBox[{"p", ",", 
    RowBox[{"p", "-", "q"}]}], "]"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[4]:=",
+ CellLabel->"In[726]:=",
  CellID->790525557],
 
 Cell[BoxData[
@@ -439,19 +433,20 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[4]=",
- CellID->1472369643]
+ CellLabel->"Out[726]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -459,7 +454,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExpandScalarProduct", "[", "%", "]"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[5]:=",
+ CellLabel->"In[727]:=",
  CellID->171112254],
 
 Cell[BoxData[
@@ -485,8 +480,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[5]=",
- CellID->638310365]
+ CellLabel->"Out[727]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -496,35 +490,30 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[6]:=",
+ CellLabel->"In[728]:=",
  CellID->1175495192],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    RowBox[{"(", 
-     FormBox[
-      FormBox[
-       RowBox[{
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"], "-", 
-        OverscriptBox[
-         FormBox["q",
-          TraditionalForm], "_"]}],
-       TraditionalForm],
-      TraditionalForm], ")"}], 
+  SuperscriptBox[
+   RowBox[{"(", 
     FormBox[
      FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+      RowBox[{
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"], "-", 
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"]}],
       TraditionalForm],
-     TraditionalForm]],
-   TraditionalForm], TraditionalForm]], "Output",
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[6]=",
- CellID->323139512]
+ CellLabel->"Out[728]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -532,55 +521,45 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExpandScalarProduct", "[", "%", "]"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[7]:=",
+ CellLabel->"In[729]:=",
  CellID->2071711528],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], "-", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], "-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[7]=",
- CellID->1585657038]
+ CellLabel->"Out[729]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"SP", "[", 
-   RowBox[{
-    RowBox[{"p", "-", "q"}], ",", 
-    RowBox[{"q", "-", "r"}]}], "]"}], "//", "FCI"}]], "Input",
+ RowBox[{"SPD", "[", 
+  RowBox[{
+   RowBox[{"p", "-", "q"}], ",", 
+   RowBox[{"q", "-", "r"}]}], "]"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[8]:=",
+ CellLabel->"In[732]:=",
  CellID->1361432400],
 
 Cell[BoxData[
@@ -589,13 +568,13 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
+    FormBox[
+     RowBox[{
       FormBox["p",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
+       TraditionalForm], "-", 
       FormBox["q",
-       TraditionalForm], "_"]}],
+       TraditionalForm]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -604,28 +583,26 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
+    FormBox[
+     RowBox[{
       FormBox["q",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
+       TraditionalForm], "-", 
       FormBox["r",
-       TraditionalForm], "_"]}],
+       TraditionalForm]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[8]=",
- CellID->1532584134]
+ CellLabel->"Out[732]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "/.", 
-  RowBox[{"Pair", "\[Rule]", "ExpandScalarProduct"}]}]], "Input",
+ RowBox[{"ExpandScalarProduct", "[", "%", "]"}]], "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"In[9]:=",
+ CellLabel->"In[733]:=",
  CellID->1825158757],
 
 Cell[BoxData[
@@ -633,52 +610,44 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     FormBox[
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"],
+     FormBox["p",
+      TraditionalForm],
      TraditionalForm], 
     FormBox["\<\"\[CenterDot]\"\>",
      TraditionalForm], 
     FormBox[
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"],
+     FormBox["q",
+      TraditionalForm],
      TraditionalForm]}], "-", 
    RowBox[{
     FormBox[
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"],
+     FormBox["p",
+      TraditionalForm],
      TraditionalForm], 
     FormBox["\<\"\[CenterDot]\"\>",
      TraditionalForm], 
     FormBox[
-     OverscriptBox[
-      FormBox["r",
-       TraditionalForm], "_"],
+     FormBox["r",
+      TraditionalForm],
      TraditionalForm]}], "+", 
    RowBox[{
     FormBox[
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"],
+     FormBox["q",
+      TraditionalForm],
      TraditionalForm], 
     FormBox["\<\"\[CenterDot]\"\>",
      TraditionalForm], 
     FormBox[
-     OverscriptBox[
-      FormBox["r",
-       TraditionalForm], "_"],
+     FormBox["r",
+      TraditionalForm],
      TraditionalForm]}], "-", 
    SuperscriptBox[
     FormBox[
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"],
+     FormBox["q",
+      TraditionalForm],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
- CellLabel->"Out[9]=",
- CellID->334851798]
+ CellLabel->"Out[733]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -743,13 +712,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1001, Automatic}, {Automatic, 151}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

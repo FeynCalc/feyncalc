@@ -182,9 +182,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GluonGhostVertex",
   ButtonNote->"GluonGhostVertex"],
  "."
-}], "Text",
- CellTags->"GHP",
- CellID->269539325]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -217,7 +215,7 @@ Cell[BoxData[
  RowBox[{"GHP", "[", 
   RowBox[{"p", ",", "a", ",", "b"}], "]"}]], "Input",
  CellTags->"GHP",
- CellLabel->"In[1]:=",
+ CellLabel->"In[166]:=",
  CellID->1087938540],
 
 Cell[BoxData[
@@ -232,8 +230,7 @@ Cell[BoxData[
    FormBox["p",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"GHP",
- CellLabel->"Out[1]=",
- CellID->798549713]
+ CellLabel->"Out[166]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,27 +239,34 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"GHP", "[", "p", "]"}], "//", "Explicit"}]], "Input",
  CellTags->"GHP",
- CellLabel->"In[2]:=",
+ CellLabel->"In[167]:=",
  CellID->16593768],
 
 Cell[BoxData[
  FormBox[
   FractionBox["\[ImaginaryI]", 
-   SuperscriptBox[
-    FormBox["p",
-     TraditionalForm], "2"]], TraditionalForm]], "Output",
+   InterpretationBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], "2"],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]]],
+    Editable->False]], TraditionalForm]], "Output",
  CellTags->"GHP",
- CellLabel->"Out[2]=",
- CellID->1879723497]
+ CellLabel->"Out[167]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"GHP", "[", 
-  RowBox[{"p", ",", "1", ",", "2"}], "]"}]], "Input",
+  RowBox[{"p", ",", "c1", ",", "c2"}], "]"}]], "Input",
  CellTags->"GHP",
- CellLabel->"In[3]:=",
+ CellLabel->"In[169]:=",
  CellID->1429235603],
 
 Cell[BoxData[
@@ -270,15 +274,14 @@ Cell[BoxData[
   RowBox[{
    SubscriptBox["\[CapitalPi]", 
     RowBox[{
-     FormBox["ci1",
+     FormBox["c1",
       TraditionalForm], 
-     FormBox["ci2",
+     FormBox["c2",
       TraditionalForm]}]], "(", 
    FormBox["p",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"GHP",
- CellLabel->"Out[3]=",
- CellID->1586595147]
+ CellLabel->"Out[169]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -289,20 +292,19 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"GHP", "[", 
      RowBox[{
-      RowBox[{"-", "k"}], ",", "3", ",", "4"}], "]"}], "//", "Explicit"}], 
+      RowBox[{"-", "k"}], ",", "c3", ",", "c4"}], "]"}], "//", "Explicit"}], 
    "]"}], "]"}]], "Input",
  CellTags->"GHP",
- CellLabel->"In[4]:=",
+ CellLabel->"In[171]:=",
  CellID->1957617706],
 
 Cell[BoxData[
  RowBox[{"\[ImaginaryI]", " ", 
   RowBox[{"FAD", "[", "k", "]"}], " ", 
   RowBox[{"SD", "[", 
-   RowBox[{"ci3", ",", "ci4"}], "]"}]}]], "Output",
+   RowBox[{"c3", ",", "c4"}], "]"}]}]], "Output",
  CellTags->"GHP",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1550998879]
+ CellLabel->"Out[171]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -367,13 +369,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{783, Automatic}, {Automatic, 159}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

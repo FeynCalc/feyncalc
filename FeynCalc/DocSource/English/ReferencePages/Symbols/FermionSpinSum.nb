@@ -119,8 +119,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FermionSpinSum", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]converts products of closed spinor chains in ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " into Dirac traces. "
 }], "Usage",
  CellID->982511436],
@@ -129,8 +128,7 @@ Cell["Both Dirac and Majorana particles are supported.", "Notes"],
 
 Cell[TextData[{
  "It is understood, that ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " represents a squared amplitude."
 }], "Notes"],
 

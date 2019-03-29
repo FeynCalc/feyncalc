@@ -122,8 +122,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{
    SuperscriptBox["\[Gamma]", "\[Mu]"], 
-   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula"],
  " with ",
  Cell[BoxData[
   RowBox[{
@@ -133,8 +132,7 @@ Cell[TextData[{
     RowBox[{"\[Mu]", " ", "\[Nu]", " ", "\[Lambda]", " ", "\[Sigma]"}]], 
    SuperscriptBox["\[Gamma]", "\[Nu]"], 
    SuperscriptBox["\[Gamma]", "\[Lambda]"], 
-   SuperscriptBox["\[Gamma]", "\[Sigma]"]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   SuperscriptBox["\[Gamma]", "\[Sigma]"]}]], "InlineFormula"],
  "."
 }], "Usage",
  CellID->982511436],

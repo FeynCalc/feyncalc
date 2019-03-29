@@ -176,11 +176,6 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FCI",
   ButtonNote->"FCI"],
  ", ",
- ButtonBox["MetricTensor",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/MetricTensor",
-  ButtonNote->"MetricTensor"],
- ", ",
  ButtonBox["MT",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/MT",
@@ -191,9 +186,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/MTD",
   ButtonNote->"MTD"],
  "."
-}], "Text",
- CellTags->"MTD",
- CellID->310039993]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -226,31 +219,24 @@ Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[12]:=",
+ CellLabel->"In[31]:=",
  CellID->1680977301],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    OverscriptBox["g", "^"], 
-    RowBox[{
-     FormBox[
-      FormBox[
-       FormBox["\[Alpha]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Beta]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]}]],
-   TraditionalForm], TraditionalForm]], "Output",
+  SuperscriptBox[
+   OverscriptBox["g", "^"], 
+   RowBox[{
+    FormBox[
+     FormBox["\[Alpha]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Beta]",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[12]=",
- CellID->1958039632]
+ CellLabel->"Out[31]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,15 +249,14 @@ Cell[BoxData[
    RowBox[{"MTE", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[13]:=",
+ CellLabel->"In[32]:=",
  CellID->2085004373],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"D", "-", "4"}], TraditionalForm]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[13]=",
- CellID->558766132]
+ CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -283,13 +268,12 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], " ", 
    RowBox[{"MT", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
- CellLabel->"In[14]:=",
+ CellLabel->"In[33]:=",
  CellID->1799001225],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- CellLabel->"Out[14]=",
- CellID->40801765]
+ CellLabel->"Out[33]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -301,14 +285,13 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], " ", 
    RowBox[{"MTD", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
- CellLabel->"In[15]:=",
+ CellLabel->"In[34]:=",
  CellID->1071300852],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"D", "-", "4"}], TraditionalForm]], "Output",
- CellLabel->"Out[15]=",
- CellID->509955041]
+ CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -319,15 +302,14 @@ Cell[BoxData[
    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[16]:=",
+ CellLabel->"In[35]:=",
  CellID->964321899],
 
 Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[16]//StandardForm=",
- CellID->1333611151]
+ CellLabel->"Out[35]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -336,31 +318,24 @@ Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[17]:=",
+ CellLabel->"In[36]:=",
  CellID->842419980],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    OverscriptBox["g", "^"], 
-    RowBox[{
-     FormBox[
-      FormBox[
-       FormBox["\[Alpha]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Beta]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]}]],
-   TraditionalForm], TraditionalForm]], "Output",
+  SuperscriptBox[
+   OverscriptBox["g", "^"], 
+   RowBox[{
+    FormBox[
+     FormBox["\[Alpha]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Beta]",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[17]=",
- CellID->869554807]
+ CellLabel->"Out[36]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -372,7 +347,7 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[18]:=",
+ CellLabel->"In[37]:=",
  CellID->1887554420],
 
 Cell[BoxData[
@@ -387,8 +362,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"-", "4"}], "+", "D"}]}], "]"}]}], "]"}]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[18]//StandardForm=",
- CellID->369801037]
+ CellLabel->"Out[37]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -401,15 +375,14 @@ Cell[BoxData[
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[19]:=",
+ CellLabel->"In[38]:=",
  CellID->623099946],
 
 Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[19]//StandardForm=",
- CellID->1143698797]
+ CellLabel->"Out[38]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -418,31 +391,24 @@ Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[20]:=",
+ CellLabel->"In[39]:=",
  CellID->141115701],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    OverscriptBox["g", "^"], 
-    RowBox[{
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]}]],
-   TraditionalForm], TraditionalForm]], "Output",
+  SuperscriptBox[
+   OverscriptBox["g", "^"], 
+   RowBox[{
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[20]=",
- CellID->1588832862]
+ CellLabel->"Out[39]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -507,13 +473,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{Automatic, 0}, {Automatic, 120}},
+WindowMargins->{{Automatic, 456}, {Automatic, 218}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

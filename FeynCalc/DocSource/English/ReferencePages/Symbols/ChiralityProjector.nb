@@ -140,7 +140,10 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+The shortcut ChiralityProjector is deprecated, please use GA[6] and GA[7] \
+instead!\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -177,24 +180,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["DiracGamma",
+ ButtonBox["GA",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
-  ButtonNote->"DiracGamma"],
- ", ",
- ButtonBox["DiracMatrix",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData:>"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
  ", ",
  ButtonBox["FCI",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FCI",
   ButtonNote->"FCI"],
  "."
-}], "Text",
- CellTags->"ChiralityProjector",
- CellID->326424545]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,7 +227,7 @@ Cell[BoxData[
    RowBox[{"ChiralityProjector", "[", 
     RowBox[{"-", "1"}], "]"}]}], "}"}]], "Input",
  CellTags->"ChiralityProjector",
- CellLabel->"In[2]:=",
+ CellLabel->"In[313]:=",
  CellID->336937517],
 
 Cell[BoxData[
@@ -247,18 +243,20 @@ Cell[BoxData[
      FormBox["7",
       TraditionalForm]]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChiralityProjector",
- CellLabel->"Out[2]=",
- CellID->1252517379]
+ CellLabel->"Out[313]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSimplify", "[", 
-  RowBox[{"%", ",", 
-   RowBox[{"DiracSubstitute67", "\[Rule]", "True"}]}], "]"}]], "Input",
+ RowBox[{
+  RowBox[{
+   RowBox[{"DiracSimplify", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"DiracSubstitute67", "\[Rule]", "True"}]}], "]"}], "&"}], "/@", 
+  "%"}]], "Input",
  CellTags->"ChiralityProjector",
- CellLabel->"In[3]:=",
+ CellLabel->"In[314]:=",
  CellID->2102778570],
 
 Cell[BoxData[
@@ -280,8 +278,70 @@ Cell[BoxData[
        FormBox["5",
         TraditionalForm]], "2"]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChiralityProjector",
- CellLabel->"Out[3]=",
- CellID->1744568026]
+ CellLabel->"Out[314]="]
+}, Open  ]],
+
+Cell["\<\
+ChiralityProjector is scheduled for removal in the future versions of \
+FeynCalc. The safe alternative is to use GA[6] and GA[7].\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"GA", "[", "6", "]"}], ",", 
+   RowBox[{"GA", "[", "7", "]"}]}], "}"}]], "Input",
+ CellLabel->"In[319]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["6",
+       TraditionalForm]],
+     TraditionalForm], ",", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["7",
+       TraditionalForm]],
+     TraditionalForm]}], "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[319]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", 
+   RowBox[{"GA", "[", "6", "]"}], "]"}], "===", 
+  RowBox[{"ChiralityProjector", "[", 
+   RowBox[{"+", "1"}], "]"}]}]], "Input",
+ CellLabel->"In[320]:="],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[320]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", 
+   RowBox[{"GA", "[", "7", "]"}], "]"}], "===", 
+  RowBox[{"ChiralityProjector", "[", 
+   RowBox[{"-", "1"}], "]"}]}]], "Input",
+ CellLabel->"In[321]:="],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[321]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -345,14 +405,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{1221, 770},
+WindowMargins->{{Automatic, 303}, {116, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -1,7 +1,7 @@
 Notebook[{
 Cell[TextData[{
  "New in: ",
- Cell["9.0", "HistoryData",
+ Cell["9.3", "HistoryData",
   CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
@@ -32,9 +32,9 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/PolarizationUncontract", "Categorization",
+Cell["FeynCalc/ref/FCGetPauliSigmaScheme", "Categorization",
  CellLabel->"URI"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -111,18 +111,28 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["PolarizationUncontract", "ObjectName",
+Cell["FCGetPauliSigmaScheme", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["PolarizationUncontract"], "InlineFormula"],
- " \[LineSeparator]",
- "does Uncontract on scalar products involving polarization vectors."
+ Cell[BoxData[
+  RowBox[{"FCGetPauliSigmaScheme", "[", "]"}]], "InlineFormula"],
+ " \[LineSeparator]shows currently used scheme for handling Pauli matrices in \
+",
+ Cell[BoxData[
+  RowBox[{"D", "-", "1"}]], "InlineFormula"],
+ " dimensions"
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "For more details, see the documentation of ",
+ Cell[TextData[ButtonBox["FCSetPauliSigmaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSetPauliSigmaScheme"]], 
+  "InlineFunctionSans"]
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -159,19 +169,18 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Polarization",
+ ButtonBox["PauliSigma",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Polarization",
-  ButtonNote->"Polarization"],
+  ButtonData:>"paclet:FeynCalc/ref/PauliSigma",
+  ButtonNote->"PauliSigma"],
  ", ",
- ButtonBox["Uncontract",
+ ButtonBox["FCSetPauliSigmaScheme",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Uncontract",
-  ButtonNote->"Uncontract"],
+  ButtonData:>"paclet:FeynCalc/ref/FCSetPauliSigmaScheme",
+  ButtonNote->"FCSetPauliSigmaScheme"],
  "."
-}], "Text",
- CellTags->"PolarizationUncontract",
- CellID->945398040]
+}], "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -182,6 +191,8 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -195,6 +206,20 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetPauliSigmaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[92]:=",
+ CellID->1767975087],
+
+Cell[BoxData[
+ FormBox["\<\"None\"\>", TraditionalForm]], "Output",
+ CellLabel->"Out[92]=",
+ CellID->941509681]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -257,14 +282,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
-Visible->True,
+WindowMargins->{{511, Automatic}, {162, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-

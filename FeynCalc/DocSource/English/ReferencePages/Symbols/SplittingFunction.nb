@@ -127,8 +127,22 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SplittingFunction", "]"}]], "Input",
+ CellTags->"SplittingFunction",
+ CellLabel->"In[6]:=",
+ CellID->414842319],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Polarization", "\[Rule]", "1"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"SplittingFunction",
+ CellLabel->"Out[6]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,9 +183,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/AnomalousDimension",
   ButtonNote->"AnomalousDimension"],
  "."
-}], "Text",
- CellTags->"SplittingFunction",
- CellID->828495950]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,50 +210,26 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
+Cell["Unpolarized case:", "Notes"],
 
-Cell[BoxData[
- RowBox[{"Options", "[", "SplittingFunction", "]"}]], "Input",
- CellTags->"SplittingFunction",
- CellLabel->"In[1]:=",
- CellID->414842319],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Polarization", "\[Rule]", "1"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"SplittingFunction",
- CellLabel->"Out[1]=",
- CellID->594696224]
-}, Open  ]],
-
-Cell["Unpolarized case:", "Text",
- CellTags->"SplittingFunction",
- CellID->1917658754],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"SplittingFunction", ",", 
-    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], ";"}]], "Input",
- CellTags->"SplittingFunction",
- CellLabel->"In[2]:=",
- CellID->665292837],
-
-Cell["\<\
-In general the argument should be a string, but if the variables Pqq etc. \
-have no value, you can omit the \"\".\
-\>", "Text",
+Cell[TextData[StyleBox["In general the argument should be a string, but if \
+the variables Pqq etc. have no value, you can omit the \"\".", "Notes"]], \
+"Notes",
  CellTags->"SplittingFunction",
  CellID->1814679407],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pqq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pqq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[3]:=",
+ CellLabel->"In[8]:=",
  CellID->2029473456],
 
 Cell[BoxData[
@@ -253,78 +241,84 @@ Cell[BoxData[
      RowBox[{"6", " ", 
       RowBox[{"\[Delta]", "(", 
        FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+        RowBox[{"1", "-", "x"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"4", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+     RowBox[{"4", " ", "x"}], "+", 
      RowBox[{"8", " ", 
       SubscriptBox[
        RowBox[{"(", 
         FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-     "4"}], ")"}]}], TraditionalForm]], "Output",
+         RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[3]=",
- CellID->1596392060]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pqg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pqg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[4]:=",
+ CellLabel->"In[10]:=",
  CellID->1960078762],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SubscriptBox["T", "f"], " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"16", " ", 
-      SuperscriptBox[
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"]}], "-", 
-     RowBox[{"16", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "8"}], ")"}]}], 
-  TraditionalForm]], "Output",
+      SuperscriptBox["x", "2"]}], "-", 
+     RowBox[{"16", " ", "x"}], "+", "8"}], ")"}], " ", 
+   SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[4]=",
- CellID->1245944145]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pgq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pgq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[5]:=",
+ CellLabel->"In[11]:=",
  CellID->1606503237],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SubscriptBox["C", "F"], " ", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"4", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
-     FractionBox["8", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]], "-", "8"}], ")"}]}], 
-  TraditionalForm]], "Output",
+     RowBox[{"4", " ", "x"}], "+", 
+     FractionBox["8", "x"], "-", "8"}], ")"}], " ", 
+   SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[5]=",
- CellID->1432653043]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pgg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pgg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[6]:=",
+ CellLabel->"In[12]:=",
  CellID->1592599209],
 
 Cell[BoxData[
@@ -334,43 +328,43 @@ Cell[BoxData[
     SubscriptBox["C", "A"], " ", 
     RowBox[{"(", 
      RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["x", "2"]}], "+", 
       RowBox[{
        FractionBox["11", "12"], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], "-", 
-      SuperscriptBox[
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", 
+         RowBox[{"1", "-", "x"}],
+         TraditionalForm], ")"}]}], "+", "x", "+", 
       SubscriptBox[
        RowBox[{"(", 
         FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"], "+", 
-      FractionBox["1", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]], "-", "2"}], ")"}]}], "-", 
+         RowBox[{"1", "-", "x"}]], ")"}], "+"], "+", 
+      FractionBox["1", "x"], "-", "2"}], ")"}]}], "-", 
    RowBox[{
     FractionBox["8", "3"], " ", 
     SubscriptBox["N", "f"], " ", 
     SubscriptBox["T", "f"], " ", 
     RowBox[{"\[Delta]", "(", 
      FormBox[
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+      RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[6]=",
- CellID->1371632662]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "aqq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"aqq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[7]:=",
+ CellLabel->"In[13]:=",
  CellID->1202955773],
 
 Cell[BoxData[
@@ -386,50 +380,50 @@ Cell[BoxData[
          RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], ")"}], " ", 
       RowBox[{"\[Delta]", "(", 
        FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+        RowBox[{"1", "-", "x"}],
         TraditionalForm], ")"}]}], "+", 
-     RowBox[{"2", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+     RowBox[{"8", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+     RowBox[{"2", " ", "x"}], "+", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"2", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "2"}], ")"}], " ", 
+        RowBox[{"2", " ", "x"}], "+", "2"}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", 
      RowBox[{"4", " ", 
-      RowBox[{"(", 
-       RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox["1", 
+         RowBox[{"1", "-", "x"}]], ")"}], "+"], " ", 
+      RowBox[{"log", "(", "x", ")"}]}], "-", 
+     RowBox[{"4", " ", 
+      SubscriptBox[
+       RowBox[{"(", 
         FractionBox[
          RowBox[{"log", "(", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", 
-        SubscriptBox[
-         RowBox[{"(", 
-          FractionBox[
-           RowBox[{"log", "(", 
-            RowBox[{"1", "-", 
-             RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], 
-           RowBox[{"1", "-", 
-            RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], 
-       ")"}]}], "-", "4"}], ")"}]}], TraditionalForm]], "Output",
+          RowBox[{"1", "-", "x"}], ")"}], 
+         RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[7]=",
- CellID->1567961177]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "agq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"agq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[8]:=",
+ CellLabel->"In[14]:=",
  CellID->549448603],
 
 Cell[BoxData[
@@ -439,34 +433,30 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{"-", 
-      RowBox[{"2", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", 
-     FractionBox["4", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]], "+", 
+      RowBox[{"4", " ", "x"}]}], "+", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"-", 
-         RowBox[{"2", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", 
-        FractionBox["4", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]], "+", "4"}], ")"}], " ", 
+        RowBox[{"2", " ", "x"}], "-", "4"}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", "2"}], 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "+", "2"}], 
     ")"}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[8]=",
- CellID->1027460889]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "aqg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"aqg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
  CellLabel->"In[9]:=",
  CellID->715685164],
@@ -499,30 +489,31 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "agg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"agg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
  CellLabel->"In[10]:=",
  CellID->443108438],
 
-Cell["Polarized case:", "Text",
- CellTags->"SplittingFunction",
- CellID->358761934],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"SplittingFunction", ",", 
-    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], ";"}]], "Input",
- CellTags->"SplittingFunction",
- CellLabel->"In[11]:=",
- CellID->804753879],
+Cell["Polarized case:", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pqq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pqq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[12]:=",
+ CellLabel->"In[15]:=",
  CellID->1751600770],
 
 Cell[BoxData[
@@ -534,73 +525,81 @@ Cell[BoxData[
      RowBox[{"6", " ", 
       RowBox[{"\[Delta]", "(", 
        FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+        RowBox[{"1", "-", "x"}],
         TraditionalForm], ")"}]}], "-", 
-     RowBox[{"4", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+     RowBox[{"4", " ", "x"}], "+", 
      RowBox[{"8", " ", 
       SubscriptBox[
        RowBox[{"(", 
         FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-     "4"}], ")"}]}], TraditionalForm]], "Output",
+         RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[12]=",
- CellID->1771730461]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pqg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pqg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[13]:=",
+ CellLabel->"In[16]:=",
  CellID->715841852],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SubscriptBox["T", "f"], " ", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"16", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "8"}], ")"}]}], 
-  TraditionalForm]], "Output",
+     RowBox[{"16", " ", "x"}], "-", "8"}], ")"}], " ", 
+   SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[13]=",
- CellID->932494684]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pgq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pgq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[14]:=",
+ CellLabel->"In[17]:=",
  CellID->1646523691],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SubscriptBox["C", "F"], " ", 
    RowBox[{"(", 
     RowBox[{"8", "-", 
-     RowBox[{"4", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}]}], 
-  TraditionalForm]], "Output",
+     RowBox[{"4", " ", "x"}]}], ")"}], " ", 
+   SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[14]=",
- CellID->288935917]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "Pgg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"Pgg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[15]:=",
+ CellLabel->"In[18]:=",
  CellID->1231189034],
 
 Cell[BoxData[
@@ -614,38 +613,38 @@ Cell[BoxData[
        FractionBox["22", "3"], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "-", 
-      RowBox[{"16", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+      RowBox[{"16", " ", "x"}], "+", 
       RowBox[{"8", " ", 
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
-      "8"}], ")"}]}], "-", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", "8"}], ")"}]}], "-", 
    RowBox[{
     FractionBox["8", "3"], " ", 
     SubscriptBox["N", "f"], " ", 
     SubscriptBox["T", "f"], " ", 
     RowBox[{"\[Delta]", "(", 
      FormBox[
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+      RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[15]=",
- CellID->1238950235]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "aqq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"aqq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[16]:=",
+ CellLabel->"In[19]:=",
  CellID->98129728],
 
 Cell[BoxData[
@@ -661,55 +660,50 @@ Cell[BoxData[
          RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], ")"}], " ", 
       RowBox[{"\[Delta]", "(", 
        FormBox[
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+        RowBox[{"1", "-", "x"}],
         TraditionalForm], ")"}]}], "+", 
      RowBox[{"8", " ", 
       RowBox[{"(", 
-       RowBox[{"1", "-", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
-     RowBox[{"2", " ", 
-      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+       RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+     RowBox[{"2", " ", "x"}], "+", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"2", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "2"}], ")"}], " ", 
+        RowBox[{"2", " ", "x"}], "+", "2"}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", 
      RowBox[{"4", " ", 
       SubscriptBox[
        RowBox[{"(", 
         FractionBox["1", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"], " ", 
-      RowBox[{"log", "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
+         RowBox[{"1", "-", "x"}]], ")"}], "+"], " ", 
+      RowBox[{"log", "(", "x", ")"}]}], "-", 
      RowBox[{"4", " ", 
       SubscriptBox[
        RowBox[{"(", 
         FractionBox[
          RowBox[{"log", "(", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-     "4"}], ")"}]}], TraditionalForm]], "Output",
+          RowBox[{"1", "-", "x"}], ")"}], 
+         RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[16]=",
- CellID->721937427]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "agq", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"agq", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[17]:=",
+ CellLabel->"In[20]:=",
  CellID->1908869685],
 
 Cell[BoxData[
@@ -719,31 +713,32 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{"-", 
-      RowBox[{"4", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "+", 
+      RowBox[{"4", " ", "x"}]}], "+", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"2", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "4"}], ")"}], " ", 
+        RowBox[{"2", " ", "x"}], "-", "4"}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", "2"}], 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "+", "2"}], 
     ")"}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[17]=",
- CellID->707171378]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "agqd", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"agqd", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[18]:=",
+ CellLabel->"In[21]:=",
  CellID->1649871241],
 
 Cell[BoxData[
@@ -755,26 +750,28 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"2", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "4"}], ")"}], " ", 
+        RowBox[{"2", " ", "x"}], "-", "4"}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", "2"}], 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", "2"}], 
     ")"}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[18]=",
- CellID->1438562024]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "aqg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"aqg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[19]:=",
+ CellLabel->"In[22]:=",
  CellID->1552619850],
 
 Cell[BoxData[
@@ -786,26 +783,28 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"(", 
        RowBox[{"4", "-", 
-        RowBox[{"8", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+        RowBox[{"8", " ", "x"}]}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", "4"}], 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", "4"}], 
     ")"}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[19]=",
- CellID->991848500]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "aqgd", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"aqgd", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[20]:=",
+ CellLabel->"In[23]:=",
  CellID->81713985],
 
 Cell[BoxData[
@@ -817,26 +816,28 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"(", 
        RowBox[{"4", "-", 
-        RowBox[{"8", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+        RowBox[{"8", " ", "x"}]}], ")"}], " ", 
       RowBox[{"log", "(", 
        RowBox[{
         RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", "4"}], 
+         RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", "4"}], 
     ")"}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[20]=",
- CellID->32591320]
+ CellLabel->"Out[23]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "agg", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"agg", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[21]:=",
+ CellLabel->"In[24]:=",
  CellID->1048960999],
 
 Cell[BoxData[
@@ -854,56 +855,52 @@ Cell[BoxData[
           RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], ")"}], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "4"}], ")"}], " ", 
+         RowBox[{"8", " ", "x"}], "-", "4"}], ")"}], " ", 
        RowBox[{"log", "(", 
         RowBox[{
          RowBox[{"(", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", 
       RowBox[{"4", " ", 
        RowBox[{"(", 
         RowBox[{
          FractionBox[
-          RowBox[{"log", "(", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", 
+          RowBox[{"log", "(", "x", ")"}], 
+          RowBox[{"1", "-", "x"}]], "+", 
          SubscriptBox[
           RowBox[{"(", 
            FractionBox[
             RowBox[{"log", "(", 
-             RowBox[{"1", "-", 
-              RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], 
-            RowBox[{"1", "-", 
-             RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], 
-        ")"}]}], "+", "2"}], ")"}]}], "-", 
+             RowBox[{"1", "-", "x"}], ")"}], 
+            RowBox[{"1", "-", "x"}]], ")"}], "+"]}], ")"}]}], "+", "2"}], 
+     ")"}]}], "-", 
    RowBox[{
     FractionBox["20", "9"], " ", 
     SubscriptBox["T", "f"], " ", 
     RowBox[{"\[Delta]", "(", 
      FormBox[
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+      RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[21]=",
- CellID->1114151464]
+ CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "aggd", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"aggd", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[22]:=",
+ CellLabel->"In[25]:=",
  CellID->1079830623],
 
 Cell[BoxData[
@@ -921,56 +918,52 @@ Cell[BoxData[
           RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], ")"}], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "4"}], ")"}], " ", 
+         RowBox[{"8", " ", "x"}], "-", "4"}], ")"}], " ", 
        RowBox[{"log", "(", 
         RowBox[{
          RowBox[{"(", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", 
       RowBox[{"4", " ", 
        RowBox[{"(", 
         RowBox[{
          FractionBox[
-          RowBox[{"log", "(", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", 
+          RowBox[{"log", "(", "x", ")"}], 
+          RowBox[{"1", "-", "x"}]], "+", 
          SubscriptBox[
           RowBox[{"(", 
            FractionBox[
             RowBox[{"log", "(", 
-             RowBox[{"1", "-", 
-              RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], 
-            RowBox[{"1", "-", 
-             RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], 
-        ")"}]}], "+", "2"}], ")"}]}], "-", 
+             RowBox[{"1", "-", "x"}], ")"}], 
+            RowBox[{"1", "-", "x"}]], ")"}], "+"]}], ")"}]}], "+", "2"}], 
+     ")"}]}], "-", 
    RowBox[{
     FractionBox["20", "9"], " ", 
     SubscriptBox["T", "f"], " ", 
     RowBox[{"\[Delta]", "(", 
      FormBox[
-      RowBox[{"1", "-", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+      RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[22]=",
- CellID->1637836671]
+ CellLabel->"Out[25]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "PQQS", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"PQQS", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[23]:=",
+ CellLabel->"In[26]:=",
  CellID->1747750059],
 
 Cell[BoxData[
@@ -982,34 +975,33 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"16", " ", 
       RowBox[{"(", 
-       RowBox[{"1", "-", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+       RowBox[{"1", "-", "x"}], ")"}]}], "-", 
      RowBox[{"16", " ", 
       RowBox[{"(", 
-       RowBox[{
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
+       RowBox[{"x", "+", "1"}], ")"}], " ", 
       RowBox[{
-       SuperscriptBox["log", "2"], "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+       SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"48", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "16"}], ")"}], " ", 
-      RowBox[{"log", "(", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], 
-  TraditionalForm]], "Output",
+        RowBox[{"48", " ", "x"}], "-", "16"}], ")"}], " ", 
+      RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[23]=",
- CellID->28847461]
+ CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "PQQNS", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"PQQNS", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[24]:=",
+ CellLabel->"In[27]:=",
  CellID->111584241],
 
 Cell[BoxData[
@@ -1025,53 +1017,50 @@ Cell[BoxData[
        SubscriptBox["C", "A"], "2"]}], ")"}], " ", 
     RowBox[{"(", 
      RowBox[{
-      RowBox[{
-       FractionBox["1", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], 
-       RowBox[{"(", 
-        RowBox[{
-         SuperscriptBox[
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-       " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"-", 
-          RowBox[{"2", " ", 
-           RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "-", 
-         RowBox[{"4", " ", 
-          TemplateBox[{"2",RowBox[{"-", 
-              RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
-           "PolyLog"]}], "+", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
          RowBox[{
-          SuperscriptBox["log", "2"], "(", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], "-", 
-         RowBox[{"4", " ", 
-          RowBox[{"log", "(", 
-           RowBox[{
-            RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-          RowBox[{"log", "(", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], "+", 
+          SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"2", " ", 
+            RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "-", 
+          RowBox[{"4", " ", 
+           TemplateBox[{"2",RowBox[{"-", "x"}]},
+            "PolyLog"]}], "+", 
+          RowBox[{
+           SuperscriptBox["log", "2"], "(", "x", ")"}], "-", 
+          RowBox[{"4", " ", 
+           RowBox[{"log", "(", 
+            RowBox[{"x", "+", "1"}], ")"}], " ", 
+           RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], 
+       RowBox[{"x", "+", "1"}]], "+", 
       RowBox[{"4", " ", 
        RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{"2", " ", 
        RowBox[{"(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], "+", 
+        RowBox[{"x", "+", "1"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], "+", 
    RowBox[{
     SubscriptBox["C", "A"], " ", 
     SubscriptBox["C", "F"], " ", 
     RowBox[{"(", 
      RowBox[{
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
+       RowBox[{"1", "-", "x"}]], "+", 
       RowBox[{"8", " ", 
        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
        RowBox[{"(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], "+", 
+        RowBox[{"x", "+", "1"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
@@ -1081,9 +1070,12 @@ Cell[BoxData[
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
       RowBox[{
+       RowBox[{"\[Delta]", "(", 
+        FormBox[
+         RowBox[{"1", "-", "x"}],
+         TraditionalForm], ")"}], " ", 
        RowBox[{"(", 
         RowBox[{
          FractionBox[
@@ -1092,46 +1084,35 @@ Cell[BoxData[
          RowBox[{"24", " ", 
           TemplateBox[{"3"},
            "Zeta"]}], "+", 
-         FractionBox["17", "3"]}], ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], "+", 
+         FractionBox["17", "3"]}], ")"}]}], "+", 
       RowBox[{
        FractionBox["4", "9"], " ", 
        RowBox[{"(", 
         RowBox[{"53", "-", 
-         RowBox[{"187", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}]}], "+", 
-      FractionBox[
-       RowBox[{"4", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-        " ", 
-        RowBox[{
-         SuperscriptBox["log", "2"], "(", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-       RowBox[{"1", "-", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "-", 
+         RowBox[{"187", " ", "x"}]}], ")"}]}], "-", 
       RowBox[{
        FractionBox["4", "3"], " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"5", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
+         RowBox[{"5", " ", "x"}], "-", 
          FractionBox["22", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", "5"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}]}], ")"}]}], "+", 
+          RowBox[{"1", "-", "x"}]], "+", "5"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], "+", 
    RowBox[{
     SubscriptBox["C", "F"], " ", 
     SubscriptBox["N", "f"], " ", 
     RowBox[{"(", 
      RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"8", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+         RowBox[{"log", "(", "x", ")"}]}], 
+        RowBox[{"3", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "x"}], ")"}]}]]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
@@ -1142,38 +1123,36 @@ Cell[BoxData[
          FractionBox["2", "3"]}], ")"}], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "+", 
       FractionBox[
-       RowBox[{"88", " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "9"], "-", 
+       RowBox[{"88", " ", "x"}], "9"], "-", 
       RowBox[{
        FractionBox["80", "9"], " ", 
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "-", 
-      FractionBox[
-       RowBox[{"8", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-        " ", 
-        RowBox[{"log", "(", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-       RowBox[{"3", " ", 
-        RowBox[{"(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}]], "-", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", 
       FractionBox["8", "9"]}], ")"}]}], "+", 
    RowBox[{
     SubsuperscriptBox["C", "F", "2"], " ", 
     RowBox[{"(", 
      RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"16", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["x", "2"], "+", "1"}], ")"}], " ", 
+         RowBox[{"log", "(", 
+          RowBox[{"1", "-", "x"}], ")"}], " ", 
+         RowBox[{"log", "(", "x", ")"}]}], 
+        RowBox[{"1", "-", "x"}]]}], "+", 
       RowBox[{
+       RowBox[{"\[Delta]", "(", 
+        FormBox[
+         RowBox[{"1", "-", "x"}],
+         TraditionalForm], ")"}], " ", 
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
@@ -1181,59 +1160,39 @@ Cell[BoxData[
            RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "+", 
          RowBox[{"48", " ", 
           TemplateBox[{"3"},
-           "Zeta"]}], "+", "3"}], ")"}], " ", 
-       RowBox[{"\[Delta]", "(", 
-        FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
-         TraditionalForm], ")"}]}], "-", 
+           "Zeta"]}], "+", "3"}], ")"}]}], "-", 
       RowBox[{"40", " ", 
        RowBox[{"(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "-", 
       RowBox[{"4", " ", 
        RowBox[{"(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
+        RowBox[{"x", "+", "1"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "-", 
       RowBox[{"8", " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"2", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+         RowBox[{"2", " ", "x"}], "+", 
          FractionBox["3", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
-      FractionBox[
-       RowBox[{"16", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          SuperscriptBox[
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "2"], "+", "1"}], ")"}], 
-        " ", 
-        RowBox[{"log", "(", 
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-        RowBox[{"log", "(", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
-       RowBox[{"1", "-", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]]}], ")"}]}]}], 
+          RowBox[{"1", "-", "x"}]]}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[24]=",
- CellID->502237986]
+ CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "PQG", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"PQG", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[25]:=",
+ CellLabel->"In[28]:=",
  CellID->1622861813],
 
 Cell[BoxData[
@@ -1251,62 +1210,43 @@ Cell[BoxData[
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
-          RowBox[{"16", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", "8"}], ")"}], 
-       " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
+          RowBox[{"16", " ", "x"}]}], "-", "8"}], ")"}], " ", 
+       TemplateBox[{"2",RowBox[{"-", "x"}]},
         "PolyLog"]}], "-", 
-      RowBox[{"44", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+      RowBox[{"44", " ", "x"}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{"4", "-", 
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+         RowBox[{"8", " ", "x"}]}], ")"}], " ", 
        RowBox[{
         SuperscriptBox["log", "2"], "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
-          RowBox[{"8", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", "4"}], ")"}], 
-       " ", 
+          RowBox[{"8", " ", "x"}]}], "-", "4"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "16"}], ")"}], " ", 
-       
+         RowBox[{"16", " ", "x"}], "-", "16"}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"32", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "4"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+         RowBox[{"32", " ", "x"}], "+", "4"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
-          RowBox[{"16", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", "8"}], ")"}], 
-       " ", 
+          RowBox[{"16", " ", "x"}]}], "-", "8"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], "+", 
-      "48"}], ")"}]}], "+", 
+        RowBox[{"x", "+", "1"}], ")"}]}], "+", "48"}], ")"}]}], "+", 
    RowBox[{"4", " ", 
     SubscriptBox["C", "F"], " ", 
     SubscriptBox["T", "f"], " ", 
@@ -1315,60 +1255,53 @@ Cell[BoxData[
       RowBox[{"8", " ", 
        RowBox[{"\[Zeta]", "(", "2", ")"}]}], "-", 
       RowBox[{"16", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
-      RowBox[{"54", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x"}], "+", 
+      RowBox[{"54", " ", "x"}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "4"}], ")"}], " ", 
+         RowBox[{"8", " ", "x"}], "-", "4"}], ")"}], " ", 
        RowBox[{
         SuperscriptBox["log", "2"], "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"4", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "2"}], ")"}], " ", 
+         RowBox[{"4", " ", "x"}], "-", "2"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{"16", "-", 
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+         RowBox[{"16", " ", "x"}]}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{"8", "-", 
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+         RowBox[{"16", " ", "x"}]}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "-", 
       RowBox[{"18", " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", "44"}], 
-     ")"}]}]}], TraditionalForm]], "Output",
+       RowBox[{"log", "(", "x", ")"}]}], "-", "44"}], ")"}]}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[25]=",
- CellID->2112286231]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "PGQ", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"PGQ", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[26]:=",
+ CellLabel->"In[29]:=",
  CellID->747834490],
 
 Cell[BoxData[
@@ -1384,75 +1317,53 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "32"}], ")"}], " ", 
-       
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
+         RowBox[{"16", " ", "x"}], "+", "32"}], ")"}], " ", 
+       TemplateBox[{"2",RowBox[{"-", "x"}]},
         "PolyLog"]}], "+", 
       RowBox[{"16", " ", 
-       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+       RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x"}], "+", 
       FractionBox[
-       RowBox[{"280", " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "9"], "+", 
+       RowBox[{"280", " ", "x"}], "9"], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{"16", "-", 
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+         RowBox[{"8", " ", "x"}]}], ")"}], " ", 
        RowBox[{
         SuperscriptBox["log", "2"], "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "16"}], ")"}], " ", 
-       
+         RowBox[{"8", " ", "x"}], "+", "16"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          FractionBox[
-          RowBox[{"8", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "3"], "+", 
+          RowBox[{"8", " ", "x"}], "3"], "+", 
          FractionBox["80", "3"]}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "32"}], ")"}], " ", 
-       
+         RowBox[{"16", " ", "x"}], "-", "32"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{"32", "-", 
-         RowBox[{"104", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+         RowBox[{"104", " ", "x"}]}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "32"}], ")"}], " ", 
-       
+         RowBox[{"16", " ", "x"}], "+", "32"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}]}], "+", 
+        RowBox[{"x", "+", "1"}], ")"}]}], "+", 
       FractionBox["328", "9"]}], ")"}]}], "+", 
    RowBox[{
     RowBox[{"(", 
@@ -1463,81 +1374,68 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"-", 
        FractionBox[
-        RowBox[{"32", " ", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "9"]}], "+", 
+        RowBox[{"32", " ", "x"}], "9"]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          FractionBox[
-          RowBox[{"32", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "3"], "-", 
+          RowBox[{"32", " ", "x"}], "3"], "-", 
          FractionBox["64", "3"]}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "-", 
       FractionBox["128", "9"]}], ")"}]}], "+", 
    RowBox[{
     SubsuperscriptBox["C", "F", "2"], ".", 
     RowBox[{"(", 
      RowBox[{
-      RowBox[{"32", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+      RowBox[{"32", " ", "x"}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"8", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "16"}], ")"}], " ", 
-       
+         RowBox[{"8", " ", "x"}], "-", "16"}], ")"}], " ", 
        RowBox[{
         SuperscriptBox["log", "2"], "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{"8", "-", 
-         RowBox[{"4", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], ")"}], " ", 
+         RowBox[{"4", " ", "x"}]}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
-          RowBox[{"8", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", "16"}], ")"}], 
-       " ", 
+          RowBox[{"8", " ", "x"}]}], "-", "16"}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", 
+        RowBox[{"1", "-", "x"}], ")"}]}], "-", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"32", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "64"}], ")"}], " ", 
-       
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+         RowBox[{"32", " ", "x"}], "+", "64"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"36", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", "48"}], ")"}], " ", 
-       
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", "68"}], 
-     ")"}]}]}], TraditionalForm]], "Output",
+         RowBox[{"36", " ", "x"}], "+", "48"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "-", "68"}], ")"}]}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[26]=",
- CellID->691007042]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SplittingFunction", "[", "PGG", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SplittingFunction", "[", 
+   RowBox[{"PGG", ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}], "/.", 
+  RowBox[{
+   RowBox[{"FCGV", "[", "z_", "]"}], "\[RuleDelayed]", 
+   RowBox[{"ToExpression", "[", "z", "]"}]}]}]], "Input",
  CellTags->"SplittingFunction",
- CellLabel->"In[27]:=",
+ CellLabel->"In[30]:=",
  CellID->1886436228],
 
 Cell[BoxData[
@@ -1553,29 +1451,24 @@ Cell[BoxData[
         FractionBox["32", "3"], " ", 
         RowBox[{"\[Delta]", "(", 
          FormBox[
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+          RowBox[{"1", "-", "x"}],
           TraditionalForm], ")"}]}]}], "+", 
       FractionBox[
-       RowBox[{"608", " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "9"], "-", 
+       RowBox[{"608", " ", "x"}], "9"], "-", 
       RowBox[{
        FractionBox["160", "9"], " ", 
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
           FractionBox[
-           RowBox[{"32", " ", 
-            RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "3"]}], "-", 
+           RowBox[{"32", " ", "x"}], "3"]}], "-", 
          FractionBox["32", "3"]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
+       RowBox[{"log", "(", "x", ")"}]}], "-", 
       FractionBox["448", "9"]}], ")"}]}], "+", 
    RowBox[{
     SubsuperscriptBox["C", "A", "2"], " ", 
@@ -1584,108 +1477,79 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"64", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+         RowBox[{"64", " ", "x"}], "+", 
          FractionBox["32", 
-          RowBox[{
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", "32"}], 
-        ")"}], " ", 
-       TemplateBox[{"2",RowBox[{"-", 
-           RowBox[{"FCGV", "(", "\"x\"", ")"}]}]},
+          RowBox[{"x", "+", "1"}]], "+", "32"}], ")"}], " ", 
+       TemplateBox[{"2",RowBox[{"-", "x"}]},
         "PolyLog"]}], "+", 
       RowBox[{
        FractionBox["64", "3"], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "+", 
       RowBox[{
        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"64", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
+         RowBox[{"64", " ", "x"}], "-", 
          RowBox[{"16", " ", 
           SubscriptBox[
            RowBox[{"(", 
             FractionBox["1", 
-             RowBox[{"1", "-", 
-              RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
-         
+             RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
          FractionBox["16", 
-          RowBox[{
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]]}], ")"}]}], 
-      "+", 
+          RowBox[{"x", "+", "1"}]]}], ")"}]}], "+", 
       RowBox[{"24", " ", 
        TemplateBox[{"3"},
         "Zeta"], " ", 
        RowBox[{"\[Delta]", "(", 
         FormBox[
-         RowBox[{"1", "-", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+         RowBox[{"1", "-", "x"}],
          TraditionalForm], ")"}]}], "-", 
       FractionBox[
-       RowBox[{"388", " ", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "9"], "+", 
+       RowBox[{"388", " ", "x"}], "9"], "+", 
       RowBox[{
        FractionBox["536", "9"], " ", 
        SubscriptBox[
         RowBox[{"(", 
          FractionBox["1", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], ")"}], "+"]}], "+", 
+          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
           FractionBox["8", 
-           RowBox[{
-            RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]]}], "+", 
+           RowBox[{"x", "+", "1"}]]}], "+", 
          FractionBox["8", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "+", "32"}], ")"}], 
-       " ", 
+          RowBox[{"1", "-", "x"}]], "+", "32"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          FractionBox["232", "3"], "-", 
          FractionBox[
-          RowBox[{"536", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "3"]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+          RowBox[{"536", " ", "x"}], "3"]}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"64", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", 
+         RowBox[{"64", " ", "x"}], "-", 
          FractionBox["32", 
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]], "-", "32"}], ")"}], 
-       " ", 
+          RowBox[{"1", "-", "x"}]], "-", "32"}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{"1", "-", 
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        RowBox[{"1", "-", "x"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"64", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+         RowBox[{"64", " ", "x"}], "+", 
          FractionBox["32", 
-          RowBox[{
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}]], "+", "32"}], 
-        ")"}], " ", 
+          RowBox[{"x", "+", "1"}]], "+", "32"}], ")"}], " ", 
        RowBox[{"log", "(", 
-        RowBox[{
-         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], "+", "1"}], ")"}], " ", 
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", 
+        RowBox[{"x", "+", "1"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "-", 
       FractionBox["148", "9"]}], ")"}]}], "+", 
    RowBox[{
     SubscriptBox["C", "F"], " ", 
@@ -1696,33 +1560,24 @@ Cell[BoxData[
        RowBox[{"8", " ", 
         RowBox[{"\[Delta]", "(", 
          FormBox[
-          RowBox[{"1", "-", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}],
+          RowBox[{"1", "-", "x"}],
           TraditionalForm], ")"}]}]}], "+", 
-      RowBox[{"80", " ", 
-       RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "+", 
+      RowBox[{"80", " ", "x"}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
          RowBox[{"-", 
-          RowBox[{"16", " ", 
-           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}]}], "-", "16"}], ")"}], 
-       " ", 
+          RowBox[{"16", " ", "x"}]}], "-", "16"}], ")"}], " ", 
        RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "+", 
+        SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
       RowBox[{
        RowBox[{"(", 
         RowBox[{
-         RowBox[{"16", " ", 
-          RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], "-", "80"}], ")"}], " ", 
-       
-       RowBox[{"log", "(", 
-        RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], "-", "80"}], 
-     ")"}]}]}], TraditionalForm]], "Output",
+         RowBox[{"16", " ", "x"}], "-", "80"}], ")"}], " ", 
+       RowBox[{"log", "(", "x", ")"}]}], "-", "80"}], ")"}]}]}], 
+  TraditionalForm]], "Output",
  CellTags->"SplittingFunction",
- CellLabel->"Out[27]=",
- CellID->318505242]
+ CellLabel->"Out[30]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -1786,14 +1641,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{2560, 1349},
+WindowMargins->{{-1, Automatic}, {Automatic, -1}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

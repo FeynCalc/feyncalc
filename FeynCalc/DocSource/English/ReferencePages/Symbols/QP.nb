@@ -159,13 +159,15 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
+Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox["QuarkPropagator",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/QuarkPropagator",
-  ButtonNote->"QuarkPropagator"],
- "."
-}], "Text",
+ ButtonBox[\"QuarkPropagator\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/QuarkPropagator\",
+  ButtonNote->\"QuarkPropagator\"],
+ \".\"
+}], \"SeeAlso\"]\
+\>"], "Text",
  CellTags->"QP",
  CellID->218226034]
 }, Open  ]],
@@ -259,7 +261,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -119,9 +119,8 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"DiracSigma", "[", 
    RowBox[{"a", ",", " ", "b"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "stands for i/2*(a . b - b . a) in 4 dimensions. a and b must have Head \
-DiracGamma, DiracMatrix or DiracSlash. Only antisymmetry is implemented."
+ " \[LineSeparator]stands for i/2*(a . b - b . a) in 4 dimensions. a and b \
+must have Head DiracGamma, GA or GS. Only antisymmetry is implemented."
 }], "Usage",
  CellID->982511436],
 
@@ -167,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracSigmaExplicit",
   ButtonNote->"DiracSigmaExplicit"],
  "."
-}], "Text",
- CellTags->"DiracSigma",
- CellID->94805766]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -204,7 +201,7 @@ Cell[BoxData[
    RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
    RowBox[{"GA", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[80]:=",
+ CellLabel->"In[639]:=",
  CellID->1797257280],
 
 Cell[BoxData[
@@ -216,7 +213,7 @@ Cell[BoxData[
     FormBox["\[Beta]",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[80]="]
+ CellLabel->"Out[639]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,7 +221,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[81]:=",
+ CellLabel->"In[640]:=",
  CellID->350892177],
 
 Cell[BoxData[
@@ -260,7 +257,7 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[81]="]
+ CellLabel->"Out[640]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -271,7 +268,7 @@ Cell[BoxData[
    RowBox[{"GA", "[", "\[Beta]", "]"}], ",", 
    RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[82]:=",
+ CellLabel->"In[642]:=",
  CellID->334267816],
 
 Cell[BoxData[
@@ -284,7 +281,7 @@ Cell[BoxData[
      FormBox["\[Beta]",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[82]="]
+ CellLabel->"Out[642]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -295,7 +292,7 @@ Cell[BoxData[
    RowBox[{"GS", "[", "p", "]"}], ",", 
    RowBox[{"GS", "[", "q", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[83]:=",
+ CellLabel->"In[643]:=",
  CellID->938175920],
 
 Cell[BoxData[
@@ -307,7 +304,7 @@ Cell[BoxData[
     FormBox["q",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[83]="]
+ CellLabel->"Out[643]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -315,7 +312,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigma",
- CellLabel->"In[84]:=",
+ CellLabel->"In[644]:=",
  CellID->493035408],
 
 Cell[BoxData[
@@ -359,10 +356,10 @@ Cell[BoxData[
            TraditionalForm], "_"],
          TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSigma",
- CellLabel->"Out[84]="]
+ CellLabel->"Out[644]="]
 }, Open  ]],
 
-Cell["The symmetry propery is built-in", "Notes"],
+Cell["The antisymmetry propery is built-in", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -371,11 +368,11 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
    RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[85]:="],
+ CellLabel->"In[646]:="],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- CellLabel->"Out[85]="]
+ CellLabel->"Out[646]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -440,7 +437,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 718},
-WindowMargins->{{656, Automatic}, {Automatic, 216}},
+WindowMargins->{{959, Automatic}, {Automatic, 233}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

@@ -124,8 +124,29 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FeynAmpDenominatorExplicit", "]"}]], "Input",
+ CellLabel->"In[45]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Denominator", "\[Rule]", "False"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "False"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Head", "\[Rule]", "Identity"}], ",", 
+    RowBox[{"Mandelstam", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"MomentumCombine", "\[Rule]", "False"}], ",", 
+    RowBox[{"SmallVariable", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[45]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,9 +192,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PropagatorDenominator",
   ButtonNote->"PropagatorDenominator"],
  "."
-}], "Text",
- CellTags->"FeynAmpDenominatorExplicit",
- CellID->413051005]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,41 +222,15 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "FeynAmpDenominatorExplicit", "]"}]], "Input",
- CellLabel->"In[69]:="],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Denominator", "\[Rule]", "False"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "False"}], ",", 
-    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
-    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"Head", "\[Rule]", "Identity"}], ",", 
-    RowBox[{"Mandelstam", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"MomentumCombine", "\[Rule]", "False"}], ",", 
-    RowBox[{"SmallVariable", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellLabel->"Out[69]="]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"FAD", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"q", ",", "m"}], "}"}], ",", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"q", "-", "p"}], ",", "0"}], "}"}]}], "]"}], "//", 
-  "FCI"}]], "Input",
+ RowBox[{"FAD", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"q", ",", "m"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"q", "-", "p"}], ",", "0"}], "}"}]}], "]"}]], "Input",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"In[67]:=",
+ CellLabel->"In[47]:=",
  CellID->1979434489],
 
 Cell[BoxData[
@@ -276,23 +269,20 @@ Cell[BoxData[
        FormBox["\<\")\"\>",
         TraditionalForm]}], "2"],
      SequenceForm[
-      FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
-       FeynCalc`Momentum[$CellContext`q, D], -
-        FeynCalc`Momentum[$CellContext`p, D] + 
-       FeynCalc`Momentum[$CellContext`q, D]]],
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
      Editable->False]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"Out[67]="]
+ CellLabel->"Out[47]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"FeynAmpDenominatorExplicit", "[", "%", "]"}], "//", 
-  "FCE"}]], "Input",
+ RowBox[{"FeynAmpDenominatorExplicit", "[", "%", "]"}]], "Input",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"In[68]:=",
+ CellLabel->"In[50]:=",
  CellID->1414487344],
 
 Cell[BoxData[
@@ -301,57 +291,48 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"(", 
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm], "2"],
-       TraditionalForm], "-", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], "2"], "-", 
       SuperscriptBox["m", "2"]}], ")"}], " ", 
     RowBox[{"(", 
      RowBox[{
       RowBox[{"-", 
        RowBox[{"2", " ", 
         RowBox[{"(", 
-         FormBox[
-          RowBox[{
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox["\<\"\[CenterDot]\"\>",
-            TraditionalForm], 
-           FormBox[
-            FormBox["q",
-             TraditionalForm],
-            TraditionalForm]}],
-          TraditionalForm], ")"}]}]}], "+", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["p",
-          TraditionalForm],
-         TraditionalForm], "2"],
-       TraditionalForm], "+", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm], "2"],
-       TraditionalForm]}], ")"}]}]], TraditionalForm]], "Output",
+         RowBox[{
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}]}]}], "+", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"], "+", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], "2"]}], ")"}]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"Out[68]="]
+ CellLabel->"Out[50]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"In[3]:=",
- CellID->1009314577],
+ RowBox[{
+  RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[51]:="],
 
 Cell[BoxData[
  FractionBox["1", 
@@ -371,9 +352,7 @@ Cell[BoxData[
        RowBox[{"p", ",", "q"}], "]"}]}], "+", 
      RowBox[{"SPD", "[", 
       RowBox[{"q", ",", "q"}], "]"}]}], ")"}]}]]], "Output",
- CellTags->"FeynAmpDenominatorExplicit",
- CellLabel->"Out[3]//StandardForm=",
- CellID->2031191550]
+ CellLabel->"Out[51]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 

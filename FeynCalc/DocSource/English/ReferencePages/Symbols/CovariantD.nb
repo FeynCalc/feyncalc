@@ -209,24 +209,19 @@ Cell[TextData[{
  " \[LineSeparator]gives the expanded form of ",
  Cell[BoxData[
   RowBox[{
-   RowBox[{"CovariantD", "[", "OPEDelta", "]"}], "^", "m"}]], "InlineFormula",
-  
-  FormatType->"StandardForm"],
+   RowBox[{"CovariantD", "[", "OPEDelta", "]"}], "^", "m"}]], "InlineFormula"],
  " up to order ",
  Cell[BoxData[
-  RowBox[{"g", "^", "n"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"g", "^", "n"}]], "InlineFormula"],
  " of the fermionic field."
 }], "Usage"],
 
 Cell[TextData[{
  "To obtain the explicit expression for a particular covariant derivatine, \
 the option ",
- Cell[BoxData["Explicit"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["Explicit"], "InlineFormula"],
  " must be set to ",
- Cell[BoxData["True"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["True"], "InlineFormula"],
  "."
 }], "Notes"],
 

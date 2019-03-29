@@ -133,7 +133,27 @@ B0Unique to True simplifies B0[a,0,a] and B0[0,0,a]."
  CellID->982511436],
 
 Cell["XXXX", "Notes",
- CellID->1067943069]
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "B0", "]"}]], "Input",
+ CellTags->"B0",
+ CellLabel->"In[1]:=",
+ CellID->1219933183],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
+    RowBox[{"B0Unique", "\[Rule]", "False"}], ",", 
+    RowBox[{"B0Real", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"B0",
+ CellLabel->"Out[1]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -189,9 +209,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVe",
   ButtonNote->"PaVe"],
  "."
-}], "Text",
- CellTags->"B0",
- CellID->1803724154]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,27 +239,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "B0", "]"}]], "Input",
- CellTags->"B0",
- CellLabel->"In[1]:=",
- CellID->1219933183],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
-    RowBox[{"B0Unique", "\[Rule]", "False"}], ",", 
-    RowBox[{"B0Real", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"B0",
- CellLabel->"Out[1]=",
- CellID->1197548514]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{
    RowBox[{"SP", "[", 
@@ -249,7 +246,7 @@ Cell[BoxData[
    SuperscriptBox["m", "2"], ",", 
    SuperscriptBox["m", "2"]}], "]"}]], "Input",
  CellTags->"B0",
- CellLabel->"In[2]:=",
+ CellLabel->"In[10]:=",
  CellID->1494166331],
 
 Cell[BoxData[
@@ -272,28 +269,19 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"B0",
- CellLabel->"Out[2]=",
- CellID->1350980966]
+ CellLabel->"Out[10]="]
 }, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"B0", ",", 
-    RowBox[{"B0Unique", "\[Rule]", "True"}], ",", 
-    RowBox[{"B0Real", "\[Rule]", "True"}]}], "]"}], ";"}]], "Input",
- CellTags->"B0",
- CellLabel->"In[3]:=",
- CellID->643767668],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{"0", ",", "0", ",", 
-   SuperscriptBox["m", "2"]}], "]"}]], "Input",
+   SuperscriptBox["m", "2"], ",", 
+   RowBox[{"B0Unique", "\[Rule]", "True"}], ",", 
+   RowBox[{"B0Real", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"B0",
- CellLabel->"In[4]:=",
+ CellLabel->"In[7]:=",
  CellID->510341898],
 
 Cell[BoxData[
@@ -311,8 +299,7 @@ Cell[BoxData[
      HoldForm],
     TraditionalForm], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"B0",
- CellLabel->"Out[4]=",
- CellID->170690020]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -321,9 +308,11 @@ Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{
    SuperscriptBox["m", "2"], ",", "0", ",", 
-   SuperscriptBox["m", "2"]}], "]"}]], "Input",
+   SuperscriptBox["m", "2"], ",", 
+   RowBox[{"B0Unique", "\[Rule]", "True"}], ",", 
+   RowBox[{"B0Real", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"B0",
- CellLabel->"In[5]:=",
+ CellLabel->"In[8]:=",
  CellID->1178094654],
 
 Cell[BoxData[
@@ -341,8 +330,7 @@ Cell[BoxData[
      HoldForm],
     TraditionalForm], "+", "2"}], TraditionalForm]], "Output",
  CellTags->"B0",
- CellLabel->"Out[5]=",
- CellID->2121507054]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -353,7 +341,7 @@ Cell[BoxData[
    RowBox[{"m", "^", "2"}], ",", 
    RowBox[{"m", "^", "2"}]}], "]"}]], "Input",
  CellTags->"B0",
- CellLabel->"In[6]:=",
+ CellLabel->"In[9]:=",
  CellID->828170126],
 
 Cell[BoxData[
@@ -368,8 +356,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"B0",
- CellLabel->"Out[6]=",
- CellID->271170246]
+ CellLabel->"Out[9]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -434,13 +421,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{525, Automatic}, {Automatic, 81}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

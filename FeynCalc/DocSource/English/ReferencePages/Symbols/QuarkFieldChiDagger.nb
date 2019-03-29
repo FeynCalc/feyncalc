@@ -1,7 +1,7 @@
 Notebook[{
 Cell[TextData[{
  "New in: ",
- Cell["9.0", "HistoryData",
+ Cell["9.3", "HistoryData",
   CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
@@ -32,9 +32,9 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/Smu", "Categorization",
+Cell["FeynCalc/ref/QuarkFieldChiDagger", "Categorization",
  CellLabel->"URI"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -111,18 +111,20 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["Smu", "ObjectName",
+Cell["QuarkFieldChiDagger", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["Smu"], "InlineFormula"],
- " \[LineSeparator]",
- " is ..."
+ Cell[BoxData["QuarkFieldChiDagger"], "InlineFormula"],
+ " \[LineSeparator]is the name of a fermionic field."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+This is just a name with no functional properties. Only typesetting rules are \
+attached.\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -171,6 +173,8 @@ Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  InterpretationBox[GridBox[{
     {
@@ -183,6 +187,119 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["QuarkFieldChiDagger"], "Input",
+ CellLabel->"In[10]:=",
+ CellID->1148663248],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["\[Chi]", "\[Dagger]"], TraditionalForm]], "Output",
+ CellLabel->"Out[10]=",
+ CellID->629632876]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"QuantumField", "[", "QuarkFieldChiDagger", "]"}], ".", 
+  RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"CovariantD", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"QuantumField", "[", "QuarkFieldChi", "]"}]}]], "Input",
+ CellLabel->"In[20]:=",
+ CellID->497682476],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox["\[Chi]", "\[Dagger]"],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   SubscriptBox["D", 
+    FormBox["\[Mu]",
+     TraditionalForm]], ".", 
+   FormBox["\[Chi]",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[20]=",
+ CellID->861497191]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExpandPartialD", "[", "%", "]"}]], "Input",
+ CellLabel->"In[21]:=",
+ CellID->304243571],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Chi]", "\[Dagger]"],
+      TraditionalForm], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox[
+        RowBox[{"(", "\[PartialD]"}], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       FormBox["\[Chi]",
+        TraditionalForm], ")"}], ")"}]}]}], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["c25",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubscriptBox["g", "s"], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Chi]", "\[Dagger]"],
+      TraditionalForm], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c25",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     FormBox["\[Chi]",
+      TraditionalForm]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[21]=",
+ CellID->726769996]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -245,14 +362,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
-Visible->True,
+WindowMargins->{{1730, Automatic}, {Automatic, 222}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-

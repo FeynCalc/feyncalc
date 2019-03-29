@@ -124,8 +124,29 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Convolute", "]"}]], "Input",
+ CellTags->"ConvoluteTable",
+ CellLabel->"In[521]:=",
+ CellID->1127190721],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Bracket", "\[Rule]", 
+     RowBox[{"{", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "}"}]}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"ConvoluteTable",
+ CellLabel->"Out[521]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,9 +192,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Convolute",
   ButtonNote->"Convolute"],
  "."
-}], "Text",
- CellTags->"ConvoluteTable",
- CellID->538606169]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,46 +222,18 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Convolute", "]"}]], "Input",
- CellTags->"ConvoluteTable",
- CellLabel->"In[1]:=",
- CellID->1127190721],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Bracket", "\[Rule]", 
-     RowBox[{"{", 
-      TagBox["\[CurlyEpsilon]",
-       TraditionalForm], "}"}]}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"ConvoluteTable",
- CellLabel->"Out[1]=",
- CellID->1360987202]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"ConvoluteTable", "[", 
-  RowBox[{"1", ",", "1"}], "]"}]], "Input",
+  RowBox[{"1", ",", "1", ",", "x"}], "]"}]], "Input",
  CellTags->"ConvoluteTable",
- CellLabel->"In[2]:=",
+ CellLabel->"In[528]:=",
  CellID->1383961976],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", 
-   RowBox[{"log", "(", 
-    RowBox[{"FCGV", "(", "\<\"x45\"\>", ")"}], ")"}]}], 
-  TraditionalForm]], "Output",
+   RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
  CellTags->"ConvoluteTable",
- CellLabel->"Out[2]=",
- CellID->1197018632]
+ CellLabel->"Out[528]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -251,7 +242,7 @@ Cell[BoxData[
  RowBox[{"ConvoluteTable", "[", 
   RowBox[{"x", ",", "x"}], "]"}]], "Input",
  CellTags->"ConvoluteTable",
- CellLabel->"In[3]:=",
+ CellLabel->"In[529]:=",
  CellID->783988219],
 
 Cell[BoxData[
@@ -259,26 +250,23 @@ Cell[BoxData[
   RowBox[{"False", "[", 
    RowBox[{"x", ",", "x"}], "]"}], TraditionalForm]], "Output",
  CellTags->"ConvoluteTable",
- CellLabel->"Out[3]=",
- CellID->289063823]
+ CellLabel->"Out[529]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ConvoluteTable", "[", 
-  RowBox[{"1", ",", "x"}], "]"}]], "Input",
+  RowBox[{"1", ",", "x", ",", "x"}], "]"}]], "Input",
  CellTags->"ConvoluteTable",
- CellLabel->"In[4]:=",
+ CellLabel->"In[531]:=",
  CellID->1430786364],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"False", "[", 
-   RowBox[{"1", ",", "x"}], "]"}], TraditionalForm]], "Output",
+  RowBox[{"1", "-", "x"}], TraditionalForm]], "Output",
  CellTags->"ConvoluteTable",
- CellLabel->"Out[4]=",
- CellID->1781441936]
+ CellLabel->"Out[531]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -343,13 +331,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{831, Automatic}, {Automatic, 130}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

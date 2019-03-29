@@ -117,7 +117,7 @@ Cell["GAE", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"GAE", "[", "mu", "]"}]], "InlineFormula"],
+  RowBox[{"GAE", "[", "\[Mu]", "]"}]], "InlineFormula"],
  " \[LineSeparator]can be used as input for a D-4-dimensional ",
  Cell[BoxData[
   FormBox[
@@ -177,10 +177,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["DiracMatrix",
+ ButtonBox["DiracGamma",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
  ", ",
  ButtonBox["GA",
   BaseStyle->"Link",
@@ -197,9 +197,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GAD",
   ButtonNote->"GAD"],
  "."
-}], "Text",
- CellTags->"GAE",
- CellID->127950767]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,7 +229,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GAE", "[", "\[Mu]", "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[150]:=",
  CellID->617064291],
 
 Cell[BoxData[
@@ -243,7 +241,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[1]="]
+ CellLabel->"Out[150]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -255,7 +253,7 @@ Cell[BoxData[
   RowBox[{"GAE", "[", 
    RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[151]:=",
  CellID->1166403079],
 
 Cell[BoxData[
@@ -296,7 +294,7 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[2]="]
+ CellLabel->"Out[151]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,7 +304,7 @@ Cell[BoxData[
   RowBox[{"FCI", "[", 
    RowBox[{"GAE", "[", "\[Mu]", "]"}], "]"}], "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[152]:=",
  CellID->1483888506],
 
 Cell[BoxData[
@@ -319,7 +317,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"-", "4"}], "+", "D"}]}], "]"}]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[3]//StandardForm="]
+ CellLabel->"Out[152]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -329,7 +327,7 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[4]:=",
+ CellLabel->"In[153]:=",
  CellID->193869943],
 
 Cell[BoxData[
@@ -368,7 +366,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[4]="]
+ CellLabel->"Out[153]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -379,7 +377,7 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
   "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[154]:=",
  CellID->488289901],
 
 Cell[BoxData[
@@ -389,7 +387,7 @@ Cell[BoxData[
   RowBox[{"GAE", "[", "\[Rho]", "]"}], ".", 
   RowBox[{"GAE", "[", "\[Sigma]", "]"}]}]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[5]//StandardForm="]
+ CellLabel->"Out[154]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -401,7 +399,7 @@ Cell[BoxData[
    RowBox[{"FVD", "[", 
     RowBox[{"p", ",", "\[Alpha]"}], "]"}]}], "//", "Contract"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[6]:=",
+ CellLabel->"In[155]:=",
  CellID->1528585205],
 
 Cell[BoxData[
@@ -414,7 +412,7 @@ Cell[BoxData[
       TraditionalForm], "^"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[6]="]
+ CellLabel->"Out[155]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -426,13 +424,13 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Alpha]"}], "]"}]}], "//", "Contract"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[7]:=",
+ CellLabel->"In[156]:=",
  CellID->339703616],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[7]="]
+ CellLabel->"Out[156]="]
 }, Open  ]],
 
 Cell["\<\
@@ -443,7 +441,7 @@ activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first\
 Cell[BoxData[
  RowBox[{
   RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[41]:="],
+ CellLabel->"In[157]:="],
 
 Cell[CellGroupData[{
 
@@ -452,28 +450,32 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GAE", "[", "\[Mu]", "]"}], ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[42]:="],
+ CellLabel->"In[158]:="],
 
 Cell[BoxData[
  FormBox[
-  TemplateBox[{
-   "DiracTrick","failmsg",
-    "\"Error! DiracTrick has encountered a fatal problem and must abort the \
-computation. The problem reads: \\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect \
-combination of dimensions and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\"",
-    2,42,5,28469236587489407701,"Local"},
-   "MessageTemplate"], TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[42]:="],
+  RowBox[{
+   StyleBox[
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
+   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
+the computation. The problem reads: \
+\[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
+and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak] \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrick\\\", \
+ButtonNote -> \\\"FeynCalc`DiracTrick::failmsg\\\"]\\)\"\>"}], 
+  TraditionalForm]], "Message", "MSG",
+ CellLabel->"During evaluation of In[158]:="],
 
 Cell[BoxData[
  FormBox["$Aborted", TraditionalForm]], "Output",
- CellLabel->"Out[42]="]
+ CellLabel->"Out[158]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[43]:="],
+ CellLabel->"In[159]:="],
 
 Cell[CellGroupData[{
 
@@ -482,18 +484,18 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GAE", "[", "\[Mu]", "]"}], ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[44]:="],
+ CellLabel->"In[160]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"D", "-", "4"}], TraditionalForm]], "Output",
- CellLabel->"Out[44]="]
+ CellLabel->"Out[160]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[45]:="]
+ CellLabel->"In[161]:="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -557,7 +559,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{632, Automatic}, {Automatic, 230}},
+WindowMargins->{{1028, Automatic}, {Automatic, 148}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

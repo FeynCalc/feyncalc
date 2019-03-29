@@ -120,8 +120,8 @@ Cell[TextData[{
   RowBox[{"PauliSigma", "[", 
    RowBox[{"x", ",", "dim"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]is the internal representation of a Pauli matrix with a \
-Lorentz index or a contraction of a Pauli matrix and a Lorentz vector. \
-PauliSigma[x,3] simplifies to PauliSigma[x]."
+Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz \
+or Cartesian vector. PauliSigma[x,3] simplifies to PauliSigma[x]."
 }], "Usage",
  CellID->982511436],
 
@@ -194,7 +194,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"PauliSigma", "[", 
   RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], "]"}]], "Input",
- CellLabel->"In[72]:="],
+ CellLabel->"In[1]:="],
 
 Cell[BoxData[
  FormBox[
@@ -204,7 +204,7 @@ Cell[BoxData[
     FormBox["\[Alpha]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[72]="]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -212,7 +212,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"PauliSigma", "[", 
   RowBox[{"CartesianIndex", "[", "i", "]"}], "]"}]], "Input",
- CellLabel->"In[73]:="],
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -230,7 +230,7 @@ Cell[BoxData[
       FontWeight->Bold],
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[73]="]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -239,8 +239,7 @@ as ",
  Cell[BoxData[
   RowBox[{"\[Sigma]", "\[CenterDot]", 
    StyleBox["p",
-    FontSlant->"Italic"]}]], "InlineFormula",
-  FormatType->"StandardForm"]
+    FontSlant->"Italic"]}]], "InlineFormula"]
 }], "Notes"],
 
 Cell[CellGroupData[{
@@ -248,7 +247,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"PauliSigma", "[", 
   RowBox[{"Momentum", "[", "p", "]"}], "]"}]], "Input",
- CellLabel->"In[74]:="],
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
  FormBox[
@@ -259,7 +258,7 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[74]="]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -267,7 +266,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"PauliSigma", "[", 
   RowBox[{"CartesianMomentum", "[", "p", "]"}], "]"}]], "Input",
- CellLabel->"In[75]:="],
+ CellLabel->"In[4]:="],
 
 Cell[BoxData[
  FormBox[
@@ -286,7 +285,7 @@ Cell[BoxData[
        FontWeight->Bold],
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[75]="]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,7 +297,7 @@ Cell[BoxData[
   RowBox[{"PauliSigma", "[", 
    RowBox[{"Momentum", "[", 
     RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Input",
- CellLabel->"In[78]:="],
+ CellLabel->"In[5]:="],
 
 Cell[BoxData[
  FormBox[
@@ -325,14 +324,14 @@ Cell[BoxData[
           TraditionalForm], "_"]}],
        TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[78]="]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "PauliSigmaExpand"}]], "Input",
- CellLabel->"In[79]:="],
+ CellLabel->"In[6]:="],
 
 Cell[BoxData[
  FormBox[
@@ -361,7 +360,7 @@ Cell[BoxData[
         FormBox["q",
          TraditionalForm], "_"],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[79]="]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -373,7 +372,7 @@ Cell[BoxData[
   RowBox[{"PauliSigma", "[", 
    RowBox[{"CartesianMomentum", "[", 
     RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Input",
- CellLabel->"In[80]:="],
+ CellLabel->"In[7]:="],
 
 Cell[BoxData[
  FormBox[
@@ -419,14 +418,14 @@ Cell[BoxData[
           TraditionalForm], "_"]}],
        TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[80]="]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "PauliSigmaExpand"}]], "Input",
- CellLabel->"In[81]:="],
+ CellLabel->"In[8]:="],
 
 Cell[BoxData[
  FormBox[
@@ -479,7 +478,7 @@ Cell[BoxData[
           FontWeight->Bold],
          TraditionalForm], "_"],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[81]="]
+ CellLabel->"Out[8]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -544,7 +543,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{798, Automatic}, {Automatic, 26}},
+WindowMargins->{{768, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

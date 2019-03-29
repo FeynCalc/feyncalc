@@ -119,9 +119,21 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"LCD", "[", 
    RowBox[{"m", ",", "n", ",", "r", ",", "s"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]evaluates to D-dimensional LeviCivita[m,n,r,s] by virtue \
-of FeynCalcInternal. LCD[m,...][p, ...] evaluates to D-dimensional \
-LeviCivita[m,...][p,...] applying FeynCalcInternal."
+ " \[LineSeparator]evaluates to D-dimensional ",
+ Cell[BoxData[
+  SuperscriptBox["\[Epsilon]", 
+   RowBox[{"m", " ", "n", " ", "r", " ", "s"}]]], "InlineFormula"],
+ " by virtue of FeynCalcInternal. LCD[m,...][p, ...] evaluates to \
+D-dimensional ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"m", " ", ".."}], " ", "\[Mu]"}], " ", ".."}]], 
+   SubscriptBox["p", 
+    RowBox[{"\[Mu]", " ", ".."}]]}]], "InlineFormula"],
+ " applying FeynCalcInternal."
 }], "Usage",
  CellID->982511436],
 
@@ -162,19 +174,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["LeviCivita",
+ ButtonBox["Eps",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
+  ButtonData:>"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
  ", ",
  ButtonBox["LC",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/LC",
   ButtonNote->"LC"],
  "."
-}], "Text",
- CellTags->"LCD",
- CellID->552899823]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -208,7 +218,7 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[171]:=",
+ CellLabel->"In[7]:=",
  CellID->163498575],
 
 Cell[BoxData[
@@ -233,7 +243,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[171]="]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,7 +252,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[172]:=",
+ CellLabel->"In[8]:=",
  CellID->950730684],
 
 Cell[BoxData[
@@ -257,7 +267,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", 
     RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[172]//StandardForm="]
+ CellLabel->"Out[8]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -268,7 +278,7 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
   RowBox[{"p", ",", "q"}], "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[173]:=",
+ CellLabel->"In[9]:=",
  CellID->1568724284],
 
 Cell[BoxData[
@@ -293,7 +303,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[173]="]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -302,7 +312,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[174]:=",
+ CellLabel->"In[10]:=",
  CellID->531209658],
 
 Cell[BoxData[
@@ -317,7 +327,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"q", ",", "D"}], "]"}]}], "]"}]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[174]//StandardForm="]
+ CellLabel->"Out[10]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -335,7 +345,7 @@ Cell[BoxData[
       RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}], "[", "q", 
      "]"}]}], "]"}], "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[175]:=",
+ CellLabel->"In[11]:=",
  CellID->173575058],
 
 Cell[BoxData[
@@ -360,7 +370,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[175]="]
+ CellLabel->"Out[11]="]
 }, Open  ]]
 }, Open  ]],
 

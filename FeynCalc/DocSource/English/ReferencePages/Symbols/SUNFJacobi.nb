@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNSimplify",
   ButtonNote->"SUNSimplify"],
  "."
-}], "Text",
- CellTags->"SUNFJacobi",
- CellID->614882988]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -213,7 +211,7 @@ Cell[BoxData[
     RowBox[{"#", ",", 
      RowBox[{"SUNFJacobi", "\[Rule]", "False"}]}], "]"}], "&"}]}]], "Input",
  CellTags->"SUNFJacobi",
- CellLabel->"In[1]:=",
+ CellLabel->"In[6]:=",
  CellID->167388740],
 
 Cell[BoxData[
@@ -248,8 +246,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNFJacobi",
- CellLabel->"Out[1]=",
- CellID->311054380]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -266,7 +263,7 @@ Cell[BoxData[
     RowBox[{"#", ",", 
      RowBox[{"SUNFJacobi", "\[Rule]", "True"}]}], "]"}], "&"}]}]], "Input",
  CellTags->"SUNFJacobi",
- CellLabel->"In[2]:=",
+ CellLabel->"In[7]:=",
  CellID->693485776],
 
 Cell[BoxData[
@@ -331,8 +328,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
  CellTags->"SUNFJacobi",
- CellLabel->"Out[2]=",
- CellID->692961439]
+ CellLabel->"Out[7]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -397,13 +393,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{627, Automatic}, {Automatic, 194}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

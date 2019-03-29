@@ -143,8 +143,43 @@ and are passed on to these."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FeynmanDoIntegrals", "]"}]], "Input",
+ CellTags->"FeynmanDoIntegrals",
+ CellLabel->"In[108]:=",
+ CellID->1175204601],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"NIntegrate", "\[Rule]", "False"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"EpsilonOrder", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "2"}], ",", "0"}], "}"}]}], ",", 
+    RowBox[{"FCIntegrate", "\[Rule]", "TimedIntegrate"}], ",", 
+    RowBox[{"Simplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expand", "\[Rule]", "True"}], ",", 
+    RowBox[{"Series", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCNIntegrate", "\[Rule]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"DOT", "(", 
+        RowBox[{
+         RowBox[{"Sequence", "@@", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Integratedx", "@@", "#1"}], "&"}], ")"}], "/@", 
+           RowBox[{"{", "##2", "}"}]}]}], ",", "#1"}], ")"}], "&"}], 
+      ")"}]}]}], "}"}], TraditionalForm]], "Output",
+ CellTags->"FeynmanDoIntegrals",
+ CellLabel->"Out[108]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -190,9 +225,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynmanParametrize1",
   ButtonNote->"FeynmanParametrize1"],
  "."
-}], "Text",
- CellTags->"FeynmanDoIntegrals",
- CellID->1859627924]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,8 +236,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -218,46 +249,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "FeynmanDoIntegrals", "]"}]], "Input",
- CellTags->"FeynmanDoIntegrals",
- CellLabel->"In[1]:=",
- CellID->1175204601],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"NIntegrate", "\[Rule]", "False"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"EpsilonOrder", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"-", "2"}], ",", "0"}], "}"}]}], ",", 
-    RowBox[{"FCIntegrate", "\[Rule]", "TimedIntegrate"}], ",", 
-    RowBox[{"Simplify", "\[Rule]", "True"}], ",", 
-    RowBox[{"Expand", "\[Rule]", "True"}], ",", 
-    RowBox[{"Series", "\[Rule]", "True"}], ",", 
-    RowBox[{"FCNIntegrate", "\[Rule]", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"DOT", "(", 
-        RowBox[{
-         RowBox[{"Sequence", "@@", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"Integratedx", "@@", "#1"}], "&"}], ")"}], "/@", 
-           RowBox[{"{", "##2", "}"}]}]}], ",", "#1"}], ")"}], "&"}], 
-      ")"}]}]}], "}"}], TraditionalForm]], "Output",
- CellTags->"FeynmanDoIntegrals",
- CellLabel->"Out[1]=",
- CellID->503306959]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -320,13 +311,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{926, Automatic}, {Automatic, 159}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

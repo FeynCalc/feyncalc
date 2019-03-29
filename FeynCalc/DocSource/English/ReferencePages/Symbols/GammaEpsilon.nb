@@ -171,9 +171,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Series2",
   ButtonNote->"Series2"],
  "."
-}], "Text",
- CellTags->"GammaEpsilon",
- CellID->1891061042]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,9 +201,7 @@ Cell[BoxData[
 Cell["\<\
 If the argument is of the form (1+a Epsilon) the result is not calculated but \
 tabulated.\
-\>", "Text",
- CellTags->"GammaEpsilon",
- CellID->1418061835],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -214,7 +210,7 @@ Cell[BoxData[
   RowBox[{"1", "+", 
    RowBox[{"a", " ", "Epsilon"}]}], "]"}]], "Input",
  CellTags->"GammaEpsilon",
- CellLabel->"In[1]:=",
+ CellLabel->"In[192]:=",
  CellID->584681345],
 
 Cell[BoxData[
@@ -260,13 +256,12 @@ Cell[BoxData[
     SuperscriptBox[
      TagBox["\[CurlyEpsilon]",
       TraditionalForm], "2"]}], "+", 
-   RowBox[{"C$23297", " ", 
+   RowBox[{"C$44993", " ", 
     SuperscriptBox[
      TagBox["\[CurlyEpsilon]",
       TraditionalForm], "6"]}], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"GammaEpsilon",
- CellLabel->"Out[1]=",
- CellID->1401166400]
+ CellLabel->"Out[192]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -276,13 +271,13 @@ Cell[BoxData[
   RowBox[{"1", "-", 
    RowBox[{"Epsilon", "/", "2"}]}], "]"}]], "Input",
  CellTags->"GammaEpsilon",
- CellLabel->"In[2]:=",
+ CellLabel->"In[193]:=",
  CellID->862497870],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"C$23317", " ", 
+   RowBox[{"C$45019", " ", 
     SuperscriptBox[
      TagBox["\[CurlyEpsilon]",
       TraditionalForm], "6"]}], "+", 
@@ -320,26 +315,23 @@ Cell[BoxData[
      TemplateBox[{"3"},
       "Zeta"]}], "24"], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"GammaEpsilon",
- CellLabel->"Out[2]=",
- CellID->924354653]
+ CellLabel->"Out[193]="]
 }, Open  ]],
 
-Cell["For other arguments the expansion is calculated.", "Text",
- CellTags->"GammaEpsilon",
- CellID->185068189],
+Cell["For other arguments the expansion is calculated.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"GammaEpsilon", "[", "Epsilon", "]"}]], "Input",
  CellTags->"GammaEpsilon",
- CellLabel->"In[3]:=",
+ CellLabel->"In[194]:=",
  CellID->910709306],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"C$24452", " ", 
+   RowBox[{"C$46162", " ", 
     SuperscriptBox[
      TagBox["\[CurlyEpsilon]",
       TraditionalForm], "6"]}], "+", 
@@ -411,8 +403,7 @@ Cell[BoxData[
         TemplateBox[{"5"},
          "Zeta"]}]}], ")"}]}], "1440"]}], TraditionalForm]], "Output",
  CellTags->"GammaEpsilon",
- CellLabel->"Out[3]=",
- CellID->208287808]
+ CellLabel->"Out[194]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -420,7 +411,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GammaEpsilon", "[", "x", "]"}]], "Input",
  CellTags->"GammaEpsilon",
- CellLabel->"In[4]:=",
+ CellLabel->"In[195]:=",
  CellID->766916522],
 
 Cell[BoxData[
@@ -428,8 +419,7 @@ Cell[BoxData[
   TemplateBox[{"x"},
    "Gamma"], TraditionalForm]], "Output",
  CellTags->"GammaEpsilon",
- CellLabel->"Out[4]=",
- CellID->460537482]
+ CellLabel->"Out[195]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -494,13 +484,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{911, Automatic}, {Automatic, 248}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

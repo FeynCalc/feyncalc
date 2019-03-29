@@ -176,9 +176,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FCE",
   ButtonNote->"FCE"],
  "."
-}], "Text",
- CellTags->"FCI",
- CellID->794130940]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,7 +218,7 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Input",
  CellTags->"FCI",
- CellLabel->"In[1]:=",
+ CellLabel->"In[11]:=",
  CellID->714358706],
 
 Cell[BoxData[
@@ -267,43 +265,32 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ",", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       OverscriptBox["g", "_"], 
-       RowBox[{
-        FormBox[
-         FormBox[
-          FormBox["\[Alpha]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Beta]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]}]],
-      TraditionalForm],
-     TraditionalForm], ",", 
-    FormBox[
-     FormBox[
-      SuperscriptBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
        FormBox[
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"],
+        FormBox["\[Alpha]",
+         TraditionalForm],
         TraditionalForm], 
        FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
+        FormBox["\[Beta]",
          TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], ",", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FCI",
- CellLabel->"Out[1]=",
- CellID->290735342]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -311,7 +298,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FCI",
- CellLabel->"In[2]:=",
+ CellLabel->"In[12]:=",
  CellID->384617007],
 
 Cell[BoxData[
@@ -327,8 +314,7 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
  CellTags->"FCI",
- CellLabel->"Out[2]//StandardForm=",
- CellID->1941338896]
+ CellLabel->"Out[12]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -336,7 +322,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "FCI"}]], "Input",
  CellTags->"FCI",
- CellLabel->"In[3]:=",
+ CellLabel->"In[13]:=",
  CellID->808180913],
 
 Cell[BoxData[
@@ -374,40 +360,29 @@ Cell[BoxData[
        FormBox["q",
         TraditionalForm], "_"],
       TraditionalForm]}], ",", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Alpha]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Beta]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm], ",", 
-    FormBox[
-     SuperscriptBox[
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
       FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
+       FormBox["\[Alpha]",
+        TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+       FormBox["\[Beta]",
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm]}], "}"}], TraditionalForm]], "Output",
+       TraditionalForm]}]], ",", 
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FCI",
- CellLabel->"Out[3]=",
- CellID->1585911965]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -415,7 +390,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FCI",
- CellLabel->"In[4]:=",
+ CellLabel->"In[14]:=",
  CellID->986821422],
 
 Cell[BoxData[
@@ -442,8 +417,7 @@ Cell[BoxData[
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
      RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}], "}"}]], "Output",
  CellTags->"FCI",
- CellLabel->"Out[4]//StandardForm=",
- CellID->653246170]
+ CellLabel->"Out[14]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -452,7 +426,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"FCE", "[", "%", "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"FCI",
- CellLabel->"In[5]:=",
+ CellLabel->"In[15]:=",
  CellID->1427781639],
 
 Cell[BoxData[
@@ -468,8 +442,7 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
  CellTags->"FCI",
- CellLabel->"Out[5]//StandardForm=",
- CellID->2132613884]
+ CellLabel->"Out[15]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -534,13 +507,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{822, Automatic}, {Automatic, 203}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

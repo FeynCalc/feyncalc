@@ -161,11 +161,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
- ButtonBox["FourVector",
+ ButtonBox["FV",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FourVector",
-  ButtonNote->"FourVector"],
+  ButtonData:>"paclet:FeynCalc/ref/FV",
+  ButtonNote->"FV"],
  ", ",
  ButtonBox["Pair",
   BaseStyle->"Link",
@@ -177,9 +176,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Polarization",
   ButtonNote->"Polarization"],
  "."
-}], "Text",
- CellTags->"PolarizationVector",
- CellID->1661672347]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -212,7 +209,7 @@ Cell[BoxData[
  RowBox[{"PolarizationVector", "[", 
   RowBox[{"k", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[2]:=",
+ CellLabel->"In[8]:=",
  CellID->1596092203],
 
 Cell[BoxData[
@@ -221,16 +218,13 @@ Cell[BoxData[
    SuperscriptBox[
     OverscriptBox["\[CurlyEpsilon]", "_"], 
     FormBox[
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+     FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]], "(", 
    FormBox["k",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[2]=",
- CellID->1849918377]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -240,7 +234,7 @@ Cell[BoxData[
   RowBox[{"PolarizationVector", "[", 
    RowBox[{"k", ",", "\[Mu]"}], "]"}], "]"}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[3]:=",
+ CellLabel->"In[9]:=",
  CellID->597384549],
 
 Cell[BoxData[
@@ -250,16 +244,13 @@ Cell[BoxData[
     SuperscriptBox[
      OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
     FormBox[
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+     FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]], "(", 
    FormBox["k",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[3]=",
- CellID->1945453536]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -270,9 +261,7 @@ Cell[TextData[{
     SubscriptBox["\[CurlyEpsilon]", "\[Mu]"], "(", "k", ")"}], 
    TraditionalForm]]],
  "is a special four-vector."
-}], "Text",
- CellTags->"PolarizationVector",
- CellID->1108597225],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -281,7 +270,7 @@ Cell[BoxData[
   RowBox[{"PolarizationVector", "[", 
    RowBox[{"k", ",", "mu"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[4]:=",
+ CellLabel->"In[10]:=",
  CellID->1765549294],
 
 Cell[BoxData[
@@ -292,25 +281,22 @@ Cell[BoxData[
     RowBox[{"Polarization", "[", 
      RowBox[{"k", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], "]"}]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[4]//StandardForm=",
- CellID->152992573]
+ CellLabel->"Out[10]//StandardForm="]
 }, Open  ]],
 
-Cell["The transverality property is not automatic.", "Text",
- CellTags->"PolarizationVector",
- CellID->1023112491],
+Cell["The transverality property is not automatic.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{
    RowBox[{"PolarizationVector", "[", 
     RowBox[{"k", ",", "\[Mu]"}], "]"}], " ", 
-   RowBox[{"FourVector", "[", 
+   RowBox[{"FV", "[", 
     RowBox[{"k", ",", "\[Mu]"}], "]"}]}]}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[5]:=",
+ CellLabel->"In[12]:=",
  CellID->1218109993],
 
 Cell[BoxData[
@@ -324,36 +310,29 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm], 
      FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
+      FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm], " ", 
-   FormBox[
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[CurlyEpsilon]", "_"], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox["k",
-      TraditionalForm], ")"}],
-    TraditionalForm]}], TraditionalForm]], "Output",
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[CurlyEpsilon]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["k",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[5]=",
- CellID->1099894979]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Contract", "[", "a1", "]"}]], "Input",
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[6]:=",
+ CellLabel->"In[13]:=",
  CellID->918402341],
 
 Cell[BoxData[
@@ -373,22 +352,21 @@ Cell[BoxData[
       TraditionalForm], ")"}],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[6]=",
- CellID->1789359074]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a2", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{
    RowBox[{"PolarizationVector", "[", 
     RowBox[{"k", ",", "\[Mu]", ",", 
      RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], " ", 
-   RowBox[{"FourVector", "[", 
+   RowBox[{"FV", "[", 
     RowBox[{"k", ",", "\[Mu]"}], "]"}]}]}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[9]:=",
+ CellLabel->"In[14]:=",
  CellID->113884671],
 
 Cell[BoxData[
@@ -402,171 +380,36 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm], 
      FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
+      FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm], " ", 
-   FormBox[
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[CurlyEpsilon]", "_"], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox["k",
-      TraditionalForm], ")"}],
-    TraditionalForm]}], TraditionalForm]], "Output",
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[CurlyEpsilon]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "(", 
+    FormBox["k",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[9]=",
- CellID->1008334660]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Contract", "[", "a2", "]"}]], "Input",
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
  CellTags->"PolarizationVector",
- CellLabel->"In[10]:=",
+ CellLabel->"In[15]:=",
  CellID->554867330],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
- CellLabel->"Out[10]=",
- CellID->1890424275]
-}, Open  ]],
-
-Cell[TextData[{
- "Depending on the alphabetical ordering of the momenta, simplifcations are \
-done - e.g. \[LineSeparator]",
- Cell[BoxData[
-  FormBox[
-   RowBox[{
-    RowBox[{
-     RowBox[{"-", 
-      SuperscriptBox[
-       RowBox[{"(", 
-        RowBox[{"k", "-", "p", "-", "k"}], ")"}], "\[Mu]"]}], 
-     RowBox[{
-      SubscriptBox["\[CurlyEpsilon]", "\[Mu]"], "(", 
-      FormBox[
-       RowBox[{"k", "-", "p"}],
-       TraditionalForm], ")"}]}], "=", 
-    RowBox[{
-     RowBox[{
-      SuperscriptBox["k", "\[Mu]"], 
-      RowBox[{
-       SubscriptBox["\[CurlyEpsilon]", "\[Mu]"], "(", 
-       FormBox[
-        RowBox[{"k", "-", "p"}],
-        TraditionalForm], ")"}]}], "=", 
-     FormBox[
-      RowBox[{"k", "\[NoBreak]", "\[CenterDot]", "\[NoBreak]", 
-       RowBox[{
-        RowBox[{"(", "\[NoBreak]", 
-         FormBox[
-          RowBox[{"\[CurlyEpsilon]", "\[NoBreak]", "(", "\[NoBreak]", 
-           FormBox[
-            RowBox[{"k", "-", "p"}],
-            TraditionalForm], "\[NoBreak]", ")"}],
-          TraditionalForm], "\[NoBreak]", ")"}], "."}]}],
-      TraditionalForm]}]}], TraditionalForm]]]
-}], "Text",
- CellTags->"PolarizationVector",
- CellID->1584802873],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"a3", " ", "=", " ", 
-  RowBox[{
-   RowBox[{"PolarizationVector", "[", 
-    RowBox[{
-     RowBox[{"k", "-", "p"}], ",", "\[Mu]", ",", 
-     RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}], " ", 
-   RowBox[{"FourVector", "[", 
-    RowBox[{"p", ",", "\[Mu]"}], "]"}]}]}]], "Input",
- CellTags->"PolarizationVector",
- CellLabel->"In[14]:=",
- CellID->367797496],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    RowBox[{
-     SuperscriptBox[
-      OverscriptBox["\[CurlyEpsilon]", "_"], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]], "(", 
-     FormBox[
-      RowBox[{"k", "-", "p"}],
-      TraditionalForm], ")"}],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"PolarizationVector",
- CellLabel->"Out[14]=",
- CellID->2007724546]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Contract", "[", "a3", "]"}]], "Input",
- CellTags->"PolarizationVector",
- CellLabel->"In[15]:=",
- CellID->1968835101],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    OverscriptBox[
-     FormBox["k",
-      TraditionalForm], "_"],
-    TraditionalForm], 
-   FormBox["\<\"\[CenterDot]\"\>",
-    TraditionalForm], 
-   FormBox[
-    RowBox[{
-     OverscriptBox["\[CurlyEpsilon]", "_"], "(", 
-     FormBox[
-      RowBox[{"k", "-", "p"}],
-      TraditionalForm], ")"}],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"PolarizationVector",
- CellLabel->"Out[15]=",
- CellID->1932094598]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"a1", ",", "a2", ",", "a3"}], "]"}]], "Input",
- CellTags->"PolarizationVector",
- CellLabel->"In[16]:=",
- CellID->88853703]
+ CellLabel->"Out[15]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -630,13 +473,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{634, Automatic}, {Automatic, 140}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -185,9 +185,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVe",
   ButtonNote->"PaVe"],
  "."
-}], "Text",
- CellTags->"A0",
- CellID->70965860]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,9 +240,7 @@ Cell[TextData[{
   FormBox[
    SubscriptBox["B", "0"], TraditionalForm]]],
  "."
-}], "Text",
- CellTags->"A0",
- CellID->1026580483],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -325,9 +321,7 @@ Cell[TextData[{
    RowBox[{
     SubscriptBox["A", "0"], "(", "0", ")"}], TraditionalForm]]],
  " is set to 0."
-}], "Text",
- CellTags->"A0",
- CellID->1221823578],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -429,7 +423,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

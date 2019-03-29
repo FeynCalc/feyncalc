@@ -119,16 +119,16 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FeynAmp", "[", 
    RowBox[{"q", ",", " ", "amp"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the head of a Feynman amplitude, where amp denotes the analytical \
-expression for the amplitude and q is the integration variable. FeynAmp[q1, \
-q2, amp] denotes a two-loop amplitude.\n\nFeynAmp has no functional \
-properties and serves just as a head. There are however special typesetting \
-rules attached."
+ " \[LineSeparator]is the head of a Feynman amplitude, where amp denotes the \
+analytical expression for the amplitude and q is the integration variable. \
+FeynAmp[q1, q2, amp] denotes a two-loop amplitude."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+FeynAmp has no functional properties and serves just as a head. There are \
+however special typesetting rules attached.\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Amplitude",
   ButtonNote->"Amplitude"],
  "."
-}], "Text",
- CellTags->"FeynAmp",
- CellID->1771618737]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,9 +200,7 @@ Cell[BoxData[
 Cell["\<\
 This is a 1-loop gluon self-energy amplitude (ignoring factors of (2 \[Pi])).\
 \
-\>", "Text",
- CellTags->"FeynAmp",
- CellID->1803940715],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -230,7 +226,7 @@ Cell[BoxData[
      "q", ",", " ", "\[Beta]", ",", "e", ",", " ", "\[Sigma]", ",", "f"}], 
      "]"}]}]}], "]"}]], "Input",
  CellTags->"FeynAmp",
- CellLabel->"In[1]:=",
+ CellLabel->"In[13]:=",
  CellID->772375685],
 
 Cell[BoxData[
@@ -378,13 +374,10 @@ Cell[BoxData[
        TraditionalForm], ")"}]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"FeynAmp",
- CellLabel->"Out[1]=",
- CellID->1301141355]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
-Cell["This is a generic 2-loop amplitude.", "Text",
- CellTags->"FeynAmp",
- CellID->311938840],
+Cell["This is a generic 2-loop amplitude.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -394,7 +387,7 @@ Cell[BoxData[
    SubscriptBox["q", "1"], ",", 
    SubscriptBox["q", "2"], ",", "anyexpression"}], "]"}]], "Input",
  CellTags->"FeynAmp",
- CellLabel->"In[2]:=",
+ CellLabel->"In[15]:=",
  CellID->1547526680],
 
 Cell[BoxData[
@@ -405,8 +398,7 @@ Cell[BoxData[
     SubscriptBox["q", "2"], ",", "anyexpression"}], ")"}], 
   TraditionalForm]], "Output",
  CellTags->"FeynAmp",
- CellLabel->"Out[2]=",
- CellID->1833982253]
+ CellLabel->"Out[15]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -471,13 +463,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{908, Automatic}, {Automatic, 213}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

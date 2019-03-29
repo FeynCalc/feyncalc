@@ -164,9 +164,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Write2",
   ButtonNote->"Write2"],
  "."
-}], "Text",
- CellTags->"$FortranContinuationCharacter",
- CellID->1130623945]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -192,10 +190,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell["Examples", "Subsubsection",
- CellTags->"$FortranContinuationCharacter",
- CellID->1942758352],
 
 Cell[CellGroupData[{
 
@@ -279,7 +273,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -117,10 +117,15 @@ Cell["Commutator", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"Commutator", "[", 
-   RowBox[{"x", ",", " ", "y"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "= c defines the commutator between the (non-commuting) objects x and y. "
+  RowBox[{
+   RowBox[{"Commutator", "[", 
+    RowBox[{"x", ",", " ", "y"}], "]"}], "=", "c"}]], "InlineFormula"],
+ " \[LineSeparator]defines the commutator between the (non-commuting) objects \
+",
+ Cell[BoxData["x"], "InlineFormula"],
+ " and ",
+ Cell[BoxData["y"], "InlineFormula"],
+ ". "
 }], "Usage",
  CellID->982511436],
 
@@ -181,9 +186,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DotSimplify",
   ButtonNote->"DotSimplify"],
  "."
-}], "Text",
- CellTags->"Commutator",
- CellID->1856568879]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -214,7 +217,7 @@ Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[1]:=",
+ CellLabel->"In[409]:=",
  CellID->2000059968],
 
 Cell[CellGroupData[{
@@ -223,7 +226,7 @@ Cell[BoxData[
  RowBox[{"Commutator", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[2]:=",
+ CellLabel->"In[410]:=",
  CellID->922767227],
 
 Cell[BoxData[
@@ -234,8 +237,7 @@ Cell[BoxData[
    FormBox["b",
     TraditionalForm], "\[NoBreak]", "]"}], TraditionalForm]], "Output",
  CellTags->"Commutator",
- CellLabel->"Out[2]=",
- CellID->803506141]
+ CellLabel->"Out[410]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -243,7 +245,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"CommutatorExplicit", "[", "%", "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[3]:=",
+ CellLabel->"In[411]:=",
  CellID->1899692439],
 
 Cell[BoxData[
@@ -252,8 +254,7 @@ Cell[BoxData[
    RowBox[{"a", ".", "b"}], "-", 
    RowBox[{"b", ".", "a"}]}], TraditionalForm]], "Output",
  CellTags->"Commutator",
- CellLabel->"Out[3]=",
- CellID->114625701]
+ CellLabel->"Out[411]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -266,37 +267,32 @@ Cell[BoxData[
      RowBox[{"a", "+", "b"}], ",", 
      RowBox[{"c", "+", "d"}]}], "]"}], "]"}], " "}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[4]:=",
+ CellLabel->"In[412]:=",
  CellID->1084501087],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"a", "+", "b"}], ")"}], ".", 
-    RowBox[{"(", 
-     RowBox[{"c", "+", "d"}], ")"}]}], "-", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"c", "+", "d"}], ")"}], ".", 
-    RowBox[{"(", 
-     RowBox[{"a", "+", "b"}], ")"}]}]}], TraditionalForm]], "Output",
+   RowBox[{"a", ".", "c"}], "-", 
+   RowBox[{"c", ".", "a"}], "+", 
+   RowBox[{"a", ".", "d"}], "-", 
+   RowBox[{"d", ".", "a"}], "+", 
+   RowBox[{"b", ".", "c"}], "-", 
+   RowBox[{"c", ".", "b"}], "+", 
+   RowBox[{"b", ".", "d"}], "-", 
+   RowBox[{"d", ".", "b"}]}], TraditionalForm]], "Output",
  CellTags->"Commutator",
- CellLabel->"Out[4]=",
- CellID->1005990059]
+ CellLabel->"Out[412]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"UnDeclareNonCommutative", "[", 
   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[5]:=",
+ CellLabel->"In[413]:=",
  CellID->1895253329],
 
-Cell["Verify the Jacobi identity.", "Text",
- CellTags->"Commutator",
- CellID->1857726821],
+Cell["Verify the Jacobi identity.", "Notes"],
 
 Cell[BoxData[
  RowBox[{
@@ -304,7 +300,7 @@ Cell[BoxData[
   RowBox[{"DeclareNonCommutative", "[", 
    RowBox[{"x", ",", "y", ",", "z"}], "]"}], ";"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[6]:=",
+ CellLabel->"In[414]:=",
  CellID->1446605314],
 
 Cell[CellGroupData[{
@@ -324,7 +320,7 @@ Cell[BoxData[
     RowBox[{"\[Chi]", "[", 
      RowBox[{"x", ",", "y"}], "]"}]}], "]"}]}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[7]:=",
+ CellLabel->"In[415]:=",
  CellID->698764152],
 
 Cell[BoxData[
@@ -361,8 +357,7 @@ Cell[BoxData[
        TraditionalForm], "\[NoBreak]", "]"}],
      TraditionalForm], "\[NoBreak]", "]"}]}], TraditionalForm]], "Output",
  CellTags->"Commutator",
- CellLabel->"Out[7]=",
- CellID->1488542158]
+ CellLabel->"Out[415]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,27 +365,26 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DotSimplify", "[", "%", "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[8]:=",
+ CellLabel->"In[416]:=",
  CellID->1391154075],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Commutator",
- CellLabel->"Out[8]=",
- CellID->502281549]
+ CellLabel->"Out[416]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", "\[Chi]", "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[9]:=",
+ CellLabel->"In[417]:=",
  CellID->1837954422],
 
 Cell[BoxData[
  RowBox[{"UnDeclareNonCommutative", "[", 
   RowBox[{"x", ",", "y", ",", "z"}], "]"}]], "Input",
  CellTags->"Commutator",
- CellLabel->"In[10]:=",
+ CellLabel->"In[418]:=",
  CellID->2037252072]
 }, Open  ]],
 
@@ -455,13 +449,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{839, Automatic}, {Automatic, 183}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

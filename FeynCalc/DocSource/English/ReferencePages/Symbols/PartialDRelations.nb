@@ -159,39 +159,33 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox[\"FCPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/PartialD\",
-  ButtonNote->\"FCPartialD\"],
- \", \",
- ButtonBox[\"ExpandPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/ExpandPartialD\",
-  ButtonNote->\"ExpandPartialD\"],
- \", \",
- ButtonBox[\"LeftPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/LeftPartialD\",
-  ButtonNote->\"LeftPartialD\"],
- \", \",
- ButtonBox[\"LeftRightPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/LeftRightPartialD\",
-  ButtonNote->\"LeftRightPartialD\"],
- \", \",
- ButtonBox[\"RightPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/RightPartialD\",
-  ButtonNote->\"RightPartialD\"],
- \".\"
-}], \"Text\",
- CellTags->\"PartialDRelations\",
- CellID->730120334]\
-\>"], "Text",
- CellTags->"PartialDRelations",
- CellID->730120334]
+ ButtonBox["FCPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/PartialD",
+  ButtonNote->"FCPartialD"],
+ ", ",
+ ButtonBox["ExpandPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
+  ButtonNote->"ExpandPartialD"],
+ ", ",
+ ButtonBox["LeftPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftPartialD",
+  ButtonNote->"LeftPartialD"],
+ ", ",
+ ButtonBox["LeftRightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD",
+  ButtonNote->"LeftRightPartialD"],
+ ", ",
+ ButtonBox["RightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/RightPartialD",
+  ButtonNote->"RightPartialD"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,10 +212,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"PartialDRelations",
- CellID->56378705],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -234,7 +224,7 @@ Cell[BoxData[
     RowBox[{"{", "\[Mu]", "}"}]}], "]"}], ".", 
   RowBox[{"LeftPartialD", "[", "\[Nu]", "]"}]}]], "Input",
  CellTags->"PartialDRelations",
- CellLabel->"In[1]:=",
+ CellLabel->"In[13]:=",
  CellID->1264073129],
 
 Cell[BoxData[
@@ -257,8 +247,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"PartialDRelations",
- CellLabel->"Out[1]=",
- CellID->1055472864]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -270,7 +259,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"A", "\[Rule]", "C"}], "}"}]}]}], "]"}]], "Input",
  CellTags->"PartialDRelations",
- CellLabel->"In[2]:=",
+ CellLabel->"In[14]:=",
  CellID->1340152745],
 
 Cell[BoxData[
@@ -282,41 +271,44 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\[Mu]",
       TraditionalForm]], ".", 
-    RowBox[{
-     SubscriptBox["\[PartialD]", 
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm]], 
-     SubsuperscriptBox[
-      FormBox["B",
-       TraditionalForm], 
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm], "\[Null]"]}]}], "+", 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", "\[PartialD]"}], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubscriptBox[
+       FormBox["B",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], ")"}], ")"}]}], "+", 
    RowBox[{
-    RowBox[{
-     SubscriptBox["\[PartialD]", 
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm]], 
-     SubsuperscriptBox[
-      FormBox["C",
-       TraditionalForm], 
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm], "\[Null]"]}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", "\[PartialD]"}], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubscriptBox[
+       FormBox["C",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], ")"}], ")"}], ".", 
     SubscriptBox[
      FormBox["B",
       TraditionalForm], 
      FormBox["\[Mu]",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"PartialDRelations",
- CellLabel->"Out[2]=",
- CellID->42444932]
+ CellLabel->"Out[14]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -381,13 +373,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{852, Automatic}, {Automatic, 115}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

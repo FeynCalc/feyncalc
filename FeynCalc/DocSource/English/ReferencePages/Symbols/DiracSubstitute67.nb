@@ -121,12 +121,10 @@ Cell[TextData[{
  " \[LineSeparator] inserts the explicit definitions of the chirality \
 projectors ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "6"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "6"]], "InlineFormula"],
  " and ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "7"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "7"]], "InlineFormula"],
  "."
 }], "Usage",
  CellID->982511436],
@@ -140,7 +138,6 @@ Cell[TextData[{
  " is also an option of various FeynCalc functions that handle Dirac \
 algebra."
 }], "Notes",
- CellChangeTimes->{3.762515221244751*^9, 3.762574010183688*^9},
  CellID->1827982253],
 
 Cell[CellGroupData[{

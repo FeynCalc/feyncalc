@@ -182,9 +182,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynCalcInternal",
   ButtonNote->"FeynCalcInternal"],
  "."
-}], "Text",
- CellTags->"FeynCalcForm",
- CellID->1584845220]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -222,7 +220,7 @@ Cell[BoxData[
    RowBox[{"SUNT", "[", "b", "]"}], ".", 
    RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[164]:=",
+ CellLabel->"In[94]:=",
  CellID->1625719649],
 
 Cell[BoxData[
@@ -253,7 +251,7 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"FeynCalcForm",
- CellLabel->"Out[164]="]
+ CellLabel->"Out[94]="]
 }, Open  ]],
 
 Cell["\<\
@@ -264,7 +262,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"$PrePrint", " ", "=", " ", "FeynCalcForm"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[165]:=",
+ CellLabel->"In[95]:=",
  CellID->1192476093],
 
 Cell[BoxData[
@@ -287,7 +285,7 @@ Cell[BoxData[
        ")"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[166]:=",
+ CellLabel->"In[96]:=",
  CellID->204502333],
 
 Cell[CellGroupData[{
@@ -299,17 +297,20 @@ Cell[BoxData[
    RowBox[{"SUNT", "[", "b", "]"}], ".", 
    RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[167]:=",
+ CellLabel->"In[97]:=",
  CellID->1641498185],
 
 Cell[OutputFormData["\<\
 SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . 
   SUNT[SUNIndex[c]]]\
 \>", "\<\
-tr[T[a] T[b] T[c]]\
+SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . 
+
+
+   SUNT[SUNIndex[c]]]\
 \>"], "Output",
  CellTags->"FeynCalcForm",
- CellLabel->"Out[167]="]
+ CellLabel->"Out[97]="]
 }, Open  ]],
 
 Cell["Reset to normal notebook display:", "Notes"],
@@ -318,7 +319,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"$PrePrint", "=."}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[168]:=",
+ CellLabel->"In[98]:=",
  CellID->1847759077],
 
 Cell[BoxData[
@@ -341,8 +342,48 @@ Cell[BoxData[
         ")"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[169]:=",
- CellID->803099917]
+ CellLabel->"In[99]:=",
+ CellID->803099917],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNTrace", "[", 
+  RowBox[{
+   RowBox[{"SUNT", "[", "a", "]"}], ".", 
+   RowBox[{"SUNT", "[", "b", "]"}], ".", 
+   RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[100]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox["\<\"tr\"\>",
+    TraditionalForm], 
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[100]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{

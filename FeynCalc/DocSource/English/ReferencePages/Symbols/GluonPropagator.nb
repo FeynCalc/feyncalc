@@ -151,8 +151,7 @@ Cell[TextData[{
  CellID->2010081510],
 
 Cell[TextData[{
- Cell[BoxData["GP"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["GP"], "InlineFormula"],
  " can be used as an abbreviation of ",
  ButtonBox["GluonPropagator",
   BaseStyle->"Link",
@@ -178,18 +177,15 @@ Cell[TextData[{
 
 Cell[TextData[{
  "The following settings of Gauge are possible: ",
- Cell[BoxData["1"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["1"], "InlineFormula"],
  " for the Feynman gauge;  ",
- Cell[BoxData["\[Alpha]"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["\[Alpha]"], "InlineFormula"],
  " for the general covariant gauge; ",
  Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"Momentum", "[", "n", "]"}], " ", ",", "1"}], "}"}]], 
-  "InlineFormula",
-  FormatType->"StandardForm"],
+  "InlineFormula"],
  " for the axial gauge."
 }], "Notes"],
 

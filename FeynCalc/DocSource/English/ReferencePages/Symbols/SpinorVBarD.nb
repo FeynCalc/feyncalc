@@ -1,7 +1,7 @@
 Notebook[{
 Cell[TextData[{
  "New in: ",
- Cell["9.0", "HistoryData",
+ Cell["9.3", "HistoryData",
   CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
@@ -32,9 +32,9 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/DenominatorOrder", "Categorization",
+Cell["FeynCalc/ref/SpinorVBarD", "Categorization",
  CellLabel->"URI"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -111,15 +111,25 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["DenominatorOrder", "ObjectName",
+Cell["SpinorVBarD", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["DenominatorOrder"], "InlineFormula"],
- " \[LineSeparator]",
- "is an option for OneLoop, if set to True the PropagatorDenominator will be \
-ordered in a standard way."
+ Cell[BoxData[
+  RowBox[{"SpinorVBarD", "[", 
+   RowBox[{"p", ",", "m"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]denotes a ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["v", "_"], "(", 
+    RowBox[{"p", ",", "m"}], ")"}], TraditionalForm]], "InlineFormula"],
+ "-spinor that depends on the ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional momentum ",
+ Cell[BoxData["p"], "InlineFormula"],
+ ". "
 }], "Usage",
  CellID->982511436],
 
@@ -160,20 +170,48 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
- ButtonBox["OneLoop",
+ ButtonBox["Spinor",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/OneLoop",
-  ButtonNote->"OneLoop"],
+  ButtonData:>"paclet:FeynCalc/ref/Spinor",
+  ButtonNote->"Spinor"],
  ", ",
- ButtonBox["PropagatorDenominator",
+ ButtonBox["SpinorUBar",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/PropagatorDenominator",
-  ButtonNote->"PropagatorDenominator"],
+  ButtonData:>"paclet:FeynCalc/ref/SpinorUBar",
+  ButtonNote->"SpinorUBar"],
+ ", ",
+ ButtonBox["SpinorU",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorU",
+  ButtonNote->"SpinorU"],
+ ", ",
+ ButtonBox["SpinorV",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorV",
+  ButtonNote->"SpinorV"],
+ ", ",
+ ButtonBox["SpinorVBar",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorVBar",
+  ButtonNote->"SpinorVBar"],
+ ", ",
+ ButtonBox["SpinorUBarD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorUBarD",
+  ButtonNote->"SpinorUBarD"],
+ ", ",
+ ButtonBox["SpinorUD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorUD",
+  ButtonNote->"SpinorUD"],
+ ", ",
+ ButtonBox["SpinorVD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorVD",
+  ButtonNote->"SpinorVD"],
  "."
-}], "Text",
- CellTags->"DenominatorOrder",
- CellID->1578744187]
+}], "SeeAlso",
+ CellID->780468192]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -184,6 +222,8 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -197,6 +237,129 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SpinorVBarD", "[", 
+  RowBox[{"p", ",", "m"}], "]"}]], "Input",
+ CellTags->"SpinorU",
+ CellLabel->"In[80]:=",
+ CellID->1066488732],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["v", "_"], "(", 
+   FormBox["p",
+    TraditionalForm], ",", 
+   FormBox["m",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellTags->"SpinorU",
+ CellLabel->"Out[80]=",
+ CellID->260595618]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", "%", "]"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[81]:=",
+ CellID->2060242592],
+
+Cell[BoxData[
+ RowBox[{"Spinor", "[", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}]}], ",", "m", ",", "1"}], "]"}]], "Output",
+ 
+ CellLabel->"Out[81]//StandardForm=",
+ CellID->1722913412]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SpinorVBarD", "[", "p", "]"}]], "Input",
+ CellTags->"SpinorU",
+ CellLabel->"In[82]:=",
+ CellID->1219506664],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["v", "_"], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellTags->"SpinorU",
+ CellLabel->"Out[82]=",
+ CellID->1512984979]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", "%", "]"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[83]:=",
+ CellID->1046277707],
+
+Cell[BoxData[
+ RowBox[{"Spinor", "[", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"p", ",", "D"}], "]"}]}], ",", "0", ",", "1"}], "]"}]], "Output",
+ 
+ CellLabel->"Out[83]//StandardForm=",
+ CellID->602233374]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SpinorVBarD", "[", "p", "]"}], ".", 
+  RowBox[{"GSD", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[84]:=",
+ CellID->19834725],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    RowBox[{
+     OverscriptBox["v", "_"], "(", 
+     FormBox["p",
+      TraditionalForm], ")"}],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[84]=",
+ CellID->1007368411]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracEquation", "[", "%", "]"}]], "Input",
+ CellLabel->"In[85]:=",
+ CellID->1275256319],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[85]=",
+ CellID->288354181]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -259,14 +422,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
-Visible->True,
+WindowMargins->{{Automatic, 88}, {-10, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-

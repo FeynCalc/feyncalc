@@ -119,8 +119,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"CalcColorFactor", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]calculates the color factor of ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  "."
 }], "Usage",
  CellID->982511436],

@@ -195,6 +195,91 @@ Cell[BoxData[
  RowBox[{"Expand2", "[", 
   RowBox[{
    RowBox[{
+    RowBox[{"(", 
+     RowBox[{"x1", "+", "x2", "+", "x3"}], ")"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"2", "x1"}], "+", 
+      RowBox[{"3", "x2"}]}], ")"}]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"y1", "+", "y2", "+", "y3"}], ")"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"2", "y1"}], "+", 
+      RowBox[{"3", "y2"}]}], ")"}]}]}], "]"}]], "Input",
+ CellLabel->"In[717]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    SuperscriptBox["x1", "2"]}], "+", 
+   RowBox[{"5", " ", "x1", " ", "x2"}], "+", 
+   RowBox[{"2", " ", "x1", " ", "x3"}], "+", 
+   RowBox[{"3", " ", 
+    SuperscriptBox["x2", "2"]}], "+", 
+   RowBox[{"3", " ", "x2", " ", "x3"}], "+", 
+   RowBox[{"2", " ", 
+    SuperscriptBox["y1", "2"]}], "+", 
+   RowBox[{"5", " ", "y1", " ", "y2"}], "+", 
+   RowBox[{"2", " ", "y1", " ", "y3"}], "+", 
+   RowBox[{"3", " ", 
+    SuperscriptBox["y2", "2"]}], "+", 
+   RowBox[{"3", " ", "y2", " ", "y3"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[717]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand2", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"x1", "+", "x2", "+", "x3"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "x1"}], "+", 
+       RowBox[{"3", "x2"}]}], ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"y1", "+", "y2", "+", "y3"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "y1"}], "+", 
+       RowBox[{"3", "y2"}]}], ")"}]}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y1", ",", "y2"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[716]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"2", " ", "x1"}], "+", 
+      RowBox[{"3", " ", "x2"}]}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"x1", "+", "x2", "+", "x3"}], ")"}]}], "+", 
+   RowBox[{"2", " ", 
+    SuperscriptBox["y1", "2"]}], "+", 
+   RowBox[{"5", " ", "y1", " ", "y2"}], "+", 
+   RowBox[{"2", " ", "y1", " ", "y3"}], "+", 
+   RowBox[{"3", " ", 
+    SuperscriptBox["y2", "2"]}], "+", 
+   RowBox[{"3", " ", "y2", " ", "y3"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[716]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand2", "[", 
+  RowBox[{
+   RowBox[{
     RowBox[{
      RowBox[{"(", 
       RowBox[{"x1", "+", "x2", "+", "x3"}], ")"}], 
@@ -212,7 +297,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x1", ",", "x2"}], "}"}]}], "]"}]], "Input",
  CellTags->"Expand2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[715]:=",
  CellID->1988123480],
 
 Cell[BoxData[
@@ -234,8 +319,7 @@ Cell[BoxData[
      RowBox[{"y1", "+", "y2", "+", "y3"}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"Expand2",
- CellLabel->"Out[1]=",
- CellID->1449504113]
+ CellLabel->"Out[715]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -300,13 +384,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{791, Automatic}, {Automatic, 136}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

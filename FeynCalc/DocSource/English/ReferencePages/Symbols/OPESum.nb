@@ -174,9 +174,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPESumSimplify",
   ButtonNote->"OPESumSimplify"],
  "."
-}], "Text",
- CellTags->"OPESum",
- CellID->1162371524]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -206,21 +204,20 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{"OPESum", "[", 
+ RowBox[{"OPESum", "[", 
+  RowBox[{
    RowBox[{
     RowBox[{
-     RowBox[{
-      RowBox[{"SO", "[", "p", "]"}], "^", "OPEi"}], 
-     RowBox[{
-      RowBox[{"SO", "[", "k", "]"}], "^", 
-      RowBox[{"(", 
-       RowBox[{"OPEm", "-", "OPEi", "-", "3"}], ")"}]}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"OPEi", ",", "0", ",", 
-      RowBox[{"OPEm", "-", "3"}]}], "}"}]}], "]"}]}]], "Input",
+     RowBox[{"SO", "[", "p", "]"}], "^", "OPEi"}], 
+    RowBox[{
+     RowBox[{"SO", "[", "k", "]"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"OPEm", "-", "OPEi", "-", "3"}], ")"}]}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"OPEi", ",", "0", ",", 
+     RowBox[{"OPEm", "-", "3"}]}], "}"}]}], "]"}]], "Input",
  CellTags->"OPESum",
- CellLabel->"In[1]:=",
+ CellLabel->"In[19]:=",
  CellID->448625968],
 
 Cell[BoxData[
@@ -254,16 +251,15 @@ Cell[BoxData[
          TraditionalForm]}], ")"}], "i"]}]}],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"OPESum",
- CellLabel->"Out[1]=",
- CellID->1323502805]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"OPESumExplicit", "[", "t1", "]"}]], "Input",
+ RowBox[{"OPESumExplicit", "[", "%", "]"}]], "Input",
  CellTags->"OPESum",
- CellLabel->"In[2]:=",
+ CellLabel->"In[20]:=",
  CellID->575960405],
 
 Cell[BoxData[
@@ -326,14 +322,13 @@ Cell[BoxData[
       FormBox["p",
        TraditionalForm]}]}]]}], TraditionalForm]], "Output",
  CellTags->"OPESum",
- CellLabel->"Out[2]=",
- CellID->988725801]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{"OPESum", "[", 
    RowBox[{
     RowBox[{
@@ -350,7 +345,7 @@ Cell[BoxData[
      RowBox[{"j", ",", "0", ",", 
       RowBox[{"m", "-", "4"}]}], "}"}]}], "]"}]}]], "Input",
  CellTags->"OPESum",
- CellLabel->"In[3]:=",
+ CellLabel->"In[21]:=",
  CellID->934947616],
 
 Cell[BoxData[
@@ -380,16 +375,15 @@ Cell[BoxData[
        RowBox[{"-", "j"}], "+", "m", "-", "4"}]]}],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"OPESum",
- CellLabel->"Out[3]=",
- CellID->1408007149]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"OPESumExplicit", "[", "t2", "]"}]], "Input",
+ RowBox[{"OPESumExplicit", "[", "%", "]"}]], "Input",
  CellTags->"OPESum",
- CellLabel->"In[4]:=",
+ CellLabel->"In[22]:=",
  CellID->1712949576],
 
 Cell[BoxData[
@@ -458,17 +452,8 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"b", "-", "c"}], ")"}]}]]}], TraditionalForm]], "Output",
  CellTags->"OPESum",
- CellLabel->"Out[4]=",
- CellID->1163635134]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{" ", 
-  RowBox[{"Clear", "[", 
-   RowBox[{"t1", ",", "t2"}], "]"}]}]], "Input",
- CellTags->"OPESum",
- CellLabel->"In[5]:=",
- CellID->790847648]
+ CellLabel->"Out[22]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -532,13 +517,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{315, Automatic}, {Automatic, 77}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

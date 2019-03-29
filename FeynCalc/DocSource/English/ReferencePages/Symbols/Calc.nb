@@ -118,10 +118,9 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"Calc", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "performs several basic simplifications. Calc[exp] is the same as \
-DotSimplify[DiracSimplify[Contract[DiracSimplify[Explicit[ \
-SUNSimplify[Trick[exp], Explicit\[Rule]False] ]]]]]."
+ " \[LineSeparator] performs several simplifications that involve Contract, \
+DiracSimplify SUNSimplify, DotSimplify, EpsEvaluate, ExpandScalarProduct, \
+PowerSimplify, Expand2 and Trick."
 }], "Usage",
  CellID->982511436],
 
@@ -162,6 +161,11 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
+ ButtonBox["Trick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Trick",
+  ButtonNote->"Trick"],
+ ", ",
  ButtonBox["DiracSimplify",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
@@ -171,15 +175,8 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
   ButtonNote->"DiracTrick"],
- ", ",
- ButtonBox["Trick",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Trick",
-  ButtonNote->"Trick"],
  "."
-}], "Text",
- CellTags->"Calc",
- CellID->573489970]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -206,48 +203,53 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"Calc",
- CellID->115873599],
-
 Cell[TextData[{
  "This calculates ",
  Cell[BoxData[
-  FormBox[
-   RowBox[{
-    SuperscriptBox["\[Gamma]", "\[Mu]"], 
-    SubscriptBox["\[Gamma]", "\[Mu]"]}], TraditionalForm]]],
- " in 4 dimensions and ",
+  RowBox[{
+   SuperscriptBox["\[Gamma]", "\[Mu]"], 
+   SubscriptBox["\[Gamma]", "\[Mu]"]}]], "InlineFormula"],
+ " in ",
+ Cell[BoxData["4"], "InlineFormula"],
+ " dimensions and ",
  Cell[BoxData[
-  FormBox[
-   SubsuperscriptBox["g", "\[Nu]", "\[Nu]"], TraditionalForm]]],
- " in D dimensions."
-}], "Text",
- CellTags->"Calc",
- CellID->117745359],
+  SubsuperscriptBox["g", "\[Nu]", "\[Nu]"]], "InlineFormula"],
+ " in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ " dimensions."
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Calc", "[", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"GA", "[", 
-     RowBox[{"\[Mu]", ",", "\[Mu]"}], "]"}], ",", " ", 
-    RowBox[{"MTD", "[", 
-     RowBox[{"\[Nu]", ",", "\[Nu]"}], "]"}]}], "}"}], "]"}]], "Input",
- CellTags->"Calc",
- CellLabel->"In[1]:=",
- CellID->781527999],
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Mu]"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[116]:="],
 
 Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"4", ",", "D"}], "}"}], TraditionalForm]], "Output",
- CellTags->"Calc",
- CellLabel->"Out[1]=",
- CellID->1798215567]
+ FormBox["4", TraditionalForm]], "Output",
+ CellLabel->"Out[116]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", " ", 
+  RowBox[{"MTD", "[", 
+   RowBox[{"\[Nu]", ",", "\[Nu]"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[117]:="],
+
+Cell[BoxData[
+ FormBox["D", TraditionalForm]], "Output",
+ CellLabel->"Out[117]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[TextData[{
  "This simplifies ",
@@ -257,9 +259,7 @@ Cell[TextData[{
     SubscriptBox["f", "abc"], " ", 
     RowBox[{
      SubscriptBox["f", "abe"], "."}]}], TraditionalForm]]]
-}], "Text",
- CellTags->"Calc",
- CellID->1416000027],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -271,7 +271,7 @@ Cell[BoxData[
    RowBox[{"SUNF", "[", 
     RowBox[{"a", ",", "b", ",", "e"}], "]"}]}], "]"}]], "Input",
  CellTags->"Calc",
- CellLabel->"In[2]:=",
+ CellLabel->"In[118]:=",
  CellID->779661922],
 
 Cell[BoxData[
@@ -289,9 +289,15 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"Calc",
- CellLabel->"Out[2]=",
- CellID->1521159153]
+ CellLabel->"Out[118]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -306,80 +312,65 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"q", "-", "p"}], ",", "\[Nu]"}], "]"}]}]], "Input",
  CellTags->"Calc",
- CellLabel->"In[3]:=",
+ CellLabel->"In[121]:=",
  CellID->281198835],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm],
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]],
     TraditionalForm], " ", 
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      RowBox[{"(", 
-       FormBox[
-        FormBox[
-         RowBox[{
-          OverscriptBox[
-           FormBox["q",
-            TraditionalForm], "_"], "-", 
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"]}],
-         TraditionalForm],
-        TraditionalForm], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
       FormBox[
        FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
+        RowBox[{
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"]}],
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
     TraditionalForm], " ", 
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      RowBox[{"(", 
-       FormBox[
-        FormBox[
-         RowBox[{
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"], "+", 
-          OverscriptBox[
-           FormBox["r",
-            TraditionalForm], "_"]}],
-         TraditionalForm],
-        TraditionalForm], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
       FormBox[
        FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["r",
+           TraditionalForm], "_"]}],
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Calc",
- CellLabel->"Out[3]=",
- CellID->481463556]
+ CellLabel->"Out[121]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -387,7 +378,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Calc", "[", "%", "]"}]], "Input",
  CellTags->"Calc",
- CellLabel->"In[4]:=",
+ CellLabel->"In[122]:=",
  CellID->1838519780],
 
 Cell[BoxData[
@@ -439,79 +430,59 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"Calc",
- CellLabel->"Out[4]=",
- CellID->1244287531]
+ CellLabel->"Out[122]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"GluonVertex", "[", 
-  RowBox[{"p", ",", "1", ",", "q", ",", "2", ",", 
-   RowBox[{
-    RowBox[{"-", "p"}], "-", "q"}], ",", "3"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "li1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "li2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "p"}], "-", "q"}], ",", "li3"}], "}"}]}], "]"}]], "Input",
  CellTags->"Calc",
- CellLabel->"In[5]:=",
+ CellLabel->"In[127]:=",
  CellID->1589340964],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SuperscriptBox["f", 
+   SuperscriptBox["V", 
     RowBox[{
-     FormBox[
-      FormBox["ci1",
-       TraditionalForm],
+     FormBox["li1",
       TraditionalForm], 
-     FormBox[
-      FormBox["ci2",
-       TraditionalForm],
+     FormBox["li2",
       TraditionalForm], 
-     FormBox[
-      FormBox["ci3",
-       TraditionalForm],
-      TraditionalForm]}]], " ", 
+     FormBox["li3",
+      TraditionalForm]}]], "(", 
    RowBox[{
-    SuperscriptBox["V", 
+    FormBox["p",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox["q",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox[
      RowBox[{
-      FormBox[
-       FormBox["li1",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["li2",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["li3",
-        TraditionalForm],
-       TraditionalForm]}]], "(", 
-    RowBox[{
-     FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox["\<\", \"\>",
-      TraditionalForm], 
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox["\<\", \"\>",
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       RowBox[{
-        RowBox[{"-", 
-         FormBox["p",
-          TraditionalForm]}], "-", 
-        FormBox["q",
-         TraditionalForm]}],
-       TraditionalForm],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+      RowBox[{"-", "p"}], "-", "q"}],
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
  CellTags->"Calc",
- CellLabel->"Out[5]=",
- CellID->706901544]
+ CellLabel->"Out[127]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -529,14 +500,14 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"-", "p"}], "-", "q"}], ",", "li3"}], "]"}]}], "]"}]], "Input",
  CellTags->"Calc",
- CellLabel->"In[6]:=",
+ CellLabel->"In[128]:=",
  CellID->1411490249],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Calc",
- CellLabel->"Out[6]=",
- CellID->1029776951]
+ CellLabel->"Out[128]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -601,13 +572,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{Automatic, 328}, {Automatic, -35}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

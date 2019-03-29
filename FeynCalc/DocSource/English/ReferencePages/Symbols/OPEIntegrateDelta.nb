@@ -119,18 +119,18 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"OPEIntegrateDelta", "[", 
    RowBox[{"expr", ",", " ", "x", ",", " ", "m"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "introduces the \[Delta](1-x) (DeltaFunction[1-x]). The ",
+ " \[LineSeparator]introduces the \[Delta](1-x) (DeltaFunction[1-x]). The ",
  StyleBox["Mathematica",
   FontSlant->"Italic"],
  " Integrate function is called and each integration  (from 0 to 1) is \
-recorded for reference (and bug-checking) in the list $MIntegrate. \nNotice \
-that the dimension specified by the option should also be the dimension used \
-in expr. It is replaced in OPEIntegrateDelta by (4+Epsilon)."
+recorded for reference (and bug-checking) in the list $MIntegrate."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+Notice that the dimension specified by the option should also be the \
+dimension used in expr. It is replaced in OPEIntegrateDelta by (4+Epsilon).\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -172,9 +172,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RHI",
   ButtonNote->"RHI"],
  "."
-}], "Text",
- CellTags->"OPEIntegrateDelta",
- CellID->2121617043]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -185,8 +183,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -200,12 +196,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[BoxData[""], "Input",
- CellTags->"OPEIntegrateDelta",
- CellLabel->"In[1]:=",
- CellID->1585063282]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -268,13 +258,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{568, Automatic}, {Automatic, 187}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

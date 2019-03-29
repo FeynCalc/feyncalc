@@ -119,8 +119,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"Schouten", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]attempts to automatically remove spurious terms in ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " by applying the Schouten identity."
 }], "Usage",
  CellID->982511436],
@@ -131,8 +130,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Schouten",
   ButtonNote->"Schouten"],
  " applies the identity for 4-vectors on at most ",
- Cell[BoxData["42"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["42"], "InlineFormula"],
  " terms in a sum."
 }], "Notes"],
 
@@ -141,11 +139,9 @@ Cell[TextData[{
 e.g. ",
  Cell[BoxData[
   RowBox[{"Schouten", "[", 
-   RowBox[{"expr", ",", "4711"}], "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   RowBox[{"expr", ",", "4711"}], "]"}]], "InlineFormula"],
  " which will work on sums with less than ",
- Cell[BoxData["4711"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4711"], "InlineFormula"],
  " terms."
 }], "Notes"],
 

@@ -178,9 +178,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVeReduce",
   ButtonNote->"PaVeReduce"],
  "."
-}], "Text",
- CellTags->"PaVeOrder",
- CellID->776510000]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -207,6 +205,11 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", 
+  RowBox[{"t", ",", "s"}], "]"}]], "Input",
+ CellLabel->"In[53]:="],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -221,7 +224,7 @@ Cell[BoxData[
      RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}]}]}], 
   "]"}]], "Input",
  CellTags->"PaVeOrder",
- CellLabel->"In[63]:=",
+ CellLabel->"In[54]:=",
  CellID->641538627],
 
 Cell[BoxData[
@@ -236,7 +239,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"PaVeOrder",
- CellLabel->"Out[63]="]
+ CellLabel->"Out[54]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,7 +256,7 @@ Cell[BoxData[
      RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}]}]}], 
   "]"}]], "Input",
  CellTags->"PaVeOrder",
- CellLabel->"In[64]:=",
+ CellLabel->"In[55]:=",
  CellID->490694983],
 
 Cell[BoxData[
@@ -268,7 +271,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"PaVeOrder",
- CellLabel->"Out[64]="]
+ CellLabel->"Out[55]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -293,7 +296,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"f", ",", "e"}], "}"}]}], "}"}]}]}], "]"}]], "Input",
  CellTags->"PaVeOrder",
- CellLabel->"In[65]:=",
+ CellLabel->"In[56]:=",
  CellID->1444685309],
 
 Cell[BoxData[
@@ -322,7 +325,7 @@ Cell[BoxData[
      HoldForm],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"PaVeOrder",
- CellLabel->"Out[65]="]
+ CellLabel->"Out[56]="]
 }, Open  ]]
 }, Open  ]],
 

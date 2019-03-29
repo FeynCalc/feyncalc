@@ -180,19 +180,12 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FVD",
   ButtonNote->"FVD"],
  ", ",
- ButtonBox["FourVector",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FourVector",
-  ButtonNote->"FourVector"],
- ", ",
  ButtonBox["Pair",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Pair",
   ButtonNote->"Pair"],
  "."
-}], "Text",
- CellTags->"FV",
- CellID->449809030]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -225,7 +218,7 @@ Cell[BoxData[
  RowBox[{"FV", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[82]:=",
+ CellLabel->"In[161]:=",
  CellID->1800701132],
 
 Cell[BoxData[
@@ -241,7 +234,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FV",
- CellLabel->"Out[82]="]
+ CellLabel->"Out[161]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -251,7 +244,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[83]:=",
+ CellLabel->"In[162]:=",
  CellID->1600944575],
 
 Cell[BoxData[
@@ -274,7 +267,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FV",
- CellLabel->"Out[83]="]
+ CellLabel->"Out[162]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -284,14 +277,14 @@ Cell[BoxData[
   RowBox[{"FV", "[", 
    RowBox[{"p", ",", "\[Mu]"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[84]:=",
+ CellLabel->"In[163]:=",
  CellID->2031151174],
 
 Cell[BoxData[
  RowBox[{"FV", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Output",
  CellTags->"FV",
- CellLabel->"Out[84]//StandardForm="]
+ CellLabel->"Out[163]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -303,7 +296,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "\[Mu]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[85]:=",
+ CellLabel->"In[164]:=",
  CellID->1187758267],
 
 Cell[BoxData[
@@ -312,7 +305,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Output",
  CellTags->"FV",
- CellLabel->"Out[85]//StandardForm="]
+ CellLabel->"Out[164]//StandardForm="]
 }, Open  ]],
 
 Cell["ExpandScalarProduct is used to expand momenta in FV", "Notes",
@@ -325,7 +318,7 @@ Cell[BoxData[
   RowBox[{"FV", "[", 
    RowBox[{
     RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}], "]"}]], "Input",
- CellLabel->"In[93]:=",
+ CellLabel->"In[165]:=",
  CellID->1140711302],
 
 Cell[BoxData[
@@ -351,7 +344,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[93]="]
+ CellLabel->"Out[165]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -416,7 +409,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{465, Automatic}, {Automatic, 55}},
+WindowMargins->{{804, Automatic}, {Automatic, 65}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

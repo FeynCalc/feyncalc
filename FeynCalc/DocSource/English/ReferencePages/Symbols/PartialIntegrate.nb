@@ -126,8 +126,23 @@ be differentiated."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PartialIntegrate", "]"}]], "Input",
+ CellTags->"PartialIntegrate",
+ CellLabel->"In[1]:=",
+ CellID->1554098382],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Integrate", "\[Rule]", "Integrate"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"PartialIntegrate",
+ CellLabel->"Out[1]=",
+ CellID->1807152704]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -190,28 +205,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"PartialIntegrate",
- CellID->1897608068],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "PartialIntegrate", "]"}]], "Input",
- CellTags->"PartialIntegrate",
- CellLabel->"In[1]:=",
- CellID->1554098382],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Integrate", "\[Rule]", "Integrate"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"PartialIntegrate",
- CellLabel->"Out[1]=",
- CellID->1807152704]
-}, Open  ]],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -224,7 +217,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"PartialIntegrate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[18]:=",
  CellID->899216893],
 
 Cell[BoxData[
@@ -267,8 +260,7 @@ Cell[BoxData[
          RowBox[{"\[DifferentialD]", "x"}]}]}], ")"}]}], 
      RowBox[{"\[DifferentialD]", "x"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"PartialIntegrate",
- CellLabel->"Out[2]=",
- CellID->1654017289]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -282,7 +274,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"3", "x"}], "+", "2"}], "]"}], ",", "x"}], "]"}]}]], "Input",
  CellTags->"PartialIntegrate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[19]:=",
  CellID->474075126],
 
 Cell[BoxData[
@@ -299,8 +291,7 @@ Cell[BoxData[
        RowBox[{"3", " ", "x"}], "+", "2"}], ")"}], "-", "1"}], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"PartialIntegrate",
- CellLabel->"Out[3]=",
- CellID->1187465286]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -315,7 +306,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"3", "x"}], "+", "2"}], "]"}]], ",", "x"}], "]"}]}]], "Input",
  CellTags->"PartialIntegrate",
- CellLabel->"In[4]:=",
+ CellLabel->"In[20]:=",
  CellID->1976852949],
 
 Cell[BoxData[
@@ -332,8 +323,7 @@ Cell[BoxData[
        RowBox[{"3", " ", "x"}], "+", "2"}], ")"}]}]]}], 
   TraditionalForm]], "Output",
  CellTags->"PartialIntegrate",
- CellLabel->"Out[4]=",
- CellID->347096584]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -352,7 +342,7 @@ Cell[BoxData[
      RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "//", 
   "FullSimplify"}]], "Input",
  CellTags->"PartialIntegrate",
- CellLabel->"In[5]:=",
+ CellLabel->"In[21]:=",
  CellID->2004778923],
 
 Cell[BoxData[
@@ -363,8 +353,7 @@ Cell[BoxData[
    FractionBox["5", 
     RowBox[{"log", "(", "125", ")"}]]}], TraditionalForm]], "Output",
  CellTags->"PartialIntegrate",
- CellLabel->"Out[5]=",
- CellID->1569708030]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -380,7 +369,7 @@ Cell[BoxData[
      RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "//", 
   "Simplify"}]], "Input",
  CellTags->"PartialIntegrate",
- CellLabel->"In[6]:=",
+ CellLabel->"In[22]:=",
  CellID->359240358],
 
 Cell[BoxData[
@@ -391,15 +380,14 @@ Cell[BoxData[
    FractionBox["5", 
     RowBox[{"log", "(", "125", ")"}]]}], TraditionalForm]], "Output",
  CellTags->"PartialIntegrate",
- CellLabel->"Out[6]=",
- CellID->1067599584]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"f", ",", "g"}], "]"}]], "Input",
  CellTags->"PartialIntegrate",
- CellLabel->"In[7]:=",
+ CellLabel->"In[23]:=",
  CellID->1553816606]
 }, Open  ]],
 
@@ -464,13 +452,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{566, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

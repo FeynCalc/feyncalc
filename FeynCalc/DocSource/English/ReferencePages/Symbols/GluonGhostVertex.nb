@@ -130,8 +130,7 @@ Cell[TextData[{
   RowBox[{"GluonGhostVertex", "[", " ", 
    RowBox[{
    "p", ",", "mu", ",", "a", " ", ",", " ", "q", ",", "nu", ",", "b", " ", 
-    ",", " ", "k", ",", "rho", ",", "c"}], " ", "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+    ",", " ", "k", ",", "rho", ",", "c"}], " ", "]"}]], "InlineFormula"],
  " yields the Gluon-Ghost vertex. The first argument represents the gluon and \
 the third argument the outgoing ghost field (but incoming 4-momentum)."
 }], "Usage",
@@ -217,35 +216,33 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox[\"GluonPropagator\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/GluonPropagator\",
-  ButtonNote->\"GluonPropagator\"],
- \", \",
- ButtonBox[\"GluonSelfEnergy\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"pa\.17clet:FeynCalc/ref/GluonSelfEnergy\",
-  ButtonNote->\"GluonSelfEnergy\"],
- \", \",
- ButtonBox[\"GluonVertex\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/GluonVertex\",
-  ButtonNote->\"GluonVertex\"],
- \", \",
-  ButtonBox[\"QCDFeynmanRuleConvention\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/QCDFeynmanRuleConvention\",
-  ButtonNote->\"QCDFeynmanRuleConvention\"],
- \", \",
- ButtonBox[\"GhostPropagator\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/GhostPropagator\",
-  ButtonNote->\"GhostPropagator\"],
- \".\"
-}], \"SeeAlso\"]\
-\>"], "SeeAlso"]
+ ButtonBox["GluonPropagator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GluonPropagator",
+  ButtonNote->"GluonPropagator"],
+ ", ",
+ ButtonBox["GluonSelfEnergy",
+  BaseStyle->"Link",
+  ButtonData:>"pa\.17clet:FeynCalc/ref/GluonSelfEnergy",
+  ButtonNote->"GluonSelfEnergy"],
+ ", ",
+ ButtonBox["GluonVertex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GluonVertex",
+  ButtonNote->"GluonVertex"],
+ ", ",
+ ButtonBox["QCDFeynmanRuleConvention",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/QCDFeynmanRuleConvention",
+  ButtonNote->"QCDFeynmanRuleConvention"],
+ ", ",
+ ButtonBox["GhostPropagator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GhostPropagator",
+  ButtonNote->"GhostPropagator"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -275,16 +272,17 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"GluonGhostVertex", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"k", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}]], "Input",
+ RowBox[{
+  RowBox[{"GluonGhostVertex", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}], " "}]], "Input",
  CellTags->"GluonGhostVertex",
- CellLabel->"In[9]:=",
+ CellLabel->"In[82]:=",
  CellID->1492094433],
 
 Cell[BoxData[
@@ -312,7 +310,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"GluonGhostVertex",
- CellLabel->"Out[9]="]
+ CellLabel->"Out[82]="]
 }, Open  ]],
 
 Cell[CellGroupData[{

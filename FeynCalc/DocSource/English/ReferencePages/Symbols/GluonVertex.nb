@@ -131,8 +131,7 @@ Cell[TextData[{
    RowBox[{
    "p", ",", " ", "mu", ",", " ", "a", ",", " ", "q", ",", " ", "nu", ",", 
     " ", "b", ",", " ", "k", ",", " ", "la", ",", " ", "c"}], "]"}]], 
-  "InlineFormula",
-  FormatType->"StandardForm"],
+  "InlineFormula"],
  " yields the 3-gluon vertex. \n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
@@ -169,23 +168,20 @@ coupling constant.\n",
     RowBox[{"{", 
      RowBox[{"la", ",", "c"}], "}"}], ",", " ", 
     RowBox[{"{", 
-     RowBox[{"si", ",", "d"}], "}"}]}], "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+     RowBox[{"si", ",", "d"}], "}"}]}], "]"}]], "InlineFormula"],
  " or ",
  Cell[BoxData[
   RowBox[{"GluonVertex", "[", 
    RowBox[{
    "p", ",", "mu", ",", "a", ",", " ", "q", ",", "nu", ",", "b", ",", " ", 
     "k", ",", "la", ",", "c", " ", ",", " ", "s", ",", "si", ",", "d"}], 
-   "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   "]"}]], "InlineFormula"],
  " or ",
  Cell[BoxData[
   RowBox[{"GluonVertex", "[", 
    RowBox[{
    "mu", ",", "a", ",", "nu", ",", "b", ",", "la", ",", "c", ",", " ", "si", 
-    ",", "d"}], " ", "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+    ",", "d"}], " ", "]"}]], "InlineFormula"],
  " yields the 4-gluon vertex."
 }], "Usage",
  CellID->2010081510],

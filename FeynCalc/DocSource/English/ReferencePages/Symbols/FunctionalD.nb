@@ -151,8 +151,7 @@ Cell[TextData[{
      "}"}]}], "]"}]], "InlineFormula"],
  " \[LineSeparator]calculates the functional derivative and does partial \
 integration but omits the ",
- Cell[BoxData["x"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["x"], "InlineFormula"],
  "-space delta functions."
 }], "Usage",
  CellID->2010081510],
@@ -254,18 +253,15 @@ Cell[TextData[{
     SuperscriptBox["\[Delta]", 
      RowBox[{"(", "D", ")"}]], 
     RowBox[{"(", 
-     RowBox[{"x", "-", "y"}], ")"}]}]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+     RowBox[{"x", "-", "y"}], ")"}]}]}]], "InlineFormula"],
  " the arguments and the ",
- Cell[BoxData["\[Delta]"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["\[Delta]"], "InlineFormula"],
  " function are omitted, i.e., for the program for simplicity: ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{"\[Delta]\[Phi]", "/", "\[Delta]\[Phi]"}], "=", "1"}], 
-   TraditionalForm]], "InlineFormula",
-  FormatType->"StandardForm"],
+   TraditionalForm]], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -331,8 +327,7 @@ Cell[TextData[{
      SuperscriptBox["\[Delta]", 
       RowBox[{"(", "D", ")"}]]}], 
     RowBox[{"(", 
-     RowBox[{"x", "-", "y"}], ")"}]}]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+     RowBox[{"x", "-", "y"}], ")"}]}]}]], "InlineFormula"],
  " the arguments are omitted, and the ",
  Cell[BoxData[
   FormBox[Cell[TextData[Cell[BoxData[
@@ -341,8 +336,7 @@ Cell[TextData[{
     "InlineFormula"], TraditionalForm]]],
  " operator is specified by default to be an integration by parts operator, \
 i.e., the right hand side will be just ",
- Cell[BoxData["Null"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["Null"], "InlineFormula"],
  " or, more precisely, (by default)",
  Cell[BoxData[
   RowBox[{"-", 
@@ -351,8 +345,7 @@ i.e., the right hand side will be just ",
     FormBox[
      FormBox["\[Mu]",
       TraditionalForm],
-     TraditionalForm]]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+     TraditionalForm]]}]], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -404,8 +397,7 @@ Cell[TextData[Cell[BoxData[
          SuperscriptBox["m", "2"], 
          RowBox[{"\[Phi]", "(", "x", ")"}], " ", 
          RowBox[{"\[Phi]", "(", "y", ")"}]}]}], "]"}]}]}]}]}], 
-  TraditionalForm]], "InlineFormula",
- FormatType->"StandardForm"]], "Notes"],
+  TraditionalForm]], "InlineFormula"]], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -530,8 +522,7 @@ Cell[TextData[Cell[BoxData[
        SubsuperscriptBox["F", "a", "\[Mu]\[Nu]"], "(", "x", ")"}], " ", 
       RowBox[{
        SubscriptBox["F", "\[Mu]\[Nu]a"], "(", "x", ")"}]}]}]}]}], 
-  TraditionalForm]], "InlineFormula",
- FormatType->"StandardForm"]], "Notes"],
+  TraditionalForm]], "InlineFormula"]], "Notes"],
 
 Cell["First approach:", "Notes"],
 
@@ -876,12 +867,10 @@ Cell[BoxData[
 
 Cell[TextData[{
  "In order to derive the equation of motion, the functional derivative of ",
- Cell[BoxData["S"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["S"], "InlineFormula"],
  " with respect to ",
  Cell[BoxData[
-  SubsuperscriptBox["A", "\[Sigma]", "g"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubsuperscriptBox["A", "\[Sigma]", "g"]], "InlineFormula"],
  " has to be set to zero. Bearing in mind that for FeynCalc we have to be \
 precise as to where which operators (coming from the substitution of the \
 derivative of the delta function) act."
@@ -934,8 +923,7 @@ Cell[TextData[Cell[BoxData[
      SubsuperscriptBox["F", "a", 
       RowBox[{",", "\[Mu]\[Nu]"}]]}],
     TraditionalForm], 
-   RowBox[{"(", "x", ")"}]}], TraditionalForm]], "InlineFormula",
- FormatType->"StandardForm"]], "Notes"],
+   RowBox[{"(", "x", ")"}]}], TraditionalForm]], "InlineFormula"]], "Notes"],
 
 Cell[TextData[{
  " See what happens with just ",
@@ -945,8 +933,7 @@ Cell[TextData[{
     RowBox[{"\[Delta]S", "[", "A", "]"}], ")"}], "/", 
    RowBox[{"(", 
     RowBox[{"\[Delta]", 
-     SubsuperscriptBox["A", "\[Sigma]", "g"]}], ")"}]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+     SubsuperscriptBox["A", "\[Sigma]", "g"]}], ")"}]}]], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -1727,8 +1714,7 @@ Cell[BoxData[
 
 Cell[TextData[{
  "Since the variational derivative vanishes ",
- Cell[BoxData["t4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["t4"], "InlineFormula"],
  " implies that ",
  Cell[BoxData[
   RowBox[{"0", "=", 
@@ -1736,8 +1722,7 @@ Cell[TextData[{
     RowBox[{
      SubscriptBox["D", "\[Mu]"], 
      SubsuperscriptBox["F", "g", "\[Mu]\[Sigma]"]}],
-    TraditionalForm]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+    TraditionalForm]}]], "InlineFormula"],
  "."
 }], "Notes"],
 
@@ -1746,8 +1731,7 @@ Cell["Second approach:", "Notes"],
 Cell[TextData[{
  "It is of course also possible to do the functional deriviate on the ",
  Cell[BoxData[
-  RowBox[{"S", "[", "A", "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"S", "[", "A", "]"}]], "InlineFormula"],
  " with both field strength tensors inserted."
 }], "Notes"],
 
@@ -3902,8 +3886,7 @@ Cell[BoxData[
 
 Cell[TextData[{
  "Check that this is now indeed the same as the ",
- Cell[BoxData["t4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["t4"], "InlineFormula"],
  " result from the first attempt."
 }], "Notes"],
 

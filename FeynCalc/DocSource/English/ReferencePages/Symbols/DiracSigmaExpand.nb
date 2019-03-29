@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     22787,        915]
-NotebookOptionsPosition[     17042,        706]
-NotebookOutlinePosition[     17658,        730]
-CellTagsIndexPosition[     17579,        725]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -144,17 +125,12 @@ Cell[TextData[{
   ButtonNote->"DiracSigma"],
  "."
 }], "Usage",
- CellChangeTimes->{{3.761370707981982*^9, 3.761370721776119*^9}, {
-   3.762495028943193*^9, 3.7624950617115993`*^9}, {3.7624951025435543`*^9, 
-   3.76249510277492*^9}, {3.762495390327091*^9, 3.762495463880948*^9}, 
-   3.762495562607176*^9},
  CellID->982511436],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "DiracSigmaExpand", "]"}]], "Input",
- CellChangeTimes->{{3.761370768054483*^9, 3.7613707714486723`*^9}},
  CellLabel->"In[20]:=",
  CellID->374282664],
 
@@ -167,8 +143,6 @@ Cell[BoxData[
     RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
     RowBox[{"Momentum", "\[Rule]", "All"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.761370772768766*^9, {3.762495202954249*^9, 3.7624952072535257`*^9}},
  CellLabel->"Out[20]=",
  CellID->1173846990]
 }, Open  ]]
@@ -254,7 +228,6 @@ Cell[BoxData[
     RowBox[{"GSD", "[", "p", "]"}], "+", 
     RowBox[{"GSD", "[", "q", "]"}]}], ",", 
    RowBox[{"GSD", "[", "r", "]"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.761370751780726*^9, 3.761370781216818*^9}},
  CellLabel->"In[36]:=",
  CellID->525630839],
 
@@ -284,9 +257,6 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}],
      TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.761370752714389*^9, 3.761370781580456*^9}, 
-   3.7624954763253*^9, 3.762495526067602*^9, {3.762495749612033*^9, 
-   3.762495756493629*^9}},
  CellLabel->"Out[36]=",
  CellID->401856684]
 }, Open  ]],
@@ -295,7 +265,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "DiracSigmaExpand"}]], "Input",
- CellChangeTimes->{{3.761370794560669*^9, 3.761370797596201*^9}},
  CellLabel->"In[37]:=",
  CellID->2122869292],
 
@@ -322,9 +291,6 @@ Cell[BoxData[
       FormBox["r",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.761370797861082*^9, 3.762495477022931*^9, 3.7624955266644363`*^9, {
-   3.762495750063113*^9, 3.7624957569744253`*^9}},
  CellLabel->"Out[37]=",
  CellID->1368035139]
 }, Open  ]],
@@ -334,7 +300,6 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
- CellChangeTimes->{{3.762495742077589*^9, 3.762495754954782*^9}},
  CellLabel->"In[38]:=",
  CellID->1621111317],
 
@@ -348,7 +313,6 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"GSD", "[", "q", "]"}], ",", 
     RowBox[{"GSD", "[", "r", "]"}]}], "]"}]}]], "Output",
- CellChangeTimes->{{3.762495746966168*^9, 3.76249575746801*^9}},
  CellLabel->"Out[38]//StandardForm=",
  CellID->2128932345]
 }, Open  ]],
@@ -370,7 +334,6 @@ Cell[TextData[{
  Cell[BoxData["4"], "InlineFormula"],
  "-vectors by default."
 }], "Notes",
- CellChangeTimes->{{3.762495538457749*^9, 3.76249561032178*^9}},
  CellID->1591912985],
 
 Cell[CellGroupData[{
@@ -381,7 +344,6 @@ Cell[BoxData[
    RowBox[{"GSD", "[", 
     RowBox[{"p", "+", "q"}], "]"}], ",", 
    RowBox[{"GSD", "[", "r", "]"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.7624954833695374`*^9, 3.762495485210367*^9}},
  CellLabel->"In[27]:=",
  CellID->1872384147],
 
@@ -394,7 +356,6 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["r",
      TraditionalForm]}]], TraditionalForm]], "Output",
- CellChangeTimes->{3.762495485522821*^9, 3.7624956119048347`*^9},
  CellLabel->"Out[27]=",
  CellID->2031816583]
 }, Open  ]],
@@ -403,7 +364,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSigmaExpand", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.762495490600429*^9, 3.762495494296891*^9}},
  CellLabel->"In[28]:=",
  CellID->1982135918],
 
@@ -424,7 +384,6 @@ Cell[BoxData[
      FormBox["r",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- CellChangeTimes->{3.762495496898747*^9, 3.762495612623507*^9},
  CellLabel->"Out[28]=",
  CellID->1642061710]
 }, Open  ]],
@@ -437,7 +396,6 @@ Cell[TextData[{
   ButtonNote->"DiracGammaExpand"],
  "."
 }], "Notes",
- CellChangeTimes->{{3.762495643025511*^9, 3.762495663487554*^9}},
  CellID->1529300486],
 
 Cell[CellGroupData[{
@@ -451,7 +409,6 @@ Cell[BoxData[
       RowBox[{"p", "+", "q"}], "]"}], ",", 
      RowBox[{"GSD", "[", "r", "]"}]}], "]"}], ",", 
    RowBox[{"DiracGammaExpand", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.762495618945853*^9, 3.762495637985366*^9}},
  CellLabel->"In[31]:=",
  CellID->863128085],
 
@@ -478,8 +435,6 @@ Cell[BoxData[
       FormBox["r",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.762495622924541*^9, 3.7624956383311768`*^9}, 
-   3.762495680451942*^9},
  CellLabel->"Out[31]=",
  CellID->640891865]
 }, Open  ]]
@@ -505,8 +460,6 @@ Cell[TextData[{
   ButtonNote->"DiracSigma"],
  "."
 }], "Notes",
- CellChangeTimes->{{3.7624965781340637`*^9, 3.76249662278907*^9}, {
-  3.762496733982772*^9, 3.762496734619791*^9}},
  CellID->1389942884],
 
 Cell[CellGroupData[{
@@ -525,7 +478,6 @@ Cell[BoxData[
      RowBox[{"GSD", "[", "l", "]"}], "+", 
      RowBox[{"GSD", "[", "n", "]"}]}], ",", 
     RowBox[{"GSD", "[", "p", "]"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.762496647021439*^9, 3.762496715909848*^9}},
  CellLabel->"In[58]:=",
  CellID->2037164471],
 
@@ -580,7 +532,6 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]}],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.762496650932173*^9, 3.7624967161633253`*^9}},
  CellLabel->"Out[58]=",
  CellID->992813878]
 }, Open  ]],
@@ -592,7 +543,6 @@ Cell[BoxData[
   RowBox[{"%", ",", 
    RowBox[{"Momentum", "\[Rule]", 
     RowBox[{"{", "r", "}"}]}]}], "]"}]], "Input",
- CellChangeTimes->{{3.762496651586721*^9, 3.762496657621459*^9}},
  CellLabel->"In[59]:=",
  CellID->1102856647],
 
@@ -637,7 +587,6 @@ Cell[BoxData[
       FormBox["t",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.7624966579843607`*^9, 3.762496716930563*^9}},
  CellLabel->"Out[59]=",
  CellID->1534302668]
 }, Open  ]]
@@ -706,219 +655,11 @@ Cell[BoxData[
 },
 WindowSize->{700, 795},
 WindowMargins->{{829, Automatic}, {Automatic, 261}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
+TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "ExtendedExamples"->{
-  Cell[15522, 648, 100, 2, 54, "ExtendedExamplesSection",
-   CellTags->"ExtendedExamples",
-   CellID->1854448968]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"ExtendedExamples", 17440, 718}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 24, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 79, 2, 70, "Categorization",
- CellID->686433507],
-Cell[1061, 45, 81, 2, 70, "Categorization",
- CellID->605800465],
-Cell[1145, 49, 78, 2, 70, "Categorization",
- CellID->468444828],
-Cell[1226, 53, 74, 1, 70, "Categorization"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1337, 59, 55, 1, 18, "KeywordsSection",
- CellID->477174294],
-Cell[1395, 62, 45, 1, 70, "Keywords",
- CellID->1164421360]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1477, 68, 65, 1, 18, "TemplatesSection",
- CellID->1872225408],
-Cell[1545, 71, 94, 2, 70, "Template",
- CellID->1562036412],
-Cell[1642, 75, 82, 2, 70, "Template",
- CellID->158391909],
-Cell[1727, 79, 81, 2, 70, "Template",
- CellID->1360575930],
-Cell[1811, 83, 82, 2, 70, "Template",
- CellID->793782254]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1930, 90, 53, 1, 18, "DetailsSection",
- CellID->307771771],
-Cell[1986, 93, 63, 2, 70, "Details",
- CellID->670882175],
-Cell[2052, 97, 69, 2, 70, "Details",
- CellID->350963985],
-Cell[2124, 101, 64, 2, 70, "Details",
- CellID->8391405],
-Cell[2191, 105, 69, 2, 70, "Details",
- CellID->3610269],
-Cell[2263, 109, 61, 2, 70, "Details",
- CellID->401364205],
-Cell[2327, 113, 61, 2, 70, "Details",
- CellID->350204745],
-Cell[2391, 117, 63, 2, 70, "Details",
- CellID->732958810],
-Cell[2457, 121, 78, 2, 70, "Details",
- CellID->222905350],
-Cell[2538, 125, 67, 2, 70, "Details",
- CellID->240026365]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2642, 132, 59, 1, 63, "ObjectName",
- CellID->1224892054],
-Cell[2704, 135, 585, 15, 73, "Usage",
- CellID->982511436],
-Cell[CellGroupData[{
-Cell[3314, 154, 187, 4, 26, "Input",
- CellID->374282664],
-Cell[3504, 160, 454, 12, 45, "Output",
- CellID->1173846990]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4007, 178, 57, 1, 43, "TutorialsSection",
- CellID->250839057],
-Cell[4067, 181, 45, 1, 16, "Tutorials",
- CellID->341631938]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4149, 187, 83, 1, 30, "RelatedDemonstrationsSection",
- CellID->1268215905],
-Cell[4235, 190, 58, 1, 16, "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4330, 196, 65, 1, 30, "RelatedLinksSection",
- CellID->1584193535],
-Cell[4398, 199, 49, 1, 16, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4484, 205, 55, 1, 30, "SeeAlsoSection",
- CellID->1255426704],
-Cell[4542, 208, 309, 12, 16, "SeeAlso",
- CellID->1822030255]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4888, 225, 57, 1, 30, "MoreAboutSection",
- CellID->38303248],
-Cell[4948, 228, 46, 1, 16, "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5031, 234, 356, 11, 69, "PrimaryExamplesSection",
- CellID->880084151],
-Cell[CellGroupData[{
-Cell[5412, 249, 315, 9, 26, "Input",
- CellID->525630839],
-Cell[5730, 260, 848, 30, 26, "Output",
- CellID->401856684]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6615, 295, 176, 4, 26, "Input",
- CellID->2122869292],
-Cell[6794, 301, 683, 27, 24, "Output",
- CellID->1368035139]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7514, 333, 198, 5, 26, "Input",
- CellID->1621111317],
-Cell[7715, 340, 424, 12, 25, "Output",
- CellID->2128932345]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8176, 357, 125, 3, 16, "ExampleDelimiter",
- CellID->904766219],
-Cell[8304, 362, 408, 11, 41, "Notes",
- CellID->1591912985],
-Cell[CellGroupData[{
-Cell[8737, 377, 286, 8, 26, "Input",
- CellID->1872384147],
-Cell[9026, 387, 315, 11, 24, "Output",
- CellID->2031816583]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9378, 403, 180, 4, 26, "Input",
- CellID->1982135918],
-Cell[9561, 409, 474, 19, 24, "Output",
- CellID->1642061710]
-}, Open  ]],
-Cell[10050, 431, 314, 9, 25, "Notes",
- CellID->1529300486],
-Cell[CellGroupData[{
-Cell[10389, 444, 406, 11, 46, "Input",
- CellID->863128085],
-Cell[10798, 457, 633, 26, 24, "Output",
- CellID->640891865]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11480, 489, 126, 3, 16, "ExampleDelimiter",
- CellID->2124164560],
-Cell[11609, 494, 485, 15, 25, "Notes",
- CellID->1389942884],
-Cell[CellGroupData[{
-Cell[12119, 513, 528, 16, 46, "Input",
- CellID->2037164471],
-Cell[12650, 531, 1411, 53, 26, "Output",
- CellID->992813878]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[14098, 589, 265, 7, 26, "Input",
- CellID->1102856647],
-Cell[14366, 598, 1095, 43, 28, "Output",
- CellID->1534302668]
-}, Open  ]]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[15522, 648, 100, 2, 54, "ExtendedExamplesSection",
- CellTags->"ExtendedExamples",
- CellID->1854448968],
-Cell[15625, 652, 125, 3, 32, "ExampleSection",
- CellID->1293636265],
-Cell[15753, 657, 148, 3, 20, "ExampleSection",
- CellID->1020263627],
-Cell[CellGroupData[{
-Cell[15926, 664, 127, 3, 20, "ExampleSection",
- CellID->2061341341],
-Cell[16056, 669, 130, 3, 70, "ExampleSubsection",
- CellID->1757724783],
-Cell[16189, 674, 130, 3, 70, "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
-Cell[16334, 680, 131, 3, 20, "ExampleSection",
- CellID->258228157],
-Cell[16468, 685, 142, 3, 20, "ExampleSection",
- CellID->2123667759],
-Cell[16613, 690, 135, 3, 20, "ExampleSection",
- CellID->1305812373],
-Cell[16751, 695, 140, 3, 20, "ExampleSection",
- CellID->1653164318],
-Cell[16894, 700, 132, 3, 20, "ExampleSection",
- CellID->589267740]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

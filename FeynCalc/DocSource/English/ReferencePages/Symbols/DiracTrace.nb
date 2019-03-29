@@ -125,8 +125,7 @@ evaluated. The evaluation occurs only when the option ",
   ButtonData:>"paclet:FeynCalc/ref/DiracTraceEvaluate",
   ButtonNote->"DiracTraceEvaluate"],
  " is set to ",
- Cell[BoxData["True"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["True"], "InlineFormula"],
  ". It is recommended to use ",
  ButtonBox["DiracSimplify",
   BaseStyle->"Link",
@@ -350,8 +349,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracTraceEvaluate",
   ButtonNote->"DiracTraceEvaluate"],
  " to ",
- Cell[BoxData["True"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["True"], "InlineFormula"],
  " or use ",
  ButtonBox["DiracSimplify",
   BaseStyle->"Link",
@@ -726,11 +724,9 @@ Cell[BoxData[
 Cell[TextData[{
  "Traces involving ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " or chirality projectors in ",
- Cell[BoxData["4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4"], "InlineFormula"],
  "-dimensions are also possible"
 }], "Notes"],
 
@@ -1887,12 +1883,10 @@ Cell[BoxData[
   $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[TextData[{
- Cell[BoxData["D"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["D"], "InlineFormula"],
  "-dimensional traces that do not involve ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " are unambiguous."
 }], "Notes"],
 
@@ -2094,16 +2088,13 @@ Cell[BoxData[
 Cell[TextData[{
  "Traces that contain ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " in ",
- Cell[BoxData["D"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["D"], "InlineFormula"],
  "-dimensions are scheme-dependent. The default scheme used in FeynCalc is \
 the naive dimension regularization (NDR), where ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " is assumed to anticommute with all other Dirac matrices. However, chiral \
 traces are ambiguous NDR, unless the trace contains an even number of ",
  Cell[BoxData[
@@ -2751,14 +2742,13 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrace", "::", "ndranomaly"}], "MessageName"], 
-   RowBox[{
-   ":", " "}], "\<\"You are using naive dimensional regularization (NDR), \
-such that in D dimensions gamma^5 anticommutes with all other Dirac matrices. \
-In this scheme (without additional prescriptions) it is not possible to \
-compute traces with an odd number of gamma^5 unambiguously. Evaluation \
-aborted! \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\
-\", ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrace\\\", \
+    RowBox[{"DiracTrace", "::", "ndranomaly"}], "MessageName"], ":", 
+   " ", "\<\"You are using naive dimensional regularization (NDR), such that \
+in D dimensions gamma^5 anticommutes with all other Dirac matrices. In this \
+scheme (without additional prescriptions) it is not possible to compute \
+traces with an odd number of gamma^5 unambiguously. Evaluation aborted! \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrace\\\", \
 ButtonNote -> \\\"FeynCalc`DiracTrace::ndranomaly\\\"]\\)\"\>"}], 
   TraditionalForm]], "Message", "MSG",
  CellLabel->"During evaluation of In[110]:="],
@@ -6206,11 +6196,9 @@ Cell[TextData[{
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " but contain both ",
- Cell[BoxData["4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4"], "InlineFormula"],
  "- and ",
- Cell[BoxData["D"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["D"], "InlineFormula"],
  "-dimensional Dirac matrices may appear in calculations that use the BMHV \
 prescription, but they do not make sense in NDR. Therefore, their evaluation \
 will be succesful only if the correct scheme is used."
@@ -6300,10 +6288,9 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], 
-   RowBox[{
-   ":", " "}], "\<\"Error! DiracTrick has encountered a fatal problem and \
-must abort the computation. The problem reads: \
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
+   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
+the computation. The problem reads: \
 \[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
 and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak]\"\>"}], 
   TraditionalForm]], "Message", "MSG",
@@ -6514,11 +6501,9 @@ Cell[BoxData[
 
 Cell[TextData[{
  "Notice that in this case the result contains ",
- Cell[BoxData["4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4"], "InlineFormula"],
  "- and ",
- Cell[BoxData["D"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["D"], "InlineFormula"],
  "-dimensional tensors."
 }], "Notes"]
 }, Open  ]],
@@ -6540,8 +6525,7 @@ turn it off by setting the option ",
   ButtonData:>"paclet:FeynCalc/ref/West",
   ButtonNote->"West"],
  " to ",
- Cell[BoxData["False"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["False"], "InlineFormula"],
  ", but then the evaluation will require much more time."
 }], "Notes"],
 
@@ -6631,8 +6615,7 @@ Cell[BoxData[
 
 Cell[TextData[{
  "Lexicographic sorting of the matrices inside ",
- Cell[BoxData["4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4"], "InlineFormula"],
  "-dimensional traces helps to avoid some spurious terms."
 }], "Notes"],
 
@@ -6666,8 +6649,7 @@ Cell[BoxData[
 Cell[TextData[{
  "When the sorting is turned off via ",
  Cell[BoxData[
-  RowBox[{"Sort", "\[Rule]", "True"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"Sort", "\[Rule]", "True"}]], "InlineFormula"],
  ", one may obtain some spurious terms that vanish by Schouten's identity."
 }], "Notes"],
 

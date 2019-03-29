@@ -125,8 +125,23 @@ exp. If exp does not contain DiracTrace's, Tr2[exp] takes the Dirac trace."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Tr2", "]"}]], "Input",
+ CellTags->"Tr2",
+ CellLabel->"In[1]:=",
+ CellID->111461302],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Factoring", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Tr2",
+ CellLabel->"Out[1]=",
+ CellID->1087832967]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -162,7 +177,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["Tr",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Tr",
@@ -188,9 +202,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNTrace",
   ButtonNote->"SUNTrace"],
  "."
-}], "Text",
- CellTags->"Tr2",
- CellID->762070093]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,8 +213,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -216,45 +226,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Tr2", "]"}]], "Input",
- CellTags->"Tr2",
- CellLabel->"In[1]:=",
- CellID->111461302],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Factoring", "\[Rule]", "False"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Tr2",
- CellLabel->"Out[1]=",
- CellID->1087832967]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"TR", "[", 
-  RowBox[{
-   RowBox[{"a", " ", "Tf"}], ",", 
-   RowBox[{"SUNTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"Tr2",
- CellLabel->"In[2]:=",
- CellID->1913639318],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"4", " ", "a", " ", 
-   SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
- CellTags->"Tr2",
- CellLabel->"Out[2]=",
- CellID->1821071798]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -317,13 +288,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1250, Automatic}, {268, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

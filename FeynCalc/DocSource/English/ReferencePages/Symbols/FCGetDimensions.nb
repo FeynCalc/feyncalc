@@ -118,16 +118,35 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"FCGetDimensions", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]is an auxiliary function that determines the dimensions \
-\\in which 4-momenta and Dirac matrices of the given expression are defined. \
-The result is returned as a list, e.g. {4}, {D} or {4,D,D-4} etc. This is \
-useful if one want to be sure that all quantities inside a particular \
-expression are purely 4-dimensional or purely D-dimensional."
+ " \[LineSeparator]is an auxiliary function that determines the dimensions in \
+which 4-momenta and Dirac matrices of the given expression are defined. "
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "The result is returned as a list, e.g. ",
+ Cell[BoxData[
+  RowBox[{"{", "4", "}"}]], "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"{", "D", "}"}]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"4", ",", "D", ",", 
+    RowBox[{"D", "-", "4"}]}], "}"}]], "InlineFormula"],
+ " etc. "
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "This is useful if one wants to be sure that all quantities inside a \
+particular expression are purely ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-dimensional or purely ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional."
+}], "Notes"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -307,7 +326,8 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

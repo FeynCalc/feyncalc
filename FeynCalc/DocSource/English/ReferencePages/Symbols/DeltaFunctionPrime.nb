@@ -165,7 +165,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["Convolute",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Convolute",
@@ -191,9 +190,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SimplifyDeltaFunction",
   ButtonNote->"SimplifyDeltaFunction"],
  "."
-}], "Text",
- CellTags->"DeltaFunctionPrime",
- CellID->1121609320]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -226,7 +223,7 @@ Cell[BoxData[
  RowBox[{"DeltaFunctionPrime", "[", 
   RowBox[{"1", "-", "x"}], "]"}]], "Input",
  CellTags->"DeltaFunctionPrime",
- CellLabel->"In[1]:=",
+ CellLabel->"In[598]:=",
  CellID->677883424],
 
 Cell[BoxData[
@@ -237,8 +234,7 @@ Cell[BoxData[
     RowBox[{"1", "-", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"DeltaFunctionPrime",
- CellLabel->"Out[1]=",
- CellID->1329619670]
+ CellLabel->"Out[598]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,7 +249,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"DeltaFunctionPrime",
- CellLabel->"In[2]:=",
+ CellLabel->"In[599]:=",
  CellID->666771914],
 
 Cell[BoxData[
@@ -262,8 +258,7 @@ Cell[BoxData[
    SuperscriptBox["f", "\[Prime]",
     MultilineFunction->None], "(", "1", ")"}], TraditionalForm]], "Output",
  CellTags->"DeltaFunctionPrime",
- CellLabel->"Out[2]=",
- CellID->1211576646]
+ CellLabel->"Out[599]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -278,14 +273,13 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"DeltaFunctionPrime",
- CellLabel->"In[3]:=",
+ CellLabel->"In[600]:=",
  CellID->1722060708],
 
 Cell[BoxData[
  FormBox["2", TraditionalForm]], "Output",
  CellTags->"DeltaFunctionPrime",
- CellLabel->"Out[3]=",
- CellID->1114808117]
+ CellLabel->"Out[600]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -350,13 +344,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1011, Automatic}, {Automatic, 185}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

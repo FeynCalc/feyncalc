@@ -186,15 +186,8 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/LCD",
   ButtonNote->"LCD"],
- ", ",
- ButtonBox["LeviCivita",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
  "."
-}], "Text",
- CellTags->"Eps",
- CellID->328152737]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,7 +224,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[27]:=",
+ CellLabel->"In[674]:=",
  CellID->882253219],
 
 Cell[BoxData[
@@ -256,7 +249,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[27]="]
+ CellLabel->"Out[674]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -269,7 +262,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[28]:=",
+ CellLabel->"In[675]:=",
  CellID->1187356604],
 
 Cell[BoxData[
@@ -295,7 +288,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[28]="]
+ CellLabel->"Out[675]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,14 +299,14 @@ Cell[BoxData[
    RowBox[{"b", ",", "a", ",", "c", ",", "d"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[29]:=",
+ CellLabel->"In[676]:=",
  CellID->2026742577],
 
 Cell[BoxData[
  RowBox[{"Eps", "[", 
   RowBox[{"b", ",", "a", ",", "c", ",", "d"}], "]"}]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[29]//StandardForm="]
+ CellLabel->"Out[676]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -326,7 +319,7 @@ Cell[BoxData[
    RowBox[{"ExplicitLorentzIndex", "[", "2", "]"}], ",", 
    RowBox[{"ExplicitLorentzIndex", "[", "3", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[31]:=",
+ CellLabel->"In[677]:=",
  CellID->1867659172],
 
 Cell[BoxData[
@@ -351,21 +344,20 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[31]="]
+ CellLabel->"Out[677]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", " ", "=", 
-  RowBox[{"Eps", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"Eps", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[36]:=",
+ CellLabel->"In[683]:=",
  CellID->49792760],
 
 Cell[BoxData[
@@ -390,41 +382,40 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[36]="]
+ CellLabel->"Out[683]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Contract", "[", 
-  RowBox[{"a1", " ", "a1"}], "]"}]], "Input",
+  RowBox[{"%", " ", "%"}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[37]:=",
+ CellLabel->"In[684]:=",
  CellID->1112439860],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "24"}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[37]="]
+ CellLabel->"Out[684]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a2", " ", "=", 
-  RowBox[{"Eps", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]}]], "Input",
+ RowBox[{"Eps", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[38]:=",
+ CellLabel->"In[685]:=",
  CellID->864825422],
 
 Cell[BoxData[
@@ -449,7 +440,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[38]="]
+ CellLabel->"Out[685]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -457,9 +448,9 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"Contract", "[", 
-   RowBox[{"a2", " ", "a2"}], "]"}], "//", "Factor2"}]], "Input",
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[39]:=",
+ CellLabel->"In[686]:=",
  CellID->225723746],
 
 Cell[BoxData[
@@ -472,26 +463,25 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[39]="]
+ CellLabel->"Out[686]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"g5", "=", 
+ RowBox[{
   RowBox[{
+   RowBox[{"-", 
+    FractionBox["\[ImaginaryI]", "24"]}], 
    RowBox[{
-    RowBox[{"-", 
-     FractionBox["\[ImaginaryI]", "24"]}], 
-    RowBox[{
-     RowBox[{"LCD", "[", 
-      RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Alpha]"}], "]"}], 
-     ".", 
-     RowBox[{"GAD", "[", 
-      RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Alpha]"}], 
-      "]"}]}]}], "//", "FCI"}]}]], "Input",
+    RowBox[{"LCD", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Alpha]"}], "]"}], 
+    ".", 
+    RowBox[{"GAD", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Alpha]"}], 
+     "]"}]}]}], "//", "FCI"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[40]:=",
+ CellLabel->"In[690]:=",
  CellID->1182317355],
 
 Cell[BoxData[
@@ -540,40 +530,39 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[40]="]
+ CellLabel->"Out[690]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"g5p", "=", 
+ RowBox[{
   RowBox[{
+   RowBox[{"-", 
+    FractionBox["\[ImaginaryI]", "24"]}], " ", 
    RowBox[{
-    RowBox[{"-", 
-     FractionBox["\[ImaginaryI]", "24"]}], " ", 
-    RowBox[{
-     RowBox[{"LCD", "[", 
-      RowBox[{
-       SuperscriptBox["\[Mu]", "\[Prime]",
-        MultilineFunction->None], ",", 
-       SuperscriptBox["\[Nu]", "\[Prime]",
-        MultilineFunction->None], ",", 
-       SuperscriptBox["\[Rho]", "\[Prime]",
-        MultilineFunction->None], ",", 
-       SuperscriptBox["\[Alpha]", "\[Prime]",
-        MultilineFunction->None]}], "]"}], ".", 
-     RowBox[{"GAD", "[", 
-      RowBox[{
-       SuperscriptBox["\[Mu]", "\[Prime]",
-        MultilineFunction->None], ",", 
-       SuperscriptBox["\[Nu]", "\[Prime]",
-        MultilineFunction->None], ",", 
-       SuperscriptBox["\[Rho]", "\[Prime]",
-        MultilineFunction->None], ",", 
-       SuperscriptBox["\[Alpha]", "\[Prime]",
-        MultilineFunction->None]}], "]"}]}]}], "//", "FCI"}]}]], "Input",
+    RowBox[{"LCD", "[", 
+     RowBox[{
+      SuperscriptBox["\[Mu]", "\[Prime]",
+       MultilineFunction->None], ",", 
+      SuperscriptBox["\[Nu]", "\[Prime]",
+       MultilineFunction->None], ",", 
+      SuperscriptBox["\[Rho]", "\[Prime]",
+       MultilineFunction->None], ",", 
+      SuperscriptBox["\[Alpha]", "\[Prime]",
+       MultilineFunction->None]}], "]"}], ".", 
+    RowBox[{"GAD", "[", 
+     RowBox[{
+      SuperscriptBox["\[Mu]", "\[Prime]",
+       MultilineFunction->None], ",", 
+      SuperscriptBox["\[Nu]", "\[Prime]",
+       MultilineFunction->None], ",", 
+      SuperscriptBox["\[Rho]", "\[Prime]",
+       MultilineFunction->None], ",", 
+      SuperscriptBox["\[Alpha]", "\[Prime]",
+       MultilineFunction->None]}], "]"}]}]}], "//", "FCI"}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[41]:=",
+ CellLabel->"In[691]:=",
  CellID->1736669356],
 
 Cell[BoxData[
@@ -638,19 +627,16 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[41]="]
+ CellLabel->"Out[691]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"g52", "=", 
-  RowBox[{"Factor2", "[", 
-   RowBox[{"Calc", "[", 
-    RowBox[{"g5", ".", "g5p"}], "]"}], "]"}]}]], "Input",
- CellTags->"Eps",
- CellLabel->"In[42]:=",
- CellID->1776301198],
+ RowBox[{
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"%", ".", "%%"}], "]"}], "//", "Factor2"}]], "Input",
+ CellLabel->"In[692]:="],
 
 Cell[BoxData[
  FormBox[
@@ -663,32 +649,23 @@ Cell[BoxData[
     RowBox[{"2", "-", "D"}], ")"}], " ", 
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
- CellTags->"Eps",
- CellLabel->"Out[42]="]
+ CellLabel->"Out[692]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"g52", "/.", 
+ RowBox[{"%", "/.", 
   RowBox[{"D", "\[Rule]", "4"}]}]], "Input",
  CellTags->"Eps",
- CellLabel->"In[43]:=",
+ CellLabel->"In[693]:=",
  CellID->505384444],
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"Eps",
- CellLabel->"Out[43]="]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"a1", ",", "a2", ",", "g5", ",", "g5p", ",", "g52"}], 
-  "]"}]], "Input",
- CellTags->"Eps",
- CellLabel->"In[44]:=",
- CellID->1000155621]
+ CellLabel->"Out[693]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -752,7 +729,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{567, Automatic}, {Automatic, 78}},
+WindowMargins->{{1072, Automatic}, {Automatic, 181}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

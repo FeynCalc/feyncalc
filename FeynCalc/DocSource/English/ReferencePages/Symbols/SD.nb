@@ -119,8 +119,8 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"SD", "[", 
    RowBox[{"i", ",", " ", "j"}], "]"}]], "InlineFormula"],
- " \[LineSeparator] denotes the SU(N) Kronecker delta with color indices i \
-and j in the adjoint represnetation. SD[i,j] is transformed into \
+ " \[LineSeparator]denotes the SU(N) Kronecker delta with color indices i and \
+j in the adjoint represnetation. SD[i,j] is transformed into \
 SUNDelta[SUNIndex[i],SUNIndex[j]] by FeynCalcInternal."
 }], "Usage",
  CellID->982511436],
@@ -167,9 +167,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNDelta",
   ButtonNote->"SUNDelta"],
  "."
-}], "Text",
- CellTags->"SD",
- CellID->2009139529]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,7 +200,7 @@ Cell[BoxData[
  RowBox[{"SD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"SD",
- CellLabel->"In[152]:=",
+ CellLabel->"In[34]:=",
  CellID->476174335],
 
 Cell[BoxData[
@@ -214,7 +212,7 @@ Cell[BoxData[
     FormBox["b",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SD",
- CellLabel->"Out[152]="]
+ CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,7 +221,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"SD",
- CellLabel->"In[153]:=",
+ CellLabel->"In[35]:=",
  CellID->1096492812],
 
 Cell[BoxData[
@@ -232,7 +230,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"SD",
- CellLabel->"Out[153]//StandardForm="]
+ CellLabel->"Out[35]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -241,14 +239,14 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
  CellTags->"SD",
- CellLabel->"In[154]:=",
+ CellLabel->"In[36]:=",
  CellID->315527863],
 
 Cell[BoxData[
  RowBox[{"SD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"SD",
- CellLabel->"Out[154]//StandardForm="]
+ CellLabel->"Out[36]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -313,7 +311,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1798, Automatic}, {Automatic, 151}},
+WindowMargins->{{876, Automatic}, {Automatic, 175}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

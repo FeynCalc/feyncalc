@@ -128,8 +128,22 @@ sum (the Sum is omitted and nu, running from 0 to ",
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "HypergeometricSE", "]"}]], "Input",
+ CellTags->"HypergeometricSE",
+ CellLabel->"In[231]:=",
+ CellID->1143734993],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Simplify", "\[Rule]", "FullSimplify"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"HypergeometricSE",
+ CellLabel->"Out[231]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -170,9 +184,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/HypergeometricIR",
   ButtonNote->"HypergeometricIR"],
  "."
-}], "Text",
- CellTags->"HypergeometricSE",
- CellID->715881200]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,31 +214,13 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "HypergeometricSE", "]"}]], "Input",
- CellTags->"HypergeometricSE",
- CellLabel->"In[1]:=",
- CellID->1143734993],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Simplify", "\[Rule]", "FullSimplify"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"HypergeometricSE",
- CellLabel->"Out[1]=",
- CellID->2099172215]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"HypergeometricSE", "[", 
   RowBox[{
    RowBox[{"Hypergeometric2F1", "[", 
     RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], ",", "\[Nu]"}], 
   "]"}]], "Input",
  CellTags->"HypergeometricSE",
- CellLabel->"In[2]:=",
+ CellLabel->"In[232]:=",
  CellID->388138933],
 
 Cell[BoxData[
@@ -250,8 +244,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"c", "+", "\[Nu]"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
  CellTags->"HypergeometricSE",
- CellLabel->"Out[2]=",
- CellID->1318858464]
+ CellLabel->"Out[232]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -267,7 +260,7 @@ Cell[BoxData[
       RowBox[{"d", ",", "e"}], "}"}], ",", "z"}], "]"}], ",", "\[Nu]"}], 
   "]"}]], "Input",
  CellTags->"HypergeometricSE",
- CellLabel->"In[3]:=",
+ CellLabel->"In[233]:=",
  CellID->998113844],
 
 Cell[BoxData[
@@ -299,8 +292,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"e", "+", "\[Nu]"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
  CellTags->"HypergeometricSE",
- CellLabel->"Out[3]=",
- CellID->1095324364]
+ CellLabel->"Out[233]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -365,13 +357,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{926, Automatic}, {Automatic, 189}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

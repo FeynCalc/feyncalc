@@ -160,15 +160,12 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["B0",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/B0",
   ButtonNote->"B0"],
  "."
-}], "Text",
- CellTags->"B0Real",
- CellID->1839543320]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -195,9 +192,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["By default the arguments are not assumed real.", "Text",
- CellTags->"B0Real",
- CellID->130288840],
+Cell["By default the arguments are not assumed real.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -205,59 +200,33 @@ Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{"s", ",", "0", ",", "s"}], "]"}]], "Input",
  CellTags->"B0Real",
- CellLabel->"In[1]:=",
+ CellLabel->"In[21]:=",
  CellID->1048836421],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
+  TagBox[
    FormBox[
-    TagBox[
-     FormBox[
-      RowBox[{
-       SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-       RowBox[{"0", ",", "s", ",", "s"}], ")"}],
-      TraditionalForm],
-     HoldForm],
-    TraditionalForm], "+", "2"}], TraditionalForm]], "Output",
+    RowBox[{
+     SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+     RowBox[{"s", ",", "0", ",", "s"}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
  CellTags->"B0Real",
- CellLabel->"Out[1]=",
- CellID->997660714]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"B0", "//", "Options"}]], "Input",
- CellTags->"B0Real",
- CellLabel->"In[2]:=",
- CellID->168010706],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
-    RowBox[{"B0Unique", "\[Rule]", "True"}], ",", 
-    RowBox[{"B0Real", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"B0Real",
- CellLabel->"Out[2]=",
- CellID->994724143]
-}, Open  ]],
-
-Cell["With B0Real\[Rule]True, transformation is done.", "Text",
- CellTags->"B0Real",
- CellID->617964813],
+Cell["With B0Real\[Rule]True, transformation is done.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{"s", ",", "0", ",", "s", ",", 
-   RowBox[{"B0Real", "\[Rule]", "True"}]}], "]"}]], "Input",
+   RowBox[{"B0Real", "\[Rule]", "True"}], ",", 
+   RowBox[{"B0Unique", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"B0Real",
- CellLabel->"In[3]:=",
+ CellLabel->"In[26]:=",
  CellID->848873063],
 
 Cell[BoxData[
@@ -273,8 +242,7 @@ Cell[BoxData[
      HoldForm],
     TraditionalForm], "+", "2"}], TraditionalForm]], "Output",
  CellTags->"B0Real",
- CellLabel->"Out[3]=",
- CellID->1655563844]
+ CellLabel->"Out[26]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -339,13 +307,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1430, Automatic}, {Automatic, 225}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

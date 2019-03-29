@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     17839,        710]
-NotebookOptionsPosition[     13402,        551]
-NotebookOutlinePosition[     14019,        575]
-CellTagsIndexPosition[     13940,        570]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -142,18 +123,15 @@ relations derived by Sirlin in Nuclear Physics B192 (1981) 93-99. Contrary to \
 the original paper, the sign of the Levi-Civita tensor is choosen as ",
  Cell[BoxData[
   RowBox[{
-   SuperscriptBox["\[Epsilon]", "0123"], "=", "1"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   SuperscriptBox["\[Epsilon]", "0123"], "=", "1"}]], "InlineFormula"],
  " which is the standard choice in FeynCalc."
 }], "Usage",
- CellChangeTimes->{{3.7613748056574297`*^9, 3.761374822609178*^9}},
  CellID->982511436],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "SirlinSimplify", "]"}]], "Input",
- CellChangeTimes->{{3.761374850273106*^9, 3.7613748542368803`*^9}},
  CellLabel->"In[14]:=",
  CellID->250226562],
 
@@ -174,7 +152,6 @@ Cell[BoxData[
     RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
     RowBox[{"SpinorChainTrick", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.761374854499105*^9, 3.762577682534009*^9},
  CellLabel->"Out[14]=",
  CellID->1582403712]
 }, Open  ]]
@@ -274,8 +251,6 @@ Cell[BoxData[
     RowBox[{"\[Mu]", ",", "\[Tau]", ",", "\[Nu]", ",", "7"}], "]"}], ".", 
    RowBox[{"SpinorU", "[", 
     RowBox[{"p2", ",", "m2"}], "]"}]}]}]], "Input",
- CellChangeTimes->{
-  3.7613748412790728`*^9, {3.762577658099741*^9, 3.7625776730774384`*^9}},
  CellLabel->"In[12]:=",
  CellID->218568636],
 
@@ -366,7 +341,6 @@ Cell[BoxData[
       TraditionalForm], ",", 
      FormBox["m2",
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.7613748418004513`*^9, 3.762577674521759*^9},
  CellLabel->"Out[12]=",
  CellID->612231135]
 }, Open  ]],
@@ -375,7 +349,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SirlinSimplify", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.761374835253828*^9, 3.761374844777288*^9}},
  CellLabel->"In[13]:=",
  CellID->989392439],
 
@@ -483,7 +456,6 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.7613748451259327`*^9, 3.7625776751166553`*^9},
  CellLabel->"Out[13]=",
  CellID->1691287289]
 }, Open  ]]
@@ -551,169 +523,11 @@ Cell[BoxData[
 },
 WindowSize->{700, 770},
 WindowMargins->{{1274, Automatic}, {238, Automatic}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
+TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "ExtendedExamples"->{
-  Cell[11882, 493, 100, 2, 54, "ExtendedExamplesSection",
-   CellTags->"ExtendedExamples",
-   CellID->1854448968]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"ExtendedExamples", 13801, 563}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 24, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 79, 2, 70, "Categorization",
- CellID->686433507],
-Cell[1061, 45, 81, 2, 70, "Categorization",
- CellID->605800465],
-Cell[1145, 49, 78, 2, 70, "Categorization",
- CellID->468444828],
-Cell[1226, 53, 72, 1, 70, "Categorization"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1335, 59, 55, 1, 18, "KeywordsSection",
- CellID->477174294],
-Cell[1393, 62, 45, 1, 70, "Keywords",
- CellID->1164421360]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1475, 68, 65, 1, 18, "TemplatesSection",
- CellID->1872225408],
-Cell[1543, 71, 94, 2, 70, "Template",
- CellID->1562036412],
-Cell[1640, 75, 82, 2, 70, "Template",
- CellID->158391909],
-Cell[1725, 79, 81, 2, 70, "Template",
- CellID->1360575930],
-Cell[1809, 83, 82, 2, 70, "Template",
- CellID->793782254]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1928, 90, 53, 1, 18, "DetailsSection",
- CellID->307771771],
-Cell[1984, 93, 63, 2, 70, "Details",
- CellID->670882175],
-Cell[2050, 97, 69, 2, 70, "Details",
- CellID->350963985],
-Cell[2122, 101, 64, 2, 70, "Details",
- CellID->8391405],
-Cell[2189, 105, 69, 2, 70, "Details",
- CellID->3610269],
-Cell[2261, 109, 61, 2, 70, "Details",
- CellID->401364205],
-Cell[2325, 113, 61, 2, 70, "Details",
- CellID->350204745],
-Cell[2389, 117, 63, 2, 70, "Details",
- CellID->732958810],
-Cell[2455, 121, 78, 2, 70, "Details",
- CellID->222905350],
-Cell[2536, 125, 67, 2, 70, "Details",
- CellID->240026365]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2640, 132, 57, 1, 63, "ObjectName",
- CellID->1224892054],
-Cell[2700, 135, 628, 14, 105, "Usage",
- CellID->982511436],
-Cell[CellGroupData[{
-Cell[3353, 153, 185, 4, 26, "Input",
- CellID->250226562],
-Cell[3541, 159, 884, 19, 83, "Output",
- CellID->1582403712]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4474, 184, 57, 1, 43, "TutorialsSection",
- CellID->250839057],
-Cell[4534, 187, 45, 1, 16, "Tutorials",
- CellID->341631938]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4616, 193, 83, 1, 30, "RelatedDemonstrationsSection",
- CellID->1268215905],
-Cell[4702, 196, 58, 1, 16, "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4797, 202, 65, 1, 30, "RelatedLinksSection",
- CellID->1584193535],
-Cell[4865, 205, 49, 1, 16, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4951, 211, 55, 1, 30, "SeeAlsoSection",
- CellID->1255426704],
-Cell[5009, 214, 444, 17, 16, "SeeAlso",
- CellID->655647701]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5490, 236, 57, 1, 30, "MoreAboutSection",
- CellID->38303248],
-Cell[5550, 239, 46, 1, 16, "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5633, 245, 356, 11, 69, "PrimaryExamplesSection",
- CellID->880084151],
-Cell[CellGroupData[{
-Cell[6014, 260, 684, 19, 46, "Input",
- CellID->218568636],
-Cell[6701, 281, 2215, 89, 28, "Output",
- CellID->612231135]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8953, 375, 177, 4, 26, "Input",
- CellID->989392439],
-Cell[9133, 381, 2700, 106, 55, "Output",
- CellID->1691287289]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11882, 493, 100, 2, 54, "ExtendedExamplesSection",
- CellTags->"ExtendedExamples",
- CellID->1854448968],
-Cell[11985, 497, 125, 3, 32, "ExampleSection",
- CellID->1293636265],
-Cell[12113, 502, 148, 3, 20, "ExampleSection",
- CellID->1020263627],
-Cell[CellGroupData[{
-Cell[12286, 509, 127, 3, 20, "ExampleSection",
- CellID->2061341341],
-Cell[12416, 514, 130, 3, 70, "ExampleSubsection",
- CellID->1757724783],
-Cell[12549, 519, 130, 3, 70, "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
-Cell[12694, 525, 131, 3, 20, "ExampleSection",
- CellID->258228157],
-Cell[12828, 530, 142, 3, 20, "ExampleSection",
- CellID->2123667759],
-Cell[12973, 535, 135, 3, 20, "ExampleSection",
- CellID->1305812373],
-Cell[13111, 540, 140, 3, 20, "ExampleSection",
- CellID->1653164318],
-Cell[13254, 545, 132, 3, 20, "ExampleSection",
- CellID->589267740]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

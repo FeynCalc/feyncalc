@@ -119,15 +119,19 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"SelectNotFree", "[", 
    RowBox[{"expr", ",", " ", "x"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "returns that part of expr which is not free of any occurance of x.\n\n\
-SelectNotFree[expr, a, b, ...] is equivalent to Select[expr, !FreeQ2[#, {a, \
-b, ...}]&], except the special cases: SelectNotFree[a, b] returns 1 and \
-SelectNotFree[a, a] returns a (where a is not a product or a sum)."
+ " \[LineSeparator]returns that part of ",
+ Cell[BoxData["expr"], "InlineFormula"],
+ " which is not free of any occurance of ",
+ Cell[BoxData["x"], "InlineFormula"],
+ ".\n\n"
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+SelectNotFree[expr, a, b, ...] is equivalent to Select[expr, !FreeQ2[#, {a, \
+b, ...}]&], except the special cases: SelectNotFree[a, b] returns 1 and \
+SelectNotFree[a, a] returns a (where a is not a product or a sum).\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -174,9 +178,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SelectFree",
   ButtonNote->"SelectFree"],
  "."
-}], "Text",
- CellTags->"SelectNotFree",
- CellID->1049407209]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -219,8 +221,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"f", "(", "a", ")"}], "+", "a"}], TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[1]=",
- CellID->879726471]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -241,8 +242,7 @@ Cell[BoxData[
   RowBox[{"x", " ", "y", " ", 
    RowBox[{"f", "(", "x", ")"}]}], TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[2]=",
- CellID->1461838958]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -257,8 +257,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[3]=",
- CellID->1791356409]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -274,8 +273,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[4]=",
- CellID->209254169]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -290,8 +288,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["a", TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[5]=",
- CellID->412334803]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,8 +303,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[6]=",
- CellID->1168169225]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -324,8 +320,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"f", "(", "x", ")"}], TraditionalForm]], "Output",
  CellTags->"SelectNotFree",
- CellLabel->"Out[7]=",
- CellID->2104713784]
+ CellLabel->"Out[7]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -390,13 +385,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{931, Automatic}, {Automatic, 263}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

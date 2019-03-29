@@ -171,9 +171,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/$FCMemoryAvailable",
   ButtonNote->"$FCMemoryAvailable"],
  "."
-}], "Text",
- CellTags->"FCMemoryAvailable",
- CellID->134961378]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -259,7 +257,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{619, Automatic}, {276, Automatic}},
+WindowMargins->{{1210, Automatic}, {Automatic, 137}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

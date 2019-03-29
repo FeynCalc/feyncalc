@@ -160,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["ScalarProduct",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ScalarProduct",
@@ -181,9 +180,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SPD",
   ButtonNote->"SPD"],
  "."
-}], "Text",
- CellTags->"FCClearScalarProducts",
- CellID->958310312]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,15 +215,14 @@ Cell[BoxData[
    RowBox[{"p", ",", "p"}], "]"}], "=", 
   RowBox[{"m", "^", "2"}]}]], "Input",
  CellTags->"FCClearScalarProducts",
- CellLabel->"In[1]:=",
+ CellLabel->"In[790]:=",
  CellID->1785698530],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox["m", "2"], TraditionalForm]], "Output",
  CellTags->"FCClearScalarProducts",
- CellLabel->"Out[1]=",
- CellID->29501459]
+ CellLabel->"Out[790]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,21 +233,20 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"FCClearScalarProducts",
- CellLabel->"In[2]:=",
+ CellLabel->"In[791]:=",
  CellID->1559478391],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox["m", "2"], TraditionalForm]], "Output",
  CellTags->"FCClearScalarProducts",
- CellLabel->"Out[2]=",
- CellID->988927941]
+ CellLabel->"Out[791]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"FCClearScalarProducts", "[", "]"}]], "Input",
  CellTags->"FCClearScalarProducts",
- CellLabel->"In[3]:=",
+ CellLabel->"In[792]:=",
  CellID->368473440],
 
 Cell[CellGroupData[{
@@ -262,7 +257,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"FCClearScalarProducts",
- CellLabel->"In[4]:=",
+ CellLabel->"In[793]:=",
  CellID->1776453168],
 
 Cell[BoxData[
@@ -274,17 +269,16 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
  CellTags->"FCClearScalarProducts",
- CellLabel->"Out[4]=",
- CellID->975498131]
+ CellLabel->"Out[793]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ScalarProduct", "[", 
+ RowBox[{"SP", "[", 
   RowBox[{"p", ",", "p"}], "]"}]], "Input",
  CellTags->"FCClearScalarProducts",
- CellLabel->"In[5]:=",
+ CellLabel->"In[794]:=",
  CellID->1861458856],
 
 Cell[BoxData[
@@ -296,8 +290,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
  CellTags->"FCClearScalarProducts",
- CellLabel->"Out[5]=",
- CellID->1717895412]
+ CellLabel->"Out[794]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -362,13 +355,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 684},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{869, Automatic}, {Automatic, 86}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

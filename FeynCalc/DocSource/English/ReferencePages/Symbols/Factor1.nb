@@ -166,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Factor2",
   ButtonNote->"Factor2"],
  "."
-}], "Text",
- CellTags->"Factor1",
- CellID->73262209]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,14 +196,13 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{
-   RowBox[{"(", 
-    RowBox[{"a", "-", "x"}], ")"}], 
-   RowBox[{"(", 
-    RowBox[{"b", "-", "x"}], ")"}]}]}]], "Input",
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"a", "-", "x"}], ")"}], 
+  RowBox[{"(", 
+   RowBox[{"b", "-", "x"}], ")"}]}]], "Input",
  CellTags->"Factor1",
- CellLabel->"In[1]:=",
+ CellLabel->"In[185]:=",
  CellID->106113384],
 
 Cell[BoxData[
@@ -216,20 +213,18 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"b", "-", "x"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Factor1",
- CellLabel->"Out[1]=",
- CellID->705307377]
+ CellLabel->"Out[185]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factor1", "[", "t1", "]"}], ",", " ", 
-    RowBox[{"Factor", "[", "t1", "]"}]}], "}"}]}]], "Input",
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Factor1", "[", "%", "]"}], ",", " ", 
+   RowBox[{"Factor", "[", "%", "]"}]}], "}"}]], "Input",
  CellTags->"Factor1",
- CellLabel->"In[2]:=",
+ CellLabel->"In[186]:=",
  CellID->1501862951],
 
 Cell[BoxData[
@@ -248,22 +243,20 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"x", "-", "b"}], ")"}]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Factor1",
- CellLabel->"Out[2]=",
- CellID->1528620346]
+ CellLabel->"Out[186]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{"Expand", "[", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"a", "-", "b"}], ")"}], 
-    RowBox[{"(", 
-     RowBox[{"a", "+", "b"}], ")"}]}], "]"}]}]], "Input",
+ RowBox[{"Expand", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "-", "b"}], ")"}], 
+   RowBox[{"(", 
+    RowBox[{"a", "+", "b"}], ")"}]}], "]"}]], "Input",
  CellTags->"Factor1",
- CellLabel->"In[3]:=",
+ CellLabel->"In[187]:=",
  CellID->641613489],
 
 Cell[BoxData[
@@ -272,16 +265,15 @@ Cell[BoxData[
    SuperscriptBox["a", "2"], "-", 
    SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
  CellTags->"Factor1",
- CellLabel->"Out[3]=",
- CellID->2030611853]
+ CellLabel->"Out[187]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Factor", "[", "t3", "]"}]], "Input",
+ RowBox[{"Factor", "[", "%", "]"}]], "Input",
  CellTags->"Factor1",
- CellLabel->"In[4]:=",
+ CellLabel->"In[188]:=",
  CellID->916389340],
 
 Cell[BoxData[
@@ -292,16 +284,15 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"a", "+", "b"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Factor1",
- CellLabel->"Out[4]=",
- CellID->865327707]
+ CellLabel->"Out[188]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Factor1", "[", "t3", "]"}]], "Input",
+ RowBox[{"Factor1", "[", "%%", "]"}]], "Input",
  CellTags->"Factor1",
- CellLabel->"In[5]:=",
+ CellLabel->"In[189]:=",
  CellID->892191531],
 
 Cell[BoxData[
@@ -310,16 +301,8 @@ Cell[BoxData[
    SuperscriptBox["a", "2"], "-", 
    SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
  CellTags->"Factor1",
- CellLabel->"Out[5]=",
- CellID->1139945824]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2", ",", "t3"}], "]"}]], "Input",
- CellTags->"Factor1",
- CellLabel->"In[6]:=",
- CellID->1482315372]
+ CellLabel->"Out[189]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -383,13 +366,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{889, Automatic}, {Automatic, 262}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

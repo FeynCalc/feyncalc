@@ -120,8 +120,7 @@ Cell[TextData[{
   RowBox[{"DiracGammaExpand", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]expands Dirac matrices contracted to linear combinations \
 of ",
- Cell[BoxData["4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4"], "InlineFormula"],
  "-vectors."
 }], "Usage",
  CellID->982511436],

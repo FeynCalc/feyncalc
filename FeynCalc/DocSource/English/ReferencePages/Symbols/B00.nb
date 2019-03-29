@@ -131,8 +131,23 @@ arguments are scalars and have dimension mass^2."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "B00", "]"}]], "Input",
+ CellTags->"B00",
+ CellLabel->"In[1]:=",
+ CellID->356334892],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"BReduce", "\[Rule]", "True"}], "}"}], TraditionalForm]], "Output",
+ 
+ CellTags->"B00",
+ CellLabel->"Out[1]=",
+ CellID->729895507]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -183,9 +198,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVe",
   ButtonNote->"PaVe"],
  "."
-}], "Text",
- CellTags->"B00",
- CellID->1890318949]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,227 +228,138 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "B00", "]"}]], "Input",
- CellTags->"B00",
- CellLabel->"In[1]:=",
- CellID->356334892],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"BReduce", "\[Rule]", "True"}], "}"}], TraditionalForm]], "Output",
- 
- CellTags->"B00",
- CellLabel->"Out[1]=",
- CellID->729895507]
-}, Open  ]],
-
-Cell[TextData[{
- "See also: ",
- " ",
- ButtonBox["B0",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"B0",
-  ButtonNote->"B0"],
- ", ",
- ButtonBox["B1",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"B1",
-  ButtonNote->"B1"],
- ", ",
- ButtonBox["PaVe",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"PaVe",
-  ButtonNote->"PaVe"],
- "."
-}], "Text",
- CellTags->"B00",
- CellID->2061897287],
-
-Cell[TextData[{
- "Remember that SP[p] is a short hand input for ScalarProduct[p,p], i.e., ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox["p", "2"], TraditionalForm]]],
- "."
-}], "Text",
- CellTags->"B00",
- CellID->2041843191],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SP", "[", "p", "]"}]], "Input",
- CellTags->"B00",
- CellLabel->"In[2]:=",
- CellID->592752912],
-
-Cell[BoxData[
- FormBox[
-  SuperscriptBox[
-   FormBox[
-    OverscriptBox[
-     FormBox["p",
-      TraditionalForm], "_"],
-    TraditionalForm], "2"], TraditionalForm]], "Output",
- CellTags->"B00",
- CellLabel->"Out[2]=",
- CellID->2024988940]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"B00", "[", 
   RowBox[{
-   RowBox[{"SP", "[", "p", "]"}], ",", 
+   RowBox[{"SPD", "[", "p", "]"}], ",", 
    SuperscriptBox["m", "2"], ",", 
    SuperscriptBox["M", "2"]}], "]"}]], "Input",
  CellTags->"B00",
- CellLabel->"In[3]:=",
+ CellLabel->"In[11]:=",
  CellID->1556776794],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    FractionBox["1", "6"], " ", 
-    RowBox[{"(", 
-     RowBox[{
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
       RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            OverscriptBox[
-             FormBox["p",
-              TraditionalForm], "_"],
-            TraditionalForm], "2"],
-          TraditionalForm], "+", 
-         SuperscriptBox["m", "2"], "-", 
-         SuperscriptBox["M", "2"]}], ")"}], " ", 
-       RowBox[{"(", 
-        RowBox[{
-         FractionBox[
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{
-             SuperscriptBox["M", "2"], "-", 
-             SuperscriptBox["m", "2"]}], ")"}], " ", 
-           RowBox[{"(", 
-            RowBox[{
-             FormBox[
-              TagBox[
-               FormBox[
-                RowBox[{
-                 SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-                 RowBox[{
-                  FormBox[
-                   SuperscriptBox[
-                    FormBox[
-                    OverscriptBox[
-                    FormBox["p",
-                    TraditionalForm], "_"],
-                    TraditionalForm], "2"],
-                   TraditionalForm], ",", 
-                  SuperscriptBox["m", "2"], ",", 
-                  SuperscriptBox["M", "2"]}], ")"}],
-                TraditionalForm],
-               HoldForm],
-              TraditionalForm], "-", 
-             FormBox[
-              TagBox[
-               FormBox[
-                RowBox[{
-                 SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-                 RowBox[{"0", ",", 
-                  SuperscriptBox["m", "2"], ",", 
-                  SuperscriptBox["M", "2"]}], ")"}],
-                TraditionalForm],
-               HoldForm],
-              TraditionalForm]}], ")"}]}], 
-          RowBox[{"2", " ", 
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              OverscriptBox[
-               FormBox["p",
-                TraditionalForm], "_"],
-              TraditionalForm], "2"],
-            TraditionalForm]}]], "-", 
-         RowBox[{
-          FractionBox["1", "2"], " ", 
-          FormBox[
-           TagBox[
-            FormBox[
-             RowBox[{
-              SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-              RowBox[{
-               FormBox[
-                SuperscriptBox[
-                 FormBox[
-                  OverscriptBox[
-                   FormBox["p",
-                    TraditionalForm], "_"],
-                  TraditionalForm], "2"],
-                TraditionalForm], ",", 
-               SuperscriptBox["m", "2"], ",", 
-               SuperscriptBox["M", "2"]}], ")"}],
-             TraditionalForm],
-            HoldForm],
-           TraditionalForm]}]}], ")"}]}], "+", 
-      FormBox[
-       TagBox[
-        FormBox[
-         RowBox[{
-          SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
-          SuperscriptBox["M", "2"], ")"}],
-         TraditionalForm],
-        HoldForm],
-       TraditionalForm]}], ")"}]}], "+", 
-   RowBox[{
-    FractionBox["1", "3"], " ", 
-    SuperscriptBox["m", "2"], " ", 
-    FormBox[
-     TagBox[
-      FormBox[
-       RowBox[{
-        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-        RowBox[{
-         FormBox[
-          SuperscriptBox[
-           FormBox[
-            OverscriptBox[
-             FormBox["p",
-              TraditionalForm], "_"],
-            TraditionalForm], "2"],
-          TraditionalForm], ",", 
-         SuperscriptBox["m", "2"], ",", 
-         SuperscriptBox["M", "2"]}], ")"}],
-       TraditionalForm],
-      HoldForm],
-     TraditionalForm]}], "+", 
-   RowBox[{
-    FractionBox["1", "18"], " ", 
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"-", 
+       SuperscriptBox["m", "2"], "-", 
+       RowBox[{"2", " ", "m", " ", "M"}], "+", 
+       SuperscriptBox["M", "2"], "-", 
        FormBox[
         SuperscriptBox[
          FormBox[
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"],
+          FormBox["p",
+           TraditionalForm],
           TraditionalForm], "2"],
-        TraditionalForm]}], "+", 
-      RowBox[{"3", " ", 
-       SuperscriptBox["m", "2"]}], "+", 
-      RowBox[{"3", " ", 
-       SuperscriptBox["M", "2"]}]}], ")"}]}]}], TraditionalForm]], "Output",
+        TraditionalForm]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["m", "2"], "+", 
+       RowBox[{"2", " ", "m", " ", "M"}], "+", 
+       SuperscriptBox["M", "2"], "-", 
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        TraditionalForm]}], ")"}], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], "2"],
+           TraditionalForm], ",", 
+          SuperscriptBox["m", "2"], ",", 
+          SuperscriptBox["M", "2"]}], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    RowBox[{"4", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "D"}], ")"}], " ", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"],
+      TraditionalForm]}]], "+", 
+   FractionBox[
+    RowBox[{
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+         SuperscriptBox["M", "2"], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["m", "2"], "-", 
+       SuperscriptBox["M", "2"], "-", 
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        TraditionalForm]}], ")"}]}], 
+    RowBox[{"4", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "D"}], ")"}], " ", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"],
+      TraditionalForm]}]], "-", 
+   FractionBox[
+    RowBox[{
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+         SuperscriptBox["m", "2"], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["m", "2"], "-", 
+       SuperscriptBox["M", "2"], "+", 
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        TraditionalForm]}], ")"}]}], 
+    RowBox[{"4", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "D"}], ")"}], " ", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"B00",
- CellLabel->"Out[3]=",
- CellID->2088825026]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -443,21 +367,19 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"B00", "[", 
   RowBox[{
-   RowBox[{"SP", "[", "p", "]"}], ",", 
+   RowBox[{"SPD", "[", "p", "]"}], ",", 
    SuperscriptBox["m", "2"], ",", 
    SuperscriptBox["m", "2"]}], "]"}]], "Input",
  CellTags->"B00",
- CellLabel->"In[4]:=",
+ CellLabel->"In[13]:=",
  CellID->1244341296],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox["1", "6"], " ", 
-   RowBox[{"(", 
-    RowBox[{
+   RowBox[{"-", 
+    FractionBox[
      RowBox[{
-      FractionBox["1", "2"], " ", 
       RowBox[{"(", 
        RowBox[{
         RowBox[{"4", " ", 
@@ -465,9 +387,8 @@ Cell[BoxData[
         FormBox[
          SuperscriptBox[
           FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
+           FormBox["p",
+            TraditionalForm],
            TraditionalForm], "2"],
          TraditionalForm]}], ")"}], " ", 
       FormBox[
@@ -479,42 +400,33 @@ Cell[BoxData[
            FormBox[
             SuperscriptBox[
              FormBox[
-              OverscriptBox[
-               FormBox["p",
-                TraditionalForm], "_"],
+              FormBox["p",
+               TraditionalForm],
               TraditionalForm], "2"],
             TraditionalForm], ",", 
            SuperscriptBox["m", "2"], ",", 
            SuperscriptBox["m", "2"]}], ")"}],
          TraditionalForm],
         HoldForm],
-       TraditionalForm]}], "+", 
-     RowBox[{
-      FractionBox["1", "3"], " ", 
+       TraditionalForm]}], 
+     RowBox[{"4", " ", 
       RowBox[{"(", 
+       RowBox[{"1", "-", "D"}], ")"}]}]]}], "-", 
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
        RowBox[{
-        RowBox[{"6", " ", 
-         SuperscriptBox["m", "2"]}], "-", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           OverscriptBox[
-            FormBox["p",
-             TraditionalForm], "_"],
-           TraditionalForm], "2"],
-         TraditionalForm]}], ")"}]}], "+", 
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
-         SuperscriptBox["m", "2"], ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+        SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+        SuperscriptBox["m", "2"], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "D"}], ")"}]}]]}], TraditionalForm]], "Output",
  CellTags->"B00",
- CellLabel->"Out[4]=",
- CellID->1967668942]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -522,33 +434,34 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"B00", "[", 
   RowBox[{
-   RowBox[{"SP", "[", "p", "]"}], ",", 
+   RowBox[{"SPD", "[", "p", "]"}], ",", 
    SuperscriptBox["m", "2"], ",", 
    SuperscriptBox["M", "2"], ",", 
    RowBox[{"BReduce", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"B00",
- CellLabel->"In[5]:=",
+ CellLabel->"In[15]:=",
  CellID->1245211962],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"FeynCalc`PaVeIntegrals`Private`b00", "(", 
-   RowBox[{
-    FormBox[
-     SuperscriptBox[
+  TagBox[
+   FormBox[
+    RowBox[{
+     SubscriptBox["\<\"B\"\>", "\<\"00\"\>"], "(", 
+     RowBox[{
       FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm], "2"],
-     TraditionalForm], ",", 
-    SuperscriptBox["m", "2"], ",", 
-    SuperscriptBox["M", "2"], ",", 
-    RowBox[{"BReduce", "\[Rule]", "False"}]}], ")"}], 
-  TraditionalForm]], "Output",
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"],
+       TraditionalForm], ",", 
+      SuperscriptBox["m", "2"], ",", 
+      SuperscriptBox["M", "2"]}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
  CellTags->"B00",
- CellLabel->"Out[5]=",
- CellID->870366776]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -559,30 +472,43 @@ Cell[BoxData[
    SuperscriptBox["m", "2"], ",", 
    SuperscriptBox["m", "2"]}], "]"}]], "Input",
  CellTags->"B00",
- CellLabel->"In[6]:=",
+ CellLabel->"In[16]:=",
  CellID->1891605192],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox["1", "2"], " ", 
-   SuperscriptBox["m", "2"], " ", 
-   RowBox[{"(", 
-    RowBox[{
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-         RowBox[{"0", ",", 
-          SuperscriptBox["m", "2"], ",", 
-          SuperscriptBox["m", "2"]}], ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm], "+", "1"}], ")"}]}], TraditionalForm]], "Output",
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["m", "2"], " ", 
+      FormBox[
+       TagBox[
+        FormBox[
+         RowBox[{
+          SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+          RowBox[{"0", ",", 
+           SuperscriptBox["m", "2"], ",", 
+           SuperscriptBox["m", "2"]}], ")"}],
+         TraditionalForm],
+        HoldForm],
+       TraditionalForm]}], 
+     RowBox[{"1", "-", "D"}]]}], "-", 
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+        SuperscriptBox["m", "2"], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "D"}], ")"}]}]]}], TraditionalForm]], "Output",
  CellTags->"B00",
- CellLabel->"Out[6]=",
- CellID->1063864886]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -595,31 +521,44 @@ Cell[BoxData[
    SuperscriptBox["m", "2"], ",", 
    SuperscriptBox["m", "2"]}], "]"}]], "Input",
  CellTags->"B00",
- CellLabel->"In[7]:=",
+ CellLabel->"In[20]:=",
  CellID->1823175928],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FractionBox["1", "2"], " ", 
-   SuperscriptBox["m", "2"], " ", 
-   RowBox[{"(", 
-    RowBox[{
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["m", "2"], " ", 
+      FormBox[
+       TagBox[
+        FormBox[
          RowBox[{
-          SuperscriptBox["M", "2"], ",", 
-          SuperscriptBox["m", "2"], ",", 
-          SuperscriptBox["m", "2"]}], ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm], "+", "1"}], ")"}]}], TraditionalForm]], "Output",
+          SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+          RowBox[{
+           SuperscriptBox["M", "2"], ",", 
+           SuperscriptBox["m", "2"], ",", 
+           SuperscriptBox["m", "2"]}], ")"}],
+         TraditionalForm],
+        HoldForm],
+       TraditionalForm]}], 
+     RowBox[{"1", "-", "D"}]]}], "-", 
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+        SuperscriptBox["m", "2"], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "D"}], ")"}]}]]}], TraditionalForm]], "Output",
  CellTags->"B00",
- CellLabel->"Out[7]=",
- CellID->524392254]
+ CellLabel->"Out[20]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -684,13 +623,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{Automatic, 552}, {Automatic, -35}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

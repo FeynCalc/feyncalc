@@ -137,8 +137,7 @@ Cell[TextData[{
   RowBox[{"FieldDerivative", "[", 
    RowBox[{
     RowBox[{"f", "[", "x", "]"}], ",", "x", ",", "li1", ",", "li2", ",", 
-    "..."}], "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+    "..."}], "]"}]], "InlineFormula"],
  " can be given as ",
  Cell[BoxData[
   RowBox[{
@@ -147,14 +146,11 @@ Cell[TextData[{
      RowBox[{"f", "[", "x", "]"}], ",", "x", ",", 
      RowBox[{"{", 
       RowBox[{"l1", ",", "l2", ",", "..."}], "}"}]}], "]"}], ","}]], 
-  "InlineFormula",
-  FormatType->"StandardForm"],
+  "InlineFormula"],
  " where ",
- Cell[BoxData["l1"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["l1"], "InlineFormula"],
  " is ",
- Cell[BoxData["li1"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["li1"], "InlineFormula"],
  " without the head."
 }], "Notes"],
 

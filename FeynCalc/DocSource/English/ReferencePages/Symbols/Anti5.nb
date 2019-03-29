@@ -130,8 +130,7 @@ Cell[TextData[{
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " ",
- Cell[BoxData["n"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["n"], "InlineFormula"],
  "-times to the right.\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
@@ -142,8 +141,7 @@ Cell[TextData[{
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " ",
- Cell[BoxData["n"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["n"], "InlineFormula"],
  "-times to the left."
 }], "Usage",
  CellID->982511436],
@@ -527,11 +525,9 @@ Cell[TextData[{
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  "-scheme ",
- Cell[BoxData["D"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["D"], "InlineFormula"],
  "-dimensional ",
- Cell[BoxData["\[Gamma]"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["\[Gamma]"], "InlineFormula"],
  "-matrices anticommute with",
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],

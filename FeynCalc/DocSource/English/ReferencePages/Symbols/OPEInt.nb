@@ -117,26 +117,10 @@ Cell["OPEInt", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{
-   RowBox[{
-    RowBox[{
-     RowBox[{
-      RowBox[{"OPEInt", "[", 
-       RowBox[{"expr", ",", " ", "q", ",", " ", "p", ",", " ", "x"}], "]"}], 
-      ".", "  ", "The"}], " ", "dimension", " ", "is", " ", "changed", " ", 
-     "to", " ", "the", " ", "one", " ", "indicated", " ", "by", " ", "the", 
-     " ", "option", "  ", 
-     RowBox[{"Dimension", ".", " ", "The"}], " ", "setting", " ", "of", " ", 
-     "the", " ", "option", " ", "EpsContract", " ", "determines", "  ", "the",
-      " ", "dimension", " ", "in", " ", "which", " ", "the", " ", "Levi"}], 
-    "-", 
-    RowBox[{"Civita", " ", "tensors", " ", "are", " ", 
-     RowBox[{"contracted", "."}]}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "Part[{\"OPEInt[expr, q, p, x].  The dimension is changed to the one \
-indicated by the option  Dimension. The setting of the option EpsContract \
-determines  the dimension in which the Levi-Civita tensors are \
-contracted.\"}, 2]"
+  RowBox[{"OPEInt", "[", 
+   RowBox[{"expr", ",", " ", "q", ",", " ", "p", ",", " ", "x"}], "]"}]], 
+  "InlineFormula"],
+ " \[LineSeparator]calculates 1-loop OPE-type self energies."
 }], "Usage",
  CellID->982511436],
 
@@ -182,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RHI",
   ButtonNote->"RHI"],
  "."
-}], "Text",
- CellTags->"OPEInt",
- CellID->1872757445]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -195,8 +177,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -210,12 +190,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[BoxData[""], "Input",
- CellTags->"OPEInt",
- CellLabel->"In[1]:=",
- CellID->1228083412]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -278,13 +252,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{315, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

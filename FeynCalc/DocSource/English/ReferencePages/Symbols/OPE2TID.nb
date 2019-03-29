@@ -117,26 +117,34 @@ Cell["OPE2TID", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{
-   RowBox[{
-    RowBox[{
-     RowBox[{
-      RowBox[{"OPE2TID", "[", 
-       RowBox[{"exp", ",", " ", "k1", ",", " ", "k2", ",", " ", "p"}], "]"}], 
-      ".", " ", "The"}], " ", "setting", " ", "of", " ", "the", " ", "option",
-      " ", "EpsContract", " ", "determines", " ", "the", " ", "dimension", 
-     " ", "in", " ", "which", " ", "the", " ", "Levi"}], "-", 
-    RowBox[{"Civita", " ", "tensors", " ", "are", " ", 
-     RowBox[{"contracted", "."}]}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "Part[{\"OPE2TID[exp, k1, k2, p]. The setting of the option EpsContract \
-determines the dimension in which the Levi-Civita tensors are contracted.\"}, \
-2]"
+  RowBox[{"OPE2TID", "[", 
+   RowBox[{"exp", ",", " ", "k1", ",", " ", "k2", ",", " ", "p"}], "]"}]], 
+  "InlineFormula"],
+ "\n\tdoes a special tensor integral decomposition of exp."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "OPE2TID", "]"}]], "Input",
+ CellTags->"OPE2TID",
+ CellLabel->"In[1]:=",
+ CellID->1639885788],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Uncontract", "\[Rule]", "False"}], ",", 
+    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"EpsContract", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"OPE2TID",
+ CellLabel->"Out[1]=",
+ CellID->1228598425]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -177,9 +185,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPESum",
   ButtonNote->"OPESum"],
  "."
-}], "Text",
- CellTags->"OPE2TID",
- CellID->2032594420]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -190,8 +196,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -205,29 +209,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "OPE2TID", "]"}]], "Input",
- CellTags->"OPE2TID",
- CellLabel->"In[1]:=",
- CellID->1639885788],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Uncontract", "\[Rule]", "False"}], ",", 
-    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"EpsContract", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"OPE2TID",
- CellLabel->"Out[1]=",
- CellID->1228598425]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -296,7 +277,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -139,7 +139,28 @@ TLI[{a,b,c,d,e}, {al,be,ga,de,ep}]."
  CellID->982511436],
 
 Cell["XXXX", "Notes",
- CellID->1067943069]
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "TLI", "]"}]], "Input",
+ CellTags->"TLI",
+ CellLabel->"In[1]:=",
+ CellID->1958640232],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"EpsilonOrder", "\[Rule]", "0"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", 
+     RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"TLI",
+ CellLabel->"Out[1]=",
+ CellID->1974374076]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -180,9 +201,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/TLI2FC",
   ButtonNote->"TLI2FC"],
  "."
-}], "Text",
- CellTags->"TLI",
- CellID->1589173280]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -193,8 +212,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -208,28 +225,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "TLI", "]"}]], "Input",
- CellTags->"TLI",
- CellLabel->"In[1]:=",
- CellID->1958640232],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"EpsilonOrder", "\[Rule]", "0"}], ",", 
-    RowBox[{"Momentum", "\[Rule]", 
-     RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"TLI",
- CellLabel->"Out[1]=",
- CellID->1974374076]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -292,13 +287,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{804, Automatic}, {Automatic, 146}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

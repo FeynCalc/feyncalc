@@ -132,8 +132,26 @@ polarized operator is returned."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Twist3QuarkOperator", "]"}]], "Input",
+ CellTags->"Twist3QuarkOperator",
+ CellLabel->"In[4]:=",
+ CellID->336849087],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "1"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Twist3QuarkOperator",
+ CellLabel->"Out[4]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -179,9 +197,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Twist2GluonOperator",
   ButtonNote->"Twist2GluonOperator"],
  "."
-}], "Text",
- CellTags->"Twist3QuarkOperator",
- CellID->325391970]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -211,31 +227,9 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Twist3QuarkOperator", "]"}]], "Input",
- CellTags->"Twist3QuarkOperator",
- CellLabel->"In[1]:=",
- CellID->336849087],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Polarization", "\[Rule]", "1"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Twist3QuarkOperator",
- CellLabel->"Out[1]=",
- CellID->1826060487]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Twist3QuarkOperator", "[", "p", "]"}]], "Input",
  CellTags->"Twist3QuarkOperator",
- CellLabel->"In[2]:=",
+ CellLabel->"In[5]:=",
  CellID->645443038],
 
 Cell[BoxData[
@@ -270,8 +264,7 @@ Cell[BoxData[
        TraditionalForm]}], ")"}], 
     RowBox[{"m", "-", "1"}]]}], TraditionalForm]], "Output",
  CellTags->"Twist3QuarkOperator",
- CellLabel->"Out[2]=",
- CellID->32412919]
+ CellLabel->"Out[5]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -336,13 +329,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{835, Automatic}, {Automatic, 121}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

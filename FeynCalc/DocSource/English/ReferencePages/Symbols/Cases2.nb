@@ -203,7 +203,7 @@ Cell[BoxData[
     RowBox[{"f", "[", 
      RowBox[{"c", ",", "d"}], "]"}]}], ",", "f"}], "]"}]], "Input",
  CellTags->"Cases2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[284]:=",
  CellID->1924250367],
 
 Cell[BoxData[
@@ -215,8 +215,7 @@ Cell[BoxData[
     RowBox[{"f", "(", 
      RowBox[{"c", ",", "d"}], ")"}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Cases2",
- CellLabel->"Out[1]=",
- CellID->1245535704]
+ CellLabel->"Out[284]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,7 +230,7 @@ Cell[BoxData[
       RowBox[{"y", "-", "z"}], "]"}]}], "+", 
     RowBox[{"g", "[", "y", "]"}]}], ",", "Sin", ",", "g"}], "]"}]], "Input",
  CellTags->"Cases2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[285]:=",
  CellID->1264635109],
 
 Cell[BoxData[
@@ -243,8 +242,7 @@ Cell[BoxData[
     RowBox[{"sin", "(", 
      RowBox[{"y", "-", "z"}], ")"}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Cases2",
- CellLabel->"Out[2]=",
- CellID->1551461505]
+ CellLabel->"Out[285]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,7 +261,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"Sin", ",", "g"}], "}"}]}], "]"}]], "Input",
  CellTags->"Cases2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[286]:=",
  CellID->1159301950],
 
 Cell[BoxData[
@@ -277,8 +275,7 @@ Cell[BoxData[
     RowBox[{"sin", "(", 
      RowBox[{"y", "-", "z"}], ")"}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Cases2",
- CellLabel->"Out[3]=",
- CellID->1202203267]
+ CellLabel->"Out[286]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -288,12 +285,12 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     RowBox[{
-     RowBox[{"DiracSlash", "[", "p", "]"}], ".", 
-     RowBox[{"DiracSlash", "[", "q", "]"}]}], "+", 
-    RowBox[{"ScalarProduct", "[", 
+     RowBox[{"GS", "[", "p", "]"}], ".", 
+     RowBox[{"GS", "[", "q", "]"}]}], "+", 
+    RowBox[{"SP", "[", 
      RowBox[{"p", ",", "p"}], "]"}]}], ",", "Dot"}], "]"}]], "Input",
  CellTags->"Cases2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[288]:=",
  CellID->775837316],
 
 Cell[BoxData[
@@ -301,24 +298,27 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm]}], ")"}], ".", 
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], ")"}], ".", 
     RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["q",
-         TraditionalForm], "_"],
-       TraditionalForm]}], ")"}]}], "}"}], TraditionalForm]], "Output",
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], ")"}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Cases2",
- CellLabel->"Out[4]=",
- CellID->896832184]
+ CellLabel->"Out[288]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -383,7 +383,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{773, Automatic}, {Automatic, 240}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

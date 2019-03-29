@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynRule",
   ButtonNote->"FeynRule"],
  "."
-}], "Text",
- CellTags->"Lagrangian",
- CellID->1051170443]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -204,7 +202,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Lagrangian", "[", "\"\<QCD\>\"", "]"}]], "Input",
  CellTags->"Lagrangian",
- CellLabel->"In[1]:=",
+ CellLabel->"In[12]:=",
  CellID->345064330],
 
 Cell[BoxData[
@@ -236,20 +234,17 @@ Cell[BoxData[
       RowBox[{"FCGV", "(", "\<\"a\"\>", ")"}],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Lagrangian",
- CellLabel->"Out[1]=",
- CellID->2119348269]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
-Cell["Twist-2 operator product expansion operators", "Text",
- CellTags->"Lagrangian",
- CellID->1898296666],
+Cell["Twist-2 operator product expansion operators", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Lagrangian", "[", "\"\<ogu\>\"", "]"}]], "Input",
  CellTags->"Lagrangian",
- CellLabel->"In[2]:=",
+ CellLabel->"In[13]:=",
  CellID->1741218479],
 
 Cell[BoxData[
@@ -297,8 +292,7 @@ Cell[BoxData[
       RowBox[{"FCGV", "(", "\<\"b\"\>", ")"}],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Lagrangian",
- CellLabel->"Out[2]=",
- CellID->105197133]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,7 +300,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Lagrangian", "[", "\"\<ogp\>\"", "]"}]], "Input",
  CellTags->"Lagrangian",
- CellLabel->"In[3]:=",
+ CellLabel->"In[14]:=",
  CellID->1557246101],
 
 Cell[BoxData[
@@ -316,7 +310,8 @@ Cell[BoxData[
    SuperscriptBox["\[ImaginaryI]", "m"], " ", 
    RowBox[{
     FormBox[
-     SuperscriptBox["\[Epsilon]", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", "_"], 
       RowBox[{
        FormBox[
         FormBox[
@@ -375,8 +370,7 @@ Cell[BoxData[
       RowBox[{"FCGV", "(", "\<\"b\"\>", ")"}],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Lagrangian",
- CellLabel->"Out[3]=",
- CellID->658984245]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -384,7 +378,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Lagrangian", "[", "\"\<oqu\>\"", "]"}]], "Input",
  CellTags->"Lagrangian",
- CellLabel->"In[4]:=",
+ CellLabel->"In[15]:=",
  CellID->249786913],
 
 Cell[BoxData[
@@ -410,8 +404,7 @@ Cell[BoxData[
     FormBox["\[Psi]",
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"Lagrangian",
- CellLabel->"Out[4]=",
- CellID->2085030261]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -419,7 +412,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Lagrangian", "[", "\"\<oqp\>\"", "]"}]], "Input",
  CellTags->"Lagrangian",
- CellLabel->"In[5]:=",
+ CellLabel->"In[16]:=",
  CellID->1220998815],
 
 Cell[BoxData[
@@ -449,8 +442,7 @@ Cell[BoxData[
     FormBox["\[Psi]",
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"Lagrangian",
- CellLabel->"Out[5]=",
- CellID->1018219384]
+ CellLabel->"Out[16]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -515,13 +507,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{950, Automatic}, {Automatic, 60}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     12531,        510]
-NotebookOptionsPosition[      7328,        325]
-NotebookOutlinePosition[      8544,        369]
-CellTagsIndexPosition[      8436,        363]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -141,7 +122,6 @@ representation of a three-dimensional i is CartesianIndex[i]. For other than \
 three dimensions: CartesianIndex[i, Dimension]. CartesianIndex[i, 3] \
 simplifies to CartesianIndex[i]. The first argument cannot be an integer."
 }], "Usage",
- CellChangeTimes->{{3.761972275261509*^9, 3.7619722944373302`*^9}},
  CellID->982511436],
 
 Cell["XXXX", "Notes",
@@ -180,8 +160,19 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
+Cell[TextData[{
+ ButtonBox["LorentzIndex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LorentzIndex",
+  ButtonNote->"LorentzIndex"],
+ ", ",
+ ButtonBox["ExplicitLorentzIndex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ExplicitLorentzIndex",
+  ButtonNote->"ExplicitLorentzIndex"],
+ "."
+}], "SeeAlso",
+ CellID->119070656]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -208,16 +199,13 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["This denotes a 3-dimensional Cartesian index.", "Text",
- CellChangeTimes->{{3.7619723137161827`*^9, 3.7619723178523483`*^9}},
- CellTags->"LorentzIndex",
- CellID->2141033081],
+Cell["This denotes a 3-dimensional Cartesian index.", "Notes",
+ CellID->1041402073],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"CartesianIndex", "[", "i", "]"}]], "Input",
- CellChangeTimes->{{3.761972320452785*^9, 3.761972323532082*^9}},
  CellTags->"LorentzIndex",
  CellLabel->"In[62]:=",
  CellID->1526768444],
@@ -227,7 +215,6 @@ Cell[BoxData[
   StyleBox["i",
    StripOnInput->False,
    FontWeight->Bold], TraditionalForm]], "Output",
- CellChangeTimes->{3.76197232415044*^9},
  CellTags->"LorentzIndex",
  CellLabel->"Out[62]=",
  CellID->1197436861]
@@ -235,10 +222,8 @@ Cell[BoxData[
 
 Cell["\<\
 An optional second argument can be given for a dimension different from 3.\
-\>", "Text",
- CellChangeTimes->{{3.761972340405151*^9, 3.761972340539516*^9}},
- CellTags->"LorentzIndex",
- CellID->1672095293],
+\>", "Notes",
+ CellID->512979420],
 
 Cell[CellGroupData[{
 
@@ -246,9 +231,8 @@ Cell[BoxData[
  RowBox[{"CartesianIndex", "[", 
   RowBox[{"i", ",", 
    RowBox[{"D", "-", "1"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.76197232846005*^9, 3.7619723359167128`*^9}},
  CellTags->"LorentzIndex",
- CellLabel->"In[63]:=",
+ CellLabel->"In[241]:=",
  CellID->1273197083],
 
 Cell[BoxData[
@@ -256,10 +240,27 @@ Cell[BoxData[
   StyleBox["i",
    StripOnInput->False,
    FontWeight->Bold], TraditionalForm]], "Output",
- CellChangeTimes->{3.761972336252931*^9},
  CellTags->"LorentzIndex",
- CellLabel->"Out[63]=",
- CellID->2067526237]
+ CellLabel->"Out[241]=",
+ CellID->131600211]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CartesianIndex", "[", 
+  RowBox[{"i", ",", 
+   RowBox[{"D", "-", "4"}]}], "]"}]], "Input",
+ CellLabel->"In[242]:=",
+ CellID->1172438313],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["i",
+   StripOnInput->False,
+   FontWeight->Bold], TraditionalForm]], "Output",
+ CellLabel->"Out[242]=",
+ CellID->1014527091]
 }, Open  ]]
 }, Open  ]],
 
@@ -324,196 +325,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{494, Automatic}, {259, Automatic}},
+WindowMargins->{{1226, Automatic}, {Automatic, 258}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
+TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "LorentzIndex"->{
-  Cell[4384, 210, 179, 3, 22, "Text",
-   CellTags->"LorentzIndex",
-   CellID->2141033081],
-  Cell[4588, 217, 205, 5, 26, "Input",
-   CellTags->"LorentzIndex",
-   CellID->1526768444],
-  Cell[4796, 224, 227, 8, 24, "Output",
-   CellTags->"LorentzIndex",
-   CellID->1197436861],
-  Cell[5038, 235, 212, 5, 23, "Text",
-   CellTags->"LorentzIndex",
-   CellID->1672095293],
-  Cell[5275, 244, 253, 7, 26, "Input",
-   CellTags->"LorentzIndex",
-   CellID->1273197083],
-  Cell[5531, 253, 228, 8, 24, "Output",
-   CellTags->"LorentzIndex",
-   CellID->2067526237]},
- "ExtendedExamples"->{
-  Cell[5808, 267, 100, 2, 54, "ExtendedExamplesSection",
-   CellTags->"ExtendedExamples",
-   CellID->1854448968]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"LorentzIndex", 7722, 337},
- {"ExtendedExamples", 8298, 356}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 24, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 79, 2, 70, "Categorization",
- CellID->686433507],
-Cell[1061, 45, 81, 2, 70, "Categorization",
- CellID->605800465],
-Cell[1145, 49, 78, 2, 70, "Categorization",
- CellID->468444828],
-Cell[1226, 53, 72, 1, 70, "Categorization"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1335, 59, 55, 1, 18, "KeywordsSection",
- CellID->477174294],
-Cell[1393, 62, 45, 1, 70, "Keywords",
- CellID->1164421360]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1475, 68, 65, 1, 18, "TemplatesSection",
- CellID->1872225408],
-Cell[1543, 71, 94, 2, 70, "Template",
- CellID->1562036412],
-Cell[1640, 75, 82, 2, 70, "Template",
- CellID->158391909],
-Cell[1725, 79, 81, 2, 70, "Template",
- CellID->1360575930],
-Cell[1809, 83, 82, 2, 70, "Template",
- CellID->793782254]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1928, 90, 53, 1, 18, "DetailsSection",
- CellID->307771771],
-Cell[1984, 93, 63, 2, 70, "Details",
- CellID->670882175],
-Cell[2050, 97, 69, 2, 70, "Details",
- CellID->350963985],
-Cell[2122, 101, 64, 2, 70, "Details",
- CellID->8391405],
-Cell[2189, 105, 69, 2, 70, "Details",
- CellID->3610269],
-Cell[2261, 109, 61, 2, 70, "Details",
- CellID->401364205],
-Cell[2325, 113, 61, 2, 70, "Details",
- CellID->350204745],
-Cell[2389, 117, 63, 2, 70, "Details",
- CellID->732958810],
-Cell[2455, 121, 78, 2, 70, "Details",
- CellID->222905350],
-Cell[2536, 125, 67, 2, 70, "Details",
- CellID->240026365]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2640, 132, 57, 1, 62, "ObjectName",
- CellID->1224892054],
-Cell[2700, 135, 485, 9, 121, "Usage",
- CellID->982511436],
-Cell[3188, 146, 42, 1, 24, "Notes",
- CellID->1067943069]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3267, 152, 57, 1, 43, "TutorialsSection",
- CellID->250839057],
-Cell[3327, 155, 45, 1, 16, "Tutorials",
- CellID->341631938]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3409, 161, 83, 1, 30, "RelatedDemonstrationsSection",
- CellID->1268215905],
-Cell[3495, 164, 58, 1, 16, "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3590, 170, 65, 1, 30, "RelatedLinksSection",
- CellID->1584193535],
-Cell[3658, 173, 49, 1, 16, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3744, 179, 55, 1, 30, "SeeAlsoSection",
- CellID->1255426704],
-Cell[3802, 182, 43, 1, 16, "SeeAlso",
- CellID->929782353]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3882, 188, 57, 1, 30, "MoreAboutSection",
- CellID->38303248],
-Cell[3942, 191, 46, 1, 16, "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4025, 197, 356, 11, 69, "PrimaryExamplesSection",
- CellID->880084151],
-Cell[4384, 210, 179, 3, 22, "Text",
- CellTags->"LorentzIndex",
- CellID->2141033081],
-Cell[CellGroupData[{
-Cell[4588, 217, 205, 5, 26, "Input",
- CellTags->"LorentzIndex",
- CellID->1526768444],
-Cell[4796, 224, 227, 8, 24, "Output",
- CellTags->"LorentzIndex",
- CellID->1197436861]
-}, Open  ]],
-Cell[5038, 235, 212, 5, 23, "Text",
- CellTags->"LorentzIndex",
- CellID->1672095293],
-Cell[CellGroupData[{
-Cell[5275, 244, 253, 7, 26, "Input",
- CellTags->"LorentzIndex",
- CellID->1273197083],
-Cell[5531, 253, 228, 8, 24, "Output",
- CellTags->"LorentzIndex",
- CellID->2067526237]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5808, 267, 100, 2, 54, "ExtendedExamplesSection",
- CellTags->"ExtendedExamples",
- CellID->1854448968],
-Cell[5911, 271, 125, 3, 32, "ExampleSection",
- CellID->1293636265],
-Cell[6039, 276, 148, 3, 20, "ExampleSection",
- CellID->1020263627],
-Cell[CellGroupData[{
-Cell[6212, 283, 127, 3, 20, "ExampleSection",
- CellID->2061341341],
-Cell[6342, 288, 130, 3, 70, "ExampleSubsection",
- CellID->1757724783],
-Cell[6475, 293, 130, 3, 70, "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
-Cell[6620, 299, 131, 3, 20, "ExampleSection",
- CellID->258228157],
-Cell[6754, 304, 142, 3, 20, "ExampleSection",
- CellID->2123667759],
-Cell[6899, 309, 135, 3, 20, "ExampleSection",
- CellID->1305812373],
-Cell[7037, 314, 140, 3, 20, "ExampleSection",
- CellID->1653164318],
-Cell[7180, 319, 132, 3, 20, "ExampleSection",
- CellID->589267740]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

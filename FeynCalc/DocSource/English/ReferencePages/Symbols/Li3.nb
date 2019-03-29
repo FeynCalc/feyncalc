@@ -159,15 +159,12 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["Li2",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Li2",
   ButtonNote->"Li2"],
  "."
-}], "Text",
- CellTags->"Li3",
- CellID->1253879809]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -199,7 +196,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Li3", "[", "x", "]"}]], "Input",
  CellTags->"Li3",
- CellLabel->"In[1]:=",
+ CellLabel->"In[10]:=",
  CellID->750513892],
 
 Cell[BoxData[
@@ -207,8 +204,7 @@ Cell[BoxData[
   TemplateBox[{"3","x"},
    "PolyLog"], TraditionalForm]], "Output",
  CellTags->"Li3",
- CellLabel->"Out[1]=",
- CellID->955211084]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -216,7 +212,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Li3", "//", "StandardForm"}]], "Input",
  CellTags->"Li3",
- CellLabel->"In[2]:=",
+ CellLabel->"In[11]:=",
  CellID->1277219612],
 
 Cell[BoxData[
@@ -224,8 +220,7 @@ Cell[BoxData[
   RowBox[{"PolyLog", "[", 
    RowBox[{"3", ",", "#1"}], "]"}], "&"}]], "Output",
  CellTags->"Li3",
- CellLabel->"Out[2]//StandardForm=",
- CellID->1455650217]
+ CellLabel->"Out[11]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -235,7 +230,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Li3", "[", "x", "]"}], ",", "x"}], "]"}]], "Input",
  CellTags->"Li3",
- CellLabel->"In[3]:=",
+ CellLabel->"In[12]:=",
  CellID->918353048],
 
 Cell[BoxData[
@@ -244,8 +239,7 @@ Cell[BoxData[
    TemplateBox[{"2","x"},
     "PolyLog"], "x"], TraditionalForm]], "Output",
  CellTags->"Li3",
- CellLabel->"Out[3]=",
- CellID->749318248]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -257,7 +251,7 @@ Cell[BoxData[
     RowBox[{"Li2", "[", "x", "]"}], "x"], 
    RowBox[{"\[DifferentialD]", "x"}]}]}]], "Input",
  CellTags->"Li3",
- CellLabel->"In[4]:=",
+ CellLabel->"In[13]:=",
  CellID->85803135],
 
 Cell[BoxData[
@@ -265,8 +259,7 @@ Cell[BoxData[
   TemplateBox[{"3","x"},
    "PolyLog"], TraditionalForm]], "Output",
  CellTags->"Li3",
- CellLabel->"Out[4]=",
- CellID->460713684]
+ CellLabel->"Out[13]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -331,13 +324,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1042, Automatic}, {Automatic, 153}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

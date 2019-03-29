@@ -180,11 +180,6 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
   ButtonNote->"DiracGamma"],
  ", ",
- ButtonBox["DiracSlash",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
- ", ",
  ButtonBox["GA",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GA",
@@ -195,9 +190,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GAD",
   ButtonNote->"GAD"],
  "."
-}], "Text",
- CellTags->"GS",
- CellID->1515784011]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -229,7 +222,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GS", "[", "p", "]"}]], "Input",
  CellTags->"GS",
- CellLabel->"In[1]:=",
+ CellLabel->"In[172]:=",
  CellID->1176675883],
 
 Cell[BoxData[
@@ -242,8 +235,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GS",
- CellLabel->"Out[1]=",
- CellID->682141754]
+ CellLabel->"Out[172]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -254,15 +246,14 @@ Cell[BoxData[
    RowBox[{"GS", "[", "p", "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"GS",
- CellLabel->"In[2]:=",
+ CellLabel->"In[173]:=",
  CellID->1027241244],
 
 Cell[BoxData[
  RowBox[{"DiracGamma", "[", 
   RowBox[{"Momentum", "[", "p", "]"}], "]"}]], "Output",
  CellTags->"GS",
- CellLabel->"Out[2]//StandardForm=",
- CellID->1007084382]
+ CellLabel->"Out[173]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -271,7 +262,7 @@ Cell[BoxData[
  RowBox[{"GS", "[", 
   RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}]], "Input",
  CellTags->"GS",
- CellLabel->"In[3]:=",
+ CellLabel->"In[174]:=",
  CellID->1339265647],
 
 Cell[BoxData[
@@ -318,8 +309,7 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"GS",
- CellLabel->"Out[3]=",
- CellID->1827181467]
+ CellLabel->"Out[174]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -330,7 +320,7 @@ Cell[BoxData[
    RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"GS",
- CellLabel->"In[4]:=",
+ CellLabel->"In[175]:=",
  CellID->837744205],
 
 Cell[BoxData[
@@ -340,8 +330,7 @@ Cell[BoxData[
   RowBox[{"GS", "[", "r", "]"}], ".", 
   RowBox[{"GS", "[", "s", "]"}]}]], "Output",
  CellTags->"GS",
- CellLabel->"Out[4]//StandardForm=",
- CellID->451922065]
+ CellLabel->"Out[175]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -354,7 +343,7 @@ Cell[BoxData[
     RowBox[{"GS", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
   RowBox[{"GS", "[", "q", "]"}]}]], "Input",
  CellTags->"GS",
- CellLabel->"In[5]:=",
+ CellLabel->"In[176]:=",
  CellID->2143558790],
 
 Cell[BoxData[
@@ -392,8 +381,7 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"GS",
- CellLabel->"Out[5]=",
- CellID->373152039]
+ CellLabel->"Out[176]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -458,13 +446,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{960, Automatic}, {Automatic, 222}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

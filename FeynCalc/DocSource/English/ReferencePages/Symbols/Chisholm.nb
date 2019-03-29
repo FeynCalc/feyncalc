@@ -879,11 +879,9 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Chisholm",
   ButtonNote->"Chisholm"],
  " only works with Dirac matrices in ",
- Cell[BoxData["4"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["4"], "InlineFormula"],
  " dimensions, ",
- Cell[BoxData["D"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["D"], "InlineFormula"],
  "-dimensional objects are ignored."
 }], "Notes"],
 
@@ -2540,8 +2538,7 @@ expressions like ",
   RowBox[{
    SuperscriptBox["\[Gamma]", "\[Mu]"], 
    SuperscriptBox["\[Gamma]", "\[Nu]"], 
-   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula"],
  ". This functionality is now part of ",
  ButtonBox["Chisholm",
   BaseStyle->"Link",

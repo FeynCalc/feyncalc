@@ -186,31 +186,24 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"FeynCalc",
- CellID->1788950203],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"?", "FeynCalc"}]], "Input",
  CellTags->"FeynCalc",
- CellLabel->"In[1]:=",
+ CellLabel->"In[86]:=",
  CellID->1258876634],
 
 Cell[BoxData[
- StyleBox["\<\"For installation notes visit www.feyncalc.org\\n\\nFor a list \
-of availabe objects type $FeynCalcStuff, which contains a list of all \
-functions and options in StringForm. You can get on-line information by \
-?function, e.g. ?Contract.\\n\\nThere are several useful functions for short \
-input, type $FCS for a list of short commands. Then type, e.g., \
-?GA.\\n\\n\\nTo enable/disable start-up messages, put the \
+ StyleBox["\<\"For installation notes visit www.feyncalc.github.io. You can \
+get on-line information by ?function, e.g. ?Contract.\\n\\nThere are several \
+useful functions for short input, type $FCS for a list of short commands. \
+Then type, e.g., ?GA.\\n\\n\\nTo enable/disable start-up messages, put the \
 line\\n\\n$FeynCalcStartupMessages = \
 True;\\n\\nor\\n\\n$FeynCalcStartupMessages = False;\\n\\ninto your \
 \\\"init.m\\\" file or into your \\\"FCConfig.m\\\" file.\"\>", 
   "MSG"]], "Print", "PrintUsage",
- CellTags->{"FeynCalc", "Info-1d55ee43-67b8-4d8b-8c35-3f3a2bc368ed"},
- CellID->144621555]
+ CellTags->{"FeynCalc", "Info-d5d5947c-0e52-48a8-b6a9-37ad11b1e404"}]
 }, Open  ]]
 }, Open  ]],
 
@@ -275,13 +268,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1056, Automatic}, {Automatic, 182}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

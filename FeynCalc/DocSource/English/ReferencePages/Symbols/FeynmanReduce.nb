@@ -132,8 +132,25 @@ terms and operate on the terms one by one."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FeynmanReduce", "]"}]], "Input",
+ CellTags->"FeynmanReduce",
+ CellLabel->"In[111]:=",
+ CellID->160646569],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Flatten", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expand", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"FeynmanReduce",
+ CellLabel->"Out[111]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,8 +198,6 @@ Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  InterpretationBox[GridBox[{
     {
@@ -195,28 +210,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "FeynmanReduce", "]"}]], "Input",
- CellTags->"FeynmanReduce",
- CellLabel->"In[1]:=",
- CellID->160646569],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Flatten", "\[Rule]", "True"}], ",", 
-    RowBox[{"Expand", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"FeynmanReduce",
- CellLabel->"Out[1]=",
- CellID->968892063]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -279,13 +272,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1160, Automatic}, {Automatic, 178}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

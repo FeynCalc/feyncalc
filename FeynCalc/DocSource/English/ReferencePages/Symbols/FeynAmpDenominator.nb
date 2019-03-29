@@ -187,9 +187,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominatorSimplify",
   ButtonNote->"FeynAmpDenominatorSimplify"],
  "."
-}], "Text",
- CellTags->"FeynAmpDenominator",
- CellID->1703753966]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,12 +218,10 @@ Cell[TextData[{
  "The old way to represent standard Lorentzian propagators is to use \
 PropagatorDenominator. Here the sign of the mass term is fixed to be ",
  Cell[BoxData[
-  RowBox[{"-", "1"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"-", "1"}]], "InlineFormula"],
  " and no information on the ",
  Cell[BoxData[
-  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula"],
  "- prescription is available. Furterhmore, this way it is not possible to \
 enter eikonal propagators"
 }], "Notes"],
@@ -239,7 +235,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", 
      RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], "]"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[127]:=",
+ CellLabel->"In[16]:=",
  CellID->1348679348],
 
 Cell[BoxData[
@@ -260,7 +256,7 @@ Cell[BoxData[
       FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
     Editable->False]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[127]="]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -279,7 +275,7 @@ Cell[BoxData[
        RowBox[{"p", "-", "q"}], ",", "D"}], "]"}], ",", "m"}], "]"}]}], 
   "]"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[128]:=",
+ CellLabel->"In[17]:=",
  CellID->1096136338],
 
 Cell[BoxData[
@@ -328,7 +324,7 @@ Cell[BoxData[
        "-", $CellContext`m^2],
       Editable->False], ")"}]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[128]="]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell["\<\
@@ -347,7 +343,7 @@ Cell[BoxData[
        RowBox[{"p", ",", "D"}], "]"}], ",", "m"}], "]"}], "]"}], "//", 
    "FCE"}], "//", "StandardForm"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[130]:=",
+ CellLabel->"In[18]:=",
  CellID->1592188506],
 
 Cell[BoxData[
@@ -355,7 +351,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"p", ",", "m"}], "}"}], "]"}]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[130]//StandardForm="]
+ CellLabel->"Out[18]//StandardForm="]
 }, Open  ]],
 
 Cell["\<\
@@ -375,7 +371,7 @@ Cell[BoxData[
      RowBox[{"m", "^", "2"}]}], ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[115]:="],
+ CellLabel->"In[19]:="],
 
 Cell[BoxData[
  FormBox[
@@ -386,7 +382,7 @@ Cell[BoxData[
        SuperscriptBox["m", "2"]}],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[115]="]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell["\<\
@@ -405,7 +401,7 @@ Cell[BoxData[
     RowBox[{"m", "^", "2"}], ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[120]:="],
+ CellLabel->"In[20]:="],
 
 Cell[BoxData[
  FormBox[
@@ -416,7 +412,7 @@ Cell[BoxData[
      SuperscriptBox["m", "2"],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[120]="]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -429,7 +425,7 @@ Cell[BoxData[
      RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", "MM", ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[121]:="],
+ CellLabel->"In[21]:="],
 
 Cell[BoxData[
  FormBox[
@@ -439,7 +435,7 @@ Cell[BoxData[
        FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"","MM",
      "\"+\"",RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[121]="]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -454,7 +450,7 @@ Cell[BoxData[
      RowBox[{"q", ",", "q"}], "]"}], ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[122]:="],
+ CellLabel->"In[22]:="],
 
 Cell[BoxData[
  FormBox[
@@ -467,14 +463,13 @@ Cell[BoxData[
         FormBox["q", TraditionalForm], TraditionalForm], 2], TraditionalForm],
      "\"+\"",RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[122]="]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[TextData[{
  "One can also change the sign of the  ",
  Cell[BoxData[
-  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula"],
  "- prescription, although currently no internal functions make use of it"
 }], "Notes"],
 
@@ -491,7 +486,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"1", ",", 
       RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[123]:="],
+ CellLabel->"In[23]:="],
 
 Cell[BoxData[
  FormBox[
@@ -502,10 +497,10 @@ Cell[BoxData[
        SuperscriptBox["m", "2"]}],"\"-\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[123]="]
+ CellLabel->"Out[23]="]
 }, Open  ]],
 
-Cell["The propagator may be rised to integer or symbolic powers", "Notes"],
+Cell["The propagator may be raised to integer or symbolic powers", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -518,7 +513,7 @@ Cell[BoxData[
     RowBox[{"m", "^", "2"}], ",", 
     RowBox[{"{", 
      RowBox[{"3", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[124]:="],
+ CellLabel->"In[24]:="],
 
 Cell[BoxData[
  FormBox[
@@ -530,7 +525,7 @@ Cell[BoxData[
       SuperscriptBox["m", "2"],"\"+\"",
       RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
      "RowDefault"], "3"]], TraditionalForm]], "Output",
- CellLabel->"Out[124]="]
+ CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -545,7 +540,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{
       RowBox[{"-", "2"}], ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[125]:="],
+ CellLabel->"In[25]:="],
 
 Cell[BoxData[
  FormBox[
@@ -556,7 +551,7 @@ Cell[BoxData[
      SuperscriptBox["m", "2"],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"], "2"], TraditionalForm]], "Output",
- CellLabel->"Out[125]="]
+ CellLabel->"Out[25]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -570,7 +565,7 @@ Cell[BoxData[
     RowBox[{"m", "^", "2"}], ",", 
     RowBox[{"{", 
      RowBox[{"n", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[126]:="],
+ CellLabel->"In[26]:="],
 
 Cell[BoxData[
  FormBox[
@@ -582,7 +577,7 @@ Cell[BoxData[
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"], 
    RowBox[{"-", "n"}]], TraditionalForm]], "Output",
- CellLabel->"Out[126]="]
+ CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell["Eikonal propagators are also supported", "Notes"],
@@ -603,7 +598,7 @@ Cell[BoxData[
      RowBox[{"m", "^", "2"}]}], ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[132]:="],
+ CellLabel->"In[27]:="],
 
 Cell[BoxData[
  FormBox[
@@ -617,7 +612,7 @@ Cell[BoxData[
        SuperscriptBox["m", "2"]}],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[132]="]
+ CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -634,7 +629,7 @@ Cell[BoxData[
        RowBox[{"q", ",", "D"}], "]"}]}], "]"}], ",", "0", ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[133]:="],
+ CellLabel->"In[28]:="],
 
 Cell[BoxData[
  FormBox[
@@ -647,15 +642,14 @@ Cell[BoxData[
         FormBox["q", TraditionalForm], TraditionalForm]}],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[133]="]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[TextData[{
  "FeynCalc keeps trace of the signs of the scalar products in the eikonal \
 propagators. This is where the  ",
  Cell[BoxData[
-  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"I", " ", "\[Eta]"}]], "InlineFormula"],
  "- prescription may come handy"
 }], "Notes"],
 
@@ -674,7 +668,7 @@ Cell[BoxData[
         RowBox[{"q", ",", "D"}], "]"}]}], "]"}]}], ",", "0", ",", 
     RowBox[{"{", 
      RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[134]:="],
+ CellLabel->"In[29]:="],
 
 Cell[BoxData[
  FormBox[
@@ -687,7 +681,7 @@ Cell[BoxData[
         FormBox["q", TraditionalForm], TraditionalForm]}],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[134]="]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -705,7 +699,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"1", ",", 
       RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[135]:="],
+ CellLabel->"In[30]:="],
 
 Cell[BoxData[
  FormBox[
@@ -718,7 +712,7 @@ Cell[BoxData[
         FormBox["q", TraditionalForm], TraditionalForm]}],"\"-\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellLabel->"Out[135]="]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell["\<\
@@ -742,7 +736,7 @@ Cell[BoxData[
        RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}], "//", "FCE"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FeynAmpDenominator",
- CellLabel->"In[136]:=",
+ CellLabel->"In[31]:=",
  CellID->484409356],
 
 Cell[BoxData[
@@ -756,7 +750,7 @@ Cell[BoxData[
       SuperscriptBox["m", "2"], ",", "1"}], "}"}], ",", "1"}], "}"}], 
   "]"}]], "Output",
  CellTags->"FeynAmpDenominator",
- CellLabel->"Out[136]//StandardForm="]
+ CellLabel->"Out[31]//StandardForm="]
 }, Open  ]],
 
 Cell["\<\
@@ -783,7 +777,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"1", ",", "1"}], "}"}]}], "]"}], "]"}], "//", "FCE"}], "//", 
   "StandardForm"}]], "Input",
- CellLabel->"In[137]:="],
+ CellLabel->"In[32]:="],
 
 Cell[BoxData[
  RowBox[{"SFAD", "[", 
@@ -796,7 +790,7 @@ Cell[BoxData[
      RowBox[{
       SuperscriptBox["m", "2"], ",", "1"}], "}"}], ",", "1"}], "}"}], 
   "]"}]], "Output",
- CellLabel->"Out[137]//StandardForm="]
+ CellLabel->"Out[32]//StandardForm="]
 }, Open  ]],
 
 Cell["\<\

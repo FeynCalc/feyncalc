@@ -185,29 +185,23 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox[\"Tr\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/Tr\",
-  ButtonNote->\"Tr\"],
- \", \",
- ButtonBox[\"$BreitMaison\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/$BreitMaison\",
-  ButtonNote->\"$BreitMaison\"],
- \", \",
- ButtonBox[\"West\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/West\",
-  ButtonNote->\"West\"],
- \".\"
-}], \"Text\",
- CellTags->\"$Larin\",
- CellID->181403197]\
-\>"], "Text",
- CellTags->"$Larin",
- CellID->181403197]
+ ButtonBox["Tr",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Tr",
+  ButtonNote->"Tr"],
+ ", ",
+ ButtonBox["$BreitMaison",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/$BreitMaison",
+  ButtonNote->"$BreitMaison"],
+ ", ",
+ ButtonBox["West",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/West",
+  ButtonNote->"West"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -233,10 +227,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell["Examples", "Subsubsection",
- CellTags->"$Larin",
- CellID->1690224764],
 
 Cell[CellGroupData[{
 
@@ -320,7 +310,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

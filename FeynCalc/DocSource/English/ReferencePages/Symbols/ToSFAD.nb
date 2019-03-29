@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     15000,        593]
-NotebookOptionsPosition[     10248,        422]
-NotebookOutlinePosition[     10862,        446]
-CellTagsIndexPosition[     10783,        441]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -142,14 +123,12 @@ FeynAmpDenmoninator[...,PropagatorDenominator[...],...] to SFAD or \
 FeynAmpDenmoninator[...,StandardPropagatorDenominator[...],...] \
 respectively."
 }], "Usage",
- CellChangeTimes->{{3.761628584202655*^9, 3.7616285899552402`*^9}},
  CellID->982511436],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "ToSFAD", "]"}]], "Input",
- CellChangeTimes->{{3.761628609735557*^9, 3.761628613089355*^9}},
  CellLabel->"In[236]:=",
  CellID->180907155],
 
@@ -157,7 +136,6 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"EtaSign", "\[Rule]", "1"}], "}"}], TraditionalForm]], "Output",
- CellChangeTimes->{3.761628614908835*^9},
  CellLabel->"Out[236]=",
  CellID->1656373949]
 }, Open  ]]
@@ -229,8 +207,7 @@ Cell[BoxData[{
  RowBox[{"ToSFAD", "[", 
   RowBox[{"FAD", "[", "p", "]"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"%", "//", "StandardForm"}]}], "Input",
- CellChangeTimes->{{3.761628715134458*^9, 3.7616287395753107`*^9}},
- CellLabel->"In[240]:=",
+ CellLabel->"In[1]:=",
  CellID->1857913877],
 
 Cell[BoxData[
@@ -241,9 +218,8 @@ Cell[BoxData[
        FormBox["p", TraditionalForm], TraditionalForm], 2],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellChangeTimes->{{3.7616287168219223`*^9, 3.76162873987162*^9}},
- CellLabel->"Out[240]=",
- CellID->787673503],
+ CellLabel->"Out[1]=",
+ CellID->1578335482],
 
 Cell[BoxData[
  RowBox[{"SFAD", "[", 
@@ -253,9 +229,8 @@ Cell[BoxData[
      RowBox[{"p", ",", "0"}], "}"}], ",", 
     RowBox[{"{", 
      RowBox[{"0", ",", "1"}], "}"}], ",", "1"}], "}"}], "]"}]], "Output",
- CellChangeTimes->{{3.7616287168219223`*^9, 3.761628739874144*^9}},
- CellLabel->"Out[241]//StandardForm=",
- CellID->1967807575]
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->1388339789]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -266,8 +241,7 @@ Cell[BoxData[{
    RowBox[{"{", 
     RowBox[{"p", ",", "m"}], "}"}], "]"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"%", "//", "StandardForm"}]}], "Input",
- CellChangeTimes->{{3.761628720272366*^9, 3.76162874465277*^9}},
- CellLabel->"In[242]:=",
+ CellLabel->"In[3]:=",
  CellID->487294439],
 
 Cell[BoxData[
@@ -279,9 +253,8 @@ Cell[BoxData[
        SuperscriptBox["m", "2"]}],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- CellChangeTimes->{{3.761628723857048*^9, 3.761628745017166*^9}},
- CellLabel->"Out[242]=",
- CellID->1809519416],
+ CellLabel->"Out[3]=",
+ CellID->1666061286],
 
 Cell[BoxData[
  RowBox[{"SFAD", "[", 
@@ -293,9 +266,8 @@ Cell[BoxData[
      RowBox[{
       SuperscriptBox["m", "2"], ",", "1"}], "}"}], ",", "1"}], "}"}], 
   "]"}]], "Output",
- CellChangeTimes->{{3.761628723857048*^9, 3.7616287450189867`*^9}},
- CellLabel->"Out[243]//StandardForm=",
- CellID->398356736]
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->904185419]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -308,8 +280,7 @@ Cell[BoxData[{
      RowBox[{"p", "+", "q"}], ",", "m", ",", "2"}], "}"}], "]"}], 
   "]"}], "\[IndentingNewLine]", 
  RowBox[{"%", "//", "StandardForm"}]}], "Input",
- CellChangeTimes->{{3.7616287278404512`*^9, 3.761628746396756*^9}},
- CellLabel->"In[244]:=",
+ CellLabel->"In[5]:=",
  CellID->2042326245],
 
 Cell[BoxData[
@@ -330,9 +301,8 @@ Cell[BoxData[
         SuperscriptBox["m", "2"]}],"\"+\"",
       RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
      "RowDefault"], "2"]], TraditionalForm]], "Output",
- CellChangeTimes->{{3.761628730069281*^9, 3.761628746783643*^9}},
- CellLabel->"Out[244]=",
- CellID->561425149],
+ CellLabel->"Out[5]=",
+ CellID->1069233690],
 
 Cell[BoxData[
  RowBox[{"SFAD", "[", 
@@ -354,9 +324,8 @@ Cell[BoxData[
       RowBox[{
        SuperscriptBox["m", "2"], ",", "1"}], "}"}], ",", "1"}], "}"}]}], 
   "]"}]], "Output",
- CellChangeTimes->{{3.761628730069281*^9, 3.7616287467859173`*^9}},
- CellLabel->"Out[245]//StandardForm=",
- CellID->216903453]
+ CellLabel->"Out[6]//StandardForm=",
+ CellID->627635075]
 }, Open  ]]
 }, Open  ]],
 
@@ -421,182 +390,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{552, Automatic}, {29, Automatic}},
+WindowMargins->{{860, Automatic}, {Automatic, 199}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
+TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "ExtendedExamples"->{
-  Cell[8728, 364, 100, 2, 54, "ExtendedExamplesSection",
-   CellTags->"ExtendedExamples",
-   CellID->1854448968]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"ExtendedExamples", 10645, 434}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 24, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 79, 2, 70, "Categorization",
- CellID->686433507],
-Cell[1061, 45, 81, 2, 70, "Categorization",
- CellID->605800465],
-Cell[1145, 49, 78, 2, 70, "Categorization",
- CellID->468444828],
-Cell[1226, 53, 64, 1, 70, "Categorization"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1327, 59, 55, 1, 18, "KeywordsSection",
- CellID->477174294],
-Cell[1385, 62, 45, 1, 70, "Keywords",
- CellID->1164421360]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1467, 68, 65, 1, 18, "TemplatesSection",
- CellID->1872225408],
-Cell[1535, 71, 94, 2, 70, "Template",
- CellID->1562036412],
-Cell[1632, 75, 82, 2, 70, "Template",
- CellID->158391909],
-Cell[1717, 79, 81, 2, 70, "Template",
- CellID->1360575930],
-Cell[1801, 83, 82, 2, 70, "Template",
- CellID->793782254]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1920, 90, 53, 1, 18, "DetailsSection",
- CellID->307771771],
-Cell[1976, 93, 63, 2, 70, "Details",
- CellID->670882175],
-Cell[2042, 97, 69, 2, 70, "Details",
- CellID->350963985],
-Cell[2114, 101, 64, 2, 70, "Details",
- CellID->8391405],
-Cell[2181, 105, 69, 2, 70, "Details",
- CellID->3610269],
-Cell[2253, 109, 61, 2, 70, "Details",
- CellID->401364205],
-Cell[2317, 113, 61, 2, 70, "Details",
- CellID->350204745],
-Cell[2381, 117, 63, 2, 70, "Details",
- CellID->732958810],
-Cell[2447, 121, 78, 2, 70, "Details",
- CellID->222905350],
-Cell[2528, 125, 67, 2, 70, "Details",
- CellID->240026365]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2632, 132, 49, 1, 62, "ObjectName",
- CellID->1224892054],
-Cell[2684, 135, 440, 10, 105, "Usage",
- CellID->982511436],
-Cell[CellGroupData[{
-Cell[3149, 149, 176, 4, 26, "Input",
- CellID->180907155],
-Cell[3328, 155, 203, 6, 26, "Output",
- CellID->1656373949]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3580, 167, 57, 1, 43, "TutorialsSection",
- CellID->250839057],
-Cell[3640, 170, 45, 1, 16, "Tutorials",
- CellID->341631938]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3722, 176, 83, 1, 30, "RelatedDemonstrationsSection",
- CellID->1268215905],
-Cell[3808, 179, 58, 1, 16, "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[3903, 185, 65, 1, 30, "RelatedLinksSection",
- CellID->1584193535],
-Cell[3971, 188, 49, 1, 16, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4057, 194, 55, 1, 30, "SeeAlsoSection",
- CellID->1255426704],
-Cell[4115, 197, 43, 1, 16, "SeeAlso",
- CellID->929782353]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4195, 203, 57, 1, 30, "MoreAboutSection",
- CellID->38303248],
-Cell[4255, 206, 46, 1, 16, "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4338, 212, 356, 11, 69, "PrimaryExamplesSection",
- CellID->880084151],
-Cell[CellGroupData[{
-Cell[4719, 227, 267, 6, 46, "Input",
- CellID->1857913877],
-Cell[4989, 235, 387, 10, 50, "Output",
- CellID->787673503],
-Cell[5379, 247, 345, 10, 25, "Output",
- CellID->1967807575]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5761, 262, 312, 8, 46, "Input",
- CellID->487294439],
-Cell[6076, 272, 435, 11, 50, "Output",
- CellID->1809519416],
-Cell[6514, 285, 375, 12, 31, "Output",
- CellID->398356736]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6926, 302, 355, 10, 46, "Input",
- CellID->2042326245],
-Cell[7284, 314, 737, 20, 50, "Output",
- CellID->561425149],
-Cell[8024, 336, 655, 22, 31, "Output",
- CellID->216903453]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8728, 364, 100, 2, 54, "ExtendedExamplesSection",
- CellTags->"ExtendedExamples",
- CellID->1854448968],
-Cell[8831, 368, 125, 3, 32, "ExampleSection",
- CellID->1293636265],
-Cell[8959, 373, 148, 3, 20, "ExampleSection",
- CellID->1020263627],
-Cell[CellGroupData[{
-Cell[9132, 380, 127, 3, 20, "ExampleSection",
- CellID->2061341341],
-Cell[9262, 385, 130, 3, 70, "ExampleSubsection",
- CellID->1757724783],
-Cell[9395, 390, 130, 3, 70, "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
-Cell[9540, 396, 131, 3, 20, "ExampleSection",
- CellID->258228157],
-Cell[9674, 401, 142, 3, 20, "ExampleSection",
- CellID->2123667759],
-Cell[9819, 406, 135, 3, 20, "ExampleSection",
- CellID->1305812373],
-Cell[9957, 411, 140, 3, 20, "ExampleSection",
- CellID->1653164318],
-Cell[10100, 416, 132, 3, 20, "ExampleSection",
- CellID->589267740]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

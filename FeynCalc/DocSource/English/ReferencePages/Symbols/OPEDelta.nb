@@ -165,9 +165,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Twist2QuarkOperator",
   ButtonNote->"Twist2QuarkOperator"],
  "."
-}], "Text",
- CellTags->"OPEDelta",
- CellID->1239185621]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -197,10 +195,10 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FourVector", "[", 
+ RowBox[{"FV", "[", 
   RowBox[{"OPEDelta", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"OPEDelta",
- CellLabel->"In[1]:=",
+ CellLabel->"In[29]:=",
  CellID->82705691],
 
 Cell[BoxData[
@@ -211,14 +209,11 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm], 
    FormBox[
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
+    FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"OPEDelta",
- CellLabel->"Out[1]=",
- CellID->568278769]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,19 +222,13 @@ Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{"%", " ", "%"}], "]"}]], "Input",
  CellTags->"OPEDelta",
- CellLabel->"In[2]:=",
+ CellLabel->"In[30]:=",
  CellID->1662840966],
 
 Cell[BoxData[
- FormBox[
-  SuperscriptBox[
-   FormBox[
-    FormBox["\[CapitalDelta]",
-     TraditionalForm],
-    TraditionalForm], "2"], TraditionalForm]], "Output",
+ FormBox["0", TraditionalForm]], "Output",
  CellTags->"OPEDelta",
- CellLabel->"Out[2]=",
- CellID->1005702488]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -248,19 +237,13 @@ Cell[BoxData[
  RowBox[{"SP", "[", 
   RowBox[{"OPEDelta", ",", "OPEDelta"}], "]"}]], "Input",
  CellTags->"OPEDelta",
- CellLabel->"In[3]:=",
+ CellLabel->"In[31]:=",
  CellID->766618795],
 
 Cell[BoxData[
- FormBox[
-  SuperscriptBox[
-   FormBox[
-    FormBox["\[CapitalDelta]",
-     TraditionalForm],
-    TraditionalForm], "2"], TraditionalForm]], "Output",
+ FormBox["0", TraditionalForm]], "Output",
  CellTags->"OPEDelta",
- CellLabel->"Out[3]=",
- CellID->1002463011]
+ CellLabel->"Out[31]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -331,7 +314,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

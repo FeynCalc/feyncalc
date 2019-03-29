@@ -119,19 +119,16 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"DiracOrder", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]orders the Dirac matrices in ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " lexicographically.\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"DiracOrder", "[", 
    RowBox[{"exp", ",", " ", "orderlist"}], "]"}]], "InlineFormula"],
  " \[LineSeparator] orders the Dirac matrices in ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " according to ",
- Cell[BoxData["orderlist"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["orderlist"], "InlineFormula"],
  "."
 }], "Usage",
  CellID->2090318364],
@@ -415,8 +412,7 @@ Cell[BoxData[
 Cell[TextData[{
  "By default ",
  Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " is moved to the right."
 }], "Notes"],
 
@@ -558,8 +554,7 @@ Cell[BoxData[
   $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[TextData[{
- Cell[BoxData["orderlist"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["orderlist"], "InlineFormula"],
  " comes into play when we need an ordering that is not lexicographic"
 }], "Notes"],
 

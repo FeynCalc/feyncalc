@@ -163,8 +163,29 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell["\<\
+The shortcut DiracMatrix is deprecated, please use GA instead!\
+\>", "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracMatrix", "]"}]], "Input",
+ CellTags->"DiracMatrix",
+ CellLabel->"In[322]:=",
+ CellID->1215792887],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"DiracMatrix",
+ CellLabel->"Out[322]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -200,54 +221,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["DiracGammaExpand",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
-  ButtonNote->"DiracGammaExpand"],
- ", ",
- ButtonBox["DiracGamma",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
-  ButtonNote->"DiracGamma"],
- ", ",
- ButtonBox["DiracSimplify",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- ", ",
- ButtonBox["DiracSlash",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
- ", ",
- ButtonBox["DiracTrick",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
-  ButtonNote->"DiracTrick"],
- ", ",
  ButtonBox["GA",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GA",
   ButtonNote->"GA"],
  ", ",
- ButtonBox["GAD",
+ ButtonBox["FCI",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/GAD",
-  ButtonNote->"GAD"],
- ", ",
- ButtonBox["GS",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/GS",
-  ButtonNote->"GS"],
- ", ",
- ButtonBox["GSD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/GSD",
-  ButtonNote->"GSD"],
+  ButtonData:>"paclet:FeynCalc/ref/FCI",
+  ButtonNote->"FCI"],
  "."
-}], "Text",
- CellTags->"DiracMatrix",
- CellID->703033103]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -277,29 +261,9 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "DiracMatrix", "]"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[1]:=",
- CellID->1215792887],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[1]=",
- CellID->462215683]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}]], "Input",
  CellTags->"DiracMatrix",
- CellLabel->"In[2]:=",
+ CellLabel->"In[323]:=",
  CellID->888527237],
 
 Cell[BoxData[
@@ -311,19 +275,15 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"DiracMatrix",
- CellLabel->"Out[2]=",
- CellID->1128455616]
+ CellLabel->"Out[323]="]
 }, Open  ]],
 
 Cell[TextData[{
- "This is how to enter the non-commutative product of two ",
- Cell[BoxData[
-  FormBox["Null", TraditionalForm]]],
- ". The ",
+ "This is how to enter the non-commutative product of two. The ",
  StyleBox["Mathematica",
   FontSlant->"Italic"],
  " Dot \".\" is used as non-commutative multiplication operator."
-}], "Text",
+}], "Notes",
  CellTags->"DiracMatrix",
  CellID->477550014],
 
@@ -334,7 +294,7 @@ Cell[BoxData[
   RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}], ".", 
   RowBox[{"DiracMatrix", "[", "\[Nu]", "]"}]}]], "Input",
  CellTags->"DiracMatrix",
- CellLabel->"In[3]:=",
+ CellLabel->"In[324]:=",
  CellID->216003987],
 
 Cell[BoxData[
@@ -353,8 +313,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"DiracMatrix",
- CellLabel->"Out[3]=",
- CellID->527384282]
+ CellLabel->"Out[324]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -364,25 +323,26 @@ Cell[BoxData[
   RowBox[{"DiracMatrix", "[", "\[Alpha]", "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"DiracMatrix",
- CellLabel->"In[4]:=",
+ CellLabel->"In[328]:=",
  CellID->1775640770],
 
 Cell[BoxData[
  RowBox[{"DiracGamma", "[", 
   RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], "]"}]], "Output",
  CellTags->"DiracMatrix",
- CellLabel->"Out[4]//StandardForm=",
- CellID->209169397]
+ CellLabel->"Out[328]//StandardForm="]
 }, Open  ]],
+
+Cell["\<\
+DiracMatrix is scheduled for removal in the future versions of FeynCalc. The \
+safe alternative is to use GA.\
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}], "//", "FCE"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[5]:=",
- CellID->1489042033],
+ RowBox[{"GA", "[", "\[Mu]", "]"}]], "Input",
+ CellLabel->"In[337]:="],
 
 Cell[BoxData[
  FormBox[
@@ -392,33 +352,14 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[5]=",
- CellID->1529249901]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[6]:=",
- CellID->80209945],
-
-Cell[BoxData[
- RowBox[{"GA", "[", "\[Mu]", "]"}]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1573455068]
+ CellLabel->"Out[337]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"GAD", "[", "\[Mu]", "]"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[7]:=",
- CellID->512840116],
+ CellLabel->"In[338]:="],
 
 Cell[BoxData[
  FormBox[
@@ -427,118 +368,37 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[7]=",
- CellID->999762340]
+ CellLabel->"Out[338]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[8]:=",
- CellID->1503246496],
+  RowBox[{"FCI", "[", 
+   RowBox[{"GA", "[", "\[Mu]", "]"}], "]"}], "===", 
+  RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}]}]], "Input",
+ CellLabel->"In[339]:="],
 
 Cell[BoxData[
- RowBox[{"DiracGamma", "[", 
-  RowBox[{
-   RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", "D"}], "]"}]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[8]//StandardForm=",
- CellID->1842955890]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"GA", "[", 
-  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[9]:=",
- CellID->1134451921],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox[
-      FormBox["\[Nu]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], ".", 
-   FormBox[
-    SuperscriptBox[
-     OverscriptBox["\[Gamma]", "_"], 
-     FormBox[
-      FormBox["\[Rho]",
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[9]=",
- CellID->625741566]
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[339]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"GA", "[", 
-   RowBox[{"a", " ", ".", " ", "b"}], "]"}], "//", "FCI"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[10]:=",
- CellID->241194804],
+  RowBox[{"FCI", "[", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], "]"}], "===", 
+  RowBox[{"DiracMatrix", "[", 
+   RowBox[{"\[Mu]", ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]}]], "Input",
+ CellLabel->"In[340]:="],
 
 Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["a",
-      TraditionalForm],
-     TraditionalForm]], ".", 
-   SuperscriptBox[
-    OverscriptBox["\[Gamma]", "_"], 
-    FormBox[
-     FormBox["b",
-      TraditionalForm],
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[10]=",
- CellID->1051855483]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"DiracMatrix",
- CellLabel->"In[11]:=",
- CellID->256970123],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"LorentzIndex", "[", "a", "]"}], "]"}], ".", 
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"LorentzIndex", "[", "b", "]"}], "]"}]}]], "Output",
- CellTags->"DiracMatrix",
- CellLabel->"Out[11]//StandardForm=",
- CellID->94050778]
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[340]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -602,14 +462,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowSize->{905, 910},
+WindowMargins->{{Automatic, 1292}, {164, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -132,8 +132,34 @@ dropped and even factors are replaced according to Itzykson&Zuber (8-117)."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FeynmanParametrize1", "]"}]], "Input",
+ CellTags->"FeynmanParametrize1",
+ CellLabel->"In[110]:=",
+ CellID->1362836429],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynmanParameterNames", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FCGV", "(", "\<\"a\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"b\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"c\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"d\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"e\"\>", ")"}]}], "}"}]}], ",", 
+    RowBox[{"Method", "\[Rule]", "Denominator"}], ",", 
+    RowBox[{"Integrate", "\[Rule]", "True"}], ",", 
+    RowBox[{"Flatten", "\[Rule]", "True"}], ",", 
+    RowBox[{"CompleteSquare", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"FeynmanParametrize1",
+ CellLabel->"Out[110]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,8 +207,6 @@ Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  InterpretationBox[GridBox[{
     {
@@ -195,37 +219,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "FeynmanParametrize1", "]"}]], "Input",
- CellTags->"FeynmanParametrize1",
- CellLabel->"In[1]:=",
- CellID->1362836429],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"FeynmanParameterNames", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"a\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"b\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"c\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"d\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"e\"\>", ")"}]}], "}"}]}], ",", 
-    RowBox[{"Method", "\[Rule]", "Denominator"}], ",", 
-    RowBox[{"Integrate", "\[Rule]", "True"}], ",", 
-    RowBox[{"Flatten", "\[Rule]", "True"}], ",", 
-    RowBox[{"CompleteSquare", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"FeynmanParametrize1",
- CellLabel->"Out[1]=",
- CellID->1384736852]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -288,13 +281,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1099, Automatic}, {Automatic, 117}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

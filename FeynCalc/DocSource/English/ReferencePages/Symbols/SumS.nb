@@ -178,8 +178,22 @@ Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s], {k, 1, n}, {j, 1, k}] etc."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SumS", "]"}]], "Input",
+ CellTags->"SumS",
+ CellLabel->"In[8]:=",
+ CellID->2012785240],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Reduce", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
+ 
+ CellTags->"SumS",
+ CellLabel->"Out[8]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -225,9 +239,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SumT",
   ButtonNote->"SumT"],
  "."
-}], "Text",
- CellTags->"SumS",
- CellID->1388374666]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -257,29 +269,11 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "SumS", "]"}]], "Input",
- CellTags->"SumS",
- CellLabel->"In[1]:=",
- CellID->2012785240],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Reduce", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
- 
- CellTags->"SumS",
- CellLabel->"Out[1]=",
- CellID->35078957]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"SumS", "[", 
   RowBox[{"1", ",", 
    RowBox[{"m", "-", "1"}]}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->632054675],
 
 Cell[BoxData[
@@ -290,8 +284,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[2]=",
- CellID->1556413384]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -301,7 +294,7 @@ Cell[BoxData[
   RowBox[{"2", ",", 
    RowBox[{"m", "-", "1"}]}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1183001998],
 
 Cell[BoxData[
@@ -312,8 +305,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[3]=",
- CellID->1711872116]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -323,7 +315,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"-", "1"}], ",", "m"}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->601997566],
 
 Cell[BoxData[
@@ -334,8 +326,7 @@ Cell[BoxData[
    FormBox["m",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[4]=",
- CellID->1598419711]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -345,7 +336,7 @@ Cell[BoxData[
   RowBox[{"1", ",", "m", ",", 
    RowBox[{"Reduce", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->1985675154],
 
 Cell[BoxData[
@@ -358,8 +349,7 @@ Cell[BoxData[
      TraditionalForm], ")"}], "+", 
    FractionBox["1", "m"]}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[5]=",
- CellID->1232098786]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,7 +360,7 @@ Cell[BoxData[
    RowBox[{"m", "+", "2"}], ",", 
    RowBox[{"Reduce", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[6]:=",
+ CellLabel->"In[5]:=",
  CellID->723810100],
 
 Cell[BoxData[
@@ -386,8 +376,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"m", "+", "2"}], ")"}], "3"]]}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[6]=",
- CellID->378956112]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -396,7 +385,7 @@ Cell[BoxData[
    RowBox[{"SumS", ",", 
     RowBox[{"Reduce", "\[Rule]", "True"}]}], "]"}], ";"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[7]:=",
+ CellLabel->"In[6]:=",
  CellID->1121632488],
 
 Cell[CellGroupData[{
@@ -406,7 +395,7 @@ Cell[BoxData[
   RowBox[{"3", ",", 
    RowBox[{"m", "+", "2"}]}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->663420944],
 
 Cell[BoxData[
@@ -428,8 +417,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"m", "+", "2"}], ")"}], "3"]]}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[8]=",
- CellID->1687595925]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -438,7 +426,7 @@ Cell[BoxData[
    RowBox[{"SumS", ",", 
     RowBox[{"Reduce", "\[Rule]", "False"}]}], "]"}], ";"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[9]:=",
+ CellLabel->"In[8]:=",
  CellID->1754340999],
 
 Cell[CellGroupData[{
@@ -447,15 +435,14 @@ Cell[BoxData[
  RowBox[{"SumS", "[", 
   RowBox[{"1", ",", "4"}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[10]:=",
+ CellLabel->"In[9]:=",
  CellID->913193894],
 
 Cell[BoxData[
  FormBox[
   FractionBox["25", "12"], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[10]=",
- CellID->205548473]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -466,15 +453,14 @@ Cell[BoxData[
    RowBox[{"i", "=", "1"}], "4"], 
   RowBox[{"1", "/", "i"}]}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->1966406647],
 
 Cell[BoxData[
  FormBox[
   FractionBox["25", "12"], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[11]=",
- CellID->1412895147]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -484,7 +470,7 @@ Cell[BoxData[
   RowBox[{"1", ",", "2", ",", 
    RowBox[{"m", "-", "1"}]}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[12]:=",
+ CellLabel->"In[11]:=",
  CellID->1336627111],
 
 Cell[BoxData[
@@ -495,8 +481,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[12]=",
- CellID->18182330]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -505,7 +490,7 @@ Cell[BoxData[
  RowBox[{"SumS", "[", 
   RowBox[{"1", ",", "1", ",", "1", ",", "11"}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[13]:=",
+ CellLabel->"In[12]:=",
  CellID->796483207],
 
 Cell[BoxData[
@@ -513,8 +498,7 @@ Cell[BoxData[
   FractionBox["31276937512951", "4260000729600"], TraditionalForm]], "Output",
  
  CellTags->"SumS",
- CellLabel->"Out[13]=",
- CellID->2038617627]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -524,7 +508,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"-", "1"}], ",", "4"}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[14]:=",
+ CellLabel->"In[13]:=",
  CellID->324759887],
 
 Cell[BoxData[
@@ -532,8 +516,7 @@ Cell[BoxData[
   RowBox[{"-", 
    FractionBox["7", "12"]}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[14]=",
- CellID->549106078]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -542,7 +525,7 @@ Cell[BoxData[
  RowBox[{"SumT", "[", 
   RowBox[{"1", ",", "4"}], "]"}]], "Input",
  CellTags->"SumS",
- CellLabel->"In[15]:=",
+ CellLabel->"In[14]:=",
  CellID->857412373],
 
 Cell[BoxData[
@@ -550,8 +533,7 @@ Cell[BoxData[
   RowBox[{"-", 
    FractionBox["7", "12"]}], TraditionalForm]], "Output",
  CellTags->"SumS",
- CellLabel->"Out[15]=",
- CellID->1019405443]
+ CellLabel->"Out[14]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -616,13 +598,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{746, Automatic}, {Automatic, 155}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

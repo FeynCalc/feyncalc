@@ -125,8 +125,18 @@ FeynCalc internal form is performed by FeynCalcInternal."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FAD", "]"}]], "Input",
+ CellLabel->"In[751]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Dimension", "\[Rule]", "D"}], "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[751]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -192,9 +202,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PropagatorDenominator",
   ButtonNote->"PropagatorDenominator"],
  "."
-}], "Text",
- CellTags->"FAD",
- CellID->92528208]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -228,7 +236,7 @@ Cell[BoxData[
   RowBox[{"q", ",", 
    RowBox[{"p", "-", "q"}]}], "]"}]], "Input",
  CellTags->"FAD",
- CellLabel->"In[165]:=",
+ CellLabel->"In[746]:=",
  CellID->1136569018],
 
 Cell[BoxData[
@@ -268,7 +276,7 @@ Cell[BoxData[
        FeynCalc`Momentum[$CellContext`p - $CellContext`q, D]]],
      Editable->False]}]], TraditionalForm]], "Output",
  CellTags->"FAD",
- CellLabel->"Out[165]="]
+ CellLabel->"Out[746]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -280,7 +288,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"p", "-", "q"}], ",", "m"}], "}"}]}], "]"}]], "Input",
  CellTags->"FAD",
- CellLabel->"In[166]:=",
+ CellLabel->"In[747]:=",
  CellID->1430394635],
 
 Cell[BoxData[
@@ -325,7 +333,7 @@ Cell[BoxData[
        "-", $CellContext`m^2],
       Editable->False], ")"}]}]], TraditionalForm]], "Output",
  CellTags->"FAD",
- CellLabel->"Out[166]="]
+ CellLabel->"Out[747]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -338,7 +346,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{
      RowBox[{"p", "-", "q"}], ",", "m", ",", "3"}], "}"}]}], "]"}]], "Input",
- CellLabel->"In[173]:="],
+ CellLabel->"In[748]:="],
 
 Cell[BoxData[
  FormBox[
@@ -384,7 +392,7 @@ Cell[BoxData[
          FeynCalc`Momentum[$CellContext`p - $CellContext`q, D]], 
         "-", $CellContext`m^2],
        Editable->False], ")"}], "3"]}]], TraditionalForm]], "Output",
- CellLabel->"Out[173]="]
+ CellLabel->"Out[748]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -397,7 +405,7 @@ Cell[BoxData[
      RowBox[{"p", "-", "q"}]}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FAD",
- CellLabel->"In[169]:=",
+ CellLabel->"In[749]:=",
  CellID->2024009960],
 
 Cell[BoxData[
@@ -415,7 +423,7 @@ Cell[BoxData[
       RowBox[{"Momentum", "[", 
        RowBox[{"q", ",", "D"}], "]"}]}], ",", "0"}], "]"}]}], "]"}]], "Output",
  CellTags->"FAD",
- CellLabel->"Out[169]//StandardForm="]
+ CellLabel->"Out[749]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -433,7 +441,7 @@ Cell[BoxData[
       RowBox[{"FCE", "\[Rule]", "True"}]}], "]"}], "&"}]}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FAD",
- CellLabel->"In[172]:=",
+ CellLabel->"In[750]:=",
  CellID->844291899],
 
 Cell[BoxData[
@@ -441,7 +449,7 @@ Cell[BoxData[
   RowBox[{"p", ",", 
    RowBox[{"p", "-", "q"}]}], "]"}]], "Output",
  CellTags->"FAD",
- CellLabel->"Out[172]//StandardForm="]
+ CellLabel->"Out[750]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 

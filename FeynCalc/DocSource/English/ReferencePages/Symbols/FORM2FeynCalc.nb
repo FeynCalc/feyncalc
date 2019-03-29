@@ -119,15 +119,13 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FORM2FeynCalc", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]translates the FORM ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " into FeynCalc notation.\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"FORM2FeynCalc", "[", "file", "]"}]], "InlineFormula"],
  " \[LineSeparator] translates the FORM expresssions in ",
- Cell[BoxData["file"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["file"], "InlineFormula"],
  " into FeynCalc notation.\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
@@ -137,25 +135,20 @@ Cell[TextData[{
  " \[LineSeparator]reads in a file in FORM-format and translates the \
 assignments for the variables ",
  Cell[BoxData[
-  RowBox[{"a", ",", " ", "b", ",", " ", "..."}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"a", ",", " ", "b", ",", " ", "..."}]], "InlineFormula"],
  " into FeynCalc syntax."
 }], "Usage",
  CellID->2010081510],
 
 Cell[TextData[{
  "If the option ",
- Cell[BoxData["Set"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["Set"], "InlineFormula"],
  " is ",
- Cell[BoxData["True"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["True"], "InlineFormula"],
  ", the variables ",
- Cell[BoxData["x1"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["x1"], "InlineFormula"],
  ", ",
- Cell[BoxData["x2"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["x2"], "InlineFormula"],
  " are assigned to the right hand sides defined in the FORM-file."
 }], "Notes"],
 

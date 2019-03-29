@@ -126,8 +126,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{
    RowBox[{"val1", " ", "=", " ", "expr1"}], ",", " ", 
-   RowBox[{"val2", " ", "=", " ", "expr2"}]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   RowBox[{"val2", " ", "=", " ", "expr2"}]}]], "InlineFormula"],
  " in sequence followed by a newline, to the specified output file."
 }], "Usage",
  CellID->982511436],
@@ -502,8 +501,7 @@ Cell[BoxData[
 
 Cell[TextData[{
  "This is how to write out the expression ",
- Cell[BoxData["t2"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["t2"], "InlineFormula"],
  " in Fortran format."
 }], "Notes"],
 

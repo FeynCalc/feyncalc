@@ -179,9 +179,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNSimplify",
   ButtonNote->"SUNSimplify"],
  "."
-}], "Text",
- CellTags->"CF",
- CellID->856648073]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -212,15 +210,14 @@ Cell[CellGroupData[{
 
 Cell[BoxData["CF"], "Input",
  CellTags->"CF",
- CellLabel->"In[1]:=",
+ CellLabel->"In[99]:=",
  CellID->606616156],
 
 Cell[BoxData[
  FormBox[
   SubscriptBox["C", "F"], TraditionalForm]], "Output",
  CellTags->"CF",
- CellLabel->"Out[1]=",
- CellID->1771246704]
+ CellLabel->"Out[99]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -230,7 +227,7 @@ Cell[BoxData[
   RowBox[{"CF", ",", " ", 
    RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"CF",
- CellLabel->"In[2]:=",
+ CellLabel->"In[100]:=",
  CellID->943993167],
 
 Cell[BoxData[
@@ -240,22 +237,20 @@ Cell[BoxData[
     SuperscriptBox["N", "2"], "-", "1"}], 
    RowBox[{"2", " ", "N"}]], TraditionalForm]], "Output",
  CellTags->"CF",
- CellLabel->"Out[2]=",
- CellID->1827752058]
+ CellLabel->"Out[100]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData["SUNN"], "Input",
  CellTags->"CF",
- CellLabel->"In[3]:=",
+ CellLabel->"In[101]:=",
  CellID->721736691],
 
 Cell[BoxData[
  FormBox["N", TraditionalForm]], "Output",
  CellTags->"CF",
- CellLabel->"Out[3]=",
- CellID->2104582203]
+ CellLabel->"Out[101]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -267,7 +262,7 @@ Cell[BoxData[
     RowBox[{"SUNN", "^", "2"}], "-", "1"}], ",", " ", 
    RowBox[{"SUNNToCACF", " ", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"CF",
- CellLabel->"In[4]:=",
+ CellLabel->"In[102]:=",
  CellID->1669593560],
 
 Cell[BoxData[
@@ -276,8 +271,7 @@ Cell[BoxData[
    SubscriptBox["C", "A"], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"CF",
- CellLabel->"Out[4]=",
- CellID->2114118582]
+ CellLabel->"Out[102]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -342,13 +336,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{779, Automatic}, {Automatic, 147}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

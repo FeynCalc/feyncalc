@@ -166,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPESum",
   ButtonNote->"OPESum"],
  "."
-}], "Text",
- CellTags->"OPE1Loop",
- CellID->1134342572]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -260,7 +258,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

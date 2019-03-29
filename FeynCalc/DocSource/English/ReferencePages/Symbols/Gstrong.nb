@@ -117,12 +117,19 @@ Cell["Gstrong", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["Gstrong"], "InlineFormula"],
- " \[LineSeparator]",
- "denotes the strong coupling constant."
+ " \[LineSeparator] is a shortcut for ",
+ Cell[BoxData[
+  RowBox[{"SMP", "[", "\"\<g_s\>\"", "]"}]], "InlineFormula"],
+ " which represents the strong coupling constant."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "The shortcut Gstrong is deprecated, please use ",
+ Cell[BoxData[
+  RowBox[{"SMP", "[", "\"\<g_s\>\"", "]"}]], "InlineFormula"],
+ " instead!"
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -159,7 +166,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["CovariantD",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/CovariantD"],
@@ -172,9 +178,7 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GluonVertex"],
  "."
-}], "Text",
- CellTags->"Gstrong",
- CellID->317682057]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,25 +205,29 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["\<\
-Gstrong has no functional properties. Only a typesetting rule is defined.\
-\>", "Text",
- CellTags->"Gstrong",
- CellID->1604993747],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["Gstrong"], "Input",
  CellTags->"Gstrong",
- CellLabel->"In[1]:=",
+ CellLabel->"In[124]:=",
  CellID->1539112275],
 
 Cell[BoxData[
  FormBox[
   SubscriptBox["g", "s"], TraditionalForm]], "Output",
  CellTags->"Gstrong",
- CellLabel->"Out[1]=",
- CellID->50548467]
+ CellLabel->"Out[124]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellLabel->"In[125]:="],
+
+Cell[BoxData[
+ RowBox[{"SMP", "[", "\<\"g_s\"\>", "]"}]], "Output",
+ CellLabel->"Out[125]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -284,13 +292,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{644, Automatic}, {Automatic, 274}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

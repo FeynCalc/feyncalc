@@ -127,8 +127,28 @@ abbreviations may be specified with the option IsolateNames."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Isolate", "]"}]], "Input",
+ CellTags->"Isolate",
+ CellLabel->"In[79]:=",
+ CellID->2088060696],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"IsolateNames", "\[Rule]", "KK"}], ",", 
+    RowBox[{"IsolatePrint", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolateFast", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolateSplit", "\[Rule]", "\[Infinity]"}], ",", 
+    RowBox[{"IsolateTimes", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolatePlus", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Isolate",
+ CellLabel->"Out[79]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -194,44 +214,20 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Isolate", "]"}]], "Input",
- CellTags->"Isolate",
- CellLabel->"In[1]:=",
- CellID->2088060696],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"IsolateNames", "\[Rule]", "KK"}], ",", 
-    RowBox[{"IsolatePrint", "\[Rule]", "False"}], ",", 
-    RowBox[{"IsolateSplit", "\[Rule]", "\[Infinity]"}], ",", 
-    RowBox[{"IsolateTimes", "\[Rule]", "False"}], ",", 
-    RowBox[{"IsolatePlus", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Isolate",
- CellLabel->"Out[1]=",
- CellID->2033547322]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"t0", "=", 
   RowBox[{"Isolate", "[", 
    RowBox[{"a", "+", "b"}], "]"}]}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[80]:=",
  CellID->1761911845],
 
 Cell[BoxData[
  FormBox[
   TagBox[
-   RowBox[{"KK", "(", "682", ")"}],
+   RowBox[{"KK", "(", "24", ")"}],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"Isolate",
- CellLabel->"Out[2]=",
- CellID->2009964510]
+ CellLabel->"Out[80]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -249,7 +245,7 @@ Cell[BoxData[
        RowBox[{"c", "+", "d"}], ")"}], " ", "f"}], " ", "+", " ", "e"}], ",", 
     "f"}], "]"}]}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[81]:=",
  CellID->1164516818],
 
 Cell[BoxData[
@@ -257,15 +253,14 @@ Cell[BoxData[
   RowBox[{"e", "+", 
    RowBox[{"f", " ", 
     TagBox[
-     RowBox[{"KK", "(", "682", ")"}],
+     RowBox[{"KK", "(", "24", ")"}],
      HoldForm]}], "+", 
    RowBox[{"f", " ", 
     TagBox[
-     RowBox[{"KK", "(", "683", ")"}],
+     RowBox[{"KK", "(", "25", ")"}],
      HoldForm]}]}], TraditionalForm]], "Output",
  CellTags->"Isolate",
- CellLabel->"Out[3]=",
- CellID->416280036]
+ CellLabel->"Out[81]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -273,22 +268,21 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "t1", "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[4]:=",
+ CellLabel->"In[82]:=",
  CellID->810104736],
 
 Cell[BoxData[
  RowBox[{"e", "+", 
   RowBox[{"f", " ", 
    TagBox[
-    RowBox[{"KK", "[", "682", "]"}],
+    RowBox[{"KK", "[", "24", "]"}],
     HoldForm]}], "+", 
   RowBox[{"f", " ", 
    TagBox[
-    RowBox[{"KK", "[", "683", "]"}],
+    RowBox[{"KK", "[", "25", "]"}],
     HoldForm]}]}]], "Output",
  CellTags->"Isolate",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1069603345]
+ CellLabel->"Out[82]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,7 +292,7 @@ Cell[BoxData[
   RowBox[{"t0", ",", " ", "t1", ",", " ", 
    RowBox[{"ReleaseHold", "[", "t1", "]"}]}], "}"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[5]:=",
+ CellLabel->"In[83]:=",
  CellID->113729976],
 
 Cell[BoxData[
@@ -306,16 +300,16 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     TagBox[
-     RowBox[{"KK", "(", "682", ")"}],
+     RowBox[{"KK", "(", "24", ")"}],
      HoldForm], ",", 
     RowBox[{"e", "+", 
      RowBox[{"f", " ", 
       TagBox[
-       RowBox[{"KK", "(", "682", ")"}],
+       RowBox[{"KK", "(", "24", ")"}],
        HoldForm]}], "+", 
      RowBox[{"f", " ", 
       TagBox[
-       RowBox[{"KK", "(", "683", ")"}],
+       RowBox[{"KK", "(", "25", ")"}],
        HoldForm]}]}], ",", 
     RowBox[{
      RowBox[{"f", " ", 
@@ -326,8 +320,7 @@ Cell[BoxData[
        RowBox[{"c", "+", "d"}], ")"}]}], "+", "e"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"Isolate",
- CellLabel->"Out[5]=",
- CellID->743594287]
+ CellLabel->"Out[83]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -351,7 +344,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "d"}], "}"}], ",", 
    RowBox[{"IsolateNames", "\[Rule]", "fF"}]}], "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[6]:=",
+ CellLabel->"In[84]:=",
  CellID->689489417],
 
 Cell[BoxData[
@@ -359,17 +352,16 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     TagBox[
-     RowBox[{"fF", "(", "685", ")"}],
+     RowBox[{"fF", "(", "27", ")"}],
      HoldForm], " ", 
     RowBox[{"a", "(", "z", ")"}]}], "+", 
    RowBox[{
     TagBox[
-     RowBox[{"fF", "(", "684", ")"}],
+     RowBox[{"fF", "(", "26", ")"}],
      HoldForm], " ", 
     RowBox[{"d", "(", "z", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"Isolate",
- CellLabel->"Out[6]=",
- CellID->2124185985]
+ CellLabel->"Out[84]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -377,30 +369,29 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"??", "fF"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[7]:=",
+ CellLabel->"In[85]:=",
  CellID->1089652184],
 
 Cell[CellGroupData[{
 
 Cell["Global`fF", "Print", "PrintUsage",
- CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
- CellID->811343181],
+ CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}],
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
     {GridBox[{
        {
         RowBox[{
-         RowBox[{"fF", "[", "684", "]"}], "=", 
+         RowBox[{"fF", "[", "26", "]"}], "=", 
          RowBox[{"y", "+", "z"}]}]},
        {" "},
        {
         RowBox[{
-         RowBox[{"fF", "[", "685", "]"}], "=", 
+         RowBox[{"fF", "[", "27", "]"}], "=", 
          RowBox[{"b", "+", 
           RowBox[{"c", " ", 
            RowBox[{"\<\"HoldForm\"\>", "[", 
-            RowBox[{"fF", "[", "684", "]"}], "]"}]}]}]}]}
+            RowBox[{"fF", "[", "26", "]"}], "]"}]}]}]}]}
       },
       BaselinePosition->{Baseline, {1, 1}},
       GridBoxAlignment->{
@@ -416,8 +407,7 @@ Cell[BoxData[
      "RowsIndexed" -> {}}],
   Definition[$CellContext`fF],
   Editable->False]], "Print",
- CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
- CellID->1424099393]
+ CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}]
 }, Open  ]]
 }, Open  ]],
 
@@ -430,46 +420,23 @@ Cell[BoxData[
    RowBox[{"IsolateNames", "\[Rule]", "l"}], ",", 
    RowBox[{"IsolateSplit", "\[Rule]", "15"}]}], "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[8]:=",
+ CellLabel->"In[86]:=",
  CellID->2019918870],
 
 Cell[BoxData[
  FormBox[
   TagBox[
-   RowBox[{"l", "(", "687", ")"}],
+   RowBox[{"l", "(", "29", ")"}],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"Isolate",
- CellLabel->"Out[8]=",
- CellID->1344566773]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"l", "[", "2", "]"}], ",", 
-   RowBox[{"l", "[", "1", "]"}]}], "}"}]], "Input",
- CellTags->"Isolate",
- CellLabel->"In[9]:=",
- CellID->727095247],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"l", "(", "2", ")"}], ",", 
-    RowBox[{"l", "(", "1", ")"}]}], "}"}], TraditionalForm]], "Output",
- CellTags->"Isolate",
- CellLabel->"Out[9]=",
- CellID->1999836335]
+ CellLabel->"Out[86]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"t0", ",", "t1", ",", "l", ",", "fF"}], "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[10]:=",
+ CellLabel->"In[88]:=",
  CellID->808271947]
 }, Open  ]],
 
@@ -534,13 +501,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{939, Automatic}, {Automatic, 133}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

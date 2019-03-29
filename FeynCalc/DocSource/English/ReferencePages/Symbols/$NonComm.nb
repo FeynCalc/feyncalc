@@ -168,9 +168,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/NonCommutative",
   ButtonNote->"NonCommutative"],
  "."
-}], "Text",
- CellTags->"$NonComm",
- CellID->1040108898]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -197,15 +195,11 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"$NonComm",
- CellID->2045411989],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["$NonComm"], "Input",
  CellTags->"$NonComm",
- CellLabel->"In[1]:=",
+ CellLabel->"In[189]:=",
  CellID->1876740578],
 
 Cell[BoxData[
@@ -226,12 +220,12 @@ Cell[BoxData[
     ",", "CGAD", ",", "CGAE", ",", "CGS", ",", "CGSD", ",", "CGSE", ",", "SI",
      ",", "SID", ",", "SIE", ",", "CSI", ",", "CSID", ",", "CSIE", ",", 
     "FeynCalc`Package`dotsimpHold", ",", "FCChargeConjugateTransposed", ",", 
-    "C", ",", "CovariantD", ",", "FieldStrength", ",", "QuarkGluonVertex", 
-    ",", "QuarkPropagator", ",", "Twist2AlienOperator", ",", 
+    "CovariantD", ",", "FieldStrength", ",", "QuarkGluonVertex", ",", 
+    "QuarkPropagator", ",", "Twist2AlienOperator", ",", 
     "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"$NonComm",
- CellLabel->"Out[1]="]
+ CellLabel->"Out[189]="]
 }, Open  ]]
 }, Open  ]],
 

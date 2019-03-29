@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DotSimplify",
   ButtonNote->"DotSimplify"],
  "."
-}], "Text",
- CellTags->"CommutatorExplicit",
- CellID->763111899]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,7 +201,7 @@ Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[419]:=",
  CellID->596826267],
 
 Cell[CellGroupData[{
@@ -212,7 +210,7 @@ Cell[BoxData[
  RowBox[{"Commutator", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[2]:=",
+ CellLabel->"In[420]:=",
  CellID->1546400369],
 
 Cell[BoxData[
@@ -223,8 +221,7 @@ Cell[BoxData[
    FormBox["b",
     TraditionalForm], "\[NoBreak]", "]"}], TraditionalForm]], "Output",
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[2]=",
- CellID->1736741048]
+ CellLabel->"Out[420]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -232,7 +229,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"CommutatorExplicit", "[", "%", "]"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[3]:=",
+ CellLabel->"In[421]:=",
  CellID->1022077689],
 
 Cell[BoxData[
@@ -241,8 +238,7 @@ Cell[BoxData[
    RowBox[{"a", ".", "b"}], "-", 
    RowBox[{"b", ".", "a"}]}], TraditionalForm]], "Output",
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[3]=",
- CellID->1538616356]
+ CellLabel->"Out[421]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,7 +249,7 @@ Cell[BoxData[
    RowBox[{"a", "-", "c"}], ",", 
    RowBox[{"b", "-", "d"}]}], "]"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[4]:=",
+ CellLabel->"In[422]:=",
  CellID->1564234454],
 
 Cell[BoxData[
@@ -274,8 +270,7 @@ Cell[BoxData[
    FormBox["\<\"}\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[4]=",
- CellID->945514452]
+ CellLabel->"Out[422]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -283,7 +278,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"CommutatorExplicit", "[", "%", "]"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[5]:=",
+ CellLabel->"In[423]:=",
  CellID->631256546],
 
 Cell[BoxData[
@@ -300,8 +295,7 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"a", "-", "c"}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[5]=",
- CellID->272209917]
+ CellLabel->"Out[423]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -311,7 +305,7 @@ Cell[BoxData[
   RowBox[{"CommutatorExplicit", "[", "%%", "]"}], "//", 
   "DotSimplify"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[6]:=",
+ CellLabel->"In[424]:=",
  CellID->1843011592],
 
 Cell[BoxData[
@@ -326,15 +320,14 @@ Cell[BoxData[
    RowBox[{"c", ".", "d"}], "+", 
    RowBox[{"d", ".", "c"}]}], TraditionalForm]], "Output",
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[6]=",
- CellID->1425635977]
+ CellLabel->"Out[424]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"UnDeclareNonCommutative", "[", 
   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}]], "Input",
  CellTags->"CommutatorExplicit",
- CellLabel->"In[7]:=",
+ CellLabel->"In[425]:=",
  CellID->1614014702]
 }, Open  ]],
 
@@ -399,13 +392,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{971, Automatic}, {Automatic, 216}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

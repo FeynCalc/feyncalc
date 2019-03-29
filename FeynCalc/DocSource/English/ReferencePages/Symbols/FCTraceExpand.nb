@@ -117,14 +117,39 @@ Cell["FCTraceExpand", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FCTraceExpand", "[", "expr", "]"}]], "InlineFormula"],
- " expands traces of Dirac and SU(N) matrices using linearity of the trace. \
-The traces themselves are not evaluated."
+  RowBox[{"FCTraceExpand", "[", "exp", "]"}]], "InlineFormula"],
+ " expands traces of Dirac and ",
+ Cell[BoxData[
+  RowBox[{"SU", 
+   RowBox[{"(", "N", ")"}]}]], "InlineFormula"],
+ " matrices using linearity of the trace. The traces themselves are not \
+evaluated."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCTraceExpand", "]"}]], "Input",
+ CellLabel->"In[115]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracGammaExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCTraceFactor", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}], ",", 
+    RowBox[{"PreservePropagatorStructures", "\[Rule]", "False"}], ",", 
+    RowBox[{"SUNTrace", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[115]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -162,13 +187,15 @@ Cell["See Also", "SeeAlsoSection",
 Cell[TextData[{
  ButtonBox["DiracTrace",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracTrace"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
  ", ",
  ButtonBox["SUNTrace",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SUNTrace"]
-}], "SeeAlso",
- CellID->929782353]
+  ButtonData:>"paclet:FeynCalc/ref/SUNTrace",
+  ButtonNote->"SUNTrace"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,20 +225,19 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"dtr1", "=", 
-  RowBox[{"DiracTrace", "[", 
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{
    RowBox[{
-    RowBox[{
-     RowBox[{"GA", "[", "mu", "]"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
-     RowBox[{"GA", "[", "nu", "]"}], ".", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
-     RowBox[{"GA", "[", "rho", "]"}]}], "+", "x"}], "]"}]}]], "Input",
- CellLabel->"In[131]:=",
+    RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
+    RowBox[{"GA", "[", "\[Nu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
+    RowBox[{"GA", "[", "\[Rho]", "]"}]}], "+", "x"}], "]"}]], "Input",
+ CellLabel->"In[132]:=",
  CellID->55860621],
 
 Cell[BoxData[
@@ -224,7 +250,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm], ".", 
@@ -243,7 +269,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm], ".", 
@@ -262,19 +288,18 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm]}], "+", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[131]=",
- CellID->632138578]
+ CellLabel->"Out[132]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCTraceExpand", "[", "dtr1", "]"}]], "Input",
+ RowBox[{"FCTraceExpand", "[", "%", "]"}]], "Input",
  CellLabel->"In[133]:=",
  CellID->502042032],
 
@@ -288,19 +313,19 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}], "+", 
@@ -311,13 +336,13 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        RowBox[{"(", 
@@ -331,7 +356,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}], "+", 
@@ -342,7 +367,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        RowBox[{"(", 
@@ -356,13 +381,13 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["rho",
+         FormBox["\[Rho]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}], "+", 
@@ -372,7 +397,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["mu",
+        FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -386,7 +411,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["nu",
+        FormBox["\[Nu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -400,7 +425,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["rho",
+        FormBox["\[Rho]",
          TraditionalForm],
         TraditionalForm]]}],
      TraditionalForm], ")"}], "+", 
@@ -408,15 +433,14 @@ Cell[BoxData[
     RowBox[{"tr", "(", 
      FormBox["1",
       TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[133]=",
- CellID->712633835]
+ CellLabel->"Out[133]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"dtr1", ",", 
+  RowBox[{"%%", ",", 
    RowBox[{"DotSimplify", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellLabel->"In[134]:=",
  CellID->611074974],
@@ -430,7 +454,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["mu",
+        FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -445,7 +469,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["nu",
+        FormBox["\[Nu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -460,7 +484,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["rho",
+        FormBox["\[Rho]",
          TraditionalForm],
         TraditionalForm]]}],
      TraditionalForm], ")"}], "+", 
@@ -468,15 +492,14 @@ Cell[BoxData[
     RowBox[{"tr", "(", 
      FormBox["1",
       TraditionalForm], ")"}], " ", "x"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[134]=",
- CellID->1845830738]
+ CellLabel->"Out[134]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"dtr1", ",", 
+  RowBox[{"%%%", ",", 
    RowBox[{"DiracTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellLabel->"In[135]:=",
  CellID->1030948092],
@@ -490,7 +513,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["mu",
+        FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -505,7 +528,7 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["nu",
+        FormBox["\[Nu]",
          TraditionalForm],
         TraditionalForm]], ".", 
       RowBox[{"(", 
@@ -520,36 +543,40 @@ Cell[BoxData[
       SuperscriptBox[
        OverscriptBox["\[Gamma]", "_"], 
        FormBox[
-        FormBox["rho",
+        FormBox["\[Rho]",
          TraditionalForm],
         TraditionalForm]]}], "+", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[135]=",
- CellID->1121814026]
+ CellLabel->"Out[135]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"dtr2", "=", 
-  RowBox[{
-   RowBox[{"a", "*", 
-    RowBox[{"DiracTrace", "[", 
-     RowBox[{
-      RowBox[{"GA", "[", "mu", "]"}], ".", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
-      RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}], "+", 
-   RowBox[{"b", "*", 
-    RowBox[{"DiracTrace", "[", 
-     RowBox[{
-      RowBox[{"GA", "[", "mu", "]"}], ".", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
-      RowBox[{"GA", "[", "nu", "]"}]}], "]"}]}]}]}]], "Input",
- CellLabel->"In[136]:=",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "*", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p1", "]"}], "+", "m1"}], ")"}], ".", 
+     RowBox[{"GA", "[", "\[Nu]", "]"}]}], "]"}]}], "+", 
+  RowBox[{"b", "*", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"GS", "[", "p2", "]"}], "+", "m2"}], ")"}], ".", 
+     RowBox[{"GA", "[", "\[Nu]", "]"}]}], "]"}]}]}]], "Input",
+ CellLabel->"In[128]:=",
  CellID->312665650],
 
 Cell[BoxData[
@@ -563,7 +590,7 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["mu",
+          FormBox["\[Mu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm], ".", 
@@ -582,7 +609,7 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["nu",
+          FormBox["\[Nu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm]}],
@@ -595,7 +622,7 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["mu",
+          FormBox["\[Mu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm], ".", 
@@ -614,23 +641,22 @@ Cell[BoxData[
         SuperscriptBox[
          OverscriptBox["\[Gamma]", "_"], 
          FormBox[
-          FormBox["nu",
+          FormBox["\[Nu]",
            TraditionalForm],
           TraditionalForm]],
         TraditionalForm]}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[136]=",
- CellID->141070294]
+ CellLabel->"Out[128]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"dtr2", ",", 
+  RowBox[{"%", ",", 
    RowBox[{"Momentum", "\[Rule]", 
     RowBox[{"{", "p1", "}"}]}]}], "]"}]], "Input",
- CellLabel->"In[137]:=",
+ CellLabel->"In[129]:=",
  CellID->851121632],
 
 Cell[BoxData[
@@ -646,13 +672,13 @@ Cell[BoxData[
           SuperscriptBox[
            OverscriptBox["\[Gamma]", "_"], 
            FormBox[
-            FormBox["mu",
+            FormBox["\[Mu]",
              TraditionalForm],
             TraditionalForm]], ".", 
           SuperscriptBox[
            OverscriptBox["\[Gamma]", "_"], 
            FormBox[
-            FormBox["nu",
+            FormBox["\[Nu]",
              TraditionalForm],
             TraditionalForm]]}],
          TraditionalForm], ")"}]}], "+", 
@@ -662,7 +688,7 @@ Cell[BoxData[
          SuperscriptBox[
           OverscriptBox["\[Gamma]", "_"], 
           FormBox[
-           FormBox["mu",
+           FormBox["\[Mu]",
             TraditionalForm],
            TraditionalForm]], ".", 
          RowBox[{"(", 
@@ -676,7 +702,7 @@ Cell[BoxData[
          SuperscriptBox[
           OverscriptBox["\[Gamma]", "_"], 
           FormBox[
-           FormBox["nu",
+           FormBox["\[Nu]",
             TraditionalForm],
            TraditionalForm]]}],
         TraditionalForm], ")"}]}], ")"}]}], "+", 
@@ -687,7 +713,7 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["mu",
+         FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], ".", 
        RowBox[{"(", 
@@ -702,31 +728,45 @@ Cell[BoxData[
        SuperscriptBox[
         OverscriptBox["\[Gamma]", "_"], 
         FormBox[
-         FormBox["nu",
+         FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]]}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[137]=",
- CellID->1128579487]
+ CellLabel->"Out[129]="]
+}, Open  ]]
 }, Open  ]],
 
-Cell["\<\
-At the moment SUNTrace automatically expands its content, so here \
-FCTraceExpand is not needed. However, this may change in the future.\
-\>", "Notes",
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "At the moment ",
+ ButtonBox["SUNTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNTrace",
+  ButtonNote->"SUNTrace"],
+ " automatically expands its content, so here ",
+ ButtonBox["FCTraceExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCTraceExpand",
+  ButtonNote->"FCTraceExpand"],
+ " is not needed. However, this may change in the future."
+}], "Notes",
  CellID->1671076290],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"str", "=", 
-  RowBox[{"SUNTrace", "[", 
-   RowBox[{
-    RowBox[{"SUNT", "[", 
-     RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
-    RowBox[{"SUNT", "[", 
-     RowBox[{"l", ",", "m", ",", "n"}], "]"}]}], "]"}]}]], "Input",
- CellLabel->"In[138]:=",
+ RowBox[{"SUNTrace", "[", 
+  RowBox[{
+   RowBox[{"SUNT", "[", 
+    RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
+   RowBox[{"SUNT", "[", 
+    RowBox[{"l", ",", "m", ",", "n"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[125]:=",
  CellID->1858007214],
 
 Cell[BoxData[
@@ -782,15 +822,14 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[138]=",
- CellID->1073657663]
+ CellLabel->"Out[125]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCTraceExpand", "[", "str", "]"}]], "Input",
- CellLabel->"In[139]:=",
+ RowBox[{"FCTraceExpand", "[", "%", "]"}]], "Input",
+ CellLabel->"In[126]:=",
  CellID->1593699893],
 
 Cell[BoxData[
@@ -846,17 +885,16 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[139]=",
- CellID->1696291909]
+ CellLabel->"Out[126]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FCTraceExpand", "[", 
-  RowBox[{"str", ",", 
+  RowBox[{"%%", ",", 
    RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[140]:=",
+ CellLabel->"In[127]:=",
  CellID->805159379],
 
 Cell[BoxData[
@@ -912,8 +950,8 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\<\")\"\>",
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[140]=",
- CellID->555663597]
+ CellLabel->"Out[127]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -978,12 +1016,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{950, 770},
-WindowMargins->{{Automatic, 0}, {116, Automatic}},
+WindowMargins->{{1060, Automatic}, {Automatic, 179}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

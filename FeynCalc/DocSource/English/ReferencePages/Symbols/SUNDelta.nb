@@ -161,7 +161,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["ExplicitSUNIndex",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ExplicitSUNIndex",
@@ -192,9 +191,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Trick",
   ButtonNote->"Trick"],
  "."
-}], "Text",
- CellTags->"SUNDelta",
- CellID->1124087961]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -229,7 +226,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[136]:=",
+ CellLabel->"In[1]:=",
  CellID->582133429],
 
 Cell[BoxData[
@@ -245,7 +242,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[136]="]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -260,7 +257,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"SUNIndex", "[", "b", "]"}], ",", 
     RowBox[{"SUNIndex", "[", "c", "]"}]}], "]"}]}]], "Input",
- CellLabel->"In[137]:="],
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -285,14 +282,14 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellLabel->"Out[137]="]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[138]:="],
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
  FormBox[
@@ -306,7 +303,7 @@ Cell[BoxData[
      FormBox["c",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- CellLabel->"Out[138]="]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -317,7 +314,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->2091383946],
 
 Cell[BoxData[
@@ -333,8 +330,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[3]=",
- CellID->791346519]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -347,7 +343,7 @@ Cell[BoxData[
     RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[142]:=",
+ CellLabel->"In[5]:=",
  CellID->2066302871],
 
 Cell[BoxData[
@@ -356,7 +352,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[142]//StandardForm="]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -371,14 +367,14 @@ Cell[BoxData[
       RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}], "//", "FCI"}], "//", 
    "FCE"}], "//", "StandardForm"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[143]:=",
+ CellLabel->"In[6]:=",
  CellID->1106151471],
 
 Cell[BoxData[
  RowBox[{"SD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[143]//StandardForm="]
+ CellLabel->"Out[6]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -390,7 +386,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b"}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[144]:=",
+ CellLabel->"In[7]:=",
  CellID->892399657],
 
 Cell[BoxData[
@@ -399,7 +395,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[144]//StandardForm="]
+ CellLabel->"Out[7]//StandardForm="]
 }, Open  ]],
 
 Cell["\<\
@@ -428,7 +424,7 @@ Cell[BoxData[
      RowBox[{"ExplicitSUNIndex", "[", "2", "]"}]}], "]"}]}], "//", 
   "SUNSimplify"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[146]:=",
+ CellLabel->"In[8]:=",
  CellID->69005829],
 
 Cell[BoxData[
@@ -455,7 +451,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[146]="]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -463,7 +459,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[147]:=",
+ CellLabel->"In[9]:=",
  CellID->965204507],
 
 Cell[BoxData[
@@ -477,7 +473,7 @@ Cell[BoxData[
     RowBox[{"ExplicitSUNIndex", "[", "2", "]"}], ",", 
     RowBox[{"SUNIndex", "[", "c", "]"}]}], "]"}]}]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[147]//StandardForm="]
+ CellLabel->"Out[9]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -489,7 +485,7 @@ Cell[BoxData[
     RowBox[{"1", ",", "2"}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUNDelta",
- CellLabel->"In[148]:=",
+ CellLabel->"In[10]:=",
  CellID->1853160304],
 
 Cell[BoxData[
@@ -498,7 +494,7 @@ Cell[BoxData[
    RowBox[{"ExplicitSUNIndex", "[", "1", "]"}], ",", 
    RowBox[{"ExplicitSUNIndex", "[", "2", "]"}]}], "]"}]], "Output",
  CellTags->"SUNDelta",
- CellLabel->"Out[148]//StandardForm="]
+ CellLabel->"Out[10]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -563,7 +559,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1638, Automatic}, {Automatic, 107}},
+WindowMargins->{{565, Automatic}, {Automatic, 112}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

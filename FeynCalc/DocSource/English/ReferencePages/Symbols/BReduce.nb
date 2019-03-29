@@ -185,9 +185,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/B11",
   ButtonNote->"B11"],
  "."
-}], "Text",
- CellTags->"BReduce",
- CellID->1422133579]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,9 +222,7 @@ Cell[TextData[{
   FormBox[
    SubscriptBox["A", "0"], TraditionalForm]]],
  "."
-}], "Text",
- CellTags->"BReduce",
- CellID->233833972],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -234,7 +230,7 @@ Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{"0", ",", "s", ",", "s"}], "]"}]], "Input",
  CellTags->"BReduce",
- CellLabel->"In[1]:=",
+ CellLabel->"In[88]:=",
  CellID->768966684],
 
 Cell[BoxData[
@@ -247,13 +243,10 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"BReduce",
- CellLabel->"Out[1]=",
- CellID->1373932648]
+ CellLabel->"Out[88]="]
 }, Open  ]],
 
-Cell["With BReduce\[Rule]True, transformation is done.", "Text",
- CellTags->"BReduce",
- CellID->174829946],
+Cell["With BReduce\[Rule]True, transformation is done.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -262,24 +255,27 @@ Cell[BoxData[
   RowBox[{"0", ",", "s", ",", "s", ",", 
    RowBox[{"BReduce", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"BReduce",
- CellLabel->"In[2]:=",
+ CellLabel->"In[91]:=",
  CellID->876027895],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
+  RowBox[{"-", 
    FractionBox[
-    FormBox[
-     TagBox[
-      FormBox[
-       RowBox[{
-        SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", "s", ")"}],
-       TraditionalForm],
-      HoldForm],
-     TraditionalForm], "s"], "-", "1"}], TraditionalForm]], "Output",
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"2", "-", "D"}], ")"}], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", "s", ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", "s"}]]}], TraditionalForm]], "Output",
  CellTags->"BReduce",
- CellLabel->"Out[2]=",
- CellID->460346687]
+ CellLabel->"Out[91]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -344,13 +340,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1028, Automatic}, {Automatic, 103}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

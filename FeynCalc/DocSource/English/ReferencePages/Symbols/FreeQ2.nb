@@ -175,9 +175,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SelectNotFree",
   ButtonNote->"SelectNotFree"],
  "."
-}], "Text",
- CellTags->"FreeQ2",
- CellID->1855821251]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -214,14 +212,13 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "x"}], "}"}]}], "]"}]], "Input",
  CellTags->"FreeQ2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[123]:=",
  CellID->1955436628],
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
  CellTags->"FreeQ2",
- CellLabel->"Out[1]=",
- CellID->319246992]
+ CellLabel->"Out[123]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -234,14 +231,13 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "b"}], "}"}]}], "]"}]], "Input",
  CellTags->"FreeQ2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[124]:=",
  CellID->486516925],
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
  CellTags->"FreeQ2",
- CellLabel->"Out[2]=",
- CellID->642250650]
+ CellLabel->"Out[124]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -250,14 +246,13 @@ Cell[BoxData[
  RowBox[{"FreeQ2", "[", 
   RowBox[{"x", ",", " ", "y"}], "]"}]], "Input",
  CellTags->"FreeQ2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[125]:=",
  CellID->1336030699],
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
  CellTags->"FreeQ2",
- CellLabel->"Out[3]=",
- CellID->1761235485]
+ CellLabel->"Out[125]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -267,14 +262,13 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"f", "[", "x", "]"}], ",", " ", "f"}], "]"}]], "Input",
  CellTags->"FreeQ2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[126]:=",
  CellID->544368653],
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
  CellTags->"FreeQ2",
- CellLabel->"Out[4]=",
- CellID->1949452]
+ CellLabel->"Out[126]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -339,13 +333,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1283, Automatic}, {Automatic, 202}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

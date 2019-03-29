@@ -119,11 +119,9 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"ExpandPartialD", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]expands noncommutative products of ",
- Cell[BoxData["QuantumField"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["QuantumField"], "InlineFormula"],
  "'s and partial differentiation operators in ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " and applies the Leibniz rule."
 }], "Usage",
  CellID->982511436],

@@ -123,13 +123,13 @@ Cell[TextData[{
     RowBox[{"FeynAmp", "[", "...", "]"}], ",", " ", 
     RowBox[{"FeynAmp", "[", "...", "]"}], ",", " ", "..."}], "]"}]], 
   "InlineFormula"],
- " \[LineSeparator]",
- "is a head of a list of Feynman amplitudes.\nFeynAmpList has no functional \
-properties and serves just as a head."
+ " \[LineSeparator]is a head of a list of Feynman amplitudes."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+FeynAmpList has no functional properties and serves just as a head.\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -171,9 +171,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynAmp",
   ButtonNote->"FeynAmp"],
  "."
-}], "Text",
- CellTags->"FeynAmpList",
- CellID->1636179239]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -259,13 +257,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1237, Automatic}, {Automatic, 231}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

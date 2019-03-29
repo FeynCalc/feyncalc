@@ -121,15 +121,14 @@ Cell[TextData[{
    RowBox[{"exp", ",", " ", "k", ",", " ", 
     RowBox[{"{", 
      RowBox[{"q1", ",", "q2", ",", "p"}], "}"}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "(=RussianTrick[exp,p,p,{q1,q2,p}]) does the integration by parts where p is \
-the external momentum. RussianTrick[exp, k,l, {q1,q2,p}] \
+ " \[LineSeparator](=RussianTrick[exp,p,p,{q1,q2,p}]) does the integration by \
+parts where p is the external momentum. RussianTrick[exp, k,l, {q1,q2,p}] \
 (=RussianTrick[exp,k,l]) does integration by parts where l is the momentum to \
-be differentiated.\n\nThe result is an expression which is vanishing."
+be differentiated."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["The result is an expression which is vanishing.", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -176,9 +175,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FourLaplacian",
   ButtonNote->"FourLaplacian"],
  "."
-}], "Text",
- CellTags->"RussianTrick",
- CellID->1345403817]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -219,7 +216,7 @@ Cell[BoxData[
      "1", ",", " ", "1", ",", " ", "1", ",", " ", "1", ",", " ", "1"}], 
      "}"}]}], "]"}]}]], "Input",
  CellTags->"RussianTrick",
- CellLabel->"In[1]:=",
+ CellLabel->"In[28]:=",
  CellID->202624512],
 
 Cell[BoxData[
@@ -243,8 +240,7 @@ Cell[BoxData[
     FormBox["0",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"RussianTrick",
- CellLabel->"Out[1]=",
- CellID->2099872204]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -252,7 +248,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"t", "//", "RHI2FC"}]], "Input",
  CellTags->"RussianTrick",
- CellLabel->"In[2]:=",
+ CellLabel->"In[29]:=",
  CellID->195595910],
 
 Cell[BoxData[
@@ -279,44 +275,111 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], "2"], "/", 
    RowBox[{
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"]}]}], TraditionalForm]], "Output",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False]}]}], TraditionalForm]], "Output",
  CellTags->"RussianTrick",
- CellLabel->"Out[2]=",
- CellID->1909433347]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -326,7 +389,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"%", "//", "RHI2FC"}], ",", "q2"}], "]"}]], "Input",
  CellTags->"RussianTrick",
- CellLabel->"In[3]:=",
+ CellLabel->"In[30]:=",
  CellID->767131830],
 
 Cell[BoxData[
@@ -355,44 +418,111 @@ Cell[BoxData[
        FormBox["\<\")\"\>",
         TraditionalForm]}], "2"]}], ")"}], "/", 
    RowBox[{
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     FormBox[
-      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
-        TraditionalForm], "-", 
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox[
         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
-        TraditionalForm], "-", 
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], 
+       FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
        FormBox[
-        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-        TraditionalForm]}], ")"}], "2"]}]}], TraditionalForm]], "Output",
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D], FeynCalc`Momentum[
+         FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
+        FeynCalc`FCGV["q2"], D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+           TraditionalForm], "-", 
+          FormBox[
+           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D], -FeynCalc`Momentum[
+          FeynCalc`FCGV["p"], D] + FeynCalc`Momentum[
+         FeynCalc`FCGV["q2"], D]]],
+     Editable->False]}]}], TraditionalForm]], "Output",
  CellTags->"RussianTrick",
- CellLabel->"Out[3]=",
- CellID->2087454288]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -400,7 +530,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"FC2RHI", "[", "%", "]"}]], "Input",
  CellTags->"RussianTrick",
- CellLabel->"In[4]:=",
+ CellLabel->"In[31]:=",
  CellID->2066492260],
 
 Cell[BoxData[
@@ -427,8 +557,7 @@ Cell[BoxData[
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"RussianTrick",
- CellLabel->"Out[4]=",
- CellID->641619861]
+ CellLabel->"Out[31]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -437,7 +566,7 @@ Cell[BoxData[
  RowBox[{"Solve2", "[", 
   RowBox[{"%", ",", "t"}], "]"}]], "Input",
  CellTags->"RussianTrick",
- CellLabel->"In[5]:=",
+ CellLabel->"In[32]:=",
  CellID->1029114011],
 
 Cell[BoxData[
@@ -465,14 +594,13 @@ Cell[BoxData[
         TraditionalForm]}]],
      TraditionalForm], "\[Rule]", "0"}], "}"}], TraditionalForm]], "Output",
  CellTags->"RussianTrick",
- CellLabel->"Out[5]=",
- CellID->1453686089]
+ CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", "t", "]"}]], "Input",
  CellTags->"RussianTrick",
- CellLabel->"In[6]:=",
+ CellLabel->"In[33]:=",
  CellID->659830929]
 }, Open  ]],
 
@@ -537,13 +665,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{965, Automatic}, {Automatic, 184}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

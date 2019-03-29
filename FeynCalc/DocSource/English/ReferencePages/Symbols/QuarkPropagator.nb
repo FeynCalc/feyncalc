@@ -125,8 +125,7 @@ Cell[TextData[{
    RowBox[{"{", 
     RowBox[{"p", ",", "m"}], "}"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]gives the quark propagator with mass ",
- Cell[BoxData["m"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["m"], "InlineFormula"],
  "."
 }], "Usage",
  CellID->2010081510],

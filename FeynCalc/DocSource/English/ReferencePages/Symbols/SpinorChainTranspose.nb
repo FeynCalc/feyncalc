@@ -1,22 +1,3 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 10.3' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[     25756,       1003]
-NotebookOptionsPosition[     20631,        818]
-NotebookOutlinePosition[     21248,        842]
-CellTagsIndexPosition[     21169,        837]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
@@ -138,46 +119,35 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"SpinorChainTranspose", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]tranposes particular spinor chains in ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  ", which effectively switches the ",
- Cell[BoxData["u"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["u"], "InlineFormula"],
  " and ",
- Cell[BoxData["v"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["v"], "InlineFormula"],
  " spinors and reverses the order of the Dirac matrices using charge \
 conjugation operator. This operation is often required in calculations that \
 involve Majorana particles. By default, the function will tranpose all chains \
 of the form ",
  Cell[BoxData[
-  RowBox[{"vbar", ".", "x", ".", "u"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"vbar", ".", "x", ".", "u"}]], "InlineFormula"],
  " and ",
  Cell[BoxData[
-  RowBox[{"vbar", ".", "x", ".", "v"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"vbar", ".", "x", ".", "v"}]], "InlineFormula"],
  "."
 }], "Usage",
- CellChangeTimes->{{3.761375138231986*^9, 3.761375168194339*^9}, {
-  3.762577203873024*^9, 3.7625772118798113`*^9}, {3.762577245699436*^9, 
-  3.762577281412816*^9}},
  CellID->982511436],
 
 Cell[TextData[{
  "A different or more fine grained choice can be obtained via the option ",
- Cell[BoxData["Select"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["Select"], "InlineFormula"],
  "."
 }], "Notes",
- CellChangeTimes->{3.7625772705823793`*^9},
  CellID->908030529],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "SpinorChainTranspose", "]"}]], "Input",
- CellChangeTimes->{{3.7613751877702713`*^9, 3.761375196309765*^9}},
  CellLabel->"In[1]:=",
  CellID->37503137],
 
@@ -263,7 +233,6 @@ Cell[BoxData[
            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}], ",", 
     RowBox[{"TimeConstrained", "\[Rule]", "3"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellChangeTimes->{3.76137519665976*^9, 3.7613864554425497`*^9},
  CellLabel->"Out[1]=",
  CellID->334721325]
 }, Open  ]]
@@ -358,8 +327,6 @@ Cell[BoxData[
   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
   RowBox[{"SpinorUD", "[", 
    RowBox[{"p2", ",", "m2"}], "]"}]}]], "Input",
- CellChangeTimes->{
-  3.761375214872891*^9, {3.7613864668895407`*^9, 3.761386471266596*^9}},
  CellLabel->"In[3]:=",
  CellID->1577118630],
 
@@ -404,9 +371,6 @@ Cell[BoxData[
      FormBox["m2",
       TraditionalForm], ")"}],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.7613752179328213`*^9, 3.761375279490485*^9, {3.761386458247117*^9, 
-   3.761386472072322*^9}, 3.762577338190412*^9},
  CellLabel->"Out[3]=",
  CellID->1607764244]
 }, Open  ]],
@@ -415,7 +379,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SpinorChainTranspose", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.761375210486677*^9, 3.761375216802684*^9}},
  CellLabel->"In[4]:=",
  CellID->1510622750],
 
@@ -473,9 +436,6 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.761375218572123*^9, 3.761375280194632*^9, {3.761386459816616*^9, 
-   3.761386472751947*^9}, 3.762577338724752*^9},
  CellLabel->"Out[4]=",
  CellID->1670566186]
 }, Open  ]],
@@ -493,8 +453,6 @@ Cell[BoxData[
   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
   RowBox[{"SpinorVD", "[", 
    RowBox[{"p2", ",", "m2"}], "]"}]}]], "Input",
- CellChangeTimes->{
-  3.761375231080784*^9, {3.7613864775681047`*^9, 3.761386481327649*^9}},
  CellLabel->"In[5]:=",
  CellID->1486107992],
 
@@ -539,9 +497,6 @@ Cell[BoxData[
      FormBox["m2",
       TraditionalForm], ")"}],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellChangeTimes->{
-  3.761375234538197*^9, 3.761375280690289*^9, {3.761386461154627*^9, 
-   3.7613864942681923`*^9}, 3.7625773396915817`*^9},
  CellLabel->"Out[5]=",
  CellID->691987419]
 }, Open  ]],
@@ -550,7 +505,6 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SpinorChainTranspose", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.7613752262866573`*^9, 3.7613752335626163`*^9}},
  CellLabel->"In[6]:=",
  CellID->1485524900],
 
@@ -607,8 +561,6 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- CellChangeTimes->{3.76137523534151*^9, 3.761375281239966*^9, 
-  3.761386461886004*^9, 3.7613864947989902`*^9, 3.762577340402245*^9},
  CellLabel->"Out[6]=",
  CellID->1745938355]
 }, Open  ]],
@@ -626,8 +578,6 @@ Cell[BoxData[
   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
   RowBox[{"SpinorVD", "[", 
    RowBox[{"p2", ",", "m2"}], "]"}]}]], "Input",
- CellChangeTimes->{
-  3.761375265064612*^9, {3.761386485660574*^9, 3.7613864893381233`*^9}},
  CellLabel->"In[7]:=",
  CellID->1726192320],
 
@@ -672,8 +622,6 @@ Cell[BoxData[
      FormBox["m2",
       TraditionalForm], ")"}],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.7613752706384706`*^9, 3.7613752817411757`*^9}, {
-   3.761386462597929*^9, 3.761386495474881*^9}, 3.7625773432112093`*^9},
  CellLabel->"Out[7]=",
  CellID->1092633300]
 }, Open  ]],
@@ -691,7 +639,6 @@ Cell[BoxData[
         RowBox[{"_", ",", "_"}], "]"}], ",", 
        RowBox[{"SpinorVD", "[", 
         RowBox[{"_", ",", "_"}], "]"}]}], "}"}], "}"}]}]}], "]"}]], "Input",
- CellChangeTimes->{{3.761375248399106*^9, 3.761375267339059*^9}},
  CellLabel->"In[8]:=",
  CellID->1681222815],
 
@@ -749,8 +696,6 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellChangeTimes->{{3.761375268744295*^9, 3.76137528224442*^9}, {
-   3.761386463334206*^9, 3.761386496006213*^9}, 3.762577344132265*^9},
  CellLabel->"Out[8]=",
  CellID->438443861]
 }, Open  ]]
@@ -818,195 +763,11 @@ Cell[BoxData[
 },
 WindowSize->{700, 770},
 WindowMargins->{{1303, Automatic}, {Automatic, 217}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
+TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{
- "ExtendedExamples"->{
-  Cell[19111, 760, 100, 2, 54, "ExtendedExamplesSection",
-   CellTags->"ExtendedExamples",
-   CellID->1854448968]}
- }
-*)
-(*CellTagsIndex
-CellTagsIndex->{
- {"ExtendedExamples", 21030, 830}
- }
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 325, 14, 24, "History",
- CellID->1247902091],
-Cell[CellGroupData[{
-Cell[908, 38, 68, 1, 28, "CategorizationSection",
- CellID->1122911449],
-Cell[979, 41, 79, 2, 70, "Categorization",
- CellID->686433507],
-Cell[1061, 45, 81, 2, 70, "Categorization",
- CellID->605800465],
-Cell[1145, 49, 78, 2, 70, "Categorization",
- CellID->468444828],
-Cell[1226, 53, 78, 1, 70, "Categorization"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1341, 59, 55, 1, 18, "KeywordsSection",
- CellID->477174294],
-Cell[1399, 62, 45, 1, 70, "Keywords",
- CellID->1164421360]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1481, 68, 65, 1, 18, "TemplatesSection",
- CellID->1872225408],
-Cell[1549, 71, 94, 2, 70, "Template",
- CellID->1562036412],
-Cell[1646, 75, 82, 2, 70, "Template",
- CellID->158391909],
-Cell[1731, 79, 81, 2, 70, "Template",
- CellID->1360575930],
-Cell[1815, 83, 82, 2, 70, "Template",
- CellID->793782254]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1934, 90, 53, 1, 18, "DetailsSection",
- CellID->307771771],
-Cell[1990, 93, 63, 2, 70, "Details",
- CellID->670882175],
-Cell[2056, 97, 69, 2, 70, "Details",
- CellID->350963985],
-Cell[2128, 101, 64, 2, 70, "Details",
- CellID->8391405],
-Cell[2195, 105, 69, 2, 70, "Details",
- CellID->3610269],
-Cell[2267, 109, 61, 2, 70, "Details",
- CellID->401364205],
-Cell[2331, 113, 61, 2, 70, "Details",
- CellID->350204745],
-Cell[2395, 117, 63, 2, 70, "Details",
- CellID->732958810],
-Cell[2461, 121, 78, 2, 70, "Details",
- CellID->222905350],
-Cell[2542, 125, 67, 2, 70, "Details",
- CellID->240026365]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2646, 132, 63, 1, 63, "ObjectName",
- CellID->1224892054],
-Cell[2712, 135, 1107, 29, 121, "Usage",
- CellID->982511436],
-Cell[3822, 166, 246, 7, 25, "Notes",
- CellID->908030529],
-Cell[CellGroupData[{
-Cell[4093, 177, 189, 4, 26, "Input",
- CellID->37503137],
-Cell[4285, 183, 2715, 84, 127, "Output",
- CellID->334721325]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7049, 273, 57, 1, 43, "TutorialsSection",
- CellID->250839057],
-Cell[7109, 276, 45, 1, 16, "Tutorials",
- CellID->341631938]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7191, 282, 83, 1, 30, "RelatedDemonstrationsSection",
- CellID->1268215905],
-Cell[7277, 285, 58, 1, 16, "RelatedDemonstrations",
- CellID->1129518860]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7372, 291, 65, 1, 30, "RelatedLinksSection",
- CellID->1584193535],
-Cell[7440, 294, 49, 1, 16, "RelatedLinks",
- CellID->1038487239]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7526, 300, 55, 1, 30, "SeeAlsoSection",
- CellID->1255426704],
-Cell[7584, 303, 477, 17, 16, "SeeAlso",
- CellID->655647701]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8098, 325, 57, 1, 30, "MoreAboutSection",
- CellID->38303248],
-Cell[8158, 328, 46, 1, 16, "MoreAbout",
- CellID->1665078683]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8241, 334, 356, 11, 69, "PrimaryExamplesSection",
- CellID->880084151],
-Cell[CellGroupData[{
-Cell[8622, 349, 488, 14, 26, "Input",
- CellID->1577118630],
-Cell[9113, 365, 1140, 45, 26, "Output",
- CellID->1607764244]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10290, 415, 183, 4, 26, "Input",
- CellID->1510622750],
-Cell[10476, 421, 1532, 58, 26, "Output",
- CellID->1670566186]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[12045, 484, 488, 14, 26, "Input",
- CellID->1486107992],
-Cell[12536, 500, 1141, 45, 26, "Output",
- CellID->691987419]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13714, 550, 187, 4, 26, "Input",
- CellID->1485524900],
-Cell[13904, 556, 1458, 56, 26, "Output",
- CellID->1745938355]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[15399, 617, 488, 14, 26, "Input",
- CellID->1726192320],
-Cell[15890, 633, 1143, 44, 26, "Output",
- CellID->1092633300]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[17070, 682, 460, 13, 47, "Input",
- CellID->1681222815],
-Cell[17533, 697, 1529, 57, 26, "Output",
- CellID->438443861]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[19111, 760, 100, 2, 54, "ExtendedExamplesSection",
- CellTags->"ExtendedExamples",
- CellID->1854448968],
-Cell[19214, 764, 125, 3, 32, "ExampleSection",
- CellID->1293636265],
-Cell[19342, 769, 148, 3, 20, "ExampleSection",
- CellID->1020263627],
-Cell[CellGroupData[{
-Cell[19515, 776, 127, 3, 20, "ExampleSection",
- CellID->2061341341],
-Cell[19645, 781, 130, 3, 70, "ExampleSubsection",
- CellID->1757724783],
-Cell[19778, 786, 130, 3, 70, "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
-Cell[19923, 792, 131, 3, 20, "ExampleSection",
- CellID->258228157],
-Cell[20057, 797, 142, 3, 20, "ExampleSection",
- CellID->2123667759],
-Cell[20202, 802, 135, 3, 20, "ExampleSection",
- CellID->1305812373],
-Cell[20340, 807, 140, 3, 20, "ExampleSection",
- CellID->1653164318],
-Cell[20483, 812, 132, 3, 20, "ExampleSection",
- CellID->589267740]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)

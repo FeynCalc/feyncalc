@@ -183,9 +183,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SumS",
   ButtonNote->"SumS"],
  "."
-}], "Text",
- CellTags->"SumT",
- CellID->183277524]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,8 +229,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[1]=",
- CellID->405969020]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -254,8 +251,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[2]=",
- CellID->7209567]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -275,8 +271,7 @@ Cell[BoxData[
    FormBox["m",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[3]=",
- CellID->1837745290]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -303,8 +298,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"-", "1"}], ")"}], "m"], "m"]}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[4]=",
- CellID->1964068780]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -321,8 +315,7 @@ Cell[BoxData[
   RowBox[{"-", 
    FractionBox["7", "12"]}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[5]=",
- CellID->627215383]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -344,8 +337,7 @@ Cell[BoxData[
   RowBox[{"-", 
    FractionBox["7", "12"]}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[6]=",
- CellID->1602884528]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -367,8 +359,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[7]=",
- CellID->1069824481]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -387,8 +378,7 @@ Cell[BoxData[
     "10512121660702378405316004964483761080879190528000000"]}], 
   TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[8]=",
- CellID->1350292495]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -405,8 +395,7 @@ Cell[BoxData[
   RowBox[{"-", 
    FractionBox["7", "12"]}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[9]=",
- CellID->1565575302]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -424,8 +413,7 @@ Cell[BoxData[
   RowBox[{"-", 
    FractionBox["7", "12"]}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[10]=",
- CellID->1734591901]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -455,8 +443,7 @@ Cell[BoxData[
      "LerchPhi"]}], "-", 
    RowBox[{"log", "(", "2", ")"}]}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[11]=",
- CellID->1972297222]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -474,8 +461,7 @@ Cell[BoxData[
    FractionBox["57561743656913", "21300003648000"]}], 
   TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[12]=",
- CellID->1330421141]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -495,8 +481,7 @@ Cell[BoxData[
     "10512121660702378405316004964483761080879190528000000"]}], 
   TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[13]=",
- CellID->833938013]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -524,8 +509,7 @@ Cell[BoxData[
     RowBox[{"-", 
      FractionBox["155903", "216000"]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[14]=",
- CellID->540691812]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -558,8 +542,7 @@ Cell[BoxData[
     RowBox[{"-", 
      FractionBox["155903", "216000"]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"SumT",
- CellLabel->"Out[15]=",
- CellID->1165392017]
+ CellLabel->"Out[15]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -624,13 +607,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{998, Automatic}, {Automatic, 96}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

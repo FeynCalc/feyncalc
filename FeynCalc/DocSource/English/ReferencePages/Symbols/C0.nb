@@ -191,9 +191,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVeOrder",
   ButtonNote->"PaVeOrder"],
  "."
-}], "Text",
- CellTags->"C0",
- CellID->1972879175]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,7 +225,7 @@ Cell[BoxData[
   RowBox[{"a", ",", "b", ",", "c", ",", " ", "m12", ",", "m22", ",", "m32"}], 
   "]"}]], "Input",
  CellTags->"C0",
- CellLabel->"In[1]:=",
+ CellLabel->"In[93]:=",
  CellID->929768353],
 
 Cell[BoxData[
@@ -241,8 +239,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"C0",
- CellLabel->"Out[1]=",
- CellID->370674132]
+ CellLabel->"Out[93]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,7 +250,7 @@ Cell[BoxData[
    RowBox[{"b", ",", "a", ",", "c", ",", "m32", ",", "m22", ",", "m12"}], 
    "]"}], "//", "PaVeOrder"}]], "Input",
  CellTags->"C0",
- CellLabel->"In[2]:=",
+ CellLabel->"In[94]:=",
  CellID->281164286],
 
 Cell[BoxData[
@@ -267,8 +264,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"C0",
- CellLabel->"Out[2]=",
- CellID->240939187]
+ CellLabel->"Out[94]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -283,7 +279,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"c", ",", "a"}], "}"}]}]}], "]"}]], "Input",
  CellTags->"C0",
- CellLabel->"In[3]:=",
+ CellLabel->"In[95]:=",
  CellID->2033659557],
 
 Cell[BoxData[
@@ -297,8 +293,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"C0",
- CellLabel->"Out[3]=",
- CellID->1857619476]
+ CellLabel->"Out[95]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -363,13 +358,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1018, Automatic}, {Automatic, 147}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

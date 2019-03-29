@@ -126,8 +126,22 @@ option Integratedx \[Rule] False."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "HypergeometricIR", "]"}]], "Input",
+ CellTags->"HypergeometricIR",
+ CellLabel->"In[227]:=",
+ CellID->384078315],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Integratedx", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"HypergeometricIR",
+ CellLabel->"Out[227]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -178,9 +192,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/ToHypergeometric",
   ButtonNote->"ToHypergeometric"],
  "."
-}], "Text",
- CellTags->"HypergeometricIR",
- CellID->1403310516]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,31 +222,13 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "HypergeometricIR", "]"}]], "Input",
- CellTags->"HypergeometricIR",
- CellLabel->"In[1]:=",
- CellID->384078315],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Integratedx", "\[Rule]", "False"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"HypergeometricIR",
- CellLabel->"Out[1]=",
- CellID->43106065]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"HypergeometricIR", "[", 
   RowBox[{
    RowBox[{"Hypergeometric2F1", "[", 
     RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], ",", "t"}], 
   "]"}]], "Input",
  CellTags->"HypergeometricIR",
- CellLabel->"In[2]:=",
+ CellLabel->"In[228]:=",
  CellID->1374832181],
 
 Cell[BoxData[
@@ -261,8 +255,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"c", "-", "b"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
  CellTags->"HypergeometricIR",
- CellLabel->"Out[2]=",
- CellID->1433332384]
+ CellLabel->"Out[228]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -281,7 +274,7 @@ Cell[BoxData[
        RowBox[{"t", " ", "z"}]}], ")"}], "^", "a"}]}], ",", "t"}], 
   "]"}]], "Input",
  CellTags->"HypergeometricIR",
- CellLabel->"In[3]:=",
+ CellLabel->"In[229]:=",
  CellID->907804769],
 
 Cell[BoxData[
@@ -299,8 +292,7 @@ Cell[BoxData[
    TemplateBox[{RowBox[{"b", "+", "c", "+", "2"}]},
     "Gamma"]], TraditionalForm]], "Output",
  CellTags->"HypergeometricIR",
- CellLabel->"Out[3]=",
- CellID->1119784034]
+ CellLabel->"Out[229]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -309,7 +301,7 @@ Cell[BoxData[
  RowBox[{"HypergeometricIR", "[", 
   RowBox[{"%", ",", "t"}], "]"}]], "Input",
  CellTags->"HypergeometricIR",
- CellLabel->"In[4]:=",
+ CellLabel->"In[230]:=",
  CellID->1094444131],
 
 Cell[BoxData[
@@ -325,8 +317,7 @@ Cell[BoxData[
       RowBox[{"t", " ", "z"}], "+", "1"}], ")"}], "a"]}], 
   TraditionalForm]], "Output",
  CellTags->"HypergeometricIR",
- CellLabel->"Out[4]=",
- CellID->1637166476]
+ CellLabel->"Out[230]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -391,13 +382,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{987, Automatic}, {Automatic, 207}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

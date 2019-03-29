@@ -127,8 +127,24 @@ IncludePair governs the inclusion  of scalar products p.k1, p.k2 and k1.k2 \
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FC2RHI", "]"}]], "Input",
+ CellTags->"FC2RHI",
+ CellLabel->"In[756]:=",
+ CellID->744239659],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"IncludePair", "\[Rule]", "True"}], ",", 
+    RowBox[{"Do", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
+ CellTags->"FC2RHI",
+ CellLabel->"Out[756]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,9 +185,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RHI",
   ButtonNote->"RHI"],
  "."
-}], "Text",
- CellTags->"FC2RHI",
- CellID->2109849659]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -182,8 +196,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -197,27 +209,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "FC2RHI", "]"}]], "Input",
- CellTags->"FC2RHI",
- CellLabel->"In[1]:=",
- CellID->744239659],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"IncludePair", "\[Rule]", "True"}], ",", 
-    RowBox[{"Do", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
- CellTags->"FC2RHI",
- CellLabel->"Out[1]=",
- CellID->283717471]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -280,13 +271,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1132, Automatic}, {Automatic, 245}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

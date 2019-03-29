@@ -133,8 +133,7 @@ Cell[TextData[{
     SubscriptBox["g", "s"], 
     SubsuperscriptBox["A", "\[Mu]", "b"], 
     SubsuperscriptBox["A", "\[Nu]", "c"], " ", 
-    SuperscriptBox["f", "abc"]}]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+    SuperscriptBox["f", "abc"]}]}]], "InlineFormula"],
  ".\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
@@ -151,19 +150,16 @@ Cell[TextData[{
         SubscriptBox["A", "\[Nu]"]}], "-", 
        RowBox[{
         SubscriptBox["\[PartialD]", "\[Nu]"], 
-        SubscriptBox["A", "\[Mu]"]}]}], TraditionalForm]], "InlineFormula",
-     FormatType->"TraditionalForm"]], "InlineFormula"], "."}], 
-   TraditionalForm]]]
+        SubscriptBox["A", "\[Mu]"]}]}], TraditionalForm]], "InlineFormula"]], 
+     "InlineFormula"], "."}], TraditionalForm]]]
 }], "Usage",
  CellID->2010081510],
 
 Cell[TextData[{
  "The name of the field (",
- Cell[BoxData["A"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["A"], "InlineFormula"],
  ") and the coupling constant (",
- Cell[BoxData["g"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["g"], "InlineFormula"],
  ") can be set through the options or by additional arguments. "
 }], "Notes"],
 
@@ -180,8 +176,7 @@ Cell[TextData[{
   ButtonNote->"OPEDelta"],
  ", which is converted to ",
  Cell[BoxData[
-  RowBox[{"Momentum", "[", "OPEDelta", "]"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"Momentum", "[", "OPEDelta", "]"}]], "InlineFormula"],
  "."
 }], "Notes"],
 

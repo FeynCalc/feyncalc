@@ -180,11 +180,6 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
   ButtonNote->"DiracGamma"],
  ", ",
- ButtonBox["DiracSlash",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
- ", ",
  ButtonBox["GA",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GA",
@@ -200,9 +195,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GSD",
   ButtonNote->"GSD"],
  "."
-}], "Text",
- CellTags->"GSE",
- CellID->1911106257]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -234,7 +227,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GSE", "[", "p", "]"}]], "Input",
  CellTags->"GSD",
- CellLabel->"In[16]:=",
+ CellLabel->"In[182]:=",
  CellID->4519520],
 
 Cell[BoxData[
@@ -247,7 +240,7 @@ Cell[BoxData[
       TraditionalForm], "^"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GSD",
- CellLabel->"Out[16]="]
+ CellLabel->"Out[182]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -258,7 +251,7 @@ Cell[BoxData[
    RowBox[{"GSE", "[", "p", "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"GSD",
- CellLabel->"In[17]:=",
+ CellLabel->"In[183]:=",
  CellID->714510926],
 
 Cell[BoxData[
@@ -271,7 +264,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"-", "4"}], "+", "D"}]}], "]"}]], "Output",
  CellTags->"GSD",
- CellLabel->"Out[17]//StandardForm="]
+ CellLabel->"Out[183]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -280,7 +273,7 @@ Cell[BoxData[
  RowBox[{"GSE", "[", 
   RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}]], "Input",
  CellTags->"GSD",
- CellLabel->"In[18]:=",
+ CellLabel->"In[184]:=",
  CellID->1291429952],
 
 Cell[BoxData[
@@ -327,7 +320,7 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"GSD",
- CellLabel->"Out[18]="]
+ CellLabel->"Out[184]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -338,7 +331,7 @@ Cell[BoxData[
    RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"GSD",
- CellLabel->"In[19]:=",
+ CellLabel->"In[185]:=",
  CellID->1183068674],
 
 Cell[BoxData[
@@ -348,7 +341,7 @@ Cell[BoxData[
   RowBox[{"GSE", "[", "r", "]"}], ".", 
   RowBox[{"GSE", "[", "s", "]"}]}]], "Output",
  CellTags->"GSD",
- CellLabel->"Out[19]//StandardForm="]
+ CellLabel->"Out[185]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -361,7 +354,7 @@ Cell[BoxData[
     RowBox[{"GSE", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
   RowBox[{"GSE", "[", "q", "]"}]}]], "Input",
  CellTags->"GSD",
- CellLabel->"In[20]:=",
+ CellLabel->"In[186]:=",
  CellID->957956427],
 
 Cell[BoxData[
@@ -399,7 +392,7 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"GSD",
- CellLabel->"Out[20]="]
+ CellLabel->"Out[186]="]
 }, Open  ]],
 
 Cell["\<\
@@ -410,7 +403,7 @@ activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first\
 Cell[BoxData[
  RowBox[{
   RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[30]:="],
+ CellLabel->"In[187]:="],
 
 Cell[CellGroupData[{
 
@@ -420,28 +413,32 @@ Cell[BoxData[
    RowBox[{"GSE", "[", "q", "]"}], ".", 
    RowBox[{"GS", "[", "q", "]"}], ".", 
    RowBox[{"GSE", "[", "q", "]"}]}], "]"}]], "Input",
- CellLabel->"In[31]:="],
+ CellLabel->"In[188]:="],
 
 Cell[BoxData[
  FormBox[
-  TemplateBox[{
-   "DiracTrick","failmsg",
-    "\"Error! DiracTrick has encountered a fatal problem and must abort the \
-computation. The problem reads: \\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect \
-combination of dimensions and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\"",
-    2,31,3,28469236587489407701,"Local"},
-   "MessageTemplate"], TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[31]:="],
+  RowBox[{
+   StyleBox[
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
+   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
+the computation. The problem reads: \
+\[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
+and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak] \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrick\\\", \
+ButtonNote -> \\\"FeynCalc`DiracTrick::failmsg\\\"]\\)\"\>"}], 
+  TraditionalForm]], "Message", "MSG",
+ CellLabel->"During evaluation of In[188]:="],
 
 Cell[BoxData[
  FormBox["$Aborted", TraditionalForm]], "Output",
- CellLabel->"Out[31]="]
+ CellLabel->"Out[188]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[32]:="],
+ CellLabel->"In[189]:="],
 
 Cell[CellGroupData[{
 
@@ -451,7 +448,7 @@ Cell[BoxData[
    RowBox[{"GSE", "[", "q", "]"}], ".", 
    RowBox[{"GS", "[", "q", "]"}], ".", 
    RowBox[{"GSE", "[", "q", "]"}]}], "]"}]], "Input",
- CellLabel->"In[34]:="],
+ CellLabel->"In[190]:="],
 
 Cell[BoxData[
  FormBox[
@@ -472,13 +469,13 @@ Cell[BoxData[
          FormBox["q",
           TraditionalForm], "_"],
         TraditionalForm]}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[34]="]
+ CellLabel->"Out[190]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[35]:="]
+ CellLabel->"In[191]:="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -548,7 +545,7 @@ PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

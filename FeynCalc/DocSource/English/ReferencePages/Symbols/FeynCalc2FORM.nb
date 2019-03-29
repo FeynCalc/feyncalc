@@ -119,16 +119,14 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FeynCalc2FORM", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]displays ",
- Cell[BoxData["exp"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["exp"], "InlineFormula"],
  " in FORM syntax.\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"FeynCalc2FORM", "[", 
    RowBox[{"file", ",", "x"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]writes ",
- Cell[BoxData["x"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["x"], "InlineFormula"],
  " in FORM syntax to a file.\n",
  Cell["   ", "ModInfo"],
  Cell[BoxData[
@@ -137,8 +135,7 @@ Cell[TextData[{
     RowBox[{"x", "\[Equal]", "y"}]}], "]"}]], "InlineFormula"],
  " \[LineSeparator]writes ",
  Cell[BoxData[
-  RowBox[{"x", "=", "y"}]], "InlineFormula",
-  FormatType->"StandardForm"],
+  RowBox[{"x", "=", "y"}]], "InlineFormula"],
  " to a file in FORM syntax."
 }], "Usage",
  CellID->2010081510],

@@ -127,29 +127,6 @@ Cell[TextData[{
  CellID->552658513],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["AlphaStrong",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/AlphaStrong"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " ",
- Cell[BoxData[
-  SubscriptBox["\[Alpha]", "s"]], "InlineFormula"],
- " in QCD"
-}], "GuideText",
- CellID->1235023741],
-
-Cell[TextData[{
- Cell[TextData[ButtonBox["AlphaFS",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/AlphaFS"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " fine-strucutre constant"
-}], "GuideText",
- CellID->1076523595],
-
-Cell[TextData[{
  Cell[TextData[ButtonBox["AntiQuarkField",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/AntiQuarkField"]], "InlineFunctionSans"],
@@ -157,6 +134,23 @@ Cell[TextData[{
  Cell[TextData[ButtonBox["QuarkField",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/QuarkField"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["QuarkFieldPsi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkFieldPsi"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["QuarkFieldPsiDagger",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkFieldPsiDagger"]], 
+  "InlineFunctionSans"],
+ Cell[TextData[ButtonBox["QuarkFieldChi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkFieldChi"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["QuarkFieldChiDagger",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkFieldChiDagger"]], 
+  "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash] ", "GuideEmDash"],
  "name of a fermionic field"
@@ -178,20 +172,133 @@ Cell[TextData[{
  CellID->1033282217],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["ChiralityProjector",
+ Cell[TextData[ButtonBox["CGA",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/ChiralityProjector"]], 
-  "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/CGA"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CGS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CGS"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CGAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CGAD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CGSD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CGSD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CGAE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CGAE"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CGSE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CGSE"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of Dirac matrices with Cartesian indices or Dirac matrices \
+contracted to 3-momenta"
+}], "GuideText",
+ CellID->747406905],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CSI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSI"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSID",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSID"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSIE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSIE"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSIS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSIS"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSISD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSISD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSISE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSISE"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of Pauli matrices with Cartesian indices or Pauli matrices \
+contracted to 3-momenta"
+}], "GuideText",
+ CellID->1899175563],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CSP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSP"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSPD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CSPE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CSPE"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " denotes ",
- Cell[BoxData[
-  SubscriptBox["P", "L"]], "InlineFormula"],
- " or ",
- Cell[BoxData[
-  SubscriptBox["P", "R"]], "InlineFormula"]
+ " denotes scalar products of 3-momenta"
 }], "GuideText",
- CellID->745071340],
+ CellID->2127308002],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CV"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CVD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CVD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CVE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CVE"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of 3-vectors"
+}], "GuideText",
+ CellID->1787264376],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CartesianIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CartesianIndex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Cartesian index"
+}], "GuideText",
+ CellID->1483374883],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CartesianMomentum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CartesianMomentum"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of 3-momenta"
+}], "GuideText",
+ CellID->1693164442],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CartesianPair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CartesianPair"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " special pairing used in the internal representation to represent Kronecker \
+deltas, 3-vectors or Cartesian scalar products"
+}], "GuideText",
+ CellID->40531547],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["DeltaFunction",
@@ -217,14 +324,6 @@ Cell[TextData[{
  Cell[TextData[ButtonBox["DiracGamma",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracGamma"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["DiracMatrix",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracMatrix"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["DiracSlash",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracSlash"]], "InlineFunctionSans"],
  ", ",
  Cell[TextData[ButtonBox["GA",
   BaseStyle->"Link",
@@ -260,6 +359,20 @@ Cell[TextData[{
  CellID->1686448459],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracIndexDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracIndexDelta"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DIDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DIDelta"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Kronecker delta in the Dirac space"
+}], "GuideText",
+ CellID->1098539957],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["DiracSigma",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracSigma"]], "InlineFunctionSans"],
@@ -267,43 +380,13 @@ Cell[TextData[{
  StyleBox["\[LongDash]", "GuideEmDash"],
  " denotes ",
  Cell[BoxData[
-  RowBox[{
-   FractionBox["I", "2"], "[", 
-   RowBox[{
-    SuperscriptBox["\[Gamma]", "\[Mu]"], ",", 
-    SuperscriptBox["\[Gamma]", "\[Nu]"]}], "]"}]], "InlineFormula"]
+  RowBox[{"I", "/", 
+   RowBox[{"2", "[", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", "\[Mu]"], ",", 
+     SuperscriptBox["\[Gamma]", "\[Nu]"]}], "]"}]}]], "InlineFormula"]
 }], "GuideText",
  CellID->1624859494],
-
-Cell[TextData[{
- Cell[TextData[ButtonBox["DiracSpinor",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracSpinor"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["Spinor",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Spinor"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["SpinorU",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SpinorU"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["SpinorUBar",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SpinorUBar"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["SpinorV",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SpinorV"]], "InlineFunctionSans"],
- ", ",
- Cell[TextData[ButtonBox["SpinorVBar",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SpinorVBar"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " denotes spinors"
-}], "GuideText",
- CellID->307637975],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["Eps",
@@ -318,9 +401,13 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/LCD"]], "InlineFunctionSans"],
  ", ",
- Cell[TextData[ButtonBox["LeviCivita",
+ Cell[TextData[ButtonBox["CLC",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/LeviCivita"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/CLC"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CLCD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CLCD"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash] ", "GuideEmDash"],
  "totally antisymmetric epsilon (Levi-Civita) tensor"
@@ -328,6 +415,14 @@ Cell[TextData[{
  CellID->1680708588],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["EpsilonUV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsilonUV"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["EpsilonIR",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsilonIR"]], "InlineFunctionSans"],
+ ", ",
  Cell[TextData[ButtonBox["Epsilon",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Epsilon"]], "InlineFunctionSans"],
@@ -351,6 +446,21 @@ Cell[TextData[{
  " Lorentz index"
 }], "GuideText",
  CellID->1483552361],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExplicitDiracIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExplicitDiracIndex"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracIndex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Dirac index"
+}], "GuideText",
+ CellID->1133806213],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["ExplicitSUNIndex",
@@ -386,6 +496,18 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FAD"]], "InlineFunctionSans"],
  ", ",
+ Cell[TextData[ButtonBox["SFAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SFAD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CFAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CFAD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GFAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GFAD"]], "InlineFunctionSans"],
+ ", ",
  Cell[TextData[ButtonBox["FeynAmpDenominator",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
@@ -395,6 +517,20 @@ Cell[TextData[{
  " denominator of Feynman amplitudes "
 }], "GuideText",
  CellID->1131303773],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCHN",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCHN"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FermionicChain",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FermionicChain"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "a Dirac chain with explicit open Dirac indices"
+}], "GuideText",
+ CellID->1183747723],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FCPartialD",
@@ -424,10 +560,16 @@ Cell[TextData[{
  CellID->1476055339],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["FourVector",
+ Cell[TextData[ButtonBox["FCTopology",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FourVector"]], "InlineFunctionSans"],
- ", ",
+  ButtonData->"paclet:FeynCalc/ref/FCTopology"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of a loop integral family topology"
+}], "GuideText",
+ CellID->351247141],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FV",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FV"]], "InlineFunctionSans"],
@@ -476,34 +618,40 @@ Cell[TextData[{
  CellID->1257907745],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["Gstrong",
+ Cell[TextData[ButtonBox["KD",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Gstrong"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/KD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["KDD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/KDD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["KDE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/KDE"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " QCD coupling constant"
+ " representation of the Cartesian Kronecker delta"
 }], "GuideText",
- CellID->1005983702],
+ CellID->279506458],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["Li2",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Li2"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " dilog function"
-}], "GuideText",
- CellID->832103768],
-
-Cell[TextData[{
+ ", ",
  Cell[TextData[ButtonBox["Li3",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Li3"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Li4",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Li4"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " trilog function"
+ " polylogarithms of different weghts"
 }], "GuideText",
- CellID->431072089],
+ CellID->1843949061],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["Momentum",
@@ -511,15 +659,11 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/Momentum"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " internal representation of momenta"
+ " internal representation of 4-momenta"
 }], "GuideText",
  CellID->316776695],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["MetricTensor",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/MetricTensor"]], "InlineFunctionSans"],
- ", ",
  Cell[TextData[ButtonBox["MT",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/MT"]], "InlineFunctionSans"],
@@ -554,9 +698,33 @@ Cell[TextData[{
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " special pairing used in the internal representation to represent the \
-metric, 4-vectors or scalar products"
+metric, scalar products or 4-vectors"
 }], "GuideText",
  CellID->1889374617],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliSigma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliSigma"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of Pauli matrices"
+}], "GuideText",
+ CellID->1326672219],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliEta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliEta"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PauliXi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliXi"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of Pauli spinors"
+}], "GuideText",
+ CellID->339455499],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["Polarization",
@@ -599,6 +767,21 @@ Cell[TextData[{
  Cell[TextData[ButtonBox["PD",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/PD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["StandardPropagatorDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/StandardPropagatorDenominator"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CartesianPropagatorDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CartesianPropagatorDenominator"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GenericPropagatorDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GenericPropagatorDenominator"]], 
+  "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " internal representation of propagator denominators"
@@ -654,6 +837,37 @@ Cell[TextData[{
  CellID->1059337536],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["SI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SI"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SID",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SID"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SIE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SIE"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SIS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SIS"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SISD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SISD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SISE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SISE"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " external representation of Pauli matrices with Lorentz indices or Pauli \
+matrices contracted to 4-momenta"
+}], "GuideText",
+ CellID->1616434352],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["SmallDelta",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/SmallDelta"]], "InlineFunctionSans"],
@@ -676,6 +890,48 @@ Cell[TextData[{
  " small variable to be used as a regulator in PaVe functions"
 }], "GuideText",
  CellID->590785021],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Spinor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Spinor"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorU",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorU"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorUBar",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorUBar"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorV"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorVBar",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorVBar"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorUD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorUD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorUBarD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorUBarD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorVD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorVD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorVBarD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorVBarD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes Dirac spinors"
+}], "GuideText",
+ CellID->307637975],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["SP",
@@ -752,6 +1008,52 @@ Cell[TextData[{
  CellID->1428923217],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["TC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TC"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes the temporal component of a 4-vector, e.g. ",
+ Cell[BoxData[
+  SuperscriptBox["p", "0"]], "InlineFormula"]
+}], "GuideText",
+ CellID->1810653371],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TGA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CGA"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes the temporal component of a Dirac matrix, i.e. ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "0"]], "InlineFormula"]
+}], "GuideText",
+ CellID->564637115],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TemporalMomentum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TemporalMomentum"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of temporal components of 4-momenta"
+}], "GuideText",
+ CellID->579398612],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TemporalPair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TemporalPair"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " special pairing used in the internal representation to represent temporal \
+components of 4-vectors"
+}], "GuideText",
+ CellID->461177124],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["Tf",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Tf"]], "InlineFunctionSans"],
@@ -769,13 +1071,27 @@ Cell[TextData[{
  Cell[TextData[ButtonBox["Zeta2",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Zeta2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Zeta4",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Zeta4"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Zeta6",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Zeta6"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Zeta8",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Zeta8"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Zeta10",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Zeta10"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " denotes ",
- Cell[BoxData[
-  SubscriptBox["\[Zeta]", "2"]], "InlineFormula"]
+ " Riemann zeta functions of different weghts"
 }], "GuideText",
- CellID->1924638314]
+ CellID->495570479]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -859,6 +1175,18 @@ Cell[TextData[{
  CellID->1504394922],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["ExpandAll2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandAll2"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["ExpandAll",
+  BaseStyle->"Link",
+  ButtonData->"/ref/ExpandAll"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1363219802],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["Explicit",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Explicit"]], "InlineFunctionSans"],
@@ -886,6 +1214,15 @@ Cell[TextData[{
  CellID->187460383],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCAbbreviate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCAbbreviate"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces abbreviations"
+}], "GuideText",
+ CellID->250574594],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCAntiSymmetrize",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCAntiSymmetrize"]], 
@@ -894,6 +1231,60 @@ Cell[TextData[{
  " antisymmetrizes with respect to the given variables"
 }], "GuideText",
  CellID->333715746],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCDuplicateFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCDuplicateFreeQ"]], 
+  "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["DuplicateFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"/ref/DuplicateFreeQ"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1948712237],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCFactorOut",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCFactorOut"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " factor out the given prefactor"
+}], "GuideText",
+ CellID->457240651],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCCheckSyntax",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCCheckSyntax"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " attempts to detect syntax errors in the input expressions"
+}], "GuideText",
+ CellID->1944469376],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCCompareResults",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCCompareResults"]], 
+  "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " compares results of different calculations"
+}], "GuideText",
+ CellID->1139098210],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCGetNotebookDirectory",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGetNotebookDirectory"]], 
+  "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["NotebookDirectory",
+  BaseStyle->"Link",
+  ButtonData->"/ref/NotebookDirectory"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->959045627],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FCE",
@@ -940,9 +1331,64 @@ Cell[TextData[{
  CellID->2100021916],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCMakeIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCMakeIndex"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generates indices from strings (useful e.g. for QGRAF input)"
+}], "GuideText",
+ CellID->1710347762],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCPatternFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCPatternFreeQ"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the expression contains any patterns"
+}], "GuideText",
+ CellID->912750390],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCProgressBar",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCProgressBar"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " a simplistic progress bar"
+}], "GuideText",
+ CellID->639244384],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCReplaceAll",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCReplaceAll"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["ReplaceAll",
+  BaseStyle->"Link",
+  ButtonData->"/ref/ReplaceAll"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1734464827],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCReplaceRepeated",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCReplaceRepeated"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["ReplaceRepeated",
+  BaseStyle->"Link",
+  ButtonData->"/ref/ReplaceRepeated"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1126439252],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCSplit",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCSplit"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FCProductSplit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCProductSplit"]], "InlineFunctionSans"],
  ", ",
  Cell[TextData[ButtonBox["PartitHead",
   BaseStyle->"Link",
@@ -957,12 +1403,24 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/SelectNotFree"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " alternative to ",
+ " alternatives to ",
  Cell[TextData[ButtonBox["Select",
   BaseStyle->"Link",
   ButtonData->"/ref/Select"]], "InlineFunctionSans"]
 }], "GuideText",
  CellID->898863791],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCSubsetQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSubsetQ"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["SubsetQ",
+  BaseStyle->"Link",
+  ButtonData->"/ref/SubsetQ"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1409575124],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FCSymmetrize",
@@ -1150,7 +1608,7 @@ Cell[TextData[{
 
 Cell[CellGroupData[{
 
-Cell["Lorentz tensors", "GuideFunctionsSubsection",
+Cell["Lorentz and Cartesian tensors", "GuideFunctionsSubsection",
  CellID->385817707],
 
 Cell[TextData[{
@@ -1164,12 +1622,23 @@ Cell[TextData[{
  CellID->2009629793],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["CartesianToLorentz",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CartesianToLorentz"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrties certain Cartesian tensors in terms of Lorentz tensors"
+}], "GuideText",
+ CellID->912975989],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["ChangeDimension",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/ChangeDimension"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " changes dimension of Lorentz indices and momenta"
+ " changes dimension of Lorentz or Cartesian indices and momenta"
 }], "GuideText",
  CellID->512359346],
 
@@ -1179,7 +1648,8 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/CompleteSquare"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " completes the square of a second order polynomial in the momentum x"
+ " completes the square of a second order polynomial in the momentum ",
+ Cell[BoxData["x"], "InlineFormula"]
 }], "GuideText",
  CellID->1524292158],
 
@@ -1189,9 +1659,50 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/Contract"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " contracts Lorentz indices of tensors and Dirac matrices"
+ " contracts Lorentz or Cartesian indices of tensors and Dirac matrices"
 }], "GuideText",
  CellID->231212511],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DeclareFCTensor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeclareFCTensor"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " declares the given head to be a tensor"
+}], "GuideText",
+ CellID->462667998],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DummyIndexFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DummyIndexFreeQ"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the expression contains dummy indices"
+}], "GuideText",
+ CellID->1666870466],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EpsContract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsContract"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites products of Levi-Civita tensors in terms of scalar products"
+}], "GuideText",
+ CellID->1913592904],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EpsContractFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsContractFreeQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the expression contains products of LeviCivita tensors"
+}], "GuideText",
+ CellID->1678264313],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["EpsEvaluate",
@@ -1201,7 +1712,7 @@ Cell[TextData[{
  StyleBox["\[LongDash]", "GuideEmDash"],
  " applies total antisymmetry and linearity to all Levi-Civita tensors"
 }], "GuideText",
- CellID->1913592904],
+ CellID->1041255969],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["ExpandScalarProduct",
@@ -1221,7 +1732,7 @@ Cell[TextData[{
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " canonicalizes dummy Lorentz and SU(N) indices"
+ " canonicalizes dummy indices"
 }], "GuideText",
  CellID->530074450],
 
@@ -1237,15 +1748,70 @@ Cell[TextData[{
  CellID->343872275],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCGetDimensions",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGetDimensions"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " returns the space-time dimensions of objects in the expression"
+}], "GuideText",
+ CellID->1454317304],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCPermuteMomentaRules",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCPermuteMomentaRules"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generates rules for permutations of momenta"
+}], "GuideText",
+ CellID->458315879],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCRenameDummyIndices",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCRenameDummyIndices"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " renames dummy Lorentz and SU(N) indices"
+ " renames dummy indices"
 }], "GuideText",
  CellID->548161550],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCReplaceMomenta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCReplaceMomenta"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " replaces momenta in the expression"
+}], "GuideText",
+ CellID->956858169],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCRerouteMomenta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCRerouteMomenta"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " improves routing of the external momenta using momentum conservation"
+}], "GuideText",
+ CellID->1163869201],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCSchoutenBruteForce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSchoutenBruteForce"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " brute force application of the Schouten identity to minimize the number of \
+terms"
+}], "GuideText",
+ CellID->1554099869],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FourDivergence",
@@ -1266,6 +1832,17 @@ Cell[TextData[{
  " calculates the Laplacian"
 }], "GuideText",
  CellID->1285601191],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["LorentzToCartesian",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LorentzToCartesian"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrties Lorentz tensors in terms of Cartesian tensors"
+}], "GuideText",
+ CellID->2030923756],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["MomentumCombine",
@@ -1327,6 +1904,16 @@ Cell[TextData[{
  CellID->874103215],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["Schouten",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Schouten"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies Schouten identity (random guess)"
+}], "GuideText",
+ CellID->218430270],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["SetMandelstam",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/SetMandelstam"]], "InlineFunctionSans"],
@@ -1347,6 +1934,16 @@ Cell[TextData[{
  CellID->1156270314],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["ThreeDivergence",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ThreeDivergence"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates partial derivative with respect to a 3-vector"
+}], "GuideText",
+ CellID->1174118505],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["TrickMandelstam",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/TrickMandelstam"]], "InlineFunctionSans"],
@@ -1364,7 +1961,17 @@ Cell[TextData[{
  StyleBox["\[LongDash]", "GuideEmDash"],
  " uncontracts Lorentz indices of tensors and Dirac matrices"
 }], "GuideText",
- CellID->715481727]
+ CellID->715481727],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["UnDeclareFCTensor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UnDeclareFCTensor"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " undeclares the given head to be a tensor"
+}], "GuideText",
+ CellID->397784278]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1435,7 +2042,7 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/DiracOrder"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " orders the Dirac matrices in expression alphabetically"
+ " orders the Dirac matrices in expression lexicographically"
 }], "GuideText",
  CellID->688938496],
 
@@ -1449,6 +2056,20 @@ Cell[TextData[{
 (SPVAT-decomposition) "
 }], "GuideText",
  CellID->1740429042],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSigmaExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSigmaExpand"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies linearity to the arguments of ",
+ Cell[TextData[ButtonBox["DiracSigma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSigma"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->766933896],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["DiracSigmaExplicit",
@@ -1474,6 +2095,39 @@ Cell[TextData[{
 products"
 }], "GuideText",
  CellID->255459663],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSubstitute5",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSubstitute5"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " as ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Gamma]", "6"], "-", 
+   SuperscriptBox["\[Gamma]", "7"]}]], "InlineFormula"]
+}], "GuideText",
+ CellID->1930796468],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSubstitute67",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSubstitute67"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts explicit definitions of the chirality projectors ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "6"]], "InlineFormula"],
+ " and ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "7"]], "InlineFormula"]
+}], "GuideText",
+ CellID->859911226],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["DiracTrace",
@@ -1508,14 +2162,126 @@ Levi-Civita tensor"
  CellID->525715973],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["Schouten",
+ Cell[TextData[ButtonBox["FCCCT",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Schouten"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/FCCCT"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FCChargeConjugateTransposed",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCChargeConjugateTransposed"]], 
+  "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " applies Schouten identity"
+ " transposes chains of Dirac matrices and applies change conjugation, e.g. \
+",
+ Cell[BoxData["x"], "InlineFormula"],
+ " becomes ",
+ Cell[BoxData[
+  RowBox[{"C", " ", 
+   SuperscriptBox["x", "T"], 
+   SuperscriptBox["C", 
+    RowBox[{"-", "1"}]]}]], "InlineFormula"]
 }], "GuideText",
- CellID->218430270],
+ CellID->731234667],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCDiracIsolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCDiracIsolate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  wraps Dirac matrices and spinors into specified heads "
+}], "GuideText",
+ CellID->264220763],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FermionicChainSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FermionicChainSimplify"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts explicit Dirac indices "
+}], "GuideText",
+ CellID->2051310471],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SirlinSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SirlinSimplify"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies Sirlin's relations to products of spinor chains"
+}], "GuideText",
+ CellID->599004464],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SpinorChainChiralSplit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorChainChiralSplit"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces chirality projectors in spinor chains free of ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"]
+}], "GuideText",
+ CellID->249077307],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SpinorChainTranspose",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorChainTranspose"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " tranposes a closed spinor chains"
+}], "GuideText",
+ CellID->666948297],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SpinorChainTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorChainTrick"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies products of spinor chains"
+}], "GuideText",
+ CellID->544222991],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToDiracGamma67",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToDiracGamma67"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " replaces ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"1", "/", "2"}], 
+   RowBox[{"(", 
+    RowBox[{"1", "\[PlusMinus]", 
+     SuperscriptBox["\[Gamma]", "5"]}], ")"}]}]], "InlineFormula"],
+ " with ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", 
+   RowBox[{"6", "/", "7"}]]], "InlineFormula"]
+}], "GuideText",
+ CellID->829753496],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToDiracSigma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToDiracSigma"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse operation to ",
+ Cell[TextData[ButtonBox["DiracSigmaExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSigmaExplicit"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->803577072],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["ToLarin",
@@ -1531,6 +2297,83 @@ Cell[TextData[{
  " according to the Larin scheme"
 }], "GuideText",
  CellID->1707494307]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Pauli algebra", "GuideFunctionsSubsection",
+ CellID->1019637263],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCGetPauliSigmaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGetPauliSigmaScheme"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FCSetPauliSigmaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSetPauliSigmaScheme"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  specifies the threatment of Pauli matrices in dimensional regularization"
+}], "GuideText",
+ CellID->1574223047],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCPauliIsolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCPauliIsolate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  wraps Pauli matrices and spinors into specified heads "
+}], "GuideText",
+ CellID->1157786320],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliSigmaCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliSigmaCombine"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse operation to ",
+ Cell[TextData[ButtonBox["PauliSigmaExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliSigmaExpand"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->552290354],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliSigmaExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliSigmaExpand"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands sums of momenta contracted with Pauli matrices"
+}], "GuideText",
+ CellID->719502163],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliOrder",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliOrder"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the Pauli matrices in expression lexicographically"
+}], "GuideText",
+ CellID->1399324995],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliTrick"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Pauli matrices with each other and performs several \
+simplifications but no expansions"
+}], "GuideText",
+ CellID->1853386914]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1597,7 +2440,7 @@ Cell[TextData[{
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash] ", "GuideEmDash"],
- "declares non-commutative objects"
+ "declares noncommutative objects"
 }], "GuideText",
  CellID->795497081],
 
@@ -1627,6 +2470,26 @@ Cell[TextData[{
  CellID->1861924278],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCTraceExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCTraceExpand"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands traces using linearity wihtout calculating them"
+}], "GuideText",
+ CellID->570329733],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCTraceFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCTraceFactor"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " pulls c-numbers out of traces"
+}], "GuideText",
+ CellID->563873312],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["NonCommFreeQ",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/NonCommFreeQ"]], "InlineFunctionSans"],
@@ -1636,7 +2499,7 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/NonCommQ"]], "InlineFunctionSans"],
  "  ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " checks if the expression contains non-commutative quantities"
+ " checks if the expression contains noncommutative quantities"
 }], "GuideText",
  CellID->1355907511],
 
@@ -1655,13 +2518,35 @@ Cell[TextData[{
  CellID->1719074274],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["UnDeclareAntiCommutator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UnDeclareAntiCommutator"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " removes definitions of anticommutators"
+}], "GuideText",
+ CellID->1938046161],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["UnDeclareCommutator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UnDeclareCommutator"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " removes definitions of commutators"
+}], "GuideText",
+ CellID->899466843],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["UnDeclareNonCommutative",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/UnDeclareNonCommutative"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " undeclares non-commutative objects"
+ " undeclares noncommutative objects"
 }], "GuideText",
  CellID->1309406098]
 }, Open  ]],
@@ -1695,8 +2580,7 @@ Cell[TextData[{
 Cell[TextData[{
  Cell[TextData[ButtonBox["SUNFDeltaContract",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/SUNDeltaContract"]], 
-  "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/SUNFDeltaContract"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " contracts Kronecker deltas with fundamental color indices"
@@ -1848,6 +2732,64 @@ Cell[TextData[{
  CellID->1595882694],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCGramMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGramMatrix"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generates the Gram matrix from the given momenta"
+}], "GuideText",
+ CellID->649428922],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCGramDeterminant",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGramDeterminant"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates the Gram determinant"
+}], "GuideText",
+ CellID->1635464308],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCHideEpsilon",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCHideEpsilon"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"1", "/", "\[Epsilon]"}], "-", 
+   SubscriptBox["\[Gamma]", "E"], "+", 
+   RowBox[{"Log", 
+    RowBox[{"(", 
+     RowBox[{"4", "\[Pi]"}], ")"}]}]}]], "InlineFormula"],
+ " with ",
+ Cell[BoxData["\[CapitalDelta]"], "InlineFormula"]
+}], "GuideText",
+ CellID->1893254602],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCShowEpsilon",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCShowEpsilon"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes ",
+ Cell[BoxData["\[CapitalDelta]"], "InlineFormula"],
+ " with ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"1", "/", "\[Epsilon]"}], "-", 
+   SubscriptBox["\[Gamma]", "E"], "+", 
+   RowBox[{"Log", 
+    RowBox[{"(", 
+     RowBox[{"4", "\[Pi]"}], ")"}]}]}]], "InlineFormula"]
+}], "GuideText",
+ CellID->157928460],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCIntegral",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCIntegral"]], "InlineFunctionSans"],
@@ -1880,16 +2822,72 @@ Cell[TextData[{
  CellID->714568367],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["FCLoopBasisFindCompletion",
+ Cell[TextData[ButtonBox["FCLoopBasisSplit",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisFindCompletion"]], 
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisSplit"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " determines propagators that need to be included in the loop integral to \
-ensure that its propagators form a basis"
+ " checks if the loop integral factorizes into a product of separate integrals"
 }], "GuideText",
  CellID->251142308],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisGetSize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisGetSize"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " returns the number of propagators in a topology"
+}], "GuideText",
+ CellID->316443304],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisPropagatorsToTopology",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisPropagatorsToTopology"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that generates a list of propagators to describe a \
+topology"
+}], "GuideText",
+ CellID->298868397],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisCreateScalarProducts",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisCreateScalarProducts"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that generates all possible loop momenta dependent \
+scalar products"
+}], "GuideText",
+ CellID->1836590028],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisExtract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisExtract"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliart function that extracts the scalar products from a loop integral"
+}], "GuideText",
+ CellID->1180959289],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisIntegralToPropagators",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisIntegralToPropagators"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that converts a loop integral into a list of propagators"
+}], "GuideText",
+ CellID->145221909],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FCLoopCanonicalize",
@@ -1904,6 +2902,17 @@ integrals"
  CellID->1336937891],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopEikonalPropagatorFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopEikonalPropagatorFreeQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the integral contains eikonal propagators"
+}], "GuideText",
+ CellID->1371085902],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCLoopExtract",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCLoopExtract"]], "InlineFunctionSans"],
@@ -1914,6 +2923,17 @@ Cell[TextData[{
  CellID->1906541245],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopIBPReducableQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopIBPReducableQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the integral contains propagators raised to integer powers"
+}], "GuideText",
+ CellID->1217639042],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCLoopIsolate",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCLoopIsolate"]], "InlineFunctionSans"],
@@ -1922,6 +2942,86 @@ Cell[TextData[{
  " wraps loop integrals into specified heads"
 }], "GuideText",
  CellID->757005022],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopMixedIntegralQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopMixedIntegralQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the integral depends on both 4-vectors and 3-vectors"
+}], "GuideText",
+ CellID->659374071],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopMixedToCartesianAndTemporal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopMixedToCartesianAndTemporal"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " eliminates the dependence on 4-vectors by trading them for temporal \
+components and 3-vectors."
+}], "GuideText",
+ CellID->246441420],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopNonIntegerPropagatorPowersFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopNonIntegerPropagatorPowersFreeQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the integral has propagators raised to noninteger powers."
+}], "GuideText",
+ CellID->1419686490],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopPropagatorPowersCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopPropagatorPowersCombine"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " combines same propagators into one raised to the corresponding integer \
+power"
+}], "GuideText",
+ CellID->1595269881],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopPropagatorPowersExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopPropagatorPowersExpand"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites propagators raised to ineger powers as a products of \
+propagators."
+}], "GuideText",
+ CellID->253977384],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopSamePropagatorHeadsQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopSamePropagatorHeadsQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the integral contains different types of propagators."
+}], "GuideText",
+ CellID->1024109807],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopRemoveNegativePropagatorPowers",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopRemoveNegativePropagatorPowers"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites propagators rasied to negative integer powers as numerators."
+}], "GuideText",
+ CellID->2097424491],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FCLoopSolutionList",
@@ -1971,6 +3071,22 @@ Cell[TextData[{
  " combines products of propagators"
 }], "GuideText",
  CellID->127777310],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynAmpDenominatorExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorExplicit"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
+  "InlineFunctionSans"],
+ " in terms of scalar products and masses"
+}], "GuideText",
+ CellID->2037908586],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FeynAmpDenominatorSimplify",
@@ -2027,13 +3143,14 @@ Cell[TextData[{
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " rewrites ",
- Cell[TextData[{
-  ButtonBox["Gamma",
-   BaseStyle->"Link",
-   ButtonData->"/ref/Gamma"],
-  "[n + m]"
- }], "InlineFunctionSans"],
- " where n is an integer"
+ Cell[TextData[Cell[BoxData[
+  FormBox[
+   RowBox[{"Gamma", "[", 
+    RowBox[{"n", "+", "m"}], "]"}], TraditionalForm]], "InlineFormula"]], 
+  "InlineFunctionSans"],
+ " where ",
+ Cell[BoxData["n"], "InlineFormula"],
+ " is an integer"
 }], "GuideText",
  CellID->1684971587],
 
@@ -2129,41 +3246,6 @@ Cell[TextData[{
  CellID->305598727],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["IFPDOff",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/IFPDOff"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " changes from ",
- Cell[TextData[ButtonBox["IFPD",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/IFPD"]], "InlineFunctionSans"],
- " representation to ",
- Cell[TextData[ButtonBox["FeynAmpDenominator",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], "InlineFunctionSans"]
-}], "GuideText",
- CellID->554636843],
-
-Cell[TextData[{
- Cell[TextData[ButtonBox["IFPDOn",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/IFPDOn"]], "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " changes from ",
- Cell[TextData[ButtonBox["FeynAmpDenominator",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
-  "InlineFunctionSans"],
- " representation to ",
- Cell[TextData[ButtonBox["IFPD",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/IFPD"]], "InlineFunctionSans"]
-}], "GuideText",
- CellID->1378134869],
-
-Cell[TextData[{
  Cell[TextData[ButtonBox["IntegrateByParts",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/IntegrateByParts"]], 
@@ -2179,14 +3261,14 @@ Cell[TextData[{
  CellID->136967693],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["OneLoop",
+ Cell[TextData[ButtonBox["NPointTo4Point",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/OneLoop"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/NPointTo4Point"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " calculates  1-loop Feynman diagram amplitudes"
+ " rewrites IR-finite 1-loop pentagons in terms of box integrals"
 }], "GuideText",
- CellID->965355169],
+ CellID->842283836],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["OneLoopSimplify",
@@ -2213,9 +3295,9 @@ Cell[TextData[{
  CellID->932281504],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["PaveOrder",
+ Cell[TextData[ButtonBox["PaVeOrder",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/PaveOrder"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/PaVeOrder"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " orders the arguments of ",
@@ -2252,20 +3334,14 @@ Cell[TextData[{
  CellID->1268052330],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["FeynAmpDenominatorExplicit",
+ Cell[TextData[ButtonBox["PaVeUVPart",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorExplicit"]], 
-  "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/PaVeUVPart"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " rewrites ",
- Cell[TextData[ButtonBox["FeynAmpDenominator",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
-  "InlineFunctionSans"],
- " in terms of scalar products and masses"
+ " returns the UV-divergent pieces of arbitrary Passarino-Veltman functions."
 }], "GuideText",
- CellID->2037908586],
+ CellID->2127045206],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["RussianTrick",
@@ -2276,17 +3352,6 @@ Cell[TextData[{
  " derives IBP relations for 2-loop self-energy integrals"
 }], "GuideText",
  CellID->334277431],
-
-Cell[TextData[{
- Cell[TextData[ButtonBox["ScalarProductCancel",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/ScalarProductCancel"]], 
-  "InlineFunctionSans"],
- " ",
- StyleBox["\[LongDash]", "GuideEmDash"],
- " cancels scalar products with propagators"
-}], "GuideText",
- CellID->839585187],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["SimplifyDeltaFunction",
@@ -2320,6 +3385,10 @@ Cell[TextData[{
  CellID->1554094936],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["CTdec",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CTdec"]], "InlineFunctionSans"],
+ ", ",
  Cell[TextData[ButtonBox["Tdec",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Tdec"]], "InlineFunctionSans"],
@@ -2403,9 +3472,73 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/ToPaVe"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " converts scalar 1-loop integrals to Passarino Veltman scalar functions "
+ " converts scalar 1-loop integrals to Passarino-Veltman scalar functions "
 }], "GuideText",
  CellID->242380689],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToPaVe2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToPaVe2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites Passarino-Veltman functions  ",
+ Cell[TextData[ButtonBox["A0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/A0"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["A00",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/A00"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B0"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B1"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B00",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B00"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B11",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B11"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["C0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/C0"]], "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["D0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/D0"]], "InlineFunctionSans"],
+ " as ",
+ ButtonBox["PaVe",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVe"],
+ " objects."
+}], "GuideText",
+ CellID->94253587],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToSFAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToSFAD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " converts ",
+ Cell[TextData[ButtonBox["FAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FAD"]], "InlineFunctionSans"],
+ "'s to ",
+ Cell[TextData[ButtonBox["SFAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SFAD"]], "InlineFunctionSans"],
+ "'s "
+}], "GuideText",
+ CellID->43212878],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["TrickIntegrate",
@@ -2746,6 +3879,20 @@ Cell[TextData[{
  CellID->1449625308],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["SquareAmplitude",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SquareAmplitude"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " writes ",
+ Cell[BoxData[
+  RowBox[{"|", " ", "\[ScriptCapitalM]", " ", 
+   SuperscriptBox["|", "2"]}]], "InlineFormula"],
+ " as a list of amplitude products"
+}], "GuideText",
+ CellID->390518825],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["SMP",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/SMP"]], "InlineFunctionSans"],
@@ -2763,7 +3910,19 @@ Cell[TextData[{
  StyleBox["\[LongDash]", "GuideEmDash"],
  " some SM vertices"
 }], "GuideText",
- CellID->1716995820]
+ CellID->1716995820],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToStandardMatrixElement",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToStandardMatrixElement"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " wraps Dirac structures, color structures and polarization vectors with a \
+special head"
+}], "GuideText",
+ CellID->847406609]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2949,11 +4108,157 @@ Cell[TextData[{
 
 Cell[CellGroupData[{
 
-Cell["\t", "GuideDelimiter",
- CellID->311258892],
+Cell["Deprecated or legacy functions", "GuideFunctionsSubsection",
+ CellID->1393825317],
 
-Cell["XXXX . XXXX . ", "InlineGuideFunctionListing",
- CellID->58033752]
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AlphaStrong",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AlphaStrong"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ Cell[BoxData[
+  SubscriptBox["\[Alpha]", "s"]], "InlineFormula"],
+ " in QCD"
+}], "GuideText",
+ CellID->1235023741],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AlphaFS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AlphaFS"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " fine-strucutre constant"
+}], "GuideText",
+ CellID->1076523595],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ChiralityProjector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ChiralityProjector"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  SubscriptBox["P", "L"]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  SubscriptBox["P", "R"]], "InlineFormula"]
+}], "GuideText",
+ CellID->745071340],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracMatrix"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracSlash",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSlash"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of Dirac matrices and slashes"
+}], "GuideText",
+ CellID->878821469],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FourVector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FourVector"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of 4-vectors"
+}], "GuideText",
+ CellID->2116157651],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Gstrong",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Gstrong"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " QCD coupling constant"
+}], "GuideText",
+ CellID->1005983702],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["IFPDOff",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPDOff"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes from ",
+ Cell[TextData[ButtonBox["IFPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPD"]], "InlineFunctionSans"],
+ " representation to ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->554636843],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["IFPDOn",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPDOn"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes from ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
+  "InlineFunctionSans"],
+ " representation to ",
+ Cell[TextData[ButtonBox["IFPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPD"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1378134869],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["LeviCivita",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeviCivita"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "totally antisymmetric epsilon (Levi-Civita) tensor"
+}], "GuideText",
+ CellID->2081581299],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["MetricTensor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MetricTensor"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of the metric tensor"
+}], "GuideText",
+ CellID->458785969],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["OneLoop",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OneLoop"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates  1-loop Feynman diagram amplitudes"
+}], "GuideText",
+ CellID->965355169],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ScalarProductCancel",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScalarProductCancel"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " cancels scalar products with propagators"
+}], "GuideText",
+ CellID->839585187]
 }, Open  ]]
 }, Open  ]],
 
@@ -2965,7 +4270,7 @@ Cell["Tutorials", "GuideTutorialsSection",
 Cell[TextData[Cell[TextData[ButtonBox["Short introduction",
  BaseStyle->"Link",
  ButtonData->
-  "paclet:FeynCalc/ref/Intro"]], "InlineFunctionSans"]], "GuideTutorial",
+  "paclet:FeynCalc/Tutorials/Intro"]], "InlineFunctionSans"]], "GuideTutorial",
  CellID->806871991],
 
 Cell["XXXX", "GuideTutorial",
@@ -2987,14 +4292,14 @@ Cell["XXXX", "GuideMoreAbout",
 Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
-WindowSize->{1117, 889},
-WindowMargins->{{678, Automatic}, {Automatic, 201}},
+WindowSize->{1194, 889},
+WindowMargins->{{547, Automatic}, {205, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
   CharacterEncoding -> "UTF-8"],
-PrivateNotebookOptions -> {"TrackCellChangeTimes" -> False}
+$CellContext`FileOutlineCache -> False
 ]
 

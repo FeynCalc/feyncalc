@@ -121,11 +121,9 @@ Cell[TextData[{
    RowBox[{"exp", ",", "k", ",", "n"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]sums over physical (transverse) polarizations of an \
 external massless vector boson with momentum ",
- Cell[BoxData["k"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["k"], "InlineFormula"],
  ", where ",
- Cell[BoxData["n"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["n"], "InlineFormula"],
  " is an auxiliary 4-vector from the gauge-dependent polarization sum \
 formula.\n",
  Cell["   ", "ModInfo"],
@@ -134,13 +132,11 @@ formula.\n",
    RowBox[{"exp", ",", "k", ",", "0"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]replaces the polarization sum of an external massless \
 vector boson with momentum ",
- Cell[BoxData["k"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["k"], "InlineFormula"],
  " by ",
  Cell[BoxData[
   RowBox[{"-", 
-   SuperscriptBox["g", "\[Mu]\[Nu]"]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+   SuperscriptBox["g", "\[Mu]\[Nu]"]}]], "InlineFormula"],
  ". This corresponds to the summation over all four polarizations, including \
 the unphysical ones.\n",
  Cell["   ", "ModInfo"],
@@ -149,12 +145,10 @@ the unphysical ones.\n",
    RowBox[{"exp", ",", "k"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]sums over the three polarizations of an external massive \
 vector boson with momentum ",
- Cell[BoxData["k"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["k"], "InlineFormula"],
  " and mass ",
  Cell[BoxData[
-  SuperscriptBox["k", "2"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SuperscriptBox["k", "2"]], "InlineFormula"],
  "."
 }], "Usage",
  CellID->2010081510],
@@ -664,8 +658,7 @@ in ",
    RowBox[{
     SuperscriptBox["e", "+"], 
     SuperscriptBox["e", "-"]}], "\[Rule]", " ", "\[Gamma]\[Gamma]"}]], 
-  "InlineFormula",
-  FormatType->"StandardForm"]
+  "InlineFormula"]
 }], "Notes"],
 
 Cell[BoxData[{
@@ -1618,9 +1611,8 @@ Cell[TextData[{
    RowBox[{"g", " ", "g"}], " ", "\[Rule]", " ", 
    RowBox[{"Q", " ", Cell[TextData[Cell[BoxData[
      FormBox[
-      OverscriptBox["Q", "-"], TraditionalForm]], "InlineFormula",
-     FormatType->"TraditionalForm"]], "InlineFormula"]}]}]], "InlineFormula",
-  FormatType->"StandardForm"],
+      OverscriptBox["Q", "-"], TraditionalForm]], "InlineFormula"]], 
+     "InlineFormula"]}]}]], "InlineFormula"],
  ". The proper summation over the polarizations of the gluons requires a \
 choice of two auxiliary vectors (unless we subtract the unphysical \
 contributions using ghosts). It is customary to take the 4-momentum of \
@@ -1629,8 +1621,7 @@ another gluon as the auxiliary vector in the summation formula."
 
 Cell[TextData[{
  "The option ",
- Cell[BoxData["ExtraFactor"], "InlineFormula",
-  FormatType->"StandardForm"],
+ Cell[BoxData["ExtraFactor"], "InlineFormula"],
  " is used to average over the polarizations of the initial gluons."
 }], "Notes"],
 

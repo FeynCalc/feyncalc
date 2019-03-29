@@ -160,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["FCI",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FCI",
@@ -181,9 +180,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNIndex",
   ButtonNote->"SUNIndex"],
  "."
-}], "Text",
- CellTags->"ExplicitSUNIndex",
- CellID->1491985045]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,14 +212,13 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExplicitSUNIndex", "[", "1", "]"}]], "Input",
  CellTags->"ExplicitSUNIndex",
- CellLabel->"In[1]:=",
+ CellLabel->"In[745]:=",
  CellID->902504379],
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"ExplicitSUNIndex",
- CellLabel->"Out[1]=",
- CellID->835416034]
+ CellLabel->"Out[745]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -287,7 +283,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1789, Automatic}, {Automatic, 120}},
+WindowMargins->{{1016, Automatic}, {Automatic, 117}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

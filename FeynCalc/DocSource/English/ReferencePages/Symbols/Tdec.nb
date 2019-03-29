@@ -218,9 +218,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OneLoopSimplify",
   ButtonNote->"OneLoopSimplify"],
  "."
-}], "Text",
- CellTags->"Tdec",
- CellID->562924165]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -268,9 +266,7 @@ Cell[TextData[{
        RowBox[{"f", "(", 
         RowBox[{"p", ",", "q"}], ")"}], 
        RowBox[{"p", "\[CenterDot]", "q"}]}]}]}]}], TraditionalForm]]]
-}], "Text",
- CellTags->"Tdec",
- CellID->1358527070],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -413,42 +409,29 @@ Cell[TextData[{
     SubsuperscriptBox["q", "2", "\[Nu]"], 
     SubsuperscriptBox["q", "3", "\[Rho]"]}], TraditionalForm]]],
  "."
-}], "Text",
- CellTags->"Tdec",
- CellID->2118815883],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"t", "=", 
-   RowBox[{"Tdec", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{
-         SubscriptBox["q", "1"], ",", "\[Mu]"}], "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{
-         SubscriptBox["q", "2"], ",", "\[Nu]"}], "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{
-         SubscriptBox["q", "3"], ",", "\[Rho]"}], "}"}]}], "}"}], ",", 
-     RowBox[{"{", "p", "}"}]}], "]"}]}], ";"}]], "Input",
- CellTags->"Tdec",
- CellLabel->"In[248]:=",
- CellID->739868135],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"t", "[", 
-   RowBox[{"[", "2", "]"}], "]"}], "/.", 
-  RowBox[{"t", "[", 
-   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ RowBox[{"Tdec", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["q", "1"], ",", "\[Mu]"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["q", "2"], ",", "\[Nu]"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["q", "3"], ",", "\[Rho]"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", "p", "}"}], ",", 
+   RowBox[{"List", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"Tdec",
- CellLabel->"In[249]:=",
- CellID->1848782179],
+ CellLabel->"In[7]:=",
+ CellID->739868135],
 
 Cell[BoxData[
  FormBox[
@@ -1157,7 +1140,7 @@ Cell[BoxData[
           TraditionalForm], ")"}]}]}], ")"}]}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"Tdec",
- CellLabel->"Out[249]="]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1175,7 +1158,7 @@ Cell[BoxData[
      RowBox[{"p", ",", "\[Rho]"}], "]"}]}], "]"}], "//", "Factor"}]], "Input",
  
  CellTags->"Tdec",
- CellLabel->"In[250]:=",
+ CellLabel->"In[8]:=",
  CellID->1116880881],
 
 Cell[BoxData[
@@ -1233,15 +1216,8 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Tdec",
- CellLabel->"Out[250]="]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Clear", "[", "t", "]"}], ";"}]], "Input",
- CellTags->"Tdec",
- CellLabel->"In[251]:=",
- CellID->1835029182]
+ CellLabel->"Out[8]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1305,7 +1281,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{191, Automatic}, {Automatic, 277}},
+WindowMargins->{{827, Automatic}, {Automatic, 146}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

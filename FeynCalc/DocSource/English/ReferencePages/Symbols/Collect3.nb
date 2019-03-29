@@ -146,8 +146,24 @@ to the list of monomials  mulitplied by their coefficients."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Collect3", "]"}]], "Input",
+ CellTags->"Collect3",
+ CellLabel->"In[391]:=",
+ CellID->1015372413],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"Head", "\[Rule]", "Plus"}]}], "}"}], TraditionalForm]], "Output",
+ 
+ CellTags->"Collect3",
+ CellLabel->"Out[391]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -193,9 +209,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Isolate",
   ButtonNote->"Isolate"],
  "."
-}], "Text",
- CellTags->"Collect3",
- CellID->877664095]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -225,26 +239,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Collect3", "]"}]], "Input",
- CellTags->"Collect3",
- CellLabel->"In[1]:=",
- CellID->1015372413],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
-    RowBox[{"Head", "\[Rule]", "Plus"}]}], "}"}], TraditionalForm]], "Output",
- 
- CellTags->"Collect3",
- CellLabel->"Out[1]=",
- CellID->581070159]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Collect3", "[", 
   RowBox[{
    RowBox[{
@@ -262,7 +256,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "b"}], "}"}]}], "]"}]], "Input",
  CellTags->"Collect3",
- CellLabel->"In[2]:=",
+ CellLabel->"In[392]:=",
  CellID->956954453],
 
 Cell[BoxData[
@@ -281,8 +275,7 @@ Cell[BoxData[
     SuperscriptBox["b", "2"], " ", "c"}], "+", 
    SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
  CellTags->"Collect3",
- CellLabel->"Out[2]=",
- CellID->1763015133]
+ CellLabel->"Out[392]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -296,7 +289,7 @@ Cell[BoxData[
       RowBox[{"a", "-", "b", "-", "c", "-", "d"}], ")"}], "5"], "]"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"Collect3",
- CellLabel->"In[3]:=",
+ CellLabel->"In[393]:=",
  CellID->860117715],
 
 Cell[BoxData[
@@ -435,8 +428,7 @@ Cell[BoxData[
     SuperscriptBox["d", "4"]}], "-", 
    SuperscriptBox["d", "5"]}], TraditionalForm]], "Output",
  CellTags->"Collect3",
- CellLabel->"Out[3]=",
- CellID->1558649070]
+ CellLabel->"Out[393]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -501,13 +493,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{1098, Automatic}, {Automatic, 194}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -128,8 +128,59 @@ names."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCCanonicalizeDummyIndices", "]"}]], "Input",
+ CellLabel->"In[758]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CartesianIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"CustomIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCTraceExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Function", "\[Rule]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "FeynCalc`FCCanonicalizeDummyIndices`Private`x", ",", 
+         "FeynCalc`FCCanonicalizeDummyIndices`Private`seed"}], "}"}], 
+       "\[Function]", 
+       RowBox[{"FCGV", "(", 
+        RowBox[{
+         RowBox[{
+         "ToString", "[", "FeynCalc`FCCanonicalizeDummyIndices`Private`seed", 
+          "]"}], "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{
+          "Identity", "@@", "FeynCalc`FCCanonicalizeDummyIndices`Private`x"}],
+           "]"}]}], ")"}]}], ")"}]}], ",", 
+    RowBox[{"Head", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "LorentzIndex", ",", "CartesianIndex", ",", "SUNIndex", ",", 
+       "SUNFIndex"}], "}"}]}], ",", 
+    RowBox[{"LorentzIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}], ",", 
+    RowBox[{"NotMomentum", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"SUNFIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"SUNIndexNames", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[758]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,8 +215,13 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
+Cell[TextData[{
+ ButtonBox["FCRenameDummyIndices",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCRenameDummyIndices",
+  ButtonNote->"FCRenameDummyIndices"],
+ "."
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -211,7 +267,7 @@ Cell[BoxData[
     RowBox[{"q", ",", "si"}], "]"}], 
    RowBox[{"FVD", "[", 
     RowBox[{"r", ",", "si"}], "]"}]}]}]], "Input",
- CellLabel->"In[26]:=",
+ CellLabel->"In[759]:=",
  CellID->720389846],
 
 Cell[BoxData[
@@ -219,99 +275,74 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["p",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm], " ", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["q",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}], "+", 
    RowBox[{
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["p",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["nu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["nu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm], " ", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["q",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["nu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["nu",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}], "+", 
    RowBox[{
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["q",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["si",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["si",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm], " ", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["r",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["si",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+     SuperscriptBox[
+      FormBox[
+       FormBox["r",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["si",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[26]=",
- CellID->1037526668]
+ CellLabel->"Out[759]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -320,59 +351,46 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"FCCanonicalizeDummyIndices", "[", "%", "]"}], "//", 
   "Factor2"}]], "Input",
- CellLabel->"In[27]:=",
+ CellLabel->"In[760]:=",
  CellID->1752687288],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"FCGV", "(", "\<\"li481\"\>", ")"}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
+      RowBox[{"FCGV", "(", "\<\"li1881\"\>", ")"}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"2", " ", 
-      FormBox[
-       SuperscriptBox[
-        FormBox[
-         FormBox["p",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"li481\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "+", 
-     FormBox[
       SuperscriptBox[
        FormBox[
-        FormBox["r",
+        FormBox["p",
          TraditionalForm],
         TraditionalForm], 
        FormBox[
         FormBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"li481\"\>", ")"}],
-          TraditionalForm],
+         RowBox[{"FCGV", "(", "\<\"li1881\"\>", ")"}],
          TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[27]=",
- CellID->305063659]
+        TraditionalForm]]}], "+", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["r",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        RowBox[{"FCGV", "(", "\<\"li1881\"\>", ")"}],
+        TraditionalForm],
+       TraditionalForm]]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[760]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -384,74 +402,57 @@ Cell[BoxData[
     RowBox[{"SPD", "[", 
      RowBox[{"q", ",", "p"}], "]"}], "^", "2"}], ",", "q", ",", "p", ",", 
    RowBox[{"Pair", "\[Rule]", "All"}]}], "]"}]], "Input",
- CellLabel->"In[28]:=",
+ CellLabel->"In[761]:=",
  CellID->1834012343],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$195", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$196", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$195", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2975", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[28]=",
- CellID->2035882105]
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$196", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[761]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -462,66 +463,49 @@ Cell[BoxData[
    RowBox[{"LorentzIndexNames", "\[Rule]", 
     RowBox[{"{", 
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}]}], "]"}]], "Input",
- CellLabel->"In[29]:=",
+ CellLabel->"In[762]:=",
  CellID->151485661],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[29]=",
- CellID->1590489350]
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[762]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -586,12 +570,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{Automatic, 0}, {Automatic, 127}},
+WindowMargins->{{809, Automatic}, {Automatic, 283}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+
