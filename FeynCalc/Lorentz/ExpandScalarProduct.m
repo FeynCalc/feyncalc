@@ -37,7 +37,7 @@ objects::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
-	FCI -> True,
+	FCI -> False,
 	FCE -> False,
 	Full -> True,
 	Momentum -> All
@@ -54,7 +54,7 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 
 		objects = Join[$FCTensorList,{TemporalPair}];
 
-		If[ OptionValue[FCI],
+		If[ !OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
 		];

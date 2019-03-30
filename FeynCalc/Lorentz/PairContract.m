@@ -77,7 +77,7 @@ PairContract3[LorentzIndex[z_,dim_], LorentzIndex[z_,dim_]] :=
 	dim;
 
 PairContract3[(h1:Momentum|CartesianMomentum)[a__], (h2:Momentum|CartesianMomentum)[b__]] :=
-	ExpandScalarProduct[Pair[h1[a], h2[b]],FCI->False];
+	ExpandScalarProduct[Pair[h1[a], h2[b]],FCI->True];
 
 PairContract3 /:
 	PairContract3[_LorentzIndex,x_LorentzIndex]^2 :=
@@ -85,7 +85,7 @@ PairContract3 /:
 
 PairContract3 /:
 	PairContract3[_LorentzIndex,(h:Momentum|CartesianMomentum)[x__]]^2 :=
-		ExpandScalarProduct[Pair[h[x],h[x]],FCI->False];
+		ExpandScalarProduct[Pair[h[x],h[x]],FCI->True];
 
 PairContract3 /:
 	PairContract3[a_, b_LorentzIndex]^(n_ /; n > 2) :=
@@ -97,7 +97,7 @@ PairContract3 /:
 PairContract3/:
 	PairContract3[LorentzIndex[z__],x_] PairContract3[LorentzIndex[z__],y_] :=
 		If[ FreeQ[{x,y}, LorentzIndex],
-			ExpandScalarProduct[Pair[x,y],FCI->False],
+			ExpandScalarProduct[Pair[x,y],FCI->True],
 			PairContract3[x,y]
 		];
 

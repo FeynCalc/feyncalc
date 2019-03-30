@@ -412,10 +412,10 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			If[ OptionValue[DiracTrace,{opts},Expand] && !FreeQ[{traceListNonChiral,traceListChiral,gammaFree,gammaPart}, Momentum],
 				time2=AbsoluteTime[];
 				FCPrint[1,"DiracTrace: diracTraceEvaluate: Expanding scalar products", FCDoControl->diTrVerbose];
-				traceListNonChiral=Map[ExpandScalarProduct[#,FCI->False]&,traceListNonChiral];
-				traceListChiral=Map[ExpandScalarProduct[#,FCI->False]&,traceListChiral];
-				gammaFree=ExpandScalarProduct[gammaFree,FCI->False];
-				gammaPart=ExpandScalarProduct[gammaPart,FCI->False];
+				traceListNonChiral=Map[ExpandScalarProduct[#,FCI->True]&,traceListNonChiral];
+				traceListChiral=Map[ExpandScalarProduct[#,FCI->True]&,traceListChiral];
+				gammaFree=ExpandScalarProduct[gammaFree,FCI->True];
+				gammaPart=ExpandScalarProduct[gammaPart,FCI->True];
 				FCPrint[1,"DiracTrace: diracTraceEvaluate: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose]
 			];
 

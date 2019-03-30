@@ -21,8 +21,10 @@ End[]
 
 Begin["`CalculateCounterTerm`Private`"]
 
-Options[CalculateCounterTerm] = {Chisholm -> False,
-								FinalSubstitutions -> {D -> 4}};
+Options[CalculateCounterTerm] = {
+	Chisholm -> False,
+	FinalSubstitutions -> {D -> 4}
+};
 
 
 mapart[y_Plus] :=

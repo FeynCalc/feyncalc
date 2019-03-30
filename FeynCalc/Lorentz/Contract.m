@@ -842,7 +842,7 @@ fdi[xx_Symbol- 4, xx_] :=
 pairsave[a_, b_] :=
 	pairsave[a, b] =
 	If[ FreeQ[{a,b},LorentzIndex] && optExpandScalarProduct,
-		ExpandScalarProduct[Pair[a,b],FCI->False],
+		ExpandScalarProduct[Pair[a,b],FCI->True],
 		pair2[a, b]
 	];
 pair2[LorentzIndex[a_, di1___], LorentzIndex[a_, di2___]] :=

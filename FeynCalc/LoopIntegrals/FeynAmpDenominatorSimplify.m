@@ -260,7 +260,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		If [OptionValue[ExpandScalarProduct],
 			FCPrint[1,"FDS: Applying ExpandScalarProduct. ", FCDoControl->fdsVerbose];
 			time=AbsoluteTime[];
-			res = ExpandScalarProduct[res];
+			res = ExpandScalarProduct[res, FCI->True];
 			FCPrint[1, "FDS: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 			FCPrint[3, "FDS: After ExpandScalarProduct: ", res, FCDoControl->fdsVerbose]
 		];
@@ -1156,7 +1156,7 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :>
 					FCIntegral[a//FeynCalcExternal];
 			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :>
-					FeynCalcInternal[b];
+					FCI[b];
 		];
 
 		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before fadall", exp, "", FCDoControl->fdsVerbose];
@@ -1487,7 +1487,7 @@ tran[a_, {x_, y_, w_, z_}] :=
 					re  = ExpandScalarProduct[prmomex[a /.
 					{RuleDelayed @@ ( {x, y} /. Momentum -> extractm),
 					RuleDelayed @@ ( {w, z} /. Momentum -> extractm)}],
-					FeynCalcInternal -> False];
+					FCI -> True];
 				];
 			];
 			re
@@ -1505,7 +1505,7 @@ tran[a_, x_, y_] :=
 				If[ checkfd[tem] === False,
 					re = a,
 					re  = ExpandScalarProduct[prmomex[a /. (Rule @@ ( {x, y} /. Momentum -> extractm ))],
-					FeynCalcInternal -> False]
+					FCI -> True]
 				];
 			];
 			re
@@ -1533,7 +1533,7 @@ qtr[fa_  (powe_ /; (powe === Power2 || powe === Power))[(
 		Pair[Momentum[OPEDelta, di], Momentum[pi, di]] -
 		Pair[Momentum[OPEDelta, di], Momentum[pe, di]] +
 		Pair[Momentum[OPEDelta, di], Momentum[q1, di]]), w]
-		) /. q1->(-q1+pe-pi),FeynCalcInternal -> False];
+		) /. q1->(-q1+pe-pi),FCI -> True];
 		tt = PowerSimplify[tt];
 		If[ FreeQ[tt, (pow_ /; (pow === Power2 || pow ===
 			Power))[(a_Plus),v_ /; Head[v] =!= Integer]],
@@ -1555,7 +1555,7 @@ qtr[fa_  (powe_ /; (powe === Power2 || powe === Power))[(
 		tt = ExpandScalarProduct[(fa powe[(
 		-Pair[Momentum[OPEDelta, di], Momentum[pe, di]] +
 		Pair[Momentum[OPEDelta, di], Momentum[q1, di]]), w]
-		) /. q1->(-q1+pe),FeynCalcInternal -> False];
+		) /. q1->(-q1+pe),FCI -> True];
 		If[ FreeQ[tt, (pow_ /; (pow === Power2 ||
 		pow ===    Power))[(a_Plus),v_] ],
 			If[ !FreeQ[tt,Eps],
@@ -1575,7 +1575,7 @@ qtr[fa_  (powe_ /; (powe === Power2 || powe === Power))[(
 		tt = ExpandScalarProduct[(fa powe[(
 			Pair[Momentum[OPEDelta, di], Momentum[pe, di]] -
 			Pair[Momentum[OPEDelta, di], Momentum[q1, di]]), w]
-			) /. q1->(-q1+pe),FeynCalcInternal -> False];
+			) /. q1->(-q1+pe),FCI -> True];
 		If[ FreeQ[tt, (pow_ /; (pow === Power2 ||
 		pow === Power))[(a_Plus),v_] ],
 			If[ !FreeQ[tt,Eps],

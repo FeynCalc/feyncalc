@@ -296,7 +296,7 @@ tidSingleIntegral[int_, qs_List , n_] :=
 		(* Check the Gram determinant	*)
 		If[ extmoms=!={},
 			FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
-			If[ExpandScalarProduct[Det[extmoms//Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->D], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
+			If[ExpandScalarProduct[Det[extmoms//Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->D], {i, 1, Length[#]}, {j, 1, Length[#]}] &], FCI->True]===0,
 				FCPrint[1, "FCMultiLoopTID: tidSingleIntegral: Zero Gram determinant detected!", FCDoControl->mltidVerbose];
 				gramZero=True
 			]
