@@ -2392,11 +2392,11 @@ CreateFCAmp[amp_, opts___] :=
 			external particles. This should be done by modifying
 			Phi`Couplings`GenProps in the relevant .conf file.
 			Suggested by Paul Buettiker July 2004.*)
-			propSpinor[mom_, a_, b___, i___RenormalizationState, j___RenormalizationScheme, k___ExpansionState] :> (DiracSpinor[mom, a, b] /. {
+			propSpinor[mom_, a_, b___, i___RenormalizationState, j___RenormalizationScheme, k___ExpansionState] :> (Spinor[mom, a, b] /. {
 				ParticleMass[p_, _RenormalizationState, r___] -> ParticleMass[p, i, r]} /.
 				ParticleMass[p__, _RenormalizationScheme, r___] -> ParticleMass[p, j, r] /.
 				ParticleMass[p__, _ExpansionState, r___] -> ParticleMass[p, k, r]),
-				propSpinor[mom_, a_, b___] :> DiracSpinor[mom, a, b]
+				propSpinor[mom_, a_, b___] :> Spinor[mom, a, b]
 		}
 	];
 

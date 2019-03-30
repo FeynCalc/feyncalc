@@ -118,10 +118,6 @@ DiracSlash::usage =
 "DiracSlash[p] is the contraction FourVector[p, mu]*DiracSlash[mu]. \
 A product of those can be entered in the form DiracSlash[p1, p2, ..]."
 
-DiracSpinor::usage =
-"DiracSpinor[p, m, ind] is a Dirac spinor for a fermion with momentum p \
-and mass m and indices ind. DiracSpinor is the same as Spinor.";
-
 Eps::usage =
 "Eps[a, b, c, d] represents the totally antisymmetric epsilon \
 (Levi-Civita) tensor. The \"a,b, ...\" should have head \
@@ -931,7 +927,6 @@ DeclareNonCommutative[DiracGamma];
 DeclareNonCommutative[DiracMatrix];
 DeclareNonCommutative[DiracSigma];
 DeclareNonCommutative[DiracSlash];
-DeclareNonCommutative[DiracSpinor];
 DeclareNonCommutative[GA];
 DeclareNonCommutative[GA5];
 DeclareNonCommutative[GAD];
@@ -1457,8 +1452,6 @@ DiracSlash[x_?NumberQ, OptionsPattern[]] :=
 	(Message[DiracSlash::noint, x]; Abort[])/; x=!=0;
 
 (* ------------------------------------------------------------------------ *)
-
-DiracSpinor = Spinor;
 
 Eps[___, 0, ___]:=
 	0;

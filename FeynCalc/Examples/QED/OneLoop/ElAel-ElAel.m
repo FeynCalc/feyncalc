@@ -156,7 +156,7 @@ ampTree[2]=(Total[ampTree[1]]//Contract//DiracSimplify)//FeynAmpDenominatorExpli
 
 (*about 10 seconds*)
 AbsoluteTiming[bornVirtualUnrenormalized[0]=
-	Collect2[Total[ampLoop[2]],DiracSpinor,LorentzIndex,IsolateNames->KK] *
+	Collect2[Total[ampLoop[2]],Spinor,LorentzIndex,IsolateNames->KK] *
 	ComplexConjugate[ampTree[2]]//
 	FermionSpinSum[#,ExtraFactor->1/2^2]&//DiracSimplify//
 	FRH//TrickMandelstam[#,{s,t,u,0}]&//Collect2[#,B0,C0,D0]&;]
