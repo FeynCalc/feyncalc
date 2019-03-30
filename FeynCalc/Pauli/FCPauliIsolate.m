@@ -32,11 +32,10 @@ Begin["`FCPauliIsolate`Private`"]
 Options[FCPauliIsolate] = {
 	ClearHeads -> {FCGV["PauliChain"]},
 	Collecting -> True,
-	PauliSigma -> True,
-	PauliSigmaCombine -> True,
 	DotSimplify -> True,
 	ExceptHeads -> {},
 	Expanding -> True,
+	FCE -> False,
 	FCI -> False,
 	FCVerbose -> False,
 	Factoring -> Factor,
@@ -45,8 +44,10 @@ Options[FCPauliIsolate] = {
 	IsolateFast -> False,
 	IsolateNames -> KK,
 	LorentzIndex -> False,
-	PauliXi -> True,
 	PauliEta -> True,
+	PauliSigma -> True,
+	PauliSigmaCombine -> True,
+	PauliXi -> True,
 	Split -> True
 };
 
@@ -96,7 +97,7 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "FCPauliIsolate: Applying DotSimplify.", FCDoControl->fcpiVerbose];
 			tmp = FCSplit[ex, PauliHeadsList, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->False];
+			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->True];
 			FCPrint[1, "FCPauliIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose]
 		];
 
@@ -166,6 +167,10 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 		If [ !FreeQ[res/. head[__] :> 1, PauliHeadsList] & || !FreeQ[res,head[]],
 			Message[FCPauliIsolate::fail, ex];
 			Abort[]
+		];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		FCPrint[1, "FCPauliIsolate: Leaving.", FCDoControl->fcpiVerbose];

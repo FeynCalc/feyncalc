@@ -56,7 +56,7 @@ ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
 		ex = ex /. holdDOT[] -> 1 /. holdDOT -> DOT;
 
 		If[ OptionValue[DotSimplify],
-			ex = DotSimplify[ex, FCI->False]
+			ex = DotSimplify[ex, FCI->True]
 		];
 
 		If[ OptionValue[FCE],

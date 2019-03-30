@@ -86,7 +86,7 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[DotSimplify],
-			tmp = DotSimplify[tmp,FCI->False]
+			tmp = DotSimplify[tmp,FCI->True]
 		];
 
 		(* Chisholm identity recursively *)
@@ -130,11 +130,11 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		res = res /. finsub /. finsub;
 
 		If[	OptionValue[DotSimplify],
-			res = DotSimplify[res,FCI->False]
+			res = DotSimplify[res,FCI->True]
 		];
 
 		If[	OptionValue[Contract],
-			res = Contract[res,FCI->False]
+			res = Contract[res,FCI->True]
 		];
 
 		If[OptionValue[FCE],

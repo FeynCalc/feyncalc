@@ -37,7 +37,6 @@ lorIndex::usage="";
 
 Options[LorentzToCartesian] = {
 	DiracGammaExpand -> True,
-	PauliSigmaExpand -> True,
 	DotSimplify -> True,
 	EpsEvaluate -> True,
 	ExpandScalarProduct -> True,
@@ -48,9 +47,10 @@ Options[LorentzToCartesian] = {
 	GA -> True,
 	GS -> True,
 	LC -> True,
+	LorentzIndex -> True,
+	PauliSigmaExpand -> True,
 	SI -> True,
 	SIS -> True,
-	LorentzIndex -> True,
 	SP -> True
 };
 
@@ -150,7 +150,7 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 		res = ex/. times->Times /. dotTimes->DOT;
 
 		If[	OptionValue[DotSimplify],
-			res = DotSimplify[res,FCI->False]
+			res = DotSimplify[res,FCI->True]
 		];
 
 		If[	OptionValue[FCE],

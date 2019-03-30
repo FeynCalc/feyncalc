@@ -52,7 +52,7 @@ ToDiracGamma67[expr_, OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[DotSimplify],
-			ex = DotSimplify[ex, FCI->False]
+			ex = DotSimplify[ex, FCI->True]
 		];
 
 		If[ OptionValue[FCE],

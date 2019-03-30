@@ -143,7 +143,7 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 		If[ OptionValue[DotSimplify],
 			time=AbsoluteTime[];
 			FCPrint[1, "FermionSpinSum: Applying DotSimplify.", FCDoControl->fssVerbose];
-			ex = ex /. spinPolarizationSum[x_]:> spinPolarizationSum[DotSimplify[x,Expanding->False,FCI->False]];
+			ex = ex /. spinPolarizationSum[x_]:> spinPolarizationSum[DotSimplify[x,Expanding->False,FCI->True]];
 			FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
 			FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->fssVerbose];
 		];

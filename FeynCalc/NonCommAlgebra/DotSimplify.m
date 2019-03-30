@@ -77,17 +77,17 @@ Options[DotSimplify] = {
 	DotSimplifyRelations -> {},
 	DotPower -> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
 																									F.Orellana*)
-	FCI -> True,
+	FCI -> False,
 	FCE -> False,
 	MaxIterations -> 100,
 	PreservePropagatorStructures -> False
 };
 
 
-DotSimplify[xxx_, OptionsPattern[]] :=
+DotSimplify[expr_, OptionsPattern[]] :=
 	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
 	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
-	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, xx, sunTrace, tmpDOT,
+	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, ex, sunTrace, tmpDOT,
 	holdDOTColor, holdDOTDirac, holdDOTPauli, holdDOTRest1, holdDOTRest2, holdDOTRest3,
 	nvar, time, time0, maxIterations, dlin1
 	},
@@ -104,25 +104,23 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
 
-		If[	FreeQ[xxx,DOT] && NonCommFreeQ[xxx],
-			Return[xxx]
+		If[	FreeQ[expr,DOT] && NonCommFreeQ[expr],
+			Return[expr]
 		];
 
-		(* Here a different convention for FCI is used, False means that FCI is not needed*)
-		If[ OptionValue[FCI] =!= True,
-			xx = xxx,
-			xx = FCI[xxx];
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
 		];
 
 		FCPrint[3, "DotSimplify: Entering with", FCDoControl->dsVerbose];
-
 
 
 		(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
 		momf[xX_] :=
 			momf[xX] = Momentum[FactorTerms[xX]];
 
-		xx = xx /. Momentum[p_] :> momf[p] /.  simrel;
+		ex = ex /. Momentum[p_] :> momf[p] /.  simrel;
 
 		time0=AbsoluteTime[];
 		FCPrint[1, "DotSimplify: Entering the main loop.", FCDoControl->dsVerbose];
@@ -143,37 +141,16 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				simrel = Map[sru, simrel];
 			];
 			FCPrint[1, "DotSimplify: Done applying DotSimplifyRelations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After DotSimplifyRelations: ", xx, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After DotSimplifyRelations: ", ex, FCDoControl->dsVerbose];
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Writing out commutators and anticommutators.", FCDoControl->dsVerbose];
 			(*If the expression contains commutators or anticommutators, write them out explicitly, i.e. [a,b] -> ab-ba etc.*)
-			If[ (!FreeQ[xx, Commutator]) || (!FreeQ[xx, AntiCommutator]),
-				x = CommutatorExplicit[xx],
-				x = xx
+			If[ (!FreeQ[ex, Commutator]) || (!FreeQ[ex, AntiCommutator]),
+				x = CommutatorExplicit[ex],
+				x = ex
 			];
 			FCPrint[1, "DotSimplify: Done writing out commutators and anticommutators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-
-			(* CHANGE 07/26/94 *)
-
-			(*If the expression contains SU(N) matrices, put Dot on hold*)
-			(*
-			If[ !FreeQ[x, SUNT],
-				time=AbsoluteTime[];
-				FCPrint[1, "DotSimplify: Putting Dot on hold.", FCDoControl->dsVerbose];
-				SetAttributes[TimesDot, HoldAll];
-				TimesDot[a__] :=
-					If[ FreeQ[{a}, SUNT],
-						Times[a],
-						holdDOT[a]
-					];
-
-				x = x (*/. Times -> TimesDot*) //. holdDOT[a_,b_,c___]/; NonCommFreeQ[{a,b}]:> holdDOT[a b, c];
-
-				x = x /. holdDOT->DOT;
-				FCPrint[1, "DotSimplify: Done putting Dot on hold:, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-				FCPrint[1, "DotSimplify: After Putting Dot on hold: ", x, FCDoControl->dsVerbose]
-			];*)
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Writing out non-commutative objects explicitly.", FCDoControl->dsVerbose];
@@ -195,7 +172,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Working out user-defined non-commutative objects.", FCDoControl->dsVerbose];
 			If[ simrel === {},
-				vars = Union[Variables[Cases[Cases2[xx,DOT] //. DOT[a___, n_?NumberQ o1_. + o2_:0, b___] :> DOT[a, o1 nvar[n]+o2, b], _, Infinity] ]];
+				vars = Union[Variables[Cases[Cases2[ex,DOT] //. DOT[a___, n_?NumberQ o1_. + o2_:0, b___] :> DOT[a, o1 nvar[n]+o2, b], _, Infinity] ]];
 				If[ Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
 					If[ FreeQ2[{DownValues[Commutator], DownValues[AntiCommutator]},vars],
 						(* that means : just expansion, no acomms, comms *)

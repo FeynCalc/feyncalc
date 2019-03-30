@@ -33,12 +33,13 @@ End[]
 Begin["`CartesianToLorentz`Private`"]
 
 Options[CartesianToLorentz] = {
-	FCI -> False,
-	CSP -> True,
 	CGS -> True,
-	ExpandScalarProduct -> True,
+	CSP -> True,
 	DiracGammaExpand -> True,
-	DotSimplify -> True
+	DotSimplify -> True,
+	ExpandScalarProduct -> True,
+	FCI -> False,
+	FCE -> False
 };
 
 CartesianToLorentz[expr_, OptionsPattern[]]:=
@@ -89,7 +90,11 @@ CartesianToLorentz[expr_, OptionsPattern[]]:=
 		res = ex/.repRule;
 
 		If[	OptionValue[DotSimplify],
-			res = DotSimplify[res,FCI->False]
+			res = DotSimplify[res,FCI->True]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		res

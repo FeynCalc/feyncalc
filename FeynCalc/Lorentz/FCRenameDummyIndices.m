@@ -56,7 +56,7 @@ FCRenameDummyIndices[expr_, OptionsPattern[]] :=
 		];
 
 		ex = exprFCI;
-		exprFCI = exprFCI // DotSimplify[#,FCI->False]& // Expand;
+		exprFCI = exprFCI // DotSimplify[#,FCI->True]& // Expand;
 
 		If[ Head[heads]=!=List || heads==={},
 			Message[FCRenameDummyIndices::failmsg, "You did not specify which index heads should be renamed."];

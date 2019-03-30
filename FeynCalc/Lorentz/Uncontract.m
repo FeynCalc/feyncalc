@@ -418,7 +418,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 		FCPrint[1, "Uncontract: Intermediate result: " ,res, FCDoControl->ucVerbose];
 
 		If[	OptionValue[DotSimplify] && !FreeQ2[res,{DiracGamma,PauliSigma}],
-			res = DotSimplify[res,Expanding -> False, FCI->False];
+			res = DotSimplify[res,Expanding -> False, FCI->True];
 		];
 
 		If[	OptionValue[FCE],

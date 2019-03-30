@@ -44,11 +44,11 @@ DeclareNonCommutative[FCChargeConjugateTransposed];
 
 Options[FCChargeConjugateTransposed] = {
 	DotSimplify->True,
-	FCVerbose -> False,
+	Explicit -> False,
 	FCDiracIsolate -> True,
-	FCI -> False,
 	FCE -> False,
-	Explicit -> False
+	FCI -> False,
+	FCVerbose -> False
 };
 
 FCCCT = FCChargeConjugateTransposed;

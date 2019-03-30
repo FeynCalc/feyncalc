@@ -135,7 +135,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[DotSimplify],
-			ex = DotSimplify[ex,FCI->False]
+			ex = DotSimplify[ex,FCI->True]
 		];
 
 		tmp = Expand2[ex, indhead];
