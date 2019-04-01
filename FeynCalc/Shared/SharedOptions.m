@@ -151,6 +151,12 @@ IntermediateSubstitutions::usage =
 All substitutions indicated hereby are done at \
 an intermediate stage of the calculation.";
 
+InsideDiracTrace::usage =
+"InsideDiracTrace is an option of DiracSimplify and some other functions \
+dealing with Dirac algebra. If set to True, the function assumes to operate \
+inside a Dirac trace, i.e., products of an odd number \
+of Dirac matrices are discarded.";
+
 IsolateNames::usage =
 "IsolateNames is an option for Isolate and Collect2. \
 Its default setting is KK. Instead of a symbol the \

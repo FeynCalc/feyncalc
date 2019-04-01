@@ -117,20 +117,16 @@ Cell["InsideDiracTrace", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["InsideDiracTrace"], "InlineFormula"],
- " \[LineSeparator]is and option of ",
+ " \[LineSeparator]is an option of ",
  ButtonBox["DiracSimplify",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
   ButtonNote->"DiracSimplify"],
- ". If set to ",
- Cell[BoxData["True"], "InlineFormula"],
- ", ",
- ButtonBox["DiracSimplify",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- " assumes to operate inside a Dirac trace, i.e., products of an odd number \
-of Dirac matrices are discarded."
+ " and some other functions dealing with Dirac algebra. If set to ",
+ Cell[BoxData["True"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", the function assumes to operate inside a Dirac trace, i.e., products of \
+an odd number of Dirac matrices are discarded."
 }], "Usage",
  CellID->982511436],
 
@@ -266,7 +262,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1022, Automatic}, {Automatic, 159}},
+WindowMargins->{{1288, Automatic}, {Automatic, 229}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

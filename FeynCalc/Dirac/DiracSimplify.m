@@ -29,12 +29,6 @@ DiracCanonical::usage =
 If set to True DiracSimplify uses the function DiracOrder \
 internally.";
 
-InsideDiracTrace::usage =
-"InsideDiracTrace is an option of DiracSimplify. \
-If set to True, DiracSimplify assumes to operate \
-inside a Dirac trace, i.e., products of an odd number \
-of Dirac matrices are discarded.";
-
 DiracSimpCombine::usage =
 "DiracSimpCombine is an option for DiracSimplify. If set to \
 True, DiracSimplify uses the function DiracGammaCombine internally.";
