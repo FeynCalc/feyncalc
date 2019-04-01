@@ -39,7 +39,7 @@ Options[EpsContract] = {
 };
 
 EpsContract[expr_, OptionsPattern[]]:=
-	Block[{ex, tmp, res, epsList, epsListEval,repRule, epsHead,null1,null2},
+	Block[{ex, tmp, res, epsList, epsListEval,repRule, epsHead,null1,null2,epsIsolate},
 
 		If[ !OptionValue[FCI],
 			ex = FCI[expr],
@@ -51,7 +51,7 @@ EpsContract[expr_, OptionsPattern[]]:=
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,Eps,Factoring->OptionValue[Factoring]]
+			ex = Collect2[ex,Eps,Factoring->OptionValue[Factoring],IsolateNames->epsIsolate]
 		];
 
 		If[ Head[ex]===Plus,
@@ -71,7 +71,7 @@ EpsContract[expr_, OptionsPattern[]]:=
 
 		repRule = MapThread[Rule[#1, #2] &, {epsList, epsListEval}];
 
-		res = res/.repRule
+		res = FRH[res/. Dispatch[repRule],IsolateNames->epsIsolate]
 
 
 	];

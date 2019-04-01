@@ -25,5 +25,6 @@ FCClearScalarProducts[];
 
 Map[Test[ExpandAll[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]]]&,
 	Join[
-		Tests`Dirac`fcitDiracTrace
+		Tests`Dirac`fcitDiracTrace,
+		Tests`Dirac`fcitDiracSimplify
 		]];

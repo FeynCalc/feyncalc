@@ -504,13 +504,21 @@ Contract[expr_, z:OptionsPattern[]] :=
 			FCPrint[1,"Contract: Expansion done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
-
-		If[ !FreeQ[tmpFin, Eps] && renameOpt,
+		If[ !FreeQ[tmpFin, Eps],
 			time=AbsoluteTime[];
-			FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
-			tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
-			FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
+			If[	!FreeQ[tmpFin, Eps],
+				tmpFin = EpsEvaluate[tmpFin,FCI->True];
+			];
+
+			If[	renameOpt,
+				time=AbsoluteTime[];
+				FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
+				tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
+				FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+			]
 		];
+
 
 		If[ epsContractOpt,
 			time=AbsoluteTime[];
@@ -730,6 +738,10 @@ mainContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 				]
 			];
 
+
+			time=AbsoluteTime[];
+			FCPrint[1, "Contract: mainContract: Applying another optimization.", FCDoControl->cnVerbose];
+
 			If[ contractexpandopt && !contract3 && !FreeQ[contractres, LorentzIndex],
 				(* NEW October 2003, this speeds things up in general*)
 				contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
@@ -739,6 +751,7 @@ mainContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 								) /. Pair -> PairContract /. PairContract -> Pair)
 								};
 			];
+			FCPrint[1,"Contract: mainContract: Anotzher optimization done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
 			contractres
 		];
