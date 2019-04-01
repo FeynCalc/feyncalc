@@ -953,7 +953,7 @@ i10].GAD[mu]] +
 i10].GAE[mu]]) //
 		FCE // ReplaceAll[#, GAE[i_] -> GAD[i] - \
 GA[i]] & //
-		DiracSimplify[#, DiracCanonical -> True] &", "0"},
+		DiracSimplify[#, DiracOrder -> True] &", "0"},
 {"fcstDiracTrickCoreProperties-ID111", "(DiracTrick[
 		GA[mu].GAD[i1, i2, i3, i4, i5, i6, i7, i8, i9, i11].GA[mu]] -
 		DiracTrick[GAD[mu].GAD[i1, i2, i3, i4, i5, i6, i7, i8, i9, \
@@ -962,7 +962,7 @@ i11].GAD[mu]] +
 i11].GAE[mu]]) //
 		FCE // ReplaceAll[#, GAE[i_] -> GAD[i] - \
 GA[i]] & //
-		DiracSimplify[#, DiracCanonical -> True] &", "0"},
+		DiracSimplify[#, DiracOrder -> True] &", "0"},
 {"fcstDiracTrickCoreProperties-ID112",
 "(DiracTrick[GSD[p].GAD[i1, i2, i3, i4, i5, i6, i7].GSD[p]] /. {D -> \
 D - 4})",

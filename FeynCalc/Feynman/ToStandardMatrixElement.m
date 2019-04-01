@@ -33,22 +33,22 @@ Begin["`ToStandardMatrixElement`Private`"]
 tsmeVerbose::usage="";
 
 Options[ToStandardMatrixElement] = {
-	ChangeDimension -> False,
-	DiracCanonical -> True,
-	DiracSubstitute5 -> True,
-	DiracSubstitute67 -> False,
-	FCColorIsolate -> True,
-	FCDiracIsolate -> True,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Factoring -> {Factor, 5000},
-	Polarization -> True,
-	SirlinSimplify -> False,
-	Spinor -> False,
-	SpinorChainChiralSplit -> True,
-	SpinorChainTrick -> False,
-	TimeConstrained -> 3
+	ChangeDimension 		-> False,
+	DiracOrder 				-> True,
+	DiracSubstitute5 		-> True,
+	DiracSubstitute67 		-> False,
+	FCColorIsolate 			-> True,
+	FCDiracIsolate 			-> True,
+	FCE 					-> False,
+	FCI 					-> False,
+	FCVerbose 				-> False,
+	Factoring 				-> {Factor, 5000},
+	Polarization 			-> True,
+	SirlinSimplify 			-> False,
+	Spinor 					-> False,
+	SpinorChainChiralSplit	-> True,
+	SpinorChainTrick 		-> False,
+	TimeConstrained 		-> 3
 }
 
 standmat/:
@@ -80,7 +80,7 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "ToStandardMatrixElement: Applying DiracSimplify.", FCDoControl->tsmeVerbose];
-		ex = DiracSimplify[ex, FCI->True, DiracCanonical->OptionValue[DiracCanonical],DiracSubstitute67->OptionValue[DiracSubstitute67],
+		ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
 			DiracSubstitute5->OptionValue[DiracSubstitute5], SpinorChainTrick->OptionValue[SpinorChainTrick], SirlinSimplify->OptionValue[SirlinSimplify]];
 		FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 		FCPrint[3, "ToStandardMatrixElement: After DiracSimplify: ", ex, FCDoControl->tsmeVerbose];

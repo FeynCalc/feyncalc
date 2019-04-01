@@ -133,6 +133,22 @@ Cell[TextData[{
 }], "Usage",
  CellID->2090318364],
 
+Cell[TextData[{
+ "DiracOrder is also an option of ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " and some other functions dealing with Dirac algebra. If set to True, the \
+function ",
+ ButtonBox["DiracOrder",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
+ " will be applied to the intermediate result to reorder the Dirac matrices \
+lexicographically."
+}], "Notes"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -778,10 +794,10 @@ Cell[BoxData[
 Cell[TextData[{
  "However, if you know that it can lead to simpler expressions, you can \
 activate the reordering via the option ",
- ButtonBox["DiracCanonical",
+ ButtonBox["DiracOrder",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracCanonical",
-  ButtonNote->"DiracCanonical"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
  "."
 }], "Notes"],
 
@@ -795,8 +811,8 @@ Cell[BoxData[
      RowBox[{"\[Mu]", ",", "\[NoBreak]", "\[Nu]"}], "]"}], "+", 
     RowBox[{"GAD", "[", 
      RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}], ",", 
-   RowBox[{"DiracCanonical", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellLabel->"In[187]:="],
+   RowBox[{"DiracOrder", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[5]:="],
 
 Cell[BoxData[
  FormBox[
@@ -811,7 +827,7 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellLabel->"Out[187]="]
+ CellLabel->"Out[5]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -877,7 +893,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{833, 873},
-WindowMargins->{{Automatic, 794}, {Automatic, 228}},
+WindowMargins->{{1285, Automatic}, {Automatic, 207}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

@@ -140,7 +140,7 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "ToStandardMatrixElement", "]"}]], "Input",
- CellLabel->"In[375]:=",
+ CellLabel->"In[1]:=",
  CellID->1473107891],
 
 Cell[BoxData[
@@ -148,7 +148,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"ChangeDimension", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracCanonical", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracOrder", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracSubstitute5", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
     RowBox[{"FCColorIsolate", "\[Rule]", "True"}], ",", 
@@ -166,8 +166,7 @@ Cell[BoxData[
     RowBox[{"SpinorChainTrick", "\[Rule]", "False"}], ",", 
     RowBox[{"TimeConstrained", "\[Rule]", "3"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellLabel->"Out[375]=",
- CellID->1066570361]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -780,7 +779,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1376, Automatic}, {Automatic, 142}},
+WindowMargins->{{1367, Automatic}, {Automatic, 105}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
@@ -789,3 +788,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

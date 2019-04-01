@@ -169,10 +169,10 @@ Cell[TextData[{
 
 Cell[TextData[{
  "The order of the other Dirac matrices is not changed, unless the option ",
- ButtonBox["DiracCanonical",
+ ButtonBox["DiracOrder",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracCanonical",
-  ButtonNote->"DiracCanonical"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
  " is set to ",
  Cell[BoxData["True"], "InlineFormula"],
  "."
@@ -183,7 +183,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "DiracSimplify", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[66]:=",
+ CellLabel->"In[2]:=",
  CellID->2098245619],
 
 Cell[BoxData[
@@ -191,31 +191,31 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"Contract", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracCanonical", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracEquation", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracOrder", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracSigmaExplicit", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracSimpCombine", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracSubstitute5", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracTraceEvaluate", "\[Rule]", "True"}], ",", 
     RowBox[{"EpsContract", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expand2", "\[Rule]", "True"}], ",", 
     RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
     RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
-    RowBox[{"Expand2", "\[Rule]", "True"}], ",", 
     RowBox[{"FCCheckSyntax", "\[Rule]", "False"}], ",", 
     RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
-    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
     RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
     RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
     RowBox[{"InsideDiracTrace", "\[Rule]", "False"}], ",", 
     RowBox[{"SirlinSimplify", "\[Rule]", "True"}], ",", 
     RowBox[{"SpinorChainTrick", "\[Rule]", "True"}], ",", 
     RowBox[{"ToDiracGamma67", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[66]="]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -4184,10 +4184,10 @@ Cell[TextData[{
   ButtonNote->"DiracSimplify"],
  " will not reorder Dirac matrices lexicographically, but can be forced to do \
 so via the option ",
- ButtonBox["DiracCanonical",
+ ButtonBox["DiracOrder",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracCanonical",
-  ButtonNote->"DiracCanonical"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
  "."
 }], "Notes"],
 
@@ -4197,7 +4197,7 @@ Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
   RowBox[{"GA", "[", 
    RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}], "]"}]], "Input",
- CellLabel->"In[39]:="],
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4214,7 +4214,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[39]="]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4224,9 +4224,9 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GA", "[", 
     RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}], ",", 
-   RowBox[{"DiracCanonical", "\[Rule]", "True"}]}], "]"}]], "Input",
+   RowBox[{"DiracOrder", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[40]:=",
+ CellLabel->"In[4]:=",
  CellID->990886795],
 
 Cell[BoxData[
@@ -4258,7 +4258,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[40]="]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -6646,7 +6646,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{894, 1033},
-WindowMargins->{{Automatic, 879}, {Automatic, 122}},
+WindowMargins->{{816, Automatic}, {Automatic, 74}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

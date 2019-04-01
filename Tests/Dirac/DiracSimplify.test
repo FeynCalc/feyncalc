@@ -105,7 +105,7 @@ GA[\[Mu]] MT[\[Nu], \[Rho]]).(I GA[be].GA[
 GA[\[Nu]] MT[\[Mu], \[Rho]] + GA[\[Mu]] MT[\[Nu], \[Rho]])//DiracSimplify",
 "16"},
 {"fcstDiracSimplify-ID30",
-"DiracSimplify[(GA[nu].GS[p] + GS[p].GA[nu] - 2 FV[p, nu]),DiracCanonical -> True]",
+"DiracSimplify[(GA[nu].GS[p] + GS[p].GA[nu] - 2 FV[p, nu]),DiracOrder -> True]",
 "0"},
 {"fcstDiracSimplify-ID31",
 "DiracSimplify[

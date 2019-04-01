@@ -24,11 +24,6 @@ The Dirac equation is applied. \
 All DiracGamma[5], DiracGamma[6] and DiracGamma[7] are moved to \
 the right. The order of the Dirac matrices is not changed.";
 
-DiracCanonical::usage =
-"DiracCanonical is an option for DiracSimplify. \
-If set to True DiracSimplify uses the function DiracOrder \
-internally.";
-
 DiracSimpCombine::usage =
 "DiracSimpCombine is an option for DiracSimplify. If set to \
 True, DiracSimplify uses the function DiracGammaCombine internally.";
@@ -61,8 +56,8 @@ optToDiracGamma67::usage="";
 
 Options[DiracSimplify] = {
 	Contract			-> True,
-	DiracCanonical		-> False,
 	DiracEquation		-> True,
+	DiracOrder			-> False,
 	DiracSigmaExplicit	-> True,
 	DiracSimpCombine	-> False,
 	DiracSubstitute5	-> False,
@@ -75,10 +70,10 @@ Options[DiracSimplify] = {
 	Expanding			-> True,
 	FCCheckSyntax		-> False,
 	FCDiracIsolate		-> True,
-	FCVerbose			-> False,
-	Factoring			-> False,
 	FCE					-> False,
 	FCI    				-> False,
+	FCVerbose			-> False,
+	Factoring			-> False,
 	InsideDiracTrace    -> False,
 	SirlinSimplify		-> True,
 	SpinorChainTrick	-> True,
@@ -99,7 +94,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		optContract				= OptionValue[Contract];
 		optDiracEquation		= OptionValue[DiracEquation];
 		optDiracGammaExpand		= !OptionValue[DiracSimpCombine];
-		optDiracOrder			= OptionValue[DiracCanonical];
+		optDiracOrder			= OptionValue[DiracOrder];
 		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
 		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
 		optDiracSubstitute5		= OptionValue[DiracSubstitute5];
