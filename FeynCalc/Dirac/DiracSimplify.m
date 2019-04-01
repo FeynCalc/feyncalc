@@ -24,10 +24,6 @@ The Dirac equation is applied. \
 All DiracGamma[5], DiracGamma[6] and DiracGamma[7] are moved to \
 the right. The order of the Dirac matrices is not changed.";
 
-DiracSimpCombine::usage =
-"DiracSimpCombine is an option for DiracSimplify. If set to \
-True, DiracSimplify uses the function DiracGammaCombine internally.";
-
 DiracSimplify::failmsg =
 "Error! DiracSimplifys encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -43,7 +39,7 @@ dsVerbose::usage="";
 optInsideDiracTrace::usage="";
 optExpanding::usage="";
 optExpandScalarProduct::usage="";
-optDiracGammaExpand::usage="";
+optDiracGammaCombine::usage="";
 optDiracSubstitute67::usage="";
 optDiracSubstitute5::usage="";
 optDiracSigmaExplicit::usage="";
@@ -59,7 +55,7 @@ Options[DiracSimplify] = {
 	DiracEquation		-> True,
 	DiracOrder			-> False,
 	DiracSigmaExplicit	-> True,
-	DiracSimpCombine	-> False,
+	DiracGammaCombine	-> False,
 	DiracSubstitute5	-> False,
 	DiracSubstitute67	-> False,
 	DiracTrace			-> True,
@@ -93,11 +89,11 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 		optContract				= OptionValue[Contract];
 		optDiracEquation		= OptionValue[DiracEquation];
-		optDiracGammaExpand		= !OptionValue[DiracSimpCombine];
+		optDiracGammaCombine	= OptionValue[DiracGammaCombine];
 		optDiracOrder			= OptionValue[DiracOrder];
 		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
-		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
 		optDiracSubstitute5		= OptionValue[DiracSubstitute5];
+		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
 		optEpsContract			= OptionValue[EpsContract];
 		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
 		optExpanding  			= OptionValue[Expanding];
@@ -141,7 +137,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracSimpCombine],
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
 				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, CartesianIndex->True, ToDiracGamma67->optToDiracGamma67];
 
 			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
@@ -223,7 +219,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 				FCPrint[1, "DiracSimplify: Applying SpinorChainTrick.", FCDoControl->dsVerbose];
 				time=AbsoluteTime[];
-				tmp = SpinorChainTrick[tmp, FCI->True,DiracGammaCombine->!optDiracGammaExpand, DiracSigmaExplicit->False];
+				tmp = SpinorChainTrick[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False];
 
 				FCPrint[1,"DiracSimplify: Done applying SpinorChainTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: After SpinorChainTrick: ", tmp, FCDoControl->dsVerbose];
@@ -234,7 +230,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 				FCPrint[1, "DiracSimplify: Applying SirlinSimplify.", FCDoControl->dsVerbose];
 				time=AbsoluteTime[];
-				tmp = SirlinSimplify[tmp, FCI->True,DiracGammaCombine->!optDiracGammaExpand, DiracSigmaExplicit->False];
+				tmp = SirlinSimplify[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False];
 
 				FCPrint[1,"DiracSimplify: Done applying SirlinSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: AfteSirlinSimplify: ", tmp, FCDoControl->dsVerbose]
@@ -301,7 +297,7 @@ diracSimplifyEval[expr_]:=
 		FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose];
 
 		(*	Expansion of Dirac slashes	*)
-		If[	optDiracGammaExpand && !FreeQ[tmp, DiracGamma],
+		If[	!optDiracGammaCombine && !FreeQ[tmp, DiracGamma],
 			tmp = DiracGammaExpand[tmp,FCI->True];
 		];
 
@@ -383,7 +379,7 @@ diracSimplifyEval[expr_]:=
 		];
 
 
-		If[	optExpanding && (optDiracGammaExpand || optDiracSubstitute67),
+		If[	optExpanding && (!optDiracGammaCombine || optDiracSubstitute67),
 			time2=AbsoluteTime[];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
 			tmp = DotSimplify[tmp, FCI->True, Expanding -> True];

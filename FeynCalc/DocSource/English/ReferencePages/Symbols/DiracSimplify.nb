@@ -183,7 +183,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "DiracSimplify", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->2098245619],
 
 Cell[BoxData[
@@ -194,7 +194,7 @@ Cell[BoxData[
     RowBox[{"DiracEquation", "\[Rule]", "True"}], ",", 
     RowBox[{"DiracOrder", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracSigmaExplicit", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracSimpCombine", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracGammaCombine", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracSubstitute5", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
     RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
@@ -215,7 +215,7 @@ Cell[BoxData[
     RowBox[{"ToDiracGamma67", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[2]="]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
