@@ -43,8 +43,8 @@ Options[FermionSpinSum] = {
 	FCTraceFactor -> True,
 	FCVerbose -> False,
 	Factoring -> Factor,
+	Head -> Identity,
 	Momentum -> All,
-	SpinPolarizationSum -> Identity,
 	SpinorChainTranspose -> True
 };
 
@@ -58,7 +58,7 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 		extraFactor 			= OptionValue[ExtraFactor];
 		moms 					= OptionValue[Momentum];
 		optSpinorChainTranspose = OptionValue[SpinorChainTranspose];
-		optSpinPolarizationSum 	= OptionValue[SpinPolarizationSum];
+		optSpinPolarizationSum 	= OptionValue[Head];
 
 		If [OptionValue[FCVerbose]===False,
 			fssVerbose=$VeryVerbose,

@@ -234,9 +234,6 @@ the user can add other dimensions or delete the exising ones. In case of the FCL
 functions this option specifies the dimensions of the loop and external momenta to be taken \
 into account when extracting the propagator basis.";
 
-SpinPolarizationSum::usage=
-"SpinPolarizationSum is an option for FermionSpinSum. The set (pure) function acts on the usual spin sum.";
-
 SUNIndexNames::usage =
 "SUNIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
 and other functions. It renames the generic dummy SU(N) indices in the \
