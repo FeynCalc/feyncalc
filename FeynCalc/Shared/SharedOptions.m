@@ -50,10 +50,6 @@ Divideout::usage =
 "Divideout is an option for OPEInt and OPEInsert. \
 The setting is divided out at the end.";
 
-EpsDiscard::usage=
-"EpsDiscard is an option for FeynCalc2FORM and SquareAmplitude2. \
-If set to True all Levi-Civita tensors are replaced by 0 after contraction.";
-
 EpsilonOrder::usage =
 "EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting \
 determines the order n (Epsilon^n) which should be kept.";
@@ -90,7 +86,7 @@ factored, using Factor2. If set to any function f, this function \
 will be used.";
 
 ExtraFactor::usage=
-"ExtraFactor is an option for SquareAmplitude2, FermionSpinSum and \
+"ExtraFactor is an option for FermionSpinSum and \
 DoPolarizationSums. The setting ExtraFactor -> fa \
 multiplies the whole amplitude with the factor fa before squaring.";
 
@@ -151,8 +147,8 @@ FeynAmpDenominatorSimplify. It may be set to a list of the form: \
 {FCIntegral[ ... ] :> bla, ...}.";
 
 IntermediateSubstitutions::usage =
-"IntermediateSubstitutions is an option for OneLoop and \
-and SquareAmplitude2. All substitutions indicated hereby are done at \
+"IntermediateSubstitutions is an option of various FeynCalc functions. \
+All substitutions indicated hereby are done at \
 an intermediate stage of the calculation.";
 
 IsolateNames::usage =
@@ -239,8 +235,7 @@ functions this option specifies the dimensions of the loop and external momenta 
 into account when extracting the propagator basis.";
 
 SpinPolarizationSum::usage=
-"SpinPolarizationSum is an option for SquareAmplitude2 and \
-FermionSpinSum. The set (pure) function acts on the usual spin sum.";
+"SpinPolarizationSum is an option for FermionSpinSum. The set (pure) function acts on the usual spin sum.";
 
 SUNIndexNames::usage =
 "SUNIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
@@ -276,9 +271,8 @@ such traces are computed according to formula  (A.5) from Comp. Phys. Comm 77 (1
 286-298, which is also known as West's formula.";
 
 WriteOut::usage =
-"WriteOut is an option for OneLoop and SquareAmplitude2. \
-If set to True, the result of OneLoop will be written to a \
-file called \"name.res\", where name is the first argument of OneLoop.";
+"WriteOut is an option for OneLoop and several other functions. It is responsible \
+for saving the results to a file .";
 
 WriteOutPaVe::usage=
 "WriteOutPaVe is an option for PaVeReduce and OneLoopSum. \

@@ -15,6 +15,10 @@
 
 (* ------------------------------------------------------------------------ *)
 
+EpsDiscard::usage=
+"EpsDiscard is an option for FeynCalc2FORM. \
+If set to True all Levi-Civita tensors are replaced by 0 after contraction.";
+
 FeynCalc2FORM::usage =
 "FeynCalc2FORM[expr] displays expr in FORM syntax. \n
 FeynCalc2FORM[file, x] writes x in FORM syntax to a file. \n
