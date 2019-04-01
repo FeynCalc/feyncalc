@@ -156,7 +156,7 @@ Spinor[Momentum[pE2, D], 0,
 Spinor[-Momentum[pS, D], ms, 1] .
 ((I*EL*mU*DiracGamma[6]*SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/
 	(Sqrt[2]*me*sw) - (I*EL*ms*DiracGamma[7]*SUNFDelta[SUNFIndex[Col1],
-	  SUNFIndex[Col2]])/(Sqrt[2]*me*sw)) .
+	SUNFIndex[Col2]])/(Sqrt[2]*me*sw)) .
 (mU + DiracGamma[Momentum[k, D], D]) .
 (((-I)*EL*mb*VUb*DiracGamma[6])/(Sqrt[2]*me*sw) +
 (I*EL*mU*VUb*DiracGamma[7])/(Sqrt[2]*me*sw)) .
@@ -166,5 +166,11 @@ Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
 PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
 	Momentum[pS, D], me], PropagatorDenominator[
 Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] + Momentum[pS, D],
-me*Sqrt[GaugeXi[W]]]]"}
+me*Sqrt[GaugeXi[W]]]]"},
+{"fcstFCCanonicalizeDummyIndices-ID25",
+"MatchQ[FCCanonicalizeDummyIndices[
+FCHN[SpinorUBar[p1], i] FCHN[SpinorV[p1], j] DIDelta[i, j],
+FCE -> True],
+DIDelta[a_FCGV, b_FCGV] FCHN[Spinor[-Momentum[p1], 0, 1],
+b_FCGV] FCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"}
 });

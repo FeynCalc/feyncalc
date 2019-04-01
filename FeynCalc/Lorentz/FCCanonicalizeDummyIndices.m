@@ -55,7 +55,7 @@ Options[FCCanonicalizeDummyIndices] = {
 	FCVerbose -> False,
 	FCVerbose-> False,
 	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
-	Head -> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex},
+	Head -> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex},
 	LorentzIndexNames -> {},
 	Momentum -> All,
 	NotMomentum -> {},
@@ -266,7 +266,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		(* Rest *)
 
-		otherHeads = Complement[Union[indhead],{LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex}];
+		otherHeads = Complement[Union[indhead],{LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex,DiracIndex}];
 		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads, FCDoControl->canodummyVerbose];
 
 		If[otherHeads =!={},
@@ -278,7 +278,8 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		repIndexListTotal = {repIndexListLor,repIndexListCar,
 			makeRepIndexList[SUNIndex,sunhead,Unique["sun"],fu,finalList,uniqueExpressions],
-			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions]
+			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions],
+			makeRepIndexList[DiracIndex,sunhead,Unique["di"],fu,finalList,uniqueExpressions]
 		};
 
 
