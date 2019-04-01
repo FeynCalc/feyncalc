@@ -81,14 +81,6 @@ diracTrickEvalFastFromDiracSimplifySingle[diracObject_, {tmpHead_, optInsideDira
 		res
 	];
 
-
-
-(* TODO: Bad syntax that one should get rid off*)
-DiracTrick[] = 1;
-
-DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
-	DiracTrick[DOT[y,z],FCI->True];
-
 DiracTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, dsPart, diracObjects,
 			diracObjectsEval, repRule, time, dsHead},
@@ -829,7 +821,7 @@ diracologyDDim2[ b___,DiracGamma[c_LorentzIndex,dim_],
 	Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
 		FCUseCache[FCFastContract,{(-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
 			{ch}[[jVar,1]] ]*dsTemp@@Join[{b}, Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}]},{}]/.
-			dsTemp->diracologyDDim/. Pair[aa__]/;!FreeQ[{aa},Momentum] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
+			dsTemp->diracologyDDim/. Pair[z__]/;!FreeQ[{z},Momentum] :> FCUseCache[ExpandScalarProduct,{Pair[z]},{}]
 	] /; (Length[{ch}]>4);
 
 (*	Slash(p) Slash(p)	*)
@@ -1527,7 +1519,7 @@ diracologyBMHV2[ b___,DiracGamma[LorentzIndex[c_,dim_],dim_],
 		Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
 			{ch}[[jVar,1]] ]*dsTemp@@Join[{b},
 			Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}
-		]},{}]/.dsTemp->diracologyBMHV2 /. Pair[aa__] :> FCUseCache[ExpandScalarProduct,{Pair[aa]},{}]
+		]},{}]/.dsTemp->diracologyBMHV2 /. Pair[z__] :> FCUseCache[ExpandScalarProduct,{Pair[z]},{}]
 	] /;(Length[{ch}]>4) && MatchQ[dim, _Symbol | _Symbol-4 ];
 
 
