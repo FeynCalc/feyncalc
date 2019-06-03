@@ -123,10 +123,10 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		];
 
 
-		res = spart + (tmp /. DiracSigma[a__] :> DiracBasis[FCE[DiracSigma[a]]] /.
+		res = spart + (tmp /. DiracSigma[a__] :> DiracBasis[DiracSigma[a]] /.
 								DOT[DiracGamma[a_], DiracGamma[5]] :>
-								DiracBasis[FCE[DOT[DiracGamma[a], DiracGamma[5]]]] /.
-								DiracGamma[a_] :> DiracBasis[FCE[DiracGamma[a]]]);
+								DiracBasis[DOT[DiracGamma[a], DiracGamma[5]]] /.
+								DiracGamma[a_] :> DiracBasis[DiracGamma[a]]);
 		res = res /. finsub /. finsub;
 
 		If[	OptionValue[DotSimplify],
