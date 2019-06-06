@@ -403,7 +403,7 @@ ExpandAll2[expr_] :=
 						#
 					],
 				_,
-					expr
+					#
 		] &, expr];
 
 FCAntiSymmetrize[x_,v_List] :=
