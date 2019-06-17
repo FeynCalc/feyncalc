@@ -405,7 +405,7 @@ $Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
 $LimitTo4IRUnsafe	= False;
-$FCMemoryAvailable	= 4096;
+$FCMemoryAvailable	= Floor[$SystemMemory/10^6/4];
 $Multiplications	= {Times, DOT};
 $OPEWard			= False;
 
