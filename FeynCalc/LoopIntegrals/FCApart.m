@@ -47,21 +47,23 @@ pfracOut::usage="";
 counter::usage="";
 
 Options[FCApart] = {
-	Check -> True,
-	Collecting -> True,
-	DropScaleless -> True,
+	Check 				-> True,
+	Collecting 			-> True,
+	DropScaleless 		-> True,
 	ExpandScalarProduct -> True,
-	FCI -> False,
-	FCE -> False,
-	FCVerbose -> False,
-	FDS -> True,
-	MaxIterations -> Infinity,
-	SetDimensions-> {3,4,D, D-1}
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	FDS 				-> True,
+	Factoring 			-> {Factor, 5000},
+	MaxIterations 		-> Infinity,
+	SetDimensions		-> {3,4,D, D-1},
+	TimeConstrained 	-> 3
 };
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0,time},
+		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained},
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -75,7 +77,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = expr
 		];
 
-		counter = OptionValue[MaxIterations];
+		counter 			= OptionValue[MaxIterations];
+		optFactoring 		= OptionValue[Factoring];
+		optTimeConstrained 	= OptionValue[TimeConstrained];
 
 		FCPrint[3,"FCApart: Entering with ", ex, FCDoControl->fcaVerbose];
 
@@ -185,7 +189,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		res = res /. pfracOut[{_, _, {}, _}]->1 /. pfracOut[{_, _, {0..}, _}]->1;
 
 		If [OptionValue[Collecting],
-			res = Collect2[res,pfracOut]
+			res = Collect2[res,pfracOut, Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
 
 		FCPrint[3,"FCApart: Preliminary result ", res, FCDoControl->fcaVerbose];
@@ -196,7 +200,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> False];
 
 		If [OptionValue[Collecting],
-			res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+			res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
 
 		FCPrint[3,"FCApart: Preliminary result converted back to FeynCalc notation ", res, FCDoControl->fcaVerbose];
@@ -215,7 +219,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		If [OptionValue[FDS],
 			res = FDS[res, Sequence@@lmoms];
 			If [OptionValue[Collecting],
-				res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 			]
 		];
 
@@ -235,10 +239,8 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		If [OptionValue[Collecting],
-				res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
-
-
 
 		FCPrint[3,"FCApart: Leaving with ", res,FCDoControl->fcaVerbose];
 

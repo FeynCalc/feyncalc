@@ -65,21 +65,22 @@ Options[Apart2]= {
 (*	FeynAmpDenominator is an internal option to make ApartFF behave like SPC,
 	i.e. block partial fractioning on loop integrals that don't contain scalar products *)
 Options[ApartFF] = {
-	Collecting -> True,
-	DropScaleless -> True,
-	ExpandScalarProduct -> True,
-	Factoring -> Factor,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	FDS -> True,
-	FeynAmpDenominator -> True,
-	FeynAmpDenominatorCombine -> True,
-	FCProgressBar -> False,
-	MaxIterations -> Infinity,
-	Numerator -> True,
-	SetDimensions-> {3, 4, D-1, D},
-	TemporalMomentum -> False
+	Collecting 					-> True,
+	DropScaleless 				-> True,
+	ExpandScalarProduct 		-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCProgressBar 				-> False,
+	FCVerbose 					-> False,
+	FDS 						-> True,
+	Factoring 					-> {Factor, 5000},
+	FeynAmpDenominator 			-> True,
+	FeynAmpDenominatorCombine	-> True,
+	MaxIterations 				-> Infinity,
+	Numerator 					-> True,
+	SetDimensions				-> {3, 4, D-1, D},
+	TemporalMomentum 			-> False,
+	TimeConstrained 			-> 3
 };
 
 Apart2[y_, OptionsPattern[]] :=
@@ -219,8 +220,8 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 			FCPrint[1, "ApartFF: Applying Collect2.", FCDoControl->affVerbose];
 
 			If[ TrueQ[optCollecting===True],
-				res = Collect2[res,FeynAmpDenominator, Factoring->OptionValue[Factoring]],
-				res = Collect2[res,optCollecting, Factoring->OptionValue[Factoring]]
+				res = Collect2[res,FeynAmpDenominator, Factoring->OptionValue[Factoring], TimeConstrained->OptionValue[TimeConstrained]],
+				res = Collect2[res,optCollecting, Factoring->OptionValue[Factoring], TimeConstrained->OptionValue[TimeConstrained]]
 			];
 
 			FCPrint[1, "ApartFF: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose]
