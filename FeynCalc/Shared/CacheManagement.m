@@ -56,7 +56,8 @@ whiteListNames = {
 	PairContract,
 	FCFastContract,
 	FeynCalc`NPointTo4Point`Private`getDet,
-	FeynCalc`SimplifyPolyLog`Private`simplifyArgument
+	FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
+	FeynCalc`FCApart`Private`pfracRaw
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
@@ -88,7 +89,8 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 				depArgs = cachedToString[standardSet],
 			fcFunc === FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
 				depArgs = cachedToString[standardSet],
-
+			fcFunc === FeynCalc`FCApart`Private`pfracRaw,
+				depArgs = cachedToString[standardSet],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]

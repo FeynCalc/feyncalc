@@ -420,5 +420,15 @@ SPD[k,l]^2,{k},FCE\[Rule]True]", "SFAD[{{k, 0}, {0, 1}, 1}]*SPD[k, l]"},
 "0"},
 {"fcstFCApart-ID52",
 "FCApart[FCI[CSPD[p, q]^2 CFAD[q, {{0, p.q}, x}]], {q}, FCE -> True]",
-"x^2 CFAD[{{q, 0}, {0, -1}, 1}, {{0, p.q}, {x, -1}, 1}]"}
+"x^2 CFAD[{{q, 0}, {0, -1}, 1}, {{0, p.q}, {x, -1}, 1}]"},
+{"fcstFCApart-ID53",
+"AbsoluteTiming[
+FCApart[SFAD[{{0, c1 + p1.Q}}] SFAD[{{0, c2 + p1.Q}}] SFAD[{{p1,
+		0}, {0, 1}, 1}] SFAD[{{p2, 0}, {0, 1},
+	1}] SFAD[{{p3, 0}, {0, 1}, 1}] SFAD[{{-p1 + Q, 0}, {0, 1},
+	1}] SFAD[{{-p2 + Q, 0}, {0, 1},
+	1}] SFAD[{{-p1 - p2 + Q, 0}, {0, 1},
+	1}] SFAD[{{-p1 - p2 - p3 + Q, 0}, {0, 1}, 1}], {p1, p2, p3},
+	FDS -> False]][[1]] < 1.5",
+"True"}
 })

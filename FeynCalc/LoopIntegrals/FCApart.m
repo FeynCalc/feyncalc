@@ -61,7 +61,7 @@ Options[FCApart] = {
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0},
+		scaleless1=0,scaleless2=0,time},
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -173,10 +173,13 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
 
 		(* All the partial fractioning is done by pfrac *)
+		time=AbsoluteTime[];
+		FCPrint[1,"FCApart: Doing the actual partial fractioning via pfrac", FCDoControl->fcaVerbose];
 		res = pref*vectorTerm*pfrac[vectorSet];
+		FCPrint[1, "FCApart: Done applying pfrac, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 
 		(*pfrac can appear in the final result if MaxIterations is not Infinity	*)
-		res = res/.pfrac -> pfracOut;
+		res = res/. (pfracRaw|pfrac) -> pfracOut /. pfracOut[u_List, {}] :> pfracOut[u];
 
 		(*	propagators with zero exponents are unity	*)
 		res = res /. pfracOut[{_, _, {}, _}]->1 /. pfracOut[{_, _, {0..}, _}]->1;
@@ -248,11 +251,20 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 pfrac[inputVectorSet_List]:=
+	FCUseCache[pfracRaw,{inputVectorSet},{}]/; counter===Infinity;
+
+(*	If MaxIterations is not set to Infinity, then most likely some debugging
+	is ongoing. In this case we do not want to do any caching of pfrac! *)
+pfrac[inputVectorSet_List]:=
+	(
+	counter--;
+	FCPrint[3,"FCApart: pfrac: Counter is ", counter, FCDoControl->fcaVerbose];
+	pfracRaw[inputVectorSet]
+	)/; counter>0 && counter=!=Infinity;
+
+pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 	Block[{	vectorSet,removalList,f,v,ca,M,expCounts,spIndices,
 			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos,tmpNS,tmp},
-
-		counter--;
-		FCPrint[3,"FCApart: pfrac: Counter is ", counter, FCDoControl->fcaVerbose];
 
 		(*	We need to determine f_i and f from Eq. 10 in arXiv:1204.2314.
 		This can be done by computing the nullspace basis of the matrix M
@@ -339,7 +351,10 @@ pfrac[inputVectorSet_List]:=
 				res = pfrac[{Delete[vectorSet[[1]],{spPosition}],vectorSet[[2]],Delete[expCounts,{spPosition}],Delete[vectorSet[[4]],{spPosition}]}];
 				(* Here we reinsert the factored out scalar product *)
 				FCPrint[3,"FCApart: pfrac: Output after treating the vanishing coefficient f_i", res," ",FCDoControl->fcaVerbose];
-				res = res/.(h:pfrac|pfracOut)[{a_,b_,c_,d_}]:>h[{Join[a,{spType}],b,Join[c,{spExponent}], Join[d,{spType}]}];
+				res = res/.{
+					pfracOut[{a_,b_,c_,d_}]:>pfracOut[{Join[a,{spType}],b,Join[c,{spExponent}], Join[d,{spType}]}],
+					(pfracRaw|pfrac)[{a_,b_,c_,d_}]:>pfrac[{Join[a,{spType}],b,Join[c,{spExponent}], Join[d,{spType}]}]
+				};
 				Return[res],
 
 				FCPrint[3,"FCApart: pfrac: The coefficient of ", spType, " is not zero",FCDoControl->fcaVerbose];
@@ -396,7 +411,7 @@ pfrac[inputVectorSet_List]:=
 		FCPrint[3,"FCApart: pfrac: Leaving pfrac with", res,FCDoControl->fcaVerbose];
 
 		res
-]/; counter=!=0;
+];
 
 cancelSP[ex_]:=
 	ex /. FeynAmpDenominator -> fadHold //. Dispatch[{
