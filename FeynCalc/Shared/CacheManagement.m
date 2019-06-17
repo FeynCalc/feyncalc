@@ -60,7 +60,7 @@ whiteListNames = {
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
-	Block[{fullOpts, cachedHead,depArgs},
+	Block[{fullOpts, cachedHead,depArgs, standardSet},
 		fullOpts = Sort[Flatten[Join[opts, FilterRules[Options[fcFunc], Except[opts]]]]];
 		cachedHead=ToExpression["cacheFunc"<>ToString[fcFunc]];
 
@@ -71,49 +71,23 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 			Abort[]
 		];
 
+		standardSet = DownValues[#]&/@{
+				Pair, CartesianPair, TemporalPair, ScalarProduct, CartesianScalarProduct,
+				Momentum, CartesianMomentum, TemporalMomentum, SP, SPD, SPE, CSP, CSPD, CSPE,
+				TC, $BreitMaison, $Larin
+		};
+
 		Which[
 			fcFunc === ExpandScalarProduct,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
+				depArgs = cachedToString[standardSet],
 			fcFunc === PairContract,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
+				depArgs = cachedToString[standardSet],
 			fcFunc === FCFastContract,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
-
+				depArgs = cachedToString[standardSet],
 			fcFunc === FeynCalc`NPointTo4Point`Private`getDet,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
-
+				depArgs = cachedToString[standardSet],
 			fcFunc === FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
+				depArgs = cachedToString[standardSet],
 
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
