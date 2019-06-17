@@ -81,7 +81,9 @@ LorentzIndex[i3], LorentzIndex[i4]]"},
 {"fcstSharedToolsExpandAll2-ID17", "ExpandAll2[{a,b,c}]",
 "{a, b, c}"},
 {"fcstSharedToolsExpandAll2-ID18", "ExpandAll2[{e(a+d),b,c}]",
-"{(a + d)*e, b, c}"}
+"{(a + d)*e, b, c}"},
+{"fcstSharedToolsExpandAll2-ID18", "ExpandAll2[-2 a + 2 b + 2 (a - b)]",
+"0"}
 });
 
 Tests`Shared`fcstSharedToolsExpand2 = {
