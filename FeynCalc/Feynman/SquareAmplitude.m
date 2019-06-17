@@ -62,10 +62,10 @@ SquareAmplitude[m1_List, m2_List/;!OptionQ[m2], OptionsPattern[]] :=
 		];
 
 
-		If[	Length[m1]=!=Length[m2],
+		(*If[	Length[m1]=!=Length[m2],
 			Message[SquareAmplitude::failmsg, "The lists of amplitudes have different lengths."];
 			Abort[]
-		];
+		];*)
 
 		If[	optIndexed=!=False && (optIndexed===True || Head[optIndexed]=!=Symbol),
 			Message[SquareAmplitude::failmsg, "The value of the option Indexed must be either False or a function name."];
