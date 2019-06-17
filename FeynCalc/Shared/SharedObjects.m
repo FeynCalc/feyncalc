@@ -122,9 +122,7 @@ Eps::usage =
 "Eps[a, b, c, d] represents the totally antisymmetric epsilon \
 (Levi-Civita) tensor. The \"a,b, ...\" should have head \
 LorentzIndex or Momentum or Integer. \
-In case of integers the Levi-Civita tensor is evaluated immediately. \
-Eps has an option Dimension (default 4). \
-As alternative input LeviCivita[mu,nu, ...][p,q,...] can be used.";
+As alternative input LC[mu,nu, ...][p,q,...] can be used.";
 
 Epsilon::usage =
 "Epsilon is (D-4), where D is the number of space-time dimensions. Epsilon \
