@@ -183,24 +183,28 @@ If[ FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]],
 
 (* need to do this first, otherwise $NonComm and $FCTensorList do not get built correctly *)
 boostrappingList = Join[
-	Map[ToFileName[{$FeynCalcDirectory,"Shared"},#]&, {"SharedTools.m", "DataType.m"}],
-	Map[ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"},#]&, {"NonCommutative.m"}],
-	Map[ToFileName[{$FeynCalcDirectory,"Lorentz"},#]&, {"DeclareFCTensor.m"}]
+	Map[FileNameJoin[{$FeynCalcDirectory,"Shared",#}]&, {"SharedTools.m", "DataType.m"}],
+	Map[FileNameJoin[{$FeynCalcDirectory,"NonCommAlgebra",#}]&, {"NonCommutative.m"}],
+	Map[FileNameJoin[{$FeynCalcDirectory,"Lorentz",#}]&, {"DeclareFCTensor.m"}]
 ];
 
-listMain = 				{ToFileName[{$FeynCalcDirectory}, "FCMain.m"]};
-listShared =			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Shared"}]];
-listNonCommAlgebra =	FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"NonCommAlgebra"}]];
-listLorentz = 			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Lorentz"}]];
-listDirac =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Dirac"}]];
-listPauli =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Pauli"}]];
-listSUN =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"SUN"}]];
-listLoopIntegrals =		FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"LoopIntegrals"}]];
-listFeynman =			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Feynman"}]];
-listQCD =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"QCD"}]];
-listTables =			FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Tables"}]];
-listExportImport =		FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"ExportImport"}]];
-listMisc =				FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Misc"}]];
+mainList = {FileNameJoin[{$FeynCalcDirectory, "FCMain.m"}]};
+
+allList = {
+	Select[FileNames[{"*.m"}, FileNameJoin[{$FeynCalcDirectory, "Shared"}]], StringFreeQ[#, "LegacyObjects"] &],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"NonCommAlgebra"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Lorentz"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Dirac"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Pauli"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"SUN"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"LoopIntegrals"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Feynman"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"QCD"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Tables"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"ExportImport"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Misc"}]],
+	{FileNameJoin[{$FeynCalcDirectory, "Shared", "LegacyObjects.m"}]}
+};
 
 fcSelfPatch[file_String]:=
 	Block[{originalCode,repList},
@@ -216,60 +220,25 @@ fcSelfPatch[file_String]:=
 
 AppendTo[$ContextPath, "FeynCalc`Package`"];
 
-
-
-patchedMain=(fcSelfPatch/@listMain);
-patchedShared=(fcSelfPatch/@listShared);
-
-patchedBoostrap			=(fcSelfPatch/@boostrappingList)
-patchedNonCommAlgebra	=(fcSelfPatch/@listNonCommAlgebra);
-patchedLorentz			=(fcSelfPatch/@listLorentz)
-patchedDirac			=(fcSelfPatch/@listDirac)
-patchedPauli			=(fcSelfPatch/@listPauli)
-patchedSUN				=(fcSelfPatch/@listSUN)
-patchedLoopIntegrals	=(fcSelfPatch/@listLoopIntegrals)
-patchedFeynman			=(fcSelfPatch/@listFeynman)
-patchedQCD				=(fcSelfPatch/@listQCD)
-patchedTables			=(fcSelfPatch/@listTables)
-patchedExportImport		=(fcSelfPatch/@listExportImport)
-patchedMisc				=(fcSelfPatch/@listMisc)
-
+patchedMain =(fcSelfPatch/@mainList);
+patchedBoostrap	=(fcSelfPatch/@boostrappingList)
+patchedList = Map[Function[argList, fcSelfPatch /@ argList], allList];
 
 FCDeclareHeader[#,"string"]&/@(patchedMain);
 ToExpression/@patchedMain;
 
-FCDeclareHeader[#,"string"]&/@patchedShared;
-FCDeclareHeader[#,"string"]&/@patchedNonCommAlgebra;
-FCDeclareHeader[#,"string"]&/@patchedLorentz;
-FCDeclareHeader[#,"string"]&/@patchedDirac;
-FCDeclareHeader[#,"string"]&/@patchedPauli;
-FCDeclareHeader[#,"string"]&/@patchedSUN;
-FCDeclareHeader[#,"string"]&/@patchedLoopIntegrals;
-FCDeclareHeader[#,"string"]&/@patchedFeynman;
-FCDeclareHeader[#,"string"]&/@patchedQCD;
-FCDeclareHeader[#,"string"]&/@patchedTables;
-FCDeclareHeader[#,"string"]&/@patchedExportImport;
-FCDeclareHeader[#,"string"]&/@patchedMisc;
+Map[Function[argList, FCDeclareHeader[#,"string"]& /@ argList], patchedList];
 
 ToExpression/@patchedBoostrap;
-ToExpression/@patchedShared;
-ToExpression/@patchedNonCommAlgebra;
-ToExpression/@patchedLorentz;
-ToExpression/@patchedDirac;
-ToExpression/@patchedPauli;
-ToExpression/@patchedSUN;
-ToExpression/@patchedLoopIntegrals;
-ToExpression/@patchedFeynman;
-ToExpression/@patchedQCD;
-ToExpression/@patchedTables;
-ToExpression/@patchedExportImport;
-ToExpression/@patchedMisc;
+Map[Function[argList, ToExpression /@ argList], patchedList];
 
 EndPackage[];
 
 Remove["FeynCalc`boostrappingList"];
+Remove["FeynCalc`allList"];
+Remove["FeynCalc`mainList"];
+Remove["FeynCalc`argList"];
 Remove["FeynCalc`fcSelfPatch"];
-Remove["FeynCalc`list*"];
 Remove["FeynCalc`patched*"];
 Remove["FeynCalc`originalCode"];
 Remove["FeynCalc`repList"];
@@ -289,7 +258,7 @@ Tr::usage =
 generalized trace, combining terms with f instead of Plus. Tr[list, f, n] goes down to level n
 in list. \n
 Tr[ expression ] calculates the DiracTrace, i.e.,  TR[ expression ], if any of DiracGamma,
-DiracSlash, GA, GAD, GAE, GS, GSD or GAE are present in expression.";
+GA, GAD, GAE, GS, GSD or GAE are present in expression.";
 Tr/:Options[Tr]:=Options[TR];
 Protect[Tr];
 

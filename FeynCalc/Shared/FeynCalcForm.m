@@ -198,8 +198,6 @@ feynCalcForm[x_,opt___Rule]:=
 		xxxx = (xxxx/.
 				DOT:>fcdot /. SUNN :> "N"/. SUNTrace :> "tr"  /. LeviCivita[lv__] :> epsd[lv] /.
 				Eps[vl__] :> epsd[vl] /. MetricTensor[v_, w_, OptionsPattern[]] :> "g"[v, w]  /.
-				(*  FourVector[Subscript[p_,s_], mu_] :>
-					(SequenceForm@@Flatten[ {sumst[p[s]],"[",mu,"]"}])/.*)
 				ScalarProduct[ v_,v_ ] :> v^2 /. ScalarProduct[v_ w_] :>
 				(SequenceForm@@Flatten[ {v//sumst ,{"."},w//sumst} ]) /.
 				(* PolarizationVector[ka_, mu_, ___] :> "ep"[ka, mu]  /. *)

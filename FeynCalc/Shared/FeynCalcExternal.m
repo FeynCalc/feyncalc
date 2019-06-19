@@ -67,7 +67,6 @@ FeynCalcExternal[x_,opts___Rule] :=
 			DiracSigma :> dirsig,
 			Eps :> eps,
 			FeynAmpDenominator :> feynampback,
-			MetricTensor :> metricmul,
 			Pair :> pairback,
 			CartesianPair :> cpairback,
 			TemporalPair :> tpairback,
@@ -90,7 +89,6 @@ FeynCalcExternal[x_,opts___Rule] :=
 				DiracSigma,
 				Eps,
 				FeynAmpDenominator,
-				MetricTensor,
 				Pair,
 				PropagatorDenominator,
 				PauliSigma,
@@ -136,11 +134,6 @@ SUNFback[SUNIndex[a_], SUNIndex[b_], SUNIndex[c_]] :=
 SUNFback[a_, b_, c_] :=
 	SUNF[a, b, c] /; FreeQ[{a,b,c},SUNIndex];
 
-metricmul[a_ b_,dim__] :=
-	MetricTensor[a,b,dim];
-metricmul[a_, b_,dim___] :=
-	MetricTensor[a,b,dim];
-
 scalarmul[a_ b_,dim__] :=
 	ScalarProduct[a,b,dim];
 scalarmul[a_, b_,dim___] :=
@@ -158,7 +151,7 @@ pairback[LorentzIndex[a_,D], LorentzIndex[b_,D]] :=
 pairback[LorentzIndex[a_,D-4], LorentzIndex[b_,D-4]] :=
 	MTE[a,b];
 pairback[LorentzIndex[a_,d_], LorentzIndex[b_,d_]] :=
-	MetricTensor[a,b,Dimension->d] /;(d=!=D && d=!= D-4);
+	Pair[LorentzIndex[a,d], LorentzIndex[b,d]] /;(d=!=D && d=!= D-4);
 
 
 pairback[ExplicitLorentzIndex[a_?NumberQ], Momentum[b_]] :=
@@ -170,7 +163,7 @@ pairback[LorentzIndex[a_,D], Momentum[b_,D]] :=
 pairback[LorentzIndex[a_, D-4], Momentum[b_, D-4]] :=
 	FVE[b,a];
 pairback[LorentzIndex[a_,d_], Momentum[b_,d_]] :=
-	FourVector[b,a,Dimension->d] /;(d=!=D && d=!= D-4);
+	Pair[LorentzIndex[a,d], Momentum[b,d]] /;(d=!=D && d=!= D-4);
 
 pairback[Momentum[OPEDelta], Momentum[b_]] :=
 	SO[b];
@@ -423,20 +416,8 @@ eps[LorentzIndex[a_,D], LorentzIndex[b_,D], LorentzIndex[c_,D], Momentum[d_,D]]:
 eps[LorentzIndex[a_,D],LorentzIndex[b_,D], LorentzIndex[c_,D],LorentzIndex[d_,D]]:=
 	LCD[a,b,c,d];
 
-eps[Momentum[a_,dd_],Momentum[b_,dd_],Momentum[c_,dd_],Momentum[d_,dd_]]:=
-	LeviCivita[Dimension->dd][a,b,c,d, Dimension->dd]/;dd=!=D;
-
-eps[LorentzIndex[a_,dd_],Momentum[b_,dd_], Momentum[c_,dd_],Momentum[d_,dd_]]:=
-	LeviCivita[a,Dimension->dd][b,c,d, Dimension->dd]/;dd=!=D;
-
-eps[LorentzIndex[a_, dd_],LorentzIndex[b_, dd_], Momentum[c_,dd_],Momentum[d_,dd_]]:=
-	LeviCivita[a,b,Dimension->dd][c,d,Dimension->dd]/;dd=!=D;
-
-eps[LorentzIndex[a_,dd_], LorentzIndex[b_,dd_], LorentzIndex[c_,dd_], Momentum[d_,dd_]]:=
-	LeviCivita[a,b,c,Dimension->dd][d, Dimension->dd]/;dd=!=D;
-
-eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_], LorentzIndex[c_,dd_],LorentzIndex[d_,dd_]]:=
-	LeviCivita[a,b,c,d,Dimension->dd]/;dd=!=D;
+eps[(h1:Momentum|LorentzIndex)[a_,dd_], (h2:Momentum|LorentzIndex)[b_,dd_], (h3:Momentum|LorentzIndex)[c_,dd_], (h4:Momentum|LorentzIndex)[d_,dd_]]:=
+	Eps[h1[a,dd], h2[b,dd], h3[c,dd], h4[d,dd]]/;dd=!=D;
 
 eps[CartesianMomentum[a_],CartesianMomentum[b_],CartesianMomentum[c_]]:=
 	CLC[][a,b,c];

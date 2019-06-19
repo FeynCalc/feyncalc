@@ -127,17 +127,17 @@ OPEInt[exp_, kk_, pp_, x_, opt___Rule] :=
 																			]
 			]:>
 		(muUU = LorentzIndex[Unique[$MU], n];
-		 ( Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
-		 (*g_munu*)
-			 ( Contract[fun1[a, muUU, b] fun2[aa, muUU, bb]] (1/2) Gamma[2-n/2] x*
-				 (1-x) +
-		 (*p_mu p_nu*)
-		 EpsEvaluate[fun1[a,p,b] fun2[aa,p,bb]]  Gamma[3-n/2] x^2/p2 +
-		 EpsEvaluate[(fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
-								 ) / Pair[de, p]] (1/2) (Gamma[2-n/2]-Gamma[3-n/2]) (2x^2-x)+
-		 1/4 (Gamma[3-n/2] (1-4 x + 4 x^2) + Gamma[2-n/2] (4 x - 6 x^2)) *
-		 fun1[a,de,b] fun2[aa,de,bb] p2/Pair[de,p]^2)
-		 )) /; ( ((fun1 === Eps) || (fun1 === Pair)) &&
+		( Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
+		(*g_munu*)
+			( Contract[fun1[a, muUU, b] fun2[aa, muUU, bb]] (1/2) Gamma[2-n/2] x*
+				(1-x) +
+		(*p_mu p_nu*)
+		EpsEvaluate[fun1[a,p,b] fun2[aa,p,bb]]  Gamma[3-n/2] x^2/p2 +
+		EpsEvaluate[(fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
+								) / Pair[de, p]] (1/2) (Gamma[2-n/2]-Gamma[3-n/2]) (2x^2-x)+
+		1/4 (Gamma[3-n/2] (1-4 x + 4 x^2) + Gamma[2-n/2] (4 x - 6 x^2)) *
+		fun1[a,de,b] fun2[aa,de,bb] p2/Pair[de,p]^2)
+		)) /; ( ((fun1 === Eps) || (fun1 === Pair)) &&
 						((fun2 === Eps) || (fun2 === Pair))
 					),
 
@@ -153,41 +153,41 @@ OPEInt[exp_, kk_, pp_, x_, opt___Rule] :=
 		(muUU = LorentzIndex[Unique[$MU], n];
 
 		(*i6munu*)
-		 EpsEvaluate[
-		 ( ((2 - n)*x^(-3 + m)*((1 - x)*x)^(n/2)*
-				 (4 - n - 12*x + 4*n*x + 12*x^2 - 4*n*x^2)*
-		 (*
-		 FourVector[OPEDelta, MU]* FourVector[OPEDelta, NU]*
+		EpsEvaluate[
+		( ((2 - n)*x^(-3 + m)*((1 - x)*x)^(n/2)*
+				(4 - n - 12*x + 4*n*x + 12*x^2 - 4*n*x^2)*
+		(*
+		FV[OPEDelta, MU]* FV[OPEDelta, NU]*
 		 *)
-				 fun1[a, de, b] fun2[aa, de, bb] *
-				 Gamma[2 - n/2]*
-				 Pair[de, p]^(-2 + m))/(16*(1 - x)^3) +
-			 ((4 - n)*(6 - n)*x^(-1 + m)*((1 - x)*x)^(n/2)*
-			 Gamma[2 - n/2]*
-		 (*
-		 FourVector[p, MU]* FourVector[p, NU]*
+				fun1[a, de, b] fun2[aa, de, bb] *
+				Gamma[2 - n/2]*
+				Pair[de, p]^(-2 + m))/(16*(1 - x)^3) +
+			((4 - n)*(6 - n)*x^(-1 + m)*((1 - x)*x)^(n/2)*
+			Gamma[2 - n/2]*
+		(*
+		FV[p, MU]* FV[p, NU]*
 		 *)
-				 fun1[a, p, b] fun2[aa, p, bb] *
-				 Pair[de, p]^m)/
-			 (4*(1 - x)^3*Pair[p, p]^2) +
-			 ((4 - n)*x^(-2 + m)*((1 - x)*x)^(n/2)*(2 - n - 6*x + 2*n*x)*
-		 (*
-		 (FourVector[OPEDelta, NU]*FourVector[p, MU] +
-		 FourVector[OPEDelta, MU]*FourVector[p, NU])*
+				fun1[a, p, b] fun2[aa, p, bb] *
+				Pair[de, p]^m)/
+			(4*(1 - x)^3*Pair[p, p]^2) +
+			((4 - n)*x^(-2 + m)*((1 - x)*x)^(n/2)*(2 - n - 6*x + 2*n*x)*
+		(*
+		(FV[OPEDelta, NU]*FV[p, MU] +
+		FV[OPEDelta, MU]*FV[p, NU])*
 		 *)
-				 (fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
-				 )*
-			 Gamma[2 - n/2]*
-				 Pair[de, p]^(-1 + m))/
-			 (8*(1 - x)^3*Pair[p, p]) +
-			 ((4 - n)*x^(-2 + m)*((1 - x)*x)^(n/2)*Gamma[2 - n/2]*
-		 (*
-		 MetricTensor[MU, NU]*
+				(fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
+				)*
+			Gamma[2 - n/2]*
+				Pair[de, p]^(-1 + m))/
+			(8*(1 - x)^3*Pair[p, p]) +
+			((4 - n)*x^(-2 + m)*((1 - x)*x)^(n/2)*Gamma[2 - n/2]*
+		(*
+		MT[MU, NU]*
 		 *)
-				 Contract[fun1[a,muUU,b] fun2[aa, muUU, bb]]*
-				 Pair[de, p]^m)/
-			 (4*(1 - x)^2*Pair[p, p])
-					 )]
+				Contract[fun1[a,muUU,b] fun2[aa, muUU, bb]]*
+				Pair[de, p]^m)/
+			(4*(1 - x)^2*Pair[p, p])
+					)]
 		)
 							};
 		irules1 = {

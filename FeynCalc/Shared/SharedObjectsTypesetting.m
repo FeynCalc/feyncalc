@@ -345,14 +345,6 @@ AntiQuarkField /:
 	MakeBoxes[AntiQuarkField, TraditionalForm]:=
 		OverscriptBox["\[Psi]","_"];
 
-ChiralityProjector /:
-	MakeBoxes[ChiralityProjector[1,OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[DiracGamma[6],TraditionalForm];
-
-ChiralityProjector /:
-	MakeBoxes[ChiralityProjector[-1,OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[DiracGamma[7],TraditionalForm];
-
 DeltaFunction /:
 	MakeBoxes[ DeltaFunction[y_], TraditionalForm]:=
 		RowBox[{"\[Delta]", "(", TBox[y], ")"}];
@@ -502,24 +494,11 @@ DiracIndex /:
 	MakeBoxes[DiracIndex[p_], TraditionalForm]:=
 		ToBoxes[p, TraditionalForm];
 
-DiracMatrix /:
-	MakeBoxes[DiracMatrix[x_/;!MemberQ[{5,6,7},x], opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[DiracGamma[LorentzIndex[x,OptionValue[DiracMatrix, {opts},Dimension]],
-			OptionValue[DiracMatrix, {opts},Dimension]],TraditionalForm]/; !OptionValue[{opts},FCI];
-
-DiracMatrix /:
-	MakeBoxes[DiracMatrix[(x:5|6|7), opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[DiracGamma[x],TraditionalForm]/; !OptionValue[{opts},FCI];
 
 DiracSigma /:
-	MakeBoxes[DiracSigma[(DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD | CGA | CGAD | CGS | CGSD | TGA )[x_,___],
-	(DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD | CGA | CGAD | CGS | CGSD | TGA)[y_,___]], TraditionalForm]:=
+	MakeBoxes[DiracSigma[(DiracGamma | GA | GAD | GS | GSD | CGA | CGAD | CGS | CGSD | TGA )[x_,___],
+	(DiracGamma | GA | GAD | GS | GSD | CGA | CGAD | CGS | CGSD | TGA)[y_,___]], TraditionalForm]:=
 		SuperscriptBox["\[Sigma]", TBox[x,y]];
-
-DiracSlash /:
-	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[DiracGamma[Momentum[x,OptionValue[DiracSlash, {opts},Dimension]],
-			OptionValue[DiracSlash, {opts},Dimension]],TraditionalForm]/; !OptionValue[{opts},FCI];
 
 DiracIndexDelta /:
 	MakeBoxes[ DiracIndexDelta[(ind1: DiracIndex | ExplicitDiracIndex)[i_],(ind2: DiracIndex | ExplicitDiracIndex)[j_]], TraditionalForm ]:=
@@ -988,10 +967,6 @@ feynAmpDenominatorTypeset[GenericPropagatorDenominator[ex1_,{n_,s_}]]:=
 
 	")"}]^(n);
 
-FourVector /:
-	MakeBoxes[FourVector[a_,b_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[Pair[Momentum[a, OptionValue[FourVector, {opts},Dimension]], LorentzIndex[b, OptionValue[FourVector, {opts},Dimension]]],TraditionalForm]/;
-			!OptionValue[FourVector, {opts},FCI];
 
 (*    Typesetting for vectors in the FCE notation.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1074,13 +1049,6 @@ GSE/:
 
 (* ------------------------------------------------------------------------ *)
 
-IFPD /:
-	MakeBoxes[IFPD[a_,c_], TraditionalForm]:=
-		If[ c === 0,
-			TBox[a^2],
-			TBox["(", a^2," - ", c^2, ")"]
-		];
-
 Integratedx /:
 	MakeBoxes[Integratedx[x_, low_, up_], TraditionalForm]:=
 		RowBox[{SubsuperscriptBox["\[Integral]", TBox[low],
@@ -1122,24 +1090,9 @@ LeftRightPartialD2 /:
 	MakeBoxes[LeftRightPartialD2[x_], TraditionalForm]:=
 		ToBoxes[LeftRightPartialD[x],TraditionalForm];
 
-LeviCivita /:
-	MakeBoxes[LeviCivita[(a:Except[_?OptionQ]..)/; Length[{a}] === 4, opts:OptionsPattern[LeviCivita]/;!OptionValue[LeviCivita,{opts},FCI]],
-	TraditionalForm]:=
-		ToBoxes[Eps[Sequence@@(LorentzIndex[#,OptionValue[LeviCivita,{opts},Dimension]]&/@{a})],TraditionalForm];
-
-LeviCivita /:
-	MakeBoxes[LeviCivita[x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]], TraditionalForm]:=
-		ToBoxes[Eps[Sequence@@(LorentzIndex[#,OptionValue[LeviCivita,{opts1},Dimension]]&/@{x}),
-				Sequence@@(Momentum[#,OptionValue[LeviCivita,{opts2},Dimension]]&/@{y})],TraditionalForm]/;
-		Length[{x,y}] === 4 && !OptionValue[LeviCivita,{opts1,opts2},FCI];
-
 LorentzIndex /:
 	MakeBoxes[ LorentzIndex[p_, ___], TraditionalForm]:=
 		ToBoxes[p,TraditionalForm];
-
-MetricTensor /:
-	MakeBoxes[MetricTensor[a_, b_, opts:OptionsPattern[]], TraditionalForm]:=
-		ToBoxes[Pair[LorentzIndex[a,OptionValue[{opts},Dimension]],LorentzIndex[b,OptionValue[{opts},Dimension]]], TraditionalForm]/; !OptionValue[{opts},FCI];
 
 (*    Typesetting for momenta.    *)
 (* ------------------------------------------------------------------------ *)

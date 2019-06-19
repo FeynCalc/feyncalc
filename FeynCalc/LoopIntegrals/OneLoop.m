@@ -55,7 +55,7 @@ all amplitudes from b to c should be taken.";
 
 ReduceGamma::usage =
 "ReduceGamma is an option of OneLoop. If set to True all \
-DiracMatrix[6] and DiracMatrix[7] (i.e. all ChiralityProjector) \
+GA[6] and GA[7] (i.e. all chirality projectors) \
 are reduced to Gamma5.";
 
 ReduceToScalars::usage =

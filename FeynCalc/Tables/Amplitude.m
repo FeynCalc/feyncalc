@@ -925,7 +925,7 @@ gp[q1-p,1,3] gp[q2,2,4]
 										qgv[8] ,
 										qp[p-q2, 2, 9] ,
 										qgv[1]   ,
-										(DiracSlash[p]/4) ,  DiracGamma[5]]
+										(GS[p]/4) ,  DiracGamma[5]]
 									]
 *)
 ,

@@ -21,9 +21,9 @@ DiracReduce::usage =
 to the standard basis (S,P,V,A,T) using the Chisholm identity (see Chisholm). \
 In the result the basic Dirac structures are wrapped with a head \
 DiracBasis. I.e.: S corresponds to DiracBasis[1], \
-P : DiracBasis[DiracMatrix[5]], \
-V : DiracBasis[DiracMatrix[mu]], A: DiracBasis[DiracMatrix[mu, 5]], \
-T: DiracBasis[DiracSigma[DiracMatrix[mu, nu]]]. \
+P : DiracBasis[GA[5]], \
+V : DiracBasis[GA[mu]], A: DiracBasis[GA[mu, 5]], \
+T: DiracBasis[DiracSigma[GA[mu, nu]]]. \
 By default DiracBasis is substituted to Identity. \n
 Notice that the result of DiracReduce is given in the FeynCalcExternal-way, \
 i.e., evtl. you may have to use FeynCalcInternal on result.";

@@ -51,7 +51,7 @@ functions. By setting  \n
 DOT=. \n
 this can be disabled. \
 Note that then non-commutative products should to be entered \
-like DOT[ DiracMatrix[mu], m + DiracSlash[p], DiracMatrix[mu] ], \
+like DOT[ GA[mu], m + GS[p], GA[mu] ], \
 etc.";
 
 $DistributiveFunctions::usage =
@@ -171,7 +171,7 @@ $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines \
 the sign in the result of a Dirac trace of four gamma matrices \
 and gamma5.  $LeviCivitaSign is by default set to -1 which corresponds \
-to the convention Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. \
+to the convention Tr[GA[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. \
 Setting $LeviCivitaSign=-I  will switch to the FORM-convention. \n
 
 In terms of explicit components, $LeviCivitaSign=1 corresponds to setting

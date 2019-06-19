@@ -279,7 +279,7 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 											LorentzIndex[mu3_],
 											Momentum[OPEDelta]]
 										) :> FeynCalcInternal[
-											DiracMatrix[mu1,mu2,mu3]*
+											GA[mu1,mu2,mu3]*
 											LC[mu1,mu2,mu3][OPEDelta]
 															]
 										}

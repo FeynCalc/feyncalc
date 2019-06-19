@@ -43,9 +43,9 @@ SMVertex[x___, i_Integer, y___] :=
 SMVertex["AWW", mom1_, li1_, mom2_, li2_, mom3_, li3_, OptionsPattern[]] :=
 	Block[	{dim, res},
 		res = ChangeDimension[
-			-I*SMP["e"]*( MetricTensor[li1, li2] * FourVector[(mom2 -mom1 ),li3]+
-					MetricTensor[li2, li3] * FourVector[(mom3 -mom2 ),li1]+
-					MetricTensor[li3, li1] * FourVector[(mom1 -mom3 ),li2]), OptionValue[Dimension]];
+			-I*SMP["e"]*( MT[li1, li2] * FV[(mom2 -mom1 ),li3]+
+					MT[li2, li3] * FV[(mom3 -mom2 ),li1]+
+					MT[li3, li1] * FV[(mom1 -mom3 ),li2]), OptionValue[Dimension]];
 		res
 	]/; OptionValue[Explicit];
 

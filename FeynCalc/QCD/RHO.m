@@ -28,11 +28,11 @@ Options[RHO] = {Dimension -> D};
 
 RHO[i_Integer, mu_, nu_, p_, opt___Rule] :=
 	Block[ {gmn, pm, dm, pn, dn, dp, p2, re},
-		gmn = MetricTensor[mu,nu];
-		pm = FourVector[p, mu];
-		pn = FourVector[p, nu];
-		dm = FourVector[OPEDelta, mu];
-		dn = FourVector[OPEDelta, nu];
+		gmn = MT[mu,nu];
+		pm = FV[p, mu];
+		pn = FV[p, nu];
+		dm = FV[OPEDelta, mu];
+		dn = FV[OPEDelta, nu];
 		dp = ScalarProduct[OPEDelta, p];
 		p2 = ScalarProduct[p];
 		re =

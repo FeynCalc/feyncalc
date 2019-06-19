@@ -57,10 +57,6 @@ PropagatorDenominator[Momentum[q, D], m].  What is meant is \
 PropagatorDenominator is an internal object. To enter such propagators \
 in FeynCalc you should use FAD.";
 
-ChiralityProjector::usage =
-"ChiralityProjector[+1] denotes DiracGamma[6] (=1/2(1 + DiracMatrix[5])). \
-ChiralityProjector[-1] denotes DiracGamma[7] (=1/2(1 - DiracMatrix[5])).";
-
 CounterT::usage = "CounterT is a factor used by GluonPropagator and \
 QuarkPropagator when CounterTerm is set to All.";
 
@@ -80,8 +76,7 @@ DiracBasis::usage =
 DiracGamma::usage =
 "DiracGamma[x, dim] is the way all Dirac \
 matrices and slashes are represented (in the internal representation). \
-Use DiracMatrix (or GA, GAD) and DiracSlash (or GS, GSD) \
-for manual (short) input. \
+Use GA or GAD and GS or GSD for manual (short) input. \
 DiraGamma[x, 4] simplifies to DiracGamma[x].";
 
 DiracIndex::usage =
@@ -104,19 +99,9 @@ DIDelta::usage =
 "DIDelta[i,j] is the Kronecker-delta in the Dirac space. DIDelta[i,j] is \
 transformed into DiracDelta[DiracIndex[i],DiracIndex[j]] by FeynCalcInternal.";
 
-DiracMatrix::usage =
-"DiracMatrix[m] denotes a Dirac gamma matrix with Lorentz index m. \
-DiracMatrix[m1, m2, ..] is a product of gamma matrices with Lorentz \
-indices m1, m2, etc. DiracMatrix[5] is gamma5.";
-
 DiracSigma::usage =
 "DiracSigma[a, b] stands for I/2*(a . b - b . a) in 4 dimensions. \
-a and b must have Head DiracGamma, DiracMatrix or DiracSlash. \
-Only antisymmetry is implemented.";
-
-DiracSlash::usage =
-"DiracSlash[p] is the contraction FourVector[p, mu]*DiracSlash[mu]. \
-A product of those can be entered in the form DiracSlash[p1, p2, ..]."
+a and b must have Head DiracGamma. Only antisymmetry is implemented.";
 
 Eps::usage =
 "Eps[a, b, c, d] represents the totally antisymmetric epsilon \
@@ -197,13 +182,8 @@ FeynAmpList::usage =
 "FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of \
 Feynman amplitudes."
 
-FourVector::usage =
-"FourVector[p, mu] is the four Dimensional vector p with Lorentz index m. \
-A vector with space-time Dimension d is obtained by supplying the option \
-Dimension->d."
-
 FV::usage =
-"FV[p,mu] is a fourvector and is transformed into \
+"FV[p,mu] is a 4-vector and is transformed into \
 Pair[Momentum[p], LorentzIndex[mu]] by FeynCalcInternal.";
 
 FVD::usage =
@@ -288,8 +268,6 @@ GSE::usage =
 "GSE[p] is transformed into DiracGamma[Momentum[p, D-4], D-4] by FeynCalcInternal. \
 GSE[p,q, ...] is equivalent to GSE[p].GSE[q]. ...";
 
-IFPD::usage = "IFPD[p, m] denotes (p^2 - m^2)."
-
 Integratedx::usage =
 "Integratedx[x, low, up] is a variable representing the integration \
 operator Integrate[#, {x,low,up}]&.";
@@ -319,17 +297,6 @@ LeftRightPartialD2::usage =
 right. ExplicitPartialD[LeftRightPartialD2[mu]] gives \
 (RightPartialD[mu] + LeftPartialD[mu]).";
 
-LeviCivita::usage =
-"LeviCivita[mu, nu, ro, si] is an input  function for the \
-totally antisymmetric Levi-Civita tensor. \
-It evaluates automatically \
-to the internal representation Eps[ LorentzIndex[mu],  LorentzIndex[nu], \
-LorentzIndex[ro], LorentzIndex[si] ] \
-(or with a second argument in LorentzIndex for the Dimension, \
-if the option Dimension of LeviCivita is changed).  \
-LeviCivita[mu, nu ...][ p, ...] evaluates to \
-Eps[LorentzIndex[mu], LorentzIndex[nu], ..., Momentum[p], ...].";
-
 Li2::usage =
 "Li2 is an abbreviation for the dilog function, i.e., Li2 = PolyLog[2,#]&.";
 
@@ -347,11 +314,6 @@ LorentzIndex[mu, Dimension]. \
 LorentzIndex[mu, 4] simplifies to LorentzIndex[mu]. \
 If the first argument is an integer, LorentzIndex[i] turns into \
 ExplicitLorentzIndex[i].";
-
-MetricTensor::usage =
-"MetricTensor[mu, nu] is the metric tensor in 4 dimensions. \
-The metric tensor in d dimensions is obtained by supplying the
-option Dimension->d.";
 
 Momentum::usage =
 "Momentum is the head of a four momentum (p). \
@@ -395,7 +357,7 @@ Polarization::usage =
 "Polarization[k] = Polarization[k, I] represents a \
 polarization momentum with (incoming) momentum k. \
 A slashed polarization vector (e1(k) slash) has to be entered
-as DiracSlash[Polarization[k]]. \
+as GS[Polarization[k]]. \
 The internal representation for a polarization vector e1 \
 corresponding to a boson with four momentum k is: \
 Momentum[ Polarization[ k, I ] ]. \
@@ -528,7 +490,7 @@ Spinor::usage =
 "Spinor[p, m] represents a Dirac spinor. \
 Which of the spinors u, v,u_bar or v_bar \
 is understood, depends on the sign of the momentum (p) \
-argument and the relative position of DiracSlash[p]: \
+argument and the relative position of GS[p]: \
 Spinor[sign p, mass]  is that spinor which yields \
 sign*mass*Spinor[p, mass] if the Dirac equation is applied .";
 
@@ -659,14 +621,6 @@ Evaluation aborted!";
 DiracGamma::noint =
 "DiracGamma[`1`] is forbidden in FeynCalc. If you want to specify an explicit Lorentz index, \
 please use DiracGamma[ExplicitLorentzIndex[`1`]]. Evaluation aborted!";
-
-DiracMatrix::noint =
-"DiracMatrix[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
-arguments can be 0, 1, 2, 3, 5, 6 and 7. Evaluation aborted!";
-
-DiracSlash::noint =
-"DiracSlash[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
-argument can be 0. Evaluation aborted!";
 
 GA::noint =
 "GA[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
@@ -920,11 +874,8 @@ End[]
 
 Begin["`SharedObjects`Private`"]
 
-DeclareNonCommutative[ChiralityProjector];
 DeclareNonCommutative[DiracGamma];
-DeclareNonCommutative[DiracMatrix];
 DeclareNonCommutative[DiracSigma];
-DeclareNonCommutative[DiracSlash];
 DeclareNonCommutative[GA];
 DeclareNonCommutative[GA5];
 DeclareNonCommutative[GAD];
@@ -1026,14 +977,8 @@ SetAttributes[TemporalPair, Orderless];
 	for Cartesian propagators *)
 Options[CFAD] = {Dimension -> D-1, EtaSign -> -1};
 Options[GFAD] = {EtaSign -> 1};
-Options[ChiralityProjector] = {FCI -> True};
-Options[DiracMatrix] = {Dimension -> 4, FCI -> True};
-Options[DiracSlash] = {Dimension -> 4, FCI -> True};
 Options[FAD] = {Dimension -> D};
 Options[FCGV] = {SilentTypeSetting -> False, EvaluateFCGV -> False};
-Options[FourVector]  = {Dimension -> 4, FCI -> True};
-Options[LeviCivita] = {Dimension -> 4, FCI->True};
-Options[MetricTensor] = {Dimension -> 4, FCI -> True};
 Options[SFAD] = {Dimension -> D, EtaSign -> 1};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
@@ -1048,7 +993,7 @@ PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
-TrFeynCalcObjects = DiracGamma | DiracMatrix | DiracSlash | FermionicChain | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE | FCHN;
+TrFeynCalcObjects = DiracGamma | FermionicChain | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE | FCHN;
 
 TensorArgsList = {
 	LorentzIndex, ExplicitLorentzIndex, Momentum,
@@ -1270,12 +1215,6 @@ CSISD[0] =
 CSISE[0] =
 	0;
 
-ChiralityProjector[1, OptionsPattern[]] :=
-	DiracGamma[6]/; OptionValue[FCI];
-
-ChiralityProjector[-1, OptionsPattern[]] :=
-	DiracGamma[7]/; OptionValue[FCI];
-
 DeltaFunction[_?((NumericQ[#]===True&&(Positive[#]===True||Negative[#]===True))&)] :=
 	0;
 
@@ -1385,30 +1324,6 @@ DiracIndex[i_Integer] :=
 
 (* ------------------------------------------------------------------------ *)
 
-DiracMatrix[(a:5|6|7), opts:OptionsPattern[]] :=
-	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[a],ToString[opts]]]]/;
-	OptionValue[Dimension]=!=4;
-
-DiracMatrix[(a:5|6|7), OptionsPattern[]] :=
-	DiracGamma[a]/; OptionValue[FCI] && OptionValue[Dimension]===4;
-
-DiracMatrix[a_, OptionsPattern[]] :=
-	DiracGamma[LorentzIndex[a, OptionValue[Dimension]],
-	OptionValue[Dimension]]/; OptionValue[FCI] && Head[a]=!=DOT && !StringQ[a] && !NumberQ[a];
-
-DiracMatrix[(a:0|1|2|3), OptionsPattern[]] :=
-	DiracGamma[ExplicitLorentzIndex[a, OptionValue[Dimension]],
-	OptionValue[Dimension]]/; OptionValue[FCI] && Head[a]=!=DOT && !StringQ[a];
-
-DiracMatrix[x_?NumberQ, OptionsPattern[]] :=
-	(Message[DiracMatrix::noint, x]; Abort[])/; !MemberQ[{0, 1, 2, 3, 5, 6, 7}, x];
-
-DiracMatrix[DOT[a_,b__], opts:OptionsPattern[]] :=
-	DOT@@(DiracMatrix[#,opts]& /@ {a,b});
-
-DiracMatrix[a_,b:Except[_?OptionQ].., opts:OptionsPattern[]] :=
-	DOT@@(DiracMatrix[#,opts]& /@ {a,b});
-
 DiracSigma[DOT[a_,b_]] :=
 	DiracSigma[a,b];
 
@@ -1421,33 +1336,11 @@ DiracSigma[a_, a_] :=
 DiracSigma[a_, b_] :=
 	-DiracSigma[b, a] /; !OrderedQ[{a,b}] && FCPatternFreeQ[{a,b}];
 
-DiracSigma[DiracMatrix[a_, b_]] :=
-	-DiracSigma[DiracMatrix[b, a]] /; !OrderedQ[{a,b}];
-
-DiracSigma[DiracSlash[a_, b_]] :=
-	-DiracSigma[DiracSlash[b, a]] /; !OrderedQ[{a,b}];
-
 DiracSigma[a_ DiracGamma[b__], c_. DiracGamma[d__]] :=
 	a c DiracSigma[DiracGamma[b], DiracGamma[d]];
 
 DiracSigma[a_. DiracGamma[b__], c_  DiracGamma[d__]] :=
 	a c DiracSigma[DiracGamma[b], DiracGamma[d]];
-
-DiracSlash[DOT[a_,b__], opts:OptionsPattern[]] :=
-	DOT@@(DiracSlash[#,opts]& /@ {a,b});
-
-DiracSlash[a_,b:Except[_?OptionQ].., opts:OptionsPattern[]] :=
-	DOT@@(DiracSlash[#,opts]& /@ {a,b});
-
-DiracSlash[a_, OptionsPattern[]] :=
-	DiracGamma[Momentum[a, OptionValue[Dimension]],
-	OptionValue[Dimension]]/; OptionValue[FCI] && !NumberQ[a];
-
-DiracSlash[0, OptionsPattern[]] :=
-	0;
-
-DiracSlash[x_?NumberQ, OptionsPattern[]] :=
-	(Message[DiracSlash::noint, x]; Abort[])/; x=!=0;
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1539,10 +1432,6 @@ FAD[{_,_,0}, OptionsPattern[]]:=
 
 FCGV[a_String, OptionsPattern[]] :=
 	ToExpression[a]/; OptionValue[EvaluateFCGV];
-
-FourVector[a_,b_, OptionsPattern[]] :=
-	Pair[Momentum[a, OptionValue[Dimension]],
-	LorentzIndex[b, OptionValue[Dimension]]]/; OptionValue[FCI];
 
 FV[0,_] :=
 	0;
@@ -1636,9 +1525,6 @@ GSE[x_, y__] :=
 
 (* ------------------------------------------------------------------------ *)
 
-IFPD[Momentum[OPEDelta,___],0] :=
-	0;
-
 LC[x___][y___]/; (Length[{x,y}] =!= 4) && (FCPatternFreeQ[{x,y}]) :=
 	Message[LC::argrx, "LC["<>ToString[{x}]<>"]["<>ToString[{y}]<>"]", Length[{x,y}], 4];
 
@@ -1708,20 +1594,6 @@ LeftRightPartialD2[x_Momentum, y__Momentum] :=
 LeftRightPartialD2[Momentum[OPEDelta]^n_Integer?Positive] :=
 	DOT @@ Map[LeftRightPartialD2, Table[Momentum[OPEDelta],{n}]];
 
-LeviCivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..,
-		opts:OptionsPattern[LeviCivita]]/; (Length[{x,y}] =!= 4) && (FCPatternFreeQ[{x,y,opts}]) :=
-	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]["<>ToString[{y,opts}]<>"]", Length[{x,y}], 4];
-
-LeviCivita[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x,opts}]) :=
-	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
-
-LeviCivita[ a:Except[_?OptionQ].., opts:OptionsPattern[]] :=
-	FCI[LeviCivita[a,Join[{FCI->False},FilterRules[{opts},Except[FCI]]]]]/; Length[{a}] === 4 && OptionValue[FCI];
-
-LeviCivita[x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]] :=
-	FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]]/;
-	Length[{x,y}] === 4 && OptionValue[LeviCivita,{opts1},FCI] && OptionValue[LeviCivita,{opts2},FCI];
-
 Li4 =
 	PolyLog[4,#]&;
 Li3 =
@@ -1749,9 +1621,6 @@ LorentzIndex[_, 0] :=
 
 LorentzIndex[in_Integer?NonNegative,dim_ :4] :=
 	ExplicitLorentzIndex[in,dim];
-
-MetricTensor[a_, b_, OptionsPattern[]] :=
-	Pair[LorentzIndex[a, OptionValue[Dimension]], LorentzIndex[b, OptionValue[Dimension]]]/; OptionValue[FCI];
 
 Momentum[x_ GaugeXi[y_], dim_:4] :=
 	GaugeXi[y] Momentum[x,dim];
@@ -1925,24 +1794,19 @@ PolarizationVector[x:Except[_?OptionQ].., opts:OptionsPattern[Polarization]] :=
 		AtomQ[{x}[[1]]] ||
 		Head[{x}[[-1]]===SUNIndex]);
 
-fourv[x__] :=
-	FCI[FourVector[x]];
-
 polVec[Polarization[k__], mu_, opts:OptionsPattern[]] :=
-	fourv[Polarization[k, opts], mu, Dimension -> 4 ];
-
+	Pair[Momentum[Polarization[k, opts]], LorentzIndex[mu]];
 
 polVec[Polarization[k__],mu_, glu_, opts:OptionsPattern[]] :=
-	fourv[Polarization[k, I, SUNIndex[glu/.SUNIndex->Identity],
-	opts], mu, Dimension->4 ];
+	Pair[Momentum[Polarization[k, I, SUNIndex[glu], opts]], LorentzIndex[mu]];
 
 polVec[k_,mu_ , opts:OptionsPattern[]] :=
-	fourv[Polarization[k, I, opts], mu, Dimension->4 ];
+	Pair[Momentum[Polarization[k, I, opts]], LorentzIndex[mu]];
 
 polVec[k_,mu_,glu_, opts:OptionsPattern[]] :=
 	If[ FreeQ[glu, Blank],
-		fourv[Polarization[k, I, SUNIndex[glu/.SUNIndex->Identity],opts], mu, Dimension->4 ],
-		fourv[Polarization[k, I, glu], mu, Dimension -> 4]
+		Pair[Momentum[Polarization[k, I, SUNIndex[glu/.SUNIndex->Identity],opts]], LorentzIndex[mu]],
+		Pair[Momentum[Polarization[k, I, glu]], LorentzIndex[mu]]
 	];
 
 
@@ -2347,23 +2211,23 @@ TC/:
 	Set[TC[a_] , b_]:=
 		SetTemporalComponent[a,b];
 
-initialPairDownValues = DownValues[Pair];
-initialCartesianPairDownValues = DownValues[CartesianPair];
-initialTemporalPairDownValues = DownValues[TemporalPair];
+initialPairDownValues 				= DownValues[Pair];
+initialCartesianPairDownValues		= DownValues[CartesianPair];
+initialTemporalPairDownValues		= DownValues[TemporalPair];
 
-initialSPDownValues = DownValues[SP];
-initialSPDDownValues = DownValues[SPD];
-initialSPEDownValues = DownValues[SPE];
+initialSPDownValues					= DownValues[SP];
+initialSPDDownValues				= DownValues[SPD];
+initialSPEDownValues				= DownValues[SPE];
 
-initialCSPDownValues = DownValues[CSP];
-initialCSPDDownValues = DownValues[CSPD];
-initialCSPEDownValues = DownValues[CSPE];
+initialCSPDownValues				= DownValues[CSP];
+initialCSPDDownValues				= DownValues[CSPD];
+initialCSPEDownValues				= DownValues[CSPE];
 
-initialTCDownValues = DownValues[TC];
+initialTCDownValues					= DownValues[TC];
 
-initialMomentumDownValues = DownValues[Momentum];
-initialCartesianMomentumDownValues = DownValues[CartesianMomentum];
-initialTemporalMomentumDownValues = DownValues[TemporalMomentum];
+initialMomentumDownValues 			= DownValues[Momentum];
+initialCartesianMomentumDownValues	= DownValues[CartesianMomentum];
+initialTemporalMomentumDownValues	= DownValues[TemporalMomentum];
 
 initialScalarProducts = $ScalarProducts;
 

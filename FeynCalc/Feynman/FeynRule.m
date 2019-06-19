@@ -881,16 +881,16 @@ InvertScalar[exp_ /; FreeQ2[exp, {SUNDeltaContract, DiracGamma, lor}]
 			] := 1/exp;
 
 InvertFermion[n_. DiracGamma[Momentum[pe_]] + m_.] :=
-	-I (n DiracSlash[pe] - m)/(n^2 ScalarProduct[pe, pe] - m^2);
+	-I (n GS[pe] - m)/(n^2 ScalarProduct[pe, pe] - m^2);
 
 InvertBoson[exp_, k_, m_, n_] := Block[{geteq, la},
 geteq[x_ ] := ({#[[1]]==0, #[[2]]==0}& @
 					Collect2[Contract[x], lor]) /.
 						Pair[___, lor[__], ___] -> 1;
-(A MetricTensor[m, n] + B FourVector[k, m] FourVector[k, n]) /.
-	Solve[geteq[exp (A MetricTensor[m, la] +
-					B FourVector[k, m] FourVector[k, la]) -
-							MetricTensor[la, n]], {A, B}][[1]]
+(A MT[m, n] + B FV[k, m] FV[k, n]) /.
+	Solve[geteq[exp (A MT[m, la] +
+					B FV[k, m] FV[k, la]) -
+							MT[la, n]], {A, B}][[1]]
 										];
 *)
 
