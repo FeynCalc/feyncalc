@@ -42,5 +42,11 @@ FeynArts`Index[Global`Gluon, 2]]]","SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]]"},
 {"fcstFCPrepareFAAmp-ID2","FCPrepareFAAmp[
 FeynArts`FAPropagatorDenominator[
 FeynArts`FourMomentum[FeynArts`Incoming, 2] -
-FeynArts`FourMomentum[FeynArts`Outgoing, 1], MU, 2]]","FeynAmpDenominator[PropagatorDenominator[Momentum[InMom2 - OutMom1], MU], PropagatorDenominator[Momentum[InMom2 - OutMom1], MU]]"}
+FeynArts`FourMomentum[FeynArts`Outgoing, 1], MU, 2]]","FeynAmpDenominator[PropagatorDenominator[Momentum[InMom2 - OutMom1], MU], PropagatorDenominator[Momentum[InMom2 - OutMom1], MU]]"},
+{"fcstFCPrepareFAAmp-ID3","FCPrepareFAAmp[
+FeynArts`FAPropagatorDenominator[
+FeynArts`FourMomentum[FeynArts`Incoming, 2] -
+FeynArts`FourMomentum[FeynArts`Outgoing, 1], MU, 2],
+FeynAmpDenominatorCombine -> False]","FeynAmpDenominator[
+PropagatorDenominator[Momentum[InMom2 - OutMom1], MU]]^2"}
 };

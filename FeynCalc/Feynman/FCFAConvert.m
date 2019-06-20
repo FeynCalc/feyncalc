@@ -58,21 +58,22 @@ End[]
 Begin["`FCFAConvert`Private`"]
 
 Options[FCFAConvert] = {
-	ChangeDimension -> False,
-	Contract -> False,
-	DropSumOver -> False,
-	FinalSubstitutions->{},
-	IncomingMomenta->{},
-	List -> True,
-	LoopMomenta->{},
-	LorentzIndexNames->{},
-	OutgoingMomenta->{},
-	Prefactor -> 1,
-	SMP -> False,
-	SUNFIndexNames->{},
-	SUNIndexNames->{},
-	TransversePolarizationVectors->{},
-	UndoChiralSplittings -> False
+	ChangeDimension 				-> False,
+	Contract 						-> False,
+	DropSumOver 					-> False,
+	FeynAmpDenominatorCombine		-> True,
+	FinalSubstitutions				-> {},
+	IncomingMomenta					-> {},
+	List 							-> True,
+	LoopMomenta						-> {},
+	LorentzIndexNames				-> {},
+	OutgoingMomenta					-> {},
+	Prefactor 						-> 1,
+	SMP 							-> False,
+	SUNFIndexNames					-> {},
+	SUNIndexNames					-> {},
+	TransversePolarizationVectors	-> {},
+	UndoChiralSplittings 			-> False
 	};
 
 FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]] :=
@@ -81,15 +82,16 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices,
 				prefactor},
 
-		inMoms		=	OptionValue[IncomingMomenta];
-		outMoms		=	OptionValue[OutgoingMomenta];
-		loopMoms	=	OptionValue[LoopMomenta];
-		liNames		=	OptionValue[LorentzIndexNames];
-		sunNames	=	OptionValue[SUNIndexNames];
-		sunfNames	=	OptionValue[SUNFIndexNames];
-		polVecs		=	OptionValue[TransversePolarizationVectors];
-		dim			=	OptionValue[ChangeDimension];
-		prefactor	=	OptionValue[Prefactor];
+		inMoms		= OptionValue[IncomingMomenta];
+		outMoms		= OptionValue[OutgoingMomenta];
+		loopMoms	= OptionValue[LoopMomenta];
+		liNames		= OptionValue[LorentzIndexNames];
+		sunNames	= OptionValue[SUNIndexNames];
+		sunfNames	= OptionValue[SUNFIndexNames];
+		polVecs		= OptionValue[TransversePolarizationVectors];
+		dim			= OptionValue[ChangeDimension];
+		prefactor	= OptionValue[Prefactor];
+
 
 		repRuleMomenta={};
 		repRuleLorentzIndices={};
@@ -99,7 +101,8 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 
 		diagsConverted= Map[#[[3]]&,{diags}];
 
-		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP]];
+		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP],
+			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
 
 		diagsConverted = prefactor diagsConverted;
 

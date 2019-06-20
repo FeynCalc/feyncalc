@@ -33,12 +33,16 @@ End[]
 Begin["`FCPrepareFAAmp`Private`"]
 
 Options[FCPrepareFAAmp] = {
-	SMP -> False,
-	UndoChiralSplittings -> False
+	FeynAmpDenominatorCombine	-> True,
+	SMP 						-> False,
+	UndoChiralSplittings 		-> False
 };
 
 FCPrepareFAAmp[expr_, OptionsPattern[]] :=
-	Block[ {replist0,replist1,replist2,replist3,repListSMP,tempvar,temp,holdDOT},
+	Block[{	replist0,replist1,replist2,replist3,repListSMP,tempvar,temp,holdDOT,
+			optFeynAmpDenominatorCombine},
+
+			optFeynAmpDenominatorCombine = OptionValue[FeynAmpDenominatorCombine];
 
 		repListSMP = {
 			FCGV["EL"] -> SMP["e"],
@@ -117,7 +121,10 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					}];
 		replist3 = {
 			FeynArts`FAPropagatorDenominator[x_,y_] :> FeynAmpDenominator[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y]],
-			FeynArts`FAPropagatorDenominator[x_,y_,n_Integer] :> FeynAmpDenominator@@Table[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y],{j,1,n}]
+			FeynArts`FAPropagatorDenominator[x_,y_,n_Integer]/;optFeynAmpDenominatorCombine :>
+				FeynAmpDenominator@@Table[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y],{j,1,n}],
+			FeynArts`FAPropagatorDenominator[x_,y_,n_Integer]/;!optFeynAmpDenominatorCombine :>
+				Product[FeynAmpDenominator[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y]] ,{j,1,n}]
 		};
 		temp = expr //. replist0 //. replist1 //. replist2 //. replist3;
 
