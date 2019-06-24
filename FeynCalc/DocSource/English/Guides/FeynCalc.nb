@@ -2195,6 +2195,18 @@ Cell[TextData[{
  CellID->264220763],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCGetDiracGammaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGetDiracGammaScheme"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  shows the current scheme for treating Dirac matrices in dimensional \
+regularization."
+}], "GuideText",
+ CellID->1841016351],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FermionicChainSimplify",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FermionicChainSimplify"]], 
@@ -2204,6 +2216,18 @@ Cell[TextData[{
  " contracts explicit Dirac indices "
 }], "GuideText",
  CellID->2051310471],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCSetDiracGammaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSetDiracGammaScheme"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  sets the current scheme for treating Dirac matrices in dimensional \
+regularization."
+}], "GuideText",
+ CellID->1516554292],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["SirlinSimplify",
@@ -2331,6 +2355,16 @@ Cell[TextData[{
  CellID->1157786320],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["PauliOrder",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PauliOrder"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the Pauli matrices in expression lexicographically"
+}], "GuideText",
+ CellID->1399324995],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["PauliSigmaCombine",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/PauliSigmaCombine"]], "InlineFunctionSans"],
@@ -2355,14 +2389,15 @@ Cell[TextData[{
  CellID->719502163],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["PauliOrder",
+ Cell[TextData[ButtonBox["PauliSimplify",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/PauliOrder"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/PauliSimplify"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " orders the Pauli matrices in expression lexicographically"
+ " simplifies products of Pauli matrices and expands non-commutative \
+products"
 }], "GuideText",
- CellID->1399324995],
+ CellID->88133699],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["PauliTrick",
@@ -4293,11 +4328,11 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{547, Automatic}, {205, Automatic}},
+WindowMargins->{{537, Automatic}, {Automatic, -8}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
   CharacterEncoding -> "UTF-8"],
 $CellContext`FileOutlineCache -> False

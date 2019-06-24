@@ -402,8 +402,9 @@ activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first\
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[187]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
+ CellLabel->"In[57]:="],
 
 Cell[CellGroupData[{
 
@@ -413,32 +414,33 @@ Cell[BoxData[
    RowBox[{"GSE", "[", "q", "]"}], ".", 
    RowBox[{"GS", "[", "q", "]"}], ".", 
    RowBox[{"GSE", "[", "q", "]"}]}], "]"}]], "Input",
- CellLabel->"In[188]:="],
+ CellLabel->"In[58]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
-   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
-the computation. The problem reads: \
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], 
+   RowBox[{
+   ":", " "}], "\<\"Error! DiracTrick has encountered a fatal problem and \
+must abort the computation. The problem reads: \
 \[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
 and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak] \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrick\\\", \
 ButtonNote -> \\\"FeynCalc`DiracTrick::failmsg\\\"]\\)\"\>"}], 
   TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[188]:="],
+ CellLabel->"During evaluation of In[58]:="],
 
 Cell[BoxData[
  FormBox["$Aborted", TraditionalForm]], "Output",
- CellLabel->"Out[188]="]
+ CellLabel->"Out[58]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[189]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
+ CellLabel->"In[59]:="],
 
 Cell[CellGroupData[{
 
@@ -448,7 +450,7 @@ Cell[BoxData[
    RowBox[{"GSE", "[", "q", "]"}], ".", 
    RowBox[{"GS", "[", "q", "]"}], ".", 
    RowBox[{"GSE", "[", "q", "]"}]}], "]"}]], "Input",
- CellLabel->"In[190]:="],
+ CellLabel->"In[60]:="],
 
 Cell[BoxData[
  FormBox[
@@ -469,13 +471,14 @@ Cell[BoxData[
          FormBox["q",
           TraditionalForm], "_"],
         TraditionalForm]}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[190]="]
+ CellLabel->"Out[60]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[191]:="]
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
+ CellLabel->"In[61]:="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -539,13 +542,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1047, Automatic}, {Automatic, 281}},
+WindowMargins->{{1037, Automatic}, {-10, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

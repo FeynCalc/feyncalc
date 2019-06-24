@@ -601,16 +601,10 @@ Cell[TextData[{
  " also works in the t'Hooft-Veltman-Breitenlohner-Maison scheme"
 }], "Notes"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
- RowBox[{"$BreitMaison", "=", "True"}]], "Input",
- CellLabel->"In[51]:="],
-
-Cell[BoxData[
- FormBox["True", TraditionalForm]], "Output",
- CellLabel->"Out[51]="]
-}, Open  ]],
+ RowBox[{
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
+ CellLabel->"In[62]:="],
 
 Cell[CellGroupData[{
 
@@ -618,7 +612,7 @@ Cell[BoxData[
  RowBox[{"Anti5", "[", 
   RowBox[{"GA5", ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[52]:="],
+ CellLabel->"In[63]:="],
 
 Cell[BoxData[
  FormBox[
@@ -645,19 +639,14 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["5",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[52]="]
+ CellLabel->"Out[63]="]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
- RowBox[{"$BreitMaison", "=", "False"}]], "Input",
- CellLabel->"In[53]:="],
-
-Cell[BoxData[
- FormBox["False", TraditionalForm]], "Output",
- CellLabel->"Out[53]="]
-}, Open  ]]
+ RowBox[{
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
+ CellLabel->"In[64]:="]
 }, Open  ]]
 }, Open  ]],
 
@@ -722,13 +711,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{864, 877},
-WindowMargins->{{740, Automatic}, {Automatic, 107}},
+WindowMargins->{{730, Automatic}, {-5, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

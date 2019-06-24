@@ -1,0 +1,658 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17266,        650]
+NotebookOptionsPosition[     11996,        459]
+NotebookOutlinePosition[     12608,        483]
+CellTagsIndexPosition[     12529,        478]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.3", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/FCSetDiracGammaScheme", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FCSetDiracGammaScheme", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<scheme\>\"", "]"}]], 
+  "InlineFormula"],
+ " \[LineSeparator]allows you to specify how Dirac matrices will be handled \
+in D dimensions. This is mainly relevant to the treatment of the fifth Dirac \
+matrix ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", which is not well-defined in dimensional regularization."
+}], "Usage",
+ CellChangeTimes->{{3.77037986103098*^9, 3.770379894569189*^9}},
+ CellID->982511436],
+
+Cell["Following schemes are supported: ", "Notes",
+ CellChangeTimes->{3.770380074322131*^9},
+ CellID->1067943069],
+
+Cell[TextData[{
+ "\"NDR\" - This is the default value. In the naive dimensional \
+regularization (also known as CDR) ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " is assumed to anticommute with all Dirac matrices in ",
+ Cell[BoxData["D"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " dimensions. Traces that contain an odd number of Dirac matrices are not \
+well-defined in this scheme and will remain unevaluated."
+}], "Notes",
+ CellChangeTimes->{{3.770380083504825*^9, 3.7703801022364388`*^9}},
+ CellID->190401776],
+
+Cell[TextData[{
+ "\"BMHV\" - The Breitenlohner-Maison extension of the t'Hooft-Veltman \
+scheme. This scheme introduces Dirac and Lorentz tensors living in ",
+ Cell[BoxData["4"], "InlineFormula",
+  FormatType->"StandardForm"],
+ ", ",
+ Cell[BoxData["D"], "InlineFormula",
+  FormatType->"StandardForm"],
+ " or ",
+ Cell[BoxData[
+  RowBox[{"D", "-", "4"}]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " dimensions, while ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " is a purely ",
+ Cell[BoxData["4"], "InlineFormula",
+  FormatType->"StandardForm"],
+ "-dimensional object. BMHV is algebraically consistent but often suffers \
+from nonconservation of currents in the final results. The conservation must \
+be then enfornced by introducing finite counter-terms. The counter-terms are \
+to be supplied by the users, FeynCalc does not do this automatically."
+}], "Notes",
+ CellChangeTimes->{{3.770380114199751*^9, 3.770380160514818*^9}},
+ CellID->2003509557],
+
+Cell[TextData[{
+ "\"Larin\" - Special prescription developed by Larin, also known as the \
+Larin-Gorishny-Atkyampo-DelBurgo scheme. Essentially, it is a shortcut \
+(mostly used in QCD) for obtaining the same results as in BMHV but without \
+the necessity to deal with tensors from different dimensions. That is, before \
+evaluating traces (but after moving gamma5 anticommuting in D-dimensions to \
+the right of the Dirac string inside a trace) a product  gamma[mu].gamma5 is \
+substituted to -I/6 Eps[mu,al,be,si] gamma[al,be,si], where all indices live \
+in D-dimensions now. The Levi-Civita tensor is taken to be D-dimensional, \
+i.e., contraction of two Eps's results in D's. \\\nThis scheme is often used \
+for performance reasons and is assumed to give the same results as the \
+Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " is not anticommuting inside closed fermion loops and it is not so clear if \
+this scheme works for more than one fermion line involving ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " When in doubt, it might be better to use BMHV instead."
+}], "Notes",
+ CellChangeTimes->{{3.7703801797090073`*^9, 3.7703802200402203`*^9}},
+ CellID->93561036]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["FCGetDiracGammaScheme",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCGetDiracGammaScheme",
+  ButtonNote->"FCGetDiracGammaScheme"],
+ ", ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ "."
+}], "SeeAlso",
+ CellID->830480392]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDiracGammaScheme", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.770380226484383*^9, 3.7703802454358883`*^9}},
+ CellLabel->"In[9]:=",
+ CellID->1897256208],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{3.770380245906684*^9},
+ CellLabel->"Out[9]=",
+ CellID->497118915]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7703802493072844`*^9, 3.770380256454421*^9}},
+ CellLabel->"In[11]:=",
+ CellID->1400459732],
+
+Cell[BoxData[
+ FormBox["\<\"BMHV\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7703802523746843`*^9, 3.7703802568253317`*^9}},
+ CellLabel->"Out[11]=",
+ CellID->449633699]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDiracGammaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->1094081562],
+
+Cell[BoxData[
+ FormBox["\<\"BMHV\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{3.770380260631135*^9},
+ CellLabel->"Out[12]=",
+ CellID->868284822]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<Larin\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.770380266460826*^9, 3.770380267788951*^9}},
+ CellLabel->"In[14]:=",
+ CellID->969077787],
+
+Cell[BoxData[
+ FormBox["\<\"Larin\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{3.770380273066979*^9},
+ CellLabel->"Out[14]=",
+ CellID->527786051]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDiracGammaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[15]:=",
+ CellID->1872376343],
+
+Cell[BoxData[
+ FormBox["\<\"Larin\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7703802710484667`*^9, 3.770380273500114*^9}},
+ CellLabel->"Out[15]=",
+ CellID->1357358417]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.770380266460826*^9, 3.770380267788951*^9}, {
+  3.770380398198897*^9, 3.770380399631812*^9}},
+ CellLabel->"In[17]:=",
+ CellID->692469312],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{3.770380273066979*^9, 3.770380400037057*^9},
+ CellLabel->"Out[17]=",
+ CellID->1881685540]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDiracGammaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[18]:=",
+ CellID->93209946],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7703802710484667`*^9, 3.770380273500114*^9}, 
+   3.770380400539236*^9},
+ CellLabel->"Out[18]=",
+ CellID->906587712]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{611, Automatic}, {Automatic, 48}},
+CellContext->"Global`",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[10476, 401, 100, 2, 55, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 12390, 471}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 14, 25, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 29, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 79, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1061, 45, 81, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1145, 49, 78, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1226, 53, 79, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1342, 59, 55, 1, 19, "KeywordsSection",
+ CellID->477174294],
+Cell[1400, 62, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1482, 68, 65, 1, 19, "TemplatesSection",
+ CellID->1872225408],
+Cell[1550, 71, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1647, 75, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1732, 79, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1816, 83, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1935, 90, 53, 1, 19, "DetailsSection",
+ CellID->307771771],
+Cell[1991, 93, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2057, 97, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2129, 101, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2196, 105, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2268, 109, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2332, 113, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2396, 117, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2462, 121, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2543, 125, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2647, 132, 64, 1, 64, "ObjectName",
+ CellID->1224892054],
+Cell[2714, 135, 568, 14, 109, "Usage",
+ CellID->982511436],
+Cell[3285, 151, 113, 2, 26, "Notes",
+ CellID->1067943069],
+Cell[3401, 155, 581, 13, 59, "Notes",
+ CellID->190401776],
+Cell[3985, 170, 1015, 25, 111, "Notes",
+ CellID->2003509557],
+Cell[5003, 197, 1350, 23, 196, "Notes",
+ CellID->93561036]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6390, 225, 57, 1, 44, "TutorialsSection",
+ CellID->250839057],
+Cell[6450, 228, 45, 1, 17, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6532, 234, 83, 1, 31, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[6618, 237, 58, 1, 17, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6713, 243, 65, 1, 31, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[6781, 246, 49, 1, 17, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6867, 252, 55, 1, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6925, 255, 341, 12, 17, "SeeAlso",
+ CellID->830480392]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7303, 272, 57, 1, 31, "MoreAboutSection",
+ CellID->38303248],
+Cell[7363, 275, 46, 1, 17, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7446, 281, 356, 11, 69, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[7827, 296, 181, 4, 26, "Input",
+ CellID->1897256208],
+Cell[8011, 302, 151, 4, 24, "Output",
+ CellID->497118915]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8199, 311, 198, 4, 26, "Input",
+ CellID->1400459732],
+Cell[8400, 317, 181, 4, 24, "Output",
+ CellID->449633699]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8618, 326, 114, 3, 26, "Input",
+ CellID->1094081562],
+Cell[8735, 331, 153, 4, 24, "Output",
+ CellID->868284822]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8925, 340, 196, 4, 26, "Input",
+ CellID->969077787],
+Cell[9124, 346, 154, 4, 24, "Output",
+ CellID->527786051]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9315, 355, 114, 3, 26, "Input",
+ CellID->1872376343],
+Cell[9432, 360, 181, 4, 24, "Output",
+ CellID->1357358417]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9650, 369, 243, 5, 26, "Input",
+ CellID->692469312],
+Cell[9896, 376, 175, 4, 24, "Output",
+ CellID->1881685540]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10108, 385, 112, 3, 26, "Input",
+ CellID->93209946],
+Cell[10223, 390, 204, 5, 24, "Output",
+ CellID->906587712]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10476, 401, 100, 2, 55, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[10579, 405, 125, 3, 33, "ExampleSection",
+ CellID->1293636265],
+Cell[10707, 410, 148, 3, 21, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[10880, 417, 127, 3, 21, "ExampleSection",
+ CellID->2061341341],
+Cell[11010, 422, 130, 3, 70, "ExampleSubsection",
+ CellID->1757724783],
+Cell[11143, 427, 130, 3, 70, "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+Cell[11288, 433, 131, 3, 21, "ExampleSection",
+ CellID->258228157],
+Cell[11422, 438, 142, 3, 21, "ExampleSection",
+ CellID->2123667759],
+Cell[11567, 443, 135, 3, 21, "ExampleSection",
+ CellID->1305812373],
+Cell[11705, 448, 140, 3, 21, "ExampleSection",
+ CellID->1653164318],
+Cell[11848, 453, 132, 3, 21, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+

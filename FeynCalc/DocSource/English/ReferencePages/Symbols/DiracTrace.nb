@@ -3276,8 +3276,8 @@ in FeynCalc."
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[111]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
+ CellLabel->"In[44]:="],
 
 Cell[CellGroupData[{
 
@@ -3291,7 +3291,7 @@ Cell[BoxData[
     RowBox[{"GAD", "[", 
      RowBox[{"\[Sigma]", ",", "\[Delta]", ",", "\[Tau]"}], "]"}], ".", 
     RowBox[{"GA", "[", "7", "]"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[113]:="],
+ CellLabel->"In[45]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6152,24 +6152,23 @@ Cell[BoxData[
        FormBox["\[Tau]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[113]="]
+ CellLabel->"Out[45]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[114]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
+ CellLabel->"In[46]:="],
 
 Cell[TextData[{
  "Keep in mind that the BMHV scheme violates axial Ward identities and \
 requires special model-dependent counter-terms to restore those. Therefore, \
 just setting ",
- ButtonBox["$BreitMaison",
+ ButtonBox["FCSetDiracGammaScheme[\"BMHV\"]",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/$BreitMaison",
-  ButtonNote->"$BreitMaison"],
- " to ",
- Cell[BoxData["True"], "InlineFormula"],
+  ButtonData:>"paclet:FeynCalc/ref/FCSetDiracGammaScheme",
+  ButtonNote->"FCSetDiracGammaScheme"],
  " does not automatically resolve all your troubles with ",
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
@@ -6222,7 +6221,7 @@ Cell[BoxData[
       RowBox[{"GSD", "[", "q", "]"}], "+", 
       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
     RowBox[{"GA", "[", "\[Mu]", "]"}]}], "]"}], " "}]], "Input",
- CellLabel->"In[116]:="],
+ CellLabel->"In[49]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6275,14 +6274,14 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[116]="]
+ CellLabel->"Out[49]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[117]:="],
+ CellLabel->"In[50]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6292,19 +6291,22 @@ Cell[BoxData[
    " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
 the computation. The problem reads: \
 \[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
-and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak]\"\>"}], 
+and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak] \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrick\\\", \
+ButtonNote -> \\\"FeynCalc`DiracTrick::failmsg\\\"]\\)\"\>"}], 
   TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[117]:="],
+ CellLabel->"During evaluation of In[50]:="],
 
 Cell[BoxData[
  FormBox["$Aborted", TraditionalForm]], "Output",
- CellLabel->"Out[117]="]
+ CellLabel->"Out[50]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[121]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
+ CellLabel->"In[51]:="],
 
 Cell[CellGroupData[{
 
@@ -6324,7 +6326,7 @@ Cell[BoxData[
       RowBox[{"GSD", "[", "q", "]"}], "+", 
       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
     RowBox[{"GA", "[", "\[Mu]", "]"}]}], "]"}], " ", "]"}]], "Input",
- CellLabel->"In[122]:="],
+ CellLabel->"In[52]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6448,7 +6450,7 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[122]="]
+ CellLabel->"Out[52]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6456,7 +6458,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
- CellLabel->"In[123]:="],
+ CellLabel->"In[53]:="],
 
 Cell[BoxData[
  RowBox[{
@@ -6491,13 +6493,14 @@ Cell[BoxData[
     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], " ", 
    RowBox[{"SPD", "[", 
     RowBox[{"q", ",", "q"}], "]"}]}]}]], "Output",
- CellLabel->"Out[123]//StandardForm="]
+ CellLabel->"Out[53]//StandardForm="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[120]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
+ CellLabel->"In[54]:="],
 
 Cell[TextData[{
  "Notice that in this case the result contains ",
@@ -6531,7 +6534,7 @@ turn it off by setting the option ",
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
  CellLabel->"In[136]:="],
 
 Cell[CellGroupData[{
@@ -6598,7 +6601,8 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
  CellLabel->"In[140]:="],
 
 Cell[BoxData[
@@ -8199,14 +8203,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{990, 1137},
-WindowMargins->{{Automatic, 120}, {Automatic, 87}},
+WindowSize->{990, 989},
+WindowMargins->{{416, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

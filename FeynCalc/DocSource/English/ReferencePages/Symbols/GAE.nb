@@ -438,10 +438,16 @@ In order to use Dirac algebra with D-4 dimensional objects you need to \
 activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first\
 \>", "Notes"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[157]:="],
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}]], "Input",
+ CellLabel->"In[37]:="],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ CellLabel->"Out[37]="]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -450,32 +456,39 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GAE", "[", "\[Mu]", "]"}], ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[158]:="],
+ CellLabel->"In[38]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
-   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
-the computation. The problem reads: \
+    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], 
+   RowBox[{
+   ":", " "}], "\<\"Error! DiracTrick has encountered a fatal problem and \
+must abort the computation. The problem reads: \
 \[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
 and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak] \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrick\\\", \
 ButtonNote -> \\\"FeynCalc`DiracTrick::failmsg\\\"]\\)\"\>"}], 
   TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[158]:="],
+ CellLabel->"During evaluation of In[38]:="],
 
 Cell[BoxData[
  FormBox["$Aborted", TraditionalForm]], "Output",
- CellLabel->"Out[158]="]
+ CellLabel->"Out[38]="]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[159]:="],
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}]], "Input",
+ CellLabel->"In[39]:="],
+
+Cell[BoxData[
+ FormBox["\<\"BMHV\"\>", TraditionalForm]], "Output",
+ CellLabel->"Out[39]="]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -484,18 +497,24 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GAE", "[", "\[Mu]", "]"}], ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[160]:="],
+ CellLabel->"In[40]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"D", "-", "4"}], TraditionalForm]], "Output",
- CellLabel->"Out[160]="]
+ CellLabel->"Out[40]="]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
- CellLabel->"In[161]:="]
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}]], "Input",
+ CellLabel->"In[41]:="],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ CellLabel->"Out[41]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -559,13 +578,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1028, Automatic}, {Automatic, 148}},
+WindowMargins->{{1018, Automatic}, {61, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

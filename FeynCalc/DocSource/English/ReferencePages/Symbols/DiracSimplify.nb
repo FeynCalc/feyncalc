@@ -5104,8 +5104,8 @@ t'Hooft-Veltman-Breitenlohner-Maison (BMHV) scheme."
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
- CellLabel->"In[54]:="],
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
+ CellLabel->"In[65]:="],
 
 Cell[CellGroupData[{
 
@@ -5117,7 +5117,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"GA", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[55]:="],
+ CellLabel->"In[66]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5138,12 +5138,13 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}], "+", 
    RowBox[{"D", " ", "m"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[55]="]
+ CellLabel->"Out[66]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
  CellLabel->"In[56]:="],
 
 Cell[TextData[{
@@ -5323,7 +5324,7 @@ choice as of course also possible, but those are not implemented in FeynCalc.\
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "True"}], ";"}]], "Input",
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
  CellLabel->"In[59]:="],
 
 Cell[CellGroupData[{
@@ -5798,19 +5799,18 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$BreitMaison", "=", "False"}], ";"}]], "Input",
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
+ 
  CellLabel->"In[61]:="],
 
 Cell[TextData[{
  "Keep in mind that the BMHV scheme violates axial Ward identities and \
 requires special model-dependent counter-terms to restore those. Therefore, \
 just setting ",
- ButtonBox["$BreitMaison",
+ ButtonBox["FCSetDiracGammaScheme[\"BMHV\"]",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/$BreitMaison",
-  ButtonNote->"$BreitMaison"],
- " to ",
- Cell[BoxData["True"], "InlineFormula"],
+  ButtonData:>"paclet:FeynCalc/ref/FCSetDiracGammaScheme",
+  ButtonNote->"FCSetDiracGammaScheme"],
  " does not automatically resolve all your troubles with ",
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
@@ -6645,14 +6645,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{894, 1033},
-WindowMargins->{{816, Automatic}, {Automatic, 74}},
+WindowSize->{894, 989},
+WindowMargins->{{806, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
