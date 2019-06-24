@@ -194,7 +194,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 			oneamp = FCI[expr]
 		];
 
-		If[	!FreeQ2[Union[FCGetDimensions[oneamp/.DiracGamma[5|6|7]:>null1]],{4,-4}] && !$BreitMaison,
+		If[	!FreeQ2[Union[FCGetDimensions[oneamp/.DiracGamma[5|6|7]:>null1]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 			Message[OneLoop::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
 			Abort[]
 		];

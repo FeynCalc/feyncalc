@@ -59,7 +59,7 @@ m3].GA[j].Spinor[p4,m4]]//FCE",
 "DiracTrick[GA[7].GA[mu]]//FCE", "GA[mu] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID17",
 "DiracTrick[GA[7].GAD[mu]]//FCE", "GAD[mu] . GA[6]"},
-{"fcstDiracTrickCoreProperties-ID18", "$BreitMaison=True;
+{"fcstDiracTrickCoreProperties-ID18", "FCSetDiracGammaScheme[\"BMHV\"]; \n
 	DiracTrick[GA[6].GA[mu]]//FCE", "GA[mu] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID19",
 "DiracTrick[GA[6].GAD[mu]]//FCE",
@@ -69,7 +69,7 @@ m3].GA[j].Spinor[p4,m4]]//FCE",
 {"fcstDiracTrickCoreProperties-ID21",
 "DiracTrick[GA[7].GAD[mu]]//FCE",
 "GAD[mu] . GA[6] - GAE[mu] . GA[5]"},
-{"fcstDiracTrickCoreProperties-ID22", "$BreitMaison=False;
+{"fcstDiracTrickCoreProperties-ID22", "FCSetDiracGammaScheme[\"NDR\"]; \n
 DiracTrick[GA[5].GA[i, j, k]]//FCE",
 "-GA[i] . GA[j] . GA[k] . GA[5]"},
 {"fcstDiracTrickCoreProperties-ID23",
@@ -81,7 +81,7 @@ DiracTrick[GA[5].GA[i, j, k]]//FCE",
 {"fcstDiracTrickCoreProperties-ID25",
 "DiracTrick[GA[5].GAD[i, j, k,l]]//FCE",
 "GAD[i] . GAD[j] . GAD[k] . GAD[l] . GA[5]"},
-{"fcstDiracTrickCoreProperties-ID26", "$BreitMaison=True;
+{"fcstDiracTrickCoreProperties-ID26", "FCSetDiracGammaScheme[\"BMHV\"]; \n
 DiracTrick[GA[5].GA[i]]//FCE", "-GA[i] . GA[5]"},
 {"fcstDiracTrickCoreProperties-ID27",
 "DiracTrick[GA[5].GAD[i]]//FCE",
@@ -113,8 +113,7 @@ GAE[k] . GAE[l] . GA[5]) + 2*(GAE[i] . GAE[j] . GAD[k] . GAD[l] . \
 GA[5] - 2*GAE[i] . GAE[j] . GAD[k] . GAE[l] . GA[5] + 2*(-GAE[i] . \
 GAE[j] . GAE[k] . GAD[l] . GA[5] + 2*GAE[i] . GAE[j] . GAE[k] . \
 GAE[l] . GA[5])))"},
-{"fcstDiracTrickCoreProperties-ID32", "$BreitMaison=False;
-	$Larin=False;
+{"fcstDiracTrickCoreProperties-ID32", "FCSetDiracGammaScheme[\"NDR\"]; \n
 DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
 "2*m*GA[nu] . GA[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID33",
@@ -183,7 +182,7 @@ DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
 {"fcstDiracTrickCoreProperties-ID56",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]//FCE",
 "GAD[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[7]"},
-{"fcstDiracTrickCoreProperties-ID57", "$BreitMaison=True;
+{"fcstDiracTrickCoreProperties-ID57", "FCSetDiracGammaScheme[\"BMHV\"]; \n
 DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
 "2*m*GA[nu] . GA[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID58",
@@ -1218,13 +1217,13 @@ Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor
 {"fcstDiracTrickCoreProperties-ID121",
 "DiracTrick[GA[mu].(cc1 + cc2 GA[5]).(GS[p] + m).GA[rho], FCE -> True]", "cc1 GA[mu].(m + GS[p]).GA[rho] + cc2 GA[mu].(-m + GS[p]).GA[rho].GA[5]"},
 {"fcstDiracTrickCoreProperties-ID122",
-"$BreitMaison=False;\n DiracTrick[GAD[mu].(cc1 + cc2 GA[5]).(GSD[p] + m).GAD[rho], FCE -> True]", "cc1 GAD[mu].(m + GSD[p]).GAD[rho] + cc2 GAD[mu].(-m + GSD[p]).GAD[rho].GA[5]"},
+"FCSetDiracGammaScheme[\"NDR\"]\n DiracTrick[GAD[mu].(cc1 + cc2 GA[5]).(GSD[p] + m).GAD[rho], FCE -> True]", "cc1 GAD[mu].(m + GSD[p]).GAD[rho] + cc2 GAD[mu].(-m + GSD[p]).GAD[rho].GA[5]"},
 {"fcstDiracTrickCoreProperties-ID123",
 "DiracTrick[GAD[mu].DiracGamma[ExplicitLorentzIndex[i, D], D].GAD[mu]]", "(2 - D) DiracGamma[ExplicitLorentzIndex[i, D], D]"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
-{"fcstDiracTrick-ID1","$BreitMaison=False;\nDiracTrick[GA[mu,nu,mu]]","-2*DiracGamma[LorentzIndex[nu]]"},
+{"fcstDiracTrick-ID1","FCSetDiracGammaScheme[\"NDR\"];\n DiracTrick[GA[mu,nu,mu]]","-2*DiracGamma[LorentzIndex[nu]]"},
 {"fcstDiracTrick-ID2","DiracTrick[GAD[mu,nu,mu]]","(2 - D)*DiracGamma[LorentzIndex[nu, D], D]"},
 {"fcstDiracTrick-ID3","DiracTrick[GA[5,mu,nu]]","DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]]. DiracGamma[5]"},
 {"fcstDiracTrick-ID4","DiracTrick[GA[6,mu,7]]","DiracGamma[LorentzIndex[mu]] . DiracGamma[7]"},
@@ -1311,7 +1310,7 @@ Tests`Dirac`fcstDiracTrick = {
 };
 
 Tests`Dirac`fcstDiracTrickBMHV = ({
-{"fcstDiracTrickBMHV-ID1", "$BreitMaison=True;
+{"fcstDiracTrickBMHV-ID1", "FCSetDiracGammaScheme[\"BMHV\"]; \n
 DiracTrick[GA[5].GAD[mu]]//FCE",
 "-GAD[mu] . GA[5] + 2*GAE[mu] . GA[5]"},
 {"fcstDiracTrickBMHV-ID2", "DiracTrick[GA[5].GA[mu]]//FCE",
@@ -1371,7 +1370,7 @@ DiracTrick[GA[5].GAD[mu]]//FCE",
 });
 
 Tests`Dirac`fcstDiracTrickOneFreeIndex = {
-{"fcstDiracTrickOneFreeIndex-ID1","$BreitMaison=True; \n $Larin=False; \n DiracTrick[GAD[mu, nu, mu]]",
+{"fcstDiracTrickOneFreeIndex-ID1","FCSetDiracGammaScheme[\"BMHV\"]; \n DiracTrick[GAD[mu, nu, mu]]",
 		"(2 - D)*DiracGamma[LorentzIndex[nu, D], D]"},
 {"fcstDiracTrickOneFreeIndex-ID2","DiracTrick[GAD[mu].GA[nu].GAD[mu]]",
 		"(2 - D)*DiracGamma[LorentzIndex[nu]]"},
@@ -1724,7 +1723,7 @@ Tests`Dirac`fcstDiracTrickFiveFreeIndices = {
 };
 
 Tests`Dirac`fcstDiracTrickLarin = {
-{"fcstDiracTrickLarin-ID1","$BreitMaison=False;\n$Larin=True;\nDiracTrick[GAD[a, b, c].GA[5].GAD[b, a, m]] // FCE",
+{"fcstDiracTrickLarin-ID1","FCSetDiracGammaScheme[\"Larin\"];\nDiracTrick[GAD[a, b, c].GA[5].GAD[b, a, m]] // FCE",
 		"GAD[a].GAD[b].GAD[c].GA[5].GAD[b].GAD[a].GAD[m]"},
 {"fcstDiracTrickLarin-ID2","MatchQ[DiracTrick[DiracTrace[GSD[p1].GA[6].GSD[p2].GA[6]],
 FCE -> True], DiracTrace[1/2 GSD[p1].GSD[p2].GA[6] + 1/12 I GAD[dtlarLia656_].GAD[dtlarLib657_].GAD[dtlarLic658_].GSD[p2].GA[6]
@@ -1734,7 +1733,7 @@ LCD[dtlarLia656_, dtlarLib657_, dtlarLic658_][p1]]]", "True"}
 Tests`Dirac`fcstDiracTrickInsideDiracTrace =
 ({
 {"fcstDiracTrickInsideDiracTrace-ID1",
-"$BreitMaison=False; \n DiracTrick[GA[i],InsideDiracTrace\[Rule]True]//FCE", "0"},
+"FCSetDiracGammaScheme[\"NDR\"]; \n \n DiracTrick[GA[i],InsideDiracTrace\[Rule]True]//FCE", "0"},
 {"fcstDiracTrickInsideDiracTrace-ID2",
 "DiracTrick[GA[i,5],InsideDiracTrace\[Rule]True]//FCE", "0"},
 {"fcstDiracTrickInsideDiracTrace-ID3",

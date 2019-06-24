@@ -15,7 +15,7 @@
 
 Tests`Dirac`fcstAnti5ToTheRight = {
 
-{"fcstAnti5ToTheRight-ID1","$BreitMaison=False;\n $Larin=False;\n Anti5[GA[5].GA[mu]]",
+{"fcstAnti5ToTheRight-ID1","FCSetDiracGammaScheme[\"NDR\"];\n Anti5[GA[5].GA[mu]]",
 	"-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
 {"fcstAnti5ToTheRight-ID2","Anti5[GA[5].GA[mu], 1]",
 	"-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
@@ -54,7 +54,7 @@ Tests`Dirac`fcstAnti5ToTheRight = {
 {"fcstAnti5ToTheRight-ID15.4","Anti5[GA[5].CGAD[i], 1] // FCE", "-CGAD[i].GA[5]"},
 {"fcstAnti5ToTheRight-ID15.5","Anti5[GA[5].CGAD[i, j, k]] // FCE", "-CGAD[i].GA[5].CGAD[j].CGAD[k]"},
 {"fcstAnti5ToTheRight-ID15.6","Anti5[GA[5].CGAD[i, j, k], Infinity] // FCE", "-CGAD[i].CGAD[j].CGAD[k].GA[5]"},
-{"fcstAnti5ToTheRight-ID16","$BreitMaison=True;\nAnti5[GA[5].GA[mu]]",
+{"fcstAnti5ToTheRight-ID16","FCSetDiracGammaScheme[\"BMHV\"];\nAnti5[GA[5].GA[mu]]",
 	"-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
 {"fcstAnti5ToTheRight-ID17","Anti5[GA[5].GA[mu], 1]",
 	"-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
@@ -120,7 +120,7 @@ Tests`Dirac`fcstAnti5ToTheRight = {
 
 
 Tests`Dirac`fcstAnti5ToTheLeft = {
-{"fcstAnti5ToTheLeft-ID1","$BreitMaison=False;\n $Larin=False;\n Anti5[GA[mu].GA[5]]",
+{"fcstAnti5ToTheLeft-ID1","FCSetDiracGammaScheme[\"NDR\"]\n Anti5[GA[mu].GA[5]]",
 	"DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
 {"fcstAnti5ToTheLeft-ID2","Anti5[GA[mu].GA[5], -1]",
 	"-DiracGamma[5] . DiracGamma[LorentzIndex[mu]]"},
@@ -172,7 +172,7 @@ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
 {"fcstAnti5ToTheLeft-ID15.5","Anti5[CGAD[i, j, k].GA[5],-2] // FCE", "CGAD[i].GA[5].CGAD[j].CGAD[k]"},
 {"fcstAnti5ToTheLeft-ID15.6","Anti5[CGAD[i, j, k].GA[5], -Infinity] // FCE", "-GA[5].CGAD[i].CGAD[j].CGAD[k]"},
 
-{"fcstAnti5ToTheLeft-ID16","$BreitMaison=True;\nAnti5[GA[mu].GA[5]]",
+{"fcstAnti5ToTheLeft-ID16","FCSetDiracGammaScheme[\"BMHV\"];\nAnti5[GA[mu].GA[5]]",
 	"DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
 {"fcstAnti5ToTheLeft-ID17","Anti5[GA[mu].GA[5], -1]",
 	"-DiracGamma[5] . DiracGamma[LorentzIndex[mu]]"},
@@ -251,7 +251,7 @@ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
 };
 
 Tests`Dirac`fcstAnti5EvenGamma5 = {
-{"fcstAnti5EvenGamma5-ID1","$BreitMaison=False;\n $Larin=False;\n Anti5[GA[5].GA[5]]","1"},
+{"fcstAnti5EvenGamma5-ID1","FCSetDiracGammaScheme[\"NDR\"]\n Anti5[GA[5].GA[5]]","1"},
 {"fcstAnti5EvenGamma5-ID2","Anti5[GA[5].GA[5].GA[5]]","DiracGamma[5]"},
 {"fcstAnti5EvenGamma5-ID3","Anti5[GA[5].GA[5].GA[5].GA[5]]","1"},
 {"fcstAnti5EvenGamma5-ID4","Anti5[GA[5].GA[i].GA[5].GA[j].GA[5].GA[k].GA[5],Infinity]",
@@ -261,7 +261,7 @@ Tests`Dirac`fcstAnti5EvenGamma5 = {
 
 
 Tests`Dirac`fcstAnti5Gamma567 = {
-{"fcstAnti5Gamma567-ID1","$BreitMaison=False; \n $Larin=False; \nAnti5[x.GA[5].GA[6].GA[i]]//FCE","x . GA[i]/2 - x . GA[i] . GA[5]/2"},
+{"fcstAnti5Gamma567-ID1","FCSetDiracGammaScheme[\"NDR\"]; \nAnti5[x.GA[5].GA[6].GA[i]]//FCE","x . GA[i]/2 - x . GA[i] . GA[5]/2"},
 {"fcstAnti5Gamma567-ID2","Anti5[x.GA[5].GA[7].GA[i]] // FCE","-x . GA[i]/2 - x . GA[i] . GA[5]/2"},
 {"fcstAnti5Gamma567-ID3","Anti5[x.GA[6].GA[5].GA[i]] // FCE","(1/2) x.GA[i] - 1/2 x.GA[i].GA[5]"},
 {"fcstAnti5Gamma567-ID4","Anti5[x.GA[6].GA[6].GA[i]] // FCE","1/2 x.GA[i] - 1/2 x.GA[i].GA[5]"},
@@ -277,7 +277,7 @@ Tests`Dirac`fcstAnti5Gamma567 = {
 {"fcstAnti5Gamma567-ID14","Anti5[GA[i].GA[7].GA[5].y] // FCE","-GA[i].GA[5].y"},
 {"fcstAnti5Gamma567-ID15","Anti5[GA[i].GA[7].GA[6].y] // FCE","0"},
 {"fcstAnti5Gamma567-ID16","Anti5[GA[i].GA[7].GA[7].y] // FCE","+(1/2) GA[i].y - 1/2 GA[i].GA[5].y"},
-{"fcstAnti5Gamma567-ID17","$BreitMaison=True;\n $Larin=False; \n Anti5[x.GA[5].GA[6].GA[i]]//FCE","1/2 x.GA[i] - 1/2 x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID17","FCSetDiracGammaScheme[\"BMHV\"]; \n Anti5[x.GA[5].GA[6].GA[i]]//FCE","1/2 x.GA[i] - 1/2 x.GA[i].GA[5]"},
 {"fcstAnti5Gamma567-ID18","Anti5[x.GA[5].GA[7].GA[i]] // FCE","-1/2 x.GA[i] - 1/2 x.GA[i].GA[5]"},
 {"fcstAnti5Gamma567-ID19","Anti5[x.GA[6].GA[5].GA[i]] // FCE","(1/2) x.GA[i] - 1/2 x.GA[i].GA[5]"},
 {"fcstAnti5Gamma567-ID20","Anti5[x.GA[6].GA[6].GA[i]] // FCE","1/2 x.GA[i] - 1/2 x.GA[i].GA[5]"},
@@ -298,9 +298,7 @@ Tests`Dirac`fcstAnti5Gamma567 = {
 
 Tests`Dirac`fcstAnti5ToTheRightLarin =
 ({
-{"fcstAnti5ToTheRightLarin-ID1", "$BreitMaison=False;
-	$Larin=True;
-	Anti5[GA[5].GA[mu]]//FCE", "-GA[mu] . GA[5]"},
+{"fcstAnti5ToTheRightLarin-ID1", "FCSetDiracGammaScheme[\"Larin\"]; \n Anti5[GA[5].GA[mu]]//FCE", "-GA[mu] . GA[5]"},
 {"fcstAnti5ToTheRightLarin-ID2", "Anti5[GA[5].GA[mu], 1]//FCE",
 "-GA[mu] . GA[5]"},
 {"fcstAnti5ToTheRightLarin-ID3",
@@ -344,9 +342,7 @@ Tests`Dirac`fcstAnti5ToTheRightLarin =
 
 Tests`Dirac`fcstAnti5ToTheLeftLarin =
 ({
-{"fcstAnti5ToTheLeftLarin-ID1", "$BreitMaison=False;
-	$Larin=True;
-	Anti5[GA[mu].GA[5]]//FCE", "GA[mu] . GA[5]"},
+{"fcstAnti5ToTheLeftLarin-ID1", "FCSetDiracGammaScheme[\"Larin\"]; \n Anti5[GA[mu].GA[5]]//FCE", "GA[mu] . GA[5]"},
 {"fcstAnti5ToTheLeftLarin-ID2", "Anti5[GA[mu].GA[5], -1]//FCE",
 "-GA[5] . GA[mu]"},
 {"fcstAnti5ToTheLeftLarin-ID3",

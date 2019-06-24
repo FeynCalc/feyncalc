@@ -112,7 +112,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "FCMultiLoopTID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		If[	!FreeQ2[Union[FCGetDimensions[ex/.DiracGamma[5|6|7]:>null1]],{4,-4}] && !$BreitMaison,
+		If[	!FreeQ2[Union[FCGetDimensions[ex/.DiracGamma[5|6|7]:>null1]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 			Message[FCMultiLoopTID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
 			Abort[]
 		];
@@ -153,7 +153,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		FCPrint[1, "FCMultiLoopTID: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		FCPrint[3,"FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
 
-		If[ $BreitMaison && !FreeQ[ex,LorentzIndex],
+		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ[ex,LorentzIndex],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Handling 4 and D-4 dimensional loop momenta.", FCDoControl->mltidVerbose];
 			ex = ex /. {

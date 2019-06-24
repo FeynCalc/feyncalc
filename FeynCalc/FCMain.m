@@ -26,11 +26,10 @@ $AL::usage =
 Uncontract.";
 
 $BreitMaison::usage =
-"The setting of $BreitMaison determines whether the Breitenlohner-Maison \
-scheme is applied. If $BreitMaison=False, the so-called	naive gamma5 \
-prescription is used, i.e. gamma5 anticommutes in all dimensions. \
-The default is False. The setting should be chosen at the beginning of\
-a FeynCalc session. Reversion during a session is not possible.";
+"$BreitMaison is a legacy switch for the Breitenlohner-Maison-t'Hooft-Veltman \
+scheme.  The modern way is to use FCSetDiracGammaScheme to specify \
+a scheme for handling Dirac matrices in dimensional regularization and \
+FCGetDiracGammaScheme to check the current setting.";
 
 $Containers::usage =
 "$FieldContainers is a set of heads over which FieldDerivative should
@@ -152,20 +151,10 @@ dimensional regularization. Notice that OneLoop is not guaranteed to respect thi
 option.";
 
 $Larin::usage =
-"If set to True, the Larin-Gorishny-Atkyampo-DelBurgo-scheme for \
-gamma5 in D-dimensions is used, i.e. before evaluating traces \
-(but after moving gamma5 anticommuting in D-dimensions to the \
-right of the Dirac string inside a trace) a product  gamma[mu].gamma5 is \
-substituted to -I/6 Eps[mu,al,be,si] gamma[al,be,si], \
-where all indices live in D-dimensions now. \
-The Levi-Civita tensor is taken to be \
-D-dimensional, i.e., contraction of two Eps's results in D's. \
-This scheme is often used for performance reasons and is assumed \
-to give the same results as the \
-Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, gamma5 is \
-not anticommuting inside closed fermion loops and it is not so clear
-if this scheme works for more than one fermion line involving gamma5. \
-When in doubt, it might be better to use BMHV instead.";
+"$Larin is a legacy switch for the Larin-Gorishny-Atkyampo-DelBurgo \
+scheme. The modern way is to use FCSetDiracGammaScheme to specify \
+a scheme for handling Dirac matrices in dimensional regularization and \
+FCGetDiracGammaScheme to check the current setting.";
 
 $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines \
@@ -305,6 +294,45 @@ FCDoControl::usage =
 is used to control the debugging output of FCPrint. The default value
 is $VeryVerbose.";
 
+FCSetDiracGammaScheme::usage =
+"FCSetDiracGammaScheme[\"scheme\"] allows you to specify how Dirac matrices \
+will be handled in D dimensions. This is mainly relevant to \
+the treatment of the fifth Dirac matrix g^5, which is not well-defined \
+in dimensional regularization. Following schemes are supported: \
+
+\"NDR\" - This is the default value. In the naive dimensional regularization \
+(also known as CDR) g^5 is assumed to anticommute with all Dirac matrices in D \
+dimensions. Traces that contain an odd number of Dirac matrices are not well-defined \
+in this scheme and will remain unevaluated. \n
+
+\"BMHV\" - The Breitenlohner-Maison extension of the t'Hooft-Veltman scheme. This \
+scheme introduces Dirac and Lorentz tensors living in 4, D or D-4 dimensions, while \
+g^5 is a purely 4-dimensional object. BMHV is algebraically consistent but often \
+suffers from nonconservation of currents in the final results. The conservation must \
+be then enfornced by introducing finite counter-terms. The counter-terms are to be \
+supplied by the users, FeynCalc does not do this automatically.
+
+\"Larin\" - Special prescription developed by Larin, also known as the \
+Larin-Gorishny-Atkyampo-DelBurgo scheme. Essentially, it is a shortcut \
+(mostly used in QCD) for obtaining the same results as in BMHV but without \
+the necessity to deal with tensors from different dimensions. That is, before evaluating traces \
+(but after moving gamma5 anticommuting in D-dimensions to the \
+right of the Dirac string inside a trace) a product  gamma[mu].gamma5 is \
+substituted to -I/6 Eps[mu,al,be,si] gamma[al,be,si], \
+where all indices live in D-dimensions now. \
+The Levi-Civita tensor is taken to be \
+D-dimensional, i.e., contraction of two Eps's results in D's. \
+This scheme is often used for performance reasons and is assumed \
+to give the same results as the \
+Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, gamma5 is \
+not anticommuting inside closed fermion loops and it is not so clear
+if this scheme works for more than one fermion line involving gamma5. \
+When in doubt, it might be better to use BMHV instead.";
+
+FCGetDiracGammaScheme::usage =
+"FCGetDiracGammaScheme[] shows the currently used scheme for handling Dirac
+matrices in D dimensions.";
+
 FCSetPauliSigmaScheme::usage =
 "FCSetPauliSigmaScheme[\"scheme\"] allows you to specify how Pauli matrices \
 will be handled in D-1 dimensions. This is mainly related to \
@@ -321,7 +349,7 @@ in D-1-dimensions, so that a contraction of two such tensors which have all \
 indices in common yields (D-3) (D-2) (D-1)."
 
 FCGetPauliSigmaScheme::usage =
-"FCGetPauliSigmaScheme[] shows currently used scheme for handling Pauli
+"FCGetPauliSigmaScheme[] shows the currently used scheme for handling Pauli
 matrices in D-1 dimensions.";
 
 FCEnableTraditionalFormOutput::usage =
@@ -334,6 +362,9 @@ FCDisableTraditionalFormOutput::usage =
 FrontEnd to StandardForm. The setting is not persistent, such that
 it does not influence any subequent Mathematica FrontEnd sessions.";
 
+FeynCalc::failmsg =
+"Error! FeynCalc has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
@@ -449,6 +480,7 @@ Options[FCPrint] = {
 FeynCalc`Package`MetricT = 1;
 FeynCalc`Package`MetricS = -1;
 FeynCalc`Package`PauliSigmaScheme = "None";
+FeynCalc`Package`DiracGammaScheme = "NDR";
 
 FCEnableTraditionalFormOutput[]:=
 	(CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm;);
@@ -456,13 +488,23 @@ FCEnableTraditionalFormOutput[]:=
 FCDisableTraditionalFormOutput[]:=
 	(CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = StandardForm; );
 
-FCSetPauliSigmaScheme[s_String]:=
-	If[	MatchQ[s,"None"|"Naive"],
-		FeynCalc`Package`PauliSigmaScheme = s,
-		Message[SharedObjects::failmsg, "Unknown scheme for Pauli matrices in D-1 dimensions."];
+
+FCSetDiracGammaScheme[s_String]:=
+	If[	MatchQ[s,"NDR"|"BMHV"|"Larin"],
+		FeynCalc`Package`DiracGammaScheme = s,
+		Message[FeynCalc::failmsg, "Unknown scheme for Dirac matrices in D dimensions."];
 		Abort[]
 	];
 
+FCGetDiracGammaScheme[]:=
+	FeynCalc`Package`DiracGammaScheme;
+
+FCSetPauliSigmaScheme[s_String]:=
+	If[	MatchQ[s,"None"|"Naive"],
+		FeynCalc`Package`PauliSigmaScheme = s,
+		Message[FeynCalc::failmsg, "Unknown scheme for Pauli matrices in D-1 dimensions."];
+		Abort[]
+	];
 
 FCGetPauliSigmaScheme[]:=
 	FeynCalc`Package`PauliSigmaScheme;
@@ -470,7 +512,7 @@ FCGetPauliSigmaScheme[]:=
 FCSetMetricSignature[{t_Integer,s_Integer}]:=
 	(
 	If[ {s^2,t^2}=!={1,1},
-		Message[SharedObjects::failmsg, "The square of each diagonal element of the metric tensor must be unity."];
+		Message[FeynCalc::failmsg, "The square of each diagonal element of the metric tensor must be unity."];
 		Abort[]
 	];
 	FeynCalc`Package`MetricT = t;
@@ -510,6 +552,43 @@ TBox[a_] :=
 	ToBoxes[a, TraditionalForm];
 TBox[a_,b__] :=
 	RowBox @ Map[(ToBoxes @@ {#, TraditionalForm})&, {a, b}];
+
+
+$BreitMaison /: Set[$BreitMaison, True] :=
+	(
+		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> True};
+		OwnValues[$Larin] = {HoldPattern[$Larin] :> False};
+		FCSetDiracGammaScheme["BMHV"];
+		True
+	);
+
+$BreitMaison /: Set[$BreitMaison, False] :=
+	(
+		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> False};
+		If[	TrueQ[$Larin === False],
+			FCSetDiracGammaScheme["NDR"],
+			FCSetDiracGammaScheme["Larin"]
+		];
+		False
+	);
+
+$Larin /: Set[$Larin, True] :=
+	(
+		OwnValues[$Larin] = {HoldPattern[$Larin] :> True};
+		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> False};
+		FCSetDiracGammaScheme["Larin"];
+		True
+	);
+
+$Larin /: Set[$Larin, False] :=
+	(
+		OwnValues[$Larin] = {HoldPattern[$Larin] :> False};
+		If[TrueQ[$BreitMaison === False],
+			FCSetDiracGammaScheme["NDR"],
+			FCSetDiracGammaScheme["BMHV"]
+		];
+		False
+	);
 
 
 FCPrint[1,"FCMain loaded."];

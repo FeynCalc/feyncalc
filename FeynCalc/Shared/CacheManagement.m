@@ -74,9 +74,9 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 
 		standardSet = DownValues[#]&/@{
 				Pair, CartesianPair, TemporalPair, ScalarProduct, CartesianScalarProduct,
-				Momentum, CartesianMomentum, TemporalMomentum, SP, SPD, SPE, CSP, CSPD, CSPE,
-				TC, $BreitMaison, $Larin
+				Momentum, CartesianMomentum, TemporalMomentum, SP, SPD, SPE, CSP, CSPD, CSPE, TC
 		};
+		standardSet = Join[standardSet,{FeynCalc`Package`DiracGammaScheme, FeynCalc`Package`PauliSigmaScheme}];
 
 		Which[
 			fcFunc === ExpandScalarProduct,

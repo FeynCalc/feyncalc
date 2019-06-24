@@ -25,7 +25,7 @@ All DiracGamma[5], DiracGamma[6] and DiracGamma[7] are moved to \
 the right. The order of the Dirac matrices is not changed.";
 
 DiracSimplify::failmsg =
-"Error! DiracSimplifys encountered a fatal problem and must abort the computation. \
+"Error! DiracSimplify encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)

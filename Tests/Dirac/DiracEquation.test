@@ -38,7 +38,7 @@ Tests`Dirac`fcstDiracEquation = {
 	"DiracEquation[SpinorUBar[p, m].GSD[p]]"},
 {"fcstDiracEquation-ID12","DiracEquation[SpinorVBar[p, m].GSD[p]]",
 	"DiracEquation[SpinorVBar[p, m].GSD[p]]"},
-{"fcstDiracEquation-ID13","$BreitMaison=False \n DiracEquation[GSD[p].GSD[q].GA[i].SpinorUD[Momentum[p, D], m]] // FCE",
+{"fcstDiracEquation-ID13","FCSetDiracGammaScheme[\"NDR\"] \n DiracEquation[GSD[p].GSD[q].GA[i].SpinorUD[Momentum[p, D], m]] // FCE",
 	"m GSD[q].GA[i].Spinor[Momentum[p, D], m, 1] -
 	2 GSD[q].Spinor[Momentum[p, D], m, 1] FV[p, i] +
 	2 GA[i].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
@@ -115,7 +115,7 @@ Tests`Dirac`fcstDiracEquation = {
 	SpinorVBarD[Momentum[p, D], m].GSD[q].GA[i, 5].GAD[j].GSD[p]] // FCE",
 	"Spinor[-Momentum[p, D], m, 1] . GSD[q] . GA[i] . GSD[p] . GA[5] . GAD[j] +
 	2*Spinor[-Momentum[p, D], m, 1] . GSD[q] . GA[i] . GA[5]*FVD[p, j]"},
-{"fcstDiracEquation-ID29","$BreitMaison=True \n DiracEquation[
+{"fcstDiracEquation-ID29","FCSetDiracGammaScheme[\"BMHV\"] \n DiracEquation[
 	GSD[p].GSD[q].GA[i, 5].SpinorUD[Momentum[p, D], m]] // FCE",
 	"-m GSD[q].GA[i].GA[5].Spinor[Momentum[p, D], m, 1] +
 	2 GSD[q].GA[i].GA[5].GSE[p].Spinor[Momentum[p, D], m, 1] -

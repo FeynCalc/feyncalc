@@ -14,7 +14,7 @@ Copyright (C) 2014-2018 Vladyslav Shtabovenko
 (* ------------------------------------------------------------------------ *)
 
 Tests`Shared`fcstFeynCalcInternal = {
-	{"fcstFeynCalcInternal-ID1", "$BreitMaison=False;\nFCI[SpinorU[p]]", "Spinor[Momentum[p], 0, 1]"},
+	{"fcstFeynCalcInternal-ID1", "FCSetDiracGammaScheme[\"NDR\"];\nFCI[SpinorU[p]]", "Spinor[Momentum[p], 0, 1]"},
 	{"fcstFeynCalcInternal-ID2", "FCI[SpinorU[p, 0]]", "Spinor[Momentum[p], 0, 1]"},
 	{"fcstFeynCalcInternal-ID3", "FCI[SpinorU[p, 0, 1]]", "Spinor[Momentum[p], 0, 1]"},
 	{"fcstFeynCalcInternal-ID4", "FCI[SpinorU[p, m]]", "Spinor[Momentum[p], m, 1]"},

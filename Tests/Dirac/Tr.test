@@ -46,14 +46,14 @@ Tests`Dirac`fcstTr = {
 	Pair[Momentum[p], Momentum[p]]*Pair[Momentum[p],
 	Momentum[Derivative[1][p]]]"},
 {"fcstTr-ID6",
-	"$BreitMaison=True; \n tmp = Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n tmp = Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
 	Dimension -> D].DiracGamma[Momentum[p1]].DiracGamma[
 	Momentum[p2]].DiracMatrix[nu, Dimension -> D].DiracMatrix[b,
 	Dimension -> D].DiracGamma[Momentum[p2]].DiracGamma[
 	Momentum[p3]].DiracMatrix[a, Dimension -> D].DiracGamma[
 	Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
 	Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[Momentum[p2]],
-	PairCollect -> True]; \n $BreitMaison=False; \n tmp",
+	PairCollect -> True]; \n FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
 	"-4*((288 - 224*D + 56*D^2 - 4*D^3)*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1],
 	Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p2]] + (-256 + 128*D - 16*D^2)*Pair[Momentum[p1],
 	Momentum[p2]]^2*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] +
@@ -100,7 +100,7 @@ Tests`Dirac`fcstTr = {
 	2*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] +
 	4*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
 {"fcstTr-ID11",
-	"$BreitMaison=True; \n  FCClearScalarProducts[]; \n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n  FCClearScalarProducts[]; \n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
 	Dimension -> (d - 4)].DiracMatrix[a[6],
@@ -276,13 +276,13 @@ mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) +
 2 mc1 mc2 (YiPR Ys1 Ys2 + YiPRCC Ys1CC Ys2CC))"},
 {"fcstTr-ID27",
-	"$BreitMaison=True; \n tmp = FCE[Simplify[Tr[GAD[al].GA[5].GAD[al, la, mu, nu, rho]] +
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n tmp = FCE[Simplify[Tr[GAD[al].GA[5].GAD[al, la, mu, nu, rho]] +
 	Tr[GA[5].GAD[al].GAD[al, la, mu, nu, rho]]]]; \n tmp",
 	"-8 I (-4 + D) LC[la, mu, nu, rho]"},
 {"fcstTr-ID28", "Tr[GS[p].GS[p].GS[r]]", "0"},
 {"fcstTr-ID29", "Tr[GS[p].GS[q].GS[r]]", "0"},
 {"fcstTr-ID30",
-	"$BreitMaison=True; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
 	ScalarProduct[o, o] = 0; \n
 	tmp = (Expand[(-ChangeDimension[Contract[
 	Tr[GAD[rho].GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[mu].(1 - GA[5]).GSD[p].GAD[nu].(1 -
@@ -290,7 +290,7 @@ mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
 	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // ExpandScalarProduct // Expand// FCE); FCClearScalarProducts[]; \n tmp",
 	"-((4 SP[l, p]^2)/SP[l, o]) - (4 eps SP[l, p]^2)/SP[l, o] - (4 SP[l, p] SP[o, p])/SP[l, o] - (4 eps SP[l, p] SP[o, p])/SP[l, o]"},
 {"fcstTr-ID31",
-	"$BreitMaison=True; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
 	ScalarProduct[o, o] = 0; \n
 	tmp = (Expand[(-ChangeDimension[Contract[
 	Tr[GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[mu].(1 - GA[5]).GSD[p].GAD[nu].(1 -

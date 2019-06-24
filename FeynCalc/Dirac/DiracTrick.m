@@ -345,32 +345,32 @@ diracTrickEvalFast[DOT[DiracGamma[(h1:5|6|7)],b___,DiracGamma[(h2:5|6|7)]]] :=
 	ga67MatSign[h1,h2] diracTrickEvalFast[DOT[b,ga67Mat[h1,h2]]]/; h1=!=h2 && insideDiracTrace;
 
 diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[_,_],_].. , d___]] :=
-	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]]/; !$BreitMaison && !$Larin;
+	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]]/; (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___]] :=
-	diracTrickEvalFast[DOT[ b,c,DiracGamma[h],d]]/; EvenQ[Length[{c}]] && !$BreitMaison && !$Larin;
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[h],d]]/; EvenQ[Length[{c}]] && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___]] :=
-	diracTrickEvalFast[DOT[ b,c,DiracGamma[ga67Switch1[h]],d]]/; OddQ[Length[{c}]] && !$BreitMaison && !$Larin;
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[ga67Switch1[h]],d]]/; OddQ[Length[{c}]] && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[___,DiracGamma[(h:6|7)],DiracGamma[_[_,_],_], DiracGamma[(h:6|7)], ___]] :=
-	0/; !$BreitMaison && !$Larin;
+	0/; (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), DiracGamma[(h2:6|7)], c___]] :=
-	diracTrickEvalFast[DOT[b, dg, DiracGamma[h2], c]]/; h1=!=h2 && !$BreitMaison && !$Larin;
+	diracTrickEvalFast[DOT[b, dg, DiracGamma[h2], c]]/; h1=!=h2 && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_] ].. , DiracGamma[(h2:6|7)], c___]] :=
-	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h2], c]]/; EvenQ[Length[{xy}]] && h1=!=h2 && !$BreitMaison && !$Larin;
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h2], c]]/; EvenQ[Length[{xy}]] && h1=!=h2 && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[___, DiracGamma[(h:6|7)],DiracGamma[_[_,_],_], xy:DiracGamma[_[_] ].. , DiracGamma[(h:6|7)], ___]] :=
-	0/; EvenQ[Length[{xy}]] && !$BreitMaison && !$Larin;
+	0/; EvenQ[Length[{xy}]] && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 
 diracTrickEvalFast[DOT[___, DiracGamma[(h1:6|7)],DiracGamma[_[_,_],_], xy:DiracGamma[_[_,_],_].. , DiracGamma[(h2:6|7)], ___]] :=
-	0/; OddQ[Length[{xy}]] && h1=!=h2 && !$BreitMaison && !$Larin;
+	0/; OddQ[Length[{xy}]] && h1=!=h2 && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_,_],_].. , DiracGamma[(h:6|7)], c___]] :=
-	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]]  && !$BreitMaison && !$Larin;
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]]  && (FeynCalc`Package`DiracGammaScheme === "NDR");
 
 
 diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[_]].. , d___]] :=
@@ -407,22 +407,22 @@ diracTrickEval[ex:DiracGamma[__]]:=
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 	Which[
 		(*	NDR, inside Trace	*)
-		!$BreitMaison && !$Larin && insideDiracTrace,
+		(FeynCalc`Package`DiracGammaScheme === "NDR") && insideDiracTrace,
 		diracTrickEvalCachedNDRInsideTrace[ex],
 		(*	Larin, inside Trace	*)
-		!$BreitMaison && $Larin && insideDiracTrace,
+		(FeynCalc`Package`DiracGammaScheme === "Larin") && insideDiracTrace,
 		diracTrickEvalCachedLarinInsideTrace[ex],
 		(* BMHV, inside Trace *)
-		$BreitMaison && !$Larin && insideDiracTrace,
+		(FeynCalc`Package`DiracGammaScheme === "BMHV") && insideDiracTrace,
 		diracTrickEvalCachedBMHVInsideTrace[ex],
 		(*	NDR	*)
-		!$BreitMaison && !$Larin,
+		(FeynCalc`Package`DiracGammaScheme === "NDR"),
 		diracTrickEvalCachedNDR[ex],
 		(*	Larin	*)
-		!$BreitMaison && $Larin,
+		(FeynCalc`Package`DiracGammaScheme === "Larin"),
 		diracTrickEvalCachedLarin[ex],
 		(* BMHV *)
-		$BreitMaison && !$Larin,
+		(FeynCalc`Package`DiracGammaScheme === "BMHV"),
 		diracTrickEvalCachedBMHV[ex],
 		(* Else *)
 		True,
@@ -536,22 +536,22 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 							commonGamma5Properties -> chiralTrickAnticommuting4Dim)&,res];
 						res = res /. chiralTrickAnticommuting4Dim -> holdDOT,
 					(* Purely D-dimensional and NDR -> use anticommuting g^5 *)
-					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && !$BreitMaison && !$Larin,
+					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "NDR"),
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim, NDR.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickAnticommutingDDim;
 						res = FixedPoint[(# /. chiralTrickAnticommutingDDim -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommutingDDim)&,res];
 						res = res /. chiralTrickAnticommutingDDim -> holdDOT,
 					(* Purely D-dimensional and BMHV -> don't move anything around *)
-					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && ($BreitMaison && !$Larin),
+					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						Null,
 					(* Purely D-dimensional and Larin use the substitution rule to eliminate g^5 that are not on the left of the trace *)
-					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (!$BreitMaison && $Larin),
+					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "Larin"),
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickLarin /. chiralTrickLarin -> holdDOT,
 					(* Mixed and BMHV -> don't move g^5 around *)
-					dim=!={} && $BreitMaison && !$Larin,
+					dim=!={} && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
 					(* special case that the expression contains only chiral or g^0 matrices*)
 					dim==={} && !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[5|6|7|ExplicitLorentzIndex[0]]:>diga),DiracGamma],
@@ -583,13 +583,13 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
 				res = res /. diracologyDDim -> holdDOT,
 			(* Purely D-4-dimensional and BMHV *)
-			MatchQ[dim,{_Symbol - 4}] && $BreitMaison && !$Larin,
+			MatchQ[dim,{_Symbol - 4}] && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely D-4-dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyDDim;
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
 				res = res /. diracologyDDim -> holdDOT,
 			(* Mixed and BMHV *)
-			dim=!={} && $BreitMaison && !$Larin,
+			dim=!={} && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 				FCPrint[2, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyBMHV1;
 				res = FixedPoint[(# /. diracologyBMHV1 -> diracologyBMHV2 /. diracologyBMHV2 -> diracologyBMHV1)&,res];
@@ -616,7 +616,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		];
 
 		(*	For BMHV we need to handle g^5 again here*)
-		If[	gamma5Present && $BreitMaison && !$Larin,
+		If[	gamma5Present && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 			FCPrint[2, "DiracTrick: diracTrickEval: Doing special simplifications for the BMHV scheme.", FCDoControl->diTrVerbose];
 			res = res /. holdDOT -> gamma5MoveBMHV;
 						res = FixedPoint[(# /. gamma5MoveBMHV -> commonGamma5Properties /.

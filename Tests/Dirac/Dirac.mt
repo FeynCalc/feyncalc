@@ -34,12 +34,10 @@ stingCompareIgnore[_,_]:=
 DeclareNonCommutative[FCNCA,FCNCB,FCNCC,nc1,nc2,nc3,nc4];
 
 If[ Names["Tests`Dirac`fcstAnti5*"]=!={},
-	$BreitMaison = False;
-	$Larin = False;
+	FCSetDiracGammaScheme["NDR"];
 	tmpTest =  Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`Dirac`fcstAnti5*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-	$BreitMaison = False;
-	$Larin = False
+	FCSetDiracGammaScheme["NDR"]
 ];
 
 If[ Names["Tests`Dirac`fcstFCChargeConjugateTransposed*"]=!={},
@@ -146,10 +144,10 @@ If[ Names["Tests`Dirac`fcstDiracSigmaExpand*"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstDiracEquation*"]=!={},
-	$BreitMaison = False;
+	FCSetDiracGammaScheme["NDR"];
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracEquation*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-	$BreitMaison = False
+	FCSetDiracGammaScheme["NDR"]
 ];
 
 If[ Names["Tests`Dirac`fcstDiracOrder*"]=!={},
@@ -190,12 +188,10 @@ If[ Names["Tests`Dirac`fcstDiracSimplifyDotWarnings*"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstDiracTrick*"]=!={},
-	$BreitMaison=False;
-	$Larin=False;
+	FCSetDiracGammaScheme["NDR"];
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrick*"])];
-	$BreitMaison=False;
-	$Larin=False;
+	FCSetDiracGammaScheme["NDR"];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
 
@@ -230,12 +226,10 @@ If[ Names["Tests`Dirac`fcstDiracTrace*"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstTrLarin*"]=!={},
-	$BreitMaison=False;
-	$Larin=True;
+	FCSetDiracGammaScheme["Larin"];
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`Dirac`fcstTrLarin*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-	$Larin=False;
-	$BreitMaison=False
+	FCSetDiracGammaScheme["NDR"]
 ];
 
 

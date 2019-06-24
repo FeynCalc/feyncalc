@@ -14,7 +14,7 @@ Copyright (C) 2014-2018 Vladyslav Shtabovenko
 (* ------------------------------------------------------------------------ *)
 
 Tests`Shared`fcstFeynCalcExternal = {
-	{"fcstFeynCalcExternal-ID1", "$BreitMaison=False;\nFCE[DiracGamma[LorentzIndex[mu]]]", "GA[mu]"},
+	{"fcstFeynCalcExternal-ID1", "FCSetDiracGammaScheme[\"NDR\"];\nFCE[DiracGamma[LorentzIndex[mu]]]", "GA[mu]"},
 	{"fcstFeynCalcExternal-ID1.1", "FCE[DiracGamma[LorentzIndex[mu,D],D]]", "GAD[mu]"},
 	{"fcstFeynCalcExternal-ID1.2", "FCE[DiracGamma[LorentzIndex[mu,D-4],D-4]]", "GAE[mu]"},
 	{"fcstFeynCalcExternal-ID2", "FCE[DiracGamma[LM[mu, V], D]]", "DiracGamma[LM[mu, V], D]"},

@@ -2,8 +2,8 @@ Tests`LoopIntegrals`fcstFCMultiLoopTID =
 ({
 {"fcstFCMultiLoopTID-ID1", "FCMultiLoopTID[0,{q1,q2},FCE->True]", "0"},
 {"fcstFCMultiLoopTID-ID2",
-"$BreitMaison=True; \n tmp= FCMultiLoopTID[FVE[q1, mu]  FAD[{q1 + p1, m}, {q2 + p2, m}], {q1, q2},
-FCE -> True]; \n $BreitMaison=False; tmp",
+"FCSetDiracGammaScheme[\"BMHV\"]; \n tmp= FCMultiLoopTID[FVE[q1, mu]  FAD[{q1 + p1, m}, {q2 + p2, m}], {q1, q2},
+FCE -> True]; \n FCSetDiracGammaScheme[\"NDR\"]; tmp",
 "-FAD[{q1, m}, {q2, m}] FVE[p1, mu]"},
 {"fcstFCMultiLoopTID-ID3",
 "FCMultiLoopTID[FVD[q1, mu]  FAD[{q1 + p1, m}, {q2 + p2, m}], {q1, q2}, FCE -> True]",

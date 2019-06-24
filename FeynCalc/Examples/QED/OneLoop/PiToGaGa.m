@@ -91,7 +91,7 @@ amp[0] = Contract[I*FVD[k+p,mu](amp1[0]+amp2[0])]
 (*Breitenlohner-Maison-t'Hooft-Veltman prescription.*)
 
 
-$BreitMaison=True;
+FCSetDiracGammaScheme["BMHV"];
 amp[1] = TID[amp[0] ,l, ToPaVe->True]
 
 

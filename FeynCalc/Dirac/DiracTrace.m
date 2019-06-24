@@ -34,10 +34,6 @@ gamma^5 anticommutes with all other Dirac matrices. In this scheme \
 (without additional prescriptions) it is not possible to compute traces with an \
 odd number of gamma^5 unambiguously. Evaluation aborted!";
 
-DiracTrace::ilsch =
-"The settings $BreitMaison=`1`, $Larin=`2` do not describe a valid \
-scheme for treating gamma^5 in D dimensions. Evaluation aborted!.";
-
 DiracTrace::failmsg =
 "Error! DiracTrace has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -328,7 +324,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			];
 
 			(* One more check: Traces with mixed dimensions are forbidden in NDR and Larin's scheme, so we abort the computation if this is the case *)
-			If [ !$BreitMaison,
+			If [ (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 				Scan[
 					If[	Length[FCGetDimensions[#/.DiracGamma[5]->1,ChangeDimension->True]]=!=1,
 						Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in this g^5 scheme."];
@@ -367,29 +363,29 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			(*	Choice of the scheme for D-dimensional g^5	*)
 			If[	!FreeQ[traceListChiral,spurHead],
 				Which[
+
 					(*	NDR	*)
-					!$Larin && !$BreitMaison,
+					(FeynCalc`Package`DiracGammaScheme === "NDR"),
 						Message[DiracTrace::ndranomaly];
-						(*Abort[]*)
 						traceListChiral = traceListChiral/. spurHead -> noSpur,
+
 					(*	Larin	*)
-					$Larin && !$BreitMaison,
+					(FeynCalc`Package`DiracGammaScheme === "Larin"),
 						FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral traces will be computed using Larin's scheme", FCDoControl->diTrVerbose];
 						traceListChiral = traceListChiral/. spurHead -> spur5Larin,
+
 					(*	BMHV	*)
-					!$Larin && $BreitMaison,
+					(FeynCalc`Package`DiracGammaScheme === "BMHV"),
 						If[	west,
 							(* BMHV, West's trace formula *)
 							traceListChiral = traceListChiral/. spurHead -> spur5BMHVWest,
 							(* BMHV, standard (slow!) trace formula *)
 							traceListChiral = traceListChiral/. spurHead -> spur5BMHVNoWest
-						](*;
+						],
 
-					traceListChiral = traceListChiral/. a_Eps :> (a/. {l_LorentzIndex:>First[l], m_Momentum:>First[m]}) *) ,
-
-					(* Any other combination of $Larin and $BreitMaison doesn't describe a valid scheme *)
+					(* unknown scheme *)
 					True,
-						Message[DiracTrace::ilsch, $BreitMaison, $Larin];
+						Message[DiracTrace::failmsg, "Unknown scheme for handling Dirac matrices in dimensional regularization."];
 						Abort[]
 				]
 			];

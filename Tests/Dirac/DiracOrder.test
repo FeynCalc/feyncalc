@@ -15,7 +15,7 @@
 
 Tests`Dirac`fcstDiracOrder =
 ({
-{"fcstDiracOrder-ID1", "$BreitMaison=True; \n DiracOrder[0]", "0"},
+{"fcstDiracOrder-ID1", "FCSetDiracGammaScheme[\"BMHV\"]; \n DiracOrder[0]", "0"},
 {"fcstDiracOrder-ID2",
 "ClearAll[tmp]; \n MatchQ[DiracOrder[Sum[tmp[i],{i,1,10000}]],Sum[tmp[i],{i,1,10000}]\
 ]", "True"},
@@ -141,7 +141,7 @@ KDE[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
 2*CGA[nu] . CGA[nu] - 4*CGA[nu] . CGAD[nu] - CGA[mu] . CGAD[mu] . \
 CGA[nu] . CGAD[nu]"},
 {"fcstDiracOrder-ID46",
-"$BreitMaison=False; DiracOrder[CGA[i1,i2,i3,i4],{i4,i3,i2,i1},FCE\
+"FCSetDiracGammaScheme[\"NDR\"]; DiracOrder[CGA[i1,i2,i3,i4],{i4,i3,i2,i1},FCE\
 \[Rule]True]",
 "CGA[i4] . CGA[i3] . CGA[i2] . CGA[i1] + 2*CGA[i4] . \
 CGA[i3]*KD[i1, i2] - 2*CGA[i4] . CGA[i2]*KD[i1, i3] + 2*CGA[i3] . \
@@ -150,8 +150,8 @@ CGA[i1]*KD[i2, i4] + 2*CGA[i2] . CGA[i1]*KD[i3, i4] + 4*(KD[i1, \
 i4]*KD[i2, i3] - KD[i1, i3]*KD[i2, i4] + KD[i1, i2]*KD[i3, i4])"},
 {"fcstDiracOrder-ID47", "DiracOrder[TGA[].CGA[i],FCE\[Rule]True]",
 "-CGA[i] . TGA[]"},
-{"fcstDiracOrder-ID48", "$BreitMaison=True; \n tmp=DiracOrder[TGA[].CGAD[i],FCE\[Rule]True];
-$BreitMaison=False; \n tmp",
+{"fcstDiracOrder-ID48", "FCSetDiracGammaScheme[\"BMHV\"]; \n tmp=DiracOrder[TGA[].CGAD[i],FCE\[Rule]True];
+FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
 "-CGAD[i] . TGA[]"},
 {"fcstDiracOrder-ID49", "DiracOrder[TGA[].GA[mu],FCE\[Rule]True]",
 "-GA[mu] . TGA[] + 2*MT[0, mu]"},

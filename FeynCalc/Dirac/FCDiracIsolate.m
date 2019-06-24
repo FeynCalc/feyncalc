@@ -30,32 +30,32 @@ End[]
 Begin["`FCDiracIsolate`Private`"]
 
 Options[FCDiracIsolate] = {
-	CartesianIndex -> False,
-	ClearHeads -> {FCGV["DiracChain"]},
-	Collecting -> True,
-	DiracGamma -> True,
-	DiracGammaCombine -> True,
-	DiracSigmaExplicit -> False,
-	DiracTrace -> True,
-	DotSimplify -> True,
-	ExceptHeads -> {},
-	Expanding -> True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCVerbose -> False,
-	Factoring -> Factor,
-	FermionicChain -> False,
-	Head -> FCGV["DiracChain"],
-	Isolate -> False,
-	IsolateFast -> False,
-	IsolateNames -> KK,
-	LorentzIndex -> False,
-	Polarization -> False,
-	Spinor -> True,
-	Split -> True,
-	TimeConstrained -> 3,
-	ToDiracGamma67 -> False
+	CartesianIndex		-> False,
+	ClearHeads			-> {FCGV["DiracChain"]},
+	Collecting 			-> True,
+	DiracGamma 			-> True,
+	DiracGammaCombine	-> True,
+	DiracSigmaExplicit	-> False,
+	DiracTrace			-> True,
+	DotSimplify			-> True,
+	ExceptHeads			-> {},
+	Expanding			-> True,
+	FCE					-> False,
+	FCI					-> False,
+	FCJoinDOTs			-> True,
+	FCVerbose			-> False,
+	Factoring			-> Factor,
+	FermionicChain		-> False,
+	Head				-> FCGV["DiracChain"],
+	Isolate				-> False,
+	IsolateFast			-> False,
+	IsolateNames		-> KK,
+	LorentzIndex		-> False,
+	Polarization		-> False,
+	Spinor				-> True,
+	Split				-> True,
+	TimeConstrained		-> 3,
+	ToDiracGamma67 		-> False
 };
 
 makeSelectionList[expr_,heads_List]:=
@@ -76,8 +76,6 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		];
 
 		optTimeConstrained = OptionValue[TimeConstrained];
-
-
 		headsList =  DiracHeadsList;
 
 		If[	OptionValue[Polarization],
@@ -100,7 +98,6 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		];
 
 		FCPrint[3, "FCDiracIsolate: Entering with: ", ex, FCDoControl->fcdiVerbose];
-
 
 		If[	FreeQ2[ex,headsList],
 			Return[ex]
@@ -155,7 +152,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCDiracIsolate: Handling Lorentz indices.", FCDoControl->fcdiVerbose];
+		FCPrint[1, "FCDiracIsolate: Handling Lorentz and Cartesian indices.", FCDoControl->fcdiVerbose];
 		If[ OptionValue[LorentzIndex]===True || OptionValue[CartesianIndex]===True,
 			res = (Map[(selectionList=makeSelectionList[#,headsList]; restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
@@ -163,7 +160,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			res = (Map[(restHead[SelectFree[#, headsList]] head[SelectNotFree[#, headsList]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
 		];
-		FCPrint[1, "FCDiracIsolate: Done handling Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+		FCPrint[1, "FCDiracIsolate: Done handling Lorentz and Cartesian indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 
 		res = res /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
 
@@ -185,6 +182,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCDiracIsolate: Removing unneeded isolations.", FCDoControl->fcdiVerbose];
 		(* Here we unisolate objects that are not needed *)
+
 		If[	!OptionValue[DiracTrace],
 			res = res //. head[x_DiracTrace y_.] :> x head[y];
 		];
@@ -234,7 +232,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			tmp = Join[tmp,{CartesianIndex}]
 		];
 
-		(* For LorentzIndex set to true, this check guarantees that all Lorentz tensors are inside head *)
+		(* If LorentzIndex/CartesianIndex is set to true, this check guarantees that all Lorentz/Cartesian tensors are inside head *)
 		If [ !FreeQ2[res/. head[__] :> 1, tmp] & || !FreeQ[res,head[]],
 			Message[FCDiracIsolate::fail, ex];
 			Abort[]
