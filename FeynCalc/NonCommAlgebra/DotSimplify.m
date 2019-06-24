@@ -89,7 +89,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
 	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, ex, sunTrace, tmpDOT,
 	holdDOTColor, holdDOTDirac, holdDOTPauli, holdDOTRest1, holdDOTRest2, holdDOTRest3,
-	nvar, time, time0, maxIterations, dlin1
+	nvar, time, time0, maxIterations, dlin1, momList, momListEval, momRule
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -115,12 +115,29 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 		FCPrint[3, "DotSimplify: Entering with", FCDoControl->dsVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "DotSimplify: Applying FactorTerms to the arguments of momenta.", FCDoControl->dsVerbose];
+		If[	!FreeQ[ex, Momentum],
+			momList = Cases2[ex, Momentum];
+			momListEval = momList /. Momentum[a_, dim___] :> Momentum[FactorTerms[a], dim];
+			momRule = Thread[Rule[momList,momListEval]];
+			ex = ex /. Dispatch[momRule]
+		];
 
-		(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
-		momf[xX_] :=
-			momf[xX] = Momentum[FactorTerms[xX]];
+		If[	!FreeQ[ex, CartesianMomentum],
+			momList = Cases2[ex, CartesianMomentum];
+			momListEval = momList /. CartesianMomentum[a_, dim___] :> CartesianMomentum[FactorTerms[a], dim];
+			momRule = Thread[Rule[momList,momListEval]];
+			ex = ex /. Dispatch[momRule]
+		];
 
-		ex = ex /. Momentum[p_] :> momf[p] /.  simrel;
+		If[	!FreeQ[ex, TemporalMomentum],
+			momList = Cases2[ex, TemporalMomentum];
+			momListEval = momList /. TemporalMomentum[a_, dim___] :> TemporalMomentum[FactorTerms[a], dim];
+			momRule = Thread[Rule[momList,momListEval]];
+			ex = ex /. Dispatch[momRule]
+		];
+		FCPrint[1, "DotSimplify: Done applying FactorTerms, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 		time0=AbsoluteTime[];
 		FCPrint[1, "DotSimplify: Entering the main loop.", FCDoControl->dsVerbose];
