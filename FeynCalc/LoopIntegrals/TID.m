@@ -94,7 +94,7 @@ Options[TID] = {
 	Isolate -> False,
 	PaVeAutoOrder -> True,
 	PaVeAutoReduce -> True,
-	PauliTrick -> True,
+	PauliSimplify -> True,
 	ToPaVe->False,
 	UsePaVeBasis -> False,
 	TimeConstrained -> 3
@@ -211,10 +211,10 @@ TID[am_ , q_, OptionsPattern[]] :=
 			FCPrint[3,"After DiracSimplify: ", t0 , FCDoControl->tidVerbose]
 		];
 
-		If[	OptionValue[PauliTrick] && !FreeQ2[t0,{PauliSigma}],
+		If[	OptionValue[PauliSimplify] && !FreeQ2[t0,{PauliSigma}],
 			FCPrint[1,"TID: Applying PauliTrick.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = PauliTrick[t0,FCI->True, Expand2->False];
+			t0 = PauliSimplify[t0,FCI->True, Expand2->False];
 			FCPrint[1, "TID: Done applying PauliTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3,"After PauliTrick: ", t0 , FCDoControl->tidVerbose]
 		];
