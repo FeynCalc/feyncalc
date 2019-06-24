@@ -37,14 +37,15 @@ holdDOT::usage="";
 tmp::usage="";
 
 Options[PauliOrder] = {
-	PauliTrick -> True,
-	PauliReduce-> False,
-	PauliSigmaCombine -> False,
-	FCPauliIsolate -> True,
-	FCI -> False,
-	FCE -> False,
-	FCVerbose -> False,
-	MaxIterations -> Infinity
+	FCE 				-> False,
+	FCI 				-> False,
+	FCJoinDOTs 			-> True,
+	FCPauliIsolate		-> True,
+	FCVerbose			-> False,
+	MaxIterations		-> Infinity,
+	PauliReduce			-> False,
+	PauliSigmaCombine	-> False,
+	PauliTrick 			-> True
 };
 
 PauliOrder[expr_, (opts:OptionsPattern[])/;opts=!={}] :=
@@ -81,7 +82,8 @@ PauliOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			FCPrint[1, "PauliOrder: Normal mode.", FCDoControl->poVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "PauliOrder: Extracting Pauli objects.", FCDoControl->poVerbose];
-			ex = FCPauliIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine]];
+			ex = FCPauliIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],
+				FCJoinDOTs->OptionValue[FCJoinDOTs]];
 
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];

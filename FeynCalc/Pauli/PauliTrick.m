@@ -28,24 +28,54 @@ The problem reads: `1`"
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+pauliTrickEvalFastFromPauliSimplifyList
+
 End[]
 
 Begin["`PauliTrick`Private`"]
 
 paTrVerbose::usage="";
 pauliReduce::usage="";
+optJoin::usage="";
 pasi::usage="";
 tmpli::usage="";
 
 Options[PauliTrick] = {
 	Expanding -> False,
-	FCI -> False,
 	FCE -> False,
+	FCI -> False,
+	FCJoinDOTs -> False,
 	FCPauliIsolate -> True,
 	FCVerbose -> False,
 	PauliSigmaCombine -> False,
 	PauliReduce -> True
 };
+
+pauliTrickEvalFastFromPauliSimplifyList[pauliObjects_List, {(*optInsidePauliTrace*)_, (*optPauliOrder*)_}]:=
+	Block[{(*tmp1,tmp2,*) res},
+		(*tmp1 = insideDiracTrace;
+		tmp2 = diracOrder;
+		insideDiracTrace = optInsidePauliTrace;
+		pauliOrder = optPauliOrder;*)
+		res = (pauliTrickEvalFast/@pauliObjects) /. pauliTrickEvalFast->Identity;
+		(*insidePauliTrace = tmp1;
+		diracOrder = tmp2;*)
+		res
+	];
+
+
+pauliTrickEvalFastFromPauliSimplifySingle[pauliObject_, {tmpHead_, (*optInsidePauliTrace*)_, (*optPauliOrder*)_}]:=
+	Block[{(*tmp1,tmp2,*) res},
+		(*tmp1 = insideDiracTrace;
+		tmp2 = diracOrder;
+		insideDiracTrace = optInsidePauliTrace;
+		diracOrder = optPauliOrder;*)
+		res = pauliTrickEvalFast[pauliObject] /. pauliTrickEvalFast->tmpHead;
+		(*insideDiracTrace = tmp1;
+		diracOrder = tmp2;*)
+		res
+	];
 
 PauliTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, paPart, pauliObjects,
@@ -65,6 +95,7 @@ PauliTrick[expr_,OptionsPattern[]] :=
 				xx)		Then we do all the simplifications.
 		*)
 
+		optJoin = OptionValue[FCJoinDOTs];
 		pauliReduce = OptionValue[PauliReduce];
 
 		If [OptionValue[FCVerbose]===False,
@@ -94,7 +125,8 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "PauliTrick: Extracting Pauli objects.", FCDoControl->paTrVerbose];
 			(* 	First of all we need to extract all the Pauli structures in the input. *)
-			ex = FCPauliIsolate[ex,FCI->True,Head->paHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],LorentzIndex->True];
+			ex = FCPauliIsolate[ex,FCI->True,Head->paHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],LorentzIndex->True,
+				FCJoinDOTs -> optJoin];
 
 			{freePart,paPart} = FCSplit[ex,{paHead}];
 			FCPrint[3,"PauliTrick: paPart: ",paPart , FCDoControl->paTrVerbose];
@@ -107,11 +139,11 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "PauliTrick: Applying PauliTrickEval", FCDoControl->paTrVerbose];
 
-			pauliObjectsEval = Map[(PauliTrickEvalFast[#]/. PauliTrickEvalFast->PauliTrickEval)&, (pauliObjects/.paHead->Identity)];
+			pauliObjectsEval = Map[(pauliTrickEvalFast[#]/. pauliTrickEvalFast->PauliTrickEval)&, (pauliObjects/.paHead->Identity)];
 			FCPrint[3,"PauliTrick: After PauliTrickEval: ", pauliObjectsEval, FCDoControl->paTrVerbose];
 			FCPrint[1,"PauliTrick: PauliTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose];
 
-			If[ !FreeQ2[pauliObjectsEval,{PauliTrickEvalFast,PauliTrickEval,holdDOT}],
+			If[ !FreeQ2[pauliObjectsEval,{pauliTrickEvalFast,PauliTrickEval,holdDOT}],
 				Message[PauliTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
@@ -125,17 +157,17 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1,"PauliTrick: Fast mode.", FCDoControl->paTrVerbose];
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling PauliTrick/@exprList
 				from internal functions	*)
-			res = PauliTrickEvalFast[ex];
+			res = pauliTrickEvalFast[ex];
 
-			(* It might happen that after PauliTrickEvalFast there are no Pauli matrices left.*)
+			(* It might happen that after pauliTrickEvalFast there are no Pauli matrices left.*)
 
-			FCPrint[3,"PauliTrick: After PauliTrickEvalFast: ", res , FCDoControl->paTrVerbose];
+			FCPrint[3,"PauliTrick: After pauliTrickEvalFast: ", res , FCDoControl->paTrVerbose];
 
-			If[ !FreeQ2[res,{PauliHeadsList,PauliTrickEvalFast}],
-				res = res /. PauliTrickEvalFast->PauliTrickEval
+			If[ !FreeQ2[res,{PauliHeadsList,pauliTrickEvalFast}],
+				res = res /. pauliTrickEvalFast->PauliTrickEval
 			];
 
-			If[ !FreeQ2[res,{PauliTrickEvalFast,PauliTrickEval,holdDOT}],
+			If[ !FreeQ2[res,{pauliTrickEvalFast,PauliTrickEval,holdDOT}],
 				Message[PauliTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			]
@@ -163,27 +195,27 @@ PauliTrick[expr_,OptionsPattern[]] :=
 
 (* Here we can quickly handle trivial contractions of short expressions *)
 
-PauliTrickEvalFast[ex:PauliSigma[__]]:=
+pauliTrickEvalFast[ex:PauliSigma[__]]:=
 	ex;
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_:3], PauliSigma[l_LorentzIndex, dim_:3], d___]] :=
-	(FeynCalc`Package`MetricT  + FeynCalc`Package`MetricS dim) PauliTrickEvalFast[DOT[ b,d ]]/;!MatchQ[dim,_Symbol-4];
+pauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_:3], PauliSigma[l_LorentzIndex, dim_:3], d___]] :=
+	(FeynCalc`Package`MetricT  + FeynCalc`Package`MetricS dim) pauliTrickEvalFast[DOT[ b,d ]]/;!MatchQ[dim,_Symbol-4];
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_Symbol-4], PauliSigma[l_LorentzIndex, dim_Symbol-4], d___]] :=
-	FeynCalc`Package`MetricS (dim-4) PauliTrickEvalFast[DOT[ b,d ]];
+pauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_Symbol-4], PauliSigma[l_LorentzIndex, dim_Symbol-4], d___]] :=
+	FeynCalc`Package`MetricS (dim-4) pauliTrickEvalFast[DOT[ b,d ]];
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[l_CartesianIndex, dim_:3], PauliSigma[l_CartesianIndex, dim_:3], d___]] :=
-	dim PauliTrickEvalFast[DOT[ b,d ]];
+pauliTrickEvalFast[DOT[b___,PauliSigma[l_CartesianIndex, dim_:3], PauliSigma[l_CartesianIndex, dim_:3], d___]] :=
+	dim pauliTrickEvalFast[DOT[ b,d ]];
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[c_Momentum, dim___], PauliSigma[c_Momentum, dim___], d___ ]] :=
-	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] PauliTrickEvalFast[DOT[b,d]];
+pauliTrickEvalFast[DOT[b___,PauliSigma[c_Momentum, dim___], PauliSigma[c_Momentum, dim___], d___ ]] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] pauliTrickEvalFast[DOT[b,d]];
 
-PauliTrickEvalFast[DOT[b___,PauliSigma[c_CartesianMomentum, dim___], PauliSigma[c_CartesianMomentum, dim___], d___ ]] :=
-	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] PauliTrickEvalFast[DOT[b,d]];
+pauliTrickEvalFast[DOT[b___,PauliSigma[c_CartesianMomentum, dim___], PauliSigma[c_CartesianMomentum, dim___], d___ ]] :=
+	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] pauliTrickEvalFast[DOT[b,d]];
 
 
 
-PauliTrickEvalFast[DOT[]]:=
+pauliTrickEvalFast[DOT[]]:=
 	1;
 
 PauliTrickEval[ex_/;Head[ex]=!=PauliSigma]:=
@@ -249,38 +281,46 @@ PauliTrickEval[ex_/;Head[ex]=!=PauliSigma]:=
 pauli4Dim[]:=
 	1;
 
+(*TODO More relations for Lorentz indices.*)
+(*	(si^mu p^mu) (si^nu p^nu)	*)
+pauli4Dim[b___, PauliSigma[c_Momentum], PauliSigma[c_Momentum], d___ ] :=
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] pauli4Dim[b,d];
+
 (*	si^mu si_mu	*)
 pauli4Dim[b___,PauliSigma[l_LorentzIndex], PauliSigma[l_LorentzIndex], d___] :=
 	(FeynCalc`Package`MetricT  + 3 FeynCalc`Package`MetricS) pauli4Dim[b, d];
 
 (*	si^i si^i	*)
-pauli4Dim[b___,PauliSigma[l_CartesianIndex], PauliSigma[l_CartesianIndex], d___] :=
+pauli4Dim[b___, PauliSigma[l_CartesianIndex], PauliSigma[l_CartesianIndex], d___] :=
 	3 pauli4Dim[b,d];
 
-(*	(si^mu p^mu) (si^nu p^nu)	*)
-pauli4Dim[b___,PauliSigma[c_Momentum], PauliSigma[c_Momentum], d___ ] :=
-	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] pauli4Dim[b,d];
-
 (*	(si^i p^i) (si^i p^i)	*)
-pauli4Dim[b___,PauliSigma[c_CartesianMomentum], PauliSigma[c_CartesianMomentum], d___ ] :=
+pauli4Dim[b___, PauliSigma[c_CartesianMomentum], PauliSigma[c_CartesianMomentum], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] pauli4Dim[b,d];
 
-(*	si^i si^j	*)
+(*	si^i si^j ... s^i / si.p si^j ... s.p	*)
 pauli4Dim[b___,PauliSigma[(c1: _CartesianMomentum | _CartesianIndex)], PauliSigma[(c2: _CartesianMomentum | _CartesianIndex)], d___ ]/;c1=!=c2 :=
 	(
 	tmpli= CartesianIndex[$MU[Unique[]]];
-	((FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauli4Dim[b,d]  + I Eps[c1,c2,tmpli] pauli4Dim[b,PauliSigma[tmpli],d])/. CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair)
-	)/; pauliReduce===True;
+	((FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauli4Dim[b,d]  + I Eps[c1,c2,tmpli] pauli4Dim[b,PauliSigma[tmpli],d])/.
+		CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair)
+	)/; pauliReduce;
+
 
 (*	si^i .... si^i	*)
-pauli4Dim[b___,	PauliSigma[(c1: _CartesianMomentum | _CartesianIndex)],
-				PauliSigma[(c2: _CartesianMomentum | _CartesianIndex)],
-				ch:PauliSigma[(_CartesianMomentum | _CartesianIndex )]...,
-				PauliSigma[(c1: _CartesianMomentum | _CartesianIndex)], d___ ]/;c1=!=c2 :=
-	(
-	-pauli4Dim[b, PauliSigma[c2], PauliSigma[c1], ch, PauliSigma[c1], d]
-	+ 2 FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauli4Dim[b, ch, PauliSigma[c1], d]
-	)/; pauliReduce=!=True;
+pauli4Dim[b___,	PauliSigma[c1_CartesianIndex], ch:PauliSigma[(_CartesianMomentum | _CartesianIndex )]..., PauliSigma[c1_CartesianIndex], d___ ] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len pauli4Dim[b,ch,d] + 2 Sum[(-1)^(iVar+1) pauli4Dim@@Join[{b},Drop[{ch},{iVar, iVar}],{ch}[[iVar;;iVar]],{d}], {iVar, 1,len-1}]
+	]/; (Length[{ch}]>0) /; !pauliReduce;
+
+
+(*	si.p .... si.p	*)
+pauli4Dim[b___,	PauliSigma[c1_CartesianMomentum], ch:PauliSigma[(_CartesianMomentum | _CartesianIndex )]..., PauliSigma[c1_CartesianMomentum], d___ ] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len pauli4Dim[b,ch,d] FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c1]},{}]
+		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{CartesianPair[c1,{ch}[[iVar,1]]] pauli4Dim@@Join[{b},Drop[{ch},{iVar, iVar}],{PauliSigma[c1],d}]},{}], {iVar, 1,len}]
+	]/; (Length[{ch}]>0) /; !pauliReduce;
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -289,18 +329,18 @@ pauliDDim[]:=
 	1;
 
 
-
+(*TODO More relations for Lorentz indices.*)
 (*	si^mu si_mu	*)
 pauliDDim[b___,PauliSigma[l_LorentzIndex, dim_-1], PauliSigma[l_LorentzIndex, dim_-1], d___] :=
 	(FeynCalc`Package`MetricT  + (dim-1) FeynCalc`Package`MetricS) pauliDDim[b, d];
 
-(*	si^i si^i	*)
-pauliDDim[b___,PauliSigma[l_CartesianIndex, dim_-1], PauliSigma[l_CartesianIndex, dim_-1], d___] :=
-	(dim-1) pauliDDim[b,d];
-
 (*	(si^mu p^mu) (si^nu p^nu)	*)
 pauliDDim[b___,PauliSigma[c_Momentum, dim_-1], PauliSigma[c_Momentum, dim_-1], d___ ] :=
 	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] pauliDDim[b,d];
+
+(*	si^i si^i	*)
+pauliDDim[b___,PauliSigma[l_CartesianIndex, dim_-1], PauliSigma[l_CartesianIndex, dim_-1], d___] :=
+	(dim-1) pauliDDim[b,d];
 
 (*	(si^i p^i) (si^i p^i)	*)
 pauliDDim[b___,PauliSigma[c_CartesianMomentum, dim_-1], PauliSigma[c_CartesianMomentum, dim_-1], d___ ] :=
@@ -311,9 +351,26 @@ pauliDDim[b___,PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1], Pa
 	(
 	tmpli= CartesianIndex[$MU[Unique[]],dim-1];
 	FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauliDDim[b,d] + I Eps[c1,c2,tmpli] pauliDDim[b,PauliSigma[tmpli,dim-1],d]
-	)/; FeynCalc`Package`PauliSigmaScheme==="Naive" && pauliReduce===True;
+	)/; pauliReduce && FeynCalc`Package`PauliSigmaScheme==="Naive";
+
 
 (*	si^i .... si^i	*)
+pauliDDim[b___,	PauliSigma[c1_CartesianIndex, dim_-1], ch:PauliSigma[(_CartesianMomentum | _CartesianIndex ) ,dim_-1]..., PauliSigma[c1_CartesianIndex,dim_-1], d___ ] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len (dim-3) pauliDDim[b,ch,d] + 2 Sum[(-1)^(iVar+1) pauliDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{ch}[[iVar;;iVar]],{d}], {iVar, 1,len-1}]
+	]/; (Length[{ch}]>0) /; !pauliReduce || (pauliReduce && FeynCalc`Package`PauliSigmaScheme=!="Naive");
+
+
+(*	si.p .... si.p	*)
+pauliDDim[b___,	PauliSigma[c1_CartesianMomentum, dim_-1], ch:PauliSigma[(_CartesianMomentum | _CartesianIndex ), dim_-1]..., PauliSigma[c1_CartesianMomentum, dim_-1], d___ ] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len pauliDDim[b,ch,d] FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c1]},{}]
+		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{CartesianPair[c1,{ch}[[iVar,1]]] pauliDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{PauliSigma[c1, dim -1],d}]},{}], {iVar, 1,len}]
+	]/; (Length[{ch}]>0) /; !pauliReduce || (pauliReduce && FeynCalc`Package`PauliSigmaScheme=!="Naive");
+
+
+(*
+(*	si^i si^j ... s^i / si.p si^j ... s.p	*)
 pauliDDim[b___,	PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1],
 				PauliSigma[(c2: _CartesianMomentum | _CartesianIndex),dim_-1],
 				ch:PauliSigma[(CartesianMomentum | CartesianIndex )[_, dim_-1],dim_-1]...,
@@ -322,6 +379,6 @@ pauliDDim[b___,	PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1],
 	-pauliDDim[b, PauliSigma[c2,dim-1], PauliSigma[c1,dim-1], ch, PauliSigma[c1,dim-1], d]
 	+ 2 FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauliDDim[b, ch, PauliSigma[c1,dim-1], d]
 	)/; FeynCalc`Package`PauliSigmaScheme=!="Naive";
-
+*)
 FCPrint[1,"PauliTrick.m loaded."];
 End[]
