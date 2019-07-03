@@ -19,8 +19,9 @@ EpsEvaluate::usage =
 "EpsEvaluate[expr] applies total antisymmetry and \
 linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
 
-EpsEvaluate::fail =
-"Something went while simplifying epsilon tensors. Evaluation aborted! "
+EpsEvaluate::failmsg =
+"Error! EpsEvaluate has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -30,28 +31,29 @@ End[]
 Begin["`EpsEvaluate`Private`"]
 
 Options[EpsEvaluate] = {
-	FCI -> False,
-	Momentum -> All
-	};
+	FCE			-> False,
+	FCI 		-> False,
+	Momentum	-> All
+};
 
 EpsEvaluate[expr_, OptionsPattern[]]:=
-	Block[{x,momList,uniqList,rud,repRule,null1,null2},
+	Block[{ex, momList, uniqList, rud, repRule, null1, null2, res},
 
 		momList = OptionValue[Momentum];
 
 		If[ !OptionValue[FCI],
-			x = FCI[expr],
-			x = expr
+			ex = FCI[expr],
+			ex = expr
 		];
 
 		(*	Nothing to do...	*)
-		If[	FreeQ[x,Eps],
-			Return[x]
+		If[	FreeQ[ex,Eps],
+			Return[ex]
 		];
 
 
 		(* List of all the unique Epsilon tensors	*)
-		uniqList = Cases[x+null1+null2,_Eps,Infinity]//DeleteDuplicates//Sort;
+		uniqList = Cases[ex+null1+null2,_Eps,Infinity]//DeleteDuplicates//Sort;
 
 		(*	If the user specified to perform expansion only for some
 			special momenta, let's do it	*)
@@ -66,11 +68,17 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 		(* Simple cross check	*)
 		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSymm}],
-			Message[EpsEvaluate::fail];
+			Message[EpsEvaluate::failmsg, "Some expressions could not be evaluated."];
 			Abort[]
 		];
 
-		x/.Dispatch[repRule]
+		res = ex /. Dispatch[repRule];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 
 	];
 

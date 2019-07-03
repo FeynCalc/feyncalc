@@ -35,12 +35,12 @@ isoName::usage="";
 dim::usage="";
 
 Options[NPointTo4Point]  = {
-	Dimension -> D,
-	Factoring -> Factor2,
-	FCVerbose->False,
-	IsolateNames -> False,
-	FCE -> False,
-	List -> False
+	Dimension 		-> D,
+	FCE 			-> False,
+	FCVerbose		-> False,
+	Factoring 		-> Factor2,
+	IsolateNames	-> False,
+	List 			-> False
 };
 
 SetAttributes[matrixElement, Orderless];

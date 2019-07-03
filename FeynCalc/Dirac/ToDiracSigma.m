@@ -31,8 +31,8 @@ Begin["`ToDiracSigma`Private`"]
 
 Options[ToDiracSigma] = {
 	DotSimplify -> True,
-	FCE -> False,
-	FCI -> False
+	FCE			-> False,
+	FCI			-> False
 }
 
 ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=

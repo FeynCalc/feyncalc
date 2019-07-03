@@ -29,10 +29,10 @@ End[]
 Begin["`Series2`Private`"]
 
 Options[Series2] =	{
-	Collecting -> False,
-	Factoring -> True,
-	FinalSubstitutions -> {EulerGamma -> 0},
-	SimplifyPolyLog -> True
+	Collecting 			-> False,
+	Factoring 			-> True,
+	FinalSubstitutions	-> {EulerGamma -> 0},
+	SimplifyPolyLog		-> True
 };
 
 Series2[a_, e_, n_Integer, ops___Rule] :=

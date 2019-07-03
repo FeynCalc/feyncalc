@@ -26,10 +26,10 @@ End[]
 Begin["`ToDiracGamma67`Private`"]
 
 Options[ToDiracGamma67] = {
-	All -> False,
+	All 		-> False,
 	DotSimplify -> False,
-	FCE -> False,
-	FCI -> False
+	FCE 		-> False,
+	FCI 		-> False
 }
 
 ToDiracGamma67[expr_, OptionsPattern[]] :=

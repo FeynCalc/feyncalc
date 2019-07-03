@@ -32,14 +32,14 @@ mM::usage="";
 
 
 Options[ToTFI] = {
-	ApartFF -> False,
-	Collecting -> True,
-	Dimension -> D,
-	FCVerbose->False,
-	FDS -> True,
-	FeynCalcInternal -> False,
-	Method -> Automatic,
-	TID -> False
+	ApartFF		-> False,
+	Collecting	-> True,
+	Dimension	-> D,
+	FCVerbose	-> False,
+	FDS 		-> True,
+	FCI			-> False,
+	Method 		-> Automatic,
+	TID 		-> False
 };
 
 

@@ -44,12 +44,12 @@ Begin["`ToPaVe`Private`"]
 genpave::usage="";
 
 Options[ToPaVe] = {
-	FCE -> False,
-	FCI -> False,
-	GenPaVe->False,
-	OtherLoopMomenta -> {},
-	PaVeAutoOrder -> True,
-	PaVeAutoReduce -> True
+	FCE					-> False,
+	FCI					-> False,
+	GenPaVe				-> False,
+	OtherLoopMomenta	-> {},
+	PaVeAutoOrder		-> True,
+	PaVeAutoReduce		-> True
 };
 
 ToPaVe[expr_, q_, OptionsPattern[]] :=
@@ -110,7 +110,7 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 momentumRoutingDenner[moms_List, fu_] :=
 	MemSet[momentumRoutingDenner[moms, fu],
 	Block[{firstLines, lastLine, kmax = (Length[moms] + 1)/2, res, p, repRule},
-			repRule = MapThread[Rule[#1, #2] &, {Table[p[i], {i, 1, 2 kmax - 1}], moms}];
+			repRule = Thread[Rule[Table[p[i], {i, 1, 2 kmax - 1}], moms]];
 			firstLines = Transpose[Table[(p[k + l] - p[l])//fu, {l, 0, 2 kmax - 1}, {k, 1, kmax - 1}]];
 			lastLine = Table[(p[kmax + l] - p[l])//fu, {l, 0, kmax - 1}];
 			res = Join[Flatten[firstLines], lastLine] //. {p[2 kmax] -> p[0], p[x_] /; x > 2 kmax :> p[x - 2 kmax], p[0] -> 0};
@@ -118,21 +118,21 @@ momentumRoutingDenner[moms_List, fu_] :=
 				Message[ToPaVe::failmsg, "Wrong number of the kinematic invariants!"];
 				Abort[]
 			];
-			(res /. repRule)
+			(res /. Dispatch[repRule])
 		]
 	]/; OddQ[(Length[moms])]
 
 momentumRoutingDenner[moms_List, fu_] :=
 	MemSet[momentumRoutingDenner[moms, fu],
 		Block[{firstLines, lastLine, kmax = (Length[moms])/2, res, p, repRule},
-			repRule = MapThread[Rule[#1, #2] &, {Table[p[i], {i, 1, 2 kmax}], moms}];
+			repRule = Thread[Rule[Table[p[i], {i, 1, 2 kmax}], moms]];
 			res = Transpose[Table[(p[k + l] - p[l])//fu, {l, 0, 2 kmax}, {k, 1, kmax}]];
 			res = Flatten[res //. {p[2 kmax + 1] -> p[0], p[x_] /; (x > 2 kmax + 1) :> p[x - 2 kmax - 1], p[0] -> 0}];
 			If[Length[res] =!= (kmax*(2 kmax + 1)),
 				Message[ToPaVe::failmsg, "Wrong number of the kinematic invariants!"];
 				Abort[]
 			];
-			(res /. repRule)
+			(res /. Dispatch[repRule])
 		]
 	]/; EvenQ[(Length[moms])]
 

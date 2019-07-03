@@ -31,10 +31,10 @@ End[]
 Begin["`DiracSigmaExpand`Private`"]
 
 Options[DiracSigmaExpand] = {
-	DiracGammaExpand -> False,
-	FCE -> False,
-	FCI -> False,
-	Momentum -> All
+	DiracGammaExpand	-> False,
+	FCE 				-> False,
+	FCI					-> False,
+	Momentum			-> All
 };
 
 DiracSigmaExpand[expr_, OptionsPattern[]] :=

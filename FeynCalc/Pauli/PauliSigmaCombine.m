@@ -63,9 +63,9 @@ PauliSigmaCombine[expr_, OptionsPattern[]] :=
 
 		} /. holdPlus -> Plus;
 
-		repRule = MapThread[Rule[#1,#2]&,{pauliList,pauliListEval}];
+		repRule = Thread[Rule[pauliList,pauliListEval]];
 
-		res = ex /.repRule /. holdPlus -> Plus;
+		res = ex /. Dispatch[repRule] /. holdPlus -> Plus;
 
 		If[	OptionValue[FCE],
 			res = FCE[res]

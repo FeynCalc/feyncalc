@@ -34,19 +34,19 @@ Begin["`Chisholm`Private`"]
 chVerbose::usage="";
 
 Options[Chisholm] = {
-	Contract -> True,
-	DiracSigmaExplicit -> False,
-	DiracSimplify -> True,
-	DotSimplify -> True,
-	FCDiracIsolate -> True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCVerbose -> False,
-	InsideDiracTrace -> False,
-	MaxIterations -> Infinity,
-	Mode -> 1,
-	NonCommutative -> True
+	Contract 			-> True,
+	DiracSigmaExplicit	-> False,
+	DiracSimplify		-> True,
+	DotSimplify			-> True,
+	FCDiracIsolate		-> True,
+	FCE					-> False,
+	FCI					-> False,
+	FCJoinDOTs			-> True,
+	FCVerbose			-> False,
+	InsideDiracTrace	-> False,
+	MaxIterations		-> Infinity,
+	Mode				-> 1,
+	NonCommutative 		-> True
 };
 
 Chisholm[expr_, OptionsPattern[]] :=
@@ -192,9 +192,9 @@ Chisholm[expr_, OptionsPattern[]] :=
 			FCPrint[1, "Chisholm: Inserting Dirac objects back.", FCDoControl->chVerbose];
 
 			diracObjectsEval = diracObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. dsHead->Identity;
-			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 			FCPrint[3,"Chisholm: repRule: ",repRule , FCDoControl->chVerbose];
-			tmp = freePart + ( dsPart/.repRule);
+			tmp = freePart + (dsPart/. Dispatch[repRule]);
 			FCPrint[1, "Chisholm: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose];
 			FCPrint[3,"Chisholm: Intermediate result: ", tmp, FCDoControl->chVerbose],
 

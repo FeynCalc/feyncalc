@@ -26,7 +26,9 @@ End[]
 
 Begin["`Tr2`Private`"]
 
-Options[ Tr2 ] = {Factoring -> False};
+Options[Tr2] = {
+	Factoring -> False
+};
 
 
 dirtr[x_, OptionsPattern[]] :=

@@ -33,13 +33,13 @@ End[]
 Begin["`CartesianToLorentz`Private`"]
 
 Options[CartesianToLorentz] = {
-	CGS -> True,
-	CSP -> True,
-	DiracGammaExpand -> True,
-	DotSimplify -> True,
+	CGS 				-> True,
+	CSP					-> True,
+	DiracGammaExpand	-> True,
+	DotSimplify			-> True,
 	ExpandScalarProduct -> True,
-	FCI -> False,
-	FCE -> False
+	FCE					-> False,
+	FCI					-> False
 };
 
 CartesianToLorentz[expr_, OptionsPattern[]]:=
@@ -84,10 +84,10 @@ CartesianToLorentz[expr_, OptionsPattern[]]:=
 			uniqListEval = uniqListEval /. DiracGamma -> cdiracSlashToDiracSlash /. cdiracSlashToDiracSlash -> DiracGamma
 		];
 
-		repRule = MapThread[Rule[#1, #2] &, {uniqList, uniqListEval}];
+		repRule = Thread[Rule[uniqList, uniqListEval]];
 
 
-		res = ex/.repRule;
+		res = ex /. Dispatch[repRule];
 
 		If[	OptionValue[DotSimplify],
 			res = DotSimplify[res,FCI->True]

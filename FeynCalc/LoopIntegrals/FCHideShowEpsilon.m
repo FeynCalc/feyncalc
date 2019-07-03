@@ -40,15 +40,15 @@ End[]
 Begin["`FCHideShowEpsilon`Private`"]
 
 Options[FCHideEpsilon] = {
-	Factoring -> Factor,
-	Collecting -> True,
-	D -> 4 - 2 Epsilon,
-	Subtract -> EulerGamma - Log[4Pi]
+	Collecting	-> True,
+	D			-> 4 - 2 Epsilon,
+	Factoring	-> Factor,
+	Subtract	-> EulerGamma - Log[4Pi]
 };
 
 Options[FCShowEpsilon] = {
-	D -> 4 - 2 Epsilon,
-	Subtract -> EulerGamma - Log[4Pi]
+	D 			-> 4 - 2 Epsilon,
+	Subtract	-> EulerGamma - Log[4Pi]
 };
 
 FCHideEpsilon[expr_, OptionsPattern[]] :=

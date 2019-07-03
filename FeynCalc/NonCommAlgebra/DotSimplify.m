@@ -71,16 +71,15 @@ DotSimplify[___Rule] :=
 	Abort[]);
 
 Options[DotSimplify] = {
-	FCJoinDOTs -> True,
-	Expanding -> True,
-	FCVerbose -> False,
-	DotSimplifyRelations -> {},
-	DotPower -> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
-																									F.Orellana*)
-	FCI -> False,
-	FCE -> False,
-	MaxIterations -> 100,
-	PreservePropagatorStructures -> False
+	DotPower 						-> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]]. F.Orellana*)
+	DotSimplifyRelations			-> {},
+	Expanding						-> True,
+	FCE								-> False,
+	FCI								-> False,
+	FCJoinDOTs						-> True,
+	FCVerbose						-> False,
+	MaxIterations					-> 100,
+	PreservePropagatorStructures	-> False
 };
 
 

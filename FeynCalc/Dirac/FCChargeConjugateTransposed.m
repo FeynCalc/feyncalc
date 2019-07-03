@@ -43,12 +43,12 @@ fcctVerbose::usage="";
 DeclareNonCommutative[FCChargeConjugateTransposed];
 
 Options[FCChargeConjugateTransposed] = {
-	DotSimplify->True,
-	Explicit -> False,
-	FCDiracIsolate -> True,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False
+	DotSimplify		-> True,
+	Explicit 		-> False,
+	FCDiracIsolate	-> True,
+	FCE				-> False,
+	FCI				-> False,
+	FCVerbose		-> False
 };
 
 FCCCT = FCChargeConjugateTransposed;
@@ -114,7 +114,7 @@ FCChargeConjugateTransposed[expr_, opts:OptionsPattern[]] :=
 				nonDiracObjects /. nonDsHead->Identity];
 			FCPrint[1,"FCChargeConjugateTransposed: nonDiracObjectsEval finished, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fcctVerbose];
 			FCPrint[3,"FCChargeConjugateTransposed: nonDiracObjectsEval: ", nonDiracObjectsEval, FCDoControl->fcctVerbose];
-			repRule2 = MapThread[Rule[#1,#2]&,{nonDiracObjects,nonDiracObjectsEval}];
+			repRule2 = Thread[Rule[nonDiracObjects,nonDiracObjectsEval]];
 			FCPrint[3,"FCChargeConjugateTransposed: repRule: ",repRule2 , FCDoControl->fcctVerbose],
 
 			repRule2 = {}
@@ -144,7 +144,7 @@ FCChargeConjugateTransposed[expr_, opts:OptionsPattern[]] :=
 				diracObjectsEval = DotSimplify[#,FCI->True,Expanding->False]&/@diracObjectsEval
 			];
 
-			repRule1 = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			repRule1 = Thread[Rule[diracObjects,diracObjectsEval]];
 			FCPrint[3,"FCChargeConjugateTransposed: repRule: ",repRule1 , FCDoControl->fcctVerbose],
 
 			repRule1 = {}

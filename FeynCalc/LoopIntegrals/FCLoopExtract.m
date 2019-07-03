@@ -30,24 +30,24 @@ End[]
 Begin["`FCLoopExtract`Private`"]
 
 Options[FCLoopExtract] = {
-	CFAD -> True,
-	Collecting -> True,
-	DropScaleless -> False,
-	ExpandScalarProduct-> False,
-	FAD -> True,
-	Full -> False,
-	FCI -> False,
-	FCE -> False,
-	FCLoopIBPReducableQ -> False,
-	FCLoopSplit -> {2,3,4},
-	FCLoopBasisSplit -> False,
-	Factoring -> Factor,
-	FeynAmpDenominatorCombine -> True,
-	GFAD -> True,
-	MultiLoop -> False,
-	Numerator -> True,
-	PaVe -> True,
-	SFAD -> True
+	CFAD 						-> True,
+	Collecting					-> True,
+	DropScaleless 				-> False,
+	ExpandScalarProduct			-> False,
+	FAD 						-> True,
+	Full						-> False,
+	FCI 						-> False,
+	FCE 						-> False,
+	FCLoopIBPReducableQ 		-> False,
+	FCLoopSplit 				-> {2,3,4},
+	FCLoopBasisSplit 			-> False,
+	Factoring 					-> Factor,
+	FeynAmpDenominatorCombine 	-> True,
+	GFAD 						-> True,
+	MultiLoop 					-> False,
+	Numerator 					-> True,
+	PaVe 						-> True,
+	SFAD 						-> True
 };
 
 FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
@@ -55,7 +55,7 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 
 		(*This is the list of all the loop integrals in the expression.*)
 		If[ !OptionValue[FCI],
-			exp = FeynCalcInternal[ex],
+			exp = FCI[ex],
 			exp = ex
 		];
 

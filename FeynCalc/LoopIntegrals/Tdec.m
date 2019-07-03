@@ -75,15 +75,15 @@ tdecVerbose::usage="";
 symmMT::usage="";
 
 Options[Tdec] =	{
-	BasisOnly -> False,
-	Dimension -> D,
-	FCVerbose -> False,
-	Factoring -> {Factor2, Factor},
-	FeynCalcExternal -> True,
-	Head -> Identity,
-	List -> True,
-	UseParallelization -> True,
-	UseTIDL -> True
+	BasisOnly 			-> False,
+	Dimension 			-> D,
+	FCVerbose 			-> False,
+	Factoring 			-> {Factor2, Factor},
+	FCE					-> True,
+	Head				-> Identity,
+	List 				-> True,
+	UseParallelization	-> True,
+	UseTIDL 			-> True
 };
 
 SetAttributes[symmMT,Orderless];

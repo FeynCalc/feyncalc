@@ -112,9 +112,9 @@ PauliOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 				pauliObjectsEval = pauliObjectsEval/. Pair->PairContract /. PairContract->Pair
 			];
 
-			repRule = MapThread[Rule[#1,#2]&,{pauliObjects,pauliObjectsEval}];
+			repRule = Thread[Rule[pauliObjects,pauliObjectsEval]];
 			FCPrint[3,"PauliOrder: repRule: ",repRule , FCDoControl->poVerbose];
-			tmp = freePart + ( dsPart/.repRule);
+			tmp = freePart + (dsPart /. Dispatch[repRule]);
 			FCPrint[1, "PauliOrder: Done inserting Pauli objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->poVerbose];
 			FCPrint[3,"PauliOrder: Intermediate result: ", tmp, FCDoControl->poVerbose],
 

@@ -34,8 +34,8 @@ loopMomenta::usage="";
 prefactor::usage="";
 
 Options[FCLoopMixedToCartesianAndTemporal] = {
-	FCE->False,
-	Uncontract -> False
+	FCE			-> False,
+	Uncontract	-> False
 };
 
 FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmoms=!={}, OptionsPattern[]]:=

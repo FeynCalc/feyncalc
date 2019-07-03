@@ -58,19 +58,19 @@ sLoopHead::usage="";
 FDS = FeynAmpDenominatorSimplify;
 
 Options[FeynAmpDenominatorSimplify] = {
-	ApartFF -> False,
-	Collecting -> True,
-	DetectLoopTopologies -> True,
-	ExpandScalarProduct -> True,
-	FC2RHI -> False,
-	FCI -> False,
-	FCE -> False,
-	FCVerbose -> False,
-	Factoring -> Factor,
-	FeynAmpDenominatorCombine -> True,
-	IncludePair -> False,
-	IntegralTable -> {},
-	Rename -> True
+	ApartFF 					-> False,
+	Collecting 					-> True,
+	DetectLoopTopologies		-> True,
+	ExpandScalarProduct			-> True,
+	FC2RHI						-> False,
+	FCE							-> False,
+	FCI							-> False,
+	FCVerbose					-> False,
+	Factoring					-> Factor,
+	FeynAmpDenominatorCombine	-> True,
+	IncludePair 				-> False,
+	IntegralTable 				-> {},
+	Rename 						-> True
 };
 
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
@@ -302,7 +302,7 @@ renameLoopMomenta[int_,qs_List]:=
 			Return[int]
 		];
 
-		listOfRenamings=Sort[MapThread[rule, {Table[lmoms, {iii,1,Length[permutations]}], permutations}] /.rule[x_List,y_List] :> Thread[rule[x,y]] /.
+		listOfRenamings=Sort[Thread[rule[Table[lmoms, {iii,1,Length[permutations]}], permutations]] /.rule[x_List,y_List] :> Thread[rule[x,y]] /.
 			rule[a_, a_] :> Unevaluated[Sequence[]]] /. rule -> Rule;
 
 		equivalentInts = Map[(int/. # /. FeynAmpDenominator -> feynsimp[lmoms] /. FeynAmpDenominator -> feynord[lmoms])&, listOfRenamings];
@@ -1019,7 +1019,7 @@ fdsMultiLoop[loopInt : (_. FeynAmpDenominator[props__]), qs__]:=
 		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
 		FCPrint[3, "FDS: fdsOneLoop: solsList: ", solsList, FCDoControl->fdsVerbose];
 
-		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
+		repRule = Thread[Rule[tmpNew[[3]],solsList]];
 		FCPrint[3, "FDS: fdsOneLoop: repRule: ", repRule, FCDoControl->fdsVerbose];
 
 		res = tmpNew[[1]] + (tmpNew[[2]]/.repRule);

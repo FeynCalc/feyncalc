@@ -34,16 +34,16 @@ holdDOT::usage="";
 spchtrVerbose::usage="";
 
 Options[SpinorChainTrick] = {
-	Contract -> True,
-	DiracGammaCombine -> False,
-	DiracSigmaExplicit -> True,
-	DotSimplify -> True,
-	FCCanonicalizeDummyIndices->True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCVerbose -> False,
-	Factoring -> True
+	Contract 					-> True,
+	DiracGammaCombine			-> False,
+	DiracSigmaExplicit			-> True,
+	DotSimplify					-> True,
+	FCCanonicalizeDummyIndices	-> True,
+	FCE							-> False,
+	FCI							-> False,
+	FCJoinDOTs					-> True,
+	FCVerbose					-> False,
+	Factoring					-> True
 };
 
 SpinorChainTrick[expr_, OptionsPattern[]] :=
@@ -126,9 +126,9 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "SpinorChainTrick: Inserting Dirac objects back.", FCDoControl->spchtrVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects, diracObjectsEval]];
 		FCPrint[3,"SpinorChainTrick: repRule: ",repRule , FCDoControl->spchtrVerbose];
-		res =  ( tmp/.repRule);
+		res =  ( tmp/. Dispatch[repRule]);
 		FCPrint[1, "SpinorChainTrick: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
 
 		If[ OptionValue[FCE],

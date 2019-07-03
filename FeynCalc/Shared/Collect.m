@@ -57,20 +57,20 @@ cl2Verbose::usage="";
 
 
 Options[Collect2] = {
-	Denominator -> False,
-	Dot -> False,
-	FCFactorOut -> 1,
-	FCVerbose -> False,
-	Expanding -> True,
-	Factoring -> Factor,
-	FactoringDenominator -> False,
-	InitialFunction -> Identity,
-	IntermediateSubstitutions -> {},
-	IsolateFast -> False,
-	IsolateNames -> False,
-	Head->Identity,
-	Numerator->False,
-	TimeConstrained -> Infinity
+	Denominator 				-> False,
+	Dot 						-> False,
+	Expanding 					-> True,
+	FCFactorOut 				-> 1,
+	FCVerbose 					-> False,
+	Factoring 					-> Factor,
+	FactoringDenominator 		-> False,
+	Head						-> Identity,
+	InitialFunction 			-> Identity,
+	IntermediateSubstitutions	-> {},
+	IsolateFast 				-> False,
+	IsolateNames 				-> False,
+	Numerator					-> False,
+	TimeConstrained 			-> Infinity
 };
 
 Options[Collect3] = {

@@ -265,8 +265,8 @@ Options[SelectSplit] = {
 };
 
 Options[FCFactorOut] = {
-	Factoring -> Simplify,
-	Head -> Identity
+	Factoring	-> Simplify,
+	Head 		-> Identity
 };
 
 Options[ILimit] = {
@@ -294,16 +294,16 @@ Options[FCProductSplit] = {
 };
 
 Options[FRH] = {
-	IsolateNames->All
+	IsolateNames -> All
 };
 
 Options[PowerSimplify] = {
-	Assumptions->True,
-	PowerExpand->True
+	Assumptions	-> True,
+	PowerExpand	-> True
 };
 
 Options[Power2] = {
-	Assumptions->True
+	Assumptions	-> True
 };
 
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=

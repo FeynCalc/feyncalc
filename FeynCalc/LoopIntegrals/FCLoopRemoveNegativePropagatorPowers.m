@@ -31,9 +31,9 @@ End[]
 Begin["`FCLoopRemoveNegativePropagatorPowers`Private`"]
 
 Options[FCLoopRemoveNegativePropagatorPowers] = {
-	FCI -> False,
-	FCE -> False,
-	FCLoopPropagatorPowersCombine -> True
+	FCE 							-> False,
+	FCI 							-> False,
+	FCLoopPropagatorPowersCombine	-> True
 };
 
 FCLoopRemoveNegativePropagatorPowers[expr_, OptionsPattern[]] :=

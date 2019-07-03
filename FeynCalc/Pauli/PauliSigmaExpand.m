@@ -31,52 +31,59 @@ End[]
 Begin["`PauliSigmaExpand`Private`"]
 
 Options[PauliSigmaExpand] = {
-	FCI -> False,
+	FCE -> 		False,
+	FCI -> 		False,
 	Momentum -> All
 };
 
 PauliSigmaExpand[expr_, OptionsPattern[]] :=
-	Block[{x,null1,null2, uniqList, solsList, repRule, momList,psev,psevlin,rud},
+	Block[{ex, null1, null2, uniqList, solsList, repRule, momList, rud, res},
 
-	psev[xx_,di_:3] :=
-		psevlin[Expand[xx//MomentumExpand, Momentum], di];
+		momList = OptionValue[Momentum];
 
-	psevlin[xx_Plus, di_:3] :=
-		Map[psevlin[#, di]&, xx];
+		If[	!OptionValue[FCI],
+			ex = FCI[expr],
+			ex = expr
+		];
 
-	momList = OptionValue[Momentum];
+		(*	Nothing to do...	*)
+		If[	FreeQ[ex,PauliSigma],
+			Return[ex]
+		];
 
-	If[	!OptionValue[FCI],
-		x = FCI[expr],
-		x = expr
+		(* List of all the unique Feynman slashes	*)
+		uniqList = Cases[ex+null1+null2, PauliSigma[arg_ /; ! FreeQ2[{arg}, {Momentum,CartesianMomentum}],___], Infinity]//DeleteDuplicates//Sort;
+
+		(*	If the user specified to perform expansion only for some
+			special slashed momenta, let's do it	*)
+		If[ momList=!=All && Head[momList]===List,
+			uniqList = Select[uniqList, !FreeQ2[#, momList]&]
+		];
+
+		(* Final replacement rule	*)
+		repRule = Thread[rud[uniqList, uniqList/. PauliSigma -> psev /. psevlin -> PauliSigma]] /. rud -> RuleDelayed;
+
+		(* Simple cross check	*)
+		If[ !FreeQ2[repRule,{psev,psevlin}],
+			Message[PauliSigmaExpand::fail];
+			Abort[]
+		];
+
+		res = ex /. Dispatch[repRule];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
+
 	];
 
-	(*	Nothing to do...	*)
-	If[	FreeQ[x,PauliSigma],
-		Return[x]
-	];
+psev[x_,di_:3] :=
+	psevlin[Expand[MomentumExpand[x], Momentum], di];
 
-	(* List of all the unique Feynman slashes	*)
-	uniqList = Cases[x+null1+null2, PauliSigma[arg_ /; ! FreeQ2[{arg}, {Momentum,CartesianMomentum}],___], Infinity]//DeleteDuplicates//Sort;
-
-	(*	If the user specified to perform expansion only for some
-		special slashed momenta, let's do it	*)
-	If[ momList=!=All && Head[momList]===List,
-		uniqList = Select[uniqList, !FreeQ2[#, momList]&]
-	];
-
-	(* Final replacement rule	*)
-	repRule = Thread[rud[uniqList, uniqList/.PauliSigma -> psev /. psevlin -> PauliSigma]] /. rud->RuleDelayed;
-
-	(* Simple cross check	*)
-	If[ !FreeQ2[repRule,{psev,psevlin}],
-		Message[PauliSigmaExpand::fail];
-		Abort[]
-	];
-
-	x /. Dispatch[repRule]
-
-	];
+psevlin[x_Plus, di_:3] :=
+	Map[psevlin[#, di]&, x];
 
 FCPrint[1,"PauliSigmaExpand.m loaded."];
 End[]

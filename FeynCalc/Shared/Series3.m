@@ -30,8 +30,8 @@ End[]
 Begin["`Private`"]
 
 Options[Series3] = {
-	Factoring -> True,
-	FinalSubstitutions -> {}
+	Factoring 			-> True,
+	FinalSubstitutions	-> {}
 };
 
 Series3[a_, e_, n_Integer, ops___Rule] :=

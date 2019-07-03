@@ -30,11 +30,11 @@ esVerbose::usage="";
 eeps::usage="";
 
 Options[EpsChisholm] = {
-	DiracTrick -> True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCVerbose -> False
+	DiracTrick	-> True,
+	FCE			-> False,
+	FCI			-> False,
+	FCJoinDOTs	-> True,
+	FCVerbose	-> False
 };
 
 
@@ -97,9 +97,9 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 		FCPrint[1, "EpsChisholm: Inserting Dirac objects back.", FCDoControl->esVerbose];
 
 		diracObjectsEval = diracObjectsEval /. holdDOT->DOT /. dsHead->Identity /. eeps->Eps;
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
-		FCPrint[3,"EpsChisholm: repRule: ",repRule , FCDoControl->esVerbose];
-		res = freePart + ( dsPart/.repRule);
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
+		FCPrint[3,"EpsChisholm: repRule: ", repRule, FCDoControl->esVerbose];
+		res = freePart + ( dsPart/. Dispatch[repRule]);
 		FCPrint[1, "EpsChisholm: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose];
 		FCPrint[3,"EpsChisholm: Intermediate result: ", res, FCDoControl->esVerbose];
 

@@ -29,10 +29,10 @@ TimedIntegrate::"abort" =
 		"Manual abort";
 
 Options[TimedIntegrate] = {
-	Timing -> 10,
 	Assumptions -> Epsilon > 0,
-	Integrate -> Integrate,
-	Expand -> True
+	Expand 		-> True,
+	Integrate 	-> Integrate,
+	Timing 		-> 10
 };
 
 TimedIntegrate[exp_,vars__List,opts___Rule] :=

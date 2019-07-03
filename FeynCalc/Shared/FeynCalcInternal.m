@@ -47,7 +47,9 @@ holdDOT::usage="";
 
 FCI = FeynCalcInternal;
 
-Options[FeynCalcInternal] = {FinalSubstitutions -> {}};
+Options[FeynCalcInternal] = {
+	FinalSubstitutions -> {}
+};
 
 SetAttributes[FeynCalcInternal, HoldFirst];
 

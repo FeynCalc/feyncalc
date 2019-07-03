@@ -33,8 +33,8 @@ End[]
 Begin["`FCLoopEikonalPropagatorFreeQ`Private`"]
 
 Options[FCLoopEikonalPropagatorFreeQ] = {
-	First -> True,
-	Momentum -> All
+	First 		-> True,
+	Momentum	-> All
 };
 
 

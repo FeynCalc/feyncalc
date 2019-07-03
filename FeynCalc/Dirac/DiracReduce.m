@@ -38,15 +38,15 @@ Begin["`DiracReduce`Private`"]
 drVerbose::usage="";
 
 Options[DiracReduce] = {
-	DiracSimplify -> False,
-	DotSimplify -> True,
-	DiracGammaCombine -> True,
-	Contract -> True,
-	Factoring -> False,
-	FinalSubstitutions -> {DiracBasis -> Identity},
-	FCI -> False,
-	FCE -> False,
-	FCVerbose -> False
+	Contract 			-> True,
+	DiracGammaCombine	-> True,
+	DiracSimplify		-> False,
+	DotSimplify			-> True,
+	FCE					-> False,
+	FCI					-> False,
+	FCVerbose			-> False,
+	Factoring			-> False,
+	FinalSubstitutions	-> {DiracBasis -> Identity}
 };
 
 DiracReduce[expr_List, opts:OptionsPattern[]] :=

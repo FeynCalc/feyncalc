@@ -66,9 +66,9 @@ fdsor[a__] :=
 	Apply[FeynAmpDenominator, Sort[MomentumExpand[{a}], lev]];
 
 Options[FeynAmpDenominatorCombine] = {
-	FCI -> False,
-	FCE -> False,
-	Momentum -> All
+	FCE 		-> False,
+	FCI 		-> False,
+	Momentum	-> All
 };
 
 FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=

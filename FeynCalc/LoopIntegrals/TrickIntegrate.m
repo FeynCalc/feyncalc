@@ -30,7 +30,9 @@ End[]
 
 Begin["`TrickIntegrate`Private`"]
 
-Options[TrickIntegrate] = {Hold -> True};
+Options[TrickIntegrate] = {
+	Hold -> True
+};
 
 hopt[vau_,op___Rule][z_] :=
 	If[ !TrueQ[Hold /. {op} /. Options[TrickIntegrate]],

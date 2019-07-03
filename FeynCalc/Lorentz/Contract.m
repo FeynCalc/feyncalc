@@ -284,17 +284,18 @@ Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c__
 
 
 Options[Contract] = {
-	Collecting      -> True,
-	Contract3       -> True,
-	EpsContract     -> True,
-	Expanding       -> True,
+	Collecting      	-> True,
+	Contract3       	-> True,
+	EpsContract     	-> True,
+	Expanding       	-> True,
 	ExpandScalarProduct -> True,
-	Factoring       -> False,
-	FCI				-> False,
-	FCVerbose		-> False,
-	MomentumCombine -> True,
-	Rename          -> False,
-	Schouten        -> 0
+	Factoring       	-> False,
+	FCE					-> False,
+	FCI					-> False,
+	FCVerbose			-> False,
+	MomentumCombine 	-> True,
+	Rename          	-> False,
+	Schouten        	-> 0
 };
 
 Contract[l_List, opts:OptionsPattern[]] :=
@@ -623,6 +624,10 @@ Contract[expr_, z:OptionsPattern[]] :=
 				res = OptionValue[Factoring][res]
 			];
 			FCPrint[1,"Contract: Factoring done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose]
+		];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		FCPrint[1, "Contract: Leaving. ", FCDoControl->cnVerbose];

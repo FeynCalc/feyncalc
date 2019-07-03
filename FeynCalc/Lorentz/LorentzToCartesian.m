@@ -36,22 +36,22 @@ tmpci::usage="";
 lorIndex::usage="";
 
 Options[LorentzToCartesian] = {
-	DiracGammaExpand -> True,
-	DotSimplify -> True,
-	EpsEvaluate -> True,
+	DiracGammaExpand	-> True,
+	DotSimplify 		-> True,
+	EpsEvaluate			-> True,
 	ExpandScalarProduct -> True,
-	FCE -> False,
-	FCI -> False,
-	FCTensor -> True,
-	FV -> True,
-	GA -> True,
-	GS -> True,
-	LC -> True,
-	LorentzIndex -> True,
-	PauliSigmaExpand -> True,
-	SI -> True,
-	SIS -> True,
-	SP -> True
+	FCE 				-> False,
+	FCI 				-> False,
+	FCTensor 			-> True,
+	FV 					-> True,
+	GA 					-> True,
+	GS 					-> True,
+	LC 					-> True,
+	LorentzIndex 		-> True,
+	PauliSigmaExpand 	-> True,
+	SI 					-> True,
+	SIS 				-> True,
+	SP 					-> True
 };
 
 LorentzToCartesian[expr_, OptionsPattern[]]:=
@@ -100,9 +100,9 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 			];
 		];
 
-		repRule = MapThread[Rule[#1, #2] &, {uniqList, uniqListEval}];
+		repRule = Thread[Rule[uniqList, uniqListEval]];
 
-		ex = ex/.repRule;
+		ex = ex /. Dispatch[repRule];
 
 		(* 	For DiracGammas and other tensors we cannot avoid introducing dummy indices. So if these objects appear in powers, we need
 			to make sure that we do not break Einstein summation.  *)

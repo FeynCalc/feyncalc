@@ -47,20 +47,20 @@ canodummyVerbose::usage="";
 
 Options[FCCanonicalizeDummyIndices] = {
 	CartesianIndexNames -> {},
-	CustomIndexNames -> {},
-	DotSimplify -> True,
-	FCE -> False,
-	FCI -> False,
-	FCTraceExpand -> True,
-	FCVerbose -> False,
-	FCVerbose-> False,
-	Function -> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
-	Head -> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex},
-	LorentzIndexNames -> {},
-	Momentum -> All,
-	NotMomentum -> {},
-	SUNFIndexNames -> {},
-	SUNIndexNames -> {}
+	CustomIndexNames 	-> {},
+	DotSimplify 		-> True,
+	FCE 				-> False,
+	FCI 				-> False,
+	FCTraceExpand 		-> True,
+	FCVerbose 			-> False,
+	FCVerbose			-> False,
+	Function			-> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
+	Head				-> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex},
+	LorentzIndexNames 	-> {},
+	Momentum			-> All,
+	NotMomentum			-> {},
+	SUNFIndexNames		-> {},
+	SUNIndexNames		-> {}
 };
 
 makeRepIndexList[mIndexHead_,mWrappinHead_,mSeed_,mFunc_,mFinalList_,mUniqueExp_]:=
@@ -75,8 +75,8 @@ renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 
 			dummyHeads = Cases2[totalRepLis,wrapHead];
 			If[	Length[dummyNames]<Length[dummyHeads],
-				renamingRule = MapThread[Rule[#1, #2] &, {dummyHeads[[1 ;; Length[dummyNames]]], dummyNames}],
-				renamingRule = MapThread[Rule[#1, #2] &, {dummyHeads, dummyNames[[1 ;; Length[dummyHeads]]]}]
+				renamingRule = Thread[Rule[dummyHeads[[1 ;; Length[dummyNames]]], dummyNames]],
+				renamingRule = Thread[Rule[dummyHeads, dummyNames[[1 ;; Length[dummyHeads]]] ]]
 			]
 		];
 		renamingRule
@@ -320,7 +320,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		canIndexList = (MapIndexed[(#1 /. First[repIndexListTotal[[#2]]]) &, uniqueExpressions]);
 		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", canIndexList, FCDoControl->canodummyVerbose];
 
-		finalRepList = MapThread[Rule[#1, #2] &, {uniqueExpressions, canIndexList}];
+		finalRepList = Thread[Rule[uniqueExpressions, canIndexList]];
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", finalRepList, FCDoControl->canodummyVerbose];
 

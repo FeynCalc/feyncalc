@@ -34,16 +34,17 @@ End[]
 Begin["`FCCompareResults`Private`"]
 
 Options[FCCompareResults] = {
-	Differences -> False,
+	Differences 		-> False,
 	ExpandScalarProduct -> True,
-	Factoring -> Factor,
-	FCI -> False,
-	Function -> {
-		Function[Print[Style[#1,"Text",Bold], " ", If[TrueQ[#4],Style[#2,"Text",Darker[Green],Bold],Style[#3,"Text",Red,Bold]]]],
-		Function[WriteString["stdout","\033[1m"<>#1<>"\033[0m "<>If[TrueQ[#4],"\033[1m \033[32m"<>#2<>"\033[0m \033[0;39m","\033[1m \033[31m"<>#3<>"\033[0m \033[0;39m"]<>"\n"]]
-	},
-	Interrupt -> {Hold[Abort[]], Automatic},
-	Text -> {"Check of the results:", "The results agree.", "The results disagree."}
+	Factoring 			-> Factor,
+	FCI 				-> False,
+	Function 			-> {
+							Function[Print[Style[#1,"Text",Bold], " ", If[TrueQ[#4],Style[#2,"Text",Darker[Green],Bold],Style[#3,"Text",Red,Bold]]]],
+							Function[WriteString["stdout","\033[1m"<>#1<>"\033[0m "<> If[TrueQ[#4],
+								"\033[1m \033[32m"<>#2<>"\033[0m \033[0;39m","\033[1m \033[31m"<>#3<>"\033[0m \033[0;39m"]<>"\n"]]
+						},
+	Interrupt 			-> {Hold[Abort[]], Automatic},
+	Text 				-> {"Check of the results:", "The results agree.", "The results disagree."}
 };
 
 FCCompareResults[r1_, r2:Except[_?OptionQ], opts:OptionsPattern[]]:=

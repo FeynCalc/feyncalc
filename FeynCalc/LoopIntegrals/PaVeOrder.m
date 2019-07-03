@@ -25,7 +25,9 @@ End[]
 
 Begin["`PaVeOrder`Private`"]
 
-Options[PaVeOrder] = {PaVeOrderList -> {}};
+Options[PaVeOrder] = {
+	PaVeOrderList -> {}
+};
 
 (* smallLL is intermediately introduced for SmallVariable *)
 (* PaVeOrderdef *)

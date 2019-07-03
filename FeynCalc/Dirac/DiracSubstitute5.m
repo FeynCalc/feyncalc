@@ -33,8 +33,8 @@ End[]
 Begin["`DiracSubstitute5`Private`"];
 
 Options[DiracSubstitute5] = {
-	FCI -> False,
-	FCE -> False
+	FCE -> False,
+	FCI -> False
 };
 
 DiracSubstitute5[expr_, OptionsPattern[]] :=

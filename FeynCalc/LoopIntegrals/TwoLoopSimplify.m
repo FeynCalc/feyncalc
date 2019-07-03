@@ -24,9 +24,11 @@ End[]
 
 Begin["`TwoLoopSimplify`Private`"]
 
-Options[TwoLoopSimplify] =
-{Dimension -> D, FeynCalcExternal -> True, IntegralTable -> {},
-ToLarin->True
+Options[TwoLoopSimplify] = {
+	Dimension		-> D,
+	FCE 			-> True,
+	IntegralTable	-> {},
+	ToLarin			-> True
 };
 
 TwoLoopSimplify[exp_, opt___Rule] :=

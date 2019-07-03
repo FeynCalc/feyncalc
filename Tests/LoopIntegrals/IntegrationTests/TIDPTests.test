@@ -1,7 +1,7 @@
 Tests`LoopIntegrals`fcitTIDPTests =
 ({
 {"fcitTIDPTests-ID1","
-FCSetDiracGammaScheme[\"Larin\"]; \n FCSetDiracGammaScheme[\"NDR\"]; \n exp =
+FCSetDiracGammaScheme[\"Larin\"]; \n exp =
 Spinor[-Momentum[pv1, D], 0, 1].GAD[i1].GA[5].Spinor[
 	Momentum[pv2, D], 0, 1] Spinor[Momentum[pv4, D], 0, 1].GAD[
 	i2].GSD[q].GAD[i1].GA[5].GSD[q].GAD[i2].Spinor[-Momentum[pv3, D],

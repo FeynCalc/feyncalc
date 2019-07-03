@@ -33,18 +33,18 @@ Begin["`FCSchoutenBruteForce`Private`"]
 fcsbVerbose::usage="";
 
 Options[FCSchoutenBruteForce] = {
-	Collecting -> True,
-	Factoring -> Factor2,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Information -> True,
-	Rule -> True,
-	List -> False,
-	Take -> 1,
-	Schouten -> False,
-	SchoutenAllowNegativeGain -> False,
-	SchoutenAllowZeroGain -> False
+	Collecting					-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCVerbose 					-> False,
+	Factoring 					-> Factor2,
+	Information 				-> True,
+	List 						-> False,
+	Rule 						-> True,
+	Schouten 					-> False,
+	SchoutenAllowNegativeGain	-> False,
+	SchoutenAllowZeroGain		-> False,
+	Take -> 1
 };
 
 checkSchouten[x_, repRule_]:=

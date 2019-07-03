@@ -34,19 +34,19 @@ holdDOT::usage="";
 spchchspVerbose::usage="";
 
 Options[SpinorChainChiralSplit] = {
-	Collecting -> True,
-	DiracSubstitute5 -> True,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Factoring -> Factor,
-	Head->Identity
+	Collecting 			-> True,
+	DiracSubstitute5	-> True,
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	Factoring 			-> Factor,
+	Head				-> Identity
 };
 
 SpinorChainChiralSplit[expr_, OptionsPattern[]] :=
 	Block[{ex, tmp, dsHead, dsIso, freePart,dsPart, null1, null2, time, diracObjects, diracObjectsEval, repRule, res, optHead},
 
-		optHead					= OptionValue[Head];
+		optHead	= OptionValue[Head];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -102,9 +102,9 @@ SpinorChainChiralSplit[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "SpinorChainChiralSplit: Inserting Dirac objects back.", FCDoControl->spchchspVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,(diracObjectsEval/.holdDOT->DOT)}];
+		repRule = Thread[Rule[diracObjects,(diracObjectsEval/.holdDOT->DOT)]];
 		FCPrint[3,"SpinorChainChiralSplit: repRule: ",repRule , FCDoControl->spchchspVerbose];
-		res =  ( tmp/.repRule);
+		res =  (tmp /. Dispatch[repRule]);
 		FCPrint[1, "SpinorChainChiralSplit: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchchspVerbose];
 
 		If[ OptionValue[FCE],

@@ -39,11 +39,17 @@ End[]
 
 Begin["`FeynmanDoIntegrals`Private`"]
 
-Options[FeynmanDoIntegrals] = {NIntegrate -> False, Dimension -> D,
-	EpsilonOrder -> {-2,0}, FCIntegrate -> TimedIntegrate,
-	Simplify -> True, Expand -> True, Series -> True,
-	FCNIntegrate -> (DOT[Sequence @@ ((Integratedx@@#1)& ) /@ {##2}, #1]&)
-	(*((0*#1) &)*)(*TimedIntegrate[##, Timing -> 10, Integrate -> NIntegrate]*)};
+Options[FeynmanDoIntegrals] = {
+	Dimension 		-> D,
+	EpsilonOrder	-> {-2,0},
+	Expand 			-> True,
+	FCIntegrate		-> TimedIntegrate,
+	FCNIntegrate 	-> (DOT[Sequence @@ ((Integratedx@@#1)& ) /@ {##2}, #1]&),
+	NIntegrate 		-> False,
+	Series 			-> True,
+	Simplify 		-> True
+	(*((0*#1) &)*)(*TimedIntegrate[##, Timing -> 10, Integrate -> NIntegrate]*)
+};
 
 FeynmanDoIntegrals::"integrate" = "There is a problem checking for \
 integrability. Please check that your input is correct. Aborting.";

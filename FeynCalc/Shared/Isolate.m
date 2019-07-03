@@ -67,12 +67,12 @@ End[]
 Begin["`Isolate`Private`"]
 
 Options[Isolate] = {
-	IsolateNames -> KK,
-	IsolatePrint -> False,
-	IsolateFast	 -> False,
-	IsolateSplit -> Infinity,
-	IsolateTimes -> False,
-	IsolatePlus -> False
+	IsolateFast		-> False,
+	IsolateNames	-> KK,
+	IsolatePlus 	-> False,
+	IsolatePrint	-> False,
+	IsolateSplit 	-> Infinity,
+	IsolateTimes 	-> False
 };
 
 Isolate[OptionsPattern[]] :=

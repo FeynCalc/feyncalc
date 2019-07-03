@@ -48,23 +48,23 @@ uvp::usage="";
 prefactor::usage="";
 
 Options[PaVeUVPart] = {
-	Dimension -> D,
-	Factoring -> True,
-	FCE -> False,
-	FCI->False,
-	FCLoopExtract -> True,
-	FCVerbose -> False,
-	Prefactor -> 1,
-	ToPaVe2 -> True,
-	Together -> True
+	Dimension 		-> D,
+	FCE 			-> False,
+	FCI				-> False,
+	FCLoopExtract 	-> True,
+	FCVerbose 		-> False,
+	Factoring 		-> True,
+	Prefactor 		-> 1,
+	ToPaVe2 		-> True,
+	Together 		-> True
 };
 
 PaVeUVPart[expr_,  OptionsPattern[]] :=
 	Block[{ex,repList,res, dummy, rest,loopInts,intsUnique, intsUniqueEval, paVeInt, repRule},
 
-		dim = OptionValue[Dimension];
-		factoring = OptionValue[Factoring];
-		prefactor = OptionValue[Prefactor];
+		dim 		= OptionValue[Dimension];
+		factoring	= OptionValue[Factoring];
+		prefactor	= OptionValue[Prefactor];
 
 		Switch[ factoring,
 				False,

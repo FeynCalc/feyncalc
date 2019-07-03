@@ -61,16 +61,16 @@ fdVerbose::usage="";
 PartialFourVector = FourDivergence;
 
 Options[FourDivergence] = {
-	Abort -> True,
-	ApartFF -> False,
-	Contract -> True,
-	Collecting -> True,
-	EpsEvaluate -> True,
+	Abort 				-> True,
+	ApartFF				-> False,
+	Collecting 			-> True,
+	Contract 			-> True,
+	EpsEvaluate 		-> True,
 	ExpandScalarProduct -> True,
-	Factoring -> Factor,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	Factoring 			-> Factor
 };
 
 FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=

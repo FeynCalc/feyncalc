@@ -44,21 +44,21 @@ Begin["`OneLoopSimplify`Private`"]
 olsVerbose::usage="";
 
 Options[OneLoopSimplify] = {
-	Collecting -> True,
-	Dimension -> D,
-	DiracSimplify -> True,
+	Collecting 			-> True,
+	Dimension 			-> D,
+	DiracSimplify 		-> True,
 	ExpandScalarProduct -> True,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Factoring -> Automatic,
-	FinalSubstitutions -> {},
-	OPE1Loop -> False,
-	PowerSimplify -> True,
-	SUNNToCACF -> True,
-	SUNTrace -> False,
-	ToPaVe -> False,
-	UsePaVeBasis->False
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	Factoring 			-> Automatic,
+	FinalSubstitutions	-> {},
+	OPE1Loop			-> False,
+	PowerSimplify		-> True,
+	SUNNToCACF			-> True,
+	SUNTrace			-> False,
+	ToPaVe				-> False,
+	UsePaVeBasis		-> False
 };
 
 (*Do we really need to support this syntax???*)
@@ -106,13 +106,13 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 			then this should be explicitly done by the user! *)
 
 		q = qu;
-		dim				= OptionValue[Dimension];
-		optDiracSimplify= OptionValue[DiracSimplify];
-		sunntocacf 		= OptionValue[SUNNToCACF];
-		suntrace 		= OptionValue[SUNTrace];
-		ope1loop 		= OptionValue[OPE1Loop];
-		substis 		= OptionValue[FinalSubstitutions];
-		optCollecting 	= OptionValue[Collecting];
+		dim					= OptionValue[Dimension];
+		optDiracSimplify	= OptionValue[DiracSimplify];
+		sunntocacf 			= OptionValue[SUNNToCACF];
+		suntrace 			= OptionValue[SUNTrace];
+		ope1loop 			= OptionValue[OPE1Loop];
+		substis 			= OptionValue[FinalSubstitutions];
+		optCollecting	 	= OptionValue[Collecting];
 
 
 		If[ OptionValue[Factoring] === Automatic,

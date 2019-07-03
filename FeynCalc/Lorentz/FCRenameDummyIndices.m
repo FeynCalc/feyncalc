@@ -33,9 +33,9 @@ End[]
 Begin["`FCRenameDummyIndices`Private`"]
 
 Options[FCRenameDummyIndices] = {
-	FCI -> False,
-	FCE -> False,
-	Head -> {LorentzIndex, CartesianIndex, SUNIndex, SUNFIndex, DiracIndex}
+	FCE 	-> False,
+	FCI		-> False,
+	Head	-> {LorentzIndex, CartesianIndex, SUNIndex, SUNFIndex, DiracIndex}
 };
 
 FCRenameDummyIndices[expr_List, opts:OptionsPattern[]] :=

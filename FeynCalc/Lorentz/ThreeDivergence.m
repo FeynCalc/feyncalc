@@ -56,16 +56,16 @@ Begin["`ThreeDivergence`Private`"]
 fdVerbose::usage="";
 
 Options[ThreeDivergence] = {
-	Abort -> True,
-	ApartFF -> False,
-	Contract -> True,
-	Collecting -> True,
-	EpsEvaluate -> True,
+	Abort 				-> True,
+	ApartFF 			-> False,
+	Collecting			-> True,
+	Contract 			-> True,
+	EpsEvaluate 		-> True,
 	ExpandScalarProduct -> True,
-	Factoring -> Factor,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	Factoring 			-> Factor
 };
 
 ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=

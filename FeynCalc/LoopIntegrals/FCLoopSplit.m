@@ -27,7 +27,7 @@ into following four pieces: \n
 	loop momenta have free indices \
 The result is returned as a list with the 4 above elements.";
 
-FCLoopSplit::fail =
+FCLoopSplit::failmsg =
 "Splitting the expression `1` into loop and non-loop pieces failed!";
 
 Begin["`Package`"]
@@ -36,14 +36,14 @@ End[]
 Begin["`FCLoopSplit`Private`"]
 
 Options[FCLoopSplit] = {
-	Collecting -> True,
-	DotSimplify -> True,
-	DiracGammaExpand -> True,
-	Expanding -> True,
-	Factoring -> Factor2,
-	FCE -> False,
-	FCI -> False,
-	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
+	Collecting 			-> True,
+	DiracGammaExpand 	-> True,
+	DotSimplify 		-> True,
+	Expanding 			-> True,
+	FCE 				-> False,
+	FCI 				-> False,
+	Factoring 			-> Factor2,
+	PaVeIntegralHeads	-> FeynCalc`Package`PaVeHeadsList
 };
 
 FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
@@ -54,7 +54,7 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
 		If[	MatchQ[lmoms,{{___}}],
-			Message[FCLoopSplit::fail, ex];
+			Message[FCLoopSplit::failmsg, ex];
 			Abort[]
 		];
 
@@ -107,7 +107,7 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 		{loopFree,addToLoopScalar} = FCSplit[loopFree,loopIntHeads];
 		loopScalar = loopScalar + addToLoopScalar;
 		If[	Together[(loopScalar+loopFree)-(oldLoopFree+oldLoopScalar)]=!=0,
-			Message[FCLoopSplit::fail, ex];
+			Message[FCLoopSplit::failmsg, ex];
 			Abort[]
 		];
 
@@ -117,7 +117,7 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 			!FreeQ2[loopTensorQP/.(Pair|CartesianPair|TemporalPair)[(CartesianMomentum|Momentum|TemporalMomentum)[a_,___],(CartesianMomentum|Momentum|ExplicitLorentzIndex)[b_,___]]/;!FreeQ2[{a,b},lmoms] :> Unique[],{lmoms}] ||
 			!FreeQ2[loopTensorFreeInd/.(Pair|CartesianPair)[(Momentum|CartesianMomentum)[a_,___],(LorentzIndex|CartesianIndex)[_,___]]/;!FreeQ2[a,lmoms] :> Unique[],{lmoms}] ||
 			Together[loopFree+loopScalar+loopTensorQP+loopTensorFreeInd - ex]=!=0,
-			Message[FCLoopSplit::fail, ex];
+			Message[FCLoopSplit::failmsg, ex];
 			Abort[]
 		];
 

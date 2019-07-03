@@ -46,15 +46,15 @@ diga::usage="";
 tmpli::usage="";
 
 Options[DiracTrick] = {
-	DiracGammaCombine -> False,
-	Expanding -> False,
-	FCDiracIsolate -> True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> False,
-	FCVerbose -> False,
-	InsideDiracTrace -> False,
-	ToDiracGamma67 -> True
+	DiracGammaCombine	-> False,
+	Expanding 			-> False,
+	FCDiracIsolate		-> True,
+	FCE					-> False,
+	FCI					-> False,
+	FCJoinDOTs			-> False,
+	FCVerbose			-> False,
+	InsideDiracTrace	-> False,
+	ToDiracGamma67		-> True
 };
 
 diracTrickEvalFastFromDiracSimplifyList[diracObjects_List, {optInsideDiracTrace_, optDiracOrder_}]:=
@@ -207,9 +207,9 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			];
 			FCPrint[1, "DiracTrick: Inserting Dirac objects back.", FCDoControl->diTrVerbose];
 			time=AbsoluteTime[];
-			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 			FCPrint[3,"DiracTrick: repRule: ",repRule , FCDoControl->diTrVerbose];
-			res = freePart + ( dsPart/.repRule);
+			res = freePart + ( dsPart /. Dispatch[repRule]);
 			FCPrint[1, "DiracTrick: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose],
 
 			FCPrint[1,"DiracTrick: Fast mode.", FCDoControl->diTrVerbose];

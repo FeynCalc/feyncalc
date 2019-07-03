@@ -28,7 +28,9 @@ End[]
 
 Begin["`TensorFunction`Private`"]
 
-Options[TensorFunction] = {Dimension -> 4};
+Options[TensorFunction] = {
+	Dimension -> 4
+};
 
 TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule, OptionsPattern[]] :=
 	Block[ {f, dim, at=""},

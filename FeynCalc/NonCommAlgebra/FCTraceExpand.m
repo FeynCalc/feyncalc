@@ -32,16 +32,16 @@ propPres::usage="";
 fctreVerbose::usage="";
 
 Options[FCTraceExpand] = {
-	DiracGammaExpand -> True,
-	DiracTrace -> True,
-	DotSimplify -> True,
-	FCE -> False,
-	FCI -> False,
-	FCTraceFactor -> True,
-	FCVerbose -> False,
-	Momentum -> All,
-	PreservePropagatorStructures -> False,
-	SUNTrace -> True
+	DiracGammaExpand				-> True,
+	DiracTrace						-> True,
+	DotSimplify						-> True,
+	FCE								-> False,
+	FCI								-> False,
+	FCTraceFactor					-> True,
+	FCVerbose						-> False,
+	Momentum 						-> All,
+	PreservePropagatorStructures	-> False,
+	SUNTrace 						-> True
 };
 
 FCTraceExpand[expr_, OptionsPattern[]] :=
@@ -127,6 +127,8 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1, "FCTraceExpand: Leaving.", FCDoControl->fctreVerbose];
 
 		FCPrint[3, "FCTraceExpand: Leaving with ", res,  FCDoControl->fctreVerbose];
 

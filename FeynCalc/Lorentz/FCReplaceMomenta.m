@@ -37,18 +37,23 @@ Begin["`FCReplaceMomenta`Private`"]
 fcrmVerbose::usage="";
 
 Options[FCReplaceMomenta] = {
-	Dimensions -> All,
-	EpsEvaluate -> False,
+	Dimensions			-> All,
+	EpsEvaluate 		-> False,
 	ExpandScalarProduct -> False,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	SelectFree -> {},
-	MomentumExpand -> True,
-	Variables -> {},
-	Head -> {DiracGamma,PauliSigma,CartesianPair,TemporalPair,Pair,Eps,FeynAmpDenominator}, (*All is also possible*)
-	Replace->{Momentum,CartesianMomentum,TemporalMomentum},
-	Polarization -> False
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	Head 				-> { (*All is also possible*)
+							DiracGamma,PauliSigma,CartesianPair,
+							TemporalPair,Pair,Eps,FeynAmpDenominator
+						},
+	MomentumExpand 		-> True,
+	Polarization 		-> False,
+	Replace				-> {
+							Momentum, CartesianMomentum, TemporalMomentum
+						},
+	SelectFree 			-> {},
+	Variables 			-> {}
 };
 
 FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPattern[]] :=

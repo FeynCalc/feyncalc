@@ -30,11 +30,11 @@ End[]
 Begin["`FeynAmpDenominatorSplit`Private`"]
 
 Options[FeynAmpDenominatorSplit] = {
-	FCI -> False,
-	FCE -> False,
-	List->False,
-	Momentum -> All,
-	MomentumExpand -> True
+	FCE				-> False,
+	FCI				-> False,
+	List			-> False,
+	Momentum 		-> All,
+	MomentumExpand	-> True
 };
 
 FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=

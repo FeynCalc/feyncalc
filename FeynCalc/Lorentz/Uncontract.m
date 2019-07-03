@@ -37,21 +37,21 @@ nPower::usage="";
 sPower::usage="";
 
 Options[Uncontract] = {
-	CartesianMomentum -> True,
-	CartesianPair -> {},
-	Dimension -> Automatic,
-	DiracGamma -> True,
-	PauliSigma -> True,
-	DotSimplify -> True,
-	Eps -> True,
-	FCE -> False,
-	FCI -> False,
-	FCTensor -> All,
-	FCVerbose -> False,
-	Momentum -> True,
-	Pair -> {},
-	Polarization -> True,
-	Square -> True
+	CartesianMomentum	-> True,
+	CartesianPair 		-> {},
+	Dimension			-> Automatic,
+	DiracGamma			-> True,
+	DotSimplify			-> True,
+	Eps 				-> True,
+	FCE 				-> False,
+	FCI 				-> False,
+	FCTensor 			-> All,
+	FCVerbose 			-> False,
+	Momentum 			-> True,
+	Pair 				-> {},
+	PauliSigma 			-> True,
+	Polarization 		-> True,
+	Square 				-> True
 };
 
 Uncontract[x_List, q__] :=

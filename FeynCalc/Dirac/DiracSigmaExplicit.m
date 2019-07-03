@@ -32,8 +32,8 @@ End[]
 Begin["`DiracSigmaExplicit`Private`"];
 
 Options[DiracSigmaExplicit] = {
-	FCI -> False,
-	FCE -> False
+	FCE -> False,
+	FCI -> False
 };
 
 DiracSigmaExplicit[expr_, OptionsPattern[]] :=

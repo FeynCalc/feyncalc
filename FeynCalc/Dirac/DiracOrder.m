@@ -40,14 +40,14 @@ holdDOT::usage="";
 tmp::usage="";
 
 Options[DiracOrder] = {
-	DiracTrick -> True,
-	DiracGammaCombine -> False,
-	FCDiracIsolate -> True,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCE -> False,
-	FCVerbose -> False,
-	MaxIterations -> Infinity
+	DiracGammaCombine	-> False,
+	DiracTrick 			-> True,
+	FCDiracIsolate		-> True,
+	FCE					-> False,
+	FCI					-> False,
+	FCJoinDOTs			-> True,
+	FCVerbose			-> False,
+	MaxIterations		-> Infinity
 };
 
 DiracOrder[expr_, (opts:OptionsPattern[])/;opts=!={}] :=
@@ -111,9 +111,9 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 				diracObjectsEval = diracObjectsEval/. CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair
 			];
 
-			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			repRule = Thread[Rule[diracObjects, diracObjectsEval]];
 			FCPrint[3,"DiracOrder: repRule: ",repRule , FCDoControl->doVerbose];
-			tmp = freePart + ( dsPart/.repRule);
+			tmp = freePart + (dsPart/. Dispatch[repRule]);
 			FCPrint[1, "DiracOrder: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
 			FCPrint[3,"DiracOrder: Intermediate result: ", tmp, FCDoControl->doVerbose],
 

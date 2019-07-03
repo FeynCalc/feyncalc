@@ -23,7 +23,10 @@ End[]
 
 Begin["`RussianTrick`Private`"]
 
-Options[RussianTrick] = {Dimension -> D, FC2TLI -> False};
+Options[RussianTrick] = {
+	Dimension	-> D,
+	FC2TLI 		-> False
+};
 
 RussianTrick[exp_,k_, opt___Rule] :=
 	RussianTrick[exp,k,k,{FCGV["q1"], FCGV["q2"], FCGV["p"]},opt];

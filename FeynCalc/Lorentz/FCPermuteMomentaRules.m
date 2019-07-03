@@ -24,7 +24,8 @@ working with amplitudes that exhibit a symmetry in some or all of the final
 state momenta or when trying to find mappings between loop integrals from
 different topologies.";
 
-FCPermuteMomentaRules::failmsg = "Error! FCPermuteMomentaRules has encountered a fatal problem and must abort the computation. \n
+FCPermuteMomentaRules::failmsg =
+"Error! FCPermuteMomentaRules has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
@@ -62,7 +63,7 @@ FCPermuteMomentaRules[lmoms_List] :=
 			Abort[]
 		];
 
-		res = MapThread[rule, {ConstantArray[lmoms, Length[permutations]], permutations}];
+		res = Thread[rule[ConstantArray[lmoms, Length[permutations]], permutations]];
 		res = res /. rule[x_List, y_List] :> Thread[rule[x, y]] /. rule[a_, a_] :> Unevaluated[Sequence[]] /. rule -> Rule;
 		res = SortBy[res, Length];
 

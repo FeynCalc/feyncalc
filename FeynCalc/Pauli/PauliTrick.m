@@ -149,9 +149,9 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			];
 			FCPrint[1, "PauliTrick: Inserting Pauli objects back.", FCDoControl->paTrVerbose];
 			time=AbsoluteTime[];
-			repRule = MapThread[Rule[#1,#2]&,{pauliObjects,pauliObjectsEval}];
+			repRule = Thread[Rule[pauliObjects,pauliObjectsEval]];
 			FCPrint[3,"PauliTrick: repRule: ",repRule , FCDoControl->paTrVerbose];
-			res = freePart + ( paPart/.repRule);
+			res = freePart + (paPart/. Dispatch[repRule]);
 			FCPrint[1, "PauliTrick: Done inserting Pauli objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose],
 
 			FCPrint[1,"PauliTrick: Fast mode.", FCDoControl->paTrVerbose];

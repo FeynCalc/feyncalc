@@ -44,8 +44,8 @@ indexHeads = {LorentzIndex, CartesianIndex, SUNIndex, SUNFIndex};
 nonCommHeads = {DiracGamma, PauliSigma, SUNT};
 
 Options[FCCheckSyntax] = {
-	DotSimplify->True,
-	FCI -> False
+	DotSimplify	-> True,
+	FCI 		-> False
 };
 
 

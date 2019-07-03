@@ -21,7 +21,7 @@ EpsContract::usage=
 tensors. It is also an option of Contract and other functions that specifies \
 whether such contractions should be done or not.";
 
-EpsContract::fail=
+EpsContract::failmsg=
 "Error! EpsContract has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`";
 
@@ -33,9 +33,10 @@ End[]
 Begin["`EpsContract`Private`"]
 
 Options[EpsContract] = {
-	FCI -> False,
-	Collecting ->True,
-	Factoring -> False
+	Collecting	-> True,
+	FCE			-> False,
+	FCI			-> False,
+	Factoring	-> False
 };
 
 EpsContract[expr_, OptionsPattern[]]:=
@@ -61,7 +62,7 @@ EpsContract[expr_, OptionsPattern[]]:=
 		];
 
 		If[ Together[(res /. epsHead -> Identity)-ex] =!= 0,
-			Message[EpsContract::fail, "Failed to isolate epsilon tensors"];
+			Message[EpsContract::failmsg, "Failed to isolate epsilon tensors"];
 			Abort[]
 		];
 
@@ -69,9 +70,15 @@ EpsContract[expr_, OptionsPattern[]]:=
 
 		epsListEval = epsCleverCon/@(epsList/. epsHead->Identity);
 
-		repRule = MapThread[Rule[#1, #2] &, {epsList, epsListEval}];
+		repRule = Thread[Rule[epsList, epsListEval]];
 
-		res = FRH[res/. Dispatch[repRule],IsolateNames->epsIsolate]
+		res = FRH[res/. Dispatch[repRule],IsolateNames->epsIsolate];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 
 
 	];
@@ -114,7 +121,7 @@ epscon/:
 
 epscon/:
 	epscon[a1_,a2_,a3_,a4_]^n_Integer?Positive :=
-	(Message[EpsContract::fail,"Epsilon tensor to a power higher than two with uncontracted Lorentz indices violates Einsein summation convention!"]; Abort[])/; n>=3 && !FreeQ[{a1,a2,a3,a4},LorentzIndex];
+	(Message[EpsContract::failmsg,"Epsilon tensor to a power higher than two with uncontracted Lorentz indices violates Einsein summation convention!"]; Abort[])/; n>=3 && !FreeQ[{a1,a2,a3,a4},LorentzIndex];
 
 epscon/:
 	epscon[a1_,a2_,a3_,a4_] epscon[b1_,b2_,b3_,b4_] :=

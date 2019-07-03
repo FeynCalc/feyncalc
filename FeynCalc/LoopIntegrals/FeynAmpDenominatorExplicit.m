@@ -39,15 +39,15 @@ Begin["`FeynAmpDenominatorExplicit`Private`"]
 PropagatorDenominatorExplicit = FeynAmpDenominatorExplicit;
 
 Options[FeynAmpDenominatorExplicit] = {
-	Denominator -> False,
-	Dimension -> False,
+	Denominator			-> False,
+	Dimension 			-> False,
 	ExpandScalarProduct -> True,
-	FCE -> False,
-	FCI -> False,
-	Head -> Identity,
-	Mandelstam -> {},
-	MomentumCombine -> False,
-	SmallVariable -> False
+	FCE 				-> False,
+	FCI 				-> False,
+	Head 				-> Identity,
+	Mandelstam 			-> {},
+	MomentumCombine 	-> False,
+	SmallVariable 		-> False
 };
 
 id[x_, ___]:=

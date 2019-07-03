@@ -53,9 +53,9 @@ optToDiracGamma67::usage="";
 Options[DiracSimplify] = {
 	Contract			-> True,
 	DiracEquation		-> True,
+	DiracGammaCombine	-> False,
 	DiracOrder			-> False,
 	DiracSigmaExplicit	-> True,
-	DiracGammaCombine	-> False,
 	DiracSubstitute5	-> False,
 	DiracSubstitute67	-> False,
 	DiracTrace			-> True,
@@ -180,9 +180,9 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 			FCPrint[1, "DiracSimplify: Inserting Dirac objects back.", FCDoControl->dsVerbose];
 			time=AbsoluteTime[];
-			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
-			FCPrint[3,"DiracSimplify: repRule: ",repRule , FCDoControl->dsVerbose];
-			tmp =  ( dsPart/.repRule);
+			repRule = Thread[Rule[diracObjects,diracObjectsEval]];
+			FCPrint[3,"DiracSimplify: repRule: ", repRule, FCDoControl->dsVerbose];
+			tmp =  (dsPart /. Dispatch[repRule]);
 			FCPrint[1, "DiracSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose],
 
 			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracSimplify/@exprList

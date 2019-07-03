@@ -31,8 +31,8 @@ End[]
 Begin["`FCLoopPropagatorPowersExpand`Private`"]
 
 Options[FCLoopPropagatorPowersExpand] = {
-	FCI -> False,
-	FCE -> False
+	FCE -> False,
+	FCI -> False
 };
 
 FCLoopPropagatorPowersExpand[expr_, OptionsPattern[]] :=

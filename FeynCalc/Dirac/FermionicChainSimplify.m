@@ -42,19 +42,19 @@ holdDOT::usage="";
 optTraceOfOne::usage="";
 
 Options[FermionicChainSimplify] = {
-	Contract -> True,
-	DiracGammaCombine -> True,
-	DiracSigmaExplicit -> False,
-	DiracTrick -> True,
-	Factoring -> True,
-	FCCanonicalizeDummyIndices->True,
-	FCDiracIsolate -> True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCVerbose -> False,
-	SpinorChainTrick -> True,
-	TraceOfOne -> 4
+	Contract 					-> True,
+	DiracGammaCombine			-> True,
+	DiracSigmaExplicit			-> False,
+	DiracTrick					-> True,
+	FCCanonicalizeDummyIndices	->True,
+	FCDiracIsolate 				-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCJoinDOTs 					-> True,
+	FCVerbose 					-> False,
+	Factoring 					-> True,
+	SpinorChainTrick			-> True,
+	TraceOfOne					-> 4
 };
 
 FermionicChainSimplify[expr_, OptionsPattern[]] :=
@@ -118,9 +118,9 @@ FermionicChainSimplify[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "FermionicChainSimplify: Inserting Dirac objects back.", FCDoControl->fchsVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"FermionicChainSimplify: repRule: ",repRule , FCDoControl->fchsVerbose];
-		res =  ( tmp/.repRule);
+		res =  (tmp/. Dispatch[repRule]);
 		FCPrint[1, "FermionicChainSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fchsVerbose];
 
 		If[ OptionValue[FCE],

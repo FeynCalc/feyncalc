@@ -21,7 +21,9 @@ End[]
 
 Begin["`SUNTrace`Private`"]
 
-Options[SUNTrace] = {Explicit -> False};
+Options[SUNTrace] = {
+	Explicit -> False
+};
 
 HoldPattern[SUNTrace[n_, ___Rule]] :=
 	SUNN n /; FCPatternFreeQ[{n}, {SUNT}];

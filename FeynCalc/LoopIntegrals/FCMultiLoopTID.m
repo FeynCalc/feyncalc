@@ -49,16 +49,16 @@ Begin["`FCMultiLoopTID`Private`"]
 mltidVerbose::usage="";
 
 Options[FCMultiLoopTID] = {
-	Dimension -> D,
-	Collecting -> True,
-	Contract -> True,
-	DiracSimplify -> True,
+	ApartFF				-> True,
+	Collecting			-> True,
+	Contract			-> True,
+	Dimension			-> D,
+	DiracSimplify		-> True,
 	ExpandScalarProduct -> True,
-	FCI -> False,
-	FCE -> False,
-	FCVerbose -> False,
-	FDS -> True,
-	ApartFF -> True
+	FCE					-> False,
+	FCI					-> False,
+	FCVerbose			-> False,
+	FDS					-> True
 };
 
 FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
@@ -207,17 +207,12 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "FCMultiLoopTID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		repRule = MapThread[Rule[#1,#2]&,{intsUnique,solsList}];
+		repRule = Thread[Rule[intsUnique,solsList]];
 		FCPrint[3,"FCMultiLoopTID: Replacement rule: ", repRule, FCDoControl->mltidVerbose];
 
-		res = rest + (loopInts/.repRule);
+		res = rest + (loopInts/. Dispatch[repRule]);
 
 		FCPrint[3,"FCMultiLoopTID: Prelmininary result: ", res, FCDoControl->mltidVerbose];
-
-
-
-
-
 
 		If [OptionValue[ExpandScalarProduct],
 			time=AbsoluteTime[];

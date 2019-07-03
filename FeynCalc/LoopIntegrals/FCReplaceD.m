@@ -41,9 +41,9 @@ Begin["`FCReplaceD`Private`"]
 fcrdVerbose::usage="";
 
 Options[FCReplaceD] = {
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False
+	FCE 		-> False,
+	FCI 		-> False,
+	FCVerbose	-> False
 };
 
 FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=

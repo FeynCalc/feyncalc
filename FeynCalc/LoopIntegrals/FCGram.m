@@ -35,18 +35,18 @@ Begin["`FCGram`Private`"]
 nptfpVerbose=Null;
 
 Options[FCGramMatrix]  = {
-	Dimension -> D,
-	FCE -> False,
-	Head -> {Pair, Momentum},
-	Prefactor -> 2
+	Dimension 	-> D,
+	FCE			-> False,
+	Head		-> {Pair, Momentum},
+	Prefactor	-> 2
 };
 
 Options[FCGramDeterminant]  = {
-	Dimension -> D,
-	ExpandScalarProduct -> True,
-	FCE -> False,
-	Head -> {Pair, Momentum},
-	Prefactor -> 2
+	Dimension			-> D,
+	ExpandScalarProduct	-> True,
+	FCE					-> False,
+	Head				-> {Pair, Momentum},
+	Prefactor			-> 2
 };
 
 FCGramMatrix[moms_List,OptionsPattern[]]:=

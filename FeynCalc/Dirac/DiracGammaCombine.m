@@ -28,8 +28,8 @@ Begin["`DiracGammaCombine`Private`"]
 dgcVerbose::usage="";
 
 Options[DiracGammaCombine] = {
-	FCI -> False,
-	FCE -> False
+	FCE -> False,
+	FCI -> False
 };
 
 DiracGammaCombine[expr_, OptionsPattern[]] :=
@@ -63,9 +63,9 @@ DiracGammaCombine[expr_, OptionsPattern[]] :=
 
 		} /. holdPlus -> Plus;
 
-		repRule = MapThread[Rule[#1,#2]&,{diracList,diracListEval}];
+		repRule = Thread[Rule[diracList,diracListEval]];
 
-		res = ex /.repRule /. holdPlus -> Plus;
+		res = ex /. Dispatch[repRule] /. holdPlus -> Plus;
 
 		If[	OptionValue[FCE],
 			res = FCE[res]

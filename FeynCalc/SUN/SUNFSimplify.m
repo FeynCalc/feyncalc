@@ -30,8 +30,8 @@ SetAttributes[SUNFSimplify, Listable];
 fci[z_ /; FreeQ[z, Pattern]] := (fci[z] = FCI[z]);
 
 Options[SUNFSimplify] = {
-	SUNNToCACF->True,
-	Explicit->False
+	Explicit	-> False,
+	SUNNToCACF	-> True
 };
 
 SUNFSimplify[expr_, OptionsPattern[]] :=

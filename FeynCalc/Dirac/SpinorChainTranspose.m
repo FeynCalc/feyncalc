@@ -38,19 +38,19 @@ holdDOT::usage="";
 sctrVerbose::usage="";
 
 Options[SpinorChainTranspose] = {
-	Collecting -> True,
-	DotSimplify -> True,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Factoring -> Factor,
-	Head->Identity,
-	Select -> {
-		{SpinorVBar[_,_], SpinorU[_,_]},
-		{SpinorVBar[_,_], SpinorV[_,_]},
-		{SpinorVBarD[_,_], SpinorUD[_,_]},
-		{SpinorVBarD[_,_], SpinorVD[_,_]}
-	},
+	Collecting 		-> True,
+	DotSimplify 	-> True,
+	FCE 			-> False,
+	FCI 			-> False,
+	FCVerbose 		-> False,
+	Factoring 		-> Factor,
+	Head			-> Identity,
+	Select 			-> {
+						{SpinorVBar[_,_], SpinorU[_,_]},
+						{SpinorVBar[_,_], SpinorV[_,_]},
+						{SpinorVBarD[_,_], SpinorUD[_,_]},
+						{SpinorVBarD[_,_], SpinorVD[_,_]}
+					},
 	TimeConstrained -> 3
 };
 
@@ -132,9 +132,9 @@ SpinorChainTranspose[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "SpinorChainTranspose: Inserting Dirac objects back.", FCDoControl->sctrVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"SpinorChainTranspose: repRule: ",repRule , FCDoControl->sctrVerbose];
-		res =  ( tmp/.Dispatch[repRule]);
+		res =  (tmp /. Dispatch[repRule]);
 		FCPrint[1, "SpinorChainTranspose: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->sctrVerbose];
 
 		If[ OptionValue[FCE],

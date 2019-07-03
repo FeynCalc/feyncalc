@@ -126,42 +126,42 @@ spd::usage="";
 SetAttributes[spd,Orderless];
 
 Options[FCLoopBasisExtract] = {
-	FCI -> False,
-	FCE -> False,
-	FCVerbose -> False,
-	FCTopology -> False,
-	SetDimensions-> {3,4,D,D-1}
+	FCI 			-> False,
+	FCE 			-> False,
+	FCVerbose		-> False,
+	FCTopology		-> False,
+	SetDimensions	-> {3, 4, D, D-1}
 };
 
 Options[FCLoopBasisIncompleteQ] = {
-	FCI -> False,
-	FCVerbose -> False,
-	FCTopology -> False,
-	SetDimensions-> {3,4,D,D-1}
+	FCI 			-> False,
+	FCVerbose 		-> False,
+	FCTopology 		-> False,
+	SetDimensions	-> {3, 4, D, D-1}
 };
 
 Options[FCLoopBasisOverdeterminedQ] = {
-	FCI -> False,
-	FCVerbose -> False,
-	SetDimensions-> {3,4,D,D-1}
+	FCI 			-> False,
+	FCVerbose 		-> False,
+	SetDimensions	-> {3, 4, D, D-1}
 };
 
 Options[FCLoopBasisFindCompletion] = {
-	Abort -> False,
+	Abort 				-> False,
 	ExpandScalarProduct -> True,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Check -> True,
-	Method -> ScalarProduct,
-	SetDimensions-> {3,4,D,D-1}
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	Check 				-> True,
+	Method				-> ScalarProduct,
+	SetDimensions		-> {3, 4, D, D-1}
 };
 
 Options[FCLoopBasisSplit] = {
-	FCE -> False,
-	FeynAmpDenominatorCombine -> True,
-	Head -> FCGV["LoopInt"],
-	List -> True
+	FCE 						-> False,
+	FeynAmpDenominatorCombine	-> True,
+	Head 						-> FCGV["LoopInt"],
+	List						-> True
 };
 
 Options[FCLoopBasisCreateScalarProducts] = {
@@ -169,28 +169,28 @@ Options[FCLoopBasisCreateScalarProducts] = {
 };
 
 Options[FCLoopBasisIntegralToPropagators] = {
-	CartesianPair -> False,
-	EtaSign -> {1,-1,1},
+	CartesianPair 		-> False,
+	EtaSign 			-> {1,-1,1},
 	ExpandScalarProduct -> False,
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	MomentumCombine -> False,
-	Negative -> False,
-	Pair -> False,
-	Rest -> False,
-	Sort -> True,
-	Tally -> False,
-	TemporalPair -> False,
-	ToSFAD -> True
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	MomentumCombine 	-> False,
+	Negative 			-> False,
+	Pair				-> False,
+	Rest 				-> False,
+	Sort 				-> True,
+	Tally 				-> False,
+	TemporalPair 		-> False,
+	ToSFAD 				-> True
 }
 
 Options[FCLoopBasisPropagatorsToTopology] = {
-	DeleteDuplicates-> True,
+	DeleteDuplicates	-> True,
 	ExpandScalarProduct -> False,
-	FCE -> False,
-	FCI -> False,
-	MomentumCombine -> False
+	FCE 				-> False,
+	FCI 				-> False,
+	MomentumCombine 	-> False
 };
 
 FCLoopBasisGetSize[lmoms_Integer?Positive,emoms_Integer?NonNegative,extra_Integer:0]:=

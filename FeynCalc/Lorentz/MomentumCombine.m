@@ -104,12 +104,12 @@ rulesLC = {
 };
 
 Options[MomentumCombine] = {
-	FCI -> False,
-	FCE -> False,
-	FV -> True,
-	LC -> True,
-	LeafCount -> 1,
-	SP -> True
+	FCE 		-> False,
+	FCI 		-> False,
+	FV 			-> True,
+	LC 			-> True,
+	LeafCount	-> 1,
+	SP 			-> True
 };
 
 MomentumCombine[expr_, OptionsPattern[]] :=

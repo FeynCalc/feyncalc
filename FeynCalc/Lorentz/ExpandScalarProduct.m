@@ -37,10 +37,10 @@ objects::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
-	FCI -> False,
-	FCE -> False,
-	Full -> True,
-	Momentum -> All
+	FCE 		-> False,
+	FCI 		-> False,
+	Full 		-> True,
+	Momentum 	-> All
 };
 
 ExpandScalarProduct[expr_, OptionsPattern[]] :=

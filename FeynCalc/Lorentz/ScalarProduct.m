@@ -71,15 +71,15 @@ End[]
 Begin["`ScalarProduct`Private`"]
 
 Options[ScalarProduct] = {
-	Dimension->4,
-	FCI -> True,
-	SetDimensions -> {4,D}
+	Dimension		-> 4,
+	FCI 			-> True,
+	SetDimensions	-> {4,D}
 };
 
 Options[CartesianScalarProduct] = {
-	Dimension->3,
-	FCI -> True,
-	SetDimensions -> {3,D-1}
+	Dimension		-> 3,
+	FCI 			-> True,
+	SetDimensions	-> {3,D-1}
 };
 
 ScalarProduct /:
@@ -462,10 +462,10 @@ SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
 		];
 	]/; araw=!=0 && FCPatternFreeQ[{araw}];
 
-initialScalarProductDownValues = DownValues[ScalarProduct];
-initialScalarProductUpValues = UpValues[ScalarProduct];
+initialScalarProductDownValues 			= DownValues[ScalarProduct];
+initialScalarProductUpValues 			= UpValues[ScalarProduct];
 initialCartesianScalarProductDownValues = DownValues[CartesianScalarProduct];
-initialCartesianScalarProductUpValues = UpValues[CartesianScalarProduct];
+initialCartesianScalarProductUpValues 	= UpValues[CartesianScalarProduct];
 
 Protect[SetTemporalComponent];
 

@@ -28,21 +28,21 @@ End[]
 Begin["`FCColorIsolate`Private`"]
 
 Options[FCColorIsolate] = {
-	ClearHeads -> {FCGV["ColorObject"]},
-	Collecting -> True,
-	DotSimplify -> True,
-	ExceptHeads -> {},
-	Expanding -> True,
-	FCI -> False,
-	Factoring -> Factor,
-	Head -> FCGV["ColorObject"],
-	Isolate -> False,
-	IsolateNames -> KK,
-	IsolateFast -> False,
-	SUNT -> True,
-	SUNF -> True,
-	SUND -> True,
-	SUNTrace -> True
+	ClearHeads		-> {FCGV["ColorObject"]},
+	Collecting		-> True,
+	DotSimplify		-> True,
+	ExceptHeads 	-> {},
+	Expanding		-> True,
+	FCI				-> False,
+	Factoring		-> Factor,
+	Head			-> FCGV["ColorObject"],
+	Isolate			-> False,
+	IsolateFast		-> False,
+	IsolateNames	-> KK,
+	SUND 			-> True,
+	SUNF 			-> True,
+	SUNT 			-> True,
+	SUNTrace 		-> True
 };
 
 FCColorIsolate[expr_, OptionsPattern[]] :=

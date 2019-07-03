@@ -106,9 +106,9 @@ spinorchainevaluate[x_] :=
 Options[OneLoop] = {
 	Dimension					-> D,
 	FCE							-> False,
+	FCI							-> False,
 	FCVerbose					-> False,
 	Factoring					-> False,
-	FCI							-> False,
 	FinalSubstitutions			-> {},
 	FormatType					-> InputForm,
 	InitialSubstitutions		-> {},

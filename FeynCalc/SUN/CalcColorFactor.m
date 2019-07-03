@@ -26,7 +26,9 @@ Begin["`CalcColorFactor`Private`"]
 
 SetAttributes[CalcColorFactor, Listable];
 
-Options[CalcColorFactor] = {SUNNToCACF -> True};
+Options[CalcColorFactor] = {
+	SUNNToCACF -> True
+};
 
 SetAttributes[CalcColorFactor, Listable];
 

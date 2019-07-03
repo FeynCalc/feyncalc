@@ -23,10 +23,10 @@ End[]
 Begin["`Explicit`Private`"]
 
 Options[Explicit] = {
-	CouplingConstant -> SMP["g_s"],
-	Dimension -> D,
-	Gauge -> 1,
-	OPE -> False
+	CouplingConstant	-> SMP["g_s"],
+	Dimension 			-> D,
+	Gauge 				-> 1,
+	OPE 				-> False
 };
 
 Explicit[expr_, opts:OptionsPattern[]] :=

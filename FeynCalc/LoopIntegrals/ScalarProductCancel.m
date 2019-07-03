@@ -40,11 +40,11 @@ spcVerbose::usage="";
 SPC = ScalarProductCancel;
 
 Options[ScalarProductCancel] = {
-	ChangeDimension -> D,
-	FCI -> False,
-	FCVerbose -> False,
-	FDS -> True,
-	FeynAmpDenominatorCombine -> True
+	ChangeDimension				-> D,
+	FCI 						-> False,
+	FCVerbose 					-> False,
+	FDS 						-> True,
+	FeynAmpDenominatorCombine	-> True
 };
 
 SetAttributes[ScalarProductCancel, Listable];

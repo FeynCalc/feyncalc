@@ -56,20 +56,20 @@ optSort::usage="";
 alreadyDone::usage="";
 
 Options[DiracTrace] = {
-	Contract -> True,
-	DiracTraceEvaluate-> False,
-	EpsContract -> False,
-	Expand -> True,
-	FCVerbose -> False,
-	Factoring -> Automatic,
-	FeynCalcExternal -> False,
-	FeynCalcInternal -> False,
-	Mandelstam    -> {},
-	PairCollect    -> False,
-	Sort -> True,
-	Schouten-> 0,
-	TraceOfOne -> 4,
-	West -> True
+	Contract 			-> True,
+	DiracTraceEvaluate	-> False,
+	EpsContract			-> False,
+	Expand				-> True,
+	FCVerbose			-> False,
+	Factoring			-> Automatic,
+	FeynCalcExternal	-> False,
+	FeynCalcInternal	-> False,
+	Mandelstam			-> {},
+	PairCollect			-> False,
+	Schouten			-> 0,
+	Sort				-> True,
+	TraceOfOne			-> 4,
+	West				-> True
 };
 
 
@@ -152,10 +152,10 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 		FCPrint[1,"DiracTrace: diracTraceEvaluate finished, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
 
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"DiracTrace: repRule: ",repRule , FCDoControl->diTrVerbose];
 
-		tr3 = (unitMatrixTrace freePart) + ( dsPart/.repRule);
+		tr3 = (unitMatrixTrace freePart) + ( dsPart /. Dispatch[repRule]);
 
 
 
@@ -418,11 +418,11 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			(* Create the substitution rule*)
 			time2=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Rebuilding the full result.", FCDoControl->diTrVerbose];
-			repRule = MapThread[Rule[#1,#2]&,{spurHeadListChiral,traceListChiral}];
-			repRule = Join[repRule,MapThread[Rule[#1,#2]&,{spurHeadListNonChiral,traceListNonChiral}]];
+			repRule = Thread[Rule[spurHeadListChiral,traceListChiral]];
+			repRule = Join[repRule, Thread[Rule[spurHeadListNonChiral,traceListNonChiral]]];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: repRule: ", traceListChiral, FCDoControl->diTrVerbose];
 			(* The trace of any standalone Dirac matrix is zero, g^6 and g^7 are of course special *)
-			tmp = (gammaFree/. wrapRule) + (gammaPart/.repRule);
+			tmp = (gammaFree/. wrapRule) + (gammaPart /. Dispatch[repRule]);
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Full result ready, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
 
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: tmp: ", tmp, FCDoControl->diTrVerbose];

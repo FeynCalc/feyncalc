@@ -26,16 +26,16 @@ End[]
 Begin["`ToLarin`Private`"]
 
 Options[ToLarin] = {
-	Dimension -> D,
-	FCE -> False,
-	FCI -> False
+	Dimension	-> D,
+	FCE 		-> False,
+	FCI			-> False
 };
 
 ToLarin[expr_, OptionsPattern[]] :=
 	Block[ {ex,fi1,fi2,fi3,drsi,res, dotHold, dim},
 
-		dim = OptionValue[Dimension];
-		drsi = $LeviCivitaSign;
+		dim 	= OptionValue[Dimension];
+		drsi	= $LeviCivitaSign;
 		(*drsi is usually -1 *)
 
 		If[	OptionValue[FCI],

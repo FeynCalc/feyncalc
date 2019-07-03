@@ -42,18 +42,18 @@ li4::usage="";
 holdDOT::usage="";
 
 Options[SirlinSimplify] = {
-	Contract -> True,
-	DiracGammaCombine -> True,
-	DiracSigmaExplicit -> False,
-	DiracTrick -> True,
-	Factoring -> True,
-	FCCanonicalizeDummyIndices->True,
-	FCDiracIsolate -> True,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> True,
-	FCVerbose -> False,
-	SpinorChainTrick -> True
+	Contract 					-> True,
+	DiracGammaCombine 			-> True,
+	DiracSigmaExplicit 			-> False,
+	DiracTrick					-> True,
+	FCCanonicalizeDummyIndices	-> True,
+	FCDiracIsolate				-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCJoinDOTs 					-> True,
+	FCVerbose 					-> False,
+	Factoring 					-> True,
+	SpinorChainTrick 			-> True
 };
 
 SirlinSimplify[expr_, OptionsPattern[]] :=
@@ -140,9 +140,9 @@ SirlinSimplify[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "SirlinSimplify: Inserting Dirac objects back.", FCDoControl->sisVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"SirlinSimplify: repRule: ",repRule , FCDoControl->sisVerbose];
-		res =  ( tmp/.repRule);
+		res =  (tmp/. Dispatch[repRule]);
 		FCPrint[1, "SirlinSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->sisVerbose];
 
 		If[ OptionValue[FCE],

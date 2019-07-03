@@ -36,10 +36,10 @@ Options[Solve2] = {
 };
 
 Options[Solve3] = {
-	FCVerbose -> False,
-	Factoring -> False,
-	FinalSubstitutions -> {},
-	ParallelMap -> False
+	FCVerbose 			-> False,
+	Factoring 			-> False,
+	FinalSubstitutions	-> {},
+	ParallelMap 		-> False
 };
 
 Solve2[a_/;Head[a]=!=List, b__] :=

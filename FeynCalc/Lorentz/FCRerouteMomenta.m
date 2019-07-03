@@ -26,7 +26,8 @@ replaced with the shorter expression p1-k3. The replacements are applied using \
 the FeynCalcExternal form of the expression. Ideally, this function should be \
 used directly on the output of a diagram generator such as FeynArts or QGRAF.";
 
-FCRerouteMomenta::failmsg = "Error! FCRerouteMomenta has encountered a fatal problem and must abort the computation. \n
+FCRerouteMomenta::failmsg =
+"Error! FCRerouteMomenta has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
@@ -43,16 +44,23 @@ fcrmVerbose::usage="";
 
 
 Options[FCRerouteMomenta] = {
-	Check -> True,
-	DiracGammaCombine -> False,
-	Eliminate -> {},
-	Expand -> ExpandAll,
-	InitialSubstitutions-> {},
-	FCE -> False,
-	FCVerbose -> False,
-	MaxIterations -> Infinity,
-	MomentumCombine -> False,
-	Replace -> {FAD, SFAD, CFAD, GFAD, GS, GSD, GSE, FV, FVD, FVE, CV, CVD, CVE, SP, SPD, SPE, CSP, CSPD, CSPE, TC}
+	Check 					-> True,
+	DiracGammaCombine		-> False,
+	Eliminate 				-> {},
+	Expand 					-> ExpandAll,
+	FCE 					-> False,
+	FCVerbose 				-> False,
+	InitialSubstitutions	-> {},
+	MaxIterations 			-> Infinity,
+	MomentumCombine 		-> False,
+	Replace 				-> {
+								FAD, SFAD, CFAD, GFAD,
+								GS, GSD, GSE,
+								FV, FVD, FVE,
+								CV, CVD, CVE,
+								SP, SPD, SPE,
+								CSP, CSPD, CSPE, TC
+							}
 };
 
 FCRerouteMomenta[expr_, in_List/; in=!={}, out_List /; (out =!= {} && ! OptionQ[out]), OptionsPattern[]] :=
@@ -60,7 +68,7 @@ FCRerouteMomenta[expr_, in_List/; in=!={}, out_List /; (out =!= {} && ! OptionQ[
 			lentot, nums, selections = {}, selections2, objects, objectsEval, ruleFinal,
 			res, optEliminate, optInitialSubstitutions, lastRule},
 
-		optEliminate = OptionValue[Eliminate];
+		optEliminate 			= OptionValue[Eliminate];
 		optInitialSubstitutions = OptionValue[InitialSubstitutions];
 
 		If [OptionValue[FCVerbose]===False,
@@ -207,7 +215,7 @@ FCRerouteMomenta[expr_, in_List/; in=!={}, out_List /; (out =!= {} && ! OptionQ[
 
 
 		ruleFinal = Thread[Rule[objects, objectsEval]];
-		FCPrint[3,"FCRerouteMomenta: The resulting replacement rule: " ,ruleFinal, FCDoControl->fcrmVerbose];
+		FCPrint[3,"FCRerouteMomenta: The resulting replacement rule: ", ruleFinal, FCDoControl->fcrmVerbose];
 
 
 		res = ex /. ruleFinal;

@@ -38,7 +38,7 @@ Options[DiracGammaExpand] = {
 };
 
 DiracGammaExpand[expr_, OptionsPattern[]] :=
-	Block[{ex, null1, null2, uniqList, solsList, repRule, momList, rud, res},
+	Block[{ex, null1, null2, uniqList, solsList, repRule, momList, ruleDelayed, res},
 
 	momList = OptionValue[Momentum];
 
@@ -62,7 +62,7 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 	];
 
 	(* Final replacement rule	*)
-	repRule = Thread[rud[uniqList, uniqList/.DiracGamma -> gaev /. gaevlin -> DiracGamma]] /. rud->RuleDelayed;
+	repRule = Thread[ruleDelayed[uniqList, uniqList /.DiracGamma -> gaev /. gaevlin -> DiracGamma]] /. ruleDelayed->RuleDelayed;
 
 	(* Simple cross check	*)
 	If[ !FreeQ2[repRule,{gaev,gaevlin}],

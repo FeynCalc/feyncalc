@@ -30,31 +30,30 @@ breduce::usage="";
 a0tob0::usage="";
 maxIterations::usage="";
 
-Options[ PaVeReduce ] = {
-	A0ToB0->False,
-	BReduce -> False,
-	Collecting -> True,
-	Dimension -> True,
-	FCE -> True,
-	FCVerbose -> False,
-	Factoring -> Factor2,
-	IsolateNames->False,
-	Mandelstam->{},
-	PaVeAutoReduce -> False,
-	PaVeOrderList -> {},
-	WriteOutPaVe -> False,
-	MaxIterations -> Infinity
+Options[PaVeReduce ] = {
+	A0ToB0			-> False,
+	BReduce 		-> False,
+	Collecting 		-> True,
+	Dimension 		-> True,
+	FCE 			-> True,
+	FCVerbose 		-> False,
+	Factoring 		-> Factor2,
+	IsolateNames	-> False,
+	Mandelstam		-> {},
+	MaxIterations 	-> Infinity,
+	PaVeAutoReduce 	-> False,
+	PaVeOrderList 	-> {},
+	WriteOutPaVe 	-> False
 };
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
 	Block[ {op, wriout, nnx = x, res, time},
 
-		op=Join[FilterRules[Options[PaVeReduce], Except[{opts}]], {opts}];
-		wriout = OptionValue[WriteOutPaVe];
-
-		breduce = OptionValue[BReduce];
-		a0tob0 = OptionValue[A0ToB0];
-		maxIterations = OptionValue[MaxIterations];
+		op				= Join[FilterRules[Options[PaVeReduce], Except[{opts}]], {opts}];
+		wriout 			= OptionValue[WriteOutPaVe];
+		breduce 		= OptionValue[BReduce];
+		a0tob0 			= OptionValue[A0ToB0];
+		maxIterations	= OptionValue[MaxIterations];
 
 		If [OptionValue[FCVerbose]===False,
 			pvrVerbose=$VeryVerbose,

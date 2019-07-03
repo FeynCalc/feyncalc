@@ -99,12 +99,31 @@ ClearAttributes[B00, ReadProtectecd];
 ClearAttributes[B1, ReadProtectecd];
 ClearAttributes[B11, ReadProtectecd];
 
-Options[A0] = {A0ToB0 -> False};
-Options[B0] = {BReduce -> False, B0Unique -> False, B0Real -> False };
-Options[B00] = {BReduce->True};
-Options[B1] = {BReduce->True};
-Options[B11] = {BReduce->True};
-Options[DB1] = {BReduce->True};
+Options[A0] = {
+	A0ToB0 -> False
+};
+
+Options[B0] = {
+	B0Real 		-> False,
+	B0Unique	-> False,
+	BReduce		-> False
+};
+
+Options[B00] = {
+	BReduce	-> True
+};
+
+Options[B1] = {
+	BReduce	-> True
+};
+
+Options[B11] = {
+	BReduce	-> True
+};
+
+Options[DB1] = {
+	BReduce	-> True
+};
 
 smanull[_] :=
 	0;
