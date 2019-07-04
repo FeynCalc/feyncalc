@@ -95,7 +95,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			w2Verbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				w2Verbose=OptionValue[FCVerbose]
 			];
 		];

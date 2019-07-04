@@ -67,7 +67,7 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fcpiVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcpiVerbose=OptionValue[FCVerbose]
 			];
 		];

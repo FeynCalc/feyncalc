@@ -83,7 +83,7 @@ FermionicChainSimplify[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			fchsVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fchsVerbose=OptionValue[FCVerbose]
 			];
 		];

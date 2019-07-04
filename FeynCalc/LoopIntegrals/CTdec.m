@@ -57,7 +57,7 @@ CTdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]
 
 		If [OptionValue[FCVerbose]===False,
 			ctdecVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				ctdecVerbose=OptionValue[FCVerbose]
 			]
 		];

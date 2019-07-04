@@ -69,7 +69,7 @@ PauliOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 
 		If[	OptionValue[FCVerbose]===False,
 			poVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				poVerbose=OptionValue[FCVerbose]
 			];
 		];

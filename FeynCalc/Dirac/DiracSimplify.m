@@ -82,7 +82,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				dsVerbose=OptionValue[FCVerbose]
 			];
 		];

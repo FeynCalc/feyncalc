@@ -73,7 +73,7 @@ FCRerouteMomenta[expr_, in_List/; in=!={}, out_List /; (out =!= {} && ! OptionQ[
 
 		If [OptionValue[FCVerbose]===False,
 			fcrmVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcrmVerbose=OptionValue[FCVerbose]
 			];
 		];

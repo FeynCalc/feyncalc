@@ -72,7 +72,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				mltidVerbose=OptionValue[FCVerbose]
 			];
 		];

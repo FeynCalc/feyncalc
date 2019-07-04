@@ -57,7 +57,7 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			pvrVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				pvrVerbose=OptionValue[FCVerbose]
 			];
 		];

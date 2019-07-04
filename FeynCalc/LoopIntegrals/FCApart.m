@@ -67,7 +67,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcaVerbose=OptionValue[FCVerbose]
 			];
 		];

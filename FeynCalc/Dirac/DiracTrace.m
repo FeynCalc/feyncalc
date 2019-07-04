@@ -89,7 +89,7 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			diTrVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				diTrVerbose=OptionValue[FCVerbose]
 			];
 		];

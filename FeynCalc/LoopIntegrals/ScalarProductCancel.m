@@ -74,7 +74,7 @@ ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 
 		If [OptionValue[FCVerbose]===False,
 			spcVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				spcVerbose=OptionValue[FCVerbose]
 			];
 		];

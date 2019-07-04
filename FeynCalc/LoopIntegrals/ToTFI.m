@@ -59,7 +59,7 @@ ToTFI[expr_/;Head[expr]=!=Plus,q_/;Head[q]=!=List,p_/;Head[p]=!=List,opts:Option
 
 		If [OptionValue[FCVerbose]===False,
 			toTFIVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				toTFIVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -127,7 +127,7 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 
 		If [OptionValue[FCVerbose]===False,
 			toTFIVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				toTFIVerbose=OptionValue[FCVerbose]
 			];
 		];

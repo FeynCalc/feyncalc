@@ -45,7 +45,7 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			esVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				esVerbose=OptionValue[FCVerbose]
 			];
 		];

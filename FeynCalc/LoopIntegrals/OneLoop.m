@@ -205,7 +205,7 @@ OneLoop[grname_,q_, expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			oneloopVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				oneloopVerbose=OptionValue[FCVerbose]
 			];
 		];

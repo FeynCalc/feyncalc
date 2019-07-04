@@ -77,7 +77,7 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			pvuvVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				pvuvVerbose=OptionValue[FCVerbose]
 			];
 		];

@@ -53,7 +53,7 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fctreVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fctreVerbose=OptionValue[FCVerbose]
 			];
 		];

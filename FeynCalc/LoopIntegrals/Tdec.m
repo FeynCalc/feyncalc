@@ -336,7 +336,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 
 		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				tdecVerbose=OptionValue[FCVerbose]
 			]
 		];

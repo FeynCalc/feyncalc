@@ -84,7 +84,7 @@ Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			sol3Verbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				sol3Verbose=OptionValue[FCVerbose]
 			];
 		];

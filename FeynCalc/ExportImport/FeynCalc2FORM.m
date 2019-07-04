@@ -91,7 +91,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fc2fVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fc2fVerbose=OptionValue[FCVerbose]
 			];
 		];

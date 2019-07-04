@@ -74,7 +74,7 @@ SquareAmplitude[m1_List, m2_List/;!OptionQ[m2], OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			sqaVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				sqaVerbose=OptionValue[FCVerbose]
 			];
 		];

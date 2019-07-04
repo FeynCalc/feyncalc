@@ -119,7 +119,7 @@ Chisholm[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			chVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				chVerbose=OptionValue[FCVerbose]
 			];
 		];

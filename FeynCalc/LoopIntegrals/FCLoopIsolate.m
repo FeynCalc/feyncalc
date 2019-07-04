@@ -84,7 +84,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 				fcliVerbose=$VeryVerbose,
-				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
 					fcliVerbose=OptionValue[FCVerbose]
 				];
 		];

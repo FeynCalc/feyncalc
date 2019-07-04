@@ -64,7 +64,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		If[	OptionValue[FCVerbose]===False,
 			fcsbVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcsbVerbose=OptionValue[FCVerbose]
 			];
 		];

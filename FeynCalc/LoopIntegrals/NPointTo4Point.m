@@ -94,7 +94,7 @@ NPointTo4Point[pref_. fad_FeynAmpDenominator,qu_, OptionsPattern[]]:=
 
 		If[	OptionValue[FCVerbose]===False,
 			nptfpVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				nptfpVerbose=OptionValue[FCVerbose]
 			];
 		];

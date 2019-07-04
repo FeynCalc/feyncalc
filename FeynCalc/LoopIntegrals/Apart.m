@@ -116,7 +116,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 
 		If [OptionValue[FCVerbose]===False,
 			affVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				affVerbose=OptionValue[FCVerbose]
 			];
 		];

@@ -82,7 +82,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 
 		If [OptionValue[FCVerbose]===False,
 			fdsVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fdsVerbose=OptionValue[FCVerbose]
 			];
 		];

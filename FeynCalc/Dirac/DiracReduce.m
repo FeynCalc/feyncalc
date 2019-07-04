@@ -61,7 +61,7 @@ DiracReduce[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			drVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				drVerbose=OptionValue[FCVerbose]
 			];
 		];

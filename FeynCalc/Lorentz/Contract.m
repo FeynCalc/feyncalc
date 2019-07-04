@@ -315,7 +315,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			cnVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				cnVerbose=OptionValue[FCVerbose]
 			];
 		];

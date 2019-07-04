@@ -78,7 +78,7 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fdVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fdVerbose=OptionValue[FCVerbose]
 			];
 		];

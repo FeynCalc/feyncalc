@@ -81,7 +81,7 @@ SirlinSimplify[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			sisVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				sisVerbose=OptionValue[FCVerbose]
 			];
 		];

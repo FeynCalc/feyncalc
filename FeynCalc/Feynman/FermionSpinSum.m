@@ -62,7 +62,7 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fssVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fssVerbose=OptionValue[FCVerbose]
 			];
 		];

@@ -61,7 +61,7 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 
 		If [OptionValue[FCVerbose]===False,
 			tsmeVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				tsmeVerbose=OptionValue[FCVerbose]
 			];
 		];

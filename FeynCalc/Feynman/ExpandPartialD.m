@@ -49,7 +49,7 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			epdVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				epdVerbose=OptionValue[FCVerbose]
 			];
 		];

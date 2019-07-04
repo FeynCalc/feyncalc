@@ -114,7 +114,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				tidVerbose=OptionValue[FCVerbose]
 			];
 		];

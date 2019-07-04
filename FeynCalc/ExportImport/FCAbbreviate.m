@@ -59,7 +59,7 @@ FCAbbreviate[expr_, loopmoms_List, extmoms_List, OptionsPattern[]] :=
 
 	If [OptionValue[FCVerbose]===False,
 			abbVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				abbVerbose=OptionValue[FCVerbose]
 			];
 	];

@@ -84,7 +84,7 @@ SpinorChainTranspose[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			sctrVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				sctrVerbose=OptionValue[FCVerbose]
 			];
 		];

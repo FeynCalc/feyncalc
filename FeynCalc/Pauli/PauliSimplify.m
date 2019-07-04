@@ -70,7 +70,7 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			psVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				psVerbose=OptionValue[FCVerbose]
 			];
 		];

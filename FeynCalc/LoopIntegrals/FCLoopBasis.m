@@ -262,7 +262,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 
 		If [OptionValue[FCVerbose]===False,
 			itpVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				itpVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -553,7 +553,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
-				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
 					fclbeVerbose=OptionValue[FCVerbose]
 				];
 		];
@@ -723,7 +723,7 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fclbVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -785,7 +785,7 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fclbVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -850,7 +850,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fclbVerbose=OptionValue[FCVerbose]
 			];
 		];

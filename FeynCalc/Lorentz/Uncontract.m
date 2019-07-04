@@ -65,7 +65,7 @@ Uncontract[ex_, All, opts:OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			ucVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				ucVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -103,7 +103,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			ucVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				ucVerbose=OptionValue[FCVerbose]
 			];
 		];

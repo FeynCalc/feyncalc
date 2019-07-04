@@ -91,7 +91,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				canodummyVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -110,7 +110,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				canodummyVerbose=OptionValue[FCVerbose]
 			];
 		];

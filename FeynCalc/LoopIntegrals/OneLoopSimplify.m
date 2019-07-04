@@ -89,7 +89,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			olsVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				olsVerbose=OptionValue[FCVerbose]
 			];
 		];

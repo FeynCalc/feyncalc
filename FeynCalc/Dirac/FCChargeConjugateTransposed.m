@@ -68,7 +68,7 @@ FCChargeConjugateTransposed[expr_, opts:OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fcctVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcctVerbose=OptionValue[FCVerbose]
 			];
 		];

@@ -70,7 +70,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			fcdiVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcdiVerbose=OptionValue[FCVerbose]
 			];
 		];

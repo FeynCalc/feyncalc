@@ -65,7 +65,7 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 
 		If [OptionValue[FCVerbose]===False,
 			fcrmVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcrmVerbose=OptionValue[FCVerbose]
 			];
 		];

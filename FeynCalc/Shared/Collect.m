@@ -104,7 +104,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				cl2Verbose=OptionValue[FCVerbose]
 			];
 		];
