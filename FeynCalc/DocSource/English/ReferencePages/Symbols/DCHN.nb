@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/FCHN", "Categorization",
+Cell["FeynCalc/ref/DCHN", "Categorization",
  CellLabel->"URI"]
 }, Closed]],
 
@@ -111,16 +111,16 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["FCHN", "ObjectName",
+Cell["DCHN", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FCHN", "[", 
+  RowBox[{"DCHN", "[", 
    RowBox[{"x", ",", "i", ",", "j"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]is a chain of Dirac matrices x and is transformed into \
-FermionicChain[FCI[x],DiracIndex[i],DiracIndex[j]] by FeynCalcInternal."
+DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by FeynCalcInternal."
 }], "Usage",
  CellID->982511436]
 }, Open  ]],
@@ -191,7 +191,7 @@ Cell["A standalone Dirac matrix with open Dirac indices", "Notes",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{"GAD", "[", "\[Mu]", "]"}], ",", "i", ",", "j"}], "]"}]], "Input",
  CellLabel->"In[1]:=",
@@ -229,7 +229,7 @@ Cell["A chain of Dirac matrices with open Dirac indices", "Notes",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
@@ -283,7 +283,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{"SpinorUBar", "[", 
     RowBox[{"p", ",", "m"}], "]"}], ",", "i"}], "]"}]], "Input",
@@ -321,7 +321,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{"SpinorVBar", "[", 
     RowBox[{"p", ",", "m"}], "]"}], ",", "i"}], "]"}]], "Input",
@@ -358,7 +358,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{"i", ",", 
    RowBox[{"SpinorU", "[", 
     RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
@@ -394,7 +394,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{"i", ",", 
    RowBox[{"SpinorV", "[", 
     RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
@@ -431,7 +431,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
@@ -489,7 +489,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
@@ -546,7 +546,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
@@ -602,7 +602,7 @@ Cell[TextData[{
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 

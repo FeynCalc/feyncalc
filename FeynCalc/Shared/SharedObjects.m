@@ -144,9 +144,9 @@ FAD[{q1,m}, {q1-p,m}, q2, ...] is \
 (Translation into FeynCalc internal form is performed by \
 FeynCalcInternal.)";
 
-FCHN::usage =
-"FCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
-into FermionicChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
+DCHN::usage =
+"DCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
+into DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
 FeynCalcInternal.";
 
 FCTopology::usage=
@@ -155,14 +155,14 @@ that is characterized by the propagators {prop1, prop2, ...}. The propagators \
 in the list do not necessarily have to form a valid basis, i.e. the basis may also \
 be incomplete or overdetermined.";
 
-FermionicChain::usage =
-"FermionicChain[x,i,j] denotes a chain of Dirac \
+DiracChain::usage =
+"DiracChain[x,i,j] denotes a chain of Dirac \
 matrices x, where the Dirac indices i and j \
 are explicit. For example, \
-FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],DiracIndex[j]] \
-denotes a standalone Dirac matrix g^mu_ij. A FermionicChain with only two \
+DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],DiracIndex[j]] \
+denotes a standalone Dirac matrix g^mu_ij. A DiracChain with only two \
 arguments denotes a spinor component, e.g. \
-FermionicChain[Spinor[Momentum[p],m],DiracIndex[i]] stands for the i-th \
+DiracChain[Spinor[Momentum[p],m],DiracIndex[i]] stands for the i-th \
 component of  Spinor[Momentum[p],m]";
 
 FeynAmp::usage =
@@ -987,13 +987,13 @@ Options[Polarization] = {Transversality -> False};
 
 (* 	TODO Explicit syntax checks in the definitions of core objects are too expensive :(
 	Instead we should use a syntax checker function that will be applied to the given expression *)
-DiracHeadsList = {DiracGamma,Spinor,DiracSigma,FermionicChain, DiracIndexDelta, DiracTrace};
+DiracHeadsList = {DiracGamma,Spinor,DiracSigma,DiracChain, DiracIndexDelta, DiracTrace};
 
 PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
-TrFeynCalcObjects = DiracGamma | FermionicChain | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE | FCHN;
+TrFeynCalcObjects = DiracGamma | DiracChain | GA | GAD | GAE | GS | GSD | GSE | Pair | CGA | CGAD | CGAE | CGS | CGSD | CGSE | DCHN;
 
 TensorArgsList = {
 	LorentzIndex, ExplicitLorentzIndex, Momentum,
@@ -1291,32 +1291,32 @@ DiracGamma[(n:5|6|7), dim_] :=
 
 (* Explicit Dirac indices *)
 
-FermionicChain[0,__]:=
+DiracChain[0,__]:=
 	0;
 
-FermionicChain[_,0]:=
+DiracChain[_,0]:=
 	0;
 
-FermionicChain[1, i_Spinor, j : (_DiracIndex | _ExplicitDiracIndex)]:=
-	FermionicChain[i,j];
+DiracChain[1, i_Spinor, j : (_DiracIndex | _ExplicitDiracIndex)]:=
+	DiracChain[i,j];
 
-FermionicChain[x_/;x=!=1, i_,j_]/; FreeQ2[{FCI[x]},DiracHeadsList] && FCPatternFreeQ[{x,i,j}]:=
-	x FermionicChain[1, i,j];
+DiracChain[x_/;x=!=1, i_,j_]/; FreeQ2[{FCI[x]},DiracHeadsList] && FCPatternFreeQ[{x,i,j}]:=
+	x DiracChain[1, i,j];
 
-FermionicChain[1, i : (_DiracIndex | _ExplicitDiracIndex),j : (_DiracIndex | _ExplicitDiracIndex)]/; FCPatternFreeQ[{x,i,j}]:=
+DiracChain[1, i : (_DiracIndex | _ExplicitDiracIndex),j : (_DiracIndex | _ExplicitDiracIndex)]/; FCPatternFreeQ[{x,i,j}]:=
 	DiracIndexDelta[i,j];
 
-FermionicChain[1, a_Spinor, b_Spinor]:=
-	FermionicChain[a,b];
+DiracChain[1, a_Spinor, b_Spinor]:=
+	DiracChain[a,b];
 
-FCHN[0,__]:=
+DCHN[0,__]:=
 	0;
 
-FCHN[_,0]:=
+DCHN[_,0]:=
 	0;
 
-FCHN[1,a_Spinor,b_Spinor]:=
-	FCHN[a,b];
+DCHN[1,a_Spinor,b_Spinor]:=
+	DCHN[a,b];
 
 
 DiracIndex[i_Integer] :=

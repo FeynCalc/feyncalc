@@ -174,7 +174,7 @@
               UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]];
               DotSimplify[ExpandPartialD[QuantumField[A].QuantumField[A].LeftPartialD[nu]]]
 
-* Introduced initial support for Dirac matrix chains with explicit Dirac indices (via `FermionicChain`). This particularly useful when importing amplitudes from `QGRAF` (fd49dd63) (4468a00e)
+* Introduced initial support for Dirac matrix chains with explicit Dirac indices (via `DiracChain`). This particularly useful when importing amplitudes from `QGRAF` (fd49dd63) (4468a00e)
 
     * Example: Some expressions with open Dirac indices that are now possible
 
@@ -182,41 +182,41 @@
               DIDelta[i, j]
               
               (* A standalone Dirac matrix with open Dirac indices *)
-              FCHN[GAD[mu], i, j]
+              DCHN[GAD[mu], i, j]
               
               (* A chain of Dirac matrices with open Dirac indices *)
-              FCHN[GAD[mu].GAD[nu], i, j]
+              DCHN[GAD[mu].GAD[nu], i, j]
               
               (* A single UBar spinor with an open Dirac index *)
-              FCHN[SpinorUBar[p, m], i]
+              DCHN[SpinorUBar[p, m], i]
               
               (* A single VBar spinor with an open Dirac index *)
-              FCHN[SpinorVBar[p, m], i]
+              DCHN[SpinorVBar[p, m], i]
               
               (* A single U spinor with an open Dirac index *)
-              FCHN[i, SpinorU[p, m]]
+              DCHN[i, SpinorU[p, m]]
               
               (* A single V spinor with an open Dirac index *)
-              FCHN[i, SpinorV[p, m]]
+              DCHN[i, SpinorV[p, m]]
               
               (* UBar spinor contracted with a chain of Dirac matrices *)
-              FCHN[GAD[mu].GAD[nu], SpinorUBar[p, m], j]
+              DCHN[GAD[mu].GAD[nu], SpinorUBar[p, m], j]
               
               (* VBar spinor contracted with a chain of Dirac matrices *)
-              FCHN[GAD[mu].GAD[nu], SpinorVBar[p, m], j]
+              DCHN[GAD[mu].GAD[nu], SpinorVBar[p, m], j]
               
               (* U spinor contracted with a chain of Dirac matrices *)
-              FCHN[GAD[mu].GAD[nu], i, SpinorU[p, m]]
+              DCHN[GAD[mu].GAD[nu], i, SpinorU[p, m]]
               
               (* V spinor contracted with a chain of Dirac matrices *)
-              FCHN[GAD[mu].GAD[nu], i, SpinorV[p, m]]
+              DCHN[GAD[mu].GAD[nu], i, SpinorV[p, m]]
 
-* Introduced `FermionicChainSimplify` for basic simplifications of fermionic chains. Currently, the only thing it does are contractions of the Dirac indices (4d3649a6)
+* Introduced `DiracChainSimplify` for basic simplifications of Dirac chains. Currently, the only thing it does are contractions of the Dirac indices (4d3649a6)
 
     * Example: Contract the Dirac indices to obtain a closed spin chain
 
-              FCHN[SpinorUBar[p1, m1], i] FCHN[GAD[mu].GAD[nu], i, j] FCHN[j, SpinorV[p2, m2]] //
-              FermionicChainSimplify
+              DCHN[SpinorUBar[p1, m1], i] DCHN[GAD[mu].GAD[nu], i, j] DCHN[j, SpinorV[p2, m2]] //
+              DiracChainSimplify
 
 * Added `PauliSigmaExpand` and `PauliSigmaCombine` which are essentially analogons of `DiracGammaExpand` and `DiracSigmaCombine` for Pauli matrices. (a99b9882)
 

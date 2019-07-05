@@ -1,0 +1,72 @@
+
+
+(* :Title: DiracChainSimplify.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2019 Rolf Mertig
+	Copyright (C) 1997-2019 Frederik Orellana
+	Copyright (C) 2014-2019 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracChainSimplify	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracChainSimplify =
+({
+{"fcstDiracChainSimplify-ID1", "DiracChainSimplify[0]", "0"},
+{"fcstDiracChainSimplify-ID2",
+"DiracChainSimplify[GA[i],FCE\[Rule]True]",
+"DiracGamma[LorentzIndex[i]]"},
+{"fcstDiracChainSimplify-ID3",
+"DiracChainSimplify[GAD[mu,mu],FCE\[Rule]True]",
+"DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[mu, \
+D], D]"},
+{"fcstDiracChainSimplify-ID4",
+"DiracChainSimplify[DCHN[GA[i],Spinor[Momentum[p1],m1,1],\
+Spinor[Momentum[p2],m1,1]],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . GA[i] . Spinor[Momentum[p2], m1, \
+1]"},
+{"fcstDiracChainSimplify-ID5",
+"DiracChainSimplify[DCHN[Spinor[Momentum[p1],m1,1],i]DCHN[j,
+Spinor[Momentum[p2],m1,1]]DIDelta[i,j],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m1, 1]"},
+{"fcstDiracChainSimplify-ID6",
+"DiracChainSimplify[DCHN[Spinor[Momentum[p1],m1,1],i]DCHN[i,
+Spinor[Momentum[p2],m1,1]],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m1, 1]"},
+{"fcstDiracChainSimplify-ID7",
+"DiracChainSimplify[DCHN[i,Spinor[Momentum[p1],m1,1]]DCHN[GS[p]\
++m,Spinor[Momentum[p2],m1,1],j]DIDelta[i,j],FCE\[Rule]True]",
+"Spinor[Momentum[p2], m1, 1] . (m + GS[p]) . Spinor[Momentum[p1], \
+m1, 1]"},
+{"fcstDiracChainSimplify-ID8",
+"DiracChainSimplify[DCHN[i,Spinor[Momentum[p1],m1,1]]DCHN[GS[p]\
++m,Spinor[Momentum[p2],m1,1],i],FCE\[Rule]True]",
+"Spinor[Momentum[p2], m1, 1] . (m + GS[p]) . Spinor[Momentum[p1], \
+m1, 1]"},
+{"fcstDiracChainSimplify-ID9",
+"DiracChainSimplify[DIDelta[i,i]]", "4"},
+{"fcstDiracChainSimplify-ID10",
+"DiracChainSimplify[DIDelta[i,j]^2]", "4"},
+{"fcstDiracChainSimplify-ID11",
+"DiracChainSimplify[DCHN[GA[i],i,i]]",
+"DiracTrace[DiracGamma[LorentzIndex[i]]]"},
+{"fcstDiracChainSimplify-ID12",
+"DiracChainSimplify[
+DCHN[GSD[-k1 + p1], Dir1, Dir2] DCHN[GSD[Polarization[k1, -I]], Dir2,
+	Spinor[Momentum[p1, D], QGMassQ, 1]] DCHN[
+GSD[Polarization[k2, -I]], Spinor[-Momentum[p2, D], QGMassQ, 1],
+Dir1], FCE -> True]",
+"Spinor[-Momentum[p2, D], QGMassQ, 1].GSD[
+Polarization[k2, -I]].GSD[-k1 + p1].GSD[
+Polarization[k1, -I]].Spinor[Momentum[p1, D], QGMassQ, 1]"},
+{"fcstDiracChainSimplify-ID13",
+"DiracChainSimplify[DiracIndexDelta[DiracIndex[i], DiracIndex[i]],
+TraceOfOne -> D]", "D"},
+{"fcstDiracChainSimplify-ID14",
+"DiracChainSimplify[
+DiracIndexDelta[DiracIndex[i], DiracIndex[j]] DiracIndexDelta[
+DiracIndex[j], DiracIndex[k]], FCE -> True]", "DIDelta[i,k]"}
+});

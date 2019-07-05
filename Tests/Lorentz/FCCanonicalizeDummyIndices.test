@@ -169,8 +169,8 @@ Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] + Momentum[pS, D],
 me*Sqrt[GaugeXi[W]]]]"},
 {"fcstFCCanonicalizeDummyIndices-ID25",
 "MatchQ[FCCanonicalizeDummyIndices[
-FCHN[SpinorUBar[p1], i] FCHN[SpinorV[p1], j] DIDelta[i, j],
+DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
 FCE -> True],
-DIDelta[a_FCGV, b_FCGV] FCHN[Spinor[-Momentum[p1], 0, 1],
-b_FCGV] FCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"}
+DIDelta[a_FCGV, b_FCGV] DCHN[Spinor[-Momentum[p1], 0, 1],
+b_FCGV] DCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"}
 });

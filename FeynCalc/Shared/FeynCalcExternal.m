@@ -61,7 +61,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 
 		ru = {
 			DiracIndexDelta :> diracdelta,
-			FermionicChain :> fermchain,
+			DiracChain :> diracchain,
 			PauliSigma :> sigmaback,
 			DiracGamma :> diracback,
 			DiracSigma :> dirsig,
@@ -82,7 +82,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
 		vv = Cases2[x, {
-				FermionicChain,
+				DiracChain,
 				DiracIndexDelta,
 				CartesianPair,
 				DiracGamma,
@@ -113,13 +113,13 @@ FeynCalcExternal[x_,opts___Rule] :=
 diracdelta[i_,j_]:=
 	DIDelta[i,j] /. (DiracIndex|ExplicitDiracIndex) -> iDent;
 
-fermchain[a_,b_]:=
-	FCHN[FCE[a],b] /. (DiracIndex|ExplicitDiracIndex) -> iDent;
+diracchain[a_,b_]:=
+	DCHN[FCE[a],b] /. (DiracIndex|ExplicitDiracIndex) -> iDent;
 
-fermchain[a_,b_,c_]:=
+diracchain[a_,b_,c_]:=
 	(
 	fermtmp=FCE[{a,b,c}];
-	(FCHN@@fermtmp) /. (DiracIndex|ExplicitDiracIndex) -> iDent
+	(DCHN@@fermtmp) /. (DiracIndex|ExplicitDiracIndex) -> iDent
 	)
 
 dirsig[a__] :=

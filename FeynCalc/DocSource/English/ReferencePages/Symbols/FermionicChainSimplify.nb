@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/FermionicChainSimplify", "Categorization",
+Cell["FeynCalc/ref/DiracChainSimplify", "Categorization",
  CellLabel->"URI"]
 }, Closed]],
 
@@ -111,19 +111,19 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["FermionicChainSimplify", "ObjectName",
+Cell["DiracChainSimplify", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FermionicChainSimplify", "[", "exp", "]"}]], "InlineFormula"],
+  RowBox[{"DiracChainSimplify", "[", "exp", "]"}]], "InlineFormula"],
  " \[LineSeparator]simplifies chains of Dirac matrices with explicit Dirac \
 indices wrapped with a head ",
- ButtonBox["FermionicChain",
+ ButtonBox["DiracChain",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FermionicChain",
-  ButtonNote->"FermionicChain"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracChain",
+  ButtonNote->"DiracChain"],
  "."
 }], "Usage",
  CellID->982511436],
@@ -131,7 +131,7 @@ indices wrapped with a head ",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "FermionicChainSimplify", "]"}]], "Input",
+ RowBox[{"Options", "[", "DiracChainSimplify", "]"}]], "Input",
  CellLabel->"In[87]:=",
  CellID->1965709680],
 
@@ -191,10 +191,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["FermionicChain",
+ ButtonBox["DiracChain",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FermionicChain",
-  ButtonNote->"FermionicChain"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracChain",
+  ButtonNote->"DiracChain"],
  ", ",
  ButtonBox["DiracIndex",
   BaseStyle->"Link",
@@ -238,16 +238,16 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"FCHN", "[", 
+  RowBox[{"DCHN", "[", 
    RowBox[{
     RowBox[{"SpinorUBar", "[", 
      RowBox[{"p1", ",", "m1"}], "]"}], ",", "i"}], "]"}], " ", 
-  RowBox[{"FCHN", "[", 
+  RowBox[{"DCHN", "[", 
    RowBox[{
     RowBox[{
      RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
      RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", "i", ",", "j"}], "]"}], " ", 
-  RowBox[{"FCHN", "[", 
+  RowBox[{"DCHN", "[", 
    RowBox[{"j", ",", 
     RowBox[{"SpinorV", "[", 
      RowBox[{"p2", ",", "m2"}], "]"}]}], "]"}]}]], "Input",
@@ -325,7 +325,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
  CellLabel->"In[12]:=",
  CellID->1834507663],
 

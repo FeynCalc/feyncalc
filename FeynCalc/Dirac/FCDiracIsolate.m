@@ -45,7 +45,7 @@ Options[FCDiracIsolate] = {
 	FCJoinDOTs			-> True,
 	FCVerbose			-> False,
 	Factoring			-> Factor,
-	FermionicChain		-> False,
+	DiracChain		-> False,
 	Head				-> FCGV["DiracChain"],
 	Isolate				-> False,
 	IsolateFast			-> False,
@@ -187,9 +187,9 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			res = res //. head[x_DiracTrace y_.] :> x head[y];
 		];
 
-		If[	!OptionValue[FermionicChain],
-			res = res /. DOT->holdDOT //. head[x_FermionicChain y_.] :> x head[y] //.
-			head[holdDOT[x__] y_.]/; !FreeQ[{x},FermionicChain] :> holdDOT[x] head[y] /. holdDOT -> DOT;
+		If[	!OptionValue[DiracChain],
+			res = res /. DOT->holdDOT //. head[x_DiracChain y_.] :> x head[y] //.
+			head[holdDOT[x__] y_.]/; !FreeQ[{x},DiracChain] :> holdDOT[x] head[y] /. holdDOT -> DOT;
 		];
 
 		If[	!OptionValue[DiracGamma],

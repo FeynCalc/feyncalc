@@ -165,20 +165,20 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DIDelta",
   ButtonNote->"DIDelta"],
  ", ",
- ButtonBox["FCHN",
+ ButtonBox["DCHN",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FCHN",
-  ButtonNote->"FCHN"],
+  ButtonData:>"paclet:FeynCalc/ref/DCHN",
+  ButtonNote->"DCHN"],
  ", ",
- ButtonBox["FermionicChain",
+ ButtonBox["DiracChain",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FermionicChain",
-  ButtonNote->"FermionicChain"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracChain",
+  ButtonNote->"DiracChain"],
  ", ",
- ButtonBox["FermionicChainSimplify",
+ ButtonBox["DiracChainSimplify",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FermionicChainSimplify",
-  ButtonNote->"FermionicChainSimplify"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainSimplify",
+  ButtonNote->"DiracChainSimplify"],
  "."
 }], "SeeAlso",
  CellID->644176972]
@@ -264,7 +264,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
  CellLabel->"In[635]:=",
  CellID->1638726287],
 
@@ -277,7 +277,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", 
+ RowBox[{"DiracChainSimplify", "[", 
   RowBox[{"%%", ",", 
    RowBox[{"TraceOfOne", "\[Rule]", "D"}]}], "]"}]], "Input",
  CellLabel->"In[636]:=",
@@ -334,7 +334,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
  CellLabel->"In[638]:=",
  CellID->1782586861],
 
@@ -366,7 +366,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"DiracIndex", "[", "i4", "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i5", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"DiracIndex", "[", "i7", "]"}], ",", 
     RowBox[{"Spinor", "[", 
@@ -374,25 +374,25 @@ Cell[BoxData[
       RowBox[{"-", 
        RowBox[{"Momentum", "[", "q", "]"}]}], ",", "0", ",", "1"}], "]"}]}], 
    "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"Spinor", "[", 
      RowBox[{
       RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i0", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"DiracGamma", "[", 
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i1", "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i2", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"DiracGamma", "[", 
      RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i5", "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i6", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"m", "+", 
      RowBox[{"DiracGamma", "[", 
@@ -536,7 +536,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
  CellLabel->"In[630]:=",
  CellID->1092912350],
 
@@ -630,7 +630,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", 
+ RowBox[{"DiracChainSimplify", "[", 
   RowBox[{"%", " ", 
    RowBox[{"DIDelta", "[", 
     RowBox[{"i0", ",", "i1"}], "]"}]}], "]"}]], "Input",
@@ -716,7 +716,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", 
+ RowBox[{"DiracChainSimplify", "[", 
   RowBox[{"%", " ", 
    RowBox[{"DIDelta", "[", 
     RowBox[{"i7", ",", "i6"}], "]"}]}], "]"}]], "Input",

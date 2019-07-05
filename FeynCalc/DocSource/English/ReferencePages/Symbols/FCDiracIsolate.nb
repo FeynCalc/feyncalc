@@ -152,7 +152,7 @@ Cell[BoxData[
     RowBox[{"FCJoinDOTs", "\[Rule]", "True"}], ",", 
     RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
     RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
-    RowBox[{"FermionicChain", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracChain", "\[Rule]", "False"}], ",", 
     RowBox[{"Head", "\[Rule]", 
      RowBox[{"FCGV", "(", "\<\"DiracChain\"\>", ")"}]}], ",", 
     RowBox[{"Isolate", "\[Rule]", "False"}], ",", 

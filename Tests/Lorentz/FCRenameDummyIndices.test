@@ -50,9 +50,9 @@ FCE -> True],
 Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1] Spinor[
 	Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1]]", "True"},
 {"FCRenameDummyIndices-ID8","MatchQ[FCRenameDummyIndices[
-FCHN[SpinorUBar[p1], i] FCHN[SpinorV[p1], j] DIDelta[i, j],
+DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
 FCE -> True],
-DIDelta[$AL[a_], $AL[b_]] FCHN[
-Spinor[-Momentum[p1], 0, 1], $AL[b_]] FCHN[
+DIDelta[$AL[a_], $AL[b_]] DCHN[
+Spinor[-Momentum[p1], 0, 1], $AL[b_]] DCHN[
 Spinor[Momentum[p1], 0, 1], $AL[a_]]]","True"}
 };

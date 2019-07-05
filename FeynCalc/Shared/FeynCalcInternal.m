@@ -108,7 +108,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			FVD :> fvd,
 			FVE :> fve,
 			FV :> fv,
-			FCHN :> fchn,
+			DCHN :> fchn,
 			LeviCivita :> levicivita,
 			LC :> lc,
 			LCD :> lcd,
@@ -294,27 +294,27 @@ dirIndex[a_]/;Head[a]=!=Spinor:=
 fchn[a: (_Spinor | _SpinorUBar | _SpinorVBar),b_]:=
 	(
 	fchntmp=FCI[{a,b}];
-	FermionicChain[fchntmp[[1]],dirIndex[fchntmp[[2]]]]
+	DiracChain[fchntmp[[1]],dirIndex[fchntmp[[2]]]]
 	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[b]];
 
 
 fchn[a_,b : (_Spinor | _SpinorU | _SpinorV)]:=
 	(
 	fchntmp=FCI[{a,b}];
-	FermionicChain[dirIndex[fchntmp[[1]]],fchntmp[[2]]]
+	DiracChain[dirIndex[fchntmp[[1]]],fchntmp[[2]]]
 	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[a]];
 
 fchn[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)]:=
 	(
 	fchntmp=FCI[{a,b}];
-	FermionicChain[fchntmp[[1]],fchntmp[[2]]]
+	DiracChain[fchntmp[[1]],fchntmp[[2]]]
 	);
 
 
 fchn[a_,b_,c_]:=
 	(
 	fchntmp=FCI[{a,b,c}];
-	FermionicChain[fchntmp[[1]],dirIndex[fchntmp[[2]]],dirIndex[fchntmp[[3]]]]
+	DiracChain[fchntmp[[1]],dirIndex[fchntmp[[2]]],dirIndex[fchntmp[[3]]]]
 	);
 
 sunTint[x__] :=

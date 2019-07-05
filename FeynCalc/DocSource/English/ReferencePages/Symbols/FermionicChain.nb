@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/FermionicChain", "Categorization",
+Cell["FeynCalc/ref/DiracChain", "Categorization",
  CellLabel->"URI"]
 }, Closed]],
 
@@ -111,13 +111,13 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["FermionicChain", "ObjectName",
+Cell["DiracChain", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{"x", ",", "i", ",", "j"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]denotes a chain of Dirac matrices x, where the Dirac \
 indices i and j are explicit."
@@ -191,7 +191,7 @@ Cell["A standalone Dirac matrix", "Notes",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"DiracGamma", "[", 
     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
@@ -231,7 +231,7 @@ Cell["A chain of Dirac matrices with open indices", "Notes",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"DiracGamma", "[", 
@@ -278,14 +278,14 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell["\<\
-A FermionicChain with only two arguments denotes a spinor component\
+A DiracChain with only two arguments denotes a spinor component\
 \>", "Notes",
  CellID->1440903900],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"Spinor", "[", 
     RowBox[{
@@ -327,7 +327,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"Spinor", "[", 
     RowBox[{
@@ -371,7 +371,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"DiracIndex", "[", "i", "]"}], ",", 
    RowBox[{"Spinor", "[", 
@@ -413,7 +413,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"DiracIndex", "[", "i", "]"}], ",", 
    RowBox[{"Spinor", "[", 
@@ -460,7 +460,7 @@ Cell["The chain may also be partially open or closed", "Notes",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"DiracGamma", "[", 
@@ -535,7 +535,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"DiracGamma", "[", 
@@ -611,7 +611,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"DiracGamma", "[", 
@@ -703,7 +703,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{"1", ",", 
    RowBox[{"Spinor", "[", 
     RowBox[{

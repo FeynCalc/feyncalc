@@ -166,10 +166,10 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracIndex",
   ButtonNote->"DiracIndex"],
  ", ",
- ButtonBox["FCHN",
+ ButtonBox["DCHN",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FCHN",
-  ButtonNote->"FCHN"],
+  ButtonData:>"paclet:FeynCalc/ref/DCHN",
+  ButtonNote->"DCHN"],
  "."
 }], "SeeAlso",
  CellID->442356255]
@@ -202,7 +202,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{"GA", "[", "\[Mu]", "]"}], ",", "1", ",", "2"}], "]"}]], "Input",
  CellLabel->"In[37]:=",
@@ -244,7 +244,7 @@ Cell[BoxData[
  CellID->1377283560],
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"DiracGamma", "[", 
     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 

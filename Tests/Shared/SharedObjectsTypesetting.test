@@ -1930,7 +1930,7 @@ TraditionalForm], TraditionalForm]}]]"},
 "RowBox[{\"DiracIndexDelta\", \"(\", RowBox[{\"0\", \",\", \
 FormBox[\"i\", TraditionalForm]}], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID325",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 DiracIndex[i], DiracIndex[j]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1939,7 +1939,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID326",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[1], DiracIndex[j]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1948,7 +1948,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID327",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[1]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1957,7 +1957,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"1\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID328",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1966,7 +1966,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID329",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[1], ExplicitDiracIndex[2]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1975,7 +1975,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"2\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID330",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1984,7 +1984,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID331",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]], \
 DiracIndex[i], DiracIndex[i]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
 FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"]}], \
@@ -1993,7 +1993,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID332",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[j]], \
 TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2005,7 +2005,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID333",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], DiracIndex[j]], \
 TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2017,7 +2017,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID334",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
 ExplicitDiracIndex[1]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2029,7 +2029,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID335",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
 ExplicitDiracIndex[3]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2041,7 +2041,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID336",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], \
 ExplicitDiracIndex[2]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2053,7 +2053,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID337",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
 ExplicitDiracIndex[3]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2065,7 +2065,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID338",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[i]], \
 TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2077,7 +2077,7 @@ TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID339",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[1], DiracIndex[j]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2093,7 +2093,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID340",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[1]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2109,7 +2109,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"1\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID341",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2125,7 +2125,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID342",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[1], ExplicitDiracIndex[2]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2141,7 +2141,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"2\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID343",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2157,7 +2157,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID344",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 DiracIndex[i], DiracIndex[i]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2173,7 +2173,7 @@ TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID345",
-"MakeBoxes[FermionicChain[Spinor[Momentum[p], m, 1], \
+"MakeBoxes[DiracChain[Spinor[Momentum[p], m, 1], \
 DiracIndex[i]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", FormBox[RowBox[{FormBox[\"\\\"\
 \[CurlyPhi]\\\"\", TraditionalForm], FormBox[\"\\\"(\\\"\", \
@@ -2183,7 +2183,7 @@ TraditionalForm], FormBox[\"m\", TraditionalForm], \
 FormBox[\"\\\")\\\"\", TraditionalForm]}], TraditionalForm], \")\"}], \
 FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]]"},
 {"fcstSharedObjectsTypesetting-ID346",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], Spinor[Momentum[p], m, 1], \
 DiracIndex[j]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", FormBox[RowBox[{FormBox[\"\\\"\
@@ -2199,7 +2199,7 @@ TraditionalForm]], \".\", RowBox[{\"(\", RowBox[{\"\[Gamma]\", \"\
 TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]]"},
 {"fcstSharedObjectsTypesetting-ID347",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], DiracIndex[i], Spinor[Momentum[p], m, \
 1]], TraditionalForm]",
 "SubscriptBox[RowBox[{\"(\", \
@@ -2216,7 +2216,7 @@ FormBox[\"m\", TraditionalForm], FormBox[\"\\\")\\\"\", \
 TraditionalForm]}], TraditionalForm], \")\"}], FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm]]"},
 {"fcstSharedObjectsTypesetting-ID348",
-"MakeBoxes[FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"MakeBoxes[DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], Spinor[Momentum[p1], m1, 1], \
 Spinor[Momentum[p2], m2, 1]], TraditionalForm]",
 "RowBox[{\"(\", FormBox[RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", \
@@ -2237,7 +2237,7 @@ TraditionalForm], FormBox[\"\\\",\\\"\", TraditionalForm], \
 FormBox[\"m2\", TraditionalForm], FormBox[\"\\\")\\\"\", \
 TraditionalForm]}], TraditionalForm], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID349",
-"MakeBoxes[FermionicChain[Spinor[Momentum[p1], m1, 1], \
+"MakeBoxes[DiracChain[Spinor[Momentum[p1], m1, 1], \
 Spinor[Momentum[p2], m2, 1]], TraditionalForm]",
 "RowBox[{\"(\", FormBox[RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", \
 TraditionalForm], FormBox[\"\\\"(\\\"\", TraditionalForm], \
@@ -2271,7 +2271,7 @@ TraditionalForm], FormBox[\"2\", TraditionalForm]}]]"},
 "SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"i\", \
 TraditionalForm], FormBox[\"i\", TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID355",
-"MakeBoxes[FCHN[GA[mu], i, j], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu], i, j], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2280,7 +2280,7 @@ RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID356",
-"MakeBoxes[FCHN[GA[mu], 1, j], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu], 1, j], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2289,7 +2289,7 @@ RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID357",
-"MakeBoxes[FCHN[GA[mu], 3, 1], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu], 3, 1], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2298,7 +2298,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID358",
-"MakeBoxes[FCHN[GA[mu], 3, 3], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu], 3, 3], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2307,7 +2307,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID359",
-"MakeBoxes[FCHN[GA[mu], 1, 2], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu], 1, 2], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2316,7 +2316,7 @@ RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID360",
-"MakeBoxes[FCHN[GA[mu], i, i], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu], i, i], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2325,7 +2325,7 @@ RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID361",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], i, j], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu] . GSD[p], i, j], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
 \[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2337,7 +2337,7 @@ RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID362",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], 1, j], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu] . GSD[p], 1, j], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
 \[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2349,7 +2349,7 @@ RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID363",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], 3, 1], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu] . GSD[p], 3, 1], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
 \[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2361,7 +2361,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID364",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], 3, 3], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu] . GSD[p], 3, 3], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
 \[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2373,7 +2373,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID365",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], 1, 2], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu] . GSD[p], 1, 2], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
 \[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2385,7 +2385,7 @@ RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID366",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], i, i], TraditionalForm]",
+"MakeBoxes[DCHN[GA[mu] . GSD[p], i, i], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
 \[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
@@ -2397,7 +2397,7 @@ RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID367",
-"MakeBoxes[FCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, j], \
+"MakeBoxes[DCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, j], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2414,7 +2414,7 @@ RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID368",
-"MakeBoxes[FCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 1], \
+"MakeBoxes[DCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 1], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2431,7 +2431,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID369",
-"MakeBoxes[FCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3], \
+"MakeBoxes[DCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2448,7 +2448,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID370",
-"MakeBoxes[FCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, 2], \
+"MakeBoxes[DCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, 2], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2465,7 +2465,7 @@ RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID371",
-"MakeBoxes[FCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3], \
+"MakeBoxes[DCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2482,7 +2482,7 @@ RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID372",
-"MakeBoxes[FCHN[GA[mu] . (m + GS[p]) . GA[nu], i, i], \
+"MakeBoxes[DCHN[GA[mu] . (m + GS[p]) . GA[nu], i, i], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2499,7 +2499,7 @@ RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
 FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID373",
-"MakeBoxes[FCHN[Spinor[Momentum[p], m, 1], i], TraditionalForm]",
+"MakeBoxes[DCHN[Spinor[Momentum[p], m, 1], i], TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", TraditionalForm], \
 FormBox[\"\\\"(\\\"\", TraditionalForm], \
@@ -2509,7 +2509,7 @@ FormBox[\"m\", TraditionalForm], FormBox[\"\\\")\\\"\", \
 TraditionalForm]}], TraditionalForm], \")\"}], FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm]], TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID374",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], Spinor[Momentum[p], m, 1], j], \
+"MakeBoxes[DCHN[GA[mu] . GSD[p], Spinor[Momentum[p], m, 1], j], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", TraditionalForm], \
@@ -2527,7 +2527,7 @@ TraditionalForm], \")\"}]}], TraditionalForm], \")\"}], \
 FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID375",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], i, Spinor[Momentum[p], m, 1]], \
+"MakeBoxes[DCHN[GA[mu] . GSD[p], i, Spinor[Momentum[p], m, 1]], \
 TraditionalForm]",
 "FormBox[SubscriptBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
@@ -2544,7 +2544,7 @@ FormBox[\"m\", TraditionalForm], FormBox[\"\\\")\\\"\", \
 TraditionalForm]}], TraditionalForm], \")\"}], FormBox[FormBox[\"i\", \
 TraditionalForm], TraditionalForm]], TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID376",
-"MakeBoxes[FCHN[GA[mu] . GSD[p], Spinor[Momentum[p1], m1, 1], \
+"MakeBoxes[DCHN[GA[mu] . GSD[p], Spinor[Momentum[p1], m1, 1], \
 Spinor[Momentum[p2], m2, 1]], TraditionalForm]",
 "FormBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", TraditionalForm], \
@@ -2566,7 +2566,7 @@ TraditionalForm], FormBox[\"\\\",\\\"\", TraditionalForm], \
 FormBox[\"m2\", TraditionalForm], FormBox[\"\\\")\\\"\", \
 TraditionalForm]}], TraditionalForm], \")\"}], TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID377",
-"MakeBoxes[FCHN[Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], \
+"MakeBoxes[DCHN[Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], \
 m2, 1]], TraditionalForm]",
 "FormBox[RowBox[{\"(\", \
 FormBox[RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", TraditionalForm], \

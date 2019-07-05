@@ -199,10 +199,10 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/ExplicitDiracIndex",
   ButtonNote->"ExplicitDiracIndex"],
  ", ",
- ButtonBox["FCHN",
+ ButtonBox["DCHN",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FCHN",
-  ButtonNote->"FCHN"],
+  ButtonData:>"paclet:FeynCalc/ref/DCHN",
+  ButtonNote->"DCHN"],
  "."
 }], "SeeAlso",
  CellID->442356255]

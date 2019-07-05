@@ -519,13 +519,13 @@ Cell[TextData[{
  CellID->1131303773],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["FCHN",
+ Cell[TextData[ButtonBox["DCHN",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FCHN"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/DCHN"]], "InlineFunctionSans"],
  ", ",
- Cell[TextData[ButtonBox["FermionicChain",
+ Cell[TextData[ButtonBox["DiracChain",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FermionicChain"]], "InlineFunctionSans"],
+  ButtonData->"paclet:FeynCalc/ref/DiracChain"]], "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash] ", "GuideEmDash"],
  "a Dirac chain with explicit open Dirac indices"
@@ -2207,9 +2207,9 @@ regularization."
  CellID->1841016351],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["FermionicChainSimplify",
+ Cell[TextData[ButtonBox["DiracChainSimplify",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FermionicChainSimplify"]], 
+  ButtonData->"paclet:FeynCalc/ref/DiracChainSimplify"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],

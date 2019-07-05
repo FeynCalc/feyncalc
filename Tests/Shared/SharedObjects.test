@@ -1029,141 +1029,141 @@ Tests`Shared`fcstSharedObjectsDiracIndex =
 "DiracIndexDelta[DiracIndex[i],0]",
 "DiracIndexDelta[0, DiracIndex[i]]"},
 {"fcstSharedObjectsDiracIndex-ID12",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],\
 DiracIndex[j]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
 DiracIndex[j]]"},
 {"fcstSharedObjectsDiracIndex-ID13",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[1],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[1],\
 DiracIndex[j]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[1], DiracIndex[j]]"},
 {"fcstSharedObjectsDiracIndex-ID14",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[3],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[3],\
 DiracIndex[1]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
 {"fcstSharedObjectsDiracIndex-ID15",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[3],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[3],\
 DiracIndex[3]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
 {"fcstSharedObjectsDiracIndex-ID16",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],ExplicitDiracIndex[1],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],ExplicitDiracIndex[1],\
 ExplicitDiracIndex[2]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
 {"fcstSharedObjectsDiracIndex-ID17",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],ExplicitDiracIndex[3],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],ExplicitDiracIndex[3],\
 ExplicitDiracIndex[3]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
 {"fcstSharedObjectsDiracIndex-ID18",
-"FermionicChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],\
+"DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],\
 DiracIndex[i]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
+"DiracChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i], \
 DiracIndex[i]]"},
 {"fcstSharedObjectsDiracIndex-ID19",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],DiracIndex[i],DiracIndex[j]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[j]]"},
 {"fcstSharedObjectsDiracIndex-ID20",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],DiracIndex[1],DiracIndex[j]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], DiracIndex[j]]"},
 {"fcstSharedObjectsDiracIndex-ID21",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],DiracIndex[3],DiracIndex[1]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
 ExplicitDiracIndex[1]]"},
 {"fcstSharedObjectsDiracIndex-ID22",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],DiracIndex[3],DiracIndex[3]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
 ExplicitDiracIndex[3]]"},
 {"fcstSharedObjectsDiracIndex-ID23",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],ExplicitDiracIndex[1],ExplicitDiracIndex[2]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[1], \
 ExplicitDiracIndex[2]]"},
 {"fcstSharedObjectsDiracIndex-ID24",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],ExplicitDiracIndex[3],ExplicitDiracIndex[3]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], ExplicitDiracIndex[3], \
 ExplicitDiracIndex[3]]"},
 {"fcstSharedObjectsDiracIndex-ID25",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],DiracIndex[i],DiracIndex[i]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], DiracIndex[i], DiracIndex[i]]"},
 {"fcstSharedObjectsDiracIndex-ID26",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
+"DiracChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
 Momentum[p]]).DiracGamma[LorentzIndex[nu]],DiracIndex[1],DiracIndex[j]\
-]", "FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+]", "DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[1], DiracIndex[j]]"},
 {"fcstSharedObjectsDiracIndex-ID27",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
+"DiracChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
 Momentum[p]]).DiracGamma[LorentzIndex[nu]],DiracIndex[3],DiracIndex[1]\
-]", "FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+]", "DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[1]]"},
 {"fcstSharedObjectsDiracIndex-ID28",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
+"DiracChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
 Momentum[p]]).DiracGamma[LorentzIndex[nu]],DiracIndex[3],DiracIndex[3]\
-]", "FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+]", "DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
 {"fcstSharedObjectsDiracIndex-ID29",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
+"DiracChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
 Momentum[p]]).DiracGamma[LorentzIndex[nu]],ExplicitDiracIndex[1],\
 ExplicitDiracIndex[2]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[1], ExplicitDiracIndex[2]]"},
 {"fcstSharedObjectsDiracIndex-ID30",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
+"DiracChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
 Momentum[p]]).DiracGamma[LorentzIndex[nu]],ExplicitDiracIndex[3],\
 ExplicitDiracIndex[3]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 ExplicitDiracIndex[3], ExplicitDiracIndex[3]]"},
 {"fcstSharedObjectsDiracIndex-ID31",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
+"DiracChain[DiracGamma[LorentzIndex[mu]].(m+DiracGamma[\
 Momentum[p]]).DiracGamma[LorentzIndex[nu]],DiracIndex[i],DiracIndex[i]\
-]", "FermionicChain[DiracGamma[LorentzIndex[mu]] . (m + \
+]", "DiracChain[DiracGamma[LorentzIndex[mu]] . (m + \
 DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[nu]], \
 DiracIndex[i], DiracIndex[i]]"},
 {"fcstSharedObjectsDiracIndex-ID32",
-"FermionicChain[Spinor[Momentum[p],m],DiracIndex[i]]",
-"FermionicChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
+"DiracChain[Spinor[Momentum[p],m],DiracIndex[i]]",
+"DiracChain[Spinor[Momentum[p], m, 1], DiracIndex[i]]"},
 {"fcstSharedObjectsDiracIndex-ID33",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],Spinor[Momentum[p],m],DiracIndex[j]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], Spinor[Momentum[p], m, 1], \
 DiracIndex[j]]"},
 {"fcstSharedObjectsDiracIndex-ID34",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],DiracIndex[i],Spinor[Momentum[p],m]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], DiracIndex[i], Spinor[Momentum[p], m, \
 1]]"},
 {"fcstSharedObjectsDiracIndex-ID35",
-"FermionicChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
+"DiracChain[DiracGamma[LorentzIndex[mu]].DiracGamma[Momentum[p,\
 D],D],Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]",
-"FermionicChain[DiracGamma[LorentzIndex[mu]] . \
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
 DiracGamma[Momentum[p, D], D], Spinor[Momentum[p1], m1, 1], \
 Spinor[Momentum[p2], m2, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID36",
-"FermionicChain[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]\
-", "FermionicChain[1, Spinor[Momentum[p1], m1, 1], \
+"DiracChain[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]\
+", "DiracChain[1, Spinor[Momentum[p1], m1, 1], \
 Spinor[Momentum[p2], m2, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID37", "DIDelta[i,j]",
 "DIDelta[i, j]"},
@@ -1175,69 +1175,69 @@ Spinor[Momentum[p2], m2, 1]]"},
 "DIDelta[2, 2]"},
 {"fcstSharedObjectsDiracIndex-ID41", "DIDelta[i,i]",
 "DIDelta[i, i]"},
-{"fcstSharedObjectsDiracIndex-ID42", "FCHN[GA[mu],i,j]",
-"FCHN[GA[mu], i, j]"},
-{"fcstSharedObjectsDiracIndex-ID43", "FCHN[GA[mu],1,j]",
-"FCHN[GA[mu], 1, j]"},
-{"fcstSharedObjectsDiracIndex-ID44", "FCHN[GA[mu],3,1]",
-"FCHN[GA[mu], 3, 1]"},
-{"fcstSharedObjectsDiracIndex-ID45", "FCHN[GA[mu],3,3]",
-"FCHN[GA[mu], 3, 3]"},
-{"fcstSharedObjectsDiracIndex-ID46", "FCHN[GA[mu],1,2]",
-"FCHN[GA[mu], 1, 2]"},
-{"fcstSharedObjectsDiracIndex-ID47", "FCHN[GA[mu],i,i]",
-"FCHN[GA[mu], i, i]"},
-{"fcstSharedObjectsDiracIndex-ID48", "FCHN[GA[mu].GSD[p],i,j]",
-"FCHN[GA[mu] . GSD[p], i, j]"},
-{"fcstSharedObjectsDiracIndex-ID49", "FCHN[GA[mu].GSD[p],1,j]",
-"FCHN[GA[mu] . GSD[p], 1, j]"},
-{"fcstSharedObjectsDiracIndex-ID50", "FCHN[GA[mu].GSD[p],3,1]",
-"FCHN[GA[mu] . GSD[p], 3, 1]"},
-{"fcstSharedObjectsDiracIndex-ID51", "FCHN[GA[mu].GSD[p],3,3]",
-"FCHN[GA[mu] . GSD[p], 3, 3]"},
-{"fcstSharedObjectsDiracIndex-ID52", "FCHN[GA[mu].GSD[p],1,2]",
-"FCHN[GA[mu] . GSD[p], 1, 2]"},
-{"fcstSharedObjectsDiracIndex-ID53", "FCHN[GA[mu].GSD[p],i,i]",
-"FCHN[GA[mu] . GSD[p], i, i]"},
+{"fcstSharedObjectsDiracIndex-ID42", "DCHN[GA[mu],i,j]",
+"DCHN[GA[mu], i, j]"},
+{"fcstSharedObjectsDiracIndex-ID43", "DCHN[GA[mu],1,j]",
+"DCHN[GA[mu], 1, j]"},
+{"fcstSharedObjectsDiracIndex-ID44", "DCHN[GA[mu],3,1]",
+"DCHN[GA[mu], 3, 1]"},
+{"fcstSharedObjectsDiracIndex-ID45", "DCHN[GA[mu],3,3]",
+"DCHN[GA[mu], 3, 3]"},
+{"fcstSharedObjectsDiracIndex-ID46", "DCHN[GA[mu],1,2]",
+"DCHN[GA[mu], 1, 2]"},
+{"fcstSharedObjectsDiracIndex-ID47", "DCHN[GA[mu],i,i]",
+"DCHN[GA[mu], i, i]"},
+{"fcstSharedObjectsDiracIndex-ID48", "DCHN[GA[mu].GSD[p],i,j]",
+"DCHN[GA[mu] . GSD[p], i, j]"},
+{"fcstSharedObjectsDiracIndex-ID49", "DCHN[GA[mu].GSD[p],1,j]",
+"DCHN[GA[mu] . GSD[p], 1, j]"},
+{"fcstSharedObjectsDiracIndex-ID50", "DCHN[GA[mu].GSD[p],3,1]",
+"DCHN[GA[mu] . GSD[p], 3, 1]"},
+{"fcstSharedObjectsDiracIndex-ID51", "DCHN[GA[mu].GSD[p],3,3]",
+"DCHN[GA[mu] . GSD[p], 3, 3]"},
+{"fcstSharedObjectsDiracIndex-ID52", "DCHN[GA[mu].GSD[p],1,2]",
+"DCHN[GA[mu] . GSD[p], 1, 2]"},
+{"fcstSharedObjectsDiracIndex-ID53", "DCHN[GA[mu].GSD[p],i,i]",
+"DCHN[GA[mu] . GSD[p], i, i]"},
 {"fcstSharedObjectsDiracIndex-ID54",
-"FCHN[GA[mu].(m+GS[p]).GA[nu],1,j]",
-"FCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, j]"},
+"DCHN[GA[mu].(m+GS[p]).GA[nu],1,j]",
+"DCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, j]"},
 {"fcstSharedObjectsDiracIndex-ID55",
-"FCHN[GA[mu].(m+GS[p]).GA[nu],3,1]",
-"FCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 1]"},
+"DCHN[GA[mu].(m+GS[p]).GA[nu],3,1]",
+"DCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 1]"},
 {"fcstSharedObjectsDiracIndex-ID56",
-"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]",
-"FCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3]"},
+"DCHN[GA[mu].(m+GS[p]).GA[nu],3,3]",
+"DCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3]"},
 {"fcstSharedObjectsDiracIndex-ID57",
-"FCHN[GA[mu].(m+GS[p]).GA[nu],1,2]",
-"FCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, 2]"},
+"DCHN[GA[mu].(m+GS[p]).GA[nu],1,2]",
+"DCHN[GA[mu] . (m + GS[p]) . GA[nu], 1, 2]"},
 {"fcstSharedObjectsDiracIndex-ID58",
-"FCHN[GA[mu].(m+GS[p]).GA[nu],3,3]",
-"FCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3]"},
+"DCHN[GA[mu].(m+GS[p]).GA[nu],3,3]",
+"DCHN[GA[mu] . (m + GS[p]) . GA[nu], 3, 3]"},
 {"fcstSharedObjectsDiracIndex-ID59",
-"FCHN[GA[mu].(m+GS[p]).GA[nu],i,i]",
-"FCHN[GA[mu] . (m + GS[p]) . GA[nu], i, i]"},
+"DCHN[GA[mu].(m+GS[p]).GA[nu],i,i]",
+"DCHN[GA[mu] . (m + GS[p]) . GA[nu], i, i]"},
 {"fcstSharedObjectsDiracIndex-ID60",
-"FCHN[Spinor[Momentum[p],m],i]",
-"FCHN[Spinor[Momentum[p], m, 1], i]"},
+"DCHN[Spinor[Momentum[p],m],i]",
+"DCHN[Spinor[Momentum[p], m, 1], i]"},
 {"fcstSharedObjectsDiracIndex-ID61",
-"FCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]",
-"FCHN[GA[mu] . GSD[p], Spinor[Momentum[p], m, 1], j]"},
+"DCHN[GA[mu].GSD[p],Spinor[Momentum[p],m],j]",
+"DCHN[GA[mu] . GSD[p], Spinor[Momentum[p], m, 1], j]"},
 {"fcstSharedObjectsDiracIndex-ID62",
-"FCHN[GA[mu].GSD[p],i,Spinor[Momentum[p],m]]",
-"FCHN[GA[mu] . GSD[p], i, Spinor[Momentum[p], m, 1]]"},
+"DCHN[GA[mu].GSD[p],i,Spinor[Momentum[p],m]]",
+"DCHN[GA[mu] . GSD[p], i, Spinor[Momentum[p], m, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID63",
-"FCHN[GA[mu].GSD[p],Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]\
-]", "FCHN[GA[mu] . GSD[p], Spinor[Momentum[p1], m1, 1], \
+"DCHN[GA[mu].GSD[p],Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]\
+]", "DCHN[GA[mu] . GSD[p], Spinor[Momentum[p1], m1, 1], \
 Spinor[Momentum[p2], m2, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID64",
-"FCHN[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]",
-"FCHN[Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m2, 1]]"},
+"DCHN[1,Spinor[Momentum[p1],m1],Spinor[Momentum[p2],m2]]",
+"DCHN[Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m2, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID65",
-"FCHN[a, Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m1, 1]] //
+"DCHN[a, Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m1, 1]] //
 FCI // FCE",
-"a FCHN[1, Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m1, 1]]"},
+"a DCHN[1, Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m1, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID66",
-"FCHN[a, Spinor[Momentum[p1], m1, 1], DiracIndex[i]] // FCI // FCE",
-"a FCHN[Spinor[Momentum[p1], m1, 1], i]"}
+"DCHN[a, Spinor[Momentum[p1], m1, 1], DiracIndex[i]] // FCI // FCE",
+"a DCHN[Spinor[Momentum[p1], m1, 1], i]"}
 });
