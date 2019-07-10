@@ -1239,5 +1239,7 @@ FCI // FCE",
 "a DCHN[1, Spinor[Momentum[p1], m1, 1], Spinor[Momentum[p2], m1, 1]]"},
 {"fcstSharedObjectsDiracIndex-ID66",
 "DCHN[a, Spinor[Momentum[p1], m1, 1], DiracIndex[i]] // FCI // FCE",
-"a DCHN[Spinor[Momentum[p1], m1, 1], i]"}
+"a DCHN[Spinor[Momentum[p1], m1, 1], i]"},
+{"fcstSharedObjectsDiracIndex-ID67", "Head[DCHN[1,i,j]//FCI]",
+"DiracChain"}
 });

@@ -136,39 +136,58 @@ DiracChainSimplify[expr_, OptionsPattern[]] :=
 
 ];
 
-diracChainEval[rest_. DiracChain[spinor_, i_DiracIndex] DiracChain[chain_, i_DiracIndex, j_]]:=
+(* sbar_i A_ij*)
+diracChainEval[rest_. DiracChain[spinor_Spinor, i_DiracIndex] DiracChain[chain_, i_DiracIndex, j_]]:=
 	diracChainEval[rest DiracChain[chain,spinor,j]];
 
+(* sbar_j A_ij - special syntax for FeynArts *)
+diracChainEval[rest_. DiracChain[spinor_Spinor, j_DiracIndex] DiracChain[chain_, x_, j_DiracIndex]]:=
+	diracChainEval[rest DiracChain[chain,x,spinor]];
+
+(* A_ij s_j *)
 diracChainEval[rest_. DiracChain[chain_, i_, j_DiracIndex] DiracChain[j_DiracIndex, spinor_]]:=
 	diracChainEval[rest DiracChain[chain,i,spinor]];
 
-diracChainEval[rest_. DiracChain[1, spinor1_Spinor, spinor2_Spinor]]:=
-	holdDOT[spinor1,spinor2] diracChainEval[rest];
-
-diracChainEval[rest_. DiracChain[chain_/;chain=!=1, spinor1_Spinor, spinor2_Spinor]]:=
+(* sbar_i A_ij s'_j *)
+diracChainEval[rest_. DiracChain[chain_, spinor1_Spinor, spinor2_Spinor]]:=
 	holdDOT[spinor1,chain,spinor2] diracChainEval[rest];
 
+(* (sbar.A)_i (B.s')_i -> sbar.A.B.s' *)
 diracChainEval[rest_. DiracChain[spinor1_, i_DiracIndex] DiracChain[i_DiracIndex, spinor2_]]:=
 	holdDOT[spinor1,spinor2] diracChainEval[rest];
 
-diracChainEval[rest_. DiracChain[chain_,i_DiracIndex,i_DiracIndex]]:=
+(* A_ii -> Tr(A) *)
+diracChainEval[rest_. DiracChain[chain_/;chain=!=1,i_DiracIndex,i_DiracIndex]]:=
 	DiracTrace[chain] diracChainEval[rest];
 
+diracChainEval[rest_. DiracChain[1,i_DiracIndex,i_DiracIndex]]:=
+	optTraceOfOne diracChainEval[rest];
+
+(* A_*i* d_ij *)
 diracChainEval[rest_. DiracChain[a__,i_DiracIndex,b___] DiracIndexDelta[i_DiracIndex,j_DiracIndex]]:=
 	diracChainEval[rest DiracChain[a,j,b]];
 
+(* A_ij B_jk -> (A.B)_ik *)
 diracChainEval[rest_. DiracChain[chain1_,a_,i_DiracIndex] DiracChain[chain2_,i_DiracIndex,b_]]:=
 	diracChainEval[rest DiracChain[holdDOT[chain1,chain2],a,b]]/; a=!=i && b=!=i;
 
+(* d_ii -> Tr(1) *)
 diracChainEval[rest_. DiracIndexDelta[i_DiracIndex,i_DiracIndex]]:=
 	optTraceOfOne diracChainEval[rest];
 
+(* d_ij d_jk -> d_ik *)
 diracChainEval[rest_. DiracIndexDelta[i_DiracIndex,j_DiracIndex] DiracIndexDelta[j_DiracIndex,k_DiracIndex]]:=
 	diracChainEval[rest DiracIndexDelta[i,k]];
 
+(* d_ij^2 -> Tr(1) *)
 diracChainEval[rest_. DiracIndexDelta[i_DiracIndex, j_DiracIndex]^2]:=
 	optTraceOfOne diracChainEval[rest]/; i=!=j;
 
+holdDOT[a___,1,b___]:=
+	holdDOT[a,b];
+
+holdDOT[]:=
+	1;
 
 FCPrint[1,"DiracChainSimplify.m loaded"];
 End[]

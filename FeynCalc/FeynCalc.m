@@ -405,7 +405,8 @@ If[ $FCCheckContext,
 		"gA7", "globalContextAfterLoadingFC", "Gluon", "GraphName","dSUN",
 		"Lorentz", "M", "pp", "TJI111e", "$INTC", "$Special", "$SpecialTLI",
 		"fcContextLowerCase", "newObjectsInTheContext", "MajoranaSpinor",
-		"newObjectsInTheGlobalContext", "whiteListedContextAdditions", "GetFlip"
+		"newObjectsInTheGlobalContext", "whiteListedContextAdditions", "GetFlip",
+		"Dirac"
 	};
 
 	Global`newObjectsInTheGlobalContext = Complement[Global`globalContextAfterLoadingFC, Global`globalContextBeforeLoadingFC]//

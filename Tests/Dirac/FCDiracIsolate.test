@@ -274,7 +274,7 @@ DiracChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
 DiracIndex[j]], DiracChain -> True, Head -> dirac, FCE -> True]", "dirac[DCHN[GA[mu], i, j]]"},
 {"fcstFCDiracIsolate-ID29", "FCDiracIsolate[DiracChain[1, DiracIndex[i], DiracIndex[j]] GA[mu],
 DiracGamma -> False, DiracChain -> True, Head -> dirac,
-FCE -> True]", "dirac[DIDelta[i, j]]*GA[mu]"},
+FCE -> True]", "dirac[DCHN[1, i, j]]*GA[mu]"},
 {"fcstFCDiracIsolate-ID30", "FCDiracIsolate[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j],
 CartesianIndex -> True, Head -> dch, FCE -> True]", "dch[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j]]"}
 });

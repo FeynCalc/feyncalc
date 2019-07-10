@@ -1303,9 +1303,6 @@ DiracChain[1, i_Spinor, j : (_DiracIndex | _ExplicitDiracIndex)]:=
 DiracChain[x_/;x=!=1, i_,j_]/; FreeQ2[{FCI[x]},DiracHeadsList] && FCPatternFreeQ[{x,i,j}]:=
 	x DiracChain[1, i,j];
 
-DiracChain[1, i : (_DiracIndex | _ExplicitDiracIndex),j : (_DiracIndex | _ExplicitDiracIndex)]/; FCPatternFreeQ[{x,i,j}]:=
-	DiracIndexDelta[i,j];
-
 DiracChain[1, a_Spinor, b_Spinor]:=
 	DiracChain[a,b];
 

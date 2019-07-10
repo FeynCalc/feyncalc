@@ -68,5 +68,42 @@ TraceOfOne -> D]", "D"},
 {"fcstDiracChainSimplify-ID14",
 "DiracChainSimplify[
 DiracIndexDelta[DiracIndex[i], DiracIndex[j]] DiracIndexDelta[
-DiracIndex[j], DiracIndex[k]], FCE -> True]", "DIDelta[i,k]"}
+DiracIndex[j], DiracIndex[k]], FCE -> True]", "DIDelta[i,k]"},
+{"fcstDiracChainSimplify-ID15",
+"DiracChainSimplify[DCHN[SpinorUBar[p1,m1],i]DCHN[j,SpinorV[p2,m2]]\
+DCHN[1,i,j],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
+{"fcstDiracChainSimplify-ID16",
+"DiracChainSimplify[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]DCHN[\
+1,i,j],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstDiracChainSimplify-ID17",
+"DiracChainSimplify[DCHN[SpinorUBar[p1,m1],i]DCHN[j,SpinorV[p2,m2]]\
+DIDelta[i,j],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
+{"fcstDiracChainSimplify-ID18",
+"DiracChainSimplify[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]\
+DIDelta[i,j],FCE\[Rule]True]",
+"Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
+{"fcstDiracChainSimplify-ID19",
+"DiracChainSimplify[DCHN[Spinor[p1,m1],i]DCHN[Spinor[p2,m2],j]\
+DIDelta[i,j],FCE\[Rule]True]",
+"DCHN[Spinor[Momentum[p1], m1, 1], j]*DCHN[Spinor[Momentum[p2], \
+m2, 1], j]"},
+{"fcstDiracChainSimplify-ID20",
+"DiracChainSimplify[DCHN[Spinor[p1, m], j] DCHN[GA[mu], i, j],
+FCE -> True]",
+"DCHN[GA[mu], i, Spinor[Momentum[p1], m, 1]]"},
+{"fcstDiracChainSimplify-ID21",
+"DiracChainSimplify[DCHN[Spinor[p1, m], j] DCHN[Spinor[p2, m], i],
+FCE -> True]",
+"DCHN[Spinor[Momentum[p1], m, 1], j] DCHN[Spinor[Momentum[p2], m, 1],
+i]"},
+{"fcstDiracChainSimplify-ID22",
+"DiracChainSimplify[
+DCHN[GA[Lor2].GA[6].(me + GS[LoopMom1]).GA[Lor1].GA[6],
+Spinor[Momentum[OutMom1], me, 1], Dir1] DCHN[
+Spinor[Momentum[InMom1], me, 1], Dir1], FCE -> True]",
+"Spinor[Momentum[OutMom1], me, 1].GA[Lor2].GA[
+6].(me + GS[LoopMom1]).GA[Lor1].GA[6].Spinor[Momentum[InMom1], me, 1]"}
 });
