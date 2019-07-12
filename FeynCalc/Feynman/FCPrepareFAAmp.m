@@ -136,10 +136,21 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[UndoChiralSplittings],
-			temp = temp//.{(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :> a1 DiracGamma[x] a2,
-			(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2} /. DOT ->
-			holdDOT /. {a_. holdDOT[-DiracGamma[x_], DiracGamma[6]] + a_. holdDOT[-DiracGamma[x_], DiracGamma[7]] :> -a DiracGamma[x] }/.
-			holdDOT -> DOT
+			temp = temp//.{
+				(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :>
+					a1 DiracGamma[x] a2,
+				(a_. DiracChain[DiracGamma[x_].DiracGamma[6], i_DiracIndex, j_DiracIndex] + a_. DiracChain[DiracGamma[x_].DiracGamma[7], i_DiracIndex, j_DiracIndex] ) :>
+					a DiracChain[DiracGamma[x], i, j],
+				(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2,
+				(a_. DiracChain[DiracGamma[6], i_DiracIndex, j_DiracIndex] + a_. DiracChain[DiracGamma[7], i_DiracIndex, j_DiracIndex]) :>
+					a DiracChain[1, i, j]
+			} /. DOT -> holdDOT /. {
+				a_. holdDOT[-DiracGamma[x_], DiracGamma[6]] + a_. holdDOT[-DiracGamma[x_], DiracGamma[7]] :> -a DiracGamma[x],
+
+				a_. DiracChain[holdDOT[-DiracGamma[x_], DiracGamma[6]], i_DiracIndex, j_DiracIndex] + a_. DiracChain[holdDOT[-DiracGamma[x_], DiracGamma[7]], i_DiracIndex, j_DiracIndex] :>
+					-a DiracChain[DiracGamma[x], i, j]
+
+			}/. holdDOT -> DOT
 		];
 
 		temp
