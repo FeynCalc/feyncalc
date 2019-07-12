@@ -1,0 +1,75 @@
+
+
+(* :Title: DiracChainExpand.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2019 Rolf Mertig
+	Copyright (C) 1997-2019 Frederik Orellana
+	Copyright (C) 2014-2019 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracChainExpand	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracChainExpand =
+({
+{"fcstDiracChainExpand-ID1",
+"DiracChainExpand[DCHN[1,i,j],FCE\[Rule]True, DiracChainFactor -> False]", "DCHN[1, i, j]"},
+{"fcstDiracChainExpand-ID2",
+"DiracChainExpand[DCHN[GS[p]+m,i,j],FCE\[Rule]True, DiracChainFactor -> False]",
+"m*DCHN[1, i, j] + DCHN[GS[p], i, j]"},
+{"fcstDiracChainExpand-ID3",
+"DiracChainExpand[DCHN[(GS[p]+m).GA[mu],i,j],FCE\[Rule]True, DiracChainFactor -> False]",
+"DCHN[GS[p] . GA[mu], i, j] + DCHN[m*GA[mu], i, j]"},
+{"fcstDiracChainExpand-ID4",
+"DiracChainExpand[DCHN[GA[nu].(GS[p]+m).GA[mu],i,j],FCE\[Rule]True, DiracChainFactor -> False]\
+", "DCHN[m*GA[nu] . GA[mu], i, j] + DCHN[GA[nu] . GS[p] . GA[mu], i, \
+j]"},
+{"fcstDiracChainExpand-ID5",
+"DiracChainExpand[DCHN[GA[nu].(GS[p]+m).GA[mu],SpinorUBar[p1,m1],j]\
+,FCE\[Rule]True, DiracChainFactor -> False]",
+"DCHN[m*GA[nu] . GA[mu], Spinor[Momentum[p1], m1, 1], j] + \
+DCHN[GA[nu] . GS[p] . GA[mu], Spinor[Momentum[p1], m1, 1], j]"},
+{"fcstDiracChainExpand-ID6",
+"DiracChainExpand[DCHN[GA[nu].(GS[p]+m).GA[mu],i,SpinorV[p2,m2]],\
+FCE\[Rule]True, DiracChainFactor -> False]",
+"DCHN[m*GA[nu] . GA[mu], i, Spinor[-Momentum[p2], m2, 1]] + \
+DCHN[GA[nu] . GS[p] . GA[mu], i, Spinor[-Momentum[p2], m2, 1]]"},
+{"fcstDiracChainExpand-ID7",
+"DiracChainExpand[DCHN[GA[nu].(GS[p]+m).GA[mu],SpinorUBar[p1,m1],\
+SpinorV[p2,m2]],FCE\[Rule]True, DiracChainFactor -> False]",
+"DCHN[m*GA[nu] . GA[mu], Spinor[Momentum[p1], m1, 1], \
+Spinor[-Momentum[p2], m2, 1]] + DCHN[GA[nu] . GS[p] . GA[mu], \
+Spinor[Momentum[p1], m1, 1], Spinor[-Momentum[p2], m2, 1]]"},
+{"fcstDiracChainExpand-ID8",
+"DiracChainExpand[DCHN[GS[p1]+m,i,j]DCHN[GA[mu],j,k]DCHN[GS[p2]+m,\
+k,l],FCE\[Rule]True]",
+"DCHN[GA[mu], j, k]*(m*DCHN[1, i, j] + DCHN[GS[p1], i, \
+j])*(m*DCHN[1, k, l] + DCHN[GS[p2], k, l])"},
+{"fcstDiracChainExpand-ID9",
+"DiracChainExpand[DCHN[GS[p1]+m,i,j]DCHN[GA[mu],j,k]\
+\[IndentingNewLine]DCHN[GS[p2]+m,k,l],Momentum\[Rule]{p1},FCE\[Rule]\
+True]", "DCHN[GA[mu], j, k]*(m*DCHN[1, i, j] + DCHN[GS[p1], i, \
+j])*DCHN[m + GS[p2], k, l]"},
+{"fcstDiracChainExpand-ID10",
+"DiracChainExpand[DCHN[(GS[p1+p2]+m).GS[p3+p4],i,j]DCHN[GA[mu],j,k]\
+DCHN[(GS[p2+p3]+m),k,l],Momentum\[Rule]{p1},FCE\[Rule]True, DiracChainFactor -> False]",
+"DCHN[GA[mu], j, k]*DCHN[m + GS[p2 + p3], k, l]*(DCHN[GS[p1] . \
+GS[p3 + p4], i, j] + DCHN[GS[p2] . GS[p3 + p4], i, j] + DCHN[m*GS[p3 \
++ p4], i, j])"},
+{"fcstDiracChainExpand-ID11",
+"DiracChainExpand[DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
+FCE -> True]",
+"DCHN[Spinor[-Momentum[p1], 0, 1], j] DCHN[Spinor[Momentum[p1], 0, 1],
+i] DIDelta[i, j]"},
+{"fcstDiracChainExpand-ID12",
+"DiracChainExpand[DCHN[-FVD[p, mu] GA[mu] + m, Dir3, Dir4],
+FCE -> True]",
+"m DCHN[1, Dir3, Dir4] - DCHN[GA[mu], Dir3, Dir4] FVD[p, mu]"},
+{"fcstDiracChainExpand-ID13",
+"DiracChainExpand[DCHN[-FVD[p, mu] GA[mu] + m, Dir3, Dir4],
+FCE -> True, DiracChainFactor -> False]",
+"m DCHN[1, Dir3, Dir4] + DCHN[-FVD[p, mu] GA[mu], Dir3, Dir4]"}
+})
