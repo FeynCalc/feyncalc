@@ -80,6 +80,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 		replist1 = {FeynArts`Index[Global`Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],
 					FeynArts`Index[Global`Gluon, x_] :> SUNIndex[ToExpression["Glu" <> ToString[x]]],
 					FeynArts`Index[Global`Colour, x_] :> SUNFIndex[ToExpression["Col" <> ToString[x]]],
+					FeynArts`Index[Global`Dirac, x_] :> DiracIndex[ToExpression["Dir" <> ToString[x]]],
 					FeynArts`FourMomentum[FeynArts`Incoming,x_] :> ToExpression["InMom" <> ToString[x]],
 					FeynArts`FourMomentum[FeynArts`Outgoing,x_] :> ToExpression["OutMom" <> ToString[x]],
 					FeynArts`FourMomentum[FeynArts`Internal,x_] :> ToExpression["LoopMom" <> ToString[x]]
@@ -108,25 +109,27 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					FeynArts`IndexDelta[a_SUNFIndex, b_SUNFIndex]:> SUNFDelta[a,b],
 					FeynArts`IndexDelta[a_SUNIndex, b_SUNIndex]:> SUNDelta[a,b],
 					FeynArts`FAFeynAmp :> FeynAmp,
-					FeynArts`FAFeynAmpDenominator[x__] :> (FeynAmpDenominator@@({x}/. z_Momentum:>z[[1]]/. {
+					FeynArts`FAFeynAmpDenominator[x__] :> (
+						FeynAmpDenominator@@({x}/. z_Momentum:>z[[1]]/. {
 						FeynArts`FAPropagatorDenominator[a_,b_] :> PropagatorDenominator[Momentum[a],b],
 						FeynArts`FAPropagatorDenominator[a_,b_,n_Integer] :> Sequence@@Table[PropagatorDenominator[Momentum[a],b],{j,1,n}]
-					}
-					)),
+						})),
 					FeynArts`FAGaugeXi :> GaugeXi,
 					FeynArts`FANonCommutative :> DOT,
-					FeynArts`FermionChain :> DOT,
-					FeynArts`MatrixTrace :> DiracTrace,
 					Global`MajoranaSpinor :> Spinor
 					}];
 		replist3 = {
+			FeynArts`FermionChain :> DOT,
+			FeynArts`DiracObject[a__][i_DiracIndex] :> DiracChain[DOT[a],i],
+			FeynArts`DiracObject[a__][i_DiracIndex, j_DiracIndex] :> DiracChain[DOT[a],i,j],
+			FeynArts`MatrixTrace :> DiracTrace,
 			FeynArts`FAPropagatorDenominator[x_,y_] :> FeynAmpDenominator[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y]],
 			FeynArts`FAPropagatorDenominator[x_,y_,n_Integer]/;optFeynAmpDenominatorCombine :>
 				FeynAmpDenominator@@Table[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y],{j,1,n}],
 			FeynArts`FAPropagatorDenominator[x_,y_,n_Integer]/;!optFeynAmpDenominatorCombine :>
 				Product[FeynAmpDenominator[PropagatorDenominator[Momentum[(x/. z_Momentum:>z[[1]])],y]] ,{j,1,n}]
 		};
-		temp = expr //. replist0 //. replist1 //. replist2 //. replist3;
+		temp = FCReplaceRepeated[expr, replist0, replist1, replist2, replist3];
 
 		If[	OptionValue[SMP],
 			temp = temp /.repListSMP

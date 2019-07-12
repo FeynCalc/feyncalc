@@ -48,5 +48,35 @@ FeynArts`FAPropagatorDenominator[
 FeynArts`FourMomentum[FeynArts`Incoming, 2] -
 FeynArts`FourMomentum[FeynArts`Outgoing, 1], MU, 2],
 FeynAmpDenominatorCombine -> False]","FeynAmpDenominator[
-PropagatorDenominator[Momentum[InMom2 - OutMom1], MU]]^2"}
+PropagatorDenominator[Momentum[InMom2 - OutMom1], MU]]^2"},
+{"fcstFCPrepareFAAmp-ID3","FCPrepareFAAmp[((-I/16)*
+	FeynArts`FAFeynAmpDenominator[
+	FeynArts`FAPropagatorDenominator[FeynArts`FourMomentum[FeynArts`Internal, 1], ME],
+	FeynArts`FAPropagatorDenominator[
+	FeynArts`FourMomentum[FeynArts`Internal, 1] - FeynArts`FourMomentum[FeynArts`Outgoing, 1], 0]]*
+	FAMetricTensor[FeynArts`Index[Lorentz, 1], FeynArts`Index[Lorentz, 2]]*
+	FeynArts`DiracObject[FADiracSpinor[FeynArts`FourMomentum[FeynArts`Incoming, 1], ME]][
+	FeynArts`Index[Dirac, 1]]*
+	FeynArts`DiracObject[FADiracSpinor[FeynArts`FourMomentum[FeynArts`Outgoing, 1], ME]][
+	FeynArts`Index[Dirac, 2]]*
+	FeynArts`DiracObject[FADiracSlash[FeynArts`FourMomentum[FeynArts`Internal, 1]] + ME][
+	FeynArts`Index[Dirac, 3], FeynArts`Index[Dirac, 4]]*
+	(I*EL*
+	FeynArts`DiracObject[FADiracMatrix[FeynArts`Index[Lorentz, 1]],
+		FAChiralityProjector[-1]][FeynArts`Index[Dirac, 4], FeynArts`Index[Dirac, 1]] +
+		I*EL*
+	FeynArts`DiracObject[FADiracMatrix[FeynArts`Index[Lorentz, 1]],
+		FAChiralityProjector[1]][FeynArts`Index[Dirac, 4], FeynArts`Index[Dirac, 1]])*
+	(I*EL*
+	FeynArts`DiracObject[FADiracMatrix[FeynArts`Index[Lorentz, 2]],
+		FAChiralityProjector[-1]][FeynArts`Index[Dirac, 2], FeynArts`Index[Dirac, 3]] +
+		I*EL*
+	FeynArts`DiracObject[FADiracMatrix[FeynArts`Index[Lorentz, 2]],
+		FAChiralityProjector[1]][FeynArts`Index[Dirac, 2], FeynArts`Index[Dirac, 3]]))/
+Pi^4]","((-I/16)*DiracChain[Spinor[Momentum[InMom1], ME, 1], DiracIndex[Dir1]]*DiracChain[Spinor[Momentum[OutMom1], ME, 1], DiracIndex[Dir2]]*
+DiracChain[ME + DiracGamma[Momentum[LoopMom1]], DiracIndex[Dir3], DiracIndex[Dir4]]*(I*EL*DiracChain[DiracGamma[LorentzIndex[Lor1]] . DiracGamma[6], DiracIndex[Dir4], DiracIndex[Dir1]] +
+I*EL*DiracChain[DiracGamma[LorentzIndex[Lor1]] . DiracGamma[7], DiracIndex[Dir4], DiracIndex[Dir1]])*
+(I*EL*DiracChain[DiracGamma[LorentzIndex[Lor2]] . DiracGamma[6], DiracIndex[Dir2], DiracIndex[Dir3]] +
+I*EL*DiracChain[DiracGamma[LorentzIndex[Lor2]] . DiracGamma[7], DiracIndex[Dir2], DiracIndex[Dir3]])*FeynAmpDenominator[PropagatorDenominator[Momentum[LoopMom1], ME],
+PropagatorDenominator[Momentum[LoopMom1 - OutMom1], 0]]*Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]])/Pi^4"}
 };
