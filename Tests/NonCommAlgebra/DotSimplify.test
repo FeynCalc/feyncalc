@@ -119,5 +119,7 @@ SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[
 {"fcstDotSimplify-ID23","Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1], QuantumField[A1]] = 0;
 DotSimplify[ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]","2 QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1]"},
 {"fcstDotSimplify-ID24","AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A2], QuantumField[A2]] = 0;
-DotSimplify[ExpandPartialD[QuantumField[A2].QuantumField[A2].LeftPartialD[nu]]]","0"}
+DotSimplify[ExpandPartialD[QuantumField[A2].QuantumField[A2].LeftPartialD[nu]]]","0"},
+{"fcstDotSimplify-ID25","DotSimplify[DCHN[GA[mu].(x GS[p]).GA[nu], i, j], FCE -> True]",
+"x DCHN[GA[mu].GS[p].GA[nu], i, j]"}
 }

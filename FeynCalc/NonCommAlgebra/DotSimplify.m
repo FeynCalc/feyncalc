@@ -338,11 +338,6 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			(* Sort out some trivial DOTs right away *)
 			x = x /. DOT -> tmpDOT /. tmpDOT[a__]/; FreeQ[{a},tmpDOT] && MatchQ[{a},{__DiracGamma}] :> holdDOT[a] /. tmpDOT->DOT;
 			FCPrint[3, "DotSimplify: After sorting out trivial DOTs: ", x, FCDoControl->dsVerbose];
-			(*If[ FreeQ[Attributes @@ {DOT}, Flat],
-
-				x = FixedPoint[(# /. DOT -> dlin0/. dlin0 -> dlin //. dlin[a__] :> dlin1[{}, a] //. dlin1[{ookk___}] :> DOT[ookk] //.
-					DOT[aa___, DOT[b__], c___] :> DOT[aa, b, c] /. DOT -> DOTcomm)&, x,  123] /. dlin -> DOT,
-			*)
 
 			simpf[y_] :=
 				(y /. DOT -> dlin0 /. dlin0 -> dlin  //. dlin[a__] :> dlin1[{}, a] //. dlin1[{a___}] :> DOT[a] /. DOT -> DOTcomm) /. dlin -> DOT;
@@ -350,7 +345,14 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 			FCPrint[4, "DotSimplify: After simpf:", x, FCDoControl->dsVerbose];
 
-			(*];*)
+			If[	!FreeQ[x, DiracChain],
+				time=AbsoluteTime[];
+				FCPrint[1, "DotSimplify: Applying DiracChainFactor.", FCDoControl->dsVerbose];
+				x = DiracChainFactor[x, FCI->True];
+				FCPrint[1, "DotSimplify: DiracChainFactor done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3, "DotSimplify: After DiracChainFactor: ", x, FCDoControl->dsVerbose]
+			];
+
 			x = x/. sunTrace -> SUNTrace /. holdDOT -> DOT;
 
 			FCPrint[1, "DotSimplify: Non-commutative expansions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
