@@ -174,10 +174,10 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracChain",
   ButtonNote->"DiracChain"],
  ", ",
- ButtonBox["DiracChainSimplify",
+ ButtonBox["DiracChainJoin",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracChainSimplify",
-  ButtonNote->"DiracChainSimplify"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainJoin",
+  ButtonNote->"DiracChainJoin"],
  "."
 }], "SeeAlso",
  CellID->644176972]
@@ -250,7 +250,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[3]:=",
  CellID->1175096586],
 
@@ -284,7 +284,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[5]:=",
  CellID->717719024],
 
@@ -327,7 +327,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[7]:=",
  CellID->804321979],
 
@@ -576,7 +576,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[10]:=",
  CellID->1092912350],
 
@@ -670,7 +670,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracChainSimplify", "[", 
+ RowBox[{"DiracChainJoin", "[", 
   RowBox[{"%", " ", 
    RowBox[{"DIDelta", "[", 
     RowBox[{"i0", ",", "i1"}], "]"}]}], "]"}]], "Input",
@@ -756,7 +756,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracChainSimplify", "[", 
+ RowBox[{"DiracChainJoin", "[", 
   RowBox[{"%", " ", 
    RowBox[{"DIDelta", "[", 
     RowBox[{"i7", ",", "i6"}], "]"}]}], "]"}]], "Input",

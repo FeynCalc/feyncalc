@@ -211,12 +211,12 @@
               (* V spinor contracted with a chain of Dirac matrices *)
               DCHN[GAD[mu].GAD[nu], i, SpinorV[p, m]]
 
-* Introduced `DiracChainSimplify` for basic simplifications of Dirac chains. Currently, the only thing it does are contractions of the Dirac indices (4d3649a6)
+* Introduced `DiracChainJoin` for basic simplifications of Dirac chains. Currently, the only thing it does are contractions of the Dirac indices (4d3649a6)
 
     * Example: Contract the Dirac indices to obtain a closed spin chain
 
               DCHN[SpinorUBar[p1, m1], i] DCHN[GAD[mu].GAD[nu], i, j] DCHN[j, SpinorV[p2, m2]] //
-              DiracChainSimplify
+              DiracChainJoin
 
 * Added `PauliSigmaExpand` and `PauliSigmaCombine` which are essentially analogons of `DiracGammaExpand` and `DiracSigmaCombine` for Pauli matrices. (a99b9882)
 

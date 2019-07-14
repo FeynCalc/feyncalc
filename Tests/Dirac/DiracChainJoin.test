@@ -1,6 +1,6 @@
 
 
-(* :Title: DiracChainSimplify.test										*)
+(* :Title: DiracChainJoin.test										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,52 +9,52 @@
 	Copyright (C) 2014-2019 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Framework independent unit tests for DiracChainSimplify	*)
+(* :Summary:  Framework independent unit tests for DiracChainJoin	*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Dirac`fcstDiracChainSimplify =
+Tests`Dirac`fcstDiracChainJoin =
 ({
-{"fcstDiracChainSimplify-ID1", "DiracChainSimplify[0]", "0"},
-{"fcstDiracChainSimplify-ID2",
-"DiracChainSimplify[GA[i],FCE\[Rule]True]",
+{"fcstDiracChainJoin-ID1", "DiracChainJoin[0]", "0"},
+{"fcstDiracChainJoin-ID2",
+"DiracChainJoin[GA[i],FCE\[Rule]True]",
 "DiracGamma[LorentzIndex[i]]"},
-{"fcstDiracChainSimplify-ID3",
-"DiracChainSimplify[GAD[mu,mu],FCE\[Rule]True]",
+{"fcstDiracChainJoin-ID3",
+"DiracChainJoin[GAD[mu,mu],FCE\[Rule]True]",
 "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[mu, \
 D], D]"},
-{"fcstDiracChainSimplify-ID4",
-"DiracChainSimplify[DCHN[GA[i],Spinor[Momentum[p1],m1,1],\
+{"fcstDiracChainJoin-ID4",
+"DiracChainJoin[DCHN[GA[i],Spinor[Momentum[p1],m1,1],\
 Spinor[Momentum[p2],m1,1]],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . GA[i] . Spinor[Momentum[p2], m1, \
 1]"},
-{"fcstDiracChainSimplify-ID5",
-"DiracChainSimplify[DCHN[Spinor[Momentum[p1],m1,1],i]DCHN[j,
+{"fcstDiracChainJoin-ID5",
+"DiracChainJoin[DCHN[Spinor[Momentum[p1],m1,1],i]DCHN[j,
 Spinor[Momentum[p2],m1,1]]DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m1, 1]"},
-{"fcstDiracChainSimplify-ID6",
-"DiracChainSimplify[DCHN[Spinor[Momentum[p1],m1,1],i]DCHN[i,
+{"fcstDiracChainJoin-ID6",
+"DiracChainJoin[DCHN[Spinor[Momentum[p1],m1,1],i]DCHN[i,
 Spinor[Momentum[p2],m1,1]],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m1, 1]"},
-{"fcstDiracChainSimplify-ID7",
-"DiracChainSimplify[DCHN[i,Spinor[Momentum[p1],m1,1]]DCHN[GS[p]\
+{"fcstDiracChainJoin-ID7",
+"DiracChainJoin[DCHN[i,Spinor[Momentum[p1],m1,1]]DCHN[GS[p]\
 +m,Spinor[Momentum[p2],m1,1],j]DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p2], m1, 1] . (m + GS[p]) . Spinor[Momentum[p1], \
 m1, 1]"},
-{"fcstDiracChainSimplify-ID8",
-"DiracChainSimplify[DCHN[i,Spinor[Momentum[p1],m1,1]]DCHN[GS[p]\
+{"fcstDiracChainJoin-ID8",
+"DiracChainJoin[DCHN[i,Spinor[Momentum[p1],m1,1]]DCHN[GS[p]\
 +m,Spinor[Momentum[p2],m1,1],i],FCE\[Rule]True]",
 "Spinor[Momentum[p2], m1, 1] . (m + GS[p]) . Spinor[Momentum[p1], \
 m1, 1]"},
-{"fcstDiracChainSimplify-ID9",
-"DiracChainSimplify[DIDelta[i,i]]", "4"},
-{"fcstDiracChainSimplify-ID10",
-"DiracChainSimplify[DIDelta[i,j]^2]", "4"},
-{"fcstDiracChainSimplify-ID11",
-"DiracChainSimplify[DCHN[GA[i],i,i]]",
+{"fcstDiracChainJoin-ID9",
+"DiracChainJoin[DIDelta[i,i]]", "4"},
+{"fcstDiracChainJoin-ID10",
+"DiracChainJoin[DIDelta[i,j]^2]", "4"},
+{"fcstDiracChainJoin-ID11",
+"DiracChainJoin[DCHN[GA[i],i,i]]",
 "DiracTrace[DiracGamma[LorentzIndex[i]]]"},
-{"fcstDiracChainSimplify-ID12",
-"DiracChainSimplify[
+{"fcstDiracChainJoin-ID12",
+"DiracChainJoin[
 DCHN[GSD[-k1 + p1], Dir1, Dir2] DCHN[GSD[Polarization[k1, -I]], Dir2,
 	Spinor[Momentum[p1, D], QGMassQ, 1]] DCHN[
 GSD[Polarization[k2, -I]], Spinor[-Momentum[p2, D], QGMassQ, 1],
@@ -62,45 +62,45 @@ Dir1], FCE -> True]",
 "Spinor[-Momentum[p2, D], QGMassQ, 1].GSD[
 Polarization[k2, -I]].GSD[-k1 + p1].GSD[
 Polarization[k1, -I]].Spinor[Momentum[p1, D], QGMassQ, 1]"},
-{"fcstDiracChainSimplify-ID13",
-"DiracChainSimplify[DiracIndexDelta[DiracIndex[i], DiracIndex[i]],
+{"fcstDiracChainJoin-ID13",
+"DiracChainJoin[DiracIndexDelta[DiracIndex[i], DiracIndex[i]],
 TraceOfOne -> D]", "D"},
-{"fcstDiracChainSimplify-ID14",
-"DiracChainSimplify[
+{"fcstDiracChainJoin-ID14",
+"DiracChainJoin[
 DiracIndexDelta[DiracIndex[i], DiracIndex[j]] DiracIndexDelta[
 DiracIndex[j], DiracIndex[k]], FCE -> True]", "DIDelta[i,k]"},
-{"fcstDiracChainSimplify-ID15",
-"DiracChainSimplify[DCHN[SpinorUBar[p1,m1],i]DCHN[j,SpinorV[p2,m2]]\
+{"fcstDiracChainJoin-ID15",
+"DiracChainJoin[DCHN[SpinorUBar[p1,m1],i]DCHN[j,SpinorV[p2,m2]]\
 DCHN[1,i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
-{"fcstDiracChainSimplify-ID16",
-"DiracChainSimplify[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]DCHN[\
+{"fcstDiracChainJoin-ID16",
+"DiracChainJoin[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]DCHN[\
 1,i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
-{"fcstDiracChainSimplify-ID17",
-"DiracChainSimplify[DCHN[SpinorUBar[p1,m1],i]DCHN[j,SpinorV[p2,m2]]\
+{"fcstDiracChainJoin-ID17",
+"DiracChainJoin[DCHN[SpinorUBar[p1,m1],i]DCHN[j,SpinorV[p2,m2]]\
 DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
-{"fcstDiracChainSimplify-ID18",
-"DiracChainSimplify[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]\
+{"fcstDiracChainJoin-ID18",
+"DiracChainJoin[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]\
 DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
-{"fcstDiracChainSimplify-ID19",
-"DiracChainSimplify[DCHN[Spinor[p1,m1],i]DCHN[Spinor[p2,m2],j]\
+{"fcstDiracChainJoin-ID19",
+"DiracChainJoin[DCHN[Spinor[p1,m1],i]DCHN[Spinor[p2,m2],j]\
 DIDelta[i,j],FCE\[Rule]True]",
 "DCHN[Spinor[Momentum[p1], m1, 1], j]*DCHN[Spinor[Momentum[p2], \
 m2, 1], j]"},
-{"fcstDiracChainSimplify-ID20",
-"DiracChainSimplify[DCHN[Spinor[p1, m], j] DCHN[GA[mu], i, j],
+{"fcstDiracChainJoin-ID20",
+"DiracChainJoin[DCHN[Spinor[p1, m], j] DCHN[GA[mu], i, j],
 FCE -> True]",
 "DCHN[GA[mu], i, Spinor[Momentum[p1], m, 1]]"},
-{"fcstDiracChainSimplify-ID21",
-"DiracChainSimplify[DCHN[Spinor[p1, m], j] DCHN[Spinor[p2, m], i],
+{"fcstDiracChainJoin-ID21",
+"DiracChainJoin[DCHN[Spinor[p1, m], j] DCHN[Spinor[p2, m], i],
 FCE -> True]",
 "DCHN[Spinor[Momentum[p1], m, 1], j] DCHN[Spinor[Momentum[p2], m, 1],
 i]"},
-{"fcstDiracChainSimplify-ID22",
-"DiracChainSimplify[
+{"fcstDiracChainJoin-ID22",
+"DiracChainJoin[
 DCHN[GA[Lor2].GA[6].(me + GS[LoopMom1]).GA[Lor1].GA[6],
 Spinor[Momentum[OutMom1], me, 1], Dir1] DCHN[
 Spinor[Momentum[InMom1], me, 1], Dir1], FCE -> True]",

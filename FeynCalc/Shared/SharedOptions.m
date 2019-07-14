@@ -254,7 +254,7 @@ SUNNToCACF::usage=
 operator eigenvalues CA (=N) and CF (=(N^2-1)/(2 N)) are introduced.";
 
 TraceOfOne::usage =
-"TraceOfOne is an option for Tr, DiracTrace and DiracChainSimplify \
+"TraceOfOne is an option for Tr, DiracTrace and DiracChainJoin \
 Its setting determines the value of the unit trace.";
 
 VirtualBoson::usage =

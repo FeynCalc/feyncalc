@@ -2207,9 +2207,9 @@ regularization."
  CellID->1841016351],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["DiracChainSimplify",
+ Cell[TextData[ButtonBox["DiracChainJoin",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracChainSimplify"]], 
+  ButtonData->"paclet:FeynCalc/ref/DiracChainJoin"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
