@@ -440,6 +440,12 @@ $FCMemoryAvailable	= Floor[$SystemMemory/10^6/4];
 $Multiplications	= {Times, DOT};
 $OPEWard			= False;
 
+(*	Mathematica versions 8 and 9 do not have the $SystemMemory variable,
+	so for them we set the available memory for memoization to 4 GiB*)
+If[	!MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive],
+	$FCMemoryAvailable=4096
+];
+
 If[ !ValueQ[$VeryVerbose],
 	$VeryVerbose   = 0
 ];

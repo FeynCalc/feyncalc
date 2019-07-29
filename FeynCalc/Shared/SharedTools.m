@@ -696,7 +696,13 @@ MemSet[x_,y_, OptionsPattern[]] :=
 	If[(OptionValue[FCMemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
 		y,
 		Set[x, y]
-	];
+	]/; MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive];
+
+MemSet[_,_, OptionsPattern[]]:=
+	(
+	Message[FeynCalc::failmsg,"The value of FCMemoryAvailable is not a positive integer."];
+	Abort[]
+	)/; !MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive];
 
 MLimit[x_, l_List, OptionsPattern[]] :=
 	Fold[OptionValue[Limit][#1, Flatten[{##2}][[1]]]&, x, l];
