@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracChainJoin::usage =
-"DiracChainJoin[exp] simplifies chains of Dirac matrices with explicit \
+"DiracChainJoin[exp] joins chains of Dirac matrices with explicit \
 Dirac indices wrapped with a head DiracChain.";
 
 DiracChainJoin::failmsg =
@@ -31,7 +31,7 @@ End[]
 
 Begin["`DiracChainJoin`Private`"]
 
-fchsVerbose::usage="";
+dchjVerbose::usage="";
 li::usage="";
 li1::usage="";
 li2::usage="";
@@ -55,8 +55,15 @@ DiracChainJoin[expr_, OptionsPattern[]] :=
 
 		optTraceOfOne					= OptionValue[TraceOfOne];
 
-		FCPrint[1, "DiracChainJoin. Entering.", FCDoControl->fchsVerbose];
-		FCPrint[3, "DiracChainJoin: Entering with ", expr, FCDoControl->fchsVerbose];
+		If [OptionValue[FCVerbose]===False,
+			dchjVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				dchjVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "DiracChainJoin. Entering.", FCDoControl->dchjVerbose];
+		FCPrint[3, "DiracChainJoin: Entering with ", expr, FCDoControl->dchjVerbose];
 
 
 		If[ OptionValue[FCI],
@@ -69,53 +76,62 @@ DiracChainJoin[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[FCVerbose]===False,
-			fchsVerbose=$VeryVerbose,
+			dchjVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				fchsVerbose=OptionValue[FCVerbose]
+				dchjVerbose=OptionValue[FCVerbose]
 			];
 		];
 
-		FCPrint[1, "DiracChainJoin: Isolating Dirac chains.", FCDoControl->fchsVerbose];
+		FCPrint[1, "DiracChainJoin: Isolating Dirac chains.", FCDoControl->dchjVerbose];
 		time=AbsoluteTime[];
 
-		tmp = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->False, FCJoinDOTs-> False,
-			DiracSigmaExplicit->False, LorentzIndex->False, Spinor->False, DiracGamma->False, DiracChain->True,
-			Factoring -> OptionValue[Factoring]];
+		If[	OptionValue[FCDiracIsolate],
 
-		FCPrint[1, "DiracChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fchsVerbose];
-		FCPrint[3, "DiracChainJoin: After FCDiracIsolate ", tmp, FCDoControl->fchsVerbose];
+			tmp = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->False, FCJoinDOTs-> False,
+				DiracSigmaExplicit->False, LorentzIndex->False, Spinor->False, DiracGamma->False, DiracChain->True,
+				Factoring -> OptionValue[Factoring]];
+			diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
+
+			FCPrint[1, "DiracChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
+			FCPrint[3, "DiracChainJoin: After FCDiracIsolate ", tmp, FCDoControl->dchjVerbose];
 
 
-		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-		FCPrint[3,"DiracChainJoin: diracObjects: ", diracObjects , FCDoControl->fchsVerbose];
+
+			FCPrint[3,"DiracChainJoin: diracObjects: ", diracObjects , FCDoControl->dchjVerbose];
 
 
-		FCPrint[1, "DiracChainJoin: Simplifying Dirac chains.", FCDoControl->fchsVerbose];
-		time=AbsoluteTime[];
-		diracObjectsEval = Map[(diracChainEval[#])&, (diracObjects/.dsHead->Identity/. DOT->holdDOT)]/.
-			diracChainEval -> Identity /. holdDOT->DOT;
+			FCPrint[1, "DiracChainJoin: Simplifying Dirac chains.", FCDoControl->dchjVerbose];
+			time=AbsoluteTime[];
+			diracObjectsEval = Map[(diracChainEval[#])&, (diracObjects/.dsHead->Identity/. DOT->holdDOT)]/.
+				diracChainEval -> Identity /. holdDOT->DOT;
 
-		FCPrint[1, "DiracChainJoin: Done simplifying Dirac chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fchsVerbose];
-		FCPrint[3, "DiracChainJoin: diracObjectsEval: ", diracObjectsEval, FCDoControl->fchsVerbose];
+			FCPrint[1, "DiracChainJoin: Done simplifying Dirac chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
+			FCPrint[3, "DiracChainJoin: diracObjectsEval: ", diracObjectsEval, FCDoControl->dchjVerbose];
 
-		If[ !FreeQ2[diracObjectsEval,{diracChainEval,holdDOT}],
-			Message[DiracChainJoin::failmsg,"Evaluation of isolated objects failed."];
-			Abort[]
+			If[ !FreeQ2[diracObjectsEval,{diracChainEval,holdDOT}],
+				Message[DiracChainJoin::failmsg,"Evaluation of isolated objects failed."];
+				Abort[]
+			];
+
+			FCPrint[1, "DiracChainJoin: Inserting Dirac objects back.", FCDoControl->dchjVerbose];
+			time=AbsoluteTime[];
+			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			FCPrint[3,"DiracChainJoin: repRule: ",repRule , FCDoControl->dchjVerbose];
+			res =  ( tmp/.repRule);
+			FCPrint[1, "DiracChainJoin: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose],
+
+			(*Fast mode*)
+			FCPrint[1, "DiracChainJoin: Using the fast mode.", FCDoControl->dchjVerbose];
+			res = diracChainEval[ex/. DOT->holdDOT] /.  diracChainEval -> Identity /. holdDOT->DOT ;
+			FCPrint[3, "DiracChainJoin: Result of the evaluation: ", res, FCDoControl->dchjVerbose]
 		];
-
-		FCPrint[1, "DiracChainJoin: Inserting Dirac objects back.", FCDoControl->fchsVerbose];
-		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
-		FCPrint[3,"DiracChainJoin: repRule: ",repRule , FCDoControl->fchsVerbose];
-		res =  ( tmp/.repRule);
-		FCPrint[1, "DiracChainJoin: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fchsVerbose];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
 		];
 
-		FCPrint[1, "DiracChainJoin: Leaving.", FCDoControl->fchsVerbose];
-		FCPrint[3, "DiracChainJoin: Leaving with ", res, FCDoControl->fchsVerbose];
+		FCPrint[1, "DiracChainJoin: Leaving.", FCDoControl->dchjVerbose];
+		FCPrint[3, "DiracChainJoin: Leaving with ", res, FCDoControl->dchjVerbose];
 
 
 

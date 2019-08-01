@@ -105,5 +105,10 @@ DCHN[GA[Lor2].GA[6].(me + GS[LoopMom1]).GA[Lor1].GA[6],
 Spinor[Momentum[OutMom1], me, 1], Dir1] DCHN[
 Spinor[Momentum[InMom1], me, 1], Dir1], FCE -> True]",
 "Spinor[Momentum[OutMom1], me, 1].GA[Lor2].GA[
-6].(me + GS[LoopMom1]).GA[Lor1].GA[6].Spinor[Momentum[InMom1], me, 1]"}
+6].(me + GS[LoopMom1]).GA[Lor1].GA[6].Spinor[Momentum[InMom1], me, 1]"},
+{"fcstDiracChainJoin-ID23",
+"DiracChainJoin[
+DCHN[GA[nu], h, i] DCHN[GS[p] + m, i, j] DCHN[GA[mu], j, k],
+FCDiracIsolate -> False, FCE -> True]",
+"DCHN[GA[nu].(m + GS[p]).GA[mu], h, k]"}
 });
