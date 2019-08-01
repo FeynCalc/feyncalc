@@ -113,6 +113,12 @@ If[ Names["Tests`Dirac`fcstDiracChainJoin*"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
+If[ Names["Tests`Dirac`fcstDiracChainCombine*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracChainCombine*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
 If[ Names["Tests`Dirac`fcstDiracChainExpand*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracChainExpand*"])];
