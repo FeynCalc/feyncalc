@@ -48,6 +48,7 @@ canodummyVerbose::usage="";
 Options[FCCanonicalizeDummyIndices] = {
 	CartesianIndexNames -> {},
 	CustomIndexNames 	-> {},
+	DiracChainExpand	-> True,
 	DotSimplify 		-> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -136,6 +137,10 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[DotSimplify],
 			ex = DotSimplify[ex,FCI->True]
+		];
+
+		If[ OptionValue[DiracChainExpand],
+			ex = DiracChainExpand[ex,FCI->True]
 		];
 
 		tmp = Expand2[ex, indhead];

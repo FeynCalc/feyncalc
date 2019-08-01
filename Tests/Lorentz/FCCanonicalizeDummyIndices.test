@@ -172,5 +172,11 @@ me*Sqrt[GaugeXi[W]]]]"},
 DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
 FCE -> True],
 DIDelta[a_FCGV, b_FCGV] DCHN[Spinor[-Momentum[p1], 0, 1],
-b_FCGV] DCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"}
+b_FCGV] DCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID26",
+"FCCanonicalizeDummyIndices[DiracChain[DiracGamma[LorentzIndex[mu]].(m +
+	DiracGamma[LorentzIndex[j]] Pair[LorentzIndex[j],
+	Momentum[p]]).DiracGamma[LorentzIndex[nu]], DiracIndex[i],
+DiracIndex[j]], LorentzIndexNames -> {al}, FCE -> True]",
+"m DCHN[GA[mu].GA[nu], i, j] + DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"}
 });
