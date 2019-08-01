@@ -189,5 +189,21 @@ CVD[l, $AL[a_]] CVD[l, $AL[b_]] KDD[$AL[a_], $AL[b_]]]", "True"},
 "MatchQ[Uncontract[SP[q, p]^2 GS[r1].GA[mu].GS[r2], All, Pair -> All, FCE -> True],
 GA[b_].GA[mu].GA[a_] FV[p, c_] FV[p, d_] FV[q, c_] FV[q, d_] FV[r1, b_] FV[r2, a_]]", "True"},
 {"fcstUncontract-ID55",
-"Uncontract[aaa, All]", "aaa"}
+"Uncontract[aaa, All]", "aaa"},
+{"fcstUncontract-ID56",
+"FCCanonicalizeDummyIndices[
+Uncontract[DCHN[GA[mu].(GS[p]).GA[nu], i, j], p],
+LorentzIndexNames -> {al}, FCE -> True]", "DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"},
+{"fcstUncontract-ID57",
+"FCCanonicalizeDummyIndices[
+Uncontract[DCHN[GA[mu].(GS[p] + m).GA[nu], i, j], p],
+LorentzIndexNames -> {al}, FCE -> True]", "m DCHN[ GA[mu].GA[nu], i, j] +
+DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"},
+{"fcstUncontract-ID58", "FCCanonicalizeDummyIndices[
+Uncontract[DCHN[-GSD[k] + me, Dir3, Dir4], k],
+LorentzIndexNames -> {mu}, FCE -> True]", "me DCHN[1, Dir3, Dir4] - DCHN[GAD[mu], Dir3, Dir4] FVD[k, mu]"},
+{"fcstUncontract-ID59", "FCCanonicalizeDummyIndices[
+Uncontract[DCHN[GA[mu].(-GSD[k] + me).GA[nu], Dir3, Dir4], k],
+LorentzIndexNames -> {la}, FCE -> True]", "me DCHN[GA[mu].GA[nu], Dir3, Dir4] -
+DCHN[GA[mu].GAD[la].GA[nu], Dir3, Dir4] FVD[k, la]"}
 });

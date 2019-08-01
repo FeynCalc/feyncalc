@@ -40,6 +40,7 @@ Options[Uncontract] = {
 	CartesianMomentum	-> True,
 	CartesianPair 		-> {},
 	Dimension			-> Automatic,
+	DiracChainExpand	-> True,
 	DiracGamma			-> True,
 	DotSimplify			-> True,
 	Eps 				-> True,
@@ -98,7 +99,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			epsRules={}, digaRules={}, sigmaRules={}, pairRules={}, cpairRules={},
 			repRuleObjects = {}, res, uniqueHead, qRule,
 			tensorList, tensorRules = {},
-			alternativesTensorList, tensoruncontract, fctensor, qMark
+			alternativesTensorList, tensoruncontract, fctensor, qMark, tmp
 		},
 
 		If [OptionValue[FCVerbose]===False,
@@ -325,8 +326,13 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
 				Abort[]
 			];
+			tmp = (exp + null1 + null2) /. _FeynAmpDenominator :> Unique[];
+			allObjects = Cases[tmp /. _DiracChain :> Unique[], _DiracGamma, Infinity]//DeleteDuplicates//Sort;
 
-			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _DiracGamma, Infinity]//DeleteDuplicates//Sort;
+			If[	!FreeQ[exp,DiracChain],
+				allObjects = Join[allObjects, Cases[tmp, DiracChain[_,_,_], Infinity]//DeleteDuplicates//Sort];
+			];
+
 			selectedObjects = SelectNotFree[allObjects, q];
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
@@ -414,6 +420,10 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			FCPrint[3, "Uncontract: After applying the replacement rule for other tensors: ", exp , FCDoControl->ucVerbose]
 		];
 		res = exp /. times -> Times /. dotTimes -> DOT;
+
+		If[	OptionValue[DiracChainExpand] && !FreeQ[res,DiracChain],
+			res = DiracChainExpand[res,FCI->True,Momentum->{q}]
+		];
 
 		FCPrint[1, "Uncontract: Intermediate result: " ,res, FCDoControl->ucVerbose];
 
