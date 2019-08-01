@@ -46,6 +46,7 @@ diga::usage="";
 tmpli::usage="";
 
 Options[DiracTrick] = {
+	DiracChain			-> True,
 	DiracGammaCombine	-> False,
 	Expanding 			-> False,
 	FCDiracIsolate		-> True,
@@ -79,7 +80,10 @@ diracTrickEvalFastFromDiracSimplifySingle[diracObject_, {tmpHead_, optInsideDira
 		insideDiracTrace = tmp1;
 		diracOrder = tmp2;
 		res
-	];
+	]/; Head[diracObject]=!=DiracChain;
+
+diracTrickEvalFastFromDiracSimplifySingle[DiracChain[diracObject_,i_,j_], {tmpHead_, optInsideDiracTrace_, optDiracOrder_}]:=
+	DiracChain[diracTrickEvalFastFromDiracSimplifySingle[diracObject, {tmpHead, optInsideDiracTrace, optDiracOrder}],i,j]
 
 DiracTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, dsPart, diracObjects,
@@ -158,7 +162,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67]];
+				FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain]];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -266,6 +270,9 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 (*	Here we can quickly handle trivial contractions of short expressions. Usually such expressions appear
 	when we call DiracTrick from DiracTrace after DotSimplify. Hence, the rules should be as simple, as possible	*)
+
+diracTrickEvalFast[DiracChain[ex_, i_, j_]]:=
+	DiracChain[diracTrickEvalFast[ex],i,j];
 
 diracTrickEvalFast[ex:DiracGamma[__]]:=
 	ex/; !insideDiracTrace && !diracOrder;

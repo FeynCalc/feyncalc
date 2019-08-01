@@ -2217,3 +2217,22 @@ DiracGamma[7]"},
 "6*DiracGamma[ExplicitLorentzIndex[0]] . DiracGamma[7]"}
 });
 
+Tests`Dirac`fcstDiracTrickDiracChain =
+({
+{"fcstDiracTrickDiracChain-ID1",
+"DiracTrick[DCHN[GS[p].GS[q].GS[p],i,j],FCE\[Rule]True]",
+"DCHN[-(GS[q]*SP[p, p]) + 2*GS[p]*SP[p, q], i, j]"},
+{"fcstDiracTrickDiracChain-ID2",
+"DiracTrick[DCHN[GS[p].GS[q].GS[p],i,j],DiracChain\[Rule]False,FCE\
+\[Rule]True]", "DCHN[GS[p] . GS[q] . GS[p], i, j]"},
+{"fcstDiracTrickDiracChain-ID3",
+"DiracTrick[DCHN[GS[p].GS[q].GS[p],i,j]+DCHN[GS[q].GS[p].GS[q],i,j]\
+,FCE\[Rule]True]",
+"DCHN[-(GS[q]*SP[p, p]) + 2*GS[p]*SP[p, q], i, j] + \
+DCHN[2*GS[q]*SP[p, q] - GS[p]*SP[q, q], i, j]"},
+{"fcstDiracTrickDiracChain-ID4",
+"DiracTrick[DCHN[GS[p].GS[q].GS[p],i,j]+DCHN[GS[q].GS[p].GS[q],i,j]\
+,DiracChain\[Rule]False,FCE\[Rule]True]",
+"DCHN[GS[p] . GS[q] . GS[p], i, j] + DCHN[GS[q] . GS[p] . GS[q], \
+i, j]"}
+})
