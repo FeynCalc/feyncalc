@@ -42,6 +42,7 @@ holdDOT::usage="";
 optTraceOfOne::usage="";
 
 Options[DiracChainJoin] = {
+	Drop			-> True,
 	FCDiracIsolate	-> True,
 	FCE 			-> False,
 	FCI 			-> False,
@@ -51,9 +52,10 @@ Options[DiracChainJoin] = {
 };
 
 DiracChainJoin[expr_, OptionsPattern[]] :=
-	Block[{ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2, dsHead, time, repRule},
+	Block[{	ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2,
+			dsHead, time, repRule},
 
-		optTraceOfOne					= OptionValue[TraceOfOne];
+		optTraceOfOne	= OptionValue[TraceOfOne];
 
 		If [OptionValue[FCVerbose]===False,
 			dchjVerbose=$VeryVerbose,

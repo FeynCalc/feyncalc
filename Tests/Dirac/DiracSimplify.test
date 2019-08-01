@@ -154,7 +154,19 @@ p3])/m1"},
 {"fcstDiracSimplify-ID33","DiracSimplify[TGA[].CGA[i].CGA[i].TGA[]]","-3"},
 {"fcstDiracSimplify-ID34","DiracSimplify[-1/2 GA[5].(GAD[mu].GSD[v] - FVD[v, mu]) FVD[v, mu]]","0"},
 {"fcstDiracSimplify-ID35","DiracSimplify[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j], FCE -> True]","-CSP[p, p] + CGS[p].CGS[q]"},
-{"fcstDiracSimplify-ID36","DiracSimplify[DiracTrace[1]]","4"}
+{"fcstDiracSimplify-ID36","DiracSimplify[DiracTrace[1]]","4"},
+{"fcstDiracSimplify-ID37","DiracSimplify[
+DCHN[GSD[-k1 + p1], Dir1, Dir2] DCHN[GSD[Polarization[k1, -I]], Dir2,
+	Spinor[Momentum[p1, D], QGMassQ, 1]] DCHN[
+GSD[Polarization[k2, -I]], Spinor[-Momentum[p2, D], QGMassQ, 1],
+Dir1], FCE -> True]","-(QGMassQ*Spinor[-Momentum[p2, D], QGMassQ, 1] .
+	GSD[Polarization[k2, -I]] . GSD[Polarization[k1, -I]] .
+	Spinor[Momentum[p1, D], QGMassQ, 1]) -
+Spinor[-Momentum[p2, D], QGMassQ, 1] . GSD[Polarization[k2, -I]] .
+GSD[k1] . GSD[Polarization[k1, -I]] . Spinor[Momentum[p1, D], QGMassQ,
+1] + 2*Spinor[-Momentum[p2, D], QGMassQ, 1] .
+GSD[Polarization[k2, -I]] . Spinor[Momentum[p1, D], QGMassQ, 1]*
+SPD[p1, Polarization[k1, -I]]"}
 };
 
 

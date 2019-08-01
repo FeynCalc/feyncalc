@@ -52,6 +52,8 @@ optToDiracGamma67::usage="";
 
 Options[DiracSimplify] = {
 	Contract			-> True,
+	DiracChain			-> True,
+	DiracChainJoin		-> True,
 	DiracEquation		-> True,
 	DiracGammaCombine	-> False,
 	DiracOrder			-> False,
@@ -138,7 +140,8 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, CartesianIndex->True, ToDiracGamma67->optToDiracGamma67];
+				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, CartesianIndex->True,
+				ToDiracGamma67->optToDiracGamma67, DiracChain->OptionValue[DiracChain]];
 
 			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
 				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz
@@ -163,6 +166,15 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 
 			];
 
+			If[ OptionValue[DiracChainJoin],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracSimplify: Contracting Dirac indices.", FCDoControl->dsVerbose];
+				diracObjectsEval = diracObjectsEval /. dsHead[x_]/;!FreeQ[x,DiracChain] :>
+					DiracChainJoin[x, FCI->True, FCDiracIsolate->False];
+				FCPrint[1, "DiracSimplify: Done calculating Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjects , FCDoControl->dsVerbose]
+			];
+
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Applying diracSimplifyEval", FCDoControl->dsVerbose];
 
@@ -185,8 +197,10 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			tmp =  (dsPart /. Dispatch[repRule]);
 			FCPrint[1, "DiracSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose],
 
-			(* 	This is a fast mode for input that is already isolated, e.g. for calling DiracSimplify/@exprList
-				from internal functions	*)
+			(*
+				This is a fast mode for input that is already isolated, e.g. for calling DiracSimplify/@exprList
+				from internal functions
+			*)
 			FCPrint[1,"DiracSimplify: Fast mode.", FCDoControl->dsVerbose];
 
 			tmp = FeynCalc`Package`diracTrickEvalFastFromDiracSimplifySingle[ex, {tmpHead,optInsideDiracTrace,optDiracOrder}];
@@ -260,6 +274,13 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		FCPrint[3,"DiracSimplify: Leaving with ", res, FCDoControl->dsVerbose];
 		res
 	];
+
+(*TODO Figure out some way to treat spinors as well! *)
+diracSimplifyEval[DiracChain[expr_,i_,j_]]:=
+	DiracChain[diracSimplifyEval[expr],i,j]/; !optExpanding
+
+diracSimplifyEval[DiracChain[expr_,i_,j_]]:=
+	DiracChainExpand[DiracChain[diracSimplifyEval[expr],i,j], FCI->True]/; optExpanding
 
 diracSimplifyEval[expr_]:=
 	Block[{tmp=expr, time, time2, res},
@@ -440,7 +461,7 @@ diracSimplifyEval[expr_]:=
 		res
 
 
-	];
+	]/;Head[expr]=!=DiracChain;
 
 FCPrint[1,"DiracSimplify.m loaded."];
 End[]
