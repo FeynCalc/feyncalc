@@ -1093,5 +1093,13 @@ CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) - \
 1}]*FAD[pE1 + pPh]*TC[k]^2*TGA[])/(m2^2 - m3^2) + (CFAD[{{k, 0}, \
 {-m3^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - TC[k - pH]^2, -1}, \
 1}, {{k - pE1 - pPh, 0}, {-TC[k - pE1 - pPh]^2, -1}, 1}]*FAD[pE1 + \
-pPh]*TC[k]^2*TGA[])/(m2^2 - m3^2)"}
+pPh]*TC[k]^2*TGA[])/(m2^2 - m3^2)"},
+{"fcstTID-ID51","TID[DCHN[-GSD[k] + me, Dir3, Dir4] FAD[{k, me}, k - q], k,
+FCE -> True]","(DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (1/(
+2 SPD[q, q]))*FAD[k, {k - q, me}] (DCHN[GSD[q], Dir3, Dir4] (me^2 - SPD[q, q]) -
+2 me DCHN[1, Dir3, Dir4] SPD[q, q] + 2 DCHN[GSD[q], Dir3, Dir4] SPD[q, q])"},
+{"fcstTID-ID52","TID[DCHN[GAD[mu].(-GSD[k] + me).GAD[nu], Dir3, Dir4] FAD[{k, me},
+k - q], k, FCE -> True]","(DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[{k, me}])/(
+2 SPD[q, q]) - (1/(2 SPD[q, q]))* FAD[k, {k - q, me}] (DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] (me^2 - SPD[q, q]) -
+2 me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] SPD[q, q] + 2 DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] SPD[q, q])"}
 };

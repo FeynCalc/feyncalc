@@ -140,9 +140,15 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 
 		(* Single out relevant loop momenta *)
 		time=AbsoluteTime[];
-		FCPrint[1, "FCMultiLoopTID: Extracting relevant loop momenta.", FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: Expanding w.r.t the relevant loop momenta.", FCDoControl->mltidVerbose];
 		ex = ex//DiracGammaExpand[#,Momentum->qs, FCI->True]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True, FCI->True]&;
-		FCPrint[1, "FCMultiLoopTID: Done applying relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+
+		If[	!FreeQ[ex,DiracChain],
+			ex = DiracChainExpand[ex,FCI->True,Momentum->qs]
+		];
+
+		FCPrint[1, "FCMultiLoopTID: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3,"FCMultiLoopTID: After the expansion: ", ex, FCDoControl->mltidVerbose];
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)
@@ -150,6 +156,11 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Uncontracting Lorentz indices.", FCDoControl->mltidVerbose];
 		ex = ex//.ruleUncontract;
+
+		If[	!FreeQ[ex,DiracChain],
+			ex = DiracChainFactor[ex,FCI->True]
+		];
+
 		FCPrint[1, "FCMultiLoopTID: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		FCPrint[3,"FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
 

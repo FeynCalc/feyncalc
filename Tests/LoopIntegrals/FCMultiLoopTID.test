@@ -271,5 +271,14 @@ FCE -> True]",
 1}] (D x^2 FVD[p, i] FVD[p, j] +
 2 x FVD[p, i] FVD[p, j] SPD[p, p] - x^2 MTD[i, j] SPD[p, p] +
 FVD[p, i] FVD[p, j] SPD[p, p]^2 - 2 x MTD[i, j] SPD[p, p]^2 -
-MTD[i, j] SPD[p, p]^3)"}
+MTD[i, j] SPD[p, p]^3)"},
+{"fcstFCMultiLoopTID-ID24", "FCMultiLoopTID[
+DCHN[-GSD[k] + me, Dir3, Dir4] FAD[{k, me}, k - q], {k},FCE->True]","me DCHN[1, Dir3, Dir4] FAD[{k, me}, k - q] + (
+DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (DCHN[GSD[q], Dir3, Dir4] FAD[k, {k - q, me}] (me^2 + SPD[q, q]))/(
+2 SPD[q, q])"},
+{"fcstFCMultiLoopTID-ID25", "FCMultiLoopTID[
+DCHN[GAD[mu].(-GSD[k] + me).GAD[nu], Dir3, Dir4] FAD[{k, me},
+k - q], {k}, FCE -> True]","me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] FAD[{k, me}, k - q] + (
+DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[
+k, {k - q, me}] (me^2 + SPD[q, q]))/(2 SPD[q, q])"}
 })
