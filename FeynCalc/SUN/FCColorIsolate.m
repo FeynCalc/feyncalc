@@ -42,7 +42,8 @@ Options[FCColorIsolate] = {
 	SUND 			-> True,
 	SUNF 			-> True,
 	SUNT 			-> True,
-	SUNTrace 		-> True
+	SUNTrace 		-> True,
+	TimeConstrained	-> 3
 };
 
 FCColorIsolate[expr_, OptionsPattern[]] :=
@@ -71,7 +72,7 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,SUNHeadsList,Factoring->OptionValue[Factoring]];
+			ex = Collect2[ex,SUNHeadsList,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
 		];
 
 		res = (Map[(restHead[SelectFree[#, SUNHeadsList]]*
