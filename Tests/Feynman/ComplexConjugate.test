@@ -52,5 +52,45 @@ Spinor[Momentum[p4], M4, 1]"},
 {"fcstComplexConjugate-ID17","ComplexConjugate[(mb GA[6] + GA[7] mt), FCE -> True]",
 	"(mt*GA[6] + mb*GA[7])"},
 {"fcstComplexConjugate-ID18","ComplexConjugate[FCChargeConjugateTransposed[GA[\[Mu], 5, \[Nu]]],
-FCE -> True]",	"-GA[\[Mu]] . GA[5] . GA[\[Nu]]"}
+FCE -> True]",	"-GA[\[Mu]] . GA[5] . GA[\[Nu]]"},
+{"fcstComplexConjugate-ID19",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu]].SpinorV[p2,m2],\
+FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[mu] . Spinor[Momentum[p1], m1, \
+1]"},
+{"fcstComplexConjugate-ID20",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[5]].SpinorV[p2,m2],\
+FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[5] . Spinor[Momentum[p1], m1, \
+1]"},
+{"fcstComplexConjugate-ID21",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,nu]].SpinorV[p2,m2]\
+,FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[nu] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID22",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,5,nu]].SpinorV[p2,\
+m2],FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[5] . GA[nu] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID23",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,nu,rho]].SpinorV[\
+p2,m2],FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[nu] . GA[rho] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID24",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,nu,rho,5]].SpinorV[\
+p2,m2],FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[nu] . GA[rho] . GA[5] \
+. Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID25",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GS[p]+m].SpinorV[p2,m2],\
+FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . (m - GS[p]) . Spinor[Momentum[p1], \
+m1, 1]"},
+{"fcstComplexConjugate-ID26",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu].(GS[p]+m).GA[nu]].\
+SpinorV[p2,m2],FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . GA[mu] . (m - GS[p]) . GA[nu] . \
+Spinor[Momentum[p1], m1, 1]"}
 };
