@@ -53,5 +53,11 @@ SUNIndex[k]]*FCGV[\"ColorObject\"][SUNT[SUNIndex[c]]]"},
 {"fcstFCColorIsolate-ID9",
 "FCColorIsolate[SUNTrace[SUNT[a,b,c]]x+y]",
 "y + x*FCGV[\"ColorObject\"][SUNTrace[SUNT[SUNIndex[a]] . \
-SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]]]"}
+SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]]]"},
+{"fcstFCColorIsolate-ID10",
+"FCColorIsolate[SUNF[x, y, z]^2 SUNT[a, b] x + y SUNT[c] SUND[i, j, k],
+Head -> {col, re}, FCE -> True]",
+"col[SUNT[a].SUNT[b] SUNF[x, y, z]^2] re[x] +
+col[SUND[i, j, k] SUNT[c]] re[y]"},
+{"fcstFCColorIsolate-ID11", "FCColorIsolate[x,Head->{col,re}]", "re[x]"}
 });

@@ -276,6 +276,15 @@ DiracIndex[j]], DiracChain -> True, Head -> dirac, FCE -> True]", "dirac[DCHN[GA
 DiracGamma -> False, DiracChain -> True, Head -> dirac,
 FCE -> True]", "dirac[DCHN[1, i, j]]*GA[mu]"},
 {"fcstFCDiracIsolate-ID30", "FCDiracIsolate[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j],
-CartesianIndex -> True, Head -> dch, FCE -> True]", "dch[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j]]"}
+CartesianIndex -> True, Head -> dch, FCE -> True]", "dch[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j]]"},
+{"fcstFCDiracIsolate-ID31", "Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[
+Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand // DotSimplify //
+FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
+	FCJoinDOTs -> False, FCE -> True] &", "Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[
+	Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
+DotSimplify //
+FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
+FCJoinDOTs -> False, FCE -> True] &"},
+{"fcstFCDiracIsolate-ID32", "FCDiracIsolate[x,Head->{di,re}]", "re[x]"}
 });
 

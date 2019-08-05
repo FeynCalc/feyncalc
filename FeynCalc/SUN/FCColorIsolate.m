@@ -33,6 +33,7 @@ Options[FCColorIsolate] = {
 	DotSimplify		-> True,
 	ExceptHeads 	-> {},
 	Expanding		-> True,
+	FCE				-> False,
 	FCI				-> False,
 	Factoring		-> Factor,
 	Head			-> FCGV["ColorObject"],
@@ -47,9 +48,16 @@ Options[FCColorIsolate] = {
 };
 
 FCColorIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, restHead},
+	Block[ {res, null1, null2, ex,tmp, head, optHead, headR},
 
-		head = OptionValue[Head];
+		optHead = OptionValue[Head];
+
+		If[MatchQ[optHead,{_,_}],
+			{head, headR} = optHead,
+
+			head = optHead;
+			headR = Identity
+		];
 
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
@@ -58,7 +66,7 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 
 
 		If[	FreeQ2[ex,SUNHeadsList],
-			Return[ex]
+			Return[restHead[ex] /. restHead -> headR]
 		];
 
 		If[	OptionValue[Expanding],
@@ -108,7 +116,7 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[Isolate],
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
-			res = res /. restHead -> Identity
+			res = res /. restHead[0]->0 /. restHead -> headR;
 		];
 
 		If [ !FreeQ[res/. head[__] :> 1, SUNHeadsList] & ,
@@ -116,8 +124,15 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	];
+
+restHead[0]=
+	0;
 
 FCPrint[1,"FCColorIsolate.m loaded."];
 End[]

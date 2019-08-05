@@ -74,6 +74,13 @@ PauliXi[I]]"},
 "FCPauliIsolate[MT[mu, nu] SI[i, j, k] + SIS[p, l] + MT[mu, nu] \
 SI[mu, j, k],LorentzIndex -> False, Head -> dch] // FCE",
 "dch[SIS[p] . SIS[l]] + dch[SI[i] . SI[j] . SI[k]]*MT[mu, nu] + \
-dch[SI[mu] . SI[j] . SI[k]]*MT[mu, nu]"}
+dch[SI[mu] . SI[j] . SI[k]]*MT[mu, nu]"},
+{"fcstFCPauiliIsolate-ID16",
+"FCPauliIsolate[
+MT[mu, nu] SI[i, j, k] + SIS[p, l] + MT[mu, nu] SI[mu, j, k],
+LorentzIndex -> False, Head -> {dch, re}, FCE -> True]",
+"dch[SIS[p].SIS[l]] re[1] + dch[SI[i].SI[j].SI[k]] re[MT[mu, nu]] +
+dch[SI[mu].SI[j].SI[k]] re[MT[mu, nu]]"},
+{"fcstFCPauiliIsolate-ID17", "FCPauliIsolate[x,Head->{pa,re}]", "re[x]"}
 });
 

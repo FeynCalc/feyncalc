@@ -65,8 +65,9 @@ makeSelectionList[expr_,heads_List]:=
 ];
 
 FCDiracIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2, time, fcdiVerbose,
-		headsList, optTimeConstrained},
+	Block[{	res, null1, null2, ex,tmp, head, selectionList, lorHead,
+			tmpHead, tmpHead2, time, fcdiVerbose,
+			headsList, optTimeConstrained, optHead, headR},
 
 		If [OptionValue[FCVerbose]===False,
 			fcdiVerbose=$VeryVerbose,
@@ -90,7 +91,14 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			headsList = Join[headsList,{CartesianIndex}];
 		];
 
-		head = OptionValue[Head];
+		optHead = OptionValue[Head];
+
+		If[MatchQ[optHead,{_,_}],
+			{head, headR} = optHead,
+
+			head = optHead;
+			headR = Identity
+		];
 
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
@@ -100,7 +108,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		FCPrint[3, "FCDiracIsolate: Entering with: ", ex, FCDoControl->fcdiVerbose];
 
 		If[	FreeQ2[ex,headsList],
-			Return[ex]
+			Return[restHead[ex] /. restHead -> headR]
 		];
 
 		If[ OptionValue[DiracSigmaExplicit],
@@ -218,7 +226,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying Isolate.", FCDoControl->fcdiVerbose];
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
-			res = res /. restHead -> Identity;
+			res = res /. restHead[0]->0 /. restHead -> headR;
 			FCPrint[1, "FCDiracIsolate: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 		];
 
@@ -246,6 +254,9 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 
 		res
 	];
+
+restHead[0]=
+	0;
 
 FCPrint[1,"FCDiracIsolate.m loaded."];
 End[]

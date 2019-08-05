@@ -62,8 +62,9 @@ makeSelectionList[expr_,heads_List]:=
 ];
 
 FCPauliIsolate[expr_, OptionsPattern[]] :=
-	Block[{	res, null1, null2, ex,tmp, head, restHead,selectionList,lorHead,tmpHead,tmpHead2, time, fcpiVerbose,
-			headsList, optTimeConstrained},
+	Block[{	res, null1, null2, ex,tmp, head, selectionList, lorHead,
+			tmpHead,tmpHead2, time, fcpiVerbose, headsList,
+			optTimeConstrained, optHead, headR},
 
 		If [OptionValue[FCVerbose]===False,
 			fcpiVerbose=$VeryVerbose,
@@ -87,7 +88,15 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 			headsList = Join[headsList,{CartesianIndex}];
 		];
 
-		head = OptionValue[Head];
+		optHead = OptionValue[Head];
+
+		If[MatchQ[optHead,{_,_}],
+			{head, headR} = optHead,
+
+			head = optHead;
+			headR = Identity
+		];
+
 
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
@@ -97,7 +106,7 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 		FCPrint[3, "FCPauliIsolate: Entering with: ", ex, FCDoControl->fcpiVerbose];
 
 		If[	FreeQ2[ex,headsList],
-			Return[ex]
+			Return[restHead[ex] /. restHead -> headR]
 		];
 
 		If[	OptionValue[PauliSigmaCombine],
@@ -186,7 +195,7 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "FCPauliIsolate: Applying Isolate.", FCDoControl->fcpiVerbose];
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
-			res = res /. restHead -> Identity;
+			res = res /. restHead[0]->0 /. restHead -> headR;
 			FCPrint[1, "FCPauliIsolate: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
 		];
 
@@ -214,6 +223,9 @@ FCPauliIsolate[expr_, OptionsPattern[]] :=
 
 		res
 	];
+
+restHead[0]=
+	0;
 
 FCPrint[1,"FCPauliIsolate.m loaded."];
 End[]
