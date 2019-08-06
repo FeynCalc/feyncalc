@@ -178,5 +178,13 @@ b_FCGV] DCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"},
 	DiracGamma[LorentzIndex[j]] Pair[LorentzIndex[j],
 	Momentum[p]]).DiracGamma[LorentzIndex[nu]], DiracIndex[i],
 DiracIndex[j]], LorentzIndexNames -> {al}, FCE -> True]",
-"m DCHN[GA[mu].GA[nu], i, j] + DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"}
+"m DCHN[GA[mu].GA[nu], i, j] + DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"},
+{"fcstFCCanonicalizeDummyIndices-ID27",
+"FCCanonicalizeDummyIndices[
+DCHN[Spinor[-Momentum[p1], m1, 1], $AL[$42]] DCHN[
+Spinor[Momentum[p2], m2, 1], $AL[$43]] DCHN[
+GA[5].GA[nu].GA[mu], $AL[$42], $AL[$43]],
+DiracIndexNames -> {i, j}, FCE -> True]",
+"DCHN[Spinor[-Momentum[p1], m1, 1], i] DCHN[
+Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"}
 });

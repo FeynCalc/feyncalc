@@ -49,6 +49,7 @@ Options[FCCanonicalizeDummyIndices] = {
 	CartesianIndexNames -> {},
 	CustomIndexNames 	-> {},
 	DiracChainExpand	-> True,
+	DiracIndexNames 	-> {},
 	DotSimplify 		-> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -87,7 +88,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 	Block[ {indexList = {}, ex,exUnexpanded,tmp,null1,null2, renamingRule,
 			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
-			res, sunhead,sunfhead,indhead,repIndexListsCustom={},fu,otherHeads,
+			res, sunhead,sunfhead,indhead,dihead,repIndexListsCustom={},fu,otherHeads,
 			renamingList,cList,indexExtract, seedCar, repIndexListCar, times, dimensions, rule},
 
 		If [OptionValue[FCVerbose]===False,
@@ -284,7 +285,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		repIndexListTotal = {repIndexListLor,repIndexListCar,
 			makeRepIndexList[SUNIndex,sunhead,Unique["sun"],fu,finalList,uniqueExpressions],
 			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions],
-			makeRepIndexList[DiracIndex,sunhead,Unique["di"],fu,finalList,uniqueExpressions]
+			makeRepIndexList[DiracIndex,dihead,Unique["di"],fu,finalList,uniqueExpressions]
 		};
 
 
@@ -298,7 +299,13 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 
 		(* Renaming of dummy indices according to the supplied list *)
-		cList = {{OptionValue[LorentzIndexNames],lihead},{OptionValue[CartesianIndexNames],cihead},{OptionValue[SUNIndexNames],sunhead},{OptionValue[SUNFIndexNames],sunfhead}};
+		cList = {
+			{OptionValue[LorentzIndexNames],lihead},
+			{OptionValue[CartesianIndexNames],cihead},
+			{OptionValue[SUNIndexNames],sunhead},
+			{OptionValue[SUNFIndexNames],sunfhead},
+			{OptionValue[DiracIndexNames],dihead}
+		};
 		If[ OptionValue[CustomIndexNames]=!={},
 			cList = Join[cList,Map[{Last[#], ToExpression[ToString[First[#]]<>"head"]}&,OptionValue[CustomIndexNames]]];
 		];
@@ -329,7 +336,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", finalRepList, FCDoControl->canodummyVerbose];
 
-		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|cihead|sunhead|sunfhead->Identity /. times -> Times;
+		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|cihead|sunhead|sunfhead|dihead->Identity /. times -> Times;
 
 		If[OptionValue[FCE],
 			res = FCE[res]

@@ -9,17 +9,15 @@
 	Copyright (C) 2014-2019 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Rename dummy Lorentz, Cartesian and SU(N) indices 			*)
+(* :Summary:  Rename dummy Lorentz, Cartesian, SU(N) and Dirac indices 		*)
 
 (* ------------------------------------------------------------------------ *)
 
 FCRenameDummyIndices::usage = "
-FCRenameDummyIndices[expr] identifies all dummy Lorentz and SU(N) indices \
-and changes their names pairwise to random symbols. This can be useful if \
-you have an expression that contains dummy indices and want to compute the \
-square of it. For example, the square of GA[a, l, a] equals 16. However, \
-if you forget to rename the dummy indices and compute GA[a, l, a, a, l, a] \
-instead of GA[a, l, a, b, l, b], you will get 64.";
+FCRenameDummyIndices[expr] identifies all dummy indices with heads given in \
+the value of the option Head and changes their names pairwise to random symbols. \
+This is particularly important when squaring amplitudes, since otherwise the result
+will be inconsistent.";
 
 FCRenameDummyIndices::failmsg =
 "Error! FCRenameDummyIndices has encountered a fatal problem and must abort the computation. \

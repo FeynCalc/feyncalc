@@ -41,6 +41,11 @@ and other symbols or functions. The default setting is sometimes 4, sometimes D.
 The setting should always be 4, a symbol (D, n, ...), or \
 (D-4), (n-4), ... .";
 
+DiracIndexNames::usage =
+"DiracIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy Dirac indices to the indices \
+in the supplied list.";
+
 DiracTraceEvaluate::usage =
 "DiracTraceEvaluate is an option for DiracTrace, DiracSimplify and \
 some other functions. If set to False, Dirac traces remain unevaluated.";
