@@ -92,5 +92,26 @@ m1, 1]"},
 "ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu].(GS[p]+m).GA[nu]].\
 SpinorV[p2,m2],FCE->True]",
 "Spinor[-Momentum[p2], m2, 1] . GA[mu] . (m - GS[p]) . GA[nu] . \
-Spinor[Momentum[p1], m1, 1]"}
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID27", "ComplexConjugate[SpinorUBar[p1, m1].FCCCT[GA[mu]].SpinorV[p2, m2],
+FCE -> True]","-Spinor[-Momentum[p2], m2, 1].GA[mu].Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID28", "FCCanonicalizeDummyIndices[
+DCHN[Spinor[-Momentum[p1], m1, 1], $AL[$42]] DCHN[
+Spinor[Momentum[p2], m2, 1], $AL[$43]] DCHN[
+GA[5].GA[nu].GA[mu], $AL[$42], $AL[$43]],
+DiracIndexNames -> {i, j}, FCE -> True]","DCHN[Spinor[-Momentum[p1], m1, 1], i] DCHN[
+Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"},
+{"fcstComplexConjugate-ID29", "ComplexConjugate[
+I*Spinor[Momentum[k1], mq, 1].((((-4*I)/3)*2^(1/4)*sinW*Sqrt[cosW^2*GF*mZ^2*sinW^2]*
+GS[Polarization[p, I]].GA[6]*SDF[Col2, Col3])/cosW + ((2*I)*2^(1/4)*
+Sqrt[cosW^2*GF*mZ^2*sinW^2]*(1/2 - (2*sinW^2)/3)*
+GS[Polarization[p, I]].GA[7]*SDF[Col2, Col3])/(cosW*sinW)).Spinor[-Momentum[k2], mq, 1],FCE->True]",
+"-I ((I 2^(1/4) Sqrt[
+	cosW^2 GF mZ^2 sinW^2] (-3 + 4 sinW^2) Spinor[-Momentum[k2], mq,
+	1].GA[6].GS[Polarization[p, -I]].Spinor[Momentum[k1], mq,
+	1] SDF[Col2, Col3])/(3 cosW sinW) + (
+4 I 2^(1/4) sinW Sqrt[cosW^2 GF mZ^2 sinW^2]
+	Spinor[-Momentum[k2], mq, 1].GA[7].GS[
+	Polarization[p, -I]].Spinor[Momentum[k1], mq, 1] SDF[Col2,
+	Col3])/(3 cosW))"}
 };
