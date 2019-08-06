@@ -153,7 +153,11 @@ MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3, i6]"},
 ExpandScalarProduct -> False] // FCE","SP[p1 + p2 + p3 + p4, q1 + q2 + q3 + q4]"},
 {"fcstContractContractionsIn4dims-ID31","FCE[Contract[
 DiracChain[GA[mu].(GS[p] + m).GA[nu], DiracIndex[i],
-	DiracIndex[j]] FV[p, mu]]]","DCHN[GS[p].(m + GS[p]).GA[nu], i, j]"}
+	DiracIndex[j]] FV[p, mu]]]","DCHN[GS[p].(m + GS[p]).GA[nu], i, j]"},
+{"fcstContractContractionsIn4dims-ID32","Contract[DCHN[FV[p, mu] GA[nu, mu, rho], i, j], FCE -> True]",
+	"DCHN[GA[nu].GS[p].GA[rho], i, j]"},
+{"fcstContractContractionsIn4dims-ID33","Contract[FV[p, mu] DCHN[GA[nu, mu, rho], i, j], FCE -> True]",
+	"DCHN[GA[nu].GS[p].GA[rho], i, j]"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
