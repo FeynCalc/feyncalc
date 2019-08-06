@@ -89,55 +89,55 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		ex = ex //. {
 		(* Product of two spinor chains, Dirac spinors *)
-		spChain[DOT[Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___], dots1___, Spinor[s2_. Momentum[pe2_,dim_:4], mass2_, ___]]] *
-		spChain[DOT[Spinor[s2_. Momentum[pe2_,dim_:4], mass2_, ___], dots2___, Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___]]]/;
-		FreeQ[{dots1,dots2},Spinor] && (moms===All || (MemberQ[moms,pe1] && MemberQ[moms,pe2] )) :>
-			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[pe1,dim],dim] + s1 mass1)], dots1,
-				spinPolarizationSum[(DiracGamma[Momentum[pe2,dim],dim] + s2 mass2)], dots2]],
+		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], Y_, ___], a___, Spinor[t_. Momentum[q_,d_:4], Z_, ___]]] *
+		spChain[DOT[Spinor[t_. Momentum[q_,d_:4], Z_, ___], b___, Spinor[s_. Momentum[p_,d_:4], Y_, ___]]]/;
+		FreeQ[{a,b},Spinor] && (moms===All || (MemberQ[moms,p] && MemberQ[moms,q] )) :>
+			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s Y)], a,
+				spinPolarizationSum[(DiracGamma[Momentum[q,d],d] + t Z)], b]],
 
-		spChain[DOT[Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___], dots1___, Spinor[s2_. Momentum[pe2_,dim_:4], mass2_, arg2___]]] *
-		spChain[DOT[Spinor[s3_. Momentum[pe3_,dim_:4], mass3_, arg3___], dots2___, Spinor[s1_. Momentum[pe1_,dim_:4], mass1_, ___]]]/;
-		FreeQ[{dots1,dots2},Spinor] && (moms===All || MemberQ[moms,pe1]) :>
-			spChain[DOT[Spinor[s3 Momentum[pe3,dim], mass3, arg3], dots2,
-				spinPolarizationSum[(DiracGamma[Momentum[pe1,dim],dim] + s1 mass1)], dots1,
-				Spinor[s2 Momentum[pe2,dim], mass2, arg2]]],
+		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], m_, ___], a___, Spinor[t_. Momentum[q_,d_:4], Y_, W___]]] *
+		spChain[DOT[Spinor[u_. Momentum[r_,d_:4], Z_, X___], b___, Spinor[s_. Momentum[p_,d_:4], m_, ___]]]/;
+		FreeQ[{a,b},Spinor] && (moms===All || MemberQ[moms,p]) :>
+			spChain[DOT[Spinor[u Momentum[r,d], Z, X], b,
+				spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s m)], a,
+				Spinor[t Momentum[q,d], Y, W]]],
 
 		(*	Product of two spinor chains, Majorana spinors, ubar(p).X vbar(p).Y.
 			The -1 in front of spChain comes from switching the spinors after having transposed the second chain 	*)
-		spChain[DOT[Spinor[s1_. Momentum[pe1_,dim_:4], mass1_,___], dots1___, Spinor[s2_. Momentum[pe2_,dim_:4], re2___]]] *
-		spChain[DOT[Spinor[t1_. Momentum[pe1_,dim_:4], mass1_,___], dots2___, Spinor[s3_. Momentum[pe3_,dim_:4], re3___]]]/;
-		FreeQ[{dots1,dots2},Spinor] && (optSpinorChainTranspose && moms===All || (MemberQ[moms,pe1] && (-t1===s1) )) :>
-			-1*spChain[DOT[Spinor[- s3 Momentum[pe3,dim], re3],
-				If[	TrueQ[{dots2}==={}],
+		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], m_,___], a___, Spinor[t_. Momentum[q_,d_:4], Y___]]] *
+		spChain[DOT[Spinor[u_. Momentum[p_,d_:4], m_,___], b___, Spinor[v_. Momentum[r_,d_:4], Z___]]]/;
+		FreeQ[{a,b},Spinor] && (optSpinorChainTranspose && moms===All || (MemberQ[moms,p] && (-u===s) )) :>
+			-1*spChain[DOT[Spinor[- v Momentum[r,d], Z],
+				If[	TrueQ[{b}==={}],
 					Unevaluated[Sequence[]],
-					FCChargeConjugateTransposed[DOT[dots2],FCI->True,DotSimplify->False,Explicit->True]
+					FCChargeConjugateTransposed[DOT[b],FCI->True,DotSimplify->False,Explicit->True]
 				],
-				spinPolarizationSum[(DiracGamma[Momentum[pe1,dim],dim] + s1 mass1)], dots1, Spinor[s2 Momentum[pe2,dim], re2]]],
+				spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s m)], a, Spinor[t Momentum[q,d], Y]]],
 
 		(* Product of two spinor chains, Majorana spinors, X.u(p) Y.v(p).
 			The -1 in front of spChain comes from switching the spinors after having transposed the second chain	*)
-		spChain[DOT[Spinor[s1_. Momentum[pe1_,dim_:4], re1___], dots1___, Spinor[s2_. Momentum[pe2_,dim_:4], mass2_,___]]] *
-		spChain[DOT[Spinor[s3_. Momentum[pe3_,dim_:4], re3___], dots2___, Spinor[t2_. Momentum[pe2_,dim_:4], mass2_, ___]]]/;
-		FreeQ[{dots1,dots2},Spinor] && (optSpinorChainTranspose && moms===All || (MemberQ[moms,pe2] && (-t2===s2) )) :>
-			-1*spChain[DOT[Spinor[s1 Momentum[pe1,dim], re1], dots1 ,
-				spinPolarizationSum[(DiracGamma[Momentum[pe2,dim],dim] + s2 mass2)],
-				If[	TrueQ[{dots2}==={}],
+		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], Y___], a___, Spinor[t_. Momentum[q_,d_:4], m_,___]]] *
+		spChain[DOT[Spinor[u_. Momentum[r_,d_:4], Z___], b___, Spinor[v_. Momentum[q_,d_:4], m_, ___]]]/;
+		FreeQ[{a,b},Spinor] && (optSpinorChainTranspose && moms===All || (MemberQ[moms,q] && (-v===t) )) :>
+			-1*spChain[DOT[Spinor[s Momentum[p,d], Y], a ,
+				spinPolarizationSum[(DiracGamma[Momentum[q,d],d] + t m)],
+				If[	TrueQ[{b}==={}],
 					Unevaluated[Sequence[]],
-					FCChargeConjugateTransposed[DOT[dots2],FCI->True,DotSimplify->False,Explicit->True]
-				], Spinor[-s3 Momentum[pe3,dim], re3]]],
+					FCChargeConjugateTransposed[DOT[b],FCI->True,DotSimplify->False,Explicit->True]
+				], Spinor[-u Momentum[r,d], Z]]],
 
 		(* A spinor chain with one spin sum inside *)
-		spChain[DOT[Spinor[s_. Momentum[pe_,dim_:4], mass_, ___], dots___, Spinor[s_. Momentum[pe_,dim_:4], mass_, ___]]] /;
-		FreeQ[{dots},Spinor] && (moms===All || MemberQ[moms,pe])  :>
-			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[pe,dim],dim] + s mass)], dots]]
+		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], mass_, ___], x___, Spinor[s_. Momentum[p_,d_:4], m_, ___]]] /;
+		FreeQ[{x},Spinor] && (moms===All || MemberQ[moms,p])  :>
+			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s m)], x]]
 		};
 
 		FCPrint[1,"FermionSpinSum: Applying the spin sum formula done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
 		FCPrint[3,"FermionSpinSum: After applying the spin sum formula: ", ex, FCDoControl->fssVerbose];
 
 		If[	!FreeQ[ex,FCChargeConjugateTransposed],
-			ex = ex /. FCChargeConjugateTransposed[spinPolarizationSum[x_],rest___]:>
-				spinPolarizationSum[FCChargeConjugateTransposed[x,Explicit->True,rest]]
+			ex = ex /. FCChargeConjugateTransposed[spinPolarizationSum[x_],r___]:>
+				spinPolarizationSum[FCChargeConjugateTransposed[x,Explicit->True,r]]
 		];
 
 		If[ OptionValue[DotSimplify],
