@@ -34,12 +34,12 @@ Begin["`SquareAmplitude`Private`"]
 sqaVerbose::usage="";
 
 Options[SquareAmplitude] = {
-	FCE -> False,
-	FCI -> False,
-	FCVerbose -> False,
-	Indexed -> False,
-	Real -> False,
-	List -> True
+	FCE			-> False,
+	FCI			-> False,
+	FCVerbose	-> False,
+	Indexed		-> False,
+	List		-> True,
+	Real		-> False
 };
 
 diagmarkIdentity[_,_]:=
@@ -50,13 +50,7 @@ SquareAmplitude[m1_List, m2_List/;!OptionQ[m2], OptionsPattern[]] :=
 
 		optIndexed = OptionValue[Indexed];
 
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
-
-		If[	m1==={},
+		If[	m1==={} || m2==={},
 			Message[SquareAmplitude::failmsg, "The lists of amplitudes cannot be empty."];
 			Abort[]
 		];
