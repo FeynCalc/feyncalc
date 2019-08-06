@@ -118,13 +118,8 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"DiracChainJoin", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]simplifies chains of Dirac matrices with explicit Dirac \
-indices wrapped with a head ",
- ButtonBox["DiracChain",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracChain",
-  ButtonNote->"DiracChain"],
- "."
+ " \[LineSeparator]joins chains of Dirac matrices with explicit Dirac indices \
+wrapped with a head DiracChain."
 }], "Usage",
  CellID->982511436],
 
@@ -132,29 +127,22 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "DiracChainJoin", "]"}]], "Input",
- CellLabel->"In[87]:=",
+ CellLabel->"In[9]:=",
  CellID->1965709680],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
-    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracGammaCombine", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracSigmaExplicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracTrick", "\[Rule]", "True"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
-    RowBox[{"FCCanonicalizeDummyIndices", "\[Rule]", "True"}], ",", 
+    RowBox[{"Drop", "\[Rule]", "True"}], ",", 
     RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
     RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
     RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"FCJoinDOTs", "\[Rule]", "True"}], ",", 
     RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
-    RowBox[{"SpinorChainTrick", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
     RowBox[{"TraceOfOne", "\[Rule]", "4"}]}], "}"}], 
   TraditionalForm]], "Output",
- CellLabel->"Out[87]=",
- CellID->433648002]
+ CellLabel->"Out[9]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -205,6 +193,21 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracIndexDelta",
   ButtonNote->"DiracIndexDelta"],
+ ", ",
+ ButtonBox["DiracChainFactor",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainFactor",
+  ButtonNote->"DiracChainFactor"],
+ ", ",
+ ButtonBox["DiracChainExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainExpand",
+  ButtonNote->"DiracChainExpand"],
+ ", ",
+ ButtonBox["DiracChainCombine",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainCombine",
+  ButtonNote->"DiracChainCombine"],
  "."
 }], "SeeAlso",
  CellID->655647701]
@@ -251,7 +254,7 @@ Cell[BoxData[
    RowBox[{"j", ",", 
     RowBox[{"SpinorV", "[", 
      RowBox[{"p2", ",", "m2"}], "]"}]}], "]"}]}]], "Input",
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->857331981],
 
 Cell[BoxData[
@@ -318,15 +321,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[11]=",
- CellID->1603930999]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
- CellLabel->"In[12]:=",
+ CellLabel->"In[11]:=",
  CellID->1834507663],
 
 Cell[BoxData[
@@ -377,8 +379,7 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[12]=",
- CellID->946831053]
+ CellLabel->"Out[11]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -443,12 +444,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1326, Automatic}, {185, Automatic}},
+WindowMargins->{{878, Automatic}, {148, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

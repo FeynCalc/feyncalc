@@ -2209,11 +2209,24 @@ regularization."
 Cell[TextData[{
  Cell[TextData[ButtonBox["DiracChainJoin",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracChainJoin"]], 
+  ButtonData->"paclet:FeynCalc/ref/DiracChainJoin"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracChainCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainCombine"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracChainExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainExpand"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracChainFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainFactor"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " contracts explicit Dirac indices "
+ " manipulations of matrix chains with explicit Dirac indices "
 }], "GuideText",
  CellID->2051310471],
 
@@ -2503,6 +2516,16 @@ Cell[TextData[{
  "expands and reorders noncommutative terms "
 }], "GuideText",
  CellID->1861924278],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCMatrixIsolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCMatrixIsolate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "  wraps Dirac, Pauli and SU(N) objects  into specified heads "
+}], "GuideText",
+ CellID->1313775346],
 
 Cell[TextData[{
  Cell[TextData[ButtonBox["FCTraceExpand",
@@ -4328,7 +4351,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{537, Automatic}, {Automatic, -8}},
+WindowMargins->{{645, Automatic}, {Automatic, 73}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
