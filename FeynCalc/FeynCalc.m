@@ -397,6 +397,10 @@ If[ $FCCheckContext,
 
 	Global`fcContextLowerCase = Select[Names["FeynCalc`*"], LowerCaseQ[StringTake[#, 1]] &];
 
+	If[$RenameFeynCalcObjects=!={},
+		Global`fcContextLowerCase = Complement[Global`fcContextLowerCase, Last /@ $RenameFeynCalcObjects]
+	];
+
 	Global`whiteListedContextAdditions = {
 		"Colour", "CT", "cto", "d", "dD", "eE", "FAChiralityProjector",
 		"FADiracMatrix", "FADiracSlash", "FADiracSpinor", "FADiracTrace",
