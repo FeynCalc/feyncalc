@@ -166,5 +166,11 @@ DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
 "FDS[TC[q]^2SFAD[q],q,FCE->True]",
 "SFAD[{{q, 0}, {0, 1}, 1}]*TC[q]^2"},
 {"fcstFeynAmpDenominatorSimplify-ID40",
-"FDS[CFAD[{q,0,2}],q,FCE->True]", "0"}
+"FDS[CFAD[{q,0,2}],q,FCE->True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID41",
+"FDS[(FAD[{l, m1}, {l - p, m2}] SPD[l, p2]^2 (GSD[p2] SPD[p, p] -
+GSD[p] SPD[p, p2]))/(-SPD[p, p2]^2 +
+SPD[p, p] SPD[p2, p2]) - (FAD[{l, m1}, {l + p, m2}] SPD[l,
+p2]^2 (GSD[p2] SPD[p, p] - GSD[p] SPD[p, p2]))/(-SPD[p, p2]^2 +
+SPD[p, p] SPD[p2, p2]), l]", "0"}
 }
