@@ -30,8 +30,7 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadFeynArts= True;
-$LoadAddOns={"TARCER"};
+$LoadAddOns={"TARCER", "FeynArtsLoader"};
 <<FeynCalc`
 $FAVerbose = 0;
 

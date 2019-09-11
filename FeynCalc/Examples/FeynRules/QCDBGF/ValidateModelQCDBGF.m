@@ -25,7 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Validation of the FeynArts model for QCD in background field formalism"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadFeynArts= True;
+$LoadAddOns={"FeynArtsLoader"};
 <<FeynCalc`
 $FAVerbose = 0;
 

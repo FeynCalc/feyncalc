@@ -205,11 +205,6 @@ $LoadAddOns::usage =
 E.g. $LoadAddOns={\"FeynHelpers\"}. The value must be set before \
 loading FeynCalc. The default value is False.";
 
-$LoadFeynArts::usage =
-"$LoadFeynArts specifices whether FeynArts should be loaded together \
-with FeynCalc. Its value must be set before loading FeynCalc. \
-The default value is False.";
-
 $LoadPhi::usage =
 "$LoadPhi specifices whether PHI should be loaded together \
 with FeynCalc. Its value must be set before loading FeynCalc. \

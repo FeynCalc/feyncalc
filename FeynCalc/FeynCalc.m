@@ -71,10 +71,9 @@ If[ !ValueQ[Global`$LoadPhi],
 ];
 Remove[Global`$LoadPhi]
 
-If[ !ValueQ[Global`$LoadFeynArts],
-	(* Do not load FeynArts by default *)
-	FeynCalc`$LoadFeynArts = False,
-	FeynCalc`$LoadFeynArts = Global`$LoadFeynArts
+If[ ValueQ[Global`$LoadFeynArts],
+	Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];
+	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"FeynArtsLoader"}]
 ];
 Remove[Global`$LoadFeynArts];
 
@@ -317,59 +316,6 @@ If[	$LoadPhi,
 			]
 		],
 		Message[FeynCalc::phierror]
-	];
-];
-
-(* Load FeynArts... *)
-If[	$LoadFeynArts,
-	If[ $FeynCalcStartupMessages,
-		PrintTemporary[Style["Loading FeynArts from " <>  $FeynArtsDirectory, "Text"]];
-	];
-	Block[ {FeynCalc`Private`loadfa, FeynCalc`Private`fafiles, FeynCalc`Private`strm, FeynCalc`Private`patch=True, FeynCalc`Private`str},
-		If[	$FAPatch,
-			(* Check if FeynArts needs to be patched *)
-			If[(FeynCalc`Private`fafiles = FileNames["FeynArts.m", $FeynArtsDirectory])=!={},
-				FeynCalc`Private`strm = OpenRead[First[FeynCalc`Private`fafiles]];
-				If[ Head[FeynCalc`Private`strm] =!= InputStream,
-					Message[General::noopen, First[FeynCalc`Private`fafiles]];
-					Abort[]
-				];
-				While[	ToString[FeynCalc`Private`str] != "EndOfFile",
-						FeynCalc`Private`str = Read[FeynCalc`Private`strm, String];
-						If[ StringMatchQ[ToString[FeynCalc`Private`str], "*patched for use with FeynCalc*", IgnoreCase -> True],
-							FeynCalc`Private`patch = False
-						]
-				];
-				Close[First[FeynCalc`Private`fafiles]],
-				Message[General::noopen, FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]];
-				Message[FeynCalc::faerror, $FeynArtsDirectory];
-				FeynCalc`Private`patch = False
-			];
-			(* Apply the patch *)
-			If[ FeynCalc`Private`patch,
-				FAPatch[]
-			]
-		];
-		FeynCalc`Private`loadfa=Block[ {Print= System`Print},Get[FileNameJoin[{$FeynArtsDirectory, "FeynArts.m"}]]];
-		If[FeynCalc`Private`loadfa =!=$Failed,
-			(* If everything went fine *)
-			If[ $FeynCalcStartupMessages,
-				Print[	Style["FeynArts ", "Text", Bold],
-						Style[StringReplace[ToString[FeynArts`$FeynArtsVersion],"FeynArts "->""] <>" patched for use with FeynCalc, for documentation see the ",
-							"Text"],
-						Style[DisplayForm@ButtonBox["manual", BaseStyle -> "Hyperlink",	ButtonFunction :>
-							SystemOpen[First@FileNames[{"*.pdf", "*.PDF"}, FileNameJoin[{$FeynArtsDirectory, "manual"}]]],
-							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
-						Style[" or visit ", "Text"],
-						Style[DisplayForm@ButtonBox["www.feynarts.de.",	ButtonData :> {URL["http://www.feynarts.de/"], None},
-							BaseStyle -> "Hyperlink", ButtonNote -> "www.feynarts.de/"],"Text"]
-				];
-				Print[ Style["If you use FeynArts in your research, please cite","Text"]];
-				Print [Style[" \[Bullet] T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260","Text"]];
-			],
-			(* If FeynArts didn't load *)
-			Message[FeynCalc::faerror, $FeynArtsDirectory];
-		];
 	];
 ];
 

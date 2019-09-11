@@ -680,7 +680,8 @@ Cell[TextData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<FeynArtsLoader\>\"", "}"}]}], ";"}]], "Input",
  CellLabel->"In[16]:=",
  CellID->342627804]
 }, Open  ]],
@@ -698,7 +699,8 @@ appear. Hit OK. Wait until the patching process finishes. Then restart ",
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<FeynArtsLoader\>\"", "}"}]}], ";"}]], "Input",
  CellLabel->"In[18]:=",
  CellID->1900750623]
 }, Open  ]],
@@ -771,11 +773,11 @@ Cell["XXXX", "TutorialRelatedLinks",
 }, Open  ]]
 },
 WindowSize->{957, 770},
-WindowMargins->{{633, Automatic}, {Automatic, 293}},
+WindowMargins->{{Automatic, 476}, {Automatic, 91}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
-FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
   CharacterEncoding -> "UTF-8"],
 $CellContext`FileOutlineCache -> False

@@ -218,7 +218,7 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadFeynArts= True;
+$LoadAddOns={"FeynArtsLoader"};
 <<FeynCalc`
 $FAVerbose = 0;
 ```

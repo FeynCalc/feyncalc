@@ -326,7 +326,10 @@ This allows you to customize your FeynCalc installation to fit your needs best.*
 	WriteString["stdout", "\nInstallation complete! Loading FeynCalc ... \n"];
 
 	If[	faInstalled,
-		Global`$LoadFeynArts=True;
+		If[	InstallFeynCalcDevelopmentVersion,
+			Global`$LoadAddOns={"FeynArtsLoader"},
+			Global`$LoadFeynArts=True
+		]
 	];
 	Get["FeynCalc`"];
 
