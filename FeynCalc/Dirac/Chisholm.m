@@ -133,8 +133,17 @@ Chisholm[expr_, OptionsPattern[]] :=
 			FCPrint[1, "Chisholm: Normal mode.", FCDoControl->chVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "Chisholm: Extracting Dirac objects.", FCDoControl->chVerbose];
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->OptionValue[DotSimplify], FCJoinDOTs -> OptionValue[FCJoinDOTs], DiracGammaCombine-> False];
 
+			If[	!FreeQ[ex, DiracChain],
+				ex  = DiracChainExpand[ex, FCI->True];
+			];
+
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracChain->True,
+				DotSimplify->OptionValue[DotSimplify], FCJoinDOTs -> OptionValue[FCJoinDOTs], DiracGammaCombine-> False];
+
+			If[	!FreeQ[ex, DiracChain],
+				ex = ex /. dsHead[DiracChain[x_,i_,j_]] :> DiracChain[dsHead[x],i,j]
+			];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"Chisholm: dsPart: ",dsPart , FCDoControl->chVerbose];

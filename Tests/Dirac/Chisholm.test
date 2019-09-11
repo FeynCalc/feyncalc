@@ -188,5 +188,40 @@ Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[b]].Spinor[
 LorentzIndex[d], LorentzIndex[e]] +
 Spinor[Momentum[p1], 0, 1].DiracGamma[LorentzIndex[a]].Spinor[
 	Momentum[p2], 0, 1] Pair[LorentzIndex[b], LorentzIndex[c]] Pair[
-LorentzIndex[d], LorentzIndex[e]]"}
+LorentzIndex[d], LorentzIndex[e]]"},
+{"fcstChisholm-ID27","Chisholm[DCHN[GA[i, j, k], a, b], FCDiracIsolate -> False] //
+FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},
+FCE -> True] &",
+"I DCHN[GA[mu].GA[5], a, b] LC[i, j, k, mu] +
+DCHN[GA[k], a, b] MT[i, j] - DCHN[GA[j], a, b] MT[i, k] +
+DCHN[GA[i], a, b] MT[j, k]"},
+{"fcstChisholm-ID28","Chisholm[DCHN[GA[i, j, k], a, b]] //
+FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},
+FCE -> True] &","I DCHN[GA[mu].GA[5], a, b] LC[i, j, k, mu] +
+DCHN[GA[k], a, b] MT[i, j] - DCHN[GA[j], a, b] MT[i, k] +
+DCHN[GA[i], a, b] MT[j, k]"},
+{"fcstChisholm-ID29","Chisholm[DCHN[GA[i, j, k] + GA[i].GS[p].GA[j].GS[q].GA[k], a, b]] //
+FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},
+FCE -> True] &","DCHN[GA[k], a, b] FV[p, j] FV[q, i] -
+DCHN[GA[j], a, b] FV[p, k] FV[q, i] +
+DCHN[GA[k], a, b] FV[p, i] FV[q, j] +
+DCHN[GA[i], a, b] FV[p, k] FV[q, j] +
+DCHN[GA[j], a, b] FV[p, i] FV[q, k] +
+DCHN[GA[i], a, b] FV[p, j] FV[q, k] +
+I DCHN[GA[mu].GA[5], a, b] LC[i, j, k, mu] +
+DCHN[GA[k], a, b] MT[i, j] + DCHN[GS[q], a, b] FV[p, k] MT[i, j] -
+DCHN[GS[p], a, b] FV[q, k] MT[i, j] - DCHN[GA[j], a, b] MT[i, k] -
+DCHN[GS[q], a, b] FV[p, j] MT[i, k] -
+DCHN[GS[p], a, b] FV[q, j] MT[i, k] + DCHN[GA[i], a, b] MT[j, k] -
+DCHN[GS[q], a, b] FV[p, i] MT[j, k] +
+DCHN[GS[p], a, b] FV[q, i] MT[j, k] -
+DCHN[GA[k], a, b] MT[i, j] SP[p, q] +
+DCHN[GA[j], a, b] MT[i, k] SP[p, q] -
+DCHN[GA[i], a, b] MT[j, k] SP[p, q] -
+I DCHN[GA[mu].GA[5], a, b] MT[j, k] LC[i, mu][p, q] +
+I DCHN[GA[i].GA[5], a, b] LC[j, k][p, q] -
+I DCHN[GS[p].GA[5], a, b] LC[i, j, k][q] +
+I DCHN[GA[mu].GA[5], a, b] FV[q, k] LC[i, j, mu][p] +
+I DCHN[GA[mu].GA[5], a, b] FV[q, j] LC[i, k, mu][p] +
+I DCHN[GA[mu].GA[5], a, b] FV[p, i] LC[j, k, mu][q]"}
 })

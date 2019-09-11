@@ -91,6 +91,14 @@ False]"},
 "FCChargeConjugateTransposed[Spinor[Momentum[p1], 0, 1] . \
 DiracGamma[LorentzIndex[mu]] . (m + DiracGamma[Momentum[p]]) . \
 DiracGamma[LorentzIndex[nu]] . Spinor[Momentum[p2], 0, 1], Explicit -> \
-False, FCDiracIsolate -> False]"}
+False, FCDiracIsolate -> False]"},
+{"fcstFCChargeConjugateTransposed-ID24",
+"FCChargeConjugateTransposed[DCHN[GA[mu, 5, nu], i, j],
+Explicit -> True, FCE -> True]","DCHN[GA[nu].GA[5].GA[mu], j, i]"},
+{"fcstFCChargeConjugateTransposed-ID25",
+"FCChargeConjugateTransposed[DCHN[GA[mu, 5, nu], SpinorUBar[p], i],
+Explicit -> True, FCE -> True]","FCChargeConjugateTransposed[
+DCHN[GA[mu].GA[5].GA[nu], Spinor[Momentum[p], 0, 1], i],
+Explicit -> False, FeynCalcExternal -> True]"}
 });
 

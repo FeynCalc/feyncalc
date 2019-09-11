@@ -92,6 +92,10 @@ SpinorChainTranspose[expr_, OptionsPattern[]] :=
 		FCPrint[1, "SpinorChainTranspose. Entering.", FCDoControl->sctrVerbose];
 		FCPrint[3, "SpinorChainTranspose: Entering with ", ex, FCDoControl->sctrVerbose];
 
+		If[ !FreeQ[ex,DiracChain],
+			ex = ex//. DiracChain[x___, a_Spinor, b_Spinor] :> DOT[a,x,b]
+		];
+
 		If[	MatchQ[ex/.DOT->holdDOT, holdDOT[a_Spinor,b___,c_Spinor]/;FreeQ[{b},Spinor]],
 
 			FCPrint[1, "SpinorChainTranspose: Recognized standalone expression.", FCDoControl->sctrVerbose];

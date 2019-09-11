@@ -285,5 +285,10 @@ GA[mu].GA[5] (-I SP[kg, Polarization[kg, -I]] -
 	I SP[p1, Polarization[kg, -I]]) LC[mu][p2, {L, I},
 Polarization[kp, -I]] +
 I QMass^2 GA[mu].GA[5] LC[mu][{L, I}, Polarization[kg, -I],
-Polarization[kp, -I]]"}
+Polarization[kp, -I]]"},
+{"fcstDiracReduce-ID13","DiracReduce[DCHN[GA[i, j, k], a, b]] //
+FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},
+FCE -> True] &","I DCHN[GA[mu].GA[5], a, b] LC[i, j, k, mu] +
+DCHN[GA[k], a, b] MT[i, j] - DCHN[GA[j], a, b] MT[i, k] +
+DCHN[GA[i], a, b] MT[j, k]"}
 }

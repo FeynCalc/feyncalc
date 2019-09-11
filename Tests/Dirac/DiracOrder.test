@@ -163,5 +163,9 @@ FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
 \[Rule]True]", "2*TGA[] . CGA[i]"},
 {"fcstDiracOrder-ID52",
 "DiracOrder[CGA[i].TGA[]-TGA[].CGA[i],FCE\[Rule]True]",
-"2*CGA[i] . TGA[]"}
+"2*CGA[i] . TGA[]"},
+{"fcstDiracOrder-ID53",
+"DiracOrder[DCHN[GA[j, i, l, k], a, b],FCE->True]",
+"DCHN[GA[i].GA[j].GA[k].GA[l] - 2 GA[k].GA[l] MT[i, j] -
+2 GA[i].GA[j] MT[k, l] + 4 MT[i, j] MT[k, l], a, b]"}
 });

@@ -82,7 +82,8 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			FCPrint[1, "DiracOrder: Normal mode.", FCDoControl->doVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracOrder: Extracting Dirac objects.", FCDoControl->doVerbose];
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine], FCJoinDOTs->OptionValue[FCJoinDOTs]];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracChain->True,
+				DiracGammaCombine->OptionValue[DiracGammaCombine], FCJoinDOTs->OptionValue[FCJoinDOTs]];
 
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];

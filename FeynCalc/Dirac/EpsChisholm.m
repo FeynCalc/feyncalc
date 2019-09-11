@@ -67,7 +67,8 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 		FCPrint[1, "EpsChisholm: Normal mode.", FCDoControl->esVerbose];
 		time=AbsoluteTime[];
 		FCPrint[1, "EpsChisholm: Extracting Dirac objects.", FCDoControl->esVerbose];
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->False, LorentzIndex->True, FCJoinDOTs -> OptionValue[FCJoinDOTs]];
+		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->False, LorentzIndex->True, FCJoinDOTs -> OptionValue[FCJoinDOTs],
+			DiracChain->True];
 		ex = ex /. h_dsHead/; FreeQ[h,Eps] :> Identity@@h;
 
 
@@ -81,9 +82,13 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 
-		diracObjectsEval = diracObjects/. Eps->eeps /. DOT->holdDOT //.
-			{dsHead[m_. holdDOT[x__] eeps[a___, LorentzIndex[in_], b__]]/;!FreeQ[{x},in] :>
-				(-1^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] holdDOT[x]]};
+		diracObjectsEval = diracObjects/. Eps->eeps /. DOT->holdDOT //. {
+			dsHead[m_. holdDOT[x__] eeps[a___, LorentzIndex[in_], b__]]/;!FreeQ[{x},in] :>
+				(-1^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] holdDOT[x]],
+
+			dsHead[m_. DiracChain[holdDOT[x__],z1_, z2_] eeps[a___, LorentzIndex[in_], b__]]/;!FreeQ[{x},in] :>
+				(-1^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] DiracChain[holdDOT[x],z1,z2]]
+		};
 
 		diracObjectsEval = diracObjectsEval/.eeps2->eeps;
 
@@ -92,6 +97,15 @@ EpsChisholm[expr_, OptionsPattern[]] :=
 			- dsHead[m ExpandScalarProduct[Pair[a,b],FCI->True] holdDOT[x,DiracGamma[c],DiracGamma[5],y]]
 			- dsHead[m ExpandScalarProduct[Pair[b,c],FCI->True] holdDOT[x,DiracGamma[a].DiracGamma[5],y]]
 			+ dsHead[m ExpandScalarProduct[Pair[a,c],FCI->True] holdDOT[x,DiracGamma[b],DiracGamma[5],y]]));
+
+		If[	!FreeQ[diracObjectsEval,DiracChain],
+
+			diracObjectsEval = diracObjectsEval //. dsHead[m_. DiracChain[holdDOT[x___, DiracGamma[in_LorentzIndex],y___], z1_, z2_] eeps[a_,b_,c_,in_LorentzIndex]] :>
+				(Conjugate[$LeviCivitaSign] I ( dsHead[m DiracChain[holdDOT[x,DiracGamma[a], DiracGamma[b], DiracGamma[c], DiracGamma[5],y],z1,z2]]
+				- dsHead[m ExpandScalarProduct[Pair[a,b],FCI->True] DiracChain[holdDOT[x,DiracGamma[c],DiracGamma[5],y],z1,z2]]
+				- dsHead[m ExpandScalarProduct[Pair[b,c],FCI->True] DiracChain[holdDOT[x,DiracGamma[a].DiracGamma[5],y],z1,z2]]
+				+ dsHead[m ExpandScalarProduct[Pair[a,c],FCI->True] DiracChain[holdDOT[x,DiracGamma[b],DiracGamma[5],y],z1,z2]]))
+		];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "EpsChisholm: Inserting Dirac objects back.", FCDoControl->esVerbose];

@@ -87,10 +87,22 @@ FCChargeConjugateTransposed[expr_, opts:OptionsPattern[]] :=
 
 		If[	OptionValue[FCDiracIsolate],
 			(*	Extract all the Dirac structures inside the operator. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Factoring-> nonDsHead];
+
+			If[	!FreeQ[ex, DiracChain],
+				ex  = DiracChainExpand[ex, FCI->True];
+			];
+
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Factoring-> nonDsHead, DiracChain->True];
 			ex = ex /. dsHead[z_]/;!FreeQ[z,Spinor] :> nonDsHead[z];
+
+			If[	!FreeQ[ex, DiracChain],
+				(* Switch the indices, since it is a transpose *)
+				ex = ex /. dsHead[DiracChain[x_,i_,j_]] :> DiracChain[dsHead[x],j,i]
+			];
+
 			diracObjects = Cases[ex+null1+null2, dsHead[_], Infinity]//Union;
 			nonDiracObjects = Cases[ex+null1+null2, nonDsHead[_], Infinity]//Union,
+
 
 			(*	The operator contains only Dirac structures (fast mode). *)
 

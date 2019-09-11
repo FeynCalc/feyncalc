@@ -87,5 +87,12 @@ Spinor[-Momentum[k],m,1],Select\[Rule]{{SpinorUBar[k,m],SpinorV[l,m]}}\
 ]", "Spinor[Momentum[l], m, 1] . DiracGamma[6] . \
 DiracGamma[Momentum[l]] . DiracGamma[7] . Spinor[-Momentum[k], m, 1] \
 + Spinor[Momentum[l], m, 1] . DiracGamma[7] . DiracGamma[Momentum[l]] \
-. DiracGamma[6] . Spinor[-Momentum[k], m, 1]"}
+. DiracGamma[6] . Spinor[-Momentum[k], m, 1]"},
+{"fcstSpinorChainTranspose-ID18","SpinorChainTranspose[DCHN[GA[mu, 5, nu], SpinorVBar[p], SpinorU[q]],
+FCE -> True]","-Spinor[-Momentum[q], 0, 1].GA[nu].GA[5].GA[mu].Spinor[Momentum[p], 0,
+	1]"},
+{"fcstSpinorChainTranspose-ID19","SpinorChainTranspose[DCHN[SpinorVBar[p], SpinorU[q]], FCE -> True]",
+	"-Spinor[-Momentum[q], 0, 1].Spinor[Momentum[p], 0, 1]"},
+{"fcstSpinorChainTranspose-ID20","SpinorChainTranspose[DCHN[1, SpinorVBar[p], SpinorU[q]], FCE -> True]",
+	"-Spinor[-Momentum[q], 0, 1].Spinor[Momentum[p], 0, 1]"}
 });

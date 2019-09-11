@@ -111,8 +111,6 @@ GA[i9] . GA[jj1]*MT[j2, j3]*MT[jj2, jj3]"},
 	SpinorUBar[p1, m1].GS[k].SpinorV[p2, m2])] // FCE",
 "Spinor[Momentum[p1], m1, 1].Spinor[-Momentum[p2], m2, 1] +
 Spinor[Momentum[p1], m1, 1].GS[k].Spinor[-Momentum[p2], m2, 1]"},
-
-
 {"fcstEpsChisholm-ID8",
 "EpsChisholm[GA[i1].CGA[k] LC[j1, i1, j2, j3]] // FCE",
 "-I GA[j1].GA[j2].GA[j3].CGA[k].GA[5] +
@@ -124,5 +122,10 @@ GA[i1].CGA[k] Eps[CartesianIndex[a], LorentzIndex[i1], CartesianIndex[b],
 	CartesianIndex[c]]] // FCE",
 "-I CGA[a].CGA[b].CGA[c].CGA[k].GA[5] -
 I CGA[c].CGA[k].GA[5] KD[a, b] + I CGA[b].CGA[k].GA[5] KD[a, c] -
-I CGA[a].CGA[k].GA[5] KD[b, c]"}
+I CGA[a].CGA[k].GA[5] KD[b, c]"},
+{"fcstEpsChisholm-ID10","EpsChisholm[DCHN[GA[i1, mu], a, b] LC[j1, i1, j2, j3],FCE->True]",
+"I DCHN[-GA[j1].GA[j2].GA[j3].GA[mu].GA[5], a, b] -
+I DCHN[-GA[j3].GA[mu].GA[5], a, b] MT[j1, j2] +
+I DCHN[-GA[j2].GA[mu].GA[5], a, b] MT[j1, j3] -
+I DCHN[-GA[j1].GA[mu].GA[5], a, b] MT[j2, j3]"}
 });
