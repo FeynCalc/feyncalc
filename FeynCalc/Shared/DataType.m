@@ -44,6 +44,8 @@ End[]
 
 Begin["`DataType`Private`"]
 
+set::usage="";
+
 DataType[_] :=
 	(Message[DataType::argrx, DataType, 1, "2 or more"];
 	Abort[]);
@@ -67,7 +69,7 @@ DataType[a_, b__, type_] :=
 
 DataType /:
 	HoldPattern[Set[DataType[exp_, NonCommutative], (bool:True|False)]] :=
-		Block[{ndt, ndf, dt, ncq, nnt, nnf, set, downvalues, hp, dvals, tmp},
+		Block[{ndt, ndf, dt, ncq, nnt, nnf, downvalues, hp, dvals, tmp},
 
 			If[	bool,
 				(* True *)

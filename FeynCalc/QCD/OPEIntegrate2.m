@@ -21,6 +21,10 @@ End[]
 
 Begin["`OPEIntegrate2`Private`"]
 
+kli::usage="";
+dummy::usage="";
+sumgeom::usage="";
+
 Options[OPEIntegrate2] = {
 	Collecting  -> False,
 	FeynmanParameterNames -> {FCGV["x"], FCGV["y"], FCGV["z"]},
@@ -111,24 +115,24 @@ topower2[y_] :=
 
 isol[ka_][y_] :=
 	Isolate[y,Append[SelectFree[Variables[Flatten[
-									 Cases2[y,Power2]/. Power2->List]],Pair],
-										 ka], IsolateNames->ll, IsolateSplit->5555I];
+									Cases2[y,Power2]/. Power2->List]],Pair],
+										ka], IsolateNames->KK, IsolateSplit->5555I];
 gpowsub[xx_,k_] :=
 	xx /. {
-						 (((nok_ /; FreeQ[nok,k]) -
-							 Pair[de_, Momentum[k,D]])^a_Integer?Negative
-						 ) :>
-						 (sumgeom[ {OPEl,0,Infinity} ]*
-							 Pair[de, Momentum[k,D]]^(-a OPEl)/
-								 nok^(-a (OPEl+1))
-						 )^(-a),
-						 ((Pair[de_, Momentum[k,D]] +
-							 (nok_/;FreeQ[nok,k]))^ a_Integer?Negative
-						 ) :>
-						 (-sumgeom[ {OPEl,0,Infinity} ] *
-							 Pair[de, Momentum[k,D]
-									 ]^(-a OPEl)/(-nok)^(-a (OPEl+1))
-						 )   };
+						(((nok_ /; FreeQ[nok,k]) -
+							Pair[de_, Momentum[k,D]])^a_Integer?Negative
+						) :>
+						(sumgeom[ {OPEl,0,Infinity} ]*
+							Pair[de, Momentum[k,D]]^(-a OPEl)/
+								nok^(-a (OPEl+1))
+						)^(-a),
+						((Pair[de_, Momentum[k,D]] +
+							(nok_/;FreeQ[nok,k]))^ a_Integer?Negative
+						) :>
+						(-sumgeom[ {OPEl,0,Infinity} ] *
+							Pair[de, Momentum[k,D]
+									]^(-a OPEl)/(-nok)^(-a (OPEl+1))
+						)   };
 
 opsu[a_Plus,b__] :=
 	Map[opsu[#,b]&,a];
@@ -169,7 +173,7 @@ OPEIntegrate2[ex_,k_,opt___Rule] :=
 			FeynCalcExternal[
 			PowerSimplify[ ExpandScalarProduct[FeynCalcInternal[
 			z (pe-SO[k])^em]/. k-> -k+(pe/.SO->Identity)
-									 ]]   ] /. FAD -> fadk /.
+									]]   ] /. FAD -> fadk /.
 			fadk -> fado /. fado -> FAD;
 		If[ Head[exp] === Times,
 			exp = FeynCalcExternal[exp] /.SO->SOD/.SP->SPD;
@@ -184,7 +188,7 @@ OPEIntegrate2[ex_,k_,opt___Rule] :=
 				exp = FeynCalcExternal[FeynAmpDenominatorSimplify[
 																		FeynCalcInternal[exp]]
 															] /.  FAD-> fadk /. fadk->fado/.fado->FAD;
-				If[ MatchQ[exp, any_ (SOD[k]-bla_)^(em_/;Head[em]=!=Integer)],
+				If[ MatchQ[exp, _ (SOD[k]-_)^(em_/;Head[em]=!=Integer)],
 					exp = exp /. (SOD[k]-bla_)^pow_ :> (
 											PowerSimplify[(-1)^pow]*(bla-SOD[k])^pow)
 				];
@@ -238,10 +242,10 @@ oi[exp_Times, k_, opt___Rule] :=
 				]
 				];
 
-denmatch[Power[den_,mm_], ka_ /; Length[ka]===2] :=
+denmatch[Power[den_,(*mm*)_], ka_ /; Length[ka]===2] :=
 	True /;
 	FreeQ[FourDivergence[Expand[ExpandScalarProduct[den]] - Pair[ka,ka],
-	Pair[ka,LorentzIndex[any,ka[[2]]]]
+	Pair[ka,LorentzIndex[dummy,ka[[2]]]]
 	], ka[[1]]
 	];
 
@@ -251,7 +255,7 @@ getalpha[h_] :=
 		False
 	];
 getl[h_,ka_Momentum] :=
-	Block[ {tg,ll},
+	Block[ {tg,ll, check},
 		If[ !MatchQ[SelectFree[h,{Power2,LorentzIndex}], _^_],
 			False,
 							(*else*)
@@ -279,13 +283,13 @@ getm2[h_,ka_Momentum] :=
 	];
 getopem[h_] :=
 	(If[ Head[#]===Pair,
-		 1,
-		 If[ Head[#]===Power || Head[#]===Power2,
-			 #[[2]],
-			 False
-		 ]
-	 ]&
-				 )@SelectNotFree[h, Power2];
+		1,
+		If[ Head[#]===Power || Head[#]===Power2,
+			#[[2]],
+			False
+		]
+	]&
+				)@SelectNotFree[h, Power2];
 
 getmu[h_] :=
 	Cases2[h, LorentzIndex];
@@ -313,7 +317,7 @@ match3[h_, km_] :=
 	MatchQ[h//Numerator,
 					Power2[Pair[Momentum[OPEDelta,___], km], _]*
 					Pair[km, LorentzIndex[aa_,___]]*
-					Pair[km, LorentzIndex[bb_,___]]
+					Pair[km, LorentzIndex[bb_,___]]/;(aa=!=bb)(*VS*)
 				]&& denmatch[SelectFree[h,Power2]//Denominator,km] &&
 	MatchQ[SelectNotFree[h, Power2],
 					Power2[Pair[Momentum[OPEDelta,___],km ],_]];
@@ -324,14 +328,14 @@ match4[h_, km_] :=
 					Power2[Pair[Momentum[OPEDelta,___],km ],_]*
 					Pair[km, LorentzIndex[aa_,___]]*
 					Pair[km, LorentzIndex[bb_,___]]*
-					Pair[km, LorentzIndex[cc_,___]]
+					Pair[km, LorentzIndex[cc_,___]]/;(aa=!=bb && bb=!=cc)(*VS*)
 				]&& denmatch[SelectFree[h,Power2]//Denominator,km] &&
 	MatchQ[SelectNotFree[h,Power2],
 					Power2[Pair[Momentum[OPEDelta,___],km ],_]];
 
 (* I^(m)_alpha *)
 ilist[ih_, Momentum[k_,n_], od_Integer] :=
-	Block[ {al,m2,l,de,m,mu,h,fake},
+	Block[ {al,m2,l,de,m,mu,h,fake,lmu,nu,la,lnu,lla,dmu,dnu,dla,del,l2},
 		h = ih /. (a_ /; !FreeQ[a,k])^(w_ /;Head[w]=!=Integer) :>
 							Power2[a, w];
 		de = Momentum[OPEDelta, n];
@@ -403,24 +407,24 @@ ilist[ih_, Momentum[k_,n_], od_Integer] :=
 							dmu dnu dla/del^3
 						) ,
 				True, Print["MISTTTTTTTTTTTTTTTTT"];
-					  Dialog[];
-					  h
+					Dialog[];
+					h
 				]/.fake->0 /. Power[aa_,bb_] :> Power[aa,Expand[bb]]
 	];
 
 opeinttable = {
-kli[k_,FAD[k_,k_Symbol.., (k_)+(p1_),___] (_. + _. SOD[k_])^(OPEm+_.)] :>0
+kli[k_,FAD[k_,k_Symbol.., (k_)+((*p1*)_),___] (_. + _. SOD[k_])^(OPEm+_.)] :>0
 ,
-kli[k_,FAD[k_Symbol.., (k_)+(p1_), (k_)+(p2_),___] *
+kli[k_,FAD[k_Symbol.., (k_)+((*p1*)_), (k_)+((*p2*)_),___] *
 	(_. + _. SOD[k_])^(OPEm+_.)] :>0
 ,
-kli[k_,FAD[k_Symbol.., (k_)+(p1_), (k_)+(p2_),___] *
+kli[k_,FAD[k_Symbol.., (k_)+((*p1*)_), (k_)+((*p2*)_),___] *
 		(_. + _. SOD[k_])^(OPEm+_.) SOD[k_]^_.
 	] :>0
 ,
-kli[k_,FAD[k_,(k_)-(p1_),(k_)-(p3_)] (_. + _. SOD[k_])^(OPEm+_.)] :>0
+kli[k_,FAD[k_,(k_)-((*p1*)_),(k_)-((*p3*)_)] (_. + _. SOD[k_])^(OPEm+_.)] :>0
 ,
-kli[k_,FAD[k_,k_,(k_)-(p1_),(k_)-(p3_)] (_. + _. SOD[k_])^(OPEm+_.)]:>0
+kli[k_,FAD[k_,k_,(k_)-((*p1*)_),(k_)-((*p3*)_)] (_. + _. SOD[k_])^(OPEm+_.)]:>0
 ,
 kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(OPEm+en_.) SPD[k_,k_]]:>
 (-2*I*Sn*SO[p3]^(1 + en + OPEm)*
@@ -548,17 +552,17 @@ kli[k_,FAD[k_,(k_)-(p1_)]*SOD[k_]^(-2+OPEm)]:>
 kli[k_,FAD[k_,(k_)-(p3_)]*SOD[k_]^(-2+OPEm)]:>
 (-2*I*Sn*SO[p3]^(-2+OPEm))/(Epsilon*(-1+OPEm))
 ,
-kli[k_,FAD[k_,(k_)-(p3_),(k_)-(p1_)]* SOD[k_]^(-2+OPEm)]:>0
+kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(-2+OPEm)]:>0
 ,
 kli[k_,FAD[k_,(k_)-(p1_)]*SOD[k_]^(-1+OPEm)]:>
 (-2*I*Sn*SO[p1]^(-1+OPEm))/(Epsilon*OPEm)
 ,
-kli[k_,FAD[k_,k_,(k_)-(p1_)]*SOD[k_]^(-1+OPEm)]:>0
+kli[k_,FAD[k_,k_,(k_)-((*p1*)_)]*SOD[k_]^(-1+OPEm)]:>0
 ,
 kli[k_,FAD[k_,(k_)-(p3_)]*SOD[k_]^(-1+OPEm)]:>
 (-2*I*Sn*SO[p3]^(-1+OPEm))/(Epsilon*OPEm)
 ,
-kli[k_,FAD[k_,k_,(k_)-(p3_)]*SOD[k_]^(-1+OPEm)]:>0
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_)]*SOD[k_]^(-1+OPEm)]:>0
 ,
 kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(-1+OPEm)]:>
 (2*I*Sn*SO[p1]^OPEm)/(Epsilon*OPEm*(-SO[p1]+SO[p3]))-
@@ -581,17 +585,17 @@ kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(en_. +OPEm)]:>
 (2*I*Sn*SO[p1]^(1+en+OPEm))/(Epsilon*(1+en+OPEm)*(-SO[p1]+SO[p3]))
 ,
 
-kli[k_,FAD[k_,k_,(k_)-(p1_)]*SOD[k_]^(1+OPEm)]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p3_)]*SOD[k_]^(1+OPEm)]:>0,
-kli[k_,FAD[k_,(k_)-(p3_),(k_)-(p1_)]* SOD[k_]^(1+OPEm)]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p3_),(k_)-(p1_)]* SOD[k_]^(2+OPEm)]:>0,
-kli[k_,FAD[k_,(k_)-(p3_),(k_)-(p1_)]* SOD[k_]^(-1+OPEm)]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p3_),(k_)-(p1_)]* SOD[k_]^(-1+OPEm)]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p1_)]*SOD[k_]^OPEm]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p3_)]*SOD[k_]^OPEm]:>0,
-kli[k_,FAD[k_,(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^OPEm]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p3_),(k_)-(p1_)]* SOD[k_]^(1+OPEm)]:>0,
-kli[k_,FAD[k_,k_,(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^OPEm]:> 0,
+kli[k_,FAD[k_,k_,(k_)-((*p1*)_)]*SOD[k_]^(1+OPEm)]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_)]*SOD[k_]^(1+OPEm)]:>0,
+kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(1+OPEm)]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(2+OPEm)]:>0,
+kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(-1+OPEm)]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(-1+OPEm)]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p1*)_)]*SOD[k_]^OPEm]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_)]*SOD[k_]^OPEm]:>0,
+kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]*SOD[k_]^OPEm]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(1+OPEm)]:>0,
+kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]*SOD[k_]^OPEm]:> 0,
 
 (* newW*)
 kli[k_,FAD[k_, -p1_ + p2_ + k_]*(SOD[p2_] + SOD[k_])^(OPEm + en_.)]:>
@@ -626,13 +630,13 @@ kli[k_, FAD[k_, -p2_ + (k_)]* (SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :>
 					(SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2])))/
 			Epsilon
 ,
-kli[k_, FAD[k_, -p1_ + (k_), -p2_ + (k_)]*
-			(SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :> 0
+kli[k_, FAD[k_, -p1_ + (k_), -(*p2*)_ + (k_)]*
+			(SOD[p1_] - SOD[k_])^(OPEm + ((*en*)_.))] :> 0
 ,
-kli[k_, FAD[k_, -p1_ + (k_), -p1_ + (k_), -p2_ + (k_)]*
-			(SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :> 0
+kli[k_, FAD[k_, -p1_ + (k_), -p1_ + (k_), -(*p2*)_ + (k_)]*
+			(SOD[p1_] - SOD[k_])^(OPEm + ((*en*)_.))] :> 0
 ,
-kli[k_, FAD[k_, k_, -p1_ + p2_ + (k_)]*SOD[k_]^(OPEm + (en_.))] :> 0
+kli[k_, FAD[k_, k_, -(*p1*)_ + (*p2*)_ + (k_)]*SOD[k_]^(OPEm + ((*en*)_.))] :> 0
 ,
 kli[k_, FAD[k_, k_, -p1_ + p2_ + (k_)]*SOD[k_]^(OPEm + (en_.))*
 			SPD[p1_, k_]] :>
@@ -658,27 +662,27 @@ kli[k_, FAD[k_, -p1_ + (k_)]*(SOD[p2_] - SOD[k_])^(en_. + OPEm)*SOD[k_]
 (-SO[p1] + SO[p2])^(1 + en + OPEm)*((1 + en + OPEm)*SO[p1] + SO[p2])))/
 	(Epsilon*(1 + en + OPEm)*(2 + en + OPEm)*SO[p1])
 ,
-kli[k_, FAD[k_, -p2_ + (k_)]*(SOD[p2_] - SOD[k_])^(en_. + OPEm)*SOD[k_]
-	] :>
+kli[k_, FAD[k_, -p2_ + (k_)]*(SOD[p2_] - SOD[k_])^(en_. + OPEm)*SOD[k_]] :>
 (-2*I*Sn*SO[p2]^(1 + en + OPEm))/(Epsilon*(1 + en + OPEm)*(2 + OPEm+en))
 ,
-kli[k_, FAD[(k_) - (p2_), (k_) - (p1_)]*SOD[k_]*
-	(-SOD[k_] + SOD[p2_])^(en + OPEm)] :>
-(2*I*(-1)^(1 + en + OPEm)*Sn*
-		((SO[p1] - SO[p2])^(1 + en + OPEm)/(1 + en + OPEm) -
-			(SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*(2 + en + OPEm)) +
-			((SO[p1] - SO[p2])^(en + OPEm)*SO[p2])/(1 + en + OPEm)))/Epsilon
+kli[k_, FAD[(k_) - (p2_), (k_) - (p1_)]*SOD[k_]*(-SOD[k_] + SOD[p2_])^(e + OPEm)] :>
+(2*I*(-1)^(1 + e + OPEm)*Sn*
+		((SO[p1] - SO[p2])^(1 + e + OPEm)/(1 + e + OPEm) -
+			(SO[p1] - SO[p2])^(1 + e + OPEm)/((1 + e + OPEm)*(2 + e + OPEm)) +
+			((SO[p1] - SO[p2])^(e + OPEm)*SO[p2])/(1 + e + OPEm)))/Epsilon
 };
 
+(*TODO This is simply not right! One should never mess up with such
+	low-level functions as If!!!*)
 Unprotect[If];
 If[ -Re[OPEi - OPEm] > 1,
 	aa_,
-	bb_
+	(*bb*)_
 ] :=
 	aa;
 If[ -Re[OPEi - OPEm] > 2,
 	aa_,
-	bb_
+	(*bb*)_
 ] :=
 	aa;
 

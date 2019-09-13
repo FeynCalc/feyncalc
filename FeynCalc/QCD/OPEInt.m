@@ -36,11 +36,12 @@ Options[OPEInt] = {
 };
 
 OPEInt[exp_, kk_, pp_, x_, opt___Rule] :=
-	Block[ {facout,nex, nex0, epsc, epscc,factorout, divout,
-	epscdi,
-	n, k, ka, p, p2, sumk, sumk0, sumk1,de, dufa, powsub, opgeom, qqq,
-	null1, null2, qse, dUMMYM, mUuU, nUuU, finsu,flowerpower,delcol,
-	locepsilon, floweps, epsorder, nfa, noflow, opm, apa, dE, xXx, qqqk},
+	Block[{	facout,nex, nex0, epsc, epscc,factorout, divout,
+			epscdi, n, k, ka, p, p2, sumk, sumk0, sumk1,de, dufa, powsub, opgeom, qqq,
+			null1, null2, qse, dUMMYM, mUuU, nUuU, finsu,flowerpower,delcol,
+			locepsilon, floweps, epsorder, nfa, noflow, opm, apa, dE, xXx, qqqk, nex1, null,
+			muUU, irules0, irules1, irules2, irules3, nfax
+			},
 		facout = 1;
 		n  = Dimension /. {opt} /. Options[OPEInt];
 		k  = Momentum[kk, n];
@@ -83,7 +84,7 @@ OPEInt[exp_, kk_, pp_, x_, opt___Rule] :=
 		(* amputate *)
 		mUuU = LorentzIndex[FCGV[ToString[Unique["li"]]], n];
 		nUuU = LorentzIndex[FCGV[ToString[Unique["lI"]]], n];
-		nex = nex /. Eps[a___, Momentum[kk,dii___], b___]^2 :>
+		nex = nex /. Eps[a___, Momentum[kk,(*dii*)___], b___]^2 :>
 								(Eps[a, mUuU, b] * Pair[Momentum[kk, n], mUuU] *
 									Eps[a, nUuU, b] * Pair[Momentum[kk, n], nUuU]
 								);
@@ -116,8 +117,8 @@ OPEInt[exp_, kk_, pp_, x_, opt___Rule] :=
 			nex = dufa nex
 		];
 		irules0 = {
-				anynonsense_. FeynAmpDenominator[PropagatorDenominator[k, 0]..]:>0,
-				anynonsense_. FeynAmpDenominator[PropagatorDenominator[k-p, 0]..]:>0,
+				_. FeynAmpDenominator[PropagatorDenominator[k, 0]..]:>0,
+				_. FeynAmpDenominator[PropagatorDenominator[k-p, 0]..]:>0,
 		(* i1munu *)
 		qqq[ Pair[de, k]^m_ fun1_[a___, ka, b___Momentum] *
 			fun2_[aa___,ka,bb___Momentum] *

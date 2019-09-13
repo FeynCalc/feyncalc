@@ -154,7 +154,7 @@ SymbolicSum3[a_^OPEj b_^(- OPEi + OPEj) c_^(opem4_ -OPEi),
 			(a^(opem4+2)/((a-(1/b)) (a-c)) + b^(-opem4-2)/(
 			((1/b)-a) ((1/b)-c)) +
 			c^(opem4+2)/((c-a) (c-(1/b))) )
-						) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
+						) /; FreeQ2[{(*any,*)opem4},{OPEi,OPEj}];
 
 SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),
 			{OPEi, 0, opem4_}, {OPEj, 0, OPEi}

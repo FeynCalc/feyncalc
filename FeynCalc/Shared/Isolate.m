@@ -79,7 +79,7 @@ Isolate[OptionsPattern[]] :=
 	(Message[Isolate::argt, Isolate, 0, 1, 2]; Abort[]);
 
 Isolate[_,_,a___,z:Except[_?OptionQ], OptionsPattern[]] :=
-	(Message[Isolate::argt, Isolate, Length[{a}]+3, 1, 2]; Abort[]);
+	(Message[Isolate::argt, Isolate, Length[{a}]+3, 1, 2]; Abort[])/; !OptionQ[z]
 
 Isolate[y_HoldForm^n_., _, OptionsPattern[]] :=
 	y^n;

@@ -22,6 +22,8 @@ End[]
 
 Begin["`PartialIntegrate`Private`"]
 
+integrate::usage="";
+
 (*Options[PartialIntegrate] = {Hold -> False};*)
 Options[PartialIntegrate] = {Integrate -> Integrate};
 

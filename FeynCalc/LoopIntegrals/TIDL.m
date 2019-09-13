@@ -32,6 +32,9 @@ End[]
 
 Begin["`TIDL`Private`"]
 
+encli::usage="";
+tidl::usage="";
+
 Options[TIDL] = {
 Dimension -> D
 };

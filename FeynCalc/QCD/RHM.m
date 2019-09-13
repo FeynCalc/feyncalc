@@ -66,15 +66,15 @@ RHM[{a_Integer, b_Integer, c_Integer, d_Integer, e_Integer?Positive},
 		}, opt___Rule
 		] := Block[{p},
 	p = Momentum /. {opt} /. Options[RHM];
-Sum[-(((-1)^ie*Binomial[e, ie]*Gamma[-2 + be + de - Epsilon/2]*
+Sum[-(((-1)^r*Binomial[e, r]*Gamma[-2 + be + de - Epsilon/2]*
 			Gamma[2 + d - de + Epsilon/2]*Gamma[2 + c + Epsilon/2 - ga]*
 			Gamma[-2 + al - Epsilon/2 + ga]*
-			Gamma[2 + a - al + e + Epsilon/2 - ie]*
-			Gamma[2 + b - be + Epsilon/2 + ie]*Power2[SO[p], a + b + c + d + e]*
+			Gamma[2 + a - al + e + Epsilon/2 - r]*
+			Gamma[2 + b - be + Epsilon/2 + r]*Power2[SO[p], a + b + c + d + e]*
 			Power2[-SP[p, p], Epsilon2]*Power2[SP[p, p], 4 - al - be - de - ga])/
 		(Gamma[al]*Gamma[be]*Gamma[de]*Gamma[ga]*
-			Gamma[4 + a - al + c + e + Epsilon - ga - ie]*
-			Gamma[4 + b - be + d - de + Epsilon + ie])), {ie, 0, e}]
+			Gamma[4 + a - al + c + e + Epsilon - ga - r]*
+			Gamma[4 + b - be + d - de + Epsilon + r])), {r, 0, e}]
 							];
 
 RHM[{a_Integer, b_Integer, c_Integer, d_Integer, 0},

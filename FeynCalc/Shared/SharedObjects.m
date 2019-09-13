@@ -938,8 +938,8 @@ Protect[Greater];
 Unprotect[Conjugate];
 Conjugate[x_Pair] :=
 	(x /.
-	{Polarization[k_, a:Except[_?OptionQ], opts:OptionsPattern[]] :>
-	Polarization[k, Conjugate[a], opts]} ) /;!FreeQ[x, Polarization];
+	{Polarization[k_, a:Except[_?OptionQ], o:OptionsPattern[]] :>
+	Polarization[k, Conjugate[a], o]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
 SetAttributes[DIDelta, Orderless];
@@ -1552,9 +1552,9 @@ LeftPartialD[x_Momentum, y__Momentum] :=
 	DOT @@ Map[LeftPartialD, {x, y}];
 
 (* 	Here one must use named blanks, since otherwise DotSimplify
-	is not able to convert this into rules... *)
-Commutator[RightPartialD[x_], LeftPartialD[y_]] =
-	0;
+	is not able to convert this into rules. But I also don't want
+	WWB to complain about unused variables here. So... *)
+ToExpression["Commutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"]
 
 LeftRightPartialD[xx__] :=
 	LeftRightPartialD@@ (LorentzIndex /@ {xx}) /;
@@ -1701,10 +1701,10 @@ Pair[(a : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol-4], (h:
 
 
 Pair[Momentum[x_, ___], Momentum[Polarization[x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] :=
-	0/; OptionValue[Polarization,Transversality];
+	0/; OptionValue[Polarization,Transversality] && !OptionQ[{y}];
 
 Pair[Momentum[x_,___], Momentum[Polarization[_?NumberQ x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] :=
-	0/; OptionValue[Polarization,Transversality];
+	0/; OptionValue[Polarization,Transversality] && !OptionQ[{y}];
 
 Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]]:=
 	FeynCalc`Package`MetricT;
@@ -1948,7 +1948,7 @@ StandardMatrixElement[x_Plus] :=
 	Map[StandardMatrixElement,x];
 
 SUND[a_SUNIndex,a_SUNIndex, b:Except[_?OptionQ], OptionsPattern[]] :=
-	0;
+	0 && !OptionQ[b];
 
 SUND[a_,b_,c:Except[_?OptionQ], OptionsPattern[]] :=
 	2 SUNTrace[SUNT[a,b,c]] + 2 SUNTrace[SUNT[b,a,c]] /; OptionValue[Explicit];

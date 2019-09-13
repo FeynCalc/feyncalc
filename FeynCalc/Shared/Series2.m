@@ -43,7 +43,7 @@ Series2[exp_, a_List, b__List] :=
 
 Series2[a_, {x_, 0, nn_}, ops___Rule] :=
 	Block[{re, rec, polysub, polysimp, finsub, res, n=nn, ll, hypfix,
-		hyp, hyb, hyphyp, gamspec},
+		hyp, hyb, hyphyp, gamspec, hypex, hyback},
 
 		gammas[y_] :=
 			If[FreeQ[y, Gamma],

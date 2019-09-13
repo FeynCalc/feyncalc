@@ -29,7 +29,7 @@ DeclareNonCommutative[Twist2AlienOperator];
 Options[Twist2AlienOperator] = { CouplingConstant -> SMP["g_s"],
 													Dimension -> D, Polarization -> 0};
 Twist2AlienOperator[pi_, 0, opt___Rule] :=
-	Block[ {dim, p, re, pol, del},
+	Block[ {dim, p, re, pol, del, coup, li1,li2,li3},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2AlienOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2AlienOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2AlienOperator];
@@ -69,7 +69,7 @@ Twist2AlienOperator[pi_, 0, opt___Rule] :=
 (* count1 *)
 
 Twist2AlienOperator[p1_, _, {p3_, mu_, a_}, 0, opt___Rule] :=
-	Block[ {dim, re, pol, del},
+	Block[ {dim, re, pol, del, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2AlienOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2AlienOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2AlienOperator];

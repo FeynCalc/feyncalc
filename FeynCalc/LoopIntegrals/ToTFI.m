@@ -30,6 +30,19 @@ toTFIVerbose::usage="";
 qq::usage="";
 mM::usage="";
 
+c1::usage="";
+c2::usage="";
+c3::usage="";
+c4::usage="";
+c5::usage="";
+c6::usage="";
+dq1::usage="";
+dq2::usage="";
+pq1::usage="";
+pq2::usage="";
+q1q1::usage="";
+q1q2::usage="";
+q2q2::usage="";
 
 Options[ToTFI] = {
 	ApartFF		-> False,
@@ -183,7 +196,7 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 
 		(* Quick and dirty way to get rid of the  1-loop integrals here *)
 
-		intsTFI3 = intsTFI3/.{tfi1LoopQ1[xy_]:>ToTFI[xy,q1,p,opts],tfi1LoopQ2[xy_]:>ToTFI[xy,q2,p,opts]};
+		intsTFI3 = intsTFI3/.{tfi1LoopQ1[j_]:>ToTFI[j,q1,p,opts],tfi1LoopQ2[j_]:>ToTFI[j,q2,p,opts]};
 
 		(*	Now we extract all the unique loop integrals *)
 		intsTFIUnique = (Cases[intsTFI3+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
@@ -234,7 +247,10 @@ saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 	saveToTFI[z, q1,q2,p,opts] =
 	Catch[
-	Module[ {dim, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
+	Module[{	dim, met, pp, deltap, t0,
+				t1,t2,t3, dummyterm, result, pairs, dummytag,
+				n1, n2, s1, s2, s3, s4 ,s5, a1, a2, n3, n4, n5
+				},
 		dim = Dimension /. {opts} /. Options[ToTFI];
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
@@ -363,7 +379,7 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 							]
 				]
 			];
-		FeynCalcExternal[result]
+		FCE[result]
 	]];
 
 FCPrint[1,"ToTFI.m loaded."];

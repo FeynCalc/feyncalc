@@ -93,9 +93,9 @@ FieldDerivative[(h_ [QuantumField[field__], opts___])[x_], x_, lori_LorentzIndex
 (* Recursive definition of multiple derivatives: *)
 FieldDerivative[aa_, x_, loris__LorentzIndex, lori1_LorentzIndex] :=
 	(newfunc[1] = FieldDerivative[aa, x, lori1];
-	Do[newfunc[rep + 1] =
-		FieldDerivative[newfunc[rep], x, ##]& @@
-		Take[{loris}, {-rep}], {rep, 1, Length[{loris}]}];
+	Do[newfunc[r + 1] =
+		FieldDerivative[newfunc[r], x, ##]& @@
+		Take[{loris}, {-r}], {r, 1, Length[{loris}]}];
 	newfunc[Length[{loris}] + 1]);
 
 FieldDerivative /:

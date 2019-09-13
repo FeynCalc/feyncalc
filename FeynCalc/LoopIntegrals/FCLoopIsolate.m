@@ -41,6 +41,7 @@ Begin["`Package`"]
 End[]
 
 Begin["`FCLoopIsolate`Private`"]
+
 fcliVerbose::usage="";
 
 Options[FCLoopIsolate] = {
@@ -76,7 +77,8 @@ fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z,FCI->True], (CartesianMomentum|Momentum)[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,lmoms,tmp, loopIntHeads, time, optExceptHeads, optHead},
+	Block[{	res, null1, null2, ex,lmoms,tmp, loopIntHeads, time, optExceptHeads, optHead,
+			dummy1, dummy2},
 
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 		optExceptHeads = OptionValue[ExceptHeads];
@@ -90,7 +92,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		];
 
 		FCPrint[1,"FCLoopIsolate: Entering.", FCDoControl->fcliVerbose];
-		FCPrint[3,"FCLoopIsolate: Entering with: ", glis, FCDoControl->fcliVerbose];
+		FCPrint[3,"FCLoopIsolate: Entering with: ", expr, FCDoControl->fcliVerbose];
 
 		If[	MatchQ[lmoms0,{{___}}],
 			Message[FCLoopIsolate::fail, ex];

@@ -44,7 +44,7 @@ OPESumSimplify[exp_, OptionsPattern[]] :=
 								moreind, {i,c,d}] /. lsum4s -> OPESum;
 		powsu7[a_] :=
 			a;
-		powsu7[b_, mor___List, {i_, c_, d_}] :=
+		powsu7[b_, mor___List, {i_, _, _}] :=
 			powsu7[b /. Power2[(-1),any_] :> Expand[(-1)^any] /.
 								{ (-1)^i pow_[a_,i] :>
 									pow[-a,i] /; pow === Power || pow===Power2,

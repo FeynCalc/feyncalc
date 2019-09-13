@@ -120,7 +120,7 @@ FeynmanDoIntegrals[x_Plus,
 FeynmanDoIntegrals[DOT[ints0:(Integratedx[_, _, _]..),
 	(exp_?((FreeQ[#, Integratedx])&))],
 	moms0_List:dum, vars0_List:dum, opts___Rule] :=
-	Block[ {tc,tcc,tmpcol,a,ress},
+	Block[ {tc,tcc,tmpcol,ress},
 
 		(*Check for DeltaFunctions and try to factor them out*)
 		If[ FreeQ[exp, DeltaFunction[_]] =!= False,
@@ -168,7 +168,11 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 	expred, varsdrop, newvars, delcol, ChVars, x1, x2, res, intopts, nintopts,
 	fci, fcin*)
 	DD = Dimension /. Flatten[{opts}] /. Options[FeynmanDoIntegrals],
-	epsorders = EpsilonOrder /. Flatten[{opts}] /. Options[FeynmanDoIntegrals]},
+	epsorders = EpsilonOrder /. Flatten[{opts}] /. Options[FeynmanDoIntegrals],
+	serie,fci,fcin,intopts,nintopts,exp,serie0,serie1,serie2,tmpres,transfac,
+	ruls,kk,varsdrop,epsorder,vars,varlims0,varlims,varlimsout,varp, newvars,
+	expred, delcol,serie4,serie5, del, res,moms, cou, serie3, seri, tmp
+	},
 		varsdrop = {};
 
 	(*Options to pass to Integrate and NIntegrate*)
@@ -235,8 +239,8 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 			varsdrop = Union[varsdrop, {newvars[[-1]]}];
 			(*Jacobian. This should be Abs[Det[...]], but with out choice of ChVars,
 			the determinant is always positive*)
-			transfac = transfac*Det[Table[D[(ChVars @@ RotateRight[newvars])[[ii]], newvars[[jj]]],
-									{ii, Length[newvars]}, {jj,Length[newvars]}]] //.
+			transfac = transfac*Det[Table[D[(ChVars @@ RotateRight[newvars])[[i]], newvars[[j]]],
+									{i, Length[newvars]}, {j,Length[newvars]}]] //.
 						newvars[[-1]] -> Plus@@delcol[[1]];
 			(*Integration limits*)
 			varlims = If[ MatchQ[#[[1]],Alternatives@@newvars],
@@ -286,8 +290,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 				Itzykson&Zuber calculation*)
 				a_?( (!NumberQ[#] && NumericQ1[#, Union[vars,{(*Epsilon*)}]] &&
 						PolynomialQ[(Denominator[#]* Numerator[#])& [
-						Factor[# /. r_^(b_?((!FreeQ[#, DD|Epsilon])& )) :>
-								r^(b /. {DD -> 4, Epsilon -> 0})]],
+						Factor[# /. {t_^(b_)/;!FreeQ[b, DD|Epsilon] :> t^(b /. {DD -> 4, Epsilon -> 0})}]],
 						vars]) & ) :> (sym = Unique["r"];
 										ruls = Append[ruls, sym -> a];
 										sym))] /. ruls;

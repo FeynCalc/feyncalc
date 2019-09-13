@@ -26,6 +26,9 @@ End[]
 
 Begin["`FeynCalcForm`Private`"]
 
+fcdot2::usage="";
+hold::usage="";
+
 FCF = FeynCalcForm;
 
 bra = "(";
@@ -121,7 +124,7 @@ didl[x_,___]:=
 
 Format[fcdot2[a_,b__]] := Infix[fcdot2[a,b], " "];
 (* ??? *)
-fcdot2[x-y,x-rd];
+(*fcdot2[x-y,x-rd];*)
 Format[fcdot2[a_]] := a;
 
 diF[x_-4]:=
@@ -157,7 +160,7 @@ ditr[x_,___] :=
 	"tr"[x];
 
 fdprop[a__] :=
-	1 / denfa[dudu[a]];
+	1 / denfa[hold[a]];
 compind[a_] :=
 	If[Head[a] === Symbol,
 		StringJoin[ToString[a],"*"], a "*"];
@@ -191,7 +194,7 @@ plusdi[a_] :=
 	Subscript[SequenceForm["(", a, ")"], " + "];
 
 feynCalcForm[x_,opt___Rule]:=
-	Block[{xxxx = Evaluate[x], subs},
+	Block[{xxxx = Evaluate[x], subs, fcdot, diracsldid},
 		subs = FinalSubstitutions /. {opt} /. Options[FeynCalcForm];
 		xxxx = xxxx /. subs;
 		xxxx = xxxx/.(n_Real Second)->timefix[n];
@@ -263,8 +266,7 @@ feynCalcForm[x_,opt___Rule]:=
 				If[(Dimension /. Options[DiracSlash]) =!= 4,
 					DiracSlash[v__]:>
 						diracsldid[(Dimension /. Options[DiracSlash])][v]/.
-					diracsldid :>
-						diracsldi,
+					diracsldid :> diracsldi,
 							{}
 				]/.
 				DiracSlash[aa_] :>

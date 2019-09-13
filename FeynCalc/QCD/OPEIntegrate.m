@@ -41,7 +41,7 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 	n, k, ka, p2, fp, sumk, sumk0, sumk1,de, dufa, powsub, opgeom, qqq,
 	null1, null2, qse, dUMMYM, mUuU, nUuU, finsu,flowerpower,delcol,
 	locepsilon, floweps, epsorder, nfa, noflow, opm, apa, dE, xXx, qqqk,
-	sumbinom, sumbinomback
+	sumbinom, sumbinomback, ki, null, nex1, muUU, nfax
 	},
 		facout = 1;
 		n  = Dimension /. {opt} /. Options[OPEIntegrate];
@@ -75,19 +75,19 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 													nok^(-a (OPEk+1)), {OPEk,0,Infinity}
 												]
 									)^(-a),
-									( (n_. Pair[de, k] + (nok_ /; FreeQ[nok,k])
+									( (p_. Pair[de, k] + (nok_ /; FreeQ[nok,k])
 										)^a_Integer?Negative
 									) :>
-									(-sumk0[n^(-a OPEk) Pair[de,k]^(-a OPEk) /
+									(-sumk0[p^(-a OPEk) Pair[de,k]^(-a OPEk) /
 													(-nok)^(-a (OPEk+1)), {OPEk,0,Infinity}
 													]
 									),
 			(* NEW 08/95 *)
-										((n_. Pair[de,k] + m_ )^a_/;Head[a] =!= Integer
+										((p_. Pair[de,k] + m_ )^a_/;Head[a] =!= Integer
 										) :>
 										(ki = Unique[OPEi];
-										n^a sumbinom[a,OPEk[ki]] Pair[de,k]^OPEk[ki] *
-												PowerSimplify[(m/n)^(a-OPEk[ki])]
+										p^a sumbinom[a,OPEk[ki]] Pair[de,k]^OPEk[ki] *
+												PowerSimplify[(m/p)^(a-OPEk[ki])]
 										)
 
 			(* ueberfluessig (01/95)
@@ -116,7 +116,7 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 		(* amputate *)
 		mUuU = LorentzIndex[FCGV[ToString[Unique["li"]]], n];
 		nUuU = LorentzIndex[FCGV[ToString[Unique["li"]]], n];
-		nex = nex /. Eps[a___, Momentum[kk,dii___], b___]^2 :>
+		nex = nex /. Eps[a___, Momentum[kk,(*dii*)___], b___]^2 :>
 								(Eps[a, mUuU, b] * Pair[Momentum[kk, n], mUuU] *
 									Eps[a, nUuU, b] * Pair[Momentum[kk, n], nUuU]
 								);
@@ -154,8 +154,8 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 		fp[pe_] :=
 			fp[pe] = (-p2[pe]/ScaleMu^2)^Expand[(n/2 - 2)];
 		irules0 = {
-				anynonsense_. FeynAmpDenominator[PropagatorDenominator[k, 0]..]:>0,
-				anynonsense_. FeynAmpDenominator[PropagatorDenominator[k+ y_, 0]]:>0,
+				_. FeynAmpDenominator[PropagatorDenominator[k, 0]..]:>0,
+				_. FeynAmpDenominator[PropagatorDenominator[k+ _, 0]]:>0,
 		(* i1munu *)
 		qqq[ Pair[de, k]^m_ fun1_[a___, ka, b___Momentum] *
 			fun2_[aa___,ka,bb___Momentum] *
@@ -338,17 +338,11 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 				True
 			];
 		irulesmassive = {
-		qqq[
-		Pair[de, ka]^m_ FeynAmpDenominator[
-										PropagatorDenominator[k, em_ /; nos[em]],
-										PropagatorDenominator[k - p_, 0]
-																			]
-			] :> (-
-		I fp[p] em^(Epsilon/2) ( 2/Epsilon Pair[de, p]^m Gamma[1-Epsilon/2] x^m *
-							(1-x)^Epsilon
-					)) /. p2[p] -> em^2 /. ScaleMu -> (-I em),
-		qqq[
-		Pair[de, ka]^m_ FeynAmpDenominator[
+		qqq[Pair[de, ka]^m_ FeynAmpDenominator[PropagatorDenominator[k, e_ /; nos[e]], PropagatorDenominator[k - p_, 0]]] :>
+			(- I fp[p] e^(Epsilon/2) ( 2/Epsilon Pair[de, p]^m Gamma[1-Epsilon/2] x^m *
+				(1-x)^Epsilon)) /. p2[p] -> e^2 /. ScaleMu -> (-I e),
+
+		qqq[Pair[de, ka]^m_ FeynAmpDenominator[
 										PropagatorDenominator[k, em_ /; nos[em]],
 										PropagatorDenominator[k, em_ /; nos[em]],
 										PropagatorDenominator[k - p_, 0]

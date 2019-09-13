@@ -94,12 +94,10 @@ FORM2FeynCalc[fi_,ru___Rule] :=
 	FORM2FeynCalc[fi, False, ru];
 
 
-FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
-				ru___Rule] :=
-	Block[ {file, dim, ff, ffj, hh, dott, parsit, rr, vectors, indices,
-	stringrules, vv, rv, nof, holdform , dotrule, holdplus,
-	myDot,myfile
-	},
+FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule, ru___Rule] :=
+	Block[{	file, dim, ff, ffj, hh, dott, parsit, rr, vectors, indices,
+			stringrules, vv, rv, nof, holdform , dotrule, holdplus,
+			myDot,myfile, set, vecs, vecsubs, rli},
 
 
 		If[	!FreeQ2[{fi,exprs}, FeynCalc`Package`NRStuff],
@@ -158,7 +156,7 @@ FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
 				"0"<>#,
 				#
 			]&[ToString[a]];
-		vecsubs = Table[vecs[[ij]]->toexp["C"<>count[ij]],{ij,Length[vecs]}];
+		vecsubs = Table[vecs[[r]]->toexp["C"<>count[r]],{r,Length[vecs]}];
 
 
 		(* XXX *)

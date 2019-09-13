@@ -23,6 +23,7 @@ End[]
 Begin["`ConvoluteTable`Private`"]
 
 cT::usage="";
+cTcT::usage="";
 
 ConvoluteTable[f_, g_, opt___Rule] :=
 ConvoluteTable[f, g, FCGV["x"], opt];

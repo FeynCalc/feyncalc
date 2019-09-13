@@ -371,7 +371,7 @@ canCancelQP[int_,qs_List]:=
 			that differ only in the mass are equivalent for our purposes, we set
 			all masses to zero, to avoid duplicates. Furthermore, we ignore all
 			the propagators that do not depend on any of the loop momenta from the qs List	*)
-		props = Union[Cases[ex, PropagatorDenominator[moms_, _]/;!FreeQ2[moms,qs] :> (Expand[moms] /. Momentum[x_, _ : 4] :> x),Infinity]];
+		props = Union[Cases[ex, PropagatorDenominator[m_, _]/;!FreeQ2[m,qs] :> (Expand[m] /. Momentum[x_, _ : 4] :> x),Infinity]];
 
 		(* 	List of all the unique propagators that depend on the loop momentum and are
 			written such that they match the propagators in props. Note that here we account

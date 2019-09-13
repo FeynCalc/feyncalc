@@ -121,7 +121,7 @@ all the IR divergences were explicitly regularized with fictitious masses!", FCD
 
 		FCPrint[3,"NPointTo4Point: Entering with: ", pref fad, FCDoControl->nptfpVerbose];
 
-		pp[a_, b_] := Expand[(a /. m_Momentum :> m[[1]]) - qu];
+		pp[a_, (*b*)_] := Expand[(a /. m_Momentum :> m[[1]]) - qu];
 
 		pl = Rest[fad /. FeynAmpDenominator->List /. PropagatorDenominator -> pp];
 

@@ -28,6 +28,10 @@ End[]
 
 Begin["`OPE1Loop`Private`"]
 
+dim::usage="";
+dummy::usage="";
+muUUu::usage="";
+
 Options[OPE1Loop] =    {
 	Collecting -> True,
 	Dimension -> D,
@@ -66,9 +70,9 @@ OPE1Loop[name_, {ka1_, ka2_}, amp_, opts___Rule] :=
 	];
 
 PairFix[exp_, {ka__}] :=
-	Block[ {tt},
+	Block[ {tt, pf},
 		FCPrint[3,"entering PairFix"];
-		pf = Table[Pair[Momentum[{ka}[[j]], di___], Momentum[{ka}[[j]], di___]
+		pf = Table[Pair[Momentum[{ka}[[j]], d___], Momentum[{ka}[[j]], d___]
 										]^n_Integer?Negative, {j, Length[{ka}]}
 							];
 		If[ FreeQ2[exp, pf],
@@ -85,22 +89,20 @@ PairFix[exp_, {ka__}] :=
 	];
 
 
-OPE1Loop[grname_,k_ /; Head[k] =!= List,
-				integ_ /; Head[integ] =!= Plus,opts___Rule
-				] :=
-	Block[ {collecting, contrac,amp,dim,powexp,feyncan, feyncanon, subloop, fsc,
+OPE1Loop[(*grname*)_,k_ /; Head[k] =!= List, integ_ /; Head[integ] =!= Plus,opts___Rule] :=
+	Block[ {collecting, contrac,amp,powexp,feyncan, feyncanon, subloop, fsc,
 	opsumdoit, qp1, subfactor = 1, ampp, fad, fap, trf = {},
-	sunntocacf, sunftotraces, fds1, fscrule
+	sunntocacf, sunftotraces, fds1, fscrule, null1, null2, nn, lamp
 	},
 		If[ FreeQ[integ,k](* || (!FreeQ[integ, (_. +_. Pair[Momentum[k,___], _]
 																				)^(hw_/;Head[hw] =!=Integer)
 																]
 												)*) ||
 												(!FreeQ2[integ, {(_. +_. Pair[Momentum[k,___], _]
-																					)^(hw_Integer?Negative),
+																					)^((*hw*)_Integer?Negative),
 																					Power2[
 																					(_. +_. Pair[Momentum[k,___], _]
-																					), (hw_Integer?Negative)
+																					), ((*hw*)_Integer?Negative)
 																								]
 																				}
 																]
@@ -165,11 +167,10 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 				amp = ChangeDimension[integ//FeynCalcInternal, dim]//Trick;
 				amp = amp /. DiracTrace -> Tr2;
 				amp = FeynAmpDenominatorCombine[amp];
-				amp0 = amp;
+
 				If[ !FreeQ[amp,OPE],
 					amp = Coefficient[ Expand2[amp, OPE], OPE]
 				];
-				amp1 = amp;
 				contrac[yy_] :=
 					Contract[yy, EpsContract->False];
 				FCPrint[1,"sunsimplifying"];
@@ -215,7 +216,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 						If[ !MatchQ[SelectNotFree[a,k] /. Power2->Power,
 						(_. Pair[Momentum[OPEDelta,dim], Momentum[k,dim]])^
 															(w_/;Head[w]=!=Integer) *
-						(_. Pair[Momentum[OPEDelta,dim], Momentum[pe_,dim]] +
+						(_. Pair[Momentum[OPEDelta,dim], Momentum[(*pe*)_,dim]] +
 						_. Pair[Momentum[OPEDelta,dim], Momentum[k,dim]])^
 															(v_/;Head[v]=!=Integer)
 						],
@@ -223,12 +224,12 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 							( PowerSimplify[
 													Apart[SelectFree[a, {OPEi, OPEj}] *
 									Sum[((a/SelectFree[a,{OPEi,OPEj}])/.Power2->Power) //.
-											{(-1)^(n_Integer?EvenQ m_. + aa_) :> (-1)^aa
+											{(-1)^(_Integer?EvenQ _. + aa_) :> (-1)^aa
 											}, b
 											]
 														] ]/. ((pl_Plus)^(w_/;Head[w] =!= Integer) :>
 																		Power2[pl,w])
-							)/.(-1)^(n_Integer?EvenQ m_. + aa_.) :> (-1)^aa
+							)/.(-1)^(_Integer?EvenQ _. + aa_.) :> (-1)^aa
 						];
 
 					(*
@@ -236,7 +237,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 					*)
 					ops[null1] = ops[null2] = 0;
 					ops[a_ OPESum[xa_,xb_]] :=
-						a/(SelectNotFree[a dUM, k]) OPESum[xa SelectNotFree[a dUM,k],xb];
+						a/(SelectNotFree[a dummy, k]) OPESum[xa SelectNotFree[a dummy,k],xb];
 					amp = Map[ops, amp + null1 + null2] /. ops -> Identity;
 					amp = fds1[amp]//PowerSimplify;
 				];
@@ -249,7 +250,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 					];
 				qp1[x_] :=
 					fds1[ ApartFF[x,{k}]];
-				rli = {};
+				(*rli = {};*)
 				nn = 0;
 				nn = qup1[amp];
 				amp = nn;
@@ -298,7 +299,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 						]
 			];
 			amp = EpsEvaluate[nn];
-			amp4 = amp;
+
 			If[ collecting === False,
 				amp = Expand[amp],
 				If[ collecting === True,

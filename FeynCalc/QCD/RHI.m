@@ -40,14 +40,15 @@ Begin["`Package`"]
 End[]
 
 Begin["`RHI`Private`"]
+est::usage="";
 
-Options[RHI] =  {Directory -> "rh/ope/diagrams/",
-								(*nosaveDir -> False["rhisave"],*)
-								EpsilonOrder -> 0,
-								FORM -> False,
-								Momentum -> FCGV["p"]};
-
-
+Options[RHI] = {
+	Directory -> "rh/ope/diagrams/",
+	(*nosaveDir -> False["rhisave"],*)
+	EpsilonOrder -> 0,
+	FORM -> False,
+	Momentum -> FCGV["p"]
+};
 
 RHI[{v_,w_,x_,y_,z_},{a_,b_,c_,d_,e_},
 		{al_,be_,ga_,de_,ep_}, {k1_, k2_},o___Rule ] :=
@@ -142,13 +143,13 @@ RHI[{0, 0, 0, 1, 0}, {a_, b_, c_, d_, e_},
 		{al_, (be_Integer)?Positive, ga_, 0, (ep_Integer)?Positive},o___Rule
 	] :=
 	(Block[ {sop,p},
-		 p = Momentum /. {o} /. Options[RHI];
-		 sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
-		 (rRHI[{0, 0, 1, 0, 0}, {-1 + a, 1 + b, c, d, e}, {al, be, ga, 0, ep},o] -
-			 rRHI[{-2 + a, 1 + b, c, d, e}, {-1 + al, be, ga, 0, ep},o]*sop +
-			 rRHI[{0, 0, 0, 0, 1}, {-1 + a, b, c, d, e}, {al, be, ga, 0, ep},o]*sop
-		 )//Expand
-	 ]/.rRHI->RHI) /; ((b =!= 0) || (d =!= 0) || (e =!= 0));
+		p = Momentum /. {o} /. Options[RHI];
+		sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
+		(rRHI[{0, 0, 1, 0, 0}, {-1 + a, 1 + b, c, d, e}, {al, be, ga, 0, ep},o] -
+			rRHI[{-2 + a, 1 + b, c, d, e}, {-1 + al, be, ga, 0, ep},o]*sop +
+			rRHI[{0, 0, 0, 0, 1}, {-1 + a, b, c, d, e}, {al, be, ga, 0, ep},o]*sop
+		)//Expand
+	]/.rRHI->RHI) /; ((b =!= 0) || (d =!= 0) || (e =!= 0));
 
 RHI[{0, 0, 1, 0, 0}, {a_, b_, c_, d_, e_},
 		{(al_Integer)?Positive, be_, 0, de_, (ep_Integer)?Positive},
@@ -313,7 +314,7 @@ RHI[{
 *)
 
 
-RHI[{a_,b_,c_,d_,e_},{al_,0,ga_,de_ /; de =!= 0,ep_}, opt___Rule] :=
+RHI[{a_,b_,c_,d_,e_},{al_,0,ga_,de_ /; de =!= 0,ep_}, (*opt*)___Rule] :=
 	(-1)^e RHI[{c,d,a,b,e}, {ga,de,al,0,ep}];
 
 (* q1 -> -q1+p; q2 -> -q2+p *)
@@ -339,13 +340,13 @@ RHI[{-1,b_Integer?Positive,c_Integer,d_Integer,e_/;Head[e]=!=Integer},
 		{dd__}, opt___Rule
 	] :=
 	- RHI[{-1, b-1,c,d,e+1}, {dd}, opt] +
-			   RHI[{0,b-1,c,d,e}, {dd}, opt];
+			RHI[{0,b-1,c,d,e}, {dd}, opt];
 
 RHI[{a_Integer?Positive,-1,c_Integer,d_Integer,e_/;Head[e]=!=Integer},
 		{dd__}, opt___Rule
 	] :=
 	RHI[{a-1,-1,c,d,e+1}, {dd}, opt] +
-			 RHI[{a-1,0,c,d,e},    {dd}, opt];
+			RHI[{a-1,0,c,d,e},    {dd}, opt];
 
 RHI[{0,-1,0,0,e_/;Head[e]=!=Integer},
 		{1,1,1,1,1}, opt___Rule
@@ -353,8 +354,7 @@ RHI[{0,-1,0,0,e_/;Head[e]=!=Integer},
 	PowerSimplify[(-1)^e] RHI[{-1,0,0,0,e},{1,1,1,1,1},opt];
 
 RHI[{a_,b_,c_,d_,e_Integer?Positive},{bla__}, opt___Rule] :=
-	Sum[Binomial[e,ii] (-1)^(e-ii) RHI[{a+ii, b+e-ii,c,d,0}, {bla}, opt
-																		], {ii,0,e}]//Expand;
+	Sum[Binomial[e,i] (-1)^(e-i) RHI[{a+i, b+e-i,c,d,0}, {bla}, opt], {i,0,e}]//Expand;
 
 RHI[{a_,n_Integer?Positive,c_,d_,-1},{bla__}, opt___Rule] :=
 	-RHI[{a,n-1,c,d,0},{bla},opt] + RHI[{a+1,n-1,c,d,-1},{bla},opt];
@@ -374,9 +374,7 @@ RHI[{a_,b_,c_,d_,e_},{al_,be_,-1,de_ /; de=!=0, ep_},opt___Rule] :=
 	(-1)^e RHI[{b, a, d, c, e}, {be, al, de, -1, ep}, opt];
 
 (* f442*)
-RHI[{a_,b_Integer,c_,0,e_ /; Head[e]=!=Integer},
-		{al_,be_,ga_,0,  ep_},opt___Rule
-	] :=
+RHI[{a_,b_Integer,c_,0,e_ /; Head[e]=!=Integer}, {al_,be_,ga_,0,  ep_}, (*opt*)___Rule] :=
 	RHI[{a,e,c,0,b},{al,ep,ga,0,be}];
 
 
@@ -417,7 +415,7 @@ RHI[ll_List, {a_ /; a>0, b_ /; b>0, c_ /; c>0, d_ /; d>0, e_ /;e>0},
 		opt___Rule
 		] :=
 	0 /; (EpsilonOrder /. {opt} /. Options[RHI]) < 0 &&
-			   (Apply[Plus, SelectFree[ll,OPEm]]>=0);
+			(Apply[Plus, SelectFree[ll,OPEm]]>=0);
 
 RHI[snum___List, {a_,b_,c_,d_,e_,f_,g_},{al_,be_,ga_,de_,ep_}, opt___Rule] :=
 	loadrhi[snum,{a,b,c,d,e,f,g},{al,be,ga,de,ep}, nosaveDir /. {opt} /.
@@ -453,10 +451,10 @@ stD[x__] :=
 (* shortdef *)
 short[x_] :=
 	StringReplace[ToString[x /.
-						   { Times :> est, Plus :> est,
-							   Pair  :> est, Power :> est
-						   } /.  {est :> st}], {"[" -> "", "]" -> "", ", " -> ""}
-										   ];
+						{ Times :> est, Plus :> est,
+							Pair  :> est, Power :> est
+						} /.  {est :> st}], {"[" -> "", "]" -> "", ", " -> ""}
+										];
 (*XXX*)
 frh = FixedPoint[ReleaseHold, #]&;
 loadrhi[indi___List, save_String, opt___Rule] :=
@@ -594,8 +592,9 @@ form2 = {
 				};
 
 fromform[y_String,opt___Rule] :=
-	Block[ {formprog, fil,new1,newm,new,fac},
-(* construct the form program *)
+	Block[{	formprog, fil,new1,newm,new,fac, ww, myflag, rhd0,
+			mmm, null1, null2},
+		(* construct the form program *)
 		If[ (EpsilonOrder /. {opt} /. Options[RHI]) < 0,
 			formprog = Join[form1, {y}, form2],
 			If[ (EpsilonOrder /. {opt} /. Options[RHI]) === 1,
@@ -640,9 +639,9 @@ fromform[y_String,opt___Rule] :=
 			];
 		new = Join[{"("}, new, {")"}];
 		OpenWrite[HomeDirectory[]<>"/rh/ope/diagrams/doit.m"];
-		For[ij = 1, ij <= Length[new], ij++,
+		For[r = 1, r <= Length[new], r++,
 				WriteString[HomeDirectory[]<>"/rh/ope/diagrams/doit.m",
-										new[[ij]], "\n"];
+										new[[r]], "\n"];
 			];
 		Close[HomeDirectory[]<>"/rh/ope/diagrams/doit.m"];
 		new = Get[HomeDirectory[]<>"/rh/ope/diagrams/doit.m"];
@@ -665,15 +664,15 @@ fromform[y_String,opt___Rule] :=
 		newm = SelectNotFree[new, FCGV["MINUSONE"]];
 		clo[yy__] :=
 			If[ !FreeQ2[{yy}, {Epsilon,
-														   DeltaFunction}],
+														DeltaFunction}],
 				Plus[yy],
 				Collect2[Plus[yy], {PolyLog,Log},Factoring->False]
 			];
 		coled[xx_] :=
 			Collect2[xx /. DeltaFunction[_]->0, Epsilon,
-					  Factoring->False] +
-						  DeltaFunction[1-FCGV["x"]]         Collect2[D[xx,
-						  DeltaFunction[1-FCGV["x"]]], Epsilon,Factoring->False];
+					Factoring->False] +
+						DeltaFunction[1-FCGV["x"]]         Collect2[D[xx,
+						DeltaFunction[1-FCGV["x"]]], Epsilon,Factoring->False];
 		new1 = coled[new1] /. Plus -> clo;
 		If[ newm =!= 0,
 			mmm  = SelectNotFree[newm, FCGV["MINUSONE"]];
@@ -692,28 +691,28 @@ fromform[y_String,opt___Rule] :=
 
 str[y_] :=
 	StringReplace[y, {"["        -> "(",
-															   "]" -> ")",
-											   "d_(1-x)"  -> "DeltaFunction[1-x]",
-											   "(-)^m"    -> "(MINUSONE)^m",
-											   "p.p"      -> "ScalarProduct[p,p]",
-											   "zeta2"    -> "Zeta2",
-											   "zeta3"    -> "Zeta[3]",
-											   "s12(1-x)" -> "Nielsen[1,2][1-x]",
-											   "li2(1-x)" -> "PolyLog[2,1-x]",
-											   "li3(1-x)" -> "PolyLog[3,1-x]",
-											   "li3(-x)"  -> "PolyLog[3,-x]",
-											   "li3(-(1-x)/(1+x))"  ->
-															   "PolyLog[3,-(1-x)/(1+x)]",
-											   "li3((1-x)/(1+x))" ->
-															   "PolyLog[3,(1-x)/(1+x)]",
-											   "li2(-x)"  -> "PolyLog[2,-x]",
-											   "log(x)"   -> "Log[x]",
-											   "log(x,1 - 1/2*x)" -> "LOG[x,1-x/2]",
-											   "li2(x,1/2*x)" -> "LI2[x,1/2 x]",
-											   "log(1+x)" -> "Log[1+x]",
-											   "log(1-x)" -> "Log[1-x]"
-											   }
-									   ];
+															"]" -> ")",
+											"d_(1-x)"  -> "DeltaFunction[1-x]",
+											"(-)^m"    -> "(MINUSONE)^m",
+											"p.p"      -> "ScalarProduct[p,p]",
+											"zeta2"    -> "Zeta2",
+											"zeta3"    -> "Zeta[3]",
+											"s12(1-x)" -> "Nielsen[1,2][1-x]",
+											"li2(1-x)" -> "PolyLog[2,1-x]",
+											"li3(1-x)" -> "PolyLog[3,1-x]",
+											"li3(-x)"  -> "PolyLog[3,-x]",
+											"li3(-(1-x)/(1+x))"  ->
+															"PolyLog[3,-(1-x)/(1+x)]",
+											"li3((1-x)/(1+x))" ->
+															"PolyLog[3,(1-x)/(1+x)]",
+											"li2(-x)"  -> "PolyLog[2,-x]",
+											"log(x)"   -> "Log[x]",
+											"log(x,1 - 1/2*x)" -> "LOG[x,1-x/2]",
+											"li2(x,1/2*x)" -> "LI2[x,1/2 x]",
+											"log(1+x)" -> "Log[1+x]",
+											"log(1-x)" -> "Log[1-x]"
+											}
+									];
 
 
 

@@ -36,8 +36,8 @@ TwoLoopSimplify[exp_, opt___Rule] :=
 
 TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 	Block[ {dirsuntrace, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12,
-	t13, t14,
-	lt7, lt10, lt12,
+	t13, t14, t15, t16, tolarin,
+	lt7, lt10, lt12, null1, null2,
 	dim, colg, two, twlist, twsublist, con, nan,tem,
 	ht7, ht10, ht11, ht12, table, pe, op2, decomposelist
 	},
@@ -131,9 +131,9 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 							];
 				twlist = Cases2[t6, Twist2GluonOperator];
 				twsublist = {};
-				For[ii = 1, ii<=Length[twlist], ii++,WriteString["stdout",ii," "];
-													AppendTo[twsublist, twlist[[ii]] ->
-															(twlist[[ii]] /. Twist2GluonOperator -> two)
+				For[r = 1, r<=Length[twlist], r++,WriteString["stdout",r," "];
+													AppendTo[twsublist, twlist[[r]] ->
+															(twlist[[r]] /. Twist2GluonOperator -> two)
 															]
 					];
 				t6 = t6 /.Dispatch[twsublist];
@@ -150,8 +150,8 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 			nan  = 0;
 			lt7 = Length[t7];
 			ht7 = Hold@@{t7};
-			For[jj = 1, jj <= lt7, jj++, Print["exp ",jj," (",lt7,") "];
-										nan = nan + (DiracSimplify[con[Expand2[ht7[[1,jj]],
+			For[r = 1, r <= lt7, r++, Print["exp ",r," (",lt7,") "];
+										nan = nan + (DiracSimplify[con[Expand2[ht7[[1,r]],
 																		{LorentzIndex,q1,q2}
 																	]] /. DiracTrace -> Tr2]);
 				];
@@ -206,14 +206,13 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 			t12 = t11,
 			tem = 0;
 			ht11 = Hold@@{t11};
-			len = Length[t11];
 			Do[
-				WriteString["stdout",jj," "];
-				tem = tem + Expand[ht11[[1,jj]]];
-				If[ IntegerQ[jj/100],
+				WriteString["stdout",r," "];
+				tem = tem + Expand[ht11[[1,r]]];
+				If[ IntegerQ[r/100],
 					Print["len = ",Length[tem]]
 				]
-				, {jj, len}
+				, {r, Length[t11]}
 			];
 			t12 = Collect2[tem,{q1,q2}, Expanding -> False];
 		];
@@ -222,10 +221,10 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 			t13 = 0;
 			lt12 = Length[t12];
 			ht12 = Hold@@{t12};
-			Do[ WriteString["stdout",ik," "];
-				t13 = t13 + Isolate[ht12[[1,ik]],{q1,q2}, IsolateSplit->Infinity]
+			Do[ WriteString["stdout",r," "];
+				t13 = t13 + Isolate[ht12[[1,r]],{q1,q2}, IsolateSplit->Infinity]
 				,
-				{ik, lt12}
+				{r, lt12}
 			];
 		];
 		t14 = Expand2[t13] /. Pair -> PairContract /. PairContract -> Pair /.

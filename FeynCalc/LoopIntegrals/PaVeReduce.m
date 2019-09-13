@@ -633,11 +633,11 @@ pavereduce[w_ , opts:OptionsPattern[]] :=
 				nn = Length[nw],
 				nn = 1
 			];
-			For[ij = 1, ij<=nn, ij++,
-				FCPrint[2,"breaking down # ", ij, " / ", nn];
+			For[i = 1, i<=nn, i++,
+				FCPrint[2,"breaking down # ", i, " / ", nn];
 				If[ nn===1,
 					pre = PartitHead[nw,StandardMatrixElement],
-					pre = PartitHead[nw[[ij]],StandardMatrixElement]
+					pre = PartitHead[nw[[i]],StandardMatrixElement]
 				];
 				re = re + pre[[2]] pavereduce[ pre[[1]], opts]
 			];
@@ -681,21 +681,21 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			isolateP[x__] :=
 				Isolate[x, IsolateNames -> isok];
 
-			tri[xx_  yy_] :=
-				tri[xx] tri[yy];
+			tri[x_  y_] :=
+				tri[x] tri[y];
 
-			tri[any_ xx_] :=
-				( any tri[xx] )/;FreeQ[any,Plus] || Head[any]===PaVe;
+			tri[a_ x_] :=
+				( a tri[x] )/;FreeQ[a,Plus] || Head[a]===PaVe;
 
-			tri[any_ ] :=
-				any /;FreeQ[any,Plus] || Head[any]===PaVe;
+			tri[a_ ] :=
+				a /;FreeQ[a,Plus] || Head[a]===PaVe;
 
 			mand = mand /. SmallVariable->Identity;
 
 			If[ mand==={},
 				If[ ($LimitTo4 === False ) && (Head[brex] === PaVe),
 					tvarS = Variables[ Join @@ Take[(brex /.
-						PaVe[args1__, args_List, OptionsPattern[]] :> PaVe[args1, args]), -2] ];
+						PaVe[x__, y_List, OptionsPattern[]] :> PaVe[x, y]), -2] ];
 					trick[z_] :=
 						Collect2[z, tvarS],
 					trick[z_] :=
@@ -716,20 +716,20 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			backpd[a_] :=
 				D0[a];
 
-			backpd[a_,b_,c_,d_,e_,f_,m1_,m2_,m3_,m4_] :=
-				PaVeOrder[ D0[a,b,c,d,e,f,m1,m2,m3,m4], PaVeOrderList -> paveorderli];
+			backpd[a_,b_,c_,d_,e_,f_,  v_,w_,x_,y_] :=
+				PaVeOrder[ D0[a,b,c,d,e,f,v,w,x,y], PaVeOrderList -> paveorderli];
 
-			pluep[yy__] :=
-				Plus[yy]/;!FreeQ2[{yy}, {$epsilon,A0,B0,B1,B00,B11}];
+			pluep[y__] :=
+				Plus[y]/;!FreeQ2[{y}, {$epsilon,A0,B0,B1,B00,B11}];
 
 			FCPrint[3,"PaVeReduce: pavereduce: Staring reduction.", FCDoControl->pvrVerbose];
 			breakx = breakx/.msu;
 
 			(*	Currently, the reduction is not implemented for pentagons and other higher point function	*)
 			breakx = breakx /. {
-				PaVe[i_,j___,  moms_List, ml_List, ops:OptionsPattern[]]/;
-					MatchQ[{i,j}, {Integer___}] && Length[moms]>6 :>
-						paveProtect[i,j,  moms, ml, ops]
+				PaVe[i_,j___,  m_List, l_List, o:OptionsPattern[]]/;
+					MatchQ[{i,j}, {Integer___}] && Length[m]>6 :>
+						paveProtect[i,j,  m, l, o]
 			};
 
 			breakx = ToPaVe2[breakx];
@@ -750,7 +750,7 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			];
 
 			If[	!FreeQ2[t,{T,tT}],
-				t = t//. (T|tT)[n_Integer][inds__][{a__}] :> PaVe[inds,Drop[{a},-n],Take[{a},-n]]
+				t = t//. (T|tT)[n_Integer][i__][{a__}] :> PaVe[i,Drop[{a},-n],Take[{a},-n]]
 			];
 
 			t = Expand2[t,Join[PaVeHeadsList,{$epsilon}]];
@@ -782,8 +782,8 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			cofun2[y_] :=
 				y/;FreeQ[y,Plus];
 
-			cofun2[yy_] :=
-				trick[yy];
+			cofun2[y_] :=
+				trick[y];
 
 
 			If[ isok=!=False && Head[result]=!=PaVe,

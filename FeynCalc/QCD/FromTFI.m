@@ -26,24 +26,24 @@ Begin["`FromTFI`Private`"]
 Options[FromTFI]  = { TLI2FC -> True };
 FromTFI[exp_, opts___Rule] :=
 	FromTFI[exp, FCGV["q1"],FCGV["q2"], FCGV["p"],opts];
-FromTFI[exp_, q1_, q2_, p_, opts___Rule] :=
+FromTFI[exp_, (*q1*)_, (*q2*)_, (*p*)_, opts___Rule] :=
 	Block[ {t},
 		t = exp /. 	{
-					TFI[d_Symbol, pp_, props_List] :> TLI[{0,0,0,0,0}, props],
-					TFI[d_Symbol, pp_, {x_,y_,z_,v_,w_}, props_List] :>
+					TFI[(*d*)_Symbol, (*pp*)_, props_List] :> TLI[{0,0,0,0,0}, props],
+					TFI[(*d*)_Symbol, (*pp*)_, {x_,y_,z_,v_,w_}, props_List] :>
 					TLI[{x,y,z,v,w}, {0,0,0,0,0}, props],
-					TFI[d_Symbol, pp_, dp_, {a_,b_}, props_List] :>
+					TFI[(*d*)_Symbol, (*pp*)_, (*dp*)_, {a_,b_}, props_List] :>
 					TLI[{a,b,0,0,0}, props],
-					TFI[d_Symbol, pp_, dp_, {a_,b_}, {x_,y_,z_,v_,w_}, props_List] :>
+					TFI[(*d*)_Symbol, (*pp*)_, (*dp*)_, {a_,b_}, {x_,y_,z_,v_,w_}, props_List] :>
 					TLI[{x,y,z,v,w}, {a,b,0,0,0}, props],
-					TVi[d_Symbol, pp_, {nm1_,nm2_,nm3_,nm4_}] :>
+					TVi[(*d*)_Symbol, (*pp*)_, {nm1_,nm2_,nm3_,nm4_}] :>
 					TLI[{0,0,0,0,0},{0,nm2,nm3,nm4,nm1}],
-					TVi[d_Symbol, pp_, {x_,y_,z_,v_,w_}, {nm1_,nm2_,nm3_,nm4_}] :>
+					TVi[(*d*)_Symbol, (*pp*)_, {x_,y_,z_,v_,w_}, {nm1_,nm2_,nm3_,nm4_}] :>
 					TLI[{x,y,z,v,w}, {0,0,0,0,0},{0,nm2,nm3,nm4,nm1}],
-					TVi[d_Symbol, pp_, {a_,b_}, {x_,y_,z_,v_,w_},
+					TVi[(*d*)_Symbol, (*pp*)_, {a_,b_}, {x_,y_,z_,v_,w_},
 										{nm1_,nm2_,nm3_,nm4_}] :>
 					TLI[{x,y,z,v,w}, {a,b,0,0,0},{0,nm2,nm3,nm4,nm1}],
-					TJi[d_Symbol, pp_, {nm1_,nm2_,nm3_}] :>
+					TJi[(*d*)_Symbol, (*pp*)_, {nm1_,nm2_,nm3_}] :>
 					TLI[{0,0,0,0,0},{nm1,0,0,nm3,nm2}]
 					};
 		If[ (TLI2FC /. {opts} /. Options[FromTFI]) === True,

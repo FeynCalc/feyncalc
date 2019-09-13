@@ -637,7 +637,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 		FCPrint[2,"TID: tidSingleIntegral: List of unique integrals ", uList2, FCDoControl->tidVerbose];
 
 		(* Reduce all the integrals from uList2 into scalar integrals*)
-		nwr[exp_]:= (NestWhile[tidFullReduce[#,q,n,pavebasis]&, exp,
+		nwr[e_]:= (NestWhile[tidFullReduce[#,q,n,pavebasis]&, e,
 			! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &, 1, rank+2]);
 
 		sList2 = nwr/@uList2;

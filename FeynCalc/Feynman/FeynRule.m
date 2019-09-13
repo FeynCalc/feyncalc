@@ -32,6 +32,11 @@ Begin["`FeynRule`Private`"]
 
 assumptions::usage="";
 frVerbose::usage="";
+schouten::usage="";
+opes::usage="";
+localSUND::usage="";
+localSUNF::usage="";
+sdummy::usage="";
 
 (* Functions that are applied to the expression first.
 Added 3/8-2000 by Frederik Orellana to allow interoperability with Phi:
@@ -57,8 +62,8 @@ sununique[a_] :=
 		];
 
 frex[nl_] :=
-	frex[nl] = Block[ {nla = DotSimplify[nl],sdum, flag, ff, fm,ff1, cli,tem,
-	nlafirst, newlorlist, lorindlist, sunindlist, newsunlist},
+	frex[nl] = Block[ {nla = DotSimplify[nl],sdum, flag, ff, fm,ff1, ff2, cli,tem,
+	nlafirst, newlorlist, lorindlist, sunindlist, newsunlist, uniquelist},
 
 
 				FCPrint[1, "FeynRule: frex: Entering with ", nla, FCDoControl->frVerbose];
@@ -95,26 +100,26 @@ frex[nl_] :=
 				(* select those which occur an even number of times *)
 				newlorlist = {};
 				newsunlist = {};
-				For[iij = 1, iij <= Length[lorindlist], iij++,
-					If[ EvenQ[Length[Position[nlafirst, lorindlist[[iij]]]]],
-						AppendTo[newlorlist, lorindlist[[iij]]]
+				For[r = 1, r <= Length[lorindlist], r++,
+					If[ EvenQ[Length[Position[nlafirst, lorindlist[[r]]]]],
+						AppendTo[newlorlist, lorindlist[[r]]]
 					];
 				];
-				For[iij = 1, iij <= Length[sunindlist], iij++,
-					If[ EvenQ[Length[Position[nlafirst, sunindlist[[iij]]]]],
-						AppendTo[newsunlist, sunindlist[[iij]]]
+				For[r = 1, r <= Length[sunindlist], r++,
+					If[ EvenQ[Length[Position[nlafirst, sunindlist[[r]]]]],
+						AppendTo[newsunlist, sunindlist[[r]]]
 					]
 					];
 				FCPrint[1, "FeynRule: frex: newlorlist ", newlorlist, FCDoControl->frVerbose];
 				FCPrint[1, "FeynRule: frex: newsunlist ", newsunlist, FCDoControl->frVerbose];
 
-				uniquelist = Join[Table[newlorlist[[ij]] ->
-										(newlorlist[[ij]]/.LorentzIndex -> lorunique),
-										{ij, Length[newlorlist]}
+				uniquelist = Join[Table[newlorlist[[i]] ->
+										(newlorlist[[i]]/.LorentzIndex -> lorunique),
+										{i, Length[newlorlist]}
 										],
-									Table[newsunlist[[jj]] ->
-										(newsunlist[[jj]]/.SUNIndex -> sununique),
-										{jj, Length[newsunlist]}
+									Table[newsunlist[[j]] ->
+										(newsunlist[[j]]/.SUNIndex -> sununique),
+										{j, Length[newsunlist]}
 										]
 								];
 				FCPrint[1, "FeynRule: frex: uniquelist = ", uniquelist, FCDoControl->frVerbose];
@@ -273,8 +278,8 @@ sumtrick1[ex_, {i_, 0, n_}] :=
 	w_/;(Variables[w] === Variables[{i,n}])]
 	) :> (((-1)^n (-1)^(i+em) pow[a, v + n - 2 i]*
 					pow[b, w - n + 2 i]
-	) /. (-1)^(xa_ + 2 xb_) :> ((-1)^xa /;
-		MemberQ[{OPEi,OPEj,OPEk,OPEl,OPEm},xb]
+	) /. (-1)^(y_ + 2 z_) :> ((-1)^y /;
+		MemberQ[{OPEi,OPEj,OPEk,OPEl,OPEm},z]
 							)
 	) /; (!OrderedQ[{a,b}]) &&
 	((pow === Power) || (pow === Power2)) &&
@@ -291,7 +296,7 @@ sutr[pli_List][x_, {i_, 0, j_}] :=
 sutr[pli_List][x_, {i_, 0, j_}, b__] :=
 	MemSet[sutr[pli][x,{i,0,j}, b],
 	Block[ {xx = x, te},
-		te =  If[ FreeQ[x, (-1)^(_. i + em_.)],
+		te =  If[ FreeQ[x, (-1)^(_. i + _.)],
 				enmomcon[x, pli],
 				x
 			];
@@ -305,7 +310,7 @@ sutr[pli_List][x_, {i_, 0, j_}, b__] :=
 sutr[pli_List][x_, {i_, 0, j_}] :=
 	MemSet[sutr[pli][x,{i,0,j}],
 	Block[ {xx = x, te},
-		te =  If[ FreeQ[x, (-1)^(_. i + em_.)],
+		te =  If[ FreeQ[x, (-1)^(_. i + _.)],
 				enmomcon3[x, pli],
 				x
 			];
@@ -401,19 +406,22 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 	If[ Length[lag] === 0,
 		Print["well well ", lag, " does not look like a lagrangian"],
 		Block[ {(*InitialFunction stuff added by F.Orellana 3/8-2000*)
-		initf = InitialFunction /. {ru} /. Options[FeynRule],
-		nlag = ExpandAll[fcis[initf[lag]]], temp1, temp,
+		initf, nlag, temp1, temp,
 				fili = fii, lfili, qli,specope,
 				groupindices,
 				result,fields,tfields,plist,
-				vert,sdummy, getsu,gsu,subs,
+				vert, getsu,gsu,subs,
 				qfi, qqq, oldnoncomm, onepm, onemm,
-				plho,schouten,opsumb,opsumb2,
+				plho,opsumb,opsumb2,
 				$binindices, indd, oplei,anti5,
 				leib,coup,cdp,cedepe,opexbin,
-				zeromomentum,partiald,fcVerbose
+				zeromomentum,partiald,fcVerbose,
+				sumBinomial, puref, nres, nee
 				},
 
+
+			initf = InitialFunction /. {ru} /. Options[FeynRule];
+			nlag = ExpandAll[fcis[initf[lag]]];
 
 			If[	!FreeQ2[{lag,fii}, FeynCalc`Package`NRStuff],
 				Message[FeynCalc::nrfail];
@@ -458,7 +466,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 			leib[y_] :=
 				y /. OPESum -> oplei /. oplei -> OPESum;
 			fields = Map[ ( QuantumField[___, #,
-					Pattern @@ {Unique[dm], ___}][___])&, #[[0, 1]]& /@ fili];
+					Pattern @@ {Unique["dm"], ___}][___])&, #[[0, 1]]& /@ fili];
 			If[ !FreeQ[nlag, Sum],
 				nlag = nlag /. Sum -> OPESum
 			];
@@ -576,10 +584,10 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 				UnDeclareNonCommutative[groupindices];
 				If[ Head[vert] === Plus,
 					result = 0;
-					For[iij = 1, iij <= Length[vert], iij++,
-							FCPrint[2, "iij of FunctionalD = ", iij, " out of ", Length[vert], FCDoControl->frVerbose];
+					For[j = 1, j <= Length[vert], j++,
+							FCPrint[2, "iij of FunctionalD = ", j, " out of ", Length[vert], FCDoControl->frVerbose];
 							result = result +
-							DotSimplify[FunctionalD[vert[[iij]], fili],
+							DotSimplify[FunctionalD[vert[[j]], fili],
 										Expanding -> False
 										] /. (a_ /; (a =!= (-1)))^
 							(w_ /; (Head[w] =!= Integer)) :> Power2[a, w];
@@ -589,7 +597,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 							(w_ /; (Head[w] =!= Integer)) :> Power2[a, w];
 				];
 				FCPrint[1, "FeynRule: After functional differentiation ", result, FCDoControl->frVerbose];
-				qli[a__,el__LorentzIndex, ___][_] :=
+				qli[__,el__LorentzIndex, ___][_] :=
 					{el};
 				lfili  = Flatten[fili /. QuantumField  -> qli];
 				result = Expand2[result/.SUNDelta->SUNDeltaContract/.SUNDeltaContract->SUNDelta];
@@ -606,10 +614,9 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					FCPrint[1, "FeynRule: After dirdot ", result, FCDoControl->frVerbose];
 				];
 
-				alllor = Union[Cases[result, LorentzIndex[__], Infinity]];
 				FCPrint[1, "FeynRule: After Cases ", result, FCDoControl->frVerbose];
 
-				If[ alllor =!= Sort[lfili],
+				If[ Union[Cases[result, LorentzIndex[__], Infinity]] =!= Sort[lfili],
 					If[ (Contract /. Options[FeynRule]) === True,
 						result = result// Contract;
 						FCPrint[1, "FeynRule: After another contraction ", result, FCDoControl->frVerbose];
@@ -662,9 +669,9 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					opexbin[a_, b_] :=
 						Factor2[PowerSimplify[SymbolicSum[a,b],Assumptions->assumptions
 							]             ] /; !FreeQ[a,Binomial];
-					For[ib = 1, ib <= Length[$binindices], ib++,
-					FCPrint[1, "ib = ", ib, " out of ", Length[$binindices], FCDoControl->frVerbose];
-					indd = $binindices[[ib]];
+					For[r = 1, r <= Length[$binindices], r++,
+					FCPrint[1, "r = ", r, " out of ", Length[$binindices], FCDoControl->frVerbose];
+					indd = $binindices[[r]];
 					If[ !FreeQ[result, sumBinomial],
 						Clear[opsumb, opsumb2];
 						opsumb[xx_Plus] :=
@@ -708,9 +715,9 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					If[ Head[result] =!= Plus,
 						result = opesback[result, fii],
 						nres = 0;
-						For[ij = 1, ij<=Length[result], ij++,
-						FCPrint[1, "ij = ", ij, FCDoControl->frVerbose];
-						nee = opesback[result[[ij]], fii];
+						For[r = 1, r<=Length[result], r++,
+						FCPrint[1, "r = ", r, FCDoControl->frVerbose];
+						nee = opesback[result[[r]], fii];
 						nres = nres  + nee;
 							];
 						result = nres;
@@ -831,11 +838,11 @@ feinarbeit[fey_ /; FreeQ[fey, SUNIndex|ExplicitSUNIndex], pli_List] :=
 				resu = Map[fop, resu];
 			];
 			If[ legs<5,
-				resu = Factor2[resu /. Complex[0,be_]->(be iI)
+				resu = Factor2[resu /. Complex[0,be_]->(be y)
 								] /. {(onepm (-1)^OPEm) :>   onepm } /.
 									{(onemm (-1)^OPEm) :> (-onemm)} /.
-									{iI^(2 a_)  :> (-1)^a} /.
-									{ iI :> I, (*Plus :> pluc, *)
+									{y^(2 a_)  :> (-1)^a} /.
+									{ y :> I, (*Plus :> pluc, *)
 										onepm :> ((1+(-1)^OPEm)/2),
 										onemm :> ((1-(-1)^OPEm)/2)
 									},
@@ -869,7 +876,7 @@ feinarbeit[fey_ /; FreeQ[fey, SUNIndex|ExplicitSUNIndex], pli_List] :=
 				resu = Factor2[resu]
 			];
 		];
-		If[ !FreeQ[resu, _Complex^em_],
+		If[ !FreeQ[resu, _Complex^_],
 			resu = PowerSimplify[resu,Assumptions->assumptions]
 		];
 		resu

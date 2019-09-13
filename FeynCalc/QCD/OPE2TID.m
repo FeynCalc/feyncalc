@@ -24,6 +24,10 @@ End[]
 
 Begin["`OPE2TID`Private`"]
 
+mU::usage="";
+nu::usage="";
+rho::usage="";
+
 diracsimp[a_] :=
 	If[ !FreeQ[a, DiracGamma],
 		DiracSimplify[a],
@@ -67,7 +71,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 	temp0, n, alL, beT,checkd,muu,k12shift = {},dumi,diramp,
 	alpha = FCGV[ToString[Unique["lI"]]], beta = FCGV[ToString[Unique["lI"]]],
 	delfactor, temp2, temp3, tempf, temp4, qQQ,epscontract,
-	sccon, eeeps,eepcsa, rho,rhoo,phead,fake,mem,
+	sccon, eeeps,eepcsa, rhoo,phead,fake,mem,
 	epscos, epscont, epsc, decrules, decrulespv, checkk, fcheck,
 	decrulesspecial, speciallabel = False, dirrramp,contractlabel,kape
 	},
@@ -300,12 +304,9 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 
 					(*  "amputate" a special Eps... *)
 					If[ FreeQ[temp, Eps[__]^2] &&
-						(!FreeQ[temp, Eps[a___, Momentum[k1, en___], Momentum[k2, en___], b___]]
-						) && (FreeQ[temp,
-													Eps[a___, Momentum[k1, en___], Momentum[k2, en___], b___] *
-													Eps[c__]
-												]
-									),
+						(!FreeQ[temp, Eps[a___, Momentum[k1, e___], Momentum[k2, e___], b___]]
+						) && (FreeQ[temp, Eps[a___, Momentum[k1, e___], Momentum[k2, e___], b___] * Eps[c__]
+												]),
 						alL = FCGV[ToString[Unique["lI"]]];
 						beT = FCGV[ToString[Unique["lI"]]];
 						FCPrint[1,"AMPuTATe EPs"];
@@ -319,20 +320,19 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 					(* another special case ... *)
 					If[ MatchQ[temp, _. Pair[Momentum[k1,___],LorentzIndex[__]] *
 													Pair[Momentum[k2,___],LorentzIndex[__]] *
-													Eps[aaa___, Momentum[k1,didi___], b___]
-									],
+													Eps[(*aaa*)___, Momentum[k1,(*didi*)___], b___]],
 						rhoo = Unique[dumi];
-						temp = temp /. Eps[aaa___, Momentum[k1,didi___], b___] :>
+						temp = temp /. Eps[aaa___, Momentum[k1,(*didi*)___], b___] :>
 													(Eps[aaa,LorentzIndex[rhoo,n],b] *
 														Pair[Momentum[k1,n], LorentzIndex[rhoo,n]]
 													)
 					];
 					If[ MatchQ[temp, _. Pair[Momentum[k1,___],LorentzIndex[__]] *
 													Pair[Momentum[k2,___],LorentzIndex[__]] *
-													Eps[aaa___, Momentum[k2,didi___], b___]
+													Eps[(*aaa*)___, Momentum[k2,(*didi*)___], b___]
 									],
 						rhoo = Unique[dumi];
-						temp = temp /. Eps[aaa___,Momentum[k2,didi___], b___] :>
+						temp = temp /. Eps[aaa___,Momentum[k2,(*didi*)___], b___] :>
 													(Eps[aaa,LorentzIndex[rhoo,n],b] *
 														Pair[Momentum[k2,n], LorentzIndex[rhoo,n]]
 													)
@@ -726,7 +726,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 											)
 														] /; (Sort[Union[{qi,qj,k1,k2}]] === {k1,k2}) &&
 																	FreeQ2[{r, s, t, u}, {k1, k2}] &&
-																	(checkd[k1] || check[k2]) && mem[T1,T2],
+																	(checkd[k1] (*|| check[k2]*)) && mem[T1,T2],
 								(*
 																	checkd[qi,qj] && mem[T1,T2],
 								*)
@@ -2263,17 +2263,17 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 									temp = temp /. fake[OPEm]->1
 								];
 								If[ (contractlabel === True) && (!FreeQ[temp, LorentzIndex]),
-									For[ijji = 1, ijji < 6, ijji++,
-											If[ (EvenQ[#] && (Length[#]>0))&[Position[temp,$MU[ijji]]],
-												temp  = temp /. $MU[ijji] -> muu[ijji];
+									For[i = 1, i < 6, i++,
+											If[ (EvenQ[#] && (Length[#]>0))&[Position[temp,$MU[i]]],
+												temp  = temp /. $MU[i] -> muu[i];
 											]
 										];
 									temp = Expand2[temp, LorentzIndex];
 									If[ Head[temp] === Plus,
 										ntemp = 0;
-										For[int = 1, int <=Length[temp], int++,
-													FCPrint[2,"int = ",int, "  out of",Length[temp]];
-													ntemp = ntemp + Contract[temp[[int]], Expanding -> True,
+										For[j = 1, j <=Length[temp], j++,
+													FCPrint[2,"int = ",j, "  out of",Length[temp]];
+													ntemp = ntemp + Contract[temp[[j]], Expanding -> True,
 																									EpsContract -> False,
 																									Rename -> True]
 											];
@@ -2302,18 +2302,18 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 													PairContract -> Pair;
 										FCPrint[1,"PairContract done"];
 										If[ !FreeQ[temp, LorentzIndex],
-											For[ijji = 1, ijji < 6, ijji++,
-													If[ (EvenQ[#] && (Length[#]>0))&[Position[temp,$MU[ijji]]],
-														temp  = temp /. $MU[ijji] -> muu[ijji];
+											For[j = 1, j < 6, j++,
+													If[ (EvenQ[#] && (Length[#]>0))&[Position[temp,$MU[j]]],
+														temp  = temp /. $MU[j] -> muu[j];
 													]
 												];
 											FCPrint[1,"contracting agaaaaaaaaaain in OPE2TID"];
 											temp = Expand2[temp,LorentzIndex];
 											If[ Head[temp] === Plus,
 												ntemp = 0;
-												For[int = 1, int <=Length[temp], int++,
-															FCPrint[2,"int = ",int, "  out of",Length[temp]];
-															ntemp = ntemp + Contract[temp[[int]], Expanding -> True,
+												For[r = 1, r <=Length[temp], r++,
+															FCPrint[2,"int = ",r, "  out of",Length[temp]];
+															ntemp = ntemp + Contract[temp[[r]], Expanding -> True,
 																											EpsContract -> False,
 																											Rename -> True]
 													];

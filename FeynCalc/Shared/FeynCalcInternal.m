@@ -41,8 +41,8 @@ gfadEtaSign::usage="";
 sfadEtaSign::usage="";
 head::usage="";
 
-cproptmp1::usage="";
-cproptmp2::usage="";
+tmp1::usage="";
+tmp2::usage="";
 holdDOT::usage="";
 
 FCI = FeynCalcInternal;
@@ -453,9 +453,9 @@ cpropp[{a_}, dim_, etaOpt_]:=
 
 cpropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
 	(
-	cproptmp1= cproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],dim];
-	cproptmp2= cproppMassPart[b, etaOpt];
-	CartesianPropagatorDenominator[cproptmp1[[1]],cproptmp1[[2]],cproptmp2[[1]],{n, cproptmp2[[2]]}]
+	tmp1= cproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],dim];
+	tmp2= cproppMassPart[b, etaOpt];
+	CartesianPropagatorDenominator[tmp1[[1]], tmp1[[2]], tmp2[[1]],{n, tmp2[[2]]}]
 	);
 
 
@@ -482,9 +482,9 @@ spropp[{a_}, dim_, etaOpt_]:=
 
 spropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
 	(
-	sproptmp1= sproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> Pair[Momentum[x,dim],Momentum[y,dim]],dim];
-	sproptmp2= sproppMassPart[b, etaOpt];
-	StandardPropagatorDenominator[sproptmp1[[1]],sproptmp1[[2]],sproptmp2[[1]],{n, sproptmp2[[2]]}]
+	tmp1= sproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> Pair[Momentum[x,dim],Momentum[y,dim]],dim];
+	tmp2= sproppMassPart[b, etaOpt];
+	StandardPropagatorDenominator[tmp1[[1]], tmp1[[2]], tmp2[[1]],{n, tmp2[[2]]}]
 	);
 
 

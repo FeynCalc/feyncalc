@@ -20,7 +20,7 @@ End[]
 Begin["`Simplify2`Private`"]
 
 Simplify2[y_] :=
-	Block[ {t1,t2,t3,null1, null2, cct, col,min},
+	Block[ {t1,t2,t3,null1, null2, cct, col,min, llt, ll, dd, cc},
 		col =  Collect2[##, Factoring->False];
 		cct = {CA, CF, Tf};
 		llt = {Log, PlusDistribution, PolyLog, Zeta2};

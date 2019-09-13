@@ -155,5 +155,5 @@ CTdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]
 
 	];
 
-FCPrint[1, "CTdec.m loaded.", FCDoControl->tdecVerbose];
+FCPrint[1, "CTdec.m loaded.", FCDoControl->ctdecVerbose];
 End[]

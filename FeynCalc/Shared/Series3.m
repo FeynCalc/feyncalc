@@ -42,7 +42,7 @@ Series3[exp_, a_List, b__List] :=
 
 Series3[a_, {x_, 0, nn_}, ops___Rule] :=
 	Block[{re, rec, polysub, polysimp, finsub, res, n=nn,
-			hypfix, hyp, hyb, hyphyp},
+			hypfix, hyp, hyb, hyphyp, hyback, hypex},
 
 		hypex = {Hypergeometric2F1[p1_,p2_,p3_,z_] :>
 			Apply[Hypergeometric2F1, Append[Expand/@{p1,p2,p3},Factor2[z]]]};

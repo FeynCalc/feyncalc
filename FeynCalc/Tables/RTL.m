@@ -20,52 +20,89 @@ End[]
 
 Begin["`RTL`Private`"]
 
-Options[RTL] = {Dimension             -> D,
-								FeynmanParameterNames -> FCGV["x"],
-								Momentum              -> FCGV["p"],
-								QuarkMass             -> FCGV["M"]
-							};
+so::usage="";
+dum::usage="";
 
-RTL[exp_, opt___Rule] := Block[{lsimp, MCH, so, p, x, M, dim, res},
-dim = Dimension /. {opt} /. Options[RTL];
-x = FeynmanParameterNames /. {opt} /. Options[RTL];
-p = Momentum    /. {opt} /. Options[RTL];
-M = QuarkMass   /. {opt} /. Options[RTL];
+Options[RTL] = {
+	Dimension             -> D,
+	FeynmanParameterNames -> FCGV["x"],
+	Momentum              -> FCGV["p"],
+	QuarkMass             -> FCGV["M"]
+};
 
-lsimp[0]=0;
-lsimp[a_Plus] := Map[lsimp, a];
-lsimp[t_Times] := Block[{mm},
-									If[FreeQ[t, OPEm], mm = 1, mm = OPEm];
-								((SelectNotFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}] *
-							x^(mm-1))/.dum[Epsilon]->1)  *
-				Collect2[SimplifyDeltaFunction[Expand[Apart3[
-							SelectFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}]/x^(mm-1),x]
-											]](* /. {DeltaFunction[1-x] f_ :>
-															(f/.x->1) DeltaFunction[1-x]
-													} *) ,
-							{Log, PolyLog, Zeta,Zeta2,DeltaFunction,DeltaFunctionPrime},
-									Factoring->False
-								]     ];
+RTL[exp_, opt___Rule] :=
+	Block[{p, x, M, dim, res},
+
+		dim = Dimension /. {opt} /. Options[RTL];
+		x = FeynmanParameterNames /. {opt} /. Options[RTL];
+		p = Momentum    /. {opt} /. Options[RTL];
+		M = QuarkMass   /. {opt} /. Options[RTL];
+
+		so[] = Pair[Momentum[p], Momentum[OPEDelta]];
+
+		(*
+		RTLI[{1, 0, 0, 0, m_}, {a_, b_, b_, a_, c_},oot___Rule] :=
+		1/2 RTLI[{0, 0, 0, 0, m}, {a, b, b, a, c}] so[oot] +
+		1/2 RTLI[{0, 0, 0, 0, m+1}, {a, b, b, a, c}];
+		*)
+
+		(*
+		tlist =
+		tlist/.(a_ :> b_) :> (ruledel[a/. {M:> (M_/;M=!=0), OPEi:> OPEi_}, b] /.
+													ruledel:>RuleDelayed);
+		*)
+
+		res =
+		((Collect[Expand[dum[Epsilon] Series2[FCI[ChangeDimension[exp /. TLI -> RTLI, 4] /. tlilist] /. dim -> (4 + Epsilon),
+			Epsilon, 0]],Epsilon, Factor]) // lsimp) /. RTLI -> TLI;
+
+		(*
+		If[Head[res] =!= Plus, pref = 1,
+			pref = SelectNotFree[dummy First[res]/. (-1)^OPEm:>bla ,
+											{M,p,Smu,CA,CF,Tf,SMP["g_s"], OPEm}];
+			res = pref . Map[(#/pref)&, res]
+			];
+		*)
+		res];
 
 (*??
 MCH[y_] := If[Head[y] =!= Integer, If[FreeQ[y,OPEi],True,False], False];
 *)
-MCH[y_] := If[Head[y] =!= Integer, True, False];
+MCH[y_] :=
+	If[	Head[y] =!= Integer,
+		True,
+		False
+	];
 (*
 MCH[_]:=True;
 *)
 
-so[] = Pair[Momentum[p], Momentum[OPEDelta]];
+lsimp[0]=
+	0;
 
-(*
-		RTLI[{1, 0, 0, 0, m_}, {a_, b_, b_, a_, c_},oot___Rule] :=
-1/2 RTLI[{0, 0, 0, 0, m}, {a, b, b, a, c}] so[oot] +
-1/2 RTLI[{0, 0, 0, 0, m+1}, {a, b, b, a, c}];
-*)
+lsimp[a_Plus] :=
+	Map[lsimp, a];
+
+lsimp[t_Times] :=
+	Block[{mm},
+		If[	FreeQ[t, OPEm],
+			mm = 1,
+			mm = OPEm
+		];
+
+		((SelectNotFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}] x^(mm-1))/.dum[Epsilon]->1)  *
+		Collect2[SimplifyDeltaFunction[Expand[Apart3[
+			SelectFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}]/x^(mm-1),x]
+			]](* /. {DeltaFunction[1-x] f_ :>
+							(f/.x->1) DeltaFunction[1-x]
+					} *) ,
+		{Log, PolyLog, Zeta,Zeta2,DeltaFunction,DeltaFunctionPrime}, Factoring->False]
+	];
+
 
 tlilist = {
 (* r1i1.r *)
-RTLI[{m_ /; MCH[m], -2, 0, 0, 0}, {{2, M_}, 0, 0, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], -2, 0, 0, 0}, {{2, _}, 0, 0, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*((-1 + x^(-1))/Epsilon - 2*Log[1 - x] +
 		(2*Log[1 - x])/x + Log[x])*so[r]^(-2 + m)
 ,
@@ -83,7 +120,7 @@ RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 	so[r]^(-1 + m)
 ,
 (* r1i4.r *)
-RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, 0, 0, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, _}, 0, 0, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*(-(Log[x]/Epsilon) - 2*Log[1 - x]*Log[x] + Log[x]^2/4 -
 		PolyLog[2, 1 - x])*so[r]^(-1 + m)
 ,
@@ -109,7 +146,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] ->
 			2*x*PolyLog[2, 1 - x])*so[r]^m)/M^2
 ,
 (* r1i9.r *)
-RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 0, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, _}, 0, 0, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*(-1 + (1 - x)/Epsilon + x + 2*Log[1 - x] -
 		2*x*Log[1 - x] - Log[x]/2 + (x*Log[x])/2)*so[r]^m
 ,
@@ -272,7 +309,7 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 		x*PolyLog[2, 1 - x])*so[r]^m
 ,
 (*r3i4.r*)
-RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, 1, 0, 1, 1}, r___] :>
+RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, _}, 1, 0, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - I*Pi*x + (9*x*Zeta2)/2 -
 		Log[1 - x] + 2*x*Log[1 - x] + I*Pi*x*Log[1 - x] - (x*Log[1 - x]^2)/4 +
 		x*Log[x] + I*Pi*x*Log[x] - 2*x*Log[1 - x]*Log[x] - (x*Log[x]^2)/2 +
@@ -325,7 +362,7 @@ RTLI[{0, OPEi, 0, 0, 1}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 	r4end *)
 ,
 (* r7i1.r *)
-RTLI[{m_ /; MCH[m], 2, -1, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 2, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*so[r]^(1 + m)*
 	(2 - 2/(1 - x) + (34*x)/27 + (20*x^2)/27 + Zeta2/2 - Zeta2/(2*(1 - x)) +
 		(x*Zeta2)/3 + (x^2*Zeta2)/6 + DeltaFunction[1 - x] -
@@ -345,7 +382,7 @@ RTLI[{m_ /; MCH[m], 2, -1, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
 				(x^2*Log[x])/3)/Epsilon - (7*DeltaFunction[1 - x]*Zeta[3])/12)
 ,
 (* r7i2.r *)
-RTLI[{m_ /; MCH[m], 2, -2, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 2, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*so[r]^m*(-2 - 2/(1 - x)^2 + 4/(1 - x) - (20*x)/27 -
 		Zeta2/2 - Zeta2/(2*(1 - x)^2) + Zeta2/(1 - x) - (x*Zeta2)/6 -
 		3*DeltaFunction[1 - x] - (3*Zeta2*DeltaFunction[1 - x])/4 +
@@ -370,7 +407,7 @@ RTLI[{m_ /; MCH[m], 2, -2, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
 		(7*DeltaFunctionPrime[1 - x]*Zeta[3])/6)
 ,
 (* r7i3.r *)
-RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*(-x - x^2 + (-x - x^2)/Epsilon^2 - (x*Zeta2)/4 -
 		(x^2*Zeta2)/4 + 2*x*Log[1 - x] + 2*x^2*Log[1 - x] - 2*x*Log[1 - x]^2 -
 		2*x^2*Log[1 - x]^2 - (x*Log[x])/2 - (x^2*Log[x])/2 +
@@ -379,7 +416,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
 				(x*Log[x])/2 + (x^2*Log[x])/2)/Epsilon)*so[r]^(1 + m)
 ,
 (* r7i4.r *)
-RTLI[{m_ /; MCH[m], 1, -1, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 1, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*so[r]^m*(2 - 2/(1 - x) + x + Zeta2/2 - Zeta2/(2*(1 - x)) +
 		(x*Zeta2)/4 + DeltaFunction[1 - x] - DeltaFunction[1 - x]/Epsilon^3 +
 		(Zeta2*DeltaFunction[1 - x])/4 +
@@ -394,7 +431,7 @@ RTLI[{m_ /; MCH[m], 1, -1, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
 				(x*Log[x])/2)/Epsilon - (7*DeltaFunction[1 - x]*Zeta[3])/12)
 ,
 (* r7i5.r *)
-RTLI[{m_ /; MCH[m], 1, -2, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 1, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(-1 - 2/(1 - x)^2 + 3/(1 - x) - Zeta2/4 - Zeta2/(2*(1 - x)^2) +
 		(3*Zeta2)/(4*(1 - x)) - (5*DeltaFunction[1 - x])/2 -
@@ -425,13 +462,13 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 1, 1, 1}, r___] :>
 			(4*Log[1 - x])/(1 - x) - Log[x] + Log[x]/(1 - x))*so[r]^m)/M^2
 ,
 (* r7i7.r *)
-RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - (x*Zeta2)/2 + 4*x*Log[1 - x] -
 		4*x*Log[1 - x]^2 - x*Log[x] + 2*x*Log[1 - x]*Log[x] - (x*Log[x]^2)/4 +
 		(2*x - 4*x*Log[1 - x] + x*Log[x])/Epsilon)*so[r]^m
 ,
 (* r7i8.r *)
-RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(2 - 2/(1 - x) + Zeta2/2 - Zeta2/(2*(1 - x)) + DeltaFunction[1 - x] -
 		DeltaFunction[1 - x]/Epsilon^3 + (Zeta2*DeltaFunction[1 - x])/4 +
@@ -445,7 +482,7 @@ RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
 		(7*DeltaFunction[1 - x]*Zeta[3])/12)
 ,
 (* r7i9.r *)
-RTLI[{m_ /; MCH[m], 0, -2, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
+RTLI[{m_ /; MCH[m], 0, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 	Smu^2*x^(-1 + m)*so[r]^(-2 + m)*
 	(-2/(1 - x)^2 + 2/(1 - x) - Zeta2/(2*(1 - x)^2) + Zeta2/(2*(1 - x)) -
 		2*DeltaFunction[1 - x] - (Zeta2*DeltaFunction[1 - x])/2 +
@@ -466,7 +503,7 @@ RTLI[{m_ /; MCH[m], 0, -2, 0, 0}, {{1, M_}, 0, 1, 1, 1}, r___] :>
 		(7*DeltaFunctionPrime[1 - x]*Zeta[3])/6)
 ,
 (* r7i10.r *)
-RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 0, 2, 1, 0}, r___] :> 0
+RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, _}, 0, 2, 1, 0}, ___] :> 0
 ,
 (* r11i1.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
@@ -510,7 +547,7 @@ RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{1, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
 		2*PolyLog[2, -x] + 2*x*PolyLog[2, -x])*so[r]^(-1 + m)
 ,
 (* r11i15.r *)
-RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, 0}, r___] :> 0
+RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, 0}, ___] :> 0
 ,
 (* r11i16.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, 0}, r___] :>
@@ -535,7 +572,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 0, 2, {1, M_}, 0}, r___] :>
 		2*Log[1 - x] - (2*Log[1 - x])/(1 - x)^2 + (4*Log[1 - x])/(1 - x))*so[r]^m
 ,
 (* r11i19.r *)
-RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, 0}, r___] :> 0
+RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, 0}, ___] :> 0
 ,
 (* r11i2.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
@@ -1358,7 +1395,7 @@ RTLI[{0, 0, 0, -1, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 			(DeltaFunction[1 - x]*Zeta[3])/3))/so[r]
 ,
 (* r18i10.r *)
-RTLI[{0, 0, 0, 0, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
+RTLI[{0, 0, 0, 0, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, ___] :>
 	Smu^2*x^(-1 + OPEm)*(-12*DeltaFunction[1 - x] -
 		(4*DeltaFunction[1 - x])/Epsilon^2 + (8*DeltaFunction[1 - x])/Epsilon -
 		Zeta2*DeltaFunction[1 - x])
@@ -1458,30 +1495,6 @@ RTLI[{OPEi - OPEj, 1, 0, 0, -2 - OPEi + OPEm}, {0, 1, 1, {1, M_}, {1, M_}},
 			Epsilon)
 };
 
-(*
-tlist =
-tlist/.(a_ :> b_) :> (ruledel[a/. {M:> (M_/;M=!=0), OPEi:> OPEi_}, b] /.
-											ruledel:>RuleDelayed);
-*)
-
-res =
-(
-(rere =
-	Collect[Expand[dum[Epsilon] Series2[
-FeynCalcInternal[ChangeDimension[exp /. TLI -> RTLI, 4] /.tlilist
-								] /. dim -> (4 + Epsilon),
-															Epsilon, 0]],Epsilon, Factor
-				]) // lsimp
-) /. RTLI -> TLI;
-
-(*
-If[Head[res] =!= Plus, pref = 1,
-	pref = SelectNotFree[dummy First[res]/. (-1)^OPEm:>bla ,
-									{M,p,Smu,CA,CF,Tf,SMP["g_s"], OPEm}];
-	res = pref . Map[(#/pref)&, res]
-	];
-*)
-	res];
 
 FCPrint[1,"RTL.m loaded."];
 End[]

@@ -195,7 +195,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		(*If the monomials are not atomic, we should better mask them beforehand *)
 		nonAtomicMonomials = Select[monomList, ! AtomQ[#] &];
 		If[nonAtomicMonomials=!={} && FCPatternFreeQ[nonAtomicMonomials],
-			monomRepRule = Thread[Rule[nonAtomicMonomials,Table[Unique["monom"], {iii,1,Length[nonAtomicMonomials]} ]]];
+			monomRepRule = Thread[Rule[nonAtomicMonomials,Table[Unique["monom"], {r,1,Length[nonAtomicMonomials]} ]]];
 			monomList = monomList/.monomRepRule;
 			nx = nx/.monomRepRule;
 			monomRepRule = Reverse/@monomRepRule

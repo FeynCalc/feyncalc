@@ -41,16 +41,17 @@ FC2TLI[y_ /; ((Head[y] =!= Plus) && (Head[y]=!=Times)
 	y;
 FC2TLI[x_Plus, b__] :=
 	Map[FC2TLI[#, b]&, x] /;
-						 !FreeQ2[x,{FAD,FeynAmpDenominator}];
+						!FreeQ2[x,{FAD,FeynAmpDenominator}];
 
 FC2TLI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 	If[ !FreeQ2[xy, {FeynAmpDenominator,FAD}],
 		MemSet[FC2TLI[xy, k1,k2,opts],
 		Block[ {x, xx,nx, onx, ne,fa, dim, fd, dp, dk1, dk2, dpk1, dpk2, dk1k2,p,
 		nk12, nk22, k12,k22,k1k2,k1p,k2p, pk12,pk22,k1k22,mf, mfm,
-		fad, inc, a, b, c, d, e, doheuristics,power2sub,(*dof,*)pfix,
+		fad, inc, c, d, e, doheuristics,power2sub,(*dof,*)pfix,
 			vV,wW,xX,yY,zZ, al, be, ga, de, ep, result, check,dummyp,
-				lr1, lr2, lork1,lork2, lorfa, lorcheck},
+				lr1, lr2, lork1,lork2, lorfa, lorcheck, qch, pru, anx, mass,
+				iall, int, rhi, ncheck},
 			dim = Dimension   /. {opts} /. Options[FC2TLI];
 			inc = IncludePair /. {opts} /. Options[FC2TLI];
 			doheuristics = Do /. {opts} /. Options[FC2TLI];
@@ -107,15 +108,14 @@ FC2TLI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 							xx = x;
 							If[ !FreeQ[xx, Power2],
 								power2sub = Cases2[xx, Power2];
-								power2sub = Table[power2sub[[ij]] ->
-																	(power2sub[[ij]]/.Power2->Power),
-																	{ij,Length[power2sub]}
+								power2sub = Table[power2sub[[r]] ->
+																	(power2sub[[r]]/.Power2->Power),
+																	{r,Length[power2sub]}
 																	];
 								xx = xx /. power2sub;,
 								power2sub = {}
 							];
-							pru = (a_)^(w_ /; Head[w] =!= Integer) :>
-										(PowerExpand[Factor2[one*a]^w] /. one -> 1);
+							pru = (a_)^(w_ /; Head[w] =!= Integer) :> (PowerExpand[Factor2[one*a]^w] /. one -> 1);
 							xx = xx //. pru;
 							xx = xx /. { (-dp + dk1)^w_ :> ( (-1)^w (dp - dk1)^w ),
 													(-dp + dk2)^w_ :> ( (-1)^w (dp - dk2)^w ),
@@ -288,13 +288,13 @@ FC2TLI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 									(*NN*)
 									If[ Length[mass] === 1,
 										mass = mass[[1]];
-		   (*NN*)
+		(*NN*)
 										mf[aa_] :=
 											If[ !FreeQ[onx,aa[mass]],
 												aa[mass],
 												aa[0]
 											];
-							   (*NN*)
+							(*NN*)
 										mfm[aa_] :=
 											If[ !FreeQ[onx,aa[mass]],
 												{aa[mass],mass},
@@ -306,18 +306,18 @@ FC2TLI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 											mfm[aa_] :=
 												{aa[0],0},
 											mf[aa_] :=
-												Catch[Do[If[ !FreeQ[onx,aa[mass[[ij]]]],
-															 Throw[aa[mass[[ij]]]]
-														 ],
-																			 {ij, Length[mass]}];
-													  aa[0]
-																	 ];
+												Catch[Do[If[ !FreeQ[onx,aa[mass[[j]]]],
+															Throw[aa[mass[[j]]]]
+														],
+																			{j, Length[mass]}];
+													aa[0]
+																	];
 											mfm[aa_] :=
-												Catch[Do[If[ !FreeQ[onx,aa[mass[[ij]]]],
-															 Throw[{aa[mass[[ij]]],mass[[ij]]}]
-														 ],
-																			{ij, Length[mass]}];
-													  {aa[0],0}
+												Catch[Do[If[ !FreeQ[onx,aa[mass[[j]]]],
+															Throw[{aa[mass[[j]]],mass[[j]]}]
+														],
+																			{j, Length[mass]}];
+													{aa[0],0}
 																	];
 										];
 									];
@@ -334,16 +334,16 @@ FC2TLI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 									int = nx iall;
 									se[y_] :=
 										(If[ #===1,
-											 0,
-											 If[ Head[#] === Power,
-												 If[ Length[#[[1]]]===1,
-													 {#[[2]],#[[1,1]]},
-													 #[[2]]
-												 ],
-												 y
-											 ]
-										 ]&
-												  )[ SelectNotFree[int, y^h_] ];
+											0,
+											If[ Head[#] === Power,
+												If[ Length[#[[1]]]===1,
+													{#[[2]],#[[1,1]]},
+													#[[2]]
+												],
+												y
+											]
+										]&
+												)[ SelectNotFree[int, y^h_] ];
 									rhi = Map[se,
 														{nk12,nk22,k1p,k2p,k1k2,
 														dk1, dk2, dpk1, dpk2, dk1k2,

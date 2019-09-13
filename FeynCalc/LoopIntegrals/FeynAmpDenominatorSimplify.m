@@ -55,6 +55,9 @@ fdsVerbose::usage="";
 loopHead::usage="";
 cLoopHead::usage="";
 sLoopHead::usage="";
+null1::usage="";
+null2::usage="";
+
 FDS = FeynAmpDenominatorSimplify;
 
 Options[FeynAmpDenominatorSimplify] = {
@@ -76,7 +79,7 @@ Options[FeynAmpDenominatorSimplify] = {
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
 
 FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPattern[]] :=
-	Block[ {ex,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule,time, topoCheckUnique,
+	Block[ {ex,rest,loopInts,intsUnique, solsList,res,repRule,time, topoCheckUnique,
 		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting, power, fadList,
 		fadListEval, fadHold, intsUniqueClassified},
 
@@ -112,7 +115,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 
 		fadList = Cases2[ex+null1+null2,FeynAmpDenominator,power];
 
-		fadListEval = fadList /. {power[fadHold[a__],n_] /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{iii,1,n}])]} /.
+		fadListEval = fadList /. {power[fadHold[a__],n_] /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{i,1,n}])]} /.
 			power -> Power /. fadHold -> FeynAmpDenominator;
 
 		If[	!FreeQ[fadListEval, PD],
@@ -302,7 +305,7 @@ renameLoopMomenta[int_,qs_List]:=
 			Return[int]
 		];
 
-		listOfRenamings=Sort[Thread[rule[Table[lmoms, {iii,1,Length[permutations]}], permutations]] /.rule[x_List,y_List] :> Thread[rule[x,y]] /.
+		listOfRenamings=Sort[Thread[rule[Table[lmoms, {i,1,Length[permutations]}], permutations]] /.rule[x_List,y_List] :> Thread[rule[x,y]] /.
 			rule[a_, a_] :> Unevaluated[Sequence[]]] /. rule -> Rule;
 
 		equivalentInts = Map[(int/. # /. FeynAmpDenominator -> feynsimp[lmoms] /. FeynAmpDenominator -> feynord[lmoms])&, listOfRenamings];
@@ -570,7 +573,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 	to bring each integral to the "canonical" form. Pure heuristics, since without knowing the
 	precise topology, there is no way to guess the true canonical form of the given integral.	*)
 fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
-	Block[ {prs, prs2, canonicalProps,shiftList,res,null1,null2},
+	Block[ {prs, prs2, canonicalProps,shiftList,res},
 
 		FCPrint[3, "FDS: fdsOneLoopsGeneric: Entering with ", expr, FCDoControl->fdsVerbose];
 
@@ -928,12 +931,16 @@ feynord2[qs_List][a__] :=
 
 	Safe for memoization despite MomentumExpand, since it is applied only
 	inside FeynAmpDenominator, where feynsimpthere are no Pair's	*)
+
+feynsimpAux[q_,pe_,di_,lmoms_,head_]:=
+	q===First[Sort[Intersection[Cases[-head[q,di] + pe + null1 + null2, head[qq_, ___] :> qq,Infinity], lmoms]]]
+
 feynsimp[lmoms_List][a__PD] :=
 	MemSet[feynsimp[lmoms][a],
-		Block[{null1,null2,pd},
+		Block[{pd},
 		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //. {
 			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] :> pd[Momentum[q,di] - pe, m],
-			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-Momentum[q,di] + pe + null1 + null2, Momentum[qq_, ___] :> qq,Infinity], lmoms]]] :>
+			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && feynsimpAux[q, pe, di,lmoms, Momentum] :>
 				pd[Momentum[q,di] - pe, m]
 		} /. pd -> PD)
 		]
@@ -942,29 +949,27 @@ feynsimp[lmoms_List][a__PD] :=
 (*	If there are not only PropagatorDenominators inside FeynAmpDenominator, then
 	the memoization is not safe anymore! *)
 feynsimp[lmoms_List][a__ /; !MatchQ[{a},{__PD}](* && FreeQ[{a},GenericPropagatorDenominator]*)] :=
-	Block[{null1,null2,pd, stpd, cpd},
+	Block[{pd, stpd, cpd},
 		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //. {
 
 			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] && scetPropagatorFreeQ[{a}, q]  :>
 				pd[Momentum[q,di] - pe, m],
 
-			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-Momentum[q,di] + pe + null1 + null2, Momentum[qq_, ___] :> qq,Infinity], lmoms]]]
+			PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && feynsimpAux[q, pe, di,lmoms, Momentum]
 				&& scetPropagatorFreeQ[{a}, q]  :>
 				pd[Momentum[q,di] - pe, m],
 
 			StandardPropagatorDenominator[-Momentum[q_,di_:4] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] && scetPropagatorFreeQ[{a}, q]  :>
 				stpd[Momentum[q,di] - pe, (x1 /. q -> - q) , x2, x3],
 
-			StandardPropagatorDenominator[-Momentum[q_,di_:4] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-Momentum[q,di] + pe + null1 + null2,
-				Momentum[qq_, ___] :> qq, Infinity], lmoms]]] && scetPropagatorFreeQ[{a}, q]  :>
+			StandardPropagatorDenominator[-Momentum[q_,di_:4] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && feynsimpAux[q, pe, di,lmoms, Momentum] && scetPropagatorFreeQ[{a}, q]  :>
 				stpd[Momentum[q,di] - pe, (x1 /. q -> - q) , x2, x3],
 
 
 			CartesianPropagatorDenominator[-CartesianMomentum[q_,di_:3] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] && scetPropagatorFreeQ[{a}, q]  :>
 				cpd[CartesianMomentum[q,di] - pe, (x1 /. q -> - q) , x2, x3],
 
-			CartesianPropagatorDenominator[-CartesianMomentum[q_,di_:3] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && q===First[Sort[Intersection[Cases[-CartesianMomentum[q,di] + pe + null1 + null2,
-					CartesianMomentum[qq_, ___] :> qq, Infinity], lmoms]]] && scetPropagatorFreeQ[{a}, q]  :>
+			CartesianPropagatorDenominator[-CartesianMomentum[q_,di_:3] + pe_:0, x1_, x2_, x3_]/; MemberQ[lmoms,q] && feynsimpAux[q, pe, di,lmoms, CartesianMomentum] && scetPropagatorFreeQ[{a}, q]  :>
 				cpd[CartesianMomentum[q,di] - pe, (x1 /. q -> - q) , x2, x3]
 
 
@@ -1063,16 +1068,17 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 				FeynAmpDenominator[pr1___, PD[_. + Momentum[zq1,_:4], _], pr2___	] :> 0 /; FreeQ[{pr1, pr2}, zq1]
 			};
 
-		amucheck[k1_, k2_][PD[aa_. Momentum[k1_,dii___] + bb_. ,0].., b___] :=
+		(*Seems that for some reason we are not allowed to touch those named blanks*)
+		amucheck[k1_, _][PD[_. Momentum[k1_,___] + bb_. ,0].., b___] :=
 			0 /; FreeQ[{b}, k1];
 
-		amucheck[k1_, k2_][b___,PD[aa_. Momentum[k1_,dii___] + bb_. ,0]..] :=
+		amucheck[k1_, _][b___,PD[_. Momentum[k1_,___] + bb_. ,0]..] :=
 			0 /; FreeQ[{b}, k1];
 
-		amucheck[k1_, k2_][b___,PD[aa_. Momentum[k2_,dii___] + bb_. ,0]..] :=
+		amucheck[_, k2_][b___,PD[_. Momentum[k2_,___] + bb_. ,0]..] :=
 			0 /; FreeQ[{b}, k2];
 
-		amucheck[k1_, k2_][PD[aa_. Momentum[k2_,dii___] + bb_. ,0].., b___] :=
+		amucheck[_, k2_][PD[_. Momentum[k2_,___] + bb_. ,0].., b___] :=
 			0 /; FreeQ[{b}, k2];
 
 		pe[qu1_,qu2_, prop_] :=
@@ -1210,11 +1216,11 @@ fds2LoopsSE[expr_,q1_,q2_,_]:=
 
 fds2LoopsSE[expr_,q1_,q2_,p_]:=
 	(MomentumExpand[FixedPoint[fds2LoopsSE2[#,q1,q2,p]&,expr,5]]/. {
-		PropagatorDenominator[-Momentum[q1,dim_:4], m_]:>PropagatorDenominator[Momentum[q1,dim], m],
-		PropagatorDenominator[-Momentum[q2,dim_:4], m_]:>PropagatorDenominator[Momentum[q2,dim], m],
-		PropagatorDenominator[Momentum[p, dim1_:4]-Momentum[q1, dim2_:4], m_]:>PropagatorDenominator[Momentum[q1, dim2]-Momentum[p, dim1],m],
-		PropagatorDenominator[Momentum[p, dim1_:4]-Momentum[q2, dim2_:4], m_]:>PropagatorDenominator[Momentum[q2, dim2]-Momentum[p, dim1],m],
-		PropagatorDenominator[Momentum[q2, dim1_:4]-Momentum[q1, dim2_:4], m_]:>PropagatorDenominator[Momentum[q1, dim2]-Momentum[q2, dim1],m]
+		PropagatorDenominator[-Momentum[q1,d_:4], m_]:>PropagatorDenominator[Momentum[q1,d], m],
+		PropagatorDenominator[-Momentum[q2,d_:4], m_]:>PropagatorDenominator[Momentum[q2,d], m],
+		PropagatorDenominator[Momentum[p, d_:4]-Momentum[q1, e_:4], m_]:>PropagatorDenominator[Momentum[q1, e]-Momentum[p, d],m],
+		PropagatorDenominator[Momentum[p, d_:4]-Momentum[q2, e_:4], m_]:>PropagatorDenominator[Momentum[q2, e]-Momentum[p, d],m],
+		PropagatorDenominator[Momentum[q2, d_:4]-Momentum[q1, e_:4], m_]:>PropagatorDenominator[Momentum[q1, e]-Momentum[q2, d],m]
 	})/;!FreeQ[expr,q1] && !FreeQ[expr,q2];
 
 (* 	special iterative algorithm tailored for 2-loop self-energy integrals that determines the correct shifts

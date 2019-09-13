@@ -33,6 +33,7 @@ Begin["`ExpandPartialD`Private`"]
 
 epdVerbose::usage="";
 optPartialDRelations::usage="";
+opk::usage="";
 
 quanfDot = DOT;
 epskillDot = DOT;
@@ -155,24 +156,24 @@ epskill[prod_Times] :=
 		((Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] |
 		Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___]) *  QuantumField[___FCPartialD,
 		FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD,
-		name_ /; (Head[name]=!=FCPartialD) && (Head[name]=!=LorentzIndex), LorentzIndex[_,___], colormaybe___]
-		) :> 0 /; Length[{colormaybe}]<2,
+		name_ /; (Head[name]=!=FCPartialD) && (Head[name]=!=LorentzIndex), LorentzIndex[_,___], l___]
+		) :> 0 /; Length[{l}]<2,
 
-		((ep : (Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] |
-				Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___])
-		) * QuantumField[p1___FCPartialD, FCPartialD[LorentzIndex[mu_,di___]], p2___FCPartialD,
-		name_ /; (Head[name] =!= FCPartialD) && (Head[name] =!= LorentzIndex), LorentzIndex[nu_,de___], rest___]
+		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] |
+				Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])
+		) * QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,d___]], q___FCPartialD,
+		t_ /; (Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,s___], r___]
 		) :>
-			(EpsEvaluate[ep/.{mu:>nu, nu:>mu}, FCI->True] QuantumField[p1,FCPartialD[LorentzIndex[nu,de]], p2, name,
-			LorentzIndex[mu, di],rest]) /; !OrderedQ[{mu,nu}],
+			(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] QuantumField[p,FCPartialD[LorentzIndex[n,s]], q, t,
+			LorentzIndex[m, d],r]) /; !OrderedQ[{m,n}],
 
-		((ep : (Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] |
-				Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___])) *
-				mydot[quf1___, QuantumField[p1___FCPartialD, FCPartialD[LorentzIndex[mu_,de___]], p2___FCPartialD,
-				name_ /; (Head[name] =!= FCPartialD) && (Head[name] =!= LorentzIndex), LorentzIndex[nu_,di___], rest___], quf2___]
-		) :> (EpsEvaluate[ep/.{mu:>nu, nu:>mu}, FCI->True] mydot[quf1, QuantumField[p1,FCPartialD[LorentzIndex[nu, di]], p2, name,
-		LorentzIndex[mu,de], rest], quf2]
-		) /; !OrderedQ[{mu, nu}]
+		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] |
+				Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])) *
+				mydot[quf1___, QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,s___]], q___FCPartialD,
+				t_ /; (Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,d___], r___], x___]
+		) :> (EpsEvaluate[e/.{m:>n, n:>m}, FCI->True] mydot[x, QuantumField[p,FCPartialD[LorentzIndex[n, d]], q, t,
+		LorentzIndex[m,s], r], x]
+		) /; !OrderedQ[{m, n}]
 
 		} /. mydot-> epskillDot) /; !FreeQ2[prod, {Eps,LeftPartialD,RightPartialD}];
 

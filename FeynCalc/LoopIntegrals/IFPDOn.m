@@ -73,7 +73,7 @@ IFPDOn[exp_,qu__] :=
 			(* calculate  a canonical q.p  as a side effect*)
 			t3 = ifp[t3, qq];
 			FCPrint[3,"IFPDOn: t3 after ifp ", t3];
-			sub = Table[(Pair @@ t3[[ij,1]]) -> t3[[ij,2]],{ij,Length[t3]}];
+			sub = Table[(Pair @@ t3[[r,1]]) -> t3[[r,2]],{r,Length[t3]}];
 			int = int /. feynsub /. sub;
 			int /. MyHold -> Identity
 		]

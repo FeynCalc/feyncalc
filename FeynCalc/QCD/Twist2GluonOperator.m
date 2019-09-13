@@ -42,6 +42,8 @@ End[]
 
 Begin["`Twist2GluonOperator`Private`"]
 
+del::usage="";
+
 Options[Twist2GluonOperator] = {
 	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
@@ -181,7 +183,7 @@ Twist2GluonOperator[pi_ /; Head[pi] =!= List, {mui_}, {nui_}, opt:OptionsPattern
 	psi[opt] Twist2GluonOperator[pi, {nui}, {mui},opt] /; !OrderedQ[{mui,nui}];
 
 Twist2GluonOperator[pi_ /; Head[pi] =!= List, {mui_}, {nui_}, OptionsPattern[]] :=
-	Block[ {dim, p, mu, nu,  re, pol, del},
+	Block[ {dim, p, mu, nu,  re, pol},
 		dim    = OptionValue[Dimension];
 		pol    = OptionValue[Polarization];
 		p = Mo[pi, dim];
@@ -507,7 +509,7 @@ Twist2GluonOperator[{p_,mu_}, {m_. Momentum[q_,___], Momentum[q_,___]}, {k_,la_}
 	IntegerQ[m] &&  $OPEWard =!= False;
 
 Twist2GluonOperator[{pi_, mui_, ai_}, {qi_, nui_, bi_}, {ki_, lai_, ci_}, opt:OptionsPattern[]] :=
-	Block[ {coup, dim, pol, p, q, k, mu, nu, la, a, b, c, re, del, threegluon, m,l},
+	Block[ {coup, dim, pol, p, q, k, mu, nu, la, a, b, c, re, threegluon, m,l},
 		coup  = OptionValue[CouplingConstant];
 		dim   = OptionValue[Dimension];
 		pol   = OptionValue[Polarization];
@@ -543,7 +545,7 @@ simp[All][x_] :=
 	},{LorentzIndex,Momentum}];
 
 Twist2GluonOperator[{pi_, mui_}, {qi_, nui_}, {ki_, lai_}, OptionsPattern[]] :=
-	Block[ {coup, dim, pol, p, q, k, mu, nu, la, re, del, mm,ll,     threegluon, threegluonar},
+	Block[ {coup, dim, pol, p, q, k, mu, nu, la, re, mm,ll,     threegluon, threegluonar},
 		coup  = OptionValue[CouplingConstant];
 		dim   = OptionValue[Dimension];
 		pol   = OptionValue[Polarization];
@@ -558,8 +560,103 @@ Twist2GluonOperator[{pi_, mui_}, {qi_, nui_}, {ki_, lai_}, OptionsPattern[]] :=
 			re =   (o3[mu,nu,la, p,q,k, del] +
 			o3[nu,la,mu, q,k,p, del] +
 			o3[la,mu,nu, k,p,q, del]),
-			(*This is Achmed & Ross ... ; really ...*)
-			threegluonar[{m_, k1_}, {n_, k2_}, {l_, k3_}] :=
+
+			(*threegluon stuff*)
+
+
+			If[ AchmedRoss,
+				re = ACHMED (-1) threegluonar[{mu,p},{nu,q},{la,k}],
+				re = threegluon[OptionValue[Explicit]][{mu,p},{nu,q},{la,k}]
+			];
+		];
+		re//simp[OptionValue[Explicit]]
+	] /; OptionValue[Explicit];
+
+(* 4-gluon operator *)
+
+Twist2GluonOperator[a1_, a2_, a3_, a4_, a5_, a6_, a7_, a8_, a9_,
+							a10_, a11_, a12_, opt___Rule] :=
+	Twist2GluonOperator[{a1,a2,a3},  {a4,a5,a6}, {a7,a8,a9}, {a10,a11,a12}, opt];
+
+Twist2GluonOperator[{p_,mu_}, {q_,nu_},
+							{k_,la_}, {s_,si_}, opt___Rule
+						] :=
+	Block[ {dlt, dim, m, l, pol},
+		dim    = Dimension    /. {opt} /. Options[Twist2GluonOperator];
+		pol    = Polarization /. {opt} /. Options[Twist2GluonOperator];
+		dlt    = Momentum[OPEDelta, dim];
+		m[y_] :=
+			Mo[y,dim];
+		l[y_] :=
+			Li[y,dim];
+		dlt = Momentum[OPEDelta, Dimension /. {opt} /.
+										Options[Twist2GluonOperator]];
+		If[ pol === 0,
+			o415[mu//l,nu//l,la//l,si//l, p//m,q//m,k//m,s//m,dlt],
+			pol4p[mu//l,nu//l,la//l,si//l, p//m,q//m,k//m,s//m,dlt]
+		]//simp[Explicit /. {opt} /. Options[Twist2GluonOperator]]
+	]/;
+	(Explicit /. {opt} /. Options[Twist2GluonOperator]) =!= False;
+
+
+
+			(* with the sums *)
+			threegluon[True][{l1_,p1_}, {l2_,p2_}, {l3_,p3_}] :=
+				-(OPESum[(-1)^OPEi*Pair[p3, del]^OPEi*
+								Pair[del, p2]^(-3 - OPEi + OPEm), {OPEi, 0, -3 + OPEm}]*
+							(Eps[l3, l2, del, p2]*Pair[p3, del] +
+								Eps[l2, p3, del, p2]*Pair[l3, del])*Pair[l1, del] -
+						OPESum[(-1)^OPEi*Pair[p3, del]^OPEi*
+								Pair[del, p1]^(-3 - OPEi + OPEm), {OPEi, 0, -3 + OPEm}]*
+							(Eps[l3, l1, del, p1]*Pair[p3, del] +
+								Eps[l1, p3, del, p1]*Pair[l3, del])*Pair[l2, del] +
+						Pair[p3, del]^(-2 + OPEm)*
+							(Eps[l3, l2, p3, del]*Pair[l1, del] -
+								Eps[l3, l1, p3, del]*Pair[l2, del]) +
+						(Eps[l1, l2, del, p1]*Pair[l3, del] +
+								Eps[l3, l1, del, p1]*Pair[l2, del])*
+							Pair[del, p1]^(-2 + OPEm) +
+						OPESum[(-1)^OPEi*Pair[del, p1]^OPEi*
+								Pair[del, p2]^(-3 - OPEi + OPEm), {OPEi, 0, -3 + OPEm}]*
+							Pair[l3, del]*(Eps[l2, del, p1, p2]*Pair[l1, del] -
+								Eps[l1, l2, del, p2]*Pair[del, p1]) +
+						(Eps[l1, l2, del, p2]*Pair[l3, del] -
+								Eps[l3, l2, del, p2]*Pair[l1, del])*
+							Pair[del, p2]^(-2 + OPEm));
+
+(* the sums done *)
+			threegluon[All][{l1_,p1_}, {l2_,p2_}, {l3_,p3_}] :=
+				EpsEvaluate[
+					-(Eps[l1, l2, del, p1]*Pair[del, l3]*Power2[Pair[del, p1], -2 + OPEm]) +
+					(Eps[l2, del, p1, p2]*Pair[del, l1]*Pair[del, l3]*
+							(Power2[-1, OPEm]*Power2[Pair[del, p1], -2 + OPEm] -
+								Power2[Pair[del, p2], -2 + OPEm]))/(Pair[del, p1] + Pair[del, p2]) -
+					(Eps[l1, l2, del, p2]*Pair[del, l3]*
+							(Pair[del, p1]*Power2[-1, OPEm]*Power2[Pair[del, p1], -2 + OPEm] +
+								Pair[del, p2]*Power2[Pair[del, p2], -2 + OPEm]))/
+						(Pair[del, p1] + Pair[del, p2]) -
+					Eps[l3, l2, p3, del]*Pair[del, l1]*Power2[Pair[del, p3], -2 + OPEm] +
+					Eps[l3, l1, p3, del]*Pair[del, l2]*Power2[Pair[del, p3], -2 + OPEm] -
+					(Eps[l1, p3, del, p1]*Pair[del, l2]*Pair[del, l3]*
+							(-Power2[Pair[del, p1], -2 + OPEm] +
+								Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
+						(Pair[del, p1] + Pair[del, p3]) +
+					(Eps[l2, p3, del, p2]*Pair[del, l1]*Pair[del, l3]*
+							(-Power2[Pair[del, p2], -2 + OPEm] +
+								Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
+						(Pair[del, p2] + Pair[del, p3]) -
+					(Eps[l3, l1, del, p1]*Pair[del, l2]*
+							(Pair[del, p1]*Power2[Pair[del, p1], -2 + OPEm] +
+								Pair[del, p3]*Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
+						(Pair[del, p1] + Pair[del, p3]) +
+					(Eps[l3, l2, del, p2]*Pair[del, l1]*
+							(Pair[del, p2]*Power2[Pair[del, p2], -2 + OPEm] +
+								Pair[del, p3]*Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
+						(Pair[del, p2] + Pair[del, p3])
+									];
+
+(*This is Achmed & Ross ... ; really ...*)
+threegluonar[{m_, k1_}, {n_, k2_}, {l_, k3_}] :=
 				(
 				Eps[m, n, del, k1]*Pair[del, l]*Power2[Pair[del, k1], -2 + OPEm] +
 					Eps[l, n, del, k1]*Pair[del, m]*Power2[Pair[del, k1], -2 + OPEm] +
@@ -622,93 +719,6 @@ Twist2GluonOperator[{pi_, mui_}, {qi_, nui_}, {ki_, lai_}, OptionsPattern[]] :=
 						Power2[Pair[del, k2], -1 + OPEm] + Power2[Pair[del, k3], -1 + OPEm])
 				);
 
-			(* the sums done *)
-			threegluon[All][{l1_,p1_}, {l2_,p2_}, {l3_,p3_}] :=
-				EpsEvaluate[
-					-(Eps[l1, l2, del, p1]*Pair[del, l3]*Power2[Pair[del, p1], -2 + OPEm]) +
-					(Eps[l2, del, p1, p2]*Pair[del, l1]*Pair[del, l3]*
-							(Power2[-1, OPEm]*Power2[Pair[del, p1], -2 + OPEm] -
-								Power2[Pair[del, p2], -2 + OPEm]))/(Pair[del, p1] + Pair[del, p2]) -
-					(Eps[l1, l2, del, p2]*Pair[del, l3]*
-							(Pair[del, p1]*Power2[-1, OPEm]*Power2[Pair[del, p1], -2 + OPEm] +
-								Pair[del, p2]*Power2[Pair[del, p2], -2 + OPEm]))/
-						(Pair[del, p1] + Pair[del, p2]) -
-					Eps[l3, l2, p3, del]*Pair[del, l1]*Power2[Pair[del, p3], -2 + OPEm] +
-					Eps[l3, l1, p3, del]*Pair[del, l2]*Power2[Pair[del, p3], -2 + OPEm] -
-					(Eps[l1, p3, del, p1]*Pair[del, l2]*Pair[del, l3]*
-							(-Power2[Pair[del, p1], -2 + OPEm] +
-								Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
-						(Pair[del, p1] + Pair[del, p3]) +
-					(Eps[l2, p3, del, p2]*Pair[del, l1]*Pair[del, l3]*
-							(-Power2[Pair[del, p2], -2 + OPEm] +
-								Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
-						(Pair[del, p2] + Pair[del, p3]) -
-					(Eps[l3, l1, del, p1]*Pair[del, l2]*
-							(Pair[del, p1]*Power2[Pair[del, p1], -2 + OPEm] +
-								Pair[del, p3]*Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
-						(Pair[del, p1] + Pair[del, p3]) +
-					(Eps[l3, l2, del, p2]*Pair[del, l1]*
-							(Pair[del, p2]*Power2[Pair[del, p2], -2 + OPEm] +
-								Pair[del, p3]*Power2[-1, OPEm]*Power2[Pair[del, p3], -2 + OPEm]))/
-						(Pair[del, p2] + Pair[del, p3])
-									];
-
-			(* with the sums *)
-			threegluon[True][{l1_,p1_}, {l2_,p2_}, {l3_,p3_}] :=
-				-(OPESum[(-1)^OPEi*Pair[p3, del]^OPEi*
-								Pair[del, p2]^(-3 - OPEi + OPEm), {OPEi, 0, -3 + OPEm}]*
-							(Eps[l3, l2, del, p2]*Pair[p3, del] +
-								Eps[l2, p3, del, p2]*Pair[l3, del])*Pair[l1, del] -
-						OPESum[(-1)^OPEi*Pair[p3, del]^OPEi*
-								Pair[del, p1]^(-3 - OPEi + OPEm), {OPEi, 0, -3 + OPEm}]*
-							(Eps[l3, l1, del, p1]*Pair[p3, del] +
-								Eps[l1, p3, del, p1]*Pair[l3, del])*Pair[l2, del] +
-						Pair[p3, del]^(-2 + OPEm)*
-							(Eps[l3, l2, p3, del]*Pair[l1, del] -
-								Eps[l3, l1, p3, del]*Pair[l2, del]) +
-						(Eps[l1, l2, del, p1]*Pair[l3, del] +
-								Eps[l3, l1, del, p1]*Pair[l2, del])*
-							Pair[del, p1]^(-2 + OPEm) +
-						OPESum[(-1)^OPEi*Pair[del, p1]^OPEi*
-								Pair[del, p2]^(-3 - OPEi + OPEm), {OPEi, 0, -3 + OPEm}]*
-							Pair[l3, del]*(Eps[l2, del, p1, p2]*Pair[l1, del] -
-								Eps[l1, l2, del, p2]*Pair[del, p1]) +
-						(Eps[l1, l2, del, p2]*Pair[l3, del] -
-								Eps[l3, l2, del, p2]*Pair[l1, del])*
-							Pair[del, p2]^(-2 + OPEm));
-			If[ AchmedRoss,
-				re = ACHMED (-1) threegluonar[{mu,p},{nu,q},{la,k}],
-				re = threegluon[OptionValue[Explicit]][{mu,p},{nu,q},{la,k}]
-			];
-		];
-		re//simp[OptionValue[Explicit]]
-	] /; OptionValue[Explicit];
-
-(* 4-gluon operator *)
-
-Twist2GluonOperator[a1_, a2_, a3_, a4_, a5_, a6_, a7_, a8_, a9_,
-							a10_, a11_, a12_, opt___Rule] :=
-	Twist2GluonOperator[{a1,a2,a3},  {a4,a5,a6}, {a7,a8,a9}, {a10,a11,a12}, opt];
-
-Twist2GluonOperator[{p_,mu_}, {q_,nu_},
-							{k_,la_}, {s_,si_}, opt___Rule
-						] :=
-	Block[ {dlt, dim, m, l, pol},
-		dim    = Dimension    /. {opt} /. Options[Twist2GluonOperator];
-		pol    = Polarization /. {opt} /. Options[Twist2GluonOperator];
-		dlt    = Momentum[OPEDelta, dim];
-		m[y_] :=
-			Mo[y,dim];
-		l[y_] :=
-			Li[y,dim];
-		dlt = Momentum[OPEDelta, Dimension /. {opt} /.
-										Options[Twist2GluonOperator]];
-		If[ pol === 0,
-			o415[mu//l,nu//l,la//l,si//l, p//m,q//m,k//m,s//m,dlt],
-			pol4p[mu//l,nu//l,la//l,si//l, p//m,q//m,k//m,s//m,dlt]
-		]//simp[Explicit /. {opt} /. Options[Twist2GluonOperator]]
-	]/;
-	(Explicit /. {opt} /. Options[Twist2GluonOperator]) =!= False;
 
 (* calculated by FC *)
 

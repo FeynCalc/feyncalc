@@ -28,8 +28,11 @@ End[]
 
 Begin["`FC2RHI`Private`"]
 
-Options[FC2RHI] = {Dimension -> D, IncludePair -> True,
-									Do -> True};
+Options[FC2RHI] = {
+	Dimension 	-> D,
+	IncludePair -> True,
+	Do 			-> True
+};
 
 FC2RHI[exp_, opt___Rule] :=
 	FC2RHI[exp, FCGV["q1"], FCGV["q2"], opt];
@@ -44,16 +47,17 @@ FC2RHI[y_ /; ((Head[y] =!= Plus) && (Head[y]=!=Times)
 	y;
 FC2RHI[x_Plus, b__] :=
 	Map[FC2RHI[#, b]&, x] /;
-						 !FreeQ[x,FeynAmpDenominator];
+						!FreeQ[x,FeynAmpDenominator];
 
 FC2RHI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 	If[ !FreeQ[xy, FeynAmpDenominator] &&
 		FreeQ[xy, PropagatorDenominator[_, ma_ /; ma=!=0]],
 		MemSet[FC2RHI[xy, k1,k2,opts],
 		Block[ {x, xx,nx, ne,fa, dim, fd, dp, dk1, dk2, dpk1, dpk2, dk1k2,p,
-		nk12, nk22, k12,k22,k1k2,k1p,k2p, pk12,pk22,k1k22,
-		fad, inc, a, b, c, d, e, doheuristics,power2sub,(*dof,*)
-			vV,wW,xX,yY,zZ, al, be, ga, de, ep, result, check,dummyp},
+		nk12, nk22, k12,k22,k1k2,k1p,k2p, pk12,pk22,k1k22, pru,
+		fad, inc, c, d, e, doheuristics,power2sub,(*dof,*)
+			vV,wW,xX,yY,zZ, al, be, ga, de, ep, result, check,dummyp, qch,
+			int, iall, rhi, ncheck},
 			dim = Dimension   /. {opts} /. Options[FC2RHI];
 			inc = IncludePair /. {opts} /. Options[FC2RHI];
 			doheuristics = Do /. {opts} /. Options[FC2RHI];
@@ -106,9 +110,9 @@ FC2RHI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 							xx = x;
 							If[ !FreeQ[xx, Power2],
 								power2sub = Cases2[xx, Power2];
-								power2sub = Table[power2sub[[ij]] ->
-																	(power2sub[[ij]]/.Power2->Power),
-																	{ij,Length[power2sub]}
+								power2sub = Table[power2sub[[r]] ->
+																	(power2sub[[r]]/.Power2->Power),
+																	{r,Length[power2sub]}
 																	];
 								xx = xx /. power2sub;,
 								power2sub = {}
@@ -260,13 +264,13 @@ FC2RHI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
 								int = nx iall;
 								se[y_] :=
 									(If[ #===1,
-										 0,
-										 If[ Head[#] === Power,
-											 #[[2]],
-											 y
-										 ]
-									 ]&
-											  )[SelectNotFree[int, y^h_]];
+										0,
+										If[ Head[#] === Power,
+											#[[2]],
+											y
+										]
+									]&
+											)[SelectNotFree[int, y^h_]];
 								rhi = Map[se,
 													{nk12,nk22,k1p,k2p,k1k2,
 													dk1, dk2, dpk1, dpk2, dk1k2, k12, k22, pk12, pk22, k1k22}

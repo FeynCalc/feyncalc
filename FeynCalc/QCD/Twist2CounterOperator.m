@@ -40,7 +40,7 @@ Options[Twist2CounterOperator] =
 
 (* C7 *)
 Twist2CounterOperator[pi_, 7, opt___Rule] :=
-	Block[ {dim, p, re, pol, del},
+	Block[ {dim, p, re, pol, del, coup, li1,li2,li3},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -81,7 +81,7 @@ Twist2CounterOperator[pi_, 7, opt___Rule] :=
 
 (* C1 *) (* COUNT1 *)
 Twist2CounterOperator[p1_, pe3_, {_, mu_, a_}, 1, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex, p3 = -pe3},
+	Block[ {dim, re, pol, del, oex, p3 = -pe3, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -125,7 +125,7 @@ Twist2CounterOperator[p1_, pe3_, {_, mu_, a_}, 1, opt___Rule] :=
 (* C2 *)
 (* Count2 *)
 Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 2, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex, dp1, dp3},
+	Block[ {dim, re, pol, del, oex, dp1, dp3, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -199,7 +199,7 @@ count1[p1_,pe3_,mu_,a_,coup_] :=
 (* C3 *)
 (* Count3 *)
 Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 3, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -243,7 +243,7 @@ pc3[p1_, p3_, mu_, a_,cou_] :=
 (* C13 *)
 (* Count13 *)
 Twist2CounterOperator[p_, mu_, nu_, a_, b_, 13, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -272,7 +272,7 @@ Twist2CounterOperator[p_, mu_, nu_, a_, b_, 13, opt___Rule] :=
 (* C4 *)
 (* Count4 *)
 Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 4, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -403,11 +403,9 @@ uc6[ p_, mu_, nu_, a_, b_, cou_] :=
 
 (*C11 *)
 (* Count11 *)
-Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  pe3_, mu3_, a3_,
-											11, x_,  opt___Rule
-										] :=
-	Block[ {dim, re, pol, p3},
-	(* p3 = p1+p2 *)
+Twist2CounterOperator[p1_, mu1_, a1_,  (*p2*)_, mu2_, a2_,  pe3_, mu3_, a3_, 11, x_,  opt___Rule] :=
+	Block[ {dim, re, pol, p3, coup},
+		(* p3 = p1+p2 *)
 		p3 = -pe3;
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -1269,10 +1267,8 @@ Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  pe3_, mu3_, a3_,
 
 (* C12 *)
 (* Count12 *)
-Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  p3_, mu3_, a3_,
-											12, opt___Rule
-										] :=
-	Block[ {dim, re, pol, del, oex, dp1, dp3},
+Twist2CounterOperator[p1_, mu1_, a1_,  (*p2*)_, mu2_, a2_,  (*p3*)_, mu3_, a3_, _(*s12*), opt___Rule] :=
+	Block[ {dim, re, pol, del, oex, dp1, dp3, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
@@ -1293,7 +1289,7 @@ Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  p3_, mu3_, a3_,
 				(Epsilon*(-1 + OPEm)*OPEm)
 									)
 						,
-		nochnich
+		"Not ready yet!"
 				];
 		ChangeDimension[FeynCalcInternal[re],dim]
 	];
@@ -1306,7 +1302,7 @@ uc30[mu_,a_, coup_] :=
 
 (* C30  *)
 Twist2CounterOperator[mu_,a_, 30, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup  = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim   = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		ChangeDimension[uc30[mu, a, coup],dim]
@@ -1318,7 +1314,7 @@ uc31[mu_, a_, coup_] :=
 
 (* C31  *)
 Twist2CounterOperator[mu_,a_, 31, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup  = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim   = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		ChangeDimension[uc31[mu, a, coup],dim]
@@ -1332,14 +1328,15 @@ uc40[p_, coup_] :=
 (* C40 *)
 (* Count40  *)
 Twist2CounterOperator[p1_, 40, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc40[p1, coup],dim],
 					pol === 1,
-						ChangeDimension[pc40[p1,coup],dim]
+						"Not available!"
+						(*ChangeDimension[pc40[p1,coup],dim]*)
 				]
 	];
 
@@ -1351,63 +1348,67 @@ uc41[p_, coup_] :=
 (* C41 *)
 (* Count41  *)
 Twist2CounterOperator[p1_, 41, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc41[p1, coup],dim],
 					pol === 1,
-						ChangeDimension[pc41[p1, coup],dim]
+						"Not available!"
+						(*ChangeDimension[pc41[p1, coup],dim]*)
+
 				]
 	];
 
 (* NEW *)
 (* C42 *)
 (* Count42; p1,  p2, p3 incoming; p1: fermion*)
-uc42[p1_, p2_, p3_, mu_, a_, coup_] :=
+uc42[p1_, p2_, (*p3*)_, mu_, a_, (*coup*)_] :=
 	-( (-2*CA*SMP["g_s"]^3*Sn*SUNT[a]*FV[OPEDelta, mu]*GS[OPEDelta]*
 			(SO[p1]^OPEm*SO[p2] + (-1)^OPEm*SO[p1]*SO[p2]^OPEm))/
 		(Epsilon*OPEm*(1 + OPEm)*SO[p1]*SO[p2]*(SO[p1] + SO[p2]))
 		);
 
 Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 42, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc42[p1, p2, p3, mu, a, coup],dim],
 					pol === 1,
-						ChangeDimension[pc42[p1, -p2, p3,  coup],dim]
+					"Not available!"
+					(*ChangeDimension[pc42[p1, -p2, p3,  coup],dim]*)
 				]
 	];
 
 (* NEW *)
 (* C43 *)
 (* Count43  p2 outgoing *)
-uc43[p1_, p2_, p3_, mu_, a_, coup_] :=
+uc43[p1_, p2_, (*p3*)_, mu_, a_, (*coup*)_] :=
 	-(-2*(CA - 2*CF)*SMP["g_s"]^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
 			(SO[p1]^(1 + OPEm) - SO[p1]*(SO[p1] - SO[p2])^OPEm -
 				SO[p1]^OPEm*SO[p2])*SUNT[a])/
 		(Epsilon*OPEm*(1 + OPEm)*SO[p1]*(SO[p1] - SO[p2])*SO[p2]);
 
 Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 43, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc43[p1, -p2, p3, mu, a, coup],dim],
 					pol === 1,
-					ChangeDimension[pc43[p1, -p2, p3, mu, a, coup],dim]
+					"Not available!"
+					(*ChangeDimension[pc43[p1, -p2, p3, mu, a, coup],dim]*)
 				]
 	];
 
 
 (* C44 *)
 (* Count44  p2 outgoing *)
-uc44[p1_, p2_, p3_, mu_, a_, coup_] :=
+uc44[p1_, p2_, (*p3*)_, mu_, a_, (*coup*)_] :=
 	-( -2*(CA - 2*CF)*SMP["g_s"]^3*(1 - OPEm)*Sn*FV[OPEDelta, mu]*
 			GS[OPEDelta]*((-1)^OPEm*(SO[p1] - SO[p2])^OPEm*SO[p2] +
 				SO[p1]*SO[p2]^OPEm - SO[p2]^(1 + OPEm))*SUNT[a])/
@@ -1415,21 +1416,22 @@ uc44[p1_, p2_, p3_, mu_, a_, coup_] :=
 
 (* Count44  p2 incoming*)
 Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 44, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc44[p1, -p2, p3, mu, a, coup],dim],
 					pol === 1,
-					ChangeDimension[pc44[p1, -p2, p3, mu, a, coup],dim]
+					"Not available!"
+					(*ChangeDimension[pc44[p1, -p2, p3, mu, a, coup],dim]*)
 				]
 	];
 
 (* C45 *)
 (* Count45  p2 outgoing *)
 (*for some reson there always is a global sign wrong  ....*)
-uc45[p1_, p2_, p3_, mu_, a_, coup_] :=
+uc45[p1_, p2_, (*p3*)_, mu_, a_, (*coup*)_] :=
 	-Block[ {j = OPEl},
 		(CA*SMP["g_s"]^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
 				(2*SO[p1]^OPEm*SO[p2] - 2*SO[p1]*SO[p2]^OPEm -
@@ -1443,20 +1445,21 @@ uc45[p1_, p2_, p3_, mu_, a_, coup_] :=
 
 
 Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 45, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc45[p1, -p2, p3, mu, a, coup],dim],
 					pol === 1,
-					ChangeDimension[pc45[p1, -p2, p3, mu, a, coup],dim]
+					"Not available!"
+					(*ChangeDimension[pc45[p1, -p2, p3, mu, a, coup],dim]*)
 				]
 	];
 
 (* C46 *)
 (* Count46  p2 outgoing *)
-uc46[p1_, p2_, p3_, mu_, a_, coup_] :=
+uc46[p1_, p2_, (*p3*)_, mu_, a_, (*coup*)_] :=
 	-Block[ {j = OPEl},
 		-((CA*SMP["g_s"]^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
 					(OPEm*OPESum[(SO[p1]^(j - OPEm)*SO[p2]^(-j + OPEm))/j,
@@ -1468,14 +1471,15 @@ uc46[p1_, p2_, p3_, mu_, a_, coup_] :=
 	];
 
 Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 46, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc46[p1, -p2, p3, mu, a, coup],dim],
 					pol === 1,
-					ChangeDimension[pc46[p1, -p2, p3, mu, a, coup],dim]
+					"Not available!"
+					(*ChangeDimension[pc46[p1, -p2, p3, mu, a, coup],dim]*)
 				]
 	];
 
@@ -1503,7 +1507,7 @@ p1, p3, incoming
 *)
 
 (* Count47  p2 outgoing *)
-uc47[p1_, _, p3_, mu_, a_, coup_] :=
+uc47[p1_, _, p3_, mu_, a_, (*coup*)_] :=
 	-
 	(2*(CA - 2*CF)*SMP["g_s"]^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
 	((-1)^OPEm*SO[p1]^(1 + OPEm) - (-1)^OPEm*SO[p1]*(SO[p1] - SO[p3])^OPEm +
@@ -1512,14 +1516,15 @@ uc47[p1_, _, p3_, mu_, a_, coup_] :=
 	(Epsilon*OPEm*(1 + OPEm)*SO[p1]*(SO[p1] - SO[p3])*SO[p3]);
 
 Twist2CounterOperator[p1_, p2_, p3_, mu_, a_, 47, opt___Rule] :=
-	Block[ {dim, re, pol, del, oex},
+	Block[ {dim, re, pol, del, oex, coup},
 		coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 		dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
 		pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
 		Which[pol === 0,
 					ChangeDimension[uc47[p1, p2, p3, mu, a, coup],dim],
 					pol === 1,
-					ChangeDimension[pc47[p1, p2, p3, mu, a, coup],dim]
+					"Not available!"
+					(*ChangeDimension[pc47[p1, p2, p3, mu, a, coup],dim]*)
 				]
 	];
 

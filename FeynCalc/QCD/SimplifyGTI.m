@@ -21,8 +21,9 @@ Begin["`SimplifyGTI`Private`"]
 
 Options[SimplifyGTI] = {Negative -> False};
 
-negflag :=
-	Negative /. Options[SimplifyGTI];
+(*negflag :=
+	Negative /. Options[SimplifyGTI];*)
+
 
 eExpand = Identity;
 (*
@@ -1003,39 +1004,29 @@ gti[{a_Integer?Positive,b_,c_,d_,e_/;Head[e]=!=Integer},
 ,
 *)
 
-gti[{0,-1,0,0,e_/;Head[e]=!=Integer},
-		{1,1,1,1,1}
-	] :> PowerSimplify[(-1)^e] gti[{-1,0,0,0,e},{1,1,1,1,1}]
-,
+gti[{0,-1,0,0,e_/;Head[e]=!=Integer}, {1,1,1,1,1}] :>
+	PowerSimplify[(-1)^e] gti[{-1,0,0,0,e},{1,1,1,1,1}],
 
 gti[{a_,b_,c_,d_,e_Integer?Positive},{bla__}] :>
-Sum[Binomial[e,ii] (-1)^(e-ii) gti[{a+ii, b+e-ii,c,d,0}, {bla}
-																	], {ii,0,e}]//eExpand
-,
+	Sum[Binomial[e,i] (-1)^(e-i) gti[{a+i, b+e-i,c,d,0}, {bla}], {i,0,e}]//eExpand,
+
 gti[{a_,b_,1,d_,e_},{bla__}] :>
-Dp gti[{a,b,0,d,e},{bla}] - gti[{a+1,b,0,d,e},{bla}]
-,
+	Dp gti[{a,b,0,d,e},{bla}] - gti[{a+1,b,0,d,e},{bla}],
 
 gti[{a_,b_,c_,1,e_},{bla__}] :>
-Dp gti[{a,b,c,0,e},{bla}] - gti[{a,b+1,c,0,e},{bla}]
-,
+	Dp gti[{a,b,c,0,e},{bla}] - gti[{a,b+1,c,0,e},{bla}],
 
 gti[{a_,b_Integer?Positive,c_,d_/;Head[d]=!=Integer,e_},{bla__}] :>
-Dp gti[{a,b-1,c,d,e},{bla}] - gti[{a,b-1,c,d+1,e},{bla}]
-,
+	Dp gti[{a,b-1,c,d,e},{bla}] - gti[{a,b-1,c,d+1,e},{bla}],
 
 gti[{a_Integer?Positive,b_,c_/;Head[c]=!=Integer,d_,e_},{bla__}] :>
-Dp gti[{a-1,b,c,d,e},{bla}] - gti[{a-1,b,c+1,d,e},{bla}]
-,
+	Dp gti[{a-1,b,c,d,e},{bla}] - gti[{a-1,b,c+1,d,e},{bla}],
 
 gti[{a_,b_,c_Integer?Positive,d_,e_},{bla__}] :>
-Sum[Binomial[c,ii] (-1)^(c-ii) Dp^ii *
-		gti[{a+c-ii,b,0,d,e}, {bla}], {ii,0,c}] // eExpand
-,
+	Sum[Binomial[c,i] (-1)^(c-i) Dp^i * gti[{a+c-i,b,0,d,e}, {bla}], {i,0,c}] // eExpand,
 
 gti[{a_,b_,c_,d_Integer?Positive,e_},{bla__}] :>
-Sum[Binomial[d,ii] (-1)^(d-ii) Dp^ii *
-		gti[{a,b+d-ii,c,0,e}, {bla}], {ii,0,d}] // eExpand
+	Sum[Binomial[d,i] (-1)^(d-i) Dp^i * gti[{a,b+d-i,c,0,e}, {bla}], {i,0,d}] // eExpand
 };
 
 (*

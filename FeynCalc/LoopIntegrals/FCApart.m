@@ -102,8 +102,8 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		*)
 		If[!FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator}],
 			ex = cancelSP[ex];
-			ex = ex /. fadHold[r1___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], r2___]/;n<0 :>
-				fadHold[r1,r2] FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
+			ex = ex /. fadHold[r___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], t___]/;n<0 :>
+				fadHold[r,t] FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
 			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator;
 			FCPrint[3,"FCApart: After the initial cancelling of scalar products ", ex, FCDoControl->fcaVerbose]
 		];
@@ -113,7 +113,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			propagators in the already fixed topology, so if FDS is set to False,
 			this simplification should not be done as well!	*)
 		If[	OptionValue[FDS],
-			ex = ex /. FeynAmpDenominator -> feynsimp[lmoms]
+			ex = ex /. FeynAmpDenominator -> FeynCalc`Package`feynsimp[lmoms]
 		];
 
 

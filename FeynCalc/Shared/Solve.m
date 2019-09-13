@@ -50,7 +50,7 @@ Solve2[a_, b_/;Head[b]=!=List, c___] :=
 Solve2[ai_List, bii_, ops___Rule] :=
 	Block[{fixeq, temp, re, factor , finsub, a, b, bi,dumsub, dum},
 		bi = Flatten[{bii}];
-		dumsub = Table[bi[[ij]] -> dum[ij],{ij,Length[bi]}];
+		dumsub = Table[bi[[r]] -> dum[r],{r,Length[bi]}];
 		a = Flatten[{ai}] /. dumsub;
 		b = Last/@dumsub;
 		factor = Factoring /. {ops} /. Options[Solve2];
@@ -76,7 +76,7 @@ Solve3[a_/;Head[a]=!=List, b__] :=
 
 Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 	Block[{cli = clii, factor, factorSpecial, optFactoring, finsub,newel, lneq, neqh,isol, neq, newneq,
-		col,  new, res = {}, parmap, pmap, starttime = AbsoluteTime[]},
+		col,  new, res = {}, parmap, pmap, starttime = AbsoluteTime[], neq1},
 
 		optFactoring = OptionValue[Factoring];
 		finsub = OptionValue[FinalSubstitutions];

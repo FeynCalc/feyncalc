@@ -29,6 +29,9 @@ End[]
 
 Begin["`FeynmanParametrize1`Private`"]
 
+endrule::usage="";
+squarerule::usage="";
+
 Options[FeynmanParametrize1] = {
 	FeynmanParameterNames -> {FCGV["a"], FCGV["b"], FCGV["c"], FCGV["d"], FCGV["e"]},
 	Method -> Denominator,
@@ -39,7 +42,7 @@ Options[FeynmanParametrize1] = {
 
 FeynmanParametrize1::"noint" = "Could not integrate out `1` in `2`. Got `3`.";
 
-fpar[{par__}][k_][f:FeynAmpDenominator[PropagatorDenominator[_,___]..], opts___Rule] :=
+fpar[{par__}][(*k*)_][f:FeynAmpDenominator[PropagatorDenominator[_,___]..], (*opts*)___Rule] :=
 	Block[ {i, n = Length[f], dum, pars = dum@@{par}},
 		pars = ReplacePart[pars,0,n];
 		(n-1)! * Dot[(DOT@@Table[Integratedx[pars[[i]],0,pars[[i-1]]],{i,n-1}]),
@@ -52,7 +55,7 @@ epar[{par__}][k_][(f:FeynAmpDenominator[PropagatorDenominator[_,___]..]), opts__
 
 epar[{par__}][k_][
 	(rest___)(f:FeynAmpDenominator[PropagatorDenominator[_,___]..]), opts___Rule] :=
-	Block[ {i, n = Length[f], pars = {par}, res, y, ee, rr, cc, exp,
+	Block[ {i, n = Length[f], pars = {par}, res, y, cc, exp,
 			mom, res1, rest1, dum, k2coeff, p},
 
 	(* Exponential factors already there *)
@@ -100,7 +103,9 @@ epar[{par__}][k_][
 
 FeynmanParametrize1[exp_,q_,opt___Rule] :=
 	Block[ {(*dim,dims,rul,aa,aaa,ee,qfacs,noqfacs,qq,res,par,dum,
-	efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd*)},
+	efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd*)
+	dims,dim,rul,efpar,qfac,noqfac,qq,par,res,res1,len,len1,
+	qfacs,noqfacs,ef,wrap, dum, rebug, co, undebug, lis, sil, cc, lis1},
 		endrule = {};
 		qq = q/.Momentum[aaa_,___]:>aaa;
 		par = FeynmanParameterNames/.{opt}/.Options[FeynmanParametrize1];
@@ -176,7 +181,7 @@ FeynmanParametrize1[exp_,q_,opt___Rule] :=
 					(* No integration *)
 					ef = efpar[par][qq][FeynCalcInternal[qfacs],opt],
 					(* Integration *)
-					ef = efpar[par][qq][FeynCalcInternal[qfacs*Times@@Cases[{rr},E^(ee_?(!FreeQ[#,qq]&))]],opt]
+					ef = efpar[par][qq][FeynCalcInternal[qfacs*Times@@Cases[{rr},E^(_?(!FreeQ[#,qq]&))]],opt]
 				]*
 
 					(* wrap is just so we can later absorb into the DOT[Integratedx...] stuff *)
@@ -194,13 +199,13 @@ FeynmanParametrize1[exp_,q_,opt___Rule] :=
 							(*The integration momentum y*)
 							y = endrule[[1]];
 							(* Get the coefficient on y^2 in the exponential *)
-							co = -Coefficient[(ef/._*DOT[dd_,dd1__]:>DOT[dd,dd1])[[-1]]/.E^(ee_)->ee,Pair[y,y]];
+							co = -Coefficient[(ef/._*DOT[dd_,dd1__]:>DOT[dd,dd1])[[-1]]/.E^(e_)->e,Pair[y,y]];
 							(* Do the y-integrals *)
 							FCPrint[1,"Expanding and replacing tensor terms with integrated terms, using integration momentum ",
 									endrule[[2]], " and coefficient ", co];
 							(rebug = Replace[
 							(undebug = Uncontract[Expand[ExpandProductExpand[
-									Times@@Replace[{rr}, E^(ee_?(!FreeQ[#,qq]&)) -> 1 , 1] /.
+									Times@@Replace[{rr}, E^(_?(!FreeQ[#,qq]&)) -> 1 , 1] /.
 									squarerule]], y[[1]], Pair -> All]),
 
 							dum | dum * ( tt : ( _?(FreeQ[#, y]&))) |

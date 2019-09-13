@@ -41,7 +41,7 @@ FeynCalcToLaTeX[expr_, width_:500] :=
 (* this is of course heuristics; should change to java.util.regexp or so ... *)
 
 f2tex[expr_, width_:500] :=
-	Module[ {r, n, w,y,z},
+	Module[ {r, n, w,y,z, tt},
 		r = Cell[BoxData[FormBox[(MakeBoxes[#1, TraditionalForm] & )[expr], TraditionalForm]],
 			"Output"];
 		n = NotebookPut[Notebook[{r}, WindowSize -> {width, Inherited},
