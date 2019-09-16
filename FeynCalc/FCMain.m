@@ -205,11 +205,6 @@ $LoadAddOns::usage =
 E.g. $LoadAddOns={\"FeynHelpers\"}. The value must be set before \
 loading FeynCalc. The default value is False.";
 
-$LoadPhi::usage =
-"$LoadPhi specifices whether PHI should be loaded together \
-with FeynCalc. Its value must be set before loading FeynCalc. \
-The default value is False.";
-
 $FCMemoryAvailable::usage =
 "$FCMemoryAvailable is  a global variable which is set to an integer \
 n, where n is the available amount of main memory in MB. \

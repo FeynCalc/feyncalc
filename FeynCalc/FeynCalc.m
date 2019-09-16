@@ -59,20 +59,19 @@ If[ !ValueQ[Global`$LoadAddOns],
 Remove[Global`$LoadAddOns];
 
 If[ ValueQ[Global`$LoadTARCER],
-	Print[Style["$LoadTARCER is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"TARCER\"} instead!",Red, Bold]];
+	(*Print[Style["$LoadTARCER is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"TARCER\"} instead!",Red, Bold]];*)
 	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"TARCER"}]
 ];
 Remove[Global`$LoadTARCER]
 
-If[ !ValueQ[Global`$LoadPhi],
-	(* Do not load Phi by default *)
-	FeynCalc`$LoadPhi = False,
-	FeynCalc`$LoadPhi = Global`$LoadPhi
+If[ ValueQ[Global`$LoadPhi],
+	(*Print[Style["$LoadPhi is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];*)
+	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"PHI"}]
 ];
-Remove[Global`$LoadPhi]
+Remove[Global`$LoadPHI];
 
 If[ ValueQ[Global`$LoadFeynArts],
-	Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];
+	(*Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];*)
 	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"FeynArtsLoader"}]
 ];
 Remove[Global`$LoadFeynArts];
@@ -300,24 +299,6 @@ If[ $FeynCalcStartupMessages =!= False,
 	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun., 64, 345-359, 1991.","Text"]]
 	];
 
-(* Load PHI... *)
-If[	$LoadPhi,
-	If[ $FeynCalcStartupMessages,
-		PrintTemporary[Style["Loading PHI from " <>  FileNameJoin[{$FeynCalcDirectory, "Phi"}], "Text"]];
-	];
-
-	If[Get[FileNameJoin[{$FeynCalcDirectory, "Phi","Phi.m"}]] =!=$Failed,
-		If[ $FeynCalcStartupMessages,
-			Print[	Style["PHI ", "Text", Bold],
-					Style[Phi`$PhiVersion <>", for examples visit ",
-						"Text"],
-					Style[DisplayForm@ButtonBox["www.feyncalc.org/phi.",	ButtonData :> {URL["http://www.feyncalc.org/phi/"], None},
-						BaseStyle -> "Hyperlink", ButtonNote -> "http://www.feyncalc.org/phi/"],"Text"]
-			]
-		],
-		Message[FeynCalc::phierror]
-	];
-];
 
 (* 	Some addons might need to add new stuff to the $ContextPath. While inside the
 	FeynCalc` path they obviously cannot do this by themselves. However, via
@@ -362,9 +343,7 @@ If[ $FCCheckContext,
 	Global`newObjectsInTheGlobalContext = Complement[Global`globalContextAfterLoadingFC, Global`globalContextBeforeLoadingFC]//
 		Complement[#,Global`whiteListedContextAdditions]&;
 
-
-
-	If[ (Global`fcContextLowerCase=!={} || Global`newObjectsInTheGlobalContext=!={}) && $LoadPhi=!=True,
+	If[ (Global`fcContextLowerCase=!={} || Global`newObjectsInTheGlobalContext=!={}) && FreeQ[FeynCalc`$LoadAddOns,{"PHI"}],
 		Message[FeynCalc::context];
 		If[	Global`fcContextLowerCase=!={},
 			Print["New lowercase objects in the FeynCalc context: ", Global`fcContextLowerCase]
