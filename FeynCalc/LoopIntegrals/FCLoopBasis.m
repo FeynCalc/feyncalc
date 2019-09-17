@@ -549,7 +549,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, dims, res, useToSFAD, integralBasis, integralBasisT,
 			coeffsPair, coeffsCartesianPair, coeffsTemporalPair,
-			lorentzianDims, cartesianDims},
+			lorentzianDims, cartesianDims, null1, null2, aux},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -592,7 +592,11 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 			Sort->False
 		];
 
+		FCPrint[3,"FCLoopBasisExtract: Integral basis from FCLoopBasisIntegralToPropagators: ", integralBasis, FCDoControl->fclbeVerbose];
+
 		integralBasis = Join[SelectNotFree[integralBasis,Pair,CartesianPair],SelectFree[integralBasis,Pair,CartesianPair]];
+
+		FCPrint[3,"FCLoopBasisExtract: Reshuffled integral basis: ", integralBasis, FCDoControl->fclbeVerbose];
 
 		integralBasisT = Transpose[integralBasis];
 
@@ -614,6 +618,8 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		];
 
 		basisElements = FCLoopBasisPropagatorsToTopology[integralBasisT[[1]],FCI->True,ExpandScalarProduct->True, DeleteDuplicates->False];
+
+		FCPrint[3,"FCLoopBasisExtract: Basis elements from FCLoopBasisPropagatorsToTopology: ", basisElements, FCDoControl->fclbeVerbose];
 
 		availableDims = Intersection[FCGetDimensions[basisElements],dims];
 
@@ -648,6 +654,15 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		If[	!FreeQ[expr,TemporalMomentum],
 			coeffs = Join[coeffs,coeffsTemporalPair]
 		];
+
+		(* 	Experimental: Sort of support propagators that are not linear in the loop momentum dependent
+			scalar poducts. We can count every f(sp(l1,x)) as a separate coefficient. This is not optimal,
+			but should mostly work. *)
+		aux = Flatten[List @@ (ExpandAll[#] + null1 + null2) & /@ basisElements /. null1 | null2 :> Unevaluated[Sequence[]]];
+		aux = Union[Map[SelectNotFree[#, lmoms] &, aux] //. {r___, 1, s___} :> {r, s}];
+		coeffs = Join[coeffs, Complement[aux,coeffs]];
+
+		FCPrint[3,"FCLoopBasisExtract: Loop momentum dependent coefficients: ", coeffs, FCDoControl->fclbeVerbose];
 
 		FCPrint[1,"FCLoopBasisExtract: Leaving.", FCDoControl->fclbeVerbose];
 
@@ -781,7 +796,8 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 	];
 
 FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose, dims, lmomSP, check},
+	Block[{	ex, vecs, ca, res, fclbVerbose, dims, lmomSP,
+			check, hRule, vecs12New, nlCoeffs},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -816,22 +832,14 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
-		If[	!FreeQ[vecs[[4]], GenericPropagatorDenominator],
-			(*
-				Once we need to deal with GFADs, there is no guarantee that the propagators are linear
-				in the loop-momentum dependent scalar products. So this has to be checked explicitly.
-			*)
-
-			check = Exponent[#, lmomSP] & /@ (vecs[[1]] /. (h:Pair|CartesianPair|TemporalPair)[a__] /; ! FreeQ2[{a}, lmoms] :> lmomSP h[a]);
-
-			If[	Select[check, (# >1) &]=!={},
-				Message[FCLoopBasisOverdeterminedQ::failmsg, "Propagators that are not linear in the loop-momentum dependent scalar products are not supported."];
-				Abort[]
-			]
-		];
-
 		(* Finally, convert all these polynomials into vectors ... *)
-		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
+
+		(* This is to make cases like Sqrt[CSPD[k]] work, otherwise CoefficientArrays would fail here.*)
+
+		nlCoeffs=Select[vecs[[2]], !MemberQ[{Pair, CartesianPair, TemporalPair}, Head[#]] &];
+		hRule = Map[Rule[#, Unique["caVar"]] &, nlCoeffs];
+		vecs12New = {vecs[[1]] //. hRule, Join[Complement[vecs[[2]],nlCoeffs],Last/@hRule]};
+		ca = Normal[CoefficientArrays@@vecs12New];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
 

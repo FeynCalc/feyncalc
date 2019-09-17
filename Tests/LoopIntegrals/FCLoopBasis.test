@@ -215,7 +215,18 @@ SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l}]", "True"},
 {"fcstFCLoopBasisOverdeterminedQ-ID42",
 "FCLoopBasisOverdeterminedQ[
 ExpandScalarProduct[
-SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l}]", "True"}
+SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID43",
+"FCLoopBasisOverdeterminedQ[
+GFAD[{p1.q p2.q + x}] SFAD[p1] SPD[p2, r]^2, {p1, p2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID44",
+"FCLoopBasisOverdeterminedQ[
+CFAD[{{-k + P, 0}, {0, -1},
+1}] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}], {k}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID45",
+"FCLoopBasisOverdeterminedQ[
+CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{-k + P, 0}, {0, -1},
+	1}] GFAD[{{EN - V0 - TC[k], 1}, 1}] TC[k], {k}]", "True"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisFindCompletion =
@@ -554,9 +565,9 @@ FCE -> True]",
 SPD[p2, p3], SPD[p3, p3]}, {1}, {SFAD[{{p1, 0}, {0, 1}, 1}]}}"},
 {"fcstFCLoopBasisExtract-ID11","FCLoopBasisExtract[
 GFAD[{p1.q p2.q + x}] SFAD[p1] SPD[p2, r]^2, {p1, p2}, FCE -> True]",
-"{{SPD[p2, r], x + p1.q p2.q, SPD[p1, p1]}, {SPD[p1, p1], SPD[p1, p2],
-SPD[p1, r], SPD[p2, p2], SPD[p2, r]}, {-2, 1, 1}, {SPD[p2, r],
-GFAD[{{x + p1.q p2.q, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}}"},
+"{{SPD[p2, r], x + p1 . q*p2 . q, SPD[p1, p1]}, {SPD[p1, p1], SPD[p1, p2],
+SPD[p1, r], SPD[p2, p2], SPD[p2, r], p1 . q*p2 . q}, {-2, 1, 1}, {SPD[p2, r],
+GFAD[{{x + p1 . q*p2 . q, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}}"},
 {"fcstFCLoopBasisExtract-ID12","FCLoopBasisExtract[
 FAD[q1, -k1 + q1, -k1 + q1, -k1 + q1,
 q2] (SPD[k1, k1] - SPD[q1, q1]) (-SPD[k1, k1] + SPD[q1, q1]), {q1,
@@ -586,7 +597,23 @@ GFAD[{{-x + TC[q], 1}, 1}]}}"},
 x)] SFAD[{{0, p.q}, x}], {q}, FCE -> True]",
 "{{-x + SPD[p, q], -x + TC[q], TC[q]}, {SP[p, q], SP[q, q], SPD[p, q],
 SPD[q, q], TC[q]}, {1, 1, -1}, {SFAD[{{0, p.q}, {x, 1}, 1}],
-GFAD[{{-x + TC[q], 1}, 1}], GFAD[{{TC[q], 1}, -1}]}}"}
+GFAD[{{-x + TC[q], 1}, 1}], GFAD[{{TC[q], 1}, -1}]}}"},
+{"fcstFCLoopBasisExtract-ID16","FCLoopBasisExtract[
+CFAD[{{-k + P, 0}, {0, -1}, 1}] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}], {k}, FCE -> True]",
+"{{EN - V0 + Sqrt[CSPD[k, k]],
+CSPD[k, k] - 2*CSPD[k, P] + CSPD[P, P]}, {CSPD[k, k], CSPD[k, P],
+Sqrt[CSPD[k, k]]}, {1,
+1}, {GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}],
+CFAD[{{-k + P, 0}, {0, -1}, 1}]}}"},
+{"fcstFCLoopBasisExtract-ID17","FCLoopBasisExtract[
+CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{-k + P, 0}, {0, -1},
+	1}] GFAD[{{EN - V0 - TC[k], 1}, 1}] TC[k], {k}, FCE -> True]",
+"{{EN - V0 - TC[k], CSPD[k, k] - TC[k]^2,
+CSPD[k, k] - 2 CSPD[k, P] + CSPD[P, P], TC[k]}, {CSPD[k, k],
+CSPD[k, P], TC[k], TC[k]^2}, {1, 1,
+1, -1}, {GFAD[{{EN - V0 - TC[k], 1}, 1}],
+CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}], CFAD[{{-k + P, 0}, {0, -1}, 1}],
+GFAD[{{TC[k], 1}, -1}]}}"}
 };
 
 Tests`LoopIntegrals`fcstFCLoopBasisGetSize =
