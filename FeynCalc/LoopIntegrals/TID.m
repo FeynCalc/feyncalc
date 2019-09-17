@@ -100,6 +100,10 @@ Options[TID] = {
 	UsePaVeBasis 							-> False
 };
 
+
+TID[am_ , {q_}, opts:OptionsPattern[]] :=
+	TID[am, q, opts]
+
 TID[am_ , q_, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
 		res,nres,irrelevant = 0, contractlabel, fds, iter,sp,tp,
@@ -577,7 +581,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		res
 
-	];
+	]/; Head[q]=!=List;
 
 tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 	Block[{ ex=int,res,rank,

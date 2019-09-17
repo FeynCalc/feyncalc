@@ -1101,5 +1101,7 @@ FCE -> True]","(DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (1/(
 {"fcstTID-ID52","TID[DCHN[GAD[mu].(-GSD[k] + me).GAD[nu], Dir3, Dir4] FAD[{k, me},
 k - q], k, FCE -> True]","(DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[{k, me}])/(
 2 SPD[q, q]) - (1/(2 SPD[q, q]))* FAD[k, {k - q, me}] (DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] (me^2 - SPD[q, q]) -
-2 me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] SPD[q, q] + 2 DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] SPD[q, q])"}
+2 me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] SPD[q, q] + 2 DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] SPD[q, q])"},
+{"fcstTID-ID52","TID[FVD[p, mu] FAD[p, p + q], {p}, FCE -> True]",
+"-(1/2) FAD[p, p - q] FVD[q, mu]"}
 };
