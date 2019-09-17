@@ -31,13 +31,26 @@ End[]
 
 Begin["`DiracSigmaExplicit`Private`"];
 
+dsiVerbose::usage="";
+
 Options[DiracSigmaExplicit] = {
-	FCE -> False,
-	FCI -> False
+	FCE 		-> False,
+	FCI 		-> False,
+	FCVerbose	-> False
 };
 
 DiracSigmaExplicit[expr_, OptionsPattern[]] :=
-	Block[{ex, res, holdDOT},
+	Block[{ex, res, holdDOT, tmp},
+
+		If [OptionValue[FCVerbose]===False,
+			dsiVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				dsiVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"DiracSigmaExplicit: Entering. ", FCDoControl->dsiVerbose];
+		FCPrint[3,"DiracSigmaExplicit: Entering DiracSigmaExplicit with: ", ex, FCDoControl->dsiVerbose];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -48,7 +61,9 @@ DiracSigmaExplicit[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		res = ex /. DOT->holdDOT //. {
+		tmp = ex /. DOT->holdDOT;
+
+		tmp = tmp  //. {
 			holdDOT[x___, c_. DiracSigma[DiracGamma[ExplicitLorentzIndex[0]], (a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])],y___]/; NonCommFreeQ[c] :>
 				I c (holdDOT[x,DiracGamma[ExplicitLorentzIndex[0]],a,y]),
 			holdDOT[x___, c_. DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]),DiracGamma[ExplicitLorentzIndex[0]]],y___]/; NonCommFreeQ[c] :>
@@ -56,15 +71,32 @@ DiracSigmaExplicit[expr_, OptionsPattern[]] :=
 			holdDOT[x___, c_. DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]), (b: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])],y___]/; NonCommFreeQ[c] :>
 				I c (holdDOT[x,a,b,y] + CartesianPair[First[a],First[b]] holdDOT[x,y])
 
-		} //. {
-			holdDOT[x___, c_. DiracSigma[a_DiracGamma,b_DiracGamma],y___]/; NonCommFreeQ[c] :> I/2 c (holdDOT[x,a,b,y] - holdDOT[x,b,a,y])
-		} //. {
+		};
+
+		FCPrint[3,"DiracSigmaExplicit: After applying the 1st set of rules: ", tmp, FCDoControl->dsiVerbose];
+
+		tmp = tmp //. {
 			DiracSigma[DiracGamma[ExplicitLorentzIndex[0]], (a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])] :> I holdDOT[DiracGamma[ExplicitLorentzIndex[0]], a],
 			DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]),DiracGamma[ExplicitLorentzIndex[0]]] :> - I holdDOT[DiracGamma[ExplicitLorentzIndex[0]], a],
 			DiracSigma[(a: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___]), (b: DiracGamma[(_CartesianIndex| _CartesianMomentum), ___])] :> I (holdDOT[a,b] + CartesianPair[First[a],First[b]])
-		}	//. {
+		};
+
+		FCPrint[3,"DiracSigmaExplicit: After applying the 2nd set of rules: ", tmp, FCDoControl->dsiVerbose];
+
+		tmp = tmp //. {
+			holdDOT[x___, c_. DiracSigma[a_DiracGamma,b_DiracGamma],y___]/; NonCommFreeQ[c] :> I/2 c (holdDOT[x,a,b,y] - holdDOT[x,b,a,y])
+		};
+
+
+		FCPrint[3,"DiracSigmaExplicit: After applying the 3rd set of rules: ", tmp, FCDoControl->dsiVerbose];
+
+		tmp = tmp //. {
 			DiracSigma[a_DiracGamma,b_DiracGamma]:> I/2 (DOT[a, b] - DOT[b, a])
 		} /. holdDOT->DOT;
+
+		FCPrint[3,"DiracSigmaExplicit: After applying the final set of rules: ", tmp, FCDoControl->dsiVerbose];
+
+		res = tmp;
 
 		If[	!FreeQ[res,DiracSigma],
 			Message[DiracSigmaExplicit::failmsg,"Failed to eliminate all occurences of DiracSigma."];
