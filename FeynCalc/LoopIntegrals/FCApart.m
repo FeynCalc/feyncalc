@@ -266,7 +266,8 @@ pfrac[inputVectorSet_List]:=
 
 pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 	Block[{	vectorSet,removalList,f,v,ca,M,expCounts,spIndices,
-			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos,tmpNS,tmp},
+			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos,tmpNS,tmp,
+			hRule, vectorSet12, nlCoeffs},
 
 		(*	We need to determine f_i and f from Eq. 10 in arXiv:1204.2314.
 		This can be done by computing the nullspace basis of the matrix M
@@ -297,7 +298,11 @@ pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 		];
 
 		(* Now we compute M and check linear independence of the propagators and scalar products*)
-		ca = Normal[CoefficientArrays@@(vectorSet[[1;;2]])];
+		nlCoeffs=Select[vectorSet[[2]], !MemberQ[{Pair, CartesianPair, TemporalPair}, Head[#]] &];
+		hRule = Map[Rule[#, Unique["caVar"]] &, nlCoeffs];
+		vectorSet12 = {vectorSet[[1]] //. hRule, Join[Complement[vectorSet[[2]],nlCoeffs],Last/@hRule]};
+
+		ca = Normal[CoefficientArrays@@(vectorSet12)];
 		M = Transpose[ca[[2]]];
 		tmpNS = Sort[NullSpace[M]];
 

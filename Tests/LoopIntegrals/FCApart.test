@@ -430,5 +430,18 @@ FCApart[SFAD[{{0, c1 + p1.Q}}] SFAD[{{0, c2 + p1.Q}}] SFAD[{{p1,
 	1}] SFAD[{{-p1 - p2 + Q, 0}, {0, 1},
 	1}] SFAD[{{-p1 - p2 - p3 + Q, 0}, {0, 1}, 1}], {p1, p2, p3},
 	FDS -> False]][[1]] < 1.5",
-"True"}
+"True"},
+{"fcstFCApart-ID54",
+"FCApart[CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}] CSPD[k,
+P]^2 GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}], {k}, FCE -> True]",
+"-(1/2) CFAD[{{k, 0}, {0, -1}, 1}] CSPD[k,
+P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
+1/2 CFAD[{{k - P, 0}, {0, -1}, 1}] CSPD[k,
+P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] -
+1/4 CFAD[{{k, 0}, {0, -1}, 1}] CSPD[P,
+P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
+1/4 CFAD[{{k - P, 0}, {0, -1}, 1}] CSPD[P,
+P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
+1/4 CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}] CSPD[P,
+P]^2 GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}]"}
 })
