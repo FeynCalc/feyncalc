@@ -187,9 +187,11 @@ ComplexConjugate[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			FCPrint[3,"ComplexConjugate: After FCRenameDummyIndices: ", ex, FCDoControl->ccjVerbose]
 		];
 
-		If[	optConjugate=!={} && Head[optConjugate]===List,
-			ruleConjugate= Thread[ru[optConjugate,Conjugate/@optConjugate]]/. ru->Rule;
-			res = res /. ruleConjugate
+		If[optConjugate=!={} && Head[optConjugate]===List,
+			res = res /. (Switch[#,
+				_Rule | _RuleDelayed, #,
+				_, # -> Conjugate[#]
+			] & /@ optConjugate)
 		];
 
 		If[	OptionValue[FCE],
