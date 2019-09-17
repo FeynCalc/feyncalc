@@ -62,13 +62,8 @@ Options[FCMultiLoopTID] = {
 };
 
 FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
-	Block[	{	n, ex, rest,loopInts,intsUnique, repRule,ruleUncontract,solsList,
-				null1, null2, res,  tmpli, time, mltidIsolate},
-
-		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-		];
+	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
+			null1, null2, res,  tmpli, time, mltidIsolate},
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -92,27 +87,18 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 
 		n = OptionValue[Dimension];
 
-		ruleUncontract = {
-			DiracGamma[Momentum[x_, dim_:4], dim_:4] /;!FreeQ2[x, qs] :>
-				(tmpli=Unique[];  Pair[Momentum[x,dim],LorentzIndex[tmpli,dim]] DiracGamma[LorentzIndex[tmpli,dim],dim]),
-			Eps[a___,Momentum[x_, dim_:4], b___] /;!FreeQ2[x, qs] :>
-				(tmpli=Unique[];  Pair[Momentum[x,dim],LorentzIndex[tmpli,dim]] Eps[a, LorentzIndex[tmpli,dim], b]),
-			Pair[Momentum[x_, dim_:4],Momentum[p_Polarization,dim_:4]] /;!FreeQ2[x, qs] :>
-				(tmpli=Unique[];  Pair[Momentum[x,dim],LorentzIndex[tmpli,dim]] Pair[Momentum[p,dim],LorentzIndex[tmpli,dim]])
-		};
-
 		If[ FreeQ2[ex,qs],
 			Return[ex]
 		];
 
-		If[	OptionValue[Contract] && !FreeQ[ex,LorentzIndex],
+		If[	OptionValue[Contract] && !FreeQ2[ex, {LorentzIndex, CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Applying Contract.", FCDoControl->mltidVerbose];
 			ex = Contract[ex, FCI->True];
 			FCPrint[1, "FCMultiLoopTID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		If[	!FreeQ2[Union[FCGetDimensions[ex/.DiracGamma[5|6|7]:>null1]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
+		If[	!FreeQ2[Union[FCGetDimensions[ex/.{DiracGamma[5|6|7]:>null1,TemporalPair[__]->Unique[]}, ChangeDimension->True]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 			Message[FCMultiLoopTID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
 			Abort[]
 		];
@@ -148,21 +134,23 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "FCMultiLoopTID: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3,"FCMultiLoopTID: After the expansion: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: After the expansion: ", ex, FCDoControl->mltidVerbose];
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Uncontracting Lorentz indices.", FCDoControl->mltidVerbose];
-		ex = ex//.ruleUncontract;
+
+
+		ex = Uncontract[ex, Sequence@@qs, Pair -> {Polarization}, CartesianPair-> {Polarization}, FCI->True];
 
 		If[	!FreeQ[ex,DiracChain],
 			ex = DiracChainFactor[ex,FCI->True]
 		];
 
 		FCPrint[1, "FCMultiLoopTID: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3,"FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
 
 		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ[ex,LorentzIndex],
 			time=AbsoluteTime[];
@@ -171,9 +159,15 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 				Pair[Momentum[q_,n-4],LorentzIndex[i_,n-4]]/; MemberQ[qs,q]:>
 					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli,n-4],LorentzIndex[i,n-4]]),
 				Pair[Momentum[q_],LorentzIndex[i_]]/; MemberQ[qs,q] :>
-					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli],LorentzIndex[i]])
+					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli],LorentzIndex[i]]),
+
+				CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[i_,n-4]]:>
+					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli,n-4],CartesianIndex[i,n-4]]),
+				CartesianPair[CartesianMomentum[q],CartesianIndex[i_]]:>
+					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli],CartesianIndex[i]])
 			};
-			If[ !FreeQ2[ex, {Pair[Momentum[q_/;MemberQ[qs,q], n-4],LorentzIndex[_,n-4]],Pair[Momentum[q_/;MemberQ[qs,q]],LorentzIndex[_]]}],
+			If[ !FreeQ2[ex, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]],
+					CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[_,n-4]],CartesianPair[CartesianMomentum[q],CartesianIndex[_]]}],
 				Message[FCMultiLoopTID::failmsg,"Failed to eliminate 4 and D-4 dimensional loop momenta."];
 				Abort[]
 			];
@@ -259,8 +253,24 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		res
 	];
 
+
 tidSingleIntegral[int_, qs_List , n_] :=
-	Block[{ ex=int,res,allmoms,extmoms,lmoms,lis,rest,umoms,gramZero=False,null1,null2
+	(
+	{num, den} = FCProductSplit[int, {FeynAmpDenominator}];
+	tmp= FCProductSplit[num, {ExplicitLorentzIndex[0]}];
+	(*Print[tmp[[2]]];*)
+	(*If[ MatchQ[tmp[[2]],HoldPattern[Times[TemporalPair[TemporalMomentum[_], ExplicitLorentzIndex[0]] ..]] | TemporalPair[TemporalMomentum[_], ExplicitLorentzIndex[0]]],*)
+		tmp[[2]] tidSingleIntegral[tmp[[1]] den,qs,n]
+	(*	Message[FCMultiLoopTID::failmsg,"tidSingleIntegral failed to split off the temporal components of the given loop integral"];
+		Abort[]*)
+
+
+	)/; !FreeQ[int /. _FeynAmpDenominator -> Unique[],ExplicitLorentzIndex[0]];
+
+
+tidSingleIntegral[int_, qs_List , n_] :=
+	Block[{ ex=int,res,allmoms,extmoms,lmoms,lis,rest,umoms,gramZero=False,
+			null1,null2, cis, umomsHead, tdecHead, tdecDim
 			},
 
 		FCPrint[2,"FCMultiLoopTID: tidSingleIntegral: Entering with ", ex, FCDoControl->mltidVerbose];
@@ -271,7 +281,7 @@ tidSingleIntegral[int_, qs_List , n_] :=
 		];
 
 		(* List of all the momenta that appear inside the integral *)
-		allmoms=Union[Cases[int+null1+null2,Momentum[x_,_:4]:>x,Infinity]];
+		allmoms=Union[Cases[int+null1+null2, (Momentum|CartesianMomentum)[x_,___]:>x,Infinity]];
 
 		(* Polarization vectors cannot appear in denominators, so we remove them from the list *)
 		allmoms = SelectFree[allmoms,Polarization];
@@ -283,52 +293,91 @@ tidSingleIntegral[int_, qs_List , n_] :=
 		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: External momenta: ", extmoms, FCDoControl->mltidVerbose];
 
 		lis = SelectNotFree[int*null1*null2, LorentzIndex]/.null1|null2->1;
-		rest = SelectFree[int*null1*null2, LorentzIndex]/.null1|null2->1;
+		cis = SelectNotFree[int*null1*null2, CartesianIndex]/.null1|null2->1;
+		rest = SelectFree[int*null1*null2, CartesianIndex, LorentzIndex]/.null1|null2->1;
 
-		(* Some cross-checks	*)
-		If[lis rest=!=int || !MatchQ[lis,HoldPattern[Times[Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ..]] | Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ],
-			Print[{lis,rest,int}];
-			Print[!MatchQ[lis,HoldPattern[Times[Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ..]] | Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ]];
-			Print[Union[Cases[lis,Momentum[q_,_:4]:>q,Infinity]]];
-			Print[lmoms];
-			Print[Union[Cases[lis,Momentum[q_,_:4]:>q,Infinity]]=!=lmoms];
-			Message[FCMultiLoopTID::failmsg,"tidSingleIntegral failed to extract the loop momenta with free Lorentz indices"];
-			Abort[];
+		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Lorentz indices: ", lis, FCDoControl->mltidVerbose];
+		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Cartesian indices: ", cis, FCDoControl->mltidVerbose];
+		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Rest: ", rest, FCDoControl->mltidVerbose];
+
+		Which[
+			lis=!=1 && cis===1,
+				tdecHead=Tdec;
+				tdecDim=n;
+				FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Lorentz branch.", FCDoControl->mltidVerbose];
+				(* Some cross-checks	*)
+				If[	lis rest=!=int || !MatchQ[lis,HoldPattern[Times[Pair[Momentum[_,  ___], LorentzIndex[_,  ___]] ..]] | Pair[Momentum[_,  ___], LorentzIndex[_,  ___]] ],
+					Message[FCMultiLoopTID::failmsg,"tidSingleIntegral failed to extract the loop momenta with free Lorentz indices"];
+					Abort[];
+				];
+
+				(* Create list of loop momenta and their Lorentz indices as used in Tdec *)
+				umoms = Sort[Cases[lis+null1+null2,Pair[Momentum[x_,n],LorentzIndex[li_,n]]:>{x,li},Infinity]];
+				(* Check the Gram determinant	*)
+				If[ extmoms=!={},
+					FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
+					If[	FCGramDeterminant[extmoms, Head -> {Pair, Momentum}, Dimension -> D]===0,
+						FCPrint[1, "FCMultiLoopTID: tidSingleIntegral: Zero Gram determinant detected!", FCDoControl->mltidVerbose];
+						gramZero=True
+					]
+				],
+			lis===1 && cis=!=1,
+				tdecHead=CTdec;
+				tdecDim=n-1;
+				FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Cartesian branch.", FCDoControl->mltidVerbose];
+				(* Some cross-checks	*)
+				If[cis rest=!=int  || !MatchQ[cis,HoldPattern[Times[CartesianPair[CartesianMomentum[_, ___], CartesianIndex[_, ___]] ..]] | CartesianPair[CartesianMomentum[_,  ___],
+						CartesianIndex[_, ___]] ],
+					(*Print[{lis,rest,int}];
+					Print[!MatchQ[lis,HoldPattern[Times[Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ..]] | Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ]];
+					Print[Union[Cases[lis,Momentum[q_,_:4]:>q,Infinity]]];
+					Print[lmoms];
+					Print[Union[Cases[lis,Momentum[q_,_:4]:>q,Infinity]]=!=lmoms];*)
+					Message[FCMultiLoopTID::failmsg,"tidSingleIntegral failed to extract the loop momenta with free Lorentz indices"];
+					Abort[];
+				];
+
+				(* Create list of loop momenta and their Lorentz indices as used in Tdec *)
+				umoms = Sort[Cases[cis+null1+null2,CartesianPair[CartesianMomentum[x_,n-1],CartesianIndex[ci_,n-1]]:>{x,ci},Infinity]];
+				(* Check the Gram determinant	*)
+				If[ extmoms=!={},
+					FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
+					If[	FCGramDeterminant[extmoms, Head -> {CartesianPair, CartesianMomentum}, Dimension -> D - 1]===0,
+						FCPrint[1, "FCMultiLoopTID: tidSingleIntegral: Zero Gram determinant detected!", FCDoControl->mltidVerbose];
+						gramZero=True
+					]
+				],
+
+			(*Nothing to do*)
+			lis===1 && cis===1,
+				Return[int],
+
+			True,
+				Message[FCMultiLoopTID::failmsg, "Tensor reduction of integrals with mixed Lorentz and Cartesian indices is currently not supported."];
+				Abort[]
+
 		];
 
-		(* Create list of loop momenta and their Lorentz indices as used in Tdec *)
-		umoms = Sort[Cases[lis+null1+null2,Pair[Momentum[x_,n],LorentzIndex[li_,n]]:>{x,li},Infinity]];
-
-		(* Check the Gram determinant	*)
-		If[ extmoms=!={},
-			FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
-			If[ExpandScalarProduct[Det[extmoms//Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->D], {i, 1, Length[#]}, {j, 1, Length[#]}] &], FCI->True]===0,
-				FCPrint[1, "FCMultiLoopTID: tidSingleIntegral: Zero Gram determinant detected!", FCDoControl->mltidVerbose];
-				gramZero=True
-			]
-		];
 
 		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Input for Tdec: ", {umoms,extmoms}, " ", FCDoControl->mltidVerbose];
-
 		(* 	If the Gram deterimnant vanishes, all we can do here is to rewrite the integral in terms of
 			some coefficient functions. From these GCF ("generalized coefficient functions") the user
 			can in principle reconstruct the original integral and thus compute them outside of	FeynCalc	*)
 		If[	gramZero,
-
 			If[	Length[qs]===1,
 				res = TID[int,First[qs],FCI->True],
 				Message[FCMultiLoopTID::gramzero];
-				res = Tdec[umoms,extmoms,List->False,FeynCalc`Package`BasisOnly -> True]/.
+				res = tdecHead[umoms,extmoms,List->False,FeynCalc`Package`BasisOnly -> True,Dimension->tdecDim]/.
 					FCGV["GCF"][x__,li_,pli_]:>FCGV["GCF"][x,Map[{ToString[#[[1]]],#[[2]]}&,li],pli,ToString[FCE@int,InputForm]]
 			],
-			res = Tdec[umoms,extmoms,List->False]*rest;
+			res = tdecHead[umoms,extmoms,List->False,Dimension->tdecDim]*rest;
 		];
 
 		(*TODO For large expression Isolate would be useful here *)
 
 		FCPrint[2,"FCMultiLoopTID: tidSingleIntegral: Leaving with ", res, FCDoControl->mltidVerbose];
 		res
-	];
+	]/; FreeQ[int /. _FeynAmpDenominator -> Unique[],ExplicitLorentzIndex[0]];
 
 FCPrint[1,"FCMultiLoopTID.m loaded."];
 End[]
