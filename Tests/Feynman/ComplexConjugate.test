@@ -113,5 +113,18 @@ GS[Polarization[p, I]].GA[7]*SDF[Col2, Col3])/(cosW*sinW)).Spinor[-Momentum[k2],
 4 I 2^(1/4) sinW Sqrt[cosW^2 GF mZ^2 sinW^2]
 	Spinor[-Momentum[k2], mq, 1].GA[7].GS[
 	Polarization[p, -I]].Spinor[Momentum[k1], mq, 1] SDF[Col2,
-	Col3])/(3 cosW))"}
+	Col3])/(3 cosW))"},
+{"fcstComplexConjugate-ID30",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{foo}]",
+	"rest*z*Conjugate[foo]*h[k, l]*y[a, b]"},
+{"fcstComplexConjugate-ID31",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{y[i_,j_\
+]\[RuleDelayed]yCC[i,j]}]", "foo*rest*z*h[k, l]*yCC[a, b]"},
+{"fcstComplexConjugate-ID32",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{z\
+\[Rule]-z}]", "-(foo*rest*z*h[k, l]*y[a, b])"},
+{"fcstComplexConjugate-ID33",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{foo,y[\
+i_,j_]\[RuleDelayed]yCC[i,j],z\[Rule]-z}]",
+"-(rest*z*Conjugate[foo]*h[k, l]*yCC[a, b])"}
 };

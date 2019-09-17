@@ -56,7 +56,7 @@ ComplexConjugate[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			prefList, diracList, sunList, pauliList,
 			prefHead, pauliHead, sunHead, diracHead,
 			prefListEval, diracListEval, sunListEval, pauliListEval,
-			repRule },
+			repRule, ccRules},
 
 		optConjugate	= OptionValue[Conjugate];
 
@@ -188,8 +188,11 @@ ComplexConjugate[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 		];
 
 		If[	optConjugate=!={} && Head[optConjugate]===List,
+
+			ccRules = Union[Cases[optConjugate, (Rule | RuleDelayed)[_, _]]];
+			optConjugate = Complement[optConjugate, ccRules];
 			ruleConjugate= Thread[ru[optConjugate,Conjugate/@optConjugate]]/. ru->Rule;
-			res = res /. ruleConjugate
+			res = res /. Join[ruleConjugate,ccRules]
 		];
 
 		If[	OptionValue[FCE],
