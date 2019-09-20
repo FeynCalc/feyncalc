@@ -73,6 +73,17 @@ option Dimension->d.\
 MetricTensor is a legacy symbol that might be removed in a future FeynCalc \
 version. For the user input shortcuts use MT or MTD instead.";
 
+$BreitMaison::usage =
+"$BreitMaison is a legacy switch for the Breitenlohner-Maison-t'Hooft-Veltman \
+scheme.  The modern way is to use FCSetDiracGammaScheme to specify \
+a scheme for handling Dirac matrices in dimensional regularization and \
+FCGetDiracGammaScheme to check the current setting.";
+
+$Larin::usage =
+"$Larin is a legacy switch for the Larin-Gorishny-Atkyampo-DelBurgo \
+scheme. The modern way is to use FCSetDiracGammaScheme to specify \
+a scheme for handling Dirac matrices in dimensional regularization and \
+FCGetDiracGammaScheme to check the current setting.";
 
 DiracMatrix::noint =
 "DiracMatrix[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
@@ -96,6 +107,9 @@ DeclareNonCommutative[ChiralityProjector];
 DeclareNonCommutative[DiracSpinor];
 DeclareNonCommutative[DiracMatrix];
 DeclareNonCommutative[DiracSlash];
+
+$BreitMaison = False;
+$Larin = False;
 
 Options[ChiralityProjector] = {FCI -> True};
 Options[DiracMatrix] = {Dimension -> 4, FCI -> True};
@@ -227,6 +241,43 @@ LeviCivita /:
 		ToBoxes[Eps[Sequence@@(LorentzIndex[#,OptionValue[LeviCivita,{opts1},Dimension]]&/@{x}),
 				Sequence@@(Momentum[#,OptionValue[LeviCivita,{opts2},Dimension]]&/@{y})],TraditionalForm]/;
 		Length[{x,y}] === 4 && !OptionValue[LeviCivita,{opts1,opts2},FCI];
+
+
+$BreitMaison /: Set[$BreitMaison, True] :=
+	(
+		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> True};
+		OwnValues[$Larin] = {HoldPattern[$Larin] :> False};
+		FCSetDiracGammaScheme["BMHV"];
+		True
+	);
+
+$BreitMaison /: Set[$BreitMaison, False] :=
+	(
+		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> False};
+		If[	TrueQ[$Larin === False],
+			FCSetDiracGammaScheme["NDR"],
+			FCSetDiracGammaScheme["Larin"]
+		];
+		False
+	);
+
+$Larin /: Set[$Larin, True] :=
+	(
+		OwnValues[$Larin] = {HoldPattern[$Larin] :> True};
+		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> False};
+		FCSetDiracGammaScheme["Larin"];
+		True
+	);
+
+$Larin /: Set[$Larin, False] :=
+	(
+		OwnValues[$Larin] = {HoldPattern[$Larin] :> False};
+		If[TrueQ[$BreitMaison === False],
+			FCSetDiracGammaScheme["NDR"],
+			FCSetDiracGammaScheme["BMHV"]
+		];
+		False
+	);
 
 
 FCPrint[1,"LegacyObjects loaded."];

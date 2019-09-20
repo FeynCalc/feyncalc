@@ -25,12 +25,6 @@ $AL::usage =
 "$AL is the head of dummy indices which may be introduced by \
 Uncontract.";
 
-$BreitMaison::usage =
-"$BreitMaison is a legacy switch for the Breitenlohner-Maison-t'Hooft-Veltman \
-scheme.  The modern way is to use FCSetDiracGammaScheme to specify \
-a scheme for handling Dirac matrices in dimensional regularization and \
-FCGetDiracGammaScheme to check the current setting.";
-
 $Containers::usage =
 "$FieldContainers is a set of heads over which FieldDerivative should
 distribute, in the following sense: Let c be a member of $Containers. Then
@@ -149,12 +143,6 @@ FeynCalc not to set 1-loop integrals of type 1/q^4 to zero. This is useful \
 when one has to explicitly distinguish between IR- and UV-divergences in \
 dimensional regularization. Notice that OneLoop is not guaranteed to respect this \
 option.";
-
-$Larin::usage =
-"$Larin is a legacy switch for the Larin-Gorishny-Atkyampo-DelBurgo \
-scheme. The modern way is to use FCSetDiracGammaScheme to specify \
-a scheme for handling Dirac matrices in dimensional regularization and \
-FCGetDiracGammaScheme to check the current setting.";
 
 $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines \
@@ -390,7 +378,7 @@ $Abbreviations = {
 	"\r" -> ""
 };
 
-$BreitMaison			= False;
+
 $Containers				= {};
 $DisableMemSet 			= False;
 $DistributiveFunctions	= {Conjugate, Transpose};
@@ -433,7 +421,6 @@ $FCS = {
 };
 
 $KeepLogDivergentScalelessIntegrals = False;
-$Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
 $LimitTo4IRUnsafe	= False;
@@ -559,43 +546,6 @@ TBox[a_] :=
 	ToBoxes[a, TraditionalForm];
 TBox[a_,b__] :=
 	RowBox @ Map[(ToBoxes @@ {#, TraditionalForm})&, {a, b}];
-
-
-$BreitMaison /: Set[$BreitMaison, True] :=
-	(
-		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> True};
-		OwnValues[$Larin] = {HoldPattern[$Larin] :> False};
-		FCSetDiracGammaScheme["BMHV"];
-		True
-	);
-
-$BreitMaison /: Set[$BreitMaison, False] :=
-	(
-		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> False};
-		If[	TrueQ[$Larin === False],
-			FCSetDiracGammaScheme["NDR"],
-			FCSetDiracGammaScheme["Larin"]
-		];
-		False
-	);
-
-$Larin /: Set[$Larin, True] :=
-	(
-		OwnValues[$Larin] = {HoldPattern[$Larin] :> True};
-		OwnValues[$BreitMaison] = {HoldPattern[$BreitMaison] :> False};
-		FCSetDiracGammaScheme["Larin"];
-		True
-	);
-
-$Larin /: Set[$Larin, False] :=
-	(
-		OwnValues[$Larin] = {HoldPattern[$Larin] :> False};
-		If[TrueQ[$BreitMaison === False],
-			FCSetDiracGammaScheme["NDR"],
-			FCSetDiracGammaScheme["BMHV"]
-		];
-		False
-	);
 
 
 FCPrint[1,"FCMain loaded."];
