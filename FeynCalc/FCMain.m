@@ -291,16 +291,27 @@ the treatment of the fifth Dirac matrix g^5, which is not well-defined \
 in dimensional regularization. Following schemes are supported: \
 
 \"NDR\" - This is the default value. In the naive dimensional regularization \
-(also known as CDR) g^5 is assumed to anticommute with all Dirac matrices in D \
-dimensions. Traces that contain an odd number of Dirac matrices are not well-defined \
-in this scheme and will remain unevaluated. \n
+(also known as conventional dimensional regularization or CDR) g^5 is assumed \
+to anticommute with all Dirac matrices in D dimensions. Hence, every Dirac trace \
+can be rewritten in such a way, that it contains either just one or not a single g^5 \
+matrix. The latter traces are obviously unambiguous. The traces with one g^5 are \
+not well-defined in this scheme. It usually depends on the physics of the process, \
+whether and how they can contribute to the final result. Therefore, FeynCalc will \
+keep such traces unevaluated, leaving it to the user to decide how to treat them.
+Notice that traces with with an odd number of the usual Dirac matrices and one g^5,
+that vanish in 4 dimensions, will be also put to zero in this scheme.\n
+
+\"NDR-Discard\" - This is a special version of the NDR scheme. The Dirac algebra is
+evaluated in the same way as with \"NDR\", but the remaining traces with one g^5
+are put to zero. This assumes that such traces do not contribute to the final result,
+which is obviously true only for specific calculations.\n
 
 \"BMHV\" - The Breitenlohner-Maison extension of the t'Hooft-Veltman scheme. This \
 scheme introduces Dirac and Lorentz tensors living in 4, D or D-4 dimensions, while \
 g^5 is a purely 4-dimensional object. BMHV is algebraically consistent but often \
 suffers from nonconservation of currents in the final results. The conservation must \
 be then enfornced by introducing finite counter-terms. The counter-terms are to be \
-supplied by the users, FeynCalc does not do this automatically.
+supplied by the user, since FeynCalc does not do this automatically.\n
 
 \"Larin\" - Special prescription developed by Larin, also known as the \
 Larin-Gorishny-Atkyampo-DelBurgo scheme. Essentially, it is a shortcut \
@@ -320,7 +331,7 @@ if this scheme works for more than one fermion line involving gamma5. \
 When in doubt, it might be better to use BMHV instead.";
 
 FCGetDiracGammaScheme::usage =
-"FCGetDiracGammaScheme[] shows the currently used scheme for handling Dirac
+"FCGetDiracGammaScheme[] shows the currently used scheme for handling Dirac \
 matrices in D dimensions.";
 
 FCSetPauliSigmaScheme::usage =
@@ -486,7 +497,7 @@ FCDisableTraditionalFormOutput[]:=
 
 
 FCSetDiracGammaScheme[s_String]:=
-	If[	MatchQ[s,"NDR"|"BMHV"|"Larin"],
+	If[	MatchQ[s,"NDR"|"NDR-Drop"|"BMHV"|"Larin"],
 		FeynCalc`Package`DiracGammaScheme = s,
 		Message[FeynCalc::failmsg, "Unknown scheme for Dirac matrices in D dimensions."];
 		Abort[]

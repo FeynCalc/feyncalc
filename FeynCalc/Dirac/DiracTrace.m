@@ -358,20 +358,23 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 
 			(*	Choice of the scheme for D-dimensional g^5	*)
 			If[	!FreeQ[traceListChiral,spurHead],
-				Which[
+				Switch[FeynCalc`Package`DiracGammaScheme,
 
 					(*	NDR	*)
-					(FeynCalc`Package`DiracGammaScheme === "NDR"),
-						Message[DiracTrace::ndranomaly];
+					"NDR",
 						traceListChiral = traceListChiral/. spurHead -> noSpur,
 
+					(*	NDR-Discard	*)
+					"NDR-Drop",
+						traceListChiral = ConstantArray[0, Length[traceListChiral]],
+
 					(*	Larin	*)
-					(FeynCalc`Package`DiracGammaScheme === "Larin"),
+					"Larin",
 						FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral traces will be computed using Larin's scheme", FCDoControl->diTrVerbose];
 						traceListChiral = traceListChiral/. spurHead -> spur5Larin,
 
 					(*	BMHV	*)
-					(FeynCalc`Package`DiracGammaScheme === "BMHV"),
+					"BMHV",
 						If[	west,
 							(* BMHV, West's trace formula *)
 							traceListChiral = traceListChiral/. spurHead -> spur5BMHVWest,
@@ -380,7 +383,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 						],
 
 					(* unknown scheme *)
-					True,
+					_,
 						Message[DiracTrace::failmsg, "Unknown scheme for handling Dirac matrices in dimensional regularization."];
 						Abort[]
 				]

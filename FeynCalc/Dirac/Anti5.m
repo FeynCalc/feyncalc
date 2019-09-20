@@ -91,11 +91,11 @@ Anti5[xx_, n_] :=
 
 			(* Naive scheme, D dimensions, move gamma^5 to the right *)
 			HoldDOT[a___, DiracGamma[5], DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				d_Symbol], d_Symbol], b___]/; (n===1) && (FeynCalc`Package`DiracGammaScheme === "NDR") :>
+				d_Symbol], d_Symbol], b___]/; (n===1) && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] :>
 					-HoldDOT[a, DiracGamma[y[x, d], d], DiracGamma[5],b],
 
 			HoldDOT[a___, DiracGamma[5], DiracGamma[(y: CartesianIndex | CartesianMomentum)[x_,
-				d_Symbol-1], d_Symbol], b___]/; (n===1) && (FeynCalc`Package`DiracGammaScheme === "NDR") :>
+				d_Symbol-1], d_Symbol], b___]/; (n===1) && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] :>
 					-HoldDOT[a, DiracGamma[y[x, d-1], d], DiracGamma[5],b],
 
 			(* BMHV scheme, D dimensions, move gamma^5 to the right *)
@@ -121,11 +121,11 @@ Anti5[xx_, n_] :=
 
 			(* Naive scheme, D dimensions, move gamma^5 to the left *)
 			HoldDOT[a___, DiracGamma[(y: LorentzIndex | ExplicitLorentzIndex | Momentum)[x_,
-				d_Symbol], d_Symbol], DiracGamma[5], b___]/; (n===-1) && (FeynCalc`Package`DiracGammaScheme === "NDR") :>
+				d_Symbol], d_Symbol], DiracGamma[5], b___]/; (n===-1) && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] :>
 					-HoldDOT[a, DiracGamma[5], DiracGamma[y[x, d], d], b],
 
 			HoldDOT[a___, DiracGamma[(y: CartesianIndex | CartesianMomentum)[x_,
-				d_Symbol-1], d_Symbol], DiracGamma[5], b___]/; (n===-1) && (FeynCalc`Package`DiracGammaScheme === "NDR") :>
+				d_Symbol-1], d_Symbol], DiracGamma[5], b___]/; (n===-1) && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] :>
 					-HoldDOT[a, DiracGamma[5], DiracGamma[y[x, d-1], d], b],
 
 			(* BMHV scheme, D dimensions, move gamma^5 to the left *)
