@@ -433,7 +433,7 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 		diracTrickEvalCachedBMHV[ex],
 		(* Else *)
 		True,
-		Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+		Message[DiracTrace::mixmsg];
 		Abort[]
 	];
 
@@ -565,7 +565,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
-						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+						Message[DiracTrace::mixmsg];
 						Abort[]
 			];
 
@@ -612,7 +612,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
-						Message[DiracTrick::failmsg,"Incorrect combination of dimensions and g^5 scheme!"];
+						Message[DiracTrace::mixmsg];
 						Abort[]
 		];
 		FCPrint[2, "DiracTrick: diracTrickEval: Done with simplifications unrelated to g^5.", FCDoControl->diTrVerbose];

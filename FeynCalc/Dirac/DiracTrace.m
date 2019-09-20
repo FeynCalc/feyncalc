@@ -23,20 +23,16 @@ the option DiracTraceEvaluate is set to True. It is recommended to use \
 DiracSimplify, which will automatically evaluate all Dirac traces in the \
 input expression.";
 
-DiracTrace::noncom =
-"Wrong syntax! The Dirac trace of `1` contains Dirac matrices multiplied via \
-Times (commutative multiplication) instead of DOT (non-commutative multiplication). \
-Evaluation aborted!";
-
-DiracTrace::ndranomaly =
-"You are using naive dimensional regularization (NDR), such that in D dimensions \
-gamma^5 anticommutes with all other Dirac matrices. In this scheme \
-(without additional prescriptions) it is not possible to compute traces with an \
-odd number of gamma^5 unambiguously. Evaluation aborted!";
-
 DiracTrace::failmsg =
 "Error! DiracTrace has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
+
+DiracTrace::mixmsg = "Expressions that mix D-, 4- and D-4-dimensional quantities are forbidden \
+in Dirac matrix chains unless you are using the t'Hooft-Veltman scheme. For every other scheme, please \
+recheck your input expressions and ensure that all matrices, spinors and tensors are purely \
+D-dimensional. You might want to use FCGetDimensions[exp] to find the offending terms and fix them \
+by hand or ChangeDimension[exp,D] to convert the whole expression to D-dimensions. If you explicitly \
+intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\"BMHV\"]."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -282,7 +278,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 				tmp = tmp /. spurHead[x__]/;(FCGetDimensions[{x},ChangeDimension->True]==={4})-> orderSpurHead[x];
 
 				If[	!FreeQ[tmp,orderSpurHead],
-					Message[DiracTrace::failmsg,"Lexicographical sorting inside Dirac traces failed."];
+					Message[DiracTrace::failmsg,"Sorting matrices inside Dirac traces failed."];
 					Abort[]
 				];
 
@@ -327,7 +323,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			If [ (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 				Scan[
 					If[	Length[FCGetDimensions[#/.DiracGamma[5]->1,ChangeDimension->True]]=!=1,
-						Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in this g^5 scheme."];
+						Message[DiracTrace::mixmsg];
 						Abort[]
 					]&, spurHeadListChiral
 				]
@@ -647,7 +643,7 @@ spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 	Block[{li1,li2,li3, res},
 		{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"larLia","larLib","larLic"}];
 		If[ FCGetDimensions[{x},ChangeDimension->True]=!={dim},
-			Message[DiracTrace::failmsg, "Traces with mixed dimensions are forbidden in Larin's scheme."];
+			Message[DiracTrace::mixmsg];
 			Abort[]
 		];
 		res = I/6 leviCivitaSign Eps[y[[1]], li1, li2, li3] spurNo5[x,DiracGamma[li1,dim],DiracGamma[li2,dim],	DiracGamma[li3,dim]];
