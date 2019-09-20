@@ -166,7 +166,9 @@ Spinor[-Momentum[p2, D], QGMassQ, 1] . GSD[Polarization[k2, -I]] .
 GSD[k1] . GSD[Polarization[k1, -I]] . Spinor[Momentum[p1, D], QGMassQ,
 1] + 2*Spinor[-Momentum[p2, D], QGMassQ, 1] .
 GSD[Polarization[k2, -I]] . Spinor[Momentum[p1, D], QGMassQ, 1]*
-SPD[p1, Polarization[k1, -I]]"}
+SPD[p1, Polarization[k1, -I]]"},
+{"fcstDiracSimplify-ID38","DiracSimplify[DiracTrace[GAD[al, be].GA[5].GAD[mu, nu]] DiracTrace[
+GAD[al, be, mu, nu]]]","0"}
 };
 
 

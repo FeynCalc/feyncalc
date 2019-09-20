@@ -43,12 +43,14 @@ optDiracGammaCombine::usage="";
 optDiracSubstitute67::usage="";
 optDiracSubstitute5::usage="";
 optDiracSigmaExplicit::usage="";
+optDiracTraceEvaluate::usage="";
 optDiracEquation::usage="";
 optDiracOrder::usage="";
 optFactoring::usage="";
 optEpsContract::usage="";
 optContract::usage="";
 optToDiracGamma67::usage="";
+
 
 Options[DiracSimplify] = {
 	Contract			-> True,
@@ -96,6 +98,7 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
 		optDiracSubstitute5		= OptionValue[DiracSubstitute5];
 		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
+		optDiracTraceEvaluate   = OptionValue[DiracTraceEvaluate];
 		optEpsContract			= OptionValue[EpsContract];
 		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
 		optExpanding  			= OptionValue[Expanding];
@@ -156,13 +159,16 @@ DiracSimplify[expr_, OptionsPattern[]] :=
 			diracObjectsEval = diracObjects;
 			FCPrint[3,"DiracSimplify: diracObjects: ", diracObjects , FCDoControl->dsVerbose];
 
-			If[ OptionValue[DiracTraceEvaluate],
+			If[ optDiracTraceEvaluate,
 				time=AbsoluteTime[];
 				FCPrint[1, "DiracSimplify: Calculating Dirac traces.", FCDoControl->dsVerbose];
 				diracObjectsEval = diracObjectsEval /. DiracTrace[zz_, opts:OptionsPattern[]] :> DiracTrace[zz,
 					DiracTraceEvaluate->True, Expand-> optExpandScalarProduct, opts];
 				FCPrint[1, "DiracSimplify: Done calculating Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjects , FCDoControl->dsVerbose]
+				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjectsEval , FCDoControl->dsVerbose];
+
+				diracObjectsEval
+
 
 			];
 
@@ -317,6 +323,16 @@ diracSimplifyEval[expr_]:=
 			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCDiracIsolate->False, ToDiracGamma67->optToDiracGamma67];
 			FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose]
+		];
+
+		(*
+			This is mainly relevant for products of traces when using NDR, so that despite of
+			DiracTraceEvaluate->True we may end up with unevaluated traces here, like with
+			DiracSimplify[DiracTrace[GAD[al, be, mu, nu, 5]] DiracTrace[GAD[al, be, mu, nu]]]
+		*)
+		If[ !FreeQ[tmp, DiracTrace] && optDiracTraceEvaluate,
+			tmp = tmp /. DiracTrace[z_, o:OptionsPattern[]] :> DiracTrace[z,
+					DiracTraceEvaluate->True, Expand-> optExpandScalarProduct, o];
 		];
 
 		(*	Expansion of Dirac slashes	*)
