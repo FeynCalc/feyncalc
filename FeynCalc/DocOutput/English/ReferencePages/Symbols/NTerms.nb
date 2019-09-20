@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9411,        325]
-NotebookOptionsPosition[      5720,        207]
-NotebookOutlinePosition[      8407,        285]
-CellTagsIndexPosition[      8299,        279]
+NotebookDataLength[      9401,        325]
+NotebookOptionsPosition[      5718,        207]
+NotebookOutlinePosition[      8399,        285]
+CellTagsIndexPosition[      8291,        279]
 WindowTitle->NTerms
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$195881], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$189486], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/NTerms",
              ".html"]], None}]}]},
@@ -119,7 +119,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1623122921],
+ CellID->1000666128],
 
 Cell[CellGroupData[{
 
@@ -129,7 +129,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1171313318],
+ CellID->11728774],
 
 Cell[CellGroupData[{
 
@@ -142,7 +142,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["2", TraditionalForm]], "Output",
- ImageSize->{12, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"NTerms",
@@ -194,7 +194,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"NTerms",
@@ -220,7 +220,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 51, 39.063026}", 
+   "built" -> "{2019, 9, 20, 21, 16, 27.030671}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -232,7 +232,7 @@ returns 1, except NTerms[0] -> 0.", "synonyms" -> {}, "tabletags" -> {},
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/NTerms"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -241,7 +241,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -252,81 +252,81 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3597, 106, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1623122921]},
+   CellID->1000666128]},
  "NTerms"->{
-  Cell[4231, 135, 147, 5, 27, "Input",
+  Cell[4229, 135, 147, 5, 27, "Input",
    CellTags->"NTerms",
    CellID->1306328315],
-  Cell[4381, 142, 187, 6, 35, "Output",
+  Cell[4379, 142, 187, 6, 35, "Output",
    CellTags->"NTerms"],
-  Cell[4605, 153, 157, 5, 27, "Input",
+  Cell[4603, 153, 157, 5, 27, "Input",
    CellTags->"NTerms",
    CellID->1734949005],
-  Cell[4765, 160, 187, 6, 35, "Output",
+  Cell[4763, 160, 187, 6, 35, "Output",
    CellTags->"NTerms"],
-  Cell[4989, 171, 124, 4, 27, "Input",
+  Cell[4987, 171, 124, 4, 27, "Input",
    CellTags->"NTerms",
    CellID->2035037256],
-  Cell[5116, 177, 187, 6, 35, "Output",
+  Cell[5114, 177, 187, 6, 35, "Output",
    CellTags->"NTerms"],
-  Cell[5340, 188, 124, 4, 27, "Input",
+  Cell[5338, 188, 124, 4, 27, "Input",
    CellTags->"NTerms",
    CellID->1695654423],
-  Cell[5467, 194, 187, 6, 35, "Output",
+  Cell[5465, 194, 187, 6, 35, "Output",
    CellTags->"NTerms"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7541, 251},
- {"NTerms", 7675, 255}
+ {"PrimaryExamplesSection", 7533, 251},
+ {"NTerms", 7667, 255}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2265, 53, 50, "AnchorBarGrid",
+Cell[578, 21, 2265, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2846, 76, 283, 11, 44, "ObjectNameGrid"],
-Cell[3132, 89, 440, 13, 83, "Usage",
+Cell[2846, 76, 283, 11, 45, "ObjectNameGrid"],
+Cell[3132, 89, 440, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[3597, 106, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1623122921],
+ CellID->1000666128],
 Cell[CellGroupData[{
-Cell[4010, 125, 196, 6, 25, "ExampleSection",
- CellID->1171313318],
+Cell[4010, 125, 194, 6, 26, "ExampleSection",
+ CellID->11728774],
 Cell[CellGroupData[{
-Cell[4231, 135, 147, 5, 27, "Input",
+Cell[4229, 135, 147, 5, 27, "Input",
  CellTags->"NTerms",
  CellID->1306328315],
-Cell[4381, 142, 187, 6, 35, "Output",
+Cell[4379, 142, 187, 6, 35, "Output",
  CellTags->"NTerms"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4605, 153, 157, 5, 27, "Input",
+Cell[4603, 153, 157, 5, 27, "Input",
  CellTags->"NTerms",
  CellID->1734949005],
-Cell[4765, 160, 187, 6, 35, "Output",
+Cell[4763, 160, 187, 6, 35, "Output",
  CellTags->"NTerms"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4989, 171, 124, 4, 27, "Input",
+Cell[4987, 171, 124, 4, 27, "Input",
  CellTags->"NTerms",
  CellID->2035037256],
-Cell[5116, 177, 187, 6, 35, "Output",
+Cell[5114, 177, 187, 6, 35, "Output",
  CellTags->"NTerms"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5340, 188, 124, 4, 27, "Input",
+Cell[5338, 188, 124, 4, 27, "Input",
  CellTags->"NTerms",
  CellID->1695654423],
-Cell[5467, 194, 187, 6, 35, "Output",
+Cell[5465, 194, 187, 6, 35, "Output",
  CellTags->"NTerms"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5693, 205, 23, 0, 40, "FooterCell"]
+Cell[5691, 205, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

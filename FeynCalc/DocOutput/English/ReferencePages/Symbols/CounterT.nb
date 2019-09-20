@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13858,        459]
+NotebookDataLength[     13853,        459]
 NotebookOptionsPosition[     10918,        372]
-NotebookOutlinePosition[     13167,        434]
-CellTagsIndexPosition[     13055,        428]
+NotebookOutlinePosition[     13162,        434]
+CellTagsIndexPosition[     13050,        428]
 WindowTitle->CounterT
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49031], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47648], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CounterT", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1489451875],
+ CellID->2085010219],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1189793411],
+ CellID->1667962718],
 
 Cell[CellGroupData[{
 
@@ -319,7 +319,7 @@ Cell[BoxData[
         FeynCalc`Momentum[$CellContext`p, D]]],
       Editable->False]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{418, 168},
+ ImageSize->{424, 176},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CounterT",
@@ -385,7 +385,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 46, 5.592400}", 
+   "built" -> "{2019, 9, 20, 21, 10, 59.441996}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -396,7 +396,7 @@ CounterTerms is set to All.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "CounterT", "titlemodifier" -> "", "windowtitle" -> "CounterT", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/CounterT"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -405,7 +405,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -416,40 +416,40 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4520, 130, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1489451875]},
+   CellID->2085010219]},
  "CounterT"->{
   Cell[5154, 159, 302, 7, 27, "Input",
    CellTags->"CounterT",
    CellID->505594925],
-  Cell[5459, 168, 4493, 157, 189, "Output",
+  Cell[5459, 168, 4493, 157, 197, "Output",
    CellTags->"CounterT"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12738, 415},
- {"CounterT", 12874, 419}
+ {"PrimaryExamplesSection", 12733, 415},
+ {"CounterT", 12869, 419}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 3223, 78, 50, "AnchorBarGrid",
+Cell[580, 21, 3223, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3806, 101, 285, 11, 44, "ObjectNameGrid"],
-Cell[4094, 114, 401, 12, 83, "Usage",
+Cell[3806, 101, 285, 11, 45, "ObjectNameGrid"],
+Cell[4094, 114, 401, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4520, 130, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1489451875],
+ CellID->2085010219],
 Cell[CellGroupData[{
-Cell[4933, 149, 196, 6, 25, "ExampleSection",
- CellID->1189793411],
+Cell[4933, 149, 196, 6, 26, "ExampleSection",
+ CellID->1667962718],
 Cell[CellGroupData[{
 Cell[5154, 159, 302, 7, 27, "Input",
  CellTags->"CounterT",
  CellID->505594925],
-Cell[5459, 168, 4493, 157, 189, "Output",
+Cell[5459, 168, 4493, 157, 197, "Output",
  CellTags->"CounterT"]
 }, Open  ]]
 }, Open  ]],
@@ -458,9 +458,9 @@ Cell[9979, 329, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[10047, 334, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10320, 348, 556, 19, 55, "SeeAlso"]
+Cell[10320, 348, 556, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10891, 370, 23, 0, 40, "FooterCell"]
+Cell[10891, 370, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

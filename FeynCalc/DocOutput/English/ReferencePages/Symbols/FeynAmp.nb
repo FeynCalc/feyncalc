@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15684,        550]
+NotebookDataLength[     15679,        550]
 NotebookOptionsPosition[     11948,        437]
-NotebookOutlinePosition[     14454,        506]
-CellTagsIndexPosition[     14343,        500]
+NotebookOutlinePosition[     14448,        506]
+CellTagsIndexPosition[     14337,        500]
 WindowTitle->FeynAmp
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$135654], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$131933], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynAmp", ".html"]], None}]}]},
@@ -152,7 +152,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1526308529],
+ CellID->1140647488],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -181,7 +181,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1796560382],
+ CellID->1230155241],
 
 Cell[CellGroupData[{
 
@@ -191,7 +191,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1601196995],
+ CellID->1515323567],
 
 Cell["\<\
 This is a 1-loop gluon self-energy amplitude (ignoring factors of (2 \[Pi])).\
@@ -369,7 +369,7 @@ Cell[BoxData[
        RowBox[{"p", "-", "q"}],
        TraditionalForm], ")"}]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{435, 68},
+ ImageSize->{449, 69},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FeynAmp",
@@ -396,7 +396,7 @@ Cell[BoxData[
     SubscriptBox["q", "1"], ",", 
     SubscriptBox["q", "2"], ",", "anyexpression"}], ")"}], 
   TraditionalForm]], "Output",
- ImageSize->{205, 17},
+ ImageSize->{203, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FeynAmp",
@@ -450,7 +450,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 49, 28.550579}", 
+   "built" -> "{2019, 9, 20, 21, 14, 21.681714}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -463,7 +463,7 @@ variable. FeynAmp[q1, q2, amp] denotes a two-loop amplitude.",
     "titlemodifier" -> "", "windowtitle" -> "FeynAmp", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/FeynAmp"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -472,7 +472,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -483,12 +483,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5461, 168, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1796560382]},
+   CellID->1230155241]},
  "FeynAmp"->{
   Cell[6202, 202, 864, 23, 45, "Input",
    CellTags->"FeynAmp",
    CellID->772375685],
-  Cell[7069, 227, 3647, 148, 89, "Output",
+  Cell[7069, 227, 3647, 148, 90, "Output",
    CellTags->"FeynAmp"],
   Cell[10808, 382, 217, 7, 27, "Input",
    CellTags->"FeynAmp",
@@ -499,43 +499,43 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13874, 482},
- {"FeynAmp", 14009, 486}
+ {"PrimaryExamplesSection", 13868, 482},
+ {"FeynAmp", 14003, 486}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 3000, 74, 50, "AnchorBarGrid",
+Cell[579, 21, 3000, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3582, 97, 284, 11, 44, "ObjectNameGrid"],
+Cell[3582, 97, 284, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3891, 112, 555, 14, 99, "Usage",
+Cell[3891, 112, 555, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4471, 130, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1526308529],
+ CellID->1140647488],
 Cell[5213, 156, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5247, 158, 165, 4, 47, "Notes",
+Cell[5247, 158, 165, 4, 49, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5461, 168, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1796560382],
+ CellID->1230155241],
 Cell[CellGroupData[{
-Cell[5874, 187, 196, 6, 25, "ExampleSection",
- CellID->1601196995],
-Cell[6073, 195, 104, 3, 31, "Notes"],
+Cell[5874, 187, 196, 6, 26, "ExampleSection",
+ CellID->1515323567],
+Cell[6073, 195, 104, 3, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[6202, 202, 864, 23, 45, "Input",
  CellTags->"FeynAmp",
  CellID->772375685],
-Cell[7069, 227, 3647, 148, 89, "Output",
+Cell[7069, 227, 3647, 148, 90, "Output",
  CellTags->"FeynAmp"]
 }, Open  ]],
-Cell[10731, 378, 52, 0, 31, "Notes"],
+Cell[10731, 378, 52, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[10808, 382, 217, 7, 27, "Input",
  CellTags->"FeynAmp",
@@ -549,7 +549,7 @@ Cell[11375, 406, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[11443, 411, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11716, 425, 190, 7, 55, "SeeAlso"]
+Cell[11716, 425, 190, 7, 56, "SeeAlso"]
 }, Open  ]],
 Cell[11921, 435, 23, 0, 70, "FooterCell"]
 }

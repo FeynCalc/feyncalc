@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16433,        586]
-NotebookOptionsPosition[     12555,        463]
-NotebookOutlinePosition[     15225,        540]
-CellTagsIndexPosition[     15115,        534]
+NotebookDataLength[     16481,        587]
+NotebookOptionsPosition[     12554,        463]
+NotebookOutlinePosition[     15274,        541]
+CellTagsIndexPosition[     15164,        535]
 WindowTitle->OPESum
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$202785], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$196078], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OPESum", ".html"]], None}]}]},
@@ -145,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1377013460],
+ CellID->220876284],
 
 Cell[CellGroupData[{
 
@@ -155,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->320803576],
+ CellID->153098435],
 
 Cell[CellGroupData[{
 
@@ -206,7 +206,7 @@ Cell[BoxData[
         FormBox["p",
          TraditionalForm]}], ")"}], "i"]}]}],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{200, 46},
+ ImageSize->{197, 46},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESum",
@@ -280,7 +280,7 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["p",
        TraditionalForm]}]}]]}], TraditionalForm]], "Output",
- ImageSize->{190, 41},
+ ImageSize->{196, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESum",
@@ -336,7 +336,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"-", "j"}], "+", "m", "-", "4"}]]}],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{225, 48},
+ ImageSize->{221, 48},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESum",
@@ -416,7 +416,7 @@ Cell[BoxData[
       RowBox[{"a", "-", "c"}], ")"}], " ", 
      RowBox[{"(", 
       RowBox[{"b", "-", "c"}], ")"}]}]]}], TraditionalForm]], "Output",
- ImageSize->{518, 90},
+ ImageSize->{521, 90},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPESum",
@@ -476,7 +476,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 51, 53.714768}", 
+   "built" -> "{2019, 9, 20, 21, 16, 41.078802}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -487,7 +487,7 @@ for Sum.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "OPESum",
     "titlemodifier" -> "", "windowtitle" -> "OPESum", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/OPESum"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -495,8 +495,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -505,89 +506,89 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4523, 132, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4523, 132, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1377013460]},
+   CellID->220876284]},
  "OPESum"->{
-  Cell[5156, 161, 442, 15, 27, "Input",
+  Cell[5155, 161, 442, 15, 27, "Input",
    CellTags->"OPESum",
    CellID->448625968],
-  Cell[5601, 178, 940, 34, 67, "Output",
+  Cell[5600, 178, 940, 34, 67, "Output",
    CellTags->"OPESum"],
-  Cell[6578, 217, 131, 4, 27, "Input",
+  Cell[6577, 217, 131, 4, 27, "Input",
    CellTags->"OPESum",
    CellID->575960405],
-  Cell[6712, 223, 1689, 63, 62, "Output",
+  Cell[6711, 223, 1689, 63, 62, "Output",
    CellTags->"OPESum"],
-  Cell[8438, 291, 547, 19, 27, "Input",
+  Cell[8437, 291, 547, 19, 27, "Input",
    CellTags->"OPESum",
    CellID->934947616],
-  Cell[8988, 312, 779, 30, 69, "Output",
+  Cell[8987, 312, 779, 30, 69, "Output",
    CellTags->"OPESum"],
-  Cell[9804, 347, 132, 4, 27, "Input",
+  Cell[9803, 347, 132, 4, 27, "Input",
    CellTags->"OPESum",
    CellID->1712949576],
-  Cell[9939, 353, 1824, 69, 111, "Output",
+  Cell[9938, 353, 1824, 69, 111, "Output",
    CellTags->"OPESum"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14351, 506},
- {"OPESum", 14485, 510}
+ {"PrimaryExamplesSection", 14401, 507},
+ {"OPESum", 14534, 511}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 3112, 76, 50, "AnchorBarGrid",
+Cell[578, 21, 3112, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3693, 99, 283, 11, 44, "ObjectNameGrid"],
-Cell[3979, 112, 519, 16, 83, "Usage",
+Cell[3693, 99, 283, 11, 45, "ObjectNameGrid"],
+Cell[3979, 112, 519, 16, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4523, 132, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4523, 132, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1377013460],
+ CellID->220876284],
 Cell[CellGroupData[{
-Cell[4936, 151, 195, 6, 25, "ExampleSection",
- CellID->320803576],
+Cell[4935, 151, 195, 6, 26, "ExampleSection",
+ CellID->153098435],
 Cell[CellGroupData[{
-Cell[5156, 161, 442, 15, 27, "Input",
+Cell[5155, 161, 442, 15, 27, "Input",
  CellTags->"OPESum",
  CellID->448625968],
-Cell[5601, 178, 940, 34, 67, "Output",
+Cell[5600, 178, 940, 34, 67, "Output",
  CellTags->"OPESum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6578, 217, 131, 4, 27, "Input",
+Cell[6577, 217, 131, 4, 27, "Input",
  CellTags->"OPESum",
  CellID->575960405],
-Cell[6712, 223, 1689, 63, 62, "Output",
+Cell[6711, 223, 1689, 63, 62, "Output",
  CellTags->"OPESum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8438, 291, 547, 19, 27, "Input",
+Cell[8437, 291, 547, 19, 27, "Input",
  CellTags->"OPESum",
  CellID->934947616],
-Cell[8988, 312, 779, 30, 69, "Output",
+Cell[8987, 312, 779, 30, 69, "Output",
  CellTags->"OPESum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9804, 347, 132, 4, 27, "Input",
+Cell[9803, 347, 132, 4, 27, "Input",
  CellTags->"OPESum",
  CellID->1712949576],
-Cell[9939, 353, 1824, 69, 111, "Output",
+Cell[9938, 353, 1824, 69, 111, "Output",
  CellTags->"OPESum"]
 }, Open  ]]
 }, Open  ]],
-Cell[11790, 426, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11789, 426, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11858, 431, 270, 12, 70, "SeeAlsoSection",
+Cell[11857, 431, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12131, 445, 382, 13, 70, "SeeAlso"]
+Cell[12130, 445, 382, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[12528, 461, 23, 0, 70, "FooterCell"]
+Cell[12527, 461, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

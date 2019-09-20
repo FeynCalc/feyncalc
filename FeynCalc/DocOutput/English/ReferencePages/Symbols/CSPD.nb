@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19279,        730]
-NotebookOptionsPosition[     13704,        540]
-NotebookOutlinePosition[     17237,        647]
-CellTagsIndexPosition[     17130,        641]
+NotebookDataLength[     19333,        731]
+NotebookOptionsPosition[     13705,        540]
+NotebookOutlinePosition[     17290,        648]
+CellTagsIndexPosition[     17183,        642]
 WindowTitle->CSPD
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$53741], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52156], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/CSPD", 
              ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->411371197],
+ CellID->1766898313],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->116879859],
+ CellID->816333041],
 
 Cell[CellGroupData[{
 
@@ -204,7 +204,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm], "2"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{74, 18},
+ ImageSize->{78, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -268,7 +268,7 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{143, 16},
+ ImageSize->{147, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -327,7 +327,7 @@ Cell[BoxData[
        FontWeight->Bold],
       TraditionalForm],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
- ImageSize->{132, 18},
+ ImageSize->{138, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -384,7 +384,7 @@ Cell[BoxData[
        FontWeight->Bold],
       TraditionalForm],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
- ImageSize->{144, 18},
+ ImageSize->{150, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -405,7 +405,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"CSPD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
- ImageSize->{83, 15},
+ ImageSize->{87, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -436,7 +436,7 @@ Cell[BoxData[
     RowBox[{"b", ",", 
      RowBox[{
       RowBox[{"-", "1"}], "+", "D"}]}], "]"}]}], "]"}]], "Output",
- ImageSize->{571, 15},
+ ImageSize->{575, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -460,7 +460,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"CSPD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
- ImageSize->{83, 15},
+ ImageSize->{87, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -485,7 +485,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"CSPD", "[", 
   RowBox[{"p", ",", "q"}], "]"}]], "Output",
- ImageSize->{83, 15},
+ ImageSize->{87, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SPD",
@@ -553,7 +553,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 46, 16.587024}", 
+   "built" -> "{2019, 9, 20, 21, 11, 10.436777}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -566,7 +566,7 @@ D-1]] by FeynCalcInternal. CSPD[p] is the same as CSPD[p,p] (= p^2).",
     "", "windowtitle" -> "CSPD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/CSPD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -574,8 +574,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -584,154 +585,154 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4745, 136, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4745, 136, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->411371197]},
+   CellID->1766898313]},
  "SPD"->{
-  Cell[5377, 165, 207, 7, 27, "Input",
+  Cell[5378, 165, 207, 7, 27, "Input",
    CellTags->"SPD",
    CellID->1779475118],
-  Cell[5587, 174, 856, 37, 39, "Output",
+  Cell[5588, 174, 856, 37, 39, "Output",
    CellTags->"SPD",
    CellID->410944412],
-  Cell[6480, 216, 209, 8, 27, "Input",
+  Cell[6481, 216, 209, 8, 27, "Input",
    CellTags->"SPD",
    CellID->437622958],
-  Cell[6692, 226, 1146, 49, 37, "Output",
+  Cell[6693, 226, 1146, 49, 37, "Output",
    CellTags->"SPD",
    CellID->1423636699],
-  Cell[7875, 280, 255, 9, 27, "Input",
+  Cell[7876, 280, 255, 9, 27, "Input",
    CellTags->"SPD",
    CellID->1031117972],
-  Cell[8133, 291, 1011, 43, 39, "Output",
+  Cell[8134, 291, 1011, 43, 39, "Output",
    CellTags->"SPD",
    CellID->415380754],
-  Cell[9181, 339, 187, 6, 27, "Input",
+  Cell[9182, 339, 187, 6, 27, "Input",
    CellTags->"SPD",
    CellID->87993462],
-  Cell[9371, 347, 1065, 44, 39, "Output",
+  Cell[9372, 347, 1065, 44, 39, "Output",
    CellTags->"SPD",
    CellID->1057353478],
-  Cell[10473, 396, 178, 6, 27, "Input",
+  Cell[10474, 396, 178, 6, 27, "Input",
    CellTags->"SPD",
    CellID->2034315321],
-  Cell[10654, 404, 244, 8, 49, "Output",
+  Cell[10655, 404, 244, 8, 51, "Output",
    CellTags->"SPD",
    CellID->1921630357],
-  Cell[10935, 417, 209, 8, 27, "Input",
+  Cell[10936, 417, 209, 8, 27, "Input",
    CellTags->"SPD",
    CellID->1917897688],
-  Cell[11147, 427, 489, 16, 49, "Output",
+  Cell[11148, 427, 489, 16, 51, "Output",
    CellTags->"SPD",
    CellID->739932073],
-  Cell[11673, 448, 237, 9, 27, "Input",
+  Cell[11674, 448, 237, 9, 27, "Input",
    CellTags->"SPD",
    CellID->980827421],
-  Cell[11913, 459, 243, 8, 49, "Output",
+  Cell[11914, 459, 243, 8, 51, "Output",
    CellTags->"SPD",
    CellID->942208087],
-  Cell[12193, 472, 289, 10, 27, "Input",
+  Cell[12194, 472, 289, 10, 27, "Input",
    CellTags->"SPD",
    CellID->1873446419],
-  Cell[12485, 484, 242, 8, 49, "Output",
+  Cell[12486, 484, 242, 8, 51, "Output",
    CellTags->"SPD",
    CellID->25387914]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15633, 585},
- {"SPD", 15763, 589}
+ {"PrimaryExamplesSection", 15685, 586},
+ {"SPD", 15816, 590}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 3193, 77, 50, "AnchorBarGrid",
+Cell[576, 21, 3193, 77, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3772, 100, 281, 11, 44, "ObjectNameGrid"],
-Cell[4056, 113, 664, 19, 115, "Usage",
+Cell[3772, 100, 281, 11, 45, "ObjectNameGrid"],
+Cell[4056, 113, 664, 19, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4745, 136, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4745, 136, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->411371197],
+ CellID->1766898313],
 Cell[CellGroupData[{
-Cell[5157, 155, 195, 6, 25, "ExampleSection",
- CellID->116879859],
+Cell[5158, 155, 195, 6, 26, "ExampleSection",
+ CellID->816333041],
 Cell[CellGroupData[{
-Cell[5377, 165, 207, 7, 27, "Input",
+Cell[5378, 165, 207, 7, 27, "Input",
  CellTags->"SPD",
  CellID->1779475118],
-Cell[5587, 174, 856, 37, 39, "Output",
+Cell[5588, 174, 856, 37, 39, "Output",
  CellTags->"SPD",
  CellID->410944412]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6480, 216, 209, 8, 27, "Input",
+Cell[6481, 216, 209, 8, 27, "Input",
  CellTags->"SPD",
  CellID->437622958],
-Cell[6692, 226, 1146, 49, 37, "Output",
+Cell[6693, 226, 1146, 49, 37, "Output",
  CellTags->"SPD",
  CellID->1423636699]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7875, 280, 255, 9, 27, "Input",
+Cell[7876, 280, 255, 9, 27, "Input",
  CellTags->"SPD",
  CellID->1031117972],
-Cell[8133, 291, 1011, 43, 39, "Output",
+Cell[8134, 291, 1011, 43, 39, "Output",
  CellTags->"SPD",
  CellID->415380754]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9181, 339, 187, 6, 27, "Input",
+Cell[9182, 339, 187, 6, 27, "Input",
  CellTags->"SPD",
  CellID->87993462],
-Cell[9371, 347, 1065, 44, 39, "Output",
+Cell[9372, 347, 1065, 44, 39, "Output",
  CellTags->"SPD",
  CellID->1057353478]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10473, 396, 178, 6, 27, "Input",
+Cell[10474, 396, 178, 6, 27, "Input",
  CellTags->"SPD",
  CellID->2034315321],
-Cell[10654, 404, 244, 8, 49, "Output",
+Cell[10655, 404, 244, 8, 51, "Output",
  CellTags->"SPD",
  CellID->1921630357]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10935, 417, 209, 8, 27, "Input",
+Cell[10936, 417, 209, 8, 27, "Input",
  CellTags->"SPD",
  CellID->1917897688],
-Cell[11147, 427, 489, 16, 49, "Output",
+Cell[11148, 427, 489, 16, 51, "Output",
  CellTags->"SPD",
  CellID->739932073]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11673, 448, 237, 9, 27, "Input",
+Cell[11674, 448, 237, 9, 27, "Input",
  CellTags->"SPD",
  CellID->980827421],
-Cell[11913, 459, 243, 8, 49, "Output",
+Cell[11914, 459, 243, 8, 51, "Output",
  CellTags->"SPD",
  CellID->942208087]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12193, 472, 289, 10, 27, "Input",
+Cell[12194, 472, 289, 10, 27, "Input",
  CellTags->"SPD",
  CellID->1873446419],
-Cell[12485, 484, 242, 8, 49, "Output",
+Cell[12486, 484, 242, 8, 51, "Output",
  CellTags->"SPD",
  CellID->25387914]
 }, Open  ]]
 }, Open  ]],
-Cell[12754, 496, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12755, 496, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12822, 501, 270, 12, 31, "SeeAlsoSection",
+Cell[12823, 501, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13095, 515, 567, 20, 55, "SeeAlso",
+Cell[13096, 515, 567, 20, 56, "SeeAlso",
  CellID->119070656]
 }, Open  ]],
-Cell[13677, 538, 23, 0, 40, "FooterCell"]
+Cell[13678, 538, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

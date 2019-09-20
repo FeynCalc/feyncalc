@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16625,        599]
-NotebookOptionsPosition[     11471,        431]
-NotebookOutlinePosition[     14579,        522]
-CellTagsIndexPosition[     14468,        516]
+NotebookDataLength[     16671,        600]
+NotebookOptionsPosition[     11470,        431]
+NotebookOutlinePosition[     14627,        523]
+CellTagsIndexPosition[     14516,        517]
 WindowTitle->Nielsen
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$193566], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$187277], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Nielsen", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1762978626],
+ CellID->1173843766],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -168,7 +168,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"PolyLog", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",\
 
- ImageSize->{118, 16},
+ ImageSize->{114, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Nielsen",
@@ -194,7 +194,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1943815133],
+ CellID->970853738],
 
 Cell[CellGroupData[{
 
@@ -204,7 +204,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1774152001],
+ CellID->1543565767],
 
 Cell[CellGroupData[{
 
@@ -226,7 +226,7 @@ Cell[BoxData[
       TraditionalForm]}]], "(", 
    FormBox["x",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{53, 17},
+ ImageSize->{51, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Nielsen",
@@ -290,7 +290,7 @@ Cell[BoxData[
       "Zeta"], "8"], ",", 
     TemplateBox[{"3"},
      "Zeta"]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{150, 34},
+ ImageSize->{151, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Nielsen",
@@ -326,7 +326,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
    TemplateBox[{"3"},
     "Zeta"]}], TraditionalForm]], "Output",
- ImageSize->{435, 35},
+ ImageSize->{430, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Nielsen",
@@ -369,7 +369,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
    FractionBox[
     SuperscriptBox["\[Pi]", "4"], "90"]}], TraditionalForm]], "Output",
- ImageSize->{347, 80},
+ ImageSize->{597, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Nielsen",
@@ -390,7 +390,7 @@ Cell[BoxData[
  FormBox[
   TemplateBox[{"4","x"},
    "PolyLog"], TraditionalForm]], "Output",
- ImageSize->{50, 16},
+ ImageSize->{48, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Nielsen",
@@ -431,8 +431,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Nielsen",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -444,7 +444,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 51, 33.515837}", 
+   "built" -> "{2019, 9, 20, 21, 16, 21.837240}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -454,7 +454,7 @@ TaggingRules->{
     "titlemodifier" -> "", "windowtitle" -> "Nielsen", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Nielsen"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -462,8 +462,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -472,68 +473,68 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Nielsen"->{
-  Cell[5143, 159, 131, 4, 27, "Input",
+  Cell[5143, 159, 131, 4, 70, "Input",
    CellTags->"Nielsen",
    CellID->393617069],
   Cell[5277, 165, 254, 9, 37, "Output",
    CellTags->"Nielsen"],
-  Cell[6226, 210, 159, 5, 27, "Input",
+  Cell[6225, 210, 159, 5, 27, "Input",
    CellTags->"Nielsen",
    CellID->1266057514],
-  Cell[6388, 217, 369, 15, 38, "Output",
+  Cell[6387, 217, 369, 15, 38, "Output",
    CellTags->"Nielsen"],
-  Cell[6952, 242, 190, 6, 27, "Input",
+  Cell[6951, 242, 190, 6, 27, "Input",
    CellTags->"Nielsen",
    CellID->1539557957],
-  Cell[7145, 250, 207, 6, 35, "Output",
+  Cell[7144, 250, 207, 6, 35, "Output",
    CellTags->"Nielsen"],
-  Cell[7442, 263, 485, 15, 45, "Input",
+  Cell[7441, 263, 485, 15, 27, "Input",
    CellTags->"Nielsen",
    CellID->1900952317],
-  Cell[7930, 280, 405, 16, 55, "Output",
+  Cell[7929, 280, 405, 16, 55, "Output",
    CellTags->"Nielsen"],
-  Cell[8372, 301, 208, 6, 27, "Input",
+  Cell[8371, 301, 208, 6, 27, "Input",
    CellTags->"Nielsen",
    CellID->1917228474],
-  Cell[8583, 309, 658, 23, 56, "Output",
+  Cell[8582, 309, 658, 23, 56, "Output",
    CellTags->"Nielsen"],
-  Cell[9278, 337, 208, 6, 27, "Input",
+  Cell[9277, 337, 208, 6, 27, "Input",
    CellTags->"Nielsen",
    CellID->2065085174],
-  Cell[9489, 345, 892, 30, 101, "Output",
+  Cell[9488, 345, 892, 30, 59, "Output",
    CellTags->"Nielsen"],
-  Cell[10418, 380, 208, 6, 27, "Input",
+  Cell[10417, 380, 208, 6, 27, "Input",
    CellTags->"Nielsen",
    CellID->1212916567],
-  Cell[10629, 388, 224, 8, 37, "Output",
+  Cell[10628, 388, 224, 8, 37, "Output",
    CellTags->"Nielsen"]},
  "PrimaryExamplesSection"->{
-  Cell[5592, 181, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5592, 181, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1943815133]}
+   CellID->970853738]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Nielsen", 13223, 473},
- {"PrimaryExamplesSection", 14324, 509}
+ {"Nielsen", 13273, 474},
+ {"PrimaryExamplesSection", 14373, 510}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 3012, 74, 50, "AnchorBarGrid",
+Cell[579, 21, 3012, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3594, 97, 284, 11, 44, "ObjectNameGrid"],
+Cell[3594, 97, 284, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3903, 112, 417, 13, 83, "Usage",
+Cell[3903, 112, 417, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4345, 129, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1762978626],
-Cell[5087, 155, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1173843766],
+Cell[5087, 155, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5143, 159, 131, 4, 27, "Input",
+Cell[5143, 159, 131, 4, 70, "Input",
  CellTags->"Nielsen",
  CellID->393617069],
 Cell[5277, 165, 254, 9, 37, "Output",
@@ -542,65 +543,65 @@ Cell[5277, 165, 254, 9, 37, "Output",
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5592, 181, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5592, 181, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1943815133],
+ CellID->970853738],
 Cell[CellGroupData[{
-Cell[6005, 200, 196, 6, 25, "ExampleSection",
- CellID->1774152001],
+Cell[6004, 200, 196, 6, 26, "ExampleSection",
+ CellID->1543565767],
 Cell[CellGroupData[{
-Cell[6226, 210, 159, 5, 27, "Input",
+Cell[6225, 210, 159, 5, 27, "Input",
  CellTags->"Nielsen",
  CellID->1266057514],
-Cell[6388, 217, 369, 15, 38, "Output",
+Cell[6387, 217, 369, 15, 38, "Output",
  CellTags->"Nielsen"]
 }, Open  ]],
-Cell[6772, 235, 155, 3, 47, "Notes"],
+Cell[6771, 235, 155, 3, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[6952, 242, 190, 6, 27, "Input",
+Cell[6951, 242, 190, 6, 27, "Input",
  CellTags->"Nielsen",
  CellID->1539557957],
-Cell[7145, 250, 207, 6, 35, "Output",
+Cell[7144, 250, 207, 6, 35, "Output",
  CellTags->"Nielsen"]
 }, Open  ]],
-Cell[7367, 259, 50, 0, 31, "Notes"],
+Cell[7366, 259, 50, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[7442, 263, 485, 15, 45, "Input",
+Cell[7441, 263, 485, 15, 27, "Input",
  CellTags->"Nielsen",
  CellID->1900952317],
-Cell[7930, 280, 405, 16, 55, "Output",
+Cell[7929, 280, 405, 16, 55, "Output",
  CellTags->"Nielsen"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8372, 301, 208, 6, 27, "Input",
+Cell[8371, 301, 208, 6, 27, "Input",
  CellTags->"Nielsen",
  CellID->1917228474],
-Cell[8583, 309, 658, 23, 56, "Output",
+Cell[8582, 309, 658, 23, 56, "Output",
  CellTags->"Nielsen"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9278, 337, 208, 6, 27, "Input",
+Cell[9277, 337, 208, 6, 27, "Input",
  CellTags->"Nielsen",
  CellID->2065085174],
-Cell[9489, 345, 892, 30, 101, "Output",
+Cell[9488, 345, 892, 30, 59, "Output",
  CellTags->"Nielsen"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10418, 380, 208, 6, 27, "Input",
+Cell[10417, 380, 208, 6, 27, "Input",
  CellTags->"Nielsen",
  CellID->1212916567],
-Cell[10629, 388, 224, 8, 37, "Output",
+Cell[10628, 388, 224, 8, 37, "Output",
  CellTags->"Nielsen"]
 }, Open  ]]
 }, Open  ]],
-Cell[10880, 400, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10879, 400, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10948, 405, 270, 12, 31, "SeeAlsoSection",
+Cell[10947, 405, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11221, 419, 208, 7, 55, "SeeAlso"]
+Cell[11220, 419, 208, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11444, 429, 23, 0, 40, "FooterCell"]
+Cell[11443, 429, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

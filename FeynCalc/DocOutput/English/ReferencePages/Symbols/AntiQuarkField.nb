@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9277,        299]
-NotebookOptionsPosition[      6235,        210]
-NotebookOutlinePosition[      8583,        274]
-CellTagsIndexPosition[      8467,        268]
+NotebookDataLength[      9328,        300]
+NotebookOptionsPosition[      6236,        210]
+NotebookOutlinePosition[      8632,        275]
+CellTagsIndexPosition[      8516,        269]
 WindowTitle->AntiQuarkField
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ AntiQuarkField.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23796], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23503], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/AntiQuarkField", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1577955620],
+ CellID->1867999607],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->536531587],
+ CellID->1959618874],
 
 Cell[CellGroupData[{
 
@@ -211,7 +211,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"AntiQuarkField",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -223,7 +223,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 5.678607}", 
+   "built" -> "{2019, 9, 20, 21, 9, 59.481319}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -236,7 +236,7 @@ a name with no functional properties. Only typesetting rules are attached.",
     "Symbol", "uri" -> "FeynCalc/ref/AntiQuarkField"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,8 +244,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -256,51 +257,51 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4490, 128, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1577955620]},
+   CellID->1867999607]},
  "AntiQuarkField"->{
-  Cell[5123, 157, 112, 3, 27, "Input",
+  Cell[5124, 157, 112, 3, 27, "Input",
    CellTags->"AntiQuarkField",
    CellID->820739788],
-  Cell[5238, 162, 223, 7, 37, "Output",
+  Cell[5239, 162, 223, 7, 37, "Output",
    CellTags->"AntiQuarkField"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8136, 255},
- {"AntiQuarkField", 8278, 259}
+ {"PrimaryExamplesSection", 8185, 256},
+ {"AntiQuarkField", 8327, 260}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 3132, 76, 50, "AnchorBarGrid",
+Cell[586, 21, 3132, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3721, 99, 291, 11, 44, "ObjectNameGrid"],
-Cell[4015, 112, 450, 12, 99, "Usage",
+Cell[3721, 99, 291, 11, 45, "ObjectNameGrid"],
+Cell[4015, 112, 450, 12, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4490, 128, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1577955620],
+ CellID->1867999607],
 Cell[CellGroupData[{
-Cell[4903, 147, 195, 6, 25, "ExampleSection",
- CellID->536531587],
+Cell[4903, 147, 196, 6, 26, "ExampleSection",
+ CellID->1959618874],
 Cell[CellGroupData[{
-Cell[5123, 157, 112, 3, 27, "Input",
+Cell[5124, 157, 112, 3, 27, "Input",
  CellTags->"AntiQuarkField",
  CellID->820739788],
-Cell[5238, 162, 223, 7, 37, "Output",
+Cell[5239, 162, 223, 7, 37, "Output",
  CellTags->"AntiQuarkField"]
 }, Open  ]]
 }, Open  ]],
-Cell[5488, 173, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5489, 173, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5556, 178, 270, 12, 31, "SeeAlsoSection",
+Cell[5557, 178, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5829, 192, 364, 13, 55, "SeeAlso"]
+Cell[5830, 192, 364, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6208, 208, 23, 0, 40, "FooterCell"]
+Cell[6209, 208, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14217,        495]
-NotebookOptionsPosition[     10385,        372]
-NotebookOutlinePosition[     13029,        449]
-CellTagsIndexPosition[     12921,        443]
+NotebookDataLength[     14266,        496]
+NotebookOptionsPosition[     10384,        372]
+NotebookOutlinePosition[     13079,        450]
+CellTagsIndexPosition[     12971,        444]
 WindowTitle->Hill
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166617], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161532], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Hill", 
              ".html"]], None}]}]},
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1865687893],
+ CellID->1365171321],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2100908396],
+ CellID->516378783],
 
 Cell[CellGroupData[{
 
@@ -234,7 +234,7 @@ Cell[BoxData[
     "PolyLog"], "-", 
    FractionBox[
     SuperscriptBox["\[Pi]", "2"], "6"]}], TraditionalForm]], "Output",
- ImageSize->{562, 128},
+ ImageSize->{571, 129},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Hill",
@@ -256,7 +256,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Hill",
@@ -308,7 +308,7 @@ Cell[BoxData[
     RowBox[{"log", "(", 
      RowBox[{"1", "-", "y"}], ")"}], " ", 
     RowBox[{"log", "(", "y", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{454, 61},
+ ImageSize->{439, 61},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Hill",
@@ -331,7 +331,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Hill",
@@ -385,7 +385,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 34.888629}", 
+   "built" -> "{2019, 9, 20, 21, 15, 25.602219}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -396,7 +396,7 @@ object is 0.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Hill",
     "titlemodifier" -> "", "windowtitle" -> "Hill", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Hill"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -404,8 +404,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -416,87 +417,87 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4335, 128, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1865687893]},
+   CellID->1365171321]},
  "Hill"->{
-  Cell[4969, 157, 142, 5, 27, "Input",
+  Cell[4968, 157, 142, 5, 27, "Input",
    CellTags->"Hill",
    CellID->921040788],
-  Cell[5114, 164, 2232, 76, 149, "Output",
+  Cell[5113, 164, 2232, 76, 150, "Output",
    CellTags->"Hill"],
-  Cell[7383, 245, 288, 9, 27, "Input",
+  Cell[7382, 245, 288, 9, 27, "Input",
    CellTags->"Hill",
    CellID->814240014],
-  Cell[7674, 256, 185, 6, 35, "Output",
+  Cell[7673, 256, 185, 6, 35, "Output",
    CellTags->"Hill"],
-  Cell[7896, 267, 280, 10, 27, "Input",
+  Cell[7895, 267, 280, 10, 27, "Input",
    CellTags->"Hill",
    CellID->209270855],
-  Cell[8179, 279, 1071, 35, 82, "Output",
+  Cell[8178, 279, 1071, 35, 82, "Output",
    CellTags->"Hill"],
-  Cell[9287, 319, 292, 10, 27, "Input",
+  Cell[9286, 319, 292, 10, 27, "Input",
    CellTags->"Hill",
    CellID->1494969413],
-  Cell[9582, 331, 185, 6, 35, "Output",
+  Cell[9581, 331, 185, 6, 35, "Output",
    CellTags->"Hill"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12177, 415},
- {"Hill", 12309, 419}
+ {"PrimaryExamplesSection", 12227, 416},
+ {"Hill", 12359, 420}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 3000, 74, 50, "AnchorBarGrid",
+Cell[576, 21, 3000, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3579, 97, 281, 11, 44, "ObjectNameGrid"],
-Cell[3863, 110, 447, 14, 83, "Usage",
+Cell[3579, 97, 281, 11, 45, "ObjectNameGrid"],
+Cell[3863, 110, 447, 14, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4335, 128, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1865687893],
+ CellID->1365171321],
 Cell[CellGroupData[{
-Cell[4748, 147, 196, 6, 25, "ExampleSection",
- CellID->2100908396],
+Cell[4748, 147, 195, 6, 26, "ExampleSection",
+ CellID->516378783],
 Cell[CellGroupData[{
-Cell[4969, 157, 142, 5, 27, "Input",
+Cell[4968, 157, 142, 5, 27, "Input",
  CellTags->"Hill",
  CellID->921040788],
-Cell[5114, 164, 2232, 76, 149, "Output",
+Cell[5113, 164, 2232, 76, 150, "Output",
  CellTags->"Hill"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7383, 245, 288, 9, 27, "Input",
+Cell[7382, 245, 288, 9, 27, "Input",
  CellTags->"Hill",
  CellID->814240014],
-Cell[7674, 256, 185, 6, 35, "Output",
+Cell[7673, 256, 185, 6, 35, "Output",
  CellTags->"Hill"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7896, 267, 280, 10, 27, "Input",
+Cell[7895, 267, 280, 10, 27, "Input",
  CellTags->"Hill",
  CellID->209270855],
-Cell[8179, 279, 1071, 35, 82, "Output",
+Cell[8178, 279, 1071, 35, 82, "Output",
  CellTags->"Hill"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9287, 319, 292, 10, 27, "Input",
+Cell[9286, 319, 292, 10, 27, "Input",
  CellTags->"Hill",
  CellID->1494969413],
-Cell[9582, 331, 185, 6, 35, "Output",
+Cell[9581, 331, 185, 6, 35, "Output",
  CellTags->"Hill"]
 }, Open  ]]
 }, Open  ]],
-Cell[9794, 341, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9793, 341, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9862, 346, 270, 12, 70, "SeeAlsoSection",
+Cell[9861, 346, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10135, 360, 208, 7, 70, "SeeAlso"]
+Cell[10134, 360, 208, 7, 70, "SeeAlso"]
 }, Open  ]],
-Cell[10358, 370, 23, 0, 70, "FooterCell"]
+Cell[10357, 370, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

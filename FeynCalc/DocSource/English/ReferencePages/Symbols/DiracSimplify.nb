@@ -364,7 +364,7 @@ Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[1]:=",
+ CellLabel->"In[137]:=",
  CellID->201005194],
 
 Cell[BoxData[
@@ -395,7 +395,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[1]="]
+ CellLabel->"Out[137]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -403,7 +403,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[2]:=",
+ CellLabel->"In[138]:=",
  CellID->28604534],
 
 Cell[BoxData[
@@ -417,7 +417,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[2]="]
+ CellLabel->"Out[138]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -438,7 +438,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"GS", "[", "p", "]"}], ".", 
   RowBox[{"GS", "[", "p", "]"}]}]], "Input",
- CellLabel->"In[3]:="],
+ CellLabel->"In[139]:="],
 
 Cell[BoxData[
  FormBox[
@@ -463,14 +463,14 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[3]="]
+ CellLabel->"Out[139]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[4]:="],
+ CellLabel->"In[140]:="],
 
 Cell[BoxData[
  FormBox[
@@ -480,7 +480,7 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- CellLabel->"Out[4]="]
+ CellLabel->"Out[140]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -507,7 +507,7 @@ Cell[BoxData[
   RowBox[{"GS", "[", 
    RowBox[{"c", "+", "d"}], "]"}], ".", 
   RowBox[{"GS", "[", "p", "]"}]}]], "Input",
- CellLabel->"In[5]:="],
+ CellLabel->"In[141]:="],
 
 Cell[BoxData[
  FormBox[
@@ -564,14 +564,14 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[5]="]
+ CellLabel->"Out[141]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[6]:="],
+ CellLabel->"In[142]:="],
 
 Cell[BoxData[
  FormBox[
@@ -800,7 +800,7 @@ Cell[BoxData[
          FormBox["d",
           TraditionalForm], "_"],
         TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[6]="]
+ CellLabel->"Out[142]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -814,7 +814,7 @@ Cell[BoxData[
    RowBox[{"GS", "[", 
     RowBox[{"c", "+", "d"}], "]"}], ".", 
    RowBox[{"GS", "[", "p", "]"}]}], "]"}]], "Input",
- CellLabel->"In[7]:="],
+ CellLabel->"In[143]:="],
 
 Cell[BoxData[
  FormBox[
@@ -903,7 +903,7 @@ Cell[BoxData[
             TraditionalForm], "_"]}],
          TraditionalForm],
         TraditionalForm], ")"}], ")"}]}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[7]="]
+ CellLabel->"Out[143]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -928,7 +928,7 @@ Cell[BoxData[
      RowBox[{"c", "+", "d"}], "]"}], ".", 
     RowBox[{"GS", "[", "p", "]"}]}], ",", 
    RowBox[{"Expanding", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[8]:="],
+ CellLabel->"In[144]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1027,7 +1027,7 @@ Cell[BoxData[
           FormBox["d",
            TraditionalForm], "_"],
          TraditionalForm]}]}], ")"}]}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[8]="]
+ CellLabel->"Out[144]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -1049,7 +1049,7 @@ Cell[BoxData[
  RowBox[{"GAD", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[9]:=",
+ CellLabel->"In[145]:=",
  CellID->149362799],
 
 Cell[BoxData[
@@ -1077,7 +1077,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[9]="]
+ CellLabel->"Out[145]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1085,7 +1085,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[10]:=",
+ CellLabel->"In[146]:=",
  CellID->1129253480],
 
 Cell[BoxData[
@@ -1104,7 +1104,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[10]="]
+ CellLabel->"Out[146]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1115,7 +1115,7 @@ Cell[BoxData[
   RowBox[{"GAD", "[", 
    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ".", 
   RowBox[{"GSD", "[", "p", "]"}]}]], "Input",
- CellLabel->"In[11]:="],
+ CellLabel->"In[147]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1150,14 +1150,14 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[11]="]
+ CellLabel->"Out[147]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[12]:="],
+ CellLabel->"In[148]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1223,7 +1223,7 @@ Cell[BoxData[
         FormBox["p",
          TraditionalForm],
         TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[12]="]
+ CellLabel->"Out[148]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1239,7 +1239,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"i", ",", "6"}], "}"}]}], "]"}], ",", 
     RowBox[{"{", "\[Mu]", "}"}]}], "]"}]}]], "Input",
- CellLabel->"In[13]:="],
+ CellLabel->"In[149]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1306,14 +1306,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[13]="]
+ CellLabel->"Out[149]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[14]:="],
+ CellLabel->"In[150]:="],
 
 Cell[BoxData[
  FormBox[
@@ -1965,7 +1965,7 @@ Cell[BoxData[
         SubscriptBox["\[Nu]", "6"],
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[14]="]
+ CellLabel->"Out[150]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1985,7 +1985,7 @@ Cell[BoxData[
       RowBox[{"v", ",", "\[Mu]"}], "]"}]}], ")"}]}], " ", 
   RowBox[{"FVD", "[", 
    RowBox[{"v", ",", "\[Mu]"}], "]"}]}]], "Input",
- CellLabel->"In[16]:="],
+ CellLabel->"In[151]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2039,18 +2039,18 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]],
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[16]="]
+ CellLabel->"Out[151]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[17]:="],
+ CellLabel->"In[152]:="],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- CellLabel->"Out[17]="]
+ CellLabel->"Out[152]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -2072,7 +2072,7 @@ Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[18]:=",
+ CellLabel->"In[153]:=",
  CellID->570896083],
 
 Cell[BoxData[
@@ -2101,14 +2101,14 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[18]="]
+ CellLabel->"Out[153]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[19]:="],
+ CellLabel->"In[154]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2129,7 +2129,7 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[19]="]
+ CellLabel->"Out[154]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2139,7 +2139,7 @@ Cell[BoxData[
   RowBox[{"GA", "[", "6", "]"}], ".", 
   RowBox[{"GS", "[", 
    RowBox[{"p", "+", "q"}], "]"}]}]], "Input",
- CellLabel->"In[20]:="],
+ CellLabel->"In[155]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2166,14 +2166,14 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], ")"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[20]="]
+ CellLabel->"Out[155]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[21]:="],
+ CellLabel->"In[156]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2204,7 +2204,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["7",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[21]="]
+ CellLabel->"Out[156]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -2246,7 +2246,7 @@ Cell[BoxData[
     RowBox[{"c4", " ", 
      RowBox[{"GA", "[", "7", "]"}]}]}], ")"}], ".", 
   RowBox[{"GA", "[", "\[Mu]", "]"}]}]], "Input",
- CellLabel->"In[22]:="],
+ CellLabel->"In[157]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2309,7 +2309,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[22]="]
+ CellLabel->"Out[157]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2351,7 +2351,7 @@ Cell[BoxData[
     RowBox[{"1", "/", "2"}], "+", 
     RowBox[{
      RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}]], "Input",
- CellLabel->"In[23]:="],
+ CellLabel->"In[158]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2395,14 +2395,14 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm], "2"], "+", 
      FractionBox["1", "2"]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[23]="]
+ CellLabel->"Out[158]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[24]:="],
+ CellLabel->"In[159]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2436,7 +2436,7 @@ Cell[BoxData[
       OverscriptBox["\[Gamma]", "_"], 
       FormBox["6",
        TraditionalForm]]}], "b"]}], TraditionalForm]], "Output",
- CellLabel->"Out[24]="]
+ CellLabel->"Out[159]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2479,7 +2479,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}], ",", 
    RowBox[{"ToDiracGamma67", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[25]:="],
+ CellLabel->"In[160]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2533,7 +2533,7 @@ Cell[BoxData[
       FormBox["5",
        TraditionalForm]]}], 
     RowBox[{"2", " ", "b"}]]}], TraditionalForm]], "Output",
- CellLabel->"Out[25]="]
+ CellLabel->"Out[160]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2586,7 +2586,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}], ",", 
    RowBox[{"DiracSubstitute67", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellLabel->"In[26]:="],
+ CellLabel->"In[161]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2640,7 +2640,7 @@ Cell[BoxData[
       FormBox["5",
        TraditionalForm]]}], 
     RowBox[{"2", " ", "b"}]]}], TraditionalForm]], "Output",
- CellLabel->"Out[26]="]
+ CellLabel->"Out[161]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2658,7 +2658,7 @@ Cell[BoxData[
    RowBox[{"GA", "[", 
     RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}], ",", 
    RowBox[{"DiracSubstitute5", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellLabel->"In[27]:="],
+ CellLabel->"In[162]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2697,7 +2697,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["7",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[27]="]
+ CellLabel->"Out[162]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -2728,7 +2728,7 @@ Cell[BoxData[
    RowBox[{
     SubscriptBox["p", "1"], ",", 
     SubscriptBox["m", "1"]}], "]"}]}]], "Input",
- CellLabel->"In[28]:="],
+ CellLabel->"In[163]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2765,14 +2765,14 @@ Cell[BoxData[
     FormBox[
      SubscriptBox["m", "1"],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[28]="]
+ CellLabel->"Out[163]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[29]:="],
+ CellLabel->"In[164]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2826,7 +2826,7 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[29]="]
+ CellLabel->"Out[164]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2836,7 +2836,7 @@ Cell[BoxData[
   RowBox[{"SpinorVBar", "[", "p", "]"}], " ", ".", " ", 
   RowBox[{"GS", "[", "p", "]"}], " ", ".", " ", 
   RowBox[{"SpinorU", "[", "q", "]"}]}]], "Input",
- CellLabel->"In[30]:="],
+ CellLabel->"In[165]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2858,18 +2858,18 @@ Cell[BoxData[
    RowBox[{"u", "(", 
     FormBox["q",
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[30]="]
+ CellLabel->"Out[165]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[31]:="],
+ CellLabel->"In[166]:="],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- CellLabel->"Out[31]="]
+ CellLabel->"Out[166]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2891,7 +2891,7 @@ Cell[BoxData[
     RowBox[{"GS", "[", "p", "]"}], " ", ".", " ", 
     RowBox[{"SpinorU", "[", "q", "]"}]}], ",", 
    RowBox[{"DiracEquation", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[32]:="],
+ CellLabel->"In[167]:="],
 
 Cell[BoxData[
  FormBox[
@@ -2931,7 +2931,7 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[32]="]
+ CellLabel->"Out[167]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -2973,7 +2973,7 @@ Cell[BoxData[
     RowBox[{
      SubscriptBox["p", "2"], ",", 
      SubscriptBox["m", "2"]}], "]"}]}]}]], "Input",
- CellLabel->"In[33]:="],
+ CellLabel->"In[168]:="],
 
 Cell[BoxData[
  FormBox[
@@ -3070,14 +3070,14 @@ Cell[BoxData[
      FormBox[
       SubscriptBox["m", "2"],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[33]="]
+ CellLabel->"Out[168]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[34]:="],
+ CellLabel->"In[169]:="],
 
 Cell[BoxData[
  FormBox[
@@ -3120,7 +3120,7 @@ Cell[BoxData[
     SuperscriptBox[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
-      FormBox["liS46",
+      FormBox["liS98",
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3177,7 +3177,7 @@ Cell[BoxData[
     SuperscriptBox[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
-      FormBox["liS46",
+      FormBox["liS98",
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3207,7 +3207,7 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[34]="]
+ CellLabel->"Out[169]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3251,7 +3251,7 @@ Cell[BoxData[
        SubscriptBox["p", "2"], ",", 
        SubscriptBox["m", "2"]}], "]"}]}]}], ",", 
    RowBox[{"SirlinSimplify", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[35]:="],
+ CellLabel->"In[170]:="],
 
 Cell[BoxData[
  FormBox[
@@ -3284,7 +3284,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li471\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li991\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3297,7 +3297,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li472\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li992\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3355,7 +3355,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li471\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li991\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3368,7 +3368,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li472\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li992\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3398,7 +3398,7 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[35]="]
+ CellLabel->"Out[170]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3463,7 +3463,7 @@ Cell[BoxData[
      RowBox[{
       SubscriptBox["p", "2"], ",", 
       SubscriptBox["m", "2"]}], "]"}]}]}]}]], "Input",
- CellLabel->"In[36]:="],
+ CellLabel->"In[171]:="],
 
 Cell[BoxData[
  FormBox[
@@ -3654,7 +3654,7 @@ Cell[BoxData[
       FormBox[
        SubscriptBox["m", "2"],
        TraditionalForm], ")"}]}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[36]="]
+ CellLabel->"Out[171]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3665,7 +3665,7 @@ Cell[BoxData[
    RowBox[{"%", ",", 
     RowBox[{"SirlinSimplify", "\[Rule]", "False"}]}], "]"}], "//", 
   "Factor"}]], "Input",
- CellLabel->"In[37]:="],
+ CellLabel->"In[172]:="],
 
 Cell[BoxData[
  FormBox[
@@ -3700,7 +3700,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li531\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li1061\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3713,7 +3713,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li532\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li1062\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3771,7 +3771,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li531\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li1061\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3784,7 +3784,7 @@ Cell[BoxData[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox[
       FormBox[
-       RowBox[{"FCGV", "(", "\<\"li532\"\>", ")"}],
+       RowBox[{"FCGV", "(", "\<\"li1062\"\>", ")"}],
        TraditionalForm],
       TraditionalForm]], ".", 
     SuperscriptBox[
@@ -3814,7 +3814,7 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[37]="]
+ CellLabel->"Out[172]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3884,7 +3884,7 @@ Cell[BoxData[
         SubscriptBox["m", "2"]}], "]"}]}]}]}], ",", 
    RowBox[{"SirlinSimplify", "\[Rule]", "False"}], ",", 
    RowBox[{"SpinorChainTrick", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[38]:="],
+ CellLabel->"In[173]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4167,7 +4167,7 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\<\")\"\>",
         TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[38]="]
+ CellLabel->"Out[173]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -4197,7 +4197,7 @@ Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
   RowBox[{"GA", "[", 
    RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}], "]"}]], "Input",
- CellLabel->"In[3]:="],
+ CellLabel->"In[174]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4214,7 +4214,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[3]="]
+ CellLabel->"Out[174]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4226,7 +4226,7 @@ Cell[BoxData[
     RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}], ",", 
    RowBox[{"DiracOrder", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"DiracSimplify",
- CellLabel->"In[4]:=",
+ CellLabel->"In[175]:=",
  CellID->990886795],
 
 Cell[BoxData[
@@ -4258,7 +4258,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"DiracSimplify",
- CellLabel->"Out[4]="]
+ CellLabel->"Out[175]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -4281,7 +4281,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}]], "Input",
- CellLabel->"In[41]:="],
+ CellLabel->"In[176]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4310,7 +4310,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[41]="]
+ CellLabel->"Out[176]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4319,11 +4319,11 @@ Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
   RowBox[{"%", ",", 
    RowBox[{"InsideDiracTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellLabel->"In[42]:="],
+ CellLabel->"In[177]:="],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- CellLabel->"Out[42]="]
+ CellLabel->"Out[177]="]
 }, Open  ]],
 
 Cell["Yet, it will not explicitly calculate the trace", "Notes"],
@@ -4334,7 +4334,7 @@ Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
- CellLabel->"In[43]:="],
+ CellLabel->"In[178]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4371,7 +4371,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[43]="]
+ CellLabel->"Out[178]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4380,7 +4380,7 @@ Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
   RowBox[{"%", ",", 
    RowBox[{"InsideDiracTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellLabel->"In[44]:="],
+ CellLabel->"In[179]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4409,7 +4409,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[44]="]
+ CellLabel->"Out[179]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -4435,7 +4435,7 @@ Cell[BoxData[
   RowBox[{"GA", "[", 
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
   "]"}]], "Input",
- CellLabel->"In[45]:="],
+ CellLabel->"In[180]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4475,14 +4475,14 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[45]="]
+ CellLabel->"Out[180]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[46]:="],
+ CellLabel->"In[181]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4556,7 +4556,7 @@ Cell[BoxData[
        FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[46]="]
+ CellLabel->"Out[181]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4577,7 +4577,7 @@ Cell[BoxData[
        RowBox[{"p", "-", "q"}], "]"}], "+", 
       RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
     RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}], " "}]], "Input",
- CellLabel->"In[47]:="],
+ CellLabel->"In[182]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4624,14 +4624,14 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[47]="]
+ CellLabel->"Out[182]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[48]:="],
+ CellLabel->"In[183]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4744,7 +4744,7 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[48]="]
+ CellLabel->"Out[183]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -4782,7 +4782,7 @@ Cell[BoxData[
        RowBox[{"SMP", "[", "\"\<m_e\>\"", "]"}]}], ")"}], ".", 
      RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}], " ", ",", 
    RowBox[{"DiracTraceEvaluate", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[49]:="],
+ CellLabel->"In[184]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4922,7 +4922,7 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]]}]}]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[49]="]
+ CellLabel->"Out[184]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -4958,7 +4958,7 @@ Cell[BoxData[
      RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}], " ", ",", 
    RowBox[{"DiracTraceEvaluate", "\[Rule]", "False"}], ",", 
    RowBox[{"DiracTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[50]:="],
+ CellLabel->"In[185]:="],
 
 Cell[BoxData[
  FormBox[
@@ -4997,7 +4997,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[50]="]
+ CellLabel->"Out[185]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -5025,7 +5025,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"GA", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
   RowBox[{"GAD", "[", "\[Mu]", "]"}]}]], "Input",
- CellLabel->"In[52]:="],
+ CellLabel->"In[186]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5054,7 +5054,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[52]="]
+ CellLabel->"Out[186]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -5072,23 +5072,32 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[53]:="],
+ CellLabel->"In[187]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    StyleBox[
-    RowBox[{"DiracTrick", "::", "failmsg"}], "MessageName"], ":", 
-   " ", "\<\"Error! DiracTrick has encountered a fatal problem and must abort \
-the computation. The problem reads: \
-\[NoBreak]\\!\\(\\*FormBox[\\\"\\\\\\\"Incorrect combination of dimensions \
-and g^5 scheme!\\\\\\\"\\\", TraditionalForm]\\)\[NoBreak]\"\>"}], 
+    RowBox[{"DiracTrace", "::", "mixmsg"}], "MessageName"], 
+   RowBox[{
+   ":", " "}], "\<\"Expressions that mix D-, 4- and D-4-dimensional \
+quantities are forbidden in Dirac matrix chains unless you are using the \
+t'Hooft-Veltman scheme. For every other scheme, please recheck your input \
+expressions and ensure that all matrices, spinors and tensors are purely \
+D-dimensional. You might want to use FCGetDimensions[exp] to find the \
+offending terms and fix them by hand or ChangeDimension[exp,D] to convert the \
+whole expression to D-dimensions. If you explicitly intend to use the \
+t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\\\"BMHV\
+\\\"]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:FeynCalc/ref/DiracTrace\\\", ButtonNote -> \
+\\\"FeynCalc`DiracTrace::mixmsg\\\"]\\)\"\>"}], 
   TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[53]:="],
+ CellLabel->"During evaluation of In[187]:="],
 
 Cell[BoxData[
  FormBox["$Aborted", TraditionalForm]], "Output",
- CellLabel->"Out[53]="]
+ CellLabel->"Out[187]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -5105,7 +5114,7 @@ t'Hooft-Veltman-Breitenlohner-Maison (BMHV) scheme."
 Cell[BoxData[
  RowBox[{
   RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
- CellLabel->"In[65]:="],
+ CellLabel->"In[188]:="],
 
 Cell[CellGroupData[{
 
@@ -5117,7 +5126,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"GA", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
- CellLabel->"In[66]:="],
+ CellLabel->"In[189]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5138,14 +5147,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}], "+", 
    RowBox[{"D", " ", "m"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[66]="]
+ CellLabel->"Out[189]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
  
- CellLabel->"In[56]:="],
+ CellLabel->"In[190]:="],
 
 Cell[TextData[{
  "The BMHV scheme is a special prescription for handling ",
@@ -5196,7 +5205,7 @@ Cell[BoxData[
     "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Alpha]", 
      ",", "\[Beta]"}], "]"}], ".", 
    RowBox[{"GA", "[", "5", "]"}]}], "]"}]], "Input",
- CellLabel->"In[57]:="],
+ CellLabel->"In[191]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5252,26 +5261,14 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[57]="]
+ CellLabel->"Out[191]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[58]:="],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   StyleBox[
-    RowBox[{"DiracTrace", "::", "ndranomaly"}], "MessageName"], ":", 
-   " ", "\<\"You are using naive dimensional regularization (NDR), such that \
-in D dimensions gamma^5 anticommutes with all other Dirac matrices. In this \
-scheme (without additional prescriptions) it is not possible to compute \
-traces with an odd number of gamma^5 unambiguously. Evaluation \
-aborted!\"\>"}], TraditionalForm]], "Message", "MSG",
- CellLabel->"During evaluation of In[58]:="],
+ CellLabel->"In[192]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5313,7 +5310,7 @@ Cell[BoxData[
       FormBox["5",
        TraditionalForm]]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[58]="]
+ CellLabel->"Out[192]="]
 }, Open  ]],
 
 Cell["\<\
@@ -5325,7 +5322,7 @@ choice as of course also possible, but those are not implemented in FeynCalc.\
 Cell[BoxData[
  RowBox[{
   RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}], ";"}]], "Input",
- CellLabel->"In[59]:="],
+ CellLabel->"In[193]:="],
 
 Cell[CellGroupData[{
 
@@ -5338,7 +5335,7 @@ Cell[BoxData[
      "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Alpha]", 
       ",", "\[Beta]"}], "]"}], ".", 
     RowBox[{"GA", "[", "5", "]"}]}], "]"}], "]"}]], "Input",
- CellLabel->"In[60]:="],
+ CellLabel->"In[194]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5794,14 +5791,14 @@ Cell[BoxData[
        FormBox["\[Nu]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[60]="]
+ CellLabel->"Out[194]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}], ";"}]], "Input",
  
- CellLabel->"In[61]:="],
+ CellLabel->"In[195]:="],
 
 Cell[TextData[{
  "Keep in mind that the BMHV scheme violates axial Ward identities and \
@@ -5845,7 +5842,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"CGA", "[", "i", "]"}], ".", 
   RowBox[{"CGA", "[", "i", "]"}]}]], "Input",
- CellLabel->"In[62]:="],
+ CellLabel->"In[196]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5882,19 +5879,19 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[62]="]
+ CellLabel->"Out[196]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[63]:="],
+ CellLabel->"In[197]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "3"}], TraditionalForm]], "Output",
- CellLabel->"Out[63]="]
+ CellLabel->"Out[197]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5906,7 +5903,7 @@ Cell[BoxData[
   RowBox[{"CGA", "[", "j", "]"}], ".", 
   RowBox[{"CGS", "[", 
    RowBox[{"p", "+", "q"}], "]"}]}]], "Input",
- CellLabel->"In[64]:="],
+ CellLabel->"In[198]:="],
 
 Cell[BoxData[
  FormBox[
@@ -5988,14 +5985,14 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], ")"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[64]="]
+ CellLabel->"Out[198]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[65]:="],
+ CellLabel->"In[199]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6148,7 +6145,7 @@ Cell[BoxData[
           FontWeight->Bold],
          TraditionalForm], "_"],
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[65]="]
+ CellLabel->"Out[199]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6163,7 +6160,7 @@ Cell[BoxData[
     RowBox[{"p", "+", "q"}], "]"}]}], 
   RowBox[{"KD", "[", 
    RowBox[{"i", ",", "j"}], "]"}]}]], "Input",
- CellLabel->"In[66]:="],
+ CellLabel->"In[200]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6265,14 +6262,14 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm], ")"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[66]="]
+ CellLabel->"Out[200]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[67]:="],
+ CellLabel->"In[201]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6319,7 +6316,7 @@ Cell[BoxData[
         FontWeight->Bold],
        TraditionalForm], "_"],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
- CellLabel->"Out[67]="]
+ CellLabel->"Out[201]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6329,7 +6326,7 @@ Cell[BoxData[
   RowBox[{"TGA", "[", "]"}], ".", 
   RowBox[{"CGA", "[", "i", "]"}], ".", 
   RowBox[{"TGA", "[", "]"}]}]], "Input",
- CellLabel->"In[68]:="],
+ CellLabel->"In[202]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6366,14 +6363,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[68]="]
+ CellLabel->"Out[202]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[69]:="],
+ CellLabel->"In[203]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6392,7 +6389,7 @@ Cell[BoxData[
        FontWeight->Bold],
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[69]="]
+ CellLabel->"Out[203]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6401,7 +6398,7 @@ Cell[BoxData[
  RowBox[{"DiracTrace", "[", 
   RowBox[{"CGAD", "[", 
    RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}]], "Input",
- CellLabel->"In[70]:="],
+ CellLabel->"In[204]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6469,14 +6466,14 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[70]="]
+ CellLabel->"Out[204]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
- CellLabel->"In[71]:="],
+ CellLabel->"In[205]:="],
 
 Cell[BoxData[
  FormBox[
@@ -6580,7 +6577,7 @@ Cell[BoxData[
          FontWeight->Bold],
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- CellLabel->"Out[71]="]
+ CellLabel->"Out[205]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -6646,7 +6643,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{894, 989},
-WindowMargins->{{806, Automatic}, {Automatic, -8}},
+WindowMargins->{{Automatic, 210}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

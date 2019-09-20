@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     39664,       1475]
-NotebookOptionsPosition[     34052,       1304]
-NotebookOutlinePosition[     37207,       1387]
-CellTagsIndexPosition[     37090,       1381]
+NotebookDataLength[     39661,       1475]
+NotebookOptionsPosition[     34054,       1304]
+NotebookOutlinePosition[     37202,       1387]
+CellTagsIndexPosition[     37085,       1381]
 WindowTitle->GluonVertex
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ GluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161939], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157064], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GluonVertex", ".html"]], None}]}]},
@@ -217,7 +217,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->10627326],
+ CellID->1795797164],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -266,7 +266,7 @@ Cell[BoxData[
     RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
     RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{434, 16},
+ ImageSize->{435, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[16]="]
@@ -291,7 +291,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->549587763],
+ CellID->94376684],
 
 Cell[CellGroupData[{
 
@@ -301,7 +301,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->224250203],
+ CellID->2114942087],
 
 Cell[CellGroupData[{
 
@@ -367,7 +367,7 @@ Cell[BoxData[
       FormBox["r",
        TraditionalForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{166, 19},
+ ImageSize->{170, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonVertex",
@@ -494,7 +494,7 @@ Cell[BoxData[
            TraditionalForm],
           TraditionalForm]]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{416, 19},
+ ImageSize->{422, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -543,7 +543,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["r",
      TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{119, 16},
+ ImageSize->{123, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonVertex",
@@ -656,7 +656,7 @@ Cell[BoxData[
            TraditionalForm],
           TraditionalForm]]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{369, 16},
+ ImageSize->{375, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -723,7 +723,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["s",
      TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{154, 18},
+ ImageSize->{160, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonVertex",
@@ -969,7 +969,7 @@ Cell[BoxData[
              TraditionalForm],
             TraditionalForm]}]]}]}], ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{423, 67},
+ ImageSize->{418, 72},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -1011,7 +1011,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["d",
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{67, 17},
+ ImageSize->{68, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonVertex",
@@ -1257,7 +1257,7 @@ Cell[BoxData[
              TraditionalForm],
             TraditionalForm]}]]}]}], ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{421, 67},
+ ImageSize->{418, 72},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -1317,7 +1317,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 25.211387}", 
+   "built" -> "{2019, 9, 20, 21, 15, 16.634071}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1334,7 +1334,7 @@ yields the 4-gluon vertex.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/GluonVertex"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1343,7 +1343,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1352,131 +1352,131 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[8917, 278, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[8919, 278, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->549587763]},
+   CellID->94376684]},
  "GluonVertex"->{
-  Cell[9549, 307, 356, 11, 27, "Input",
+  Cell[9551, 307, 356, 11, 27, "Input",
    CellTags->"GluonVertex",
    CellID->824487557],
-  Cell[9908, 320, 1203, 53, 40, "Output",
+  Cell[9910, 320, 1203, 53, 40, "Output",
    CellTags->"GluonVertex"],
-  Cell[14266, 510, 318, 11, 27, "Input",
+  Cell[14268, 510, 318, 11, 27, "Input",
    CellTags->"GluonVertex",
    CellID->1094321460],
-  Cell[14587, 523, 630, 26, 37, "Output",
+  Cell[14589, 523, 630, 26, 37, "Output",
    CellTags->"GluonVertex"],
-  Cell[18090, 673, 432, 13, 27, "Input",
+  Cell[18092, 673, 432, 13, 27, "Input",
    CellTags->"GluonVertex",
    CellID->410547695],
-  Cell[18525, 688, 961, 41, 39, "Output",
+  Cell[18527, 688, 961, 41, 41, "Output",
    CellTags->"GluonVertex"],
-  Cell[26064, 986, 384, 13, 27, "Input",
+  Cell[26066, 986, 384, 13, 27, "Input",
    CellTags->"GluonVertex",
    CellID->1809122983],
-  Cell[26451, 1001, 389, 16, 38, "Output",
+  Cell[26453, 1001, 389, 16, 38, "Output",
    CellTags->"GluonVertex"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 36274, 1353},
- {"GluonVertex", 36412, 1357}
+ {"PrimaryExamplesSection", 36270, 1353},
+ {"GluonVertex", 36407, 1357}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 3139, 76, 50, "AnchorBarGrid",
+Cell[583, 21, 3139, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3725, 99, 288, 11, 44, "ObjectNameGrid"],
+Cell[3725, 99, 288, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4038, 114, 2723, 77, 237, "Usage",
+Cell[4038, 114, 2723, 77, 245, "Usage",
  CellID->2010081510],
 Cell[CellGroupData[{
-Cell[6786, 195, 737, 24, 31, "NotesSection",
+Cell[6786, 195, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->10627326],
-Cell[7526, 221, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[7560, 223, 238, 8, 31, "Notes"],
-Cell[7801, 233, 413, 14, 47, "Notes",
+ CellID->1795797164],
+Cell[7528, 221, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[7562, 223, 238, 8, 70, "Notes"],
+Cell[7803, 233, 413, 14, 70, "Notes",
  CellID->14058075],
-Cell[8217, 249, 78, 1, 31, "Notes",
+Cell[8219, 249, 78, 1, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[8320, 254, 94, 2, 27, "Input"],
-Cell[8417, 258, 439, 13, 37, "Output"]
+Cell[8322, 254, 94, 2, 70, "Input"],
+Cell[8419, 258, 439, 13, 37, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8917, 278, 387, 15, 31, "PrimaryExamplesSection",
+Cell[8919, 278, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->549587763],
+ CellID->94376684],
 Cell[CellGroupData[{
-Cell[9329, 297, 195, 6, 25, "ExampleSection",
- CellID->224250203],
+Cell[9330, 297, 196, 6, 26, "ExampleSection",
+ CellID->2114942087],
 Cell[CellGroupData[{
-Cell[9549, 307, 356, 11, 27, "Input",
+Cell[9551, 307, 356, 11, 27, "Input",
  CellTags->"GluonVertex",
  CellID->824487557],
-Cell[9908, 320, 1203, 53, 40, "Output",
+Cell[9910, 320, 1203, 53, 40, "Output",
  CellTags->"GluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11148, 378, 84, 2, 27, "Input"],
-Cell[11235, 382, 2864, 117, 40, "Output"]
+Cell[11150, 378, 84, 2, 27, "Input"],
+Cell[11237, 382, 2864, 117, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14136, 504, 105, 2, 8, "ExampleDelimiter"],
+Cell[14138, 504, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[14266, 510, 318, 11, 27, "Input",
+Cell[14268, 510, 318, 11, 27, "Input",
  CellTags->"GluonVertex",
  CellID->1094321460],
-Cell[14587, 523, 630, 26, 37, "Output",
+Cell[14589, 523, 630, 26, 37, "Output",
  CellTags->"GluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15254, 554, 84, 2, 27, "Input"],
-Cell[15341, 558, 2570, 103, 37, "Output"]
+Cell[15256, 554, 84, 2, 27, "Input"],
+Cell[15343, 558, 2570, 103, 40, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17960, 667, 105, 2, 8, "ExampleDelimiter"],
+Cell[17962, 667, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[18090, 673, 432, 13, 27, "Input",
+Cell[18092, 673, 432, 13, 27, "Input",
  CellTags->"GluonVertex",
  CellID->410547695],
-Cell[18525, 688, 961, 41, 39, "Output",
+Cell[18527, 688, 961, 41, 41, "Output",
  CellTags->"GluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19523, 734, 84, 2, 27, "Input"],
-Cell[19610, 738, 6275, 236, 88, "Output"]
+Cell[19525, 734, 84, 2, 27, "Input"],
+Cell[19612, 738, 6275, 236, 93, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25934, 980, 105, 2, 8, "ExampleDelimiter"],
+Cell[25936, 980, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[26064, 986, 384, 13, 27, "Input",
+Cell[26066, 986, 384, 13, 27, "Input",
  CellTags->"GluonVertex",
  CellID->1809122983],
-Cell[26451, 1001, 389, 16, 38, "Output",
+Cell[26453, 1001, 389, 16, 38, "Output",
  CellTags->"GluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26877, 1022, 84, 2, 27, "Input"],
-Cell[26964, 1026, 6275, 236, 88, "Output"]
+Cell[26879, 1022, 84, 2, 27, "Input"],
+Cell[26966, 1026, 6275, 236, 93, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[33278, 1267, 31, 0, 29, "SectionFooterSpacer"]
+Cell[33280, 1267, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33346, 1272, 270, 12, 31, "SeeAlsoSection",
+Cell[33348, 1272, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[33619, 1286, 391, 13, 55, "SeeAlso"]
+Cell[33621, 1286, 391, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[34025, 1302, 23, 0, 40, "FooterCell"]
+Cell[34027, 1302, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

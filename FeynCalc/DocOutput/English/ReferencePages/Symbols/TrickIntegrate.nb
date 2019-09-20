@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12510,        411]
-NotebookOptionsPosition[      8867,        307]
-NotebookOutlinePosition[     11623,        379]
-CellTagsIndexPosition[     11505,        373]
+NotebookDataLength[     12561,        412]
+NotebookOptionsPosition[      8868,        307]
+NotebookOutlinePosition[     11673,        380]
+CellTagsIndexPosition[     11555,        374]
 WindowTitle->TrickIntegrate
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ TrickIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$285830], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$275455], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/TrickIntegrate", ".html"]], None}]}]},
@@ -183,7 +183,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->914889237],
+ CellID->884652037],
 
 Cell[CellGroupData[{
 
@@ -193,7 +193,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->764872207],
+ CellID->1540955198],
 
 Cell[CellGroupData[{
 
@@ -266,7 +266,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}], 
   TraditionalForm]], "Output",
- ImageSize->{248, 21},
+ ImageSize->{249, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TrickIntegrate",
@@ -308,7 +308,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"TrickIntegrate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -320,7 +320,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 4.055678}", 
+   "built" -> "{2019, 9, 20, 21, 19, 45.248123}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -336,7 +336,7 @@ and g[0] exist.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "TrickIntegrate", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/TrickIntegrate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -344,8 +344,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -356,63 +357,63 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5739, 170, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->914889237]},
+   CellID->884652037]},
  "TrickIntegrate"->{
-  Cell[6371, 199, 382, 13, 27, "Input",
+  Cell[6372, 199, 382, 13, 27, "Input",
    CellTags->"TrickIntegrate",
    CellID->1216797415],
-  Cell[6756, 214, 602, 21, 42, "Output",
+  Cell[6757, 214, 602, 21, 42, "Output",
    CellTags->"TrickIntegrate"],
-  Cell[7395, 240, 328, 11, 27, "Input",
+  Cell[7396, 240, 328, 11, 27, "Input",
    CellTags->"TrickIntegrate",
    CellID->256517011],
-  Cell[7726, 253, 547, 19, 42, "Output",
+  Cell[7727, 253, 547, 19, 42, "Output",
    CellTags->"TrickIntegrate"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11005, 355},
- {"TrickIntegrate", 11146, 359}
+ {"PrimaryExamplesSection", 11055, 356},
+ {"TrickIntegrate", 11196, 360}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 3025, 74, 50, "AnchorBarGrid",
+Cell[586, 21, 3025, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3614, 97, 291, 11, 44, "ObjectNameGrid"],
-Cell[3908, 110, 1806, 56, 160, "Usage",
+Cell[3614, 97, 291, 11, 45, "ObjectNameGrid"],
+Cell[3908, 110, 1806, 56, 165, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[5739, 170, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->914889237],
+ CellID->884652037],
 Cell[CellGroupData[{
-Cell[6151, 189, 195, 6, 25, "ExampleSection",
- CellID->764872207],
+Cell[6151, 189, 196, 6, 26, "ExampleSection",
+ CellID->1540955198],
 Cell[CellGroupData[{
-Cell[6371, 199, 382, 13, 27, "Input",
+Cell[6372, 199, 382, 13, 27, "Input",
  CellTags->"TrickIntegrate",
  CellID->1216797415],
-Cell[6756, 214, 602, 21, 42, "Output",
+Cell[6757, 214, 602, 21, 42, "Output",
  CellTags->"TrickIntegrate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7395, 240, 328, 11, 27, "Input",
+Cell[7396, 240, 328, 11, 27, "Input",
  CellTags->"TrickIntegrate",
  CellID->256517011],
-Cell[7726, 253, 547, 19, 42, "Output",
+Cell[7727, 253, 547, 19, 42, "Output",
  CellTags->"TrickIntegrate"]
 }, Open  ]]
 }, Open  ]],
-Cell[8300, 276, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8301, 276, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8368, 281, 270, 12, 31, "SeeAlsoSection",
+Cell[8369, 281, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8641, 295, 184, 7, 55, "SeeAlso"]
+Cell[8642, 295, 184, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[8840, 305, 23, 0, 40, "FooterCell"]
+Cell[8841, 305, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     59763,       2071]
-NotebookOptionsPosition[     47370,       1683]
-NotebookOutlinePosition[     53965,       1868]
-CellTagsIndexPosition[     53842,       1862]
+NotebookDataLength[     59817,       2072]
+NotebookOptionsPosition[     47371,       1683]
+NotebookOutlinePosition[     54018,       1869]
+CellTagsIndexPosition[     53895,       1863]
 WindowTitle->SplittingFunction
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ SplittingFunction.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$257001], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$247890], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SplittingFunction", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1699153263],
+ CellID->2021380123],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -171,7 +171,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"Polarization", "\[Rule]", "1"}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{110, 16},
+ ImageSize->{110, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -197,7 +197,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->694524035],
+ CellID->1561136159],
 
 Cell[CellGroupData[{
 
@@ -207,7 +207,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->471637257],
+ CellID->193850193],
 
 Cell["Unpolarized case:", "Notes"],
 
@@ -249,7 +249,7 @@ Cell[BoxData[
         FractionBox["1", 
          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{257, 36},
+ ImageSize->{262, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -279,7 +279,7 @@ Cell[BoxData[
       SuperscriptBox["x", "2"]}], "-", 
      RowBox[{"16", " ", "x"}], "+", "8"}], ")"}], " ", 
    SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
- ImageSize->{143, 20},
+ ImageSize->{144, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -308,7 +308,7 @@ Cell[BoxData[
      RowBox[{"4", " ", "x"}], "+", 
      FractionBox["8", "x"], "-", "8"}], ")"}], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
- ImageSize->{118, 34},
+ ImageSize->{121, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -357,7 +357,7 @@ Cell[BoxData[
      FormBox[
       RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{466, 36},
+ ImageSize->{471, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -419,7 +419,7 @@ Cell[BoxData[
           RowBox[{"1", "-", "x"}], ")"}], 
          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{484, 77},
+ ImageSize->{479, 77},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -457,7 +457,7 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "+", "2"}], 
     ")"}]}], TraditionalForm]], "Output",
- ImageSize->{272, 16},
+ ImageSize->{271, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -500,7 +500,7 @@ Cell[BoxData[
           RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}], " ", 
         RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}]}], ")"}]}], "-", "4"}], 
     ")"}]}], TraditionalForm]], "Output",
- ImageSize->{478, 20},
+ ImageSize->{466, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -554,7 +554,7 @@ Cell[BoxData[
         FractionBox["1", 
          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{257, 36},
+ ImageSize->{262, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -582,7 +582,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"16", " ", "x"}], "-", "8"}], ")"}], " ", 
    SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
- ImageSize->{94, 16},
+ ImageSize->{91, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -610,7 +610,7 @@ Cell[BoxData[
     RowBox[{"8", "-", 
      RowBox[{"4", " ", "x"}]}], ")"}], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
- ImageSize->{89, 16},
+ ImageSize->{88, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -658,7 +658,7 @@ Cell[BoxData[
      FormBox[
       RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{409, 36},
+ ImageSize->{412, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -720,7 +720,7 @@ Cell[BoxData[
           RowBox[{"1", "-", "x"}], ")"}], 
          RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "-", "4"}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{484, 77},
+ ImageSize->{479, 77},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -758,7 +758,7 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "+", "2"}], 
     ")"}]}], TraditionalForm]], "Output",
- ImageSize->{272, 16},
+ ImageSize->{271, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -794,7 +794,7 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", "2"}], 
     ")"}]}], TraditionalForm]], "Output",
- ImageSize->{224, 16},
+ ImageSize->{221, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -830,7 +830,7 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", "4"}], 
     ")"}]}], TraditionalForm]], "Output",
- ImageSize->{224, 16},
+ ImageSize->{217, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -866,7 +866,7 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"1", "-", "x"}], ")"}], " ", "x"}], ")"}]}], "-", "4"}], 
     ")"}]}], TraditionalForm]], "Output",
- ImageSize->{224, 16},
+ ImageSize->{217, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -932,7 +932,7 @@ Cell[BoxData[
      FormBox[
       RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{379, 78},
+ ImageSize->{376, 78},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -998,7 +998,7 @@ Cell[BoxData[
      FormBox[
       RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{379, 78},
+ ImageSize->{376, 78},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -1040,7 +1040,7 @@ Cell[BoxData[
         RowBox[{"48", " ", "x"}], "-", "16"}], ")"}], " ", 
       RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{400, 20},
+ ImageSize->{394, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -1234,7 +1234,7 @@ Cell[BoxData[
           RowBox[{"1", "-", "x"}]]}], ")"}], " ", 
        RowBox[{"log", "(", "x", ")"}]}]}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{567, 356},
+ ImageSize->{575, 373},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -1346,7 +1346,7 @@ Cell[BoxData[
       RowBox[{"18", " ", 
        RowBox[{"log", "(", "x", ")"}]}], "-", "44"}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{541, 106},
+ ImageSize->{538, 110},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -1483,7 +1483,7 @@ Cell[BoxData[
          RowBox[{"36", " ", "x"}], "+", "48"}], ")"}], " ", 
        RowBox[{"log", "(", "x", ")"}]}], "-", "68"}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{549, 203},
+ ImageSize->{542, 205},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -1642,7 +1642,7 @@ Cell[BoxData[
          RowBox[{"16", " ", "x"}], "-", "80"}], ")"}], " ", 
        RowBox[{"log", "(", "x", ")"}]}], "-", "80"}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{571, 231},
+ ImageSize->{569, 233},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SplittingFunction",
@@ -1696,7 +1696,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 53, 54.076058}", 
+   "built" -> "{2019, 9, 20, 21, 18, 40.308312}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1708,7 +1708,7 @@ OverscriptBox[MS, _] scheme.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "SplittingFunction", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SplittingFunction"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1716,8 +1716,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1726,353 +1727,353 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "SplittingFunction"->{
-  Cell[5295, 162, 151, 4, 27, "Input",
+  Cell[5295, 162, 151, 4, 70, "Input",
    CellTags->"SplittingFunction",
    CellID->414842319],
-  Cell[5449, 168, 266, 9, 37, "Output",
+  Cell[5449, 168, 266, 9, 35, "Output",
    CellTags->"SplittingFunction"],
-  Cell[6423, 213, 214, 4, 46, "Notes",
+  Cell[6424, 213, 214, 4, 48, "Notes",
    CellTags->"SplittingFunction",
    CellID->1814679407],
-  Cell[6662, 221, 347, 10, 29, "Input",
+  Cell[6663, 221, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->2029473456],
-  Cell[7012, 233, 616, 22, 57, "Output",
+  Cell[7013, 233, 616, 22, 57, "Output",
    CellTags->"SplittingFunction"],
-  Cell[7665, 260, 347, 10, 29, "Input",
+  Cell[7666, 260, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1960078762],
-  Cell[8015, 272, 386, 13, 41, "Output",
+  Cell[8016, 272, 386, 13, 42, "Output",
    CellTags->"SplittingFunction"],
-  Cell[8438, 290, 347, 10, 29, "Input",
+  Cell[8439, 290, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1606503237],
-  Cell[8788, 302, 354, 12, 55, "Output",
+  Cell[8789, 302, 354, 12, 55, "Output",
    CellTags->"SplittingFunction"],
-  Cell[9179, 319, 347, 10, 29, "Input",
+  Cell[9180, 319, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1592599209],
-  Cell[9529, 331, 944, 32, 57, "Output",
+  Cell[9530, 331, 944, 32, 57, "Output",
    CellTags->"SplittingFunction"],
-  Cell[10510, 368, 347, 10, 29, "Input",
+  Cell[10511, 368, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1202955773],
-  Cell[10860, 380, 1332, 45, 98, "Output",
+  Cell[10861, 380, 1332, 45, 98, "Output",
    CellTags->"SplittingFunction"],
-  Cell[12229, 430, 346, 10, 29, "Input",
+  Cell[12230, 430, 346, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->549448603],
-  Cell[12578, 442, 588, 21, 37, "Output",
+  Cell[12579, 442, 588, 21, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[13203, 468, 346, 10, 29, "Input",
+  Cell[13204, 468, 346, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->715685164],
-  Cell[13552, 480, 832, 27, 41, "Output",
+  Cell[13553, 480, 832, 27, 42, "Output",
    CellTags->"SplittingFunction",
    CellID->700079032],
-  Cell[14399, 510, 346, 10, 29, "Input",
+  Cell[14400, 510, 346, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->443108438],
-  Cell[14805, 526, 347, 10, 29, "Input",
+  Cell[14806, 526, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1751600770],
-  Cell[15155, 538, 616, 22, 57, "Output",
+  Cell[15156, 538, 616, 22, 57, "Output",
    CellTags->"SplittingFunction"],
-  Cell[15808, 565, 347, 10, 29, "Input",
+  Cell[15809, 565, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->715841852],
-  Cell[16158, 577, 321, 11, 37, "Output",
+  Cell[16159, 577, 321, 11, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[16516, 593, 348, 10, 29, "Input",
+  Cell[16517, 593, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1646523691],
-  Cell[16867, 605, 320, 11, 37, "Output",
+  Cell[16868, 605, 320, 11, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[17224, 621, 348, 10, 29, "Input",
+  Cell[17225, 621, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1231189034],
-  Cell[17575, 633, 897, 31, 57, "Output",
+  Cell[17576, 633, 897, 31, 57, "Output",
    CellTags->"SplittingFunction"],
-  Cell[18509, 669, 346, 10, 29, "Input",
+  Cell[18510, 669, 346, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->98129728],
-  Cell[18858, 681, 1333, 45, 98, "Output",
+  Cell[18859, 681, 1333, 45, 98, "Output",
    CellTags->"SplittingFunction"],
-  Cell[20228, 731, 348, 10, 29, "Input",
+  Cell[20229, 731, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1908869685],
-  Cell[20579, 743, 589, 21, 37, "Output",
+  Cell[20580, 743, 589, 21, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[21205, 769, 349, 10, 29, "Input",
+  Cell[21206, 769, 349, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1649871241],
-  Cell[21557, 781, 531, 19, 37, "Output",
+  Cell[21558, 781, 531, 19, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[22125, 805, 348, 10, 29, "Input",
+  Cell[22126, 805, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1552619850],
-  Cell[22476, 817, 531, 19, 37, "Output",
+  Cell[22477, 817, 531, 19, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[23044, 841, 347, 10, 29, "Input",
+  Cell[23045, 841, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->81713985],
-  Cell[23394, 853, 531, 19, 37, "Output",
+  Cell[23395, 853, 531, 19, 37, "Output",
    CellTags->"SplittingFunction"],
-  Cell[23962, 877, 348, 10, 29, "Input",
+  Cell[23963, 877, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1048960999],
-  Cell[24313, 889, 1448, 49, 99, "Output",
+  Cell[24314, 889, 1448, 49, 99, "Output",
    CellTags->"SplittingFunction"],
-  Cell[25798, 943, 349, 10, 29, "Input",
+  Cell[25799, 943, 349, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1079830623],
-  Cell[26150, 955, 1448, 49, 99, "Output",
+  Cell[26151, 955, 1448, 49, 99, "Output",
    CellTags->"SplittingFunction"],
-  Cell[27635, 1009, 349, 10, 29, "Input",
+  Cell[27636, 1009, 349, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1747750059],
-  Cell[27987, 1021, 723, 25, 41, "Output",
+  Cell[27988, 1021, 723, 25, 42, "Output",
    CellTags->"SplittingFunction"],
-  Cell[28747, 1051, 349, 10, 29, "Input",
+  Cell[28748, 1051, 349, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->111584241],
-  Cell[29099, 1063, 5472, 177, 377, "Output",
+  Cell[29100, 1063, 5472, 177, 394, "Output",
    CellTags->"SplittingFunction"],
-  Cell[34608, 1245, 348, 10, 29, "Input",
+  Cell[34609, 1245, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1622861813],
-  Cell[34959, 1257, 2993, 95, 127, "Output",
+  Cell[34960, 1257, 2993, 95, 131, "Output",
    CellTags->"SplittingFunction"],
-  Cell[37989, 1357, 347, 10, 29, "Input",
+  Cell[37990, 1357, 347, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->747834490],
-  Cell[38339, 1369, 3671, 120, 224, "Output",
+  Cell[38340, 1369, 3671, 120, 226, "Output",
    CellTags->"SplittingFunction"],
-  Cell[42047, 1494, 348, 10, 29, "Input",
+  Cell[42048, 1494, 348, 10, 29, "Input",
    CellTags->"SplittingFunction",
    CellID->1886436228],
-  Cell[42398, 1506, 4345, 142, 252, "Output",
+  Cell[42399, 1506, 4345, 142, 254, "Output",
    CellTags->"SplittingFunction"]},
  "PrimaryExamplesSection"->{
-  Cell[5776, 184, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5776, 184, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->694524035]}
+   CellID->1561136159]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"SplittingFunction", 49225, 1727},
- {"PrimaryExamplesSection", 53699, 1855}
+ {"SplittingFunction", 49277, 1728},
+ {"PrimaryExamplesSection", 53751, 1856}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 3059, 74, 50, "AnchorBarGrid",
+Cell[589, 21, 3059, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3651, 97, 294, 11, 44, "ObjectNameGrid"],
+Cell[3651, 97, 294, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3970, 112, 502, 16, 85, "Usage",
+Cell[3970, 112, 502, 16, 87, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4497, 132, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1699153263],
-Cell[5239, 158, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->2021380123],
+Cell[5239, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5295, 162, 151, 4, 27, "Input",
+Cell[5295, 162, 151, 4, 70, "Input",
  CellTags->"SplittingFunction",
  CellID->414842319],
-Cell[5449, 168, 266, 9, 37, "Output",
+Cell[5449, 168, 266, 9, 35, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5776, 184, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5776, 184, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->694524035],
+ CellID->1561136159],
 Cell[CellGroupData[{
-Cell[6188, 203, 195, 6, 25, "ExampleSection",
- CellID->471637257],
-Cell[6386, 211, 34, 0, 31, "Notes"],
-Cell[6423, 213, 214, 4, 46, "Notes",
+Cell[6189, 203, 195, 6, 26, "ExampleSection",
+ CellID->193850193],
+Cell[6387, 211, 34, 0, 32, "Notes"],
+Cell[6424, 213, 214, 4, 48, "Notes",
  CellTags->"SplittingFunction",
  CellID->1814679407],
 Cell[CellGroupData[{
-Cell[6662, 221, 347, 10, 29, "Input",
+Cell[6663, 221, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->2029473456],
-Cell[7012, 233, 616, 22, 57, "Output",
+Cell[7013, 233, 616, 22, 57, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7665, 260, 347, 10, 29, "Input",
+Cell[7666, 260, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1960078762],
-Cell[8015, 272, 386, 13, 41, "Output",
+Cell[8016, 272, 386, 13, 42, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8438, 290, 347, 10, 29, "Input",
+Cell[8439, 290, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1606503237],
-Cell[8788, 302, 354, 12, 55, "Output",
+Cell[8789, 302, 354, 12, 55, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9179, 319, 347, 10, 29, "Input",
+Cell[9180, 319, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1592599209],
-Cell[9529, 331, 944, 32, 57, "Output",
+Cell[9530, 331, 944, 32, 57, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10510, 368, 347, 10, 29, "Input",
+Cell[10511, 368, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1202955773],
-Cell[10860, 380, 1332, 45, 98, "Output",
+Cell[10861, 380, 1332, 45, 98, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12229, 430, 346, 10, 29, "Input",
+Cell[12230, 430, 346, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->549448603],
-Cell[12578, 442, 588, 21, 37, "Output",
+Cell[12579, 442, 588, 21, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13203, 468, 346, 10, 29, "Input",
+Cell[13204, 468, 346, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->715685164],
-Cell[13552, 480, 832, 27, 41, "Output",
+Cell[13553, 480, 832, 27, 42, "Output",
  CellTags->"SplittingFunction",
  CellID->700079032]
 }, Open  ]],
-Cell[14399, 510, 346, 10, 29, "Input",
+Cell[14400, 510, 346, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->443108438],
-Cell[14748, 522, 32, 0, 31, "Notes"],
+Cell[14749, 522, 32, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[14805, 526, 347, 10, 29, "Input",
+Cell[14806, 526, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1751600770],
-Cell[15155, 538, 616, 22, 57, "Output",
+Cell[15156, 538, 616, 22, 57, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15808, 565, 347, 10, 29, "Input",
+Cell[15809, 565, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->715841852],
-Cell[16158, 577, 321, 11, 37, "Output",
+Cell[16159, 577, 321, 11, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16516, 593, 348, 10, 29, "Input",
+Cell[16517, 593, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1646523691],
-Cell[16867, 605, 320, 11, 37, "Output",
+Cell[16868, 605, 320, 11, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17224, 621, 348, 10, 29, "Input",
+Cell[17225, 621, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1231189034],
-Cell[17575, 633, 897, 31, 57, "Output",
+Cell[17576, 633, 897, 31, 57, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18509, 669, 346, 10, 29, "Input",
+Cell[18510, 669, 346, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->98129728],
-Cell[18858, 681, 1333, 45, 98, "Output",
+Cell[18859, 681, 1333, 45, 98, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20228, 731, 348, 10, 29, "Input",
+Cell[20229, 731, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1908869685],
-Cell[20579, 743, 589, 21, 37, "Output",
+Cell[20580, 743, 589, 21, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21205, 769, 349, 10, 29, "Input",
+Cell[21206, 769, 349, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1649871241],
-Cell[21557, 781, 531, 19, 37, "Output",
+Cell[21558, 781, 531, 19, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22125, 805, 348, 10, 29, "Input",
+Cell[22126, 805, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1552619850],
-Cell[22476, 817, 531, 19, 37, "Output",
+Cell[22477, 817, 531, 19, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23044, 841, 347, 10, 29, "Input",
+Cell[23045, 841, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->81713985],
-Cell[23394, 853, 531, 19, 37, "Output",
+Cell[23395, 853, 531, 19, 37, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23962, 877, 348, 10, 29, "Input",
+Cell[23963, 877, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1048960999],
-Cell[24313, 889, 1448, 49, 99, "Output",
+Cell[24314, 889, 1448, 49, 99, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25798, 943, 349, 10, 29, "Input",
+Cell[25799, 943, 349, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1079830623],
-Cell[26150, 955, 1448, 49, 99, "Output",
+Cell[26151, 955, 1448, 49, 99, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27635, 1009, 349, 10, 29, "Input",
+Cell[27636, 1009, 349, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1747750059],
-Cell[27987, 1021, 723, 25, 41, "Output",
+Cell[27988, 1021, 723, 25, 42, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28747, 1051, 349, 10, 29, "Input",
+Cell[28748, 1051, 349, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->111584241],
-Cell[29099, 1063, 5472, 177, 377, "Output",
+Cell[29100, 1063, 5472, 177, 394, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34608, 1245, 348, 10, 29, "Input",
+Cell[34609, 1245, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1622861813],
-Cell[34959, 1257, 2993, 95, 127, "Output",
+Cell[34960, 1257, 2993, 95, 131, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37989, 1357, 347, 10, 29, "Input",
+Cell[37990, 1357, 347, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->747834490],
-Cell[38339, 1369, 3671, 120, 224, "Output",
+Cell[38340, 1369, 3671, 120, 226, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42047, 1494, 348, 10, 29, "Input",
+Cell[42048, 1494, 348, 10, 29, "Input",
  CellTags->"SplittingFunction",
  CellID->1886436228],
-Cell[42398, 1506, 4345, 142, 252, "Output",
+Cell[42399, 1506, 4345, 142, 254, "Output",
  CellTags->"SplittingFunction"]
 }, Open  ]]
 }, Open  ]],
-Cell[46770, 1652, 31, 0, 29, "SectionFooterSpacer"]
+Cell[46771, 1652, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[46838, 1657, 270, 12, 31, "SeeAlsoSection",
+Cell[46839, 1657, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[47111, 1671, 217, 7, 54, "SeeAlso"]
+Cell[47112, 1671, 217, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[47343, 1681, 23, 0, 40, "FooterCell"]
+Cell[47344, 1681, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

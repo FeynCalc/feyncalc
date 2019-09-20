@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12594,        442]
+NotebookDataLength[     12645,        443]
 NotebookOptionsPosition[      8754,        318]
-NotebookOutlinePosition[     11416,        396]
-CellTagsIndexPosition[     11309,        390]
+NotebookOutlinePosition[     11467,        397]
+CellTagsIndexPosition[     11360,        391]
 WindowTitle->GHP
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$159529], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$154754], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/GHP", 
              ".html"]], None}]}]},
@@ -150,7 +150,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1098323130],
+ CellID->1973521710],
 
 Cell[CellGroupData[{
 
@@ -160,7 +160,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1328756973],
+ CellID->1417740481],
 
 Cell[CellGroupData[{
 
@@ -212,7 +212,7 @@ Cell[BoxData[
       FeynCalc`Momentum[$CellContext`p, D], 
       FeynCalc`Momentum[$CellContext`p, D]]],
     Editable->False]], TraditionalForm]], "Output",
- ImageSize->{27, 39},
+ ImageSize->{28, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GHP",
@@ -265,7 +265,7 @@ Cell[BoxData[
   RowBox[{"FAD", "[", "k", "]"}], " ", 
   RowBox[{"SD", "[", 
    RowBox[{"c3", ",", "c4"}], "]"}]}]], "Output",
- ImageSize->{144, 15},
+ ImageSize->{152, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GHP",
@@ -331,7 +331,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 19.707271}", 
+   "built" -> "{2019, 9, 20, 21, 15, 11.277717}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -343,7 +343,7 @@ color indices. GHP[p] omits the \\[Delta] ab.", "synonyms" -> {},
     "GHP", "type" -> "Symbol", "uri" -> "FeynCalc/ref/GHP"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -351,8 +351,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -363,7 +364,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4732, 137, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1098323130]},
+   CellID->1973521710]},
  "GHP"->{
   Cell[5366, 166, 151, 5, 27, "Input",
    CellTags->"GHP",
@@ -383,30 +384,30 @@ CellTagsIndex->{
   Cell[7185, 250, 285, 10, 27, "Input",
    CellTags->"GHP",
    CellID->1957617706],
-  Cell[7473, 262, 300, 9, 49, "Output",
+  Cell[7473, 262, 300, 9, 51, "Output",
    CellTags->"GHP"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10576, 362},
- {"GHP", 10707, 366}
+ {"PrimaryExamplesSection", 10627, 363},
+ {"GHP", 10758, 367}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 3214, 78, 50, "AnchorBarGrid",
+Cell[575, 21, 3214, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3792, 101, 280, 11, 44, "ObjectNameGrid"],
-Cell[4075, 114, 632, 19, 84, "Usage",
+Cell[3792, 101, 280, 11, 45, "ObjectNameGrid"],
+Cell[4075, 114, 632, 19, 86, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4732, 137, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1098323130],
+ CellID->1973521710],
 Cell[CellGroupData[{
-Cell[5145, 156, 196, 6, 25, "ExampleSection",
- CellID->1328756973],
+Cell[5145, 156, 196, 6, 26, "ExampleSection",
+ CellID->1417740481],
 Cell[CellGroupData[{
 Cell[5366, 166, 151, 5, 27, "Input",
  CellTags->"GHP",
@@ -432,7 +433,7 @@ Cell[CellGroupData[{
 Cell[7185, 250, 285, 10, 27, "Input",
  CellTags->"GHP",
  CellID->1957617706],
-Cell[7473, 262, 300, 9, 49, "Output",
+Cell[7473, 262, 300, 9, 51, "Output",
  CellTags->"GHP"]
 }, Open  ]]
 }, Open  ]],
@@ -441,9 +442,9 @@ Cell[7800, 275, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[7868, 280, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8141, 294, 571, 19, 55, "SeeAlso"]
+Cell[8141, 294, 571, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[8727, 316, 23, 0, 40, "FooterCell"]
+Cell[8727, 316, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

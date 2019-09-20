@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12633,        457]
-NotebookOptionsPosition[      8403,        316]
-NotebookOutlinePosition[     11389,        405]
-CellTagsIndexPosition[     11283,        399]
+NotebookDataLength[     12686,        458]
+NotebookOptionsPosition[      8404,        316]
+NotebookOutlinePosition[     11441,        406]
+CellTagsIndexPosition[     11335,        400]
 WindowTitle->SISD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$243018], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$234963], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SISD", 
             ".html"]], None}]}]},
@@ -123,7 +123,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1293065108],
+ CellID->1446931685],
 
 Cell[CellGroupData[{
 
@@ -133,7 +133,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->477914188],
+ CellID->1764889375],
 
 Cell[CellGroupData[{
 
@@ -150,7 +150,7 @@ Cell[BoxData[
     FormBox["p",
      TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{35, 16},
+ ImageSize->{36, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GS",
@@ -176,7 +176,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "D"}], "]"}], ",", 
    RowBox[{
     RowBox[{"-", "1"}], "+", "D"}]}], "]"}]], "Output",
- ImageSize->{268, 15},
+ ImageSize->{271, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GS",
@@ -228,7 +228,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{187, 16},
+ ImageSize->{189, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GS",
@@ -253,7 +253,7 @@ Cell[BoxData[
   RowBox[{"SISD", "[", "q", "]"}], ".", 
   RowBox[{"SISD", "[", "r", "]"}], ".", 
   RowBox[{"SISD", "[", "s", "]"}]}]], "Output",
- ImageSize->{250, 15},
+ ImageSize->{261, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GS",
@@ -302,7 +302,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{174, 16},
+ ImageSize->{177, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GS",
@@ -329,7 +329,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 53, 21.227646}", 
+   "built" -> "{2019, 9, 20, 21, 18, 10.139596}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -342,7 +342,7 @@ PauliSigma[Momentum[p,D],D-1] by FeynCalcInternal.", "synonyms" -> {},
     "windowtitle" -> "SISD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SISD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -350,8 +350,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -362,103 +363,103 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3773, 110, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1293065108]},
+   CellID->1446931685]},
  "GS"->{
-  Cell[4406, 139, 118, 4, 27, "Input",
+  Cell[4407, 139, 118, 4, 27, "Input",
    CellTags->"GS",
    CellID->1176675883],
-  Cell[4527, 145, 315, 12, 37, "Output",
+  Cell[4528, 145, 315, 12, 37, "Output",
    CellTags->"GS",
    CellID->1971313389],
-  Cell[4879, 162, 183, 7, 27, "Input",
+  Cell[4880, 162, 183, 7, 27, "Input",
    CellTags->"GS",
    CellID->1027241244],
-  Cell[5065, 171, 355, 12, 49, "Output",
+  Cell[5066, 171, 355, 12, 51, "Output",
    CellTags->"GS",
    CellID->1525716750],
-  Cell[5457, 188, 161, 5, 27, "Input",
+  Cell[5458, 188, 161, 5, 27, "Input",
    CellTags->"GS",
    CellID->1339265647],
-  Cell[5621, 195, 991, 40, 37, "Output",
+  Cell[5622, 195, 991, 40, 37, "Output",
    CellTags->"GS",
    CellID->274123798],
-  Cell[6649, 240, 199, 7, 27, "Input",
+  Cell[6650, 240, 199, 7, 27, "Input",
    CellTags->"GS",
    CellID->837744205],
-  Cell[6851, 249, 357, 11, 49, "Output",
+  Cell[6852, 249, 357, 11, 51, "Output",
    CellTags->"GS",
    CellID->1426173981],
-  Cell[7245, 265, 262, 9, 27, "Input",
+  Cell[7246, 265, 262, 9, 27, "Input",
    CellTags->"GS",
    CellID->2143558790],
-  Cell[7510, 276, 827, 33, 37, "Output",
+  Cell[7511, 276, 827, 33, 37, "Output",
    CellTags->"GS",
    CellID->218984313]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10302, 361},
- {"GS", 10432, 365}
+ {"PrimaryExamplesSection", 10354, 362},
+ {"GS", 10484, 366}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2257, 53, 50, "AnchorBarGrid",
+Cell[576, 21, 2257, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2836, 76, 281, 11, 44, "ObjectNameGrid"],
-Cell[3120, 89, 628, 17, 102, "Usage",
+Cell[2836, 76, 281, 11, 45, "ObjectNameGrid"],
+Cell[3120, 89, 628, 17, 105, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[3773, 110, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1293065108],
+ CellID->1446931685],
 Cell[CellGroupData[{
-Cell[4186, 129, 195, 6, 25, "ExampleSection",
- CellID->477914188],
+Cell[4186, 129, 196, 6, 26, "ExampleSection",
+ CellID->1764889375],
 Cell[CellGroupData[{
-Cell[4406, 139, 118, 4, 27, "Input",
+Cell[4407, 139, 118, 4, 27, "Input",
  CellTags->"GS",
  CellID->1176675883],
-Cell[4527, 145, 315, 12, 37, "Output",
+Cell[4528, 145, 315, 12, 37, "Output",
  CellTags->"GS",
  CellID->1971313389]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4879, 162, 183, 7, 27, "Input",
+Cell[4880, 162, 183, 7, 27, "Input",
  CellTags->"GS",
  CellID->1027241244],
-Cell[5065, 171, 355, 12, 49, "Output",
+Cell[5066, 171, 355, 12, 51, "Output",
  CellTags->"GS",
  CellID->1525716750]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5457, 188, 161, 5, 27, "Input",
+Cell[5458, 188, 161, 5, 27, "Input",
  CellTags->"GS",
  CellID->1339265647],
-Cell[5621, 195, 991, 40, 37, "Output",
+Cell[5622, 195, 991, 40, 37, "Output",
  CellTags->"GS",
  CellID->274123798]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6649, 240, 199, 7, 27, "Input",
+Cell[6650, 240, 199, 7, 27, "Input",
  CellTags->"GS",
  CellID->837744205],
-Cell[6851, 249, 357, 11, 49, "Output",
+Cell[6852, 249, 357, 11, 51, "Output",
  CellTags->"GS",
  CellID->1426173981]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7245, 265, 262, 9, 27, "Input",
+Cell[7246, 265, 262, 9, 27, "Input",
  CellTags->"GS",
  CellID->2143558790],
-Cell[7510, 276, 827, 33, 37, "Output",
+Cell[7511, 276, 827, 33, 37, "Output",
  CellTags->"GS",
  CellID->218984313]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8376, 314, 23, 0, 40, "FooterCell"]
+Cell[8377, 314, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

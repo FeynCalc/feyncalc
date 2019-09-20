@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23348,        762]
+NotebookDataLength[     23399,        763]
 NotebookOptionsPosition[     17448,        588]
-NotebookOutlinePosition[     21201,        686]
-CellTagsIndexPosition[     21081,        680]
+NotebookOutlinePosition[     21252,        687]
+CellTagsIndexPosition[     21132,        681]
 WindowTitle->HypergeometricAC
 WindowFrame->Normal*)
 
@@ -85,7 +85,7 @@ HypergeometricAC.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$167078], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161973], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/HypergeometricAC", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1736493280],
+ CellID->1792501187],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -181,7 +181,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"Collect2", "\[Rule]", "True"}], "}"}], TraditionalForm]], "Output",\
 
- ImageSize->{113, 16},
+ ImageSize->{111, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -207,7 +207,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1038992504],
+ CellID->1109209646],
 
 Cell[CellGroupData[{
 
@@ -217,7 +217,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->130690413],
+ CellID->768519516],
 
 Cell["These are all transformation rules currently built in.", "Notes"],
 
@@ -275,7 +275,7 @@ Cell[BoxData[
       "Gamma"], " ", 
      TemplateBox[{RowBox[{"\[Gamma]", "-", "\[Beta]"}]},
       "Gamma"]}]]}], TraditionalForm]], "Output",
- ImageSize->{508, 88},
+ ImageSize->{504, 88},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -336,7 +336,7 @@ Cell[BoxData[
       "Gamma"], " ", 
      TemplateBox[{RowBox[{"\[Gamma]", "-", "\[Beta]"}]},
       "Gamma"]}]]}], TraditionalForm]], "Output",
- ImageSize->{388, 126},
+ ImageSize->{386, 128},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -398,7 +398,7 @@ Cell[BoxData[
       "Gamma"], " ", 
      TemplateBox[{RowBox[{"\[Gamma]", "-", "\[Beta]"}]},
       "Gamma"]}]]}], TraditionalForm]], "Output",
- ImageSize->{400, 126},
+ ImageSize->{397, 128},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -467,7 +467,7 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{563, 101},
+ ImageSize->{562, 103},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -498,7 +498,7 @@ Cell[BoxData[
        FractionBox["z", 
         RowBox[{"1", "-", "z"}]]}]},
     "Hypergeometric2F1"]}], TraditionalForm]], "Output",
- ImageSize->{237, 32},
+ ImageSize->{235, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -529,7 +529,7 @@ Cell[BoxData[
        FractionBox["z", 
         RowBox[{"1", "-", "z"}]]}]},
     "Hypergeometric2F1"]}], TraditionalForm]], "Output",
- ImageSize->{237, 32},
+ ImageSize->{235, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"HypergeometricAC",
@@ -601,7 +601,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 35.962038}", 
+   "built" -> "{2019, 9, 20, 21, 15, 26.626595}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -618,7 +618,7 @@ Functions & their Applications\" by N.N.Lebedev).", "synonyms" -> {},
     "windowtitle" -> "HypergeometricAC", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/HypergeometricAC"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -626,8 +626,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -636,10 +637,10 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "HypergeometricAC"->{
-  Cell[5969, 172, 151, 4, 27, "Input",
+  Cell[5969, 172, 151, 4, 70, "Input",
    CellTags->"HypergeometricAC",
    CellID->860770759],
-  Cell[6123, 178, 265, 9, 37, "Output",
+  Cell[6123, 178, 265, 9, 35, "Output",
    CellTags->"HypergeometricAC"],
   Cell[7156, 225, 283, 8, 27, "Input",
    CellTags->"HypergeometricAC",
@@ -649,58 +650,58 @@ CellTagsIndex->{
   Cell[8976, 286, 283, 8, 27, "Input",
    CellTags->"HypergeometricAC",
    CellID->1497393441],
-  Cell[9262, 296, 1462, 46, 147, "Output",
+  Cell[9262, 296, 1462, 46, 149, "Output",
    CellTags->"HypergeometricAC"],
   Cell[10761, 347, 283, 8, 27, "Input",
    CellTags->"HypergeometricAC",
    CellID->1365244505],
-  Cell[11047, 357, 1503, 47, 147, "Output",
+  Cell[11047, 357, 1503, 47, 149, "Output",
    CellTags->"HypergeometricAC"],
   Cell[12587, 409, 282, 8, 27, "Input",
    CellTags->"HypergeometricAC",
    CellID->411308116],
-  Cell[12872, 419, 1773, 54, 122, "Output",
+  Cell[12872, 419, 1773, 54, 124, "Output",
    CellTags->"HypergeometricAC"],
   Cell[14682, 478, 282, 8, 27, "Input",
    CellTags->"HypergeometricAC",
    CellID->436366778],
-  Cell[14967, 488, 501, 16, 53, "Output",
+  Cell[14967, 488, 501, 16, 54, "Output",
    CellTags->"HypergeometricAC"],
   Cell[15505, 509, 283, 8, 27, "Input",
    CellTags->"HypergeometricAC",
    CellID->417226545],
-  Cell[15791, 519, 502, 16, 53, "Output",
+  Cell[15791, 519, 502, 16, 54, "Output",
    CellTags->"HypergeometricAC"]},
  "PrimaryExamplesSection"->{
   Cell[6449, 194, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1038992504]}
+   CellID->1109209646]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"HypergeometricAC", 19699, 637},
- {"PrimaryExamplesSection", 20937, 673}
+ {"HypergeometricAC", 19750, 638},
+ {"PrimaryExamplesSection", 20988, 674}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 3371, 80, 50, "AnchorBarGrid",
+Cell[588, 21, 3371, 80, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3962, 103, 293, 11, 44, "ObjectNameGrid"],
+Cell[3962, 103, 293, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4280, 118, 866, 20, 147, "Usage",
+Cell[4280, 118, 866, 20, 154, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[5171, 142, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1736493280],
-Cell[5913, 168, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1792501187],
+Cell[5913, 168, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5969, 172, 151, 4, 27, "Input",
+Cell[5969, 172, 151, 4, 70, "Input",
  CellTags->"HypergeometricAC",
  CellID->860770759],
-Cell[6123, 178, 265, 9, 37, "Output",
+Cell[6123, 178, 265, 9, 35, "Output",
  CellTags->"HypergeometricAC"]
 }, Open  ]]
 }, Closed]]
@@ -708,11 +709,11 @@ Cell[6123, 178, 265, 9, 37, "Output",
 Cell[CellGroupData[{
 Cell[6449, 194, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1038992504],
+ CellID->1109209646],
 Cell[CellGroupData[{
-Cell[6862, 213, 195, 6, 25, "ExampleSection",
- CellID->130690413],
-Cell[7060, 221, 71, 0, 31, "Notes"],
+Cell[6862, 213, 195, 6, 26, "ExampleSection",
+ CellID->768519516],
+Cell[7060, 221, 71, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[7156, 225, 283, 8, 27, "Input",
  CellTags->"HypergeometricAC",
@@ -724,35 +725,35 @@ Cell[CellGroupData[{
 Cell[8976, 286, 283, 8, 27, "Input",
  CellTags->"HypergeometricAC",
  CellID->1497393441],
-Cell[9262, 296, 1462, 46, 147, "Output",
+Cell[9262, 296, 1462, 46, 149, "Output",
  CellTags->"HypergeometricAC"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[10761, 347, 283, 8, 27, "Input",
  CellTags->"HypergeometricAC",
  CellID->1365244505],
-Cell[11047, 357, 1503, 47, 147, "Output",
+Cell[11047, 357, 1503, 47, 149, "Output",
  CellTags->"HypergeometricAC"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[12587, 409, 282, 8, 27, "Input",
  CellTags->"HypergeometricAC",
  CellID->411308116],
-Cell[12872, 419, 1773, 54, 122, "Output",
+Cell[12872, 419, 1773, 54, 124, "Output",
  CellTags->"HypergeometricAC"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[14682, 478, 282, 8, 27, "Input",
  CellTags->"HypergeometricAC",
  CellID->436366778],
-Cell[14967, 488, 501, 16, 53, "Output",
+Cell[14967, 488, 501, 16, 54, "Output",
  CellTags->"HypergeometricAC"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[15505, 509, 283, 8, 27, "Input",
  CellTags->"HypergeometricAC",
  CellID->417226545],
-Cell[15791, 519, 502, 16, 53, "Output",
+Cell[15791, 519, 502, 16, 54, "Output",
  CellTags->"HypergeometricAC"]
 }, Open  ]]
 }, Open  ]],
@@ -761,9 +762,9 @@ Cell[16320, 539, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[16388, 544, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[16661, 558, 745, 25, 55, "SeeAlso"]
+Cell[16661, 558, 745, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[17421, 586, 23, 0, 40, "FooterCell"]
+Cell[17421, 586, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

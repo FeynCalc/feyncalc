@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11171,        365]
-NotebookOptionsPosition[      8024,        275]
-NotebookOutlinePosition[     10340,        334]
-CellTagsIndexPosition[     10255,        329]
+NotebookDataLength[     11223,        366]
+NotebookOptionsPosition[      8025,        275]
+NotebookOutlinePosition[     10391,        335]
+CellTagsIndexPosition[     10306,        330]
 WindowTitle->SUNFDeltaContract
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ SUNFDeltaContract.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$263549], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$254152], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SUNFDeltaContract", ".html"]], None}]}]},
@@ -176,7 +176,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->769174904],
+ CellID->2124114210],
 
 Cell[CellGroupData[{
 
@@ -186,7 +186,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1473292608],
+ CellID->1061978338],
 
 Cell[CellGroupData[{
 
@@ -227,7 +227,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["N", TraditionalForm]], "Output",
- ImageSize->{20, 14},
+ ImageSize->{19, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -276,7 +276,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"SUNFDeltaContract",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -288,7 +288,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 54, 9.342630}", 
+   "built" -> "{2019, 9, 20, 21, 18, 55.162203}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -303,7 +303,7 @@ SUNFIndex around its arguments.", "synonyms" -> {}, "tabletags" -> {},
     "SUNFDeltaContract", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SUNFDeltaContract"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -311,8 +311,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -321,52 +322,52 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5645, 163, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5645, 163, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->769174904]}
+   CellID->2124114210]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10112, 322}
+ {"PrimaryExamplesSection", 10162, 323}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 3129, 75, 50, "AnchorBarGrid",
+Cell[589, 21, 3129, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3721, 98, 294, 11, 44, "ObjectNameGrid"],
-Cell[4018, 111, 1602, 48, 175, "Usage",
+Cell[3721, 98, 294, 11, 45, "ObjectNameGrid"],
+Cell[4018, 111, 1602, 48, 181, "Usage",
  CellID->455417684],
 Cell[CellGroupData[{
-Cell[5645, 163, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5645, 163, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->769174904],
+ CellID->2124114210],
 Cell[CellGroupData[{
-Cell[6057, 182, 196, 6, 25, "ExampleSection",
- CellID->1473292608],
+Cell[6058, 182, 196, 6, 26, "ExampleSection",
+ CellID->1061978338],
 Cell[CellGroupData[{
-Cell[6278, 192, 228, 7, 27, "Input",
+Cell[6279, 192, 228, 7, 27, "Input",
  CellID->622785154],
-Cell[6509, 201, 393, 16, 41, "Output",
+Cell[6510, 201, 393, 16, 41, "Output",
  CellID->1092659905]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6939, 222, 114, 3, 27, "Input",
+Cell[6940, 222, 114, 3, 27, "Input",
  CellID->1040305798],
-Cell[7056, 227, 186, 6, 35, "Output",
+Cell[7057, 227, 186, 6, 35, "Output",
  CellID->595035273]
 }, Open  ]]
 }, Open  ]],
-Cell[7269, 237, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7270, 237, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7337, 242, 270, 12, 31, "SeeAlsoSection",
+Cell[7338, 242, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7610, 256, 372, 14, 55, "SeeAlso",
+Cell[7611, 256, 372, 14, 56, "SeeAlso",
  CellID->660285530]
 }, Open  ]],
-Cell[7997, 273, 23, 0, 40, "FooterCell"]
+Cell[7998, 273, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

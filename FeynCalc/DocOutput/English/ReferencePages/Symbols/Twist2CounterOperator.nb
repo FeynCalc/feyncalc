@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19121,        641]
-NotebookOptionsPosition[     15374,        534]
-NotebookOutlinePosition[     18187,        608]
-CellTagsIndexPosition[     18062,        602]
+NotebookDataLength[     19175,        642]
+NotebookOptionsPosition[     15375,        534]
+NotebookOutlinePosition[     18239,        609]
+CellTagsIndexPosition[     18114,        603]
 WindowTitle->Twist2CounterOperator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Twist2CounterOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$288122], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$277647], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2CounterOperator", ".html"]], None}]}]},
@@ -123,7 +123,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1801911394],
+ CellID->1418275042],
 
 Cell[CellGroupData[{
 
@@ -133,7 +133,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->432818532],
+ CellID->1300714736],
 
 Cell[CellGroupData[{
 
@@ -320,7 +320,7 @@ Cell[BoxData[
               TraditionalForm],
              TraditionalForm]]}]}], ")"}]}]}], ")"}]}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{563, 116},
+ ImageSize->{566, 118},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2CounterOperator",
@@ -376,7 +376,7 @@ Cell[BoxData[
      RowBox[{"m", "-", "1"}]]}], 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{416, 54},
+ ImageSize->{417, 56},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2CounterOperator",
@@ -521,7 +521,7 @@ Cell[BoxData[
            FormBox["p2",
             TraditionalForm],
            TraditionalForm]}]}]]}], ")"}]}]}]}], TraditionalForm]], "Output",
- ImageSize->{440, 88},
+ ImageSize->{439, 89},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2CounterOperator",
@@ -547,7 +547,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 10.052388}", 
+   "built" -> "{2019, 9, 20, 21, 19, 50.651772}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -560,7 +560,7 @@ p3: incoming gluon (count1)).", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "Twist2CounterOperator", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Twist2CounterOperator"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -568,8 +568,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -580,69 +581,69 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3848, 110, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1801911394]},
+   CellID->1418275042]},
  "Twist2CounterOperator"->{
-  Cell[4481, 139, 222, 6, 27, "Input",
+  Cell[4482, 139, 222, 6, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1762178901],
-  Cell[4706, 147, 5132, 179, 137, "Output",
+  Cell[4707, 147, 5132, 179, 139, "Output",
    CellTags->"Twist2CounterOperator"],
-  Cell[9875, 331, 177, 5, 27, "Input",
+  Cell[9876, 331, 177, 5, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1568458682],
-  Cell[10055, 338, 1237, 44, 75, "Output",
+  Cell[10056, 338, 1237, 44, 77, "Output",
    CellTags->"Twist2CounterOperator"],
-  Cell[11329, 387, 260, 7, 27, "Input",
+  Cell[11330, 387, 260, 7, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1910103980],
-  Cell[11592, 396, 3716, 131, 109, "Output",
+  Cell[11593, 396, 3716, 131, 110, "Output",
    CellTags->"Twist2CounterOperator"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17336, 579},
- {"Twist2CounterOperator", 17485, 583}
+ {"PrimaryExamplesSection", 17388, 580},
+ {"Twist2CounterOperator", 17537, 584}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 2326, 53, 50, "AnchorBarGrid",
+Cell[593, 21, 2326, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2922, 76, 298, 11, 44, "ObjectNameGrid"],
-Cell[3223, 89, 600, 17, 99, "Usage",
+Cell[2922, 76, 298, 11, 45, "ObjectNameGrid"],
+Cell[3223, 89, 600, 17, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[3848, 110, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1801911394],
+ CellID->1418275042],
 Cell[CellGroupData[{
-Cell[4261, 129, 195, 6, 25, "ExampleSection",
- CellID->432818532],
+Cell[4261, 129, 196, 6, 26, "ExampleSection",
+ CellID->1300714736],
 Cell[CellGroupData[{
-Cell[4481, 139, 222, 6, 27, "Input",
+Cell[4482, 139, 222, 6, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1762178901],
-Cell[4706, 147, 5132, 179, 137, "Output",
+Cell[4707, 147, 5132, 179, 139, "Output",
  CellTags->"Twist2CounterOperator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9875, 331, 177, 5, 27, "Input",
+Cell[9876, 331, 177, 5, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1568458682],
-Cell[10055, 338, 1237, 44, 75, "Output",
+Cell[10056, 338, 1237, 44, 77, "Output",
  CellTags->"Twist2CounterOperator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11329, 387, 260, 7, 27, "Input",
+Cell[11330, 387, 260, 7, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1910103980],
-Cell[11592, 396, 3716, 131, 109, "Output",
+Cell[11593, 396, 3716, 131, 110, "Output",
  CellTags->"Twist2CounterOperator"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[15347, 532, 23, 0, 40, "FooterCell"]
+Cell[15348, 532, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11214,        390]
-NotebookOptionsPosition[      8113,        295]
-NotebookOutlinePosition[     10163,        350]
-CellTagsIndexPosition[     10079,        345]
+NotebookDataLength[     11268,        391]
+NotebookOptionsPosition[      8114,        295]
+NotebookOutlinePosition[     10216,        351]
+CellTagsIndexPosition[     10132,        346]
 WindowTitle->QuarkFieldChiDagger
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ QuarkFieldChiDagger.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$222658], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$215511], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/QuarkFieldChiDagger", ".html"]], None}]}]},
@@ -127,7 +127,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2094935539],
+ CellID->282735144],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -156,7 +156,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->83490493],
+ CellID->2014822304],
 
 Cell[CellGroupData[{
 
@@ -166,7 +166,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1355746775],
+ CellID->2113852824],
 
 Cell[CellGroupData[{
 
@@ -177,7 +177,7 @@ Cell[BoxData["QuarkFieldChiDagger"], "Input",
 Cell[BoxData[
  FormBox[
   SuperscriptBox["\[Chi]", "\[Dagger]"], TraditionalForm]], "Output",
- ImageSize->{24, 20},
+ ImageSize->{25, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -214,7 +214,7 @@ Cell[BoxData[
      TraditionalForm]], ".", 
    FormBox["\[Chi]",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{88, 21},
+ ImageSize->{94, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -282,7 +282,7 @@ Cell[BoxData[
        TraditionalForm]], ".", 
      FormBox["\[Chi]",
       TraditionalForm]}]}]}], TraditionalForm]], "Output",
- ImageSize->{284, 22},
+ ImageSize->{293, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -308,7 +308,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 36.693273}", 
+   "built" -> "{2019, 9, 20, 21, 17, 24.811800}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -319,7 +319,7 @@ TaggingRules->{
     "", "windowtitle" -> "QuarkFieldChiDagger", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/QuarkFieldChiDagger"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -327,8 +327,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -337,61 +338,61 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4564, 143, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[4563, 143, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->83490493]}
+   CellID->2014822304]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9937, 338}
+ {"PrimaryExamplesSection", 9988, 339}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 2318, 53, 50, "AnchorBarGrid",
+Cell[591, 21, 2318, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2912, 76, 296, 11, 44, "ObjectNameGrid"],
+Cell[2912, 76, 296, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3233, 91, 346, 10, 82, "Usage",
+Cell[3233, 91, 346, 10, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3604, 105, 739, 24, 31, "NotesSection",
+Cell[3604, 105, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2094935539],
-Cell[4346, 131, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[4380, 133, 135, 4, 31, "Notes",
+ CellID->282735144],
+Cell[4345, 131, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[4379, 133, 135, 4, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4564, 143, 386, 15, 31, "PrimaryExamplesSection",
+Cell[4563, 143, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->83490493],
+ CellID->2014822304],
 Cell[CellGroupData[{
-Cell[4975, 162, 196, 6, 25, "ExampleSection",
- CellID->1355746775],
+Cell[4976, 162, 196, 6, 26, "ExampleSection",
+ CellID->2113852824],
 Cell[CellGroupData[{
-Cell[5196, 172, 89, 2, 27, "Input",
+Cell[5197, 172, 89, 2, 27, "Input",
  CellID->1148663248],
-Cell[5288, 176, 223, 7, 41, "Output",
+Cell[5289, 176, 223, 7, 41, "Output",
  CellID->629632876]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5548, 188, 294, 7, 45, "Input",
+Cell[5549, 188, 294, 7, 45, "Input",
  CellID->497682476],
-Cell[5845, 197, 579, 23, 42, "Output",
+Cell[5846, 197, 579, 23, 42, "Output",
  CellID->861497191]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6461, 225, 110, 3, 27, "Input",
+Cell[6462, 225, 110, 3, 27, "Input",
  CellID->304243571],
-Cell[6574, 230, 1473, 58, 43, "Output",
+Cell[6575, 230, 1473, 58, 43, "Output",
  CellID->726769996]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8086, 293, 23, 0, 40, "FooterCell"]
+Cell[8087, 293, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

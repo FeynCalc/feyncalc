@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11761,        382]
-NotebookOptionsPosition[      8535,        290]
-NotebookOutlinePosition[     11044,        356]
-CellTagsIndexPosition[     10936,        350]
+NotebookDataLength[     11809,        383]
+NotebookOptionsPosition[      8534,        290]
+NotebookOutlinePosition[     11093,        357]
+CellTagsIndexPosition[     10985,        351]
 WindowTitle->PaVe
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$211510], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$204863], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/PaVe", 
              ".html"]], None}]}]},
@@ -150,7 +150,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1739820497],
+ CellID->1944583515],
 
 Cell[CellGroupData[{
 
@@ -160,7 +160,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1672016439],
+ CellID->749937623],
 
 Cell[TextData[{
  "Some of the PaVe's reduce to special cases with ",
@@ -249,7 +249,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"1", "-", "D"}], ")"}], " ", "pp"}]]}], 
   TraditionalForm]], "Output",
- ImageSize->{471, 94},
+ ImageSize->{481, 96},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVe",
@@ -291,7 +291,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"PaVe",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -303,7 +303,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 12.524470}", 
+   "built" -> "{2019, 9, 20, 21, 17, 1.105648}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -318,7 +318,7 @@ scalar integrals.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "PaVe",
     "titlemodifier" -> "", "windowtitle" -> "PaVe", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/PaVe"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -326,8 +326,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -338,52 +339,52 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4821, 137, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1739820497]},
+   CellID->1944583515]},
  "PaVe"->{
-  Cell[5621, 172, 344, 11, 27, "Input",
+  Cell[5620, 172, 344, 11, 27, "Input",
    CellTags->"PaVe",
    CellID->378525516],
-  Cell[5968, 185, 1964, 70, 115, "Output",
+  Cell[5967, 185, 1964, 70, 117, "Output",
    CellTags->"PaVe"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10631, 337},
- {"PaVe", 10763, 341}
+ {"PrimaryExamplesSection", 10680, 338},
+ {"PaVe", 10812, 342}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2990, 74, 50, "AnchorBarGrid",
+Cell[576, 21, 2990, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3569, 97, 281, 11, 44, "ObjectNameGrid"],
-Cell[3853, 110, 943, 23, 131, "Usage",
+Cell[3569, 97, 281, 11, 45, "ObjectNameGrid"],
+Cell[3853, 110, 943, 23, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4821, 137, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1739820497],
+ CellID->1944583515],
 Cell[CellGroupData[{
-Cell[5234, 156, 196, 6, 25, "ExampleSection",
- CellID->1672016439],
-Cell[5433, 164, 163, 4, 31, "Notes"],
+Cell[5234, 156, 195, 6, 26, "ExampleSection",
+ CellID->749937623],
+Cell[5432, 164, 163, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5621, 172, 344, 11, 27, "Input",
+Cell[5620, 172, 344, 11, 27, "Input",
  CellTags->"PaVe",
  CellID->378525516],
-Cell[5968, 185, 1964, 70, 115, "Output",
+Cell[5967, 185, 1964, 70, 117, "Output",
  CellTags->"PaVe"]
 }, Open  ]]
 }, Open  ]],
-Cell[7959, 259, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7958, 259, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8027, 264, 270, 12, 31, "SeeAlsoSection",
+Cell[8026, 264, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8300, 278, 193, 7, 54, "SeeAlso"]
+Cell[8299, 278, 193, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[8508, 288, 23, 0, 40, "FooterCell"]
+Cell[8507, 288, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

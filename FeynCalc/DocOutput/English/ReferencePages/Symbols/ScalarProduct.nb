@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23912,        854]
-NotebookOptionsPosition[     17060,        645]
-NotebookOutlinePosition[     21275,        758]
-CellTagsIndexPosition[     21158,        752]
+NotebookDataLength[     23958,        855]
+NotebookOptionsPosition[     17059,        645]
+NotebookOutlinePosition[     21322,        759]
+CellTagsIndexPosition[     21205,        753]
 WindowTitle->ScalarProduct
 WindowFrame->Normal*)
 
@@ -88,7 +88,7 @@ ScalarProduct.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$232436], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$224849], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ScalarProduct", ".html"]], None}]}]},
@@ -169,7 +169,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->202376726],
+ CellID->735673121],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -188,7 +188,7 @@ Cell[BoxData[
     RowBox[{"SetDimensions", "\[Rule]", 
      RowBox[{"{", 
       RowBox[{"4", ",", "D"}], "}"}]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{420, 16},
+ ImageSize->{414, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[312]="]
@@ -213,7 +213,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1670227049],
+ CellID->1335380221],
 
 Cell[CellGroupData[{
 
@@ -223,7 +223,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1769202881],
+ CellID->114620438],
 
 Cell[CellGroupData[{
 
@@ -249,7 +249,7 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{40, 16},
+ ImageSize->{43, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -294,7 +294,7 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{111, 16},
+ ImageSize->{114, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -318,7 +318,7 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{24, 18},
+ ImageSize->{26, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -341,7 +341,7 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{25, 18},
+ ImageSize->{26, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -363,7 +363,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]], "Output",
- ImageSize->{247, 15},
+ ImageSize->{251, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -389,7 +389,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
     RowBox[{"q", ",", "D"}], "]"}]}], "]"}]], "Output",
- ImageSize->{291, 15},
+ ImageSize->{297, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -412,7 +412,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   FractionBox["s", "2"], TraditionalForm]], "Output",
- ImageSize->{16, 31},
+ ImageSize->{17, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -487,7 +487,7 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}], "+", 
    FractionBox["s", "2"]}], TraditionalForm]], "Output",
- ImageSize->{201, 31},
+ ImageSize->{208, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -562,7 +562,7 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}], "+", 
    FractionBox["s", "2"]}], TraditionalForm]], "Output",
- ImageSize->{201, 31},
+ ImageSize->{208, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
@@ -646,7 +646,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"ScalarProduct",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -658,7 +658,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 56.891839}", 
+   "built" -> "{2019, 9, 20, 21, 17, 45.221655}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -677,7 +677,7 @@ FeynCalc..", "synonyms" -> {}, "tabletags" -> {}, "title" -> "ScalarProduct",
     "Symbol", "uri" -> "FeynCalc/ref/ScalarProduct"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -685,8 +685,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -697,79 +698,79 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6889, 200, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1670227049]},
+   CellID->1335380221]},
  "ScalarProduct"->{
-  Cell[7523, 229, 160, 5, 27, "Input",
+  Cell[7522, 229, 160, 5, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->888961720],
-  Cell[7686, 236, 464, 19, 37, "Output",
+  Cell[7685, 236, 464, 19, 37, "Output",
    CellTags->"ScalarProduct"],
-  Cell[8187, 260, 204, 7, 27, "Input",
+  Cell[8186, 260, 204, 7, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->2091143136],
-  Cell[8394, 269, 784, 31, 37, "Output",
+  Cell[8393, 269, 784, 31, 37, "Output",
    CellTags->"ScalarProduct"],
-  Cell[9215, 305, 160, 5, 27, "Input",
+  Cell[9214, 305, 160, 5, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->780031215],
-  Cell[9378, 312, 315, 12, 39, "Output",
+  Cell[9377, 312, 315, 12, 39, "Output",
    CellTags->"ScalarProduct"],
-  Cell[9730, 329, 136, 4, 27, "Input",
+  Cell[9729, 329, 136, 4, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->10314838],
-  Cell[9869, 335, 315, 12, 39, "Output",
+  Cell[9868, 335, 315, 12, 39, "Output",
    CellTags->"ScalarProduct"],
-  Cell[10221, 352, 196, 6, 27, "Input",
+  Cell[10220, 352, 196, 6, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->158991943],
-  Cell[10420, 360, 306, 9, 49, "Output",
+  Cell[10419, 360, 306, 9, 51, "Output",
    CellTags->"ScalarProduct"],
-  Cell[10763, 374, 249, 8, 27, "Input",
+  Cell[10762, 374, 249, 8, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->1173751525],
-  Cell[11015, 384, 356, 11, 49, "Output",
+  Cell[11014, 384, 356, 11, 51, "Output",
    CellTags->"ScalarProduct"],
-  Cell[11408, 400, 266, 9, 27, "Input",
+  Cell[11407, 400, 266, 9, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->1579106051],
-  Cell[11677, 411, 215, 7, 52, "Output",
+  Cell[11676, 411, 215, 7, 52, "Output",
    CellTags->"ScalarProduct"],
-  Cell[11929, 423, 312, 10, 27, "Input",
+  Cell[11928, 423, 312, 10, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->373851414],
-  Cell[12244, 435, 1368, 58, 52, "Output",
+  Cell[12243, 435, 1368, 58, 52, "Output",
    CellTags->"ScalarProduct"],
-  Cell[13649, 498, 296, 10, 27, "Input",
+  Cell[13648, 498, 296, 10, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->54231534],
-  Cell[13948, 510, 1368, 58, 52, "Output",
+  Cell[13947, 510, 1368, 58, 52, "Output",
    CellTags->"ScalarProduct"],
-  Cell[15331, 571, 142, 4, 27, "Input",
+  Cell[15330, 571, 142, 4, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->1715327028]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19410, 696},
- {"ScalarProduct", 19551, 700}
+ {"PrimaryExamplesSection", 19457, 697},
+ {"ScalarProduct", 19598, 701}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 3583, 83, 50, "AnchorBarGrid",
+Cell[585, 21, 3583, 83, 53, "AnchorBarGrid",
  CellID->1],
-Cell[4171, 106, 290, 11, 44, "ObjectNameGrid"],
+Cell[4171, 106, 290, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4486, 121, 1010, 22, 163, "Usage",
+Cell[4486, 121, 1010, 22, 171, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[5521, 147, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->202376726],
-Cell[6262, 173, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->735673121],
+Cell[6262, 173, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[6318, 177, 97, 2, 27, "Input"],
+Cell[6318, 177, 97, 2, 70, "Input"],
 Cell[6418, 181, 410, 12, 37, "Output"]
 }, Open  ]]
 }, Closed]]
@@ -777,85 +778,85 @@ Cell[6418, 181, 410, 12, 37, "Output"]
 Cell[CellGroupData[{
 Cell[6889, 200, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1670227049],
+ CellID->1335380221],
 Cell[CellGroupData[{
-Cell[7302, 219, 196, 6, 25, "ExampleSection",
- CellID->1769202881],
+Cell[7302, 219, 195, 6, 26, "ExampleSection",
+ CellID->114620438],
 Cell[CellGroupData[{
-Cell[7523, 229, 160, 5, 27, "Input",
+Cell[7522, 229, 160, 5, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->888961720],
-Cell[7686, 236, 464, 19, 37, "Output",
+Cell[7685, 236, 464, 19, 37, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8187, 260, 204, 7, 27, "Input",
+Cell[8186, 260, 204, 7, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->2091143136],
-Cell[8394, 269, 784, 31, 37, "Output",
+Cell[8393, 269, 784, 31, 37, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9215, 305, 160, 5, 27, "Input",
+Cell[9214, 305, 160, 5, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->780031215],
-Cell[9378, 312, 315, 12, 39, "Output",
+Cell[9377, 312, 315, 12, 39, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9730, 329, 136, 4, 27, "Input",
+Cell[9729, 329, 136, 4, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->10314838],
-Cell[9869, 335, 315, 12, 39, "Output",
+Cell[9868, 335, 315, 12, 39, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10221, 352, 196, 6, 27, "Input",
+Cell[10220, 352, 196, 6, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->158991943],
-Cell[10420, 360, 306, 9, 49, "Output",
+Cell[10419, 360, 306, 9, 51, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10763, 374, 249, 8, 27, "Input",
+Cell[10762, 374, 249, 8, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->1173751525],
-Cell[11015, 384, 356, 11, 49, "Output",
+Cell[11014, 384, 356, 11, 51, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11408, 400, 266, 9, 27, "Input",
+Cell[11407, 400, 266, 9, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->1579106051],
-Cell[11677, 411, 215, 7, 52, "Output",
+Cell[11676, 411, 215, 7, 52, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11929, 423, 312, 10, 27, "Input",
+Cell[11928, 423, 312, 10, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->373851414],
-Cell[12244, 435, 1368, 58, 52, "Output",
+Cell[12243, 435, 1368, 58, 52, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13649, 498, 296, 10, 27, "Input",
+Cell[13648, 498, 296, 10, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->54231534],
-Cell[13948, 510, 1368, 58, 52, "Output",
+Cell[13947, 510, 1368, 58, 52, "Output",
  CellTags->"ScalarProduct"]
 }, Open  ]],
-Cell[15331, 571, 142, 4, 27, "Input",
+Cell[15330, 571, 142, 4, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->1715327028]
 }, Open  ]],
-Cell[15488, 578, 31, 0, 29, "SectionFooterSpacer"]
+Cell[15487, 578, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15556, 583, 270, 12, 31, "SeeAlsoSection",
+Cell[15555, 583, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[15829, 597, 1189, 43, 55, "SeeAlso"]
+Cell[15828, 597, 1189, 43, 56, "SeeAlso"]
 }, Open  ]],
-Cell[17033, 643, 23, 0, 40, "FooterCell"]
+Cell[17032, 643, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

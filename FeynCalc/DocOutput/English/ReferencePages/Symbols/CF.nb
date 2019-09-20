@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11350,        404]
-NotebookOptionsPosition[      7592,        281]
-NotebookOutlinePosition[     10189,        358]
-CellTagsIndexPosition[     10085,        352]
+NotebookDataLength[     11404,        405]
+NotebookOptionsPosition[      7593,        281]
+NotebookOutlinePosition[     10242,        359]
+CellTagsIndexPosition[     10138,        353]
 WindowTitle->CF
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36409], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$35570], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/CF", 
              ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->805225210],
+ CellID->1168498592],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->413712002],
+ CellID->855261548],
 
 Cell[CellGroupData[{
 
@@ -194,7 +194,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["N", "2"], "-", "1"}], 
    RowBox[{"2", " ", "N"}]], TraditionalForm]], "Output",
- ImageSize->{55, 38},
+ ImageSize->{54, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CF",
@@ -210,7 +210,7 @@ Cell[BoxData["SUNN"], "Input",
 
 Cell[BoxData[
  FormBox["N", TraditionalForm]], "Output",
- ImageSize->{20, 14},
+ ImageSize->{19, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CF",
@@ -234,7 +234,7 @@ Cell[BoxData[
   RowBox[{"2", " ", 
    SubscriptBox["C", "A"], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
- ImageSize->{64, 16},
+ ImageSize->{65, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CF",
@@ -294,7 +294,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 35.324447}", 
+   "built" -> "{2019, 9, 20, 21, 10, 28.494798}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -305,7 +305,7 @@ N)).", "synonyms" -> {}, "tabletags" -> {}, "title" -> "CF", "titlemodifier" ->
     "", "windowtitle" -> "CF", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/CF"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -313,8 +313,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -323,89 +324,89 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4536, 136, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4536, 136, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->805225210]},
+   CellID->1168498592]},
  "CF"->{
-  Cell[5168, 165, 88, 3, 27, "Input",
+  Cell[5169, 165, 88, 3, 27, "Input",
    CellTags->"CF",
    CellID->606616156],
-  Cell[5259, 170, 205, 7, 37, "Output",
+  Cell[5260, 170, 205, 7, 37, "Output",
    CellTags->"CF"],
-  Cell[5501, 182, 196, 6, 27, "Input",
+  Cell[5502, 182, 196, 6, 27, "Input",
    CellTags->"CF",
    CellID->943993167],
-  Cell[5700, 190, 278, 10, 59, "Output",
+  Cell[5701, 190, 278, 10, 59, "Output",
    CellTags->"CF"],
-  Cell[6015, 205, 90, 3, 27, "Input",
+  Cell[6016, 205, 90, 3, 27, "Input",
    CellTags->"CF",
    CellID->721736691],
-  Cell[6108, 210, 183, 6, 35, "Output",
+  Cell[6109, 210, 183, 6, 35, "Output",
    CellTags->"CF"],
-  Cell[6328, 221, 252, 8, 27, "Input",
+  Cell[6329, 221, 252, 8, 27, "Input",
    CellTags->"CF",
    CellID->1669593560],
-  Cell[6583, 231, 262, 9, 37, "Output",
+  Cell[6584, 231, 262, 9, 37, "Output",
    CellTags->"CF"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9368, 324},
- {"CF", 9497, 328}
+ {"PrimaryExamplesSection", 9420, 325},
+ {"CF", 9550, 329}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[574, 21, 3071, 75, 50, "AnchorBarGrid",
+Cell[574, 21, 3071, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3648, 98, 279, 11, 44, "ObjectNameGrid"],
-Cell[3930, 111, 581, 21, 86, "Usage",
+Cell[3648, 98, 279, 11, 45, "ObjectNameGrid"],
+Cell[3930, 111, 581, 21, 87, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4536, 136, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4536, 136, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->805225210],
+ CellID->1168498592],
 Cell[CellGroupData[{
-Cell[4948, 155, 195, 6, 25, "ExampleSection",
- CellID->413712002],
+Cell[4949, 155, 195, 6, 26, "ExampleSection",
+ CellID->855261548],
 Cell[CellGroupData[{
-Cell[5168, 165, 88, 3, 27, "Input",
+Cell[5169, 165, 88, 3, 27, "Input",
  CellTags->"CF",
  CellID->606616156],
-Cell[5259, 170, 205, 7, 37, "Output",
+Cell[5260, 170, 205, 7, 37, "Output",
  CellTags->"CF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5501, 182, 196, 6, 27, "Input",
+Cell[5502, 182, 196, 6, 27, "Input",
  CellTags->"CF",
  CellID->943993167],
-Cell[5700, 190, 278, 10, 59, "Output",
+Cell[5701, 190, 278, 10, 59, "Output",
  CellTags->"CF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6015, 205, 90, 3, 27, "Input",
+Cell[6016, 205, 90, 3, 27, "Input",
  CellTags->"CF",
  CellID->721736691],
-Cell[6108, 210, 183, 6, 35, "Output",
+Cell[6109, 210, 183, 6, 35, "Output",
  CellTags->"CF"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6328, 221, 252, 8, 27, "Input",
+Cell[6329, 221, 252, 8, 27, "Input",
  CellTags->"CF",
  CellID->1669593560],
-Cell[6583, 231, 262, 9, 37, "Output",
+Cell[6584, 231, 262, 9, 37, "Output",
  CellTags->"CF"]
 }, Open  ]]
 }, Open  ]],
-Cell[6872, 244, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6873, 244, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6940, 249, 270, 12, 31, "SeeAlsoSection",
+Cell[6941, 249, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7213, 263, 337, 13, 55, "SeeAlso"]
+Cell[7214, 263, 337, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7565, 279, 23, 0, 40, "FooterCell"]
+Cell[7566, 279, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

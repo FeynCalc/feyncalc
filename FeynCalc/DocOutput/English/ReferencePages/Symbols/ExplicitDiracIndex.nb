@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10184,        342]
-NotebookOptionsPosition[      7281,        255]
-NotebookOutlinePosition[      9352,        311]
-CellTagsIndexPosition[      9268,        306]
+NotebookDataLength[     12206,        399]
+NotebookOptionsPosition[      9249,        311]
+NotebookOutlinePosition[     11372,        368]
+CellTagsIndexPosition[     11287,        363]
 WindowTitle->ExplicitDiracIndex
 WindowFrame->Normal*)
 
@@ -32,9 +32,23 @@ Cell[BoxData[GridBox[{
          TextCell[
           Row[{"See Also", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->False], {"\<\"DiracIndex\"\>":>Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/DiracIndex"], "\<\"FCHN\"\>":>
-       Documentation`HelpLookup["paclet:FeynCalc/ref/FCHN"]},
+        StripOnInput->False], {"\<\"DiracChain\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChain"], "\<\"DCHN\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DCHN"], "\<\"DiracIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracIndex"], "\<\"DiracIndexDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracIndexDelta"], "\<\"DIDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DIDelta"], "\<\"DiracChainJoin\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainJoin"], "\<\"DiracChainCombine\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainCombine"], "\<\"DiracChainExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainExpand"], "\<\"DiracChainFactor\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracChainFactor"]},
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"SeeAlso"]],
@@ -80,7 +94,7 @@ ExplicitDiracIndex.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$85184], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83681], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ExplicitDiracIndex", ".html"]], None}]}]},
@@ -141,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->356021958],
+ CellID->270233604],
 
 Cell[CellGroupData[{
 
@@ -151,12 +165,12 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1929166235],
+ CellID->1595631461],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCHN", "[", 
+ RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{"GA", "[", "\[Mu]", "]"}], ",", "1", ",", "2"}], "]"}]], "Input",
  CellLabel->"In[1]:=",
@@ -201,13 +215,13 @@ Cell[BoxData[
  CellID->1377283560],
 
 Cell[BoxData[
- RowBox[{"FermionicChain", "[", 
+ RowBox[{"DiracChain", "[", 
   RowBox[{
    RowBox[{"DiracGamma", "[", 
     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
    RowBox[{"ExplicitDiracIndex", "[", "1", "]"}], ",", 
    RowBox[{"ExplicitDiracIndex", "[", "2", "]"}]}], "]"}]], "Output",
- ImageSize->{370, 33},
+ ImageSize->{374, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]//StandardForm=",
@@ -235,20 +249,62 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
+ StyleBox[ButtonBox["DiracChain",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChain",
+  ButtonNote->"DiracChain"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DCHN",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DCHN",
+  ButtonNote->"DiracChain"],
+  FontFamily->"Verdana"],
+ ", ",
  StyleBox[ButtonBox["DiracIndex",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracIndex",
   ButtonNote->"DiracIndex"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["FCHN",
+ StyleBox[ButtonBox["DiracIndexDelta",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FCHN",
-  ButtonNote->"FCHN"],
+  ButtonData->"paclet:FeynCalc/ref/DiracIndexDelta",
+  ButtonNote->"DiracIndexDelta"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DIDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DIDelta",
+  ButtonNote->"DIDelta"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracChainJoin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainJoin",
+  ButtonNote->"DiracChainJoin"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracChainCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainCombine",
+  ButtonNote->"DiracChainCombine"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracChainExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainExpand",
+  ButtonNote->"DiracChainExpand"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracChainFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainFactor",
+  ButtonNote->"DiracChainFactor"],
   FontFamily->"Verdana"],
  "."
 }], "SeeAlso",
- CellID->442356255]
+ CellID->655647701]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -268,7 +324,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 29.606088}", 
+   "built" -> "{2019, 9, 20, 21, 12, 25.373776}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -280,7 +336,7 @@ integer", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "ExplicitDiracIndex", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ExplicitDiracIndex"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -288,8 +344,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -298,52 +355,52 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4487, 128, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5223, 142, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->356021958]}
+   CellID->270233604]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9125, 299}
+ {"PrimaryExamplesSection", 11144, 356}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 3124, 75, 50, "AnchorBarGrid",
+Cell[590, 21, 3860, 89, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3717, 98, 295, 11, 44, "ObjectNameGrid"],
-Cell[4015, 111, 447, 13, 83, "Usage",
+Cell[4453, 112, 295, 11, 45, "ObjectNameGrid"],
+Cell[4751, 125, 447, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4487, 128, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5223, 142, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->356021958],
+ CellID->270233604],
 Cell[CellGroupData[{
-Cell[4899, 147, 196, 6, 25, "ExampleSection",
- CellID->1929166235],
+Cell[5635, 161, 196, 6, 26, "ExampleSection",
+ CellID->1595631461],
 Cell[CellGroupData[{
-Cell[5120, 157, 168, 5, 27, "Input",
+Cell[5856, 171, 168, 5, 27, "Input",
  CellID->1567992074],
-Cell[5291, 164, 627, 27, 38, "Output",
+Cell[6027, 178, 627, 27, 38, "Output",
  CellID->1008305614]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5955, 196, 131, 4, 27, "Input",
+Cell[6691, 210, 131, 4, 27, "Input",
  CellID->1377283560],
-Cell[6089, 202, 422, 11, 67, "Output",
+Cell[6825, 216, 418, 11, 69, "Output",
  CellID->1835465320]
 }, Open  ]]
 }, Open  ]],
-Cell[6538, 217, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7270, 231, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6606, 222, 270, 12, 31, "SeeAlsoSection",
+Cell[7338, 236, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6879, 236, 360, 14, 55, "SeeAlso",
- CellID->442356255]
+Cell[7611, 250, 1596, 56, 71, "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
-Cell[7254, 253, 23, 0, 40, "FooterCell"]
+Cell[9222, 309, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

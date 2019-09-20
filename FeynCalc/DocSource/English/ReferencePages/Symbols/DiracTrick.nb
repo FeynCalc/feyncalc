@@ -293,7 +293,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Mu]"}], "]"}]], "Input",
- CellLabel->"In[20]:="],
+ CellLabel->"In[206]:="],
 
 Cell[BoxData[
  FormBox[
@@ -322,14 +322,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[20]="]
+ CellLabel->"Out[206]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
- CellLabel->"In[21]:="],
+ CellLabel->"In[207]:="],
 
 Cell[BoxData[
  FormBox[
@@ -341,7 +341,7 @@ Cell[BoxData[
      FormBox["\[Nu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[21]="]
+ CellLabel->"Out[207]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -350,7 +350,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"GS", "[", "p", "]"}], ".", 
   RowBox[{"GS", "[", "p", "]"}]}]], "Input",
- CellLabel->"In[22]:="],
+ CellLabel->"In[208]:="],
 
 Cell[BoxData[
  FormBox[
@@ -375,14 +375,14 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[22]="]
+ CellLabel->"Out[208]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
- CellLabel->"In[23]:="],
+ CellLabel->"In[209]:="],
 
 Cell[BoxData[
  FormBox[
@@ -392,7 +392,7 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- CellLabel->"Out[23]="]
+ CellLabel->"Out[209]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -400,7 +400,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GA", "[", 
   RowBox[{"5", ",", "\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
- CellLabel->"In[25]:="],
+ CellLabel->"In[210]:="],
 
 Cell[BoxData[
  FormBox[
@@ -427,14 +427,14 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellLabel->"Out[25]="]
+ CellLabel->"Out[210]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
- CellLabel->"In[26]:="],
+ CellLabel->"In[211]:="],
 
 Cell[BoxData[
  FormBox[
@@ -455,7 +455,7 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
- CellLabel->"Out[26]="]
+ CellLabel->"Out[211]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -481,7 +481,7 @@ Cell[BoxData[
     RowBox[{"1", "/", "2"}], "+", 
     RowBox[{
      RowBox[{"GA", "[", "5", "]"}], "/", "2"}]}], ")"}]}]], "Input",
- CellLabel->"In[27]:="],
+ CellLabel->"In[212]:="],
 
 Cell[BoxData[
  FormBox[
@@ -525,14 +525,14 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm], "2"], "+", 
      FractionBox["1", "2"]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[27]="]
+ CellLabel->"Out[212]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
- CellLabel->"In[28]:="],
+ CellLabel->"In[213]:="],
 
 Cell[BoxData[
  FormBox[
@@ -557,7 +557,7 @@ Cell[BoxData[
       OverscriptBox["\[Gamma]", "_"], 
       FormBox["6",
        TraditionalForm]]}], "b"]}], TraditionalForm]], "Output",
- CellLabel->"Out[28]="]
+ CellLabel->"Out[213]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -580,7 +580,7 @@ Cell[BoxData[
  RowBox[{"DiracTrace", "[", 
   RowBox[{"GAD", "[", 
    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}]], "Input",
- CellLabel->"In[29]:="],
+ CellLabel->"In[214]:="],
 
 Cell[BoxData[
  FormBox[
@@ -602,14 +602,14 @@ Cell[BoxData[
         TraditionalForm]],
       TraditionalForm]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[29]="]
+ CellLabel->"Out[214]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracTrick", "[", "%", "]"}]], "Input",
- CellLabel->"In[30]:="],
+ CellLabel->"In[215]:="],
 
 Cell[BoxData[
  FormBox[
@@ -627,7 +627,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]]}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellLabel->"Out[30]="]
+ CellLabel->"Out[215]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -693,13 +693,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{893, Automatic}, {206, Automatic}},
+WindowMargins->{{Automatic, 317}, {Automatic, 36}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

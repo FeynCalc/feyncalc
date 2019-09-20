@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10790,        323]
-NotebookOptionsPosition[      7633,        237]
-NotebookOutlinePosition[     10172,        299]
-CellTagsIndexPosition[     10088,        294]
+NotebookDataLength[     10842,        324]
+NotebookOptionsPosition[      7635,        237]
+NotebookOutlinePosition[     10222,        300]
+CellTagsIndexPosition[     10138,        295]
 WindowTitle->GenericPropagatorDenominator
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ GenericPropagatorDenominator.html"], StandardForm]], "Input",
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157216], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152543], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GenericPropagatorDenominator", ".html"]], None}]}]},
@@ -129,7 +129,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->563722548],
+ CellID->2140831250],
 
 Cell[CellGroupData[{
 
@@ -139,7 +139,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->673433688],
+ CellID->1634122860],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[BoxData[
     "\"(\"","x","\"+\"",RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     
     "RowDefault"]], TraditionalForm]], "Output",
- ImageSize->{59, 38},
+ ImageSize->{60, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -224,7 +224,7 @@ Cell[BoxData[
           FormBox["p2", TraditionalForm], TraditionalForm]}]}],"\"+\"",
      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
     "RowDefault"]], TraditionalForm]], "Output",
- ImageSize->{243, 38},
+ ImageSize->{244, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -238,7 +238,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"GenericPropagatorDenominator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -250,7 +250,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 14.550907}", 
+   "built" -> "{2019, 9, 20, 21, 15, 6.258859}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -268,7 +268,7 @@ propagators in FeynCalc you should use GFAD", "synonyms" -> {},
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/GenericPropagatorDenominator"},
    "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -276,8 +276,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -286,45 +287,45 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4224, 116, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4224, 116, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->563722548]}
+   CellID->2140831250]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9945, 287}
+ {"PrimaryExamplesSection", 9994, 288}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[600, 21, 2383, 56, 50, "AnchorBarGrid",
+Cell[600, 21, 2383, 56, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2986, 79, 305, 11, 44, "ObjectNameGrid"],
-Cell[3294, 92, 905, 20, 147, "Usage",
+Cell[2986, 79, 305, 11, 45, "ObjectNameGrid"],
+Cell[3294, 92, 905, 20, 154, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4224, 116, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4224, 116, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->563722548],
+ CellID->2140831250],
 Cell[CellGroupData[{
-Cell[4636, 135, 195, 6, 25, "ExampleSection",
- CellID->673433688],
+Cell[4637, 135, 196, 6, 26, "ExampleSection",
+ CellID->1634122860],
 Cell[CellGroupData[{
-Cell[4856, 145, 245, 7, 27, "Input",
+Cell[4858, 145, 245, 7, 27, "Input",
  CellID->1373353974],
-Cell[5104, 154, 324, 11, 59, "Output",
+Cell[5106, 154, 324, 11, 59, "Output",
  CellID->1721966927]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5465, 170, 924, 27, 79, "Input",
+Cell[5467, 170, 924, 27, 79, "Input",
  CellID->1129234700],
-Cell[6392, 199, 1175, 31, 59, "Output",
+Cell[6394, 199, 1175, 31, 59, "Output",
  CellID->430028496]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7606, 235, 23, 0, 40, "FooterCell"]
+Cell[7608, 235, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

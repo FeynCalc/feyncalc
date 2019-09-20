@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10576,        346]
-NotebookOptionsPosition[      7397,        253]
-NotebookOutlinePosition[      9651,        312]
-CellTagsIndexPosition[      9567,        307]
+NotebookDataLength[     10572,        346]
+NotebookOptionsPosition[      7398,        253]
+NotebookOutlinePosition[      9645,        312]
+CellTagsIndexPosition[      9561,        307]
 WindowTitle->FCEnableTraditionalFormOutput
 WindowFrame->Normal*)
 
@@ -84,7 +84,7 @@ FCEnableTraditionalFormOutput.html"], StandardForm]], "Input",
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$99051], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$96941], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCEnableTraditionalFormOutput", ".html"]], 
@@ -146,7 +146,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->711081983],
+ CellID->2138420150],
 
 Cell[CellGroupData[{
 
@@ -156,7 +156,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->958375270],
+ CellID->793648624],
 
 Cell[BoxData[
  RowBox[{"FCDisableTraditionalFormOutput", "[", "]"}]], "Input",
@@ -174,7 +174,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"FV", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Output",
- ImageSize->{69, 15},
+ ImageSize->{71, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -206,7 +206,7 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{25, 16},
+ ImageSize->{28, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]=",
@@ -254,7 +254,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"FCEnableTraditionalFormOutput",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -266,7 +266,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 48, 1.621262}", 
+   "built" -> "{2019, 9, 20, 21, 12, 57.259685}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -281,7 +281,7 @@ not influence any subequent Mathematica FrontEnd sessions", "synonyms" -> {},
     "FeynCalc/ref/FCEnableTraditionalFormOutput"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -290,7 +290,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -299,55 +299,55 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4759, 133, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4759, 133, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->711081983]}
+   CellID->2138420150]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9424, 300}
+ {"PrimaryExamplesSection", 9417, 300}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[601, 21, 3294, 80, 50, "AnchorBarGrid",
+Cell[601, 21, 3294, 80, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3898, 103, 306, 11, 44, "ObjectNameGrid"],
-Cell[4207, 116, 527, 13, 99, "Usage",
+Cell[3898, 103, 306, 11, 45, "ObjectNameGrid"],
+Cell[4207, 116, 527, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4759, 133, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4759, 133, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->711081983],
+ CellID->2138420150],
 Cell[CellGroupData[{
-Cell[5171, 152, 195, 6, 25, "ExampleSection",
- CellID->958375270],
-Cell[5369, 160, 122, 3, 27, "Input",
+Cell[5172, 152, 195, 6, 26, "ExampleSection",
+ CellID->793648624],
+Cell[5370, 160, 122, 3, 27, "Input",
  CellID->1038938737],
 Cell[CellGroupData[{
-Cell[5516, 167, 125, 4, 27, "Input",
+Cell[5517, 167, 125, 4, 27, "Input",
  CellID->272206574],
-Cell[5644, 173, 213, 7, 36, "Output",
+Cell[5645, 173, 213, 7, 36, "Output",
  CellID->614182227]
 }, Open  ]],
-Cell[5872, 183, 121, 3, 27, "Input",
+Cell[5873, 183, 121, 3, 27, "Input",
  CellID->2126693435],
 Cell[CellGroupData[{
-Cell[6018, 190, 125, 4, 27, "Input",
+Cell[6019, 190, 125, 4, 27, "Input",
  CellID->502881580],
-Cell[6146, 196, 381, 16, 37, "Output",
+Cell[6147, 196, 381, 16, 37, "Output",
  CellID->642295632]
 }, Open  ]]
 }, Open  ]],
-Cell[6554, 216, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6555, 216, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6622, 221, 270, 12, 31, "SeeAlsoSection",
+Cell[6623, 221, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6895, 235, 460, 13, 55, "SeeAlso"]
+Cell[6896, 235, 460, 13, 57, "SeeAlso"]
 }, Open  ]],
-Cell[7370, 251, 23, 0, 40, "FooterCell"]
+Cell[7371, 251, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

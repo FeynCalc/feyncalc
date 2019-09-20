@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7871,        240]
+NotebookDataLength[      7865,        240]
 NotebookOptionsPosition[      4927,        155]
-NotebookOutlinePosition[      7354,        221]
-CellTagsIndexPosition[      7185,        214]
+NotebookOutlinePosition[      7348,        221]
+CellTagsIndexPosition[      7179,        214]
 WindowTitle->FeynCalc
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138018], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$134197], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynCalc", ".html"]], None}]}]},
@@ -168,7 +168,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 49, 33.905980}", 
+   "built" -> "{2019, 9, 20, 21, 14, 26.969136}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -179,7 +179,7 @@ TaggingRules->{
     "windowtitle" -> "FeynCalc", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FeynCalc"}},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -188,7 +188,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -213,9 +213,9 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6673, 198},
- {"FeynCalc", 6800, 202},
- {"Info-d5d5947c-0e52-48a8-b6a9-37ad11b1e404", 7049, 208}
+ {"PrimaryExamplesSection", 6667, 198},
+ {"FeynCalc", 6794, 202},
+ {"Info-d5d5947c-0e52-48a8-b6a9-37ad11b1e404", 7043, 208}
  }
 *)
 (*NotebookFileOutline

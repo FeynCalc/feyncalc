@@ -157,8 +157,44 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
+Cell[TextData[{
+ ButtonBox["DiracChain",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChain",
+  ButtonNote->"DiracChain"],
+ ", ",
+ ButtonBox["DCHN",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DCHN",
+  ButtonNote->"DiracChain"],
+ ", ",
+ ButtonBox["DiracIndex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracIndex",
+  ButtonNote->"DiracIndex"],
+ ", ",
+ ButtonBox["DiracIndexDelta",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracIndexDelta",
+  ButtonNote->"DiracIndexDelta"],
+ ", ",
+ ButtonBox["DiracChainJoin",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainJoin",
+  ButtonNote->"DiracChainJoin"],
+ ", ",
+ ButtonBox["DiracChainExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainExpand",
+  ButtonNote->"DiracChainExpand"],
+ ", ",
+ ButtonBox["DiracChainFactor",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracChainFactor",
+  ButtonNote->"DiracChainFactor"],
+ "."
+}], "SeeAlso",
+ CellID->655647701]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -194,7 +230,7 @@ Cell[BoxData[
  RowBox[{"DCHN", "[", 
   RowBox[{
    RowBox[{"GAD", "[", "\[Mu]", "]"}], ",", "i", ",", "j"}], "]"}]], "Input",
- CellLabel->"In[1]:=",
+ CellLabel->"In[231]:=",
  CellID->883461262],
 
 Cell[BoxData[
@@ -219,8 +255,7 @@ Cell[BoxData[
      FormBox["j",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- CellLabel->"Out[1]=",
- CellID->1366821851]
+ CellLabel->"Out[231]="]
 }, Open  ]],
 
 Cell["A chain of Dirac matrices with open Dirac indices", "Notes",
@@ -235,7 +270,7 @@ Cell[BoxData[
     RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
     RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", "i", ",", "j"}], 
   "]"}]], "Input",
- CellLabel->"In[2]:=",
+ CellLabel->"In[232]:=",
  CellID->2010253364],
 
 Cell[BoxData[
@@ -268,8 +303,7 @@ Cell[BoxData[
      FormBox["j",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- CellLabel->"Out[2]=",
- CellID->782904144]
+ CellLabel->"Out[232]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -287,7 +321,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"SpinorUBar", "[", 
     RowBox[{"p", ",", "m"}], "]"}], ",", "i"}], "]"}]], "Input",
- CellLabel->"In[3]:=",
+ CellLabel->"In[233]:=",
  CellID->1134519360],
 
 Cell[BoxData[
@@ -306,8 +340,7 @@ Cell[BoxData[
     FormBox["i",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[3]=",
- CellID->1410852026]
+ CellLabel->"Out[233]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -325,7 +358,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"SpinorVBar", "[", 
     RowBox[{"p", ",", "m"}], "]"}], ",", "i"}], "]"}]], "Input",
- CellLabel->"In[4]:=",
+ CellLabel->"In[234]:=",
  CellID->443709048],
 
 Cell[BoxData[
@@ -344,8 +377,7 @@ Cell[BoxData[
     FormBox["i",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[4]=",
- CellID->87501366]
+ CellLabel->"Out[234]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -362,7 +394,7 @@ Cell[BoxData[
   RowBox[{"i", ",", 
    RowBox[{"SpinorU", "[", 
     RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
- CellLabel->"In[5]:=",
+ CellLabel->"In[235]:=",
  CellID->791949561],
 
 Cell[BoxData[
@@ -380,8 +412,7 @@ Cell[BoxData[
     FormBox["i",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[5]=",
- CellID->450133123]
+ CellLabel->"Out[235]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -398,7 +429,7 @@ Cell[BoxData[
   RowBox[{"i", ",", 
    RowBox[{"SpinorV", "[", 
     RowBox[{"p", ",", "m"}], "]"}]}], "]"}]], "Input",
- CellLabel->"In[6]:=",
+ CellLabel->"In[236]:=",
  CellID->227593440],
 
 Cell[BoxData[
@@ -416,8 +447,7 @@ Cell[BoxData[
     FormBox["i",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[6]=",
- CellID->1554163657]
+ CellLabel->"Out[236]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -438,7 +468,7 @@ Cell[BoxData[
     RowBox[{"GAD", "[", "\[Nu]", "]"}]}], ",", 
    RowBox[{"SpinorUBar", "[", 
     RowBox[{"p", ",", "m"}], "]"}], ",", "j"}], "]"}]], "Input",
- CellLabel->"In[7]:=",
+ CellLabel->"In[237]:=",
  CellID->1380755633],
 
 Cell[BoxData[
@@ -474,8 +504,7 @@ Cell[BoxData[
     FormBox["j",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- CellLabel->"Out[7]=",
- CellID->404025824]
+ CellLabel->"Out[237]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -709,13 +738,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{810, Automatic}, {Automatic, 180}},
+WindowSize->{1920, 989},
+WindowMargins->{{-1, Automatic}, {Automatic, -1}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

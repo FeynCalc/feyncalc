@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8505,        293]
-NotebookOptionsPosition[      5629,        203]
-NotebookOutlinePosition[      7591,        257]
-CellTagsIndexPosition[      7507,        252]
+NotebookDataLength[      8552,        294]
+NotebookOptionsPosition[      5628,        203]
+NotebookOutlinePosition[      7639,        258]
+CellTagsIndexPosition[      7555,        253]
 WindowTitle->Zeta8
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$298695], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$287744], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Zeta8", 
             ".html"]], None}]}]},
@@ -117,7 +117,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1906697491],
+ CellID->654220509],
 
 Cell[CellGroupData[{
 
@@ -127,7 +127,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1227494141],
+ CellID->1474339921],
 
 Cell[CellGroupData[{
 
@@ -138,7 +138,7 @@ Cell[BoxData["Zeta8"], "Input",
 Cell[BoxData[
  FormBox[
   RowBox[{"\[Zeta]", "(", "8", ")"}], TraditionalForm]], "Output",
- ImageSize->{34, 16},
+ ImageSize->{33, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -154,7 +154,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["1.0040773561979441`", TraditionalForm]], "Output",
- ImageSize->{50, 14},
+ ImageSize->{49, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -173,7 +173,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"9450", " ", 
    RowBox[{"\[Zeta]", "(", "8", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{67, 16},
+ ImageSize->{66, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -190,7 +190,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"\[Zeta]", "(", "8", ")"}], TraditionalForm]], "Output",
- ImageSize->{34, 16},
+ ImageSize->{33, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]=",
@@ -216,7 +216,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 36.685265}", 
+   "built" -> "{2019, 9, 20, 21, 20, 13.139970}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -226,7 +226,7 @@ TaggingRules->{
     "windowtitle" -> "Zeta8", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Zeta8"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -234,8 +234,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -244,57 +245,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3493, 104, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3493, 104, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1906697491]}
+   CellID->654220509]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7363, 245}
+ {"PrimaryExamplesSection", 7412, 246}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2261, 53, 50, "AnchorBarGrid",
+Cell[577, 21, 2261, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2841, 76, 282, 11, 44, "ObjectNameGrid"],
-Cell[3126, 89, 342, 11, 82, "Usage",
+Cell[2841, 76, 282, 11, 45, "ObjectNameGrid"],
+Cell[3126, 89, 342, 11, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3493, 104, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3493, 104, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1906697491],
+ CellID->654220509],
 Cell[CellGroupData[{
-Cell[3906, 123, 196, 6, 25, "ExampleSection",
- CellID->1227494141],
+Cell[3905, 123, 196, 6, 26, "ExampleSection",
+ CellID->1474339921],
 Cell[CellGroupData[{
-Cell[4127, 133, 75, 2, 27, "Input",
+Cell[4126, 133, 75, 2, 27, "Input",
  CellID->1703408912],
-Cell[4205, 137, 220, 7, 37, "Output",
+Cell[4204, 137, 220, 7, 37, "Output",
  CellID->834197268]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4462, 149, 101, 3, 27, "Input",
+Cell[4461, 149, 101, 3, 27, "Input",
  CellID->338259293],
-Cell[4566, 154, 205, 6, 35, "Output",
+Cell[4565, 154, 205, 6, 35, "Output",
  CellID->1014223200]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4808, 165, 135, 4, 27, "Input",
+Cell[4807, 165, 135, 4, 27, "Input",
  CellID->576611201],
-Cell[4946, 171, 247, 8, 37, "Output",
+Cell[4945, 171, 247, 8, 37, "Output",
  CellID->310609169]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5230, 184, 110, 3, 27, "Input",
+Cell[5229, 184, 110, 3, 27, "Input",
  CellID->1121680981],
-Cell[5343, 189, 220, 7, 37, "Output",
+Cell[5342, 189, 220, 7, 37, "Output",
  CellID->120897136]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5602, 201, 23, 0, 40, "FooterCell"]
+Cell[5601, 201, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

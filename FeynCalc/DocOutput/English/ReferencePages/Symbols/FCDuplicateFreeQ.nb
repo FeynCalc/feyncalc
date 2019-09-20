@@ -3,7 +3,7 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
@@ -11,9 +11,9 @@ NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
 NotebookDataLength[      9980,        324]
-NotebookOptionsPosition[      6657,        228]
-NotebookOutlinePosition[      9067,        288]
-CellTagsIndexPosition[      8983,        283]
+NotebookOptionsPosition[      6659,        228]
+NotebookOutlinePosition[      9065,        288]
+CellTagsIndexPosition[      8981,        283]
 WindowTitle->FCDuplicateFreeQ
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FCDuplicateFreeQ.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$98599], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$96509], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCDuplicateFreeQ", ".html"]], None}]}]},
@@ -122,7 +122,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->842282302],
+ CellID->1359737306],
 
 Cell[CellGroupData[{
 
@@ -132,7 +132,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->901579054],
+ CellID->1897626587],
 
 Cell[CellGroupData[{
 
@@ -145,7 +145,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -163,7 +163,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
- ImageSize->{36, 14},
+ ImageSize->{34, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -185,7 +185,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -215,7 +215,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
- ImageSize->{36, 14},
+ ImageSize->{34, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]=",
@@ -241,7 +241,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 48, 0.574666}", 
+   "built" -> "{2019, 9, 20, 21, 12, 56.252733}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -257,7 +257,7 @@ FCDuplicateFreeQ is that DuplicateFreeQ is not available in Mathematica 8 and \
     "windowtitle" -> "FCDuplicateFreeQ", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FCDuplicateFreeQ"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -266,7 +266,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -275,57 +275,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3964, 109, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3964, 109, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->842282302]}
+   CellID->1359737306]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8840, 276}
+ {"PrimaryExamplesSection", 8837, 276}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2305, 53, 50, "AnchorBarGrid",
+Cell[588, 21, 2305, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2896, 76, 293, 11, 44, "ObjectNameGrid"],
-Cell[3192, 89, 747, 16, 131, "Usage",
+Cell[2896, 76, 293, 11, 45, "ObjectNameGrid"],
+Cell[3192, 89, 747, 16, 136, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3964, 109, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3964, 109, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->842282302],
+ CellID->1359737306],
 Cell[CellGroupData[{
-Cell[4376, 128, 195, 6, 25, "ExampleSection",
- CellID->901579054],
+Cell[4377, 128, 196, 6, 26, "ExampleSection",
+ CellID->1897626587],
 Cell[CellGroupData[{
-Cell[4596, 138, 170, 5, 27, "Input",
+Cell[4598, 138, 170, 5, 27, "Input",
  CellID->1365347863],
-Cell[4769, 145, 190, 6, 35, "Output",
+Cell[4771, 145, 190, 6, 35, "Output",
  CellID->1783991330]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4996, 156, 179, 5, 27, "Input",
+Cell[4998, 156, 179, 5, 27, "Input",
  CellID->484757087],
-Cell[5178, 163, 188, 6, 35, "Output",
+Cell[5180, 163, 188, 6, 35, "Output",
  CellID->2639087]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5403, 174, 262, 9, 27, "Input",
+Cell[5405, 174, 262, 9, 27, "Input",
  CellID->1576732881],
-Cell[5668, 185, 188, 6, 35, "Output",
+Cell[5670, 185, 188, 6, 35, "Output",
  CellID->52773390]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5893, 196, 504, 17, 45, "Input",
+Cell[5895, 196, 504, 17, 45, "Input",
  CellID->800569343],
-Cell[6400, 215, 191, 6, 35, "Output",
+Cell[6402, 215, 191, 6, 35, "Output",
  CellID->1930688687]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6630, 226, 23, 0, 40, "FooterCell"]
+Cell[6632, 226, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

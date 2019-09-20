@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10395,        356]
+NotebookDataLength[     10446,        357]
 NotebookOptionsPosition[      7061,        254]
-NotebookOutlinePosition[      9271,        312]
-CellTagsIndexPosition[      9187,        307]
+NotebookOutlinePosition[      9322,        313]
+CellTagsIndexPosition[      9238,        308]
 WindowTitle->TemporalMomentum
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ TemporalMomentum.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$272513], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$262728], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TemporalMomentum", ".html"]], None}]}]},
@@ -125,7 +125,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1055613595],
+ CellID->1556070641],
 
 Cell[CellGroupData[{
 
@@ -135,7 +135,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->412608098],
+ CellID->849924419],
 
 Cell[CellGroupData[{
 
@@ -148,7 +148,7 @@ Cell[BoxData[
  FormBox[
   FormBox["p",
    TraditionalForm], TraditionalForm]], "Output",
- ImageSize->{15, 16},
+ ImageSize->{16, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -171,7 +171,7 @@ Cell[BoxData[
     FormBox["q",
      TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{26, 16},
+ ImageSize->{27, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -180,7 +180,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"-", 
   RowBox[{"TemporalMomentum", "[", "q", "]"}]}]], "Output",
- ImageSize->{168, 15},
+ ImageSize->{169, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]//StandardForm=",
@@ -204,7 +204,7 @@ Cell[BoxData[
     FormBox["q",
      TraditionalForm]}],
    TraditionalForm], TraditionalForm]], "Output",
- ImageSize->{41, 16},
+ ImageSize->{44, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -223,7 +223,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"TemporalMomentum", "[", "p", "]"}], "+", 
   RowBox[{"TemporalMomentum", "[", "q", "]"}]}]], "Output",
- ImageSize->{329, 15},
+ ImageSize->{330, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]//StandardForm=",
@@ -267,7 +267,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 54, 30.316393}", 
+   "built" -> "{2019, 9, 20, 21, 19, 14.939202}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -281,7 +281,7 @@ TemporalMomentum[p]. TemporalMomentum may appear only inside TemporalPair",
     "Symbol", "uri" -> "FeynCalc/ref/TemporalMomentum"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -289,8 +289,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -301,28 +302,28 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3913, 112, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1055613595]}
+   CellID->1556070641]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9043, 300}
+ {"PrimaryExamplesSection", 9094, 301}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2306, 53, 50, "AnchorBarGrid",
+Cell[588, 21, 2306, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2897, 76, 293, 11, 44, "ObjectNameGrid"],
-Cell[3193, 89, 695, 19, 115, "Usage",
+Cell[2897, 76, 293, 11, 45, "ObjectNameGrid"],
+Cell[3193, 89, 695, 19, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[3913, 112, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1055613595],
+ CellID->1556070641],
 Cell[CellGroupData[{
-Cell[4326, 131, 195, 6, 25, "ExampleSection",
- CellID->412608098],
+Cell[4326, 131, 195, 6, 26, "ExampleSection",
+ CellID->849924419],
 Cell[CellGroupData[{
 Cell[4546, 141, 112, 3, 27, "Input",
  CellID->725881102],
@@ -334,7 +335,7 @@ Cell[4916, 159, 195, 5, 45, "Input",
  CellID->1422787809],
 Cell[5114, 166, 274, 11, 37, "Output",
  CellID->814079182],
-Cell[5391, 179, 234, 7, 49, "Output",
+Cell[5391, 179, 234, 7, 51, "Output",
  CellID->1315072307]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -346,13 +347,13 @@ Cell[5801, 197, 314, 13, 37, "Output",
 Cell[CellGroupData[{
 Cell[6152, 215, 142, 4, 27, "Input",
  CellID->1915692055],
-Cell[6297, 221, 280, 8, 49, "Output",
+Cell[6297, 221, 280, 8, 51, "Output",
  CellID->14215335]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6614, 234, 142, 4, 27, "Input",
  CellID->928717436],
-Cell[6759, 240, 236, 7, 49, "Output",
+Cell[6759, 240, 236, 7, 51, "Output",
  CellID->2413350]
 }, Open  ]]
 }, Open  ]]

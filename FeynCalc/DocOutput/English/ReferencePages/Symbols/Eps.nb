@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24593,        918]
-NotebookOptionsPosition[     18323,        705]
-NotebookOutlinePosition[     22115,        819]
-CellTagsIndexPosition[     22008,        813]
+NotebookDataLength[     24643,        919]
+NotebookOptionsPosition[     18322,        705]
+NotebookOutlinePosition[     22165,        820]
+CellTagsIndexPosition[     22058,        814]
 WindowTitle->Eps
 WindowFrame->Normal*)
 
@@ -84,7 +84,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$82373], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$80985], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Eps", 
              ".html"]], None}]}]},
@@ -152,7 +152,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->758051656],
+ CellID->319012134],
 
 Cell[CellGroupData[{
 
@@ -162,7 +162,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1370470921],
+ CellID->219306665],
 
 Cell[CellGroupData[{
 
@@ -198,7 +198,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{51, 14},
+ ImageSize->{53, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -240,7 +240,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{54, 17},
+ ImageSize->{56, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -261,7 +261,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"Eps", "[", 
   RowBox[{"b", ",", "a", ",", "c", ",", "d"}], "]"}]], "Output",
- ImageSize->{121, 15},
+ ImageSize->{124, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -302,7 +302,7 @@ Cell[BoxData[
      FormBox["3",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{46, 17},
+ ImageSize->{47, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -343,7 +343,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{51, 14},
+ ImageSize->{53, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -362,7 +362,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "24"}], TraditionalForm]], "Output",
- ImageSize->{30, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -407,7 +407,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{50, 14},
+ ImageSize->{52, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -433,7 +433,7 @@ Cell[BoxData[
     RowBox[{"2", "-", "D"}], ")"}], " ", 
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
- ImageSize->{183, 16},
+ ImageSize->{181, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -503,7 +503,7 @@ Cell[BoxData[
       FormBox["\[Alpha]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{182, 35},
+ ImageSize->{193, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -603,7 +603,7 @@ Cell[BoxData[
         MultilineFunction->None],
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{230, 35},
+ ImageSize->{249, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Eps",
@@ -629,7 +629,7 @@ Cell[BoxData[
     RowBox[{"2", "-", "D"}], ")"}], " ", 
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
- ImageSize->{216, 35},
+ ImageSize->{215, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[11]="]
@@ -718,7 +718,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 22.820060}", 
+   "built" -> "{2019, 9, 20, 21, 12, 19.011993}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -731,7 +731,7 @@ Integer. In case of integers the Levi-Civita tensor is evaluated immediately. \
     "", "windowtitle" -> "Eps", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Eps"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -739,8 +739,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -751,175 +752,175 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4837, 139, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->758051656]},
+   CellID->319012134]},
  "Eps"->{
-  Cell[5470, 168, 340, 9, 27, "Input",
+  Cell[5469, 168, 340, 9, 45, "Input",
    CellTags->"Eps",
    CellID->882253219],
-  Cell[5813, 179, 586, 25, 35, "Output",
+  Cell[5812, 179, 586, 25, 35, "Output",
    CellTags->"Eps"],
-  Cell[6436, 209, 333, 9, 27, "Input",
+  Cell[6435, 209, 333, 9, 27, "Input",
    CellTags->"Eps",
    CellID->1187356604],
-  Cell[6772, 220, 610, 26, 38, "Output",
+  Cell[6771, 220, 610, 26, 38, "Output",
    CellTags->"Eps"],
-  Cell[7419, 251, 200, 7, 27, "Input",
+  Cell[7418, 251, 200, 7, 27, "Input",
    CellTags->"Eps",
    CellID->2026742577],
-  Cell[7622, 260, 243, 7, 49, "Output",
+  Cell[7621, 260, 243, 7, 51, "Output",
    CellTags->"Eps"],
-  Cell[7902, 272, 353, 9, 45, "Input",
+  Cell[7901, 272, 353, 9, 45, "Input",
    CellTags->"Eps",
    CellID->1867659172],
-  Cell[8258, 283, 566, 25, 38, "Output",
+  Cell[8257, 283, 566, 25, 38, "Output",
    CellTags->"Eps"],
-  Cell[8861, 313, 339, 9, 27, "Input",
+  Cell[8860, 313, 339, 9, 45, "Input",
    CellTags->"Eps",
    CellID->49792760],
-  Cell[9203, 324, 586, 25, 35, "Output",
+  Cell[9202, 324, 586, 25, 35, "Output",
    CellTags->"Eps"],
-  Cell[9826, 354, 146, 5, 27, "Input",
+  Cell[9825, 354, 146, 5, 27, "Input",
    CellTags->"Eps",
    CellID->1112439860],
-  Cell[9975, 361, 203, 7, 35, "Output",
+  Cell[9974, 361, 203, 7, 35, "Output",
    CellTags->"Eps"],
-  Cell[10215, 373, 440, 13, 45, "Input",
+  Cell[10214, 373, 440, 13, 45, "Input",
    CellTags->"Eps",
    CellID->864825422],
-  Cell[10658, 388, 585, 25, 35, "Output",
+  Cell[10657, 388, 585, 25, 35, "Output",
    CellTags->"Eps"],
-  Cell[11280, 418, 176, 6, 27, "Input",
+  Cell[11279, 418, 176, 6, 27, "Input",
    CellTags->"Eps",
    CellID->225723746],
-  Cell[11459, 426, 375, 13, 37, "Output",
+  Cell[11458, 426, 375, 13, 37, "Output",
    CellTags->"Eps"],
-  Cell[11871, 444, 418, 14, 53, "Input",
+  Cell[11870, 444, 418, 14, 53, "Input",
    CellTags->"Eps",
    CellID->1182317355],
-  Cell[12292, 460, 1230, 49, 56, "Output",
+  Cell[12291, 460, 1230, 49, 56, "Output",
    CellTags->"Eps"],
-  Cell[13559, 514, 949, 28, 53, "Input",
+  Cell[13558, 514, 949, 28, 53, "Input",
    CellTags->"Eps",
    CellID->1736669356],
-  Cell[14511, 544, 1791, 65, 56, "Output",
+  Cell[14510, 544, 1791, 65, 56, "Output",
    CellTags->"Eps"],
-  Cell[16935, 639, 141, 5, 27, "Input",
+  Cell[16934, 639, 141, 5, 27, "Input",
    CellTags->"Eps",
    CellID->505384444],
-  Cell[17079, 646, 185, 6, 35, "Output",
+  Cell[17078, 646, 185, 6, 35, "Output",
    CellTags->"Eps"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 20253, 750},
- {"Eps", 20383, 754}
+ {"PrimaryExamplesSection", 20303, 751},
+ {"Eps", 20433, 755}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 3245, 79, 50, "AnchorBarGrid",
+Cell[575, 21, 3245, 79, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3823, 102, 280, 11, 44, "ObjectNameGrid"],
-Cell[4106, 115, 706, 20, 99, "Usage",
+Cell[3823, 102, 280, 11, 45, "ObjectNameGrid"],
+Cell[4106, 115, 706, 20, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4837, 139, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->758051656],
+ CellID->319012134],
 Cell[CellGroupData[{
-Cell[5249, 158, 196, 6, 25, "ExampleSection",
- CellID->1370470921],
+Cell[5249, 158, 195, 6, 26, "ExampleSection",
+ CellID->219306665],
 Cell[CellGroupData[{
-Cell[5470, 168, 340, 9, 27, "Input",
+Cell[5469, 168, 340, 9, 45, "Input",
  CellTags->"Eps",
  CellID->882253219],
-Cell[5813, 179, 586, 25, 35, "Output",
+Cell[5812, 179, 586, 25, 35, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6436, 209, 333, 9, 27, "Input",
+Cell[6435, 209, 333, 9, 27, "Input",
  CellTags->"Eps",
  CellID->1187356604],
-Cell[6772, 220, 610, 26, 38, "Output",
+Cell[6771, 220, 610, 26, 38, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7419, 251, 200, 7, 27, "Input",
+Cell[7418, 251, 200, 7, 27, "Input",
  CellTags->"Eps",
  CellID->2026742577],
-Cell[7622, 260, 243, 7, 49, "Output",
+Cell[7621, 260, 243, 7, 51, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7902, 272, 353, 9, 45, "Input",
+Cell[7901, 272, 353, 9, 45, "Input",
  CellTags->"Eps",
  CellID->1867659172],
-Cell[8258, 283, 566, 25, 38, "Output",
+Cell[8257, 283, 566, 25, 38, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8861, 313, 339, 9, 27, "Input",
+Cell[8860, 313, 339, 9, 45, "Input",
  CellTags->"Eps",
  CellID->49792760],
-Cell[9203, 324, 586, 25, 35, "Output",
+Cell[9202, 324, 586, 25, 35, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9826, 354, 146, 5, 27, "Input",
+Cell[9825, 354, 146, 5, 27, "Input",
  CellTags->"Eps",
  CellID->1112439860],
-Cell[9975, 361, 203, 7, 35, "Output",
+Cell[9974, 361, 203, 7, 35, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10215, 373, 440, 13, 45, "Input",
+Cell[10214, 373, 440, 13, 45, "Input",
  CellTags->"Eps",
  CellID->864825422],
-Cell[10658, 388, 585, 25, 35, "Output",
+Cell[10657, 388, 585, 25, 35, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11280, 418, 176, 6, 27, "Input",
+Cell[11279, 418, 176, 6, 27, "Input",
  CellTags->"Eps",
  CellID->225723746],
-Cell[11459, 426, 375, 13, 37, "Output",
+Cell[11458, 426, 375, 13, 37, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11871, 444, 418, 14, 53, "Input",
+Cell[11870, 444, 418, 14, 53, "Input",
  CellTags->"Eps",
  CellID->1182317355],
-Cell[12292, 460, 1230, 49, 56, "Output",
+Cell[12291, 460, 1230, 49, 56, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13559, 514, 949, 28, 53, "Input",
+Cell[13558, 514, 949, 28, 53, "Input",
  CellTags->"Eps",
  CellID->1736669356],
-Cell[14511, 544, 1791, 65, 56, "Output",
+Cell[14510, 544, 1791, 65, 56, "Output",
  CellTags->"Eps"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16339, 614, 145, 4, 27, "Input"],
-Cell[16487, 620, 411, 14, 56, "Output"]
+Cell[16338, 614, 145, 4, 27, "Input"],
+Cell[16486, 620, 411, 14, 56, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16935, 639, 141, 5, 27, "Input",
+Cell[16934, 639, 141, 5, 27, "Input",
  CellTags->"Eps",
  CellID->505384444],
-Cell[17079, 646, 185, 6, 35, "Output",
+Cell[17078, 646, 185, 6, 35, "Output",
  CellTags->"Eps"]
 }, Open  ]]
 }, Open  ]],
-Cell[17291, 656, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17290, 656, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17359, 661, 270, 12, 31, "SeeAlsoSection",
+Cell[17358, 661, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[17632, 675, 649, 25, 55, "SeeAlso"]
+Cell[17631, 675, 649, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[18296, 703, 23, 0, 40, "FooterCell"]
+Cell[18295, 703, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

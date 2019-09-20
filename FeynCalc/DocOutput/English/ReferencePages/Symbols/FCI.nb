@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16658,        595]
+NotebookDataLength[     16709,        596]
 NotebookOptionsPosition[     12491,        459]
-NotebookOutlinePosition[     15304,        542]
-CellTagsIndexPosition[     15197,        536]
+NotebookOutlinePosition[     15355,        543]
+CellTagsIndexPosition[     15248,        537]
 WindowTitle->FCI
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$105004], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$102624], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/FCI", 
              ".html"]], None}]}]},
@@ -144,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1129330275],
+ CellID->2021459577],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2118704381],
+ CellID->1178431787],
 
 Cell[CellGroupData[{
 
@@ -242,7 +242,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]],
      TraditionalForm]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{219, 20},
+ ImageSize->{234, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FCI",
@@ -269,7 +269,7 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
- ImageSize->{403, 15},
+ ImageSize->{424, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FCI",
@@ -340,7 +340,7 @@ Cell[BoxData[
       FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{219, 20},
+ ImageSize->{234, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FCI",
@@ -378,7 +378,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
      RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}], "}"}]], "Output",
- ImageSize->{513, 67},
+ ImageSize->{523, 67},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FCI",
@@ -406,7 +406,7 @@ Cell[BoxData[
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
- ImageSize->{403, 15},
+ ImageSize->{424, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FCI",
@@ -472,7 +472,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 48, 15.118043}", 
+   "built" -> "{2019, 9, 20, 21, 13, 11.001064}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -484,7 +484,7 @@ TaggingRules->{
     "", "windowtitle" -> "FCI", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FCI"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -492,8 +492,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -504,88 +505,88 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4526, 131, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1129330275]},
+   CellID->2021459577]},
  "FCI"->{
   Cell[5160, 160, 455, 14, 27, "Input",
    CellTags->"FCI",
    CellID->714358706],
-  Cell[5618, 176, 1734, 72, 41, "Output",
+  Cell[5618, 176, 1734, 72, 42, "Output",
    CellTags->"FCI"],
   Cell[7389, 253, 122, 4, 27, "Input",
    CellTags->"FCI",
    CellID->384617007],
-  Cell[7514, 259, 538, 16, 49, "Output",
+  Cell[7514, 259, 538, 16, 51, "Output",
    CellTags->"FCI"],
   Cell[8089, 280, 113, 4, 27, "Input",
    CellTags->"FCI",
    CellID->808180913],
-  Cell[8205, 286, 1466, 60, 41, "Output",
+  Cell[8205, 286, 1466, 60, 42, "Output",
    CellTags->"FCI"],
   Cell[9708, 351, 122, 4, 27, "Input",
    CellTags->"FCI",
    CellID->986821422],
-  Cell[9833, 357, 979, 27, 101, "Output",
+  Cell[9833, 357, 979, 27, 103, "Output",
    CellTags->"FCI"],
   Cell[10849, 389, 153, 5, 27, "Input",
    CellTags->"FCI",
    CellID->1427781639],
-  Cell[11005, 396, 538, 16, 49, "Output",
+  Cell[11005, 396, 538, 16, 51, "Output",
    CellTags->"FCI"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14315, 503},
- {"FCI", 14446, 507}
+ {"PrimaryExamplesSection", 14366, 504},
+ {"FCI", 14497, 508}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 3192, 78, 50, "AnchorBarGrid",
+Cell[575, 21, 3192, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3770, 101, 280, 11, 44, "ObjectNameGrid"],
-Cell[4053, 114, 448, 13, 99, "Usage",
+Cell[3770, 101, 280, 11, 45, "ObjectNameGrid"],
+Cell[4053, 114, 448, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4526, 131, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1129330275],
+ CellID->2021459577],
 Cell[CellGroupData[{
-Cell[4939, 150, 196, 6, 25, "ExampleSection",
- CellID->2118704381],
+Cell[4939, 150, 196, 6, 26, "ExampleSection",
+ CellID->1178431787],
 Cell[CellGroupData[{
 Cell[5160, 160, 455, 14, 27, "Input",
  CellTags->"FCI",
  CellID->714358706],
-Cell[5618, 176, 1734, 72, 41, "Output",
+Cell[5618, 176, 1734, 72, 42, "Output",
  CellTags->"FCI"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7389, 253, 122, 4, 27, "Input",
  CellTags->"FCI",
  CellID->384617007],
-Cell[7514, 259, 538, 16, 49, "Output",
+Cell[7514, 259, 538, 16, 51, "Output",
  CellTags->"FCI"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[8089, 280, 113, 4, 27, "Input",
  CellTags->"FCI",
  CellID->808180913],
-Cell[8205, 286, 1466, 60, 41, "Output",
+Cell[8205, 286, 1466, 60, 42, "Output",
  CellTags->"FCI"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[9708, 351, 122, 4, 27, "Input",
  CellTags->"FCI",
  CellID->986821422],
-Cell[9833, 357, 979, 27, 101, "Output",
+Cell[9833, 357, 979, 27, 103, "Output",
  CellTags->"FCI"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[10849, 389, 153, 5, 27, "Input",
  CellTags->"FCI",
  CellID->1427781639],
-Cell[11005, 396, 538, 16, 49, "Output",
+Cell[11005, 396, 538, 16, 51, "Output",
  CellTags->"FCI"]
 }, Open  ]]
 }, Open  ]],

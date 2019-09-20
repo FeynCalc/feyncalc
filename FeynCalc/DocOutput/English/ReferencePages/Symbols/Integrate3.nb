@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16817,        588]
-NotebookOptionsPosition[     11957,        438]
-NotebookOutlinePosition[     15209,        528]
-CellTagsIndexPosition[     15095,        522]
+NotebookDataLength[     16865,        589]
+NotebookOptionsPosition[     11956,        438]
+NotebookOutlinePosition[     15258,        529]
+CellTagsIndexPosition[     15144,        523]
 WindowTitle->Integrate3
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Integrate3.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$174057], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168634], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Integrate3", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1700620645],
+ CellID->664783424],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1429976007],
+ CellID->2088512166],
 
 Cell[CellGroupData[{
 
@@ -218,7 +218,7 @@ Cell[BoxData[
      TraditionalForm], ")"}], "+", 
    TemplateBox[{"3"},
     "Zeta"]}], TraditionalForm]], "Output",
- ImageSize->{257, 17},
+ ImageSize->{251, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
@@ -325,7 +325,7 @@ Cell[BoxData[
         "Zeta"], " ", 
        RowBox[{"log", "(", "2", ")"}]}]}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{409, 115},
+ ImageSize->{397, 106},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
@@ -347,7 +347,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
@@ -397,7 +397,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate3",
@@ -451,7 +451,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 49.968374}", 
+   "built" -> "{2019, 9, 20, 21, 15, 40.191549}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -465,7 +465,7 @@ integration variable. See the examples in Integrate2.", "synonyms" -> {},
     "windowtitle" -> "Integrate3", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Integrate3"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -473,8 +473,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -483,113 +484,113 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4499, 128, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4499, 128, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1700620645]},
+   CellID->664783424]},
  "Integrate3"->{
-  Cell[5133, 157, 298, 10, 31, "Input",
+  Cell[5132, 157, 298, 10, 31, "Input",
    CellTags->"Integrate3",
    CellID->425224867],
-  Cell[5434, 169, 310, 11, 61, "Output",
+  Cell[5433, 169, 310, 11, 61, "Output",
    CellTags->"Integrate3"],
-  Cell[5781, 185, 419, 14, 56, "Input",
+  Cell[5780, 185, 419, 14, 56, "Input",
    CellTags->"Integrate3",
    CellID->1726046539],
-  Cell[6203, 201, 599, 23, 38, "Output",
+  Cell[6202, 201, 599, 23, 38, "Output",
    CellTags->"Integrate3"],
-  Cell[6839, 229, 695, 24, 56, "Input",
+  Cell[6838, 229, 695, 24, 56, "Input",
    CellTags->"Integrate3",
    CellID->1210488286],
-  Cell[7537, 255, 2122, 76, 136, "Output",
+  Cell[7536, 255, 2122, 76, 127, "Output",
    CellTags->"Integrate3"],
-  Cell[9696, 336, 284, 9, 27, "Input",
+  Cell[9695, 336, 284, 9, 27, "Input",
    CellTags->"Integrate3",
    CellID->757263318],
-  Cell[9983, 347, 191, 6, 35, "Output",
+  Cell[9982, 347, 191, 6, 35, "Output",
    CellTags->"Integrate3"],
-  Cell[10211, 358, 340, 11, 27, "Input",
+  Cell[10210, 358, 340, 11, 27, "Input",
    CellTags->"Integrate3",
    CellID->818446262],
-  Cell[10554, 371, 280, 9, 37, "Output",
+  Cell[10553, 371, 280, 9, 37, "Output",
    CellTags->"Integrate3"],
-  Cell[10871, 385, 289, 10, 27, "Input",
+  Cell[10870, 385, 289, 10, 27, "Input",
    CellTags->"Integrate3",
    CellID->1567611943],
-  Cell[11163, 397, 191, 6, 35, "Output",
+  Cell[11162, 397, 191, 6, 35, "Output",
    CellTags->"Integrate3"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13974, 484},
- {"Integrate3", 14112, 488}
+ {"PrimaryExamplesSection", 14024, 485},
+ {"Integrate3", 14161, 489}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 3015, 74, 50, "AnchorBarGrid",
+Cell[582, 21, 3015, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3600, 97, 287, 11, 44, "ObjectNameGrid"],
-Cell[3890, 110, 584, 14, 115, "Usage",
+Cell[3600, 97, 287, 11, 45, "ObjectNameGrid"],
+Cell[3890, 110, 584, 14, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4499, 128, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4499, 128, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1700620645],
+ CellID->664783424],
 Cell[CellGroupData[{
-Cell[4912, 147, 196, 6, 25, "ExampleSection",
- CellID->1429976007],
+Cell[4911, 147, 196, 6, 26, "ExampleSection",
+ CellID->2088512166],
 Cell[CellGroupData[{
-Cell[5133, 157, 298, 10, 31, "Input",
+Cell[5132, 157, 298, 10, 31, "Input",
  CellTags->"Integrate3",
  CellID->425224867],
-Cell[5434, 169, 310, 11, 61, "Output",
+Cell[5433, 169, 310, 11, 61, "Output",
  CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5781, 185, 419, 14, 56, "Input",
+Cell[5780, 185, 419, 14, 56, "Input",
  CellTags->"Integrate3",
  CellID->1726046539],
-Cell[6203, 201, 599, 23, 38, "Output",
+Cell[6202, 201, 599, 23, 38, "Output",
  CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6839, 229, 695, 24, 56, "Input",
+Cell[6838, 229, 695, 24, 56, "Input",
  CellTags->"Integrate3",
  CellID->1210488286],
-Cell[7537, 255, 2122, 76, 136, "Output",
+Cell[7536, 255, 2122, 76, 127, "Output",
  CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9696, 336, 284, 9, 27, "Input",
+Cell[9695, 336, 284, 9, 27, "Input",
  CellTags->"Integrate3",
  CellID->757263318],
-Cell[9983, 347, 191, 6, 35, "Output",
+Cell[9982, 347, 191, 6, 35, "Output",
  CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10211, 358, 340, 11, 27, "Input",
+Cell[10210, 358, 340, 11, 27, "Input",
  CellTags->"Integrate3",
  CellID->818446262],
-Cell[10554, 371, 280, 9, 37, "Output",
+Cell[10553, 371, 280, 9, 37, "Output",
  CellTags->"Integrate3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10871, 385, 289, 10, 27, "Input",
+Cell[10870, 385, 289, 10, 27, "Input",
  CellTags->"Integrate3",
  CellID->1567611943],
-Cell[11163, 397, 191, 6, 35, "Output",
+Cell[11162, 397, 191, 6, 35, "Output",
  CellTags->"Integrate3"]
 }, Open  ]]
 }, Open  ]],
-Cell[11381, 407, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11380, 407, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11449, 412, 270, 12, 31, "SeeAlsoSection",
+Cell[11448, 412, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11722, 426, 193, 7, 55, "SeeAlso"]
+Cell[11721, 426, 193, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11930, 436, 23, 0, 40, "FooterCell"]
+Cell[11929, 436, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

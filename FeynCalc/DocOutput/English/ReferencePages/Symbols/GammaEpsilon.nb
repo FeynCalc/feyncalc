@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16010,        556]
-NotebookOptionsPosition[     11888,        430]
-NotebookOutlinePosition[     14679,        508]
-CellTagsIndexPosition[     14563,        502]
+NotebookDataLength[     16007,        556]
+NotebookOptionsPosition[     11889,        430]
+NotebookOutlinePosition[     14675,        508]
+CellTagsIndexPosition[     14559,        502]
 WindowTitle->GammaEpsilon
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ GammaEpsilon.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$154449], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$149900], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GammaEpsilon", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->863021711],
+ CellID->1207410574],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1829315287],
+ CellID->1814427186],
 
 Cell["\<\
 If the argument is of the form (1+a Epsilon) the result is not calculated but \
@@ -216,7 +216,7 @@ Cell[BoxData[
     SuperscriptBox[
      TagBox["\[CurlyEpsilon]",
       TraditionalForm], "6"]}], "+", "1"}], TraditionalForm]], "Output",
- ImageSize->{412, 87},
+ ImageSize->{410, 88},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GammaEpsilon",
@@ -273,7 +273,7 @@ Cell[BoxData[
        TraditionalForm], "3"], " ", 
      TemplateBox[{"3"},
       "Zeta"]}], "24"], "+", "1"}], TraditionalForm]], "Output",
- ImageSize->{438, 44},
+ ImageSize->{435, 40},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GammaEpsilon",
@@ -364,7 +364,7 @@ Cell[BoxData[
        RowBox[{"288", " ", 
         TemplateBox[{"5"},
          "Zeta"]}]}], ")"}]}], "1440"]}], TraditionalForm]], "Output",
- ImageSize->{549, 88},
+ ImageSize->{545, 90},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GammaEpsilon",
@@ -383,7 +383,7 @@ Cell[BoxData[
  FormBox[
   TemplateBox[{"x"},
    "Gamma"], TraditionalForm]], "Output",
- ImageSize->{38, 16},
+ ImageSize->{37, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GammaEpsilon",
@@ -443,7 +443,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 8.839227}", 
+   "built" -> "{2019, 9, 20, 21, 15, 0.393254}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -455,7 +455,7 @@ to order 6 (where EulerGamma is neglected).", "synonyms" -> {},
     "windowtitle" -> "GammaEpsilon", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/GammaEpsilon"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -464,7 +464,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -473,91 +473,91 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4468, 129, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4468, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->863021711]},
+   CellID->1207410574]},
  "GammaEpsilon"->{
-  Cell[5219, 163, 188, 6, 27, "Input",
+  Cell[5220, 163, 188, 6, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->584681345],
-  Cell[5410, 171, 1448, 51, 108, "Output",
+  Cell[5411, 171, 1448, 51, 109, "Output",
    CellTags->"GammaEpsilon"],
-  Cell[6895, 227, 188, 6, 27, "Input",
+  Cell[6896, 227, 188, 6, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->862497870],
-  Cell[7086, 235, 1196, 44, 65, "Output",
+  Cell[7087, 235, 1196, 44, 61, "Output",
    CellTags->"GammaEpsilon"],
-  Cell[8387, 286, 141, 4, 27, "Input",
+  Cell[8388, 286, 141, 4, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->910709306],
-  Cell[8531, 292, 2197, 78, 109, "Output",
+  Cell[8532, 292, 2197, 78, 111, "Output",
    CellTags->"GammaEpsilon"],
-  Cell[10765, 375, 135, 4, 27, "Input",
+  Cell[10766, 375, 135, 4, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->766916522],
-  Cell[10903, 381, 223, 8, 37, "Output",
+  Cell[10904, 381, 223, 8, 37, "Output",
    CellTags->"GammaEpsilon"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13746, 474},
- {"GammaEpsilon", 13885, 478}
+ {"PrimaryExamplesSection", 13741, 474},
+ {"GammaEpsilon", 13881, 478}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 3117, 76, 50, "AnchorBarGrid",
+Cell[584, 21, 3117, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3704, 99, 289, 11, 44, "ObjectNameGrid"],
-Cell[3996, 112, 447, 13, 83, "Usage",
+Cell[3704, 99, 289, 11, 45, "ObjectNameGrid"],
+Cell[3996, 112, 447, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4468, 129, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4468, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->863021711],
+ CellID->1207410574],
 Cell[CellGroupData[{
-Cell[4880, 148, 196, 6, 25, "ExampleSection",
- CellID->1829315287],
-Cell[5079, 156, 115, 3, 31, "Notes"],
+Cell[4881, 148, 196, 6, 26, "ExampleSection",
+ CellID->1814427186],
+Cell[5080, 156, 115, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5219, 163, 188, 6, 27, "Input",
+Cell[5220, 163, 188, 6, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->584681345],
-Cell[5410, 171, 1448, 51, 108, "Output",
+Cell[5411, 171, 1448, 51, 109, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6895, 227, 188, 6, 27, "Input",
+Cell[6896, 227, 188, 6, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->862497870],
-Cell[7086, 235, 1196, 44, 65, "Output",
+Cell[7087, 235, 1196, 44, 61, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]],
-Cell[8297, 282, 65, 0, 31, "Notes"],
+Cell[8298, 282, 65, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[8387, 286, 141, 4, 27, "Input",
+Cell[8388, 286, 141, 4, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->910709306],
-Cell[8531, 292, 2197, 78, 109, "Output",
+Cell[8532, 292, 2197, 78, 111, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10765, 375, 135, 4, 27, "Input",
+Cell[10766, 375, 135, 4, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->766916522],
-Cell[10903, 381, 223, 8, 37, "Output",
+Cell[10904, 381, 223, 8, 37, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]]
 }, Open  ]],
-Cell[11153, 393, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11154, 393, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11221, 398, 270, 12, 31, "SeeAlsoSection",
+Cell[11222, 398, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11494, 412, 352, 13, 55, "SeeAlso"]
+Cell[11495, 412, 352, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11861, 428, 23, 0, 40, "FooterCell"]
+Cell[11862, 428, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

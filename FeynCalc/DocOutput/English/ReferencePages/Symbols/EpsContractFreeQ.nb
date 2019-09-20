@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12126,        425]
+NotebookDataLength[     12178,        426]
 NotebookOptionsPosition[      8780,        324]
-NotebookOutlinePosition[     10994,        382]
-CellTagsIndexPosition[     10909,        377]
+NotebookOutlinePosition[     11045,        383]
+CellTagsIndexPosition[     10960,        378]
 WindowTitle->EpsContractFreeQ
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ EpsContractFreeQ.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78705], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$77481], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/EpsContractFreeQ", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1403909466],
+ CellID->1679536028],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1644187909],
+ CellID->1903835743],
 
 Cell[CellGroupData[{
 
@@ -183,7 +183,7 @@ Cell[BoxData[
      FormBox["p4",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{72, 17},
+ ImageSize->{68, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -199,7 +199,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
- ImageSize->{33, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -260,7 +260,7 @@ Cell[BoxData[
       FormBox["q4",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{141, 17},
+ ImageSize->{138, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -276,7 +276,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
- ImageSize->{36, 14},
+ ImageSize->{34, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]=",
@@ -337,7 +337,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 14.670446}", 
+   "built" -> "{2019, 9, 20, 21, 12, 11.105706}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -351,7 +351,7 @@ large expressions, i.e. it is not so good as a criterion in e.g. Select",
     "Symbol", "uri" -> "FeynCalc/ref/EpsContractFreeQ"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -359,8 +359,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -371,28 +372,28 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4583, 128, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1403909466]}
+   CellID->1679536028]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10765, 370}
+ {"PrimaryExamplesSection", 10816, 371}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 3126, 75, 50, "AnchorBarGrid",
+Cell[588, 21, 3126, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3717, 98, 293, 11, 44, "ObjectNameGrid"],
-Cell[4013, 111, 545, 13, 99, "Usage",
+Cell[3717, 98, 293, 11, 45, "ObjectNameGrid"],
+Cell[4013, 111, 545, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4583, 128, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1403909466],
+ CellID->1679536028],
 Cell[CellGroupData[{
-Cell[4996, 147, 196, 6, 25, "ExampleSection",
- CellID->1644187909],
+Cell[4996, 147, 196, 6, 26, "ExampleSection",
+ CellID->1903835743],
 Cell[CellGroupData[{
 Cell[5217, 157, 176, 5, 27, "Input",
  CellID->194594739],
@@ -423,10 +424,10 @@ Cell[8023, 286, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[8091, 291, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8364, 305, 374, 14, 55, "SeeAlso",
+Cell[8364, 305, 374, 14, 56, "SeeAlso",
  CellID->14792505]
 }, Open  ]],
-Cell[8753, 322, 23, 0, 40, "FooterCell"]
+Cell[8753, 322, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

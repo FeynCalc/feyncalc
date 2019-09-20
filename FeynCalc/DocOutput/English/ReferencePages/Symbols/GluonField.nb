@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9711,        329]
+NotebookDataLength[      9761,        330]
 NotebookOptionsPosition[      6486,        231]
-NotebookOutlinePosition[      8844,        297]
-CellTagsIndexPosition[      8732,        291]
+NotebookOutlinePosition[      8894,        298]
+CellTagsIndexPosition[      8782,        292]
 WindowTitle->GluonField
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ GluonField.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$159987], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$155192], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GluonField", ".html"]], None}]}]},
@@ -138,7 +138,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2089328594],
+ CellID->944600621],
 
 Cell[CellGroupData[{
 
@@ -148,7 +148,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->868833953],
+ CellID->1060361181],
 
 Cell[CellGroupData[{
 
@@ -244,7 +244,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 20.698665}", 
+   "built" -> "{2019, 9, 20, 21, 15, 12.255279}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -254,7 +254,7 @@ TaggingRules->{
     "titlemodifier" -> "", "windowtitle" -> "GluonField", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/GluonField"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -262,8 +262,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -272,9 +273,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4255, 125, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4255, 125, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2089328594]},
+   CellID->944600621]},
  "GluonField"->{
   Cell[4888, 154, 104, 3, 27, "Input",
    CellTags->"GluonField",
@@ -290,24 +291,24 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8254, 273},
- {"GluonField", 8392, 277}
+ {"PrimaryExamplesSection", 8305, 274},
+ {"GluonField", 8442, 278}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 3015, 74, 50, "AnchorBarGrid",
+Cell[582, 21, 3015, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3600, 97, 287, 11, 44, "ObjectNameGrid"],
-Cell[3890, 110, 340, 11, 83, "Usage",
+Cell[3600, 97, 287, 11, 45, "ObjectNameGrid"],
+Cell[3890, 110, 340, 11, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4255, 125, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4255, 125, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2089328594],
+ CellID->944600621],
 Cell[CellGroupData[{
-Cell[4668, 144, 195, 6, 25, "ExampleSection",
- CellID->868833953],
+Cell[4667, 144, 196, 6, 26, "ExampleSection",
+ CellID->1060361181],
 Cell[CellGroupData[{
 Cell[4888, 154, 104, 3, 27, "Input",
  CellTags->"GluonField",
@@ -328,9 +329,9 @@ Cell[5910, 200, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[5978, 205, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6251, 219, 193, 7, 55, "SeeAlso"]
+Cell[6251, 219, 193, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6459, 229, 23, 0, 40, "FooterCell"]
+Cell[6459, 229, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

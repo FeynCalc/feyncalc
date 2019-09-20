@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18156,        684]
+NotebookDataLength[     18207,        685]
 NotebookOptionsPosition[     13360,        529]
-NotebookOutlinePosition[     16248,        612]
-CellTagsIndexPosition[     16140,        606]
+NotebookOutlinePosition[     16298,        613]
+CellTagsIndexPosition[     16190,        607]
 WindowTitle->Calc
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31297], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30678], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Calc", 
              ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1133094808],
+ CellID->217172325],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->256973019],
+ CellID->1879497720],
 
 Cell[TextData[{
  "This calculates ",
@@ -246,7 +246,7 @@ Cell[BoxData[
       FormBox["e",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{60, 16},
+ ImageSize->{61, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Calc",
@@ -330,7 +330,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{164, 16},
+ ImageSize->{170, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Calc",
@@ -393,7 +393,7 @@ Cell[BoxData[
       FormBox["r",
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{176, 18},
+ ImageSize->{185, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Calc",
@@ -448,7 +448,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"-", "p"}], "-", "q"}],
      TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{174, 19},
+ ImageSize->{180, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Calc",
@@ -475,7 +475,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Calc",
@@ -529,8 +529,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Calc",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -542,7 +542,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 22.839356}", 
+   "built" -> "{2019, 9, 20, 21, 10, 16.477876}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -554,7 +554,7 @@ PowerSimplify, Expand2 and Trick.", "synonyms" -> {}, "tabletags" -> {},
     "title" -> "Calc", "titlemodifier" -> "", "windowtitle" -> "Calc", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/Calc"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -562,8 +562,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -572,9 +573,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4561, 130, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4561, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1133094808]},
+   CellID->217172325]},
  "Calc"->{
   Cell[6609, 223, 276, 9, 27, "Input",
    CellTags->"Calc",
@@ -605,25 +606,25 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15243, 573},
- {"Calc", 15375, 577}
+ {"PrimaryExamplesSection", 15294, 574},
+ {"Calc", 15425, 578}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 3173, 77, 50, "AnchorBarGrid",
+Cell[576, 21, 3173, 77, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3752, 100, 281, 11, 44, "ObjectNameGrid"],
-Cell[4036, 113, 500, 13, 99, "Usage",
+Cell[3752, 100, 281, 11, 45, "ObjectNameGrid"],
+Cell[4036, 113, 500, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4561, 130, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4561, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1133094808],
+ CellID->217172325],
 Cell[CellGroupData[{
-Cell[4974, 149, 195, 6, 25, "ExampleSection",
- CellID->256973019],
-Cell[5172, 157, 384, 14, 34, "Notes"],
+Cell[4973, 149, 196, 6, 26, "ExampleSection",
+ CellID->1879497720],
+Cell[5172, 157, 384, 14, 35, "Notes"],
 Cell[CellGroupData[{
 Cell[5581, 175, 141, 4, 27, "Input"],
 Cell[5725, 181, 166, 5, 35, "Output"]
@@ -633,8 +634,8 @@ Cell[5928, 191, 147, 4, 27, "Input"],
 Cell[6078, 197, 166, 5, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6281, 207, 105, 2, 8, "ExampleDelimiter"],
-Cell[6389, 211, 195, 8, 32, "Notes"],
+Cell[6281, 207, 105, 2, 9, "ExampleDelimiter"],
+Cell[6389, 211, 195, 8, 33, "Notes"],
 Cell[CellGroupData[{
 Cell[6609, 223, 276, 9, 27, "Input",
  CellTags->"Calc",
@@ -644,7 +645,7 @@ Cell[6888, 234, 439, 18, 37, "Output",
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7376, 258, 105, 2, 8, "ExampleDelimiter"],
+Cell[7376, 258, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
 Cell[7506, 264, 346, 12, 27, "Input",
  CellTags->"Calc",
@@ -661,7 +662,7 @@ Cell[9383, 347, 1205, 52, 39, "Output",
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10637, 405, 105, 2, 8, "ExampleDelimiter"],
+Cell[10637, 405, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
 Cell[10767, 411, 361, 13, 27, "Input",
  CellTags->"Calc",
@@ -683,9 +684,9 @@ Cell[12460, 486, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[12528, 491, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12801, 505, 517, 19, 55, "SeeAlso"]
+Cell[12801, 505, 517, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[13333, 527, 23, 0, 40, "FooterCell"]
+Cell[13333, 527, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

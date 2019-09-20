@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16378,        609]
-NotebookOptionsPosition[     11411,        440]
-NotebookOutlinePosition[     14436,        532]
-CellTagsIndexPosition[     14329,        526]
+NotebookDataLength[     16432,        610]
+NotebookOptionsPosition[     11412,        440]
+NotebookOutlinePosition[     14489,        533]
+CellTagsIndexPosition[     14382,        527]
 WindowTitle->MTE
 WindowFrame->Normal*)
 
@@ -84,7 +84,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$191690], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$185485], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/MTE", 
              ".html"]], None}]}]},
@@ -145,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->966929133],
+ CellID->1636224229],
 
 Cell[CellGroupData[{
 
@@ -155,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1917104441],
+ CellID->1094681327],
 
 Cell[CellGroupData[{
 
@@ -179,7 +179,7 @@ Cell[BoxData[
      FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{35, 18},
+ ImageSize->{37, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MTD",
@@ -223,7 +223,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]="]
@@ -264,7 +264,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Output",
- ImageSize->{75, 15},
+ ImageSize->{79, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MTD",
@@ -293,7 +293,7 @@ Cell[BoxData[
      FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{35, 18},
+ ImageSize->{37, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MTD",
@@ -323,7 +323,7 @@ Cell[BoxData[
     RowBox[{"\[Beta]", ",", 
      RowBox[{
       RowBox[{"-", "4"}], "+", "D"}]}], "]"}]}], "]"}]], "Output",
- ImageSize->{417, 15},
+ ImageSize->{425, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MTD",
@@ -346,7 +346,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"MTE", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Output",
- ImageSize->{77, 15},
+ ImageSize->{79, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MTD",
@@ -375,7 +375,7 @@ Cell[BoxData[
      FormBox["\[Nu]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{34, 16},
+ ImageSize->{35, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"MTD",
@@ -453,7 +453,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 51, 29.710714}", 
+   "built" -> "{2019, 9, 20, 21, 16, 17.956485}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -464,7 +464,7 @@ TaggingRules->{
     "MTE", "type" -> "Symbol", "uri" -> "FeynCalc/ref/MTE"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -472,8 +472,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -482,135 +483,135 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4601, 132, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4601, 132, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->966929133]},
+   CellID->1636224229]},
  "MTD"->{
-  Cell[5234, 161, 154, 5, 27, "Input",
+  Cell[5235, 161, 154, 5, 27, "Input",
    CellTags->"MTD",
    CellID->1680977301],
-  Cell[5391, 168, 412, 17, 39, "Output",
+  Cell[5392, 168, 412, 17, 39, "Output",
    CellTags->"MTD"],
-  Cell[5840, 190, 284, 9, 27, "Input",
+  Cell[5841, 190, 284, 9, 27, "Input",
    CellTags->"MTD",
    CellID->2085004373],
-  Cell[6127, 201, 207, 7, 35, "Output",
+  Cell[6128, 201, 207, 7, 35, "Output",
    CellTags->"MTD"],
-  Cell[7337, 254, 192, 7, 27, "Input",
+  Cell[7338, 254, 192, 7, 27, "Input",
    CellTags->"MTD",
    CellID->964321899],
-  Cell[7532, 263, 235, 7, 49, "Output",
+  Cell[7533, 263, 235, 7, 51, "Output",
    CellTags->"MTD"],
-  Cell[7804, 275, 153, 5, 27, "Input",
+  Cell[7805, 275, 153, 5, 27, "Input",
    CellTags->"MTD",
    CellID->842419980],
-  Cell[7960, 282, 412, 17, 39, "Output",
+  Cell[7961, 282, 412, 17, 39, "Output",
    CellTags->"MTD"],
-  Cell[8409, 304, 225, 8, 27, "Input",
+  Cell[8410, 304, 225, 8, 27, "Input",
    CellTags->"MTD",
    CellID->1887554420],
-  Cell[8637, 314, 463, 15, 49, "Output",
+  Cell[8638, 314, 463, 15, 51, "Output",
    CellTags->"MTD"],
-  Cell[9137, 334, 252, 9, 27, "Input",
+  Cell[9138, 334, 252, 9, 27, "Input",
    CellTags->"MTD",
    CellID->623099946],
-  Cell[9392, 345, 230, 7, 49, "Output",
+  Cell[9393, 345, 230, 7, 51, "Output",
    CellTags->"MTD"],
-  Cell[9659, 357, 148, 5, 27, "Input",
+  Cell[9660, 357, 148, 5, 27, "Input",
    CellTags->"MTD",
    CellID->141115701],
-  Cell[9810, 364, 407, 17, 37, "Output",
+  Cell[9811, 364, 407, 17, 37, "Output",
    CellTags->"MTD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13167, 483},
- {"MTD", 13297, 487}
+ {"PrimaryExamplesSection", 13219, 484},
+ {"MTD", 13350, 488}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 3308, 79, 50, "AnchorBarGrid",
+Cell[575, 21, 3308, 79, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3886, 102, 280, 11, 44, "ObjectNameGrid"],
-Cell[4169, 115, 407, 13, 82, "Usage",
+Cell[3886, 102, 280, 11, 45, "ObjectNameGrid"],
+Cell[4169, 115, 407, 13, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4601, 132, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4601, 132, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->966929133],
+ CellID->1636224229],
 Cell[CellGroupData[{
-Cell[5013, 151, 196, 6, 25, "ExampleSection",
- CellID->1917104441],
+Cell[5014, 151, 196, 6, 26, "ExampleSection",
+ CellID->1094681327],
 Cell[CellGroupData[{
-Cell[5234, 161, 154, 5, 27, "Input",
+Cell[5235, 161, 154, 5, 27, "Input",
  CellTags->"MTD",
  CellID->1680977301],
-Cell[5391, 168, 412, 17, 39, "Output",
+Cell[5392, 168, 412, 17, 39, "Output",
  CellTags->"MTD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5840, 190, 284, 9, 27, "Input",
+Cell[5841, 190, 284, 9, 27, "Input",
  CellTags->"MTD",
  CellID->2085004373],
-Cell[6127, 201, 207, 7, 35, "Output",
+Cell[6128, 201, 207, 7, 35, "Output",
  CellTags->"MTD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6371, 213, 265, 8, 27, "Input",
+Cell[6372, 213, 265, 8, 27, "Input",
  CellID->1799001225],
-Cell[6639, 223, 166, 5, 35, "Output"]
+Cell[6640, 223, 166, 5, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6842, 233, 266, 8, 27, "Input",
+Cell[6843, 233, 266, 8, 27, "Input",
  CellID->1071300852],
-Cell[7111, 243, 189, 6, 35, "Output"]
+Cell[7112, 243, 189, 6, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7337, 254, 192, 7, 27, "Input",
+Cell[7338, 254, 192, 7, 27, "Input",
  CellTags->"MTD",
  CellID->964321899],
-Cell[7532, 263, 235, 7, 49, "Output",
+Cell[7533, 263, 235, 7, 51, "Output",
  CellTags->"MTD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7804, 275, 153, 5, 27, "Input",
+Cell[7805, 275, 153, 5, 27, "Input",
  CellTags->"MTD",
  CellID->842419980],
-Cell[7960, 282, 412, 17, 39, "Output",
+Cell[7961, 282, 412, 17, 39, "Output",
  CellTags->"MTD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8409, 304, 225, 8, 27, "Input",
+Cell[8410, 304, 225, 8, 27, "Input",
  CellTags->"MTD",
  CellID->1887554420],
-Cell[8637, 314, 463, 15, 49, "Output",
+Cell[8638, 314, 463, 15, 51, "Output",
  CellTags->"MTD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9137, 334, 252, 9, 27, "Input",
+Cell[9138, 334, 252, 9, 27, "Input",
  CellTags->"MTD",
  CellID->623099946],
-Cell[9392, 345, 230, 7, 49, "Output",
+Cell[9393, 345, 230, 7, 51, "Output",
  CellTags->"MTD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9659, 357, 148, 5, 27, "Input",
+Cell[9660, 357, 148, 5, 27, "Input",
  CellTags->"MTD",
  CellID->141115701],
-Cell[9810, 364, 407, 17, 37, "Output",
+Cell[9811, 364, 407, 17, 37, "Output",
  CellTags->"MTD"]
 }, Open  ]]
 }, Open  ]],
-Cell[10244, 385, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10245, 385, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10312, 390, 270, 12, 31, "SeeAlsoSection",
+Cell[10313, 390, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10585, 404, 784, 31, 55, "SeeAlso"]
+Cell[10586, 404, 784, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11384, 438, 23, 0, 40, "FooterCell"]
+Cell[11385, 438, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

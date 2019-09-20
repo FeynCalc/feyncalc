@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26467,        974]
-NotebookOptionsPosition[     18196,        704]
-NotebookOutlinePosition[     22684,        836]
-CellTagsIndexPosition[     22569,        830]
+NotebookDataLength[     26464,        974]
+NotebookOptionsPosition[     18197,        704]
+NotebookOutlinePosition[     22680,        836]
+CellTagsIndexPosition[     22565,        830]
 WindowTitle->DotSimplify
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ DotSimplify.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76378], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75258], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DotSimplify", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1910469206],
+ CellID->2019457513],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -212,7 +212,7 @@ Cell[BoxData[
     RowBox[{"MaxIterations", "\[Rule]", "100"}], ",", 
     RowBox[{"PreservePropagatorStructures", "\[Rule]", "False"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{535, 54},
+ ImageSize->{516, 54},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -238,7 +238,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->501004632],
+ CellID->1727822984],
 
 Cell[CellGroupData[{
 
@@ -248,7 +248,7 @@ Cell[TextData[{
  Cell["(3)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->366443140],
+ CellID->886076030],
 
 Cell[CellGroupData[{
 
@@ -305,7 +305,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{156, 16},
+ ImageSize->{162, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -366,7 +366,7 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{216, 16},
+ ImageSize->{224, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -404,7 +404,7 @@ Cell[BoxData[
     RowBox[{"b", "-", 
      RowBox[{"c", " ", "z"}]}], ")"}], ".", "a"}], TraditionalForm]], "Output",\
 
- ImageSize->{94, 16},
+ ImageSize->{97, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -425,7 +425,7 @@ Cell[BoxData[
    RowBox[{"a", ".", "b", ".", "a"}], "-", 
    RowBox[{"z", " ", 
     RowBox[{"a", ".", "c", ".", "a"}]}]}], TraditionalForm]], "Output",
- ImageSize->{107, 14},
+ ImageSize->{115, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -472,7 +472,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"c", ".", "a", ".", "a"}], "+", "a"}], ")"}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{144, 16},
+ ImageSize->{153, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -505,7 +505,7 @@ Cell[BoxData[
    RowBox[{"a", ".", "b", ".", "a"}], "-", 
    RowBox[{"z", " ", 
     RowBox[{"a", ".", "c", ".", "a"}]}]}], TraditionalForm]], "Output",
- ImageSize->{107, 14},
+ ImageSize->{115, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -551,7 +551,7 @@ Cell[BoxData[
    RowBox[{"z", " ", 
     RowBox[{"a", ".", "c", ".", "a"}]}], "+", 
    RowBox[{"a", ".", "c"}]}], TraditionalForm]], "Output",
- ImageSize->{156, 14},
+ ImageSize->{167, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -589,7 +589,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"a", ".", "b", ".", "a"}], "-", "a"}], TraditionalForm]], "Output",\
 
- ImageSize->{66, 14},
+ ImageSize->{72, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DotSimplify",
@@ -624,7 +624,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"x", ".", "x", ".", "x"}], TraditionalForm]], "Output",
- ImageSize->{45, 14},
+ ImageSize->{47, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -704,8 +704,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"DotSimplify",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -717,7 +717,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 9.563290}", 
+   "built" -> "{2019, 9, 20, 21, 12, 6.143087}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -728,7 +728,7 @@ TaggingRules->{
     "titlemodifier" -> "", "windowtitle" -> "DotSimplify", "type" -> "Symbol",
      "uri" -> "FeynCalc/ref/DotSimplify"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -737,7 +737,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -746,110 +746,110 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "DotSimplify"->{
-  Cell[6177, 193, 142, 4, 27, "Input",
+  Cell[6177, 193, 142, 4, 70, "Input",
    CellTags->"DotSimplify",
    CellID->1331874134],
   Cell[6322, 199, 762, 19, 75, "Output",
    CellTags->"DotSimplify"],
-  Cell[7777, 254, 330, 11, 27, "Input",
+  Cell[7778, 254, 330, 11, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1782604794],
-  Cell[8110, 267, 1116, 44, 37, "Output",
+  Cell[8111, 267, 1116, 44, 37, "Output",
    CellTags->"DotSimplify"],
-  Cell[9263, 316, 134, 4, 27, "Input",
+  Cell[9264, 316, 134, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1204340698],
-  Cell[9400, 322, 1309, 50, 37, "Output",
+  Cell[9401, 322, 1309, 50, 37, "Output",
    CellTags->"DotSimplify"],
-  Cell[10854, 381, 176, 5, 27, "Input",
+  Cell[10855, 381, 176, 5, 27, "Input",
    CellTags->"DotSimplify",
    CellID->194491386],
-  Cell[11055, 390, 201, 7, 27, "Input",
+  Cell[11056, 390, 201, 7, 27, "Input",
    CellTags->"DotSimplify",
    CellID->2117662767],
-  Cell[11259, 399, 302, 11, 37, "Output",
+  Cell[11260, 399, 302, 11, 37, "Output",
    CellTags->"DotSimplify"],
-  Cell[11598, 415, 134, 4, 27, "Input",
+  Cell[11599, 415, 134, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1117578635],
-  Cell[11735, 421, 309, 10, 35, "Output",
+  Cell[11736, 421, 309, 10, 35, "Output",
    CellTags->"DotSimplify"],
-  Cell[12081, 436, 180, 6, 27, "Input",
+  Cell[12082, 436, 180, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1442809361],
-  Cell[12264, 444, 192, 6, 35, "Output",
+  Cell[12265, 444, 192, 6, 35, "Output",
    CellTags->"DotSimplify"],
-  Cell[12493, 455, 242, 8, 27, "Input",
+  Cell[12494, 455, 242, 8, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1013643835],
-  Cell[12738, 465, 365, 13, 37, "Output",
+  Cell[12739, 465, 365, 13, 37, "Output",
    CellTags->"DotSimplify"],
-  Cell[13118, 481, 176, 6, 27, "Input",
+  Cell[13119, 481, 176, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1466952413],
-  Cell[13319, 491, 242, 8, 27, "Input",
+  Cell[13320, 491, 242, 8, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1037294655],
-  Cell[13564, 501, 309, 10, 35, "Output",
+  Cell[13565, 501, 309, 10, 35, "Output",
    CellTags->"DotSimplify"],
-  Cell[13910, 516, 183, 6, 27, "Input",
+  Cell[13911, 516, 183, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->579521038],
-  Cell[14096, 524, 192, 6, 35, "Output",
+  Cell[14097, 524, 192, 6, 35, "Output",
    CellTags->"DotSimplify"],
-  Cell[14325, 535, 241, 8, 27, "Input",
+  Cell[14326, 535, 241, 8, 27, "Input",
    CellTags->"DotSimplify",
    CellID->164431463],
-  Cell[14569, 545, 363, 12, 35, "Output",
+  Cell[14570, 545, 363, 12, 35, "Output",
    CellTags->"DotSimplify"],
-  Cell[14947, 560, 180, 6, 27, "Input",
+  Cell[14948, 560, 180, 6, 27, "Input",
    CellTags->"DotSimplify",
    CellID->216404314],
-  Cell[15152, 570, 430, 14, 27, "Input",
+  Cell[15153, 570, 430, 14, 27, "Input",
    CellTags->"DotSimplify",
    CellID->2011362420],
-  Cell[15585, 586, 252, 9, 35, "Output",
+  Cell[15586, 586, 252, 9, 35, "Output",
    CellTags->"DotSimplify"],
-  Cell[16130, 610, 144, 4, 27, "Input",
+  Cell[16131, 610, 144, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1063178346],
-  Cell[16658, 634, 231, 7, 27, "Input",
+  Cell[16659, 634, 231, 7, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1173966576],
-  Cell[16892, 643, 216, 7, 37, "Output",
+  Cell[16893, 643, 216, 7, 37, "Output",
    CellTags->"DotSimplify"],
-  Cell[17123, 653, 146, 4, 27, "Input",
+  Cell[17124, 653, 146, 4, 27, "Input",
    CellTags->"DotSimplify",
    CellID->1813929769]},
  "PrimaryExamplesSection"->{
-  Cell[7145, 225, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7145, 225, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->501004632]}
+   CellID->1727822984]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"DotSimplify", 19990, 747},
- {"PrimaryExamplesSection", 22426, 823}
+ {"DotSimplify", 19985, 747},
+ {"PrimaryExamplesSection", 22421, 823}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 3210, 78, 50, "AnchorBarGrid",
+Cell[583, 21, 3210, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3796, 101, 288, 11, 44, "ObjectNameGrid"],
+Cell[3796, 101, 288, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4109, 116, 439, 13, 83, "Usage",
+Cell[4109, 116, 439, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4573, 133, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1910469206],
-Cell[5315, 159, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5349, 161, 537, 17, 46, "Notes"],
-Cell[5889, 180, 263, 9, 31, "Notes"],
+ CellID->2019457513],
+Cell[5315, 159, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5349, 161, 537, 17, 70, "Notes"],
+Cell[5889, 180, 263, 9, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[6177, 193, 142, 4, 27, "Input",
+Cell[6177, 193, 142, 4, 70, "Input",
  CellTags->"DotSimplify",
  CellID->1331874134],
 Cell[6322, 199, 762, 19, 75, "Output",
@@ -858,124 +858,124 @@ Cell[6322, 199, 762, 19, 75, "Output",
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7145, 225, 387, 15, 31, "PrimaryExamplesSection",
+Cell[7145, 225, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->501004632],
+ CellID->1727822984],
 Cell[CellGroupData[{
-Cell[7557, 244, 195, 6, 25, "ExampleSection",
- CellID->366443140],
+Cell[7558, 244, 195, 6, 26, "ExampleSection",
+ CellID->886076030],
 Cell[CellGroupData[{
-Cell[7777, 254, 330, 11, 27, "Input",
+Cell[7778, 254, 330, 11, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1782604794],
-Cell[8110, 267, 1116, 44, 37, "Output",
+Cell[8111, 267, 1116, 44, 37, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9263, 316, 134, 4, 27, "Input",
+Cell[9264, 316, 134, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1204340698],
-Cell[9400, 322, 1309, 50, 37, "Output",
+Cell[9401, 322, 1309, 50, 37, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10746, 377, 105, 2, 8, "ExampleDelimiter"],
-Cell[10854, 381, 176, 5, 27, "Input",
+Cell[10747, 377, 105, 2, 9, "ExampleDelimiter"],
+Cell[10855, 381, 176, 5, 27, "Input",
  CellTags->"DotSimplify",
  CellID->194491386],
 Cell[CellGroupData[{
-Cell[11055, 390, 201, 7, 27, "Input",
+Cell[11056, 390, 201, 7, 27, "Input",
  CellTags->"DotSimplify",
  CellID->2117662767],
-Cell[11259, 399, 302, 11, 37, "Output",
+Cell[11260, 399, 302, 11, 37, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11598, 415, 134, 4, 27, "Input",
+Cell[11599, 415, 134, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1117578635],
-Cell[11735, 421, 309, 10, 35, "Output",
+Cell[11736, 421, 309, 10, 35, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12081, 436, 180, 6, 27, "Input",
+Cell[12082, 436, 180, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1442809361],
-Cell[12264, 444, 192, 6, 35, "Output",
+Cell[12265, 444, 192, 6, 35, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12493, 455, 242, 8, 27, "Input",
+Cell[12494, 455, 242, 8, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1013643835],
-Cell[12738, 465, 365, 13, 37, "Output",
+Cell[12739, 465, 365, 13, 37, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
-Cell[13118, 481, 176, 6, 27, "Input",
+Cell[13119, 481, 176, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1466952413],
 Cell[CellGroupData[{
-Cell[13319, 491, 242, 8, 27, "Input",
+Cell[13320, 491, 242, 8, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1037294655],
-Cell[13564, 501, 309, 10, 35, "Output",
+Cell[13565, 501, 309, 10, 35, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13910, 516, 183, 6, 27, "Input",
+Cell[13911, 516, 183, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->579521038],
-Cell[14096, 524, 192, 6, 35, "Output",
+Cell[14097, 524, 192, 6, 35, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14325, 535, 241, 8, 27, "Input",
+Cell[14326, 535, 241, 8, 27, "Input",
  CellTags->"DotSimplify",
  CellID->164431463],
-Cell[14569, 545, 363, 12, 35, "Output",
+Cell[14570, 545, 363, 12, 35, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
-Cell[14947, 560, 180, 6, 27, "Input",
+Cell[14948, 560, 180, 6, 27, "Input",
  CellTags->"DotSimplify",
  CellID->216404314],
 Cell[CellGroupData[{
-Cell[15152, 570, 430, 14, 27, "Input",
+Cell[15153, 570, 430, 14, 27, "Input",
  CellTags->"DotSimplify",
  CellID->2011362420],
-Cell[15585, 586, 252, 9, 35, "Output",
+Cell[15586, 586, 252, 9, 35, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
-Cell[15852, 598, 133, 3, 27, "Input"]
+Cell[15853, 598, 133, 3, 27, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16022, 606, 105, 2, 8, "ExampleDelimiter"],
-Cell[16130, 610, 144, 4, 27, "Input",
+Cell[16023, 606, 105, 2, 9, "ExampleDelimiter"],
+Cell[16131, 610, 144, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1063178346],
 Cell[CellGroupData[{
-Cell[16299, 618, 120, 3, 27, "Input"],
-Cell[16422, 623, 199, 6, 35, "Output"]
+Cell[16300, 618, 120, 3, 27, "Input"],
+Cell[16423, 623, 199, 6, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16658, 634, 231, 7, 27, "Input",
+Cell[16659, 634, 231, 7, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1173966576],
-Cell[16892, 643, 216, 7, 37, "Output",
+Cell[16893, 643, 216, 7, 37, "Output",
  CellTags->"DotSimplify"]
 }, Open  ]],
-Cell[17123, 653, 146, 4, 27, "Input",
+Cell[17124, 653, 146, 4, 27, "Input",
  CellTags->"DotSimplify",
  CellID->1813929769]
 }, Open  ]]
 }, Open  ]],
-Cell[17296, 661, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17297, 661, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17364, 666, 270, 12, 31, "SeeAlsoSection",
+Cell[17365, 666, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[17637, 680, 517, 19, 55, "SeeAlso"]
+Cell[17638, 680, 517, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[18169, 702, 23, 0, 40, "FooterCell"]
+Cell[18170, 702, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

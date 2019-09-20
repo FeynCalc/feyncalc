@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10185,        342]
-NotebookOptionsPosition[      6950,        247]
-NotebookOutlinePosition[      9246,        306]
-CellTagsIndexPosition[      9162,        301]
+NotebookDataLength[     10233,        343]
+NotebookOptionsPosition[      6949,        247]
+NotebookOutlinePosition[      9295,        307]
+CellTagsIndexPosition[      9211,        302]
 WindowTitle->$LeviCivitaSign
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ LeviCivitaSign.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$305092], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$293422], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$LeviCivitaSign", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1700441923],
+ CellID->419016846],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->106769145],
+ CellID->204795173],
 
 Cell[CellGroupData[{
 
@@ -180,7 +180,7 @@ Cell[BoxData[
       FormBox["\[Sigma]",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{82, 14},
+ ImageSize->{85, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -224,7 +224,7 @@ Cell[BoxData[
       FormBox["\[Sigma]",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{62, 14},
+ ImageSize->{64, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -260,7 +260,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 53.440481}", 
+   "built" -> "{2019, 9, 20, 21, 20, 25.957218}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -275,7 +275,7 @@ FORM-convention.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "$LeviCivitaSign", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/$LeviCivitaSign"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -283,8 +283,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -293,57 +294,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3820, 107, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3820, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1700441923]}
+   CellID->419016846]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9018, 294}
+ {"PrimaryExamplesSection", 9068, 295}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2302, 53, 50, "AnchorBarGrid",
+Cell[587, 21, 2302, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2892, 76, 292, 11, 44, "ObjectNameGrid"],
-Cell[3187, 89, 608, 14, 115, "Usage",
+Cell[2892, 76, 292, 11, 45, "ObjectNameGrid"],
+Cell[3187, 89, 608, 14, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3820, 107, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3820, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1700441923],
+ CellID->419016846],
 Cell[CellGroupData[{
-Cell[4233, 126, 195, 6, 25, "ExampleSection",
- CellID->106769145],
+Cell[4232, 126, 195, 6, 26, "ExampleSection",
+ CellID->204795173],
 Cell[CellGroupData[{
-Cell[4453, 136, 85, 2, 27, "Input",
+Cell[4452, 136, 85, 2, 27, "Input",
  CellID->1712420789],
-Cell[4541, 140, 205, 7, 35, "Output",
+Cell[4540, 140, 205, 7, 35, "Output",
  CellID->2017735240]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4783, 152, 205, 6, 27, "Input",
+Cell[4782, 152, 205, 6, 27, "Input",
  CellID->722943498],
-Cell[4991, 160, 645, 26, 35, "Output",
+Cell[4990, 160, 645, 26, 35, "Output",
  CellID->24019145]
 }, Open  ]],
-Cell[5651, 189, 78, 1, 31, "Notes",
+Cell[5650, 189, 78, 1, 32, "Notes",
  CellID->1734027625],
 Cell[CellGroupData[{
-Cell[5754, 194, 309, 9, 45, "Input",
+Cell[5753, 194, 309, 9, 45, "Input",
  CellID->1075951969],
-Cell[6066, 205, 606, 25, 35, "Output",
+Cell[6065, 205, 606, 25, 35, "Output",
  CellID->1430392236]
 }, Open  ]],
-Cell[6687, 233, 63, 1, 31, "Notes",
+Cell[6686, 233, 63, 1, 32, "Notes",
  CellID->223764811],
-Cell[6753, 236, 143, 5, 27, "Input",
+Cell[6752, 236, 143, 5, 27, "Input",
  CellID->955635605]
 }, Open  ]]
 }, Open  ]],
-Cell[6923, 245, 23, 0, 40, "FooterCell"]
+Cell[6922, 245, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

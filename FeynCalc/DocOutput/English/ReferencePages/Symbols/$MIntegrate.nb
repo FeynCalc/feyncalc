@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8962,        295]
+NotebookDataLength[      9014,        296]
 NotebookOptionsPosition[      5973,        205]
-NotebookOutlinePosition[      8253,        269]
-CellTagsIndexPosition[      8140,        263]
+NotebookOutlinePosition[      8305,        270]
+CellTagsIndexPosition[      8192,        264]
 WindowTitle->$MIntegrate
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ MIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$306458], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$294726], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/$MIntegrate", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->512797038],
+ CellID->2126913012],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1758471168],
+ CellID->697550637],
 
 Cell[CellGroupData[{
 
@@ -163,7 +163,7 @@ Cell[BoxData["$MIntegrate"], "Input",
 Cell[BoxData[
  FormBox[
   RowBox[{"{", "}"}], TraditionalForm]], "Output",
- ImageSize->{16, 16},
+ ImageSize->{16, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"$MIntegrate",
@@ -218,7 +218,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 57.052899}", 
+   "built" -> "{2019, 9, 20, 21, 20, 28.917981}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -230,7 +230,7 @@ OPEIntegrateDelta.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/$MIntegrate"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -238,8 +238,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -248,43 +249,43 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4375, 128, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4375, 128, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->512797038]},
+   CellID->2126913012]},
  "$MIntegrate"->{
   Cell[5008, 157, 107, 3, 27, "Input",
    CellTags->"$MIntegrate",
    CellID->1439168966],
-  Cell[5118, 162, 231, 8, 37, "Output",
+  Cell[5118, 162, 231, 8, 35, "Output",
    CellTags->"$MIntegrate",
    CellID->1034422222]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7795, 249},
- {"$MIntegrate", 7933, 253}
+ {"PrimaryExamplesSection", 7846, 250},
+ {"$MIntegrate", 7985, 254}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 3033, 74, 50, "AnchorBarGrid",
+Cell[583, 21, 3033, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3619, 97, 288, 11, 44, "ObjectNameGrid"],
-Cell[3910, 110, 440, 14, 83, "Usage",
+Cell[3619, 97, 288, 11, 45, "ObjectNameGrid"],
+Cell[3910, 110, 440, 14, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4375, 128, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4375, 128, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->512797038],
+ CellID->2126913012],
 Cell[CellGroupData[{
-Cell[4787, 147, 196, 6, 25, "ExampleSection",
- CellID->1758471168],
+Cell[4788, 147, 195, 6, 26, "ExampleSection",
+ CellID->697550637],
 Cell[CellGroupData[{
 Cell[5008, 157, 107, 3, 27, "Input",
  CellTags->"$MIntegrate",
  CellID->1439168966],
-Cell[5118, 162, 231, 8, 37, "Output",
+Cell[5118, 162, 231, 8, 35, "Output",
  CellTags->"$MIntegrate",
  CellID->1034422222]
 }, Open  ]]
@@ -294,9 +295,9 @@ Cell[5376, 174, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[5444, 179, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5717, 193, 214, 7, 55, "SeeAlso"]
+Cell[5717, 193, 214, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[5946, 203, 23, 0, 40, "FooterCell"]
+Cell[5946, 203, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

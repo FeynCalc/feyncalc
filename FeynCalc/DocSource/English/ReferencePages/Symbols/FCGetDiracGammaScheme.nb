@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10722,        448]
-NotebookOptionsPosition[      6553,        299]
-NotebookOutlinePosition[      7163,        323]
-CellTagsIndexPosition[      7085,        318]
+NotebookDataLength[     13554,        562]
+NotebookOptionsPosition[      8627,        383]
+NotebookOutlinePosition[      9237,        407]
+CellTagsIndexPosition[      9159,        402]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -224,16 +224,100 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.777993513883172*^9, 3.777993514721686*^9}},
+ CellLabel->"In[21]:=",
+ CellID->1255432024],
+
+Cell[BoxData[
+ FormBox["\<\"BMHV\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.777993492118058*^9, 3.777993515161776*^9}},
+ CellLabel->"Out[21]=",
+ CellID->194332146]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"FCGetDiracGammaScheme", "[", "]"}]], "Input",
- CellChangeTimes->{{3.770380375328034*^9, 3.770380377496406*^9}},
- CellLabel->"In[19]:=",
- CellID->1835350179],
+ CellLabel->"In[22]:=",
+ CellID->2114804275],
+
+Cell[BoxData[
+ FormBox["\<\"BMHV\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.777993497423005*^9, 3.777993515946911*^9}},
+ CellLabel->"Out[22]=",
+ CellID->1670408026]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "FullForm"}]], "Input",
+ CellChangeTimes->{{3.777993499718327*^9, 3.777993502770597*^9}},
+ CellLabel->"In[23]:=",
+ CellID->457303046],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   StyleBox["\"\<BMHV\>\"",
+    ShowSpecialCharacters->False,
+    ShowStringCharacters->True,
+    NumberMarks->True],
+   FullForm], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7779935033124447`*^9, 3.777993523461795*^9}},
+ CellLabel->"Out[23]//FullForm=",
+ CellID->1572430226]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}]], "Input",
+ CellLabel->"In[24]:=",
+ CellID->823869442],
 
 Cell[BoxData[
  FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
- CellChangeTimes->{{3.77038037806172*^9, 3.770380407068314*^9}},
- CellLabel->"Out[19]=",
- CellID->1181214454]
+ CellChangeTimes->{3.777993492118058*^9, 3.7779935247598877`*^9},
+ CellLabel->"Out[24]=",
+ CellID->1801779332]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCGetDiracGammaScheme", "[", "]"}]], "Input",
+ CellLabel->"In[25]:=",
+ CellID->1234674201],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.777993497423005*^9, 3.7779935253629723`*^9}},
+ CellLabel->"Out[25]=",
+ CellID->549786237]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "FullForm"}]], "Input",
+ CellChangeTimes->{{3.777993499718327*^9, 3.777993502770597*^9}},
+ CellLabel->"In[26]:=",
+ CellID->1736915585],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   StyleBox["\"\<NDR\>\"",
+    ShowSpecialCharacters->False,
+    ShowStringCharacters->True,
+    NumberMarks->True],
+   FullForm], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7779935033124447`*^9, 3.777993525962927*^9}},
+ CellLabel->"Out[26]//FullForm=",
+ CellID->1209449234]
 }, Open  ]]
 }, Open  ]],
 
@@ -298,7 +382,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{878, Automatic}, {Automatic, 93}},
+WindowMargins->{{Automatic, 332}, {Automatic, 85}},
 CellContext->"Global`",
 FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
@@ -310,14 +394,14 @@ StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb",
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[5033, 241, 100, 2, 55, "ExtendedExamplesSection",
+  Cell[7107, 325, 100, 2, 55, "ExtendedExamplesSection",
    CellTags->"ExtendedExamples",
    CellID->1854448968]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 6947, 311}
+ {"ExtendedExamples", 9021, 395}
  }
 *)
 (*NotebookFileOutline
@@ -417,37 +501,67 @@ Cell[CellGroupData[{
 Cell[4244, 210, 356, 11, 69, "PrimaryExamplesSection",
  CellID->880084151],
 Cell[CellGroupData[{
-Cell[4625, 225, 180, 4, 26, "Input",
- CellID->1835350179],
-Cell[4808, 231, 176, 4, 24, "Output",
- CellID->1181214454]
+Cell[4625, 225, 196, 4, 26, "Input",
+ CellID->1255432024],
+Cell[4824, 231, 177, 4, 24, "Output",
+ CellID->194332146]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5038, 240, 114, 3, 26, "Input",
+ CellID->2114804275],
+Cell[5155, 245, 178, 4, 24, "Output",
+ CellID->1670408026]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5370, 254, 167, 4, 26, "Input",
+ CellID->457303046],
+Cell[5540, 260, 317, 10, 24, "Output",
+ CellID->1572430226]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5894, 275, 128, 3, 26, "Input",
+ CellID->823869442],
+Cell[6025, 280, 177, 4, 24, "Output",
+ CellID->1801779332]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6239, 289, 114, 3, 26, "Input",
+ CellID->1234674201],
+Cell[6356, 294, 178, 4, 24, "Output",
+ CellID->549786237]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6571, 303, 168, 4, 26, "Input",
+ CellID->1736915585],
+Cell[6742, 309, 316, 10, 24, "Output",
+ CellID->1209449234]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5033, 241, 100, 2, 55, "ExtendedExamplesSection",
+Cell[7107, 325, 100, 2, 55, "ExtendedExamplesSection",
  CellTags->"ExtendedExamples",
  CellID->1854448968],
-Cell[5136, 245, 125, 3, 33, "ExampleSection",
+Cell[7210, 329, 125, 3, 33, "ExampleSection",
  CellID->1293636265],
-Cell[5264, 250, 148, 3, 21, "ExampleSection",
+Cell[7338, 334, 148, 3, 21, "ExampleSection",
  CellID->1020263627],
 Cell[CellGroupData[{
-Cell[5437, 257, 127, 3, 21, "ExampleSection",
+Cell[7511, 341, 127, 3, 21, "ExampleSection",
  CellID->2061341341],
-Cell[5567, 262, 130, 3, 70, "ExampleSubsection",
+Cell[7641, 346, 130, 3, 70, "ExampleSubsection",
  CellID->1757724783],
-Cell[5700, 267, 130, 3, 70, "ExampleSubsection",
+Cell[7774, 351, 130, 3, 70, "ExampleSubsection",
  CellID->1295379749]
 }, Closed]],
-Cell[5845, 273, 131, 3, 21, "ExampleSection",
+Cell[7919, 357, 131, 3, 21, "ExampleSection",
  CellID->258228157],
-Cell[5979, 278, 142, 3, 21, "ExampleSection",
+Cell[8053, 362, 142, 3, 21, "ExampleSection",
  CellID->2123667759],
-Cell[6124, 283, 135, 3, 21, "ExampleSection",
+Cell[8198, 367, 135, 3, 21, "ExampleSection",
  CellID->1305812373],
-Cell[6262, 288, 140, 3, 21, "ExampleSection",
+Cell[8336, 372, 140, 3, 21, "ExampleSection",
  CellID->1653164318],
-Cell[6405, 293, 132, 3, 21, "ExampleSection",
+Cell[8479, 377, 132, 3, 21, "ExampleSection",
  CellID->589267740]
 }, Open  ]]
 }

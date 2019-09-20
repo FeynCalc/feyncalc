@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38712,       1444]
-NotebookOptionsPosition[     26735,       1045]
-NotebookOutlinePosition[     33239,       1236]
-CellTagsIndexPosition[     33124,       1230]
+NotebookDataLength[     38768,       1445]
+NotebookOptionsPosition[     26736,       1045]
+NotebookOutlinePosition[     33294,       1237]
+CellTagsIndexPosition[     33179,       1231]
 WindowTitle->Convolute
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47632], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46309], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Convolute", ".html"]], None}]}]},
@@ -200,7 +200,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2032622628],
+ CellID->1825497871],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -224,7 +224,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{396, 16},
+ ImageSize->{398, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -250,7 +250,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->84581717],
+ CellID->1718149053],
 
 Cell[CellGroupData[{
 
@@ -260,7 +260,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1414073585],
+ CellID->994718457],
 
 Cell[CellGroupData[{
 
@@ -279,7 +279,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"-", 
    RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{60, 16},
+ ImageSize->{58, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -305,7 +305,7 @@ Cell[BoxData[
    RowBox[{"-", 
     SuperscriptBox["x", "2"]}], " ", 
    RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{82, 18},
+ ImageSize->{80, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -330,7 +330,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"-", "x"}], " ", 
    RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{74, 16},
+ ImageSize->{72, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -357,7 +357,7 @@ Cell[BoxData[
   FractionBox[
    RowBox[{"log", "(", "x", ")"}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{53, 34},
+ ImageSize->{51, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -385,7 +385,7 @@ Cell[BoxData[
   FractionBox[
    RowBox[{"log", "(", "x", ")"}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{53, 34},
+ ImageSize->{51, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -413,7 +413,7 @@ Cell[BoxData[
    RowBox[{"x", " ", 
     RowBox[{"log", "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{67, 34},
+ ImageSize->{65, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -445,7 +445,7 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"(", 
       RowBox[{"x", "-", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
- ImageSize->{74, 39},
+ ImageSize->{73, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -474,7 +474,7 @@ Cell[BoxData[
     RowBox[{"log", "(", 
      RowBox[{"1", "-", "x"}], ")"}]}], " ", 
    RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{131, 16},
+ ImageSize->{127, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -504,7 +504,7 @@ Cell[BoxData[
    RowBox[{"log", "(", 
     RowBox[{"1", "-", "x"}], ")"}], " ", 
    RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{145, 16},
+ ImageSize->{141, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -536,7 +536,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}], ")"}], " ", 
     RowBox[{"log", "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{124, 35},
+ ImageSize->{120, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -569,7 +569,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}], ")"}], " ", 
     RowBox[{"log", "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{138, 35},
+ ImageSize->{134, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -601,7 +601,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}], ")"}], " ", 
     RowBox[{"log", "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{138, 35},
+ ImageSize->{134, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -630,7 +630,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{81, 18},
+ ImageSize->{79, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -659,7 +659,7 @@ Cell[BoxData[
    RowBox[{"log", "(", 
     RowBox[{"1", "-", "x"}], ")"}], " ", 
    RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{145, 16},
+ ImageSize->{141, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -693,7 +693,7 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"(", 
       RowBox[{"x", "-", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
- ImageSize->{74, 43},
+ ImageSize->{73, 43},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -720,7 +720,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{67, 18},
+ ImageSize->{65, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -750,7 +750,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{89, 18},
+ ImageSize->{87, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -779,7 +779,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{60, 38},
+ ImageSize->{58, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -808,7 +808,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{60, 38},
+ ImageSize->{58, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -839,7 +839,7 @@ Cell[BoxData[
     RowBox[{
      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{74, 38},
+ ImageSize->{72, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -869,7 +869,7 @@ Cell[BoxData[
     RowBox[{
      SuperscriptBox["log", "2"], "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{74, 38},
+ ImageSize->{72, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -898,7 +898,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{81, 18},
+ ImageSize->{79, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -926,7 +926,7 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",\
 
- ImageSize->{81, 18},
+ ImageSize->{79, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -963,7 +963,7 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"(", 
       RowBox[{"x", "-", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
- ImageSize->{135, 40},
+ ImageSize->{131, 40},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -998,7 +998,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "x"}], ")"}], " ", 
     RowBox[{"log", "(", "x", ")"}]}], 
    RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
- ImageSize->{131, 38},
+ ImageSize->{127, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Convolute",
@@ -1058,7 +1058,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 46, 1.942627}", 
+   "built" -> "{2019, 9, 20, 21, 10, 55.694165}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1073,7 +1073,7 @@ does not do any integral calculations, only linear algebra.",
     "titlemodifier" -> "", "windowtitle" -> "Convolute", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Convolute"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1081,8 +1081,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1091,163 +1092,163 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Convolute"->{
-  Cell[6706, 208, 137, 4, 27, "Input",
+  Cell[6706, 208, 137, 4, 70, "Input",
    CellTags->"Convolute",
    CellID->846637972],
   Cell[6846, 214, 488, 16, 37, "Output",
    CellTags->"Convolute"],
-  Cell[8027, 266, 287, 9, 29, "Input",
+  Cell[8028, 266, 287, 9, 29, "Input",
    CellTags->"Convolute",
    CellID->1183792130],
-  Cell[8317, 277, 239, 8, 37, "Output",
+  Cell[8318, 277, 239, 8, 37, "Output",
    CellTags->"Convolute"],
-  Cell[8593, 290, 286, 9, 29, "Input",
+  Cell[8594, 290, 286, 9, 29, "Input",
    CellTags->"Convolute",
    CellID->566730399],
-  Cell[8882, 301, 289, 10, 39, "Output",
+  Cell[8883, 301, 289, 10, 39, "Output",
    CellTags->"Convolute"],
-  Cell[9208, 316, 287, 9, 29, "Input",
+  Cell[9209, 316, 287, 9, 29, "Input",
    CellTags->"Convolute",
    CellID->1354290721],
-  Cell[9498, 327, 263, 9, 37, "Output",
+  Cell[9499, 327, 263, 9, 37, "Output",
    CellTags->"Convolute"],
-  Cell[9798, 341, 335, 11, 52, "Input",
+  Cell[9799, 341, 335, 11, 52, "Input",
    CellTags->"Convolute",
    CellID->694658515],
-  Cell[10136, 354, 266, 9, 55, "Output",
+  Cell[10137, 354, 266, 9, 55, "Output",
    CellTags->"Convolute"],
-  Cell[10439, 368, 383, 12, 52, "Input",
+  Cell[10440, 368, 383, 12, 52, "Input",
    CellTags->"Convolute",
    CellID->1694510014],
-  Cell[10825, 382, 266, 9, 55, "Output",
+  Cell[10826, 382, 266, 9, 55, "Output",
    CellTags->"Convolute"],
-  Cell[11128, 396, 335, 11, 52, "Input",
+  Cell[11129, 396, 335, 11, 52, "Input",
    CellTags->"Convolute",
    CellID->640655392],
-  Cell[11466, 409, 291, 10, 55, "Output",
+  Cell[11467, 409, 291, 10, 55, "Output",
    CellTags->"Convolute"],
-  Cell[11794, 424, 384, 13, 52, "Input",
+  Cell[11795, 424, 384, 13, 52, "Input",
    CellTags->"Convolute",
    CellID->440037844],
-  Cell[12181, 439, 341, 12, 60, "Output",
+  Cell[12182, 439, 341, 12, 60, "Output",
    CellTags->"Convolute"],
-  Cell[12559, 456, 344, 11, 29, "Input",
+  Cell[12560, 456, 344, 11, 29, "Input",
    CellTags->"Convolute",
    CellID->151808165],
-  Cell[12906, 469, 322, 11, 37, "Output",
+  Cell[12907, 469, 322, 11, 37, "Output",
    CellTags->"Convolute"],
-  Cell[13265, 485, 372, 12, 29, "Input",
+  Cell[13266, 485, 372, 12, 29, "Input",
    CellTags->"Convolute",
    CellID->1563371513],
-  Cell[13640, 499, 330, 11, 37, "Output",
+  Cell[13641, 499, 330, 11, 37, "Output",
    CellTags->"Convolute"],
-  Cell[14007, 515, 395, 13, 52, "Input",
+  Cell[14008, 515, 395, 13, 52, "Input",
    CellTags->"Convolute",
    CellID->1082077962],
-  Cell[14405, 530, 351, 12, 56, "Output",
+  Cell[14406, 530, 351, 12, 56, "Output",
    CellTags->"Convolute"],
-  Cell[14793, 547, 422, 14, 52, "Input",
+  Cell[14794, 547, 422, 14, 52, "Input",
    CellTags->"Convolute",
    CellID->1247483115],
-  Cell[15218, 563, 361, 12, 56, "Output",
+  Cell[15219, 563, 361, 12, 56, "Output",
    CellTags->"Convolute"],
-  Cell[15616, 580, 397, 13, 52, "Input",
+  Cell[15617, 580, 397, 13, 53, "Input",
    CellTags->"Convolute",
    CellID->2055743895],
-  Cell[16016, 595, 361, 12, 56, "Output",
+  Cell[16017, 595, 361, 12, 56, "Output",
    CellTags->"Convolute"],
-  Cell[16414, 612, 346, 11, 29, "Input",
+  Cell[16415, 612, 346, 11, 29, "Input",
    CellTags->"Convolute",
    CellID->1292595425],
-  Cell[16763, 625, 292, 11, 39, "Output",
+  Cell[16764, 625, 292, 11, 39, "Output",
    CellTags->"Convolute"],
-  Cell[17092, 641, 345, 11, 29, "Input",
+  Cell[17093, 641, 345, 11, 29, "Input",
    CellTags->"Convolute",
    CellID->342391696],
-  Cell[17440, 654, 331, 11, 37, "Output",
+  Cell[17441, 654, 331, 11, 37, "Output",
    CellTags->"Convolute"],
-  Cell[17808, 670, 419, 14, 52, "Input",
+  Cell[17809, 670, 419, 14, 53, "Input",
    CellTags->"Convolute",
    CellID->1164478774],
-  Cell[18230, 686, 369, 13, 64, "Output",
+  Cell[18231, 686, 369, 13, 64, "Output",
    CellTags->"Convolute"],
-  Cell[18636, 704, 319, 10, 29, "Input",
+  Cell[18637, 704, 319, 10, 29, "Input",
    CellTags->"Convolute",
    CellID->260971955],
-  Cell[18958, 716, 268, 10, 39, "Output",
+  Cell[18959, 716, 268, 10, 39, "Output",
    CellTags->"Convolute"],
-  Cell[19263, 731, 350, 11, 29, "Input",
+  Cell[19264, 731, 350, 11, 29, "Input",
    CellTags->"Convolute",
    CellID->935305016],
-  Cell[19616, 744, 318, 12, 39, "Output",
+  Cell[19617, 744, 318, 12, 39, "Output",
    CellTags->"Convolute"],
-  Cell[19971, 761, 367, 12, 52, "Input",
+  Cell[19972, 761, 367, 12, 52, "Input",
    CellTags->"Convolute",
    CellID->63581574],
-  Cell[20341, 775, 293, 10, 59, "Output",
+  Cell[20342, 775, 293, 10, 59, "Output",
    CellTags->"Convolute"],
-  Cell[20671, 790, 370, 12, 52, "Input",
+  Cell[20672, 790, 370, 12, 53, "Input",
    CellTags->"Convolute",
    CellID->1271585721],
-  Cell[21044, 804, 293, 10, 59, "Output",
+  Cell[21045, 804, 293, 10, 59, "Output",
    CellTags->"Convolute"],
-  Cell[21374, 819, 395, 13, 52, "Input",
+  Cell[21375, 819, 395, 13, 52, "Input",
    CellTags->"Convolute",
    CellID->1377475961],
-  Cell[21772, 834, 319, 11, 59, "Output",
+  Cell[21773, 834, 319, 11, 59, "Output",
    CellTags->"Convolute"],
-  Cell[22128, 850, 370, 12, 52, "Input",
+  Cell[22129, 850, 370, 12, 53, "Input",
    CellTags->"Convolute",
    CellID->2045548358],
-  Cell[22501, 864, 319, 11, 59, "Output",
+  Cell[22502, 864, 319, 11, 59, "Output",
    CellTags->"Convolute"],
-  Cell[22857, 880, 346, 11, 29, "Input",
+  Cell[22858, 880, 346, 11, 29, "Input",
    CellTags->"Convolute",
    CellID->1793379008],
-  Cell[23206, 893, 292, 11, 39, "Output",
+  Cell[23207, 893, 292, 11, 39, "Output",
    CellTags->"Convolute"],
-  Cell[23535, 909, 320, 10, 29, "Input",
+  Cell[23536, 909, 320, 10, 29, "Input",
    CellTags->"Convolute",
    CellID->1760428538],
-  Cell[23858, 921, 292, 11, 39, "Output",
+  Cell[23859, 921, 292, 11, 39, "Output",
    CellTags->"Convolute"],
-  Cell[24187, 937, 445, 15, 52, "Input",
+  Cell[24188, 937, 445, 15, 53, "Input",
    CellTags->"Convolute",
    CellID->379553048],
-  Cell[24635, 954, 429, 15, 61, "Output",
+  Cell[24636, 954, 429, 15, 61, "Output",
    CellTags->"Convolute"],
-  Cell[25101, 974, 455, 15, 52, "Input",
+  Cell[25102, 974, 455, 15, 53, "Input",
    CellTags->"Convolute",
    CellID->1743318528],
-  Cell[25559, 991, 378, 13, 59, "Output",
+  Cell[25560, 991, 378, 13, 59, "Output",
    CellTags->"Convolute"]},
  "PrimaryExamplesSection"->{
-  Cell[7395, 237, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[7395, 237, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->84581717]}
+   CellID->1718149053]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Convolute", 28821, 1092},
- {"PrimaryExamplesSection", 32982, 1223}
+ {"Convolute", 28874, 1093},
+ {"PrimaryExamplesSection", 33035, 1224}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 3127, 76, 50, "AnchorBarGrid",
+Cell[581, 21, 3127, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3711, 99, 286, 11, 44, "ObjectNameGrid"],
+Cell[3711, 99, 286, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4022, 114, 1861, 60, 122, "Usage",
+Cell[4022, 114, 1861, 60, 126, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[5908, 178, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2032622628],
-Cell[6650, 204, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1825497871],
+Cell[6650, 204, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[6706, 208, 137, 4, 27, "Input",
+Cell[6706, 208, 137, 4, 70, "Input",
  CellTags->"Convolute",
  CellID->846637972],
 Cell[6846, 214, 488, 16, 37, "Output",
@@ -1256,196 +1257,196 @@ Cell[6846, 214, 488, 16, 37, "Output",
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7395, 237, 386, 15, 31, "PrimaryExamplesSection",
+Cell[7395, 237, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->84581717],
+ CellID->1718149053],
 Cell[CellGroupData[{
-Cell[7806, 256, 196, 6, 25, "ExampleSection",
- CellID->1414073585],
+Cell[7808, 256, 195, 6, 26, "ExampleSection",
+ CellID->994718457],
 Cell[CellGroupData[{
-Cell[8027, 266, 287, 9, 29, "Input",
+Cell[8028, 266, 287, 9, 29, "Input",
  CellTags->"Convolute",
  CellID->1183792130],
-Cell[8317, 277, 239, 8, 37, "Output",
+Cell[8318, 277, 239, 8, 37, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8593, 290, 286, 9, 29, "Input",
+Cell[8594, 290, 286, 9, 29, "Input",
  CellTags->"Convolute",
  CellID->566730399],
-Cell[8882, 301, 289, 10, 39, "Output",
+Cell[8883, 301, 289, 10, 39, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9208, 316, 287, 9, 29, "Input",
+Cell[9209, 316, 287, 9, 29, "Input",
  CellTags->"Convolute",
  CellID->1354290721],
-Cell[9498, 327, 263, 9, 37, "Output",
+Cell[9499, 327, 263, 9, 37, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9798, 341, 335, 11, 52, "Input",
+Cell[9799, 341, 335, 11, 52, "Input",
  CellTags->"Convolute",
  CellID->694658515],
-Cell[10136, 354, 266, 9, 55, "Output",
+Cell[10137, 354, 266, 9, 55, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10439, 368, 383, 12, 52, "Input",
+Cell[10440, 368, 383, 12, 52, "Input",
  CellTags->"Convolute",
  CellID->1694510014],
-Cell[10825, 382, 266, 9, 55, "Output",
+Cell[10826, 382, 266, 9, 55, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11128, 396, 335, 11, 52, "Input",
+Cell[11129, 396, 335, 11, 52, "Input",
  CellTags->"Convolute",
  CellID->640655392],
-Cell[11466, 409, 291, 10, 55, "Output",
+Cell[11467, 409, 291, 10, 55, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11794, 424, 384, 13, 52, "Input",
+Cell[11795, 424, 384, 13, 52, "Input",
  CellTags->"Convolute",
  CellID->440037844],
-Cell[12181, 439, 341, 12, 60, "Output",
+Cell[12182, 439, 341, 12, 60, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12559, 456, 344, 11, 29, "Input",
+Cell[12560, 456, 344, 11, 29, "Input",
  CellTags->"Convolute",
  CellID->151808165],
-Cell[12906, 469, 322, 11, 37, "Output",
+Cell[12907, 469, 322, 11, 37, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13265, 485, 372, 12, 29, "Input",
+Cell[13266, 485, 372, 12, 29, "Input",
  CellTags->"Convolute",
  CellID->1563371513],
-Cell[13640, 499, 330, 11, 37, "Output",
+Cell[13641, 499, 330, 11, 37, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14007, 515, 395, 13, 52, "Input",
+Cell[14008, 515, 395, 13, 52, "Input",
  CellTags->"Convolute",
  CellID->1082077962],
-Cell[14405, 530, 351, 12, 56, "Output",
+Cell[14406, 530, 351, 12, 56, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14793, 547, 422, 14, 52, "Input",
+Cell[14794, 547, 422, 14, 52, "Input",
  CellTags->"Convolute",
  CellID->1247483115],
-Cell[15218, 563, 361, 12, 56, "Output",
+Cell[15219, 563, 361, 12, 56, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15616, 580, 397, 13, 52, "Input",
+Cell[15617, 580, 397, 13, 53, "Input",
  CellTags->"Convolute",
  CellID->2055743895],
-Cell[16016, 595, 361, 12, 56, "Output",
+Cell[16017, 595, 361, 12, 56, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16414, 612, 346, 11, 29, "Input",
+Cell[16415, 612, 346, 11, 29, "Input",
  CellTags->"Convolute",
  CellID->1292595425],
-Cell[16763, 625, 292, 11, 39, "Output",
+Cell[16764, 625, 292, 11, 39, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17092, 641, 345, 11, 29, "Input",
+Cell[17093, 641, 345, 11, 29, "Input",
  CellTags->"Convolute",
  CellID->342391696],
-Cell[17440, 654, 331, 11, 37, "Output",
+Cell[17441, 654, 331, 11, 37, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17808, 670, 419, 14, 52, "Input",
+Cell[17809, 670, 419, 14, 53, "Input",
  CellTags->"Convolute",
  CellID->1164478774],
-Cell[18230, 686, 369, 13, 64, "Output",
+Cell[18231, 686, 369, 13, 64, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18636, 704, 319, 10, 29, "Input",
+Cell[18637, 704, 319, 10, 29, "Input",
  CellTags->"Convolute",
  CellID->260971955],
-Cell[18958, 716, 268, 10, 39, "Output",
+Cell[18959, 716, 268, 10, 39, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19263, 731, 350, 11, 29, "Input",
+Cell[19264, 731, 350, 11, 29, "Input",
  CellTags->"Convolute",
  CellID->935305016],
-Cell[19616, 744, 318, 12, 39, "Output",
+Cell[19617, 744, 318, 12, 39, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19971, 761, 367, 12, 52, "Input",
+Cell[19972, 761, 367, 12, 52, "Input",
  CellTags->"Convolute",
  CellID->63581574],
-Cell[20341, 775, 293, 10, 59, "Output",
+Cell[20342, 775, 293, 10, 59, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20671, 790, 370, 12, 52, "Input",
+Cell[20672, 790, 370, 12, 53, "Input",
  CellTags->"Convolute",
  CellID->1271585721],
-Cell[21044, 804, 293, 10, 59, "Output",
+Cell[21045, 804, 293, 10, 59, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21374, 819, 395, 13, 52, "Input",
+Cell[21375, 819, 395, 13, 52, "Input",
  CellTags->"Convolute",
  CellID->1377475961],
-Cell[21772, 834, 319, 11, 59, "Output",
+Cell[21773, 834, 319, 11, 59, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22128, 850, 370, 12, 52, "Input",
+Cell[22129, 850, 370, 12, 53, "Input",
  CellTags->"Convolute",
  CellID->2045548358],
-Cell[22501, 864, 319, 11, 59, "Output",
+Cell[22502, 864, 319, 11, 59, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22857, 880, 346, 11, 29, "Input",
+Cell[22858, 880, 346, 11, 29, "Input",
  CellTags->"Convolute",
  CellID->1793379008],
-Cell[23206, 893, 292, 11, 39, "Output",
+Cell[23207, 893, 292, 11, 39, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23535, 909, 320, 10, 29, "Input",
+Cell[23536, 909, 320, 10, 29, "Input",
  CellTags->"Convolute",
  CellID->1760428538],
-Cell[23858, 921, 292, 11, 39, "Output",
+Cell[23859, 921, 292, 11, 39, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24187, 937, 445, 15, 52, "Input",
+Cell[24188, 937, 445, 15, 53, "Input",
  CellTags->"Convolute",
  CellID->379553048],
-Cell[24635, 954, 429, 15, 61, "Output",
+Cell[24636, 954, 429, 15, 61, "Output",
  CellTags->"Convolute"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25101, 974, 455, 15, 52, "Input",
+Cell[25102, 974, 455, 15, 53, "Input",
  CellTags->"Convolute",
  CellID->1743318528],
-Cell[25559, 991, 378, 13, 59, "Output",
+Cell[25560, 991, 378, 13, 59, "Output",
  CellTags->"Convolute"]
 }, Open  ]]
 }, Open  ]],
-Cell[25964, 1008, 31, 0, 29, "SectionFooterSpacer"]
+Cell[25965, 1008, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26032, 1013, 270, 12, 31, "SeeAlsoSection",
+Cell[26033, 1013, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[26305, 1027, 388, 13, 55, "SeeAlso"]
+Cell[26306, 1027, 388, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[26708, 1043, 23, 0, 40, "FooterCell"]
+Cell[26709, 1043, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

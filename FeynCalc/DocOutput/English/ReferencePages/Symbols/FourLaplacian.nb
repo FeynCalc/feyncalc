@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26220,        920]
-NotebookOptionsPosition[     21822,        784]
-NotebookOutlinePosition[     24615,        862]
-CellTagsIndexPosition[     24498,        856]
+NotebookDataLength[     26269,        921]
+NotebookOptionsPosition[     21821,        784]
+NotebookOutlinePosition[     24665,        863]
+CellTagsIndexPosition[     24548,        857]
 WindowTitle->FourLaplacian
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ FourLaplacian.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$146445], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$142246], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FourLaplacian", ".html"]], None}]}]},
@@ -166,7 +166,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1508055095],
+ CellID->1250925628],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -180,7 +180,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"Dimension", "\[Rule]", "D"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{113, 16},
+ ImageSize->{112, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[118]="]
@@ -205,7 +205,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1440700343],
+ CellID->2055506051],
 
 Cell[CellGroupData[{
 
@@ -215,7 +215,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2080342182],
+ CellID->116203685],
 
 Cell[CellGroupData[{
 
@@ -234,7 +234,7 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{25, 18},
+ ImageSize->{26, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
@@ -253,7 +253,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"2", " ", "D"}], TraditionalForm]], "Output",
- ImageSize->{30, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
@@ -324,7 +324,7 @@ Cell[BoxData[
         FeynCalc`Momentum[$CellContext`p, D] + 
        FeynCalc`Momentum[$CellContext`q, D]]],
      Editable->False]}]], TraditionalForm]], "Output",
- ImageSize->{96, 41},
+ ImageSize->{99, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
@@ -737,7 +737,7 @@ Cell[BoxData[
           FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
         Editable->False], "2"]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{562, 152},
+ ImageSize->{569, 155},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
@@ -797,7 +797,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 49, 51.286412}", 
+   "built" -> "{2019, 9, 20, 21, 14, 43.769988}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -809,7 +809,7 @@ TaggingRules->{
     "FourLaplacian", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FourLaplacian"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -817,8 +817,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -829,99 +830,99 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6046, 192, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1440700343]},
+   CellID->2055506051]},
  "FourLaplacian"->{
-  Cell[6680, 221, 149, 5, 27, "Input",
+  Cell[6679, 221, 149, 5, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->678691277],
-  Cell[6832, 228, 315, 12, 39, "Output",
+  Cell[6831, 228, 315, 12, 39, "Output",
    CellTags->"FourLaplacian"],
-  Cell[7184, 245, 171, 5, 27, "Input",
+  Cell[7183, 245, 171, 5, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->1086572094],
-  Cell[7358, 252, 217, 7, 35, "Output",
+  Cell[7357, 252, 217, 7, 35, "Output",
    CellTags->"FourLaplacian"],
-  Cell[7612, 264, 283, 10, 27, "Input",
+  Cell[7611, 264, 283, 10, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->1385775268],
-  Cell[7898, 276, 1474, 54, 62, "Output",
+  Cell[7897, 276, 1474, 54, 62, "Output",
    CellTags->"FourLaplacian"],
-  Cell[9409, 335, 176, 5, 27, "Input",
+  Cell[9408, 335, 176, 5, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->1428791386],
-  Cell[9588, 342, 11448, 401, 173, "Output",
+  Cell[9587, 342, 11448, 401, 176, "Output",
    CellTags->"FourLaplacian"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 23669, 828},
- {"FourLaplacian", 23810, 832}
+ {"PrimaryExamplesSection", 23719, 829},
+ {"FourLaplacian", 23860, 833}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 3137, 76, 50, "AnchorBarGrid",
+Cell[585, 21, 3137, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3725, 99, 290, 11, 44, "ObjectNameGrid"],
+Cell[3725, 99, 290, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4040, 114, 792, 26, 86, "Usage",
+Cell[4040, 114, 792, 26, 88, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4857, 144, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1508055095],
-Cell[5599, 170, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1250925628],
+Cell[5599, 170, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5655, 174, 97, 2, 27, "Input"],
-Cell[5755, 178, 230, 7, 37, "Output"]
+Cell[5655, 174, 97, 2, 70, "Input"],
+Cell[5755, 178, 230, 7, 35, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6046, 192, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1440700343],
+ CellID->2055506051],
 Cell[CellGroupData[{
-Cell[6459, 211, 196, 6, 25, "ExampleSection",
- CellID->2080342182],
+Cell[6459, 211, 195, 6, 26, "ExampleSection",
+ CellID->116203685],
 Cell[CellGroupData[{
-Cell[6680, 221, 149, 5, 27, "Input",
+Cell[6679, 221, 149, 5, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->678691277],
-Cell[6832, 228, 315, 12, 39, "Output",
+Cell[6831, 228, 315, 12, 39, "Output",
  CellTags->"FourLaplacian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7184, 245, 171, 5, 27, "Input",
+Cell[7183, 245, 171, 5, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->1086572094],
-Cell[7358, 252, 217, 7, 35, "Output",
+Cell[7357, 252, 217, 7, 35, "Output",
  CellTags->"FourLaplacian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7612, 264, 283, 10, 27, "Input",
+Cell[7611, 264, 283, 10, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->1385775268],
-Cell[7898, 276, 1474, 54, 62, "Output",
+Cell[7897, 276, 1474, 54, 62, "Output",
  CellTags->"FourLaplacian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9409, 335, 176, 5, 27, "Input",
+Cell[9408, 335, 176, 5, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->1428791386],
-Cell[9588, 342, 11448, 401, 173, "Output",
+Cell[9587, 342, 11448, 401, 176, "Output",
  CellTags->"FourLaplacian"]
 }, Open  ]]
 }, Open  ]],
-Cell[21063, 747, 31, 0, 29, "SectionFooterSpacer"]
+Cell[21062, 747, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21131, 752, 270, 12, 31, "SeeAlsoSection",
+Cell[21130, 752, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[21404, 766, 376, 13, 55, "SeeAlso"]
+Cell[21403, 766, 376, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[21795, 782, 23, 0, 40, "FooterCell"]
+Cell[21794, 782, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

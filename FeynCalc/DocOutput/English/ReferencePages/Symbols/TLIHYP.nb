@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8916,        294]
+NotebookDataLength[      8967,        295]
 NotebookOptionsPosition[      6230,        212]
-NotebookOutlinePosition[      8285,        270]
-CellTagsIndexPosition[      8217,        265]
+NotebookOutlinePosition[      8336,        271]
+CellTagsIndexPosition[      8268,        266]
 WindowTitle->TLIHYP
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$278495], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$268444], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/TLIHYP", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1888562718],
+ CellID->1343641508],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -172,7 +172,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "\[Rule]", 
      RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{403, 16},
+ ImageSize->{389, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TLIHYP",
@@ -212,8 +212,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"TLIHYP",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -225,7 +225,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 54, 45.570688}", 
+   "built" -> "{2019, 9, 20, 21, 19, 28.465245}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -236,7 +236,7 @@ functions, where possible.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "TLIHYP", "titlemodifier" -> "", "windowtitle" -> "TLIHYP", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/TLIHYP"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,8 +244,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -254,7 +255,7 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "TLIHYP"->{
-  Cell[5117, 159, 130, 4, 27, "Input",
+  Cell[5117, 159, 130, 4, 70, "Input",
    CellTags->"TLIHYP",
    CellID->1476708263],
   Cell[5250, 165, 432, 14, 37, "Output",
@@ -264,24 +265,24 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"TLIHYP", 8019, 255}
+ {"TLIHYP", 8070, 256}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2983, 74, 50, "AnchorBarGrid",
+Cell[578, 21, 2983, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3564, 97, 283, 11, 44, "ObjectNameGrid"],
+Cell[3564, 97, 283, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3872, 112, 422, 13, 83, "Usage",
+Cell[3872, 112, 422, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4319, 129, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1888562718],
-Cell[5061, 155, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1343641508],
+Cell[5061, 155, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5117, 159, 130, 4, 27, "Input",
+Cell[5117, 159, 130, 4, 70, "Input",
  CellTags->"TLIHYP",
  CellID->1476708263],
 Cell[5250, 165, 432, 14, 37, "Output",
@@ -293,9 +294,9 @@ Cell[5250, 165, 432, 14, 37, "Output",
 Cell[CellGroupData[{
 Cell[5743, 186, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6016, 200, 172, 7, 54, "SeeAlso"]
+Cell[6016, 200, 172, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6203, 210, 23, 0, 40, "FooterCell"]
+Cell[6203, 210, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

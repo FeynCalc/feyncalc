@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10234,        346]
-NotebookOptionsPosition[      6882,        244]
-NotebookOutlinePosition[      9308,        312]
-CellTagsIndexPosition[      9200,        306]
+NotebookDataLength[     10224,        346]
+NotebookOptionsPosition[      6881,        244]
+NotebookOutlinePosition[      9298,        312]
+CellTagsIndexPosition[      9190,        306]
 WindowTitle->B0Real
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27087], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26650], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/B0Real", ".html"]], None}]}]},
@@ -139,7 +139,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1662861194],
+ CellID->52229959],
 
 Cell[CellGroupData[{
 
@@ -149,7 +149,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->201676362],
+ CellID->1400422477],
 
 Cell["By default the arguments are not assumed real.", "Notes"],
 
@@ -171,7 +171,7 @@ Cell[BoxData[
      RowBox[{"s", ",", "0", ",", "s"}], ")"}],
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{78, 16},
+ ImageSize->{79, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"B0Real",
@@ -203,7 +203,7 @@ Cell[BoxData[
       TraditionalForm],
      HoldForm],
     TraditionalForm], "+", "2"}], TraditionalForm]], "Output",
- ImageSize->{101, 16},
+ ImageSize->{104, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"B0Real",
@@ -257,7 +257,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 13.260587}", 
+   "built" -> "{2019, 9, 20, 21, 10, 6.739524}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -269,7 +269,7 @@ to be real and the relation B0[a,0,a] = 2 + B0[0,a,a] is applied.",
     "", "windowtitle" -> "B0Real", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/B0Real"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -278,7 +278,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -287,67 +287,67 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4315, 126, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4315, 126, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1662861194]},
+   CellID->52229959]},
  "B0Real"->{
-  Cell[5014, 157, 153, 5, 27, "Input",
+  Cell[5013, 157, 153, 5, 27, "Input",
    CellTags->"B0Real",
    CellID->1048836421],
-  Cell[5170, 164, 352, 13, 37, "Output",
+  Cell[5169, 164, 352, 13, 37, "Output",
    CellTags->"B0Real"],
-  Cell[5626, 184, 250, 7, 27, "Input",
+  Cell[5625, 184, 250, 7, 27, "Input",
    CellTags->"B0Real",
    CellID->848873063],
-  Cell[5879, 193, 424, 16, 37, "Output",
+  Cell[5878, 193, 424, 16, 37, "Output",
    CellTags->"B0Real"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8741, 288},
- {"B0Real", 8875, 292}
+ {"PrimaryExamplesSection", 8733, 288},
+ {"B0Real", 8865, 292}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2980, 74, 50, "AnchorBarGrid",
+Cell[578, 21, 2980, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3561, 97, 283, 11, 44, "ObjectNameGrid"],
-Cell[3847, 110, 443, 12, 99, "Usage",
+Cell[3561, 97, 283, 11, 45, "ObjectNameGrid"],
+Cell[3847, 110, 443, 12, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4315, 126, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4315, 126, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1662861194],
+ CellID->52229959],
 Cell[CellGroupData[{
-Cell[4728, 145, 195, 6, 25, "ExampleSection",
- CellID->201676362],
-Cell[4926, 153, 63, 0, 31, "Notes"],
+Cell[4726, 145, 196, 6, 26, "ExampleSection",
+ CellID->1400422477],
+Cell[4925, 153, 63, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5014, 157, 153, 5, 27, "Input",
+Cell[5013, 157, 153, 5, 27, "Input",
  CellTags->"B0Real",
  CellID->1048836421],
-Cell[5170, 164, 352, 13, 37, "Output",
+Cell[5169, 164, 352, 13, 37, "Output",
  CellTags->"B0Real"]
 }, Open  ]],
-Cell[5537, 180, 64, 0, 31, "Notes"],
+Cell[5536, 180, 64, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5626, 184, 250, 7, 27, "Input",
+Cell[5625, 184, 250, 7, 27, "Input",
  CellTags->"B0Real",
  CellID->848873063],
-Cell[5879, 193, 424, 16, 37, "Output",
+Cell[5878, 193, 424, 16, 37, "Output",
  CellTags->"B0Real"]
 }, Open  ]]
 }, Open  ]],
-Cell[6330, 213, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6329, 213, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6398, 218, 270, 12, 31, "SeeAlsoSection",
+Cell[6397, 218, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6671, 232, 169, 7, 54, "SeeAlso"]
+Cell[6670, 232, 169, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6855, 242, 23, 0, 40, "FooterCell"]
+Cell[6854, 242, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

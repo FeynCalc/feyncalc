@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11119,        390]
+NotebookDataLength[     11170,        391]
 NotebookOptionsPosition[      8045,        295]
-NotebookOutlinePosition[     10065,        350]
-CellTagsIndexPosition[      9981,        345]
+NotebookOutlinePosition[     10116,        351]
+CellTagsIndexPosition[     10032,        346]
 WindowTitle->QuarkFieldPsi
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ QuarkFieldPsi.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$224472], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$217245], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/QuarkFieldPsi", ".html"]], None}]}]},
@@ -128,7 +128,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->266755418],
+ CellID->2077333992],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -157,7 +157,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1621671289],
+ CellID->1681820342],
 
 Cell[CellGroupData[{
 
@@ -167,7 +167,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1346841380],
+ CellID->692376196],
 
 Cell[CellGroupData[{
 
@@ -214,7 +214,7 @@ Cell[BoxData[
      TraditionalForm]], ".", 
    FormBox["\[Psi]",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{86, 21},
+ ImageSize->{92, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -282,7 +282,7 @@ Cell[BoxData[
        TraditionalForm]], ".", 
      FormBox["\[Psi]",
       TraditionalForm]}]}]}], TraditionalForm]], "Output",
- ImageSize->{278, 22},
+ ImageSize->{289, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -308,7 +308,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 40.794127}", 
+   "built" -> "{2019, 9, 20, 21, 17, 28.941540}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -319,7 +319,7 @@ TaggingRules->{
     "Symbol", "uri" -> "FeynCalc/ref/QuarkFieldPsi"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -327,8 +327,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -337,40 +338,40 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4530, 144, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4531, 144, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1621671289]}
+   CellID->1681820342]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9837, 338}
+ {"PrimaryExamplesSection", 9888, 339}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2294, 53, 50, "AnchorBarGrid",
+Cell[585, 21, 2294, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2882, 76, 290, 11, 44, "ObjectNameGrid"],
+Cell[2882, 76, 290, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3197, 91, 349, 11, 82, "Usage",
+Cell[3197, 91, 349, 11, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3571, 106, 738, 24, 31, "NotesSection",
+Cell[3571, 106, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->266755418],
-Cell[4312, 132, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[4346, 134, 135, 4, 31, "Notes",
+ CellID->2077333992],
+Cell[4313, 132, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[4347, 134, 135, 4, 32, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4530, 144, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4531, 144, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1621671289],
+ CellID->1681820342],
 Cell[CellGroupData[{
-Cell[4943, 163, 196, 6, 25, "ExampleSection",
- CellID->1346841380],
+Cell[4944, 163, 195, 6, 26, "ExampleSection",
+ CellID->692376196],
 Cell[CellGroupData[{
 Cell[5164, 173, 82, 2, 27, "Input",
  CellID->323831762],
@@ -391,7 +392,7 @@ Cell[6505, 230, 1474, 58, 43, "Output",
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8018, 293, 23, 0, 40, "FooterCell"]
+Cell[8018, 293, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

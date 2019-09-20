@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7254,        217]
+NotebookDataLength[      7248,        217]
 NotebookOptionsPosition[      5136,        160]
-NotebookOutlinePosition[      7046,        209]
-CellTagsIndexPosition[      7003,        206]
+NotebookOutlinePosition[      7040,        209]
+CellTagsIndexPosition[      6997,        206]
 WindowTitle->IsolateNames
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ IsolateNames.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$177323], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171752], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/IsolateNames", ".html"]], None}]}]},
@@ -173,7 +173,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 56.693923}", 
+   "built" -> "{2019, 9, 20, 21, 15, 46.947161}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -185,7 +185,7 @@ the abbrevations.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "IsolateNames", "titlemodifier" -> "", "windowtitle" -> "IsolateNames", 
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/IsolateNames"}},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -194,7 +194,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)

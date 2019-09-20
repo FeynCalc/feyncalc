@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20293,        755]
-NotebookOptionsPosition[     14564,        567]
-NotebookOutlinePosition[     17797,        663]
-CellTagsIndexPosition[     17687,        657]
+NotebookDataLength[     20337,        756]
+NotebookOptionsPosition[     14561,        567]
+NotebookOutlinePosition[     17844,        664]
+CellTagsIndexPosition[     17734,        658]
 WindowTitle->Spinor
 WindowFrame->Normal*)
 
@@ -89,7 +89,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$252291], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$243824], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Spinor", ".html"]], None}]}]},
@@ -160,7 +160,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1760476269],
+ CellID->540257033],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -265,7 +265,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1258713331],
+ CellID->608025762],
 
 Cell[CellGroupData[{
 
@@ -275,7 +275,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1587288702],
+ CellID->937569559],
 
 Cell[CellGroupData[{
 
@@ -299,7 +299,7 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{47, 16},
+ ImageSize->{49, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -333,7 +333,7 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{72, 16},
+ ImageSize->{75, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -361,7 +361,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"2", " ", "m"}], TraditionalForm]], "Output",
- ImageSize->{30, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -403,7 +403,7 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{125, 16},
+ ImageSize->{127, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -424,7 +424,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",\
 
- ImageSize->{202, 15},
+ ImageSize->{203, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -448,7 +448,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
- ImageSize->{224, 15},
+ ImageSize->{226, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -496,7 +496,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",\
 
- ImageSize->{202, 15},
+ ImageSize->{203, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Spinor",
@@ -580,7 +580,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 53, 42.424365}", 
+   "built" -> "{2019, 9, 20, 21, 18, 30.198327}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -590,7 +590,7 @@ TaggingRules->{
     "", "windowtitle" -> "Spinor", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Spinor"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -598,8 +598,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -608,155 +609,155 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[7451, 252, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[7450, 252, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1258713331]},
+   CellID->608025762]},
  "Spinor"->{
-  Cell[8085, 281, 124, 4, 27, "Input",
+  Cell[8082, 281, 124, 4, 27, "Input",
    CellTags->"Spinor",
    CellID->1573141935],
-  Cell[8212, 287, 448, 18, 37, "Output",
+  Cell[8209, 287, 448, 18, 37, "Output",
    CellTags->"Spinor"],
-  Cell[8697, 310, 145, 5, 27, "Input",
+  Cell[8694, 310, 145, 5, 27, "Input",
    CellTags->"Spinor",
    CellID->67205944],
-  Cell[8845, 317, 534, 22, 37, "Output",
+  Cell[8842, 317, 534, 22, 37, "Output",
    CellTags->"Spinor"],
-  Cell[9545, 349, 267, 9, 27, "Input",
+  Cell[9542, 349, 267, 9, 27, "Input",
    CellTags->"Spinor",
    CellID->540190510],
-  Cell[9815, 360, 210, 7, 35, "Output",
+  Cell[9812, 360, 210, 7, 35, "Output",
    CellTags->"Spinor"],
-  Cell[10062, 372, 263, 9, 27, "Input",
+  Cell[10059, 372, 263, 9, 27, "Input",
    CellTags->"Spinor",
    CellID->654515033],
-  Cell[10328, 383, 658, 26, 37, "Output",
+  Cell[10325, 383, 658, 26, 37, "Output",
    CellTags->"Spinor"],
-  Cell[11023, 414, 158, 5, 27, "Input",
+  Cell[11020, 414, 158, 5, 27, "Input",
    CellTags->"Spinor",
    CellID->864077691],
-  Cell[11184, 421, 277, 9, 49, "Output",
+  Cell[11181, 421, 277, 9, 51, "Output",
    CellTags->"Spinor"],
-  Cell[11498, 435, 228, 8, 27, "Input",
+  Cell[11495, 435, 228, 8, 27, "Input",
    CellTags->"Spinor",
    CellID->39280367],
-  Cell[11729, 445, 300, 9, 49, "Output",
+  Cell[11726, 445, 300, 9, 51, "Output",
    CellTags->"Spinor"],
-  Cell[12066, 459, 183, 6, 27, "Input",
+  Cell[12063, 459, 183, 6, 27, "Input",
    CellTags->"Spinor",
    CellID->1410615258],
-  Cell[12252, 467, 277, 9, 49, "Output",
+  Cell[12249, 467, 277, 9, 51, "Output",
    CellTags->"Spinor"],
-  Cell[12626, 483, 227, 8, 27, "Input",
+  Cell[12623, 483, 227, 8, 27, "Input",
    CellTags->"Spinor",
    CellID->557218901],
-  Cell[12856, 493, 277, 9, 49, "Output",
+  Cell[12853, 493, 277, 9, 51, "Output",
    CellTags->"Spinor"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16324, 609},
- {"Spinor", 16458, 613}
+ {"PrimaryExamplesSection", 16372, 610},
+ {"Spinor", 16505, 614}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 3490, 84, 50, "AnchorBarGrid",
+Cell[578, 21, 3490, 84, 53, "AnchorBarGrid",
  CellID->1],
-Cell[4071, 107, 283, 11, 44, "ObjectNameGrid"],
+Cell[4071, 107, 283, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4379, 122, 410, 12, 83, "Usage",
+Cell[4379, 122, 410, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4814, 138, 739, 24, 31, "NotesSection",
+Cell[4814, 138, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1760476269],
-Cell[5556, 164, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5590, 166, 432, 18, 47, "Notes"],
-Cell[6025, 186, 187, 6, 31, "Notes"],
-Cell[6215, 194, 157, 5, 31, "Notes"],
-Cell[6375, 201, 188, 6, 31, "Notes"],
-Cell[6566, 209, 158, 5, 31, "Notes"],
-Cell[6727, 216, 514, 25, 31, "Notes",
+ CellID->540257033],
+Cell[5555, 164, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5589, 166, 432, 18, 70, "Notes"],
+Cell[6024, 186, 187, 6, 70, "Notes"],
+Cell[6214, 194, 157, 5, 70, "Notes"],
+Cell[6374, 201, 188, 6, 70, "Notes"],
+Cell[6565, 209, 158, 5, 70, "Notes"],
+Cell[6726, 216, 514, 25, 70, "Notes",
  CellID->1067943069],
-Cell[7244, 243, 158, 3, 47, "Notes"]
+Cell[7243, 243, 158, 3, 70, "Notes"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7451, 252, 388, 15, 31, "PrimaryExamplesSection",
+Cell[7450, 252, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1258713331],
+ CellID->608025762],
 Cell[CellGroupData[{
-Cell[7864, 271, 196, 6, 25, "ExampleSection",
- CellID->1587288702],
+Cell[7862, 271, 195, 6, 26, "ExampleSection",
+ CellID->937569559],
 Cell[CellGroupData[{
-Cell[8085, 281, 124, 4, 27, "Input",
+Cell[8082, 281, 124, 4, 27, "Input",
  CellTags->"Spinor",
  CellID->1573141935],
-Cell[8212, 287, 448, 18, 37, "Output",
+Cell[8209, 287, 448, 18, 37, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8697, 310, 145, 5, 27, "Input",
+Cell[8694, 310, 145, 5, 27, "Input",
  CellTags->"Spinor",
  CellID->67205944],
-Cell[8845, 317, 534, 22, 37, "Output",
+Cell[8842, 317, 534, 22, 37, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
-Cell[9394, 342, 126, 3, 47, "Notes"],
+Cell[9391, 342, 126, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[9545, 349, 267, 9, 27, "Input",
+Cell[9542, 349, 267, 9, 27, "Input",
  CellTags->"Spinor",
  CellID->540190510],
-Cell[9815, 360, 210, 7, 35, "Output",
+Cell[9812, 360, 210, 7, 35, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10062, 372, 263, 9, 27, "Input",
+Cell[10059, 372, 263, 9, 27, "Input",
  CellTags->"Spinor",
  CellID->654515033],
-Cell[10328, 383, 658, 26, 37, "Output",
+Cell[10325, 383, 658, 26, 37, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11023, 414, 158, 5, 27, "Input",
+Cell[11020, 414, 158, 5, 27, "Input",
  CellTags->"Spinor",
  CellID->864077691],
-Cell[11184, 421, 277, 9, 49, "Output",
+Cell[11181, 421, 277, 9, 51, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11498, 435, 228, 8, 27, "Input",
+Cell[11495, 435, 228, 8, 27, "Input",
  CellTags->"Spinor",
  CellID->39280367],
-Cell[11729, 445, 300, 9, 49, "Output",
+Cell[11726, 445, 300, 9, 51, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12066, 459, 183, 6, 27, "Input",
+Cell[12063, 459, 183, 6, 27, "Input",
  CellTags->"Spinor",
  CellID->1410615258],
-Cell[12252, 467, 277, 9, 49, "Output",
+Cell[12249, 467, 277, 9, 51, "Output",
  CellTags->"Spinor"]
 }, Open  ]],
-Cell[12544, 479, 57, 0, 31, "Notes"],
+Cell[12541, 479, 57, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[12626, 483, 227, 8, 27, "Input",
+Cell[12623, 483, 227, 8, 27, "Input",
  CellTags->"Spinor",
  CellID->557218901],
-Cell[12856, 493, 277, 9, 49, "Output",
+Cell[12853, 493, 277, 9, 51, "Output",
  CellTags->"Spinor"]
 }, Open  ]]
 }, Open  ]],
-Cell[13160, 506, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13157, 506, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13228, 511, 270, 12, 31, "SeeAlsoSection",
+Cell[13225, 511, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13501, 525, 1021, 37, 55, "SeeAlso"]
+Cell[13498, 525, 1021, 37, 56, "SeeAlso"]
 }, Open  ]],
-Cell[14537, 565, 23, 0, 40, "FooterCell"]
+Cell[14534, 565, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

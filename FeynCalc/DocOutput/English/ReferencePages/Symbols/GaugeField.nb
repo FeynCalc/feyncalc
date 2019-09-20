@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10255,        341]
-NotebookOptionsPosition[      6901,        241]
-NotebookOutlinePosition[      9385,        309]
-CellTagsIndexPosition[      9273,        303]
+NotebookDataLength[     10304,        342]
+NotebookOptionsPosition[      6900,        241]
+NotebookOutlinePosition[      9434,        310]
+CellTagsIndexPosition[      9322,        304]
 WindowTitle->GaugeField
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ GaugeField.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$155830], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151221], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GaugeField", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1372694189],
+ CellID->1709781396],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2106935190],
+ CellID->464363615],
 
 Cell[CellGroupData[{
 
@@ -254,7 +254,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 50, 12.024330}", 
+   "built" -> "{2019, 9, 20, 21, 15, 3.464549}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -266,7 +266,7 @@ FieldStrength.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "GaugeField",
      "titlemodifier" -> "", "windowtitle" -> "GaugeField", "type" -> "Symbol",
      "uri" -> "FeynCalc/ref/GaugeField"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -274,8 +274,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -286,63 +287,63 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4488, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1372694189]},
+   CellID->1709781396]},
  "GaugeField"->{
-  Cell[5122, 158, 105, 3, 27, "Input",
+  Cell[5121, 158, 105, 3, 27, "Input",
    CellTags->"GaugeField",
    CellID->1050712800],
-  Cell[5230, 163, 191, 6, 35, "Output",
+  Cell[5229, 163, 191, 6, 35, "Output",
    CellTags->"GaugeField"],
-  Cell[5458, 174, 256, 7, 27, "Input",
+  Cell[5457, 174, 256, 7, 27, "Input",
    CellTags->"GaugeField",
    CellID->1376527682],
-  Cell[5717, 183, 401, 17, 40, "Output",
+  Cell[5716, 183, 401, 17, 40, "Output",
    CellTags->"GaugeField"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8794, 285},
- {"GaugeField", 8932, 289}
+ {"PrimaryExamplesSection", 8843, 286},
+ {"GaugeField", 8981, 290}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 3123, 76, 50, "AnchorBarGrid",
+Cell[582, 21, 3123, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3708, 99, 287, 11, 44, "ObjectNameGrid"],
-Cell[3998, 112, 465, 13, 99, "Usage",
+Cell[3708, 99, 287, 11, 45, "ObjectNameGrid"],
+Cell[3998, 112, 465, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4488, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1372694189],
+ CellID->1709781396],
 Cell[CellGroupData[{
-Cell[4901, 148, 196, 6, 25, "ExampleSection",
- CellID->2106935190],
+Cell[4901, 148, 195, 6, 26, "ExampleSection",
+ CellID->464363615],
 Cell[CellGroupData[{
-Cell[5122, 158, 105, 3, 27, "Input",
+Cell[5121, 158, 105, 3, 27, "Input",
  CellTags->"GaugeField",
  CellID->1050712800],
-Cell[5230, 163, 191, 6, 35, "Output",
+Cell[5229, 163, 191, 6, 35, "Output",
  CellTags->"GaugeField"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5458, 174, 256, 7, 27, "Input",
+Cell[5457, 174, 256, 7, 27, "Input",
  CellTags->"GaugeField",
  CellID->1376527682],
-Cell[5717, 183, 401, 17, 40, "Output",
+Cell[5716, 183, 401, 17, 40, "Output",
  CellTags->"GaugeField"]
 }, Open  ]]
 }, Open  ]],
-Cell[6145, 204, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6144, 204, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6213, 209, 270, 12, 31, "SeeAlsoSection",
+Cell[6212, 209, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6486, 223, 373, 13, 55, "SeeAlso"]
+Cell[6485, 223, 373, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6874, 239, 23, 0, 40, "FooterCell"]
+Cell[6873, 239, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

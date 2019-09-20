@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10093,        315]
-NotebookOptionsPosition[      6944,        226]
-NotebookOutlinePosition[      9467,        291]
-CellTagsIndexPosition[      9402,        286]
+NotebookDataLength[     10143,        316]
+NotebookOptionsPosition[      6945,        226]
+NotebookOutlinePosition[      9516,        292]
+CellTagsIndexPosition[      9451,        287]
 WindowTitle->TLI
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$278954], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$268883], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/TLI", 
              ".html"]], None}]}]},
@@ -166,7 +166,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->235764687],
+ CellID->1479636087],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -186,7 +186,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "\[Rule]", 
      RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{279, 16},
+ ImageSize->{273, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TLI",
@@ -227,7 +227,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"TLI",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -239,7 +239,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 54, 46.765678}", 
+   "built" -> "{2019, 9, 20, 21, 19, 29.424303}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -257,7 +257,7 @@ TLI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to TLI[{a,b,c,d,e}, \
     "titlemodifier" -> "", "windowtitle" -> "TLI", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/TLI"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -265,8 +265,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -275,48 +276,48 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "TLI"->{
-  Cell[5882, 174, 124, 4, 27, "Input",
+  Cell[5883, 174, 124, 4, 70, "Input",
    CellTags->"TLI",
    CellID->1958640232],
-  Cell[6009, 180, 378, 13, 37, "Output",
+  Cell[6010, 180, 378, 13, 37, "Output",
    CellTags->"TLI",
    CellID->1974374076]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"TLI", 9210, 276}
+ {"TLI", 9259, 277}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 2977, 74, 50, "AnchorBarGrid",
+Cell[575, 21, 2977, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3555, 97, 280, 11, 44, "ObjectNameGrid"],
+Cell[3555, 97, 280, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3860, 112, 1200, 28, 189, "Usage",
+Cell[3860, 112, 1200, 28, 197, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5085, 144, 738, 24, 31, "NotesSection",
+Cell[5085, 144, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->235764687],
-Cell[5826, 170, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1479636087],
+Cell[5827, 170, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5882, 174, 124, 4, 27, "Input",
+Cell[5883, 174, 124, 4, 70, "Input",
  CellTags->"TLI",
  CellID->1958640232],
-Cell[6009, 180, 378, 13, 37, "Output",
+Cell[6010, 180, 378, 13, 37, "Output",
  CellTags->"TLI",
  CellID->1974374076]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6448, 200, 270, 12, 31, "SeeAlsoSection",
+Cell[6449, 200, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6721, 214, 181, 7, 54, "SeeAlso"]
+Cell[6722, 214, 181, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6917, 224, 23, 0, 40, "FooterCell"]
+Cell[6918, 224, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9132,        290]
+NotebookDataLength[      9180,        291]
 NotebookOptionsPosition[      6211,        207]
-NotebookOutlinePosition[      8454,        265]
-CellTagsIndexPosition[      8370,        260]
+NotebookOutlinePosition[      8502,        266]
+CellTagsIndexPosition[      8418,        261]
 WindowTitle->FCGetMetricSignature
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FCGetMetricSignature.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$101792], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100000], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCGetMetricSignature", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->774401539],
+ CellID->358404777],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1726514315],
+ CellID->1108404676],
 
 Cell[CellGroupData[{
 
@@ -165,7 +165,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"1", ",", 
     RowBox[{"-", "1"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{49, 16},
+ ImageSize->{50, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -208,7 +208,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"FCGetMetricSignature",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -220,7 +220,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 48, 7.893966}", 
+   "built" -> "{2019, 9, 20, 21, 13, 4.574872}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -234,7 +234,7 @@ CartesianMomentum etc. {1,-1} corresponds to (1,-1,-1,-1) and {-1,1} means \
     "FCGetMetricSignature", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FCGetMetricSignature"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -242,8 +242,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -254,32 +255,32 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4556, 128, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->774401539]}
+   CellID->358404777]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8227, 253}
+ {"PrimaryExamplesSection", 8275, 254}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[592, 21, 3075, 74, 50, "AnchorBarGrid",
+Cell[592, 21, 3075, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3670, 97, 297, 11, 44, "ObjectNameGrid"],
-Cell[3970, 110, 561, 14, 115, "Usage",
+Cell[3670, 97, 297, 11, 45, "ObjectNameGrid"],
+Cell[3970, 110, 561, 14, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4556, 128, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->774401539],
+ CellID->358404777],
 Cell[CellGroupData[{
-Cell[4968, 147, 196, 6, 25, "ExampleSection",
- CellID->1726514315],
+Cell[4968, 147, 196, 6, 26, "ExampleSection",
+ CellID->1108404676],
 Cell[CellGroupData[{
 Cell[5189, 157, 112, 3, 27, "Input",
  CellID->1470394767],
-Cell[5304, 162, 254, 9, 37, "Output",
+Cell[5304, 162, 254, 9, 35, "Output",
  CellID->1256978127]
 }, Open  ]]
 }, Open  ]],
@@ -288,10 +289,10 @@ Cell[5585, 175, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[5653, 180, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5926, 194, 243, 8, 55, "SeeAlso",
+Cell[5926, 194, 243, 8, 56, "SeeAlso",
  CellID->611711580]
 }, Open  ]],
-Cell[6184, 205, 23, 0, 40, "FooterCell"]
+Cell[6184, 205, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

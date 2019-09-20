@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15393,        556]
-NotebookOptionsPosition[     11972,        454]
-NotebookOutlinePosition[     14154,        511]
-CellTagsIndexPosition[     14069,        506]
+NotebookDataLength[     15448,        557]
+NotebookOptionsPosition[     11973,        454]
+NotebookOutlinePosition[     14207,        512]
+CellTagsIndexPosition[     14122,        507]
 WindowTitle->PauliSigma
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$210152], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$203113], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PauliSigma", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->505769554],
+ CellID->619134609],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->273909892],
+ CellID->1432201060],
 
 Cell[CellGroupData[{
 
@@ -147,7 +147,7 @@ Cell[BoxData[
     FormBox["\[Alpha]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{25, 14},
+ ImageSize->{26, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]="]
@@ -176,7 +176,7 @@ Cell[BoxData[
       FontWeight->Bold],
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 17},
+ ImageSize->{25, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -207,7 +207,7 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{37, 16},
+ ImageSize->{39, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]="]
@@ -237,7 +237,7 @@ Cell[BoxData[
        FontWeight->Bold],
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{37, 16},
+ ImageSize->{40, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]="]
@@ -279,7 +279,7 @@ Cell[BoxData[
           TraditionalForm], "_"]}],
        TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{143, 16},
+ ImageSize->{145, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[5]="]
@@ -318,7 +318,7 @@ Cell[BoxData[
         FormBox["q",
          TraditionalForm], "_"],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{151, 16},
+ ImageSize->{154, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[6]="]
@@ -379,7 +379,7 @@ Cell[BoxData[
           TraditionalForm], "_"]}],
        TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{144, 16},
+ ImageSize->{148, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[7]="]
@@ -442,7 +442,7 @@ Cell[BoxData[
           FontWeight->Bold],
          TraditionalForm], "_"],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{151, 16},
+ ImageSize->{157, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[8]="]
@@ -467,7 +467,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 9.054865}", 
+   "built" -> "{2019, 9, 20, 21, 16, 56.692284}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -480,7 +480,7 @@ or Cartesian vector. PauliSigma[x,3] simplifies to PauliSigma[x].",
     "titlemodifier" -> "", "windowtitle" -> "PauliSigma", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/PauliSigma"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -488,8 +488,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -500,64 +501,64 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3748, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->505769554]}
+   CellID->619134609]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13926, 499}
+ {"PrimaryExamplesSection", 13979, 500}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2281, 53, 50, "AnchorBarGrid",
+Cell[582, 21, 2281, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2866, 76, 287, 11, 44, "ObjectNameGrid"],
-Cell[3156, 89, 567, 14, 99, "Usage",
+Cell[2866, 76, 287, 11, 45, "ObjectNameGrid"],
+Cell[3156, 89, 567, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[3748, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->505769554],
+ CellID->619134609],
 Cell[CellGroupData[{
-Cell[4160, 126, 195, 6, 25, "ExampleSection",
- CellID->273909892],
+Cell[4160, 126, 196, 6, 26, "ExampleSection",
+ CellID->1432201060],
 Cell[CellGroupData[{
-Cell[4380, 136, 132, 3, 27, "Input"],
-Cell[4515, 141, 298, 11, 35, "Output"]
+Cell[4381, 136, 132, 3, 27, "Input"],
+Cell[4516, 141, 298, 11, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4850, 157, 127, 3, 27, "Input"],
-Cell[4980, 162, 469, 19, 38, "Output"]
+Cell[4851, 157, 127, 3, 27, "Input"],
+Cell[4981, 162, 469, 19, 38, "Output"]
 }, Open  ]],
-Cell[5464, 184, 229, 7, 31, "Notes"],
+Cell[5465, 184, 229, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5718, 195, 121, 3, 27, "Input"],
-Cell[5842, 200, 328, 12, 37, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6207, 217, 130, 3, 27, "Input"],
-Cell[6340, 222, 509, 20, 37, "Output"]
+Cell[5719, 195, 121, 3, 27, "Input"],
+Cell[5843, 200, 328, 12, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6886, 247, 253, 7, 27, "Input"],
-Cell[7142, 256, 749, 28, 37, "Output"]
+Cell[6208, 217, 130, 3, 27, "Input"],
+Cell[6341, 222, 509, 20, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7928, 289, 88, 2, 27, "Input"],
-Cell[8019, 293, 805, 30, 37, "Output"]
+Cell[6887, 247, 253, 7, 27, "Input"],
+Cell[7143, 256, 749, 28, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8861, 328, 271, 7, 27, "Input"],
-Cell[9135, 337, 1231, 47, 37, "Output"]
+Cell[7929, 289, 88, 2, 27, "Input"],
+Cell[8020, 293, 805, 30, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10403, 389, 88, 2, 27, "Input"],
-Cell[10494, 393, 1412, 54, 37, "Output"]
+Cell[8862, 328, 271, 7, 27, "Input"],
+Cell[9136, 337, 1231, 47, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10404, 389, 88, 2, 27, "Input"],
+Cell[10495, 393, 1412, 54, 37, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[11945, 452, 23, 0, 40, "FooterCell"]
+Cell[11946, 452, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

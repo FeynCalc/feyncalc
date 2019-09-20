@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14604,        538]
+NotebookDataLength[     14655,        539]
 NotebookOptionsPosition[     10158,        390]
-NotebookOutlinePosition[     13057,        477]
-CellTagsIndexPosition[     12950,        471]
+NotebookOutlinePosition[     13108,        478]
+CellTagsIndexPosition[     13001,        472]
 WindowTitle->FVD
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$150229], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$145866], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/FVD", 
              ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1382795551],
+ CellID->1174524511],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1743631695],
+ CellID->1234323119],
 
 Cell[CellGroupData[{
 
@@ -181,7 +181,7 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 16},
+ ImageSize->{26, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FVD",
@@ -215,7 +215,7 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{64, 16},
+ ImageSize->{66, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FVD",
@@ -235,7 +235,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"FVD", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Output",
- ImageSize->{76, 15},
+ ImageSize->{79, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FVD",
@@ -261,7 +261,7 @@ Cell[BoxData[
     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}]}], "]"}]], "Output",
- ImageSize->{322, 15},
+ ImageSize->{329, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FVD",
@@ -302,7 +302,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{60, 16},
+ ImageSize->{64, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FVD",
@@ -331,7 +331,7 @@ Cell[BoxData[
      RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
     RowBox[{"Momentum", "[", 
      RowBox[{"q", ",", "D"}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{333, 33},
+ ImageSize->{340, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FVD",
@@ -403,7 +403,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 49, 59.848669}", 
+   "built" -> "{2019, 9, 20, 21, 14, 51.623311}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -414,7 +414,7 @@ TaggingRules->{
     "", "windowtitle" -> "FVD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FVD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -422,8 +422,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -434,7 +435,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4629, 136, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1382795551]},
+   CellID->1174524511]},
  "FVD"->{
   Cell[5263, 165, 145, 5, 27, "Input",
    CellTags->"FVD",
@@ -449,12 +450,12 @@ CellTagsIndex->{
   Cell[6497, 226, 180, 6, 27, "Input",
    CellTags->"FVD",
    CellID->417689841],
-  Cell[6680, 234, 226, 7, 49, "Output",
+  Cell[6680, 234, 226, 7, 51, "Output",
    CellTags->"FVD"],
   Cell[6943, 246, 215, 8, 27, "Input",
    CellTags->"FVD",
    CellID->387897032],
-  Cell[7161, 256, 354, 11, 49, "Output",
+  Cell[7161, 256, 354, 11, 51, "Output",
    CellTags->"FVD"],
   Cell[7626, 274, 216, 7, 27, "Input",
    CellTags->"FVD",
@@ -464,30 +465,30 @@ CellTagsIndex->{
   Cell[8443, 313, 127, 4, 27, "Input",
    CellTags->"FVD",
    CellID->1697636138],
-  Cell[8573, 319, 571, 18, 67, "Output",
+  Cell[8573, 319, 571, 18, 69, "Output",
    CellTags->"FVD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11932, 433},
- {"FVD", 12063, 437}
+ {"PrimaryExamplesSection", 11983, 434},
+ {"FVD", 12114, 438}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 3200, 77, 50, "AnchorBarGrid",
+Cell[575, 21, 3200, 77, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3778, 100, 280, 11, 44, "ObjectNameGrid"],
-Cell[4061, 113, 543, 19, 83, "Usage",
+Cell[3778, 100, 280, 11, 45, "ObjectNameGrid"],
+Cell[4061, 113, 543, 19, 86, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4629, 136, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1382795551],
+ CellID->1174524511],
 Cell[CellGroupData[{
-Cell[5042, 155, 196, 6, 25, "ExampleSection",
- CellID->1743631695],
+Cell[5042, 155, 196, 6, 26, "ExampleSection",
+ CellID->1234323119],
 Cell[CellGroupData[{
 Cell[5263, 165, 145, 5, 27, "Input",
  CellTags->"FVD",
@@ -506,17 +507,17 @@ Cell[CellGroupData[{
 Cell[6497, 226, 180, 6, 27, "Input",
  CellTags->"FVD",
  CellID->417689841],
-Cell[6680, 234, 226, 7, 49, "Output",
+Cell[6680, 234, 226, 7, 51, "Output",
  CellTags->"FVD"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6943, 246, 215, 8, 27, "Input",
  CellTags->"FVD",
  CellID->387897032],
-Cell[7161, 256, 354, 11, 49, "Output",
+Cell[7161, 256, 354, 11, 51, "Output",
  CellTags->"FVD"]
 }, Open  ]],
-Cell[7530, 270, 71, 0, 31, "Notes"],
+Cell[7530, 270, 71, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[7626, 274, 216, 7, 27, "Input",
  CellTags->"FVD",
@@ -528,18 +529,18 @@ Cell[CellGroupData[{
 Cell[8443, 313, 127, 4, 27, "Input",
  CellTags->"FVD",
  CellID->1697636138],
-Cell[8573, 319, 571, 18, 67, "Output",
+Cell[8573, 319, 571, 18, 69, "Output",
  CellTags->"FVD"]
 }, Open  ]]
 }, Open  ]],
-Cell[9171, 341, 31, 0, 70, "SectionFooterSpacer"]
+Cell[9171, 341, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9239, 346, 270, 12, 70, "SeeAlsoSection",
+Cell[9239, 346, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9512, 360, 604, 25, 70, "SeeAlso"]
+Cell[9512, 360, 604, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10131, 388, 23, 0, 70, "FooterCell"]
+Cell[10131, 388, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

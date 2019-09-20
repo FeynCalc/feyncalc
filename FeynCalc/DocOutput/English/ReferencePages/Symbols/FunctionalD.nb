@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    137465,       5543]
+NotebookDataLength[    137515,       5544]
 NotebookOptionsPosition[    124754,       5139]
-NotebookOutlinePosition[    130757,       5309]
-CellTagsIndexPosition[    130638,       5303]
+NotebookOutlinePosition[    130806,       5310]
+CellTagsIndexPosition[    130687,       5304]
 WindowTitle->FunctionalD
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ FunctionalD.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$149258], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$144937], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FunctionalD", ".html"]], None}]}]},
@@ -185,7 +185,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1828007555],
+ CellID->2068800113],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -222,7 +222,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->427583807],
+ CellID->81999737],
 
 Cell[CellGroupData[{
 
@@ -232,7 +232,7 @@ Cell[TextData[{
  Cell["(3)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->596814988],
+ CellID->1165599747],
 
 Cell[TextData[{
  "Instead of the usual ",
@@ -295,7 +295,7 @@ Cell[BoxData[
   RowBox[{"2", " ", 
    FormBox["\[Phi]",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{23, 16},
+ ImageSize->{25, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -370,7 +370,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{32, 23},
+ ImageSize->{34, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -459,7 +459,7 @@ Cell[BoxData[
         TraditionalForm], ".", 
        FormBox["\[Phi]",
         TraditionalForm]}]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{195, 35},
+ ImageSize->{212, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -503,7 +503,7 @@ Cell[BoxData[
       TraditionalForm]}], 
     FormBox["\[Phi]",
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{134, 20},
+ ImageSize->{139, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -618,7 +618,7 @@ Cell[BoxData[
       FormBox["a",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{250, 22},
+ ImageSize->{255, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -709,7 +709,7 @@ Cell[BoxData[
       FormBox["a",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{250, 22},
+ ImageSize->{257, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -875,7 +875,7 @@ Cell[BoxData[
          FormBox["a",
           TraditionalForm],
          TraditionalForm]], ")"}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{547, 35},
+ ImageSize->{564, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -1130,7 +1130,7 @@ Cell[BoxData[
        FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{467, 24},
+ ImageSize->{475, 25},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -1293,7 +1293,7 @@ Cell[BoxData[
        FormBox["\[Sigma]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{465, 24},
+ ImageSize->{473, 25},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[6]="]
@@ -1568,7 +1568,7 @@ Cell[BoxData[
         FormBox["g",
          TraditionalForm],
         TraditionalForm]], ")"}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{472, 35},
+ ImageSize->{479, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -1662,7 +1662,7 @@ Cell[BoxData[
       FormBox["g",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{184, 19},
+ ImageSize->{187, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[11]="]
@@ -1746,7 +1746,7 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{185, 19},
+ ImageSize->{187, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -1930,7 +1930,7 @@ Cell[BoxData[
          FormBox["a",
           TraditionalForm],
          TraditionalForm]], ")"}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{547, 35},
+ ImageSize->{564, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -3076,7 +3076,7 @@ Cell[BoxData[
        FormBox["g",
         TraditionalForm],
        TraditionalForm]], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{545, 371},
+ ImageSize->{560, 371},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -3438,7 +3438,7 @@ Cell[BoxData[
       FormBox["g",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{421, 86},
+ ImageSize->{438, 86},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[16]="]
@@ -3599,7 +3599,7 @@ Cell[BoxData[
        FormBox["c",
         TraditionalForm],
        TraditionalForm]]}]}]}], TraditionalForm]], "Output",
- ImageSize->{409, 35},
+ ImageSize->{420, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[17]="]
@@ -3690,7 +3690,7 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{184, 22},
+ ImageSize->{188, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[18]="]
@@ -3936,7 +3936,7 @@ Cell[BoxData[
       FormBox["g",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{421, 70},
+ ImageSize->{438, 70},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -4016,7 +4016,7 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{185, 19},
+ ImageSize->{187, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[20]="]
@@ -4110,7 +4110,7 @@ Cell[BoxData[
        TraditionalForm], 
       FormBox["1",
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{285, 24},
+ ImageSize->{295, 25},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -4297,7 +4297,7 @@ Cell[BoxData[
          FormBox["g",
           TraditionalForm],
          TraditionalForm]], ")"}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{352, 50},
+ ImageSize->{363, 51},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -4620,7 +4620,7 @@ Cell[BoxData[
       FormBox["g",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{528, 45},
+ ImageSize->{544, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -5061,7 +5061,7 @@ Cell[BoxData[
          FormBox["a",
           TraditionalForm],
          TraditionalForm]], ")"}], ")"}]}]}]}], TraditionalForm]], "Output",
- ImageSize->{564, 72},
+ ImageSize->{493, 97},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
@@ -5078,7 +5078,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[25]="]
@@ -5140,7 +5140,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"FunctionalD",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -5152,7 +5152,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 49, 57.615286}", 
+   "built" -> "{2019, 9, 20, 21, 14, 49.614635}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -5168,7 +5168,7 @@ integration but omits the x-space delta functions.", "synonyms" -> {},
     "windowtitle" -> "FunctionalD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FunctionalD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -5176,8 +5176,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -5186,9 +5187,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6889, 209, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6889, 209, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->427583807]},
+   CellID->81999737]},
  "FunctionalD"->{
   Cell[8184, 262, 246, 7, 27, "Input",
    CellTags->"FunctionalD",
@@ -5203,7 +5204,7 @@ CellTagsIndex->{
   Cell[10542, 352, 316, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1655052767],
-  Cell[10861, 363, 358, 13, 44, "Output",
+  Cell[10861, 363, 358, 13, 45, "Output",
    CellTags->"FunctionalD"],
   Cell[12006, 405, 611, 20, 45, "Input",
    CellTags->"FunctionalD",
@@ -5213,7 +5214,7 @@ CellTagsIndex->{
   Cell[13675, 470, 202, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1102630385],
-  Cell[13880, 478, 775, 31, 41, "Output",
+  Cell[13880, 478, 775, 31, 42, "Output",
    CellTags->"FunctionalD"],
   Cell[15330, 538, 333, 9, 27, "Input",
    CellTags->"FunctionalD",
@@ -5238,7 +5239,7 @@ CellTagsIndex->{
   Cell[26420, 990, 159, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2041925168],
-  Cell[26582, 997, 3236, 139, 45, "Output",
+  Cell[26582, 997, 3236, 139, 46, "Output",
    CellTags->"FunctionalD"],
   Cell[33993, 1313, 541, 17, 46, "Input",
    CellTags->"FunctionalD",
@@ -5281,12 +5282,12 @@ CellTagsIndex->{
   Cell[98156, 4026, 845, 23, 62, "Input",
    CellTags->"FunctionalD",
    CellID->611111290],
-  Cell[99004, 4051, 1592, 65, 45, "Output",
+  Cell[99004, 4051, 1592, 65, 46, "Output",
    CellTags->"FunctionalD"],
   Cell[100633, 4121, 157, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1841998165],
-  Cell[100793, 4128, 4463, 175, 71, "Output",
+  Cell[100793, 4128, 4463, 175, 72, "Output",
    CellTags->"FunctionalD"],
   Cell[105293, 4308, 201, 7, 27, "Input",
    CellTags->"FunctionalD",
@@ -5296,41 +5297,41 @@ CellTagsIndex->{
   Cell[112768, 4631, 158, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1098654926],
-  Cell[112929, 4638, 10266, 429, 93, "Output",
+  Cell[112929, 4638, 10266, 429, 118, "Output",
    CellTags->"FunctionalD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 126916, 5187},
- {"FunctionalD", 127054, 5191}
+ {"PrimaryExamplesSection", 126965, 5188},
+ {"FunctionalD", 127102, 5192}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 3109, 75, 50, "AnchorBarGrid",
+Cell[583, 21, 3109, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3695, 98, 288, 11, 44, "ObjectNameGrid"],
+Cell[3695, 98, 288, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4008, 113, 1696, 46, 160, "Usage",
+Cell[4008, 113, 1696, 46, 165, "Usage",
  CellID->2010081510],
 Cell[CellGroupData[{
 Cell[5729, 163, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1828007555],
-Cell[6471, 189, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[6505, 191, 335, 12, 31, "Notes",
+ CellID->2068800113],
+Cell[6471, 189, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6505, 191, 335, 12, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6889, 209, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6889, 209, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->427583807],
+ CellID->81999737],
 Cell[CellGroupData[{
-Cell[7301, 228, 195, 6, 25, "ExampleSection",
- CellID->596814988],
-Cell[7499, 236, 660, 22, 47, "Notes"],
+Cell[7300, 228, 196, 6, 26, "ExampleSection",
+ CellID->1165599747],
+Cell[7499, 236, 660, 22, 49, "Notes"],
 Cell[CellGroupData[{
 Cell[8184, 262, 246, 7, 27, "Input",
  CellTags->"FunctionalD",
@@ -5346,13 +5347,13 @@ Cell[8936, 292, 254, 9, 37, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9227, 306, 105, 2, 8, "ExampleDelimiter"],
-Cell[9335, 310, 1182, 38, 77, "Notes"],
+Cell[9227, 306, 105, 2, 9, "ExampleDelimiter"],
+Cell[9335, 310, 1182, 38, 80, "Notes"],
 Cell[CellGroupData[{
 Cell[10542, 352, 316, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1655052767],
-Cell[10861, 363, 358, 13, 44, "Output",
+Cell[10861, 363, 358, 13, 45, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[11234, 379, 747, 22, 35, "Notes"],
@@ -5367,14 +5368,14 @@ Cell[CellGroupData[{
 Cell[13675, 470, 202, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1102630385],
-Cell[13880, 478, 775, 31, 41, "Output",
+Cell[13880, 478, 775, 31, 42, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14704, 515, 105, 2, 8, "ExampleDelimiter"],
+Cell[14704, 515, 105, 2, 9, "ExampleDelimiter"],
 Cell[14812, 519, 458, 13, 42, "Notes"],
-Cell[15273, 534, 32, 0, 31, "Notes"],
+Cell[15273, 534, 32, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[15330, 538, 333, 9, 27, "Input",
  CellTags->"FunctionalD",
@@ -5396,10 +5397,10 @@ Cell[19515, 720, 234, 9, 27, "Input",
 Cell[19752, 731, 3798, 150, 56, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[23565, 884, 433, 9, 65, "Notes"],
-Cell[24001, 895, 97, 2, 31, "Notes"],
+Cell[23565, 884, 433, 9, 68, "Notes"],
+Cell[24001, 895, 97, 2, 32, "Notes"],
 Cell[24101, 899, 1315, 43, 35, "Notes"],
-Cell[25419, 944, 282, 10, 33, "Notes"],
+Cell[25419, 944, 282, 10, 34, "Notes"],
 Cell[CellGroupData[{
 Cell[25726, 958, 249, 8, 27, "Input",
  CellTags->"FunctionalD",
@@ -5411,15 +5412,15 @@ Cell[CellGroupData[{
 Cell[26420, 990, 159, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2041925168],
-Cell[26582, 997, 3236, 139, 45, "Output",
+Cell[26582, 997, 3236, 139, 46, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[29833, 1139, 253, 7, 31, "Notes"],
+Cell[29833, 1139, 253, 7, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[30111, 1150, 279, 8, 27, "Input"],
-Cell[30393, 1160, 3210, 138, 45, "Output"]
+Cell[30393, 1160, 3210, 138, 46, "Output"]
 }, Open  ]],
-Cell[33618, 1301, 372, 10, 49, "Notes"],
+Cell[33618, 1301, 372, 10, 51, "Notes"],
 Cell[33993, 1313, 541, 17, 46, "Input",
  CellTags->"FunctionalD",
  CellID->324247296],
@@ -5455,9 +5456,9 @@ Cell[42435, 1672, 372, 12, 27, "Input",
 Cell[42810, 1686, 1508, 66, 40, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[44333, 1755, 329, 12, 35, "Notes"],
-Cell[44665, 1769, 33, 0, 31, "Notes"],
-Cell[44701, 1771, 214, 5, 46, "Notes"],
+Cell[44333, 1755, 329, 12, 36, "Notes"],
+Cell[44665, 1769, 33, 0, 32, "Notes"],
+Cell[44701, 1771, 214, 5, 48, "Notes"],
 Cell[CellGroupData[{
 Cell[44940, 1780, 125, 4, 27, "Input",
  CellTags->"FunctionalD",
@@ -5472,14 +5473,14 @@ Cell[48904, 1941, 214, 7, 27, "Input",
 Cell[49121, 1950, 26569, 1132, 392, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[75705, 3085, 211, 4, 47, "Notes"],
-Cell[75919, 3091, 260, 5, 63, "Notes"],
+Cell[75705, 3085, 211, 4, 49, "Notes"],
+Cell[75919, 3091, 260, 5, 66, "Notes"],
 Cell[76182, 3098, 354, 10, 47, "Input"],
 Cell[CellGroupData[{
 Cell[76561, 3112, 1113, 30, 96, "Input"],
 Cell[77677, 3144, 7164, 299, 107, "Output"]
 }, Open  ]],
-Cell[84856, 3446, 187, 7, 31, "Notes"],
+Cell[84856, 3446, 187, 7, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[85068, 3457, 319, 11, 29, "Input"],
 Cell[85390, 3470, 3051, 134, 56, "Output"]
@@ -5495,7 +5496,7 @@ Cell[90495, 3700, 174, 5, 27, "Input",
 Cell[90672, 3707, 5717, 235, 91, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[96404, 3945, 153, 4, 31, "Notes"],
+Cell[96404, 3945, 153, 4, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[96582, 3953, 52, 1, 27, "Input"],
 Cell[96637, 3956, 1482, 65, 40, "Output"]
@@ -5504,14 +5505,14 @@ Cell[CellGroupData[{
 Cell[98156, 4026, 845, 23, 62, "Input",
  CellTags->"FunctionalD",
  CellID->611111290],
-Cell[99004, 4051, 1592, 65, 45, "Output",
+Cell[99004, 4051, 1592, 65, 46, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[100633, 4121, 157, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1841998165],
-Cell[100793, 4128, 4463, 175, 71, "Output",
+Cell[100793, 4128, 4463, 175, 72, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -5525,15 +5526,15 @@ Cell[CellGroupData[{
 Cell[112768, 4631, 158, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1098654926],
-Cell[112929, 4638, 10266, 429, 93, "Output",
+Cell[112929, 4638, 10266, 429, 118, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[123210, 5070, 29, 0, 31, "Notes"],
+Cell[123210, 5070, 29, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[123264, 5074, 102, 2, 27, "Input"],
 Cell[123369, 5078, 167, 5, 35, "Output"]
 }, Open  ]],
-Cell[123551, 5086, 69, 0, 31, "Notes"],
+Cell[123551, 5086, 69, 0, 32, "Notes"],
 Cell[123623, 5088, 363, 10, 47, "Input"]
 }, Open  ]]
 }, Open  ]],
@@ -5542,9 +5543,9 @@ Cell[124013, 5102, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[124081, 5107, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[124354, 5121, 358, 13, 55, "SeeAlso"]
+Cell[124354, 5121, 358, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[124727, 5137, 23, 0, 40, "FooterCell"]
+Cell[124727, 5137, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

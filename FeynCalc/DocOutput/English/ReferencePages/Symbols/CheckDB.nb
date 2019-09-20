@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14623,        479]
-NotebookOptionsPosition[      9741,        335]
-NotebookOutlinePosition[     13021,        420]
-CellTagsIndexPosition[     12910,        414]
+NotebookDataLength[     14614,        479]
+NotebookOptionsPosition[      9740,        335]
+NotebookOutlinePosition[     13013,        420]
+CellTagsIndexPosition[     12902,        414]
 WindowTitle->CheckDB
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40146], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39147], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CheckDB", ".html"]], None}]}]},
@@ -137,7 +137,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1471721783],
+ CellID->1485759282],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -169,7 +169,7 @@ Cell[BoxData[
     RowBox[{"NoSave", "\[Rule]", "False"}], ",", 
     RowBox[{"Check", "\[Rule]", "False"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{361, 35},
+ ImageSize->{355, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[305]="]
@@ -184,7 +184,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", "HoldFirst", "}"}], TraditionalForm]], "Output",
- ImageSize->{71, 16},
+ ImageSize->{70, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[306]="]
@@ -209,7 +209,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1977455598],
+ CellID->846244675],
 
 Cell[CellGroupData[{
 
@@ -219,7 +219,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1765499261],
+ CellID->1272007778],
 
 Cell["\<\
 The first time the Table function is evaluated and the result saved into the \
@@ -252,7 +252,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"1", ",", "2"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{39, 16},
+ ImageSize->{41, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CheckDB",
@@ -286,7 +286,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"1", ",", "2"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{39, 16},
+ ImageSize->{41, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CheckDB",
@@ -311,7 +311,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["\<\"{1, 2}\"\>", TraditionalForm]], "Output",
- ImageSize->{39, 16},
+ ImageSize->{41, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CheckDB",
@@ -336,7 +336,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"CheckDB",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -348,7 +348,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 44.362522}", 
+   "built" -> "{2019, 9, 20, 21, 10, 37.952955}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -367,7 +367,7 @@ loaded from fil or fil does not exist. Default value of Check : False.",
     "titlemodifier" -> "", "windowtitle" -> "CheckDB", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/CheckDB"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -376,7 +376,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -385,102 +385,102 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6457, 196, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6457, 196, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1977455598]},
+   CellID->846244675]},
  "CheckDB"->{
-  Cell[7210, 230, 403, 14, 45, "Input",
+  Cell[7209, 230, 403, 14, 45, "Input",
    CellTags->"CheckDB",
    CellID->1433287094],
-  Cell[7616, 246, 95, 2, 23, "Print",
+  Cell[7615, 246, 95, 2, 23, "Print",
    CellTags->"CheckDB"],
-  Cell[7714, 250, 235, 8, 37, "Output",
+  Cell[7713, 250, 235, 8, 35, "Output",
    CellTags->"CheckDB"],
-  Cell[8123, 268, 403, 14, 45, "Input",
+  Cell[8122, 268, 403, 14, 45, "Input",
    CellTags->"CheckDB",
    CellID->1024102984],
-  Cell[8529, 284, 235, 8, 37, "Output",
+  Cell[8528, 284, 235, 8, 35, "Output",
    CellTags->"CheckDB"],
-  Cell[8865, 299, 319, 10, 27, "Input",
+  Cell[8864, 299, 319, 10, 27, "Input",
    CellTags->"CheckDB",
    CellID->1578936180],
-  Cell[9187, 311, 201, 6, 37, "Output",
+  Cell[9186, 311, 201, 6, 35, "Output",
    CellTags->"CheckDB"],
-  Cell[9403, 320, 284, 9, 27, "Input",
+  Cell[9402, 320, 284, 9, 27, "Input",
    CellTags->"CheckDB",
    CellID->1720430951]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12142, 386},
- {"CheckDB", 12277, 390}
+ {"PrimaryExamplesSection", 12135, 386},
+ {"CheckDB", 12269, 390}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2268, 53, 50, "AnchorBarGrid",
+Cell[579, 21, 2268, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2850, 76, 284, 11, 44, "ObjectNameGrid"],
+Cell[2850, 76, 284, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3159, 91, 1033, 20, 163, "Usage",
+Cell[3159, 91, 1033, 20, 170, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4217, 115, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1471721783],
-Cell[4959, 141, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[4993, 143, 410, 7, 79, "Notes",
+ CellID->1485759282],
+Cell[4959, 141, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[4993, 143, 410, 7, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[5428, 154, 91, 2, 27, "Input"],
-Cell[5522, 158, 541, 16, 56, "Output"]
+Cell[5428, 154, 91, 2, 70, "Input"],
+Cell[5522, 158, 541, 16, 55, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6100, 179, 94, 2, 27, "Input"],
-Cell[6197, 183, 199, 6, 37, "Output"]
+Cell[6100, 179, 94, 2, 70, "Input"],
+Cell[6197, 183, 199, 6, 35, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6457, 196, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6457, 196, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1977455598],
+ CellID->846244675],
 Cell[CellGroupData[{
-Cell[6870, 215, 196, 6, 25, "ExampleSection",
- CellID->1765499261],
-Cell[7069, 223, 116, 3, 31, "Notes"],
+Cell[6869, 215, 196, 6, 26, "ExampleSection",
+ CellID->1272007778],
+Cell[7068, 223, 116, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[7210, 230, 403, 14, 45, "Input",
+Cell[7209, 230, 403, 14, 45, "Input",
  CellTags->"CheckDB",
  CellID->1433287094],
-Cell[7616, 246, 95, 2, 23, "Print",
+Cell[7615, 246, 95, 2, 23, "Print",
  CellTags->"CheckDB"],
-Cell[7714, 250, 235, 8, 37, "Output",
+Cell[7713, 250, 235, 8, 35, "Output",
  CellTags->"CheckDB"]
 }, Open  ]],
-Cell[7964, 261, 134, 3, 46, "Notes"],
+Cell[7963, 261, 134, 3, 48, "Notes"],
 Cell[CellGroupData[{
-Cell[8123, 268, 403, 14, 45, "Input",
+Cell[8122, 268, 403, 14, 45, "Input",
  CellTags->"CheckDB",
  CellID->1024102984],
-Cell[8529, 284, 235, 8, 37, "Output",
+Cell[8528, 284, 235, 8, 35, "Output",
  CellTags->"CheckDB"]
 }, Open  ]],
-Cell[8779, 295, 61, 0, 31, "Notes"],
+Cell[8778, 295, 61, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[8865, 299, 319, 10, 27, "Input",
+Cell[8864, 299, 319, 10, 27, "Input",
  CellTags->"CheckDB",
  CellID->1578936180],
-Cell[9187, 311, 201, 6, 37, "Output",
+Cell[9186, 311, 201, 6, 35, "Output",
  CellTags->"CheckDB"]
 }, Open  ]],
-Cell[9403, 320, 284, 9, 27, "Input",
+Cell[9402, 320, 284, 9, 27, "Input",
  CellTags->"CheckDB",
  CellID->1720430951]
 }, Open  ]]
 }, Open  ]],
-Cell[9714, 333, 23, 0, 40, "FooterCell"]
+Cell[9713, 333, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

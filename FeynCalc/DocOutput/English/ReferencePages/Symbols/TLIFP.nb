@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9131,        298]
+NotebookDataLength[      9125,        298]
 NotebookOptionsPosition[      6528,        218]
-NotebookOutlinePosition[      8523,        275]
-CellTagsIndexPosition[      8456,        270]
+NotebookOutlinePosition[      8517,        275]
+CellTagsIndexPosition[      8450,        270]
 WindowTitle->TLIFP
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$278036], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$268005], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/TLIFP",
               ".html"]], None}]}]},
@@ -150,7 +150,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1202532246],
+ CellID->1712731598],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -179,7 +179,7 @@ Cell[BoxData[
      RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}], ",", 
     RowBox[{"Print", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",\
 
- ImageSize->{531, 35},
+ ImageSize->{514, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TLIFP",
@@ -231,7 +231,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 54, 44.513638}", 
+   "built" -> "{2019, 9, 20, 21, 19, 27.503804}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -242,7 +242,7 @@ TaggingRules->{
     "", "windowtitle" -> "TLIFP", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/TLIFP"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -251,7 +251,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -269,21 +269,21 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"TLIFP", 8283, 261}
+ {"TLIFP", 8277, 261}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2979, 74, 50, "AnchorBarGrid",
+Cell[577, 21, 2979, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3559, 97, 282, 11, 44, "ObjectNameGrid"],
+Cell[3559, 97, 282, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3866, 112, 388, 12, 83, "Usage",
+Cell[3866, 112, 388, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4279, 128, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1202532246],
+ CellID->1712731598],
 Cell[5021, 154, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5077, 158, 128, 4, 27, "Input",
@@ -297,9 +297,9 @@ Cell[5208, 164, 772, 21, 56, "Output",
 Cell[CellGroupData[{
 Cell[6041, 192, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6314, 206, 172, 7, 54, "SeeAlso"]
+Cell[6314, 206, 172, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6501, 216, 23, 0, 40, "FooterCell"]
+Cell[6501, 216, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

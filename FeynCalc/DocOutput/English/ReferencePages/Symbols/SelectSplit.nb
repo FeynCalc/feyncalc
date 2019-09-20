@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10395,        338]
-NotebookOptionsPosition[      7179,        243]
-NotebookOutlinePosition[      9715,        312]
-CellTagsIndexPosition[      9602,        306]
+NotebookDataLength[     10451,        339]
+NotebookOptionsPosition[      7180,        243]
+NotebookOutlinePosition[      9769,        313]
+CellTagsIndexPosition[      9656,        307]
 WindowTitle->SelectSplit
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SelectSplit.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$236125], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$228376], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SelectSplit", ".html"]], None}]}]},
@@ -121,7 +121,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->104862767],
+ CellID->1946386610],
 
 Cell[CellGroupData[{
 
@@ -131,7 +131,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1713445310],
+ CellID->1748082412],
 
 Cell[CellGroupData[{
 
@@ -182,7 +182,7 @@ Cell[BoxData[
       SuperscriptBox["d", "5"], ",", 
       SuperscriptBox["e", "6"]}], "}"}]}], "}"}], TraditionalForm]], "Output",\
 
- ImageSize->{272, 21},
+ ImageSize->{275, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SelectSplit",
@@ -230,7 +230,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"f", "+", "g"}], "}"}], ",", 
     RowBox[{"{", "}"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{264, 21},
+ ImageSize->{270, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SelectSplit",
@@ -243,8 +243,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"SelectSplit",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -256,7 +256,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 53, 4.994086}", 
+   "built" -> "{2019, 9, 20, 21, 17, 53.608949}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -269,7 +269,7 @@ appends the subset of remaining unmatched elements.", "synonyms" -> {},
     "windowtitle" -> "SelectSplit", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SelectSplit"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -277,8 +277,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -287,59 +288,59 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3749, 108, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3749, 108, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->104862767]},
+   CellID->1946386610]},
  "SelectSplit"->{
-  Cell[4382, 137, 822, 27, 53, "Input",
+  Cell[4383, 137, 822, 27, 53, "Input",
    CellTags->"SelectSplit",
    CellID->1220131740],
-  Cell[5207, 166, 617, 22, 42, "Output",
+  Cell[5208, 166, 617, 22, 43, "Output",
    CellTags->"SelectSplit"],
-  Cell[5861, 193, 669, 22, 53, "Input",
+  Cell[5862, 193, 669, 22, 33, "Input",
    CellTags->"SelectSplit",
    CellID->292281216],
-  Cell[6533, 217, 580, 19, 42, "Output",
+  Cell[6534, 217, 580, 19, 43, "Output",
    CellTags->"SelectSplit"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9117, 288},
- {"SelectSplit", 9255, 292}
+ {"PrimaryExamplesSection", 9170, 289},
+ {"SelectSplit", 9309, 293}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2286, 53, 50, "AnchorBarGrid",
+Cell[583, 21, 2286, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2872, 76, 288, 11, 44, "ObjectNameGrid"],
-Cell[3163, 89, 561, 15, 99, "Usage",
+Cell[2872, 76, 288, 11, 45, "ObjectNameGrid"],
+Cell[3163, 89, 561, 15, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3749, 108, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3749, 108, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->104862767],
+ CellID->1946386610],
 Cell[CellGroupData[{
-Cell[4161, 127, 196, 6, 25, "ExampleSection",
- CellID->1713445310],
+Cell[4162, 127, 196, 6, 26, "ExampleSection",
+ CellID->1748082412],
 Cell[CellGroupData[{
-Cell[4382, 137, 822, 27, 53, "Input",
+Cell[4383, 137, 822, 27, 53, "Input",
  CellTags->"SelectSplit",
  CellID->1220131740],
-Cell[5207, 166, 617, 22, 42, "Output",
+Cell[5208, 166, 617, 22, 43, "Output",
  CellTags->"SelectSplit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5861, 193, 669, 22, 53, "Input",
+Cell[5862, 193, 669, 22, 33, "Input",
  CellTags->"SelectSplit",
  CellID->292281216],
-Cell[6533, 217, 580, 19, 42, "Output",
+Cell[6534, 217, 580, 19, 43, "Output",
  CellTags->"SelectSplit"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7152, 241, 23, 0, 40, "FooterCell"]
+Cell[7153, 241, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

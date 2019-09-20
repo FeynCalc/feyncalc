@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20713,        743]
+NotebookDataLength[     20764,        744]
 NotebookOptionsPosition[     15457,        582]
-NotebookOutlinePosition[     18764,        673]
-CellTagsIndexPosition[     18647,        667]
+NotebookOutlinePosition[     18815,        674]
+CellTagsIndexPosition[     18698,        668]
 WindowTitle->FieldStrength
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FieldStrength.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$142222], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138215], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FieldStrength", ".html"]], None}]}]},
@@ -183,7 +183,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->500699971],
+ CellID->1226042910],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -233,7 +233,7 @@ Cell[BoxData[
     RowBox[{"Symbol", "\[Rule]", "\<\"F\"\>"}], ",", 
     RowBox[{"QuantumField", "\[Rule]", "A"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{366, 35},
+ ImageSize->{363, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FieldStrength",
@@ -259,7 +259,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1983640334],
+ CellID->1055696817],
 
 Cell[CellGroupData[{
 
@@ -269,7 +269,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1799731671],
+ CellID->845552328],
 
 Cell[CellGroupData[{
 
@@ -362,7 +362,7 @@ Cell[BoxData[
       FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{122, 19},
+ ImageSize->{126, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FieldStrength",
@@ -451,7 +451,7 @@ Cell[BoxData[
       FormBox["a",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{325, 22},
+ ImageSize->{326, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FieldStrength",
@@ -544,7 +544,7 @@ Cell[BoxData[
       FormBox["a",
        TraditionalForm],
       TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{336, 22},
+ ImageSize->{337, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FieldStrength",
@@ -582,8 +582,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"FieldStrength",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -595,7 +595,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 49, 43.022825}", 
+   "built" -> "{2019, 9, 20, 21, 14, 35.622588}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -610,7 +610,7 @@ strength tensor \\[PartialD]\\[Mu] A\\[Nu] - \\[PartialD]\\[Nu] A\\[Mu].",
     "Symbol", "uri" -> "FeynCalc/ref/FieldStrength"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -618,8 +618,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -628,10 +629,10 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "FieldStrength"->{
-  Cell[7040, 216, 146, 4, 27, "Input",
+  Cell[7041, 216, 146, 4, 70, "Input",
    CellTags->"FieldStrength",
    CellID->1871937792],
-  Cell[7189, 222, 572, 17, 56, "Output",
+  Cell[7190, 222, 572, 17, 56, "Output",
    CellTags->"FieldStrength"],
   Cell[8456, 275, 168, 5, 27, "Input",
    CellTags->"FieldStrength",
@@ -659,48 +660,48 @@ CellTagsIndex->{
   Cell[13044, 473, 1819, 77, 43, "Output",
    CellTags->"FieldStrength"]},
  "PrimaryExamplesSection"->{
-  Cell[7822, 246, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[7823, 246, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1983640334]}
+   CellID->1055696817]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"FieldStrength", 17480, 629},
- {"PrimaryExamplesSection", 18503, 660}
+ {"FieldStrength", 17531, 630},
+ {"PrimaryExamplesSection", 18554, 661}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 3031, 74, 50, "AnchorBarGrid",
+Cell[585, 21, 3031, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3619, 97, 290, 11, 44, "ObjectNameGrid"],
+Cell[3619, 97, 290, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3934, 112, 1594, 45, 152, "Usage",
+Cell[3934, 112, 1594, 45, 156, "Usage",
  CellID->2010081510],
 Cell[CellGroupData[{
-Cell[5553, 161, 738, 24, 31, "NotesSection",
+Cell[5553, 161, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->500699971],
-Cell[6294, 187, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[6328, 189, 231, 6, 47, "Notes"],
-Cell[6562, 197, 453, 15, 47, "Notes"],
+ CellID->1226042910],
+Cell[6295, 187, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6329, 189, 231, 6, 70, "Notes"],
+Cell[6563, 197, 453, 15, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[7040, 216, 146, 4, 27, "Input",
+Cell[7041, 216, 146, 4, 70, "Input",
  CellTags->"FieldStrength",
  CellID->1871937792],
-Cell[7189, 222, 572, 17, 56, "Output",
+Cell[7190, 222, 572, 17, 56, "Output",
  CellTags->"FieldStrength"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7822, 246, 388, 15, 31, "PrimaryExamplesSection",
+Cell[7823, 246, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1983640334],
+ CellID->1055696817],
 Cell[CellGroupData[{
-Cell[8235, 265, 196, 6, 25, "ExampleSection",
- CellID->1799731671],
+Cell[8236, 265, 195, 6, 26, "ExampleSection",
+ CellID->845552328],
 Cell[CellGroupData[{
 Cell[8456, 275, 168, 5, 27, "Input",
  CellTags->"FieldStrength",
@@ -737,14 +738,14 @@ Cell[13044, 473, 1819, 77, 43, "Output",
  CellTags->"FieldStrength"]
 }, Open  ]]
 }, Open  ]],
-Cell[14890, 554, 31, 0, 29, "SectionFooterSpacer"]
+Cell[14890, 554, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14958, 559, 270, 12, 31, "SeeAlsoSection",
+Cell[14958, 559, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[15231, 573, 184, 4, 55, "SeeAlso"]
+Cell[15231, 573, 184, 4, 70, "SeeAlso"]
 }, Open  ]],
-Cell[15430, 580, 23, 0, 40, "FooterCell"]
+Cell[15430, 580, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

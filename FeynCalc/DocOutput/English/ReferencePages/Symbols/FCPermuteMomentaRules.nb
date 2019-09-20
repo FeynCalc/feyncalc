@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11097,        363]
-NotebookOptionsPosition[      7843,        268]
-NotebookOutlinePosition[     10179,        327]
-CellTagsIndexPosition[     10095,        322]
+NotebookDataLength[     11152,        364]
+NotebookOptionsPosition[      7844,        268]
+NotebookOutlinePosition[     10233,        328]
+CellTagsIndexPosition[     10148,        323]
 WindowTitle->FCPermuteMomentaRules
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FCPermuteMomentaRules.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120900], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$118251], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCPermuteMomentaRules", ".html"]], None}]}]},
@@ -123,7 +123,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->351989455],
+ CellID->1726077922],
 
 Cell[CellGroupData[{
 
@@ -133,7 +133,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->855004940],
+ CellID->524593865],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[BoxData[
       RowBox[{"p1", "\[Rule]", "p2"}], ",", 
       RowBox[{"p2", "\[Rule]", "p1"}]}], "}"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{154, 16},
+ ImageSize->{158, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -178,7 +178,7 @@ Cell[BoxData[
      RowBox[{"p1", ",", "p2"}], ")"}], ",", 
     RowBox[{"f", "(", 
      RowBox[{"p2", ",", "p1"}], ")"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{150, 16},
+ ImageSize->{151, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -222,7 +222,7 @@ Cell[BoxData[
       RowBox[{"p2", "\[Rule]", "p1"}], ",", 
       RowBox[{"p3", "\[Rule]", "p2"}]}], "}"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{402, 35},
+ ImageSize->{415, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -255,7 +255,7 @@ Cell[BoxData[
     RowBox[{"f", "(", 
      RowBox[{"p3", ",", "p1", ",", "p2"}], ")"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{572, 16},
+ ImageSize->{300, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]=",
@@ -281,7 +281,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 48, 54.944207}", 
+   "built" -> "{2019, 9, 20, 21, 13, 50.105031}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -296,7 +296,7 @@ fromdifferent topologies.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "FCPermuteMomentaRules", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FCPermuteMomentaRules"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -304,8 +304,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -314,57 +315,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3960, 110, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3960, 110, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->351989455]}
+   CellID->1726077922]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9952, 315}
+ {"PrimaryExamplesSection", 10004, 316}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 2326, 53, 50, "AnchorBarGrid",
+Cell[593, 21, 2326, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2922, 76, 298, 11, 44, "ObjectNameGrid"],
-Cell[3223, 89, 712, 17, 115, "Usage",
+Cell[2922, 76, 298, 11, 45, "ObjectNameGrid"],
+Cell[3223, 89, 712, 17, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3960, 110, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3960, 110, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->351989455],
+ CellID->1726077922],
 Cell[CellGroupData[{
-Cell[4372, 129, 195, 6, 25, "ExampleSection",
- CellID->855004940],
+Cell[4373, 129, 195, 6, 26, "ExampleSection",
+ CellID->524593865],
 Cell[CellGroupData[{
-Cell[4592, 139, 166, 5, 27, "Input",
+Cell[4593, 139, 166, 5, 27, "Input",
  CellID->687354172],
-Cell[4761, 146, 378, 14, 37, "Output",
+Cell[4762, 146, 378, 14, 37, "Output",
  CellID->393139574]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5176, 165, 146, 5, 27, "Input",
+Cell[5177, 165, 146, 5, 27, "Input",
  CellID->20836829],
-Cell[5325, 172, 351, 12, 37, "Output",
+Cell[5326, 172, 351, 12, 37, "Output",
  CellID->1821074397]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5713, 189, 177, 5, 27, "Input",
+Cell[5714, 189, 177, 5, 27, "Input",
  CellID->266318701],
-Cell[5893, 196, 993, 32, 56, "Output",
+Cell[5894, 196, 993, 32, 56, "Output",
  CellID->1512346392]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6923, 233, 159, 5, 27, "Input",
+Cell[6924, 233, 159, 5, 27, "Input",
  CellID->1579987801],
-Cell[7085, 240, 692, 21, 37, "Output",
+Cell[7086, 240, 692, 21, 56, "Output",
  CellID->1585727552]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7816, 266, 23, 0, 40, "FooterCell"]
+Cell[7817, 266, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

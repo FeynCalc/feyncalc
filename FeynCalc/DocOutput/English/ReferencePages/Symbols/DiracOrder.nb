@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     29324,       1120]
-NotebookOptionsPosition[     22253,        891]
-NotebookOutlinePosition[     25853,        994]
-CellTagsIndexPosition[     25739,        988]
+NotebookDataLength[     29907,       1138]
+NotebookOptionsPosition[     22747,        907]
+NotebookOutlinePosition[     26398,       1011]
+CellTagsIndexPosition[     26284,       1005]
 WindowTitle->DiracOrder
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ DiracOrder.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$66912], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67060], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracOrder", ".html"]], None}]}]},
@@ -163,9 +163,25 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1364738733],
+ CellID->1903447997],
 
 Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "DiracOrder is also an option of ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " and some other functions dealing with Dirac algebra. If set to True, the \
+function ",
+ ButtonBox["DiracOrder",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
+ " will be applied to the intermediate result to reorder the Dirac matrices \
+lexicographically."
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -186,7 +202,7 @@ Cell[BoxData[
     RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
     RowBox[{"MaxIterations", "\[Rule]", "\[Infinity]"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{447, 54},
+ ImageSize->{433, 53},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[159]="]
@@ -211,7 +227,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->804245036],
+ CellID->308624413],
 
 Cell[CellGroupData[{
 
@@ -221,7 +237,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1924783492],
+ CellID->590195650],
 
 Cell[CellGroupData[{
 
@@ -252,7 +268,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{48, 18},
+ ImageSize->{51, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -295,7 +311,7 @@ Cell[BoxData[
       FormBox["\[Beta]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{108, 18},
+ ImageSize->{114, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -359,7 +375,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{90, 16},
+ ImageSize->{94, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -404,7 +420,7 @@ Cell[BoxData[
        FormBox["\[Rho]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{214, 16},
+ ImageSize->{218, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -459,7 +475,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{71, 19},
+ ImageSize->{73, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -493,7 +509,7 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{71, 19},
+ ImageSize->{73, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -532,7 +548,7 @@ Cell[BoxData[
      FormBox["7",
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{70, 18},
+ ImageSize->{73, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -560,7 +576,7 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["7",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{47, 18},
+ ImageSize->{49, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -615,7 +631,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{71, 18},
+ ImageSize->{75, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracOrder",
@@ -649,7 +665,7 @@ Cell[BoxData[
      FormBox["\[Delta]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{71, 18},
+ ImageSize->{75, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -744,7 +760,7 @@ Cell[BoxData[
        FormBox["\[Delta]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{326, 18},
+ ImageSize->{341, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]="]
@@ -802,7 +818,7 @@ Cell[BoxData[
       FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{101, 16},
+ ImageSize->{106, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]="]
@@ -811,10 +827,10 @@ Cell[BoxData[
 Cell[TextData[{
  "However, if you know that it can lead to simpler expressions, you can \
 activate the reordering via the option ",
- ButtonBox["DiracCanonical",
+ ButtonBox["DiracOrder",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracCanonical",
-  ButtonNote->"DiracCanonical"],
+  ButtonData->"paclet:FeynCalc/ref/DiracOrder",
+  ButtonNote->"DiracOrder"],
  "."
 }], "Notes"],
 
@@ -828,7 +844,7 @@ Cell[BoxData[
      RowBox[{"\[Mu]", ",", "\[NoBreak]", "\[Nu]"}], "]"}], "+", 
     RowBox[{"GAD", "[", 
      RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}], ",", 
-   RowBox[{"DiracCanonical", "\[Rule]", "True"}]}], "]"}]], "Input",
+   RowBox[{"DiracOrder", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellLabel->"In[2]:="],
 
 Cell[BoxData[
@@ -844,7 +860,7 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{45, 16},
+ ImageSize->{47, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -904,7 +920,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 46, 46.852582}", 
+   "built" -> "{2019, 9, 20, 21, 11, 46.186843}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -916,7 +932,7 @@ orderlist.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "DiracOrder",
     "titlemodifier" -> "", "windowtitle" -> "DiracOrder", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/DiracOrder"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -924,8 +940,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -934,194 +951,195 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6443, 198, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6954, 214, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->804245036]},
+   CellID->308624413]},
  "DiracOrder"->{
-  Cell[7076, 227, 179, 6, 27, "Input",
+  Cell[7586, 243, 179, 6, 27, "Input",
    CellTags->"DiracOrder",
    CellID->1559113060],
-  Cell[7258, 235, 569, 23, 39, "Output",
+  Cell[7768, 251, 569, 23, 39, "Output",
    CellTags->"DiracOrder"],
-  Cell[7864, 263, 132, 4, 27, "Input",
+  Cell[8374, 279, 132, 4, 27, "Input",
    CellTags->"DiracOrder",
    CellID->1074180519],
-  Cell[7999, 269, 800, 32, 39, "Output",
+  Cell[8509, 285, 800, 32, 39, "Output",
    CellTags->"DiracOrder"],
-  Cell[9215, 322, 188, 6, 27, "Input",
+  Cell[9725, 338, 188, 6, 27, "Input",
    CellTags->"DiracOrder",
    CellID->1789420924],
-  Cell[9406, 330, 831, 35, 37, "Output",
+  Cell[9916, 346, 831, 35, 37, "Output",
    CellTags->"DiracOrder"],
-  Cell[10274, 370, 132, 4, 27, "Input",
+  Cell[10784, 386, 132, 4, 27, "Input",
    CellTags->"DiracOrder",
    CellID->1481569664],
-  Cell[10409, 376, 861, 34, 37, "Output",
+  Cell[10919, 392, 861, 34, 37, "Output",
    CellTags->"DiracOrder"],
-  Cell[11592, 429, 165, 5, 27, "Input",
+  Cell[12102, 445, 165, 5, 27, "Input",
    CellTags->"DiracOrder",
    CellID->2005079104],
-  Cell[11760, 436, 705, 29, 40, "Output",
+  Cell[12270, 452, 705, 29, 40, "Output",
    CellTags->"DiracOrder"],
-  Cell[12502, 470, 132, 4, 27, "Input",
+  Cell[13012, 486, 132, 4, 27, "Input",
    CellTags->"DiracOrder",
    CellID->1342940029],
-  Cell[12637, 476, 587, 23, 40, "Output",
+  Cell[13147, 492, 587, 23, 40, "Output",
    CellTags->"DiracOrder"],
-  Cell[13261, 504, 159, 5, 27, "Input",
+  Cell[13771, 520, 159, 5, 27, "Input",
    CellTags->"DiracOrder",
    CellID->71636230],
-  Cell[13423, 511, 661, 27, 39, "Output",
+  Cell[13933, 527, 661, 27, 39, "Output",
    CellTags->"DiracOrder"],
-  Cell[14121, 543, 131, 4, 27, "Input",
+  Cell[14631, 559, 131, 4, 27, "Input",
    CellTags->"DiracOrder",
    CellID->332885129],
-  Cell[14255, 549, 442, 17, 39, "Output",
+  Cell[14765, 565, 442, 17, 39, "Output",
    CellTags->"DiracOrder"],
-  Cell[15024, 583, 177, 5, 27, "Input",
+  Cell[15534, 599, 177, 5, 27, "Input",
    CellTags->"DiracOrder",
    CellID->1751727580],
-  Cell[15204, 590, 757, 31, 39, "Output",
+  Cell[15714, 606, 757, 31, 39, "Output",
    CellTags->"DiracOrder"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 24138, 935},
- {"DiracOrder", 24275, 939}
+ {"PrimaryExamplesSection", 24683, 952},
+ {"DiracOrder", 24820, 956}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 3118, 76, 50, "AnchorBarGrid",
+Cell[582, 21, 3118, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3703, 99, 287, 11, 44, "ObjectNameGrid"],
+Cell[3703, 99, 287, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4015, 114, 788, 23, 144, "Usage",
+Cell[4015, 114, 788, 23, 148, "Usage",
  CellID->2090318364],
 Cell[CellGroupData[{
 Cell[4828, 141, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1364738733],
-Cell[5570, 167, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1903447997],
+Cell[5570, 167, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5604, 169, 508, 14, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[5626, 171, 94, 2, 27, "Input"],
-Cell[5723, 175, 659, 16, 75, "Output"]
+Cell[6137, 187, 94, 2, 70, "Input"],
+Cell[6234, 191, 659, 16, 74, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6443, 198, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6954, 214, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->804245036],
+ CellID->308624413],
 Cell[CellGroupData[{
-Cell[6855, 217, 196, 6, 25, "ExampleSection",
- CellID->1924783492],
+Cell[7366, 233, 195, 6, 26, "ExampleSection",
+ CellID->590195650],
 Cell[CellGroupData[{
-Cell[7076, 227, 179, 6, 27, "Input",
+Cell[7586, 243, 179, 6, 27, "Input",
  CellTags->"DiracOrder",
  CellID->1559113060],
-Cell[7258, 235, 569, 23, 39, "Output",
+Cell[7768, 251, 569, 23, 39, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7864, 263, 132, 4, 27, "Input",
+Cell[8374, 279, 132, 4, 27, "Input",
  CellTags->"DiracOrder",
  CellID->1074180519],
-Cell[7999, 269, 800, 32, 39, "Output",
+Cell[8509, 285, 800, 32, 39, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8836, 306, 105, 2, 8, "ExampleDelimiter"],
-Cell[8944, 310, 246, 8, 31, "Notes"],
+Cell[9346, 322, 105, 2, 9, "ExampleDelimiter"],
+Cell[9454, 326, 246, 8, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[9215, 322, 188, 6, 27, "Input",
+Cell[9725, 338, 188, 6, 27, "Input",
  CellTags->"DiracOrder",
  CellID->1789420924],
-Cell[9406, 330, 831, 35, 37, "Output",
+Cell[9916, 346, 831, 35, 37, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10274, 370, 132, 4, 27, "Input",
+Cell[10784, 386, 132, 4, 27, "Input",
  CellTags->"DiracOrder",
  CellID->1481569664],
-Cell[10409, 376, 861, 34, 37, "Output",
+Cell[10919, 392, 861, 34, 37, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11319, 416, 105, 2, 8, "ExampleDelimiter"],
-Cell[11427, 420, 140, 5, 31, "Notes"],
+Cell[11829, 432, 105, 2, 9, "ExampleDelimiter"],
+Cell[11937, 436, 140, 5, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[11592, 429, 165, 5, 27, "Input",
+Cell[12102, 445, 165, 5, 27, "Input",
  CellTags->"DiracOrder",
  CellID->2005079104],
-Cell[11760, 436, 705, 29, 40, "Output",
+Cell[12270, 452, 705, 29, 40, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12502, 470, 132, 4, 27, "Input",
+Cell[13012, 486, 132, 4, 27, "Input",
  CellTags->"DiracOrder",
  CellID->1342940029],
-Cell[12637, 476, 587, 23, 40, "Output",
+Cell[13147, 492, 587, 23, 40, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13261, 504, 159, 5, 27, "Input",
+Cell[13771, 520, 159, 5, 27, "Input",
  CellTags->"DiracOrder",
  CellID->71636230],
-Cell[13423, 511, 661, 27, 39, "Output",
+Cell[13933, 527, 661, 27, 39, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14121, 543, 131, 4, 27, "Input",
+Cell[14631, 559, 131, 4, 27, "Input",
  CellTags->"DiracOrder",
  CellID->332885129],
-Cell[14255, 549, 442, 17, 39, "Output",
+Cell[14765, 565, 442, 17, 39, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14746, 572, 105, 2, 8, "ExampleDelimiter"],
-Cell[14854, 576, 145, 3, 31, "Notes"],
+Cell[15256, 588, 105, 2, 9, "ExampleDelimiter"],
+Cell[15364, 592, 145, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[15024, 583, 177, 5, 27, "Input",
+Cell[15534, 599, 177, 5, 27, "Input",
  CellTags->"DiracOrder",
  CellID->1751727580],
-Cell[15204, 590, 757, 31, 39, "Output",
+Cell[15714, 606, 757, 31, 39, "Output",
  CellTags->"DiracOrder"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15998, 626, 86, 2, 27, "Input"],
-Cell[16087, 630, 612, 24, 39, "Output"]
+Cell[16508, 642, 86, 2, 27, "Input"],
+Cell[16597, 646, 612, 24, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16736, 659, 276, 8, 27, "Input"],
-Cell[17015, 669, 1997, 80, 39, "Output"]
+Cell[17246, 675, 276, 8, 27, "Input"],
+Cell[17525, 685, 1997, 80, 39, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19061, 755, 105, 2, 8, "ExampleDelimiter"],
-Cell[19169, 759, 262, 7, 46, "Notes"],
+Cell[19571, 771, 105, 2, 9, "ExampleDelimiter"],
+Cell[19679, 775, 262, 7, 48, "Notes"],
 Cell[CellGroupData[{
-Cell[19456, 770, 254, 7, 27, "Input"],
-Cell[19713, 779, 698, 28, 37, "Output"]
+Cell[19966, 786, 254, 7, 27, "Input"],
+Cell[20223, 795, 698, 28, 37, "Output"]
 }, Open  ]],
-Cell[20426, 810, 284, 8, 47, "Notes"],
+Cell[20936, 826, 272, 8, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[20735, 822, 328, 9, 27, "Input"],
-Cell[21066, 833, 398, 16, 37, "Output"]
+Cell[21233, 838, 324, 9, 27, "Input"],
+Cell[21560, 849, 398, 16, 37, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[21503, 854, 31, 0, 29, "SectionFooterSpacer"]
+Cell[21997, 870, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21571, 859, 270, 12, 31, "SeeAlsoSection",
+Cell[22065, 875, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[21844, 873, 367, 13, 55, "SeeAlso"]
+Cell[22338, 889, 367, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[22226, 889, 23, 0, 40, "FooterCell"]
+Cell[22720, 905, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

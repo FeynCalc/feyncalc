@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14422,        499]
+NotebookDataLength[     14471,        500]
 NotebookOptionsPosition[      9588,        351]
-NotebookOutlinePosition[     12754,        439]
-CellTagsIndexPosition[     12634,        433]
+NotebookOutlinePosition[     12803,        440]
+CellTagsIndexPosition[     12683,        434]
 WindowTitle->PlusDistribution
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ PlusDistribution.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$214287], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$207516], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PlusDistribution", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->494144905],
+ CellID->312571371],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->101277023],
+ CellID->520452869],
 
 Cell[CellGroupData[{
 
@@ -171,7 +171,7 @@ Cell[BoxData[
    RowBox[{"(", 
     FractionBox["1", 
      RowBox[{"1", "-", "x"}]], ")"}], "+"], TraditionalForm]], "Output",
- ImageSize->{64, 36},
+ ImageSize->{65, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PlusDistribution",
@@ -199,7 +199,7 @@ Cell[BoxData[
      RowBox[{"log", "(", 
       RowBox[{"1", "-", "x"}], ")"}], 
      RowBox[{"1", "-", "x"}]], ")"}], "+"], TraditionalForm]], "Output",
- ImageSize->{98, 36},
+ ImageSize->{97, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PlusDistribution",
@@ -223,7 +223,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PlusDistribution",
@@ -249,7 +249,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PlusDistribution",
@@ -276,7 +276,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PlusDistribution",
@@ -310,7 +310,7 @@ Cell[BoxData[
       RowBox[{"log", "(", 
        RowBox[{"1", "-", "x"}], ")"}], 
       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], TraditionalForm]], "Output",
- ImageSize->{162, 36},
+ ImageSize->{160, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PlusDistribution",
@@ -364,7 +364,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 19.031810}", 
+   "built" -> "{2019, 9, 20, 21, 17, 7.445687}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -376,7 +376,7 @@ TaggingRules->{
     "PlusDistribution", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/PlusDistribution"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -384,8 +384,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -396,7 +397,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4453, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->494144905]},
+   CellID->312571371]},
  "PlusDistribution"->{
   Cell[5085, 158, 216, 7, 27, "Input",
    CellTags->"PlusDistribution",
@@ -432,24 +433,24 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11441, 395},
- {"PlusDistribution", 11584, 399}
+ {"PrimaryExamplesSection", 11490, 396},
+ {"PlusDistribution", 11633, 400}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 3039, 74, 50, "AnchorBarGrid",
+Cell[588, 21, 3039, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3630, 97, 293, 11, 44, "ObjectNameGrid"],
-Cell[3926, 110, 502, 15, 83, "Usage",
+Cell[3630, 97, 293, 11, 45, "ObjectNameGrid"],
+Cell[3926, 110, 502, 15, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4453, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->494144905],
+ CellID->312571371],
 Cell[CellGroupData[{
-Cell[4865, 148, 195, 6, 25, "ExampleSection",
- CellID->101277023],
+Cell[4865, 148, 195, 6, 26, "ExampleSection",
+ CellID->520452869],
 Cell[CellGroupData[{
 Cell[5085, 158, 216, 7, 27, "Input",
  CellTags->"PlusDistribution",

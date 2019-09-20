@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11267,        387]
-NotebookOptionsPosition[      7940,        285]
-NotebookOutlinePosition[     10334,        353]
-CellTagsIndexPosition[     10225,        347]
+NotebookDataLength[     11321,        388]
+NotebookOptionsPosition[      7941,        285]
+NotebookOutlinePosition[     10387,        354]
+CellTagsIndexPosition[     10278,        348]
 WindowTitle->BReduce
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29890], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29331], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/BReduce", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->237443691],
+ CellID->1302736989],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1920159613],
+ CellID->1381617462],
 
 Cell[TextData[{
  "By default ",
@@ -185,7 +185,7 @@ Cell[BoxData[
      RowBox[{"0", ",", "s", ",", "s"}], ")"}],
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{78, 16},
+ ImageSize->{79, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"BReduce",
@@ -298,7 +298,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 19.780665}", 
+   "built" -> "{2019, 9, 20, 21, 10, 13.418238}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -310,7 +310,7 @@ to A0 and B0 will be done. ", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "Symbol", "uri" -> "FeynCalc/ref/BReduce"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -318,8 +318,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -328,67 +329,67 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4583, 130, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4583, 130, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->237443691]},
+   CellID->1302736989]},
  "BReduce"->{
-  Cell[5449, 171, 153, 5, 27, "Input",
+  Cell[5450, 171, 153, 5, 27, "Input",
    CellTags->"BReduce",
    CellID->768966684],
-  Cell[5605, 178, 353, 13, 37, "Output",
+  Cell[5606, 178, 353, 13, 37, "Output",
    CellTags->"BReduce"],
-  Cell[6063, 198, 202, 6, 27, "Input",
+  Cell[6064, 198, 202, 6, 27, "Input",
    CellTags->"BReduce",
    CellID->876027895],
-  Cell[6268, 206, 523, 20, 55, "Output",
+  Cell[6269, 206, 523, 20, 55, "Output",
    CellTags->"BReduce"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9763, 329},
- {"BReduce", 9897, 333}
+ {"PrimaryExamplesSection", 9815, 330},
+ {"BReduce", 9950, 334}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 3285, 78, 50, "AnchorBarGrid",
+Cell[579, 21, 3285, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3867, 101, 284, 11, 44, "ObjectNameGrid"],
-Cell[4154, 114, 404, 12, 83, "Usage",
+Cell[3867, 101, 284, 11, 45, "ObjectNameGrid"],
+Cell[4154, 114, 404, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4583, 130, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4583, 130, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->237443691],
+ CellID->1302736989],
 Cell[CellGroupData[{
-Cell[4995, 149, 196, 6, 25, "ExampleSection",
- CellID->1920159613],
-Cell[5194, 157, 230, 10, 32, "Notes"],
+Cell[4996, 149, 196, 6, 26, "ExampleSection",
+ CellID->1381617462],
+Cell[5195, 157, 230, 10, 33, "Notes"],
 Cell[CellGroupData[{
-Cell[5449, 171, 153, 5, 27, "Input",
+Cell[5450, 171, 153, 5, 27, "Input",
  CellTags->"BReduce",
  CellID->768966684],
-Cell[5605, 178, 353, 13, 37, "Output",
+Cell[5606, 178, 353, 13, 37, "Output",
  CellTags->"BReduce"]
 }, Open  ]],
-Cell[5973, 194, 65, 0, 31, "Notes"],
+Cell[5974, 194, 65, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[6063, 198, 202, 6, 27, "Input",
+Cell[6064, 198, 202, 6, 27, "Input",
  CellTags->"BReduce",
  CellID->876027895],
-Cell[6268, 206, 523, 20, 55, "Output",
+Cell[6269, 206, 523, 20, 55, "Output",
  CellTags->"BReduce"]
 }, Open  ]]
 }, Open  ]],
-Cell[6818, 230, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6819, 230, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6886, 235, 270, 12, 31, "SeeAlsoSection",
+Cell[6887, 235, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7159, 249, 739, 31, 55, "SeeAlso"]
+Cell[7160, 249, 739, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7913, 283, 23, 0, 40, "FooterCell"]
+Cell[7914, 283, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

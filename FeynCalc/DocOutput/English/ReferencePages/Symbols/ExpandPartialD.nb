@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     31856,       1152]
-NotebookOptionsPosition[     24535,        919]
-NotebookOutlinePosition[     28571,       1033]
-CellTagsIndexPosition[     28453,       1027]
+NotebookDataLength[     31904,       1153]
+NotebookOptionsPosition[     24534,        919]
+NotebookOutlinePosition[     28620,       1034]
+CellTagsIndexPosition[     28502,       1028]
 WindowTitle->ExpandPartialD
 WindowFrame->Normal*)
 
@@ -87,7 +87,7 @@ ExpandPartialD.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$84250], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$82780], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ExpandPartialD", ".html"]], None}]}]},
@@ -161,7 +161,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->111875885],
+ CellID->1729302399],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -216,7 +216,7 @@ Cell[BoxData[
            TraditionalForm,
            Editable->True], ")"}]}], ")"}]}], "}"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{526, 129},
+ ImageSize->{510, 132},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[59]="]
@@ -241,7 +241,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1554312153],
+ CellID->490775297],
 
 Cell[CellGroupData[{
 
@@ -251,7 +251,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1959360153],
+ CellID->966534753],
 
 Cell[CellGroupData[{
 
@@ -287,7 +287,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Nu]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{69, 23},
+ ImageSize->{74, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -347,7 +347,7 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\[Nu]",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{189, 19},
+ ImageSize->{202, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -386,7 +386,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Nu]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{46, 23},
+ ImageSize->{49, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -433,7 +433,7 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\[Nu]",
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{139, 35},
+ ImageSize->{146, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -484,7 +484,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Rho]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{72, 23},
+ ImageSize->{76, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -596,7 +596,7 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\[Rho]",
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{400, 35},
+ ImageSize->{421, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -630,7 +630,7 @@ Cell[BoxData[
      FormBox["\[CapitalDelta]",
       TraditionalForm],
      TraditionalForm], "3"]}], TraditionalForm]], "Output",
- ImageSize->{34, 22},
+ ImageSize->{35, 23},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -662,7 +662,7 @@ Cell[BoxData[
        FormBox["\[CapitalDelta]",
         TraditionalForm],
        TraditionalForm]]}], ")"}], "3"], TraditionalForm]], "Output",
- ImageSize->{72, 26},
+ ImageSize->{75, 27},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -759,7 +759,7 @@ Cell[BoxData[
       FormBox["\[CapitalDelta]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{339, 21},
+ ImageSize->{361, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -836,7 +836,7 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{135, 23},
+ ImageSize->{146, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -853,7 +853,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{14, 14},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExpandPartialD",
@@ -932,7 +932,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 27.203341}", 
+   "built" -> "{2019, 9, 20, 21, 12, 23.128602}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -945,7 +945,7 @@ and partial differentiation operators in exp and applies the Leibniz rule.",
     "Symbol", "uri" -> "FeynCalc/ref/ExpandPartialD"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -953,8 +953,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -963,197 +964,197 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[7609, 228, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[7610, 228, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1554312153]},
+   CellID->490775297]},
  "ExpandPartialD"->{
-  Cell[8243, 257, 392, 11, 45, "Input",
+  Cell[8242, 257, 392, 11, 45, "Input",
    CellTags->"ExpandPartialD",
    CellID->1663995859],
-  Cell[8638, 270, 574, 23, 44, "Output",
+  Cell[8637, 270, 574, 23, 45, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[9249, 298, 138, 4, 27, "Input",
+  Cell[9248, 298, 138, 4, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->42906170],
-  Cell[9390, 304, 1191, 49, 40, "Output",
+  Cell[9389, 304, 1191, 49, 40, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[10748, 364, 278, 8, 27, "Input",
+  Cell[10747, 364, 278, 8, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->1133080623],
-  Cell[11029, 374, 469, 18, 44, "Output",
+  Cell[11028, 374, 469, 18, 45, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[11535, 397, 139, 4, 27, "Input",
+  Cell[11534, 397, 139, 4, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->714332804],
-  Cell[11677, 403, 928, 36, 56, "Output",
+  Cell[11676, 403, 928, 36, 56, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[12784, 451, 452, 14, 45, "Input",
+  Cell[12783, 451, 452, 14, 45, "Input",
    CellTags->"ExpandPartialD",
    CellID->1818055573],
-  Cell[13239, 467, 599, 23, 44, "Output",
+  Cell[13238, 467, 599, 23, 45, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[13875, 495, 140, 4, 27, "Input",
+  Cell[13874, 495, 140, 4, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->1536725497],
-  Cell[14018, 501, 2735, 101, 56, "Output",
+  Cell[14017, 501, 2735, 101, 56, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[16932, 614, 198, 7, 27, "Input",
+  Cell[16931, 614, 198, 7, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->302634492],
-  Cell[17133, 623, 390, 13, 43, "Output",
+  Cell[17132, 623, 390, 13, 44, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[17560, 641, 142, 4, 27, "Input",
+  Cell[17559, 641, 142, 4, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->1446708912],
-  Cell[17705, 647, 607, 21, 47, "Output",
+  Cell[17704, 647, 607, 21, 48, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[18349, 673, 136, 4, 27, "Input",
+  Cell[18348, 673, 136, 4, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->752224],
-  Cell[18488, 679, 2461, 86, 42, "Output",
+  Cell[18487, 679, 2461, 86, 43, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[21128, 777, 324, 10, 27, "Input",
+  Cell[21127, 777, 324, 10, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->623620416],
-  Cell[21455, 789, 1356, 53, 44, "Output",
+  Cell[21454, 789, 1356, 53, 45, "Output",
    CellTags->"ExpandPartialD"],
-  Cell[22848, 847, 139, 4, 27, "Input",
+  Cell[22847, 847, 139, 4, 27, "Input",
    CellTags->"ExpandPartialD",
    CellID->726282079],
-  Cell[22990, 853, 195, 6, 35, "Output",
+  Cell[22989, 853, 195, 6, 35, "Output",
    CellTags->"ExpandPartialD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 26435, 964},
- {"ExpandPartialD", 26577, 968}
+ {"PrimaryExamplesSection", 26485, 965},
+ {"ExpandPartialD", 26626, 969}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 3472, 82, 50, "AnchorBarGrid",
+Cell[586, 21, 3472, 82, 53, "AnchorBarGrid",
  CellID->1],
-Cell[4061, 105, 291, 11, 44, "ObjectNameGrid"],
+Cell[4061, 105, 291, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4377, 120, 566, 15, 99, "Usage",
+Cell[4377, 120, 566, 15, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4968, 139, 738, 24, 31, "NotesSection",
+Cell[4968, 139, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->111875885],
-Cell[5709, 165, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1729302399],
+Cell[5710, 165, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5765, 169, 97, 2, 27, "Input"],
-Cell[5865, 173, 1683, 48, 150, "Output"]
+Cell[5766, 169, 97, 2, 70, "Input"],
+Cell[5866, 173, 1683, 48, 70, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7609, 228, 388, 15, 31, "PrimaryExamplesSection",
+Cell[7610, 228, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1554312153],
+ CellID->490775297],
 Cell[CellGroupData[{
-Cell[8022, 247, 196, 6, 25, "ExampleSection",
- CellID->1959360153],
+Cell[8022, 247, 195, 6, 26, "ExampleSection",
+ CellID->966534753],
 Cell[CellGroupData[{
-Cell[8243, 257, 392, 11, 45, "Input",
+Cell[8242, 257, 392, 11, 45, "Input",
  CellTags->"ExpandPartialD",
  CellID->1663995859],
-Cell[8638, 270, 574, 23, 44, "Output",
+Cell[8637, 270, 574, 23, 45, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9249, 298, 138, 4, 27, "Input",
+Cell[9248, 298, 138, 4, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->42906170],
-Cell[9390, 304, 1191, 49, 40, "Output",
+Cell[9389, 304, 1191, 49, 40, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10618, 358, 105, 2, 8, "ExampleDelimiter"],
+Cell[10617, 358, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[10748, 364, 278, 8, 27, "Input",
+Cell[10747, 364, 278, 8, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->1133080623],
-Cell[11029, 374, 469, 18, 44, "Output",
+Cell[11028, 374, 469, 18, 45, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11535, 397, 139, 4, 27, "Input",
+Cell[11534, 397, 139, 4, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->714332804],
-Cell[11677, 403, 928, 36, 56, "Output",
+Cell[11676, 403, 928, 36, 56, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12654, 445, 105, 2, 8, "ExampleDelimiter"],
+Cell[12653, 445, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[12784, 451, 452, 14, 45, "Input",
+Cell[12783, 451, 452, 14, 45, "Input",
  CellTags->"ExpandPartialD",
  CellID->1818055573],
-Cell[13239, 467, 599, 23, 44, "Output",
+Cell[13238, 467, 599, 23, 45, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13875, 495, 140, 4, 27, "Input",
+Cell[13874, 495, 140, 4, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->1536725497],
-Cell[14018, 501, 2735, 101, 56, "Output",
+Cell[14017, 501, 2735, 101, 56, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16802, 608, 105, 2, 8, "ExampleDelimiter"],
+Cell[16801, 608, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[16932, 614, 198, 7, 27, "Input",
+Cell[16931, 614, 198, 7, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->302634492],
-Cell[17133, 623, 390, 13, 43, "Output",
+Cell[17132, 623, 390, 13, 44, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17560, 641, 142, 4, 27, "Input",
+Cell[17559, 641, 142, 4, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->1446708912],
-Cell[17705, 647, 607, 21, 47, "Output",
+Cell[17704, 647, 607, 21, 48, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18349, 673, 136, 4, 27, "Input",
+Cell[18348, 673, 136, 4, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->752224],
-Cell[18488, 679, 2461, 86, 42, "Output",
+Cell[18487, 679, 2461, 86, 43, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20998, 771, 105, 2, 8, "ExampleDelimiter"],
+Cell[20997, 771, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[21128, 777, 324, 10, 27, "Input",
+Cell[21127, 777, 324, 10, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->623620416],
-Cell[21455, 789, 1356, 53, 44, "Output",
+Cell[21454, 789, 1356, 53, 45, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22848, 847, 139, 4, 27, "Input",
+Cell[22847, 847, 139, 4, 27, "Input",
  CellTags->"ExpandPartialD",
  CellID->726282079],
-Cell[22990, 853, 195, 6, 35, "Output",
+Cell[22989, 853, 195, 6, 35, "Output",
  CellTags->"ExpandPartialD"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[23224, 864, 31, 0, 29, "SectionFooterSpacer"]
+Cell[23223, 864, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23292, 869, 270, 12, 31, "SeeAlsoSection",
+Cell[23291, 869, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[23565, 883, 928, 31, 55, "SeeAlso"]
+Cell[23564, 883, 928, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[24508, 917, 23, 0, 40, "FooterCell"]
+Cell[24507, 917, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

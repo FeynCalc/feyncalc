@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10111,        325]
+NotebookDataLength[     10160,        326]
 NotebookOptionsPosition[      7235,        240]
-NotebookOutlinePosition[      9484,        301]
-CellTagsIndexPosition[      9419,        296]
+NotebookOutlinePosition[      9533,        302]
+CellTagsIndexPosition[      9468,        297]
 WindowTitle->Tr2
 WindowFrame->Normal*)
 
@@ -85,7 +85,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$284451], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$274138], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Tr2", 
              ".html"]], None}]}]},
@@ -159,7 +159,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1337252170],
+ CellID->1848378122],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -176,7 +176,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"Factoring", "\[Rule]", "False"}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{122, 16},
+ ImageSize->{119, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Tr2",
@@ -241,7 +241,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"Tr2",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -253,7 +253,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 1.061925}", 
+   "built" -> "{2019, 9, 20, 21, 19, 42.285886}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -267,7 +267,7 @@ trace.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Tr2",
     "titlemodifier" -> "", "windowtitle" -> "Tr2", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Tr2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -275,8 +275,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -285,7 +286,7 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Tr2"->{
-  Cell[5651, 167, 123, 4, 27, "Input",
+  Cell[5651, 167, 123, 4, 70, "Input",
    CellTags->"Tr2",
    CellID->111461302],
   Cell[5777, 173, 274, 10, 37, "Output",
@@ -295,24 +296,24 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Tr2", 9228, 286}
+ {"Tr2", 9277, 287}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[575, 21, 3332, 80, 50, "AnchorBarGrid",
+Cell[575, 21, 3332, 80, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3910, 103, 280, 11, 44, "ObjectNameGrid"],
+Cell[3910, 103, 280, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4215, 118, 613, 15, 115, "Usage",
+Cell[4215, 118, 613, 15, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4853, 137, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1337252170],
-Cell[5595, 163, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1848378122],
+Cell[5595, 163, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5651, 167, 123, 4, 27, "Input",
+Cell[5651, 167, 123, 4, 70, "Input",
  CellTags->"Tr2",
  CellID->111461302],
 Cell[5777, 173, 274, 10, 37, "Output",
@@ -324,9 +325,9 @@ Cell[5777, 173, 274, 10, 37, "Output",
 Cell[CellGroupData[{
 Cell[6112, 190, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6385, 204, 808, 31, 55, "SeeAlso"]
+Cell[6385, 204, 808, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7208, 238, 23, 0, 40, "FooterCell"]
+Cell[7208, 238, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

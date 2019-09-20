@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10833,        358]
-NotebookOptionsPosition[      7478,        258]
-NotebookOutlinePosition[      9951,        326]
-CellTagsIndexPosition[      9835,        320]
+NotebookDataLength[     10880,        359]
+NotebookOptionsPosition[      7477,        258]
+NotebookOutlinePosition[      9999,        327]
+CellTagsIndexPosition[      9883,        321]
 WindowTitle->FCAntiSymmetrize
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FCAntiSymmetrize.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$93545], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$91677], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCAntiSymmetrize", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->894085239],
+ CellID->1581394966],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2127408344],
+ CellID->43818386],
 
 Cell[CellGroupData[{
 
@@ -178,7 +178,7 @@ Cell[BoxData[
       RowBox[{"a", ",", "b"}], ")"}], "-", 
      RowBox[{"f", "(", 
       RowBox[{"b", ",", "a"}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{152, 35},
+ ImageSize->{156, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"AntiSymmetrize",
@@ -217,7 +217,7 @@ Cell[BoxData[
      RowBox[{"f", "(", 
       RowBox[{"z", ",", "y", ",", "x"}], ")"}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{560, 35},
+ ImageSize->{556, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"AntiSymmetrize",
@@ -259,7 +259,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"FCAntiSymmetrize",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -271,7 +271,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 47.449449}", 
+   "built" -> "{2019, 9, 20, 21, 12, 43.285464}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -283,7 +283,7 @@ to the variables a1,a2, ... ", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "FCAntiSymmetrize", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FCAntiSymmetrize"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -291,8 +291,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -301,65 +302,65 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4493, 130, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4493, 130, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->894085239]},
+   CellID->1581394966]},
  "AntiSymmetrize"->{
-  Cell[5126, 159, 266, 9, 27, "Input",
+  Cell[5125, 159, 266, 9, 27, "Input",
    CellTags->"AntiSymmetrize",
    CellID->74722925],
-  Cell[5395, 170, 406, 14, 56, "Output",
+  Cell[5394, 170, 406, 14, 56, "Output",
    CellTags->"AntiSymmetrize"],
-  Cell[5838, 189, 287, 9, 27, "Input",
+  Cell[5837, 189, 287, 9, 27, "Input",
    CellTags->"AntiSymmetrize",
    CellID->685327648],
-  Cell[6128, 200, 741, 23, 56, "Output",
+  Cell[6127, 200, 741, 23, 56, "Output",
    CellTags->"AntiSymmetrize"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9339, 302},
- {"AntiSymmetrize", 9480, 306}
+ {"PrimaryExamplesSection", 9386, 303},
+ {"AntiSymmetrize", 9528, 307}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 3042, 74, 50, "AnchorBarGrid",
+Cell[588, 21, 3042, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3633, 97, 293, 11, 44, "ObjectNameGrid"],
-Cell[3929, 110, 539, 16, 83, "Usage",
+Cell[3633, 97, 293, 11, 45, "ObjectNameGrid"],
+Cell[3929, 110, 539, 16, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4493, 130, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4493, 130, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->894085239],
+ CellID->1581394966],
 Cell[CellGroupData[{
-Cell[4905, 149, 196, 6, 25, "ExampleSection",
- CellID->2127408344],
+Cell[4906, 149, 194, 6, 26, "ExampleSection",
+ CellID->43818386],
 Cell[CellGroupData[{
-Cell[5126, 159, 266, 9, 27, "Input",
+Cell[5125, 159, 266, 9, 27, "Input",
  CellTags->"AntiSymmetrize",
  CellID->74722925],
-Cell[5395, 170, 406, 14, 56, "Output",
+Cell[5394, 170, 406, 14, 56, "Output",
  CellTags->"AntiSymmetrize"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5838, 189, 287, 9, 27, "Input",
+Cell[5837, 189, 287, 9, 27, "Input",
  CellTags->"AntiSymmetrize",
  CellID->685327648],
-Cell[6128, 200, 741, 23, 56, "Output",
+Cell[6127, 200, 741, 23, 56, "Output",
  CellTags->"AntiSymmetrize"]
 }, Open  ]]
 }, Open  ]],
-Cell[6896, 227, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6895, 227, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6964, 232, 270, 12, 31, "SeeAlsoSection",
+Cell[6963, 232, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7237, 246, 199, 7, 55, "SeeAlso"]
+Cell[7236, 246, 199, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7451, 256, 23, 0, 40, "FooterCell"]
+Cell[7450, 256, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

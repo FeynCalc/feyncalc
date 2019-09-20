@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14487,        484]
-NotebookOptionsPosition[     11265,        386]
-NotebookOutlinePosition[     13425,        444]
-CellTagsIndexPosition[     13340,        439]
+NotebookDataLength[     14540,        485]
+NotebookOptionsPosition[     11266,        386]
+NotebookOutlinePosition[     13477,        445]
+CellTagsIndexPosition[     13392,        440]
 WindowTitle->TypesettingExplicitLorentzIndex
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ TypesettingExplicitLorentzIndex.html"], StandardForm]], "Input",
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$290876], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$280277], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TypesettingExplicitLorentzIndex", ".html"]], 
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->117841681],
+ CellID->338403820],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->779607924],
+ CellID->1107941270],
 
 Cell["Current setting", "Notes",
  CellID->2059846880],
@@ -147,7 +147,7 @@ Cell[BoxData[
   RowBox[{
   "FeynCalc`SharedObjects`Private`x", "\[Function]", 
    "FeynCalc`SharedObjects`Private`x"}], TraditionalForm]], "Output",
- ImageSize->{425, 16},
+ ImageSize->{409, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -157,7 +157,7 @@ Cell["\<\
 Function[FeynCalc`SharedObjects`Private`x, 
  FeynCalc`SharedObjects`Private`x]\
 \>", "Output",
- ImageSize->{343, 31},
+ ImageSize->{344, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]//InputForm=",
@@ -351,7 +351,7 @@ Cell[BoxData[
          TraditionalForm], "0"], ")"}], "2"],
      TraditionalForm], " ", 
     SuperscriptBox["M", "2"], " ", "u"}]}], TraditionalForm]], "Output",
- ImageSize->{371, 41},
+ ImageSize->{366, 42},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -399,7 +399,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 17.781158}", 
+   "built" -> "{2019, 9, 20, 21, 19, 56.619161}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -413,7 +413,7 @@ typesetting of explicit Lorentz indices.", "synonyms" -> {},
     "FeynCalc/ref/TypesettingExplicitLorentzIndex"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -421,8 +421,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -433,59 +434,59 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3740, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->117841681]}
+   CellID->338403820]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13197, 432}
+ {"PrimaryExamplesSection", 13249, 433}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[603, 21, 2399, 56, 50, "AnchorBarGrid",
+Cell[603, 21, 2399, 56, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3005, 79, 308, 11, 44, "ObjectNameGrid"],
-Cell[3316, 92, 399, 11, 83, "Usage",
+Cell[3005, 79, 308, 11, 45, "ObjectNameGrid"],
+Cell[3316, 92, 399, 11, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[3740, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->117841681],
+ CellID->338403820],
 Cell[CellGroupData[{
-Cell[4152, 126, 195, 6, 25, "ExampleSection",
- CellID->779607924],
-Cell[4350, 134, 53, 1, 31, "Notes",
+Cell[4152, 126, 196, 6, 26, "ExampleSection",
+ CellID->1107941270],
+Cell[4351, 134, 53, 1, 32, "Notes",
  CellID->2059846880],
 Cell[CellGroupData[{
-Cell[4428, 139, 162, 3, 45, "Input",
+Cell[4429, 139, 162, 3, 45, "Input",
  CellID->1930861280],
-Cell[4593, 144, 289, 9, 37, "Output",
+Cell[4594, 144, 289, 9, 37, "Output",
  CellID->608983385],
-Cell[4885, 155, 247, 8, 65, "Output",
+Cell[4886, 155, 247, 8, 67, "Output",
  CellID->1300783929]
 }, Open  ]],
-Cell[5147, 166, 76, 1, 31, "Notes",
+Cell[5148, 166, 76, 1, 32, "Notes",
  CellID->2081420506],
-Cell[5226, 169, 265, 8, 27, "Input",
+Cell[5227, 169, 265, 8, 27, "Input",
  CellID->240390894],
 Cell[CellGroupData[{
-Cell[5516, 181, 997, 32, 45, "Input",
+Cell[5517, 181, 997, 32, 45, "Input",
  CellID->1698479077],
-Cell[6516, 215, 4173, 142, 62, "Output",
+Cell[6517, 215, 4173, 142, 63, "Output",
  CellID->705495845]
 }, Open  ]],
-Cell[10704, 360, 67, 1, 31, "Notes",
+Cell[10705, 360, 67, 1, 32, "Notes",
  CellID->1802886925],
 Cell[CellGroupData[{
-Cell[10796, 365, 181, 5, 27, "Input",
+Cell[10797, 365, 181, 5, 27, "Input",
  CellID->585981240],
-Cell[10980, 372, 219, 7, 35, "Output",
+Cell[10981, 372, 219, 7, 35, "Output",
  CellID->692314547]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[11238, 384, 23, 0, 70, "FooterCell"]
+Cell[11239, 384, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

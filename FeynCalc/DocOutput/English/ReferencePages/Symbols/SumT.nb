@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21898,        841]
-NotebookOptionsPosition[     14468,        585]
-NotebookOutlinePosition[     18833,        718]
-CellTagsIndexPosition[     18725,        712]
+NotebookDataLength[     21953,        842]
+NotebookOptionsPosition[     14469,        585]
+NotebookOutlinePosition[     18887,        719]
+CellTagsIndexPosition[     18779,        713]
 WindowTitle->SumT
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$261651], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$252334], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/SumT", 
              ".html"]], None}]}]},
@@ -153,7 +153,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->146786546],
+ CellID->1608142011],
 
 Cell[CellGroupData[{
 
@@ -163,7 +163,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->821789531],
+ CellID->986251319],
 
 Cell[CellGroupData[{
 
@@ -183,7 +183,7 @@ Cell[BoxData[
    FormBox[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{75, 19},
+ ImageSize->{73, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -208,7 +208,7 @@ Cell[BoxData[
    FormBox[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{76, 18},
+ ImageSize->{74, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -231,7 +231,7 @@ Cell[BoxData[
     OverscriptBox["S", "~"], "1"], "(", 
    FormBox["m",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{52, 19},
+ ImageSize->{50, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -261,7 +261,7 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"(", 
       RowBox[{"-", "1"}], ")"}], "m"], "m"]}], TraditionalForm]], "Output",
- ImageSize->{139, 36},
+ ImageSize->{136, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -331,7 +331,7 @@ Cell[BoxData[
    FormBox[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{82, 19},
+ ImageSize->{78, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -353,7 +353,7 @@ Cell[BoxData[
    FractionBox["38987958697055013360489864298703621429610152138683927", 
     "10512121660702378405316004964483761080879190528000000"]}], 
   TraditionalForm]], "Output",
- ImageSize->{426, 35},
+ ImageSize->{425, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -427,7 +427,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"-", "1"}],"1","m"},
      "LerchPhi"]}], "-", 
    RowBox[{"log", "(", "2", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{205, 19},
+ ImageSize->{202, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -471,7 +471,7 @@ Cell[BoxData[
    FractionBox["38987958697055013360489864298703621429610152138683927", 
     "10512121660702378405316004964483761080879190528000000"]}], 
   TraditionalForm]], "Output",
- ImageSize->{426, 35},
+ ImageSize->{425, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -502,7 +502,7 @@ Cell[BoxData[
      FractionBox["170603", "216000"]}], ",", 
     RowBox[{"-", 
      FractionBox["155903", "216000"]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{304, 35},
+ ImageSize->{309, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -538,7 +538,7 @@ Cell[BoxData[
      FractionBox["170603", "216000"]}], ",", 
     RowBox[{"-", 
      FractionBox["155903", "216000"]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{304, 35},
+ ImageSize->{309, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SumT",
@@ -598,7 +598,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 54, 4.733860}", 
+   "built" -> "{2019, 9, 20, 21, 18, 50.646923}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -610,7 +610,7 @@ TaggingRules->{
     "title" -> "SumT", "titlemodifier" -> "", "windowtitle" -> "SumT", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/SumT"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -618,8 +618,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -628,221 +629,221 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4760, 140, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4760, 140, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->146786546]},
+   CellID->1608142011]},
  "SumT"->{
-  Cell[5392, 169, 166, 6, 27, "Input",
+  Cell[5393, 169, 166, 6, 27, "Input",
    CellTags->"SumT",
    CellID->716286522],
-  Cell[5561, 177, 320, 12, 40, "Output",
+  Cell[5562, 177, 320, 12, 41, "Output",
    CellTags->"SumT"],
-  Cell[5918, 194, 167, 6, 27, "Input",
+  Cell[5919, 194, 167, 6, 27, "Input",
    CellTags->"SumT",
    CellID->1536455290],
-  Cell[6088, 202, 320, 12, 39, "Output",
+  Cell[6089, 202, 320, 12, 40, "Output",
    CellTags->"SumT"],
-  Cell[6445, 219, 142, 5, 27, "Input",
+  Cell[6446, 219, 142, 5, 27, "Input",
    CellTags->"SumT",
    CellID->330440840],
-  Cell[6590, 226, 295, 11, 40, "Output",
+  Cell[6591, 226, 295, 11, 41, "Output",
    CellTags->"SumT"],
-  Cell[6922, 242, 191, 6, 27, "Input",
+  Cell[6923, 242, 191, 6, 27, "Input",
    CellTags->"SumT",
    CellID->1249829069],
-  Cell[7116, 250, 446, 17, 57, "Output",
+  Cell[7117, 250, 446, 17, 57, "Output",
    CellTags->"SumT"],
-  Cell[7599, 272, 143, 5, 27, "Input",
+  Cell[7600, 272, 143, 5, 27, "Input",
    CellTags->"SumT",
    CellID->2000365696],
-  Cell[7745, 279, 226, 8, 55, "Output",
+  Cell[7746, 279, 226, 8, 55, "Output",
    CellTags->"SumT"],
-  Cell[8008, 292, 262, 10, 57, "Input",
+  Cell[8009, 292, 262, 10, 58, "Input",
    CellTags->"SumT",
    CellID->1658021019],
-  Cell[8273, 304, 226, 8, 55, "Output",
+  Cell[8274, 304, 226, 8, 55, "Output",
    CellTags->"SumT"],
-  Cell[8536, 317, 176, 6, 27, "Input",
+  Cell[8537, 317, 176, 6, 27, "Input",
    CellTags->"SumT",
    CellID->231090065],
-  Cell[8715, 325, 321, 12, 40, "Output",
+  Cell[8716, 325, 321, 12, 41, "Output",
    CellTags->"SumT"],
-  Cell[9073, 342, 154, 5, 27, "Input",
+  Cell[9074, 342, 154, 5, 27, "Input",
    CellTags->"SumT",
    CellID->1022041702],
-  Cell[9230, 349, 338, 10, 56, "Output",
+  Cell[9231, 349, 338, 10, 56, "Output",
    CellTags->"SumT"],
-  Cell[9605, 364, 142, 5, 27, "Input",
+  Cell[9606, 364, 142, 5, 27, "Input",
    CellTags->"SumT",
    CellID->803956266],
-  Cell[9750, 371, 226, 8, 55, "Output",
+  Cell[9751, 371, 226, 8, 55, "Output",
    CellTags->"SumT"],
-  Cell[10013, 384, 163, 6, 27, "Input",
+  Cell[10014, 384, 163, 6, 27, "Input",
    CellTags->"SumT",
    CellID->1947579277],
-  Cell[10179, 392, 227, 8, 55, "Output",
+  Cell[10180, 392, 227, 8, 55, "Output",
    CellTags->"SumT"],
-  Cell[10443, 405, 287, 11, 57, "Input",
+  Cell[10444, 405, 287, 11, 58, "Input",
    CellTags->"SumT",
    CellID->1900986557],
-  Cell[10733, 418, 425, 15, 40, "Output",
+  Cell[10734, 418, 425, 15, 40, "Output",
    CellTags->"SumT"],
-  Cell[11195, 438, 155, 5, 27, "Input",
+  Cell[11196, 438, 155, 5, 27, "Input",
    CellTags->"SumT",
    CellID->1051047228],
-  Cell[11353, 445, 256, 9, 56, "Output",
+  Cell[11354, 445, 256, 9, 56, "Output",
    CellTags->"SumT"],
-  Cell[11646, 459, 174, 6, 27, "Input",
+  Cell[11647, 459, 174, 6, 27, "Input",
    CellTags->"SumT",
    CellID->1748540903],
-  Cell[11823, 467, 339, 10, 56, "Output",
+  Cell[11824, 467, 339, 10, 56, "Output",
    CellTags->"SumT"],
-  Cell[12199, 482, 147, 5, 27, "Input",
+  Cell[12200, 482, 147, 5, 27, "Input",
    CellTags->"SumT",
    CellID->629628077],
-  Cell[12349, 489, 544, 19, 56, "Output",
+  Cell[12350, 489, 544, 19, 56, "Output",
    CellTags->"SumT"],
-  Cell[12930, 513, 259, 10, 27, "Input",
+  Cell[12931, 513, 259, 10, 27, "Input",
    CellTags->"SumT",
    CellID->1141337976],
-  Cell[13192, 525, 544, 19, 56, "Output",
+  Cell[13193, 525, 544, 19, 56, "Output",
    CellTags->"SumT"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16360, 629},
- {"SumT", 16491, 633}
+ {"PrimaryExamplesSection", 16413, 630},
+ {"SumT", 16545, 634}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 3056, 75, 50, "AnchorBarGrid",
+Cell[576, 21, 3056, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3635, 98, 281, 11, 44, "ObjectNameGrid"],
-Cell[3919, 111, 816, 25, 102, "Usage",
+Cell[3635, 98, 281, 11, 45, "ObjectNameGrid"],
+Cell[3919, 111, 816, 25, 105, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4760, 140, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4760, 140, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->146786546],
+ CellID->1608142011],
 Cell[CellGroupData[{
-Cell[5172, 159, 195, 6, 25, "ExampleSection",
- CellID->821789531],
+Cell[5173, 159, 195, 6, 26, "ExampleSection",
+ CellID->986251319],
 Cell[CellGroupData[{
-Cell[5392, 169, 166, 6, 27, "Input",
+Cell[5393, 169, 166, 6, 27, "Input",
  CellTags->"SumT",
  CellID->716286522],
-Cell[5561, 177, 320, 12, 40, "Output",
+Cell[5562, 177, 320, 12, 41, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5918, 194, 167, 6, 27, "Input",
+Cell[5919, 194, 167, 6, 27, "Input",
  CellTags->"SumT",
  CellID->1536455290],
-Cell[6088, 202, 320, 12, 39, "Output",
+Cell[6089, 202, 320, 12, 40, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6445, 219, 142, 5, 27, "Input",
+Cell[6446, 219, 142, 5, 27, "Input",
  CellTags->"SumT",
  CellID->330440840],
-Cell[6590, 226, 295, 11, 40, "Output",
+Cell[6591, 226, 295, 11, 41, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6922, 242, 191, 6, 27, "Input",
+Cell[6923, 242, 191, 6, 27, "Input",
  CellTags->"SumT",
  CellID->1249829069],
-Cell[7116, 250, 446, 17, 57, "Output",
+Cell[7117, 250, 446, 17, 57, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7599, 272, 143, 5, 27, "Input",
+Cell[7600, 272, 143, 5, 27, "Input",
  CellTags->"SumT",
  CellID->2000365696],
-Cell[7745, 279, 226, 8, 55, "Output",
+Cell[7746, 279, 226, 8, 55, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8008, 292, 262, 10, 57, "Input",
+Cell[8009, 292, 262, 10, 58, "Input",
  CellTags->"SumT",
  CellID->1658021019],
-Cell[8273, 304, 226, 8, 55, "Output",
+Cell[8274, 304, 226, 8, 55, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8536, 317, 176, 6, 27, "Input",
+Cell[8537, 317, 176, 6, 27, "Input",
  CellTags->"SumT",
  CellID->231090065],
-Cell[8715, 325, 321, 12, 40, "Output",
+Cell[8716, 325, 321, 12, 41, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9073, 342, 154, 5, 27, "Input",
+Cell[9074, 342, 154, 5, 27, "Input",
  CellTags->"SumT",
  CellID->1022041702],
-Cell[9230, 349, 338, 10, 56, "Output",
+Cell[9231, 349, 338, 10, 56, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9605, 364, 142, 5, 27, "Input",
+Cell[9606, 364, 142, 5, 27, "Input",
  CellTags->"SumT",
  CellID->803956266],
-Cell[9750, 371, 226, 8, 55, "Output",
+Cell[9751, 371, 226, 8, 55, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10013, 384, 163, 6, 27, "Input",
+Cell[10014, 384, 163, 6, 27, "Input",
  CellTags->"SumT",
  CellID->1947579277],
-Cell[10179, 392, 227, 8, 55, "Output",
+Cell[10180, 392, 227, 8, 55, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10443, 405, 287, 11, 57, "Input",
+Cell[10444, 405, 287, 11, 58, "Input",
  CellTags->"SumT",
  CellID->1900986557],
-Cell[10733, 418, 425, 15, 40, "Output",
+Cell[10734, 418, 425, 15, 40, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11195, 438, 155, 5, 27, "Input",
+Cell[11196, 438, 155, 5, 27, "Input",
  CellTags->"SumT",
  CellID->1051047228],
-Cell[11353, 445, 256, 9, 56, "Output",
+Cell[11354, 445, 256, 9, 56, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11646, 459, 174, 6, 27, "Input",
+Cell[11647, 459, 174, 6, 27, "Input",
  CellTags->"SumT",
  CellID->1748540903],
-Cell[11823, 467, 339, 10, 56, "Output",
+Cell[11824, 467, 339, 10, 56, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12199, 482, 147, 5, 27, "Input",
+Cell[12200, 482, 147, 5, 27, "Input",
  CellTags->"SumT",
  CellID->629628077],
-Cell[12349, 489, 544, 19, 56, "Output",
+Cell[12350, 489, 544, 19, 56, "Output",
  CellTags->"SumT"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12930, 513, 259, 10, 27, "Input",
+Cell[12931, 513, 259, 10, 27, "Input",
  CellTags->"SumT",
  CellID->1141337976],
-Cell[13192, 525, 544, 19, 56, "Output",
+Cell[13193, 525, 544, 19, 56, "Output",
  CellTags->"SumT"]
 }, Open  ]]
 }, Open  ]],
-Cell[13763, 548, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13764, 548, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13831, 553, 270, 12, 31, "SeeAlsoSection",
+Cell[13832, 553, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[14104, 567, 322, 13, 55, "SeeAlso"]
+Cell[14105, 567, 322, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[14441, 583, 23, 0, 40, "FooterCell"]
+Cell[14442, 583, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

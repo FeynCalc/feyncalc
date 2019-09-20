@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25323,        952]
-NotebookOptionsPosition[     21145,        817]
-NotebookOutlinePosition[     23258,        873]
-CellTagsIndexPosition[     23173,        868]
+NotebookDataLength[     26399,        984]
+NotebookOptionsPosition[     22168,        848]
+NotebookOutlinePosition[     24333,        905]
+CellTagsIndexPosition[     24248,        900]
 WindowTitle->DiracIndexDelta
 WindowFrame->Normal*)
 
@@ -32,14 +32,21 @@ Cell[BoxData[GridBox[{
          TextCell[
           Row[{"See Also", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-        StripOnInput->False], {"\<\"DIDelta\"\>":>Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/DIDelta"], "\<\"FCHN\"\>":>
+        StripOnInput->False], {"\<\"DiracChain\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChain"], "\<\"DCHN\"\>":>
        Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/FCHN"], "\<\"FermionicChain\"\>":>
+       "paclet:FeynCalc/ref/DCHN"], "\<\"DiracIndex\"\>":>
        Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/FermionicChain"], \
-"\<\"FermionicChainSimplify\"\>":>Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/FermionicChainSimplify"]},
+       "paclet:FeynCalc/ref/DiracIndex"], "\<\"DIDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DIDelta"], "\<\"DiracChainJoin\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainJoin"], "\<\"DiracChainCombine\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainCombine"], "\<\"DiracChainExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainExpand"], "\<\"DiracChainFactor\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracChainFactor"]},
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"SeeAlso"]],
@@ -85,7 +92,7 @@ DiracIndexDelta.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65477], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65665], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracIndexDelta", ".html"]], None}]}]},
@@ -148,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->721506003],
+ CellID->1997394002],
 
 Cell[CellGroupData[{
 
@@ -158,7 +165,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1181909453],
+ CellID->435286535],
 
 Cell[CellGroupData[{
 
@@ -222,7 +229,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[3]:=",
  CellID->1638726287],
 
@@ -238,7 +245,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", 
+ RowBox[{"DiracChainJoin", "[", 
   RowBox[{"%%", ",", 
    RowBox[{"TraceOfOne", "\[Rule]", "D"}]}], "]"}]], "Input",
  CellLabel->"In[4]:=",
@@ -301,7 +308,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[6]:=",
  CellID->1782586861],
 
@@ -336,7 +343,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"DiracIndex", "[", "i4", "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i5", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"DiracIndex", "[", "i7", "]"}], ",", 
     RowBox[{"Spinor", "[", 
@@ -344,25 +351,25 @@ Cell[BoxData[
       RowBox[{"-", 
        RowBox[{"Momentum", "[", "q", "]"}]}], ",", "0", ",", "1"}], "]"}]}], 
    "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"Spinor", "[", 
      RowBox[{
       RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i0", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"DiracGamma", "[", 
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i1", "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i2", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"DiracGamma", "[", 
      RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i5", "]"}], ",", 
     RowBox[{"DiracIndex", "[", "i6", "]"}]}], "]"}], " ", 
-  RowBox[{"FermionicChain", "[", 
+  RowBox[{"DiracChain", "[", 
    RowBox[{
     RowBox[{"m", "+", 
      RowBox[{"DiracGamma", "[", 
@@ -499,7 +506,7 @@ Cell[BoxData[
      FormBox["i0",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{469, 17},
+ ImageSize->{465, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[7]=",
@@ -509,7 +516,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", "%", "]"}]], "Input",
+ RowBox[{"DiracChainJoin", "[", "%", "]"}]], "Input",
  CellLabel->"In[8]:=",
  CellID->1092912350],
 
@@ -596,7 +603,7 @@ Cell[BoxData[
       FormBox["i6",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{340, 17},
+ ImageSize->{345, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[8]=",
@@ -606,7 +613,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", 
+ RowBox[{"DiracChainJoin", "[", 
   RowBox[{"%", " ", 
    RowBox[{"DIDelta", "[", 
     RowBox[{"i0", ",", "i1"}], "]"}]}], "]"}]], "Input",
@@ -685,7 +692,7 @@ Cell[BoxData[
      FormBox["i6",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{305, 17},
+ ImageSize->{312, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[9]=",
@@ -695,7 +702,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FermionicChainSimplify", "[", 
+ RowBox[{"DiracChainJoin", "[", 
   RowBox[{"%", " ", 
    RowBox[{"DIDelta", "[", 
     RowBox[{"i7", ",", "i6"}], "]"}]}], "]"}]], "Input",
@@ -757,7 +764,7 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{283, 16},
+ ImageSize->{292, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[10]=",
@@ -785,32 +792,56 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
+ StyleBox[ButtonBox["DiracChain",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChain",
+  ButtonNote->"DiracChain"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DCHN",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DCHN",
+  ButtonNote->"DiracChain"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracIndex",
+  ButtonNote->"DiracIndex"],
+  FontFamily->"Verdana"],
+ ", ",
  StyleBox[ButtonBox["DIDelta",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DIDelta",
   ButtonNote->"DIDelta"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["FCHN",
+ StyleBox[ButtonBox["DiracChainJoin",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FCHN",
-  ButtonNote->"FCHN"],
+  ButtonData->"paclet:FeynCalc/ref/DiracChainJoin",
+  ButtonNote->"DiracChainJoin"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["FermionicChain",
+ StyleBox[ButtonBox["DiracChainCombine",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FermionicChain",
-  ButtonNote->"FermionicChain"],
+  ButtonData->"paclet:FeynCalc/ref/DiracChainCombine",
+  ButtonNote->"DiracChainCombine"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["FermionicChainSimplify",
+ StyleBox[ButtonBox["DiracChainExpand",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FermionicChainSimplify",
-  ButtonNote->"FermionicChainSimplify"],
+  ButtonData->"paclet:FeynCalc/ref/DiracChainExpand",
+  ButtonNote->"DiracChainExpand"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracChainFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracChainFactor",
+  ButtonNote->"DiracChainFactor"],
   FontFamily->"Verdana"],
  "."
 }], "SeeAlso",
- CellID->644176972]
+ CellID->979184841]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -830,7 +861,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 46, 43.337966}", 
+   "built" -> "{2019, 9, 20, 21, 11, 42.851503}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -842,7 +873,7 @@ the Dirac space with two explicit Dirac indices i and j.", "synonyms" -> {},
     "windowtitle" -> "DiracIndexDelta", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/DiracIndexDelta"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -850,8 +881,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -860,100 +892,100 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4785, 135, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5189, 142, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->721506003]}
+   CellID->1997394002]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 23030, 861}
+ {"PrimaryExamplesSection", 24104, 893}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 3336, 80, 50, "AnchorBarGrid",
+Cell[587, 21, 3740, 87, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3926, 103, 292, 11, 44, "ObjectNameGrid"],
-Cell[4221, 116, 539, 15, 83, "Usage",
+Cell[4330, 110, 292, 11, 45, "ObjectNameGrid"],
+Cell[4625, 123, 539, 15, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4785, 135, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5189, 142, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->721506003],
+ CellID->1997394002],
 Cell[CellGroupData[{
-Cell[5197, 154, 196, 6, 25, "ExampleSection",
- CellID->1181909453],
+Cell[5602, 161, 195, 6, 26, "ExampleSection",
+ CellID->435286535],
 Cell[CellGroupData[{
-Cell[5418, 164, 210, 6, 27, "Input",
+Cell[5822, 171, 210, 6, 27, "Input",
  CellID->334232589],
-Cell[5631, 172, 381, 16, 39, "Output",
+Cell[6035, 179, 381, 16, 39, "Output",
  CellID->20772612]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6049, 193, 237, 7, 27, "Input",
+Cell[6453, 200, 237, 7, 27, "Input",
  CellID->1160563166],
-Cell[6289, 202, 392, 16, 42, "Output",
+Cell[6693, 209, 392, 16, 42, "Output",
  CellID->843930386]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6718, 223, 119, 3, 27, "Input",
+Cell[7122, 230, 111, 3, 27, "Input",
  CellID->1638726287],
-Cell[6840, 228, 187, 6, 35, "Output",
+Cell[7236, 235, 187, 6, 35, "Output",
  CellID->1241539029]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7064, 239, 182, 5, 27, "Input",
+Cell[7460, 246, 174, 5, 27, "Input",
  CellID->1419299763],
-Cell[7249, 246, 187, 6, 35, "Output",
+Cell[7637, 253, 187, 6, 35, "Output",
  CellID->1731780001]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7473, 257, 375, 11, 45, "Input",
+Cell[7861, 264, 375, 11, 45, "Input",
  CellID->483228122],
-Cell[7851, 270, 622, 27, 40, "Output",
+Cell[8239, 277, 622, 27, 40, "Output",
  CellID->1915476533]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8510, 302, 119, 3, 27, "Input",
+Cell[8898, 309, 111, 3, 27, "Input",
  CellID->1782586861],
-Cell[8632, 307, 382, 16, 38, "Output",
+Cell[9012, 314, 382, 16, 38, "Output",
  CellID->600762965]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9051, 328, 1630, 44, 147, "Input",
+Cell[9431, 335, 1610, 44, 147, "Input",
  CellID->343925321],
-Cell[10684, 374, 3068, 131, 38, "Output",
+Cell[11044, 381, 3068, 131, 38, "Output",
  CellID->1928929144]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13789, 510, 119, 3, 27, "Input",
+Cell[14149, 517, 111, 3, 27, "Input",
  CellID->1092912350],
-Cell[13911, 515, 2177, 87, 38, "Output",
+Cell[14263, 522, 2177, 87, 41, "Output",
  CellID->1955736589]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16125, 607, 203, 6, 27, "Input",
+Cell[16477, 614, 195, 6, 27, "Input",
  CellID->654220270],
-Cell[16331, 615, 1950, 76, 38, "Output",
+Cell[16675, 622, 1950, 76, 41, "Output",
  CellID->359616923]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18318, 696, 204, 6, 27, "Input",
+Cell[18662, 703, 196, 6, 27, "Input",
  CellID->427410435],
-Cell[18525, 704, 1481, 59, 37, "Output",
+Cell[18861, 711, 1481, 59, 37, "Output",
  CellID->1386750926]
 }, Open  ]]
 }, Open  ]],
-Cell[20033, 767, 31, 0, 29, "SectionFooterSpacer"]
+Cell[20369, 774, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20101, 772, 270, 12, 31, "SeeAlsoSection",
+Cell[20437, 779, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[20374, 786, 729, 26, 55, "SeeAlso",
- CellID->644176972]
+Cell[20710, 793, 1416, 50, 71, "SeeAlso",
+ CellID->979184841]
 }, Open  ]],
-Cell[21118, 815, 23, 0, 40, "FooterCell"]
+Cell[22141, 846, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

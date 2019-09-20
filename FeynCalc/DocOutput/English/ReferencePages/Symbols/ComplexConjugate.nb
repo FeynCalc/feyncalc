@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     43072,       1592]
-NotebookOptionsPosition[     36707,       1392]
-NotebookOutlinePosition[     39398,       1465]
-CellTagsIndexPosition[     39276,       1459]
+NotebookDataLength[     43115,       1593]
+NotebookOptionsPosition[     36704,       1392]
+NotebookOutlinePosition[     39444,       1466]
+CellTagsIndexPosition[     39322,       1460]
 WindowTitle->ComplexConjugate
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ ComplexConjugate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46655], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45372], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ComplexConjugate", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1020818662],
+ CellID->535822132],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -187,7 +187,7 @@ Cell[BoxData[
     RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
     RowBox[{"FCRenameDummyIndices", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{391, 35},
+ ImageSize->{388, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[184]="]
@@ -212,7 +212,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->845668047],
+ CellID->629893677],
 
 Cell[CellGroupData[{
 
@@ -222,7 +222,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1193752455],
+ CellID->45723121],
 
 Cell[TextData[{
  ButtonBox["ComplexConjugate",
@@ -540,7 +540,7 @@ Cell[BoxData[
         FeynCalc`Momentum[$CellContext`k2 - $CellContext`p2]]],
       Editable->False]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{452, 95},
+ ImageSize->{467, 97},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]="]
@@ -572,7 +572,7 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 16},
+ ImageSize->{25, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]="]
@@ -592,7 +592,7 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 16},
+ ImageSize->{25, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -610,7 +610,7 @@ Cell[BoxData[
    OverscriptBox["\[Gamma]", "_"], 
    FormBox["5",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 19},
+ ImageSize->{23, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]="]
@@ -629,7 +629,7 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox["5",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{35, 19},
+ ImageSize->{34, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]="]
@@ -702,7 +702,7 @@ Cell[BoxData[
          TraditionalForm], ")"}],
        TraditionalForm]}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{293, 20},
+ ImageSize->{298, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[5]="]
@@ -751,7 +751,7 @@ Cell[BoxData[
        FormBox["k1",
         TraditionalForm], ")"}],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{277, 20},
+ ImageSize->{282, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[6]="]
@@ -794,7 +794,7 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{118, 19},
+ ImageSize->{116, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ComplexConjugate",
@@ -836,7 +836,7 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{118, 19},
+ ImageSize->{116, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ComplexConjugate",
@@ -959,7 +959,7 @@ Cell[BoxData[
       TraditionalForm]], "(", 
     FormBox["p2",
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{316, 19},
+ ImageSize->{312, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -1020,7 +1020,7 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{107, 22},
+ ImageSize->{110, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]="]
@@ -1077,7 +1077,7 @@ Cell[BoxData[
        FormBox["p2",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{269, 22},
+ ImageSize->{270, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]="]
@@ -1146,7 +1146,7 @@ Cell[BoxData[
        FormBox["p2",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{107, 22},
+ ImageSize->{110, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[5]="]
@@ -1215,7 +1215,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{149, 20},
+ ImageSize->{155, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]="]
@@ -1256,7 +1256,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{149, 20},
+ ImageSize->{155, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ComplexConjugate",
@@ -1313,7 +1313,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{160, 20},
+ ImageSize->{168, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]="]
@@ -1339,7 +1339,7 @@ Cell[BoxData[
      RowBox[{"DiracGamma", "[", "7", "]"}]}]}], ")"}], ".", 
   RowBox[{"DiracGamma", "[", 
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}]}]], "Output",
- ImageSize->{475, 50},
+ ImageSize->{485, 50},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]//StandardForm="]
@@ -1393,7 +1393,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"ComplexConjugate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1405,7 +1405,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 59.308298}", 
+   "built" -> "{2019, 9, 20, 21, 10, 53.254334}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1417,7 +1417,7 @@ input expression must be a proper matrix element. ", "synonyms" -> {},
     "windowtitle" -> "ComplexConjugate", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ComplexConjugate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1425,8 +1425,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1435,165 +1436,165 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6435, 199, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6434, 199, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->845668047]},
+   CellID->629893677]},
  "ComplexConjugate"->{
-  Cell[21640, 761, 201, 6, 27, "Input",
+  Cell[21637, 761, 201, 6, 27, "Input",
    CellTags->"ComplexConjugate",
    CellID->1865346448],
-  Cell[21844, 769, 749, 31, 40, "Output",
+  Cell[21841, 769, 749, 31, 40, "Output",
    CellTags->"ComplexConjugate"],
-  Cell[22630, 805, 144, 4, 27, "Input",
+  Cell[22627, 805, 144, 4, 27, "Input",
    CellTags->"ComplexConjugate",
    CellID->1483149425],
-  Cell[22777, 811, 749, 31, 40, "Output",
+  Cell[22774, 811, 749, 31, 40, "Output",
    CellTags->"ComplexConjugate"],
-  Cell[32639, 1225, 144, 4, 27, "Input",
+  Cell[32636, 1225, 144, 4, 27, "Input",
    CellTags->"ComplexConjugate",
    CellID->1414819233],
-  Cell[32786, 1231, 814, 31, 41, "Output",
+  Cell[32783, 1231, 814, 31, 42, "Output",
    CellTags->"ComplexConjugate"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 38588, 1436},
- {"ComplexConjugate", 38731, 1440}
+ {"PrimaryExamplesSection", 38634, 1437},
+ {"ComplexConjugate", 38777, 1441}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 3262, 78, 50, "AnchorBarGrid",
+Cell[588, 21, 3262, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3853, 101, 293, 11, 44, "ObjectNameGrid"],
+Cell[3853, 101, 293, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4171, 116, 492, 13, 83, "Usage",
+Cell[4171, 116, 492, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4688, 133, 739, 24, 31, "NotesSection",
+Cell[4688, 133, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1020818662],
-Cell[5430, 159, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5464, 161, 157, 3, 46, "Notes"],
-Cell[5624, 166, 116, 4, 31, "Notes"],
+ CellID->535822132],
+Cell[5429, 159, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5463, 161, 157, 3, 70, "Notes"],
+Cell[5623, 166, 116, 4, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[5765, 174, 100, 2, 27, "Input"],
-Cell[5868, 178, 506, 14, 56, "Output"]
+Cell[5764, 174, 100, 2, 70, "Input"],
+Cell[5867, 178, 506, 14, 56, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6435, 199, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6434, 199, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->845668047],
+ CellID->629893677],
 Cell[CellGroupData[{
-Cell[6847, 218, 196, 6, 25, "ExampleSection",
- CellID->1193752455],
-Cell[7046, 226, 525, 15, 47, "Notes"],
+Cell[6846, 218, 194, 6, 26, "ExampleSection",
+ CellID->45723121],
+Cell[7043, 226, 525, 15, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[7596, 245, 2050, 56, 189, "Input"],
-Cell[9649, 303, 6776, 242, 116, "Output"]
+Cell[7593, 245, 2050, 56, 189, "Input"],
+Cell[9646, 303, 6776, 242, 118, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16462, 550, 105, 2, 8, "ExampleDelimiter"],
-Cell[16570, 554, 202, 4, 47, "Notes"],
+Cell[16459, 550, 105, 2, 9, "ExampleDelimiter"],
+Cell[16567, 554, 202, 4, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[16797, 562, 82, 2, 27, "Input"],
-Cell[16882, 566, 295, 11, 37, "Output"]
+Cell[16794, 562, 82, 2, 27, "Input"],
+Cell[16879, 566, 295, 11, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17214, 582, 92, 2, 27, "Input"],
-Cell[17309, 586, 295, 11, 37, "Output"]
+Cell[17211, 582, 92, 2, 27, "Input"],
+Cell[17306, 586, 295, 11, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17641, 602, 78, 2, 27, "Input"],
-Cell[17722, 606, 255, 9, 40, "Output"]
+Cell[17638, 602, 78, 2, 27, "Input"],
+Cell[17719, 606, 255, 9, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18014, 620, 92, 2, 27, "Input"],
-Cell[18109, 624, 277, 10, 40, "Output"]
+Cell[18011, 620, 92, 2, 27, "Input"],
+Cell[18106, 624, 277, 10, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18423, 639, 604, 18, 63, "Input"],
-Cell[19030, 659, 1321, 48, 41, "Output"]
+Cell[18420, 639, 604, 18, 63, "Input"],
+Cell[19027, 659, 1321, 48, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20388, 712, 92, 2, 27, "Input"],
-Cell[20483, 716, 1120, 40, 41, "Output"]
+Cell[20385, 712, 92, 2, 27, "Input"],
+Cell[20480, 716, 1120, 40, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21640, 761, 201, 6, 27, "Input",
+Cell[21637, 761, 201, 6, 27, "Input",
  CellTags->"ComplexConjugate",
  CellID->1865346448],
-Cell[21844, 769, 749, 31, 40, "Output",
+Cell[21841, 769, 749, 31, 40, "Output",
  CellTags->"ComplexConjugate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22630, 805, 144, 4, 27, "Input",
+Cell[22627, 805, 144, 4, 27, "Input",
  CellTags->"ComplexConjugate",
  CellID->1483149425],
-Cell[22777, 811, 749, 31, 40, "Output",
+Cell[22774, 811, 749, 31, 40, "Output",
  CellTags->"ComplexConjugate"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23575, 848, 105, 2, 8, "ExampleDelimiter"],
-Cell[23683, 852, 238, 7, 31, "Notes"],
+Cell[23572, 848, 105, 2, 9, "ExampleDelimiter"],
+Cell[23680, 852, 238, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[23946, 863, 281, 8, 27, "Input"],
-Cell[24230, 873, 907, 37, 37, "Output"]
+Cell[23943, 863, 281, 8, 27, "Input"],
+Cell[24227, 873, 907, 37, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25174, 915, 92, 2, 27, "Input"],
-Cell[25269, 919, 1234, 45, 40, "Output"]
+Cell[25171, 915, 92, 2, 27, "Input"],
+Cell[25266, 919, 1234, 45, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26540, 969, 245, 8, 27, "Input"],
-Cell[26788, 979, 1104, 46, 43, "Output"]
+Cell[26537, 969, 245, 8, 27, "Input"],
+Cell[26785, 979, 1104, 46, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27929, 1030, 92, 2, 27, "Input"],
-Cell[28024, 1034, 1281, 48, 43, "Output"]
+Cell[27926, 1030, 92, 2, 27, "Input"],
+Cell[28021, 1034, 1281, 48, 43, "Output"]
 }, Open  ]],
-Cell[29320, 1085, 294, 9, 31, "Notes"],
+Cell[29317, 1085, 294, 9, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[29639, 1098, 377, 11, 45, "Input"],
-Cell[30019, 1111, 965, 40, 43, "Output"]
+Cell[29636, 1098, 377, 11, 45, "Input"],
+Cell[30016, 1111, 965, 40, 43, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31033, 1157, 105, 2, 8, "ExampleDelimiter"],
-Cell[31141, 1161, 171, 5, 31, "Notes"],
+Cell[31030, 1157, 105, 2, 9, "ExampleDelimiter"],
+Cell[31138, 1161, 171, 5, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[31337, 1170, 311, 10, 27, "Input"],
-Cell[31651, 1182, 951, 38, 41, "Output"]
+Cell[31334, 1170, 311, 10, 27, "Input"],
+Cell[31648, 1182, 951, 38, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32639, 1225, 144, 4, 27, "Input",
+Cell[32636, 1225, 144, 4, 27, "Input",
  CellTags->"ComplexConjugate",
  CellID->1414819233],
-Cell[32786, 1231, 814, 31, 41, "Output",
+Cell[32783, 1231, 814, 31, 42, "Output",
  CellTags->"ComplexConjugate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33637, 1267, 485, 15, 27, "Input"],
-Cell[34125, 1284, 867, 34, 41, "Output"]
+Cell[33634, 1267, 485, 15, 45, "Input"],
+Cell[34122, 1284, 867, 34, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35029, 1323, 84, 2, 27, "Input"],
-Cell[35116, 1327, 604, 17, 84, "Output"]
+Cell[35026, 1323, 84, 2, 27, "Input"],
+Cell[35113, 1327, 604, 17, 86, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[35759, 1349, 31, 0, 29, "SectionFooterSpacer"]
+Cell[35756, 1349, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35827, 1354, 270, 12, 31, "SeeAlsoSection",
+Cell[35824, 1354, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[36100, 1368, 565, 19, 55, "SeeAlso"]
+Cell[36097, 1368, 565, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[36680, 1390, 23, 0, 40, "FooterCell"]
+Cell[36677, 1390, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

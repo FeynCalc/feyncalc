@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9210,        295]
-NotebookOptionsPosition[      6043,        204]
-NotebookOutlinePosition[      8464,        269]
-CellTagsIndexPosition[      8333,        263]
+NotebookDataLength[      9259,        296]
+NotebookOptionsPosition[      6042,        204]
+NotebookOutlinePosition[      8514,        270]
+CellTagsIndexPosition[      8383,        264]
 WindowTitle->$FortranContinuationCharacter
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ FortranContinuationCharacter.html"], StandardForm]], "Input",
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$303715], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$292100], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/$FortranContinuationCharacter", ".html"]], 
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->391023313],
+ CellID->175531038],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1640085480],
+ CellID->460972616],
 
 Cell[CellGroupData[{
 
@@ -217,7 +217,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 55, 49.812982}", 
+   "built" -> "{2019, 9, 20, 21, 20, 23.067771}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -230,7 +230,7 @@ Write2.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "FeynCalc/ref/$FortranContinuationCharacter"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -238,8 +238,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -250,53 +251,53 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4434, 128, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->391023313]},
+   CellID->175531038]},
  "$FortranContinuationCharacter"->{
-  Cell[5067, 157, 143, 3, 27, "Input",
+  Cell[5066, 157, 143, 3, 27, "Input",
    CellTags->"$FortranContinuationCharacter",
    CellID->1374118326],
-  Cell[5213, 162, 239, 7, 35, "Output",
+  Cell[5212, 162, 239, 7, 35, "Output",
    CellTags->"$FortranContinuationCharacter",
    CellID->1216489439]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7934, 249},
- {"$FortranContinuationCharacter", 8090, 253}
+ {"PrimaryExamplesSection", 7984, 250},
+ {"$FortranContinuationCharacter", 8140, 254}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[601, 21, 3119, 77, 50, "AnchorBarGrid",
+Cell[601, 21, 3119, 77, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3723, 100, 306, 11, 44, "ObjectNameGrid"],
-Cell[4032, 113, 377, 11, 82, "Usage",
+Cell[3723, 100, 306, 11, 45, "ObjectNameGrid"],
+Cell[4032, 113, 377, 11, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4434, 128, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->391023313],
+ CellID->175531038],
 Cell[CellGroupData[{
-Cell[4846, 147, 196, 6, 25, "ExampleSection",
- CellID->1640085480],
+Cell[4846, 147, 195, 6, 26, "ExampleSection",
+ CellID->460972616],
 Cell[CellGroupData[{
-Cell[5067, 157, 143, 3, 27, "Input",
+Cell[5066, 157, 143, 3, 27, "Input",
  CellTags->"$FortranContinuationCharacter",
  CellID->1374118326],
-Cell[5213, 162, 239, 7, 35, "Output",
+Cell[5212, 162, 239, 7, 35, "Output",
  CellTags->"$FortranContinuationCharacter",
  CellID->1216489439]
 }, Open  ]]
 }, Open  ]],
-Cell[5479, 173, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5478, 173, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5547, 178, 270, 12, 31, "SeeAlsoSection",
+Cell[5546, 178, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5820, 192, 181, 7, 54, "SeeAlso"]
+Cell[5819, 192, 181, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6016, 202, 23, 0, 40, "FooterCell"]
+Cell[6015, 202, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

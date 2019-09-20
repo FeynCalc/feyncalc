@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8779,        265]
+NotebookDataLength[      8773,        265]
 NotebookOptionsPosition[      6460,        200]
-NotebookOutlinePosition[      8325,        249]
-CellTagsIndexPosition[      8282,        246]
+NotebookOutlinePosition[      8319,        249]
+CellTagsIndexPosition[      8276,        246]
 WindowTitle->CouplingConstant
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ CouplingConstant.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49489], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48086], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CouplingConstant", ".html"]], None}]}]},
@@ -213,7 +213,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 46, 6.693076}", 
+   "built" -> "{2019, 9, 20, 21, 11, 0.455045}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -225,7 +225,7 @@ CovariantD and FieldStrength.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "CouplingConstant", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/CouplingConstant"}},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -234,7 +234,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21758,        786]
+NotebookDataLength[     21810,        787]
 NotebookOptionsPosition[     15162,        581]
-NotebookOutlinePosition[     19056,        690]
-CellTagsIndexPosition[     18937,        684]
+NotebookOutlinePosition[     19107,        691]
+CellTagsIndexPosition[     18988,        685]
 WindowTitle->ChangeDimension
 WindowFrame->Normal*)
 
@@ -85,7 +85,7 @@ ChangeDimension.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39671], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38692], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ChangeDimension", ".html"]], None}]}]},
@@ -147,7 +147,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->825506889],
+ CellID->878825081],
 
 Cell[CellGroupData[{
 
@@ -157,7 +157,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1571653526],
+ CellID->1315731842],
 
 Cell["\<\
 Remember that LorentzIndex[mu, 4] is simplified to LorentzIndex[mu] and \
@@ -185,7 +185,7 @@ Cell[BoxData[
     OverscriptBox[
      FormBox["p",
       TraditionalForm], "_"]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{46, 16},
+ ImageSize->{49, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -209,7 +209,7 @@ Cell[BoxData[
      TraditionalForm], ",", 
     FormBox["p",
      TraditionalForm]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{45, 16},
+ ImageSize->{47, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -231,7 +231,7 @@ Cell[BoxData[
     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}]}], "}"}]], "Output",
- ImageSize->{288, 15},
+ ImageSize->{295, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -258,7 +258,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "}"}]], "Output",
- ImageSize->{244, 15},
+ ImageSize->{249, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -351,7 +351,7 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]}]],
       TraditionalForm]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{218, 16},
+ ImageSize->{225, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -436,7 +436,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{51, 14},
+ ImageSize->{53, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -474,7 +474,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{50, 14},
+ ImageSize->{52, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -500,7 +500,7 @@ Cell[BoxData[
     RowBox[{"2", "-", "D"}], ")"}], " ", 
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
- ImageSize->{183, 16},
+ ImageSize->{181, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -522,7 +522,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "24"}], TraditionalForm]], "Output",
- ImageSize->{30, 14},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -594,7 +594,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 43.161744}", 
+   "built" -> "{2019, 9, 20, 21, 10, 36.809637}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -607,7 +607,7 @@ matrices).", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "ChangeDimension", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ChangeDimension"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -615,8 +615,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, 21}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -627,7 +628,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4739, 134, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->825506889]},
+   CellID->878825081]},
  "ChangeDimension"->{
   Cell[5565, 169, 231, 7, 27, "Input",
    CellTags->"ChangeDimension",
@@ -642,17 +643,17 @@ CellTagsIndex->{
   Cell[6711, 220, 135, 4, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->1689591331],
-  Cell[6849, 226, 358, 11, 49, "Output",
+  Cell[6849, 226, 358, 11, 51, "Output",
    CellTags->"ChangeDimension"],
   Cell[7337, 246, 219, 7, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->898970803],
-  Cell[7559, 255, 308, 9, 49, "Output",
+  Cell[7559, 255, 308, 9, 51, "Output",
    CellTags->"ChangeDimension"],
   Cell[7983, 271, 500, 16, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->931498160],
-  Cell[8486, 289, 1707, 68, 37, "Output",
+  Cell[8486, 289, 1707, 68, 40, "Output",
    CellTags->"ChangeDimension"],
   Cell[10230, 362, 164, 5, 27, "Input",
    CellTags->"ChangeDimension",
@@ -683,25 +684,25 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17073, 626},
- {"ChangeDimension", 17215, 630}
+ {"PrimaryExamplesSection", 17124, 627},
+ {"ChangeDimension", 17266, 631}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 3314, 80, 50, "AnchorBarGrid",
+Cell[587, 21, 3314, 80, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3904, 103, 292, 11, 44, "ObjectNameGrid"],
-Cell[4199, 116, 515, 14, 99, "Usage",
+Cell[3904, 103, 292, 11, 45, "ObjectNameGrid"],
+Cell[4199, 116, 515, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4739, 134, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->825506889],
+ CellID->878825081],
 Cell[CellGroupData[{
-Cell[5151, 153, 196, 6, 25, "ExampleSection",
- CellID->1571653526],
-Cell[5350, 161, 190, 4, 47, "Notes"],
+Cell[5151, 153, 196, 6, 26, "ExampleSection",
+ CellID->1315731842],
+Cell[5350, 161, 190, 4, 49, "Notes"],
 Cell[CellGroupData[{
 Cell[5565, 169, 231, 7, 27, "Input",
  CellTags->"ChangeDimension",
@@ -720,23 +721,23 @@ Cell[CellGroupData[{
 Cell[6711, 220, 135, 4, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->1689591331],
-Cell[6849, 226, 358, 11, 49, "Output",
+Cell[6849, 226, 358, 11, 51, "Output",
  CellTags->"ChangeDimension"]
 }, Open  ]],
-Cell[7222, 240, 90, 2, 31, "Notes"],
+Cell[7222, 240, 90, 2, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[7337, 246, 219, 7, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->898970803],
-Cell[7559, 255, 308, 9, 49, "Output",
+Cell[7559, 255, 308, 9, 51, "Output",
  CellTags->"ChangeDimension"]
 }, Open  ]],
-Cell[7882, 267, 76, 0, 31, "Notes"],
+Cell[7882, 267, 76, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[7983, 271, 500, 16, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->931498160],
-Cell[8486, 289, 1707, 68, 37, "Output",
+Cell[8486, 289, 1707, 68, 40, "Output",
  CellTags->"ChangeDimension"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -750,7 +751,7 @@ Cell[CellGroupData[{
 Cell[10733, 384, 182, 5, 27, "Input"],
 Cell[10918, 391, 269, 9, 37, "Output"]
 }, Open  ]],
-Cell[11202, 403, 103, 2, 31, "Notes"],
+Cell[11202, 403, 103, 2, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[11330, 409, 195, 6, 27, "Input",
  CellTags->"ChangeDimension",
@@ -785,9 +786,9 @@ Cell[14112, 532, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[14180, 537, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[14453, 551, 667, 25, 55, "SeeAlso"]
+Cell[14453, 551, 667, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[15135, 579, 23, 0, 40, "FooterCell"]
+Cell[15135, 579, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

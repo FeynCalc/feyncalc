@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10116,        328]
-NotebookOptionsPosition[      7010,        239]
-NotebookOutlinePosition[      9413,        303]
-CellTagsIndexPosition[      9294,        297]
+NotebookDataLength[     10161,        329]
+NotebookOptionsPosition[      7008,        239]
+NotebookOutlinePosition[      9459,        304]
+CellTagsIndexPosition[      9340,        298]
 WindowTitle->PartialFourVector
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ PartialFourVector.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$206983], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$200086], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PartialFourVector", ".html"]], None}]}]},
@@ -144,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1550654444],
+ CellID->315321694],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1064619434],
+ CellID->940437575],
 
 Cell[CellGroupData[{
 
@@ -192,7 +192,7 @@ Cell[BoxData[
      FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{79, 22},
+ ImageSize->{86, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PartialFourVector",
@@ -240,7 +240,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"PartialFourVector",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -252,7 +252,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 52, 1.926565}", 
+   "built" -> "{2019, 9, 20, 21, 16, 49.473603}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -265,7 +265,7 @@ derivative of exp w.r.t. p(mu). PartialFourVector[exp, FV[p, mu], FV[p,nu], \
     "PartialFourVector", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/PartialFourVector"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -273,8 +273,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -283,53 +284,53 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4628, 131, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4628, 131, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1550654444]},
+   CellID->315321694]},
  "PartialFourVector"->{
-  Cell[5262, 160, 383, 12, 40, "Input",
+  Cell[5260, 160, 383, 12, 40, "Input",
    CellTags->"PartialFourVector",
    CellID->877301924],
-  Cell[5648, 174, 618, 24, 43, "Output",
+  Cell[5646, 174, 618, 24, 43, "Output",
    CellTags->"PartialFourVector"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8952, 284},
- {"PartialFourVector", 9097, 288}
+ {"PrimaryExamplesSection", 8999, 285},
+ {"PartialFourVector", 9143, 289}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 3117, 75, 50, "AnchorBarGrid",
+Cell[589, 21, 3117, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3709, 98, 294, 11, 44, "ObjectNameGrid"],
-Cell[4006, 111, 597, 16, 99, "Usage",
+Cell[3709, 98, 294, 11, 45, "ObjectNameGrid"],
+Cell[4006, 111, 597, 16, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4628, 131, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4628, 131, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1550654444],
+ CellID->315321694],
 Cell[CellGroupData[{
-Cell[5041, 150, 196, 6, 25, "ExampleSection",
- CellID->1064619434],
+Cell[5040, 150, 195, 6, 26, "ExampleSection",
+ CellID->940437575],
 Cell[CellGroupData[{
-Cell[5262, 160, 383, 12, 40, "Input",
+Cell[5260, 160, 383, 12, 40, "Input",
  CellTags->"PartialFourVector",
  CellID->877301924],
-Cell[5648, 174, 618, 24, 43, "Output",
+Cell[5646, 174, 618, 24, 43, "Output",
  CellTags->"PartialFourVector"]
 }, Open  ]]
 }, Open  ]],
-Cell[6293, 202, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6291, 202, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6361, 207, 270, 12, 31, "SeeAlsoSection",
+Cell[6359, 207, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6634, 221, 334, 13, 55, "SeeAlso"]
+Cell[6632, 221, 334, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6983, 237, 23, 0, 40, "FooterCell"]
+Cell[6981, 237, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

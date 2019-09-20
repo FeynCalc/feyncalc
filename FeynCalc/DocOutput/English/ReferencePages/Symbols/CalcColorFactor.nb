@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11142,        377]
-NotebookOptionsPosition[      7801,        276]
-NotebookOutlinePosition[     10068,        339]
-CellTagsIndexPosition[      9951,        333]
+NotebookDataLength[     11187,        378]
+NotebookOptionsPosition[      7800,        276]
+NotebookOutlinePosition[     10114,        340]
+CellTagsIndexPosition[      9997,        334]
 WindowTitle->CalcColorFactor
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ CalcColorFactor.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30816], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30217], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CalcColorFactor", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1327488269],
+ CellID->1193752689],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -174,7 +174,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{156, 16},
+ ImageSize->{152, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[41]="]
@@ -199,7 +199,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1967542881],
+ CellID->264473650],
 
 Cell[CellGroupData[{
 
@@ -209,7 +209,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1194729753],
+ CellID->1431186065],
 
 Cell[CellGroupData[{
 
@@ -238,7 +238,7 @@ Cell[BoxData[
       FormBox["d",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{61, 19},
+ ImageSize->{63, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CalcColorFactor",
@@ -277,7 +277,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"CalcColorFactor",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -289,7 +289,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 21.824484}", 
+   "built" -> "{2019, 9, 20, 21, 10, 15.441695}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -301,7 +301,7 @@ TaggingRules->{
     "Symbol", "uri" -> "FeynCalc/ref/CalcColorFactor"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -309,8 +309,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -319,66 +320,66 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5824, 186, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5824, 186, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1967542881]},
+   CellID->264473650]},
  "CalcColorFactor"->{
-  Cell[6458, 215, 299, 9, 27, "Input",
+  Cell[6457, 215, 299, 9, 27, "Input",
    CellTags->"CalcColorFactor",
    CellID->1491586567],
-  Cell[6760, 226, 450, 18, 40, "Output",
+  Cell[6759, 226, 450, 18, 40, "Output",
    CellTags->"CalcColorFactor"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9615, 320},
- {"CalcColorFactor", 9758, 324}
+ {"PrimaryExamplesSection", 9662, 321},
+ {"CalcColorFactor", 9804, 325}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 3036, 74, 50, "AnchorBarGrid",
+Cell[587, 21, 3036, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3626, 97, 292, 11, 44, "ObjectNameGrid"],
+Cell[3626, 97, 292, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3943, 112, 428, 13, 83, "Usage",
+Cell[3943, 112, 428, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4396, 129, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1327488269],
-Cell[5138, 155, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5172, 157, 229, 6, 31, "Notes"],
+ CellID->1193752689],
+Cell[5138, 155, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5172, 157, 229, 6, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[5426, 167, 98, 2, 27, "Input"],
-Cell[5527, 171, 236, 8, 37, "Output"]
+Cell[5426, 167, 98, 2, 70, "Input"],
+Cell[5527, 171, 236, 8, 35, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5824, 186, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5824, 186, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1967542881],
+ CellID->264473650],
 Cell[CellGroupData[{
-Cell[6237, 205, 196, 6, 25, "ExampleSection",
- CellID->1194729753],
+Cell[6236, 205, 196, 6, 26, "ExampleSection",
+ CellID->1431186065],
 Cell[CellGroupData[{
-Cell[6458, 215, 299, 9, 27, "Input",
+Cell[6457, 215, 299, 9, 27, "Input",
  CellTags->"CalcColorFactor",
  CellID->1491586567],
-Cell[6760, 226, 450, 18, 40, "Output",
+Cell[6759, 226, 450, 18, 40, "Output",
  CellTags->"CalcColorFactor"]
 }, Open  ]]
 }, Open  ]],
-Cell[7237, 248, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7236, 248, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7305, 253, 270, 12, 31, "SeeAlsoSection",
+Cell[7304, 253, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7578, 267, 181, 4, 55, "SeeAlso"]
+Cell[7577, 267, 181, 4, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7774, 274, 23, 0, 40, "FooterCell"]
+Cell[7773, 274, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

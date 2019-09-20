@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18350,        633]
+NotebookDataLength[     18401,        634]
 NotebookOptionsPosition[     13307,        483]
-NotebookOutlinePosition[     16661,        573]
-CellTagsIndexPosition[     16540,        567]
+NotebookOutlinePosition[     16712,        574]
+CellTagsIndexPosition[     16591,        568]
 WindowTitle->LeftRightPartialD
 WindowFrame->Normal*)
 
@@ -89,7 +89,7 @@ LeftRightPartialD.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$183834], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$177975], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/LeftRightPartialD", ".html"]], None}]}]},
@@ -167,7 +167,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->447255257],
+ CellID->1961872571],
 
 Cell[CellGroupData[{
 
@@ -177,7 +177,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1368454338],
+ CellID->673206012],
 
 Cell[CellGroupData[{
 
@@ -195,7 +195,7 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{22, 23},
+ ImageSize->{24, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
@@ -228,7 +228,7 @@ Cell[BoxData[
        FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm]]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{77, 35},
+ ImageSize->{83, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
@@ -261,7 +261,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Nu]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{46, 23},
+ ImageSize->{49, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
@@ -308,7 +308,7 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\[Nu]",
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{139, 35},
+ ImageSize->{146, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
@@ -349,7 +349,7 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Rho]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{70, 23},
+ ImageSize->{74, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
@@ -412,7 +412,7 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\[Rho]",
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{215, 35},
+ ImageSize->{228, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
@@ -496,7 +496,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 51, 11.969025}", 
+   "built" -> "{2019, 9, 20, 21, 16, 1.075375}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -510,7 +510,7 @@ the left and right. ExplicitPartialD[LeftRightPartialD[\\[Mu]]] gives 1/2 \
     "windowtitle" -> "LeftRightPartialD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/LeftRightPartialD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -518,8 +518,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -528,14 +529,14 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5425, 154, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5425, 154, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->447255257]},
+   CellID->1961872571]},
  "LeftRightPartialD"->{
   Cell[6058, 183, 149, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->538126232],
-  Cell[6210, 189, 344, 12, 44, "Output",
+  Cell[6210, 189, 344, 12, 45, "Output",
    CellTags->"LeftRightPartialD"],
   Cell[6591, 206, 144, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
@@ -545,7 +546,7 @@ CellTagsIndex->{
   Cell[7386, 239, 281, 8, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->1906170176],
-  Cell[7670, 249, 472, 18, 44, "Output",
+  Cell[7670, 249, 472, 18, 45, "Output",
    CellTags->"LeftRightPartialD"],
   Cell[8179, 272, 142, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
@@ -555,7 +556,7 @@ CellTagsIndex->{
   Cell[9292, 319, 399, 11, 45, "Input",
    CellTags->"LeftRightPartialD",
    CellID->146402203],
-  Cell[9694, 332, 582, 23, 44, "Output",
+  Cell[9694, 332, 582, 23, 45, "Output",
    CellTags->"LeftRightPartialD"],
   Cell[10313, 360, 143, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
@@ -566,29 +567,29 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15334, 529},
- {"LeftRightPartialD", 15478, 533}
+ {"PrimaryExamplesSection", 15384, 530},
+ {"LeftRightPartialD", 15529, 534}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 3579, 84, 50, "AnchorBarGrid",
+Cell[589, 21, 3579, 84, 53, "AnchorBarGrid",
  CellID->1],
-Cell[4171, 107, 294, 11, 44, "ObjectNameGrid"],
-Cell[4468, 120, 932, 30, 109, "Usage",
+Cell[4171, 107, 294, 11, 45, "ObjectNameGrid"],
+Cell[4468, 120, 932, 30, 113, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5425, 154, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5425, 154, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->447255257],
+ CellID->1961872571],
 Cell[CellGroupData[{
-Cell[5837, 173, 196, 6, 25, "ExampleSection",
- CellID->1368454338],
+Cell[5838, 173, 195, 6, 26, "ExampleSection",
+ CellID->673206012],
 Cell[CellGroupData[{
 Cell[6058, 183, 149, 4, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->538126232],
-Cell[6210, 189, 344, 12, 44, "Output",
+Cell[6210, 189, 344, 12, 45, "Output",
  CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -602,7 +603,7 @@ Cell[CellGroupData[{
 Cell[7386, 239, 281, 8, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->1906170176],
-Cell[7670, 249, 472, 18, 44, "Output",
+Cell[7670, 249, 472, 18, 45, "Output",
  CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -616,7 +617,7 @@ Cell[CellGroupData[{
 Cell[9292, 319, 399, 11, 45, "Input",
  CellTags->"LeftRightPartialD",
  CellID->146402203],
-Cell[9694, 332, 582, 23, 44, "Output",
+Cell[9694, 332, 582, 23, 45, "Output",
  CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -632,9 +633,9 @@ Cell[11837, 422, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[11905, 427, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12178, 441, 1087, 37, 69, "SeeAlso"]
+Cell[12178, 441, 1087, 37, 56, "SeeAlso"]
 }, Open  ]],
-Cell[13280, 481, 23, 0, 40, "FooterCell"]
+Cell[13280, 481, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     36650,       1305]
-NotebookOptionsPosition[     31321,       1151]
-NotebookOutlinePosition[     34714,       1239]
-CellTagsIndexPosition[     34587,       1233]
+NotebookDataLength[     36704,       1306]
+NotebookOptionsPosition[     31322,       1151]
+NotebookOutlinePosition[     34767,       1240]
+CellTagsIndexPosition[     34640,       1234]
 WindowTitle->BackgroundGluonVertex
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ BackgroundGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28959], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28442], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/BackgroundGluonVertex", ".html"]], None}]}]},
@@ -180,7 +180,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1695429140],
+ CellID->1205746467],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -238,7 +238,7 @@ Cell[BoxData[
     RowBox[{"CouplingConstant", "\[Rule]", 
      SubscriptBox["g", "s"]}], ",", 
     RowBox[{"Gauge", "\[Rule]", "1"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{333, 16},
+ ImageSize->{334, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"BackgroundGluonVertex",
@@ -265,7 +265,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->418627153],
+ CellID->1429953978],
 
 Cell[CellGroupData[{
 
@@ -275,7 +275,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->260713206],
+ CellID->255042391],
 
 Cell[CellGroupData[{
 
@@ -389,7 +389,7 @@ Cell[BoxData[
         FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{457, 21},
+ ImageSize->{468, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"BackgroundGluonVertex",
@@ -688,7 +688,7 @@ Cell[BoxData[
              TraditionalForm],
             TraditionalForm]}]]}]}], ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{497, 69},
+ ImageSize->{500, 72},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"BackgroundGluonVertex",
@@ -810,7 +810,7 @@ Cell[BoxData[
         FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{465, 35},
+ ImageSize->{482, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"BackgroundGluonVertex",
@@ -1113,7 +1113,7 @@ Cell[BoxData[
              TraditionalForm],
             TraditionalForm]}]]}]}], ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
- ImageSize->{516, 145},
+ ImageSize->{518, 131},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"BackgroundGluonVertex",
@@ -1164,7 +1164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 45, 17.766561}", 
+   "built" -> "{2019, 9, 20, 21, 10, 11.373433}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1180,7 +1180,7 @@ background fields.", "synonyms" -> {}, "tabletags" -> {}, "title" ->
     "BackgroundGluonVertex", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/BackgroundGluonVertex"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1188,8 +1188,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1198,63 +1199,63 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "BackgroundGluonVertex"->{
-  Cell[7325, 226, 159, 4, 27, "Input",
+  Cell[7325, 226, 159, 4, 70, "Input",
    CellTags->"BackgroundGluonVertex",
    CellID->236798928],
   Cell[7487, 232, 425, 13, 37, "Output",
    CellTags->"BackgroundGluonVertex",
    CellID->114339715],
-  Cell[8605, 281, 380, 11, 27, "Input",
+  Cell[8606, 281, 380, 11, 27, "Input",
    CellTags->"BackgroundGluonVertex",
    CellID->1056949570],
-  Cell[8988, 294, 2501, 101, 42, "Output",
+  Cell[8989, 294, 2501, 101, 43, "Output",
    CellTags->"BackgroundGluonVertex"],
-  Cell[11526, 400, 455, 13, 27, "Input",
+  Cell[11527, 400, 455, 13, 27, "Input",
    CellTags->"BackgroundGluonVertex",
    CellID->196355292],
-  Cell[11984, 415, 7497, 279, 90, "Output",
+  Cell[11985, 415, 7497, 279, 93, "Output",
    CellTags->"BackgroundGluonVertex"],
-  Cell[19518, 699, 430, 12, 27, "Input",
+  Cell[19519, 699, 430, 12, 27, "Input",
    CellTags->"BackgroundGluonVertex",
    CellID->410624714],
-  Cell[19951, 713, 2578, 103, 56, "Output",
+  Cell[19952, 713, 2578, 103, 56, "Output",
    CellTags->"BackgroundGluonVertex"],
-  Cell[22566, 821, 507, 14, 45, "Input",
+  Cell[22567, 821, 507, 14, 45, "Input",
    CellTags->"BackgroundGluonVertex",
    CellID->1007521255],
-  Cell[23076, 837, 7654, 282, 166, "Output",
+  Cell[23077, 837, 7654, 282, 152, "Output",
    CellTags->"BackgroundGluonVertex"]},
  "PrimaryExamplesSection"->{
-  Cell[7973, 252, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7973, 252, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->418627153]}
+   CellID->1429953978]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"BackgroundGluonVertex", 33471, 1199},
- {"PrimaryExamplesSection", 34444, 1226}
+ {"BackgroundGluonVertex", 33523, 1200},
+ {"PrimaryExamplesSection", 34496, 1227}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 3060, 74, 50, "AnchorBarGrid",
+Cell[593, 21, 3060, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3656, 97, 298, 11, 44, "ObjectNameGrid"],
+Cell[3656, 97, 298, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[3979, 112, 1544, 42, 160, "Usage",
+Cell[3979, 112, 1544, 42, 165, "Usage",
  CellID->2010081510],
 Cell[CellGroupData[{
 Cell[5548, 158, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1695429140],
-Cell[6290, 184, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[6324, 186, 537, 19, 47, "Notes",
+ CellID->1205746467],
+Cell[6290, 184, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6324, 186, 537, 19, 70, "Notes",
  CellID->1067943069],
-Cell[6864, 207, 178, 5, 47, "Notes"],
-Cell[7045, 214, 255, 8, 46, "Notes"],
+Cell[6864, 207, 178, 5, 70, "Notes"],
+Cell[7045, 214, 255, 8, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[7325, 226, 159, 4, 27, "Input",
+Cell[7325, 226, 159, 4, 70, "Input",
  CellTags->"BackgroundGluonVertex",
  CellID->236798928],
 Cell[7487, 232, 425, 13, 37, "Output",
@@ -1264,49 +1265,49 @@ Cell[7487, 232, 425, 13, 37, "Output",
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7973, 252, 387, 15, 31, "PrimaryExamplesSection",
+Cell[7973, 252, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->418627153],
+ CellID->1429953978],
 Cell[CellGroupData[{
-Cell[8385, 271, 195, 6, 25, "ExampleSection",
- CellID->260713206],
+Cell[8386, 271, 195, 6, 26, "ExampleSection",
+ CellID->255042391],
 Cell[CellGroupData[{
-Cell[8605, 281, 380, 11, 27, "Input",
+Cell[8606, 281, 380, 11, 27, "Input",
  CellTags->"BackgroundGluonVertex",
  CellID->1056949570],
-Cell[8988, 294, 2501, 101, 42, "Output",
+Cell[8989, 294, 2501, 101, 43, "Output",
  CellTags->"BackgroundGluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11526, 400, 455, 13, 27, "Input",
+Cell[11527, 400, 455, 13, 27, "Input",
  CellTags->"BackgroundGluonVertex",
  CellID->196355292],
-Cell[11984, 415, 7497, 279, 90, "Output",
+Cell[11985, 415, 7497, 279, 93, "Output",
  CellTags->"BackgroundGluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19518, 699, 430, 12, 27, "Input",
+Cell[19519, 699, 430, 12, 27, "Input",
  CellTags->"BackgroundGluonVertex",
  CellID->410624714],
-Cell[19951, 713, 2578, 103, 56, "Output",
+Cell[19952, 713, 2578, 103, 56, "Output",
  CellTags->"BackgroundGluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22566, 821, 507, 14, 45, "Input",
+Cell[22567, 821, 507, 14, 45, "Input",
  CellTags->"BackgroundGluonVertex",
  CellID->1007521255],
-Cell[23076, 837, 7654, 282, 166, "Output",
+Cell[23077, 837, 7654, 282, 152, "Output",
  CellTags->"BackgroundGluonVertex"]
 }, Open  ]]
 }, Open  ]],
-Cell[30757, 1123, 31, 0, 29, "SectionFooterSpacer"]
+Cell[30758, 1123, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30825, 1128, 270, 12, 31, "SeeAlsoSection",
+Cell[30826, 1128, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[31098, 1142, 181, 4, 54, "SeeAlso"]
+Cell[31099, 1142, 181, 4, 56, "SeeAlso"]
 }, Open  ]],
-Cell[31294, 1149, 23, 0, 40, "FooterCell"]
+Cell[31295, 1149, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

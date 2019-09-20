@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14104,        496]
+NotebookDataLength[     14097,        496]
 NotebookOptionsPosition[     10943,        401]
-NotebookOutlinePosition[     13011,        457]
-CellTagsIndexPosition[     12926,        452]
+NotebookOutlinePosition[     13005,        457]
+CellTagsIndexPosition[     12920,        452]
 WindowTitle->EpsChisholm
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ EpsChisholm.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78247], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$77043], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/EpsChisholm", ".html"]], None}]}]},
@@ -153,7 +153,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->388464304],
+ CellID->218780133],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -173,7 +173,7 @@ Cell[BoxData[
     RowBox[{"FCJoinDOTs", "\[Rule]", "True"}], ",", 
     RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{432, 35},
+ ImageSize->{416, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[54]="]
@@ -198,7 +198,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1184313521],
+ CellID->1184677106],
 
 Cell[CellGroupData[{
 
@@ -208,7 +208,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2044288600],
+ CellID->785918229],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{99, 19},
+ ImageSize->{101, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]="]
@@ -349,7 +349,7 @@ Cell[BoxData[
        FormBox["\[Rho]",
         TraditionalForm],
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{329, 16},
+ ImageSize->{341, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]="]
@@ -414,7 +414,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 3, 29, 17, 47, 13.648937}", 
+   "built" -> "{2019, 9, 20, 21, 12, 10.030628}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -426,7 +426,7 @@ contracted with a Levi-Civita tensor", "synonyms" -> {}, "tabletags" -> {},
     "EpsChisholm", "type" -> "Symbol", "uri" -> "FeynCalc/ref/EpsChisholm"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -435,7 +435,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -446,26 +446,26 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5968, 185, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1184313521]}
+   CellID->1184677106]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12782, 445}
+ {"PrimaryExamplesSection", 12776, 445}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 3188, 77, 50, "AnchorBarGrid",
+Cell[583, 21, 3188, 77, 53, "AnchorBarGrid",
  CellID->1],
-Cell[3774, 100, 288, 11, 44, "ObjectNameGrid"],
+Cell[3774, 100, 288, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4087, 115, 424, 12, 83, "Usage",
+Cell[4087, 115, 424, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4536, 131, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->388464304],
+ CellID->218780133],
 Cell[5277, 157, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5333, 161, 94, 2, 27, "Input"],
@@ -476,13 +476,13 @@ Cell[5430, 165, 477, 13, 56, "Output"]
 Cell[CellGroupData[{
 Cell[5968, 185, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1184313521],
+ CellID->1184677106],
 Cell[CellGroupData[{
-Cell[6381, 204, 196, 6, 25, "ExampleSection",
- CellID->2044288600],
+Cell[6381, 204, 195, 6, 26, "ExampleSection",
+ CellID->785918229],
 Cell[CellGroupData[{
-Cell[6602, 214, 220, 6, 27, "Input"],
-Cell[6825, 222, 1010, 42, 40, "Output"]
+Cell[6601, 214, 220, 6, 27, "Input"],
+Cell[6824, 222, 1011, 42, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7872, 269, 87, 2, 27, "Input"],
@@ -494,10 +494,10 @@ Cell[10050, 358, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[10118, 363, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10391, 377, 510, 19, 55, "SeeAlso",
+Cell[10391, 377, 510, 19, 56, "SeeAlso",
  CellID->655647701]
 }, Open  ]],
-Cell[10916, 399, 23, 0, 40, "FooterCell"]
+Cell[10916, 399, 23, 0, 41, "FooterCell"]
 }
 ]
 *)
