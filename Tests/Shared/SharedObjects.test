@@ -270,43 +270,34 @@ Tests`Shared`fcstSharedObjectsUpValues = {
 {"fcstSharedObjectsUpValues-ID89", "UpValues[Zeta10]", "{HoldPattern[Conjugate[Zeta10]] :> Zeta10}"}
 }
 
-
-
-
-Tests`Shared`fcstSharedObjectsMessages = {
-{"fcstSharedObjectsMessages-I1", "DiracGamma[5, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, D]]}"},
-{"fcstSharedObjectsMessages-I2", "DiracGamma[6, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[6, D]]}"},
-{"fcstSharedObjectsMessages-I3", "DiracGamma[7, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[7, D]]}"},
-{"fcstSharedObjectsMessages-I4", "GAD[5]", "Null", "{Message[DiracGamma::gamma5fail, GAD[5]]}"},
-{"fcstSharedObjectsMessages-I5", "GAD[6]", "Null", "{Message[DiracGamma::gamma5fail, GAD[6]]}"},
-{"fcstSharedObjectsMessages-I6", "GAD[7]", "Null", "{Message[DiracGamma::gamma5fail, GAD[7]]}"},
-{"fcstSharedObjectsMessages-I7", "DiracMatrix[5, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, Dimension -> D]]}"},
-{"fcstSharedObjectsMessages-I8", "DiracMatrix[6, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[6, Dimension -> D]]}"},
-{"fcstSharedObjectsMessages-I9", "DiracMatrix[7, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[7, Dimension -> D]]}"}
-}
-
 Tests`Shared`fcstSharedObjectsCheckAbort = {
-{"fcstSharedObjectsCheckAbort-ID1", "CheckAbort[DiracGamma[2],True]", "True", "{Message[DiracGamma::noint, 2]}"},
-{"fcstSharedObjectsCheckAbort-ID2", "CheckAbort[DiracGamma[1.2],True]", "True", "{Message[DiracGamma::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID2.1", "CheckAbort[DiracGamma[a,b,c],True]", "True", "{Message[DiracGamma::argrx, DiracGamma[{a, b, c}], 3, 1 or 2]}"},
-{"fcstSharedObjectsCheckAbort-ID3", "CheckAbort[GA[1.2],True]", "True", "{Message[GA::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID4", "CheckAbort[GA[8],True]", "True", "{Message[GA::noint, 8]}"},
-{"fcstSharedObjectsCheckAbort-ID5", "CheckAbort[GAD[1.2],True]", "True", "{Message[GAD::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID6", "CheckAbort[GAD[8],True]", "True", "{Message[GAD::noint, 8]}"},
-{"fcstSharedObjectsCheckAbort-ID7", "CheckAbort[GAE[1.2],True]", "True", "{Message[GAE::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID8", "CheckAbort[GAE[8],True]", "True", "{Message[GAE::noint, 8]}"},
-{"fcstSharedObjectsCheckAbort-ID9", "CheckAbort[GS[1.2],True]", "True", "{Message[GS::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID10", "CheckAbort[GS[2],True]", "True", "{Message[GS::noint, 2]}"},
-{"fcstSharedObjectsCheckAbort-ID11", "CheckAbort[GSD[1.2],True]", "True", "{Message[GSD::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID12", "CheckAbort[GSD[2],True]", "True", "{Message[GSD::noint, 2]}"},
-{"fcstSharedObjectsCheckAbort-ID13", "CheckAbort[GSE[1.2],True]", "True", "{Message[GSE::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID14", "CheckAbort[GSE[2],True]", "True", "{Message[GSE::noint, 2]}"},
-{"fcstSharedObjectsCheckAbort-ID15", "CheckAbort[DiracMatrix[1.2],True]", "True", "{Message[DiracMatrix::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID16", "CheckAbort[DiracMatrix[8],True]", "True", "{Message[DiracMatrix::noint, 8]}"},
-{"fcstSharedObjectsCheckAbort-ID17", "CheckAbort[DiracSlash[1.2],True]", "True", "{Message[DiracSlash::noint, 1.2]}"},
-{"fcstSharedObjectsCheckAbort-ID18", "CheckAbort[DiracSlash[2],True]", "True", "{Message[DiracSlash::noint, 2]}"},
-{"fcstSharedObjectsCheckAbort-I19", "CheckAbort[Eps[i1,i2],True]", "True", "{Message[Eps::argrx, Eps[{i1, i2}], 2, 3 or 4]}"},
-{"fcstSharedObjectsCheckAbort-I20", "CheckAbort[Eps[i1,i2,i3,i4,i5],True]", "True", "{Message[Eps::argrx, Eps[{i1, i2, i3, i4, i5}], 5, 3 or 4]}"}
+{"fcstSharedObjectsCheckAbort-ID1", "CheckAbort[DiracGamma[2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID2", "CheckAbort[DiracGamma[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID2.1", "CheckAbort[DiracGamma[a,b,c],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID3", "CheckAbort[GA[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID4", "CheckAbort[GA[8],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID5", "CheckAbort[GAD[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID6", "CheckAbort[GAD[8],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID7", "CheckAbort[GAE[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID8", "CheckAbort[GAE[8],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID9", "CheckAbort[GS[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID10", "CheckAbort[GS[2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID11", "CheckAbort[GSD[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID12", "CheckAbort[GSD[2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID13", "CheckAbort[GSE[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID14", "CheckAbort[GSE[2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID15", "CheckAbort[DiracMatrix[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID16", "CheckAbort[DiracMatrix[8],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID17", "CheckAbort[DiracSlash[1.2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID18", "CheckAbort[DiracSlash[2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID19", "CheckAbort[Eps[i1,i2],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID20", "CheckAbort[Eps[i1,i2,i3,i4,i5],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID21", "CheckAbort[GAE[5],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID22", "CheckAbort[GAE[6],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID23", "CheckAbort[GAE[7],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID24", "CheckAbort[DiracGamma[5,D-4],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID25", "CheckAbort[DiracGamma[6,D-4],True]", "True"},
+{"fcstSharedObjectsCheckAbort-ID26", "CheckAbort[DiracGamma[7,D-4],True]", "True"}
 }
 
 Tests`Shared`fcstSharedObjectsBehaviorDiracGamma =
@@ -669,6 +660,9 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID99", "GA[a.b.c]", " GA[a].GA[b].GA[c]"},
 {"fcstSharedObjectsBehavior-ID100", "GA[a, b, c]", " GA[a].GA[b].GA[c]"},
 {"fcstSharedObjectsBehavior-ID101", "GA5", " DiracGamma[5]"},
+{"fcstSharedObjectsBehavior-ID101.1", "GAD[5]", "GA[5]"},
+{"fcstSharedObjectsBehavior-ID101.2", "GAD[6]", "GA[6]"},
+{"fcstSharedObjectsBehavior-ID101.3", "GAD[7]", "GA[7]"},
 {"fcstSharedObjectsBehavior-ID102", "GAD[a.b.c]", " GAD[a].GAD[b].GAD[c]"},
 {"fcstSharedObjectsBehavior-ID103", "GAD[a, b, c]", " GAD[a].GAD[b].GAD[c]"},
 {"fcstSharedObjectsBehavior-ID103.1", "GAE[a.b.c]", " GAE[a].GAE[b].GAE[c]"},

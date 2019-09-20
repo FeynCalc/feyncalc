@@ -113,12 +113,8 @@ ChiralityProjector[1, OptionsPattern[]] :=
 ChiralityProjector[-1, OptionsPattern[]] :=
 	DiracGamma[7]/; OptionValue[FCI];
 
-DiracMatrix[(a:5|6|7), opts:OptionsPattern[]] :=
-	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[a],ToString[opts]]]]/;
-	OptionValue[Dimension]=!=4;
-
 DiracMatrix[(a:5|6|7), OptionsPattern[]] :=
-	DiracGamma[a]/; OptionValue[FCI] && OptionValue[Dimension]===4;
+	DiracGamma[a]/; OptionValue[FCI] && MatchQ[OptionValue[Dimension],_];
 
 DiracMatrix[a_, OptionsPattern[]] :=
 	DiracGamma[LorentzIndex[a, OptionValue[Dimension]],

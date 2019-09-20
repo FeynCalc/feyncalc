@@ -32,16 +32,9 @@ stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 stingCompareIgnore[_,_]:=
 	True;
 
-If[ Names["Tests`Shared`fcstSharedObjectsMessages"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
-		MessagesEquivalenceFunction->stingCompare]&,
-		Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsMessages"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test
-];
-
 If[ Names["Tests`Shared`fcstSharedObjectsCheckAbort"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
-		MessagesEquivalenceFunction->stingCompare]&,
+		MessagesEquivalenceFunction->stingCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsCheckAbort"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];

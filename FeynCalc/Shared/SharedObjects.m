@@ -1286,8 +1286,14 @@ DiracGamma[x_ n_ /; DataType[n, FCVariable], dim_: 4] :=
 DiracGamma[x_?NumberQ, ___] :=
 	(Message[DiracGamma::noint, x]; Abort[])/; (x=!=0 && x=!=5 && x=!=6 && x=!=7);
 
-DiracGamma[(n:5|6|7), dim_] :=
-	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[n],ToString[dim]]]];
+DiracGamma[(n:5|6|7), _Symbol] :=
+	DiracGamma[n];
+
+DiracGamma[(5|6|7), _Symbol - 4] :=
+	(
+	Message[SharedObjects::failmsg, "D-4 dimensional g^5 or chiral projectors do not exist!"];
+	Abort[]
+	)
 
 (* Explicit Dirac indices *)
 
@@ -1461,10 +1467,13 @@ GAE[x_?NumberQ] :=
 	(Message[GAE::noint, x]; Abort[])/; !MemberQ[{0, 1, 2, 3, 5, 6, 7}, x];
 
 GAD[(n:5|6|7)] :=
-	Message[DiracGamma::gamma5fail, ToString[GAD[ToString[n]]]];
+	GA[n];
 
-GAE[(n:5|6|7)] :=
-	Message[DiracGamma::gamma5fail, ToString[GAE[ToString[n]]]];
+GAE[(5|6|7)] :=
+	(
+	Message[SharedObjects::failmsg, "D-4 dimensional g^5 or chiral projectors do not exist!"];
+	Abort[]
+	)
 
 GA[DOT[x_,y__]] :=
 	Map[GA,DOT[x,y]];
