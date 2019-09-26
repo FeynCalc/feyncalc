@@ -68,7 +68,7 @@ If[ ValueQ[Global`$LoadPhi],
 	(*Print[Style["$LoadPhi is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];*)
 	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"PHI"}]
 ];
-Remove[Global`$LoadPHI];
+Remove[Global`$LoadPhi];
 
 If[ ValueQ[Global`$LoadFeynArts],
 	(*Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];*)
