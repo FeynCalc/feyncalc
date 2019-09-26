@@ -35,6 +35,8 @@ tsmeVerbose::usage="";
 Options[ToStandardMatrixElement] = {
 	ChangeDimension 		-> False,
 	DiracOrder 				-> True,
+	DiracSimplify			-> True,
+	DiracEquation			-> True,
 	DiracSubstitute5 		-> True,
 	DiracSubstitute67 		-> False,
 	FCColorIsolate 			-> True,
@@ -78,13 +80,15 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 		];
 
 
-		time=AbsoluteTime[];
-		FCPrint[1, "ToStandardMatrixElement: Applying DiracSimplify.", FCDoControl->tsmeVerbose];
-		ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
-			DiracSubstitute5->OptionValue[DiracSubstitute5], SpinorChainTrick->OptionValue[SpinorChainTrick], SirlinSimplify->OptionValue[SirlinSimplify]];
-		FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
-		FCPrint[3, "ToStandardMatrixElement: After DiracSimplify: ", ex, FCDoControl->tsmeVerbose];
-
+		If[	OptionValue[DiracSimplify],
+			time=AbsoluteTime[];
+			FCPrint[1, "ToStandardMatrixElement: Applying DiracSimplify.", FCDoControl->tsmeVerbose];
+			ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
+				DiracSubstitute5->OptionValue[DiracSubstitute5], SpinorChainTrick->OptionValue[SpinorChainTrick], SirlinSimplify->OptionValue[SirlinSimplify],
+				DiracEquation->OptionValue[DiracEquation]];
+			FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
+			FCPrint[3, "ToStandardMatrixElement: After DiracSimplify: ", ex, FCDoControl->tsmeVerbose]
+		];
 
 
 
