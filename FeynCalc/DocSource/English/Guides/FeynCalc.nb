@@ -1834,6 +1834,16 @@ Cell[TextData[{
  CellID->1285601191],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FreeIndexFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FreeIndexFreeQ"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the expression contains free indices"
+}], "GuideText",
+ CellID->894822474],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["LorentzToCartesian",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/LorentzToCartesian"]], 
@@ -4351,7 +4361,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{645, Automatic}, {Automatic, 73}},
+WindowMargins->{{635, Automatic}, {17, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
