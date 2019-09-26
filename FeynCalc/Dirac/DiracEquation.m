@@ -27,10 +27,11 @@ End[]
 
 Begin["`DiracEquation`Private`"]
 
-HoldDOT;
+HoldDOT::usage="";
 
 Options[DiracEquation] = {
-	FCI -> False
+	FCI -> False,
+	FCE -> False
 };
 
 DiracEquation[ex_, OptionsPattern[]] :=
@@ -46,7 +47,11 @@ DiracEquation[ex_, OptionsPattern[]] :=
 			Return[expr];
 		];
 
-		res  = DotSimplify[diraceq[expr], Expanding->False];
+		res  = DotSimplify[FixedPoint[diraceq,expr,5]/.PairContract->Pair, Expanding->False];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		res
 
@@ -59,7 +64,7 @@ last[x_Plus] :=
 diraceq[x_] :=
 	x/;FreeQ[x,Spinor];
 diraceq[x_] :=
-	Expand[ ToDiracGamma67[x,FCI->True] /. DOT->HoldDOT //.spCDieqRules /.HoldDOT->DOT, DOT ];
+	Expand[ ToDiracGamma67[x,FCI->True] /. DOT->HoldDOT //. spCDieqRules /.HoldDOT->DOT, DOT ];
 
 HoldDOT[a___,HoldDOT[b___],c___]:= HoldDOT[a,b,c];
 HoldDOT[a___,b1_HoldDOT + b2_HoldDOT + b3_:0 ,c___]:=
@@ -75,7 +80,8 @@ spCDieqRules = {
 				0,
 				1/n HoldDOT[ z, Spinor[n Momentum[p,dim] + k,m,op], DiracGamma[k,dim],a]
 			]
-		])/; last[n Momentum[p,dim]+k]===Momentum[p,dim],
+		]
+		)/; last[n Momentum[p,dim]+k]===Momentum[p,dim],
 	HoldDOT[ a___,DiracGamma[Momentum[p_, dim_ : 4],dim_ : 4], Spinor[n_. Momentum[p_, dim_ : 4] + k_. ,m_,op___],z___] :>
 		(m/n HoldDOT[ a,Spinor[ n Momentum[p, dim] + k,m,op ],z] -
 		If[ (k===0),
@@ -97,9 +103,10 @@ spCDieqRules = {
 	HoldDOT[	z___,	s: Spinor[n_. Momentum[p_, dim_ : 4] + k_. ,___],
 					a___DiracGamma,
 					DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum),di_:4],
-					DiracGamma[Momentum[p_,dim_ : 4],dim_ : 4],b___] :>
+					DiracGamma[Momentum[p_,dim_ : 4],dim_ : 4],b___] :> ( tmp =
 					-HoldDOT[ z,s,a, DiracGamma[Momentum[p,dim],dim],DiracGamma[x,di],b] +
-					2(PairContract[x,Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[ z,s,a,b]/;
+					2*((PairContract[x,Momentum[p,dim]]*HoldDOT[ z,s,a,b]) )
+					)/;
 					last[n Momentum[p,dim]+k] === Momentum[p,dim],
 
 
@@ -118,7 +125,7 @@ spCDieqRules = {
 					b___DiracGamma,
 					s: Spinor[n_. Momentum[p_, dim_: 4] + k_.,___],z___] :>
 						(-HoldDOT[a,DiracGamma[x,di],DiracGamma[Momentum[p,dim],dim],b,s,z]+
-						2(PairContract[x,Momentum[p,dim]] /. PairContract -> Pair)*HoldDOT[a,b,s,z])/;
+						2*((PairContract[x,Momentum[p,dim]]*HoldDOT[a,b,s,z]) ))/;
 						last[n Momentum[p,dim]+k]===Momentum[p,dim],
 
 	(* reaching the last spinor, if we need to anticommute past a Dirac gamma 5	*)

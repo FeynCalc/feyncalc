@@ -256,5 +256,16 @@ Spinor[Momentum[pE2, D], 0, 1].GAD[mu].GA[
 1].DiracGamma[LorentzIndex[mu, D], D].DiracGamma[7].Spinor[
 Momentum[pB, D], mB, 1] Spinor[Momentum[pE2, D], 0, 1].DiracGamma[
 LorentzIndex[mu, D], D].DiracGamma[7].Spinor[-Momentum[pE1, D], 0,
-1] Pair[Momentum[pE1, D], Momentum[pE1, D]]"}
+1] Pair[Momentum[pE1, D], Momentum[pE1, D]]"},
+{"fcstDiracEquation-ID58",
+"DiracEquation[
+Spinor[Momentum[p1, D], m1, 1].GAD[mu].GA[7].Spinor[Momentum[p2, D],
+	m2, 1] Spinor[-Momentum[p1, D], m1, 1].GAD[mu].GSD[p1].GA[
+	7].Spinor[-Momentum[p3, D], m2, 1], FCE -> True]",
+"2 m1 Spinor[-Momentum[p1, D], m1, 1].GA[7].Spinor[-Momentum[p3, D],
+	m2, 1] Spinor[Momentum[p1, D], m1, 1].GA[7].Spinor[
+	Momentum[p2, D], m2, 1] +
+m1 Spinor[-Momentum[p1, D], m1, 1].GAD[mu].GA[
+	7].Spinor[-Momentum[p3, D], m2, 1] Spinor[Momentum[p1, D], m1,
+	1].GAD[mu].GA[7].Spinor[Momentum[p2, D], m2, 1]"}
 }

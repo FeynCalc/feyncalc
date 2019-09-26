@@ -33,23 +33,26 @@ Begin["`ToStandardMatrixElement`Private`"]
 tsmeVerbose::usage="";
 
 Options[ToStandardMatrixElement] = {
+	CartesianIndex			-> False,
 	ChangeDimension 		-> False,
 	DiracOrder 				-> True,
 	DiracSimplify			-> True,
 	DiracEquation			-> True,
 	DiracSubstitute5 		-> True,
 	DiracSubstitute67 		-> False,
+	ExceptHeads				-> {},
 	FCColorIsolate 			-> True,
 	FCDiracIsolate 			-> True,
 	FCE 					-> False,
 	FCI 					-> False,
 	FCVerbose 				-> False,
 	Factoring 				-> {Factor, 5000},
+	LorentzIndex			-> False,
 	Polarization 			-> True,
 	SirlinSimplify 			-> False,
 	Spinor 					-> False,
 	SpinorChainChiralSplit	-> True,
-	SpinorChainTrick 		-> False,
+	SpinorChainTrick 		-> True,
 	TimeConstrained 		-> 3
 }
 
@@ -104,7 +107,8 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 		If[	OptionValue[FCDiracIsolate],
 			time=AbsoluteTime[];
 			FCPrint[1, "ToStandardMatrixElement: Applying FCDiracIsolate.", FCDoControl->tsmeVerbose];
-			ex = FCDiracIsolate[ex, Polarization->OptionValue[Polarization], FCI->True, Head->dhead, Collecting->False];
+			ex = FCDiracIsolate[ex, Polarization->OptionValue[Polarization], FCI->True, Head->dhead, Collecting->False, ExceptHeads -> OptionValue[ExceptHeads],
+				LorentzIndex -> OptionValue[LorentzIndex], CartesianIndex -> OptionValue[CartesianIndex]];
 			FCPrint[1, "ToStandardMatrixElement: FCDiracIsolate done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 			FCPrint[3, "ToStandardMatrixElement: After FCDiracIsolate: ", ex, FCDoControl->tsmeVerbose]
 		];
@@ -118,7 +122,7 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 		If[	OptionValue[FCColorIsolate],
 			time=AbsoluteTime[];
 			FCPrint[1, "ToStandardMatrixElement: Applying FCColorIsolate.", FCDoControl->tsmeVerbose];
-			ex = FCColorIsolate[ex,  FCI->True, Head-> chead, Collecting->False];
+			ex = FCColorIsolate[ex,  FCI->True, Head-> chead, Collecting->False, ExceptHeads -> OptionValue[ExceptHeads]];
 			FCPrint[1, "ToStandardMatrixElement: FCColorIsolate done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 			FCPrint[3, "ToStandardMatrixElement: After FCColorIsolate: ", ex, FCDoControl->tsmeVerbose];
 		];

@@ -35,15 +35,17 @@ spchtrVerbose::usage="";
 
 Options[SpinorChainTrick] = {
 	Contract 					-> True,
+	DiracEquation				-> True,
 	DiracGammaCombine			-> False,
 	DiracSigmaExplicit			-> True,
+	DiracTrick					-> True,
 	DotSimplify					-> True,
 	FCCanonicalizeDummyIndices	-> True,
 	FCE							-> False,
 	FCI							-> False,
 	FCJoinDOTs					-> True,
 	FCVerbose					-> False,
-	Factoring					-> True
+	Factoring					-> {Factor2, 5000}
 };
 
 SpinorChainTrick[expr_, OptionsPattern[]] :=
@@ -77,7 +79,7 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		tmp = FCDiracIsolate[ex,FCI->True, Head->dsHead, DotSimplify->True, DiracGammaCombine->optDiracGammaCombine,
 				DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->All, Spinor->Join, DiracGamma->False, FCJoinDOTs-> OptionValue[FCJoinDOTs],
-				Isolate->True, IsolateNames->dsIso, Factoring -> False] /. dsHead->Identity;
+				Isolate->True, IsolateNames->dsIso, Factoring -> False](* /. dsHead->Identity*);
 		FCPrint[1, "SpinorChainTrick: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
 		FCPrint[3, "SpinorChainTrick: After FCDiracIsolate ", tmp, FCDoControl->spchtrVerbose];
 
@@ -117,7 +119,24 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		diracObjectsEval = Map[(spinorChainTrickEval[#])&, (diracObjects/.dsHead->Identity/. DOT->holdDOT)] /. spinorChainTrickEval -> Identity /. holdDOT->DOT;
 		FCPrint[1, "SpinorChainTrick: Done simplifying products of spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-		FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", tmp, FCDoControl->spchtrVerbose];
+		FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
+
+
+		If[	OptionValue[DiracEquation],
+			FCPrint[1, "SpinorChainTrick: Applying Dirac equation to the products of spinor chains.", FCDoControl->spchtrVerbose];
+			time=AbsoluteTime[];
+			diracObjectsEval = Map[DiracEquation[#,FCI->True]&, diracObjectsEval];
+			FCPrint[1, "SpinorChainTrick: Done applying Dirac equation, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+			FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
+		];
+
+		If[	OptionValue[DiracTrick],
+			FCPrint[1, "SpinorChainTrick: Applying DiracTrick to the products of spinor chains.", FCDoControl->spchtrVerbose];
+			time=AbsoluteTime[];
+			diracObjectsEval = Map[DiracTrick[#,FCI->True]&, diracObjectsEval];
+			FCPrint[1, "SpinorChainTrick: Done applying DiracTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+			FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
+		];
 
 		If[ !FreeQ2[diracObjectsEval,{spinorChainTrickEval,holdDOT}],
 			Message[SpinorChainTrick::failmsg,"Evaluation of isolated objects failed."];
