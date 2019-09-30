@@ -48,9 +48,11 @@ Options[FCColorIsolate] = {
 };
 
 FCColorIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, optHead, headR},
+	Block[ {res, null1, null2, ex,tmp, head, optHead, headR, relevantHeads},
 
 		optHead = OptionValue[Head];
+
+		relevantHeads = Complement[FeynCalc`Package`SUNHeadsList, OptionValue[ExceptHeads]];
 
 		If[MatchQ[optHead,{_,_}],
 			{head, headR} = optHead,
@@ -65,26 +67,26 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 		];
 
 
-		If[	FreeQ2[ex,SUNHeadsList],
+		If[	FreeQ2[ex,relevantHeads],
 			Return[restHead[ex] /. restHead -> headR]
 		];
 
 		If[	OptionValue[Expanding],
-			ex = Expand2[ex, SUNHeadsList];
+			ex = Expand2[ex, relevantHeads];
 		];
 
 		(*	and out of the DOTs	*)
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
-			tmp = FCSplit[ex, SUNHeadsList, Expanding->OptionValue[Expanding]];
+			tmp = FCSplit[ex, relevantHeads, Expanding->OptionValue[Expanding]];
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False]
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,SUNHeadsList,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
+			ex = Collect2[ex,relevantHeads,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
 		];
 
-		res = (Map[(restHead[SelectFree[#, SUNHeadsList]]*
-				head[SelectNotFree[#, SUNHeadsList]]) &,
+		res = (Map[(restHead[SelectFree[#, relevantHeads]]*
+				head[SelectNotFree[#, relevantHeads]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /.
 			head[1] -> 1);
 		res = res /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
@@ -112,14 +114,14 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 			res = res //. head[(x_SUND)^n_. y_.] :> x^n head[y];
 		];
 
-		res = res //. head[x_]/; FreeQ2[x,SUNHeadsList] :> x;
+		res = res //. head[x_]/; FreeQ2[x,relevantHeads] :> x;
 
 		If[	OptionValue[Isolate],
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
 			res = res /. restHead[0]->0 /. restHead -> headR;
 		];
 
-		If [ !FreeQ[res/. head[__] :> 1, SUNHeadsList] & ,
+		If [ !FreeQ[res/. head[__] :> 1, relevantHeads] & ,
 			Message[FCColorIsolate::fail, ex];
 			Abort[]
 		];

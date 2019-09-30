@@ -59,5 +59,14 @@ SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]]]"},
 Head -> {col, re}, FCE -> True]",
 "col[SUNT[a].SUNT[b] SUNF[x, y, z]^2] re[x] +
 col[SUND[i, j, k] SUNT[c]] re[y]"},
-{"fcstFCColorIsolate-ID11", "FCColorIsolate[x,Head->{col,re}]", "re[x]"}
+{"fcstFCColorIsolate-ID11", "FCColorIsolate[x,Head->{col,re}]", "re[x]"},
+{"fcstFCColorIsolate-ID12", "FCColorIsolate[
+Spinor[Momentum[p1, D], mb, 1].GAD[FCGV[mu]].GA[7].Spinor[
+	Momentum[p3, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	mu].GSD[p1].GSD[p1].GA[7].Spinor[-Momentum[p2, D], ms, 1] SDF[
+colInB, colOutS] SDF[colInS, colOutB], ExceptHeads -> {CA},
+Head -> col, FCE -> True]", "col[SDF[colInB, colOutS] SDF[colInS, colOutB]] Spinor[Momentum[p1, D],
+	mb, 1].GAD[FCGV[mu]].GA[7].Spinor[Momentum[p3, D], ms,
+1] Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GSD[p1].GSD[p1].GA[
+7].Spinor[-Momentum[p2, D], ms, 1]"}
 });

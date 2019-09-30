@@ -77,7 +77,7 @@ FCDiracIsolate[expr_, OptionsPattern[]] :=
 		];
 
 		optTimeConstrained = OptionValue[TimeConstrained];
-		headsList =  DiracHeadsList;
+		headsList =  Complement[DiracHeadsList,OptionValue[ExceptHeads]];
 
 		If[	OptionValue[Polarization],
 			headsList = Join[headsList,{Polarization}];
