@@ -155,29 +155,29 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		(* Contract is necessary here to simplify things like FV[q,i]^2 *)
 		If[	contractlabel && !FreeQ2[t0,{LorentzIndex,CartesianIndex}],
-			FCPrint[1,"TID: Applying Contract.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying Contract.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = Contract[t0, FCI->True, ExpandScalarProduct->optExpandScalarProduct];
 			FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After Contract: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[3, "After Contract: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		(*	The input expression can be potentially very large,
 			so it's better to take some measures here. Non-commutative
 			products are not isolated!	*)
 
-		FCPrint[1,"TID: Applying Collect2.", FCDoControl->tidVerbose];
+		FCPrint[1, "TID: Applying Collect2.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 
 		t0 = Collect2[t0,{q,FeynAmpDenominator}, TimeConstrained->optTimeConstrained];
 		FCPrint[1, "TID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[3,"After Collect2: ", t0 , FCDoControl->tidVerbose];
+		FCPrint[3, "TID: After Collect2: ", t0 , FCDoControl->tidVerbose];
 
-		FCPrint[1,"TID: Applying Isolate.", FCDoControl->tidVerbose];
+		FCPrint[1, "TID: Applying Isolate.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 		t0 = Isolate[t0,{q,FeynAmpDenominator,Dot}, IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x],IsolateNames->tempIsolate];
 		FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[3,"After Isolate: ", t0 , FCDoControl->tidVerbose];
+		FCPrint[3, "TID: After Isolate: ", t0 , FCDoControl->tidVerbose];
 
 		If[	!FreeQ2[Union[FCGetDimensions[t0/.{DiracGamma[5|6|7]:>null1,TemporalPair[__]->Unique[]}, ChangeDimension->True]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 			Message[TID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
@@ -185,11 +185,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[FeynAmpDenominatorCombine],
-			FCPrint[1,"TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = FeynAmpDenominatorCombine[t0, FCI->True, Momentum->{q}];
 			FCPrint[1, "TID: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After FeynAmpDenominatorCombine: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[3, "TID: After FeynAmpDenominatorCombine: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		If[ OptionValue[FCLoopRemoveNegativePropagatorPowers],
@@ -197,63 +197,63 @@ TID[am_ , q_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			t0 = FCLoopRemoveNegativePropagatorPowers[t0, FCI->True];
 			FCPrint[1, "TID: Done applying FCLoopRemoveNegativePropagatorPowers, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After FCLoopRemoveNegativePropagatorPowers: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[3, "TID: After FCLoopRemoveNegativePropagatorPowers: ", t0 , FCDoControl->tidVerbose]
 		];
 
-		FCPrint[1,"TID: Applying FRH.", FCDoControl->tidVerbose];
+		FCPrint[1, "TID: Applying FRH.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 		t0 = FRH[t0,IsolateNames->tempIsolate];
 		FCPrint[1, "TID: Done applying FRH, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[3,"After FRH: ", t0 , FCDoControl->tidVerbose];
+		FCPrint[3, "TID: After FRH: ", t0 , FCDoControl->tidVerbose];
 
 
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
-			FCPrint[1,"TID: Applying DiracSimplify.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying DiracSimplify.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace], Expand2->False];
 			FCPrint[1, "TID: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After DiracSimplify: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[3, "TID: After DiracSimplify: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		If[	OptionValue[PauliSimplify] && !FreeQ2[t0,{PauliSigma}],
-			FCPrint[1,"TID: Applying PauliTrick.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying PauliTrick.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = PauliSimplify[t0,FCI->True, Expand2->False];
-			FCPrint[1, "TID: Done applying PauliTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After PauliTrick: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[1, "TID: Done applying PauliSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3, "TID: After PauliSimplify: ", t0 , FCDoControl->tidVerbose]
 		];
 
 
 		If[ fds,
-			FCPrint[1,"TID: Applying FDS.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying FDS.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
 			(* The fact that we need to apply FDS twice here, tells a lot about the quality of FDS. *)
 			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
 			FCPrint[1, "TID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After FDS: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[3," TID: After FDS: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		If[	OptionValue[ApartFF],
-			FCPrint[1,"TID: Applying ApartFF.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying ApartFF.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}, SetDimensions->{4,n,3,n-1}];
 			FCPrint[1, "TID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[3,"After ApartFF: ", t0 , FCDoControl->tidVerbose]
+			FCPrint[3, "TID: After ApartFF: ", t0 , FCDoControl->tidVerbose]
 		];
 
 		(* Single out the loop momenta *)
-		FCPrint[1,"TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
+		FCPrint[1, "TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 		t0 = ExpandScalarProduct[t0,Momentum->{q}, FCI->True, Full->False];
 		FCPrint[1, "TID: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[3,"After ExpandScalarProduct: ", t0 , FCDoControl->tidVerbose];
+		FCPrint[3, "TID: After ExpandScalarProduct: ", t0 , FCDoControl->tidVerbose];
 
 		FCPrint[1,"TID: Applying Uncontract.", FCDoControl->tidVerbose];
 		time=AbsoluteTime[];
 		t1 = Uncontract[t0, q, Pair -> All, CartesianPair->All, FCI->True] /. PropagatorDenominator -> procanonical[q];
 		FCPrint[1, "TID: Done applying Uncontract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[3,"After Uncontract: ", t1 , FCDoControl->tidVerbose];
+		FCPrint[3," TID: After Uncontract: ", t1 , FCDoControl->tidVerbose];
 
 
 
@@ -288,7 +288,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		FCPrint[3,"TID: Scalar and non-loop parts of the original expression: ", irrelevant, FCDoControl->tidVerbose];
 
 		If[	OptionValue[ToPaVe],
-			FCPrint[1,"TID: Applying ToPaVe to the scalar part of the input expression.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying ToPaVe to the scalar part of the input expression.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			irrelevant = ToPaVe[irrelevant,q, FCI->True];
 			FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -299,7 +299,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			This is needed only in the BMHV scheme *)
 		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ2[t1,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
-			FCPrint[1,"TID: Handling 4 and D-4 dimensional loop momenta.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Handling 4 and D-4 dimensional loop momenta.", FCDoControl->tidVerbose];
 			t1 = t1 //. {
 				Pair[Momentum[q,n-4],LorentzIndex[i_,n-4]]:>
 					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli,n-4],LorentzIndex[i,n-4]]),
@@ -325,13 +325,13 @@ TID[am_ , q_, OptionsPattern[]] :=
 			(* otherwise we need to reduce it to scalar integrals	*)
 
 			time0=AbsoluteTime[];
-			FCPrint[1,"TID: Starting reduction of tensor integrals.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Starting reduction of tensor integrals.", FCDoControl->tidVerbose];
 
 
 
 			(* wrap all loop-momentum dependent pieces in loopIntegral *)
 
-			FCPrint[1,"TID: Applying FCLoopIsolate.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying FCLoopIsolate.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral, FCI->True];
 			FCPrint[1, "TID: Done applying FCLoopIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -339,8 +339,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 			If[ OptionValue[FCLoopMixedToCartesianAndTemporal] && !FreeQ2[{wrapped,irrelevant},{CartesianMomentum,TemporalMomentum}],
 
 				FCPrint[1, "TID: Applying FCLoopMixedToCartesianAndTemporal, timing: ", FCDoControl->tidVerbose];
-				wrapped = wrapped /. loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :>
-					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[xx,{q}, Uncontract->True] /. TemporalPair[x__]/;!FreeQ[{x},q] :> MomentumExpand[TemporalPair[x]]
+				wrapped = wrapped /. loopIntegral[y_]/;FCLoopMixedIntegralQ[y] :>
+					FCLoopIsolate[FCLoopMixedToCartesianAndTemporal[y,{q}, Uncontract->True] /. TemporalPair[x__]/;!FreeQ[{x},q] :> MomentumExpand[TemporalPair[x]]
 						/. TemporalMomentum[q] -> TemporalMomentum[q0] //. {
 						ExplicitLorentzIndex[0] :> holdExplicitLorentzIndex[0],
 						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
@@ -350,25 +350,25 @@ TID[am_ , q_, OptionsPattern[]] :=
 				FCPrint[1, "TID: Done applying FCLoopMixedToCartesianAndTemporal, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
 				irrelevant = FCLoopIsolate[irrelevant,{q},Head->loopIntegral, FCI->True] /.
-					loopIntegral[xx_]/;FCLoopMixedIntegralQ[xx] :> FCLoopMixedToCartesianAndTemporal[xx,{q}] /. loopIntegral-> Identity
+					loopIntegral[y_]/;FCLoopMixedIntegralQ[y] :> FCLoopMixedToCartesianAndTemporal[y,{q}] /. loopIntegral-> Identity
 			];
 
 
 			(*	remove all kinds of integrals that cannot or should not be handled by TID	*)
 			wrapped = wrapped /. {
-				loopIntegral[xx_]/; (FCLoopMixedIntegralQ[xx] || !FCLoopEikonalPropagatorFreeQ[xx,First->False] || !FCLoopSamePropagatorHeadsQ[xx]) :> noTID xx,
+				loopIntegral[y_]/; (FCLoopMixedIntegralQ[y] || !FCLoopEikonalPropagatorFreeQ[y,First->False] || !FCLoopSamePropagatorHeadsQ[y]) :> noTID y,
 				(*This one is for cases like TC[k] FVD[k,mu] FAD[k,k+p]*)
-				loopIntegral[xx_FeynAmpDenominator] :> noTID xx
+				loopIntegral[y_FeynAmpDenominator] :> noTID y
 			};
 
-			FCPrint[3,"After FCLoopIsolate: ", wrapped , FCDoControl->tidVerbose];
+			FCPrint[3, "TID: After FCLoopIsolate: ", wrapped , FCDoControl->tidVerbose];
 			If[	!FreeQ[wrapped,loopIntegral],
 				(*	The 4th element in fclcOutput is our list of unique tensor integrals that need to be reduced. *)
 				FCPrint[1,"TID: Applying FCLoopCanonicalize.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
 				fclcOutput = FCLoopCanonicalize[wrapped, q, loopIntegral,FCI->True];
 				FCPrint[1, "TID: Done applying FCLoopCanonicalize, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-				FCPrint[3,"After FCLoopCanonicalize: ", fclcOutput , FCDoControl->tidVerbose];
+				FCPrint[3, "TID: After FCLoopCanonicalize: ", fclcOutput , FCDoControl->tidVerbose];
 
 
 				uniqueCanIndexList  = fclcOutput[[4]] /. loopIntegral->Identity;
@@ -397,7 +397,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				solsList= tidSingleIntegral[#, q , n, OptionValue[UsePaVeBasis]]&/@uniqueCanIndexList;
 
 				FCPrint[1, "TID: Done reducing unique 1-loop tensor integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-				FCPrint[3,"After the reduction: ", solsList , FCDoControl->tidVerbose];
+				FCPrint[3, "TID: After the reduction: ", solsList , FCDoControl->tidVerbose];
 
 				FCPrint[1, "TID: Done reducing tensor integrals, timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->tidVerbose];
 
@@ -408,29 +408,29 @@ TID[am_ , q_, OptionsPattern[]] :=
 				];
 
 				If[	OptionValue[ApartFF],
-					FCPrint[1,"TID: Applying ApartFF to the list of the reduced integrals.", FCDoControl->tidVerbose];
+					FCPrint[1, "TID: Applying ApartFF to the list of the reduced integrals.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
 					solsList = ApartFF[#,{q},FCI->True, SetDimensions->{4,n,3,n-1}]&/@solsList;
 					FCPrint[1, "TID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-					FCPrint[3,"After ApartFF: ", solsList , FCDoControl->tidVerbose]
+					FCPrint[3, "TID: After ApartFF: ", solsList , FCDoControl->tidVerbose]
 				];
 
 
 				If[	OptionValue[ToPaVe],
-					FCPrint[1,"TID: Applying ToPaVe to the list of the reduced integrals.", FCDoControl->tidVerbose];
+					FCPrint[1, "TID: Applying ToPaVe to the list of the reduced integrals.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
 					solsList = ToPaVe[(#/.tidPaVe->Identity),q, FCI->True]&/@solsList;
 					FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 					FCPrint[3, "TID: After ToPaVe: ", res , FCDoControl->tidVerbose]
 				];
 
-				FCPrint[1,"TID: Creating the final list of replacements.", FCDoControl->tidVerbose];
+				FCPrint[1, "TID: Creating the final list of replacements.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
 
 				finalRepList = FCLoopSolutionList[fclcOutput,solsList];
 
-				FCPrint[3,"TID: Final list of replacements: ", finalRepList, FCDoControl->tidVerbose];
-				FCPrint[3,"TID: To be applied on: ", wrapped, FCDoControl->tidVerbose];
+				FCPrint[3, "TID: Final list of replacements: ", finalRepList, FCDoControl->tidVerbose];
+				FCPrint[3, "TID: To be applied on: ", wrapped, FCDoControl->tidVerbose];
 
 				(* And this is the final result *)
 				res = wrapped/.finalRepList/.tidPaVe->Identity,
@@ -441,7 +441,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			FCPrint[1, "TID: Done creating the final list of replacements, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
 			If[	OptionValue[Check],
-				FCPrint[1,"TID: Doing some cross-checks.", FCDoControl->tidVerbose];
+				FCPrint[1, "TID: Doing some cross-checks.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
 
 				If[	(!FreeQ[FRH[res] /. noTID -> 0 /. FeynAmpDenominator[__] :> Unique[], q]) || (!FreeQ[irrelevant/. {
@@ -459,28 +459,28 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 			If[	contractlabel && !FreeQ2[res,{LorentzIndex,CartesianIndex}],
 
-					FCPrint[1,"TID: Applying Isolate.", FCDoControl->tidVerbose];
+					FCPrint[1, "TID: Applying Isolate.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
 					res= Isolate[res,{LorentzIndex,CartesianIndex,holdExplicitLorentzIndex},IsolateNames->isoContract]//
-					ReplaceAll[#,LorentzIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[LorentzIndex[pp]]]&//
-					ReplaceAll[#,CartesianIndex[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[CartesianIndex[pp]]]&;
+					ReplaceAll[#,LorentzIndex[z__]/;!FreeQ[{z},HoldForm]:>FRH[LorentzIndex[z]]]&//
+					ReplaceAll[#,CartesianIndex[z__]/;!FreeQ[{z},HoldForm]:>FRH[CartesianIndex[z]]]&;
 					FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-					FCPrint[3,"After Isolate: ", res , FCDoControl->tidVerbose];
+					FCPrint[3, "TID: After Isolate: ", res , FCDoControl->tidVerbose];
 
-					FCPrint[1,"TID: Applying Contract.", FCDoControl->tidVerbose];
+					FCPrint[1, "TID: Applying Contract.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
 					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct]//
-					ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[Pair[pp]]]&//
-					ReplaceAll[#,CartesianPair[pp__]/;!FreeQ[{pp},HoldForm]:>FRH[CartesianPair[pp]]]&;
+					ReplaceAll[#,Pair[z__]/;!FreeQ[{z},HoldForm]:>FRH[Pair[z]]]&//
+					ReplaceAll[#,CartesianPair[z__]/;!FreeQ[{z},HoldForm]:>FRH[CartesianPair[z]]]&;
 					FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-					FCPrint[3,"After Contract: ", res , FCDoControl->tidVerbose];
+					FCPrint[3, "TID: After Contract: ", res , FCDoControl->tidVerbose];
 
 					If[	optExpandScalarProduct,
-						FCPrint[1,"TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
+						FCPrint[1, "TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
 						time=AbsoluteTime[];
 						res = ExpandScalarProduct[res,FCI->True];
 						FCPrint[1, "TID: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-						FCPrint[3,"After ExpandScalarProduct: ", res , FCDoControl->tidVerbose]
+						FCPrint[3, "TID: After ExpandScalarProduct: ", res , FCDoControl->tidVerbose]
 					];
 
 					res = res//FRH[#,IsolateNames->isoContract]&
@@ -488,7 +488,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 			If[	OptionValue[Check],
 
-				FCPrint[1,"TID: Doing some cross-checks.", FCDoControl->tidVerbose];
+				FCPrint[1, "TID: Doing some cross-checks.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
 
 				(* Check again that the parts of the final result contain only scalar intnegrals *)
@@ -514,7 +514,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		res = (res+irrelevant)/. noTID->1;
 
 		If[ OptionValue[FeynAmpDenominatorCombine]  && !FreeQ2[res, (FeynAmpDenominator[x__]^_.) *(FeynAmpDenominator[y__]^_.)],
-			FCPrint[1,"TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying FeynAmpDenominatorCombine.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			res = FeynAmpDenominatorCombine[res, FCI->True, Momentum->{q}];
 			FCPrint[1, "TID: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -524,7 +524,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		(*	Since the large prefactors are isolated, collecting w.r.t to the scalar loop integrals
 			should not be too expensive. *)
 		If[	OptionValue[Collecting],
-			FCPrint[1,"TID: Applying Collect2.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying Collect2.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			fadCollect = Cases[res, FeynAmpDenominator[x__]/;!FreeQ2[{x},q], Infinity];
 			res= Collect2[res,Join[Join[fadCollect,{q0}],PaVeHeadsList],Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
@@ -537,7 +537,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		the user wants it explicitly, we will return him the full result with everything
 		written out	*)
 		If[	OptionValue[Isolate]===False,
-			FCPrint[1,"TID: Removing abbreviations.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Removing abbreviations.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			res = FRH[res, IsolateNames->tidIsolate];
 			FCPrint[1, "TID: Done removing abbreviations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose],
@@ -559,7 +559,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 
 		If[	optExpandScalarProduct,
-			FCPrint[1,"TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			res = ExpandScalarProduct[res, FCI->True];
 			FCPrint[1, "TID: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -568,7 +568,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 		If [OptionValue[EpsEvaluate] && !FreeQ[res,Eps],
-			FCPrint[1,"TID: Applying EpsEvaluate.", FCDoControl->tidVerbose];
+			FCPrint[1, "TID: Applying EpsEvaluate.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			res = EpsEvaluate[res, FCI->True];
 			FCPrint[1, "TID: Done applying EpsEvaluate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -588,7 +588,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 			iList1, uList1, iList2, uList2, null, loopIntegral, nwr,
 			sList1, sList2, rList2, rList1},
 
-		FCPrint[3,"TID: tidSingleIntegral: Entering with ", ex, FCDoControl->tidVerbose];
+		FCPrint[3, "TID: tidSingleIntegral: Entering with ", ex, FCDoControl->tidVerbose];
 
 
 		ex = FCLoopPropagatorPowersExpand[ex,FCI->True];
@@ -638,7 +638,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 		uList2 = iList2 // Union[Cases[{#}, _. loopIntegral[x_]/;(FreeQ[x,tidPaVe] &&
 			!FreeQ[x/.FeynAmpDenominator[__]:>1,q]) :> x, Infinity]] & //DeleteDuplicates;
 
-		FCPrint[2,"TID: tidSingleIntegral: List of unique integrals ", uList2, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidSingleIntegral: List of unique integrals ", uList2, FCDoControl->tidVerbose];
 
 		(* Reduce all the integrals from uList2 into scalar integrals*)
 		nwr[e_]:= (NestWhile[tidFullReduce[#,q,n,pavebasis]&, e,
@@ -649,16 +649,16 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 
 		(* Here we drop all the scaleless integrals, unless something scaleless
 		is wrapped in tidPaVe, which means that it comes from the PaVe functions*)
-		FCPrint[2,"TID: tidSingleIntegral: List of solutions before dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidSingleIntegral: List of solutions before dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
 		sList2 = removeNonloop[#,q]&/@sList2;
-		FCPrint[2,"TID: tidSingleIntegral: List of solutions after dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidSingleIntegral: List of solutions after dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
 
 		If[	!FreeQ[sList2/. FeynAmpDenominator[__] :> Unique[], q],
 			Message[TID::failmsg, "tidSingleIntegral failed to achieve full tensor reduction in " <> ToString[sList2,InputForm]];
 			Abort[]
 		];
-		FCPrint[2,"TID: tidSingleIntegral: uList1 ", uList1, FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidSingleIntegral: uList2 ", uList2, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidSingleIntegral: uList1 ", uList1, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidSingleIntegral: uList2 ", uList2, FCDoControl->tidVerbose];
 		rList2 = MapIndexed[(Rule[loopIntegral[#1], First[sList2[[#2]]]]) &,uList2];
 		rList1 = MapIndexed[(Rule[loopIntegral[#1], First[(iList2 /. rList2)[[#2]]]]) &, uList1];
 
@@ -676,7 +676,7 @@ tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 			Abort[]
 		];
 
-		FCPrint[2,"TID: tidSingleIntegral: Final result is ", res, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidSingleIntegral: Final result is ", res, FCDoControl->tidVerbose];
 		res
 	]/; Head[int]=!=Plus && (MatchQ[int,(FeynAmpDenominator[y__] /; ! FreeQ[{y}, q]) Times[
 		Pair[Momentum[q, ___], LorentzIndex[_, ___]] ..]] || MatchQ[int,(FeynAmpDenominator[y__] /; ! FreeQ[{y}, q]) Times[
@@ -688,7 +688,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 			null2, null3, null4, null, loopIntegral,
 			tempIso,tpScaleless},
 
-		FCPrint[2,"TID: tidFullReduce: Entering with ", ex, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Entering with ", ex, FCDoControl->tidVerbose];
 
 		If [FreeQ[ex /. FeynAmpDenominator[__] :> Unique[], q],
 			Message[TID::failmsg, "Entered tidFullReduce with a purely scalar integral " <> ToString[ex,InputForm]];
@@ -707,14 +707,14 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 				"into tensor and scalar pieces in tidFullReduce failed."];
 			Abort[]
 		];
-		FCPrint[2,"TID: tidFullReduce: Tensor parts tp", tp, FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: Scalar parts sp", sp, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Tensor parts tp", tp, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Scalar parts sp", sp, FCDoControl->tidVerbose];
 
 		(* List of unique integrals in the tensor part	*)
 		tp = FCLoopIsolate[tp,{q},Head->loopIntegral,FCI->True];
 		uList = (Cases[tp+null1+null2,loopIntegral[__],Infinity]/.null1|null2->Unevaluated@Sequence[])//Union;
 
-		FCPrint[2,"TID: tidFullReduce: Entering FCApart with ", (uList/.loopIntegral->Identity), FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Entering FCApart with ", (uList/.loopIntegral->Identity), FCDoControl->tidVerbose];
 
 		(*	Try to cancel all the scalar products in the denominators. This shouldn't
 			require more than rank+1 iterations. However, it is not always possible to
@@ -723,7 +723,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 
 		sList = Map[ApartFF[(#/.loopIntegral->Identity),{q},FCI->True,FeynAmpDenominatorCombine->False, SetDimensions->{3,4,n,n-1}]&,uList];
 
-		FCPrint[2,"TID: tidFullReduce: List of unique integrals after cancelling scalar products ", sList,
+		FCPrint[2, "TID: tidFullReduce: List of unique integrals after cancelling scalar products ", sList,
 			FCDoControl->tidVerbose];
 
 		(* Replacement list "Unique integral" -> "Simplified integral"	*)
@@ -732,8 +732,8 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 		(* Substitute simplified integrals back into the tensor part	*)
 		tp = tp/.rList;
 
-		FCPrint[2,"TID: tidFullReduce: FCApart time: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: After FCApart: ", tp, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: FCApart time: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: After FCApart: ", tp, FCDoControl->tidVerbose];
 		(* 	After FCApart our original tensor part contains both tensor and scalar pieces. Separate
 			them again	*)
 		time=AbsoluteTime[];
@@ -745,10 +745,10 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 				"into tensor and scalar pieces in tidFullReduce failed."];
 			Abort[]
 		];
-		FCPrint[2,"TID: tidFullReduce: Time to sort w.r.t to the loop momentum after FCApart ",
+		FCPrint[2, "TID: tidFullReduce: Time to sort w.r.t to the loop momentum after FCApart ",
 			N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: Tensor piece ", tpTP, FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: Scalar piece ", tpSP, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Tensor piece ", tpTP, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Scalar piece ", tpSP, FCDoControl->tidVerbose];
 
 		(* Here we get rid of all the non-loop terms in the results, except for tidPaVe *)
 		tpTP = removeNonloop[tpTP, q];
@@ -761,7 +761,7 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 			products can't be cancelled by FCApart. To get rid of those we need to perform
 			another tensor decomposition on those integrals	*)
 		If[tpTP=!=0,
-			FCPrint[2,"TID: tidFullReduce: Looks like we need another tensor reduction for ", tpTP, FCDoControl->tidVerbose];
+			FCPrint[2, "TID: tidFullReduce: Looks like we need another tensor reduction for ", tpTP, FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			tpTP = FCLoopIsolate[tpTP,{q},Head->loopIntegral,FCI->True];
 			(* 	Doing the brute force tensor reduction of the whole new tensor part might take a lot of
@@ -780,8 +780,8 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 				" in tidFullReduce failed."];
 				Abort[]
 			];
-			FCPrint[2,"TID: tidFullReduce: Time to perform another tensor reduction ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-			FCPrint[2,"TID: tidFullReduce: Tensor part after another tensor reduction ", tpTP, FCDoControl->tidVerbose];
+			FCPrint[2, "TID: tidFullReduce: Time to perform another tensor reduction ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[2, "TID: tidFullReduce: Tensor part after another tensor reduction ", tpTP, FCDoControl->tidVerbose];
 			(* 	To perform the tensor reduction on unique integrals in the tensor part we had to uncontract all the
 				loop momenta. Now we contract existing dummy Lorentz indices *)
 			time=AbsoluteTime[];
@@ -802,10 +802,10 @@ tidFullReduce[expr_,q_,n_, pavebasis_]:=
 		res = Isolate[Collect2[(sp + tpSP + tpTP), {q,FeynAmpDenominator,tidPaVe, q0}, TimeConstrained->optTimeConstrained]//.
 			{null1 | null2 | null3 | null4 -> 0}, {q, FeynAmpDenominator,tidPaVe, q0}, IsolateNames->tidIsolate] /.
 			(h: Pair|CartesianPair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->tidIsolate];
-		FCPrint[2,"TID: tidFullReduce: Time to sort the final result of this iteration ", N[AbsoluteTime[] - time, 4],
+		FCPrint[2, "TID: tidFullReduce: Time to sort the final result of this iteration ", N[AbsoluteTime[] - time, 4],
 			FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: Result of this iteration ", res, FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: --------------------------------------------------------", FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: Result of this iteration ", res, FCDoControl->tidVerbose];
+		FCPrint[2, "TID: tidFullReduce: --------------------------------------------------------", FCDoControl->tidVerbose];
 		res
 	]/; Head[expr]=!=tidPaVe;
 
@@ -824,7 +824,7 @@ removeScaleless[expr_,q_]:=
 				<> ToString[expr] <> " in TID failed."];
 			Abort[]
 		];
-		FCPrint[3,"TID: removeScaleless: Dropping scaleless integrals ",scaleless];
+		FCPrint[3, "TID: removeScaleless: Dropping scaleless integrals ",scaleless];
 		(expr-scaleless)/. {null1|null2 -> 0}
 	]/; Head[expr]=!=List;
 
@@ -841,7 +841,7 @@ removeNonloop[expr_,q_]:=
 				<> ToString[expr, InputForm] <> " in TID failed."];
 			Abort[]
 		];
-		FCPrint[3,"TID: removeNonloop: Dropping scaleless integrals ", nonloop];
+		FCPrint[3, "TID: removeNonloop: Dropping scaleless integrals ", nonloop];
 		(expr-nonloop)/. {null1|null2 -> 0}
 	]/; Head[expr]=!=List;
 
@@ -849,7 +849,7 @@ removeNonloop[expr_,q_]:=
 
 tidConvert[expr_, q_]:=
 	Block[{ex=expr,qQQprepare,getfdp,res,temp},
-		FCPrint[2,"TID: tidConvert: Entering with ", expr];
+		FCPrint[2, "TID: tidConvert: Entering with ", expr];
 		getfdp[w__] :=
 			(ffdp@@(First/@(MomentumCombine[{w},FCI->True,FV->False,SP->False] /. q->0)) /. Momentum[a_,___] :> a)/;
 				FreeQ[{w}, (PropagatorDenominator|StandardPropagatorDenominator)[_ Momentum[q, ___] + _., __]];
@@ -870,14 +870,14 @@ tidConvert[expr_, q_]:=
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
-		FCPrint[4,"TID: tidConvert: Leaving with ", res];
+		FCPrint[4, "TID: tidConvert: Leaving with ", res];
 		res
 	]/; Head[expr]=!=Plus && MatchQ[expr,(FeynAmpDenominator[(x : (PropagatorDenominator|StandardPropagatorDenominator)[__] ..)] /;
 		!FreeQ[{x}, q]) Times[Pair[Momentum[q, ___], LorentzIndex[_, ___]] ..]];
 
 tidConvert[expr_, q_]:=
 	Block[{ex=expr,qQQprepare,getfdp,res,temp},
-		FCPrint[2,"TID: tidConvert: Entering with ", expr];
+		FCPrint[2, "TID: tidConvert: Entering with ", expr];
 		getfdp[w__] :=
 			(ffdp@@(First/@(MomentumCombine[{w},FCI->True,FV->False,SP->False] /. q->0)) /. CartesianMomentum[a_,___] :> a)/;
 				FreeQ[{w}, CartesianPropagatorDenominator[_ CartesianMomentum[q, ___] + _., __]];
@@ -902,14 +902,14 @@ tidConvert[expr_, q_]:=
 	zero in DR *)
 tidConvert[expr_, q_]:=
 	(
-	FCPrint[2,"TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
+	FCPrint[2, "TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
 	0
 	)/; Head[expr]=!=Plus && MatchQ[expr,Pair[Momentum[q, ___], LorentzIndex[_, ___]] |
 		HoldPattern[Times[Pair[Momentum[q, ___], LorentzIndex[_, ___]] ..]]];
 
 tidConvert[expr_, q_]:=
 	(
-	FCPrint[2,"TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
+	FCPrint[2, "TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
 	0
 	)/; Head[expr]=!=Plus && MatchQ[expr,CartesianPair[CartesianMomentum[q, ___], CartesianIndex[_, ___]] |
 		HoldPattern[Times[CartesianPair[CartesianMomentum[q, ___], CartesianIndex[_, ___]] ..]]];
@@ -922,7 +922,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 	vanishingGramDet=False,gramMatrix,res,momList,cartesianIntegral},
 
 
-	FCPrint[4,"TID: tidReduce: entering with: ", int, FCDoControl->tidVerbose];
+	FCPrint[4, "TID: tidReduce: entering with: ", int, FCDoControl->tidVerbose];
 
 	Which[
 		!FreeQ[int, PropagatorDenominator] && FreeQ[int, StandardPropagatorDenominator],
@@ -967,7 +967,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 				the integral " <> ToString[int, InputForm]];
 		Abort[]
 	];
-	FCPrint[2,"TID: tidReduce: we are dealing with a ", nPoint, "-point function", FCDoControl->tidVerbose];
+	FCPrint[2, "TID: tidReduce: we are dealing with a ", nPoint, "-point function", FCDoControl->tidVerbose];
 
 
 	If[Length[masses]=!=nPoint,
@@ -981,7 +981,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 	momList = int/. _ qQQ[_ ffdp[x___]]:> List@@fdp[x];
 
 	If[	!cartesianIntegral,
-		FCPrint[4,"TID: tidReduce: Lorentzian integral!", FCDoControl->tidVerbose];
+		FCPrint[4, "TID: tidReduce: Lorentzian integral!", FCDoControl->tidVerbose];
 		(*	Lorentzian integrals	*)
 		If[momList=!={},
 			If[	FCGramDeterminant[momList,Dimension->n] === 0,
@@ -1002,7 +1002,7 @@ Block[{massless=False,masses,nPoint,time,qrule,
 				Tdec[(Sequence @@ tdeclistLorentzian[{v}, {m}]), Dimension -> n, BasisOnly -> True,
 				FeynCalcExternal->False]/.FCGV["PaVe"][x_]:>tidPaVe[pavePrepare[FCGV["PaVe"][x],nPoint,{m},masses, n]])
 		},
-		FCPrint[4,"TID: tidReduce: Cartesian integral!", FCDoControl->tidVerbose];
+		FCPrint[4, "TID: tidReduce: Cartesian integral!", FCDoControl->tidVerbose];
 		(*	Cartesian integrals	*)
 		If[momList=!={},
 			If[	FCGramDeterminant[momList,Dimension->n-1,Head->{CartesianPair,CartesianMomentum}] === 0,
@@ -1061,7 +1061,7 @@ tdeclistCartesian[{vecs__}, {moms___}] :=
 
 pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}, dim_]:=
 		(
-		FCPrint[3,"TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
+		FCPrint[3, "TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
 		ex/. FCGV["PaVe"][{n__}]:>
 			(I Pi^2)PaVe[n,ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[{moms},ScalarProduct[#,#,Dimension->dim]&]],
 			{ms}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]
@@ -1069,7 +1069,7 @@ pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}, dim_]:=
 
 pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}, _]:=
 		(
-		FCPrint[3,"TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
+		FCPrint[3, "TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
 		ex/.FCGV["PaVe"][{n__}]:>(I Pi^2)GenPaVe[{n}, Thread[List[Flatten[-{0, moms}, 1], (PowerExpand/@Sqrt/@{ms})]]]
 		)/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && genpave;
 
