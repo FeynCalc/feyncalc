@@ -255,6 +255,14 @@ TID[am_ , q_, OptionsPattern[]] :=
 		FCPrint[1, "TID: Done applying Uncontract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		FCPrint[3," TID: After Uncontract: ", t1 , FCDoControl->tidVerbose];
 
+		If[	!FreeQ[t1,DiracTrace],
+			FCPrint[1, "TID: Applying FCTraceExpand.", FCDoControl->tidVerbose];
+			time=AbsoluteTime[];
+			t1 = t1 /. DiracTrace[x__]/;!FreeQ[x, q] :> FCTraceExpand[DiracTrace[x],FCI->True];
+			FCPrint[1, "TID: Done applying FCTraceExpand timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3, "TID: After FCTraceExpand: ", t1 , FCDoControl->tidVerbose];
+		];
+
 
 
 		(* Check if user disabled DiracSimplify but the given

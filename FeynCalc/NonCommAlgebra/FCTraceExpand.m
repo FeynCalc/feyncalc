@@ -62,7 +62,7 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 			ex = expr,
 			ex = FCI[expr]
 		];
-
+		(*TODO: Add fast mode*)
 		FCPrint[1, "FCTraceExpand: Entering.", FCDoControl->fctreVerbose];
 		FCPrint[3, "FCTraceExpand: Entering with", ex, FCDoControl->fctreVerbose];
 

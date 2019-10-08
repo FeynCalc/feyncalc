@@ -280,5 +280,12 @@ DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (DCHN[GSD[q], Dir3, Dir4]
 DCHN[GAD[mu].(-GSD[k] + me).GAD[nu], Dir3, Dir4] FAD[{k, me},
 k - q], {k}, FCE -> True]","me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] FAD[{k, me}, k - q] + (
 DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[
-k, {k - q, me}] (me^2 + SPD[q, q]))/(2 SPD[q, q])"}
+k, {k - q, me}] (me^2 + SPD[q, q]))/(2 SPD[q, q])"},
+{"fcstFCMultiLoopTID-ID26", "FCMultiLoopTID[
+DiracTrace[GAD[mu].(GSD[q]).GAD[nu, rho, 5]] FAD[q, q - p], {q},
+DiracSimplify -> False, FCE -> True]","1/2 DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]] FAD[q, -p + q]"},
+{"fcstFCMultiLoopTID-ID27", "FCMultiLoopTID[
+DiracTrace[GAD[mu].(GSD[q] + m).GAD[nu, rho, 5]] FAD[q, q - p], {q},
+DiracSimplify -> False, FCE -> True]","m DiracTrace[GAD[mu].GAD[nu].GAD[rho].GA[5]] FAD[q, -p + q] +
+1/2 DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]] FAD[q, -p + q]"}
 })

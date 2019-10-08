@@ -1103,5 +1103,12 @@ k - q], k, FCE -> True]","(DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[{k, me}]
 2 SPD[q, q]) - (1/(2 SPD[q, q]))* FAD[k, {k - q, me}] (DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] (me^2 - SPD[q, q]) -
 2 me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] SPD[q, q] + 2 DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] SPD[q, q])"},
 {"fcstTID-ID52","TID[FVD[p, mu] FAD[p, p + q], {p}, FCE -> True]",
-"-(1/2) FAD[p, p - q] FVD[q, mu]"}
+"-(1/2) FAD[p, p - q] FVD[q, mu]"},
+{"fcstTID-ID53","TID[DiracTrace[GAD[mu].(GSD[q]).GAD[nu, rho, 5]] FAD[q, q - p], q,
+DiracSimplify -> False, FCE -> True]",
+"1/2 DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]] FAD[q, -p + q]"},
+{"fcstTID-ID54","TID[DiracTrace[GAD[mu].(GSD[q] + m).GAD[nu, rho, 5]] FAD[q, q - p], q,
+DiracSimplify -> False, FCE -> True]",
+"1/2 (2 m DiracTrace[GAD[mu].GAD[nu].GAD[rho].GA[5]] +
+DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]]) FAD[q, -p + q]"}
 };

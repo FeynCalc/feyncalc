@@ -145,6 +145,15 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 
 		ex = Uncontract[ex, Sequence@@qs, Pair -> {Polarization}, CartesianPair-> {Polarization}, FCI->True];
 
+		If[	!FreeQ[ex,DiracTrace],
+			FCPrint[1, "FCMultiLoopTID: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
+			time=AbsoluteTime[];
+			ex = ex /. DiracTrace[x__]/;!FreeQ2[x, qs] :> FCTraceExpand[DiracTrace[x],FCI->True];
+			FCPrint[1, "FCMultiLoopTID: Done applying FCTraceExpand timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+			FCPrint[3, "FCMultiLoopTID: After FCTraceExpand: ", ex , FCDoControl->mltidVerbose];
+		];
+
+
 		If[	!FreeQ[ex,DiracChain],
 			ex = DiracChainFactor[ex,FCI->True]
 		];
