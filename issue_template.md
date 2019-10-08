@@ -10,6 +10,10 @@
 
   ```Yes/No```
 
-*  <summary>Please provide a minimal working example that illustrates the problem. Please explain the difference between the current behavior and the expected behavior.</summary>    
+*  <summary>Does your Mathematica initialization file contain statements that might influence the behavior of FeynCalc? Sometimes external packages may modify `init.m` in unusual ways, causing troubles for other codes.</summary>    
+
+  ```Check the output of Import[FileNameJoin[{$UserBaseDirectory, "Kernel", "init.m"}], "String"]``` 
+
+*  <summary>Please provide a minimal working example that illustrates the problem and works on a fresh kernel. Please explain the difference between the current behavior and the expected behavior.</summary>    
 
   ```Paste your code here```
