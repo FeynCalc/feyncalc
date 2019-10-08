@@ -145,12 +145,8 @@ DiracChainJoin[expr_, OptionsPattern[]] :=
 diracChainEval[rest_. DiracChain[spinor_Spinor, i_DiracIndex] DiracChain[chain_, i_DiracIndex, j_]]:=
 	diracChainEval[rest DiracChain[chain,spinor,j]];
 
-(* sbar_j A_ij - special syntax for FeynArts *)
-diracChainEval[rest_. DiracChain[spinor_Spinor, j_DiracIndex] DiracChain[chain_, x_, j_DiracIndex]]:=
-	diracChainEval[rest DiracChain[chain,x,spinor]];
-
-(* A_ij s_j *)
-diracChainEval[rest_. DiracChain[chain_, i_, j_DiracIndex] DiracChain[j_DiracIndex, spinor_]]:=
+(* ... A_ij s_j *)
+diracChainEval[rest_. DiracChain[chain_, i:(_DiracIndex|_ExplicitDiracIndex|_Spinor), j_DiracIndex] DiracChain[j_DiracIndex, spinor_Spinor]]:=
 	diracChainEval[rest DiracChain[chain,i,spinor]];
 
 (* sbar_i A_ij s'_j *)
@@ -158,7 +154,7 @@ diracChainEval[rest_. DiracChain[chain_, spinor1_Spinor, spinor2_Spinor]]:=
 	holdDOT[spinor1,chain,spinor2] diracChainEval[rest];
 
 (* (sbar.A)_i (B.s')_i -> sbar.A.B.s' *)
-diracChainEval[rest_. DiracChain[spinor1_, i_DiracIndex] DiracChain[i_DiracIndex, spinor2_]]:=
+diracChainEval[rest_. DiracChain[spinor1_Spinor, i_DiracIndex] DiracChain[i_DiracIndex, spinor2_Spinor]]:=
 	holdDOT[spinor1,spinor2] diracChainEval[rest];
 
 (* A_ii -> Tr(A) *)
@@ -173,7 +169,8 @@ diracChainEval[rest_. DiracChain[a__,i_DiracIndex,b___] DiracIndexDelta[i_DiracI
 	diracChainEval[rest DiracChain[a,j,b]];
 
 (* A_ij B_jk -> (A.B)_ik *)
-diracChainEval[rest_. DiracChain[chain1_,a_,i_DiracIndex] DiracChain[chain2_,i_DiracIndex,b_]]:=
+diracChainEval[rest_. DiracChain[chain1_,a:(_DiracIndex|_ExplicitDiracIndex|_Spinor),i_DiracIndex] *
+		DiracChain[chain2_,i_DiracIndex,b: (_DiracIndex|_ExplicitDiracIndex|_Spinor)]]:=
 	diracChainEval[rest DiracChain[holdDOT[chain1,chain2],a,b]]/; a=!=i && b=!=i;
 
 (* d_ii -> Tr(1) *)

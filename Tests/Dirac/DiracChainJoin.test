@@ -93,7 +93,7 @@ m2, 1], j]"},
 {"fcstDiracChainJoin-ID20",
 "DiracChainJoin[DCHN[Spinor[p1, m], j] DCHN[GA[mu], i, j],
 FCE -> True]",
-"DCHN[GA[mu], i, Spinor[Momentum[p1], m, 1]]"},
+"DCHN[Spinor[p1, m], j] DCHN[GA[mu], i, j]"},
 {"fcstDiracChainJoin-ID21",
 "DiracChainJoin[DCHN[Spinor[p1, m], j] DCHN[Spinor[p2, m], i],
 FCE -> True]",
@@ -104,8 +104,9 @@ i]"},
 DCHN[GA[Lor2].GA[6].(me + GS[LoopMom1]).GA[Lor1].GA[6],
 Spinor[Momentum[OutMom1], me, 1], Dir1] DCHN[
 Spinor[Momentum[InMom1], me, 1], Dir1], FCE -> True]",
-"Spinor[Momentum[OutMom1], me, 1].GA[Lor2].GA[
-6].(me + GS[LoopMom1]).GA[Lor1].GA[6].Spinor[Momentum[InMom1], me, 1]"},
+"DCHN[Spinor[Momentum[InMom1], me, 1], Dir1] DCHN[
+GA[Lor2].GA[6].(me + GS[LoopMom1]).GA[Lor1].GA[6],
+Spinor[Momentum[OutMom1], me, 1], Dir1]"},
 {"fcstDiracChainJoin-ID23",
 "DiracChainJoin[
 DCHN[GA[nu], h, i] DCHN[GS[p] + m, i, j] DCHN[GA[mu], j, k],
