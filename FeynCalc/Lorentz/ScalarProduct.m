@@ -237,7 +237,7 @@ ScalarProduct/:
 		];
 
 		(* Last but not least, add the set scalar product to our list*)
-		FCPrint[1,"ScalarProduct: Adding vectors the the list of set scalar products"];
+		FCPrint[1,"ScalarProduct: Adding vectors to the list of set scalar products"];
 		entry= Sort[{Momentum[araw],Momentum[braw]}];
 		If[	!MemberQ[$ScalarProducts,entry],
 			AppendTo[$ScalarProducts,entry]
@@ -399,7 +399,7 @@ CartesianScalarProduct/:
 		];
 
 		(* Last but not least, add the set scalar product to our list*)
-		FCPrint[1,"CartesianScalarProduct: Adding vectors the the list of set scalar products"];
+		FCPrint[1,"CartesianScalarProduct: Adding vectors to the list of set scalar products"];
 		entry= Sort[{CartesianMomentum[araw],CartesianMomentum[braw]}];
 		If[	!MemberQ[$ScalarProducts,entry],
 			AppendTo[$ScalarProducts,entry]
@@ -455,7 +455,7 @@ SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
 		DownValues[TC] = Join[Thread[dummy[fceList, valsList]]/.dummy->RuleDelayed,DownValues[TC]];
 
 		(* Last but not least, add the set scalar product to our list*)
-		FCPrint[1,"SetTemporalComponent: Adding TemporalMomentum the the list of set scalar products"];
+		FCPrint[1,"SetTemporalComponent: Adding TemporalMomentum to the list of set scalar products"];
 
 		If[	!MemberQ[$ScalarProducts,{TemporalMomentum[a]}],
 			AppendTo[$ScalarProducts,{TemporalMomentum[a]}]

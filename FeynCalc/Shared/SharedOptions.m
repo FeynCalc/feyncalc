@@ -232,7 +232,7 @@ SchoutenAllowNegativeGain::usage=
 functions that attempt to simplify the input expression by applying Schouten's \
 identity. It is similar to SchoutenAllowZeroGain with the difference that even \
 transformations that increase the total number of terms might be applied in an \
-attempt to  arrive to shorter expressions at a a later stage.";
+attempt to  arrive to shorter expressions at a later stage.";
 
 SetDimensions::usage =
 "SetDimensions is an option for ScalarProduct, CartesianScalarProduct and \

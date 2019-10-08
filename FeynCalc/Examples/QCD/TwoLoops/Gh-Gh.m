@@ -66,7 +66,7 @@ Paint[diags, ColumnsXRows -> {4,1}, Numbering -> Simple,
 
 
 (* ::Text:: *)
-(*The prefactor 1/(2Pi)^(2D) for the loop integrals is understood. Notice that we ignore the first diagram (zero in DR) and the the fifth diagram, since its contribution is identical to that of the fourth diagram.*)
+(*The prefactor 1/(2Pi)^(2D) for the loop integrals is understood. Notice that we ignore the first diagram (zero in DR) and the fifth diagram, since its contribution is identical to that of the fourth diagram.*)
 
 
 amp[0] = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{2,3,4,6,7,8,9}], Truncated -> True, GaugeRules->{},
@@ -184,7 +184,7 @@ G2qEval= (-1/(4Pi)^D TarcerExpand[G2q, D -> 4 - 2 Epsilon, 0])/.
 
 
 (* ::Text:: *)
-(*Our result contains SEpsilon[4 - 2*Epsilon] which is an abbreviation for Exp[-Epsilon*EulerGamma]. Since eta is given by Exp[- Epsilon*EulerGamma] (1- 1/12 Pi^2 Epsilon^2 + ...) (c.f. Eq 4.7), it it clear that SEpsilon[4 - 2*Epsilon]^2 comes from there. To bring our result into the suitable form, we therefore must divide the term in the brackets by (1- 1/12 Pi^2 Epsilon^2)^2 or (1- Zeta2/2 Epsilon^2)^2  and again expand it in Epsilon. After that we can replace  SEpsilon[4 - 2*Epsilon]^2 by eta^2.*)
+(*Our result contains SEpsilon[4 - 2*Epsilon] which is an abbreviation for Exp[-Epsilon*EulerGamma]. Since eta is given by Exp[- Epsilon*EulerGamma] (1- 1/12 Pi^2 Epsilon^2 + ...) (c.f. Eq 4.7), it is clear that SEpsilon[4 - 2*Epsilon]^2 comes from there. To bring our result into the suitable form, we therefore must divide the term in the brackets by (1- 1/12 Pi^2 Epsilon^2)^2 or (1- Zeta2/2 Epsilon^2)^2  and again expand it in Epsilon. After that we can replace  SEpsilon[4 - 2*Epsilon]^2 by eta^2.*)
 
 
 G2qFinal=G2qEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//

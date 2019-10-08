@@ -404,7 +404,7 @@ FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
 
 FeynRule[lag_, fii_List, ru___Rule] :=
 	If[ Length[lag] === 0,
-		Print["well well ", lag, " does not look like a lagrangian"],
+		Print[lag, " does not look like a lagrangian"],
 		Block[ {(*InitialFunction stuff added by F.Orellana 3/8-2000*)
 		initf, nlag, temp1, temp,
 				fili = fii, lfili, qli,specope,

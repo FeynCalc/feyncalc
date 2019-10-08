@@ -9,14 +9,14 @@
 	Copyright (C) 2014-2019 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  phi phi -> phi phi, phi^4, asymptotic limit, 1-loop			*)
+(* :Summary:  Phi Phi -> Phi Phi, Phi^4, asymptotic limit, 1-loop			*)
 
 (* ------------------------------------------------------------------------ *)
 
 
 
 (* ::Title:: *)
-(*phi phi scattering at 1-loop*)
+(*Phi Phi scattering at 1-loop*)
 
 
 (* ::Section:: *)
@@ -24,11 +24,11 @@
 
 
 (* ::Text:: *)
-(*This example uses a custom phi^4 model created with FeynRules. Please evaluate the file*)
+(*This example uses a custom Phi^4 model created with FeynRules. Please evaluate the file*)
 (*FeynCalc/Examples/FeynRules/Phi4/GenerateModelPhi4.m before running it for the first time.*)
 
 
-description="phi phi -> phi phi, phi^4, asymptotic limit, 1-loop";
+description="Phi Phi -> Phi Phi, Phi^4, asymptotic limit, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];

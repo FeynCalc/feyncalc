@@ -123,7 +123,7 @@ Cell[TextData[{
      RowBox[{"q1", ",", "q2", ",", "..."}], "}"}]}], "]"}]], 
   "InlineFormula"],
  " \[LineSeparator]wraps loop integrals into heads specified by the user. \
-This is useful when you want to know which loop integrals appear appear in \
+This is useful when you want to know which loop integrals appear in \
 the given expression."
 }], "Usage",
  CellID->982511436],

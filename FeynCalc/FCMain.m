@@ -26,10 +26,10 @@ $AL::usage =
 Uncontract.";
 
 $Containers::usage =
-"$FieldContainers is a set of heads over which FieldDerivative should
-distribute, in the following sense: Let c be a member of $Containers. Then
-FieldDerivative[c[f, g, h][x], x, {mu}] ->
-c[FieldDerivative[f[x], x, {mu}], FieldDerivative[f[x], x, {mu}],
+"$FieldContainers is a set of heads over which FieldDerivative should \
+distribute, in the following sense: Let c be a member of $Containers. Then \
+FieldDerivative[c[f, g, h][x], x, {mu}] -> \
+c[FieldDerivative[f[x], x, {mu}], FieldDerivative[f[x], x, {mu}], \
 FieldDerivative[f[x], x, {mu}]].";
 
 $DisableMemSet::usage=
@@ -48,7 +48,7 @@ like DOT[ GA[mu], m + GS[p], GA[mu] ], \
 etc.";
 
 $DistributiveFunctions::usage =
-"$DistributiveFunctions is a set of functions over which FieldDerivative
+"$DistributiveFunctions is a set of functions over which FieldDerivative \
 should be distributed.";
 
 $FAPatch::usage =
@@ -61,13 +61,13 @@ To change to InputForm use FI.";
 
 $FCCheckContext::usage =
 "If set to True, FeynCalc will try to detect unwanted leakage of internal \
-objects into the Global or FeynCalc contexts. The default value is False,
+objects into the Global or FeynCalc contexts. The default value is False, \
 however $FCCheckContext will be automatically enabled in the development
 version.";
 
 $FCCloudTraditionalForm::usage=
-"$FCCloudTraditionalForm determines whether the the cell output will be done \
-in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting
+"$FCCloudTraditionalForm determines whether the cell output will be done \
+in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting \
 $Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
 
 $FCTraditionalFormOutput::usage=
@@ -112,7 +112,7 @@ working with Cartesian objects, like CartesianPair, CartesianIndex, CartesianMom
 {1,-1} corresponds to (1,-1,-1,-1) and {-1,1} means (-1, 1, 1, 1)";
 
 FCPrint::usage =
-"FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
+"FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose \
 is larger than level.";
 
 $FCS::usage = "$FCS is a list of functions with a short name. \
@@ -151,10 +151,10 @@ and gamma5.  $LeviCivitaSign is by default set to -1 which corresponds \
 to the convention Tr[GA[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]. \
 Setting $LeviCivitaSign=-I  will switch to the FORM-convention. \n
 
-In terms of explicit components, $LeviCivitaSign=1 corresponds to setting
-eps^{0123} = 1 (as in Peskin and Schroeder), while choosing $LeviCivitaSign=-1
-gives us the convention of Bjorken and Drell with eps^{0123} = -1. Two other
-possible choices are $LeviCivitaSign=-I to have eps^{0123} = I as in FORM and
+In terms of explicit components, $LeviCivitaSign=1 corresponds to setting \
+eps^{0123} = 1 (as in Peskin and Schroeder), while choosing $LeviCivitaSign=-1 \
+gives us the convention of Bjorken and Drell with eps^{0123} = -1. Two other \
+possible choices are $LeviCivitaSign=-I to have eps^{0123} = I as in FORM and \
 $LeviCivitaSign=I which would give eps^{0123} = -I.";
 
 $LimitTo4::usage =
@@ -167,7 +167,7 @@ of the pole and b being the finite part. Therefore, products \
 of such functions with coefficients that are rational functions \
 of D ( f(D) = f(4) + f'(4) (D-4) + O(Epsilon^2) ) can be simplified \
 to f(D) PaVe = f(4) PaVe + a f'(4) + O(Epsilon), whenever such \
-products appear in the reduction. This relation is correct only if
+products appear in the reduction. This relation is correct only if \
 the Passarino-Veltman functions have no IR divergences, or if such \
 divergences are regulated without using dimensional regularization.
 For this reason, even when $LimitTo4 is set to True, the simplifications \
@@ -206,7 +206,7 @@ Chisholm, Contract, DiracSimplify, FermionSpinSum and various \
 QCD functions. By default it is unset, but can be set to anything.";
 
 $Multiplications::usage =
-"$Multiplications is a set functions which should be treated as
+"$Multiplications is a set functions which should be treated as \
 (commutative or non-commutative) multiplications by FieldDerivative.";
 
 $NonComm::usage =
@@ -222,7 +222,7 @@ $OPEWard::usage =
 $RenameFeynCalcObjects::usage =
 "$RenameFeynCalcObjects specifies a List of replacement rules that \
 allow to rename FeynCalc objects on the run to avoid conflicts with \
-other package before FeynCalc is loaded (monkey patching). The value
+other package before FeynCalc is loaded (monkey patching). The value \
 of $RenameFeynCalcObjects must be specified before loading FeynCalc.";
 
 TBox::usage =
@@ -230,7 +230,7 @@ TBox::usage =
 a,b, ... are boxed in TraditionalForm.";
 
 UseWriteString::usage =
-"UseWriteString is an option for FCPrint. If set to True,
+"UseWriteString is an option for FCPrint. If set to True, \
 the expression is printed via WriteString instead of Print.";
 
 $VeryVerbose::usage =
@@ -239,11 +239,11 @@ If set to 1, 2, ..., less and more intermediate comments and informations \
 are displayed during calculations.";
 
 $FCAdvice::usage =
-"If $FCAdvice is set to True, FeynCalc will display some
+"If $FCAdvice is set to True, FeynCalc will display some \
 advices on optimal Mathematica configuration for using FeynCalc."
 
 WriteStringOutput::usage =
-"UseWriteStringOutput an option for FCPrint. It specifies, to which
+"UseWriteStringOutput an option for FCPrint. It specifies, to which \
 stream WriteString should output the expression";
 
 FeynCalc::faerror =
@@ -268,8 +268,8 @@ FeynCalc::context =
 "FeynCalc has detected strange objects in the Global or FeynCalc contexts.";
 
 FCDoControl::usage =
-"FCDoControl is an option for FCPrint that specifies which variable
-is used to control the debugging output of FCPrint. The default value
+"FCDoControl is an option for FCPrint that specifies which variable \
+is used to control the debugging output of FCPrint. The default value \
 is $VeryVerbose.";
 
 FCSetDiracGammaScheme::usage =
@@ -285,13 +285,13 @@ can be rewritten in such a way, that it contains either just one or not a single
 matrix. The latter traces are obviously unambiguous. The traces with one g^5 are \
 not well-defined in this scheme. It usually depends on the physics of the process, \
 whether and how they can contribute to the final result. Therefore, FeynCalc will \
-keep such traces unevaluated, leaving it to the user to decide how to treat them.
-Notice that traces with with an odd number of the usual Dirac matrices and one g^5,
+keep such traces unevaluated, leaving it to the user to decide how to treat them. \
+Notice that traces with an odd number of the usual Dirac matrices and one g^5, \
 that vanish in 4 dimensions, will be also put to zero in this scheme.\n
 
-\"NDR-Discard\" - This is a special version of the NDR scheme. The Dirac algebra is
-evaluated in the same way as with \"NDR\", but the remaining traces with one g^5
-are put to zero. This assumes that such traces do not contribute to the final result,
+\"NDR-Discard\" - This is a special version of the NDR scheme. The Dirac algebra is \
+evaluated in the same way as with \"NDR\", but the remaining traces with one g^5 \
+are put to zero. This assumes that such traces do not contribute to the final result, \
 which is obviously true only for specific calculations.\n
 
 \"BMHV\" - The Breitenlohner-Maison extension of the t'Hooft-Veltman scheme. This \
@@ -314,7 +314,7 @@ D-dimensional, i.e., contraction of two Eps's results in D's. \
 This scheme is often used for performance reasons and is assumed \
 to give the same results as the \
 Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, gamma5 is \
-not anticommuting inside closed fermion loops and it is not so clear
+not anticommuting inside closed fermion loops and it is not so clear \
 if this scheme works for more than one fermion line involving gamma5. \
 When in doubt, it might be better to use BMHV instead.";
 
@@ -342,13 +342,13 @@ FCGetPauliSigmaScheme::usage =
 matrices in D-1 dimensions.";
 
 FCEnableTraditionalFormOutput::usage =
-"FCEnableTraditionalFormOutput[] sets the output format of the current
-FrontEnd to TraditionalForm. The setting is not persistent, such that
+"FCEnableTraditionalFormOutput[] sets the output format of the current \
+FrontEnd to TraditionalForm. The setting is not persistent, such that \
 it does not influence any subequent Mathematica FrontEnd sessions.";
 
 FCDisableTraditionalFormOutput::usage =
-"FCDisableTraditionalFormOutput[] sets the output format of the current
-FrontEnd to StandardForm. The setting is not persistent, such that
+"FCDisableTraditionalFormOutput[] sets the output format of the current \
+FrontEnd to StandardForm. The setting is not persistent, such that \
 it does not influence any subequent Mathematica FrontEnd sessions.";
 
 FeynCalc::failmsg =

@@ -128,7 +128,7 @@ _FeynCalc_.
 
 # Filename structure
 
-Each particle interaction process is named according to to the following scheme
+Each particle interaction process is named according to the following scheme
 
 ## Gauge bosons
 

@@ -19,19 +19,19 @@
 
 FVProjectionT::usage=
 "FVProjectionT[x_,mu_,p_] returns the transverse component of the 4-vector \
-x^mu with respect to the the 4-vector p";
+x^mu with respect to the 4-vector p";
 
 FVProjectionL::usage=
 "FVProjectionL[x_,mu_,p_] returns the longitudinal component of the 4-vector \
-x^mu with respect to the the 4-vector p";
+x^mu with respect to the 4-vector p";
 
 FVProjectorT::usage=
 "FVProjectorT[mu,nu,p] returns the transverse projector with respect to \
-the the 4-vector p";
+the 4-vector p";
 
 FVProjectorL::usage=
 "FVProjectorL[mu,nu,p] returns the longitudinal projector with respect to \
-the the 4-vector p";
+the 4-vector p";
 
 $FVProjectionVersion::usage=
 "$FVProjectionVersion is the string that represents the version of FVProjection";

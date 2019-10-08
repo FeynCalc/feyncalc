@@ -363,7 +363,7 @@ The support for the manipulation of the new integral is still somewhat experimen
 
 * Added `ToSFAD`, a function that converts `FAD`s and `PropagatorDenominator`s to `SFAD`s and `StandardPropagatorDenominator`s. (f300d7f6)
 
-    * Example: Convert some integrals in the `FAD`-notation to the the `SFAD`-notation
+    * Example: Convert some integrals in the `FAD`-notation to the `SFAD`-notation
 
               ToSFAD[FAD[p]]
               

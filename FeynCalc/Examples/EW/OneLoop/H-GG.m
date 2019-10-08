@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2019 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  H -> G G, EW, total decay rate, 1-loop              			*)
+(* :Summary:  H -> Gl Gl, EW, total decay rate, 1-loop              			*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,7 +23,7 @@
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-description="H -> G G, EW, total decay rate, 1-loop";
+description="H -> Gl Gl, EW, total decay rate, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];

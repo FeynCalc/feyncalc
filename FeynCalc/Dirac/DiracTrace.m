@@ -541,7 +541,7 @@ spurNo5[x__DiracGamma]:=
 
 (*	traceNo5Wrap is a higher level function that handles the computation of traces without gamma 5,
 	all indices different.  The trick here 	is that as soon as we compute a trace for a given number of Dirac matrices,
-	we define it is a function (traceNo5fun) so that the result can be retrieved very fast. Combined with the the fast expansion
+	we define it is a function (traceNo5fun) so that the result can be retrieved very fast. Combined with the fast expansion
 	using fastExpand this provides a rather quick way to obtain Dirac traces. The bottlenecks here are the amount of RAM required
 	for caching and the general slowness of Mathematica on very large expressions. Traces with up to 14 Dirac matrices should be fine,
 	after that it becomes too slow *)

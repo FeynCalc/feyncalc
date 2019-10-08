@@ -771,7 +771,7 @@ createOneLoopShiftingList[xx_, q_, canonicalProps_] :=
 			Map[Solve[(xx /. q -> dummyP) == #, dummyP] &, canonicalProps] /. dummyP -> q
 		];
 
-(* Sorts the list of possible shifts according the the given criteria	*)
+(* Sorts the list of possible shifts according to the given criteria	*)
 sortWeightedShifts[{x1_,a1_,b1_,x2_},{y1_,a2_,b2_,y2_}]:=
 	sortWeightedShifts[{x1,a1,b1,x2},{y1,a2,b2,y2}]=
 		Which[
