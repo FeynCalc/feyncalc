@@ -78,5 +78,13 @@ DiracChain[ME + DiracGamma[Momentum[LoopMom1]], DiracIndex[Dir3], DiracIndex[Dir
 I*EL*DiracChain[DiracGamma[LorentzIndex[Lor1]] . DiracGamma[7], DiracIndex[Dir4], DiracIndex[Dir1]])*
 (I*EL*DiracChain[DiracGamma[LorentzIndex[Lor2]] . DiracGamma[6], DiracIndex[Dir2], DiracIndex[Dir3]] +
 I*EL*DiracChain[DiracGamma[LorentzIndex[Lor2]] . DiracGamma[7], DiracIndex[Dir2], DiracIndex[Dir3]])*FeynAmpDenominator[PropagatorDenominator[Momentum[LoopMom1], ME],
-PropagatorDenominator[Momentum[LoopMom1 - OutMom1], 0]]*Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]])/Pi^4"}
+PropagatorDenominator[Momentum[LoopMom1 - OutMom1], 0]]*Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]])/Pi^4"},
+{"fcstFCPrepareFAAmp-ID4","FCPrepareFAAmp[FeynArts`IndexDelta[SUNIndex[a],SUNIndex[b]]]","SUNDelta[SUNIndex[a], SUNIndex[b]]"},
+{"fcstFCPrepareFAAmp-ID5","FCPrepareFAAmp[FeynArts`IndexDelta[ExplicitSUNIndex[a],ExplicitSUNIndex[b]]]","SUNDelta[ExplicitSUNIndex[a], ExplicitSUNIndex[b]]"},
+{"fcstFCPrepareFAAmp-ID6","FCPrepareFAAmp[FeynArts`IndexDelta[SUNFIndex[a],SUNFIndex[b]]]","SUNFDelta[SUNFIndex[a], SUNFIndex[b]]"},
+{"fcstFCPrepareFAAmp-ID7","FCPrepareFAAmp[FeynArts`IndexDelta[ExplicitSUNFIndex[a],ExplicitSUNFIndex[b]]]","SUNFDelta[ExplicitSUNFIndex[a], ExplicitSUNFIndex[b]]"}
+
+
+
+
 };
