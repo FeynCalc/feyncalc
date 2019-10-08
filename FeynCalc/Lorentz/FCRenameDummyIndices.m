@@ -29,32 +29,73 @@ Begin["`Package`"]
 End[]
 
 Begin["`FCRenameDummyIndices`Private`"]
+rdiVerbose::usage="";
 
 Options[FCRenameDummyIndices] = {
-	FCE 	-> False,
-	FCI		-> False,
-	Head	-> {LorentzIndex, CartesianIndex, SUNIndex, SUNFIndex, DiracIndex}
+	DotSimplify	-> True,
+	Expanding	-> True,
+	FCE 		-> False,
+	FCI			-> False,
+	Head		-> {
+		LorentzIndex,
+		CartesianIndex,
+		SUNIndex,
+		SUNFIndex,
+		DiracIndex
+	},
+	FCVerbose	-> False
+
 };
 
 FCRenameDummyIndices[expr_List, opts:OptionsPattern[]] :=
 	Map[FCRenameDummyIndices[#,opts] &, expr];
 
 FCRenameDummyIndices[expr_, OptionsPattern[]] :=
-	Block[ {indexList = {}, replacementList, exprFCI, ex, res, heads, patt},
+	Block[{	indexList = {}, replacementList, exprFCI, ex, res, heads,
+			patt, optExpanding, time},
+
+		If [OptionValue[FCVerbose]===False,
+			rdiVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				rdiVerbose=OptionValue[FCVerbose]
+			];
+		];
 
 		heads = OptionValue[Head];
+		optExpanding = OptionValue[Expanding];
 
 		If[ !OptionValue[FCI],
 			exprFCI = FCI[expr],
 			exprFCI = expr
 		];
 
+		FCPrint[1,"FCRenameDummyIndices: Entering.", FCDoControl->rdiVerbose];
+		FCPrint[3,"FCRenameDummyIndices: Entering with ", exprFCI, FCDoControl->rdiVerbose];
+
 		If[	DummyIndexFreeQ[exprFCI, heads],
+			FCPrint[1,"FCRenameDummyIndices: No relevant dummy indices found, leaving.", FCDoControl->rdiVerbose];
 			Return[exprFCI]
 		];
 
 		ex = exprFCI;
-		exprFCI = exprFCI // DotSimplify[#,FCI->True]& // Expand;
+
+		If[ OptionValue[DotSimplify],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCRenameDummyIndices: Applying DotSimplify.", FCDoControl->rdiVerbose];
+			exprFCI = DotSimplify[exprFCI, FCI->True, Expanding->optExpanding];
+			FCPrint[1, "FCRenameDummyIndices: DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->rdiVerbose];
+			FCPrint[3, "FCRenameDummyIndices: After FCColorIsolate: ", exprFCI, FCDoControl->rdiVerbose];
+
+		];
+
+		If[ optExpanding,
+			time=AbsoluteTime[];
+			FCPrint[1, "FCRenameDummyIndices: Applying Expand.", FCDoControl->rdiVerbose];
+			exprFCI = Expand[exprFCI];
+			FCPrint[1, "FCRenameDummyIndices: Expand done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->rdiVerbose];
+			FCPrint[3, "FCRenameDummyIndices: After Expand: ", exprFCI, FCDoControl->rdiVerbose];
+		];
+
 
 		If[ Head[heads]=!=List || heads==={},
 			Message[FCRenameDummyIndices::failmsg, "You did not specify which index heads should be renamed."];
@@ -74,7 +115,7 @@ FCRenameDummyIndices[expr_, OptionsPattern[]] :=
 				Cases[exprFCI, (patt)[ind_,___] :> ind, Infinity] // Tally;
 		];
 
-		FCPrint[1,"List of indices to be randomized: ", StandardForm[indexList]];
+		FCPrint[1,"FCRenameDummyIndices: List of indices to be randomized: ", StandardForm[indexList], FCDoControl->rdiVerbose];
 
 		If[ Select[indexList, ((#[[2]]) > 2) &]=!={},
 			Message[FCRenameDummyIndices::failmsg, "The input expression violates Einstein summation. Some dummy indices appear more than twice."];
@@ -83,13 +124,16 @@ FCRenameDummyIndices[expr_, OptionsPattern[]] :=
 
 		replacementList = Map[Rule[(h: patt)[#[[1]],di___], h[$AL[Unique[]],di]] &, Cases[indexList, {_, 2}]];
 
-		FCPrint[2,"List of replacement rules: ", replacementList];
+		FCPrint[2,"FCRenameDummyIndices: List of replacement rules: ", replacementList];
 
 		res = ex //. replacementList;
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1,"FCRenameDummyIndices: Leaving.", FCDoControl->rdiVerbose];
+		FCPrint[3,"FCRenameDummyIndices: Leaving with ", res, FCDoControl->rdiVerbose];
 
 		res
 	]

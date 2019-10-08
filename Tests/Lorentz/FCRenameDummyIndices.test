@@ -54,5 +54,9 @@ DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
 FCE -> True],
 DIDelta[$AL[a_], $AL[b_]] DCHN[
 Spinor[-Momentum[p1], 0, 1], $AL[b_]] DCHN[
-Spinor[Momentum[p1], 0, 1], $AL[a_]]]","True"}
+Spinor[Momentum[p1], 0, 1], $AL[a_]]]","True"},
+{"FCRenameDummyIndices-ID9",
+	"MatchQ[FCRenameDummyIndices[
+tr[GA[mu].(1 - GA[5]), GA[mu].(1 - GA[5])], DotSimplify -> False, FCE -> True],
+tr[GA[$AL[a_]].(1 - GA[5]), GA[$AL[a_]].(1 - GA[5])]]", "True"}
 };
