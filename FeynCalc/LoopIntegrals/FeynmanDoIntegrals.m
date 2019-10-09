@@ -171,7 +171,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 	epsorders = EpsilonOrder /. Flatten[{opts}] /. Options[FeynmanDoIntegrals],
 	serie,fci,fcin,intopts,nintopts,exp,serie0,serie1,serie2,tmpres,transfac,
 	ruls,kk,varsdrop,epsorder,vars,varlims0,varlims,varlimsout,varp, newvars,
-	expred, delcol,serie4,serie5, del, res,moms, cou, serie3, seri, tmp
+	expred, delcol,serie4,serie5, del, res,moms, cou, serie3, seri, tmp, tRule
 	},
 		varsdrop = {};
 
@@ -280,6 +280,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 		(*If so chosen, expand without blowing up too much:*)
 		If[ (Expand /. Flatten[{opts}] /. Options[FeynmanDoIntegrals]),
 			ruls = {};
+			tRule = {z_^(b_)/;!FreeQ2[b, {DD,Epsilon}] :> z^(b /. {DD -> 4, Epsilon -> 0})};
 			FCPrint[2,"Starting expansion of expression size: ", LeafCount[exp]];
 			serie = Expand[dumf*transfac*(expred) /.
 				Log[(a_?(!FreeQ[#, kk]&))*(b_?(FreeQ[#, kk]&))] :>
@@ -290,7 +291,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 				Itzykson&Zuber calculation*)
 				a_?( (!NumberQ[#] && NumericQ1[#, Union[vars,{(*Epsilon*)}]] &&
 						PolynomialQ[(Denominator[#]* Numerator[#])& [
-						Factor[# /. {t_^(b_)/;!FreeQ[b, DD|Epsilon] :> t^(b /. {DD -> 4, Epsilon -> 0})}]],
+						Factor[# /. tRule]],
 						vars]) & ) :> (sym = Unique["r"];
 										ruls = Append[ruls, sym -> a];
 										sym))] /. ruls;

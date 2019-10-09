@@ -264,17 +264,11 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 
 
 tidSingleIntegral[int_, qs_List , n_] :=
-	(
-	{num, den} = FCProductSplit[int, {FeynAmpDenominator}];
-	tmp= FCProductSplit[num, {ExplicitLorentzIndex[0]}];
-	(*Print[tmp[[2]]];*)
-	(*If[ MatchQ[tmp[[2]],HoldPattern[Times[TemporalPair[TemporalMomentum[_], ExplicitLorentzIndex[0]] ..]] | TemporalPair[TemporalMomentum[_], ExplicitLorentzIndex[0]]],*)
+	Block[{num,den,tmp},
+		{num, den} = FCProductSplit[int, {FeynAmpDenominator}];
+		tmp= FCProductSplit[num, {ExplicitLorentzIndex[0]}];
 		tmp[[2]] tidSingleIntegral[tmp[[1]] den,qs,n]
-	(*	Message[FCMultiLoopTID::failmsg,"tidSingleIntegral failed to split off the temporal components of the given loop integral"];
-		Abort[]*)
-
-
-	)/; !FreeQ[int /. _FeynAmpDenominator -> Unique[],ExplicitLorentzIndex[0]];
+	]/; !FreeQ[int /. _FeynAmpDenominator -> Unique[],ExplicitLorentzIndex[0]];
 
 
 tidSingleIntegral[int_, qs_List , n_] :=
@@ -321,7 +315,7 @@ tidSingleIntegral[int_, qs_List , n_] :=
 				];
 
 				(* Create list of loop momenta and their Lorentz indices as used in Tdec *)
-				umoms = Sort[Cases[lis+null1+null2,Pair[Momentum[x_,n],LorentzIndex[li_,n]]:>{x,li},Infinity]];
+				umoms = Sort[Cases[lis+null1+null2,Pair[Momentum[x_,n],LorentzIndex[i_,n]]:>{x,i},Infinity]];
 				(* Check the Gram determinant	*)
 				If[ extmoms=!={},
 					FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
@@ -347,7 +341,7 @@ tidSingleIntegral[int_, qs_List , n_] :=
 				];
 
 				(* Create list of loop momenta and their Lorentz indices as used in Tdec *)
-				umoms = Sort[Cases[cis+null1+null2,CartesianPair[CartesianMomentum[x_,n-1],CartesianIndex[ci_,n-1]]:>{x,ci},Infinity]];
+				umoms = Sort[Cases[cis+null1+null2,CartesianPair[CartesianMomentum[x_,n-1],CartesianIndex[i_,n-1]]:>{x,i},Infinity]];
 				(* Check the Gram determinant	*)
 				If[ extmoms=!={},
 					FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
@@ -377,7 +371,7 @@ tidSingleIntegral[int_, qs_List , n_] :=
 				res = TID[int,First[qs],FCI->True],
 				Message[FCMultiLoopTID::gramzero];
 				res = tdecHead[umoms,extmoms,List->False,FeynCalc`Package`BasisOnly -> True,Dimension->tdecDim]/.
-					FCGV["GCF"][x__,li_,pli_]:>FCGV["GCF"][x,Map[{ToString[#[[1]]],#[[2]]}&,li],pli,ToString[FCE@int,InputForm]]
+					FCGV["GCF"][x__,i_,p_]:>FCGV["GCF"][x,Map[{ToString[#[[1]]],#[[2]]}&,i],p,ToString[FCE@int,InputForm]]
 			],
 			res = tdecHead[umoms,extmoms,List->False,Dimension->tdecDim]*rest;
 		];

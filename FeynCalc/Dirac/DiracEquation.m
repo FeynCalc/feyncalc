@@ -28,6 +28,7 @@ End[]
 Begin["`DiracEquation`Private`"]
 
 HoldDOT::usage="";
+tmp::usage="";
 
 Options[DiracEquation] = {
 	FCI -> False,

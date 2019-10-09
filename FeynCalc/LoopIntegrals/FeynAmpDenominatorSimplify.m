@@ -1070,16 +1070,16 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 
 		(*Seems that for some reason we are not allowed to touch those named blanks*)
 		amucheck[k1_, _][PD[_. Momentum[k1_,___] + bb_. ,0].., b___] :=
-			0 /; FreeQ[{b}, k1];
+			0 /; FreeQ[{b}, k1] && bb=!=0;
 
 		amucheck[k1_, _][b___,PD[_. Momentum[k1_,___] + bb_. ,0]..] :=
-			0 /; FreeQ[{b}, k1];
+			0 /; FreeQ[{b}, k1] && bb=!=0;
 
 		amucheck[_, k2_][b___,PD[_. Momentum[k2_,___] + bb_. ,0]..] :=
-			0 /; FreeQ[{b}, k2];
+			0 /; FreeQ[{b}, k2] && bb=!=0;
 
 		amucheck[_, k2_][PD[_. Momentum[k2_,___] + bb_. ,0].., b___] :=
-			0 /; FreeQ[{b}, k2];
+			0 /; FreeQ[{b}, k2] && bb=!=0;
 
 		pe[qu1_,qu2_, prop_] :=
 			Block[ {pet = SelectFree[Cases2[prop//MomentumExpand,Momentum]/.
