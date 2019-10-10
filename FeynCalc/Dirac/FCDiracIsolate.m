@@ -64,7 +64,11 @@ makeSelectionList[expr_,heads_List]:=
 			Cases[SelectNotFree[expr, heads],  l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity]]]
 ];
 
-FCDiracIsolate[expr_, OptionsPattern[]] :=
+
+FCDiracIsolate[expr_List, opts:OptionsPattern[]]:=
+	FCDiracIsolate[#, opts]&/@expr;
+
+FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 	Block[{	res, null1, null2, ex,tmp, head, selectionList, lorHead,
 			tmpHead, tmpHead2, time, fcdiVerbose,
 			headsList, optTimeConstrained, optHead, headR},

@@ -68,5 +68,7 @@ colInB, colOutS] SDF[colInS, colOutB], ExceptHeads -> {CA},
 Head -> col, FCE -> True]", "col[SDF[colInB, colOutS] SDF[colInS, colOutB]] Spinor[Momentum[p1, D],
 	mb, 1].GAD[FCGV[mu]].GA[7].Spinor[Momentum[p3, D], ms,
 1] Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GSD[p1].GSD[p1].GA[
-7].Spinor[-Momentum[p2, D], ms, 1]"}
+7].Spinor[-Momentum[p2, D], ms, 1]"},
+{"fcstFCColorIsolate-ID13", "FCColorIsolate[{SUNT[a], SUNT[b]}, Head -> col, FCE -> True]",
+"{col[SUNT[a]], col[SUNT[b]]}"}
 });

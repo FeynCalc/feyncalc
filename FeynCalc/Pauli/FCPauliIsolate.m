@@ -61,7 +61,10 @@ makeSelectionList[expr_,heads_List]:=
 			Cases[SelectNotFree[expr, heads],  l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity]]]
 ];
 
-FCPauliIsolate[expr_, OptionsPattern[]] :=
+FCPauliIsolate[expr_List, opts:OptionsPattern[]]:=
+	FCPauliIsolate[#, opts]&/@expr;
+
+FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 	Block[{	res, null1, null2, ex,tmp, head, selectionList, lorHead,
 			tmpHead,tmpHead2, time, fcpiVerbose, headsList,
 			optTimeConstrained, optHead, headR},

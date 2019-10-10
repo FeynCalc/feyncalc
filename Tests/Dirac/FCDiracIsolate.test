@@ -285,6 +285,8 @@ FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
 DotSimplify //
 FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
 FCJoinDOTs -> False, FCE -> True] &"},
-{"fcstFCDiracIsolate-ID32", "FCDiracIsolate[x,Head->{di,re}]", "re[x]"}
+{"fcstFCDiracIsolate-ID32", "FCDiracIsolate[x,Head->{di,re}]", "re[x]"},
+{"fcstFCDiracIsolate-ID33", "FCDiracIsolate[{GA[i], GS[p]}, Head -> di, FCE -> True]",
+"{di[GA[i]], di[GS[p]]}"}
 });
 

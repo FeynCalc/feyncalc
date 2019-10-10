@@ -53,7 +53,10 @@ Options[FCMatrixIsolate] = {
 	TimeConstrained	-> 3
 };
 
-FCMatrixIsolate[expr_, OptionsPattern[]] :=
+FCMatrixIsolate[expr_List, opts:OptionsPattern[]]:=
+	FCMatrixIsolate[#, opts]&/@expr
+
+FCMatrixIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 	Block[{	res, ex, optHead, optOrdering, time,
 			optFCDiracIsolate, optFCPauliIsolate, optFCColorIsolate
 		},

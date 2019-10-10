@@ -133,5 +133,10 @@ DCHN[Spinor[Momentum[k2], mu, 1], i] DCHN[
 	Spinor[Momentum[p1], mu, 1], j] DCHN[
 	GS[Polarization[p2, I]].(mu + GS[k2 - p2]).GS[
 	Polarization[k1, -I, Transversality -> True]], i,
-	j]] re[-e eQ gs FAD[{-k2 + p2, mu}, Dimension -> 4]]"}
+	j]] re[-e eQ gs FAD[{-k2 + p2, mu}, Dimension -> 4]]"},
+{"fcstFCMatrixIsolate-ID12", "FCMatrixIsolate[{GA[mu], SI[j], SUNT[a]},
+FCColorIsolate -> {col},
+FCDiracIsolate -> {di},
+FCPauliIsolate -> {pau},
+FCE -> True]", "{di[GA[mu]], pau[SI[j]], col[SUNT[a]]}"}
 });

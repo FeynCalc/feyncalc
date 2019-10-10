@@ -47,7 +47,11 @@ Options[FCColorIsolate] = {
 	TimeConstrained	-> 3
 };
 
-FCColorIsolate[expr_, OptionsPattern[]] :=
+
+FCColorIsolate[expr_List, opts:OptionsPattern[]]:=
+	FCColorIsolate[#, opts]&/@expr;
+
+FCColorIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 	Block[ {res, null1, null2, ex,tmp, head, optHead, headR, relevantHeads},
 
 		optHead = OptionValue[Head];
