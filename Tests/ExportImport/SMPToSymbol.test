@@ -1,0 +1,21 @@
+
+
+(* :Title: SMPToSymbol.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2019 Rolf Mertig
+	Copyright (C) 1997-2019 Frederik Orellana
+	Copyright (C) 2014-2019 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SMPToSymbol	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`ExportImport`fcstSMPToSymbol = ({
+{"fcstSMPToSymbol-ID1", "SMPToSymbol[a + b]", "a+b"},
+{"fcstSMPToSymbol-ID2", "SMPToSymbol[SMP[\"m_e\"]^2 + SMP[\"m_mu\"]^2 + c SMP[\"s_w\"]]",
+"me^2 + mmu^2 + c sw"},
+{"fcstSMPToSymbol-ID3", "SMPToSymbol[SMP[{\"V_cb\", I}] SMP[{\"V_cb\", -I}]]", "Vcb VcbCC"}
+})
