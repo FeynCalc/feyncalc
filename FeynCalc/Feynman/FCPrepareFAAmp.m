@@ -32,6 +32,8 @@ End[]
 
 Begin["`FCPrepareFAAmp`Private`"]
 
+tmp::usage="";
+
 Options[FCPrepareFAAmp] = {
 	FeynAmpDenominatorCombine	-> True,
 	SMP 						-> False,
@@ -73,9 +75,10 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 
 
-		replist0 = {NonCommutative[x__] :> FeynArts`FANonCommutative[x]
-
-					};
+		replist0 = {
+			NonCommutative[x__] :> FeynArts`FANonCommutative[x],
+			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 :> (tmp = Unique["Ind"] ; x /. ind -> tmp)
+		};
 
 		replist1 = {FeynArts`Index[Global`Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],
 					FeynArts`Index[Global`Gluon, x_] :> SUNIndex[ToExpression["Glu" <> ToString[x]]],
@@ -89,7 +92,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					Conjugate[Global`FAPolarizationVector][_, x_, y_] :> Pair[LorentzIndex[y],Momentum[Polarization[x,-I]]],
 					Global`FAChiralityProjector[-1] :> DiracGamma[7],
 					Global`FAChiralityProjector[1] :> DiracGamma[6],
-					Global`FADiracMatrix :> DiracGamma,
+					Global`FADiracMatrix[x_] :> DiracGamma[LorentzIndex[x]],
 					Global`FAScalarProduct[x_,y_] :> Pair[Momentum[x],Momentum[y]],
 					Global`FADiracSlash[x_] :> DiracGamma[Momentum[x]],
 					Global`FADiracSpinor :> Spinor,

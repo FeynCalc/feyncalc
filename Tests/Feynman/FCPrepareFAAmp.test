@@ -82,9 +82,19 @@ PropagatorDenominator[Momentum[LoopMom1 - OutMom1], 0]]*Pair[LorentzIndex[Lor1],
 {"fcstFCPrepareFAAmp-ID4","FCPrepareFAAmp[FeynArts`IndexDelta[SUNIndex[a],SUNIndex[b]]]","SUNDelta[SUNIndex[a], SUNIndex[b]]"},
 {"fcstFCPrepareFAAmp-ID5","FCPrepareFAAmp[FeynArts`IndexDelta[ExplicitSUNIndex[a],ExplicitSUNIndex[b]]]","SUNDelta[ExplicitSUNIndex[a], ExplicitSUNIndex[b]]"},
 {"fcstFCPrepareFAAmp-ID6","FCPrepareFAAmp[FeynArts`IndexDelta[SUNFIndex[a],SUNFIndex[b]]]","SUNFDelta[SUNFIndex[a], SUNFIndex[b]]"},
-{"fcstFCPrepareFAAmp-ID7","FCPrepareFAAmp[FeynArts`IndexDelta[ExplicitSUNFIndex[a],ExplicitSUNFIndex[b]]]","SUNFDelta[ExplicitSUNFIndex[a], ExplicitSUNFIndex[b]]"}
-
-
-
-
+{"fcstFCPrepareFAAmp-ID7","FCPrepareFAAmp[FeynArts`IndexDelta[ExplicitSUNFIndex[a],ExplicitSUNFIndex[b]]]","SUNFDelta[ExplicitSUNFIndex[a], ExplicitSUNFIndex[b]]"},
+{"fcstFCPrepareFAAmp-ID8","MatchQ[FCPrepareFAAmp[
+Times[FeynArts`IndexSum[
+	Times[FeynArts`DiracObject[Global`FADiracMatrix[a],
+	   Global`FAChiralityProjector[-1]][
+	  FeynArts`Index[Global`Dirac, 1],
+	  FeynArts`Index[Global`Dirac, 3]],
+	 FeynArts`DiracObject[Global`FADiracMatrix[a],
+	   Global`FAChiralityProjector[-1]][
+	  FeynArts`Index[Global`Dirac, 4],
+	  FeynArts`Index[Global`Dirac, 2]]], List[a, 1, 4]]]],
+DiracChain[DiracGamma[z_LorentzIndex].DiracGamma[7],
+DiracIndex[Dir1], DiracIndex[Dir3]] DiracChain[
+DiracGamma[z_LorentzIndex].DiracGamma[7], DiracIndex[Dir4],
+DiracIndex[Dir2]]]","True"}
 };

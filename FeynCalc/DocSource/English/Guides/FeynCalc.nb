@@ -2221,6 +2221,11 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracChainJoin"]], "InlineFunctionSans"],
  ", ",
+ Cell[TextData[ButtonBox["FCFADiracChainJoin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCFADiracChainJoin"]], 
+  "InlineFunctionSans"],
+ ", ",
  Cell[TextData[ButtonBox["DiracChainCombine",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracChainCombine"]], "InlineFunctionSans"],
@@ -2236,7 +2241,7 @@ Cell[TextData[{
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " manipulations of matrix chains with explicit Dirac indices "
+ " manipulations of matrix chains with explicit Dirac indices"
 }], "GuideText",
  CellID->2051310471],
 
@@ -3665,6 +3670,20 @@ Cell[TextData[{
  CellID->440214481],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["SMPToSymbol",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SMPToSymbol"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " converts ",
+ Cell[TextData[ButtonBox["SMP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SMP"]], "InlineFunctionSans"],
+ "'s to symbols"
+}], "GuideText",
+ CellID->849708221],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["Write2",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Write2"]], "InlineFunctionSans"],
@@ -4361,7 +4380,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{635, Automatic}, {17, Automatic}},
+WindowMargins->{{615, Automatic}, {-10, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,

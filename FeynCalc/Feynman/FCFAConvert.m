@@ -61,6 +61,7 @@ Options[FCFAConvert] = {
 	ChangeDimension 				-> False,
 	Contract 						-> False,
 	DropSumOver 					-> False,
+	FCFADiracChainJoin				-> True,
 	FeynAmpDenominatorCombine		-> True,
 	FinalSubstitutions				-> {},
 	IncomingMomenta					-> {},
@@ -142,7 +143,7 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 		];
 
 		If[	TrueQ[OptionValue[Contract]],
-			diagsConverted = Contract/@diagsConverted
+			diagsConverted = Contract[#,FCI->True]&/@diagsConverted
 		];
 
 		If[	!OptionValue[List],
@@ -151,6 +152,10 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 
 		If[	OptionValue[FinalSubstitutions]=!={},
 			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
+		];
+
+		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
+			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
 		];
 
 		Return[diagsConverted]

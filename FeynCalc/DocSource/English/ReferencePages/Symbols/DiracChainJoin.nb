@@ -123,6 +123,12 @@ wrapped with a head DiracChain."
 }], "Usage",
  CellID->982511436],
 
+Cell["\<\
+Notice that DiracChainJoin is not suitable for creating closed Dirac chains \
+out of the FeynArts output with explicit Dirac indices, e.g. when the model \
+contains 4-fermion operators. Use FCFADiracChainJoin for that.\
+\>", "Notes"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -218,6 +224,11 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracChainFactor",
   ButtonNote->"DiracChainFactor"],
+ ", ",
+ ButtonBox["FCFADiracChainJoin",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCFADiracChainJoin",
+  ButtonNote->"FCFADiracChainJoin"],
  "."
 }], "SeeAlso",
  CellID->655647701]
@@ -454,7 +465,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{Automatic, 332}, {Automatic, 94}},
+WindowMargins->{{Automatic, 322}, {Automatic, 86}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",

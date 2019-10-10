@@ -184,6 +184,7 @@ dotHold[]:=
 dotHold[a___, cctEvaluateMultiple[1], b___]:=
 	dotHold[a,b];
 
+(* C (si^{mu nu})^T C^(-1) = - si^{mu nu} *)
 cctEvaluateSingle[d_DiracSigma]:=
 	- d/; FreeQ2[d,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
