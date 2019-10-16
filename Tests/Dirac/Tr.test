@@ -282,20 +282,36 @@ mb (mc1^2 (YiPRCC Ys1 Ys2 + YiPR Ys1CC Ys2CC) + (mc2^2 - s) *
 {"fcstTr-ID28", "Tr[GS[p].GS[p].GS[r]]", "0"},
 {"fcstTr-ID29", "Tr[GS[p].GS[q].GS[r]]", "0"},
 {"fcstTr-ID30",
-	"FCSetDiracGammaScheme[\"BMHV\"]; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
-	ScalarProduct[o, o] = 0; \n
-	tmp = (Expand[(-ChangeDimension[Contract[
-	Tr[GAD[rho].GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[mu].(1 - GA[5]).GSD[p].GAD[nu].(1 -
-	GA[5]).(GSD[l] + GSD[o])]*I*LCD[mu, nu, al, bet] FVD[p, al] FVD[o + l - p, bet]], 4]/
-	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // ExpandScalarProduct // Expand// FCE); FCClearScalarProducts[]; \n tmp",
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n FCClearScalarProducts[]; \n ScalarProduct[p, p, SetDimensions -> {4, D, D - 4}] = 0; \n ScalarProduct[l, l, SetDimensions -> {4, D, D - 4}] = 0; \n
+	ScalarProduct[o, o, SetDimensions -> {4, D, D - 4}] = 0; \n
+	tmp = (SelectFree[
+		Expand[Contract[
+			(-1)Tr[GAD[rho].GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[
+				mu].(1 - GA[5]).GSD[p].GAD[
+				nu].(1 - GA[5]).(GSD[l] + GSD[o])]*I*
+			LCD[mu, nu, al, bet] FVD[p, al] FVD[o + l - p,
+				bet]] /.
+			Pair[h1_[a1_, d_Symbol], h2_[a2_, d_Symbol]] :>
+			Pair[h1[a1], h2[a2]] -
+			Pair[h1[a1, d - 4], h2[a2, d - 4]]], D - 4]/4/2/
+		SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps //
+ExpandScalarProduct // Expand // FCE; \n FCClearScalarProducts[]; \n tmp",
 	"-((4 SP[l, p]^2)/SP[l, o]) - (4 eps SP[l, p]^2)/SP[l, o] - (4 SP[l, p] SP[o, p])/SP[l, o] - (4 eps SP[l, p] SP[o, p])/SP[l, o]"},
 {"fcstTr-ID31",
-	"FCSetDiracGammaScheme[\"BMHV\"]; \n FCClearScalarProducts[]; \n ScalarProduct[p, p] = 0; \n ScalarProduct[l, l] = 0; \n
-	ScalarProduct[o, o] = 0; \n
-	tmp = (Expand[(-ChangeDimension[Contract[
-	Tr[GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[mu].(1 - GA[5]).GSD[p].GAD[nu].(1 -
-	GA[5]).(GSD[l] + GSD[o]).GAD[rho]]*I*LCD[mu, nu, al, bet] FVD[p, al] FVD[o + l - p, bet]], 4]/
-	4/2/SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps] // ExpandScalarProduct // Expand// FCE); FCClearScalarProducts[]; \n tmp",
+	"FCSetDiracGammaScheme[\"BMHV\"]; \n FCClearScalarProducts[]; \n ScalarProduct[p, p, SetDimensions -> {4, D, D - 4}] = 0; \n ScalarProduct[l, l, SetDimensions -> {4, D, D - 4}] = 0; \n
+	ScalarProduct[o, o, SetDimensions -> {4, D, D - 4}] = 0; \n
+	tmp = (SelectFree[
+			Expand[Contract[(-1) Tr[
+				GSD[o].GAD[rho].(GSD[l] + GSD[o]).GAD[
+				mu].(1 - GA[5]).GSD[p].GAD[
+				nu].(1 - GA[5]).(GSD[l] + GSD[o]).GAD[rho]]*I*
+				LCD[mu, nu, al, bet] FVD[p, al] FVD[o + l - p,
+				bet]] /.
+			Pair[h1_[a1_, d_Symbol], h2_[a2_, d_Symbol]] :>
+			Pair[h1[a1], h2[a2]] -
+				Pair[h1[a1, d - 4], h2[a2, d - 4]]], D - 4]/4/2/
+		SP[l, o]/2/SP[l, o]) /. D -> 4 + 2*eps //
+	ExpandScalarProduct // Expand // FCE; \n FCClearScalarProducts[]; \n tmp",
 	"-((4 SP[l, p]^2)/SP[l, o]) - (4 eps SP[l, p]^2)/SP[l, o] - (4 SP[l, p] SP[o, p])/SP[l, o] - (4 eps SP[l, p] SP[o, p])/SP[l, o]"},
 {"fcstTr-ID32", "Tr[FV[k1 + k2, mu] (GA[al] FV[k1, al] + m).(GA[mu] f1 - 1/2 I/m 1/2 I (GA[mu, nu] - GA[nu, mu]) FV[k1 - k2, nu] f2).(GS[k1] + m)]//FCE",
 "8 f1 m (SP[k1, k1] + SP[k1, k2])"},

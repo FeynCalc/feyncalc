@@ -63,12 +63,12 @@ m3].GA[j].Spinor[p4,m4]]//FCE",
 	DiracTrick[GA[6].GA[mu]]//FCE", "GA[mu] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID19",
 "DiracTrick[GA[6].GAD[mu]]//FCE",
-"GAD[mu] . GA[7] + GAE[mu] . GA[5]"},
+"GA[mu] . GA[7] + GAE[mu] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID20",
 "DiracTrick[GA[7].GA[mu]]//FCE", "GA[mu] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID21",
 "DiracTrick[GA[7].GAD[mu]]//FCE",
-"GAD[mu] . GA[6] - GAE[mu] . GA[5]"},
+"GA[mu] . GA[6] + GAE[mu] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID22", "FCSetDiracGammaScheme[\"NDR\"]; \n
 DiracTrick[GA[5].GA[i, j, k]]//FCE",
 "-GA[i] . GA[j] . GA[k] . GA[5]"},
@@ -187,260 +187,170 @@ DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
 "2*m*GA[nu] . GA[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID58",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAD[si] . GA[6] - GAD[nu] . GAD[rho] . \
-GAE[si] . GA[6] - GAD[nu] . GAE[rho] . GAD[si] . GA[6] + 2*GAD[nu] . \
-GAE[rho] . GAE[si] . GA[6] - GAE[nu] . GAD[rho] . GAD[si] . GA[6] + \
-2*GAE[nu] . GAD[rho] . GAE[si] . GA[6] - 2*(-GAE[nu] . GAE[rho] . \
-GAD[si] . GA[6] + 2*GAE[nu] . GAE[rho] . GAE[si] . GA[6])) + GAD[mu] \
-. GAD[nu] . GAD[rho] . GAE[si] . GA[6] + GAD[mu] . GAD[nu] . GAE[rho] \
-. GAD[si] . GA[6] - 2*GAD[mu] . GAD[nu] . GAE[rho] . GAE[si] . GA[6] \
-+ GAD[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[6] - 2*GAD[mu] . \
-GAE[nu] . GAD[rho] . GAE[si] . GA[6] + 2*(-GAD[mu] . GAE[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GAD[mu] . GAE[nu] . GAE[rho] . GAE[si] \
-. GA[6]) + GAE[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[6] - 2*GAE[mu] \
-. GAD[nu] . GAD[rho] . GAE[si] . GA[6] + 2*(-GAE[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GAE[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[6]) - 2*(GAE[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[6] - \
-2*GAE[mu] . GAE[nu] . GAD[rho] . GAE[si] . GA[6] + 2*(-GAE[mu] . \
-GAE[nu] . GAE[rho] . GAD[si] . GA[6] + 2*GAE[mu] . GAE[nu] . GAE[rho] \
-. GAE[si] . GA[6]))"},
+"GA[mu] . GA[nu] . GA[rho] . GAE[si] . GA[6] + GA[mu] . GA[nu] . GAE[rho] . GA[si] . GA[6] +
+GA[mu] . GAE[nu] . GA[rho] . GA[si] . GA[6] + GA[mu] . GAE[nu] . GAE[rho] . GAE[si] . GA[6] +
+(2*m + GAE[mu]) . GA[nu] . GA[rho] . GA[si] . GA[6] + (2*m +
+GAE[mu]) . GA[nu] . GAE[rho] . GAE[si] . GA[6] + (2*m +
+GAE[mu]) . GAE[nu] . GA[rho] . GAE[si] . GA[6] + (2*m +
+GAE[mu]) . GAE[nu] . GAE[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID59",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAD[si] . GA[6] - GAD[nu] . GAD[rho] . \
-GAE[si] . GA[6] - GAD[nu] . GAE[rho] . GAD[si] . GA[6] + 2*GAD[nu] . \
-GAE[rho] . GAE[si] . GA[6] - GAE[nu] . GAD[rho] . GAD[si] . GA[6] + \
-2*GAE[nu] . GAD[rho] . GAE[si] . GA[6] - 2*(-GAE[nu] . GAE[rho] . \
-GAD[si] . GA[6] + 2*GAE[nu] . GAE[rho] . GAE[si] . GA[6])) + GA[mu] . \
-GAD[nu] . GAD[rho] . GAE[si] . GA[6] + GA[mu] . GAD[nu] . GAE[rho] . \
-GAD[si] . GA[6] - 2*GA[mu] . GAD[nu] . GAE[rho] . GAE[si] . GA[6] + \
-GA[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[6] - 2*GA[mu] . GAE[nu] . \
-GAD[rho] . GAE[si] . GA[6] + 2*(-GA[mu] . GAE[nu] . GAE[rho] . \
-GAD[si] . GA[6] + 2*GA[mu] . GAE[nu] . GAE[rho] . GAE[si] . GA[6])"},
+"2*m*(GA[nu] . GA[rho] . GA[si] . GA[6] + GA[nu] . GAE[rho] . GAE[si] . GA[6] +
+GAE[nu] . GA[rho] . GAE[si] . GA[6] + GAE[nu] . GAE[rho] . GA[si] . GA[6]) +
+GA[mu] . GA[nu] . GA[rho] . GAE[si] . GA[6] + GA[mu] . GA[nu] . GAE[rho] . GA[si] . GA[6] +
+GA[mu] . GAE[nu] . GA[rho] . GA[si] . GA[6] + GA[mu] . GAE[nu] . GAE[rho] . GAE[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID60",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
-"2*m*GA[nu] . GA[rho] . GA[si] . GA[6] + GAE[mu] . GA[nu] . \
-GA[rho] . GA[si] . GA[6]"},
+"(2*m + GAE[mu]) . GA[nu] . GA[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID61",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, si, 7]]//FCE",
 "2*m*GA[nu] . GA[rho] . GA[si] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID62",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAD[si] . GA[7] - GAD[nu] . GAD[rho] . \
-GAE[si] . GA[7] - GAD[nu] . GAE[rho] . GAD[si] . GA[7] + 2*GAD[nu] . \
-GAE[rho] . GAE[si] . GA[7] - GAE[nu] . GAD[rho] . GAD[si] . GA[7] + \
-2*GAE[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GAE[nu] . GAE[rho] . \
-GAD[si] . GA[7] - 2*GAE[nu] . GAE[rho] . GAE[si] . GA[7])) + GAD[mu] \
-. GAD[nu] . GAD[rho] . GAE[si] . GA[7] + GAD[mu] . GAD[nu] . GAE[rho] \
-. GAD[si] . GA[7] - 2*GAD[mu] . GAD[nu] . GAE[rho] . GAE[si] . GA[7] \
-+ GAD[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[7] - 2*GAD[mu] . \
-GAE[nu] . GAD[rho] . GAE[si] . GA[7] - 2*(GAD[mu] . GAE[nu] . \
-GAE[rho] . GAD[si] . GA[7] - 2*GAD[mu] . GAE[nu] . GAE[rho] . GAE[si] \
-. GA[7]) + GAE[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[7] - 2*GAE[mu] \
-. GAD[nu] . GAD[rho] . GAE[si] . GA[7] - 2*(GAE[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[7] - 2*GAE[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[7]) + 2*(-GAE[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[7] + \
-2*GAE[mu] . GAE[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GAE[mu] . \
-GAE[nu] . GAE[rho] . GAD[si] . GA[7] - 2*GAE[mu] . GAE[nu] . GAE[rho] \
-. GAE[si] . GA[7]))"},
+"GA[mu].GA[nu].GA[rho].GAE[si].GA[7] +
+GA[mu].GA[nu].GAE[rho].GA[si].GA[7] +
+GA[mu].GAE[nu].GA[rho].GA[si].GA[7] +
+GA[mu].GAE[nu].GAE[rho].GAE[si].GA[7] + (2*m + GAE[mu]).GA[nu].GA[
+rho].GA[si].GA[7] + (2*m + GAE[mu]).GA[nu].GAE[rho].GAE[si].GA[
+7] + (2*m + GAE[mu]).GAE[nu].GA[rho].GAE[si].GA[
+7] + (2*m + GAE[mu]).GAE[nu].GAE[rho].GA[si].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID63",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAD[si] . GA[7] - GAD[nu] . GAD[rho] . \
-GAE[si] . GA[7] - GAD[nu] . GAE[rho] . GAD[si] . GA[7] + 2*GAD[nu] . \
-GAE[rho] . GAE[si] . GA[7] - GAE[nu] . GAD[rho] . GAD[si] . GA[7] + \
-2*GAE[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GAE[nu] . GAE[rho] . \
-GAD[si] . GA[7] - 2*GAE[nu] . GAE[rho] . GAE[si] . GA[7])) + GA[mu] . \
-GAD[nu] . GAD[rho] . GAE[si] . GA[7] + GA[mu] . GAD[nu] . GAE[rho] . \
-GAD[si] . GA[7] - 2*GA[mu] . GAD[nu] . GAE[rho] . GAE[si] . GA[7] + \
-GA[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[7] - 2*GA[mu] . GAE[nu] . \
-GAD[rho] . GAE[si] . GA[7] - 2*(GA[mu] . GAE[nu] . GAE[rho] . GAD[si] \
-. GA[7] - 2*GA[mu] . GAE[nu] . GAE[rho] . GAE[si] . GA[7])"},
+"2*m*(GA[nu].GA[rho].GA[si].GA[7] + GA[nu].GAE[rho].GAE[si].GA[7] +
+	GAE[nu].GA[rho].GAE[si].GA[7] + GAE[nu].GAE[rho].GA[si].GA[7]) +
+GA[mu].GA[nu].GA[rho].GAE[si].GA[7] +
+GA[mu].GA[nu].GAE[rho].GA[si].GA[7] +
+GA[mu].GAE[nu].GA[rho].GA[si].GA[7] +
+GA[mu].GAE[nu].GAE[rho].GAE[si].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID64",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, si, 7]]//FCE",
-"2*m*GA[nu] . GA[rho] . GA[si] . GA[7] + GAE[mu] . GA[nu] . \
-GA[rho] . GA[si] . GA[7]"},
+"(2*m + GAE[mu]).GA[nu].GA[rho].GA[si].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID65",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, 6]]//FCE",
 "2*m*GA[nu] . GA[rho] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID66",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GA[6] - GAD[nu] . GAE[rho] . GA[6] - \
-GAE[nu] . GAD[rho] . GA[6] + 2*GAE[nu] . GAE[rho] . GA[6]) + GAD[mu] \
-. GAD[nu] . GAE[rho] . GA[6] + GAD[mu] . GAE[nu] . GAD[rho] . GA[6] - \
-2*GAD[mu] . GAE[nu] . GAE[rho] . GA[6] + GAE[mu] . GAD[nu] . GAD[rho] \
-. GA[6] - 2*GAE[mu] . GAD[nu] . GAE[rho] . GA[6] + 2*(-GAE[mu] . \
-GAE[nu] . GAD[rho] . GA[6] + 2*GAE[mu] . GAE[nu] . GAE[rho] . GA[6])"},
+"GA[mu].GA[nu].GAE[rho].GA[6] +
+GA[mu].GAE[nu].GA[rho].GA[6] + (2*m + GAE[mu]).GA[nu].GA[rho].GA[
+6] + (2*m + GAE[mu]).GAE[nu].GAE[rho].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID67",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GA[6] - GAD[nu] . GAE[rho] . GA[6] - \
-GAE[nu] . GAD[rho] . GA[6] + 2*GAE[nu] . GAE[rho] . GA[6]) + GA[mu] . \
-GAD[nu] . GAE[rho] . GA[6] + GA[mu] . GAE[nu] . GAD[rho] . GA[6] - \
-2*GA[mu] . GAE[nu] . GAE[rho] . GA[6]"},
+"2*m*(GA[nu].GA[rho].GA[6] + GAE[nu].GAE[rho].GA[6]) +
+GA[mu].GA[nu].GAE[rho].GA[6] + GA[mu].GAE[nu].GA[rho].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID68",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, 6]]//FCE",
-"2*m*GA[nu] . GA[rho] . GA[6] + GAE[mu] . GA[nu] . GA[rho] . \
-GA[6]"},
+"(2*m + GAE[mu]).GA[nu].GA[rho].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID69",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, 7]]//FCE",
 "2*m*GA[nu] . GA[rho] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID70",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GA[7] - GAD[nu] . GAE[rho] . GA[7] - \
-GAE[nu] . GAD[rho] . GA[7] + 2*GAE[nu] . GAE[rho] . GA[7]) + GAD[mu] \
-. GAD[nu] . GAE[rho] . GA[7] + GAD[mu] . GAE[nu] . GAD[rho] . GA[7] - \
-2*GAD[mu] . GAE[nu] . GAE[rho] . GA[7] + GAE[mu] . GAD[nu] . GAD[rho] \
-. GA[7] - 2*GAE[mu] . GAD[nu] . GAE[rho] . GA[7] - 2*(GAE[mu] . \
-GAE[nu] . GAD[rho] . GA[7] - 2*GAE[mu] . GAE[nu] . GAE[rho] . GA[7])"},
+"GA[mu].GA[nu].GAE[rho].GA[7] +
+GA[mu].GAE[nu].GA[rho].GA[7] + (2*m + GAE[mu]).GA[nu].GA[rho].GA[
+7] + (2*m + GAE[mu]).GAE[nu].GAE[rho].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID71",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GA[7] - GAD[nu] . GAE[rho] . GA[7] - \
-GAE[nu] . GAD[rho] . GA[7] + 2*GAE[nu] . GAE[rho] . GA[7]) + GA[mu] . \
-GAD[nu] . GAE[rho] . GA[7] + GA[mu] . GAE[nu] . GAD[rho] . GA[7] - \
-2*GA[mu] . GAE[nu] . GAE[rho] . GA[7]"},
+"2*m*(GA[nu].GA[rho].GA[7] + GAE[nu].GAE[rho].GA[7]) +
+GA[mu].GA[nu].GAE[rho].GA[7] + GA[mu].GAE[nu].GA[rho].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID72",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, 7]]//FCE",
-"2*m*GA[nu] . GA[rho] . GA[7] + GAE[mu] . GA[nu] . GA[rho] . \
-GA[7]"},
+"(2*m + GAE[mu]).GA[nu].GA[rho].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID73",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GA[6]]//FCE", "2*m*GA[6]"},
 {"fcstDiracTrickCoreProperties-ID74",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GA[6]]//FCE",
-"GAE[mu] . GA[6] + 2*m*GA[6]"},
+"(2*m + GAE[mu]).GA[6]"},
 {"fcstDiracTrickCoreProperties-ID75",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GA[7]]//FCE", "2*m*GA[7]"},
 {"fcstDiracTrickCoreProperties-ID76",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GA[7]]//FCE",
-"GAE[mu] . GA[7] + 2*m*GA[7]"},
+"(2*m + GAE[mu]) . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID77",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GA[7]]//FCE", "GA[mu] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID78",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GA[7]]//FCE",
-"GAD[mu] . GA[7] - GAE[mu] . GA[7]"},
+"GA[mu] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID79",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GA[6]]//FCE", "GA[mu] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID80",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GA[6]]//FCE",
-"GAD[mu] . GA[6] - GAE[mu] . GA[6]"},
+"GA[mu] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID81",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, 7]]//FCE",
 "GA[mu] . GA[nu] . GA[rho] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID82",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAE[rho] . GA[7] + GAE[nu] . GAD[rho] . GA[7] - \
-2*GAE[nu] . GAE[rho] . GA[7]) + GAD[mu] . GAD[nu] . GAD[rho] . GA[7] \
-- GAD[mu] . GAD[nu] . GAE[rho] . GA[7] - GAD[mu] . GAE[nu] . GAD[rho] \
-. GA[7] + 2*GAD[mu] . GAE[nu] . GAE[rho] . GA[7] - GAE[mu] . GAD[nu] \
-. GAD[rho] . GA[7] + 2*GAE[mu] . GAD[nu] . GAE[rho] . GA[7] + \
-2*(GAE[mu] . GAE[nu] . GAD[rho] . GA[7] - 2*GAE[mu] . GAE[nu] . \
-GAE[rho] . GA[7])"},
+"GA[mu].GA[nu].GA[rho].GA[7] +
+GA[mu].GAE[nu].GAE[rho].GA[7] + (2*m + GAE[mu]).GA[nu].GAE[rho].GA[
+7] + (2*m + GAE[mu]).GAE[nu].GA[rho].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID83",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAE[rho] . GA[7] + GAE[nu] . GAD[rho] . GA[7] - \
-2*GAE[nu] . GAE[rho] . GA[7]) + GA[mu] . GAD[nu] . GAD[rho] . GA[7] - \
-GA[mu] . GAD[nu] . GAE[rho] . GA[7] - GA[mu] . GAE[nu] . GAD[rho] . \
-GA[7] + 2*GA[mu] . GAE[nu] . GAE[rho] . GA[7]"},
+"2*m*(GA[nu].GAE[rho].GA[7] + GAE[nu].GA[rho].GA[7]) +
+GA[mu].GA[nu].GA[rho].GA[7] + GA[mu].GAE[nu].GAE[rho].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID84",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, 7]]//FCE",
-"GAD[mu] . GA[nu] . GA[rho] . GA[7] - GAE[mu] . GA[nu] . GA[rho] . \
-GA[7]"},
+"GA[mu] . GA[nu] . GA[rho] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID85",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, 6]]//FCE",
 "GA[mu] . GA[nu] . GA[rho] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID86",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAE[rho] . GA[6] + GAE[nu] . GAD[rho] . GA[6] - \
-2*GAE[nu] . GAE[rho] . GA[6]) + GAD[mu] . GAD[nu] . GAD[rho] . GA[6] \
-- GAD[mu] . GAD[nu] . GAE[rho] . GA[6] - GAD[mu] . GAE[nu] . GAD[rho] \
-. GA[6] + 2*GAD[mu] . GAE[nu] . GAE[rho] . GA[6] - GAE[mu] . GAD[nu] \
-. GAD[rho] . GA[6] + 2*GAE[mu] . GAD[nu] . GAE[rho] . GA[6] - \
-2*(-GAE[mu] . GAE[nu] . GAD[rho] . GA[6] + 2*GAE[mu] . GAE[nu] . \
-GAE[rho] . GA[6])"},
+"GA[mu].GA[nu].GA[rho].GA[6] +
+GA[mu].GAE[nu].GAE[rho].GA[6] + (2*m + GAE[mu]).GA[nu].GAE[rho].GA[
+6] + (2*m + GAE[mu]).GAE[nu].GA[rho].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID87",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAE[rho] . GA[6] + GAE[nu] . GAD[rho] . GA[6] - \
-2*GAE[nu] . GAE[rho] . GA[6]) + GA[mu] . GAD[nu] . GAD[rho] . GA[6] - \
-GA[mu] . GAD[nu] . GAE[rho] . GA[6] - GA[mu] . GAE[nu] . GAD[rho] . \
-GA[6] + 2*GA[mu] . GAE[nu] . GAE[rho] . GA[6]"},
+"2*m*(GA[nu].GAE[rho].GA[6] + GAE[nu].GA[rho].GA[6]) +
+GA[mu].GA[nu].GA[rho].GA[6] + GA[mu].GAE[nu].GAE[rho].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID88",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, 6]]//FCE",
-"GAD[mu] . GA[nu] . GA[rho] . GA[6] - GAE[mu] . GA[nu] . GA[rho] . \
-GA[6]"},
+"GA[mu] . GA[nu] . GA[rho] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID89",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
 "GA[mu] . GA[nu] . GA[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID90",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAE[si] . GA[6] + GAD[nu] . GAE[rho] . \
-GAD[si] . GA[6] - 2*GAD[nu] . GAE[rho] . GAE[si] . GA[6] + GAE[nu] . \
-GAD[rho] . GAD[si] . GA[6] - 2*GAE[nu] . GAD[rho] . GAE[si] . GA[6] + \
-2*(-GAE[nu] . GAE[rho] . GAD[si] . GA[6] + 2*GAE[nu] . GAE[rho] . \
-GAE[si] . GA[6])) + GAD[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[6] - \
-GAD[mu] . GAD[nu] . GAD[rho] . GAE[si] . GA[6] - GAD[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GAD[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[6] - GAD[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[6] + 2*GAD[mu] \
-. GAE[nu] . GAD[rho] . GAE[si] . GA[6] - 2*(-GAD[mu] . GAE[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GAD[mu] . GAE[nu] . GAE[rho] . GAE[si] \
-. GA[6]) - GAE[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[6] + 2*GAE[mu] \
-. GAD[nu] . GAD[rho] . GAE[si] . GA[6] - 2*(-GAE[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GAE[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[6]) + 2*(GAE[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[6] - \
-2*GAE[mu] . GAE[nu] . GAD[rho] . GAE[si] . GA[6] + 2*(-GAE[mu] . \
-GAE[nu] . GAE[rho] . GAD[si] . GA[6] + 2*GAE[mu] . GAE[nu] . GAE[rho] \
-. GAE[si] . GA[6]))"},
+"GA[mu].GA[nu].GA[rho].GA[si].GA[6] +
+GA[mu].GA[nu].GAE[rho].GAE[si].GA[6] +
+GA[mu].GAE[nu].GA[rho].GAE[si].GA[6] +
+GA[mu].GAE[nu].GAE[rho].GA[si].GA[6] + (2*m + GAE[mu]).GA[nu].GA[
+rho].GAE[si].GA[6] + (2*m + GAE[mu]).GA[nu].GAE[rho].GA[si].GA[
+6] + (2*m + GAE[mu]).GAE[nu].GA[rho].GA[si].GA[
+6] + (2*m + GAE[mu]).GAE[nu].GAE[rho].GAE[si].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID91",
 "DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si].GA[6]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAE[si] . GA[6] + GAD[nu] . GAE[rho] . \
-GAD[si] . GA[6] - 2*GAD[nu] . GAE[rho] . GAE[si] . GA[6] + GAE[nu] . \
-GAD[rho] . GAD[si] . GA[6] - 2*GAE[nu] . GAD[rho] . GAE[si] . GA[6] + \
-2*(-GAE[nu] . GAE[rho] . GAD[si] . GA[6] + 2*GAE[nu] . GAE[rho] . \
-GAE[si] . GA[6])) + GA[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[6] - \
-GA[mu] . GAD[nu] . GAD[rho] . GAE[si] . GA[6] - GA[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GA[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[6] - GA[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[6] + 2*GA[mu] . \
-GAE[nu] . GAD[rho] . GAE[si] . GA[6] - 2*(-GA[mu] . GAE[nu] . \
-GAE[rho] . GAD[si] . GA[6] + 2*GA[mu] . GAE[nu] . GAE[rho] . GAE[si] \
-. GA[6])"},
+"2*m*(GA[nu].GA[rho].GAE[si].GA[6] + GA[nu].GAE[rho].GA[si].GA[6] +
+	GAE[nu].GA[rho].GA[si].GA[6] + GAE[nu].GAE[rho].GAE[si].GA[6]) +
+GA[mu].GA[nu].GA[rho].GA[si].GA[6] +
+GA[mu].GA[nu].GAE[rho].GAE[si].GA[6] +
+GA[mu].GAE[nu].GA[rho].GAE[si].GA[6] +
+GA[mu].GAE[nu].GAE[rho].GA[si].GA[6]"},
 {"fcstDiracTrickCoreProperties-ID92",
 "DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, si, 6]]//FCE",
-"GAD[mu] . GA[nu] . GA[rho] . GA[si] . GA[6] - GAE[mu] . GA[nu] . \
-GA[rho] . GA[si] . GA[6]"},
+"GA[mu] . GA[nu] . GA[rho] . GA[si] . GA[6]"},
 {"fcstDiracTrickCoreProperties-ID93",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 7]]//FCE",
 "GA[mu] . GA[nu] . GA[rho] . GA[si] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID94",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAE[si] . GA[7] + GAD[nu] . GAE[rho] . \
-GAD[si] . GA[7] - 2*GAD[nu] . GAE[rho] . GAE[si] . GA[7] + GAE[nu] . \
-GAD[rho] . GAD[si] . GA[7] - 2*GAE[nu] . GAD[rho] . GAE[si] . GA[7] - \
-2*(GAE[nu] . GAE[rho] . GAD[si] . GA[7] - 2*GAE[nu] . GAE[rho] . \
-GAE[si] . GA[7])) + GAD[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[7] - \
-GAD[mu] . GAD[nu] . GAD[rho] . GAE[si] . GA[7] - GAD[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[7] + 2*GAD[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[7] - GAD[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[7] + 2*GAD[mu] \
-. GAE[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GAD[mu] . GAE[nu] . \
-GAE[rho] . GAD[si] . GA[7] - 2*GAD[mu] . GAE[nu] . GAE[rho] . GAE[si] \
-. GA[7]) - GAE[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[7] + 2*GAE[mu] \
-. GAD[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GAE[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[7] - 2*GAE[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[7]) - 2*(-GAE[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[7] + \
-2*GAE[mu] . GAE[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GAE[mu] . \
-GAE[nu] . GAE[rho] . GAD[si] . GA[7] - 2*GAE[mu] . GAE[nu] . GAE[rho] \
-. GAE[si] . GA[7]))"},
+"GA[mu].GA[nu].GA[rho].GA[si].GA[7] +
+GA[mu].GA[nu].GAE[rho].GAE[si].GA[7] +
+GA[mu].GAE[nu].GA[rho].GAE[si].GA[7] +
+GA[mu].GAE[nu].GAE[rho].GA[si].GA[7] + (2*m + GAE[mu]).GA[nu].GA[
+rho].GAE[si].GA[7] + (2*m + GAE[mu]).GA[nu].GAE[rho].GA[si].GA[
+7] + (2*m + GAE[mu]).GAE[nu].GA[rho].GA[si].GA[
+7] + (2*m + GAE[mu]).GAE[nu].GAE[rho].GAE[si].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID95",
 "DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si].GA[7]]//FCE",
-"2*m*(GAD[nu] . GAD[rho] . GAE[si] . GA[7] + GAD[nu] . GAE[rho] . \
-GAD[si] . GA[7] - 2*GAD[nu] . GAE[rho] . GAE[si] . GA[7] + GAE[nu] . \
-GAD[rho] . GAD[si] . GA[7] - 2*GAE[nu] . GAD[rho] . GAE[si] . GA[7] - \
-2*(GAE[nu] . GAE[rho] . GAD[si] . GA[7] - 2*GAE[nu] . GAE[rho] . \
-GAE[si] . GA[7])) + GA[mu] . GAD[nu] . GAD[rho] . GAD[si] . GA[7] - \
-GA[mu] . GAD[nu] . GAD[rho] . GAE[si] . GA[7] - GA[mu] . GAD[nu] . \
-GAE[rho] . GAD[si] . GA[7] + 2*GA[mu] . GAD[nu] . GAE[rho] . GAE[si] \
-. GA[7] - GA[mu] . GAE[nu] . GAD[rho] . GAD[si] . GA[7] + 2*GA[mu] . \
-GAE[nu] . GAD[rho] . GAE[si] . GA[7] + 2*(GA[mu] . GAE[nu] . GAE[rho] \
-. GAD[si] . GA[7] - 2*GA[mu] . GAE[nu] . GAE[rho] . GAE[si] . GA[7])"},
+"2*m*(GA[nu].GA[rho].GAE[si].GA[7] + GA[nu].GAE[rho].GA[si].GA[7] +
+	GAE[nu].GA[rho].GA[si].GA[7] + GAE[nu].GAE[rho].GAE[si].GA[7]) +
+GA[mu].GA[nu].GA[rho].GA[si].GA[7] +
+GA[mu].GA[nu].GAE[rho].GAE[si].GA[7] +
+GA[mu].GAE[nu].GA[rho].GAE[si].GA[7] +
+GA[mu].GAE[nu].GAE[rho].GA[si].GA[7]"},
 {"fcstDiracTrickCoreProperties-ID96",
 "DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, si, 7]]//FCE",
-"GAD[mu] . GA[nu] . GA[rho] . GA[si] . GA[7] - GAE[mu] . GA[nu] . \
-GA[rho] . GA[si] . GA[7]"},
+"GA[mu] . GA[nu] . GA[rho] . GA[si] . GA[7]"},
 {"fcstDiracTrickCoreProperties-ID97",
 "DiracTrick[GA[mu].GA[i].GA[i].GA[nu]]//FCE",
 "4*GA[mu] . GA[nu]"},
