@@ -221,7 +221,7 @@ Tests`Shared`fcstSharedToolsFreeQ2 = {
 
 Tests`Shared`fcstSharedToolsFRH = {
 {"fcstSharedToolsFRH-ID1","FRH[Hold[1 - 1 - Hold[2 - 2]]]","0"},
-{"fcstSharedToolsFRH-ID2","FRH[Isolate[Solve[x^3 - x - 1 == 0], x, IsolateNames -> H]][[1]]",
+{"fcstSharedToolsFRH-ID2","FRH[Isolate[Solve[x^3 - x - 1 == 0, Cubics -> True], x, IsolateNames -> H]][[1]]",
 	"{x -> 1/3 (27/2 - (3 Sqrt[69])/2)^(1/3) + (1/2 (9 + Sqrt[69]))^(1/3)/3^(2/3)}"},
 {"fcstSharedToolsFRH-ID3","MatchQ[FRH[
 	Isolate[(a + b) F[q], q, IsolateNames -> KK1] +
