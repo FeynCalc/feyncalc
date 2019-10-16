@@ -483,7 +483,6 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
-		dim = FCGetDimensions[ex/.DiracGamma[5|6|7]:>diga];
 
 		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
@@ -523,7 +522,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			Return[res]
 		];
 
-		dim = FCGetDimensions[res/.DiracGamma[5|6|7]:>diga];
+		dim = FCGetDimensions[res, FreeQ->{DiracGamma[5],DiracGamma[6],DiracGamma[7]}, ChangeDimension->True];
 
 
 		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
@@ -536,25 +535,25 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			FCPrint[2, "DiracTrick: diracTrickEval: Applying chiralTrick ", FCDoControl->diTrVerbose];
 			Which[
 					(* Purely 4-dimensional -> use anticommuting g^5 *)
-					MatchQ[dim,{4}|{3,4}],
+					MatchQ[dim,{4}],
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickAnticommuting4Dim;
 						res = FixedPoint[(# /. chiralTrickAnticommuting4Dim -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommuting4Dim)&,res];
 						res = res /. chiralTrickAnticommuting4Dim -> holdDOT,
 					(* Purely D-dimensional and NDR -> use anticommuting g^5 *)
-					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme],
+					MatchQ[dim,{_Symbol}] && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme],
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim, NDR.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickAnticommutingDDim;
 						res = FixedPoint[(# /. chiralTrickAnticommutingDDim -> commonGamma5Properties /.
 							commonGamma5Properties -> chiralTrickAnticommutingDDim)&,res];
 						res = res /. chiralTrickAnticommutingDDim -> holdDOT,
 					(* Purely D-dimensional and BMHV -> don't move anything around *)
-					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
-						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
+					MatchQ[dim,{_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
+						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and BMHV.", FCDoControl->diTrVerbose];
 						Null,
 					(* Purely D-dimensional and Larin use the substitution rule to eliminate g^5 that are not on the left of the trace *)
-					MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "Larin"),
+					MatchQ[dim,{_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "Larin"),
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickLarin /. chiralTrickLarin -> holdDOT,
 					(* Mixed and BMHV -> don't move g^5 around *)
@@ -562,7 +561,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 						FCPrint[1, "DiracTrick: diracTrickEval: Mixed and BMHV.", FCDoControl->diTrVerbose],
 					(* special case that the expression contains only chiral or g^0 matrices*)
 					dim==={} && !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[5|6|7|ExplicitLorentzIndex[0]]:>diga),DiracGamma],
-					FCPrint[2, "DiracTrick: diracTrickEval: Chiral  or g^0 only.", FCDoControl->diTrVerbose],
+					FCPrint[2, "DiracTrick: diracTrickEval: Chiral or g^0 only.", FCDoControl->diTrVerbose],
 					(* Anything else is most likely an error *)
 					True,
 						Message[DiracTrace::mixmsg];
@@ -578,13 +577,13 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		FCPrint[2, "DiracTrick: diracTrickEval: Doing simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
 		Which[
 			(* Purely 4-dimensional *)
-			MatchQ[dim,{4}|{3,4}],
+			MatchQ[dim,{4}],
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
 				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* Purely D-dimensional *)
-			MatchQ[dim,{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}],
+			MatchQ[dim,{_Symbol}],
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyDDim;
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];

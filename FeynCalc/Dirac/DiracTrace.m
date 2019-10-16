@@ -322,7 +322,7 @@ diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
 			(* One more check: Traces with mixed dimensions are forbidden in NDR and Larin's scheme, so we abort the computation if this is the case *)
 			If [ (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 				Scan[
-					If[	Length[FCGetDimensions[#/.DiracGamma[5]->1,ChangeDimension->True]]=!=1,
+					If[	Length[FCGetDimensions[#, FreeQ->{DiracGamma[5]},ChangeDimension->True]]=!=1,
 						Message[DiracTrace::mixmsg];
 						Abort[]
 					]&, spurHeadListChiral

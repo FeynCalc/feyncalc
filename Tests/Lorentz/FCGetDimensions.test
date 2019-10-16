@@ -40,5 +40,8 @@ Tests`Lorentz`fcstFCGetDimensions =
 {"fcstFCGetDimensions-ID19", "FCGetDimensions[PauliSigma[Momentum[p]]]", "{3,4}"},
 {"fcstFCGetDimensions-ID20", "FCGetDimensions[CV[p, i], ChangeDimension -> True]", "{4}"},
 {"fcstFCGetDimensions-ID21", "FCGetDimensions[CVD[p, i], ChangeDimension -> True]", "{D}"},
-{"fcstFCGetDimensions-ID22", "FCGetDimensions[PauliSigma[CartesianMomentum[p]], ChangeDimension -> True]", "{3,4}"}
+{"fcstFCGetDimensions-ID22", "FCGetDimensions[PauliSigma[CartesianMomentum[p]], ChangeDimension -> True]", "{3,4}"},
+{"fcstFCGetDimensions-ID23", "FCGetDimensions[GAD[5, mu], FreeQ -> {DiracGamma[5]}]", "{D}"},
+{"fcstFCGetDimensions-ID23", "FCGetDimensions[GAD[5, mu,6,nu,7], FreeQ -> {DiracGamma[5],DiracGamma[6],DiracGamma[7]}]", "{D}"},
+{"fcstFCGetDimensions-ID24", "FCGetDimensions[TC[p] GAD[mu], FreeQ -> {TemporalPair[__]}]", "{D}"}
 });

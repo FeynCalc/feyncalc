@@ -22,22 +22,42 @@ result is returned as a list, e.g. {4}, {D} or {4,D,D-4} etc. This is useful \
 if one want to be sure that all quantities inside a particular expression are
 purely 4-dimensional or purely D-dimensional.";
 
+FCGetDimensions::failmsg =
+"Error! FCGetDimensions has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 Begin["`Package`"]
 End[]
 
 Begin["`FCGetDimensions`Private`"]
 
 Options[FCGetDimensions] = {
-	FCI -> False,
-	ChangeDimension -> False
+	ChangeDimension 	-> False,
+	FCI 				-> False,
+	FreeQ				-> {},
+	"DiracGamma[5]" 		-> True
 };
 
 FCGetDimensions[expr_, OptionsPattern[]]:=
-	Block[{ex, res, null1,null2,head},
+	Block[{ex, res, null1,null2,head, optFreeQ},
+
+		optFreeQ = OptionValue[FreeQ];
+		If[	Head[optFreeQ]=!=List,
+			Message[FCGetDimensions::failmsg, "The value of the FreeQ option must be a list."];
+		];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
+		];
+
+		If[	optFreeQ=!={},
+			ex = ex/. Dispatch[Rule[#, Unique["fcgd"]] & /@ optFreeQ];
+
+			If[	!FreeQ2[ex,optFreeQ],
+				Message[FCGetDimensions::failmsg, "Failed to mask the specified objects."];
+				Abort[]
+			]
 		];
 
 		res = Cases[ex+null1+null2, _Momentum | _DiracGamma  | _PauliSigma | _LorentzIndex |
