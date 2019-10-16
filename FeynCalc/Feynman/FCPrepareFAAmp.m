@@ -77,7 +77,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 		replist0 = {
 			NonCommutative[x__] :> FeynArts`FANonCommutative[x],
-			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 :> (tmp = Unique["Ind"] ; x /. ind -> tmp)
+			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :> (tmp = Unique["Ind"] ; x /. ind -> tmp)
 		};
 
 		replist1 = {FeynArts`Index[Global`Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],
@@ -140,13 +140,39 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[UndoChiralSplittings],
 			temp = temp//.{
+
+				(*Single chains*)
+
+				(* g^mu P_R + g^mu R_L -> g^mu *)
 				(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :>
 					a1 DiracGamma[x] a2,
+
+				(* (g^mu P_R)_ij + (g^mu R_L_ij -> (g^mu)_ij *)
 				(a_. DiracChain[DiracGamma[x_].DiracGamma[6], i_DiracIndex, j_DiracIndex] + a_. DiracChain[DiracGamma[x_].DiracGamma[7], i_DiracIndex, j_DiracIndex] ) :>
 					a DiracChain[DiracGamma[x], i, j],
 				(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2,
+
+				(* (P_R)_ij + (R_L)_ij -> (1)_ij *)
 				(a_. DiracChain[DiracGamma[6], i_DiracIndex, j_DiracIndex] + a_. DiracChain[DiracGamma[7], i_DiracIndex, j_DiracIndex]) :>
-					a DiracChain[1, i, j]
+					a DiracChain[1, i, j],
+
+				(*Double chains*)
+				(* (g^mu P_x)_ij (g^mu P_R)_kl + (g^nu P_x)_ij (g^nu P_L)_kl -> (g^mu P_x)_ij (g^mu)_kl  *)
+				(a_. DiracChain[DiracGamma[x1_LorentzIndex].DiracGamma[(h:7|6)], i_DiracIndex, j_DiracIndex] *
+					DiracChain[DiracGamma[x1_LorentzIndex].DiracGamma[6], k_DiracIndex, l_DiracIndex] +
+				a_. DiracChain[DiracGamma[x2_LorentzIndex].DiracGamma[(h:7|6)], i_DiracIndex, j_DiracIndex] *
+					DiracChain[DiracGamma[x2_LorentzIndex].DiracGamma[7], k_DiracIndex, l_DiracIndex] ) :>
+					a DiracChain[DiracGamma[x1].DiracGamma[h], i, j] DiracChain[DiracGamma[x1], k, l],
+
+				(* (g^mu)_ij (g^mu P_R)_kl + (g^nu)_ij (g^nu P_L)_kl -> (g^mu)_ij (g^mu)_kl  *)
+				(a_. DiracChain[DiracGamma[x1_LorentzIndex], i_DiracIndex, j_DiracIndex] *
+					DiracChain[DiracGamma[x1_LorentzIndex].DiracGamma[6], k_DiracIndex, l_DiracIndex]
+
+				+ a_. DiracChain[DiracGamma[x2_LorentzIndex], i_DiracIndex, j_DiracIndex] *
+					DiracChain[DiracGamma[x2_LorentzIndex].DiracGamma[7], k_DiracIndex, l_DiracIndex] ) :>
+					a DiracChain[DiracGamma[x1], i, j] DiracChain[DiracGamma[x1], k, l]
+
+
 			} /. DOT -> holdDOT /. {
 				a_. holdDOT[-DiracGamma[x_], DiracGamma[6]] + a_. holdDOT[-DiracGamma[x_], DiracGamma[7]] :> -a DiracGamma[x],
 
