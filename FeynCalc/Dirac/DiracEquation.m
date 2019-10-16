@@ -65,7 +65,7 @@ last[x_Plus] :=
 diraceq[x_] :=
 	x/;FreeQ[x,Spinor];
 diraceq[x_] :=
-	Expand[ ToDiracGamma67[x,FCI->True] /. DOT->HoldDOT //. spCDieqRules /.HoldDOT->DOT, DOT ];
+	Expand[x/. DOT->HoldDOT //. spCDieqRules /.HoldDOT->DOT, DOT ];
 
 HoldDOT[a___,HoldDOT[b___],c___]:= HoldDOT[a,b,c];
 HoldDOT[a___,b1_HoldDOT + b2_HoldDOT + b3_:0 ,c___]:=

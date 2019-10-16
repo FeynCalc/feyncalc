@@ -402,6 +402,7 @@ diracSimplifyEval[expr_]:=
 
 		(*	Substituting the explicit values of Dirac sigma	*)
 		If [ optDiracSigmaExplicit && !FreeQ[tmp,DiracSigma],
+			FCPrint[1,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the Dirac sigma.", FCDoControl->dsVerbose];
 			tmp = DiracSigmaExplicit[tmp,FCI->True]
 		];
 
@@ -447,19 +448,25 @@ diracSimplifyEval[expr_]:=
 
 		(*	Dirac equation	*)
 		If[	!FreeQ[tmp,Spinor] && optDiracEquation,
-			tmp = DiracEquation[tmp, FCI->True]
+			time2=AbsoluteTime[];
+			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracEquation.", FCDoControl->dsVerbose];
+			tmp = DiracEquation[tmp, FCI->True];
+			FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracEquation done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracEquation: ", tmp, FCDoControl->dsVerbose];
 		];
 
 		(* 	Covariant normalization of ubar.u or vbar.v (as in Peskin and Schroeder).
 			The combinations ubar.v and vbar.u are orthogonal and hence vanish *)
 		If[	!FreeQ[tmp,Spinor],
-			FCPrint[2,"DiracSimplify: Applying spinor normalization on ", tmp, FCDoControl->dsVerbose];
-
+			time2=AbsoluteTime[];
+			FCPrint[1,"DiracSimplify: Applying spinor normalization on ", tmp, FCDoControl->dsVerbose];
+			FCPrint[1,"DiracSimplify: diracSimplifyEval: Spinor normalization done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 			tmp = tmp/. DOT->holdDOT //.
 			{	holdDOT[Spinor[s_. Momentum[p__],m_, 1],Spinor[s_. Momentum[p__],m_, 1]] -> s 2 m,
 				holdDOT[Spinor[- Momentum[p__],m_, 1],Spinor[Momentum[p__],m_, 1]] -> 0,
 				holdDOT[Spinor[Momentum[p__],m_, 1],Spinor[- Momentum[p__],m_, 1]] -> 0} /.
-			holdDOT -> DOT
+			holdDOT -> DOT;
+			FCPrint[3,"DiracSimplify: diracSimplifyEval: After spinor normalization: ", tmp, FCDoControl->dsVerbose];
 		];
 
 		(* Factoring	*)
