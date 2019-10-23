@@ -80,7 +80,9 @@ DiracTrace[a:Except[_HoldAll]..., x_,y_, z___] :=
 	DiracTrace[a,x.y,z]/;FCPatternFreeQ[{x,y},{Rule}];
 
 DiracTrace[expr_, op:OptionsPattern[]] :=
-	Block[ {diTres, ex, tr1,tr2,tr3,time,dsHead,diracObjects,diracObjectsEval,null1,null2,freePart,dsPart,repRule,diTr},
+	Block[{	diTres, ex, tr1, tr2, tr3, time, dsHead, diracObjects,
+			diracObjectsEval, null1, null2, freePart, dsPart, repRule,
+			diTr, holdDOT},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -150,6 +152,10 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 
 		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"DiracTrace: repRule: ",repRule , FCDoControl->diTrVerbose];
+
+		If[	!FreeQ[freePart,DOT],
+			freePart = freePart /. DOT->holdDOT /. holdDOT[a__]/;NonCommFreeQ[{a}] :> Times[a] /. holdDOT -> DOT
+		];
 
 		tr3 = (unitMatrixTrace freePart) + ( dsPart /. Dispatch[repRule]);
 

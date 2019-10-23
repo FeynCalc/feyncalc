@@ -244,6 +244,10 @@ DiracTrace[GAD[i1, i2, i3].((1 + GA[5])/2).GAD[i5, i6, i7].((1 + GA[5])/2),
 {"fcstDiracTrace-ID46",
 "FCSetDiracGammaScheme[\"NDR-Drop\"];
 tmp = (DiracTrace[GAD[i1, i2, i3,5,i5, i6, i7],
-	DiracTraceEvaluate -> True]); FCSetDiracGammaScheme[\"NDR\"];\n tmp","0"}
+	DiracTraceEvaluate -> True]); FCSetDiracGammaScheme[\"NDR\"];\n tmp","0"},
+{"fcstDiracTrace-ID47", "DiracTrace[DOT[1, 0], DiracTraceEvaluate -> True]","0"},
+{"fcstDiracTrace-ID48", "DiracTrace[DOT[1, 1], DiracTraceEvaluate -> True]","4"},
+{"fcstDiracTrace-ID49", "DiracTrace[DOT[a, b], DiracTraceEvaluate -> True]","4 a b"},
+{"fcstDiracTrace-ID50", "DiracTrace[DOT[3,1,2,1], DiracTraceEvaluate -> True]","24"}
 }
 );
