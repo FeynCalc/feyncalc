@@ -248,6 +248,13 @@ tmp = (DiracTrace[GAD[i1, i2, i3,5,i5, i6, i7],
 {"fcstDiracTrace-ID47", "DiracTrace[DOT[1, 0], DiracTraceEvaluate -> True]","0"},
 {"fcstDiracTrace-ID48", "DiracTrace[DOT[1, 1], DiracTraceEvaluate -> True]","4"},
 {"fcstDiracTrace-ID49", "DiracTrace[DOT[a, b], DiracTraceEvaluate -> True]","4 a b"},
-{"fcstDiracTrace-ID50", "DiracTrace[DOT[3,1,2,1], DiracTraceEvaluate -> True]","24"}
-}
-);
+{"fcstDiracTrace-ID50", "DiracTrace[DOT[3,1,2,1], DiracTraceEvaluate -> True]","24"},
+{"fcstDiracTrace-ID51", "DiracTrace[DOT[1, 1], DiracTraceEvaluate -> True,
+FCDiracIsolate -> False]", "4"},
+{"fcstDiracTrace-ID52", "DiracTrace[GA[mu, nu], DiracTraceEvaluate -> True,
+FCDiracIsolate -> False]", "4 Pair[LorentzIndex[mu], LorentzIndex[nu]]"},
+{"fcstDiracTrace-ID53", "DiracTrace[DiracSigma[GA[mu], GA[nu]].GA[rho, si],
+DiracTraceEvaluate -> True, FCDiracIsolate -> False]", "4 I (Pair[LorentzIndex[mu], LorentzIndex[si]] Pair[LorentzIndex[nu],
+	LorentzIndex[rho]] - Pair[LorentzIndex[mu], LorentzIndex[rho]] Pair[LorentzIndex[nu],
+	LorentzIndex[si]])"}
+});

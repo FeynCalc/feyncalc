@@ -58,6 +58,7 @@ Options[DiracTrace] = {
 	Expand				-> True,
 	FCVerbose			-> False,
 	Factoring			-> Automatic,
+	FCDiracIsolate		-> True,
 	FeynCalcExternal	-> False,
 	FeynCalcInternal	-> False,
 	Mandelstam			-> {},
@@ -107,41 +108,66 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		(* Doing contractions can often simplify the underlying expression *)
 		time=AbsoluteTime[];
 
-		If[	OptionValue[Contract]=!=False,
+		If[	OptionValue[Contract]=!=False && !DummyIndexFreeQ[ex,{LorentzIndex,CartesianIndex}],
 			FCPrint[1, "DiracTrace. Applying Contract.", FCDoControl->diTrVerbose];
 			ex = Contract[ex, Expanding->True, EpsContract-> OptionValue[EpsContract], Factoring->False];
 			FCPrint[1,"DiracTrace: Contract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose]
 		];
 
 
+		If[	OptionValue[FCDiracIsolate],
+			FCPrint[1, "DiracTrace: Standard mode.", FCDoControl->diTrVerbose];
+			(* 	First of all we need to extract all the Dirac structures inside the trace. *)
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Spinor->False, DiracTrace -> False, DiracSigmaExplicit->True];
+			ex = ex /. DiracTrace -> diTr;
 
-		(* 	First of all we need to extract all the Dirac structures inside the trace. *)
-		ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Spinor->False, DiracTrace -> False, DiracSigmaExplicit->True];
-		ex = ex /. DiracTrace -> diTr;
+
+			{freePart,dsPart} = FCSplit[ex,{dsHead}];
+			FCPrint[3,"DiracTrace: dsPart: ",dsPart , FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: freePart: ",freePart , FCDoControl->diTrVerbose];
+			If [ dsPart=!=0,
+				(* Check that there is only one dsHead per term and no nested dsHeads *)
+				Scan[
+					If[	!MatchQ[#, a_. dsHead[b_]/; (FreeQ[{a,b}, dsHead] && !FreeQ[b,DiracGamma])],
+						Message[DiracTrace::failmsg, "Irregular trace structure in", InputForm[#]];
+						Print[#];
+						Abort[]
+				]&, dsPart+dsHead[DiracGamma] ];
+			];
+
+			(* 	Now it is guaranteed that dsPart is of the form a*dsHead[x]+b*dsHead[y]+c*dsHead[z]+...
+				So it is safe to extract all the dsHead objects and handle them separately	*)
+			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union,
 
 
-		{freePart,dsPart} = FCSplit[ex,{dsHead}];
-		FCPrint[3,"DiracTrace: dsPart: ",dsPart , FCDoControl->diTrVerbose];
-		FCPrint[3,"DiracTrace: freePart: ",freePart , FCDoControl->diTrVerbose];
-		If [ dsPart=!=0,
-			(* Check that there is only one dsHead per term and no nested dsHeads *)
-			Scan[
-				If[	!MatchQ[#, a_. dsHead[b_]/; (FreeQ[{a,b}, dsHead] && !FreeQ[b,DiracGamma])],
-					Message[DiracTrace::failmsg, "Irregular trace structure in", InputForm[#]];
-					Print[#];
-					Abort[]
-			]&, dsPart+dsHead[DiracGamma] ];
+			FCPrint[1, "DiracTrace: Fast mode.", FCDoControl->diTrVerbose];
+			(*	Fast mode for simple traces	*)
+				If[	!FreeQ[ex,DiracGamma],
+					freePart=0;
+					If[ !FreeQ[ex,DiracSigma],
+						ex = DiracSigmaExplicit[ex,FCI->True]
+					];
+
+					dsPart=dsHead[ex]/. DiracTrace -> diTr;
+					diracObjects = {dsPart},
+
+					freePart=ex;
+					dsPart=0;
+					diracObjects = {}
+				];
+
+
+
 		];
-
-		(* 	Now it is guaranteed that dsPart is of the form a*dsHead[x]+b*dsHead[y]+c*dsHead[z]+...
-			So it is safe to extract all the dsHead objects and handle them separately	*)
-		diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Union;
 
 		time=AbsoluteTime[];
 		FCPrint[1, "DiracTrace. Applying diracTraceEvaluate.", FCDoControl->diTrVerbose];
 
 		(* Here we try to compute some very simple traces in a faster way *)
 		diracObjectsEval = Map[diracTraceEvaluateFast[#]&, (diracObjects/.dsHead->Identity)] /. diracTraceEvaluateFast->Identity;
+
+
+		FCPrint[1,"DiracTrace: After diracTraceEvaluateFast: ", diracObjectsEval, FCDoControl->diTrVerbose];
 
 		diracObjectsEval = Map[diracTraceEvaluate[#, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]]&,
 			diracObjectsEval];
@@ -185,6 +211,9 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		diTres
 	]/; OptionValue[DiracTraceEvaluate];
 
+
+diracTraceEvaluateFast[DOT[DiracGamma[l1_LorentzIndex].DiracGamma[l2_LorentzIndex]]]:=
+	alreadyDone[unitMatrixTrace Pair[l1,l2]];
 
 diracTraceEvaluateFast[DOT[DiracGamma[l1_LorentzIndex].DiracGamma[l2_LorentzIndex]]]:=
 	alreadyDone[unitMatrixTrace Pair[l1,l2]];
