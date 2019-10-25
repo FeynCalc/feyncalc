@@ -277,14 +277,24 @@ DiracTrick[expr_,OptionsPattern[]] :=
 (*	Here we can quickly handle trivial contractions of short expressions. Usually such expressions appear
 	when we call DiracTrick from DiracTrace after DotSimplify. Hence, the rules should be as simple, as possible	*)
 
-diracTrickEvalFast[DiracChain[ex_, i_, j_]]:=
-	DiracChain[diracTrickEvalFast[ex],i,j];
 
-diracTrickEvalFast[ex:DiracGamma[__]]:=
-	ex/; !insideDiracTrace && !diracOrder;
+diracTrickEvalFast[DiracChain[x_, i_, j_]]:=
+	DiracChain[diracTrickEvalFast[x],i,j];
+
+diracTrickEvalFast[x_DiracGamma]:=
+	x/; !insideDiracTrace && !diracOrder;
+
+
+diracTrickEvalFast[x_DiracGamma]:=
+	0/; insideDiracTrace && FreeQ2[x, {DiracGamma[6],DiracGamma[7]}];
+
+diracTrickEvalFast[DiracGamma[6|7]]:=
+	(1/2)/; insideDiracTrace;
+
 
 diracTrickEvalFast[DOT[DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[ExplicitLorentzIndex[0]]]]:=
 	1;
+
 
 diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
 	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], ExplicitLorentzIndex[0]}] &&
@@ -297,12 +307,15 @@ diracTrickEvalFast[DOT[b___DiracGamma,di_DiracGamma,c__DiracGamma]] :=
 	diracTrickEvalFast[DOT[c,b, di]]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
 	FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}]/; insideDiracTrace;
 
-diracTrickEvalFast[x__DiracGamma]:=
-	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]] && insideDiracTrace;
 
-diracTrickEvalFast[x__DiracGamma, DiracGamma[5|6|7]]:=
-	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && OddQ[Length[{x}]] && insideDiracTrace;
+diracTrickEvalFast[DOT[x__DiracGamma, DiracGamma[5]]]:=
+	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && EvenQ[Length[{x}]] && insideDiracTrace &&
+	MatchQ[FCGetDimensions[{x}],{_Symbol}] && 	(FeynCalc`Package`DiracGammaScheme === "NDR-Drop");
 
+
+diracTrickEvalFast[DOT[x__DiracGamma, DiracGamma[6|7]]]:=
+	1/2 diracTrickEvalFast[DOT[x]]/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && EvenQ[Length[{x}]] && insideDiracTrace &&
+	MatchQ[FCGetDimensions[{x}],{_Symbol}] && 	(FeynCalc`Package`DiracGammaScheme === "NDR-Drop");
 
 diracTrickEvalFast[DOT[DiracGamma[(arg1:_[_, dim1___]),dim1___], DiracGamma[(arg2:_[_, dim2___]), dim2___]]] :=
 	FCUseCache[ExpandScalarProduct,{PairContract[arg1,arg2] /. PairContract->Pair},{}]/; insideDiracTrace;
@@ -431,8 +444,14 @@ diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_]]), xy:Dirac
 diracTrickEval[0]:=
 	0;
 
-diracTrickEval[ex:DiracGamma[__]]:=
+diracTrickEval[ex_DiracGamma]:=
 	ex/; !insideDiracTrace;
+
+diracTrickEval[ex_DiracGamma]:=
+	0/; insideDiracTrace && !MatchQ[ex,DiracGamma[6|7]];
+
+diracTrickEval[ex_DiracGamma]:=
+	1/2/; insideDiracTrace && MatchQ[ex, DiracGamma[6|7]];
 
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 	Which[
