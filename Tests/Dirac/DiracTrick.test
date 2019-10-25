@@ -1216,7 +1216,12 @@ Tests`Dirac`fcstDiracTrick = {
 {"fcstDiracTrick-ID24","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i8,i9,i1,i2,i3,i4,i5,i6,i7,i8,i9]]//Expand",
 	"D^9-72 D^8+1848 D^7-22176 D^6+139440 D^5-486528 D^4+940672 D^3-927744 D^2+354560 D"},
 {"fcstDiracTrick-ID25","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10]]//Expand",
-	"-D^10+90 D^9-3000 D^8+48720 D^7-431760 D^6+2220960 D^5-6776320 D^4+11957760 D^3-11079680 D^2+4063232 D"}
+	"-D^10+90 D^9-3000 D^8+48720 D^7-431760 D^6+2220960 D^5-6776320 D^4+11957760 D^3-11079680 D^2+4063232 D"},
+{"fcstDiracTrick-ID26","DiracTrick[GAD[rho, mu, nu], InsideDiracTrace -> True, Evaluate -> False]", "0"},
+{"fcstDiracTrick-ID27","DiracTrick[GAD[rho, mu, 7, nu, 6], InsideDiracTrace -> True, Evaluate -> False]", "0"},
+{"fcstDiracTrick-ID28","DiracTrick[GAD[mu, 7].GSD[p1 - q].GAD[nu, rho, 6],
+InsideDiracTrace -> True, Evaluate -> False,
+FCE -> True]", "GAD[mu].GSD[p1 - q].GAD[nu].GAD[rho].GA[6]"}
 };
 
 Tests`Dirac`fcstDiracTrickBMHV = ({
