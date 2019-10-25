@@ -311,7 +311,7 @@ diracSimplifyEval[expr_]:=
 
 
 
-		FCPrint[1, "DiracSimplify: diracSimplifyEval: Entering", FCDoControl->dsVerbose];
+		FCPrint[2, "DiracSimplify: diracSimplifyEval: Entering", FCDoControl->dsVerbose];
 		FCPrint[3, "DiracSimplify: diracSimplifyEval: Entering with: ", tmp, FCDoControl->dsVerbose];
 
 
@@ -319,9 +319,9 @@ diracSimplifyEval[expr_]:=
 		(* First application of DiracTrick, no expansions so far *)
 		If[ !FreeQ[tmp, DiracGamma],
 			time=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
 			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCDiracIsolate->False, ToDiracGamma67->optToDiracGamma67];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose]
 		];
 
@@ -343,9 +343,9 @@ diracSimplifyEval[expr_]:=
 
 		If[	optExpanding && !FreeQ[tmp, DiracGamma],
 				time2=AbsoluteTime[];
-				FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
+				FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
 				tmp = DotSimplify[tmp, FCI->True, Expanding -> True, FCJoinDOTs->False];
-				FCPrint[1,"DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+				FCPrint[2,"DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 				FCPrint[3,"DiracSimplify: diracSimplifyEval: After Dotsimplify: ", tmp, FCDoControl->dsVerbose];
 		];
 
@@ -353,65 +353,65 @@ diracSimplifyEval[expr_]:=
 
 			If[	optContract=!=False && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
 				time2=AbsoluteTime[];
-				FCPrint[1, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
+				FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
 				tmp = Contract[tmp, Expanding->True, EpsContract-> False, Factoring->False];
-				FCPrint[1, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+				FCPrint[2, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: diracSimplifyEval: After Contract: ", tmp, FCDoControl->dsVerbose];
 
 				time2=AbsoluteTime[];
-				FCPrint[1, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
+				FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
 					tmp = EpsContract[tmp,FCI->True]
 				];
-				FCPrint[1, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+				FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
 
 
 			];
 
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying DiracTrick.", FCDoControl->dsVerbose];
 			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace-> optInsideDiracTrace, FCJoinDOTs->False, ToDiracGamma67->optToDiracGamma67];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: DiracTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracTrick: ", tmp, FCDoControl->dsVerbose];
 		];
 
 		(* Doing index contractions *)
 		If[	optContract=!=False && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
 			time2=AbsoluteTime[];
-			FCPrint[1, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
+			FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
 			tmp = Contract[tmp, EpsContract-> False];
-			FCPrint[1, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+			FCPrint[2, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 
 			time2=AbsoluteTime[];
-			FCPrint[1, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
+			FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
 					tmp = EpsContract[tmp,FCI->True]
 				];
-			FCPrint[1, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+			FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 			FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
 		];
 
 		(* 	Expansion of the scalar products.	*)
 		If[ optExpandScalarProduct && !FreeQ[tmp,Momentum],
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Expanding scalar products", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Expanding scalar products", FCDoControl->dsVerbose];
 			tmp = ExpandScalarProduct[tmp,FCI->False];
-			FCPrint[1,"DiracSimplify:diracSimplifyEvale: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
+			FCPrint[2,"DiracSimplify:diracSimplifyEvale: Done expanding the result, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
 		];
 
 		(*	Substituting the explicit values of Dirac sigma	*)
 		If [ optDiracSigmaExplicit && !FreeQ[tmp,DiracSigma],
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the Dirac sigma.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the Dirac sigma.", FCDoControl->dsVerbose];
 			tmp = DiracSigmaExplicit[tmp,FCI->True]
 		];
 
 		(* 	Canonical ordering of the Dirac matrices.	*)
 		If[ optDiracOrder,
 				time2=AbsoluteTime[];
-				FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracOrder.", FCDoControl->dsVerbose];
+				FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying DiracOrder.", FCDoControl->dsVerbose];
 				tmp = DiracOrder[tmp, FCI->True, FCJoinDOTs->OptionValue[Expanding]];
-				FCPrint[1,"DiracSimplify:diracSimplifyEvale: Done applying DiracOrder, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
+				FCPrint[2,"DiracSimplify:diracSimplifyEvale: Done applying DiracOrder, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
 		];
 
 
@@ -426,22 +426,22 @@ diracSimplifyEval[expr_]:=
 
 		(*	Substituting the explicit values of the chiral projectors	*)
 		If[ optDiracSubstitute67 && !FreeQ2[tmp,{DiracGamma[6],DiracGamma[7]}],
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the chiral projectors.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Substituting the explicit values of the chiral projectors.", FCDoControl->dsVerbose];
 			tmp = DiracSubstitute67[tmp, FCI->True]
 		];
 
 		(*	Rewriting DiracGamma[5] in terms of the chiral projectors 	*)
 		If[ optDiracSubstitute5 && !FreeQ[tmp,DiracGamma[5]],
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Rewriting DiracGamma[5] in terms of the chiral projectors.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Rewriting DiracGamma[5] in terms of the chiral projectors.", FCDoControl->dsVerbose];
 			tmp = DiracSubstitute5[tmp, FCI->True]
 		];
 
 
 		If[	optExpanding && (!optDiracGammaCombine || optDiracSubstitute67),
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying Dotsimplify.", FCDoControl->dsVerbose];
 			tmp = DotSimplify[tmp, FCI->True, Expanding -> True];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After Dotsimplify: ", tmp, FCDoControl->dsVerbose];
 		];
 
@@ -449,9 +449,9 @@ diracSimplifyEval[expr_]:=
 		(*	Dirac equation	*)
 		If[	!FreeQ[tmp,Spinor] && optDiracEquation,
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Applying DiracEquation.", FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying DiracEquation.", FCDoControl->dsVerbose];
 			tmp = DiracEquation[tmp, FCI->True];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: DiracEquation done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: DiracEquation done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracEquation: ", tmp, FCDoControl->dsVerbose];
 		];
 
@@ -459,8 +459,8 @@ diracSimplifyEval[expr_]:=
 			The combinations ubar.v and vbar.u are orthogonal and hence vanish *)
 		If[	!FreeQ[tmp,Spinor],
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracSimplify: Applying spinor normalization on ", tmp, FCDoControl->dsVerbose];
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Spinor normalization done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: Applying spinor normalization on ", tmp, FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Spinor normalization done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
 			tmp = tmp/. DOT->holdDOT //.
 			{	holdDOT[Spinor[s_. Momentum[p__],m_, 1],Spinor[s_. Momentum[p__],m_, 1]] -> s 2 m,
 				holdDOT[Spinor[- Momentum[p__],m_, 1],Spinor[Momentum[p__],m_, 1]] -> 0,
@@ -472,9 +472,9 @@ diracSimplifyEval[expr_]:=
 		(* Factoring	*)
 		If[ optFactoring=!=False,
 				time2=AbsoluteTime[];
-				FCPrint[1,"DiracSimplify: diracSimplifyEval: Factoring the result.", FCDoControl->dsVerbose];
+				FCPrint[2,"DiracSimplify: diracSimplifyEval: Factoring the result.", FCDoControl->dsVerbose];
 				tmp = optFactoring[tmp];
-				FCPrint[1,"DiracSimplify:diracSimplifyEvale: Done factoring, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
+				FCPrint[2,"DiracSimplify:diracSimplifyEvale: Done factoring, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
 		];
 
 		res = tmp;
