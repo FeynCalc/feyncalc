@@ -1881,6 +1881,8 @@ SISD[0] =
 SISE[0] =
 	0;
 
+SetAttributes[SmallVariable, Flat];
+
 SmallVariable[0] =
 	0;
 
