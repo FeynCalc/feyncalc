@@ -180,7 +180,9 @@ FCE -> True] &","2 D Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[Momentum[p3, D
 	ms, 1] -
 Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GAD[nu].GA[7].Spinor[
 	Momentum[p3, D], ms, 1] Spinor[Momentum[p1, D], mb, 1].GAD[
-	mu].GAD[nu].GA[7].Spinor[-Momentum[p2, D], ms, 1]"}
+	mu].GAD[nu].GA[7].Spinor[-Momentum[p2, D], ms, 1]"},
+{"fcstDiracSimplify-ID40","DiracSimplify[{c1 GA[mu].(GS[p] + m).GA[mu],
+c2 DiracTrace[GA[mu, nu]]},FCE->True]","{4 c1 m - 2 c1 GS[p], 4 c2 MT[mu, nu]}"}
 };
 
 

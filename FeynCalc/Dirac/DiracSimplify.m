@@ -80,7 +80,11 @@ Options[DiracSimplify] = {
 	ToDiracGamma67		-> True
 };
 
-DiracSimplify[expr_, OptionsPattern[]] :=
+
+DiracSimplify[expr_List, opts:OptionsPattern[]] :=
+	DiracSimplify[#, opts]&/@expr;
+
+DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
 			diracObjectsEval, repRule, tmp, tmpHead},
 
