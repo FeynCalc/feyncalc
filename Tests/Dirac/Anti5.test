@@ -429,13 +429,13 @@ Tests`Dirac`fcstAnti5ToTheRightLarin =
 Tests`Dirac`fcstAnti5DiracChain =
 ({
 {"fcstAnti5DiracChain-ID1", "Anti5[DCHN[GA[5, mu, nu, rho], i, j], FCE -> True]",
-	"DCHN[-GA[mu].GA[5].GA[nu].GA[rho], i, j]"},
+	"-DCHN[GA[mu].GA[5].GA[nu].GA[rho], i, j]"},
 
 {"fcstAnti5DiracChain-ID2", "Anti5[DCHN[GAD[5, mu, nu, rho], i, j], 2, FCE -> True]",
 	"DCHN[GAD[mu].GAD[nu].GA[5].GAD[rho], i, j]"},
 
 {"fcstAnti5DiracChain-ID3", "Anti5[DCHN[GAD[mu, nu, 5, rho], i, j], -1, FCE -> True]",
-	"DCHN[-GAD[mu].GA[5].GAD[nu].GAD[rho], i, j]"}
+	"-DCHN[GAD[mu].GA[5].GAD[nu].GAD[rho], i, j]"}
 });
 
 

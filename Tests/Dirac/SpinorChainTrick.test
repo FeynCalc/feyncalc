@@ -104,5 +104,19 @@ Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1, 1] +
 Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2, 1] +
 64*z*Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
 	1]*Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
-	1]*(4*SP[p, p] - SP[q, q])"}
+	1]*(4*SP[p, p] - SP[q, q])"},
+{"fcstSpinorChainTrick-ID11",
+"MatchQ[SpinorChainTrick[
+SpinorUBar[p].GA[mu, nu].SpinorV[q] DiracTrace[
+	x1 GA[mu, nu] + x2 GA[nu, mu]]],
+x1 DiracTrace[
+	DiracGamma[LorentzIndex[a_FCGV]].DiracGamma[
+	LorentzIndex[b_FCGV]]] Spinor[Momentum[p], 0, 1].DiracGamma[
+	LorentzIndex[a_FCGV]].DiracGamma[
+	LorentzIndex[b_FCGV]].Spinor[-Momentum[q], 0, 1] +
+x2 DiracTrace[
+	DiracGamma[LorentzIndex[a_FCGV]].DiracGamma[
+	LorentzIndex[b_FCGV]]] Spinor[Momentum[p], 0, 1].DiracGamma[
+	LorentzIndex[b_FCGV]].DiracGamma[
+	LorentzIndex[a_FCGV]].Spinor[-Momentum[q], 0, 1]]","True"}
 });
