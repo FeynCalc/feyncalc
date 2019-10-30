@@ -49,7 +49,6 @@ trace5Fun::usage="";
 noSpur::usage="";
 leviCivitaSign::usage="";
 optSort::usage="";
-alreadyDone::usage="";
 
 Options[DiracTrace] = {
 	Contract 			-> True,
@@ -83,7 +82,7 @@ DiracTrace[a:Except[_HoldAll]..., x_,y_, z___] :=
 DiracTrace[expr_, op:OptionsPattern[]] :=
 	Block[{	diTres, ex, tr1, tr2, tr3, time, dsHead, diracObjects,
 			diracObjectsEval, null1, null2, freePart, dsPart, repRule,
-			diTr, holdDOT},
+			diTr, holdDOT, insideDiracTrace},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -161,13 +160,19 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "DiracTrace. Applying diracTraceEvaluate.", FCDoControl->diTrVerbose];
+		FCPrint[1, "DiracTrace. Applying diracTrickEvalFast.", FCDoControl->diTrVerbose];
 
 		(* Here we try to compute some very simple traces in a faster way *)
-		diracObjectsEval = Map[diracTraceEvaluateFast[#]&, (diracObjects/.dsHead->Identity)] /. diracTraceEvaluateFast->Identity;
+
+		insideDiracTrace = FeynCalc`DiracTrick`Private`insideDiracTrace;
+		FeynCalc`DiracTrick`Private`insideDiracTrace = True;
+
+		diracObjectsEval = Map[FeynCalc`DiracTrick`Private`diracTrickEvalFast[#]&, (diracObjects/.dsHead->Identity)] /. FeynCalc`DiracTrick`Private`diracTrickEvalFast->Identity;
+
+		FeynCalc`DiracTrick`Private`insideDiracTrace = insideDiracTrace;
 
 
-		FCPrint[1,"DiracTrace: After diracTraceEvaluateFast: ", diracObjectsEval, FCDoControl->diTrVerbose];
+		FCPrint[1,"DiracTrace: After diracTrickEvalFast: ", diracObjectsEval, FCDoControl->diTrVerbose];
 
 		diracObjectsEval = Map[diracTraceEvaluate[#, Flatten[Join[{op}, FilterRules[Options[DiracTrace], Except[{op}]]]]]&,
 			diracObjectsEval];
@@ -212,16 +217,10 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 	]/; OptionValue[DiracTraceEvaluate];
 
 
-diracTraceEvaluateFast[DOT[DiracGamma[l1_LorentzIndex].DiracGamma[l2_LorentzIndex]]]:=
-	alreadyDone[unitMatrixTrace Pair[l1,l2]];
+diracTraceEvaluate[expr_/;FreeQ[expr,DiracGamma], OptionsPattern[]] :=
+	unitMatrixTrace expr;
 
-diracTraceEvaluateFast[DOT[DiracGamma[l1_LorentzIndex].DiracGamma[l2_LorentzIndex]]]:=
-	alreadyDone[unitMatrixTrace Pair[l1,l2]];
-
-diracTraceEvaluate[alreadyDone[expr_],OptionsPattern[]] :=
-	expr;
-
-diracTraceEvaluate[expr_/; Head[expr]=!=alreadyDone,opts:OptionsPattern[]] :=
+diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 	Block[ { diractrres, tmp = expr, diractrfact,
 		diractrcoll, schoutenopt,
 		dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
