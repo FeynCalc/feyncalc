@@ -746,7 +746,7 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			FCPrint[3,"PaVeReduce: pavereduce: Second stage done: ", t, FCDoControl->pvrVerbose];
 
 			If[ !FreeQ[t, HoldForm],
-				t = FRH[t]
+				t = FRH[t, IsolateNames -> isok]
 			];
 
 			If[	!FreeQ2[t,{T,tT}],

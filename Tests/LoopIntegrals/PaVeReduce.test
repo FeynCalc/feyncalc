@@ -980,7 +980,12 @@ PaVe[2, {p10, p12, p20}, {m1^2, m2^2,
 2 D pp) - ((mm1 + mm2 + pp) PaVe[0, {}, {mm2}])/(4 D pp) - (
 mm1 (mm1 - mm2 + pp) PaVe[0, {pp}, {mm1, mm2}])/(
 2 D pp) - ((mm1 - mm2 + pp)^2 PaVe[1, {pp}, {mm1, mm2}])/(
-4 D pp) - ((mm1 - mm2 + pp) PaVe[0, 0, {pp}, {mm1, mm2}])/(2 D pp)"}
+4 D pp) - ((mm1 - mm2 + pp) PaVe[0, 0, {pp}, {mm1, mm2}])/(2 D pp)"},
+{"fcstPaVeReduce-ID11", "MatchQ[PaVeReduce[
+Collect2[Expand[Sum[a[i], {i, 1, 5}] B0[0, mm, mm]], B0,
+IsolateNames -> KK],
+BReduce -> True], -(((2 - D) HoldForm[_] PaVe[0, {}, {mm}])/(2 mm))]",
+"True"}
 })
 
 
