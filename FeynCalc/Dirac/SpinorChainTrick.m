@@ -34,6 +34,7 @@ holdDOT::usage="";
 spchtrVerbose::usage="";
 
 Options[SpinorChainTrick] = {
+	CartesianIndexNames			-> {},
 	Contract 					-> True,
 	DiracEquation				-> True,
 	DiracGammaCombine			-> False,
@@ -45,7 +46,8 @@ Options[SpinorChainTrick] = {
 	FCI							-> False,
 	FCJoinDOTs					-> True,
 	FCVerbose					-> False,
-	Factoring					-> {Factor2, 5000}
+	Factoring					-> {Factor2, 5000},
+	LorentzIndexNames			-> {}
 };
 
 SpinorChainTrick[expr_, OptionsPattern[]] :=
@@ -87,7 +89,8 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 			FCPrint[1, "SpinorChainTrick: Canonicalize dummy Lorentz and Cartesian indices.", FCDoControl->spchtrVerbose];
 			time=AbsoluteTime[];
 
-			tmp = FCCanonicalizeDummyIndices[tmp , FCI->True, Head->{LorentzIndex,CartesianIndex}, DotSimplify->False];
+			tmp = FCCanonicalizeDummyIndices[tmp , FCI->True, Head->{LorentzIndex,CartesianIndex}, DotSimplify->False,
+				LorentzIndexNames-> OptionValue[LorentzIndexNames], CartesianIndexNames-> OptionValue[CartesianIndexNames]];
 			FCPrint[1, "SpinorChainTrick: Done canonicalize dummy Lorentz and Cartesian indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
 			FCPrint[3, "SpinorChainTrick: After FCCanonicalizeDummyIndices ", tmp, FCDoControl->spchtrVerbose]
 		];
