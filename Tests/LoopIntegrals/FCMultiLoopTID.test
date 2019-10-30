@@ -59,7 +59,9 @@ q2},FCE->True]", "0"},
 {"fcstFCMultiLoopTID-ID9",
 "FCMultiLoopTID[GSD[q1].GSD[q2]SPD[q1,q2]FAD[{q1,m1},{q2,m2},{q1-\
 q2}],{q1,q2}]//DiracTrick//FCE",
-"((m1^2 + m2^2)*(-FAD[{q1, m1}, {q2, m2}] + m1^2*FAD[{q1, m1}, {q2, m2}, q1 - q2] + m2^2*FAD[{q1, m1}, {q2, m2}, q1 - q2]))/4"},
+"-((m1^2 + m2^2)*(FAD[{q1, m1}, {q2, m2}] -
+	  m1^2*FAD[{q1, m1}, {q2, m2}, q1 - q2] -
+	  m2^2*FAD[{q1, m1}, {q2, m2}, q1 - q2]))/4"},
 {"fcstFCMultiLoopTID-ID11",
 "FCMultiLoopTID[LCD[][q1,q2,a,b]SPD[q1,q2]FAD[{q1-p1,m1},{q2-p2,m2},\
 {q1-q2}],{q1,q2},FCE->True]",

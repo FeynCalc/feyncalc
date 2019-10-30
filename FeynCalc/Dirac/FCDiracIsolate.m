@@ -44,8 +44,9 @@ Options[FCDiracIsolate] = {
 	FCE					-> False,
 	FCI					-> False,
 	FCJoinDOTs			-> True,
+	FCTraceExpand		-> False,
 	FCVerbose			-> False,
-	Factoring			-> Factor,
+	Factoring			-> {Factor2, 5000},
 	Head				-> FCGV["DiracChain"],
 	Isolate				-> False,
 	IsolateFast			-> False,
@@ -154,6 +155,14 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->True, FCJoinDOTs->OptionValue[FCJoinDOTs]];
 			FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 			FCPrint[3, "FCDiracIsolate: After DotSimplify: ", ex, FCDoControl->fcdiVerbose]
+		];
+
+		If[	OptionValue[FCTraceExpand],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCDiracIsolate: Applying FCTraceExpand.", FCDoControl->fcdiVerbose];
+			ex = FCTraceExpand[ex, FCI->True, SUNTrace->False];
+			FCPrint[1, "FCDiracIsolate: Done applying FCTraceExpand, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After FCTraceExpand: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		If[	OptionValue[Collecting],
