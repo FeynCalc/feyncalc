@@ -254,7 +254,7 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 
 				FCPrint[1, "DiracSimplify: Applying SirlinSimplify.", FCDoControl->dsVerbose];
 				time=AbsoluteTime[];
-				tmp = SirlinSimplify[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False];
+				tmp = SirlinSimplify[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False, SpinorChainTrick->False];
 
 				FCPrint[1,"DiracSimplify: Done applying SirlinSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: AfteSirlinSimplify: ", tmp, FCDoControl->dsVerbose]
