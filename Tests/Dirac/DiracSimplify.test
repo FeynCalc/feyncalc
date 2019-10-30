@@ -182,7 +182,12 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GAD[nu].GA[7].Spinor[
 	Momentum[p3, D], ms, 1] Spinor[Momentum[p1, D], mb, 1].GAD[
 	mu].GAD[nu].GA[7].Spinor[-Momentum[p2, D], ms, 1]"},
 {"fcstDiracSimplify-ID40","DiracSimplify[{c1 GA[mu].(GS[p] + m).GA[mu],
-c2 DiracTrace[GA[mu, nu]]},FCE->True]","{4 c1 m - 2 c1 GS[p], 4 c2 MT[mu, nu]}"}
+c2 DiracTrace[GA[mu, nu]]},FCE->True]","{4 c1 m - 2 c1 GS[p], 4 c2 MT[mu, nu]}"},
+{"fcstDiracSimplify-ID41","Total[DiracSimplify[{SpinorUBar[p].GA[mu, nu].SpinorV[q] SpinorUBar[
+	p2].DiracSigma[GA[mu], GA[nu]].SpinorV[q2],
+-SpinorUBar[p].GA[mu, nu].SpinorV[q] SpinorUBar[p2].DiracSigma[
+	GA[mu], GA[nu]].SpinorV[q2]},
+LorentzIndexNames -> Table[mu[i], {i, 1, 10}]]]","0"}
 };
 
 

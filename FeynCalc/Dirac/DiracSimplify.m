@@ -75,6 +75,8 @@ Options[DiracSimplify] = {
 	FCVerbose			-> False,
 	Factoring			-> False,
 	InsideDiracTrace    -> False,
+	LorentzIndexNames	-> {},
+	CartesianIndexNames	-> {},
 	SirlinSimplify		-> True,
 	SpinorChainTrick	-> True,
 	ToDiracGamma67		-> True
@@ -243,7 +245,8 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 
 				FCPrint[1, "DiracSimplify: Applying SpinorChainTrick.", FCDoControl->dsVerbose];
 				time=AbsoluteTime[];
-				tmp = SpinorChainTrick[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False];
+				tmp = SpinorChainTrick[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False,
+					LorentzIndexNames->OptionValue[LorentzIndexNames], CartesianIndexNames->OptionValue[CartesianIndexNames]];
 
 				FCPrint[1,"DiracSimplify: Done applying SpinorChainTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: After SpinorChainTrick: ", tmp, FCDoControl->dsVerbose];
