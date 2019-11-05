@@ -1,0 +1,84 @@
+Tests`LoopIntegrals`fcitTIDL =
+({
+{"fcitTIDL-ID1",
+"Together[Contract[MTD[mu1,mu2]Tdec[{{p1,mu1},{p2,mu2}},{},List\
+\[Rule]False]]]", "Pair[Momentum[p1, D], Momentum[p2, D]]"},
+{"fcitTIDL-ID2",
+"Together[Contract[MTD[mu1,mu2]Tdec[{{p1,mu1},{p2,mu2}},{q1},List\
+\[Rule]False]]]", "Pair[Momentum[p1, D], Momentum[p2, D]]"},
+{"fcitTIDL-ID3",
+"Together[Contract[MTD[mu1,mu2]Tdec[{{p1,mu1},{p2,mu2}},{q1,q2},\
+List\[Rule]False]]]", "Pair[Momentum[p1, D], Momentum[p2, D]]"},
+{"fcitTIDL-ID4",
+"Together[Contract[MTD[mu1,mu2]Tdec[{{p1,mu1},{p2,mu2}},{q1,q2,q3},\
+List\[Rule]False]]]", "Pair[Momentum[p1, D], Momentum[p2, D]]"},
+{"fcitTIDL-ID5",
+"Together[Contract[MTD[mu1,mu2]Tdec[{{p1,mu1},{p2,mu2}},{q1,q2,q3,\
+q4},List\[Rule]False]]]", "Pair[Momentum[p1, D], Momentum[p2, D]]"},
+{"fcitTIDL-ID6",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p1,mu2},{\
+p2,mu3}},{},List\[Rule]False]]]", "0"},
+{"fcitTIDL-ID7",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p1,mu2},{\
+p2,mu3}},{q1},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[q1, D]]"},
+{"fcitTIDL-ID8",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p1,mu2},{\
+p2,mu3}},{q1,q2},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[q1, D]]"},
+{"fcitTIDL-ID9",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p1,mu2},{\
+p2,mu3}},{q1,q2,q3},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[q1, D]]"},
+{"fcitTIDL-ID10",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p1,mu2},\
+{p1,mu3},{p2,mu4}},{},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p1, D], \
+Momentum[p2, D]]"},
+{"fcitTIDL-ID11",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p1,mu2},\
+{p1,mu3},{p2,mu4}},{q1},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p1, D], \
+Momentum[p2, D]]"},
+{"fcitTIDL-ID12",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p1,mu2},\
+{p1,mu3},{p2,mu4}},{q1,q2},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p1, D], \
+Momentum[p2, D]]"},
+{"fcitTIDL-ID13",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p1,mu2},\
+{p2,mu3},{p2,mu4}},{},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]"},
+{"fcitTIDL-ID14",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p1,mu2},\
+{p2,mu3},{p2,mu4}},{q1},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]"},
+{"fcitTIDL-ID15",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p1,mu2},\
+{p2,mu3},{p2,mu4}},{q1,q2},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]"},
+{"fcitTIDL-ID16",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p2,mu2},{\
+p3,mu3}},{},List\[Rule]False]]]", "0"},
+{"fcitTIDL-ID17",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p2,mu2},{\
+p3,mu3}},{q1},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[q1, D]]"},
+{"fcitTIDL-ID18",
+"Together[Contract[MTD[mu1,mu2]FVD[q1,mu3]Tdec[{{p1,mu1},{p2,mu2},{\
+p3,mu3}},{q1,q2},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[q1, D]]"},
+{"fcitTIDL-ID19",
+"Together[Contract[MTD[mu1,mu2]MTD[mu3,mu4]Tdec[{{p1,mu1},{p2,mu2},\
+{p3,mu3},{p4,mu4}},{},List\[Rule]False]]]",
+"Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[p4, D]]"}
+})

@@ -142,7 +142,6 @@ If[ Names["Tests`LoopIntegrals`fcitTIDSTests"]=!={},
 ];
 
 If[ Names["Tests`LoopIntegrals`fcitTIDMTests"]=!={},
-
 	tmpTest = Map[test[ DiracSimplify[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]]],0,testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDMTests"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
@@ -158,5 +157,15 @@ If[ Names["Tests`LoopIntegrals`fcitTIDPTests"]=!={},
 If[ Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"]=!={},
 	$LimitTo4=False;
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];
+
+
+
+
+If[ Names["Tests`LoopIntegrals`fcitTIDL"]=!={},
+	$LimitTo4=False;
+	FCClearScalarProducts[];
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDL"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];

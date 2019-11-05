@@ -63,23 +63,30 @@ MemSet[scpexp[x,n],
 
 (*To add new (long) formulas the following compression mechanism is quite effective:
 
-exp = Tdec[{{q, i1}, {q, i2}, {q, i3}, {q, i4}, {q, i5}, {q, i6}, {q,
-	i7}, {q, i8}}, {}, UseTIDL -> False, List -> False];
-exp2 = Collect2[exp, {q, FVD, MTD}];
-exp2 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &,
+extmoms = {p1, p2}
+tList = {{q1, mu}, {q1, nu}, {q2, rho}};
+exp = Tdec[tList, extmoms, UseTIDL -> False, List -> False];
+lmoms = Union[First /@ tList];
+
+exp2 = Collect2[FCE[exp], Join[{lmoms}, {FVD, MTD}]];
+exp3 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &,
 exp2 // ChangeDimension[#, 4] & // FCE //
 	ReplaceAll[#, D -> n] &];
-exp2 = Collect2[exp2, {q, HoldForm}] // FRH
-z1 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &,
-exp2 // ChangeDimension[#, 4] & // FCE //
-	ReplaceAll[#, D -> n] &];
-li = Cases[List@z1, HoldForm[ISO[__]], Infinity] // Union;
+exp4 = Collect2[exp3, Join[{MT, FV, HoldForm}]] // FRH;
+z1raw = Map[
+Isolate[#, HoldForm, IsolateNames -> ISO, IsolateTimes -> False] &,
+	exp4 // ChangeDimension[#, 4] & // FCE // ReplaceAll[#, D -> n] &];
+li = Cases[List@z1raw, HoldForm[ISO[__]], Infinity] // Union;
+If[! FreeQ[FCI[li // FRH], LorentzIndex],
+Print["Inconsistencies detected!"];
+Abort[]
+]
 reru = MapIndexed[
 	Rule[#1, ToExpression[("s" <> ToString[Identity @@ #2])]] &, li] //
 	Flatten;
-z2 = Map[ReplaceAll[#, HoldForm[a_] :> Rule[HoldForm[a], a]] &, li];
-z1 = z1 /. reru;
-z2 = z2 /. reru;
+z2raw = Map[ReplaceAll[#, HoldForm[a_] :> Rule[HoldForm[a], a]] &, li];
+z1 = z1raw /. reru;
+z2 = z2raw /. reru;
 reru2 = MapIndexed[
 	Rule[#1, ToExpression[("t" <> ToString[Identity @@ #2])]] &,
 	Cases[z1, SP[_, _], Infinity] // Union] // Flatten;
@@ -100,17 +107,30 @@ reru41 = MapIndexed[
 	Cases[z2, MT[_, _], Infinity] // Union] // Flatten;
 reru2 = Join[reru2, reru3, reru4];
 reru21 = Join[reru21, reru31, reru41];
-Put[{Collect2[z1 /. reru /. reru2, l], z2 /. reru21 /. reru2,
-Map[Reverse, Join[reru21, reru2]]}, "formula.m"];
-bli = Union@Flatten[{(Join[reru, reru2, reru3, reru4, reru21, reru31,
-	reru41] /. {Rule[_, a_] :> a}), encli}]
+finExp = (z1 /. reru /. reru2);
+finRu1 = z2 /. reru21 /. reru2;
+finRu2 = Map[Reverse, Join[reru21, reru2]];
+If[Collect2[
+	FCE[(finExp //. finRu1 //. finRu2)] -
+	 FCE[(ChangeDimension[exp2, 4] /. D -> n)], FV, MT] =!= 0,
+Print["Formula incosistent!"];
+Abort[]
+];
+Put[{finExp, finRu1, finRu2}, "formula.m"];
+bli = Union@
+Flatten[{(Join[reru, reru2, reru3, reru4, reru21, reru31,
+		reru41] /. {Rule[_, a_] :> a}), encli}];
+tmp = Import["formula.m", "Text"] ;
+Export["formula.m",
+"Block[" <> ToString[bli, InputForm] <> ",\n" <>
+"encli=" <>
+StringReplace[tmp, " " -> ""] <> ";\n" <>
+"scpexp[encli,n]]",
+"Text"];
 
 
-Then edit formula.m and remove all spaces. Use following skeleton for Block
-
-Block[{bli},
-encli="formula.m";
-scpexp[encli,n]
+Then put the block from formula.m to the corresponding file in
+FeynCalc/Tables/TIDL
 *)
 
 (* 	Load precomputed tensor integral decompositions from FeynCalc/Tables/TIDL	*)
