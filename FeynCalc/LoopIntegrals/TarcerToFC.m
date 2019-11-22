@@ -20,7 +20,9 @@ TarcerToFC::usage =
 in Tarcer-notation to the FeynCalc notation. \
 See TFI for details on the convention. \
 As in case of ToTFI, the 1/Pi^D and 1/Pi^D/2 prefactors are implicit, i.e. \
-TarcerToFC doesn't add them.";
+TarcerToFC doesn't add them. \n
+To recover momenta from scalar products use the option ScalarProduct e.g. as \
+in TarcerToFC[TBI[D, pp^2, {{1, 0}, {1, 0}}], {q1, q2}, ScalarProduct -> {{pp^2, p1}}]";
 
 TarcerToFC::failmsg = "Error! TarcerToFC has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
@@ -32,35 +34,49 @@ End[]
 
 Begin["`TarcerToFC`Private`"]
 
-(* Care about TVi and TJi later *)
+Options[TarcerToFC]  = {
+	FCE -> False,
+	FCI -> False,
+	ScalarProduct -> {}
+};
 
-Options[TarcerToFC]  = {};
+TarcerToFC[expr_List, {q1_, q2_}, opts:OptionsPattern[]]:=
+	TarcerToFC[#, {q1, q2}, opts]&/expr;
 
-momconv[0]:=
-	0;
+TarcerToFC[expr_/;Head[expr]=!=List, {q1_, q2_}, OptionsPattern[]] :=
+	Block[{	ex, res, rules, tarcerHeads, tarcerInts, tarcerIntsConverted,
+			ruConv, dimsPresent, optScalarProduct, momConvRules, momconv},
 
-momconv[p_^2]:=
-	MemSet[momconv[p^2],p];
+		tarcerHeads = {Tarcer`TFI,Tarcer`TVI,Tarcer`TJI,Tarcer`TBI,Tarcer`TAI};
+		optScalarProduct = OptionValue[ScalarProduct];
 
-momconv[Pair[Momentum[p_,d_:4],Momentum[p_,d_:4]]]:=
-	MemSet[momconv[Pair[Momentum[p,d],Momentum[p,d]]],p];
+		momConvRules = {
+			momconv[0]->0,
+			momconv[Pair[Momentum[p_,d___],Momentum[p_,d___]]] -> p
+		};
 
-momconv[SP[p_,p_]]:=
-	MemSet[momconv[SP[p,p]],p]
-
-momconv[SPD[p_,p_]]:=
-	MemSet[momconv[SPD[p,p]],p]
-
-momconv[pp_Symbol]:=
-	MemSet[momconv[pp],Sqrt[pp]];
-
-
-TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
-	Block[ {out, rules},
-
-		If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
+		If[!MatchQ[optScalarProduct,{}|{{_,_}..}],
+			Message[TarcerToFC::failmsg,"The option ScalarProduct must be of the form {{m2,p1},{pp,p2},...}"];
 			Abort[]
+		];
+
+		If[	optScalarProduct=!={},
+			momConvRules = Join[momConvRules,Map[Rule[momconv[#[[1]]], #[[2]]] &, optScalarProduct]]
+		];
+
+		If[	!FCDuplicateFreeQ[First/@momConvRules],
+			Message[TarcerToFC::failmsg,"The rules given via the ScalarProduct option must be unambiguous."];
+			Abort[]
+		];
+
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		(* Nothing to do *)
+		If[	FreeQ2[ex,tarcerHeads],
+			ex
 		];
 
 		If[	!FreeQ2[$ScalarProducts, {q1,q2}],
@@ -105,8 +121,27 @@ TarcerToFC[exp_, {q1_, q2_}, OptionsPattern[]] :=
 
 		};
 
-		out = exp /. Dispatch[rules];
-		out
+		tarcerInts = Cases2[ex,tarcerHeads];
+
+		dimsPresent = Union[First/@tarcerInts];
+
+		tarcerIntsConverted = tarcerInts/. Dispatch[rules] /. momConvRules;
+		ruConv = Thread[Rule[tarcerInts,tarcerIntsConverted]];
+
+		(*
+			If the p.p was replaced by a mass squared, we obviously cannot recover the original momentum.
+			It is up to the user to do that. Th
+		 *)
+
+		ruConv = SelectFree[ruConv,momconv];
+
+		res = ex /. Dispatch[ruConv];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 	];
 
 FCPrint[1,"TarcerToFC.m loaded."];
