@@ -109,5 +109,18 @@ SPD[p3, p3], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], SPD[p1, p1] - \
 {"fcstToPaVe-ID35",
 "FCClearScalarProducts[]; \n ToPaVe[SFAD[{q,m1^2},{q-p,m2^2,3}],q,FCE->True]",
 "I*Pi^2*D0[0, 0, SPD[p, p], SPD[p, p], 0, SPD[p, p], m2^2, m2^2, \
-m2^2, m1^2]"}
+m2^2, m1^2]"},
+{"fcstToPaVe-ID36", "ToPaVe[FAD[{q, m0}, {q - p1, m1}, {q - p2, m2}], q,
+PaVeAutoOrder -> False, PaVeOrder -> False, FCE -> True]",
+"I \[Pi]^2 PaVe[
+0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}, PaVeAutoOrder -> False,
+PaVeAutoReduce -> True]"},
+{"fcstToPaVe-ID37", "ToPaVe[FAD[{q, m0}, {q - p1, m1}, {q - p2, m2}, {q - p2, m3}], q,
+PaVeAutoOrder -> False, PaVeOrder -> False, FCE -> True]",
+"I \[Pi]^2 PaVe[
+0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2], 0,
+SPD[p2, p2], SPD[p2, p2],
+SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2]}, {m0^2, m1^2, m2^2,
+m3^2}, PaVeAutoOrder -> False, PaVeAutoReduce -> True]"}
 };
