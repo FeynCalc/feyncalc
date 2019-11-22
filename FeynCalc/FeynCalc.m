@@ -307,6 +307,8 @@ If[ $FeynCalcStartupMessages =!= False,
 *)
 FeynCalc`Private`AddToTheContextPath={};
 
+FeynCalc`Private`AddToTheWhiteListedContextAdditions={};
+
 BeginPackage["FeynCalc`"];
 If[ $LoadAddOns=!={},
 	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, $LoadAddOns];
@@ -339,6 +341,8 @@ If[ $FCCheckContext,
 		"newObjectsInTheGlobalContext", "whiteListedContextAdditions", "GetFlip",
 		"Dirac"
 	};
+
+	Global`whiteListedContextAdditions = Join[Global`whiteListedContextAdditions,FeynCalc`Private`AddToTheWhiteListedContextAdditions];
 
 	Global`newObjectsInTheGlobalContext = Complement[Global`globalContextAfterLoadingFC, Global`globalContextBeforeLoadingFC]//
 		Complement[#,Global`whiteListedContextAdditions]&;
