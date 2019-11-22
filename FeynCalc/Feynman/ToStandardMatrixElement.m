@@ -34,6 +34,7 @@ tsmeVerbose::usage="";
 
 Options[ToStandardMatrixElement] = {
 	CartesianIndex			-> False,
+	CartesianIndexNames		-> {},
 	ChangeDimension 		-> False,
 	DiracOrder 				-> True,
 	DiracSimplify			-> True,
@@ -48,6 +49,7 @@ Options[ToStandardMatrixElement] = {
 	FCVerbose 				-> False,
 	Factoring 				-> {Factor, 5000},
 	LorentzIndex			-> False,
+	LorentzIndexNames		-> {},
 	Polarization 			-> True,
 	SirlinSimplify 			-> False,
 	Spinor 					-> False,
@@ -60,7 +62,10 @@ standmat/:
 	standmat[x_] standmat[y_] :=
 		standmat[x y];
 
-ToStandardMatrixElement[expr_, OptionsPattern[]]:=
+ToStandardMatrixElement[expr_List, opts:OptionsPattern[]]:=
+	ToStandardMatrixElement[#, opts]&/@expr;
+
+ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained},
 
 
@@ -88,7 +93,8 @@ ToStandardMatrixElement[expr_, OptionsPattern[]]:=
 			FCPrint[1, "ToStandardMatrixElement: Applying DiracSimplify.", FCDoControl->tsmeVerbose];
 			ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
 				DiracSubstitute5->OptionValue[DiracSubstitute5], SpinorChainTrick->OptionValue[SpinorChainTrick], SirlinSimplify->OptionValue[SirlinSimplify],
-				DiracEquation->OptionValue[DiracEquation]];
+				DiracEquation->OptionValue[DiracEquation], LorentzIndexNames-> OptionValue[LorentzIndexNames],
+				CartesianIndexNames-> OptionValue[CartesianIndexNames]];
 			FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 			FCPrint[3, "ToStandardMatrixElement: After DiracSimplify: ", ex, FCDoControl->tsmeVerbose]
 		];

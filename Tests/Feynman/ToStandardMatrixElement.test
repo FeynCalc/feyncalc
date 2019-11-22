@@ -384,5 +384,26 @@ Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[Momentum[p3, D], ms,
 StandardMatrixElement[
 Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GAD[nu].GA[7].Spinor[
 	Momentum[p3, D], ms, 1] Spinor[Momentum[p1, D], mb, 1].GAD[
-	mu].GAD[nu].GA[7].Spinor[-Momentum[p2, D], ms, 1]]"}
+	mu].GAD[nu].GA[7].Spinor[-Momentum[p2, D], ms, 1]]"},
+{"fcstToStandardMatrixElement-ID14", "ToStandardMatrixElement[
+SpinorUBar[p1].GA[mu, nu].SpinorV[p2] SpinorVBar[p3].GA[mu,
+	nu].SpinorU[p4] +
+SpinorUBar[p1].GA[al, be].SpinorV[p2] SpinorVBar[p3].GA[al,
+	be].SpinorU[p4], LorentzIndexNames -> {i1, i2}, FCE -> True]",
+"2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	6].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[6].Spinor[Momentum[p4], 0, 1]] +
+2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	7].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[6].Spinor[Momentum[p4], 0, 1]] +
+2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	6].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]] +
+2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	7].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]]"}
 });
