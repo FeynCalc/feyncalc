@@ -39,8 +39,10 @@ End[]
 
 momentumRoutingDenner;
 
+
 Begin["`ToPaVe`Private`"]
 
+optPaVeOrder::usage="";
 genpave::usage="";
 
 Options[ToPaVe] = {
@@ -49,7 +51,8 @@ Options[ToPaVe] = {
 	GenPaVe				-> False,
 	OtherLoopMomenta	-> {},
 	PaVeAutoOrder		-> True,
-	PaVeAutoReduce		-> True
+	PaVeAutoReduce		-> True,
+	PaVeOrder			-> True
 };
 
 ToPaVe[expr_, q_, OptionsPattern[]] :=
@@ -61,7 +64,8 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		genpave = OptionValue[GenPaVe];
+		genpave 			= OptionValue[GenPaVe];
+		optPaVeOrder 		= OptionValue[PaVeOrder];
 		optOtherLoopMomenta = OptionValue[OtherLoopMomenta];
 
 		If[ OptionValue[FCI],
@@ -151,8 +155,13 @@ toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] 
 			Message[ToPaVe::failmsg, "toPave: Wrong number of the kinematic invariants!"];
 			Abort[]
 		];
-		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
-			Power[#, 2] & /@ Join[{m1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
+		res = I Pi^2 PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
+			Power[#, 2] & /@ Join[{m1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear];
+
+		If[ optPaVeOrder,
+			res = PaVeOrder[res]
+		];
+
 		res
 	]/;!genpave;
 
@@ -167,8 +176,13 @@ toPaVe[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q_, dim_], 0, m
 			Message[ToPaVe::failmsg, "toPave: Wrong number of the kinematic invariants!"];
 			Abort[]
 		];
-		res = I Pi^2 PaVeOrder[ PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
-			Join[{-mm1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]];
+		res = I Pi^2 PaVe[0, ExpandScalarProduct[(momentumRoutingDenner[tmp[[1]],pair[#,#]&]/.pair->Pair)],
+			Join[{-mm1},tmp[[2]]], PaVeAutoOrder->paveao, PaVeAutoReduce->pavear];
+
+		If[ optPaVeOrder,
+			res = PaVeOrder[res]
+		];
+
 		res
 	]/;!genpave;
 
