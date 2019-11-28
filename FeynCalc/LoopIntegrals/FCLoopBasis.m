@@ -279,14 +279,17 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		FCPrint[1,"FCLoopBasisIntegralToPropagators: Entering.", FCDoControl->itpVerbose];
 		FCPrint[3,"FCLoopBasisIntegralToPropagators: Entering with ", exp, FCDoControl->itpVerbose];
 
-		If[	!MemberQ[{Power, Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair},Head[exp]] || FreeQ2[exp,lmoms],
+		If[	!MemberQ[{Power, Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair,List},Head[exp]] || FreeQ2[exp,lmoms],
 			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid loop integral."];
 			Abort[]
 		];
 
 		optEtaSign = OptionValue[EtaSign];
 
-		expAsList = List@@(dummy*exp);
+		If[	Head[exp]===List,
+			expAsList = exp,
+			expAsList = List@@(dummy*exp)
+		];
 
 		If[	Head[expAsList]=!=List,
 			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to convert the input expression to a list."];
