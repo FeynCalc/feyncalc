@@ -26,6 +26,9 @@ ComplexConjugate::failmsg =
 "Error! ComplexConjugate has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`";
 
+ComplexConjugate::warnmsg =
+"Warning! `1`";
+
 Begin["`Package`"]
 End[]
 
@@ -121,23 +124,19 @@ ComplexConjugate[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 
 		(*Some checks*)
 		If[	!FreeQ2[prefList,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`PauliHeadsList,FeynCalc`Package`SUNHeadsList,{DOT}]],
-			Message[ComplexConjugate::failmsg, "The list of prefactors contains forbidden objects"];
-			Abort[]
+			Message[ComplexConjugate::warnmsg, "The list of prefactors contains Dirac, Pauli or SU(N) symbols. Their correct complex conjugation is not guaranteed."]
 		];
 
 		If[	!FreeQ2[diracList,Join[FeynCalc`Package`PauliHeadsList,FeynCalc`Package`SUNHeadsList]],
-			Message[ComplexConjugate::failmsg, "The list of Dirac chains contains forbidden objects"];
-			Abort[]
+			Message[ComplexConjugate::warnmsg, "The list of Dirac chains contains Pauli or SU(N) symbols. Their correct complex conjugation is not guaranteed."]
 		];
 
 		If[	!FreeQ2[pauliList,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`SUNHeadsList,{FCChargeConjugateTransposed}]],
-			Message[ComplexConjugate::failmsg, "The list of Dirac chains contains forbidden objects"];
-			Abort[]
+			Message[ComplexConjugate::warnmsg, "The list of Pauli chains contains Dirac or SU(N) symbols. Their correct complex conjugation is not guaranteed."]
 		];
 
 		If[	!FreeQ2[sunList,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`PauliHeadsList]],
-			Message[ComplexConjugate::failmsg, "The list of SU(N) chains contains forbidden objects"];
-			Abort[]
+			Message[ComplexConjugate::warnmsg, "The list of SU(N) chains contains Dirac or Pauli symbols. Their correct complex conjugation is not guaranteed."]
 		];
 
 		diracListEval	= (diracChainCC	/@	(diracList	/. DOT->holdDOT /. diracHead	-> Identity)) /. {holdDOTReversed-> DOT, diracGammaHold->DiracGamma};

@@ -126,5 +126,12 @@ GS[Polarization[p, I]].GA[7]*SDF[Col2, Col3])/(cosW*sinW)).Spinor[-Momentum[k2],
 {"fcstComplexConjugate-ID33",
 "ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{foo,y[\
 i_,j_]\[RuleDelayed]yCC[i,j],z\[Rule]-z}]",
-"-(rest*z*Conjugate[foo]*h[k, l]*yCC[a, b])"}
+"-(rest*z*Conjugate[foo]*h[k, l]*yCC[a, b])"},
+{"fcstComplexConjugate-ID34",
+"Quiet[ComplexConjugate[(Spinor[-Momentum[p2],MassFu[Index[I3Gen, 2],
+SUNFIndex[Col2]], 1].DiracGamma[7].Spinor[Momentum[p3],
+MassFQ[Index[I3Gen, 3], SUNFIndex[Col3]],1])]]",
+"Spinor[Momentum[p3], MassFQ[Index[I3Gen, 3], SUNFIndex[Col3]],
+1].DiracGamma[6].Spinor[-Momentum[p2],
+MassFu[Index[I3Gen, 2], SUNFIndex[Col2]], 1]"}
 };
