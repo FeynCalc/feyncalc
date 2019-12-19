@@ -313,7 +313,7 @@ Cases2[expr_, f_, opts:OptionsPattern[]] :=
 	Union[Cases[{expr}, HoldPattern[f[___]], Infinity,opts]];
 
 Cases2[expr_, f_, g__, opts:OptionsPattern[]] :=
-	Union[Cases[{expr}, Alternatives@@(#[___]&/@{f,g}),
+	Union[Cases[{expr}, Alternatives@@(HoldPattern[#[___]]&/@{f,g}),
 	Infinity, FilterRules[{opts}, Options[Cases]]]];
 
 

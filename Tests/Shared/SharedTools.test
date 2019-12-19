@@ -15,8 +15,11 @@ Tests`Shared`fcstSharedToolsCases2 = {
 {"fcstSharedToolsCases2-ID1","Cases2[f[a] + f[b]^2 + f[c, d], f]","{f[a], f[b], f[c, d]}"},
 {"fcstSharedToolsCases2-ID2","Cases2[Sin[x] Sin[y - z] + g[y], Sin, g]","{g[y], Sin[x], Sin[y - z]}"},
 {"fcstSharedToolsCases2-ID3","Cases2[Sin[x] Sin[y - z] + g[x] + g[a, b, c], {Sin, g}]","{g[x], g[a, b, c], Sin[x], Sin[y - z]}"},
-{"fcstSharedToolsCases2-ID4","Cases2[DiracSlash[p].DiracSlash[q] + ScalarProduct[p, p], Dot]","{DiracGamma[Momentum[p]].DiracGamma[Momentum[q]]}"}
+{"fcstSharedToolsCases2-ID4","Cases2[DiracSlash[p].DiracSlash[q] + ScalarProduct[p, p], Dot]","{DiracGamma[Momentum[p]].DiracGamma[Momentum[q]]}"},
+{"fcstSharedToolsCases2-ID5","Cases2[a PolyLog[2, x] + Log[y] b + c PolyLog[2, x] Log[z], Log, PolyLog]","{Log[y], Log[z], PolyLog[2, x]}"}
 };
+
+
 
 Tests`Shared`fcstSharedToolsCombine = {
 {"fcstSharedToolsCombine-ID1","Combine[((a - b) (c - d))/e + g]","((a-b) (c-d)+e g)/e"},
