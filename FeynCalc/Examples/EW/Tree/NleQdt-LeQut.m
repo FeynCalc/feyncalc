@@ -87,10 +87,11 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 (*Obtain the amplitude*)
 
 
-amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{pd,pn},
-	OutgoingMomenta->{pu,pl},ChangeDimension->4,List->False, SMP->True,
-	Contract->True,DropSumOver->True,  FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2]*
-	SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]}]
+amp[0] = FCFAConvert[CreateFeynAmp[diags,GaugeRules->{FAGaugeXi[W|Z]->Infinity}], 
+IncomingMomenta->{pd,pn}, OutgoingMomenta->{pu,pl},ChangeDimension->4,
+List->False, SMP->True, Contract->True,DropSumOver->True,  
+FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2]*SMP["G_F"]*
+SMP["m_W"]^2SMP["sin_W"]^2]}]
 
 
 (* ::Section:: *)
@@ -110,7 +111,7 @@ SetMandelstam[s, t, u, pd, pn, -pu, -pl, SMP["m_d"], 0, SMP["m_u"], SMP["m_l"]];
 
 
 ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
-	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify
+	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify//Factor
 
 
 (* ::Text:: *)
@@ -118,7 +119,7 @@ ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 
 
 ampSquared[1]=ampSquared[0]//FCE//ReplaceAll[#,{pl-pn->0}]&//
-	FeynAmpDenominatorExplicit//Factor2
+	FeynAmpDenominatorExplicit//Series[#,{SMP["m_W"],Infinity,0}]&//Normal
 
 
 (* ::Section:: *)
@@ -148,6 +149,9 @@ crossSectionTotalMuon=PowerExpand[crossSectionTotal/.{SMP["m_u"]->0,
 (*Check the final results*)
 
 
+knownResults
+
+
 knownResults = {
 	(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2*SMP["V_ud", -I]*SMP["V_ud", I])/(Pi*s)
 };
@@ -157,3 +161,6 @@ Text->{"\tCompare to Grozin, \
 Using REDUCE in High Energy Physics, Chapter 5.3:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+

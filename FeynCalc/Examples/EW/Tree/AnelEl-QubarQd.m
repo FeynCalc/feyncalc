@@ -67,10 +67,11 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 (*Obtain the amplitude*)
 
 
-amp[0] = FCFAConvert[CreateFeynAmp[diags],DropSumOver->True, IncomingMomenta->{q,pe},
-	OutgoingMomenta->{l1,l2},ChangeDimension->4,List->False, SMP->True,
-	Contract->True, FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2]*
-	SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]}]
+amp[0] = FCFAConvert[CreateFeynAmp[diags,GaugeRules->{FAGaugeXi[W|Z]->Infinity}],
+DropSumOver->True, IncomingMomenta->{q,pe}, OutgoingMomenta->{l1,l2},
+ChangeDimension->4,List->False, SMP->True, Contract->True, 
+FinalSubstitutions->{SMP["e"]->Sqrt[8/Sqrt[2]*SMP["G_F"]*
+SMP["m_W"]^2SMP["sin_W"]^2]}]
 
 
 (* ::Section:: *)
@@ -90,7 +91,7 @@ SetMandelstam[s, t, u, q, pe, -l1, -l2, 0, SMP["m_e"], SMP["m_u"], SMP["m_d"]];
 
 
 ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
-	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify
+	FermionSpinSum[#, ExtraFactor -> 1/2]&//DiracSimplify//Factor
 
 
 (* ::Text:: *)
@@ -98,7 +99,7 @@ ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 
 
 ampSquared[1]=ampSquared[0]//FCE//ReplaceAll[#,{l1+l2->0}]&//
-	FeynAmpDenominatorExplicit//Factor2
+	FeynAmpDenominatorExplicit//Series[#,{SMP["m_W"],Infinity,0}]&//Normal
 
 
 (* ::Section:: *)
@@ -148,3 +149,6 @@ knownResults,
 Text->{"\tCompare to the known result:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+

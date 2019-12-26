@@ -88,9 +88,9 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 (*Obtain the amplitude*)
 
 
-amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
-	OutgoingMomenta->{k1,k2},ChangeDimension->4,List->False, SMP->True,
-	Contract->True, DropSumOver->True]
+amp[0] = FCFAConvert[CreateFeynAmp[diags,GaugeRules->{FAGaugeXi[W|Z]->Infinity}], 
+IncomingMomenta->{p1,p2}, OutgoingMomenta->{k1,k2},ChangeDimension->4,List->False, 
+SMP->True, Contract->True, DropSumOver->True]
 
 
 (* ::Section:: *)
@@ -128,3 +128,6 @@ knownResults,
 Text->{"\tCompare to CompHEP:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+
