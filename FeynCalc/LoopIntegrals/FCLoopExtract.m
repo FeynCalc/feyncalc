@@ -34,6 +34,7 @@ Options[FCLoopExtract] = {
 	Collecting					-> True,
 	DropScaleless 				-> False,
 	ExpandScalarProduct			-> False,
+	Factoring 					-> {Factor2, 5000},
 	FAD 						-> True,
 	Full						-> False,
 	FCI 						-> False,
@@ -47,7 +48,8 @@ Options[FCLoopExtract] = {
 	MultiLoop 					-> False,
 	Numerator 					-> True,
 	PaVe 						-> True,
-	SFAD 						-> True
+	SFAD 						-> True,
+	TimeConstrained				-> 3
 };
 
 FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
@@ -87,7 +89,9 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 									Full -> OptionValue[Full],
 									Factoring->OptionValue[Factoring],
 									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ],
-									GFAD -> OptionValue[GFAD]
+									GFAD -> OptionValue[GFAD],
+									Factoring -> OptionValue[Factoring],
+									TimeConstrained -> OptionValue[TimeConstrained]
 		];
 
 		If[ OptionValue[FCLoopBasisSplit],

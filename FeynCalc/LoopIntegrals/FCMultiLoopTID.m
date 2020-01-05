@@ -55,15 +55,21 @@ Options[FCMultiLoopTID] = {
 	Dimension			-> D,
 	DiracSimplify		-> True,
 	ExpandScalarProduct -> True,
+	Factoring 			-> {Factor2, 5000},
 	FCE					-> False,
 	FCI					-> False,
 	FCVerbose			-> False,
-	FDS					-> True
+	FDS					-> True,
+	TimeConstrained		-> 3
 };
 
 FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
-			null1, null2, res,  tmpli, time, mltidIsolate},
+			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
+			optTimeConstrained},
+
+		optFactoring = OptionValue[Factoring];
+		optTimeConstrained = OptionValue[TimeConstrained];
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -121,7 +127,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		ex = Collect2[ex, qs, Factoring -> False, IsolateNames -> mltidIsolate]  /.
+		ex = Collect2[ex, qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained, IsolateNames -> mltidIsolate]  /.
 			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->mltidIsolate];
 
 		(* Single out relevant loop momenta *)
@@ -188,7 +194,8 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Applying FCLoopExtract.", FCDoControl->mltidVerbose];
 
-		{rest,loopInts,intsUnique} = FCLoopExtract[ex, qs,loopHead, FCLoopSplit -> {4}, MultiLoop->False,FCI->True,PaVe->False];
+		{rest,loopInts,intsUnique} = FCLoopExtract[ex, qs,loopHead, FCLoopSplit -> {4}, MultiLoop->False,FCI->True,PaVe->False,
+			Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
 		FCPrint[1, "FCMultiLoopTID: Done applying FCLoopExtract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		FCPrint[3,"FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
 

@@ -59,7 +59,7 @@ Options[FCLoopIsolate] = {
 	FCI 					-> False,
 	FCLoopIBPReducableQ 	-> False,
 	FCVerbose 				-> False,
-	Factoring 				-> Factor,
+	Factoring 				-> {Factor2, 5000},
 	FeynAmpDenominatorSplit -> True,
 	Full					-> True,
 	GFAD 					-> True,
@@ -70,7 +70,8 @@ Options[FCLoopIsolate] = {
 	Numerator 				-> True,
 	PaVe					-> True,
 	PaVeIntegralHeads 		-> FeynCalc`Package`PaVeHeadsList,
-	SFAD 					-> True
+	SFAD 					-> True,
+	TimeConstrained			-> 3
 };
 
 fullDep[z_,lmoms_]:=
@@ -156,9 +157,9 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			FCPrint[1,"FCLoopIsolate: Applying Collect2.", FCDoControl->fcliVerbose];
 
 			If[	TrueQ[OptionValue[Numerator]],
-				ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]],
+				ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring], TimeConstrained->OptionValue[TimeConstrained]],
 				(*If we care only about the denominators, we can speed up this step*)
-				ex = Collect2[ex,FeynAmpDenominator,Factoring->OptionValue[Factoring]]
+				ex = Collect2[ex,FeynAmpDenominator,Factoring->OptionValue[Factoring], TimeConstrained->OptionValue[TimeConstrained]]
 			];
 
 
