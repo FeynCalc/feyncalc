@@ -188,9 +188,9 @@ Each calculation script is usually organized according to the following template
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2019 Rolf Mertig
-	Copyright (C) 1997-2019 Frederik Orellana
-	Copyright (C) 2014-2019 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Q Qbar -> Q Qbar, QCD, matrix element squared, tree 			*)
