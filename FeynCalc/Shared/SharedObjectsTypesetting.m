@@ -424,31 +424,31 @@ DiracGamma /:
 
 (* (UBar.X)_i or (VBar.X)_j *)
 DiracChain /:
-	MakeBoxes[ DiracChain[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar), ind : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
+	MakeBoxes[ DiracChain[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar | _SpinorUBarD | _SpinorVBarD), ind : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 
 DCHN /:
-	MakeBoxes[ DCHN[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar),
-		ind_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind]]], TraditionalForm ]:=
+	MakeBoxes[ DCHN[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar | _SpinorUBarD | _SpinorVBarD),
+		ind_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUD,SpinorVD,SpinorUBar,SpinorVBar,SpinorUBarD,SpinorVBarD},Head[ind]]], TraditionalForm ]:=
 		ToBoxes[DiracChain[a,b,DiracIndex[ind]], TraditionalForm];
 
 (* (X.U)_i or (X.V)_j *)
 DiracChain /:
-	MakeBoxes[ DiracChain[a_, ind : (_DiracIndex | _ExplicitDiracIndex), b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DiracChain[a_, ind : (_DiracIndex | _ExplicitDiracIndex), b : (_Spinor | _SpinorU | _SpinorV| _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind]];
 
 DCHN /:
-	MakeBoxes[ DCHN[a_, ind_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind]],
-		b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DCHN[a_, ind_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUD,SpinorVD,SpinorUBar,SpinorVBar,SpinorUBarD,SpinorVBarD},Head[ind]],
+		b : (_Spinor | _SpinorU | _SpinorV | _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		ToBoxes[DiracChain[a,DiracIndex[ind],b], TraditionalForm];
 
 (* UBar.X.U, UBar.X.V, VBar.X.U or VBar.X.V  *)
 DiracChain /:
-	MakeBoxes[ DiracChain[a_,b : (_Spinor | _SpinorUBar | _SpinorVBar), c : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DiracChain[a_,b : (_Spinor | _SpinorUBar | _SpinorVBar | _SpinorUBarD | _SpinorVBarD), c : (_Spinor | _SpinorU | _SpinorV | _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
 
 DCHN /:
-	MakeBoxes[ DCHN[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar), c : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DCHN[a_, b : (_Spinor | _SpinorUBar | _SpinorVBar | _SpinorUBarD | _SpinorVBarD), c : (_Spinor | _SpinorU | _SpinorV | _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		ToBoxes[DiracChain[a,b,c], TraditionalForm];
 
 (* X_ij  *)
@@ -458,36 +458,37 @@ DiracChain /:
 
 DCHN /:
 	MakeBoxes[ DCHN[a_,
-		ind1_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind1]],
-		ind2_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[ind2]]], TraditionalForm ]:=
+		ind1_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUD,SpinorVD,SpinorUBar,SpinorVBar,SpinorUBarD,SpinorVBarD},Head[ind1]],
+		ind2_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUD,SpinorVD,SpinorUBar,SpinorVBar,SpinorUBarD,SpinorVBarD},Head[ind2]]], TraditionalForm ]:=
 		ToBoxes[DiracChain[a,DiracIndex[ind1],DiracIndex[ind2]], TraditionalForm];
 
 (* Fermionic chains with 2 arguments *)
 
 (* UBar_i or VBar_i *)
 DiracChain /:
-	MakeBoxes[ DiracChain[a : (_Spinor | _SpinorUBar | _SpinorVBar), ind : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
+	MakeBoxes[ DiracChain[a : (_Spinor | _SpinorUBar | _SpinorVBar| _SpinorUBarD | _SpinorVBarD), ind : (_DiracIndex | _ExplicitDiracIndex)], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 DCHN /:
-	MakeBoxes[ DCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar),b_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[b]]], TraditionalForm ]:=
+	MakeBoxes[ DCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar| _SpinorUBarD | _SpinorVBarD),b_/;
+		!MemberQ[{Spinor,SpinorU,SpinorV,SpinorUD,SpinorVD,SpinorUBar,SpinorVBar,SpinorUBarD,SpinorVBarD},Head[b]]], TraditionalForm ]:=
 		ToBoxes[DiracChain[a,DiracIndex[b]], TraditionalForm];
 
 (* U_i or V_i *)
 DiracChain /:
-	MakeBoxes[ DiracChain[ind : (_DiracIndex | _ExplicitDiracIndex), a : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DiracChain[ind : (_DiracIndex | _ExplicitDiracIndex), a : (_Spinor | _SpinorU | _SpinorV | _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 
 DCHN /:
-	MakeBoxes[ DCHN[a_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[a]], b_], TraditionalForm ]:=
+	MakeBoxes[ DCHN[a_/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUD,SpinorVD,SpinorUBar,SpinorVBar,SpinorUBarD,SpinorVBarD},Head[a]], b_], TraditionalForm ]:=
 		ToBoxes[DiracChain[DiracIndex[a],b], TraditionalForm];
 
 (* UBar.U, UBar.V, VBar.U or VBar.V  *)
 DiracChain /:
-	MakeBoxes[ DiracChain[a : (_Spinor | _SpinorUBar | _SpinorVBar),b: (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DiracChain[a : (_Spinor | _SpinorUBar | _SpinorVBar| _SpinorUBarD | _SpinorVBarD),b: (_Spinor | _SpinorU | _SpinorV | _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}];
 
 DCHN /:
-	MakeBoxes[ DCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)], TraditionalForm ]:=
+	MakeBoxes[ DCHN[a : (_Spinor | _SpinorUBar | _SpinorVBar| _SpinorUBarD | _SpinorVBarD), b : (_Spinor | _SpinorU | _SpinorV | _SpinorUD | _SpinorVD)], TraditionalForm ]:=
 		ToBoxes[DiracChain[a,b], TraditionalForm];
 
 DiracIndex /:
