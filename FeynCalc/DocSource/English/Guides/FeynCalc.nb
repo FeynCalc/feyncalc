@@ -1264,6 +1264,15 @@ Cell[TextData[{
  CellID->1944469376],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCCheckVersion",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCCheckVersion"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks the FeynCalc version"
+}], "GuideText",
+ CellID->999406468],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCCompareResults",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCCompareResults"]], 
@@ -4380,7 +4389,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{615, Automatic}, {-10, Automatic}},
+WindowMargins->{{Automatic, 577}, {196, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
