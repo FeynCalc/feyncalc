@@ -148,8 +148,8 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					a1 DiracGamma[x] a2,
 
 				(* (g^mu P_R)_ij + (g^mu R_L_ij -> (g^mu)_ij *)
-				(a_. DiracChain[DiracGamma[x_].DiracGamma[6], i_DiracIndex, j_DiracIndex] + a_. DiracChain[DiracGamma[x_].DiracGamma[7], i_DiracIndex, j_DiracIndex] ) :>
-					a DiracChain[DiracGamma[x], i, j],
+				(a_. DiracChain[(c_. DiracGamma[x_]).DiracGamma[6], i_DiracIndex, j_DiracIndex] + a_. DiracChain[(c_. DiracGamma[x_]).DiracGamma[7], i_DiracIndex, j_DiracIndex] ) :>
+					a DiracChain[c DiracGamma[x], i, j],
 				(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2,
 
 				(* (P_R)_ij + (R_L)_ij -> (1)_ij *)
