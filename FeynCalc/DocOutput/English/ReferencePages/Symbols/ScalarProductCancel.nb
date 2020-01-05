@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35985,       1193]
-NotebookOptionsPosition[     30991,       1043]
-NotebookOutlinePosition[     34157,       1129]
-CellTagsIndexPosition[     34032,       1123]
+NotebookDataLength[     35987,       1193]
+NotebookOptionsPosition[     30994,       1043]
+NotebookOutlinePosition[     34156,       1129]
+CellTagsIndexPosition[     34031,       1123]
 WindowTitle->ScalarProductCancel
 WindowFrame->Normal*)
 
@@ -87,7 +87,7 @@ ScalarProductCancel.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$224400], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$225869], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ScalarProductCancel", ".html"]], None}]}]},
@@ -161,7 +161,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->868334464],
+ CellID->1453232900],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -216,7 +216,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1369011045],
+ CellID->1161232346],
 
 Cell[CellGroupData[{
 
@@ -226,7 +226,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->6986313],
+ CellID->876504323],
 
 Cell[CellGroupData[{
 
@@ -1044,7 +1044,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"ScalarProductCancel",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1056,7 +1056,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 44.126328}", 
+   "built" -> "{2020, 1, 5, 19, 1, 26.514755}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1078,7 +1078,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1088,42 +1088,42 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "ScalarProductCancel"->{
-  Cell[5968, 175, 155, 4, 70, "Input",
+  Cell[5969, 175, 155, 4, 70, "Input",
    CellTags->"ScalarProductCancel",
    CellID->183152643],
-  Cell[6126, 181, 555, 15, 56, "Output",
+  Cell[6127, 181, 555, 15, 56, "Output",
    CellTags->"ScalarProductCancel",
    CellID->55006305],
-  Cell[7373, 232, 364, 13, 27, "Input",
+  Cell[7376, 232, 364, 13, 27, "Input",
    CellTags->"ScalarProductCancel",
    CellID->2001963960],
-  Cell[7740, 247, 1565, 57, 60, "Output",
+  Cell[7743, 247, 1565, 57, 60, "Output",
    CellTags->"ScalarProductCancel"],
-  Cell[9342, 309, 172, 5, 27, "Input",
+  Cell[9345, 309, 172, 5, 27, "Input",
    CellTags->"ScalarProductCancel",
    CellID->704586696],
-  Cell[9517, 316, 2324, 76, 67, "Output",
+  Cell[9520, 316, 2324, 76, 67, "Output",
    CellTags->"ScalarProductCancel"],
-  Cell[11878, 397, 579, 19, 27, "Input",
+  Cell[11881, 397, 579, 19, 27, "Input",
    CellTags->"ScalarProductCancel",
    CellID->360584001],
-  Cell[12460, 418, 3702, 129, 64, "Output",
+  Cell[12463, 418, 3702, 129, 64, "Output",
    CellTags->"ScalarProductCancel"],
-  Cell[16199, 552, 214, 6, 27, "Input",
+  Cell[16202, 552, 214, 6, 27, "Input",
    CellTags->"ScalarProductCancel",
    CellID->1734687931],
-  Cell[16416, 560, 13015, 412, 227, "Output",
+  Cell[16419, 560, 13015, 412, 227, "Output",
    CellTags->"ScalarProductCancel"]},
  "PrimaryExamplesSection"->{
-  Cell[6742, 203, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6743, 203, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1369011045]}
+   CellID->1161232346]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ScalarProductCancel", 32941, 1089},
- {"PrimaryExamplesSection", 33888, 1116}
+ {"ScalarProductCancel", 32940, 1089},
+ {"PrimaryExamplesSection", 33887, 1116}
  }
 *)
 (*NotebookFileOutline
@@ -1135,66 +1135,66 @@ Cell[CellGroupData[{
 Cell[4494, 120, 521, 15, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5040, 139, 738, 24, 31, "NotesSection",
+Cell[5040, 139, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->868334464],
-Cell[5781, 165, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5815, 167, 128, 4, 70, "Notes",
+ CellID->1453232900],
+Cell[5782, 165, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5816, 167, 128, 4, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[5968, 175, 155, 4, 70, "Input",
+Cell[5969, 175, 155, 4, 70, "Input",
  CellTags->"ScalarProductCancel",
  CellID->183152643],
-Cell[6126, 181, 555, 15, 56, "Output",
+Cell[6127, 181, 555, 15, 56, "Output",
  CellTags->"ScalarProductCancel",
  CellID->55006305]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6742, 203, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6743, 203, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1369011045],
+ CellID->1161232346],
 Cell[CellGroupData[{
-Cell[7155, 222, 193, 6, 26, "ExampleSection",
- CellID->6986313],
+Cell[7156, 222, 195, 6, 26, "ExampleSection",
+ CellID->876504323],
 Cell[CellGroupData[{
-Cell[7373, 232, 364, 13, 27, "Input",
+Cell[7376, 232, 364, 13, 27, "Input",
  CellTags->"ScalarProductCancel",
  CellID->2001963960],
-Cell[7740, 247, 1565, 57, 60, "Output",
+Cell[7743, 247, 1565, 57, 60, "Output",
  CellTags->"ScalarProductCancel"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9342, 309, 172, 5, 27, "Input",
+Cell[9345, 309, 172, 5, 27, "Input",
  CellTags->"ScalarProductCancel",
  CellID->704586696],
-Cell[9517, 316, 2324, 76, 67, "Output",
+Cell[9520, 316, 2324, 76, 67, "Output",
  CellTags->"ScalarProductCancel"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11878, 397, 579, 19, 27, "Input",
+Cell[11881, 397, 579, 19, 27, "Input",
  CellTags->"ScalarProductCancel",
  CellID->360584001],
-Cell[12460, 418, 3702, 129, 64, "Output",
+Cell[12463, 418, 3702, 129, 64, "Output",
  CellTags->"ScalarProductCancel"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16199, 552, 214, 6, 27, "Input",
+Cell[16202, 552, 214, 6, 27, "Input",
  CellTags->"ScalarProductCancel",
  CellID->1734687931],
-Cell[16416, 560, 13015, 412, 227, "Output",
+Cell[16419, 560, 13015, 412, 227, "Output",
  CellTags->"ScalarProductCancel"]
 }, Open  ]]
 }, Open  ]],
-Cell[29458, 976, 31, 0, 70, "SectionFooterSpacer"]
+Cell[29461, 976, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29526, 981, 270, 12, 70, "SeeAlsoSection",
+Cell[29529, 981, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[29799, 995, 1150, 43, 70, "SeeAlso"]
+Cell[29802, 995, 1150, 43, 70, "SeeAlso"]
 }, Open  ]],
-Cell[30964, 1041, 23, 0, 70, "FooterCell"]
+Cell[30967, 1041, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6772,        207]
+NotebookDataLength[      6771,        207]
 NotebookOptionsPosition[      4818,        152]
-NotebookOutlinePosition[      6565,        199]
-CellTagsIndexPosition[      6522,        196]
+NotebookOutlinePosition[      6564,        199]
+CellTagsIndexPosition[      6521,        196]
 WindowTitle->FDS
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$128335], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129360], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/FDS", 
              ".html"]], None}]}]},
@@ -165,7 +165,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 13.923333}", 
+   "built" -> "{2020, 1, 5, 18, 57, 24.526755}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

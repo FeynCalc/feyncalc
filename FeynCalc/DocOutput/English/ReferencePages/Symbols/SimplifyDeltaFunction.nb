@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21652,        747]
+NotebookDataLength[     21649,        747]
 NotebookOptionsPosition[     14155,        524]
-NotebookOutlinePosition[     18690,        645]
-CellTagsIndexPosition[     18565,        639]
+NotebookOutlinePosition[     18687,        645]
+CellTagsIndexPosition[     18562,        639]
 WindowTitle->SimplifyDeltaFunction
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ SimplifyDeltaFunction.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$232306], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$233775], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SimplifyDeltaFunction", ".html"]], None}]}]},
@@ -144,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->869048033],
+ CellID->195701692],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1455114043],
+ CellID->1321573759],
 
 Cell[CellGroupData[{
 
@@ -525,7 +525,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"SimplifyDeltaFunction",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -537,7 +537,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 18, 3.803528}", 
+   "built" -> "{2020, 1, 5, 19, 1, 46.629198}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -572,7 +572,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4699, 131, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->869048033]},
+   CellID->195701692]},
  "SimplifyDeltaFunction"->{
   Cell[5332, 160, 220, 7, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
@@ -638,8 +638,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16218, 571},
- {"SimplifyDeltaFunction", 16366, 575}
+ {"PrimaryExamplesSection", 16215, 571},
+ {"SimplifyDeltaFunction", 16363, 575}
  }
 *)
 (*NotebookFileOutline
@@ -652,10 +652,10 @@ Cell[4076, 112, 598, 15, 102, "Usage",
 Cell[CellGroupData[{
 Cell[4699, 131, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->869048033],
+ CellID->195701692],
 Cell[CellGroupData[{
 Cell[5111, 150, 196, 6, 26, "ExampleSection",
- CellID->1455114043],
+ CellID->1321573759],
 Cell[CellGroupData[{
 Cell[5332, 160, 220, 7, 27, "Input",
  CellTags->"SimplifyDeltaFunction",

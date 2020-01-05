@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24310,        934]
-NotebookOptionsPosition[     17875,        720]
-NotebookOutlinePosition[     21391,        824]
-CellTagsIndexPosition[     21282,        818]
+NotebookDataLength[     24372,        935]
+NotebookOptionsPosition[     17878,        720]
+NotebookOutlinePosition[     21450,        825]
+CellTagsIndexPosition[     21341,        819]
 WindowTitle->Anti5
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22601], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22719], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Anti5",
               ".html"]], None}]}]},
@@ -178,7 +178,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->582181183],
+ CellID->863395348],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -216,7 +216,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->658741372],
+ CellID->2006703176],
 
 Cell[CellGroupData[{
 
@@ -226,7 +226,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->96990522],
+ CellID->1562593174],
 
 Cell[CellGroupData[{
 
@@ -721,7 +721,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Anti5",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -733,7 +733,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 9, 57.226524}", 
+   "built" -> "{2020, 1, 5, 18, 52, 36.057309}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -754,7 +754,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -764,61 +765,61 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6410, 203, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6410, 203, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->658741372]},
+   CellID->2006703176]},
  "Anti5"->{
-  Cell[7041, 232, 165, 6, 27, "Input",
+  Cell[7044, 232, 165, 6, 27, "Input",
    CellTags->"Anti5",
    CellID->2080632323],
-  Cell[7209, 240, 515, 21, 40, "Output",
+  Cell[7212, 240, 515, 21, 40, "Output",
    CellTags->"Anti5"],
-  Cell[7761, 266, 122, 4, 27, "Input",
+  Cell[7764, 266, 122, 4, 27, "Input",
    CellTags->"Anti5",
    CellID->1232582412],
-  Cell[7886, 272, 466, 18, 40, "Output",
+  Cell[7889, 272, 466, 18, 40, "Output",
    CellTags->"Anti5"],
-  Cell[8519, 301, 164, 6, 27, "Input",
+  Cell[8522, 301, 164, 6, 27, "Input",
    CellTags->"Anti5",
    CellID->1609506190],
-  Cell[8686, 309, 437, 17, 40, "Output",
+  Cell[8689, 309, 437, 17, 40, "Output",
    CellTags->"Anti5"],
-  Cell[9160, 331, 205, 7, 27, "Input",
+  Cell[9163, 331, 205, 7, 27, "Input",
    CellTags->"Anti5",
    CellID->1286690073],
-  Cell[9368, 340, 1082, 45, 40, "Output",
+  Cell[9371, 340, 1082, 45, 40, "Output",
    CellTags->"Anti5"],
-  Cell[10487, 390, 144, 5, 27, "Input",
+  Cell[10490, 390, 144, 5, 27, "Input",
    CellTags->"Anti5",
    CellID->197831622],
-  Cell[10634, 397, 884, 35, 40, "Output",
+  Cell[10637, 397, 884, 35, 40, "Output",
    CellTags->"Anti5"],
-  Cell[11555, 437, 153, 5, 27, "Input",
+  Cell[11558, 437, 153, 5, 27, "Input",
    CellTags->"Anti5",
    CellID->1010214576],
-  Cell[11711, 444, 884, 35, 40, "Output",
+  Cell[11714, 444, 884, 35, 40, "Output",
    CellTags->"Anti5"],
-  Cell[12632, 484, 171, 6, 27, "Input",
+  Cell[12635, 484, 171, 6, 27, "Input",
    CellTags->"Anti5",
    CellID->1359760692],
-  Cell[12806, 492, 884, 35, 40, "Output",
+  Cell[12809, 492, 884, 35, 40, "Output",
    CellTags->"Anti5"],
-  Cell[14206, 553, 149, 5, 27, "Input",
+  Cell[14209, 553, 149, 5, 27, "Input",
    CellTags->"Anti5",
    CellID->1799781971],
-  Cell[14358, 560, 451, 18, 40, "Output",
+  Cell[14361, 560, 451, 18, 40, "Output",
    CellTags->"Anti5"],
-  Cell[14846, 583, 120, 4, 27, "Input",
+  Cell[14849, 583, 120, 4, 27, "Input",
    CellTags->"Anti5",
    CellID->42617734],
-  Cell[14969, 589, 440, 17, 40, "Output",
+  Cell[14972, 589, 440, 17, 40, "Output",
    CellTags->"Anti5"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19777, 765},
- {"Anti5", 19909, 769}
+ {"PrimaryExamplesSection", 19835, 766},
+ {"Anti5", 19968, 770}
  }
 *)
 (*NotebookFileOutline
@@ -832,7 +833,7 @@ Cell[4074, 115, 1177, 37, 211, "Usage",
 Cell[CellGroupData[{
 Cell[5276, 156, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->582181183],
+ CellID->863395348],
 Cell[6017, 182, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[6073, 186, 88, 2, 70, "Input"],
@@ -841,101 +842,101 @@ Cell[6164, 190, 185, 6, 35, "Output"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6410, 203, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6410, 203, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->658741372],
+ CellID->2006703176],
 Cell[CellGroupData[{
-Cell[6822, 222, 194, 6, 26, "ExampleSection",
- CellID->96990522],
+Cell[6823, 222, 196, 6, 26, "ExampleSection",
+ CellID->1562593174],
 Cell[CellGroupData[{
-Cell[7041, 232, 165, 6, 27, "Input",
+Cell[7044, 232, 165, 6, 27, "Input",
  CellTags->"Anti5",
  CellID->2080632323],
-Cell[7209, 240, 515, 21, 40, "Output",
+Cell[7212, 240, 515, 21, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7761, 266, 122, 4, 27, "Input",
+Cell[7764, 266, 122, 4, 27, "Input",
  CellTags->"Anti5",
  CellID->1232582412],
-Cell[7886, 272, 466, 18, 40, "Output",
+Cell[7889, 272, 466, 18, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8389, 295, 105, 2, 9, "ExampleDelimiter"],
+Cell[8392, 295, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[8519, 301, 164, 6, 27, "Input",
+Cell[8522, 301, 164, 6, 27, "Input",
  CellTags->"Anti5",
  CellID->1609506190],
-Cell[8686, 309, 437, 17, 40, "Output",
+Cell[8689, 309, 437, 17, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9160, 331, 205, 7, 27, "Input",
+Cell[9163, 331, 205, 7, 27, "Input",
  CellTags->"Anti5",
  CellID->1286690073],
-Cell[9368, 340, 1082, 45, 40, "Output",
+Cell[9371, 340, 1082, 45, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10487, 390, 144, 5, 27, "Input",
+Cell[10490, 390, 144, 5, 27, "Input",
  CellTags->"Anti5",
  CellID->197831622],
-Cell[10634, 397, 884, 35, 40, "Output",
+Cell[10637, 397, 884, 35, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11555, 437, 153, 5, 27, "Input",
+Cell[11558, 437, 153, 5, 27, "Input",
  CellTags->"Anti5",
  CellID->1010214576],
-Cell[11711, 444, 884, 35, 40, "Output",
+Cell[11714, 444, 884, 35, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12632, 484, 171, 6, 27, "Input",
+Cell[12635, 484, 171, 6, 27, "Input",
  CellTags->"Anti5",
  CellID->1359760692],
-Cell[12806, 492, 884, 35, 40, "Output",
+Cell[12809, 492, 884, 35, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13739, 533, 105, 2, 9, "ExampleDelimiter"],
-Cell[13847, 537, 334, 12, 32, "Notes"],
+Cell[13742, 533, 105, 2, 9, "ExampleDelimiter"],
+Cell[13850, 537, 334, 12, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[14206, 553, 149, 5, 27, "Input",
+Cell[14209, 553, 149, 5, 27, "Input",
  CellTags->"Anti5",
  CellID->1799781971],
-Cell[14358, 560, 451, 18, 40, "Output",
+Cell[14361, 560, 451, 18, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14846, 583, 120, 4, 27, "Input",
+Cell[14849, 583, 120, 4, 27, "Input",
  CellTags->"Anti5",
  CellID->42617734],
-Cell[14969, 589, 440, 17, 40, "Output",
+Cell[14972, 589, 440, 17, 40, "Output",
  CellTags->"Anti5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15458, 612, 105, 2, 9, "ExampleDelimiter"],
-Cell[15566, 616, 202, 6, 32, "Notes"],
-Cell[15771, 624, 128, 4, 27, "Input"],
+Cell[15461, 612, 105, 2, 9, "ExampleDelimiter"],
+Cell[15569, 616, 202, 6, 32, "Notes"],
+Cell[15774, 624, 128, 4, 27, "Input"],
 Cell[CellGroupData[{
-Cell[15924, 632, 141, 4, 27, "Input"],
-Cell[16068, 638, 723, 28, 40, "Output"]
+Cell[15927, 632, 141, 4, 27, "Input"],
+Cell[16071, 638, 723, 28, 40, "Output"]
 }, Open  ]],
-Cell[16806, 669, 127, 4, 27, "Input"]
+Cell[16809, 669, 127, 4, 27, "Input"]
 }, Open  ]]
 }, Open  ]],
-Cell[16960, 677, 31, 0, 29, "SectionFooterSpacer"]
+Cell[16963, 677, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17028, 682, 270, 12, 31, "SeeAlsoSection",
+Cell[17031, 682, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[17301, 696, 532, 19, 56, "SeeAlso"]
+Cell[17304, 696, 532, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[17848, 718, 23, 0, 41, "FooterCell"]
+Cell[17851, 718, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11700,        373]
-NotebookOptionsPosition[      8450,        280]
-NotebookOutlinePosition[     10985,        347]
-CellTagsIndexPosition[     10869,        341]
+NotebookDataLength[     11696,        373]
+NotebookOptionsPosition[      8449,        280]
+NotebookOutlinePosition[     10982,        347]
+CellTagsIndexPosition[     10866,        341]
 WindowTitle->Abbreviation
 WindowFrame->Normal*)
 
@@ -93,7 +93,7 @@ Abbreviation.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$19925], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20043], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Abbreviation", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1290878310],
+ CellID->1627590208],
 
 Cell[CellGroupData[{
 
@@ -165,7 +165,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1662188678],
+ CellID->786552231],
 
 Cell[CellGroupData[{
 
@@ -281,7 +281,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Abbreviation",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -293,7 +293,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 9, 50.241566}", 
+   "built" -> "{2020, 1, 5, 18, 52, 28.783117}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -328,20 +328,20 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5216, 142, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1290878310]},
+   CellID->1627590208]},
  "Abbreviation"->{
-  Cell[5850, 171, 284, 9, 27, "Input",
+  Cell[5849, 171, 284, 9, 27, "Input",
    CellTags->"Abbreviation",
    CellID->333600762],
-  Cell[6137, 182, 519, 21, 41, "Output",
+  Cell[6136, 182, 519, 21, 41, "Output",
    CellTags->"Abbreviation",
    CellID->908274881]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10521, 327},
- {"Abbreviation", 10661, 331}
+ {"PrimaryExamplesSection", 10518, 327},
+ {"Abbreviation", 10658, 331}
  }
 *)
 (*NotebookFileOutline
@@ -354,27 +354,27 @@ Cell[4611, 124, 580, 14, 119, "Usage",
 Cell[CellGroupData[{
 Cell[5216, 142, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1290878310],
+ CellID->1627590208],
 Cell[CellGroupData[{
-Cell[5629, 161, 196, 6, 26, "ExampleSection",
- CellID->1662188678],
+Cell[5629, 161, 195, 6, 26, "ExampleSection",
+ CellID->786552231],
 Cell[CellGroupData[{
-Cell[5850, 171, 284, 9, 27, "Input",
+Cell[5849, 171, 284, 9, 27, "Input",
  CellTags->"Abbreviation",
  CellID->333600762],
-Cell[6137, 182, 519, 21, 41, "Output",
+Cell[6136, 182, 519, 21, 41, "Output",
  CellTags->"Abbreviation",
  CellID->908274881]
 }, Open  ]]
 }, Open  ]],
-Cell[6683, 207, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6682, 207, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6751, 212, 270, 12, 31, "SeeAlsoSection",
+Cell[6750, 212, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7024, 226, 1384, 49, 72, "SeeAlso"]
+Cell[7023, 226, 1384, 49, 72, "SeeAlso"]
 }, Open  ]],
-Cell[8423, 278, 23, 0, 41, "FooterCell"]
+Cell[8422, 278, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

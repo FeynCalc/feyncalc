@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     43022,       1581]
+NotebookDataLength[     43021,       1581]
 NotebookOptionsPosition[     31296,       1205]
-NotebookOutlinePosition[     37804,       1391]
-CellTagsIndexPosition[     37685,       1385]
+NotebookOutlinePosition[     37803,       1391]
+CellTagsIndexPosition[     37684,       1385]
 WindowTitle->InverseMellin
 WindowFrame->Normal*)
 
@@ -85,7 +85,7 @@ InverseMellin.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171289], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$172758], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/InverseMellin", ".html"]], None}]}]},
@@ -157,7 +157,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1342588109],
+ CellID->1264895552],
 
 Cell[CellGroupData[{
 
@@ -167,7 +167,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1455506314],
+ CellID->1623030332],
 
 Cell[CellGroupData[{
 
@@ -1205,8 +1205,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"InverseMellin",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1218,7 +1218,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 45.822405}", 
+   "built" -> "{2020, 1, 5, 18, 59, 13.376294}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1254,7 +1254,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5144, 144, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1342588109]},
+   CellID->1264895552]},
  "InverseMellin"->{
   Cell[5778, 173, 188, 6, 27, "Input",
    CellTags->"InverseMellin",
@@ -1384,8 +1384,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 33405, 1253},
- {"InverseMellin", 33546, 1257}
+ {"PrimaryExamplesSection", 33404, 1253},
+ {"InverseMellin", 33545, 1257}
  }
 *)
 (*NotebookFileOutline
@@ -1398,10 +1398,10 @@ Cell[4254, 116, 865, 24, 120, "Usage",
 Cell[CellGroupData[{
 Cell[5144, 144, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1342588109],
+ CellID->1264895552],
 Cell[CellGroupData[{
 Cell[5557, 163, 196, 6, 26, "ExampleSection",
- CellID->1455506314],
+ CellID->1623030332],
 Cell[CellGroupData[{
 Cell[5778, 173, 188, 6, 27, "Input",
  CellTags->"InverseMellin",

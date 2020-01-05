@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15892,        549]
-NotebookOptionsPosition[     12648,        451]
-NotebookOutlinePosition[     14734,        507]
-CellTagsIndexPosition[     14649,        502]
+NotebookDataLength[     16534,        565]
+NotebookOptionsPosition[     13198,        465]
+NotebookOutlinePosition[     15337,        522]
+CellTagsIndexPosition[     15252,        517]
 WindowTitle->DiracChainJoin
 WindowFrame->Normal*)
 
@@ -46,7 +46,9 @@ Cell[BoxData[GridBox[{
        "paclet:FeynCalc/ref/DiracChainCombine"], "\<\"DiracChainExpand\"\>":>
        Documentation`HelpLookup[
        "paclet:FeynCalc/ref/DiracChainExpand"], "\<\"DiracChainFactor\"\>":>
-       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracChainFactor"]},
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracChainFactor"], "\<\"FCFADiracChainJoin\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FCFADiracChainJoin"]},
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"SeeAlso"]],
@@ -92,7 +94,7 @@ DiracChainJoin.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62883], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63004], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracChainJoin", ".html"]], None}]}]},
@@ -163,9 +165,15 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->515019166],
+ CellID->1639035625],
 
 Cell["", "SectionHeaderSpacer"],
+
+Cell["\<\
+Notice that DiracChainJoin is not suitable for creating closed Dirac chains \
+out of the FeynArts output with explicit Dirac indices, e.g. when the model \
+contains 4-fermion operators. Use FCFADiracChainJoin for that.\
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -211,7 +219,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1130926195],
+ CellID->458288558],
 
 Cell[CellGroupData[{
 
@@ -221,7 +229,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->743975796],
+ CellID->1946470093],
 
 Cell[CellGroupData[{
 
@@ -442,6 +450,12 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/DiracChainFactor",
   ButtonNote->"DiracChainFactor"],
   FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCFADiracChainJoin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCFADiracChainJoin",
+  ButtonNote->"FCFADiracChainJoin"],
+  FontFamily->"Verdana"],
  "."
 }], "SeeAlso",
  CellID->655647701]
@@ -452,7 +466,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"DiracChainJoin",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -464,7 +478,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 35.835807}", 
+   "built" -> "{2020, 1, 5, 18, 54, 24.183750}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -484,7 +498,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -494,63 +509,64 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6656, 198, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[7017, 206, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1130926195]}
+   CellID->458288558]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14505, 495}
+ {"PrimaryExamplesSection", 15109, 510}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 3738, 87, 53, "AnchorBarGrid",
+Cell[586, 21, 3852, 89, 53, "AnchorBarGrid",
  CellID->1],
-Cell[4327, 110, 291, 11, 45, "ObjectNameGrid"],
+Cell[4441, 112, 291, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4643, 125, 434, 12, 85, "Usage",
+Cell[4757, 127, 434, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5102, 141, 738, 24, 31, "NotesSection",
+Cell[5216, 143, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->515019166],
-Cell[5843, 167, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1639035625],
+Cell[5958, 169, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5992, 171, 243, 4, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[5899, 171, 117, 3, 27, "Input",
+Cell[6260, 179, 117, 3, 70, "Input",
  CellID->1965709680],
-Cell[6019, 176, 576, 15, 56, "Output"]
+Cell[6380, 184, 576, 15, 56, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6656, 198, 388, 15, 31, "PrimaryExamplesSection",
+Cell[7017, 206, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1130926195],
+ CellID->458288558],
 Cell[CellGroupData[{
-Cell[7069, 217, 195, 6, 26, "ExampleSection",
- CellID->743975796],
+Cell[7429, 225, 196, 6, 26, "ExampleSection",
+ CellID->1946470093],
 Cell[CellGroupData[{
-Cell[7289, 227, 507, 16, 45, "Input",
+Cell[7650, 235, 507, 16, 45, "Input",
  CellID->857331981],
-Cell[7799, 245, 1604, 67, 43, "Output"]
+Cell[8160, 253, 1604, 67, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9440, 317, 111, 3, 27, "Input",
+Cell[9801, 325, 111, 3, 27, "Input",
  CellID->1834507663],
-Cell[9554, 322, 1265, 51, 42, "Output"]
+Cell[9915, 330, 1265, 51, 42, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[10846, 377, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11207, 385, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10914, 382, 270, 12, 31, "SeeAlsoSection",
+Cell[11275, 390, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11187, 396, 1419, 50, 71, "SeeAlso",
+Cell[11548, 404, 1608, 56, 71, "SeeAlso",
  CellID->655647701]
 }, Open  ]],
-Cell[12621, 449, 23, 0, 41, "FooterCell"]
+Cell[13171, 463, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

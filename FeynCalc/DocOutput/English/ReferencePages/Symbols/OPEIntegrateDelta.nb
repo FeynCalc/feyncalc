@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8537,        262]
+NotebookDataLength[      8535,        262]
 NotebookOptionsPosition[      6087,        195]
-NotebookOutlinePosition[      8084,        246]
-CellTagsIndexPosition[      8041,        243]
+NotebookOutlinePosition[      8082,        246]
+CellTagsIndexPosition[      8039,        243]
 WindowTitle->OPEIntegrateDelta
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ OPEIntegrateDelta.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$193869], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$195338], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OPEIntegrateDelta", ".html"]], None}]}]},
@@ -208,7 +208,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 36.757354}", 
+   "built" -> "{2020, 1, 5, 19, 0, 11.069400}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

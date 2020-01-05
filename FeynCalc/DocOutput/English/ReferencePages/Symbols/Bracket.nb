@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6836,        208]
+NotebookDataLength[      6835,        208]
 NotebookOptionsPosition[      4807,        152]
-NotebookOutlinePosition[      6629,        200]
-CellTagsIndexPosition[      6586,        197]
+NotebookOutlinePosition[      6628,        200]
+CellTagsIndexPosition[      6585,        197]
 WindowTitle->Bracket
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28883], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29001], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Bracket", ".html"]], None}]}]},
@@ -165,7 +165,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 12.488846}", 
+   "built" -> "{2020, 1, 5, 18, 52, 52.749365}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

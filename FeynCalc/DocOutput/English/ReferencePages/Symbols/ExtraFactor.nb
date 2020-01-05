@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6985,        209]
+NotebookDataLength[      6984,        209]
 NotebookOptionsPosition[      4899,        152]
-NotebookOutlinePosition[      6778,        201]
-CellTagsIndexPosition[      6735,        198]
+NotebookOutlinePosition[      6777,        201]
+CellTagsIndexPosition[      6734,        198]
 WindowTitle->ExtraFactor
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ ExtraFactor.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86347], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86471], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ExtraFactor", ".html"]], None}]}]},
@@ -165,7 +165,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 31.721637}", 
+   "built" -> "{2020, 1, 5, 18, 55, 28.222579}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

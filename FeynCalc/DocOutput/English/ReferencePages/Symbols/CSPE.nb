@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19853,        747]
-NotebookOptionsPosition[     14217,        556]
-NotebookOutlinePosition[     17806,        664]
-CellTagsIndexPosition[     17699,        658]
+NotebookDataLength[     19846,        747]
+NotebookOptionsPosition[     14215,        556]
+NotebookOutlinePosition[     17801,        664]
+CellTagsIndexPosition[     17694,        658]
 WindowTitle->CSPE
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52606], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52724], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/CSPE", 
              ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1081017292],
+ CellID->249536683],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1444912537],
+ CellID->244679970],
 
 Cell[CellGroupData[{
 
@@ -556,8 +556,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"CSPE",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -569,7 +569,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 11.671505}", 
+   "built" -> "{2020, 1, 5, 18, 53, 57.348612}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -591,7 +591,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -601,64 +601,64 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4746, 136, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4746, 136, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1081017292]},
+   CellID->249536683]},
  "SPE"->{
-  Cell[5380, 165, 207, 7, 27, "Input",
+  Cell[5378, 165, 207, 7, 27, "Input",
    CellTags->"SPE",
    CellID->1779475118],
-  Cell[5590, 174, 953, 40, 39, "Output",
+  Cell[5588, 174, 953, 40, 39, "Output",
    CellTags->"SPE",
    CellID->1516094616],
-  Cell[6580, 219, 209, 8, 27, "Input",
+  Cell[6578, 219, 209, 8, 27, "Input",
    CellTags->"SPE",
    CellID->437622958],
-  Cell[6792, 229, 1275, 53, 37, "Output",
+  Cell[6790, 229, 1275, 53, 37, "Output",
    CellTags->"SPE",
    CellID->1038841311],
-  Cell[8104, 287, 255, 9, 27, "Input",
+  Cell[8102, 287, 255, 9, 27, "Input",
    CellTags->"SPE",
    CellID->1031117972],
-  Cell[8362, 298, 1139, 47, 39, "Output",
+  Cell[8360, 298, 1139, 47, 39, "Output",
    CellTags->"SPE",
    CellID->1270490467],
-  Cell[9538, 350, 187, 6, 27, "Input",
+  Cell[9536, 350, 187, 6, 27, "Input",
    CellTags->"SPE",
    CellID->87993462],
-  Cell[9728, 358, 1195, 48, 42, "Output",
+  Cell[9726, 358, 1195, 48, 42, "Output",
    CellTags->"SPE",
    CellID->2053769726],
-  Cell[10960, 411, 178, 6, 27, "Input",
+  Cell[10958, 411, 178, 6, 27, "Input",
    CellTags->"SPE",
    CellID->2034315321],
-  Cell[11141, 419, 242, 8, 51, "Output",
+  Cell[11139, 419, 242, 8, 51, "Output",
    CellTags->"SPE",
    CellID->49409289],
-  Cell[11420, 432, 209, 8, 27, "Input",
+  Cell[11418, 432, 209, 8, 27, "Input",
    CellTags->"SPE",
    CellID->1917897688],
-  Cell[11632, 442, 490, 16, 51, "Output",
+  Cell[11630, 442, 490, 16, 51, "Output",
    CellTags->"SPE",
    CellID->1531168216],
-  Cell[12159, 463, 237, 9, 27, "Input",
+  Cell[12157, 463, 237, 9, 27, "Input",
    CellTags->"SPE",
    CellID->980827421],
-  Cell[12399, 474, 243, 8, 51, "Output",
+  Cell[12397, 474, 243, 8, 51, "Output",
    CellTags->"SPE",
    CellID->919943670],
-  Cell[12679, 487, 314, 11, 27, "Input",
+  Cell[12677, 487, 314, 11, 27, "Input",
    CellTags->"SPE",
    CellID->1873446419],
-  Cell[12996, 500, 244, 8, 51, "Output",
+  Cell[12994, 500, 244, 8, 51, "Output",
    CellTags->"SPE",
    CellID->1753753047]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16198, 602},
- {"SPE", 16329, 606}
+ {"PrimaryExamplesSection", 16194, 602},
+ {"SPE", 16324, 606}
  }
 *)
 (*NotebookFileOutline
@@ -669,86 +669,86 @@ Cell[3772, 100, 281, 11, 45, "ObjectNameGrid"],
 Cell[4056, 113, 665, 19, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4746, 136, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4746, 136, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1081017292],
+ CellID->249536683],
 Cell[CellGroupData[{
-Cell[5159, 155, 196, 6, 26, "ExampleSection",
- CellID->1444912537],
+Cell[5158, 155, 195, 6, 26, "ExampleSection",
+ CellID->244679970],
 Cell[CellGroupData[{
-Cell[5380, 165, 207, 7, 27, "Input",
+Cell[5378, 165, 207, 7, 27, "Input",
  CellTags->"SPE",
  CellID->1779475118],
-Cell[5590, 174, 953, 40, 39, "Output",
+Cell[5588, 174, 953, 40, 39, "Output",
  CellTags->"SPE",
  CellID->1516094616]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6580, 219, 209, 8, 27, "Input",
+Cell[6578, 219, 209, 8, 27, "Input",
  CellTags->"SPE",
  CellID->437622958],
-Cell[6792, 229, 1275, 53, 37, "Output",
+Cell[6790, 229, 1275, 53, 37, "Output",
  CellTags->"SPE",
  CellID->1038841311]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8104, 287, 255, 9, 27, "Input",
+Cell[8102, 287, 255, 9, 27, "Input",
  CellTags->"SPE",
  CellID->1031117972],
-Cell[8362, 298, 1139, 47, 39, "Output",
+Cell[8360, 298, 1139, 47, 39, "Output",
  CellTags->"SPE",
  CellID->1270490467]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9538, 350, 187, 6, 27, "Input",
+Cell[9536, 350, 187, 6, 27, "Input",
  CellTags->"SPE",
  CellID->87993462],
-Cell[9728, 358, 1195, 48, 42, "Output",
+Cell[9726, 358, 1195, 48, 42, "Output",
  CellTags->"SPE",
  CellID->2053769726]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10960, 411, 178, 6, 27, "Input",
+Cell[10958, 411, 178, 6, 27, "Input",
  CellTags->"SPE",
  CellID->2034315321],
-Cell[11141, 419, 242, 8, 51, "Output",
+Cell[11139, 419, 242, 8, 51, "Output",
  CellTags->"SPE",
  CellID->49409289]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11420, 432, 209, 8, 27, "Input",
+Cell[11418, 432, 209, 8, 27, "Input",
  CellTags->"SPE",
  CellID->1917897688],
-Cell[11632, 442, 490, 16, 51, "Output",
+Cell[11630, 442, 490, 16, 51, "Output",
  CellTags->"SPE",
  CellID->1531168216]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12159, 463, 237, 9, 27, "Input",
+Cell[12157, 463, 237, 9, 27, "Input",
  CellTags->"SPE",
  CellID->980827421],
-Cell[12399, 474, 243, 8, 51, "Output",
+Cell[12397, 474, 243, 8, 51, "Output",
  CellTags->"SPE",
  CellID->919943670]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12679, 487, 314, 11, 27, "Input",
+Cell[12677, 487, 314, 11, 27, "Input",
  CellTags->"SPE",
  CellID->1873446419],
-Cell[12996, 500, 244, 8, 51, "Output",
+Cell[12994, 500, 244, 8, 51, "Output",
  CellTags->"SPE",
  CellID->1753753047]
 }, Open  ]]
 }, Open  ]],
-Cell[13267, 512, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13265, 512, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13335, 517, 270, 12, 31, "SeeAlsoSection",
+Cell[13333, 517, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13608, 531, 567, 20, 56, "SeeAlso",
+Cell[13606, 531, 567, 20, 56, "SeeAlso",
  CellID->119070656]
 }, Open  ]],
-Cell[14190, 554, 23, 0, 41, "FooterCell"]
+Cell[14188, 554, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

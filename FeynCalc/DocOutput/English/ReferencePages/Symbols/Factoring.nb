@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7472,        224]
+NotebookDataLength[      7471,        224]
 NotebookOptionsPosition[      5354,        167]
-NotebookOutlinePosition[      7264,        216]
-CellTagsIndexPosition[      7221,        213]
+NotebookOutlinePosition[      7263,        216]
+CellTagsIndexPosition[      7220,        213]
 WindowTitle->Factoring
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$88553], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$88677], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Factoring", ".html"]], None}]}]},
@@ -180,7 +180,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 36.665104}", 
+   "built" -> "{2020, 1, 5, 18, 55, 33.553768}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

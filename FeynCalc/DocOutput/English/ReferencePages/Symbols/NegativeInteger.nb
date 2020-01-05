@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6876,        208]
+NotebookDataLength[      6875,        208]
 NotebookOptionsPosition[      4830,        151]
-NotebookOutlinePosition[      6669,        200]
-CellTagsIndexPosition[      6626,        197]
+NotebookOutlinePosition[      6668,        200]
+CellTagsIndexPosition[      6625,        197]
 WindowTitle->NegativeInteger
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ NegativeInteger.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$186381], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$187850], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/NegativeInteger", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 20.104713}", 
+   "built" -> "{2020, 1, 5, 18, 59, 52.029138}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12206,        399]
-NotebookOptionsPosition[      9249,        311]
-NotebookOutlinePosition[     11372,        368]
-CellTagsIndexPosition[     11287,        363]
+NotebookDataLength[     12203,        399]
+NotebookOptionsPosition[      9248,        311]
+NotebookOutlinePosition[     11370,        368]
+CellTagsIndexPosition[     11285,        363]
 WindowTitle->ExplicitDiracIndex
 WindowFrame->Normal*)
 
@@ -94,7 +94,7 @@ ExplicitDiracIndex.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83681], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83805], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ExplicitDiracIndex", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->270233604],
+ CellID->632170420],
 
 Cell[CellGroupData[{
 
@@ -165,7 +165,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1595631461],
+ CellID->904166094],
 
 Cell[CellGroupData[{
 
@@ -311,8 +311,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"ExplicitDiracIndex",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -324,7 +324,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 25.373776}", 
+   "built" -> "{2020, 1, 5, 18, 55, 21.085269}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -345,7 +345,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -357,12 +357,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5223, 142, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->270233604]}
+   CellID->632170420]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11144, 356}
+ {"PrimaryExamplesSection", 11142, 356}
  }
 *)
 (*NotebookFileOutline
@@ -375,32 +375,32 @@ Cell[4751, 125, 447, 13, 85, "Usage",
 Cell[CellGroupData[{
 Cell[5223, 142, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->270233604],
+ CellID->632170420],
 Cell[CellGroupData[{
-Cell[5635, 161, 196, 6, 26, "ExampleSection",
- CellID->1595631461],
+Cell[5635, 161, 195, 6, 26, "ExampleSection",
+ CellID->904166094],
 Cell[CellGroupData[{
-Cell[5856, 171, 168, 5, 27, "Input",
+Cell[5855, 171, 168, 5, 27, "Input",
  CellID->1567992074],
-Cell[6027, 178, 627, 27, 38, "Output",
+Cell[6026, 178, 627, 27, 38, "Output",
  CellID->1008305614]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6691, 210, 131, 4, 27, "Input",
+Cell[6690, 210, 131, 4, 27, "Input",
  CellID->1377283560],
-Cell[6825, 216, 418, 11, 69, "Output",
+Cell[6824, 216, 418, 11, 69, "Output",
  CellID->1835465320]
 }, Open  ]]
 }, Open  ]],
-Cell[7270, 231, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7269, 231, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7338, 236, 270, 12, 31, "SeeAlsoSection",
+Cell[7337, 236, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7611, 250, 1596, 56, 71, "SeeAlso",
+Cell[7610, 250, 1596, 56, 71, "SeeAlso",
  CellID->655647701]
 }, Open  ]],
-Cell[9222, 309, 23, 0, 41, "FooterCell"]
+Cell[9221, 309, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

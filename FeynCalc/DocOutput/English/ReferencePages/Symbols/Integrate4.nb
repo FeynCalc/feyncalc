@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7058,        214]
+NotebookDataLength[      7056,        214]
 NotebookOptionsPosition[      5049,        158]
-NotebookOutlinePosition[      6850,        206]
-CellTagsIndexPosition[      6807,        203]
+NotebookOutlinePosition[      6848,        206]
+CellTagsIndexPosition[      6805,        203]
 WindowTitle->Integrate4
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ Integrate4.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169073], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170542], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Integrate4", ".html"]], None}]}]},
@@ -171,7 +171,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 41.216001}", 
+   "built" -> "{2020, 1, 5, 18, 59, 8.204284}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

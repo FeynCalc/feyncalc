@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22414,        833]
+NotebookDataLength[     22354,        832]
 NotebookOptionsPosition[     16212,        635]
-NotebookOutlinePosition[     19932,        741]
-CellTagsIndexPosition[     19818,        735]
+NotebookOutlinePosition[     19872,        740]
+CellTagsIndexPosition[     19758,        734]
 WindowTitle->Uncontract
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Uncontract.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$280712], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$282616], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Uncontract", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->786546559],
+ CellID->434876890],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -203,7 +203,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->766039182],
+ CellID->1177662485],
 
 Cell[CellGroupData[{
 
@@ -213,7 +213,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1853416560],
+ CellID->101891162],
 
 Cell[CellGroupData[{
 
@@ -635,8 +635,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Uncontract",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -648,7 +648,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 57.638271}", 
+   "built" -> "{2020, 1, 5, 19, 3, 52.967433}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -669,8 +669,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -727,15 +726,15 @@ CellTagsIndex->{
   Cell[14248, 545, 1367, 55, 40, "Output",
    CellTags->"Uncontract"]},
  "PrimaryExamplesSection"->{
-  Cell[6009, 190, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6009, 190, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->766039182]}
+   CellID->1177662485]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Uncontract", 18183, 681},
- {"PrimaryExamplesSection", 19675, 728}
+ {"Uncontract", 18122, 680},
+ {"PrimaryExamplesSection", 19614, 727}
  }
 *)
 (*NotebookFileOutline
@@ -749,7 +748,7 @@ Cell[3908, 112, 600, 16, 102, "Usage",
 Cell[CellGroupData[{
 Cell[4533, 132, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->786546559],
+ CellID->434876890],
 Cell[5274, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5330, 162, 138, 4, 70, "Input",
@@ -762,12 +761,12 @@ Cell[5471, 168, 477, 15, 37, "Output",
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6009, 190, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6009, 190, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->766039182],
+ CellID->1177662485],
 Cell[CellGroupData[{
-Cell[6421, 209, 196, 6, 26, "ExampleSection",
- CellID->1853416560],
+Cell[6422, 209, 195, 6, 26, "ExampleSection",
+ CellID->101891162],
 Cell[CellGroupData[{
 Cell[6642, 219, 227, 8, 27, "Input",
  CellTags->"Uncontract",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16347,        595]
-NotebookOptionsPosition[     11666,        449]
-NotebookOutlinePosition[     14351,        523]
-CellTagsIndexPosition[     14237,        517]
+NotebookDataLength[     16344,        595]
+NotebookOptionsPosition[     11665,        449]
+NotebookOutlinePosition[     14349,        523]
+CellTagsIndexPosition[     14235,        517]
 WindowTitle->DiracSlash
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ DiracSlash.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$70053], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$70175], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracSlash", ".html"]], None}]}]},
@@ -163,7 +163,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1646751096],
+ CellID->735255828],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -211,7 +211,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1527736180],
+ CellID->1325041461],
 
 Cell[CellGroupData[{
 
@@ -221,7 +221,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1480187750],
+ CellID->1593102456],
 
 Cell[TextData[{
  "This is q-slash, i.e., ",
@@ -449,8 +449,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"DiracSlash",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -462,7 +462,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 53.994025}", 
+   "built" -> "{2020, 1, 5, 18, 54, 44.281647}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -483,7 +483,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -493,31 +493,31 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6150, 198, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6149, 198, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1527736180]},
+   CellID->1325041461]},
  "DiracSlash"->{
-  Cell[6997, 237, 132, 4, 27, "Input",
+  Cell[6996, 237, 132, 4, 27, "Input",
    CellTags->"DiracSlash",
    CellID->1250007007],
-  Cell[7132, 243, 353, 13, 37, "Output",
+  Cell[7131, 243, 353, 13, 37, "Output",
    CellTags->"DiracSlash"],
-  Cell[7522, 261, 191, 6, 27, "Input",
+  Cell[7521, 261, 191, 6, 27, "Input",
    CellTags->"DiracSlash",
    CellID->751525159],
-  Cell[7716, 269, 615, 23, 37, "Output",
+  Cell[7715, 269, 615, 23, 37, "Output",
    CellTags->"DiracSlash"],
-  Cell[8368, 297, 155, 5, 27, "Input",
+  Cell[8367, 297, 155, 5, 27, "Input",
    CellTags->"DiracSlash",
    CellID->1690251158],
-  Cell[8526, 304, 615, 23, 37, "Output",
+  Cell[8525, 304, 615, 23, 37, "Output",
    CellTags->"DiracSlash"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13599, 494},
- {"DiracSlash", 13737, 498}
+ {"PrimaryExamplesSection", 13597, 494},
+ {"DiracSlash", 13735, 498}
  }
 *)
 (*NotebookFileOutline
@@ -529,74 +529,74 @@ Cell[CellGroupData[{
 Cell[3971, 113, 762, 24, 88, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4758, 141, 739, 24, 31, "NotesSection",
+Cell[4758, 141, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1646751096],
-Cell[5500, 167, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5534, 169, 107, 3, 70, "Notes",
+ CellID->735255828],
+Cell[5499, 167, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5533, 169, 107, 3, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[5666, 176, 114, 3, 70, "Input",
+Cell[5665, 176, 114, 3, 70, "Input",
  CellID->1215792887],
-Cell[5783, 181, 306, 10, 37, "Output"]
+Cell[5782, 181, 306, 10, 37, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6150, 198, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6149, 198, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1527736180],
+ CellID->1325041461],
 Cell[CellGroupData[{
-Cell[6563, 217, 196, 6, 26, "ExampleSection",
- CellID->1480187750],
-Cell[6762, 225, 210, 8, 35, "Notes"],
+Cell[6562, 217, 196, 6, 26, "ExampleSection",
+ CellID->1593102456],
+Cell[6761, 225, 210, 8, 35, "Notes"],
 Cell[CellGroupData[{
-Cell[6997, 237, 132, 4, 27, "Input",
+Cell[6996, 237, 132, 4, 27, "Input",
  CellTags->"DiracSlash",
  CellID->1250007007],
-Cell[7132, 243, 353, 13, 37, "Output",
+Cell[7131, 243, 353, 13, 37, "Output",
  CellTags->"DiracSlash"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7522, 261, 191, 6, 27, "Input",
+Cell[7521, 261, 191, 6, 27, "Input",
  CellTags->"DiracSlash",
  CellID->751525159],
-Cell[7716, 269, 615, 23, 37, "Output",
+Cell[7715, 269, 615, 23, 37, "Output",
  CellTags->"DiracSlash"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8368, 297, 155, 5, 27, "Input",
+Cell[8367, 297, 155, 5, 27, "Input",
  CellTags->"DiracSlash",
  CellID->1690251158],
-Cell[8526, 304, 615, 23, 37, "Output",
+Cell[8525, 304, 615, 23, 37, "Output",
  CellTags->"DiracSlash"]
 }, Open  ]],
-Cell[9156, 330, 133, 3, 48, "Notes"],
+Cell[9155, 330, 133, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[9314, 337, 78, 2, 27, "Input"],
-Cell[9395, 341, 328, 12, 37, "Output"]
+Cell[9313, 337, 78, 2, 27, "Input"],
+Cell[9394, 341, 328, 12, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9760, 358, 79, 2, 27, "Input"],
-Cell[9842, 362, 277, 10, 37, "Output"]
+Cell[9759, 358, 79, 2, 27, "Input"],
+Cell[9841, 362, 277, 10, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10156, 377, 171, 5, 27, "Input"],
-Cell[10330, 384, 169, 5, 35, "Output"]
+Cell[10155, 377, 171, 5, 27, "Input"],
+Cell[10329, 384, 169, 5, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10536, 394, 235, 7, 27, "Input"],
-Cell[10774, 403, 169, 5, 35, "Output"]
+Cell[10535, 394, 235, 7, 27, "Input"],
+Cell[10773, 403, 169, 5, 35, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[10970, 412, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10969, 412, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11038, 417, 270, 12, 31, "SeeAlsoSection",
+Cell[11037, 417, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11311, 431, 313, 13, 56, "SeeAlso"]
+Cell[11310, 431, 313, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[11639, 447, 23, 0, 41, "FooterCell"]
+Cell[11638, 447, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

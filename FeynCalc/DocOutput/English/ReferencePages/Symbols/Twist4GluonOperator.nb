@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    210649,       7989]
+NotebookDataLength[    210647,       7989]
 NotebookOptionsPosition[    207516,       7900]
-NotebookOutlinePosition[    209921,       7964]
-CellTagsIndexPosition[    209794,       7958]
+NotebookOutlinePosition[    209919,       7964]
+CellTagsIndexPosition[    209792,       7958]
 WindowTitle->Twist4GluonOperator
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ Twist4GluonOperator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$279392], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$281296], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Twist4GluonOperator", ".html"]], None}]}]},
@@ -156,7 +156,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1109020200],
+ CellID->1916907731],
 
 Cell[CellGroupData[{
 
@@ -166,7 +166,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1598274960],
+ CellID->1286362992],
 
 Cell[CellGroupData[{
 
@@ -7913,7 +7913,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 54.693431}", 
+   "built" -> "{2020, 1, 5, 19, 3, 49.644037}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -7934,7 +7934,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -7946,7 +7946,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5049, 143, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1109020200]},
+   CellID->1916907731]},
  "Twist4GluonOperator"->{
   Cell[5683, 172, 546, 16, 45, "Input",
    CellTags->"Twist4GluonOperator",
@@ -7957,8 +7957,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 209439, 7945},
- {"Twist4GluonOperator", 209586, 7949}
+ {"PrimaryExamplesSection", 209437, 7945},
+ {"Twist4GluonOperator", 209584, 7949}
  }
 *)
 (*NotebookFileOutline
@@ -7971,10 +7971,10 @@ Cell[4182, 114, 842, 25, 102, "Usage",
 Cell[CellGroupData[{
 Cell[5049, 143, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1109020200],
+ CellID->1916907731],
 Cell[CellGroupData[{
 Cell[5462, 162, 196, 6, 26, "ExampleSection",
- CellID->1598274960],
+ CellID->1286362992],
 Cell[CellGroupData[{
 Cell[5683, 172, 546, 16, 45, "Input",
  CellTags->"Twist4GluonOperator",

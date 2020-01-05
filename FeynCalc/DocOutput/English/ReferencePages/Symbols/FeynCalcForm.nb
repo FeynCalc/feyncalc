@@ -82,7 +82,7 @@ FeynCalcForm.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$133314], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$134339], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynCalcForm", ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->368506752],
+ CellID->1276139522],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1272506267],
+ CellID->318448114],
 
 Cell["This is the normal notebook display:", "Notes"],
 
@@ -405,7 +405,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 24.866270}", 
+   "built" -> "{2020, 1, 5, 18, 57, 37.694365}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -431,7 +431,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -441,9 +441,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4942, 136, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4942, 136, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->368506752]},
+   CellID->1276139522]},
  "FeynCalcForm"->{
   Cell[5631, 167, 261, 8, 27, "Input",
    CellTags->"FeynCalcForm",
@@ -471,7 +471,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13268, 442},
+ {"PrimaryExamplesSection", 13267, 442},
  {"FeynCalcForm", 13407, 446}
  }
 *)
@@ -483,12 +483,12 @@ Cell[3806, 100, 289, 11, 45, "ObjectNameGrid"],
 Cell[4098, 113, 819, 19, 136, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4942, 136, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4942, 136, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->368506752],
+ CellID->1276139522],
 Cell[CellGroupData[{
-Cell[5354, 155, 196, 6, 26, "ExampleSection",
- CellID->1272506267],
+Cell[5355, 155, 195, 6, 26, "ExampleSection",
+ CellID->318448114],
 Cell[5553, 163, 53, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[5631, 167, 261, 8, 27, "Input",

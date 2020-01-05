@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11431,        374]
+NotebookDataLength[     11429,        374]
 NotebookOptionsPosition[      8010,        275]
-NotebookOutlinePosition[     10521,        341]
-CellTagsIndexPosition[     10400,        335]
+NotebookOutlinePosition[     10519,        341]
+CellTagsIndexPosition[     10398,        335]
 WindowTitle->ScalarGluonVertex
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ScalarGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$223961], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$225430], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ScalarGluonVertex", ".html"]], None}]}]},
@@ -156,7 +156,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1496577615],
+ CellID->2080976489],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -215,7 +215,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1175407405],
+ CellID->2037554269],
 
 Cell[CellGroupData[{
 
@@ -225,7 +225,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1871734816],
+ CellID->1269130457],
 
 Cell[CellGroupData[{
 
@@ -288,7 +288,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 43.133835}", 
+   "built" -> "{2020, 1, 5, 19, 1, 25.264443}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -323,7 +323,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6360, 202, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1175407405]},
+   CellID->2037554269]},
  "ScalarGluonVertex"->{
   Cell[6994, 231, 294, 9, 27, "Input",
    CellTags->"ScalarGluonVertex",
@@ -334,8 +334,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10059, 322},
- {"ScalarGluonVertex", 10204, 326}
+ {"PrimaryExamplesSection", 10057, 322},
+ {"ScalarGluonVertex", 10202, 326}
  }
 *)
 (*NotebookFileOutline
@@ -349,12 +349,12 @@ Cell[3221, 91, 1364, 39, 165, "Usage",
 Cell[CellGroupData[{
 Cell[4610, 134, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1496577615],
-Cell[5352, 160, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5386, 162, 415, 14, 49, "Notes",
+ CellID->2080976489],
+Cell[5352, 160, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5386, 162, 415, 14, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[5826, 180, 100, 2, 27, "Input"],
+Cell[5826, 180, 100, 2, 70, "Input"],
 Cell[5929, 184, 370, 11, 37, "Output"]
 }, Open  ]]
 }, Closed]]
@@ -362,10 +362,10 @@ Cell[5929, 184, 370, 11, 37, "Output"]
 Cell[CellGroupData[{
 Cell[6360, 202, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1175407405],
+ CellID->2037554269],
 Cell[CellGroupData[{
 Cell[6773, 221, 196, 6, 26, "ExampleSection",
- CellID->1871734816],
+ CellID->1269130457],
 Cell[CellGroupData[{
 Cell[6994, 231, 294, 9, 27, "Input",
  CellTags->"ScalarGluonVertex",

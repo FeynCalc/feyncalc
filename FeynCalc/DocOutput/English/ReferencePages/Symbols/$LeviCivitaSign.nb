@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10233,        343]
-NotebookOptionsPosition[      6949,        247]
-NotebookOutlinePosition[      9295,        307]
-CellTagsIndexPosition[      9211,        302]
+NotebookDataLength[     10231,        343]
+NotebookOptionsPosition[      6950,        247]
+NotebookOutlinePosition[      9292,        307]
+CellTagsIndexPosition[      9208,        302]
 WindowTitle->$LeviCivitaSign
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ LeviCivitaSign.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$293422], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$295326], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$LeviCivitaSign", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->419016846],
+ CellID->887122515],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->204795173],
+ CellID->1894416738],
 
 Cell[CellGroupData[{
 
@@ -248,7 +248,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"$LeviCivitaSign",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -260,7 +260,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 20, 25.957218}", 
+   "built" -> "{2020, 1, 5, 19, 4, 23.052180}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -296,12 +296,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3820, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->419016846]}
+   CellID->887122515]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9068, 295}
+ {"PrimaryExamplesSection", 9065, 295}
  }
 *)
 (*NotebookFileOutline
@@ -314,37 +314,37 @@ Cell[3187, 89, 608, 14, 119, "Usage",
 Cell[CellGroupData[{
 Cell[3820, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->419016846],
+ CellID->887122515],
 Cell[CellGroupData[{
-Cell[4232, 126, 195, 6, 26, "ExampleSection",
- CellID->204795173],
+Cell[4232, 126, 196, 6, 26, "ExampleSection",
+ CellID->1894416738],
 Cell[CellGroupData[{
-Cell[4452, 136, 85, 2, 27, "Input",
+Cell[4453, 136, 85, 2, 27, "Input",
  CellID->1712420789],
-Cell[4540, 140, 205, 7, 35, "Output",
+Cell[4541, 140, 205, 7, 35, "Output",
  CellID->2017735240]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4782, 152, 205, 6, 27, "Input",
+Cell[4783, 152, 205, 6, 27, "Input",
  CellID->722943498],
-Cell[4990, 160, 645, 26, 35, "Output",
+Cell[4991, 160, 645, 26, 35, "Output",
  CellID->24019145]
 }, Open  ]],
-Cell[5650, 189, 78, 1, 32, "Notes",
+Cell[5651, 189, 78, 1, 32, "Notes",
  CellID->1734027625],
 Cell[CellGroupData[{
-Cell[5753, 194, 309, 9, 45, "Input",
+Cell[5754, 194, 309, 9, 45, "Input",
  CellID->1075951969],
-Cell[6065, 205, 606, 25, 35, "Output",
+Cell[6066, 205, 606, 25, 35, "Output",
  CellID->1430392236]
 }, Open  ]],
-Cell[6686, 233, 63, 1, 32, "Notes",
+Cell[6687, 233, 63, 1, 32, "Notes",
  CellID->223764811],
-Cell[6752, 236, 143, 5, 27, "Input",
+Cell[6753, 236, 143, 5, 27, "Input",
  CellID->955635605]
 }, Open  ]]
 }, Open  ]],
-Cell[6922, 245, 23, 0, 41, "FooterCell"]
+Cell[6923, 245, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

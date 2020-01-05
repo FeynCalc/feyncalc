@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18428,        595]
+NotebookDataLength[     18370,        594]
 NotebookOptionsPosition[     14335,        472]
-NotebookOutlinePosition[     17151,        548]
-CellTagsIndexPosition[     17039,        542]
+NotebookOutlinePosition[     17093,        547]
+CellTagsIndexPosition[     16981,        541]
 WindowTitle->Collect3
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$41825], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$41943], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Collect3", ".html"]], None}]}]},
@@ -174,7 +174,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->147907303],
+ CellID->1905357201],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -219,7 +219,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->149197056],
+ CellID->455399486],
 
 Cell[CellGroupData[{
 
@@ -229,7 +229,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1711179970],
+ CellID->874052351],
 
 Cell[CellGroupData[{
 
@@ -425,7 +425,7 @@ Cell[BoxData[
    RowBox[{"5", " ", "c", " ", 
     SuperscriptBox["d", "4"]}], "-", 
    SuperscriptBox["d", "5"]}], TraditionalForm]], "Output",
- ImageSize->{575, 153},
+ ImageSize->{651, 134},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Collect3",
@@ -472,8 +472,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Collect3",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -485,7 +485,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 45.107448}", 
+   "built" -> "{2020, 1, 5, 18, 53, 28.025504}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -507,8 +507,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -518,10 +517,10 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Collect3"->{
-  Cell[5970, 182, 136, 4, 70, "Input",
+  Cell[5971, 182, 136, 4, 70, "Input",
    CellTags->"Collect3",
    CellID->1015372413],
-  Cell[6109, 188, 321, 11, 37, "Output",
+  Cell[6110, 188, 321, 11, 37, "Output",
    CellTags->"Collect3"],
   Cell[7124, 235, 543, 19, 33, "Input",
    CellTags->"Collect3",
@@ -531,18 +530,18 @@ CellTagsIndex->{
   Cell[8314, 280, 307, 10, 33, "Input",
    CellTags->"Collect3",
    CellID->860117715],
-  Cell[8624, 292, 4958, 139, 174, "Output",
+  Cell[8624, 292, 4958, 139, 155, "Output",
    CellTags->"Collect3"]},
  "PrimaryExamplesSection"->{
-  Cell[6491, 206, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6492, 206, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->149197056]}
+   CellID->455399486]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Collect3", 16398, 519},
- {"PrimaryExamplesSection", 16896, 535}
+ {"Collect3", 16340, 518},
+ {"PrimaryExamplesSection", 16838, 534}
  }
 *)
 (*NotebookFileOutline
@@ -554,26 +553,26 @@ Cell[CellGroupData[{
 Cell[3978, 113, 1170, 35, 120, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5173, 152, 738, 24, 31, "NotesSection",
+Cell[5173, 152, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->147907303],
-Cell[5914, 178, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1905357201],
+Cell[5915, 178, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5970, 182, 136, 4, 70, "Input",
+Cell[5971, 182, 136, 4, 70, "Input",
  CellTags->"Collect3",
  CellID->1015372413],
-Cell[6109, 188, 321, 11, 37, "Output",
+Cell[6110, 188, 321, 11, 37, "Output",
  CellTags->"Collect3"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6491, 206, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6492, 206, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->149197056],
+ CellID->455399486],
 Cell[CellGroupData[{
-Cell[6903, 225, 196, 6, 26, "ExampleSection",
- CellID->1711179970],
+Cell[6904, 225, 195, 6, 26, "ExampleSection",
+ CellID->874052351],
 Cell[CellGroupData[{
 Cell[7124, 235, 543, 19, 33, "Input",
  CellTags->"Collect3",
@@ -585,7 +584,7 @@ Cell[CellGroupData[{
 Cell[8314, 280, 307, 10, 33, "Input",
  CellTags->"Collect3",
  CellID->860117715],
-Cell[8624, 292, 4958, 139, 174, "Output",
+Cell[8624, 292, 4958, 139, 155, "Output",
  CellTags->"Collect3"]
 }, Open  ]]
 }, Open  ]],
@@ -596,7 +595,7 @@ Cell[13677, 440, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
 Cell[13950, 454, 343, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[14308, 470, 23, 0, 70, "FooterCell"]
+Cell[14308, 470, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

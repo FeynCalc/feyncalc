@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12033,        382]
-NotebookOptionsPosition[      8701,        290]
-NotebookOutlinePosition[     11261,        352]
-CellTagsIndexPosition[     11176,        347]
+NotebookDataLength[     12028,        382]
+NotebookOptionsPosition[      8699,        290]
+NotebookOutlinePosition[     11258,        352]
+CellTagsIndexPosition[     11173,        347]
 WindowTitle->GFAD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$153410], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$154879], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/GFAD", 
             ".html"]], None}]}]},
@@ -132,7 +132,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1926971076],
+ CellID->415952031],
 
 Cell[CellGroupData[{
 
@@ -142,7 +142,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1996243292],
+ CellID->239829988],
 
 Cell[CellGroupData[{
 
@@ -303,7 +303,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 8.253222}", 
+   "built" -> "{2020, 1, 5, 18, 58, 29.904006}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -329,7 +329,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -339,14 +339,14 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4241, 119, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4241, 119, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1926971076]}
+   CellID->415952031]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11032, 340}
+ {"PrimaryExamplesSection", 11030, 340}
  }
 *)
 (*NotebookFileOutline
@@ -357,33 +357,33 @@ Cell[2836, 76, 281, 11, 45, "ObjectNameGrid"],
 Cell[3120, 89, 1096, 26, 171, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4241, 119, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4241, 119, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1926971076],
+ CellID->415952031],
 Cell[CellGroupData[{
-Cell[4654, 138, 196, 6, 26, "ExampleSection",
- CellID->1996243292],
+Cell[4653, 138, 195, 6, 26, "ExampleSection",
+ CellID->239829988],
 Cell[CellGroupData[{
-Cell[4875, 148, 370, 12, 27, "Input",
+Cell[4873, 148, 370, 12, 27, "Input",
  CellID->1372671718],
-Cell[5248, 162, 1428, 39, 59, "Output",
+Cell[5246, 162, 1428, 39, 59, "Output",
  CellID->150129956]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6713, 206, 123, 3, 27, "Input",
+Cell[6711, 206, 123, 3, 27, "Input",
  CellID->1951300851],
-Cell[6839, 211, 1164, 46, 59, "Output",
+Cell[6837, 211, 1164, 46, 59, "Output",
  CellID->369428740]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8040, 262, 130, 4, 27, "Input",
+Cell[8038, 262, 130, 4, 27, "Input",
  CellID->813934019],
-Cell[8173, 268, 462, 15, 72, "Output",
+Cell[8171, 268, 462, 15, 72, "Output",
  CellID->618367511]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[8674, 288, 23, 0, 41, "FooterCell"]
+Cell[8672, 288, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

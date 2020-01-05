@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15033,        524]
-NotebookOptionsPosition[     10721,        396]
-NotebookOutlinePosition[     13774,        478]
-CellTagsIndexPosition[     13657,        472]
+NotebookDataLength[     15094,        525]
+NotebookOptionsPosition[     10722,        396]
+NotebookOutlinePosition[     13834,        479]
+CellTagsIndexPosition[     13717,        473]
 WindowTitle->PowerSimplify
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ PowerSimplify.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$211497], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$212966], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PowerSimplify", ".html"]], None}]}]},
@@ -249,7 +249,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->506396382],
+ CellID->1388239057],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->201239832],
+ CellID->889816326],
 
 Cell[CellGroupData[{
 
@@ -397,7 +397,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"PowerSimplify",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -409,7 +409,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 16.068331}", 
+   "built" -> "{2020, 1, 5, 19, 0, 55.190344}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -433,7 +433,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -443,36 +444,36 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[7269, 236, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7269, 236, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->506396382]},
+   CellID->1388239057]},
  "PowerSimplify"->{
-  Cell[7901, 265, 252, 9, 27, "Input",
+  Cell[7902, 265, 252, 9, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->1178513781],
-  Cell[8156, 276, 194, 6, 35, "Output",
+  Cell[8157, 276, 194, 6, 35, "Output",
    CellTags->"PowerSimplify"],
-  Cell[8387, 287, 257, 9, 27, "Input",
+  Cell[8388, 287, 257, 9, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->1283744805],
-  Cell[8647, 298, 262, 9, 37, "Output",
+  Cell[8648, 298, 262, 9, 37, "Output",
    CellTags->"PowerSimplify"],
-  Cell[8946, 312, 256, 9, 27, "Input",
+  Cell[8947, 312, 256, 9, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->604286428],
-  Cell[9205, 323, 262, 9, 37, "Output",
+  Cell[9206, 323, 262, 9, 37, "Output",
    CellTags->"PowerSimplify"],
-  Cell[9504, 337, 208, 7, 27, "Input",
+  Cell[9505, 337, 208, 7, 27, "Input",
    CellTags->"PowerSimplify",
    CellID->1089003122],
-  Cell[9715, 346, 262, 9, 37, "Output",
+  Cell[9716, 346, 262, 9, 37, "Output",
    CellTags->"PowerSimplify"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12838, 444},
- {"PowerSimplify", 12978, 448}
+ {"PrimaryExamplesSection", 12897, 445},
+ {"PowerSimplify", 13038, 449}
  }
 *)
 (*NotebookFileOutline
@@ -483,49 +484,49 @@ Cell[3689, 98, 290, 11, 45, "ObjectNameGrid"],
 Cell[3982, 111, 3262, 121, 144, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[7269, 236, 387, 15, 31, "PrimaryExamplesSection",
+Cell[7269, 236, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->506396382],
+ CellID->1388239057],
 Cell[CellGroupData[{
-Cell[7681, 255, 195, 6, 26, "ExampleSection",
- CellID->201239832],
+Cell[7682, 255, 195, 6, 26, "ExampleSection",
+ CellID->889816326],
 Cell[CellGroupData[{
-Cell[7901, 265, 252, 9, 27, "Input",
+Cell[7902, 265, 252, 9, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->1178513781],
-Cell[8156, 276, 194, 6, 35, "Output",
+Cell[8157, 276, 194, 6, 35, "Output",
  CellTags->"PowerSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8387, 287, 257, 9, 27, "Input",
+Cell[8388, 287, 257, 9, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->1283744805],
-Cell[8647, 298, 262, 9, 37, "Output",
+Cell[8648, 298, 262, 9, 37, "Output",
  CellTags->"PowerSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8946, 312, 256, 9, 27, "Input",
+Cell[8947, 312, 256, 9, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->604286428],
-Cell[9205, 323, 262, 9, 37, "Output",
+Cell[9206, 323, 262, 9, 37, "Output",
  CellTags->"PowerSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9504, 337, 208, 7, 27, "Input",
+Cell[9505, 337, 208, 7, 27, "Input",
  CellTags->"PowerSimplify",
  CellID->1089003122],
-Cell[9715, 346, 262, 9, 37, "Output",
+Cell[9716, 346, 262, 9, 37, "Output",
  CellTags->"PowerSimplify"]
 }, Open  ]]
 }, Open  ]],
-Cell[10004, 359, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10005, 359, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10072, 364, 270, 12, 31, "SeeAlsoSection",
+Cell[10073, 364, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10345, 378, 334, 13, 56, "SeeAlso"]
+Cell[10346, 378, 334, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10694, 394, 23, 0, 70, "FooterCell"]
+Cell[10695, 394, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

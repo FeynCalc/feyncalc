@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14471,        500]
-NotebookOptionsPosition[      9588,        351]
-NotebookOutlinePosition[     12803,        440]
-CellTagsIndexPosition[     12683,        434]
+NotebookDataLength[     14476,        500]
+NotebookOptionsPosition[      9590,        351]
+NotebookOutlinePosition[     12806,        440]
+CellTagsIndexPosition[     12686,        434]
 WindowTitle->PlusDistribution
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ PlusDistribution.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$207516], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$208985], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PlusDistribution", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->312571371],
+ CellID->1455966426],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->520452869],
+ CellID->1591433506],
 
 Cell[CellGroupData[{
 
@@ -364,7 +364,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 7.445687}", 
+   "built" -> "{2020, 1, 5, 19, 0, 45.164931}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -385,7 +385,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -395,46 +395,46 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4453, 129, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4453, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->312571371]},
+   CellID->1455966426]},
  "PlusDistribution"->{
-  Cell[5085, 158, 216, 7, 27, "Input",
+  Cell[5087, 158, 216, 7, 27, "Input",
    CellTags->"PlusDistribution",
    CellID->1721332915],
-  Cell[5304, 167, 292, 10, 57, "Output",
+  Cell[5306, 167, 292, 10, 57, "Output",
    CellTags->"PlusDistribution"],
-  Cell[5633, 182, 272, 9, 27, "Input",
+  Cell[5635, 182, 272, 9, 27, "Input",
    CellTags->"PlusDistribution",
    CellID->1742616386],
-  Cell[5908, 193, 352, 12, 57, "Output",
+  Cell[5910, 193, 352, 12, 57, "Output",
    CellTags->"PlusDistribution"],
-  Cell[6297, 210, 347, 11, 27, "Input",
+  Cell[6299, 210, 347, 11, 27, "Input",
    CellTags->"PlusDistribution",
    CellID->2079014638],
-  Cell[6647, 223, 197, 6, 35, "Output",
+  Cell[6649, 223, 197, 6, 35, "Output",
    CellTags->"PlusDistribution"],
-  Cell[6881, 234, 407, 13, 27, "Input",
+  Cell[6883, 234, 407, 13, 27, "Input",
    CellTags->"PlusDistribution",
    CellID->1214045782],
-  Cell[7291, 249, 197, 6, 35, "Output",
+  Cell[7293, 249, 197, 6, 35, "Output",
    CellTags->"PlusDistribution"],
-  Cell[7525, 260, 435, 14, 27, "Input",
+  Cell[7527, 260, 435, 14, 27, "Input",
    CellTags->"PlusDistribution",
    CellID->1844765701],
-  Cell[7963, 276, 197, 6, 35, "Output",
+  Cell[7965, 276, 197, 6, 35, "Output",
    CellTags->"PlusDistribution"],
-  Cell[8197, 287, 324, 11, 27, "Input",
+  Cell[8199, 287, 324, 11, 27, "Input",
    CellTags->"PlusDistribution",
    CellID->847354966],
-  Cell[8524, 300, 461, 16, 57, "Output",
+  Cell[8526, 300, 461, 16, 57, "Output",
    CellTags->"PlusDistribution"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11490, 396},
- {"PlusDistribution", 11633, 400}
+ {"PrimaryExamplesSection", 11492, 396},
+ {"PlusDistribution", 11636, 400}
  }
 *)
 (*NotebookFileOutline
@@ -445,63 +445,63 @@ Cell[3630, 97, 293, 11, 45, "ObjectNameGrid"],
 Cell[3926, 110, 502, 15, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4453, 129, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4453, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->312571371],
+ CellID->1455966426],
 Cell[CellGroupData[{
-Cell[4865, 148, 195, 6, 26, "ExampleSection",
- CellID->520452869],
+Cell[4866, 148, 196, 6, 26, "ExampleSection",
+ CellID->1591433506],
 Cell[CellGroupData[{
-Cell[5085, 158, 216, 7, 27, "Input",
+Cell[5087, 158, 216, 7, 27, "Input",
  CellTags->"PlusDistribution",
  CellID->1721332915],
-Cell[5304, 167, 292, 10, 57, "Output",
+Cell[5306, 167, 292, 10, 57, "Output",
  CellTags->"PlusDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5633, 182, 272, 9, 27, "Input",
+Cell[5635, 182, 272, 9, 27, "Input",
  CellTags->"PlusDistribution",
  CellID->1742616386],
-Cell[5908, 193, 352, 12, 57, "Output",
+Cell[5910, 193, 352, 12, 57, "Output",
  CellTags->"PlusDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6297, 210, 347, 11, 27, "Input",
+Cell[6299, 210, 347, 11, 27, "Input",
  CellTags->"PlusDistribution",
  CellID->2079014638],
-Cell[6647, 223, 197, 6, 35, "Output",
+Cell[6649, 223, 197, 6, 35, "Output",
  CellTags->"PlusDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6881, 234, 407, 13, 27, "Input",
+Cell[6883, 234, 407, 13, 27, "Input",
  CellTags->"PlusDistribution",
  CellID->1214045782],
-Cell[7291, 249, 197, 6, 35, "Output",
+Cell[7293, 249, 197, 6, 35, "Output",
  CellTags->"PlusDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7525, 260, 435, 14, 27, "Input",
+Cell[7527, 260, 435, 14, 27, "Input",
  CellTags->"PlusDistribution",
  CellID->1844765701],
-Cell[7963, 276, 197, 6, 35, "Output",
+Cell[7965, 276, 197, 6, 35, "Output",
  CellTags->"PlusDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8197, 287, 324, 11, 27, "Input",
+Cell[8199, 287, 324, 11, 27, "Input",
  CellTags->"PlusDistribution",
  CellID->847354966],
-Cell[8524, 300, 461, 16, 57, "Output",
+Cell[8526, 300, 461, 16, 57, "Output",
  CellTags->"PlusDistribution"]
 }, Open  ]]
 }, Open  ]],
-Cell[9012, 320, 31, 0, 70, "SectionFooterSpacer"]
+Cell[9014, 320, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9080, 325, 270, 12, 70, "SeeAlsoSection",
+Cell[9082, 325, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9353, 339, 193, 7, 70, "SeeAlso"]
+Cell[9355, 339, 193, 7, 70, "SeeAlso"]
 }, Open  ]],
-Cell[9561, 349, 23, 0, 70, "FooterCell"]
+Cell[9563, 349, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

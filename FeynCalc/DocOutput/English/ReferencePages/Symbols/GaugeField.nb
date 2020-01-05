@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10304,        342]
+NotebookDataLength[     10303,        342]
 NotebookOptionsPosition[      6900,        241]
-NotebookOutlinePosition[      9434,        310]
-CellTagsIndexPosition[      9322,        304]
+NotebookOutlinePosition[      9433,        310]
+CellTagsIndexPosition[      9321,        304]
 WindowTitle->GaugeField
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ GaugeField.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151221], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152690], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GaugeField", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1709781396],
+ CellID->550294348],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->464363615],
+ CellID->1849237363],
 
 Cell[CellGroupData[{
 
@@ -242,7 +242,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"GaugeField",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -254,7 +254,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 3.464549}", 
+   "built" -> "{2020, 1, 5, 18, 58, 24.791362}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -275,7 +275,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -285,9 +285,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4488, 129, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4488, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1709781396]},
+   CellID->550294348]},
  "GaugeField"->{
   Cell[5121, 158, 105, 3, 27, "Input",
    CellTags->"GaugeField",
@@ -304,7 +304,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 8843, 286},
- {"GaugeField", 8981, 290}
+ {"GaugeField", 8980, 290}
  }
 *)
 (*NotebookFileOutline
@@ -315,12 +315,12 @@ Cell[3708, 99, 287, 11, 45, "ObjectNameGrid"],
 Cell[3998, 112, 465, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4488, 129, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4488, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1709781396],
+ CellID->550294348],
 Cell[CellGroupData[{
-Cell[4901, 148, 195, 6, 26, "ExampleSection",
- CellID->464363615],
+Cell[4900, 148, 196, 6, 26, "ExampleSection",
+ CellID->1849237363],
 Cell[CellGroupData[{
 Cell[5121, 158, 105, 3, 27, "Input",
  CellTags->"GaugeField",

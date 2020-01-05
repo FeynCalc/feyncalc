@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11391,        357]
-NotebookOptionsPosition[      8025,        265]
-NotebookOutlinePosition[     10670,        332]
-CellTagsIndexPosition[     10542,        326]
+NotebookDataLength[     11380,        357]
+NotebookOptionsPosition[      8022,        265]
+NotebookOutlinePosition[     10662,        332]
+CellTagsIndexPosition[     10534,        326]
 WindowTitle->CovariantFieldDerivative
 WindowFrame->Normal*)
 
@@ -84,7 +84,7 @@ CovariantFieldDerivative.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49057], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49175], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CovariantFieldDerivative", ".html"]], None}]}]},
@@ -162,7 +162,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1523958748],
+ CellID->83003778],
 
 Cell[CellGroupData[{
 
@@ -172,7 +172,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1711374642],
+ CellID->170346871],
 
 Cell[CellGroupData[{
 
@@ -265,8 +265,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"CovariantFieldDerivative",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -278,7 +278,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 2.833353}", 
+   "built" -> "{2020, 1, 5, 18, 53, 47.807509}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -312,21 +312,21 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5368, 149, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5368, 149, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1523958748]},
+   CellID->83003778]},
  "CovariantFieldDerivative"->{
-  Cell[6002, 178, 348, 10, 27, "Input",
+  Cell[5999, 178, 348, 10, 27, "Input",
    CellTags->"CovariantFieldDerivative",
    CellID->2083449432],
-  Cell[6353, 190, 712, 28, 40, "Output",
+  Cell[6350, 190, 712, 28, 40, "Output",
    CellTags->"CovariantFieldDerivative"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10178, 313},
- {"CovariantFieldDerivative", 10330, 317}
+ {"PrimaryExamplesSection", 10172, 313},
+ {"CovariantFieldDerivative", 10322, 317}
  }
 *)
 (*NotebookFileOutline
@@ -337,28 +337,28 @@ Cell[3899, 102, 301, 11, 45, "ObjectNameGrid"],
 Cell[4203, 115, 1140, 30, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5368, 149, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5368, 149, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1523958748],
+ CellID->83003778],
 Cell[CellGroupData[{
-Cell[5781, 168, 196, 6, 26, "ExampleSection",
- CellID->1711374642],
+Cell[5779, 168, 195, 6, 26, "ExampleSection",
+ CellID->170346871],
 Cell[CellGroupData[{
-Cell[6002, 178, 348, 10, 27, "Input",
+Cell[5999, 178, 348, 10, 27, "Input",
  CellTags->"CovariantFieldDerivative",
  CellID->2083449432],
-Cell[6353, 190, 712, 28, 40, "Output",
+Cell[6350, 190, 712, 28, 40, "Output",
  CellTags->"CovariantFieldDerivative"]
 }, Open  ]]
 }, Open  ]],
-Cell[7092, 222, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7089, 222, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7160, 227, 270, 12, 31, "SeeAlsoSection",
+Cell[7157, 227, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7433, 241, 550, 19, 56, "SeeAlso"]
+Cell[7430, 241, 550, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7998, 263, 23, 0, 41, "FooterCell"]
+Cell[7995, 263, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42384,       1550]
+NotebookDataLength[     42383,       1550]
 NotebookOptionsPosition[     35070,       1321]
-NotebookOutlinePosition[     38952,       1428]
-CellTagsIndexPosition[     38831,       1422]
+NotebookOutlinePosition[     38951,       1428]
+CellTagsIndexPosition[     38830,       1422]
 WindowTitle->GluonPropagator
 WindowFrame->Normal*)
 
@@ -87,7 +87,7 @@ GluonPropagator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$156124], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157593], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GluonPropagator", ".html"]], None}]}]},
@@ -186,7 +186,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1536129775],
+ CellID->2079292544],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -272,7 +272,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1220042479],
+ CellID->1965231034],
 
 Cell[CellGroupData[{
 
@@ -282,7 +282,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->654341749],
+ CellID->104593034],
 
 Cell[CellGroupData[{
 
@@ -1322,7 +1322,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"GluonPropagator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1334,7 +1334,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 14.227715}", 
+   "built" -> "{2020, 1, 5, 18, 58, 36.674137}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1369,7 +1369,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[8229, 259, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1220042479]},
+   CellID->1965231034]},
  "GluonPropagator"->{
   Cell[8862, 288, 206, 6, 27, "Input",
    CellTags->"GluonPropagator",
@@ -1421,8 +1421,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 37094, 1368},
- {"GluonPropagator", 37237, 1372}
+ {"PrimaryExamplesSection", 37093, 1368},
+ {"GluonPropagator", 37236, 1372}
  }
 *)
 (*NotebookFileOutline
@@ -1436,7 +1436,7 @@ Cell[4370, 120, 1332, 40, 148, "Usage",
 Cell[CellGroupData[{
 Cell[5727, 164, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1536129775],
+ CellID->2079292544],
 Cell[6469, 190, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[6503, 192, 250, 8, 70, "Notes"],
 Cell[6756, 202, 356, 13, 70, "Notes",
@@ -1451,10 +1451,10 @@ Cell[7628, 237, 540, 15, 56, "Output"]
 Cell[CellGroupData[{
 Cell[8229, 259, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1220042479],
+ CellID->1965231034],
 Cell[CellGroupData[{
 Cell[8642, 278, 195, 6, 26, "ExampleSection",
- CellID->654341749],
+ CellID->104593034],
 Cell[CellGroupData[{
 Cell[8862, 288, 206, 6, 27, "Input",
  CellTags->"GluonPropagator",

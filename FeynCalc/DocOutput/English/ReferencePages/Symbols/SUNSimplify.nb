@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     44009,       1727]
-NotebookOptionsPosition[     31137,       1295]
+NotebookDataLength[     44008,       1727]
+NotebookOptionsPosition[     31136,       1295]
 NotebookOutlinePosition[     37371,       1480]
 CellTagsIndexPosition[     37226,       1473]
 WindowTitle->SUNSimplify
@@ -83,7 +83,7 @@ SUNSimplify.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$258698], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$260602], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SUNSimplify", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2117538017],
+ CellID->2137365557],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -201,7 +201,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1238534035],
+ CellID->1511248044],
 
 Cell[CellGroupData[{
 
@@ -211,7 +211,7 @@ Cell[TextData[{
  Cell["(12)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1858396808],
+ CellID->636636871],
 
 Cell[CellGroupData[{
 
@@ -1296,7 +1296,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"SUNSimplify",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1308,7 +1308,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 5.611858}", 
+   "built" -> "{2020, 1, 5, 19, 2, 57.836834}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1340,133 +1340,133 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6187, 188, 389, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1238534035]},
+   CellID->1511248044]},
  "SUNSimplify"->{
-  Cell[6823, 217, 237, 8, 27, "Input",
+  Cell[6822, 217, 237, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1698138274],
-  Cell[7063, 227, 471, 19, 38, "Output",
+  Cell[7062, 227, 471, 19, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[7571, 251, 134, 4, 27, "Input",
+  Cell[7570, 251, 134, 4, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1520473065],
-  Cell[7708, 257, 390, 16, 35, "Output",
+  Cell[7707, 257, 390, 16, 35, "Output",
    CellTags->"SUNSimplify"],
-  Cell[8265, 284, 181, 6, 27, "Input",
+  Cell[8264, 284, 181, 6, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1992995975],
-  Cell[8449, 292, 337, 13, 35, "Output",
+  Cell[8448, 292, 337, 13, 35, "Output",
    CellTags->"SUNSimplify"],
-  Cell[8823, 310, 134, 4, 27, "Input",
+  Cell[8822, 310, 134, 4, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1767152339],
-  Cell[8960, 316, 214, 7, 37, "Output",
+  Cell[8959, 316, 214, 7, 37, "Output",
    CellTags->"SUNSimplify"],
-  Cell[9897, 358, 244, 8, 27, "Input",
+  Cell[9896, 358, 244, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1014117597],
-  Cell[10144, 368, 543, 23, 38, "Output",
+  Cell[10143, 368, 543, 23, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[10724, 396, 133, 4, 27, "Input",
+  Cell[10723, 396, 133, 4, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->399652098],
-  Cell[10860, 402, 446, 18, 40, "Output",
+  Cell[10859, 402, 446, 18, 40, "Output",
    CellTags->"SUNSimplify"],
-  Cell[11485, 432, 249, 8, 27, "Input",
+  Cell[11484, 432, 249, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->772128503],
-  Cell[11737, 442, 412, 16, 43, "Output",
+  Cell[11736, 442, 412, 16, 43, "Output",
    CellTags->"SUNSimplify"],
-  Cell[12186, 463, 134, 4, 27, "Input",
+  Cell[12185, 463, 134, 4, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1437762377],
-  Cell[12323, 469, 281, 9, 40, "Output",
+  Cell[12322, 469, 281, 9, 40, "Output",
    CellTags->"SUNSimplify"],
-  Cell[12783, 490, 249, 8, 27, "Input",
+  Cell[12782, 490, 249, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1679024090],
-  Cell[13035, 500, 543, 23, 38, "Output",
+  Cell[13034, 500, 543, 23, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[13615, 528, 134, 4, 27, "Input",
+  Cell[13614, 528, 134, 4, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1377676076],
-  Cell[13752, 534, 446, 18, 40, "Output",
+  Cell[13751, 534, 446, 18, 40, "Output",
    CellTags->"SUNSimplify"],
-  Cell[14377, 564, 248, 8, 27, "Input",
+  Cell[14376, 564, 248, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->188501571],
-  Cell[14628, 574, 543, 23, 38, "Output",
+  Cell[14627, 574, 543, 23, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[15208, 602, 196, 6, 27, "Input",
+  Cell[15207, 602, 196, 6, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->181805532],
-  Cell[15407, 610, 192, 6, 35, "Output",
+  Cell[15406, 610, 192, 6, 35, "Output",
    CellTags->"SUNSimplify"],
-  Cell[15983, 636, 235, 8, 27, "Input",
+  Cell[15982, 636, 235, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1466861165],
-  Cell[16221, 646, 396, 14, 62, "Output",
+  Cell[16220, 646, 396, 14, 62, "Output",
    CellTags->"SUNSimplify"],
-  Cell[16654, 665, 403, 13, 27, "Input",
+  Cell[16653, 665, 403, 13, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1134202251],
-  Cell[17060, 680, 535, 21, 62, "Output",
+  Cell[17059, 680, 535, 21, 62, "Output",
    CellTags->"SUNSimplify"],
-  Cell[17774, 713, 263, 8, 27, "Input",
+  Cell[17773, 713, 263, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->741099718],
-  Cell[18040, 723, 1558, 60, 43, "Output",
+  Cell[18039, 723, 1558, 60, 43, "Output",
    CellTags->"SUNSimplify"],
-  Cell[19635, 788, 263, 8, 27, "Input",
+  Cell[19634, 788, 263, 8, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->721833298],
-  Cell[19901, 798, 1517, 59, 43, "Output",
+  Cell[19900, 798, 1517, 59, 43, "Output",
    CellTags->"SUNSimplify"],
-  Cell[22463, 908, 134, 4, 27, "Input",
+  Cell[22462, 908, 134, 4, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1477873564],
-  Cell[22600, 914, 335, 11, 56, "Output",
+  Cell[22599, 914, 335, 11, 56, "Output",
    CellTags->"SUNSimplify"],
-  Cell[23114, 937, 423, 14, 27, "Input",
+  Cell[23113, 937, 423, 14, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1820847009],
-  Cell[23540, 953, 952, 41, 38, "Output",
+  Cell[23539, 953, 952, 41, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[24529, 999, 198, 6, 27, "Input",
+  Cell[24528, 999, 198, 6, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1998126322],
-  Cell[24730, 1007, 794, 35, 38, "Output",
+  Cell[24729, 1007, 794, 35, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[25703, 1054, 254, 7, 27, "Input",
+  Cell[25702, 1054, 254, 7, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->891597542],
-  Cell[25960, 1063, 794, 35, 38, "Output",
+  Cell[25959, 1063, 794, 35, 38, "Output",
    CellTags->"SUNSimplify"],
-  Cell[26791, 1103, 212, 7, 27, "Input",
+  Cell[26790, 1103, 212, 7, 27, "Input",
    CellTags->"SUNSimplify",
    CellID->1242397694],
-  Cell[27006, 1112, 248, 8, 40, "Output",
+  Cell[27005, 1112, 248, 8, 40, "Output",
    CellTags->"SUNSimplify"]},
  "SUNTrace"->{
-  Cell[27433, 1132, 288, 9, 27, "Input",
+  Cell[27432, 1132, 288, 9, 27, "Input",
    CellTags->"SUNTrace",
    CellID->1959336477],
-  Cell[27724, 1143, 189, 6, 35, "Output",
+  Cell[27723, 1143, 189, 6, 35, "Output",
    CellTags->"SUNTrace"],
-  Cell[27950, 1154, 287, 9, 27, "Input",
+  Cell[27949, 1154, 287, 9, 27, "Input",
    CellTags->"SUNTrace",
    CellID->849009416],
-  Cell[28240, 1165, 189, 6, 35, "Output",
+  Cell[28239, 1165, 189, 6, 35, "Output",
    CellTags->"SUNTrace"],
-  Cell[28466, 1176, 288, 9, 27, "Input",
+  Cell[28465, 1176, 288, 9, 27, "Input",
    CellTags->"SUNTrace",
    CellID->1231032711],
-  Cell[28757, 1187, 189, 6, 35, "Output",
+  Cell[28756, 1187, 189, 6, 35, "Output",
    CellTags->"SUNTrace"],
-  Cell[28983, 1198, 288, 9, 27, "Input",
+  Cell[28982, 1198, 288, 9, 27, "Input",
    CellTags->"SUNTrace",
    CellID->1107366946],
-  Cell[29274, 1209, 663, 26, 43, "Output",
+  Cell[29273, 1209, 663, 26, 43, "Output",
    CellTags->"SUNTrace"]}
  }
 *)
@@ -1488,7 +1488,7 @@ Cell[4228, 116, 406, 12, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4659, 132, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2117538017],
+ CellID->2137365557],
 Cell[5401, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5457, 162, 94, 2, 70, "Input"],
@@ -1499,236 +1499,236 @@ Cell[5554, 166, 572, 15, 55, "Output"]
 Cell[CellGroupData[{
 Cell[6187, 188, 389, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1238534035],
+ CellID->1511248044],
 Cell[CellGroupData[{
-Cell[6601, 207, 197, 6, 26, "ExampleSection",
- CellID->1858396808],
+Cell[6601, 207, 196, 6, 26, "ExampleSection",
+ CellID->636636871],
 Cell[CellGroupData[{
-Cell[6823, 217, 237, 8, 27, "Input",
+Cell[6822, 217, 237, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1698138274],
-Cell[7063, 227, 471, 19, 38, "Output",
+Cell[7062, 227, 471, 19, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7571, 251, 134, 4, 27, "Input",
+Cell[7570, 251, 134, 4, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1520473065],
-Cell[7708, 257, 390, 16, 35, "Output",
+Cell[7707, 257, 390, 16, 35, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8135, 278, 105, 2, 9, "ExampleDelimiter"],
+Cell[8134, 278, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[8265, 284, 181, 6, 27, "Input",
+Cell[8264, 284, 181, 6, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1992995975],
-Cell[8449, 292, 337, 13, 35, "Output",
+Cell[8448, 292, 337, 13, 35, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8823, 310, 134, 4, 27, "Input",
+Cell[8822, 310, 134, 4, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1767152339],
-Cell[8960, 316, 214, 7, 37, "Output",
+Cell[8959, 316, 214, 7, 37, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9211, 328, 243, 7, 27, "Input"],
-Cell[9457, 337, 261, 9, 59, "Output"]
+Cell[9210, 328, 243, 7, 27, "Input"],
+Cell[9456, 337, 261, 9, 59, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9767, 352, 105, 2, 9, "ExampleDelimiter"],
+Cell[9766, 352, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[9897, 358, 244, 8, 27, "Input",
+Cell[9896, 358, 244, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1014117597],
-Cell[10144, 368, 543, 23, 38, "Output",
+Cell[10143, 368, 543, 23, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10724, 396, 133, 4, 27, "Input",
+Cell[10723, 396, 133, 4, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->399652098],
-Cell[10860, 402, 446, 18, 40, "Output",
+Cell[10859, 402, 446, 18, 40, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11355, 426, 105, 2, 9, "ExampleDelimiter"],
+Cell[11354, 426, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[11485, 432, 249, 8, 27, "Input",
+Cell[11484, 432, 249, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->772128503],
-Cell[11737, 442, 412, 16, 43, "Output",
+Cell[11736, 442, 412, 16, 43, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12186, 463, 134, 4, 27, "Input",
+Cell[12185, 463, 134, 4, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1437762377],
-Cell[12323, 469, 281, 9, 40, "Output",
+Cell[12322, 469, 281, 9, 40, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12653, 484, 105, 2, 9, "ExampleDelimiter"],
+Cell[12652, 484, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[12783, 490, 249, 8, 27, "Input",
+Cell[12782, 490, 249, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1679024090],
-Cell[13035, 500, 543, 23, 38, "Output",
+Cell[13034, 500, 543, 23, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13615, 528, 134, 4, 27, "Input",
+Cell[13614, 528, 134, 4, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1377676076],
-Cell[13752, 534, 446, 18, 40, "Output",
+Cell[13751, 534, 446, 18, 40, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14247, 558, 105, 2, 9, "ExampleDelimiter"],
+Cell[14246, 558, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[14377, 564, 248, 8, 27, "Input",
+Cell[14376, 564, 248, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->188501571],
-Cell[14628, 574, 543, 23, 38, "Output",
+Cell[14627, 574, 543, 23, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15208, 602, 196, 6, 27, "Input",
+Cell[15207, 602, 196, 6, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->181805532],
-Cell[15407, 610, 192, 6, 35, "Output",
+Cell[15406, 610, 192, 6, 35, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15648, 622, 105, 2, 9, "ExampleDelimiter"],
-Cell[15756, 626, 202, 6, 27, "Input"],
+Cell[15647, 622, 105, 2, 9, "ExampleDelimiter"],
+Cell[15755, 626, 202, 6, 27, "Input"],
 Cell[CellGroupData[{
-Cell[15983, 636, 235, 8, 27, "Input",
+Cell[15982, 636, 235, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1466861165],
-Cell[16221, 646, 396, 14, 62, "Output",
+Cell[16220, 646, 396, 14, 62, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16654, 665, 403, 13, 27, "Input",
+Cell[16653, 665, 403, 13, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1134202251],
-Cell[17060, 680, 535, 21, 62, "Output",
+Cell[17059, 680, 535, 21, 62, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17644, 707, 105, 2, 9, "ExampleDelimiter"],
+Cell[17643, 707, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[17774, 713, 263, 8, 27, "Input",
+Cell[17773, 713, 263, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->741099718],
-Cell[18040, 723, 1558, 60, 43, "Output",
+Cell[18039, 723, 1558, 60, 43, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19635, 788, 263, 8, 27, "Input",
+Cell[19634, 788, 263, 8, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->721833298],
-Cell[19901, 798, 1517, 59, 43, "Output",
+Cell[19900, 798, 1517, 59, 43, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21467, 863, 105, 2, 9, "ExampleDelimiter"],
+Cell[21466, 863, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[21597, 869, 202, 6, 27, "Input"],
-Cell[21802, 877, 624, 26, 38, "Output"]
+Cell[21596, 869, 202, 6, 27, "Input"],
+Cell[21801, 877, 624, 26, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22463, 908, 134, 4, 27, "Input",
+Cell[22462, 908, 134, 4, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1477873564],
-Cell[22600, 914, 335, 11, 56, "Output",
+Cell[22599, 914, 335, 11, 56, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22984, 931, 105, 2, 9, "ExampleDelimiter"],
+Cell[22983, 931, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[23114, 937, 423, 14, 27, "Input",
+Cell[23113, 937, 423, 14, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1820847009],
-Cell[23540, 953, 952, 41, 38, "Output",
+Cell[23539, 953, 952, 41, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24529, 999, 198, 6, 27, "Input",
+Cell[24528, 999, 198, 6, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1998126322],
-Cell[24730, 1007, 794, 35, 38, "Output",
+Cell[24729, 1007, 794, 35, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25573, 1048, 105, 2, 9, "ExampleDelimiter"],
+Cell[25572, 1048, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[25703, 1054, 254, 7, 27, "Input",
+Cell[25702, 1054, 254, 7, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->891597542],
-Cell[25960, 1063, 794, 35, 38, "Output",
+Cell[25959, 1063, 794, 35, 38, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26791, 1103, 212, 7, 27, "Input",
+Cell[26790, 1103, 212, 7, 27, "Input",
  CellTags->"SUNSimplify",
  CellID->1242397694],
-Cell[27006, 1112, 248, 8, 40, "Output",
+Cell[27005, 1112, 248, 8, 40, "Output",
  CellTags->"SUNSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27303, 1126, 105, 2, 9, "ExampleDelimiter"],
+Cell[27302, 1126, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[27433, 1132, 288, 9, 27, "Input",
+Cell[27432, 1132, 288, 9, 27, "Input",
  CellTags->"SUNTrace",
  CellID->1959336477],
-Cell[27724, 1143, 189, 6, 35, "Output",
+Cell[27723, 1143, 189, 6, 35, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27950, 1154, 287, 9, 27, "Input",
+Cell[27949, 1154, 287, 9, 27, "Input",
  CellTags->"SUNTrace",
  CellID->849009416],
-Cell[28240, 1165, 189, 6, 35, "Output",
+Cell[28239, 1165, 189, 6, 35, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28466, 1176, 288, 9, 27, "Input",
+Cell[28465, 1176, 288, 9, 27, "Input",
  CellTags->"SUNTrace",
  CellID->1231032711],
-Cell[28757, 1187, 189, 6, 35, "Output",
+Cell[28756, 1187, 189, 6, 35, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28983, 1198, 288, 9, 27, "Input",
+Cell[28982, 1198, 288, 9, 27, "Input",
  CellTags->"SUNTrace",
  CellID->1107366946],
-Cell[29274, 1209, 663, 26, 43, "Output",
+Cell[29273, 1209, 663, 26, 43, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[29976, 1240, 31, 0, 29, "SectionFooterSpacer"]
+Cell[29975, 1240, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30044, 1245, 270, 12, 31, "SeeAlsoSection",
+Cell[30043, 1245, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[30317, 1259, 778, 31, 56, "SeeAlso"]
+Cell[30316, 1259, 778, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[31110, 1293, 23, 0, 41, "FooterCell"]
+Cell[31109, 1293, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

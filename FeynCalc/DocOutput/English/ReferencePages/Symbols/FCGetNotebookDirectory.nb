@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5789,        159]
+NotebookDataLength[      5788,        159]
 NotebookOptionsPosition[      3762,        106]
-NotebookOutlinePosition[      5725,        156]
-CellTagsIndexPosition[      5682,        153]
+NotebookOutlinePosition[      5724,        156]
+CellTagsIndexPosition[      5681,        153]
 WindowTitle->FCGetNotebookDirectory
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FCGetNotebookDirectory.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100432], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$101457], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCGetNotebookDirectory", ".html"]], None}]}]},
@@ -119,7 +119,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 13, 5.577109}", 
+   "built" -> "{2020, 1, 5, 18, 56, 7.930446}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

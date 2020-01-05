@@ -10,8 +10,8 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14843,        522]
-NotebookOptionsPosition[     10833,        398]
+NotebookDataLength[     14844,        522]
+NotebookOptionsPosition[     10834,        398]
 NotebookOutlinePosition[     13445,        471]
 CellTagsIndexPosition[     13330,        465]
 WindowTitle->EpsEvaluate
@@ -82,7 +82,7 @@ EpsEvaluate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78801], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78925], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/EpsEvaluate", ".html"]], None}]}]},
@@ -153,7 +153,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->231475081],
+ CellID->1134527267],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -195,7 +195,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->239242652],
+ CellID->1045845675],
 
 Cell[CellGroupData[{
 
@@ -205,7 +205,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2079303640],
+ CellID->227360342],
 
 Cell[CellGroupData[{
 
@@ -398,8 +398,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"EpsEvaluate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -411,7 +411,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 14.185431}", 
+   "built" -> "{2020, 1, 5, 18, 55, 8.290141}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -441,30 +441,30 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5875, 182, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5876, 182, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->239242652]},
+   CellID->1045845675]},
  "EpsEvaluate"->{
-  Cell[6508, 211, 388, 13, 27, "Input",
+  Cell[6509, 211, 388, 13, 27, "Input",
    CellTags->"EpsEvaluate",
    CellID->684764895],
-  Cell[6899, 226, 758, 32, 38, "Output",
+  Cell[6900, 226, 758, 32, 38, "Output",
    CellTags->"EpsEvaluate"],
-  Cell[7694, 263, 132, 4, 27, "Input",
+  Cell[7695, 263, 132, 4, 27, "Input",
    CellTags->"EpsEvaluate",
    CellID->84932068],
-  Cell[7829, 269, 1102, 47, 38, "Output",
+  Cell[7830, 269, 1102, 47, 38, "Output",
    CellTags->"EpsEvaluate"],
-  Cell[8968, 321, 135, 4, 27, "Input",
+  Cell[8969, 321, 135, 4, 27, "Input",
    CellTags->"EpsEvaluate",
    CellID->1124825353],
-  Cell[9106, 327, 695, 18, 69, "Output",
+  Cell[9107, 327, 695, 18, 69, "Output",
    CellTags->"EpsEvaluate"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12686, 442},
+ {"PrimaryExamplesSection", 12685, 442},
  {"EpsEvaluate", 12824, 446}
  }
 *)
@@ -477,53 +477,53 @@ Cell[CellGroupData[{
 Cell[4143, 115, 442, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4610, 131, 738, 24, 31, "NotesSection",
+Cell[4610, 131, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->231475081],
-Cell[5351, 157, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1134527267],
+Cell[5352, 157, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5407, 161, 95, 2, 70, "Input"],
-Cell[5505, 165, 309, 10, 37, "Output"]
+Cell[5408, 161, 95, 2, 70, "Input"],
+Cell[5506, 165, 309, 10, 37, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5875, 182, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5876, 182, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->239242652],
+ CellID->1045845675],
 Cell[CellGroupData[{
-Cell[6287, 201, 196, 6, 26, "ExampleSection",
- CellID->2079303640],
+Cell[6289, 201, 195, 6, 26, "ExampleSection",
+ CellID->227360342],
 Cell[CellGroupData[{
-Cell[6508, 211, 388, 13, 27, "Input",
+Cell[6509, 211, 388, 13, 27, "Input",
  CellTags->"EpsEvaluate",
  CellID->684764895],
-Cell[6899, 226, 758, 32, 38, "Output",
+Cell[6900, 226, 758, 32, 38, "Output",
  CellTags->"EpsEvaluate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7694, 263, 132, 4, 27, "Input",
+Cell[7695, 263, 132, 4, 27, "Input",
  CellTags->"EpsEvaluate",
  CellID->84932068],
-Cell[7829, 269, 1102, 47, 38, "Output",
+Cell[7830, 269, 1102, 47, 38, "Output",
  CellTags->"EpsEvaluate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8968, 321, 135, 4, 27, "Input",
+Cell[8969, 321, 135, 4, 27, "Input",
  CellTags->"EpsEvaluate",
  CellID->1124825353],
-Cell[9106, 327, 695, 18, 69, "Output",
+Cell[9107, 327, 695, 18, 69, "Output",
  CellTags->"EpsEvaluate"]
 }, Open  ]]
 }, Open  ]],
-Cell[9828, 349, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9829, 349, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9896, 354, 270, 12, 31, "SeeAlsoSection",
+Cell[9897, 354, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10169, 368, 622, 25, 56, "SeeAlso"]
+Cell[10170, 368, 622, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10806, 396, 23, 0, 41, "FooterCell"]
+Cell[10807, 396, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

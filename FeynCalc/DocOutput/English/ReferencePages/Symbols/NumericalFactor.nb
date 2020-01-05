@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5494,        156]
+NotebookDataLength[      5491,        156]
 NotebookOptionsPosition[      3613,        105]
-NotebookOutlinePosition[      5430,        153]
-CellTagsIndexPosition[      5387,        150]
+NotebookOutlinePosition[      5427,        153]
+CellTagsIndexPosition[      5384,        150]
 WindowTitle->NumericalFactor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ NumericalFactor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$189916], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$191385], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/NumericalFactor", ".html"]], None}]}]},
@@ -118,7 +118,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 28.021014}", 
+   "built" -> "{2020, 1, 5, 19, 0, 1.291304}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

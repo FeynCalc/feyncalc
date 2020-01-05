@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5580,        158]
+NotebookDataLength[      5579,        158]
 NotebookOptionsPosition[      3650,        106]
-NotebookOutlinePosition[      5516,        155]
-CellTagsIndexPosition[      5473,        152]
+NotebookOutlinePosition[      5515,        155]
+CellTagsIndexPosition[      5472,        152]
 WindowTitle->Simplify2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$231868], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$233337], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Simplify2", ".html"]], None}]}]},
@@ -119,7 +119,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 18, 2.820852}", 
+   "built" -> "{2020, 1, 5, 19, 1, 45.613094}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

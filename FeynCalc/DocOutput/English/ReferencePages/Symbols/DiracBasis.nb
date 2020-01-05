@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8334,        260]
+NotebookDataLength[      8333,        260]
 NotebookOptionsPosition[      6028,        195]
-NotebookOutlinePosition[      7881,        244]
-CellTagsIndexPosition[      7838,        241]
+NotebookOutlinePosition[      7880,        244]
+CellTagsIndexPosition[      7837,        241]
 WindowTitle->DiracBasis
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ DiracBasis.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$61084], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$61202], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracBasis", ".html"]], None}]}]},
@@ -208,7 +208,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 31.694942}", 
+   "built" -> "{2020, 1, 5, 18, 54, 19.777715}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

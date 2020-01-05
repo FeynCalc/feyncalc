@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     82811,       2951]
+NotebookDataLength[     82809,       2951]
 NotebookOptionsPosition[     68414,       2482]
-NotebookOutlinePosition[     76052,       2701]
-CellTagsIndexPosition[     75936,       2695]
+NotebookOutlinePosition[     76050,       2701]
+CellTagsIndexPosition[     75934,       2695]
 WindowTitle->Integrate2
 WindowFrame->Normal*)
 
@@ -88,7 +88,7 @@ Integrate2.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168164], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169633], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Integrate2", ".html"]], None}]}]},
@@ -171,7 +171,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->570406739],
+ CellID->1661719191],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -203,7 +203,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2121053727],
+ CellID->1066608491],
 
 Cell[CellGroupData[{
 
@@ -213,7 +213,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1056208712],
+ CellID->656544217],
 
 Cell[CellGroupData[{
 
@@ -2482,8 +2482,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"Integrate2",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -2495,7 +2495,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 38.787720}", 
+   "built" -> "{2020, 1, 5, 18, 59, 5.463432}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -2533,9 +2533,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6744, 190, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6745, 190, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2121053727]},
+   CellID->1066608491]},
  "Integrate2"->{
   Cell[7378, 219, 443, 16, 27, "Input",
    CellTags->"Integrate2",
@@ -2694,8 +2694,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 70820, 2534},
- {"Integrate2", 70958, 2538}
+ {"PrimaryExamplesSection", 70818, 2534},
+ {"Integrate2", 70956, 2538}
  }
 *)
 (*NotebookFileOutline
@@ -2707,21 +2707,21 @@ Cell[CellGroupData[{
 Cell[4376, 121, 1123, 24, 173, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5524, 149, 738, 24, 31, "NotesSection",
+Cell[5524, 149, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->570406739],
-Cell[6265, 175, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[6299, 177, 396, 7, 70, "Notes",
+ CellID->1661719191],
+Cell[6266, 175, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6300, 177, 396, 7, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6744, 190, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6745, 190, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2121053727],
+ CellID->1066608491],
 Cell[CellGroupData[{
-Cell[7157, 209, 196, 6, 26, "ExampleSection",
- CellID->1056208712],
+Cell[7158, 209, 195, 6, 26, "ExampleSection",
+ CellID->656544217],
 Cell[CellGroupData[{
 Cell[7378, 219, 443, 16, 27, "Input",
  CellTags->"Integrate2",

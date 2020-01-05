@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24643,        919]
+NotebookDataLength[     24642,        919]
 NotebookOptionsPosition[     18322,        705]
-NotebookOutlinePosition[     22165,        820]
-CellTagsIndexPosition[     22058,        814]
+NotebookOutlinePosition[     22164,        820]
+CellTagsIndexPosition[     22057,        814]
 WindowTitle->Eps
 WindowFrame->Normal*)
 
@@ -84,7 +84,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$80985], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81109], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Eps", 
              ".html"]], None}]}]},
@@ -152,7 +152,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->319012134],
+ CellID->682619210],
 
 Cell[CellGroupData[{
 
@@ -162,7 +162,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->219306665],
+ CellID->224916044],
 
 Cell[CellGroupData[{
 
@@ -718,7 +718,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 19.011993}", 
+   "built" -> "{2020, 1, 5, 18, 55, 13.801835}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -740,7 +740,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -752,7 +752,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4837, 139, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->319012134]},
+   CellID->682619210]},
  "Eps"->{
   Cell[5469, 168, 340, 9, 45, "Input",
    CellTags->"Eps",
@@ -813,8 +813,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 20303, 751},
- {"Eps", 20433, 755}
+ {"PrimaryExamplesSection", 20302, 751},
+ {"Eps", 20432, 755}
  }
 *)
 (*NotebookFileOutline
@@ -827,10 +827,10 @@ Cell[4106, 115, 706, 20, 102, "Usage",
 Cell[CellGroupData[{
 Cell[4837, 139, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->319012134],
+ CellID->682619210],
 Cell[CellGroupData[{
 Cell[5249, 158, 195, 6, 26, "ExampleSection",
- CellID->219306665],
+ CellID->224916044],
 Cell[CellGroupData[{
 Cell[5469, 168, 340, 9, 45, "Input",
  CellTags->"Eps",

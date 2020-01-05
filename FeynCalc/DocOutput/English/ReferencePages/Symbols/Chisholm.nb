@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     68337,       2348]
-NotebookOptionsPosition[     61459,       2128]
-NotebookOutlinePosition[     64618,       2217]
-CellTagsIndexPosition[     64468,       2210]
+NotebookDataLength[     68281,       2347]
+NotebookOptionsPosition[     61461,       2128]
+NotebookOutlinePosition[     64560,       2216]
+CellTagsIndexPosition[     64410,       2209]
 WindowTitle->Chisholm
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40029], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40147], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Chisholm", ".html"]], None}]}]},
@@ -150,7 +150,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->410653831],
+ CellID->1698842247],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -203,7 +203,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1289569992],
+ CellID->1890694887],
 
 Cell[CellGroupData[{
 
@@ -213,7 +213,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->391246349],
+ CellID->1569818548],
 
 Cell[CellGroupData[{
 
@@ -1885,7 +1885,7 @@ FgAAAABgFP4fhYPQwQ==
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"Chisholm", "RasterizedOutput"},
  CellLabel->"Out[15]=",
- CellID->1218152615]
+ CellID->1904366312]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2129,7 +2129,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Chisholm",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -2141,7 +2141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 40.236141}", 
+   "built" -> "{2020, 1, 5, 18, 53, 22.899026}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -2160,8 +2160,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -2171,47 +2170,47 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6224, 190, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6225, 190, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1289569992]},
+   CellID->1890694887]},
  "Chisholm"->{
-  Cell[6857, 219, 167, 5, 27, "Input",
+  Cell[6859, 219, 167, 5, 27, "Input",
    CellTags->"Chisholm",
    CellID->820852327],
-  Cell[7027, 226, 748, 31, 37, "Output",
+  Cell[7029, 226, 748, 31, 37, "Output",
    CellTags->"Chisholm"],
-  Cell[7878, 264, 128, 4, 27, "Input",
+  Cell[7880, 264, 128, 4, 27, "Input",
    CellTags->"Chisholm",
    CellID->1637229100],
-  Cell[8009, 270, 2384, 96, 40, "Output",
+  Cell[8011, 270, 2384, 96, 40, "Output",
    CellTags->"Chisholm"],
-  Cell[11530, 420, 128, 4, 27, "Input",
+  Cell[11532, 420, 128, 4, 27, "Input",
    CellTags->"Chisholm",
    CellID->1963239115],
-  Cell[11661, 426, 3091, 123, 40, "Output",
+  Cell[11663, 426, 3091, 123, 40, "Output",
    CellTags->"Chisholm"],
-  Cell[41319, 1599, 225, 7, 27, "Input",
+  Cell[41321, 1599, 225, 7, 27, "Input",
    CellTags->"Chisholm",
    CellID->1800486413],
-  Cell[41547, 1608, 1312, 55, 37, "Output",
+  Cell[41549, 1608, 1312, 55, 37, "Output",
    CellTags->"Chisholm"],
-  Cell[42896, 1668, 129, 4, 27, "Input",
+  Cell[42898, 1668, 129, 4, 27, "Input",
    CellTags->"Chisholm",
    CellID->1694713808],
-  Cell[43028, 1674, 12522, 213, 153, "Output",
+  Cell[43030, 1674, 12522, 213, 153, "Output",
    CellTags->{"Chisholm", "RasterizedOutput"},
-   CellID->1218152615]},
+   CellID->1904366312]},
  "RasterizedOutput"->{
-  Cell[43028, 1674, 12522, 213, 153, "Output",
+  Cell[43030, 1674, 12522, 213, 153, "Output",
    CellTags->{"Chisholm", "RasterizedOutput"},
-   CellID->1218152615]}
+   CellID->1904366312]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 63329, 2172},
- {"Chisholm", 63465, 2176},
- {"RasterizedOutput", 64326, 2203}
+ {"PrimaryExamplesSection", 63271, 2171},
+ {"Chisholm", 63407, 2175},
+ {"RasterizedOutput", 64268, 2202}
  }
 *)
 (*NotebookFileOutline
@@ -2223,133 +2222,133 @@ Cell[CellGroupData[{
 Cell[3900, 112, 419, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4344, 128, 738, 24, 31, "NotesSection",
+Cell[4344, 128, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->410653831],
-Cell[5085, 154, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1698842247],
+Cell[5086, 154, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5141, 158, 91, 2, 70, "Input"],
-Cell[5235, 162, 928, 21, 93, "Output"]
+Cell[5142, 158, 91, 2, 70, "Input"],
+Cell[5236, 162, 928, 21, 93, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6224, 190, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6225, 190, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1289569992],
+ CellID->1890694887],
 Cell[CellGroupData[{
-Cell[6637, 209, 195, 6, 26, "ExampleSection",
- CellID->391246349],
+Cell[6638, 209, 196, 6, 26, "ExampleSection",
+ CellID->1569818548],
 Cell[CellGroupData[{
-Cell[6857, 219, 167, 5, 27, "Input",
+Cell[6859, 219, 167, 5, 27, "Input",
  CellTags->"Chisholm",
  CellID->820852327],
-Cell[7027, 226, 748, 31, 37, "Output",
+Cell[7029, 226, 748, 31, 37, "Output",
  CellTags->"Chisholm"]
 }, Open  ]],
-Cell[7790, 260, 63, 0, 32, "Notes"],
+Cell[7792, 260, 63, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[7878, 264, 128, 4, 27, "Input",
+Cell[7880, 264, 128, 4, 27, "Input",
  CellTags->"Chisholm",
  CellID->1637229100],
-Cell[8009, 270, 2384, 96, 40, "Output",
+Cell[8011, 270, 2384, 96, 40, "Output",
  CellTags->"Chisholm"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10430, 371, 145, 4, 27, "Input"],
-Cell[10578, 377, 915, 38, 39, "Output"]
+Cell[10432, 371, 145, 4, 27, "Input"],
+Cell[10580, 377, 915, 38, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11530, 420, 128, 4, 27, "Input",
+Cell[11532, 420, 128, 4, 27, "Input",
  CellTags->"Chisholm",
  CellID->1963239115],
-Cell[11661, 426, 3091, 123, 40, "Output",
+Cell[11663, 426, 3091, 123, 40, "Output",
  CellTags->"Chisholm"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14789, 554, 302, 9, 27, "Input"],
-Cell[15094, 565, 1186, 49, 39, "Output"]
+Cell[14791, 554, 302, 9, 27, "Input"],
+Cell[15096, 565, 1186, 49, 39, "Output"]
 }, Open  ]],
-Cell[16295, 617, 184, 7, 32, "Notes"],
+Cell[16297, 617, 184, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[16504, 628, 84, 2, 27, "Input"],
-Cell[16591, 632, 6696, 260, 115, "Output"]
+Cell[16506, 628, 84, 2, 27, "Input"],
+Cell[16593, 632, 6696, 260, 115, "Output"]
 }, Open  ]],
-Cell[23302, 895, 316, 10, 32, "Notes"],
+Cell[23304, 895, 316, 10, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[23643, 909, 161, 4, 27, "Input"],
-Cell[23807, 915, 530, 21, 37, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[24374, 941, 310, 9, 27, "Input"],
-Cell[24687, 952, 5018, 188, 68, "Output"]
+Cell[23645, 909, 161, 4, 27, "Input"],
+Cell[23809, 915, 530, 21, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29742, 1145, 89, 2, 27, "Input"],
-Cell[29834, 1149, 167, 5, 35, "Output"]
+Cell[24376, 941, 310, 9, 27, "Input"],
+Cell[24689, 952, 5018, 188, 68, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30038, 1159, 343, 10, 27, "Input"],
-Cell[30384, 1171, 6509, 242, 68, "Output"]
+Cell[29744, 1145, 89, 2, 27, "Input"],
+Cell[29836, 1149, 167, 5, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36930, 1418, 90, 2, 27, "Input"],
-Cell[37023, 1422, 187, 6, 35, "Output"]
+Cell[30040, 1159, 343, 10, 27, "Input"],
+Cell[30386, 1171, 6509, 242, 68, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37247, 1433, 112, 3, 27, "Input"],
-Cell[37362, 1438, 930, 36, 37, "Output"]
+Cell[36932, 1418, 90, 2, 27, "Input"],
+Cell[37025, 1422, 187, 6, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38329, 1479, 85, 2, 27, "Input"],
-Cell[38417, 1483, 2865, 111, 40, "Output"]
+Cell[37249, 1433, 112, 3, 27, "Input"],
+Cell[37364, 1438, 930, 36, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41319, 1599, 225, 7, 27, "Input",
+Cell[38331, 1479, 85, 2, 27, "Input"],
+Cell[38419, 1483, 2865, 111, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41321, 1599, 225, 7, 27, "Input",
  CellTags->"Chisholm",
  CellID->1800486413],
-Cell[41547, 1608, 1312, 55, 37, "Output",
+Cell[41549, 1608, 1312, 55, 37, "Output",
  CellTags->"Chisholm"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42896, 1668, 129, 4, 27, "Input",
+Cell[42898, 1668, 129, 4, 27, "Input",
  CellTags->"Chisholm",
  CellID->1694713808],
-Cell[43028, 1674, 12522, 213, 153, "Output",
+Cell[43030, 1674, 12522, 213, 153, "Output",
  CellTags->{"Chisholm", "RasterizedOutput"},
- CellID->1218152615]
+ CellID->1904366312]
 }, Open  ]],
-Cell[55565, 1890, 214, 6, 32, "Notes"],
+Cell[55567, 1890, 214, 6, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[55804, 1900, 389, 11, 27, "Input"],
-Cell[56196, 1913, 188, 6, 35, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[56421, 1924, 469, 13, 45, "Input"],
-Cell[56893, 1939, 188, 6, 35, "Output"]
+Cell[55806, 1900, 389, 11, 27, "Input"],
+Cell[56198, 1913, 188, 6, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[57118, 1950, 427, 12, 27, "Input"],
-Cell[57548, 1964, 188, 6, 35, "Output"]
-}, Open  ]],
-Cell[57751, 1973, 503, 14, 49, "Notes"],
-Cell[CellGroupData[{
-Cell[58279, 1991, 120, 3, 27, "Input"],
-Cell[58402, 1996, 681, 28, 40, "Output"]
+Cell[56423, 1924, 469, 13, 45, "Input"],
+Cell[56895, 1939, 188, 6, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[59120, 2029, 141, 4, 27, "Input"],
-Cell[59264, 2035, 1604, 61, 56, "Output"]
+Cell[57120, 1950, 427, 12, 27, "Input"],
+Cell[57550, 1964, 188, 6, 35, "Output"]
+}, Open  ]],
+Cell[57753, 1973, 503, 14, 49, "Notes"],
+Cell[CellGroupData[{
+Cell[58281, 1991, 120, 3, 27, "Input"],
+Cell[58404, 1996, 681, 28, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59122, 2029, 141, 4, 27, "Input"],
+Cell[59266, 2035, 1604, 61, 56, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[60895, 2100, 31, 0, 29, "SectionFooterSpacer"]
+Cell[60897, 2100, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[60963, 2105, 270, 12, 31, "SeeAlsoSection",
+Cell[60965, 2105, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[61236, 2119, 181, 4, 56, "SeeAlso"]
+Cell[61238, 2119, 181, 4, 56, "SeeAlso"]
 }, Open  ]],
-Cell[61432, 2126, 23, 0, 41, "FooterCell"]
+Cell[61434, 2126, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

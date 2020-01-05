@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8670,        263]
+NotebookDataLength[      8668,        263]
 NotebookOptionsPosition[      6221,        196]
-NotebookOutlinePosition[      8217,        247]
-CellTagsIndexPosition[      8174,        244]
+NotebookOutlinePosition[      8215,        247]
+CellTagsIndexPosition[      8172,        244]
 WindowTitle->InsideDiracTrace
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ InsideDiracTrace.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$167262], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168731], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/InsideDiracTrace", ".html"]], None}]}]},
@@ -209,7 +209,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 37.231252}", 
+   "built" -> "{2020, 1, 5, 18, 59, 3.316695}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

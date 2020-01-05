@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25971,        962]
-NotebookOptionsPosition[     17436,        683]
-NotebookOutlinePosition[     22319,        827]
-CellTagsIndexPosition[     22207,        821]
+NotebookDataLength[     25911,        961]
+NotebookOptionsPosition[     17435,        683]
+NotebookOutlinePosition[     22260,        826]
+CellTagsIndexPosition[     22148,        820]
 WindowTitle->DataType
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56185], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56303], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DataType", ".html"]], None}]}]},
@@ -156,7 +156,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1761817976],
+ CellID->1205239117],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -227,7 +227,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->815433676],
+ CellID->1658663371],
 
 Cell[CellGroupData[{
 
@@ -237,7 +237,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1981082453],
+ CellID->28126502],
 
 Cell["NonCommutative is just a data-type.", "Notes"],
 
@@ -683,7 +683,7 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
+WindowSize->{725, 750},
 WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"DataType",
 TaggingRules->{
@@ -696,7 +696,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 20.405049}", 
+   "built" -> "{2020, 1, 5, 18, 54, 6.998476}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -718,8 +718,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -729,99 +728,99 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6576, 214, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6576, 214, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->815433676]},
+   CellID->1658663371]},
  "DataType"->{
-  Cell[7242, 243, 240, 8, 27, "Input",
+  Cell[7241, 243, 240, 8, 27, "Input",
    CellTags->"DataType",
    CellID->1643430273],
-  Cell[7507, 255, 242, 9, 27, "Input",
+  Cell[7506, 255, 242, 9, 27, "Input",
    CellTags->"DataType",
    CellID->370505351],
-  Cell[7752, 266, 324, 12, 37, "Output",
+  Cell[7751, 266, 324, 12, 37, "Output",
    CellTags->"DataType"],
-  Cell[8091, 281, 201, 5, 49, "Notes",
+  Cell[8090, 281, 201, 5, 49, "Notes",
    CellTags->"DataType",
    CellID->2142748174],
-  Cell[8317, 290, 131, 4, 27, "Input",
+  Cell[8316, 290, 131, 4, 27, "Input",
    CellTags->"DataType",
    CellID->1089346644],
-  Cell[8451, 296, 296, 10, 37, "Output",
+  Cell[8450, 296, 296, 10, 37, "Output",
    CellTags->"DataType"],
-  Cell[8762, 309, 290, 10, 27, "Input",
+  Cell[8761, 309, 290, 10, 27, "Input",
    CellTags->"DataType",
    CellID->2121249133],
-  Cell[9055, 321, 431, 15, 29, "Input",
+  Cell[9054, 321, 431, 15, 29, "Input",
    CellTags->"DataType",
    CellID->1782213069],
-  Cell[9489, 338, 414, 15, 29, "Input",
+  Cell[9488, 338, 414, 15, 29, "Input",
    CellTags->"DataType",
    CellID->1543768294],
-  Cell[9928, 357, 359, 14, 27, "Input",
+  Cell[9927, 357, 359, 14, 27, "Input",
    CellTags->"DataType",
    CellID->1135363295],
-  Cell[10290, 373, 436, 16, 37, "Output",
+  Cell[10289, 373, 436, 16, 37, "Output",
    CellTags->"DataType"],
-  Cell[10763, 394, 125, 4, 27, "Input",
+  Cell[10762, 394, 125, 4, 27, "Input",
    CellTags->"DataType",
    CellID->703322505],
-  Cell[10891, 400, 367, 14, 37, "Output",
+  Cell[10890, 400, 367, 14, 37, "Output",
    CellTags->"DataType"],
-  Cell[11295, 419, 126, 4, 27, "Input",
+  Cell[11294, 419, 126, 4, 27, "Input",
    CellTags->"DataType",
    CellID->1711798640],
-  Cell[11424, 425, 257, 9, 37, "Output",
+  Cell[11423, 425, 257, 9, 37, "Output",
    CellTags->"DataType"],
-  Cell[11696, 437, 211, 7, 27, "Input",
+  Cell[11695, 437, 211, 7, 27, "Input",
    CellTags->"DataType",
    CellID->1299043006],
-  Cell[11910, 446, 204, 7, 27, "Input",
+  Cell[11909, 446, 204, 7, 27, "Input",
    CellTags->"DataType",
    CellID->585585082],
-  Cell[12117, 455, 446, 16, 29, "Input",
+  Cell[12116, 455, 446, 16, 29, "Input",
    CellTags->"DataType",
    CellID->846476868],
-  Cell[12588, 475, 310, 12, 27, "Input",
+  Cell[12587, 475, 310, 12, 27, "Input",
    CellTags->"DataType",
    CellID->1533391272],
-  Cell[12901, 489, 386, 15, 37, "Output",
+  Cell[12900, 489, 386, 15, 37, "Output",
    CellTags->"DataType"],
-  Cell[13324, 509, 125, 4, 27, "Input",
+  Cell[13323, 509, 125, 4, 27, "Input",
    CellTags->"DataType",
    CellID->1293981643],
-  Cell[13452, 515, 314, 12, 37, "Output",
+  Cell[13451, 515, 314, 12, 37, "Output",
    CellTags->"DataType"],
-  Cell[13781, 530, 170, 6, 27, "Input",
+  Cell[13780, 530, 170, 6, 27, "Input",
    CellTags->"DataType",
    CellID->943541195],
-  Cell[13954, 538, 242, 8, 27, "Input",
+  Cell[13953, 538, 242, 8, 27, "Input",
    CellTags->"DataType",
    CellID->1739727758],
-  Cell[14199, 548, 292, 10, 27, "Input",
+  Cell[14198, 548, 292, 10, 27, "Input",
    CellTags->"DataType",
    CellID->1265503982],
-  Cell[14611, 566, 168, 5, 27, "Input",
+  Cell[14610, 566, 168, 5, 27, "Input",
    CellTags->"DataType",
    CellID->693329232],
-  Cell[14782, 573, 193, 6, 35, "Output",
+  Cell[14781, 573, 193, 6, 35, "Output",
    CellTags->"DataType"],
-  Cell[15076, 586, 253, 9, 27, "Input",
+  Cell[15075, 586, 253, 9, 27, "Input",
    CellTags->"DataType",
    CellID->1014422116],
-  Cell[15332, 597, 190, 6, 35, "Output",
+  Cell[15331, 597, 190, 6, 35, "Output",
    CellTags->"DataType"],
-  Cell[15559, 608, 246, 8, 27, "Input",
+  Cell[15558, 608, 246, 8, 27, "Input",
    CellTags->"DataType",
    CellID->1682583494],
-  Cell[15808, 618, 992, 30, 48, "Output",
+  Cell[15807, 618, 992, 30, 48, "Output",
    CellTags->"DataType"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19511, 730},
- {"DataType", 19646, 734}
+ {"PrimaryExamplesSection", 19451, 729},
+ {"DataType", 19587, 733}
  }
 *)
 (*NotebookFileOutline
@@ -835,7 +834,7 @@ Cell[3928, 113, 681, 17, 119, "Usage",
 Cell[CellGroupData[{
 Cell[4634, 134, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1761817976],
+ CellID->1205239117],
 Cell[5376, 160, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[5410, 162, 834, 32, 70, "Notes",
  CellID->1067943069],
@@ -843,127 +842,127 @@ Cell[6247, 196, 280, 12, 70, "Notes"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6576, 214, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6576, 214, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->815433676],
+ CellID->1658663371],
 Cell[CellGroupData[{
-Cell[6988, 233, 196, 6, 26, "ExampleSection",
- CellID->1981082453],
-Cell[7187, 241, 52, 0, 32, "Notes"],
-Cell[7242, 243, 240, 8, 27, "Input",
+Cell[6989, 233, 194, 6, 26, "ExampleSection",
+ CellID->28126502],
+Cell[7186, 241, 52, 0, 32, "Notes"],
+Cell[7241, 243, 240, 8, 27, "Input",
  CellTags->"DataType",
  CellID->1643430273],
 Cell[CellGroupData[{
-Cell[7507, 255, 242, 9, 27, "Input",
+Cell[7506, 255, 242, 9, 27, "Input",
  CellTags->"DataType",
  CellID->370505351],
-Cell[7752, 266, 324, 12, 37, "Output",
+Cell[7751, 266, 324, 12, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
-Cell[8091, 281, 201, 5, 49, "Notes",
+Cell[8090, 281, 201, 5, 49, "Notes",
  CellTags->"DataType",
  CellID->2142748174],
 Cell[CellGroupData[{
-Cell[8317, 290, 131, 4, 27, "Input",
+Cell[8316, 290, 131, 4, 27, "Input",
  CellTags->"DataType",
  CellID->1089346644],
-Cell[8451, 296, 296, 10, 37, "Output",
+Cell[8450, 296, 296, 10, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
-Cell[8762, 309, 290, 10, 27, "Input",
+Cell[8761, 309, 290, 10, 27, "Input",
  CellTags->"DataType",
  CellID->2121249133],
-Cell[9055, 321, 431, 15, 29, "Input",
+Cell[9054, 321, 431, 15, 29, "Input",
  CellTags->"DataType",
  CellID->1782213069],
-Cell[9489, 338, 414, 15, 29, "Input",
+Cell[9488, 338, 414, 15, 29, "Input",
  CellTags->"DataType",
  CellID->1543768294],
 Cell[CellGroupData[{
-Cell[9928, 357, 359, 14, 27, "Input",
+Cell[9927, 357, 359, 14, 27, "Input",
  CellTags->"DataType",
  CellID->1135363295],
-Cell[10290, 373, 436, 16, 37, "Output",
+Cell[10289, 373, 436, 16, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10763, 394, 125, 4, 27, "Input",
+Cell[10762, 394, 125, 4, 27, "Input",
  CellTags->"DataType",
  CellID->703322505],
-Cell[10891, 400, 367, 14, 37, "Output",
+Cell[10890, 400, 367, 14, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11295, 419, 126, 4, 27, "Input",
+Cell[11294, 419, 126, 4, 27, "Input",
  CellTags->"DataType",
  CellID->1711798640],
-Cell[11424, 425, 257, 9, 37, "Output",
+Cell[11423, 425, 257, 9, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
-Cell[11696, 437, 211, 7, 27, "Input",
+Cell[11695, 437, 211, 7, 27, "Input",
  CellTags->"DataType",
  CellID->1299043006],
-Cell[11910, 446, 204, 7, 27, "Input",
+Cell[11909, 446, 204, 7, 27, "Input",
  CellTags->"DataType",
  CellID->585585082],
-Cell[12117, 455, 446, 16, 29, "Input",
+Cell[12116, 455, 446, 16, 29, "Input",
  CellTags->"DataType",
  CellID->846476868],
 Cell[CellGroupData[{
-Cell[12588, 475, 310, 12, 27, "Input",
+Cell[12587, 475, 310, 12, 27, "Input",
  CellTags->"DataType",
  CellID->1533391272],
-Cell[12901, 489, 386, 15, 37, "Output",
+Cell[12900, 489, 386, 15, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13324, 509, 125, 4, 27, "Input",
+Cell[13323, 509, 125, 4, 27, "Input",
  CellTags->"DataType",
  CellID->1293981643],
-Cell[13452, 515, 314, 12, 37, "Output",
+Cell[13451, 515, 314, 12, 37, "Output",
  CellTags->"DataType"]
 }, Open  ]],
-Cell[13781, 530, 170, 6, 27, "Input",
+Cell[13780, 530, 170, 6, 27, "Input",
  CellTags->"DataType",
  CellID->943541195],
-Cell[13954, 538, 242, 8, 27, "Input",
+Cell[13953, 538, 242, 8, 27, "Input",
  CellTags->"DataType",
  CellID->1739727758],
-Cell[14199, 548, 292, 10, 27, "Input",
+Cell[14198, 548, 292, 10, 27, "Input",
  CellTags->"DataType",
  CellID->1265503982],
-Cell[14494, 560, 92, 2, 32, "Notes"],
+Cell[14493, 560, 92, 2, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[14611, 566, 168, 5, 27, "Input",
+Cell[14610, 566, 168, 5, 27, "Input",
  CellTags->"DataType",
  CellID->693329232],
-Cell[14782, 573, 193, 6, 35, "Output",
+Cell[14781, 573, 193, 6, 35, "Output",
  CellTags->"DataType"]
 }, Open  ]],
-Cell[14990, 582, 61, 0, 32, "Notes"],
+Cell[14989, 582, 61, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[15076, 586, 253, 9, 27, "Input",
+Cell[15075, 586, 253, 9, 27, "Input",
  CellTags->"DataType",
  CellID->1014422116],
-Cell[15332, 597, 190, 6, 35, "Output",
+Cell[15331, 597, 190, 6, 35, "Output",
  CellTags->"DataType"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15559, 608, 246, 8, 27, "Input",
+Cell[15558, 608, 246, 8, 27, "Input",
  CellTags->"DataType",
  CellID->1682583494],
-Cell[15808, 618, 992, 30, 48, "Output",
+Cell[15807, 618, 992, 30, 48, "Output",
  CellTags->"DataType"]
 }, Open  ]]
 }, Open  ]],
-Cell[16827, 652, 31, 0, 29, "SectionFooterSpacer"]
+Cell[16826, 652, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16895, 657, 270, 12, 31, "SeeAlsoSection",
+Cell[16894, 657, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[17168, 671, 226, 7, 56, "SeeAlso"]
+Cell[17167, 671, 226, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[17409, 681, 23, 0, 41, "FooterCell"]
+Cell[17408, 681, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

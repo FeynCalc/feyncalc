@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     54899,       1511]
-NotebookOptionsPosition[     48518,       1318]
-NotebookOutlinePosition[     52507,       1427]
-CellTagsIndexPosition[     52350,       1420]
+NotebookDataLength[     54839,       1510]
+NotebookOptionsPosition[     48519,       1318]
+NotebookOutlinePosition[     52446,       1426]
+CellTagsIndexPosition[     52289,       1419]
 WindowTitle->OneLoopSimplify
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ OneLoopSimplify.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$191234], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$192703], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OneLoopSimplify", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->424291716],
+ CellID->1580551472],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -213,7 +213,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1795184224],
+ CellID->1405242556],
 
 Cell[CellGroupData[{
 
@@ -223,7 +223,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->382396523],
+ CellID->1353084621],
 
 Cell[CellGroupData[{
 
@@ -860,7 +860,7 @@ Kdc=
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"OneLoopSimplify", "RasterizedOutput"},
  CellLabel->"Out[5]=",
- CellID->1465150278]
+ CellID->1455716630]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1008,7 +1008,7 @@ N04F2Xkte/8VjSt33gEAAAAAAAAAAABg5r8EAQ+u
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"OneLoopSimplify", "RasterizedOutput"},
  CellLabel->"Out[6]=",
- CellID->1031985754]
+ CellID->472334896]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1331,7 +1331,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 30.927504}", 
+   "built" -> "{2020, 1, 5, 19, 0, 4.618151}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1351,8 +1351,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1362,66 +1361,66 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "OneLoopSimplify"->{
-  Cell[5324, 162, 148, 4, 70, "Input",
+  Cell[5325, 162, 148, 4, 70, "Input",
    CellTags->"OneLoopSimplify",
    CellID->408969695],
-  Cell[5475, 168, 1076, 25, 93, "Output",
+  Cell[5476, 168, 1076, 25, 93, "Output",
    CellTags->"OneLoopSimplify"],
-  Cell[7245, 229, 360, 12, 27, "Input",
+  Cell[7247, 229, 360, 12, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->2051602371],
-  Cell[7608, 243, 1573, 57, 63, "Output",
+  Cell[7610, 243, 1573, 57, 63, "Output",
    CellTags->"OneLoopSimplify"],
-  Cell[9218, 305, 165, 5, 27, "Input",
+  Cell[9220, 305, 165, 5, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->1712188386],
-  Cell[9386, 312, 3179, 111, 68, "Output",
+  Cell[9388, 312, 3179, 111, 68, "Output",
    CellTags->"OneLoopSimplify"],
-  Cell[12602, 428, 221, 7, 27, "Input",
+  Cell[12604, 428, 221, 7, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->2028218956],
-  Cell[12826, 437, 1454, 54, 57, "Output",
+  Cell[12828, 437, 1454, 54, 57, "Output",
    CellTags->"OneLoopSimplify"],
-  Cell[14317, 496, 419, 13, 27, "Input",
+  Cell[14319, 496, 419, 13, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->1056142741],
-  Cell[14739, 511, 2381, 84, 66, "Output",
+  Cell[14741, 511, 2381, 84, 66, "Output",
    CellTags->"OneLoopSimplify"],
-  Cell[17157, 600, 169, 5, 27, "Input",
+  Cell[17159, 600, 169, 5, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->971533335],
-  Cell[17329, 607, 15074, 255, 228, "Output",
+  Cell[17331, 607, 15074, 255, 228, "Output",
    CellTags->{"OneLoopSimplify", "RasterizedOutput"},
-   CellID->1465150278],
-  Cell[32440, 867, 271, 10, 27, "Input",
+   CellID->1455716630],
+  Cell[32442, 867, 271, 10, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->1848776094],
-  Cell[32714, 879, 7542, 131, 120, "Output",
+  Cell[32716, 879, 7541, 131, 120, "Output",
    CellTags->{"OneLoopSimplify", "RasterizedOutput"},
-   CellID->1031985754],
-  Cell[40293, 1015, 442, 16, 27, "Input",
+   CellID->472334896],
+  Cell[40294, 1015, 442, 16, 27, "Input",
    CellTags->"OneLoopSimplify",
    CellID->214879980],
-  Cell[40738, 1033, 7051, 244, 66, "Output",
+  Cell[40739, 1033, 7051, 244, 66, "Output",
    CellTags->"OneLoopSimplify"]},
  "PrimaryExamplesSection"->{
-  Cell[6612, 200, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6613, 200, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1795184224]},
+   CellID->1405242556]},
  "RasterizedOutput"->{
-  Cell[17329, 607, 15074, 255, 228, "Output",
+  Cell[17331, 607, 15074, 255, 228, "Output",
    CellTags->{"OneLoopSimplify", "RasterizedOutput"},
-   CellID->1465150278],
-  Cell[32714, 879, 7542, 131, 120, "Output",
+   CellID->1455716630],
+  Cell[32716, 879, 7541, 131, 120, "Output",
    CellTags->{"OneLoopSimplify", "RasterizedOutput"},
-   CellID->1031985754]}
+   CellID->472334896]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"OneLoopSimplify", 50435, 1363},
- {"PrimaryExamplesSection", 51935, 1406},
- {"RasterizedOutput", 52079, 1410}
+ {"OneLoopSimplify", 50376, 1362},
+ {"PrimaryExamplesSection", 51875, 1405},
+ {"RasterizedOutput", 52019, 1409}
  }
 *)
 (*NotebookFileOutline
@@ -1433,86 +1432,86 @@ Cell[CellGroupData[{
 Cell[4023, 114, 479, 14, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4527, 132, 738, 24, 31, "NotesSection",
+Cell[4527, 132, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->424291716],
-Cell[5268, 158, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1580551472],
+Cell[5269, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5324, 162, 148, 4, 70, "Input",
+Cell[5325, 162, 148, 4, 70, "Input",
  CellTags->"OneLoopSimplify",
  CellID->408969695],
-Cell[5475, 168, 1076, 25, 93, "Output",
+Cell[5476, 168, 1076, 25, 93, "Output",
  CellTags->"OneLoopSimplify"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6612, 200, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6613, 200, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1795184224],
+ CellID->1405242556],
 Cell[CellGroupData[{
-Cell[7025, 219, 195, 6, 26, "ExampleSection",
- CellID->382396523],
+Cell[7026, 219, 196, 6, 26, "ExampleSection",
+ CellID->1353084621],
 Cell[CellGroupData[{
-Cell[7245, 229, 360, 12, 27, "Input",
+Cell[7247, 229, 360, 12, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->2051602371],
-Cell[7608, 243, 1573, 57, 63, "Output",
+Cell[7610, 243, 1573, 57, 63, "Output",
  CellTags->"OneLoopSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9218, 305, 165, 5, 27, "Input",
+Cell[9220, 305, 165, 5, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->1712188386],
-Cell[9386, 312, 3179, 111, 68, "Output",
+Cell[9388, 312, 3179, 111, 68, "Output",
  CellTags->"OneLoopSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12602, 428, 221, 7, 27, "Input",
+Cell[12604, 428, 221, 7, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->2028218956],
-Cell[12826, 437, 1454, 54, 57, "Output",
+Cell[12828, 437, 1454, 54, 57, "Output",
  CellTags->"OneLoopSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14317, 496, 419, 13, 27, "Input",
+Cell[14319, 496, 419, 13, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->1056142741],
-Cell[14739, 511, 2381, 84, 66, "Output",
+Cell[14741, 511, 2381, 84, 66, "Output",
  CellTags->"OneLoopSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17157, 600, 169, 5, 27, "Input",
+Cell[17159, 600, 169, 5, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->971533335],
-Cell[17329, 607, 15074, 255, 228, "Output",
+Cell[17331, 607, 15074, 255, 228, "Output",
  CellTags->{"OneLoopSimplify", "RasterizedOutput"},
- CellID->1465150278]
+ CellID->1455716630]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32440, 867, 271, 10, 27, "Input",
+Cell[32442, 867, 271, 10, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->1848776094],
-Cell[32714, 879, 7542, 131, 120, "Output",
+Cell[32716, 879, 7541, 131, 120, "Output",
  CellTags->{"OneLoopSimplify", "RasterizedOutput"},
- CellID->1031985754]
+ CellID->472334896]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40293, 1015, 442, 16, 27, "Input",
+Cell[40294, 1015, 442, 16, 27, "Input",
  CellTags->"OneLoopSimplify",
  CellID->214879980],
-Cell[40738, 1033, 7051, 244, 66, "Output",
+Cell[40739, 1033, 7051, 244, 66, "Output",
  CellTags->"OneLoopSimplify"]
 }, Open  ]]
 }, Open  ]],
-Cell[47816, 1281, 31, 0, 29, "SectionFooterSpacer"]
+Cell[47817, 1281, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47884, 1286, 270, 12, 31, "SeeAlsoSection",
+Cell[47885, 1286, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[48157, 1300, 319, 13, 56, "SeeAlso"]
+Cell[48158, 1300, 319, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[48491, 1316, 23, 0, 41, "FooterCell"]
+Cell[48492, 1316, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

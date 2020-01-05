@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40873,       1350]
+NotebookDataLength[     40926,       1351]
 NotebookOptionsPosition[     33999,       1135]
-NotebookOutlinePosition[     37509,       1233]
-CellTagsIndexPosition[     37356,       1226]
+NotebookOutlinePosition[     37562,       1234]
+CellTagsIndexPosition[     37409,       1227]
 WindowTitle->DiracReduce
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ DiracReduce.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67552], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67674], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracReduce", ".html"]], None}]}]},
@@ -161,7 +161,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->656649188],
+ CellID->1602023328],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -275,7 +275,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->624116932],
+ CellID->1928237849],
 
 Cell[CellGroupData[{
 
@@ -285,7 +285,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1500572641],
+ CellID->139398663],
 
 Cell[CellGroupData[{
 
@@ -627,7 +627,7 @@ AMAi/wc6p+KR
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"DiracReduce", "RasterizedOutput"},
  CellLabel->"Out[2]=",
- CellID->1171668354]
+ CellID->1093575305]
 }, Open  ]]
 }, Open  ]],
 
@@ -764,7 +764,7 @@ TifwVdHmAbge2jYfuCQKNx9BEATpffwL7QuglQ==
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"DiracReduce", "RasterizedOutput"},
  CellLabel->"Out[2]=",
- CellID->1755043127]
+ CellID->239042759]
 }, Open  ]],
 
 Cell["Do some checks of the results", "Notes"],
@@ -1136,7 +1136,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"DiracReduce",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1148,7 +1148,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 47.417602}", 
+   "built" -> "{2020, 1, 5, 18, 54, 37.131261}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1168,7 +1168,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1178,56 +1179,56 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[8042, 262, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[8043, 262, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->624116932]},
+   CellID->1928237849]},
  "DiracReduce"->{
-  Cell[8675, 291, 174, 6, 27, "Input",
+  Cell[8676, 291, 174, 6, 27, "Input",
    CellTags->"DiracReduce",
    CellID->176343206],
-  Cell[8852, 299, 565, 23, 37, "Output",
+  Cell[8853, 299, 565, 23, 37, "Output",
    CellTags->"DiracReduce"],
-  Cell[9454, 327, 134, 4, 27, "Input",
+  Cell[9455, 327, 134, 4, 27, "Input",
    CellTags->"DiracReduce",
    CellID->1863378816],
-  Cell[9591, 333, 711, 29, 37, "Output",
+  Cell[9592, 333, 711, 29, 37, "Output",
    CellTags->"DiracReduce"],
-  Cell[12112, 447, 420, 14, 27, "Input",
+  Cell[12113, 447, 420, 14, 27, "Input",
    CellTags->"DiracReduce",
    CellID->1405125223],
-  Cell[12535, 463, 1119, 46, 38, "Output",
+  Cell[12536, 463, 1119, 46, 38, "Output",
    CellTags->"DiracReduce"],
-  Cell[13691, 514, 134, 4, 27, "Input",
+  Cell[13692, 514, 134, 4, 27, "Input",
    CellTags->"DiracReduce",
    CellID->1093135858],
-  Cell[13828, 520, 6168, 109, 102, "Output",
+  Cell[13829, 520, 6168, 109, 102, "Output",
    CellTags->{"DiracReduce", "RasterizedOutput"},
-   CellID->1171668354],
-  Cell[20175, 641, 191, 6, 27, "Input",
+   CellID->1093575305],
+  Cell[20176, 641, 191, 6, 27, "Input",
    CellTags->"DiracReduce",
    CellID->1144474685],
-  Cell[20369, 649, 940, 39, 37, "Output",
+  Cell[20370, 649, 940, 39, 37, "Output",
    CellTags->"DiracReduce"],
-  Cell[21346, 693, 133, 4, 27, "Input",
+  Cell[21347, 693, 133, 4, 27, "Input",
    CellTags->"DiracReduce",
    CellID->654035869],
-  Cell[21482, 699, 3634, 67, 59, "Output",
+  Cell[21483, 699, 3633, 67, 59, "Output",
    CellTags->{"DiracReduce", "RasterizedOutput"},
-   CellID->1755043127]},
+   CellID->239042759]},
  "RasterizedOutput"->{
-  Cell[13828, 520, 6168, 109, 102, "Output",
+  Cell[13829, 520, 6168, 109, 102, "Output",
    CellTags->{"DiracReduce", "RasterizedOutput"},
-   CellID->1171668354],
-  Cell[21482, 699, 3634, 67, 59, "Output",
+   CellID->1093575305],
+  Cell[21483, 699, 3633, 67, 59, "Output",
    CellTags->{"DiracReduce", "RasterizedOutput"},
-   CellID->1755043127]}
+   CellID->239042759]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 35866, 1179},
- {"DiracReduce", 36004, 1183},
- {"RasterizedOutput", 37096, 1216}
+ {"PrimaryExamplesSection", 35920, 1180},
+ {"DiracReduce", 36059, 1184},
+ {"RasterizedOutput", 37150, 1217}
  }
 *)
 (*NotebookFileOutline
@@ -1239,91 +1240,91 @@ Cell[CellGroupData[{
 Cell[4109, 115, 682, 20, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4816, 139, 738, 24, 31, "NotesSection",
+Cell[4816, 139, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->656649188],
-Cell[5557, 165, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5591, 167, 255, 8, 70, "Notes",
+ CellID->1602023328],
+Cell[5558, 165, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5592, 167, 255, 8, 70, "Notes",
  CellID->1067943069],
-Cell[5849, 177, 149, 5, 70, "SeeAlso"],
-Cell[6001, 184, 179, 6, 70, "SeeAlso"],
-Cell[6183, 192, 182, 6, 70, "SeeAlso"],
-Cell[6368, 200, 212, 7, 70, "SeeAlso"],
-Cell[6583, 209, 251, 8, 70, "SeeAlso"],
-Cell[6837, 219, 241, 9, 70, "Notes"],
+Cell[5850, 177, 149, 5, 70, "SeeAlso"],
+Cell[6002, 184, 179, 6, 70, "SeeAlso"],
+Cell[6184, 192, 182, 6, 70, "SeeAlso"],
+Cell[6369, 200, 212, 7, 70, "SeeAlso"],
+Cell[6584, 209, 251, 8, 70, "SeeAlso"],
+Cell[6838, 219, 241, 9, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[7103, 232, 95, 2, 70, "Input"],
-Cell[7201, 236, 780, 19, 75, "Output"]
+Cell[7104, 232, 95, 2, 70, "Input"],
+Cell[7202, 236, 780, 19, 75, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8042, 262, 387, 15, 31, "PrimaryExamplesSection",
+Cell[8043, 262, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->624116932],
+ CellID->1928237849],
 Cell[CellGroupData[{
-Cell[8454, 281, 196, 6, 26, "ExampleSection",
- CellID->1500572641],
+Cell[8456, 281, 195, 6, 26, "ExampleSection",
+ CellID->139398663],
 Cell[CellGroupData[{
-Cell[8675, 291, 174, 6, 27, "Input",
+Cell[8676, 291, 174, 6, 27, "Input",
  CellTags->"DiracReduce",
  CellID->176343206],
-Cell[8852, 299, 565, 23, 37, "Output",
+Cell[8853, 299, 565, 23, 37, "Output",
  CellTags->"DiracReduce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9454, 327, 134, 4, 27, "Input",
+Cell[9455, 327, 134, 4, 27, "Input",
  CellTags->"DiracReduce",
  CellID->1863378816],
-Cell[9591, 333, 711, 29, 37, "Output",
+Cell[9592, 333, 711, 29, 37, "Output",
  CellTags->"DiracReduce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10339, 367, 105, 2, 9, "ExampleDelimiter"],
-Cell[10447, 371, 325, 10, 32, "Notes"],
+Cell[10340, 367, 105, 2, 9, "ExampleDelimiter"],
+Cell[10448, 371, 325, 10, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[10797, 385, 110, 3, 27, "Input"],
-Cell[10910, 390, 487, 20, 37, "Output"]
+Cell[10798, 385, 110, 3, 27, "Input"],
+Cell[10911, 390, 487, 20, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11434, 415, 87, 2, 27, "Input"],
-Cell[11524, 419, 409, 16, 37, "Output"]
+Cell[11435, 415, 87, 2, 27, "Input"],
+Cell[11525, 419, 409, 16, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11982, 441, 105, 2, 9, "ExampleDelimiter"],
+Cell[11983, 441, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[12112, 447, 420, 14, 27, "Input",
+Cell[12113, 447, 420, 14, 27, "Input",
  CellTags->"DiracReduce",
  CellID->1405125223],
-Cell[12535, 463, 1119, 46, 38, "Output",
+Cell[12536, 463, 1119, 46, 38, "Output",
  CellTags->"DiracReduce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13691, 514, 134, 4, 27, "Input",
+Cell[13692, 514, 134, 4, 27, "Input",
  CellTags->"DiracReduce",
  CellID->1093135858],
-Cell[13828, 520, 6168, 109, 102, "Output",
+Cell[13829, 520, 6168, 109, 102, "Output",
  CellTags->{"DiracReduce", "RasterizedOutput"},
- CellID->1171668354]
+ CellID->1093575305]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20045, 635, 105, 2, 9, "ExampleDelimiter"],
+Cell[20046, 635, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[20175, 641, 191, 6, 27, "Input",
+Cell[20176, 641, 191, 6, 27, "Input",
  CellTags->"DiracReduce",
  CellID->1144474685],
-Cell[20369, 649, 940, 39, 37, "Output",
+Cell[20370, 649, 940, 39, 37, "Output",
  CellTags->"DiracReduce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21346, 693, 133, 4, 27, "Input",
+Cell[21347, 693, 133, 4, 27, "Input",
  CellTags->"DiracReduce",
  CellID->654035869],
-Cell[21482, 699, 3634, 67, 59, "Output",
+Cell[21483, 699, 3633, 67, 59, "Output",
  CellTags->{"DiracReduce", "RasterizedOutput"},
- CellID->1755043127]
+ CellID->239042759]
 }, Open  ]],
 Cell[25131, 769, 46, 0, 32, "Notes"],
 Cell[CellGroupData[{

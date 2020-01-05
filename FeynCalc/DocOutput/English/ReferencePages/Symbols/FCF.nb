@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5343,        155]
+NotebookDataLength[      5342,        155]
 NotebookOptionsPosition[      3534,        105]
-NotebookOutlinePosition[      5279,        152]
-CellTagsIndexPosition[      5236,        149]
+NotebookOutlinePosition[      5278,        152]
+CellTagsIndexPosition[      5235,        149]
 WindowTitle->FCF
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$98693], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$99718], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/FCF", 
             ".html"]], None}]}]},
@@ -118,7 +118,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 13, 1.600470}", 
+   "built" -> "{2020, 1, 5, 18, 56, 3.392519}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

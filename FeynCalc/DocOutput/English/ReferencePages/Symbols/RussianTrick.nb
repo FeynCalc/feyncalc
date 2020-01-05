@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23113,        807]
-NotebookOptionsPosition[     18035,        652]
-NotebookOutlinePosition[     21292,        741]
-CellTagsIndexPosition[     21176,        735]
+NotebookDataLength[     23116,        807]
+NotebookOptionsPosition[     18037,        652]
+NotebookOutlinePosition[     21293,        741]
+CellTagsIndexPosition[     21177,        735]
 WindowTitle->RussianTrick
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ RussianTrick.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$223512], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$224981], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/RussianTrick", ".html"]], None}]}]},
@@ -158,7 +158,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1679964998],
+ CellID->1328140832],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -184,7 +184,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->778903632],
+ CellID->1229599249],
 
 Cell[CellGroupData[{
 
@@ -194,7 +194,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->191453647],
+ CellID->1465108529],
 
 Cell[CellGroupData[{
 
@@ -375,7 +375,7 @@ Cell[BoxData[
          FeynCalc`FCGV["q1"], D] - FeynCalc`Momentum[
         FeynCalc`FCGV["q2"], D]]],
      Editable->False]}]}], TraditionalForm]], "Output",
- ImageSize->{458, 41},
+ ImageSize->{541, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RussianTrick",
@@ -652,8 +652,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"RussianTrick",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -665,7 +665,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 41.963020}", 
+   "built" -> "{2020, 1, 5, 19, 1, 24.011940}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -698,36 +698,36 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5672, 171, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5672, 171, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->778903632]},
+   CellID->1229599249]},
  "RussianTrick"->{
-  Cell[6304, 200, 387, 13, 27, "Input",
+  Cell[6306, 200, 387, 13, 27, "Input",
    CellTags->"RussianTrick",
    CellID->202624512],
-  Cell[6694, 215, 585, 24, 42, "Output",
+  Cell[6696, 215, 585, 24, 42, "Output",
    CellTags->"RussianTrick"],
-  Cell[7316, 244, 125, 4, 27, "Input",
+  Cell[7318, 244, 125, 4, 27, "Input",
    CellTags->"RussianTrick",
    CellID->195595910],
-  Cell[7444, 250, 3791, 131, 62, "Output",
+  Cell[7446, 250, 3791, 131, 62, "Output",
    CellTags->"RussianTrick"],
-  Cell[11272, 386, 189, 6, 27, "Input",
+  Cell[11274, 386, 189, 6, 27, "Input",
    CellTags->"RussianTrick",
    CellID->767131830],
-  Cell[11464, 394, 3880, 133, 63, "Output",
+  Cell[11466, 394, 3880, 133, 63, "Output",
    CellTags->"RussianTrick"],
-  Cell[15381, 532, 130, 4, 27, "Input",
+  Cell[15383, 532, 130, 4, 27, "Input",
    CellTags->"RussianTrick",
    CellID->2066492260],
-  Cell[15514, 538, 679, 27, 42, "Output",
+  Cell[15516, 538, 679, 27, 42, "Output",
    CellTags->"RussianTrick"],
-  Cell[16230, 570, 153, 5, 27, "Input",
+  Cell[16232, 570, 153, 5, 27, "Input",
    CellTags->"RussianTrick",
    CellID->1029114011],
-  Cell[16386, 577, 729, 28, 42, "Output",
+  Cell[16388, 577, 729, 28, 42, "Output",
    CellTags->"RussianTrick"],
-  Cell[17130, 608, 128, 4, 27, "Input",
+  Cell[17132, 608, 128, 4, 27, "Input",
    CellTags->"RussianTrick",
    CellID->659830929]}
  }
@@ -735,7 +735,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 20098, 699},
- {"RussianTrick", 20237, 703}
+ {"RussianTrick", 20238, 703}
  }
 *)
 (*NotebookFileOutline
@@ -744,71 +744,71 @@ Cell[584, 21, 3135, 76, 53, "AnchorBarGrid",
  CellID->1],
 Cell[3722, 99, 289, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4036, 114, 701, 18, 118, "Usage",
+Cell[4036, 114, 701, 18, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4762, 136, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1679964998],
+ CellID->1328140832],
 Cell[5504, 162, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[5538, 164, 85, 1, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5672, 171, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5672, 171, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->778903632],
+ CellID->1229599249],
 Cell[CellGroupData[{
-Cell[6084, 190, 195, 6, 26, "ExampleSection",
- CellID->191453647],
+Cell[6085, 190, 196, 6, 26, "ExampleSection",
+ CellID->1465108529],
 Cell[CellGroupData[{
-Cell[6304, 200, 387, 13, 27, "Input",
+Cell[6306, 200, 387, 13, 27, "Input",
  CellTags->"RussianTrick",
  CellID->202624512],
-Cell[6694, 215, 585, 24, 42, "Output",
+Cell[6696, 215, 585, 24, 42, "Output",
  CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7316, 244, 125, 4, 27, "Input",
+Cell[7318, 244, 125, 4, 27, "Input",
  CellTags->"RussianTrick",
  CellID->195595910],
-Cell[7444, 250, 3791, 131, 62, "Output",
+Cell[7446, 250, 3791, 131, 62, "Output",
  CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11272, 386, 189, 6, 27, "Input",
+Cell[11274, 386, 189, 6, 27, "Input",
  CellTags->"RussianTrick",
  CellID->767131830],
-Cell[11464, 394, 3880, 133, 63, "Output",
+Cell[11466, 394, 3880, 133, 63, "Output",
  CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15381, 532, 130, 4, 27, "Input",
+Cell[15383, 532, 130, 4, 27, "Input",
  CellTags->"RussianTrick",
  CellID->2066492260],
-Cell[15514, 538, 679, 27, 42, "Output",
+Cell[15516, 538, 679, 27, 42, "Output",
  CellTags->"RussianTrick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16230, 570, 153, 5, 27, "Input",
+Cell[16232, 570, 153, 5, 27, "Input",
  CellTags->"RussianTrick",
  CellID->1029114011],
-Cell[16386, 577, 729, 28, 42, "Output",
+Cell[16388, 577, 729, 28, 42, "Output",
  CellTags->"RussianTrick"]
 }, Open  ]],
-Cell[17130, 608, 128, 4, 27, "Input",
+Cell[17132, 608, 128, 4, 27, "Input",
  CellTags->"RussianTrick",
  CellID->659830929]
 }, Open  ]],
-Cell[17273, 615, 31, 0, 29, "SectionFooterSpacer"]
+Cell[17275, 615, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17341, 620, 270, 12, 31, "SeeAlsoSection",
+Cell[17343, 620, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[17614, 634, 379, 13, 56, "SeeAlso"]
+Cell[17616, 634, 379, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[18008, 650, 23, 0, 41, "FooterCell"]
+Cell[18010, 650, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

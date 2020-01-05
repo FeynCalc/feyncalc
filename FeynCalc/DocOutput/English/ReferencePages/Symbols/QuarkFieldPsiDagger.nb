@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11594,        403]
+NotebookDataLength[     11533,        402]
 NotebookOptionsPosition[      8163,        297]
-NotebookOutlinePosition[     10492,        361]
-CellTagsIndexPosition[     10378,        355]
+NotebookOutlinePosition[     10431,        360]
+CellTagsIndexPosition[     10318,        354]
 WindowTitle->QuarkFieldPsiDagger
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ QuarkFieldPsiDagger.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$216813], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$218282], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/QuarkFieldPsiDagger", ".html"]], None}]}]},
@@ -127,7 +127,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1738832207],
+ CellID->438342181],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -156,7 +156,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1788606507],
+ CellID->2036647928],
 
 Cell[CellGroupData[{
 
@@ -166,7 +166,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->87497409],
+ CellID->941412550],
 
 Cell[CellGroupData[{
 
@@ -310,7 +310,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 27.771552}", 
+   "built" -> "{2020, 1, 5, 19, 1, 8.443238}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -329,8 +329,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -340,9 +339,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4564, 143, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4563, 143, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1788606507]},
+   CellID->2036647928]},
  "QuarkField"->{
   Cell[5196, 172, 114, 3, 27, "Input",
    CellTags->"QuarkField",
@@ -354,8 +353,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10038, 341},
- {"QuarkField", 10176, 345}
+ {"PrimaryExamplesSection", 9978, 340},
+ {"QuarkField", 10116, 344}
  }
 *)
 (*NotebookFileOutline
@@ -367,21 +366,21 @@ Cell[CellGroupData[{
 Cell[3233, 91, 346, 10, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3604, 105, 739, 24, 31, "NotesSection",
+Cell[3604, 105, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1738832207],
-Cell[4346, 131, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[4380, 133, 135, 4, 70, "Notes",
+ CellID->438342181],
+Cell[4345, 131, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[4379, 133, 135, 4, 32, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4564, 143, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4563, 143, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1788606507],
+ CellID->2036647928],
 Cell[CellGroupData[{
-Cell[4977, 162, 194, 6, 26, "ExampleSection",
- CellID->87497409],
+Cell[4976, 162, 195, 6, 26, "ExampleSection",
+ CellID->941412550],
 Cell[CellGroupData[{
 Cell[5196, 172, 114, 3, 27, "Input",
  CellTags->"QuarkField",

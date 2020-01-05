@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14560,        514]
-NotebookOptionsPosition[     10490,        391]
-NotebookOutlinePosition[     13001,        459]
-CellTagsIndexPosition[     12879,        453]
+NotebookDataLength[     14618,        515]
+NotebookOptionsPosition[     10491,        391]
+NotebookOutlinePosition[     13058,        460]
+CellTagsIndexPosition[     12936,        454]
 WindowTitle->ChiralityProjector
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ ChiralityProjector.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39584], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39702], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ChiralityProjector", ".html"]], None}]}]},
@@ -168,7 +168,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->879021908],
+ CellID->723076214],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -197,7 +197,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1946169031],
+ CellID->1872745401],
 
 Cell[CellGroupData[{
 
@@ -207,7 +207,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->557748987],
+ CellID->1538912494],
 
 Cell[CellGroupData[{
 
@@ -392,7 +392,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"ChiralityProjector",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -404,7 +404,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 39.019434}", 
+   "built" -> "{2020, 1, 5, 18, 53, 21.485586}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -424,7 +424,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -436,24 +437,24 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5850, 184, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1946169031]},
+   CellID->1872745401]},
  "ChiralityProjector"->{
-  Cell[6483, 213, 280, 9, 27, "Input",
+  Cell[6484, 213, 280, 9, 27, "Input",
    CellTags->"ChiralityProjector",
    CellID->336937517],
-  Cell[6766, 224, 440, 16, 42, "Output",
+  Cell[6767, 224, 440, 16, 42, "Output",
    CellTags->"ChiralityProjector"],
-  Cell[7243, 245, 265, 9, 27, "Input",
+  Cell[7244, 245, 265, 9, 27, "Input",
    CellTags->"ChiralityProjector",
    CellID->2102778570],
-  Cell[7511, 256, 603, 22, 60, "Output",
+  Cell[7512, 256, 603, 22, 60, "Output",
    CellTags->"ChiralityProjector"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12360, 435},
- {"ChiralityProjector", 12506, 439}
+ {"PrimaryExamplesSection", 12417, 436},
+ {"ChiralityProjector", 12563, 440}
  }
 *)
 (*NotebookFileOutline
@@ -467,55 +468,55 @@ Cell[4019, 113, 852, 29, 93, "Usage",
 Cell[CellGroupData[{
 Cell[4896, 146, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->879021908],
-Cell[5637, 172, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5671, 174, 130, 4, 32, "Notes",
+ CellID->723076214],
+Cell[5637, 172, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5671, 174, 130, 4, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5850, 184, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1946169031],
+ CellID->1872745401],
 Cell[CellGroupData[{
-Cell[6263, 203, 195, 6, 26, "ExampleSection",
- CellID->557748987],
+Cell[6263, 203, 196, 6, 26, "ExampleSection",
+ CellID->1538912494],
 Cell[CellGroupData[{
-Cell[6483, 213, 280, 9, 27, "Input",
+Cell[6484, 213, 280, 9, 27, "Input",
  CellTags->"ChiralityProjector",
  CellID->336937517],
-Cell[6766, 224, 440, 16, 42, "Output",
+Cell[6767, 224, 440, 16, 42, "Output",
  CellTags->"ChiralityProjector"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7243, 245, 265, 9, 27, "Input",
+Cell[7244, 245, 265, 9, 27, "Input",
  CellTags->"ChiralityProjector",
  CellID->2102778570],
-Cell[7511, 256, 603, 22, 60, "Output",
+Cell[7512, 256, 603, 22, 60, "Output",
  CellTags->"ChiralityProjector"]
 }, Open  ]],
-Cell[8129, 281, 154, 3, 49, "Notes"],
+Cell[8130, 281, 154, 3, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[8308, 288, 155, 5, 27, "Input"],
-Cell[8466, 295, 487, 19, 42, "Output"]
+Cell[8309, 288, 155, 5, 27, "Input"],
+Cell[8467, 295, 487, 19, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8990, 319, 198, 6, 27, "Input"],
-Cell[9191, 327, 169, 5, 35, "Output"]
+Cell[8991, 319, 198, 6, 27, "Input"],
+Cell[9192, 327, 169, 5, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9397, 337, 198, 6, 27, "Input"],
-Cell[9598, 345, 169, 5, 35, "Output"]
+Cell[9398, 337, 198, 6, 27, "Input"],
+Cell[9599, 345, 169, 5, 35, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[9794, 354, 31, 0, 70, "SectionFooterSpacer"]
+Cell[9795, 354, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9862, 359, 270, 12, 70, "SeeAlsoSection",
+Cell[9863, 359, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10135, 373, 313, 13, 70, "SeeAlso"]
+Cell[10136, 373, 313, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[10463, 389, 23, 0, 70, "FooterCell"]
+Cell[10464, 389, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

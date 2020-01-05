@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8972,        294]
+NotebookDataLength[      8969,        294]
 NotebookOptionsPosition[      6295,        212]
-NotebookOutlinePosition[      8339,        270]
-CellTagsIndexPosition[      8270,        265]
+NotebookOutlinePosition[      8336,        270]
+CellTagsIndexPosition[      8267,        265]
 WindowTitle->OPE2TID
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$192565], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$194034], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OPE2TID", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1512748854],
+ CellID->1583348681],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -225,7 +225,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 33.694099}", 
+   "built" -> "{2020, 1, 5, 19, 0, 7.827450}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -254,7 +254,7 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "OPE2TID"->{
-  Cell[5154, 159, 132, 4, 27, "Input",
+  Cell[5154, 159, 132, 4, 70, "Input",
    CellTags->"OPE2TID",
    CellID->1639885788],
   Cell[5289, 165, 449, 14, 37, "Output",
@@ -264,7 +264,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"OPE2TID", 8070, 255}
+ {"OPE2TID", 8067, 255}
  }
 *)
 (*NotebookFileOutline
@@ -278,10 +278,10 @@ Cell[3885, 112, 446, 13, 93, "Usage",
 Cell[CellGroupData[{
 Cell[4356, 129, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1512748854],
-Cell[5098, 155, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1583348681],
+Cell[5098, 155, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5154, 159, 132, 4, 27, "Input",
+Cell[5154, 159, 132, 4, 70, "Input",
  CellTags->"OPE2TID",
  CellID->1639885788],
 Cell[5289, 165, 449, 14, 37, "Output",

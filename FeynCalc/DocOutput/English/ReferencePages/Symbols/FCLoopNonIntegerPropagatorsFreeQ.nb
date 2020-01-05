@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10636,        346]
-NotebookOptionsPosition[      7470,        251]
-NotebookOutlinePosition[      9721,        310]
-CellTagsIndexPosition[      9637,        305]
+NotebookDataLength[     10633,        346]
+NotebookOptionsPosition[      7469,        251]
+NotebookOutlinePosition[      9719,        310]
+CellTagsIndexPosition[      9635,        305]
 WindowTitle->FCLoopNonIntegerPropagatorsFreeQ
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ FCLoopNonIntegerPropagatorsFreeQ.html"], StandardForm]], "Input",
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$111303], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$112328], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCLoopNonIntegerPropagatorsFreeQ", ".html"]], 
@@ -122,7 +122,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1074273213],
+ CellID->1616386766],
 
 Cell[CellGroupData[{
 
@@ -132,7 +132,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1922589691],
+ CellID->155269366],
 
 Cell[CellGroupData[{
 
@@ -252,7 +252,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"FCLoopNonIntegerPropagatorsFreeQ",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -264,7 +264,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 13, 33.149244}", 
+   "built" -> "{2020, 1, 5, 18, 56, 38.409878}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -299,12 +299,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3817, 109, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1074273213]}
+   CellID->1616386766]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9493, 298}
+ {"PrimaryExamplesSection", 9491, 298}
  }
 *)
 (*NotebookFileOutline
@@ -317,37 +317,37 @@ Cell[3322, 92, 470, 13, 85, "Usage",
 Cell[CellGroupData[{
 Cell[3817, 109, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1074273213],
+ CellID->1616386766],
 Cell[CellGroupData[{
-Cell[4230, 128, 196, 6, 26, "ExampleSection",
- CellID->1922589691],
+Cell[4230, 128, 195, 6, 26, "ExampleSection",
+ CellID->155269366],
 Cell[CellGroupData[{
-Cell[4451, 138, 227, 8, 27, "Input",
+Cell[4450, 138, 227, 8, 27, "Input",
  CellID->2106819447],
-Cell[4681, 148, 830, 23, 61, "Output",
+Cell[4680, 148, 830, 23, 61, "Output",
  CellID->1331990211]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5548, 176, 133, 3, 27, "Input",
+Cell[5547, 176, 133, 3, 27, "Input",
  CellID->587936085],
-Cell[5684, 181, 189, 6, 35, "Output",
+Cell[5683, 181, 189, 6, 35, "Output",
  CellID->514665586]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5910, 192, 263, 9, 27, "Input",
+Cell[5909, 192, 263, 9, 27, "Input",
  CellID->1911230333],
-Cell[6176, 203, 865, 25, 68, "Output",
+Cell[6175, 203, 865, 25, 68, "Output",
  CellID->2193373]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7078, 233, 133, 3, 27, "Input",
+Cell[7077, 233, 133, 3, 27, "Input",
  CellID->152362916],
-Cell[7214, 238, 190, 6, 35, "Output",
+Cell[7213, 238, 190, 6, 35, "Output",
  CellID->715931409]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7443, 249, 23, 0, 41, "FooterCell"]
+Cell[7442, 249, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7423,        215]
+NotebookDataLength[      7422,        215]
 NotebookOptionsPosition[      5109,        155]
-NotebookOutlinePosition[      7216,        207]
-CellTagsIndexPosition[      7173,        204]
+NotebookOutlinePosition[      7215,        207]
+CellTagsIndexPosition[      7172,        204]
 WindowTitle->FCNIntegrate
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FCNIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$116513], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$117538], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCNIntegrate", ".html"]], None}]}]},
@@ -168,7 +168,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 13, 46.214031}", 
+   "built" -> "{2020, 1, 5, 18, 56, 53.310611}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

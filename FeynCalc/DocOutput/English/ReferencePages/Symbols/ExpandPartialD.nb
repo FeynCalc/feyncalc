@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     31904,       1153]
+NotebookDataLength[     31846,       1152]
 NotebookOptionsPosition[     24534,        919]
-NotebookOutlinePosition[     28620,       1034]
-CellTagsIndexPosition[     28502,       1028]
+NotebookOutlinePosition[     28562,       1033]
+CellTagsIndexPosition[     28444,       1027]
 WindowTitle->ExpandPartialD
 WindowFrame->Normal*)
 
@@ -87,7 +87,7 @@ ExpandPartialD.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$82780], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$82904], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ExpandPartialD", ".html"]], None}]}]},
@@ -161,7 +161,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1729302399],
+ CellID->1708841866],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -241,7 +241,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->490775297],
+ CellID->579825297],
 
 Cell[CellGroupData[{
 
@@ -251,7 +251,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->966534753],
+ CellID->539182276],
 
 Cell[CellGroupData[{
 
@@ -920,7 +920,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"ExpandPartialD",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -932,7 +932,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 23.128602}", 
+   "built" -> "{2020, 1, 5, 18, 55, 18.386695}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -953,8 +953,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -966,7 +965,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[7610, 228, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->490775297]},
+   CellID->579825297]},
  "ExpandPartialD"->{
   Cell[8242, 257, 392, 11, 45, "Input",
    CellTags->"ExpandPartialD",
@@ -1027,8 +1026,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 26485, 965},
- {"ExpandPartialD", 26626, 969}
+ {"PrimaryExamplesSection", 26427, 964},
+ {"ExpandPartialD", 26568, 968}
  }
 *)
 (*NotebookFileOutline
@@ -1042,7 +1041,7 @@ Cell[4377, 120, 566, 15, 102, "Usage",
 Cell[CellGroupData[{
 Cell[4968, 139, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1729302399],
+ CellID->1708841866],
 Cell[5710, 165, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5766, 169, 97, 2, 70, "Input"],
@@ -1053,10 +1052,10 @@ Cell[5866, 173, 1683, 48, 70, "Output"]
 Cell[CellGroupData[{
 Cell[7610, 228, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->490775297],
+ CellID->579825297],
 Cell[CellGroupData[{
 Cell[8022, 247, 195, 6, 26, "ExampleSection",
- CellID->966534753],
+ CellID->539182276],
 Cell[CellGroupData[{
 Cell[8242, 257, 392, 11, 45, "Input",
  CellTags->"ExpandPartialD",

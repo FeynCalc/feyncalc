@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8407,        251]
+NotebookDataLength[      8406,        251]
 NotebookOptionsPosition[      6362,        195]
-NotebookOutlinePosition[      8197,        243]
-CellTagsIndexPosition[      8154,        240]
+NotebookOutlinePosition[      8196,        243]
+CellTagsIndexPosition[      8153,        240]
 WindowTitle->Integratedx
 WindowFrame->Normal*)
 
@@ -89,7 +89,7 @@ Integratedx.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170393], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171862], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Integratedx", ".html"]], None}]}]},
@@ -208,7 +208,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 43.958721}", 
+   "built" -> "{2020, 1, 5, 18, 59, 11.334975}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

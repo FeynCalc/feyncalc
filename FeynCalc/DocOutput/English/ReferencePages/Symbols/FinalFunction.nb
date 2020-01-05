@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6773,        206]
+NotebookDataLength[      6772,        206]
 NotebookOptionsPosition[      4785,        151]
-NotebookOutlinePosition[      6566,        198]
-CellTagsIndexPosition[      6523,        195]
+NotebookOutlinePosition[      6565,        198]
+CellTagsIndexPosition[      6522,        195]
 WindowTitle->FinalFunction
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FinalFunction.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138655], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139680], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FinalFunction", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 36.797586}", 
+   "built" -> "{2020, 1, 5, 18, 57, 51.951063}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

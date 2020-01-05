@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9247,        302]
+NotebookDataLength[      9188,        301]
 NotebookOptionsPosition[      6578,        221]
-NotebookOutlinePosition[      8638,        279]
-CellTagsIndexPosition[      8570,        274]
+NotebookOutlinePosition[      8579,        278]
+CellTagsIndexPosition[      8511,        273]
 WindowTitle->TLI2FC
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$267117], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$269021], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/TLI2FC", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->823855925],
+ CellID->720851657],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -221,7 +221,7 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
+WindowSize->{725, 750},
 WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"TLI2FC",
 TaggingRules->{
@@ -234,7 +234,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 25.777167}", 
+   "built" -> "{2020, 1, 5, 19, 3, 18.904498}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -253,8 +253,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -273,7 +272,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"TLI2FC", 8396, 265}
+ {"TLI2FC", 8337, 264}
  }
 *)
 (*NotebookFileOutline
@@ -287,7 +286,7 @@ Cell[3955, 113, 395, 12, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4375, 129, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->823855925],
+ CellID->720851657],
 Cell[5116, 155, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5172, 159, 129, 4, 70, "Input",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40036,       1340]
+NotebookDataLength[     39979,       1339]
 NotebookOptionsPosition[     32874,       1121]
-NotebookOutlinePosition[     35979,       1203]
-CellTagsIndexPosition[     35855,       1197]
+NotebookOutlinePosition[     35922,       1202]
+CellTagsIndexPosition[     35798,       1196]
 WindowTitle->FeynAmpDenominator
 WindowFrame->Normal*)
 
@@ -84,7 +84,7 @@ FeynAmpDenominator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130139], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$131164], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynAmpDenominator", ".html"]], None}]}]},
@@ -146,7 +146,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->55171728],
+ CellID->228635681],
 
 Cell[CellGroupData[{
 
@@ -156,7 +156,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1691105424],
+ CellID->862752378],
 
 Cell[TextData[{
  "The old way to represent standard Lorentzian propagators is to use \
@@ -1134,7 +1134,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 17.813149}", 
+   "built" -> "{2020, 1, 5, 18, 57, 29.310668}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1157,8 +1157,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1168,9 +1167,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4907, 133, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[4907, 133, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->55171728]},
+   CellID->228635681]},
  "FeynAmpDenominator"->{
   Cell[5971, 174, 283, 8, 27, "Input",
    CellTags->"FeynAmpDenominator",
@@ -1196,8 +1195,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 34983, 1169},
- {"FeynAmpDenominator", 35127, 1173}
+ {"PrimaryExamplesSection", 34925, 1168},
+ {"FeynAmpDenominator", 35070, 1172}
  }
 *)
 (*NotebookFileOutline
@@ -1208,12 +1207,12 @@ Cell[3990, 102, 295, 11, 45, "ObjectNameGrid"],
 Cell[4288, 115, 594, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4907, 133, 386, 15, 31, "PrimaryExamplesSection",
+Cell[4907, 133, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->55171728],
+ CellID->228635681],
 Cell[CellGroupData[{
-Cell[5318, 152, 196, 6, 26, "ExampleSection",
- CellID->1691105424],
+Cell[5319, 152, 195, 6, 26, "ExampleSection",
+ CellID->862752378],
 Cell[5517, 160, 429, 10, 66, "Notes"],
 Cell[CellGroupData[{
 Cell[5971, 174, 283, 8, 27, "Input",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10586,        343]
-NotebookOptionsPosition[      7225,        246]
-NotebookOutlinePosition[      9887,        317]
-CellTagsIndexPosition[      9770,        311]
+NotebookDataLength[     10638,        344]
+NotebookOptionsPosition[      7224,        246]
+NotebookOutlinePosition[      9940,        318]
+CellTagsIndexPosition[      9823,        312]
 WindowTitle->TrickMandelstam
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ TrickMandelstam.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$275888], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$277792], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TrickMandelstam", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1892853704],
+ CellID->668257312],
 
 Cell[CellGroupData[{
 
@@ -164,7 +164,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1516066127],
+ CellID->1120472139],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 46.215867}", 
+   "built" -> "{2020, 1, 5, 19, 3, 40.529219}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -282,7 +282,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -292,26 +293,26 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4696, 141, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4696, 141, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1892853704]},
+   CellID->668257312]},
  "TrickMandelstam"->{
-  Cell[5330, 170, 545, 19, 33, "Input",
+  Cell[5329, 170, 545, 19, 33, "Input",
    CellTags->"TrickMandelstam",
    CellID->576381697],
-  Cell[5878, 191, 335, 12, 42, "Output",
+  Cell[5877, 191, 335, 12, 42, "Output",
    CellTags->"TrickMandelstam"],
-  Cell[6250, 208, 586, 18, 45, "Input",
+  Cell[6249, 208, 586, 18, 45, "Input",
    CellTags->"TrickMandelstam",
    CellID->2075024335],
-  Cell[6839, 228, 320, 11, 37, "Output",
+  Cell[6838, 228, 320, 11, 37, "Output",
    CellTags->"TrickMandelstam"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9264, 293},
- {"TrickMandelstam", 9407, 297}
+ {"PrimaryExamplesSection", 9318, 294},
+ {"TrickMandelstam", 9460, 298}
  }
 *)
 (*NotebookFileOutline
@@ -322,29 +323,29 @@ Cell[2892, 76, 292, 11, 45, "ObjectNameGrid"],
 Cell[3187, 89, 1484, 48, 107, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4696, 141, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4696, 141, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1892853704],
+ CellID->668257312],
 Cell[CellGroupData[{
-Cell[5109, 160, 196, 6, 26, "ExampleSection",
- CellID->1516066127],
+Cell[5108, 160, 196, 6, 26, "ExampleSection",
+ CellID->1120472139],
 Cell[CellGroupData[{
-Cell[5330, 170, 545, 19, 33, "Input",
+Cell[5329, 170, 545, 19, 33, "Input",
  CellTags->"TrickMandelstam",
  CellID->576381697],
-Cell[5878, 191, 335, 12, 42, "Output",
+Cell[5877, 191, 335, 12, 42, "Output",
  CellTags->"TrickMandelstam"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6250, 208, 586, 18, 45, "Input",
+Cell[6249, 208, 586, 18, 45, "Input",
  CellTags->"TrickMandelstam",
  CellID->2075024335],
-Cell[6839, 228, 320, 11, 37, "Output",
+Cell[6838, 228, 320, 11, 37, "Output",
  CellTags->"TrickMandelstam"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7198, 244, 23, 0, 41, "FooterCell"]
+Cell[7197, 244, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15349,        563]
+NotebookDataLength[     15347,        563]
 NotebookOptionsPosition[     10544,        403]
-NotebookOutlinePosition[     13652,        496]
-CellTagsIndexPosition[     13544,        490]
+NotebookOutlinePosition[     13650,        496]
+CellTagsIndexPosition[     13542,        490]
 WindowTitle->SumP
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$251444], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$253348], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/SumP", 
              ".html"]], None}]}]},
@@ -169,7 +169,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1901938369],
+ CellID->1669888550],
 
 Cell[CellGroupData[{
 
@@ -179,7 +179,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->122970652],
+ CellID->434549626],
 
 Cell[CellGroupData[{
 
@@ -403,8 +403,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"SumP",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -416,7 +416,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 18, 48.496323}", 
+   "built" -> "{2020, 1, 5, 19, 2, 37.315605}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -436,7 +436,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -448,7 +448,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5134, 156, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1901938369]},
+   CellID->1669888550]},
  "SumP"->{
   Cell[5767, 185, 167, 6, 27, "Input",
    CellTags->"SumP",
@@ -489,8 +489,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12361, 447},
- {"SumP", 12493, 451}
+ {"PrimaryExamplesSection", 12359, 447},
+ {"SumP", 12491, 451}
  }
 *)
 (*NotebookFileOutline
@@ -503,10 +503,10 @@ Cell[3919, 111, 1190, 41, 93, "Usage",
 Cell[CellGroupData[{
 Cell[5134, 156, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1901938369],
+ CellID->1669888550],
 Cell[CellGroupData[{
 Cell[5547, 175, 195, 6, 26, "ExampleSection",
- CellID->122970652],
+ CellID->434549626],
 Cell[CellGroupData[{
 Cell[5767, 185, 167, 6, 27, "Input",
  CellTags->"SumP",
@@ -557,14 +557,14 @@ Cell[9604, 355, 208, 7, 56, "Output",
  CellTags->"SumP"]
 }, Open  ]]
 }, Open  ]],
-Cell[9839, 366, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9839, 366, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9907, 371, 270, 12, 31, "SeeAlsoSection",
+Cell[9907, 371, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10180, 385, 322, 13, 56, "SeeAlso"]
+Cell[10180, 385, 322, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[10517, 401, 23, 0, 41, "FooterCell"]
+Cell[10517, 401, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

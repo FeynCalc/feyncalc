@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16559,        595]
-NotebookOptionsPosition[     11760,        442]
-NotebookOutlinePosition[     14714,        525]
-CellTagsIndexPosition[     14596,        519]
+NotebookDataLength[     16610,        596]
+NotebookOptionsPosition[     11759,        442]
+NotebookOutlinePosition[     14766,        526]
+CellTagsIndexPosition[     14648,        520]
 WindowTitle->ThreeDivergence
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ThreeDivergence.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$265344], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$267248], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ThreeDivergence", ".html"]], None}]}]},
@@ -135,7 +135,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1033138406],
+ CellID->562980888],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -187,7 +187,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1173496308],
+ CellID->1581051720],
 
 Cell[CellGroupData[{
 
@@ -197,7 +197,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1176564305],
+ CellID->1522001485],
 
 Cell[CellGroupData[{
 
@@ -443,7 +443,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"ThreeDivergence",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -455,7 +455,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 21.400928}", 
+   "built" -> "{2020, 1, 5, 19, 3, 14.498927}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -476,7 +476,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -486,40 +487,40 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5625, 174, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5624, 174, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1173496308]},
+   CellID->1581051720]},
  "FourDivergence"->{
-  Cell[6259, 203, 152, 5, 27, "Input",
+  Cell[6258, 203, 152, 5, 27, "Input",
    CellTags->"FourDivergence",
    CellID->1686706616],
-  Cell[6414, 210, 626, 26, 37, "Output",
+  Cell[6413, 210, 626, 26, 37, "Output",
    CellTags->"FourDivergence",
    CellID->1220009152],
-  Cell[7077, 241, 219, 7, 27, "Input",
+  Cell[7076, 241, 219, 7, 27, "Input",
    CellTags->"FourDivergence",
    CellID->1594453358],
-  Cell[7299, 250, 544, 23, 40, "Output",
+  Cell[7298, 250, 544, 23, 40, "Output",
    CellTags->"FourDivergence",
    CellID->1633407757],
-  Cell[7880, 278, 176, 6, 27, "Input",
+  Cell[7879, 278, 176, 6, 27, "Input",
    CellTags->"FourDivergence",
    CellID->1521326595],
-  Cell[8059, 286, 938, 39, 39, "Output",
+  Cell[8058, 286, 938, 39, 39, "Output",
    CellTags->"FourDivergence",
    CellID->622756803],
-  Cell[9034, 330, 218, 7, 27, "Input",
+  Cell[9033, 330, 218, 7, 27, "Input",
    CellTags->"FourDivergence",
    CellID->822682822],
-  Cell[9255, 339, 578, 24, 40, "Output",
+  Cell[9254, 339, 578, 24, 40, "Output",
    CellTags->"FourDivergence",
    CellID->1912109557]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13672, 487},
- {"FourDivergence", 13814, 491}
+ {"PrimaryExamplesSection", 13724, 488},
+ {"FourDivergence", 13866, 492}
  }
 *)
 (*NotebookFileOutline
@@ -531,72 +532,72 @@ Cell[CellGroupData[{
 Cell[3209, 91, 643, 18, 103, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3877, 113, 739, 24, 31, "NotesSection",
+Cell[3877, 113, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1033138406],
-Cell[4619, 139, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->562980888],
+Cell[4618, 139, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4675, 143, 120, 3, 27, "Input",
+Cell[4674, 143, 120, 3, 70, "Input",
  CellID->1897893490],
-Cell[4798, 148, 766, 19, 75, "Output",
+Cell[4797, 148, 766, 19, 75, "Output",
  CellID->1768309366]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5625, 174, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5624, 174, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1173496308],
+ CellID->1581051720],
 Cell[CellGroupData[{
-Cell[6038, 193, 196, 6, 26, "ExampleSection",
- CellID->1176564305],
+Cell[6037, 193, 196, 6, 26, "ExampleSection",
+ CellID->1522001485],
 Cell[CellGroupData[{
-Cell[6259, 203, 152, 5, 27, "Input",
+Cell[6258, 203, 152, 5, 27, "Input",
  CellTags->"FourDivergence",
  CellID->1686706616],
-Cell[6414, 210, 626, 26, 37, "Output",
+Cell[6413, 210, 626, 26, 37, "Output",
  CellTags->"FourDivergence",
  CellID->1220009152]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7077, 241, 219, 7, 27, "Input",
+Cell[7076, 241, 219, 7, 27, "Input",
  CellTags->"FourDivergence",
  CellID->1594453358],
-Cell[7299, 250, 544, 23, 40, "Output",
+Cell[7298, 250, 544, 23, 40, "Output",
  CellTags->"FourDivergence",
  CellID->1633407757]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7880, 278, 176, 6, 27, "Input",
+Cell[7879, 278, 176, 6, 27, "Input",
  CellTags->"FourDivergence",
  CellID->1521326595],
-Cell[8059, 286, 938, 39, 39, "Output",
+Cell[8058, 286, 938, 39, 39, "Output",
  CellTags->"FourDivergence",
  CellID->622756803]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9034, 330, 218, 7, 27, "Input",
+Cell[9033, 330, 218, 7, 27, "Input",
  CellTags->"FourDivergence",
  CellID->822682822],
-Cell[9255, 339, 578, 24, 40, "Output",
+Cell[9254, 339, 578, 24, 40, "Output",
  CellTags->"FourDivergence",
  CellID->1912109557]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9870, 368, 173, 6, 27, "Input",
+Cell[9869, 368, 173, 6, 27, "Input",
  CellID->1112899700],
-Cell[10046, 376, 495, 14, 61, "Output",
+Cell[10045, 376, 495, 14, 61, "Output",
  CellID->234224878]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10578, 395, 190, 6, 27, "Input",
+Cell[10577, 395, 190, 6, 27, "Input",
  CellID->703915902],
-Cell[10771, 403, 923, 32, 65, "Output",
+Cell[10770, 403, 923, 32, 65, "Output",
  CellID->2017197915]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[11733, 440, 23, 0, 41, "FooterCell"]
+Cell[11732, 440, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

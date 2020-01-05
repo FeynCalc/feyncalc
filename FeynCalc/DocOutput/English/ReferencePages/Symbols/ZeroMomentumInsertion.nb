@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7553,        223]
+NotebookDataLength[      7551,        223]
 NotebookOptionsPosition[      5475,        166]
-NotebookOutlinePosition[      7344,        215]
-CellTagsIndexPosition[      7301,        212]
+NotebookOutlinePosition[      7342,        215]
+CellTagsIndexPosition[      7299,        212]
 WindowTitle->ZeroMomentumInsertion
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ ZeroMomentumInsertion.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$285575], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$287479], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ZeroMomentumInsertion", ".html"]], None}]}]},
@@ -179,7 +179,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 20, 8.400470}", 
+   "built" -> "{2020, 1, 5, 19, 4, 4.479317}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

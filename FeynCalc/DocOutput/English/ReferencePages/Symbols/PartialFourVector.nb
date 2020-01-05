@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10161,        329]
+NotebookDataLength[     10163,        329]
 NotebookOptionsPosition[      7008,        239]
-NotebookOutlinePosition[      9459,        304]
-CellTagsIndexPosition[      9340,        298]
+NotebookOutlinePosition[      9461,        304]
+CellTagsIndexPosition[      9342,        298]
 WindowTitle->PartialFourVector
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ PartialFourVector.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$200086], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$201555], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PartialFourVector", ".html"]], None}]}]},
@@ -144,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->315321694],
+ CellID->1514889249],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->940437575],
+ CellID->29019256],
 
 Cell[CellGroupData[{
 
@@ -240,7 +240,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"PartialFourVector",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -252,7 +252,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 49.473603}", 
+   "built" -> "{2020, 1, 5, 19, 0, 25.291809}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -284,9 +284,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4628, 131, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4628, 131, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->315321694]},
+   CellID->1514889249]},
  "PartialFourVector"->{
   Cell[5260, 160, 383, 12, 40, "Input",
    CellTags->"PartialFourVector",
@@ -297,8 +297,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8999, 285},
- {"PartialFourVector", 9143, 289}
+ {"PrimaryExamplesSection", 9000, 285},
+ {"PartialFourVector", 9145, 289}
  }
 *)
 (*NotebookFileOutline
@@ -309,12 +309,12 @@ Cell[3709, 98, 294, 11, 45, "ObjectNameGrid"],
 Cell[4006, 111, 597, 16, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4628, 131, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4628, 131, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->315321694],
+ CellID->1514889249],
 Cell[CellGroupData[{
-Cell[5040, 150, 195, 6, 26, "ExampleSection",
- CellID->940437575],
+Cell[5041, 150, 194, 6, 26, "ExampleSection",
+ CellID->29019256],
 Cell[CellGroupData[{
 Cell[5260, 160, 383, 12, 40, "Input",
  CellTags->"PartialFourVector",

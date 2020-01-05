@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6972,        208]
+NotebookDataLength[      6971,        208]
 NotebookOptionsPosition[      4909,        151]
-NotebookOutlinePosition[      6765,        200]
-CellTagsIndexPosition[      6722,        197]
+NotebookOutlinePosition[      6764,        200]
+CellTagsIndexPosition[      6721,        197]
 WindowTitle->FeynmanParameterNames
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FeynmanParameterNames.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$135515], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136540], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynmanParameterNames", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 29.659403}", 
+   "built" -> "{2020, 1, 5, 18, 57, 43.034892}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

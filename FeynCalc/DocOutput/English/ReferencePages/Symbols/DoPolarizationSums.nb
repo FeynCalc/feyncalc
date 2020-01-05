@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     78050,       2634]
+NotebookDataLength[     78051,       2634]
 NotebookOptionsPosition[     72645,       2478]
-NotebookOutlinePosition[     75272,       2541]
-CellTagsIndexPosition[     75186,       2536]
+NotebookOutlinePosition[     75273,       2541]
+CellTagsIndexPosition[     75187,       2536]
 WindowTitle->DoPolarizationSums
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ DoPolarizationSums.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73434], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73556], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DoPolarizationSums", ".html"]], None}]}]},
@@ -184,7 +184,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1360293106],
+ CellID->852417175],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -231,7 +231,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->430293817],
+ CellID->2097904239],
 
 Cell[CellGroupData[{
 
@@ -241,7 +241,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1826546099],
+ CellID->1260285186],
 
 Cell["\<\
 The standard formula for massless vector bosons is valid for all types of the \
@@ -2491,7 +2491,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 1.905223}", 
+   "built" -> "{2020, 1, 5, 18, 54, 53.810851}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -2518,7 +2518,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -2528,9 +2528,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[7256, 218, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7255, 218, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->430293817]}
+   CellID->2097904239]}
  }
 *)
 (*CellTagsIndex
@@ -2547,23 +2547,23 @@ Cell[CellGroupData[{
 Cell[4063, 114, 1627, 44, 245, "Usage",
  CellID->2010081510],
 Cell[CellGroupData[{
-Cell[5715, 162, 739, 24, 31, "NotesSection",
+Cell[5715, 162, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1360293106],
-Cell[6457, 188, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->852417175],
+Cell[6456, 188, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[6513, 192, 101, 2, 70, "Input"],
-Cell[6617, 196, 578, 15, 56, "Output"]
+Cell[6512, 192, 101, 2, 70, "Input"],
+Cell[6616, 196, 578, 15, 56, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7256, 218, 387, 15, 31, "PrimaryExamplesSection",
+Cell[7255, 218, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->430293817],
+ CellID->2097904239],
 Cell[CellGroupData[{
 Cell[7668, 237, 196, 6, 26, "ExampleSection",
- CellID->1826546099],
+ CellID->1260285186],
 Cell[7867, 245, 147, 3, 49, "Notes"],
 Cell[8017, 250, 192, 5, 45, "Input"],
 Cell[CellGroupData[{

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    137515,       5544]
-NotebookOptionsPosition[    124754,       5139]
-NotebookOutlinePosition[    130806,       5310]
-CellTagsIndexPosition[    130687,       5304]
+NotebookDataLength[    137517,       5544]
+NotebookOptionsPosition[    124755,       5139]
+NotebookOutlinePosition[    130807,       5310]
+CellTagsIndexPosition[    130688,       5304]
 WindowTitle->FunctionalD
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ FunctionalD.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$144937], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$146406], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FunctionalD", ".html"]], None}]}]},
@@ -185,7 +185,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2068800113],
+ CellID->1314156764],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -222,7 +222,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->81999737],
+ CellID->1785706472],
 
 Cell[CellGroupData[{
 
@@ -232,7 +232,7 @@ Cell[TextData[{
  Cell["(3)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1165599747],
+ CellID->781139701],
 
 Cell[TextData[{
  "Instead of the usual ",
@@ -5152,7 +5152,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 49.614635}", 
+   "built" -> "{2020, 1, 5, 18, 58, 8.880315}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -5187,124 +5187,124 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6889, 209, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[6889, 209, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->81999737]},
+   CellID->1785706472]},
  "FunctionalD"->{
-  Cell[8184, 262, 246, 7, 27, "Input",
+  Cell[8185, 262, 246, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->622999086],
-  Cell[8433, 271, 192, 6, 35, "Output",
+  Cell[8434, 271, 192, 6, 35, "Output",
    CellTags->"FunctionalD"],
-  Cell[8662, 282, 271, 8, 27, "Input",
+  Cell[8663, 282, 271, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->272557122],
-  Cell[8936, 292, 254, 9, 37, "Output",
+  Cell[8937, 292, 254, 9, 37, "Output",
    CellTags->"FunctionalD"],
-  Cell[10542, 352, 316, 9, 27, "Input",
+  Cell[10543, 352, 316, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1655052767],
-  Cell[10861, 363, 358, 13, 45, "Output",
+  Cell[10862, 363, 358, 13, 45, "Output",
    CellTags->"FunctionalD"],
-  Cell[12006, 405, 611, 20, 45, "Input",
+  Cell[12007, 405, 611, 20, 45, "Input",
    CellTags->"FunctionalD",
    CellID->593299923],
-  Cell[12620, 427, 1018, 38, 56, "Output",
+  Cell[12621, 427, 1018, 38, 56, "Output",
    CellTags->"FunctionalD"],
-  Cell[13675, 470, 202, 6, 27, "Input",
+  Cell[13676, 470, 202, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1102630385],
-  Cell[13880, 478, 775, 31, 42, "Output",
+  Cell[13881, 478, 775, 31, 42, "Output",
    CellTags->"FunctionalD"],
-  Cell[15330, 538, 333, 9, 27, "Input",
+  Cell[15331, 538, 333, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->575936469],
-  Cell[15666, 549, 1719, 75, 43, "Output",
+  Cell[15667, 549, 1719, 75, 43, "Output",
    CellTags->"FunctionalD"],
-  Cell[17422, 629, 334, 9, 27, "Input",
+  Cell[17423, 629, 334, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1966798854],
-  Cell[17759, 640, 1719, 75, 43, "Output",
+  Cell[17760, 640, 1719, 75, 43, "Output",
    CellTags->"FunctionalD"],
-  Cell[19515, 720, 234, 9, 27, "Input",
+  Cell[19516, 720, 234, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->733226876],
-  Cell[19752, 731, 3798, 150, 56, "Output",
+  Cell[19753, 731, 3798, 150, 56, "Output",
    CellTags->"FunctionalD"],
-  Cell[25726, 958, 249, 8, 27, "Input",
+  Cell[25727, 958, 249, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->371171043],
-  Cell[25978, 968, 405, 17, 38, "Output",
+  Cell[25979, 968, 405, 17, 38, "Output",
    CellTags->"FunctionalD"],
-  Cell[26420, 990, 159, 5, 27, "Input",
+  Cell[26421, 990, 159, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2041925168],
-  Cell[26582, 997, 3236, 139, 46, "Output",
+  Cell[26583, 997, 3236, 139, 46, "Output",
    CellTags->"FunctionalD"],
-  Cell[33993, 1313, 541, 17, 46, "Input",
+  Cell[33994, 1313, 541, 17, 46, "Input",
    CellTags->"FunctionalD",
    CellID->324247296],
-  Cell[34559, 1334, 248, 8, 27, "Input",
+  Cell[34560, 1334, 248, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->659226066],
-  Cell[34810, 1344, 503, 22, 40, "Output",
+  Cell[34811, 1344, 503, 22, 40, "Output",
    CellTags->"FunctionalD"],
-  Cell[35350, 1371, 259, 8, 27, "Input",
+  Cell[35351, 1371, 259, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2097130638],
-  Cell[35612, 1381, 537, 23, 40, "Output",
+  Cell[35613, 1381, 537, 23, 40, "Output",
    CellTags->"FunctionalD"],
-  Cell[36186, 1409, 599, 17, 45, "Input",
+  Cell[36187, 1409, 599, 17, 45, "Input",
    CellTags->"FunctionalD",
    CellID->1711609273],
-  Cell[36788, 1428, 3435, 146, 56, "Output",
+  Cell[36789, 1428, 3435, 146, 56, "Output",
    CellTags->"FunctionalD"],
-  Cell[42435, 1672, 372, 12, 27, "Input",
+  Cell[42436, 1672, 372, 12, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2111632726],
-  Cell[42810, 1686, 1508, 66, 40, "Output",
+  Cell[42811, 1686, 1508, 66, 40, "Output",
    CellTags->"FunctionalD"],
-  Cell[44940, 1780, 125, 4, 27, "Input",
+  Cell[44941, 1780, 125, 4, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1996431184],
-  Cell[45068, 1786, 3799, 150, 56, "Output",
+  Cell[45069, 1786, 3799, 150, 56, "Output",
    CellTags->"FunctionalD"],
-  Cell[48904, 1941, 214, 7, 27, "Input",
+  Cell[48905, 1941, 214, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1238326201],
-  Cell[49121, 1950, 26569, 1132, 392, "Output",
+  Cell[49122, 1950, 26569, 1132, 392, "Output",
    CellTags->"FunctionalD"],
-  Cell[90495, 3700, 174, 5, 27, "Input",
+  Cell[90496, 3700, 174, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1144637557],
-  Cell[90672, 3707, 5717, 235, 91, "Output",
+  Cell[90673, 3707, 5717, 235, 91, "Output",
    CellTags->"FunctionalD"],
-  Cell[98156, 4026, 845, 23, 62, "Input",
+  Cell[98157, 4026, 845, 23, 62, "Input",
    CellTags->"FunctionalD",
    CellID->611111290],
-  Cell[99004, 4051, 1592, 65, 46, "Output",
+  Cell[99005, 4051, 1592, 65, 46, "Output",
    CellTags->"FunctionalD"],
-  Cell[100633, 4121, 157, 5, 27, "Input",
+  Cell[100634, 4121, 157, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1841998165],
-  Cell[100793, 4128, 4463, 175, 72, "Output",
+  Cell[100794, 4128, 4463, 175, 72, "Output",
    CellTags->"FunctionalD"],
-  Cell[105293, 4308, 201, 7, 27, "Input",
+  Cell[105294, 4308, 201, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->256131363],
-  Cell[105497, 4317, 7234, 309, 66, "Output",
+  Cell[105498, 4317, 7234, 309, 66, "Output",
    CellTags->"FunctionalD"],
-  Cell[112768, 4631, 158, 5, 27, "Input",
+  Cell[112769, 4631, 158, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1098654926],
-  Cell[112929, 4638, 10266, 429, 118, "Output",
+  Cell[112930, 4638, 10266, 429, 118, "Output",
    CellTags->"FunctionalD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 126965, 5188},
- {"FunctionalD", 127102, 5192}
+ {"PrimaryExamplesSection", 126964, 5188},
+ {"FunctionalD", 127103, 5192}
  }
 *)
 (*NotebookFileOutline
@@ -5318,234 +5318,234 @@ Cell[4008, 113, 1696, 46, 165, "Usage",
 Cell[CellGroupData[{
 Cell[5729, 163, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2068800113],
+ CellID->1314156764],
 Cell[6471, 189, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[6505, 191, 335, 12, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6889, 209, 386, 15, 31, "PrimaryExamplesSection",
+Cell[6889, 209, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->81999737],
+ CellID->1785706472],
 Cell[CellGroupData[{
-Cell[7300, 228, 196, 6, 26, "ExampleSection",
- CellID->1165599747],
-Cell[7499, 236, 660, 22, 49, "Notes"],
+Cell[7302, 228, 195, 6, 26, "ExampleSection",
+ CellID->781139701],
+Cell[7500, 236, 660, 22, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[8184, 262, 246, 7, 27, "Input",
+Cell[8185, 262, 246, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->622999086],
-Cell[8433, 271, 192, 6, 35, "Output",
+Cell[8434, 271, 192, 6, 35, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8662, 282, 271, 8, 27, "Input",
+Cell[8663, 282, 271, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->272557122],
-Cell[8936, 292, 254, 9, 37, "Output",
+Cell[8937, 292, 254, 9, 37, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9227, 306, 105, 2, 9, "ExampleDelimiter"],
-Cell[9335, 310, 1182, 38, 80, "Notes"],
+Cell[9228, 306, 105, 2, 9, "ExampleDelimiter"],
+Cell[9336, 310, 1182, 38, 80, "Notes"],
 Cell[CellGroupData[{
-Cell[10542, 352, 316, 9, 27, "Input",
+Cell[10543, 352, 316, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1655052767],
-Cell[10861, 363, 358, 13, 45, "Output",
+Cell[10862, 363, 358, 13, 45, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[11234, 379, 747, 22, 35, "Notes"],
+Cell[11235, 379, 747, 22, 35, "Notes"],
 Cell[CellGroupData[{
-Cell[12006, 405, 611, 20, 45, "Input",
+Cell[12007, 405, 611, 20, 45, "Input",
  CellTags->"FunctionalD",
  CellID->593299923],
-Cell[12620, 427, 1018, 38, 56, "Output",
+Cell[12621, 427, 1018, 38, 56, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13675, 470, 202, 6, 27, "Input",
+Cell[13676, 470, 202, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1102630385],
-Cell[13880, 478, 775, 31, 42, "Output",
+Cell[13881, 478, 775, 31, 42, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14704, 515, 105, 2, 9, "ExampleDelimiter"],
-Cell[14812, 519, 458, 13, 42, "Notes"],
-Cell[15273, 534, 32, 0, 32, "Notes"],
+Cell[14705, 515, 105, 2, 9, "ExampleDelimiter"],
+Cell[14813, 519, 458, 13, 42, "Notes"],
+Cell[15274, 534, 32, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[15330, 538, 333, 9, 27, "Input",
+Cell[15331, 538, 333, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->575936469],
-Cell[15666, 549, 1719, 75, 43, "Output",
+Cell[15667, 549, 1719, 75, 43, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17422, 629, 334, 9, 27, "Input",
+Cell[17423, 629, 334, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1966798854],
-Cell[17759, 640, 1719, 75, 43, "Output",
+Cell[17760, 640, 1719, 75, 43, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19515, 720, 234, 9, 27, "Input",
+Cell[19516, 720, 234, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->733226876],
-Cell[19752, 731, 3798, 150, 56, "Output",
+Cell[19753, 731, 3798, 150, 56, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[23565, 884, 433, 9, 68, "Notes"],
-Cell[24001, 895, 97, 2, 32, "Notes"],
-Cell[24101, 899, 1315, 43, 35, "Notes"],
-Cell[25419, 944, 282, 10, 34, "Notes"],
+Cell[23566, 884, 433, 9, 68, "Notes"],
+Cell[24002, 895, 97, 2, 32, "Notes"],
+Cell[24102, 899, 1315, 43, 35, "Notes"],
+Cell[25420, 944, 282, 10, 34, "Notes"],
 Cell[CellGroupData[{
-Cell[25726, 958, 249, 8, 27, "Input",
+Cell[25727, 958, 249, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->371171043],
-Cell[25978, 968, 405, 17, 38, "Output",
+Cell[25979, 968, 405, 17, 38, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26420, 990, 159, 5, 27, "Input",
+Cell[26421, 990, 159, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2041925168],
-Cell[26582, 997, 3236, 139, 46, "Output",
+Cell[26583, 997, 3236, 139, 46, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[29833, 1139, 253, 7, 32, "Notes"],
+Cell[29834, 1139, 253, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[30111, 1150, 279, 8, 27, "Input"],
-Cell[30393, 1160, 3210, 138, 46, "Output"]
+Cell[30112, 1150, 279, 8, 27, "Input"],
+Cell[30394, 1160, 3210, 138, 46, "Output"]
 }, Open  ]],
-Cell[33618, 1301, 372, 10, 51, "Notes"],
-Cell[33993, 1313, 541, 17, 46, "Input",
+Cell[33619, 1301, 372, 10, 51, "Notes"],
+Cell[33994, 1313, 541, 17, 46, "Input",
  CellTags->"FunctionalD",
  CellID->324247296],
 Cell[CellGroupData[{
-Cell[34559, 1334, 248, 8, 27, "Input",
+Cell[34560, 1334, 248, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->659226066],
-Cell[34810, 1344, 503, 22, 40, "Output",
+Cell[34811, 1344, 503, 22, 40, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35350, 1371, 259, 8, 27, "Input",
+Cell[35351, 1371, 259, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2097130638],
-Cell[35612, 1381, 537, 23, 40, "Output",
+Cell[35613, 1381, 537, 23, 40, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36186, 1409, 599, 17, 45, "Input",
+Cell[36187, 1409, 599, 17, 45, "Input",
  CellTags->"FunctionalD",
  CellID->1711609273],
-Cell[36788, 1428, 3435, 146, 56, "Output",
+Cell[36789, 1428, 3435, 146, 56, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40260, 1579, 527, 15, 45, "Input"],
-Cell[40790, 1596, 1608, 71, 40, "Output"]
+Cell[40261, 1579, 527, 15, 45, "Input"],
+Cell[40791, 1596, 1608, 71, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42435, 1672, 372, 12, 27, "Input",
+Cell[42436, 1672, 372, 12, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2111632726],
-Cell[42810, 1686, 1508, 66, 40, "Output",
+Cell[42811, 1686, 1508, 66, 40, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[44333, 1755, 329, 12, 36, "Notes"],
-Cell[44665, 1769, 33, 0, 32, "Notes"],
-Cell[44701, 1771, 214, 5, 48, "Notes"],
+Cell[44334, 1755, 329, 12, 36, "Notes"],
+Cell[44666, 1769, 33, 0, 32, "Notes"],
+Cell[44702, 1771, 214, 5, 48, "Notes"],
 Cell[CellGroupData[{
-Cell[44940, 1780, 125, 4, 27, "Input",
+Cell[44941, 1780, 125, 4, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1996431184],
-Cell[45068, 1786, 3799, 150, 56, "Output",
+Cell[45069, 1786, 3799, 150, 56, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48904, 1941, 214, 7, 27, "Input",
+Cell[48905, 1941, 214, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1238326201],
-Cell[49121, 1950, 26569, 1132, 392, "Output",
+Cell[49122, 1950, 26569, 1132, 392, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[75705, 3085, 211, 4, 49, "Notes"],
-Cell[75919, 3091, 260, 5, 66, "Notes"],
-Cell[76182, 3098, 354, 10, 47, "Input"],
+Cell[75706, 3085, 211, 4, 49, "Notes"],
+Cell[75920, 3091, 260, 5, 66, "Notes"],
+Cell[76183, 3098, 354, 10, 47, "Input"],
 Cell[CellGroupData[{
-Cell[76561, 3112, 1113, 30, 96, "Input"],
-Cell[77677, 3144, 7164, 299, 107, "Output"]
+Cell[76562, 3112, 1113, 30, 96, "Input"],
+Cell[77678, 3144, 7164, 299, 107, "Output"]
 }, Open  ]],
-Cell[84856, 3446, 187, 7, 32, "Notes"],
+Cell[84857, 3446, 187, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[85068, 3457, 319, 11, 29, "Input"],
-Cell[85390, 3470, 3051, 134, 56, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[88478, 3609, 475, 16, 27, "Input"],
-Cell[88956, 3627, 1502, 68, 43, "Output"]
+Cell[85069, 3457, 319, 11, 29, "Input"],
+Cell[85391, 3470, 3051, 134, 56, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[90495, 3700, 174, 5, 27, "Input",
+Cell[88479, 3609, 475, 16, 27, "Input"],
+Cell[88957, 3627, 1502, 68, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[90496, 3700, 174, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1144637557],
-Cell[90672, 3707, 5717, 235, 91, "Output",
+Cell[90673, 3707, 5717, 235, 91, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[96404, 3945, 153, 4, 32, "Notes"],
+Cell[96405, 3945, 153, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[96582, 3953, 52, 1, 27, "Input"],
-Cell[96637, 3956, 1482, 65, 40, "Output"]
+Cell[96583, 3953, 52, 1, 27, "Input"],
+Cell[96638, 3956, 1482, 65, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[98156, 4026, 845, 23, 62, "Input",
+Cell[98157, 4026, 845, 23, 62, "Input",
  CellTags->"FunctionalD",
  CellID->611111290],
-Cell[99004, 4051, 1592, 65, 46, "Output",
+Cell[99005, 4051, 1592, 65, 46, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[100633, 4121, 157, 5, 27, "Input",
+Cell[100634, 4121, 157, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1841998165],
-Cell[100793, 4128, 4463, 175, 72, "Output",
+Cell[100794, 4128, 4463, 175, 72, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[105293, 4308, 201, 7, 27, "Input",
+Cell[105294, 4308, 201, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->256131363],
-Cell[105497, 4317, 7234, 309, 66, "Output",
+Cell[105498, 4317, 7234, 309, 66, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[112768, 4631, 158, 5, 27, "Input",
+Cell[112769, 4631, 158, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1098654926],
-Cell[112929, 4638, 10266, 429, 118, "Output",
+Cell[112930, 4638, 10266, 429, 118, "Output",
  CellTags->"FunctionalD"]
 }, Open  ]],
-Cell[123210, 5070, 29, 0, 32, "Notes"],
+Cell[123211, 5070, 29, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[123264, 5074, 102, 2, 27, "Input"],
-Cell[123369, 5078, 167, 5, 35, "Output"]
+Cell[123265, 5074, 102, 2, 27, "Input"],
+Cell[123370, 5078, 167, 5, 35, "Output"]
 }, Open  ]],
-Cell[123551, 5086, 69, 0, 32, "Notes"],
-Cell[123623, 5088, 363, 10, 47, "Input"]
+Cell[123552, 5086, 69, 0, 32, "Notes"],
+Cell[123624, 5088, 363, 10, 47, "Input"]
 }, Open  ]]
 }, Open  ]],
-Cell[124013, 5102, 31, 0, 29, "SectionFooterSpacer"]
+Cell[124014, 5102, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[124081, 5107, 270, 12, 31, "SeeAlsoSection",
+Cell[124082, 5107, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[124354, 5121, 358, 13, 56, "SeeAlso"]
+Cell[124355, 5121, 358, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[124727, 5137, 23, 0, 41, "FooterCell"]
+Cell[124728, 5137, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

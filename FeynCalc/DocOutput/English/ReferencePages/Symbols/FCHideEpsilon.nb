@@ -59,7 +59,7 @@ FCHideEpsilon.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$102182], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$103207], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCHideEpsilon", ".html"]], None}]}]},
@@ -137,7 +137,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->123832989],
+ CellID->1137093577],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -192,7 +192,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1187495284],
+ CellID->1246769443],
 
 Cell[CellGroupData[{
 
@@ -202,7 +202,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2054308118],
+ CellID->986467167],
 
 Cell[CellGroupData[{
 
@@ -340,7 +340,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"FCHideEpsilon",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -352,7 +352,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 13, 9.885215}", 
+   "built" -> "{2020, 1, 5, 18, 56, 12.433420}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -373,7 +373,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -383,9 +383,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5543, 179, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5544, 179, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1187495284]}
+   CellID->1246769443]}
  }
 *)
 (*CellTagsIndex
@@ -402,25 +402,25 @@ Cell[CellGroupData[{
 Cell[3197, 91, 667, 20, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3889, 115, 738, 24, 31, "NotesSection",
+Cell[3889, 115, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->123832989],
-Cell[4630, 141, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1137093577],
+Cell[4631, 141, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4686, 145, 116, 3, 70, "Input",
+Cell[4687, 145, 116, 3, 70, "Input",
  CellID->875137331],
-Cell[4805, 150, 677, 22, 37, "Output",
+Cell[4806, 150, 677, 22, 37, "Output",
  CellID->1011910224]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5543, 179, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5544, 179, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1187495284],
+ CellID->1246769443],
 Cell[CellGroupData[{
-Cell[5956, 198, 196, 6, 26, "ExampleSection",
- CellID->2054308118],
+Cell[5957, 198, 195, 6, 26, "ExampleSection",
+ CellID->986467167],
 Cell[CellGroupData[{
 Cell[6177, 208, 190, 6, 27, "Input",
  CellID->689856247],

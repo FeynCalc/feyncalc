@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6951,        210]
+NotebookDataLength[      6948,        210]
 NotebookOptionsPosition[      4872,        153]
-NotebookOutlinePosition[      6744,        202]
-CellTagsIndexPosition[      6701,        199]
+NotebookOutlinePosition[      6741,        202]
+CellTagsIndexPosition[      6698,        199]
 WindowTitle->OneLoopSum
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ OneLoopSum.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$191675], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$193144], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OneLoopSum", ".html"]], None}]}]},
@@ -166,7 +166,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 32.065415}", 
+   "built" -> "{2020, 1, 5, 19, 0, 5.777966}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

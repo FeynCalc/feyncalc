@@ -59,7 +59,7 @@ TemporalPair.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$263159], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$265063], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TemporalPair", ".html"]], None}]}]},
@@ -122,7 +122,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1112041477],
+ CellID->1397856466],
 
 Cell[CellGroupData[{
 
@@ -132,7 +132,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1433950706],
+ CellID->1733671442],
 
 Cell[CellGroupData[{
 
@@ -221,7 +221,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"TemporalPair",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -233,7 +233,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 16.194578}", 
+   "built" -> "{2020, 1, 5, 19, 3, 9.082738}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -255,7 +255,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -267,7 +267,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3788, 109, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1112041477]}
+   CellID->1397856466]}
  }
 *)
 (*CellTagsIndex
@@ -285,10 +285,10 @@ Cell[3169, 89, 594, 16, 102, "Usage",
 Cell[CellGroupData[{
 Cell[3788, 109, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1112041477],
+ CellID->1397856466],
 Cell[CellGroupData[{
 Cell[4201, 128, 196, 6, 26, "ExampleSection",
- CellID->1433950706],
+ CellID->1733671442],
 Cell[CellGroupData[{
 Cell[4422, 138, 224, 6, 27, "Input",
  CellID->1437571233],

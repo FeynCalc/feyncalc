@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16623,        572]
-NotebookOptionsPosition[     11350,        404]
-NotebookOutlinePosition[     14745,        503]
-CellTagsIndexPosition[     14631,        497]
+NotebookDataLength[     16617,        572]
+NotebookOptionsPosition[     11348,        404]
+NotebookOutlinePosition[     14741,        503]
+CellTagsIndexPosition[     14627,        497]
 WindowTitle->Commutator
 WindowFrame->Normal*)
 
@@ -85,7 +85,7 @@ Commutator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44035], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44153], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Commutator", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1999594661],
+ CellID->620734353],
 
 Cell[CellGroupData[{
 
@@ -161,7 +161,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1052307569],
+ CellID->837014992],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
@@ -404,8 +404,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Commutator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -417,7 +417,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 50.132212}", 
+   "built" -> "{2020, 1, 5, 18, 53, 33.651179}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -448,56 +448,56 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4818, 138, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4818, 138, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1999594661]},
+   CellID->620734353]},
  "Commutator"->{
-  Cell[5430, 165, 186, 5, 27, "Input",
+  Cell[5428, 165, 186, 5, 27, "Input",
    CellTags->"Commutator",
    CellID->2000059968],
-  Cell[5641, 174, 154, 5, 27, "Input",
+  Cell[5639, 174, 154, 5, 27, "Input",
    CellTags->"Commutator",
    CellID->922767227],
-  Cell[5798, 181, 334, 11, 35, "Output",
+  Cell[5796, 181, 334, 11, 35, "Output",
    CellTags->"Commutator"],
-  Cell[6169, 197, 140, 4, 27, "Input",
+  Cell[6167, 197, 140, 4, 27, "Input",
    CellTags->"Commutator",
    CellID->1899692439],
-  Cell[6312, 203, 262, 9, 35, "Output",
+  Cell[6310, 203, 262, 9, 35, "Output",
    CellTags->"Commutator"],
-  Cell[6611, 217, 266, 9, 27, "Input",
+  Cell[6609, 217, 266, 9, 27, "Input",
    CellTags->"Commutator",
    CellID->1084501087],
-  Cell[6880, 228, 467, 15, 35, "Output",
+  Cell[6878, 228, 467, 15, 35, "Output",
    CellTags->"Commutator"],
-  Cell[7362, 246, 188, 5, 27, "Input",
+  Cell[7360, 246, 188, 5, 27, "Input",
    CellTags->"Commutator",
    CellID->1895253329],
-  Cell[7600, 255, 247, 7, 27, "Input",
+  Cell[7598, 255, 247, 7, 27, "Input",
    CellTags->"Commutator",
    CellID->1446605314],
-  Cell[7872, 266, 481, 16, 27, "Input",
+  Cell[7870, 266, 481, 16, 27, "Input",
    CellTags->"Commutator",
    CellID->698764152],
-  Cell[8356, 284, 1143, 37, 37, "Output",
+  Cell[8354, 284, 1143, 37, 37, "Output",
    CellTags->"Commutator"],
-  Cell[9536, 326, 133, 4, 27, "Input",
+  Cell[9534, 326, 133, 4, 27, "Input",
    CellTags->"Commutator",
    CellID->1391154075],
-  Cell[9672, 332, 191, 6, 35, "Output",
+  Cell[9670, 332, 191, 6, 35, "Output",
    CellTags->"Commutator"],
-  Cell[9878, 341, 132, 4, 70, "Input",
+  Cell[9876, 341, 132, 4, 27, "Input",
    CellTags->"Commutator",
    CellID->1837954422],
-  Cell[10013, 347, 179, 5, 70, "Input",
+  Cell[10011, 347, 179, 5, 27, "Input",
    CellTags->"Commutator",
    CellID->2037252072]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13225, 449},
- {"Commutator", 13363, 453}
+ {"PrimaryExamplesSection", 13222, 449},
+ {"Commutator", 13359, 453}
  }
 *)
 (*NotebookFileOutline
@@ -508,72 +508,72 @@ Cell[3935, 103, 287, 11, 45, "ObjectNameGrid"],
 Cell[4225, 116, 568, 18, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4818, 138, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4818, 138, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1999594661],
+ CellID->620734353],
 Cell[CellGroupData[{
-Cell[5231, 157, 196, 6, 26, "ExampleSection",
- CellID->1052307569],
-Cell[5430, 165, 186, 5, 27, "Input",
+Cell[5230, 157, 195, 6, 26, "ExampleSection",
+ CellID->837014992],
+Cell[5428, 165, 186, 5, 27, "Input",
  CellTags->"Commutator",
  CellID->2000059968],
 Cell[CellGroupData[{
-Cell[5641, 174, 154, 5, 27, "Input",
+Cell[5639, 174, 154, 5, 27, "Input",
  CellTags->"Commutator",
  CellID->922767227],
-Cell[5798, 181, 334, 11, 35, "Output",
+Cell[5796, 181, 334, 11, 35, "Output",
  CellTags->"Commutator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6169, 197, 140, 4, 27, "Input",
+Cell[6167, 197, 140, 4, 27, "Input",
  CellTags->"Commutator",
  CellID->1899692439],
-Cell[6312, 203, 262, 9, 35, "Output",
+Cell[6310, 203, 262, 9, 35, "Output",
  CellTags->"Commutator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6611, 217, 266, 9, 27, "Input",
+Cell[6609, 217, 266, 9, 27, "Input",
  CellTags->"Commutator",
  CellID->1084501087],
-Cell[6880, 228, 467, 15, 35, "Output",
+Cell[6878, 228, 467, 15, 35, "Output",
  CellTags->"Commutator"]
 }, Open  ]],
-Cell[7362, 246, 188, 5, 27, "Input",
+Cell[7360, 246, 188, 5, 27, "Input",
  CellTags->"Commutator",
  CellID->1895253329],
-Cell[7553, 253, 44, 0, 32, "Notes"],
-Cell[7600, 255, 247, 7, 27, "Input",
+Cell[7551, 253, 44, 0, 32, "Notes"],
+Cell[7598, 255, 247, 7, 27, "Input",
  CellTags->"Commutator",
  CellID->1446605314],
 Cell[CellGroupData[{
-Cell[7872, 266, 481, 16, 27, "Input",
+Cell[7870, 266, 481, 16, 27, "Input",
  CellTags->"Commutator",
  CellID->698764152],
-Cell[8356, 284, 1143, 37, 37, "Output",
+Cell[8354, 284, 1143, 37, 37, "Output",
  CellTags->"Commutator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9536, 326, 133, 4, 27, "Input",
+Cell[9534, 326, 133, 4, 27, "Input",
  CellTags->"Commutator",
  CellID->1391154075],
-Cell[9672, 332, 191, 6, 35, "Output",
+Cell[9670, 332, 191, 6, 35, "Output",
  CellTags->"Commutator"]
 }, Open  ]],
-Cell[9878, 341, 132, 4, 70, "Input",
+Cell[9876, 341, 132, 4, 27, "Input",
  CellTags->"Commutator",
  CellID->1837954422],
-Cell[10013, 347, 179, 5, 70, "Input",
+Cell[10011, 347, 179, 5, 27, "Input",
  CellTags->"Commutator",
  CellID->2037252072]
 }, Open  ]],
-Cell[10207, 355, 31, 0, 70, "SectionFooterSpacer"]
+Cell[10205, 355, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10275, 360, 270, 12, 70, "SeeAlsoSection",
+Cell[10273, 360, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10548, 374, 760, 25, 70, "SeeAlso"]
+Cell[10546, 374, 760, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11323, 402, 23, 0, 70, "FooterCell"]
+Cell[11321, 402, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

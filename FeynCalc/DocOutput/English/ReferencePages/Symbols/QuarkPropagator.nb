@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15614,        541]
-NotebookOptionsPosition[     11530,        416]
-NotebookOutlinePosition[     14020,        484]
-CellTagsIndexPosition[     13901,        478]
+NotebookDataLength[     15667,        542]
+NotebookOptionsPosition[     11529,        416]
+NotebookOutlinePosition[     14074,        485]
+CellTagsIndexPosition[     13955,        479]
 WindowTitle->QuarkPropagator
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ QuarkPropagator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$218611], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$220080], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/QuarkPropagator", ".html"]], None}]}]},
@@ -160,7 +160,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->386684581],
+ CellID->377938345],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -219,7 +219,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->586875671],
+ CellID->708793879],
 
 Cell[CellGroupData[{
 
@@ -229,7 +229,7 @@ Cell[TextData[{
  Cell["(2)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1478725166],
+ CellID->438324506],
 
 Cell[CellGroupData[{
 
@@ -417,7 +417,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"QuarkPropagator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -429,7 +429,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 31.804618}", 
+   "built" -> "{2020, 1, 5, 19, 1, 13.015421}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -449,7 +449,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -461,24 +462,24 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6584, 206, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->586875671]},
+   CellID->708793879]},
  "QuarkPropagator"->{
-  Cell[7217, 235, 205, 6, 27, "Input",
+  Cell[7216, 235, 205, 6, 27, "Input",
    CellTags->"QuarkPropagator",
    CellID->1589814930],
-  Cell[7425, 243, 651, 24, 60, "Output",
+  Cell[7424, 243, 651, 24, 60, "Output",
    CellTags->"QuarkPropagator"],
-  Cell[8113, 272, 254, 8, 27, "Input",
+  Cell[8112, 272, 254, 8, 27, "Input",
    CellTags->"QuarkPropagator",
    CellID->1965811029],
-  Cell[8370, 282, 848, 29, 60, "Output",
+  Cell[8369, 282, 848, 29, 60, "Output",
    CellTags->"QuarkPropagator"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13397, 460},
- {"QuarkPropagator", 13539, 464}
+ {"PrimaryExamplesSection", 13451, 461},
+ {"QuarkPropagator", 13593, 465}
  }
 *)
 (*NotebookFileOutline
@@ -492,12 +493,12 @@ Cell[4062, 114, 674, 20, 148, "Usage",
 Cell[CellGroupData[{
 Cell[4761, 138, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->386684581],
-Cell[5502, 164, 31, 0, 14, "SectionHeaderSpacer"],
-Cell[5536, 166, 271, 9, 32, "Notes",
+ CellID->377938345],
+Cell[5502, 164, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5536, 166, 271, 9, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[5832, 179, 98, 2, 27, "Input"],
+Cell[5832, 179, 98, 2, 70, "Input"],
 Cell[5933, 183, 590, 16, 56, "Output"]
 }, Open  ]]
 }, Closed]]
@@ -505,44 +506,44 @@ Cell[5933, 183, 590, 16, 56, "Output"]
 Cell[CellGroupData[{
 Cell[6584, 206, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->586875671],
+ CellID->708793879],
 Cell[CellGroupData[{
-Cell[6996, 225, 196, 6, 26, "ExampleSection",
- CellID->1478725166],
+Cell[6996, 225, 195, 6, 26, "ExampleSection",
+ CellID->438324506],
 Cell[CellGroupData[{
-Cell[7217, 235, 205, 6, 27, "Input",
+Cell[7216, 235, 205, 6, 27, "Input",
  CellTags->"QuarkPropagator",
  CellID->1589814930],
-Cell[7425, 243, 651, 24, 60, "Output",
+Cell[7424, 243, 651, 24, 60, "Output",
  CellTags->"QuarkPropagator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8113, 272, 254, 8, 27, "Input",
+Cell[8112, 272, 254, 8, 27, "Input",
  CellTags->"QuarkPropagator",
  CellID->1965811029],
-Cell[8370, 282, 848, 29, 60, "Output",
+Cell[8369, 282, 848, 29, 60, "Output",
  CellTags->"QuarkPropagator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9255, 316, 105, 2, 9, "ExampleDelimiter"],
+Cell[9254, 316, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[9385, 322, 125, 4, 27, "Input"],
-Cell[9513, 328, 262, 9, 39, "Output"]
+Cell[9384, 322, 125, 4, 27, "Input"],
+Cell[9512, 328, 262, 9, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9812, 342, 84, 2, 27, "Input"],
-Cell[9899, 346, 818, 28, 60, "Output"]
+Cell[9811, 342, 84, 2, 27, "Input"],
+Cell[9898, 346, 818, 28, 60, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[10756, 379, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10755, 379, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10824, 384, 270, 12, 31, "SeeAlsoSection",
+Cell[10823, 384, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11097, 398, 391, 13, 56, "SeeAlso"]
+Cell[11096, 398, 391, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[11503, 414, 23, 0, 41, "FooterCell"]
+Cell[11502, 414, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

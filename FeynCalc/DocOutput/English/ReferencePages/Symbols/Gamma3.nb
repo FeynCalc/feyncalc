@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7321,        222]
+NotebookDataLength[      7320,        222]
 NotebookOptionsPosition[      5202,        164]
-NotebookOutlinePosition[      7113,        214]
-CellTagsIndexPosition[      7070,        211]
+NotebookOutlinePosition[      7112,        214]
+CellTagsIndexPosition[      7069,        211]
 WindowTitle->Gamma3
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$149452], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$150921], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Gamma3", ".html"]], None}]}]},
@@ -177,7 +177,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 59.582887}", 
+   "built" -> "{2020, 1, 5, 18, 58, 20.517376}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

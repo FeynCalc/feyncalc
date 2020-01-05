@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9125,        298]
+NotebookDataLength[      9180,        299]
 NotebookOptionsPosition[      6528,        218]
-NotebookOutlinePosition[      8517,        275]
-CellTagsIndexPosition[      8450,        270]
+NotebookOutlinePosition[      8572,        276]
+CellTagsIndexPosition[      8505,        271]
 WindowTitle->TLIFP
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$268005], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$269909], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/TLIFP",
               ".html"]], None}]}]},
@@ -150,7 +150,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1712731598],
+ CellID->1385056397],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -218,8 +218,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"TLIFP",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -231,7 +231,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 27.503804}", 
+   "built" -> "{2020, 1, 5, 19, 3, 20.870965}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -250,7 +250,8 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -260,7 +261,7 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "TLIFP"->{
-  Cell[5077, 158, 128, 4, 27, "Input",
+  Cell[5077, 158, 128, 4, 70, "Input",
    CellTags->"TLIFP",
    CellID->1039512168],
   Cell[5208, 164, 772, 21, 56, "Output",
@@ -269,7 +270,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"TLIFP", 8277, 261}
+ {"TLIFP", 8332, 262}
  }
 *)
 (*NotebookFileOutline
@@ -283,10 +284,10 @@ Cell[3866, 112, 388, 12, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4279, 128, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1712731598],
-Cell[5021, 154, 31, 0, 14, "SectionHeaderSpacer"],
+ CellID->1385056397],
+Cell[5021, 154, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5077, 158, 128, 4, 27, "Input",
+Cell[5077, 158, 128, 4, 70, "Input",
  CellTags->"TLIFP",
  CellID->1039512168],
 Cell[5208, 164, 772, 21, 56, "Output",

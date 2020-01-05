@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10104,        314]
+NotebookDataLength[     10102,        314]
 NotebookOptionsPosition[      7154,        226]
-NotebookOutlinePosition[      9417,        289]
-CellTagsIndexPosition[      9307,        283]
+NotebookOutlinePosition[      9415,        289]
+CellTagsIndexPosition[      9305,        283]
 WindowTitle->$NonComm
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$295603], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$297507], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/$NonComm", ".html"]], None}]}]},
@@ -138,7 +138,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1916770044],
+ CellID->1285384359],
 
 Cell[CellGroupData[{
 
@@ -148,7 +148,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1026749887],
+ CellID->1652586844],
 
 Cell[CellGroupData[{
 
@@ -239,7 +239,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 20, 30.899990}", 
+   "built" -> "{2020, 1, 5, 19, 4, 28.233456}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -271,7 +271,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4350, 125, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1916770044]},
+   CellID->1285384359]},
  "$NonComm"->{
   Cell[4984, 154, 101, 3, 27, "Input",
    CellTags->"$NonComm",
@@ -282,8 +282,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8990, 270},
- {"$NonComm", 9126, 274}
+ {"PrimaryExamplesSection", 8988, 270},
+ {"$NonComm", 9124, 274}
  }
 *)
 (*NotebookFileOutline
@@ -296,10 +296,10 @@ Cell[3971, 111, 354, 10, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4350, 125, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1916770044],
+ CellID->1285384359],
 Cell[CellGroupData[{
 Cell[4763, 144, 196, 6, 26, "ExampleSection",
- CellID->1026749887],
+ CellID->1652586844],
 Cell[CellGroupData[{
 Cell[4984, 154, 101, 3, 27, "Input",
  CellTags->"$NonComm",

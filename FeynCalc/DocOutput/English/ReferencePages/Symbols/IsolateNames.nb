@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7248,        217]
+NotebookDataLength[      7247,        217]
 NotebookOptionsPosition[      5136,        160]
-NotebookOutlinePosition[      7040,        209]
-CellTagsIndexPosition[      6997,        206]
+NotebookOutlinePosition[      7039,        209]
+CellTagsIndexPosition[      6996,        206]
 WindowTitle->IsolateNames
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ IsolateNames.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171752], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173221], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/IsolateNames", ".html"]], None}]}]},
@@ -173,7 +173,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 46.947161}", 
+   "built" -> "{2020, 1, 5, 18, 59, 14.676198}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

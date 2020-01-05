@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16896,        495]
+NotebookDataLength[     16894,        495]
 NotebookOptionsPosition[     13870,        408]
-NotebookOutlinePosition[     16161,        467]
-CellTagsIndexPosition[     16076,        462]
+NotebookOutlinePosition[     16159,        467]
+CellTagsIndexPosition[     16074,        462]
 WindowTitle->FCTopology
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$126557], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$127582], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCTopology", ".html"]], None}]}]},
@@ -124,7 +124,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1880541988],
+ CellID->10687640],
 
 Cell[CellGroupData[{
 
@@ -134,7 +134,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->78101229],
+ CellID->1423261979],
 
 Cell["A 2-loop topology with one external momentum Q", "Notes",
  CellID->61003118],
@@ -408,8 +408,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"FCTopology",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -421,7 +421,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 9.958958}", 
+   "built" -> "{2020, 1, 5, 18, 57, 19.742508}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -454,9 +454,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3873, 111, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3873, 111, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1880541988]}
+   CellID->10687640]}
  }
 *)
 (*CellTagsIndex
@@ -472,12 +472,12 @@ Cell[2866, 76, 287, 11, 45, "ObjectNameGrid"],
 Cell[3156, 89, 692, 18, 118, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3873, 111, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3873, 111, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1880541988],
+ CellID->10687640],
 Cell[CellGroupData[{
-Cell[4286, 130, 194, 6, 26, "ExampleSection",
- CellID->78101229],
+Cell[4284, 130, 196, 6, 26, "ExampleSection",
+ CellID->1423261979],
 Cell[4483, 138, 82, 1, 32, "Notes",
  CellID->61003118],
 Cell[CellGroupData[{

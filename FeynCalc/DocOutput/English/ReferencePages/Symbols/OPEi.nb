@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14515,        519]
+NotebookDataLength[     14455,        518]
 NotebookOptionsPosition[     10113,        375]
-NotebookOutlinePosition[     13147,        464]
-CellTagsIndexPosition[     13039,        458]
+NotebookOutlinePosition[     13087,        463]
+CellTagsIndexPosition[     12979,        457]
 WindowTitle->OPEi
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$193434], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$194903], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/OPEi", 
             ".html"]], None}]}]},
@@ -118,7 +118,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->624716600],
+ CellID->463695855],
 
 Cell[CellGroupData[{
 
@@ -128,7 +128,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->59416343],
+ CellID->35029913],
 
 Cell[CellGroupData[{
 
@@ -388,7 +388,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 35.679388}", 
+   "built" -> "{2020, 1, 5, 19, 0, 9.992171}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -408,8 +408,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -421,7 +420,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3574, 105, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->624716600]},
+   CellID->463695855]},
  "OPEi"->{
   Cell[4205, 134, 93, 3, 27, "Input",
    CellTags->"OPEi",
@@ -457,8 +456,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12002, 420},
- {"OPEi", 12133, 424}
+ {"PrimaryExamplesSection", 11942, 419},
+ {"OPEi", 12073, 423}
  }
 *)
 (*NotebookFileOutline
@@ -471,10 +470,10 @@ Cell[3120, 89, 429, 12, 102, "Usage",
 Cell[CellGroupData[{
 Cell[3574, 105, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->624716600],
+ CellID->463695855],
 Cell[CellGroupData[{
 Cell[3986, 124, 194, 6, 26, "ExampleSection",
- CellID->59416343],
+ CellID->35029913],
 Cell[CellGroupData[{
 Cell[4205, 134, 93, 3, 27, "Input",
  CellTags->"OPEi",

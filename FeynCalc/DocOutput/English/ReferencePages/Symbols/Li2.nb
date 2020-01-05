@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10245,        359]
-NotebookOptionsPosition[      6727,        247]
-NotebookOutlinePosition[      9243,        320]
-CellTagsIndexPosition[      9138,        314]
+NotebookDataLength[     10253,        359]
+NotebookOptionsPosition[      6730,        247]
+NotebookOutlinePosition[      9248,        320]
+CellTagsIndexPosition[      9143,        314]
 WindowTitle->Li2
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$178869], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$180338], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/Li2", 
              ".html"]], None}]}]},
@@ -138,7 +138,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->79162439],
+ CellID->1092268077],
 
 Cell[CellGroupData[{
 
@@ -148,7 +148,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->684426518],
+ CellID->1205041486],
 
 Cell[CellGroupData[{
 
@@ -260,7 +260,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 16, 3.187203}", 
+   "built" -> "{2020, 1, 5, 18, 59, 33.140678}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -290,31 +290,31 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4233, 125, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[4233, 125, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->79162439]},
+   CellID->1092268077]},
  "Li2"->{
-  Cell[4864, 154, 117, 4, 27, "Input",
+  Cell[4867, 154, 117, 4, 27, "Input",
    CellTags->"Li2",
    CellID->870020060],
-  Cell[4984, 160, 220, 8, 37, "Output",
+  Cell[4987, 160, 220, 8, 37, "Output",
    CellTags->"Li2"],
-  Cell[5241, 173, 125, 4, 27, "Input",
+  Cell[5244, 173, 125, 4, 27, "Input",
    CellTags->"Li2",
    CellID->1201153887],
-  Cell[5369, 179, 247, 8, 51, "Output",
+  Cell[5372, 179, 247, 8, 51, "Output",
    CellTags->"Li2"],
-  Cell[5653, 192, 269, 10, 53, "Input",
+  Cell[5656, 192, 269, 10, 53, "Input",
    CellTags->"Li2",
    CellID->80483927],
-  Cell[5925, 204, 220, 8, 37, "Output",
+  Cell[5928, 204, 220, 8, 37, "Output",
    CellTags->"Li2"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8555, 291},
- {"Li2", 8684, 295}
+ {"PrimaryExamplesSection", 8558, 291},
+ {"Li2", 8689, 295}
  }
 *)
 (*NotebookFileOutline
@@ -325,42 +325,42 @@ Cell[3549, 97, 280, 11, 45, "ObjectNameGrid"],
 Cell[3832, 110, 376, 11, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4233, 125, 386, 15, 31, "PrimaryExamplesSection",
+Cell[4233, 125, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->79162439],
+ CellID->1092268077],
 Cell[CellGroupData[{
-Cell[4644, 144, 195, 6, 26, "ExampleSection",
- CellID->684426518],
+Cell[4646, 144, 196, 6, 26, "ExampleSection",
+ CellID->1205041486],
 Cell[CellGroupData[{
-Cell[4864, 154, 117, 4, 27, "Input",
+Cell[4867, 154, 117, 4, 27, "Input",
  CellTags->"Li2",
  CellID->870020060],
-Cell[4984, 160, 220, 8, 37, "Output",
+Cell[4987, 160, 220, 8, 37, "Output",
  CellTags->"Li2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5241, 173, 125, 4, 27, "Input",
+Cell[5244, 173, 125, 4, 27, "Input",
  CellTags->"Li2",
  CellID->1201153887],
-Cell[5369, 179, 247, 8, 51, "Output",
+Cell[5372, 179, 247, 8, 51, "Output",
  CellTags->"Li2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5653, 192, 269, 10, 53, "Input",
+Cell[5656, 192, 269, 10, 53, "Input",
  CellTags->"Li2",
  CellID->80483927],
-Cell[5925, 204, 220, 8, 37, "Output",
+Cell[5928, 204, 220, 8, 37, "Output",
  CellTags->"Li2"]
 }, Open  ]]
 }, Open  ]],
-Cell[6172, 216, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6175, 216, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6240, 221, 270, 12, 31, "SeeAlsoSection",
+Cell[6243, 221, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6513, 235, 172, 7, 56, "SeeAlso"]
+Cell[6516, 235, 172, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6700, 245, 23, 0, 41, "FooterCell"]
+Cell[6703, 245, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

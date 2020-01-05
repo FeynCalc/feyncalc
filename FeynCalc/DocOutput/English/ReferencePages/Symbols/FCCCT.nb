@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6840,        209]
+NotebookDataLength[      6839,        209]
 NotebookOptionsPosition[      4856,        153]
-NotebookOutlinePosition[      6612,        200]
-CellTagsIndexPosition[      6569,        197]
+NotebookOutlinePosition[      6611,        200]
+CellTagsIndexPosition[      6568,        197]
 WindowTitle->FCCCT
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92992], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$93116], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/FCCCT",
               ".html"]], None}]}]},
@@ -166,7 +166,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 46.547445}", 
+   "built" -> "{2020, 1, 5, 18, 55, 45.016178}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

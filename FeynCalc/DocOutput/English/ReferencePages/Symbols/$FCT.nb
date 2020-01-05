@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9672,        335]
+NotebookDataLength[      9673,        335]
 NotebookOptionsPosition[      6159,        224]
-NotebookOutlinePosition[      8824,        301]
-CellTagsIndexPosition[      8718,        295]
+NotebookOutlinePosition[      8825,        301]
+CellTagsIndexPosition[      8719,        295]
 WindowTitle->$FCT
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$290815], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$292719], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$FCT", 
             ".html"]], None}]}]},
@@ -118,7 +118,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1063175624],
+ CellID->1799296695],
 
 Cell[CellGroupData[{
 
@@ -128,7 +128,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1071874675],
+ CellID->1539302137],
 
 Cell[BoxData[
  RowBox[{
@@ -225,7 +225,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"$FCT",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -237,7 +237,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 20, 20.132055}", 
+   "built" -> "{2020, 1, 5, 19, 4, 16.995257}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -270,7 +270,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3586, 105, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1063175624]},
+   CellID->1799296695]},
  "$FCT"->{
   Cell[4198, 132, 145, 5, 27, "Input",
    CellTags->"$FCT",
@@ -294,8 +294,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8057, 269},
- {"$FCT", 8189, 273}
+ {"PrimaryExamplesSection", 8058, 269},
+ {"$FCT", 8190, 273}
  }
 *)
 (*NotebookFileOutline
@@ -308,10 +308,10 @@ Cell[3120, 89, 441, 12, 102, "Usage",
 Cell[CellGroupData[{
 Cell[3586, 105, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1063175624],
+ CellID->1799296695],
 Cell[CellGroupData[{
 Cell[3999, 124, 196, 6, 26, "ExampleSection",
- CellID->1071874675],
+ CellID->1539302137],
 Cell[4198, 132, 145, 5, 27, "Input",
  CellTags->"$FCT",
  CellID->699494043],

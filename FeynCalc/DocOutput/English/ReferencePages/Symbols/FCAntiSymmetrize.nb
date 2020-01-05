@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10880,        359]
+NotebookDataLength[     10881,        359]
 NotebookOptionsPosition[      7477,        258]
-NotebookOutlinePosition[      9999,        327]
-CellTagsIndexPosition[      9883,        321]
+NotebookOutlinePosition[     10000,        327]
+CellTagsIndexPosition[      9884,        321]
 WindowTitle->FCAntiSymmetrize
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ FCAntiSymmetrize.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$91677], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$91801], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCAntiSymmetrize", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1581394966],
+ CellID->250134143],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->43818386],
+ CellID->641278620],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"FCAntiSymmetrize",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -271,7 +271,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 12, 43.285464}", 
+   "built" -> "{2020, 1, 5, 18, 55, 41.234175}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -302,9 +302,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4493, 130, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4493, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1581394966]},
+   CellID->250134143]},
  "AntiSymmetrize"->{
   Cell[5125, 159, 266, 9, 27, "Input",
    CellTags->"AntiSymmetrize",
@@ -320,8 +320,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9386, 303},
- {"AntiSymmetrize", 9528, 307}
+ {"PrimaryExamplesSection", 9388, 303},
+ {"AntiSymmetrize", 9529, 307}
  }
 *)
 (*NotebookFileOutline
@@ -332,12 +332,12 @@ Cell[3633, 97, 293, 11, 45, "ObjectNameGrid"],
 Cell[3929, 110, 539, 16, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4493, 130, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4493, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1581394966],
+ CellID->250134143],
 Cell[CellGroupData[{
-Cell[4906, 149, 194, 6, 26, "ExampleSection",
- CellID->43818386],
+Cell[4905, 149, 195, 6, 26, "ExampleSection",
+ CellID->641278620],
 Cell[CellGroupData[{
 Cell[5125, 159, 266, 9, 27, "Input",
  CellTags->"AntiSymmetrize",

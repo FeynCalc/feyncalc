@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7532,        232]
-NotebookOptionsPosition[      5169,        166]
-NotebookOutlinePosition[      7090,        216]
-CellTagsIndexPosition[      7047,        213]
+NotebookDataLength[      7529,        232]
+NotebookOptionsPosition[      5168,        166]
+NotebookOutlinePosition[      7088,        216]
+CellTagsIndexPosition[      7045,        213]
 WindowTitle->CalculateCounterTerm
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ CalculateCounterTerm.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31120], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31238], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CalculateCounterTerm", ".html"]], None}]}]},
@@ -130,7 +130,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1536127252],
+ CellID->468041515],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -179,7 +179,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 17.656825}", 
+   "built" -> "{2020, 1, 5, 18, 52, 58.155752}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -222,18 +222,18 @@ Cell[CellGroupData[{
 Cell[3238, 91, 420, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3683, 108, 739, 24, 31, "NotesSection",
+Cell[3683, 108, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1536127252],
-Cell[4425, 134, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[4459, 136, 144, 3, 70, "Notes"],
+ CellID->468041515],
+Cell[4424, 134, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[4458, 136, 144, 3, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[4628, 143, 104, 2, 70, "Input"],
-Cell[4735, 147, 368, 12, 35, "Output"]
+Cell[4627, 143, 104, 2, 70, "Input"],
+Cell[4734, 147, 368, 12, 35, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
-Cell[5142, 164, 23, 0, 41, "FooterCell"]
+Cell[5141, 164, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

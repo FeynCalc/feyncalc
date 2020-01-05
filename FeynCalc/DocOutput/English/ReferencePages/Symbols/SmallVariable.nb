@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7731,        228]
+NotebookDataLength[      7729,        228]
 NotebookOptionsPosition[      5552,        170]
-NotebookOutlinePosition[      7522,        220]
-CellTagsIndexPosition[      7479,        217]
+NotebookOutlinePosition[      7520,        220]
+CellTagsIndexPosition[      7477,        217]
 WindowTitle->SmallVariable
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ SmallVariable.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$237142], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$238611], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SmallVariable", ".html"]], None}]}]},
@@ -183,7 +183,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 18, 14.853181}", 
+   "built" -> "{2020, 1, 5, 19, 1, 58.444344}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

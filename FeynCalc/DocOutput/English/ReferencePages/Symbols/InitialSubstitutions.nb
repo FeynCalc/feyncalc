@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7547,        224]
+NotebookDataLength[      7545,        224]
 NotebookOptionsPosition[      5417,        167]
-NotebookOutlinePosition[      7338,        216]
-CellTagsIndexPosition[      7295,        213]
+NotebookOutlinePosition[      7336,        216]
+CellTagsIndexPosition[      7293,        213]
 WindowTitle->InitialSubstitutions
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ InitialSubstitutions.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166816], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168285], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/InitialSubstitutions", ".html"]], None}]}]},
@@ -180,7 +180,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 36.519879}", 
+   "built" -> "{2020, 1, 5, 18, 59, 2.305622}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6895,        208]
+NotebookDataLength[      6893,        208]
 NotebookOptionsPosition[      4851,        151]
-NotebookOutlinePosition[      6688,        200]
-CellTagsIndexPosition[      6645,        197]
+NotebookOutlinePosition[      6686,        200]
+CellTagsIndexPosition[      6643,        197]
 WindowTitle->TraceDimension
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ TraceDimension.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$274575], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$276479], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/TraceDimension", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 19, 43.442612}", 
+   "built" -> "{2020, 1, 5, 19, 3, 37.416275}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

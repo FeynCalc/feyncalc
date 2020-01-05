@@ -85,7 +85,7 @@ DeltaFunction.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59313], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59431], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DeltaFunction", ".html"]], None}]}]},
@@ -159,7 +159,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1369304045],
+ CellID->149117060],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -191,7 +191,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->769757429],
+ CellID->1801745377],
 
 Cell[CellGroupData[{
 
@@ -201,7 +201,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1020497865],
+ CellID->1300323557],
 
 Cell[CellGroupData[{
 
@@ -382,8 +382,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"DeltaFunction",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -395,7 +395,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 27.352925}", 
+   "built" -> "{2020, 1, 5, 18, 54, 15.080470}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -426,9 +426,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5801, 178, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5800, 178, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->769757429]},
+   CellID->1801745377]},
  "DeltaFunction"->{
   Cell[6434, 207, 161, 5, 27, "Input",
    CellTags->"DeltaFunction",
@@ -459,7 +459,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12442, 427},
+ {"PrimaryExamplesSection", 12441, 427},
  {"DeltaFunction", 12582, 431}
  }
 *)
@@ -472,21 +472,21 @@ Cell[CellGroupData[{
 Cell[4259, 118, 475, 15, 86, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4759, 137, 739, 24, 31, "NotesSection",
+Cell[4759, 137, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1369304045],
-Cell[5501, 163, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5535, 165, 217, 7, 70, "Notes",
+ CellID->149117060],
+Cell[5500, 163, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5534, 165, 217, 7, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5801, 178, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5800, 178, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->769757429],
+ CellID->1801745377],
 Cell[CellGroupData[{
 Cell[6213, 197, 196, 6, 26, "ExampleSection",
- CellID->1020497865],
+ CellID->1300323557],
 Cell[CellGroupData[{
 Cell[6434, 207, 161, 5, 27, "Input",
  CellTags->"DeltaFunction",

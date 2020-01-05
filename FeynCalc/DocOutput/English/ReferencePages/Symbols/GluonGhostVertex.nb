@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15480,        523]
+NotebookDataLength[     15477,        523]
 NotebookOptionsPosition[     11445,        405]
-NotebookOutlinePosition[     14143,        476]
-CellTagsIndexPosition[     14023,        470]
+NotebookOutlinePosition[     14140,        476]
+CellTagsIndexPosition[     14020,        470]
 WindowTitle->GluonGhostVertex
 WindowFrame->Normal*)
 
@@ -88,7 +88,7 @@ GluonGhostVertex.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$155634], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157103], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GluonGhostVertex", ".html"]], None}]}]},
@@ -174,7 +174,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->720897607],
+ CellID->1286729640],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -247,7 +247,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->103703880],
+ CellID->303763348],
 
 Cell[CellGroupData[{
 
@@ -257,7 +257,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1318071834],
+ CellID->693409499],
 
 Cell[CellGroupData[{
 
@@ -406,7 +406,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"GluonGhostVertex",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -418,7 +418,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 15, 13.188382}", 
+   "built" -> "{2020, 1, 5, 18, 58, 35.406504}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -441,7 +441,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -451,10 +451,10 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "GluonGhostVertex"->{
-  Cell[6902, 208, 149, 4, 70, "Input",
+  Cell[6903, 208, 149, 4, 70, "Input",
    CellTags->"GluonGhostVertex",
    CellID->607510152],
-  Cell[7054, 214, 410, 13, 37, "Output",
+  Cell[7055, 214, 410, 13, 37, "Output",
    CellTags->"GluonGhostVertex"],
   Cell[8158, 263, 392, 12, 27, "Input",
    CellTags->"GluonGhostVertex",
@@ -462,15 +462,15 @@ CellTagsIndex->{
   Cell[8553, 277, 678, 28, 40, "Output",
    CellTags->"GluonGhostVertex"]},
  "PrimaryExamplesSection"->{
-  Cell[7525, 234, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[7526, 234, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->103703880]}
+   CellID->303763348]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"GluonGhostVertex", 13508, 452},
- {"PrimaryExamplesSection", 13880, 463}
+ {"GluonGhostVertex", 13505, 452},
+ {"PrimaryExamplesSection", 13877, 463}
  }
 *)
 (*NotebookFileOutline
@@ -482,29 +482,29 @@ Cell[CellGroupData[{
 Cell[4393, 121, 1012, 27, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5430, 152, 738, 24, 31, "NotesSection",
+Cell[5430, 152, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->720897607],
-Cell[6171, 178, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[6205, 180, 254, 8, 70, "Notes"],
-Cell[6462, 190, 415, 14, 70, "Notes",
+ CellID->1286729640],
+Cell[6172, 178, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6206, 180, 254, 8, 70, "Notes"],
+Cell[6463, 190, 415, 14, 70, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[6902, 208, 149, 4, 70, "Input",
+Cell[6903, 208, 149, 4, 70, "Input",
  CellTags->"GluonGhostVertex",
  CellID->607510152],
-Cell[7054, 214, 410, 13, 37, "Output",
+Cell[7055, 214, 410, 13, 37, "Output",
  CellTags->"GluonGhostVertex"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7525, 234, 387, 15, 31, "PrimaryExamplesSection",
+Cell[7526, 234, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->103703880],
+ CellID->303763348],
 Cell[CellGroupData[{
-Cell[7937, 253, 196, 6, 26, "ExampleSection",
- CellID->1318071834],
+Cell[7938, 253, 195, 6, 26, "ExampleSection",
+ CellID->693409499],
 Cell[CellGroupData[{
 Cell[8158, 263, 392, 12, 27, "Input",
  CellTags->"GluonGhostVertex",

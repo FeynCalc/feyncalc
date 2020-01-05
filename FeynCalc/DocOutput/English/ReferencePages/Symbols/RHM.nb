@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6663,        207]
+NotebookDataLength[      6661,        207]
 NotebookOptionsPosition[      4714,        152]
-NotebookOutlinePosition[      6456,        199]
-CellTagsIndexPosition[      6413,        196]
+NotebookOutlinePosition[      6454,        199]
+CellTagsIndexPosition[      6411,        196]
 WindowTitle->RHM
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$221280], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$222749], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/RHM", 
              ".html"]], None}]}]},
@@ -165,7 +165,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 37.395336}", 
+   "built" -> "{2020, 1, 5, 19, 1, 19.155566}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

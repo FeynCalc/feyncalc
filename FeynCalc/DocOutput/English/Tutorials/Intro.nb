@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41792,       1214]
+NotebookDataLength[     41730,       1213]
 NotebookOptionsPosition[     32206,        908]
-NotebookOutlinePosition[     37641,       1060]
-CellTagsIndexPosition[     37346,       1047]
+NotebookOutlinePosition[     37579,       1059]
+CellTagsIndexPosition[     37285,       1046]
 WindowTitle->Short introduction
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$296977], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$298881], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/tutorial/Intro", ".html"]], None}]}]},
@@ -909,7 +909,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Short introduction",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
@@ -920,7 +920,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 20, 33.748055}", 
+   "built" -> "{2020, 1, 5, 19, 4, 31.052818}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -939,7 +939,7 @@ code. Some functions for input of objects like p^\[Mu],\[Gamma]^\[Nu],g^\[Mu] \
 parentheses) are: GA (Dirac matrix), GS (Dirac slash), FV (4-vector), LC \
 (Levi-Civita tensor), MT (metric tensor), Spinor, SUNDelta, SUNFDelta, SUNF, \
 SP (scalar product)", "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$296829, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$298733, "title" -> 
     "Short introduction", "titlemodifier" -> "", "windowtitle" -> 
     "Short introduction", "type" -> "Tutorial", "uri" -> 
     "FeynCalc/tutorial/Intro"}, "SearchTextTranslated" -> ""},
@@ -960,8 +960,7 @@ StyleDefinitions->Notebook[{
     CellGroupingRules -> {"SectionGrouping", 30}], 
    Cell[
     StyleData["TutorialRelatedLinksSection"], 
-    CellGroupingRules -> {"SectionGrouping", 30}]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1046,15 +1045,15 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"intro", 35264, 972},
- {"introfoot", 35725, 988},
- {"Load FeynCalc", 35851, 992},
- {"start", 35970, 996},
- {"About Extras", 36096, 1000},
- {"tarcer", 36322, 1008},
- {"phi", 36509, 1015},
- {"Example Calculations", 37040, 1034},
- {"ex", 37186, 1039}
+ {"intro", 35203, 971},
+ {"introfoot", 35664, 987},
+ {"Load FeynCalc", 35790, 991},
+ {"start", 35909, 995},
+ {"About Extras", 36035, 999},
+ {"tarcer", 36261, 1007},
+ {"phi", 36448, 1014},
+ {"Example Calculations", 36979, 1033},
+ {"ex", 37125, 1038}
  }
 *)
 (*NotebookFileOutline

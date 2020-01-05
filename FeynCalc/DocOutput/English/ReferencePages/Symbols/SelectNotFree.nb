@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15585,        547]
+NotebookDataLength[     15584,        547]
 NotebookOptionsPosition[     10172,        376]
-NotebookOutlinePosition[     13485,        470]
-CellTagsIndexPosition[     13368,        464]
+NotebookOutlinePosition[     13484,        470]
+CellTagsIndexPosition[     13367,        464]
 WindowTitle->SelectNotFree
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ SelectNotFree.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$227936], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$229405], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SelectNotFree", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1359510938],
+ CellID->645962762],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -185,7 +185,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->269357246],
+ CellID->1930666558],
 
 Cell[CellGroupData[{
 
@@ -195,7 +195,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->890931691],
+ CellID->654434760],
 
 Cell[CellGroupData[{
 
@@ -389,7 +389,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 17, 52.562218}", 
+   "built" -> "{2020, 1, 5, 19, 1, 35.406203}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -410,7 +410,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -420,9 +420,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5667, 172, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5666, 172, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->269357246]},
+   CellID->1930666558]},
  "SelectNotFree"->{
   Cell[6299, 201, 224, 7, 27, "Input",
    CellTags->"SelectNotFree",
@@ -463,8 +463,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12059, 421},
- {"SelectNotFree", 12199, 425}
+ {"PrimaryExamplesSection", 12057, 421},
+ {"SelectNotFree", 12198, 425}
  }
 *)
 (*NotebookFileOutline
@@ -476,21 +476,21 @@ Cell[CellGroupData[{
 Cell[4012, 113, 541, 16, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4578, 133, 739, 24, 31, "NotesSection",
+Cell[4578, 133, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1359510938],
-Cell[5320, 159, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5354, 161, 264, 5, 70, "Notes",
+ CellID->645962762],
+Cell[5319, 159, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5353, 161, 264, 5, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5667, 172, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5666, 172, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->269357246],
+ CellID->1930666558],
 Cell[CellGroupData[{
 Cell[6079, 191, 195, 6, 26, "ExampleSection",
- CellID->890931691],
+ CellID->654434760],
 Cell[CellGroupData[{
 Cell[6299, 201, 224, 7, 27, "Input",
  CellTags->"SelectNotFree",

@@ -82,7 +82,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26206], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26324], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/B0", 
              ".html"]], None}]}]},
@@ -162,7 +162,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1503941320],
+ CellID->783933584],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -208,7 +208,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1112083735],
+ CellID->2057314077],
 
 Cell[CellGroupData[{
 
@@ -218,7 +218,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->595473452],
+ CellID->1428194661],
 
 Cell[CellGroupData[{
 
@@ -407,8 +407,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 840},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"B0",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -420,7 +420,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 10, 5.669582}", 
+   "built" -> "{2020, 1, 5, 18, 52, 45.377340}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -452,10 +452,10 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "B0"->{
-  Cell[5699, 170, 122, 4, 70, "Input",
+  Cell[5698, 170, 122, 4, 70, "Input",
    CellTags->"B0",
    CellID->1219933183],
-  Cell[5824, 176, 367, 12, 37, "Output",
+  Cell[5823, 176, 367, 12, 37, "Output",
    CellTags->"B0"],
   Cell[6885, 224, 254, 9, 33, "Input",
    CellTags->"B0",
@@ -478,9 +478,9 @@ CellTagsIndex->{
   Cell[9582, 339, 405, 15, 42, "Output",
    CellTags->"B0"]},
  "PrimaryExamplesSection"->{
-  Cell[6252, 195, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6251, 195, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1112083735]}
+   CellID->2057314077]}
  }
 *)
 (*CellTagsIndex
@@ -498,26 +498,26 @@ Cell[CellGroupData[{
 Cell[4090, 115, 786, 21, 120, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4901, 140, 739, 24, 31, "NotesSection",
+Cell[4901, 140, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1503941320],
-Cell[5643, 166, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->783933584],
+Cell[5642, 166, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5699, 170, 122, 4, 70, "Input",
+Cell[5698, 170, 122, 4, 70, "Input",
  CellTags->"B0",
  CellID->1219933183],
-Cell[5824, 176, 367, 12, 37, "Output",
+Cell[5823, 176, 367, 12, 37, "Output",
  CellTags->"B0"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6252, 195, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6251, 195, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1112083735],
+ CellID->2057314077],
 Cell[CellGroupData[{
-Cell[6665, 214, 195, 6, 26, "ExampleSection",
- CellID->595473452],
+Cell[6664, 214, 196, 6, 26, "ExampleSection",
+ CellID->1428194661],
 Cell[CellGroupData[{
 Cell[6885, 224, 254, 9, 33, "Input",
  CellTags->"B0",
@@ -552,9 +552,9 @@ Cell[10014, 358, 31, 0, 29, "SectionFooterSpacer"]
 Cell[CellGroupData[{
 Cell[10082, 363, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10355, 377, 604, 25, 70, "SeeAlso"]
+Cell[10355, 377, 604, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10974, 405, 23, 0, 70, "FooterCell"]
+Cell[10974, 405, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

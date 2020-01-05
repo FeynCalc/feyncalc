@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6691,        206]
+NotebookDataLength[      6690,        206]
 NotebookOptionsPosition[      4725,        151]
-NotebookOutlinePosition[      6484,        198]
-CellTagsIndexPosition[      6441,        195]
+NotebookOutlinePosition[      6483,        198]
+CellTagsIndexPosition[      6440,        195]
 WindowTitle->SimplifyGTI
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ SimplifyGTI.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$232751], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$234220], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SimplifyGTI", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 18, 4.843173}", 
+   "built" -> "{2020, 1, 5, 19, 1, 47.712961}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

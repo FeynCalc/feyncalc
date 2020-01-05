@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25459,        867]
+NotebookDataLength[     25458,        867]
 NotebookOptionsPosition[     21560,        755]
-NotebookOutlinePosition[     24124,        817]
-CellTagsIndexPosition[     24039,        812]
+NotebookOutlinePosition[     24123,        817]
+CellTagsIndexPosition[     24038,        812]
 WindowTitle->FCSchoutenBruteForce
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FCSchoutenBruteForce.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$122585], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$123610], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCSchoutenBruteForce", ".html"]], None}]}]},
@@ -137,7 +137,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->549174222],
+ CellID->147640550],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -191,7 +191,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->339589455],
+ CellID->847413702],
 
 Cell[CellGroupData[{
 
@@ -201,7 +201,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1398413012],
+ CellID->1290856333],
 
 Cell["\<\
 One may not recognize it easily, but the following expression is zero by \
@@ -756,7 +756,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"FCSchoutenBruteForce",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -768,7 +768,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 14, 0.846189}", 
+   "built" -> "{2020, 1, 5, 18, 57, 9.243327}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -794,7 +794,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -806,12 +806,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6041, 178, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->339589455]}
+   CellID->847413702]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 23896, 805}
+ {"PrimaryExamplesSection", 23895, 805}
  }
 *)
 (*NotebookFileOutline
@@ -825,7 +825,7 @@ Cell[3239, 91, 912, 20, 154, "Usage",
 Cell[CellGroupData[{
 Cell[4176, 115, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->549174222],
+ CellID->147640550],
 Cell[4917, 141, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[4973, 145, 124, 3, 70, "Input",
@@ -838,10 +838,10 @@ Cell[5100, 150, 880, 21, 74, "Output",
 Cell[CellGroupData[{
 Cell[6041, 178, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->339589455],
+ CellID->847413702],
 Cell[CellGroupData[{
 Cell[6453, 197, 196, 6, 26, "ExampleSection",
- CellID->1398413012],
+ CellID->1290856333],
 Cell[6652, 205, 139, 4, 32, "Notes",
  CellID->723339137],
 Cell[6794, 211, 113, 3, 27, "Input",

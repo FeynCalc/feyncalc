@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    172624,       6280]
-NotebookOptionsPosition[    157244,       5783]
-NotebookOutlinePosition[    160912,       5887]
-CellTagsIndexPosition[    160754,       5880]
+NotebookDataLength[    172610,       6280]
+NotebookOptionsPosition[    157236,       5783]
+NotebookOutlinePosition[    160902,       5887]
+CellTagsIndexPosition[    160744,       5880]
 WindowTitle->DiracSimplify
 WindowFrame->Normal*)
 
@@ -106,7 +106,7 @@ DiracSimplify.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69506], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69628], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracSimplify", ".html"]], None}]}]},
@@ -178,7 +178,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1553288314],
+ CellID->41535398],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -298,7 +298,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->837187699],
+ CellID->1468871954],
 
 Cell[CellGroupData[{
 
@@ -308,7 +308,7 @@ Cell[TextData[{
  Cell["(13)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1558364646],
+ CellID->454068069],
 
 Cell["\<\
 Simplify a 4-dimensional Dirac matrix chain with a dummy Lorentz index\
@@ -1435,7 +1435,7 @@ seSQdgYAAECB/wdb3wVc
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RasterizedOutput",
  CellLabel->"Out[6]=",
- CellID->192911414]
+ CellID->1265238922]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3535,7 +3535,7 @@ wYd77lC2HI/PIBhqk2Bh4lCu5ahZtIYSj57JAHcoAAAAAFgL/wfhvjvi
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RasterizedOutput",
  CellLabel->"Out[6]=",
- CellID->1677825826]
+ CellID->772821713]
 }, Open  ]]
 }, Open  ]],
 
@@ -4335,7 +4335,7 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
   ButtonNote->"DiracSimplify"],
- " not to touch the the Dirac traces."
+ " not to touch the Dirac traces."
 }], "Notes"],
 
 Cell[CellGroupData[{
@@ -4845,7 +4845,7 @@ GwoGhAsGhAsGhEsBxA0FA8IFA8IFA8IlAeKGggHhggHhggHhAAAAQHjyf6mE
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RasterizedOutput",
  CellLabel->"Out[4]=",
- CellID->1044901215]
+ CellID->34872333]
 }, Open  ]],
 
 Cell[BoxData[
@@ -5784,7 +5784,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"DiracSimplify",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -5796,7 +5796,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 9, 20, 21, 11, 52.306312}", 
+   "built" -> "{2020, 1, 5, 18, 54, 42.365209}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -5826,62 +5826,62 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "DiracSimplify"->{
-  Cell[8066, 240, 144, 4, 70, "Input",
+  Cell[8064, 240, 144, 4, 70, "Input",
    CellTags->"DiracSimplify",
    CellID->2098245619],
-  Cell[8213, 246, 1535, 32, 150, "Output",
+  Cell[8211, 246, 1535, 32, 150, "Output",
    CellTags->"DiracSimplify"],
-  Cell[10542, 318, 171, 5, 27, "Input",
+  Cell[10540, 318, 171, 5, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->201005194],
-  Cell[10716, 325, 752, 31, 37, "Output",
+  Cell[10714, 325, 752, 31, 37, "Output",
    CellTags->"DiracSimplify"],
-  Cell[11505, 361, 136, 4, 27, "Input",
+  Cell[11503, 361, 136, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->28604534],
-  Cell[11644, 367, 371, 14, 37, "Output",
+  Cell[11642, 367, 371, 14, 37, "Output",
    CellTags->"DiracSimplify"],
-  Cell[28226, 1027, 172, 5, 27, "Input",
+  Cell[28224, 1027, 172, 5, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->149362799],
-  Cell[28401, 1034, 674, 28, 37, "Output",
+  Cell[28399, 1034, 674, 28, 37, "Output",
    CellTags->"DiracSimplify"],
-  Cell[29112, 1067, 138, 4, 27, "Input",
+  Cell[29110, 1067, 138, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1129253480],
-  Cell[29253, 1073, 495, 19, 37, "Output",
+  Cell[29251, 1073, 495, 19, 37, "Output",
    CellTags->"DiracSimplify"],
-  Cell[44389, 1546, 167, 5, 27, "Input",
+  Cell[44388, 1546, 167, 5, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->570896083],
-  Cell[44559, 1553, 708, 29, 40, "Output",
+  Cell[44558, 1553, 708, 29, 40, "Output",
    CellTags->"DiracSimplify"],
-  Cell[99528, 3592, 265, 8, 27, "Input",
+  Cell[99526, 3592, 265, 8, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->990886795],
-  Cell[99796, 3602, 793, 32, 37, "Output",
+  Cell[99794, 3602, 793, 32, 37, "Output",
    CellTags->"DiracSimplify"]},
  "PrimaryExamplesSection"->{
-  Cell[9809, 285, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[9807, 285, 389, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->837187699]},
+   CellID->1468871954]},
  "RasterizedOutput"->{
-  Cell[34779, 1312, 7138, 125, 157, "Output",
+  Cell[34777, 1312, 7139, 125, 157, "Output",
    CellTags->"RasterizedOutput",
-   CellID->192911414],
-  Cell[91925, 3424, 6383, 113, 106, "Output",
+   CellID->1265238922],
+  Cell[91924, 3424, 6382, 113, 106, "Output",
    CellTags->"RasterizedOutput",
-   CellID->1677825826],
-  Cell[129302, 4758, 4923, 89, 99, "Output",
+   CellID->772821713],
+  Cell[129296, 4758, 4921, 89, 99, "Output",
    CellTags->"RasterizedOutput",
-   CellID->1044901215]}
+   CellID->34872333]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"DiracSimplify", 159079, 5827},
- {"PrimaryExamplesSection", 160280, 5863},
- {"RasterizedOutput", 160423, 5867}
+ {"DiracSimplify", 159070, 5827},
+ {"PrimaryExamplesSection", 160271, 5863},
+ {"RasterizedOutput", 160415, 5867}
  }
 *)
 (*NotebookFileOutline
@@ -5893,395 +5893,395 @@ Cell[CellGroupData[{
 Cell[5402, 139, 473, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5900, 156, 739, 24, 31, "NotesSection",
+Cell[5900, 156, 737, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1553288314],
-Cell[6642, 182, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[6676, 184, 779, 28, 70, "Notes",
+ CellID->41535398],
+Cell[6640, 182, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6674, 184, 779, 28, 70, "Notes",
  CellID->1067943069],
-Cell[7458, 214, 290, 11, 70, "Notes"],
-Cell[7751, 227, 290, 9, 70, "Notes"],
+Cell[7456, 214, 290, 11, 70, "Notes"],
+Cell[7749, 227, 290, 9, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[8066, 240, 144, 4, 70, "Input",
+Cell[8064, 240, 144, 4, 70, "Input",
  CellTags->"DiracSimplify",
  CellID->2098245619],
-Cell[8213, 246, 1535, 32, 150, "Output",
+Cell[8211, 246, 1535, 32, 150, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9809, 285, 388, 15, 31, "PrimaryExamplesSection",
+Cell[9807, 285, 389, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->837187699],
+ CellID->1468871954],
 Cell[CellGroupData[{
-Cell[10222, 304, 197, 6, 26, "ExampleSection",
- CellID->1558364646],
-Cell[10422, 312, 95, 2, 32, "Notes"],
+Cell[10221, 304, 196, 6, 26, "ExampleSection",
+ CellID->454068069],
+Cell[10420, 312, 95, 2, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[10542, 318, 171, 5, 27, "Input",
+Cell[10540, 318, 171, 5, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->201005194],
-Cell[10716, 325, 752, 31, 37, "Output",
+Cell[10714, 325, 752, 31, 37, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11505, 361, 136, 4, 27, "Input",
+Cell[11503, 361, 136, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->28604534],
-Cell[11644, 367, 371, 14, 37, "Output",
+Cell[11642, 367, 371, 14, 37, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12052, 386, 105, 2, 9, "ExampleDelimiter"],
-Cell[12160, 390, 144, 4, 32, "Notes"],
+Cell[12050, 386, 105, 2, 9, "ExampleDelimiter"],
+Cell[12158, 390, 144, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[12329, 398, 130, 4, 27, "Input"],
-Cell[12462, 404, 676, 26, 37, "Output"]
+Cell[12327, 398, 130, 4, 27, "Input"],
+Cell[12460, 404, 676, 26, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13175, 435, 89, 2, 27, "Input"],
-Cell[13267, 439, 287, 11, 39, "Output"]
+Cell[13173, 435, 89, 2, 27, "Input"],
+Cell[13265, 439, 287, 11, 39, "Output"]
 }, Open  ]],
-Cell[13569, 453, 337, 12, 32, "Notes"],
+Cell[13567, 453, 337, 12, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[13931, 469, 266, 8, 27, "Input"],
-Cell[14200, 479, 1512, 58, 42, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[15749, 542, 89, 2, 27, "Input"],
-Cell[15841, 546, 6006, 230, 87, "Output"]
+Cell[13929, 469, 266, 8, 27, "Input"],
+Cell[14198, 479, 1512, 58, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21884, 781, 309, 9, 27, "Input"],
-Cell[22196, 792, 2403, 90, 42, "Output"]
+Cell[15747, 542, 89, 2, 27, "Input"],
+Cell[15839, 546, 6006, 230, 87, "Output"]
 }, Open  ]],
-Cell[24614, 885, 215, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[24854, 896, 384, 11, 27, "Input"],
-Cell[25241, 909, 2683, 100, 42, "Output"]
+Cell[21882, 781, 309, 9, 27, "Input"],
+Cell[22194, 792, 2403, 90, 42, "Output"]
+}, Open  ]],
+Cell[24612, 885, 215, 7, 32, "Notes"],
+Cell[CellGroupData[{
+Cell[24852, 896, 384, 11, 27, "Input"],
+Cell[25239, 909, 2683, 100, 42, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27973, 1015, 105, 2, 9, "ExampleDelimiter"],
-Cell[28081, 1019, 120, 4, 32, "Notes"],
+Cell[27971, 1015, 105, 2, 9, "ExampleDelimiter"],
+Cell[28079, 1019, 120, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[28226, 1027, 172, 5, 27, "Input",
+Cell[28224, 1027, 172, 5, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->149362799],
-Cell[28401, 1034, 674, 28, 37, "Output",
+Cell[28399, 1034, 674, 28, 37, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29112, 1067, 138, 4, 27, "Input",
+Cell[29110, 1067, 138, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1129253480],
-Cell[29253, 1073, 495, 19, 37, "Output",
+Cell[29251, 1073, 495, 19, 37, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29785, 1097, 209, 6, 27, "Input"],
-Cell[29997, 1105, 885, 36, 39, "Output"]
+Cell[29783, 1097, 209, 6, 27, "Input"],
+Cell[29995, 1105, 885, 36, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30919, 1146, 89, 2, 27, "Input"],
-Cell[31011, 1150, 1652, 67, 39, "Output"]
+Cell[30917, 1146, 89, 2, 27, "Input"],
+Cell[31009, 1150, 1652, 67, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32700, 1222, 343, 11, 29, "Input"],
-Cell[33046, 1235, 1604, 68, 37, "Output"]
+Cell[32698, 1222, 343, 11, 29, "Input"],
+Cell[33044, 1235, 1604, 68, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34687, 1308, 89, 2, 27, "Input"],
-Cell[34779, 1312, 7138, 125, 157, "Output",
+Cell[34685, 1308, 89, 2, 27, "Input"],
+Cell[34777, 1312, 7139, 125, 157, "Output",
  CellTags->"RasterizedOutput",
- CellID->192911414]
+ CellID->1265238922]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41954, 1442, 446, 15, 27, "Input"],
-Cell[42403, 1459, 1349, 55, 56, "Output"]
+Cell[41953, 1442, 446, 15, 27, "Input"],
+Cell[42402, 1459, 1349, 55, 56, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[43789, 1519, 89, 2, 27, "Input"],
-Cell[43881, 1523, 166, 5, 35, "Output"]
+Cell[43788, 1519, 89, 2, 27, "Input"],
+Cell[43880, 1523, 166, 5, 35, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44096, 1534, 105, 2, 9, "ExampleDelimiter"],
-Cell[44204, 1538, 160, 4, 32, "Notes"],
+Cell[44095, 1534, 105, 2, 9, "ExampleDelimiter"],
+Cell[44203, 1538, 160, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[44389, 1546, 167, 5, 27, "Input",
+Cell[44388, 1546, 167, 5, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->570896083],
-Cell[44559, 1553, 708, 29, 40, "Output",
+Cell[44558, 1553, 708, 29, 40, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45304, 1587, 89, 2, 27, "Input"],
-Cell[45396, 1591, 562, 22, 40, "Output"]
+Cell[45303, 1587, 89, 2, 27, "Input"],
+Cell[45395, 1591, 562, 22, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45995, 1618, 154, 5, 27, "Input"],
-Cell[46152, 1625, 729, 28, 39, "Output"]
+Cell[45994, 1618, 154, 5, 27, "Input"],
+Cell[46151, 1625, 729, 28, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[46918, 1658, 89, 2, 27, "Input"],
-Cell[47010, 1662, 848, 32, 39, "Output"]
+Cell[46917, 1658, 89, 2, 27, "Input"],
+Cell[47009, 1662, 848, 32, 39, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47907, 1700, 105, 2, 9, "ExampleDelimiter"],
-Cell[48015, 1704, 300, 9, 49, "Notes"],
+Cell[47906, 1700, 105, 2, 9, "ExampleDelimiter"],
+Cell[48014, 1704, 300, 9, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[48340, 1717, 572, 19, 27, "Input"],
-Cell[48915, 1738, 1608, 64, 42, "Output"]
+Cell[48339, 1717, 572, 19, 27, "Input"],
+Cell[48914, 1738, 1608, 64, 42, "Output"]
 }, Open  ]],
-Cell[50538, 1805, 372, 14, 42, "Notes"],
+Cell[50537, 1805, 372, 14, 42, "Notes"],
 Cell[CellGroupData[{
-Cell[50935, 1823, 556, 21, 27, "Input"],
-Cell[51494, 1846, 1216, 45, 67, "Output"]
+Cell[50934, 1823, 556, 21, 27, "Input"],
+Cell[51493, 1846, 1216, 45, 67, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[52747, 1896, 89, 2, 27, "Input"],
-Cell[52839, 1900, 951, 35, 59, "Output"]
+Cell[52746, 1896, 89, 2, 27, "Input"],
+Cell[52838, 1900, 951, 35, 59, "Output"]
 }, Open  ]],
-Cell[53805, 1938, 401, 12, 49, "Notes"],
+Cell[53804, 1938, 401, 12, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[54231, 1954, 706, 24, 45, "Input"],
-Cell[54940, 1980, 1462, 55, 60, "Output"]
+Cell[54230, 1954, 706, 24, 45, "Input"],
+Cell[54939, 1980, 1462, 55, 60, "Output"]
 }, Open  ]],
-Cell[56417, 2038, 731, 22, 66, "Notes"],
+Cell[56416, 2038, 731, 22, 66, "Notes"],
 Cell[CellGroupData[{
-Cell[57173, 2064, 708, 24, 45, "Input"],
-Cell[57884, 2090, 1462, 55, 60, "Output"]
+Cell[57172, 2064, 708, 24, 45, "Input"],
+Cell[57883, 2090, 1462, 55, 60, "Output"]
 }, Open  ]],
-Cell[59361, 2148, 192, 5, 32, "Notes"],
+Cell[59360, 2148, 192, 5, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[59578, 2157, 233, 6, 27, "Input"],
-Cell[59814, 2165, 1016, 40, 39, "Output"]
+Cell[59577, 2157, 233, 6, 27, "Input"],
+Cell[59813, 2165, 1016, 40, 39, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[60879, 2211, 105, 2, 9, "ExampleDelimiter"],
-Cell[60987, 2215, 95, 2, 32, "Notes"],
+Cell[60878, 2211, 105, 2, 9, "ExampleDelimiter"],
+Cell[60986, 2215, 95, 2, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[61107, 2221, 444, 15, 27, "Input"],
-Cell[61554, 2238, 975, 38, 38, "Output"]
+Cell[61106, 2221, 444, 15, 27, "Input"],
+Cell[61553, 2238, 975, 38, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[62566, 2281, 89, 2, 27, "Input"],
-Cell[62658, 2285, 1414, 55, 38, "Output"]
+Cell[62565, 2281, 89, 2, 27, "Input"],
+Cell[62657, 2285, 1414, 55, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[64109, 2345, 202, 5, 27, "Input"],
-Cell[64314, 2352, 598, 23, 37, "Output"]
+Cell[64108, 2345, 202, 5, 27, "Input"],
+Cell[64313, 2352, 598, 23, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[64949, 2380, 89, 2, 27, "Input"],
-Cell[65041, 2384, 166, 5, 35, "Output"]
+Cell[64948, 2380, 89, 2, 27, "Input"],
+Cell[65040, 2384, 166, 5, 35, "Output"]
 }, Open  ]],
-Cell[65222, 2392, 228, 7, 32, "Notes"],
+Cell[65221, 2392, 228, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[65475, 2403, 318, 8, 27, "Input"],
-Cell[65796, 2413, 1043, 41, 37, "Output"]
+Cell[65474, 2403, 318, 8, 27, "Input"],
+Cell[65795, 2413, 1043, 41, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[66888, 2460, 105, 2, 9, "ExampleDelimiter"],
-Cell[66996, 2464, 163, 4, 32, "Notes"],
+Cell[66887, 2460, 105, 2, 9, "ExampleDelimiter"],
+Cell[66995, 2464, 163, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[67184, 2472, 755, 24, 45, "Input"],
-Cell[67942, 2498, 2416, 98, 40, "Output"]
+Cell[67183, 2472, 755, 24, 45, "Input"],
+Cell[67941, 2498, 2416, 98, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[70395, 2601, 89, 2, 27, "Input"],
-Cell[70487, 2605, 3282, 131, 64, "Output"]
+Cell[70394, 2601, 89, 2, 27, "Input"],
+Cell[70486, 2605, 3282, 131, 64, "Output"]
 }, Open  ]],
-Cell[73784, 2739, 304, 10, 32, "Notes"],
+Cell[73783, 2739, 304, 10, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[74113, 2753, 910, 27, 62, "Input"],
-Cell[75026, 2782, 3808, 148, 64, "Output"]
+Cell[74112, 2753, 910, 27, 62, "Input"],
+Cell[75025, 2782, 3808, 148, 64, "Output"]
 }, Open  ]],
-Cell[78849, 2933, 338, 8, 49, "Notes"],
+Cell[78848, 2933, 338, 8, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[79212, 2945, 1566, 50, 79, "Input"],
-Cell[80781, 2997, 4902, 192, 62, "Output"]
+Cell[79211, 2945, 1566, 50, 79, "Input"],
+Cell[80780, 2997, 4902, 192, 62, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[85720, 3194, 193, 6, 27, "Input"],
-Cell[85916, 3202, 3873, 150, 64, "Output"]
+Cell[85719, 3194, 193, 6, 27, "Input"],
+Cell[85915, 3202, 3873, 150, 64, "Output"]
 }, Open  ]],
-Cell[89804, 3355, 261, 9, 32, "Notes"],
+Cell[89803, 3355, 261, 9, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[90090, 3368, 1832, 54, 96, "Input"],
-Cell[91925, 3424, 6383, 113, 106, "Output",
+Cell[90089, 3368, 1832, 54, 96, "Input"],
+Cell[91924, 3424, 6382, 113, 106, "Output",
  CellTags->"RasterizedOutput",
- CellID->1677825826]
+ CellID->772821713]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[98357, 3543, 105, 2, 9, "ExampleDelimiter"],
-Cell[98465, 3547, 389, 12, 49, "Notes"],
+Cell[98355, 3543, 105, 2, 9, "ExampleDelimiter"],
+Cell[98463, 3547, 389, 12, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[98879, 3563, 150, 4, 27, "Input"],
-Cell[99032, 3569, 459, 18, 37, "Output"]
+Cell[98877, 3563, 150, 4, 27, "Input"],
+Cell[99030, 3569, 459, 18, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[99528, 3592, 265, 8, 27, "Input",
+Cell[99526, 3592, 265, 8, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->990886795],
-Cell[99796, 3602, 793, 32, 37, "Output",
+Cell[99794, 3602, 793, 32, 37, "Output",
  CellTags->"DiracSimplify"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[100638, 3640, 105, 2, 9, "ExampleDelimiter"],
-Cell[100746, 3644, 277, 6, 49, "Notes"],
+Cell[100636, 3640, 105, 2, 9, "ExampleDelimiter"],
+Cell[100744, 3644, 277, 6, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[101048, 3654, 124, 3, 27, "Input"],
-Cell[101175, 3659, 725, 30, 37, "Output"]
+Cell[101046, 3654, 124, 3, 27, "Input"],
+Cell[101173, 3659, 725, 30, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[101937, 3694, 160, 4, 27, "Input"],
-Cell[102100, 3700, 166, 5, 35, "Output"]
+Cell[101935, 3694, 160, 4, 27, "Input"],
+Cell[102098, 3700, 166, 5, 35, "Output"]
 }, Open  ]],
-Cell[102281, 3708, 64, 0, 32, "Notes"],
+Cell[102279, 3708, 64, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[102370, 3712, 144, 4, 27, "Input"],
-Cell[102517, 3718, 914, 38, 37, "Output"]
+Cell[102368, 3712, 144, 4, 27, "Input"],
+Cell[102515, 3718, 914, 38, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[103468, 3761, 160, 4, 27, "Input"],
-Cell[103631, 3767, 754, 30, 37, "Output"]
+Cell[103466, 3761, 160, 4, 27, "Input"],
+Cell[103629, 3767, 754, 30, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[104434, 3803, 105, 2, 9, "ExampleDelimiter"],
-Cell[104542, 3807, 255, 7, 32, "Notes"],
+Cell[104432, 3803, 105, 2, 9, "ExampleDelimiter"],
+Cell[104540, 3807, 255, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[104822, 3818, 182, 5, 27, "Input"],
-Cell[105007, 3825, 1043, 41, 40, "Output"]
+Cell[104820, 3818, 182, 5, 27, "Input"],
+Cell[105005, 3825, 1043, 41, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[106087, 3871, 89, 2, 27, "Input"],
-Cell[106179, 3875, 1784, 75, 37, "Output"]
+Cell[106085, 3871, 89, 2, 27, "Input"],
+Cell[106177, 3875, 1784, 75, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[108000, 3955, 529, 16, 46, "Input"],
-Cell[108532, 3973, 1273, 48, 40, "Output"]
+Cell[107998, 3955, 529, 16, 46, "Input"],
+Cell[108530, 3973, 1273, 48, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[109842, 4026, 89, 2, 27, "Input"],
-Cell[109934, 4030, 2619, 114, 40, "Output"]
+Cell[109840, 4026, 89, 2, 27, "Input"],
+Cell[109932, 4030, 2619, 114, 40, "Output"]
 }, Open  ]],
-Cell[112568, 4147, 477, 13, 49, "Notes"],
+Cell[112566, 4147, 477, 13, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[113070, 4164, 644, 18, 63, "Input"],
-Cell[113717, 4184, 3823, 141, 66, "Output"]
+Cell[113068, 4164, 644, 18, 63, "Input"],
+Cell[113715, 4184, 3823, 141, 66, "Output"]
 }, Open  ]],
-Cell[117555, 4328, 306, 10, 32, "Notes"],
+Cell[117553, 4328, 302, 10, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[117886, 4342, 697, 19, 63, "Input"],
-Cell[118586, 4363, 1088, 40, 40, "Output"]
+Cell[117880, 4342, 697, 19, 63, "Input"],
+Cell[118580, 4363, 1088, 40, 40, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[119723, 4409, 105, 2, 9, "ExampleDelimiter"],
-Cell[119831, 4413, 237, 7, 49, "Notes"],
+Cell[119717, 4409, 105, 2, 9, "ExampleDelimiter"],
+Cell[119825, 4413, 237, 7, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[120093, 4424, 228, 7, 27, "Input"],
-Cell[120324, 4433, 734, 30, 37, "Output"]
+Cell[120087, 4424, 228, 7, 27, "Input"],
+Cell[120318, 4433, 734, 30, 37, "Output"]
 }, Open  ]],
-Cell[121073, 4466, 385, 9, 66, "Notes"],
+Cell[121067, 4466, 385, 9, 66, "Notes"],
 Cell[CellGroupData[{
-Cell[121483, 4479, 89, 2, 27, "Input"],
-Cell[121575, 4483, 1005, 17, 193, "Message"],
-Cell[122583, 4502, 173, 5, 35, "Output"]
+Cell[121477, 4479, 89, 2, 27, "Input"],
+Cell[121569, 4483, 1005, 17, 193, "Message"],
+Cell[122577, 4502, 173, 5, 35, "Output"]
 }, Open  ]],
-Cell[122771, 4510, 444, 9, 83, "Notes"],
-Cell[123218, 4521, 128, 4, 27, "Input"],
+Cell[122765, 4510, 444, 9, 83, "Notes"],
+Cell[123212, 4521, 128, 4, 27, "Input"],
 Cell[CellGroupData[{
-Cell[123371, 4529, 273, 8, 27, "Input"],
-Cell[123647, 4539, 572, 22, 37, "Output"]
+Cell[123365, 4529, 273, 8, 27, "Input"],
+Cell[123641, 4539, 572, 22, 37, "Output"]
 }, Open  ]],
-Cell[124234, 4564, 127, 4, 27, "Input"],
-Cell[124364, 4570, 696, 17, 83, "Notes"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[125097, 4592, 105, 2, 9, "ExampleDelimiter"],
-Cell[125205, 4596, 412, 11, 65, "Notes"],
-Cell[CellGroupData[{
-Cell[125642, 4611, 279, 8, 27, "Input"],
-Cell[125924, 4621, 1435, 57, 43, "Output"]
+Cell[124228, 4564, 127, 4, 27, "Input"],
+Cell[124358, 4570, 696, 17, 83, "Notes"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[127396, 4683, 89, 2, 27, "Input"],
-Cell[127488, 4687, 1135, 43, 43, "Output"]
-}, Open  ]],
-Cell[128638, 4733, 180, 4, 49, "Notes"],
-Cell[128821, 4739, 128, 4, 27, "Input"],
+Cell[125091, 4592, 105, 2, 9, "ExampleDelimiter"],
+Cell[125199, 4596, 412, 11, 65, "Notes"],
 Cell[CellGroupData[{
-Cell[128974, 4747, 325, 9, 27, "Input"],
-Cell[129302, 4758, 4923, 89, 99, "Output",
+Cell[125636, 4611, 279, 8, 27, "Input"],
+Cell[125918, 4621, 1435, 57, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[127390, 4683, 89, 2, 27, "Input"],
+Cell[127482, 4687, 1135, 43, 43, "Output"]
+}, Open  ]],
+Cell[128632, 4733, 180, 4, 49, "Notes"],
+Cell[128815, 4739, 128, 4, 27, "Input"],
+Cell[CellGroupData[{
+Cell[128968, 4747, 325, 9, 27, "Input"],
+Cell[129296, 4758, 4921, 89, 99, "Output",
  CellTags->"RasterizedOutput",
- CellID->1044901215]
+ CellID->34872333]
 }, Open  ]],
-Cell[134240, 4850, 127, 4, 27, "Input"],
-Cell[134370, 4856, 908, 20, 117, "Notes"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[135315, 4881, 105, 2, 9, "ExampleDelimiter"],
-Cell[135423, 4885, 303, 5, 66, "Notes"],
-Cell[CellGroupData[{
-Cell[135751, 4894, 132, 4, 27, "Input"],
-Cell[135886, 4900, 919, 38, 40, "Output"]
+Cell[134232, 4850, 127, 4, 27, "Input"],
+Cell[134362, 4856, 908, 20, 117, "Notes"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[136842, 4943, 89, 2, 27, "Input"],
-Cell[136934, 4947, 184, 6, 35, "Output"]
+Cell[135307, 4881, 105, 2, 9, "ExampleDelimiter"],
+Cell[135415, 4885, 303, 5, 66, "Notes"],
+Cell[CellGroupData[{
+Cell[135743, 4894, 132, 4, 27, "Input"],
+Cell[135878, 4900, 919, 38, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[137155, 4958, 236, 7, 27, "Input"],
-Cell[137394, 4967, 2092, 83, 40, "Output"]
+Cell[136834, 4943, 89, 2, 27, "Input"],
+Cell[136926, 4947, 184, 6, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[139523, 5055, 89, 2, 27, "Input"],
-Cell[139615, 5059, 3873, 154, 40, "Output"]
+Cell[137147, 4958, 236, 7, 27, "Input"],
+Cell[137386, 4967, 2092, 83, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[143525, 5218, 312, 10, 27, "Input"],
-Cell[143840, 5230, 2623, 103, 40, "Output"]
+Cell[139515, 5055, 89, 2, 27, "Input"],
+Cell[139607, 5059, 3873, 154, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[146500, 5338, 89, 2, 27, "Input"],
-Cell[146592, 5342, 1240, 48, 39, "Output"]
+Cell[143517, 5218, 312, 10, 27, "Input"],
+Cell[143832, 5230, 2623, 103, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[147869, 5395, 162, 5, 27, "Input"],
-Cell[148034, 5402, 906, 38, 40, "Output"]
+Cell[146492, 5338, 89, 2, 27, "Input"],
+Cell[146584, 5342, 1240, 48, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[148977, 5445, 89, 2, 27, "Input"],
-Cell[149069, 5449, 501, 20, 40, "Output"]
+Cell[147861, 5395, 162, 5, 27, "Input"],
+Cell[148026, 5402, 906, 38, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[149607, 5474, 161, 4, 27, "Input"],
-Cell[149771, 5480, 1731, 69, 46, "Output"]
+Cell[148969, 5445, 89, 2, 27, "Input"],
+Cell[149061, 5449, 501, 20, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[151539, 5554, 90, 2, 27, "Input"],
-Cell[151632, 5558, 2523, 105, 39, "Output"]
+Cell[149599, 5474, 161, 4, 27, "Input"],
+Cell[149763, 5480, 1731, 69, 46, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[151531, 5554, 90, 2, 27, "Input"],
+Cell[151624, 5558, 2523, 105, 39, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[154194, 5668, 31, 0, 29, "SectionFooterSpacer"]
+Cell[154186, 5668, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[154262, 5673, 270, 12, 31, "SeeAlsoSection",
+Cell[154254, 5673, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[154535, 5687, 2667, 91, 86, "SeeAlso"]
+Cell[154527, 5687, 2667, 91, 86, "SeeAlso"]
 }, Open  ]],
-Cell[157217, 5781, 23, 0, 41, "FooterCell"]
+Cell[157209, 5781, 23, 0, 41, "FooterCell"]
 }
 ]
 *)
