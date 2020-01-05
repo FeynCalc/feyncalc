@@ -1206,7 +1206,7 @@ OneLoopSum[ex_, ops___] :=
 														temp = paveorder[prev]
 													];
 			][[1]];
-							FCPrint[1, "Time needed = ", tim//FeynCalcForm, FCDoControl->oneloopVerbose];
+							FCPrint[1, "Time needed = ", tim, FCDoControl->oneloopVerbose];
 							OpenWrite @@ {nx};
 							WriteString @@ {nx, "( "};
 							Write @@ {nx, temp};
@@ -1755,7 +1755,7 @@ tensint[x_,dim_,q_, mandel_List] := (*tensint[x,dim,q,options]=*)
 		},
 		tensg = Catch[
 			FCPrint[2, "OneLoop: tensint: entering with ", tensx, FCDoControl->oneloopVerbose];
-			FCPrint[3, "OneLoop: tensint: entering ", q, "  dimension  ", dim, "   ", x//FeynCalcForm, FCDoControl->oneloopVerbose];
+			FCPrint[3, "OneLoop: tensint: entering ", q, "  dimension  ", dim, "   ", x, FCDoControl->oneloopVerbose];
 			(* diracSimplify must have been used previously              *)
 
 			(* tensor integral decomposition *)
@@ -1867,7 +1867,7 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 				tensdf2,tensdf1, pav0, tdecex = expr/.Pair-> PairContract,
 				tdi,tdecti,tdectj,tdectk,tdectl,tdectm,tdecr = 0,
 				tdecpl,tdecml,tdeclpl, rul,spl,add, tmppair, conall },
-			FCPrint[3, "entering tdec with expr = ", expr//FeynCalcForm, FCDoControl->oneloopVerbose];
+			FCPrint[3, "entering tdec with expr = ", expr, FCDoControl->oneloopVerbose];
 			FCPrint[3, "props =  ", props, FCDoControl->oneloopVerbose];
 			FCPrint[3, "Q =  ", Q, FCDoControl->oneloopVerbose];
 			(* number of vectors in the numerator *)
