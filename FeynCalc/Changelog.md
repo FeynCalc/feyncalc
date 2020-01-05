@@ -1,9 +1,28 @@
-# Version 9.3.0 (??? 2019)
-
+# Version 9.3.0 (January 2020)
 
 ## Important changes 
 
-* Modified `ComplexConjugate` to automaticafly apply `FCRenameDummyIndices`. This can be turned off using the option named the same way. (d7708286)
+* Introduced a new modern way to switch between Dirac gamma schemed in dim reg: `FCSetDiracGammaScheme` and `FCGetDiracGammaScheme`.  (f5a06363) (1c7a5246)
+
+    * Example: Show the current g^5 scheme
+
+              FCGetDiracGammaScheme[]
+
+    * Example: Show available g^5 schemes
+
+              ?FCSetDiracGammaScheme[]
+
+    * Example: Switch to the BMHV scheme
+
+              FCSetDiracGammaScheme["BMHV"]
+
+    * Example: Switch to the NDR scheme
+
+              FCSetDiracGammaScheme["NDR"]
+
+* Added a new scheme for handling g^5: `"NDR-Drop"`. It is like `"NDR"` but all the remaining traces with one g^5 (that NDR can't evaluate) are set to zero. It is meant to be applied in calculations where we know in advance that g^5 does not pose any issues. (031368f5)
+
+* Modified `ComplexConjugate` to automatically apply `FCRenameDummyIndices`. This can be turned off using the option named the same way. (d7708286)
 
 * The default behavior of `DiracSimplify` was changed to automatically evaluate Dirac traces. Now there is no need to use the replacement `DiracTrace->Tr` (b74b4c20)
 
@@ -13,7 +32,7 @@
 
 * Vectors in the `FeynCalcExternal` representation that contain a minus sign will have it factored out automatically, so that e.g. `FV[-p,mu]` will become `-FV[p,mu]`. (249d8b22)
 
-* Changed the handling of the output format type to address the issue #30 (9f409e1f). In particular, `FeynCalc` will now change only the output format of the current front end session, not the global Mathematica option as before. This behavior is controlled by the new global option `$FCTraditionalFormOutput`. The default value is `False`. One can load `FeynCalc` with the `TraditionalForm` typesetting via 
+* Changed the handling of the output format type to address the issue #30 (9f409e1f). In particular, `FeynCalc` will now change only the output format of the current front end session, not the global `Mathematica` option as before. This behavior is controlled by the new global option `$FCTraditionalFormOutput`. The default value is `False`. One can load `FeynCalc` with the `TraditionalForm` typesetting via 
 
               $FCTraditionalFormOutput = True;
               << FeynCalc`
@@ -55,12 +74,38 @@
               $LoadAddOns={"TARCER"}
               <<FeynCalc`
 
-* Added a lexicographical sorting of matrices when computing Dirac traces (4 dimensions only). This should help to avoid spurious terms that vanish by Schouten's identity. The old behavior can be recovered by setting the options `Sort` to `False`. (e4b75860)
+* Moved the loader of `FeynArts` into a separate file. So we can (and should) load `FeynArts` via `$LoadAddOns={"FeynArtsLoader"}`. The old `$LoadFeynArts` is now deprecated. Reason: More consistency when loading additional packages that interact with `FeynCalc` (a5667fcf)
+
+    * Example: Load `FeynCalc` and `FeynArts`
+
+              $LoadAddOns={"FeynArtsLoader"}
+              <<FeynCalc`
+
+* `PHI` is now a separate add-on located in https://github.com/FeynCalc/PHI. Once installed it should be loaded via `$LoadAddOns={"PHI"}`. (6a512061)  (a9b52873)
+
+    * Example: Load `FeynCalc` and `FeynArts`
+
+              $LoadAddOns={"FeynArtsLoader"}
+              <<FeynCalc`
+
+* Added a sorting of matrices when computing Dirac traces (4 dimensions only). This should help to avoid spurious terms that vanish by Schouten's identity. The old behavior can be recovered by setting the options `Sort` to `False`. (e4b75860)
+
+* Revert the change that `GAD[5]` immediately generates an error message and return to the old behavior where it is converted to `GA[5]`. Reasoning: In FC 9.3 the handling of the Dirac algebra is in no way comparable to the mess we had in FC 8.2. Furthermore, when entering chains it is much more convenient to write say `GAD[mu,nu,5,p1,p2]` than `GAD[mu,nu].GA[5].GAD[p1,p2]`. (fb48900a)
+
+* Added `FCFADiracChainJoin`. This function replicates what FormCalc does when it encounters `FeynArts`  output with uncontracted Dirac indices, e.g. from models with 4-fermions. When needed, `FCFAConvert` will call `FCFADiracChainJoin` automatically, so that no additional user interactions should be needed. This resolves issue #46. (4dae1ac2)
 
 * Made `DiracSigma` vanish by symmetry when both arguments are identical. (2702160e)
 
+* Changed the default value of `FCI` in `ExpandScalarProduct` from `True` to `False`. This way ExpandScalarProduct is now consistent with most other `FeynCalc` functions regarding `FCI`. (36c51d8a)
+
+* Changed the default value of `FCI` in `DotSimplify` from `True` to `False`. This way `DotSimplify` is now consistent with most other `FeynCalc` functions regarding `FCI`. (2b13066f)
+
+* Changed `$FCMemoryAvailable` from the hard-coded 4 GB to 25 % of the total amount of RAM. (0b0ba123)
+
 ## Removed or renamed functions, options and objects
 
+* Removed `ChargeConjugationMatrix` and `ChargeConjugationMatrixInv`. Reason: Charge conjugation of transposed Dirac matrices is now handled via `FCChargeConjugateTransposed`. (5f569514)
+* Removed `DiracGammaT`. Reason: It was never really supported by any of the Dirac algebra functions and its presence was rather confusing the users by making them think that they can really use this object in calculations. (89fe6595)
 * Removed `TARCER.nb`. Reason: Now that we can generate mx files from `TARCER.m`, the notebook is not needed anymore. Moreover, the code there is already outdated compared to `TARCER.m` (6a0ff0e7)
 * Completely removed the option `DimensionalReduction`. Reason: It looks like some attempt to implement dimensional reduction which, however, never made it to a properly working feature (329f70ed)
 * Removed the old syntax in `DiracSimplify` where matrices are entered using commas (not dots). Reason: This is not used anywhere in code and is not a good way to enter expressions. (d990e683)
@@ -78,10 +123,15 @@
 * Removed the option `ChangeDimension` from `TID`. Reason: Automatic or implicit changes of the dimension are dangerous and may easily to unwanted side effects or even inconsistent results. It is better to avoid that completely. (6fbd3f22)
 * Removed `FCMonitor` and `FCMonitorStub`. Reason: They are not used in `TID` anymore. (8e4b3ffa)
 * Removed `MakeFeynCalcPrivateContext` and `$IndexPrefix`. Reason: Some very old routines that were largely obsolete already in the version 9. (c7510662)
+* Removed the legacy syntax of `DiracTrick`, where one could enter Dirac matrices without `DOT`s. (69957a9f)
+* Removed the unfinished experimental function `SquareAmplitude2`. Reason: It never became sufficiently stable and ready to be used and hence was also never mentioned in the documentation. (ee1149f7)
 
 ---
 
-* Renamed `MemoryAvailable` and `$MemoryAvailable` to `FCMemoryAvailable` and `$FCMemoryAvailable`. Reason: `MemoryAvailable` is a system variable since Mathematica 11.0. (3c18c338)
+* Renamed the option `DiracSimpCombine` of `DiracSimplify` to `DiracGammaCombine`. (6da10564)
+* Renamed the `DiracCanonical` option of `DiracSimplify` to `DiracOrder`. (7fc6846e)
+* Renamed the option `SpinPolarizationSum` of `FermionSpinSum` to `Head`. (c56581f6)
+* Renamed `MemoryAvailable` and `$MemoryAvailable` to `FCMemoryAvailable` and `$FCMemoryAvailable`. Reason: `MemoryAvailable` is a system variable since `Mathematica` 11.0. (3c18c338)
 * Renamed `PropagatorDenominatorExplicit` to `FeynAmpDenominatorExplicit`. Reason: more consistent naming scheme. This way it fits to other functions that start with `FeynAmpDenominator`. Of course, `PropagatorDenominatorExplicit` still works in order not to break the existing codes. (8bfefcda)
 * Renamed `SquareAmplitude` to `SquareAmplitude2`. Reason: `SquareAmplitude2` is an experimental function that never became sufficiently stable. The name `SquareAmplitude` will be used for a different function. (23667615)
 * Removed a call to `ChangeDimension` from `Explicit`. Reason: The `Dimension` option should already handle this, so that we don't need to call another function. (d1dd1def)
@@ -89,10 +139,12 @@
 
 * Modified the syntax of `FCLoopBasisExtract` so that the dimensions are now given via the `SetDimensions` option. Reason: This unifies the behavior among the other `FCLoopBasis*` functions. Furthermore, the new `FCTopology` option allows to include loop momenta that are not actually present in the input expression. This is useful when working with integral topologies. (8ab84fdd)
 
-## New functions and objects
+## New functions and symbols
 
 
 ### Noncommutative algebra
+
+* Added new function `FCMatrixIsolate` that combines the application of `FCDiracIsolate`, `FCColorIsolate` and `FCPauliIsolate`. This is very useful for amplitude manipulations that affect the matrix structure of the expression, i.e. for taking the complex conjugate. (20030293)
 
 * Added new function `DiracSigmaExpand` that handles expansions of `DiracSigma`s. (2ed72ef9)
 
@@ -174,7 +226,7 @@
               UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]];
               DotSimplify[ExpandPartialD[QuantumField[A].QuantumField[A].LeftPartialD[nu]]]
 
-* Introduced initial support for Dirac matrix chains with explicit Dirac indices (via `DiracChain`). This particularly useful when importing amplitudes from `QGRAF` (fd49dd63) (4468a00e)
+* Introduced initial support for Dirac matrix chains with explicit Dirac indices (via `DiracChain`). This particularly useful when importing amplitudes from `QGRAF` (fd49dd63) (4468a00e) (a6b577d9) (5799b97b)
 
     * Example: Some expressions with open Dirac indices that are now possible
 
@@ -211,12 +263,18 @@
               (* V spinor contracted with a chain of Dirac matrices *)
               DCHN[GAD[mu].GAD[nu], i, SpinorV[p, m]]
 
-* Introduced `DiracChainJoin` for basic simplifications of Dirac chains. Currently, the only thing it does are contractions of the Dirac indices (4d3649a6)
+* Introduced `DiracChainJoin` to handle contractions of the Dirac indices (4d3649a6) (18ac295d) (0575c06f)
 
     * Example: Contract the Dirac indices to obtain a closed spin chain
 
               DCHN[SpinorUBar[p1, m1], i] DCHN[GAD[mu].GAD[nu], i, j] DCHN[j, SpinorV[p2, m2]] //
               DiracChainJoin
+
+* Added DiracChainExpand, a function to expand Dirac chains with explicit indices using linearity. (4e938efe)
+
+* Added DiracChainFactor, an auxiliary function to factor out commutative objects out of DiracChains. (97b47b24)
+
+* Added new function DiracChainCombine, which is an inverse operation to DiracChainExpand. (90431dfc)
 
 * Added `PauliSigmaExpand` and `PauliSigmaCombine` which are essentially analogons of `DiracGammaExpand` and `DiracSigmaCombine` for Pauli matrices. (a99b9882)
 
@@ -254,6 +312,8 @@
     * Example: Simplify a chain of Pauli matrices without the full reduction
 
               CSIS[p].CSI[j].CSIS[p].CSIS[i] // PauliTrick[#, PauliReduce -> False] &
+
+* Added `PauliSimplify`, an analogon of `DiracSimplify` but for Pauli matrices. (c8039c5c)
 
 ### Loop integrals
 
@@ -538,6 +598,8 @@ The support for the manipulation of the new integral is still somewhat experimen
 
 ### Tensors and vectors
 
+* Added new function FreeIndexFreeQ for checking whether the expression contains free (i.e. uncontracted) indices. (0e75d46c)
+
 * Added new objects for non-relativistic calculations. (a82bb76e)
 
     * Example: Following new tensor objects are now available
@@ -692,9 +754,13 @@ The support for the manipulation of the new integral is still somewhat experimen
 
 ### Miscellaneous
 
-* Introduced `FCSubsetQ`, a cheap replacement for the standard `SubsetQ`, which is unfortunately not available in Mathematica 8 and 9. The syntax is identical to that of `SubsetQ` (5a4eca2c)
+* Added new function `FCCheckVersion` that can abort the evaluation if the current `FeynCalc` version is too old.
 
-* Introduced `FCDuplicateFreeQ`, a cheap replacement for the standard `DuplicateFreeQ`, which is unfortunately not available in Mathematica 8 and 9. The syntax is identical to that of `DuplicateFreeQ`  (b44bd2f7)
+* Added `SMPToSymbol`, a small function for converting `SMP`s to symbols. (e473b3a4)
+
+* Introduced `FCSubsetQ`, a cheap replacement for the standard `SubsetQ`, which is unfortunately not available in `Mathematica` 8 and 9. The syntax is identical to that of `SubsetQ` (5a4eca2c)
+
+* Introduced `FCDuplicateFreeQ`, a cheap replacement for the standard `DuplicateFreeQ`, which is unfortunately not available in `Mathematica` 8 and 9. The syntax is identical to that of `DuplicateFreeQ`  (b44bd2f7)
 
 * Added new auxiliary function `FCProductSplit` for splitting products into lists w.r.t a list of the given variables. (efedef66)
 
@@ -758,7 +824,7 @@ function that is probably useful only in very special cases. The syntax is ident
               AbsoluteTiming[ExpandAll[exp];]
               
               AbsoluteTiming[ExpandAll2[exp];]
-              (* In Mathematica 11.0 ExpandAll2 is almost 60% faster than ExpandAll! *)
+              (* In `Mathematica` 11.0 ExpandAll2 is almost 60% faster than ExpandAll! *)
 
 
 * Added `FCMakeIndex`. It is a small convenience function for generating indices, i.e. `LorentzIndex`, `SUNIndex` etc. from the output of diagram generators such as `FeynArts` and `QGRAF`. Notice that `FeynCalc` currently does not offer a native interface to `QGRAF`. This is planned for future versions of the package. (2fad0817)
@@ -818,6 +884,24 @@ function that is probably useful only in very special cases. The syntax is ident
 
 #### Miscellaneous
 
+* Improved `FCUseCache` to take NR quantitites into account when caching. (ca446ee4)
+* Allowed `SquareAmplitude` to handle amplitudes of different length (e.g. RV- contributions). (ba642612)
+* Modified the debugging interface to have negative values of `FCVerbose` parsed correctly. (0771fa6e)
+* Improved factoring of momenta arguments in `DotSimplify`. (bacfa855)
+* Improved `Cases2` not to generate erroneous messages when handling functions that must have more than one argument (e.g. `PolyLog`s) (d34a9e64)
+* Modified the behavior of `ComplexConjugate` not to abort the evaluation if the expression cannot be strictly factored into Dirac, Pauli and color parts. This should fix Issue #51. (e53bdc0d)
+* Improved `FCRenameDummyIndices` and `FCCanonicalizeDummyIndices` to work with `DiracIndex`. (74540c36)
+* Added new internal variable ```FeynCalc`Private`AddToTheWhiteListedContextAdditions```. It is meant for packages that add stuff to the `Global` context so that there will be no warning messages when `$FCCheckContext` is set to `True`. (d57682f4)
+* Added new option `FreeQ` to `FCGetDimensions` that allows to specify objects to be ignored when extraction dimensions present in the expression. (32aff18b)
+* Made `FC{Dirac,Color,Pauli,Matrix}Isolate` listable. (14d5ac71)
+* Improved `FCRenamingDummyIndices`. (0f1ecb94)
+* Added new option `DiracIndexNames` to `FCCanonicalizeDummyIndices`. (53fec02e)
+* Improved the `Conjugate` option of `ComplexConjugate` following the suggestion of JP-Ellis from https://github.com/FeynCalc/feyncalc/pull/48 (4327daf7)
+* Completely refactored ComplexConjugate, adding support for DiracChains and PauliSigmas. (82bdedc9)
+* Added the `TimeConstrained` option to FCColorIsolate. (0c29d439)
+* Improved `Uncontract` to handle `DiracChain`s. (ba756e9c)
+* Improved `FCCanonicalizeDummyIndices` to handle `DiracChain`s. (4801967e)
+* Improved `DotSimplify` to apply DiracChainFactor when the input contains `DiracChain` symbols. (9f268817)
 * Various functions now support the option `FCE -> True` to convert the output to the `FeynCalcExternal` form.
 * Added new option `Expand` to `NTerms`. (e8cc7378)
 * Moved `OptionsSelect` and `$Gauge` from `FeynCalc.m` to `Phi`. (7bc5d54d)
@@ -827,7 +911,6 @@ function that is probably useful only in very special cases. The syntax is ident
 * Added new option `Head` to `FCFactorOut` (e508b29b)
 * Added new option `Full` to `ExpandScalarProduct`. Together with the momentum options it allows even more fine-grained expansions, e.g. for `ExpandScalarProduct[SP[l+p1+p2+p3,q1+q2+q3+q4],Momentum->l,Full->False]`. This helps to avoid an unnecessary proliferation of terms. (64c6e504)
 * Added a new option `ExpandScalarProduct` to `Contract`. When set to `False`, scalar product will not be expanded which should give a speed up on QCD diagrams with 3- and 4-gluon vertices. (50e860b1)
-
 * Changed the behavior of `Collect2` on expressions that contain none of the specified monomials. Now such expressions will be factored (according to the `Factoring` option) in the output. This is a more consistent behavior compared to what we had before. (c9219af6)
 * Improved `Collect2` so that it can now thread over (lists of) replacement rules. This is particularly useful when applying `Collect2` to the output of `Solve`. (5c334b7d)
 * Changed the ordering of InitialFunction and `FCFactorOut` in `Collect2`. It is better to first factor out the overall coefficient and then apply the `InitialFunction` (e.g. `Expand`). (3dc17555)
@@ -861,9 +944,12 @@ function that is probably useful only in very special cases. The syntax is ident
 * Improved typesetting of `FeynAmpDenominator`. (1e802f06)
 * Improved typesetting of four vectors. (87fab6da)
 
-#### FeynArts
+#### `FeynArts` 
 
-* Patch FCFAConvert to support empty diagram lists (#43) (e01b3b8b)
+* Improved `FCPrepareFAAmp` to support the new `PropagatorDenominator` syntax of `FeynArts`  3.12 (thanks to Will, <http://www.feyncalc.org/forum/1499.html>) (6946116f)
+* Improved `FCPrepareFAAmp` to handle the input from `FeynArts` with explicit Dirac indices (issue # 46). (7eed481b)
+* Added new option `FAModelsDirectory` to `FAPatch` so that we can also patch models that are not in `FeynArts/Models`. (9341acea)
+* Patch `FCFAConvert` to support empty diagram lists (#43) (e01b3b8b)
 * Updated `FCPrepareFAAmp` to handle Majorana spinors. (a84199f2)
 * Improved `FCFAConvert` to handle `FeynArts` models with `SUND`s in the Feynman rules (thanks to A. Hayreter). (59002150)
 * Added a new option `Prefactor` to `FCFAConvert`. (8e8d0b96)
@@ -873,8 +959,37 @@ function that is probably useful only in very special cases. The syntax is ident
 
 #### Dirac algebra
 
+* Modified the behavior of `DiracReduce` not to output DiracSigmas with `FCE` applied to their arguments. (2c4793f5)
+* Improved performance of `DiracSimplify` on contractions from large traces. (834cefa9)
+* Improved formulas used in `PauliTrick`. (e687d04c)
+* Updated `FCPauliIsolate` to have similar features as `FCDiracIsolate`. (096a12c0)
+* Added new option `FeynAmpDenominatorCombine` to `FCFAConvert`. When set to False, propagators raised to integer powers will be returned e.g. as `FAD[p1+p2]^2` instead of `FAD[p1+p2,p1+p2]`. This should emulate the old behavior of `FeynArts`  before the change that occurred on the 19.03.2019. (ec976f75)
+* Improved `DiracSimplify` on expressions with Cartesian tensors. (8921a977)
+* Added new option `CartesianIndex` to `FCDiracIsolate`. (006f65f2)
+* Added new options `LorentzIndexNames` and `CartesianIndexNames` to `ToStandardMatrixElement`. This way we can choose nicer looking indices when applying the function. (9020ffe5)
+* Improved the parsing of `FeynArts` amplitudes with 4-fermions when using the `UndoChiralSplittings` option. (6f018947) (221af0f3)
+* Improved handling of 4-fermion diagrams in `DiracSimplify` and `ToStandardMatrixElement`. (d6699ac3)
+* Improved BMHV algebra in `DiracTrick` so that chiral structures of the expression (`GA[6]` and `GA[7]`) do not get messed up when moving chiral projectors past other matrices. (081fb5e0)
+* Added new options `DiracSimplify` and `DiracEquation` to `ToStandardMatrixElement` to have more fine grained control over the process. (f43caece)
+* Added new options `LorentzIndexNames` and `CartesianIndexNames` to `DiracSimplify`. This can help to avoid additional index canonicalizations when applying DiracSimplify to a list of amplitudes. (50f01060)
+* Small optimization in `DiracSimplify` regarding Sirlin relations. (69cb590d)
+* Made `DiracSimplify` listable. (61872d54)
+* Added new options `LorentzIndexNames` and `CartesianIndexNames` to `SpinorChainTrick`. (a63eb61b)
+* Added new option `FCTraceExpand` to `FCDiracIsolate` and changed the default value of the factoring option to `{Factor2, 5000}`. (21235227)
+* Improved `DiracTrace` to evaluate simple traces before entering the main evaluation function via `DiracTrick`. (d60a0b6b)
+* Improved `DiracSimplify` not to miss certain contractions. (6a01f4dd)
+* Allowed `DiracChain` symbols to factor out an overall numerical coefficient. (e71bf706)
+* Added additional simplifications in `DiracTrick` for the `NDR-Drop` scheme. (021c5030)
+* Added fast mode to `DiracTrace`. (53d2e07a)
+* Modified `DiracEquation` not to mess up the chiral structure of the input expressions. (43799615)
+* Refactored `Anti5` to call `DiracTrick` for all g^5-related manipulations. (f3a23a7f)
+* Improved `DiracSimplify` to try to repeat the attempt to calculate the trace at a latter stage. This is mainly relevant for NDR, where the trace might become simpler at a latter stage. (64ea28f3)
+* Improved `Chisholm`, `DiracOrder`, `EspChisholm`, `FCChargeConjugateTransposed` and `SpinorChainTranspose` to handle `DiraChain` objects. (3c48b725)
+* Improved `FCDiracIsolate`, `FCPauliIsolate` and `FCColorIsolat` to wrap the prefactor of the matrix chain into a user-specified head via the Head option. (47f48b2f)
+* Improved `DiracSimplify` to handle `DiracChain`s. (1b1b1d1d)
+* Improved `DiracTrick` to support `DiracChain`s. (553ff9c4)
+* Added a fast mode to `DiracChainJoin`. (a327b9d4)
 * Improved `FermionSpinSum` to handle amplitudes squared that involve Majorana spinors. The reordering of spinors in the corresponding chains can be turned off via the option `SpinorChainTranspose`. (71b9d256)
-
 * Added a new option `FCJoinDOTs` to `DotSimplify`. This allows to inhibit the joining of DOTs when `Expanding` is set to False. The same option is now also available in `FCDiracIsolate`, `DiracTrick`, `Chisholm`, `DiracOrder` and `EpsChisholm`. (34f08996) (c280442e)
 
 * New options added to `FCDiracIsolate`
@@ -909,6 +1024,19 @@ function that is probably useful only in very special cases. The syntax is ident
 
 #### Loop integrals
 
+* Improved performance in `FCLoopExtract`, `FCLoopIsolate` and `FCMultiLoopTID` (98a10039).
+* Improved performance of `FCApart` by using memoization. (9f19c326)
+* Added new option `MaxIterations` to `PaVeReduce`, so that one can limit the depth of the reduction. (4d32be8c)
+* Improved `FCLoopBasisIntegralToPropagators` and `FCLoopBasisIntegralToPropagators` to allow for lists of propagators in the input. (b48a10e9)
+* Added new option `PaVeOrder` to `ToPaVe`. When used together with `PaVeAutoOrder` this will completely disable the reordering of the arguments using symmetries of the `PaVe` functions. (0938f7d4)
+* Improved `TarcerToFC` to properly recover the external momentum from scalar products using the new option ScalarProduct. (a2af7454)
+* Added some additional rank 4 2-loop tensor decompositions to `TIDL`. (d83b42e6)
+* Improved `PaVeReduce` not to remove external isolations. (69225bad)
+* Improved `FCApart` to handle nonlinear loop integrals. (f5b0f90a)
+* Improved `FCMultiLoopTID` to handle NR integrals. (dd56a002)
+* Improved `FCLoopBasisExtract` and `FCLoopBasisOverdeterminedQ` not to freak out on nonlinear/nonstandard integrals. (bc886f6d)
+* Improved `ApartFF` and `FCApart` to avoid issues with `Collect2` never finishing due to bugs in ` Mathematica` 's `Factor`. The option `Factoring` is now given as a list, e.g. `{Factor2, 5000}`. The second value is the maximal `LeafCount`. Coefficients that have a higher LeafCount value will not be factored but left as they are. The option `TimeConstrained` is passed to `Collect2`. Here we set `3` seconds as a safe default. If the user exprects more compact results when facotrization is allowed to try harder, he or she should modify the options `Factoring` and `TimeConstrained` accordingly. (bbc38955)
+* Improved `TID` and `FCMultiLoopTID` to handle input with `DiracChains`. (69481170)
 * Added an option `Collecting` to `PaVeReduce` to prevent some reductions from never terminating (thanks to C. Bobeth). (0eea4f8f)
 * Added new option `Momentum` to `FeynAmpDenominatorCombine`. It makes it possible to combine only those `FADs` that depend on the given set of momenta. (ee4245e4)
 * Added new option `Head` to `Tdec`. (b1e2b5bd)
@@ -970,6 +1098,31 @@ function that is probably useful only in very special cases. The syntax is ident
 
 ## Bug fixes
 
+* Fixed `DCHN` typesetting for spinors with D-dimensional momenta. (b08e3edd)
+* Fix an infinite loop in `ExpandAll2[]`. (#45) (22628122)
+* Fixed `UndoChiralSplittings` in `FCPrepareFAAmp` for explicit Dirac indices. (2d2904f2)
+* Fixed a bug in `GhostPropagator`, where the sign from `QCDFeynmanRuleConvention` was ignored. (b79b3573)
+* Fixed/improved some descriptions of the functions. (f5a6900d)
+* Fixed a bug in `DiracSimplify` not recognizing traces free of Dirac matrices. (a186d537)
+* Fixed a bug in `ComplexConjugate` regarding the conjugation of `FCChargeConjugateTransposed` expressions. (348918b4)
+* Corrected EW examples where the gauge terms of weak bosons were missing in the unitarity gauge. Thanks to N. Steinberg. (b9338605)
+* Fixed a bug in `DiracChainCombine` that did not take into account products of `DCHN`s in the input. (bac01220)
+* Cleaned up the source code following the WWB warnings. (4d8715ad)
+* Fixed a performance issue in `FCDiracIsolate` that made `FCFADiraChain` join painfully slow at 2-loops. (4360a634)
+* Fixed not working cases of `diracTrickEvalFast` in `DiracTrick`. The new debugging option Evaluate should help in catching such cases via unit tests. (b563a17b)
+* Fixed a small bug in `DiracTrace` when traces of `DOT[1,1]` and alike are not fully evaluated. (555a1739)
+* Fixed bugs in `TID` and `FCMultiLoopTID` when we have loop momenta inside Dirac traces that cannot or should not be evaluated. (e638daba)
+* Fixed a bug in `FCPrepareFAAmp` when specyfing explicit SU(N) indices in the FA input. (3d34989e)
+* Fixed multiple typos (thanks to Hermès BÉLUSCA - MAÏTO). (eca73ac6)
+* Fixed the option `ExceptHeads` in `FCColorIsolate` so that it can be used to filter out `SU(N)` constants in `StandardMatrixElement`. (55d97635)
+* Fixed a typo in `FeynCalc.m` (66d4b984)
+* Fixed a bug in `Tr2`. (b7e8be20)
+* Rebuild the new documentation for `FeynCalc` 9.3. This should solve Issue #20, Issue #25, Issue #36 and Issue #44 (c6d41ea8)
+* Fix the renormalization example. (f1639276)
+* Reworked error messages in mixed dimensions in schemes other than BMHV. This way the user should better understand what is going wrong. (45363084)
+* `TID`: Do not fail with weird error messages when the loop momentum is inside a list. (8ee8b593)
+* Fixed a bug in the detection of variables leaking into the `Global` context. (97d0e853)
+* Fixed an issue with `$SystemMemory` missing in `Mathematica` 8 and 9. (1b7cb9cf)
 * Disabled automatic expansion of momenta in Dirac spinors. Otherwise it is impossible to apply `MomentumCombine` when needed. (7ba7fcfd)
 * Do not allow `Uncontract` act on expressions with symbolic or negative powers: this inevitably generates wrong results. (ea32f1e1)
 * Blocked obviously illegal `SUNIndex` and `SUNFIndex` objects. (44002e8f)
@@ -1014,7 +1167,7 @@ function that is probably useful only in very special cases. The syntax is ident
 * Fixed a performance regression in the typesetting of `FeynAmpDenominator` (`FCI` version). (4c5351ff)
 * Fixed `FCFAConvert` to properly handle `FeynArts` models with an explicit `Eps` (thanks to Gang Li). (4496d289)
 * `OneLoop`: Fix typos. (c272ef8e)
-* Fixed some issues with Mathematica 9 and 8 (thanks to Gang Li). (6ee20946)
+* Fixed some issues with `Mathematica` 9 and 8 (thanks to Gang Li). (6ee20946)
 * Fixed inconsistent behavior of `FDS`. If a loop integral factorizes into a product of loop integtrals, `FDS` can often detect that and give the result in such a way, that a single `FAD` is rewritten as a product of `FAD`s. This behavior is controlled by the option `FeynAmpDenominatorCombine`. The default value is `False` (to be compatible with the old behavior). Setting this option to `True` activates the factorization. (8a7553f4)
 * Small fix in `Solve3`. (c7a74d74)
 * Fixed a small bug in `FCPrepareFAAmp`. (84ca61dc)
@@ -1051,8 +1204,8 @@ function that is probably useful only in very special cases. The syntax is ident
 * Fixed a bug in `FCGetNotebookDirectory`. (dd014f8d)
 * Fixed a small bug in the `FeynRules` QCD model. (e92ae81f)
 * Minor fixes in the bundled add-ons. (ddbe1247)
-* Fixed some leakage of `FeynCalc` internal symbols into the `Global` context after loading `FeynCalc`. Furthermore, the file `.testing` in the FeynCalc directory now allows `FeynCalc` to decide whether the current version is a development or a stable version. (0e1fc2cd)
-* Added a fix to `FCLoopSplit` to work around a bug in Factor in Mathematica 11.0.1 (c.f. <https://mathematica.stackexchange.com/questions/151650/factor-fails-on-a-simple-expression>) (7efbbacc)
+* Fixed some leakage of `FeynCalc` internal symbols into the `Global` context after loading `FeynCalc`. Furthermore, the file `.testing` in the `FeynCalc` directory now allows `FeynCalc` to decide whether the current version is a development or a stable version. (0e1fc2cd)
+* Added a fix to `FCLoopSplit` to work around a bug in Factor in `Mathematica` 11.0.1 (c.f. <https://mathematica.stackexchange.com/questions/151650/factor-fails-on-a-simple-expression>) (7efbbacc)
 * Small fix in `TR`. (81b862dd)
 * Fixed a bug in `SpinorChainTrick` related to the canonicalization of Lorentz indices in spinor chains. (7a79835c)
 * Fixed a bug in `OneLoopSimplify` related to an excessive use of `Isolate` that leads to issues with noncommutative objects (thanks to Adrian). (60ef0c62)
@@ -1093,7 +1246,7 @@ function that is probably useful only in very special cases. The syntax is ident
 * Fixed a small bug in the definition of `Eps`. (1797ce4f)
 * Small fix in `SetMandelstam` for more than 4 momenta. (4abb8e06)
 * Fixed a small bug in `MomentumCombine`. (2b64ab92)
-* Fixed two example files to work with FeynArts using unitarity gauge. (e70fc629)
+* Fixed two example files to work with `FeynArts`  using unitarity gauge. (e70fc629)
 * Fixed a bug in `FCRenameDummyIndices` (thanks to Luigi Delle Rose). (4853e427)
 * Fixed a bug in `ChangeDimension` related to `Eps` tensors. (1cf89752)
 * Fixed a bug with missing `DiracSigmaExplicit` in DiracTrace (Issue #23, thanks to sbilmis). (341e27ea)
