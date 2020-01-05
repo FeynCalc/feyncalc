@@ -46,6 +46,13 @@ FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
+FCCheckVersion::usage=
+"FCCheckVersion[major,minor,build] checks if the current version of FeynCalc
+is larger or equal than marjor.minor.build. For example, FCCheckVersion[9,3,0]
+will generate a warning (when running with the frontend) or quit kernel (when
+running without the frontend) if the loaded FeynCalc version is older than 9.3.0. \n
+Notice that this function is available only since FeynCalc 9.3";
+
 FCDuplicateFreeQ::usage=
 "FCDuplicateFreeQ[list] yields True if list contains no duplicates and False otherwise. \n
 FCDuplicateFreeQ[list,test] uses test to determine whether two objects should be considered \
@@ -240,9 +247,6 @@ The problem reads: `1`";
 FCDuplicateFreeQ::failmsg = "Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
-
-
-
 Begin["`Package`"]
 End[]
 
@@ -410,6 +414,19 @@ FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
+	];
+
+FCCheckVersion[major_Integer?NonNegative, minor_Integer?NonNegative, build_Integer?NonNegative, OptionsPattern[]]:=
+	Block[{str},
+		str = "Your FeynCalc version is too old. The following code requires at least FeynCalc "<>
+		ToString[major]<>"."<> ToString[minor]<>"."<> ToString[build]<>".";
+		If[	!MatchQ[ToExpression[StringSplit[$FeynCalcVersion, "."]],{a_/;a>=major,b_/;b>=minor,c_/; c>=build}],
+			If[	($FrontEnd === Null || $Notebooks===False),
+				Print[str];
+				Quit[],
+				CreateDialog[{TextCell[str], DefaultButton[]}, Modal->True];
+			]
+		]
 	];
 
 
