@@ -23,7 +23,7 @@ gp = (GSD[p3] + m).GAD[ga].(GSD[p4 + k] + m).(FVD[2 p4 + k, mu] GAD[nu] +
 	FVD[2 p4 + k, nu].GAD[mu]).gps[mu, nu, rho, si].(GSD[p4] - m); \n
 cp = xyz[k1, k2, -k1 + k2, al, be, ga];  \n
 cpc = Z[-k1, -k2, k1 + k2 - k, rho, si, al, be, eps];  \n
-TimeConstrained[(res = Contract[TR[gp.GAD[eps]] cp cpc];), 5]; \n FCE[res]",
+TimeConstrained[(res = Contract[TR[gp.GAD[eps]] cp cpc];), If[$VersionNumber>=9,5,10]]; \n FCE[res]",
 "-192*m^2*SPD[k, k1]*SPD[k, p4] + 128*D*m^2*SPD[k, k1]*SPD[k, p4] +
 (128*m^2*SPD[k, k1]^2*SPD[k, p4])/(3*SPD[k, k]) -
 (256*D*m^2*SPD[k, k1]^2*SPD[k, p4])/(3*SPD[k, k]) +

@@ -99,7 +99,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1,
 amp[1] = amp[0]//FCTraceFactor;
 
 
-amp[2]=Total/@Partition[amp[1],UpTo[2]]
+amp[2]=Total/@Partition[amp[1],2,2,1,{}]
 
 
 amp[3]=Total[amp[2]]

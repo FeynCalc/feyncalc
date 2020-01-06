@@ -39,9 +39,9 @@ If[ Names["Tests`Shared`fcstSharedObjectsCheckAbort"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
 
-If[ Names["Tests`Shared`fcstSharedObjectsTypesetting"]=!={} && $VersionNumber >= 10,
+If[ Names["Tests`Shared`fcstSharedObjectsTypesetting*"]=!={} && $VersionNumber >= 10,
 	tmpTest = Map[test[StringReplace[ToString[(ToExpression[#[[2]]]),InputForm, CharacterEncoding -> "Unicode"]," " ->""],StringReplace[(#[[3]])," " ->""],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsTypesetting"])];
+	Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsTypesetting*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
 
@@ -53,8 +53,8 @@ If[ Names["Tests`Shared`fcstFCCheckSyntax*"]=!={},
 ];
 
 nms=Names["Tests`Shared`*"];
-If[ nms=!={} && Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &]=!={},
+If[ nms=!={} && Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting*" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &])];
+	Join@@(ToExpression/@Select[nms, !StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting*" | "*fcstSharedObjectsCheckAbort" | "*fcstFCCheckSyntax*" ] &])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];

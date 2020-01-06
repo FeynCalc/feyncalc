@@ -74,7 +74,8 @@ loop[DiracGamma[CartesianMomentum[q]]]"},
 {"fcstFCLoopIsolate-ID23","FCLoopIsolate[xx FAD[l, l + p2, l + p2 - p3 - p4] FVD[l,
 nu] (FVD[p1, Lor4] + FVD[-l - p2 + p3 + p4, Lor4]) MTD[Lor3,mu] , {l}, Full -> False, ExpandScalarProduct -> True,
 Head -> loopInt] // FCE",
-"xx (FVD[p1, Lor4] + FVD[-p2 + p3 + p4, Lor4]) loopInt[FAD[l, l + p2, l + p2 - p3 - p4] FVD[l, nu]] MTD[Lor3, mu] -
+"xx (FVD[p1, Lor4] - FVD[p2 - p3 - p4, Lor4]) loopInt[
+FAD[l, l + p2, l + p2 - p3 - p4] FVD[l, nu]] MTD[Lor3, mu] -
 xx loopInt[FAD[l, l + p2, l + p2 - p3 - p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, mu]"},
 {"fcstFCLoopIsolate-ID24","FCLoopIsolate[xx FAD[l, l + p2, l + p2 - p3 - p4] FVD[l,
 nu] (FVD[p1, Lor4] + FVD[-l - p2 + p3 + p4, Lor4]) MTD[Lor3,mu] , {l}, ExpandScalarProduct -> True, Head -> loopInt] //

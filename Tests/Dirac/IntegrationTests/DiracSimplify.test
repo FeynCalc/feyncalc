@@ -20,6 +20,6 @@ Tr13 = DiracTrace[Line13];
 Tr14 = DiracTrace[Line14];
 Tr15 = DiracTrace[Line15];
 Tr16 = DiracTrace[Line16];
-res = DiracSimplify[Tr13 Tr14 + Tr15 Tr16];, 80];
+res = DiracSimplify[Tr13 Tr14 + Tr15 Tr16];, If[$VersionNumber>=9,80,160]];
 LeafCount[res] > 13000", "True"}
 });

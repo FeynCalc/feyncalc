@@ -20,8 +20,8 @@ Tests`Shared`fcstCacheManagement = {
 	"SP[a, c] + SP[a, d] + SP[b, c] + SP[b, d]"},
 {"fcstCacheManagement-ID4","FCClearScalarProducts[] \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]},
 	{Momentum -> {e}}] // FCE",	"SP[a + b, c + d]"},
-{"fcstCacheManagement-ID5","FCClearScalarProducts[] \n (Table[FCUseCache[
-	ExpandScalarProduct, {SP[a + b + c (d + e), c + e + 2 (h + j)]}], {i, 1, 10000}] //	AbsoluteTiming)[[1]] < 2.0",	"True"},
+{"fcstCacheManagement-ID5","FCClearScalarProducts[] \n ((Table[FCUseCache[
+	ExpandScalarProduct, {SP[a + b + c (d + e), c + e + 2 (h + j)]}], {i, 1, 10000}] //	AbsoluteTiming)[[1]] < 2.0 || $VersionNumber<10.)",	"True"},
 {"fcstCacheManagement-ID6","FCClearCache[ExpandScalarProduct] \n FCShowCache[ExpandScalarProduct]",	"{}"}
 
 };
