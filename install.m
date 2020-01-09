@@ -327,7 +327,7 @@ This allows you to customize your FeynCalc installation to fit your needs best.*
 
 	If[	faInstalled,
 		If[	InstallFeynCalcDevelopmentVersion,
-			Global`$LoadAddOns={"FeynArtsLoader"},
+			Global`$LoadAddOns={"FeynArts"},
 			Global`$LoadFeynArts=True
 		]
 	];

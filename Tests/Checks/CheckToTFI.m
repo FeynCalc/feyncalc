@@ -23,7 +23,7 @@
 Print["Checking ToTFI"];
 
 $FeynCalcStartupMessages = False;
-$LoadAddOns={"TARCER","FeynArtsLoader"};
+$LoadAddOns={"TARCER","FeynArts"};
 
 <<FeynCalc`;
 

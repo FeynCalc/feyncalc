@@ -681,7 +681,7 @@ Cell[TextData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"$LoadAddOns", "=", 
-   RowBox[{"{", "\"\<FeynArtsLoader\>\"", "}"}]}], ";"}]], "Input",
+   RowBox[{"{", "\"\<FeynArts\>\"", "}"}]}], ";"}]], "Input",
  CellLabel->"In[16]:=",
  CellID->342627804]
 }, Open  ]],
@@ -700,7 +700,7 @@ appear. Hit OK. Wait until the patching process finishes. Then restart ",
 Cell[BoxData[
  RowBox[{
   RowBox[{"$LoadAddOns", "=", 
-   RowBox[{"{", "\"\<FeynArtsLoader\>\"", "}"}]}], ";"}]], "Input",
+   RowBox[{"{", "\"\<FeynArts\>\"", "}"}]}], ";"}]], "Input",
  CellLabel->"In[18]:=",
  CellID->1900750623]
 }, Open  ]],

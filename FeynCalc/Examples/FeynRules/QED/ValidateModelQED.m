@@ -24,7 +24,7 @@ If[ $FrontEnd === Null,
 		Print["Validation of the FeynArts model for QED"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadAddOns={"FeynArtsLoader"};
+$LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
 

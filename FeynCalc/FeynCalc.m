@@ -65,13 +65,13 @@ If[ ValueQ[Global`$LoadTARCER],
 Remove[Global`$LoadTARCER]
 
 If[ ValueQ[Global`$LoadPhi],
-	(*Print[Style["$LoadPhi is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];*)
+	(*Print[Style["$LoadPhi is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArts\"} instead!",Red, Bold]];*)
 	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"PHI"}]
 ];
 Remove[Global`$LoadPhi];
 
 If[ ValueQ[Global`$LoadFeynArts],
-	(*Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArtsLoader\"} instead!",Red, Bold]];*)
+	(*Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArts\"} instead!",Red, Bold]];*)
 	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"FeynArtsLoader"}]
 ];
 Remove[Global`$LoadFeynArts];
@@ -311,6 +311,7 @@ FeynCalc`Private`AddToTheWhiteListedContextAdditions={};
 
 BeginPackage["FeynCalc`"];
 If[ $LoadAddOns=!={},
+	$LoadAddOns = $LoadAddOns /. {"FeynArts" -> "FeynArtsLoader"};
 	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, $LoadAddOns];
 	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, $LoadAddOns]
 ];

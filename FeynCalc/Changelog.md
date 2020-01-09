@@ -74,18 +74,18 @@
               $LoadAddOns={"TARCER"}
               <<FeynCalc`
 
-* Moved the loader of `FeynArts` into a separate file. So we can (and should) load `FeynArts` via `$LoadAddOns={"FeynArtsLoader"}`. The old `$LoadFeynArts` is now deprecated. Reason: More consistency when loading additional packages that interact with `FeynCalc` (a5667fcf)
+* Moved the loader of `FeynArts` into a separate file. So we can (and should) load `FeynArts` via `$LoadAddOns={"FeynArts"}`. The old `$LoadFeynArts` is now deprecated. Reason: More consistency when loading additional packages that interact with `FeynCalc` (a5667fcf)
 
     * Example: Load `FeynCalc` and `FeynArts`
 
-              $LoadAddOns={"FeynArtsLoader"}
+              $LoadAddOns={"FeynArts"}
               <<FeynCalc`
 
 * `PHI` is now a separate add-on located in https://github.com/FeynCalc/PHI. Once installed it should be loaded via `$LoadAddOns={"PHI"}`. (6a512061)  (a9b52873)
 
     * Example: Load `FeynCalc` and `FeynArts`
 
-              $LoadAddOns={"FeynArtsLoader"}
+              $LoadAddOns={"FeynArts"}
               <<FeynCalc`
 
 * Added a sorting of matrices when computing Dirac traces (4 dimensions only). This should help to avoid spurious terms that vanish by Schouten's identity. The old behavior can be recovered by setting the options `Sort` to `False`. (e4b75860)
