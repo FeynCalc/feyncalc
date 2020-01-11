@@ -13,6 +13,17 @@
 
 (* ------------------------------------------------------------------------ *)
 
+If[	!FreeQ[$ContextPath,"WolframLanguageForJupyter`"],
+			Print["It seems that your are trying to install FeynCalc from a ",
+				"Wolfram Language kernel for Jupyter notebooks.",
+				"Unfortunately, graphical installation using a Jupyter frontend is currently not possible.",
+				"If you only have access to the Free Wolfram Engine, please start the kernel with a text-based interface",
+				"and run the installer again.", "\n\nInstallation aborted!"];
+			Abort[]
+];
+
+BeginPackage["FeynCalcInstaller`"];
+
 InstallFeynCalc::notcomp =
 "Your Mathematica version is too old. FeynCalc requires at least Mathematica 8. Installation aborted!";
 
@@ -29,7 +40,7 @@ set to True, the format type of new output cells will be set to TraditionalForm.
 the current value will not be changed.";
 
 AutoOverwriteFeynCalcDirectory::usage="AutoOverwriteFeynCalcDirectory is an option of InstallFeynCalc. If \
-set to True, the existing FeynCalc directory will be deleted without any further notice. The default
+set to True, the existing FeynCalc directory will be deleted without any further notice. The default \
 value None means that the user will be asked by a dialog. False means that the directory will be overwritten.";
 
 AutoDisableInsufficientVersionWarning::usage="AutoDisableInsufficientVersionWarning is an option of InstallFeynCalc. If \
@@ -69,6 +80,10 @@ $PathToFAArc::usage="$PathToFAArc specifies where the installer should look for 
 If the value is not empty, the installer will use the specified file instead of downloading it from the official \
 website."
 
+Begin["`Private`"]
+
+testConnection::usage="";
+
 If[ !ValueQ[$PathToFCArc],
 	$PathToFCArc = ""
 ];
@@ -77,42 +92,101 @@ If[ !ValueQ[$PathToFAArc],
 	$PathToFAArc = ""
 ];
 
-If[  $VersionNumber == 8,
-(*To use FetchURL in MMA8 we need to load URLTools first *)
-Needs["Utilities`URLTools`"];
+If[	$VersionNumber < 8,
+	Message[InstallFeynCalc::notcomp];
+	Abort[]
 ];
 
-Options[InstallFeynCalc]={
-	AutoDisableInsufficientVersionWarning-> None,
-	AutoEnableTraditionalForm -> None,
-	AutoInstallFeynArts-> None,
-	AutoOverwriteFeynCalcDirectory-> None,
-	FeynCalcDevelopmentVersionLink->"https://github.com/FeynCalc/feyncalc/archive/master.zip",
-	FeynCalcStableVersionLink->"https://github.com/FeynCalc/feyncalc/archive/hotfix-stable.zip",
-	InstallFeynCalcDevelopmentVersion->False,
-	InstallFeynCalcTo->FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc"}]
+
+If[	8.0 <=$VersionNumber < 9.0,
+	(*To use FetchURL in MMA8 we need to load URLTools first *)
+	Needs["Utilities`URLTools`"];
+];
+
+Which[
+	(*Mma 8*)
+	8.0 <=$VersionNumber < 9.0,
+		(*To use FetchURL we need to load URLTools first *)
+		FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
+	(*Mma 9 or 10 *)
+	9.0 <=$VersionNumber < 11.0,
+		FCGetUrl[x_]:= URLSave[x,CreateTemporary[]],
+	(*Mma 11 and above *)
+	$VersionNumber >= 11.0,
+		FCGetUrl[x_]:= First[URLDownload[x,CreateTemporary[]]]
+];
+
+If[ $PathToFCArc==="",
+	(*Test that we can access the FeynCalc repository*)
+	Quiet[testConnection = FCGetUrl["https://github.com/FeynCalc/feyncalc"];];
+	If[	testConnection===$Failed || !FileExistsQ[testConnection],
+		WriteString["stdout",
+			"It seems that your Mathematica version is unable to ",
+			"connect to the FeynCalc repository on GitHub.\n",
+			"This might be a network connectivity problem or an issue with Mathematica.\n",
+			"Especially some older versions of Mathematica (8, 9 or 10) and known to cause such problems\n",
+			"on recent versions of Linux, MacOS and Windows when accessing SSL-encrypted urls.\n\n",
+			"Please check the wiki <https://github.com/FeynCalc/feyncalc/wiki/Installation> for ",
+			"possible workarounds.\n",
+			"Notice that it is also possible to download all the necessary files by hand and install FeynCalc\n",
+			"without an existing internet connection. The required steps are described in the wiki.", "\n\nInstallation aborted!"
+		];
+			Abort[]
+	];
+];
+
+fancyText[Column[li_List]] :=
+	Column[(TextCell[#, "Text"] & /@ li)] /; $Notebooks
+
+fancyText[x_] :=
+	x /; !$Notebooks;
+
+choiceDialog2[x__] :=
+	ChoiceDialog[x]/; $Notebooks;
+
+choiceDialog2[text_,rest__] :=
+	(
+	WriteString["stdout","\n\n"];
+	MessageDialog[text];
+	ChoiceDialog["",rest]
+	)/; !$Notebooks;
+
+(*Greeter*)
+Print["Welcome to the automatic FeynCalc installer brought to you by the FeynCalc developer team!"];
+Print[" \[Bullet] To install the current stable version of FeynCalc (recommended for productive use), please evaluate"];
+Print["\t", If[$Notebooks,TextCell["InstallFeynCalc[]", "Code"],"InstallFeynCalc[]"]];
+Print[" \[Bullet] To install the development version of FeynCalc (only for experts or beta testers), please evaluate "];
+Print["\t", If[$Notebooks,TextCell["InstallFeynCalc[InstallFeynCalcDevelopmentVersion->True]", "Code"],
+	"InstallFeynCalc[InstallFeynCalcDevelopmentVersion->True]" ]];
+
+Options[InstallFeynCalc] = {
+	AutoDisableInsufficientVersionWarning	-> None,
+	AutoEnableTraditionalForm 				-> None,
+	AutoInstallFeynArts						-> None,
+	AutoOverwriteFeynCalcDirectory			-> None,
+	FeynCalcDevelopmentVersionLink			-> "https://github.com/FeynCalc/feyncalc/archive/master.zip",
+	FeynCalcStableVersionLink				-> "https://github.com/FeynCalc/feyncalc/archive/hotfix-stable.zip",
+	InstallFeynCalcDevelopmentVersion		-> False,
+	InstallFeynCalcTo						-> FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc"}]
 };
 
 Options[InstallFeynCalcQuiet]=
 	Options[InstallFeynCalc];
 
-Options[InstallFeynArts]={
-	FeynArtsMirrorLink->"https://github.com/FeynCalc/feynarts-mirror/archive/master.zip",
-	InstallFeynArtsTo->FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc","FeynArts"}]
+Options[InstallFeynArts] = {
+	FeynArtsMirrorLink	-> "https://github.com/FeynCalc/feynarts-mirror/archive/master.zip",
+	InstallFeynArtsTo	-> FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc","FeynArts"}]
 };
 
+
+
+
 InstallFeynArts[OptionsPattern[]]:=
-	Module[{tmpzip,fazip,FCGetUrl,unzipDir,faDir},
+	Module[{tmpzip,fazip,unzipDir,faDir},
 		(* Install FeynArts	*)
 
-		faDir=OptionValue[InstallFeynArtsTo];
-		fazip = OptionValue[FeynArtsMirrorLink];
-
-		If[$VersionNumber == 8,
-			(*To use FetchURL in MMA8 we need to load URLTools first *)
-			FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
-			FCGetUrl[x_]:= URLSave[x,CreateTemporary[]]
-		];
+		faDir	= OptionValue[InstallFeynArtsTo];
+		fazip 	= OptionValue[FeynArtsMirrorLink];
 
 		(* Download FeynArts tarball	*)
 		If[ $PathToFAArc=!="",
@@ -154,183 +228,213 @@ InstallFeynCalcQuiet[]:=
 	];
 
 InstallFeynCalc[OptionsPattern[]]:=
-	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir, fullPath,
-				strDisableWarning,strFeynArts,FCGetUrl, configFileProlog,
-				strOverwriteFCdit, faInstalled, zipDir, strEnableTraditionalForm,
-				useTraditionalForm, configFile},
+	Module[	{unzipDir, tmpzip, gitzip, packageName, packageDir, fullPath,
+			strFeynArts, configFileProlog, strOverwriteFC,
+			strDisableWarning, strEnableTraditionalForm, faInstalled, zipDir,
+			useTraditionalForm, configFile},
 
-	If[OptionValue[InstallFeynCalcDevelopmentVersion],
-		gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
-		gitzip = OptionValue[FeynCalcStableVersionLink]
-	];
+		If[	OptionValue[InstallFeynCalcDevelopmentVersion],
+			gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
+			gitzip = OptionValue[FeynCalcStableVersionLink]
+		];
 
-	faInstalled=False;
-	useTraditionalForm=False;
+		faInstalled			=	False;
+		useTraditionalForm	=	False;
+		packageName 		= "FeynCalc";
+		packageDir 			=	OptionValue[InstallFeynCalcTo];
 
-	packageName = "FeynCalc";
-	packageDir = OptionValue[InstallFeynCalcTo];
-
-strDisableWarning="To make the documentation work, we need to disable the warning that appears \
-when you open a notebook that was created with a newer Mathematica version. Otherwise this \
-warning will pop up every time you use the Documentation Center to read info on FeynCalc functions \
-in Mathematica 8 and 9. This setting is harmless and can be always undone via \
-\"SetOptions[$FrontEnd, MessageOptions -> {\"InsufficientVersionWarning\" -> True}]\". Should we do this now?";
-
-strEnableTraditionalForm="FeynCalc makes an extensive use of Mathematica's typesetting capabilities to \
-format the output in a nice and easily readable manner. However, the built-in typesetting is available \
-only if the format type of new output cells is set to TraditionalForm. The default value is StandardForm. \
-Do you want to allow FeynCalc to change the default output format to TraditionalForm whenever it is loaded? \
-This will only affect the current FeynCalc front end session and will not influence any subsequent Mathematica \
-sessions, i.e. the changes are not persistent.";
-
-strFeynArts="Do you want to install FeynArts from "<> OptionValue[InstallFeynArts,FeynArtsMirrorLink] <> "? FeynArts is a Feynman diagram \
-generator which is currently developed by Thomas Hahn (www.feynarts.de). It is not a part of FeynCalc but it \
-can be used together with FeynCalc after some patching. The patched version will be located in the directory \"FeynArts\"
-inside your FeynCalc installation.";
-
-strOverwriteFCdit="Looks like FeynCalc is already installed. Do you want to replace the content \
-of " <> packageDir <> " with the downloaded version of FeynCalc? If you are using any custom configuration \
-files or add-ons that are located in that directory, please backup them in advance.";
-
-configFileProlog ="(*Here you can put some commands and settings to be evaluated on every start of FeynCalc. \n
-This allows you to customize your FeynCalc installation to fit your needs best.*)";
-
-	If[$VersionNumber < 8,
-		Message[InstallFeynCalc::notcomp];
-		Abort[]
-	];
-
-	If[$VersionNumber == 8,
-		(*To use FetchURL in MMA8 we need to load URLTools first *)
-		FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
-		FCGetUrl[x_]:= URLSave[x,CreateTemporary[]]
-	];
+		strDisableWarning =
+			Column[{
+				StringJoin["To make the documentation work, we need to disable the warning ",
+					"that appears when you open a notebook that was created with a newer Mathematica version."],
+				" ",
+				StringJoin["Otherwise this warning will appear every time you use the Documentation Center ",
+					"to check FeynCalc documentation in Mathematica 8 and 9."],
+				" ",
+				"This setting is harmless and can be always undone via",
+				" ",
+				"\"SetOptions[$FrontEnd, MessageOptions -> \ {\"InsufficientVersionWarning\" -> True}]\"",
+				"",
+				"Should we do this now?"}
+			];
 
 
-	(* If the package directory already exists, ask the user about overwriting *)
-	If[ DirectoryQ[packageDir],
+		strEnableTraditionalForm =
+			Column[{
+				StringJoin["FeynCalc makes an extensive use of Mathematica's typesetting capabilities ",
+					"to format the output in a nice and easily readable manner."],
+				" ",
+				StringJoin["However, the built-in typesetting is available only if the format type of ",
+					"new output cells is set to TraditionalForm. The default value is StandardForm."],
+				" ",
+				StringJoin["Do you want to allow FeynCalc to change the default output  format to ",
+					"TraditionalForm whenever it is loaded?"],
+				" ",
+				StringJoin["This will only affect the current FeynCalc front end session and will not ",
+					"modify the default behavior of Mathematica."]
+				}
+			];
+		strFeynArts =
+			Column[{
+				"Do you want to install FeynArts from "<> OptionValue[InstallFeynArts,FeynArtsMirrorLink] <> "?",
+				"",
+				"FeynArts is a Feynman diagram developed by Thomas Hahn (www.feynarts.de).",
+				"It is not a part of FeynCalc but it can be used together with FeynCalc after some adjustments.",
+				"",
+				"The modified version of FeynArts will be placed into " <> FileNameJoin[{packageDir,"FeynArts"}]<>"."
+				}
+			];
 
-		If[ OptionValue[AutoOverwriteFeynCalcDirectory],
+		strOverwriteFC =
+			Column[{
+				"Looks like you already have a version of FeynCalc installed in " <> packageDir,
+				"",
+				"The installer can overwrite the content of this directory with the downloaded version of FeynCalc.",
+				"",
+				"However, in this case all custom configuration files or add-ons located there will be lost.",
+				"",
+				"How should we proceed?"
+				}
+			];
 
-			Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+		configFileProlog = StringJoin[
+			"(* ",
+			"Here you can put some commands and settings to be evaluated on every start of FeynCalc.\n",
+			"This can be used to customize your FeynCalc installation. ",
+			"*)"
+		];
+
+
+		(* If the package directory already exists, ask the user about overwriting *)
+		If[ DirectoryQ[packageDir],
+
+			If[ OptionValue[AutoOverwriteFeynCalcDirectory],
+
+				Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+
+				Null,
+				If[ choiceDialog2[fancyText[strOverwriteFC],{"Yes, overwrite the " <> packageName <>" directory"->True,
+					"No, I need to do a backup first. Abort installation."->False}, WindowFloating->True, WindowTitle->"Existing FeynCalc installation detected"],
+					Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+					Abort[]
+				]
+			]
+		];
+
+		(* Download FeynCalc zip file	*)
+		If[ $PathToFCArc=!="",
+			tmpzip = $PathToFCArc;
+			WriteString["stdout", "Installing FeynCalc from ", tmpzip," ..."],
+			WriteString["stdout", "Downloading FeynCalc from ", gitzip," ..."];
+			tmpzip=FCGetUrl[gitzip];
+		];
+
+		If[tmpzip===$Failed || !FileExistsQ[tmpzip],
+			WriteString["stdout", "\nFailed to download the FeynCalc zip file. Please check your interent connection.\nInstallation aborted!"];
+			Abort[],
+
+			unzipDir= tmpzip<>".dir";
+			WriteString["stdout", "done! \n"];
+		];
+
+		(* Extract the content	*)
+		WriteString["stdout", "FeynCalc zip file was saved to ", tmpzip,".\n"];
+		WriteString["stdout", "Extracting FeynCalc zip file to ", unzipDir, " ..."];
+
+		If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
+			WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
+			Abort[],
+			WriteString["stdout", "done! \n"];
+			(* Delete the downloaded file	*)
+			If[ $PathToFCArc==="",
+				Quiet@DeleteFile[tmpzip];
+			]
+		];
+
+		WriteString["stdout", "Checking the directory structure..."];
+		zipDir = FileNames["FeynCalc.m", unzipDir, Infinity];
+		If[ Length[zipDir]===1,
+			fullPath = DirectoryName[zipDir[[1]]];
+			zipDir = Last[FileNameSplit[DirectoryName[zipDir[[1]]]]];
+			WriteString["stdout", "done! \n"],
+			WriteString["stdout", "\nFailed to recognize the directory structure of the downloaded zip file. \nInstallation aborted!"];
+			Abort[]
+		];
+
+		(* Move the files to the final destination	*)
+		WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];
+
+		If[	CopyDirectory[fullPath,packageDir]===$Failed,
+			WriteString["stdout", "\nFailed to copy "  <>fullPath<>" to ", packageDir <>". \nInstallation aborted!"];
+			Abort[],
+			WriteString["stdout", "done! \n"];
+			(* Delete the extracted archive *)
+			Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
+		];
+
+		(* Activate the documentation	*)
+		WriteString["stdout", "Setting up the help system ... "];
+		RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
+		Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
+
+		(* Disable InsufficientVersionWarning?*)
+		If[ OptionValue[AutoDisableInsufficientVersionWarning] && $Notebooks,
+
+			SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
 
 			Null,
-			If[ ChoiceDialog[strOverwriteFCdit,{"Yes, overwrite the " <> packageName <>" directory"->True,
-				"No, I need to do a backup first. Abort installation."->False}, WindowFloating->True, WindowTitle->"Existing FeynCalc Installation detected"],
-				Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
-				Abort[]
+			If[ choiceDialog2[fancyText[strDisableWarning], WindowFloating->True, WindowTitle->"Documentation system"] && $Notebooks,
+				SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
 			]
-		]
-	];
+		];
 
-	(* Download FeynCalc tarball	*)
-	If[ $PathToFCArc=!="",
-		tmpzip = $PathToFCArc;
-		WriteString["stdout", "Installing FeynCalc from ", tmpzip," ..."],
-		WriteString["stdout", "Downloading FeynCalc from ", gitzip," ..."];
-		tmpzip=FCGetUrl[gitzip];
-	];
+		(* Activate TraditionalForm? *)
+		WriteString["stdout", "Setting up the format type of new output cells ... "];
+		If[ OptionValue[AutoEnableTraditionalForm],
 
-	If[tmpzip===$Failed,
-		WriteString["stdout", "\nFailed to download FeynCalc. Please check your interent connection.\nInstallation aborted!"];
-		Abort[],
+			useTraditionalForm = True,
+			Null,
+			If[ choiceDialog2[fancyText[strEnableTraditionalForm], WindowFloating->True, WindowTitle -> "TraditionalForm typesetting"],
+				useTraditionalForm = True
+			]
+		];
 
-		unzipDir= tmpzip<>".dir";
 		WriteString["stdout", "done! \n"];
-	];
 
-	(* Extract to the content	*)
-	WriteString["stdout", "FeynCalc zip file was saved to ", tmpzip,".\n"];
-	WriteString["stdout", "Extracting FeynCalc zip file to ", unzipDir, " ..."];
+		(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
+		RebuildPacletData[];
 
-	If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
-		WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
-		Abort[],
+		(* Generate FCConfig.m	*)
+		WriteString["stdout", "Creating the configuration file ... "];
+		configFile = StringJoin[configFileProlog, "\n\n(* Activate TraditionalForm output for each FeynCalc session *) \n$FCTraditionalFormOutput="<>ToString[useTraditionalForm]<>";"];
+		Export[FileNameJoin[{packageDir,"FCConfig.m"}], configFile, "Text"];
 		WriteString["stdout", "done! \n"];
-		(* Delete the downloaded file	*)
-		If[ $PathToFCArc==="",
-			Quiet@DeleteFile[tmpzip];
-		]
-	];
 
-	WriteString["stdout", "Recognizing the directory structure..."];
-	zipDir = FileNames["FeynCalc.m", unzipDir, Infinity];
-	If[ Length[zipDir]===1,
-		fullPath = DirectoryName[zipDir[[1]]];
-		zipDir = Last[FileNameSplit[DirectoryName[zipDir[[1]]]]];
-		WriteString["stdout", "done! \n"],
-		WriteString["stdout", "\nFailed to recognize the directory structure of the downloaded zip file. \nInstallation aborted!"];
-		Abort[]
-	];
+		If[ OptionValue[AutoInstallFeynArts],
 
-	(* Move the files to the final destination	*)
-	WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];
-
-	If[	CopyDirectory[fullPath,packageDir]===$Failed,
-		WriteString["stdout", "\nFailed to copy "  <>fullPath<>" to ", packageDir <>". \nInstallation aborted!"];
-		Abort[],
-		WriteString["stdout", "done! \n"];
-		(* Delete the extracted archive *)
-		Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
-	];
-
-	(* Activate the documentation	*)
-	WriteString["stdout", "Setting up the help system ... "];
-	RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
-	Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
-
-	If[ OptionValue[AutoDisableInsufficientVersionWarning],
-
-		SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
-
-		Null,
-		If[ ChoiceDialog[strDisableWarning, WindowFloating->True, WindowTitle->"Documentation system"],
-			SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
-		]
-	];
-
-	(* Activate TraditionalForm	*)
-	WriteString["stdout", "Setting up the format type of new output cells ... "];
-	If[ OptionValue[AutoEnableTraditionalForm],
-
-		useTraditionalForm = True,
-		Null,
-		If[ ChoiceDialog[strEnableTraditionalForm, WindowFloating->True, WindowTitle->"TraditionalForm output"],
-			useTraditionalForm = True
-		]
-	];
-
-	WriteString["stdout", "done! \n"];
-
-	(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
-	RebuildPacletData[];
-
-	(* Generate FCConfig.m	*)
-	WriteString["stdout", "Creating the configuration file ... "];
-	configFile = StringJoin[configFileProlog, "\n\n(* Activate TraditionalForm output for each FeynCalc session *) \n$FCTraditionalFormOutput="<>ToString[useTraditionalForm]<>";"];
-	Export[FileNameJoin[{packageDir,"FCConfig.m"}], configFile, "Text"];
-	WriteString["stdout", "done! \n"];
-
-	If[ OptionValue[AutoInstallFeynArts],
-
-		faInstalled=True;
-		InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]],
-		Null,
-		If[ ChoiceDialog[strFeynArts, WindowFloating->True, WindowTitle->"Install FeynArts"],
 			faInstalled=True;
-			InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]]
-		]
-	];
+			InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]],
+			Null,
+			If[ choiceDialog2[fancyText[strFeynArts], WindowFloating->True, WindowTitle->"Install FeynArts"],
+				faInstalled=True;
+				InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]]
+			]
+		];
 
+		WriteString["stdout", "\nInstallation complete! Loading FeynCalc ... \n"];
 
-	WriteString["stdout", "\nInstallation complete! Loading FeynCalc ... \n"];
+		If[	faInstalled,
 
-	If[	faInstalled,
-		If[	InstallFeynCalcDevelopmentVersion,
-			Global`$LoadAddOns={"FeynArts"},
-			Global`$LoadFeynArts=True
-		]
-	];
-	Get["FeynCalc`"];
+			If[	OptionValue[InstallFeynCalcDevelopmentVersion],
+				SetOptions[FAPatch,Quiet->True];
+				Global`$LoadAddOns={"FeynArts"},
+				Global`$LoadFeynArts=True
+			]
+		];
+		Get["FeynCalc`"];
 
 ];
+
+End[];
+
+EndPackage[];
