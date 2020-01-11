@@ -197,7 +197,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		{rest,loopInts,intsUnique} = FCLoopExtract[ex, qs,loopHead, FCLoopSplit -> {4}, MultiLoop->False,FCI->True,PaVe->False,
 			Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
 		FCPrint[1, "FCMultiLoopTID: Done applying FCLoopExtract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3,"FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
+		FCPrint[2,"FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
 
 		(*	Apply tidSingleIntegral to each of the unique loop integrals	*)
 		time=AbsoluteTime[];
