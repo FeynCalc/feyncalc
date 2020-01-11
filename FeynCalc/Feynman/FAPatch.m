@@ -70,8 +70,9 @@ FCFilePatch[input_String, output_String, replacements_List] :=
 
 
 Options[FAPatch] = {
+	Quiet						-> False,
 	PatchModelsOnly 			-> False,
-	FAModelsDirectory	:> FileNameJoin[{$FeynArtsDirectory, "Models"}],
+	FAModelsDirectory			:> FileNameJoin[{$FeynArtsDirectory, "Models"}],
 	Replace 					-> {
 		"FourVector" 			-> "FAFourVector",
 		"DiracSpinor" 			-> "FADiracSpinor",
@@ -168,7 +169,7 @@ FAPatch[OptionsPattern[]] :=
 			filenames
 		];
 		nmodels=0;
-		If[ !OptionValue[PatchModelsOnly],
+		If[ !OptionValue[PatchModelsOnly] || OptionValue[Quiet],
 
 			If[	ChoiceDialog["An installation of FeynArts has been found in \"" <> $FeynArtsDirectory <>
 				"\". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue?",
