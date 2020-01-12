@@ -278,8 +278,8 @@ InstallFeynCalc[OptionsPattern[]]:=
 			Column[{
 				"Do you want to install FeynArts from "<> OptionValue[InstallFeynArts,FeynArtsMirrorLink] <> "?",
 				"",
-				"FeynArts is a Feynman diagram developed by Thomas Hahn (www.feynarts.de).",
-				"It is not a part of FeynCalc but it can be used together with FeynCalc after some adjustments.",
+				"FeynArts is a Feynman diagram generator developed by Thomas Hahn (www.feynarts.de).",
+				"It is not part of FeynCalc but it can be used together with FeynCalc after some adjustments.",
 				"",
 				"The modified version of FeynArts will be placed into " <> FileNameJoin[{packageDir,"FeynArts"}]<>"."
 				}
@@ -426,7 +426,6 @@ InstallFeynCalc[OptionsPattern[]]:=
 		If[	faInstalled,
 
 			If[	OptionValue[InstallFeynCalcDevelopmentVersion],
-				SetOptions[FAPatch,Quiet->True];
 				Global`$LoadAddOns={"FeynArts"},
 				Global`$LoadFeynArts=True
 			]
